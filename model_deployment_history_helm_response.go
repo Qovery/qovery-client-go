@@ -16,42 +16,42 @@ import (
 	"time"
 )
 
-// checks if the ListHelmDeploymentHistory200ResponseAllOfResultsInner type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ListHelmDeploymentHistory200ResponseAllOfResultsInner{}
+// checks if the DeploymentHistoryHelmResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &DeploymentHistoryHelmResponse{}
 
-// ListHelmDeploymentHistory200ResponseAllOfResultsInner struct for ListHelmDeploymentHistory200ResponseAllOfResultsInner
-type ListHelmDeploymentHistory200ResponseAllOfResultsInner struct {
+// DeploymentHistoryHelmResponse struct for DeploymentHistoryHelmResponse
+type DeploymentHistoryHelmResponse struct {
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the helm
-	Name       *string                                                                      `json:"name,omitempty"`
-	Status     *StateEnum                                                                   `json:"status,omitempty"`
-	Commit     NullableCommit                                                               `json:"commit,omitempty"`
-	Repository NullableListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository `json:"repository,omitempty"`
+	Name       *string                                              `json:"name,omitempty"`
+	Status     *StateEnum                                           `json:"status,omitempty"`
+	Commit     NullableCommit                                       `json:"commit,omitempty"`
+	Repository NullableDeploymentHistoryHelmResponseAllOfRepository `json:"repository,omitempty"`
 }
 
-// NewListHelmDeploymentHistory200ResponseAllOfResultsInner instantiates a new ListHelmDeploymentHistory200ResponseAllOfResultsInner object
+// NewDeploymentHistoryHelmResponse instantiates a new DeploymentHistoryHelmResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewListHelmDeploymentHistory200ResponseAllOfResultsInner(id string, createdAt time.Time) *ListHelmDeploymentHistory200ResponseAllOfResultsInner {
-	this := ListHelmDeploymentHistory200ResponseAllOfResultsInner{}
+func NewDeploymentHistoryHelmResponse(id string, createdAt time.Time) *DeploymentHistoryHelmResponse {
+	this := DeploymentHistoryHelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	return &this
 }
 
-// NewListHelmDeploymentHistory200ResponseAllOfResultsInnerWithDefaults instantiates a new ListHelmDeploymentHistory200ResponseAllOfResultsInner object
+// NewDeploymentHistoryHelmResponseWithDefaults instantiates a new DeploymentHistoryHelmResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewListHelmDeploymentHistory200ResponseAllOfResultsInnerWithDefaults() *ListHelmDeploymentHistory200ResponseAllOfResultsInner {
-	this := ListHelmDeploymentHistory200ResponseAllOfResultsInner{}
+func NewDeploymentHistoryHelmResponseWithDefaults() *DeploymentHistoryHelmResponse {
+	this := DeploymentHistoryHelmResponse{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetId() string {
+func (o *DeploymentHistoryHelmResponse) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -62,7 +62,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetIdOk() (*string, bool) {
+func (o *DeploymentHistoryHelmResponse) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,12 +70,12 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetIdOk() (*stri
 }
 
 // SetId sets field value
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetId(v string) {
+func (o *DeploymentHistoryHelmResponse) SetId(v string) {
 	o.Id = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAt() time.Time {
+func (o *DeploymentHistoryHelmResponse) GetCreatedAt() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -86,7 +86,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAt() t
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAtOk() (*time.Time, bool) {
+func (o *DeploymentHistoryHelmResponse) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -94,12 +94,12 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCreatedAtOk()
 }
 
 // SetCreatedAt sets field value
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetCreatedAt(v time.Time) {
+func (o *DeploymentHistoryHelmResponse) SetCreatedAt(v time.Time) {
 	o.CreatedAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAt() time.Time {
+func (o *DeploymentHistoryHelmResponse) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -109,7 +109,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAt() t
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *DeploymentHistoryHelmResponse) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -117,7 +117,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetUpdatedAtOk()
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasUpdatedAt() bool {
+func (o *DeploymentHistoryHelmResponse) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -126,12 +126,12 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasUpdatedAt() b
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetUpdatedAt(v time.Time) {
+func (o *DeploymentHistoryHelmResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetName() string {
+func (o *DeploymentHistoryHelmResponse) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -141,7 +141,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetName() string
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetNameOk() (*string, bool) {
+func (o *DeploymentHistoryHelmResponse) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -149,7 +149,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetNameOk() (*st
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasName() bool {
+func (o *DeploymentHistoryHelmResponse) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -158,12 +158,12 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetName(v string) {
+func (o *DeploymentHistoryHelmResponse) SetName(v string) {
 	o.Name = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetStatus() StateEnum {
+func (o *DeploymentHistoryHelmResponse) GetStatus() StateEnum {
 	if o == nil || IsNil(o.Status) {
 		var ret StateEnum
 		return ret
@@ -173,7 +173,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetStatus() Stat
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetStatusOk() (*StateEnum, bool) {
+func (o *DeploymentHistoryHelmResponse) GetStatusOk() (*StateEnum, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -181,7 +181,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetStatusOk() (*
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasStatus() bool {
+func (o *DeploymentHistoryHelmResponse) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -190,12 +190,12 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasStatus() bool
 }
 
 // SetStatus gets a reference to the given StateEnum and assigns it to the Status field.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetStatus(v StateEnum) {
+func (o *DeploymentHistoryHelmResponse) SetStatus(v StateEnum) {
 	o.Status = &v
 }
 
 // GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommit() Commit {
+func (o *DeploymentHistoryHelmResponse) GetCommit() Commit {
 	if o == nil || IsNil(o.Commit.Get()) {
 		var ret Commit
 		return ret
@@ -206,7 +206,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommit() Comm
 // GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommitOk() (*Commit, bool) {
+func (o *DeploymentHistoryHelmResponse) GetCommitOk() (*Commit, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -214,7 +214,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetCommitOk() (*
 }
 
 // HasCommit returns a boolean if a field has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasCommit() bool {
+func (o *DeploymentHistoryHelmResponse) HasCommit() bool {
 	if o != nil && o.Commit.IsSet() {
 		return true
 	}
@@ -223,24 +223,24 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasCommit() bool
 }
 
 // SetCommit gets a reference to the given NullableCommit and assigns it to the Commit field.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetCommit(v Commit) {
+func (o *DeploymentHistoryHelmResponse) SetCommit(v Commit) {
 	o.Commit.Set(&v)
 }
 
 // SetCommitNil sets the value for Commit to be an explicit nil
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetCommitNil() {
+func (o *DeploymentHistoryHelmResponse) SetCommitNil() {
 	o.Commit.Set(nil)
 }
 
 // UnsetCommit ensures that no value is present for Commit, not even an explicit nil
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) UnsetCommit() {
+func (o *DeploymentHistoryHelmResponse) UnsetCommit() {
 	o.Commit.Unset()
 }
 
 // GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepository() ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository {
+func (o *DeploymentHistoryHelmResponse) GetRepository() DeploymentHistoryHelmResponseAllOfRepository {
 	if o == nil || IsNil(o.Repository.Get()) {
-		var ret ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository
+		var ret DeploymentHistoryHelmResponseAllOfRepository
 		return ret
 	}
 	return *o.Repository.Get()
@@ -249,7 +249,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepository() 
 // GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepositoryOk() (*ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository, bool) {
+func (o *DeploymentHistoryHelmResponse) GetRepositoryOk() (*DeploymentHistoryHelmResponseAllOfRepository, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -257,7 +257,7 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) GetRepositoryOk(
 }
 
 // HasRepository returns a boolean if a field has been set.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasRepository() bool {
+func (o *DeploymentHistoryHelmResponse) HasRepository() bool {
 	if o != nil && o.Repository.IsSet() {
 		return true
 	}
@@ -265,22 +265,22 @@ func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) HasRepository() 
 	return false
 }
 
-// SetRepository gets a reference to the given NullableListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository and assigns it to the Repository field.
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetRepository(v ListHelmDeploymentHistory200ResponseAllOfResultsInnerAllOfRepository) {
+// SetRepository gets a reference to the given NullableDeploymentHistoryHelmResponseAllOfRepository and assigns it to the Repository field.
+func (o *DeploymentHistoryHelmResponse) SetRepository(v DeploymentHistoryHelmResponseAllOfRepository) {
 	o.Repository.Set(&v)
 }
 
 // SetRepositoryNil sets the value for Repository to be an explicit nil
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) SetRepositoryNil() {
+func (o *DeploymentHistoryHelmResponse) SetRepositoryNil() {
 	o.Repository.Set(nil)
 }
 
 // UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-func (o *ListHelmDeploymentHistory200ResponseAllOfResultsInner) UnsetRepository() {
+func (o *DeploymentHistoryHelmResponse) UnsetRepository() {
 	o.Repository.Unset()
 }
 
-func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]byte, error) {
+func (o DeploymentHistoryHelmResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -288,7 +288,7 @@ func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]
 	return json.Marshal(toSerialize)
 }
 
-func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) ToMap() (map[string]interface{}, error) {
+func (o DeploymentHistoryHelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["created_at"] = o.CreatedAt
@@ -310,38 +310,38 @@ func (o ListHelmDeploymentHistory200ResponseAllOfResultsInner) ToMap() (map[stri
 	return toSerialize, nil
 }
 
-type NullableListHelmDeploymentHistory200ResponseAllOfResultsInner struct {
-	value *ListHelmDeploymentHistory200ResponseAllOfResultsInner
+type NullableDeploymentHistoryHelmResponse struct {
+	value *DeploymentHistoryHelmResponse
 	isSet bool
 }
 
-func (v NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) Get() *ListHelmDeploymentHistory200ResponseAllOfResultsInner {
+func (v NullableDeploymentHistoryHelmResponse) Get() *DeploymentHistoryHelmResponse {
 	return v.value
 }
 
-func (v *NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) Set(val *ListHelmDeploymentHistory200ResponseAllOfResultsInner) {
+func (v *NullableDeploymentHistoryHelmResponse) Set(val *DeploymentHistoryHelmResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) IsSet() bool {
+func (v NullableDeploymentHistoryHelmResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) Unset() {
+func (v *NullableDeploymentHistoryHelmResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListHelmDeploymentHistory200ResponseAllOfResultsInner(val *ListHelmDeploymentHistory200ResponseAllOfResultsInner) *NullableListHelmDeploymentHistory200ResponseAllOfResultsInner {
-	return &NullableListHelmDeploymentHistory200ResponseAllOfResultsInner{value: val, isSet: true}
+func NewNullableDeploymentHistoryHelmResponse(val *DeploymentHistoryHelmResponse) *NullableDeploymentHistoryHelmResponse {
+	return &NullableDeploymentHistoryHelmResponse{value: val, isSet: true}
 }
 
-func (v NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) MarshalJSON() ([]byte, error) {
+func (v NullableDeploymentHistoryHelmResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListHelmDeploymentHistory200ResponseAllOfResultsInner) UnmarshalJSON(src []byte) error {
+func (v *NullableDeploymentHistoryHelmResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

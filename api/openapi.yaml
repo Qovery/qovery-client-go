@@ -18140,6 +18140,10 @@ components:
             items:
               $ref: '#/components/schemas/DeploymentHistoryJobResponse'
             type: array
+          helms:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryHelmResponse'
+            type: array
         type: object
     DeploymentHistoryEnvironmentPaginatedResponseList:
       allOf:
@@ -20842,6 +20846,20 @@ components:
       enum:
       - DIFF
       type: string
+    DeploymentHistoryHelmResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            description: name of the helm
+            type: string
+          status:
+            $ref: '#/components/schemas/StateEnum'
+          commit:
+            $ref: '#/components/schemas/Commit'
+          repository:
+            $ref: '#/components/schemas/DeploymentHistoryHelmResponse_allOf_repository'
+        type: object
     HelmPortProtocolEnum:
       default: HTTP
       enum:
@@ -23672,37 +23690,13 @@ components:
               $ref: '#/components/schemas/DeploymentHistoryDatabase'
             type: array
         type: object
-    listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository:
-      description: "If the chart source if from a repository, the chart name and its\
-        \ version"
-      nullable: true
-      properties:
-        chart_name:
-          type: string
-        version:
-          type: string
-      type: object
-    listHelmDeploymentHistory_200_response_allOf_results_inner:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - properties:
-          name:
-            description: name of the helm
-            type: string
-          status:
-            $ref: '#/components/schemas/StateEnum'
-          commit:
-            $ref: '#/components/schemas/Commit'
-          repository:
-            $ref: '#/components/schemas/listHelmDeploymentHistory_200_response_allOf_results_inner_allOf_repository'
-        type: object
     listHelmDeploymentHistory_200_response:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
       - properties:
           results:
             items:
-              $ref: '#/components/schemas/listHelmDeploymentHistory_200_response_allOf_results_inner'
+              $ref: '#/components/schemas/DeploymentHistoryHelmResponse'
             type: array
         type: object
     listJobDeploymentHistory_200_response:
@@ -24802,6 +24796,17 @@ components:
       - internal_port
       - service_name
       type: object
+    DeploymentHistoryHelmResponse_allOf_repository:
+      description: "If the chart source if from a repository, the chart name and its\
+        \ version"
+      nullable: true
+      properties:
+        chart_name:
+          type: string
+        chart_version:
+          type: string
+      type: object
+      example: null
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

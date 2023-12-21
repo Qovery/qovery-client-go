@@ -21,16 +21,17 @@ var _ MappedNullable = &DeploymentHistoryEnvironment{}
 
 // DeploymentHistoryEnvironment struct for DeploymentHistoryEnvironment
 type DeploymentHistoryEnvironment struct {
-	Id           string                         `json:"id"`
-	CreatedAt    time.Time                      `json:"created_at"`
-	UpdatedAt    *time.Time                     `json:"updated_at,omitempty"`
-	Status       *StateEnum                     `json:"status,omitempty"`
-	Origin       *OrganizationEventOrigin       `json:"origin,omitempty"`
-	TriggeredBy  *string                        `json:"triggered_by,omitempty"`
-	Applications []DeploymentHistoryApplication `json:"applications,omitempty"`
-	Containers   []DeploymentHistoryContainer   `json:"containers,omitempty"`
-	Databases    []DeploymentHistoryDatabase    `json:"databases,omitempty"`
-	Jobs         []DeploymentHistoryJobResponse `json:"jobs,omitempty"`
+	Id           string                          `json:"id"`
+	CreatedAt    time.Time                       `json:"created_at"`
+	UpdatedAt    *time.Time                      `json:"updated_at,omitempty"`
+	Status       *StateEnum                      `json:"status,omitempty"`
+	Origin       *OrganizationEventOrigin        `json:"origin,omitempty"`
+	TriggeredBy  *string                         `json:"triggered_by,omitempty"`
+	Applications []DeploymentHistoryApplication  `json:"applications,omitempty"`
+	Containers   []DeploymentHistoryContainer    `json:"containers,omitempty"`
+	Databases    []DeploymentHistoryDatabase     `json:"databases,omitempty"`
+	Jobs         []DeploymentHistoryJobResponse  `json:"jobs,omitempty"`
+	Helms        []DeploymentHistoryHelmResponse `json:"helms,omitempty"`
 }
 
 // NewDeploymentHistoryEnvironment instantiates a new DeploymentHistoryEnvironment object
@@ -356,6 +357,38 @@ func (o *DeploymentHistoryEnvironment) SetJobs(v []DeploymentHistoryJobResponse)
 	o.Jobs = v
 }
 
+// GetHelms returns the Helms field value if set, zero value otherwise.
+func (o *DeploymentHistoryEnvironment) GetHelms() []DeploymentHistoryHelmResponse {
+	if o == nil || IsNil(o.Helms) {
+		var ret []DeploymentHistoryHelmResponse
+		return ret
+	}
+	return o.Helms
+}
+
+// GetHelmsOk returns a tuple with the Helms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironment) GetHelmsOk() ([]DeploymentHistoryHelmResponse, bool) {
+	if o == nil || IsNil(o.Helms) {
+		return nil, false
+	}
+	return o.Helms, true
+}
+
+// HasHelms returns a boolean if a field has been set.
+func (o *DeploymentHistoryEnvironment) HasHelms() bool {
+	if o != nil && !IsNil(o.Helms) {
+		return true
+	}
+
+	return false
+}
+
+// SetHelms gets a reference to the given []DeploymentHistoryHelmResponse and assigns it to the Helms field.
+func (o *DeploymentHistoryEnvironment) SetHelms(v []DeploymentHistoryHelmResponse) {
+	o.Helms = v
+}
+
 func (o DeploymentHistoryEnvironment) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -391,6 +424,9 @@ func (o DeploymentHistoryEnvironment) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Jobs) {
 		toSerialize["jobs"] = o.Jobs
+	}
+	if !IsNil(o.Helms) {
+		toSerialize["helms"] = o.Helms
 	}
 	return toSerialize, nil
 }

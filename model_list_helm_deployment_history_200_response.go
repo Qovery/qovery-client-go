@@ -20,9 +20,9 @@ var _ MappedNullable = &ListHelmDeploymentHistory200Response{}
 
 // ListHelmDeploymentHistory200Response struct for ListHelmDeploymentHistory200Response
 type ListHelmDeploymentHistory200Response struct {
-	Page     float32                                                 `json:"page"`
-	PageSize float32                                                 `json:"page_size"`
-	Results  []ListHelmDeploymentHistory200ResponseAllOfResultsInner `json:"results,omitempty"`
+	Page     float32                         `json:"page"`
+	PageSize float32                         `json:"page_size"`
+	Results  []DeploymentHistoryHelmResponse `json:"results,omitempty"`
 }
 
 // NewListHelmDeploymentHistory200Response instantiates a new ListHelmDeploymentHistory200Response object
@@ -93,9 +93,9 @@ func (o *ListHelmDeploymentHistory200Response) SetPageSize(v float32) {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListHelmDeploymentHistory200Response) GetResults() []ListHelmDeploymentHistory200ResponseAllOfResultsInner {
+func (o *ListHelmDeploymentHistory200Response) GetResults() []DeploymentHistoryHelmResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret []ListHelmDeploymentHistory200ResponseAllOfResultsInner
+		var ret []DeploymentHistoryHelmResponse
 		return ret
 	}
 	return o.Results
@@ -103,7 +103,7 @@ func (o *ListHelmDeploymentHistory200Response) GetResults() []ListHelmDeployment
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListHelmDeploymentHistory200Response) GetResultsOk() ([]ListHelmDeploymentHistory200ResponseAllOfResultsInner, bool) {
+func (o *ListHelmDeploymentHistory200Response) GetResultsOk() ([]DeploymentHistoryHelmResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -119,8 +119,8 @@ func (o *ListHelmDeploymentHistory200Response) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ListHelmDeploymentHistory200ResponseAllOfResultsInner and assigns it to the Results field.
-func (o *ListHelmDeploymentHistory200Response) SetResults(v []ListHelmDeploymentHistory200ResponseAllOfResultsInner) {
+// SetResults gets a reference to the given []DeploymentHistoryHelmResponse and assigns it to the Results field.
+func (o *ListHelmDeploymentHistory200Response) SetResults(v []DeploymentHistoryHelmResponse) {
 	o.Results = v
 }
 

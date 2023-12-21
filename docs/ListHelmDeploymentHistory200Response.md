@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Page** | **float32** |  | 
 **PageSize** | **float32** |  | 
-**Results** | Pointer to [**[]ListHelmDeploymentHistory200ResponseAllOfResultsInner**](ListHelmDeploymentHistory200ResponseAllOfResultsInner.md) |  | [optional] 
+**Results** | Pointer to [**[]DeploymentHistoryHelmResponse**](DeploymentHistoryHelmResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -69,20 +69,20 @@ SetPageSize sets PageSize field to given value.
 
 ### GetResults
 
-`func (o *ListHelmDeploymentHistory200Response) GetResults() []ListHelmDeploymentHistory200ResponseAllOfResultsInner`
+`func (o *ListHelmDeploymentHistory200Response) GetResults() []DeploymentHistoryHelmResponse`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ListHelmDeploymentHistory200Response) GetResultsOk() (*[]ListHelmDeploymentHistory200ResponseAllOfResultsInner, bool)`
+`func (o *ListHelmDeploymentHistory200Response) GetResultsOk() (*[]DeploymentHistoryHelmResponse, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ListHelmDeploymentHistory200Response) SetResults(v []ListHelmDeploymentHistory200ResponseAllOfResultsInner)`
+`func (o *ListHelmDeploymentHistory200Response) SetResults(v []DeploymentHistoryHelmResponse)`
 
 SetResults sets Results field to given value.
 
