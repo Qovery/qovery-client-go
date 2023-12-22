@@ -20,9 +20,9 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverride{}
 
 // HelmResponseAllOfValuesOverride Specify helm values you want to set or override
 type HelmResponseAllOfValuesOverride struct {
-	Set       [][]string                                  `json:"set,omitempty"`
-	SetString [][]string                                  `json:"set_string,omitempty"`
-	SetJson   [][]string                                  `json:"set_json,omitempty"`
+	Set       []HelmKeyValue                              `json:"set,omitempty"`
+	SetString []HelmKeyValue                              `json:"set_string,omitempty"`
+	SetJson   []HelmKeyValue                              `json:"set_json,omitempty"`
 	File      NullableHelmResponseAllOfValuesOverrideFile `json:"file,omitempty"`
 }
 
@@ -44,9 +44,9 @@ func NewHelmResponseAllOfValuesOverrideWithDefaults() *HelmResponseAllOfValuesOv
 }
 
 // GetSet returns the Set field value if set, zero value otherwise.
-func (o *HelmResponseAllOfValuesOverride) GetSet() [][]string {
+func (o *HelmResponseAllOfValuesOverride) GetSet() []HelmKeyValue {
 	if o == nil || IsNil(o.Set) {
-		var ret [][]string
+		var ret []HelmKeyValue
 		return ret
 	}
 	return o.Set
@@ -54,7 +54,7 @@ func (o *HelmResponseAllOfValuesOverride) GetSet() [][]string {
 
 // GetSetOk returns a tuple with the Set field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfValuesOverride) GetSetOk() ([][]string, bool) {
+func (o *HelmResponseAllOfValuesOverride) GetSetOk() ([]HelmKeyValue, bool) {
 	if o == nil || IsNil(o.Set) {
 		return nil, false
 	}
@@ -70,15 +70,15 @@ func (o *HelmResponseAllOfValuesOverride) HasSet() bool {
 	return false
 }
 
-// SetSet gets a reference to the given [][]string and assigns it to the Set field.
-func (o *HelmResponseAllOfValuesOverride) SetSet(v [][]string) {
+// SetSet gets a reference to the given []HelmKeyValue and assigns it to the Set field.
+func (o *HelmResponseAllOfValuesOverride) SetSet(v []HelmKeyValue) {
 	o.Set = v
 }
 
 // GetSetString returns the SetString field value if set, zero value otherwise.
-func (o *HelmResponseAllOfValuesOverride) GetSetString() [][]string {
+func (o *HelmResponseAllOfValuesOverride) GetSetString() []HelmKeyValue {
 	if o == nil || IsNil(o.SetString) {
-		var ret [][]string
+		var ret []HelmKeyValue
 		return ret
 	}
 	return o.SetString
@@ -86,7 +86,7 @@ func (o *HelmResponseAllOfValuesOverride) GetSetString() [][]string {
 
 // GetSetStringOk returns a tuple with the SetString field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfValuesOverride) GetSetStringOk() ([][]string, bool) {
+func (o *HelmResponseAllOfValuesOverride) GetSetStringOk() ([]HelmKeyValue, bool) {
 	if o == nil || IsNil(o.SetString) {
 		return nil, false
 	}
@@ -102,15 +102,15 @@ func (o *HelmResponseAllOfValuesOverride) HasSetString() bool {
 	return false
 }
 
-// SetSetString gets a reference to the given [][]string and assigns it to the SetString field.
-func (o *HelmResponseAllOfValuesOverride) SetSetString(v [][]string) {
+// SetSetString gets a reference to the given []HelmKeyValue and assigns it to the SetString field.
+func (o *HelmResponseAllOfValuesOverride) SetSetString(v []HelmKeyValue) {
 	o.SetString = v
 }
 
 // GetSetJson returns the SetJson field value if set, zero value otherwise.
-func (o *HelmResponseAllOfValuesOverride) GetSetJson() [][]string {
+func (o *HelmResponseAllOfValuesOverride) GetSetJson() []HelmKeyValue {
 	if o == nil || IsNil(o.SetJson) {
-		var ret [][]string
+		var ret []HelmKeyValue
 		return ret
 	}
 	return o.SetJson
@@ -118,7 +118,7 @@ func (o *HelmResponseAllOfValuesOverride) GetSetJson() [][]string {
 
 // GetSetJsonOk returns a tuple with the SetJson field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfValuesOverride) GetSetJsonOk() ([][]string, bool) {
+func (o *HelmResponseAllOfValuesOverride) GetSetJsonOk() ([]HelmKeyValue, bool) {
 	if o == nil || IsNil(o.SetJson) {
 		return nil, false
 	}
@@ -134,8 +134,8 @@ func (o *HelmResponseAllOfValuesOverride) HasSetJson() bool {
 	return false
 }
 
-// SetSetJson gets a reference to the given [][]string and assigns it to the SetJson field.
-func (o *HelmResponseAllOfValuesOverride) SetSetJson(v [][]string) {
+// SetSetJson gets a reference to the given []HelmKeyValue and assigns it to the SetJson field.
+func (o *HelmResponseAllOfValuesOverride) SetSetJson(v []HelmKeyValue) {
 	o.SetJson = v
 }
 

@@ -23768,6 +23768,16 @@ components:
       - paths
       - url
       type: object
+    HelmKeyValue:
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+      type: object
     deleteMember_request:
       properties:
         user_id:
@@ -24673,21 +24683,15 @@ components:
       properties:
         set:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         set_string:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         set_json:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         file:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
@@ -24805,21 +24809,15 @@ components:
       properties:
         set:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         set_string:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         set_json:
           items:
-            items:
-              type: string
-            type: array
+            $ref: '#/components/schemas/HelmKeyValue'
           type: array
         file:
           $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'
