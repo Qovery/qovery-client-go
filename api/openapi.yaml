@@ -23287,7 +23287,10 @@ components:
           owned_by:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
+          is_secret:
+            type: boolean
         required:
+        - is_secret
         - key
         - scope
         - value

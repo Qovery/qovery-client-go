@@ -18,12 +18,13 @@ Name | Type | Description | Notes
 **ServiceName** | Pointer to **string** | The name of the service referenced by this variable. | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
 **OwnedBy** | Pointer to **string** | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional] 
+**IsSecret** | **bool** |  | 
 
 ## Methods
 
 ### NewVariableResponse
 
-`func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, ) *VariableResponse`
+`func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, isSecret bool, ) *VariableResponse`
 
 NewVariableResponse instantiates a new VariableResponse object
 This constructor will assign default values to properties that have it defined,
@@ -382,6 +383,26 @@ SetOwnedBy sets OwnedBy field to given value.
 `func (o *VariableResponse) HasOwnedBy() bool`
 
 HasOwnedBy returns a boolean if a field has been set.
+
+### GetIsSecret
+
+`func (o *VariableResponse) GetIsSecret() bool`
+
+GetIsSecret returns the IsSecret field if non-nil, zero value otherwise.
+
+### GetIsSecretOk
+
+`func (o *VariableResponse) GetIsSecretOk() (*bool, bool)`
+
+GetIsSecretOk returns a tuple with the IsSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSecret
+
+`func (o *VariableResponse) SetIsSecret(v bool)`
+
+SetIsSecret sets IsSecret field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

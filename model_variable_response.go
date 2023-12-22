@@ -37,20 +37,22 @@ type VariableResponse struct {
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy *string `json:"owned_by,omitempty"`
+	OwnedBy  *string `json:"owned_by,omitempty"`
+	IsSecret bool    `json:"is_secret"`
 }
 
 // NewVariableResponse instantiates a new VariableResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum) *VariableResponse {
+func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, isSecret bool) *VariableResponse {
 	this := VariableResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Key = key
 	this.Value = value
 	this.Scope = scope
+	this.IsSecret = isSecret
 	return &this
 }
 
@@ -483,6 +485,30 @@ func (o *VariableResponse) SetOwnedBy(v string) {
 	o.OwnedBy = &v
 }
 
+// GetIsSecret returns the IsSecret field value
+func (o *VariableResponse) GetIsSecret() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsSecret
+}
+
+// GetIsSecretOk returns a tuple with the IsSecret field value
+// and a boolean to check if the value has been set.
+func (o *VariableResponse) GetIsSecretOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsSecret, true
+}
+
+// SetIsSecret sets field value
+func (o *VariableResponse) SetIsSecret(v bool) {
+	o.IsSecret = v
+}
+
 func (o VariableResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -525,6 +551,7 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnedBy) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
+	toSerialize["is_secret"] = o.IsSecret
 	return toSerialize, nil
 }
 
