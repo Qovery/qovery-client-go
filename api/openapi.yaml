@@ -20775,6 +20775,107 @@ components:
           type: array
       type: object
     HelmAdvancedSettings:
+      example:
+        network.ingress.send_timeout_seconds: 5
+        network.ingress.proxy_send_timeout_seconds: 7
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
+        network.ingress.proxy_body_size_mb: 0
+        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
+        network.ingress.keepalive_timeout_seconds: 5
+        network.ingress.keepalive_time_seconds: 1
+        network.ingress.proxy_connect_timeout_seconds: 2
+        network.ingress.proxy_buffering: network.ingress.proxy_buffering
+        network.ingress.proxy_buffer_size_kb: 6
+        network.ingress.proxy_read_timeout_seconds: 9
+        network.ingress.grpc_send_timeout_seconds: 3
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        network.ingress.grpc_read_timeout_seconds: 2
+        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
+        network.ingress.enable_cors: true
+        network.ingress.enable_sticky_session: true
+        network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
+        network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
+        network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
+          :\"nosniff\"}"
+        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
+      properties:
+        network.ingress.proxy_body_size_mb:
+          type: integer
+        network.ingress.enable_cors:
+          type: boolean
+        network.ingress.cors_allow_origin:
+          type: string
+        network.ingress.cors_allow_methods:
+          type: string
+        network.ingress.cors_allow_headers:
+          type: string
+        network.ingress.proxy_buffer_size_kb:
+          description: header buffer size used while reading response header from
+            upstream
+          type: integer
+        network.ingress.keepalive_time_seconds:
+          description: Limits the maximum time (in seconds) during which requests
+            can be processed through one keepalive connection
+          type: integer
+        network.ingress.keepalive_timeout_seconds:
+          description: Sets a timeout (in seconds) during which an idle keepalive
+            connection to an upstream server will stay open.
+          type: integer
+        network.ingress.send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a response to
+            the client
+          type: integer
+        network.ingress.proxy_connect_timeout_seconds:
+          description: Sets a timeout (in seconds) for establishing a connection to
+            a proxied server
+          type: integer
+        network.ingress.proxy_send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            proxied server
+          type: integer
+        network.ingress.proxy_read_timeout_seconds:
+          description: Sets a timeout (in seconds) for reading a response from the
+            proxied server
+          type: integer
+        network.ingress.proxy_buffering:
+          description: Allows to enable or disable nginx `proxy-buffering`
+          type: string
+        network.ingress.proxy_request_buffering:
+          description: Allows to enable or disable nginx `proxy-request-buffering`
+          type: string
+        network.ingress.grpc_send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
+        network.ingress.grpc_read_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
+        network.ingress.whitelist_source_range:
+          description: "list of source ranges to allow access to ingress proxy. \n\
+            This property can be used to whitelist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
+            To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
+        network.ingress.denylist_source_range:
+          description: "list of source ranges to deny access to ingress proxy. \n\
+            This property can be used to blacklist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
+          type: string
+        network.ingress.extra_headers:
+          description: Allows to define response headers
+          example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
+            }"
+          type: string
+        network.ingress.basic_auth_env_var:
+          description: |
+            Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
+          type: string
+        network.ingress.enable_sticky_session:
+          description: |
+            Enable the load balancer to bind a user's session to a specific target.
+            This ensures that all requests from the user during the session are sent to the same target
+          type: boolean
       type: object
     HelmDeployRequest:
       example:

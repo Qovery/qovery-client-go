@@ -24,18 +24,18 @@ import (
 type HelmConfigurationAPIService service
 
 type ApiEditHelmAdvancedSettingsRequest struct {
-	ctx        context.Context
-	ApiService *HelmConfigurationAPIService
-	helmId     string
-	body       *map[string]interface{}
+	ctx                  context.Context
+	ApiService           *HelmConfigurationAPIService
+	helmId               string
+	helmAdvancedSettings *HelmAdvancedSettings
 }
 
-func (r ApiEditHelmAdvancedSettingsRequest) Body(body map[string]interface{}) ApiEditHelmAdvancedSettingsRequest {
-	r.body = &body
+func (r ApiEditHelmAdvancedSettingsRequest) HelmAdvancedSettings(helmAdvancedSettings HelmAdvancedSettings) ApiEditHelmAdvancedSettingsRequest {
+	r.helmAdvancedSettings = &helmAdvancedSettings
 	return r
 }
 
-func (r ApiEditHelmAdvancedSettingsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiEditHelmAdvancedSettingsRequest) Execute() (*HelmAdvancedSettings, *http.Response, error) {
 	return r.ApiService.EditHelmAdvancedSettingsExecute(r)
 }
 
@@ -57,13 +57,13 @@ func (a *HelmConfigurationAPIService) EditHelmAdvancedSettings(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *HelmConfigurationAPIService) EditHelmAdvancedSettingsExecute(r ApiEditHelmAdvancedSettingsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return HelmAdvancedSettings
+func (a *HelmConfigurationAPIService) EditHelmAdvancedSettingsExecute(r ApiEditHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *HelmAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmConfigurationAPIService.EditHelmAdvancedSettings")
@@ -96,7 +96,7 @@ func (a *HelmConfigurationAPIService) EditHelmAdvancedSettingsExecute(r ApiEditH
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.body
+	localVarPostBody = r.helmAdvancedSettings
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -154,7 +154,7 @@ type ApiGetHelmAdvancedSettingsRequest struct {
 	helmId     string
 }
 
-func (r ApiGetHelmAdvancedSettingsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetHelmAdvancedSettingsRequest) Execute() (*HelmAdvancedSettings, *http.Response, error) {
 	return r.ApiService.GetHelmAdvancedSettingsExecute(r)
 }
 
@@ -176,13 +176,13 @@ func (a *HelmConfigurationAPIService) GetHelmAdvancedSettings(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *HelmConfigurationAPIService) GetHelmAdvancedSettingsExecute(r ApiGetHelmAdvancedSettingsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return HelmAdvancedSettings
+func (a *HelmConfigurationAPIService) GetHelmAdvancedSettingsExecute(r ApiGetHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *HelmAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmConfigurationAPIService.GetHelmAdvancedSettings")

@@ -399,7 +399,7 @@ type ApiGetDefaultHelmAdvancedSettingsRequest struct {
 	ApiService *HelmsAPIService
 }
 
-func (r ApiGetDefaultHelmAdvancedSettingsRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiGetDefaultHelmAdvancedSettingsRequest) Execute() (*HelmAdvancedSettings, *http.Response, error) {
 	return r.ApiService.GetDefaultHelmAdvancedSettingsExecute(r)
 }
 
@@ -417,13 +417,13 @@ func (a *HelmsAPIService) GetDefaultHelmAdvancedSettings(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
-func (a *HelmsAPIService) GetDefaultHelmAdvancedSettingsExecute(r ApiGetDefaultHelmAdvancedSettingsRequest) (map[string]interface{}, *http.Response, error) {
+//  @return HelmAdvancedSettings
+func (a *HelmsAPIService) GetDefaultHelmAdvancedSettingsExecute(r ApiGetDefaultHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *HelmAdvancedSettings
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmsAPIService.GetDefaultHelmAdvancedSettings")

@@ -362,6 +362,7 @@ docs/GitTokenResponseList.md
 docs/GithubAppAPI.md
 docs/Healthcheck.md
 docs/HelmActionsAPI.md
+docs/HelmAdvancedSettings.md
 docs/HelmConfigurationAPI.md
 docs/HelmDefaultValuesRequest.md
 docs/HelmDeployRequest.md
@@ -859,6 +860,7 @@ model_git_token_request.go
 model_git_token_response.go
 model_git_token_response_list.go
 model_healthcheck.go
+model_helm_advanced_settings.go
 model_helm_default_values_request.go
 model_helm_deploy_request.go
 model_helm_deployment_restriction_request.go

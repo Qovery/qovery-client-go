@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 
 ## GetDefaultHelmAdvancedSettings
 
-> map[string]interface{} GetDefaultHelmAdvancedSettings(ctx).Execute()
+> HelmAdvancedSettings GetDefaultHelmAdvancedSettings(ctx).Execute()
 
 List default helm advanced settings
 
@@ -252,7 +252,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetDefaultHelmAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetDefaultHelmAdvancedSettings`: map[string]interface{}
+    // response from `GetDefaultHelmAdvancedSettings`: HelmAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetDefaultHelmAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -268,7 +268,7 @@ Other parameters are passed through a pointer to a apiGetDefaultHelmAdvancedSett
 
 ### Return type
 
-**map[string]interface{}**
+[**HelmAdvancedSettings**](HelmAdvancedSettings.md)
 
 ### Authorization
 

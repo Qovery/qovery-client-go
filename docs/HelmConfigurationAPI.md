@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## EditHelmAdvancedSettings
 
-> map[string]interface{} EditHelmAdvancedSettings(ctx, helmId).Body(body).Execute()
+> HelmAdvancedSettings EditHelmAdvancedSettings(ctx, helmId).HelmAdvancedSettings(helmAdvancedSettings).Execute()
 
 Edit advanced settings
 
@@ -31,16 +31,16 @@ import (
 
 func main() {
     helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+    helmAdvancedSettings := *openapiclient.NewHelmAdvancedSettings() // HelmAdvancedSettings |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmConfigurationAPI.EditHelmAdvancedSettings(context.Background(), helmId).Body(body).Execute()
+    resp, r, err := apiClient.HelmConfigurationAPI.EditHelmAdvancedSettings(context.Background(), helmId).HelmAdvancedSettings(helmAdvancedSettings).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.EditHelmAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `EditHelmAdvancedSettings`: map[string]interface{}
+    // response from `EditHelmAdvancedSettings`: HelmAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.EditHelmAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -61,11 +61,11 @@ Other parameters are passed through a pointer to a apiEditHelmAdvancedSettingsRe
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **body** | **map[string]interface{}** |  | 
+ **helmAdvancedSettings** | [**HelmAdvancedSettings**](HelmAdvancedSettings.md) |  | 
 
 ### Return type
 
-**map[string]interface{}**
+[**HelmAdvancedSettings**](HelmAdvancedSettings.md)
 
 ### Authorization
 
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## GetHelmAdvancedSettings
 
-> map[string]interface{} GetHelmAdvancedSettings(ctx, helmId).Execute()
+> HelmAdvancedSettings GetHelmAdvancedSettings(ctx, helmId).Execute()
 
 Get advanced settings
 
@@ -111,7 +111,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.GetHelmAdvancedSettings``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `GetHelmAdvancedSettings`: map[string]interface{}
+    // response from `GetHelmAdvancedSettings`: HelmAdvancedSettings
     fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.GetHelmAdvancedSettings`: %v\n", resp)
 }
 ```
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**HelmAdvancedSettings**](HelmAdvancedSettings.md)
 
 ### Authorization
 
