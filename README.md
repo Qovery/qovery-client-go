@@ -736,7 +736,6 @@ Class | Method | HTTP request | Description
  - [HelmDeploymentRestrictionResponseList](docs/HelmDeploymentRestrictionResponseList.md)
  - [HelmForceEvent](docs/HelmForceEvent.md)
  - [HelmGitRepositoryRequest](docs/HelmGitRepositoryRequest.md)
- - [HelmKeyValue](docs/HelmKeyValue.md)
  - [HelmPortProtocolEnum](docs/HelmPortProtocolEnum.md)
  - [HelmPortRequest](docs/HelmPortRequest.md)
  - [HelmPortRequestPortsInner](docs/HelmPortRequestPortsInner.md)

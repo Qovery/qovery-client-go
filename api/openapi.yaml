@@ -23768,16 +23768,13 @@ components:
       - paths
       - url
       type: object
-    HelmKeyValue:
-      properties:
-        key:
+    HelmKeyValues:
+      description: "The input is in json array format: [ [$KEY,$VALUE], [...] ]"
+      items:
+        items:
           type: string
-        value:
-          type: string
-      required:
-      - key
-      - value
-      type: object
+        type: array
+      type: array
     deleteMember_request:
       properties:
         user_id:
@@ -24682,16 +24679,28 @@ components:
         Specify helm values you want to set or override
       properties:
         set:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         set_string:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         set_json:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         file:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
@@ -24808,16 +24817,28 @@ components:
         Specify helm values you want to set or override
       properties:
         set:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         set_string:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         set_json:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
           items:
-            $ref: '#/components/schemas/HelmKeyValue'
+            items:
+              type: string
+            type: array
           type: array
         file:
           $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'

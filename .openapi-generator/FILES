@@ -373,7 +373,6 @@ docs/HelmDeploymentRestrictionResponse.md
 docs/HelmDeploymentRestrictionResponseList.md
 docs/HelmForceEvent.md
 docs/HelmGitRepositoryRequest.md
-docs/HelmKeyValue.md
 docs/HelmMainCallsAPI.md
 docs/HelmPortProtocolEnum.md
 docs/HelmPortRequest.md
@@ -869,7 +868,6 @@ model_helm_deployment_restriction_response.go
 model_helm_deployment_restriction_response_list.go
 model_helm_force_event.go
 model_helm_git_repository_request.go
-model_helm_key_value.go
 model_helm_port_protocol_enum.go
 model_helm_port_request.go
 model_helm_port_request_ports_inner.go

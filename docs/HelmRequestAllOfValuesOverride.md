@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Set** | Pointer to [**[]HelmKeyValue**](HelmKeyValue.md) |  | [optional] 
-**SetString** | Pointer to [**[]HelmKeyValue**](HelmKeyValue.md) |  | [optional] 
-**SetJson** | Pointer to [**[]HelmKeyValue**](HelmKeyValue.md) |  | [optional] 
+**Set** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
+**SetString** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
+**SetJson** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
 **File** | Pointer to [**NullableHelmRequestAllOfValuesOverrideFile**](HelmRequestAllOfValuesOverrideFile.md) |  | [optional] 
 
 ## Methods
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSet
 
-`func (o *HelmRequestAllOfValuesOverride) GetSet() []HelmKeyValue`
+`func (o *HelmRequestAllOfValuesOverride) GetSet() [][]string`
 
 GetSet returns the Set field if non-nil, zero value otherwise.
 
 ### GetSetOk
 
-`func (o *HelmRequestAllOfValuesOverride) GetSetOk() (*[]HelmKeyValue, bool)`
+`func (o *HelmRequestAllOfValuesOverride) GetSetOk() (*[][]string, bool)`
 
 GetSetOk returns a tuple with the Set field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSet
 
-`func (o *HelmRequestAllOfValuesOverride) SetSet(v []HelmKeyValue)`
+`func (o *HelmRequestAllOfValuesOverride) SetSet(v [][]string)`
 
 SetSet sets Set field to given value.
 
@@ -55,20 +55,20 @@ HasSet returns a boolean if a field has been set.
 
 ### GetSetString
 
-`func (o *HelmRequestAllOfValuesOverride) GetSetString() []HelmKeyValue`
+`func (o *HelmRequestAllOfValuesOverride) GetSetString() [][]string`
 
 GetSetString returns the SetString field if non-nil, zero value otherwise.
 
 ### GetSetStringOk
 
-`func (o *HelmRequestAllOfValuesOverride) GetSetStringOk() (*[]HelmKeyValue, bool)`
+`func (o *HelmRequestAllOfValuesOverride) GetSetStringOk() (*[][]string, bool)`
 
 GetSetStringOk returns a tuple with the SetString field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSetString
 
-`func (o *HelmRequestAllOfValuesOverride) SetSetString(v []HelmKeyValue)`
+`func (o *HelmRequestAllOfValuesOverride) SetSetString(v [][]string)`
 
 SetSetString sets SetString field to given value.
 
@@ -80,20 +80,20 @@ HasSetString returns a boolean if a field has been set.
 
 ### GetSetJson
 
-`func (o *HelmRequestAllOfValuesOverride) GetSetJson() []HelmKeyValue`
+`func (o *HelmRequestAllOfValuesOverride) GetSetJson() [][]string`
 
 GetSetJson returns the SetJson field if non-nil, zero value otherwise.
 
 ### GetSetJsonOk
 
-`func (o *HelmRequestAllOfValuesOverride) GetSetJsonOk() (*[]HelmKeyValue, bool)`
+`func (o *HelmRequestAllOfValuesOverride) GetSetJsonOk() (*[][]string, bool)`
 
 GetSetJsonOk returns a tuple with the SetJson field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSetJson
 
-`func (o *HelmRequestAllOfValuesOverride) SetSetJson(v []HelmKeyValue)`
+`func (o *HelmRequestAllOfValuesOverride) SetSetJson(v [][]string)`
 
 SetSetJson sets SetJson field to given value.
 
