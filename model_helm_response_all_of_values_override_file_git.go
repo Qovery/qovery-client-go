@@ -20,7 +20,7 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverrideFileGit{}
 
 // HelmResponseAllOfValuesOverrideFileGit struct for HelmResponseAllOfValuesOverrideFileGit
 type HelmResponseAllOfValuesOverrideFileGit struct {
-	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
+	GitRepository ApplicationGitRepository `json:"git_repository"`
 	// List of path inside your git repository to locate values file. Must start by a /
 	Paths []string `json:"paths"`
 }
@@ -29,7 +29,7 @@ type HelmResponseAllOfValuesOverrideFileGit struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfValuesOverrideFileGit(gitRepository ApplicationGitRepositoryRequest, paths []string) *HelmResponseAllOfValuesOverrideFileGit {
+func NewHelmResponseAllOfValuesOverrideFileGit(gitRepository ApplicationGitRepository, paths []string) *HelmResponseAllOfValuesOverrideFileGit {
 	this := HelmResponseAllOfValuesOverrideFileGit{}
 	this.GitRepository = gitRepository
 	this.Paths = paths
@@ -45,9 +45,9 @@ func NewHelmResponseAllOfValuesOverrideFileGitWithDefaults() *HelmResponseAllOfV
 }
 
 // GetGitRepository returns the GitRepository field value
-func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepositoryRequest {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationGitRepository {
 	if o == nil {
-		var ret ApplicationGitRepositoryRequest
+		var ret ApplicationGitRepository
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepository() ApplicationG
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *HelmResponseAllOfValuesOverrideFileGit) GetGitRepositoryOk() (*Applicat
 }
 
 // SetGitRepository sets field value
-func (o *HelmResponseAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepositoryRequest) {
+func (o *HelmResponseAllOfValuesOverrideFileGit) SetGitRepository(v ApplicationGitRepository) {
 	o.GitRepository = v
 }
 
