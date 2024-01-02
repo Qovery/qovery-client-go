@@ -52,6 +52,7 @@ api_git_repositories.go
 api_github_app.go
 api_helm_actions.go
 api_helm_configuration.go
+api_helm_custom_domain.go
 api_helm_deployment_history.go
 api_helm_deployment_restriction.go
 api_helm_main_calls.go
@@ -364,6 +365,7 @@ docs/Healthcheck.md
 docs/HelmActionsAPI.md
 docs/HelmAdvancedSettings.md
 docs/HelmConfigurationAPI.md
+docs/HelmCustomDomainAPI.md
 docs/HelmDefaultValuesRequest.md
 docs/HelmDeployRequest.md
 docs/HelmDeploymentHistoryAPI.md
@@ -1144,6 +1146,7 @@ test/api_git_repositories_test.go
 test/api_github_app_test.go
 test/api_helm_actions_test.go
 test/api_helm_configuration_test.go
+test/api_helm_custom_domain_test.go
 test/api_helm_deployment_history_test.go
 test/api_helm_deployment_restriction_test.go
 test/api_helm_main_calls_test.go

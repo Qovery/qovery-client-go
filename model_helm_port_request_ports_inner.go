@@ -28,6 +28,8 @@ type HelmPortRequestPortsInner struct {
 	ServiceName  string                `json:"service_name"`
 	Namespace    *string               `json:"namespace,omitempty"`
 	Protocol     *HelmPortProtocolEnum `json:"protocol,omitempty"`
+	// is the default port to use for domain
+	IsDefault *bool `json:"is_default,omitempty"`
 }
 
 // NewHelmPortRequestPortsInner instantiates a new HelmPortRequestPortsInner object
@@ -229,6 +231,38 @@ func (o *HelmPortRequestPortsInner) SetProtocol(v HelmPortProtocolEnum) {
 	o.Protocol = &v
 }
 
+// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+func (o *HelmPortRequestPortsInner) GetIsDefault() bool {
+	if o == nil || IsNil(o.IsDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDefault
+}
+
+// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmPortRequestPortsInner) GetIsDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDefault) {
+		return nil, false
+	}
+	return o.IsDefault, true
+}
+
+// HasIsDefault returns a boolean if a field has been set.
+func (o *HelmPortRequestPortsInner) HasIsDefault() bool {
+	if o != nil && !IsNil(o.IsDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+func (o *HelmPortRequestPortsInner) SetIsDefault(v bool) {
+	o.IsDefault = &v
+}
+
 func (o HelmPortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -252,6 +286,9 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
+	}
+	if !IsNil(o.IsDefault) {
+		toSerialize["is_default"] = o.IsDefault
 	}
 	return toSerialize, nil
 }

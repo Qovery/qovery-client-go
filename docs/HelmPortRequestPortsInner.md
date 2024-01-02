@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **ServiceName** | **string** |  | 
 **Namespace** | Pointer to **string** |  | [optional] 
 **Protocol** | Pointer to [**HelmPortProtocolEnum**](HelmPortProtocolEnum.md) |  | [optional] [default to HELMPORTPROTOCOLENUM_HTTP]
+**IsDefault** | Pointer to **bool** | is the default port to use for domain | [optional] 
 
 ## Methods
 
@@ -169,6 +170,31 @@ SetProtocol sets Protocol field to given value.
 `func (o *HelmPortRequestPortsInner) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
+
+### GetIsDefault
+
+`func (o *HelmPortRequestPortsInner) GetIsDefault() bool`
+
+GetIsDefault returns the IsDefault field if non-nil, zero value otherwise.
+
+### GetIsDefaultOk
+
+`func (o *HelmPortRequestPortsInner) GetIsDefaultOk() (*bool, bool)`
+
+GetIsDefaultOk returns a tuple with the IsDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDefault
+
+`func (o *HelmPortRequestPortsInner) SetIsDefault(v bool)`
+
+SetIsDefault sets IsDefault field to given value.
+
+### HasIsDefault
+
+`func (o *HelmPortRequestPortsInner) HasIsDefault() bool`
+
+HasIsDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
