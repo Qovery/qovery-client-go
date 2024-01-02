@@ -35,8 +35,10 @@ type ClusterRequest struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys  []string                      `json:"ssh_keys,omitempty"`
-	Features []ClusterRequestFeaturesInner `json:"features,omitempty"`
+	SshKeys []string `json:"ssh_keys,omitempty"`
+	// If the cluster is a self managed one. The kubeconfig to use to connect to it
+	Kubeconfig *string                       `json:"kubeconfig,omitempty"`
+	Features   []ClusterRequestFeaturesInner `json:"features,omitempty"`
 }
 
 // NewClusterRequest instantiates a new ClusterRequest object
@@ -403,6 +405,38 @@ func (o *ClusterRequest) SetSshKeys(v []string) {
 	o.SshKeys = v
 }
 
+// GetKubeconfig returns the Kubeconfig field value if set, zero value otherwise.
+func (o *ClusterRequest) GetKubeconfig() string {
+	if o == nil || IsNil(o.Kubeconfig) {
+		var ret string
+		return ret
+	}
+	return *o.Kubeconfig
+}
+
+// GetKubeconfigOk returns a tuple with the Kubeconfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetKubeconfigOk() (*string, bool) {
+	if o == nil || IsNil(o.Kubeconfig) {
+		return nil, false
+	}
+	return o.Kubeconfig, true
+}
+
+// HasKubeconfig returns a boolean if a field has been set.
+func (o *ClusterRequest) HasKubeconfig() bool {
+	if o != nil && !IsNil(o.Kubeconfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetKubeconfig gets a reference to the given string and assigns it to the Kubeconfig field.
+func (o *ClusterRequest) SetKubeconfig(v string) {
+	o.Kubeconfig = &v
+}
+
 // GetFeatures returns the Features field value if set, zero value otherwise.
 func (o *ClusterRequest) GetFeatures() []ClusterRequestFeaturesInner {
 	if o == nil || IsNil(o.Features) {
@@ -471,6 +505,9 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SshKeys) {
 		toSerialize["ssh_keys"] = o.SshKeys
+	}
+	if !IsNil(o.Kubeconfig) {
+		toSerialize["kubeconfig"] = o.Kubeconfig
 	}
 	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
