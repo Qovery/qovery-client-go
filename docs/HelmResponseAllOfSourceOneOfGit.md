@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
+**GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetGitRepository
 
-`func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepository() ApplicationGitRepositoryRequest`
+`func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepository() ApplicationGitRepository`
 
 GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
 ### GetGitRepositoryOk
 
-`func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool)`
+`func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepositoryOk() (*ApplicationGitRepository, bool)`
 
 GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitRepository
 
-`func (o *HelmResponseAllOfSourceOneOfGit) SetGitRepository(v ApplicationGitRepositoryRequest)`
+`func (o *HelmResponseAllOfSourceOneOfGit) SetGitRepository(v ApplicationGitRepository)`
 
 SetGitRepository sets GitRepository field to given value.
 

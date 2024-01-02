@@ -20,7 +20,7 @@ var _ MappedNullable = &HelmResponseAllOfSourceOneOfGit{}
 
 // HelmResponseAllOfSourceOneOfGit struct for HelmResponseAllOfSourceOneOfGit
 type HelmResponseAllOfSourceOneOfGit struct {
-	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
+	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
 }
 
 // NewHelmResponseAllOfSourceOneOfGit instantiates a new HelmResponseAllOfSourceOneOfGit object
@@ -41,9 +41,9 @@ func NewHelmResponseAllOfSourceOneOfGitWithDefaults() *HelmResponseAllOfSourceOn
 }
 
 // GetGitRepository returns the GitRepository field value if set, zero value otherwise.
-func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepository() ApplicationGitRepositoryRequest {
+func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepository() ApplicationGitRepository {
 	if o == nil || IsNil(o.GitRepository) {
-		var ret ApplicationGitRepositoryRequest
+		var ret ApplicationGitRepository
 		return ret
 	}
 	return *o.GitRepository
@@ -51,7 +51,7 @@ func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepository() ApplicationGitRepos
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
+func (o *HelmResponseAllOfSourceOneOfGit) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
 	if o == nil || IsNil(o.GitRepository) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *HelmResponseAllOfSourceOneOfGit) HasGitRepository() bool {
 	return false
 }
 
-// SetGitRepository gets a reference to the given ApplicationGitRepositoryRequest and assigns it to the GitRepository field.
-func (o *HelmResponseAllOfSourceOneOfGit) SetGitRepository(v ApplicationGitRepositoryRequest) {
+// SetGitRepository gets a reference to the given ApplicationGitRepository and assigns it to the GitRepository field.
+func (o *HelmResponseAllOfSourceOneOfGit) SetGitRepository(v ApplicationGitRepository) {
 	o.GitRepository = &v
 }
 
