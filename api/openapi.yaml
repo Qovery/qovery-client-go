@@ -22738,6 +22738,10 @@ components:
         entrypoint:
           description: optional entrypoint when launching container
           type: string
+        timezone:
+          description: Specify a timezone identifier to run the schedule at. By default
+            Etc/UTC
+          type: string
         scheduled_at:
           description: "Can only be set if the event is CRON.  \nRepresent the cron\
             \ format for the job schedule without seconds.  \nFor example: `* * *\
@@ -23283,6 +23287,9 @@ components:
         entrypoint:
           description: optional entrypoint when launching container
           type: string
+        timezone:
+          description: tz identifier at which the schedule at will be executed
+          type: string
         scheduled_at:
           description: "Can only be set if the event is CRON.  \nRepresent the cron\
             \ format for the job schedule without seconds.  \nFor example: `* * *\
@@ -23292,6 +23299,7 @@ components:
           type: string
       required:
       - scheduled_at
+      - timezone
       type: object
       example: null
     CronJobResponse_allOf_schedule:

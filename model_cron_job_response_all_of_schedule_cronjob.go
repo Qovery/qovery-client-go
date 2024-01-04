@@ -23,6 +23,8 @@ type CronJobResponseAllOfScheduleCronjob struct {
 	Arguments []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
+	// tz identifier at which the schedule at will be executed
+	Timezone string `json:"timezone"`
 	// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UT
 	ScheduledAt string `json:"scheduled_at"`
 }
@@ -31,8 +33,9 @@ type CronJobResponseAllOfScheduleCronjob struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronJobResponseAllOfScheduleCronjob(scheduledAt string) *CronJobResponseAllOfScheduleCronjob {
+func NewCronJobResponseAllOfScheduleCronjob(timezone string, scheduledAt string) *CronJobResponseAllOfScheduleCronjob {
 	this := CronJobResponseAllOfScheduleCronjob{}
+	this.Timezone = timezone
 	this.ScheduledAt = scheduledAt
 	return &this
 }
@@ -109,6 +112,30 @@ func (o *CronJobResponseAllOfScheduleCronjob) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
+// GetTimezone returns the Timezone field value
+func (o *CronJobResponseAllOfScheduleCronjob) GetTimezone() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Timezone
+}
+
+// GetTimezoneOk returns a tuple with the Timezone field value
+// and a boolean to check if the value has been set.
+func (o *CronJobResponseAllOfScheduleCronjob) GetTimezoneOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Timezone, true
+}
+
+// SetTimezone sets field value
+func (o *CronJobResponseAllOfScheduleCronjob) SetTimezone(v string) {
+	o.Timezone = v
+}
+
 // GetScheduledAt returns the ScheduledAt field value
 func (o *CronJobResponseAllOfScheduleCronjob) GetScheduledAt() string {
 	if o == nil {
@@ -149,6 +176,7 @@ func (o CronJobResponseAllOfScheduleCronjob) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
+	toSerialize["timezone"] = o.Timezone
 	toSerialize["scheduled_at"] = o.ScheduledAt
 	return toSerialize, nil
 }

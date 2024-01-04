@@ -23,6 +23,8 @@ type JobRequestAllOfScheduleCronjob struct {
 	Arguments []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
+	// Specify a timezone identifier to run the schedule at. By default Etc/UTC
+	Timezone *string `json:"timezone,omitempty"`
 	// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UTC
 	ScheduledAt string `json:"scheduled_at"`
 }
@@ -109,6 +111,38 @@ func (o *JobRequestAllOfScheduleCronjob) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
+// GetTimezone returns the Timezone field value if set, zero value otherwise.
+func (o *JobRequestAllOfScheduleCronjob) GetTimezone() string {
+	if o == nil || IsNil(o.Timezone) {
+		var ret string
+		return ret
+	}
+	return *o.Timezone
+}
+
+// GetTimezoneOk returns a tuple with the Timezone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequestAllOfScheduleCronjob) GetTimezoneOk() (*string, bool) {
+	if o == nil || IsNil(o.Timezone) {
+		return nil, false
+	}
+	return o.Timezone, true
+}
+
+// HasTimezone returns a boolean if a field has been set.
+func (o *JobRequestAllOfScheduleCronjob) HasTimezone() bool {
+	if o != nil && !IsNil(o.Timezone) {
+		return true
+	}
+
+	return false
+}
+
+// SetTimezone gets a reference to the given string and assigns it to the Timezone field.
+func (o *JobRequestAllOfScheduleCronjob) SetTimezone(v string) {
+	o.Timezone = &v
+}
+
 // GetScheduledAt returns the ScheduledAt field value
 func (o *JobRequestAllOfScheduleCronjob) GetScheduledAt() string {
 	if o == nil {
@@ -148,6 +182,9 @@ func (o JobRequestAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
+	}
+	if !IsNil(o.Timezone) {
+		toSerialize["timezone"] = o.Timezone
 	}
 	toSerialize["scheduled_at"] = o.ScheduledAt
 	return toSerialize, nil

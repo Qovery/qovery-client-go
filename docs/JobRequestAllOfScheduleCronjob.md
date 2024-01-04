@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
+**Timezone** | Pointer to **string** | Specify a timezone identifier to run the schedule at. By default Etc/UTC | [optional] 
 **ScheduledAt** | **string** | Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: &#x60;* * * * *&#x60; represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UTC  | 
 
 ## Methods
@@ -76,6 +77,31 @@ SetEntrypoint sets Entrypoint field to given value.
 `func (o *JobRequestAllOfScheduleCronjob) HasEntrypoint() bool`
 
 HasEntrypoint returns a boolean if a field has been set.
+
+### GetTimezone
+
+`func (o *JobRequestAllOfScheduleCronjob) GetTimezone() string`
+
+GetTimezone returns the Timezone field if non-nil, zero value otherwise.
+
+### GetTimezoneOk
+
+`func (o *JobRequestAllOfScheduleCronjob) GetTimezoneOk() (*string, bool)`
+
+GetTimezoneOk returns a tuple with the Timezone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTimezone
+
+`func (o *JobRequestAllOfScheduleCronjob) SetTimezone(v string)`
+
+SetTimezone sets Timezone field to given value.
+
+### HasTimezone
+
+`func (o *JobRequestAllOfScheduleCronjob) HasTimezone() bool`
+
+HasTimezone returns a boolean if a field has been set.
 
 ### GetScheduledAt
 
