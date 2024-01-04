@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetDefaultClusterAdvancedSettings**](ClustersAPI.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
+[**GetInstallationHelmValues**](ClustersAPI.md#GetInstallationHelmValues) | **Get** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 [**GetOrganizationCloudProviderInfo**](ClustersAPI.md#GetOrganizationCloudProviderInfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**GetOrganizationClusterStatus**](ClustersAPI.md#GetOrganizationClusterStatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**GetRoutingTable**](ClustersAPI.md#GetRoutingTable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
@@ -803,6 +804,77 @@ Other parameters are passed through a pointer to a apiGetDefaultClusterAdvancedS
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetInstallationHelmValues
+
+> string GetInstallationHelmValues(ctx, organizationId, clusterId).Execute()
+
+Get cluster helm values for self managed installation
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetInstallationHelmValues(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetInstallationHelmValues``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetInstallationHelmValues`: string
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetInstallationHelmValues`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetInstallationHelmValuesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+**string**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/x-yaml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -1684,6 +1684,44 @@ paths:
       summary: Get cluster status
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/installationHelmValues:
+    get:
+      operationId: getInstallationHelmValues
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/x-yaml:
+              schema:
+                type: string
+          description: Helm values
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get cluster helm values for self managed installation
+      tags:
+      - Clusters
   /organization/{organizationId}/cluster/{clusterId}/kubeconfig:
     get:
       operationId: getClusterKubeconfig

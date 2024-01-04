@@ -183,6 +183,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**GetClusterReadinessStatus**](docs/ClustersAPI.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersAPI* | [**GetClusterStatus**](docs/ClustersAPI.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersAPI* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersAPI.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
+*ClustersAPI* | [**GetInstallationHelmValues**](docs/ClustersAPI.md#getinstallationhelmvalues) | **Get** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 *ClustersAPI* | [**GetOrganizationCloudProviderInfo**](docs/ClustersAPI.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 *ClustersAPI* | [**GetOrganizationClusterStatus**](docs/ClustersAPI.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersAPI* | [**GetRoutingTable**](docs/ClustersAPI.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
