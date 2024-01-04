@@ -125,69 +125,6 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderAPIService ListDOFeatures", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListDOFeatures(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CloudProviderAPIService ListDOInstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListDOInstanceType(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CloudProviderAPIService ListDOManagedDatabaseInstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var region string
-		var databaseType string
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListDOManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CloudProviderAPIService ListDOManagedDatabaseType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListDOManagedDatabaseType(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CloudProviderAPIService ListDORegions", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListDORegions(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CloudProviderAPIService ListGcpFeatures", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

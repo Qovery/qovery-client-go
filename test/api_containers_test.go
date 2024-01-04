@@ -91,34 +91,6 @@ func Test_qovery_ContainersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ContainersAPIService GetEnvironmentContainerCurrentScale", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.ContainersAPI.GetEnvironmentContainerCurrentScale(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ContainersAPIService GetEnvironmentContainerCurrentStorage", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.ContainersAPI.GetEnvironmentContainerCurrentStorage(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ContainersAPIService GetEnvironmentContainerStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

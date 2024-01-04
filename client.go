@@ -65,8 +65,6 @@ type APIClient struct {
 
 	ApplicationMainCallsAPI *ApplicationMainCallsAPIService
 
-	ApplicationMetricsAPI *ApplicationMetricsAPIService
-
 	ApplicationSecretAPI *ApplicationSecretAPIService
 
 	ApplicationsAPI *ApplicationsAPIService
@@ -95,8 +93,6 @@ type APIClient struct {
 
 	ContainerMainCallsAPI *ContainerMainCallsAPIService
 
-	ContainerMetricsAPI *ContainerMetricsAPIService
-
 	ContainerRegistriesAPI *ContainerRegistriesAPIService
 
 	ContainerSecretAPI *ContainerSecretAPIService
@@ -112,8 +108,6 @@ type APIClient struct {
 	DatabaseDeploymentHistoryAPI *DatabaseDeploymentHistoryAPIService
 
 	DatabaseMainCallsAPI *DatabaseMainCallsAPIService
-
-	DatabaseMetricsAPI *DatabaseMetricsAPIService
 
 	DatabasesAPI *DatabasesAPIService
 
@@ -170,8 +164,6 @@ type APIClient struct {
 	JobEnvironmentVariableAPI *JobEnvironmentVariableAPIService
 
 	JobMainCallsAPI *JobMainCallsAPIService
-
-	JobMetricsAPI *JobMetricsAPIService
 
 	JobSecretAPI *JobSecretAPIService
 
@@ -232,7 +224,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationEnvironmentVariableAPI = (*ApplicationEnvironmentVariableAPIService)(&c.common)
 	c.ApplicationLogsAPI = (*ApplicationLogsAPIService)(&c.common)
 	c.ApplicationMainCallsAPI = (*ApplicationMainCallsAPIService)(&c.common)
-	c.ApplicationMetricsAPI = (*ApplicationMetricsAPIService)(&c.common)
 	c.ApplicationSecretAPI = (*ApplicationSecretAPIService)(&c.common)
 	c.ApplicationsAPI = (*ApplicationsAPIService)(&c.common)
 	c.BackupsAPI = (*BackupsAPIService)(&c.common)
@@ -247,7 +238,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerEnvironmentVariableAPI = (*ContainerEnvironmentVariableAPIService)(&c.common)
 	c.ContainerLogsAPI = (*ContainerLogsAPIService)(&c.common)
 	c.ContainerMainCallsAPI = (*ContainerMainCallsAPIService)(&c.common)
-	c.ContainerMetricsAPI = (*ContainerMetricsAPIService)(&c.common)
 	c.ContainerRegistriesAPI = (*ContainerRegistriesAPIService)(&c.common)
 	c.ContainerSecretAPI = (*ContainerSecretAPIService)(&c.common)
 	c.ContainersAPI = (*ContainersAPIService)(&c.common)
@@ -256,7 +246,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DatabaseApplicationAPI = (*DatabaseApplicationAPIService)(&c.common)
 	c.DatabaseDeploymentHistoryAPI = (*DatabaseDeploymentHistoryAPIService)(&c.common)
 	c.DatabaseMainCallsAPI = (*DatabaseMainCallsAPIService)(&c.common)
-	c.DatabaseMetricsAPI = (*DatabaseMetricsAPIService)(&c.common)
 	c.DatabasesAPI = (*DatabasesAPIService)(&c.common)
 	c.DeploymentStageMainCallsAPI = (*DeploymentStageMainCallsAPIService)(&c.common)
 	c.EnvironmentAPI = (*EnvironmentAPIService)(&c.common)
@@ -285,7 +274,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobDeploymentRestrictionAPI = (*JobDeploymentRestrictionAPIService)(&c.common)
 	c.JobEnvironmentVariableAPI = (*JobEnvironmentVariableAPIService)(&c.common)
 	c.JobMainCallsAPI = (*JobMainCallsAPIService)(&c.common)
-	c.JobMetricsAPI = (*JobMetricsAPIService)(&c.common)
 	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)

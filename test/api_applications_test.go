@@ -62,34 +62,6 @@ func Test_qovery_ApplicationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationsAPIService GetEnvironmentApplicationCurrentScale", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.ApplicationsAPI.GetEnvironmentApplicationCurrentScale(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test ApplicationsAPIService GetEnvironmentApplicationCurrentStorage", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.ApplicationsAPI.GetEnvironmentApplicationCurrentStorage(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ApplicationsAPIService GetEnvironmentApplicationStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
