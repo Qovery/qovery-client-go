@@ -15,8 +15,6 @@
 
 * `PUBLIC_ECR` (value: `"PUBLIC_ECR"`)
 
-* `DOCR` (value: `"DOCR"`)
-
 * `GENERIC_CR` (value: `"GENERIC_CR"`)
 
 * `GCP_ARTIFACT_REGISTRY` (value: `"GCP_ARTIFACT_REGISTRY"`)
