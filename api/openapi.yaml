@@ -15090,7 +15090,6 @@ components:
     CloudProviderEnum:
       enum:
       - AWS
-      - DO
       - SCW
       - GCP
       type: string
