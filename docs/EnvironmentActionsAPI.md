@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**DeployAllServices**](EnvironmentActionsAPI.md#DeployAllServices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 [**DeployEnvironment**](EnvironmentActionsAPI.md#DeployEnvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 [**RebootServices**](EnvironmentActionsAPI.md#RebootServices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
-[**RedeployEnvironment**](EnvironmentActionsAPI.md#RedeployEnvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
 [**RestartEnvironment**](EnvironmentActionsAPI.md#RestartEnvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
 [**StopEnvironment**](EnvironmentActionsAPI.md#StopEnvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 [**StopSelectedServices**](EnvironmentActionsAPI.md#StopSelectedServices) | **Post** /environment/{environmentId}/service/stop | Stop services
@@ -436,74 +435,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## RedeployEnvironment
-
-> EnvironmentStatus RedeployEnvironment(ctx, environmentId).Execute()
-
-Redeploy environment
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.RedeployEnvironment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RedeployEnvironment`: EnvironmentStatus
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.RedeployEnvironment`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiRedeployEnvironmentRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**EnvironmentStatus**](EnvironmentStatus.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

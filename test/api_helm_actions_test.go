@@ -36,20 +36,6 @@ func Test_qovery_HelmActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test HelmActionsAPIService RedeployHelm", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var helmId string
-
-		resp, httpRes, err := apiClient.HelmActionsAPI.RedeployHelm(context.Background(), helmId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test HelmActionsAPIService RestartHelm", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

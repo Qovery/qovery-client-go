@@ -6033,37 +6033,6 @@ paths:
       summary: Deprecated - Restart environment
       tags:
       - Environment Actions
-  /environment/{environmentId}/redeploy:
-    post:
-      operationId: redeployEnvironment
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvironmentStatus'
-          description: Environment redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy environment
-      tags:
-      - Environment Actions
   /environment/{environmentId}/cancelDeployment:
     post:
       description: Cancel the current deployment of your environment.
@@ -7920,37 +7889,6 @@ paths:
       summary: Deprecated - Restart application
       tags:
       - Application Actions
-  /application/{applicationId}/redeploy:
-    post:
-      operationId: redeployApplication
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Application redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy application
-      tags:
-      - Application Actions
   /application/{applicationId}/restart-service:
     post:
       operationId: rebootApplication
@@ -9327,37 +9265,6 @@ paths:
       summary: Deprecated - Restart container
       tags:
       - Container Actions
-  /container/{containerId}/redeploy:
-    post:
-      operationId: redeployContainer
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Container redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy container
-      tags:
-      - Container Actions
   /container/{containerId}/restart-service:
     post:
       operationId: rebootContainer
@@ -10705,37 +10612,6 @@ paths:
       summary: Deprecated - Restart database
       tags:
       - Database Actions
-  /database/{databaseId}/redeploy:
-    post:
-      operationId: redeployDatabase
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Database redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy database
-      tags:
-      - Database Actions
   /database/{databaseId}/restart-service:
     post:
       operationId: rebootDatabase
@@ -11684,47 +11560,6 @@ paths:
       summary: Deprecated - Restart helm
       tags:
       - Helm Actions
-  /helm/{helmId}/redeploy:
-    post:
-      operationId: redeployHelm
-      parameters:
-      - description: Helm ID
-        explode: false
-        in: path
-        name: helmId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: "When filled, it indicates the target event to be deployed. \
-          \ \nIf the concerned helm hasn't the target event provided, the helm won't\
-          \ be deployed.\n"
-        explode: true
-        in: query
-        name: forceEvent
-        required: false
-        schema:
-          $ref: '#/components/schemas/HelmForceEvent'
-        style: form
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Helm redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy helm
-      tags:
-      - Helm Actions
   /helm/{helmId}/stop:
     post:
       operationId: stopHelm
@@ -12574,47 +12409,6 @@ paths:
         "409":
           description: Operation is in progress
       summary: Deprecated - Restart job
-      tags:
-      - Job Actions
-  /job/{jobId}/redeploy:
-    post:
-      operationId: redeployJob
-      parameters:
-      - description: Job ID
-        explode: false
-        in: path
-        name: jobId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: "When filled, it indicates the target event to be deployed. \
-          \ \nIf the concerned job hasn't the target event provided, the job won't\
-          \ be deployed.\n"
-        explode: true
-        in: query
-        name: forceEvent
-        required: false
-        schema:
-          $ref: '#/components/schemas/JobForceEvent'
-        style: form
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Job redeploy has been requested
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Redeploy job
       tags:
       - Job Actions
   /job/{jobId}/stop:
