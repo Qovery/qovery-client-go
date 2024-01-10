@@ -5,12 +5,10 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateApplicationCustomDomain**](CustomDomainAPI.md#CreateApplicationCustomDomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
-[**CreateHelmCustomDomain**](CustomDomainAPI.md#CreateHelmCustomDomain) | **Post** /helm/{helmId}/customDomain | Add custom domain to the helm.
 [**DeleteCustomDomain**](CustomDomainAPI.md#DeleteCustomDomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**EditCustomDomain**](CustomDomainAPI.md#EditCustomDomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
 [**GetCustomDomainStatus**](CustomDomainAPI.md#GetCustomDomainStatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 [**ListApplicationCustomDomain**](CustomDomainAPI.md#ListApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
-[**ListHelmCustomDomain**](CustomDomainAPI.md#ListHelmCustomDomain) | **Get** /helm/{helmId}/customDomain | List helm custom domains
 
 
 
@@ -61,78 +59,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiCreateApplicationCustomDomainRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **customDomainRequest** | [**CustomDomainRequest**](CustomDomainRequest.md) |  | 
-
-### Return type
-
-[**CustomDomain**](CustomDomain.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## CreateHelmCustomDomain
-
-> CustomDomain CreateHelmCustomDomain(ctx, helmId).CustomDomainRequest(customDomainRequest).Execute()
-
-Add custom domain to the helm.
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomDomainAPI.CreateHelmCustomDomain(context.Background(), helmId).CustomDomainRequest(customDomainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainAPI.CreateHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateHelmCustomDomain`: CustomDomain
-    fmt.Fprintf(os.Stdout, "Response from `CustomDomainAPI.CreateHelmCustomDomain`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** | Helm ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiCreateHelmCustomDomainRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -419,76 +345,6 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListApplicationCustomDomainRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**CustomDomainResponseList**](CustomDomainResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListHelmCustomDomain
-
-> CustomDomainResponseList ListHelmCustomDomain(ctx, helmId).Execute()
-
-List helm custom domains
-
-
-
-### Example
-
-```go
-package main
-
-import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CustomDomainAPI.ListHelmCustomDomain(context.Background(), helmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CustomDomainAPI.ListHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListHelmCustomDomain`: CustomDomainResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CustomDomainAPI.ListHelmCustomDomain`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** | Helm ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListHelmCustomDomainRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

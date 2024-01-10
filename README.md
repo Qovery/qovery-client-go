@@ -238,12 +238,10 @@ Class | Method | HTTP request | Description
 *ContainersAPI* | [**ListContainer**](docs/ContainersAPI.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
 *ContainersAPI* | [**PreviewContainerEnvironments**](docs/ContainersAPI.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
 *CustomDomainAPI* | [**CreateApplicationCustomDomain**](docs/CustomDomainAPI.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
-*CustomDomainAPI* | [**CreateHelmCustomDomain**](docs/CustomDomainAPI.md#createhelmcustomdomain) | **Post** /helm/{helmId}/customDomain | Add custom domain to the helm.
 *CustomDomainAPI* | [**DeleteCustomDomain**](docs/CustomDomainAPI.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 *CustomDomainAPI* | [**EditCustomDomain**](docs/CustomDomainAPI.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
 *CustomDomainAPI* | [**GetCustomDomainStatus**](docs/CustomDomainAPI.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *CustomDomainAPI* | [**ListApplicationCustomDomain**](docs/CustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
-*CustomDomainAPI* | [**ListHelmCustomDomain**](docs/CustomDomainAPI.md#listhelmcustomdomain) | **Get** /helm/{helmId}/customDomain | List helm custom domains
 *DatabaseActionsAPI* | [**DeployDatabase**](docs/DatabaseActionsAPI.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsAPI* | [**RestartDatabase**](docs/DatabaseActionsAPI.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
@@ -324,9 +322,11 @@ Class | Method | HTTP request | Description
 *HelmActionsAPI* | [**StopHelm**](docs/HelmActionsAPI.md#stophelm) | **Post** /helm/{helmId}/stop | Stop helm
 *HelmConfigurationAPI* | [**EditHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#edithelmadvancedsettings) | **Put** /helm/{helmId}/advancedSettings | Edit advanced settings
 *HelmConfigurationAPI* | [**GetHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#gethelmadvancedsettings) | **Get** /helm/{helmId}/advancedSettings | Get advanced settings
+*HelmCustomDomainAPI* | [**CreateHelmCustomDomain**](docs/HelmCustomDomainAPI.md#createhelmcustomdomain) | **Post** /helm/{helmId}/customDomain | Add custom domain to the helm.
 *HelmCustomDomainAPI* | [**DeleteHelmCustomDomain**](docs/HelmCustomDomainAPI.md#deletehelmcustomdomain) | **Delete** /helm/{helmId}/customDomain/{customDomainId} | Delete a Custom Domain
 *HelmCustomDomainAPI* | [**EditHelmCustomDomain**](docs/HelmCustomDomainAPI.md#edithelmcustomdomain) | **Put** /helm/{helmId}/customDomain/{customDomainId} | Edit a Custom Domain
 *HelmCustomDomainAPI* | [**GetHelmCustomDomain**](docs/HelmCustomDomainAPI.md#gethelmcustomdomain) | **Get** /helm/{helmId}/customDomain/{customDomainId} | Get a Custom Domain
+*HelmCustomDomainAPI* | [**ListHelmCustomDomain**](docs/HelmCustomDomainAPI.md#listhelmcustomdomain) | **Get** /helm/{helmId}/customDomain | List helm custom domains
 *HelmDeploymentHistoryAPI* | [**ListHelmDeploymentHistory**](docs/HelmDeploymentHistoryAPI.md#listhelmdeploymenthistory) | **Get** /helm/{helmId}/deploymentHistory | List helm deployments
 *HelmDeploymentRestrictionAPI* | [**CreateHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#createhelmdeploymentrestriction) | **Post** /helm/{helmId}/deploymentRestriction | Create a helm deployment restriction
 *HelmDeploymentRestrictionAPI* | [**DeleteHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#deletehelmdeploymentrestriction) | **Delete** /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId} | Delete a helm deployment restriction

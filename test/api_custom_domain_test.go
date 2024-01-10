@@ -36,20 +36,6 @@ func Test_qovery_CustomDomainAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CustomDomainAPIService CreateHelmCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var helmId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.CreateHelmCustomDomain(context.Background(), helmId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CustomDomainAPIService DeleteCustomDomain", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -101,20 +87,6 @@ func Test_qovery_CustomDomainAPIService(t *testing.T) {
 		var applicationId string
 
 		resp, httpRes, err := apiClient.CustomDomainAPI.ListApplicationCustomDomain(context.Background(), applicationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService ListHelmCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var helmId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.ListHelmCustomDomain(context.Background(), helmId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
