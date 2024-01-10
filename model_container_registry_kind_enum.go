@@ -27,6 +27,7 @@ const (
 	CONTAINERREGISTRYKINDENUM_GITHUB_CR             ContainerRegistryKindEnum = "GITHUB_CR"
 	CONTAINERREGISTRYKINDENUM_GITLAB_CR             ContainerRegistryKindEnum = "GITLAB_CR"
 	CONTAINERREGISTRYKINDENUM_PUBLIC_ECR            ContainerRegistryKindEnum = "PUBLIC_ECR"
+	CONTAINERREGISTRYKINDENUM_DOCR                  ContainerRegistryKindEnum = "DOCR"
 	CONTAINERREGISTRYKINDENUM_GENERIC_CR            ContainerRegistryKindEnum = "GENERIC_CR"
 	CONTAINERREGISTRYKINDENUM_GCP_ARTIFACT_REGISTRY ContainerRegistryKindEnum = "GCP_ARTIFACT_REGISTRY"
 )
@@ -39,6 +40,7 @@ var AllowedContainerRegistryKindEnumEnumValues = []ContainerRegistryKindEnum{
 	"GITHUB_CR",
 	"GITLAB_CR",
 	"PUBLIC_ECR",
+	"DOCR",
 	"GENERIC_CR",
 	"GCP_ARTIFACT_REGISTRY",
 }

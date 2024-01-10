@@ -16132,6 +16132,7 @@ components:
       - GITHUB_CR
       - GITLAB_CR
       - PUBLIC_ECR
+      - DOCR
       - GENERIC_CR
       - GCP_ARTIFACT_REGISTRY
       type: string
