@@ -15510,6 +15510,12 @@ components:
         name: name
         region: region
         instance_type: T3A_LARGE
+        cloud_provider_credentials:
+          credentials:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cloud_provider: null
+          region: region
       properties:
         name:
           description: name is case-insensitive
@@ -15520,6 +15526,8 @@ components:
           type: string
         cloud_provider:
           $ref: '#/components/schemas/CloudProviderEnum'
+        cloud_provider_credentials:
+          $ref: '#/components/schemas/ClusterCloudProviderInfoRequest'
         min_running_nodes:
           default: 1
           type: integer

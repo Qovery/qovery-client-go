@@ -21,12 +21,13 @@ var _ MappedNullable = &ClusterRequest{}
 // ClusterRequest struct for ClusterRequest
 type ClusterRequest struct {
 	// name is case-insensitive
-	Name            string            `json:"name"`
-	Description     *string           `json:"description,omitempty"`
-	Region          string            `json:"region"`
-	CloudProvider   CloudProviderEnum `json:"cloud_provider"`
-	MinRunningNodes *int32            `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32            `json:"max_running_nodes,omitempty"`
+	Name                     string                           `json:"name"`
+	Description              *string                          `json:"description,omitempty"`
+	Region                   string                           `json:"region"`
+	CloudProvider            CloudProviderEnum                `json:"cloud_provider"`
+	CloudProviderCredentials *ClusterCloudProviderInfoRequest `json:"cloud_provider_credentials,omitempty"`
+	MinRunningNodes          *int32                           `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes          *int32                           `json:"max_running_nodes,omitempty"`
 	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
@@ -179,6 +180,38 @@ func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 // SetCloudProvider sets field value
 func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum) {
 	o.CloudProvider = v
+}
+
+// GetCloudProviderCredentials returns the CloudProviderCredentials field value if set, zero value otherwise.
+func (o *ClusterRequest) GetCloudProviderCredentials() ClusterCloudProviderInfoRequest {
+	if o == nil || IsNil(o.CloudProviderCredentials) {
+		var ret ClusterCloudProviderInfoRequest
+		return ret
+	}
+	return *o.CloudProviderCredentials
+}
+
+// GetCloudProviderCredentialsOk returns a tuple with the CloudProviderCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetCloudProviderCredentialsOk() (*ClusterCloudProviderInfoRequest, bool) {
+	if o == nil || IsNil(o.CloudProviderCredentials) {
+		return nil, false
+	}
+	return o.CloudProviderCredentials, true
+}
+
+// HasCloudProviderCredentials returns a boolean if a field has been set.
+func (o *ClusterRequest) HasCloudProviderCredentials() bool {
+	if o != nil && !IsNil(o.CloudProviderCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProviderCredentials gets a reference to the given ClusterCloudProviderInfoRequest and assigns it to the CloudProviderCredentials field.
+func (o *ClusterRequest) SetCloudProviderCredentials(v ClusterCloudProviderInfoRequest) {
+	o.CloudProviderCredentials = &v
 }
 
 // GetMinRunningNodes returns the MinRunningNodes field value if set, zero value otherwise.
@@ -485,6 +518,9 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["region"] = o.Region
 	toSerialize["cloud_provider"] = o.CloudProvider
+	if !IsNil(o.CloudProviderCredentials) {
+		toSerialize["cloud_provider_credentials"] = o.CloudProviderCredentials
+	}
 	if !IsNil(o.MinRunningNodes) {
 		toSerialize["min_running_nodes"] = o.MinRunningNodes
 	}

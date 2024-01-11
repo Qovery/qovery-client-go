@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Region** | **string** |  | 
 **CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
+**CloudProviderCredentials** | Pointer to [**ClusterCloudProviderInfoRequest**](ClusterCloudProviderInfoRequest.md) |  | [optional] 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 40]
@@ -121,6 +122,31 @@ and a boolean to check if the value has been set.
 
 SetCloudProvider sets CloudProvider field to given value.
 
+
+### GetCloudProviderCredentials
+
+`func (o *ClusterRequest) GetCloudProviderCredentials() ClusterCloudProviderInfoRequest`
+
+GetCloudProviderCredentials returns the CloudProviderCredentials field if non-nil, zero value otherwise.
+
+### GetCloudProviderCredentialsOk
+
+`func (o *ClusterRequest) GetCloudProviderCredentialsOk() (*ClusterCloudProviderInfoRequest, bool)`
+
+GetCloudProviderCredentialsOk returns a tuple with the CloudProviderCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProviderCredentials
+
+`func (o *ClusterRequest) SetCloudProviderCredentials(v ClusterCloudProviderInfoRequest)`
+
+SetCloudProviderCredentials sets CloudProviderCredentials field to given value.
+
+### HasCloudProviderCredentials
+
+`func (o *ClusterRequest) HasCloudProviderCredentials() bool`
+
+HasCloudProviderCredentials returns a boolean if a field has been set.
 
 ### GetMinRunningNodes
 
