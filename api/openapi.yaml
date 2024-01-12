@@ -19299,6 +19299,7 @@ components:
         network.ingress.grpc_send_timeout_seconds: 3
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
         network.ingress.grpc_read_timeout_seconds: 2
+        deployment.custom_domain_check_enabled: true
         network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
@@ -19308,6 +19309,9 @@ components:
           :\"nosniff\"}"
         network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
       properties:
+        deployment.custom_domain_check_enabled:
+          description: disable custom domain check when deploying a helm
+          type: boolean
         network.ingress.proxy_body_size_mb:
           type: integer
         network.ingress.enable_cors:

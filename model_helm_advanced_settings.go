@@ -20,11 +20,13 @@ var _ MappedNullable = &HelmAdvancedSettings{}
 
 // HelmAdvancedSettings struct for HelmAdvancedSettings
 type HelmAdvancedSettings struct {
-	NetworkIngressProxyBodySizeMb  *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
-	NetworkIngressEnableCors       *bool   `json:"network.ingress.enable_cors,omitempty"`
-	NetworkIngressCorsAllowOrigin  *string `json:"network.ingress.cors_allow_origin,omitempty"`
-	NetworkIngressCorsAllowMethods *string `json:"network.ingress.cors_allow_methods,omitempty"`
-	NetworkIngressCorsAllowHeaders *string `json:"network.ingress.cors_allow_headers,omitempty"`
+	// disable custom domain check when deploying a helm
+	DeploymentCustomDomainCheckEnabled *bool   `json:"deployment.custom_domain_check_enabled,omitempty"`
+	NetworkIngressProxyBodySizeMb      *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
+	NetworkIngressEnableCors           *bool   `json:"network.ingress.enable_cors,omitempty"`
+	NetworkIngressCorsAllowOrigin      *string `json:"network.ingress.cors_allow_origin,omitempty"`
+	NetworkIngressCorsAllowMethods     *string `json:"network.ingress.cors_allow_methods,omitempty"`
+	NetworkIngressCorsAllowHeaders     *string `json:"network.ingress.cors_allow_headers,omitempty"`
 	// header buffer size used while reading response header from upstream
 	NetworkIngressProxyBufferSizeKb *int32 `json:"network.ingress.proxy_buffer_size_kb,omitempty"`
 	// Limits the maximum time (in seconds) during which requests can be processed through one keepalive connection
@@ -74,6 +76,38 @@ func NewHelmAdvancedSettings() *HelmAdvancedSettings {
 func NewHelmAdvancedSettingsWithDefaults() *HelmAdvancedSettings {
 	this := HelmAdvancedSettings{}
 	return &this
+}
+
+// GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field value if set, zero value otherwise.
+func (o *HelmAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool {
+	if o == nil || IsNil(o.DeploymentCustomDomainCheckEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.DeploymentCustomDomainCheckEnabled
+}
+
+// GetDeploymentCustomDomainCheckEnabledOk returns a tuple with the DeploymentCustomDomainCheckEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmAdvancedSettings) GetDeploymentCustomDomainCheckEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.DeploymentCustomDomainCheckEnabled) {
+		return nil, false
+	}
+	return o.DeploymentCustomDomainCheckEnabled, true
+}
+
+// HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
+func (o *HelmAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool {
+	if o != nil && !IsNil(o.DeploymentCustomDomainCheckEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentCustomDomainCheckEnabled gets a reference to the given bool and assigns it to the DeploymentCustomDomainCheckEnabled field.
+func (o *HelmAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bool) {
+	o.DeploymentCustomDomainCheckEnabled = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -758,6 +792,9 @@ func (o HelmAdvancedSettings) MarshalJSON() ([]byte, error) {
 
 func (o HelmAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.DeploymentCustomDomainCheckEnabled) {
+		toSerialize["deployment.custom_domain_check_enabled"] = o.DeploymentCustomDomainCheckEnabled
+	}
 	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
 	}

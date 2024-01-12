@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying a helm | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] 
@@ -44,6 +45,31 @@ will change when the set of required properties is changed
 NewHelmAdvancedSettingsWithDefaults instantiates a new HelmAdvancedSettings object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetDeploymentCustomDomainCheckEnabled
+
+`func (o *HelmAdvancedSettings) GetDeploymentCustomDomainCheckEnabled() bool`
+
+GetDeploymentCustomDomainCheckEnabled returns the DeploymentCustomDomainCheckEnabled field if non-nil, zero value otherwise.
+
+### GetDeploymentCustomDomainCheckEnabledOk
+
+`func (o *HelmAdvancedSettings) GetDeploymentCustomDomainCheckEnabledOk() (*bool, bool)`
+
+GetDeploymentCustomDomainCheckEnabledOk returns a tuple with the DeploymentCustomDomainCheckEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentCustomDomainCheckEnabled
+
+`func (o *HelmAdvancedSettings) SetDeploymentCustomDomainCheckEnabled(v bool)`
+
+SetDeploymentCustomDomainCheckEnabled sets DeploymentCustomDomainCheckEnabled field to given value.
+
+### HasDeploymentCustomDomainCheckEnabled
+
+`func (o *HelmAdvancedSettings) HasDeploymentCustomDomainCheckEnabled() bool`
+
+HasDeploymentCustomDomainCheckEnabled returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 
