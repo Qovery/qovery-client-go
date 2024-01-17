@@ -14518,6 +14518,11 @@ components:
         git_token_name:
           nullable: true
           type: string
+      required:
+      - name
+      - owner
+      - provider
+      - url
       type: object
     ApplicationGitRepositoryRequest:
       properties:

@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **HasAccess** | Pointer to **bool** |  | [optional] 
-**Provider** | Pointer to [**GitProviderEnum**](GitProviderEnum.md) |  | [optional] 
-**Owner** | Pointer to **string** |  | [optional] 
-**Url** | Pointer to **string** |  | [optional] 
-**Name** | Pointer to **string** | repository name | [optional] 
+**Provider** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
+**Owner** | **string** |  | 
+**Url** | **string** |  | 
+**Name** | **string** | repository name | 
 **Branch** | Pointer to **string** |  | [optional] 
 **RootPath** | Pointer to **string** |  | [optional] 
 **DeployedCommitId** | Pointer to **string** | Git commit ID corresponding to the deployed version of the app | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewApplicationGitRepository
 
-`func NewApplicationGitRepository() *ApplicationGitRepository`
+`func NewApplicationGitRepository(provider GitProviderEnum, owner string, url string, name string, ) *ApplicationGitRepository`
 
 NewApplicationGitRepository instantiates a new ApplicationGitRepository object
 This constructor will assign default values to properties that have it defined,
@@ -81,11 +81,6 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
-### HasProvider
-
-`func (o *ApplicationGitRepository) HasProvider() bool`
-
-HasProvider returns a boolean if a field has been set.
 
 ### GetOwner
 
@@ -106,11 +101,6 @@ and a boolean to check if the value has been set.
 
 SetOwner sets Owner field to given value.
 
-### HasOwner
-
-`func (o *ApplicationGitRepository) HasOwner() bool`
-
-HasOwner returns a boolean if a field has been set.
 
 ### GetUrl
 
@@ -131,11 +121,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-### HasUrl
-
-`func (o *ApplicationGitRepository) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
 
 ### GetName
 
@@ -156,11 +141,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *ApplicationGitRepository) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetBranch
 

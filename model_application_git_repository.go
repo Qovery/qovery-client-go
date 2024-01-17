@@ -21,12 +21,12 @@ var _ MappedNullable = &ApplicationGitRepository{}
 
 // ApplicationGitRepository struct for ApplicationGitRepository
 type ApplicationGitRepository struct {
-	HasAccess *bool            `json:"has_access,omitempty"`
-	Provider  *GitProviderEnum `json:"provider,omitempty"`
-	Owner     *string          `json:"owner,omitempty"`
-	Url       *string          `json:"url,omitempty"`
+	HasAccess *bool           `json:"has_access,omitempty"`
+	Provider  GitProviderEnum `json:"provider"`
+	Owner     string          `json:"owner"`
+	Url       string          `json:"url"`
 	// repository name
-	Name     *string `json:"name,omitempty"`
+	Name     string  `json:"name"`
 	Branch   *string `json:"branch,omitempty"`
 	RootPath *string `json:"root_path,omitempty"`
 	// Git commit ID corresponding to the deployed version of the app
@@ -44,8 +44,12 @@ type ApplicationGitRepository struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationGitRepository() *ApplicationGitRepository {
+func NewApplicationGitRepository(provider GitProviderEnum, owner string, url string, name string) *ApplicationGitRepository {
 	this := ApplicationGitRepository{}
+	this.Provider = provider
+	this.Owner = owner
+	this.Url = url
+	this.Name = name
 	return &this
 }
 
@@ -89,132 +93,100 @@ func (o *ApplicationGitRepository) SetHasAccess(v bool) {
 	o.HasAccess = &v
 }
 
-// GetProvider returns the Provider field value if set, zero value otherwise.
+// GetProvider returns the Provider field value
 func (o *ApplicationGitRepository) GetProvider() GitProviderEnum {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil {
 		var ret GitProviderEnum
 		return ret
 	}
-	return *o.Provider
+
+	return o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetProviderOk() (*GitProviderEnum, bool) {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Provider, true
+	return &o.Provider, true
 }
 
-// HasProvider returns a boolean if a field has been set.
-func (o *ApplicationGitRepository) HasProvider() bool {
-	if o != nil && !IsNil(o.Provider) {
-		return true
-	}
-
-	return false
-}
-
-// SetProvider gets a reference to the given GitProviderEnum and assigns it to the Provider field.
+// SetProvider sets field value
 func (o *ApplicationGitRepository) SetProvider(v GitProviderEnum) {
-	o.Provider = &v
+	o.Provider = v
 }
 
-// GetOwner returns the Owner field value if set, zero value otherwise.
+// GetOwner returns the Owner field value
 func (o *ApplicationGitRepository) GetOwner() string {
-	if o == nil || IsNil(o.Owner) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Owner
+
+	return o.Owner
 }
 
-// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// GetOwnerOk returns a tuple with the Owner field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetOwnerOk() (*string, bool) {
-	if o == nil || IsNil(o.Owner) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Owner, true
+	return &o.Owner, true
 }
 
-// HasOwner returns a boolean if a field has been set.
-func (o *ApplicationGitRepository) HasOwner() bool {
-	if o != nil && !IsNil(o.Owner) {
-		return true
-	}
-
-	return false
-}
-
-// SetOwner gets a reference to the given string and assigns it to the Owner field.
+// SetOwner sets field value
 func (o *ApplicationGitRepository) SetOwner(v string) {
-	o.Owner = &v
+	o.Owner = v
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
+// GetUrl returns the Url field value
 func (o *ApplicationGitRepository) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url
+
+	return o.Url
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *ApplicationGitRepository) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl sets field value
 func (o *ApplicationGitRepository) SetUrl(v string) {
-	o.Url = &v
+	o.Url = v
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ApplicationGitRepository) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ApplicationGitRepository) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ApplicationGitRepository) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ApplicationGitRepository) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetBranch returns the Branch field value if set, zero value otherwise.
@@ -508,18 +480,10 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasAccess) {
 		toSerialize["has_access"] = o.HasAccess
 	}
-	if !IsNil(o.Provider) {
-		toSerialize["provider"] = o.Provider
-	}
-	if !IsNil(o.Owner) {
-		toSerialize["owner"] = o.Owner
-	}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["provider"] = o.Provider
+	toSerialize["owner"] = o.Owner
+	toSerialize["url"] = o.Url
+	toSerialize["name"] = o.Name
 	if !IsNil(o.Branch) {
 		toSerialize["branch"] = o.Branch
 	}
