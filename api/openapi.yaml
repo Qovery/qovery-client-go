@@ -21854,34 +21854,6 @@ components:
       - provider
       - url
       type: object
-    HelmValuesGitRepositoryRequest:
-      properties:
-        url:
-          description: application git repository URL
-          example: https://github.com/Qovery/simple-node-app
-          type: string
-        branch:
-          description: |
-            Name of the branch to use. This is optional
-            If not specified, then the branch used is the `main` or `master` one
-          example: feat/text_xxx
-          type: string
-        paths:
-          description: List of path inside your git repository to locate values file.
-            Must start by a /
-          items:
-            type: string
-          type: array
-        git_token_id:
-          description: The git token id on Qovery side
-          format: uuid
-          nullable: true
-          type: string
-      required:
-      - branch
-      - paths
-      - url
-      type: object
     HelmKeyValues:
       description: "The input is in json array format: [ [$KEY,$VALUE], [...] ]"
       items:
@@ -22589,6 +22561,22 @@ components:
           type: string
       type: object
       example: null
+    HelmRequest_allOf_values_override_file_git:
+      nullable: true
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+        paths:
+          description: List of path inside your git repository to locate values file.
+            Must start by a /
+          items:
+            type: string
+          type: array
+      required:
+      - git_repository
+      - paths
+      type: object
+      example: null
     HelmRequest_allOf_values_override_file_raw_values:
       properties:
         name:
@@ -22611,10 +22599,10 @@ components:
     HelmRequest_allOf_values_override_file:
       nullable: true
       properties:
+        git:
+          $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_git'
         raw:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw'
-        git_repository:
-          $ref: '#/components/schemas/HelmValuesGitRepositoryRequest'
       type: object
       example: null
     HelmRequest_allOf_values_override:
