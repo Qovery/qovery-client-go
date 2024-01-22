@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Organization** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **Region** | **string** |  | 
@@ -111,6 +112,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *Cluster) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetOrganization
+
+`func (o *Cluster) GetOrganization() ReferenceObject`
+
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
+
+### GetOrganizationOk
+
+`func (o *Cluster) GetOrganizationOk() (*ReferenceObject, bool)`
+
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganization
+
+`func (o *Cluster) SetOrganization(v ReferenceObject)`
+
+SetOrganization sets Organization field to given value.
+
+### HasOrganization
+
+`func (o *Cluster) HasOrganization() bool`
+
+HasOrganization returns a boolean if a field has been set.
 
 ### GetName
 

@@ -21,9 +21,10 @@ var _ MappedNullable = &Cluster{}
 
 // Cluster struct for Cluster
 type Cluster struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Id           string           `json:"id"`
+	CreatedAt    time.Time        `json:"created_at"`
+	UpdatedAt    *time.Time       `json:"updated_at,omitempty"`
+	Organization *ReferenceObject `json:"organization,omitempty"`
 	// name is case-insensitive
 	Name            string            `json:"name"`
 	Description     *string           `json:"description,omitempty"`
@@ -170,6 +171,38 @@ func (o *Cluster) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *Cluster) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetOrganization returns the Organization field value if set, zero value otherwise.
+func (o *Cluster) GetOrganization() ReferenceObject {
+	if o == nil || IsNil(o.Organization) {
+		var ret ReferenceObject
+		return ret
+	}
+	return *o.Organization
+}
+
+// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetOrganizationOk() (*ReferenceObject, bool) {
+	if o == nil || IsNil(o.Organization) {
+		return nil, false
+	}
+	return o.Organization, true
+}
+
+// HasOrganization returns a boolean if a field has been set.
+func (o *Cluster) HasOrganization() bool {
+	if o != nil && !IsNil(o.Organization) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganization gets a reference to the given ReferenceObject and assigns it to the Organization field.
+func (o *Cluster) SetOrganization(v ReferenceObject) {
+	o.Organization = &v
 }
 
 // GetName returns the Name field value
@@ -802,6 +835,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	toSerialize["created_at"] = o.CreatedAt
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
+	}
+	if !IsNil(o.Organization) {
+		toSerialize["organization"] = o.Organization
 	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {

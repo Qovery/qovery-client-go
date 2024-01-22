@@ -15135,6 +15135,8 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - properties:
+          organization:
+            $ref: '#/components/schemas/ReferenceObject'
           name:
             description: name is case-insensitive
             type: string
