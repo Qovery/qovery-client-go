@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the service deployment or null if the deployment is not completed. | [optional] 
+**TotalComputingDurationSec** | Pointer to **int32** | The total duration in seconds of the service deployment without queuing steps. | [optional] 
 **Details** | Pointer to [**[]ServiceStepMetric**](ServiceStepMetric.md) | A list of metrics for deployment steps of the service. | [optional] 
 
 ## Methods
@@ -61,6 +62,31 @@ HasTotalDurationSec returns a boolean if a field has been set.
 `func (o *ServiceStepMetrics) UnsetTotalDurationSec()`
 
 UnsetTotalDurationSec ensures that no value is present for TotalDurationSec, not even an explicit nil
+### GetTotalComputingDurationSec
+
+`func (o *ServiceStepMetrics) GetTotalComputingDurationSec() int32`
+
+GetTotalComputingDurationSec returns the TotalComputingDurationSec field if non-nil, zero value otherwise.
+
+### GetTotalComputingDurationSecOk
+
+`func (o *ServiceStepMetrics) GetTotalComputingDurationSecOk() (*int32, bool)`
+
+GetTotalComputingDurationSecOk returns a tuple with the TotalComputingDurationSec field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalComputingDurationSec
+
+`func (o *ServiceStepMetrics) SetTotalComputingDurationSec(v int32)`
+
+SetTotalComputingDurationSec sets TotalComputingDurationSec field to given value.
+
+### HasTotalComputingDurationSec
+
+`func (o *ServiceStepMetrics) HasTotalComputingDurationSec() bool`
+
+HasTotalComputingDurationSec returns a boolean if a field has been set.
+
 ### GetDetails
 
 `func (o *ServiceStepMetrics) GetDetails() []ServiceStepMetric`

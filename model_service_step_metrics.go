@@ -22,6 +22,8 @@ var _ MappedNullable = &ServiceStepMetrics{}
 type ServiceStepMetrics struct {
 	// The total duration in seconds of the service deployment or null if the deployment is not completed.
 	TotalDurationSec NullableInt32 `json:"total_duration_sec,omitempty"`
+	// The total duration in seconds of the service deployment without queuing steps.
+	TotalComputingDurationSec *int32 `json:"total_computing_duration_sec,omitempty"`
 	// A list of metrics for deployment steps of the service.
 	Details []ServiceStepMetric `json:"details,omitempty"`
 }
@@ -86,6 +88,38 @@ func (o *ServiceStepMetrics) UnsetTotalDurationSec() {
 	o.TotalDurationSec.Unset()
 }
 
+// GetTotalComputingDurationSec returns the TotalComputingDurationSec field value if set, zero value otherwise.
+func (o *ServiceStepMetrics) GetTotalComputingDurationSec() int32 {
+	if o == nil || IsNil(o.TotalComputingDurationSec) {
+		var ret int32
+		return ret
+	}
+	return *o.TotalComputingDurationSec
+}
+
+// GetTotalComputingDurationSecOk returns a tuple with the TotalComputingDurationSec field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceStepMetrics) GetTotalComputingDurationSecOk() (*int32, bool) {
+	if o == nil || IsNil(o.TotalComputingDurationSec) {
+		return nil, false
+	}
+	return o.TotalComputingDurationSec, true
+}
+
+// HasTotalComputingDurationSec returns a boolean if a field has been set.
+func (o *ServiceStepMetrics) HasTotalComputingDurationSec() bool {
+	if o != nil && !IsNil(o.TotalComputingDurationSec) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalComputingDurationSec gets a reference to the given int32 and assigns it to the TotalComputingDurationSec field.
+func (o *ServiceStepMetrics) SetTotalComputingDurationSec(v int32) {
+	o.TotalComputingDurationSec = &v
+}
+
 // GetDetails returns the Details field value if set, zero value otherwise.
 func (o *ServiceStepMetrics) GetDetails() []ServiceStepMetric {
 	if o == nil || IsNil(o.Details) {
@@ -130,6 +164,9 @@ func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.TotalDurationSec.IsSet() {
 		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
+	}
+	if !IsNil(o.TotalComputingDurationSec) {
+		toSerialize["total_computing_duration_sec"] = o.TotalComputingDurationSec
 	}
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details

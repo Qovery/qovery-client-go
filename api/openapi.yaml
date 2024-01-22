@@ -17582,12 +17582,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17596,12 +17597,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17620,12 +17622,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17634,12 +17637,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17649,12 +17653,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17663,12 +17668,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17678,12 +17684,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17692,12 +17699,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17707,12 +17715,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17721,12 +17730,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -17784,12 +17794,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17798,12 +17809,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17825,12 +17837,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17839,12 +17852,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17854,12 +17868,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17868,12 +17883,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17883,12 +17899,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17897,12 +17914,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17912,12 +17930,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17926,12 +17945,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17941,12 +17961,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17955,12 +17976,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17982,12 +18004,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -17996,12 +18019,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18011,12 +18035,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18025,12 +18050,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18040,12 +18066,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18054,12 +18081,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18069,12 +18097,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18083,12 +18112,13 @@ components:
             state: null
             steps:
               total_duration_sec: 0
+              total_computing_duration_sec: 6
               details:
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
               - step_name: null
-                duration_sec: 6
+                duration_sec: 1
                 status: null
             is_part_last_deployment: true
             service_deployment_status: null
@@ -18774,12 +18804,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18788,12 +18819,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18815,12 +18847,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18829,12 +18862,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18844,12 +18878,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18858,12 +18893,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18873,12 +18909,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18887,12 +18924,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18902,12 +18940,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -18916,12 +18955,13 @@ components:
           state: null
           steps:
             total_duration_sec: 0
+            total_computing_duration_sec: 6
             details:
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
             - step_name: null
-              duration_sec: 6
+              duration_sec: 1
               status: null
           is_part_last_deployment: true
           service_deployment_status: null
@@ -21141,12 +21181,13 @@ components:
         state: null
         steps:
           total_duration_sec: 0
+          total_computing_duration_sec: 6
           details:
           - step_name: null
-            duration_sec: 6
+            duration_sec: 1
             status: null
           - step_name: null
-            duration_sec: 6
+            duration_sec: 1
             status: null
         is_part_last_deployment: true
         service_deployment_status: null
@@ -21587,7 +21628,7 @@ components:
     ServiceStepMetric:
       example:
         step_name: null
-        duration_sec: 6
+        duration_sec: 1
         status: null
       properties:
         step_name:
@@ -21623,18 +21664,23 @@ components:
     ServiceStepMetrics:
       example:
         total_duration_sec: 0
+        total_computing_duration_sec: 6
         details:
         - step_name: null
-          duration_sec: 6
+          duration_sec: 1
           status: null
         - step_name: null
-          duration_sec: 6
+          duration_sec: 1
           status: null
       properties:
         total_duration_sec:
           description: The total duration in seconds of the service deployment or
             null if the deployment is not completed.
           nullable: true
+          type: integer
+        total_computing_duration_sec:
+          description: The total duration in seconds of the service deployment without
+            queuing steps.
           type: integer
         details:
           description: A list of metrics for deployment steps of the service.
