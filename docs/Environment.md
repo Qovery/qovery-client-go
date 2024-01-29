@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
+**Organization** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
 **Project** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
 **CloudProvider** | [**EnvironmentAllOfCloudProvider**](EnvironmentAllOfCloudProvider.md) |  | 
@@ -118,6 +119,31 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
+
+### GetOrganization
+
+`func (o *Environment) GetOrganization() ReferenceObject`
+
+GetOrganization returns the Organization field if non-nil, zero value otherwise.
+
+### GetOrganizationOk
+
+`func (o *Environment) GetOrganizationOk() (*ReferenceObject, bool)`
+
+GetOrganizationOk returns a tuple with the Organization field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganization
+
+`func (o *Environment) SetOrganization(v ReferenceObject)`
+
+SetOrganization sets Organization field to given value.
+
+### HasOrganization
+
+`func (o *Environment) HasOrganization() bool`
+
+HasOrganization returns a boolean if a field has been set.
 
 ### GetProject
 

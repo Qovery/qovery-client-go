@@ -17213,6 +17213,8 @@ components:
           name:
             description: name is case insensitive
             type: string
+          organization:
+            $ref: '#/components/schemas/ReferenceObject'
           project:
             $ref: '#/components/schemas/ReferenceObject'
           last_updated_by:
