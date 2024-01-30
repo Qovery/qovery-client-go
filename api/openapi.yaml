@@ -20677,6 +20677,7 @@ components:
             $ref: '#/components/schemas/ReferenceObject'
         required:
         - name
+        - organization
         type: object
     ProjectCurrentCost:
       allOf:

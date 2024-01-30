@@ -21,23 +21,24 @@ var _ MappedNullable = &Project{}
 
 // Project struct for Project
 type Project struct {
-	Id           string           `json:"id"`
-	CreatedAt    time.Time        `json:"created_at"`
-	UpdatedAt    *time.Time       `json:"updated_at,omitempty"`
-	Name         string           `json:"name"`
-	Description  *string          `json:"description,omitempty"`
-	Organization *ReferenceObject `json:"organization,omitempty"`
+	Id           string          `json:"id"`
+	CreatedAt    time.Time       `json:"created_at"`
+	UpdatedAt    *time.Time      `json:"updated_at,omitempty"`
+	Name         string          `json:"name"`
+	Description  *string         `json:"description,omitempty"`
+	Organization ReferenceObject `json:"organization"`
 }
 
 // NewProject instantiates a new Project object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProject(id string, createdAt time.Time, name string) *Project {
+func NewProject(id string, createdAt time.Time, name string, organization ReferenceObject) *Project {
 	this := Project{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
+	this.Organization = organization
 	return &this
 }
 
@@ -185,36 +186,28 @@ func (o *Project) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetOrganization returns the Organization field value if set, zero value otherwise.
+// GetOrganization returns the Organization field value
 func (o *Project) GetOrganization() ReferenceObject {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Organization
+
+	return o.Organization
 }
 
-// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
+// GetOrganizationOk returns a tuple with the Organization field value
 // and a boolean to check if the value has been set.
 func (o *Project) GetOrganizationOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Organization, true
+	return &o.Organization, true
 }
 
-// HasOrganization returns a boolean if a field has been set.
-func (o *Project) HasOrganization() bool {
-	if o != nil && !IsNil(o.Organization) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganization gets a reference to the given ReferenceObject and assigns it to the Organization field.
+// SetOrganization sets field value
 func (o *Project) SetOrganization(v ReferenceObject) {
-	o.Organization = &v
+	o.Organization = v
 }
 
 func (o Project) MarshalJSON() ([]byte, error) {
@@ -236,9 +229,7 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Organization) {
-		toSerialize["organization"] = o.Organization
-	}
+	toSerialize["organization"] = o.Organization
 	return toSerialize, nil
 }
 

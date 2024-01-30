@@ -9,13 +9,13 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**Organization** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Organization** | [**ReferenceObject**](ReferenceObject.md) |  | 
 
 ## Methods
 
 ### NewProject
 
-`func NewProject(id string, createdAt time.Time, name string, ) *Project`
+`func NewProject(id string, createdAt time.Time, name string, organization ReferenceObject, ) *Project`
 
 NewProject instantiates a new Project object
 This constructor will assign default values to properties that have it defined,
@@ -159,11 +159,6 @@ and a boolean to check if the value has been set.
 
 SetOrganization sets Organization field to given value.
 
-### HasOrganization
-
-`func (o *Project) HasOrganization() bool`
-
-HasOrganization returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
