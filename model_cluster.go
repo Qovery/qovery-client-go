@@ -21,10 +21,10 @@ var _ MappedNullable = &Cluster{}
 
 // Cluster struct for Cluster
 type Cluster struct {
-	Id           string           `json:"id"`
-	CreatedAt    time.Time        `json:"created_at"`
-	UpdatedAt    *time.Time       `json:"updated_at,omitempty"`
-	Organization *ReferenceObject `json:"organization,omitempty"`
+	Id           string          `json:"id"`
+	CreatedAt    time.Time       `json:"created_at"`
+	UpdatedAt    *time.Time      `json:"updated_at,omitempty"`
+	Organization ReferenceObject `json:"organization"`
 	// name is case-insensitive
 	Name            string            `json:"name"`
 	Description     *string           `json:"description,omitempty"`
@@ -59,10 +59,11 @@ type Cluster struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCluster(id string, createdAt time.Time, name string, region string, cloudProvider CloudProviderEnum) *Cluster {
+func NewCluster(id string, createdAt time.Time, organization ReferenceObject, name string, region string, cloudProvider CloudProviderEnum) *Cluster {
 	this := Cluster{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Organization = organization
 	this.Name = name
 	this.Region = region
 	this.CloudProvider = cloudProvider
@@ -173,36 +174,28 @@ func (o *Cluster) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
-// GetOrganization returns the Organization field value if set, zero value otherwise.
+// GetOrganization returns the Organization field value
 func (o *Cluster) GetOrganization() ReferenceObject {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Organization
+
+	return o.Organization
 }
 
-// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
+// GetOrganizationOk returns a tuple with the Organization field value
 // and a boolean to check if the value has been set.
 func (o *Cluster) GetOrganizationOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Organization, true
+	return &o.Organization, true
 }
 
-// HasOrganization returns a boolean if a field has been set.
-func (o *Cluster) HasOrganization() bool {
-	if o != nil && !IsNil(o.Organization) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganization gets a reference to the given ReferenceObject and assigns it to the Organization field.
+// SetOrganization sets field value
 func (o *Cluster) SetOrganization(v ReferenceObject) {
-	o.Organization = &v
+	o.Organization = v
 }
 
 // GetName returns the Name field value
@@ -836,9 +829,7 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
-	if !IsNil(o.Organization) {
-		toSerialize["organization"] = o.Organization
-	}
+	toSerialize["organization"] = o.Organization
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description

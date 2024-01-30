@@ -15203,6 +15203,7 @@ components:
         required:
         - cloud_provider
         - name
+        - organization
         - region
         type: object
     ClusterDeleteMode:
@@ -17236,6 +17237,7 @@ components:
         - cluster_id
         - mode
         - name
+        - organization
         - project
         type: object
     EnvironmentResponseList:

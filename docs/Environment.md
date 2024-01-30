@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
-**Organization** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Organization** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Project** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **LastUpdatedBy** | Pointer to **string** | uuid of the user that made the last update | [optional] 
 **CloudProvider** | [**EnvironmentAllOfCloudProvider**](EnvironmentAllOfCloudProvider.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironment
 
-`func NewEnvironment(id string, createdAt time.Time, name string, project ReferenceObject, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string, ) *Environment`
+`func NewEnvironment(id string, createdAt time.Time, name string, organization ReferenceObject, project ReferenceObject, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string, ) *Environment`
 
 NewEnvironment instantiates a new Environment object
 This constructor will assign default values to properties that have it defined,
@@ -139,11 +139,6 @@ and a boolean to check if the value has been set.
 
 SetOrganization sets Organization field to given value.
 
-### HasOrganization
-
-`func (o *Environment) HasOrganization() bool`
-
-HasOrganization returns a boolean if a field has been set.
 
 ### GetProject
 

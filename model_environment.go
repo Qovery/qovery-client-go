@@ -25,9 +25,9 @@ type Environment struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name         string           `json:"name"`
-	Organization *ReferenceObject `json:"organization,omitempty"`
-	Project      ReferenceObject  `json:"project"`
+	Name         string          `json:"name"`
+	Organization ReferenceObject `json:"organization"`
+	Project      ReferenceObject `json:"project"`
 	// uuid of the user that made the last update
 	LastUpdatedBy *string                       `json:"last_updated_by,omitempty"`
 	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
@@ -40,11 +40,12 @@ type Environment struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironment(id string, createdAt time.Time, name string, project ReferenceObject, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string) *Environment {
+func NewEnvironment(id string, createdAt time.Time, name string, organization ReferenceObject, project ReferenceObject, cloudProvider EnvironmentAllOfCloudProvider, mode EnvironmentModeEnum, clusterId string) *Environment {
 	this := Environment{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
+	this.Organization = organization
 	this.Project = project
 	this.CloudProvider = cloudProvider
 	this.Mode = mode
@@ -164,36 +165,28 @@ func (o *Environment) SetName(v string) {
 	o.Name = v
 }
 
-// GetOrganization returns the Organization field value if set, zero value otherwise.
+// GetOrganization returns the Organization field value
 func (o *Environment) GetOrganization() ReferenceObject {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		var ret ReferenceObject
 		return ret
 	}
-	return *o.Organization
+
+	return o.Organization
 }
 
-// GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
+// GetOrganizationOk returns a tuple with the Organization field value
 // and a boolean to check if the value has been set.
 func (o *Environment) GetOrganizationOk() (*ReferenceObject, bool) {
-	if o == nil || IsNil(o.Organization) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Organization, true
+	return &o.Organization, true
 }
 
-// HasOrganization returns a boolean if a field has been set.
-func (o *Environment) HasOrganization() bool {
-	if o != nil && !IsNil(o.Organization) {
-		return true
-	}
-
-	return false
-}
-
-// SetOrganization gets a reference to the given ReferenceObject and assigns it to the Organization field.
+// SetOrganization sets field value
 func (o *Environment) SetOrganization(v ReferenceObject) {
-	o.Organization = &v
+	o.Organization = v
 }
 
 // GetProject returns the Project field value
@@ -372,9 +365,7 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Organization) {
-		toSerialize["organization"] = o.Organization
-	}
+	toSerialize["organization"] = o.Organization
 	toSerialize["project"] = o.Project
 	if !IsNil(o.LastUpdatedBy) {
 		toSerialize["last_updated_by"] = o.LastUpdatedBy

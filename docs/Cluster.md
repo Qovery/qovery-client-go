@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
-**Organization** | Pointer to [**ReferenceObject**](ReferenceObject.md) |  | [optional] 
+**Organization** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **Region** | **string** |  | 
@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 
 ### NewCluster
 
-`func NewCluster(id string, createdAt time.Time, name string, region string, cloudProvider CloudProviderEnum, ) *Cluster`
+`func NewCluster(id string, createdAt time.Time, organization ReferenceObject, name string, region string, cloudProvider CloudProviderEnum, ) *Cluster`
 
 NewCluster instantiates a new Cluster object
 This constructor will assign default values to properties that have it defined,
@@ -132,11 +132,6 @@ and a boolean to check if the value has been set.
 
 SetOrganization sets Organization field to given value.
 
-### HasOrganization
-
-`func (o *Cluster) HasOrganization() bool`
-
-HasOrganization returns a boolean if a field has been set.
 
 ### GetName
 
