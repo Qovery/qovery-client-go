@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeleteCreditCard**](BillingAPI.md#DeleteCreditCard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 [**EditOrganizationBillingInfo**](BillingAPI.md#EditOrganizationBillingInfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 [**GetClusterCurrentCost**](BillingAPI.md#GetClusterCurrentCost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
+[**GetOrganizationBillingExternalId**](BillingAPI.md#GetOrganizationBillingExternalId) | **Get** /organization/{organizationId}/billingExternalId | Get organization billing external ID
 [**GetOrganizationBillingInfo**](BillingAPI.md#GetOrganizationBillingInfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
 [**GetOrganizationBillingStatus**](BillingAPI.md#GetOrganizationBillingStatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
 [**GetOrganizationCurrentCost**](BillingAPI.md#GetOrganizationCurrentCost) | **Get** /organization/{organizationId}/currentCost | Get organization current cost
@@ -426,6 +427,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CostRange**](CostRange.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetOrganizationBillingExternalId
+
+> BillingExternalId GetOrganizationBillingExternalId(ctx, organizationId).Execute()
+
+Get organization billing external ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BillingAPI.GetOrganizationBillingExternalId(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingExternalId``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationBillingExternalId`: BillingExternalId
+    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingExternalId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationBillingExternalIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**BillingExternalId**](BillingExternalId.md)
 
 ### Authorization
 

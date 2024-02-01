@@ -124,6 +124,7 @@ docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BaseJobResponseAllOfSourceOneOf1Docker.md
 docs/BillingAPI.md
 docs/BillingEnd.md
+docs/BillingExternalId.md
 docs/BillingInfo.md
 docs/BillingInfoRequest.md
 docs/BillingPeriod.md
@@ -613,6 +614,7 @@ model_base_job_response_all_of_source_one_of.go
 model_base_job_response_all_of_source_one_of_1.go
 model_base_job_response_all_of_source_one_of_1_docker.go
 model_billing_end.go
+model_billing_external_id.go
 model_billing_info.go
 model_billing_info_request.go
 model_billing_period.go

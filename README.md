@@ -131,6 +131,7 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**DeleteCreditCard**](docs/BillingAPI.md#deletecreditcard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 *BillingAPI* | [**EditOrganizationBillingInfo**](docs/BillingAPI.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 *BillingAPI* | [**GetClusterCurrentCost**](docs/BillingAPI.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
+*BillingAPI* | [**GetOrganizationBillingExternalId**](docs/BillingAPI.md#getorganizationbillingexternalid) | **Get** /organization/{organizationId}/billingExternalId | Get organization billing external ID
 *BillingAPI* | [**GetOrganizationBillingInfo**](docs/BillingAPI.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
 *BillingAPI* | [**GetOrganizationBillingStatus**](docs/BillingAPI.md#getorganizationbillingstatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
 *BillingAPI* | [**GetOrganizationCurrentCost**](docs/BillingAPI.md#getorganizationcurrentcost) | **Get** /organization/{organizationId}/currentCost | Get organization current cost
@@ -498,6 +499,7 @@ Class | Method | HTTP request | Description
  - [BaseJobResponseAllOfSourceOneOf1](docs/BaseJobResponseAllOfSourceOneOf1.md)
  - [BaseJobResponseAllOfSourceOneOf1Docker](docs/BaseJobResponseAllOfSourceOneOf1Docker.md)
  - [BillingEnd](docs/BillingEnd.md)
+ - [BillingExternalId](docs/BillingExternalId.md)
  - [BillingInfo](docs/BillingInfo.md)
  - [BillingInfoRequest](docs/BillingInfoRequest.md)
  - [BillingPeriod](docs/BillingPeriod.md)

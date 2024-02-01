@@ -1140,6 +1140,37 @@ paths:
       summary: Get organization billing status
       tags:
       - Billing
+  /organization/{organizationId}/billingExternalId:
+    get:
+      description: |
+        This endpoint returns the external ID of the organization's billing account.
+      operationId: getOrganizationBillingExternalId
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BillingExternalId'
+          description: Get Billing External ID
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization billing external ID
+      tags:
+      - Billing
   /organization/{organizationId}/invoice:
     get:
       operationId: listOrganizationInvoice
@@ -14989,6 +15020,13 @@ components:
         is_valid:
           type: boolean
         message:
+          type: string
+      type: object
+    BillingExternalId:
+      example:
+        id: id
+      properties:
+        id:
           type: string
       type: object
     Budget:
