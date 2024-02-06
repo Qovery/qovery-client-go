@@ -20,8 +20,8 @@ var _ MappedNullable = &ClusterRequestFeaturesInner{}
 
 // ClusterRequestFeaturesInner struct for ClusterRequestFeaturesInner
 type ClusterRequestFeaturesInner struct {
-	Id    *string                     `json:"id,omitempty"`
-	Value NullableClusterFeatureValue `json:"value,omitempty"`
+	Id    *string                                  `json:"id,omitempty"`
+	Value NullableClusterRequestFeaturesInnerValue `json:"value,omitempty"`
 }
 
 // NewClusterRequestFeaturesInner instantiates a new ClusterRequestFeaturesInner object
@@ -74,9 +74,9 @@ func (o *ClusterRequestFeaturesInner) SetId(v string) {
 }
 
 // GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInner) GetValue() ClusterFeatureValue {
+func (o *ClusterRequestFeaturesInner) GetValue() ClusterRequestFeaturesInnerValue {
 	if o == nil || IsNil(o.Value.Get()) {
-		var ret ClusterFeatureValue
+		var ret ClusterRequestFeaturesInnerValue
 		return ret
 	}
 	return *o.Value.Get()
@@ -85,7 +85,7 @@ func (o *ClusterRequestFeaturesInner) GetValue() ClusterFeatureValue {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInner) GetValueOk() (*ClusterFeatureValue, bool) {
+func (o *ClusterRequestFeaturesInner) GetValueOk() (*ClusterRequestFeaturesInnerValue, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,8 +101,8 @@ func (o *ClusterRequestFeaturesInner) HasValue() bool {
 	return false
 }
 
-// SetValue gets a reference to the given NullableClusterFeatureValue and assigns it to the Value field.
-func (o *ClusterRequestFeaturesInner) SetValue(v ClusterFeatureValue) {
+// SetValue gets a reference to the given NullableClusterRequestFeaturesInnerValue and assigns it to the Value field.
+func (o *ClusterRequestFeaturesInner) SetValue(v ClusterRequestFeaturesInnerValue) {
 	o.Value.Set(&v)
 }
 
