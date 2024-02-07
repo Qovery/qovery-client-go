@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ClusterRegion type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type ClusterRegion struct {
 	Country     string `json:"country"`
 	City        string `json:"city"`
 }
+
+type _ClusterRegion ClusterRegion
 
 // NewClusterRegion instantiates a new ClusterRegion object
 // This constructor will assign default values to properties that have it defined,
@@ -158,6 +162,46 @@ func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["country"] = o.Country
 	toSerialize["city"] = o.City
 	return toSerialize, nil
+}
+
+func (o *ClusterRegion) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"country_code",
+		"country",
+		"city",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varClusterRegion := _ClusterRegion{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varClusterRegion)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterRegion(varClusterRegion)
+
+	return err
 }
 
 type NullableClusterRegion struct {

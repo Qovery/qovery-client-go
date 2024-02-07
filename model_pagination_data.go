@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the PaginationData type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type PaginationData struct {
 	Page     float32 `json:"page"`
 	PageSize float32 `json:"page_size"`
 }
+
+type _PaginationData PaginationData
 
 // NewPaginationData instantiates a new PaginationData object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o PaginationData) ToMap() (map[string]interface{}, error) {
 	toSerialize["page"] = o.Page
 	toSerialize["page_size"] = o.PageSize
 	return toSerialize, nil
+}
+
+func (o *PaginationData) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"page",
+		"page_size",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varPaginationData := _PaginationData{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varPaginationData)
+
+	if err != nil {
+		return err
+	}
+
+	*o = PaginationData(varPaginationData)
+
+	return err
 }
 
 type NullablePaginationData struct {

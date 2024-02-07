@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the VariableOverrideRequest type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type VariableOverrideRequest struct {
 	// the id of the variable that is aliased.
 	OverrideParentId string `json:"override_parent_id"`
 }
+
+type _VariableOverrideRequest VariableOverrideRequest
 
 // NewVariableOverrideRequest instantiates a new VariableOverrideRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -133,6 +137,45 @@ func (o VariableOverrideRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["override_scope"] = o.OverrideScope
 	toSerialize["override_parent_id"] = o.OverrideParentId
 	return toSerialize, nil
+}
+
+func (o *VariableOverrideRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"value",
+		"override_scope",
+		"override_parent_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVariableOverrideRequest := _VariableOverrideRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVariableOverrideRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VariableOverrideRequest(varVariableOverrideRequest)
+
+	return err
 }
 
 type NullableVariableOverrideRequest struct {

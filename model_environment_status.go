@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -30,6 +32,8 @@ type EnvironmentStatus struct {
 	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
 	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
 }
+
+type _EnvironmentStatus EnvironmentStatus
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -367,6 +371,45 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["triggered_by"] = o.TriggeredBy.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *EnvironmentStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"state",
+		"last_deployment_state",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnvironmentStatus := _EnvironmentStatus{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnvironmentStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentStatus(varEnvironmentStatus)
+
+	return err
 }
 
 type NullableEnvironmentStatus struct {

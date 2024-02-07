@@ -25,25 +25,25 @@ Deploy application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    deployRequest := *openapiclient.NewDeployRequest("GitCommitId_example") // DeployRequest |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	deployRequest := *openapiclient.NewDeployRequest("GitCommitId_example") // DeployRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationActionsAPI.DeployApplication(context.Background(), applicationId).DeployRequest(deployRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.DeployApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployApplication`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.DeployApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationActionsAPI.DeployApplication(context.Background(), applicationId).DeployRequest(deployRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.DeployApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployApplication`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.DeployApplication`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ Reboot application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationActionsAPI.RebootApplication(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RebootApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RebootApplication`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RebootApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationActionsAPI.RebootApplication(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RebootApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RebootApplication`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RebootApplication`: %v\n", resp)
 }
 ```
 
@@ -165,24 +165,24 @@ Deprecated - Restart application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationActionsAPI.RestartApplication(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RestartApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RestartApplication`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RestartApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationActionsAPI.RestartApplication(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RestartApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RestartApplication`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RestartApplication`: %v\n", resp)
 }
 ```
 
@@ -233,24 +233,24 @@ Stop application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationActionsAPI.StopApplication(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.StopApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StopApplication`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.StopApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationActionsAPI.StopApplication(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.StopApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StopApplication`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.StopApplication`: %v\n", resp)
 }
 ```
 

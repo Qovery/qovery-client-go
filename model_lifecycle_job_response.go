@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -51,6 +53,8 @@ type LifecycleJobResponse struct {
 	JobType    string                            `json:"job_type"`
 	Schedule   LifecycleJobResponseAllOfSchedule `json:"schedule"`
 }
+
+type _LifecycleJobResponse LifecycleJobResponse
 
 // NewLifecycleJobResponse instantiates a new LifecycleJobResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -639,6 +643,55 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
 	return toSerialize, nil
+}
+
+func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"environment",
+		"maximum_cpu",
+		"maximum_memory",
+		"name",
+		"cpu",
+		"memory",
+		"auto_preview",
+		"source",
+		"healthchecks",
+		"job_type",
+		"schedule",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varLifecycleJobResponse := _LifecycleJobResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varLifecycleJobResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LifecycleJobResponse(varLifecycleJobResponse)
+
+	return err
 }
 
 type NullableLifecycleJobResponse struct {

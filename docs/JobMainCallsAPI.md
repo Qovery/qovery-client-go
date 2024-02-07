@@ -26,22 +26,22 @@ Delete job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JobMainCallsAPI.DeleteJob(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.DeleteJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JobMainCallsAPI.DeleteJob(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.DeleteJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,25 +94,25 @@ Edit job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsAPI.EditJob(context.Background(), jobId).JobRequest(jobRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.EditJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditJob`: JobResponse
-    fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.EditJob`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobMainCallsAPI.EditJob(context.Background(), jobId).JobRequest(jobRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.EditJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditJob`: JobResponse
+	fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.EditJob`: %v\n", resp)
 }
 ```
 
@@ -164,24 +164,24 @@ Get job by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsAPI.GetJob(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.GetJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetJob`: JobResponse
-    fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.GetJob`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobMainCallsAPI.GetJob(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.GetJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetJob`: JobResponse
+	fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.GetJob`: %v\n", resp)
 }
 ```
 
@@ -232,24 +232,24 @@ Get job status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsAPI.GetJobStatus(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.GetJobStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetJobStatus`: Status
-    fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.GetJobStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobMainCallsAPI.GetJobStatus(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.GetJobStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetJobStatus`: Status
+	fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.GetJobStatus`: %v\n", resp)
 }
 ```
 
@@ -302,26 +302,26 @@ List last job commits
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
-    gitCommitId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Commit ID (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+	gitCommitId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Commit ID (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobMainCallsAPI.ListJobCommit(context.Background(), jobId).StartId(startId).GitCommitId(gitCommitId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.ListJobCommit``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListJobCommit`: CommitResponseList
-    fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.ListJobCommit`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobMainCallsAPI.ListJobCommit(context.Background(), jobId).StartId(startId).GitCommitId(gitCommitId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.ListJobCommit``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListJobCommit`: CommitResponseList
+	fmt.Fprintf(os.Stdout, "Response from `JobMainCallsAPI.ListJobCommit`: %v\n", resp)
 }
 ```
 

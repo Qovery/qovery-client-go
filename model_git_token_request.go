@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the GitTokenRequest type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type GitTokenRequest struct {
 	// Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service
 	Workspace *string `json:"workspace,omitempty"`
 }
+
+type _GitTokenRequest GitTokenRequest
 
 // NewGitTokenRequest instantiates a new GitTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -205,6 +209,45 @@ func (o GitTokenRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["workspace"] = o.Workspace
 	}
 	return toSerialize, nil
+}
+
+func (o *GitTokenRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"type",
+		"token",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varGitTokenRequest := _GitTokenRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varGitTokenRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GitTokenRequest(varGitTokenRequest)
+
+	return err
 }
 
 type NullableGitTokenRequest struct {

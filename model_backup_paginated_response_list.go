@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the BackupPaginatedResponseList type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type BackupPaginatedResponseList struct {
 	PageSize float32  `json:"page_size"`
 	Results  []Backup `json:"results,omitempty"`
 }
+
+type _BackupPaginatedResponseList BackupPaginatedResponseList
 
 // NewBackupPaginatedResponseList instantiates a new BackupPaginatedResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -140,6 +144,44 @@ func (o BackupPaginatedResponseList) ToMap() (map[string]interface{}, error) {
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil
+}
+
+func (o *BackupPaginatedResponseList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"page",
+		"page_size",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBackupPaginatedResponseList := _BackupPaginatedResponseList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBackupPaginatedResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BackupPaginatedResponseList(varBackupPaginatedResponseList)
+
+	return err
 }
 
 type NullableBackupPaginatedResponseList struct {

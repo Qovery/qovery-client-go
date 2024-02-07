@@ -38,9 +38,9 @@ ListContainerDeploymentHistory List container deployments
 
 Returns the 20 last container deployments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiListContainerDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiListContainerDeploymentHistoryRequest
 */
 func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistory(ctx context.Context, containerId string) ApiListContainerDeploymentHistoryRequest {
 	return ApiListContainerDeploymentHistoryRequest{
@@ -51,7 +51,8 @@ func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistory(ct
 }
 
 // Execute executes the request
-//  @return ListContainerDeploymentHistory200Response
+//
+//	@return ListContainerDeploymentHistory200Response
 func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistoryExecute(r ApiListContainerDeploymentHistoryRequest) (*ListContainerDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

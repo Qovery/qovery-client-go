@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -51,6 +53,8 @@ type CronJobResponse struct {
 	JobType    string                       `json:"job_type"`
 	Schedule   CronJobResponseAllOfSchedule `json:"schedule"`
 }
+
+type _CronJobResponse CronJobResponse
 
 // NewCronJobResponse instantiates a new CronJobResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -639,6 +643,55 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
 	return toSerialize, nil
+}
+
+func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"environment",
+		"maximum_cpu",
+		"maximum_memory",
+		"name",
+		"cpu",
+		"memory",
+		"auto_preview",
+		"source",
+		"healthchecks",
+		"job_type",
+		"schedule",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCronJobResponse := _CronJobResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCronJobResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronJobResponse(varCronJobResponse)
+
+	return err
 }
 
 type NullableCronJobResponse struct {

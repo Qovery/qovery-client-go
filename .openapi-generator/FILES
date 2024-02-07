@@ -342,6 +342,7 @@ docs/HelmAdvancedSettings.md
 docs/HelmConfigurationAPI.md
 docs/HelmCustomDomainAPI.md
 docs/HelmDefaultValuesRequest.md
+docs/HelmDefaultValuesRequestAllOfSource.md
 docs/HelmDeployRequest.md
 docs/HelmDeploymentHistoryAPI.md
 docs/HelmDeploymentRestrictionAPI.md
@@ -799,6 +800,7 @@ model_git_token_response_list.go
 model_healthcheck.go
 model_helm_advanced_settings.go
 model_helm_default_values_request.go
+model_helm_default_values_request_all_of_source.go
 model_helm_deploy_request.go
 model_helm_deployment_restriction_request.go
 model_helm_deployment_restriction_response.go

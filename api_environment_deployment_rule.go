@@ -43,10 +43,10 @@ func (r ApiEditEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeployme
 /*
 EditEnvironmentDeploymentRule Edit an environment deployment rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @param deploymentRuleId Deployment Rule ID
- @return ApiEditEnvironmentDeploymentRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@param deploymentRuleId Deployment Rule ID
+	@return ApiEditEnvironmentDeploymentRuleRequest
 */
 func (a *EnvironmentDeploymentRuleAPIService) EditEnvironmentDeploymentRule(ctx context.Context, environmentId string, deploymentRuleId string) ApiEditEnvironmentDeploymentRuleRequest {
 	return ApiEditEnvironmentDeploymentRuleRequest{
@@ -58,7 +58,8 @@ func (a *EnvironmentDeploymentRuleAPIService) EditEnvironmentDeploymentRule(ctx 
 }
 
 // Execute executes the request
-//  @return EnvironmentDeploymentRule
+//
+//	@return EnvironmentDeploymentRule
 func (a *EnvironmentDeploymentRuleAPIService) EditEnvironmentDeploymentRuleExecute(r ApiEditEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -163,9 +164,9 @@ func (r ApiGetEnvironmentDeploymentRuleRequest) Execute() (*EnvironmentDeploymen
 /*
 GetEnvironmentDeploymentRule Get environment deployment rule
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentDeploymentRuleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentDeploymentRuleRequest
 */
 func (a *EnvironmentDeploymentRuleAPIService) GetEnvironmentDeploymentRule(ctx context.Context, environmentId string) ApiGetEnvironmentDeploymentRuleRequest {
 	return ApiGetEnvironmentDeploymentRuleRequest{
@@ -176,7 +177,8 @@ func (a *EnvironmentDeploymentRuleAPIService) GetEnvironmentDeploymentRule(ctx c
 }
 
 // Execute executes the request
-//  @return EnvironmentDeploymentRule
+//
+//	@return EnvironmentDeploymentRule
 func (a *EnvironmentDeploymentRuleAPIService) GetEnvironmentDeploymentRuleExecute(r ApiGetEnvironmentDeploymentRuleRequest) (*EnvironmentDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

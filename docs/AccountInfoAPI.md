@@ -21,24 +21,24 @@ Edit account information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    accountInfoEditRequest := *openapiclient.NewAccountInfoEditRequest() // AccountInfoEditRequest |  (optional)
+	accountInfoEditRequest := *openapiclient.NewAccountInfoEditRequest() // AccountInfoEditRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountInfoAPI.EditAccountInformation(context.Background()).AccountInfoEditRequest(accountInfoEditRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountInfoAPI.EditAccountInformation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditAccountInformation`: AccountInfo
-    fmt.Fprintf(os.Stdout, "Response from `AccountInfoAPI.EditAccountInformation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccountInfoAPI.EditAccountInformation(context.Background()).AccountInfoEditRequest(accountInfoEditRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountInfoAPI.EditAccountInformation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditAccountInformation`: AccountInfo
+	fmt.Fprintf(os.Stdout, "Response from `AccountInfoAPI.EditAccountInformation`: %v\n", resp)
 }
 ```
 
@@ -85,23 +85,23 @@ Get Account information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.AccountInfoAPI.GetAccountInformation(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `AccountInfoAPI.GetAccountInformation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAccountInformation`: AccountInfo
-    fmt.Fprintf(os.Stdout, "Response from `AccountInfoAPI.GetAccountInformation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AccountInfoAPI.GetAccountInformation(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AccountInfoAPI.GetAccountInformation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAccountInformation`: AccountInfo
+	fmt.Fprintf(os.Stdout, "Response from `AccountInfoAPI.GetAccountInformation`: %v\n", resp)
 }
 ```
 

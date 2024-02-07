@@ -28,25 +28,25 @@ Attach service to deployment stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AttachServiceToDeploymentStage`: DeploymentStageResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AttachServiceToDeploymentStage`: DeploymentStageResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -99,25 +99,25 @@ Create environment deployment stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage(context.Background(), environmentId).DeploymentStageRequest(deploymentStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateEnvironmentDeploymentStage`: DeploymentStageResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage(context.Background(), environmentId).DeploymentStageRequest(deploymentStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateEnvironmentDeploymentStage`: DeploymentStageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.CreateEnvironmentDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -169,22 +169,22 @@ Delete deployment stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.DeploymentStageMainCallsAPI.DeleteDeploymentStage(context.Background(), deploymentStageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.DeleteDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.DeploymentStageMainCallsAPI.DeleteDeploymentStage(context.Background(), deploymentStageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.DeleteDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -235,25 +235,25 @@ Edit deployment stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	deploymentStageRequest := *openapiclient.NewDeploymentStageRequest("Name_example") // DeploymentStageRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.EditDeploymentStage(context.Background(), deploymentStageId).DeploymentStageRequest(deploymentStageRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.EditDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditDeploymentStage`: DeploymentStageResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.EditDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.EditDeploymentStage(context.Background(), deploymentStageId).DeploymentStageRequest(deploymentStageRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.EditDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditDeploymentStage`: DeploymentStageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.EditDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -305,24 +305,24 @@ Get Deployment Stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.GetDeploymentStage(context.Background(), deploymentStageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.GetDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetDeploymentStage`: DeploymentStageResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.GetDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.GetDeploymentStage(context.Background(), deploymentStageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.GetDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDeploymentStage`: DeploymentStageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.GetDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -373,24 +373,24 @@ Get Service Deployment Stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
+	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.GetServiceDeploymentStage(context.Background(), serviceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.GetServiceDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetServiceDeploymentStage`: DeploymentStageResponse
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.GetServiceDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.GetServiceDeploymentStage(context.Background(), serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.GetServiceDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetServiceDeploymentStage`: DeploymentStageResponse
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.GetServiceDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -441,24 +441,24 @@ List environment deployment stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListEnvironmentDeploymentStage`: DeploymentStageResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListEnvironmentDeploymentStage`: DeploymentStageResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.ListEnvironmentDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -509,25 +509,25 @@ Move deployment stage after requested stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.MoveAfterDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.MoveAfterDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MoveAfterDeploymentStage`: DeploymentStageResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.MoveAfterDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.MoveAfterDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.MoveAfterDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MoveAfterDeploymentStage`: DeploymentStageResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.MoveAfterDeploymentStage`: %v\n", resp)
 }
 ```
 
@@ -580,25 +580,25 @@ Move deployment stage before requested stage
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
-    stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
+	stageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `MoveBeforeDeploymentStage`: DeploymentStageResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage(context.Background(), deploymentStageId, stageId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `MoveBeforeDeploymentStage`: DeploymentStageResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DeploymentStageMainCallsAPI.MoveBeforeDeploymentStage`: %v\n", resp)
 }
 ```
 

@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the DatabaseRequest type satisfies the MappedNullable interface at compile time
@@ -37,6 +39,8 @@ type DatabaseRequest struct {
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
 }
+
+type _DatabaseRequest DatabaseRequest
 
 // NewDatabaseRequest instantiates a new DatabaseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -392,6 +396,46 @@ func (o DatabaseRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["storage"] = o.Storage
 	}
 	return toSerialize, nil
+}
+
+func (o *DatabaseRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"type",
+		"version",
+		"mode",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDatabaseRequest := _DatabaseRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDatabaseRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatabaseRequest(varDatabaseRequest)
+
+	return err
 }
 
 type NullableDatabaseRequest struct {

@@ -44,9 +44,9 @@ CloneHelm Clone helm
 
 This will create a new helm with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiCloneHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiCloneHelmRequest
 */
 func (a *HelmsAPIService) CloneHelm(ctx context.Context, helmId string) ApiCloneHelmRequest {
 	return ApiCloneHelmRequest{
@@ -57,7 +57,8 @@ func (a *HelmsAPIService) CloneHelm(ctx context.Context, helmId string) ApiClone
 }
 
 // Execute executes the request
-//  @return HelmResponse
+//
+//	@return HelmResponse
 func (a *HelmsAPIService) CloneHelmExecute(r ApiCloneHelmRequest) (*HelmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -167,9 +168,9 @@ func (r ApiCreateHelmRequest) Execute() (*HelmResponse, *http.Response, error) {
 /*
 CreateHelm Create a helm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateHelmRequest
 */
 func (a *HelmsAPIService) CreateHelm(ctx context.Context, environmentId string) ApiCreateHelmRequest {
 	return ApiCreateHelmRequest{
@@ -180,7 +181,8 @@ func (a *HelmsAPIService) CreateHelm(ctx context.Context, environmentId string) 
 }
 
 // Execute executes the request
-//  @return HelmResponse
+//
+//	@return HelmResponse
 func (a *HelmsAPIService) CreateHelmExecute(r ApiCreateHelmRequest) (*HelmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -290,9 +292,9 @@ func (r ApiCreateHelmDefaultValuesRequest) Execute() (string, *http.Response, er
 /*
 CreateHelmDefaultValues Get helm default values
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateHelmDefaultValuesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateHelmDefaultValuesRequest
 */
 func (a *HelmsAPIService) CreateHelmDefaultValues(ctx context.Context, environmentId string) ApiCreateHelmDefaultValuesRequest {
 	return ApiCreateHelmDefaultValuesRequest{
@@ -303,7 +305,8 @@ func (a *HelmsAPIService) CreateHelmDefaultValues(ctx context.Context, environme
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *HelmsAPIService) CreateHelmDefaultValuesExecute(r ApiCreateHelmDefaultValuesRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -406,8 +409,8 @@ func (r ApiGetDefaultHelmAdvancedSettingsRequest) Execute() (*HelmAdvancedSettin
 /*
 GetDefaultHelmAdvancedSettings List default helm advanced settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultHelmAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultHelmAdvancedSettingsRequest
 */
 func (a *HelmsAPIService) GetDefaultHelmAdvancedSettings(ctx context.Context) ApiGetDefaultHelmAdvancedSettingsRequest {
 	return ApiGetDefaultHelmAdvancedSettingsRequest{
@@ -417,7 +420,8 @@ func (a *HelmsAPIService) GetDefaultHelmAdvancedSettings(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return HelmAdvancedSettings
+//
+//	@return HelmAdvancedSettings
 func (a *HelmsAPIService) GetDefaultHelmAdvancedSettingsExecute(r ApiGetDefaultHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -520,9 +524,9 @@ GetEnvironmentHelmStatus List all environment helm statuses
 
 Returns a list of helms with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentHelmStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentHelmStatusRequest
 */
 func (a *HelmsAPIService) GetEnvironmentHelmStatus(ctx context.Context, environmentId string) ApiGetEnvironmentHelmStatusRequest {
 	return ApiGetEnvironmentHelmStatusRequest{
@@ -533,7 +537,8 @@ func (a *HelmsAPIService) GetEnvironmentHelmStatus(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *HelmsAPIService) GetEnvironmentHelmStatusExecute(r ApiGetEnvironmentHelmStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -635,9 +640,9 @@ func (r ApiListHelmsRequest) Execute() (*HelmResponseList, *http.Response, error
 /*
 ListHelms List helms
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListHelmsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListHelmsRequest
 */
 func (a *HelmsAPIService) ListHelms(ctx context.Context, environmentId string) ApiListHelmsRequest {
 	return ApiListHelmsRequest{
@@ -648,7 +653,8 @@ func (a *HelmsAPIService) ListHelms(ctx context.Context, environmentId string) A
 }
 
 // Execute executes the request
-//  @return HelmResponseList
+//
+//	@return HelmResponseList
 func (a *HelmsAPIService) ListHelmsExecute(r ApiListHelmsRequest) (*HelmResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

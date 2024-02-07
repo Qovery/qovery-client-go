@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ProjectCurrentCost type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type ProjectCurrentCost struct {
 	Cost                  Cost                       `json:"cost"`
 	Environments          []GenericObjectCurrentCost `json:"environments,omitempty"`
 }
+
+type _ProjectCurrentCost ProjectCurrentCost
 
 // NewProjectCurrentCost instantiates a new ProjectCurrentCost object
 // This constructor will assign default values to properties that have it defined,
@@ -194,6 +198,46 @@ func (o ProjectCurrentCost) ToMap() (map[string]interface{}, error) {
 		toSerialize["environments"] = o.Environments
 	}
 	return toSerialize, nil
+}
+
+func (o *ProjectCurrentCost) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"consumed_time_in_seconds",
+		"cost",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectCurrentCost := _ProjectCurrentCost{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectCurrentCost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectCurrentCost(varProjectCurrentCost)
+
+	return err
 }
 
 type NullableProjectCurrentCost struct {

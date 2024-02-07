@@ -42,9 +42,9 @@ func (r ApiCreateHelmRepositoryRequest) Execute() (*HelmRepositoryResponse, *htt
 /*
 CreateHelmRepository Create a helm repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) CreateHelmRepository(ctx context.Context, organizationId string) ApiCreateHelmRepositoryRequest {
 	return ApiCreateHelmRepositoryRequest{
@@ -55,7 +55,8 @@ func (a *HelmRepositoriesAPIService) CreateHelmRepository(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return HelmRepositoryResponse
+//
+//	@return HelmRepositoryResponse
 func (a *HelmRepositoriesAPIService) CreateHelmRepositoryExecute(r ApiCreateHelmRepositoryRequest) (*HelmRepositoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -160,10 +161,10 @@ func (r ApiDeleteHelmRepositoryRequest) Execute() (*http.Response, error) {
 /*
 DeleteHelmRepository Delete a helm repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param helmRepositoryId Helm chart repository ID
- @return ApiDeleteHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param helmRepositoryId Helm chart repository ID
+	@return ApiDeleteHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) DeleteHelmRepository(ctx context.Context, organizationId string, helmRepositoryId string) ApiDeleteHelmRepositoryRequest {
 	return ApiDeleteHelmRepositoryRequest{
@@ -274,10 +275,10 @@ func (r ApiEditHelmRepositoryRequest) Execute() (*HelmRepositoryResponse, *http.
 /*
 EditHelmRepository Edit a helm repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param helmRepositoryId Helm chart repository ID
- @return ApiEditHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param helmRepositoryId Helm chart repository ID
+	@return ApiEditHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) EditHelmRepository(ctx context.Context, organizationId string, helmRepositoryId string) ApiEditHelmRepositoryRequest {
 	return ApiEditHelmRepositoryRequest{
@@ -289,7 +290,8 @@ func (a *HelmRepositoriesAPIService) EditHelmRepository(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return HelmRepositoryResponse
+//
+//	@return HelmRepositoryResponse
 func (a *HelmRepositoriesAPIService) EditHelmRepositoryExecute(r ApiEditHelmRepositoryRequest) (*HelmRepositoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -395,10 +397,10 @@ func (r ApiGetHelmRepositoryRequest) Execute() (*HelmRepositoryResponse, *http.R
 /*
 GetHelmRepository Get a helm repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param helmRepositoryId Helm chart repository ID
- @return ApiGetHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param helmRepositoryId Helm chart repository ID
+	@return ApiGetHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) GetHelmRepository(ctx context.Context, organizationId string, helmRepositoryId string) ApiGetHelmRepositoryRequest {
 	return ApiGetHelmRepositoryRequest{
@@ -410,7 +412,8 @@ func (a *HelmRepositoriesAPIService) GetHelmRepository(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return HelmRepositoryResponse
+//
+//	@return HelmRepositoryResponse
 func (a *HelmRepositoriesAPIService) GetHelmRepositoryExecute(r ApiGetHelmRepositoryRequest) (*HelmRepositoryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -514,8 +517,8 @@ ListAvailableHelmRepository List supported helm repository
 
 List supported helm repository by Qovery and get the mandatory authentification configuration.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListAvailableHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListAvailableHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) ListAvailableHelmRepository(ctx context.Context) ApiListAvailableHelmRepositoryRequest {
 	return ApiListAvailableHelmRepositoryRequest{
@@ -525,7 +528,8 @@ func (a *HelmRepositoriesAPIService) ListAvailableHelmRepository(ctx context.Con
 }
 
 // Execute executes the request
-//  @return AvailableHelmRepositoryResponseList
+//
+//	@return AvailableHelmRepositoryResponseList
 func (a *HelmRepositoriesAPIService) ListAvailableHelmRepositoryExecute(r ApiListAvailableHelmRepositoryRequest) (*AvailableHelmRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -626,9 +630,9 @@ func (r ApiListHelmRepositoryRequest) Execute() (*HelmRepositoryResponseList, *h
 /*
 ListHelmRepository List organization helm repositories
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListHelmRepositoryRequest
 */
 func (a *HelmRepositoriesAPIService) ListHelmRepository(ctx context.Context, organizationId string) ApiListHelmRepositoryRequest {
 	return ApiListHelmRepositoryRequest{
@@ -639,7 +643,8 @@ func (a *HelmRepositoriesAPIService) ListHelmRepository(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return HelmRepositoryResponseList
+//
+//	@return HelmRepositoryResponseList
 func (a *HelmRepositoriesAPIService) ListHelmRepositoryExecute(r ApiListHelmRepositoryRequest) (*HelmRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

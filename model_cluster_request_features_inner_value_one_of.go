@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ClusterRequestFeaturesInnerValueOneOf type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type ClusterRequestFeaturesInnerValueOneOf struct {
 	RdsSubnetsZoneBIds         []string `json:"rds_subnets_zone_b_ids,omitempty"`
 	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
 }
+
+type _ClusterRequestFeaturesInnerValueOneOf ClusterRequestFeaturesInnerValueOneOf
 
 // NewClusterRequestFeaturesInnerValueOneOf instantiates a new ClusterRequestFeaturesInnerValueOneOf object
 // This constructor will assign default values to properties that have it defined,
@@ -491,6 +495,46 @@ func (o ClusterRequestFeaturesInnerValueOneOf) ToMap() (map[string]interface{}, 
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
 	}
 	return toSerialize, nil
+}
+
+func (o *ClusterRequestFeaturesInnerValueOneOf) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"aws_vpc_eks_id",
+		"eks_subnets_zone_a_ids",
+		"eks_subnets_zone_b_ids",
+		"eks_subnets_zone_c_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varClusterRequestFeaturesInnerValueOneOf := _ClusterRequestFeaturesInnerValueOneOf{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varClusterRequestFeaturesInnerValueOneOf)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterRequestFeaturesInnerValueOneOf(varClusterRequestFeaturesInnerValueOneOf)
+
+	return err
 }
 
 type NullableClusterRequestFeaturesInnerValueOneOf struct {

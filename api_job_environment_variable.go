@@ -44,10 +44,9 @@ CreateJobEnvironmentVariable Add an environment variable to the job
 
 - Add an environment variable to the job.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiCreateJobEnvironmentVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiCreateJobEnvironmentVariableRequest
 */
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariable(ctx context.Context, jobId string) ApiCreateJobEnvironmentVariableRequest {
 	return ApiCreateJobEnvironmentVariableRequest{
@@ -58,7 +57,8 @@ func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariable(ctx cont
 }
 
 // Execute executes the request
-//  @return EnvironmentVariable
+//
+//	@return EnvironmentVariable
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableExecute(r ApiCreateJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,11 +176,10 @@ CreateJobEnvironmentVariableAlias Create an environment variable alias at the jo
 - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param environmentVariableId Environment Variable ID
- @return ApiCreateJobEnvironmentVariableAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param environmentVariableId Environment Variable ID
+	@return ApiCreateJobEnvironmentVariableAliasRequest
 */
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableAlias(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableAliasRequest {
 	return ApiCreateJobEnvironmentVariableAliasRequest{
@@ -192,7 +191,8 @@ func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableAlias(ctx
 }
 
 // Execute executes the request
-//  @return EnvironmentVariable
+//
+//	@return EnvironmentVariable
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableAliasExecute(r ApiCreateJobEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -310,11 +310,10 @@ CreateJobEnvironmentVariableOverride Create an environment variable override at 
 - The response body will contain the newly created variable
 - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param environmentVariableId Environment Variable ID
- @return ApiCreateJobEnvironmentVariableOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param environmentVariableId Environment Variable ID
+	@return ApiCreateJobEnvironmentVariableOverrideRequest
 */
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableOverride(ctx context.Context, jobId string, environmentVariableId string) ApiCreateJobEnvironmentVariableOverrideRequest {
 	return ApiCreateJobEnvironmentVariableOverrideRequest{
@@ -326,7 +325,8 @@ func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableOverride(
 }
 
 // Execute executes the request
-//  @return EnvironmentVariable
+//
+//	@return EnvironmentVariable
 func (a *JobEnvironmentVariableAPIService) CreateJobEnvironmentVariableOverrideExecute(r ApiCreateJobEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -436,11 +436,10 @@ DeleteJobEnvironmentVariable Delete an environment variable from a job
 - You can't delete a BUILT_IN variable
 - If you delete a variable having override or alias, the associated override/alias will be deleted as well
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param environmentVariableId Environment Variable ID
- @return ApiDeleteJobEnvironmentVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param environmentVariableId Environment Variable ID
+	@return ApiDeleteJobEnvironmentVariableRequest
 */
 func (a *JobEnvironmentVariableAPIService) DeleteJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiDeleteJobEnvironmentVariableRequest {
 	return ApiDeleteJobEnvironmentVariableRequest{
@@ -556,11 +555,10 @@ EditJobEnvironmentVariable Edit an environment variable belonging to the job
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param environmentVariableId Environment Variable ID
- @return ApiEditJobEnvironmentVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param environmentVariableId Environment Variable ID
+	@return ApiEditJobEnvironmentVariableRequest
 */
 func (a *JobEnvironmentVariableAPIService) EditJobEnvironmentVariable(ctx context.Context, jobId string, environmentVariableId string) ApiEditJobEnvironmentVariableRequest {
 	return ApiEditJobEnvironmentVariableRequest{
@@ -572,7 +570,8 @@ func (a *JobEnvironmentVariableAPIService) EditJobEnvironmentVariable(ctx contex
 }
 
 // Execute executes the request
-//  @return EnvironmentVariable
+//
+//	@return EnvironmentVariable
 func (a *JobEnvironmentVariableAPIService) EditJobEnvironmentVariableExecute(r ApiEditJobEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -688,9 +687,9 @@ ImportJobEnvironmentVariable Import variables
 
 Import environment variables in a defined scope, with a defined visibility.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiImportJobEnvironmentVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiImportJobEnvironmentVariableRequest
 */
 func (a *JobEnvironmentVariableAPIService) ImportJobEnvironmentVariable(ctx context.Context, jobId string) ApiImportJobEnvironmentVariableRequest {
 	return ApiImportJobEnvironmentVariableRequest{
@@ -701,7 +700,8 @@ func (a *JobEnvironmentVariableAPIService) ImportJobEnvironmentVariable(ctx cont
 }
 
 // Execute executes the request
-//  @return VariableImport
+//
+//	@return VariableImport
 func (a *JobEnvironmentVariableAPIService) ImportJobEnvironmentVariableExecute(r ApiImportJobEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -805,9 +805,9 @@ func (r ApiListJobEnvironmentVariableRequest) Execute() (*EnvironmentVariableRes
 /*
 ListJobEnvironmentVariable List environment variables
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiListJobEnvironmentVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiListJobEnvironmentVariableRequest
 */
 func (a *JobEnvironmentVariableAPIService) ListJobEnvironmentVariable(ctx context.Context, jobId string) ApiListJobEnvironmentVariableRequest {
 	return ApiListJobEnvironmentVariableRequest{
@@ -818,7 +818,8 @@ func (a *JobEnvironmentVariableAPIService) ListJobEnvironmentVariable(ctx contex
 }
 
 // Execute executes the request
-//  @return EnvironmentVariableResponseList
+//
+//	@return EnvironmentVariableResponseList
 func (a *JobEnvironmentVariableAPIService) ListJobEnvironmentVariableExecute(r ApiListJobEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

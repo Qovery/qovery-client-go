@@ -19573,7 +19573,7 @@ components:
       allOf:
       - properties:
           source:
-            $ref: '#/components/schemas/HelmRequest_allOf_source'
+            $ref: '#/components/schemas/HelmDefaultValuesRequest_allOf_source'
         required:
         - source
         type: object
@@ -22513,7 +22513,6 @@ components:
           example: us-east-2
           type: string
       type: object
-      example: null
     EnvironmentLog_scope:
       example:
         name: name
@@ -22643,7 +22642,6 @@ components:
           description: tag of the image container
           type: string
       type: object
-      example: null
     JobRequest_allOf_source_docker:
       nullable: true
       properties:
@@ -22655,7 +22653,6 @@ components:
         git_repository:
           $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
       type: object
-      example: null
     JobRequest_allOf_source:
       properties:
         image:
@@ -22663,7 +22660,6 @@ components:
         docker:
           $ref: '#/components/schemas/JobRequest_allOf_source_docker'
       type: object
-      example: null
     JobRequest_allOf_schedule_on_start:
       properties:
         arguments:
@@ -22674,7 +22670,6 @@ components:
           description: optional entrypoint when launching container
           type: string
       type: object
-      example: null
     JobRequest_allOf_schedule_cronjob:
       properties:
         arguments:
@@ -22698,7 +22693,6 @@ components:
       required:
       - scheduled_at
       type: object
-      example: null
     JobRequest_allOf_schedule:
       description: "If you want to define a Cron job, only the `cronjob` property\
         \ must be filled  \nA Lifecycle job should contain at least one property `on_XXX`\
@@ -22713,7 +22707,6 @@ components:
         cronjob:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_cronjob'
       type: object
-      example: null
     DeploymentHistoryJobResponse_allOf_schedule:
       properties:
         event:
@@ -22729,7 +22722,34 @@ components:
           nullable: true
           type: string
       type: object
-      example: null
+    HelmRequest_allOf_source_oneOf:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/HelmGitRepositoryRequest'
+      type: object
+    HelmRequest_allOf_source_oneOf_1_helm_repository:
+      properties:
+        repository:
+          description: The id of the helm repository
+          format: UUID
+          nullable: true
+          type: string
+        chart_name:
+          description: The name of the chart in the repository
+          type: string
+        chart_version:
+          description: The version of the chart to use
+          type: string
+      type: object
+    HelmRequest_allOf_source_oneOf_1:
+      properties:
+        helm_repository:
+          $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1_helm_repository'
+      type: object
+    HelmRequest_allOf_source:
+      oneOf:
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf'
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1'
     HelmRequest_allOf_values_override_file_git:
       nullable: true
       properties:
@@ -22745,7 +22765,6 @@ components:
       - git_repository
       - paths
       type: object
-      example: null
     HelmRequest_allOf_values_override_file_raw_values:
       properties:
         name:
@@ -22755,7 +22774,6 @@ components:
           description: The content of the value file
           type: string
       type: object
-      example: null
     HelmRequest_allOf_values_override_file_raw:
       nullable: true
       properties:
@@ -22764,7 +22782,6 @@ components:
             $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw_values'
           type: array
       type: object
-      example: null
     HelmRequest_allOf_values_override_file:
       nullable: true
       properties:
@@ -22773,7 +22790,6 @@ components:
         raw:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file_raw'
       type: object
-      example: null
     HelmRequest_allOf_values_override:
       description: |
         Specify helm values you want to set or override
@@ -22805,35 +22821,6 @@ components:
         file:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
       type: object
-      example: null
-    HelmRequest_allOf_source_oneOf:
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/HelmGitRepositoryRequest'
-      type: object
-    HelmRequest_allOf_source_oneOf_1_helm_repository:
-      properties:
-        repository:
-          description: The id of the helm repository
-          format: UUID
-          nullable: true
-          type: string
-        chart_name:
-          description: The name of the chart in the repository
-          type: string
-        chart_version:
-          description: The version of the chart to use
-          type: string
-      type: object
-    HelmRequest_allOf_source_oneOf_1:
-      properties:
-        helm_repository:
-          $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1_helm_repository'
-      type: object
-    HelmRequest_allOf_source:
-      oneOf:
-      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf'
-      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1'
     HelmResponse_allOf_ports:
       properties:
         id:
@@ -22865,88 +22852,6 @@ components:
       - protocol
       - service_name
       type: object
-      example: null
-    HelmResponse_allOf_values_override_file_raw_values:
-      properties:
-        name:
-          description: The name of the value file
-          type: string
-        content:
-          description: The content of the value file
-          type: string
-      required:
-      - content
-      - name
-      type: object
-      example: null
-    HelmResponse_allOf_values_override_file_raw:
-      nullable: true
-      properties:
-        values:
-          items:
-            $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw_values'
-          type: array
-      required:
-      - values
-      type: object
-      example: null
-    HelmResponse_allOf_values_override_file_git:
-      nullable: true
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepository'
-        paths:
-          description: List of path inside your git repository to locate values file.
-            Must start by a /
-          items:
-            type: string
-          type: array
-      required:
-      - git_repository
-      - paths
-      type: object
-      example: null
-    HelmResponse_allOf_values_override_file:
-      nullable: true
-      properties:
-        raw:
-          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw'
-        git:
-          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_git'
-      type: object
-      example: null
-    HelmResponse_allOf_values_override:
-      description: |
-        Specify helm values you want to set or override
-      properties:
-        set:
-          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
-            \ ]"
-          items:
-            items:
-              type: string
-            type: array
-          type: array
-        set_string:
-          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
-            \ ]"
-          items:
-            items:
-              type: string
-            type: array
-          type: array
-        set_json:
-          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
-            \ ]"
-          items:
-            items:
-              type: string
-            type: array
-          type: array
-        file:
-          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'
-      type: object
-      example: null
     HelmResponse_allOf_source_oneOf_git:
       properties:
         git_repository:
@@ -22999,6 +22904,82 @@ components:
       oneOf:
       - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf'
       - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1'
+    HelmResponse_allOf_values_override_file_raw_values:
+      properties:
+        name:
+          description: The name of the value file
+          type: string
+        content:
+          description: The content of the value file
+          type: string
+      required:
+      - content
+      - name
+      type: object
+    HelmResponse_allOf_values_override_file_raw:
+      nullable: true
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw_values'
+          type: array
+      required:
+      - values
+      type: object
+    HelmResponse_allOf_values_override_file_git:
+      nullable: true
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+        paths:
+          description: List of path inside your git repository to locate values file.
+            Must start by a /
+          items:
+            type: string
+          type: array
+      required:
+      - git_repository
+      - paths
+      type: object
+    HelmResponse_allOf_values_override_file:
+      nullable: true
+      properties:
+        raw:
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_raw'
+        git:
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file_git'
+      type: object
+    HelmResponse_allOf_values_override:
+      description: |
+        Specify helm values you want to set or override
+      properties:
+        set:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        set_string:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        set_json:
+          description: "The input is in json array format: [ [$KEY,$VALUE], [...]\
+            \ ]"
+          items:
+            items:
+              type: string
+            type: array
+          type: array
+        file:
+          $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'
+      type: object
     HelmPortRequest_ports_inner:
       properties:
         name:
@@ -23035,7 +23016,10 @@ components:
         chart_version:
           type: string
       type: object
-      example: null
+    HelmDefaultValuesRequest_allOf_source:
+      oneOf:
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf'
+      - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1'
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23239,7 +23223,6 @@ components:
         on_delete:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
       type: object
-      example: null
     CronJobResponse_allOf_schedule_cronjob:
       properties:
         arguments:
@@ -23263,13 +23246,11 @@ components:
       - scheduled_at
       - timezone
       type: object
-      example: null
     CronJobResponse_allOf_schedule:
       properties:
         cronjob:
           $ref: '#/components/schemas/CronJobResponse_allOf_schedule_cronjob'
       type: object
-      example: null
     BaseJobResponse_allOf_source_oneOf:
       properties:
         image:

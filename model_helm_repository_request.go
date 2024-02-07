@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmRepositoryRequest type satisfies the MappedNullable interface at compile time
@@ -29,6 +31,8 @@ type HelmRepositoryRequest struct {
 	SkipTlsVerification bool                        `json:"skip_tls_verification"`
 	Config              HelmRepositoryRequestConfig `json:"config"`
 }
+
+type _HelmRepositoryRequest HelmRepositoryRequest
 
 // NewHelmRepositoryRequest instantiates a new HelmRepositoryRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -232,6 +236,46 @@ func (o HelmRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	toSerialize["config"] = o.Config
 	return toSerialize, nil
+}
+
+func (o *HelmRepositoryRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"kind",
+		"skip_tls_verification",
+		"config",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmRepositoryRequest := _HelmRepositoryRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmRepositoryRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRepositoryRequest(varHelmRepositoryRequest)
+
+	return err
 }
 
 type NullableHelmRepositoryRequest struct {

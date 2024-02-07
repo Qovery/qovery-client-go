@@ -33,25 +33,25 @@ Create a git token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.CreateGitToken(context.Background(), organizationId).GitTokenRequest(gitTokenRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.CreateGitToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateGitToken`: GitTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.CreateGitToken`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.CreateGitToken(context.Background(), organizationId).GitTokenRequest(gitTokenRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.CreateGitToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateGitToken`: GitTokenResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.CreateGitToken`: %v\n", resp)
 }
 ```
 
@@ -103,24 +103,24 @@ Create an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationRequest := *openapiclient.NewOrganizationRequest("Name_example", openapiclient.PlanEnum("FREE")) // OrganizationRequest |  (optional)
+	organizationRequest := *openapiclient.NewOrganizationRequest("Name_example", openapiclient.PlanEnum("FREE")) // OrganizationRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.CreateOrganization(context.Background()).OrganizationRequest(organizationRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.CreateOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrganization`: Organization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.CreateOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.CreateOrganization(context.Background()).OrganizationRequest(organizationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.CreateOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrganization`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.CreateOrganization`: %v\n", resp)
 }
 ```
 
@@ -167,23 +167,23 @@ Delete a git token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationMainCallsAPI.DeleteGitToken(context.Background(), organizationId, gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.DeleteGitToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationMainCallsAPI.DeleteGitToken(context.Background(), organizationId, gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.DeleteGitToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -238,22 +238,22 @@ Delete an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationMainCallsAPI.DeleteOrganization(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.DeleteOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationMainCallsAPI.DeleteOrganization(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.DeleteOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -304,26 +304,26 @@ Edit a git token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
-    gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+	gitTokenRequest := *openapiclient.NewGitTokenRequest("Name_example", openapiclient.GitProviderEnum("BITBUCKET"), "Token_example") // GitTokenRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.EditGitToken(context.Background(), organizationId, gitTokenId).GitTokenRequest(gitTokenRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditGitToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditGitToken`: GitTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditGitToken`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.EditGitToken(context.Background(), organizationId, gitTokenId).GitTokenRequest(gitTokenRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditGitToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditGitToken`: GitTokenResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditGitToken`: %v\n", resp)
 }
 ```
 
@@ -379,25 +379,25 @@ Edit an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationEditRequest := *openapiclient.NewOrganizationEditRequest("Name_example") // OrganizationEditRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationEditRequest := *openapiclient.NewOrganizationEditRequest("Name_example") // OrganizationEditRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.EditOrganization(context.Background(), organizationId).OrganizationEditRequest(organizationEditRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditOrganization`: Organization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.EditOrganization(context.Background(), organizationId).OrganizationEditRequest(organizationEditRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganization`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditOrganization`: %v\n", resp)
 }
 ```
 
@@ -451,25 +451,25 @@ Get organization git token associated services
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.GetGitTokenAssociatedServices(context.Background(), organizationId, gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetGitTokenAssociatedServices``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGitTokenAssociatedServices`: GitTokenAssociatedServicesResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetGitTokenAssociatedServices`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetGitTokenAssociatedServices(context.Background(), organizationId, gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetGitTokenAssociatedServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitTokenAssociatedServices`: GitTokenAssociatedServicesResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetGitTokenAssociatedServices`: %v\n", resp)
 }
 ```
 
@@ -522,24 +522,24 @@ Get organization by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganization(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganization`: Organization
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganization(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganization`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganization`: %v\n", resp)
 }
 ```
 
@@ -592,25 +592,25 @@ Get organization git token
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Token ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitToken(context.Background(), organizationId, gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganizationGitToken``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGitToken`: GitTokenResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganizationGitToken`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganizationGitToken(context.Background(), organizationId, gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganizationGitToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGitToken`: GitTokenResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganizationGitToken`: %v\n", resp)
 }
 ```
 
@@ -663,23 +663,23 @@ List user organizations
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganization(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganization``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganization`: OrganizationResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganization`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganization(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganization``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganization`: OrganizationResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganization`: %v\n", resp)
 }
 ```
 
@@ -724,24 +724,24 @@ List organization available roles
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganizationAvailableRoles(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationAvailableRoles``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationAvailableRoles`: OrganizationAvailableRoleList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationAvailableRoles`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganizationAvailableRoles(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationAvailableRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationAvailableRoles`: OrganizationAvailableRoleList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationAvailableRoles`: %v\n", resp)
 }
 ```
 
@@ -794,24 +794,24 @@ List organization git tokens
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganizationGitTokens(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationGitTokens``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationGitTokens`: GitTokenResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationGitTokens`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganizationGitTokens(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationGitTokens``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationGitTokens`: GitTokenResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationGitTokens`: %v\n", resp)
 }
 ```
 

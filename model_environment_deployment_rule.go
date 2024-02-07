@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -32,6 +34,8 @@ type EnvironmentDeploymentRule struct {
 	StopTime        time.Time     `json:"stop_time"`
 	Weekdays        []WeekdayEnum `json:"weekdays"`
 }
+
+type _EnvironmentDeploymentRule EnvironmentDeploymentRule
 
 // NewEnvironmentDeploymentRule instantiates a new EnvironmentDeploymentRule object
 // This constructor will assign default values to properties that have it defined,
@@ -369,6 +373,48 @@ func (o EnvironmentDeploymentRule) ToMap() (map[string]interface{}, error) {
 	toSerialize["stop_time"] = o.StopTime
 	toSerialize["weekdays"] = o.Weekdays
 	return toSerialize, nil
+}
+
+func (o *EnvironmentDeploymentRule) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"timezone",
+		"start_time",
+		"stop_time",
+		"weekdays",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnvironmentDeploymentRule := _EnvironmentDeploymentRule{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnvironmentDeploymentRule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentDeploymentRule(varEnvironmentDeploymentRule)
+
+	return err
 }
 
 type NullableEnvironmentDeploymentRule struct {

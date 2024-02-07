@@ -45,9 +45,9 @@ ListDatabaseDeploymentHistory List database deploys
 
 By default it returns the 20 last results. The response is paginated.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiListDatabaseDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiListDatabaseDeploymentHistoryRequest
 */
 func (a *DatabaseDeploymentHistoryAPIService) ListDatabaseDeploymentHistory(ctx context.Context, databaseId string) ApiListDatabaseDeploymentHistoryRequest {
 	return ApiListDatabaseDeploymentHistoryRequest{
@@ -58,7 +58,8 @@ func (a *DatabaseDeploymentHistoryAPIService) ListDatabaseDeploymentHistory(ctx 
 }
 
 // Execute executes the request
-//  @return ListDatabaseDeploymentHistory200Response
+//
+//	@return ListDatabaseDeploymentHistory200Response
 func (a *DatabaseDeploymentHistoryAPIService) ListDatabaseDeploymentHistoryExecute(r ApiListDatabaseDeploymentHistoryRequest) (*ListDatabaseDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

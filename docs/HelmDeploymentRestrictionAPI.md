@@ -25,25 +25,25 @@ Create a helm deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    helmDeploymentRestrictionRequest := *openapiclient.NewHelmDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "helm1/src/") // HelmDeploymentRestrictionRequest |  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	helmDeploymentRestrictionRequest := *openapiclient.NewHelmDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "helm1/src/") // HelmDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction(context.Background(), helmId).HelmDeploymentRestrictionRequest(helmDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateHelmDeploymentRestriction`: HelmDeploymentRestrictionResponse
-    fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction(context.Background(), helmId).HelmDeploymentRestrictionRequest(helmDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateHelmDeploymentRestriction`: HelmDeploymentRestrictionResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.CreateHelmDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -97,23 +97,23 @@ Delete a helm deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.HelmDeploymentRestrictionAPI.DeleteHelmDeploymentRestriction(context.Background(), helmId, deploymentRestrictionId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.DeleteHelmDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.HelmDeploymentRestrictionAPI.DeleteHelmDeploymentRestriction(context.Background(), helmId, deploymentRestrictionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.DeleteHelmDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -168,26 +168,26 @@ Edit a helm deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
-    helmDeploymentRestrictionRequest := *openapiclient.NewHelmDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "helm1/src/") // HelmDeploymentRestrictionRequest |  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	helmDeploymentRestrictionRequest := *openapiclient.NewHelmDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "helm1/src/") // HelmDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction(context.Background(), helmId, deploymentRestrictionId).HelmDeploymentRestrictionRequest(helmDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditHelmDeploymentRestriction`: HelmDeploymentRestrictionResponse
-    fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction(context.Background(), helmId, deploymentRestrictionId).HelmDeploymentRestrictionRequest(helmDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditHelmDeploymentRestriction`: HelmDeploymentRestrictionResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.EditHelmDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -243,24 +243,24 @@ Get helm deployment restrictions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions(context.Background(), helmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetHelmDeploymentRestrictions`: HelmDeploymentRestrictionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions(context.Background(), helmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmDeploymentRestrictions`: HelmDeploymentRestrictionResponseList
+	fmt.Fprintf(os.Stdout, "Response from `HelmDeploymentRestrictionAPI.GetHelmDeploymentRestrictions`: %v\n", resp)
 }
 ```
 

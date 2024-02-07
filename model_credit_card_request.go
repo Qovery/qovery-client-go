@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CreditCardRequest type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type CreditCardRequest struct {
 	ExpiryMonth int32  `json:"expiry_month"`
 	ExpiryYear  int32  `json:"expiry_year"`
 }
+
+type _CreditCardRequest CreditCardRequest
 
 // NewCreditCardRequest instantiates a new CreditCardRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -158,6 +162,46 @@ func (o CreditCardRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["expiry_month"] = o.ExpiryMonth
 	toSerialize["expiry_year"] = o.ExpiryYear
 	return toSerialize, nil
+}
+
+func (o *CreditCardRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"number",
+		"cvv",
+		"expiry_month",
+		"expiry_year",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCreditCardRequest := _CreditCardRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCreditCardRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreditCardRequest(varCreditCardRequest)
+
+	return err
 }
 
 type NullableCreditCardRequest struct {

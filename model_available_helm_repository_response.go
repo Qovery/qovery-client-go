@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the AvailableHelmRepositoryResponse type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type AvailableHelmRepositoryResponse struct {
 	RequiredConfig map[string]interface{} `json:"required_config"`
 	IsMandatory    bool                   `json:"is_mandatory"`
 }
+
+type _AvailableHelmRepositoryResponse AvailableHelmRepositoryResponse
 
 // NewAvailableHelmRepositoryResponse instantiates a new AvailableHelmRepositoryResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -131,6 +135,45 @@ func (o AvailableHelmRepositoryResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["required_config"] = o.RequiredConfig
 	toSerialize["is_mandatory"] = o.IsMandatory
 	return toSerialize, nil
+}
+
+func (o *AvailableHelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"kind",
+		"required_config",
+		"is_mandatory",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varAvailableHelmRepositoryResponse := _AvailableHelmRepositoryResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varAvailableHelmRepositoryResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AvailableHelmRepositoryResponse(varAvailableHelmRepositoryResponse)
+
+	return err
 }
 
 type NullableAvailableHelmRepositoryResponse struct {

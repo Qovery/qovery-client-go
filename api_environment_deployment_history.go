@@ -45,9 +45,9 @@ ListEnvironmentDeploymentHistory List environment deployments
 
 List previous and current environment deployments with the status deployment and the related services. By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListEnvironmentDeploymentHistoryRequest
 */
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistory(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryRequest {
 	return ApiListEnvironmentDeploymentHistoryRequest{
@@ -58,7 +58,8 @@ func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistor
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryEnvironmentPaginatedResponseList
+//
+//	@return DeploymentHistoryEnvironmentPaginatedResponseList
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistoryExecute(r ApiListEnvironmentDeploymentHistoryRequest) (*DeploymentHistoryEnvironmentPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

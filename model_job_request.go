@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the JobRequest type satisfies the MappedNullable interface at compile time
@@ -41,6 +43,8 @@ type JobRequest struct {
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
 }
+
+type _JobRequest JobRequest
 
 // NewJobRequest instantiates a new JobRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -506,6 +510,44 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
 	return toSerialize, nil
+}
+
+func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"healthchecks",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varJobRequest := _JobRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varJobRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobRequest(varJobRequest)
+
+	return err
 }
 
 type NullableJobRequest struct {

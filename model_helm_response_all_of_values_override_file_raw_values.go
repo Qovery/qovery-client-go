@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmResponseAllOfValuesOverrideFileRawValues type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type HelmResponseAllOfValuesOverrideFileRawValues struct {
 	// The content of the value file
 	Content string `json:"content"`
 }
+
+type _HelmResponseAllOfValuesOverrideFileRawValues HelmResponseAllOfValuesOverrideFileRawValues
 
 // NewHelmResponseAllOfValuesOverrideFileRawValues instantiates a new HelmResponseAllOfValuesOverrideFileRawValues object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o HelmResponseAllOfValuesOverrideFileRawValues) ToMap() (map[string]interf
 	toSerialize["name"] = o.Name
 	toSerialize["content"] = o.Content
 	return toSerialize, nil
+}
+
+func (o *HelmResponseAllOfValuesOverrideFileRawValues) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"content",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmResponseAllOfValuesOverrideFileRawValues := _HelmResponseAllOfValuesOverrideFileRawValues{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmResponseAllOfValuesOverrideFileRawValues)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmResponseAllOfValuesOverrideFileRawValues(varHelmResponseAllOfValuesOverrideFileRawValues)
+
+	return err
 }
 
 type NullableHelmResponseAllOfValuesOverrideFileRawValues struct {

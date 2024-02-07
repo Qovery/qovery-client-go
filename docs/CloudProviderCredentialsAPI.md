@@ -34,25 +34,25 @@ Create AWS credentials set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateAWSCredentials(context.Background(), organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateAWSCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateAWSCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateAWSCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateAWSCredentials(context.Background(), organizationId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateAWSCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAWSCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateAWSCredentials`: %v\n", resp)
 }
 ```
 
@@ -104,25 +104,25 @@ Create GCP credentials set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateGcpCredentials(context.Background(), organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateGcpCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateGcpCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateGcpCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateGcpCredentials(context.Background(), organizationId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateGcpCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateGcpCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateGcpCredentials`: %v\n", resp)
 }
 ```
 
@@ -174,25 +174,25 @@ Create Scaleway credentials set
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateScalewayCredentials(context.Background(), organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateScalewayCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateScalewayCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateScalewayCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateScalewayCredentials(context.Background(), organizationId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateScalewayCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateScalewayCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateScalewayCredentials`: %v\n", resp)
 }
 ```
 
@@ -244,23 +244,23 @@ Delete a set of AWS credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudProviderCredentialsAPI.DeleteAWSCredentials(context.Background(), credentialsId, organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteAWSCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudProviderCredentialsAPI.DeleteAWSCredentials(context.Background(), credentialsId, organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteAWSCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -313,23 +313,23 @@ Delete a set of GCP credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudProviderCredentialsAPI.DeleteGcpCredentials(context.Background(), credentialsId, organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteGcpCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudProviderCredentialsAPI.DeleteGcpCredentials(context.Background(), credentialsId, organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteGcpCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -382,23 +382,23 @@ Delete a set of Scaleway credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.CloudProviderCredentialsAPI.DeleteScalewayCredentials(context.Background(), credentialsId, organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteScalewayCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudProviderCredentialsAPI.DeleteScalewayCredentials(context.Background(), credentialsId, organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteScalewayCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -451,26 +451,26 @@ Edit a set of AWS credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.EditAWSCredentials(context.Background(), organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditAWSCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditAWSCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditAWSCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.EditAWSCredentials(context.Background(), organizationId, credentialsId).AwsCredentialsRequest(awsCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditAWSCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditAWSCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditAWSCredentials`: %v\n", resp)
 }
 ```
 
@@ -524,26 +524,26 @@ Edit a set of GCP credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.EditGcpCredentials(context.Background(), organizationId, credentialsId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditGcpCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditGcpCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditGcpCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.EditGcpCredentials(context.Background(), organizationId, credentialsId).GcpCredentialsRequest(gcpCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditGcpCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditGcpCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditGcpCredentials`: %v\n", resp)
 }
 ```
 
@@ -597,26 +597,26 @@ Edit a set of Scaleway credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-    scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	scalewayCredentialsRequest := *openapiclient.NewScalewayCredentialsRequest("Name_example", "ScalewayAccessKey_example", "ScalewaySecretKey_example", "ScalewayProjectId_example", "ScalewayOrganizationId_example") // ScalewayCredentialsRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.EditScalewayCredentials(context.Background(), organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditScalewayCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditScalewayCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditScalewayCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.EditScalewayCredentials(context.Background(), organizationId, credentialsId).ScalewayCredentialsRequest(scalewayCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditScalewayCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditScalewayCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditScalewayCredentials`: %v\n", resp)
 }
 ```
 
@@ -670,25 +670,25 @@ Get a set of AWS credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.GetAWSCredentials(context.Background(), organizationId, credentialsId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetAWSCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAWSCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetAWSCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.GetAWSCredentials(context.Background(), organizationId, credentialsId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetAWSCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAWSCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetAWSCredentials`: %v\n", resp)
 }
 ```
 
@@ -741,25 +741,25 @@ Get a set of GCP credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.GetGcpCredentials(context.Background(), organizationId, credentialsId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetGcpCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGcpCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetGcpCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.GetGcpCredentials(context.Background(), organizationId, credentialsId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetGcpCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGcpCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetGcpCredentials`: %v\n", resp)
 }
 ```
 
@@ -812,25 +812,25 @@ Get a set of Scaleway credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.GetScalewayCredentials(context.Background(), organizationId, credentialsId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetScalewayCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetScalewayCredentials`: ClusterCredentials
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetScalewayCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.GetScalewayCredentials(context.Background(), organizationId, credentialsId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetScalewayCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetScalewayCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetScalewayCredentials`: %v\n", resp)
 }
 ```
 
@@ -883,24 +883,24 @@ List AWS credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.ListAWSCredentials(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListAWSCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAWSCredentials`: ClusterCredentialsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListAWSCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.ListAWSCredentials(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListAWSCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAWSCredentials`: ClusterCredentialsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListAWSCredentials`: %v\n", resp)
 }
 ```
 
@@ -951,24 +951,24 @@ List GCP credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.ListGcpCredentials(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListGcpCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListGcpCredentials`: ClusterCredentialsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListGcpCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.ListGcpCredentials(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListGcpCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListGcpCredentials`: ClusterCredentialsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListGcpCredentials`: %v\n", resp)
 }
 ```
 
@@ -1019,24 +1019,24 @@ List Scaleway credentials
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.CloudProviderCredentialsAPI.ListScalewayCredentials(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListScalewayCredentials``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListScalewayCredentials`: ClusterCredentialsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListScalewayCredentials`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.ListScalewayCredentials(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListScalewayCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListScalewayCredentials`: ClusterCredentialsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListScalewayCredentials`: %v\n", resp)
 }
 ```
 

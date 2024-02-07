@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmPortRequestPortsInner type satisfies the MappedNullable interface at compile time
@@ -31,6 +33,8 @@ type HelmPortRequestPortsInner struct {
 	// is the default port to use for domain
 	IsDefault *bool `json:"is_default,omitempty"`
 }
+
+type _HelmPortRequestPortsInner HelmPortRequestPortsInner
 
 // NewHelmPortRequestPortsInner instantiates a new HelmPortRequestPortsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -291,6 +295,44 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_default"] = o.IsDefault
 	}
 	return toSerialize, nil
+}
+
+func (o *HelmPortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"internal_port",
+		"service_name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmPortRequestPortsInner := _HelmPortRequestPortsInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmPortRequestPortsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmPortRequestPortsInner(varHelmPortRequestPortsInner)
+
+	return err
 }
 
 type NullableHelmPortRequestPortsInner struct {

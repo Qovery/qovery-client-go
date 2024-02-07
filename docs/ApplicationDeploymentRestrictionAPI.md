@@ -25,25 +25,25 @@ Create an application deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction(context.Background(), applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction(context.Background(), applicationId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.CreateApplicationDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -97,23 +97,23 @@ Delete an application deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationDeploymentRestrictionAPI.DeleteApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.DeleteApplicationDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationDeploymentRestrictionAPI.DeleteApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.DeleteApplicationDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -168,26 +168,26 @@ Edit an application deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
-    applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	applicationDeploymentRestrictionRequest := *openapiclient.NewApplicationDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "application1/src/") // ApplicationDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction(context.Background(), applicationId, deploymentRestrictionId).ApplicationDeploymentRestrictionRequest(applicationDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditApplicationDeploymentRestriction`: ApplicationDeploymentRestriction
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.EditApplicationDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -243,24 +243,24 @@ Get application deployment restrictions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestrictionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetApplicationDeploymentRestrictions`: ApplicationDeploymentRestrictionResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationDeploymentRestrictionAPI.GetApplicationDeploymentRestrictions`: %v\n", resp)
 }
 ```
 

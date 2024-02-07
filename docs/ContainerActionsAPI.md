@@ -25,25 +25,25 @@ Deploy container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerDeployRequest := *openapiclient.NewContainerDeployRequest("ImageTag_example") // ContainerDeployRequest |  (optional)
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerDeployRequest := *openapiclient.NewContainerDeployRequest("ImageTag_example") // ContainerDeployRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsAPI.DeployContainer(context.Background(), containerId).ContainerDeployRequest(containerDeployRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.DeployContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.DeployContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerActionsAPI.DeployContainer(context.Background(), containerId).ContainerDeployRequest(containerDeployRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.DeployContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployContainer`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.DeployContainer`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ Reboot container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsAPI.RebootContainer(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RebootContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RebootContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RebootContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerActionsAPI.RebootContainer(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RebootContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RebootContainer`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RebootContainer`: %v\n", resp)
 }
 ```
 
@@ -165,24 +165,24 @@ Deprecated - Restart container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsAPI.RestartContainer(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RestartContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RestartContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RestartContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerActionsAPI.RestartContainer(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RestartContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RestartContainer`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RestartContainer`: %v\n", resp)
 }
 ```
 
@@ -233,24 +233,24 @@ Stop container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsAPI.StopContainer(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.StopContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StopContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.StopContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerActionsAPI.StopContainer(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.StopContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StopContainer`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.StopContainer`: %v\n", resp)
 }
 ```
 

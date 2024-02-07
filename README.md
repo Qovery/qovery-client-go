@@ -16,20 +16,20 @@ For more information, please visit [https://www.qovery.com](https://www.qovery.c
 
 Install the following dependencies:
 
-```shell
+```sh
 go get github.com/stretchr/testify/assert
 go get golang.org/x/net/context
 ```
 
 Put the package under your project folder and add the following in import:
 
-```golang
+```go
 import qovery "github.com/qovery/qovery-client-go"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
 
-```golang
+```go
 os.Setenv("HTTP_PROXY", "http://proxy_name:proxy_port")
 ```
 
@@ -39,17 +39,17 @@ Default configuration comes with `Servers` field that contains server objects as
 
 ### Select Server Configuration
 
-For using other server than the one defined on index 0 set context value `sw.ContextServerIndex` of type `int`.
+For using other server than the one defined on index 0 set context value `qovery.ContextServerIndex` of type `int`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), qovery.ContextServerIndex, 1)
 ```
 
 ### Templated Server URL
 
-Templated server URL is formatted using default variables from configuration or from context value `sw.ContextServerVariables` of type `map[string]string`.
+Templated server URL is formatted using default variables from configuration or from context value `qovery.ContextServerVariables` of type `map[string]string`.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), qovery.ContextServerVariables, map[string]string{
 	"basePath": "v2",
 })
@@ -61,9 +61,9 @@ Note, enum values are always validated and all unused variables are silently ign
 
 Each operation can use different server URL defined using `OperationServers` map in the `Configuration`.
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
-Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
+Similar rules for overriding default operation server index and variables applies by using `qovery.ContextOperationServerIndices` and `qovery.ContextOperationServerVariables` context maps.
 
-```golang
+```go
 ctx := context.WithValue(context.Background(), qovery.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -682,6 +682,7 @@ Class | Method | HTTP request | Description
  - [Healthcheck](docs/Healthcheck.md)
  - [HelmAdvancedSettings](docs/HelmAdvancedSettings.md)
  - [HelmDefaultValuesRequest](docs/HelmDefaultValuesRequest.md)
+ - [HelmDefaultValuesRequestAllOfSource](docs/HelmDefaultValuesRequestAllOfSource.md)
  - [HelmDeployRequest](docs/HelmDeployRequest.md)
  - [HelmDeploymentRestrictionRequest](docs/HelmDeploymentRestrictionRequest.md)
  - [HelmDeploymentRestrictionResponse](docs/HelmDeploymentRestrictionResponse.md)
@@ -905,8 +906,8 @@ Authentication schemes defined for the API:
 
 Example
 
-```golang
-auth := context.WithValue(context.Background(), sw.ContextAccessToken, "BEARER_TOKEN_STRING")
+```go
+auth := context.WithValue(context.Background(), qovery.ContextAccessToken, "BEARER_TOKEN_STRING")
 r, err := client.Service.Operation(auth, args)
 ```
 
@@ -920,11 +921,11 @@ Note, each API key must be added to a map of `map[string]APIKey` where the key i
 
 Example
 
-```golang
+```go
 auth := context.WithValue(
 		context.Background(),
-		sw.ContextAPIKeys,
-		map[string]sw.APIKey{
+		qovery.ContextAPIKeys,
+		map[string]qovery.APIKey{
 			"Authorization": {Key: "API_KEY_STRING"},
 		},
 	)

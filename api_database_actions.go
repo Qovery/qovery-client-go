@@ -36,9 +36,9 @@ func (r ApiDeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
 /*
 DeployDatabase Deploy database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiDeployDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiDeployDatabaseRequest
 */
 func (a *DatabaseActionsAPIService) DeployDatabase(ctx context.Context, databaseId string) ApiDeployDatabaseRequest {
 	return ApiDeployDatabaseRequest{
@@ -49,7 +49,8 @@ func (a *DatabaseActionsAPIService) DeployDatabase(ctx context.Context, database
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *DatabaseActionsAPIService) DeployDatabaseExecute(r ApiDeployDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -151,9 +152,9 @@ func (r ApiRebootDatabaseRequest) Execute() (*Status, *http.Response, error) {
 /*
 RebootDatabase Retart database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiRebootDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiRebootDatabaseRequest
 */
 func (a *DatabaseActionsAPIService) RebootDatabase(ctx context.Context, databaseId string) ApiRebootDatabaseRequest {
 	return ApiRebootDatabaseRequest{
@@ -164,7 +165,8 @@ func (a *DatabaseActionsAPIService) RebootDatabase(ctx context.Context, database
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *DatabaseActionsAPIService) RebootDatabaseExecute(r ApiRebootDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -268,9 +270,9 @@ RestartDatabase Deprecated - Restart database
 
 **Deprecated** - Please use the "Redeploy database" endpoint now
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiRestartDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiRestartDatabaseRequest
 */
 func (a *DatabaseActionsAPIService) RestartDatabase(ctx context.Context, databaseId string) ApiRestartDatabaseRequest {
 	return ApiRestartDatabaseRequest{
@@ -281,7 +283,8 @@ func (a *DatabaseActionsAPIService) RestartDatabase(ctx context.Context, databas
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *DatabaseActionsAPIService) RestartDatabaseExecute(r ApiRestartDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -383,9 +386,9 @@ func (r ApiStopDatabaseRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopDatabase Stop database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiStopDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiStopDatabaseRequest
 */
 func (a *DatabaseActionsAPIService) StopDatabase(ctx context.Context, databaseId string) ApiStopDatabaseRequest {
 	return ApiStopDatabaseRequest{
@@ -396,7 +399,8 @@ func (a *DatabaseActionsAPIService) StopDatabase(ctx context.Context, databaseId
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *DatabaseActionsAPIService) StopDatabaseExecute(r ApiStopDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

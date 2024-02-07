@@ -43,13 +43,14 @@ func (r ApiCreateProjectSecretRequest) Execute() (*Secret, *http.Response, error
 CreateProjectSecret Add a secret to the project
 
 - Add a secret to the project.
+
   - If the secret key already exists, then it will be replaced by the new one.
+
   - If the secret value points toward an existing secret key, it will be considered as an alias.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @return ApiCreateProjectSecretRequest
+    @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+    @param projectId Project ID
+    @return ApiCreateProjectSecretRequest
 */
 func (a *ProjectSecretAPIService) CreateProjectSecret(ctx context.Context, projectId string) ApiCreateProjectSecretRequest {
 	return ApiCreateProjectSecretRequest{
@@ -60,7 +61,8 @@ func (a *ProjectSecretAPIService) CreateProjectSecret(ctx context.Context, proje
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ProjectSecretAPIService) CreateProjectSecretExecute(r ApiCreateProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -178,11 +180,10 @@ CreateProjectSecretAlias Create a secret alias at the project level
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @param secretId Secret ID
- @return ApiCreateProjectSecretAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@param secretId Secret ID
+	@return ApiCreateProjectSecretAliasRequest
 */
 func (a *ProjectSecretAPIService) CreateProjectSecretAlias(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretAliasRequest {
 	return ApiCreateProjectSecretAliasRequest{
@@ -194,7 +195,8 @@ func (a *ProjectSecretAPIService) CreateProjectSecretAlias(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ProjectSecretAPIService) CreateProjectSecretAliasExecute(r ApiCreateProjectSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -312,11 +314,10 @@ CreateProjectSecretOverride Create a secret override at the project level
 - The response body will contain the newly created secret
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @param secretId Secret ID
- @return ApiCreateProjectSecretOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@param secretId Secret ID
+	@return ApiCreateProjectSecretOverrideRequest
 */
 func (a *ProjectSecretAPIService) CreateProjectSecretOverride(ctx context.Context, projectId string, secretId string) ApiCreateProjectSecretOverrideRequest {
 	return ApiCreateProjectSecretOverrideRequest{
@@ -328,7 +329,8 @@ func (a *ProjectSecretAPIService) CreateProjectSecretOverride(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ProjectSecretAPIService) CreateProjectSecretOverrideExecute(r ApiCreateProjectSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -438,11 +440,10 @@ DeleteProjectSecret Delete a secret from a project
 - You can't delete a BUILT_IN secret
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteProjectSecret
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @param secretId Secret ID
- @return ApiDeleteProjectSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@param secretId Secret ID
+	@return ApiDeleteProjectSecretRequest
 */
 func (a *ProjectSecretAPIService) DeleteProjectSecret(ctx context.Context, projectId string, secretId string) ApiDeleteProjectSecretRequest {
 	return ApiDeleteProjectSecretRequest{
@@ -558,11 +559,10 @@ EditProjectSecret Edit a secret belonging to the project
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @param secretId Secret ID
- @return ApiEditProjectSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@param secretId Secret ID
+	@return ApiEditProjectSecretRequest
 */
 func (a *ProjectSecretAPIService) EditProjectSecret(ctx context.Context, projectId string, secretId string) ApiEditProjectSecretRequest {
 	return ApiEditProjectSecretRequest{
@@ -574,7 +574,8 @@ func (a *ProjectSecretAPIService) EditProjectSecret(ctx context.Context, project
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ProjectSecretAPIService) EditProjectSecretExecute(r ApiEditProjectSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -682,9 +683,9 @@ func (r ApiListProjectSecretsRequest) Execute() (*SecretResponseList, *http.Resp
 /*
 ListProjectSecrets List project secrets
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @return ApiListProjectSecretsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@return ApiListProjectSecretsRequest
 */
 func (a *ProjectSecretAPIService) ListProjectSecrets(ctx context.Context, projectId string) ApiListProjectSecretsRequest {
 	return ApiListProjectSecretsRequest{
@@ -695,7 +696,8 @@ func (a *ProjectSecretAPIService) ListProjectSecrets(ctx context.Context, projec
 }
 
 // Execute executes the request
-//  @return SecretResponseList
+//
+//	@return SecretResponseList
 func (a *ProjectSecretAPIService) ListProjectSecretsExecute(r ApiListProjectSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

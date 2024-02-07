@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ContainerRegistryRequest type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type ContainerRegistryRequest struct {
 	Url    *string                        `json:"url,omitempty"`
 	Config ContainerRegistryRequestConfig `json:"config"`
 }
+
+type _ContainerRegistryRequest ContainerRegistryRequest
 
 // NewContainerRegistryRequest instantiates a new ContainerRegistryRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -204,6 +208,45 @@ func (o ContainerRegistryRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["config"] = o.Config
 	return toSerialize, nil
+}
+
+func (o *ContainerRegistryRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"kind",
+		"config",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContainerRegistryRequest := _ContainerRegistryRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContainerRegistryRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerRegistryRequest(varContainerRegistryRequest)
+
+	return err
 }
 
 type NullableContainerRegistryRequest struct {

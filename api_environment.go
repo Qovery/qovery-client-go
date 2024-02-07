@@ -44,9 +44,9 @@ DeployAllApplications Deploy applications
 
 Start a deployment of the environment. Any of the services within the chosen environment based on the following rule: a service is deployed only if a new version is specified in the payload for that application/container or if there was a change in its configuration that needs to be applied (vCPU,RAM etc..)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiDeployAllApplicationsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiDeployAllApplicationsRequest
 */
 func (a *EnvironmentAPIService) DeployAllApplications(ctx context.Context, environmentId string) ApiDeployAllApplicationsRequest {
 	return ApiDeployAllApplicationsRequest{
@@ -57,7 +57,8 @@ func (a *EnvironmentAPIService) DeployAllApplications(ctx context.Context, envir
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *EnvironmentAPIService) DeployAllApplicationsExecute(r ApiDeployAllApplicationsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

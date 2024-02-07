@@ -28,22 +28,22 @@ Delete application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ApplicationMainCallsAPI.DeleteApplication(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.DeleteApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ApplicationMainCallsAPI.DeleteApplication(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.DeleteApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -96,25 +96,25 @@ Edit application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationEditRequest := *openapiclient.NewApplicationEditRequest(*openapiclient.NewHealthcheck()) // ApplicationEditRequest |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationEditRequest := *openapiclient.NewApplicationEditRequest(*openapiclient.NewHealthcheck()) // ApplicationEditRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.EditApplication(context.Background(), applicationId).ApplicationEditRequest(applicationEditRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.EditApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditApplication`: Application
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.EditApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.EditApplication(context.Background(), applicationId).ApplicationEditRequest(applicationEditRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.EditApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditApplication`: Application
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.EditApplication`: %v\n", resp)
 }
 ```
 
@@ -166,24 +166,24 @@ Get application by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.GetApplication(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.GetApplication``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetApplication`: Application
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.GetApplication`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.GetApplication(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.GetApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetApplication`: Application
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.GetApplication`: %v\n", resp)
 }
 ```
 
@@ -234,24 +234,24 @@ Get application status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.GetApplicationStatus(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.GetApplicationStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetApplicationStatus`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.GetApplicationStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.GetApplicationStatus(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.GetApplicationStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetApplicationStatus`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.GetApplicationStatus`: %v\n", resp)
 }
 ```
 
@@ -304,26 +304,26 @@ List last commits
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
-    gitCommitId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Commit ID (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+	gitCommitId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Git Commit ID (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationCommit(context.Background(), applicationId).StartId(startId).GitCommitId(gitCommitId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationCommit``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListApplicationCommit`: CommitResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationCommit`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationCommit(context.Background(), applicationId).StartId(startId).GitCommitId(gitCommitId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationCommit``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListApplicationCommit`: CommitResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationCommit`: %v\n", resp)
 }
 ```
 
@@ -376,24 +376,24 @@ List contributors
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationContributor(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationContributor``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListApplicationContributor`: UserResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationContributor`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationContributor(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationContributor``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListApplicationContributor`: UserResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationContributor`: %v\n", resp)
 }
 ```
 
@@ -446,24 +446,24 @@ List all URLs of the application
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationLinks(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationLinks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListApplicationLinks`: LinkResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationLinks`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationMainCallsAPI.ListApplicationLinks(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.ListApplicationLinks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListApplicationLinks`: LinkResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationMainCallsAPI.ListApplicationLinks`: %v\n", resp)
 }
 ```
 

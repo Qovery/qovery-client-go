@@ -44,9 +44,9 @@ CreateOrganizationApiToken Create an organization api token
 
 Create an organization api token. You can use the generated token to interact in a programmatic way with our API.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateOrganizationApiTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateOrganizationApiTokenRequest
 */
 func (a *OrganizationApiTokenAPIService) CreateOrganizationApiToken(ctx context.Context, organizationId string) ApiCreateOrganizationApiTokenRequest {
 	return ApiCreateOrganizationApiTokenRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationApiTokenAPIService) CreateOrganizationApiToken(ctx context.
 }
 
 // Execute executes the request
-//  @return OrganizationApiTokenCreate
+//
+//	@return OrganizationApiTokenCreate
 func (a *OrganizationApiTokenAPIService) CreateOrganizationApiTokenExecute(r ApiCreateOrganizationApiTokenRequest) (*OrganizationApiTokenCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteOrganizationApiToken Delete organization api token
 
 Delete organization api token
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param apiTokenId Organization Api Token ID
- @return ApiDeleteOrganizationApiTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param apiTokenId Organization Api Token ID
+	@return ApiDeleteOrganizationApiTokenRequest
 */
 func (a *OrganizationApiTokenAPIService) DeleteOrganizationApiToken(ctx context.Context, organizationId string, apiTokenId string) ApiDeleteOrganizationApiTokenRequest {
 	return ApiDeleteOrganizationApiTokenRequest{
@@ -273,9 +274,9 @@ ListOrganizationApiTokens List organization api tokens
 
 List organization api tokens
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationApiTokensRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationApiTokensRequest
 */
 func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokens(ctx context.Context, organizationId string) ApiListOrganizationApiTokensRequest {
 	return ApiListOrganizationApiTokensRequest{
@@ -286,7 +287,8 @@ func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokens(ctx context.C
 }
 
 // Execute executes the request
-//  @return OrganizationApiTokenResponseList
+//
+//	@return OrganizationApiTokenResponseList
 func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokensExecute(r ApiListOrganizationApiTokensRequest) (*OrganizationApiTokenResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

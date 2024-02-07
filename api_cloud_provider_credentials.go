@@ -42,9 +42,9 @@ func (r ApiCreateAWSCredentialsRequest) Execute() (*ClusterCredentials, *http.Re
 /*
 CreateAWSCredentials Create AWS credentials set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateAWSCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateAWSCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) CreateAWSCredentials(ctx context.Context, organizationId string) ApiCreateAWSCredentialsRequest {
 	return ApiCreateAWSCredentialsRequest{
@@ -55,7 +55,8 @@ func (a *CloudProviderCredentialsAPIService) CreateAWSCredentials(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) CreateAWSCredentialsExecute(r ApiCreateAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -165,9 +166,9 @@ func (r ApiCreateGcpCredentialsRequest) Execute() (*ClusterCredentials, *http.Re
 /*
 CreateGcpCredentials Create GCP credentials set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateGcpCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateGcpCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) CreateGcpCredentials(ctx context.Context, organizationId string) ApiCreateGcpCredentialsRequest {
 	return ApiCreateGcpCredentialsRequest{
@@ -178,7 +179,8 @@ func (a *CloudProviderCredentialsAPIService) CreateGcpCredentials(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) CreateGcpCredentialsExecute(r ApiCreateGcpCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -288,9 +290,9 @@ func (r ApiCreateScalewayCredentialsRequest) Execute() (*ClusterCredentials, *ht
 /*
 CreateScalewayCredentials Create Scaleway credentials set
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateScalewayCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateScalewayCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) CreateScalewayCredentials(ctx context.Context, organizationId string) ApiCreateScalewayCredentialsRequest {
 	return ApiCreateScalewayCredentialsRequest{
@@ -301,7 +303,8 @@ func (a *CloudProviderCredentialsAPIService) CreateScalewayCredentials(ctx conte
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) CreateScalewayCredentialsExecute(r ApiCreateScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -406,10 +409,10 @@ func (r ApiDeleteAWSCredentialsRequest) Execute() (*http.Response, error) {
 /*
 DeleteAWSCredentials Delete a set of AWS credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param credentialsId Credentials ID
- @param organizationId Organization ID
- @return ApiDeleteAWSCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param credentialsId Credentials ID
+	@param organizationId Organization ID
+	@return ApiDeleteAWSCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) DeleteAWSCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteAWSCredentialsRequest {
 	return ApiDeleteAWSCredentialsRequest{
@@ -514,10 +517,10 @@ func (r ApiDeleteGcpCredentialsRequest) Execute() (*http.Response, error) {
 /*
 DeleteGcpCredentials Delete a set of GCP credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param credentialsId Credentials ID
- @param organizationId Organization ID
- @return ApiDeleteGcpCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param credentialsId Credentials ID
+	@param organizationId Organization ID
+	@return ApiDeleteGcpCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) DeleteGcpCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteGcpCredentialsRequest {
 	return ApiDeleteGcpCredentialsRequest{
@@ -622,10 +625,10 @@ func (r ApiDeleteScalewayCredentialsRequest) Execute() (*http.Response, error) {
 /*
 DeleteScalewayCredentials Delete a set of Scaleway credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param credentialsId Credentials ID
- @param organizationId Organization ID
- @return ApiDeleteScalewayCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param credentialsId Credentials ID
+	@param organizationId Organization ID
+	@return ApiDeleteScalewayCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) DeleteScalewayCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteScalewayCredentialsRequest {
 	return ApiDeleteScalewayCredentialsRequest{
@@ -736,10 +739,10 @@ func (r ApiEditAWSCredentialsRequest) Execute() (*ClusterCredentials, *http.Resp
 /*
 EditAWSCredentials Edit a set of AWS credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiEditAWSCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiEditAWSCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) EditAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditAWSCredentialsRequest {
 	return ApiEditAWSCredentialsRequest{
@@ -751,7 +754,8 @@ func (a *CloudProviderCredentialsAPIService) EditAWSCredentials(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) EditAWSCredentialsExecute(r ApiEditAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -863,10 +867,10 @@ func (r ApiEditGcpCredentialsRequest) Execute() (*ClusterCredentials, *http.Resp
 /*
 EditGcpCredentials Edit a set of GCP credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiEditGcpCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiEditGcpCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) EditGcpCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditGcpCredentialsRequest {
 	return ApiEditGcpCredentialsRequest{
@@ -878,7 +882,8 @@ func (a *CloudProviderCredentialsAPIService) EditGcpCredentials(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) EditGcpCredentialsExecute(r ApiEditGcpCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -990,10 +995,10 @@ func (r ApiEditScalewayCredentialsRequest) Execute() (*ClusterCredentials, *http
 /*
 EditScalewayCredentials Edit a set of Scaleway credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiEditScalewayCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiEditScalewayCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) EditScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditScalewayCredentialsRequest {
 	return ApiEditScalewayCredentialsRequest{
@@ -1005,7 +1010,8 @@ func (a *CloudProviderCredentialsAPIService) EditScalewayCredentials(ctx context
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) EditScalewayCredentialsExecute(r ApiEditScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -1111,10 +1117,10 @@ func (r ApiGetAWSCredentialsRequest) Execute() (*ClusterCredentials, *http.Respo
 /*
 GetAWSCredentials Get a set of AWS credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiGetAWSCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiGetAWSCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) GetAWSCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetAWSCredentialsRequest {
 	return ApiGetAWSCredentialsRequest{
@@ -1126,7 +1132,8 @@ func (a *CloudProviderCredentialsAPIService) GetAWSCredentials(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) GetAWSCredentialsExecute(r ApiGetAWSCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1230,10 +1237,10 @@ func (r ApiGetGcpCredentialsRequest) Execute() (*ClusterCredentials, *http.Respo
 /*
 GetGcpCredentials Get a set of GCP credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiGetGcpCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiGetGcpCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) GetGcpCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetGcpCredentialsRequest {
 	return ApiGetGcpCredentialsRequest{
@@ -1245,7 +1252,8 @@ func (a *CloudProviderCredentialsAPIService) GetGcpCredentials(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) GetGcpCredentialsExecute(r ApiGetGcpCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1349,10 +1357,10 @@ func (r ApiGetScalewayCredentialsRequest) Execute() (*ClusterCredentials, *http.
 /*
 GetScalewayCredentials Get a set of Scaleway credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param credentialsId Credentials ID
- @return ApiGetScalewayCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param credentialsId Credentials ID
+	@return ApiGetScalewayCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) GetScalewayCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetScalewayCredentialsRequest {
 	return ApiGetScalewayCredentialsRequest{
@@ -1364,7 +1372,8 @@ func (a *CloudProviderCredentialsAPIService) GetScalewayCredentials(ctx context.
 }
 
 // Execute executes the request
-//  @return ClusterCredentials
+//
+//	@return ClusterCredentials
 func (a *CloudProviderCredentialsAPIService) GetScalewayCredentialsExecute(r ApiGetScalewayCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1467,9 +1476,9 @@ func (r ApiListAWSCredentialsRequest) Execute() (*ClusterCredentialsResponseList
 /*
 ListAWSCredentials List AWS credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListAWSCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListAWSCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) ListAWSCredentials(ctx context.Context, organizationId string) ApiListAWSCredentialsRequest {
 	return ApiListAWSCredentialsRequest{
@@ -1480,7 +1489,8 @@ func (a *CloudProviderCredentialsAPIService) ListAWSCredentials(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponseList
+//
+//	@return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsAPIService) ListAWSCredentialsExecute(r ApiListAWSCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1582,9 +1592,9 @@ func (r ApiListGcpCredentialsRequest) Execute() (*ClusterCredentialsResponseList
 /*
 ListGcpCredentials List GCP credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListGcpCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListGcpCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) ListGcpCredentials(ctx context.Context, organizationId string) ApiListGcpCredentialsRequest {
 	return ApiListGcpCredentialsRequest{
@@ -1595,7 +1605,8 @@ func (a *CloudProviderCredentialsAPIService) ListGcpCredentials(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponseList
+//
+//	@return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsAPIService) ListGcpCredentialsExecute(r ApiListGcpCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1697,9 +1708,9 @@ func (r ApiListScalewayCredentialsRequest) Execute() (*ClusterCredentialsRespons
 /*
 ListScalewayCredentials List Scaleway credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListScalewayCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListScalewayCredentialsRequest
 */
 func (a *CloudProviderCredentialsAPIService) ListScalewayCredentials(ctx context.Context, organizationId string) ApiListScalewayCredentialsRequest {
 	return ApiListScalewayCredentialsRequest{
@@ -1710,7 +1721,8 @@ func (a *CloudProviderCredentialsAPIService) ListScalewayCredentials(ctx context
 }
 
 // Execute executes the request
-//  @return ClusterCredentialsResponseList
+//
+//	@return ClusterCredentialsResponseList
 func (a *CloudProviderCredentialsAPIService) ListScalewayCredentialsExecute(r ApiListScalewayCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

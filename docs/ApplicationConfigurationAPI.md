@@ -25,25 +25,25 @@ Edit advanced settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationAdvancedSettings := *openapiclient.NewApplicationAdvancedSettings() // ApplicationAdvancedSettings |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationAdvancedSettings := *openapiclient.NewApplicationAdvancedSettings() // ApplicationAdvancedSettings |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationConfigurationAPI.EditAdvancedSettings(context.Background(), applicationId).ApplicationAdvancedSettings(applicationAdvancedSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.EditAdvancedSettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditAdvancedSettings`: ApplicationAdvancedSettings
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.EditAdvancedSettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationConfigurationAPI.EditAdvancedSettings(context.Background(), applicationId).ApplicationAdvancedSettings(applicationAdvancedSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.EditAdvancedSettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditAdvancedSettings`: ApplicationAdvancedSettings
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.EditAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -97,25 +97,25 @@ Edit Application Network
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-    applicationNetworkRequest := *openapiclient.NewApplicationNetworkRequest() // ApplicationNetworkRequest |  (optional)
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationNetworkRequest := *openapiclient.NewApplicationNetworkRequest() // ApplicationNetworkRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationConfigurationAPI.EditApplicationNetwork(context.Background(), applicationId).ApplicationNetworkRequest(applicationNetworkRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.EditApplicationNetwork``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditApplicationNetwork`: ApplicationNetwork
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.EditApplicationNetwork`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationConfigurationAPI.EditApplicationNetwork(context.Background(), applicationId).ApplicationNetworkRequest(applicationNetworkRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.EditApplicationNetwork``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditApplicationNetwork`: ApplicationNetwork
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.EditApplicationNetwork`: %v\n", resp)
 }
 ```
 
@@ -169,24 +169,24 @@ Get advanced settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationConfigurationAPI.GetAdvancedSettings(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.GetAdvancedSettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetAdvancedSettings`: ApplicationAdvancedSettings
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.GetAdvancedSettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationConfigurationAPI.GetAdvancedSettings(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.GetAdvancedSettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAdvancedSettings`: ApplicationAdvancedSettings
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.GetAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -239,24 +239,24 @@ Get Application Network information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationConfigurationAPI.GetApplicationNetwork(context.Background(), applicationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.GetApplicationNetwork``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetApplicationNetwork`: ApplicationNetwork
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.GetApplicationNetwork`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationConfigurationAPI.GetApplicationNetwork(context.Background(), applicationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationConfigurationAPI.GetApplicationNetwork``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetApplicationNetwork`: ApplicationNetwork
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationConfigurationAPI.GetApplicationNetwork`: %v\n", resp)
 }
 ```
 

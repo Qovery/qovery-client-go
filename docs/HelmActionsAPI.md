@@ -24,26 +24,26 @@ Deploy helm
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    forceEvent := openapiclient.HelmForceEvent("DIFF") // HelmForceEvent | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  (optional)
-    helmDeployRequest := *openapiclient.NewHelmDeployRequest() // HelmDeployRequest |  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	forceEvent := openapiclient.HelmForceEvent("DIFF") // HelmForceEvent | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  (optional)
+	helmDeployRequest := *openapiclient.NewHelmDeployRequest() // HelmDeployRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmActionsAPI.DeployHelm(context.Background(), helmId).ForceEvent(forceEvent).HelmDeployRequest(helmDeployRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.DeployHelm``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployHelm`: Status
-    fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.DeployHelm`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmActionsAPI.DeployHelm(context.Background(), helmId).ForceEvent(forceEvent).HelmDeployRequest(helmDeployRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.DeployHelm``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployHelm`: Status
+	fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.DeployHelm`: %v\n", resp)
 }
 ```
 
@@ -98,25 +98,25 @@ Deprecated - Restart helm
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    forceEvent := openapiclient.HelmForceEvent("DIFF") // HelmForceEvent | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	forceEvent := openapiclient.HelmForceEvent("DIFF") // HelmForceEvent | When filled, it indicates the target event to be deployed.   If the concerned helm hasn't the target event provided, the helm won't be deployed.  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmActionsAPI.RestartHelm(context.Background(), helmId).ForceEvent(forceEvent).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.RestartHelm``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RestartHelm`: Status
-    fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.RestartHelm`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmActionsAPI.RestartHelm(context.Background(), helmId).ForceEvent(forceEvent).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.RestartHelm``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RestartHelm`: Status
+	fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.RestartHelm`: %v\n", resp)
 }
 ```
 
@@ -168,24 +168,24 @@ Stop helm
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmActionsAPI.StopHelm(context.Background(), helmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.StopHelm``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StopHelm`: Status
-    fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.StopHelm`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmActionsAPI.StopHelm(context.Background(), helmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.StopHelm``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StopHelm`: Status
+	fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.StopHelm`: %v\n", resp)
 }
 ```
 

@@ -38,9 +38,9 @@ ListApplicationLog List logs
 
 This will list the last 1000 logs of the application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationLogRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationLogRequest
 */
 func (a *ApplicationLogsAPIService) ListApplicationLog(ctx context.Context, applicationId string) ApiListApplicationLogRequest {
 	return ApiListApplicationLogRequest{
@@ -51,7 +51,8 @@ func (a *ApplicationLogsAPIService) ListApplicationLog(ctx context.Context, appl
 }
 
 // Execute executes the request
-//  @return LogResponseList
+//
+//	@return LogResponseList
 func (a *ApplicationLogsAPIService) ListApplicationLogExecute(r ApiListApplicationLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

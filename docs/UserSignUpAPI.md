@@ -23,22 +23,22 @@ Send Sign Up request
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    signUpRequest := *openapiclient.NewSignUpRequest("FirstName_example", "LastName_example", "UserEmail_example", openapiclient.TypeOfUseEnum("PERSONAL"), "QoveryUsage_example") // SignUpRequest |  (optional)
+	signUpRequest := *openapiclient.NewSignUpRequest("FirstName_example", "LastName_example", "UserEmail_example", openapiclient.TypeOfUseEnum("PERSONAL"), "QoveryUsage_example") // SignUpRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.UserSignUpAPI.CreateUserSignUp(context.Background()).SignUpRequest(signUpRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpAPI.CreateUserSignUp``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UserSignUpAPI.CreateUserSignUp(context.Background()).SignUpRequest(signUpRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpAPI.CreateUserSignUp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -87,23 +87,23 @@ Get Sign up information
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.UserSignUpAPI.GetUserSignUp(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpAPI.GetUserSignUp``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetUserSignUp`: SignUp
-    fmt.Fprintf(os.Stdout, "Response from `UserSignUpAPI.GetUserSignUp`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.UserSignUpAPI.GetUserSignUp(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UserSignUpAPI.GetUserSignUp``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetUserSignUp`: SignUp
+	fmt.Fprintf(os.Stdout, "Response from `UserSignUpAPI.GetUserSignUp`: %v\n", resp)
 }
 ```
 

@@ -51,9 +51,9 @@ DeployJob Deploy job
 
 You must provide a git commit id or an image tag depending on the source location of your code (git vs image repository).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiDeployJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiDeployJobRequest
 */
 func (a *JobActionsAPIService) DeployJob(ctx context.Context, jobId string) ApiDeployJobRequest {
 	return ApiDeployJobRequest{
@@ -64,7 +64,8 @@ func (a *JobActionsAPIService) DeployJob(ctx context.Context, jobId string) ApiD
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) DeployJobExecute(r ApiDeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -180,9 +181,9 @@ RestartJob Deprecated - Restart job
 
 **Deprecated** - Please use the "Redeploy job" endpoint now
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiRestartJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiRestartJobRequest
 */
 func (a *JobActionsAPIService) RestartJob(ctx context.Context, jobId string) ApiRestartJobRequest {
 	return ApiRestartJobRequest{
@@ -193,7 +194,8 @@ func (a *JobActionsAPIService) RestartJob(ctx context.Context, jobId string) Api
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) RestartJobExecute(r ApiRestartJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -298,9 +300,9 @@ func (r ApiStopJobRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopJob Stop job
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiStopJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiStopJobRequest
 */
 func (a *JobActionsAPIService) StopJob(ctx context.Context, jobId string) ApiStopJobRequest {
 	return ApiStopJobRequest{
@@ -311,7 +313,8 @@ func (a *JobActionsAPIService) StopJob(ctx context.Context, jobId string) ApiSto
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) StopJobExecute(r ApiStopJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

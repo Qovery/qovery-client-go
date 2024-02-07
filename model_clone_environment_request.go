@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CloneEnvironmentRequest type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type CloneEnvironmentRequest struct {
 	Mode                *EnvironmentModeEnum `json:"mode,omitempty"`
 	ApplyDeploymentRule *bool                `json:"apply_deployment_rule,omitempty"`
 }
+
+type _CloneEnvironmentRequest CloneEnvironmentRequest
 
 // NewCloneEnvironmentRequest instantiates a new CloneEnvironmentRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -190,6 +194,43 @@ func (o CloneEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
 	}
 	return toSerialize, nil
+}
+
+func (o *CloneEnvironmentRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCloneEnvironmentRequest := _CloneEnvironmentRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCloneEnvironmentRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloneEnvironmentRequest(varCloneEnvironmentRequest)
+
+	return err
 }
 
 type NullableCloneEnvironmentRequest struct {

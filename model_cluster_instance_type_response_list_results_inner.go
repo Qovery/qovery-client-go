@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ClusterInstanceTypeResponseListResultsInner type satisfies the MappedNullable interface at compile time
@@ -28,6 +30,8 @@ type ClusterInstanceTypeResponseListResultsInner struct {
 	BandwidthGuarantee string  `json:"bandwidth_guarantee"`
 	Architecture       *string `json:"architecture,omitempty"`
 }
+
+type _ClusterInstanceTypeResponseListResultsInner ClusterInstanceTypeResponseListResultsInner
 
 // NewClusterInstanceTypeResponseListResultsInner instantiates a new ClusterInstanceTypeResponseListResultsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -248,6 +252,48 @@ func (o ClusterInstanceTypeResponseListResultsInner) ToMap() (map[string]interfa
 		toSerialize["architecture"] = o.Architecture
 	}
 	return toSerialize, nil
+}
+
+func (o *ClusterInstanceTypeResponseListResultsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"type",
+		"name",
+		"cpu",
+		"ram_in_gb",
+		"bandwidth_in_gbps",
+		"bandwidth_guarantee",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varClusterInstanceTypeResponseListResultsInner := _ClusterInstanceTypeResponseListResultsInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varClusterInstanceTypeResponseListResultsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterInstanceTypeResponseListResultsInner(varClusterInstanceTypeResponseListResultsInner)
+
+	return err
 }
 
 type NullableClusterInstanceTypeResponseListResultsInner struct {

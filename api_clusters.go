@@ -42,9 +42,9 @@ func (r ApiCreateClusterRequest) Execute() (*Cluster, *http.Response, error) {
 /*
 CreateCluster Create a cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateClusterRequest
 */
 func (a *ClustersAPIService) CreateCluster(ctx context.Context, organizationId string) ApiCreateClusterRequest {
 	return ApiCreateClusterRequest{
@@ -55,7 +55,8 @@ func (a *ClustersAPIService) CreateCluster(ctx context.Context, organizationId s
 }
 
 // Execute executes the request
-//  @return Cluster
+//
+//	@return Cluster
 func (a *ClustersAPIService) CreateClusterExecute(r ApiCreateClusterRequest) (*Cluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -166,10 +167,10 @@ func (r ApiDeleteClusterRequest) Execute() (*http.Response, error) {
 /*
 DeleteCluster Delete a cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiDeleteClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiDeleteClusterRequest
 */
 func (a *ClustersAPIService) DeleteCluster(ctx context.Context, organizationId string, clusterId string) ApiDeleteClusterRequest {
 	return ApiDeleteClusterRequest{
@@ -282,10 +283,10 @@ DeployCluster Deploy a cluster
 
 allows to deploy a cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiDeployClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiDeployClusterRequest
 */
 func (a *ClustersAPIService) DeployCluster(ctx context.Context, organizationId string, clusterId string) ApiDeployClusterRequest {
 	return ApiDeployClusterRequest{
@@ -297,7 +298,8 @@ func (a *ClustersAPIService) DeployCluster(ctx context.Context, organizationId s
 }
 
 // Execute executes the request
-//  @return ClusterStatus
+//
+//	@return ClusterStatus
 func (a *ClustersAPIService) DeployClusterExecute(r ApiDeployClusterRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -407,10 +409,10 @@ func (r ApiEditClusterRequest) Execute() (*Cluster, *http.Response, error) {
 /*
 EditCluster Edit a cluster
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiEditClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiEditClusterRequest
 */
 func (a *ClustersAPIService) EditCluster(ctx context.Context, organizationId string, clusterId string) ApiEditClusterRequest {
 	return ApiEditClusterRequest{
@@ -422,7 +424,8 @@ func (a *ClustersAPIService) EditCluster(ctx context.Context, organizationId str
 }
 
 // Execute executes the request
-//  @return Cluster
+//
+//	@return Cluster
 func (a *ClustersAPIService) EditClusterExecute(r ApiEditClusterRequest) (*Cluster, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -536,10 +539,10 @@ EditClusterAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiEditClusterAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiEditClusterAdvancedSettingsRequest
 */
 func (a *ClustersAPIService) EditClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiEditClusterAdvancedSettingsRequest {
 	return ApiEditClusterAdvancedSettingsRequest{
@@ -551,7 +554,8 @@ func (a *ClustersAPIService) EditClusterAdvancedSettings(ctx context.Context, or
 }
 
 // Execute executes the request
-//  @return ClusterAdvancedSettings
+//
+//	@return ClusterAdvancedSettings
 func (a *ClustersAPIService) EditClusterAdvancedSettingsExecute(r ApiEditClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -665,10 +669,10 @@ EditRoutingTable Edit routing table
 
 Edit routing table by returning updated table.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiEditRoutingTableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiEditRoutingTableRequest
 */
 func (a *ClustersAPIService) EditRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiEditRoutingTableRequest {
 	return ApiEditRoutingTableRequest{
@@ -680,7 +684,8 @@ func (a *ClustersAPIService) EditRoutingTable(ctx context.Context, organizationI
 }
 
 // Execute executes the request
-//  @return ClusterRoutingTable
+//
+//	@return ClusterRoutingTable
 func (a *ClustersAPIService) EditRoutingTableExecute(r ApiEditRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -789,11 +794,10 @@ GetClusterAdvancedSettings Get advanced settings
 Get the list and values of the advanced settings of the cluster.
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetClusterAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetClusterAdvancedSettingsRequest
 */
 func (a *ClustersAPIService) GetClusterAdvancedSettings(ctx context.Context, organizationId string, clusterId string) ApiGetClusterAdvancedSettingsRequest {
 	return ApiGetClusterAdvancedSettingsRequest{
@@ -805,7 +809,8 @@ func (a *ClustersAPIService) GetClusterAdvancedSettings(ctx context.Context, org
 }
 
 // Execute executes the request
-//  @return ClusterAdvancedSettings
+//
+//	@return ClusterAdvancedSettings
 func (a *ClustersAPIService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -909,10 +914,10 @@ func (r ApiGetClusterKubeconfigRequest) Execute() (string, *http.Response, error
 /*
 GetClusterKubeconfig Get cluster kubeconfig
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetClusterKubeconfigRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetClusterKubeconfigRequest
 */
 func (a *ClustersAPIService) GetClusterKubeconfig(ctx context.Context, organizationId string, clusterId string) ApiGetClusterKubeconfigRequest {
 	return ApiGetClusterKubeconfigRequest{
@@ -924,7 +929,8 @@ func (a *ClustersAPIService) GetClusterKubeconfig(ctx context.Context, organizat
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *ClustersAPIService) GetClusterKubeconfigExecute(r ApiGetClusterKubeconfigRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1028,10 +1034,10 @@ func (r ApiGetClusterReadinessStatusRequest) Execute() (*ClusterReadinessStatus,
 /*
 GetClusterReadinessStatus Know if a cluster is ready to be deployed or not
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetClusterReadinessStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetClusterReadinessStatusRequest
 */
 func (a *ClustersAPIService) GetClusterReadinessStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterReadinessStatusRequest {
 	return ApiGetClusterReadinessStatusRequest{
@@ -1043,7 +1049,8 @@ func (a *ClustersAPIService) GetClusterReadinessStatus(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return ClusterReadinessStatus
+//
+//	@return ClusterReadinessStatus
 func (a *ClustersAPIService) GetClusterReadinessStatusExecute(r ApiGetClusterReadinessStatusRequest) (*ClusterReadinessStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1147,10 +1154,10 @@ func (r ApiGetClusterStatusRequest) Execute() (*ClusterStatusGet, *http.Response
 /*
 GetClusterStatus Get cluster status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetClusterStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetClusterStatusRequest
 */
 func (a *ClustersAPIService) GetClusterStatus(ctx context.Context, organizationId string, clusterId string) ApiGetClusterStatusRequest {
 	return ApiGetClusterStatusRequest{
@@ -1162,7 +1169,8 @@ func (a *ClustersAPIService) GetClusterStatus(ctx context.Context, organizationI
 }
 
 // Execute executes the request
-//  @return ClusterStatusGet
+//
+//	@return ClusterStatusGet
 func (a *ClustersAPIService) GetClusterStatusExecute(r ApiGetClusterStatusRequest) (*ClusterStatusGet, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1266,8 +1274,8 @@ GetDefaultClusterAdvancedSettings List default cluster advanced settings
 
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/cluster-advanced-settings/)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultClusterAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultClusterAdvancedSettingsRequest
 */
 func (a *ClustersAPIService) GetDefaultClusterAdvancedSettings(ctx context.Context) ApiGetDefaultClusterAdvancedSettingsRequest {
 	return ApiGetDefaultClusterAdvancedSettingsRequest{
@@ -1277,7 +1285,8 @@ func (a *ClustersAPIService) GetDefaultClusterAdvancedSettings(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return ClusterAdvancedSettings
+//
+//	@return ClusterAdvancedSettings
 func (a *ClustersAPIService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDefaultClusterAdvancedSettingsRequest) (*ClusterAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1379,10 +1388,10 @@ func (r ApiGetInstallationHelmValuesRequest) Execute() (string, *http.Response, 
 /*
 GetInstallationHelmValues Get cluster helm values for self managed installation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetInstallationHelmValuesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetInstallationHelmValuesRequest
 */
 func (a *ClustersAPIService) GetInstallationHelmValues(ctx context.Context, organizationId string, clusterId string) ApiGetInstallationHelmValuesRequest {
 	return ApiGetInstallationHelmValuesRequest{
@@ -1394,7 +1403,8 @@ func (a *ClustersAPIService) GetInstallationHelmValues(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return string
+//
+//	@return string
 func (a *ClustersAPIService) GetInstallationHelmValuesExecute(r ApiGetInstallationHelmValuesRequest) (string, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1498,10 +1508,10 @@ func (r ApiGetOrganizationCloudProviderInfoRequest) Execute() (*ClusterCloudProv
 /*
 GetOrganizationCloudProviderInfo Get cluster cloud provider info and credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetOrganizationCloudProviderInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetOrganizationCloudProviderInfoRequest
 */
 func (a *ClustersAPIService) GetOrganizationCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiGetOrganizationCloudProviderInfoRequest {
 	return ApiGetOrganizationCloudProviderInfoRequest{
@@ -1513,7 +1523,8 @@ func (a *ClustersAPIService) GetOrganizationCloudProviderInfo(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return ClusterCloudProviderInfo
+//
+//	@return ClusterCloudProviderInfo
 func (a *ClustersAPIService) GetOrganizationCloudProviderInfoExecute(r ApiGetOrganizationCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1618,9 +1629,9 @@ GetOrganizationClusterStatus List all clusters statuses
 
 Returns a list of clusters with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationClusterStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationClusterStatusRequest
 */
 func (a *ClustersAPIService) GetOrganizationClusterStatus(ctx context.Context, organizationId string) ApiGetOrganizationClusterStatusRequest {
 	return ApiGetOrganizationClusterStatusRequest{
@@ -1631,7 +1642,8 @@ func (a *ClustersAPIService) GetOrganizationClusterStatus(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return ClusterStatusResponseList
+//
+//	@return ClusterStatusResponseList
 func (a *ClustersAPIService) GetOrganizationClusterStatusExecute(r ApiGetOrganizationClusterStatusRequest) (*ClusterStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1736,10 +1748,10 @@ GetRoutingTable Get routing table
 
 Retrieve network routing table where each line corresponds to a route between a destination and a target.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiGetRoutingTableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetRoutingTableRequest
 */
 func (a *ClustersAPIService) GetRoutingTable(ctx context.Context, organizationId string, clusterId string) ApiGetRoutingTableRequest {
 	return ApiGetRoutingTableRequest{
@@ -1751,7 +1763,8 @@ func (a *ClustersAPIService) GetRoutingTable(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-//  @return ClusterRoutingTable
+//
+//	@return ClusterRoutingTable
 func (a *ClustersAPIService) GetRoutingTableExecute(r ApiGetRoutingTableRequest) (*ClusterRoutingTable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1857,10 +1870,10 @@ ListClusterLogs List Cluster Logs
 
 List Cluster Logs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiListClusterLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiListClusterLogsRequest
 */
 func (a *ClustersAPIService) ListClusterLogs(ctx context.Context, organizationId string, clusterId string) ApiListClusterLogsRequest {
 	return ApiListClusterLogsRequest{
@@ -1872,7 +1885,8 @@ func (a *ClustersAPIService) ListClusterLogs(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-//  @return ClusterLogsResponseList
+//
+//	@return ClusterLogsResponseList
 func (a *ClustersAPIService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ClusterLogsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1975,9 +1989,9 @@ func (r ApiListOrganizationClusterRequest) Execute() (*ClusterResponseList, *htt
 /*
 ListOrganizationCluster List organization clusters
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationClusterRequest
 */
 func (a *ClustersAPIService) ListOrganizationCluster(ctx context.Context, organizationId string) ApiListOrganizationClusterRequest {
 	return ApiListOrganizationClusterRequest{
@@ -1988,7 +2002,8 @@ func (a *ClustersAPIService) ListOrganizationCluster(ctx context.Context, organi
 }
 
 // Execute executes the request
-//  @return ClusterResponseList
+//
+//	@return ClusterResponseList
 func (a *ClustersAPIService) ListOrganizationClusterExecute(r ApiListOrganizationClusterRequest) (*ClusterResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -2097,10 +2112,10 @@ func (r ApiSpecifyClusterCloudProviderInfoRequest) Execute() (*ClusterCloudProvi
 /*
 SpecifyClusterCloudProviderInfo Specify cluster cloud provider info and credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiSpecifyClusterCloudProviderInfoRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiSpecifyClusterCloudProviderInfoRequest
 */
 func (a *ClustersAPIService) SpecifyClusterCloudProviderInfo(ctx context.Context, organizationId string, clusterId string) ApiSpecifyClusterCloudProviderInfoRequest {
 	return ApiSpecifyClusterCloudProviderInfoRequest{
@@ -2112,7 +2127,8 @@ func (a *ClustersAPIService) SpecifyClusterCloudProviderInfo(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ClusterCloudProviderInfo
+//
+//	@return ClusterCloudProviderInfo
 func (a *ClustersAPIService) SpecifyClusterCloudProviderInfoExecute(r ApiSpecifyClusterCloudProviderInfoRequest) (*ClusterCloudProviderInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -2220,10 +2236,10 @@ StopCluster Stop cluster
 
 Cluster stop has been requester.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param clusterId Cluster ID
- @return ApiStopClusterRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiStopClusterRequest
 */
 func (a *ClustersAPIService) StopCluster(ctx context.Context, organizationId string, clusterId string) ApiStopClusterRequest {
 	return ApiStopClusterRequest{
@@ -2235,7 +2251,8 @@ func (a *ClustersAPIService) StopCluster(ctx context.Context, organizationId str
 }
 
 // Execute executes the request
-//  @return ClusterStatus
+//
+//	@return ClusterStatus
 func (a *ClustersAPIService) StopClusterExecute(r ApiStopClusterRequest) (*ClusterStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

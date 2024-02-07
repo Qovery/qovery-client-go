@@ -43,9 +43,8 @@ CreateVariable Create a variable
 
 - Create a variable with the scope defined in the request body.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateVariableRequest
 */
 func (a *VariableMainCallsAPIService) CreateVariable(ctx context.Context) ApiCreateVariableRequest {
 	return ApiCreateVariableRequest{
@@ -55,7 +54,8 @@ func (a *VariableMainCallsAPIService) CreateVariable(ctx context.Context) ApiCre
 }
 
 // Execute executes the request
-//  @return VariableResponse
+//
+//	@return VariableResponse
 func (a *VariableMainCallsAPIService) CreateVariableExecute(r ApiCreateVariableRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -171,10 +171,9 @@ CreateVariableAlias Create a variable alias
 - Information regarding the aliased_variable will be exposed in the "aliased_variable" or in the "aliased_secret" field of the newly created variable
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param variableId Variable ID
- @return ApiCreateVariableAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param variableId Variable ID
+	@return ApiCreateVariableAliasRequest
 */
 func (a *VariableMainCallsAPIService) CreateVariableAlias(ctx context.Context, variableId string) ApiCreateVariableAliasRequest {
 	return ApiCreateVariableAliasRequest{
@@ -185,7 +184,8 @@ func (a *VariableMainCallsAPIService) CreateVariableAlias(ctx context.Context, v
 }
 
 // Execute executes the request
-//  @return VariableResponse
+//
+//	@return VariableResponse
 func (a *VariableMainCallsAPIService) CreateVariableAliasExecute(r ApiCreateVariableAliasRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -301,10 +301,9 @@ CreateVariableOverride Create a variable override
 - The response body will contain the newly created variable
 - Information regarding the overridden_variable will be exposed in the "overridden_variable" or in the "overridden_secret" field of the newly created variable
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param variableId Variable ID
- @return ApiCreateVariableOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param variableId Variable ID
+	@return ApiCreateVariableOverrideRequest
 */
 func (a *VariableMainCallsAPIService) CreateVariableOverride(ctx context.Context, variableId string) ApiCreateVariableOverrideRequest {
 	return ApiCreateVariableOverrideRequest{
@@ -315,7 +314,8 @@ func (a *VariableMainCallsAPIService) CreateVariableOverride(ctx context.Context
 }
 
 // Execute executes the request
-//  @return VariableResponse
+//
+//	@return VariableResponse
 func (a *VariableMainCallsAPIService) CreateVariableOverrideExecute(r ApiCreateVariableOverrideRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -423,10 +423,9 @@ DeleteVariable Delete a variable
 - You can't delete a BUILT_IN variable
 - If you delete a variable having override or alias, the associated override/alias will be deleted as well
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param variableId Variable ID
- @return ApiDeleteVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param variableId Variable ID
+	@return ApiDeleteVariableRequest
 */
 func (a *VariableMainCallsAPIService) DeleteVariable(ctx context.Context, variableId string) ApiDeleteVariableRequest {
 	return ApiDeleteVariableRequest{
@@ -538,10 +537,9 @@ EditVariable Edit a variable
 - For an override, you can't edit the key
 - For an alias, you can't edit the value
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param variableId Variable ID
- @return ApiEditVariableRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param variableId Variable ID
+	@return ApiEditVariableRequest
 */
 func (a *VariableMainCallsAPIService) EditVariable(ctx context.Context, variableId string) ApiEditVariableRequest {
 	return ApiEditVariableRequest{
@@ -552,7 +550,8 @@ func (a *VariableMainCallsAPIService) EditVariable(ctx context.Context, variable
 }
 
 // Execute executes the request
-//  @return VariableResponse
+//
+//	@return VariableResponse
 func (a *VariableMainCallsAPIService) EditVariableExecute(r ApiEditVariableRequest) (*VariableResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -680,8 +679,8 @@ ImportEnvironmentVariables Import variables
 
 Import environment variables in a defined scope, with a defined visibility.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiImportEnvironmentVariablesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiImportEnvironmentVariablesRequest
 */
 func (a *VariableMainCallsAPIService) ImportEnvironmentVariables(ctx context.Context) ApiImportEnvironmentVariablesRequest {
 	return ApiImportEnvironmentVariablesRequest{
@@ -691,7 +690,8 @@ func (a *VariableMainCallsAPIService) ImportEnvironmentVariables(ctx context.Con
 }
 
 // Execute executes the request
-//  @return VariableImport
+//
+//	@return VariableImport
 func (a *VariableMainCallsAPIService) ImportEnvironmentVariablesExecute(r ApiImportEnvironmentVariablesRequest) (*VariableImport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -823,8 +823,8 @@ ListVariables List variables
 
 Returns a list of variables. The result can be filtered by using the query parameters.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListVariablesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListVariablesRequest
 */
 func (a *VariableMainCallsAPIService) ListVariables(ctx context.Context) ApiListVariablesRequest {
 	return ApiListVariablesRequest{
@@ -834,7 +834,8 @@ func (a *VariableMainCallsAPIService) ListVariables(ctx context.Context) ApiList
 }
 
 // Execute executes the request
-//  @return VariableResponseList
+//
+//	@return VariableResponseList
 func (a *VariableMainCallsAPIService) ListVariablesExecute(r ApiListVariablesRequest) (*VariableResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

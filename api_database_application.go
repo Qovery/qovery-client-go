@@ -36,9 +36,9 @@ func (r ApiListDatabaseApplicationRequest) Execute() (*ApplicationResponseList, 
 /*
 ListDatabaseApplication List applications using the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiListDatabaseApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiListDatabaseApplicationRequest
 */
 func (a *DatabaseApplicationAPIService) ListDatabaseApplication(ctx context.Context, databaseId string) ApiListDatabaseApplicationRequest {
 	return ApiListDatabaseApplicationRequest{
@@ -49,7 +49,8 @@ func (a *DatabaseApplicationAPIService) ListDatabaseApplication(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return ApplicationResponseList
+//
+//	@return ApplicationResponseList
 func (a *DatabaseApplicationAPIService) ListDatabaseApplicationExecute(r ApiListDatabaseApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -152,10 +153,10 @@ func (r ApiRemoveApplicationFromDatabaseRequest) Execute() (*http.Response, erro
 /*
 RemoveApplicationFromDatabase Remove an application from this database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @param targetApplicationId Target application ID
- @return ApiRemoveApplicationFromDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@param targetApplicationId Target application ID
+	@return ApiRemoveApplicationFromDatabaseRequest
 */
 func (a *DatabaseApplicationAPIService) RemoveApplicationFromDatabase(ctx context.Context, databaseId string, targetApplicationId string) ApiRemoveApplicationFromDatabaseRequest {
 	return ApiRemoveApplicationFromDatabaseRequest{

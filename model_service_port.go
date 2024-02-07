@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ServicePort type satisfies the MappedNullable interface at compile time
@@ -32,6 +34,8 @@ type ServicePort struct {
 	IsDefault *bool            `json:"is_default,omitempty"`
 	Protocol  PortProtocolEnum `json:"protocol"`
 }
+
+type _ServicePort ServicePort
 
 // NewServicePort instantiates a new ServicePort object
 // This constructor will assign default values to properties that have it defined,
@@ -272,6 +276,46 @@ func (o ServicePort) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["protocol"] = o.Protocol
 	return toSerialize, nil
+}
+
+func (o *ServicePort) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"internal_port",
+		"publicly_accessible",
+		"protocol",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varServicePort := _ServicePort{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varServicePort)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServicePort(varServicePort)
+
+	return err
 }
 
 type NullableServicePort struct {

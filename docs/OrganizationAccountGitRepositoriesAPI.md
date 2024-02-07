@@ -26,25 +26,25 @@ Get bitbucket repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationBitbucketRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationBitbucketRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositories`: %v\n", resp)
 }
 ```
 
@@ -96,26 +96,26 @@ Get bitbucket branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationBitbucketRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationBitbucketRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationBitbucketRepositoryBranches`: %v\n", resp)
 }
 ```
 
@@ -168,24 +168,24 @@ Get git provider accounts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGitProviderAccount`: GitAuthProviderResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGitProviderAccount`: GitAuthProviderResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitProviderAccount`: %v\n", resp)
 }
 ```
 
@@ -236,25 +236,25 @@ Get github repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGithubRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGithubRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositories`: %v\n", resp)
 }
 ```
 
@@ -306,26 +306,26 @@ Get github branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGithubRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGithubRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGithubRepositoryBranches`: %v\n", resp)
 }
 ```
 
@@ -378,25 +378,25 @@ Get gitlab repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGitlabRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories(context.Background(), organizationId).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGitlabRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositories`: %v\n", resp)
 }
 ```
 
@@ -448,26 +448,26 @@ Get gitlab branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    name := "name_example" // string | The name of the repository to retrieve the branches (optional)
-    gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	name := "name_example" // string | The name of the repository to retrieve the branches (optional)
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The git token id that must be used for the application (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationGitlabRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches(context.Background(), organizationId).Name(name).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationGitlabRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetOrganizationGitlabRepositoryBranches`: %v\n", resp)
 }
 ```
 

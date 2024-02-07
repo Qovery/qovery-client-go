@@ -38,9 +38,9 @@ DeleteEnvironment Delete an environment
 
 To delete an environment you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiDeleteEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiDeleteEnvironmentRequest
 */
 func (a *EnvironmentMainCallsAPIService) DeleteEnvironment(ctx context.Context, environmentId string) ApiDeleteEnvironmentRequest {
 	return ApiDeleteEnvironmentRequest{
@@ -150,9 +150,9 @@ EditEnvironment Edit an environment
 
 To edit an environment you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiEditEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiEditEnvironmentRequest
 */
 func (a *EnvironmentMainCallsAPIService) EditEnvironment(ctx context.Context, environmentId string) ApiEditEnvironmentRequest {
 	return ApiEditEnvironmentRequest{
@@ -163,7 +163,8 @@ func (a *EnvironmentMainCallsAPIService) EditEnvironment(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return Environment
+//
+//	@return Environment
 func (a *EnvironmentMainCallsAPIService) EditEnvironmentExecute(r ApiEditEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -267,9 +268,9 @@ func (r ApiGetEnvironmentRequest) Execute() (*Environment, *http.Response, error
 /*
 GetEnvironment Get environment by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentRequest
 */
 func (a *EnvironmentMainCallsAPIService) GetEnvironment(ctx context.Context, environmentId string) ApiGetEnvironmentRequest {
 	return ApiGetEnvironmentRequest{
@@ -280,7 +281,8 @@ func (a *EnvironmentMainCallsAPIService) GetEnvironment(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return Environment
+//
+//	@return Environment
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentExecute(r ApiGetEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -382,9 +384,9 @@ func (r ApiGetEnvironmentStatusRequest) Execute() (*EnvironmentStatus, *http.Res
 /*
 GetEnvironmentStatus Get environment status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentStatusRequest
 */
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatus(ctx context.Context, environmentId string) ApiGetEnvironmentStatusRequest {
 	return ApiGetEnvironmentStatusRequest{
@@ -395,7 +397,8 @@ func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatus(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return EnvironmentStatus
+//
+//	@return EnvironmentStatus
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusExecute(r ApiGetEnvironmentStatusRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -497,9 +500,9 @@ func (r ApiGetEnvironmentStatusesRequest) Execute() (*EnvironmentStatuses, *http
 /*
 GetEnvironmentStatuses Get environment statuses with services status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentStatusesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentStatusesRequest
 */
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatuses(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesRequest {
 	return ApiGetEnvironmentStatusesRequest{
@@ -510,7 +513,8 @@ func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatuses(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return EnvironmentStatuses
+//
+//	@return EnvironmentStatuses
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesExecute(r ApiGetEnvironmentStatusesRequest) (*EnvironmentStatuses, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -612,9 +616,9 @@ func (r ApiGetEnvironmentStatusesWithStagesRequest) Execute() (*EnvironmentStatu
 /*
 GetEnvironmentStatusesWithStages Get environment statuses with stages
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentStatusesWithStagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentStatusesWithStagesRequest
 */
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesWithStages(ctx context.Context, environmentId string) ApiGetEnvironmentStatusesWithStagesRequest {
 	return ApiGetEnvironmentStatusesWithStagesRequest{
@@ -625,7 +629,8 @@ func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesWithStages(ctx co
 }
 
 // Execute executes the request
-//  @return EnvironmentStatusesWithStages
+//
+//	@return EnvironmentStatusesWithStages
 func (a *EnvironmentMainCallsAPIService) GetEnvironmentStatusesWithStagesExecute(r ApiGetEnvironmentStatusesWithStagesRequest) (*EnvironmentStatusesWithStages, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

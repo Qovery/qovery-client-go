@@ -44,10 +44,9 @@ CreateApplicationSecret Add a secret to the application
 
 - Add a secret to the application.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiCreateApplicationSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiCreateApplicationSecretRequest
 */
 func (a *ApplicationSecretAPIService) CreateApplicationSecret(ctx context.Context, applicationId string) ApiCreateApplicationSecretRequest {
 	return ApiCreateApplicationSecretRequest{
@@ -58,7 +57,8 @@ func (a *ApplicationSecretAPIService) CreateApplicationSecret(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ApplicationSecretAPIService) CreateApplicationSecretExecute(r ApiCreateApplicationSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,11 +176,10 @@ CreateApplicationSecretAlias Create a secret alias at the application level
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @param secretId Secret ID
- @return ApiCreateApplicationSecretAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@param secretId Secret ID
+	@return ApiCreateApplicationSecretAliasRequest
 */
 func (a *ApplicationSecretAPIService) CreateApplicationSecretAlias(ctx context.Context, applicationId string, secretId string) ApiCreateApplicationSecretAliasRequest {
 	return ApiCreateApplicationSecretAliasRequest{
@@ -192,7 +191,8 @@ func (a *ApplicationSecretAPIService) CreateApplicationSecretAlias(ctx context.C
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ApplicationSecretAPIService) CreateApplicationSecretAliasExecute(r ApiCreateApplicationSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -310,11 +310,10 @@ CreateApplicationSecretOverride Create a secret override at the application leve
 - The response body will contain the newly created secret
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @param secretId Secret ID
- @return ApiCreateApplicationSecretOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@param secretId Secret ID
+	@return ApiCreateApplicationSecretOverrideRequest
 */
 func (a *ApplicationSecretAPIService) CreateApplicationSecretOverride(ctx context.Context, applicationId string, secretId string) ApiCreateApplicationSecretOverrideRequest {
 	return ApiCreateApplicationSecretOverrideRequest{
@@ -326,7 +325,8 @@ func (a *ApplicationSecretAPIService) CreateApplicationSecretOverride(ctx contex
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ApplicationSecretAPIService) CreateApplicationSecretOverrideExecute(r ApiCreateApplicationSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -436,11 +436,10 @@ DeleteApplicationSecret Delete a secret from an application
 - You can't delete a BUILT_IN secret
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @param secretId Secret ID
- @return ApiDeleteApplicationSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@param secretId Secret ID
+	@return ApiDeleteApplicationSecretRequest
 */
 func (a *ApplicationSecretAPIService) DeleteApplicationSecret(ctx context.Context, applicationId string, secretId string) ApiDeleteApplicationSecretRequest {
 	return ApiDeleteApplicationSecretRequest{
@@ -556,11 +555,10 @@ EditApplicationSecret Edit a secret belonging to the application
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @param secretId Secret ID
- @return ApiEditApplicationSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@param secretId Secret ID
+	@return ApiEditApplicationSecretRequest
 */
 func (a *ApplicationSecretAPIService) EditApplicationSecret(ctx context.Context, applicationId string, secretId string) ApiEditApplicationSecretRequest {
 	return ApiEditApplicationSecretRequest{
@@ -572,7 +570,8 @@ func (a *ApplicationSecretAPIService) EditApplicationSecret(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ApplicationSecretAPIService) EditApplicationSecretExecute(r ApiEditApplicationSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -682,9 +681,9 @@ ListApplicationSecrets List application secrets
 
 Secrets are like environment variables, but they are secured and can't be revealed.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationSecretsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationSecretsRequest
 */
 func (a *ApplicationSecretAPIService) ListApplicationSecrets(ctx context.Context, applicationId string) ApiListApplicationSecretsRequest {
 	return ApiListApplicationSecretsRequest{
@@ -695,7 +694,8 @@ func (a *ApplicationSecretAPIService) ListApplicationSecrets(ctx context.Context
 }
 
 // Execute executes the request
-//  @return SecretResponseList
+//
+//	@return SecretResponseList
 func (a *ApplicationSecretAPIService) ListApplicationSecretsExecute(r ApiListApplicationSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

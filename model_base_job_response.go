@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -49,6 +51,8 @@ type BaseJobResponse struct {
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
+
+type _BaseJobResponse BaseJobResponse
 
 // NewBaseJobResponse instantiates a new BaseJobResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -585,6 +589,53 @@ func (o BaseJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	return toSerialize, nil
+}
+
+func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"environment",
+		"maximum_cpu",
+		"maximum_memory",
+		"name",
+		"cpu",
+		"memory",
+		"auto_preview",
+		"source",
+		"healthchecks",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varBaseJobResponse := _BaseJobResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varBaseJobResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BaseJobResponse(varBaseJobResponse)
+
+	return err
 }
 
 type NullableBaseJobResponse struct {

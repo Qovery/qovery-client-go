@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -28,6 +30,8 @@ type ContainerRegistryResponseAllOfCluster struct {
 	// Name of the cluster of which the registry belongs to
 	Name *string `json:"name,omitempty"`
 }
+
+type _ContainerRegistryResponseAllOfCluster ContainerRegistryResponseAllOfCluster
 
 // NewContainerRegistryResponseAllOfCluster instantiates a new ContainerRegistryResponseAllOfCluster object
 // This constructor will assign default values to properties that have it defined,
@@ -179,6 +183,44 @@ func (o ContainerRegistryResponseAllOfCluster) ToMap() (map[string]interface{}, 
 		toSerialize["name"] = o.Name
 	}
 	return toSerialize, nil
+}
+
+func (o *ContainerRegistryResponseAllOfCluster) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContainerRegistryResponseAllOfCluster := _ContainerRegistryResponseAllOfCluster{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContainerRegistryResponseAllOfCluster)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerRegistryResponseAllOfCluster(varContainerRegistryResponseAllOfCluster)
+
+	return err
 }
 
 type NullableContainerRegistryResponseAllOfCluster struct {

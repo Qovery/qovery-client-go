@@ -34,8 +34,8 @@ func (r ApiGetBitbucketRepositoriesRequest) Execute() (*GitRepositoryResponseLis
 /*
 GetBitbucketRepositories Get bitbucket repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetBitbucketRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetBitbucketRepositoriesRequest
 
 Deprecated
 */
@@ -47,7 +47,9 @@ func (a *GitRepositoriesAPIService) GetBitbucketRepositories(ctx context.Context
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetBitbucketRepositoriesExecute(r ApiGetBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
@@ -155,8 +157,8 @@ func (r ApiGetBitbucketRepositoryBranchesRequest) Execute() (*GitRepositoryBranc
 /*
 GetBitbucketRepositoryBranches Get bitbucket branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetBitbucketRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetBitbucketRepositoryBranchesRequest
 
 Deprecated
 */
@@ -168,7 +170,9 @@ func (a *GitRepositoriesAPIService) GetBitbucketRepositoryBranches(ctx context.C
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetBitbucketRepositoryBranchesExecute(r ApiGetBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
@@ -272,8 +276,8 @@ func (r ApiGetGitProviderAccountRequest) Execute() (*GitAuthProviderResponseList
 /*
 GetGitProviderAccount Get git provider accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitProviderAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetGitProviderAccountRequest
 
 Deprecated
 */
@@ -285,7 +289,9 @@ func (a *GitRepositoriesAPIService) GetGitProviderAccount(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return GitAuthProviderResponseList
+//
+//	@return GitAuthProviderResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetGitProviderAccountExecute(r ApiGetGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
@@ -386,8 +392,8 @@ func (r ApiGetGithubRepositoriesRequest) Execute() (*GitRepositoryResponseList, 
 /*
 GetGithubRepositories Get github repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGithubRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetGithubRepositoriesRequest
 
 Deprecated
 */
@@ -399,7 +405,9 @@ func (a *GitRepositoriesAPIService) GetGithubRepositories(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetGithubRepositoriesExecute(r ApiGetGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
@@ -507,8 +515,8 @@ func (r ApiGetGithubRepositoryBranchesRequest) Execute() (*GitRepositoryBranchRe
 /*
 GetGithubRepositoryBranches Get github branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGithubRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetGithubRepositoryBranchesRequest
 
 Deprecated
 */
@@ -520,7 +528,9 @@ func (a *GitRepositoriesAPIService) GetGithubRepositoryBranches(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetGithubRepositoryBranchesExecute(r ApiGetGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
@@ -624,8 +634,8 @@ func (r ApiGetGitlabRepositoriesRequest) Execute() (*GitRepositoryResponseList, 
 /*
 GetGitlabRepositories Get gitlab repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitlabRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetGitlabRepositoriesRequest
 
 Deprecated
 */
@@ -637,7 +647,9 @@ func (a *GitRepositoriesAPIService) GetGitlabRepositories(ctx context.Context) A
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetGitlabRepositoriesExecute(r ApiGetGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
@@ -745,8 +757,8 @@ func (r ApiGetGitlabRepositoryBranchesRequest) Execute() (*GitRepositoryBranchRe
 /*
 GetGitlabRepositoryBranches Get gitlab branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetGitlabRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetGitlabRepositoryBranchesRequest
 
 Deprecated
 */
@@ -758,7 +770,9 @@ func (a *GitRepositoriesAPIService) GetGitlabRepositoryBranches(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
+//
 // Deprecated
 func (a *GitRepositoriesAPIService) GetGitlabRepositoryBranchesExecute(r ApiGetGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (

@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the DeploymentHistoryPaginatedResponseList type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type DeploymentHistoryPaginatedResponseList struct {
 	PageSize float32             `json:"page_size"`
 	Results  []DeploymentHistory `json:"results,omitempty"`
 }
+
+type _DeploymentHistoryPaginatedResponseList DeploymentHistoryPaginatedResponseList
 
 // NewDeploymentHistoryPaginatedResponseList instantiates a new DeploymentHistoryPaginatedResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -140,6 +144,44 @@ func (o DeploymentHistoryPaginatedResponseList) ToMap() (map[string]interface{},
 		toSerialize["results"] = o.Results
 	}
 	return toSerialize, nil
+}
+
+func (o *DeploymentHistoryPaginatedResponseList) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"page",
+		"page_size",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeploymentHistoryPaginatedResponseList := _DeploymentHistoryPaginatedResponseList{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeploymentHistoryPaginatedResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentHistoryPaginatedResponseList(varDeploymentHistoryPaginatedResponseList)
+
+	return err
 }
 
 type NullableDeploymentHistoryPaginatedResponseList struct {

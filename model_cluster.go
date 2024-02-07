@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -54,6 +56,8 @@ type Cluster struct {
 	Features         []ClusterFeature             `json:"features,omitempty"`
 	DeploymentStatus *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
 }
+
+type _Cluster Cluster
 
 // NewCluster instantiates a new Cluster object
 // This constructor will assign default values to properties that have it defined,
@@ -885,6 +889,48 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 		toSerialize["deployment_status"] = o.DeploymentStatus
 	}
 	return toSerialize, nil
+}
+
+func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"organization",
+		"name",
+		"region",
+		"cloud_provider",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCluster := _Cluster{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCluster)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Cluster(varCluster)
+
+	return err
 }
 
 type NullableCluster struct {

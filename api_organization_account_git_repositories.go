@@ -43,9 +43,9 @@ func (r ApiGetOrganizationBitbucketRepositoriesRequest) Execute() (*GitRepositor
 /*
 GetOrganizationBitbucketRepositories Get bitbucket repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationBitbucketRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationBitbucketRepositoriesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositories(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoriesRequest {
 	return ApiGetOrganizationBitbucketRepositoriesRequest{
@@ -56,7 +56,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketR
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoriesExecute(r ApiGetOrganizationBitbucketRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -175,9 +176,9 @@ func (r ApiGetOrganizationBitbucketRepositoryBranchesRequest) Execute() (*GitRep
 /*
 GetOrganizationBitbucketRepositoryBranches Get bitbucket branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationBitbucketRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationBitbucketRepositoryBranchesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationBitbucketRepositoryBranchesRequest {
 	return ApiGetOrganizationBitbucketRepositoryBranchesRequest{
@@ -188,7 +189,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketR
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationBitbucketRepositoryBranchesExecute(r ApiGetOrganizationBitbucketRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -296,9 +298,9 @@ func (r ApiGetOrganizationGitProviderAccountRequest) Execute() (*GitAuthProvider
 /*
 GetOrganizationGitProviderAccount Get git provider accounts
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationGitProviderAccountRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationGitProviderAccountRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitProviderAccount(ctx context.Context, organizationId string) ApiGetOrganizationGitProviderAccountRequest {
 	return ApiGetOrganizationGitProviderAccountRequest{
@@ -309,7 +311,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitProvide
 }
 
 // Execute executes the request
-//  @return GitAuthProviderResponseList
+//
+//	@return GitAuthProviderResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitProviderAccountExecute(r ApiGetOrganizationGitProviderAccountRequest) (*GitAuthProviderResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -418,9 +421,9 @@ func (r ApiGetOrganizationGithubRepositoriesRequest) Execute() (*GitRepositoryRe
 /*
 GetOrganizationGithubRepositories Get github repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationGithubRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationGithubRepositoriesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoriesRequest {
 	return ApiGetOrganizationGithubRepositoriesRequest{
@@ -431,7 +434,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepo
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoriesExecute(r ApiGetOrganizationGithubRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -550,9 +554,9 @@ func (r ApiGetOrganizationGithubRepositoryBranchesRequest) Execute() (*GitReposi
 /*
 GetOrganizationGithubRepositoryBranches Get github branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationGithubRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationGithubRepositoryBranchesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGithubRepositoryBranchesRequest {
 	return ApiGetOrganizationGithubRepositoryBranchesRequest{
@@ -563,7 +567,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepo
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGithubRepositoryBranchesExecute(r ApiGetOrganizationGithubRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -678,9 +683,9 @@ func (r ApiGetOrganizationGitlabRepositoriesRequest) Execute() (*GitRepositoryRe
 /*
 GetOrganizationGitlabRepositories Get gitlab repositories of the connected user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationGitlabRepositoriesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationGitlabRepositoriesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositories(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoriesRequest {
 	return ApiGetOrganizationGitlabRepositoriesRequest{
@@ -691,7 +696,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepo
 }
 
 // Execute executes the request
-//  @return GitRepositoryResponseList
+//
+//	@return GitRepositoryResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoriesExecute(r ApiGetOrganizationGitlabRepositoriesRequest) (*GitRepositoryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -810,9 +816,9 @@ func (r ApiGetOrganizationGitlabRepositoryBranchesRequest) Execute() (*GitReposi
 /*
 GetOrganizationGitlabRepositoryBranches Get gitlab branches of the specified repository
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationGitlabRepositoryBranchesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationGitlabRepositoryBranchesRequest
 */
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoryBranches(ctx context.Context, organizationId string) ApiGetOrganizationGitlabRepositoryBranchesRequest {
 	return ApiGetOrganizationGitlabRepositoryBranchesRequest{
@@ -823,7 +829,8 @@ func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepo
 }
 
 // Execute executes the request
-//  @return GitRepositoryBranchResponseList
+//
+//	@return GitRepositoryBranchResponseList
 func (a *OrganizationAccountGitRepositoriesAPIService) GetOrganizationGitlabRepositoryBranchesExecute(r ApiGetOrganizationGitlabRepositoryBranchesRequest) (*GitRepositoryBranchResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

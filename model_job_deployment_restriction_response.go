@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -29,6 +31,8 @@ type JobDeploymentRestrictionResponse struct {
 	// For `PATH` restrictions, the value must not start with `/`
 	Value string `json:"value"`
 }
+
+type _JobDeploymentRestrictionResponse JobDeploymentRestrictionResponse
 
 // NewJobDeploymentRestrictionResponse instantiates a new JobDeploymentRestrictionResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -223,6 +227,47 @@ func (o JobDeploymentRestrictionResponse) ToMap() (map[string]interface{}, error
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
+}
+
+func (o *JobDeploymentRestrictionResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"mode",
+		"type",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varJobDeploymentRestrictionResponse := _JobDeploymentRestrictionResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varJobDeploymentRestrictionResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobDeploymentRestrictionResponse(varJobDeploymentRestrictionResponse)
+
+	return err
 }
 
 type NullableJobDeploymentRestrictionResponse struct {

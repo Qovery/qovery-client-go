@@ -44,9 +44,9 @@ CloneDatabase Clone database
 
 This will create a new database with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiCloneDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiCloneDatabaseRequest
 */
 func (a *DatabasesAPIService) CloneDatabase(ctx context.Context, databaseId string) ApiCloneDatabaseRequest {
 	return ApiCloneDatabaseRequest{
@@ -57,7 +57,8 @@ func (a *DatabasesAPIService) CloneDatabase(ctx context.Context, databaseId stri
 }
 
 // Execute executes the request
-//  @return Database
+//
+//	@return Database
 func (a *DatabasesAPIService) CloneDatabaseExecute(r ApiCloneDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -167,9 +168,9 @@ func (r ApiCreateDatabaseRequest) Execute() (*Database, *http.Response, error) {
 /*
 CreateDatabase Create a database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateDatabaseRequest
 */
 func (a *DatabasesAPIService) CreateDatabase(ctx context.Context, environmentId string) ApiCreateDatabaseRequest {
 	return ApiCreateDatabaseRequest{
@@ -180,7 +181,8 @@ func (a *DatabasesAPIService) CreateDatabase(ctx context.Context, environmentId 
 }
 
 // Execute executes the request
-//  @return Database
+//
+//	@return Database
 func (a *DatabasesAPIService) CreateDatabaseExecute(r ApiCreateDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -286,9 +288,9 @@ GetEnvironmentDatabaseStatus List all environment databases statuses
 
 Returns a list of databases with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentDatabaseStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentDatabaseStatusRequest
 */
 func (a *DatabasesAPIService) GetEnvironmentDatabaseStatus(ctx context.Context, environmentId string) ApiGetEnvironmentDatabaseStatusRequest {
 	return ApiGetEnvironmentDatabaseStatusRequest{
@@ -299,7 +301,8 @@ func (a *DatabasesAPIService) GetEnvironmentDatabaseStatus(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *DatabasesAPIService) GetEnvironmentDatabaseStatusExecute(r ApiGetEnvironmentDatabaseStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -401,9 +404,9 @@ func (r ApiListDatabaseRequest) Execute() (*DatabaseResponseList, *http.Response
 /*
 ListDatabase List environment databases
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListDatabaseRequest
 */
 func (a *DatabasesAPIService) ListDatabase(ctx context.Context, environmentId string) ApiListDatabaseRequest {
 	return ApiListDatabaseRequest{
@@ -414,7 +417,8 @@ func (a *DatabasesAPIService) ListDatabase(ctx context.Context, environmentId st
 }
 
 // Execute executes the request
-//  @return DatabaseResponseList
+//
+//	@return DatabaseResponseList
 func (a *DatabasesAPIService) ListDatabaseExecute(r ApiListDatabaseRequest) (*DatabaseResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -516,9 +520,9 @@ func (r ApiListEnvironmentDatabaseConfigRequest) Execute() (*DatabaseConfigurati
 /*
 ListEnvironmentDatabaseConfig List eligible database types, versions and modes for the environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentDatabaseConfigRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListEnvironmentDatabaseConfigRequest
 */
 func (a *DatabasesAPIService) ListEnvironmentDatabaseConfig(ctx context.Context, environmentId string) ApiListEnvironmentDatabaseConfigRequest {
 	return ApiListEnvironmentDatabaseConfigRequest{
@@ -529,7 +533,8 @@ func (a *DatabasesAPIService) ListEnvironmentDatabaseConfig(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return DatabaseConfigurationResponseList
+//
+//	@return DatabaseConfigurationResponseList
 func (a *DatabasesAPIService) ListEnvironmentDatabaseConfigExecute(r ApiListEnvironmentDatabaseConfigRequest) (*DatabaseConfigurationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ScalewayCredentialsRequest type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type ScalewayCredentialsRequest struct {
 	ScalewayProjectId      string `json:"scaleway_project_id"`
 	ScalewayOrganizationId string `json:"scaleway_organization_id"`
 }
+
+type _ScalewayCredentialsRequest ScalewayCredentialsRequest
 
 // NewScalewayCredentialsRequest instantiates a new ScalewayCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -185,6 +189,47 @@ func (o ScalewayCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["scaleway_project_id"] = o.ScalewayProjectId
 	toSerialize["scaleway_organization_id"] = o.ScalewayOrganizationId
 	return toSerialize, nil
+}
+
+func (o *ScalewayCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"scaleway_access_key",
+		"scaleway_secret_key",
+		"scaleway_project_id",
+		"scaleway_organization_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varScalewayCredentialsRequest := _ScalewayCredentialsRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varScalewayCredentialsRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ScalewayCredentialsRequest(varScalewayCredentialsRequest)
+
+	return err
 }
 
 type NullableScalewayCredentialsRequest struct {

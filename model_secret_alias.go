@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the SecretAlias type satisfies the MappedNullable interface at compile time
@@ -26,6 +28,8 @@ type SecretAlias struct {
 	Scope        APIVariableScopeEnum `json:"scope"`
 	VariableType APIVariableTypeEnum  `json:"variable_type"`
 }
+
+type _SecretAlias SecretAlias
 
 // NewSecretAlias instantiates a new SecretAlias object
 // This constructor will assign default values to properties that have it defined,
@@ -185,6 +189,47 @@ func (o SecretAlias) ToMap() (map[string]interface{}, error) {
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
 	return toSerialize, nil
+}
+
+func (o *SecretAlias) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"key",
+		"mount_path",
+		"scope",
+		"variable_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varSecretAlias := _SecretAlias{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varSecretAlias)
+
+	if err != nil {
+		return err
+	}
+
+	*o = SecretAlias(varSecretAlias)
+
+	return err
 }
 
 type NullableSecretAlias struct {

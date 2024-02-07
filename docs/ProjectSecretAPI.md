@@ -27,25 +27,25 @@ Add a secret to the project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecret(context.Background(), projectId).SecretRequest(secretRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecret``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateProjectSecret`: Secret
-    fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecret`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecret(context.Background(), projectId).SecretRequest(secretRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecret``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateProjectSecret`: Secret
+	fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecret`: %v\n", resp)
 }
 ```
 
@@ -99,26 +99,26 @@ Create a secret alias at the project level
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecretAlias(context.Background(), projectId, secretId).Key(key).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecretAlias``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateProjectSecretAlias`: Secret
-    fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecretAlias`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecretAlias(context.Background(), projectId, secretId).Key(key).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecretAlias``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateProjectSecretAlias`: Secret
+	fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecretAlias`: %v\n", resp)
 }
 ```
 
@@ -174,26 +174,26 @@ Create a secret override at the project level
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    value := *openapiclient.NewValue() // Value |  (optional)
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+	value := *openapiclient.NewValue() // Value |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecretOverride(context.Background(), projectId, secretId).Value(value).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecretOverride``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateProjectSecretOverride`: Secret
-    fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecretOverride`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectSecretAPI.CreateProjectSecretOverride(context.Background(), projectId, secretId).Value(value).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.CreateProjectSecretOverride``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateProjectSecretOverride`: Secret
+	fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.CreateProjectSecretOverride`: %v\n", resp)
 }
 ```
 
@@ -249,23 +249,23 @@ Delete a secret from a project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ProjectSecretAPI.DeleteProjectSecret(context.Background(), projectId, secretId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.DeleteProjectSecret``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ProjectSecretAPI.DeleteProjectSecret(context.Background(), projectId, secretId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.DeleteProjectSecret``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -320,26 +320,26 @@ Edit a secret belonging to the project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-    secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+	secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretAPI.EditProjectSecret(context.Background(), projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.EditProjectSecret``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditProjectSecret`: Secret
-    fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.EditProjectSecret`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectSecretAPI.EditProjectSecret(context.Background(), projectId, secretId).SecretEditRequest(secretEditRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.EditProjectSecret``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditProjectSecret`: Secret
+	fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.EditProjectSecret`: %v\n", resp)
 }
 ```
 
@@ -393,24 +393,24 @@ List project secrets
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ProjectSecretAPI.ListProjectSecrets(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.ListProjectSecrets``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListProjectSecrets`: SecretResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.ListProjectSecrets`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ProjectSecretAPI.ListProjectSecrets(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ProjectSecretAPI.ListProjectSecrets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListProjectSecrets`: SecretResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ProjectSecretAPI.ListProjectSecrets`: %v\n", resp)
 }
 ```
 

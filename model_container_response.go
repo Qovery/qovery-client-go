@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -59,6 +61,8 @@ type ContainerResponse struct {
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
+
+type _ContainerResponse ContainerResponse
 
 // NewContainerResponse instantiates a new ContainerResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -762,6 +766,57 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	return toSerialize, nil
+}
+
+func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"image_name",
+		"tag",
+		"registry",
+		"environment",
+		"maximum_cpu",
+		"maximum_memory",
+		"name",
+		"cpu",
+		"memory",
+		"min_running_instances",
+		"max_running_instances",
+		"healthchecks",
+		"auto_preview",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContainerResponse := _ContainerResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContainerResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerResponse(varContainerResponse)
+
+	return err
 }
 
 type NullableContainerResponse struct {

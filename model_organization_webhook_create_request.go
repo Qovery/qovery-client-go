@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OrganizationWebhookCreateRequest type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type OrganizationWebhookCreateRequest struct {
 	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
+
+type _OrganizationWebhookCreateRequest OrganizationWebhookCreateRequest
 
 // NewOrganizationWebhookCreateRequest instantiates a new OrganizationWebhookCreateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -316,6 +320,45 @@ func (o OrganizationWebhookCreateRequest) ToMap() (map[string]interface{}, error
 		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
 	}
 	return toSerialize, nil
+}
+
+func (o *OrganizationWebhookCreateRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"kind",
+		"target_url",
+		"events",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationWebhookCreateRequest := _OrganizationWebhookCreateRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationWebhookCreateRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationWebhookCreateRequest(varOrganizationWebhookCreateRequest)
+
+	return err
 }
 
 type NullableOrganizationWebhookCreateRequest struct {

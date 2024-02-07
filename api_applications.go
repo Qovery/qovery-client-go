@@ -44,9 +44,9 @@ CloneApplication Clone application
 
 This will create a new application with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiCloneApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiCloneApplicationRequest
 */
 func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicationId string) ApiCloneApplicationRequest {
 	return ApiCloneApplicationRequest{
@@ -57,7 +57,8 @@ func (a *ApplicationsAPIService) CloneApplication(ctx context.Context, applicati
 }
 
 // Execute executes the request
-//  @return Application
+//
+//	@return Application
 func (a *ApplicationsAPIService) CloneApplicationExecute(r ApiCloneApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -167,9 +168,9 @@ func (r ApiCreateApplicationRequest) Execute() (*Application, *http.Response, er
 /*
 CreateApplication Create an application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateApplicationRequest
 */
 func (a *ApplicationsAPIService) CreateApplication(ctx context.Context, environmentId string) ApiCreateApplicationRequest {
 	return ApiCreateApplicationRequest{
@@ -180,7 +181,8 @@ func (a *ApplicationsAPIService) CreateApplication(ctx context.Context, environm
 }
 
 // Execute executes the request
-//  @return Application
+//
+//	@return Application
 func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -285,8 +287,8 @@ GetDefaultApplicationAdvancedSettings List default application advanced settings
 
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultApplicationAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultApplicationAdvancedSettingsRequest
 */
 func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettings(ctx context.Context) ApiGetDefaultApplicationAdvancedSettingsRequest {
 	return ApiGetDefaultApplicationAdvancedSettingsRequest{
@@ -296,7 +298,8 @@ func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettings(ctx conte
 }
 
 // Execute executes the request
-//  @return ApplicationAdvancedSettings
+//
+//	@return ApplicationAdvancedSettings
 func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettingsExecute(r ApiGetDefaultApplicationAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -399,9 +402,9 @@ GetEnvironmentApplicationStatus List all environment applications statuses
 
 Returns a list of applications with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentApplicationStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentApplicationStatusRequest
 */
 func (a *ApplicationsAPIService) GetEnvironmentApplicationStatus(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationStatusRequest {
 	return ApiGetEnvironmentApplicationStatusRequest{
@@ -412,7 +415,8 @@ func (a *ApplicationsAPIService) GetEnvironmentApplicationStatus(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *ApplicationsAPIService) GetEnvironmentApplicationStatusExecute(r ApiGetEnvironmentApplicationStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -516,9 +520,9 @@ GetEnvironmentApplicationSupportedLanguages List supported languages
 
 Returns list of languages supported by Buildpacks.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentApplicationSupportedLanguagesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentApplicationSupportedLanguagesRequest
 */
 func (a *ApplicationsAPIService) GetEnvironmentApplicationSupportedLanguages(ctx context.Context, environmentId string) ApiGetEnvironmentApplicationSupportedLanguagesRequest {
 	return ApiGetEnvironmentApplicationSupportedLanguagesRequest{
@@ -529,7 +533,8 @@ func (a *ApplicationsAPIService) GetEnvironmentApplicationSupportedLanguages(ctx
 }
 
 // Execute executes the request
-//  @return EnvironmentApplicationsSupportedLanguageList
+//
+//	@return EnvironmentApplicationsSupportedLanguageList
 func (a *ApplicationsAPIService) GetEnvironmentApplicationSupportedLanguagesExecute(r ApiGetEnvironmentApplicationSupportedLanguagesRequest) (*EnvironmentApplicationsSupportedLanguageList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -631,9 +636,9 @@ func (r ApiListApplicationRequest) Execute() (*ApplicationResponseList, *http.Re
 /*
 ListApplication List applications
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListApplicationRequest
 */
 func (a *ApplicationsAPIService) ListApplication(ctx context.Context, environmentId string) ApiListApplicationRequest {
 	return ApiListApplicationRequest{
@@ -644,7 +649,8 @@ func (a *ApplicationsAPIService) ListApplication(ctx context.Context, environmen
 }
 
 // Execute executes the request
-//  @return ApplicationResponseList
+//
+//	@return ApplicationResponseList
 func (a *ApplicationsAPIService) ListApplicationExecute(r ApiListApplicationRequest) (*ApplicationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
