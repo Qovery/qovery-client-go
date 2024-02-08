@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &GitTokenAssociatedServiceResponse{}
 
 // GitTokenAssociatedServiceResponse struct for GitTokenAssociatedServiceResponse
 type GitTokenAssociatedServiceResponse struct {
-	ProjectId       string                        `json:"project_id"`
-	ProjectName     string                        `json:"project_name"`
-	EnvironmentId   string                        `json:"environment_id"`
-	EnvironmentName string                        `json:"environment_name"`
-	ServiceId       string                        `json:"service_id"`
-	ServiceName     string                        `json:"service_name"`
-	ServiceType     GitTokenAssociatedServiceType `json:"service_type"`
+	ProjectId            string                        `json:"project_id"`
+	ProjectName          string                        `json:"project_name"`
+	EnvironmentId        string                        `json:"environment_id"`
+	EnvironmentName      string                        `json:"environment_name"`
+	ServiceId            string                        `json:"service_id"`
+	ServiceName          string                        `json:"service_name"`
+	ServiceType          GitTokenAssociatedServiceType `json:"service_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitTokenAssociatedServiceResponse GitTokenAssociatedServiceResponse
@@ -242,6 +242,11 @@ func (o GitTokenAssociatedServiceResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["service_id"] = o.ServiceId
 	toSerialize["service_name"] = o.ServiceName
 	toSerialize["service_type"] = o.ServiceType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -275,15 +280,26 @@ func (o *GitTokenAssociatedServiceResponse) UnmarshalJSON(data []byte) (err erro
 
 	varGitTokenAssociatedServiceResponse := _GitTokenAssociatedServiceResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitTokenAssociatedServiceResponse)
+	err = json.Unmarshal(data, &varGitTokenAssociatedServiceResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitTokenAssociatedServiceResponse(varGitTokenAssociatedServiceResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "project_id")
+		delete(additionalProperties, "project_name")
+		delete(additionalProperties, "environment_id")
+		delete(additionalProperties, "environment_name")
+		delete(additionalProperties, "service_id")
+		delete(additionalProperties, "service_name")
+		delete(additionalProperties, "service_type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

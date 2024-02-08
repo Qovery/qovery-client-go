@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,7 +27,8 @@ type GitTokenRequest struct {
 	// The token from your git provider side
 	Token string `json:"token"`
 	// Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service
-	Workspace *string `json:"workspace,omitempty"`
+	Workspace            *string `json:"workspace,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitTokenRequest GitTokenRequest
@@ -208,6 +208,11 @@ func (o GitTokenRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Workspace) {
 		toSerialize["workspace"] = o.Workspace
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -237,15 +242,24 @@ func (o *GitTokenRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGitTokenRequest := _GitTokenRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitTokenRequest)
+	err = json.Unmarshal(data, &varGitTokenRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitTokenRequest(varGitTokenRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "workspace")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

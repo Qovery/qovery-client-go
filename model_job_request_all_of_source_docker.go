@@ -21,9 +21,12 @@ var _ MappedNullable = &JobRequestAllOfSourceDocker{}
 // JobRequestAllOfSourceDocker struct for JobRequestAllOfSourceDocker
 type JobRequestAllOfSourceDocker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath NullableString                   `json:"dockerfile_path,omitempty"`
-	GitRepository  *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
+	DockerfilePath       NullableString                   `json:"dockerfile_path,omitempty"`
+	GitRepository        *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobRequestAllOfSourceDocker JobRequestAllOfSourceDocker
 
 // NewJobRequestAllOfSourceDocker instantiates a new JobRequestAllOfSourceDocker object
 // This constructor will assign default values to properties that have it defined,
@@ -133,7 +136,34 @@ func (o JobRequestAllOfSourceDocker) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobRequestAllOfSourceDocker) UnmarshalJSON(data []byte) (err error) {
+	varJobRequestAllOfSourceDocker := _JobRequestAllOfSourceDocker{}
+
+	err = json.Unmarshal(data, &varJobRequestAllOfSourceDocker)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobRequestAllOfSourceDocker(varJobRequestAllOfSourceDocker)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "git_repository")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobRequestAllOfSourceDocker struct {

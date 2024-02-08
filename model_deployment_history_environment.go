@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,17 +22,18 @@ var _ MappedNullable = &DeploymentHistoryEnvironment{}
 
 // DeploymentHistoryEnvironment struct for DeploymentHistoryEnvironment
 type DeploymentHistoryEnvironment struct {
-	Id           string                          `json:"id"`
-	CreatedAt    time.Time                       `json:"created_at"`
-	UpdatedAt    *time.Time                      `json:"updated_at,omitempty"`
-	Status       *StateEnum                      `json:"status,omitempty"`
-	Origin       *OrganizationEventOrigin        `json:"origin,omitempty"`
-	TriggeredBy  *string                         `json:"triggered_by,omitempty"`
-	Applications []DeploymentHistoryApplication  `json:"applications,omitempty"`
-	Containers   []DeploymentHistoryContainer    `json:"containers,omitempty"`
-	Databases    []DeploymentHistoryDatabase     `json:"databases,omitempty"`
-	Jobs         []DeploymentHistoryJobResponse  `json:"jobs,omitempty"`
-	Helms        []DeploymentHistoryHelmResponse `json:"helms,omitempty"`
+	Id                   string                          `json:"id"`
+	CreatedAt            time.Time                       `json:"created_at"`
+	UpdatedAt            *time.Time                      `json:"updated_at,omitempty"`
+	Status               *StateEnum                      `json:"status,omitempty"`
+	Origin               *OrganizationEventOrigin        `json:"origin,omitempty"`
+	TriggeredBy          *string                         `json:"triggered_by,omitempty"`
+	Applications         []DeploymentHistoryApplication  `json:"applications,omitempty"`
+	Containers           []DeploymentHistoryContainer    `json:"containers,omitempty"`
+	Databases            []DeploymentHistoryDatabase     `json:"databases,omitempty"`
+	Jobs                 []DeploymentHistoryJobResponse  `json:"jobs,omitempty"`
+	Helms                []DeploymentHistoryHelmResponse `json:"helms,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryEnvironment DeploymentHistoryEnvironment
@@ -432,6 +432,11 @@ func (o DeploymentHistoryEnvironment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -460,15 +465,30 @@ func (o *DeploymentHistoryEnvironment) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryEnvironment := _DeploymentHistoryEnvironment{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryEnvironment)
+	err = json.Unmarshal(data, &varDeploymentHistoryEnvironment)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryEnvironment(varDeploymentHistoryEnvironment)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "origin")
+		delete(additionalProperties, "triggered_by")
+		delete(additionalProperties, "applications")
+		delete(additionalProperties, "containers")
+		delete(additionalProperties, "databases")
+		delete(additionalProperties, "jobs")
+		delete(additionalProperties, "helms")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -40,6 +39,7 @@ type ApplicationGitRepository struct {
 	DeployedCommitTag         *string        `json:"deployed_commit_tag,omitempty"`
 	GitTokenId                NullableString `json:"git_token_id,omitempty"`
 	GitTokenName              NullableString `json:"git_token_name,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _ApplicationGitRepository ApplicationGitRepository
@@ -512,6 +512,11 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	if o.GitTokenName.IsSet() {
 		toSerialize["git_token_name"] = o.GitTokenName.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -542,15 +547,32 @@ func (o *ApplicationGitRepository) UnmarshalJSON(data []byte) (err error) {
 
 	varApplicationGitRepository := _ApplicationGitRepository{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplicationGitRepository)
+	err = json.Unmarshal(data, &varApplicationGitRepository)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ApplicationGitRepository(varApplicationGitRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "has_access")
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "branch")
+		delete(additionalProperties, "root_path")
+		delete(additionalProperties, "deployed_commit_id")
+		delete(additionalProperties, "deployed_commit_date")
+		delete(additionalProperties, "deployed_commit_contributor")
+		delete(additionalProperties, "deployed_commit_tag")
+		delete(additionalProperties, "git_token_id")
+		delete(additionalProperties, "git_token_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

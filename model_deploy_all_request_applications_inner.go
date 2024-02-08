@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type DeployAllRequestApplicationsInner struct {
 	// id of the application to be deployed.
 	ApplicationId string `json:"application_id"`
 	// Commit ID to deploy. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
-	GitCommitId *string `json:"git_commit_id,omitempty"`
+	GitCommitId          *string `json:"git_commit_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeployAllRequestApplicationsInner DeployAllRequestApplicationsInner
@@ -118,6 +118,11 @@ func (o DeployAllRequestApplicationsInner) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -145,15 +150,21 @@ func (o *DeployAllRequestApplicationsInner) UnmarshalJSON(data []byte) (err erro
 
 	varDeployAllRequestApplicationsInner := _DeployAllRequestApplicationsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeployAllRequestApplicationsInner)
+	err = json.Unmarshal(data, &varDeployAllRequestApplicationsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeployAllRequestApplicationsInner(varDeployAllRequestApplicationsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "application_id")
+		delete(additionalProperties, "git_commit_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

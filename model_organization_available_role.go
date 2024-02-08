@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &OrganizationAvailableRole{}
 
 // OrganizationAvailableRole struct for OrganizationAvailableRole
 type OrganizationAvailableRole struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id                   string `json:"id"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationAvailableRole OrganizationAvailableRole
@@ -107,6 +107,11 @@ func (o OrganizationAvailableRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *OrganizationAvailableRole) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationAvailableRole := _OrganizationAvailableRole{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationAvailableRole)
+	err = json.Unmarshal(data, &varOrganizationAvailableRole)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationAvailableRole(varOrganizationAvailableRole)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

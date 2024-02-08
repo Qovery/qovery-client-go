@@ -20,9 +20,12 @@ var _ MappedNullable = &OrganizationCustomRoleUpdateRequestProjectPermissionsInn
 
 // OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct for OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 type OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct {
-	EnvironmentType *EnvironmentModeEnum                     `json:"environment_type,omitempty"`
-	Permission      *OrganizationCustomRoleProjectPermission `json:"permission,omitempty"`
+	EnvironmentType      *EnvironmentModeEnum                     `json:"environment_type,omitempty"`
+	Permission           *OrganizationCustomRoleProjectPermission `json:"permission,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 
 // NewOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner instantiates a new OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInn
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner := _OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner{}
+
+	err = json.Unmarshal(data, &varOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner(varOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "environment_type")
+		delete(additionalProperties, "permission")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct {

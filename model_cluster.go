@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -52,9 +51,10 @@ type Cluster struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys          []string                     `json:"ssh_keys,omitempty"`
-	Features         []ClusterFeature             `json:"features,omitempty"`
-	DeploymentStatus *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
+	SshKeys              []string                     `json:"ssh_keys,omitempty"`
+	Features             []ClusterFeature             `json:"features,omitempty"`
+	DeploymentStatus     *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Cluster Cluster
@@ -888,6 +888,11 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeploymentStatus) {
 		toSerialize["deployment_status"] = o.DeploymentStatus
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -920,15 +925,43 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 
 	varCluster := _Cluster{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCluster)
+	err = json.Unmarshal(data, &varCluster)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Cluster(varCluster)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "organization")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "cloud_provider")
+		delete(additionalProperties, "min_running_nodes")
+		delete(additionalProperties, "max_running_nodes")
+		delete(additionalProperties, "disk_size")
+		delete(additionalProperties, "instance_type")
+		delete(additionalProperties, "kubernetes")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "estimated_cloud_provider_cost")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "has_access")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "is_default")
+		delete(additionalProperties, "production")
+		delete(additionalProperties, "ssh_keys")
+		delete(additionalProperties, "features")
+		delete(additionalProperties, "deployment_status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &DeploymentHistoryPaginatedResponseList{}
 
 // DeploymentHistoryPaginatedResponseList struct for DeploymentHistoryPaginatedResponseList
 type DeploymentHistoryPaginatedResponseList struct {
-	Page     float32             `json:"page"`
-	PageSize float32             `json:"page_size"`
-	Results  []DeploymentHistory `json:"results,omitempty"`
+	Page                 float32             `json:"page"`
+	PageSize             float32             `json:"page_size"`
+	Results              []DeploymentHistory `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryPaginatedResponseList DeploymentHistoryPaginatedResponseList
@@ -143,6 +143,11 @@ func (o DeploymentHistoryPaginatedResponseList) ToMap() (map[string]interface{},
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *DeploymentHistoryPaginatedResponseList) UnmarshalJSON(data []byte) (err
 
 	varDeploymentHistoryPaginatedResponseList := _DeploymentHistoryPaginatedResponseList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryPaginatedResponseList)
+	err = json.Unmarshal(data, &varDeploymentHistoryPaginatedResponseList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryPaginatedResponseList(varDeploymentHistoryPaginatedResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

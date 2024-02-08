@@ -20,10 +20,13 @@ var _ MappedNullable = &RebootServicesRequest{}
 
 // RebootServicesRequest struct for RebootServicesRequest
 type RebootServicesRequest struct {
-	ApplicationIds []string `json:"application_ids,omitempty"`
-	DatabaseIds    []string `json:"database_ids,omitempty"`
-	ContainerIds   []string `json:"container_ids,omitempty"`
+	ApplicationIds       []string `json:"application_ids,omitempty"`
+	DatabaseIds          []string `json:"database_ids,omitempty"`
+	ContainerIds         []string `json:"container_ids,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _RebootServicesRequest RebootServicesRequest
 
 // NewRebootServicesRequest instantiates a new RebootServicesRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o RebootServicesRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ContainerIds) {
 		toSerialize["container_ids"] = o.ContainerIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *RebootServicesRequest) UnmarshalJSON(data []byte) (err error) {
+	varRebootServicesRequest := _RebootServicesRequest{}
+
+	err = json.Unmarshal(data, &varRebootServicesRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = RebootServicesRequest(varRebootServicesRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "application_ids")
+		delete(additionalProperties, "database_ids")
+		delete(additionalProperties, "container_ids")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableRebootServicesRequest struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -49,9 +48,10 @@ type CronJobResponse struct {
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy *bool                        `json:"auto_deploy,omitempty"`
-	JobType    string                       `json:"job_type"`
-	Schedule   CronJobResponseAllOfSchedule `json:"schedule"`
+	AutoDeploy           *bool                        `json:"auto_deploy,omitempty"`
+	JobType              string                       `json:"job_type"`
+	Schedule             CronJobResponseAllOfSchedule `json:"schedule"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CronJobResponse CronJobResponse
@@ -642,6 +642,11 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -681,15 +686,38 @@ func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varCronJobResponse := _CronJobResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCronJobResponse)
+	err = json.Unmarshal(data, &varCronJobResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CronJobResponse(varCronJobResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "maximum_cpu")
+		delete(additionalProperties, "maximum_memory")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "max_nb_restart")
+		delete(additionalProperties, "max_duration_seconds")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "healthchecks")
+		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "job_type")
+		delete(additionalProperties, "schedule")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

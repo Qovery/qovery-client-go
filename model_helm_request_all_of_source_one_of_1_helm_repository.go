@@ -25,8 +25,11 @@ type HelmRequestAllOfSourceOneOf1HelmRepository struct {
 	// The name of the chart in the repository
 	ChartName *string `json:"chart_name,omitempty"`
 	// The version of the chart to use
-	ChartVersion *string `json:"chart_version,omitempty"`
+	ChartVersion         *string `json:"chart_version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmRequestAllOfSourceOneOf1HelmRepository HelmRequestAllOfSourceOneOf1HelmRepository
 
 // NewHelmRequestAllOfSourceOneOf1HelmRepository instantiates a new HelmRequestAllOfSourceOneOf1HelmRepository object
 // This constructor will assign default values to properties that have it defined,
@@ -171,7 +174,35 @@ func (o HelmRequestAllOfSourceOneOf1HelmRepository) ToMap() (map[string]interfac
 	if !IsNil(o.ChartVersion) {
 		toSerialize["chart_version"] = o.ChartVersion
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmRequestAllOfSourceOneOf1HelmRepository) UnmarshalJSON(data []byte) (err error) {
+	varHelmRequestAllOfSourceOneOf1HelmRepository := _HelmRequestAllOfSourceOneOf1HelmRepository{}
+
+	err = json.Unmarshal(data, &varHelmRequestAllOfSourceOneOf1HelmRepository)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRequestAllOfSourceOneOf1HelmRepository(varHelmRequestAllOfSourceOneOf1HelmRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "chart_name")
+		delete(additionalProperties, "chart_version")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmRequestAllOfSourceOneOf1HelmRepository struct {

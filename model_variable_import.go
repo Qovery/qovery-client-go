@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,6 +23,7 @@ var _ MappedNullable = &VariableImport{}
 type VariableImport struct {
 	TotalVariablesToImport      float32                                          `json:"total_variables_to_import"`
 	SuccessfulImportedVariables []VariableImportSuccessfulImportedVariablesInner `json:"successful_imported_variables"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _VariableImport VariableImport
@@ -107,6 +107,11 @@ func (o VariableImport) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["total_variables_to_import"] = o.TotalVariablesToImport
 	toSerialize["successful_imported_variables"] = o.SuccessfulImportedVariables
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *VariableImport) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableImport := _VariableImport{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableImport)
+	err = json.Unmarshal(data, &varVariableImport)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableImport(varVariableImport)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_variables_to_import")
+		delete(additionalProperties, "successful_imported_variables")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

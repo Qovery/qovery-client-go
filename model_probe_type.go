@@ -20,11 +20,14 @@ var _ MappedNullable = &ProbeType{}
 
 // ProbeType struct for ProbeType
 type ProbeType struct {
-	Tcp  NullableProbeTypeTcp  `json:"tcp,omitempty"`
-	Http NullableProbeTypeHttp `json:"http,omitempty"`
-	Exec NullableProbeTypeExec `json:"exec,omitempty"`
-	Grpc NullableProbeTypeGrpc `json:"grpc,omitempty"`
+	Tcp                  NullableProbeTypeTcp  `json:"tcp,omitempty"`
+	Http                 NullableProbeTypeHttp `json:"http,omitempty"`
+	Exec                 NullableProbeTypeExec `json:"exec,omitempty"`
+	Grpc                 NullableProbeTypeGrpc `json:"grpc,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProbeType ProbeType
 
 // NewProbeType instantiates a new ProbeType object
 // This constructor will assign default values to properties that have it defined,
@@ -237,7 +240,36 @@ func (o ProbeType) ToMap() (map[string]interface{}, error) {
 	if o.Grpc.IsSet() {
 		toSerialize["grpc"] = o.Grpc.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProbeType) UnmarshalJSON(data []byte) (err error) {
+	varProbeType := _ProbeType{}
+
+	err = json.Unmarshal(data, &varProbeType)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProbeType(varProbeType)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tcp")
+		delete(additionalProperties, "http")
+		delete(additionalProperties, "exec")
+		delete(additionalProperties, "grpc")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProbeType struct {

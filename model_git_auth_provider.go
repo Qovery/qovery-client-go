@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &GitAuthProvider{}
 
 // GitAuthProvider struct for GitAuthProvider
 type GitAuthProvider struct {
-	Id     *string `json:"id,omitempty"`
-	Name   string  `json:"name"`
-	Owner  string  `json:"owner"`
-	UseBot *bool   `json:"use_bot,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	Name                 string  `json:"name"`
+	Owner                string  `json:"owner"`
+	UseBot               *bool   `json:"use_bot,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitAuthProvider GitAuthProvider
@@ -179,6 +179,11 @@ func (o GitAuthProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UseBot) {
 		toSerialize["use_bot"] = o.UseBot
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -207,15 +212,23 @@ func (o *GitAuthProvider) UnmarshalJSON(data []byte) (err error) {
 
 	varGitAuthProvider := _GitAuthProvider{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitAuthProvider)
+	err = json.Unmarshal(data, &varGitAuthProvider)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitAuthProvider(varGitAuthProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "use_bot")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

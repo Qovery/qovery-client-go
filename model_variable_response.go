@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -39,8 +38,9 @@ type VariableResponse struct {
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy  *string `json:"owned_by,omitempty"`
-	IsSecret bool    `json:"is_secret"`
+	OwnedBy              *string `json:"owned_by,omitempty"`
+	IsSecret             bool    `json:"is_secret"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableResponse VariableResponse
@@ -556,6 +556,11 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
 	toSerialize["is_secret"] = o.IsSecret
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -588,15 +593,34 @@ func (o *VariableResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableResponse := _VariableResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableResponse)
+	err = json.Unmarshal(data, &varVariableResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableResponse(varVariableResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "mount_path")
+		delete(additionalProperties, "overridden_variable")
+		delete(additionalProperties, "aliased_variable")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "variable_type")
+		delete(additionalProperties, "service_id")
+		delete(additionalProperties, "service_name")
+		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "owned_by")
+		delete(additionalProperties, "is_secret")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

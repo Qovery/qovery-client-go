@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,6 +34,7 @@ type ClusterRequestFeaturesInnerValueOneOf struct {
 	RdsSubnetsZoneAIds         []string `json:"rds_subnets_zone_a_ids,omitempty"`
 	RdsSubnetsZoneBIds         []string `json:"rds_subnets_zone_b_ids,omitempty"`
 	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
 
 type _ClusterRequestFeaturesInnerValueOneOf ClusterRequestFeaturesInnerValueOneOf
@@ -494,6 +494,11 @@ func (o ClusterRequestFeaturesInnerValueOneOf) ToMap() (map[string]interface{}, 
 	if o.RdsSubnetsZoneCIds != nil {
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -524,15 +529,32 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) UnmarshalJSON(data []byte) (err 
 
 	varClusterRequestFeaturesInnerValueOneOf := _ClusterRequestFeaturesInnerValueOneOf{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterRequestFeaturesInnerValueOneOf)
+	err = json.Unmarshal(data, &varClusterRequestFeaturesInnerValueOneOf)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterRequestFeaturesInnerValueOneOf(varClusterRequestFeaturesInnerValueOneOf)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aws_vpc_eks_id")
+		delete(additionalProperties, "eks_subnets_zone_a_ids")
+		delete(additionalProperties, "eks_subnets_zone_b_ids")
+		delete(additionalProperties, "eks_subnets_zone_c_ids")
+		delete(additionalProperties, "documentdb_subnets_zone_a_ids")
+		delete(additionalProperties, "documentdb_subnets_zone_b_ids")
+		delete(additionalProperties, "documentdb_subnets_zone_c_ids")
+		delete(additionalProperties, "elasticache_subnets_zone_a_ids")
+		delete(additionalProperties, "elasticache_subnets_zone_b_ids")
+		delete(additionalProperties, "elasticache_subnets_zone_c_ids")
+		delete(additionalProperties, "rds_subnets_zone_a_ids")
+		delete(additionalProperties, "rds_subnets_zone_b_ids")
+		delete(additionalProperties, "rds_subnets_zone_c_ids")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

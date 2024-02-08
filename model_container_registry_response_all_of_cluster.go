@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -28,7 +27,8 @@ type ContainerRegistryResponseAllOfCluster struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// Name of the cluster of which the registry belongs to
-	Name *string `json:"name,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerRegistryResponseAllOfCluster ContainerRegistryResponseAllOfCluster
@@ -182,6 +182,11 @@ func (o ContainerRegistryResponseAllOfCluster) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -210,15 +215,23 @@ func (o *ContainerRegistryResponseAllOfCluster) UnmarshalJSON(data []byte) (err 
 
 	varContainerRegistryResponseAllOfCluster := _ContainerRegistryResponseAllOfCluster{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerRegistryResponseAllOfCluster)
+	err = json.Unmarshal(data, &varContainerRegistryResponseAllOfCluster)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerRegistryResponseAllOfCluster(varContainerRegistryResponseAllOfCluster)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

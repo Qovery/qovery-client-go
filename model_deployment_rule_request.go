@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -36,7 +35,8 @@ type DeploymentRuleRequest struct {
 	// specify value only if auto_stop = false
 	StopTime NullableTime `json:"stop_time,omitempty"`
 	// specify value only if auto_stop = false
-	Weekdays []WeekdayEnum `json:"weekdays,omitempty"`
+	Weekdays             []WeekdayEnum `json:"weekdays,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentRuleRequest DeploymentRuleRequest
@@ -376,6 +376,11 @@ func (o DeploymentRuleRequest) ToMap() (map[string]interface{}, error) {
 	if o.Weekdays != nil {
 		toSerialize["weekdays"] = o.Weekdays
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -406,15 +411,28 @@ func (o *DeploymentRuleRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentRuleRequest := _DeploymentRuleRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentRuleRequest)
+	err = json.Unmarshal(data, &varDeploymentRuleRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentRuleRequest(varDeploymentRuleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "cluster")
+		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "start_time")
+		delete(additionalProperties, "stop_time")
+		delete(additionalProperties, "weekdays")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &CostRange{}
 
 // CostRange struct for CostRange
 type CostRange struct {
-	MinCostInCents *int32   `json:"min_cost_in_cents,omitempty"`
-	MinCost        *float32 `json:"min_cost,omitempty"`
-	MaxCostInCents *int32   `json:"max_cost_in_cents,omitempty"`
-	MaxCost        *float32 `json:"max_cost,omitempty"`
-	CurrencyCode   string   `json:"currency_code"`
+	MinCostInCents       *int32   `json:"min_cost_in_cents,omitempty"`
+	MinCost              *float32 `json:"min_cost,omitempty"`
+	MaxCostInCents       *int32   `json:"max_cost_in_cents,omitempty"`
+	MaxCost              *float32 `json:"max_cost,omitempty"`
+	CurrencyCode         string   `json:"currency_code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CostRange CostRange
@@ -224,6 +224,11 @@ func (o CostRange) ToMap() (map[string]interface{}, error) {
 		toSerialize["max_cost"] = o.MaxCost
 	}
 	toSerialize["currency_code"] = o.CurrencyCode
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -251,15 +256,24 @@ func (o *CostRange) UnmarshalJSON(data []byte) (err error) {
 
 	varCostRange := _CostRange{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCostRange)
+	err = json.Unmarshal(data, &varCostRange)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CostRange(varCostRange)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "min_cost_in_cents")
+		delete(additionalProperties, "min_cost")
+		delete(additionalProperties, "max_cost_in_cents")
+		delete(additionalProperties, "max_cost")
+		delete(additionalProperties, "currency_code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

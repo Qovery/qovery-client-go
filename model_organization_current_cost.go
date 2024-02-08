@@ -22,11 +22,14 @@ var _ MappedNullable = &OrganizationCurrentCost{}
 type OrganizationCurrentCost struct {
 	Plan *PlanEnum `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay *int32            `json:"remaining_trial_day,omitempty"`
-	RemainingCredits  *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost              *Cost             `json:"cost,omitempty"`
-	PaidUsage         *PaidUsage        `json:"paid_usage,omitempty"`
+	RemainingTrialDay    *int32            `json:"remaining_trial_day,omitempty"`
+	RemainingCredits     *RemainingCredits `json:"remaining_credits,omitempty"`
+	Cost                 *Cost             `json:"cost,omitempty"`
+	PaidUsage            *PaidUsage        `json:"paid_usage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationCurrentCost OrganizationCurrentCost
 
 // NewOrganizationCurrentCost instantiates a new OrganizationCurrentCost object
 // This constructor will assign default values to properties that have it defined,
@@ -230,7 +233,37 @@ func (o OrganizationCurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PaidUsage) {
 		toSerialize["paid_usage"] = o.PaidUsage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationCurrentCost) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationCurrentCost := _OrganizationCurrentCost{}
+
+	err = json.Unmarshal(data, &varOrganizationCurrentCost)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationCurrentCost(varOrganizationCurrentCost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "plan")
+		delete(additionalProperties, "remaining_trial_day")
+		delete(additionalProperties, "remaining_credits")
+		delete(additionalProperties, "cost")
+		delete(additionalProperties, "paid_usage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationCurrentCost struct {

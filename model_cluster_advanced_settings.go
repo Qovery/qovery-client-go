@@ -71,7 +71,10 @@ type ClusterAdvancedSettings struct {
 	NginxHpaMinNumberInstances *int32 `json:"nginx.hpa.min_number_instances,omitempty"`
 	// hpa maximum number of instances
 	NginxHpaMaxNumberInstances *int32 `json:"nginx.hpa.max_number_instances,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
+
+type _ClusterAdvancedSettings ClusterAdvancedSettings
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
@@ -1017,7 +1020,58 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NginxHpaMaxNumberInstances) {
 		toSerialize["nginx.hpa.max_number_instances"] = o.NginxHpaMaxNumberInstances
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
+	varClusterAdvancedSettings := _ClusterAdvancedSettings{}
+
+	err = json.Unmarshal(data, &varClusterAdvancedSettings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterAdvancedSettings(varClusterAdvancedSettings)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "aws.cloudwatch.eks_logs_retention_days")
+		delete(additionalProperties, "aws.vpc.enable_s3_flow_logs")
+		delete(additionalProperties, "aws.vpc.flow_logs_retention_days")
+		delete(additionalProperties, "loki.log_retention_in_week")
+		delete(additionalProperties, "registry.image_retention_time")
+		delete(additionalProperties, "cloud_provider.container_registry.tags")
+		delete(additionalProperties, "load_balancer.size")
+		delete(additionalProperties, "database.postgresql.deny_public_access")
+		delete(additionalProperties, "database.postgresql.allowed_cidrs")
+		delete(additionalProperties, "database.mysql.deny_public_access")
+		delete(additionalProperties, "database.mysql.allowed_cidrs")
+		delete(additionalProperties, "database.mongodb.deny_public_access")
+		delete(additionalProperties, "database.mongodb.allowed_cidrs")
+		delete(additionalProperties, "database.redis.deny_public_access")
+		delete(additionalProperties, "database.redis.allowed_cidrs")
+		delete(additionalProperties, "aws.iam.admin_group")
+		delete(additionalProperties, "aws.eks.ec2.metadata_imds")
+		delete(additionalProperties, "pleco.resources_ttl")
+		delete(additionalProperties, "registry.mirroring_mode")
+		delete(additionalProperties, "nginx.vcpu.request_in_milli_cpu")
+		delete(additionalProperties, "nginx.vcpu.limit_in_milli_cpu")
+		delete(additionalProperties, "nginx.memory.request_in_mib")
+		delete(additionalProperties, "nginx.memory.limit_in_mib")
+		delete(additionalProperties, "nginx.hpa.cpu_utilization_percentage_threshold")
+		delete(additionalProperties, "nginx.hpa.min_number_instances")
+		delete(additionalProperties, "nginx.hpa.max_number_instances")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterAdvancedSettings struct {

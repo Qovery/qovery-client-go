@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -34,7 +33,8 @@ type ProjectDeploymentRuleRequest struct {
 	StopTime    time.Time           `json:"stop_time"`
 	Weekdays    []WeekdayEnum       `json:"weekdays"`
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
-	Wildcard string `json:"wildcard"`
+	Wildcard             string `json:"wildcard"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDeploymentRuleRequest ProjectDeploymentRuleRequest
@@ -361,6 +361,11 @@ func (o ProjectDeploymentRuleRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["stop_time"] = o.StopTime
 	toSerialize["weekdays"] = o.Weekdays
 	toSerialize["wildcard"] = o.Wildcard
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -395,15 +400,29 @@ func (o *ProjectDeploymentRuleRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDeploymentRuleRequest := _ProjectDeploymentRuleRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDeploymentRuleRequest)
+	err = json.Unmarshal(data, &varProjectDeploymentRuleRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDeploymentRuleRequest(varProjectDeploymentRuleRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "start_time")
+		delete(additionalProperties, "stop_time")
+		delete(additionalProperties, "weekdays")
+		delete(additionalProperties, "wildcard")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

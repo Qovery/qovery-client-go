@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &Invoice{}
 
 // Invoice struct for Invoice
 type Invoice struct {
-	TotalInCents int32             `json:"total_in_cents"`
-	Total        float32           `json:"total"`
-	CurrencyCode string            `json:"currency_code"`
-	Id           string            `json:"id"`
-	CreatedAt    time.Time         `json:"created_at"`
-	Status       InvoiceStatusEnum `json:"status"`
+	TotalInCents         int32             `json:"total_in_cents"`
+	Total                float32           `json:"total"`
+	CurrencyCode         string            `json:"currency_code"`
+	Id                   string            `json:"id"`
+	CreatedAt            time.Time         `json:"created_at"`
+	Status               InvoiceStatusEnum `json:"status"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Invoice Invoice
@@ -216,6 +216,11 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["status"] = o.Status
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -248,15 +253,25 @@ func (o *Invoice) UnmarshalJSON(data []byte) (err error) {
 
 	varInvoice := _Invoice{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInvoice)
+	err = json.Unmarshal(data, &varInvoice)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Invoice(varInvoice)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_in_cents")
+		delete(additionalProperties, "total")
+		delete(additionalProperties, "currency_code")
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +26,8 @@ type SecretRequest struct {
 	// value of the secret. Clear value will never be returned
 	Value *string `json:"value,omitempty"`
 	// should be set for file only. variable mount path make secret a file (where file should be mounted).
-	MountPath NullableString `json:"mount_path,omitempty"`
+	MountPath            NullableString `json:"mount_path,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SecretRequest SecretRequest
@@ -166,6 +166,11 @@ func (o SecretRequest) ToMap() (map[string]interface{}, error) {
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -193,15 +198,22 @@ func (o *SecretRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSecretRequest := _SecretRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretRequest)
+	err = json.Unmarshal(data, &varSecretRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SecretRequest(varSecretRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "mount_path")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

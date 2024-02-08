@@ -20,8 +20,11 @@ var _ MappedNullable = &CreditCardResponseList{}
 
 // CreditCardResponseList struct for CreditCardResponseList
 type CreditCardResponseList struct {
-	Results []CreditCard `json:"results,omitempty"`
+	Results              []CreditCard `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CreditCardResponseList CreditCardResponseList
 
 // NewCreditCardResponseList instantiates a new CreditCardResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CreditCardResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CreditCardResponseList) UnmarshalJSON(data []byte) (err error) {
+	varCreditCardResponseList := _CreditCardResponseList{}
+
+	err = json.Unmarshal(data, &varCreditCardResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CreditCardResponseList(varCreditCardResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCreditCardResponseList struct {

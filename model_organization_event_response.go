@@ -21,21 +21,24 @@ var _ MappedNullable = &OrganizationEventResponse{}
 
 // OrganizationEventResponse struct for OrganizationEventResponse
 type OrganizationEventResponse struct {
-	Id              *string                                `json:"id,omitempty"`
-	Timestamp       *time.Time                             `json:"timestamp,omitempty"`
-	EventType       *OrganizationEventType                 `json:"event_type,omitempty"`
-	TargetId        NullableString                         `json:"target_id,omitempty"`
-	TargetName      *string                                `json:"target_name,omitempty"`
-	TargetType      *OrganizationEventTargetType           `json:"target_type,omitempty"`
-	SubTargetType   NullableOrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
-	Change          *string                                `json:"change,omitempty"`
-	Origin          *OrganizationEventOrigin               `json:"origin,omitempty"`
-	TriggeredBy     *string                                `json:"triggered_by,omitempty"`
-	ProjectId       NullableString                         `json:"project_id,omitempty"`
-	ProjectName     *string                                `json:"project_name,omitempty"`
-	EnvironmentId   NullableString                         `json:"environment_id,omitempty"`
-	EnvironmentName *string                                `json:"environment_name,omitempty"`
+	Id                   *string                                `json:"id,omitempty"`
+	Timestamp            *time.Time                             `json:"timestamp,omitempty"`
+	EventType            *OrganizationEventType                 `json:"event_type,omitempty"`
+	TargetId             NullableString                         `json:"target_id,omitempty"`
+	TargetName           *string                                `json:"target_name,omitempty"`
+	TargetType           *OrganizationEventTargetType           `json:"target_type,omitempty"`
+	SubTargetType        NullableOrganizationEventSubTargetType `json:"sub_target_type,omitempty"`
+	Change               *string                                `json:"change,omitempty"`
+	Origin               *OrganizationEventOrigin               `json:"origin,omitempty"`
+	TriggeredBy          *string                                `json:"triggered_by,omitempty"`
+	ProjectId            NullableString                         `json:"project_id,omitempty"`
+	ProjectName          *string                                `json:"project_name,omitempty"`
+	EnvironmentId        NullableString                         `json:"environment_id,omitempty"`
+	EnvironmentName      *string                                `json:"environment_name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationEventResponse OrganizationEventResponse
 
 // NewOrganizationEventResponse instantiates a new OrganizationEventResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -598,7 +601,46 @@ func (o OrganizationEventResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentName) {
 		toSerialize["environment_name"] = o.EnvironmentName
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationEventResponse) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationEventResponse := _OrganizationEventResponse{}
+
+	err = json.Unmarshal(data, &varOrganizationEventResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationEventResponse(varOrganizationEventResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "event_type")
+		delete(additionalProperties, "target_id")
+		delete(additionalProperties, "target_name")
+		delete(additionalProperties, "target_type")
+		delete(additionalProperties, "sub_target_type")
+		delete(additionalProperties, "change")
+		delete(additionalProperties, "origin")
+		delete(additionalProperties, "triggered_by")
+		delete(additionalProperties, "project_id")
+		delete(additionalProperties, "project_name")
+		delete(additionalProperties, "environment_id")
+		delete(additionalProperties, "environment_name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationEventResponse struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,6 +25,7 @@ type GenericObjectCurrentCost struct {
 	Name                  string `json:"name"`
 	ConsumedTimeInSeconds int32  `json:"consumed_time_in_seconds"`
 	Cost                  Cost   `json:"cost"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _GenericObjectCurrentCost GenericObjectCurrentCost
@@ -161,6 +161,11 @@ func (o GenericObjectCurrentCost) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["consumed_time_in_seconds"] = o.ConsumedTimeInSeconds
 	toSerialize["cost"] = o.Cost
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *GenericObjectCurrentCost) UnmarshalJSON(data []byte) (err error) {
 
 	varGenericObjectCurrentCost := _GenericObjectCurrentCost{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGenericObjectCurrentCost)
+	err = json.Unmarshal(data, &varGenericObjectCurrentCost)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GenericObjectCurrentCost(varGenericObjectCurrentCost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "consumed_time_in_seconds")
+		delete(additionalProperties, "cost")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type CustomDomainRequest struct {
 	// your custom domain
 	Domain string `json:"domain"`
 	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
-	GenerateCertificate bool `json:"generate_certificate"`
+	GenerateCertificate  bool `json:"generate_certificate"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CustomDomainRequest CustomDomainRequest
@@ -109,6 +109,11 @@ func (o CustomDomainRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["domain"] = o.Domain
 	toSerialize["generate_certificate"] = o.GenerateCertificate
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *CustomDomainRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCustomDomainRequest := _CustomDomainRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCustomDomainRequest)
+	err = json.Unmarshal(data, &varCustomDomainRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CustomDomainRequest(varCustomDomainRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "generate_certificate")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

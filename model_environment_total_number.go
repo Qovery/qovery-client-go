@@ -21,7 +21,10 @@ var _ MappedNullable = &EnvironmentTotalNumber{}
 // EnvironmentTotalNumber struct for EnvironmentTotalNumber
 type EnvironmentTotalNumber struct {
 	EnvironmentTotalNumber *float32 `json:"environment_total_number,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
+
+type _EnvironmentTotalNumber EnvironmentTotalNumber
 
 // NewEnvironmentTotalNumber instantiates a new EnvironmentTotalNumber object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o EnvironmentTotalNumber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentTotalNumber) {
 		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentTotalNumber) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentTotalNumber := _EnvironmentTotalNumber{}
+
+	err = json.Unmarshal(data, &varEnvironmentTotalNumber)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentTotalNumber(varEnvironmentTotalNumber)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "environment_total_number")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentTotalNumber struct {

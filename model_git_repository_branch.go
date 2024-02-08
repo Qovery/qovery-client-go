@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &GitRepositoryBranch{}
 
 // GitRepositoryBranch struct for GitRepositoryBranch
 type GitRepositoryBranch struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitRepositoryBranch GitRepositoryBranch
@@ -80,6 +80,11 @@ func (o GitRepositoryBranch) MarshalJSON() ([]byte, error) {
 func (o GitRepositoryBranch) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *GitRepositoryBranch) UnmarshalJSON(data []byte) (err error) {
 
 	varGitRepositoryBranch := _GitRepositoryBranch{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitRepositoryBranch)
+	err = json.Unmarshal(data, &varGitRepositoryBranch)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitRepositoryBranch(varGitRepositoryBranch)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

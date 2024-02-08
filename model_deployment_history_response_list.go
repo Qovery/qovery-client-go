@@ -20,8 +20,11 @@ var _ MappedNullable = &DeploymentHistoryResponseList{}
 
 // DeploymentHistoryResponseList struct for DeploymentHistoryResponseList
 type DeploymentHistoryResponseList struct {
-	Results []DeploymentHistory `json:"results,omitempty"`
+	Results              []DeploymentHistory `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentHistoryResponseList DeploymentHistoryResponseList
 
 // NewDeploymentHistoryResponseList instantiates a new DeploymentHistoryResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o DeploymentHistoryResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentHistoryResponseList) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentHistoryResponseList := _DeploymentHistoryResponseList{}
+
+	err = json.Unmarshal(data, &varDeploymentHistoryResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentHistoryResponseList(varDeploymentHistoryResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentHistoryResponseList struct {

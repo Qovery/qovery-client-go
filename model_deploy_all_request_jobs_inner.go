@@ -25,8 +25,11 @@ type DeployAllRequestJobsInner struct {
 	// new tag for the job image. Use only if job is an image source. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
 	ImageTag *string `json:"image_tag,omitempty"`
 	// Commit ID to deploy. Use only if job is a repository source. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
-	GitCommitId *string `json:"git_commit_id,omitempty"`
+	GitCommitId          *string `json:"git_commit_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeployAllRequestJobsInner DeployAllRequestJobsInner
 
 // NewDeployAllRequestJobsInner instantiates a new DeployAllRequestJobsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -160,7 +163,35 @@ func (o DeployAllRequestJobsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeployAllRequestJobsInner) UnmarshalJSON(data []byte) (err error) {
+	varDeployAllRequestJobsInner := _DeployAllRequestJobsInner{}
+
+	err = json.Unmarshal(data, &varDeployAllRequestJobsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeployAllRequestJobsInner(varDeployAllRequestJobsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "image_tag")
+		delete(additionalProperties, "git_commit_id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeployAllRequestJobsInner struct {

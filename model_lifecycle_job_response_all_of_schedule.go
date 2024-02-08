@@ -20,10 +20,13 @@ var _ MappedNullable = &LifecycleJobResponseAllOfSchedule{}
 
 // LifecycleJobResponseAllOfSchedule struct for LifecycleJobResponseAllOfSchedule
 type LifecycleJobResponseAllOfSchedule struct {
-	OnStart  *JobRequestAllOfScheduleOnStart `json:"on_start,omitempty"`
-	OnStop   *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
-	OnDelete *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
+	OnStart              *JobRequestAllOfScheduleOnStart `json:"on_start,omitempty"`
+	OnStop               *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
+	OnDelete             *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LifecycleJobResponseAllOfSchedule LifecycleJobResponseAllOfSchedule
 
 // NewLifecycleJobResponseAllOfSchedule instantiates a new LifecycleJobResponseAllOfSchedule object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o LifecycleJobResponseAllOfSchedule) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.OnDelete) {
 		toSerialize["on_delete"] = o.OnDelete
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LifecycleJobResponseAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
+	varLifecycleJobResponseAllOfSchedule := _LifecycleJobResponseAllOfSchedule{}
+
+	err = json.Unmarshal(data, &varLifecycleJobResponseAllOfSchedule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LifecycleJobResponseAllOfSchedule(varLifecycleJobResponseAllOfSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "on_start")
+		delete(additionalProperties, "on_stop")
+		delete(additionalProperties, "on_delete")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLifecycleJobResponseAllOfSchedule struct {

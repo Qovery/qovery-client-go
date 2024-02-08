@@ -20,8 +20,11 @@ var _ MappedNullable = &CommitResponseList{}
 
 // CommitResponseList struct for CommitResponseList
 type CommitResponseList struct {
-	Results []Commit `json:"results,omitempty"`
+	Results              []Commit `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CommitResponseList CommitResponseList
 
 // NewCommitResponseList instantiates a new CommitResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CommitResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CommitResponseList) UnmarshalJSON(data []byte) (err error) {
+	varCommitResponseList := _CommitResponseList{}
+
+	err = json.Unmarshal(data, &varCommitResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CommitResponseList(varCommitResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCommitResponseList struct {

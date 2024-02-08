@@ -20,8 +20,11 @@ var _ MappedNullable = &ApplicationResponseList{}
 
 // ApplicationResponseList struct for ApplicationResponseList
 type ApplicationResponseList struct {
-	Results []Application `json:"results,omitempty"`
+	Results              []Application `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ApplicationResponseList ApplicationResponseList
 
 // NewApplicationResponseList instantiates a new ApplicationResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ApplicationResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ApplicationResponseList) UnmarshalJSON(data []byte) (err error) {
+	varApplicationResponseList := _ApplicationResponseList{}
+
+	err = json.Unmarshal(data, &varApplicationResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ApplicationResponseList(varApplicationResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableApplicationResponseList struct {

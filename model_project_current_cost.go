@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,6 +26,7 @@ type ProjectCurrentCost struct {
 	ConsumedTimeInSeconds int32                      `json:"consumed_time_in_seconds"`
 	Cost                  Cost                       `json:"cost"`
 	Environments          []GenericObjectCurrentCost `json:"environments,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _ProjectCurrentCost ProjectCurrentCost
@@ -197,6 +197,11 @@ func (o ProjectCurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environments) {
 		toSerialize["environments"] = o.Environments
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -227,15 +232,24 @@ func (o *ProjectCurrentCost) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectCurrentCost := _ProjectCurrentCost{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectCurrentCost)
+	err = json.Unmarshal(data, &varProjectCurrentCost)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectCurrentCost(varProjectCurrentCost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "consumed_time_in_seconds")
+		delete(additionalProperties, "cost")
+		delete(additionalProperties, "environments")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,8 +30,9 @@ type ServicePort struct {
 	// Expose the port to the world
 	PubliclyAccessible bool `json:"publicly_accessible"`
 	// is the default port to use for domain
-	IsDefault *bool            `json:"is_default,omitempty"`
-	Protocol  PortProtocolEnum `json:"protocol"`
+	IsDefault            *bool            `json:"is_default,omitempty"`
+	Protocol             PortProtocolEnum `json:"protocol"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServicePort ServicePort
@@ -275,6 +275,11 @@ func (o ServicePort) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_default"] = o.IsDefault
 	}
 	toSerialize["protocol"] = o.Protocol
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -305,15 +310,26 @@ func (o *ServicePort) UnmarshalJSON(data []byte) (err error) {
 
 	varServicePort := _ServicePort{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServicePort)
+	err = json.Unmarshal(data, &varServicePort)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServicePort(varServicePort)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "internal_port")
+		delete(additionalProperties, "external_port")
+		delete(additionalProperties, "publicly_accessible")
+		delete(additionalProperties, "is_default")
+		delete(additionalProperties, "protocol")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

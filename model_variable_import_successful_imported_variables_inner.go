@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,9 +23,10 @@ var _ MappedNullable = &VariableImportSuccessfulImportedVariablesInner{}
 type VariableImportSuccessfulImportedVariablesInner struct {
 	Name string `json:"name"`
 	// Optional if the variable is secret
-	Value    *string              `json:"value,omitempty"`
-	Scope    APIVariableScopeEnum `json:"scope"`
-	IsSecret bool                 `json:"is_secret"`
+	Value                *string              `json:"value,omitempty"`
+	Scope                APIVariableScopeEnum `json:"scope"`
+	IsSecret             bool                 `json:"is_secret"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableImportSuccessfulImportedVariablesInner VariableImportSuccessfulImportedVariablesInner
@@ -171,6 +171,11 @@ func (o VariableImportSuccessfulImportedVariablesInner) ToMap() (map[string]inte
 	}
 	toSerialize["scope"] = o.Scope
 	toSerialize["is_secret"] = o.IsSecret
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -200,15 +205,23 @@ func (o *VariableImportSuccessfulImportedVariablesInner) UnmarshalJSON(data []by
 
 	varVariableImportSuccessfulImportedVariablesInner := _VariableImportSuccessfulImportedVariablesInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableImportSuccessfulImportedVariablesInner)
+	err = json.Unmarshal(data, &varVariableImportSuccessfulImportedVariablesInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableImportSuccessfulImportedVariablesInner(varVariableImportSuccessfulImportedVariablesInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "is_secret")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

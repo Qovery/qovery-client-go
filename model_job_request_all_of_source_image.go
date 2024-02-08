@@ -25,8 +25,11 @@ type JobRequestAllOfSourceImage struct {
 	// tag of the image container
 	Tag *string `json:"tag,omitempty"`
 	// tag of the image container
-	RegistryId *string `json:"registry_id,omitempty"`
+	RegistryId           *string `json:"registry_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobRequestAllOfSourceImage JobRequestAllOfSourceImage
 
 // NewJobRequestAllOfSourceImage instantiates a new JobRequestAllOfSourceImage object
 // This constructor will assign default values to properties that have it defined,
@@ -160,7 +163,35 @@ func (o JobRequestAllOfSourceImage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RegistryId) {
 		toSerialize["registry_id"] = o.RegistryId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobRequestAllOfSourceImage) UnmarshalJSON(data []byte) (err error) {
+	varJobRequestAllOfSourceImage := _JobRequestAllOfSourceImage{}
+
+	err = json.Unmarshal(data, &varJobRequestAllOfSourceImage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobRequestAllOfSourceImage(varJobRequestAllOfSourceImage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "registry_id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobRequestAllOfSourceImage struct {

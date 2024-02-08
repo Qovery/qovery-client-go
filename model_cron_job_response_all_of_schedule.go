@@ -20,8 +20,11 @@ var _ MappedNullable = &CronJobResponseAllOfSchedule{}
 
 // CronJobResponseAllOfSchedule struct for CronJobResponseAllOfSchedule
 type CronJobResponseAllOfSchedule struct {
-	Cronjob *CronJobResponseAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	Cronjob              *CronJobResponseAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CronJobResponseAllOfSchedule CronJobResponseAllOfSchedule
 
 // NewCronJobResponseAllOfSchedule instantiates a new CronJobResponseAllOfSchedule object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CronJobResponseAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cronjob) {
 		toSerialize["cronjob"] = o.Cronjob
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CronJobResponseAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
+	varCronJobResponseAllOfSchedule := _CronJobResponseAllOfSchedule{}
+
+	err = json.Unmarshal(data, &varCronJobResponseAllOfSchedule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronJobResponseAllOfSchedule(varCronJobResponseAllOfSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cronjob")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCronJobResponseAllOfSchedule struct {

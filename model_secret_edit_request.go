@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &SecretEditRequest{}
 
 // SecretEditRequest struct for SecretEditRequest
 type SecretEditRequest struct {
-	Value *string `json:"value,omitempty"`
-	Key   string  `json:"key"`
+	Value                *string `json:"value,omitempty"`
+	Key                  string  `json:"key"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SecretEditRequest SecretEditRequest
@@ -116,6 +116,11 @@ func (o SecretEditRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	toSerialize["key"] = o.Key
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *SecretEditRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSecretEditRequest := _SecretEditRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretEditRequest)
+	err = json.Unmarshal(data, &varSecretEditRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SecretEditRequest(varSecretEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,12 +20,15 @@ var _ MappedNullable = &EnvironmentLogsError{}
 
 // EnvironmentLogsError struct for EnvironmentLogsError
 type EnvironmentLogsError struct {
-	Tag             *string                              `json:"tag,omitempty"`
-	UserLogMessage  *string                              `json:"user_log_message,omitempty"`
-	Link            *string                              `json:"link,omitempty"`
-	HintMessage     *string                              `json:"hint_message,omitempty"`
-	UnderlyingError *EnvironmentLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
+	Tag                  *string                              `json:"tag,omitempty"`
+	UserLogMessage       *string                              `json:"user_log_message,omitempty"`
+	Link                 *string                              `json:"link,omitempty"`
+	HintMessage          *string                              `json:"hint_message,omitempty"`
+	UnderlyingError      *EnvironmentLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentLogsError EnvironmentLogsError
 
 // NewEnvironmentLogsError instantiates a new EnvironmentLogsError object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o EnvironmentLogsError) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UnderlyingError) {
 		toSerialize["underlying_error"] = o.UnderlyingError
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentLogsError) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentLogsError := _EnvironmentLogsError{}
+
+	err = json.Unmarshal(data, &varEnvironmentLogsError)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentLogsError(varEnvironmentLogsError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "user_log_message")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "hint_message")
+		delete(additionalProperties, "underlying_error")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentLogsError struct {

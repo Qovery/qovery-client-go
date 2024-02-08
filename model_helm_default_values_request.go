@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &HelmDefaultValuesRequest{}
 
 // HelmDefaultValuesRequest struct for HelmDefaultValuesRequest
 type HelmDefaultValuesRequest struct {
-	Source HelmDefaultValuesRequestAllOfSource `json:"source"`
+	Source               HelmDefaultValuesRequestAllOfSource `json:"source"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmDefaultValuesRequest HelmDefaultValuesRequest
@@ -80,6 +80,11 @@ func (o HelmDefaultValuesRequest) MarshalJSON() ([]byte, error) {
 func (o HelmDefaultValuesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["source"] = o.Source
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *HelmDefaultValuesRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmDefaultValuesRequest := _HelmDefaultValuesRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmDefaultValuesRequest)
+	err = json.Unmarshal(data, &varHelmDefaultValuesRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmDefaultValuesRequest(varHelmDefaultValuesRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "source")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

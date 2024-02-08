@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &GcpCredentialsRequest{}
 
 // GcpCredentialsRequest struct for GcpCredentialsRequest
 type GcpCredentialsRequest struct {
-	Name           string `json:"name"`
-	GcpCredentials string `json:"gcp_credentials"`
+	Name                 string `json:"name"`
+	GcpCredentials       string `json:"gcp_credentials"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GcpCredentialsRequest GcpCredentialsRequest
@@ -107,6 +107,11 @@ func (o GcpCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["gcp_credentials"] = o.GcpCredentials
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *GcpCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGcpCredentialsRequest := _GcpCredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGcpCredentialsRequest)
+	err = json.Unmarshal(data, &varGcpCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GcpCredentialsRequest(varGcpCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "gcp_credentials")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

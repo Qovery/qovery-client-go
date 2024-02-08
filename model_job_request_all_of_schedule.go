@@ -20,11 +20,14 @@ var _ MappedNullable = &JobRequestAllOfSchedule{}
 
 // JobRequestAllOfSchedule If you want to define a Cron job, only the `cronjob` property must be filled   A Lifecycle job should contain at least one property `on_XXX` among the 3 properties: `on_start`, `on_stop`, `on_delete`
 type JobRequestAllOfSchedule struct {
-	OnStart  *JobRequestAllOfScheduleOnStart `json:"on_start,omitempty"`
-	OnStop   *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
-	OnDelete *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
-	Cronjob  *JobRequestAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	OnStart              *JobRequestAllOfScheduleOnStart `json:"on_start,omitempty"`
+	OnStop               *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
+	OnDelete             *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
+	Cronjob              *JobRequestAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobRequestAllOfSchedule JobRequestAllOfSchedule
 
 // NewJobRequestAllOfSchedule instantiates a new JobRequestAllOfSchedule object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o JobRequestAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cronjob) {
 		toSerialize["cronjob"] = o.Cronjob
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobRequestAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
+	varJobRequestAllOfSchedule := _JobRequestAllOfSchedule{}
+
+	err = json.Unmarshal(data, &varJobRequestAllOfSchedule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobRequestAllOfSchedule(varJobRequestAllOfSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "on_start")
+		delete(additionalProperties, "on_stop")
+		delete(additionalProperties, "on_delete")
+		delete(additionalProperties, "cronjob")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobRequestAllOfSchedule struct {

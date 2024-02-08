@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -40,8 +39,9 @@ type ClusterRequest struct {
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
 	SshKeys []string `json:"ssh_keys,omitempty"`
 	// If the cluster is a self managed one. The kubeconfig to use to connect to it
-	Kubeconfig *string                       `json:"kubeconfig,omitempty"`
-	Features   []ClusterRequestFeaturesInner `json:"features,omitempty"`
+	Kubeconfig           *string                       `json:"kubeconfig,omitempty"`
+	Features             []ClusterRequestFeaturesInner `json:"features,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterRequest ClusterRequest
@@ -552,6 +552,11 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -581,15 +586,33 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterRequest := _ClusterRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterRequest)
+	err = json.Unmarshal(data, &varClusterRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterRequest(varClusterRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "cloud_provider")
+		delete(additionalProperties, "cloud_provider_credentials")
+		delete(additionalProperties, "min_running_nodes")
+		delete(additionalProperties, "max_running_nodes")
+		delete(additionalProperties, "disk_size")
+		delete(additionalProperties, "instance_type")
+		delete(additionalProperties, "kubernetes")
+		delete(additionalProperties, "production")
+		delete(additionalProperties, "ssh_keys")
+		delete(additionalProperties, "kubeconfig")
+		delete(additionalProperties, "features")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

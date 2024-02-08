@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -41,7 +40,8 @@ type JobRequest struct {
 	Healthchecks Healthcheck              `json:"healthchecks"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
+	AutoDeploy           NullableBool `json:"auto_deploy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _JobRequest JobRequest
@@ -509,6 +509,11 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -537,15 +542,31 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varJobRequest := _JobRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varJobRequest)
+	err = json.Unmarshal(data, &varJobRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = JobRequest(varJobRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "max_nb_restart")
+		delete(additionalProperties, "max_duration_seconds")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "healthchecks")
+		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "auto_deploy")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

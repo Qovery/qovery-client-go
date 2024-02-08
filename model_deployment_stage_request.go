@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type DeploymentStageRequest struct {
 	// The name of the deployment stage
 	Name string `json:"name"`
 	// free test describing this stage
-	Description NullableString `json:"description,omitempty"`
+	Description          NullableString `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentStageRequest DeploymentStageRequest
@@ -129,6 +129,11 @@ func (o DeploymentStageRequest) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -156,15 +161,21 @@ func (o *DeploymentStageRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentStageRequest := _DeploymentStageRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentStageRequest)
+	err = json.Unmarshal(data, &varDeploymentStageRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentStageRequest(varDeploymentStageRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

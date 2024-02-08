@@ -21,8 +21,11 @@ var _ MappedNullable = &BillingEnd{}
 
 // BillingEnd struct for BillingEnd
 type BillingEnd struct {
-	BillingEndedOn *time.Time `json:"billing_ended_on,omitempty"`
+	BillingEndedOn       *time.Time `json:"billing_ended_on,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BillingEnd BillingEnd
 
 // NewBillingEnd instantiates a new BillingEnd object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o BillingEnd) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingEndedOn) {
 		toSerialize["billing_ended_on"] = o.BillingEndedOn
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BillingEnd) UnmarshalJSON(data []byte) (err error) {
+	varBillingEnd := _BillingEnd{}
+
+	err = json.Unmarshal(data, &varBillingEnd)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BillingEnd(varBillingEnd)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "billing_ended_on")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBillingEnd struct {

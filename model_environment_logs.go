@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &EnvironmentLogs{}
 
 // EnvironmentLogs struct for EnvironmentLogs
 type EnvironmentLogs struct {
-	Type      string                         `json:"type"`
-	Timestamp time.Time                      `json:"timestamp"`
-	Details   EnvironmentLogsDetails         `json:"details"`
-	Error     NullableEnvironmentLogsError   `json:"error,omitempty"`
-	Message   NullableEnvironmentLogsMessage `json:"message,omitempty"`
+	Type                 string                         `json:"type"`
+	Timestamp            time.Time                      `json:"timestamp"`
+	Details              EnvironmentLogsDetails         `json:"details"`
+	Error                NullableEnvironmentLogsError   `json:"error,omitempty"`
+	Message              NullableEnvironmentLogsMessage `json:"message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentLogs EnvironmentLogs
@@ -229,6 +229,11 @@ func (o EnvironmentLogs) ToMap() (map[string]interface{}, error) {
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -258,15 +263,24 @@ func (o *EnvironmentLogs) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentLogs := _EnvironmentLogs{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentLogs)
+	err = json.Unmarshal(data, &varEnvironmentLogs)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentLogs(varEnvironmentLogs)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "details")
+		delete(additionalProperties, "error")
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

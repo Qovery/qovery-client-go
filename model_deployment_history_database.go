@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,8 +26,9 @@ type DeploymentHistoryDatabase struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the service
-	Name   *string    `json:"name,omitempty"`
-	Status *StateEnum `json:"status,omitempty"`
+	Name                 *string    `json:"name,omitempty"`
+	Status               *StateEnum `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryDatabase DeploymentHistoryDatabase
@@ -217,6 +217,11 @@ func (o DeploymentHistoryDatabase) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -245,15 +250,24 @@ func (o *DeploymentHistoryDatabase) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryDatabase := _DeploymentHistoryDatabase{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryDatabase)
+	err = json.Unmarshal(data, &varDeploymentHistoryDatabase)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryDatabase(varDeploymentHistoryDatabase)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

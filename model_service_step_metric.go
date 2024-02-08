@@ -23,8 +23,11 @@ type ServiceStepMetric struct {
 	StepName *ServiceStepMetricNameEnum `json:"step_name,omitempty"`
 	Status   *StepMetricStatusEnum      `json:"status,omitempty"`
 	// The duration of the step in seconds.
-	DurationSec *int32 `json:"duration_sec,omitempty"`
+	DurationSec          *int32 `json:"duration_sec,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ServiceStepMetric ServiceStepMetric
 
 // NewServiceStepMetric instantiates a new ServiceStepMetric object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o ServiceStepMetric) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DurationSec) {
 		toSerialize["duration_sec"] = o.DurationSec
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ServiceStepMetric) UnmarshalJSON(data []byte) (err error) {
+	varServiceStepMetric := _ServiceStepMetric{}
+
+	err = json.Unmarshal(data, &varServiceStepMetric)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ServiceStepMetric(varServiceStepMetric)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "step_name")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "duration_sec")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableServiceStepMetric struct {

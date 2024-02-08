@@ -20,8 +20,11 @@ var _ MappedNullable = &CustomDomainResponseList{}
 
 // CustomDomainResponseList struct for CustomDomainResponseList
 type CustomDomainResponseList struct {
-	Results []CustomDomain `json:"results,omitempty"`
+	Results              []CustomDomain `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CustomDomainResponseList CustomDomainResponseList
 
 // NewCustomDomainResponseList instantiates a new CustomDomainResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CustomDomainResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CustomDomainResponseList) UnmarshalJSON(data []byte) (err error) {
+	varCustomDomainResponseList := _CustomDomainResponseList{}
+
+	err = json.Unmarshal(data, &varCustomDomainResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomDomainResponseList(varCustomDomainResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCustomDomainResponseList struct {

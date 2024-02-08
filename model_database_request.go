@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -37,7 +36,8 @@ type DatabaseRequest struct {
 	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
-	Storage *int32 `json:"storage,omitempty"`
+	Storage              *int32 `json:"storage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DatabaseRequest DatabaseRequest
@@ -395,6 +395,11 @@ func (o DatabaseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -425,15 +430,29 @@ func (o *DatabaseRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDatabaseRequest := _DatabaseRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDatabaseRequest)
+	err = json.Unmarshal(data, &varDatabaseRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DatabaseRequest(varDatabaseRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "accessibility")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "instance_type")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "storage")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

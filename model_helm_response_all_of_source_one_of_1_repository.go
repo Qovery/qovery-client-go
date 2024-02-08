@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,8 +24,9 @@ type HelmResponseAllOfSourceOneOf1Repository struct {
 	// The name of the chart in the repository
 	ChartName string `json:"chart_name"`
 	// The version of the chart to use
-	ChartVersion string                                            `json:"chart_version"`
-	Repository   HelmResponseAllOfSourceOneOf1RepositoryRepository `json:"repository"`
+	ChartVersion         string                                            `json:"chart_version"`
+	Repository           HelmResponseAllOfSourceOneOf1RepositoryRepository `json:"repository"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponseAllOfSourceOneOf1Repository HelmResponseAllOfSourceOneOf1Repository
@@ -136,6 +136,11 @@ func (o HelmResponseAllOfSourceOneOf1Repository) ToMap() (map[string]interface{}
 	toSerialize["chart_name"] = o.ChartName
 	toSerialize["chart_version"] = o.ChartVersion
 	toSerialize["repository"] = o.Repository
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *HelmResponseAllOfSourceOneOf1Repository) UnmarshalJSON(data []byte) (er
 
 	varHelmResponseAllOfSourceOneOf1Repository := _HelmResponseAllOfSourceOneOf1Repository{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponseAllOfSourceOneOf1Repository)
+	err = json.Unmarshal(data, &varHelmResponseAllOfSourceOneOf1Repository)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponseAllOfSourceOneOf1Repository(varHelmResponseAllOfSourceOneOf1Repository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "chart_name")
+		delete(additionalProperties, "chart_version")
+		delete(additionalProperties, "repository")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

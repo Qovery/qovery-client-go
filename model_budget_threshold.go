@@ -20,10 +20,13 @@ var _ MappedNullable = &BudgetThreshold{}
 
 // BudgetThreshold struct for BudgetThreshold
 type BudgetThreshold struct {
-	TotalInCents *int32   `json:"total_in_cents,omitempty"`
-	Total        *float32 `json:"total,omitempty"`
-	CurrencyCode *string  `json:"currency_code,omitempty"`
+	TotalInCents         *int32   `json:"total_in_cents,omitempty"`
+	Total                *float32 `json:"total,omitempty"`
+	CurrencyCode         *string  `json:"currency_code,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BudgetThreshold BudgetThreshold
 
 // NewBudgetThreshold instantiates a new BudgetThreshold object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o BudgetThreshold) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CurrencyCode) {
 		toSerialize["currency_code"] = o.CurrencyCode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BudgetThreshold) UnmarshalJSON(data []byte) (err error) {
+	varBudgetThreshold := _BudgetThreshold{}
+
+	err = json.Unmarshal(data, &varBudgetThreshold)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BudgetThreshold(varBudgetThreshold)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_in_cents")
+		delete(additionalProperties, "total")
+		delete(additionalProperties, "currency_code")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBudgetThreshold struct {

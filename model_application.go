@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -57,7 +56,8 @@ type Application struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	AutoDeploy           *bool `json:"auto_deploy,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Application Application
@@ -898,6 +898,11 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -929,15 +934,42 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 
 	varApplication := _Application{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplication)
+	err = json.Unmarshal(data, &varApplication)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Application(varApplication)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "maximum_cpu")
+		delete(additionalProperties, "maximum_memory")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "build_mode")
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "buildpack_language")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "min_running_instances")
+		delete(additionalProperties, "max_running_instances")
+		delete(additionalProperties, "healthchecks")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "ports")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		delete(additionalProperties, "auto_deploy")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &Project{}
 
 // Project struct for Project
 type Project struct {
-	Id           string          `json:"id"`
-	CreatedAt    time.Time       `json:"created_at"`
-	UpdatedAt    *time.Time      `json:"updated_at,omitempty"`
-	Name         string          `json:"name"`
-	Description  *string         `json:"description,omitempty"`
-	Organization ReferenceObject `json:"organization"`
+	Id                   string          `json:"id"`
+	CreatedAt            time.Time       `json:"created_at"`
+	UpdatedAt            *time.Time      `json:"updated_at,omitempty"`
+	Name                 string          `json:"name"`
+	Description          *string         `json:"description,omitempty"`
+	Organization         ReferenceObject `json:"organization"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Project Project
@@ -234,6 +234,11 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["organization"] = o.Organization
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -264,15 +269,25 @@ func (o *Project) UnmarshalJSON(data []byte) (err error) {
 
 	varProject := _Project{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProject)
+	err = json.Unmarshal(data, &varProject)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Project(varProject)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "organization")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

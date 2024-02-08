@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &RemainingCredits{}
 
 // RemainingCredits struct for RemainingCredits
 type RemainingCredits struct {
-	TotalInCents int32   `json:"total_in_cents"`
-	Total        float32 `json:"total"`
-	CurrencyCode string  `json:"currency_code"`
+	TotalInCents         int32   `json:"total_in_cents"`
+	Total                float32 `json:"total"`
+	CurrencyCode         string  `json:"currency_code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _RemainingCredits RemainingCredits
@@ -134,6 +134,11 @@ func (o RemainingCredits) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_in_cents"] = o.TotalInCents
 	toSerialize["total"] = o.Total
 	toSerialize["currency_code"] = o.CurrencyCode
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *RemainingCredits) UnmarshalJSON(data []byte) (err error) {
 
 	varRemainingCredits := _RemainingCredits{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varRemainingCredits)
+	err = json.Unmarshal(data, &varRemainingCredits)
 
 	if err != nil {
 		return err
 	}
 
 	*o = RemainingCredits(varRemainingCredits)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_in_cents")
+		delete(additionalProperties, "total")
+		delete(additionalProperties, "currency_code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

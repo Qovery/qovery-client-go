@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &VariableImportRequestVarsInner{}
 
 // VariableImportRequestVarsInner struct for VariableImportRequestVarsInner
 type VariableImportRequestVarsInner struct {
-	Name     string               `json:"name"`
-	Value    string               `json:"value"`
-	Scope    APIVariableScopeEnum `json:"scope"`
-	IsSecret bool                 `json:"is_secret"`
+	Name                 string               `json:"name"`
+	Value                string               `json:"value"`
+	Scope                APIVariableScopeEnum `json:"scope"`
+	IsSecret             bool                 `json:"is_secret"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableImportRequestVarsInner VariableImportRequestVarsInner
@@ -161,6 +161,11 @@ func (o VariableImportRequestVarsInner) ToMap() (map[string]interface{}, error) 
 	toSerialize["value"] = o.Value
 	toSerialize["scope"] = o.Scope
 	toSerialize["is_secret"] = o.IsSecret
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *VariableImportRequestVarsInner) UnmarshalJSON(data []byte) (err error) 
 
 	varVariableImportRequestVarsInner := _VariableImportRequestVarsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableImportRequestVarsInner)
+	err = json.Unmarshal(data, &varVariableImportRequestVarsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableImportRequestVarsInner(varVariableImportRequestVarsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "is_secret")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

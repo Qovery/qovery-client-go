@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,11 +22,12 @@ var _ MappedNullable = &Log{}
 
 // Log struct for Log
 type Log struct {
-	Id        string    `json:"id"`
-	CreatedAt time.Time `json:"created_at"`
-	Message   string    `json:"message"`
-	PodName   *string   `json:"pod_name,omitempty"`
-	Version   *string   `json:"version,omitempty"`
+	Id                   string    `json:"id"`
+	CreatedAt            time.Time `json:"created_at"`
+	Message              string    `json:"message"`
+	PodName              *string   `json:"pod_name,omitempty"`
+	Version              *string   `json:"version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Log Log
@@ -207,6 +207,11 @@ func (o Log) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -236,15 +241,24 @@ func (o *Log) UnmarshalJSON(data []byte) (err error) {
 
 	varLog := _Log{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLog)
+	err = json.Unmarshal(data, &varLog)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Log(varLog)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "pod_name")
+		delete(additionalProperties, "version")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

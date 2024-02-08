@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,8 +29,9 @@ type ContainerRegistryResponse struct {
 	Kind        *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
-	Url     *string                                `json:"url,omitempty"`
-	Cluster *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
+	Url                  *string                                `json:"url,omitempty"`
+	Cluster              *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerRegistryResponse ContainerRegistryResponse
@@ -325,6 +325,11 @@ func (o ContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -353,15 +358,27 @@ func (o *ContainerRegistryResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerRegistryResponse := _ContainerRegistryResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerRegistryResponse)
+	err = json.Unmarshal(data, &varContainerRegistryResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerRegistryResponse(varContainerRegistryResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "cluster")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

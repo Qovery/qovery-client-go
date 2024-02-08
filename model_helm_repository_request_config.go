@@ -33,8 +33,11 @@ type HelmRepositoryRequestConfig struct {
 	// Required if kind is `SCALEWAY_CR`
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
-	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
+	ScalewaySecretKey    *string `json:"scaleway_secret_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmRepositoryRequestConfig HelmRepositoryRequestConfig
 
 // NewHelmRepositoryRequestConfig instantiates a new HelmRepositoryRequestConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -308,7 +311,39 @@ func (o HelmRepositoryRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ScalewaySecretKey) {
 		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmRepositoryRequestConfig) UnmarshalJSON(data []byte) (err error) {
+	varHelmRepositoryRequestConfig := _HelmRepositoryRequestConfig{}
+
+	err = json.Unmarshal(data, &varHelmRepositoryRequestConfig)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRepositoryRequestConfig(varHelmRepositoryRequestConfig)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "username")
+		delete(additionalProperties, "password")
+		delete(additionalProperties, "access_key_id")
+		delete(additionalProperties, "secret_access_key")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "scaleway_access_key")
+		delete(additionalProperties, "scaleway_secret_key")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmRepositoryRequestConfig struct {

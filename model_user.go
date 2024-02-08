@@ -21,14 +21,17 @@ var _ MappedNullable = &User{}
 
 // User struct for User
 type User struct {
-	Id                *string    `json:"id,omitempty"`
-	CreatedAt         *time.Time `json:"created_at,omitempty"`
-	UpdatedAt         *time.Time `json:"updated_at,omitempty"`
-	FirstName         *string    `json:"first_name,omitempty"`
-	LastName          *string    `json:"last_name,omitempty"`
-	Email             *string    `json:"email,omitempty"`
-	ProfilePictureUrl *string    `json:"profile_picture_url,omitempty"`
+	Id                   *string    `json:"id,omitempty"`
+	CreatedAt            *time.Time `json:"created_at,omitempty"`
+	UpdatedAt            *time.Time `json:"updated_at,omitempty"`
+	FirstName            *string    `json:"first_name,omitempty"`
+	LastName             *string    `json:"last_name,omitempty"`
+	Email                *string    `json:"email,omitempty"`
+	ProfilePictureUrl    *string    `json:"profile_picture_url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _User User
 
 // NewUser instantiates a new User object
 // This constructor will assign default values to properties that have it defined,
@@ -302,7 +305,39 @@ func (o User) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProfilePictureUrl) {
 		toSerialize["profile_picture_url"] = o.ProfilePictureUrl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *User) UnmarshalJSON(data []byte) (err error) {
+	varUser := _User{}
+
+	err = json.Unmarshal(data, &varUser)
+
+	if err != nil {
+		return err
+	}
+
+	*o = User(varUser)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "profile_picture_url")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUser struct {

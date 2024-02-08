@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &CredentialsRequest{}
 
 // CredentialsRequest struct for CredentialsRequest
 type CredentialsRequest struct {
-	Login    string `json:"login"`
-	Password string `json:"password"`
+	Login                string `json:"login"`
+	Password             string `json:"password"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CredentialsRequest CredentialsRequest
@@ -107,6 +107,11 @@ func (o CredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["login"] = o.Login
 	toSerialize["password"] = o.Password
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *CredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCredentialsRequest := _CredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCredentialsRequest)
+	err = json.Unmarshal(data, &varCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CredentialsRequest(varCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "login")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

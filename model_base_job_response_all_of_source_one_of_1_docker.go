@@ -21,9 +21,12 @@ var _ MappedNullable = &BaseJobResponseAllOfSourceOneOf1Docker{}
 // BaseJobResponseAllOfSourceOneOf1Docker struct for BaseJobResponseAllOfSourceOneOf1Docker
 type BaseJobResponseAllOfSourceOneOf1Docker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath NullableString            `json:"dockerfile_path,omitempty"`
-	GitRepository  *ApplicationGitRepository `json:"git_repository,omitempty"`
+	DockerfilePath       NullableString            `json:"dockerfile_path,omitempty"`
+	GitRepository        *ApplicationGitRepository `json:"git_repository,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BaseJobResponseAllOfSourceOneOf1Docker BaseJobResponseAllOfSourceOneOf1Docker
 
 // NewBaseJobResponseAllOfSourceOneOf1Docker instantiates a new BaseJobResponseAllOfSourceOneOf1Docker object
 // This constructor will assign default values to properties that have it defined,
@@ -133,7 +136,34 @@ func (o BaseJobResponseAllOfSourceOneOf1Docker) ToMap() (map[string]interface{},
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BaseJobResponseAllOfSourceOneOf1Docker) UnmarshalJSON(data []byte) (err error) {
+	varBaseJobResponseAllOfSourceOneOf1Docker := _BaseJobResponseAllOfSourceOneOf1Docker{}
+
+	err = json.Unmarshal(data, &varBaseJobResponseAllOfSourceOneOf1Docker)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BaseJobResponseAllOfSourceOneOf1Docker(varBaseJobResponseAllOfSourceOneOf1Docker)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "git_repository")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBaseJobResponseAllOfSourceOneOf1Docker struct {

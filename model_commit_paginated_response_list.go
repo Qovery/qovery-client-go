@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &CommitPaginatedResponseList{}
 
 // CommitPaginatedResponseList struct for CommitPaginatedResponseList
 type CommitPaginatedResponseList struct {
-	Page     float32  `json:"page"`
-	PageSize float32  `json:"page_size"`
-	Results  []Commit `json:"results,omitempty"`
+	Page                 float32  `json:"page"`
+	PageSize             float32  `json:"page_size"`
+	Results              []Commit `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CommitPaginatedResponseList CommitPaginatedResponseList
@@ -143,6 +143,11 @@ func (o CommitPaginatedResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *CommitPaginatedResponseList) UnmarshalJSON(data []byte) (err error) {
 
 	varCommitPaginatedResponseList := _CommitPaginatedResponseList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCommitPaginatedResponseList)
+	err = json.Unmarshal(data, &varCommitPaginatedResponseList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CommitPaginatedResponseList(varCommitPaginatedResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

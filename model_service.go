@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -39,8 +38,9 @@ type Service struct {
 	// describes the typology of service (container, postgresl, redis...)
 	ServiceTypology *string `json:"service_typology,omitempty"`
 	// for databases this field exposes the database version
-	ServiceVersion *string `json:"service_version,omitempty"`
-	ToUpdate       *bool   `json:"to_update,omitempty"`
+	ServiceVersion       *string `json:"service_version,omitempty"`
+	ToUpdate             *bool   `json:"to_update,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Service Service
@@ -439,6 +439,11 @@ func (o Service) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ToUpdate) {
 		toSerialize["to_update"] = o.ToUpdate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -467,15 +472,30 @@ func (o *Service) UnmarshalJSON(data []byte) (err error) {
 
 	varService := _Service{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varService)
+	err = json.Unmarshal(data, &varService)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Service(varService)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "deployed_commit_id")
+		delete(additionalProperties, "last_updated_by")
+		delete(additionalProperties, "consumed_resources_in_percent")
+		delete(additionalProperties, "service_typology")
+		delete(additionalProperties, "service_version")
+		delete(additionalProperties, "to_update")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

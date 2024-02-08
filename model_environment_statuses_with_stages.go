@@ -20,9 +20,12 @@ var _ MappedNullable = &EnvironmentStatusesWithStages{}
 
 // EnvironmentStatusesWithStages struct for EnvironmentStatusesWithStages
 type EnvironmentStatusesWithStages struct {
-	Environment *EnvironmentStatus                    `json:"environment,omitempty"`
-	Stages      []DeploymentStageWithServicesStatuses `json:"stages,omitempty"`
+	Environment          *EnvironmentStatus                    `json:"environment,omitempty"`
+	Stages               []DeploymentStageWithServicesStatuses `json:"stages,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentStatusesWithStages EnvironmentStatusesWithStages
 
 // NewEnvironmentStatusesWithStages instantiates a new EnvironmentStatusesWithStages object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o EnvironmentStatusesWithStages) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Stages) {
 		toSerialize["stages"] = o.Stages
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentStatusesWithStages) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentStatusesWithStages := _EnvironmentStatusesWithStages{}
+
+	err = json.Unmarshal(data, &varEnvironmentStatusesWithStages)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentStatusesWithStages(varEnvironmentStatusesWithStages)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "stages")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentStatusesWithStages struct {

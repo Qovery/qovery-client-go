@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,7 +28,8 @@ type DeploymentStageServiceResponse struct {
 	// id of the service attached to the stage
 	ServiceId *string `json:"service_id,omitempty"`
 	// type of the service (i.e APPLICATION, JOB, DATABASE, ...)
-	ServiceType *string `json:"service_type,omitempty"`
+	ServiceType          *string `json:"service_type,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentStageServiceResponse DeploymentStageServiceResponse
@@ -218,6 +218,11 @@ func (o DeploymentStageServiceResponse) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ServiceType) {
 		toSerialize["service_type"] = o.ServiceType
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -246,15 +251,24 @@ func (o *DeploymentStageServiceResponse) UnmarshalJSON(data []byte) (err error) 
 
 	varDeploymentStageServiceResponse := _DeploymentStageServiceResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentStageServiceResponse)
+	err = json.Unmarshal(data, &varDeploymentStageServiceResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentStageServiceResponse(varDeploymentStageServiceResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "service_id")
+		delete(additionalProperties, "service_type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

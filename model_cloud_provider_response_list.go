@@ -20,8 +20,11 @@ var _ MappedNullable = &CloudProviderResponseList{}
 
 // CloudProviderResponseList struct for CloudProviderResponseList
 type CloudProviderResponseList struct {
-	Results []CloudProvider `json:"results,omitempty"`
+	Results              []CloudProvider `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudProviderResponseList CloudProviderResponseList
 
 // NewCloudProviderResponseList instantiates a new CloudProviderResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o CloudProviderResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudProviderResponseList) UnmarshalJSON(data []byte) (err error) {
+	varCloudProviderResponseList := _CloudProviderResponseList{}
+
+	err = json.Unmarshal(data, &varCloudProviderResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudProviderResponseList(varCloudProviderResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudProviderResponseList struct {

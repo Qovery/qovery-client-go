@@ -20,8 +20,11 @@ var _ MappedNullable = &LinkResponseList{}
 
 // LinkResponseList struct for LinkResponseList
 type LinkResponseList struct {
-	Results []Link `json:"results,omitempty"`
+	Results              []Link `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _LinkResponseList LinkResponseList
 
 // NewLinkResponseList instantiates a new LinkResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o LinkResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *LinkResponseList) UnmarshalJSON(data []byte) (err error) {
+	varLinkResponseList := _LinkResponseList{}
+
+	err = json.Unmarshal(data, &varLinkResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = LinkResponseList(varLinkResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableLinkResponseList struct {

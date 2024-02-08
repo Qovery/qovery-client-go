@@ -21,8 +21,11 @@ var _ MappedNullable = &ClusterLogsErrorUnderlyingError{}
 // ClusterLogsErrorUnderlyingError struct for ClusterLogsErrorUnderlyingError
 type ClusterLogsErrorUnderlyingError struct {
 	// technical details about the error
-	Message *string `json:"message,omitempty"`
+	Message              *string `json:"message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogsErrorUnderlyingError ClusterLogsErrorUnderlyingError
 
 // NewClusterLogsErrorUnderlyingError instantiates a new ClusterLogsErrorUnderlyingError object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o ClusterLogsErrorUnderlyingError) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogsErrorUnderlyingError) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogsErrorUnderlyingError := _ClusterLogsErrorUnderlyingError{}
+
+	err = json.Unmarshal(data, &varClusterLogsErrorUnderlyingError)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogsErrorUnderlyingError(varClusterLogsErrorUnderlyingError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogsErrorUnderlyingError struct {

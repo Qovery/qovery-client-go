@@ -21,10 +21,13 @@ var _ MappedNullable = &ClusterLogsErrorEventDetails{}
 // ClusterLogsErrorEventDetails struct for ClusterLogsErrorEventDetails
 type ClusterLogsErrorEventDetails struct {
 	// cloud provider used
-	ProviderKind *string                                  `json:"provider_kind,omitempty"`
-	Region       *string                                  `json:"region,omitempty"`
-	Transmitter  *ClusterLogsErrorEventDetailsTransmitter `json:"transmitter,omitempty"`
+	ProviderKind         *string                                  `json:"provider_kind,omitempty"`
+	Region               *string                                  `json:"region,omitempty"`
+	Transmitter          *ClusterLogsErrorEventDetailsTransmitter `json:"transmitter,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogsErrorEventDetails ClusterLogsErrorEventDetails
 
 // NewClusterLogsErrorEventDetails instantiates a new ClusterLogsErrorEventDetails object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o ClusterLogsErrorEventDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Transmitter) {
 		toSerialize["transmitter"] = o.Transmitter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogsErrorEventDetails) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogsErrorEventDetails := _ClusterLogsErrorEventDetails{}
+
+	err = json.Unmarshal(data, &varClusterLogsErrorEventDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogsErrorEventDetails(varClusterLogsErrorEventDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "provider_kind")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "transmitter")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogsErrorEventDetails struct {

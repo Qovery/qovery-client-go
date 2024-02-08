@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &DeploymentHistoryApplication{}
 
 // DeploymentHistoryApplication struct for DeploymentHistoryApplication
 type DeploymentHistoryApplication struct {
-	Id        string         `json:"id"`
-	CreatedAt time.Time      `json:"created_at"`
-	UpdatedAt *time.Time     `json:"updated_at,omitempty"`
-	Name      *string        `json:"name,omitempty"`
-	Commit    NullableCommit `json:"commit,omitempty"`
-	Status    *StateEnum     `json:"status,omitempty"`
+	Id                   string         `json:"id"`
+	CreatedAt            time.Time      `json:"created_at"`
+	UpdatedAt            *time.Time     `json:"updated_at,omitempty"`
+	Name                 *string        `json:"name,omitempty"`
+	Commit               NullableCommit `json:"commit,omitempty"`
+	Status               *StateEnum     `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryApplication DeploymentHistoryApplication
@@ -263,6 +263,11 @@ func (o DeploymentHistoryApplication) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -291,15 +296,25 @@ func (o *DeploymentHistoryApplication) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryApplication := _DeploymentHistoryApplication{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryApplication)
+	err = json.Unmarshal(data, &varDeploymentHistoryApplication)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryApplication(varDeploymentHistoryApplication)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "commit")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &EnvironmentLogPaginatedResponseList{}
 
 // EnvironmentLogPaginatedResponseList struct for EnvironmentLogPaginatedResponseList
 type EnvironmentLogPaginatedResponseList struct {
-	Page     float32          `json:"page"`
-	PageSize float32          `json:"page_size"`
-	Results  []EnvironmentLog `json:"results,omitempty"`
+	Page                 float32          `json:"page"`
+	PageSize             float32          `json:"page_size"`
+	Results              []EnvironmentLog `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentLogPaginatedResponseList EnvironmentLogPaginatedResponseList
@@ -143,6 +143,11 @@ func (o EnvironmentLogPaginatedResponseList) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *EnvironmentLogPaginatedResponseList) UnmarshalJSON(data []byte) (err er
 
 	varEnvironmentLogPaginatedResponseList := _EnvironmentLogPaginatedResponseList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentLogPaginatedResponseList)
+	err = json.Unmarshal(data, &varEnvironmentLogPaginatedResponseList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentLogPaginatedResponseList(varEnvironmentLogPaginatedResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

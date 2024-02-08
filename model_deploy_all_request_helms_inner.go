@@ -28,7 +28,10 @@ type DeployAllRequestHelmsInner struct {
 	GitCommitId *string `json:"git_commit_id,omitempty"`
 	// The commit Id of the override values to deploy. Use only if the helm has a Git override values repository.
 	ValuesOverrideGitCommitId *string `json:"values_override_git_commit_id,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
+
+type _DeployAllRequestHelmsInner DeployAllRequestHelmsInner
 
 // NewDeployAllRequestHelmsInner instantiates a new DeployAllRequestHelmsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -197,7 +200,36 @@ func (o DeployAllRequestHelmsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValuesOverrideGitCommitId) {
 		toSerialize["values_override_git_commit_id"] = o.ValuesOverrideGitCommitId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeployAllRequestHelmsInner) UnmarshalJSON(data []byte) (err error) {
+	varDeployAllRequestHelmsInner := _DeployAllRequestHelmsInner{}
+
+	err = json.Unmarshal(data, &varDeployAllRequestHelmsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeployAllRequestHelmsInner(varDeployAllRequestHelmsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "chart_version")
+		delete(additionalProperties, "git_commit_id")
+		delete(additionalProperties, "values_override_git_commit_id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeployAllRequestHelmsInner struct {

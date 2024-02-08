@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &UnexpectedError{}
 
 // UnexpectedError struct for UnexpectedError
 type UnexpectedError struct {
-	Message string `json:"message"`
+	Message              string `json:"message"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _UnexpectedError UnexpectedError
@@ -80,6 +80,11 @@ func (o UnexpectedError) MarshalJSON() ([]byte, error) {
 func (o UnexpectedError) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["message"] = o.Message
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *UnexpectedError) UnmarshalJSON(data []byte) (err error) {
 
 	varUnexpectedError := _UnexpectedError{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varUnexpectedError)
+	err = json.Unmarshal(data, &varUnexpectedError)
 
 	if err != nil {
 		return err
 	}
 
 	*o = UnexpectedError(varUnexpectedError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

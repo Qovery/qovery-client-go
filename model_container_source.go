@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,8 +26,9 @@ type ContainerSource struct {
 	// tag of the image container
 	Tag string `json:"tag"`
 	// tag of the image container
-	RegistryId *string                                  `json:"registry_id,omitempty"`
-	Registry   ContainerRegistryProviderDetailsResponse `json:"registry"`
+	RegistryId           *string                                  `json:"registry_id,omitempty"`
+	Registry             ContainerRegistryProviderDetailsResponse `json:"registry"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerSource ContainerSource
@@ -173,6 +173,11 @@ func (o ContainerSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["registry_id"] = o.RegistryId
 	}
 	toSerialize["registry"] = o.Registry
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -202,15 +207,23 @@ func (o *ContainerSource) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerSource := _ContainerSource{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerSource)
+	err = json.Unmarshal(data, &varContainerSource)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerSource(varContainerSource)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "registry_id")
+		delete(additionalProperties, "registry")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

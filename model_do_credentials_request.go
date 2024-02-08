@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &DoCredentialsRequest{}
 
 // DoCredentialsRequest struct for DoCredentialsRequest
 type DoCredentialsRequest struct {
-	Name            string  `json:"name"`
-	Token           *string `json:"token,omitempty"`
-	SpacesAccessId  *string `json:"spaces_access_id,omitempty"`
-	SpacesSecretKey *string `json:"spaces_secret_key,omitempty"`
+	Name                 string  `json:"name"`
+	Token                *string `json:"token,omitempty"`
+	SpacesAccessId       *string `json:"spaces_access_id,omitempty"`
+	SpacesSecretKey      *string `json:"spaces_secret_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DoCredentialsRequest DoCredentialsRequest
@@ -188,6 +188,11 @@ func (o DoCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SpacesSecretKey) {
 		toSerialize["spaces_secret_key"] = o.SpacesSecretKey
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -215,15 +220,23 @@ func (o *DoCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDoCredentialsRequest := _DoCredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDoCredentialsRequest)
+	err = json.Unmarshal(data, &varDoCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DoCredentialsRequest(varDoCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "spaces_access_id")
+		delete(additionalProperties, "spaces_secret_key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &TransferOwnershipRequest{}
 
 // TransferOwnershipRequest struct for TransferOwnershipRequest
 type TransferOwnershipRequest struct {
-	UserId string `json:"user_id"`
+	UserId               string `json:"user_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TransferOwnershipRequest TransferOwnershipRequest
@@ -80,6 +80,11 @@ func (o TransferOwnershipRequest) MarshalJSON() ([]byte, error) {
 func (o TransferOwnershipRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["user_id"] = o.UserId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *TransferOwnershipRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varTransferOwnershipRequest := _TransferOwnershipRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varTransferOwnershipRequest)
+	err = json.Unmarshal(data, &varTransferOwnershipRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = TransferOwnershipRequest(varTransferOwnershipRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

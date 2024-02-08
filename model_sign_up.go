@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,21 +22,22 @@ var _ MappedNullable = &SignUp{}
 
 // SignUp struct for SignUp
 type SignUp struct {
-	Id               string           `json:"id"`
-	CreatedAt        time.Time        `json:"created_at"`
-	UpdatedAt        *time.Time       `json:"updated_at,omitempty"`
-	FirstName        string           `json:"first_name"`
-	LastName         string           `json:"last_name"`
-	UserEmail        string           `json:"user_email"`
-	TypeOfUse        TypeOfUseEnum    `json:"type_of_use"`
-	QoveryUsage      string           `json:"qovery_usage"`
-	CompanyName      NullableString   `json:"company_name,omitempty"`
-	CompanySize      *CompanySizeEnum `json:"company_size,omitempty"`
-	UserRole         NullableString   `json:"user_role,omitempty"`
-	QoveryUsageOther NullableString   `json:"qovery_usage_other,omitempty"`
-	UserQuestions    NullableString   `json:"user_questions,omitempty"`
-	CurrentStep      NullableString   `json:"current_step,omitempty"`
-	DxAuth           NullableBool     `json:"dx_auth,omitempty"`
+	Id                   string           `json:"id"`
+	CreatedAt            time.Time        `json:"created_at"`
+	UpdatedAt            *time.Time       `json:"updated_at,omitempty"`
+	FirstName            string           `json:"first_name"`
+	LastName             string           `json:"last_name"`
+	UserEmail            string           `json:"user_email"`
+	TypeOfUse            TypeOfUseEnum    `json:"type_of_use"`
+	QoveryUsage          string           `json:"qovery_usage"`
+	CompanyName          NullableString   `json:"company_name,omitempty"`
+	CompanySize          *CompanySizeEnum `json:"company_size,omitempty"`
+	UserRole             NullableString   `json:"user_role,omitempty"`
+	QoveryUsageOther     NullableString   `json:"qovery_usage_other,omitempty"`
+	UserQuestions        NullableString   `json:"user_questions,omitempty"`
+	CurrentStep          NullableString   `json:"current_step,omitempty"`
+	DxAuth               NullableBool     `json:"dx_auth,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SignUp SignUp
@@ -597,6 +597,11 @@ func (o SignUp) ToMap() (map[string]interface{}, error) {
 	if o.DxAuth.IsSet() {
 		toSerialize["dx_auth"] = o.DxAuth.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -630,15 +635,34 @@ func (o *SignUp) UnmarshalJSON(data []byte) (err error) {
 
 	varSignUp := _SignUp{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSignUp)
+	err = json.Unmarshal(data, &varSignUp)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SignUp(varSignUp)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "user_email")
+		delete(additionalProperties, "type_of_use")
+		delete(additionalProperties, "qovery_usage")
+		delete(additionalProperties, "company_name")
+		delete(additionalProperties, "company_size")
+		delete(additionalProperties, "user_role")
+		delete(additionalProperties, "qovery_usage_other")
+		delete(additionalProperties, "user_questions")
+		delete(additionalProperties, "current_step")
+		delete(additionalProperties, "dx_auth")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

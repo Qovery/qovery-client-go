@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ListHelmDeploymentHistory200Response{}
 
 // ListHelmDeploymentHistory200Response struct for ListHelmDeploymentHistory200Response
 type ListHelmDeploymentHistory200Response struct {
-	Page     float32                         `json:"page"`
-	PageSize float32                         `json:"page_size"`
-	Results  []DeploymentHistoryHelmResponse `json:"results,omitempty"`
+	Page                 float32                         `json:"page"`
+	PageSize             float32                         `json:"page_size"`
+	Results              []DeploymentHistoryHelmResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListHelmDeploymentHistory200Response ListHelmDeploymentHistory200Response
@@ -143,6 +143,11 @@ func (o ListHelmDeploymentHistory200Response) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ListHelmDeploymentHistory200Response) UnmarshalJSON(data []byte) (err e
 
 	varListHelmDeploymentHistory200Response := _ListHelmDeploymentHistory200Response{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListHelmDeploymentHistory200Response)
+	err = json.Unmarshal(data, &varListHelmDeploymentHistory200Response)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListHelmDeploymentHistory200Response(varListHelmDeploymentHistory200Response)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

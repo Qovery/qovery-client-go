@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type DeployAllRequestContainersInner struct {
 	// id of the container to be updated.
 	Id string `json:"id"`
 	// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
-	ImageTag *string `json:"image_tag,omitempty"`
+	ImageTag             *string `json:"image_tag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeployAllRequestContainersInner DeployAllRequestContainersInner
@@ -118,6 +118,11 @@ func (o DeployAllRequestContainersInner) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.ImageTag) {
 		toSerialize["image_tag"] = o.ImageTag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -145,15 +150,21 @@ func (o *DeployAllRequestContainersInner) UnmarshalJSON(data []byte) (err error)
 
 	varDeployAllRequestContainersInner := _DeployAllRequestContainersInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeployAllRequestContainersInner)
+	err = json.Unmarshal(data, &varDeployAllRequestContainersInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeployAllRequestContainersInner(varDeployAllRequestContainersInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "image_tag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

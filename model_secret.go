@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -36,7 +35,8 @@ type Secret struct {
 	ServiceName      *string                `json:"service_name,omitempty"`
 	ServiceType      *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy *string `json:"owned_by,omitempty"`
+	OwnedBy              *string `json:"owned_by,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Secret Secret
@@ -452,6 +452,11 @@ func (o Secret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnedBy) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -482,15 +487,31 @@ func (o *Secret) UnmarshalJSON(data []byte) (err error) {
 
 	varSecret := _Secret{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecret)
+	err = json.Unmarshal(data, &varSecret)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Secret(varSecret)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "overridden_secret")
+		delete(additionalProperties, "aliased_secret")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "variable_type")
+		delete(additionalProperties, "service_id")
+		delete(additionalProperties, "service_name")
+		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "owned_by")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

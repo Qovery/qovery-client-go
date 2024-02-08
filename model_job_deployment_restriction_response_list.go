@@ -20,8 +20,11 @@ var _ MappedNullable = &JobDeploymentRestrictionResponseList{}
 
 // JobDeploymentRestrictionResponseList struct for JobDeploymentRestrictionResponseList
 type JobDeploymentRestrictionResponseList struct {
-	Results []JobDeploymentRestrictionResponse `json:"results,omitempty"`
+	Results              []JobDeploymentRestrictionResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobDeploymentRestrictionResponseList JobDeploymentRestrictionResponseList
 
 // NewJobDeploymentRestrictionResponseList instantiates a new JobDeploymentRestrictionResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o JobDeploymentRestrictionResponseList) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobDeploymentRestrictionResponseList) UnmarshalJSON(data []byte) (err error) {
+	varJobDeploymentRestrictionResponseList := _JobDeploymentRestrictionResponseList{}
+
+	err = json.Unmarshal(data, &varJobDeploymentRestrictionResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobDeploymentRestrictionResponseList(varJobDeploymentRestrictionResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobDeploymentRestrictionResponseList struct {

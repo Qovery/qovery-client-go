@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,9 +28,10 @@ type OrganizationApiTokenCreate struct {
 	Name        *string    `json:"name,omitempty"`
 	Description *string    `json:"description,omitempty"`
 	// the generated token to send in 'Authorization' header prefixed by 'Token '
-	Token    *string `json:"token,omitempty"`
-	RoleName *string `json:"role_name,omitempty"`
-	RoleId   *string `json:"role_id,omitempty"`
+	Token                *string `json:"token,omitempty"`
+	RoleName             *string `json:"role_name,omitempty"`
+	RoleId               *string `json:"role_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationApiTokenCreate OrganizationApiTokenCreate
@@ -325,6 +325,11 @@ func (o OrganizationApiTokenCreate) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -353,15 +358,27 @@ func (o *OrganizationApiTokenCreate) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationApiTokenCreate := _OrganizationApiTokenCreate{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationApiTokenCreate)
+	err = json.Unmarshal(data, &varOrganizationApiTokenCreate)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationApiTokenCreate(varOrganizationApiTokenCreate)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "token")
+		delete(additionalProperties, "role_name")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &SecretOverride{}
 
 // SecretOverride struct for SecretOverride
 type SecretOverride struct {
-	Id           string               `json:"id"`
-	Key          string               `json:"key"`
-	MountPath    string               `json:"mount_path"`
-	Scope        APIVariableScopeEnum `json:"scope"`
-	VariableType APIVariableTypeEnum  `json:"variable_type"`
+	Id                   string               `json:"id"`
+	Key                  string               `json:"key"`
+	MountPath            string               `json:"mount_path"`
+	Scope                APIVariableScopeEnum `json:"scope"`
+	VariableType         APIVariableTypeEnum  `json:"variable_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SecretOverride SecretOverride
@@ -188,6 +188,11 @@ func (o SecretOverride) ToMap() (map[string]interface{}, error) {
 	toSerialize["mount_path"] = o.MountPath
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *SecretOverride) UnmarshalJSON(data []byte) (err error) {
 
 	varSecretOverride := _SecretOverride{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSecretOverride)
+	err = json.Unmarshal(data, &varSecretOverride)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SecretOverride(varSecretOverride)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "mount_path")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "variable_type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

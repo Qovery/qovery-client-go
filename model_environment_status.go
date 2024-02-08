@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,6 +30,7 @@ type EnvironmentStatus struct {
 	TotalDeploymentDurationInSeconds NullableInt32                            `json:"total_deployment_duration_in_seconds,omitempty"`
 	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
 	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
+	AdditionalProperties             map[string]interface{}
 }
 
 type _EnvironmentStatus EnvironmentStatus
@@ -370,6 +370,11 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	if o.TriggeredBy.IsSet() {
 		toSerialize["triggered_by"] = o.TriggeredBy.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -399,15 +404,27 @@ func (o *EnvironmentStatus) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentStatus := _EnvironmentStatus{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentStatus)
+	err = json.Unmarshal(data, &varEnvironmentStatus)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentStatus(varEnvironmentStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "last_deployment_date")
+		delete(additionalProperties, "last_deployment_state")
+		delete(additionalProperties, "last_deployment_id")
+		delete(additionalProperties, "total_deployment_duration_in_seconds")
+		delete(additionalProperties, "origin")
+		delete(additionalProperties, "triggered_by")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

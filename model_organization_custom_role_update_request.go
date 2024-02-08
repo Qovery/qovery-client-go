@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +26,8 @@ type OrganizationCustomRoleUpdateRequest struct {
 	// Should contain an entry for every existing cluster
 	ClusterPermissions []OrganizationCustomRoleUpdateRequestClusterPermissionsInner `json:"cluster_permissions"`
 	// Should contain an entry for every existing project
-	ProjectPermissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInner `json:"project_permissions"`
+	ProjectPermissions   []OrganizationCustomRoleUpdateRequestProjectPermissionsInner `json:"project_permissions"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationCustomRoleUpdateRequest OrganizationCustomRoleUpdateRequest
@@ -172,6 +172,11 @@ func (o OrganizationCustomRoleUpdateRequest) ToMap() (map[string]interface{}, er
 	}
 	toSerialize["cluster_permissions"] = o.ClusterPermissions
 	toSerialize["project_permissions"] = o.ProjectPermissions
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -201,15 +206,23 @@ func (o *OrganizationCustomRoleUpdateRequest) UnmarshalJSON(data []byte) (err er
 
 	varOrganizationCustomRoleUpdateRequest := _OrganizationCustomRoleUpdateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationCustomRoleUpdateRequest)
+	err = json.Unmarshal(data, &varOrganizationCustomRoleUpdateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationCustomRoleUpdateRequest(varOrganizationCustomRoleUpdateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "cluster_permissions")
+		delete(additionalProperties, "project_permissions")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

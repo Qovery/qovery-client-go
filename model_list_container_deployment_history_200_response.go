@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ListContainerDeploymentHistory200Response{}
 
 // ListContainerDeploymentHistory200Response struct for ListContainerDeploymentHistory200Response
 type ListContainerDeploymentHistory200Response struct {
-	Page     float32                      `json:"page"`
-	PageSize float32                      `json:"page_size"`
-	Results  []DeploymentHistoryContainer `json:"results,omitempty"`
+	Page                 float32                      `json:"page"`
+	PageSize             float32                      `json:"page_size"`
+	Results              []DeploymentHistoryContainer `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListContainerDeploymentHistory200Response ListContainerDeploymentHistory200Response
@@ -143,6 +143,11 @@ func (o ListContainerDeploymentHistory200Response) ToMap() (map[string]interface
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ListContainerDeploymentHistory200Response) UnmarshalJSON(data []byte) (
 
 	varListContainerDeploymentHistory200Response := _ListContainerDeploymentHistory200Response{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListContainerDeploymentHistory200Response)
+	err = json.Unmarshal(data, &varListContainerDeploymentHistory200Response)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListContainerDeploymentHistory200Response(varListContainerDeploymentHistory200Response)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

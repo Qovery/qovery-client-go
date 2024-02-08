@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,8 +24,9 @@ type ServiceStorageRequestStorageInner struct {
 	Id   *string         `json:"id,omitempty"`
 	Type StorageTypeEnum `json:"type"`
 	// unit is GB Minimum size is 4 GB
-	Size       int32  `json:"size"`
-	MountPoint string `json:"mount_point"`
+	Size                 int32  `json:"size"`
+	MountPoint           string `json:"mount_point"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServiceStorageRequestStorageInner ServiceStorageRequestStorageInner
@@ -171,6 +171,11 @@ func (o ServiceStorageRequestStorageInner) ToMap() (map[string]interface{}, erro
 	toSerialize["type"] = o.Type
 	toSerialize["size"] = o.Size
 	toSerialize["mount_point"] = o.MountPoint
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -200,15 +205,23 @@ func (o *ServiceStorageRequestStorageInner) UnmarshalJSON(data []byte) (err erro
 
 	varServiceStorageRequestStorageInner := _ServiceStorageRequestStorageInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServiceStorageRequestStorageInner)
+	err = json.Unmarshal(data, &varServiceStorageRequestStorageInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServiceStorageRequestStorageInner(varServiceStorageRequestStorageInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "size")
+		delete(additionalProperties, "mount_point")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,8 +30,9 @@ type DeploymentStageResponse struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Position of the deployment stage within the environment
-	DeploymentOrder *int32                           `json:"deployment_order,omitempty"`
-	Services        []DeploymentStageServiceResponse `json:"services,omitempty"`
+	DeploymentOrder      *int32                           `json:"deployment_order,omitempty"`
+	Services             []DeploymentStageServiceResponse `json:"services,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentStageResponse DeploymentStageResponse
@@ -317,6 +317,11 @@ func (o DeploymentStageResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Services) {
 		toSerialize["services"] = o.Services
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -346,15 +351,27 @@ func (o *DeploymentStageResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentStageResponse := _DeploymentStageResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentStageResponse)
+	err = json.Unmarshal(data, &varDeploymentStageResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentStageResponse(varDeploymentStageResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "deployment_order")
+		delete(additionalProperties, "services")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

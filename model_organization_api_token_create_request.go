@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type OrganizationApiTokenCreateRequest struct {
 	Description *string                           `json:"description,omitempty"`
 	Scope       NullableOrganizationApiTokenScope `json:"scope,omitempty"`
 	// the roleId provided by the \"List organization custom roles\" endpoint.
-	RoleId NullableString `json:"role_id"`
+	RoleId               NullableString `json:"role_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationApiTokenCreateRequest OrganizationApiTokenCreateRequest
@@ -193,6 +193,11 @@ func (o OrganizationApiTokenCreateRequest) ToMap() (map[string]interface{}, erro
 		toSerialize["scope"] = o.Scope.Get()
 	}
 	toSerialize["role_id"] = o.RoleId.Get()
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -221,15 +226,23 @@ func (o *OrganizationApiTokenCreateRequest) UnmarshalJSON(data []byte) (err erro
 
 	varOrganizationApiTokenCreateRequest := _OrganizationApiTokenCreateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationApiTokenCreateRequest)
+	err = json.Unmarshal(data, &varOrganizationApiTokenCreateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationApiTokenCreateRequest(varOrganizationApiTokenCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

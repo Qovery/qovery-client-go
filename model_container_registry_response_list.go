@@ -20,8 +20,11 @@ var _ MappedNullable = &ContainerRegistryResponseList{}
 
 // ContainerRegistryResponseList struct for ContainerRegistryResponseList
 type ContainerRegistryResponseList struct {
-	Results []ContainerRegistryResponse `json:"results,omitempty"`
+	Results              []ContainerRegistryResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ContainerRegistryResponseList ContainerRegistryResponseList
 
 // NewContainerRegistryResponseList instantiates a new ContainerRegistryResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ContainerRegistryResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ContainerRegistryResponseList) UnmarshalJSON(data []byte) (err error) {
+	varContainerRegistryResponseList := _ContainerRegistryResponseList{}
+
+	err = json.Unmarshal(data, &varContainerRegistryResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerRegistryResponseList(varContainerRegistryResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableContainerRegistryResponseList struct {

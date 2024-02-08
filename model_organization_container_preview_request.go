@@ -23,8 +23,11 @@ type OrganizationContainerPreviewRequest struct {
 	// the container image name to trigger preview environment
 	ImageName *string `json:"image_name,omitempty"`
 	// the tag to be used in the preview environment
-	Tag *string `json:"tag,omitempty"`
+	Tag                  *string `json:"tag,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationContainerPreviewRequest OrganizationContainerPreviewRequest
 
 // NewOrganizationContainerPreviewRequest instantiates a new OrganizationContainerPreviewRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -123,7 +126,34 @@ func (o OrganizationContainerPreviewRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Tag) {
 		toSerialize["tag"] = o.Tag
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationContainerPreviewRequest) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationContainerPreviewRequest := _OrganizationContainerPreviewRequest{}
+
+	err = json.Unmarshal(data, &varOrganizationContainerPreviewRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationContainerPreviewRequest(varOrganizationContainerPreviewRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationContainerPreviewRequest struct {

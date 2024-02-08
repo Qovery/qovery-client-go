@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &VariableImportRequest{}
 
 // VariableImportRequest struct for VariableImportRequest
 type VariableImportRequest struct {
-	Overwrite bool                             `json:"overwrite"`
-	Vars      []VariableImportRequestVarsInner `json:"vars"`
+	Overwrite            bool                             `json:"overwrite"`
+	Vars                 []VariableImportRequestVarsInner `json:"vars"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableImportRequest VariableImportRequest
@@ -109,6 +109,11 @@ func (o VariableImportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["overwrite"] = o.Overwrite
 	toSerialize["vars"] = o.Vars
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *VariableImportRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableImportRequest := _VariableImportRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableImportRequest)
+	err = json.Unmarshal(data, &varVariableImportRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableImportRequest(varVariableImportRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "overwrite")
+		delete(additionalProperties, "vars")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

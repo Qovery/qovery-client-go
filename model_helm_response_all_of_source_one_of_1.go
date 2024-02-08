@@ -20,8 +20,11 @@ var _ MappedNullable = &HelmResponseAllOfSourceOneOf1{}
 
 // HelmResponseAllOfSourceOneOf1 struct for HelmResponseAllOfSourceOneOf1
 type HelmResponseAllOfSourceOneOf1 struct {
-	Repository *HelmResponseAllOfSourceOneOf1Repository `json:"repository,omitempty"`
+	Repository           *HelmResponseAllOfSourceOneOf1Repository `json:"repository,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmResponseAllOfSourceOneOf1 HelmResponseAllOfSourceOneOf1
 
 // NewHelmResponseAllOfSourceOneOf1 instantiates a new HelmResponseAllOfSourceOneOf1 object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o HelmResponseAllOfSourceOneOf1) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Repository) {
 		toSerialize["repository"] = o.Repository
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmResponseAllOfSourceOneOf1) UnmarshalJSON(data []byte) (err error) {
+	varHelmResponseAllOfSourceOneOf1 := _HelmResponseAllOfSourceOneOf1{}
+
+	err = json.Unmarshal(data, &varHelmResponseAllOfSourceOneOf1)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmResponseAllOfSourceOneOf1(varHelmResponseAllOfSourceOneOf1)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "repository")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmResponseAllOfSourceOneOf1 struct {

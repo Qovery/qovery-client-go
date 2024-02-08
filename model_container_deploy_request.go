@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,7 +22,8 @@ var _ MappedNullable = &ContainerDeployRequest{}
 // ContainerDeployRequest struct for ContainerDeployRequest
 type ContainerDeployRequest struct {
 	// Image tag to deploy
-	ImageTag string `json:"image_tag"`
+	ImageTag             string `json:"image_tag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerDeployRequest ContainerDeployRequest
@@ -81,6 +81,11 @@ func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
 func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["image_tag"] = o.ImageTag
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -108,15 +113,20 @@ func (o *ContainerDeployRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerDeployRequest := _ContainerDeployRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerDeployRequest)
+	err = json.Unmarshal(data, &varContainerDeployRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerDeployRequest(varContainerDeployRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "image_tag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

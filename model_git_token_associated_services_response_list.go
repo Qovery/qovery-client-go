@@ -20,8 +20,11 @@ var _ MappedNullable = &GitTokenAssociatedServicesResponseList{}
 
 // GitTokenAssociatedServicesResponseList struct for GitTokenAssociatedServicesResponseList
 type GitTokenAssociatedServicesResponseList struct {
-	Results []GitTokenAssociatedServiceResponse `json:"results,omitempty"`
+	Results              []GitTokenAssociatedServiceResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GitTokenAssociatedServicesResponseList GitTokenAssociatedServicesResponseList
 
 // NewGitTokenAssociatedServicesResponseList instantiates a new GitTokenAssociatedServicesResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o GitTokenAssociatedServicesResponseList) ToMap() (map[string]interface{},
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GitTokenAssociatedServicesResponseList) UnmarshalJSON(data []byte) (err error) {
+	varGitTokenAssociatedServicesResponseList := _GitTokenAssociatedServicesResponseList{}
+
+	err = json.Unmarshal(data, &varGitTokenAssociatedServicesResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GitTokenAssociatedServicesResponseList(varGitTokenAssociatedServicesResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGitTokenAssociatedServicesResponseList struct {

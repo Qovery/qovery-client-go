@@ -20,8 +20,11 @@ var _ MappedNullable = &EnvironmentApplicationsSupportedLanguageList{}
 
 // EnvironmentApplicationsSupportedLanguageList struct for EnvironmentApplicationsSupportedLanguageList
 type EnvironmentApplicationsSupportedLanguageList struct {
-	Results []EnvironmentApplicationsSupportedLanguage `json:"results,omitempty"`
+	Results              []EnvironmentApplicationsSupportedLanguage `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentApplicationsSupportedLanguageList EnvironmentApplicationsSupportedLanguageList
 
 // NewEnvironmentApplicationsSupportedLanguageList instantiates a new EnvironmentApplicationsSupportedLanguageList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o EnvironmentApplicationsSupportedLanguageList) ToMap() (map[string]interf
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentApplicationsSupportedLanguageList) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentApplicationsSupportedLanguageList := _EnvironmentApplicationsSupportedLanguageList{}
+
+	err = json.Unmarshal(data, &varEnvironmentApplicationsSupportedLanguageList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentApplicationsSupportedLanguageList(varEnvironmentApplicationsSupportedLanguageList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentApplicationsSupportedLanguageList struct {

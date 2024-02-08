@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &OrganizationCustomRoleCreateRequest{}
 
 // OrganizationCustomRoleCreateRequest struct for OrganizationCustomRoleCreateRequest
 type OrganizationCustomRoleCreateRequest struct {
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
+	Name                 string  `json:"name"`
+	Description          *string `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationCustomRoleCreateRequest OrganizationCustomRoleCreateRequest
@@ -116,6 +116,11 @@ func (o OrganizationCustomRoleCreateRequest) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *OrganizationCustomRoleCreateRequest) UnmarshalJSON(data []byte) (err er
 
 	varOrganizationCustomRoleCreateRequest := _OrganizationCustomRoleCreateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationCustomRoleCreateRequest)
+	err = json.Unmarshal(data, &varOrganizationCustomRoleCreateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationCustomRoleCreateRequest(varOrganizationCustomRoleCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

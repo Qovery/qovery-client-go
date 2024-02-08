@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -34,8 +33,9 @@ type BillingInfoRequest struct {
 	// ISO code of the country
 	CountryCode string `json:"country_code"`
 	// name of the company to bill
-	Company   *string `json:"company,omitempty"`
-	VatNumber *string `json:"vat_number,omitempty"`
+	Company              *string `json:"company,omitempty"`
+	VatNumber            *string `json:"vat_number,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BillingInfoRequest BillingInfoRequest
@@ -354,6 +354,11 @@ func (o BillingInfoRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.VatNumber) {
 		toSerialize["vat_number"] = o.VatNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -387,15 +392,29 @@ func (o *BillingInfoRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varBillingInfoRequest := _BillingInfoRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBillingInfoRequest)
+	err = json.Unmarshal(data, &varBillingInfoRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BillingInfoRequest(varBillingInfoRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "zip")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "country_code")
+		delete(additionalProperties, "company")
+		delete(additionalProperties, "vat_number")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

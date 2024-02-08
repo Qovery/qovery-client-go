@@ -20,11 +20,14 @@ var _ MappedNullable = &CloudProvider{}
 
 // CloudProvider struct for CloudProvider
 type CloudProvider struct {
-	ShortName *string         `json:"short_name,omitempty"`
-	Name      *string         `json:"name,omitempty"`
-	LogoUrl   *string         `json:"logo_url,omitempty"`
-	Regions   []ClusterRegion `json:"regions,omitempty"`
+	ShortName            *string         `json:"short_name,omitempty"`
+	Name                 *string         `json:"name,omitempty"`
+	LogoUrl              *string         `json:"logo_url,omitempty"`
+	Regions              []ClusterRegion `json:"regions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _CloudProvider CloudProvider
 
 // NewCloudProvider instantiates a new CloudProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -193,7 +196,36 @@ func (o CloudProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Regions) {
 		toSerialize["regions"] = o.Regions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *CloudProvider) UnmarshalJSON(data []byte) (err error) {
+	varCloudProvider := _CloudProvider{}
+
+	err = json.Unmarshal(data, &varCloudProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CloudProvider(varCloudProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "short_name")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "logo_url")
+		delete(additionalProperties, "regions")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableCloudProvider struct {

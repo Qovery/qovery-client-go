@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &BackupRequest{}
 
 // BackupRequest struct for BackupRequest
 type BackupRequest struct {
-	Name    string `json:"name"`
-	Message string `json:"message"`
+	Name                 string `json:"name"`
+	Message              string `json:"message"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupRequest BackupRequest
@@ -107,6 +107,11 @@ func (o BackupRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["message"] = o.Message
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *BackupRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupRequest := _BackupRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupRequest)
+	err = json.Unmarshal(data, &varBackupRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupRequest(varBackupRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,12 +20,15 @@ var _ MappedNullable = &EnvironmentServiceIdsAllRequest{}
 
 // EnvironmentServiceIdsAllRequest struct for EnvironmentServiceIdsAllRequest
 type EnvironmentServiceIdsAllRequest struct {
-	ApplicationIds []string `json:"application_ids,omitempty"`
-	ContainerIds   []string `json:"container_ids,omitempty"`
-	DatabaseIds    []string `json:"database_ids,omitempty"`
-	JobIds         []string `json:"job_ids,omitempty"`
-	HelmIds        []string `json:"helm_ids,omitempty"`
+	ApplicationIds       []string `json:"application_ids,omitempty"`
+	ContainerIds         []string `json:"container_ids,omitempty"`
+	DatabaseIds          []string `json:"database_ids,omitempty"`
+	JobIds               []string `json:"job_ids,omitempty"`
+	HelmIds              []string `json:"helm_ids,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentServiceIdsAllRequest EnvironmentServiceIdsAllRequest
 
 // NewEnvironmentServiceIdsAllRequest instantiates a new EnvironmentServiceIdsAllRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o EnvironmentServiceIdsAllRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.HelmIds) {
 		toSerialize["helm_ids"] = o.HelmIds
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentServiceIdsAllRequest) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentServiceIdsAllRequest := _EnvironmentServiceIdsAllRequest{}
+
+	err = json.Unmarshal(data, &varEnvironmentServiceIdsAllRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentServiceIdsAllRequest(varEnvironmentServiceIdsAllRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "application_ids")
+		delete(additionalProperties, "container_ids")
+		delete(additionalProperties, "database_ids")
+		delete(additionalProperties, "job_ids")
+		delete(additionalProperties, "helm_ids")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentServiceIdsAllRequest struct {

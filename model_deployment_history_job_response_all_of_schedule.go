@@ -22,8 +22,11 @@ var _ MappedNullable = &DeploymentHistoryJobResponseAllOfSchedule{}
 type DeploymentHistoryJobResponseAllOfSchedule struct {
 	Event *JobScheduleEvent `json:"event,omitempty"`
 	// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
-	ScheduleAt NullableString `json:"schedule_at,omitempty"`
+	ScheduleAt           NullableString `json:"schedule_at,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentHistoryJobResponseAllOfSchedule DeploymentHistoryJobResponseAllOfSchedule
 
 // NewDeploymentHistoryJobResponseAllOfSchedule instantiates a new DeploymentHistoryJobResponseAllOfSchedule object
 // This constructor will assign default values to properties that have it defined,
@@ -133,7 +136,34 @@ func (o DeploymentHistoryJobResponseAllOfSchedule) ToMap() (map[string]interface
 	if o.ScheduleAt.IsSet() {
 		toSerialize["schedule_at"] = o.ScheduleAt.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentHistoryJobResponseAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentHistoryJobResponseAllOfSchedule := _DeploymentHistoryJobResponseAllOfSchedule{}
+
+	err = json.Unmarshal(data, &varDeploymentHistoryJobResponseAllOfSchedule)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentHistoryJobResponseAllOfSchedule(varDeploymentHistoryJobResponseAllOfSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "event")
+		delete(additionalProperties, "schedule_at")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentHistoryJobResponseAllOfSchedule struct {

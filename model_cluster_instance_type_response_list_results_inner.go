@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,13 +21,14 @@ var _ MappedNullable = &ClusterInstanceTypeResponseListResultsInner{}
 
 // ClusterInstanceTypeResponseListResultsInner struct for ClusterInstanceTypeResponseListResultsInner
 type ClusterInstanceTypeResponseListResultsInner struct {
-	Type               string  `json:"type"`
-	Name               string  `json:"name"`
-	Cpu                int32   `json:"cpu"`
-	RamInGb            int32   `json:"ram_in_gb"`
-	BandwidthInGbps    string  `json:"bandwidth_in_gbps"`
-	BandwidthGuarantee string  `json:"bandwidth_guarantee"`
-	Architecture       *string `json:"architecture,omitempty"`
+	Type                 string  `json:"type"`
+	Name                 string  `json:"name"`
+	Cpu                  int32   `json:"cpu"`
+	RamInGb              int32   `json:"ram_in_gb"`
+	BandwidthInGbps      string  `json:"bandwidth_in_gbps"`
+	BandwidthGuarantee   string  `json:"bandwidth_guarantee"`
+	Architecture         *string `json:"architecture,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterInstanceTypeResponseListResultsInner ClusterInstanceTypeResponseListResultsInner
@@ -251,6 +251,11 @@ func (o ClusterInstanceTypeResponseListResultsInner) ToMap() (map[string]interfa
 	if !IsNil(o.Architecture) {
 		toSerialize["architecture"] = o.Architecture
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -283,15 +288,26 @@ func (o *ClusterInstanceTypeResponseListResultsInner) UnmarshalJSON(data []byte)
 
 	varClusterInstanceTypeResponseListResultsInner := _ClusterInstanceTypeResponseListResultsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterInstanceTypeResponseListResultsInner)
+	err = json.Unmarshal(data, &varClusterInstanceTypeResponseListResultsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterInstanceTypeResponseListResultsInner(varClusterInstanceTypeResponseListResultsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "ram_in_gb")
+		delete(additionalProperties, "bandwidth_in_gbps")
+		delete(additionalProperties, "bandwidth_guarantee")
+		delete(additionalProperties, "architecture")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

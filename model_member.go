@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -34,8 +33,9 @@ type Member struct {
 	LastActivityAt *time.Time            `json:"last_activity_at,omitempty"`
 	Role           *InviteMemberRoleEnum `json:"role,omitempty"`
 	// the role linked to the user
-	RoleName *string `json:"role_name,omitempty"`
-	RoleId   *string `json:"role_id,omitempty"`
+	RoleName             *string `json:"role_name,omitempty"`
+	RoleId               *string `json:"role_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Member Member
@@ -425,6 +425,11 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -454,15 +459,30 @@ func (o *Member) UnmarshalJSON(data []byte) (err error) {
 
 	varMember := _Member{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMember)
+	err = json.Unmarshal(data, &varMember)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Member(varMember)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "nickname")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "profile_picture_url")
+		delete(additionalProperties, "last_activity_at")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "role_name")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

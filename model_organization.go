@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -36,7 +35,8 @@ type Organization struct {
 	IconUrl     NullableString `json:"icon_url,omitempty"`
 	AdminEmails []string       `json:"admin_emails,omitempty"`
 	// uuid of the user owning the organization
-	Owner *string `json:"owner,omitempty"`
+	Owner                *string `json:"owner,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Organization Organization
@@ -508,6 +508,11 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -538,15 +543,31 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganization := _Organization{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganization)
+	err = json.Unmarshal(data, &varOrganization)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Organization(varOrganization)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "plan")
+		delete(additionalProperties, "website_url")
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "logo_url")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "admin_emails")
+		delete(additionalProperties, "owner")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

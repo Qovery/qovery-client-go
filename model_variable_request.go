@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -32,7 +31,8 @@ type VariableRequest struct {
 	IsSecret      bool                 `json:"is_secret"`
 	VariableScope APIVariableScopeEnum `json:"variable_scope"`
 	// based on the selected scope, it contains the ID of the service, environment or project where the variable is attached
-	VariableParentId string `json:"variable_parent_id"`
+	VariableParentId     string `json:"variable_parent_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableRequest VariableRequest
@@ -240,6 +240,11 @@ func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_secret"] = o.IsSecret
 	toSerialize["variable_scope"] = o.VariableScope
 	toSerialize["variable_parent_id"] = o.VariableParentId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -271,15 +276,25 @@ func (o *VariableRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableRequest := _VariableRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableRequest)
+	err = json.Unmarshal(data, &varVariableRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableRequest(varVariableRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "mount_path")
+		delete(additionalProperties, "is_secret")
+		delete(additionalProperties, "variable_scope")
+		delete(additionalProperties, "variable_parent_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

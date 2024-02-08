@@ -20,9 +20,12 @@ var _ MappedNullable = &ClusterCloudProviderInfoCredentials{}
 
 // ClusterCloudProviderInfoCredentials struct for ClusterCloudProviderInfoCredentials
 type ClusterCloudProviderInfoCredentials struct {
-	Id   *string `json:"id,omitempty"`
-	Name *string `json:"name,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	Name                 *string `json:"name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterCloudProviderInfoCredentials ClusterCloudProviderInfoCredentials
 
 // NewClusterCloudProviderInfoCredentials instantiates a new ClusterCloudProviderInfoCredentials object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o ClusterCloudProviderInfoCredentials) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterCloudProviderInfoCredentials) UnmarshalJSON(data []byte) (err error) {
+	varClusterCloudProviderInfoCredentials := _ClusterCloudProviderInfoCredentials{}
+
+	err = json.Unmarshal(data, &varClusterCloudProviderInfoCredentials)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterCloudProviderInfoCredentials(varClusterCloudProviderInfoCredentials)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterCloudProviderInfoCredentials struct {

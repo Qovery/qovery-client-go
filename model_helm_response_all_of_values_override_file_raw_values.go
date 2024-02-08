@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type HelmResponseAllOfValuesOverrideFileRawValues struct {
 	// The name of the value file
 	Name string `json:"name"`
 	// The content of the value file
-	Content string `json:"content"`
+	Content              string `json:"content"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponseAllOfValuesOverrideFileRawValues HelmResponseAllOfValuesOverrideFileRawValues
@@ -109,6 +109,11 @@ func (o HelmResponseAllOfValuesOverrideFileRawValues) ToMap() (map[string]interf
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["content"] = o.Content
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -137,15 +142,21 @@ func (o *HelmResponseAllOfValuesOverrideFileRawValues) UnmarshalJSON(data []byte
 
 	varHelmResponseAllOfValuesOverrideFileRawValues := _HelmResponseAllOfValuesOverrideFileRawValues{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponseAllOfValuesOverrideFileRawValues)
+	err = json.Unmarshal(data, &varHelmResponseAllOfValuesOverrideFileRawValues)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponseAllOfValuesOverrideFileRawValues(varHelmResponseAllOfValuesOverrideFileRawValues)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "content")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

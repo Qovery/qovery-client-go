@@ -20,9 +20,12 @@ var _ MappedNullable = &EnvironmentLogsErrorUnderlyingError{}
 
 // EnvironmentLogsErrorUnderlyingError struct for EnvironmentLogsErrorUnderlyingError
 type EnvironmentLogsErrorUnderlyingError struct {
-	Message     *string `json:"message,omitempty"`
-	FullDetails *string `json:"full_details,omitempty"`
+	Message              *string `json:"message,omitempty"`
+	FullDetails          *string `json:"full_details,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentLogsErrorUnderlyingError EnvironmentLogsErrorUnderlyingError
 
 // NewEnvironmentLogsErrorUnderlyingError instantiates a new EnvironmentLogsErrorUnderlyingError object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o EnvironmentLogsErrorUnderlyingError) ToMap() (map[string]interface{}, er
 	if !IsNil(o.FullDetails) {
 		toSerialize["full_details"] = o.FullDetails
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentLogsErrorUnderlyingError) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentLogsErrorUnderlyingError := _EnvironmentLogsErrorUnderlyingError{}
+
+	err = json.Unmarshal(data, &varEnvironmentLogsErrorUnderlyingError)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentLogsErrorUnderlyingError(varEnvironmentLogsErrorUnderlyingError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "full_details")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentLogsErrorUnderlyingError struct {
