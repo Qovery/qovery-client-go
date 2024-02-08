@@ -20871,27 +20871,27 @@ components:
       type: object
     RebootServicesRequest:
       example:
-        containerIds:
+        application_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        databaseIds:
+        container_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        applicationIds:
+        database_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
-        applicationIds:
+        application_ids:
           items:
             format: uuid
             type: string
           type: array
-        databaseIds:
+        database_ids:
           items:
             format: uuid
             type: string
           type: array
-        containerIds:
+        container_ids:
           items:
             format: uuid
             type: string

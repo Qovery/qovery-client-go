@@ -20,9 +20,9 @@ var _ MappedNullable = &RebootServicesRequest{}
 
 // RebootServicesRequest struct for RebootServicesRequest
 type RebootServicesRequest struct {
-	ApplicationIds []string `json:"applicationIds,omitempty"`
-	DatabaseIds    []string `json:"databaseIds,omitempty"`
-	ContainerIds   []string `json:"containerIds,omitempty"`
+	ApplicationIds []string `json:"application_ids,omitempty"`
+	DatabaseIds    []string `json:"database_ids,omitempty"`
+	ContainerIds   []string `json:"container_ids,omitempty"`
 }
 
 // NewRebootServicesRequest instantiates a new RebootServicesRequest object
@@ -149,13 +149,13 @@ func (o RebootServicesRequest) MarshalJSON() ([]byte, error) {
 func (o RebootServicesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.ApplicationIds) {
-		toSerialize["applicationIds"] = o.ApplicationIds
+		toSerialize["application_ids"] = o.ApplicationIds
 	}
 	if !IsNil(o.DatabaseIds) {
-		toSerialize["databaseIds"] = o.DatabaseIds
+		toSerialize["database_ids"] = o.DatabaseIds
 	}
 	if !IsNil(o.ContainerIds) {
-		toSerialize["containerIds"] = o.ContainerIds
+		toSerialize["container_ids"] = o.ContainerIds
 	}
 	return toSerialize, nil
 }
