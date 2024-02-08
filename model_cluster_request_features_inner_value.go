@@ -18,15 +18,15 @@ import (
 
 // ClusterRequestFeaturesInnerValue - struct for ClusterRequestFeaturesInnerValue
 type ClusterRequestFeaturesInnerValue struct {
-	ClusterRequestFeaturesInnerValueOneOf *ClusterRequestFeaturesInnerValueOneOf
-	Bool                                  *bool
-	String                                *string
+	ClusterFeatureAwsExistingVpc *ClusterFeatureAwsExistingVpc
+	Bool                         *bool
+	String                       *string
 }
 
-// ClusterRequestFeaturesInnerValueOneOfAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterRequestFeaturesInnerValueOneOf wrapped in ClusterRequestFeaturesInnerValue
-func ClusterRequestFeaturesInnerValueOneOfAsClusterRequestFeaturesInnerValue(v *ClusterRequestFeaturesInnerValueOneOf) ClusterRequestFeaturesInnerValue {
+// ClusterFeatureAwsExistingVpcAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterFeatureAwsExistingVpc wrapped in ClusterRequestFeaturesInnerValue
+func ClusterFeatureAwsExistingVpcAsClusterRequestFeaturesInnerValue(v *ClusterFeatureAwsExistingVpc) ClusterRequestFeaturesInnerValue {
 	return ClusterRequestFeaturesInnerValue{
-		ClusterRequestFeaturesInnerValueOneOf: v,
+		ClusterFeatureAwsExistingVpc: v,
 	}
 }
 
@@ -53,17 +53,17 @@ func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 	}
 
 	match := 0
-	// try to unmarshal data into ClusterRequestFeaturesInnerValueOneOf
-	err = newStrictDecoder(data).Decode(&dst.ClusterRequestFeaturesInnerValueOneOf)
+	// try to unmarshal data into ClusterFeatureAwsExistingVpc
+	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureAwsExistingVpc)
 	if err == nil {
-		jsonClusterRequestFeaturesInnerValueOneOf, _ := json.Marshal(dst.ClusterRequestFeaturesInnerValueOneOf)
-		if string(jsonClusterRequestFeaturesInnerValueOneOf) == "{}" { // empty struct
-			dst.ClusterRequestFeaturesInnerValueOneOf = nil
+		jsonClusterFeatureAwsExistingVpc, _ := json.Marshal(dst.ClusterFeatureAwsExistingVpc)
+		if string(jsonClusterFeatureAwsExistingVpc) == "{}" { // empty struct
+			dst.ClusterFeatureAwsExistingVpc = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.ClusterRequestFeaturesInnerValueOneOf = nil
+		dst.ClusterFeatureAwsExistingVpc = nil
 	}
 
 	// try to unmarshal data into Bool
@@ -94,7 +94,7 @@ func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
-		dst.ClusterRequestFeaturesInnerValueOneOf = nil
+		dst.ClusterFeatureAwsExistingVpc = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -108,8 +108,8 @@ func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ClusterRequestFeaturesInnerValue) MarshalJSON() ([]byte, error) {
-	if src.ClusterRequestFeaturesInnerValueOneOf != nil {
-		return json.Marshal(&src.ClusterRequestFeaturesInnerValueOneOf)
+	if src.ClusterFeatureAwsExistingVpc != nil {
+		return json.Marshal(&src.ClusterFeatureAwsExistingVpc)
 	}
 
 	if src.Bool != nil {
@@ -128,8 +128,8 @@ func (obj *ClusterRequestFeaturesInnerValue) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
-	if obj.ClusterRequestFeaturesInnerValueOneOf != nil {
-		return obj.ClusterRequestFeaturesInnerValueOneOf
+	if obj.ClusterFeatureAwsExistingVpc != nil {
+		return obj.ClusterFeatureAwsExistingVpc
 	}
 
 	if obj.Bool != nil {

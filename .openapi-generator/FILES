@@ -152,6 +152,7 @@ docs/ClusterDeleteMode.md
 docs/ClusterDeploymentStatusEnum.md
 docs/ClusterFeature.md
 docs/ClusterFeatureAcceptedValuesInner.md
+docs/ClusterFeatureAwsExistingVpc.md
 docs/ClusterFeatureResponseList.md
 docs/ClusterFeatureValue.md
 docs/ClusterInstanceTypeResponseList.md
@@ -170,7 +171,6 @@ docs/ClusterRegionResponseList.md
 docs/ClusterRequest.md
 docs/ClusterRequestFeaturesInner.md
 docs/ClusterRequestFeaturesInnerValue.md
-docs/ClusterRequestFeaturesInnerValueOneOf.md
 docs/ClusterResponseList.md
 docs/ClusterRoutingTable.md
 docs/ClusterRoutingTableRequest.md
@@ -642,6 +642,7 @@ model_cluster_delete_mode.go
 model_cluster_deployment_status_enum.go
 model_cluster_feature.go
 model_cluster_feature_accepted_values_inner.go
+model_cluster_feature_aws_existing_vpc.go
 model_cluster_feature_response_list.go
 model_cluster_feature_value.go
 model_cluster_instance_type_response_list.go
@@ -660,7 +661,6 @@ model_cluster_region_response_list.go
 model_cluster_request.go
 model_cluster_request_features_inner.go
 model_cluster_request_features_inner_value.go
-model_cluster_request_features_inner_value_one_of.go
 model_cluster_response_list.go
 model_cluster_routing_table.go
 model_cluster_routing_table_request.go

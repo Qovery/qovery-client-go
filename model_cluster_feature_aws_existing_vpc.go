@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterRequestFeaturesInnerValueOneOf type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterRequestFeaturesInnerValueOneOf{}
+// checks if the ClusterFeatureAwsExistingVpc type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterFeatureAwsExistingVpc{}
 
-// ClusterRequestFeaturesInnerValueOneOf struct for ClusterRequestFeaturesInnerValueOneOf
-type ClusterRequestFeaturesInnerValueOneOf struct {
+// ClusterFeatureAwsExistingVpc struct for ClusterFeatureAwsExistingVpc
+type ClusterFeatureAwsExistingVpc struct {
 	AwsVpcEksId                string   `json:"aws_vpc_eks_id"`
 	EksSubnetsZoneAIds         []string `json:"eks_subnets_zone_a_ids"`
 	EksSubnetsZoneBIds         []string `json:"eks_subnets_zone_b_ids"`
@@ -35,12 +35,12 @@ type ClusterRequestFeaturesInnerValueOneOf struct {
 	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
 }
 
-// NewClusterRequestFeaturesInnerValueOneOf instantiates a new ClusterRequestFeaturesInnerValueOneOf object
+// NewClusterFeatureAwsExistingVpc instantiates a new ClusterFeatureAwsExistingVpc object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRequestFeaturesInnerValueOneOf(awsVpcEksId string, eksSubnetsZoneAIds []string, eksSubnetsZoneBIds []string, eksSubnetsZoneCIds []string) *ClusterRequestFeaturesInnerValueOneOf {
-	this := ClusterRequestFeaturesInnerValueOneOf{}
+func NewClusterFeatureAwsExistingVpc(awsVpcEksId string, eksSubnetsZoneAIds []string, eksSubnetsZoneBIds []string, eksSubnetsZoneCIds []string) *ClusterFeatureAwsExistingVpc {
+	this := ClusterFeatureAwsExistingVpc{}
 	this.AwsVpcEksId = awsVpcEksId
 	this.EksSubnetsZoneAIds = eksSubnetsZoneAIds
 	this.EksSubnetsZoneBIds = eksSubnetsZoneBIds
@@ -48,16 +48,16 @@ func NewClusterRequestFeaturesInnerValueOneOf(awsVpcEksId string, eksSubnetsZone
 	return &this
 }
 
-// NewClusterRequestFeaturesInnerValueOneOfWithDefaults instantiates a new ClusterRequestFeaturesInnerValueOneOf object
+// NewClusterFeatureAwsExistingVpcWithDefaults instantiates a new ClusterFeatureAwsExistingVpc object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterRequestFeaturesInnerValueOneOfWithDefaults() *ClusterRequestFeaturesInnerValueOneOf {
-	this := ClusterRequestFeaturesInnerValueOneOf{}
+func NewClusterFeatureAwsExistingVpcWithDefaults() *ClusterFeatureAwsExistingVpc {
+	this := ClusterFeatureAwsExistingVpc{}
 	return &this
 }
 
 // GetAwsVpcEksId returns the AwsVpcEksId field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetAwsVpcEksId() string {
+func (o *ClusterFeatureAwsExistingVpc) GetAwsVpcEksId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetAwsVpcEksId() string {
 
 // GetAwsVpcEksIdOk returns a tuple with the AwsVpcEksId field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetAwsVpcEksIdOk() (*string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetAwsVpcEksIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,12 +76,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetAwsVpcEksIdOk() (*string, boo
 }
 
 // SetAwsVpcEksId sets field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetAwsVpcEksId(v string) {
+func (o *ClusterFeatureAwsExistingVpc) SetAwsVpcEksId(v string) {
 	o.AwsVpcEksId = v
 }
 
 // GetEksSubnetsZoneAIds returns the EksSubnetsZoneAIds field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneAIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneAIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -92,7 +92,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneAIds() []string
 
 // GetEksSubnetsZoneAIdsOk returns a tuple with the EksSubnetsZoneAIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneAIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +100,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneAIdsOk() ([]str
 }
 
 // SetEksSubnetsZoneAIds sets field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetEksSubnetsZoneAIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetEksSubnetsZoneAIds(v []string) {
 	o.EksSubnetsZoneAIds = v
 }
 
 // GetEksSubnetsZoneBIds returns the EksSubnetsZoneBIds field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneBIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneBIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -116,7 +116,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneBIds() []string
 
 // GetEksSubnetsZoneBIdsOk returns a tuple with the EksSubnetsZoneBIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneBIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,12 +124,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneBIdsOk() ([]str
 }
 
 // SetEksSubnetsZoneBIds sets field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetEksSubnetsZoneBIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetEksSubnetsZoneBIds(v []string) {
 	o.EksSubnetsZoneBIds = v
 }
 
 // GetEksSubnetsZoneCIds returns the EksSubnetsZoneCIds field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneCIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneCIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -140,7 +140,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneCIds() []string
 
 // GetEksSubnetsZoneCIdsOk returns a tuple with the EksSubnetsZoneCIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneCIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetEksSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,12 +148,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetEksSubnetsZoneCIdsOk() ([]str
 }
 
 // SetEksSubnetsZoneCIds sets field value
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetEksSubnetsZoneCIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetEksSubnetsZoneCIds(v []string) {
 	o.EksSubnetsZoneCIds = v
 }
 
 // GetDocumentdbSubnetsZoneAIds returns the DocumentdbSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneAIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -164,7 +164,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneAIds() [
 // GetDocumentdbSubnetsZoneAIdsOk returns a tuple with the DocumentdbSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneAIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneAIds) {
 		return nil, false
 	}
@@ -172,7 +172,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneAIdsOk()
 }
 
 // HasDocumentdbSubnetsZoneAIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneAIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneAIds() bool {
 	if o != nil && IsNil(o.DocumentdbSubnetsZoneAIds) {
 		return true
 	}
@@ -181,12 +181,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneAIds() b
 }
 
 // SetDocumentdbSubnetsZoneAIds gets a reference to the given []string and assigns it to the DocumentdbSubnetsZoneAIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetDocumentdbSubnetsZoneAIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneAIds(v []string) {
 	o.DocumentdbSubnetsZoneAIds = v
 }
 
 // GetDocumentdbSubnetsZoneBIds returns the DocumentdbSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneBIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -197,7 +197,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneBIds() [
 // GetDocumentdbSubnetsZoneBIdsOk returns a tuple with the DocumentdbSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneBIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneBIds) {
 		return nil, false
 	}
@@ -205,7 +205,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneBIdsOk()
 }
 
 // HasDocumentdbSubnetsZoneBIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneBIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneBIds() bool {
 	if o != nil && IsNil(o.DocumentdbSubnetsZoneBIds) {
 		return true
 	}
@@ -214,12 +214,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneBIds() b
 }
 
 // SetDocumentdbSubnetsZoneBIds gets a reference to the given []string and assigns it to the DocumentdbSubnetsZoneBIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetDocumentdbSubnetsZoneBIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneBIds(v []string) {
 	o.DocumentdbSubnetsZoneBIds = v
 }
 
 // GetDocumentdbSubnetsZoneCIds returns the DocumentdbSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneCIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -230,7 +230,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneCIds() [
 // GetDocumentdbSubnetsZoneCIdsOk returns a tuple with the DocumentdbSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneCIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneCIds) {
 		return nil, false
 	}
@@ -238,7 +238,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetDocumentdbSubnetsZoneCIdsOk()
 }
 
 // HasDocumentdbSubnetsZoneCIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneCIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneCIds() bool {
 	if o != nil && IsNil(o.DocumentdbSubnetsZoneCIds) {
 		return true
 	}
@@ -247,12 +247,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasDocumentdbSubnetsZoneCIds() b
 }
 
 // SetDocumentdbSubnetsZoneCIds gets a reference to the given []string and assigns it to the DocumentdbSubnetsZoneCIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetDocumentdbSubnetsZoneCIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneCIds(v []string) {
 	o.DocumentdbSubnetsZoneCIds = v
 }
 
 // GetElasticacheSubnetsZoneAIds returns the ElasticacheSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneAIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -263,7 +263,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneAIds() 
 // GetElasticacheSubnetsZoneAIdsOk returns a tuple with the ElasticacheSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneAIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneAIds) {
 		return nil, false
 	}
@@ -271,7 +271,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneAIdsOk(
 }
 
 // HasElasticacheSubnetsZoneAIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneAIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneAIds() bool {
 	if o != nil && IsNil(o.ElasticacheSubnetsZoneAIds) {
 		return true
 	}
@@ -280,12 +280,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneAIds() 
 }
 
 // SetElasticacheSubnetsZoneAIds gets a reference to the given []string and assigns it to the ElasticacheSubnetsZoneAIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetElasticacheSubnetsZoneAIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneAIds(v []string) {
 	o.ElasticacheSubnetsZoneAIds = v
 }
 
 // GetElasticacheSubnetsZoneBIds returns the ElasticacheSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneBIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -296,7 +296,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneBIds() 
 // GetElasticacheSubnetsZoneBIdsOk returns a tuple with the ElasticacheSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneBIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneBIds) {
 		return nil, false
 	}
@@ -304,7 +304,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneBIdsOk(
 }
 
 // HasElasticacheSubnetsZoneBIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneBIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneBIds() bool {
 	if o != nil && IsNil(o.ElasticacheSubnetsZoneBIds) {
 		return true
 	}
@@ -313,12 +313,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneBIds() 
 }
 
 // SetElasticacheSubnetsZoneBIds gets a reference to the given []string and assigns it to the ElasticacheSubnetsZoneBIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetElasticacheSubnetsZoneBIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneBIds(v []string) {
 	o.ElasticacheSubnetsZoneBIds = v
 }
 
 // GetElasticacheSubnetsZoneCIds returns the ElasticacheSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneCIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -329,7 +329,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneCIds() 
 // GetElasticacheSubnetsZoneCIdsOk returns a tuple with the ElasticacheSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneCIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneCIds) {
 		return nil, false
 	}
@@ -337,7 +337,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetElasticacheSubnetsZoneCIdsOk(
 }
 
 // HasElasticacheSubnetsZoneCIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneCIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneCIds() bool {
 	if o != nil && IsNil(o.ElasticacheSubnetsZoneCIds) {
 		return true
 	}
@@ -346,12 +346,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasElasticacheSubnetsZoneCIds() 
 }
 
 // SetElasticacheSubnetsZoneCIds gets a reference to the given []string and assigns it to the ElasticacheSubnetsZoneCIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetElasticacheSubnetsZoneCIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneCIds(v []string) {
 	o.ElasticacheSubnetsZoneCIds = v
 }
 
 // GetRdsSubnetsZoneAIds returns the RdsSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneAIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -362,7 +362,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneAIds() []string
 // GetRdsSubnetsZoneAIdsOk returns a tuple with the RdsSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneAIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneAIds) {
 		return nil, false
 	}
@@ -370,7 +370,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneAIdsOk() ([]str
 }
 
 // HasRdsSubnetsZoneAIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneAIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneAIds() bool {
 	if o != nil && IsNil(o.RdsSubnetsZoneAIds) {
 		return true
 	}
@@ -379,12 +379,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneAIds() bool {
 }
 
 // SetRdsSubnetsZoneAIds gets a reference to the given []string and assigns it to the RdsSubnetsZoneAIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetRdsSubnetsZoneAIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneAIds(v []string) {
 	o.RdsSubnetsZoneAIds = v
 }
 
 // GetRdsSubnetsZoneBIds returns the RdsSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneBIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -395,7 +395,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneBIds() []string
 // GetRdsSubnetsZoneBIdsOk returns a tuple with the RdsSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneBIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneBIds) {
 		return nil, false
 	}
@@ -403,7 +403,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneBIdsOk() ([]str
 }
 
 // HasRdsSubnetsZoneBIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneBIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneBIds() bool {
 	if o != nil && IsNil(o.RdsSubnetsZoneBIds) {
 		return true
 	}
@@ -412,12 +412,12 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneBIds() bool {
 }
 
 // SetRdsSubnetsZoneBIds gets a reference to the given []string and assigns it to the RdsSubnetsZoneBIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetRdsSubnetsZoneBIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneBIds(v []string) {
 	o.RdsSubnetsZoneBIds = v
 }
 
 // GetRdsSubnetsZoneCIds returns the RdsSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneCIds() []string {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIds() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -428,7 +428,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneCIds() []string
 // GetRdsSubnetsZoneCIdsOk returns a tuple with the RdsSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneCIdsOk() ([]string, bool) {
+func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneCIds) {
 		return nil, false
 	}
@@ -436,7 +436,7 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) GetRdsSubnetsZoneCIdsOk() ([]str
 }
 
 // HasRdsSubnetsZoneCIds returns a boolean if a field has been set.
-func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneCIds() bool {
+func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneCIds() bool {
 	if o != nil && IsNil(o.RdsSubnetsZoneCIds) {
 		return true
 	}
@@ -445,11 +445,11 @@ func (o *ClusterRequestFeaturesInnerValueOneOf) HasRdsSubnetsZoneCIds() bool {
 }
 
 // SetRdsSubnetsZoneCIds gets a reference to the given []string and assigns it to the RdsSubnetsZoneCIds field.
-func (o *ClusterRequestFeaturesInnerValueOneOf) SetRdsSubnetsZoneCIds(v []string) {
+func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneCIds(v []string) {
 	o.RdsSubnetsZoneCIds = v
 }
 
-func (o ClusterRequestFeaturesInnerValueOneOf) MarshalJSON() ([]byte, error) {
+func (o ClusterFeatureAwsExistingVpc) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -457,7 +457,7 @@ func (o ClusterRequestFeaturesInnerValueOneOf) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ClusterRequestFeaturesInnerValueOneOf) ToMap() (map[string]interface{}, error) {
+func (o ClusterFeatureAwsExistingVpc) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["aws_vpc_eks_id"] = o.AwsVpcEksId
 	toSerialize["eks_subnets_zone_a_ids"] = o.EksSubnetsZoneAIds
@@ -493,38 +493,38 @@ func (o ClusterRequestFeaturesInnerValueOneOf) ToMap() (map[string]interface{}, 
 	return toSerialize, nil
 }
 
-type NullableClusterRequestFeaturesInnerValueOneOf struct {
-	value *ClusterRequestFeaturesInnerValueOneOf
+type NullableClusterFeatureAwsExistingVpc struct {
+	value *ClusterFeatureAwsExistingVpc
 	isSet bool
 }
 
-func (v NullableClusterRequestFeaturesInnerValueOneOf) Get() *ClusterRequestFeaturesInnerValueOneOf {
+func (v NullableClusterFeatureAwsExistingVpc) Get() *ClusterFeatureAwsExistingVpc {
 	return v.value
 }
 
-func (v *NullableClusterRequestFeaturesInnerValueOneOf) Set(val *ClusterRequestFeaturesInnerValueOneOf) {
+func (v *NullableClusterFeatureAwsExistingVpc) Set(val *ClusterFeatureAwsExistingVpc) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterRequestFeaturesInnerValueOneOf) IsSet() bool {
+func (v NullableClusterFeatureAwsExistingVpc) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterRequestFeaturesInnerValueOneOf) Unset() {
+func (v *NullableClusterFeatureAwsExistingVpc) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterRequestFeaturesInnerValueOneOf(val *ClusterRequestFeaturesInnerValueOneOf) *NullableClusterRequestFeaturesInnerValueOneOf {
-	return &NullableClusterRequestFeaturesInnerValueOneOf{value: val, isSet: true}
+func NewNullableClusterFeatureAwsExistingVpc(val *ClusterFeatureAwsExistingVpc) *NullableClusterFeatureAwsExistingVpc {
+	return &NullableClusterFeatureAwsExistingVpc{value: val, isSet: true}
 }
 
-func (v NullableClusterRequestFeaturesInnerValueOneOf) MarshalJSON() ([]byte, error) {
+func (v NullableClusterFeatureAwsExistingVpc) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterRequestFeaturesInnerValueOneOf) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterFeatureAwsExistingVpc) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
