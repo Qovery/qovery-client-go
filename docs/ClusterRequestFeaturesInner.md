@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to [**NullableClusterFeatureValue**](ClusterFeatureValue.md) |  | [optional] 
+**Value** | Pointer to [**NullableClusterRequestFeaturesInnerValue**](ClusterRequestFeaturesInnerValue.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasId returns a boolean if a field has been set.
 
 ### GetValue
 
-`func (o *ClusterRequestFeaturesInner) GetValue() ClusterFeatureValue`
+`func (o *ClusterRequestFeaturesInner) GetValue() ClusterRequestFeaturesInnerValue`
 
 GetValue returns the Value field if non-nil, zero value otherwise.
 
 ### GetValueOk
 
-`func (o *ClusterRequestFeaturesInner) GetValueOk() (*ClusterFeatureValue, bool)`
+`func (o *ClusterRequestFeaturesInner) GetValueOk() (*ClusterRequestFeaturesInnerValue, bool)`
 
 GetValueOk returns a tuple with the Value field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetValue
 
-`func (o *ClusterRequestFeaturesInner) SetValue(v ClusterFeatureValue)`
+`func (o *ClusterRequestFeaturesInner) SetValue(v ClusterRequestFeaturesInnerValue)`
 
 SetValue sets Value field to given value.
 

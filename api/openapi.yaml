@@ -22237,6 +22237,79 @@ components:
       - ram_in_gb
       - type
       type: object
+    ClusterRequest_features_inner_value_oneOf:
+      properties:
+        aws_vpc_eks_id:
+          type: string
+        eks_subnets_zone_a_ids:
+          items:
+            type: string
+          type: array
+        eks_subnets_zone_b_ids:
+          items:
+            type: string
+          type: array
+        eks_subnets_zone_c_ids:
+          items:
+            type: string
+          type: array
+        documentdb_subnets_zone_a_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        documentdb_subnets_zone_b_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        documentdb_subnets_zone_c_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        elasticache_subnets_zone_a_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        elasticache_subnets_zone_b_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        elasticache_subnets_zone_c_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        rds_subnets_zone_a_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        rds_subnets_zone_b_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+        rds_subnets_zone_c_ids:
+          items:
+            type: string
+          nullable: true
+          type: array
+      required:
+      - aws_vpc_eks_id
+      - eks_subnets_zone_a_ids
+      - eks_subnets_zone_b_ids
+      - eks_subnets_zone_c_ids
+      type: object
+    ClusterRequest_features_inner_value:
+      nullable: true
+      oneOf:
+      - type: string
+      - type: boolean
+      - $ref: '#/components/schemas/ClusterRequest_features_inner_value_oneOf'
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22247,7 +22320,7 @@ components:
           nullable: false
           type: string
         value:
-          $ref: '#/components/schemas/ClusterFeature_value'
+          $ref: '#/components/schemas/ClusterRequest_features_inner_value'
       type: object
     ClusterRoutingTable_results_inner:
       example:
