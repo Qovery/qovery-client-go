@@ -37,10 +37,10 @@ func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*DeploymentStageRes
 /*
 AttachServiceToDeploymentStage Attach service to deployment stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@param serviceId Service ID of an application/job/container/database
-	@return ApiAttachServiceToDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @param serviceId Service ID of an application/job/container/database
+ @return ApiAttachServiceToDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStage(ctx context.Context, deploymentStageId string, serviceId string) ApiAttachServiceToDeploymentStageRequest {
 	return ApiAttachServiceToDeploymentStageRequest{
@@ -52,8 +52,7 @@ func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStage(ctx 
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponseList
+//  @return DeploymentStageResponseList
 func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStageExecute(r ApiAttachServiceToDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -162,9 +161,9 @@ func (r ApiCreateEnvironmentDeploymentStageRequest) Execute() (*DeploymentStageR
 /*
 CreateEnvironmentDeploymentStage Create environment deployment stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@return ApiCreateEnvironmentDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiCreateEnvironmentDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) CreateEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiCreateEnvironmentDeploymentStageRequest {
 	return ApiCreateEnvironmentDeploymentStageRequest{
@@ -175,8 +174,7 @@ func (a *DeploymentStageMainCallsAPIService) CreateEnvironmentDeploymentStage(ct
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponse
+//  @return DeploymentStageResponse
 func (a *DeploymentStageMainCallsAPIService) CreateEnvironmentDeploymentStageExecute(r ApiCreateEnvironmentDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -280,9 +278,9 @@ func (r ApiDeleteDeploymentStageRequest) Execute() (*http.Response, error) {
 /*
 DeleteDeploymentStage Delete deployment stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@return ApiDeleteDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @return ApiDeleteDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) DeleteDeploymentStage(ctx context.Context, deploymentStageId string) ApiDeleteDeploymentStageRequest {
 	return ApiDeleteDeploymentStageRequest{
@@ -390,9 +388,9 @@ func (r ApiEditDeploymentStageRequest) Execute() (*DeploymentStageResponse, *htt
 /*
 EditDeploymentStage Edit deployment stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@return ApiEditDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @return ApiEditDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) EditDeploymentStage(ctx context.Context, deploymentStageId string) ApiEditDeploymentStageRequest {
 	return ApiEditDeploymentStageRequest{
@@ -403,8 +401,7 @@ func (a *DeploymentStageMainCallsAPIService) EditDeploymentStage(ctx context.Con
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponse
+//  @return DeploymentStageResponse
 func (a *DeploymentStageMainCallsAPIService) EditDeploymentStageExecute(r ApiEditDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -508,9 +505,9 @@ func (r ApiGetDeploymentStageRequest) Execute() (*DeploymentStageResponse, *http
 /*
 GetDeploymentStage Get Deployment Stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@return ApiGetDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @return ApiGetDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) GetDeploymentStage(ctx context.Context, deploymentStageId string) ApiGetDeploymentStageRequest {
 	return ApiGetDeploymentStageRequest{
@@ -521,8 +518,7 @@ func (a *DeploymentStageMainCallsAPIService) GetDeploymentStage(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponse
+//  @return DeploymentStageResponse
 func (a *DeploymentStageMainCallsAPIService) GetDeploymentStageExecute(r ApiGetDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -624,9 +620,9 @@ func (r ApiGetServiceDeploymentStageRequest) Execute() (*DeploymentStageResponse
 /*
 GetServiceDeploymentStage Get Service Deployment Stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param serviceId Service ID of an application/job/container/database
-	@return ApiGetServiceDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param serviceId Service ID of an application/job/container/database
+ @return ApiGetServiceDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) GetServiceDeploymentStage(ctx context.Context, serviceId string) ApiGetServiceDeploymentStageRequest {
 	return ApiGetServiceDeploymentStageRequest{
@@ -637,8 +633,7 @@ func (a *DeploymentStageMainCallsAPIService) GetServiceDeploymentStage(ctx conte
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponse
+//  @return DeploymentStageResponse
 func (a *DeploymentStageMainCallsAPIService) GetServiceDeploymentStageExecute(r ApiGetServiceDeploymentStageRequest) (*DeploymentStageResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -740,9 +735,9 @@ func (r ApiListEnvironmentDeploymentStageRequest) Execute() (*DeploymentStageRes
 /*
 ListEnvironmentDeploymentStage List environment deployment stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@return ApiListEnvironmentDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiListEnvironmentDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) ListEnvironmentDeploymentStage(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentStageRequest {
 	return ApiListEnvironmentDeploymentStageRequest{
@@ -753,8 +748,7 @@ func (a *DeploymentStageMainCallsAPIService) ListEnvironmentDeploymentStage(ctx 
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponseList
+//  @return DeploymentStageResponseList
 func (a *DeploymentStageMainCallsAPIService) ListEnvironmentDeploymentStageExecute(r ApiListEnvironmentDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -857,10 +851,10 @@ func (r ApiMoveAfterDeploymentStageRequest) Execute() (*DeploymentStageResponseL
 /*
 MoveAfterDeploymentStage Move deployment stage after requested stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@param stageId Deployment Stage ID
-	@return ApiMoveAfterDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @param stageId Deployment Stage ID
+ @return ApiMoveAfterDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) MoveAfterDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveAfterDeploymentStageRequest {
 	return ApiMoveAfterDeploymentStageRequest{
@@ -872,8 +866,7 @@ func (a *DeploymentStageMainCallsAPIService) MoveAfterDeploymentStage(ctx contex
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponseList
+//  @return DeploymentStageResponseList
 func (a *DeploymentStageMainCallsAPIService) MoveAfterDeploymentStageExecute(r ApiMoveAfterDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -977,10 +970,10 @@ func (r ApiMoveBeforeDeploymentStageRequest) Execute() (*DeploymentStageResponse
 /*
 MoveBeforeDeploymentStage Move deployment stage before requested stage
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param deploymentStageId Deployment Stage ID
-	@param stageId Deployment Stage ID
-	@return ApiMoveBeforeDeploymentStageRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param deploymentStageId Deployment Stage ID
+ @param stageId Deployment Stage ID
+ @return ApiMoveBeforeDeploymentStageRequest
 */
 func (a *DeploymentStageMainCallsAPIService) MoveBeforeDeploymentStage(ctx context.Context, deploymentStageId string, stageId string) ApiMoveBeforeDeploymentStageRequest {
 	return ApiMoveBeforeDeploymentStageRequest{
@@ -992,8 +985,7 @@ func (a *DeploymentStageMainCallsAPIService) MoveBeforeDeploymentStage(ctx conte
 }
 
 // Execute executes the request
-//
-//	@return DeploymentStageResponseList
+//  @return DeploymentStageResponseList
 func (a *DeploymentStageMainCallsAPIService) MoveBeforeDeploymentStageExecute(r ApiMoveBeforeDeploymentStageRequest) (*DeploymentStageResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut

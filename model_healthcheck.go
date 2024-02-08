@@ -20,12 +20,9 @@ var _ MappedNullable = &Healthcheck{}
 
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
-	ReadinessProbe       NullableProbe `json:"readiness_probe,omitempty"`
-	LivenessProbe        NullableProbe `json:"liveness_probe,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ReadinessProbe NullableProbe `json:"readiness_probe,omitempty"`
+	LivenessProbe  NullableProbe `json:"liveness_probe,omitempty"`
 }
-
-type _Healthcheck Healthcheck
 
 // NewHealthcheck instantiates a new Healthcheck object
 // This constructor will assign default values to properties that have it defined,
@@ -146,34 +143,7 @@ func (o Healthcheck) ToMap() (map[string]interface{}, error) {
 	if o.LivenessProbe.IsSet() {
 		toSerialize["liveness_probe"] = o.LivenessProbe.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Healthcheck) UnmarshalJSON(data []byte) (err error) {
-	varHealthcheck := _Healthcheck{}
-
-	err = json.Unmarshal(data, &varHealthcheck)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Healthcheck(varHealthcheck)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "readiness_probe")
-		delete(additionalProperties, "liveness_probe")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHealthcheck struct {

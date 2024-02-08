@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -31,11 +30,8 @@ type HelmRepositoryResponse struct {
 	// URL of the helm repository
 	Url *string `json:"url,omitempty"`
 	// Bypass tls certificate verification when connecting to repository
-	SkipTlsVerification  *bool `json:"skip_tls_verification,omitempty"`
-	AdditionalProperties map[string]interface{}
+	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 }
-
-type _HelmRepositoryResponse HelmRepositoryResponse
 
 // NewHelmRepositoryResponse instantiates a new HelmRepositoryResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -317,63 +313,7 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsVerification) {
 		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmRepositoryResponse := _HelmRepositoryResponse{}
-
-	err = json.Unmarshal(data, &varHelmRepositoryResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmRepositoryResponse(varHelmRepositoryResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "kind")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "skip_tls_verification")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmRepositoryResponse struct {

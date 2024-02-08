@@ -20,25 +20,25 @@ Export full environment and its resources into Terraform manifests
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	exportSecrets := true // bool | export Secrets from configuration and include them into Terraform export (optional) (default to false)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    exportSecrets := true // bool | export Secrets from configuration and include them into Terraform export (optional) (default to false)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform(context.Background(), environmentId).ExportSecrets(exportSecrets).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ExportEnvironmentConfigurationIntoTerraform`: *os.File
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform(context.Background(), environmentId).ExportSecrets(exportSecrets).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ExportEnvironmentConfigurationIntoTerraform`: *os.File
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentExportAPI.ExportEnvironmentConfigurationIntoTerraform`: %v\n", resp)
 }
 ```
 

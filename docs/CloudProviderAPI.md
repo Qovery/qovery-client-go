@@ -36,24 +36,24 @@ List AWS EKS available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	region := "us-east-2" // string | region name
+    region := "us-east-2" // string | region name
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEKSInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSEKSInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSEKSInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEKSInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSEKSInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSEKSInstanceType`: %v\n", resp)
 }
 ```
 
@@ -104,24 +104,24 @@ List AWS EC2 available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	region := "us-east-2" // string | region name
+    region := "us-east-2" // string | region name
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSEc2InstanceType(context.Background(), region).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEc2InstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSEc2InstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSEc2InstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSEc2InstanceType(context.Background(), region).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEc2InstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSEc2InstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSEc2InstanceType`: %v\n", resp)
 }
 ```
 
@@ -172,23 +172,23 @@ List AWS features available
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSFeatures(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSFeatures``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSFeatures`: ClusterFeatureResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSFeatures`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSFeatures(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSFeatures`: ClusterFeatureResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSFeatures`: %v\n", resp)
 }
 ```
 
@@ -231,23 +231,23 @@ List AWS available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSInstanceType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSInstanceType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSInstanceType`: %v\n", resp)
 }
 ```
 
@@ -290,25 +290,25 @@ List AWS available managed database instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	region := "us-east-2" // string | region name
-	databaseType := "MYSQL" // string | Database type
+    region := "us-east-2" // string | region name
+    databaseType := "MYSQL" // string | Database type
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSManagedDatabaseInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSManagedDatabaseInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSManagedDatabaseInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSManagedDatabaseInstanceType`: %v\n", resp)
 }
 ```
 
@@ -361,23 +361,23 @@ List AWS available managed database types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSManagedDatabaseType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSManagedDatabaseType`: ManagedDatabaseTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSManagedDatabaseType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSManagedDatabaseType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSManagedDatabaseType`: ManagedDatabaseTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSManagedDatabaseType`: %v\n", resp)
 }
 ```
 
@@ -420,23 +420,23 @@ List AWS regions
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSRegions(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSRegions``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSRegions`: ClusterRegionResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSRegions`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListAWSRegions(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSRegions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAWSRegions`: ClusterRegionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSRegions`: %v\n", resp)
 }
 ```
 
@@ -479,23 +479,23 @@ List Cloud providers available
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListCloudProvider(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListCloudProvider``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListCloudProvider`: CloudProviderResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListCloudProvider`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListCloudProvider(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListCloudProvider``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListCloudProvider`: CloudProviderResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListCloudProvider`: %v\n", resp)
 }
 ```
 
@@ -538,23 +538,23 @@ List GCP features available
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListGcpFeatures(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpFeatures``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListGcpFeatures`: ClusterFeatureResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpFeatures`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpFeatures(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpFeatures`: ClusterFeatureResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpFeatures`: %v\n", resp)
 }
 ```
 
@@ -597,24 +597,24 @@ List GCP GKE available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	region := "us-east-2" // string | region name
+    region := "us-east-2" // string | region name
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpGkeInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListGcpGkeInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpGkeInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpGkeInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpGkeInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpGkeInstanceType`: %v\n", resp)
 }
 ```
 
@@ -665,23 +665,23 @@ List GCP regions
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListGcpRegions(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpRegions``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListGcpRegions`: ClusterRegionResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpRegions`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListGcpRegions(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpRegions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListGcpRegions`: ClusterRegionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpRegions`: %v\n", resp)
 }
 ```
 
@@ -724,24 +724,24 @@ List Scaleway available managed database instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseType := "MYSQL" // string | Database type
+    databaseType := "MYSQL" // string | Database type
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseInstanceType(context.Background(), databaseType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListSCWManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseInstanceType(context.Background(), databaseType).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSCWManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseInstanceType`: %v\n", resp)
 }
 ```
 
@@ -792,23 +792,23 @@ List Scaleway available managed database types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListSCWManagedDatabaseType`: ManagedDatabaseTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListSCWManagedDatabaseType`: ManagedDatabaseTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseType`: %v\n", resp)
 }
 ```
 
@@ -851,23 +851,23 @@ List Scaleway features available
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListScalewayFeatures(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayFeatures``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListScalewayFeatures`: ClusterFeatureResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayFeatures`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListScalewayFeatures(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayFeatures``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListScalewayFeatures`: ClusterFeatureResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayFeatures`: %v\n", resp)
 }
 ```
 
@@ -910,23 +910,23 @@ List Scaleway available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListScalewayInstanceType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListScalewayInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListScalewayInstanceType(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListScalewayInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayInstanceType`: %v\n", resp)
 }
 ```
 
@@ -969,24 +969,24 @@ List Scaleway Kapsule available instance types
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	zone := "fr-par-1" // string | zone name
+    zone := "fr-par-1" // string | zone name
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListScalewayKapsuleInstanceType(context.Background(), zone).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayKapsuleInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListScalewayKapsuleInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayKapsuleInstanceType`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListScalewayKapsuleInstanceType(context.Background(), zone).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayKapsuleInstanceType``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListScalewayKapsuleInstanceType`: ClusterInstanceTypeResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayKapsuleInstanceType`: %v\n", resp)
 }
 ```
 
@@ -1037,23 +1037,23 @@ List Scaleway regions
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListScalewayRegions(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayRegions``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListScalewayRegions`: ClusterRegionResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayRegions`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.CloudProviderAPI.ListScalewayRegions(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayRegions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListScalewayRegions`: ClusterRegionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayRegions`: %v\n", resp)
 }
 ```
 

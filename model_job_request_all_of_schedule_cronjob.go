@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the JobRequestAllOfScheduleCronjob type satisfies the MappedNullable interface at compile time
@@ -27,11 +26,8 @@ type JobRequestAllOfScheduleCronjob struct {
 	// Specify a timezone identifier to run the schedule at. By default Etc/UTC
 	Timezone *string `json:"timezone,omitempty"`
 	// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UTC
-	ScheduledAt          string `json:"scheduled_at"`
-	AdditionalProperties map[string]interface{}
+	ScheduledAt string `json:"scheduled_at"`
 }
-
-type _JobRequestAllOfScheduleCronjob JobRequestAllOfScheduleCronjob
 
 // NewJobRequestAllOfScheduleCronjob instantiates a new JobRequestAllOfScheduleCronjob object
 // This constructor will assign default values to properties that have it defined,
@@ -191,57 +187,7 @@ func (o JobRequestAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) 
 		toSerialize["timezone"] = o.Timezone
 	}
 	toSerialize["scheduled_at"] = o.ScheduledAt
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *JobRequestAllOfScheduleCronjob) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"scheduled_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varJobRequestAllOfScheduleCronjob := _JobRequestAllOfScheduleCronjob{}
-
-	err = json.Unmarshal(data, &varJobRequestAllOfScheduleCronjob)
-
-	if err != nil {
-		return err
-	}
-
-	*o = JobRequestAllOfScheduleCronjob(varJobRequestAllOfScheduleCronjob)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		delete(additionalProperties, "timezone")
-		delete(additionalProperties, "scheduled_at")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableJobRequestAllOfScheduleCronjob struct {

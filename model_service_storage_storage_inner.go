@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ServiceStorageStorageInner type satisfies the MappedNullable interface at compile time
@@ -24,12 +23,9 @@ type ServiceStorageStorageInner struct {
 	Id   string          `json:"id"`
 	Type StorageTypeEnum `json:"type"`
 	// unit is GB
-	Size                 int32  `json:"size"`
-	MountPoint           string `json:"mount_point"`
-	AdditionalProperties map[string]interface{}
+	Size       int32  `json:"size"`
+	MountPoint string `json:"mount_point"`
 }
-
-type _ServiceStorageStorageInner ServiceStorageStorageInner
 
 // NewServiceStorageStorageInner instantiates a new ServiceStorageStorageInner object
 // This constructor will assign default values to properties that have it defined,
@@ -162,60 +158,7 @@ func (o ServiceStorageStorageInner) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["size"] = o.Size
 	toSerialize["mount_point"] = o.MountPoint
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServiceStorageStorageInner) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"type",
-		"size",
-		"mount_point",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varServiceStorageStorageInner := _ServiceStorageStorageInner{}
-
-	err = json.Unmarshal(data, &varServiceStorageStorageInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServiceStorageStorageInner(varServiceStorageStorageInner)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "size")
-		delete(additionalProperties, "mount_point")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServiceStorageStorageInner struct {

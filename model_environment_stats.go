@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the EnvironmentStats type satisfies the MappedNullable interface at compile time
@@ -21,12 +20,9 @@ var _ MappedNullable = &EnvironmentStats{}
 
 // EnvironmentStats struct for EnvironmentStats
 type EnvironmentStats struct {
-	Id                   string   `json:"id"`
-	ServiceTotalNumber   *float32 `json:"service_total_number,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id                 string   `json:"id"`
+	ServiceTotalNumber *float32 `json:"service_total_number,omitempty"`
 }
-
-type _EnvironmentStats EnvironmentStats
 
 // NewEnvironmentStats instantiates a new EnvironmentStats object
 // This constructor will assign default values to properties that have it defined,
@@ -116,55 +112,7 @@ func (o EnvironmentStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceTotalNumber) {
 		toSerialize["service_total_number"] = o.ServiceTotalNumber
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentStats) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironmentStats := _EnvironmentStats{}
-
-	err = json.Unmarshal(data, &varEnvironmentStats)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentStats(varEnvironmentStats)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "service_total_number")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentStats struct {

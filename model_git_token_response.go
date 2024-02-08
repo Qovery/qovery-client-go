@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -33,10 +32,7 @@ type GitTokenResponse struct {
 	Workspace *string `json:"workspace,omitempty"`
 	// The number of services using this git token
 	AssociatedServicesCount float32 `json:"associated_services_count"`
-	AdditionalProperties    map[string]interface{}
 }
-
-type _GitTokenResponse GitTokenResponse
 
 // NewGitTokenResponse instantiates a new GitTokenResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -335,66 +331,7 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["workspace"] = o.Workspace
 	}
 	toSerialize["associated_services_count"] = o.AssociatedServicesCount
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GitTokenResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-		"type",
-		"associated_services_count",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGitTokenResponse := _GitTokenResponse{}
-
-	err = json.Unmarshal(data, &varGitTokenResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GitTokenResponse(varGitTokenResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "expired_at")
-		delete(additionalProperties, "workspace")
-		delete(additionalProperties, "associated_services_count")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGitTokenResponse struct {

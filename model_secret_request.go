@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SecretRequest type satisfies the MappedNullable interface at compile time
@@ -26,11 +25,8 @@ type SecretRequest struct {
 	// value of the secret. Clear value will never be returned
 	Value *string `json:"value,omitempty"`
 	// should be set for file only. variable mount path make secret a file (where file should be mounted).
-	MountPath            NullableString `json:"mount_path,omitempty"`
-	AdditionalProperties map[string]interface{}
+	MountPath NullableString `json:"mount_path,omitempty"`
 }
-
-type _SecretRequest SecretRequest
 
 // NewSecretRequest instantiates a new SecretRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -166,56 +162,7 @@ func (o SecretRequest) ToMap() (map[string]interface{}, error) {
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SecretRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSecretRequest := _SecretRequest{}
-
-	err = json.Unmarshal(data, &varSecretRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SecretRequest(varSecretRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		delete(additionalProperties, "mount_path")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSecretRequest struct {

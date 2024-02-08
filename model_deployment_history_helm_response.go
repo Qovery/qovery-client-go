@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -26,14 +25,11 @@ type DeploymentHistoryHelmResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the helm
-	Name                 *string                                              `json:"name,omitempty"`
-	Status               *StateEnum                                           `json:"status,omitempty"`
-	Commit               NullableCommit                                       `json:"commit,omitempty"`
-	Repository           NullableDeploymentHistoryHelmResponseAllOfRepository `json:"repository,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name       *string                                              `json:"name,omitempty"`
+	Status     *StateEnum                                           `json:"status,omitempty"`
+	Commit     NullableCommit                                       `json:"commit,omitempty"`
+	Repository NullableDeploymentHistoryHelmResponseAllOfRepository `json:"repository,omitempty"`
 }
-
-type _DeploymentHistoryHelmResponse DeploymentHistoryHelmResponse
 
 // NewDeploymentHistoryHelmResponse instantiates a new DeploymentHistoryHelmResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -311,61 +307,7 @@ func (o DeploymentHistoryHelmResponse) ToMap() (map[string]interface{}, error) {
 	if o.Repository.IsSet() {
 		toSerialize["repository"] = o.Repository.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentHistoryHelmResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentHistoryHelmResponse := _DeploymentHistoryHelmResponse{}
-
-	err = json.Unmarshal(data, &varDeploymentHistoryHelmResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentHistoryHelmResponse(varDeploymentHistoryHelmResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "commit")
-		delete(additionalProperties, "repository")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentHistoryHelmResponse struct {

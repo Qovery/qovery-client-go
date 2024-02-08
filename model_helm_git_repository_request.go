@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmGitRepositoryRequest type satisfies the MappedNullable interface at compile time
@@ -28,11 +27,8 @@ type HelmGitRepositoryRequest struct {
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
 	// The git token id on Qovery side
-	GitTokenId           NullableString `json:"git_token_id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	GitTokenId NullableString `json:"git_token_id,omitempty"`
 }
-
-type _HelmGitRepositoryRequest HelmGitRepositoryRequest
 
 // NewHelmGitRepositoryRequest instantiates a new HelmGitRepositoryRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -207,57 +203,7 @@ func (o HelmGitRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	if o.GitTokenId.IsSet() {
 		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmGitRepositoryRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"url",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmGitRepositoryRequest := _HelmGitRepositoryRequest{}
-
-	err = json.Unmarshal(data, &varHelmGitRepositoryRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmGitRepositoryRequest(varHelmGitRepositoryRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "branch")
-		delete(additionalProperties, "root_path")
-		delete(additionalProperties, "git_token_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmGitRepositoryRequest struct {

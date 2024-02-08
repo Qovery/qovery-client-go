@@ -23,24 +23,24 @@ List environment deployment logs
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentLogsAPI.ListEnvironmentLog(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsAPI.ListEnvironmentLog``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListEnvironmentLog`: EnvironmentLogResponseList
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentLogsAPI.ListEnvironmentLog`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentLogsAPI.ListEnvironmentLog(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsAPI.ListEnvironmentLog``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListEnvironmentLog`: EnvironmentLogResponseList
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentLogsAPI.ListEnvironmentLog`: %v\n", resp)
 }
 ```
 
@@ -93,25 +93,25 @@ List environment deployment logs v2
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	version := "version_example" // string |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    version := "version_example" // string |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentLogsAPI.ListEnvironmentLogs(context.Background(), environmentId).Version(version).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsAPI.ListEnvironmentLogs``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListEnvironmentLogs`: []EnvironmentLogs
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentLogsAPI.ListEnvironmentLogs`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentLogsAPI.ListEnvironmentLogs(context.Background(), environmentId).Version(version).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentLogsAPI.ListEnvironmentLogs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListEnvironmentLogs`: []EnvironmentLogs
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentLogsAPI.ListEnvironmentLogs`: %v\n", resp)
 }
 ```
 

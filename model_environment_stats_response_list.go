@@ -20,11 +20,8 @@ var _ MappedNullable = &EnvironmentStatsResponseList{}
 
 // EnvironmentStatsResponseList struct for EnvironmentStatsResponseList
 type EnvironmentStatsResponseList struct {
-	Results              []EnvironmentStats `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []EnvironmentStats `json:"results,omitempty"`
 }
-
-type _EnvironmentStatsResponseList EnvironmentStatsResponseList
 
 // NewEnvironmentStatsResponseList instantiates a new EnvironmentStatsResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o EnvironmentStatsResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentStatsResponseList) UnmarshalJSON(data []byte) (err error) {
-	varEnvironmentStatsResponseList := _EnvironmentStatsResponseList{}
-
-	err = json.Unmarshal(data, &varEnvironmentStatsResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentStatsResponseList(varEnvironmentStatsResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentStatsResponseList struct {

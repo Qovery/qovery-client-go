@@ -44,9 +44,9 @@ func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) Execute() (*os.Fi
 /*
 ExportEnvironmentConfigurationIntoTerraform Export full environment and its resources into Terraform manifests
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@return ApiExportEnvironmentConfigurationIntoTerraformRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiExportEnvironmentConfigurationIntoTerraformRequest
 */
 func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerraform(ctx context.Context, environmentId string) ApiExportEnvironmentConfigurationIntoTerraformRequest {
 	return ApiExportEnvironmentConfigurationIntoTerraformRequest{
@@ -57,8 +57,7 @@ func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerrafor
 }
 
 // Execute executes the request
-//
-//	@return *os.File
+//  @return *os.File
 func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerraformExecute(r ApiExportEnvironmentConfigurationIntoTerraformRequest) (*os.File, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

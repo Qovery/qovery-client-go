@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the EnvironmentVariableEditRequest type satisfies the MappedNullable interface at compile time
@@ -24,11 +23,8 @@ type EnvironmentVariableEditRequest struct {
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
-	Value                *string `json:"value,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Value *string `json:"value,omitempty"`
 }
-
-type _EnvironmentVariableEditRequest EnvironmentVariableEditRequest
 
 // NewEnvironmentVariableEditRequest instantiates a new EnvironmentVariableEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -118,55 +114,7 @@ func (o EnvironmentVariableEditRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentVariableEditRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironmentVariableEditRequest := _EnvironmentVariableEditRequest{}
-
-	err = json.Unmarshal(data, &varEnvironmentVariableEditRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentVariableEditRequest(varEnvironmentVariableEditRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentVariableEditRequest struct {

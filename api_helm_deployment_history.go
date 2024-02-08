@@ -38,9 +38,9 @@ ListHelmDeploymentHistory List helm deployments
 
 Returns the 20 last helm deployments
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param helmId Helm ID
-	@return ApiListHelmDeploymentHistoryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param helmId Helm ID
+ @return ApiListHelmDeploymentHistoryRequest
 */
 func (a *HelmDeploymentHistoryAPIService) ListHelmDeploymentHistory(ctx context.Context, helmId string) ApiListHelmDeploymentHistoryRequest {
 	return ApiListHelmDeploymentHistoryRequest{
@@ -51,8 +51,7 @@ func (a *HelmDeploymentHistoryAPIService) ListHelmDeploymentHistory(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return ListHelmDeploymentHistory200Response
+//  @return ListHelmDeploymentHistory200Response
 func (a *HelmDeploymentHistoryAPIService) ListHelmDeploymentHistoryExecute(r ApiListHelmDeploymentHistoryRequest) (*ListHelmDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

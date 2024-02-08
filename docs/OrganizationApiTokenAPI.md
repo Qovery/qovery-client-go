@@ -24,25 +24,25 @@ Create an organization api token
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationApiTokenCreateRequest := *openapiclient.NewOrganizationApiTokenCreateRequest("Name_example", "RoleId_example") // OrganizationApiTokenCreateRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationApiTokenCreateRequest := *openapiclient.NewOrganizationApiTokenCreateRequest("Name_example", "RoleId_example") // OrganizationApiTokenCreateRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationApiTokenAPI.CreateOrganizationApiToken(context.Background(), organizationId).OrganizationApiTokenCreateRequest(organizationApiTokenCreateRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.CreateOrganizationApiToken``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateOrganizationApiToken`: OrganizationApiTokenCreate
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationApiTokenAPI.CreateOrganizationApiToken`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApiTokenAPI.CreateOrganizationApiToken(context.Background(), organizationId).OrganizationApiTokenCreateRequest(organizationApiTokenCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.CreateOrganizationApiToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateOrganizationApiToken`: OrganizationApiTokenCreate
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationApiTokenAPI.CreateOrganizationApiToken`: %v\n", resp)
 }
 ```
 
@@ -96,23 +96,23 @@ Delete organization api token
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	apiTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization Api Token ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    apiTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization Api Token ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationApiTokenAPI.DeleteOrganizationApiToken(context.Background(), organizationId, apiTokenId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.DeleteOrganizationApiToken``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.OrganizationApiTokenAPI.DeleteOrganizationApiToken(context.Background(), organizationId, apiTokenId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.DeleteOrganizationApiToken``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -167,24 +167,24 @@ List organization api tokens
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationApiTokenAPI.ListOrganizationApiTokens(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.ListOrganizationApiTokens``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListOrganizationApiTokens`: OrganizationApiTokenResponseList
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationApiTokenAPI.ListOrganizationApiTokens`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationApiTokenAPI.ListOrganizationApiTokens(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.ListOrganizationApiTokens``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListOrganizationApiTokens`: OrganizationApiTokenResponseList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationApiTokenAPI.ListOrganizationApiTokens`: %v\n", resp)
 }
 ```
 

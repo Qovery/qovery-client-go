@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -30,12 +29,9 @@ type DeploymentStageResponse struct {
 	Name        *string `json:"name,omitempty"`
 	Description *string `json:"description,omitempty"`
 	// Position of the deployment stage within the environment
-	DeploymentOrder      *int32                           `json:"deployment_order,omitempty"`
-	Services             []DeploymentStageServiceResponse `json:"services,omitempty"`
-	AdditionalProperties map[string]interface{}
+	DeploymentOrder *int32                           `json:"deployment_order,omitempty"`
+	Services        []DeploymentStageServiceResponse `json:"services,omitempty"`
 }
-
-type _DeploymentStageResponse DeploymentStageResponse
 
 // NewDeploymentStageResponse instantiates a new DeploymentStageResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -317,63 +313,7 @@ func (o DeploymentStageResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Services) {
 		toSerialize["services"] = o.Services
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentStageResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"environment",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentStageResponse := _DeploymentStageResponse{}
-
-	err = json.Unmarshal(data, &varDeploymentStageResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentStageResponse(varDeploymentStageResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "environment")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "deployment_order")
-		delete(additionalProperties, "services")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentStageResponse struct {

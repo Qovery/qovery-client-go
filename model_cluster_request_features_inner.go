@@ -20,12 +20,9 @@ var _ MappedNullable = &ClusterRequestFeaturesInner{}
 
 // ClusterRequestFeaturesInner struct for ClusterRequestFeaturesInner
 type ClusterRequestFeaturesInner struct {
-	Id                   *string                                  `json:"id,omitempty"`
-	Value                NullableClusterRequestFeaturesInnerValue `json:"value,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id    *string                                  `json:"id,omitempty"`
+	Value NullableClusterRequestFeaturesInnerValue `json:"value,omitempty"`
 }
-
-type _ClusterRequestFeaturesInner ClusterRequestFeaturesInner
 
 // NewClusterRequestFeaturesInner instantiates a new ClusterRequestFeaturesInner object
 // This constructor will assign default values to properties that have it defined,
@@ -135,34 +132,7 @@ func (o ClusterRequestFeaturesInner) ToMap() (map[string]interface{}, error) {
 	if o.Value.IsSet() {
 		toSerialize["value"] = o.Value.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRequestFeaturesInner) UnmarshalJSON(data []byte) (err error) {
-	varClusterRequestFeaturesInner := _ClusterRequestFeaturesInner{}
-
-	err = json.Unmarshal(data, &varClusterRequestFeaturesInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRequestFeaturesInner(varClusterRequestFeaturesInner)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRequestFeaturesInner struct {

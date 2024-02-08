@@ -20,13 +20,10 @@ var _ MappedNullable = &ClusterLogsErrorEventDetailsTransmitter{}
 
 // ClusterLogsErrorEventDetailsTransmitter struct for ClusterLogsErrorEventDetailsTransmitter
 type ClusterLogsErrorEventDetailsTransmitter struct {
-	Type                 *string `json:"type,omitempty"`
-	Id                   *string `json:"id,omitempty"`
-	Name                 *string `json:"name,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Type *string `json:"type,omitempty"`
+	Id   *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
-
-type _ClusterLogsErrorEventDetailsTransmitter ClusterLogsErrorEventDetailsTransmitter
 
 // NewClusterLogsErrorEventDetailsTransmitter instantiates a new ClusterLogsErrorEventDetailsTransmitter object
 // This constructor will assign default values to properties that have it defined,
@@ -160,35 +157,7 @@ func (o ClusterLogsErrorEventDetailsTransmitter) ToMap() (map[string]interface{}
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterLogsErrorEventDetailsTransmitter) UnmarshalJSON(data []byte) (err error) {
-	varClusterLogsErrorEventDetailsTransmitter := _ClusterLogsErrorEventDetailsTransmitter{}
-
-	err = json.Unmarshal(data, &varClusterLogsErrorEventDetailsTransmitter)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterLogsErrorEventDetailsTransmitter(varClusterLogsErrorEventDetailsTransmitter)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterLogsErrorEventDetailsTransmitter struct {

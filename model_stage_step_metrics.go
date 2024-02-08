@@ -23,11 +23,8 @@ type StageStepMetrics struct {
 	// The total duration in seconds of the stage deployment or null if the deployment is not completed
 	TotalDurationSec NullableInt32 `json:"total_duration_sec,omitempty"`
 	// A list of metrics for deployment steps of the stage.
-	Details              []StageStepMetric `json:"details,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Details []StageStepMetric `json:"details,omitempty"`
 }
-
-type _StageStepMetrics StageStepMetrics
 
 // NewStageStepMetrics instantiates a new StageStepMetrics object
 // This constructor will assign default values to properties that have it defined,
@@ -137,34 +134,7 @@ func (o StageStepMetrics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *StageStepMetrics) UnmarshalJSON(data []byte) (err error) {
-	varStageStepMetrics := _StageStepMetrics{}
-
-	err = json.Unmarshal(data, &varStageStepMetrics)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StageStepMetrics(varStageStepMetrics)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "total_duration_sec")
-		delete(additionalProperties, "details")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableStageStepMetrics struct {

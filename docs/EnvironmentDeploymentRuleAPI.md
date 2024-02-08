@@ -21,27 +21,27 @@ Edit an environment deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/qovery/qovery-client-go"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
-	environmentDeploymentRuleEditRequest := *openapiclient.NewEnvironmentDeploymentRuleEditRequest("UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}) // EnvironmentDeploymentRuleEditRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
+    environmentDeploymentRuleEditRequest := *openapiclient.NewEnvironmentDeploymentRuleEditRequest("UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}) // EnvironmentDeploymentRuleEditRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule(context.Background(), environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditEnvironmentDeploymentRule`: EnvironmentDeploymentRule
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule(context.Background(), environmentId, deploymentRuleId).EnvironmentDeploymentRuleEditRequest(environmentDeploymentRuleEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditEnvironmentDeploymentRule`: EnvironmentDeploymentRule
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleAPI.EditEnvironmentDeploymentRule`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ Get environment deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEnvironmentDeploymentRule`: EnvironmentDeploymentRule
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEnvironmentDeploymentRule`: EnvironmentDeploymentRule
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentRuleAPI.GetEnvironmentDeploymentRule`: %v\n", resp)
 }
 ```
 

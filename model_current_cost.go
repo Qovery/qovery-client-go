@@ -22,13 +22,10 @@ var _ MappedNullable = &CurrentCost{}
 type CurrentCost struct {
 	Plan *PlanEnum `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay    *int32            `json:"remaining_trial_day,omitempty"`
-	RemainingCredits     *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost                 *Cost             `json:"cost,omitempty"`
-	AdditionalProperties map[string]interface{}
+	RemainingTrialDay *int32            `json:"remaining_trial_day,omitempty"`
+	RemainingCredits  *RemainingCredits `json:"remaining_credits,omitempty"`
+	Cost              *Cost             `json:"cost,omitempty"`
 }
-
-type _CurrentCost CurrentCost
 
 // NewCurrentCost instantiates a new CurrentCost object
 // This constructor will assign default values to properties that have it defined,
@@ -197,36 +194,7 @@ func (o CurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cost) {
 		toSerialize["cost"] = o.Cost
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CurrentCost) UnmarshalJSON(data []byte) (err error) {
-	varCurrentCost := _CurrentCost{}
-
-	err = json.Unmarshal(data, &varCurrentCost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CurrentCost(varCurrentCost)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "plan")
-		delete(additionalProperties, "remaining_trial_day")
-		delete(additionalProperties, "remaining_credits")
-		delete(additionalProperties, "cost")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCurrentCost struct {

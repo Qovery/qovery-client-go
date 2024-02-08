@@ -20,11 +20,8 @@ var _ MappedNullable = &ClusterLogsResponseList{}
 
 // ClusterLogsResponseList struct for ClusterLogsResponseList
 type ClusterLogsResponseList struct {
-	Results              []ClusterLogs `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []ClusterLogs `json:"results,omitempty"`
 }
-
-type _ClusterLogsResponseList ClusterLogsResponseList
 
 // NewClusterLogsResponseList instantiates a new ClusterLogsResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ClusterLogsResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterLogsResponseList) UnmarshalJSON(data []byte) (err error) {
-	varClusterLogsResponseList := _ClusterLogsResponseList{}
-
-	err = json.Unmarshal(data, &varClusterLogsResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterLogsResponseList(varClusterLogsResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterLogsResponseList struct {

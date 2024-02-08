@@ -44,9 +44,9 @@ EditHelmAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param helmId Helm ID
-	@return ApiEditHelmAdvancedSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param helmId Helm ID
+ @return ApiEditHelmAdvancedSettingsRequest
 */
 func (a *HelmConfigurationAPIService) EditHelmAdvancedSettings(ctx context.Context, helmId string) ApiEditHelmAdvancedSettingsRequest {
 	return ApiEditHelmAdvancedSettingsRequest{
@@ -57,8 +57,7 @@ func (a *HelmConfigurationAPIService) EditHelmAdvancedSettings(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return HelmAdvancedSettings
+//  @return HelmAdvancedSettings
 func (a *HelmConfigurationAPIService) EditHelmAdvancedSettingsExecute(r ApiEditHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -164,9 +163,9 @@ GetHelmAdvancedSettings Get advanced settings
 
 Get list and values of the advanced settings of the helm.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param helmId Helm ID
-	@return ApiGetHelmAdvancedSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param helmId Helm ID
+ @return ApiGetHelmAdvancedSettingsRequest
 */
 func (a *HelmConfigurationAPIService) GetHelmAdvancedSettings(ctx context.Context, helmId string) ApiGetHelmAdvancedSettingsRequest {
 	return ApiGetHelmAdvancedSettingsRequest{
@@ -177,8 +176,7 @@ func (a *HelmConfigurationAPIService) GetHelmAdvancedSettings(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return HelmAdvancedSettings
+//  @return HelmAdvancedSettings
 func (a *HelmConfigurationAPIService) GetHelmAdvancedSettingsExecute(r ApiGetHelmAdvancedSettingsRequest) (*HelmAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the SignUpRequest type satisfies the MappedNullable interface at compile time
@@ -21,22 +20,19 @@ var _ MappedNullable = &SignUpRequest{}
 
 // SignUpRequest struct for SignUpRequest
 type SignUpRequest struct {
-	FirstName            string           `json:"first_name"`
-	LastName             string           `json:"last_name"`
-	UserEmail            string           `json:"user_email"`
-	TypeOfUse            TypeOfUseEnum    `json:"type_of_use"`
-	QoveryUsage          string           `json:"qovery_usage"`
-	CompanyName          NullableString   `json:"company_name,omitempty"`
-	CompanySize          *CompanySizeEnum `json:"company_size,omitempty"`
-	UserRole             NullableString   `json:"user_role,omitempty"`
-	QoveryUsageOther     NullableString   `json:"qovery_usage_other,omitempty"`
-	UserQuestions        NullableString   `json:"user_questions,omitempty"`
-	CurrentStep          NullableString   `json:"current_step,omitempty"`
-	DxAuth               NullableBool     `json:"dx_auth,omitempty"`
-	AdditionalProperties map[string]interface{}
+	FirstName        string           `json:"first_name"`
+	LastName         string           `json:"last_name"`
+	UserEmail        string           `json:"user_email"`
+	TypeOfUse        TypeOfUseEnum    `json:"type_of_use"`
+	QoveryUsage      string           `json:"qovery_usage"`
+	CompanyName      NullableString   `json:"company_name,omitempty"`
+	CompanySize      *CompanySizeEnum `json:"company_size,omitempty"`
+	UserRole         NullableString   `json:"user_role,omitempty"`
+	QoveryUsageOther NullableString   `json:"qovery_usage_other,omitempty"`
+	UserQuestions    NullableString   `json:"user_questions,omitempty"`
+	CurrentStep      NullableString   `json:"current_step,omitempty"`
+	DxAuth           NullableBool     `json:"dx_auth,omitempty"`
 }
-
-type _SignUpRequest SignUpRequest
 
 // NewSignUpRequest instantiates a new SignUpRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -506,69 +502,7 @@ func (o SignUpRequest) ToMap() (map[string]interface{}, error) {
 	if o.DxAuth.IsSet() {
 		toSerialize["dx_auth"] = o.DxAuth.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SignUpRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"first_name",
-		"last_name",
-		"user_email",
-		"type_of_use",
-		"qovery_usage",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varSignUpRequest := _SignUpRequest{}
-
-	err = json.Unmarshal(data, &varSignUpRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SignUpRequest(varSignUpRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "first_name")
-		delete(additionalProperties, "last_name")
-		delete(additionalProperties, "user_email")
-		delete(additionalProperties, "type_of_use")
-		delete(additionalProperties, "qovery_usage")
-		delete(additionalProperties, "company_name")
-		delete(additionalProperties, "company_size")
-		delete(additionalProperties, "user_role")
-		delete(additionalProperties, "qovery_usage_other")
-		delete(additionalProperties, "user_questions")
-		delete(additionalProperties, "current_step")
-		delete(additionalProperties, "dx_auth")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSignUpRequest struct {

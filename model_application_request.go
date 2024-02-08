@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApplicationRequest type satisfies the MappedNullable interface at compile time
@@ -47,11 +46,8 @@ type ApplicationRequest struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy           NullableBool `json:"auto_deploy,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
 }
-
-type _ApplicationRequest ApplicationRequest
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -716,72 +712,7 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"git_repository",
-		"healthchecks",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationRequest := _ApplicationRequest{}
-
-	err = json.Unmarshal(data, &varApplicationRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationRequest(varApplicationRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "storage")
-		delete(additionalProperties, "ports")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "git_repository")
-		delete(additionalProperties, "build_mode")
-		delete(additionalProperties, "dockerfile_path")
-		delete(additionalProperties, "buildpack_language")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "min_running_instances")
-		delete(additionalProperties, "max_running_instances")
-		delete(additionalProperties, "healthchecks")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		delete(additionalProperties, "auto_deploy")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableApplicationRequest struct {

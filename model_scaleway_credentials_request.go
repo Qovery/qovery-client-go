@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ScalewayCredentialsRequest type satisfies the MappedNullable interface at compile time
@@ -26,10 +25,7 @@ type ScalewayCredentialsRequest struct {
 	ScalewaySecretKey      string `json:"scaleway_secret_key"`
 	ScalewayProjectId      string `json:"scaleway_project_id"`
 	ScalewayOrganizationId string `json:"scaleway_organization_id"`
-	AdditionalProperties   map[string]interface{}
 }
-
-type _ScalewayCredentialsRequest ScalewayCredentialsRequest
 
 // NewScalewayCredentialsRequest instantiates a new ScalewayCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -188,62 +184,7 @@ func (o ScalewayCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	toSerialize["scaleway_project_id"] = o.ScalewayProjectId
 	toSerialize["scaleway_organization_id"] = o.ScalewayOrganizationId
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ScalewayCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"scaleway_access_key",
-		"scaleway_secret_key",
-		"scaleway_project_id",
-		"scaleway_organization_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varScalewayCredentialsRequest := _ScalewayCredentialsRequest{}
-
-	err = json.Unmarshal(data, &varScalewayCredentialsRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ScalewayCredentialsRequest(varScalewayCredentialsRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "scaleway_access_key")
-		delete(additionalProperties, "scaleway_secret_key")
-		delete(additionalProperties, "scaleway_project_id")
-		delete(additionalProperties, "scaleway_organization_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableScalewayCredentialsRequest struct {

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -22,15 +21,12 @@ var _ MappedNullable = &Log{}
 
 // Log struct for Log
 type Log struct {
-	Id                   string    `json:"id"`
-	CreatedAt            time.Time `json:"created_at"`
-	Message              string    `json:"message"`
-	PodName              *string   `json:"pod_name,omitempty"`
-	Version              *string   `json:"version,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id        string    `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	Message   string    `json:"message"`
+	PodName   *string   `json:"pod_name,omitempty"`
+	Version   *string   `json:"version,omitempty"`
 }
-
-type _Log Log
 
 // NewLog instantiates a new Log object
 // This constructor will assign default values to properties that have it defined,
@@ -207,60 +203,7 @@ func (o Log) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Log) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"message",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varLog := _Log{}
-
-	err = json.Unmarshal(data, &varLog)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Log(varLog)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "message")
-		delete(additionalProperties, "pod_name")
-		delete(additionalProperties, "version")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableLog struct {

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -33,12 +32,9 @@ type Member struct {
 	LastActivityAt *time.Time            `json:"last_activity_at,omitempty"`
 	Role           *InviteMemberRoleEnum `json:"role,omitempty"`
 	// the role linked to the user
-	RoleName             *string `json:"role_name,omitempty"`
-	RoleId               *string `json:"role_id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	RoleName *string `json:"role_name,omitempty"`
+	RoleId   *string `json:"role_id,omitempty"`
 }
-
-type _Member Member
 
 // NewMember instantiates a new Member object
 // This constructor will assign default values to properties that have it defined,
@@ -425,66 +421,7 @@ func (o Member) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Member) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varMember := _Member{}
-
-	err = json.Unmarshal(data, &varMember)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Member(varMember)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "nickname")
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "profile_picture_url")
-		delete(additionalProperties, "last_activity_at")
-		delete(additionalProperties, "role")
-		delete(additionalProperties, "role_name")
-		delete(additionalProperties, "role_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableMember struct {

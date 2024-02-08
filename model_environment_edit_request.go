@@ -20,12 +20,9 @@ var _ MappedNullable = &EnvironmentEditRequest{}
 
 // EnvironmentEditRequest struct for EnvironmentEditRequest
 type EnvironmentEditRequest struct {
-	Name                 *string                    `json:"name,omitempty"`
-	Mode                 *CreateEnvironmentModeEnum `json:"mode,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name *string                    `json:"name,omitempty"`
+	Mode *CreateEnvironmentModeEnum `json:"mode,omitempty"`
 }
-
-type _EnvironmentEditRequest EnvironmentEditRequest
 
 // NewEnvironmentEditRequest instantiates a new EnvironmentEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o EnvironmentEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentEditRequest) UnmarshalJSON(data []byte) (err error) {
-	varEnvironmentEditRequest := _EnvironmentEditRequest{}
-
-	err = json.Unmarshal(data, &varEnvironmentEditRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentEditRequest(varEnvironmentEditRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "mode")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentEditRequest struct {

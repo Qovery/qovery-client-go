@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ServicePort type satisfies the MappedNullable interface at compile time
@@ -30,12 +29,9 @@ type ServicePort struct {
 	// Expose the port to the world
 	PubliclyAccessible bool `json:"publicly_accessible"`
 	// is the default port to use for domain
-	IsDefault            *bool            `json:"is_default,omitempty"`
-	Protocol             PortProtocolEnum `json:"protocol"`
-	AdditionalProperties map[string]interface{}
+	IsDefault *bool            `json:"is_default,omitempty"`
+	Protocol  PortProtocolEnum `json:"protocol"`
 }
-
-type _ServicePort ServicePort
 
 // NewServicePort instantiates a new ServicePort object
 // This constructor will assign default values to properties that have it defined,
@@ -275,63 +271,7 @@ func (o ServicePort) ToMap() (map[string]interface{}, error) {
 		toSerialize["is_default"] = o.IsDefault
 	}
 	toSerialize["protocol"] = o.Protocol
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServicePort) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"internal_port",
-		"publicly_accessible",
-		"protocol",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varServicePort := _ServicePort{}
-
-	err = json.Unmarshal(data, &varServicePort)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServicePort(varServicePort)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "internal_port")
-		delete(additionalProperties, "external_port")
-		delete(additionalProperties, "publicly_accessible")
-		delete(additionalProperties, "is_default")
-		delete(additionalProperties, "protocol")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServicePort struct {

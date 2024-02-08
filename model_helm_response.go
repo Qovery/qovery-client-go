@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -42,10 +41,7 @@ type HelmResponse struct {
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
-	AdditionalProperties      map[string]interface{}
 }
-
-type _HelmResponse HelmResponse
 
 // NewHelmResponse instantiates a new HelmResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -480,76 +476,7 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["arguments"] = o.Arguments
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"environment",
-		"name",
-		"auto_preview",
-		"auto_deploy",
-		"source",
-		"arguments",
-		"allow_cluster_wide_resources",
-		"values_override",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmResponse := _HelmResponse{}
-
-	err = json.Unmarshal(data, &varHelmResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmResponse(varHelmResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "environment")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "timeout_sec")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "auto_deploy")
-		delete(additionalProperties, "ports")
-		delete(additionalProperties, "source")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "allow_cluster_wide_resources")
-		delete(additionalProperties, "values_override")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmResponse struct {

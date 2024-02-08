@@ -28,10 +28,7 @@ type PaidUsage struct {
 	RemainingDeployments   *int32       `json:"remaining_deployments,omitempty"`
 	DeploymentsExceeded    *bool        `json:"deployments_exceeded,omitempty"`
 	RenewalAt              NullableTime `json:"renewal_at,omitempty"`
-	AdditionalProperties   map[string]interface{}
 }
-
-type _PaidUsage PaidUsage
 
 // NewPaidUsage instantiates a new PaidUsage object
 // This constructor will assign default values to properties that have it defined,
@@ -316,39 +313,7 @@ func (o PaidUsage) ToMap() (map[string]interface{}, error) {
 	if o.RenewalAt.IsSet() {
 		toSerialize["renewal_at"] = o.RenewalAt.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *PaidUsage) UnmarshalJSON(data []byte) (err error) {
-	varPaidUsage := _PaidUsage{}
-
-	err = json.Unmarshal(data, &varPaidUsage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = PaidUsage(varPaidUsage)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "max_deployments_per_month")
-		delete(additionalProperties, "consumed_deployments")
-		delete(additionalProperties, "monthly_plan_cost")
-		delete(additionalProperties, "monthly_plan_cost_in_cents")
-		delete(additionalProperties, "remaining_deployments")
-		delete(additionalProperties, "deployments_exceeded")
-		delete(additionalProperties, "renewal_at")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullablePaidUsage struct {

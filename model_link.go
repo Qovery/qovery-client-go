@@ -28,11 +28,8 @@ type Link struct {
 	// True if the domain is managed by Qovery, false if it belongs to the user
 	IsQoveryDomain *bool `json:"is_qovery_domain,omitempty"`
 	// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false
-	IsDefault            *bool `json:"is_default,omitempty"`
-	AdditionalProperties map[string]interface{}
+	IsDefault *bool `json:"is_default,omitempty"`
 }
-
-type _Link Link
 
 // NewLink instantiates a new Link object
 // This constructor will assign default values to properties that have it defined,
@@ -236,37 +233,7 @@ func (o Link) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Link) UnmarshalJSON(data []byte) (err error) {
-	varLink := _Link{}
-
-	err = json.Unmarshal(data, &varLink)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Link(varLink)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "internal_port")
-		delete(additionalProperties, "external_port")
-		delete(additionalProperties, "is_qovery_domain")
-		delete(additionalProperties, "is_default")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableLink struct {

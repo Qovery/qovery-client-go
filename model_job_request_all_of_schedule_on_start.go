@@ -22,11 +22,8 @@ var _ MappedNullable = &JobRequestAllOfScheduleOnStart{}
 type JobRequestAllOfScheduleOnStart struct {
 	Arguments []string `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
-	Entrypoint           *string `json:"entrypoint,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Entrypoint *string `json:"entrypoint,omitempty"`
 }
-
-type _JobRequestAllOfScheduleOnStart JobRequestAllOfScheduleOnStart
 
 // NewJobRequestAllOfScheduleOnStart instantiates a new JobRequestAllOfScheduleOnStart object
 // This constructor will assign default values to properties that have it defined,
@@ -125,34 +122,7 @@ func (o JobRequestAllOfScheduleOnStart) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *JobRequestAllOfScheduleOnStart) UnmarshalJSON(data []byte) (err error) {
-	varJobRequestAllOfScheduleOnStart := _JobRequestAllOfScheduleOnStart{}
-
-	err = json.Unmarshal(data, &varJobRequestAllOfScheduleOnStart)
-
-	if err != nil {
-		return err
-	}
-
-	*o = JobRequestAllOfScheduleOnStart(varJobRequestAllOfScheduleOnStart)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableJobRequestAllOfScheduleOnStart struct {

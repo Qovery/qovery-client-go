@@ -20,16 +20,13 @@ var _ MappedNullable = &Probe{}
 
 // Probe struct for Probe
 type Probe struct {
-	Type                 *ProbeType `json:"type,omitempty"`
-	InitialDelaySeconds  *int32     `json:"initial_delay_seconds,omitempty"`
-	PeriodSeconds        *int32     `json:"period_seconds,omitempty"`
-	TimeoutSeconds       *int32     `json:"timeout_seconds,omitempty"`
-	SuccessThreshold     *int32     `json:"success_threshold,omitempty"`
-	FailureThreshold     *int32     `json:"failure_threshold,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Type                *ProbeType `json:"type,omitempty"`
+	InitialDelaySeconds *int32     `json:"initial_delay_seconds,omitempty"`
+	PeriodSeconds       *int32     `json:"period_seconds,omitempty"`
+	TimeoutSeconds      *int32     `json:"timeout_seconds,omitempty"`
+	SuccessThreshold    *int32     `json:"success_threshold,omitempty"`
+	FailureThreshold    *int32     `json:"failure_threshold,omitempty"`
 }
-
-type _Probe Probe
 
 // NewProbe instantiates a new Probe object
 // This constructor will assign default values to properties that have it defined,
@@ -288,38 +285,7 @@ func (o Probe) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FailureThreshold) {
 		toSerialize["failure_threshold"] = o.FailureThreshold
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Probe) UnmarshalJSON(data []byte) (err error) {
-	varProbe := _Probe{}
-
-	err = json.Unmarshal(data, &varProbe)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Probe(varProbe)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "initial_delay_seconds")
-		delete(additionalProperties, "period_seconds")
-		delete(additionalProperties, "timeout_seconds")
-		delete(additionalProperties, "success_threshold")
-		delete(additionalProperties, "failure_threshold")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProbe struct {

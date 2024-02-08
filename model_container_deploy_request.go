@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ContainerDeployRequest type satisfies the MappedNullable interface at compile time
@@ -22,11 +21,8 @@ var _ MappedNullable = &ContainerDeployRequest{}
 // ContainerDeployRequest struct for ContainerDeployRequest
 type ContainerDeployRequest struct {
 	// Image tag to deploy
-	ImageTag             string `json:"image_tag"`
-	AdditionalProperties map[string]interface{}
+	ImageTag string `json:"image_tag"`
 }
-
-type _ContainerDeployRequest ContainerDeployRequest
 
 // NewContainerDeployRequest instantiates a new ContainerDeployRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -81,54 +77,7 @@ func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
 func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["image_tag"] = o.ImageTag
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerDeployRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"image_tag",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContainerDeployRequest := _ContainerDeployRequest{}
-
-	err = json.Unmarshal(data, &varContainerDeployRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerDeployRequest(varContainerDeployRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image_tag")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerDeployRequest struct {

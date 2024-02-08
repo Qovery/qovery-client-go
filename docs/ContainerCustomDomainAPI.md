@@ -26,25 +26,25 @@ Add custom domain to the container.
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerCustomDomainAPI.CreateContainerCustomDomain(context.Background(), containerId).CustomDomainRequest(customDomainRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.CreateContainerCustomDomain``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainerCustomDomain`: CustomDomain
-	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.CreateContainerCustomDomain`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerCustomDomainAPI.CreateContainerCustomDomain(context.Background(), containerId).CustomDomainRequest(customDomainRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.CreateContainerCustomDomain``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerCustomDomain`: CustomDomain
+    fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.CreateContainerCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -98,23 +98,23 @@ Delete a Custom Domain
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ContainerCustomDomainAPI.DeleteContainerCustomDomain(context.Background(), containerId, customDomainId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.DeleteContainerCustomDomain``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ContainerCustomDomainAPI.DeleteContainerCustomDomain(context.Background(), containerId, customDomainId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.DeleteContainerCustomDomain``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -169,26 +169,26 @@ Edit a Custom Domain
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
-	customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+    customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerCustomDomainAPI.EditContainerCustomDomain(context.Background(), containerId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.EditContainerCustomDomain``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditContainerCustomDomain`: CustomDomain
-	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.EditContainerCustomDomain`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerCustomDomainAPI.EditContainerCustomDomain(context.Background(), containerId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.EditContainerCustomDomain``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditContainerCustomDomain`: CustomDomain
+    fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.EditContainerCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -242,25 +242,25 @@ Get Custom Domain status
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerCustomDomainAPI.GetContainerCustomDomainStatus(context.Background(), containerId, customDomainId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.GetContainerCustomDomainStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetContainerCustomDomainStatus`: CustomDomain
-	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.GetContainerCustomDomainStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerCustomDomainAPI.GetContainerCustomDomainStatus(context.Background(), containerId, customDomainId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.GetContainerCustomDomainStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerCustomDomainStatus`: CustomDomain
+    fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.GetContainerCustomDomainStatus`: %v\n", resp)
 }
 ```
 
@@ -313,24 +313,24 @@ List container custom domains
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerCustomDomainAPI.ListContainerCustomDomain(context.Background(), containerId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.ListContainerCustomDomain``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListContainerCustomDomain`: CustomDomainResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.ListContainerCustomDomain`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerCustomDomainAPI.ListContainerCustomDomain(context.Background(), containerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.ListContainerCustomDomain``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListContainerCustomDomain`: CustomDomainResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.ListContainerCustomDomain`: %v\n", resp)
 }
 ```
 

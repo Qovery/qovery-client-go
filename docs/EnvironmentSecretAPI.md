@@ -27,25 +27,25 @@ Add a secret to the environment
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecret(context.Background(), environmentId).SecretRequest(secretRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateEnvironmentSecret`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecret`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecret(context.Background(), environmentId).SecretRequest(secretRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEnvironmentSecret`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecret`: %v\n", resp)
 }
 ```
 
@@ -99,26 +99,26 @@ Create a secret alias at the environment level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecretAlias(context.Background(), environmentId, secretId).Key(key).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecretAlias``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateEnvironmentSecretAlias`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecretAlias`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecretAlias(context.Background(), environmentId, secretId).Key(key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecretAlias``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEnvironmentSecretAlias`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecretAlias`: %v\n", resp)
 }
 ```
 
@@ -174,26 +174,26 @@ Create a secret override at the environment level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	value := *openapiclient.NewValue() // Value |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    value := *openapiclient.NewValue() // Value |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecretOverride(context.Background(), environmentId, secretId).Value(value).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecretOverride``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateEnvironmentSecretOverride`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecretOverride`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretAPI.CreateEnvironmentSecretOverride(context.Background(), environmentId, secretId).Value(value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.CreateEnvironmentSecretOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateEnvironmentSecretOverride`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.CreateEnvironmentSecretOverride`: %v\n", resp)
 }
 ```
 
@@ -249,23 +249,23 @@ Delete a secret from the environment
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EnvironmentSecretAPI.DeleteEnvironmentSecret(context.Background(), environmentId, secretId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.DeleteEnvironmentSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.EnvironmentSecretAPI.DeleteEnvironmentSecret(context.Background(), environmentId, secretId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.DeleteEnvironmentSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -320,26 +320,26 @@ Edit a secret belonging to the environment
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentSecretAPI.EditEnvironmentSecret(context.Background(), environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.EditEnvironmentSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditEnvironmentSecret`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.EditEnvironmentSecret`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretAPI.EditEnvironmentSecret(context.Background(), environmentId, secretId).SecretEditRequest(secretEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.EditEnvironmentSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditEnvironmentSecret`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.EditEnvironmentSecret`: %v\n", resp)
 }
 ```
 
@@ -393,24 +393,24 @@ List environment secrets
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentSecretAPI.ListEnvironmentSecrets(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.ListEnvironmentSecrets``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListEnvironmentSecrets`: SecretResponseList
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.ListEnvironmentSecrets`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.EnvironmentSecretAPI.ListEnvironmentSecrets(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.ListEnvironmentSecrets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListEnvironmentSecrets`: SecretResponseList
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.ListEnvironmentSecrets`: %v\n", resp)
 }
 ```
 

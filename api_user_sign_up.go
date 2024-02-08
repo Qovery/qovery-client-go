@@ -42,8 +42,8 @@ CreateUserSignUp Send Sign Up request
 
 Send a Sign Up request containing the user information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiCreateUserSignUpRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiCreateUserSignUpRequest
 */
 func (a *UserSignUpAPIService) CreateUserSignUp(ctx context.Context) ApiCreateUserSignUpRequest {
 	return ApiCreateUserSignUpRequest{
@@ -146,8 +146,8 @@ GetUserSignUp Get Sign up information
 
 Retrieve the Sign Up information of the user
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetUserSignUpRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetUserSignUpRequest
 */
 func (a *UserSignUpAPIService) GetUserSignUp(ctx context.Context) ApiGetUserSignUpRequest {
 	return ApiGetUserSignUpRequest{
@@ -157,8 +157,7 @@ func (a *UserSignUpAPIService) GetUserSignUp(ctx context.Context) ApiGetUserSign
 }
 
 // Execute executes the request
-//
-//	@return SignUp
+//  @return SignUp
 func (a *UserSignUpAPIService) GetUserSignUpExecute(r ApiGetUserSignUpRequest) (*SignUp, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

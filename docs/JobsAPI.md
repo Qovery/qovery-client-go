@@ -27,25 +27,25 @@ Auto deploy jobs
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationJobAutoDeployRequest := *openapiclient.NewOrganizationJobAutoDeployRequest() // OrganizationJobAutoDeployRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationJobAutoDeployRequest := *openapiclient.NewOrganizationJobAutoDeployRequest() // OrganizationJobAutoDeployRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.AutoDeployJobEnvironments(context.Background(), organizationId).OrganizationJobAutoDeployRequest(organizationJobAutoDeployRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.AutoDeployJobEnvironments``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AutoDeployJobEnvironments`: Status
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.AutoDeployJobEnvironments`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.AutoDeployJobEnvironments(context.Background(), organizationId).OrganizationJobAutoDeployRequest(organizationJobAutoDeployRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.AutoDeployJobEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AutoDeployJobEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.AutoDeployJobEnvironments`: %v\n", resp)
 }
 ```
 
@@ -99,25 +99,25 @@ Clone job
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-	cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
+    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.CloneJob(context.Background(), jobId).CloneServiceRequest(cloneServiceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.CloneJob``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CloneJob`: JobResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.CloneJob`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.CloneJob(context.Background(), jobId).CloneServiceRequest(cloneServiceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.CloneJob``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneJob`: JobResponse
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.CloneJob`: %v\n", resp)
 }
 ```
 
@@ -169,25 +169,25 @@ Create a job
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    jobRequest := *openapiclient.NewJobRequest("Name_example", *openapiclient.NewHealthcheck()) // JobRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.CreateJob(context.Background(), environmentId).JobRequest(jobRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.CreateJob``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateJob`: JobResponse
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.CreateJob`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.CreateJob(context.Background(), environmentId).JobRequest(jobRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.CreateJob``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateJob`: JobResponse
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.CreateJob`: %v\n", resp)
 }
 ```
 
@@ -241,23 +241,23 @@ List default job advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.GetDefaultJobAdvancedSettings(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.GetDefaultJobAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDefaultJobAdvancedSettings`: JobAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.GetDefaultJobAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.GetDefaultJobAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.GetDefaultJobAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultJobAdvancedSettings`: JobAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.GetDefaultJobAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -302,24 +302,24 @@ List all environment job statuses
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.GetEnvironmentJobStatus(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.GetEnvironmentJobStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEnvironmentJobStatus`: ReferenceObjectStatusResponseList
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.GetEnvironmentJobStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.GetEnvironmentJobStatus(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.GetEnvironmentJobStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEnvironmentJobStatus`: ReferenceObjectStatusResponseList
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.GetEnvironmentJobStatus`: %v\n", resp)
 }
 ```
 
@@ -370,25 +370,25 @@ List jobs
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	toUpdate := true // bool | return (or not) results that must be updated (optional) (default to false)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    toUpdate := true // bool | return (or not) results that must be updated (optional) (default to false)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.ListJobs(context.Background(), environmentId).ToUpdate(toUpdate).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ListJobs``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListJobs`: JobResponseList
-	fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ListJobs`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.JobsAPI.ListJobs(context.Background(), environmentId).ToUpdate(toUpdate).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.ListJobs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListJobs`: JobResponseList
+    fmt.Fprintf(os.Stdout, "Response from `JobsAPI.ListJobs`: %v\n", resp)
 }
 ```
 

@@ -20,11 +20,8 @@ var _ MappedNullable = &VersionResponseList{}
 
 // VersionResponseList struct for VersionResponseList
 type VersionResponseList struct {
-	Results              []Version `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []Version `json:"results,omitempty"`
 }
-
-type _VersionResponseList VersionResponseList
 
 // NewVersionResponseList instantiates a new VersionResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o VersionResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *VersionResponseList) UnmarshalJSON(data []byte) (err error) {
-	varVersionResponseList := _VersionResponseList{}
-
-	err = json.Unmarshal(data, &varVersionResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VersionResponseList(varVersionResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableVersionResponseList struct {

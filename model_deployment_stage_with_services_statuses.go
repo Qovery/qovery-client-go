@@ -20,16 +20,13 @@ var _ MappedNullable = &DeploymentStageWithServicesStatuses{}
 
 // DeploymentStageWithServicesStatuses struct for DeploymentStageWithServicesStatuses
 type DeploymentStageWithServicesStatuses struct {
-	Applications         []Status `json:"applications,omitempty"`
-	Containers           []Status `json:"containers,omitempty"`
-	Jobs                 []Status `json:"jobs,omitempty"`
-	Databases            []Status `json:"databases,omitempty"`
-	Helms                []Status `json:"helms,omitempty"`
-	Stage                *Stage   `json:"stage,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Applications []Status `json:"applications,omitempty"`
+	Containers   []Status `json:"containers,omitempty"`
+	Jobs         []Status `json:"jobs,omitempty"`
+	Databases    []Status `json:"databases,omitempty"`
+	Helms        []Status `json:"helms,omitempty"`
+	Stage        *Stage   `json:"stage,omitempty"`
 }
-
-type _DeploymentStageWithServicesStatuses DeploymentStageWithServicesStatuses
 
 // NewDeploymentStageWithServicesStatuses instantiates a new DeploymentStageWithServicesStatuses object
 // This constructor will assign default values to properties that have it defined,
@@ -268,38 +265,7 @@ func (o DeploymentStageWithServicesStatuses) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentStageWithServicesStatuses) UnmarshalJSON(data []byte) (err error) {
-	varDeploymentStageWithServicesStatuses := _DeploymentStageWithServicesStatuses{}
-
-	err = json.Unmarshal(data, &varDeploymentStageWithServicesStatuses)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentStageWithServicesStatuses(varDeploymentStageWithServicesStatuses)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "applications")
-		delete(additionalProperties, "containers")
-		delete(additionalProperties, "jobs")
-		delete(additionalProperties, "databases")
-		delete(additionalProperties, "helms")
-		delete(additionalProperties, "stage")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentStageWithServicesStatuses struct {

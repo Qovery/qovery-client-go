@@ -28,22 +28,22 @@ Delete a database
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.DatabaseMainCallsAPI.DeleteDatabase(context.Background(), databaseId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.DeleteDatabase``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.DatabaseMainCallsAPI.DeleteDatabase(context.Background(), databaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.DeleteDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -96,25 +96,25 @@ Edit a database
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	databaseEditRequest := *openapiclient.NewDatabaseEditRequest() // DatabaseEditRequest |  (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseEditRequest := *openapiclient.NewDatabaseEditRequest() // DatabaseEditRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.EditDatabase(context.Background(), databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.EditDatabase``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditDatabase`: Database
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.EditDatabase`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.EditDatabase(context.Background(), databaseId).DatabaseEditRequest(databaseEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.EditDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditDatabase`: Database
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.EditDatabase`: %v\n", resp)
 }
 ```
 
@@ -166,25 +166,25 @@ Edit database  master credentials
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.EditDatabaseCredentials(context.Background(), databaseId).CredentialsRequest(credentialsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.EditDatabaseCredentials``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditDatabaseCredentials`: Credentials
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.EditDatabaseCredentials`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.EditDatabaseCredentials(context.Background(), databaseId).CredentialsRequest(credentialsRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.EditDatabaseCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditDatabaseCredentials`: Credentials
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.EditDatabaseCredentials`: %v\n", resp)
 }
 ```
 
@@ -236,24 +236,24 @@ Get database by ID
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabase(context.Background(), databaseId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabase``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDatabase`: Database
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabase`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabase(context.Background(), databaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDatabase`: Database
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabase`: %v\n", resp)
 }
 ```
 
@@ -304,24 +304,24 @@ Get master credentials of the database
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabaseMasterCredentials(context.Background(), databaseId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabaseMasterCredentials``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDatabaseMasterCredentials`: Credentials
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabaseMasterCredentials`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabaseMasterCredentials(context.Background(), databaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabaseMasterCredentials``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDatabaseMasterCredentials`: Credentials
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabaseMasterCredentials`: %v\n", resp)
 }
 ```
 
@@ -372,24 +372,24 @@ Get database status
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabaseStatus(context.Background(), databaseId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabaseStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDatabaseStatus`: Status
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabaseStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.GetDatabaseStatus(context.Background(), databaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.GetDatabaseStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDatabaseStatus`: Status
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.GetDatabaseStatus`: %v\n", resp)
 }
 ```
 
@@ -440,24 +440,24 @@ List eligible versions for the database
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.ListDatabaseVersion(context.Background(), databaseId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.ListDatabaseVersion``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListDatabaseVersion`: VersionResponseList
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.ListDatabaseVersion`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseMainCallsAPI.ListDatabaseVersion(context.Background(), databaseId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.ListDatabaseVersion``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDatabaseVersion`: VersionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.ListDatabaseVersion`: %v\n", resp)
 }
 ```
 

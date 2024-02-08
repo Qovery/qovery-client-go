@@ -20,13 +20,10 @@ var _ MappedNullable = &Budget{}
 
 // Budget struct for Budget
 type Budget struct {
-	TotalInCents         *int32   `json:"total_in_cents,omitempty"`
-	Total                *float32 `json:"total,omitempty"`
-	CurrencyCode         *string  `json:"currency_code,omitempty"`
-	AdditionalProperties map[string]interface{}
+	TotalInCents *int32   `json:"total_in_cents,omitempty"`
+	Total        *float32 `json:"total,omitempty"`
+	CurrencyCode *string  `json:"currency_code,omitempty"`
 }
-
-type _Budget Budget
 
 // NewBudget instantiates a new Budget object
 // This constructor will assign default values to properties that have it defined,
@@ -160,35 +157,7 @@ func (o Budget) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CurrencyCode) {
 		toSerialize["currency_code"] = o.CurrencyCode
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Budget) UnmarshalJSON(data []byte) (err error) {
-	varBudget := _Budget{}
-
-	err = json.Unmarshal(data, &varBudget)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Budget(varBudget)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "total_in_cents")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "currency_code")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBudget struct {

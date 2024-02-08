@@ -91,9 +91,9 @@ GetOrganizationEventTargets Get available event targets to filter events
 
 Get available event targets to filter events
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationEventTargetsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationEventTargetsRequest
 */
 func (a *OrganizationEventAPIService) GetOrganizationEventTargets(ctx context.Context, organizationId string) ApiGetOrganizationEventTargetsRequest {
 	return ApiGetOrganizationEventTargetsRequest{
@@ -104,8 +104,7 @@ func (a *OrganizationEventAPIService) GetOrganizationEventTargets(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return OrganizationEventTargetResponseList
+//  @return OrganizationEventTargetResponseList
 func (a *OrganizationEventAPIService) GetOrganizationEventTargetsExecute(r ApiGetOrganizationEventTargetsRequest) (*OrganizationEventTargetResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -306,9 +305,9 @@ GetOrganizationEvents Get all events inside the organization
 
 Get all events inside the organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationEventsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationEventsRequest
 */
 func (a *OrganizationEventAPIService) GetOrganizationEvents(ctx context.Context, organizationId string) ApiGetOrganizationEventsRequest {
 	return ApiGetOrganizationEventsRequest{
@@ -319,8 +318,7 @@ func (a *OrganizationEventAPIService) GetOrganizationEvents(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return OrganizationEventResponseList
+//  @return OrganizationEventResponseList
 func (a *OrganizationEventAPIService) GetOrganizationEventsExecute(r ApiGetOrganizationEventsRequest) (*OrganizationEventResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

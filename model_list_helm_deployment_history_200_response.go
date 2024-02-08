@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ListHelmDeploymentHistory200Response type satisfies the MappedNullable interface at compile time
@@ -21,13 +20,10 @@ var _ MappedNullable = &ListHelmDeploymentHistory200Response{}
 
 // ListHelmDeploymentHistory200Response struct for ListHelmDeploymentHistory200Response
 type ListHelmDeploymentHistory200Response struct {
-	Page                 float32                         `json:"page"`
-	PageSize             float32                         `json:"page_size"`
-	Results              []DeploymentHistoryHelmResponse `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Page     float32                         `json:"page"`
+	PageSize float32                         `json:"page_size"`
+	Results  []DeploymentHistoryHelmResponse `json:"results,omitempty"`
 }
-
-type _ListHelmDeploymentHistory200Response ListHelmDeploymentHistory200Response
 
 // NewListHelmDeploymentHistory200Response instantiates a new ListHelmDeploymentHistory200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -143,57 +139,7 @@ func (o ListHelmDeploymentHistory200Response) ToMap() (map[string]interface{}, e
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ListHelmDeploymentHistory200Response) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"page",
-		"page_size",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varListHelmDeploymentHistory200Response := _ListHelmDeploymentHistory200Response{}
-
-	err = json.Unmarshal(data, &varListHelmDeploymentHistory200Response)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ListHelmDeploymentHistory200Response(varListHelmDeploymentHistory200Response)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "page")
-		delete(additionalProperties, "page_size")
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableListHelmDeploymentHistory200Response struct {

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the InviteMemberRequest type satisfies the MappedNullable interface at compile time
@@ -24,11 +23,8 @@ type InviteMemberRequest struct {
 	Email string                `json:"email"`
 	Role  *InviteMemberRoleEnum `json:"role,omitempty"`
 	// the target role to attribute to the new member
-	RoleId               *string `json:"role_id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	RoleId *string `json:"role_id,omitempty"`
 }
-
-type _InviteMemberRequest InviteMemberRequest
 
 // NewInviteMemberRequest instantiates a new InviteMemberRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -153,56 +149,7 @@ func (o InviteMemberRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *InviteMemberRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"email",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varInviteMemberRequest := _InviteMemberRequest{}
-
-	err = json.Unmarshal(data, &varInviteMemberRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = InviteMemberRequest(varInviteMemberRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "email")
-		delete(additionalProperties, "role")
-		delete(additionalProperties, "role_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableInviteMemberRequest struct {

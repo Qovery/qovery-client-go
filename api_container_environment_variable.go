@@ -44,9 +44,10 @@ CreateContainerEnvironmentVariable Add an environment variable to the container
 
 - Add an environment variable to the container.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiCreateContainerEnvironmentVariableRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiCreateContainerEnvironmentVariableRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariable(ctx context.Context, containerId string) ApiCreateContainerEnvironmentVariableRequest {
 	return ApiCreateContainerEnvironmentVariableRequest{
@@ -57,8 +58,7 @@ func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVaria
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentVariable
+//  @return EnvironmentVariable
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableExecute(r ApiCreateContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,10 +176,11 @@ CreateContainerEnvironmentVariableAlias Create an environment variable alias at 
 - Information regarding the aliased_variable will be exposed in the "aliased_variable" field of the newly created variable
 - You can't create an alias on an alias
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@param environmentVariableId Environment Variable ID
-	@return ApiCreateContainerEnvironmentVariableAliasRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @param environmentVariableId Environment Variable ID
+ @return ApiCreateContainerEnvironmentVariableAliasRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableAlias(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableAliasRequest {
 	return ApiCreateContainerEnvironmentVariableAliasRequest{
@@ -191,8 +192,7 @@ func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVaria
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentVariable
+//  @return EnvironmentVariable
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableAliasExecute(r ApiCreateContainerEnvironmentVariableAliasRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -310,10 +310,11 @@ CreateContainerEnvironmentVariableOverride Create an environment variable overri
 - The response body will contain the newly created variable
 - Information regarding the overridden_variable will be exposed in the "overridden_variable" field of the newly created variable
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@param environmentVariableId Environment Variable ID
-	@return ApiCreateContainerEnvironmentVariableOverrideRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @param environmentVariableId Environment Variable ID
+ @return ApiCreateContainerEnvironmentVariableOverrideRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableOverride(ctx context.Context, containerId string, environmentVariableId string) ApiCreateContainerEnvironmentVariableOverrideRequest {
 	return ApiCreateContainerEnvironmentVariableOverrideRequest{
@@ -325,8 +326,7 @@ func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVaria
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentVariable
+//  @return EnvironmentVariable
 func (a *ContainerEnvironmentVariableAPIService) CreateContainerEnvironmentVariableOverrideExecute(r ApiCreateContainerEnvironmentVariableOverrideRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -436,10 +436,11 @@ DeleteContainerEnvironmentVariable Delete an environment variable from a contain
 - You can't delete a BUILT_IN variable
 - If you delete a variable having override or alias, the associated override/alias will be deleted as well
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@param environmentVariableId Environment Variable ID
-	@return ApiDeleteContainerEnvironmentVariableRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @param environmentVariableId Environment Variable ID
+ @return ApiDeleteContainerEnvironmentVariableRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) DeleteContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiDeleteContainerEnvironmentVariableRequest {
 	return ApiDeleteContainerEnvironmentVariableRequest{
@@ -555,10 +556,11 @@ EditContainerEnvironmentVariable Edit an environment variable belonging to the c
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the variable it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@param environmentVariableId Environment Variable ID
-	@return ApiEditContainerEnvironmentVariableRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @param environmentVariableId Environment Variable ID
+ @return ApiEditContainerEnvironmentVariableRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) EditContainerEnvironmentVariable(ctx context.Context, containerId string, environmentVariableId string) ApiEditContainerEnvironmentVariableRequest {
 	return ApiEditContainerEnvironmentVariableRequest{
@@ -570,8 +572,7 @@ func (a *ContainerEnvironmentVariableAPIService) EditContainerEnvironmentVariabl
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentVariable
+//  @return EnvironmentVariable
 func (a *ContainerEnvironmentVariableAPIService) EditContainerEnvironmentVariableExecute(r ApiEditContainerEnvironmentVariableRequest) (*EnvironmentVariable, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -687,9 +688,9 @@ ImportContainerEnvironmentVariable Import variables
 
 Import environment variables in a defined scope, with a defined visibility.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiImportContainerEnvironmentVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiImportContainerEnvironmentVariableRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) ImportContainerEnvironmentVariable(ctx context.Context, containerId string) ApiImportContainerEnvironmentVariableRequest {
 	return ApiImportContainerEnvironmentVariableRequest{
@@ -700,8 +701,7 @@ func (a *ContainerEnvironmentVariableAPIService) ImportContainerEnvironmentVaria
 }
 
 // Execute executes the request
-//
-//	@return VariableImport
+//  @return VariableImport
 func (a *ContainerEnvironmentVariableAPIService) ImportContainerEnvironmentVariableExecute(r ApiImportContainerEnvironmentVariableRequest) (*VariableImport, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -805,9 +805,9 @@ func (r ApiListContainerEnvironmentVariableRequest) Execute() (*EnvironmentVaria
 /*
 ListContainerEnvironmentVariable List environment variables
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiListContainerEnvironmentVariableRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiListContainerEnvironmentVariableRequest
 */
 func (a *ContainerEnvironmentVariableAPIService) ListContainerEnvironmentVariable(ctx context.Context, containerId string) ApiListContainerEnvironmentVariableRequest {
 	return ApiListContainerEnvironmentVariableRequest{
@@ -818,8 +818,7 @@ func (a *ContainerEnvironmentVariableAPIService) ListContainerEnvironmentVariabl
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentVariableResponseList
+//  @return EnvironmentVariableResponseList
 func (a *ContainerEnvironmentVariableAPIService) ListContainerEnvironmentVariableExecute(r ApiListContainerEnvironmentVariableRequest) (*EnvironmentVariableResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

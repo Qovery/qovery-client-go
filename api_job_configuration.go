@@ -44,9 +44,9 @@ EditJobAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiEditJobAdvancedSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiEditJobAdvancedSettingsRequest
 */
 func (a *JobConfigurationAPIService) EditJobAdvancedSettings(ctx context.Context, jobId string) ApiEditJobAdvancedSettingsRequest {
 	return ApiEditJobAdvancedSettingsRequest{
@@ -57,8 +57,7 @@ func (a *JobConfigurationAPIService) EditJobAdvancedSettings(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return JobAdvancedSettings
+//  @return JobAdvancedSettings
 func (a *JobConfigurationAPIService) EditJobAdvancedSettingsExecute(r ApiEditJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -165,9 +164,10 @@ GetJobAdvancedSettings Get advanced settings
 Get list and values of the advanced settings of the job.
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiGetJobAdvancedSettingsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiGetJobAdvancedSettingsRequest
 */
 func (a *JobConfigurationAPIService) GetJobAdvancedSettings(ctx context.Context, jobId string) ApiGetJobAdvancedSettingsRequest {
 	return ApiGetJobAdvancedSettingsRequest{
@@ -178,8 +178,7 @@ func (a *JobConfigurationAPIService) GetJobAdvancedSettings(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return JobAdvancedSettings
+//  @return JobAdvancedSettings
 func (a *JobConfigurationAPIService) GetJobAdvancedSettingsExecute(r ApiGetJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

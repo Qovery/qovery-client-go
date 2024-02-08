@@ -44,9 +44,9 @@ CreateDeploymentRule Create a deployment rule
 
 Create a deployment rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiCreateDeploymentRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiCreateDeploymentRuleRequest
 */
 func (a *ProjectDeploymentRuleAPIService) CreateDeploymentRule(ctx context.Context, projectId string) ApiCreateDeploymentRuleRequest {
 	return ApiCreateDeploymentRuleRequest{
@@ -57,8 +57,7 @@ func (a *ProjectDeploymentRuleAPIService) CreateDeploymentRule(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return ProjectDeploymentRule
+//  @return ProjectDeploymentRule
 func (a *ProjectDeploymentRuleAPIService) CreateDeploymentRuleExecute(r ApiCreateDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -165,10 +164,10 @@ DeleteProjectDeploymentRule Delete a project deployment rule
 
 Delete a project deployment rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@param deploymentRuleId Deployment Rule ID
-	@return ApiDeleteProjectDeploymentRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @param deploymentRuleId Deployment Rule ID
+ @return ApiDeleteProjectDeploymentRuleRequest
 */
 func (a *ProjectDeploymentRuleAPIService) DeleteProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiDeleteProjectDeploymentRuleRequest {
 	return ApiDeleteProjectDeploymentRuleRequest{
@@ -281,10 +280,10 @@ EditProjectDeployemtnRule Edit a project deployment rule
 
 Edit a project deployment rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@param deploymentRuleId Deployment Rule ID
-	@return ApiEditProjectDeployemtnRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @param deploymentRuleId Deployment Rule ID
+ @return ApiEditProjectDeployemtnRuleRequest
 */
 func (a *ProjectDeploymentRuleAPIService) EditProjectDeployemtnRule(ctx context.Context, projectId string, deploymentRuleId string) ApiEditProjectDeployemtnRuleRequest {
 	return ApiEditProjectDeployemtnRuleRequest{
@@ -296,8 +295,7 @@ func (a *ProjectDeploymentRuleAPIService) EditProjectDeployemtnRule(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return ProjectDeploymentRule
+//  @return ProjectDeploymentRule
 func (a *ProjectDeploymentRuleAPIService) EditProjectDeployemtnRuleExecute(r ApiEditProjectDeployemtnRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -405,10 +403,10 @@ GetProjectDeploymentRule Get a project deployment rule
 
 Get a project deployment rule
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@param deploymentRuleId Deployment Rule ID
-	@return ApiGetProjectDeploymentRuleRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @param deploymentRuleId Deployment Rule ID
+ @return ApiGetProjectDeploymentRuleRequest
 */
 func (a *ProjectDeploymentRuleAPIService) GetProjectDeploymentRule(ctx context.Context, projectId string, deploymentRuleId string) ApiGetProjectDeploymentRuleRequest {
 	return ApiGetProjectDeploymentRuleRequest{
@@ -420,8 +418,7 @@ func (a *ProjectDeploymentRuleAPIService) GetProjectDeploymentRule(ctx context.C
 }
 
 // Execute executes the request
-//
-//	@return ProjectDeploymentRule
+//  @return ProjectDeploymentRule
 func (a *ProjectDeploymentRuleAPIService) GetProjectDeploymentRuleExecute(r ApiGetProjectDeploymentRuleRequest) (*ProjectDeploymentRule, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -526,9 +523,9 @@ ListProjectDeploymentRules List project deployment rules
 
 List project deployment rules
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiListProjectDeploymentRulesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiListProjectDeploymentRulesRequest
 */
 func (a *ProjectDeploymentRuleAPIService) ListProjectDeploymentRules(ctx context.Context, projectId string) ApiListProjectDeploymentRulesRequest {
 	return ApiListProjectDeploymentRulesRequest{
@@ -539,8 +536,7 @@ func (a *ProjectDeploymentRuleAPIService) ListProjectDeploymentRules(ctx context
 }
 
 // Execute executes the request
-//
-//	@return ProjectDeploymentRuleResponseList
+//  @return ProjectDeploymentRuleResponseList
 func (a *ProjectDeploymentRuleAPIService) ListProjectDeploymentRulesExecute(r ApiListProjectDeploymentRulesRequest) (*ProjectDeploymentRuleResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -650,9 +646,9 @@ UpdateDeploymentRulesPriorityOrder Update deployment rules priority order
 
 Update deployment rules priority order
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiUpdateDeploymentRulesPriorityOrderRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiUpdateDeploymentRulesPriorityOrderRequest
 */
 func (a *ProjectDeploymentRuleAPIService) UpdateDeploymentRulesPriorityOrder(ctx context.Context, projectId string) ApiUpdateDeploymentRulesPriorityOrderRequest {
 	return ApiUpdateDeploymentRulesPriorityOrderRequest{

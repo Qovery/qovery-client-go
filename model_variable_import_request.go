@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the VariableImportRequest type satisfies the MappedNullable interface at compile time
@@ -21,12 +20,9 @@ var _ MappedNullable = &VariableImportRequest{}
 
 // VariableImportRequest struct for VariableImportRequest
 type VariableImportRequest struct {
-	Overwrite            bool                             `json:"overwrite"`
-	Vars                 []VariableImportRequestVarsInner `json:"vars"`
-	AdditionalProperties map[string]interface{}
+	Overwrite bool                             `json:"overwrite"`
+	Vars      []VariableImportRequestVarsInner `json:"vars"`
 }
-
-type _VariableImportRequest VariableImportRequest
 
 // NewVariableImportRequest instantiates a new VariableImportRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -109,56 +105,7 @@ func (o VariableImportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["overwrite"] = o.Overwrite
 	toSerialize["vars"] = o.Vars
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *VariableImportRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"overwrite",
-		"vars",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVariableImportRequest := _VariableImportRequest{}
-
-	err = json.Unmarshal(data, &varVariableImportRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VariableImportRequest(varVariableImportRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "overwrite")
-		delete(additionalProperties, "vars")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableVariableImportRequest struct {

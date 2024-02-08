@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmRepositoryRequest type satisfies the MappedNullable interface at compile time
@@ -27,12 +26,9 @@ type HelmRepositoryRequest struct {
 	// URL of the helm chart repository: * For `OCI`: it must start by oci:// * For `HTTPS`: it must be start by https://
 	Url *string `json:"url,omitempty"`
 	// Bypass tls certificate verification when connecting to repository
-	SkipTlsVerification  bool                        `json:"skip_tls_verification"`
-	Config               HelmRepositoryRequestConfig `json:"config"`
-	AdditionalProperties map[string]interface{}
+	SkipTlsVerification bool                        `json:"skip_tls_verification"`
+	Config              HelmRepositoryRequestConfig `json:"config"`
 }
-
-type _HelmRepositoryRequest HelmRepositoryRequest
 
 // NewHelmRepositoryRequest instantiates a new HelmRepositoryRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -235,62 +231,7 @@ func (o HelmRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	toSerialize["config"] = o.Config
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmRepositoryRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"kind",
-		"skip_tls_verification",
-		"config",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmRepositoryRequest := _HelmRepositoryRequest{}
-
-	err = json.Unmarshal(data, &varHelmRepositoryRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmRepositoryRequest(varHelmRepositoryRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "kind")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "skip_tls_verification")
-		delete(additionalProperties, "config")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmRepositoryRequest struct {

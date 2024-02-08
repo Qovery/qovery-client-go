@@ -20,13 +20,10 @@ var _ MappedNullable = &EnvironmentLogsDetailsTransmitter{}
 
 // EnvironmentLogsDetailsTransmitter struct for EnvironmentLogsDetailsTransmitter
 type EnvironmentLogsDetailsTransmitter struct {
-	Id                   *string `json:"id,omitempty"`
-	Name                 *string `json:"name,omitempty"`
-	Type                 *string `json:"type,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id   *string `json:"id,omitempty"`
+	Name *string `json:"name,omitempty"`
+	Type *string `json:"type,omitempty"`
 }
-
-type _EnvironmentLogsDetailsTransmitter EnvironmentLogsDetailsTransmitter
 
 // NewEnvironmentLogsDetailsTransmitter instantiates a new EnvironmentLogsDetailsTransmitter object
 // This constructor will assign default values to properties that have it defined,
@@ -160,35 +157,7 @@ func (o EnvironmentLogsDetailsTransmitter) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentLogsDetailsTransmitter) UnmarshalJSON(data []byte) (err error) {
-	varEnvironmentLogsDetailsTransmitter := _EnvironmentLogsDetailsTransmitter{}
-
-	err = json.Unmarshal(data, &varEnvironmentLogsDetailsTransmitter)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentLogsDetailsTransmitter(varEnvironmentLogsDetailsTransmitter)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentLogsDetailsTransmitter struct {

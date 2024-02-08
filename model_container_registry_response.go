@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -29,12 +28,9 @@ type ContainerRegistryResponse struct {
 	Kind        *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
-	Url                  *string                                `json:"url,omitempty"`
-	Cluster              *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Url     *string                                `json:"url,omitempty"`
+	Cluster *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
 }
-
-type _ContainerRegistryResponse ContainerRegistryResponse
 
 // NewContainerRegistryResponse instantiates a new ContainerRegistryResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -325,62 +321,7 @@ func (o ContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerRegistryResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContainerRegistryResponse := _ContainerRegistryResponse{}
-
-	err = json.Unmarshal(data, &varContainerRegistryResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerRegistryResponse(varContainerRegistryResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "kind")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "cluster")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerRegistryResponse struct {

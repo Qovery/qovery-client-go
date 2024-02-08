@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the VariableAlias type satisfies the MappedNullable interface at compile time
@@ -21,16 +20,13 @@ var _ MappedNullable = &VariableAlias{}
 
 // VariableAlias struct for VariableAlias
 type VariableAlias struct {
-	Id                   string               `json:"id"`
-	Key                  string               `json:"key"`
-	Value                NullableString       `json:"value,omitempty"`
-	MountPath            string               `json:"mount_path"`
-	Scope                APIVariableScopeEnum `json:"scope"`
-	VariableType         APIVariableTypeEnum  `json:"variable_type"`
-	AdditionalProperties map[string]interface{}
+	Id           string               `json:"id"`
+	Key          string               `json:"key"`
+	Value        NullableString       `json:"value,omitempty"`
+	MountPath    string               `json:"mount_path"`
+	Scope        APIVariableScopeEnum `json:"scope"`
+	VariableType APIVariableTypeEnum  `json:"variable_type"`
 }
-
-type _VariableAlias VariableAlias
 
 // NewVariableAlias instantiates a new VariableAlias object
 // This constructor will assign default values to properties that have it defined,
@@ -235,63 +231,7 @@ func (o VariableAlias) ToMap() (map[string]interface{}, error) {
 	toSerialize["mount_path"] = o.MountPath
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *VariableAlias) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"key",
-		"mount_path",
-		"scope",
-		"variable_type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVariableAlias := _VariableAlias{}
-
-	err = json.Unmarshal(data, &varVariableAlias)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VariableAlias(varVariableAlias)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "value")
-		delete(additionalProperties, "mount_path")
-		delete(additionalProperties, "scope")
-		delete(additionalProperties, "variable_type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableVariableAlias struct {

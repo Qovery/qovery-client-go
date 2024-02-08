@@ -23,25 +23,25 @@ Edit advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-	helmAdvancedSettings := *openapiclient.NewHelmAdvancedSettings() // HelmAdvancedSettings |  (optional)
+    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+    helmAdvancedSettings := *openapiclient.NewHelmAdvancedSettings() // HelmAdvancedSettings |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmConfigurationAPI.EditHelmAdvancedSettings(context.Background(), helmId).HelmAdvancedSettings(helmAdvancedSettings).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.EditHelmAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditHelmAdvancedSettings`: HelmAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.EditHelmAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmConfigurationAPI.EditHelmAdvancedSettings(context.Background(), helmId).HelmAdvancedSettings(helmAdvancedSettings).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.EditHelmAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditHelmAdvancedSettings`: HelmAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.EditHelmAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ Get advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmConfigurationAPI.GetHelmAdvancedSettings(context.Background(), helmId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.GetHelmAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetHelmAdvancedSettings`: HelmAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.GetHelmAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmConfigurationAPI.GetHelmAdvancedSettings(context.Background(), helmId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmConfigurationAPI.GetHelmAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetHelmAdvancedSettings`: HelmAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `HelmConfigurationAPI.GetHelmAdvancedSettings`: %v\n", resp)
 }
 ```
 

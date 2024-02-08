@@ -21,23 +21,23 @@ Get your referral information
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ReferralRewardsAPI.GetAccountReferral(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsAPI.GetAccountReferral``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetAccountReferral`: Referral
-	fmt.Fprintf(os.Stdout, "Response from `ReferralRewardsAPI.GetAccountReferral`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ReferralRewardsAPI.GetAccountReferral(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsAPI.GetAccountReferral``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetAccountReferral`: Referral
+    fmt.Fprintf(os.Stdout, "Response from `ReferralRewardsAPI.GetAccountReferral`: %v\n", resp)
 }
 ```
 
@@ -82,22 +82,22 @@ Claim a reward
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	rewardClaim := *openapiclient.NewRewardClaim() // RewardClaim |  (optional)
+    rewardClaim := *openapiclient.NewRewardClaim() // RewardClaim |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ReferralRewardsAPI.PostAccountRewardClaim(context.Background()).RewardClaim(rewardClaim).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsAPI.PostAccountRewardClaim``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ReferralRewardsAPI.PostAccountRewardClaim(context.Background()).RewardClaim(rewardClaim).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ReferralRewardsAPI.PostAccountRewardClaim``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 

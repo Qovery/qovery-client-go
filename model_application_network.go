@@ -21,11 +21,8 @@ var _ MappedNullable = &ApplicationNetwork{}
 // ApplicationNetwork struct for ApplicationNetwork
 type ApplicationNetwork struct {
 	// Specify if the sticky session option (also called persistant session) is activated or not for this application. If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
-	StickySession        *bool `json:"sticky_session,omitempty"`
-	AdditionalProperties map[string]interface{}
+	StickySession *bool `json:"sticky_session,omitempty"`
 }
-
-type _ApplicationNetwork ApplicationNetwork
 
 // NewApplicationNetwork instantiates a new ApplicationNetwork object
 // This constructor will assign default values to properties that have it defined,
@@ -93,33 +90,7 @@ func (o ApplicationNetwork) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StickySession) {
 		toSerialize["sticky_session"] = o.StickySession
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ApplicationNetwork) UnmarshalJSON(data []byte) (err error) {
-	varApplicationNetwork := _ApplicationNetwork{}
-
-	err = json.Unmarshal(data, &varApplicationNetwork)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationNetwork(varApplicationNetwork)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "sticky_session")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableApplicationNetwork struct {

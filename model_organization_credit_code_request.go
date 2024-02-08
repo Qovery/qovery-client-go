@@ -20,11 +20,8 @@ var _ MappedNullable = &OrganizationCreditCodeRequest{}
 
 // OrganizationCreditCodeRequest struct for OrganizationCreditCodeRequest
 type OrganizationCreditCodeRequest struct {
-	Code                 *string `json:"code,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Code *string `json:"code,omitempty"`
 }
-
-type _OrganizationCreditCodeRequest OrganizationCreditCodeRequest
 
 // NewOrganizationCreditCodeRequest instantiates a new OrganizationCreditCodeRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OrganizationCreditCodeRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationCreditCodeRequest) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationCreditCodeRequest := _OrganizationCreditCodeRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationCreditCodeRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationCreditCodeRequest(varOrganizationCreditCodeRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "code")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationCreditCodeRequest struct {

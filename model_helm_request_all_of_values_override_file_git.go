@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmRequestAllOfValuesOverrideFileGit type satisfies the MappedNullable interface at compile time
@@ -23,11 +22,8 @@ var _ MappedNullable = &HelmRequestAllOfValuesOverrideFileGit{}
 type HelmRequestAllOfValuesOverrideFileGit struct {
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	// List of path inside your git repository to locate values file. Must start by a /
-	Paths                []string `json:"paths"`
-	AdditionalProperties map[string]interface{}
+	Paths []string `json:"paths"`
 }
-
-type _HelmRequestAllOfValuesOverrideFileGit HelmRequestAllOfValuesOverrideFileGit
 
 // NewHelmRequestAllOfValuesOverrideFileGit instantiates a new HelmRequestAllOfValuesOverrideFileGit object
 // This constructor will assign default values to properties that have it defined,
@@ -108,56 +104,7 @@ func (o HelmRequestAllOfValuesOverrideFileGit) ToMap() (map[string]interface{}, 
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	toSerialize["paths"] = o.Paths
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmRequestAllOfValuesOverrideFileGit) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"git_repository",
-		"paths",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmRequestAllOfValuesOverrideFileGit := _HelmRequestAllOfValuesOverrideFileGit{}
-
-	err = json.Unmarshal(data, &varHelmRequestAllOfValuesOverrideFileGit)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmRequestAllOfValuesOverrideFileGit(varHelmRequestAllOfValuesOverrideFileGit)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "git_repository")
-		delete(additionalProperties, "paths")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmRequestAllOfValuesOverrideFileGit struct {

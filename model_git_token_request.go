@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GitTokenRequest type satisfies the MappedNullable interface at compile time
@@ -27,11 +26,8 @@ type GitTokenRequest struct {
 	// The token from your git provider side
 	Token string `json:"token"`
 	// Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service
-	Workspace            *string `json:"workspace,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Workspace *string `json:"workspace,omitempty"`
 }
-
-type _GitTokenRequest GitTokenRequest
 
 // NewGitTokenRequest instantiates a new GitTokenRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -208,60 +204,7 @@ func (o GitTokenRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Workspace) {
 		toSerialize["workspace"] = o.Workspace
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GitTokenRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"type",
-		"token",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGitTokenRequest := _GitTokenRequest{}
-
-	err = json.Unmarshal(data, &varGitTokenRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GitTokenRequest(varGitTokenRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "token")
-		delete(additionalProperties, "workspace")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGitTokenRequest struct {

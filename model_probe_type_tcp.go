@@ -20,12 +20,9 @@ var _ MappedNullable = &ProbeTypeTcp{}
 
 // ProbeTypeTcp struct for ProbeTypeTcp
 type ProbeTypeTcp struct {
-	Port                 *int32         `json:"port,omitempty"`
-	Host                 NullableString `json:"host,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Port *int32         `json:"port,omitempty"`
+	Host NullableString `json:"host,omitempty"`
 }
-
-type _ProbeTypeTcp ProbeTypeTcp
 
 // NewProbeTypeTcp instantiates a new ProbeTypeTcp object
 // This constructor will assign default values to properties that have it defined,
@@ -135,34 +132,7 @@ func (o ProbeTypeTcp) ToMap() (map[string]interface{}, error) {
 	if o.Host.IsSet() {
 		toSerialize["host"] = o.Host.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ProbeTypeTcp) UnmarshalJSON(data []byte) (err error) {
-	varProbeTypeTcp := _ProbeTypeTcp{}
-
-	err = json.Unmarshal(data, &varProbeTypeTcp)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProbeTypeTcp(varProbeTypeTcp)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "port")
-		delete(additionalProperties, "host")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProbeTypeTcp struct {

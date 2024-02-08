@@ -27,25 +27,25 @@ Clone helm
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-	cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
+    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.CloneHelm(context.Background(), helmId).CloneServiceRequest(cloneServiceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CloneHelm``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CloneHelm`: HelmResponse
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CloneHelm`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.CloneHelm(context.Background(), helmId).CloneServiceRequest(cloneServiceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CloneHelm``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneHelm`: HelmResponse
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CloneHelm`: %v\n", resp)
 }
 ```
 
@@ -97,25 +97,25 @@ Create a helm
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	helmRequest := *openapiclient.NewHelmRequest("Name_example", false, openapiclient.HelmRequest_allOf_source{HelmRequestAllOfSourceOneOf: openapiclient.NewHelmRequestAllOfSourceOneOf()}, []string{"Arguments_example"}, *openapiclient.NewHelmRequestAllOfValuesOverride()) // HelmRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    helmRequest := *openapiclient.NewHelmRequest("Name_example", false, openapiclient.HelmRequest_allOf_source{HelmRequestAllOfSourceOneOf: openapiclient.NewHelmRequestAllOfSourceOneOf()}, []string{"Arguments_example"}, *openapiclient.NewHelmRequestAllOfValuesOverride()) // HelmRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.CreateHelm(context.Background(), environmentId).HelmRequest(helmRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CreateHelm``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateHelm`: HelmResponse
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CreateHelm`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.CreateHelm(context.Background(), environmentId).HelmRequest(helmRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CreateHelm``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateHelm`: HelmResponse
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CreateHelm`: %v\n", resp)
 }
 ```
 
@@ -167,25 +167,25 @@ Get helm default values
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	helmDefaultValuesRequest := *openapiclient.NewHelmDefaultValuesRequest(openapiclient.HelmDefaultValuesRequest_allOf_source{HelmRequestAllOfSourceOneOf: openapiclient.NewHelmRequestAllOfSourceOneOf()}) // HelmDefaultValuesRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    helmDefaultValuesRequest := *openapiclient.NewHelmDefaultValuesRequest(openapiclient.HelmRequest_allOf_source{HelmRequestAllOfSourceOneOf: openapiclient.NewHelmRequestAllOfSourceOneOf()}) // HelmDefaultValuesRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.CreateHelmDefaultValues(context.Background(), environmentId).HelmDefaultValuesRequest(helmDefaultValuesRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CreateHelmDefaultValues``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateHelmDefaultValues`: string
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CreateHelmDefaultValues`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.CreateHelmDefaultValues(context.Background(), environmentId).HelmDefaultValuesRequest(helmDefaultValuesRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.CreateHelmDefaultValues``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateHelmDefaultValues`: string
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.CreateHelmDefaultValues`: %v\n", resp)
 }
 ```
 
@@ -237,23 +237,23 @@ List default helm advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.GetDefaultHelmAdvancedSettings(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetDefaultHelmAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDefaultHelmAdvancedSettings`: HelmAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetDefaultHelmAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.GetDefaultHelmAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetDefaultHelmAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultHelmAdvancedSettings`: HelmAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetDefaultHelmAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -298,24 +298,24 @@ List all environment helm statuses
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.GetEnvironmentHelmStatus(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetEnvironmentHelmStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEnvironmentHelmStatus`: ReferenceObjectStatusResponseList
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetEnvironmentHelmStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.GetEnvironmentHelmStatus(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.GetEnvironmentHelmStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEnvironmentHelmStatus`: ReferenceObjectStatusResponseList
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.GetEnvironmentHelmStatus`: %v\n", resp)
 }
 ```
 
@@ -366,24 +366,24 @@ List helms
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.ListHelms(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.ListHelms``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListHelms`: HelmResponseList
-	fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.ListHelms`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmsAPI.ListHelms(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.ListHelms``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListHelms`: HelmResponseList
+    fmt.Fprintf(os.Stdout, "Response from `HelmsAPI.ListHelms`: %v\n", resp)
 }
 ```
 

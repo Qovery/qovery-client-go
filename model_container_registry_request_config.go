@@ -33,11 +33,8 @@ type ContainerRegistryRequestConfig struct {
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Username *string `json:"username,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
-	Password             *string `json:"password,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Password *string `json:"password,omitempty"`
 }
-
-type _ContainerRegistryRequestConfig ContainerRegistryRequestConfig
 
 // NewContainerRegistryRequestConfig instantiates a new ContainerRegistryRequestConfig object
 // This constructor will assign default values to properties that have it defined,
@@ -311,39 +308,7 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerRegistryRequestConfig) UnmarshalJSON(data []byte) (err error) {
-	varContainerRegistryRequestConfig := _ContainerRegistryRequestConfig{}
-
-	err = json.Unmarshal(data, &varContainerRegistryRequestConfig)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerRegistryRequestConfig(varContainerRegistryRequestConfig)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "access_key_id")
-		delete(additionalProperties, "secret_access_key")
-		delete(additionalProperties, "region")
-		delete(additionalProperties, "scaleway_access_key")
-		delete(additionalProperties, "scaleway_secret_key")
-		delete(additionalProperties, "username")
-		delete(additionalProperties, "password")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerRegistryRequestConfig struct {

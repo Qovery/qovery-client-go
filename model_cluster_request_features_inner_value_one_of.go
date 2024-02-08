@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ClusterRequestFeaturesInnerValueOneOf type satisfies the MappedNullable interface at compile time
@@ -34,10 +33,7 @@ type ClusterRequestFeaturesInnerValueOneOf struct {
 	RdsSubnetsZoneAIds         []string `json:"rds_subnets_zone_a_ids,omitempty"`
 	RdsSubnetsZoneBIds         []string `json:"rds_subnets_zone_b_ids,omitempty"`
 	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
-	AdditionalProperties       map[string]interface{}
 }
-
-type _ClusterRequestFeaturesInnerValueOneOf ClusterRequestFeaturesInnerValueOneOf
 
 // NewClusterRequestFeaturesInnerValueOneOf instantiates a new ClusterRequestFeaturesInnerValueOneOf object
 // This constructor will assign default values to properties that have it defined,
@@ -494,69 +490,7 @@ func (o ClusterRequestFeaturesInnerValueOneOf) ToMap() (map[string]interface{}, 
 	if o.RdsSubnetsZoneCIds != nil {
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRequestFeaturesInnerValueOneOf) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"aws_vpc_eks_id",
-		"eks_subnets_zone_a_ids",
-		"eks_subnets_zone_b_ids",
-		"eks_subnets_zone_c_ids",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varClusterRequestFeaturesInnerValueOneOf := _ClusterRequestFeaturesInnerValueOneOf{}
-
-	err = json.Unmarshal(data, &varClusterRequestFeaturesInnerValueOneOf)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRequestFeaturesInnerValueOneOf(varClusterRequestFeaturesInnerValueOneOf)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "aws_vpc_eks_id")
-		delete(additionalProperties, "eks_subnets_zone_a_ids")
-		delete(additionalProperties, "eks_subnets_zone_b_ids")
-		delete(additionalProperties, "eks_subnets_zone_c_ids")
-		delete(additionalProperties, "documentdb_subnets_zone_a_ids")
-		delete(additionalProperties, "documentdb_subnets_zone_b_ids")
-		delete(additionalProperties, "documentdb_subnets_zone_c_ids")
-		delete(additionalProperties, "elasticache_subnets_zone_a_ids")
-		delete(additionalProperties, "elasticache_subnets_zone_b_ids")
-		delete(additionalProperties, "elasticache_subnets_zone_c_ids")
-		delete(additionalProperties, "rds_subnets_zone_a_ids")
-		delete(additionalProperties, "rds_subnets_zone_b_ids")
-		delete(additionalProperties, "rds_subnets_zone_c_ids")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRequestFeaturesInnerValueOneOf struct {

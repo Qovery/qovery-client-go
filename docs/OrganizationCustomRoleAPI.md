@@ -26,25 +26,25 @@ Create an organization custom role
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationCustomRoleCreateRequest := *openapiclient.NewOrganizationCustomRoleCreateRequest("Name_example") // OrganizationCustomRoleCreateRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationCustomRoleCreateRequest := *openapiclient.NewOrganizationCustomRoleCreateRequest("Name_example") // OrganizationCustomRoleCreateRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationCustomRoleAPI.CreateOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleCreateRequest(organizationCustomRoleCreateRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.CreateOrganizationCustomRole``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateOrganizationCustomRole`: OrganizationCustomRole
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.CreateOrganizationCustomRole`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationCustomRoleAPI.CreateOrganizationCustomRole(context.Background(), organizationId).OrganizationCustomRoleCreateRequest(organizationCustomRoleCreateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.CreateOrganizationCustomRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateOrganizationCustomRole`: OrganizationCustomRole
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.CreateOrganizationCustomRole`: %v\n", resp)
 }
 ```
 
@@ -98,23 +98,23 @@ Delete organization custom role
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationCustomRoleAPI.DeleteOrganizationCustomRole(context.Background(), organizationId, customRoleId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.DeleteOrganizationCustomRole``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.OrganizationCustomRoleAPI.DeleteOrganizationCustomRole(context.Background(), organizationId, customRoleId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.DeleteOrganizationCustomRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -169,26 +169,26 @@ Edit an organization custom role
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
-	organizationCustomRoleUpdateRequest := *openapiclient.NewOrganizationCustomRoleUpdateRequest("Name_example", []openapiclient.OrganizationCustomRoleUpdateRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleUpdateRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestProjectPermissionsInner()}) // OrganizationCustomRoleUpdateRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
+    organizationCustomRoleUpdateRequest := *openapiclient.NewOrganizationCustomRoleUpdateRequest("Name_example", []openapiclient.OrganizationCustomRoleUpdateRequestClusterPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestClusterPermissionsInner()}, []openapiclient.OrganizationCustomRoleUpdateRequestProjectPermissionsInner{*openapiclient.NewOrganizationCustomRoleUpdateRequestProjectPermissionsInner()}) // OrganizationCustomRoleUpdateRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationCustomRoleAPI.EditOrganizationCustomRole(context.Background(), organizationId, customRoleId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.EditOrganizationCustomRole``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditOrganizationCustomRole`: OrganizationCustomRole
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.EditOrganizationCustomRole`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationCustomRoleAPI.EditOrganizationCustomRole(context.Background(), organizationId, customRoleId).OrganizationCustomRoleUpdateRequest(organizationCustomRoleUpdateRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.EditOrganizationCustomRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditOrganizationCustomRole`: OrganizationCustomRole
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.EditOrganizationCustomRole`: %v\n", resp)
 }
 ```
 
@@ -244,25 +244,25 @@ Get an organization custom role
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    customRoleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Role ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationCustomRoleAPI.GetOrganizationCustomRole(context.Background(), organizationId, customRoleId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.GetOrganizationCustomRole``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOrganizationCustomRole`: OrganizationCustomRole
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.GetOrganizationCustomRole`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationCustomRoleAPI.GetOrganizationCustomRole(context.Background(), organizationId, customRoleId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.GetOrganizationCustomRole``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationCustomRole`: OrganizationCustomRole
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.GetOrganizationCustomRole`: %v\n", resp)
 }
 ```
 
@@ -317,24 +317,24 @@ List organization custom roles
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationCustomRoleAPI.ListOrganizationCustomRoles(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.ListOrganizationCustomRoles``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListOrganizationCustomRoles`: OrganizationCustomRoleList
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.ListOrganizationCustomRoles`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.OrganizationCustomRoleAPI.ListOrganizationCustomRoles(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationCustomRoleAPI.ListOrganizationCustomRoles``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListOrganizationCustomRoles`: OrganizationCustomRoleList
+    fmt.Fprintf(os.Stdout, "Response from `OrganizationCustomRoleAPI.ListOrganizationCustomRoles`: %v\n", resp)
 }
 ```
 

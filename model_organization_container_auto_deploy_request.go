@@ -23,11 +23,8 @@ type OrganizationContainerAutoDeployRequest struct {
 	// the container image name to deploy
 	ImageName *string `json:"image_name,omitempty"`
 	// the new tag to deploy
-	Tag                  *string `json:"tag,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Tag *string `json:"tag,omitempty"`
 }
-
-type _OrganizationContainerAutoDeployRequest OrganizationContainerAutoDeployRequest
 
 // NewOrganizationContainerAutoDeployRequest instantiates a new OrganizationContainerAutoDeployRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -126,34 +123,7 @@ func (o OrganizationContainerAutoDeployRequest) ToMap() (map[string]interface{},
 	if !IsNil(o.Tag) {
 		toSerialize["tag"] = o.Tag
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationContainerAutoDeployRequest) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationContainerAutoDeployRequest := _OrganizationContainerAutoDeployRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationContainerAutoDeployRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationContainerAutoDeployRequest(varOrganizationContainerAutoDeployRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image_name")
-		delete(additionalProperties, "tag")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationContainerAutoDeployRequest struct {

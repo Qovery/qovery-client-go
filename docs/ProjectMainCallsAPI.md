@@ -24,22 +24,22 @@ Delete a project
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ProjectMainCallsAPI.DeleteProject(context.Background(), projectId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.DeleteProject``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ProjectMainCallsAPI.DeleteProject(context.Background(), projectId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.DeleteProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -92,25 +92,25 @@ Edit a project
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	projectRequest := *openapiclient.NewProjectRequest("Name_example") // ProjectRequest |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectRequest := *openapiclient.NewProjectRequest("Name_example") // ProjectRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectMainCallsAPI.EditProject(context.Background(), projectId).ProjectRequest(projectRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.EditProject``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditProject`: Project
-	fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsAPI.EditProject`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectMainCallsAPI.EditProject(context.Background(), projectId).ProjectRequest(projectRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.EditProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditProject`: Project
+    fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsAPI.EditProject`: %v\n", resp)
 }
 ```
 
@@ -162,24 +162,24 @@ Get project by ID
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectMainCallsAPI.GetProject(context.Background(), projectId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.GetProject``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetProject`: Project
-	fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsAPI.GetProject`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectMainCallsAPI.GetProject(context.Background(), projectId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectMainCallsAPI.GetProject``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProject`: Project
+    fmt.Fprintf(os.Stdout, "Response from `ProjectMainCallsAPI.GetProject`: %v\n", resp)
 }
 ```
 

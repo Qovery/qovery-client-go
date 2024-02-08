@@ -20,11 +20,8 @@ var _ MappedNullable = &ClusterRoutingTable{}
 
 // ClusterRoutingTable struct for ClusterRoutingTable
 type ClusterRoutingTable struct {
-	Results              []ClusterRoutingTableResultsInner `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []ClusterRoutingTableResultsInner `json:"results,omitempty"`
 }
-
-type _ClusterRoutingTable ClusterRoutingTable
 
 // NewClusterRoutingTable instantiates a new ClusterRoutingTable object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ClusterRoutingTable) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRoutingTable) UnmarshalJSON(data []byte) (err error) {
-	varClusterRoutingTable := _ClusterRoutingTable{}
-
-	err = json.Unmarshal(data, &varClusterRoutingTable)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRoutingTable(varClusterRoutingTable)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRoutingTable struct {

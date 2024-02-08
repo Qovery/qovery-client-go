@@ -20,13 +20,10 @@ var _ MappedNullable = &ProbeTypeHttp{}
 
 // ProbeTypeHttp struct for ProbeTypeHttp
 type ProbeTypeHttp struct {
-	Path                 *string `json:"path,omitempty"`
-	Scheme               *string `json:"scheme,omitempty"`
-	Port                 *int32  `json:"port,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Path   *string `json:"path,omitempty"`
+	Scheme *string `json:"scheme,omitempty"`
+	Port   *int32  `json:"port,omitempty"`
 }
-
-type _ProbeTypeHttp ProbeTypeHttp
 
 // NewProbeTypeHttp instantiates a new ProbeTypeHttp object
 // This constructor will assign default values to properties that have it defined,
@@ -168,35 +165,7 @@ func (o ProbeTypeHttp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ProbeTypeHttp) UnmarshalJSON(data []byte) (err error) {
-	varProbeTypeHttp := _ProbeTypeHttp{}
-
-	err = json.Unmarshal(data, &varProbeTypeHttp)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProbeTypeHttp(varProbeTypeHttp)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "path")
-		delete(additionalProperties, "scheme")
-		delete(additionalProperties, "port")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProbeTypeHttp struct {

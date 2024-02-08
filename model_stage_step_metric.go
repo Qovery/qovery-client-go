@@ -23,11 +23,8 @@ type StageStepMetric struct {
 	StepName *StageStepMetricNameEnum `json:"step_name,omitempty"`
 	Status   *StepMetricStatusEnum    `json:"status,omitempty"`
 	// The duration of the step in seconds.
-	DurationSec          *int32 `json:"duration_sec,omitempty"`
-	AdditionalProperties map[string]interface{}
+	DurationSec *int32 `json:"duration_sec,omitempty"`
 }
-
-type _StageStepMetric StageStepMetric
 
 // NewStageStepMetric instantiates a new StageStepMetric object
 // This constructor will assign default values to properties that have it defined,
@@ -161,35 +158,7 @@ func (o StageStepMetric) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DurationSec) {
 		toSerialize["duration_sec"] = o.DurationSec
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *StageStepMetric) UnmarshalJSON(data []byte) (err error) {
-	varStageStepMetric := _StageStepMetric{}
-
-	err = json.Unmarshal(data, &varStageStepMetric)
-
-	if err != nil {
-		return err
-	}
-
-	*o = StageStepMetric(varStageStepMetric)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "step_name")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "duration_sec")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableStageStepMetric struct {

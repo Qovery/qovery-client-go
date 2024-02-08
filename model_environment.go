@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -30,15 +29,12 @@ type Environment struct {
 	Organization ReferenceObject `json:"organization"`
 	Project      ReferenceObject `json:"project"`
 	// uuid of the user that made the last update
-	LastUpdatedBy        *string                       `json:"last_updated_by,omitempty"`
-	CloudProvider        EnvironmentAllOfCloudProvider `json:"cloud_provider"`
-	Mode                 EnvironmentModeEnum           `json:"mode"`
-	ClusterId            string                        `json:"cluster_id"`
-	ClusterName          *string                       `json:"cluster_name,omitempty"`
-	AdditionalProperties map[string]interface{}
+	LastUpdatedBy *string                       `json:"last_updated_by,omitempty"`
+	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
+	Mode          EnvironmentModeEnum           `json:"mode"`
+	ClusterId     string                        `json:"cluster_id"`
+	ClusterName   *string                       `json:"cluster_name,omitempty"`
 }
-
-type _Environment Environment
 
 // NewEnvironment instantiates a new Environment object
 // This constructor will assign default values to properties that have it defined,
@@ -380,71 +376,7 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClusterName) {
 		toSerialize["cluster_name"] = o.ClusterName
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Environment) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-		"organization",
-		"project",
-		"cloud_provider",
-		"mode",
-		"cluster_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironment := _Environment{}
-
-	err = json.Unmarshal(data, &varEnvironment)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Environment(varEnvironment)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "organization")
-		delete(additionalProperties, "project")
-		delete(additionalProperties, "last_updated_by")
-		delete(additionalProperties, "cloud_provider")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "cluster_name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironment struct {

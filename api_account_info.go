@@ -40,8 +40,8 @@ func (r ApiEditAccountInformationRequest) Execute() (*AccountInfo, *http.Respons
 /*
 EditAccountInformation Edit account information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiEditAccountInformationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiEditAccountInformationRequest
 */
 func (a *AccountInfoAPIService) EditAccountInformation(ctx context.Context) ApiEditAccountInformationRequest {
 	return ApiEditAccountInformationRequest{
@@ -51,8 +51,7 @@ func (a *AccountInfoAPIService) EditAccountInformation(ctx context.Context) ApiE
 }
 
 // Execute executes the request
-//
-//	@return AccountInfo
+//  @return AccountInfo
 func (a *AccountInfoAPIService) EditAccountInformationExecute(r ApiEditAccountInformationRequest) (*AccountInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -154,8 +153,8 @@ func (r ApiGetAccountInformationRequest) Execute() (*AccountInfo, *http.Response
 /*
 GetAccountInformation Get Account information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAccountInformationRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAccountInformationRequest
 */
 func (a *AccountInfoAPIService) GetAccountInformation(ctx context.Context) ApiGetAccountInformationRequest {
 	return ApiGetAccountInformationRequest{
@@ -165,8 +164,7 @@ func (a *AccountInfoAPIService) GetAccountInformation(ctx context.Context) ApiGe
 }
 
 // Execute executes the request
-//
-//	@return AccountInfo
+//  @return AccountInfo
 func (a *AccountInfoAPIService) GetAccountInformationExecute(r ApiGetAccountInformationRequest) (*AccountInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

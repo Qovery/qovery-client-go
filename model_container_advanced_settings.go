@@ -77,10 +77,7 @@ type ContainerAdvancedSettings struct {
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 	// Mounts the container's root filesystem as read-only
 	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
-	AdditionalProperties           map[string]interface{}
 }
-
-type _ContainerAdvancedSettings ContainerAdvancedSettings
 
 // NewContainerAdvancedSettings instantiates a new ContainerAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
@@ -1194,63 +1191,7 @@ func (o ContainerAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
-	varContainerAdvancedSettings := _ContainerAdvancedSettings{}
-
-	err = json.Unmarshal(data, &varContainerAdvancedSettings)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerAdvancedSettings(varContainerAdvancedSettings)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "deployment.custom_domain_check_enabled")
-		delete(additionalProperties, "deployment.termination_grace_period_seconds")
-		delete(additionalProperties, "deployment.affinity.node.required")
-		delete(additionalProperties, "deployment.antiaffinity.pod")
-		delete(additionalProperties, "deployment.update_strategy.type")
-		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_unavailable_percent")
-		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_surge_percent")
-		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
-		delete(additionalProperties, "network.ingress.enable_cors")
-		delete(additionalProperties, "network.ingress.cors_allow_origin")
-		delete(additionalProperties, "network.ingress.cors_allow_methods")
-		delete(additionalProperties, "network.ingress.cors_allow_headers")
-		delete(additionalProperties, "network.ingress.proxy_buffer_size_kb")
-		delete(additionalProperties, "network.ingress.keepalive_time_seconds")
-		delete(additionalProperties, "network.ingress.keepalive_timeout_seconds")
-		delete(additionalProperties, "network.ingress.send_timeout_seconds")
-		delete(additionalProperties, "network.ingress.proxy_connect_timeout_seconds")
-		delete(additionalProperties, "network.ingress.proxy_send_timeout_seconds")
-		delete(additionalProperties, "network.ingress.proxy_read_timeout_seconds")
-		delete(additionalProperties, "network.ingress.proxy_buffering")
-		delete(additionalProperties, "network.ingress.proxy_request_buffering")
-		delete(additionalProperties, "network.ingress.grpc_send_timeout_seconds")
-		delete(additionalProperties, "network.ingress.grpc_read_timeout_seconds")
-		delete(additionalProperties, "network.ingress.whitelist_source_range")
-		delete(additionalProperties, "network.ingress.denylist_source_range")
-		delete(additionalProperties, "network.ingress.extra_headers")
-		delete(additionalProperties, "network.ingress.basic_auth_env_var")
-		delete(additionalProperties, "network.ingress.enable_sticky_session")
-		delete(additionalProperties, "security.service_account_name")
-		delete(additionalProperties, "hpa.cpu.average_utilization_percent")
-		delete(additionalProperties, "security.read_only_root_filesystem")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerAdvancedSettings struct {

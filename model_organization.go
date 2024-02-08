@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -35,11 +34,8 @@ type Organization struct {
 	IconUrl     NullableString `json:"icon_url,omitempty"`
 	AdminEmails []string       `json:"admin_emails,omitempty"`
 	// uuid of the user owning the organization
-	Owner                *string `json:"owner,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Owner *string `json:"owner,omitempty"`
 }
-
-type _Organization Organization
 
 // NewOrganization instantiates a new Organization object
 // This constructor will assign default values to properties that have it defined,
@@ -508,68 +504,7 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Organization) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-		"plan",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrganization := _Organization{}
-
-	err = json.Unmarshal(data, &varOrganization)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Organization(varOrganization)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "plan")
-		delete(additionalProperties, "website_url")
-		delete(additionalProperties, "repository")
-		delete(additionalProperties, "logo_url")
-		delete(additionalProperties, "icon_url")
-		delete(additionalProperties, "admin_emails")
-		delete(additionalProperties, "owner")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganization struct {

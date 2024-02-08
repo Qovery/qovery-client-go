@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the DoCredentialsRequest type satisfies the MappedNullable interface at compile time
@@ -21,14 +20,11 @@ var _ MappedNullable = &DoCredentialsRequest{}
 
 // DoCredentialsRequest struct for DoCredentialsRequest
 type DoCredentialsRequest struct {
-	Name                 string  `json:"name"`
-	Token                *string `json:"token,omitempty"`
-	SpacesAccessId       *string `json:"spaces_access_id,omitempty"`
-	SpacesSecretKey      *string `json:"spaces_secret_key,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name            string  `json:"name"`
+	Token           *string `json:"token,omitempty"`
+	SpacesAccessId  *string `json:"spaces_access_id,omitempty"`
+	SpacesSecretKey *string `json:"spaces_secret_key,omitempty"`
 }
-
-type _DoCredentialsRequest DoCredentialsRequest
 
 // NewDoCredentialsRequest instantiates a new DoCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -188,57 +184,7 @@ func (o DoCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SpacesSecretKey) {
 		toSerialize["spaces_secret_key"] = o.SpacesSecretKey
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DoCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDoCredentialsRequest := _DoCredentialsRequest{}
-
-	err = json.Unmarshal(data, &varDoCredentialsRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DoCredentialsRequest(varDoCredentialsRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "token")
-		delete(additionalProperties, "spaces_access_id")
-		delete(additionalProperties, "spaces_secret_key")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDoCredentialsRequest struct {

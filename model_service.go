@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -38,12 +37,9 @@ type Service struct {
 	// describes the typology of service (container, postgresl, redis...)
 	ServiceTypology *string `json:"service_typology,omitempty"`
 	// for databases this field exposes the database version
-	ServiceVersion       *string `json:"service_version,omitempty"`
-	ToUpdate             *bool   `json:"to_update,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ServiceVersion *string `json:"service_version,omitempty"`
+	ToUpdate       *bool   `json:"to_update,omitempty"`
 }
-
-type _Service Service
 
 // NewService instantiates a new Service object
 // This constructor will assign default values to properties that have it defined,
@@ -439,65 +435,7 @@ func (o Service) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ToUpdate) {
 		toSerialize["to_update"] = o.ToUpdate
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Service) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varService := _Service{}
-
-	err = json.Unmarshal(data, &varService)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Service(varService)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "deployed_commit_id")
-		delete(additionalProperties, "last_updated_by")
-		delete(additionalProperties, "consumed_resources_in_percent")
-		delete(additionalProperties, "service_typology")
-		delete(additionalProperties, "service_version")
-		delete(additionalProperties, "to_update")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableService struct {

@@ -20,11 +20,8 @@ var _ MappedNullable = &ServiceTotalNumber{}
 
 // ServiceTotalNumber struct for ServiceTotalNumber
 type ServiceTotalNumber struct {
-	ServiceTotalNumber   *float32 `json:"service_total_number,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ServiceTotalNumber *float32 `json:"service_total_number,omitempty"`
 }
-
-type _ServiceTotalNumber ServiceTotalNumber
 
 // NewServiceTotalNumber instantiates a new ServiceTotalNumber object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ServiceTotalNumber) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceTotalNumber) {
 		toSerialize["service_total_number"] = o.ServiceTotalNumber
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServiceTotalNumber) UnmarshalJSON(data []byte) (err error) {
-	varServiceTotalNumber := _ServiceTotalNumber{}
-
-	err = json.Unmarshal(data, &varServiceTotalNumber)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServiceTotalNumber(varServiceTotalNumber)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "service_total_number")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServiceTotalNumber struct {

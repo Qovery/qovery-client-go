@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmPortRequestPortsInner type satisfies the MappedNullable interface at compile time
@@ -30,11 +29,8 @@ type HelmPortRequestPortsInner struct {
 	Namespace    *string               `json:"namespace,omitempty"`
 	Protocol     *HelmPortProtocolEnum `json:"protocol,omitempty"`
 	// is the default port to use for domain
-	IsDefault            *bool `json:"is_default,omitempty"`
-	AdditionalProperties map[string]interface{}
+	IsDefault *bool `json:"is_default,omitempty"`
 }
-
-type _HelmPortRequestPortsInner HelmPortRequestPortsInner
 
 // NewHelmPortRequestPortsInner instantiates a new HelmPortRequestPortsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -294,61 +290,7 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmPortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"internal_port",
-		"service_name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmPortRequestPortsInner := _HelmPortRequestPortsInner{}
-
-	err = json.Unmarshal(data, &varHelmPortRequestPortsInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmPortRequestPortsInner(varHelmPortRequestPortsInner)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "internal_port")
-		delete(additionalProperties, "external_port")
-		delete(additionalProperties, "service_name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "protocol")
-		delete(additionalProperties, "is_default")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmPortRequestPortsInner struct {

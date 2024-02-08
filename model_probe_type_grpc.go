@@ -20,12 +20,9 @@ var _ MappedNullable = &ProbeTypeGrpc{}
 
 // ProbeTypeGrpc struct for ProbeTypeGrpc
 type ProbeTypeGrpc struct {
-	Service              NullableString `json:"service,omitempty"`
-	Port                 *int32         `json:"port,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Service NullableString `json:"service,omitempty"`
+	Port    *int32         `json:"port,omitempty"`
 }
-
-type _ProbeTypeGrpc ProbeTypeGrpc
 
 // NewProbeTypeGrpc instantiates a new ProbeTypeGrpc object
 // This constructor will assign default values to properties that have it defined,
@@ -135,34 +132,7 @@ func (o ProbeTypeGrpc) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ProbeTypeGrpc) UnmarshalJSON(data []byte) (err error) {
-	varProbeTypeGrpc := _ProbeTypeGrpc{}
-
-	err = json.Unmarshal(data, &varProbeTypeGrpc)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProbeTypeGrpc(varProbeTypeGrpc)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "service")
-		delete(additionalProperties, "port")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProbeTypeGrpc struct {

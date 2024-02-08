@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -48,11 +47,8 @@ type BaseJobResponse struct {
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy           *bool `json:"auto_deploy,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
-
-type _BaseJobResponse BaseJobResponse
 
 // NewBaseJobResponse instantiates a new BaseJobResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -588,80 +584,7 @@ func (o BaseJobResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"environment",
-		"maximum_cpu",
-		"maximum_memory",
-		"name",
-		"cpu",
-		"memory",
-		"auto_preview",
-		"source",
-		"healthchecks",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varBaseJobResponse := _BaseJobResponse{}
-
-	err = json.Unmarshal(data, &varBaseJobResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BaseJobResponse(varBaseJobResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "environment")
-		delete(additionalProperties, "maximum_cpu")
-		delete(additionalProperties, "maximum_memory")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "max_nb_restart")
-		delete(additionalProperties, "max_duration_seconds")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "port")
-		delete(additionalProperties, "source")
-		delete(additionalProperties, "healthchecks")
-		delete(additionalProperties, "auto_deploy")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBaseJobResponse struct {

@@ -20,11 +20,8 @@ var _ MappedNullable = &OrganizationAvailableRoleList{}
 
 // OrganizationAvailableRoleList struct for OrganizationAvailableRoleList
 type OrganizationAvailableRoleList struct {
-	Results              []OrganizationAvailableRole `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []OrganizationAvailableRole `json:"results,omitempty"`
 }
-
-type _OrganizationAvailableRoleList OrganizationAvailableRoleList
 
 // NewOrganizationAvailableRoleList instantiates a new OrganizationAvailableRoleList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OrganizationAvailableRoleList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationAvailableRoleList) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationAvailableRoleList := _OrganizationAvailableRoleList{}
-
-	err = json.Unmarshal(data, &varOrganizationAvailableRoleList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationAvailableRoleList(varOrganizationAvailableRoleList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationAvailableRoleList struct {

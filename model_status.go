@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -28,10 +27,7 @@ type Status struct {
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
-	AdditionalProperties    map[string]interface{}
 }
-
-type _Status Status
 
 // NewStatus instantiates a new Status object
 // This constructor will assign default values to properties that have it defined,
@@ -243,61 +239,7 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Status) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"state",
-		"service_deployment_status",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varStatus := _Status{}
-
-	err = json.Unmarshal(data, &varStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Status(varStatus)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "service_deployment_status")
-		delete(additionalProperties, "last_deployment_date")
-		delete(additionalProperties, "is_part_last_deployment")
-		delete(additionalProperties, "steps")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableStatus struct {

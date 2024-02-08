@@ -20,11 +20,8 @@ var _ MappedNullable = &HelmPortRequest{}
 
 // HelmPortRequest struct for HelmPortRequest
 type HelmPortRequest struct {
-	Ports                []HelmPortRequestPortsInner `json:"ports,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Ports []HelmPortRequestPortsInner `json:"ports,omitempty"`
 }
-
-type _HelmPortRequest HelmPortRequest
 
 // NewHelmPortRequest instantiates a new HelmPortRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o HelmPortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmPortRequest) UnmarshalJSON(data []byte) (err error) {
-	varHelmPortRequest := _HelmPortRequest{}
-
-	err = json.Unmarshal(data, &varHelmPortRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmPortRequest(varHelmPortRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ports")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmPortRequest struct {

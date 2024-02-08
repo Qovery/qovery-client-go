@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ClusterRegion type satisfies the MappedNullable interface at compile time
@@ -21,14 +20,11 @@ var _ MappedNullable = &ClusterRegion{}
 
 // ClusterRegion struct for ClusterRegion
 type ClusterRegion struct {
-	Name                 string `json:"name"`
-	CountryCode          string `json:"country_code"`
-	Country              string `json:"country"`
-	City                 string `json:"city"`
-	AdditionalProperties map[string]interface{}
+	Name        string `json:"name"`
+	CountryCode string `json:"country_code"`
+	Country     string `json:"country"`
+	City        string `json:"city"`
 }
-
-type _ClusterRegion ClusterRegion
 
 // NewClusterRegion instantiates a new ClusterRegion object
 // This constructor will assign default values to properties that have it defined,
@@ -161,60 +157,7 @@ func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["country_code"] = o.CountryCode
 	toSerialize["country"] = o.Country
 	toSerialize["city"] = o.City
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRegion) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"country_code",
-		"country",
-		"city",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varClusterRegion := _ClusterRegion{}
-
-	err = json.Unmarshal(data, &varClusterRegion)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRegion(varClusterRegion)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "country_code")
-		delete(additionalProperties, "country")
-		delete(additionalProperties, "city")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRegion struct {

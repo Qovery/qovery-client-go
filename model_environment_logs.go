@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -22,15 +21,12 @@ var _ MappedNullable = &EnvironmentLogs{}
 
 // EnvironmentLogs struct for EnvironmentLogs
 type EnvironmentLogs struct {
-	Type                 string                         `json:"type"`
-	Timestamp            time.Time                      `json:"timestamp"`
-	Details              EnvironmentLogsDetails         `json:"details"`
-	Error                NullableEnvironmentLogsError   `json:"error,omitempty"`
-	Message              NullableEnvironmentLogsMessage `json:"message,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Type      string                         `json:"type"`
+	Timestamp time.Time                      `json:"timestamp"`
+	Details   EnvironmentLogsDetails         `json:"details"`
+	Error     NullableEnvironmentLogsError   `json:"error,omitempty"`
+	Message   NullableEnvironmentLogsMessage `json:"message,omitempty"`
 }
-
-type _EnvironmentLogs EnvironmentLogs
 
 // NewEnvironmentLogs instantiates a new EnvironmentLogs object
 // This constructor will assign default values to properties that have it defined,
@@ -229,60 +225,7 @@ func (o EnvironmentLogs) ToMap() (map[string]interface{}, error) {
 	if o.Message.IsSet() {
 		toSerialize["message"] = o.Message.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentLogs) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"type",
-		"timestamp",
-		"details",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironmentLogs := _EnvironmentLogs{}
-
-	err = json.Unmarshal(data, &varEnvironmentLogs)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentLogs(varEnvironmentLogs)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "timestamp")
-		delete(additionalProperties, "details")
-		delete(additionalProperties, "error")
-		delete(additionalProperties, "message")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentLogs struct {

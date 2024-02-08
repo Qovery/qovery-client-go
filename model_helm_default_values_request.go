@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmDefaultValuesRequest type satisfies the MappedNullable interface at compile time
@@ -21,17 +20,14 @@ var _ MappedNullable = &HelmDefaultValuesRequest{}
 
 // HelmDefaultValuesRequest struct for HelmDefaultValuesRequest
 type HelmDefaultValuesRequest struct {
-	Source               HelmDefaultValuesRequestAllOfSource `json:"source"`
-	AdditionalProperties map[string]interface{}
+	Source HelmRequestAllOfSource `json:"source"`
 }
-
-type _HelmDefaultValuesRequest HelmDefaultValuesRequest
 
 // NewHelmDefaultValuesRequest instantiates a new HelmDefaultValuesRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmDefaultValuesRequest(source HelmDefaultValuesRequestAllOfSource) *HelmDefaultValuesRequest {
+func NewHelmDefaultValuesRequest(source HelmRequestAllOfSource) *HelmDefaultValuesRequest {
 	this := HelmDefaultValuesRequest{}
 	this.Source = source
 	return &this
@@ -46,9 +42,9 @@ func NewHelmDefaultValuesRequestWithDefaults() *HelmDefaultValuesRequest {
 }
 
 // GetSource returns the Source field value
-func (o *HelmDefaultValuesRequest) GetSource() HelmDefaultValuesRequestAllOfSource {
+func (o *HelmDefaultValuesRequest) GetSource() HelmRequestAllOfSource {
 	if o == nil {
-		var ret HelmDefaultValuesRequestAllOfSource
+		var ret HelmRequestAllOfSource
 		return ret
 	}
 
@@ -57,7 +53,7 @@ func (o *HelmDefaultValuesRequest) GetSource() HelmDefaultValuesRequestAllOfSour
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *HelmDefaultValuesRequest) GetSourceOk() (*HelmDefaultValuesRequestAllOfSource, bool) {
+func (o *HelmDefaultValuesRequest) GetSourceOk() (*HelmRequestAllOfSource, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +61,7 @@ func (o *HelmDefaultValuesRequest) GetSourceOk() (*HelmDefaultValuesRequestAllOf
 }
 
 // SetSource sets field value
-func (o *HelmDefaultValuesRequest) SetSource(v HelmDefaultValuesRequestAllOfSource) {
+func (o *HelmDefaultValuesRequest) SetSource(v HelmRequestAllOfSource) {
 	o.Source = v
 }
 
@@ -80,54 +76,7 @@ func (o HelmDefaultValuesRequest) MarshalJSON() ([]byte, error) {
 func (o HelmDefaultValuesRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["source"] = o.Source
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmDefaultValuesRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"source",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmDefaultValuesRequest := _HelmDefaultValuesRequest{}
-
-	err = json.Unmarshal(data, &varHelmDefaultValuesRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmDefaultValuesRequest(varHelmDefaultValuesRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "source")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmDefaultValuesRequest struct {

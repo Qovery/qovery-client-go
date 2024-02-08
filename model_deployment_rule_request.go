@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -35,11 +34,8 @@ type DeploymentRuleRequest struct {
 	// specify value only if auto_stop = false
 	StopTime NullableTime `json:"stop_time,omitempty"`
 	// specify value only if auto_stop = false
-	Weekdays             []WeekdayEnum `json:"weekdays,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Weekdays []WeekdayEnum `json:"weekdays,omitempty"`
 }
-
-type _DeploymentRuleRequest DeploymentRuleRequest
 
 // NewDeploymentRuleRequest instantiates a new DeploymentRuleRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -376,65 +372,7 @@ func (o DeploymentRuleRequest) ToMap() (map[string]interface{}, error) {
 	if o.Weekdays != nil {
 		toSerialize["weekdays"] = o.Weekdays
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentRuleRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"mode",
-		"cluster",
-		"auto_stop",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentRuleRequest := _DeploymentRuleRequest{}
-
-	err = json.Unmarshal(data, &varDeploymentRuleRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentRuleRequest(varDeploymentRuleRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "cluster")
-		delete(additionalProperties, "auto_stop")
-		delete(additionalProperties, "timezone")
-		delete(additionalProperties, "start_time")
-		delete(additionalProperties, "stop_time")
-		delete(additionalProperties, "weekdays")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentRuleRequest struct {

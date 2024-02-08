@@ -20,11 +20,8 @@ var _ MappedNullable = &LogResponseList{}
 
 // LogResponseList struct for LogResponseList
 type LogResponseList struct {
-	Results              []Log `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []Log `json:"results,omitempty"`
 }
-
-type _LogResponseList LogResponseList
 
 // NewLogResponseList instantiates a new LogResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o LogResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *LogResponseList) UnmarshalJSON(data []byte) (err error) {
-	varLogResponseList := _LogResponseList{}
-
-	err = json.Unmarshal(data, &varLogResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = LogResponseList(varLogResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableLogResponseList struct {

@@ -42,9 +42,9 @@ func (r ApiAddBackupDatabaseRequest) Execute() (*Backup, *http.Response, error) 
 /*
 AddBackupDatabase Add a backup to the Database
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@return ApiAddBackupDatabaseRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseId Database ID
+ @return ApiAddBackupDatabaseRequest
 */
 func (a *BackupsAPIService) AddBackupDatabase(ctx context.Context, databaseId string) ApiAddBackupDatabaseRequest {
 	return ApiAddBackupDatabaseRequest{
@@ -55,8 +55,7 @@ func (a *BackupsAPIService) AddBackupDatabase(ctx context.Context, databaseId st
 }
 
 // Execute executes the request
-//
-//	@return Backup
+//  @return Backup
 func (a *BackupsAPIService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*Backup, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -169,9 +168,9 @@ ListDatabaseBackup List database  backups
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@return ApiListDatabaseBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseId Database ID
+ @return ApiListDatabaseBackupRequest
 */
 func (a *BackupsAPIService) ListDatabaseBackup(ctx context.Context, databaseId string) ApiListDatabaseBackupRequest {
 	return ApiListDatabaseBackupRequest{
@@ -182,8 +181,7 @@ func (a *BackupsAPIService) ListDatabaseBackup(ctx context.Context, databaseId s
 }
 
 // Execute executes the request
-//
-//	@return BackupPaginatedResponseList
+//  @return BackupPaginatedResponseList
 func (a *BackupsAPIService) ListDatabaseBackupExecute(r ApiListDatabaseBackupRequest) (*BackupPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -289,10 +287,10 @@ func (r ApiRemoveDatabaseBackupRequest) Execute() (*http.Response, error) {
 /*
 RemoveDatabaseBackup Remove database  backup
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@param backupId Database Backup ID
-	@return ApiRemoveDatabaseBackupRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseId Database ID
+ @param backupId Database Backup ID
+ @return ApiRemoveDatabaseBackupRequest
 */
 func (a *BackupsAPIService) RemoveDatabaseBackup(ctx context.Context, databaseId string, backupId string) ApiRemoveDatabaseBackupRequest {
 	return ApiRemoveDatabaseBackupRequest{

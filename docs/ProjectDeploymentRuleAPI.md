@@ -27,26 +27,26 @@ Create a deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/qovery/qovery-client-go"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("DEVELOPMENT"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("DEVELOPMENT"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectDeploymentRuleAPI.CreateDeploymentRule(context.Background(), projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.CreateDeploymentRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateDeploymentRule`: ProjectDeploymentRule
-	fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.CreateDeploymentRule`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleAPI.CreateDeploymentRule(context.Background(), projectId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.CreateDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateDeploymentRule`: ProjectDeploymentRule
+    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.CreateDeploymentRule`: %v\n", resp)
 }
 ```
 
@@ -100,23 +100,23 @@ Delete a project deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ProjectDeploymentRuleAPI.DeleteProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.DeleteProjectDeploymentRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ProjectDeploymentRuleAPI.DeleteProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.DeleteProjectDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -171,27 +171,27 @@ Edit a project deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
+    "context"
+    "fmt"
+    "os"
     "time"
-	openapiclient "github.com/qovery/qovery-client-go"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
-	projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("DEVELOPMENT"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
+    projectDeploymentRuleRequest := *openapiclient.NewProjectDeploymentRuleRequest("project-rule", openapiclient.EnvironmentModeEnum("DEVELOPMENT"), "ClusterId_example", "UTC", time.Now(), time.Now(), []openapiclient.WeekdayEnum{openapiclient.WeekdayEnum("MONDAY")}, "Wildcard_example") // ProjectDeploymentRuleRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectDeploymentRuleAPI.EditProjectDeployemtnRule(context.Background(), projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.EditProjectDeployemtnRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditProjectDeployemtnRule`: ProjectDeploymentRule
-	fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.EditProjectDeployemtnRule`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleAPI.EditProjectDeployemtnRule(context.Background(), projectId, deploymentRuleId).ProjectDeploymentRuleRequest(projectDeploymentRuleRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.EditProjectDeployemtnRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditProjectDeployemtnRule`: ProjectDeploymentRule
+    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.EditProjectDeployemtnRule`: %v\n", resp)
 }
 ```
 
@@ -247,25 +247,25 @@ Get a project deployment rule
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    deploymentRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Rule ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectDeploymentRuleAPI.GetProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.GetProjectDeploymentRule``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetProjectDeploymentRule`: ProjectDeploymentRule
-	fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.GetProjectDeploymentRule`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleAPI.GetProjectDeploymentRule(context.Background(), projectId, deploymentRuleId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.GetProjectDeploymentRule``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetProjectDeploymentRule`: ProjectDeploymentRule
+    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.GetProjectDeploymentRule`: %v\n", resp)
 }
 ```
 
@@ -320,24 +320,24 @@ List project deployment rules
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectDeploymentRuleAPI.ListProjectDeploymentRules(context.Background(), projectId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.ListProjectDeploymentRules``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListProjectDeploymentRules`: ProjectDeploymentRuleResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.ListProjectDeploymentRules`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectDeploymentRuleAPI.ListProjectDeploymentRules(context.Background(), projectId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.ListProjectDeploymentRules``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListProjectDeploymentRules`: ProjectDeploymentRuleResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ProjectDeploymentRuleAPI.ListProjectDeploymentRules`: %v\n", resp)
 }
 ```
 
@@ -390,23 +390,23 @@ Update deployment rules priority order
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	projectDeploymentRulesPriorityOrderRequest := *openapiclient.NewProjectDeploymentRulesPriorityOrderRequest() // ProjectDeploymentRulesPriorityOrderRequest |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectDeploymentRulesPriorityOrderRequest := *openapiclient.NewProjectDeploymentRulesPriorityOrderRequest() // ProjectDeploymentRulesPriorityOrderRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ProjectDeploymentRuleAPI.UpdateDeploymentRulesPriorityOrder(context.Background(), projectId).ProjectDeploymentRulesPriorityOrderRequest(projectDeploymentRulesPriorityOrderRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.UpdateDeploymentRulesPriorityOrder``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ProjectDeploymentRuleAPI.UpdateDeploymentRulesPriorityOrder(context.Background(), projectId).ProjectDeploymentRulesPriorityOrderRequest(projectDeploymentRulesPriorityOrderRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectDeploymentRuleAPI.UpdateDeploymentRulesPriorityOrder``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 

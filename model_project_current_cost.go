@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ProjectCurrentCost type satisfies the MappedNullable interface at compile time
@@ -26,10 +25,7 @@ type ProjectCurrentCost struct {
 	ConsumedTimeInSeconds int32                      `json:"consumed_time_in_seconds"`
 	Cost                  Cost                       `json:"cost"`
 	Environments          []GenericObjectCurrentCost `json:"environments,omitempty"`
-	AdditionalProperties  map[string]interface{}
 }
-
-type _ProjectCurrentCost ProjectCurrentCost
 
 // NewProjectCurrentCost instantiates a new ProjectCurrentCost object
 // This constructor will assign default values to properties that have it defined,
@@ -197,61 +193,7 @@ func (o ProjectCurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Environments) {
 		toSerialize["environments"] = o.Environments
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ProjectCurrentCost) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"consumed_time_in_seconds",
-		"cost",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProjectCurrentCost := _ProjectCurrentCost{}
-
-	err = json.Unmarshal(data, &varProjectCurrentCost)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProjectCurrentCost(varProjectCurrentCost)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "consumed_time_in_seconds")
-		delete(additionalProperties, "cost")
-		delete(additionalProperties, "environments")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProjectCurrentCost struct {

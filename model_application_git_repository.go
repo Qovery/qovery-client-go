@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -39,10 +38,7 @@ type ApplicationGitRepository struct {
 	DeployedCommitTag         *string        `json:"deployed_commit_tag,omitempty"`
 	GitTokenId                NullableString `json:"git_token_id,omitempty"`
 	GitTokenName              NullableString `json:"git_token_name,omitempty"`
-	AdditionalProperties      map[string]interface{}
 }
-
-type _ApplicationGitRepository ApplicationGitRepository
 
 // NewApplicationGitRepository instantiates a new ApplicationGitRepository object
 // This constructor will assign default values to properties that have it defined,
@@ -512,69 +508,7 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	if o.GitTokenName.IsSet() {
 		toSerialize["git_token_name"] = o.GitTokenName.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ApplicationGitRepository) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"provider",
-		"owner",
-		"url",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationGitRepository := _ApplicationGitRepository{}
-
-	err = json.Unmarshal(data, &varApplicationGitRepository)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationGitRepository(varApplicationGitRepository)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "has_access")
-		delete(additionalProperties, "provider")
-		delete(additionalProperties, "owner")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "branch")
-		delete(additionalProperties, "root_path")
-		delete(additionalProperties, "deployed_commit_id")
-		delete(additionalProperties, "deployed_commit_date")
-		delete(additionalProperties, "deployed_commit_contributor")
-		delete(additionalProperties, "deployed_commit_tag")
-		delete(additionalProperties, "git_token_id")
-		delete(additionalProperties, "git_token_name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableApplicationGitRepository struct {

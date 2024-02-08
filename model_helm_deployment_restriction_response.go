@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -28,11 +27,8 @@ type HelmDeploymentRestrictionResponse struct {
 	Mode      DeploymentRestrictionModeEnum `json:"mode"`
 	Type      DeploymentRestrictionTypeEnum `json:"type"`
 	// For `PATH` restrictions, the value must not start with `/`
-	Value                string `json:"value"`
-	AdditionalProperties map[string]interface{}
+	Value string `json:"value"`
 }
-
-type _HelmDeploymentRestrictionResponse HelmDeploymentRestrictionResponse
 
 // NewHelmDeploymentRestrictionResponse instantiates a new HelmDeploymentRestrictionResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -226,63 +222,7 @@ func (o HelmDeploymentRestrictionResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["mode"] = o.Mode
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmDeploymentRestrictionResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"mode",
-		"type",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmDeploymentRestrictionResponse := _HelmDeploymentRestrictionResponse{}
-
-	err = json.Unmarshal(data, &varHelmDeploymentRestrictionResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmDeploymentRestrictionResponse(varHelmDeploymentRestrictionResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmDeploymentRestrictionResponse struct {

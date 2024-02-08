@@ -21,11 +21,8 @@ var _ MappedNullable = &ContainerNetworkRequest{}
 // ContainerNetworkRequest struct for ContainerNetworkRequest
 type ContainerNetworkRequest struct {
 	// Specify if the sticky session option (also called persistant session) is activated or not for this container. If activated, user will be redirected by the load balancer to the same instance each time he access to the container.
-	StickySession        *bool `json:"sticky_session,omitempty"`
-	AdditionalProperties map[string]interface{}
+	StickySession *bool `json:"sticky_session,omitempty"`
 }
-
-type _ContainerNetworkRequest ContainerNetworkRequest
 
 // NewContainerNetworkRequest instantiates a new ContainerNetworkRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -93,33 +90,7 @@ func (o ContainerNetworkRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StickySession) {
 		toSerialize["sticky_session"] = o.StickySession
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerNetworkRequest) UnmarshalJSON(data []byte) (err error) {
-	varContainerNetworkRequest := _ContainerNetworkRequest{}
-
-	err = json.Unmarshal(data, &varContainerNetworkRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerNetworkRequest(varContainerNetworkRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "sticky_session")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerNetworkRequest struct {

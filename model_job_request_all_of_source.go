@@ -20,12 +20,9 @@ var _ MappedNullable = &JobRequestAllOfSource{}
 
 // JobRequestAllOfSource struct for JobRequestAllOfSource
 type JobRequestAllOfSource struct {
-	Image                NullableJobRequestAllOfSourceImage  `json:"image,omitempty"`
-	Docker               NullableJobRequestAllOfSourceDocker `json:"docker,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Image  NullableJobRequestAllOfSourceImage  `json:"image,omitempty"`
+	Docker NullableJobRequestAllOfSourceDocker `json:"docker,omitempty"`
 }
-
-type _JobRequestAllOfSource JobRequestAllOfSource
 
 // NewJobRequestAllOfSource instantiates a new JobRequestAllOfSource object
 // This constructor will assign default values to properties that have it defined,
@@ -146,34 +143,7 @@ func (o JobRequestAllOfSource) ToMap() (map[string]interface{}, error) {
 	if o.Docker.IsSet() {
 		toSerialize["docker"] = o.Docker.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *JobRequestAllOfSource) UnmarshalJSON(data []byte) (err error) {
-	varJobRequestAllOfSource := _JobRequestAllOfSource{}
-
-	err = json.Unmarshal(data, &varJobRequestAllOfSource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = JobRequestAllOfSource(varJobRequestAllOfSource)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image")
-		delete(additionalProperties, "docker")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableJobRequestAllOfSource struct {

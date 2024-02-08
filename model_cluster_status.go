@@ -20,13 +20,10 @@ var _ MappedNullable = &ClusterStatus{}
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId            *string           `json:"cluster_id,omitempty"`
-	Status               *ClusterStateEnum `json:"status,omitempty"`
-	IsDeployed           *bool             `json:"is_deployed,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ClusterId  *string           `json:"cluster_id,omitempty"`
+	Status     *ClusterStateEnum `json:"status,omitempty"`
+	IsDeployed *bool             `json:"is_deployed,omitempty"`
 }
-
-type _ClusterStatus ClusterStatus
 
 // NewClusterStatus instantiates a new ClusterStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -160,35 +157,7 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDeployed) {
 		toSerialize["is_deployed"] = o.IsDeployed
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
-	varClusterStatus := _ClusterStatus{}
-
-	err = json.Unmarshal(data, &varClusterStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterStatus(varClusterStatus)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "is_deployed")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterStatus struct {

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ContainerSource type satisfies the MappedNullable interface at compile time
@@ -26,12 +25,9 @@ type ContainerSource struct {
 	// tag of the image container
 	Tag string `json:"tag"`
 	// tag of the image container
-	RegistryId           *string                                  `json:"registry_id,omitempty"`
-	Registry             ContainerRegistryProviderDetailsResponse `json:"registry"`
-	AdditionalProperties map[string]interface{}
+	RegistryId *string                                  `json:"registry_id,omitempty"`
+	Registry   ContainerRegistryProviderDetailsResponse `json:"registry"`
 }
-
-type _ContainerSource ContainerSource
 
 // NewContainerSource instantiates a new ContainerSource object
 // This constructor will assign default values to properties that have it defined,
@@ -173,59 +169,7 @@ func (o ContainerSource) ToMap() (map[string]interface{}, error) {
 		toSerialize["registry_id"] = o.RegistryId
 	}
 	toSerialize["registry"] = o.Registry
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerSource) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"image_name",
-		"tag",
-		"registry",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContainerSource := _ContainerSource{}
-
-	err = json.Unmarshal(data, &varContainerSource)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerSource(varContainerSource)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image_name")
-		delete(additionalProperties, "tag")
-		delete(additionalProperties, "registry_id")
-		delete(additionalProperties, "registry")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerSource struct {

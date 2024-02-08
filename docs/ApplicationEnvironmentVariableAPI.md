@@ -28,25 +28,25 @@ Add an environment variable to the application
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateApplicationEnvironmentVariable`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable(context.Background(), applicationId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateApplicationEnvironmentVariable`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -100,26 +100,26 @@ Create an environment variable alias at the application level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateApplicationEnvironmentVariableAlias`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias(context.Background(), applicationId, environmentVariableId).Key(key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateApplicationEnvironmentVariableAlias`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
 
@@ -175,26 +175,26 @@ Create an environment variable override at the application level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	value := *openapiclient.NewValue() // Value |  (optional)
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    value := *openapiclient.NewValue() // Value |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateApplicationEnvironmentVariableOverride`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride(context.Background(), applicationId, environmentVariableId).Value(value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateApplicationEnvironmentVariableOverride`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.CreateApplicationEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
 
@@ -250,23 +250,23 @@ Delete an environment variable from an application
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ApplicationEnvironmentVariableAPI.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.DeleteApplicationEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ApplicationEnvironmentVariableAPI.DeleteApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.DeleteApplicationEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -321,26 +321,26 @@ Edit an environment variable belonging to the application
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditApplicationEnvironmentVariable`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable(context.Background(), applicationId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditApplicationEnvironmentVariable`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.EditApplicationEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -396,25 +396,25 @@ Import variables
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
-	variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable(context.Background(), applicationId).VariableImportRequest(variableImportRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ImportEnvironmentVariable`: VariableImport
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable(context.Background(), applicationId).VariableImportRequest(variableImportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEnvironmentVariable`: VariableImport
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.ImportEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -466,24 +466,24 @@ List environment variables
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+    applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListApplicationEnvironmentVariable`: EnvironmentVariableResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable(context.Background(), applicationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListApplicationEnvironmentVariable`: EnvironmentVariableResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationEnvironmentVariableAPI.ListApplicationEnvironmentVariable`: %v\n", resp)
 }
 ```
 

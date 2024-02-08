@@ -44,9 +44,9 @@ EditContainerAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiEditContainerAdvancedSettingsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiEditContainerAdvancedSettingsRequest
 */
 func (a *ContainerConfigurationAPIService) EditContainerAdvancedSettings(ctx context.Context, containerId string) ApiEditContainerAdvancedSettingsRequest {
 	return ApiEditContainerAdvancedSettingsRequest{
@@ -57,8 +57,7 @@ func (a *ContainerConfigurationAPIService) EditContainerAdvancedSettings(ctx con
 }
 
 // Execute executes the request
-//
-//	@return ContainerAdvancedSettings
+//  @return ContainerAdvancedSettings
 func (a *ContainerConfigurationAPIService) EditContainerAdvancedSettingsExecute(r ApiEditContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -170,9 +169,9 @@ EditContainerNetwork Edit Container Network
 
 Edit the Network settings of the container.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiEditContainerNetworkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiEditContainerNetworkRequest
 */
 func (a *ContainerConfigurationAPIService) EditContainerNetwork(ctx context.Context, containerId string) ApiEditContainerNetworkRequest {
 	return ApiEditContainerNetworkRequest{
@@ -183,8 +182,7 @@ func (a *ContainerConfigurationAPIService) EditContainerNetwork(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return ContainerNetwork
+//  @return ContainerNetwork
 func (a *ContainerConfigurationAPIService) EditContainerNetworkExecute(r ApiEditContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -291,9 +289,10 @@ GetContainerAdvancedSettings Get advanced settings
 Get list and values of the advanced settings of the container.
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiGetContainerAdvancedSettingsRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiGetContainerAdvancedSettingsRequest
 */
 func (a *ContainerConfigurationAPIService) GetContainerAdvancedSettings(ctx context.Context, containerId string) ApiGetContainerAdvancedSettingsRequest {
 	return ApiGetContainerAdvancedSettingsRequest{
@@ -304,8 +303,7 @@ func (a *ContainerConfigurationAPIService) GetContainerAdvancedSettings(ctx cont
 }
 
 // Execute executes the request
-//
-//	@return ContainerAdvancedSettings
+//  @return ContainerAdvancedSettings
 func (a *ContainerConfigurationAPIService) GetContainerAdvancedSettingsExecute(r ApiGetContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -409,9 +407,9 @@ GetContainerNetwork Get Container Network information
 
 Get status of the container network settings.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiGetContainerNetworkRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiGetContainerNetworkRequest
 */
 func (a *ContainerConfigurationAPIService) GetContainerNetwork(ctx context.Context, containerId string) ApiGetContainerNetworkRequest {
 	return ApiGetContainerNetworkRequest{
@@ -422,8 +420,7 @@ func (a *ContainerConfigurationAPIService) GetContainerNetwork(ctx context.Conte
 }
 
 // Execute executes the request
-//
-//	@return ContainerNetwork
+//  @return ContainerNetwork
 func (a *ContainerConfigurationAPIService) GetContainerNetworkExecute(r ApiGetContainerNetworkRequest) (*ContainerNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -20,12 +20,9 @@ var _ MappedNullable = &EnvironmentLogsMessage{}
 
 // EnvironmentLogsMessage struct for EnvironmentLogsMessage
 type EnvironmentLogsMessage struct {
-	SafeMessage          *string `json:"safe_message,omitempty"`
-	FullDetails          *string `json:"full_details,omitempty"`
-	AdditionalProperties map[string]interface{}
+	SafeMessage *string `json:"safe_message,omitempty"`
+	FullDetails *string `json:"full_details,omitempty"`
 }
-
-type _EnvironmentLogsMessage EnvironmentLogsMessage
 
 // NewEnvironmentLogsMessage instantiates a new EnvironmentLogsMessage object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o EnvironmentLogsMessage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.FullDetails) {
 		toSerialize["full_details"] = o.FullDetails
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentLogsMessage) UnmarshalJSON(data []byte) (err error) {
-	varEnvironmentLogsMessage := _EnvironmentLogsMessage{}
-
-	err = json.Unmarshal(data, &varEnvironmentLogsMessage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentLogsMessage(varEnvironmentLogsMessage)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "safe_message")
-		delete(additionalProperties, "full_details")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentLogsMessage struct {

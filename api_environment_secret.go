@@ -43,14 +43,13 @@ func (r ApiCreateEnvironmentSecretRequest) Execute() (*Secret, *http.Response, e
 CreateEnvironmentSecret Add a secret to the environment
 
 - Add a secret to the environment.
-
   - If the secret key already exists, then it will be replaced by the new one.
-
   - If the secret value points toward an existing secret key, it will be considered as an alias.
 
-    @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-    @param environmentId Environment ID
-    @return ApiCreateEnvironmentSecretRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiCreateEnvironmentSecretRequest
 */
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecret(ctx context.Context, environmentId string) ApiCreateEnvironmentSecretRequest {
 	return ApiCreateEnvironmentSecretRequest{
@@ -61,8 +60,7 @@ func (a *EnvironmentSecretAPIService) CreateEnvironmentSecret(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return Secret
+//  @return Secret
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretExecute(r ApiCreateEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -180,10 +178,11 @@ CreateEnvironmentSecretAlias Create a secret alias at the environment level
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
 - You can't create an alias on an alias
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@param secretId Secret ID
-	@return ApiCreateEnvironmentSecretAliasRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @param secretId Secret ID
+ @return ApiCreateEnvironmentSecretAliasRequest
 */
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretAlias(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretAliasRequest {
 	return ApiCreateEnvironmentSecretAliasRequest{
@@ -195,8 +194,7 @@ func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretAlias(ctx context.C
 }
 
 // Execute executes the request
-//
-//	@return Secret
+//  @return Secret
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretAliasExecute(r ApiCreateEnvironmentSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -314,10 +312,11 @@ CreateEnvironmentSecretOverride Create a secret override at the environment leve
 - The response body will contain the newly created secret
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@param secretId Secret ID
-	@return ApiCreateEnvironmentSecretOverrideRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @param secretId Secret ID
+ @return ApiCreateEnvironmentSecretOverrideRequest
 */
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretOverride(ctx context.Context, environmentId string, secretId string) ApiCreateEnvironmentSecretOverrideRequest {
 	return ApiCreateEnvironmentSecretOverrideRequest{
@@ -329,8 +328,7 @@ func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretOverride(ctx contex
 }
 
 // Execute executes the request
-//
-//	@return Secret
+//  @return Secret
 func (a *EnvironmentSecretAPIService) CreateEnvironmentSecretOverrideExecute(r ApiCreateEnvironmentSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -440,10 +438,11 @@ DeleteEnvironmentSecret Delete a secret from the environment
 - You can't delete a BUILT_IN secret
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well  operationId: deleteEnvironmentSecret
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@param secretId Secret ID
-	@return ApiDeleteEnvironmentSecretRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @param secretId Secret ID
+ @return ApiDeleteEnvironmentSecretRequest
 */
 func (a *EnvironmentSecretAPIService) DeleteEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiDeleteEnvironmentSecretRequest {
 	return ApiDeleteEnvironmentSecretRequest{
@@ -559,10 +558,11 @@ EditEnvironmentSecret Edit a secret belonging to the environment
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@param secretId Secret ID
-	@return ApiEditEnvironmentSecretRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @param secretId Secret ID
+ @return ApiEditEnvironmentSecretRequest
 */
 func (a *EnvironmentSecretAPIService) EditEnvironmentSecret(ctx context.Context, environmentId string, secretId string) ApiEditEnvironmentSecretRequest {
 	return ApiEditEnvironmentSecretRequest{
@@ -574,8 +574,7 @@ func (a *EnvironmentSecretAPIService) EditEnvironmentSecret(ctx context.Context,
 }
 
 // Execute executes the request
-//
-//	@return Secret
+//  @return Secret
 func (a *EnvironmentSecretAPIService) EditEnvironmentSecretExecute(r ApiEditEnvironmentSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -683,9 +682,9 @@ func (r ApiListEnvironmentSecretsRequest) Execute() (*SecretResponseList, *http.
 /*
 ListEnvironmentSecrets List environment secrets
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param environmentId Environment ID
-	@return ApiListEnvironmentSecretsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param environmentId Environment ID
+ @return ApiListEnvironmentSecretsRequest
 */
 func (a *EnvironmentSecretAPIService) ListEnvironmentSecrets(ctx context.Context, environmentId string) ApiListEnvironmentSecretsRequest {
 	return ApiListEnvironmentSecretsRequest{
@@ -696,8 +695,7 @@ func (a *EnvironmentSecretAPIService) ListEnvironmentSecrets(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return SecretResponseList
+//  @return SecretResponseList
 func (a *EnvironmentSecretAPIService) ListEnvironmentSecretsExecute(r ApiListEnvironmentSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

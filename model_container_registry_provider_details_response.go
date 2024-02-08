@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ContainerRegistryProviderDetailsResponse type satisfies the MappedNullable interface at compile time
@@ -24,12 +23,9 @@ type ContainerRegistryProviderDetailsResponse struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
 	// URL of the container registry
-	Url                  string                    `json:"url"`
-	Kind                 ContainerRegistryKindEnum `json:"kind"`
-	AdditionalProperties map[string]interface{}
+	Url  string                    `json:"url"`
+	Kind ContainerRegistryKindEnum `json:"kind"`
 }
-
-type _ContainerRegistryProviderDetailsResponse ContainerRegistryProviderDetailsResponse
 
 // NewContainerRegistryProviderDetailsResponse instantiates a new ContainerRegistryProviderDetailsResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -162,60 +158,7 @@ func (o ContainerRegistryProviderDetailsResponse) ToMap() (map[string]interface{
 	toSerialize["name"] = o.Name
 	toSerialize["url"] = o.Url
 	toSerialize["kind"] = o.Kind
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerRegistryProviderDetailsResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-		"url",
-		"kind",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContainerRegistryProviderDetailsResponse := _ContainerRegistryProviderDetailsResponse{}
-
-	err = json.Unmarshal(data, &varContainerRegistryProviderDetailsResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerRegistryProviderDetailsResponse(varContainerRegistryProviderDetailsResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "url")
-		delete(additionalProperties, "kind")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerRegistryProviderDetailsResponse struct {

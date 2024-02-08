@@ -20,11 +20,8 @@ var _ MappedNullable = &CommunityUsage{}
 
 // CommunityUsage struct for CommunityUsage
 type CommunityUsage struct {
-	Projects             []ProjectCurrentCost `json:"projects,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Projects []ProjectCurrentCost `json:"projects,omitempty"`
 }
-
-type _CommunityUsage CommunityUsage
 
 // NewCommunityUsage instantiates a new CommunityUsage object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o CommunityUsage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Projects) {
 		toSerialize["projects"] = o.Projects
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CommunityUsage) UnmarshalJSON(data []byte) (err error) {
-	varCommunityUsage := _CommunityUsage{}
-
-	err = json.Unmarshal(data, &varCommunityUsage)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CommunityUsage(varCommunityUsage)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "projects")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCommunityUsage struct {

@@ -20,12 +20,9 @@ var _ MappedNullable = &RewardClaim{}
 
 // RewardClaim struct for RewardClaim
 type RewardClaim struct {
-	Type                 *string `json:"type,omitempty"`
-	Code                 *string `json:"code,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Type *string `json:"type,omitempty"`
+	Code *string `json:"code,omitempty"`
 }
-
-type _RewardClaim RewardClaim
 
 // NewRewardClaim instantiates a new RewardClaim object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o RewardClaim) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Code) {
 		toSerialize["code"] = o.Code
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *RewardClaim) UnmarshalJSON(data []byte) (err error) {
-	varRewardClaim := _RewardClaim{}
-
-	err = json.Unmarshal(data, &varRewardClaim)
-
-	if err != nil {
-		return err
-	}
-
-	*o = RewardClaim(varRewardClaim)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "code")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableRewardClaim struct {

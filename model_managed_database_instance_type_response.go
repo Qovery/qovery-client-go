@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ManagedDatabaseInstanceTypeResponse type satisfies the MappedNullable interface at compile time
@@ -21,11 +20,8 @@ var _ MappedNullable = &ManagedDatabaseInstanceTypeResponse{}
 
 // ManagedDatabaseInstanceTypeResponse struct for ManagedDatabaseInstanceTypeResponse
 type ManagedDatabaseInstanceTypeResponse struct {
-	Name                 string `json:"name"`
-	AdditionalProperties map[string]interface{}
+	Name string `json:"name"`
 }
-
-type _ManagedDatabaseInstanceTypeResponse ManagedDatabaseInstanceTypeResponse
 
 // NewManagedDatabaseInstanceTypeResponse instantiates a new ManagedDatabaseInstanceTypeResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -80,54 +76,7 @@ func (o ManagedDatabaseInstanceTypeResponse) MarshalJSON() ([]byte, error) {
 func (o ManagedDatabaseInstanceTypeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ManagedDatabaseInstanceTypeResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varManagedDatabaseInstanceTypeResponse := _ManagedDatabaseInstanceTypeResponse{}
-
-	err = json.Unmarshal(data, &varManagedDatabaseInstanceTypeResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ManagedDatabaseInstanceTypeResponse(varManagedDatabaseInstanceTypeResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableManagedDatabaseInstanceTypeResponse struct {

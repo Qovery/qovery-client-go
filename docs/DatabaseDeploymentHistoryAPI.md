@@ -22,25 +22,25 @@ List database deploys
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory(context.Background(), databaseId).StartId(startId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListDatabaseDeploymentHistory`: ListDatabaseDeploymentHistory200Response
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory(context.Background(), databaseId).StartId(startId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDatabaseDeploymentHistory`: ListDatabaseDeploymentHistory200Response
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseDeploymentHistoryAPI.ListDatabaseDeploymentHistory`: %v\n", resp)
 }
 ```
 

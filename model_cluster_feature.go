@@ -20,20 +20,17 @@ var _ MappedNullable = &ClusterFeature{}
 
 // ClusterFeature struct for ClusterFeature
 type ClusterFeature struct {
-	Id                   *string                             `json:"id,omitempty"`
-	Title                *string                             `json:"title,omitempty"`
-	Description          NullableString                      `json:"description,omitempty"`
-	CostPerMonthInCents  NullableInt32                       `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth         NullableFloat32                     `json:"cost_per_month,omitempty"`
-	CurrencyCode         NullableString                      `json:"currency_code,omitempty"`
-	ValueType            *string                             `json:"value_type,omitempty"`
-	Value                NullableClusterFeatureValue         `json:"value,omitempty"`
-	IsValueUpdatable     *bool                               `json:"is_value_updatable,omitempty"`
-	AcceptedValues       []ClusterFeatureAcceptedValuesInner `json:"accepted_values,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id                  *string                             `json:"id,omitempty"`
+	Title               *string                             `json:"title,omitempty"`
+	Description         NullableString                      `json:"description,omitempty"`
+	CostPerMonthInCents NullableInt32                       `json:"cost_per_month_in_cents,omitempty"`
+	CostPerMonth        NullableFloat32                     `json:"cost_per_month,omitempty"`
+	CurrencyCode        NullableString                      `json:"currency_code,omitempty"`
+	ValueType           *string                             `json:"value_type,omitempty"`
+	Value               NullableClusterFeatureValue         `json:"value,omitempty"`
+	IsValueUpdatable    *bool                               `json:"is_value_updatable,omitempty"`
+	AcceptedValues      []ClusterFeatureAcceptedValuesInner `json:"accepted_values,omitempty"`
 }
-
-type _ClusterFeature ClusterFeature
 
 // NewClusterFeature instantiates a new ClusterFeature object
 // This constructor will assign default values to properties that have it defined,
@@ -471,42 +468,7 @@ func (o ClusterFeature) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AcceptedValues) {
 		toSerialize["accepted_values"] = o.AcceptedValues
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterFeature) UnmarshalJSON(data []byte) (err error) {
-	varClusterFeature := _ClusterFeature{}
-
-	err = json.Unmarshal(data, &varClusterFeature)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterFeature(varClusterFeature)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "title")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "cost_per_month_in_cents")
-		delete(additionalProperties, "cost_per_month")
-		delete(additionalProperties, "currency_code")
-		delete(additionalProperties, "value_type")
-		delete(additionalProperties, "value")
-		delete(additionalProperties, "is_value_updatable")
-		delete(additionalProperties, "accepted_values")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterFeature struct {

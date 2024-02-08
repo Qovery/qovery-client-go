@@ -44,9 +44,9 @@ CreateApplicationDeploymentRestriction Create an application deployment restrict
 
 Create an application deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param applicationId Application ID
-	@return ApiCreateApplicationDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param applicationId Application ID
+ @return ApiCreateApplicationDeploymentRestrictionRequest
 */
 func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestriction(ctx context.Context, applicationId string) ApiCreateApplicationDeploymentRestrictionRequest {
 	return ApiCreateApplicationDeploymentRestrictionRequest{
@@ -57,8 +57,7 @@ func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeployment
 }
 
 // Execute executes the request
-//
-//	@return ApplicationDeploymentRestriction
+//  @return ApplicationDeploymentRestriction
 func (a *ApplicationDeploymentRestrictionAPIService) CreateApplicationDeploymentRestrictionExecute(r ApiCreateApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -165,10 +164,10 @@ DeleteApplicationDeploymentRestriction Delete an application deployment restrict
 
 Delete an application deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param applicationId Application ID
-	@param deploymentRestrictionId Deployment Restriction ID
-	@return ApiDeleteApplicationDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param applicationId Application ID
+ @param deploymentRestrictionId Deployment Restriction ID
+ @return ApiDeleteApplicationDeploymentRestrictionRequest
 */
 func (a *ApplicationDeploymentRestrictionAPIService) DeleteApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiDeleteApplicationDeploymentRestrictionRequest {
 	return ApiDeleteApplicationDeploymentRestrictionRequest{
@@ -281,10 +280,10 @@ EditApplicationDeploymentRestriction Edit an application deployment restriction
 
 Edit an application deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param applicationId Application ID
-	@param deploymentRestrictionId Deployment Restriction ID
-	@return ApiEditApplicationDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param applicationId Application ID
+ @param deploymentRestrictionId Deployment Restriction ID
+ @return ApiEditApplicationDeploymentRestrictionRequest
 */
 func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestriction(ctx context.Context, applicationId string, deploymentRestrictionId string) ApiEditApplicationDeploymentRestrictionRequest {
 	return ApiEditApplicationDeploymentRestrictionRequest{
@@ -296,8 +295,7 @@ func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRe
 }
 
 // Execute executes the request
-//
-//	@return ApplicationDeploymentRestriction
+//  @return ApplicationDeploymentRestriction
 func (a *ApplicationDeploymentRestrictionAPIService) EditApplicationDeploymentRestrictionExecute(r ApiEditApplicationDeploymentRestrictionRequest) (*ApplicationDeploymentRestriction, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -404,9 +402,9 @@ GetApplicationDeploymentRestrictions Get application deployment restrictions
 
 Get application deployment restrictions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param applicationId Application ID
-	@return ApiGetApplicationDeploymentRestrictionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param applicationId Application ID
+ @return ApiGetApplicationDeploymentRestrictionsRequest
 */
 func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictions(ctx context.Context, applicationId string) ApiGetApplicationDeploymentRestrictionsRequest {
 	return ApiGetApplicationDeploymentRestrictionsRequest{
@@ -417,8 +415,7 @@ func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRes
 }
 
 // Execute executes the request
-//
-//	@return ApplicationDeploymentRestrictionResponseList
+//  @return ApplicationDeploymentRestrictionResponseList
 func (a *ApplicationDeploymentRestrictionAPIService) GetApplicationDeploymentRestrictionsExecute(r ApiGetApplicationDeploymentRestrictionsRequest) (*ApplicationDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

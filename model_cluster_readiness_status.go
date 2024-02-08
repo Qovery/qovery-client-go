@@ -20,11 +20,8 @@ var _ MappedNullable = &ClusterReadinessStatus{}
 
 // ClusterReadinessStatus struct for ClusterReadinessStatus
 type ClusterReadinessStatus struct {
-	IsReady              *bool `json:"is_ready,omitempty"`
-	AdditionalProperties map[string]interface{}
+	IsReady *bool `json:"is_ready,omitempty"`
 }
-
-type _ClusterReadinessStatus ClusterReadinessStatus
 
 // NewClusterReadinessStatus instantiates a new ClusterReadinessStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ClusterReadinessStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsReady) {
 		toSerialize["is_ready"] = o.IsReady
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterReadinessStatus) UnmarshalJSON(data []byte) (err error) {
-	varClusterReadinessStatus := _ClusterReadinessStatus{}
-
-	err = json.Unmarshal(data, &varClusterReadinessStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterReadinessStatus(varClusterReadinessStatus)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "is_ready")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterReadinessStatus struct {

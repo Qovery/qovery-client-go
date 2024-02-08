@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the GitTokenAssociatedServiceResponse type satisfies the MappedNullable interface at compile time
@@ -21,17 +20,14 @@ var _ MappedNullable = &GitTokenAssociatedServiceResponse{}
 
 // GitTokenAssociatedServiceResponse struct for GitTokenAssociatedServiceResponse
 type GitTokenAssociatedServiceResponse struct {
-	ProjectId            string                        `json:"project_id"`
-	ProjectName          string                        `json:"project_name"`
-	EnvironmentId        string                        `json:"environment_id"`
-	EnvironmentName      string                        `json:"environment_name"`
-	ServiceId            string                        `json:"service_id"`
-	ServiceName          string                        `json:"service_name"`
-	ServiceType          GitTokenAssociatedServiceType `json:"service_type"`
-	AdditionalProperties map[string]interface{}
+	ProjectId       string                        `json:"project_id"`
+	ProjectName     string                        `json:"project_name"`
+	EnvironmentId   string                        `json:"environment_id"`
+	EnvironmentName string                        `json:"environment_name"`
+	ServiceId       string                        `json:"service_id"`
+	ServiceName     string                        `json:"service_name"`
+	ServiceType     GitTokenAssociatedServiceType `json:"service_type"`
 }
-
-type _GitTokenAssociatedServiceResponse GitTokenAssociatedServiceResponse
 
 // NewGitTokenAssociatedServiceResponse instantiates a new GitTokenAssociatedServiceResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -242,66 +238,7 @@ func (o GitTokenAssociatedServiceResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["service_id"] = o.ServiceId
 	toSerialize["service_name"] = o.ServiceName
 	toSerialize["service_type"] = o.ServiceType
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GitTokenAssociatedServiceResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"project_id",
-		"project_name",
-		"environment_id",
-		"environment_name",
-		"service_id",
-		"service_name",
-		"service_type",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varGitTokenAssociatedServiceResponse := _GitTokenAssociatedServiceResponse{}
-
-	err = json.Unmarshal(data, &varGitTokenAssociatedServiceResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GitTokenAssociatedServiceResponse(varGitTokenAssociatedServiceResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "project_id")
-		delete(additionalProperties, "project_name")
-		delete(additionalProperties, "environment_id")
-		delete(additionalProperties, "environment_name")
-		delete(additionalProperties, "service_id")
-		delete(additionalProperties, "service_name")
-		delete(additionalProperties, "service_type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGitTokenAssociatedServiceResponse struct {

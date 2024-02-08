@@ -36,9 +36,9 @@ func (r ApiListAWSEKSInstanceTypeRequest) Execute() (*ClusterInstanceTypeRespons
 /*
 ListAWSEKSInstanceType List AWS EKS available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region region name
-	@return ApiListAWSEKSInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @return ApiListAWSEKSInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListAWSEKSInstanceType(ctx context.Context, region string) ApiListAWSEKSInstanceTypeRequest {
 	return ApiListAWSEKSInstanceTypeRequest{
@@ -49,8 +49,7 @@ func (a *CloudProviderAPIService) ListAWSEKSInstanceType(ctx context.Context, re
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -152,9 +151,9 @@ func (r ApiListAWSEc2InstanceTypeRequest) Execute() (*ClusterInstanceTypeRespons
 /*
 ListAWSEc2InstanceType List AWS EC2 available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region region name
-	@return ApiListAWSEc2InstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @return ApiListAWSEc2InstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListAWSEc2InstanceType(ctx context.Context, region string) ApiListAWSEc2InstanceTypeRequest {
 	return ApiListAWSEc2InstanceTypeRequest{
@@ -165,8 +164,7 @@ func (a *CloudProviderAPIService) ListAWSEc2InstanceType(ctx context.Context, re
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListAWSEc2InstanceTypeExecute(r ApiListAWSEc2InstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -267,8 +265,8 @@ func (r ApiListAWSFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http
 /*
 ListAWSFeatures List AWS features available
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAWSFeaturesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAWSFeaturesRequest
 */
 func (a *CloudProviderAPIService) ListAWSFeatures(ctx context.Context) ApiListAWSFeaturesRequest {
 	return ApiListAWSFeaturesRequest{
@@ -278,8 +276,7 @@ func (a *CloudProviderAPIService) ListAWSFeatures(ctx context.Context) ApiListAW
 }
 
 // Execute executes the request
-//
-//	@return ClusterFeatureResponseList
+//  @return ClusterFeatureResponseList
 func (a *CloudProviderAPIService) ListAWSFeaturesExecute(r ApiListAWSFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -379,8 +376,8 @@ func (r ApiListAWSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseLi
 /*
 ListAWSInstanceType List AWS available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAWSInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAWSInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListAWSInstanceType(ctx context.Context) ApiListAWSInstanceTypeRequest {
 	return ApiListAWSInstanceTypeRequest{
@@ -390,8 +387,7 @@ func (a *CloudProviderAPIService) ListAWSInstanceType(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -493,10 +489,10 @@ func (r ApiListAWSManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabas
 /*
 ListAWSManagedDatabaseInstanceType List AWS available managed database instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region region name
-	@param databaseType Database type
-	@return ApiListAWSManagedDatabaseInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @param databaseType Database type
+ @return ApiListAWSManagedDatabaseInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
 	return ApiListAWSManagedDatabaseInstanceTypeRequest{
@@ -508,8 +504,7 @@ func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceType(ctx context
 }
 
 // Execute executes the request
-//
-//	@return ManagedDatabaseInstanceTypeResponseList
+//  @return ManagedDatabaseInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceTypeExecute(r ApiListAWSManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -611,8 +606,8 @@ func (r ApiListAWSManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeRes
 /*
 ListAWSManagedDatabaseType List AWS available managed database types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAWSManagedDatabaseTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAWSManagedDatabaseTypeRequest
 */
 func (a *CloudProviderAPIService) ListAWSManagedDatabaseType(ctx context.Context) ApiListAWSManagedDatabaseTypeRequest {
 	return ApiListAWSManagedDatabaseTypeRequest{
@@ -622,8 +617,7 @@ func (a *CloudProviderAPIService) ListAWSManagedDatabaseType(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return ManagedDatabaseTypeResponseList
+//  @return ManagedDatabaseTypeResponseList
 func (a *CloudProviderAPIService) ListAWSManagedDatabaseTypeExecute(r ApiListAWSManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -723,8 +717,8 @@ func (r ApiListAWSRegionsRequest) Execute() (*ClusterRegionResponseList, *http.R
 /*
 ListAWSRegions List AWS regions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAWSRegionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAWSRegionsRequest
 */
 func (a *CloudProviderAPIService) ListAWSRegions(ctx context.Context) ApiListAWSRegionsRequest {
 	return ApiListAWSRegionsRequest{
@@ -734,8 +728,7 @@ func (a *CloudProviderAPIService) ListAWSRegions(ctx context.Context) ApiListAWS
 }
 
 // Execute executes the request
-//
-//	@return ClusterRegionResponseList
+//  @return ClusterRegionResponseList
 func (a *CloudProviderAPIService) ListAWSRegionsExecute(r ApiListAWSRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -835,8 +828,8 @@ func (r ApiListCloudProviderRequest) Execute() (*CloudProviderResponseList, *htt
 /*
 ListCloudProvider List Cloud providers available
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListCloudProviderRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListCloudProviderRequest
 */
 func (a *CloudProviderAPIService) ListCloudProvider(ctx context.Context) ApiListCloudProviderRequest {
 	return ApiListCloudProviderRequest{
@@ -846,8 +839,7 @@ func (a *CloudProviderAPIService) ListCloudProvider(ctx context.Context) ApiList
 }
 
 // Execute executes the request
-//
-//	@return CloudProviderResponseList
+//  @return CloudProviderResponseList
 func (a *CloudProviderAPIService) ListCloudProviderExecute(r ApiListCloudProviderRequest) (*CloudProviderResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -947,8 +939,8 @@ func (r ApiListGcpFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http
 /*
 ListGcpFeatures List GCP features available
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListGcpFeaturesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListGcpFeaturesRequest
 */
 func (a *CloudProviderAPIService) ListGcpFeatures(ctx context.Context) ApiListGcpFeaturesRequest {
 	return ApiListGcpFeaturesRequest{
@@ -958,8 +950,7 @@ func (a *CloudProviderAPIService) ListGcpFeatures(ctx context.Context) ApiListGc
 }
 
 // Execute executes the request
-//
-//	@return ClusterFeatureResponseList
+//  @return ClusterFeatureResponseList
 func (a *CloudProviderAPIService) ListGcpFeaturesExecute(r ApiListGcpFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1060,9 +1051,9 @@ func (r ApiListGcpGkeInstanceTypeRequest) Execute() (*ClusterInstanceTypeRespons
 /*
 ListGcpGkeInstanceType List GCP GKE available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region region name
-	@return ApiListGcpGkeInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param region region name
+ @return ApiListGcpGkeInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListGcpGkeInstanceType(ctx context.Context, region string) ApiListGcpGkeInstanceTypeRequest {
 	return ApiListGcpGkeInstanceTypeRequest{
@@ -1073,8 +1064,7 @@ func (a *CloudProviderAPIService) ListGcpGkeInstanceType(ctx context.Context, re
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListGcpGkeInstanceTypeExecute(r ApiListGcpGkeInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1175,8 +1165,8 @@ func (r ApiListGcpRegionsRequest) Execute() (*ClusterRegionResponseList, *http.R
 /*
 ListGcpRegions List GCP regions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListGcpRegionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListGcpRegionsRequest
 */
 func (a *CloudProviderAPIService) ListGcpRegions(ctx context.Context) ApiListGcpRegionsRequest {
 	return ApiListGcpRegionsRequest{
@@ -1186,8 +1176,7 @@ func (a *CloudProviderAPIService) ListGcpRegions(ctx context.Context) ApiListGcp
 }
 
 // Execute executes the request
-//
-//	@return ClusterRegionResponseList
+//  @return ClusterRegionResponseList
 func (a *CloudProviderAPIService) ListGcpRegionsExecute(r ApiListGcpRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1288,9 +1277,9 @@ func (r ApiListSCWManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabas
 /*
 ListSCWManagedDatabaseInstanceType List Scaleway available managed database instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseType Database type
-	@return ApiListSCWManagedDatabaseInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param databaseType Database type
+ @return ApiListSCWManagedDatabaseInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListSCWManagedDatabaseInstanceType(ctx context.Context, databaseType string) ApiListSCWManagedDatabaseInstanceTypeRequest {
 	return ApiListSCWManagedDatabaseInstanceTypeRequest{
@@ -1301,8 +1290,7 @@ func (a *CloudProviderAPIService) ListSCWManagedDatabaseInstanceType(ctx context
 }
 
 // Execute executes the request
-//
-//	@return ManagedDatabaseInstanceTypeResponseList
+//  @return ManagedDatabaseInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListSCWManagedDatabaseInstanceTypeExecute(r ApiListSCWManagedDatabaseInstanceTypeRequest) (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1403,8 +1391,8 @@ func (r ApiListSCWManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeRes
 /*
 ListSCWManagedDatabaseType List Scaleway available managed database types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListSCWManagedDatabaseTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListSCWManagedDatabaseTypeRequest
 */
 func (a *CloudProviderAPIService) ListSCWManagedDatabaseType(ctx context.Context) ApiListSCWManagedDatabaseTypeRequest {
 	return ApiListSCWManagedDatabaseTypeRequest{
@@ -1414,8 +1402,7 @@ func (a *CloudProviderAPIService) ListSCWManagedDatabaseType(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return ManagedDatabaseTypeResponseList
+//  @return ManagedDatabaseTypeResponseList
 func (a *CloudProviderAPIService) ListSCWManagedDatabaseTypeExecute(r ApiListSCWManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1515,8 +1502,8 @@ func (r ApiListScalewayFeaturesRequest) Execute() (*ClusterFeatureResponseList, 
 /*
 ListScalewayFeatures List Scaleway features available
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListScalewayFeaturesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListScalewayFeaturesRequest
 */
 func (a *CloudProviderAPIService) ListScalewayFeatures(ctx context.Context) ApiListScalewayFeaturesRequest {
 	return ApiListScalewayFeaturesRequest{
@@ -1526,8 +1513,7 @@ func (a *CloudProviderAPIService) ListScalewayFeatures(ctx context.Context) ApiL
 }
 
 // Execute executes the request
-//
-//	@return ClusterFeatureResponseList
+//  @return ClusterFeatureResponseList
 func (a *CloudProviderAPIService) ListScalewayFeaturesExecute(r ApiListScalewayFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1627,8 +1613,8 @@ func (r ApiListScalewayInstanceTypeRequest) Execute() (*ClusterInstanceTypeRespo
 /*
 ListScalewayInstanceType List Scaleway available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListScalewayInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListScalewayInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListScalewayInstanceType(ctx context.Context) ApiListScalewayInstanceTypeRequest {
 	return ApiListScalewayInstanceTypeRequest{
@@ -1638,8 +1624,7 @@ func (a *CloudProviderAPIService) ListScalewayInstanceType(ctx context.Context) 
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1740,9 +1725,9 @@ func (r ApiListScalewayKapsuleInstanceTypeRequest) Execute() (*ClusterInstanceTy
 /*
 ListScalewayKapsuleInstanceType List Scaleway Kapsule available instance types
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param zone zone name
-	@return ApiListScalewayKapsuleInstanceTypeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param zone zone name
+ @return ApiListScalewayKapsuleInstanceTypeRequest
 */
 func (a *CloudProviderAPIService) ListScalewayKapsuleInstanceType(ctx context.Context, zone string) ApiListScalewayKapsuleInstanceTypeRequest {
 	return ApiListScalewayKapsuleInstanceTypeRequest{
@@ -1753,8 +1738,7 @@ func (a *CloudProviderAPIService) ListScalewayKapsuleInstanceType(ctx context.Co
 }
 
 // Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
+//  @return ClusterInstanceTypeResponseList
 func (a *CloudProviderAPIService) ListScalewayKapsuleInstanceTypeExecute(r ApiListScalewayKapsuleInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1855,8 +1839,8 @@ func (r ApiListScalewayRegionsRequest) Execute() (*ClusterRegionResponseList, *h
 /*
 ListScalewayRegions List Scaleway regions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListScalewayRegionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListScalewayRegionsRequest
 */
 func (a *CloudProviderAPIService) ListScalewayRegions(ctx context.Context) ApiListScalewayRegionsRequest {
 	return ApiListScalewayRegionsRequest{
@@ -1866,8 +1850,7 @@ func (a *CloudProviderAPIService) ListScalewayRegions(ctx context.Context) ApiLi
 }
 
 // Execute executes the request
-//
-//	@return ClusterRegionResponseList
+//  @return ClusterRegionResponseList
 func (a *CloudProviderAPIService) ListScalewayRegionsExecute(r ApiListScalewayRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

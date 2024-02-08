@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the OrganizationGithubAppConnectRequest type satisfies the MappedNullable interface at compile time
@@ -21,12 +20,9 @@ var _ MappedNullable = &OrganizationGithubAppConnectRequest{}
 
 // OrganizationGithubAppConnectRequest struct for OrganizationGithubAppConnectRequest
 type OrganizationGithubAppConnectRequest struct {
-	InstallationId       string `json:"installation_id"`
-	Code                 string `json:"code"`
-	AdditionalProperties map[string]interface{}
+	InstallationId string `json:"installation_id"`
+	Code           string `json:"code"`
 }
-
-type _OrganizationGithubAppConnectRequest OrganizationGithubAppConnectRequest
 
 // NewOrganizationGithubAppConnectRequest instantiates a new OrganizationGithubAppConnectRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -107,56 +103,7 @@ func (o OrganizationGithubAppConnectRequest) ToMap() (map[string]interface{}, er
 	toSerialize := map[string]interface{}{}
 	toSerialize["installation_id"] = o.InstallationId
 	toSerialize["code"] = o.Code
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationGithubAppConnectRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"installation_id",
-		"code",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrganizationGithubAppConnectRequest := _OrganizationGithubAppConnectRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationGithubAppConnectRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationGithubAppConnectRequest(varOrganizationGithubAppConnectRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "installation_id")
-		delete(additionalProperties, "code")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationGithubAppConnectRequest struct {

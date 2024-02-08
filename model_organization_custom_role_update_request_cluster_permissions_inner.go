@@ -20,12 +20,9 @@ var _ MappedNullable = &OrganizationCustomRoleUpdateRequestClusterPermissionsInn
 
 // OrganizationCustomRoleUpdateRequestClusterPermissionsInner struct for OrganizationCustomRoleUpdateRequestClusterPermissionsInner
 type OrganizationCustomRoleUpdateRequestClusterPermissionsInner struct {
-	ClusterId            *string                                  `json:"cluster_id,omitempty"`
-	Permission           *OrganizationCustomRoleClusterPermission `json:"permission,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ClusterId  *string                                  `json:"cluster_id,omitempty"`
+	Permission *OrganizationCustomRoleClusterPermission `json:"permission,omitempty"`
 }
-
-type _OrganizationCustomRoleUpdateRequestClusterPermissionsInner OrganizationCustomRoleUpdateRequestClusterPermissionsInner
 
 // NewOrganizationCustomRoleUpdateRequestClusterPermissionsInner instantiates a new OrganizationCustomRoleUpdateRequestClusterPermissionsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o OrganizationCustomRoleUpdateRequestClusterPermissionsInner) ToMap() (map
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationCustomRoleUpdateRequestClusterPermissionsInner) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationCustomRoleUpdateRequestClusterPermissionsInner := _OrganizationCustomRoleUpdateRequestClusterPermissionsInner{}
-
-	err = json.Unmarshal(data, &varOrganizationCustomRoleUpdateRequestClusterPermissionsInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationCustomRoleUpdateRequestClusterPermissionsInner(varOrganizationCustomRoleUpdateRequestClusterPermissionsInner)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "permission")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationCustomRoleUpdateRequestClusterPermissionsInner struct {

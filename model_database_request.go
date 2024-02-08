@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the DatabaseRequest type satisfies the MappedNullable interface at compile time
@@ -36,11 +35,8 @@ type DatabaseRequest struct {
 	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
-	Storage              *int32 `json:"storage,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Storage *int32 `json:"storage,omitempty"`
 }
-
-type _DatabaseRequest DatabaseRequest
 
 // NewDatabaseRequest instantiates a new DatabaseRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -395,66 +391,7 @@ func (o DatabaseRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DatabaseRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"type",
-		"version",
-		"mode",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDatabaseRequest := _DatabaseRequest{}
-
-	err = json.Unmarshal(data, &varDatabaseRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatabaseRequest(varDatabaseRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "version")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "accessibility")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "instance_type")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "storage")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDatabaseRequest struct {

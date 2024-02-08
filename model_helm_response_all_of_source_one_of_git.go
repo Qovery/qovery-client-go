@@ -20,11 +20,8 @@ var _ MappedNullable = &HelmResponseAllOfSourceOneOfGit{}
 
 // HelmResponseAllOfSourceOneOfGit struct for HelmResponseAllOfSourceOneOfGit
 type HelmResponseAllOfSourceOneOfGit struct {
-	GitRepository        *ApplicationGitRepository `json:"git_repository,omitempty"`
-	AdditionalProperties map[string]interface{}
+	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
 }
-
-type _HelmResponseAllOfSourceOneOfGit HelmResponseAllOfSourceOneOfGit
 
 // NewHelmResponseAllOfSourceOneOfGit instantiates a new HelmResponseAllOfSourceOneOfGit object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o HelmResponseAllOfSourceOneOfGit) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmResponseAllOfSourceOneOfGit) UnmarshalJSON(data []byte) (err error) {
-	varHelmResponseAllOfSourceOneOfGit := _HelmResponseAllOfSourceOneOfGit{}
-
-	err = json.Unmarshal(data, &varHelmResponseAllOfSourceOneOfGit)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmResponseAllOfSourceOneOfGit(varHelmResponseAllOfSourceOneOfGit)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "git_repository")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmResponseAllOfSourceOneOfGit struct {

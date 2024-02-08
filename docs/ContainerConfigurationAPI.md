@@ -25,25 +25,25 @@ Edit advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	containerAdvancedSettings := *openapiclient.NewContainerAdvancedSettings() // ContainerAdvancedSettings |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerAdvancedSettings := *openapiclient.NewContainerAdvancedSettings() // ContainerAdvancedSettings |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerConfigurationAPI.EditContainerAdvancedSettings(context.Background(), containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.EditContainerAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditContainerAdvancedSettings`: ContainerAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.EditContainerAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerConfigurationAPI.EditContainerAdvancedSettings(context.Background(), containerId).ContainerAdvancedSettings(containerAdvancedSettings).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.EditContainerAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditContainerAdvancedSettings`: ContainerAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.EditContainerAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -97,25 +97,25 @@ Edit Container Network
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	containerNetworkRequest := *openapiclient.NewContainerNetworkRequest() // ContainerNetworkRequest |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerNetworkRequest := *openapiclient.NewContainerNetworkRequest() // ContainerNetworkRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerConfigurationAPI.EditContainerNetwork(context.Background(), containerId).ContainerNetworkRequest(containerNetworkRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.EditContainerNetwork``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditContainerNetwork`: ContainerNetwork
-	fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.EditContainerNetwork`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerConfigurationAPI.EditContainerNetwork(context.Background(), containerId).ContainerNetworkRequest(containerNetworkRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.EditContainerNetwork``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditContainerNetwork`: ContainerNetwork
+    fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.EditContainerNetwork`: %v\n", resp)
 }
 ```
 
@@ -169,24 +169,24 @@ Get advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerConfigurationAPI.GetContainerAdvancedSettings(context.Background(), containerId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.GetContainerAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetContainerAdvancedSettings`: ContainerAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.GetContainerAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerConfigurationAPI.GetContainerAdvancedSettings(context.Background(), containerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.GetContainerAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerAdvancedSettings`: ContainerAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.GetContainerAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -239,24 +239,24 @@ Get Container Network information
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerConfigurationAPI.GetContainerNetwork(context.Background(), containerId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.GetContainerNetwork``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetContainerNetwork`: ContainerNetwork
-	fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.GetContainerNetwork`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerConfigurationAPI.GetContainerNetwork(context.Background(), containerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerConfigurationAPI.GetContainerNetwork``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerNetwork`: ContainerNetwork
+    fmt.Fprintf(os.Stdout, "Response from `ContainerConfigurationAPI.GetContainerNetwork`: %v\n", resp)
 }
 ```
 

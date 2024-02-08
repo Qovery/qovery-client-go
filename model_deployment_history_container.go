@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -26,16 +25,13 @@ type DeploymentHistoryContainer struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the container
-	Name                 *string    `json:"name,omitempty"`
-	Status               *StateEnum `json:"status,omitempty"`
-	ImageName            *string    `json:"image_name,omitempty"`
-	Tag                  *string    `json:"tag,omitempty"`
-	Arguments            []string   `json:"arguments,omitempty"`
-	Entrypoint           *string    `json:"entrypoint,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name       *string    `json:"name,omitempty"`
+	Status     *StateEnum `json:"status,omitempty"`
+	ImageName  *string    `json:"image_name,omitempty"`
+	Tag        *string    `json:"tag,omitempty"`
+	Arguments  []string   `json:"arguments,omitempty"`
+	Entrypoint *string    `json:"entrypoint,omitempty"`
 }
-
-type _DeploymentHistoryContainer DeploymentHistoryContainer
 
 // NewDeploymentHistoryContainer instantiates a new DeploymentHistoryContainer object
 // This constructor will assign default values to properties that have it defined,
@@ -361,63 +357,7 @@ func (o DeploymentHistoryContainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentHistoryContainer) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentHistoryContainer := _DeploymentHistoryContainer{}
-
-	err = json.Unmarshal(data, &varDeploymentHistoryContainer)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentHistoryContainer(varDeploymentHistoryContainer)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "image_name")
-		delete(additionalProperties, "tag")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentHistoryContainer struct {

@@ -27,25 +27,25 @@ Add an environment variable to the project
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable(context.Background(), projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateProjectEnvironmentVariable`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable(context.Background(), projectId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateProjectEnvironmentVariable`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -99,26 +99,26 @@ Create an environment variable alias at the project level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias(context.Background(), projectId, environmentVariableId).Key(key).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateProjectEnvironmentVariableAlias`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias(context.Background(), projectId, environmentVariableId).Key(key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateProjectEnvironmentVariableAlias`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
 
@@ -174,26 +174,26 @@ Create an environment variable override at the project level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	value := *openapiclient.NewValue() // Value |  (optional)
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    value := *openapiclient.NewValue() // Value |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride(context.Background(), projectId, environmentVariableId).Value(value).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateProjectEnvironmentVariableOverride`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride(context.Background(), projectId, environmentVariableId).Value(value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateProjectEnvironmentVariableOverride`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.CreateProjectEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
 
@@ -249,23 +249,23 @@ Delete an environment variable from a project
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ProjectEnvironmentVariableAPI.DeleteProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.DeleteProjectEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ProjectEnvironmentVariableAPI.DeleteProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.DeleteProjectEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -320,26 +320,26 @@ Edit an environment variable belonging to the project
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-	environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+    environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditProjectEnvironmentVariable`: EnvironmentVariable
-	fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable(context.Background(), projectId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditProjectEnvironmentVariable`: EnvironmentVariable
+    fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.EditProjectEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -393,24 +393,24 @@ List project environment variables
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable(context.Background(), projectId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListProjectEnvironmentVariable`: EnvironmentVariableResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable(context.Background(), projectId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListProjectEnvironmentVariable`: EnvironmentVariableResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ProjectEnvironmentVariableAPI.ListProjectEnvironmentVariable`: %v\n", resp)
 }
 ```
 

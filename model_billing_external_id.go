@@ -20,11 +20,8 @@ var _ MappedNullable = &BillingExternalId{}
 
 // BillingExternalId struct for BillingExternalId
 type BillingExternalId struct {
-	Id                   *string `json:"id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id *string `json:"id,omitempty"`
 }
-
-type _BillingExternalId BillingExternalId
 
 // NewBillingExternalId instantiates a new BillingExternalId object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o BillingExternalId) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BillingExternalId) UnmarshalJSON(data []byte) (err error) {
-	varBillingExternalId := _BillingExternalId{}
-
-	err = json.Unmarshal(data, &varBillingExternalId)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BillingExternalId(varBillingExternalId)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBillingExternalId struct {

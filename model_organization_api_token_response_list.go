@@ -20,11 +20,8 @@ var _ MappedNullable = &OrganizationApiTokenResponseList{}
 
 // OrganizationApiTokenResponseList struct for OrganizationApiTokenResponseList
 type OrganizationApiTokenResponseList struct {
-	Results              []OrganizationApiToken `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []OrganizationApiToken `json:"results,omitempty"`
 }
-
-type _OrganizationApiTokenResponseList OrganizationApiTokenResponseList
 
 // NewOrganizationApiTokenResponseList instantiates a new OrganizationApiTokenResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OrganizationApiTokenResponseList) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationApiTokenResponseList) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationApiTokenResponseList := _OrganizationApiTokenResponseList{}
-
-	err = json.Unmarshal(data, &varOrganizationApiTokenResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationApiTokenResponseList(varOrganizationApiTokenResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationApiTokenResponseList struct {

@@ -20,11 +20,8 @@ var _ MappedNullable = &BaseJobResponseAllOfSourceOneOf1{}
 
 // BaseJobResponseAllOfSourceOneOf1 struct for BaseJobResponseAllOfSourceOneOf1
 type BaseJobResponseAllOfSourceOneOf1 struct {
-	Docker               *BaseJobResponseAllOfSourceOneOf1Docker `json:"docker,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Docker *BaseJobResponseAllOfSourceOneOf1Docker `json:"docker,omitempty"`
 }
-
-type _BaseJobResponseAllOfSourceOneOf1 BaseJobResponseAllOfSourceOneOf1
 
 // NewBaseJobResponseAllOfSourceOneOf1 instantiates a new BaseJobResponseAllOfSourceOneOf1 object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o BaseJobResponseAllOfSourceOneOf1) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Docker) {
 		toSerialize["docker"] = o.Docker
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BaseJobResponseAllOfSourceOneOf1) UnmarshalJSON(data []byte) (err error) {
-	varBaseJobResponseAllOfSourceOneOf1 := _BaseJobResponseAllOfSourceOneOf1{}
-
-	err = json.Unmarshal(data, &varBaseJobResponseAllOfSourceOneOf1)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BaseJobResponseAllOfSourceOneOf1(varBaseJobResponseAllOfSourceOneOf1)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "docker")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBaseJobResponseAllOfSourceOneOf1 struct {

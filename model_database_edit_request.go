@@ -33,11 +33,8 @@ type DatabaseEditRequest struct {
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
-	InstanceType         *string `json:"instance_type,omitempty"`
-	AdditionalProperties map[string]interface{}
+	InstanceType *string `json:"instance_type,omitempty"`
 }
-
-type _DatabaseEditRequest DatabaseEditRequest
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -354,40 +351,7 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InstanceType) {
 		toSerialize["instance_type"] = o.InstanceType
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DatabaseEditRequest) UnmarshalJSON(data []byte) (err error) {
-	varDatabaseEditRequest := _DatabaseEditRequest{}
-
-	err = json.Unmarshal(data, &varDatabaseEditRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatabaseEditRequest(varDatabaseEditRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "version")
-		delete(additionalProperties, "accessibility")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "storage")
-		delete(additionalProperties, "instance_type")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDatabaseEditRequest struct {

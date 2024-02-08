@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ApplicationDeploymentRestrictionRequest type satisfies the MappedNullable interface at compile time
@@ -24,11 +23,8 @@ type ApplicationDeploymentRestrictionRequest struct {
 	Mode DeploymentRestrictionModeEnum `json:"mode"`
 	Type DeploymentRestrictionTypeEnum `json:"type"`
 	// For `PATH` restrictions, the value must not start with `/`
-	Value                string `json:"value"`
-	AdditionalProperties map[string]interface{}
+	Value string `json:"value"`
 }
-
-type _ApplicationDeploymentRestrictionRequest ApplicationDeploymentRestrictionRequest
 
 // NewApplicationDeploymentRestrictionRequest instantiates a new ApplicationDeploymentRestrictionRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -135,58 +131,7 @@ func (o ApplicationDeploymentRestrictionRequest) ToMap() (map[string]interface{}
 	toSerialize["mode"] = o.Mode
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ApplicationDeploymentRestrictionRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"mode",
-		"type",
-		"value",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplicationDeploymentRestrictionRequest := _ApplicationDeploymentRestrictionRequest{}
-
-	err = json.Unmarshal(data, &varApplicationDeploymentRestrictionRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ApplicationDeploymentRestrictionRequest(varApplicationDeploymentRestrictionRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "value")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableApplicationDeploymentRestrictionRequest struct {

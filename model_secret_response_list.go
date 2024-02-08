@@ -20,11 +20,8 @@ var _ MappedNullable = &SecretResponseList{}
 
 // SecretResponseList struct for SecretResponseList
 type SecretResponseList struct {
-	Results              []Secret `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []Secret `json:"results,omitempty"`
 }
-
-type _SecretResponseList SecretResponseList
 
 // NewSecretResponseList instantiates a new SecretResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o SecretResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *SecretResponseList) UnmarshalJSON(data []byte) (err error) {
-	varSecretResponseList := _SecretResponseList{}
-
-	err = json.Unmarshal(data, &varSecretResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = SecretResponseList(varSecretResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableSecretResponseList struct {

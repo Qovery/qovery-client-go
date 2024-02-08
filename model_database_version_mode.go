@@ -20,12 +20,9 @@ var _ MappedNullable = &DatabaseVersionMode{}
 
 // DatabaseVersionMode struct for DatabaseVersionMode
 type DatabaseVersionMode struct {
-	Name                 *string           `json:"name,omitempty"`
-	SupportedMode        *DatabaseModeEnum `json:"supported_mode,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name          *string           `json:"name,omitempty"`
+	SupportedMode *DatabaseModeEnum `json:"supported_mode,omitempty"`
 }
-
-type _DatabaseVersionMode DatabaseVersionMode
 
 // NewDatabaseVersionMode instantiates a new DatabaseVersionMode object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o DatabaseVersionMode) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SupportedMode) {
 		toSerialize["supported_mode"] = o.SupportedMode
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DatabaseVersionMode) UnmarshalJSON(data []byte) (err error) {
-	varDatabaseVersionMode := _DatabaseVersionMode{}
-
-	err = json.Unmarshal(data, &varDatabaseVersionMode)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatabaseVersionMode(varDatabaseVersionMode)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "supported_mode")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDatabaseVersionMode struct {

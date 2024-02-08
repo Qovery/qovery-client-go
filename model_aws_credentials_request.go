@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AwsCredentialsRequest type satisfies the MappedNullable interface at compile time
@@ -21,13 +20,10 @@ var _ MappedNullable = &AwsCredentialsRequest{}
 
 // AwsCredentialsRequest struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
-	Name                 string `json:"name"`
-	AccessKeyId          string `json:"access_key_id"`
-	SecretAccessKey      string `json:"secret_access_key"`
-	AdditionalProperties map[string]interface{}
+	Name            string `json:"name"`
+	AccessKeyId     string `json:"access_key_id"`
+	SecretAccessKey string `json:"secret_access_key"`
 }
-
-type _AwsCredentialsRequest AwsCredentialsRequest
 
 // NewAwsCredentialsRequest instantiates a new AwsCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -134,58 +130,7 @@ func (o AwsCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["access_key_id"] = o.AccessKeyId
 	toSerialize["secret_access_key"] = o.SecretAccessKey
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AwsCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"access_key_id",
-		"secret_access_key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAwsCredentialsRequest := _AwsCredentialsRequest{}
-
-	err = json.Unmarshal(data, &varAwsCredentialsRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AwsCredentialsRequest(varAwsCredentialsRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "access_key_id")
-		delete(additionalProperties, "secret_access_key")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAwsCredentialsRequest struct {

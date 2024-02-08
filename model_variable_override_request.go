@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the VariableOverrideRequest type satisfies the MappedNullable interface at compile time
@@ -25,11 +24,8 @@ type VariableOverrideRequest struct {
 	Value         string               `json:"value"`
 	OverrideScope APIVariableScopeEnum `json:"override_scope"`
 	// the id of the variable that is aliased.
-	OverrideParentId     string `json:"override_parent_id"`
-	AdditionalProperties map[string]interface{}
+	OverrideParentId string `json:"override_parent_id"`
 }
-
-type _VariableOverrideRequest VariableOverrideRequest
 
 // NewVariableOverrideRequest instantiates a new VariableOverrideRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -136,58 +132,7 @@ func (o VariableOverrideRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["value"] = o.Value
 	toSerialize["override_scope"] = o.OverrideScope
 	toSerialize["override_parent_id"] = o.OverrideParentId
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *VariableOverrideRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"value",
-		"override_scope",
-		"override_parent_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVariableOverrideRequest := _VariableOverrideRequest{}
-
-	err = json.Unmarshal(data, &varVariableOverrideRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VariableOverrideRequest(varVariableOverrideRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "value")
-		delete(additionalProperties, "override_scope")
-		delete(additionalProperties, "override_parent_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableVariableOverrideRequest struct {

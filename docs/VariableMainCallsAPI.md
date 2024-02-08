@@ -28,24 +28,24 @@ Create a variable
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	variableRequest := *openapiclient.NewVariableRequest("Key_example", "Value_example", false, openapiclient.APIVariableScopeEnum("APPLICATION"), "VariableParentId_example") // VariableRequest |  (optional)
+    variableRequest := *openapiclient.NewVariableRequest("Key_example", "Value_example", false, openapiclient.APIVariableScopeEnum("APPLICATION"), "VariableParentId_example") // VariableRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.CreateVariable(context.Background()).VariableRequest(variableRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateVariable`: VariableResponse
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.CreateVariable(context.Background()).VariableRequest(variableRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateVariable`: VariableResponse
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariable`: %v\n", resp)
 }
 ```
 
@@ -94,25 +94,25 @@ Create a variable alias
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
-	variableAliasRequest := *openapiclient.NewVariableAliasRequest("Key_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "AliasParentId_example") // VariableAliasRequest |  (optional)
+    variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
+    variableAliasRequest := *openapiclient.NewVariableAliasRequest("Key_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "AliasParentId_example") // VariableAliasRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.CreateVariableAlias(context.Background(), variableId).VariableAliasRequest(variableAliasRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariableAlias``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateVariableAlias`: VariableResponse
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariableAlias`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.CreateVariableAlias(context.Background(), variableId).VariableAliasRequest(variableAliasRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariableAlias``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateVariableAlias`: VariableResponse
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariableAlias`: %v\n", resp)
 }
 ```
 
@@ -166,25 +166,25 @@ Create a variable override
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
-	variableOverrideRequest := *openapiclient.NewVariableOverrideRequest("Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "OverrideParentId_example") // VariableOverrideRequest |  (optional)
+    variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
+    variableOverrideRequest := *openapiclient.NewVariableOverrideRequest("Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), "OverrideParentId_example") // VariableOverrideRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.CreateVariableOverride(context.Background(), variableId).VariableOverrideRequest(variableOverrideRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariableOverride``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateVariableOverride`: VariableResponse
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariableOverride`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.CreateVariableOverride(context.Background(), variableId).VariableOverrideRequest(variableOverrideRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.CreateVariableOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateVariableOverride`: VariableResponse
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.CreateVariableOverride`: %v\n", resp)
 }
 ```
 
@@ -238,22 +238,22 @@ Delete a variable
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
+    variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.VariableMainCallsAPI.DeleteVariable(context.Background(), variableId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.DeleteVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.VariableMainCallsAPI.DeleteVariable(context.Background(), variableId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.DeleteVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -306,25 +306,25 @@ Edit a variable
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
-	variableEditRequest := *openapiclient.NewVariableEditRequest("Key_example", "Value_example") // VariableEditRequest | 
+    variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
+    variableEditRequest := *openapiclient.NewVariableEditRequest("Key_example", "Value_example") // VariableEditRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.EditVariable(context.Background(), variableId).VariableEditRequest(variableEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.EditVariable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditVariable`: VariableResponse
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.EditVariable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.EditVariable(context.Background(), variableId).VariableEditRequest(variableEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.EditVariable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditVariable`: VariableResponse
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.EditVariable`: %v\n", resp)
 }
 ```
 
@@ -378,26 +378,26 @@ Import variables
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | service id
-	serviceType := openapiclient.ServiceTypeForVariableEnum("APPLICATION") // ServiceTypeForVariableEnum | service type
-	variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
+    serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | service id
+    serviceType := openapiclient.ServiceTypeForVariableEnum("APPLICATION") // ServiceTypeForVariableEnum | service type
+    variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).ServiceId(serviceId).ServiceType(serviceType).VariableImportRequest(variableImportRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ImportEnvironmentVariables``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ImportEnvironmentVariables`: VariableImport
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.ImportEnvironmentVariables`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.ImportEnvironmentVariables(context.Background()).ServiceId(serviceId).ServiceType(serviceType).VariableImportRequest(variableImportRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ImportEnvironmentVariables``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ImportEnvironmentVariables`: VariableImport
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.ImportEnvironmentVariables`: %v\n", resp)
 }
 ```
 
@@ -448,26 +448,26 @@ List variables
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope.
-	scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the type of the parent_id (application, project, environment etc..).
-	isSecret := true // bool |  (optional)
+    parentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | it filters the list by returning only the variables accessible by the selected parent_id. This field shall contain the id of a project, environment or service depending on the selected scope. Example, if scope = APPLICATION and parent_id=<application_id>, the result will contain any variable accessible by the application. The result will contain also any variable declared at an higher scope.
+    scope := openapiclient.APIVariableScopeEnum("APPLICATION") // APIVariableScopeEnum | the type of the parent_id (application, project, environment etc..).
+    isSecret := true // bool |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.VariableMainCallsAPI.ListVariables(context.Background()).ParentId(parentId).Scope(scope).IsSecret(isSecret).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ListVariables``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListVariables`: VariableResponseList
-	fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.ListVariables`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.VariableMainCallsAPI.ListVariables(context.Background()).ParentId(parentId).Scope(scope).IsSecret(isSecret).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `VariableMainCallsAPI.ListVariables``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListVariables`: VariableResponseList
+    fmt.Fprintf(os.Stdout, "Response from `VariableMainCallsAPI.ListVariables`: %v\n", resp)
 }
 ```
 

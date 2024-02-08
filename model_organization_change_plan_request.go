@@ -20,11 +20,8 @@ var _ MappedNullable = &OrganizationChangePlanRequest{}
 
 // OrganizationChangePlanRequest struct for OrganizationChangePlanRequest
 type OrganizationChangePlanRequest struct {
-	Plan                 *string `json:"plan,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Plan *string `json:"plan,omitempty"`
 }
-
-type _OrganizationChangePlanRequest OrganizationChangePlanRequest
 
 // NewOrganizationChangePlanRequest instantiates a new OrganizationChangePlanRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OrganizationChangePlanRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Plan) {
 		toSerialize["plan"] = o.Plan
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationChangePlanRequest) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationChangePlanRequest := _OrganizationChangePlanRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationChangePlanRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationChangePlanRequest(varOrganizationChangePlanRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "plan")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationChangePlanRequest struct {

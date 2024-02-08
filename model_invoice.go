@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -22,16 +21,13 @@ var _ MappedNullable = &Invoice{}
 
 // Invoice struct for Invoice
 type Invoice struct {
-	TotalInCents         int32             `json:"total_in_cents"`
-	Total                float32           `json:"total"`
-	CurrencyCode         string            `json:"currency_code"`
-	Id                   string            `json:"id"`
-	CreatedAt            time.Time         `json:"created_at"`
-	Status               InvoiceStatusEnum `json:"status"`
-	AdditionalProperties map[string]interface{}
+	TotalInCents int32             `json:"total_in_cents"`
+	Total        float32           `json:"total"`
+	CurrencyCode string            `json:"currency_code"`
+	Id           string            `json:"id"`
+	CreatedAt    time.Time         `json:"created_at"`
+	Status       InvoiceStatusEnum `json:"status"`
 }
-
-type _Invoice Invoice
 
 // NewInvoice instantiates a new Invoice object
 // This constructor will assign default values to properties that have it defined,
@@ -216,64 +212,7 @@ func (o Invoice) ToMap() (map[string]interface{}, error) {
 	toSerialize["id"] = o.Id
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["status"] = o.Status
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Invoice) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"total_in_cents",
-		"total",
-		"currency_code",
-		"id",
-		"created_at",
-		"status",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varInvoice := _Invoice{}
-
-	err = json.Unmarshal(data, &varInvoice)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Invoice(varInvoice)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "total_in_cents")
-		delete(additionalProperties, "total")
-		delete(additionalProperties, "currency_code")
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "status")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableInvoice struct {

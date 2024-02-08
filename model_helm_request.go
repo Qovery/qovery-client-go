@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the HelmRequest type satisfies the MappedNullable interface at compile time
@@ -37,10 +36,7 @@ type HelmRequest struct {
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
 	AllowClusterWideResources *bool                          `json:"allow_cluster_wide_resources,omitempty"`
 	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
-	AdditionalProperties      map[string]interface{}
 }
-
-type _HelmRequest HelmRequest
 
 // NewHelmRequest instantiates a new HelmRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -393,67 +389,7 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	}
 	toSerialize["values_override"] = o.ValuesOverride
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"auto_deploy",
-		"source",
-		"arguments",
-		"values_override",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varHelmRequest := _HelmRequest{}
-
-	err = json.Unmarshal(data, &varHelmRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmRequest(varHelmRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ports")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "timeout_sec")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "auto_deploy")
-		delete(additionalProperties, "source")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "allow_cluster_wide_resources")
-		delete(additionalProperties, "values_override")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmRequest struct {

@@ -22,25 +22,25 @@ Add a backup to the Database
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	backupRequest := *openapiclient.NewBackupRequest("Name_example", "Message_example") // BackupRequest |  (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    backupRequest := *openapiclient.NewBackupRequest("Name_example", "Message_example") // BackupRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BackupsAPI.AddBackupDatabase(context.Background(), databaseId).BackupRequest(backupRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.AddBackupDatabase``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AddBackupDatabase`: Backup
-	fmt.Fprintf(os.Stdout, "Response from `BackupsAPI.AddBackupDatabase`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsAPI.AddBackupDatabase(context.Background(), databaseId).BackupRequest(backupRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.AddBackupDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AddBackupDatabase`: Backup
+    fmt.Fprintf(os.Stdout, "Response from `BackupsAPI.AddBackupDatabase`: %v\n", resp)
 }
 ```
 
@@ -94,25 +94,25 @@ List database  backups
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BackupsAPI.ListDatabaseBackup(context.Background(), databaseId).StartId(startId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.ListDatabaseBackup``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListDatabaseBackup`: BackupPaginatedResponseList
-	fmt.Fprintf(os.Stdout, "Response from `BackupsAPI.ListDatabaseBackup`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.BackupsAPI.ListDatabaseBackup(context.Background(), databaseId).StartId(startId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.ListDatabaseBackup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListDatabaseBackup`: BackupPaginatedResponseList
+    fmt.Fprintf(os.Stdout, "Response from `BackupsAPI.ListDatabaseBackup`: %v\n", resp)
 }
 ```
 
@@ -164,23 +164,23 @@ Remove database  backup
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	backupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database Backup ID
+    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+    backupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database Backup ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BackupsAPI.RemoveDatabaseBackup(context.Background(), databaseId, backupId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.RemoveDatabaseBackup``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.BackupsAPI.RemoveDatabaseBackup(context.Background(), databaseId, backupId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `BackupsAPI.RemoveDatabaseBackup``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 

@@ -42,9 +42,9 @@ func (r ApiCreateEnvironmentRequest) Execute() (*Environment, *http.Response, er
 /*
 CreateEnvironment Create an environment
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiCreateEnvironmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiCreateEnvironmentRequest
 */
 func (a *EnvironmentsAPIService) CreateEnvironment(ctx context.Context, projectId string) ApiCreateEnvironmentRequest {
 	return ApiCreateEnvironmentRequest{
@@ -55,8 +55,7 @@ func (a *EnvironmentsAPIService) CreateEnvironment(ctx context.Context, projectI
 }
 
 // Execute executes the request
-//
-//	@return Environment
+//  @return Environment
 func (a *EnvironmentsAPIService) CreateEnvironmentExecute(r ApiCreateEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -162,9 +161,9 @@ GetProjectEnvironmentServiceNumber List total number of services for each enviro
 
 Returns a list of environment ids, and for each its total numberof services
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiGetProjectEnvironmentServiceNumberRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiGetProjectEnvironmentServiceNumberRequest
 */
 func (a *EnvironmentsAPIService) GetProjectEnvironmentServiceNumber(ctx context.Context, projectId string) ApiGetProjectEnvironmentServiceNumberRequest {
 	return ApiGetProjectEnvironmentServiceNumberRequest{
@@ -175,8 +174,7 @@ func (a *EnvironmentsAPIService) GetProjectEnvironmentServiceNumber(ctx context.
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentStatsResponseList
+//  @return EnvironmentStatsResponseList
 func (a *EnvironmentsAPIService) GetProjectEnvironmentServiceNumberExecute(r ApiGetProjectEnvironmentServiceNumberRequest) (*EnvironmentStatsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -280,9 +278,9 @@ GetProjectEnvironmentsStatus List environments statuses
 
 Returns a list of environments with only their id and status.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiGetProjectEnvironmentsStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiGetProjectEnvironmentsStatusRequest
 */
 func (a *EnvironmentsAPIService) GetProjectEnvironmentsStatus(ctx context.Context, projectId string) ApiGetProjectEnvironmentsStatusRequest {
 	return ApiGetProjectEnvironmentsStatusRequest{
@@ -293,8 +291,7 @@ func (a *EnvironmentsAPIService) GetProjectEnvironmentsStatus(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentStatusList
+//  @return EnvironmentStatusList
 func (a *EnvironmentsAPIService) GetProjectEnvironmentsStatusExecute(r ApiGetProjectEnvironmentsStatusRequest) (*EnvironmentStatusList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -396,9 +393,9 @@ func (r ApiListEnvironmentRequest) Execute() (*EnvironmentResponseList, *http.Re
 /*
 ListEnvironment List environments
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param projectId Project ID
-	@return ApiListEnvironmentRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param projectId Project ID
+ @return ApiListEnvironmentRequest
 */
 func (a *EnvironmentsAPIService) ListEnvironment(ctx context.Context, projectId string) ApiListEnvironmentRequest {
 	return ApiListEnvironmentRequest{
@@ -409,8 +406,7 @@ func (a *EnvironmentsAPIService) ListEnvironment(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//
-//	@return EnvironmentResponseList
+//  @return EnvironmentResponseList
 func (a *EnvironmentsAPIService) ListEnvironmentExecute(r ApiListEnvironmentRequest) (*EnvironmentResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -20,14 +20,11 @@ var _ MappedNullable = &ClusterStatusGet{}
 
 // ClusterStatusGet struct for ClusterStatusGet
 type ClusterStatusGet struct {
-	ClusterId            *string           `json:"cluster_id,omitempty"`
-	Status               *ClusterStateEnum `json:"status,omitempty"`
-	IsDeployed           *bool             `json:"is_deployed,omitempty"`
-	LastExecutionId      *string           `json:"last_execution_id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ClusterId       *string           `json:"cluster_id,omitempty"`
+	Status          *ClusterStateEnum `json:"status,omitempty"`
+	IsDeployed      *bool             `json:"is_deployed,omitempty"`
+	LastExecutionId *string           `json:"last_execution_id,omitempty"`
 }
-
-type _ClusterStatusGet ClusterStatusGet
 
 // NewClusterStatusGet instantiates a new ClusterStatusGet object
 // This constructor will assign default values to properties that have it defined,
@@ -196,36 +193,7 @@ func (o ClusterStatusGet) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LastExecutionId) {
 		toSerialize["last_execution_id"] = o.LastExecutionId
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterStatusGet) UnmarshalJSON(data []byte) (err error) {
-	varClusterStatusGet := _ClusterStatusGet{}
-
-	err = json.Unmarshal(data, &varClusterStatusGet)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterStatusGet(varClusterStatusGet)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "is_deployed")
-		delete(additionalProperties, "last_execution_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterStatusGet struct {

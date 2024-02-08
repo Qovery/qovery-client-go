@@ -29,25 +29,25 @@ Auto deploy containers
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationContainerAutoDeployRequest := *openapiclient.NewOrganizationContainerAutoDeployRequest() // OrganizationContainerAutoDeployRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationContainerAutoDeployRequest := *openapiclient.NewOrganizationContainerAutoDeployRequest() // OrganizationContainerAutoDeployRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.AutoDeployContainerEnvironments(context.Background(), organizationId).OrganizationContainerAutoDeployRequest(organizationContainerAutoDeployRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.AutoDeployContainerEnvironments``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `AutoDeployContainerEnvironments`: Status
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.AutoDeployContainerEnvironments`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.AutoDeployContainerEnvironments(context.Background(), organizationId).OrganizationContainerAutoDeployRequest(organizationContainerAutoDeployRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.AutoDeployContainerEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `AutoDeployContainerEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.AutoDeployContainerEnvironments`: %v\n", resp)
 }
 ```
 
@@ -101,25 +101,25 @@ Clone container
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.CloneContainer(context.Background(), containerId).CloneServiceRequest(cloneServiceRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CloneContainer``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CloneContainer`: ContainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.CloneContainer`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.CloneContainer(context.Background(), containerId).CloneServiceRequest(cloneServiceRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CloneContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CloneContainer`: ContainerResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.CloneContainer`: %v\n", resp)
 }
 ```
 
@@ -171,25 +171,25 @@ Create a container
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.CreateContainer(context.Background(), environmentId).ContainerRequest(containerRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CreateContainer``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainer`: ContainerResponse
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.CreateContainer`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.CreateContainer(context.Background(), environmentId).ContainerRequest(containerRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.CreateContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainer`: ContainerResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.CreateContainer`: %v\n", resp)
 }
 ```
 
@@ -243,25 +243,25 @@ List all container registry container statuses
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.GetContainerRegistryContainerStatus(context.Background(), organizationId, containerRegistryId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetContainerRegistryContainerStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetContainerRegistryContainerStatus`: ReferenceObjectStatusResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetContainerRegistryContainerStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.GetContainerRegistryContainerStatus(context.Background(), organizationId, containerRegistryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetContainerRegistryContainerStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerRegistryContainerStatus`: ReferenceObjectStatusResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetContainerRegistryContainerStatus`: %v\n", resp)
 }
 ```
 
@@ -316,23 +316,23 @@ List default container advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.GetDefaultContainerAdvancedSettings(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetDefaultContainerAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDefaultContainerAdvancedSettings`: ContainerAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetDefaultContainerAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.GetDefaultContainerAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetDefaultContainerAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultContainerAdvancedSettings`: ContainerAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetDefaultContainerAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -377,24 +377,24 @@ List all environment container statuses
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.GetEnvironmentContainerStatus(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetEnvironmentContainerStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEnvironmentContainerStatus`: ReferenceObjectStatusResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetEnvironmentContainerStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.GetEnvironmentContainerStatus(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.GetEnvironmentContainerStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetEnvironmentContainerStatus`: ReferenceObjectStatusResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.GetEnvironmentContainerStatus`: %v\n", resp)
 }
 ```
 
@@ -445,24 +445,24 @@ List containers
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.ListContainer(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.ListContainer``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListContainer`: ContainerResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.ListContainer`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.ListContainer(context.Background(), environmentId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.ListContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListContainer`: ContainerResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.ListContainer`: %v\n", resp)
 }
 ```
 
@@ -515,25 +515,25 @@ Preview container environments
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationContainerPreviewRequest := *openapiclient.NewOrganizationContainerPreviewRequest() // OrganizationContainerPreviewRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationContainerPreviewRequest := *openapiclient.NewOrganizationContainerPreviewRequest() // OrganizationContainerPreviewRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainersAPI.PreviewContainerEnvironments(context.Background(), organizationId).OrganizationContainerPreviewRequest(organizationContainerPreviewRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.PreviewContainerEnvironments``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `PreviewContainerEnvironments`: Status
-	fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.PreviewContainerEnvironments`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainersAPI.PreviewContainerEnvironments(context.Background(), organizationId).OrganizationContainerPreviewRequest(organizationContainerPreviewRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainersAPI.PreviewContainerEnvironments``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `PreviewContainerEnvironments`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainersAPI.PreviewContainerEnvironments`: %v\n", resp)
 }
 ```
 

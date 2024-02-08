@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -22,21 +21,18 @@ var _ MappedNullable = &DeploymentHistoryEnvironment{}
 
 // DeploymentHistoryEnvironment struct for DeploymentHistoryEnvironment
 type DeploymentHistoryEnvironment struct {
-	Id                   string                          `json:"id"`
-	CreatedAt            time.Time                       `json:"created_at"`
-	UpdatedAt            *time.Time                      `json:"updated_at,omitempty"`
-	Status               *StateEnum                      `json:"status,omitempty"`
-	Origin               *OrganizationEventOrigin        `json:"origin,omitempty"`
-	TriggeredBy          *string                         `json:"triggered_by,omitempty"`
-	Applications         []DeploymentHistoryApplication  `json:"applications,omitempty"`
-	Containers           []DeploymentHistoryContainer    `json:"containers,omitempty"`
-	Databases            []DeploymentHistoryDatabase     `json:"databases,omitempty"`
-	Jobs                 []DeploymentHistoryJobResponse  `json:"jobs,omitempty"`
-	Helms                []DeploymentHistoryHelmResponse `json:"helms,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Id           string                          `json:"id"`
+	CreatedAt    time.Time                       `json:"created_at"`
+	UpdatedAt    *time.Time                      `json:"updated_at,omitempty"`
+	Status       *StateEnum                      `json:"status,omitempty"`
+	Origin       *OrganizationEventOrigin        `json:"origin,omitempty"`
+	TriggeredBy  *string                         `json:"triggered_by,omitempty"`
+	Applications []DeploymentHistoryApplication  `json:"applications,omitempty"`
+	Containers   []DeploymentHistoryContainer    `json:"containers,omitempty"`
+	Databases    []DeploymentHistoryDatabase     `json:"databases,omitempty"`
+	Jobs         []DeploymentHistoryJobResponse  `json:"jobs,omitempty"`
+	Helms        []DeploymentHistoryHelmResponse `json:"helms,omitempty"`
 }
-
-type _DeploymentHistoryEnvironment DeploymentHistoryEnvironment
 
 // NewDeploymentHistoryEnvironment instantiates a new DeploymentHistoryEnvironment object
 // This constructor will assign default values to properties that have it defined,
@@ -432,65 +428,7 @@ func (o DeploymentHistoryEnvironment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentHistoryEnvironment) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentHistoryEnvironment := _DeploymentHistoryEnvironment{}
-
-	err = json.Unmarshal(data, &varDeploymentHistoryEnvironment)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentHistoryEnvironment(varDeploymentHistoryEnvironment)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "status")
-		delete(additionalProperties, "origin")
-		delete(additionalProperties, "triggered_by")
-		delete(additionalProperties, "applications")
-		delete(additionalProperties, "containers")
-		delete(additionalProperties, "databases")
-		delete(additionalProperties, "jobs")
-		delete(additionalProperties, "helms")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentHistoryEnvironment struct {

@@ -20,11 +20,8 @@ var _ MappedNullable = &BackupResponseList{}
 
 // BackupResponseList struct for BackupResponseList
 type BackupResponseList struct {
-	Results              []Backup `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []Backup `json:"results,omitempty"`
 }
-
-type _BackupResponseList BackupResponseList
 
 // NewBackupResponseList instantiates a new BackupResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o BackupResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BackupResponseList) UnmarshalJSON(data []byte) (err error) {
-	varBackupResponseList := _BackupResponseList{}
-
-	err = json.Unmarshal(data, &varBackupResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BackupResponseList(varBackupResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBackupResponseList struct {

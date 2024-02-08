@@ -42,9 +42,9 @@ func (r ApiOrganizationGithubAppConnectRequest) Execute() (*http.Response, error
 /*
 OrganizationGithubAppConnect Connect a github account to an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiOrganizationGithubAppConnectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiOrganizationGithubAppConnectRequest
 */
 func (a *GithubAppAPIService) OrganizationGithubAppConnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppConnectRequest {
 	return ApiOrganizationGithubAppConnectRequest{
@@ -155,9 +155,9 @@ func (r ApiOrganizationGithubAppDisconnectRequest) Execute() (*http.Response, er
 /*
 OrganizationGithubAppDisconnect Disconnect a github account from an organization
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiOrganizationGithubAppDisconnectRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiOrganizationGithubAppDisconnectRequest
 */
 func (a *GithubAppAPIService) OrganizationGithubAppDisconnect(ctx context.Context, organizationId string) ApiOrganizationGithubAppDisconnectRequest {
 	return ApiOrganizationGithubAppDisconnectRequest{

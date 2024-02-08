@@ -20,11 +20,8 @@ var _ MappedNullable = &ServicePortRequest{}
 
 // ServicePortRequest struct for ServicePortRequest
 type ServicePortRequest struct {
-	Ports                []ServicePortRequestPortsInner `json:"ports,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Ports []ServicePortRequestPortsInner `json:"ports,omitempty"`
 }
-
-type _ServicePortRequest ServicePortRequest
 
 // NewServicePortRequest instantiates a new ServicePortRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ServicePortRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServicePortRequest) UnmarshalJSON(data []byte) (err error) {
-	varServicePortRequest := _ServicePortRequest{}
-
-	err = json.Unmarshal(data, &varServicePortRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServicePortRequest(varServicePortRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "ports")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServicePortRequest struct {

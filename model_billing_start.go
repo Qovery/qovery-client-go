@@ -21,11 +21,8 @@ var _ MappedNullable = &BillingStart{}
 
 // BillingStart struct for BillingStart
 type BillingStart struct {
-	BillingStartedOn     *time.Time `json:"billing_started_on,omitempty"`
-	AdditionalProperties map[string]interface{}
+	BillingStartedOn *time.Time `json:"billing_started_on,omitempty"`
 }
-
-type _BillingStart BillingStart
 
 // NewBillingStart instantiates a new BillingStart object
 // This constructor will assign default values to properties that have it defined,
@@ -89,33 +86,7 @@ func (o BillingStart) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BillingStartedOn) {
 		toSerialize["billing_started_on"] = o.BillingStartedOn
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BillingStart) UnmarshalJSON(data []byte) (err error) {
-	varBillingStart := _BillingStart{}
-
-	err = json.Unmarshal(data, &varBillingStart)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BillingStart(varBillingStart)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "billing_started_on")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBillingStart struct {

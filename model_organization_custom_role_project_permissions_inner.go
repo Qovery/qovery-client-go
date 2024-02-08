@@ -23,12 +23,9 @@ type OrganizationCustomRoleProjectPermissionsInner struct {
 	ProjectId   *string `json:"project_id,omitempty"`
 	ProjectName *string `json:"project_name,omitempty"`
 	// If `is_admin` is `true`, the user is: - automatically `MANAGER` for each environment type - allowed to manage project deployment rules - able to delete the project    Note that `permissions` can then be ignored for this project
-	IsAdmin              *bool                                                                        `json:"is_admin,omitempty"`
-	Permissions          []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner `json:"permissions,omitempty"`
-	AdditionalProperties map[string]interface{}
+	IsAdmin     *bool                                                                        `json:"is_admin,omitempty"`
+	Permissions []OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner `json:"permissions,omitempty"`
 }
-
-type _OrganizationCustomRoleProjectPermissionsInner OrganizationCustomRoleProjectPermissionsInner
 
 // NewOrganizationCustomRoleProjectPermissionsInner instantiates a new OrganizationCustomRoleProjectPermissionsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -201,36 +198,7 @@ func (o OrganizationCustomRoleProjectPermissionsInner) ToMap() (map[string]inter
 	if !IsNil(o.Permissions) {
 		toSerialize["permissions"] = o.Permissions
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationCustomRoleProjectPermissionsInner) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationCustomRoleProjectPermissionsInner := _OrganizationCustomRoleProjectPermissionsInner{}
-
-	err = json.Unmarshal(data, &varOrganizationCustomRoleProjectPermissionsInner)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationCustomRoleProjectPermissionsInner(varOrganizationCustomRoleProjectPermissionsInner)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "project_id")
-		delete(additionalProperties, "project_name")
-		delete(additionalProperties, "is_admin")
-		delete(additionalProperties, "permissions")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationCustomRoleProjectPermissionsInner struct {

@@ -25,25 +25,25 @@ Create a container registry
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKindEnum("ECR"), *openapiclient.NewContainerRegistryRequestConfig()) // ContainerRegistryRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKindEnum("ECR"), *openapiclient.NewContainerRegistryRequestConfig()) // ContainerRegistryRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.CreateContainerRegistry(context.Background(), organizationId).ContainerRegistryRequest(containerRegistryRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.CreateContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainerRegistry`: ContainerRegistryResponse
-	fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.CreateContainerRegistry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.CreateContainerRegistry(context.Background(), organizationId).ContainerRegistryRequest(containerRegistryRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.CreateContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerRegistry`: ContainerRegistryResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.CreateContainerRegistry`: %v\n", resp)
 }
 ```
 
@@ -95,23 +95,23 @@ Delete a container registry
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ContainerRegistriesAPI.DeleteContainerRegistry(context.Background(), organizationId, containerRegistryId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.DeleteContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ContainerRegistriesAPI.DeleteContainerRegistry(context.Background(), organizationId, containerRegistryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.DeleteContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -164,26 +164,26 @@ Edit a container registry
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
-	containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKindEnum("ECR"), *openapiclient.NewContainerRegistryRequestConfig()) // ContainerRegistryRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
+    containerRegistryRequest := *openapiclient.NewContainerRegistryRequest("Name_example", openapiclient.ContainerRegistryKindEnum("ECR"), *openapiclient.NewContainerRegistryRequestConfig()) // ContainerRegistryRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.EditContainerRegistry(context.Background(), organizationId, containerRegistryId).ContainerRegistryRequest(containerRegistryRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.EditContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditContainerRegistry`: ContainerRegistryResponse
-	fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.EditContainerRegistry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.EditContainerRegistry(context.Background(), organizationId, containerRegistryId).ContainerRegistryRequest(containerRegistryRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.EditContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditContainerRegistry`: ContainerRegistryResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.EditContainerRegistry`: %v\n", resp)
 }
 ```
 
@@ -237,25 +237,25 @@ Get a container registry
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.GetContainerRegistry(context.Background(), organizationId, containerRegistryId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.GetContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetContainerRegistry`: ContainerRegistryResponse
-	fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.GetContainerRegistry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.GetContainerRegistry(context.Background(), organizationId, containerRegistryId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.GetContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerRegistry`: ContainerRegistryResponse
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.GetContainerRegistry`: %v\n", resp)
 }
 ```
 
@@ -310,23 +310,23 @@ List supported container registries
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.ListAvailableContainerRegistry(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.ListAvailableContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAvailableContainerRegistry`: AvailableContainerRegistryResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.ListAvailableContainerRegistry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.ListAvailableContainerRegistry(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.ListAvailableContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListAvailableContainerRegistry`: AvailableContainerRegistryResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.ListAvailableContainerRegistry`: %v\n", resp)
 }
 ```
 
@@ -369,24 +369,24 @@ List organization container registries
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.ListContainerRegistry(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.ListContainerRegistry``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListContainerRegistry`: ContainerRegistryResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.ListContainerRegistry`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.ListContainerRegistry(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.ListContainerRegistry``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListContainerRegistry`: ContainerRegistryResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.ListContainerRegistry`: %v\n", resp)
 }
 ```
 

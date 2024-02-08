@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -56,11 +55,8 @@ type Application struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy           *bool `json:"auto_deploy,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
-
-type _Application Application
 
 // NewApplication instantiates a new Application object
 // This constructor will assign default values to properties that have it defined,
@@ -898,80 +894,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Application) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"environment",
-		"name",
-		"healthchecks",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varApplication := _Application{}
-
-	err = json.Unmarshal(data, &varApplication)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Application(varApplication)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "storage")
-		delete(additionalProperties, "environment")
-		delete(additionalProperties, "git_repository")
-		delete(additionalProperties, "maximum_cpu")
-		delete(additionalProperties, "maximum_memory")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "build_mode")
-		delete(additionalProperties, "dockerfile_path")
-		delete(additionalProperties, "buildpack_language")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "min_running_instances")
-		delete(additionalProperties, "max_running_instances")
-		delete(additionalProperties, "healthchecks")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "ports")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		delete(additionalProperties, "auto_deploy")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableApplication struct {

@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the VariableAliasRequest type satisfies the MappedNullable interface at compile time
@@ -25,11 +24,8 @@ type VariableAliasRequest struct {
 	Key        string               `json:"key"`
 	AliasScope APIVariableScopeEnum `json:"alias_scope"`
 	// the id of the variable that is aliased.
-	AliasParentId        string `json:"alias_parent_id"`
-	AdditionalProperties map[string]interface{}
+	AliasParentId string `json:"alias_parent_id"`
 }
-
-type _VariableAliasRequest VariableAliasRequest
 
 // NewVariableAliasRequest instantiates a new VariableAliasRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -136,58 +132,7 @@ func (o VariableAliasRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["alias_scope"] = o.AliasScope
 	toSerialize["alias_parent_id"] = o.AliasParentId
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *VariableAliasRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"alias_scope",
-		"alias_parent_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varVariableAliasRequest := _VariableAliasRequest{}
-
-	err = json.Unmarshal(data, &varVariableAliasRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = VariableAliasRequest(varVariableAliasRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "alias_scope")
-		delete(additionalProperties, "alias_parent_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableVariableAliasRequest struct {

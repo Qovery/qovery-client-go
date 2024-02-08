@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the OrganizationRequest type satisfies the MappedNullable interface at compile time
@@ -22,18 +21,15 @@ var _ MappedNullable = &OrganizationRequest{}
 // OrganizationRequest struct for OrganizationRequest
 type OrganizationRequest struct {
 	// name is case insensitive
-	Name                 string         `json:"name"`
-	Description          NullableString `json:"description,omitempty"`
-	Plan                 PlanEnum       `json:"plan"`
-	WebsiteUrl           NullableString `json:"website_url,omitempty"`
-	Repository           NullableString `json:"repository,omitempty"`
-	LogoUrl              NullableString `json:"logo_url,omitempty"`
-	IconUrl              NullableString `json:"icon_url,omitempty"`
-	AdminEmails          []string       `json:"admin_emails,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name        string         `json:"name"`
+	Description NullableString `json:"description,omitempty"`
+	Plan        PlanEnum       `json:"plan"`
+	WebsiteUrl  NullableString `json:"website_url,omitempty"`
+	Repository  NullableString `json:"repository,omitempty"`
+	LogoUrl     NullableString `json:"logo_url,omitempty"`
+	IconUrl     NullableString `json:"icon_url,omitempty"`
+	AdminEmails []string       `json:"admin_emails,omitempty"`
 }
-
-type _OrganizationRequest OrganizationRequest
 
 // NewOrganizationRequest instantiates a new OrganizationRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -380,62 +376,7 @@ func (o OrganizationRequest) ToMap() (map[string]interface{}, error) {
 	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"plan",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrganizationRequest := _OrganizationRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationRequest(varOrganizationRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "plan")
-		delete(additionalProperties, "website_url")
-		delete(additionalProperties, "repository")
-		delete(additionalProperties, "logo_url")
-		delete(additionalProperties, "icon_url")
-		delete(additionalProperties, "admin_emails")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationRequest struct {

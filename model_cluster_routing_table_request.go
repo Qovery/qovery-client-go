@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ClusterRoutingTableRequest type satisfies the MappedNullable interface at compile time
@@ -21,11 +20,8 @@ var _ MappedNullable = &ClusterRoutingTableRequest{}
 
 // ClusterRoutingTableRequest struct for ClusterRoutingTableRequest
 type ClusterRoutingTableRequest struct {
-	Routes               []ClusterRoutingTableResultsInner `json:"routes"`
-	AdditionalProperties map[string]interface{}
+	Routes []ClusterRoutingTableResultsInner `json:"routes"`
 }
-
-type _ClusterRoutingTableRequest ClusterRoutingTableRequest
 
 // NewClusterRoutingTableRequest instantiates a new ClusterRoutingTableRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -80,54 +76,7 @@ func (o ClusterRoutingTableRequest) MarshalJSON() ([]byte, error) {
 func (o ClusterRoutingTableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["routes"] = o.Routes
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRoutingTableRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"routes",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varClusterRoutingTableRequest := _ClusterRoutingTableRequest{}
-
-	err = json.Unmarshal(data, &varClusterRoutingTableRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRoutingTableRequest(varClusterRoutingTableRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "routes")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRoutingTableRequest struct {

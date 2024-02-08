@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the OrganizationAvailableRole type satisfies the MappedNullable interface at compile time
@@ -21,12 +20,9 @@ var _ MappedNullable = &OrganizationAvailableRole{}
 
 // OrganizationAvailableRole struct for OrganizationAvailableRole
 type OrganizationAvailableRole struct {
-	Id                   string `json:"id"`
-	Name                 string `json:"name"`
-	AdditionalProperties map[string]interface{}
+	Id   string `json:"id"`
+	Name string `json:"name"`
 }
-
-type _OrganizationAvailableRole OrganizationAvailableRole
 
 // NewOrganizationAvailableRole instantiates a new OrganizationAvailableRole object
 // This constructor will assign default values to properties that have it defined,
@@ -107,56 +103,7 @@ func (o OrganizationAvailableRole) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationAvailableRole) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrganizationAvailableRole := _OrganizationAvailableRole{}
-
-	err = json.Unmarshal(data, &varOrganizationAvailableRole)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationAvailableRole(varOrganizationAvailableRole)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationAvailableRole struct {

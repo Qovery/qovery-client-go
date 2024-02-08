@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the AvailableHelmRepositoryResponse type satisfies the MappedNullable interface at compile time
@@ -21,13 +20,10 @@ var _ MappedNullable = &AvailableHelmRepositoryResponse{}
 
 // AvailableHelmRepositoryResponse struct for AvailableHelmRepositoryResponse
 type AvailableHelmRepositoryResponse struct {
-	Kind                 HelmRepositoryKindEnum `json:"kind"`
-	RequiredConfig       map[string]interface{} `json:"required_config"`
-	IsMandatory          bool                   `json:"is_mandatory"`
-	AdditionalProperties map[string]interface{}
+	Kind           HelmRepositoryKindEnum `json:"kind"`
+	RequiredConfig map[string]interface{} `json:"required_config"`
+	IsMandatory    bool                   `json:"is_mandatory"`
 }
-
-type _AvailableHelmRepositoryResponse AvailableHelmRepositoryResponse
 
 // NewAvailableHelmRepositoryResponse instantiates a new AvailableHelmRepositoryResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -134,58 +130,7 @@ func (o AvailableHelmRepositoryResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["kind"] = o.Kind
 	toSerialize["required_config"] = o.RequiredConfig
 	toSerialize["is_mandatory"] = o.IsMandatory
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *AvailableHelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"kind",
-		"required_config",
-		"is_mandatory",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varAvailableHelmRepositoryResponse := _AvailableHelmRepositoryResponse{}
-
-	err = json.Unmarshal(data, &varAvailableHelmRepositoryResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = AvailableHelmRepositoryResponse(varAvailableHelmRepositoryResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "kind")
-		delete(additionalProperties, "required_config")
-		delete(additionalProperties, "is_mandatory")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableAvailableHelmRepositoryResponse struct {

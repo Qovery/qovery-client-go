@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ClusterRequest type satisfies the MappedNullable interface at compile time
@@ -39,12 +38,9 @@ type ClusterRequest struct {
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
 	SshKeys []string `json:"ssh_keys,omitempty"`
 	// If the cluster is a self managed one. The kubeconfig to use to connect to it
-	Kubeconfig           *string                       `json:"kubeconfig,omitempty"`
-	Features             []ClusterRequestFeaturesInner `json:"features,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Kubeconfig *string                       `json:"kubeconfig,omitempty"`
+	Features   []ClusterRequestFeaturesInner `json:"features,omitempty"`
 }
-
-type _ClusterRequest ClusterRequest
 
 // NewClusterRequest instantiates a new ClusterRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -552,69 +548,7 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"region",
-		"cloud_provider",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varClusterRequest := _ClusterRequest{}
-
-	err = json.Unmarshal(data, &varClusterRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterRequest(varClusterRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "region")
-		delete(additionalProperties, "cloud_provider")
-		delete(additionalProperties, "cloud_provider_credentials")
-		delete(additionalProperties, "min_running_nodes")
-		delete(additionalProperties, "max_running_nodes")
-		delete(additionalProperties, "disk_size")
-		delete(additionalProperties, "instance_type")
-		delete(additionalProperties, "kubernetes")
-		delete(additionalProperties, "production")
-		delete(additionalProperties, "ssh_keys")
-		delete(additionalProperties, "kubeconfig")
-		delete(additionalProperties, "features")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterRequest struct {

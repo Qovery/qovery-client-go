@@ -42,9 +42,9 @@ func (r ApiCreateContainerRegistryRequest) Execute() (*ContainerRegistryResponse
 /*
 CreateContainerRegistry Create a container registry
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiCreateContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiCreateContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) CreateContainerRegistry(ctx context.Context, organizationId string) ApiCreateContainerRegistryRequest {
 	return ApiCreateContainerRegistryRequest{
@@ -55,8 +55,7 @@ func (a *ContainerRegistriesAPIService) CreateContainerRegistry(ctx context.Cont
 }
 
 // Execute executes the request
-//
-//	@return ContainerRegistryResponse
+//  @return ContainerRegistryResponse
 func (a *ContainerRegistriesAPIService) CreateContainerRegistryExecute(r ApiCreateContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -161,10 +160,10 @@ func (r ApiDeleteContainerRegistryRequest) Execute() (*http.Response, error) {
 /*
 DeleteContainerRegistry Delete a container registry
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param containerRegistryId Container Registry ID
-	@return ApiDeleteContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param containerRegistryId Container Registry ID
+ @return ApiDeleteContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) DeleteContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiDeleteContainerRegistryRequest {
 	return ApiDeleteContainerRegistryRequest{
@@ -275,10 +274,10 @@ func (r ApiEditContainerRegistryRequest) Execute() (*ContainerRegistryResponse, 
 /*
 EditContainerRegistry Edit a container registry
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param containerRegistryId Container Registry ID
-	@return ApiEditContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param containerRegistryId Container Registry ID
+ @return ApiEditContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) EditContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiEditContainerRegistryRequest {
 	return ApiEditContainerRegistryRequest{
@@ -290,8 +289,7 @@ func (a *ContainerRegistriesAPIService) EditContainerRegistry(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return ContainerRegistryResponse
+//  @return ContainerRegistryResponse
 func (a *ContainerRegistriesAPIService) EditContainerRegistryExecute(r ApiEditContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -397,10 +395,10 @@ func (r ApiGetContainerRegistryRequest) Execute() (*ContainerRegistryResponse, *
 /*
 GetContainerRegistry Get a container registry
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param containerRegistryId Container Registry ID
-	@return ApiGetContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param containerRegistryId Container Registry ID
+ @return ApiGetContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) GetContainerRegistry(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryRequest {
 	return ApiGetContainerRegistryRequest{
@@ -412,8 +410,7 @@ func (a *ContainerRegistriesAPIService) GetContainerRegistry(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return ContainerRegistryResponse
+//  @return ContainerRegistryResponse
 func (a *ContainerRegistriesAPIService) GetContainerRegistryExecute(r ApiGetContainerRegistryRequest) (*ContainerRegistryResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -517,8 +514,8 @@ ListAvailableContainerRegistry List supported container registries
 
 List supported container registries by Qovery and get the mandatory authentification configuration.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAvailableContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiListAvailableContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) ListAvailableContainerRegistry(ctx context.Context) ApiListAvailableContainerRegistryRequest {
 	return ApiListAvailableContainerRegistryRequest{
@@ -528,8 +525,7 @@ func (a *ContainerRegistriesAPIService) ListAvailableContainerRegistry(ctx conte
 }
 
 // Execute executes the request
-//
-//	@return AvailableContainerRegistryResponseList
+//  @return AvailableContainerRegistryResponseList
 func (a *ContainerRegistriesAPIService) ListAvailableContainerRegistryExecute(r ApiListAvailableContainerRegistryRequest) (*AvailableContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -630,9 +626,9 @@ func (r ApiListContainerRegistryRequest) Execute() (*ContainerRegistryResponseLi
 /*
 ListContainerRegistry List organization container registries
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiListContainerRegistryRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiListContainerRegistryRequest
 */
 func (a *ContainerRegistriesAPIService) ListContainerRegistry(ctx context.Context, organizationId string) ApiListContainerRegistryRequest {
 	return ApiListContainerRegistryRequest{
@@ -643,8 +639,7 @@ func (a *ContainerRegistriesAPIService) ListContainerRegistry(ctx context.Contex
 }
 
 // Execute executes the request
-//
-//	@return ContainerRegistryResponseList
+//  @return ContainerRegistryResponseList
 func (a *ContainerRegistriesAPIService) ListContainerRegistryExecute(r ApiListContainerRegistryRequest) (*ContainerRegistryResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

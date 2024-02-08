@@ -20,11 +20,8 @@ var _ MappedNullable = &BaseJobResponseAllOfSourceOneOf{}
 
 // BaseJobResponseAllOfSourceOneOf struct for BaseJobResponseAllOfSourceOneOf
 type BaseJobResponseAllOfSourceOneOf struct {
-	Image                *ContainerSource `json:"image,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Image *ContainerSource `json:"image,omitempty"`
 }
-
-type _BaseJobResponseAllOfSourceOneOf BaseJobResponseAllOfSourceOneOf
 
 // NewBaseJobResponseAllOfSourceOneOf instantiates a new BaseJobResponseAllOfSourceOneOf object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o BaseJobResponseAllOfSourceOneOf) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Image) {
 		toSerialize["image"] = o.Image
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *BaseJobResponseAllOfSourceOneOf) UnmarshalJSON(data []byte) (err error) {
-	varBaseJobResponseAllOfSourceOneOf := _BaseJobResponseAllOfSourceOneOf{}
-
-	err = json.Unmarshal(data, &varBaseJobResponseAllOfSourceOneOf)
-
-	if err != nil {
-		return err
-	}
-
-	*o = BaseJobResponseAllOfSourceOneOf(varBaseJobResponseAllOfSourceOneOf)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableBaseJobResponseAllOfSourceOneOf struct {

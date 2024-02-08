@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the OrganizationApiTokenCreateRequest type satisfies the MappedNullable interface at compile time
@@ -25,11 +24,8 @@ type OrganizationApiTokenCreateRequest struct {
 	Description *string                           `json:"description,omitempty"`
 	Scope       NullableOrganizationApiTokenScope `json:"scope,omitempty"`
 	// the roleId provided by the \"List organization custom roles\" endpoint.
-	RoleId               NullableString `json:"role_id"`
-	AdditionalProperties map[string]interface{}
+	RoleId NullableString `json:"role_id"`
 }
-
-type _OrganizationApiTokenCreateRequest OrganizationApiTokenCreateRequest
 
 // NewOrganizationApiTokenCreateRequest instantiates a new OrganizationApiTokenCreateRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -193,58 +189,7 @@ func (o OrganizationApiTokenCreateRequest) ToMap() (map[string]interface{}, erro
 		toSerialize["scope"] = o.Scope.Get()
 	}
 	toSerialize["role_id"] = o.RoleId.Get()
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationApiTokenCreateRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"role_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varOrganizationApiTokenCreateRequest := _OrganizationApiTokenCreateRequest{}
-
-	err = json.Unmarshal(data, &varOrganizationApiTokenCreateRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationApiTokenCreateRequest(varOrganizationApiTokenCreateRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "scope")
-		delete(additionalProperties, "role_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationApiTokenCreateRequest struct {

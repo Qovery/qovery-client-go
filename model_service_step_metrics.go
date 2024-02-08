@@ -25,11 +25,8 @@ type ServiceStepMetrics struct {
 	// The total duration in seconds of the service deployment without queuing steps.
 	TotalComputingDurationSec *int32 `json:"total_computing_duration_sec,omitempty"`
 	// A list of metrics for deployment steps of the service.
-	Details              []ServiceStepMetric `json:"details,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Details []ServiceStepMetric `json:"details,omitempty"`
 }
-
-type _ServiceStepMetrics ServiceStepMetrics
 
 // NewServiceStepMetrics instantiates a new ServiceStepMetrics object
 // This constructor will assign default values to properties that have it defined,
@@ -174,35 +171,7 @@ func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ServiceStepMetrics) UnmarshalJSON(data []byte) (err error) {
-	varServiceStepMetrics := _ServiceStepMetrics{}
-
-	err = json.Unmarshal(data, &varServiceStepMetrics)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ServiceStepMetrics(varServiceStepMetrics)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "total_duration_sec")
-		delete(additionalProperties, "total_computing_duration_sec")
-		delete(additionalProperties, "details")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableServiceStepMetrics struct {

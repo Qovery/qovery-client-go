@@ -20,11 +20,8 @@ var _ MappedNullable = &GitTokenResponseList{}
 
 // GitTokenResponseList struct for GitTokenResponseList
 type GitTokenResponseList struct {
-	Results              []GitTokenResponse `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []GitTokenResponse `json:"results,omitempty"`
 }
-
-type _GitTokenResponseList GitTokenResponseList
 
 // NewGitTokenResponseList instantiates a new GitTokenResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o GitTokenResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *GitTokenResponseList) UnmarshalJSON(data []byte) (err error) {
-	varGitTokenResponseList := _GitTokenResponseList{}
-
-	err = json.Unmarshal(data, &varGitTokenResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = GitTokenResponseList(varGitTokenResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableGitTokenResponseList struct {

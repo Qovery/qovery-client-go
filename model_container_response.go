@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -58,11 +57,8 @@ type ContainerResponse struct {
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy           *bool `json:"auto_deploy,omitempty"`
-	AdditionalProperties map[string]interface{}
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 }
-
-type _ContainerResponse ContainerResponse
 
 // NewContainerResponse instantiates a new ContainerResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -765,90 +761,7 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"image_name",
-		"tag",
-		"registry",
-		"environment",
-		"maximum_cpu",
-		"maximum_memory",
-		"name",
-		"cpu",
-		"memory",
-		"min_running_instances",
-		"max_running_instances",
-		"healthchecks",
-		"auto_preview",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varContainerResponse := _ContainerResponse{}
-
-	err = json.Unmarshal(data, &varContainerResponse)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ContainerResponse(varContainerResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "storage")
-		delete(additionalProperties, "image_name")
-		delete(additionalProperties, "tag")
-		delete(additionalProperties, "registry_id")
-		delete(additionalProperties, "registry")
-		delete(additionalProperties, "environment")
-		delete(additionalProperties, "maximum_cpu")
-		delete(additionalProperties, "maximum_memory")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "arguments")
-		delete(additionalProperties, "entrypoint")
-		delete(additionalProperties, "cpu")
-		delete(additionalProperties, "memory")
-		delete(additionalProperties, "min_running_instances")
-		delete(additionalProperties, "max_running_instances")
-		delete(additionalProperties, "healthchecks")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "ports")
-		delete(additionalProperties, "auto_deploy")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableContainerResponse struct {

@@ -38,25 +38,25 @@ Create a cluster
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterRequest := *openapiclient.NewClusterRequest("Name_example", "Region_example", openapiclient.CloudProviderEnum("AWS")) // ClusterRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterRequest := *openapiclient.NewClusterRequest("Name_example", "Region_example", openapiclient.CloudProviderEnum("AWS")) // ClusterRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.CreateCluster(context.Background(), organizationId).ClusterRequest(clusterRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.CreateCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateCluster`: Cluster
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.CreateCluster`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.CreateCluster(context.Background(), organizationId).ClusterRequest(clusterRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.CreateCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateCluster`: Cluster
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.CreateCluster`: %v\n", resp)
 }
 ```
 
@@ -108,24 +108,24 @@ Delete a cluster
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	deleteMode := openapiclient.ClusterDeleteMode("DEFAULT") // ClusterDeleteMode |  (optional) (default to "DEFAULT")
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    deleteMode := openapiclient.ClusterDeleteMode("DEFAULT") // ClusterDeleteMode |  (optional) (default to "DEFAULT")
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ClustersAPI.DeleteCluster(context.Background(), organizationId, clusterId).DeleteMode(deleteMode).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeleteCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ClustersAPI.DeleteCluster(context.Background(), organizationId, clusterId).DeleteMode(deleteMode).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeleteCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -181,25 +181,25 @@ Deploy a cluster
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.DeployCluster(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeployCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `DeployCluster`: ClusterStatus
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.DeployCluster`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.DeployCluster(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeployCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `DeployCluster`: ClusterStatus
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.DeployCluster`: %v\n", resp)
 }
 ```
 
@@ -252,26 +252,26 @@ Edit a cluster
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterRequest := *openapiclient.NewClusterRequest("Name_example", "Region_example", openapiclient.CloudProviderEnum("AWS")) // ClusterRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterRequest := *openapiclient.NewClusterRequest("Name_example", "Region_example", openapiclient.CloudProviderEnum("AWS")) // ClusterRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.EditCluster(context.Background(), organizationId, clusterId).ClusterRequest(clusterRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditCluster`: Cluster
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditCluster`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.EditCluster(context.Background(), organizationId, clusterId).ClusterRequest(clusterRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditCluster`: Cluster
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditCluster`: %v\n", resp)
 }
 ```
 
@@ -327,26 +327,26 @@ Edit advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterAdvancedSettings := *openapiclient.NewClusterAdvancedSettings() // ClusterAdvancedSettings |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterAdvancedSettings := *openapiclient.NewClusterAdvancedSettings() // ClusterAdvancedSettings |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.EditClusterAdvancedSettings(context.Background(), organizationId, clusterId).ClusterAdvancedSettings(clusterAdvancedSettings).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditClusterAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditClusterAdvancedSettings`: ClusterAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditClusterAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.EditClusterAdvancedSettings(context.Background(), organizationId, clusterId).ClusterAdvancedSettings(clusterAdvancedSettings).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditClusterAdvancedSettings`: ClusterAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditClusterAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -402,26 +402,26 @@ Edit routing table
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterRoutingTableRequest := *openapiclient.NewClusterRoutingTableRequest([]openapiclient.ClusterRoutingTableResultsInner{*openapiclient.NewClusterRoutingTableResultsInner("Destination_example", "Target_example", "Description_example")}) // ClusterRoutingTableRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterRoutingTableRequest := *openapiclient.NewClusterRoutingTableRequest([]openapiclient.ClusterRoutingTableResultsInner{*openapiclient.NewClusterRoutingTableResultsInner("Destination_example", "Target_example", "Description_example")}) // ClusterRoutingTableRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.EditRoutingTable(context.Background(), organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditRoutingTable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditRoutingTable`: ClusterRoutingTable
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditRoutingTable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.EditRoutingTable(context.Background(), organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditRoutingTable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditRoutingTable`: ClusterRoutingTable
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditRoutingTable`: %v\n", resp)
 }
 ```
 
@@ -477,25 +477,25 @@ Get advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterAdvancedSettings(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterAdvancedSettings`: ClusterAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetClusterAdvancedSettings(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetClusterAdvancedSettings`: ClusterAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -548,25 +548,25 @@ Get cluster kubeconfig
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterKubeconfig(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubeconfig``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterKubeconfig`: string
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterKubeconfig`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetClusterKubeconfig(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubeconfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetClusterKubeconfig`: string
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterKubeconfig`: %v\n", resp)
 }
 ```
 
@@ -619,25 +619,25 @@ Know if a cluster is ready to be deployed or not
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterReadinessStatus(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterReadinessStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterReadinessStatus`: ClusterReadinessStatus
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterReadinessStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetClusterReadinessStatus(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterReadinessStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetClusterReadinessStatus`: ClusterReadinessStatus
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterReadinessStatus`: %v\n", resp)
 }
 ```
 
@@ -690,25 +690,25 @@ Get cluster status
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterStatus(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterStatus`: ClusterStatusGet
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetClusterStatus(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetClusterStatus`: ClusterStatusGet
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterStatus`: %v\n", resp)
 }
 ```
 
@@ -763,23 +763,23 @@ List default cluster advanced settings
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetDefaultClusterAdvancedSettings(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetDefaultClusterAdvancedSettings``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetDefaultClusterAdvancedSettings`: ClusterAdvancedSettings
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetDefaultClusterAdvancedSettings`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetDefaultClusterAdvancedSettings(context.Background()).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetDefaultClusterAdvancedSettings``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetDefaultClusterAdvancedSettings`: ClusterAdvancedSettings
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetDefaultClusterAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -822,25 +822,25 @@ Get cluster helm values for self managed installation
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetInstallationHelmValues(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetInstallationHelmValues``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetInstallationHelmValues`: string
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetInstallationHelmValues`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetInstallationHelmValues(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetInstallationHelmValues``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetInstallationHelmValues`: string
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetInstallationHelmValues`: %v\n", resp)
 }
 ```
 
@@ -893,25 +893,25 @@ Get cluster cloud provider info and credentials
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetOrganizationCloudProviderInfo(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetOrganizationCloudProviderInfo``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOrganizationCloudProviderInfo`: ClusterCloudProviderInfo
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetOrganizationCloudProviderInfo`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetOrganizationCloudProviderInfo(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetOrganizationCloudProviderInfo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationCloudProviderInfo`: ClusterCloudProviderInfo
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetOrganizationCloudProviderInfo`: %v\n", resp)
 }
 ```
 
@@ -966,24 +966,24 @@ List all clusters statuses
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetOrganizationClusterStatus(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetOrganizationClusterStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetOrganizationClusterStatus`: ClusterStatusResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetOrganizationClusterStatus`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetOrganizationClusterStatus(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetOrganizationClusterStatus``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetOrganizationClusterStatus`: ClusterStatusResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetOrganizationClusterStatus`: %v\n", resp)
 }
 ```
 
@@ -1036,25 +1036,25 @@ Get routing table
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetRoutingTable(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetRoutingTable``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetRoutingTable`: ClusterRoutingTable
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetRoutingTable`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.GetRoutingTable(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetRoutingTable``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetRoutingTable`: ClusterRoutingTable
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetRoutingTable`: %v\n", resp)
 }
 ```
 
@@ -1109,25 +1109,25 @@ List Cluster Logs
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.ListClusterLogs(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterLogs``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListClusterLogs`: ClusterLogsResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterLogs`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.ListClusterLogs(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterLogs``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListClusterLogs`: ClusterLogsResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterLogs`: %v\n", resp)
 }
 ```
 
@@ -1180,24 +1180,24 @@ List organization clusters
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.ListOrganizationCluster(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListOrganizationCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListOrganizationCluster`: ClusterResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListOrganizationCluster`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.ListOrganizationCluster(context.Background(), organizationId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListOrganizationCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListOrganizationCluster`: ClusterResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListOrganizationCluster`: %v\n", resp)
 }
 ```
 
@@ -1248,26 +1248,26 @@ Specify cluster cloud provider info and credentials
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterCloudProviderInfoRequest := *openapiclient.NewClusterCloudProviderInfoRequest() // ClusterCloudProviderInfoRequest |  (optional)
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    clusterCloudProviderInfoRequest := *openapiclient.NewClusterCloudProviderInfoRequest() // ClusterCloudProviderInfoRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.SpecifyClusterCloudProviderInfo(context.Background(), organizationId, clusterId).ClusterCloudProviderInfoRequest(clusterCloudProviderInfoRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.SpecifyClusterCloudProviderInfo``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `SpecifyClusterCloudProviderInfo`: ClusterCloudProviderInfo
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.SpecifyClusterCloudProviderInfo`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.SpecifyClusterCloudProviderInfo(context.Background(), organizationId, clusterId).ClusterCloudProviderInfoRequest(clusterCloudProviderInfoRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.SpecifyClusterCloudProviderInfo``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `SpecifyClusterCloudProviderInfo`: ClusterCloudProviderInfo
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.SpecifyClusterCloudProviderInfo`: %v\n", resp)
 }
 ```
 
@@ -1323,25 +1323,25 @@ Stop cluster
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.StopCluster(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.StopCluster``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `StopCluster`: ClusterStatus
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.StopCluster`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ClustersAPI.StopCluster(context.Background(), organizationId, clusterId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.StopCluster``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `StopCluster`: ClusterStatus
+    fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.StopCluster`: %v\n", resp)
 }
 ```
 

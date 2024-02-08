@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -22,17 +21,14 @@ var _ MappedNullable = &EnvironmentDeploymentRuleEditRequest{}
 
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
-	OnDemandPreview      *bool         `json:"on_demand_preview,omitempty"`
-	AutoPreview          *bool         `json:"auto_preview,omitempty"`
-	AutoStop             *bool         `json:"auto_stop,omitempty"`
-	Timezone             string        `json:"timezone"`
-	StartTime            time.Time     `json:"start_time"`
-	StopTime             time.Time     `json:"stop_time"`
-	Weekdays             []WeekdayEnum `json:"weekdays"`
-	AdditionalProperties map[string]interface{}
+	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
+	AutoPreview     *bool         `json:"auto_preview,omitempty"`
+	AutoStop        *bool         `json:"auto_stop,omitempty"`
+	Timezone        string        `json:"timezone"`
+	StartTime       time.Time     `json:"start_time"`
+	StopTime        time.Time     `json:"stop_time"`
+	Weekdays        []WeekdayEnum `json:"weekdays"`
 }
-
-type _EnvironmentDeploymentRuleEditRequest EnvironmentDeploymentRuleEditRequest
 
 // NewEnvironmentDeploymentRuleEditRequest instantiates a new EnvironmentDeploymentRuleEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -282,63 +278,7 @@ func (o EnvironmentDeploymentRuleEditRequest) ToMap() (map[string]interface{}, e
 	toSerialize["start_time"] = o.StartTime
 	toSerialize["stop_time"] = o.StopTime
 	toSerialize["weekdays"] = o.Weekdays
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentDeploymentRuleEditRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"timezone",
-		"start_time",
-		"stop_time",
-		"weekdays",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironmentDeploymentRuleEditRequest := _EnvironmentDeploymentRuleEditRequest{}
-
-	err = json.Unmarshal(data, &varEnvironmentDeploymentRuleEditRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentDeploymentRuleEditRequest(varEnvironmentDeploymentRuleEditRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "on_demand_preview")
-		delete(additionalProperties, "auto_preview")
-		delete(additionalProperties, "auto_stop")
-		delete(additionalProperties, "timezone")
-		delete(additionalProperties, "start_time")
-		delete(additionalProperties, "stop_time")
-		delete(additionalProperties, "weekdays")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentDeploymentRuleEditRequest struct {

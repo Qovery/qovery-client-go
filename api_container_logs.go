@@ -38,9 +38,9 @@ ListContainerLog List logs
 
 This will list the last 1000 logs of the container
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param containerId Container ID
-	@return ApiListContainerLogRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param containerId Container ID
+ @return ApiListContainerLogRequest
 */
 func (a *ContainerLogsAPIService) ListContainerLog(ctx context.Context, containerId string) ApiListContainerLogRequest {
 	return ApiListContainerLogRequest{
@@ -51,8 +51,7 @@ func (a *ContainerLogsAPIService) ListContainerLog(ctx context.Context, containe
 }
 
 // Execute executes the request
-//
-//	@return LogResponseList
+//  @return LogResponseList
 func (a *ContainerLogsAPIService) ListContainerLogExecute(r ApiListContainerLogRequest) (*LogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

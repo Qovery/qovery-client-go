@@ -20,11 +20,8 @@ var _ MappedNullable = &ClusterFeatureResponseList{}
 
 // ClusterFeatureResponseList struct for ClusterFeatureResponseList
 type ClusterFeatureResponseList struct {
-	Results              []ClusterFeature `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []ClusterFeature `json:"results,omitempty"`
 }
-
-type _ClusterFeatureResponseList ClusterFeatureResponseList
 
 // NewClusterFeatureResponseList instantiates a new ClusterFeatureResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o ClusterFeatureResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ClusterFeatureResponseList) UnmarshalJSON(data []byte) (err error) {
-	varClusterFeatureResponseList := _ClusterFeatureResponseList{}
-
-	err = json.Unmarshal(data, &varClusterFeatureResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ClusterFeatureResponseList(varClusterFeatureResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableClusterFeatureResponseList struct {

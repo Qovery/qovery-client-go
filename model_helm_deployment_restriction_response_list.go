@@ -20,11 +20,8 @@ var _ MappedNullable = &HelmDeploymentRestrictionResponseList{}
 
 // HelmDeploymentRestrictionResponseList struct for HelmDeploymentRestrictionResponseList
 type HelmDeploymentRestrictionResponseList struct {
-	Results              []HelmDeploymentRestrictionResponse `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []HelmDeploymentRestrictionResponse `json:"results,omitempty"`
 }
-
-type _HelmDeploymentRestrictionResponseList HelmDeploymentRestrictionResponseList
 
 // NewHelmDeploymentRestrictionResponseList instantiates a new HelmDeploymentRestrictionResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o HelmDeploymentRestrictionResponseList) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmDeploymentRestrictionResponseList) UnmarshalJSON(data []byte) (err error) {
-	varHelmDeploymentRestrictionResponseList := _HelmDeploymentRestrictionResponseList{}
-
-	err = json.Unmarshal(data, &varHelmDeploymentRestrictionResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmDeploymentRestrictionResponseList(varHelmDeploymentRestrictionResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmDeploymentRestrictionResponseList struct {

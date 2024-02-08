@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -38,11 +37,8 @@ type ProjectDeploymentRule struct {
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
 	Wildcard string `json:"wildcard"`
 	// used to select the first deployment rule to match new created environments
-	PriorityIndex        *int32 `json:"priority_index,omitempty"`
-	AdditionalProperties map[string]interface{}
+	PriorityIndex *int32 `json:"priority_index,omitempty"`
 }
-
-type _ProjectDeploymentRule ProjectDeploymentRule
 
 // NewProjectDeploymentRule instantiates a new ProjectDeploymentRule object
 // This constructor will assign default values to properties that have it defined,
@@ -488,76 +484,7 @@ func (o ProjectDeploymentRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PriorityIndex) {
 		toSerialize["priority_index"] = o.PriorityIndex
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *ProjectDeploymentRule) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-		"mode",
-		"cluster_id",
-		"timezone",
-		"start_time",
-		"stop_time",
-		"weekdays",
-		"wildcard",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varProjectDeploymentRule := _ProjectDeploymentRule{}
-
-	err = json.Unmarshal(data, &varProjectDeploymentRule)
-
-	if err != nil {
-		return err
-	}
-
-	*o = ProjectDeploymentRule(varProjectDeploymentRule)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "mode")
-		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "auto_stop")
-		delete(additionalProperties, "timezone")
-		delete(additionalProperties, "start_time")
-		delete(additionalProperties, "stop_time")
-		delete(additionalProperties, "weekdays")
-		delete(additionalProperties, "wildcard")
-		delete(additionalProperties, "priority_index")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableProjectDeploymentRule struct {

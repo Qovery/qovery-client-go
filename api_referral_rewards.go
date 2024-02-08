@@ -34,8 +34,8 @@ func (r ApiGetAccountReferralRequest) Execute() (*Referral, *http.Response, erro
 /*
 GetAccountReferral Get your referral information
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiGetAccountReferralRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiGetAccountReferralRequest
 */
 func (a *ReferralRewardsAPIService) GetAccountReferral(ctx context.Context) ApiGetAccountReferralRequest {
 	return ApiGetAccountReferralRequest{
@@ -45,8 +45,7 @@ func (a *ReferralRewardsAPIService) GetAccountReferral(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//
-//	@return Referral
+//  @return Referral
 func (a *ReferralRewardsAPIService) GetAccountReferralExecute(r ApiGetAccountReferralRequest) (*Referral, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -154,8 +153,8 @@ PostAccountRewardClaim Claim a reward
 
 A same code can be claimed only 3 times at max
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiPostAccountRewardClaimRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @return ApiPostAccountRewardClaimRequest
 */
 func (a *ReferralRewardsAPIService) PostAccountRewardClaim(ctx context.Context) ApiPostAccountRewardClaimRequest {
 	return ApiPostAccountRewardClaimRequest{

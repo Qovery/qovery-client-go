@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CloneServiceRequest type satisfies the MappedNullable interface at compile time
@@ -21,12 +20,9 @@ var _ MappedNullable = &CloneServiceRequest{}
 
 // CloneServiceRequest struct for CloneServiceRequest
 type CloneServiceRequest struct {
-	Name                 string `json:"name"`
-	EnvironmentId        string `json:"environment_id"`
-	AdditionalProperties map[string]interface{}
+	Name          string `json:"name"`
+	EnvironmentId string `json:"environment_id"`
 }
-
-type _CloneServiceRequest CloneServiceRequest
 
 // NewCloneServiceRequest instantiates a new CloneServiceRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -107,56 +103,7 @@ func (o CloneServiceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["environment_id"] = o.EnvironmentId
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CloneServiceRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"environment_id",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCloneServiceRequest := _CloneServiceRequest{}
-
-	err = json.Unmarshal(data, &varCloneServiceRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CloneServiceRequest(varCloneServiceRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "environment_id")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCloneServiceRequest struct {

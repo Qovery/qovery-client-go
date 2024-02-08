@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 	"time"
 )
 
@@ -30,10 +29,7 @@ type EnvironmentStatus struct {
 	TotalDeploymentDurationInSeconds NullableInt32                            `json:"total_deployment_duration_in_seconds,omitempty"`
 	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
 	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
-	AdditionalProperties             map[string]interface{}
 }
-
-type _EnvironmentStatus EnvironmentStatus
 
 // NewEnvironmentStatus instantiates a new EnvironmentStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -370,63 +366,7 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	if o.TriggeredBy.IsSet() {
 		toSerialize["triggered_by"] = o.TriggeredBy.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *EnvironmentStatus) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"state",
-		"last_deployment_state",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varEnvironmentStatus := _EnvironmentStatus{}
-
-	err = json.Unmarshal(data, &varEnvironmentStatus)
-
-	if err != nil {
-		return err
-	}
-
-	*o = EnvironmentStatus(varEnvironmentStatus)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "state")
-		delete(additionalProperties, "last_deployment_date")
-		delete(additionalProperties, "last_deployment_state")
-		delete(additionalProperties, "last_deployment_id")
-		delete(additionalProperties, "total_deployment_duration_in_seconds")
-		delete(additionalProperties, "origin")
-		delete(additionalProperties, "triggered_by")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableEnvironmentStatus struct {

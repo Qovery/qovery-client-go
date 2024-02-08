@@ -44,9 +44,9 @@ CreateJobDeploymentRestriction Create a job deployment restriction
 
 Create a job deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiCreateJobDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiCreateJobDeploymentRestrictionRequest
 */
 func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestriction(ctx context.Context, jobId string) ApiCreateJobDeploymentRestrictionRequest {
 	return ApiCreateJobDeploymentRestrictionRequest{
@@ -57,8 +57,7 @@ func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestriction(ctx 
 }
 
 // Execute executes the request
-//
-//	@return JobDeploymentRestrictionResponse
+//  @return JobDeploymentRestrictionResponse
 func (a *JobDeploymentRestrictionAPIService) CreateJobDeploymentRestrictionExecute(r ApiCreateJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -165,10 +164,10 @@ DeleteJobDeploymentRestriction Delete a job deployment restriction
 
 Delete a job deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@param deploymentRestrictionId Deployment Restriction ID
-	@return ApiDeleteJobDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @param deploymentRestrictionId Deployment Restriction ID
+ @return ApiDeleteJobDeploymentRestrictionRequest
 */
 func (a *JobDeploymentRestrictionAPIService) DeleteJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiDeleteJobDeploymentRestrictionRequest {
 	return ApiDeleteJobDeploymentRestrictionRequest{
@@ -281,10 +280,10 @@ EditJobDeploymentRestriction Edit a job deployment restriction
 
 Edit a job deployment restriction
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@param deploymentRestrictionId Deployment Restriction ID
-	@return ApiEditJobDeploymentRestrictionRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @param deploymentRestrictionId Deployment Restriction ID
+ @return ApiEditJobDeploymentRestrictionRequest
 */
 func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestriction(ctx context.Context, jobId string, deploymentRestrictionId string) ApiEditJobDeploymentRestrictionRequest {
 	return ApiEditJobDeploymentRestrictionRequest{
@@ -296,8 +295,7 @@ func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestriction(ctx co
 }
 
 // Execute executes the request
-//
-//	@return JobDeploymentRestrictionResponse
+//  @return JobDeploymentRestrictionResponse
 func (a *JobDeploymentRestrictionAPIService) EditJobDeploymentRestrictionExecute(r ApiEditJobDeploymentRestrictionRequest) (*JobDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -404,9 +402,9 @@ GetJobDeploymentRestrictions Get job deployment restrictions
 
 Get job deployment restrictions
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiGetJobDeploymentRestrictionsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiGetJobDeploymentRestrictionsRequest
 */
 func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictions(ctx context.Context, jobId string) ApiGetJobDeploymentRestrictionsRequest {
 	return ApiGetJobDeploymentRestrictionsRequest{
@@ -417,8 +415,7 @@ func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictions(ctx co
 }
 
 // Execute executes the request
-//
-//	@return JobDeploymentRestrictionResponseList
+//  @return JobDeploymentRestrictionResponseList
 func (a *JobDeploymentRestrictionAPIService) GetJobDeploymentRestrictionsExecute(r ApiGetJobDeploymentRestrictionsRequest) (*JobDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

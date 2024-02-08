@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the DeploymentHistoryEnvironmentPaginatedResponseList type satisfies the MappedNullable interface at compile time
@@ -21,13 +20,10 @@ var _ MappedNullable = &DeploymentHistoryEnvironmentPaginatedResponseList{}
 
 // DeploymentHistoryEnvironmentPaginatedResponseList struct for DeploymentHistoryEnvironmentPaginatedResponseList
 type DeploymentHistoryEnvironmentPaginatedResponseList struct {
-	Page                 float32                        `json:"page"`
-	PageSize             float32                        `json:"page_size"`
-	Results              []DeploymentHistoryEnvironment `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Page     float32                        `json:"page"`
+	PageSize float32                        `json:"page_size"`
+	Results  []DeploymentHistoryEnvironment `json:"results,omitempty"`
 }
-
-type _DeploymentHistoryEnvironmentPaginatedResponseList DeploymentHistoryEnvironmentPaginatedResponseList
 
 // NewDeploymentHistoryEnvironmentPaginatedResponseList instantiates a new DeploymentHistoryEnvironmentPaginatedResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -143,57 +139,7 @@ func (o DeploymentHistoryEnvironmentPaginatedResponseList) ToMap() (map[string]i
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeploymentHistoryEnvironmentPaginatedResponseList) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"page",
-		"page_size",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varDeploymentHistoryEnvironmentPaginatedResponseList := _DeploymentHistoryEnvironmentPaginatedResponseList{}
-
-	err = json.Unmarshal(data, &varDeploymentHistoryEnvironmentPaginatedResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeploymentHistoryEnvironmentPaginatedResponseList(varDeploymentHistoryEnvironmentPaginatedResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "page")
-		delete(additionalProperties, "page_size")
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeploymentHistoryEnvironmentPaginatedResponseList struct {

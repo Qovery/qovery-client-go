@@ -20,12 +20,9 @@ var _ MappedNullable = &Referral{}
 
 // Referral struct for Referral
 type Referral struct {
-	TotalInvited         *int32  `json:"total_invited,omitempty"`
-	InvitationLink       *string `json:"invitation_link,omitempty"`
-	AdditionalProperties map[string]interface{}
+	TotalInvited   *int32  `json:"total_invited,omitempty"`
+	InvitationLink *string `json:"invitation_link,omitempty"`
 }
-
-type _Referral Referral
 
 // NewReferral instantiates a new Referral object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o Referral) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InvitationLink) {
 		toSerialize["invitation_link"] = o.InvitationLink
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *Referral) UnmarshalJSON(data []byte) (err error) {
-	varReferral := _Referral{}
-
-	err = json.Unmarshal(data, &varReferral)
-
-	if err != nil {
-		return err
-	}
-
-	*o = Referral(varReferral)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "total_invited")
-		delete(additionalProperties, "invitation_link")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableReferral struct {

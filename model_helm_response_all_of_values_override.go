@@ -25,12 +25,9 @@ type HelmResponseAllOfValuesOverride struct {
 	// The input is in json array format: [ [$KEY,$VALUE], [...] ]
 	SetString [][]string `json:"set_string,omitempty"`
 	// The input is in json array format: [ [$KEY,$VALUE], [...] ]
-	SetJson              [][]string                                  `json:"set_json,omitempty"`
-	File                 NullableHelmResponseAllOfValuesOverrideFile `json:"file,omitempty"`
-	AdditionalProperties map[string]interface{}
+	SetJson [][]string                                  `json:"set_json,omitempty"`
+	File    NullableHelmResponseAllOfValuesOverrideFile `json:"file,omitempty"`
 }
-
-type _HelmResponseAllOfValuesOverride HelmResponseAllOfValuesOverride
 
 // NewHelmResponseAllOfValuesOverride instantiates a new HelmResponseAllOfValuesOverride object
 // This constructor will assign default values to properties that have it defined,
@@ -210,36 +207,7 @@ func (o HelmResponseAllOfValuesOverride) ToMap() (map[string]interface{}, error)
 	if o.File.IsSet() {
 		toSerialize["file"] = o.File.Get()
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *HelmResponseAllOfValuesOverride) UnmarshalJSON(data []byte) (err error) {
-	varHelmResponseAllOfValuesOverride := _HelmResponseAllOfValuesOverride{}
-
-	err = json.Unmarshal(data, &varHelmResponseAllOfValuesOverride)
-
-	if err != nil {
-		return err
-	}
-
-	*o = HelmResponseAllOfValuesOverride(varHelmResponseAllOfValuesOverride)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "set")
-		delete(additionalProperties, "set_string")
-		delete(additionalProperties, "set_json")
-		delete(additionalProperties, "file")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableHelmResponseAllOfValuesOverride struct {

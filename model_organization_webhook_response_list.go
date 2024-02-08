@@ -20,11 +20,8 @@ var _ MappedNullable = &OrganizationWebhookResponseList{}
 
 // OrganizationWebhookResponseList struct for OrganizationWebhookResponseList
 type OrganizationWebhookResponseList struct {
-	Results              []OrganizationWebhookResponse `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []OrganizationWebhookResponse `json:"results,omitempty"`
 }
-
-type _OrganizationWebhookResponseList OrganizationWebhookResponseList
 
 // NewOrganizationWebhookResponseList instantiates a new OrganizationWebhookResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o OrganizationWebhookResponseList) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *OrganizationWebhookResponseList) UnmarshalJSON(data []byte) (err error) {
-	varOrganizationWebhookResponseList := _OrganizationWebhookResponseList{}
-
-	err = json.Unmarshal(data, &varOrganizationWebhookResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = OrganizationWebhookResponseList(varOrganizationWebhookResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableOrganizationWebhookResponseList struct {

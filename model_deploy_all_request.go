@@ -20,15 +20,12 @@ var _ MappedNullable = &DeployAllRequest{}
 
 // DeployAllRequest struct for DeployAllRequest
 type DeployAllRequest struct {
-	Applications         []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
-	Databases            []string                            `json:"databases,omitempty"`
-	Containers           []DeployAllRequestContainersInner   `json:"containers,omitempty"`
-	Jobs                 []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
-	Helms                []DeployAllRequestHelmsInner        `json:"helms,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Applications []DeployAllRequestApplicationsInner `json:"applications,omitempty"`
+	Databases    []string                            `json:"databases,omitempty"`
+	Containers   []DeployAllRequestContainersInner   `json:"containers,omitempty"`
+	Jobs         []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
+	Helms        []DeployAllRequestHelmsInner        `json:"helms,omitempty"`
 }
-
-type _DeployAllRequest DeployAllRequest
 
 // NewDeployAllRequest instantiates a new DeployAllRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -232,37 +229,7 @@ func (o DeployAllRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DeployAllRequest) UnmarshalJSON(data []byte) (err error) {
-	varDeployAllRequest := _DeployAllRequest{}
-
-	err = json.Unmarshal(data, &varDeployAllRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DeployAllRequest(varDeployAllRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "applications")
-		delete(additionalProperties, "databases")
-		delete(additionalProperties, "containers")
-		delete(additionalProperties, "jobs")
-		delete(additionalProperties, "helms")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDeployAllRequest struct {

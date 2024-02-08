@@ -42,9 +42,9 @@ func (r ApiAddCreditCardRequest) Execute() (*CreditCard, *http.Response, error) 
 /*
 AddCreditCard Add credit card
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiAddCreditCardRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiAddCreditCardRequest
 */
 func (a *BillingAPIService) AddCreditCard(ctx context.Context, organizationId string) ApiAddCreditCardRequest {
 	return ApiAddCreditCardRequest{
@@ -55,8 +55,7 @@ func (a *BillingAPIService) AddCreditCard(ctx context.Context, organizationId st
 }
 
 // Execute executes the request
-//
-//	@return CreditCard
+//  @return CreditCard
 func (a *BillingAPIService) AddCreditCardExecute(r ApiAddCreditCardRequest) (*CreditCard, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -166,9 +165,9 @@ func (r ApiAddCreditCodeRequest) Execute() (*http.Response, error) {
 /*
 AddCreditCode Add credit code
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiAddCreditCodeRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiAddCreditCodeRequest
 */
 func (a *BillingAPIService) AddCreditCode(ctx context.Context, organizationId string) ApiAddCreditCodeRequest {
 	return ApiAddCreditCodeRequest{
@@ -278,9 +277,9 @@ func (r ApiChangePlanRequest) Execute() (*Organization, *http.Response, error) {
 /*
 ChangePlan Change organization plan
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiChangePlanRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiChangePlanRequest
 */
 func (a *BillingAPIService) ChangePlan(ctx context.Context, organizationId string) ApiChangePlanRequest {
 	return ApiChangePlanRequest{
@@ -291,8 +290,7 @@ func (a *BillingAPIService) ChangePlan(ctx context.Context, organizationId strin
 }
 
 // Execute executes the request
-//
-//	@return Organization
+//  @return Organization
 func (a *BillingAPIService) ChangePlanExecute(r ApiChangePlanRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -397,10 +395,10 @@ func (r ApiDeleteCreditCardRequest) Execute() (*http.Response, error) {
 /*
 DeleteCreditCard Delete credit card
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param creditCardId Credit Card ID
-	@return ApiDeleteCreditCardRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param creditCardId Credit Card ID
+ @return ApiDeleteCreditCardRequest
 */
 func (a *BillingAPIService) DeleteCreditCard(ctx context.Context, organizationId string, creditCardId string) ApiDeleteCreditCardRequest {
 	return ApiDeleteCreditCardRequest{
@@ -510,9 +508,9 @@ func (r ApiEditOrganizationBillingInfoRequest) Execute() (*BillingInfo, *http.Re
 /*
 EditOrganizationBillingInfo Edit Organization Billing Info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiEditOrganizationBillingInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiEditOrganizationBillingInfoRequest
 */
 func (a *BillingAPIService) EditOrganizationBillingInfo(ctx context.Context, organizationId string) ApiEditOrganizationBillingInfoRequest {
 	return ApiEditOrganizationBillingInfoRequest{
@@ -523,8 +521,7 @@ func (a *BillingAPIService) EditOrganizationBillingInfo(ctx context.Context, org
 }
 
 // Execute executes the request
-//
-//	@return BillingInfo
+//  @return BillingInfo
 func (a *BillingAPIService) EditOrganizationBillingInfoExecute(r ApiEditOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -632,10 +629,11 @@ GetClusterCurrentCost Get cluster current cost
 Get your cluster cost range. We are unable to give a precise cost of your infrastructure at the moment.
 But Qovery guarantees that the cost of your cluster will not exceed the max range.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param clusterId Cluster ID
-	@return ApiGetClusterCurrentCostRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param clusterId Cluster ID
+ @return ApiGetClusterCurrentCostRequest
 */
 func (a *BillingAPIService) GetClusterCurrentCost(ctx context.Context, organizationId string, clusterId string) ApiGetClusterCurrentCostRequest {
 	return ApiGetClusterCurrentCostRequest{
@@ -647,8 +645,7 @@ func (a *BillingAPIService) GetClusterCurrentCost(ctx context.Context, organizat
 }
 
 // Execute executes the request
-//
-//	@return CostRange
+//  @return CostRange
 func (a *BillingAPIService) GetClusterCurrentCostExecute(r ApiGetClusterCurrentCostRequest) (*CostRange, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -753,9 +750,10 @@ GetOrganizationBillingExternalId Get organization billing external ID
 
 This endpoint returns the external ID of the organization's billing account.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationBillingExternalIdRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationBillingExternalIdRequest
 */
 func (a *BillingAPIService) GetOrganizationBillingExternalId(ctx context.Context, organizationId string) ApiGetOrganizationBillingExternalIdRequest {
 	return ApiGetOrganizationBillingExternalIdRequest{
@@ -766,8 +764,7 @@ func (a *BillingAPIService) GetOrganizationBillingExternalId(ctx context.Context
 }
 
 // Execute executes the request
-//
-//	@return BillingExternalId
+//  @return BillingExternalId
 func (a *BillingAPIService) GetOrganizationBillingExternalIdExecute(r ApiGetOrganizationBillingExternalIdRequest) (*BillingExternalId, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -869,9 +866,9 @@ func (r ApiGetOrganizationBillingInfoRequest) Execute() (*BillingInfo, *http.Res
 /*
 GetOrganizationBillingInfo Get organization billing info
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationBillingInfoRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationBillingInfoRequest
 */
 func (a *BillingAPIService) GetOrganizationBillingInfo(ctx context.Context, organizationId string) ApiGetOrganizationBillingInfoRequest {
 	return ApiGetOrganizationBillingInfoRequest{
@@ -882,8 +879,7 @@ func (a *BillingAPIService) GetOrganizationBillingInfo(ctx context.Context, orga
 }
 
 // Execute executes the request
-//
-//	@return BillingInfo
+//  @return BillingInfo
 func (a *BillingAPIService) GetOrganizationBillingInfoExecute(r ApiGetOrganizationBillingInfoRequest) (*BillingInfo, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -990,9 +986,10 @@ This endpoint returns a "is_valid" boolean field reflecting the billing status o
 - For Startup organization, it returns false if there is at least 1 invoice unpaid since 1 week
 - For Community organization, it returns false if there is no credit left
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationBillingStatusRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationBillingStatusRequest
 */
 func (a *BillingAPIService) GetOrganizationBillingStatus(ctx context.Context, organizationId string) ApiGetOrganizationBillingStatusRequest {
 	return ApiGetOrganizationBillingStatusRequest{
@@ -1003,8 +1000,7 @@ func (a *BillingAPIService) GetOrganizationBillingStatus(ctx context.Context, or
 }
 
 // Execute executes the request
-//
-//	@return BillingStatus
+//  @return BillingStatus
 func (a *BillingAPIService) GetOrganizationBillingStatusExecute(r ApiGetOrganizationBillingStatusRequest) (*BillingStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1106,9 +1102,9 @@ func (r ApiGetOrganizationCurrentCostRequest) Execute() (*OrganizationCurrentCos
 /*
 GetOrganizationCurrentCost Get organization current cost
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiGetOrganizationCurrentCostRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiGetOrganizationCurrentCostRequest
 */
 func (a *BillingAPIService) GetOrganizationCurrentCost(ctx context.Context, organizationId string) ApiGetOrganizationCurrentCostRequest {
 	return ApiGetOrganizationCurrentCostRequest{
@@ -1119,8 +1115,7 @@ func (a *BillingAPIService) GetOrganizationCurrentCost(ctx context.Context, orga
 }
 
 // Execute executes the request
-//
-//	@return OrganizationCurrentCost
+//  @return OrganizationCurrentCost
 func (a *BillingAPIService) GetOrganizationCurrentCostExecute(r ApiGetOrganizationCurrentCostRequest) (*OrganizationCurrentCost, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1223,10 +1218,10 @@ func (r ApiGetOrganizationInvoiceRequest) Execute() (*Invoice, *http.Response, e
 /*
 GetOrganizationInvoice Get organization invoice
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiGetOrganizationInvoiceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiGetOrganizationInvoiceRequest
 */
 func (a *BillingAPIService) GetOrganizationInvoice(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoiceRequest {
 	return ApiGetOrganizationInvoiceRequest{
@@ -1238,8 +1233,7 @@ func (a *BillingAPIService) GetOrganizationInvoice(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//
-//	@return Invoice
+//  @return Invoice
 func (a *BillingAPIService) GetOrganizationInvoiceExecute(r ApiGetOrganizationInvoiceRequest) (*Invoice, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1345,10 +1339,10 @@ GetOrganizationInvoicePDF Get invoice link
 
 This will return URL of the invoice PDF
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@param invoiceId Invoice ID
-	@return ApiGetOrganizationInvoicePDFRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param invoiceId Invoice ID
+ @return ApiGetOrganizationInvoicePDFRequest
 */
 func (a *BillingAPIService) GetOrganizationInvoicePDF(ctx context.Context, organizationId string, invoiceId string) ApiGetOrganizationInvoicePDFRequest {
 	return ApiGetOrganizationInvoicePDFRequest{
@@ -1360,8 +1354,7 @@ func (a *BillingAPIService) GetOrganizationInvoicePDF(ctx context.Context, organ
 }
 
 // Execute executes the request
-//
-//	@return Link
+//  @return Link
 func (a *BillingAPIService) GetOrganizationInvoicePDFExecute(r ApiGetOrganizationInvoicePDFRequest) (*Link, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1464,9 +1457,9 @@ func (r ApiListOrganizationCreditCardsRequest) Execute() (*CreditCardResponseLis
 /*
 ListOrganizationCreditCards List organization credit cards
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiListOrganizationCreditCardsRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiListOrganizationCreditCardsRequest
 */
 func (a *BillingAPIService) ListOrganizationCreditCards(ctx context.Context, organizationId string) ApiListOrganizationCreditCardsRequest {
 	return ApiListOrganizationCreditCardsRequest{
@@ -1477,8 +1470,7 @@ func (a *BillingAPIService) ListOrganizationCreditCards(ctx context.Context, org
 }
 
 // Execute executes the request
-//
-//	@return CreditCardResponseList
+//  @return CreditCardResponseList
 func (a *BillingAPIService) ListOrganizationCreditCardsExecute(r ApiListOrganizationCreditCardsRequest) (*CreditCardResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1580,9 +1572,9 @@ func (r ApiListOrganizationInvoiceRequest) Execute() (*InvoiceResponseList, *htt
 /*
 ListOrganizationInvoice List organization invoices
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiListOrganizationInvoiceRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiListOrganizationInvoiceRequest
 */
 func (a *BillingAPIService) ListOrganizationInvoice(ctx context.Context, organizationId string) ApiListOrganizationInvoiceRequest {
 	return ApiListOrganizationInvoiceRequest{
@@ -1593,8 +1585,7 @@ func (a *BillingAPIService) ListOrganizationInvoice(ctx context.Context, organiz
 }
 
 // Execute executes the request
-//
-//	@return InvoiceResponseList
+//  @return InvoiceResponseList
 func (a *BillingAPIService) ListOrganizationInvoiceExecute(r ApiListOrganizationInvoiceRequest) (*InvoiceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1696,9 +1687,9 @@ func (r ApiOrganizationDownloadAllInvoicesRequest) Execute() (*http.Response, er
 /*
 OrganizationDownloadAllInvoices Download all invoices
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param organizationId Organization ID
-	@return ApiOrganizationDownloadAllInvoicesRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiOrganizationDownloadAllInvoicesRequest
 */
 func (a *BillingAPIService) OrganizationDownloadAllInvoices(ctx context.Context, organizationId string) ApiOrganizationDownloadAllInvoicesRequest {
 	return ApiOrganizationDownloadAllInvoicesRequest{

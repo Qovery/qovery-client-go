@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the CreateEnvironmentRequest type satisfies the MappedNullable interface at compile time
@@ -22,13 +21,10 @@ var _ MappedNullable = &CreateEnvironmentRequest{}
 // CreateEnvironmentRequest struct for CreateEnvironmentRequest
 type CreateEnvironmentRequest struct {
 	// name is case insensitive
-	Name                 string                     `json:"name"`
-	Cluster              *string                    `json:"cluster,omitempty"`
-	Mode                 *CreateEnvironmentModeEnum `json:"mode,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Name    string                     `json:"name"`
+	Cluster *string                    `json:"cluster,omitempty"`
+	Mode    *CreateEnvironmentModeEnum `json:"mode,omitempty"`
 }
-
-type _CreateEnvironmentRequest CreateEnvironmentRequest
 
 // NewCreateEnvironmentRequest instantiates a new CreateEnvironmentRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -153,56 +149,7 @@ func (o CreateEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *CreateEnvironmentRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
-	varCreateEnvironmentRequest := _CreateEnvironmentRequest{}
-
-	err = json.Unmarshal(data, &varCreateEnvironmentRequest)
-
-	if err != nil {
-		return err
-	}
-
-	*o = CreateEnvironmentRequest(varCreateEnvironmentRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "cluster")
-		delete(additionalProperties, "mode")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableCreateEnvironmentRequest struct {

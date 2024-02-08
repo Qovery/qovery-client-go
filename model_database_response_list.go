@@ -20,11 +20,8 @@ var _ MappedNullable = &DatabaseResponseList{}
 
 // DatabaseResponseList struct for DatabaseResponseList
 type DatabaseResponseList struct {
-	Results              []Database `json:"results,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Results []Database `json:"results,omitempty"`
 }
-
-type _DatabaseResponseList DatabaseResponseList
 
 // NewDatabaseResponseList instantiates a new DatabaseResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -88,33 +85,7 @@ func (o DatabaseResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DatabaseResponseList) UnmarshalJSON(data []byte) (err error) {
-	varDatabaseResponseList := _DatabaseResponseList{}
-
-	err = json.Unmarshal(data, &varDatabaseResponseList)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatabaseResponseList(varDatabaseResponseList)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "results")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDatabaseResponseList struct {

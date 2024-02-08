@@ -38,9 +38,9 @@ DeleteJob Delete job
 
 To delete the job you must have the admin permission
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiDeleteJobRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiDeleteJobRequest
 */
 func (a *JobMainCallsAPIService) DeleteJob(ctx context.Context, jobId string) ApiDeleteJobRequest {
 	return ApiDeleteJobRequest{
@@ -150,9 +150,10 @@ EditJob Edit job
 
 - To edit the job you must have the admin permission.
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiEditJobRequest
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiEditJobRequest
 */
 func (a *JobMainCallsAPIService) EditJob(ctx context.Context, jobId string) ApiEditJobRequest {
 	return ApiEditJobRequest{
@@ -163,8 +164,7 @@ func (a *JobMainCallsAPIService) EditJob(ctx context.Context, jobId string) ApiE
 }
 
 // Execute executes the request
-//
-//	@return JobResponse
+//  @return JobResponse
 func (a *JobMainCallsAPIService) EditJobExecute(r ApiEditJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -268,9 +268,9 @@ func (r ApiGetJobRequest) Execute() (*JobResponse, *http.Response, error) {
 /*
 GetJob Get job by ID
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiGetJobRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiGetJobRequest
 */
 func (a *JobMainCallsAPIService) GetJob(ctx context.Context, jobId string) ApiGetJobRequest {
 	return ApiGetJobRequest{
@@ -281,8 +281,7 @@ func (a *JobMainCallsAPIService) GetJob(ctx context.Context, jobId string) ApiGe
 }
 
 // Execute executes the request
-//
-//	@return JobResponse
+//  @return JobResponse
 func (a *JobMainCallsAPIService) GetJobExecute(r ApiGetJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -384,9 +383,9 @@ func (r ApiGetJobStatusRequest) Execute() (*Status, *http.Response, error) {
 /*
 GetJobStatus Get job status
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiGetJobStatusRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiGetJobStatusRequest
 */
 func (a *JobMainCallsAPIService) GetJobStatus(ctx context.Context, jobId string) ApiGetJobStatusRequest {
 	return ApiGetJobStatusRequest{
@@ -397,8 +396,7 @@ func (a *JobMainCallsAPIService) GetJobStatus(ctx context.Context, jobId string)
 }
 
 // Execute executes the request
-//
-//	@return Status
+//  @return Status
 func (a *JobMainCallsAPIService) GetJobStatusExecute(r ApiGetJobStatusRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -516,9 +514,9 @@ ListJobCommit List last job commits
 
 Returns list of the last 100 commits made on the repository linked to the job
 
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param jobId Job ID
-	@return ApiListJobCommitRequest
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param jobId Job ID
+ @return ApiListJobCommitRequest
 */
 func (a *JobMainCallsAPIService) ListJobCommit(ctx context.Context, jobId string) ApiListJobCommitRequest {
 	return ApiListJobCommitRequest{
@@ -529,8 +527,7 @@ func (a *JobMainCallsAPIService) ListJobCommit(ctx context.Context, jobId string
 }
 
 // Execute executes the request
-//
-//	@return CommitResponseList
+//  @return CommitResponseList
 func (a *JobMainCallsAPIService) ListJobCommitExecute(r ApiListJobCommitRequest) (*CommitResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -20,12 +20,9 @@ var _ MappedNullable = &DatabaseConfiguration{}
 
 // DatabaseConfiguration struct for DatabaseConfiguration
 type DatabaseConfiguration struct {
-	DatabaseType         *DatabaseTypeEnum     `json:"database_type,omitempty"`
-	Version              []DatabaseVersionMode `json:"version,omitempty"`
-	AdditionalProperties map[string]interface{}
+	DatabaseType *DatabaseTypeEnum     `json:"database_type,omitempty"`
+	Version      []DatabaseVersionMode `json:"version,omitempty"`
 }
-
-type _DatabaseConfiguration DatabaseConfiguration
 
 // NewDatabaseConfiguration instantiates a new DatabaseConfiguration object
 // This constructor will assign default values to properties that have it defined,
@@ -124,34 +121,7 @@ func (o DatabaseConfiguration) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
 	return toSerialize, nil
-}
-
-func (o *DatabaseConfiguration) UnmarshalJSON(data []byte) (err error) {
-	varDatabaseConfiguration := _DatabaseConfiguration{}
-
-	err = json.Unmarshal(data, &varDatabaseConfiguration)
-
-	if err != nil {
-		return err
-	}
-
-	*o = DatabaseConfiguration(varDatabaseConfiguration)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "database_type")
-		delete(additionalProperties, "version")
-		o.AdditionalProperties = additionalProperties
-	}
-
-	return err
 }
 
 type NullableDatabaseConfiguration struct {

@@ -27,25 +27,25 @@ Add a secret to the container
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretRequest := *openapiclient.NewSecretRequest("Key_example") // SecretRequest |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecret(context.Background(), containerId).SecretRequest(secretRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainerSecret`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecret`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecret(context.Background(), containerId).SecretRequest(secretRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerSecret`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecret`: %v\n", resp)
 }
 ```
 
@@ -99,26 +99,26 @@ Create a secret alias at the container level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecretAlias(context.Background(), containerId, secretId).Key(key).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecretAlias``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainerSecretAlias`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecretAlias`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecretAlias(context.Background(), containerId, secretId).Key(key).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecretAlias``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerSecretAlias`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecretAlias`: %v\n", resp)
 }
 ```
 
@@ -174,26 +174,26 @@ Create a secret override at the container level
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	value := *openapiclient.NewValue() // Value |  (optional)
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    value := *openapiclient.NewValue() // Value |  (optional)
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecretOverride(context.Background(), containerId, secretId).Value(value).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecretOverride``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `CreateContainerSecretOverride`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecretOverride`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretAPI.CreateContainerSecretOverride(context.Background(), containerId, secretId).Value(value).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.CreateContainerSecretOverride``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `CreateContainerSecretOverride`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.CreateContainerSecretOverride`: %v\n", resp)
 }
 ```
 
@@ -249,23 +249,23 @@ Delete a secret from an container
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ContainerSecretAPI.DeleteContainerSecret(context.Background(), containerId, secretId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.DeleteContainerSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ContainerSecretAPI.DeleteContainerSecret(context.Background(), containerId, secretId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.DeleteContainerSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
 }
 ```
 
@@ -320,26 +320,26 @@ Edit a secret belonging to the container
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
-	secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+    secretEditRequest := *openapiclient.NewSecretEditRequest("Key_example") // SecretEditRequest | 
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerSecretAPI.EditContainerSecret(context.Background(), containerId, secretId).SecretEditRequest(secretEditRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.EditContainerSecret``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditContainerSecret`: Secret
-	fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.EditContainerSecret`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretAPI.EditContainerSecret(context.Background(), containerId, secretId).SecretEditRequest(secretEditRequest).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.EditContainerSecret``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `EditContainerSecret`: Secret
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.EditContainerSecret`: %v\n", resp)
 }
 ```
 
@@ -395,24 +395,24 @@ List container secrets
 package main
 
 import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerSecretAPI.ListContainerSecrets(context.Background(), containerId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.ListContainerSecrets``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListContainerSecrets`: SecretResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.ListContainerSecrets`: %v\n", resp)
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerSecretAPI.ListContainerSecrets(context.Background(), containerId).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerSecretAPI.ListContainerSecrets``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `ListContainerSecrets`: SecretResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainerSecretAPI.ListContainerSecrets`: %v\n", resp)
 }
 ```
 
