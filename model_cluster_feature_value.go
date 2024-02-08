@@ -18,8 +18,16 @@ import (
 
 // ClusterFeatureValue - struct for ClusterFeatureValue
 type ClusterFeatureValue struct {
-	Bool   *bool
-	String *string
+	ClusterFeatureAwsExistingVpc *ClusterFeatureAwsExistingVpc
+	Bool                         *bool
+	String                       *string
+}
+
+// ClusterFeatureAwsExistingVpcAsClusterFeatureValue is a convenience function that returns ClusterFeatureAwsExistingVpc wrapped in ClusterFeatureValue
+func ClusterFeatureAwsExistingVpcAsClusterFeatureValue(v *ClusterFeatureAwsExistingVpc) ClusterFeatureValue {
+	return ClusterFeatureValue{
+		ClusterFeatureAwsExistingVpc: v,
+	}
 }
 
 // boolAsClusterFeatureValue is a convenience function that returns bool wrapped in ClusterFeatureValue
@@ -45,6 +53,19 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	match := 0
+	// try to unmarshal data into ClusterFeatureAwsExistingVpc
+	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureAwsExistingVpc)
+	if err == nil {
+		jsonClusterFeatureAwsExistingVpc, _ := json.Marshal(dst.ClusterFeatureAwsExistingVpc)
+		if string(jsonClusterFeatureAwsExistingVpc) == "{}" { // empty struct
+			dst.ClusterFeatureAwsExistingVpc = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.ClusterFeatureAwsExistingVpc = nil
+	}
+
 	// try to unmarshal data into Bool
 	err = newStrictDecoder(data).Decode(&dst.Bool)
 	if err == nil {
@@ -73,6 +94,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 
 	if match > 1 { // more than 1 match
 		// reset to nil
+		dst.ClusterFeatureAwsExistingVpc = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -86,6 +108,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ClusterFeatureValue) MarshalJSON() ([]byte, error) {
+	if src.ClusterFeatureAwsExistingVpc != nil {
+		return json.Marshal(&src.ClusterFeatureAwsExistingVpc)
+	}
+
 	if src.Bool != nil {
 		return json.Marshal(&src.Bool)
 	}
@@ -102,6 +128,10 @@ func (obj *ClusterFeatureValue) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
+	if obj.ClusterFeatureAwsExistingVpc != nil {
+		return obj.ClusterFeatureAwsExistingVpc
+	}
+
 	if obj.Bool != nil {
 		return obj.Bool
 	}

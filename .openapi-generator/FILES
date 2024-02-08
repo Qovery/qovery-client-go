@@ -170,7 +170,6 @@ docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
 docs/ClusterRequest.md
 docs/ClusterRequestFeaturesInner.md
-docs/ClusterRequestFeaturesInnerValue.md
 docs/ClusterResponseList.md
 docs/ClusterRoutingTable.md
 docs/ClusterRoutingTableRequest.md
@@ -660,7 +659,6 @@ model_cluster_region.go
 model_cluster_region_response_list.go
 model_cluster_request.go
 model_cluster_request_features_inner.go
-model_cluster_request_features_inner_value.go
 model_cluster_response_list.go
 model_cluster_routing_table.go
 model_cluster_routing_table_request.go

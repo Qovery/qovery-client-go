@@ -22261,6 +22261,7 @@ components:
       oneOf:
       - type: string
       - type: boolean
+      - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
     ClusterFeature_accepted_values_inner:
       oneOf:
       - type: string
@@ -22304,12 +22305,6 @@ components:
       - ram_in_gb
       - type
       type: object
-    ClusterRequest_features_inner_value:
-      nullable: true
-      oneOf:
-      - type: string
-      - type: boolean
-      - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22320,7 +22315,7 @@ components:
           nullable: false
           type: string
         value:
-          $ref: '#/components/schemas/ClusterRequest_features_inner_value'
+          $ref: '#/components/schemas/ClusterFeature_value'
       type: object
     ClusterRoutingTable_results_inner:
       example:
