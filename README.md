@@ -542,8 +542,6 @@ Class | Method | HTTP request | Description
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)
  - [ClusterRequest](docs/ClusterRequest.md)
  - [ClusterRequestFeaturesInner](docs/ClusterRequestFeaturesInner.md)
- - [ClusterRequestFeaturesInnerValue](docs/ClusterRequestFeaturesInnerValue.md)
- - [ClusterRequestFeaturesInnerValueOneOf](docs/ClusterRequestFeaturesInnerValueOneOf.md)
  - [ClusterResponseList](docs/ClusterResponseList.md)
  - [ClusterRoutingTable](docs/ClusterRoutingTable.md)
  - [ClusterRoutingTableRequest](docs/ClusterRoutingTableRequest.md)
