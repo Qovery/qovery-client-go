@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **UserQuestions** | Pointer to **NullableString** |  | [optional] 
 **CurrentStep** | Pointer to **NullableString** |  | [optional] 
 **DxAuth** | Pointer to **NullableBool** |  | [optional] 
+**InfrastructureHosting** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -439,6 +440,41 @@ HasDxAuth returns a boolean if a field has been set.
 `func (o *SignUp) UnsetDxAuth()`
 
 UnsetDxAuth ensures that no value is present for DxAuth, not even an explicit nil
+### GetInfrastructureHosting
+
+`func (o *SignUp) GetInfrastructureHosting() string`
+
+GetInfrastructureHosting returns the InfrastructureHosting field if non-nil, zero value otherwise.
+
+### GetInfrastructureHostingOk
+
+`func (o *SignUp) GetInfrastructureHostingOk() (*string, bool)`
+
+GetInfrastructureHostingOk returns a tuple with the InfrastructureHosting field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInfrastructureHosting
+
+`func (o *SignUp) SetInfrastructureHosting(v string)`
+
+SetInfrastructureHosting sets InfrastructureHosting field to given value.
+
+### HasInfrastructureHosting
+
+`func (o *SignUp) HasInfrastructureHosting() bool`
+
+HasInfrastructureHosting returns a boolean if a field has been set.
+
+### SetInfrastructureHostingNil
+
+`func (o *SignUp) SetInfrastructureHostingNil(b bool)`
+
+ SetInfrastructureHostingNil sets the value for InfrastructureHosting to be an explicit nil
+
+### UnsetInfrastructureHosting
+`func (o *SignUp) UnsetInfrastructureHosting()`
+
+UnsetInfrastructureHosting ensures that no value is present for InfrastructureHosting, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

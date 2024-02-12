@@ -21185,16 +21185,17 @@ components:
       - $ref: '#/components/schemas/SignUpRequest'
     SignUpRequest:
       example:
-        user_role: user_role
         qovery_usage_other: qovery_usage_other
+        infrastructure_hosting: infrastructure_hosting
         user_email: user_email
-        user_questions: user_questions
         type_of_use: null
-        company_name: company_name
         last_name: last_name
+        dx_auth: true
+        user_role: user_role
+        user_questions: user_questions
+        company_name: company_name
         first_name: first_name
         qovery_usage: qovery_usage
-        dx_auth: true
         company_size: null
         current_step: current_step
       properties:
@@ -21228,6 +21229,9 @@ components:
         dx_auth:
           nullable: true
           type: boolean
+        infrastructure_hosting:
+          nullable: true
+          type: string
       required:
       - first_name
       - last_name

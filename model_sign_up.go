@@ -21,21 +21,22 @@ var _ MappedNullable = &SignUp{}
 
 // SignUp struct for SignUp
 type SignUp struct {
-	Id               string           `json:"id"`
-	CreatedAt        time.Time        `json:"created_at"`
-	UpdatedAt        *time.Time       `json:"updated_at,omitempty"`
-	FirstName        string           `json:"first_name"`
-	LastName         string           `json:"last_name"`
-	UserEmail        string           `json:"user_email"`
-	TypeOfUse        TypeOfUseEnum    `json:"type_of_use"`
-	QoveryUsage      string           `json:"qovery_usage"`
-	CompanyName      NullableString   `json:"company_name,omitempty"`
-	CompanySize      *CompanySizeEnum `json:"company_size,omitempty"`
-	UserRole         NullableString   `json:"user_role,omitempty"`
-	QoveryUsageOther NullableString   `json:"qovery_usage_other,omitempty"`
-	UserQuestions    NullableString   `json:"user_questions,omitempty"`
-	CurrentStep      NullableString   `json:"current_step,omitempty"`
-	DxAuth           NullableBool     `json:"dx_auth,omitempty"`
+	Id                    string           `json:"id"`
+	CreatedAt             time.Time        `json:"created_at"`
+	UpdatedAt             *time.Time       `json:"updated_at,omitempty"`
+	FirstName             string           `json:"first_name"`
+	LastName              string           `json:"last_name"`
+	UserEmail             string           `json:"user_email"`
+	TypeOfUse             TypeOfUseEnum    `json:"type_of_use"`
+	QoveryUsage           string           `json:"qovery_usage"`
+	CompanyName           NullableString   `json:"company_name,omitempty"`
+	CompanySize           *CompanySizeEnum `json:"company_size,omitempty"`
+	UserRole              NullableString   `json:"user_role,omitempty"`
+	QoveryUsageOther      NullableString   `json:"qovery_usage_other,omitempty"`
+	UserQuestions         NullableString   `json:"user_questions,omitempty"`
+	CurrentStep           NullableString   `json:"current_step,omitempty"`
+	DxAuth                NullableBool     `json:"dx_auth,omitempty"`
+	InfrastructureHosting NullableString   `json:"infrastructure_hosting,omitempty"`
 }
 
 // NewSignUp instantiates a new SignUp object
@@ -552,6 +553,49 @@ func (o *SignUp) UnsetDxAuth() {
 	o.DxAuth.Unset()
 }
 
+// GetInfrastructureHosting returns the InfrastructureHosting field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SignUp) GetInfrastructureHosting() string {
+	if o == nil || IsNil(o.InfrastructureHosting.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.InfrastructureHosting.Get()
+}
+
+// GetInfrastructureHostingOk returns a tuple with the InfrastructureHosting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SignUp) GetInfrastructureHostingOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InfrastructureHosting.Get(), o.InfrastructureHosting.IsSet()
+}
+
+// HasInfrastructureHosting returns a boolean if a field has been set.
+func (o *SignUp) HasInfrastructureHosting() bool {
+	if o != nil && o.InfrastructureHosting.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInfrastructureHosting gets a reference to the given NullableString and assigns it to the InfrastructureHosting field.
+func (o *SignUp) SetInfrastructureHosting(v string) {
+	o.InfrastructureHosting.Set(&v)
+}
+
+// SetInfrastructureHostingNil sets the value for InfrastructureHosting to be an explicit nil
+func (o *SignUp) SetInfrastructureHostingNil() {
+	o.InfrastructureHosting.Set(nil)
+}
+
+// UnsetInfrastructureHosting ensures that no value is present for InfrastructureHosting, not even an explicit nil
+func (o *SignUp) UnsetInfrastructureHosting() {
+	o.InfrastructureHosting.Unset()
+}
+
 func (o SignUp) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -592,6 +636,9 @@ func (o SignUp) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DxAuth.IsSet() {
 		toSerialize["dx_auth"] = o.DxAuth.Get()
+	}
+	if o.InfrastructureHosting.IsSet() {
+		toSerialize["infrastructure_hosting"] = o.InfrastructureHosting.Get()
 	}
 	return toSerialize, nil
 }
