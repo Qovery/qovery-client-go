@@ -1778,7 +1778,7 @@ paths:
       responses:
         "200":
           content:
-            text/plain:
+            application/x-yaml:
               schema:
                 type: string
           description: Get kubeconfig of the cluster
@@ -1789,6 +1789,44 @@ paths:
         "404":
           description: Resource not found
       summary: Get cluster kubeconfig
+      tags:
+      - Clusters
+    put:
+      operationId: editClusterKubeconfig
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/x-yaml:
+            schema:
+              type: string
+      responses:
+        "204":
+          description: edit kubeconfig of the cluster
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit cluster kubeconfig
       tags:
       - Clusters
   /organization/{organizationId}/cluster/{clusterId}/advancedSettings:

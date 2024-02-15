@@ -177,6 +177,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**DeployCluster**](docs/ClustersAPI.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 *ClustersAPI* | [**EditCluster**](docs/ClustersAPI.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
 *ClustersAPI* | [**EditClusterAdvancedSettings**](docs/ClustersAPI.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+*ClustersAPI* | [**EditClusterKubeconfig**](docs/ClustersAPI.md#editclusterkubeconfig) | **Put** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 *ClustersAPI* | [**EditRoutingTable**](docs/ClustersAPI.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 *ClustersAPI* | [**GetClusterAdvancedSettings**](docs/ClustersAPI.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 *ClustersAPI* | [**GetClusterKubeconfig**](docs/ClustersAPI.md#getclusterkubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig

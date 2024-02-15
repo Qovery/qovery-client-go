@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DeployCluster**](ClustersAPI.md#DeployCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**EditCluster**](ClustersAPI.md#EditCluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
 [**EditClusterAdvancedSettings**](ClustersAPI.md#EditClusterAdvancedSettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+[**EditClusterKubeconfig**](ClustersAPI.md#EditClusterKubeconfig) | **Put** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 [**EditRoutingTable**](ClustersAPI.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
@@ -388,6 +389,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EditClusterKubeconfig
+
+> EditClusterKubeconfig(ctx, organizationId, clusterId).Body(body).Execute()
+
+Edit cluster kubeconfig
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+    body := "body_example" // string |  (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    r, err := apiClient.ClustersAPI.EditClusterKubeconfig(context.Background(), organizationId, clusterId).Body(body).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditClusterKubeconfig``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditClusterKubeconfigRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **body** | **string** |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/x-yaml
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EditRoutingTable
 
 > ClusterRoutingTable EditRoutingTable(ctx, organizationId, clusterId).ClusterRoutingTableRequest(clusterRoutingTableRequest).Execute()
@@ -600,7 +672,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/plain
+- **Accept**: application/x-yaml
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
