@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the OrganizationCurrentCost type satisfies the MappedNullable interface at compile time
@@ -22,10 +23,10 @@ var _ MappedNullable = &OrganizationCurrentCost{}
 type OrganizationCurrentCost struct {
 	Plan *PlanEnum `json:"plan,omitempty"`
 	// number of days remaining before the end of the trial period
-	RemainingTrialDay *int32            `json:"remaining_trial_day,omitempty"`
-	RemainingCredits  *RemainingCredits `json:"remaining_credits,omitempty"`
-	Cost              *Cost             `json:"cost,omitempty"`
-	PaidUsage         *PaidUsage        `json:"paid_usage,omitempty"`
+	RemainingTrialDay *int32 `json:"remaining_trial_day,omitempty"`
+	// date when the current plan will be renewed
+	RenewalAt NullableTime `json:"renewal_at,omitempty"`
+	Cost      *Cost        `json:"cost,omitempty"`
 }
 
 // NewOrganizationCurrentCost instantiates a new OrganizationCurrentCost object
@@ -109,36 +110,47 @@ func (o *OrganizationCurrentCost) SetRemainingTrialDay(v int32) {
 	o.RemainingTrialDay = &v
 }
 
-// GetRemainingCredits returns the RemainingCredits field value if set, zero value otherwise.
-func (o *OrganizationCurrentCost) GetRemainingCredits() RemainingCredits {
-	if o == nil || IsNil(o.RemainingCredits) {
-		var ret RemainingCredits
+// GetRenewalAt returns the RenewalAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationCurrentCost) GetRenewalAt() time.Time {
+	if o == nil || IsNil(o.RenewalAt.Get()) {
+		var ret time.Time
 		return ret
 	}
-	return *o.RemainingCredits
+	return *o.RenewalAt.Get()
 }
 
-// GetRemainingCreditsOk returns a tuple with the RemainingCredits field value if set, nil otherwise
+// GetRenewalAtOk returns a tuple with the RenewalAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCost) GetRemainingCreditsOk() (*RemainingCredits, bool) {
-	if o == nil || IsNil(o.RemainingCredits) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationCurrentCost) GetRenewalAtOk() (*time.Time, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RemainingCredits, true
+	return o.RenewalAt.Get(), o.RenewalAt.IsSet()
 }
 
-// HasRemainingCredits returns a boolean if a field has been set.
-func (o *OrganizationCurrentCost) HasRemainingCredits() bool {
-	if o != nil && !IsNil(o.RemainingCredits) {
+// HasRenewalAt returns a boolean if a field has been set.
+func (o *OrganizationCurrentCost) HasRenewalAt() bool {
+	if o != nil && o.RenewalAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRemainingCredits gets a reference to the given RemainingCredits and assigns it to the RemainingCredits field.
-func (o *OrganizationCurrentCost) SetRemainingCredits(v RemainingCredits) {
-	o.RemainingCredits = &v
+// SetRenewalAt gets a reference to the given NullableTime and assigns it to the RenewalAt field.
+func (o *OrganizationCurrentCost) SetRenewalAt(v time.Time) {
+	o.RenewalAt.Set(&v)
+}
+
+// SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
+func (o *OrganizationCurrentCost) SetRenewalAtNil() {
+	o.RenewalAt.Set(nil)
+}
+
+// UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
+func (o *OrganizationCurrentCost) UnsetRenewalAt() {
+	o.RenewalAt.Unset()
 }
 
 // GetCost returns the Cost field value if set, zero value otherwise.
@@ -173,38 +185,6 @@ func (o *OrganizationCurrentCost) SetCost(v Cost) {
 	o.Cost = &v
 }
 
-// GetPaidUsage returns the PaidUsage field value if set, zero value otherwise.
-func (o *OrganizationCurrentCost) GetPaidUsage() PaidUsage {
-	if o == nil || IsNil(o.PaidUsage) {
-		var ret PaidUsage
-		return ret
-	}
-	return *o.PaidUsage
-}
-
-// GetPaidUsageOk returns a tuple with the PaidUsage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationCurrentCost) GetPaidUsageOk() (*PaidUsage, bool) {
-	if o == nil || IsNil(o.PaidUsage) {
-		return nil, false
-	}
-	return o.PaidUsage, true
-}
-
-// HasPaidUsage returns a boolean if a field has been set.
-func (o *OrganizationCurrentCost) HasPaidUsage() bool {
-	if o != nil && !IsNil(o.PaidUsage) {
-		return true
-	}
-
-	return false
-}
-
-// SetPaidUsage gets a reference to the given PaidUsage and assigns it to the PaidUsage field.
-func (o *OrganizationCurrentCost) SetPaidUsage(v PaidUsage) {
-	o.PaidUsage = &v
-}
-
 func (o OrganizationCurrentCost) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -221,14 +201,11 @@ func (o OrganizationCurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RemainingTrialDay) {
 		toSerialize["remaining_trial_day"] = o.RemainingTrialDay
 	}
-	if !IsNil(o.RemainingCredits) {
-		toSerialize["remaining_credits"] = o.RemainingCredits
+	if o.RenewalAt.IsSet() {
+		toSerialize["renewal_at"] = o.RenewalAt.Get()
 	}
 	if !IsNil(o.Cost) {
 		toSerialize["cost"] = o.Cost
-	}
-	if !IsNil(o.PaidUsage) {
-		toSerialize["paid_usage"] = o.PaidUsage
 	}
 	return toSerialize, nil
 }

@@ -6,9 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Plan** | Pointer to [**PlanEnum**](PlanEnum.md) |  | [optional] 
 **RemainingTrialDay** | Pointer to **int32** | number of days remaining before the end of the trial period | [optional] 
-**RemainingCredits** | Pointer to [**RemainingCredits**](RemainingCredits.md) |  | [optional] 
+**RenewalAt** | Pointer to **NullableTime** | date when the current plan will be renewed | [optional] [readonly] 
 **Cost** | Pointer to [**Cost**](Cost.md) |  | [optional] 
-**PaidUsage** | Pointer to [**PaidUsage**](PaidUsage.md) |  | [optional] 
 
 ## Methods
 
@@ -79,31 +78,41 @@ SetRemainingTrialDay sets RemainingTrialDay field to given value.
 
 HasRemainingTrialDay returns a boolean if a field has been set.
 
-### GetRemainingCredits
+### GetRenewalAt
 
-`func (o *OrganizationCurrentCost) GetRemainingCredits() RemainingCredits`
+`func (o *OrganizationCurrentCost) GetRenewalAt() time.Time`
 
-GetRemainingCredits returns the RemainingCredits field if non-nil, zero value otherwise.
+GetRenewalAt returns the RenewalAt field if non-nil, zero value otherwise.
 
-### GetRemainingCreditsOk
+### GetRenewalAtOk
 
-`func (o *OrganizationCurrentCost) GetRemainingCreditsOk() (*RemainingCredits, bool)`
+`func (o *OrganizationCurrentCost) GetRenewalAtOk() (*time.Time, bool)`
 
-GetRemainingCreditsOk returns a tuple with the RemainingCredits field if it's non-nil, zero value otherwise
+GetRenewalAtOk returns a tuple with the RenewalAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetRemainingCredits
+### SetRenewalAt
 
-`func (o *OrganizationCurrentCost) SetRemainingCredits(v RemainingCredits)`
+`func (o *OrganizationCurrentCost) SetRenewalAt(v time.Time)`
 
-SetRemainingCredits sets RemainingCredits field to given value.
+SetRenewalAt sets RenewalAt field to given value.
 
-### HasRemainingCredits
+### HasRenewalAt
 
-`func (o *OrganizationCurrentCost) HasRemainingCredits() bool`
+`func (o *OrganizationCurrentCost) HasRenewalAt() bool`
 
-HasRemainingCredits returns a boolean if a field has been set.
+HasRenewalAt returns a boolean if a field has been set.
 
+### SetRenewalAtNil
+
+`func (o *OrganizationCurrentCost) SetRenewalAtNil(b bool)`
+
+ SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
+
+### UnsetRenewalAt
+`func (o *OrganizationCurrentCost) UnsetRenewalAt()`
+
+UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
 ### GetCost
 
 `func (o *OrganizationCurrentCost) GetCost() Cost`
@@ -128,31 +137,6 @@ SetCost sets Cost field to given value.
 `func (o *OrganizationCurrentCost) HasCost() bool`
 
 HasCost returns a boolean if a field has been set.
-
-### GetPaidUsage
-
-`func (o *OrganizationCurrentCost) GetPaidUsage() PaidUsage`
-
-GetPaidUsage returns the PaidUsage field if non-nil, zero value otherwise.
-
-### GetPaidUsageOk
-
-`func (o *OrganizationCurrentCost) GetPaidUsageOk() (*PaidUsage, bool)`
-
-GetPaidUsageOk returns a tuple with the PaidUsage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetPaidUsage
-
-`func (o *OrganizationCurrentCost) SetPaidUsage(v PaidUsage)`
-
-SetPaidUsage sets PaidUsage field to given value.
-
-### HasPaidUsage
-
-`func (o *OrganizationCurrentCost) HasPaidUsage() bool`
-
-HasPaidUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -810,7 +810,6 @@ Class | Method | HTTP request | Description
  - [OrganizationWebhookResponse](docs/OrganizationWebhookResponse.md)
  - [OrganizationWebhookResponseList](docs/OrganizationWebhookResponseList.md)
  - [PaginationData](docs/PaginationData.md)
- - [PaidUsage](docs/PaidUsage.md)
  - [PlanEnum](docs/PlanEnum.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
  - [Probe](docs/Probe.md)

@@ -489,7 +489,6 @@ docs/OrganizationWebhookKindEnum.md
 docs/OrganizationWebhookResponse.md
 docs/OrganizationWebhookResponseList.md
 docs/PaginationData.md
-docs/PaidUsage.md
 docs/PlanEnum.md
 docs/PortProtocolEnum.md
 docs/Probe.md
@@ -925,7 +924,6 @@ model_organization_webhook_kind_enum.go
 model_organization_webhook_response.go
 model_organization_webhook_response_list.go
 model_pagination_data.go
-model_paid_usage.go
 model_plan_enum.go
 model_port_protocol_enum.go
 model_probe.go
