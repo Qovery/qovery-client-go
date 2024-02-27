@@ -1140,6 +1140,42 @@ paths:
       summary: Get organization billing status
       tags:
       - Billing
+  /organization/{organizationId}/billingUsageReport:
+    post:
+      operationId: generateBillingUsageReport
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationBillingUsageReportRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationBillingUsageReportResponse'
+          description: billing usage report has been successfully generated
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Generate organization billing usage report
+      tags:
+      - Billing
   /organization/{organizationId}/billingExternalId:
     get:
       description: |
@@ -22047,6 +22083,40 @@ components:
           type: string
         type: array
       type: array
+    OrganizationBillingUsageReportRequest:
+      example:
+        report_expiration_in_seconds: 3600
+        from: 2020-01-01T00:00:00Z
+        to: 2020-01-31T23:59:59Z
+      properties:
+        from:
+          description: The start date of the report
+          example: 2020-01-01T00:00:00Z
+          format: date-time
+          type: string
+        to:
+          description: The end date of the report
+          example: 2020-01-31T23:59:59Z
+          format: date-time
+          type: string
+        report_expiration_in_seconds:
+          description: The number of seconds the report will be publicly available
+          example: 3600
+          type: integer
+      type: object
+    OrganizationBillingUsageReportResponse:
+      example:
+        report_url: report_url
+        delete_report_url: delete_report_url
+      properties:
+        report_url:
+          description: The URL of the report
+          type: string
+        delete_report_url:
+          description: The URL to delete the report. Use this URL to pro-actively
+            delete the report before it expires
+          type: string
+      type: object
     deleteMember_request:
       properties:
         user_id:

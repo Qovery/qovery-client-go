@@ -130,6 +130,7 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**ChangePlan**](docs/BillingAPI.md#changeplan) | **Post** /organization/{organizationId}/changePlan | Change organization plan
 *BillingAPI* | [**DeleteCreditCard**](docs/BillingAPI.md#deletecreditcard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 *BillingAPI* | [**EditOrganizationBillingInfo**](docs/BillingAPI.md#editorganizationbillinginfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
+*BillingAPI* | [**GenerateBillingUsageReport**](docs/BillingAPI.md#generatebillingusagereport) | **Post** /organization/{organizationId}/billingUsageReport | Generate organization billing usage report
 *BillingAPI* | [**GetClusterCurrentCost**](docs/BillingAPI.md#getclustercurrentcost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 *BillingAPI* | [**GetOrganizationBillingExternalId**](docs/BillingAPI.md#getorganizationbillingexternalid) | **Get** /organization/{organizationId}/billingExternalId | Get organization billing external ID
 *BillingAPI* | [**GetOrganizationBillingInfo**](docs/BillingAPI.md#getorganizationbillinginfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
@@ -774,6 +775,8 @@ Class | Method | HTTP request | Description
  - [OrganizationApiTokenScope](docs/OrganizationApiTokenScope.md)
  - [OrganizationAvailableRole](docs/OrganizationAvailableRole.md)
  - [OrganizationAvailableRoleList](docs/OrganizationAvailableRoleList.md)
+ - [OrganizationBillingUsageReportRequest](docs/OrganizationBillingUsageReportRequest.md)
+ - [OrganizationBillingUsageReportResponse](docs/OrganizationBillingUsageReportResponse.md)
  - [OrganizationChangePlanRequest](docs/OrganizationChangePlanRequest.md)
  - [OrganizationContainerAutoDeployRequest](docs/OrganizationContainerAutoDeployRequest.md)
  - [OrganizationContainerPreviewRequest](docs/OrganizationContainerPreviewRequest.md)

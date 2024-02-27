@@ -449,6 +449,8 @@ docs/OrganizationApiTokenResponseList.md
 docs/OrganizationApiTokenScope.md
 docs/OrganizationAvailableRole.md
 docs/OrganizationAvailableRoleList.md
+docs/OrganizationBillingUsageReportRequest.md
+docs/OrganizationBillingUsageReportResponse.md
 docs/OrganizationChangePlanRequest.md
 docs/OrganizationContainerAutoDeployRequest.md
 docs/OrganizationContainerPreviewRequest.md
@@ -888,6 +890,8 @@ model_organization_api_token_response_list.go
 model_organization_api_token_scope.go
 model_organization_available_role.go
 model_organization_available_role_list.go
+model_organization_billing_usage_report_request.go
+model_organization_billing_usage_report_response.go
 model_organization_change_plan_request.go
 model_organization_container_auto_deploy_request.go
 model_organization_container_preview_request.go
