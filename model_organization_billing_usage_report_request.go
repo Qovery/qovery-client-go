@@ -22,19 +22,22 @@ var _ MappedNullable = &OrganizationBillingUsageReportRequest{}
 // OrganizationBillingUsageReportRequest struct for OrganizationBillingUsageReportRequest
 type OrganizationBillingUsageReportRequest struct {
 	// The start date of the report
-	From *time.Time `json:"from,omitempty"`
+	From time.Time `json:"from"`
 	// The end date of the report
-	To *time.Time `json:"to,omitempty"`
+	To time.Time `json:"to"`
 	// The number of seconds the report will be publicly available
-	ReportExpirationInSeconds *int32 `json:"report_expiration_in_seconds,omitempty"`
+	ReportExpirationInSeconds int32 `json:"report_expiration_in_seconds"`
 }
 
 // NewOrganizationBillingUsageReportRequest instantiates a new OrganizationBillingUsageReportRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationBillingUsageReportRequest() *OrganizationBillingUsageReportRequest {
+func NewOrganizationBillingUsageReportRequest(from time.Time, to time.Time, reportExpirationInSeconds int32) *OrganizationBillingUsageReportRequest {
 	this := OrganizationBillingUsageReportRequest{}
+	this.From = from
+	this.To = to
+	this.ReportExpirationInSeconds = reportExpirationInSeconds
 	return &this
 }
 
@@ -46,100 +49,76 @@ func NewOrganizationBillingUsageReportRequestWithDefaults() *OrganizationBilling
 	return &this
 }
 
-// GetFrom returns the From field value if set, zero value otherwise.
+// GetFrom returns the From field value
 func (o *OrganizationBillingUsageReportRequest) GetFrom() time.Time {
-	if o == nil || IsNil(o.From) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.From
+
+	return o.From
 }
 
-// GetFromOk returns a tuple with the From field value if set, nil otherwise
+// GetFromOk returns a tuple with the From field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationBillingUsageReportRequest) GetFromOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.From) {
+	if o == nil {
 		return nil, false
 	}
-	return o.From, true
+	return &o.From, true
 }
 
-// HasFrom returns a boolean if a field has been set.
-func (o *OrganizationBillingUsageReportRequest) HasFrom() bool {
-	if o != nil && !IsNil(o.From) {
-		return true
-	}
-
-	return false
-}
-
-// SetFrom gets a reference to the given time.Time and assigns it to the From field.
+// SetFrom sets field value
 func (o *OrganizationBillingUsageReportRequest) SetFrom(v time.Time) {
-	o.From = &v
+	o.From = v
 }
 
-// GetTo returns the To field value if set, zero value otherwise.
+// GetTo returns the To field value
 func (o *OrganizationBillingUsageReportRequest) GetTo() time.Time {
-	if o == nil || IsNil(o.To) {
+	if o == nil {
 		var ret time.Time
 		return ret
 	}
-	return *o.To
+
+	return o.To
 }
 
-// GetToOk returns a tuple with the To field value if set, nil otherwise
+// GetToOk returns a tuple with the To field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationBillingUsageReportRequest) GetToOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.To) {
+	if o == nil {
 		return nil, false
 	}
-	return o.To, true
+	return &o.To, true
 }
 
-// HasTo returns a boolean if a field has been set.
-func (o *OrganizationBillingUsageReportRequest) HasTo() bool {
-	if o != nil && !IsNil(o.To) {
-		return true
-	}
-
-	return false
-}
-
-// SetTo gets a reference to the given time.Time and assigns it to the To field.
+// SetTo sets field value
 func (o *OrganizationBillingUsageReportRequest) SetTo(v time.Time) {
-	o.To = &v
+	o.To = v
 }
 
-// GetReportExpirationInSeconds returns the ReportExpirationInSeconds field value if set, zero value otherwise.
+// GetReportExpirationInSeconds returns the ReportExpirationInSeconds field value
 func (o *OrganizationBillingUsageReportRequest) GetReportExpirationInSeconds() int32 {
-	if o == nil || IsNil(o.ReportExpirationInSeconds) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ReportExpirationInSeconds
+
+	return o.ReportExpirationInSeconds
 }
 
-// GetReportExpirationInSecondsOk returns a tuple with the ReportExpirationInSeconds field value if set, nil otherwise
+// GetReportExpirationInSecondsOk returns a tuple with the ReportExpirationInSeconds field value
 // and a boolean to check if the value has been set.
 func (o *OrganizationBillingUsageReportRequest) GetReportExpirationInSecondsOk() (*int32, bool) {
-	if o == nil || IsNil(o.ReportExpirationInSeconds) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReportExpirationInSeconds, true
+	return &o.ReportExpirationInSeconds, true
 }
 
-// HasReportExpirationInSeconds returns a boolean if a field has been set.
-func (o *OrganizationBillingUsageReportRequest) HasReportExpirationInSeconds() bool {
-	if o != nil && !IsNil(o.ReportExpirationInSeconds) {
-		return true
-	}
-
-	return false
-}
-
-// SetReportExpirationInSeconds gets a reference to the given int32 and assigns it to the ReportExpirationInSeconds field.
+// SetReportExpirationInSeconds sets field value
 func (o *OrganizationBillingUsageReportRequest) SetReportExpirationInSeconds(v int32) {
-	o.ReportExpirationInSeconds = &v
+	o.ReportExpirationInSeconds = v
 }
 
 func (o OrganizationBillingUsageReportRequest) MarshalJSON() ([]byte, error) {
@@ -152,15 +131,9 @@ func (o OrganizationBillingUsageReportRequest) MarshalJSON() ([]byte, error) {
 
 func (o OrganizationBillingUsageReportRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.From) {
-		toSerialize["from"] = o.From
-	}
-	if !IsNil(o.To) {
-		toSerialize["to"] = o.To
-	}
-	if !IsNil(o.ReportExpirationInSeconds) {
-		toSerialize["report_expiration_in_seconds"] = o.ReportExpirationInSeconds
-	}
+	toSerialize["from"] = o.From
+	toSerialize["to"] = o.To
+	toSerialize["report_expiration_in_seconds"] = o.ReportExpirationInSeconds
 	return toSerialize, nil
 }
 

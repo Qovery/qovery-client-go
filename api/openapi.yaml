@@ -22103,6 +22103,10 @@ components:
           description: The number of seconds the report will be publicly available
           example: 3600
           type: integer
+      required:
+      - from
+      - report_expiration_in_seconds
+      - to
       type: object
     OrganizationBillingUsageReportResponse:
       example:

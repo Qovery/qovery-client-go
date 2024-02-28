@@ -385,12 +385,13 @@ import (
     "context"
     "fmt"
     "os"
+    "time"
     openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationBillingUsageReportRequest := *openapiclient.NewOrganizationBillingUsageReportRequest() // OrganizationBillingUsageReportRequest |  (optional)
+    organizationBillingUsageReportRequest := *openapiclient.NewOrganizationBillingUsageReportRequest(time.Now(), time.Now(), int32(3600)) // OrganizationBillingUsageReportRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**From** | Pointer to **time.Time** | The start date of the report | [optional] 
-**To** | Pointer to **time.Time** | The end date of the report | [optional] 
-**ReportExpirationInSeconds** | Pointer to **int32** | The number of seconds the report will be publicly available | [optional] 
+**From** | **time.Time** | The start date of the report | 
+**To** | **time.Time** | The end date of the report | 
+**ReportExpirationInSeconds** | **int32** | The number of seconds the report will be publicly available | 
 
 ## Methods
 
 ### NewOrganizationBillingUsageReportRequest
 
-`func NewOrganizationBillingUsageReportRequest() *OrganizationBillingUsageReportRequest`
+`func NewOrganizationBillingUsageReportRequest(from time.Time, to time.Time, reportExpirationInSeconds int32, ) *OrganizationBillingUsageReportRequest`
 
 NewOrganizationBillingUsageReportRequest instantiates a new OrganizationBillingUsageReportRequest object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetFrom sets From field to given value.
 
-### HasFrom
-
-`func (o *OrganizationBillingUsageReportRequest) HasFrom() bool`
-
-HasFrom returns a boolean if a field has been set.
 
 ### GetTo
 
@@ -71,11 +66,6 @@ and a boolean to check if the value has been set.
 
 SetTo sets To field to given value.
 
-### HasTo
-
-`func (o *OrganizationBillingUsageReportRequest) HasTo() bool`
-
-HasTo returns a boolean if a field has been set.
 
 ### GetReportExpirationInSeconds
 
@@ -96,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetReportExpirationInSeconds sets ReportExpirationInSeconds field to given value.
 
-### HasReportExpirationInSeconds
-
-`func (o *OrganizationBillingUsageReportRequest) HasReportExpirationInSeconds() bool`
-
-HasReportExpirationInSeconds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
