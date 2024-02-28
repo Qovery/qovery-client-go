@@ -28,7 +28,7 @@ type ApplicationEditRequest struct {
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
 	BuildMode     *BuildModeEnum                   `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
-	DockerfilePath    *string                       `json:"dockerfile_path,omitempty"`
+	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
 	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
@@ -251,36 +251,47 @@ func (o *ApplicationEditRequest) SetBuildMode(v BuildModeEnum) {
 	o.BuildMode = &v
 }
 
-// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationEditRequest) GetDockerfilePath() string {
-	if o == nil || IsNil(o.DockerfilePath) {
+	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DockerfilePath
+	return *o.DockerfilePath.Get()
 }
 
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationEditRequest) GetDockerfilePathOk() (*string, bool) {
-	if o == nil || IsNil(o.DockerfilePath) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DockerfilePath, true
+	return o.DockerfilePath.Get(), o.DockerfilePath.IsSet()
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
 func (o *ApplicationEditRequest) HasDockerfilePath() bool {
-	if o != nil && !IsNil(o.DockerfilePath) {
+	if o != nil && o.DockerfilePath.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
+// SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
 func (o *ApplicationEditRequest) SetDockerfilePath(v string) {
-	o.DockerfilePath = &v
+	o.DockerfilePath.Set(&v)
+}
+
+// SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+func (o *ApplicationEditRequest) SetDockerfilePathNil() {
+	o.DockerfilePath.Set(nil)
+}
+
+// UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
+func (o *ApplicationEditRequest) UnsetDockerfilePath() {
+	o.DockerfilePath.Unset()
 }
 
 // GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -674,8 +685,8 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildMode) {
 		toSerialize["build_mode"] = o.BuildMode
 	}
-	if !IsNil(o.DockerfilePath) {
-		toSerialize["dockerfile_path"] = o.DockerfilePath
+	if o.DockerfilePath.IsSet() {
+		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
 	if o.BuildpackLanguage.IsSet() {
 		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()

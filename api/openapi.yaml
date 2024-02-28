@@ -14245,7 +14245,6 @@ components:
             type: string
           description:
             description: give a description to this application
-            nullable: true
             type: string
           build_mode:
             $ref: '#/components/schemas/BuildModeEnum'
@@ -14525,6 +14524,7 @@ components:
             $ref: '#/components/schemas/BuildModeEnum'
           dockerfile_path:
             description: The path of the associated Dockerfile
+            nullable: true
             type: string
           buildpack_language:
             $ref: '#/components/schemas/BuildPackLanguageEnum'

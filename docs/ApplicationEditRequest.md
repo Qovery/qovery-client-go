@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_BUILDPACKS]
-**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile | [optional] 
+**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile | [optional] 
 **BuildpackLanguage** | Pointer to [**NullableBuildPackLanguageEnum**](BuildPackLanguageEnum.md) |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
@@ -191,6 +191,16 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
+### SetDockerfilePathNil
+
+`func (o *ApplicationEditRequest) SetDockerfilePathNil(b bool)`
+
+ SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+
+### UnsetDockerfilePath
+`func (o *ApplicationEditRequest) UnsetDockerfilePath()`
+
+UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetBuildpackLanguage
 
 `func (o *ApplicationEditRequest) GetBuildpackLanguage() BuildPackLanguageEnum`
