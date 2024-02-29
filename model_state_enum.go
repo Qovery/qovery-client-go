@@ -35,6 +35,7 @@ const (
 	STATEENUM_DEPLOYMENT_QUEUED StateEnum = "DEPLOYMENT_QUEUED"
 	STATEENUM_QUEUED            StateEnum = "QUEUED"
 	STATEENUM_READY             StateEnum = "READY"
+	STATEENUM_RECAP             StateEnum = "RECAP"
 	STATEENUM_STOPPED           StateEnum = "STOPPED"
 	STATEENUM_STOPPING          StateEnum = "STOPPING"
 	STATEENUM_STOP_ERROR        StateEnum = "STOP_ERROR"
@@ -61,6 +62,7 @@ var AllowedStateEnumEnumValues = []StateEnum{
 	"DEPLOYMENT_QUEUED",
 	"QUEUED",
 	"READY",
+	"RECAP",
 	"STOPPED",
 	"STOPPING",
 	"STOP_ERROR",

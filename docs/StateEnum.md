@@ -31,6 +31,8 @@
 
 * `READY` (value: `"READY"`)
 
+* `RECAP` (value: `"RECAP"`)
+
 * `STOPPED` (value: `"STOPPED"`)
 
 * `STOPPING` (value: `"STOPPING"`)

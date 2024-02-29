@@ -21310,6 +21310,7 @@ components:
       - DEPLOYMENT_QUEUED
       - QUEUED
       - READY
+      - RECAP
       - STOPPED
       - STOPPING
       - STOP_ERROR
