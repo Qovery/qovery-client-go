@@ -36,6 +36,7 @@ Name | Type | Description | Notes
 **NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] 
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
+**SecurityAutomountServiceAccountToken** | Pointer to **bool** | Automount Kubernetes service account token to have access to Kubernetes API from pods  | [optional] 
 **SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] 
 
 ## Methods
@@ -856,6 +857,31 @@ SetSecurityServiceAccountName sets SecurityServiceAccountName field to given val
 `func (o *ApplicationAdvancedSettings) HasSecurityServiceAccountName() bool`
 
 HasSecurityServiceAccountName returns a boolean if a field has been set.
+
+### GetSecurityAutomountServiceAccountToken
+
+`func (o *ApplicationAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool`
+
+GetSecurityAutomountServiceAccountToken returns the SecurityAutomountServiceAccountToken field if non-nil, zero value otherwise.
+
+### GetSecurityAutomountServiceAccountTokenOk
+
+`func (o *ApplicationAdvancedSettings) GetSecurityAutomountServiceAccountTokenOk() (*bool, bool)`
+
+GetSecurityAutomountServiceAccountTokenOk returns a tuple with the SecurityAutomountServiceAccountToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityAutomountServiceAccountToken
+
+`func (o *ApplicationAdvancedSettings) SetSecurityAutomountServiceAccountToken(v bool)`
+
+SetSecurityAutomountServiceAccountToken sets SecurityAutomountServiceAccountToken field to given value.
+
+### HasSecurityAutomountServiceAccountToken
+
+`func (o *ApplicationAdvancedSettings) HasSecurityAutomountServiceAccountToken() bool`
+
+HasSecurityAutomountServiceAccountToken returns a boolean if a field has been set.
 
 ### GetSecurityReadOnlyRootFilesystem
 

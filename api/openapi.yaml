@@ -14321,6 +14321,7 @@ components:
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
+        security.automount_service_account_token: true
         network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
         build.ram_max_in_gib: 2
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
@@ -14469,6 +14470,10 @@ components:
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
+        security.automount_service_account_token:
+          description: |
+            Automount Kubernetes service account token to have access to Kubernetes API from pods
+          type: boolean
         security.read_only_root_filesystem:
           description: |
             Mounts the container's root filesystem as read-only
@@ -16137,6 +16142,7 @@ components:
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
+        security.automount_service_account_token: true
         network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
         network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
@@ -16279,6 +16285,10 @@ components:
           description: Percentage value of cpu usage at which point pods should scale
             up.
           type: integer
+        security.automount_service_account_token:
+          description: |
+            Automount Kubernetes service account token to have access to Kubernetes API from pods
+          type: boolean
         security.read_only_root_filesystem:
           description: |
             Mounts the container's root filesystem as read-only
@@ -19268,6 +19278,7 @@ components:
         job.delete_ttl_seconds_after_finished: 5
         security.service_account_name: security.service_account_name
         cronjob.failed_jobs_history_limit: 2
+        security.automount_service_account_token: true
         cronjob.concurrency_policy: cronjob.concurrency_policy
         cronjob.success_jobs_history_limit: 7
         build.ram_max_in_gib: 1
@@ -19304,6 +19315,10 @@ components:
           description: |
             Allows you to set an existing Kubernetes service account name
           type: string
+        security.automount_service_account_token:
+          description: |
+            Automount Kubernetes service account token to have access to Kubernetes API from pods
+          type: boolean
         security.read_only_root_filesystem:
           description: |
             Mounts the container's root filesystem as read-only

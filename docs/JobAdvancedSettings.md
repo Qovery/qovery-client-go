@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
 **CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
+**SecurityAutomountServiceAccountToken** | Pointer to **bool** | Automount Kubernetes service account token to have access to Kubernetes API from pods  | [optional] 
 **SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] 
 
 ## Methods
@@ -294,6 +295,31 @@ SetSecurityServiceAccountName sets SecurityServiceAccountName field to given val
 `func (o *JobAdvancedSettings) HasSecurityServiceAccountName() bool`
 
 HasSecurityServiceAccountName returns a boolean if a field has been set.
+
+### GetSecurityAutomountServiceAccountToken
+
+`func (o *JobAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool`
+
+GetSecurityAutomountServiceAccountToken returns the SecurityAutomountServiceAccountToken field if non-nil, zero value otherwise.
+
+### GetSecurityAutomountServiceAccountTokenOk
+
+`func (o *JobAdvancedSettings) GetSecurityAutomountServiceAccountTokenOk() (*bool, bool)`
+
+GetSecurityAutomountServiceAccountTokenOk returns a tuple with the SecurityAutomountServiceAccountToken field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecurityAutomountServiceAccountToken
+
+`func (o *JobAdvancedSettings) SetSecurityAutomountServiceAccountToken(v bool)`
+
+SetSecurityAutomountServiceAccountToken sets SecurityAutomountServiceAccountToken field to given value.
+
+### HasSecurityAutomountServiceAccountToken
+
+`func (o *JobAdvancedSettings) HasSecurityAutomountServiceAccountToken() bool`
+
+HasSecurityAutomountServiceAccountToken returns a boolean if a field has been set.
 
 ### GetSecurityReadOnlyRootFilesystem
 

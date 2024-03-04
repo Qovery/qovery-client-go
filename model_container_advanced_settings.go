@@ -75,6 +75,8 @@ type ContainerAdvancedSettings struct {
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
+	// Automount Kubernetes service account token to have access to Kubernetes API from pods
+	SecurityAutomountServiceAccountToken *bool `json:"security.automount_service_account_token,omitempty"`
 	// Mounts the container's root filesystem as read-only
 	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
 }
@@ -1056,6 +1058,38 @@ func (o *ContainerAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32) 
 	o.HpaCpuAverageUtilizationPercent = &v
 }
 
+// GetSecurityAutomountServiceAccountToken returns the SecurityAutomountServiceAccountToken field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool {
+	if o == nil || IsNil(o.SecurityAutomountServiceAccountToken) {
+		var ret bool
+		return ret
+	}
+	return *o.SecurityAutomountServiceAccountToken
+}
+
+// GetSecurityAutomountServiceAccountTokenOk returns a tuple with the SecurityAutomountServiceAccountToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetSecurityAutomountServiceAccountTokenOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecurityAutomountServiceAccountToken) {
+		return nil, false
+	}
+	return o.SecurityAutomountServiceAccountToken, true
+}
+
+// HasSecurityAutomountServiceAccountToken returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasSecurityAutomountServiceAccountToken() bool {
+	if o != nil && !IsNil(o.SecurityAutomountServiceAccountToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityAutomountServiceAccountToken gets a reference to the given bool and assigns it to the SecurityAutomountServiceAccountToken field.
+func (o *ContainerAdvancedSettings) SetSecurityAutomountServiceAccountToken(v bool) {
+	o.SecurityAutomountServiceAccountToken = &v
+}
+
 // GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
 	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
@@ -1187,6 +1221,9 @@ func (o ContainerAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.HpaCpuAverageUtilizationPercent) {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
+	}
+	if !IsNil(o.SecurityAutomountServiceAccountToken) {
+		toSerialize["security.automount_service_account_token"] = o.SecurityAutomountServiceAccountToken
 	}
 	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem

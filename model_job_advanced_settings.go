@@ -36,6 +36,8 @@ type JobAdvancedSettings struct {
 	CronjobSuccessJobsHistoryLimit   *int32             `json:"cronjob.success_jobs_history_limit,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
+	// Automount Kubernetes service account token to have access to Kubernetes API from pods
+	SecurityAutomountServiceAccountToken *bool `json:"security.automount_service_account_token,omitempty"`
 	// Mounts the container's root filesystem as read-only
 	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
 }
@@ -388,6 +390,38 @@ func (o *JobAdvancedSettings) SetSecurityServiceAccountName(v string) {
 	o.SecurityServiceAccountName = &v
 }
 
+// GetSecurityAutomountServiceAccountToken returns the SecurityAutomountServiceAccountToken field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool {
+	if o == nil || IsNil(o.SecurityAutomountServiceAccountToken) {
+		var ret bool
+		return ret
+	}
+	return *o.SecurityAutomountServiceAccountToken
+}
+
+// GetSecurityAutomountServiceAccountTokenOk returns a tuple with the SecurityAutomountServiceAccountToken field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetSecurityAutomountServiceAccountTokenOk() (*bool, bool) {
+	if o == nil || IsNil(o.SecurityAutomountServiceAccountToken) {
+		return nil, false
+	}
+	return o.SecurityAutomountServiceAccountToken, true
+}
+
+// HasSecurityAutomountServiceAccountToken returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasSecurityAutomountServiceAccountToken() bool {
+	if o != nil && !IsNil(o.SecurityAutomountServiceAccountToken) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecurityAutomountServiceAccountToken gets a reference to the given bool and assigns it to the SecurityAutomountServiceAccountToken field.
+func (o *JobAdvancedSettings) SetSecurityAutomountServiceAccountToken(v bool) {
+	o.SecurityAutomountServiceAccountToken = &v
+}
+
 // GetSecurityReadOnlyRootFilesystem returns the SecurityReadOnlyRootFilesystem field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetSecurityReadOnlyRootFilesystem() bool {
 	if o == nil || IsNil(o.SecurityReadOnlyRootFilesystem) {
@@ -459,6 +493,9 @@ func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecurityServiceAccountName) {
 		toSerialize["security.service_account_name"] = o.SecurityServiceAccountName
+	}
+	if !IsNil(o.SecurityAutomountServiceAccountToken) {
+		toSerialize["security.automount_service_account_token"] = o.SecurityAutomountServiceAccountToken
 	}
 	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
