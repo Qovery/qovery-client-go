@@ -22,14 +22,16 @@ type GitTokenAssociatedServiceType string
 // List of GitTokenAssociatedServiceType
 const (
 	GITTOKENASSOCIATEDSERVICETYPE_APPLICATION GitTokenAssociatedServiceType = "APPLICATION"
-	GITTOKENASSOCIATEDSERVICETYPE_JOB         GitTokenAssociatedServiceType = "JOB"
+	GITTOKENASSOCIATEDSERVICETYPE_CRON        GitTokenAssociatedServiceType = "CRON"
+	GITTOKENASSOCIATEDSERVICETYPE_LIFECYCLE   GitTokenAssociatedServiceType = "LIFECYCLE"
 	GITTOKENASSOCIATEDSERVICETYPE_HELM        GitTokenAssociatedServiceType = "HELM"
 )
 
 // All allowed values of GitTokenAssociatedServiceType enum
 var AllowedGitTokenAssociatedServiceTypeEnumValues = []GitTokenAssociatedServiceType{
 	"APPLICATION",
-	"JOB",
+	"CRON",
+	"LIFECYCLE",
 	"HELM",
 }
 

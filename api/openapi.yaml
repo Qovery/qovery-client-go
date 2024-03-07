@@ -18687,7 +18687,8 @@ components:
     GitTokenAssociatedServiceType:
       enum:
       - APPLICATION
-      - JOB
+      - CRON
+      - LIFECYCLE
       - HELM
       type: string
     GitTokenAssociatedServiceResponse:

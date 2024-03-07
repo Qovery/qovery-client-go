@@ -5,7 +5,9 @@
 
 * `APPLICATION` (value: `"APPLICATION"`)
 
-* `JOB` (value: `"JOB"`)
+* `CRON` (value: `"CRON"`)
+
+* `LIFECYCLE` (value: `"LIFECYCLE"`)
 
 * `HELM` (value: `"HELM"`)
 
