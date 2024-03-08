@@ -15580,6 +15580,29 @@ components:
       - eks_subnets_zone_b_ids
       - eks_subnets_zone_c_ids
       type: object
+    ClusterFeatureGcpExistingVpc:
+      properties:
+        vpc_name:
+          type: string
+        vpc_project_id:
+          nullable: true
+          type: string
+        subnetwork_name:
+          nullable: true
+          type: string
+        ip_range_services_name:
+          nullable: true
+          type: string
+        ip_range_pods_name:
+          nullable: true
+          type: string
+        additional_ip_range_pods_names:
+          items:
+            type: string
+          type: array
+      required:
+      - vpc_name
+      type: object
     ClusterFeatureResponseList:
       example:
         results:
@@ -22376,6 +22399,7 @@ components:
       - type: string
       - type: boolean
       - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
+      - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
     ClusterFeature_accepted_values_inner:
       oneOf:
       - type: string

@@ -528,6 +528,7 @@ Class | Method | HTTP request | Description
  - [ClusterFeature](docs/ClusterFeature.md)
  - [ClusterFeatureAcceptedValuesInner](docs/ClusterFeatureAcceptedValuesInner.md)
  - [ClusterFeatureAwsExistingVpc](docs/ClusterFeatureAwsExistingVpc.md)
+ - [ClusterFeatureGcpExistingVpc](docs/ClusterFeatureGcpExistingVpc.md)
  - [ClusterFeatureResponseList](docs/ClusterFeatureResponseList.md)
  - [ClusterFeatureValue](docs/ClusterFeatureValue.md)
  - [ClusterInstanceTypeResponseList](docs/ClusterInstanceTypeResponseList.md)

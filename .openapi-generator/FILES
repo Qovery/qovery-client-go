@@ -153,6 +153,7 @@ docs/ClusterDeploymentStatusEnum.md
 docs/ClusterFeature.md
 docs/ClusterFeatureAcceptedValuesInner.md
 docs/ClusterFeatureAwsExistingVpc.md
+docs/ClusterFeatureGcpExistingVpc.md
 docs/ClusterFeatureResponseList.md
 docs/ClusterFeatureValue.md
 docs/ClusterInstanceTypeResponseList.md
@@ -643,6 +644,7 @@ model_cluster_deployment_status_enum.go
 model_cluster_feature.go
 model_cluster_feature_accepted_values_inner.go
 model_cluster_feature_aws_existing_vpc.go
+model_cluster_feature_gcp_existing_vpc.go
 model_cluster_feature_response_list.go
 model_cluster_feature_value.go
 model_cluster_instance_type_response_list.go

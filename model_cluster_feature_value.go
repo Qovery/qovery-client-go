@@ -19,6 +19,7 @@ import (
 // ClusterFeatureValue - struct for ClusterFeatureValue
 type ClusterFeatureValue struct {
 	ClusterFeatureAwsExistingVpc *ClusterFeatureAwsExistingVpc
+	ClusterFeatureGcpExistingVpc *ClusterFeatureGcpExistingVpc
 	Bool                         *bool
 	String                       *string
 }
@@ -27,6 +28,13 @@ type ClusterFeatureValue struct {
 func ClusterFeatureAwsExistingVpcAsClusterFeatureValue(v *ClusterFeatureAwsExistingVpc) ClusterFeatureValue {
 	return ClusterFeatureValue{
 		ClusterFeatureAwsExistingVpc: v,
+	}
+}
+
+// ClusterFeatureGcpExistingVpcAsClusterFeatureValue is a convenience function that returns ClusterFeatureGcpExistingVpc wrapped in ClusterFeatureValue
+func ClusterFeatureGcpExistingVpcAsClusterFeatureValue(v *ClusterFeatureGcpExistingVpc) ClusterFeatureValue {
+	return ClusterFeatureValue{
+		ClusterFeatureGcpExistingVpc: v,
 	}
 }
 
@@ -66,6 +74,19 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 		dst.ClusterFeatureAwsExistingVpc = nil
 	}
 
+	// try to unmarshal data into ClusterFeatureGcpExistingVpc
+	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureGcpExistingVpc)
+	if err == nil {
+		jsonClusterFeatureGcpExistingVpc, _ := json.Marshal(dst.ClusterFeatureGcpExistingVpc)
+		if string(jsonClusterFeatureGcpExistingVpc) == "{}" { // empty struct
+			dst.ClusterFeatureGcpExistingVpc = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.ClusterFeatureGcpExistingVpc = nil
+	}
+
 	// try to unmarshal data into Bool
 	err = newStrictDecoder(data).Decode(&dst.Bool)
 	if err == nil {
@@ -95,6 +116,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.ClusterFeatureAwsExistingVpc = nil
+		dst.ClusterFeatureGcpExistingVpc = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -110,6 +132,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 func (src ClusterFeatureValue) MarshalJSON() ([]byte, error) {
 	if src.ClusterFeatureAwsExistingVpc != nil {
 		return json.Marshal(&src.ClusterFeatureAwsExistingVpc)
+	}
+
+	if src.ClusterFeatureGcpExistingVpc != nil {
+		return json.Marshal(&src.ClusterFeatureGcpExistingVpc)
 	}
 
 	if src.Bool != nil {
@@ -130,6 +156,10 @@ func (obj *ClusterFeatureValue) GetActualInstance() interface{} {
 	}
 	if obj.ClusterFeatureAwsExistingVpc != nil {
 		return obj.ClusterFeatureAwsExistingVpc
+	}
+
+	if obj.ClusterFeatureGcpExistingVpc != nil {
+		return obj.ClusterFeatureGcpExistingVpc
 	}
 
 	if obj.Bool != nil {
