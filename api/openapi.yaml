@@ -15214,6 +15214,7 @@ components:
       - AWS
       - SCW
       - GCP
+      - ON_PREMISE
       type: string
     CloudProviderResponseList:
       example:
