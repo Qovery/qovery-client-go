@@ -33,6 +33,14 @@
 
 * `RECAP` (value: `"RECAP"`)
 
+* `RESTARTED` (value: `"RESTARTED"`)
+
+* `RESTARTING` (value: `"RESTARTING"`)
+
+* `RESTART_ERROR` (value: `"RESTART_ERROR"`)
+
+* `RESTART_QUEUED` (value: `"RESTART_QUEUED"`)
+
 * `STOPPED` (value: `"STOPPED"`)
 
 * `STOPPING` (value: `"STOPPING"`)
@@ -41,13 +49,13 @@
 
 * `STOP_QUEUED` (value: `"STOP_QUEUED"`)
 
-* `RESTART_QUEUED` (value: `"RESTART_QUEUED"`)
+* `WAITING_DELETING` (value: `"WAITING_DELETING"`)
 
-* `RESTARTING` (value: `"RESTARTING"`)
+* `WAITING_RESTARTING` (value: `"WAITING_RESTARTING"`)
 
-* `RESTARTED` (value: `"RESTARTED"`)
+* `WAITING_RUNNING` (value: `"WAITING_RUNNING"`)
 
-* `RESTART_ERROR` (value: `"RESTART_ERROR"`)
+* `WAITING_STOPPING` (value: `"WAITING_STOPPING"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

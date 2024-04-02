@@ -21351,14 +21351,18 @@ components:
       - QUEUED
       - READY
       - RECAP
+      - RESTARTED
+      - RESTARTING
+      - RESTART_ERROR
+      - RESTART_QUEUED
       - STOPPED
       - STOPPING
       - STOP_ERROR
       - STOP_QUEUED
-      - RESTART_QUEUED
-      - RESTARTING
-      - RESTARTED
-      - RESTART_ERROR
+      - WAITING_DELETING
+      - WAITING_RESTARTING
+      - WAITING_RUNNING
+      - WAITING_STOPPING
       type: string
     ClusterStateEnum:
       enum:
