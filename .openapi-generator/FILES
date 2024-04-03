@@ -5,6 +5,7 @@ README.md
 api/openapi.yaml
 api_account_info.go
 api_application_actions.go
+api_application_annotations_group.go
 api_application_configuration.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
@@ -19,6 +20,7 @@ api_cloud_provider.go
 api_cloud_provider_credentials.go
 api_clusters.go
 api_container_actions.go
+api_container_annotations_group.go
 api_container_configuration.go
 api_container_custom_domain.go
 api_container_deployment_history.go
@@ -30,6 +32,7 @@ api_container_secret.go
 api_containers.go
 api_custom_domain.go
 api_database_actions.go
+api_database_annotations_group.go
 api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
@@ -56,6 +59,7 @@ api_helm_main_calls.go
 api_helm_repositories.go
 api_helms.go
 api_job_actions.go
+api_job_annotations_group.go
 api_job_configuration.go
 api_job_deployment_history.go
 api_job_deployment_restriction.go
@@ -65,6 +69,7 @@ api_job_secret.go
 api_jobs.go
 api_members.go
 api_organization_account_git_repositories.go
+api_organization_annotations_group.go
 api_organization_api_token.go
 api_organization_custom_role.go
 api_organization_event.go
@@ -85,9 +90,12 @@ docs/APIVariableTypeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoAPI.md
 docs/AccountInfoEditRequest.md
+docs/Annotation.md
+docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
 docs/ApplicationActionsAPI.md
 docs/ApplicationAdvancedSettings.md
+docs/ApplicationAnnotationsGroupAPI.md
 docs/ApplicationConfigurationAPI.md
 docs/ApplicationDeploymentHistoryAPI.md
 docs/ApplicationDeploymentRestriction.md
@@ -187,6 +195,7 @@ docs/CommunityUsage.md
 docs/CompanySizeEnum.md
 docs/ContainerActionsAPI.md
 docs/ContainerAdvancedSettings.md
+docs/ContainerAnnotationsGroupAPI.md
 docs/ContainerConfigurationAPI.md
 docs/ContainerCustomDomainAPI.md
 docs/ContainerDeployRequest.md
@@ -231,6 +240,7 @@ docs/CustomDomainStatusEnum.md
 docs/Database.md
 docs/DatabaseAccessibilityEnum.md
 docs/DatabaseActionsAPI.md
+docs/DatabaseAnnotationsGroupAPI.md
 docs/DatabaseApplicationAPI.md
 docs/DatabaseConfiguration.md
 docs/DatabaseConfigurationResponseList.md
@@ -395,6 +405,7 @@ docs/InvoiceResponseList.md
 docs/InvoiceStatusEnum.md
 docs/JobActionsAPI.md
 docs/JobAdvancedSettings.md
+docs/JobAnnotationsGroupAPI.md
 docs/JobConfigurationAPI.md
 docs/JobDeployRequest.md
 docs/JobDeploymentHistoryAPI.md
@@ -442,6 +453,13 @@ docs/MembersAPI.md
 docs/Name.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesAPI.md
+docs/OrganizationAnnotationsGroupAPI.md
+docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md
+docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md
+docs/OrganizationAnnotationsGroupCreateRequest.md
+docs/OrganizationAnnotationsGroupResponse.md
+docs/OrganizationAnnotationsGroupResponseList.md
+docs/OrganizationAnnotationsGroupScopeEnum.md
 docs/OrganizationApiToken.md
 docs/OrganizationApiTokenAPI.md
 docs/OrganizationApiTokenCreate.md
@@ -587,6 +605,8 @@ go.mod
 go.sum
 model_account_info.go
 model_account_info_edit_request.go
+model_annotation.go
+model_annotations_group_associated_item_type.go
 model_api_variable_scope_enum.go
 model_api_variable_type_enum.go
 model_application.go
@@ -885,6 +905,12 @@ model_member_response_list.go
 model_member_role_update_request.go
 model_name.go
 model_organization.go
+model_organization_annotations_group_associated_items_response_list.go
+model_organization_annotations_group_associated_items_response_list_results_inner.go
+model_organization_annotations_group_create_request.go
+model_organization_annotations_group_response.go
+model_organization_annotations_group_response_list.go
+model_organization_annotations_group_scope_enum.go
 model_organization_api_token.go
 model_organization_api_token_create.go
 model_organization_api_token_create_request.go
@@ -1015,6 +1041,7 @@ model_weekday_enum.go
 response.go
 test/api_account_info_test.go
 test/api_application_actions_test.go
+test/api_application_annotations_group_test.go
 test/api_application_configuration_test.go
 test/api_application_deployment_history_test.go
 test/api_application_deployment_restriction_test.go
@@ -1029,6 +1056,7 @@ test/api_cloud_provider_credentials_test.go
 test/api_cloud_provider_test.go
 test/api_clusters_test.go
 test/api_container_actions_test.go
+test/api_container_annotations_group_test.go
 test/api_container_configuration_test.go
 test/api_container_custom_domain_test.go
 test/api_container_deployment_history_test.go
@@ -1040,6 +1068,7 @@ test/api_container_secret_test.go
 test/api_containers_test.go
 test/api_custom_domain_test.go
 test/api_database_actions_test.go
+test/api_database_annotations_group_test.go
 test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
@@ -1066,6 +1095,7 @@ test/api_helm_main_calls_test.go
 test/api_helm_repositories_test.go
 test/api_helms_test.go
 test/api_job_actions_test.go
+test/api_job_annotations_group_test.go
 test/api_job_configuration_test.go
 test/api_job_deployment_history_test.go
 test/api_job_deployment_restriction_test.go
@@ -1075,6 +1105,7 @@ test/api_job_secret_test.go
 test/api_jobs_test.go
 test/api_members_test.go
 test/api_organization_account_git_repositories_test.go
+test/api_organization_annotations_group_test.go
 test/api_organization_api_token_test.go
 test/api_organization_custom_role_test.go
 test/api_organization_event_test.go

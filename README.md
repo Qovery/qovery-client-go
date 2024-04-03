@@ -86,6 +86,9 @@ Class | Method | HTTP request | Description
 *ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsAPI* | [**RestartApplication**](docs/ApplicationActionsAPI.md#restartapplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
 *ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
+*ApplicationAnnotationsGroupAPI* | [**AddAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#addannotationsgrouptoapplication) | **Post** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Add annotations group to application
+*ApplicationAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#deleteannotationsgrouptoapplication) | **Delete** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to application
+*ApplicationAnnotationsGroupAPI* | [**ListApplicationAnnotationsGroup**](docs/ApplicationAnnotationsGroupAPI.md#listapplicationannotationsgroup) | **Get** /application/{applicationId}/annotationsGroup | List application annotations group
 *ApplicationConfigurationAPI* | [**EditAdvancedSettings**](docs/ApplicationConfigurationAPI.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
@@ -197,6 +200,9 @@ Class | Method | HTTP request | Description
 *ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
 *ContainerActionsAPI* | [**RestartContainer**](docs/ContainerActionsAPI.md#restartcontainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
 *ContainerActionsAPI* | [**StopContainer**](docs/ContainerActionsAPI.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
+*ContainerAnnotationsGroupAPI* | [**AddAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#addannotationsgrouptocontainer) | **Post** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Add annotations group to container
+*ContainerAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#deleteannotationsgrouptocontainer) | **Delete** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to container
+*ContainerAnnotationsGroupAPI* | [**ListContainerAnnotationsGroup**](docs/ContainerAnnotationsGroupAPI.md#listcontainerannotationsgroup) | **Get** /container/{containerId}/annotationsGroup | List container annotations group
 *ContainerConfigurationAPI* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
 *ContainerConfigurationAPI* | [**EditContainerNetwork**](docs/ContainerConfigurationAPI.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
 *ContainerConfigurationAPI* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
@@ -249,6 +255,9 @@ Class | Method | HTTP request | Description
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsAPI* | [**RestartDatabase**](docs/DatabaseActionsAPI.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
 *DatabaseActionsAPI* | [**StopDatabase**](docs/DatabaseActionsAPI.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
+*DatabaseAnnotationsGroupAPI* | [**AddAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#addannotationsgrouptodatabase) | **Post** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Add annotations group to database
+*DatabaseAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#deleteannotationsgrouptodatabase) | **Delete** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to database
+*DatabaseAnnotationsGroupAPI* | [**ListDatabaseAnnotationsGroup**](docs/DatabaseAnnotationsGroupAPI.md#listdatabaseannotationsgroup) | **Get** /database/{databaseId}/annotationsGroup | List database annotations group
 *DatabaseApplicationAPI* | [**ListDatabaseApplication**](docs/DatabaseApplicationAPI.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationAPI* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationAPI.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
@@ -356,6 +365,9 @@ Class | Method | HTTP request | Description
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
 *JobActionsAPI* | [**RestartJob**](docs/JobActionsAPI.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
+*JobAnnotationsGroupAPI* | [**AddAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#addannotationsgrouptojob) | **Post** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Add annotations group to job
+*JobAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#deleteannotationsgrouptojob) | **Delete** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to job
+*JobAnnotationsGroupAPI* | [**ListJobAnnotationsGroup**](docs/JobAnnotationsGroupAPI.md#listjobannotationsgroup) | **Get** /job/{jobId}/annotationsGroup | List job annotations group
 *JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
@@ -403,6 +415,12 @@ Class | Method | HTTP request | Description
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGithubRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgithubrepositorybranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositorybranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*OrganizationAnnotationsGroupAPI* | [**CreateOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#createorganizationannotationsgroup) | **Post** /organization/{organizationId}/annotationsGroups | Create an organization annotations group
+*OrganizationAnnotationsGroupAPI* | [**DeleteOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#deleteorganizationannotationsgroup) | **Delete** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Delete organization annotations group
+*OrganizationAnnotationsGroupAPI* | [**EditOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#editorganizationannotationsgroup) | **Put** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Edit organization annotations group
+*OrganizationAnnotationsGroupAPI* | [**GetOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#getorganizationannotationsgroup) | **Get** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Get organization annotations group
+*OrganizationAnnotationsGroupAPI* | [**GetOrganizationAnnotationsGroupAssociatedItems**](docs/OrganizationAnnotationsGroupAPI.md#getorganizationannotationsgroupassociateditems) | **Get** /organization/{organizationId}/annotationsGroups/{annotationsGroupId}/associatedItems | Get organization annotations group associated items
+*OrganizationAnnotationsGroupAPI* | [**ListOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#listorganizationannotationsgroup) | **Get** /organization/{organizationId}/annotationsGroups | List organization annotations group
 *OrganizationApiTokenAPI* | [**CreateOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#createorganizationapitoken) | **Post** /organization/{organizationId}/apiToken | Create an organization api token
 *OrganizationApiTokenAPI* | [**DeleteOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#deleteorganizationapitoken) | **Delete** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
 *OrganizationApiTokenAPI* | [**ListOrganizationApiTokens**](docs/OrganizationApiTokenAPI.md#listorganizationapitokens) | **Get** /organization/{organizationId}/apiToken | List organization api tokens
@@ -473,6 +491,8 @@ Class | Method | HTTP request | Description
  - [APIVariableTypeEnum](docs/APIVariableTypeEnum.md)
  - [AccountInfo](docs/AccountInfo.md)
  - [AccountInfoEditRequest](docs/AccountInfoEditRequest.md)
+ - [Annotation](docs/Annotation.md)
+ - [AnnotationsGroupAssociatedItemType](docs/AnnotationsGroupAssociatedItemType.md)
  - [Application](docs/Application.md)
  - [ApplicationAdvancedSettings](docs/ApplicationAdvancedSettings.md)
  - [ApplicationDeploymentRestriction](docs/ApplicationDeploymentRestriction.md)
@@ -769,6 +789,12 @@ Class | Method | HTTP request | Description
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
  - [Name](docs/Name.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
+ - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
+ - [OrganizationAnnotationsGroupCreateRequest](docs/OrganizationAnnotationsGroupCreateRequest.md)
+ - [OrganizationAnnotationsGroupResponse](docs/OrganizationAnnotationsGroupResponse.md)
+ - [OrganizationAnnotationsGroupResponseList](docs/OrganizationAnnotationsGroupResponseList.md)
+ - [OrganizationAnnotationsGroupScopeEnum](docs/OrganizationAnnotationsGroupScopeEnum.md)
  - [OrganizationApiToken](docs/OrganizationApiToken.md)
  - [OrganizationApiTokenCreate](docs/OrganizationApiTokenCreate.md)
  - [OrganizationApiTokenCreateRequest](docs/OrganizationApiTokenCreateRequest.md)
