@@ -3695,6 +3695,11 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationAnnotationsGroupCreateRequest'
       responses:
         "200":
           content:
@@ -21499,20 +21504,20 @@ components:
     OrganizationAnnotationsGroupScopeEnum:
       description: Annotations Group Scope
       enum:
-      - "PERSISTENT_VOLUME_CLAIMS,"
-      - "REPLICA_SETS,"
-      - "DEPLOYMENTS,"
-      - "STATEFUL_SETS,"
-      - "SERVICES,"
-      - "INGRESS,"
-      - "HPA,"
-      - "ENDPOINTS,"
-      - "PODS,"
-      - "PERSISTENT_VOLUMES,"
-      - "SECRETS,"
-      - "CONFIG_MAPS,"
-      - "JOBS,"
-      - "CRON_JOBS,"
+      - PERSISTENT_VOLUME_CLAIMS
+      - REPLICA_SETS
+      - DEPLOYMENTS
+      - STATEFUL_SETS
+      - SERVICES
+      - INGRESS
+      - HPA
+      - ENDPOINTS
+      - PODS
+      - PERSISTENT_VOLUMES
+      - SECRETS
+      - CONFIG_MAPS
+      - JOBS
+      - CRON_JOBS
       type: string
     OrganizationAnnotationsGroupAssociatedItemsResponseList:
       example:

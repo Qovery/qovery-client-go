@@ -259,10 +259,16 @@ func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGr
 }
 
 type ApiEditOrganizationAnnotationsGroupRequest struct {
-	ctx                context.Context
-	ApiService         *OrganizationAnnotationsGroupAPIService
-	organizationId     string
-	annotationsGroupId string
+	ctx                                       context.Context
+	ApiService                                *OrganizationAnnotationsGroupAPIService
+	organizationId                            string
+	annotationsGroupId                        string
+	organizationAnnotationsGroupCreateRequest *OrganizationAnnotationsGroupCreateRequest
+}
+
+func (r ApiEditOrganizationAnnotationsGroupRequest) OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest OrganizationAnnotationsGroupCreateRequest) ApiEditOrganizationAnnotationsGroupRequest {
+	r.organizationAnnotationsGroupCreateRequest = &organizationAnnotationsGroupCreateRequest
+	return r
 }
 
 func (r ApiEditOrganizationAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
@@ -312,7 +318,7 @@ func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGrou
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -328,6 +334,8 @@ func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGrou
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.organizationAnnotationsGroupCreateRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

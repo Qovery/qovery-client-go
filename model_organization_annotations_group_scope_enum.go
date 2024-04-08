@@ -21,38 +21,38 @@ type OrganizationAnnotationsGroupScopeEnum string
 
 // List of OrganizationAnnotationsGroupScopeEnum
 const (
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PERSISTENT_VOLUME_CLAIMS OrganizationAnnotationsGroupScopeEnum = "PERSISTENT_VOLUME_CLAIMS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_REPLICA_SETS             OrganizationAnnotationsGroupScopeEnum = "REPLICA_SETS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_DEPLOYMENTS              OrganizationAnnotationsGroupScopeEnum = "DEPLOYMENTS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_STATEFUL_SETS            OrganizationAnnotationsGroupScopeEnum = "STATEFUL_SETS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SERVICES                 OrganizationAnnotationsGroupScopeEnum = "SERVICES,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_INGRESS                  OrganizationAnnotationsGroupScopeEnum = "INGRESS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_HPA                      OrganizationAnnotationsGroupScopeEnum = "HPA,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_ENDPOINTS                OrganizationAnnotationsGroupScopeEnum = "ENDPOINTS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PODS                     OrganizationAnnotationsGroupScopeEnum = "PODS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PERSISTENT_VOLUMES       OrganizationAnnotationsGroupScopeEnum = "PERSISTENT_VOLUMES,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SECRETS                  OrganizationAnnotationsGroupScopeEnum = "SECRETS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CONFIG_MAPS              OrganizationAnnotationsGroupScopeEnum = "CONFIG_MAPS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_JOBS                     OrganizationAnnotationsGroupScopeEnum = "JOBS,"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CRON_JOBS                OrganizationAnnotationsGroupScopeEnum = "CRON_JOBS,"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PERSISTENT_VOLUME_CLAIMS OrganizationAnnotationsGroupScopeEnum = "PERSISTENT_VOLUME_CLAIMS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_REPLICA_SETS             OrganizationAnnotationsGroupScopeEnum = "REPLICA_SETS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_DEPLOYMENTS              OrganizationAnnotationsGroupScopeEnum = "DEPLOYMENTS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_STATEFUL_SETS            OrganizationAnnotationsGroupScopeEnum = "STATEFUL_SETS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SERVICES                 OrganizationAnnotationsGroupScopeEnum = "SERVICES"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_INGRESS                  OrganizationAnnotationsGroupScopeEnum = "INGRESS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_HPA                      OrganizationAnnotationsGroupScopeEnum = "HPA"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_ENDPOINTS                OrganizationAnnotationsGroupScopeEnum = "ENDPOINTS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PODS                     OrganizationAnnotationsGroupScopeEnum = "PODS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PERSISTENT_VOLUMES       OrganizationAnnotationsGroupScopeEnum = "PERSISTENT_VOLUMES"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SECRETS                  OrganizationAnnotationsGroupScopeEnum = "SECRETS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CONFIG_MAPS              OrganizationAnnotationsGroupScopeEnum = "CONFIG_MAPS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_JOBS                     OrganizationAnnotationsGroupScopeEnum = "JOBS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CRON_JOBS                OrganizationAnnotationsGroupScopeEnum = "CRON_JOBS"
 )
 
 // All allowed values of OrganizationAnnotationsGroupScopeEnum enum
 var AllowedOrganizationAnnotationsGroupScopeEnumEnumValues = []OrganizationAnnotationsGroupScopeEnum{
-	"PERSISTENT_VOLUME_CLAIMS,",
-	"REPLICA_SETS,",
-	"DEPLOYMENTS,",
-	"STATEFUL_SETS,",
-	"SERVICES,",
-	"INGRESS,",
-	"HPA,",
-	"ENDPOINTS,",
-	"PODS,",
-	"PERSISTENT_VOLUMES,",
-	"SECRETS,",
-	"CONFIG_MAPS,",
-	"JOBS,",
-	"CRON_JOBS,",
+	"PERSISTENT_VOLUME_CLAIMS",
+	"REPLICA_SETS",
+	"DEPLOYMENTS",
+	"STATEFUL_SETS",
+	"SERVICES",
+	"INGRESS",
+	"HPA",
+	"ENDPOINTS",
+	"PODS",
+	"PERSISTENT_VOLUMES",
+	"SECRETS",
+	"CONFIG_MAPS",
+	"JOBS",
+	"CRON_JOBS",
 }
 
 func (v *OrganizationAnnotationsGroupScopeEnum) UnmarshalJSON(src []byte) error {

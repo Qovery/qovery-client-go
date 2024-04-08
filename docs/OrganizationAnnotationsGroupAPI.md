@@ -35,7 +35,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("PERSISTENT_VOLUME_CLAIMS,")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
+    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("PERSISTENT_VOLUME_CLAIMS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponse EditOrganizationAnnotationsGroup(ctx, organizationId, annotationsGroupId).Execute()
+> OrganizationAnnotationsGroupResponse EditOrganizationAnnotationsGroup(ctx, organizationId, annotationsGroupId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
 
 Edit organization annotations group
 
@@ -179,10 +179,11 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
+    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("PERSISTENT_VOLUME_CLAIMS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
+    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -210,6 +211,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **organizationAnnotationsGroupCreateRequest** | [**OrganizationAnnotationsGroupCreateRequest**](OrganizationAnnotationsGroupCreateRequest.md) |  | 
 
 ### Return type
 
@@ -221,7 +223,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
