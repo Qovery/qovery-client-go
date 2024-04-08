@@ -41,8 +41,9 @@ func Test_qovery_JobAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var jobId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.JobAnnotationsGroupAPI.DeleteAnnotationsGroupToJob(context.Background(), jobId).Execute()
+		httpRes, err := apiClient.JobAnnotationsGroupAPI.DeleteAnnotationsGroupToJob(context.Background(), jobId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

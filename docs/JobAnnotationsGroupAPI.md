@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAnnotationsGroupToJob
 
-> DeleteAnnotationsGroupToJob(ctx, jobId).Execute()
+> DeleteAnnotationsGroupToJob(ctx, jobId, annotationsGroupId).Execute()
 
 Delete annotations group to job
 
@@ -103,10 +103,11 @@ import (
 
 func main() {
     jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JobAnnotationsGroupAPI.DeleteAnnotationsGroupToJob(context.Background(), jobId).Execute()
+    r, err := apiClient.JobAnnotationsGroupAPI.DeleteAnnotationsGroupToJob(context.Background(), jobId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `JobAnnotationsGroupAPI.DeleteAnnotationsGroupToJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -121,6 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **jobId** | **string** | Job ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -129,6 +131,7 @@ Other parameters are passed through a pointer to a apiDeleteAnnotationsGroupToJo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

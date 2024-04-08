@@ -27,8 +27,9 @@ func Test_qovery_DatabaseAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var databaseId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.DatabaseAnnotationsGroupAPI.AddAnnotationsGroupToDatabase(context.Background(), databaseId).Execute()
+		httpRes, err := apiClient.DatabaseAnnotationsGroupAPI.AddAnnotationsGroupToDatabase(context.Background(), databaseId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -40,8 +41,9 @@ func Test_qovery_DatabaseAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var databaseId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.DatabaseAnnotationsGroupAPI.DeleteAnnotationsGroupToDatabase(context.Background(), databaseId).Execute()
+		httpRes, err := apiClient.DatabaseAnnotationsGroupAPI.DeleteAnnotationsGroupToDatabase(context.Background(), databaseId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

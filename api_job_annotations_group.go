@@ -134,9 +134,10 @@ func (a *JobAnnotationsGroupAPIService) AddAnnotationsGroupToJobExecute(r ApiAdd
 }
 
 type ApiDeleteAnnotationsGroupToJobRequest struct {
-	ctx        context.Context
-	ApiService *JobAnnotationsGroupAPIService
-	jobId      string
+	ctx                context.Context
+	ApiService         *JobAnnotationsGroupAPIService
+	jobId              string
+	annotationsGroupId string
 }
 
 func (r ApiDeleteAnnotationsGroupToJobRequest) Execute() (*http.Response, error) {
@@ -150,13 +151,15 @@ Delete annotations group to job
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param jobId Job ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiDeleteAnnotationsGroupToJobRequest
 */
-func (a *JobAnnotationsGroupAPIService) DeleteAnnotationsGroupToJob(ctx context.Context, jobId string) ApiDeleteAnnotationsGroupToJobRequest {
+func (a *JobAnnotationsGroupAPIService) DeleteAnnotationsGroupToJob(ctx context.Context, jobId string, annotationsGroupId string) ApiDeleteAnnotationsGroupToJobRequest {
 	return ApiDeleteAnnotationsGroupToJobRequest{
-		ApiService: a,
-		ctx:        ctx,
-		jobId:      jobId,
+		ApiService:         a,
+		ctx:                ctx,
+		jobId:              jobId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -175,6 +178,7 @@ func (a *JobAnnotationsGroupAPIService) DeleteAnnotationsGroupToJobExecute(r Api
 
 	localVarPath := localBasePath + "/job/{jobId}/annotationsGroup/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

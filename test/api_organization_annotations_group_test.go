@@ -41,8 +41,9 @@ func Test_qovery_OrganizationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+		httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -54,8 +55,9 @@ func Test_qovery_OrganizationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var annotationsGroupId string
 
-		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -68,8 +70,9 @@ func Test_qovery_OrganizationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var annotationsGroupId string
 
-		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -82,8 +85,9 @@ func Test_qovery_OrganizationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var annotationsGroupId string
 
-		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

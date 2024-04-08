@@ -149,9 +149,10 @@ func (a *OrganizationAnnotationsGroupAPIService) CreateOrganizationAnnotationsGr
 }
 
 type ApiDeleteOrganizationAnnotationsGroupRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationAnnotationsGroupAPIService
-	organizationId string
+	ctx                context.Context
+	ApiService         *OrganizationAnnotationsGroupAPIService
+	organizationId     string
+	annotationsGroupId string
 }
 
 func (r ApiDeleteOrganizationAnnotationsGroupRequest) Execute() (*http.Response, error) {
@@ -165,13 +166,15 @@ Delete organization annotations group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiDeleteOrganizationAnnotationsGroupRequest
 */
-func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGroup(ctx context.Context, organizationId string) ApiDeleteOrganizationAnnotationsGroupRequest {
+func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiDeleteOrganizationAnnotationsGroupRequest {
 	return ApiDeleteOrganizationAnnotationsGroupRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:         a,
+		ctx:                ctx,
+		organizationId:     organizationId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -190,6 +193,7 @@ func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGr
 
 	localVarPath := localBasePath + "/organization/{organizationId}/annotationsGroups/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -255,9 +259,10 @@ func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGr
 }
 
 type ApiEditOrganizationAnnotationsGroupRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationAnnotationsGroupAPIService
-	organizationId string
+	ctx                context.Context
+	ApiService         *OrganizationAnnotationsGroupAPIService
+	organizationId     string
+	annotationsGroupId string
 }
 
 func (r ApiEditOrganizationAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
@@ -271,13 +276,15 @@ Edit organization annotations group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiEditOrganizationAnnotationsGroupRequest
 */
-func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGroup(ctx context.Context, organizationId string) ApiEditOrganizationAnnotationsGroupRequest {
+func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiEditOrganizationAnnotationsGroupRequest {
 	return ApiEditOrganizationAnnotationsGroupRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:         a,
+		ctx:                ctx,
+		organizationId:     organizationId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -298,6 +305,7 @@ func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGrou
 
 	localVarPath := localBasePath + "/organization/{organizationId}/annotationsGroups/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -372,9 +380,10 @@ func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGrou
 }
 
 type ApiGetOrganizationAnnotationsGroupRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationAnnotationsGroupAPIService
-	organizationId string
+	ctx                context.Context
+	ApiService         *OrganizationAnnotationsGroupAPIService
+	organizationId     string
+	annotationsGroupId string
 }
 
 func (r ApiGetOrganizationAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
@@ -388,13 +397,15 @@ Get organization annotations group
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiGetOrganizationAnnotationsGroupRequest
 */
-func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup(ctx context.Context, organizationId string) ApiGetOrganizationAnnotationsGroupRequest {
+func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiGetOrganizationAnnotationsGroupRequest {
 	return ApiGetOrganizationAnnotationsGroupRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:         a,
+		ctx:                ctx,
+		organizationId:     organizationId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -415,6 +426,7 @@ func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup
 
 	localVarPath := localBasePath + "/organization/{organizationId}/annotationsGroups/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -489,9 +501,10 @@ func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup
 }
 
 type ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationAnnotationsGroupAPIService
-	organizationId string
+	ctx                context.Context
+	ApiService         *OrganizationAnnotationsGroupAPIService
+	organizationId     string
+	annotationsGroupId string
 }
 
 func (r ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest) Execute() (*OrganizationAnnotationsGroupAssociatedItemsResponseList, *http.Response, error) {
@@ -505,13 +518,15 @@ Get organization annotations group associated items
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param organizationId Organization ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest
 */
-func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroupAssociatedItems(ctx context.Context, organizationId string) ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest {
+func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroupAssociatedItems(ctx context.Context, organizationId string, annotationsGroupId string) ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest {
 	return ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest{
-		ApiService:     a,
-		ctx:            ctx,
-		organizationId: organizationId,
+		ApiService:         a,
+		ctx:                ctx,
+		organizationId:     organizationId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -532,6 +547,7 @@ func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup
 
 	localVarPath := localBasePath + "/organization/{organizationId}/annotationsGroups/{annotationsGroupId}/associatedItems"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

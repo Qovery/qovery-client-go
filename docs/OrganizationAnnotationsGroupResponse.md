@@ -4,7 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | 
+**Id** | **string** |  | [readonly] 
+**CreatedAt** | **time.Time** |  | [readonly] 
+**UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** |  | 
 **Annotations** | [**[]Annotation**](Annotation.md) |  | 
 **Scopes** | [**[]OrganizationAnnotationsGroupScopeEnum**](OrganizationAnnotationsGroupScopeEnum.md) |  | 
@@ -13,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewOrganizationAnnotationsGroupResponse
 
-`func NewOrganizationAnnotationsGroupResponse(id string, name string, annotations []Annotation, scopes []OrganizationAnnotationsGroupScopeEnum, ) *OrganizationAnnotationsGroupResponse`
+`func NewOrganizationAnnotationsGroupResponse(id string, createdAt time.Time, name string, annotations []Annotation, scopes []OrganizationAnnotationsGroupScopeEnum, ) *OrganizationAnnotationsGroupResponse`
 
 NewOrganizationAnnotationsGroupResponse instantiates a new OrganizationAnnotationsGroupResponse object
 This constructor will assign default values to properties that have it defined,
@@ -47,6 +49,51 @@ and a boolean to check if the value has been set.
 
 SetId sets Id field to given value.
 
+
+### GetCreatedAt
+
+`func (o *OrganizationAnnotationsGroupResponse) GetCreatedAt() time.Time`
+
+GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
+
+### GetCreatedAtOk
+
+`func (o *OrganizationAnnotationsGroupResponse) GetCreatedAtOk() (*time.Time, bool)`
+
+GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCreatedAt
+
+`func (o *OrganizationAnnotationsGroupResponse) SetCreatedAt(v time.Time)`
+
+SetCreatedAt sets CreatedAt field to given value.
+
+
+### GetUpdatedAt
+
+`func (o *OrganizationAnnotationsGroupResponse) GetUpdatedAt() time.Time`
+
+GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
+
+### GetUpdatedAtOk
+
+`func (o *OrganizationAnnotationsGroupResponse) GetUpdatedAtOk() (*time.Time, bool)`
+
+GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUpdatedAt
+
+`func (o *OrganizationAnnotationsGroupResponse) SetUpdatedAt(v time.Time)`
+
+SetUpdatedAt sets UpdatedAt field to given value.
+
+### HasUpdatedAt
+
+`func (o *OrganizationAnnotationsGroupResponse) HasUpdatedAt() bool`
+
+HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 

@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 ## DeleteOrganizationAnnotationsGroup
 
-> DeleteOrganizationAnnotationsGroup(ctx, organizationId).Execute()
+> DeleteOrganizationAnnotationsGroup(ctx, organizationId, annotationsGroupId).Execute()
 
 Delete organization annotations group
 
@@ -107,10 +107,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+    r, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -125,6 +126,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -133,6 +135,7 @@ Other parameters are passed through a pointer to a apiDeleteOrganizationAnnotati
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -155,7 +158,7 @@ Name | Type | Description  | Notes
 
 ## EditOrganizationAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponse EditOrganizationAnnotationsGroup(ctx, organizationId).Execute()
+> OrganizationAnnotationsGroupResponse EditOrganizationAnnotationsGroup(ctx, organizationId, annotationsGroupId).Execute()
 
 Edit organization annotations group
 
@@ -175,10 +178,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +199,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -203,6 +208,7 @@ Other parameters are passed through a pointer to a apiEditOrganizationAnnotation
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -225,7 +231,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponse GetOrganizationAnnotationsGroup(ctx, organizationId).Execute()
+> OrganizationAnnotationsGroupResponse GetOrganizationAnnotationsGroup(ctx, organizationId, annotationsGroupId).Execute()
 
 Get organization annotations group
 
@@ -245,10 +251,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -265,6 +272,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -273,6 +281,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationAnnotations
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -295,7 +304,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationAnnotationsGroupAssociatedItems
 
-> OrganizationAnnotationsGroupAssociatedItemsResponseList GetOrganizationAnnotationsGroupAssociatedItems(ctx, organizationId).Execute()
+> OrganizationAnnotationsGroupAssociatedItemsResponseList GetOrganizationAnnotationsGroupAssociatedItems(ctx, organizationId, annotationsGroupId).Execute()
 
 Get organization annotations group associated items
 
@@ -315,10 +324,11 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId).Execute()
+    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -335,6 +345,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -343,6 +354,7 @@ Other parameters are passed through a pointer to a apiGetOrganizationAnnotations
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

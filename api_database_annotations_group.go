@@ -24,9 +24,10 @@ import (
 type DatabaseAnnotationsGroupAPIService service
 
 type ApiAddAnnotationsGroupToDatabaseRequest struct {
-	ctx        context.Context
-	ApiService *DatabaseAnnotationsGroupAPIService
-	databaseId string
+	ctx                context.Context
+	ApiService         *DatabaseAnnotationsGroupAPIService
+	databaseId         string
+	annotationsGroupId string
 }
 
 func (r ApiAddAnnotationsGroupToDatabaseRequest) Execute() (*http.Response, error) {
@@ -40,13 +41,15 @@ Add annotations group to database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiAddAnnotationsGroupToDatabaseRequest
 */
-func (a *DatabaseAnnotationsGroupAPIService) AddAnnotationsGroupToDatabase(ctx context.Context, databaseId string) ApiAddAnnotationsGroupToDatabaseRequest {
+func (a *DatabaseAnnotationsGroupAPIService) AddAnnotationsGroupToDatabase(ctx context.Context, databaseId string, annotationsGroupId string) ApiAddAnnotationsGroupToDatabaseRequest {
 	return ApiAddAnnotationsGroupToDatabaseRequest{
-		ApiService: a,
-		ctx:        ctx,
-		databaseId: databaseId,
+		ApiService:         a,
+		ctx:                ctx,
+		databaseId:         databaseId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -65,6 +68,7 @@ func (a *DatabaseAnnotationsGroupAPIService) AddAnnotationsGroupToDatabaseExecut
 
 	localVarPath := localBasePath + "/database/{databaseId}/annotationsGroup/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -130,9 +134,10 @@ func (a *DatabaseAnnotationsGroupAPIService) AddAnnotationsGroupToDatabaseExecut
 }
 
 type ApiDeleteAnnotationsGroupToDatabaseRequest struct {
-	ctx        context.Context
-	ApiService *DatabaseAnnotationsGroupAPIService
-	databaseId string
+	ctx                context.Context
+	ApiService         *DatabaseAnnotationsGroupAPIService
+	databaseId         string
+	annotationsGroupId string
 }
 
 func (r ApiDeleteAnnotationsGroupToDatabaseRequest) Execute() (*http.Response, error) {
@@ -146,13 +151,15 @@ Delete annotations group to database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiDeleteAnnotationsGroupToDatabaseRequest
 */
-func (a *DatabaseAnnotationsGroupAPIService) DeleteAnnotationsGroupToDatabase(ctx context.Context, databaseId string) ApiDeleteAnnotationsGroupToDatabaseRequest {
+func (a *DatabaseAnnotationsGroupAPIService) DeleteAnnotationsGroupToDatabase(ctx context.Context, databaseId string, annotationsGroupId string) ApiDeleteAnnotationsGroupToDatabaseRequest {
 	return ApiDeleteAnnotationsGroupToDatabaseRequest{
-		ApiService: a,
-		ctx:        ctx,
-		databaseId: databaseId,
+		ApiService:         a,
+		ctx:                ctx,
+		databaseId:         databaseId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -171,6 +178,7 @@ func (a *DatabaseAnnotationsGroupAPIService) DeleteAnnotationsGroupToDatabaseExe
 
 	localVarPath := localBasePath + "/database/{databaseId}/annotationsGroup/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

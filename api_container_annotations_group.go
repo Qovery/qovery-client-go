@@ -24,9 +24,10 @@ import (
 type ContainerAnnotationsGroupAPIService service
 
 type ApiAddAnnotationsGroupToContainerRequest struct {
-	ctx         context.Context
-	ApiService  *ContainerAnnotationsGroupAPIService
-	containerId string
+	ctx                context.Context
+	ApiService         *ContainerAnnotationsGroupAPIService
+	containerId        string
+	annotationsGroupId string
 }
 
 func (r ApiAddAnnotationsGroupToContainerRequest) Execute() (*http.Response, error) {
@@ -40,13 +41,15 @@ Add annotations group to container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiAddAnnotationsGroupToContainerRequest
 */
-func (a *ContainerAnnotationsGroupAPIService) AddAnnotationsGroupToContainer(ctx context.Context, containerId string) ApiAddAnnotationsGroupToContainerRequest {
+func (a *ContainerAnnotationsGroupAPIService) AddAnnotationsGroupToContainer(ctx context.Context, containerId string, annotationsGroupId string) ApiAddAnnotationsGroupToContainerRequest {
 	return ApiAddAnnotationsGroupToContainerRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		containerId: containerId,
+		ApiService:         a,
+		ctx:                ctx,
+		containerId:        containerId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -65,6 +68,7 @@ func (a *ContainerAnnotationsGroupAPIService) AddAnnotationsGroupToContainerExec
 
 	localVarPath := localBasePath + "/container/{containerId}/annotationsGroup/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -130,9 +134,10 @@ func (a *ContainerAnnotationsGroupAPIService) AddAnnotationsGroupToContainerExec
 }
 
 type ApiDeleteAnnotationsGroupToContainerRequest struct {
-	ctx         context.Context
-	ApiService  *ContainerAnnotationsGroupAPIService
-	containerId string
+	ctx                context.Context
+	ApiService         *ContainerAnnotationsGroupAPIService
+	containerId        string
+	annotationsGroupId string
 }
 
 func (r ApiDeleteAnnotationsGroupToContainerRequest) Execute() (*http.Response, error) {
@@ -146,13 +151,15 @@ Delete annotations group to container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
+ @param annotationsGroupId Organization annotations group ID
  @return ApiDeleteAnnotationsGroupToContainerRequest
 */
-func (a *ContainerAnnotationsGroupAPIService) DeleteAnnotationsGroupToContainer(ctx context.Context, containerId string) ApiDeleteAnnotationsGroupToContainerRequest {
+func (a *ContainerAnnotationsGroupAPIService) DeleteAnnotationsGroupToContainer(ctx context.Context, containerId string, annotationsGroupId string) ApiDeleteAnnotationsGroupToContainerRequest {
 	return ApiDeleteAnnotationsGroupToContainerRequest{
-		ApiService:  a,
-		ctx:         ctx,
-		containerId: containerId,
+		ApiService:         a,
+		ctx:                ctx,
+		containerId:        containerId,
+		annotationsGroupId: annotationsGroupId,
 	}
 }
 
@@ -171,6 +178,7 @@ func (a *ContainerAnnotationsGroupAPIService) DeleteAnnotationsGroupToContainerE
 
 	localVarPath := localBasePath + "/container/{containerId}/annotationsGroup/{annotationsGroupId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"annotationsGroupId"+"}", url.PathEscape(parameterValueToString(r.annotationsGroupId, "annotationsGroupId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

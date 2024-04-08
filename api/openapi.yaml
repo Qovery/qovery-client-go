@@ -3614,6 +3614,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -3634,6 +3643,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
         required: true
         schema:
           format: uuid
@@ -3668,6 +3686,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -3693,6 +3720,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
         required: true
         schema:
           format: uuid
@@ -9272,6 +9308,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -9292,6 +9337,15 @@ paths:
         explode: false
         in: path
         name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
         required: true
         schema:
           format: uuid
@@ -10620,6 +10674,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -10640,6 +10703,15 @@ paths:
         explode: false
         in: path
         name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
         required: true
         schema:
           format: uuid
@@ -11385,6 +11457,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -11405,6 +11486,15 @@ paths:
         explode: false
         in: path
         name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
         required: true
         schema:
           format: uuid
@@ -13872,6 +13962,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Organization annotations group ID
+        explode: false
+        in: path
+        name: annotationsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "204":
           description: no content
@@ -14420,6 +14519,16 @@ components:
       explode: false
       in: path
       name: inviteId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    annotationsGroupId:
+      description: Organization annotations group ID
+      explode: false
+      in: path
+      name: annotationsGroupId
       required: true
       schema:
         format: uuid
@@ -21332,26 +21441,8 @@ components:
     OrganizationAnnotationsGroupResponseList:
       example:
         results:
-        - name: name
-          annotations:
-          - value: value
-            key: key
-          - value: value
-            key: key
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          scopes:
-          - null
-          - null
-        - name: name
-          annotations:
-          - value: value
-            key: key
-          - value: value
-            key: key
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          scopes:
-          - null
-          - null
+        - null
+        - null
       properties:
         results:
           items:
@@ -21387,37 +21478,24 @@ components:
       - scopes
       type: object
     OrganizationAnnotationsGroupResponse:
-      example:
-        name: name
-        annotations:
-        - value: value
-          key: key
-        - value: value
-          key: key
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        scopes:
-        - null
-        - null
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-        annotations:
-          items:
-            $ref: '#/components/schemas/Annotation'
-          type: array
-        scopes:
-          items:
-            $ref: '#/components/schemas/OrganizationAnnotationsGroupScopeEnum'
-          type: array
-      required:
-      - annotations
-      - id
-      - name
-      - scopes
-      type: object
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          annotations:
+            items:
+              $ref: '#/components/schemas/Annotation'
+            type: array
+          scopes:
+            items:
+              $ref: '#/components/schemas/OrganizationAnnotationsGroupScopeEnum'
+            type: array
+        required:
+        - annotations
+        - name
+        - scopes
+        type: object
     OrganizationAnnotationsGroupScopeEnum:
       description: Annotations Group Scope
       enum:

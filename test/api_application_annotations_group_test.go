@@ -27,8 +27,9 @@ func Test_qovery_ApplicationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var applicationId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.ApplicationAnnotationsGroupAPI.AddAnnotationsGroupToApplication(context.Background(), applicationId).Execute()
+		httpRes, err := apiClient.ApplicationAnnotationsGroupAPI.AddAnnotationsGroupToApplication(context.Background(), applicationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -40,8 +41,9 @@ func Test_qovery_ApplicationAnnotationsGroupAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var applicationId string
+		var annotationsGroupId string
 
-		httpRes, err := apiClient.ApplicationAnnotationsGroupAPI.DeleteAnnotationsGroupToApplication(context.Background(), applicationId).Execute()
+		httpRes, err := apiClient.ApplicationAnnotationsGroupAPI.DeleteAnnotationsGroupToApplication(context.Background(), applicationId, annotationsGroupId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

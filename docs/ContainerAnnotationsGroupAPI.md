@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## AddAnnotationsGroupToContainer
 
-> AddAnnotationsGroupToContainer(ctx, containerId).Execute()
+> AddAnnotationsGroupToContainer(ctx, containerId, annotationsGroupId).Execute()
 
 Add annotations group to container
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ContainerAnnotationsGroupAPI.AddAnnotationsGroupToContainer(context.Background(), containerId).Execute()
+    r, err := apiClient.ContainerAnnotationsGroupAPI.AddAnnotationsGroupToContainer(context.Background(), containerId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerAnnotationsGroupAPI.AddAnnotationsGroupToContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -50,6 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **containerId** | **string** | Container ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -58,6 +60,7 @@ Other parameters are passed through a pointer to a apiAddAnnotationsGroupToConta
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -80,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## DeleteAnnotationsGroupToContainer
 
-> DeleteAnnotationsGroupToContainer(ctx, containerId).Execute()
+> DeleteAnnotationsGroupToContainer(ctx, containerId, annotationsGroupId).Execute()
 
 Delete annotations group to container
 
@@ -100,10 +103,11 @@ import (
 
 func main() {
     containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ContainerAnnotationsGroupAPI.DeleteAnnotationsGroupToContainer(context.Background(), containerId).Execute()
+    r, err := apiClient.ContainerAnnotationsGroupAPI.DeleteAnnotationsGroupToContainer(context.Background(), containerId, annotationsGroupId).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerAnnotationsGroupAPI.DeleteAnnotationsGroupToContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -118,6 +122,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **containerId** | **string** | Container ID | 
+**annotationsGroupId** | **string** | Organization annotations group ID | 
 
 ### Other Parameters
 
@@ -126,6 +131,7 @@ Other parameters are passed through a pointer to a apiDeleteAnnotationsGroupToCo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type

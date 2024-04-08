@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the OrganizationAnnotationsGroupResponse type satisfies the MappedNullable interface at compile time
@@ -21,6 +22,8 @@ var _ MappedNullable = &OrganizationAnnotationsGroupResponse{}
 // OrganizationAnnotationsGroupResponse struct for OrganizationAnnotationsGroupResponse
 type OrganizationAnnotationsGroupResponse struct {
 	Id          string                                  `json:"id"`
+	CreatedAt   time.Time                               `json:"created_at"`
+	UpdatedAt   *time.Time                              `json:"updated_at,omitempty"`
 	Name        string                                  `json:"name"`
 	Annotations []Annotation                            `json:"annotations"`
 	Scopes      []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
@@ -30,9 +33,10 @@ type OrganizationAnnotationsGroupResponse struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationAnnotationsGroupResponse(id string, name string, annotations []Annotation, scopes []OrganizationAnnotationsGroupScopeEnum) *OrganizationAnnotationsGroupResponse {
+func NewOrganizationAnnotationsGroupResponse(id string, createdAt time.Time, name string, annotations []Annotation, scopes []OrganizationAnnotationsGroupScopeEnum) *OrganizationAnnotationsGroupResponse {
 	this := OrganizationAnnotationsGroupResponse{}
 	this.Id = id
+	this.CreatedAt = createdAt
 	this.Name = name
 	this.Annotations = annotations
 	this.Scopes = scopes
@@ -69,6 +73,62 @@ func (o *OrganizationAnnotationsGroupResponse) GetIdOk() (*string, bool) {
 // SetId sets field value
 func (o *OrganizationAnnotationsGroupResponse) SetId(v string) {
 	o.Id = v
+}
+
+// GetCreatedAt returns the CreatedAt field value
+func (o *OrganizationAnnotationsGroupResponse) GetCreatedAt() time.Time {
+	if o == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return o.CreatedAt
+}
+
+// GetCreatedAtOk returns a tuple with the CreatedAt field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationAnnotationsGroupResponse) GetCreatedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CreatedAt, true
+}
+
+// SetCreatedAt sets field value
+func (o *OrganizationAnnotationsGroupResponse) SetCreatedAt(v time.Time) {
+	o.CreatedAt = v
+}
+
+// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
+func (o *OrganizationAnnotationsGroupResponse) GetUpdatedAt() time.Time {
+	if o == nil || IsNil(o.UpdatedAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.UpdatedAt
+}
+
+// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationAnnotationsGroupResponse) GetUpdatedAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.UpdatedAt) {
+		return nil, false
+	}
+	return o.UpdatedAt, true
+}
+
+// HasUpdatedAt returns a boolean if a field has been set.
+func (o *OrganizationAnnotationsGroupResponse) HasUpdatedAt() bool {
+	if o != nil && !IsNil(o.UpdatedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
+func (o *OrganizationAnnotationsGroupResponse) SetUpdatedAt(v time.Time) {
+	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value
@@ -154,6 +214,10 @@ func (o OrganizationAnnotationsGroupResponse) MarshalJSON() ([]byte, error) {
 func (o OrganizationAnnotationsGroupResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
+	toSerialize["created_at"] = o.CreatedAt
+	if !IsNil(o.UpdatedAt) {
+		toSerialize["updated_at"] = o.UpdatedAt
+	}
 	toSerialize["name"] = o.Name
 	toSerialize["annotations"] = o.Annotations
 	toSerialize["scopes"] = o.Scopes
