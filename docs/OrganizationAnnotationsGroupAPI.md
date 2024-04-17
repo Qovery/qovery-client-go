@@ -35,7 +35,7 @@ import (
 
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("PERSISTENT_VOLUME_CLAIMS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
+    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
@@ -179,7 +179,7 @@ import (
 func main() {
     organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
     annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
-    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("PERSISTENT_VOLUME_CLAIMS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
+    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)

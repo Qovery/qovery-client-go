@@ -3,10 +3,6 @@
 ## Enum
 
 
-* `PERSISTENT_VOLUME_CLAIMS` (value: `"PERSISTENT_VOLUME_CLAIMS"`)
-
-* `REPLICA_SETS` (value: `"REPLICA_SETS"`)
-
 * `DEPLOYMENTS` (value: `"DEPLOYMENTS"`)
 
 * `STATEFUL_SETS` (value: `"STATEFUL_SETS"`)
@@ -17,15 +13,9 @@
 
 * `HPA` (value: `"HPA"`)
 
-* `ENDPOINTS` (value: `"ENDPOINTS"`)
-
 * `PODS` (value: `"PODS"`)
 
-* `PERSISTENT_VOLUMES` (value: `"PERSISTENT_VOLUMES"`)
-
 * `SECRETS` (value: `"SECRETS"`)
-
-* `CONFIG_MAPS` (value: `"CONFIG_MAPS"`)
 
 * `JOBS` (value: `"JOBS"`)
 
