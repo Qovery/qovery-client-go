@@ -22523,6 +22523,7 @@ components:
         - key
         - scope
         - value
+        - variable_type
         type: object
     VariableResponseList:
       example:

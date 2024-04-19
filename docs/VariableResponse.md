@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **OverriddenVariable** | Pointer to [**VariableOverride**](VariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**VariableAlias**](VariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**VariableType** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
+**VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 **ServiceId** | Pointer to **string** | The id of the service referenced by this variable. | [optional] 
 **ServiceName** | Pointer to **string** | The name of the service referenced by this variable. | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 
 ### NewVariableResponse
 
-`func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, isSecret bool, ) *VariableResponse`
+`func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, isSecret bool, ) *VariableResponse`
 
 NewVariableResponse instantiates a new VariableResponse object
 This constructor will assign default values to properties that have it defined,
@@ -278,11 +278,6 @@ and a boolean to check if the value has been set.
 
 SetVariableType sets VariableType field to given value.
 
-### HasVariableType
-
-`func (o *VariableResponse) HasVariableType() bool`
-
-HasVariableType returns a boolean if a field has been set.
 
 ### GetServiceId
 
