@@ -20,15 +20,16 @@ var _ MappedNullable = &CronJobResponseAllOfSchedule{}
 
 // CronJobResponseAllOfSchedule struct for CronJobResponseAllOfSchedule
 type CronJobResponseAllOfSchedule struct {
-	Cronjob *CronJobResponseAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	Cronjob CronJobResponseAllOfScheduleCronjob `json:"cronjob"`
 }
 
 // NewCronJobResponseAllOfSchedule instantiates a new CronJobResponseAllOfSchedule object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronJobResponseAllOfSchedule() *CronJobResponseAllOfSchedule {
+func NewCronJobResponseAllOfSchedule(cronjob CronJobResponseAllOfScheduleCronjob) *CronJobResponseAllOfSchedule {
 	this := CronJobResponseAllOfSchedule{}
+	this.Cronjob = cronjob
 	return &this
 }
 
@@ -40,36 +41,28 @@ func NewCronJobResponseAllOfScheduleWithDefaults() *CronJobResponseAllOfSchedule
 	return &this
 }
 
-// GetCronjob returns the Cronjob field value if set, zero value otherwise.
+// GetCronjob returns the Cronjob field value
 func (o *CronJobResponseAllOfSchedule) GetCronjob() CronJobResponseAllOfScheduleCronjob {
-	if o == nil || IsNil(o.Cronjob) {
+	if o == nil {
 		var ret CronJobResponseAllOfScheduleCronjob
 		return ret
 	}
-	return *o.Cronjob
+
+	return o.Cronjob
 }
 
-// GetCronjobOk returns a tuple with the Cronjob field value if set, nil otherwise
+// GetCronjobOk returns a tuple with the Cronjob field value
 // and a boolean to check if the value has been set.
 func (o *CronJobResponseAllOfSchedule) GetCronjobOk() (*CronJobResponseAllOfScheduleCronjob, bool) {
-	if o == nil || IsNil(o.Cronjob) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cronjob, true
+	return &o.Cronjob, true
 }
 
-// HasCronjob returns a boolean if a field has been set.
-func (o *CronJobResponseAllOfSchedule) HasCronjob() bool {
-	if o != nil && !IsNil(o.Cronjob) {
-		return true
-	}
-
-	return false
-}
-
-// SetCronjob gets a reference to the given CronJobResponseAllOfScheduleCronjob and assigns it to the Cronjob field.
+// SetCronjob sets field value
 func (o *CronJobResponseAllOfSchedule) SetCronjob(v CronJobResponseAllOfScheduleCronjob) {
-	o.Cronjob = &v
+	o.Cronjob = v
 }
 
 func (o CronJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
@@ -82,9 +75,7 @@ func (o CronJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
 
 func (o CronJobResponseAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Cronjob) {
-		toSerialize["cronjob"] = o.Cronjob
-	}
+	toSerialize["cronjob"] = o.Cronjob
 	return toSerialize, nil
 }
 

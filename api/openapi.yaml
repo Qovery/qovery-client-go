@@ -24198,6 +24198,8 @@ components:
       properties:
         cronjob:
           $ref: '#/components/schemas/CronJobResponse_allOf_schedule_cronjob'
+      required:
+      - cronjob
       type: object
       example: null
     BaseJobResponse_allOf_source_oneOf:

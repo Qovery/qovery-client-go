@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Cronjob** | Pointer to [**CronJobResponseAllOfScheduleCronjob**](CronJobResponseAllOfScheduleCronjob.md) |  | [optional] 
+**Cronjob** | [**CronJobResponseAllOfScheduleCronjob**](CronJobResponseAllOfScheduleCronjob.md) |  | 
 
 ## Methods
 
 ### NewCronJobResponseAllOfSchedule
 
-`func NewCronJobResponseAllOfSchedule() *CronJobResponseAllOfSchedule`
+`func NewCronJobResponseAllOfSchedule(cronjob CronJobResponseAllOfScheduleCronjob, ) *CronJobResponseAllOfSchedule`
 
 NewCronJobResponseAllOfSchedule instantiates a new CronJobResponseAllOfSchedule object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetCronjob sets Cronjob field to given value.
 
-### HasCronjob
-
-`func (o *CronJobResponseAllOfSchedule) HasCronjob() bool`
-
-HasCronjob returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
