@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
-**VariableType** | Pointer to [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | [optional] 
+**VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 **ServiceId** | Pointer to **string** |  | [optional] 
 **ServiceName** | Pointer to **string** |  | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentVariable
 
-`func NewEnvironmentVariable(id string, createdAt time.Time, key string, scope APIVariableScopeEnum, ) *EnvironmentVariable`
+`func NewEnvironmentVariable(id string, createdAt time.Time, key string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *EnvironmentVariable`
 
 NewEnvironmentVariable instantiates a new EnvironmentVariable object
 This constructor will assign default values to properties that have it defined,
@@ -272,11 +272,6 @@ and a boolean to check if the value has been set.
 
 SetVariableType sets VariableType field to given value.
 
-### HasVariableType
-
-`func (o *EnvironmentVariable) HasVariableType() bool`
-
-HasVariableType returns a boolean if a field has been set.
 
 ### GetServiceId
 

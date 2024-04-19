@@ -19040,6 +19040,7 @@ components:
             type: string
         required:
         - scope
+        - variable_type
         type: object
     EnvironmentVariableAlias:
       properties:

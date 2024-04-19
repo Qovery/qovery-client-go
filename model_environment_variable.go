@@ -33,7 +33,7 @@ type EnvironmentVariable struct {
 	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum         `json:"scope"`
-	VariableType       *APIVariableTypeEnum         `json:"variable_type,omitempty"`
+	VariableType       APIVariableTypeEnum          `json:"variable_type"`
 	ServiceId          *string                      `json:"service_id,omitempty"`
 	ServiceName        *string                      `json:"service_name,omitempty"`
 	ServiceType        *LinkedServiceTypeEnum       `json:"service_type,omitempty"`
@@ -45,12 +45,13 @@ type EnvironmentVariable struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentVariable(id string, createdAt time.Time, key string, scope APIVariableScopeEnum) *EnvironmentVariable {
+func NewEnvironmentVariable(id string, createdAt time.Time, key string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum) *EnvironmentVariable {
 	this := EnvironmentVariable{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Key = key
 	this.Scope = scope
+	this.VariableType = variableType
 	return &this
 }
 
@@ -329,36 +330,28 @@ func (o *EnvironmentVariable) SetScope(v APIVariableScopeEnum) {
 	o.Scope = v
 }
 
-// GetVariableType returns the VariableType field value if set, zero value otherwise.
+// GetVariableType returns the VariableType field value
 func (o *EnvironmentVariable) GetVariableType() APIVariableTypeEnum {
-	if o == nil || IsNil(o.VariableType) {
+	if o == nil {
 		var ret APIVariableTypeEnum
 		return ret
 	}
-	return *o.VariableType
+
+	return o.VariableType
 }
 
-// GetVariableTypeOk returns a tuple with the VariableType field value if set, nil otherwise
+// GetVariableTypeOk returns a tuple with the VariableType field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentVariable) GetVariableTypeOk() (*APIVariableTypeEnum, bool) {
-	if o == nil || IsNil(o.VariableType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VariableType, true
+	return &o.VariableType, true
 }
 
-// HasVariableType returns a boolean if a field has been set.
-func (o *EnvironmentVariable) HasVariableType() bool {
-	if o != nil && !IsNil(o.VariableType) {
-		return true
-	}
-
-	return false
-}
-
-// SetVariableType gets a reference to the given APIVariableTypeEnum and assigns it to the VariableType field.
+// SetVariableType sets field value
 func (o *EnvironmentVariable) SetVariableType(v APIVariableTypeEnum) {
-	o.VariableType = &v
+	o.VariableType = v
 }
 
 // GetServiceId returns the ServiceId field value if set, zero value otherwise.
@@ -518,9 +511,7 @@ func (o EnvironmentVariable) ToMap() (map[string]interface{}, error) {
 		toSerialize["aliased_variable"] = o.AliasedVariable
 	}
 	toSerialize["scope"] = o.Scope
-	if !IsNil(o.VariableType) {
-		toSerialize["variable_type"] = o.VariableType
-	}
+	toSerialize["variable_type"] = o.VariableType
 	if !IsNil(o.ServiceId) {
 		toSerialize["service_id"] = o.ServiceId
 	}
