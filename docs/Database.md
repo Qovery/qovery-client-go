@@ -17,12 +17,14 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field is null for container DB. | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
+**AnnotationsGroupIds** | Pointer to **[]string** | list of id of the annotations groups | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
+**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -338,6 +340,31 @@ SetStorage sets Storage field to given value.
 
 HasStorage returns a boolean if a field has been set.
 
+### GetAnnotationsGroupIds
+
+`func (o *Database) GetAnnotationsGroupIds() []string`
+
+GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupIdsOk
+
+`func (o *Database) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+
+GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroupIds
+
+`func (o *Database) SetAnnotationsGroupIds(v []string)`
+
+SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+
+### HasAnnotationsGroupIds
+
+`func (o *Database) HasAnnotationsGroupIds() bool`
+
+HasAnnotationsGroupIds returns a boolean if a field has been set.
+
 ### GetEnvironment
 
 `func (o *Database) GetEnvironment() ReferenceObject`
@@ -482,6 +509,31 @@ SetDiskEncrypted sets DiskEncrypted field to given value.
 `func (o *Database) HasDiskEncrypted() bool`
 
 HasDiskEncrypted returns a boolean if a field has been set.
+
+### GetAnnotationsGroups
+
+`func (o *Database) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupsOk
+
+`func (o *Database) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroups
+
+`func (o *Database) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
+
+### HasAnnotationsGroups
+
+`func (o *Database) HasAnnotationsGroups() bool`
+
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

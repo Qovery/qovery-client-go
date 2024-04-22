@@ -47,9 +47,10 @@ type CronJobResponse struct {
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy *bool                        `json:"auto_deploy,omitempty"`
-	JobType    string                       `json:"job_type"`
-	Schedule   CronJobResponseAllOfSchedule `json:"schedule"`
+	AutoDeploy        *bool                                     `json:"auto_deploy,omitempty"`
+	JobType           string                                    `json:"job_type"`
+	Schedule          CronJobResponseAllOfSchedule              `json:"schedule"`
+	AnnotationsGroups *OrganizationAnnotationsGroupResponseList `json:"annotations_groups,omitempty"`
 }
 
 // NewCronJobResponse instantiates a new CronJobResponse object
@@ -597,6 +598,38 @@ func (o *CronJobResponse) SetSchedule(v CronJobResponseAllOfSchedule) {
 	o.Schedule = v
 }
 
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *CronJobResponse) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret OrganizationAnnotationsGroupResponseList
+		return ret
+	}
+	return *o.AnnotationsGroups
+}
+
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CronJobResponse) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		return nil, false
+	}
+	return o.AnnotationsGroups, true
+}
+
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *CronJobResponse) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroups gets a reference to the given OrganizationAnnotationsGroupResponseList and assigns it to the AnnotationsGroups field.
+func (o *CronJobResponse) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList) {
+	o.AnnotationsGroups = &v
+}
+
 func (o CronJobResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -638,6 +671,9 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
+	}
 	return toSerialize, nil
 }
 

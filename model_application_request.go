@@ -47,6 +47,8 @@ type ApplicationRequest struct {
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
 	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
+	// list of id of the annotations groups
+	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
 }
 
 // NewApplicationRequest instantiates a new ApplicationRequest object
@@ -657,6 +659,38 @@ func (o *ApplicationRequest) UnsetAutoDeploy() {
 	o.AutoDeploy.Unset()
 }
 
+// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetAnnotationsGroupIds() []string {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		var ret []string
+		return ret
+	}
+	return o.AnnotationsGroupIds
+}
+
+// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		return nil, false
+	}
+	return o.AnnotationsGroupIds, true
+}
+
+// HasAnnotationsGroupIds returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasAnnotationsGroupIds() bool {
+	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
+func (o *ApplicationRequest) SetAnnotationsGroupIds(v []string) {
+	o.AnnotationsGroupIds = v
+}
+
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -711,6 +745,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
+	}
+	if !IsNil(o.AnnotationsGroupIds) {
+		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
 	}
 	return toSerialize, nil
 }

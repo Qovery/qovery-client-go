@@ -48,6 +48,8 @@ type ContainerRequest struct {
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
 	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
+	// list of id of the annotations groups
+	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
 }
 
 // NewContainerRequest instantiates a new ContainerRequest object
@@ -571,6 +573,38 @@ func (o *ContainerRequest) UnsetAutoDeploy() {
 	o.AutoDeploy.Unset()
 }
 
+// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
+func (o *ContainerRequest) GetAnnotationsGroupIds() []string {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		var ret []string
+		return ret
+	}
+	return o.AnnotationsGroupIds
+}
+
+// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		return nil, false
+	}
+	return o.AnnotationsGroupIds, true
+}
+
+// HasAnnotationsGroupIds returns a boolean if a field has been set.
+func (o *ContainerRequest) HasAnnotationsGroupIds() bool {
+	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
+func (o *ContainerRequest) SetAnnotationsGroupIds(v []string) {
+	o.AnnotationsGroupIds = v
+}
+
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -618,6 +652,9 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
+	}
+	if !IsNil(o.AnnotationsGroupIds) {
+		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
 	}
 	return toSerialize, nil
 }

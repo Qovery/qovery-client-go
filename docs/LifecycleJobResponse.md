@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **JobType** | **string** |  | 
 **Schedule** | [**LifecycleJobResponseAllOfSchedule**](LifecycleJobResponseAllOfSchedule.md) |  | 
+**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -462,6 +463,31 @@ and a boolean to check if the value has been set.
 
 SetSchedule sets Schedule field to given value.
 
+
+### GetAnnotationsGroups
+
+`func (o *LifecycleJobResponse) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupsOk
+
+`func (o *LifecycleJobResponse) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroups
+
+`func (o *LifecycleJobResponse) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
+
+### HasAnnotationsGroups
+
+`func (o *LifecycleJobResponse) HasAnnotationsGroups() bool`
+
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -14929,6 +14929,8 @@ components:
             description: Specify if the application will be automatically updated
               after receiving a new commit.
             type: boolean
+          annotations_groups:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
         required:
         - environment
         - healthchecks
@@ -15210,6 +15212,13 @@ components:
               after receiving a new commit.
             nullable: true
             type: boolean
+          annotations_group_ids:
+            description: list of id of the annotations groups
+            items:
+              description: id of the annotations group
+              format: uuid
+              type: string
+            type: array
         required:
         - healthchecks
         type: object
@@ -15424,6 +15433,13 @@ components:
               after receiving a new commit.
             nullable: true
             type: boolean
+          annotations_group_ids:
+            description: list of id of the annotations groups
+            items:
+              description: id of the annotations group
+              format: uuid
+              type: string
+            type: array
         required:
         - git_repository
         - healthchecks
@@ -17226,6 +17242,13 @@ components:
               \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
             nullable: true
             type: boolean
+          annotations_group_ids:
+            description: list of id of the annotations groups
+            items:
+              description: id of the annotations group
+              format: uuid
+              type: string
+            type: array
         required:
         - healthchecks
         - image_name
@@ -17302,6 +17325,8 @@ components:
               \ receiving a new image tag. \nThe new image tag shall be communicated\
               \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
             type: boolean
+          annotations_groups:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
         required:
         - auto_preview
         - cpu
@@ -17611,6 +17636,8 @@ components:
               \ This field is null for container DB."
             example: db.t3.medium
             type: string
+          annotations_groups:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
         required:
         - environment
         type: object
@@ -17661,6 +17688,9 @@ components:
       example:
         memory: 1024
         accessibility: null
+        annotations_group_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
         cpu: 1250
@@ -17709,6 +17739,13 @@ components:
             \ This field SHOULD NOT be set for container DB."
           example: db.t3.medium
           type: string
+        annotations_group_ids:
+          description: list of id of the annotations groups
+          items:
+            description: id of the annotations group
+            format: uuid
+            type: string
+          type: array
       type: object
     DatabaseModeEnum:
       enum:
@@ -17720,6 +17757,9 @@ components:
         mode: null
         memory: 1024
         accessibility: null
+        annotations_group_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
         cpu: 1250
@@ -17773,6 +17813,13 @@ components:
           default: 10
           description: unit is GB
           type: integer
+        annotations_group_ids:
+          description: list of id of the annotations groups
+          items:
+            description: id of the annotations group
+            format: uuid
+            type: string
+          type: array
       required:
       - mode
       - name
@@ -19900,6 +19947,12 @@ components:
               \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
             nullable: true
             type: boolean
+          annotations_group_ids:
+            items:
+              description: id of the annotations group
+              format: uuid
+              type: string
+            type: array
         required:
         - healthchecks
         - name
@@ -22752,6 +22805,8 @@ components:
             type: string
           schedule:
             $ref: '#/components/schemas/LifecycleJobResponse_allOf_schedule'
+          annotations_groups:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
         required:
         - job_type
         - schedule
@@ -22766,6 +22821,8 @@ components:
             type: string
           schedule:
             $ref: '#/components/schemas/CronJobResponse_allOf_schedule'
+          annotations_groups:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
         required:
         - job_type
         - schedule

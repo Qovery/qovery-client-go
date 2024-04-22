@@ -39,7 +39,8 @@ type JobRequest struct {
 	Healthchecks Healthcheck              `json:"healthchecks"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
+	AutoDeploy          NullableBool `json:"auto_deploy,omitempty"`
+	AnnotationsGroupIds []string     `json:"annotations_group_ids,omitempty"`
 }
 
 // NewJobRequest instantiates a new JobRequest object
@@ -463,6 +464,38 @@ func (o *JobRequest) UnsetAutoDeploy() {
 	o.AutoDeploy.Unset()
 }
 
+// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
+func (o *JobRequest) GetAnnotationsGroupIds() []string {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		var ret []string
+		return ret
+	}
+	return o.AnnotationsGroupIds
+}
+
+// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		return nil, false
+	}
+	return o.AnnotationsGroupIds, true
+}
+
+// HasAnnotationsGroupIds returns a boolean if a field has been set.
+func (o *JobRequest) HasAnnotationsGroupIds() bool {
+	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
+func (o *JobRequest) SetAnnotationsGroupIds(v []string) {
+	o.AnnotationsGroupIds = v
+}
+
 func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -504,6 +537,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
+	}
+	if !IsNil(o.AnnotationsGroupIds) {
+		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
 	}
 	return toSerialize, nil
 }

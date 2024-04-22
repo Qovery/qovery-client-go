@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **AutoDeploy** | Pointer to **bool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
+**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
 
 ## Methods
 
@@ -616,6 +617,31 @@ SetAutoDeploy sets AutoDeploy field to given value.
 `func (o *Application) HasAutoDeploy() bool`
 
 HasAutoDeploy returns a boolean if a field has been set.
+
+### GetAnnotationsGroups
+
+`func (o *Application) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupsOk
+
+`func (o *Application) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroups
+
+`func (o *Application) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
+
+### HasAnnotationsGroups
+
+`func (o *Application) HasAnnotationsGroups() bool`
+
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
+**AnnotationsGroupIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -346,6 +347,31 @@ HasAutoDeploy returns a boolean if a field has been set.
 `func (o *JobRequest) UnsetAutoDeploy()`
 
 UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
+### GetAnnotationsGroupIds
+
+`func (o *JobRequest) GetAnnotationsGroupIds() []string`
+
+GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupIdsOk
+
+`func (o *JobRequest) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+
+GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroupIds
+
+`func (o *JobRequest) SetAnnotationsGroupIds(v []string)`
+
+SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+
+### HasAnnotationsGroupIds
+
+`func (o *JobRequest) HasAnnotationsGroupIds() bool`
+
+HasAnnotationsGroupIds returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

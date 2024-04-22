@@ -55,7 +55,8 @@ type Application struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	AutoDeploy        *bool                                     `json:"auto_deploy,omitempty"`
+	AnnotationsGroups *OrganizationAnnotationsGroupResponseList `json:"annotations_groups,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
@@ -814,6 +815,38 @@ func (o *Application) SetAutoDeploy(v bool) {
 	o.AutoDeploy = &v
 }
 
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *Application) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret OrganizationAnnotationsGroupResponseList
+		return ret
+	}
+	return *o.AnnotationsGroups
+}
+
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		return nil, false
+	}
+	return o.AnnotationsGroups, true
+}
+
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *Application) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroups gets a reference to the given OrganizationAnnotationsGroupResponseList and assigns it to the AnnotationsGroups field.
+func (o *Application) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList) {
+	o.AnnotationsGroups = &v
+}
+
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -882,6 +915,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
+	}
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
 }

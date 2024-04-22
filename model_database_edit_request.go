@@ -34,6 +34,8 @@ type DatabaseEditRequest struct {
 	Storage *int32 `json:"storage,omitempty"`
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
 	InstanceType *string `json:"instance_type,omitempty"`
+	// list of id of the annotations groups
+	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
 }
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
@@ -317,6 +319,38 @@ func (o *DatabaseEditRequest) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
+// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
+func (o *DatabaseEditRequest) GetAnnotationsGroupIds() []string {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		var ret []string
+		return ret
+	}
+	return o.AnnotationsGroupIds
+}
+
+// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseEditRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AnnotationsGroupIds) {
+		return nil, false
+	}
+	return o.AnnotationsGroupIds, true
+}
+
+// HasAnnotationsGroupIds returns a boolean if a field has been set.
+func (o *DatabaseEditRequest) HasAnnotationsGroupIds() bool {
+	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
+func (o *DatabaseEditRequest) SetAnnotationsGroupIds(v []string) {
+	o.AnnotationsGroupIds = v
+}
+
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -350,6 +384,9 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.InstanceType) {
 		toSerialize["instance_type"] = o.InstanceType
+	}
+	if !IsNil(o.AnnotationsGroupIds) {
+		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
 	}
 	return toSerialize, nil
 }

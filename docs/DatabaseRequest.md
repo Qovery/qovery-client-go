@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB. | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
+**AnnotationsGroupIds** | Pointer to **[]string** | list of id of the annotations groups | [optional] 
 
 ## Methods
 
@@ -263,6 +264,31 @@ SetStorage sets Storage field to given value.
 `func (o *DatabaseRequest) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
+
+### GetAnnotationsGroupIds
+
+`func (o *DatabaseRequest) GetAnnotationsGroupIds() []string`
+
+GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+
+### GetAnnotationsGroupIdsOk
+
+`func (o *DatabaseRequest) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+
+GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAnnotationsGroupIds
+
+`func (o *DatabaseRequest) SetAnnotationsGroupIds(v []string)`
+
+SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+
+### HasAnnotationsGroupIds
+
+`func (o *DatabaseRequest) HasAnnotationsGroupIds() bool`
+
+HasAnnotationsGroupIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
