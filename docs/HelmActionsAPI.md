@@ -5,7 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployHelm**](HelmActionsAPI.md#DeployHelm) | **Post** /helm/{helmId}/deploy | Deploy helm
-[**RestartHelm**](HelmActionsAPI.md#RestartHelm) | **Post** /helm/{helmId}/restart | Deprecated - Restart helm
+[**RedeployHelm**](HelmActionsAPI.md#RedeployHelm) | **Post** /helm/{helmId}/redeploy | Redeploy helm
 [**StopHelm**](HelmActionsAPI.md#StopHelm) | **Post** /helm/{helmId}/stop | Stop helm
 
 
@@ -84,13 +84,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartHelm
+## RedeployHelm
 
-> Status RestartHelm(ctx, helmId).ForceEvent(forceEvent).Execute()
+> Status RedeployHelm(ctx, helmId).ForceEvent(forceEvent).Execute()
 
-Deprecated - Restart helm
-
-
+Redeploy helm
 
 ### Example
 
@@ -110,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmActionsAPI.RestartHelm(context.Background(), helmId).ForceEvent(forceEvent).Execute()
+    resp, r, err := apiClient.HelmActionsAPI.RedeployHelm(context.Background(), helmId).ForceEvent(forceEvent).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.RestartHelm``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.RedeployHelm``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartHelm`: Status
-    fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.RestartHelm`: %v\n", resp)
+    // response from `RedeployHelm`: Status
+    fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.RedeployHelm`: %v\n", resp)
 }
 ```
 
@@ -130,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartHelmRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployHelmRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

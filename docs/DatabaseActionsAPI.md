@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployDatabase**](DatabaseActionsAPI.md#DeployDatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 [**RebootDatabase**](DatabaseActionsAPI.md#RebootDatabase) | **Post** /database/{databaseId}/restart-service | Retart database
-[**RestartDatabase**](DatabaseActionsAPI.md#RestartDatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
+[**RedeployDatabase**](DatabaseActionsAPI.md#RedeployDatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
 [**StopDatabase**](DatabaseActionsAPI.md#StopDatabase) | **Post** /database/{databaseId}/stop | Stop database
 
 
@@ -147,13 +147,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartDatabase
+## RedeployDatabase
 
-> Status RestartDatabase(ctx, databaseId).Execute()
+> Status RedeployDatabase(ctx, databaseId).Execute()
 
-Deprecated - Restart database
-
-
+Redeploy database
 
 ### Example
 
@@ -172,13 +170,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsAPI.RestartDatabase(context.Background(), databaseId).Execute()
+    resp, r, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RestartDatabase``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RedeployDatabase``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartDatabase`: Status
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RestartDatabase`: %v\n", resp)
+    // response from `RedeployDatabase`: Status
+    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RedeployDatabase`: %v\n", resp)
 }
 ```
 
@@ -192,7 +190,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartDatabaseRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployDatabaseRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

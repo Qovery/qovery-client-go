@@ -105,13 +105,13 @@ func Test_qovery_EnvironmentActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EnvironmentActionsAPIService RestartEnvironment", func(t *testing.T) {
+	t.Run("Test EnvironmentActionsAPIService RedeployEnvironment", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var environmentId string
 
-		resp, httpRes, err := apiClient.EnvironmentActionsAPI.RestartEnvironment(context.Background(), environmentId).Execute()
+		resp, httpRes, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

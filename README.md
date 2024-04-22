@@ -84,7 +84,7 @@ Class | Method | HTTP request | Description
 *AccountInfoAPI* | [**GetAccountInformation**](docs/AccountInfoAPI.md#getaccountinformation) | **Get** /account | Get Account information
 *ApplicationActionsAPI* | [**DeployApplication**](docs/ApplicationActionsAPI.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
-*ApplicationActionsAPI* | [**RestartApplication**](docs/ApplicationActionsAPI.md#restartapplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
+*ApplicationActionsAPI* | [**RedeployApplication**](docs/ApplicationActionsAPI.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
 *ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
 *ApplicationAnnotationsGroupAPI* | [**AddAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#addannotationsgrouptoapplication) | **Post** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Add annotations group to application
 *ApplicationAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#deleteannotationsgrouptoapplication) | **Delete** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to application
@@ -197,7 +197,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
 *ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
-*ContainerActionsAPI* | [**RestartContainer**](docs/ContainerActionsAPI.md#restartcontainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
+*ContainerActionsAPI* | [**RedeployContainer**](docs/ContainerActionsAPI.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
 *ContainerActionsAPI* | [**StopContainer**](docs/ContainerActionsAPI.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
 *ContainerAnnotationsGroupAPI* | [**AddAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#addannotationsgrouptocontainer) | **Post** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Add annotations group to container
 *ContainerAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#deleteannotationsgrouptocontainer) | **Delete** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to container
@@ -251,7 +251,7 @@ Class | Method | HTTP request | Description
 *CustomDomainAPI* | [**ListApplicationCustomDomain**](docs/CustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *DatabaseActionsAPI* | [**DeployDatabase**](docs/DatabaseActionsAPI.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
-*DatabaseActionsAPI* | [**RestartDatabase**](docs/DatabaseActionsAPI.md#restartdatabase) | **Post** /database/{databaseId}/restart | Deprecated - Restart database
+*DatabaseActionsAPI* | [**RedeployDatabase**](docs/DatabaseActionsAPI.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
 *DatabaseActionsAPI* | [**StopDatabase**](docs/DatabaseActionsAPI.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
 *DatabaseAnnotationsGroupAPI* | [**AddAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#addannotationsgrouptodatabase) | **Post** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Add annotations group to database
 *DatabaseAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#deleteannotationsgrouptodatabase) | **Delete** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to database
@@ -286,7 +286,7 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsAPI* | [**DeployAllServices**](docs/EnvironmentActionsAPI.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 *EnvironmentActionsAPI* | [**DeployEnvironment**](docs/EnvironmentActionsAPI.md#deployenvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 *EnvironmentActionsAPI* | [**RebootServices**](docs/EnvironmentActionsAPI.md#rebootservices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
-*EnvironmentActionsAPI* | [**RestartEnvironment**](docs/EnvironmentActionsAPI.md#restartenvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
+*EnvironmentActionsAPI* | [**RedeployEnvironment**](docs/EnvironmentActionsAPI.md#redeployenvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
 *EnvironmentActionsAPI* | [**StopEnvironment**](docs/EnvironmentActionsAPI.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentActionsAPI* | [**StopSelectedServices**](docs/EnvironmentActionsAPI.md#stopselectedservices) | **Post** /environment/{environmentId}/service/stop | Stop services
 *EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
@@ -327,7 +327,7 @@ Class | Method | HTTP request | Description
 *GithubAppAPI* | [**OrganizationGithubAppConnect**](docs/GithubAppAPI.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppAPI* | [**OrganizationGithubAppDisconnect**](docs/GithubAppAPI.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
 *HelmActionsAPI* | [**DeployHelm**](docs/HelmActionsAPI.md#deployhelm) | **Post** /helm/{helmId}/deploy | Deploy helm
-*HelmActionsAPI* | [**RestartHelm**](docs/HelmActionsAPI.md#restarthelm) | **Post** /helm/{helmId}/restart | Deprecated - Restart helm
+*HelmActionsAPI* | [**RedeployHelm**](docs/HelmActionsAPI.md#redeployhelm) | **Post** /helm/{helmId}/redeploy | Redeploy helm
 *HelmActionsAPI* | [**StopHelm**](docs/HelmActionsAPI.md#stophelm) | **Post** /helm/{helmId}/stop | Stop helm
 *HelmConfigurationAPI* | [**EditHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#edithelmadvancedsettings) | **Put** /helm/{helmId}/advancedSettings | Edit advanced settings
 *HelmConfigurationAPI* | [**GetHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#gethelmadvancedsettings) | **Get** /helm/{helmId}/advancedSettings | Get advanced settings
@@ -360,7 +360,7 @@ Class | Method | HTTP request | Description
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 *HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
-*JobActionsAPI* | [**RestartJob**](docs/JobActionsAPI.md#restartjob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
+*JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
 *JobAnnotationsGroupAPI* | [**AddAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#addannotationsgrouptojob) | **Post** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Add annotations group to job
 *JobAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#deleteannotationsgrouptojob) | **Delete** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to job

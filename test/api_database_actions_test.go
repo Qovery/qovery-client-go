@@ -50,13 +50,13 @@ func Test_qovery_DatabaseActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DatabaseActionsAPIService RestartDatabase", func(t *testing.T) {
+	t.Run("Test DatabaseActionsAPIService RedeployDatabase", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var databaseId string
 
-		resp, httpRes, err := apiClient.DatabaseActionsAPI.RestartDatabase(context.Background(), databaseId).Execute()
+		resp, httpRes, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

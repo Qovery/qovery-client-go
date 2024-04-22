@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployApplication**](ApplicationActionsAPI.md#DeployApplication) | **Post** /application/{applicationId}/deploy | Deploy application
 [**RebootApplication**](ApplicationActionsAPI.md#RebootApplication) | **Post** /application/{applicationId}/restart-service | Reboot application
-[**RestartApplication**](ApplicationActionsAPI.md#RestartApplication) | **Post** /application/{applicationId}/restart | Deprecated - Restart application
+[**RedeployApplication**](ApplicationActionsAPI.md#RedeployApplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
 [**StopApplication**](ApplicationActionsAPI.md#StopApplication) | **Post** /application/{applicationId}/stop | Stop application
 
 
@@ -151,13 +151,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartApplication
+## RedeployApplication
 
-> Status RestartApplication(ctx, applicationId).Execute()
+> Status RedeployApplication(ctx, applicationId).Execute()
 
-Deprecated - Restart application
-
-
+Redeploy application
 
 ### Example
 
@@ -176,13 +174,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ApplicationActionsAPI.RestartApplication(context.Background(), applicationId).Execute()
+    resp, r, err := apiClient.ApplicationActionsAPI.RedeployApplication(context.Background(), applicationId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RestartApplication``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.RedeployApplication``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartApplication`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RestartApplication`: %v\n", resp)
+    // response from `RedeployApplication`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.RedeployApplication`: %v\n", resp)
 }
 ```
 
@@ -196,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartApplicationRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployApplicationRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

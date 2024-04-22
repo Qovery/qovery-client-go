@@ -263,27 +263,25 @@ func (a *ContainerActionsAPIService) RebootContainerExecute(r ApiRebootContainer
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartContainerRequest struct {
+type ApiRedeployContainerRequest struct {
 	ctx         context.Context
 	ApiService  *ContainerActionsAPIService
 	containerId string
 }
 
-func (r ApiRestartContainerRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RestartContainerExecute(r)
+func (r ApiRedeployContainerRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployContainerExecute(r)
 }
 
 /*
-RestartContainer Deprecated - Restart container
-
-**Deprecated** - Please use the "Redeploy container" endpoint now
+RedeployContainer Redeploy container
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param containerId Container ID
- @return ApiRestartContainerRequest
+ @return ApiRedeployContainerRequest
 */
-func (a *ContainerActionsAPIService) RestartContainer(ctx context.Context, containerId string) ApiRestartContainerRequest {
-	return ApiRestartContainerRequest{
+func (a *ContainerActionsAPIService) RedeployContainer(ctx context.Context, containerId string) ApiRedeployContainerRequest {
+	return ApiRedeployContainerRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		containerId: containerId,
@@ -292,7 +290,7 @@ func (a *ContainerActionsAPIService) RestartContainer(ctx context.Context, conta
 
 // Execute executes the request
 //  @return Status
-func (a *ContainerActionsAPIService) RestartContainerExecute(r ApiRestartContainerRequest) (*Status, *http.Response, error) {
+func (a *ContainerActionsAPIService) RedeployContainerExecute(r ApiRedeployContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -300,12 +298,12 @@ func (a *ContainerActionsAPIService) RestartContainerExecute(r ApiRestartContain
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.RestartContainer")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.RedeployContainer")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/container/{containerId}/restart"
+	localVarPath := localBasePath + "/container/{containerId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

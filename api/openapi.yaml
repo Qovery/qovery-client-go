@@ -6329,11 +6329,9 @@ paths:
       summary: Stop environment
       tags:
       - Environment Actions
-  /environment/{environmentId}/restart:
+  /environment/{environmentId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy environment" endpoint
-        now'
-      operationId: restartEnvironment
+      operationId: redeployEnvironment
       parameters:
       - description: Environment ID
         explode: false
@@ -6350,7 +6348,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnvironmentStatus'
-          description: Environment restart has been requested
+          description: Environment redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -6359,7 +6357,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart environment
+      summary: Redeploy environment
       tags:
       - Environment Actions
   /environment/{environmentId}/cancelDeployment:
@@ -8185,11 +8183,9 @@ paths:
       summary: Stop application
       tags:
       - Application Actions
-  /application/{applicationId}/restart:
+  /application/{applicationId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy application" endpoint
-        now'
-      operationId: restartApplication
+      operationId: redeployApplication
       parameters:
       - description: Application ID
         explode: false
@@ -8206,7 +8202,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Application restart has been requested
+          description: Application redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -8215,7 +8211,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart application
+      summary: Redeploy application
       tags:
       - Application Actions
   /application/{applicationId}/restart-service:
@@ -9630,11 +9626,9 @@ paths:
       summary: Stop container
       tags:
       - Container Actions
-  /container/{containerId}/restart:
+  /container/{containerId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy container" endpoint
-        now'
-      operationId: restartContainer
+      operationId: redeployContainer
       parameters:
       - description: Container ID
         explode: false
@@ -9651,7 +9645,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Container restart has been requested
+          description: Container redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -9660,7 +9654,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart container
+      summary: Redeploy container
       tags:
       - Container Actions
   /container/{containerId}/restart-service:
@@ -11047,10 +11041,9 @@ paths:
       summary: 'Remove an application from this database '
       tags:
       - Database Application
-  /database/{databaseId}/restart:
+  /database/{databaseId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy database" endpoint now'
-      operationId: restartDatabase
+      operationId: redeployDatabase
       parameters:
       - description: Database ID
         explode: false
@@ -11067,7 +11060,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Database  restart has been requested
+          description: Database redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -11076,7 +11069,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart database
+      summary: Redeploy database
       tags:
       - Database Actions
   /database/{databaseId}/restart-service:
@@ -12054,10 +12047,9 @@ paths:
       summary: Deploy helm
       tags:
       - Helm Actions
-  /helm/{helmId}/restart:
+  /helm/{helmId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy helm" endpoint now'
-      operationId: restartHelm
+      operationId: redeployHelm
       parameters:
       - description: Helm ID
         explode: false
@@ -12084,7 +12076,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Helm restart has been requested
+          description: Helm redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -12093,7 +12085,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart helm
+      summary: Redeploy helm
       tags:
       - Helm Actions
   /helm/{helmId}/stop:
@@ -12905,10 +12897,9 @@ paths:
       summary: Deploy job
       tags:
       - Job Actions
-  /job/{jobId}/restart:
+  /job/{jobId}/redeploy:
     post:
-      description: '**Deprecated** - Please use the "Redeploy job" endpoint now'
-      operationId: restartJob
+      operationId: redeployJob
       parameters:
       - description: Job ID
         explode: false
@@ -12935,7 +12926,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Status'
-          description: Job restart has been requested
+          description: Job redeploy has been requested
         "401":
           description: Access token is missing or invalid
         "403":
@@ -12944,7 +12935,7 @@ paths:
           description: Resource not found
         "409":
           description: Operation is in progress
-      summary: Deprecated - Restart job
+      summary: Redeploy job
       tags:
       - Job Actions
   /job/{jobId}/stop:

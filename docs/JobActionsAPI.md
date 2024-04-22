@@ -5,7 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployJob**](JobActionsAPI.md#DeployJob) | **Post** /job/{jobId}/deploy | Deploy job
-[**RestartJob**](JobActionsAPI.md#RestartJob) | **Post** /job/{jobId}/restart | Deprecated - Restart job
+[**RedeployJob**](JobActionsAPI.md#RedeployJob) | **Post** /job/{jobId}/redeploy | Redeploy job
 [**StopJob**](JobActionsAPI.md#StopJob) | **Post** /job/{jobId}/stop | Stop job
 
 
@@ -84,13 +84,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartJob
+## RedeployJob
 
-> Status RestartJob(ctx, jobId).ForceEvent(forceEvent).Execute()
+> Status RedeployJob(ctx, jobId).ForceEvent(forceEvent).Execute()
 
-Deprecated - Restart job
-
-
+Redeploy job
 
 ### Example
 
@@ -110,13 +108,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsAPI.RestartJob(context.Background(), jobId).ForceEvent(forceEvent).Execute()
+    resp, r, err := apiClient.JobActionsAPI.RedeployJob(context.Background(), jobId).ForceEvent(forceEvent).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.RestartJob``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.RedeployJob``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartJob`: Status
-    fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.RestartJob`: %v\n", resp)
+    // response from `RedeployJob`: Status
+    fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.RedeployJob`: %v\n", resp)
 }
 ```
 
@@ -130,7 +128,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartJobRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployJobRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

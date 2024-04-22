@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**DeployAllServices**](EnvironmentActionsAPI.md#DeployAllServices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 [**DeployEnvironment**](EnvironmentActionsAPI.md#DeployEnvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
 [**RebootServices**](EnvironmentActionsAPI.md#RebootServices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
-[**RestartEnvironment**](EnvironmentActionsAPI.md#RestartEnvironment) | **Post** /environment/{environmentId}/restart | Deprecated - Restart environment
+[**RedeployEnvironment**](EnvironmentActionsAPI.md#RedeployEnvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
 [**StopEnvironment**](EnvironmentActionsAPI.md#StopEnvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 [**StopSelectedServices**](EnvironmentActionsAPI.md#StopSelectedServices) | **Post** /environment/{environmentId}/service/stop | Stop services
 
@@ -442,13 +442,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartEnvironment
+## RedeployEnvironment
 
-> EnvironmentStatus RestartEnvironment(ctx, environmentId).Execute()
+> EnvironmentStatus RedeployEnvironment(ctx, environmentId).Execute()
 
-Deprecated - Restart environment
-
-
+Redeploy environment
 
 ### Example
 
@@ -467,13 +465,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentActionsAPI.RestartEnvironment(context.Background(), environmentId).Execute()
+    resp, r, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.RestartEnvironment``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.RedeployEnvironment``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartEnvironment`: EnvironmentStatus
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.RestartEnvironment`: %v\n", resp)
+    // response from `RedeployEnvironment`: EnvironmentStatus
+    fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.RedeployEnvironment`: %v\n", resp)
 }
 ```
 
@@ -487,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartEnvironmentRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployEnvironmentRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

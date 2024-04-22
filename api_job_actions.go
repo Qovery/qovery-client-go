@@ -158,7 +158,7 @@ func (a *JobActionsAPIService) DeployJobExecute(r ApiDeployJobRequest) (*Status,
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartJobRequest struct {
+type ApiRedeployJobRequest struct {
 	ctx        context.Context
 	ApiService *JobActionsAPIService
 	jobId      string
@@ -166,26 +166,24 @@ type ApiRestartJobRequest struct {
 }
 
 // When filled, it indicates the target event to be deployed.   If the concerned job hasn&#39;t the target event provided, the job won&#39;t be deployed.
-func (r ApiRestartJobRequest) ForceEvent(forceEvent JobForceEvent) ApiRestartJobRequest {
+func (r ApiRedeployJobRequest) ForceEvent(forceEvent JobForceEvent) ApiRedeployJobRequest {
 	r.forceEvent = &forceEvent
 	return r
 }
 
-func (r ApiRestartJobRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RestartJobExecute(r)
+func (r ApiRedeployJobRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployJobExecute(r)
 }
 
 /*
-RestartJob Deprecated - Restart job
-
-**Deprecated** - Please use the "Redeploy job" endpoint now
+RedeployJob Redeploy job
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param jobId Job ID
- @return ApiRestartJobRequest
+ @return ApiRedeployJobRequest
 */
-func (a *JobActionsAPIService) RestartJob(ctx context.Context, jobId string) ApiRestartJobRequest {
-	return ApiRestartJobRequest{
+func (a *JobActionsAPIService) RedeployJob(ctx context.Context, jobId string) ApiRedeployJobRequest {
+	return ApiRedeployJobRequest{
 		ApiService: a,
 		ctx:        ctx,
 		jobId:      jobId,
@@ -194,7 +192,7 @@ func (a *JobActionsAPIService) RestartJob(ctx context.Context, jobId string) Api
 
 // Execute executes the request
 //  @return Status
-func (a *JobActionsAPIService) RestartJobExecute(r ApiRestartJobRequest) (*Status, *http.Response, error) {
+func (a *JobActionsAPIService) RedeployJobExecute(r ApiRedeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -202,12 +200,12 @@ func (a *JobActionsAPIService) RestartJobExecute(r ApiRestartJobRequest) (*Statu
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.RestartJob")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.RedeployJob")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/job/{jobId}/restart"
+	localVarPath := localBasePath + "/job/{jobId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"jobId"+"}", url.PathEscape(parameterValueToString(r.jobId, "jobId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

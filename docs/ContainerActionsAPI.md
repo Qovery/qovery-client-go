@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployContainer**](ContainerActionsAPI.md#DeployContainer) | **Post** /container/{containerId}/deploy | Deploy container
 [**RebootContainer**](ContainerActionsAPI.md#RebootContainer) | **Post** /container/{containerId}/restart-service | Reboot container
-[**RestartContainer**](ContainerActionsAPI.md#RestartContainer) | **Post** /container/{containerId}/restart | Deprecated - Restart container
+[**RedeployContainer**](ContainerActionsAPI.md#RedeployContainer) | **Post** /container/{containerId}/redeploy | Redeploy container
 [**StopContainer**](ContainerActionsAPI.md#StopContainer) | **Post** /container/{containerId}/stop | Stop container
 
 
@@ -151,13 +151,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RestartContainer
+## RedeployContainer
 
-> Status RestartContainer(ctx, containerId).Execute()
+> Status RedeployContainer(ctx, containerId).Execute()
 
-Deprecated - Restart container
-
-
+Redeploy container
 
 ### Example
 
@@ -176,13 +174,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerActionsAPI.RestartContainer(context.Background(), containerId).Execute()
+    resp, r, err := apiClient.ContainerActionsAPI.RedeployContainer(context.Background(), containerId).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RestartContainer``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.RedeployContainer``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `RestartContainer`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RestartContainer`: %v\n", resp)
+    // response from `RedeployContainer`: Status
+    fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.RedeployContainer`: %v\n", resp)
 }
 ```
 
@@ -196,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRestartContainerRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployContainerRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

@@ -50,13 +50,13 @@ func Test_qovery_ContainerActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ContainerActionsAPIService RestartContainer", func(t *testing.T) {
+	t.Run("Test ContainerActionsAPIService RedeployContainer", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var containerId string
 
-		resp, httpRes, err := apiClient.ContainerActionsAPI.RestartContainer(context.Background(), containerId).Execute()
+		resp, httpRes, err := apiClient.ContainerActionsAPI.RedeployContainer(context.Background(), containerId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

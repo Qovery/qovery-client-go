@@ -158,7 +158,7 @@ func (a *HelmActionsAPIService) DeployHelmExecute(r ApiDeployHelmRequest) (*Stat
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartHelmRequest struct {
+type ApiRedeployHelmRequest struct {
 	ctx        context.Context
 	ApiService *HelmActionsAPIService
 	helmId     string
@@ -166,26 +166,24 @@ type ApiRestartHelmRequest struct {
 }
 
 // When filled, it indicates the target event to be deployed.   If the concerned helm hasn&#39;t the target event provided, the helm won&#39;t be deployed.
-func (r ApiRestartHelmRequest) ForceEvent(forceEvent HelmForceEvent) ApiRestartHelmRequest {
+func (r ApiRedeployHelmRequest) ForceEvent(forceEvent HelmForceEvent) ApiRedeployHelmRequest {
 	r.forceEvent = &forceEvent
 	return r
 }
 
-func (r ApiRestartHelmRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RestartHelmExecute(r)
+func (r ApiRedeployHelmRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployHelmExecute(r)
 }
 
 /*
-RestartHelm Deprecated - Restart helm
-
-**Deprecated** - Please use the "Redeploy helm" endpoint now
+RedeployHelm Redeploy helm
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param helmId Helm ID
- @return ApiRestartHelmRequest
+ @return ApiRedeployHelmRequest
 */
-func (a *HelmActionsAPIService) RestartHelm(ctx context.Context, helmId string) ApiRestartHelmRequest {
-	return ApiRestartHelmRequest{
+func (a *HelmActionsAPIService) RedeployHelm(ctx context.Context, helmId string) ApiRedeployHelmRequest {
+	return ApiRedeployHelmRequest{
 		ApiService: a,
 		ctx:        ctx,
 		helmId:     helmId,
@@ -194,7 +192,7 @@ func (a *HelmActionsAPIService) RestartHelm(ctx context.Context, helmId string) 
 
 // Execute executes the request
 //  @return Status
-func (a *HelmActionsAPIService) RestartHelmExecute(r ApiRestartHelmRequest) (*Status, *http.Response, error) {
+func (a *HelmActionsAPIService) RedeployHelmExecute(r ApiRedeployHelmRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -202,12 +200,12 @@ func (a *HelmActionsAPIService) RestartHelmExecute(r ApiRestartHelmRequest) (*St
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmActionsAPIService.RestartHelm")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmActionsAPIService.RedeployHelm")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/helm/{helmId}/restart"
+	localVarPath := localBasePath + "/helm/{helmId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"helmId"+"}", url.PathEscape(parameterValueToString(r.helmId, "helmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -746,27 +746,25 @@ func (a *EnvironmentActionsAPIService) RebootServicesExecute(r ApiRebootServices
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartEnvironmentRequest struct {
+type ApiRedeployEnvironmentRequest struct {
 	ctx           context.Context
 	ApiService    *EnvironmentActionsAPIService
 	environmentId string
 }
 
-func (r ApiRestartEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
-	return r.ApiService.RestartEnvironmentExecute(r)
+func (r ApiRedeployEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
+	return r.ApiService.RedeployEnvironmentExecute(r)
 }
 
 /*
-RestartEnvironment Deprecated - Restart environment
-
-**Deprecated** - Please use the "Redeploy environment" endpoint now
+RedeployEnvironment Redeploy environment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId Environment ID
- @return ApiRestartEnvironmentRequest
+ @return ApiRedeployEnvironmentRequest
 */
-func (a *EnvironmentActionsAPIService) RestartEnvironment(ctx context.Context, environmentId string) ApiRestartEnvironmentRequest {
-	return ApiRestartEnvironmentRequest{
+func (a *EnvironmentActionsAPIService) RedeployEnvironment(ctx context.Context, environmentId string) ApiRedeployEnvironmentRequest {
+	return ApiRedeployEnvironmentRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentId: environmentId,
@@ -775,7 +773,7 @@ func (a *EnvironmentActionsAPIService) RestartEnvironment(ctx context.Context, e
 
 // Execute executes the request
 //  @return EnvironmentStatus
-func (a *EnvironmentActionsAPIService) RestartEnvironmentExecute(r ApiRestartEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
+func (a *EnvironmentActionsAPIService) RedeployEnvironmentExecute(r ApiRedeployEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -783,12 +781,12 @@ func (a *EnvironmentActionsAPIService) RestartEnvironmentExecute(r ApiRestartEnv
 		localVarReturnValue *EnvironmentStatus
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsAPIService.RestartEnvironment")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsAPIService.RedeployEnvironment")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/environment/{environmentId}/restart"
+	localVarPath := localBasePath + "/environment/{environmentId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

@@ -263,27 +263,25 @@ func (a *ApplicationActionsAPIService) RebootApplicationExecute(r ApiRebootAppli
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartApplicationRequest struct {
+type ApiRedeployApplicationRequest struct {
 	ctx           context.Context
 	ApiService    *ApplicationActionsAPIService
 	applicationId string
 }
 
-func (r ApiRestartApplicationRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RestartApplicationExecute(r)
+func (r ApiRedeployApplicationRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployApplicationExecute(r)
 }
 
 /*
-RestartApplication Deprecated - Restart application
-
-**Deprecated** - Please use the "Redeploy application" endpoint now
+RedeployApplication Redeploy application
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param applicationId Application ID
- @return ApiRestartApplicationRequest
+ @return ApiRedeployApplicationRequest
 */
-func (a *ApplicationActionsAPIService) RestartApplication(ctx context.Context, applicationId string) ApiRestartApplicationRequest {
-	return ApiRestartApplicationRequest{
+func (a *ApplicationActionsAPIService) RedeployApplication(ctx context.Context, applicationId string) ApiRedeployApplicationRequest {
+	return ApiRedeployApplicationRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		applicationId: applicationId,
@@ -292,7 +290,7 @@ func (a *ApplicationActionsAPIService) RestartApplication(ctx context.Context, a
 
 // Execute executes the request
 //  @return Status
-func (a *ApplicationActionsAPIService) RestartApplicationExecute(r ApiRestartApplicationRequest) (*Status, *http.Response, error) {
+func (a *ApplicationActionsAPIService) RedeployApplicationExecute(r ApiRedeployApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -300,12 +298,12 @@ func (a *ApplicationActionsAPIService) RestartApplicationExecute(r ApiRestartApp
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.RestartApplication")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.RedeployApplication")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/application/{applicationId}/restart"
+	localVarPath := localBasePath + "/application/{applicationId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

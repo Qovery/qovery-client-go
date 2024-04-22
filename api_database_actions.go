@@ -253,27 +253,25 @@ func (a *DatabaseActionsAPIService) RebootDatabaseExecute(r ApiRebootDatabaseReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRestartDatabaseRequest struct {
+type ApiRedeployDatabaseRequest struct {
 	ctx        context.Context
 	ApiService *DatabaseActionsAPIService
 	databaseId string
 }
 
-func (r ApiRestartDatabaseRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RestartDatabaseExecute(r)
+func (r ApiRedeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployDatabaseExecute(r)
 }
 
 /*
-RestartDatabase Deprecated - Restart database
-
-**Deprecated** - Please use the "Redeploy database" endpoint now
+RedeployDatabase Redeploy database
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param databaseId Database ID
- @return ApiRestartDatabaseRequest
+ @return ApiRedeployDatabaseRequest
 */
-func (a *DatabaseActionsAPIService) RestartDatabase(ctx context.Context, databaseId string) ApiRestartDatabaseRequest {
-	return ApiRestartDatabaseRequest{
+func (a *DatabaseActionsAPIService) RedeployDatabase(ctx context.Context, databaseId string) ApiRedeployDatabaseRequest {
+	return ApiRedeployDatabaseRequest{
 		ApiService: a,
 		ctx:        ctx,
 		databaseId: databaseId,
@@ -282,7 +280,7 @@ func (a *DatabaseActionsAPIService) RestartDatabase(ctx context.Context, databas
 
 // Execute executes the request
 //  @return Status
-func (a *DatabaseActionsAPIService) RestartDatabaseExecute(r ApiRestartDatabaseRequest) (*Status, *http.Response, error) {
+func (a *DatabaseActionsAPIService) RedeployDatabaseExecute(r ApiRedeployDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -290,12 +288,12 @@ func (a *DatabaseActionsAPIService) RestartDatabaseExecute(r ApiRestartDatabaseR
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsAPIService.RestartDatabase")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsAPIService.RedeployDatabase")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/database/{databaseId}/restart"
+	localVarPath := localBasePath + "/database/{databaseId}/redeploy"
 	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
