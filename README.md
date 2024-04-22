@@ -88,7 +88,6 @@ Class | Method | HTTP request | Description
 *ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
 *ApplicationAnnotationsGroupAPI* | [**AddAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#addannotationsgrouptoapplication) | **Post** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Add annotations group to application
 *ApplicationAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#deleteannotationsgrouptoapplication) | **Delete** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to application
-*ApplicationAnnotationsGroupAPI* | [**ListApplicationAnnotationsGroup**](docs/ApplicationAnnotationsGroupAPI.md#listapplicationannotationsgroup) | **Get** /application/{applicationId}/annotationsGroup | List application annotations group
 *ApplicationConfigurationAPI* | [**EditAdvancedSettings**](docs/ApplicationConfigurationAPI.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
@@ -202,7 +201,6 @@ Class | Method | HTTP request | Description
 *ContainerActionsAPI* | [**StopContainer**](docs/ContainerActionsAPI.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
 *ContainerAnnotationsGroupAPI* | [**AddAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#addannotationsgrouptocontainer) | **Post** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Add annotations group to container
 *ContainerAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#deleteannotationsgrouptocontainer) | **Delete** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to container
-*ContainerAnnotationsGroupAPI* | [**ListContainerAnnotationsGroup**](docs/ContainerAnnotationsGroupAPI.md#listcontainerannotationsgroup) | **Get** /container/{containerId}/annotationsGroup | List container annotations group
 *ContainerConfigurationAPI* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
 *ContainerConfigurationAPI* | [**EditContainerNetwork**](docs/ContainerConfigurationAPI.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
 *ContainerConfigurationAPI* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
@@ -257,7 +255,6 @@ Class | Method | HTTP request | Description
 *DatabaseActionsAPI* | [**StopDatabase**](docs/DatabaseActionsAPI.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
 *DatabaseAnnotationsGroupAPI* | [**AddAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#addannotationsgrouptodatabase) | **Post** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Add annotations group to database
 *DatabaseAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#deleteannotationsgrouptodatabase) | **Delete** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to database
-*DatabaseAnnotationsGroupAPI* | [**ListDatabaseAnnotationsGroup**](docs/DatabaseAnnotationsGroupAPI.md#listdatabaseannotationsgroup) | **Get** /database/{databaseId}/annotationsGroup | List database annotations group
 *DatabaseApplicationAPI* | [**ListDatabaseApplication**](docs/DatabaseApplicationAPI.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationAPI* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationAPI.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
@@ -367,7 +364,6 @@ Class | Method | HTTP request | Description
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
 *JobAnnotationsGroupAPI* | [**AddAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#addannotationsgrouptojob) | **Post** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Add annotations group to job
 *JobAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#deleteannotationsgrouptojob) | **Delete** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to job
-*JobAnnotationsGroupAPI* | [**ListJobAnnotationsGroup**](docs/JobAnnotationsGroupAPI.md#listjobannotationsgroup) | **Get** /job/{jobId}/annotationsGroup | List job annotations group
 *JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
@@ -777,6 +773,7 @@ Class | Method | HTTP request | Description
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
+ - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogResponseList](docs/LogResponseList.md)

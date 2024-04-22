@@ -3555,7 +3555,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+                $ref: '#/components/schemas/listOrganizationAnnotationsGroup_200_response'
           description: List organization annotations groups
         "401":
           description: Access token is missing or invalid
@@ -9269,36 +9269,6 @@ paths:
       summary: Clone application
       tags:
       - Applications
-  /application/{applicationId}/annotationsGroup:
-    get:
-      description: List application annotations group
-      operationId: listApplicationAnnotationsGroup
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
-          description: List application annotations groups
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List application annotations group
-      tags:
-      - Application Annotations Group
   /application/{applicationId}/annotationsGroup/{annotationsGroupId}:
     delete:
       description: Delete annotations group to application
@@ -10635,36 +10605,6 @@ paths:
       summary: Clone container
       tags:
       - Containers
-  /container/{containerId}/annotationsGroup:
-    get:
-      description: List container annotations group
-      operationId: listContainerAnnotationsGroup
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
-          description: List container annotations groups
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List container annotations group
-      tags:
-      - Container Annotations Group
   /container/{containerId}/annotationsGroup/{annotationsGroupId}:
     delete:
       description: Delete annotations group to container
@@ -11418,36 +11358,6 @@ paths:
       summary: Clone database
       tags:
       - Databases
-  /database/{databaseId}/annotationsGroup:
-    get:
-      description: List database annotations group
-      operationId: listDatabaseAnnotationsGroup
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
-          description: List database annotations groups
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List database annotations group
-      tags:
-      - Database Annotations Group
   /database/{databaseId}/annotationsGroup/{annotationsGroupId}:
     delete:
       description: Delete annotations group to database
@@ -13923,36 +13833,6 @@ paths:
       summary: Clone job
       tags:
       - Jobs
-  /job/{jobId}/annotationsGroup:
-    get:
-      description: List job annotations group
-      operationId: listJobAnnotationsGroup
-      parameters:
-      - description: Job ID
-        explode: false
-        in: path
-        name: jobId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
-          description: List job annotations groups
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List job annotations group
-      tags:
-      - Job Annotations Group
   /job/{jobId}/annotationsGroup/{annotationsGroupId}:
     delete:
       description: Delete annotations group to job
@@ -22976,6 +22856,17 @@ components:
           type: string
       required:
       - user_id
+      type: object
+    listOrganizationAnnotationsGroup_200_response:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
+          type: array
       type: object
     listContainerDeploymentHistory_200_response:
       allOf:
