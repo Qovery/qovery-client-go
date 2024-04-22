@@ -57,8 +57,8 @@ type ContainerResponse struct {
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy        *bool                                     `json:"auto_deploy,omitempty"`
-	AnnotationsGroups *OrganizationAnnotationsGroupResponseList `json:"annotations_groups,omitempty"`
+	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 }
 
 // NewContainerResponse instantiates a new ContainerResponse object
@@ -714,17 +714,17 @@ func (o *ContainerResponse) SetAutoDeploy(v bool) {
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
-func (o *ContainerResponse) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList {
+func (o *ContainerResponse) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse {
 	if o == nil || IsNil(o.AnnotationsGroups) {
-		var ret OrganizationAnnotationsGroupResponseList
+		var ret []OrganizationAnnotationsGroupResponse
 		return ret
 	}
-	return *o.AnnotationsGroups
+	return o.AnnotationsGroups
 }
 
 // GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool) {
+func (o *ContainerResponse) GetAnnotationsGroupsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
 	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
@@ -740,9 +740,9 @@ func (o *ContainerResponse) HasAnnotationsGroups() bool {
 	return false
 }
 
-// SetAnnotationsGroups gets a reference to the given OrganizationAnnotationsGroupResponseList and assigns it to the AnnotationsGroups field.
-func (o *ContainerResponse) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList) {
-	o.AnnotationsGroups = &v
+// SetAnnotationsGroups gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the AnnotationsGroups field.
+func (o *ContainerResponse) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse) {
+	o.AnnotationsGroups = v
 }
 
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {

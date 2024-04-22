@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **JobType** | **string** |  | 
 **Schedule** | [**CronJobResponseAllOfSchedule**](CronJobResponseAllOfSchedule.md) |  | 
-**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
+**AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -466,20 +466,20 @@ SetSchedule sets Schedule field to given value.
 
 ### GetAnnotationsGroups
 
-`func (o *CronJobResponse) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+`func (o *CronJobResponse) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse`
 
 GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
 ### GetAnnotationsGroupsOk
 
-`func (o *CronJobResponse) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+`func (o *CronJobResponse) GetAnnotationsGroupsOk() (*[]OrganizationAnnotationsGroupResponse, bool)`
 
 GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnnotationsGroups
 
-`func (o *CronJobResponse) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+`func (o *CronJobResponse) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse)`
 
 SetAnnotationsGroups sets AnnotationsGroups field to given value.
 

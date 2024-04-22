@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **AutoDeploy** | Pointer to **bool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
-**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
+**AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -620,20 +620,20 @@ HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAnnotationsGroups
 
-`func (o *Application) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+`func (o *Application) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse`
 
 GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
 ### GetAnnotationsGroupsOk
 
-`func (o *Application) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+`func (o *Application) GetAnnotationsGroupsOk() (*[]OrganizationAnnotationsGroupResponse, bool)`
 
 GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnnotationsGroups
 
-`func (o *Application) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+`func (o *Application) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse)`
 
 SetAnnotationsGroups sets AnnotationsGroups field to given value.
 

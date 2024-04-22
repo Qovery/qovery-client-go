@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## ListDatabaseAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponseList ListDatabaseAnnotationsGroup(ctx, databaseId).Execute()
+> []OrganizationAnnotationsGroupResponse ListDatabaseAnnotationsGroup(ctx, databaseId).Execute()
 
 List database annotations group
 
@@ -182,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `DatabaseAnnotationsGroupAPI.ListDatabaseAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListDatabaseAnnotationsGroup`: OrganizationAnnotationsGroupResponseList
+    // response from `ListDatabaseAnnotationsGroup`: []OrganizationAnnotationsGroupResponse
     fmt.Fprintf(os.Stdout, "Response from `DatabaseAnnotationsGroupAPI.ListDatabaseAnnotationsGroup`: %v\n", resp)
 }
 ```
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md)
+[**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md)
 
 ### Authorization
 

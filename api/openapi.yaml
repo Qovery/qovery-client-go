@@ -21498,16 +21498,9 @@ components:
           type: array
       type: object
     OrganizationAnnotationsGroupResponseList:
-      example:
-        results:
-        - null
-        - null
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
-          type: array
-      type: object
+      items:
+        $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
+      type: array
     OrganizationAnnotationsGroupCreateRequest:
       example:
         name: name

@@ -249,7 +249,7 @@ type ApiListContainerAnnotationsGroupRequest struct {
 	containerId string
 }
 
-func (r ApiListContainerAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+func (r ApiListContainerAnnotationsGroupRequest) Execute() ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	return r.ApiService.ListContainerAnnotationsGroupExecute(r)
 }
 
@@ -271,13 +271,13 @@ func (a *ContainerAnnotationsGroupAPIService) ListContainerAnnotationsGroup(ctx 
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponseList
-func (a *ContainerAnnotationsGroupAPIService) ListContainerAnnotationsGroupExecute(r ApiListContainerAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+//  @return []OrganizationAnnotationsGroupResponse
+func (a *ContainerAnnotationsGroupAPIService) ListContainerAnnotationsGroupExecute(r ApiListContainerAnnotationsGroupRequest) ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAnnotationsGroupResponseList
+		localVarReturnValue []OrganizationAnnotationsGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerAnnotationsGroupAPIService.ListContainerAnnotationsGroup")

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **AutoDeploy** | Pointer to **bool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
-**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
+**AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -550,20 +550,20 @@ HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetAnnotationsGroups
 
-`func (o *ContainerResponse) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+`func (o *ContainerResponse) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse`
 
 GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
 ### GetAnnotationsGroupsOk
 
-`func (o *ContainerResponse) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+`func (o *ContainerResponse) GetAnnotationsGroupsOk() (*[]OrganizationAnnotationsGroupResponse, bool)`
 
 GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnnotationsGroups
 
-`func (o *ContainerResponse) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+`func (o *ContainerResponse) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse)`
 
 SetAnnotationsGroups sets AnnotationsGroups field to given value.
 

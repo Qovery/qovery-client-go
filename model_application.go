@@ -55,8 +55,8 @@ type Application struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy        *bool                                     `json:"auto_deploy,omitempty"`
-	AnnotationsGroups *OrganizationAnnotationsGroupResponseList `json:"annotations_groups,omitempty"`
+	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 }
 
 // NewApplication instantiates a new Application object
@@ -816,17 +816,17 @@ func (o *Application) SetAutoDeploy(v bool) {
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
-func (o *Application) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList {
+func (o *Application) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse {
 	if o == nil || IsNil(o.AnnotationsGroups) {
-		var ret OrganizationAnnotationsGroupResponseList
+		var ret []OrganizationAnnotationsGroupResponse
 		return ret
 	}
-	return *o.AnnotationsGroups
+	return o.AnnotationsGroups
 }
 
 // GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Application) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool) {
+func (o *Application) GetAnnotationsGroupsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
 	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
@@ -842,9 +842,9 @@ func (o *Application) HasAnnotationsGroups() bool {
 	return false
 }
 
-// SetAnnotationsGroups gets a reference to the given OrganizationAnnotationsGroupResponseList and assigns it to the AnnotationsGroups field.
-func (o *Application) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList) {
-	o.AnnotationsGroups = &v
+// SetAnnotationsGroups gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the AnnotationsGroups field.
+func (o *Application) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse) {
+	o.AnnotationsGroups = v
 }
 
 func (o Application) MarshalJSON() ([]byte, error) {

@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
-**AnnotationsGroups** | Pointer to [**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md) |  | [optional] 
+**AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -512,20 +512,20 @@ HasDiskEncrypted returns a boolean if a field has been set.
 
 ### GetAnnotationsGroups
 
-`func (o *Database) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList`
+`func (o *Database) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse`
 
 GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
 ### GetAnnotationsGroupsOk
 
-`func (o *Database) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool)`
+`func (o *Database) GetAnnotationsGroupsOk() (*[]OrganizationAnnotationsGroupResponse, bool)`
 
 GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAnnotationsGroups
 
-`func (o *Database) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList)`
+`func (o *Database) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse)`
 
 SetAnnotationsGroups sets AnnotationsGroups field to given value.
 

@@ -635,7 +635,7 @@ type ApiListOrganizationAnnotationsGroupRequest struct {
 	organizationId string
 }
 
-func (r ApiListOrganizationAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+func (r ApiListOrganizationAnnotationsGroupRequest) Execute() ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	return r.ApiService.ListOrganizationAnnotationsGroupExecute(r)
 }
 
@@ -657,13 +657,13 @@ func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGrou
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponseList
-func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGroupExecute(r ApiListOrganizationAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+//  @return []OrganizationAnnotationsGroupResponse
+func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGroupExecute(r ApiListOrganizationAnnotationsGroupRequest) ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAnnotationsGroupResponseList
+		localVarReturnValue []OrganizationAnnotationsGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAnnotationsGroupAPIService.ListOrganizationAnnotationsGroup")

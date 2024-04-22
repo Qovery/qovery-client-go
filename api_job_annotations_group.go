@@ -249,7 +249,7 @@ type ApiListJobAnnotationsGroupRequest struct {
 	jobId      string
 }
 
-func (r ApiListJobAnnotationsGroupRequest) Execute() (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+func (r ApiListJobAnnotationsGroupRequest) Execute() ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	return r.ApiService.ListJobAnnotationsGroupExecute(r)
 }
 
@@ -271,13 +271,13 @@ func (a *JobAnnotationsGroupAPIService) ListJobAnnotationsGroup(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponseList
-func (a *JobAnnotationsGroupAPIService) ListJobAnnotationsGroupExecute(r ApiListJobAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponseList, *http.Response, error) {
+//  @return []OrganizationAnnotationsGroupResponse
+func (a *JobAnnotationsGroupAPIService) ListJobAnnotationsGroupExecute(r ApiListJobAnnotationsGroupRequest) ([]OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAnnotationsGroupResponseList
+		localVarReturnValue []OrganizationAnnotationsGroupResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobAnnotationsGroupAPIService.ListJobAnnotationsGroup")

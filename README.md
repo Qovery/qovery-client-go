@@ -793,7 +793,6 @@ Class | Method | HTTP request | Description
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
  - [OrganizationAnnotationsGroupCreateRequest](docs/OrganizationAnnotationsGroupCreateRequest.md)
  - [OrganizationAnnotationsGroupResponse](docs/OrganizationAnnotationsGroupResponse.md)
- - [OrganizationAnnotationsGroupResponseList](docs/OrganizationAnnotationsGroupResponseList.md)
  - [OrganizationAnnotationsGroupScopeEnum](docs/OrganizationAnnotationsGroupScopeEnum.md)
  - [OrganizationApiToken](docs/OrganizationApiToken.md)
  - [OrganizationApiTokenCreate](docs/OrganizationApiTokenCreate.md)

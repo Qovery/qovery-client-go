@@ -50,8 +50,8 @@ type Database struct {
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted     *bool                                     `json:"disk_encrypted,omitempty"`
-	AnnotationsGroups *OrganizationAnnotationsGroupResponseList `json:"annotations_groups,omitempty"`
+	DiskEncrypted     *bool                                  `json:"disk_encrypted,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 }
 
 // NewDatabase instantiates a new Database object
@@ -675,17 +675,17 @@ func (o *Database) SetDiskEncrypted(v bool) {
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
-func (o *Database) GetAnnotationsGroups() OrganizationAnnotationsGroupResponseList {
+func (o *Database) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse {
 	if o == nil || IsNil(o.AnnotationsGroups) {
-		var ret OrganizationAnnotationsGroupResponseList
+		var ret []OrganizationAnnotationsGroupResponse
 		return ret
 	}
-	return *o.AnnotationsGroups
+	return o.AnnotationsGroups
 }
 
 // GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Database) GetAnnotationsGroupsOk() (*OrganizationAnnotationsGroupResponseList, bool) {
+func (o *Database) GetAnnotationsGroupsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
 	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
@@ -701,9 +701,9 @@ func (o *Database) HasAnnotationsGroups() bool {
 	return false
 }
 
-// SetAnnotationsGroups gets a reference to the given OrganizationAnnotationsGroupResponseList and assigns it to the AnnotationsGroups field.
-func (o *Database) SetAnnotationsGroups(v OrganizationAnnotationsGroupResponseList) {
-	o.AnnotationsGroups = &v
+// SetAnnotationsGroups gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the AnnotationsGroups field.
+func (o *Database) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse) {
+	o.AnnotationsGroups = v
 }
 
 func (o Database) MarshalJSON() ([]byte, error) {

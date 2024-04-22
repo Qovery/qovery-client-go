@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## ListContainerAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponseList ListContainerAnnotationsGroup(ctx, containerId).Execute()
+> []OrganizationAnnotationsGroupResponse ListContainerAnnotationsGroup(ctx, containerId).Execute()
 
 List container annotations group
 
@@ -182,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ContainerAnnotationsGroupAPI.ListContainerAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListContainerAnnotationsGroup`: OrganizationAnnotationsGroupResponseList
+    // response from `ListContainerAnnotationsGroup`: []OrganizationAnnotationsGroupResponse
     fmt.Fprintf(os.Stdout, "Response from `ContainerAnnotationsGroupAPI.ListContainerAnnotationsGroup`: %v\n", resp)
 }
 ```
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md)
+[**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md)
 
 ### Authorization
 

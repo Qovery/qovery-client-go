@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ## ListApplicationAnnotationsGroup
 
-> OrganizationAnnotationsGroupResponseList ListApplicationAnnotationsGroup(ctx, applicationId).Execute()
+> []OrganizationAnnotationsGroupResponse ListApplicationAnnotationsGroup(ctx, applicationId).Execute()
 
 List application annotations group
 
@@ -182,7 +182,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `ApplicationAnnotationsGroupAPI.ListApplicationAnnotationsGroup``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `ListApplicationAnnotationsGroup`: OrganizationAnnotationsGroupResponseList
+    // response from `ListApplicationAnnotationsGroup`: []OrganizationAnnotationsGroupResponse
     fmt.Fprintf(os.Stdout, "Response from `ApplicationAnnotationsGroupAPI.ListApplicationAnnotationsGroup`: %v\n", resp)
 }
 ```
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationAnnotationsGroupResponseList**](OrganizationAnnotationsGroupResponseList.md)
+[**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md)
 
 ### Authorization
 
