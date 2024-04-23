@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
-**AnnotationsGroupIds** | Pointer to **[]string** | list of id of the annotations groups | [optional] 
+**AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -426,30 +426,30 @@ HasAutoDeploy returns a boolean if a field has been set.
 `func (o *ContainerRequest) UnsetAutoDeploy()`
 
 UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
-### GetAnnotationsGroupIds
+### GetAnnotationsGroups
 
-`func (o *ContainerRequest) GetAnnotationsGroupIds() []string`
+`func (o *ContainerRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`
 
-GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
-### GetAnnotationsGroupIdsOk
+### GetAnnotationsGroupsOk
 
-`func (o *ContainerRequest) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+`func (o *ContainerRequest) GetAnnotationsGroupsOk() (*[]ServiceAnnotationRequest, bool)`
 
-GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAnnotationsGroupIds
+### SetAnnotationsGroups
 
-`func (o *ContainerRequest) SetAnnotationsGroupIds(v []string)`
+`func (o *ContainerRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest)`
 
-SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
 
-### HasAnnotationsGroupIds
+### HasAnnotationsGroups
 
-`func (o *ContainerRequest) HasAnnotationsGroupIds() bool`
+`func (o *ContainerRequest) HasAnnotationsGroups() bool`
 
-HasAnnotationsGroupIds returns a boolean if a field has been set.
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

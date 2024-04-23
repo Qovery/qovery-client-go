@@ -871,6 +871,7 @@ Class | Method | HTTP request | Description
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponseList](docs/SecretResponseList.md)
  - [Service](docs/Service.md)
+ - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
  - [ServicePort](docs/ServicePort.md)
  - [ServicePortRequest](docs/ServicePortRequest.md)

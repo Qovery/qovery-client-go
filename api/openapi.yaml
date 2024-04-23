@@ -15083,13 +15083,8 @@ components:
               after receiving a new commit.
             nullable: true
             type: boolean
-          annotations_group_ids:
-            description: list of id of the annotations groups
-            items:
-              description: id of the annotations group
-              format: uuid
-              type: string
-            type: array
+          annotations_groups:
+            $ref: '#/components/schemas/ServiceAnnotationsRequestList'
         required:
         - healthchecks
         type: object
@@ -15236,6 +15231,20 @@ components:
             $ref: '#/components/schemas/ServicePortRequest_ports_inner'
           type: array
       type: object
+    ServiceAnnotationsRequestList:
+      items:
+        $ref: '#/components/schemas/ServiceAnnotationRequest'
+      type: array
+    ServiceAnnotationRequest:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
     ApplicationRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
@@ -15304,13 +15313,8 @@ components:
               after receiving a new commit.
             nullable: true
             type: boolean
-          annotations_group_ids:
-            description: list of id of the annotations groups
-            items:
-              description: id of the annotations group
-              format: uuid
-              type: string
-            type: array
+          annotations_groups:
+            $ref: '#/components/schemas/ServiceAnnotationsRequestList'
         required:
         - git_repository
         - healthchecks
@@ -17113,13 +17117,8 @@ components:
               \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
             nullable: true
             type: boolean
-          annotations_group_ids:
-            description: list of id of the annotations groups
-            items:
-              description: id of the annotations group
-              format: uuid
-              type: string
-            type: array
+          annotations_groups:
+            $ref: '#/components/schemas/ServiceAnnotationsRequestList'
         required:
         - healthchecks
         - image_name
@@ -17559,9 +17558,9 @@ components:
       example:
         memory: 1024
         accessibility: null
-        annotations_group_ids:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        annotations_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
         cpu: 1250
@@ -17610,12 +17609,9 @@ components:
             \ This field SHOULD NOT be set for container DB."
           example: db.t3.medium
           type: string
-        annotations_group_ids:
-          description: list of id of the annotations groups
+        annotations_groups:
           items:
-            description: id of the annotations group
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/ServiceAnnotationRequest'
           type: array
       type: object
     DatabaseModeEnum:
@@ -17628,9 +17624,9 @@ components:
         mode: null
         memory: 1024
         accessibility: null
-        annotations_group_ids:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        annotations_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
         cpu: 1250
@@ -17684,12 +17680,9 @@ components:
           default: 10
           description: unit is GB
           type: integer
-        annotations_group_ids:
-          description: list of id of the annotations groups
+        annotations_groups:
           items:
-            description: id of the annotations group
-            format: uuid
-            type: string
+            $ref: '#/components/schemas/ServiceAnnotationRequest'
           type: array
       required:
       - mode
@@ -19818,12 +19811,8 @@ components:
               \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
             nullable: true
             type: boolean
-          annotations_group_ids:
-            items:
-              description: id of the annotations group
-              format: uuid
-              type: string
-            type: array
+          annotations_groups:
+            $ref: '#/components/schemas/ServiceAnnotationsRequestList'
         required:
         - healthchecks
         - name

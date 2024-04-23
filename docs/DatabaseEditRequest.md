@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: 100 - CONTAINER   - POSTGRES: 100   - REDIS: 100   - MYSQL: 512   - MONGODB: 256  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] 
 **InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB. | [optional] 
-**AnnotationsGroupIds** | Pointer to **[]string** | list of id of the annotations groups | [optional] 
+**AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -233,30 +233,30 @@ SetInstanceType sets InstanceType field to given value.
 
 HasInstanceType returns a boolean if a field has been set.
 
-### GetAnnotationsGroupIds
+### GetAnnotationsGroups
 
-`func (o *DatabaseEditRequest) GetAnnotationsGroupIds() []string`
+`func (o *DatabaseEditRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`
 
-GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
-### GetAnnotationsGroupIdsOk
+### GetAnnotationsGroupsOk
 
-`func (o *DatabaseEditRequest) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+`func (o *DatabaseEditRequest) GetAnnotationsGroupsOk() (*[]ServiceAnnotationRequest, bool)`
 
-GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAnnotationsGroupIds
+### SetAnnotationsGroups
 
-`func (o *DatabaseEditRequest) SetAnnotationsGroupIds(v []string)`
+`func (o *DatabaseEditRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest)`
 
-SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
 
-### HasAnnotationsGroupIds
+### HasAnnotationsGroups
 
-`func (o *DatabaseEditRequest) HasAnnotationsGroupIds() bool`
+`func (o *DatabaseEditRequest) HasAnnotationsGroups() bool`
 
-HasAnnotationsGroupIds returns a boolean if a field has been set.
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

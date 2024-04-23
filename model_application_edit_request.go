@@ -46,9 +46,8 @@ type ApplicationEditRequest struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
-	// list of id of the annotations groups
-	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 }
 
 // NewApplicationEditRequest instantiates a new ApplicationEditRequest object
@@ -662,36 +661,36 @@ func (o *ApplicationEditRequest) UnsetAutoDeploy() {
 	o.AutoDeploy.Unset()
 }
 
-// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
-func (o *ApplicationEditRequest) GetAnnotationsGroupIds() []string {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
-		var ret []string
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetAnnotationsGroups() []ServiceAnnotationRequest {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret []ServiceAnnotationRequest
 		return ret
 	}
-	return o.AnnotationsGroupIds
+	return o.AnnotationsGroups
 }
 
-// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ApplicationEditRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
+func (o *ApplicationEditRequest) GetAnnotationsGroupsOk() ([]ServiceAnnotationRequest, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
-	return o.AnnotationsGroupIds, true
+	return o.AnnotationsGroups, true
 }
 
-// HasAnnotationsGroupIds returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasAnnotationsGroupIds() bool {
-	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
 		return true
 	}
 
 	return false
 }
 
-// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
-func (o *ApplicationEditRequest) SetAnnotationsGroupIds(v []string) {
-	o.AnnotationsGroupIds = v
+// SetAnnotationsGroups gets a reference to the given []ServiceAnnotationRequest and assigns it to the AnnotationsGroups field.
+func (o *ApplicationEditRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest) {
+	o.AnnotationsGroups = v
 }
 
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
@@ -753,8 +752,8 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-	if !IsNil(o.AnnotationsGroupIds) {
-		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
 }

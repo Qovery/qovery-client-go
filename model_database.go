@@ -39,19 +39,17 @@ type Database struct {
 	// unit is MB. 1024 MB = 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: `100` - CONTAINER   - POSTGRES: `100`   - REDIS: `100`   - MYSQL: `512`   - MONGODB: `256`
 	Memory *int32 `json:"memory,omitempty"`
 	// unit is GB
-	Storage *int32 `json:"storage,omitempty"`
-	// list of id of the annotations groups
-	AnnotationsGroupIds []string        `json:"annotations_group_ids,omitempty"`
-	Environment         ReferenceObject `json:"environment"`
-	Host                *string         `json:"host,omitempty"`
-	Port                *int32          `json:"port,omitempty"`
+	Storage           *int32                                 `json:"storage,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	Environment       ReferenceObject                        `json:"environment"`
+	Host              *string                                `json:"host,omitempty"`
+	Port              *int32                                 `json:"port,omitempty"`
 	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted     *bool                                  `json:"disk_encrypted,omitempty"`
-	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
 }
 
 // NewDatabase instantiates a new Database object
@@ -458,36 +456,36 @@ func (o *Database) SetStorage(v int32) {
 	o.Storage = &v
 }
 
-// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
-func (o *Database) GetAnnotationsGroupIds() []string {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
-		var ret []string
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *Database) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret []OrganizationAnnotationsGroupResponse
 		return ret
 	}
-	return o.AnnotationsGroupIds
+	return o.AnnotationsGroups
 }
 
-// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Database) GetAnnotationsGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
+func (o *Database) GetAnnotationsGroupsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
-	return o.AnnotationsGroupIds, true
+	return o.AnnotationsGroups, true
 }
 
-// HasAnnotationsGroupIds returns a boolean if a field has been set.
-func (o *Database) HasAnnotationsGroupIds() bool {
-	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *Database) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
 		return true
 	}
 
 	return false
 }
 
-// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
-func (o *Database) SetAnnotationsGroupIds(v []string) {
-	o.AnnotationsGroupIds = v
+// SetAnnotationsGroups gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the AnnotationsGroups field.
+func (o *Database) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse) {
+	o.AnnotationsGroups = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -674,38 +672,6 @@ func (o *Database) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
-// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
-func (o *Database) GetAnnotationsGroups() []OrganizationAnnotationsGroupResponse {
-	if o == nil || IsNil(o.AnnotationsGroups) {
-		var ret []OrganizationAnnotationsGroupResponse
-		return ret
-	}
-	return o.AnnotationsGroups
-}
-
-// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *Database) GetAnnotationsGroupsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
-	if o == nil || IsNil(o.AnnotationsGroups) {
-		return nil, false
-	}
-	return o.AnnotationsGroups, true
-}
-
-// HasAnnotationsGroups returns a boolean if a field has been set.
-func (o *Database) HasAnnotationsGroups() bool {
-	if o != nil && !IsNil(o.AnnotationsGroups) {
-		return true
-	}
-
-	return false
-}
-
-// SetAnnotationsGroups gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the AnnotationsGroups field.
-func (o *Database) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse) {
-	o.AnnotationsGroups = v
-}
-
 func (o Database) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -743,8 +709,8 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
-	if !IsNil(o.AnnotationsGroupIds) {
-		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	toSerialize["environment"] = o.Environment
 	if !IsNil(o.Host) {
@@ -761,9 +727,6 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskEncrypted) {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
-	}
-	if !IsNil(o.AnnotationsGroups) {
-		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
 }

@@ -47,9 +47,8 @@ type ContainerRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy NullableBool `json:"auto_deploy,omitempty"`
-	// list of id of the annotations groups
-	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 }
 
 // NewContainerRequest instantiates a new ContainerRequest object
@@ -573,36 +572,36 @@ func (o *ContainerRequest) UnsetAutoDeploy() {
 	o.AutoDeploy.Unset()
 }
 
-// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
-func (o *ContainerRequest) GetAnnotationsGroupIds() []string {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
-		var ret []string
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *ContainerRequest) GetAnnotationsGroups() []ServiceAnnotationRequest {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret []ServiceAnnotationRequest
 		return ret
 	}
-	return o.AnnotationsGroupIds
+	return o.AnnotationsGroups
 }
 
-// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
+func (o *ContainerRequest) GetAnnotationsGroupsOk() ([]ServiceAnnotationRequest, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
-	return o.AnnotationsGroupIds, true
+	return o.AnnotationsGroups, true
 }
 
-// HasAnnotationsGroupIds returns a boolean if a field has been set.
-func (o *ContainerRequest) HasAnnotationsGroupIds() bool {
-	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *ContainerRequest) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
 		return true
 	}
 
 	return false
 }
 
-// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
-func (o *ContainerRequest) SetAnnotationsGroupIds(v []string) {
-	o.AnnotationsGroupIds = v
+// SetAnnotationsGroups gets a reference to the given []ServiceAnnotationRequest and assigns it to the AnnotationsGroups field.
+func (o *ContainerRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest) {
+	o.AnnotationsGroups = v
 }
 
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
@@ -653,8 +652,8 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	if o.AutoDeploy.IsSet() {
 		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
-	if !IsNil(o.AnnotationsGroupIds) {
-		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
 }

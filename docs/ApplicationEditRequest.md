@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
-**AnnotationsGroupIds** | Pointer to **[]string** | list of id of the annotations groups | [optional] 
+**AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -492,30 +492,30 @@ HasAutoDeploy returns a boolean if a field has been set.
 `func (o *ApplicationEditRequest) UnsetAutoDeploy()`
 
 UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
-### GetAnnotationsGroupIds
+### GetAnnotationsGroups
 
-`func (o *ApplicationEditRequest) GetAnnotationsGroupIds() []string`
+`func (o *ApplicationEditRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`
 
-GetAnnotationsGroupIds returns the AnnotationsGroupIds field if non-nil, zero value otherwise.
+GetAnnotationsGroups returns the AnnotationsGroups field if non-nil, zero value otherwise.
 
-### GetAnnotationsGroupIdsOk
+### GetAnnotationsGroupsOk
 
-`func (o *ApplicationEditRequest) GetAnnotationsGroupIdsOk() (*[]string, bool)`
+`func (o *ApplicationEditRequest) GetAnnotationsGroupsOk() (*[]ServiceAnnotationRequest, bool)`
 
-GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field if it's non-nil, zero value otherwise
+GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAnnotationsGroupIds
+### SetAnnotationsGroups
 
-`func (o *ApplicationEditRequest) SetAnnotationsGroupIds(v []string)`
+`func (o *ApplicationEditRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest)`
 
-SetAnnotationsGroupIds sets AnnotationsGroupIds field to given value.
+SetAnnotationsGroups sets AnnotationsGroups field to given value.
 
-### HasAnnotationsGroupIds
+### HasAnnotationsGroups
 
-`func (o *ApplicationEditRequest) HasAnnotationsGroupIds() bool`
+`func (o *ApplicationEditRequest) HasAnnotationsGroups() bool`
 
-HasAnnotationsGroupIds returns a boolean if a field has been set.
+HasAnnotationsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

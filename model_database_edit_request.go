@@ -33,9 +33,8 @@ type DatabaseEditRequest struct {
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
-	InstanceType *string `json:"instance_type,omitempty"`
-	// list of id of the annotations groups
-	AnnotationsGroupIds []string `json:"annotations_group_ids,omitempty"`
+	InstanceType      *string                    `json:"instance_type,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 }
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
@@ -319,36 +318,36 @@ func (o *DatabaseEditRequest) SetInstanceType(v string) {
 	o.InstanceType = &v
 }
 
-// GetAnnotationsGroupIds returns the AnnotationsGroupIds field value if set, zero value otherwise.
-func (o *DatabaseEditRequest) GetAnnotationsGroupIds() []string {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
-		var ret []string
+// GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
+func (o *DatabaseEditRequest) GetAnnotationsGroups() []ServiceAnnotationRequest {
+	if o == nil || IsNil(o.AnnotationsGroups) {
+		var ret []ServiceAnnotationRequest
 		return ret
 	}
-	return o.AnnotationsGroupIds
+	return o.AnnotationsGroups
 }
 
-// GetAnnotationsGroupIdsOk returns a tuple with the AnnotationsGroupIds field value if set, nil otherwise
+// GetAnnotationsGroupsOk returns a tuple with the AnnotationsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DatabaseEditRequest) GetAnnotationsGroupIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.AnnotationsGroupIds) {
+func (o *DatabaseEditRequest) GetAnnotationsGroupsOk() ([]ServiceAnnotationRequest, bool) {
+	if o == nil || IsNil(o.AnnotationsGroups) {
 		return nil, false
 	}
-	return o.AnnotationsGroupIds, true
+	return o.AnnotationsGroups, true
 }
 
-// HasAnnotationsGroupIds returns a boolean if a field has been set.
-func (o *DatabaseEditRequest) HasAnnotationsGroupIds() bool {
-	if o != nil && !IsNil(o.AnnotationsGroupIds) {
+// HasAnnotationsGroups returns a boolean if a field has been set.
+func (o *DatabaseEditRequest) HasAnnotationsGroups() bool {
+	if o != nil && !IsNil(o.AnnotationsGroups) {
 		return true
 	}
 
 	return false
 }
 
-// SetAnnotationsGroupIds gets a reference to the given []string and assigns it to the AnnotationsGroupIds field.
-func (o *DatabaseEditRequest) SetAnnotationsGroupIds(v []string) {
-	o.AnnotationsGroupIds = v
+// SetAnnotationsGroups gets a reference to the given []ServiceAnnotationRequest and assigns it to the AnnotationsGroups field.
+func (o *DatabaseEditRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest) {
+	o.AnnotationsGroups = v
 }
 
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
@@ -385,8 +384,8 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InstanceType) {
 		toSerialize["instance_type"] = o.InstanceType
 	}
-	if !IsNil(o.AnnotationsGroupIds) {
-		toSerialize["annotations_group_ids"] = o.AnnotationsGroupIds
+	if !IsNil(o.AnnotationsGroups) {
+		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
 }
