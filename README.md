@@ -86,8 +86,6 @@ Class | Method | HTTP request | Description
 *ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsAPI* | [**RedeployApplication**](docs/ApplicationActionsAPI.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
 *ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
-*ApplicationAnnotationsGroupAPI* | [**AddAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#addannotationsgrouptoapplication) | **Post** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Add annotations group to application
-*ApplicationAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToApplication**](docs/ApplicationAnnotationsGroupAPI.md#deleteannotationsgrouptoapplication) | **Delete** /application/{applicationId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to application
 *ApplicationConfigurationAPI* | [**EditAdvancedSettings**](docs/ApplicationConfigurationAPI.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
@@ -199,8 +197,6 @@ Class | Method | HTTP request | Description
 *ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
 *ContainerActionsAPI* | [**RedeployContainer**](docs/ContainerActionsAPI.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
 *ContainerActionsAPI* | [**StopContainer**](docs/ContainerActionsAPI.md#stopcontainer) | **Post** /container/{containerId}/stop | Stop container
-*ContainerAnnotationsGroupAPI* | [**AddAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#addannotationsgrouptocontainer) | **Post** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Add annotations group to container
-*ContainerAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToContainer**](docs/ContainerAnnotationsGroupAPI.md#deleteannotationsgrouptocontainer) | **Delete** /container/{containerId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to container
 *ContainerConfigurationAPI* | [**EditContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#editcontaineradvancedsettings) | **Put** /container/{containerId}/advancedSettings | Edit advanced settings
 *ContainerConfigurationAPI* | [**EditContainerNetwork**](docs/ContainerConfigurationAPI.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
 *ContainerConfigurationAPI* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
@@ -253,8 +249,6 @@ Class | Method | HTTP request | Description
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsAPI* | [**RedeployDatabase**](docs/DatabaseActionsAPI.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
 *DatabaseActionsAPI* | [**StopDatabase**](docs/DatabaseActionsAPI.md#stopdatabase) | **Post** /database/{databaseId}/stop | Stop database
-*DatabaseAnnotationsGroupAPI* | [**AddAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#addannotationsgrouptodatabase) | **Post** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Add annotations group to database
-*DatabaseAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToDatabase**](docs/DatabaseAnnotationsGroupAPI.md#deleteannotationsgrouptodatabase) | **Delete** /database/{databaseId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to database
 *DatabaseApplicationAPI* | [**ListDatabaseApplication**](docs/DatabaseApplicationAPI.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationAPI* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationAPI.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
@@ -362,8 +356,6 @@ Class | Method | HTTP request | Description
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
 *JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
-*JobAnnotationsGroupAPI* | [**AddAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#addannotationsgrouptojob) | **Post** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Add annotations group to job
-*JobAnnotationsGroupAPI* | [**DeleteAnnotationsGroupToJob**](docs/JobAnnotationsGroupAPI.md#deleteannotationsgrouptojob) | **Delete** /job/{jobId}/annotationsGroup/{annotationsGroupId} | Delete annotations group to job
 *JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments

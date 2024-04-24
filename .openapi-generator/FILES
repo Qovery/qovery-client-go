@@ -5,7 +5,6 @@ README.md
 api/openapi.yaml
 api_account_info.go
 api_application_actions.go
-api_application_annotations_group.go
 api_application_configuration.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
@@ -20,7 +19,6 @@ api_cloud_provider.go
 api_cloud_provider_credentials.go
 api_clusters.go
 api_container_actions.go
-api_container_annotations_group.go
 api_container_configuration.go
 api_container_custom_domain.go
 api_container_deployment_history.go
@@ -32,7 +30,6 @@ api_container_secret.go
 api_containers.go
 api_custom_domain.go
 api_database_actions.go
-api_database_annotations_group.go
 api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
@@ -59,7 +56,6 @@ api_helm_main_calls.go
 api_helm_repositories.go
 api_helms.go
 api_job_actions.go
-api_job_annotations_group.go
 api_job_configuration.go
 api_job_deployment_history.go
 api_job_deployment_restriction.go
@@ -95,7 +91,6 @@ docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
 docs/ApplicationActionsAPI.md
 docs/ApplicationAdvancedSettings.md
-docs/ApplicationAnnotationsGroupAPI.md
 docs/ApplicationConfigurationAPI.md
 docs/ApplicationDeploymentHistoryAPI.md
 docs/ApplicationDeploymentRestriction.md
@@ -195,7 +190,6 @@ docs/CommunityUsage.md
 docs/CompanySizeEnum.md
 docs/ContainerActionsAPI.md
 docs/ContainerAdvancedSettings.md
-docs/ContainerAnnotationsGroupAPI.md
 docs/ContainerConfigurationAPI.md
 docs/ContainerCustomDomainAPI.md
 docs/ContainerDeployRequest.md
@@ -240,7 +234,6 @@ docs/CustomDomainStatusEnum.md
 docs/Database.md
 docs/DatabaseAccessibilityEnum.md
 docs/DatabaseActionsAPI.md
-docs/DatabaseAnnotationsGroupAPI.md
 docs/DatabaseApplicationAPI.md
 docs/DatabaseConfiguration.md
 docs/DatabaseConfigurationResponseList.md
@@ -405,7 +398,6 @@ docs/InvoiceResponseList.md
 docs/InvoiceStatusEnum.md
 docs/JobActionsAPI.md
 docs/JobAdvancedSettings.md
-docs/JobAnnotationsGroupAPI.md
 docs/JobConfigurationAPI.md
 docs/JobDeployRequest.md
 docs/JobDeploymentHistoryAPI.md
@@ -1043,7 +1035,6 @@ model_weekday_enum.go
 response.go
 test/api_account_info_test.go
 test/api_application_actions_test.go
-test/api_application_annotations_group_test.go
 test/api_application_configuration_test.go
 test/api_application_deployment_history_test.go
 test/api_application_deployment_restriction_test.go
@@ -1058,7 +1049,6 @@ test/api_cloud_provider_credentials_test.go
 test/api_cloud_provider_test.go
 test/api_clusters_test.go
 test/api_container_actions_test.go
-test/api_container_annotations_group_test.go
 test/api_container_configuration_test.go
 test/api_container_custom_domain_test.go
 test/api_container_deployment_history_test.go
@@ -1070,7 +1060,6 @@ test/api_container_secret_test.go
 test/api_containers_test.go
 test/api_custom_domain_test.go
 test/api_database_actions_test.go
-test/api_database_annotations_group_test.go
 test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
@@ -1097,7 +1086,6 @@ test/api_helm_main_calls_test.go
 test/api_helm_repositories_test.go
 test/api_helms_test.go
 test/api_job_actions_test.go
-test/api_job_annotations_group_test.go
 test/api_job_configuration_test.go
 test/api_job_deployment_history_test.go
 test/api_job_deployment_restriction_test.go
