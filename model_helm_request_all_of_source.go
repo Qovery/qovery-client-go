@@ -41,7 +41,7 @@ func (dst *HelmRequestAllOfSource) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into HelmRequestAllOfSourceOneOf
-	err = newStrictDecoder(data).Decode(&dst.HelmRequestAllOfSourceOneOf)
+	err = json.Unmarshal(data, &dst.HelmRequestAllOfSourceOneOf)
 	if err == nil {
 		jsonHelmRequestAllOfSourceOneOf, _ := json.Marshal(dst.HelmRequestAllOfSourceOneOf)
 		if string(jsonHelmRequestAllOfSourceOneOf) == "{}" { // empty struct
@@ -54,7 +54,7 @@ func (dst *HelmRequestAllOfSource) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into HelmRequestAllOfSourceOneOf1
-	err = newStrictDecoder(data).Decode(&dst.HelmRequestAllOfSourceOneOf1)
+	err = json.Unmarshal(data, &dst.HelmRequestAllOfSourceOneOf1)
 	if err == nil {
 		jsonHelmRequestAllOfSourceOneOf1, _ := json.Marshal(dst.HelmRequestAllOfSourceOneOf1)
 		if string(jsonHelmRequestAllOfSourceOneOf1) == "{}" { // empty struct

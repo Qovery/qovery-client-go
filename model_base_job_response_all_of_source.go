@@ -41,7 +41,7 @@ func (dst *BaseJobResponseAllOfSource) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into BaseJobResponseAllOfSourceOneOf
-	err = newStrictDecoder(data).Decode(&dst.BaseJobResponseAllOfSourceOneOf)
+	err = json.Unmarshal(data, &dst.BaseJobResponseAllOfSourceOneOf)
 	if err == nil {
 		jsonBaseJobResponseAllOfSourceOneOf, _ := json.Marshal(dst.BaseJobResponseAllOfSourceOneOf)
 		if string(jsonBaseJobResponseAllOfSourceOneOf) == "{}" { // empty struct
@@ -54,7 +54,7 @@ func (dst *BaseJobResponseAllOfSource) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into BaseJobResponseAllOfSourceOneOf1
-	err = newStrictDecoder(data).Decode(&dst.BaseJobResponseAllOfSourceOneOf1)
+	err = json.Unmarshal(data, &dst.BaseJobResponseAllOfSourceOneOf1)
 	if err == nil {
 		jsonBaseJobResponseAllOfSourceOneOf1, _ := json.Marshal(dst.BaseJobResponseAllOfSourceOneOf1)
 		if string(jsonBaseJobResponseAllOfSourceOneOf1) == "{}" { // empty struct

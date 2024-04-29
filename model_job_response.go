@@ -39,44 +39,62 @@ func LifecycleJobResponseAsJobResponse(v *LifecycleJobResponse) JobResponse {
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *JobResponse) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into CronJobResponse
-	err = newStrictDecoder(data).Decode(&dst.CronJobResponse)
-	if err == nil {
-		jsonCronJobResponse, _ := json.Marshal(dst.CronJobResponse)
-		if string(jsonCronJobResponse) == "{}" { // empty struct
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'CRON'
+	if jsonDict["job_type"] == "CRON" {
+		// try to unmarshal JSON data into CronJobResponse
+		err = json.Unmarshal(data, &dst.CronJobResponse)
+		if err == nil {
+			return nil // data stored in dst.CronJobResponse, return on the first match
+		} else {
 			dst.CronJobResponse = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JobResponse as CronJobResponse: %s", err.Error())
 		}
-	} else {
-		dst.CronJobResponse = nil
 	}
 
-	// try to unmarshal data into LifecycleJobResponse
-	err = newStrictDecoder(data).Decode(&dst.LifecycleJobResponse)
-	if err == nil {
-		jsonLifecycleJobResponse, _ := json.Marshal(dst.LifecycleJobResponse)
-		if string(jsonLifecycleJobResponse) == "{}" { // empty struct
+	// check if the discriminator value is 'CronJobResponse'
+	if jsonDict["job_type"] == "CronJobResponse" {
+		// try to unmarshal JSON data into CronJobResponse
+		err = json.Unmarshal(data, &dst.CronJobResponse)
+		if err == nil {
+			return nil // data stored in dst.CronJobResponse, return on the first match
+		} else {
+			dst.CronJobResponse = nil
+			return fmt.Errorf("failed to unmarshal JobResponse as CronJobResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'LIFECYCLE'
+	if jsonDict["job_type"] == "LIFECYCLE" {
+		// try to unmarshal JSON data into LifecycleJobResponse
+		err = json.Unmarshal(data, &dst.LifecycleJobResponse)
+		if err == nil {
+			return nil // data stored in dst.LifecycleJobResponse, return on the first match
+		} else {
 			dst.LifecycleJobResponse = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal JobResponse as LifecycleJobResponse: %s", err.Error())
 		}
-	} else {
-		dst.LifecycleJobResponse = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.CronJobResponse = nil
-		dst.LifecycleJobResponse = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(JobResponse)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(JobResponse)")
+	// check if the discriminator value is 'LifecycleJobResponse'
+	if jsonDict["job_type"] == "LifecycleJobResponse" {
+		// try to unmarshal JSON data into LifecycleJobResponse
+		err = json.Unmarshal(data, &dst.LifecycleJobResponse)
+		if err == nil {
+			return nil // data stored in dst.LifecycleJobResponse, return on the first match
+		} else {
+			dst.LifecycleJobResponse = nil
+			return fmt.Errorf("failed to unmarshal JobResponse as LifecycleJobResponse: %s", err.Error())
+		}
 	}
+
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON

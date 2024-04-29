@@ -62,7 +62,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 
 	match := 0
 	// try to unmarshal data into ClusterFeatureAwsExistingVpc
-	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureAwsExistingVpc)
+	err = json.Unmarshal(data, &dst.ClusterFeatureAwsExistingVpc)
 	if err == nil {
 		jsonClusterFeatureAwsExistingVpc, _ := json.Marshal(dst.ClusterFeatureAwsExistingVpc)
 		if string(jsonClusterFeatureAwsExistingVpc) == "{}" { // empty struct
@@ -75,7 +75,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into ClusterFeatureGcpExistingVpc
-	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureGcpExistingVpc)
+	err = json.Unmarshal(data, &dst.ClusterFeatureGcpExistingVpc)
 	if err == nil {
 		jsonClusterFeatureGcpExistingVpc, _ := json.Marshal(dst.ClusterFeatureGcpExistingVpc)
 		if string(jsonClusterFeatureGcpExistingVpc) == "{}" { // empty struct
@@ -88,10 +88,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into Bool
-	err = newStrictDecoder(data).Decode(&dst.Bool)
+	err = json.Unmarshal(data, &dst.Bool)
 	if err == nil {
-		jsonBool, _ := json.Marshal(dst.Bool)
-		if string(jsonBool) == "{}" { // empty struct
+		jsonbool, _ := json.Marshal(dst.Bool)
+		if string(jsonbool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
 			match++
@@ -101,10 +101,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into String
-	err = newStrictDecoder(data).Decode(&dst.String)
+	err = json.Unmarshal(data, &dst.String)
 	if err == nil {
-		jsonString, _ := json.Marshal(dst.String)
-		if string(jsonString) == "{}" { // empty struct
+		jsonstring, _ := json.Marshal(dst.String)
+		if string(jsonstring) == "{}" { // empty struct
 			dst.String = nil
 		} else {
 			match++
