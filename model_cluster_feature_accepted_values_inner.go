@@ -41,10 +41,10 @@ func (dst *ClusterFeatureAcceptedValuesInner) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into Bool
-	err = json.Unmarshal(data, &dst.Bool)
+	err = newStrictDecoder(data).Decode(&dst.Bool)
 	if err == nil {
-		jsonbool, _ := json.Marshal(dst.Bool)
-		if string(jsonbool) == "{}" { // empty struct
+		jsonBool, _ := json.Marshal(dst.Bool)
+		if string(jsonBool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
 			match++
@@ -54,10 +54,10 @@ func (dst *ClusterFeatureAcceptedValuesInner) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into String
-	err = json.Unmarshal(data, &dst.String)
+	err = newStrictDecoder(data).Decode(&dst.String)
 	if err == nil {
-		jsonstring, _ := json.Marshal(dst.String)
-		if string(jsonstring) == "{}" { // empty struct
+		jsonString, _ := json.Marshal(dst.String)
+		if string(jsonString) == "{}" { // empty struct
 			dst.String = nil
 		} else {
 			match++
