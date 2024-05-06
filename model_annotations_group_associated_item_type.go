@@ -21,22 +21,24 @@ type AnnotationsGroupAssociatedItemType string
 
 // List of AnnotationsGroupAssociatedItemType
 const (
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_APPLICATION AnnotationsGroupAssociatedItemType = "APPLICATION,"
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_DATABASE    AnnotationsGroupAssociatedItemType = "DATABASE,"
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_CONTAINER   AnnotationsGroupAssociatedItemType = "CONTAINER,"
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_JOB         AnnotationsGroupAssociatedItemType = "JOB,"
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_ENVIRONMENT AnnotationsGroupAssociatedItemType = "ENVIRONMENT,"
-	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_CLUSTER     AnnotationsGroupAssociatedItemType = "CLUSTER,"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_APPLICATION AnnotationsGroupAssociatedItemType = "APPLICATION"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_DATABASE    AnnotationsGroupAssociatedItemType = "DATABASE"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_CONTAINER   AnnotationsGroupAssociatedItemType = "CONTAINER"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_LIFECYLE    AnnotationsGroupAssociatedItemType = "LIFECYLE"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_ENVIRONMENT AnnotationsGroupAssociatedItemType = "ENVIRONMENT"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_CLUSTER     AnnotationsGroupAssociatedItemType = "CLUSTER"
+	ANNOTATIONSGROUPASSOCIATEDITEMTYPE_CRON        AnnotationsGroupAssociatedItemType = "CRON"
 )
 
 // All allowed values of AnnotationsGroupAssociatedItemType enum
 var AllowedAnnotationsGroupAssociatedItemTypeEnumValues = []AnnotationsGroupAssociatedItemType{
-	"APPLICATION,",
-	"DATABASE,",
-	"CONTAINER,",
-	"JOB,",
-	"ENVIRONMENT,",
-	"CLUSTER,",
+	"APPLICATION",
+	"DATABASE",
+	"CONTAINER",
+	"LIFECYLE",
+	"ENVIRONMENT",
+	"CLUSTER",
+	"CRON",
 }
 
 func (v *AnnotationsGroupAssociatedItemType) UnmarshalJSON(src []byte) error {

@@ -781,6 +781,7 @@ Class | Method | HTTP request | Description
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
  - [OrganizationAnnotationsGroupCreateRequest](docs/OrganizationAnnotationsGroupCreateRequest.md)
+ - [OrganizationAnnotationsGroupEnrichedResponse](docs/OrganizationAnnotationsGroupEnrichedResponse.md)
  - [OrganizationAnnotationsGroupResponse](docs/OrganizationAnnotationsGroupResponse.md)
  - [OrganizationAnnotationsGroupScopeEnum](docs/OrganizationAnnotationsGroupScopeEnum.md)
  - [OrganizationApiToken](docs/OrganizationApiToken.md)

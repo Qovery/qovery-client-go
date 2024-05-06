@@ -20,7 +20,7 @@ var _ MappedNullable = &ListOrganizationAnnotationsGroup200Response{}
 
 // ListOrganizationAnnotationsGroup200Response struct for ListOrganizationAnnotationsGroup200Response
 type ListOrganizationAnnotationsGroup200Response struct {
-	Results []OrganizationAnnotationsGroupResponse `json:"results,omitempty"`
+	Results []OrganizationAnnotationsGroupEnrichedResponse `json:"results,omitempty"`
 }
 
 // NewListOrganizationAnnotationsGroup200Response instantiates a new ListOrganizationAnnotationsGroup200Response object
@@ -41,9 +41,9 @@ func NewListOrganizationAnnotationsGroup200ResponseWithDefaults() *ListOrganizat
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ListOrganizationAnnotationsGroup200Response) GetResults() []OrganizationAnnotationsGroupResponse {
+func (o *ListOrganizationAnnotationsGroup200Response) GetResults() []OrganizationAnnotationsGroupEnrichedResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret []OrganizationAnnotationsGroupResponse
+		var ret []OrganizationAnnotationsGroupEnrichedResponse
 		return ret
 	}
 	return o.Results
@@ -51,7 +51,7 @@ func (o *ListOrganizationAnnotationsGroup200Response) GetResults() []Organizatio
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ListOrganizationAnnotationsGroup200Response) GetResultsOk() ([]OrganizationAnnotationsGroupResponse, bool) {
+func (o *ListOrganizationAnnotationsGroup200Response) GetResultsOk() ([]OrganizationAnnotationsGroupEnrichedResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *ListOrganizationAnnotationsGroup200Response) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []OrganizationAnnotationsGroupResponse and assigns it to the Results field.
-func (o *ListOrganizationAnnotationsGroup200Response) SetResults(v []OrganizationAnnotationsGroupResponse) {
+// SetResults gets a reference to the given []OrganizationAnnotationsGroupEnrichedResponse and assigns it to the Results field.
+func (o *ListOrganizationAnnotationsGroup200Response) SetResults(v []OrganizationAnnotationsGroupEnrichedResponse) {
 	o.Results = v
 }
 

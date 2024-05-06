@@ -21081,10 +21081,6 @@ components:
             $ref: '#/components/schemas/OrganizationWebhookResponse'
           type: array
       type: object
-    OrganizationAnnotationsGroupResponseList:
-      items:
-        $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
-      type: array
     OrganizationAnnotationsGroupCreateRequest:
       example:
         name: name
@@ -21113,6 +21109,10 @@ components:
       - name
       - scopes
       type: object
+    OrganizationAnnotationsGroupResponseList:
+      items:
+        $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
+      type: array
     OrganizationAnnotationsGroupResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -21175,12 +21175,13 @@ components:
     AnnotationsGroupAssociatedItemType:
       description: Annotations Group Associated Item Type
       enum:
-      - "APPLICATION,"
-      - "DATABASE,"
-      - "CONTAINER,"
-      - "JOB,"
-      - "ENVIRONMENT,"
-      - "CLUSTER,"
+      - APPLICATION
+      - DATABASE
+      - CONTAINER
+      - LIFECYLE
+      - ENVIRONMENT
+      - CLUSTER
+      - CRON
       type: string
     Annotation:
       example:
@@ -22553,6 +22554,47 @@ components:
             delete the report before it expires
           type: string
       type: object
+    OrganizationAnnotationsGroupEnrichedResponseList:
+      items:
+        $ref: '#/components/schemas/OrganizationAnnotationsGroupEnrichedResponse'
+      title: OrganizationAnnotationsGroupEnrichedResponseList
+      type: array
+      x-stoplight:
+        id: 2tbiuqncqaqaw
+    OrganizationAnnotationsGroupEnrichedResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+            x-stoplight:
+              id: pjys12dlmqw9c
+          annotations:
+            items:
+              $ref: '#/components/schemas/Annotation'
+            type: array
+            x-stoplight:
+              id: 4yn29zdqeb0og
+          scopes:
+            items:
+              $ref: '#/components/schemas/OrganizationAnnotationsGroupScopeEnum'
+            type: array
+            x-stoplight:
+              id: h8qu8e8yp5dh3
+          associated_items_count:
+            type: integer
+            x-stoplight:
+              id: q71gum8nqmj8p
+        required:
+        - annotations
+        - name
+        - scopes
+        type: object
+        x-stoplight:
+          id: 2auhw8xgz67rj
+      title: OrganizationAnnotationsGroupEnrichedResponse
+      x-stoplight:
+        id: edjpmiyq8n5nt
     deleteMember_request:
       properties:
         user_id:
@@ -22569,8 +22611,11 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/OrganizationAnnotationsGroupResponse'
+            $ref: '#/components/schemas/OrganizationAnnotationsGroupEnrichedResponse'
+          title: OrganizationAnnotationsGroupEnrichedResponseList
           type: array
+          x-stoplight:
+            id: 2tbiuqncqaqaw
       type: object
     listContainerDeploymentHistory_200_response:
       allOf:

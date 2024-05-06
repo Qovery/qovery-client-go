@@ -3,17 +3,19 @@
 ## Enum
 
 
-* `APPLICATION` (value: `"APPLICATION,"`)
+* `APPLICATION` (value: `"APPLICATION"`)
 
-* `DATABASE` (value: `"DATABASE,"`)
+* `DATABASE` (value: `"DATABASE"`)
 
-* `CONTAINER` (value: `"CONTAINER,"`)
+* `CONTAINER` (value: `"CONTAINER"`)
 
-* `JOB` (value: `"JOB,"`)
+* `LIFECYLE` (value: `"LIFECYLE"`)
 
-* `ENVIRONMENT` (value: `"ENVIRONMENT,"`)
+* `ENVIRONMENT` (value: `"ENVIRONMENT"`)
 
-* `CLUSTER` (value: `"CLUSTER,"`)
+* `CLUSTER` (value: `"CLUSTER"`)
+
+* `CRON` (value: `"CRON"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

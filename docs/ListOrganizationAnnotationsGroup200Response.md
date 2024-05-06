@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]OrganizationAnnotationsGroupEnrichedResponse**](OrganizationAnnotationsGroupEnrichedResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ListOrganizationAnnotationsGroup200Response) GetResults() []OrganizationAnnotationsGroupResponse`
+`func (o *ListOrganizationAnnotationsGroup200Response) GetResults() []OrganizationAnnotationsGroupEnrichedResponse`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ListOrganizationAnnotationsGroup200Response) GetResultsOk() (*[]OrganizationAnnotationsGroupResponse, bool)`
+`func (o *ListOrganizationAnnotationsGroup200Response) GetResultsOk() (*[]OrganizationAnnotationsGroupEnrichedResponse, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ListOrganizationAnnotationsGroup200Response) SetResults(v []OrganizationAnnotationsGroupResponse)`
+`func (o *ListOrganizationAnnotationsGroup200Response) SetResults(v []OrganizationAnnotationsGroupEnrichedResponse)`
 
 SetResults sets Results field to given value.
 
