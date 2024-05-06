@@ -21178,7 +21178,7 @@ components:
       - APPLICATION
       - DATABASE
       - CONTAINER
-      - LIFECYLE
+      - LIFECYCLE
       - ENVIRONMENT
       - CLUSTER
       - CRON

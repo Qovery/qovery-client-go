@@ -9,7 +9,7 @@
 
 * `CONTAINER` (value: `"CONTAINER"`)
 
-* `LIFECYLE` (value: `"LIFECYLE"`)
+* `LIFECYCLE` (value: `"LIFECYCLE"`)
 
 * `ENVIRONMENT` (value: `"ENVIRONMENT"`)
 
