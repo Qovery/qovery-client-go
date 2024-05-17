@@ -18,7 +18,7 @@ import (
 // checks if the ContainerRegistryRequestConfig type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ContainerRegistryRequestConfig{}
 
-// ContainerRegistryRequestConfig This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `DOCKER_HUB` needs in the config (optional): username, password * `GITHUB_CR` needs in the config (optional): username, password * `GITLAB_CR` needs in the config (optional): username, password * `PUBLIC_ECR` doesn't need credentials info * `GENERIC_CR` needs in the config (optional): username, password * `DOCR` is not supported anymore
+// ContainerRegistryRequestConfig This field is dependent of the container registry kind: * `ECR` needs in the config: region, access_key_id, secret_access_key * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key * `GCP_ARTIFACT_REGISTRY` needs in the config: region, json_credentials * `DOCKER_HUB` needs in the config (optional): username, password * `GITHUB_CR` needs in the config (optional): username, password * `GITLAB_CR` needs in the config (optional): username, password * `PUBLIC_ECR` doesn't need credentials info * `GENERIC_CR` needs in the config (optional): username, password * `DOCR` is not supported anymore
 type ContainerRegistryRequestConfig struct {
 	// Required if kind is `ECR` or `PUBLIC_ECR`
 	AccessKeyId *string `json:"access_key_id,omitempty"`
@@ -30,6 +30,8 @@ type ContainerRegistryRequestConfig struct {
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
 	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY`
+	JsonCredentials *string `json:"json_credentials,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Username *string `json:"username,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
@@ -213,6 +215,38 @@ func (o *ContainerRegistryRequestConfig) SetScalewaySecretKey(v string) {
 	o.ScalewaySecretKey = &v
 }
 
+// GetJsonCredentials returns the JsonCredentials field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetJsonCredentials() string {
+	if o == nil || IsNil(o.JsonCredentials) {
+		var ret string
+		return ret
+	}
+	return *o.JsonCredentials
+}
+
+// GetJsonCredentialsOk returns a tuple with the JsonCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetJsonCredentialsOk() (*string, bool) {
+	if o == nil || IsNil(o.JsonCredentials) {
+		return nil, false
+	}
+	return o.JsonCredentials, true
+}
+
+// HasJsonCredentials returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasJsonCredentials() bool {
+	if o != nil && !IsNil(o.JsonCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonCredentials gets a reference to the given string and assigns it to the JsonCredentials field.
+func (o *ContainerRegistryRequestConfig) SetJsonCredentials(v string) {
+	o.JsonCredentials = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -301,6 +335,9 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.ScalewaySecretKey) {
 		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
+	}
+	if !IsNil(o.JsonCredentials) {
+		toSerialize["json_credentials"] = o.JsonCredentials
 	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username

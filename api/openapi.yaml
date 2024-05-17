@@ -16630,6 +16630,7 @@ components:
         config:
           access_key_id: access_key_id
           password: password
+          json_credentials: json_credentials
           secret_access_key: secret_access_key
           scaleway_secret_key: scaleway_secret_key
           region: region
@@ -22925,6 +22926,7 @@ components:
         This field is dependent of the container registry kind:
         * `ECR` needs in the config: region, access_key_id, secret_access_key
         * `SCALEWAY_CR` needs in the config: region, scaleway_access_key, scaleway_secret_key
+        * `GCP_ARTIFACT_REGISTRY` needs in the config: region, json_credentials
         * `DOCKER_HUB` needs in the config (optional): username, password
         * `GITHUB_CR` needs in the config (optional): username, password
         * `GITLAB_CR` needs in the config (optional): username, password
@@ -22934,6 +22936,7 @@ components:
       example:
         access_key_id: access_key_id
         password: password
+        json_credentials: json_credentials
         secret_access_key: secret_access_key
         scaleway_secret_key: scaleway_secret_key
         region: region
@@ -22954,6 +22957,9 @@ components:
           type: string
         scaleway_secret_key:
           description: Required if kind is `SCALEWAY_CR`
+          type: string
+        json_credentials:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY`
           type: string
         username:
           description: "optional, for kind `DOCKER_HUB`  \nWe encourage you to set\
