@@ -15547,6 +15547,9 @@ components:
             type: string
           is_default:
             type: boolean
+          is_demo:
+            description: specific flag to indicate that this cluster is a demo one
+            type: boolean
           production:
             description: specific flag to indicate that this cluster is a production
               one
@@ -15959,7 +15962,6 @@ components:
         min_running_nodes: 0
         disk_size: 50
         cloud_provider: null
-        kubeconfig: kubeconfig
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: null
@@ -16017,10 +16019,6 @@ components:
           items:
             type: string
           type: array
-        kubeconfig:
-          description: If the cluster is a self managed one. The kubeconfig to use
-            to connect to it
-          type: string
         features:
           items:
             $ref: '#/components/schemas/ClusterRequest_features_inner'

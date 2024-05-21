@@ -47,6 +47,8 @@ type Cluster struct {
 	HasAccess                  *bool             `json:"has_access,omitempty"`
 	Version                    *string           `json:"version,omitempty"`
 	IsDefault                  *bool             `json:"is_default,omitempty"`
+	// specific flag to indicate that this cluster is a demo one
+	IsDemo *bool `json:"is_demo,omitempty"`
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
@@ -686,6 +688,38 @@ func (o *Cluster) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetIsDemo returns the IsDemo field value if set, zero value otherwise.
+func (o *Cluster) GetIsDemo() bool {
+	if o == nil || IsNil(o.IsDemo) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDemo
+}
+
+// GetIsDemoOk returns a tuple with the IsDemo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetIsDemoOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDemo) {
+		return nil, false
+	}
+	return o.IsDemo, true
+}
+
+// HasIsDemo returns a boolean if a field has been set.
+func (o *Cluster) HasIsDemo() bool {
+	if o != nil && !IsNil(o.IsDemo) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDemo gets a reference to the given bool and assigns it to the IsDemo field.
+func (o *Cluster) SetIsDemo(v bool) {
+	o.IsDemo = &v
+}
+
 // GetProduction returns the Production field value if set, zero value otherwise.
 func (o *Cluster) GetProduction() bool {
 	if o == nil || IsNil(o.Production) {
@@ -871,6 +905,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
+	}
+	if !IsNil(o.IsDemo) {
+		toSerialize["is_demo"] = o.IsDemo
 	}
 	if !IsNil(o.Production) {
 		toSerialize["production"] = o.Production

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **HasAccess** | Pointer to **bool** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
+**IsDemo** | Pointer to **bool** | specific flag to indicate that this cluster is a demo one | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
@@ -517,6 +518,31 @@ SetIsDefault sets IsDefault field to given value.
 `func (o *Cluster) HasIsDefault() bool`
 
 HasIsDefault returns a boolean if a field has been set.
+
+### GetIsDemo
+
+`func (o *Cluster) GetIsDemo() bool`
+
+GetIsDemo returns the IsDemo field if non-nil, zero value otherwise.
+
+### GetIsDemoOk
+
+`func (o *Cluster) GetIsDemoOk() (*bool, bool)`
+
+GetIsDemoOk returns a tuple with the IsDemo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDemo
+
+`func (o *Cluster) SetIsDemo(v bool)`
+
+SetIsDemo sets IsDemo field to given value.
+
+### HasIsDemo
+
+`func (o *Cluster) HasIsDemo() bool`
+
+HasIsDemo returns a boolean if a field has been set.
 
 ### GetProduction
 

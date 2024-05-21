@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] [default to KUBERNETESENUM_MANAGED]
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
-**Kubeconfig** | Pointer to **string** | If the cluster is a self managed one. The kubeconfig to use to connect to it | [optional] 
 **Features** | Pointer to [**[]ClusterRequestFeaturesInner**](ClusterRequestFeaturesInner.md) |  | [optional] 
 
 ## Methods
@@ -322,31 +321,6 @@ SetSshKeys sets SshKeys field to given value.
 `func (o *ClusterRequest) HasSshKeys() bool`
 
 HasSshKeys returns a boolean if a field has been set.
-
-### GetKubeconfig
-
-`func (o *ClusterRequest) GetKubeconfig() string`
-
-GetKubeconfig returns the Kubeconfig field if non-nil, zero value otherwise.
-
-### GetKubeconfigOk
-
-`func (o *ClusterRequest) GetKubeconfigOk() (*string, bool)`
-
-GetKubeconfigOk returns a tuple with the Kubeconfig field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKubeconfig
-
-`func (o *ClusterRequest) SetKubeconfig(v string)`
-
-SetKubeconfig sets Kubeconfig field to given value.
-
-### HasKubeconfig
-
-`func (o *ClusterRequest) HasKubeconfig() bool`
-
-HasKubeconfig returns a boolean if a field has been set.
 
 ### GetFeatures
 
