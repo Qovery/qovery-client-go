@@ -269,6 +269,129 @@ func (a *CloudProviderCredentialsAPIService) CreateGcpCredentialsExecute(r ApiCr
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateOnPremiseCredentialsRequest struct {
+	ctx                         context.Context
+	ApiService                  *CloudProviderCredentialsAPIService
+	organizationId              string
+	onPremiseCredentialsRequest *OnPremiseCredentialsRequest
+}
+
+func (r ApiCreateOnPremiseCredentialsRequest) OnPremiseCredentialsRequest(onPremiseCredentialsRequest OnPremiseCredentialsRequest) ApiCreateOnPremiseCredentialsRequest {
+	r.onPremiseCredentialsRequest = &onPremiseCredentialsRequest
+	return r
+}
+
+func (r ApiCreateOnPremiseCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
+	return r.ApiService.CreateOnPremiseCredentialsExecute(r)
+}
+
+/*
+CreateOnPremiseCredentials Create OnPremise credentials set
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiCreateOnPremiseCredentialsRequest
+*/
+func (a *CloudProviderCredentialsAPIService) CreateOnPremiseCredentials(ctx context.Context, organizationId string) ApiCreateOnPremiseCredentialsRequest {
+	return ApiCreateOnPremiseCredentialsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsAPIService) CreateOnPremiseCredentialsExecute(r ApiCreateOnPremiseCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentials
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.CreateOnPremiseCredentials")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/onPremise/credentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.onPremiseCredentialsRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiCreateScalewayCredentialsRequest struct {
 	ctx                        context.Context
 	ApiService                 *CloudProviderCredentialsAPIService
@@ -542,6 +665,114 @@ func (a *CloudProviderCredentialsAPIService) DeleteGcpCredentialsExecute(r ApiDe
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/gcp/credentials/{credentialsId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
+type ApiDeleteOnPremiseCredentialsRequest struct {
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsAPIService
+	credentialsId  string
+	organizationId string
+}
+
+func (r ApiDeleteOnPremiseCredentialsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOnPremiseCredentialsExecute(r)
+}
+
+/*
+DeleteOnPremiseCredentials Delete a set of OnPremise credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param credentialsId Credentials ID
+ @param organizationId Organization ID
+ @return ApiDeleteOnPremiseCredentialsRequest
+*/
+func (a *CloudProviderCredentialsAPIService) DeleteOnPremiseCredentials(ctx context.Context, credentialsId string, organizationId string) ApiDeleteOnPremiseCredentialsRequest {
+	return ApiDeleteOnPremiseCredentialsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		credentialsId:  credentialsId,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+func (a *CloudProviderCredentialsAPIService) DeleteOnPremiseCredentialsExecute(r ApiDeleteOnPremiseCredentialsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.DeleteOnPremiseCredentials")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/onPremise/credentials/{credentialsId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
@@ -970,6 +1201,133 @@ func (a *CloudProviderCredentialsAPIService) EditGcpCredentialsExecute(r ApiEdit
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiEditOnPremiseCredentialsRequest struct {
+	ctx                         context.Context
+	ApiService                  *CloudProviderCredentialsAPIService
+	organizationId              string
+	credentialsId               string
+	onPremiseCredentialsRequest *OnPremiseCredentialsRequest
+}
+
+func (r ApiEditOnPremiseCredentialsRequest) OnPremiseCredentialsRequest(onPremiseCredentialsRequest OnPremiseCredentialsRequest) ApiEditOnPremiseCredentialsRequest {
+	r.onPremiseCredentialsRequest = &onPremiseCredentialsRequest
+	return r
+}
+
+func (r ApiEditOnPremiseCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
+	return r.ApiService.EditOnPremiseCredentialsExecute(r)
+}
+
+/*
+EditOnPremiseCredentials Edit a set of OnPremise credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param credentialsId Credentials ID
+ @return ApiEditOnPremiseCredentialsRequest
+*/
+func (a *CloudProviderCredentialsAPIService) EditOnPremiseCredentials(ctx context.Context, organizationId string, credentialsId string) ApiEditOnPremiseCredentialsRequest {
+	return ApiEditOnPremiseCredentialsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		credentialsId:  credentialsId,
+	}
+}
+
+// Execute executes the request
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsAPIService) EditOnPremiseCredentialsExecute(r ApiEditOnPremiseCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentials
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.EditOnPremiseCredentials")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/onPremise/credentials/{credentialsId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.onPremiseCredentialsRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiEditScalewayCredentialsRequest struct {
 	ctx                        context.Context
 	ApiService                 *CloudProviderCredentialsAPIService
@@ -1335,6 +1693,125 @@ func (a *CloudProviderCredentialsAPIService) GetGcpCredentialsExecute(r ApiGetGc
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetOnPremiseCredentialsRequest struct {
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsAPIService
+	organizationId string
+	credentialsId  string
+}
+
+func (r ApiGetOnPremiseCredentialsRequest) Execute() (*ClusterCredentials, *http.Response, error) {
+	return r.ApiService.GetOnPremiseCredentialsExecute(r)
+}
+
+/*
+GetOnPremiseCredentials Get a set of OnPremise credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param credentialsId Credentials ID
+ @return ApiGetOnPremiseCredentialsRequest
+*/
+func (a *CloudProviderCredentialsAPIService) GetOnPremiseCredentials(ctx context.Context, organizationId string, credentialsId string) ApiGetOnPremiseCredentialsRequest {
+	return ApiGetOnPremiseCredentialsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		credentialsId:  credentialsId,
+	}
+}
+
+// Execute executes the request
+//  @return ClusterCredentials
+func (a *CloudProviderCredentialsAPIService) GetOnPremiseCredentialsExecute(r ApiGetOnPremiseCredentialsRequest) (*ClusterCredentials, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentials
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.GetOnPremiseCredentials")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/onPremise/credentials/{credentialsId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"credentialsId"+"}", url.PathEscape(parameterValueToString(r.credentialsId, "credentialsId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetScalewayCredentialsRequest struct {
 	ctx            context.Context
 	ApiService     *CloudProviderCredentialsAPIService
@@ -1610,6 +2087,121 @@ func (a *CloudProviderCredentialsAPIService) ListGcpCredentialsExecute(r ApiList
 	}
 
 	localVarPath := localBasePath + "/organization/{organizationId}/gcp/credentials"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListOnPremiseCredentialsRequest struct {
+	ctx            context.Context
+	ApiService     *CloudProviderCredentialsAPIService
+	organizationId string
+}
+
+func (r ApiListOnPremiseCredentialsRequest) Execute() (*ClusterCredentialsResponseList, *http.Response, error) {
+	return r.ApiService.ListOnPremiseCredentialsExecute(r)
+}
+
+/*
+ListOnPremiseCredentials List OnPremise credentials
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @return ApiListOnPremiseCredentialsRequest
+*/
+func (a *CloudProviderCredentialsAPIService) ListOnPremiseCredentials(ctx context.Context, organizationId string) ApiListOnPremiseCredentialsRequest {
+	return ApiListOnPremiseCredentialsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//  @return ClusterCredentialsResponseList
+func (a *CloudProviderCredentialsAPIService) ListOnPremiseCredentialsExecute(r ApiListOnPremiseCredentialsRequest) (*ClusterCredentialsResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterCredentialsResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderCredentialsAPIService.ListOnPremiseCredentials")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/onPremise/credentials"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

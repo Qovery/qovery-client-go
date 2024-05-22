@@ -50,6 +50,20 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CloudProviderCredentialsAPIService CreateOnPremiseCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.CreateOnPremiseCredentials(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CloudProviderCredentialsAPIService CreateScalewayCredentials", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -86,6 +100,20 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 		var organizationId string
 
 		httpRes, err := apiClient.CloudProviderCredentialsAPI.DeleteGcpCredentials(context.Background(), credentialsId, organizationId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderCredentialsAPIService DeleteOnPremiseCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var credentialsId string
+		var organizationId string
+
+		httpRes, err := apiClient.CloudProviderCredentialsAPI.DeleteOnPremiseCredentials(context.Background(), credentialsId, organizationId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
@@ -129,6 +157,21 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 		var credentialsId string
 
 		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.EditGcpCredentials(context.Background(), organizationId, credentialsId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderCredentialsAPIService EditOnPremiseCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var credentialsId string
+
+		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.EditOnPremiseCredentials(context.Background(), organizationId, credentialsId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -181,6 +224,21 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test CloudProviderCredentialsAPIService GetOnPremiseCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var credentialsId string
+
+		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.GetOnPremiseCredentials(context.Background(), organizationId, credentialsId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CloudProviderCredentialsAPIService GetScalewayCredentials", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -217,6 +275,20 @@ func Test_qovery_CloudProviderCredentialsAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.ListGcpCredentials(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderCredentialsAPIService ListOnPremiseCredentials", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.CloudProviderCredentialsAPI.ListOnPremiseCredentials(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

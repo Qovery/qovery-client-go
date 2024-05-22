@@ -160,18 +160,23 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListScalewayRegions**](docs/CloudProviderAPI.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsAPI* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsAPI.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
 *CloudProviderCredentialsAPI* | [**CreateGcpCredentials**](docs/CloudProviderCredentialsAPI.md#creategcpcredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
+*CloudProviderCredentialsAPI* | [**CreateOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#createonpremisecredentials) | **Post** /organization/{organizationId}/onPremise/credentials | Create OnPremise credentials set
 *CloudProviderCredentialsAPI* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 *CloudProviderCredentialsAPI* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsAPI.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**DeleteGcpCredentials**](docs/CloudProviderCredentialsAPI.md#deletegcpcredentials) | **Delete** /organization/{organizationId}/gcp/credentials/{credentialsId} | Delete a set of GCP credentials
+*CloudProviderCredentialsAPI* | [**DeleteOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#deleteonpremisecredentials) | **Delete** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Delete a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**DeleteScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#deletescalewaycredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**EditAWSCredentials**](docs/CloudProviderCredentialsAPI.md#editawscredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**EditGcpCredentials**](docs/CloudProviderCredentialsAPI.md#editgcpcredentials) | **Put** /organization/{organizationId}/gcp/credentials/{credentialsId} | Edit a set of GCP credentials
+*CloudProviderCredentialsAPI* | [**EditOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#editonpremisecredentials) | **Put** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Edit a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**GetAWSCredentials**](docs/CloudProviderCredentialsAPI.md#getawscredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
 *CloudProviderCredentialsAPI* | [**GetGcpCredentials**](docs/CloudProviderCredentialsAPI.md#getgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials/{credentialsId} | Get a set of GCP credentials
+*CloudProviderCredentialsAPI* | [**GetOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#getonpremisecredentials) | **Get** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Get a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**GetScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#getscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**ListAWSCredentials**](docs/CloudProviderCredentialsAPI.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
 *CloudProviderCredentialsAPI* | [**ListGcpCredentials**](docs/CloudProviderCredentialsAPI.md#listgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials | List GCP credentials
+*CloudProviderCredentialsAPI* | [**ListOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#listonpremisecredentials) | **Get** /organization/{organizationId}/onPremise/credentials | List OnPremise credentials
 *CloudProviderCredentialsAPI* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
 *ClustersAPI* | [**CreateCluster**](docs/ClustersAPI.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
 *ClustersAPI* | [**DeleteCluster**](docs/ClustersAPI.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
@@ -777,6 +782,7 @@ Class | Method | HTTP request | Description
  - [MemberResponseList](docs/MemberResponseList.md)
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
  - [Name](docs/Name.md)
+ - [OnPremiseCredentialsRequest](docs/OnPremiseCredentialsRequest.md)
  - [Organization](docs/Organization.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
