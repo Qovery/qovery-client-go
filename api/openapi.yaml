@@ -12555,6 +12555,42 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Helm Custom Domain
+  /environment/{environmentId}/checkDockerfile:
+    post:
+      operationId: checkDockerfile
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DockerfileCheckRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DockerfileCheckResponse'
+          description: Information about the dockerfile
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check dockerfile configuration is correct
+      tags:
+      - Environment
   /environment/{environmentId}/job:
     get:
       operationId: listJobs
@@ -19667,6 +19703,51 @@ components:
           type: array
         stage:
           $ref: '#/components/schemas/Stage'
+      type: object
+    DockerfileCheckRequest:
+      example:
+        git_repository:
+          is_private: true
+          name: simple-node-app
+          default_branch: master
+          id: id
+          url: https://github.com/Qovery/simple-node-app
+        dockerfile_path: dockerfile_path
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/GitRepository'
+        dockerfile_path:
+          description: path of the dockerfile with root_path as base path
+          type: string
+      required:
+      - dockerfile_path
+      - git_repository
+      type: object
+    DockerfileCheckResponse:
+      example:
+        repositories:
+        - repositories
+        - repositories
+        arg:
+        - arg
+        - arg
+        dockerfile_path: dockerfile_path
+      properties:
+        dockerfile_path:
+          type: string
+        arg:
+          description: All ARG variable declared in the Dockerfile
+          items:
+            type: string
+          type: array
+        repositories:
+          description: All image repositories we found declared in the Dockerfile
+          items:
+            type: string
+          type: array
+      required:
+      - dockerfile_path
+      - git_repository
       type: object
     JobRequest:
       allOf:

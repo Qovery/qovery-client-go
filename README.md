@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *DeploymentStageMainCallsAPI* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
 *DeploymentStageMainCallsAPI* | [**MoveAfterDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#moveafterdeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
 *DeploymentStageMainCallsAPI* | [**MoveBeforeDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#movebeforedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
+*EnvironmentAPI* | [**CheckDockerfile**](docs/EnvironmentAPI.md#checkdockerfile) | **Post** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
 *EnvironmentAPI* | [**DeployAllApplications**](docs/EnvironmentAPI.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsAPI* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsAPI.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsAPI* | [**CloneEnvironment**](docs/EnvironmentActionsAPI.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
@@ -643,6 +644,8 @@ Class | Method | HTTP request | Description
  - [DeploymentStageServiceResponse](docs/DeploymentStageServiceResponse.md)
  - [DeploymentStageWithServicesStatuses](docs/DeploymentStageWithServicesStatuses.md)
  - [DoCredentialsRequest](docs/DoCredentialsRequest.md)
+ - [DockerfileCheckRequest](docs/DockerfileCheckRequest.md)
+ - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
  - [EnvironmentApplicationsSupportedLanguage](docs/EnvironmentApplicationsSupportedLanguage.md)
