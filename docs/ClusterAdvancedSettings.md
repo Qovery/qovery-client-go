@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **NginxHpaCpuUtilizationPercentageThreshold** | Pointer to **int32** | hpa cpu threshold in percentage | [optional] 
 **NginxHpaMinNumberInstances** | Pointer to **int32** | hpa minimum number of instances | [optional] 
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] 
+**StorageclassFastSsd** | Pointer to **string** | storage class name to use to provision pvc | [optional] 
 
 ## Methods
 
@@ -699,6 +700,31 @@ SetNginxHpaMaxNumberInstances sets NginxHpaMaxNumberInstances field to given val
 `func (o *ClusterAdvancedSettings) HasNginxHpaMaxNumberInstances() bool`
 
 HasNginxHpaMaxNumberInstances returns a boolean if a field has been set.
+
+### GetStorageclassFastSsd
+
+`func (o *ClusterAdvancedSettings) GetStorageclassFastSsd() string`
+
+GetStorageclassFastSsd returns the StorageclassFastSsd field if non-nil, zero value otherwise.
+
+### GetStorageclassFastSsdOk
+
+`func (o *ClusterAdvancedSettings) GetStorageclassFastSsdOk() (*string, bool)`
+
+GetStorageclassFastSsdOk returns a tuple with the StorageclassFastSsd field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageclassFastSsd
+
+`func (o *ClusterAdvancedSettings) SetStorageclassFastSsd(v string)`
+
+SetStorageclassFastSsd sets StorageclassFastSsd field to given value.
+
+### HasStorageclassFastSsd
+
+`func (o *ClusterAdvancedSettings) HasStorageclassFastSsd() bool`
+
+HasStorageclassFastSsd returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

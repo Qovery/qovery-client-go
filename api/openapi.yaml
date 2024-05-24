@@ -16673,6 +16673,7 @@ components:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
         database.redis.deny_public_access: true
+        storageclass.fast_ssd: storageclass.fast_ssd
         nginx.hpa.min_number_instances: 4
       properties:
         aws.cloudwatch.eks_logs_retention_days:
@@ -16771,6 +16772,9 @@ components:
         nginx.hpa.max_number_instances:
           description: hpa maximum number of instances
           type: integer
+        storageclass.fast_ssd:
+          description: storage class name to use to provision pvc
+          type: string
       type: object
     Commit:
       example:

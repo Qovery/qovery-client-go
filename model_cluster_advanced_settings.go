@@ -71,6 +71,8 @@ type ClusterAdvancedSettings struct {
 	NginxHpaMinNumberInstances *int32 `json:"nginx.hpa.min_number_instances,omitempty"`
 	// hpa maximum number of instances
 	NginxHpaMaxNumberInstances *int32 `json:"nginx.hpa.max_number_instances,omitempty"`
+	// storage class name to use to provision pvc
+	StorageclassFastSsd *string `json:"storageclass.fast_ssd,omitempty"`
 }
 
 // NewClusterAdvancedSettings instantiates a new ClusterAdvancedSettings object
@@ -929,6 +931,38 @@ func (o *ClusterAdvancedSettings) SetNginxHpaMaxNumberInstances(v int32) {
 	o.NginxHpaMaxNumberInstances = &v
 }
 
+// GetStorageclassFastSsd returns the StorageclassFastSsd field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetStorageclassFastSsd() string {
+	if o == nil || IsNil(o.StorageclassFastSsd) {
+		var ret string
+		return ret
+	}
+	return *o.StorageclassFastSsd
+}
+
+// GetStorageclassFastSsdOk returns a tuple with the StorageclassFastSsd field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetStorageclassFastSsdOk() (*string, bool) {
+	if o == nil || IsNil(o.StorageclassFastSsd) {
+		return nil, false
+	}
+	return o.StorageclassFastSsd, true
+}
+
+// HasStorageclassFastSsd returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasStorageclassFastSsd() bool {
+	if o != nil && !IsNil(o.StorageclassFastSsd) {
+		return true
+	}
+
+	return false
+}
+
+// SetStorageclassFastSsd gets a reference to the given string and assigns it to the StorageclassFastSsd field.
+func (o *ClusterAdvancedSettings) SetStorageclassFastSsd(v string) {
+	o.StorageclassFastSsd = &v
+}
+
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1016,6 +1050,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.NginxHpaMaxNumberInstances) {
 		toSerialize["nginx.hpa.max_number_instances"] = o.NginxHpaMaxNumberInstances
+	}
+	if !IsNil(o.StorageclassFastSsd) {
+		toSerialize["storageclass.fast_ssd"] = o.StorageclassFastSsd
 	}
 	return toSerialize, nil
 }
