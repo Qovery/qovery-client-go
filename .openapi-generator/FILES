@@ -69,6 +69,7 @@ api_organization_annotations_group.go
 api_organization_api_token.go
 api_organization_custom_role.go
 api_organization_event.go
+api_organization_labels_group.go
 api_organization_main_calls.go
 api_organization_webhook.go
 api_project_deployment_rule.go
@@ -424,6 +425,8 @@ docs/JobSecretAPI.md
 docs/JobsAPI.md
 docs/Key.md
 docs/KubernetesEnum.md
+docs/Label.md
+docs/LabelsGroupAssociatedItemType.md
 docs/LifecycleJobResponse.md
 docs/LifecycleJobResponseAllOfSchedule.md
 docs/Link.md
@@ -434,6 +437,7 @@ docs/ListDatabaseDeploymentHistory200Response.md
 docs/ListHelmDeploymentHistory200Response.md
 docs/ListJobDeploymentHistory200Response.md
 docs/ListOrganizationAnnotationsGroup200Response.md
+docs/ListOrganizationLabelsGroup200Response.md
 docs/Log.md
 docs/LogPaginatedResponseList.md
 docs/LogResponseList.md
@@ -495,6 +499,12 @@ docs/OrganizationEventTargetType.md
 docs/OrganizationEventType.md
 docs/OrganizationGithubAppConnectRequest.md
 docs/OrganizationJobAutoDeployRequest.md
+docs/OrganizationLabelsGroupAPI.md
+docs/OrganizationLabelsGroupAssociatedItemsResponseList.md
+docs/OrganizationLabelsGroupAssociatedItemsResponseListResultsInner.md
+docs/OrganizationLabelsGroupCreateRequest.md
+docs/OrganizationLabelsGroupEnrichedResponse.md
+docs/OrganizationLabelsGroupResponse.md
 docs/OrganizationMainCallsAPI.md
 docs/OrganizationRequest.md
 docs/OrganizationResponseList.md
@@ -883,6 +893,8 @@ model_job_response_list.go
 model_job_schedule_event.go
 model_key.go
 model_kubernetes_enum.go
+model_label.go
+model_labels_group_associated_item_type.go
 model_lifecycle_job_response.go
 model_lifecycle_job_response_all_of_schedule.go
 model_link.go
@@ -893,6 +905,7 @@ model_list_database_deployment_history_200_response.go
 model_list_helm_deployment_history_200_response.go
 model_list_job_deployment_history_200_response.go
 model_list_organization_annotations_group_200_response.go
+model_list_organization_labels_group_200_response.go
 model_log.go
 model_log_paginated_response_list.go
 model_log_response_list.go
@@ -948,6 +961,11 @@ model_organization_event_target_type.go
 model_organization_event_type.go
 model_organization_github_app_connect_request.go
 model_organization_job_auto_deploy_request.go
+model_organization_labels_group_associated_items_response_list.go
+model_organization_labels_group_associated_items_response_list_results_inner.go
+model_organization_labels_group_create_request.go
+model_organization_labels_group_enriched_response.go
+model_organization_labels_group_response.go
 model_organization_request.go
 model_organization_response_list.go
 model_organization_webhook_create_request.go
@@ -1107,6 +1125,7 @@ test/api_organization_annotations_group_test.go
 test/api_organization_api_token_test.go
 test/api_organization_custom_role_test.go
 test/api_organization_event_test.go
+test/api_organization_labels_group_test.go
 test/api_organization_main_calls_test.go
 test/api_organization_webhook_test.go
 test/api_project_deployment_rule_test.go

@@ -105,6 +105,7 @@ tags:
 - name: Organization Api Token
 - name: Organization Webhook
 - name: Organization Annotations Group
+- name: Organization Labels Group
 - name: Project
 - name: Project Deployment Rule
 - name: Project Environment Variable
@@ -3936,6 +3937,225 @@ paths:
       summary: Get organization annotations group associated items
       tags:
       - Organization Annotations Group
+  /organization/{organizationId}/labelsGroups:
+    get:
+      description: List organization labels group
+      operationId: listOrganizationLabelsGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listOrganizationLabelsGroup_200_response'
+          description: List organization labels groups
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization labels group
+      tags:
+      - Organization Labels Group
+    post:
+      description: Create an organization labels group
+      operationId: createOrganizationLabelsGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationLabelsGroupCreateRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationLabelsGroupResponse'
+          description: Organization labels group created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: Create an organization labels group
+      tags:
+      - Organization Labels Group
+  /organization/{organizationId}/labelsGroups/{labelsGroupId}:
+    delete:
+      description: Delete organization labels group
+      operationId: deleteOrganizationLabelsGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization labels group ID
+        explode: false
+        in: path
+        name: labelsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete organization labels group
+      tags:
+      - Organization Labels Group
+    get:
+      description: Get organization labels group
+      operationId: getOrganizationLabelssGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization labels group ID
+        explode: false
+        in: path
+        name: labelsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationLabelsGroupResponse'
+          description: List organization labels groups
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization labels group
+      tags:
+      - Organization Labels Group
+    put:
+      description: Edit organization labels group
+      operationId: editOrganizationLabelsGroup
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization labels group ID
+        explode: false
+        in: path
+        name: labelsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationLabelsGroupCreateRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationLabelsGroupResponse'
+          description: Edit organization labels groups
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit organization labels group
+      tags:
+      - Organization Labels Group
+  /organization/{organizationId}/labelsGroups/{labelsGroupId}/associatedItems:
+    get:
+      description: Get organization labels group associated items
+      operationId: getOrganizationLabelsGroupAssociatedItems
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Organization labels group ID
+        explode: false
+        in: path
+        name: labelsGroupId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationLabelsGroupAssociatedItemsResponseList'
+          description: Get organization labels group token associated items
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization labels group associated items
+      tags:
+      - Organization Labels Group
   /cloudProvider:
     get:
       operationId: listCloudProvider
@@ -14351,6 +14571,16 @@ components:
         format: uuid
         type: string
       style: simple
+    labelsGroupId:
+      description: Organization labels group ID
+      explode: false
+      in: path
+      name: labelsGroupId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     region:
       description: region name
       explode: false
@@ -21466,6 +21696,101 @@ components:
       - key
       - value
       type: object
+    OrganizationLabelsGroupCreateRequest:
+      example:
+        name: name
+        labels:
+        - propagate_to_cloud_provider: true
+          value: value
+          key: key
+        - propagate_to_cloud_provider: true
+          value: value
+          key: key
+      properties:
+        name:
+          description: name of the labels group
+          type: string
+        labels:
+          items:
+            $ref: '#/components/schemas/Label'
+          type: array
+      required:
+      - labels
+      - name
+      type: object
+    OrganizationLabelsGroupResponseList:
+      items:
+        $ref: '#/components/schemas/OrganizationLabelsGroupResponse'
+      type: array
+    OrganizationLabelsGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          labels:
+            items:
+              $ref: '#/components/schemas/Label'
+            type: array
+        required:
+        - labels
+        - name
+        type: object
+    OrganizationLabelsGroupAssociatedItemsResponseList:
+      example:
+        results:
+        - cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          item_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          item_type: null
+          item_name: item_name
+          project_name: project_name
+          environment_name: environment_name
+        - cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          item_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          item_type: null
+          item_name: item_name
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationLabelsGroupAssociatedItemsResponseList_results_inner'
+          type: array
+      type: object
+    LabelsGroupAssociatedItemType:
+      description: Labels Group Associated Item Type
+      enum:
+      - APPLICATION
+      - DATABASE
+      - CONTAINER
+      - LIFECYCLE
+      - ENVIRONMENT
+      - CLUSTER
+      - CRON
+      type: string
+    Label:
+      example:
+        propagate_to_cloud_provider: true
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        propagate_to_cloud_provider:
+          type: boolean
+      required:
+      - key
+      - propagate_to_cloud_provider
+      - value
+      type: object
     PaginationData:
       properties:
         page:
@@ -22865,6 +23190,28 @@ components:
       title: OrganizationAnnotationsGroupEnrichedResponse
       x-stoplight:
         id: edjpmiyq8n5nt
+    OrganizationLabelsGroupEnrichedResponseList:
+      items:
+        $ref: '#/components/schemas/OrganizationLabelsGroupEnrichedResponse'
+      title: OrganizationLabelsGroupEnrichedResponseList
+      type: array
+    OrganizationLabelsGroupEnrichedResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          labels:
+            items:
+              $ref: '#/components/schemas/Label'
+            type: array
+          associated_items_count:
+            type: integer
+        required:
+        - labels
+        - name
+        type: object
+      title: OrganizationLabelsGroupEnrichedResponse
     deleteMember_request:
       properties:
         user_id:
@@ -22886,6 +23233,18 @@ components:
           type: array
           x-stoplight:
             id: 2tbiuqncqaqaw
+      type: object
+    listOrganizationLabelsGroup_200_response:
+      example:
+        results:
+        - null
+        - null
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationLabelsGroupEnrichedResponse'
+          title: OrganizationLabelsGroupEnrichedResponseList
+          type: array
       type: object
     listContainerDeploymentHistory_200_response:
       allOf:
@@ -24034,6 +24393,45 @@ components:
       - item_name
       - item_type
       type: object
+    OrganizationLabelsGroupAssociatedItemsResponseList_results_inner:
+      example:
+        cluster_name: cluster_name
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        item_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        item_type: null
+        item_name: item_name
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        cluster_id:
+          format: uuid
+          type: string
+        cluster_name:
+          type: string
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        environment_name:
+          type: string
+        item_id:
+          format: uuid
+          type: string
+        item_name:
+          type: string
+        item_type:
+          $ref: '#/components/schemas/LabelsGroupAssociatedItemType'
+      required:
+      - item_id
+      - item_name
+      - item_type
+      type: object
     Probe_type_tcp:
       nullable: true
       properties:
@@ -24218,6 +24616,7 @@ x-tagGroups:
   - Organization Custom Role
   - Organization Event
   - Organization Annotations Group
+  - Organization Labels Group
   - Projects
   - Members
   - Billing

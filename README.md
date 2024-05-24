@@ -425,6 +425,12 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleAPI* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleAPI.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
 *OrganizationEventAPI* | [**GetOrganizationEventTargets**](docs/OrganizationEventAPI.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
 *OrganizationEventAPI* | [**GetOrganizationEvents**](docs/OrganizationEventAPI.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
+*OrganizationLabelsGroupAPI* | [**CreateOrganizationLabelsGroup**](docs/OrganizationLabelsGroupAPI.md#createorganizationlabelsgroup) | **Post** /organization/{organizationId}/labelsGroups | Create an organization labels group
+*OrganizationLabelsGroupAPI* | [**DeleteOrganizationLabelsGroup**](docs/OrganizationLabelsGroupAPI.md#deleteorganizationlabelsgroup) | **Delete** /organization/{organizationId}/labelsGroups/{labelsGroupId} | Delete organization labels group
+*OrganizationLabelsGroupAPI* | [**EditOrganizationLabelsGroup**](docs/OrganizationLabelsGroupAPI.md#editorganizationlabelsgroup) | **Put** /organization/{organizationId}/labelsGroups/{labelsGroupId} | Edit organization labels group
+*OrganizationLabelsGroupAPI* | [**GetOrganizationLabelsGroupAssociatedItems**](docs/OrganizationLabelsGroupAPI.md#getorganizationlabelsgroupassociateditems) | **Get** /organization/{organizationId}/labelsGroups/{labelsGroupId}/associatedItems | Get organization labels group associated items
+*OrganizationLabelsGroupAPI* | [**GetOrganizationLabelssGroup**](docs/OrganizationLabelsGroupAPI.md#getorganizationlabelssgroup) | **Get** /organization/{organizationId}/labelsGroups/{labelsGroupId} | Get organization labels group
+*OrganizationLabelsGroupAPI* | [**ListOrganizationLabelsGroup**](docs/OrganizationLabelsGroupAPI.md#listorganizationlabelsgroup) | **Get** /organization/{organizationId}/labelsGroups | List organization labels group
 *OrganizationMainCallsAPI* | [**CreateGitToken**](docs/OrganizationMainCallsAPI.md#creategittoken) | **Post** /organization/{organizationId}/gitToken | Create a git token
 *OrganizationMainCallsAPI* | [**CreateOrganization**](docs/OrganizationMainCallsAPI.md#createorganization) | **Post** /organization | Create an organization
 *OrganizationMainCallsAPI* | [**DeleteGitToken**](docs/OrganizationMainCallsAPI.md#deletegittoken) | **Delete** /organization/{organizationId}/gitToken/{gitTokenId} | Delete a git token
@@ -764,6 +770,8 @@ Class | Method | HTTP request | Description
  - [JobScheduleEvent](docs/JobScheduleEvent.md)
  - [Key](docs/Key.md)
  - [KubernetesEnum](docs/KubernetesEnum.md)
+ - [Label](docs/Label.md)
+ - [LabelsGroupAssociatedItemType](docs/LabelsGroupAssociatedItemType.md)
  - [LifecycleJobResponse](docs/LifecycleJobResponse.md)
  - [LifecycleJobResponseAllOfSchedule](docs/LifecycleJobResponseAllOfSchedule.md)
  - [Link](docs/Link.md)
@@ -774,6 +782,7 @@ Class | Method | HTTP request | Description
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)
+ - [ListOrganizationLabelsGroup200Response](docs/ListOrganizationLabelsGroup200Response.md)
  - [Log](docs/Log.md)
  - [LogPaginatedResponseList](docs/LogPaginatedResponseList.md)
  - [LogResponseList](docs/LogResponseList.md)
@@ -829,6 +838,11 @@ Class | Method | HTTP request | Description
  - [OrganizationEventType](docs/OrganizationEventType.md)
  - [OrganizationGithubAppConnectRequest](docs/OrganizationGithubAppConnectRequest.md)
  - [OrganizationJobAutoDeployRequest](docs/OrganizationJobAutoDeployRequest.md)
+ - [OrganizationLabelsGroupAssociatedItemsResponseList](docs/OrganizationLabelsGroupAssociatedItemsResponseList.md)
+ - [OrganizationLabelsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationLabelsGroupAssociatedItemsResponseListResultsInner.md)
+ - [OrganizationLabelsGroupCreateRequest](docs/OrganizationLabelsGroupCreateRequest.md)
+ - [OrganizationLabelsGroupEnrichedResponse](docs/OrganizationLabelsGroupEnrichedResponse.md)
+ - [OrganizationLabelsGroupResponse](docs/OrganizationLabelsGroupResponse.md)
  - [OrganizationRequest](docs/OrganizationRequest.md)
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OrganizationWebhookCreateRequest](docs/OrganizationWebhookCreateRequest.md)
