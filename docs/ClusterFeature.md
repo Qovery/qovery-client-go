@@ -10,6 +10,10 @@ Name | Type | Description | Notes
 **CostPerMonthInCents** | Pointer to **NullableInt32** |  | [optional] 
 **CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
 **CurrencyCode** | Pointer to **NullableString** |  | [optional] 
+**IsCloudProviderPayingFeature** | Pointer to **bool** |  | [optional] 
+**CloudProviderFeatureDocumentation** | Pointer to **NullableString** |  | [optional] 
+**IsQoveryPayingFeature** | Pointer to **bool** |  | [optional] 
+**QoveryFeatureDocumentation** | Pointer to **NullableString** |  | [optional] 
 **ValueType** | Pointer to **string** |  | [optional] 
 **Value** | Pointer to [**NullableClusterFeatureValue**](ClusterFeatureValue.md) |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
@@ -224,6 +228,126 @@ HasCurrencyCode returns a boolean if a field has been set.
 `func (o *ClusterFeature) UnsetCurrencyCode()`
 
 UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
+### GetIsCloudProviderPayingFeature
+
+`func (o *ClusterFeature) GetIsCloudProviderPayingFeature() bool`
+
+GetIsCloudProviderPayingFeature returns the IsCloudProviderPayingFeature field if non-nil, zero value otherwise.
+
+### GetIsCloudProviderPayingFeatureOk
+
+`func (o *ClusterFeature) GetIsCloudProviderPayingFeatureOk() (*bool, bool)`
+
+GetIsCloudProviderPayingFeatureOk returns a tuple with the IsCloudProviderPayingFeature field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCloudProviderPayingFeature
+
+`func (o *ClusterFeature) SetIsCloudProviderPayingFeature(v bool)`
+
+SetIsCloudProviderPayingFeature sets IsCloudProviderPayingFeature field to given value.
+
+### HasIsCloudProviderPayingFeature
+
+`func (o *ClusterFeature) HasIsCloudProviderPayingFeature() bool`
+
+HasIsCloudProviderPayingFeature returns a boolean if a field has been set.
+
+### GetCloudProviderFeatureDocumentation
+
+`func (o *ClusterFeature) GetCloudProviderFeatureDocumentation() string`
+
+GetCloudProviderFeatureDocumentation returns the CloudProviderFeatureDocumentation field if non-nil, zero value otherwise.
+
+### GetCloudProviderFeatureDocumentationOk
+
+`func (o *ClusterFeature) GetCloudProviderFeatureDocumentationOk() (*string, bool)`
+
+GetCloudProviderFeatureDocumentationOk returns a tuple with the CloudProviderFeatureDocumentation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCloudProviderFeatureDocumentation
+
+`func (o *ClusterFeature) SetCloudProviderFeatureDocumentation(v string)`
+
+SetCloudProviderFeatureDocumentation sets CloudProviderFeatureDocumentation field to given value.
+
+### HasCloudProviderFeatureDocumentation
+
+`func (o *ClusterFeature) HasCloudProviderFeatureDocumentation() bool`
+
+HasCloudProviderFeatureDocumentation returns a boolean if a field has been set.
+
+### SetCloudProviderFeatureDocumentationNil
+
+`func (o *ClusterFeature) SetCloudProviderFeatureDocumentationNil(b bool)`
+
+ SetCloudProviderFeatureDocumentationNil sets the value for CloudProviderFeatureDocumentation to be an explicit nil
+
+### UnsetCloudProviderFeatureDocumentation
+`func (o *ClusterFeature) UnsetCloudProviderFeatureDocumentation()`
+
+UnsetCloudProviderFeatureDocumentation ensures that no value is present for CloudProviderFeatureDocumentation, not even an explicit nil
+### GetIsQoveryPayingFeature
+
+`func (o *ClusterFeature) GetIsQoveryPayingFeature() bool`
+
+GetIsQoveryPayingFeature returns the IsQoveryPayingFeature field if non-nil, zero value otherwise.
+
+### GetIsQoveryPayingFeatureOk
+
+`func (o *ClusterFeature) GetIsQoveryPayingFeatureOk() (*bool, bool)`
+
+GetIsQoveryPayingFeatureOk returns a tuple with the IsQoveryPayingFeature field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsQoveryPayingFeature
+
+`func (o *ClusterFeature) SetIsQoveryPayingFeature(v bool)`
+
+SetIsQoveryPayingFeature sets IsQoveryPayingFeature field to given value.
+
+### HasIsQoveryPayingFeature
+
+`func (o *ClusterFeature) HasIsQoveryPayingFeature() bool`
+
+HasIsQoveryPayingFeature returns a boolean if a field has been set.
+
+### GetQoveryFeatureDocumentation
+
+`func (o *ClusterFeature) GetQoveryFeatureDocumentation() string`
+
+GetQoveryFeatureDocumentation returns the QoveryFeatureDocumentation field if non-nil, zero value otherwise.
+
+### GetQoveryFeatureDocumentationOk
+
+`func (o *ClusterFeature) GetQoveryFeatureDocumentationOk() (*string, bool)`
+
+GetQoveryFeatureDocumentationOk returns a tuple with the QoveryFeatureDocumentation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQoveryFeatureDocumentation
+
+`func (o *ClusterFeature) SetQoveryFeatureDocumentation(v string)`
+
+SetQoveryFeatureDocumentation sets QoveryFeatureDocumentation field to given value.
+
+### HasQoveryFeatureDocumentation
+
+`func (o *ClusterFeature) HasQoveryFeatureDocumentation() bool`
+
+HasQoveryFeatureDocumentation returns a boolean if a field has been set.
+
+### SetQoveryFeatureDocumentationNil
+
+`func (o *ClusterFeature) SetQoveryFeatureDocumentationNil(b bool)`
+
+ SetQoveryFeatureDocumentationNil sets the value for QoveryFeatureDocumentation to be an explicit nil
+
+### UnsetQoveryFeatureDocumentation
+`func (o *ClusterFeature) UnsetQoveryFeatureDocumentation()`
+
+UnsetQoveryFeatureDocumentation ensures that no value is present for QoveryFeatureDocumentation, not even an explicit nil
 ### GetValueType
 
 `func (o *ClusterFeature) GetValueType() string`

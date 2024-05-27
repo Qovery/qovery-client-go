@@ -16189,18 +16189,22 @@ components:
       type: object
     ClusterFeature:
       example:
-        accepted_values:
-        - null
-        - null
         value_type: BOOLEAN
         cost_per_month_in_cents: 9900
         is_value_updatable: false
         description: description
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         title: title
-        value: null
         cost_per_month: 99
         currency_code: USD
+        accepted_values:
+        - null
+        - null
+        is_qovery_paying_feature: true
+        cloud_provider_feature_documentation: https://cloud.provider.doc/feature
+        qovery_feature_documentation: https://qovery.doc/feature
+        is_cloud_provider_paying_feature: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        value: null
       properties:
         id:
           format: uuid
@@ -16212,15 +16216,34 @@ components:
           nullable: true
           type: string
         cost_per_month_in_cents:
+          deprecated: true
           example: 9900
           nullable: true
           type: integer
         cost_per_month:
+          deprecated: true
           example: 99
           nullable: true
           type: number
         currency_code:
+          deprecated: true
           example: USD
+          nullable: true
+          type: string
+        is_cloud_provider_paying_feature:
+          example: true
+          nullable: false
+          type: boolean
+        cloud_provider_feature_documentation:
+          example: https://cloud.provider.doc/feature
+          nullable: true
+          type: string
+        is_qovery_paying_feature:
+          example: true
+          nullable: false
+          type: boolean
+        qovery_feature_documentation:
+          example: https://qovery.doc/feature
           nullable: true
           type: string
         value_type:
@@ -16331,30 +16354,38 @@ components:
     ClusterFeatureResponseList:
       example:
         results:
-        - accepted_values:
-          - null
-          - null
-          value_type: BOOLEAN
+        - value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: null
           cost_per_month: 99
           currency_code: USD
-        - accepted_values:
+          accepted_values:
           - null
           - null
-          value_type: BOOLEAN
+          is_qovery_paying_feature: true
+          cloud_provider_feature_documentation: https://cloud.provider.doc/feature
+          qovery_feature_documentation: https://qovery.doc/feature
+          is_cloud_provider_paying_feature: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: null
+        - value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
           description: description
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           title: title
-          value: null
           cost_per_month: 99
           currency_code: USD
+          accepted_values:
+          - null
+          - null
+          is_qovery_paying_feature: true
+          cloud_provider_feature_documentation: https://cloud.provider.doc/feature
+          qovery_feature_documentation: https://qovery.doc/feature
+          is_cloud_provider_paying_feature: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          value: null
       properties:
         results:
           items:

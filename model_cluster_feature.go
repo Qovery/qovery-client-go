@@ -20,16 +20,23 @@ var _ MappedNullable = &ClusterFeature{}
 
 // ClusterFeature struct for ClusterFeature
 type ClusterFeature struct {
-	Id                  *string                             `json:"id,omitempty"`
-	Title               *string                             `json:"title,omitempty"`
-	Description         NullableString                      `json:"description,omitempty"`
-	CostPerMonthInCents NullableInt32                       `json:"cost_per_month_in_cents,omitempty"`
-	CostPerMonth        NullableFloat32                     `json:"cost_per_month,omitempty"`
-	CurrencyCode        NullableString                      `json:"currency_code,omitempty"`
-	ValueType           *string                             `json:"value_type,omitempty"`
-	Value               NullableClusterFeatureValue         `json:"value,omitempty"`
-	IsValueUpdatable    *bool                               `json:"is_value_updatable,omitempty"`
-	AcceptedValues      []ClusterFeatureAcceptedValuesInner `json:"accepted_values,omitempty"`
+	Id          *string        `json:"id,omitempty"`
+	Title       *string        `json:"title,omitempty"`
+	Description NullableString `json:"description,omitempty"`
+	// Deprecated
+	CostPerMonthInCents NullableInt32 `json:"cost_per_month_in_cents,omitempty"`
+	// Deprecated
+	CostPerMonth NullableFloat32 `json:"cost_per_month,omitempty"`
+	// Deprecated
+	CurrencyCode                      NullableString                      `json:"currency_code,omitempty"`
+	IsCloudProviderPayingFeature      *bool                               `json:"is_cloud_provider_paying_feature,omitempty"`
+	CloudProviderFeatureDocumentation NullableString                      `json:"cloud_provider_feature_documentation,omitempty"`
+	IsQoveryPayingFeature             *bool                               `json:"is_qovery_paying_feature,omitempty"`
+	QoveryFeatureDocumentation        NullableString                      `json:"qovery_feature_documentation,omitempty"`
+	ValueType                         *string                             `json:"value_type,omitempty"`
+	Value                             NullableClusterFeatureValue         `json:"value,omitempty"`
+	IsValueUpdatable                  *bool                               `json:"is_value_updatable,omitempty"`
+	AcceptedValues                    []ClusterFeatureAcceptedValuesInner `json:"accepted_values,omitempty"`
 }
 
 // NewClusterFeature instantiates a new ClusterFeature object
@@ -161,6 +168,7 @@ func (o *ClusterFeature) UnsetDescription() {
 }
 
 // GetCostPerMonthInCents returns the CostPerMonthInCents field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *ClusterFeature) GetCostPerMonthInCents() int32 {
 	if o == nil || IsNil(o.CostPerMonthInCents.Get()) {
 		var ret int32
@@ -172,6 +180,7 @@ func (o *ClusterFeature) GetCostPerMonthInCents() int32 {
 // GetCostPerMonthInCentsOk returns a tuple with the CostPerMonthInCents field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *ClusterFeature) GetCostPerMonthInCentsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
@@ -189,6 +198,7 @@ func (o *ClusterFeature) HasCostPerMonthInCents() bool {
 }
 
 // SetCostPerMonthInCents gets a reference to the given NullableInt32 and assigns it to the CostPerMonthInCents field.
+// Deprecated
 func (o *ClusterFeature) SetCostPerMonthInCents(v int32) {
 	o.CostPerMonthInCents.Set(&v)
 }
@@ -204,6 +214,7 @@ func (o *ClusterFeature) UnsetCostPerMonthInCents() {
 }
 
 // GetCostPerMonth returns the CostPerMonth field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *ClusterFeature) GetCostPerMonth() float32 {
 	if o == nil || IsNil(o.CostPerMonth.Get()) {
 		var ret float32
@@ -215,6 +226,7 @@ func (o *ClusterFeature) GetCostPerMonth() float32 {
 // GetCostPerMonthOk returns a tuple with the CostPerMonth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *ClusterFeature) GetCostPerMonthOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
@@ -232,6 +244,7 @@ func (o *ClusterFeature) HasCostPerMonth() bool {
 }
 
 // SetCostPerMonth gets a reference to the given NullableFloat32 and assigns it to the CostPerMonth field.
+// Deprecated
 func (o *ClusterFeature) SetCostPerMonth(v float32) {
 	o.CostPerMonth.Set(&v)
 }
@@ -247,6 +260,7 @@ func (o *ClusterFeature) UnsetCostPerMonth() {
 }
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *ClusterFeature) GetCurrencyCode() string {
 	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
@@ -258,6 +272,7 @@ func (o *ClusterFeature) GetCurrencyCode() string {
 // GetCurrencyCodeOk returns a tuple with the CurrencyCode field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *ClusterFeature) GetCurrencyCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -275,6 +290,7 @@ func (o *ClusterFeature) HasCurrencyCode() bool {
 }
 
 // SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
+// Deprecated
 func (o *ClusterFeature) SetCurrencyCode(v string) {
 	o.CurrencyCode.Set(&v)
 }
@@ -287,6 +303,156 @@ func (o *ClusterFeature) SetCurrencyCodeNil() {
 // UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 func (o *ClusterFeature) UnsetCurrencyCode() {
 	o.CurrencyCode.Unset()
+}
+
+// GetIsCloudProviderPayingFeature returns the IsCloudProviderPayingFeature field value if set, zero value otherwise.
+func (o *ClusterFeature) GetIsCloudProviderPayingFeature() bool {
+	if o == nil || IsNil(o.IsCloudProviderPayingFeature) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCloudProviderPayingFeature
+}
+
+// GetIsCloudProviderPayingFeatureOk returns a tuple with the IsCloudProviderPayingFeature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterFeature) GetIsCloudProviderPayingFeatureOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCloudProviderPayingFeature) {
+		return nil, false
+	}
+	return o.IsCloudProviderPayingFeature, true
+}
+
+// HasIsCloudProviderPayingFeature returns a boolean if a field has been set.
+func (o *ClusterFeature) HasIsCloudProviderPayingFeature() bool {
+	if o != nil && !IsNil(o.IsCloudProviderPayingFeature) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCloudProviderPayingFeature gets a reference to the given bool and assigns it to the IsCloudProviderPayingFeature field.
+func (o *ClusterFeature) SetIsCloudProviderPayingFeature(v bool) {
+	o.IsCloudProviderPayingFeature = &v
+}
+
+// GetCloudProviderFeatureDocumentation returns the CloudProviderFeatureDocumentation field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeature) GetCloudProviderFeatureDocumentation() string {
+	if o == nil || IsNil(o.CloudProviderFeatureDocumentation.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.CloudProviderFeatureDocumentation.Get()
+}
+
+// GetCloudProviderFeatureDocumentationOk returns a tuple with the CloudProviderFeatureDocumentation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterFeature) GetCloudProviderFeatureDocumentationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CloudProviderFeatureDocumentation.Get(), o.CloudProviderFeatureDocumentation.IsSet()
+}
+
+// HasCloudProviderFeatureDocumentation returns a boolean if a field has been set.
+func (o *ClusterFeature) HasCloudProviderFeatureDocumentation() bool {
+	if o != nil && o.CloudProviderFeatureDocumentation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudProviderFeatureDocumentation gets a reference to the given NullableString and assigns it to the CloudProviderFeatureDocumentation field.
+func (o *ClusterFeature) SetCloudProviderFeatureDocumentation(v string) {
+	o.CloudProviderFeatureDocumentation.Set(&v)
+}
+
+// SetCloudProviderFeatureDocumentationNil sets the value for CloudProviderFeatureDocumentation to be an explicit nil
+func (o *ClusterFeature) SetCloudProviderFeatureDocumentationNil() {
+	o.CloudProviderFeatureDocumentation.Set(nil)
+}
+
+// UnsetCloudProviderFeatureDocumentation ensures that no value is present for CloudProviderFeatureDocumentation, not even an explicit nil
+func (o *ClusterFeature) UnsetCloudProviderFeatureDocumentation() {
+	o.CloudProviderFeatureDocumentation.Unset()
+}
+
+// GetIsQoveryPayingFeature returns the IsQoveryPayingFeature field value if set, zero value otherwise.
+func (o *ClusterFeature) GetIsQoveryPayingFeature() bool {
+	if o == nil || IsNil(o.IsQoveryPayingFeature) {
+		var ret bool
+		return ret
+	}
+	return *o.IsQoveryPayingFeature
+}
+
+// GetIsQoveryPayingFeatureOk returns a tuple with the IsQoveryPayingFeature field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterFeature) GetIsQoveryPayingFeatureOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsQoveryPayingFeature) {
+		return nil, false
+	}
+	return o.IsQoveryPayingFeature, true
+}
+
+// HasIsQoveryPayingFeature returns a boolean if a field has been set.
+func (o *ClusterFeature) HasIsQoveryPayingFeature() bool {
+	if o != nil && !IsNil(o.IsQoveryPayingFeature) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsQoveryPayingFeature gets a reference to the given bool and assigns it to the IsQoveryPayingFeature field.
+func (o *ClusterFeature) SetIsQoveryPayingFeature(v bool) {
+	o.IsQoveryPayingFeature = &v
+}
+
+// GetQoveryFeatureDocumentation returns the QoveryFeatureDocumentation field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeature) GetQoveryFeatureDocumentation() string {
+	if o == nil || IsNil(o.QoveryFeatureDocumentation.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.QoveryFeatureDocumentation.Get()
+}
+
+// GetQoveryFeatureDocumentationOk returns a tuple with the QoveryFeatureDocumentation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterFeature) GetQoveryFeatureDocumentationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.QoveryFeatureDocumentation.Get(), o.QoveryFeatureDocumentation.IsSet()
+}
+
+// HasQoveryFeatureDocumentation returns a boolean if a field has been set.
+func (o *ClusterFeature) HasQoveryFeatureDocumentation() bool {
+	if o != nil && o.QoveryFeatureDocumentation.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetQoveryFeatureDocumentation gets a reference to the given NullableString and assigns it to the QoveryFeatureDocumentation field.
+func (o *ClusterFeature) SetQoveryFeatureDocumentation(v string) {
+	o.QoveryFeatureDocumentation.Set(&v)
+}
+
+// SetQoveryFeatureDocumentationNil sets the value for QoveryFeatureDocumentation to be an explicit nil
+func (o *ClusterFeature) SetQoveryFeatureDocumentationNil() {
+	o.QoveryFeatureDocumentation.Set(nil)
+}
+
+// UnsetQoveryFeatureDocumentation ensures that no value is present for QoveryFeatureDocumentation, not even an explicit nil
+func (o *ClusterFeature) UnsetQoveryFeatureDocumentation() {
+	o.QoveryFeatureDocumentation.Unset()
 }
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
@@ -455,6 +621,18 @@ func (o ClusterFeature) ToMap() (map[string]interface{}, error) {
 	}
 	if o.CurrencyCode.IsSet() {
 		toSerialize["currency_code"] = o.CurrencyCode.Get()
+	}
+	if !IsNil(o.IsCloudProviderPayingFeature) {
+		toSerialize["is_cloud_provider_paying_feature"] = o.IsCloudProviderPayingFeature
+	}
+	if o.CloudProviderFeatureDocumentation.IsSet() {
+		toSerialize["cloud_provider_feature_documentation"] = o.CloudProviderFeatureDocumentation.Get()
+	}
+	if !IsNil(o.IsQoveryPayingFeature) {
+		toSerialize["is_qovery_paying_feature"] = o.IsQoveryPayingFeature
+	}
+	if o.QoveryFeatureDocumentation.IsSet() {
+		toSerialize["qovery_feature_documentation"] = o.QoveryFeatureDocumentation.Get()
 	}
 	if !IsNil(o.ValueType) {
 		toSerialize["value_type"] = o.ValueType
