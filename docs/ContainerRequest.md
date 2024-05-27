@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -450,6 +451,31 @@ SetAnnotationsGroups sets AnnotationsGroups field to given value.
 `func (o *ContainerRequest) HasAnnotationsGroups() bool`
 
 HasAnnotationsGroups returns a boolean if a field has been set.
+
+### GetLabelsGroups
+
+`func (o *ContainerRequest) GetLabelsGroups() []ServiceLabelRequest`
+
+GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
+
+### GetLabelsGroupsOk
+
+`func (o *ContainerRequest) GetLabelsGroupsOk() (*[]ServiceLabelRequest, bool)`
+
+GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabelsGroups
+
+`func (o *ContainerRequest) SetLabelsGroups(v []ServiceLabelRequest)`
+
+SetLabelsGroups sets LabelsGroups field to given value.
+
+### HasLabelsGroups
+
+`func (o *ContainerRequest) HasLabelsGroups() bool`
+
+HasLabelsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

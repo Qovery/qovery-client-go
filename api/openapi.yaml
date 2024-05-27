@@ -14973,6 +14973,8 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+          labels_groups:
+            $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
         required:
         - environment
         - healthchecks
@@ -15256,6 +15258,8 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
+          labels_groups:
+            $ref: '#/components/schemas/ServiceLabelsRequestList'
         required:
         - healthchecks
         type: object
@@ -15416,6 +15420,20 @@ components:
       required:
       - id
       type: object
+    ServiceLabelsRequestList:
+      items:
+        $ref: '#/components/schemas/ServiceLabelRequest'
+      type: array
+    ServiceLabelRequest:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
     ApplicationRequest:
       allOf:
       - $ref: '#/components/schemas/ServiceStorageRequest'
@@ -15486,6 +15504,8 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
+          labels_groups:
+            $ref: '#/components/schemas/ServiceLabelsRequestList'
         required:
         - git_repository
         - healthchecks
@@ -17302,6 +17322,8 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
+          labels_groups:
+            $ref: '#/components/schemas/ServiceLabelsRequestList'
         required:
         - healthchecks
         - image_name
@@ -17380,6 +17402,8 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+          labels_groups:
+            $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
         required:
         - auto_preview
         - cpu
@@ -17691,6 +17715,8 @@ components:
             type: string
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+          labels_groups:
+            $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
         required:
         - environment
         type: object
@@ -17740,6 +17766,9 @@ components:
     DatabaseEditRequest:
       example:
         memory: 1024
+        labels_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         accessibility: null
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -17796,6 +17825,10 @@ components:
           items:
             $ref: '#/components/schemas/ServiceAnnotationRequest'
           type: array
+        labels_groups:
+          items:
+            $ref: '#/components/schemas/ServiceLabelRequest'
+          type: array
       type: object
     DatabaseModeEnum:
       enum:
@@ -17806,6 +17839,9 @@ components:
       example:
         mode: null
         memory: 1024
+        labels_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         accessibility: null
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -17866,6 +17902,10 @@ components:
         annotations_groups:
           items:
             $ref: '#/components/schemas/ServiceAnnotationRequest'
+          type: array
+        labels_groups:
+          items:
+            $ref: '#/components/schemas/ServiceLabelRequest'
           type: array
       required:
       - mode

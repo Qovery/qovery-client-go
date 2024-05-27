@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | [optional] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
@@ -363,6 +364,31 @@ SetAnnotationsGroups sets AnnotationsGroups field to given value.
 `func (o *Database) HasAnnotationsGroups() bool`
 
 HasAnnotationsGroups returns a boolean if a field has been set.
+
+### GetLabelsGroups
+
+`func (o *Database) GetLabelsGroups() []OrganizationLabelsGroupResponse`
+
+GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
+
+### GetLabelsGroupsOk
+
+`func (o *Database) GetLabelsGroupsOk() (*[]OrganizationLabelsGroupResponse, bool)`
+
+GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabelsGroups
+
+`func (o *Database) SetLabelsGroups(v []OrganizationLabelsGroupResponse)`
+
+SetLabelsGroups sets LabelsGroups field to given value.
+
+### HasLabelsGroups
+
+`func (o *Database) HasLabelsGroups() bool`
+
+HasLabelsGroups returns a boolean if a field has been set.
 
 ### GetEnvironment
 

@@ -35,6 +35,7 @@ type DatabaseEditRequest struct {
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
 	InstanceType      *string                    `json:"instance_type,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 }
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
@@ -350,6 +351,38 @@ func (o *DatabaseEditRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest)
 	o.AnnotationsGroups = v
 }
 
+// GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
+func (o *DatabaseEditRequest) GetLabelsGroups() []ServiceLabelRequest {
+	if o == nil || IsNil(o.LabelsGroups) {
+		var ret []ServiceLabelRequest
+		return ret
+	}
+	return o.LabelsGroups
+}
+
+// GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseEditRequest) GetLabelsGroupsOk() ([]ServiceLabelRequest, bool) {
+	if o == nil || IsNil(o.LabelsGroups) {
+		return nil, false
+	}
+	return o.LabelsGroups, true
+}
+
+// HasLabelsGroups returns a boolean if a field has been set.
+func (o *DatabaseEditRequest) HasLabelsGroups() bool {
+	if o != nil && !IsNil(o.LabelsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelsGroups gets a reference to the given []ServiceLabelRequest and assigns it to the LabelsGroups field.
+func (o *DatabaseEditRequest) SetLabelsGroups(v []ServiceLabelRequest) {
+	o.LabelsGroups = v
+}
+
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -386,6 +419,9 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
+	}
+	if !IsNil(o.LabelsGroups) {
+		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	return toSerialize, nil
 }

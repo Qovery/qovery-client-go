@@ -889,6 +889,7 @@ Class | Method | HTTP request | Description
  - [Service](docs/Service.md)
  - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
+ - [ServiceLabelRequest](docs/ServiceLabelRequest.md)
  - [ServicePort](docs/ServicePort.md)
  - [ServicePortRequest](docs/ServicePortRequest.md)
  - [ServicePortRequestPortsInner](docs/ServicePortRequestPortsInner.md)

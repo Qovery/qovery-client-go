@@ -559,6 +559,7 @@ docs/SecretResponseList.md
 docs/Service.md
 docs/ServiceAnnotationRequest.md
 docs/ServiceDeploymentStatusEnum.md
+docs/ServiceLabelRequest.md
 docs/ServicePort.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
@@ -1012,6 +1013,7 @@ model_secret_response_list.go
 model_service.go
 model_service_annotation_request.go
 model_service_deployment_status_enum.go
+model_service_label_request.go
 model_service_port.go
 model_service_port_request.go
 model_service_port_request_ports_inner.go

@@ -41,6 +41,7 @@ type Database struct {
 	// unit is GB
 	Storage           *int32                                 `json:"storage,omitempty"`
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	Environment       ReferenceObject                        `json:"environment"`
 	Host              *string                                `json:"host,omitempty"`
 	Port              *int32                                 `json:"port,omitempty"`
@@ -488,6 +489,38 @@ func (o *Database) SetAnnotationsGroups(v []OrganizationAnnotationsGroupResponse
 	o.AnnotationsGroups = v
 }
 
+// GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
+func (o *Database) GetLabelsGroups() []OrganizationLabelsGroupResponse {
+	if o == nil || IsNil(o.LabelsGroups) {
+		var ret []OrganizationLabelsGroupResponse
+		return ret
+	}
+	return o.LabelsGroups
+}
+
+// GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Database) GetLabelsGroupsOk() ([]OrganizationLabelsGroupResponse, bool) {
+	if o == nil || IsNil(o.LabelsGroups) {
+		return nil, false
+	}
+	return o.LabelsGroups, true
+}
+
+// HasLabelsGroups returns a boolean if a field has been set.
+func (o *Database) HasLabelsGroups() bool {
+	if o != nil && !IsNil(o.LabelsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelsGroups gets a reference to the given []OrganizationLabelsGroupResponse and assigns it to the LabelsGroups field.
+func (o *Database) SetLabelsGroups(v []OrganizationLabelsGroupResponse) {
+	o.LabelsGroups = v
+}
+
 // GetEnvironment returns the Environment field value
 func (o *Database) GetEnvironment() ReferenceObject {
 	if o == nil {
@@ -711,6 +744,9 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
+	}
+	if !IsNil(o.LabelsGroups) {
+		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	toSerialize["environment"] = o.Environment
 	if !IsNil(o.Host) {

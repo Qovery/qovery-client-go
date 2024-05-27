@@ -59,6 +59,7 @@ type ContainerResponse struct {
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
 	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 }
 
 // NewContainerResponse instantiates a new ContainerResponse object
@@ -745,6 +746,38 @@ func (o *ContainerResponse) SetAnnotationsGroups(v []OrganizationAnnotationsGrou
 	o.AnnotationsGroups = v
 }
 
+// GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
+func (o *ContainerResponse) GetLabelsGroups() []OrganizationLabelsGroupResponse {
+	if o == nil || IsNil(o.LabelsGroups) {
+		var ret []OrganizationLabelsGroupResponse
+		return ret
+	}
+	return o.LabelsGroups
+}
+
+// GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetLabelsGroupsOk() ([]OrganizationLabelsGroupResponse, bool) {
+	if o == nil || IsNil(o.LabelsGroups) {
+		return nil, false
+	}
+	return o.LabelsGroups, true
+}
+
+// HasLabelsGroups returns a boolean if a field has been set.
+func (o *ContainerResponse) HasLabelsGroups() bool {
+	if o != nil && !IsNil(o.LabelsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelsGroups gets a reference to the given []OrganizationLabelsGroupResponse and assigns it to the LabelsGroups field.
+func (o *ContainerResponse) SetLabelsGroups(v []OrganizationLabelsGroupResponse) {
+	o.LabelsGroups = v
+}
+
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -796,6 +829,9 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
+	}
+	if !IsNil(o.LabelsGroups) {
+		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	return toSerialize, nil
 }
