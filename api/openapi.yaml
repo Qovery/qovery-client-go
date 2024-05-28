@@ -15315,6 +15315,11 @@ components:
       - url
       type: object
     ApplicationGitRepositoryRequest:
+      example:
+        root_path: /
+        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branch: feat/text_xxx
+        url: https://github.com/Qovery/simple-node-app
       properties:
         url:
           description: application git repository URL
@@ -20012,15 +20017,14 @@ components:
     DockerfileCheckRequest:
       example:
         git_repository:
-          is_private: true
-          name: simple-node-app
-          default_branch: master
-          id: id
+          root_path: /
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
         dockerfile_path: dockerfile_path
       properties:
         git_repository:
-          $ref: '#/components/schemas/GitRepository'
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
         dockerfile_path:
           description: path of the dockerfile with root_path as base path
           type: string

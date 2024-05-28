@@ -20,7 +20,7 @@ var _ MappedNullable = &DockerfileCheckRequest{}
 
 // DockerfileCheckRequest struct for DockerfileCheckRequest
 type DockerfileCheckRequest struct {
-	GitRepository GitRepository `json:"git_repository"`
+	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	// path of the dockerfile with root_path as base path
 	DockerfilePath string `json:"dockerfile_path"`
 }
@@ -29,7 +29,7 @@ type DockerfileCheckRequest struct {
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDockerfileCheckRequest(gitRepository GitRepository, dockerfilePath string) *DockerfileCheckRequest {
+func NewDockerfileCheckRequest(gitRepository ApplicationGitRepositoryRequest, dockerfilePath string) *DockerfileCheckRequest {
 	this := DockerfileCheckRequest{}
 	this.GitRepository = gitRepository
 	this.DockerfilePath = dockerfilePath
@@ -45,9 +45,9 @@ func NewDockerfileCheckRequestWithDefaults() *DockerfileCheckRequest {
 }
 
 // GetGitRepository returns the GitRepository field value
-func (o *DockerfileCheckRequest) GetGitRepository() GitRepository {
+func (o *DockerfileCheckRequest) GetGitRepository() ApplicationGitRepositoryRequest {
 	if o == nil {
-		var ret GitRepository
+		var ret ApplicationGitRepositoryRequest
 		return ret
 	}
 
@@ -56,7 +56,7 @@ func (o *DockerfileCheckRequest) GetGitRepository() GitRepository {
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value
 // and a boolean to check if the value has been set.
-func (o *DockerfileCheckRequest) GetGitRepositoryOk() (*GitRepository, bool) {
+func (o *DockerfileCheckRequest) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -64,7 +64,7 @@ func (o *DockerfileCheckRequest) GetGitRepositoryOk() (*GitRepository, bool) {
 }
 
 // SetGitRepository sets field value
-func (o *DockerfileCheckRequest) SetGitRepository(v GitRepository) {
+func (o *DockerfileCheckRequest) SetGitRepository(v ApplicationGitRepositoryRequest) {
 	o.GitRepository = v
 }
 

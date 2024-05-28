@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GitRepository** | [**GitRepository**](GitRepository.md) |  | 
+**GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **DockerfilePath** | **string** | path of the dockerfile with root_path as base path | 
 
 ## Methods
 
 ### NewDockerfileCheckRequest
 
-`func NewDockerfileCheckRequest(gitRepository GitRepository, dockerfilePath string, ) *DockerfileCheckRequest`
+`func NewDockerfileCheckRequest(gitRepository ApplicationGitRepositoryRequest, dockerfilePath string, ) *DockerfileCheckRequest`
 
 NewDockerfileCheckRequest instantiates a new DockerfileCheckRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetGitRepository
 
-`func (o *DockerfileCheckRequest) GetGitRepository() GitRepository`
+`func (o *DockerfileCheckRequest) GetGitRepository() ApplicationGitRepositoryRequest`
 
 GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
 ### GetGitRepositoryOk
 
-`func (o *DockerfileCheckRequest) GetGitRepositoryOk() (*GitRepository, bool)`
+`func (o *DockerfileCheckRequest) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool)`
 
 GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitRepository
 
-`func (o *DockerfileCheckRequest) SetGitRepository(v GitRepository)`
+`func (o *DockerfileCheckRequest) SetGitRepository(v ApplicationGitRepositoryRequest)`
 
 SetGitRepository sets GitRepository field to given value.
 
