@@ -16,44 +16,44 @@ import (
 	"fmt"
 )
 
-// ClusterFeatureValue - struct for ClusterFeatureValue
-type ClusterFeatureValue struct {
+// ClusterRequestFeaturesInnerValue - struct for ClusterRequestFeaturesInnerValue
+type ClusterRequestFeaturesInnerValue struct {
 	ClusterFeatureAwsExistingVpc *ClusterFeatureAwsExistingVpc
 	ClusterFeatureGcpExistingVpc *ClusterFeatureGcpExistingVpc
 	Bool                         *bool
 	String                       *string
 }
 
-// ClusterFeatureAwsExistingVpcAsClusterFeatureValue is a convenience function that returns ClusterFeatureAwsExistingVpc wrapped in ClusterFeatureValue
-func ClusterFeatureAwsExistingVpcAsClusterFeatureValue(v *ClusterFeatureAwsExistingVpc) ClusterFeatureValue {
-	return ClusterFeatureValue{
+// ClusterFeatureAwsExistingVpcAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterFeatureAwsExistingVpc wrapped in ClusterRequestFeaturesInnerValue
+func ClusterFeatureAwsExistingVpcAsClusterRequestFeaturesInnerValue(v *ClusterFeatureAwsExistingVpc) ClusterRequestFeaturesInnerValue {
+	return ClusterRequestFeaturesInnerValue{
 		ClusterFeatureAwsExistingVpc: v,
 	}
 }
 
-// ClusterFeatureGcpExistingVpcAsClusterFeatureValue is a convenience function that returns ClusterFeatureGcpExistingVpc wrapped in ClusterFeatureValue
-func ClusterFeatureGcpExistingVpcAsClusterFeatureValue(v *ClusterFeatureGcpExistingVpc) ClusterFeatureValue {
-	return ClusterFeatureValue{
+// ClusterFeatureGcpExistingVpcAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterFeatureGcpExistingVpc wrapped in ClusterRequestFeaturesInnerValue
+func ClusterFeatureGcpExistingVpcAsClusterRequestFeaturesInnerValue(v *ClusterFeatureGcpExistingVpc) ClusterRequestFeaturesInnerValue {
+	return ClusterRequestFeaturesInnerValue{
 		ClusterFeatureGcpExistingVpc: v,
 	}
 }
 
-// boolAsClusterFeatureValue is a convenience function that returns bool wrapped in ClusterFeatureValue
-func BoolAsClusterFeatureValue(v *bool) ClusterFeatureValue {
-	return ClusterFeatureValue{
+// boolAsClusterRequestFeaturesInnerValue is a convenience function that returns bool wrapped in ClusterRequestFeaturesInnerValue
+func BoolAsClusterRequestFeaturesInnerValue(v *bool) ClusterRequestFeaturesInnerValue {
+	return ClusterRequestFeaturesInnerValue{
 		Bool: v,
 	}
 }
 
-// stringAsClusterFeatureValue is a convenience function that returns string wrapped in ClusterFeatureValue
-func StringAsClusterFeatureValue(v *string) ClusterFeatureValue {
-	return ClusterFeatureValue{
+// stringAsClusterRequestFeaturesInnerValue is a convenience function that returns string wrapped in ClusterRequestFeaturesInnerValue
+func StringAsClusterRequestFeaturesInnerValue(v *string) ClusterRequestFeaturesInnerValue {
+	return ClusterRequestFeaturesInnerValue{
 		String: v,
 	}
 }
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
+func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 	var err error
 	// this object is nullable so check if the payload is null or empty string
 	if string(data) == "" || string(data) == "{}" {
@@ -62,7 +62,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 
 	match := 0
 	// try to unmarshal data into ClusterFeatureAwsExistingVpc
-	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureAwsExistingVpc)
+	err = json.Unmarshal(data, &dst.ClusterFeatureAwsExistingVpc)
 	if err == nil {
 		jsonClusterFeatureAwsExistingVpc, _ := json.Marshal(dst.ClusterFeatureAwsExistingVpc)
 		if string(jsonClusterFeatureAwsExistingVpc) == "{}" { // empty struct
@@ -75,7 +75,7 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into ClusterFeatureGcpExistingVpc
-	err = newStrictDecoder(data).Decode(&dst.ClusterFeatureGcpExistingVpc)
+	err = json.Unmarshal(data, &dst.ClusterFeatureGcpExistingVpc)
 	if err == nil {
 		jsonClusterFeatureGcpExistingVpc, _ := json.Marshal(dst.ClusterFeatureGcpExistingVpc)
 		if string(jsonClusterFeatureGcpExistingVpc) == "{}" { // empty struct
@@ -88,10 +88,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into Bool
-	err = newStrictDecoder(data).Decode(&dst.Bool)
+	err = json.Unmarshal(data, &dst.Bool)
 	if err == nil {
-		jsonBool, _ := json.Marshal(dst.Bool)
-		if string(jsonBool) == "{}" { // empty struct
+		jsonbool, _ := json.Marshal(dst.Bool)
+		if string(jsonbool) == "{}" { // empty struct
 			dst.Bool = nil
 		} else {
 			match++
@@ -101,10 +101,10 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 	}
 
 	// try to unmarshal data into String
-	err = newStrictDecoder(data).Decode(&dst.String)
+	err = json.Unmarshal(data, &dst.String)
 	if err == nil {
-		jsonString, _ := json.Marshal(dst.String)
-		if string(jsonString) == "{}" { // empty struct
+		jsonstring, _ := json.Marshal(dst.String)
+		if string(jsonstring) == "{}" { // empty struct
 			dst.String = nil
 		} else {
 			match++
@@ -120,16 +120,16 @@ func (dst *ClusterFeatureValue) UnmarshalJSON(data []byte) error {
 		dst.Bool = nil
 		dst.String = nil
 
-		return fmt.Errorf("data matches more than one schema in oneOf(ClusterFeatureValue)")
+		return fmt.Errorf("data matches more than one schema in oneOf(ClusterRequestFeaturesInnerValue)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ClusterFeatureValue)")
+		return fmt.Errorf("data failed to match schemas in oneOf(ClusterRequestFeaturesInnerValue)")
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src ClusterFeatureValue) MarshalJSON() ([]byte, error) {
+func (src ClusterRequestFeaturesInnerValue) MarshalJSON() ([]byte, error) {
 	if src.ClusterFeatureAwsExistingVpc != nil {
 		return json.Marshal(&src.ClusterFeatureAwsExistingVpc)
 	}
@@ -150,7 +150,7 @@ func (src ClusterFeatureValue) MarshalJSON() ([]byte, error) {
 }
 
 // Get the actual instance
-func (obj *ClusterFeatureValue) GetActualInstance() interface{} {
+func (obj *ClusterRequestFeaturesInnerValue) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -174,38 +174,38 @@ func (obj *ClusterFeatureValue) GetActualInstance() interface{} {
 	return nil
 }
 
-type NullableClusterFeatureValue struct {
-	value *ClusterFeatureValue
+type NullableClusterRequestFeaturesInnerValue struct {
+	value *ClusterRequestFeaturesInnerValue
 	isSet bool
 }
 
-func (v NullableClusterFeatureValue) Get() *ClusterFeatureValue {
+func (v NullableClusterRequestFeaturesInnerValue) Get() *ClusterRequestFeaturesInnerValue {
 	return v.value
 }
 
-func (v *NullableClusterFeatureValue) Set(val *ClusterFeatureValue) {
+func (v *NullableClusterRequestFeaturesInnerValue) Set(val *ClusterRequestFeaturesInnerValue) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterFeatureValue) IsSet() bool {
+func (v NullableClusterRequestFeaturesInnerValue) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterFeatureValue) Unset() {
+func (v *NullableClusterRequestFeaturesInnerValue) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterFeatureValue(val *ClusterFeatureValue) *NullableClusterFeatureValue {
-	return &NullableClusterFeatureValue{value: val, isSet: true}
+func NewNullableClusterRequestFeaturesInnerValue(val *ClusterRequestFeaturesInnerValue) *NullableClusterRequestFeaturesInnerValue {
+	return &NullableClusterRequestFeaturesInnerValue{value: val, isSet: true}
 }
 
-func (v NullableClusterFeatureValue) MarshalJSON() ([]byte, error) {
+func (v NullableClusterRequestFeaturesInnerValue) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterFeatureValue) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterRequestFeaturesInnerValue) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

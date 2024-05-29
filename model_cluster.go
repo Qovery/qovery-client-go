@@ -53,7 +53,7 @@ type Cluster struct {
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
 	SshKeys          []string                     `json:"ssh_keys,omitempty"`
-	Features         []ClusterFeature             `json:"features,omitempty"`
+	Features         []ClusterFeatureResponse     `json:"features,omitempty"`
 	DeploymentStatus *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
 }
 
@@ -785,9 +785,9 @@ func (o *Cluster) SetSshKeys(v []string) {
 }
 
 // GetFeatures returns the Features field value if set, zero value otherwise.
-func (o *Cluster) GetFeatures() []ClusterFeature {
+func (o *Cluster) GetFeatures() []ClusterFeatureResponse {
 	if o == nil || IsNil(o.Features) {
-		var ret []ClusterFeature
+		var ret []ClusterFeatureResponse
 		return ret
 	}
 	return o.Features
@@ -795,7 +795,7 @@ func (o *Cluster) GetFeatures() []ClusterFeature {
 
 // GetFeaturesOk returns a tuple with the Features field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetFeaturesOk() ([]ClusterFeature, bool) {
+func (o *Cluster) GetFeaturesOk() ([]ClusterFeatureResponse, bool) {
 	if o == nil || IsNil(o.Features) {
 		return nil, false
 	}
@@ -811,8 +811,8 @@ func (o *Cluster) HasFeatures() bool {
 	return false
 }
 
-// SetFeatures gets a reference to the given []ClusterFeature and assigns it to the Features field.
-func (o *Cluster) SetFeatures(v []ClusterFeature) {
+// SetFeatures gets a reference to the given []ClusterFeatureResponse and assigns it to the Features field.
+func (o *Cluster) SetFeatures(v []ClusterFeatureResponse) {
 	o.Features = v
 }
 

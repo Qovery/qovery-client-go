@@ -1,4 +1,4 @@
-# ClusterFeatureAcceptedValuesInner
+# ClusterFeatureResponseAcceptedValuesInner
 
 ## Properties
 
@@ -7,20 +7,20 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewClusterFeatureAcceptedValuesInner
+### NewClusterFeatureResponseAcceptedValuesInner
 
-`func NewClusterFeatureAcceptedValuesInner() *ClusterFeatureAcceptedValuesInner`
+`func NewClusterFeatureResponseAcceptedValuesInner() *ClusterFeatureResponseAcceptedValuesInner`
 
-NewClusterFeatureAcceptedValuesInner instantiates a new ClusterFeatureAcceptedValuesInner object
+NewClusterFeatureResponseAcceptedValuesInner instantiates a new ClusterFeatureResponseAcceptedValuesInner object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewClusterFeatureAcceptedValuesInnerWithDefaults
+### NewClusterFeatureResponseAcceptedValuesInnerWithDefaults
 
-`func NewClusterFeatureAcceptedValuesInnerWithDefaults() *ClusterFeatureAcceptedValuesInner`
+`func NewClusterFeatureResponseAcceptedValuesInnerWithDefaults() *ClusterFeatureResponseAcceptedValuesInner`
 
-NewClusterFeatureAcceptedValuesInnerWithDefaults instantiates a new ClusterFeatureAcceptedValuesInner object
+NewClusterFeatureResponseAcceptedValuesInnerWithDefaults instantiates a new ClusterFeatureResponseAcceptedValuesInner object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 

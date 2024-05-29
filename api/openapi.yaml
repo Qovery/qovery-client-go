@@ -16043,7 +16043,7 @@ components:
             type: array
           features:
             items:
-              $ref: '#/components/schemas/ClusterFeature'
+              $ref: '#/components/schemas/ClusterFeatureResponse'
             type: array
           deployment_status:
             $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
@@ -16192,7 +16192,7 @@ components:
             $ref: '#/components/schemas/ClusterCredentials'
           type: array
       type: object
-    ClusterFeature:
+    ClusterFeatureResponse:
       example:
         value_type: BOOLEAN
         cost_per_month_in_cents: 9900
@@ -16209,7 +16209,7 @@ components:
         qovery_feature_documentation: https://qovery.doc/feature
         is_cloud_provider_paying_feature: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        value: null
+        value_object: null
       properties:
         id:
           format: uuid
@@ -16256,15 +16256,62 @@ components:
           - BOOLEAN
           nullable: false
           type: string
-        value:
-          $ref: '#/components/schemas/ClusterFeature_value'
+        value_object:
+          $ref: '#/components/schemas/ClusterFeatureResponse_value_object'
         is_value_updatable:
           default: false
           type: boolean
         accepted_values:
           items:
-            $ref: '#/components/schemas/ClusterFeature_accepted_values_inner'
+            $ref: '#/components/schemas/ClusterFeatureResponse_accepted_values_inner'
           type: array
+      type: object
+    ClusterFeatureResponseTypeEnum:
+      enum:
+      - STRING
+      - BOOLEAN
+      - AWS_USER_PROVIDED_NETWORK
+      - GCP_USER_PROVIDED_NETWORK
+      type: string
+    ClusterFeatureStringResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          type: string
+      required:
+      - type
+      - value
+      type: object
+    ClusterFeatureBooleanResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          type: boolean
+      required:
+      - type
+      - value
+      type: object
+    ClusterFeatureAwsExistingVpcResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
+      required:
+      - type
+      - value
+      type: object
+    ClusterFeatureGcpExistingVpcResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
+      required:
+      - type
+      - value
       type: object
     ClusterFeatureAwsExistingVpc:
       properties:
@@ -16374,7 +16421,7 @@ components:
           qovery_feature_documentation: https://qovery.doc/feature
           is_cloud_provider_paying_feature: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: null
+          value_object: null
         - value_type: BOOLEAN
           cost_per_month_in_cents: 9900
           is_value_updatable: false
@@ -16390,11 +16437,11 @@ components:
           qovery_feature_documentation: https://qovery.doc/feature
           is_cloud_provider_paying_feature: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          value: null
+          value_object: null
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterFeature'
+            $ref: '#/components/schemas/ClusterFeatureResponse'
           type: array
       type: object
     ClusterInstanceTypeResponseList:
@@ -23549,14 +23596,21 @@ components:
         name:
           type: string
       type: object
-    ClusterFeature_value:
+    ClusterFeatureResponse_value_object:
+      discriminator:
+        mapping:
+          STRING: '#/components/schemas/ClusterFeatureStringResponse'
+          BOOLEAN: '#/components/schemas/ClusterFeatureBooleanResponse'
+          AWS_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
+          GCP_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
+        propertyName: type
       nullable: true
       oneOf:
-      - type: string
-      - type: boolean
-      - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
-      - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
-    ClusterFeature_accepted_values_inner:
+      - $ref: '#/components/schemas/ClusterFeatureStringResponse'
+      - $ref: '#/components/schemas/ClusterFeatureBooleanResponse'
+      - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
+      - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
+    ClusterFeatureResponse_accepted_values_inner:
       oneOf:
       - type: string
       - type: boolean
@@ -23599,6 +23653,13 @@ components:
       - ram_in_gb
       - type
       type: object
+    ClusterRequest_features_inner_value:
+      nullable: true
+      oneOf:
+      - type: string
+      - type: boolean
+      - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
+      - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23609,7 +23670,7 @@ components:
           nullable: false
           type: string
         value:
-          $ref: '#/components/schemas/ClusterFeature_value'
+          $ref: '#/components/schemas/ClusterRequest_features_inner_value'
       type: object
     ClusterRoutingTable_results_inner:
       example:

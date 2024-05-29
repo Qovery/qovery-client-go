@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the ClusterFeature type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterFeature{}
+// checks if the ClusterFeatureResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ClusterFeatureResponse{}
 
-// ClusterFeature struct for ClusterFeature
-type ClusterFeature struct {
+// ClusterFeatureResponse struct for ClusterFeatureResponse
+type ClusterFeatureResponse struct {
 	Id          *string        `json:"id,omitempty"`
 	Title       *string        `json:"title,omitempty"`
 	Description NullableString `json:"description,omitempty"`
@@ -28,40 +28,40 @@ type ClusterFeature struct {
 	// Deprecated
 	CostPerMonth NullableFloat32 `json:"cost_per_month,omitempty"`
 	// Deprecated
-	CurrencyCode                      NullableString                      `json:"currency_code,omitempty"`
-	IsCloudProviderPayingFeature      *bool                               `json:"is_cloud_provider_paying_feature,omitempty"`
-	CloudProviderFeatureDocumentation NullableString                      `json:"cloud_provider_feature_documentation,omitempty"`
-	IsQoveryPayingFeature             *bool                               `json:"is_qovery_paying_feature,omitempty"`
-	QoveryFeatureDocumentation        NullableString                      `json:"qovery_feature_documentation,omitempty"`
-	ValueType                         *string                             `json:"value_type,omitempty"`
-	Value                             NullableClusterFeatureValue         `json:"value,omitempty"`
-	IsValueUpdatable                  *bool                               `json:"is_value_updatable,omitempty"`
-	AcceptedValues                    []ClusterFeatureAcceptedValuesInner `json:"accepted_values,omitempty"`
+	CurrencyCode                      NullableString                              `json:"currency_code,omitempty"`
+	IsCloudProviderPayingFeature      *bool                                       `json:"is_cloud_provider_paying_feature,omitempty"`
+	CloudProviderFeatureDocumentation NullableString                              `json:"cloud_provider_feature_documentation,omitempty"`
+	IsQoveryPayingFeature             *bool                                       `json:"is_qovery_paying_feature,omitempty"`
+	QoveryFeatureDocumentation        NullableString                              `json:"qovery_feature_documentation,omitempty"`
+	ValueType                         *string                                     `json:"value_type,omitempty"`
+	ValueObject                       NullableClusterFeatureResponseValueObject   `json:"value_object,omitempty"`
+	IsValueUpdatable                  *bool                                       `json:"is_value_updatable,omitempty"`
+	AcceptedValues                    []ClusterFeatureResponseAcceptedValuesInner `json:"accepted_values,omitempty"`
 }
 
-// NewClusterFeature instantiates a new ClusterFeature object
+// NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterFeature() *ClusterFeature {
-	this := ClusterFeature{}
+func NewClusterFeatureResponse() *ClusterFeatureResponse {
+	this := ClusterFeatureResponse{}
 	var isValueUpdatable bool = false
 	this.IsValueUpdatable = &isValueUpdatable
 	return &this
 }
 
-// NewClusterFeatureWithDefaults instantiates a new ClusterFeature object
+// NewClusterFeatureResponseWithDefaults instantiates a new ClusterFeatureResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewClusterFeatureWithDefaults() *ClusterFeature {
-	this := ClusterFeature{}
+func NewClusterFeatureResponseWithDefaults() *ClusterFeatureResponse {
+	this := ClusterFeatureResponse{}
 	var isValueUpdatable bool = false
 	this.IsValueUpdatable = &isValueUpdatable
 	return &this
 }
 
 // GetId returns the Id field value if set, zero value otherwise.
-func (o *ClusterFeature) GetId() string {
+func (o *ClusterFeatureResponse) GetId() string {
 	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
@@ -71,7 +71,7 @@ func (o *ClusterFeature) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetIdOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetIdOk() (*string, bool) {
 	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
@@ -79,7 +79,7 @@ func (o *ClusterFeature) GetIdOk() (*string, bool) {
 }
 
 // HasId returns a boolean if a field has been set.
-func (o *ClusterFeature) HasId() bool {
+func (o *ClusterFeatureResponse) HasId() bool {
 	if o != nil && !IsNil(o.Id) {
 		return true
 	}
@@ -88,12 +88,12 @@ func (o *ClusterFeature) HasId() bool {
 }
 
 // SetId gets a reference to the given string and assigns it to the Id field.
-func (o *ClusterFeature) SetId(v string) {
+func (o *ClusterFeatureResponse) SetId(v string) {
 	o.Id = &v
 }
 
 // GetTitle returns the Title field value if set, zero value otherwise.
-func (o *ClusterFeature) GetTitle() string {
+func (o *ClusterFeatureResponse) GetTitle() string {
 	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
@@ -103,7 +103,7 @@ func (o *ClusterFeature) GetTitle() string {
 
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetTitleOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetTitleOk() (*string, bool) {
 	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
@@ -111,7 +111,7 @@ func (o *ClusterFeature) GetTitleOk() (*string, bool) {
 }
 
 // HasTitle returns a boolean if a field has been set.
-func (o *ClusterFeature) HasTitle() bool {
+func (o *ClusterFeatureResponse) HasTitle() bool {
 	if o != nil && !IsNil(o.Title) {
 		return true
 	}
@@ -120,12 +120,12 @@ func (o *ClusterFeature) HasTitle() bool {
 }
 
 // SetTitle gets a reference to the given string and assigns it to the Title field.
-func (o *ClusterFeature) SetTitle(v string) {
+func (o *ClusterFeatureResponse) SetTitle(v string) {
 	o.Title = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeature) GetDescription() string {
+func (o *ClusterFeatureResponse) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
@@ -136,7 +136,7 @@ func (o *ClusterFeature) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeature) GetDescriptionOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *ClusterFeature) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *ClusterFeature) HasDescription() bool {
+func (o *ClusterFeatureResponse) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -153,23 +153,23 @@ func (o *ClusterFeature) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *ClusterFeature) SetDescription(v string) {
+func (o *ClusterFeatureResponse) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ClusterFeature) SetDescriptionNil() {
+func (o *ClusterFeatureResponse) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ClusterFeature) UnsetDescription() {
+func (o *ClusterFeatureResponse) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetCostPerMonthInCents returns the CostPerMonthInCents field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
-func (o *ClusterFeature) GetCostPerMonthInCents() int32 {
+func (o *ClusterFeatureResponse) GetCostPerMonthInCents() int32 {
 	if o == nil || IsNil(o.CostPerMonthInCents.Get()) {
 		var ret int32
 		return ret
@@ -181,7 +181,7 @@ func (o *ClusterFeature) GetCostPerMonthInCents() int32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 // Deprecated
-func (o *ClusterFeature) GetCostPerMonthInCentsOk() (*int32, bool) {
+func (o *ClusterFeatureResponse) GetCostPerMonthInCentsOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -189,7 +189,7 @@ func (o *ClusterFeature) GetCostPerMonthInCentsOk() (*int32, bool) {
 }
 
 // HasCostPerMonthInCents returns a boolean if a field has been set.
-func (o *ClusterFeature) HasCostPerMonthInCents() bool {
+func (o *ClusterFeatureResponse) HasCostPerMonthInCents() bool {
 	if o != nil && o.CostPerMonthInCents.IsSet() {
 		return true
 	}
@@ -199,23 +199,23 @@ func (o *ClusterFeature) HasCostPerMonthInCents() bool {
 
 // SetCostPerMonthInCents gets a reference to the given NullableInt32 and assigns it to the CostPerMonthInCents field.
 // Deprecated
-func (o *ClusterFeature) SetCostPerMonthInCents(v int32) {
+func (o *ClusterFeatureResponse) SetCostPerMonthInCents(v int32) {
 	o.CostPerMonthInCents.Set(&v)
 }
 
 // SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
-func (o *ClusterFeature) SetCostPerMonthInCentsNil() {
+func (o *ClusterFeatureResponse) SetCostPerMonthInCentsNil() {
 	o.CostPerMonthInCents.Set(nil)
 }
 
 // UnsetCostPerMonthInCents ensures that no value is present for CostPerMonthInCents, not even an explicit nil
-func (o *ClusterFeature) UnsetCostPerMonthInCents() {
+func (o *ClusterFeatureResponse) UnsetCostPerMonthInCents() {
 	o.CostPerMonthInCents.Unset()
 }
 
 // GetCostPerMonth returns the CostPerMonth field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
-func (o *ClusterFeature) GetCostPerMonth() float32 {
+func (o *ClusterFeatureResponse) GetCostPerMonth() float32 {
 	if o == nil || IsNil(o.CostPerMonth.Get()) {
 		var ret float32
 		return ret
@@ -227,7 +227,7 @@ func (o *ClusterFeature) GetCostPerMonth() float32 {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 // Deprecated
-func (o *ClusterFeature) GetCostPerMonthOk() (*float32, bool) {
+func (o *ClusterFeatureResponse) GetCostPerMonthOk() (*float32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -235,7 +235,7 @@ func (o *ClusterFeature) GetCostPerMonthOk() (*float32, bool) {
 }
 
 // HasCostPerMonth returns a boolean if a field has been set.
-func (o *ClusterFeature) HasCostPerMonth() bool {
+func (o *ClusterFeatureResponse) HasCostPerMonth() bool {
 	if o != nil && o.CostPerMonth.IsSet() {
 		return true
 	}
@@ -245,23 +245,23 @@ func (o *ClusterFeature) HasCostPerMonth() bool {
 
 // SetCostPerMonth gets a reference to the given NullableFloat32 and assigns it to the CostPerMonth field.
 // Deprecated
-func (o *ClusterFeature) SetCostPerMonth(v float32) {
+func (o *ClusterFeatureResponse) SetCostPerMonth(v float32) {
 	o.CostPerMonth.Set(&v)
 }
 
 // SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
-func (o *ClusterFeature) SetCostPerMonthNil() {
+func (o *ClusterFeatureResponse) SetCostPerMonthNil() {
 	o.CostPerMonth.Set(nil)
 }
 
 // UnsetCostPerMonth ensures that no value is present for CostPerMonth, not even an explicit nil
-func (o *ClusterFeature) UnsetCostPerMonth() {
+func (o *ClusterFeatureResponse) UnsetCostPerMonth() {
 	o.CostPerMonth.Unset()
 }
 
 // GetCurrencyCode returns the CurrencyCode field value if set, zero value otherwise (both if not set or set to explicit null).
 // Deprecated
-func (o *ClusterFeature) GetCurrencyCode() string {
+func (o *ClusterFeatureResponse) GetCurrencyCode() string {
 	if o == nil || IsNil(o.CurrencyCode.Get()) {
 		var ret string
 		return ret
@@ -273,7 +273,7 @@ func (o *ClusterFeature) GetCurrencyCode() string {
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 // Deprecated
-func (o *ClusterFeature) GetCurrencyCodeOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetCurrencyCodeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -281,7 +281,7 @@ func (o *ClusterFeature) GetCurrencyCodeOk() (*string, bool) {
 }
 
 // HasCurrencyCode returns a boolean if a field has been set.
-func (o *ClusterFeature) HasCurrencyCode() bool {
+func (o *ClusterFeatureResponse) HasCurrencyCode() bool {
 	if o != nil && o.CurrencyCode.IsSet() {
 		return true
 	}
@@ -291,22 +291,22 @@ func (o *ClusterFeature) HasCurrencyCode() bool {
 
 // SetCurrencyCode gets a reference to the given NullableString and assigns it to the CurrencyCode field.
 // Deprecated
-func (o *ClusterFeature) SetCurrencyCode(v string) {
+func (o *ClusterFeatureResponse) SetCurrencyCode(v string) {
 	o.CurrencyCode.Set(&v)
 }
 
 // SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
-func (o *ClusterFeature) SetCurrencyCodeNil() {
+func (o *ClusterFeatureResponse) SetCurrencyCodeNil() {
 	o.CurrencyCode.Set(nil)
 }
 
 // UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
-func (o *ClusterFeature) UnsetCurrencyCode() {
+func (o *ClusterFeatureResponse) UnsetCurrencyCode() {
 	o.CurrencyCode.Unset()
 }
 
 // GetIsCloudProviderPayingFeature returns the IsCloudProviderPayingFeature field value if set, zero value otherwise.
-func (o *ClusterFeature) GetIsCloudProviderPayingFeature() bool {
+func (o *ClusterFeatureResponse) GetIsCloudProviderPayingFeature() bool {
 	if o == nil || IsNil(o.IsCloudProviderPayingFeature) {
 		var ret bool
 		return ret
@@ -316,7 +316,7 @@ func (o *ClusterFeature) GetIsCloudProviderPayingFeature() bool {
 
 // GetIsCloudProviderPayingFeatureOk returns a tuple with the IsCloudProviderPayingFeature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetIsCloudProviderPayingFeatureOk() (*bool, bool) {
+func (o *ClusterFeatureResponse) GetIsCloudProviderPayingFeatureOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsCloudProviderPayingFeature) {
 		return nil, false
 	}
@@ -324,7 +324,7 @@ func (o *ClusterFeature) GetIsCloudProviderPayingFeatureOk() (*bool, bool) {
 }
 
 // HasIsCloudProviderPayingFeature returns a boolean if a field has been set.
-func (o *ClusterFeature) HasIsCloudProviderPayingFeature() bool {
+func (o *ClusterFeatureResponse) HasIsCloudProviderPayingFeature() bool {
 	if o != nil && !IsNil(o.IsCloudProviderPayingFeature) {
 		return true
 	}
@@ -333,12 +333,12 @@ func (o *ClusterFeature) HasIsCloudProviderPayingFeature() bool {
 }
 
 // SetIsCloudProviderPayingFeature gets a reference to the given bool and assigns it to the IsCloudProviderPayingFeature field.
-func (o *ClusterFeature) SetIsCloudProviderPayingFeature(v bool) {
+func (o *ClusterFeatureResponse) SetIsCloudProviderPayingFeature(v bool) {
 	o.IsCloudProviderPayingFeature = &v
 }
 
 // GetCloudProviderFeatureDocumentation returns the CloudProviderFeatureDocumentation field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeature) GetCloudProviderFeatureDocumentation() string {
+func (o *ClusterFeatureResponse) GetCloudProviderFeatureDocumentation() string {
 	if o == nil || IsNil(o.CloudProviderFeatureDocumentation.Get()) {
 		var ret string
 		return ret
@@ -349,7 +349,7 @@ func (o *ClusterFeature) GetCloudProviderFeatureDocumentation() string {
 // GetCloudProviderFeatureDocumentationOk returns a tuple with the CloudProviderFeatureDocumentation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeature) GetCloudProviderFeatureDocumentationOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetCloudProviderFeatureDocumentationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -357,7 +357,7 @@ func (o *ClusterFeature) GetCloudProviderFeatureDocumentationOk() (*string, bool
 }
 
 // HasCloudProviderFeatureDocumentation returns a boolean if a field has been set.
-func (o *ClusterFeature) HasCloudProviderFeatureDocumentation() bool {
+func (o *ClusterFeatureResponse) HasCloudProviderFeatureDocumentation() bool {
 	if o != nil && o.CloudProviderFeatureDocumentation.IsSet() {
 		return true
 	}
@@ -366,22 +366,22 @@ func (o *ClusterFeature) HasCloudProviderFeatureDocumentation() bool {
 }
 
 // SetCloudProviderFeatureDocumentation gets a reference to the given NullableString and assigns it to the CloudProviderFeatureDocumentation field.
-func (o *ClusterFeature) SetCloudProviderFeatureDocumentation(v string) {
+func (o *ClusterFeatureResponse) SetCloudProviderFeatureDocumentation(v string) {
 	o.CloudProviderFeatureDocumentation.Set(&v)
 }
 
 // SetCloudProviderFeatureDocumentationNil sets the value for CloudProviderFeatureDocumentation to be an explicit nil
-func (o *ClusterFeature) SetCloudProviderFeatureDocumentationNil() {
+func (o *ClusterFeatureResponse) SetCloudProviderFeatureDocumentationNil() {
 	o.CloudProviderFeatureDocumentation.Set(nil)
 }
 
 // UnsetCloudProviderFeatureDocumentation ensures that no value is present for CloudProviderFeatureDocumentation, not even an explicit nil
-func (o *ClusterFeature) UnsetCloudProviderFeatureDocumentation() {
+func (o *ClusterFeatureResponse) UnsetCloudProviderFeatureDocumentation() {
 	o.CloudProviderFeatureDocumentation.Unset()
 }
 
 // GetIsQoveryPayingFeature returns the IsQoveryPayingFeature field value if set, zero value otherwise.
-func (o *ClusterFeature) GetIsQoveryPayingFeature() bool {
+func (o *ClusterFeatureResponse) GetIsQoveryPayingFeature() bool {
 	if o == nil || IsNil(o.IsQoveryPayingFeature) {
 		var ret bool
 		return ret
@@ -391,7 +391,7 @@ func (o *ClusterFeature) GetIsQoveryPayingFeature() bool {
 
 // GetIsQoveryPayingFeatureOk returns a tuple with the IsQoveryPayingFeature field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetIsQoveryPayingFeatureOk() (*bool, bool) {
+func (o *ClusterFeatureResponse) GetIsQoveryPayingFeatureOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsQoveryPayingFeature) {
 		return nil, false
 	}
@@ -399,7 +399,7 @@ func (o *ClusterFeature) GetIsQoveryPayingFeatureOk() (*bool, bool) {
 }
 
 // HasIsQoveryPayingFeature returns a boolean if a field has been set.
-func (o *ClusterFeature) HasIsQoveryPayingFeature() bool {
+func (o *ClusterFeatureResponse) HasIsQoveryPayingFeature() bool {
 	if o != nil && !IsNil(o.IsQoveryPayingFeature) {
 		return true
 	}
@@ -408,12 +408,12 @@ func (o *ClusterFeature) HasIsQoveryPayingFeature() bool {
 }
 
 // SetIsQoveryPayingFeature gets a reference to the given bool and assigns it to the IsQoveryPayingFeature field.
-func (o *ClusterFeature) SetIsQoveryPayingFeature(v bool) {
+func (o *ClusterFeatureResponse) SetIsQoveryPayingFeature(v bool) {
 	o.IsQoveryPayingFeature = &v
 }
 
 // GetQoveryFeatureDocumentation returns the QoveryFeatureDocumentation field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeature) GetQoveryFeatureDocumentation() string {
+func (o *ClusterFeatureResponse) GetQoveryFeatureDocumentation() string {
 	if o == nil || IsNil(o.QoveryFeatureDocumentation.Get()) {
 		var ret string
 		return ret
@@ -424,7 +424,7 @@ func (o *ClusterFeature) GetQoveryFeatureDocumentation() string {
 // GetQoveryFeatureDocumentationOk returns a tuple with the QoveryFeatureDocumentation field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeature) GetQoveryFeatureDocumentationOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetQoveryFeatureDocumentationOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -432,7 +432,7 @@ func (o *ClusterFeature) GetQoveryFeatureDocumentationOk() (*string, bool) {
 }
 
 // HasQoveryFeatureDocumentation returns a boolean if a field has been set.
-func (o *ClusterFeature) HasQoveryFeatureDocumentation() bool {
+func (o *ClusterFeatureResponse) HasQoveryFeatureDocumentation() bool {
 	if o != nil && o.QoveryFeatureDocumentation.IsSet() {
 		return true
 	}
@@ -441,22 +441,22 @@ func (o *ClusterFeature) HasQoveryFeatureDocumentation() bool {
 }
 
 // SetQoveryFeatureDocumentation gets a reference to the given NullableString and assigns it to the QoveryFeatureDocumentation field.
-func (o *ClusterFeature) SetQoveryFeatureDocumentation(v string) {
+func (o *ClusterFeatureResponse) SetQoveryFeatureDocumentation(v string) {
 	o.QoveryFeatureDocumentation.Set(&v)
 }
 
 // SetQoveryFeatureDocumentationNil sets the value for QoveryFeatureDocumentation to be an explicit nil
-func (o *ClusterFeature) SetQoveryFeatureDocumentationNil() {
+func (o *ClusterFeatureResponse) SetQoveryFeatureDocumentationNil() {
 	o.QoveryFeatureDocumentation.Set(nil)
 }
 
 // UnsetQoveryFeatureDocumentation ensures that no value is present for QoveryFeatureDocumentation, not even an explicit nil
-func (o *ClusterFeature) UnsetQoveryFeatureDocumentation() {
+func (o *ClusterFeatureResponse) UnsetQoveryFeatureDocumentation() {
 	o.QoveryFeatureDocumentation.Unset()
 }
 
 // GetValueType returns the ValueType field value if set, zero value otherwise.
-func (o *ClusterFeature) GetValueType() string {
+func (o *ClusterFeatureResponse) GetValueType() string {
 	if o == nil || IsNil(o.ValueType) {
 		var ret string
 		return ret
@@ -466,7 +466,7 @@ func (o *ClusterFeature) GetValueType() string {
 
 // GetValueTypeOk returns a tuple with the ValueType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetValueTypeOk() (*string, bool) {
+func (o *ClusterFeatureResponse) GetValueTypeOk() (*string, bool) {
 	if o == nil || IsNil(o.ValueType) {
 		return nil, false
 	}
@@ -474,7 +474,7 @@ func (o *ClusterFeature) GetValueTypeOk() (*string, bool) {
 }
 
 // HasValueType returns a boolean if a field has been set.
-func (o *ClusterFeature) HasValueType() bool {
+func (o *ClusterFeatureResponse) HasValueType() bool {
 	if o != nil && !IsNil(o.ValueType) {
 		return true
 	}
@@ -483,55 +483,55 @@ func (o *ClusterFeature) HasValueType() bool {
 }
 
 // SetValueType gets a reference to the given string and assigns it to the ValueType field.
-func (o *ClusterFeature) SetValueType(v string) {
+func (o *ClusterFeatureResponse) SetValueType(v string) {
 	o.ValueType = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterFeature) GetValue() ClusterFeatureValue {
-	if o == nil || IsNil(o.Value.Get()) {
-		var ret ClusterFeatureValue
+// GetValueObject returns the ValueObject field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeatureResponse) GetValueObject() ClusterFeatureResponseValueObject {
+	if o == nil || IsNil(o.ValueObject.Get()) {
+		var ret ClusterFeatureResponseValueObject
 		return ret
 	}
-	return *o.Value.Get()
+	return *o.ValueObject.Get()
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueObjectOk returns a tuple with the ValueObject field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterFeature) GetValueOk() (*ClusterFeatureValue, bool) {
+func (o *ClusterFeatureResponse) GetValueObjectOk() (*ClusterFeatureResponseValueObject, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Value.Get(), o.Value.IsSet()
+	return o.ValueObject.Get(), o.ValueObject.IsSet()
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *ClusterFeature) HasValue() bool {
-	if o != nil && o.Value.IsSet() {
+// HasValueObject returns a boolean if a field has been set.
+func (o *ClusterFeatureResponse) HasValueObject() bool {
+	if o != nil && o.ValueObject.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given NullableClusterFeatureValue and assigns it to the Value field.
-func (o *ClusterFeature) SetValue(v ClusterFeatureValue) {
-	o.Value.Set(&v)
+// SetValueObject gets a reference to the given NullableClusterFeatureResponseValueObject and assigns it to the ValueObject field.
+func (o *ClusterFeatureResponse) SetValueObject(v ClusterFeatureResponseValueObject) {
+	o.ValueObject.Set(&v)
 }
 
-// SetValueNil sets the value for Value to be an explicit nil
-func (o *ClusterFeature) SetValueNil() {
-	o.Value.Set(nil)
+// SetValueObjectNil sets the value for ValueObject to be an explicit nil
+func (o *ClusterFeatureResponse) SetValueObjectNil() {
+	o.ValueObject.Set(nil)
 }
 
-// UnsetValue ensures that no value is present for Value, not even an explicit nil
-func (o *ClusterFeature) UnsetValue() {
-	o.Value.Unset()
+// UnsetValueObject ensures that no value is present for ValueObject, not even an explicit nil
+func (o *ClusterFeatureResponse) UnsetValueObject() {
+	o.ValueObject.Unset()
 }
 
 // GetIsValueUpdatable returns the IsValueUpdatable field value if set, zero value otherwise.
-func (o *ClusterFeature) GetIsValueUpdatable() bool {
+func (o *ClusterFeatureResponse) GetIsValueUpdatable() bool {
 	if o == nil || IsNil(o.IsValueUpdatable) {
 		var ret bool
 		return ret
@@ -541,7 +541,7 @@ func (o *ClusterFeature) GetIsValueUpdatable() bool {
 
 // GetIsValueUpdatableOk returns a tuple with the IsValueUpdatable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetIsValueUpdatableOk() (*bool, bool) {
+func (o *ClusterFeatureResponse) GetIsValueUpdatableOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsValueUpdatable) {
 		return nil, false
 	}
@@ -549,7 +549,7 @@ func (o *ClusterFeature) GetIsValueUpdatableOk() (*bool, bool) {
 }
 
 // HasIsValueUpdatable returns a boolean if a field has been set.
-func (o *ClusterFeature) HasIsValueUpdatable() bool {
+func (o *ClusterFeatureResponse) HasIsValueUpdatable() bool {
 	if o != nil && !IsNil(o.IsValueUpdatable) {
 		return true
 	}
@@ -558,14 +558,14 @@ func (o *ClusterFeature) HasIsValueUpdatable() bool {
 }
 
 // SetIsValueUpdatable gets a reference to the given bool and assigns it to the IsValueUpdatable field.
-func (o *ClusterFeature) SetIsValueUpdatable(v bool) {
+func (o *ClusterFeatureResponse) SetIsValueUpdatable(v bool) {
 	o.IsValueUpdatable = &v
 }
 
 // GetAcceptedValues returns the AcceptedValues field value if set, zero value otherwise.
-func (o *ClusterFeature) GetAcceptedValues() []ClusterFeatureAcceptedValuesInner {
+func (o *ClusterFeatureResponse) GetAcceptedValues() []ClusterFeatureResponseAcceptedValuesInner {
 	if o == nil || IsNil(o.AcceptedValues) {
-		var ret []ClusterFeatureAcceptedValuesInner
+		var ret []ClusterFeatureResponseAcceptedValuesInner
 		return ret
 	}
 	return o.AcceptedValues
@@ -573,7 +573,7 @@ func (o *ClusterFeature) GetAcceptedValues() []ClusterFeatureAcceptedValuesInner
 
 // GetAcceptedValuesOk returns a tuple with the AcceptedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeature) GetAcceptedValuesOk() ([]ClusterFeatureAcceptedValuesInner, bool) {
+func (o *ClusterFeatureResponse) GetAcceptedValuesOk() ([]ClusterFeatureResponseAcceptedValuesInner, bool) {
 	if o == nil || IsNil(o.AcceptedValues) {
 		return nil, false
 	}
@@ -581,7 +581,7 @@ func (o *ClusterFeature) GetAcceptedValuesOk() ([]ClusterFeatureAcceptedValuesIn
 }
 
 // HasAcceptedValues returns a boolean if a field has been set.
-func (o *ClusterFeature) HasAcceptedValues() bool {
+func (o *ClusterFeatureResponse) HasAcceptedValues() bool {
 	if o != nil && !IsNil(o.AcceptedValues) {
 		return true
 	}
@@ -589,12 +589,12 @@ func (o *ClusterFeature) HasAcceptedValues() bool {
 	return false
 }
 
-// SetAcceptedValues gets a reference to the given []ClusterFeatureAcceptedValuesInner and assigns it to the AcceptedValues field.
-func (o *ClusterFeature) SetAcceptedValues(v []ClusterFeatureAcceptedValuesInner) {
+// SetAcceptedValues gets a reference to the given []ClusterFeatureResponseAcceptedValuesInner and assigns it to the AcceptedValues field.
+func (o *ClusterFeatureResponse) SetAcceptedValues(v []ClusterFeatureResponseAcceptedValuesInner) {
 	o.AcceptedValues = v
 }
 
-func (o ClusterFeature) MarshalJSON() ([]byte, error) {
+func (o ClusterFeatureResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -602,7 +602,7 @@ func (o ClusterFeature) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ClusterFeature) ToMap() (map[string]interface{}, error) {
+func (o ClusterFeatureResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
@@ -637,8 +637,8 @@ func (o ClusterFeature) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ValueType) {
 		toSerialize["value_type"] = o.ValueType
 	}
-	if o.Value.IsSet() {
-		toSerialize["value"] = o.Value.Get()
+	if o.ValueObject.IsSet() {
+		toSerialize["value_object"] = o.ValueObject.Get()
 	}
 	if !IsNil(o.IsValueUpdatable) {
 		toSerialize["is_value_updatable"] = o.IsValueUpdatable
@@ -649,38 +649,38 @@ func (o ClusterFeature) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-type NullableClusterFeature struct {
-	value *ClusterFeature
+type NullableClusterFeatureResponse struct {
+	value *ClusterFeatureResponse
 	isSet bool
 }
 
-func (v NullableClusterFeature) Get() *ClusterFeature {
+func (v NullableClusterFeatureResponse) Get() *ClusterFeatureResponse {
 	return v.value
 }
 
-func (v *NullableClusterFeature) Set(val *ClusterFeature) {
+func (v *NullableClusterFeatureResponse) Set(val *ClusterFeatureResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableClusterFeature) IsSet() bool {
+func (v NullableClusterFeatureResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableClusterFeature) Unset() {
+func (v *NullableClusterFeatureResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableClusterFeature(val *ClusterFeature) *NullableClusterFeature {
-	return &NullableClusterFeature{value: val, isSet: true}
+func NewNullableClusterFeatureResponse(val *ClusterFeatureResponse) *NullableClusterFeatureResponse {
+	return &NullableClusterFeatureResponse{value: val, isSet: true}
 }
 
-func (v NullableClusterFeature) MarshalJSON() ([]byte, error) {
+func (v NullableClusterFeatureResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableClusterFeature) UnmarshalJSON(src []byte) error {
+func (v *NullableClusterFeatureResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **IsDemo** | Pointer to **bool** | specific flag to indicate that this cluster is a demo one | [optional] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
-**Features** | Pointer to [**[]ClusterFeature**](ClusterFeature.md) |  | [optional] 
+**Features** | Pointer to [**[]ClusterFeatureResponse**](ClusterFeatureResponse.md) |  | [optional] 
 **DeploymentStatus** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
@@ -596,20 +596,20 @@ HasSshKeys returns a boolean if a field has been set.
 
 ### GetFeatures
 
-`func (o *Cluster) GetFeatures() []ClusterFeature`
+`func (o *Cluster) GetFeatures() []ClusterFeatureResponse`
 
 GetFeatures returns the Features field if non-nil, zero value otherwise.
 
 ### GetFeaturesOk
 
-`func (o *Cluster) GetFeaturesOk() (*[]ClusterFeature, bool)`
+`func (o *Cluster) GetFeaturesOk() (*[]ClusterFeatureResponse, bool)`
 
 GetFeaturesOk returns a tuple with the Features field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFeatures
 
-`func (o *Cluster) SetFeatures(v []ClusterFeature)`
+`func (o *Cluster) SetFeatures(v []ClusterFeatureResponse)`
 
 SetFeatures sets Features field to given value.
 
