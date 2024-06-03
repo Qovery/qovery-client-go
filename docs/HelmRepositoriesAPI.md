@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CreateHelmRepository**](HelmRepositoriesAPI.md#CreateHelmRepository) | **Post** /organization/{organizationId}/helmRepository | Create a helm repository
 [**DeleteHelmRepository**](HelmRepositoriesAPI.md#DeleteHelmRepository) | **Delete** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Delete a helm repository
 [**EditHelmRepository**](HelmRepositoriesAPI.md#EditHelmRepository) | **Put** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Edit a helm repository
+[**GetHelmCharts**](HelmRepositoriesAPI.md#GetHelmCharts) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/charts | List helm charts contained inside the repository
 [**GetHelmRepository**](HelmRepositoriesAPI.md#GetHelmRepository) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId} | Get a helm repository
 [**ListAvailableHelmRepository**](HelmRepositoriesAPI.md#ListAvailableHelmRepository) | **Get** /availableHelmRepository | List supported helm repository
 [**ListHelmRepository**](HelmRepositoriesAPI.md#ListHelmRepository) | **Get** /organization/{organizationId}/helmRepository | List organization helm repositories
@@ -218,6 +219,79 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHelmCharts
+
+> HelmVersionResponseList GetHelmCharts(ctx, organizationId, helmRepositoryId).ChartName(chartName).Execute()
+
+List helm charts contained inside the repository
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
+    chartName := "chartName_example" // string | Helm chart name to filter the result on (optional)
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.HelmRepositoriesAPI.GetHelmCharts(context.Background(), organizationId, helmRepositoryId).ChartName(chartName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.GetHelmCharts``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetHelmCharts`: HelmVersionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.GetHelmCharts`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**helmRepositoryId** | **string** | Helm chart repository ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHelmChartsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **chartName** | **string** | Helm chart name to filter the result on | 
+
+### Return type
+
+[**HelmVersionResponseList**](HelmVersionResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

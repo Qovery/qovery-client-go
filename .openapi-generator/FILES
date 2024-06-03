@@ -396,6 +396,8 @@ docs/HelmResponseAllOfValuesOverrideFileGit.md
 docs/HelmResponseAllOfValuesOverrideFileRaw.md
 docs/HelmResponseAllOfValuesOverrideFileRawValues.md
 docs/HelmResponseList.md
+docs/HelmVersionResponse.md
+docs/HelmVersionResponseList.md
 docs/HelmsAPI.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
@@ -880,6 +882,8 @@ model_helm_response_all_of_values_override_file_git.go
 model_helm_response_all_of_values_override_file_raw.go
 model_helm_response_all_of_values_override_file_raw_values.go
 model_helm_response_list.go
+model_helm_version_response.go
+model_helm_version_response_list.go
 model_invite_member.go
 model_invite_member_request.go
 model_invite_member_response_list.go

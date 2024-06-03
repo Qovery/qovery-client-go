@@ -65,6 +65,21 @@ func Test_qovery_HelmRepositoriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test HelmRepositoriesAPIService GetHelmCharts", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var helmRepositoryId string
+
+		resp, httpRes, err := apiClient.HelmRepositoriesAPI.GetHelmCharts(context.Background(), organizationId, helmRepositoryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test HelmRepositoriesAPIService GetHelmRepository", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

@@ -5189,6 +5189,52 @@ paths:
       summary: Edit a helm repository
       tags:
       - Helm Repositories
+  /organization/{organizationId}/helmRepository/{helmRepositoryId}/charts:
+    get:
+      operationId: getHelmCharts
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Helm chart repository ID
+        explode: false
+        in: path
+        name: helmRepositoryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Helm chart name to filter the result on
+        explode: true
+        in: query
+        name: chartName
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmVersionResponseList'
+          description: The helm repository versions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List helm charts contained inside the repository
+      tags:
+      - Helm Repositories
   /project/{projectId}:
     delete:
       description: To delete a project you must have the admin permission
@@ -14710,50 +14756,11 @@ components:
         format: uuid
         type: string
       style: form
-    status:
-      description: status
-      explode: true
-      in: query
-      name: status
-      required: false
-      schema:
-        type: string
-      style: form
-    tagId:
-      description: Tag ID
-      explode: false
-      in: path
-      name: tagId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    tail:
-      description: Number of last results to return
-      explode: true
-      in: query
-      name: tail
-      required: true
-      schema:
-        format: int32
-        type: integer
-      style: form
     targetApplicationId:
       description: Target application ID
       explode: false
       in: path
       name: targetApplicationId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
-    targetDatabaseId:
-      description: Target database ID
-      explode: false
-      in: path
-      name: targetDatabaseId
       required: true
       schema:
         format: uuid
@@ -14809,6 +14816,15 @@ components:
         format: uuid
         type: string
       style: simple
+    chartName:
+      description: Helm chart name to filter the result on
+      explode: true
+      in: query
+      name: chartName
+      required: false
+      schema:
+        type: string
+      style: form
     helmOf:
       description: Source of git commit. Can be 'chart' or 'values'
       explode: true
@@ -17325,6 +17341,37 @@ components:
         required:
         - name
         type: object
+    HelmVersionResponseList:
+      example:
+        results:
+        - chart_name: chart_name
+          versions:
+          - versions
+          - versions
+        - chart_name: chart_name
+          versions:
+          - versions
+          - versions
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/HelmVersionResponse'
+          type: array
+      type: object
+    HelmVersionResponse:
+      example:
+        chart_name: chart_name
+        versions:
+        - versions
+        - versions
+      properties:
+        chart_name:
+          type: string
+        versions:
+          items:
+            type: string
+          type: array
+      type: object
     HelmRepositoryResponseList:
       example:
         results:
