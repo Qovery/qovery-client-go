@@ -219,6 +219,8 @@ docs/ContainerResponse.md
 docs/ContainerResponseList.md
 docs/ContainerSecretAPI.md
 docs/ContainerSource.md
+docs/ContainerVersionResponse.md
+docs/ContainerVersionResponseList.md
 docs/ContainersAPI.md
 docs/Cost.md
 docs/CostRange.md
@@ -732,6 +734,8 @@ model_container_request.go
 model_container_response.go
 model_container_response_list.go
 model_container_source.go
+model_container_version_response.go
+model_container_version_response_list.go
 model_cost.go
 model_cost_range.go
 model_create_environment_mode_enum.go

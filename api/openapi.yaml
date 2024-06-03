@@ -4929,6 +4929,52 @@ paths:
       summary: Edit a container registry
       tags:
       - Container Registries
+  /organization/{organizationId}/containerRegistry/{containerRegistryId}/images:
+    get:
+      operationId: getContainerVersions
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Container Registry ID
+        explode: false
+        in: path
+        name: containerRegistryId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: container image name
+        explode: true
+        in: query
+        name: imageName
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerVersionResponseList'
+          description: The container registry versions list
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List image version for a container registry
+      tags:
+      - Container Registries
   /organization/{organizationId}/containerRegistry/{containerRegistryId}/container/status:
     get:
       description: Returns a list of containers with only their id and status.
@@ -14467,6 +14513,15 @@ components:
         format: uuid
         type: string
       style: simple
+    imageName:
+      description: container image name
+      explode: true
+      in: query
+      name: imageName
+      required: true
+      schema:
+        type: string
+      style: form
     credentialsId:
       description: Credentials ID
       explode: false
@@ -14587,16 +14642,6 @@ components:
         format: uuid
         type: string
       style: simple
-    eventId:
-      description: Event ID
-      explode: false
-      in: path
-      name: eventId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     inviteId:
       description: Invite ID
       explode: false
@@ -14667,16 +14712,6 @@ components:
         format: uuid
         type: string
       style: simple
-    instanceId:
-      description: Instance ID
-      explode: false
-      in: path
-      name: instanceId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: simple
     invoiceId:
       description: Invoice ID
       explode: false
@@ -14687,35 +14722,6 @@ components:
         format: uuid
         type: string
       style: simple
-    lastId:
-      description: ID of the last object after which to return all results
-      explode: true
-      in: query
-      name: lastId
-      required: true
-      schema:
-        format: uuid
-        type: string
-      style: form
-    lastSeconds:
-      description: Up to how many seconds in the past to ask analytics results
-      explode: true
-      in: query
-      name: lastSeconds
-      required: true
-      schema:
-        type: number
-      style: form
-    limit:
-      description: How many items to return at one time (max 100)
-      explode: true
-      in: query
-      name: limit
-      required: false
-      schema:
-        format: int32
-        type: integer
-      style: form
     organizationId:
       description: Organization ID
       explode: false
@@ -17280,6 +17286,37 @@ components:
         results:
           items:
             $ref: '#/components/schemas/ContainerRegistryResponse'
+          type: array
+      type: object
+    ContainerVersionResponseList:
+      example:
+        results:
+        - image_name: image_name
+          versions:
+          - versions
+          - versions
+        - image_name: image_name
+          versions:
+          - versions
+          - versions
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ContainerVersionResponse'
+          type: array
+      type: object
+    ContainerVersionResponse:
+      example:
+        image_name: image_name
+        versions:
+        - versions
+        - versions
+      properties:
+        image_name:
+          type: string
+        versions:
+          items:
+            type: string
           type: array
       type: object
     HelmRepositoryRequest:

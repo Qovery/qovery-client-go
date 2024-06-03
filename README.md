@@ -229,6 +229,7 @@ Class | Method | HTTP request | Description
 *ContainerRegistriesAPI* | [**DeleteContainerRegistry**](docs/ContainerRegistriesAPI.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
 *ContainerRegistriesAPI* | [**EditContainerRegistry**](docs/ContainerRegistriesAPI.md#editcontainerregistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry
 *ContainerRegistriesAPI* | [**GetContainerRegistry**](docs/ContainerRegistriesAPI.md#getcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Get a container registry
+*ContainerRegistriesAPI* | [**GetContainerVersions**](docs/ContainerRegistriesAPI.md#getcontainerversions) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/images | List image version for a container registry
 *ContainerRegistriesAPI* | [**ListAvailableContainerRegistry**](docs/ContainerRegistriesAPI.md#listavailablecontainerregistry) | **Get** /availableContainerRegistry | List supported container registries
 *ContainerRegistriesAPI* | [**ListContainerRegistry**](docs/ContainerRegistriesAPI.md#listcontainerregistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
 *ContainerSecretAPI* | [**CreateContainerSecret**](docs/ContainerSecretAPI.md#createcontainersecret) | **Post** /container/{containerId}/secret | Add a secret to the container
@@ -601,6 +602,8 @@ Class | Method | HTTP request | Description
  - [ContainerResponse](docs/ContainerResponse.md)
  - [ContainerResponseList](docs/ContainerResponseList.md)
  - [ContainerSource](docs/ContainerSource.md)
+ - [ContainerVersionResponse](docs/ContainerVersionResponse.md)
+ - [ContainerVersionResponseList](docs/ContainerVersionResponseList.md)
  - [Cost](docs/Cost.md)
  - [CostRange](docs/CostRange.md)
  - [CreateEnvironmentModeEnum](docs/CreateEnvironmentModeEnum.md)

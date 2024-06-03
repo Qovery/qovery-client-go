@@ -80,6 +80,21 @@ func Test_qovery_ContainerRegistriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ContainerRegistriesAPIService GetContainerVersions", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var containerRegistryId string
+
+		resp, httpRes, err := apiClient.ContainerRegistriesAPI.GetContainerVersions(context.Background(), organizationId, containerRegistryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ContainerRegistriesAPIService ListAvailableContainerRegistry", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

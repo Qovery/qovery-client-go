@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeleteContainerRegistry**](ContainerRegistriesAPI.md#DeleteContainerRegistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry
 [**EditContainerRegistry**](ContainerRegistriesAPI.md#EditContainerRegistry) | **Put** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Edit a container registry
 [**GetContainerRegistry**](ContainerRegistriesAPI.md#GetContainerRegistry) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Get a container registry
+[**GetContainerVersions**](ContainerRegistriesAPI.md#GetContainerVersions) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/images | List image version for a container registry
 [**ListAvailableContainerRegistry**](ContainerRegistriesAPI.md#ListAvailableContainerRegistry) | **Get** /availableContainerRegistry | List supported container registries
 [**ListContainerRegistry**](ContainerRegistriesAPI.md#ListContainerRegistry) | **Get** /organization/{organizationId}/containerRegistry | List organization container registries
 
@@ -281,6 +282,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ContainerRegistryResponse**](ContainerRegistryResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetContainerVersions
+
+> ContainerVersionResponseList GetContainerVersions(ctx, organizationId, containerRegistryId).ImageName(imageName).Execute()
+
+List image version for a container registry
+
+### Example
+
+```go
+package main
+
+import (
+    "context"
+    "fmt"
+    "os"
+    openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+    containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
+    imageName := "imageName_example" // string | container image name
+
+    configuration := openapiclient.NewConfiguration()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.ContainerRegistriesAPI.GetContainerVersions(context.Background(), organizationId, containerRegistryId).ImageName(imageName).Execute()
+    if err != nil {
+        fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.GetContainerVersions``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+    }
+    // response from `GetContainerVersions`: ContainerVersionResponseList
+    fmt.Fprintf(os.Stdout, "Response from `ContainerRegistriesAPI.GetContainerVersions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**containerRegistryId** | **string** | Container Registry ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetContainerVersionsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **imageName** | **string** | container image name | 
+
+### Return type
+
+[**ContainerVersionResponseList**](ContainerVersionResponseList.md)
 
 ### Authorization
 
