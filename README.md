@@ -279,7 +279,10 @@ Class | Method | HTTP request | Description
 *DeploymentStageMainCallsAPI* | [**ListEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#listenvironmentdeploymentstage) | **Get** /environment/{environmentId}/deploymentStage | List environment deployment stage
 *DeploymentStageMainCallsAPI* | [**MoveAfterDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#moveafterdeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveAfter/{stageId} | Move deployment stage after requested stage
 *DeploymentStageMainCallsAPI* | [**MoveBeforeDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#movebeforedeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/moveBefore/{stageId} | Move deployment stage before requested stage
+*EnvironmentAPI* | [**CheckContainerImage**](docs/EnvironmentAPI.md#checkcontainerimage) | **Post** /environment/{environmentId}/checkContainerImage | Check container image configuration is correct
 *EnvironmentAPI* | [**CheckDockerfile**](docs/EnvironmentAPI.md#checkdockerfile) | **Post** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
+*EnvironmentAPI* | [**CheckGitFile**](docs/EnvironmentAPI.md#checkgitfile) | **Post** /environment/{environmentId}/checkGitFile | Check git file configuration is correct
+*EnvironmentAPI* | [**CheckHelmRepository**](docs/EnvironmentAPI.md#checkhelmrepository) | **Post** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
 *EnvironmentAPI* | [**DeployAllApplications**](docs/EnvironmentAPI.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsAPI* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsAPI.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsAPI* | [**CloneEnvironment**](docs/EnvironmentActionsAPI.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
@@ -583,6 +586,7 @@ Class | Method | HTTP request | Description
  - [CompanySizeEnum](docs/CompanySizeEnum.md)
  - [ContainerAdvancedSettings](docs/ContainerAdvancedSettings.md)
  - [ContainerDeployRequest](docs/ContainerDeployRequest.md)
+ - [ContainerImageCheckRequest](docs/ContainerImageCheckRequest.md)
  - [ContainerNetwork](docs/ContainerNetwork.md)
  - [ContainerNetworkRequest](docs/ContainerNetworkRequest.md)
  - [ContainerRegistryKindEnum](docs/ContainerRegistryKindEnum.md)
@@ -692,6 +696,7 @@ Class | Method | HTTP request | Description
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
+ - [GitFileCheckRequest](docs/GitFileCheckRequest.md)
  - [GitProviderEnum](docs/GitProviderEnum.md)
  - [GitRepository](docs/GitRepository.md)
  - [GitRepositoryBranch](docs/GitRepositoryBranch.md)
@@ -705,6 +710,7 @@ Class | Method | HTTP request | Description
  - [GitTokenResponseList](docs/GitTokenResponseList.md)
  - [Healthcheck](docs/Healthcheck.md)
  - [HelmAdvancedSettings](docs/HelmAdvancedSettings.md)
+ - [HelmCheckRequest](docs/HelmCheckRequest.md)
  - [HelmDefaultValuesRequest](docs/HelmDefaultValuesRequest.md)
  - [HelmDeployRequest](docs/HelmDeployRequest.md)
  - [HelmDeploymentRestrictionRequest](docs/HelmDeploymentRestrictionRequest.md)

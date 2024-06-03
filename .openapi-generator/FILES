@@ -196,6 +196,7 @@ docs/ContainerCustomDomainAPI.md
 docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryAPI.md
 docs/ContainerEnvironmentVariableAPI.md
+docs/ContainerImageCheckRequest.md
 docs/ContainerLogsAPI.md
 docs/ContainerMainCallsAPI.md
 docs/ContainerNetwork.md
@@ -327,6 +328,7 @@ docs/GcpCredentialsRequest.md
 docs/GenericObjectCurrentCost.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
+docs/GitFileCheckRequest.md
 docs/GitProviderEnum.md
 docs/GitRepositoriesAPI.md
 docs/GitRepository.md
@@ -343,6 +345,7 @@ docs/GithubAppAPI.md
 docs/Healthcheck.md
 docs/HelmActionsAPI.md
 docs/HelmAdvancedSettings.md
+docs/HelmCheckRequest.md
 docs/HelmConfigurationAPI.md
 docs/HelmCustomDomainAPI.md
 docs/HelmDefaultValuesRequest.md
@@ -700,6 +703,7 @@ model_commit_response_list.go
 model_company_size_enum.go
 model_container_advanced_settings.go
 model_container_deploy_request.go
+model_container_image_check_request.go
 model_container_network.go
 model_container_network_request.go
 model_container_registry_kind_enum.go
@@ -809,6 +813,7 @@ model_gcp_credentials_request.go
 model_generic_object_current_cost.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
+model_git_file_check_request.go
 model_git_provider_enum.go
 model_git_repository.go
 model_git_repository_branch.go
@@ -822,6 +827,7 @@ model_git_token_response.go
 model_git_token_response_list.go
 model_healthcheck.go
 model_helm_advanced_settings.go
+model_helm_check_request.go
 model_helm_default_values_request.go
 model_helm_deploy_request.go
 model_helm_deployment_restriction_request.go

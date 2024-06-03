@@ -22,6 +22,20 @@ func Test_qovery_EnvironmentAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test EnvironmentAPIService CheckContainerImage", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		resp, httpRes, err := apiClient.EnvironmentAPI.CheckContainerImage(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EnvironmentAPIService CheckDockerfile", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -29,6 +43,34 @@ func Test_qovery_EnvironmentAPIService(t *testing.T) {
 		var environmentId string
 
 		resp, httpRes, err := apiClient.EnvironmentAPI.CheckDockerfile(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EnvironmentAPIService CheckGitFile", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		resp, httpRes, err := apiClient.EnvironmentAPI.CheckGitFile(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EnvironmentAPIService CheckHelmRepository", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		resp, httpRes, err := apiClient.EnvironmentAPI.CheckHelmRepository(context.Background(), environmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

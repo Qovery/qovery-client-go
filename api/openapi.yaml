@@ -12903,6 +12903,114 @@ paths:
       summary: Check dockerfile configuration is correct
       tags:
       - Environment
+  /environment/{environmentId}/checkHelmRepository:
+    post:
+      operationId: checkHelmRepository
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HelmCheckRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmCheckResponse'
+          description: Information about the helm repository
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check helm repository configuration is correct
+      tags:
+      - Environment
+  /environment/{environmentId}/checkContainerImage:
+    post:
+      operationId: checkContainerImage
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContainerImageCheckRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerImageCheckResponse'
+          description: Information about the image
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check container image configuration is correct
+      tags:
+      - Environment
+  /environment/{environmentId}/checkGitFile:
+    post:
+      operationId: checkGitFile
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GitFileCheckRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitFileCheckResponse'
+          description: Information about the image
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check git file configuration is correct
+      tags:
+      - Environment
   /environment/{environmentId}/job:
     get:
       operationId: listJobs
@@ -20085,6 +20193,64 @@ components:
       - dockerfile_path
       - git_repository
       type: object
+    GitFileCheckRequest:
+      example:
+        files:
+        - files
+        - files
+        git_repository:
+          root_path: /
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: feat/text_xxx
+          url: https://github.com/Qovery/simple-node-app
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/HelmGitRepositoryRequest'
+        files:
+          items:
+            type: string
+          type: array
+      required:
+      - files
+      - git_repository
+      type: object
+    GitFileCheckResponse:
+      type: object
+    HelmCheckRequest:
+      example:
+        git_repository:
+          root_path: /
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: feat/text_xxx
+          url: https://github.com/Qovery/simple-node-app
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/HelmGitRepositoryRequest'
+      required:
+      - git_repository
+      type: object
+    HelmCheckResponse:
+      type: object
+    ContainerImageCheckRequest:
+      example:
+        image_name: image_name
+        tag: tag
+        registry_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        registry_id:
+          format: uuid
+          type: string
+        image_name:
+          type: string
+        tag:
+          type: string
+      required:
+      - image_name
+      - registry_d
+      - tag
+      type: object
+    ContainerImageCheckResponse:
+      type: object
     JobRequest:
       allOf:
       - properties:
@@ -23146,6 +23312,11 @@ components:
         - tag
         type: object
     HelmGitRepositoryRequest:
+      example:
+        root_path: /
+        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branch: feat/text_xxx
+        url: https://github.com/Qovery/simple-node-app
       properties:
         url:
           description: application git repository URL
