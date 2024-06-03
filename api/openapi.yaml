@@ -14852,8 +14852,6 @@ components:
       description: Access forbidden
     "404":
       description: Resource not found
-    "409":
-      description: Conflict
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
@@ -15711,12 +15709,6 @@ components:
       - created_at
       - id
       type: object
-    BillingEnd:
-      properties:
-        billing_ended_on:
-          format: date-time
-          type: string
-      type: object
     BillingInfo:
       example:
         zip: "36744"
@@ -15829,16 +15821,6 @@ components:
       - last_name
       - zip
       type: object
-    BillingPeriod:
-      allOf:
-      - $ref: '#/components/schemas/BillingStart'
-      - $ref: '#/components/schemas/BillingEnd'
-    BillingStart:
-      properties:
-        billing_started_on:
-          format: date-time
-          type: string
-      type: object
     BillingStatus:
       example:
         is_valid: true
@@ -15868,9 +15850,6 @@ components:
           example: USD
           type: string
       type: object
-    BudgetThreshold:
-      allOf:
-      - $ref: '#/components/schemas/Budget'
     BuildModeEnum:
       default: BUILDPACKS
       description: |
@@ -16935,15 +16914,6 @@ components:
       - message
       - tag
       type: object
-    CommitPaginatedResponseList:
-      allOf:
-      - properties:
-          results:
-            items:
-              $ref: '#/components/schemas/Commit'
-            type: array
-        type: object
-      - $ref: '#/components/schemas/PaginationData'
     CommitResponseList:
       example:
         results:
@@ -16967,9 +16937,6 @@ components:
             $ref: '#/components/schemas/Commit'
           type: array
       type: object
-    CommunityUsage:
-      allOf:
-      - $ref: '#/components/schemas/ProjectCurrentCostResponseList'
     CompanySizeEnum:
       enum:
       - 1-10
@@ -18275,13 +18242,6 @@ components:
               $ref: '#/components/schemas/DeploymentHistory'
             type: array
         type: object
-    DeploymentHistoryResponseList:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/DeploymentHistory'
-          type: array
-      type: object
     DeploymentHistoryStatusEnum:
       enum:
       - FAILED
@@ -18300,61 +18260,6 @@ components:
       - PATH
       example: PATH
       type: string
-    DeploymentRuleRequest:
-      properties:
-        name:
-          description: name is case insensitive
-          type: string
-        description:
-          type: string
-        mode:
-          $ref: '#/components/schemas/EnvironmentModeEnum'
-        cluster:
-          format: uuid
-          type: string
-        auto_stop:
-          default: false
-          type: boolean
-        timezone:
-          default: Europe/London
-          description: specify value only if auto_stop = false
-          nullable: false
-          type: string
-        start_time:
-          description: specify value only if auto_stop = false
-          format: date-time
-          nullable: true
-          type: string
-        stop_time:
-          description: specify value only if auto_stop = false
-          format: date-time
-          nullable: true
-          type: string
-        weekdays:
-          description: specify value only if auto_stop = false
-          items:
-            $ref: '#/components/schemas/WeekdayEnum'
-          nullable: true
-          type: array
-      required:
-      - auto_stop
-      - cluster
-      - mode
-      - name
-      type: object
-    DoCredentialsRequest:
-      properties:
-        name:
-          type: string
-        token:
-          type: string
-        spaces_access_id:
-          type: string
-        spaces_secret_key:
-          type: string
-      required:
-      - name
-      type: object
     Environment:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -18593,15 +18498,6 @@ components:
       - timestamp
       - type
       type: object
-    EnvironmentLogPaginatedResponseList:
-      allOf:
-      - $ref: '#/components/schemas/PaginationData'
-      - properties:
-          results:
-            items:
-              $ref: '#/components/schemas/EnvironmentLog'
-            type: array
-        type: object
     EnvironmentLogResponseList:
       example:
         results:
@@ -20704,10 +20600,6 @@ components:
             $ref: '#/components/schemas/HelmPortRequest_ports_inner'
           type: array
       type: object
-    HelmPortResponse:
-      $ref: '#/components/schemas/HelmResponse'
-    HelmPortResponseList:
-      $ref: '#/components/schemas/HelmResponseList'
     HelmForceEvent:
       enum:
       - DIFF
@@ -20845,15 +20737,6 @@ components:
       - id
       - message
       type: object
-    LogPaginatedResponseList:
-      allOf:
-      - $ref: '#/components/schemas/PaginationData'
-      - properties:
-          results:
-            items:
-              $ref: '#/components/schemas/Log'
-            type: array
-        type: object
     LogResponseList:
       example:
         results:
@@ -20969,13 +20852,6 @@ components:
       required:
       - role_id
       - user_id
-      type: object
-    Name:
-      properties:
-        name:
-          type: string
-      required:
-      - name
       type: object
     Organization:
       allOf:
@@ -22283,10 +22159,6 @@ components:
           example: https://join.qovery.com/xDowkWEl
           type: string
       type: object
-    RemainingCredits:
-      allOf:
-      - $ref: '#/components/schemas/Cost'
-      - type: object
     RewardClaim:
       example:
         code: xDowkWEl
@@ -22442,13 +22314,6 @@ components:
       - OUT_OF_DATE
       - UP_TO_DATE
       type: string
-    ServiceResponseList:
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/Service'
-          type: array
-      type: object
     ServiceTotalNumber:
       properties:
         service_total_number:
@@ -22677,13 +22542,6 @@ components:
       - SCHOOL
       - WORK
       type: string
-    UnexpectedError:
-      properties:
-        message:
-          type: string
-      required:
-      - message
-      type: object
     User:
       example:
         updated_at: 2000-01-23T04:56:07.000+00:00
