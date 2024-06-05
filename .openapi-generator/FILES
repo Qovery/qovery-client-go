@@ -422,6 +422,7 @@ docs/JobResponse.md
 docs/JobResponseList.md
 docs/JobScheduleEvent.md
 docs/JobSecretAPI.md
+docs/JobSourceDockerResponse.md
 docs/JobsAPI.md
 docs/Key.md
 docs/KubernetesEnum.md
@@ -887,6 +888,7 @@ model_job_request_all_of_source_image.go
 model_job_response.go
 model_job_response_list.go
 model_job_schedule_event.go
+model_job_source_docker_response.go
 model_key.go
 model_kubernetes_enum.go
 model_label.go

@@ -774,6 +774,7 @@ Class | Method | HTTP request | Description
  - [JobResponse](docs/JobResponse.md)
  - [JobResponseList](docs/JobResponseList.md)
  - [JobScheduleEvent](docs/JobScheduleEvent.md)
+ - [JobSourceDockerResponse](docs/JobSourceDockerResponse.md)
  - [Key](docs/Key.md)
  - [KubernetesEnum](docs/KubernetesEnum.md)
  - [Label](docs/Label.md)

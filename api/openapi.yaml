@@ -27415,6 +27415,28 @@ components:
           value: value
           key: key
       title: OrganizationLabelsGroupEnrichedResponse
+    JobSourceDockerResponse:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+        dockerfile_path:
+          description: The path of the associated Dockerfile. Only if you are using
+            build_mode = DOCKER
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 72djyl4mjhxny
+        dockerfile_raw:
+          description: The content of your dockerfile if it is not stored inside your
+            git repository
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 7s4l0qg285y48
+      title: JobSourceDockerResponse
+      type: object
+      x-stoplight:
+        id: s59m8wajnieny
     deleteMember_request:
       properties:
         user_id:
@@ -28285,13 +28307,13 @@ components:
         dockerfile_path: dockerfile_path
       nullable: true
       properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
         dockerfile_path:
           description: The path of the associated Dockerfile. Only if you are using
             build_mode = DOCKER
           nullable: true
           type: string
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
         dockerfile_raw:
           description: The content of your dockerfile if it is not stored inside your
             git repository
