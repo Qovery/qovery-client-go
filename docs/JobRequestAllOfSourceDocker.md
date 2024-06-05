@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
+**DockerfileRaw** | Pointer to **NullableString** | The content of your dockerfile if it is not stored inside your git repository | [optional] 
 
 ## Methods
 
@@ -86,6 +87,41 @@ SetGitRepository sets GitRepository field to given value.
 
 HasGitRepository returns a boolean if a field has been set.
 
+### GetDockerfileRaw
+
+`func (o *JobRequestAllOfSourceDocker) GetDockerfileRaw() string`
+
+GetDockerfileRaw returns the DockerfileRaw field if non-nil, zero value otherwise.
+
+### GetDockerfileRawOk
+
+`func (o *JobRequestAllOfSourceDocker) GetDockerfileRawOk() (*string, bool)`
+
+GetDockerfileRawOk returns a tuple with the DockerfileRaw field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerfileRaw
+
+`func (o *JobRequestAllOfSourceDocker) SetDockerfileRaw(v string)`
+
+SetDockerfileRaw sets DockerfileRaw field to given value.
+
+### HasDockerfileRaw
+
+`func (o *JobRequestAllOfSourceDocker) HasDockerfileRaw() bool`
+
+HasDockerfileRaw returns a boolean if a field has been set.
+
+### SetDockerfileRawNil
+
+`func (o *JobRequestAllOfSourceDocker) SetDockerfileRawNil(b bool)`
+
+ SetDockerfileRawNil sets the value for DockerfileRaw to be an explicit nil
+
+### UnsetDockerfileRaw
+`func (o *JobRequestAllOfSourceDocker) UnsetDockerfileRaw()`
+
+UnsetDockerfileRaw ensures that no value is present for DockerfileRaw, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

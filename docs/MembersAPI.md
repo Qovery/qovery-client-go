@@ -28,23 +28,23 @@ Remove an invited member
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MembersAPI.DeleteInviteMember(context.Background(), organizationId, inviteId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.DeleteInviteMember``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.MembersAPI.DeleteInviteMember(context.Background(), organizationId, inviteId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.DeleteInviteMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -97,23 +97,23 @@ Remove a member
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    deleteMemberRequest := *openapiclient.NewDeleteMemberRequest("UserId_example") // DeleteMemberRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	deleteMemberRequest := *openapiclient.NewDeleteMemberRequest("UserId_example") // DeleteMemberRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MembersAPI.DeleteMember(context.Background(), organizationId).DeleteMemberRequest(deleteMemberRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.DeleteMember``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.MembersAPI.DeleteMember(context.Background(), organizationId).DeleteMemberRequest(deleteMemberRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.DeleteMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -167,23 +167,23 @@ Edit an organization member role
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    memberRoleUpdateRequest := *openapiclient.NewMemberRoleUpdateRequest("UserId_example", "RoleId_example") // MemberRoleUpdateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	memberRoleUpdateRequest := *openapiclient.NewMemberRoleUpdateRequest("UserId_example", "RoleId_example") // MemberRoleUpdateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MembersAPI.EditOrganizationMemberRole(context.Background(), organizationId).MemberRoleUpdateRequest(memberRoleUpdateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.EditOrganizationMemberRole``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.MembersAPI.EditOrganizationMemberRole(context.Background(), organizationId).MemberRoleUpdateRequest(memberRoleUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.EditOrganizationMemberRole``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -235,25 +235,25 @@ Get member invitation
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersAPI.GetMemberInvitation(context.Background(), organizationId, inviteId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetMemberInvitation``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetMemberInvitation`: InviteMember
-    fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetMemberInvitation`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MembersAPI.GetMemberInvitation(context.Background(), organizationId, inviteId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetMemberInvitation``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetMemberInvitation`: InviteMember
+	fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetMemberInvitation`: %v\n", resp)
 }
 ```
 
@@ -306,24 +306,24 @@ Get invited members
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersAPI.GetOrganizationInvitedMembers(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetOrganizationInvitedMembers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationInvitedMembers`: InviteMemberResponseList
-    fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetOrganizationInvitedMembers`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MembersAPI.GetOrganizationInvitedMembers(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetOrganizationInvitedMembers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationInvitedMembers`: InviteMemberResponseList
+	fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetOrganizationInvitedMembers`: %v\n", resp)
 }
 ```
 
@@ -374,24 +374,24 @@ Get organization members
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersAPI.GetOrganizationMembers(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetOrganizationMembers``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationMembers`: MemberResponseList
-    fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetOrganizationMembers`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MembersAPI.GetOrganizationMembers(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.GetOrganizationMembers``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationMembers`: MemberResponseList
+	fmt.Fprintf(os.Stdout, "Response from `MembersAPI.GetOrganizationMembers`: %v\n", resp)
 }
 ```
 
@@ -442,25 +442,25 @@ Accept Invite in the organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	inviteId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invite ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersAPI.PostAcceptInviteMember(context.Background(), organizationId, inviteId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostAcceptInviteMember``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PostAcceptInviteMember`: InviteMember
-    fmt.Fprintf(os.Stdout, "Response from `MembersAPI.PostAcceptInviteMember`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MembersAPI.PostAcceptInviteMember(context.Background(), organizationId, inviteId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostAcceptInviteMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostAcceptInviteMember`: InviteMember
+	fmt.Fprintf(os.Stdout, "Response from `MembersAPI.PostAcceptInviteMember`: %v\n", resp)
 }
 ```
 
@@ -513,25 +513,25 @@ Invite someone in the organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    inviteMemberRequest := *openapiclient.NewInviteMemberRequest("Email_example") // InviteMemberRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	inviteMemberRequest := *openapiclient.NewInviteMemberRequest("Email_example") // InviteMemberRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.MembersAPI.PostInviteMember(context.Background(), organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostInviteMember``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `PostInviteMember`: InviteMember
-    fmt.Fprintf(os.Stdout, "Response from `MembersAPI.PostInviteMember`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MembersAPI.PostInviteMember(context.Background(), organizationId).InviteMemberRequest(inviteMemberRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostInviteMember``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `PostInviteMember`: InviteMember
+	fmt.Fprintf(os.Stdout, "Response from `MembersAPI.PostInviteMember`: %v\n", resp)
 }
 ```
 
@@ -583,23 +583,23 @@ Transfer organization ownership to another user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    transferOwnershipRequest := *openapiclient.NewTransferOwnershipRequest("UserId_example") // TransferOwnershipRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	transferOwnershipRequest := *openapiclient.NewTransferOwnershipRequest("UserId_example") // TransferOwnershipRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.MembersAPI.PostOrganizationTransferOwnership(context.Background(), organizationId).TransferOwnershipRequest(transferOwnershipRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostOrganizationTransferOwnership``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.MembersAPI.PostOrganizationTransferOwnership(context.Background(), organizationId).TransferOwnershipRequest(transferOwnershipRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MembersAPI.PostOrganizationTransferOwnership``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

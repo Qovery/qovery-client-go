@@ -122,10 +122,6 @@ docs/BackupResponseList.md
 docs/BackupsAPI.md
 docs/Base.md
 docs/BaseJobResponse.md
-docs/BaseJobResponseAllOfSource.md
-docs/BaseJobResponseAllOfSourceOneOf.md
-docs/BaseJobResponseAllOfSourceOneOf1.md
-docs/BaseJobResponseAllOfSourceOneOf1Docker.md
 docs/BillingAPI.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -349,6 +345,7 @@ docs/HelmCheckRequest.md
 docs/HelmConfigurationAPI.md
 docs/HelmCustomDomainAPI.md
 docs/HelmDefaultValuesRequest.md
+docs/HelmDefaultValuesRequestAllOfSource.md
 docs/HelmDeployRequest.md
 docs/HelmDeploymentHistoryAPI.md
 docs/HelmDeploymentRestrictionAPI.md
@@ -638,10 +635,6 @@ model_backup_request.go
 model_backup_response_list.go
 model_base.go
 model_base_job_response.go
-model_base_job_response_all_of_source.go
-model_base_job_response_all_of_source_one_of.go
-model_base_job_response_all_of_source_one_of_1.go
-model_base_job_response_all_of_source_one_of_1_docker.go
 model_billing_external_id.go
 model_billing_info.go
 model_billing_info_request.go
@@ -829,6 +822,7 @@ model_healthcheck.go
 model_helm_advanced_settings.go
 model_helm_check_request.go
 model_helm_default_values_request.go
+model_helm_default_values_request_all_of_source.go
 model_helm_deploy_request.go
 model_helm_deployment_restriction_request.go
 model_helm_deployment_restriction_response.go

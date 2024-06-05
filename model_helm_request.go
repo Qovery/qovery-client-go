@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmRequest type satisfies the MappedNullable interface at compile time
@@ -37,6 +39,8 @@ type HelmRequest struct {
 	AllowClusterWideResources *bool                          `json:"allow_cluster_wide_resources,omitempty"`
 	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
 }
+
+type _HelmRequest HelmRequest
 
 // NewHelmRequest instantiates a new HelmRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -390,6 +394,47 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["values_override"] = o.ValuesOverride
 	return toSerialize, nil
+}
+
+func (o *HelmRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"auto_deploy",
+		"source",
+		"arguments",
+		"values_override",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmRequest := _HelmRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRequest(varHelmRequest)
+
+	return err
 }
 
 type NullableHelmRequest struct {

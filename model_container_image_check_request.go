@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ContainerImageCheckRequest type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type ContainerImageCheckRequest struct {
 	ImageName  string  `json:"image_name"`
 	Tag        string  `json:"tag"`
 }
+
+type _ContainerImageCheckRequest ContainerImageCheckRequest
 
 // NewContainerImageCheckRequest instantiates a new ContainerImageCheckRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -140,6 +144,44 @@ func (o ContainerImageCheckRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["tag"] = o.Tag
 	return toSerialize, nil
+}
+
+func (o *ContainerImageCheckRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"image_name",
+		"tag",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContainerImageCheckRequest := _ContainerImageCheckRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContainerImageCheckRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerImageCheckRequest(varContainerImageCheckRequest)
+
+	return err
 }
 
 type NullableContainerImageCheckRequest struct {

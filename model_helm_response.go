@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -42,6 +44,8 @@ type HelmResponse struct {
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
 }
+
+type _HelmResponse HelmResponse
 
 // NewHelmResponse instantiates a new HelmResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -477,6 +481,52 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
 	return toSerialize, nil
+}
+
+func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"environment",
+		"name",
+		"auto_preview",
+		"auto_deploy",
+		"source",
+		"arguments",
+		"allow_cluster_wide_resources",
+		"values_override",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmResponse := _HelmResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmResponse(varHelmResponse)
+
+	return err
 }
 
 type NullableHelmResponse struct {

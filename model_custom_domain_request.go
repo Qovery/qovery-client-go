@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the CustomDomainRequest type satisfies the MappedNullable interface at compile time
@@ -25,6 +27,8 @@ type CustomDomainRequest struct {
 	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
 	GenerateCertificate bool `json:"generate_certificate"`
 }
+
+type _CustomDomainRequest CustomDomainRequest
 
 // NewCustomDomainRequest instantiates a new CustomDomainRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -106,6 +110,44 @@ func (o CustomDomainRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["domain"] = o.Domain
 	toSerialize["generate_certificate"] = o.GenerateCertificate
 	return toSerialize, nil
+}
+
+func (o *CustomDomainRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"domain",
+		"generate_certificate",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCustomDomainRequest := _CustomDomainRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCustomDomainRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CustomDomainRequest(varCustomDomainRequest)
+
+	return err
 }
 
 type NullableCustomDomainRequest struct {

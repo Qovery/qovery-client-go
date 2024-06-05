@@ -28,25 +28,25 @@ Add an environment variable to the job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	environmentVariableRequest := *openapiclient.NewEnvironmentVariableRequest("Key_example") // EnvironmentVariableRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariable(context.Background(), jobId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariable``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateJobEnvironmentVariable`: EnvironmentVariable
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariable`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariable(context.Background(), jobId).EnvironmentVariableRequest(environmentVariableRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateJobEnvironmentVariable`: EnvironmentVariable
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -100,26 +100,26 @@ Create an environment variable alias at the job level
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-    key := *openapiclient.NewKey("Key_example") // Key |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+	key := *openapiclient.NewKey("Key_example") // Key |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias(context.Background(), jobId, environmentVariableId).Key(key).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateJobEnvironmentVariableAlias`: EnvironmentVariable
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias(context.Background(), jobId, environmentVariableId).Key(key).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateJobEnvironmentVariableAlias`: EnvironmentVariable
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableAlias`: %v\n", resp)
 }
 ```
 
@@ -175,26 +175,26 @@ Create an environment variable override at the job level
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-    value := *openapiclient.NewValue() // Value |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+	value := *openapiclient.NewValue() // Value |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride(context.Background(), jobId, environmentVariableId).Value(value).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateJobEnvironmentVariableOverride`: EnvironmentVariable
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride(context.Background(), jobId, environmentVariableId).Value(value).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateJobEnvironmentVariableOverride`: EnvironmentVariable
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.CreateJobEnvironmentVariableOverride`: %v\n", resp)
 }
 ```
 
@@ -250,23 +250,23 @@ Delete an environment variable from a job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JobEnvironmentVariableAPI.DeleteJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.DeleteJobEnvironmentVariable``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JobEnvironmentVariableAPI.DeleteJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.DeleteJobEnvironmentVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -321,26 +321,26 @@ Edit an environment variable belonging to the job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
-    environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	environmentVariableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment Variable ID
+	environmentVariableEditRequest := *openapiclient.NewEnvironmentVariableEditRequest("Key_example") // EnvironmentVariableEditRequest | 
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.EditJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.EditJobEnvironmentVariable``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditJobEnvironmentVariable`: EnvironmentVariable
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.EditJobEnvironmentVariable`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.EditJobEnvironmentVariable(context.Background(), jobId, environmentVariableId).EnvironmentVariableEditRequest(environmentVariableEditRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.EditJobEnvironmentVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditJobEnvironmentVariable`: EnvironmentVariable
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.EditJobEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -396,25 +396,25 @@ Import variables
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	variableImportRequest := *openapiclient.NewVariableImportRequest(false, []openapiclient.VariableImportRequestVarsInner{*openapiclient.NewVariableImportRequestVarsInner("Name_example", "Value_example", openapiclient.APIVariableScopeEnum("APPLICATION"), false)}) // VariableImportRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.ImportJobEnvironmentVariable(context.Background(), jobId).VariableImportRequest(variableImportRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.ImportJobEnvironmentVariable``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ImportJobEnvironmentVariable`: VariableImport
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.ImportJobEnvironmentVariable`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.ImportJobEnvironmentVariable(context.Background(), jobId).VariableImportRequest(variableImportRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.ImportJobEnvironmentVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ImportJobEnvironmentVariable`: VariableImport
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.ImportJobEnvironmentVariable`: %v\n", resp)
 }
 ```
 
@@ -466,24 +466,24 @@ List environment variables
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobEnvironmentVariableAPI.ListJobEnvironmentVariable(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.ListJobEnvironmentVariable``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListJobEnvironmentVariable`: EnvironmentVariableResponseList
-    fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.ListJobEnvironmentVariable`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobEnvironmentVariableAPI.ListJobEnvironmentVariable(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobEnvironmentVariableAPI.ListJobEnvironmentVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListJobEnvironmentVariable`: EnvironmentVariableResponseList
+	fmt.Fprintf(os.Stdout, "Response from `JobEnvironmentVariableAPI.ListJobEnvironmentVariable`: %v\n", resp)
 }
 ```
 

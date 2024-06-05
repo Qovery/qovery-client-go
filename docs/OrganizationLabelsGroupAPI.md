@@ -27,25 +27,25 @@ Create an organization labels group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationLabelsGroupCreateRequest := *openapiclient.NewOrganizationLabelsGroupCreateRequest("Name_example", []openapiclient.Label{*openapiclient.NewLabel("Key_example", "Value_example", false)}) // OrganizationLabelsGroupCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationLabelsGroupCreateRequest := *openapiclient.NewOrganizationLabelsGroupCreateRequest("Name_example", []openapiclient.Label{*openapiclient.NewLabel("Key_example", "Value_example", false)}) // OrganizationLabelsGroupCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup(context.Background(), organizationId).OrganizationLabelsGroupCreateRequest(organizationLabelsGroupCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrganizationLabelsGroup`: OrganizationLabelsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup(context.Background(), organizationId).OrganizationLabelsGroupCreateRequest(organizationLabelsGroupCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrganizationLabelsGroup`: OrganizationLabelsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.CreateOrganizationLabelsGroup`: %v\n", resp)
 }
 ```
 
@@ -99,23 +99,23 @@ Delete organization labels group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationLabelsGroupAPI.DeleteOrganizationLabelsGroup(context.Background(), organizationId, labelsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.DeleteOrganizationLabelsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationLabelsGroupAPI.DeleteOrganizationLabelsGroup(context.Background(), organizationId, labelsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.DeleteOrganizationLabelsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -170,26 +170,26 @@ Edit organization labels group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
-    organizationLabelsGroupCreateRequest := *openapiclient.NewOrganizationLabelsGroupCreateRequest("Name_example", []openapiclient.Label{*openapiclient.NewLabel("Key_example", "Value_example", false)}) // OrganizationLabelsGroupCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
+	organizationLabelsGroupCreateRequest := *openapiclient.NewOrganizationLabelsGroupCreateRequest("Name_example", []openapiclient.Label{*openapiclient.NewLabel("Key_example", "Value_example", false)}) // OrganizationLabelsGroupCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup(context.Background(), organizationId, labelsGroupId).OrganizationLabelsGroupCreateRequest(organizationLabelsGroupCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditOrganizationLabelsGroup`: OrganizationLabelsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup(context.Background(), organizationId, labelsGroupId).OrganizationLabelsGroupCreateRequest(organizationLabelsGroupCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganizationLabelsGroup`: OrganizationLabelsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.EditOrganizationLabelsGroup`: %v\n", resp)
 }
 ```
 
@@ -245,25 +245,25 @@ Get organization labels group associated items
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems(context.Background(), organizationId, labelsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationLabelsGroupAssociatedItems`: OrganizationLabelsGroupAssociatedItemsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems(context.Background(), organizationId, labelsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationLabelsGroupAssociatedItems`: OrganizationLabelsGroupAssociatedItemsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.GetOrganizationLabelsGroupAssociatedItems`: %v\n", resp)
 }
 ```
 
@@ -318,25 +318,25 @@ Get organization labels group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	labelsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization labels group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup(context.Background(), organizationId, labelsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationLabelssGroup`: OrganizationLabelsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup(context.Background(), organizationId, labelsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationLabelssGroup`: OrganizationLabelsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.GetOrganizationLabelssGroup`: %v\n", resp)
 }
 ```
 
@@ -391,24 +391,24 @@ List organization labels group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationLabelsGroup`: ListOrganizationLabelsGroup200Response
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationLabelsGroup`: ListOrganizationLabelsGroup200Response
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationLabelsGroupAPI.ListOrganizationLabelsGroup`: %v\n", resp)
 }
 ```
 

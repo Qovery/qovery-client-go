@@ -58,18 +58,6 @@ func (dst *JobResponse) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'CronJobResponse'
-	if jsonDict["job_type"] == "CronJobResponse" {
-		// try to unmarshal JSON data into CronJobResponse
-		err = json.Unmarshal(data, &dst.CronJobResponse)
-		if err == nil {
-			return nil // data stored in dst.CronJobResponse, return on the first match
-		} else {
-			dst.CronJobResponse = nil
-			return fmt.Errorf("failed to unmarshal JobResponse as CronJobResponse: %s", err.Error())
-		}
-	}
-
 	// check if the discriminator value is 'LIFECYCLE'
 	if jsonDict["job_type"] == "LIFECYCLE" {
 		// try to unmarshal JSON data into LifecycleJobResponse
@@ -79,6 +67,18 @@ func (dst *JobResponse) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.LifecycleJobResponse = nil
 			return fmt.Errorf("failed to unmarshal JobResponse as LifecycleJobResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'CronJobResponse'
+	if jsonDict["job_type"] == "CronJobResponse" {
+		// try to unmarshal JSON data into CronJobResponse
+		err = json.Unmarshal(data, &dst.CronJobResponse)
+		if err == nil {
+			return nil // data stored in dst.CronJobResponse, return on the first match
+		} else {
+			dst.CronJobResponse = nil
+			return fmt.Errorf("failed to unmarshal JobResponse as CronJobResponse: %s", err.Error())
 		}
 	}
 

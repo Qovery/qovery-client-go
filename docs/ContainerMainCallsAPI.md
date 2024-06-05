@@ -26,22 +26,22 @@ Delete container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.ContainerMainCallsAPI.DeleteContainer(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.DeleteContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ContainerMainCallsAPI.DeleteContainer(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.DeleteContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -94,25 +94,25 @@ Edit container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-    containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerMainCallsAPI.EditContainer(context.Background(), containerId).ContainerRequest(containerRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.EditContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditContainer`: ContainerResponse
-    fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.EditContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerMainCallsAPI.EditContainer(context.Background(), containerId).ContainerRequest(containerRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.EditContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditContainer`: ContainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.EditContainer`: %v\n", resp)
 }
 ```
 
@@ -164,24 +164,24 @@ Get container by ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerMainCallsAPI.GetContainer(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.GetContainer``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetContainer`: ContainerResponse
-    fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.GetContainer`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerMainCallsAPI.GetContainer(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.GetContainer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetContainer`: ContainerResponse
+	fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.GetContainer`: %v\n", resp)
 }
 ```
 
@@ -232,24 +232,24 @@ Get container status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerMainCallsAPI.GetContainerStatus(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.GetContainerStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetContainerStatus`: Status
-    fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.GetContainerStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerMainCallsAPI.GetContainerStatus(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.GetContainerStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetContainerStatus`: Status
+	fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.GetContainerStatus`: %v\n", resp)
 }
 ```
 
@@ -302,24 +302,24 @@ List all URLs of the container
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerMainCallsAPI.ListContainerLinks(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.ListContainerLinks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListContainerLinks`: LinkResponseList
-    fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.ListContainerLinks`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerMainCallsAPI.ListContainerLinks(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.ListContainerLinks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListContainerLinks`: LinkResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ContainerMainCallsAPI.ListContainerLinks`: %v\n", resp)
 }
 ```
 

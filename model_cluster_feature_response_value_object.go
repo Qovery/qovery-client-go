@@ -91,6 +91,30 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'GCP_USER_PROVIDED_NETWORK'
+	if jsonDict["type"] == "GCP_USER_PROVIDED_NETWORK" {
+		// try to unmarshal JSON data into ClusterFeatureGcpExistingVpcResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureGcpExistingVpcResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureGcpExistingVpcResponse, return on the first match
+		} else {
+			dst.ClusterFeatureGcpExistingVpcResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureGcpExistingVpcResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'STRING'
+	if jsonDict["type"] == "STRING" {
+		// try to unmarshal JSON data into ClusterFeatureStringResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureStringResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureStringResponse, return on the first match
+		} else {
+			dst.ClusterFeatureStringResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureStringResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ClusterFeatureAwsExistingVpcResponse'
 	if jsonDict["type"] == "ClusterFeatureAwsExistingVpcResponse" {
 		// try to unmarshal JSON data into ClusterFeatureAwsExistingVpcResponse
@@ -129,30 +153,6 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 
 	// check if the discriminator value is 'ClusterFeatureStringResponse'
 	if jsonDict["type"] == "ClusterFeatureStringResponse" {
-		// try to unmarshal JSON data into ClusterFeatureStringResponse
-		err = json.Unmarshal(data, &dst.ClusterFeatureStringResponse)
-		if err == nil {
-			return nil // data stored in dst.ClusterFeatureStringResponse, return on the first match
-		} else {
-			dst.ClusterFeatureStringResponse = nil
-			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureStringResponse: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'GCP_USER_PROVIDED_NETWORK'
-	if jsonDict["type"] == "GCP_USER_PROVIDED_NETWORK" {
-		// try to unmarshal JSON data into ClusterFeatureGcpExistingVpcResponse
-		err = json.Unmarshal(data, &dst.ClusterFeatureGcpExistingVpcResponse)
-		if err == nil {
-			return nil // data stored in dst.ClusterFeatureGcpExistingVpcResponse, return on the first match
-		} else {
-			dst.ClusterFeatureGcpExistingVpcResponse = nil
-			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureGcpExistingVpcResponse: %s", err.Error())
-		}
-	}
-
-	// check if the discriminator value is 'STRING'
-	if jsonDict["type"] == "STRING" {
 		// try to unmarshal JSON data into ClusterFeatureStringResponse
 		err = json.Unmarshal(data, &dst.ClusterFeatureStringResponse)
 		if err == nil {

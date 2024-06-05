@@ -24,25 +24,25 @@ Check container image configuration is correct
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    containerImageCheckRequest := *openapiclient.NewContainerImageCheckRequest("ImageName_example", "Tag_example") // ContainerImageCheckRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	containerImageCheckRequest := *openapiclient.NewContainerImageCheckRequest("ImageName_example", "Tag_example") // ContainerImageCheckRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAPI.CheckContainerImage(context.Background(), environmentId).ContainerImageCheckRequest(containerImageCheckRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckContainerImage``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CheckContainerImage`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckContainerImage`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentAPI.CheckContainerImage(context.Background(), environmentId).ContainerImageCheckRequest(containerImageCheckRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckContainerImage``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CheckContainerImage`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckContainerImage`: %v\n", resp)
 }
 ```
 
@@ -94,25 +94,25 @@ Check dockerfile configuration is correct
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    dockerfileCheckRequest := *openapiclient.NewDockerfileCheckRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app"), "DockerfilePath_example") // DockerfileCheckRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	dockerfileCheckRequest := *openapiclient.NewDockerfileCheckRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app"), "DockerfilePath_example") // DockerfileCheckRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAPI.CheckDockerfile(context.Background(), environmentId).DockerfileCheckRequest(dockerfileCheckRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckDockerfile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CheckDockerfile`: DockerfileCheckResponse
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckDockerfile`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentAPI.CheckDockerfile(context.Background(), environmentId).DockerfileCheckRequest(dockerfileCheckRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckDockerfile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CheckDockerfile`: DockerfileCheckResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckDockerfile`: %v\n", resp)
 }
 ```
 
@@ -164,25 +164,25 @@ Check git file configuration is correct
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    gitFileCheckRequest := *openapiclient.NewGitFileCheckRequest(*openapiclient.NewHelmGitRepositoryRequest("https://github.com/Qovery/simple-node-app"), []string{"Files_example"}) // GitFileCheckRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	gitFileCheckRequest := *openapiclient.NewGitFileCheckRequest(*openapiclient.NewHelmGitRepositoryRequest("https://github.com/Qovery/simple-node-app"), []string{"Files_example"}) // GitFileCheckRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAPI.CheckGitFile(context.Background(), environmentId).GitFileCheckRequest(gitFileCheckRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckGitFile``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CheckGitFile`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckGitFile`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentAPI.CheckGitFile(context.Background(), environmentId).GitFileCheckRequest(gitFileCheckRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckGitFile``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CheckGitFile`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckGitFile`: %v\n", resp)
 }
 ```
 
@@ -234,25 +234,25 @@ Check helm repository configuration is correct
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    helmCheckRequest := *openapiclient.NewHelmCheckRequest(*openapiclient.NewHelmGitRepositoryRequest("https://github.com/Qovery/simple-node-app")) // HelmCheckRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	helmCheckRequest := *openapiclient.NewHelmCheckRequest(*openapiclient.NewHelmGitRepositoryRequest("https://github.com/Qovery/simple-node-app")) // HelmCheckRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAPI.CheckHelmRepository(context.Background(), environmentId).HelmCheckRequest(helmCheckRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CheckHelmRepository`: map[string]interface{}
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentAPI.CheckHelmRepository(context.Background(), environmentId).HelmCheckRequest(helmCheckRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.CheckHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CheckHelmRepository`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.CheckHelmRepository`: %v\n", resp)
 }
 ```
 
@@ -306,25 +306,25 @@ Deploy applications
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    deployAllRequest := *openapiclient.NewDeployAllRequest() // DeployAllRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	deployAllRequest := *openapiclient.NewDeployAllRequest() // DeployAllRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentAPI.DeployAllApplications(context.Background(), environmentId).DeployAllRequest(deployAllRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.DeployAllApplications``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployAllApplications`: Status
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.DeployAllApplications`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentAPI.DeployAllApplications(context.Background(), environmentId).DeployAllRequest(deployAllRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentAPI.DeployAllApplications``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployAllApplications`: Status
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentAPI.DeployAllApplications`: %v\n", resp)
 }
 ```
 

@@ -22,24 +22,24 @@ List container deployments
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory(context.Background(), containerId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListContainerDeploymentHistory`: ListContainerDeploymentHistory200Response
-    fmt.Fprintf(os.Stdout, "Response from `ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory(context.Background(), containerId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListContainerDeploymentHistory`: ListContainerDeploymentHistory200Response
+	fmt.Fprintf(os.Stdout, "Response from `ContainerDeploymentHistoryAPI.ListContainerDeploymentHistory`: %v\n", resp)
 }
 ```
 

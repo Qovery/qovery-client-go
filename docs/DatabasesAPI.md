@@ -26,25 +26,25 @@ Clone database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-    cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
+	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	cloneServiceRequest := *openapiclient.NewCloneServiceRequest("Name_example", "EnvironmentId_example") // CloneServiceRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.CloneDatabase(context.Background(), databaseId).CloneServiceRequest(cloneServiceRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.CloneDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CloneDatabase`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.CloneDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabasesAPI.CloneDatabase(context.Background(), databaseId).CloneServiceRequest(cloneServiceRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.CloneDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CloneDatabase`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.CloneDatabase`: %v\n", resp)
 }
 ```
 
@@ -96,25 +96,25 @@ Create a database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-    databaseRequest := *openapiclient.NewDatabaseRequest("Name_example", openapiclient.DatabaseTypeEnum("MONGODB"), "10.1", openapiclient.DatabaseModeEnum("CONTAINER")) // DatabaseRequest |  (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	databaseRequest := *openapiclient.NewDatabaseRequest("Name_example", openapiclient.DatabaseTypeEnum("MONGODB"), "10.1", openapiclient.DatabaseModeEnum("CONTAINER")) // DatabaseRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.CreateDatabase(context.Background(), environmentId).DatabaseRequest(databaseRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.CreateDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateDatabase`: Database
-    fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.CreateDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabasesAPI.CreateDatabase(context.Background(), environmentId).DatabaseRequest(databaseRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.CreateDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateDatabase`: Database
+	fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.CreateDatabase`: %v\n", resp)
 }
 ```
 
@@ -168,24 +168,24 @@ List all environment databases statuses
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.GetEnvironmentDatabaseStatus(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.GetEnvironmentDatabaseStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetEnvironmentDatabaseStatus`: ReferenceObjectStatusResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.GetEnvironmentDatabaseStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabasesAPI.GetEnvironmentDatabaseStatus(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.GetEnvironmentDatabaseStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetEnvironmentDatabaseStatus`: ReferenceObjectStatusResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.GetEnvironmentDatabaseStatus`: %v\n", resp)
 }
 ```
 
@@ -236,24 +236,24 @@ List environment databases
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.ListDatabase(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.ListDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListDatabase`: DatabaseResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.ListDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabasesAPI.ListDatabase(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.ListDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListDatabase`: DatabaseResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.ListDatabase`: %v\n", resp)
 }
 ```
 
@@ -304,24 +304,24 @@ List eligible database types, versions and modes for the environment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabasesAPI.ListEnvironmentDatabaseConfig(context.Background(), environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.ListEnvironmentDatabaseConfig``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListEnvironmentDatabaseConfig`: DatabaseConfigurationResponseList
-    fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.ListEnvironmentDatabaseConfig`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabasesAPI.ListEnvironmentDatabaseConfig(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabasesAPI.ListEnvironmentDatabaseConfig``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListEnvironmentDatabaseConfig`: DatabaseConfigurationResponseList
+	fmt.Fprintf(os.Stdout, "Response from `DatabasesAPI.ListEnvironmentDatabaseConfig`: %v\n", resp)
 }
 ```
 

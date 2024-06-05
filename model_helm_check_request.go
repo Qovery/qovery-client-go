@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmCheckRequest type satisfies the MappedNullable interface at compile time
@@ -22,6 +24,8 @@ var _ MappedNullable = &HelmCheckRequest{}
 type HelmCheckRequest struct {
 	GitRepository HelmGitRepositoryRequest `json:"git_repository"`
 }
+
+type _HelmCheckRequest HelmCheckRequest
 
 // NewHelmCheckRequest instantiates a new HelmCheckRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -77,6 +81,43 @@ func (o HelmCheckRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	return toSerialize, nil
+}
+
+func (o *HelmCheckRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"git_repository",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmCheckRequest := _HelmCheckRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmCheckRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmCheckRequest(varHelmCheckRequest)
+
+	return err
 }
 
 type NullableHelmCheckRequest struct {

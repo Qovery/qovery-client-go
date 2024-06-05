@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -29,6 +31,8 @@ type OrganizationAnnotationsGroupEnrichedResponse struct {
 	Scopes               []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
 	AssociatedItemsCount *int32                                  `json:"associated_items_count,omitempty"`
 }
+
+type _OrganizationAnnotationsGroupEnrichedResponse OrganizationAnnotationsGroupEnrichedResponse
 
 // NewOrganizationAnnotationsGroupEnrichedResponse instantiates a new OrganizationAnnotationsGroupEnrichedResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -258,6 +262,47 @@ func (o OrganizationAnnotationsGroupEnrichedResponse) ToMap() (map[string]interf
 		toSerialize["associated_items_count"] = o.AssociatedItemsCount
 	}
 	return toSerialize, nil
+}
+
+func (o *OrganizationAnnotationsGroupEnrichedResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"name",
+		"annotations",
+		"scopes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationAnnotationsGroupEnrichedResponse := _OrganizationAnnotationsGroupEnrichedResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationAnnotationsGroupEnrichedResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationAnnotationsGroupEnrichedResponse(varOrganizationAnnotationsGroupEnrichedResponse)
+
+	return err
 }
 
 type NullableOrganizationAnnotationsGroupEnrichedResponse struct {

@@ -23,25 +23,25 @@ Create an environment
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-    createEnvironmentRequest := *openapiclient.NewCreateEnvironmentRequest("Name_example") // CreateEnvironmentRequest |  (optional)
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	createEnvironmentRequest := *openapiclient.NewCreateEnvironmentRequest("Name_example") // CreateEnvironmentRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsAPI.CreateEnvironment(context.Background(), projectId).CreateEnvironmentRequest(createEnvironmentRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.CreateEnvironment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateEnvironment`: Environment
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.CreateEnvironment`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentsAPI.CreateEnvironment(context.Background(), projectId).CreateEnvironmentRequest(createEnvironmentRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.CreateEnvironment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateEnvironment`: Environment
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.CreateEnvironment`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ List total number of services for each environment of the project
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentServiceNumber(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.GetProjectEnvironmentServiceNumber``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetProjectEnvironmentServiceNumber`: EnvironmentStatsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.GetProjectEnvironmentServiceNumber`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentServiceNumber(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.GetProjectEnvironmentServiceNumber``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetProjectEnvironmentServiceNumber`: EnvironmentStatsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.GetProjectEnvironmentServiceNumber`: %v\n", resp)
 }
 ```
 
@@ -165,24 +165,24 @@ List environments statuses
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentsStatus(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.GetProjectEnvironmentsStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetProjectEnvironmentsStatus`: EnvironmentStatusList
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.GetProjectEnvironmentsStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentsStatus(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.GetProjectEnvironmentsStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetProjectEnvironmentsStatus`: EnvironmentStatusList
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.GetProjectEnvironmentsStatus`: %v\n", resp)
 }
 ```
 
@@ -233,24 +233,24 @@ List environments
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.EnvironmentsAPI.ListEnvironment(context.Background(), projectId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.ListEnvironment``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListEnvironment`: EnvironmentResponseList
-    fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.ListEnvironment`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentsAPI.ListEnvironment(context.Background(), projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.ListEnvironment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListEnvironment`: EnvironmentResponseList
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.ListEnvironment`: %v\n", resp)
 }
 ```
 

@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OrganizationLabelsGroupAssociatedItemsResponseListResultsInner type satisfies the MappedNullable interface at compile time
@@ -30,6 +32,8 @@ type OrganizationLabelsGroupAssociatedItemsResponseListResultsInner struct {
 	ItemName        string                        `json:"item_name"`
 	ItemType        LabelsGroupAssociatedItemType `json:"item_type"`
 }
+
+type _OrganizationLabelsGroupAssociatedItemsResponseListResultsInner OrganizationLabelsGroupAssociatedItemsResponseListResultsInner
 
 // NewOrganizationLabelsGroupAssociatedItemsResponseListResultsInner instantiates a new OrganizationLabelsGroupAssociatedItemsResponseListResultsInner object
 // This constructor will assign default values to properties that have it defined,
@@ -347,6 +351,45 @@ func (o OrganizationLabelsGroupAssociatedItemsResponseListResultsInner) ToMap() 
 	toSerialize["item_name"] = o.ItemName
 	toSerialize["item_type"] = o.ItemType
 	return toSerialize, nil
+}
+
+func (o *OrganizationLabelsGroupAssociatedItemsResponseListResultsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"item_id",
+		"item_name",
+		"item_type",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner := _OrganizationLabelsGroupAssociatedItemsResponseListResultsInner{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationLabelsGroupAssociatedItemsResponseListResultsInner(varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner)
+
+	return err
 }
 
 type NullableOrganizationLabelsGroupAssociatedItemsResponseListResultsInner struct {

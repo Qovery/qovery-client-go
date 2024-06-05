@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -29,6 +31,8 @@ type DeploymentHistory struct {
 	Commit NullableCommit               `json:"commit,omitempty"`
 	Status *DeploymentHistoryStatusEnum `json:"status,omitempty"`
 }
+
+type _DeploymentHistory DeploymentHistory
 
 // NewDeploymentHistory instantiates a new DeploymentHistory object
 // This constructor will assign default values to properties that have it defined,
@@ -261,6 +265,44 @@ func (o DeploymentHistory) ToMap() (map[string]interface{}, error) {
 		toSerialize["status"] = o.Status
 	}
 	return toSerialize, nil
+}
+
+func (o *DeploymentHistory) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varDeploymentHistory := _DeploymentHistory{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varDeploymentHistory)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentHistory(varDeploymentHistory)
+
+	return err
 }
 
 type NullableDeploymentHistory struct {

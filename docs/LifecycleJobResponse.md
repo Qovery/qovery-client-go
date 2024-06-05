@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
-**Source** | [**BaseJobResponseAllOfSource**](BaseJobResponseAllOfSource.md) |  | 
+**Source** | **map[string]interface{}** |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **JobType** | **string** |  | 
@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 
 ### NewLifecycleJobResponse
 
-`func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, jobType string, schedule LifecycleJobResponseAllOfSchedule, ) *LifecycleJobResponse`
+`func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source map[string]interface{}, healthchecks Healthcheck, jobType string, schedule LifecycleJobResponseAllOfSchedule, ) *LifecycleJobResponse`
 
 NewLifecycleJobResponse instantiates a new LifecycleJobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -361,24 +361,34 @@ HasPort returns a boolean if a field has been set.
 UnsetPort ensures that no value is present for Port, not even an explicit nil
 ### GetSource
 
-`func (o *LifecycleJobResponse) GetSource() BaseJobResponseAllOfSource`
+`func (o *LifecycleJobResponse) GetSource() map[string]interface{}`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *LifecycleJobResponse) GetSourceOk() (*BaseJobResponseAllOfSource, bool)`
+`func (o *LifecycleJobResponse) GetSourceOk() (*map[string]interface{}, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *LifecycleJobResponse) SetSource(v BaseJobResponseAllOfSource)`
+`func (o *LifecycleJobResponse) SetSource(v map[string]interface{})`
 
 SetSource sets Source field to given value.
 
 
+### SetSourceNil
+
+`func (o *LifecycleJobResponse) SetSourceNil(b bool)`
+
+ SetSourceNil sets the value for Source to be an explicit nil
+
+### UnsetSource
+`func (o *LifecycleJobResponse) UnsetSource()`
+
+UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetHealthchecks
 
 `func (o *LifecycleJobResponse) GetHealthchecks() Healthcheck`

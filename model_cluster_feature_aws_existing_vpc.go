@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ClusterFeatureAwsExistingVpc type satisfies the MappedNullable interface at compile time
@@ -34,6 +36,8 @@ type ClusterFeatureAwsExistingVpc struct {
 	RdsSubnetsZoneBIds         []string `json:"rds_subnets_zone_b_ids,omitempty"`
 	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
 }
+
+type _ClusterFeatureAwsExistingVpc ClusterFeatureAwsExistingVpc
 
 // NewClusterFeatureAwsExistingVpc instantiates a new ClusterFeatureAwsExistingVpc object
 // This constructor will assign default values to properties that have it defined,
@@ -173,7 +177,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIdsOk() ([]strin
 
 // HasDocumentdbSubnetsZoneAIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneAIds() bool {
-	if o != nil && IsNil(o.DocumentdbSubnetsZoneAIds) {
+	if o != nil && !IsNil(o.DocumentdbSubnetsZoneAIds) {
 		return true
 	}
 
@@ -206,7 +210,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIdsOk() ([]strin
 
 // HasDocumentdbSubnetsZoneBIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneBIds() bool {
-	if o != nil && IsNil(o.DocumentdbSubnetsZoneBIds) {
+	if o != nil && !IsNil(o.DocumentdbSubnetsZoneBIds) {
 		return true
 	}
 
@@ -239,7 +243,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIdsOk() ([]strin
 
 // HasDocumentdbSubnetsZoneCIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasDocumentdbSubnetsZoneCIds() bool {
-	if o != nil && IsNil(o.DocumentdbSubnetsZoneCIds) {
+	if o != nil && !IsNil(o.DocumentdbSubnetsZoneCIds) {
 		return true
 	}
 
@@ -272,7 +276,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIdsOk() ([]stri
 
 // HasElasticacheSubnetsZoneAIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneAIds() bool {
-	if o != nil && IsNil(o.ElasticacheSubnetsZoneAIds) {
+	if o != nil && !IsNil(o.ElasticacheSubnetsZoneAIds) {
 		return true
 	}
 
@@ -305,7 +309,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIdsOk() ([]stri
 
 // HasElasticacheSubnetsZoneBIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneBIds() bool {
-	if o != nil && IsNil(o.ElasticacheSubnetsZoneBIds) {
+	if o != nil && !IsNil(o.ElasticacheSubnetsZoneBIds) {
 		return true
 	}
 
@@ -338,7 +342,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIdsOk() ([]stri
 
 // HasElasticacheSubnetsZoneCIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasElasticacheSubnetsZoneCIds() bool {
-	if o != nil && IsNil(o.ElasticacheSubnetsZoneCIds) {
+	if o != nil && !IsNil(o.ElasticacheSubnetsZoneCIds) {
 		return true
 	}
 
@@ -371,7 +375,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIdsOk() ([]string, bool
 
 // HasRdsSubnetsZoneAIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneAIds() bool {
-	if o != nil && IsNil(o.RdsSubnetsZoneAIds) {
+	if o != nil && !IsNil(o.RdsSubnetsZoneAIds) {
 		return true
 	}
 
@@ -404,7 +408,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIdsOk() ([]string, bool
 
 // HasRdsSubnetsZoneBIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneBIds() bool {
-	if o != nil && IsNil(o.RdsSubnetsZoneBIds) {
+	if o != nil && !IsNil(o.RdsSubnetsZoneBIds) {
 		return true
 	}
 
@@ -437,7 +441,7 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIdsOk() ([]string, bool
 
 // HasRdsSubnetsZoneCIds returns a boolean if a field has been set.
 func (o *ClusterFeatureAwsExistingVpc) HasRdsSubnetsZoneCIds() bool {
-	if o != nil && IsNil(o.RdsSubnetsZoneCIds) {
+	if o != nil && !IsNil(o.RdsSubnetsZoneCIds) {
 		return true
 	}
 
@@ -491,6 +495,46 @@ func (o ClusterFeatureAwsExistingVpc) ToMap() (map[string]interface{}, error) {
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
 	}
 	return toSerialize, nil
+}
+
+func (o *ClusterFeatureAwsExistingVpc) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"aws_vpc_eks_id",
+		"eks_subnets_zone_a_ids",
+		"eks_subnets_zone_b_ids",
+		"eks_subnets_zone_c_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varClusterFeatureAwsExistingVpc := _ClusterFeatureAwsExistingVpc{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varClusterFeatureAwsExistingVpc)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterFeatureAwsExistingVpc(varClusterFeatureAwsExistingVpc)
+
+	return err
 }
 
 type NullableClusterFeatureAwsExistingVpc struct {

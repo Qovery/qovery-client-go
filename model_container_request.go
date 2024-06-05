@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ContainerRequest type satisfies the MappedNullable interface at compile time
@@ -51,6 +53,8 @@ type ContainerRequest struct {
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 }
+
+type _ContainerRequest ContainerRequest
 
 // NewContainerRequest instantiates a new ContainerRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -692,6 +696,47 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	return toSerialize, nil
+}
+
+func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"registry_id",
+		"image_name",
+		"tag",
+		"healthchecks",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varContainerRequest := _ContainerRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varContainerRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ContainerRequest(varContainerRequest)
+
+	return err
 }
 
 type NullableContainerRequest struct {

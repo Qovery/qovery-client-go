@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmResponseAllOfSourceOneOf1RepositoryRepository type satisfies the MappedNullable interface at compile time
@@ -27,6 +29,8 @@ type HelmResponseAllOfSourceOneOf1RepositoryRepository struct {
 	// The url the helm repository
 	Url string `json:"url"`
 }
+
+type _HelmResponseAllOfSourceOneOf1RepositoryRepository HelmResponseAllOfSourceOneOf1RepositoryRepository
 
 // NewHelmResponseAllOfSourceOneOf1RepositoryRepository instantiates a new HelmResponseAllOfSourceOneOf1RepositoryRepository object
 // This constructor will assign default values to properties that have it defined,
@@ -134,6 +138,45 @@ func (o HelmResponseAllOfSourceOneOf1RepositoryRepository) ToMap() (map[string]i
 	toSerialize["name"] = o.Name
 	toSerialize["url"] = o.Url
 	return toSerialize, nil
+}
+
+func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"name",
+		"url",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmResponseAllOfSourceOneOf1RepositoryRepository := _HelmResponseAllOfSourceOneOf1RepositoryRepository{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmResponseAllOfSourceOneOf1RepositoryRepository)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmResponseAllOfSourceOneOf1RepositoryRepository(varHelmResponseAllOfSourceOneOf1RepositoryRepository)
+
+	return err
 }
 
 type NullableHelmResponseAllOfSourceOneOf1RepositoryRepository struct {

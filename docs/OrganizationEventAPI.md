@@ -23,32 +23,32 @@ Get available event targets to filter events
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    fromTimestamp := "fromTimestamp_example" // string | Display targets available since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  (optional)
-    toTimestamp := "toTimestamp_example" // string | Display targets triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  (optional)
-    eventType := openapiclient.OrganizationEventType("CREATE") // OrganizationEventType |  (optional)
-    targetType := openapiclient.OrganizationEventTargetType("APPLICATION") // OrganizationEventTargetType |  (optional)
-    triggeredBy := "triggeredBy_example" // string | Information about the owner of the event (user name / apitoken / automatic action) (optional)
-    origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
-    projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting an environment or a service (optional)
-    environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting a service (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	fromTimestamp := "fromTimestamp_example" // string | Display targets available since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  (optional)
+	toTimestamp := "toTimestamp_example" // string | Display targets triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  (optional)
+	eventType := openapiclient.OrganizationEventType("CREATE") // OrganizationEventType |  (optional)
+	targetType := openapiclient.OrganizationEventTargetType("APPLICATION") // OrganizationEventTargetType |  (optional)
+	triggeredBy := "triggeredBy_example" // string | Information about the owner of the event (user name / apitoken / automatic action) (optional)
+	origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting an environment or a service (optional)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting a service (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEventTargets(context.Background(), organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEventTargets``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationEventTargets`: OrganizationEventTargetResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationEventAPI.GetOrganizationEventTargets`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEventTargets(context.Background(), organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEventTargets``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationEventTargets`: OrganizationEventTargetResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationEventAPI.GetOrganizationEventTargets`: %v\n", resp)
 }
 ```
 
@@ -109,35 +109,35 @@ Get all events inside the organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    pageSize := float32(8.14) // float32 | The number of events to display in the current page (optional) (default to 10)
-    fromTimestamp := "fromTimestamp_example" // string | Display events triggered since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  (optional)
-    toTimestamp := "toTimestamp_example" // string | Display events triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  (optional)
-    continueToken := "continueToken_example" // string | Token used to fetch the next page results The format is a timestamp with nano precision  (optional)
-    stepBackToken := "stepBackToken_example" // string | Token used to fetch the previous page results The format is a timestamp with nano precision  (optional)
-    eventType := openapiclient.OrganizationEventType("CREATE") // OrganizationEventType |  (optional)
-    targetType := openapiclient.OrganizationEventTargetType("APPLICATION") // OrganizationEventTargetType |  (optional)
-    targetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The target resource id to search.   Must be specified with the corresponding `target_type`  (optional)
-    subTargetType := openapiclient.OrganizationEventSubTargetType("ADVANCED_SETTINGS") // OrganizationEventSubTargetType |  (optional)
-    triggeredBy := "triggeredBy_example" // string | Information about the owner of the event (user name / apitoken / automatic action) (optional)
-    origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	pageSize := float32(8.14) // float32 | The number of events to display in the current page (optional) (default to 10)
+	fromTimestamp := "fromTimestamp_example" // string | Display events triggered since this timestamp.   A range of date can be specified by using `from-timestamp` with `to-timestamp` The format is a timestamp with nano precision  (optional)
+	toTimestamp := "toTimestamp_example" // string | Display events triggered before this timestamp.   A range of date can be specified by using `to-timestamp` with `from-timestamp` The format is a timestamp with nano precision  (optional)
+	continueToken := "continueToken_example" // string | Token used to fetch the next page results The format is a timestamp with nano precision  (optional)
+	stepBackToken := "stepBackToken_example" // string | Token used to fetch the previous page results The format is a timestamp with nano precision  (optional)
+	eventType := openapiclient.OrganizationEventType("CREATE") // OrganizationEventType |  (optional)
+	targetType := openapiclient.OrganizationEventTargetType("APPLICATION") // OrganizationEventTargetType |  (optional)
+	targetId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | The target resource id to search.   Must be specified with the corresponding `target_type`  (optional)
+	subTargetType := openapiclient.OrganizationEventSubTargetType("ADVANCED_SETTINGS") // OrganizationEventSubTargetType |  (optional)
+	triggeredBy := "triggeredBy_example" // string | Information about the owner of the event (user name / apitoken / automatic action) (optional)
+	origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEvents``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationEvents`: OrganizationEventResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationEventAPI.GetOrganizationEvents`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEvents``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationEvents`: OrganizationEventResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationEventAPI.GetOrganizationEvents`: %v\n", resp)
 }
 ```
 

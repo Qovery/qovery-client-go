@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ProjectStats type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type ProjectStats struct {
 	ServiceTotalNumber     *float32 `json:"service_total_number,omitempty"`
 	EnvironmentTotalNumber *float32 `json:"environment_total_number,omitempty"`
 }
+
+type _ProjectStats ProjectStats
 
 // NewProjectStats instantiates a new ProjectStats object
 // This constructor will assign default values to properties that have it defined,
@@ -149,6 +153,43 @@ func (o ProjectStats) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
 	}
 	return toSerialize, nil
+}
+
+func (o *ProjectStats) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varProjectStats := _ProjectStats{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varProjectStats)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectStats(varProjectStats)
+
+	return err
 }
 
 type NullableProjectStats struct {

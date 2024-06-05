@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -28,6 +30,8 @@ type ReferenceObjectStatus struct {
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
 }
+
+type _ReferenceObjectStatus ReferenceObjectStatus
 
 // NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -240,6 +244,45 @@ func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["steps"] = o.Steps
 	}
 	return toSerialize, nil
+}
+
+func (o *ReferenceObjectStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"state",
+		"service_deployment_status",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varReferenceObjectStatus := _ReferenceObjectStatus{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varReferenceObjectStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReferenceObjectStatus(varReferenceObjectStatus)
+
+	return err
 }
 
 type NullableReferenceObjectStatus struct {

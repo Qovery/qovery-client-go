@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -31,6 +33,8 @@ type OrganizationApiTokenCreate struct {
 	RoleName *string `json:"role_name,omitempty"`
 	RoleId   *string `json:"role_id,omitempty"`
 }
+
+type _OrganizationApiTokenCreate OrganizationApiTokenCreate
 
 // NewOrganizationApiTokenCreate instantiates a new OrganizationApiTokenCreate object
 // This constructor will assign default values to properties that have it defined,
@@ -322,6 +326,44 @@ func (o OrganizationApiTokenCreate) ToMap() (map[string]interface{}, error) {
 		toSerialize["role_id"] = o.RoleId
 	}
 	return toSerialize, nil
+}
+
+func (o *OrganizationApiTokenCreate) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationApiTokenCreate := _OrganizationApiTokenCreate{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationApiTokenCreate)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationApiTokenCreate(varOrganizationApiTokenCreate)
+
+	return err
 }
 
 type NullableOrganizationApiTokenCreate struct {

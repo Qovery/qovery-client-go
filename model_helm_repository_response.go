@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -32,6 +34,8 @@ type HelmRepositoryResponse struct {
 	// Bypass tls certificate verification when connecting to repository
 	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 }
+
+type _HelmRepositoryResponse HelmRepositoryResponse
 
 // NewHelmRepositoryResponse instantiates a new HelmRepositoryResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -314,6 +318,45 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	}
 	return toSerialize, nil
+}
+
+func (o *HelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"name",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varHelmRepositoryResponse := _HelmRepositoryResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varHelmRepositoryResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRepositoryResponse(varHelmRepositoryResponse)
+
+	return err
 }
 
 type NullableHelmRepositoryResponse struct {

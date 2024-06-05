@@ -26,25 +26,25 @@ Create a helm repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.CreateHelmRepository(context.Background(), organizationId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.CreateHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateHelmRepository`: HelmRepositoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.CreateHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.CreateHelmRepository(context.Background(), organizationId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.CreateHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateHelmRepository`: HelmRepositoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.CreateHelmRepository`: %v\n", resp)
 }
 ```
 
@@ -96,23 +96,23 @@ Delete a helm repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.DeleteHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.HelmRepositoriesAPI.DeleteHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.DeleteHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -165,26 +165,26 @@ Edit a helm repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
-    helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
+	helmRepositoryRequest := *openapiclient.NewHelmRepositoryRequest("Name_example", openapiclient.HelmRepositoryKindEnum("HTTPS"), false, *openapiclient.NewHelmRepositoryRequestConfig()) // HelmRepositoryRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId, helmRepositoryId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.EditHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditHelmRepository`: HelmRepositoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.EditHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.EditHelmRepository(context.Background(), organizationId, helmRepositoryId).HelmRepositoryRequest(helmRepositoryRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.EditHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditHelmRepository`: HelmRepositoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.EditHelmRepository`: %v\n", resp)
 }
 ```
 
@@ -238,26 +238,26 @@ List helm charts contained inside the repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
-    chartName := "chartName_example" // string | Helm chart name to filter the result on (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
+	chartName := "chartName_example" // string | Helm chart name to filter the result on (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.GetHelmCharts(context.Background(), organizationId, helmRepositoryId).ChartName(chartName).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.GetHelmCharts``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetHelmCharts`: HelmVersionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.GetHelmCharts`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.GetHelmCharts(context.Background(), organizationId, helmRepositoryId).ChartName(chartName).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.GetHelmCharts``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmCharts`: HelmVersionResponseList
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.GetHelmCharts`: %v\n", resp)
 }
 ```
 
@@ -311,25 +311,25 @@ Get a helm repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	helmRepositoryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm chart repository ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.GetHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.GetHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetHelmRepository`: HelmRepositoryResponse
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.GetHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.GetHelmRepository(context.Background(), organizationId, helmRepositoryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.GetHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmRepository`: HelmRepositoryResponse
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.GetHelmRepository`: %v\n", resp)
 }
 ```
 
@@ -384,23 +384,23 @@ List supported helm repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.ListAvailableHelmRepository(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.ListAvailableHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListAvailableHelmRepository`: AvailableHelmRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.ListAvailableHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.ListAvailableHelmRepository(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.ListAvailableHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAvailableHelmRepository`: AvailableHelmRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.ListAvailableHelmRepository`: %v\n", resp)
 }
 ```
 
@@ -443,24 +443,24 @@ List organization helm repositories
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmRepositoriesAPI.ListHelmRepository(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.ListHelmRepository``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListHelmRepository`: HelmRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.ListHelmRepository`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmRepositoriesAPI.ListHelmRepository(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmRepositoriesAPI.ListHelmRepository``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListHelmRepository`: HelmRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `HelmRepositoriesAPI.ListHelmRepository`: %v\n", resp)
 }
 ```
 

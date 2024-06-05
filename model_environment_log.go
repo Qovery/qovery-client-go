@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -31,6 +33,8 @@ type EnvironmentLog struct {
 	ExecutionId *string `json:"execution_id,omitempty"`
 	Hint        *string `json:"hint,omitempty"`
 }
+
+type _EnvironmentLog EnvironmentLog
 
 // NewEnvironmentLog instantiates a new EnvironmentLog object
 // This constructor will assign default values to properties that have it defined,
@@ -280,6 +284,45 @@ func (o EnvironmentLog) ToMap() (map[string]interface{}, error) {
 		toSerialize["hint"] = o.Hint
 	}
 	return toSerialize, nil
+}
+
+func (o *EnvironmentLog) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"message",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varEnvironmentLog := _EnvironmentLog{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varEnvironmentLog)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentLog(varEnvironmentLog)
+
+	return err
 }
 
 type NullableEnvironmentLog struct {

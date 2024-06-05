@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -27,6 +29,8 @@ type OrganizationLabelsGroupResponse struct {
 	Name      string     `json:"name"`
 	Labels    []Label    `json:"labels"`
 }
+
+type _OrganizationLabelsGroupResponse OrganizationLabelsGroupResponse
 
 // NewOrganizationLabelsGroupResponse instantiates a new OrganizationLabelsGroupResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -195,6 +199,46 @@ func (o OrganizationLabelsGroupResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["name"] = o.Name
 	toSerialize["labels"] = o.Labels
 	return toSerialize, nil
+}
+
+func (o *OrganizationLabelsGroupResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"name",
+		"labels",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationLabelsGroupResponse := _OrganizationLabelsGroupResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationLabelsGroupResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationLabelsGroupResponse(varOrganizationLabelsGroupResponse)
+
+	return err
 }
 
 type NullableOrganizationLabelsGroupResponse struct {

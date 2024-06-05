@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -43,9 +45,9 @@ type CronJobResponse struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32              `json:"port,omitempty"`
-	Source       BaseJobResponseAllOfSource `json:"source"`
-	Healthchecks Healthcheck                `json:"healthchecks"`
+	Port         NullableInt32          `json:"port,omitempty"`
+	Source       map[string]interface{} `json:"source"`
+	Healthchecks Healthcheck            `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
 	JobType           string                                 `json:"job_type"`
@@ -53,11 +55,13 @@ type CronJobResponse struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 }
 
+type _CronJobResponse CronJobResponse
+
 // NewCronJobResponse instantiates a new CronJobResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, jobType string, schedule CronJobResponseAllOfSchedule) *CronJobResponse {
+func NewCronJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source map[string]interface{}, healthchecks Healthcheck, jobType string, schedule CronJobResponseAllOfSchedule) *CronJobResponse {
 	this := CronJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -471,9 +475,10 @@ func (o *CronJobResponse) UnsetPort() {
 }
 
 // GetSource returns the Source field value
-func (o *CronJobResponse) GetSource() BaseJobResponseAllOfSource {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *CronJobResponse) GetSource() map[string]interface{} {
 	if o == nil {
-		var ret BaseJobResponseAllOfSource
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -482,15 +487,16 @@ func (o *CronJobResponse) GetSource() BaseJobResponseAllOfSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *CronJobResponse) GetSourceOk() (*BaseJobResponseAllOfSource, bool) {
-	if o == nil {
-		return nil, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *CronJobResponse) GetSourceOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Source) {
+		return map[string]interface{}{}, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
 // SetSource sets field value
-func (o *CronJobResponse) SetSource(v BaseJobResponseAllOfSource) {
+func (o *CronJobResponse) SetSource(v map[string]interface{}) {
 	o.Source = v
 }
 
@@ -664,7 +670,9 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	toSerialize["source"] = o.Source
+	if o.Source != nil {
+		toSerialize["source"] = o.Source
+	}
 	toSerialize["healthchecks"] = o.Healthchecks
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
@@ -675,6 +683,55 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
 	}
 	return toSerialize, nil
+}
+
+func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"environment",
+		"maximum_cpu",
+		"maximum_memory",
+		"name",
+		"cpu",
+		"memory",
+		"auto_preview",
+		"source",
+		"healthchecks",
+		"job_type",
+		"schedule",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varCronJobResponse := _CronJobResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varCronJobResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = CronJobResponse(varCronJobResponse)
+
+	return err
 }
 
 type NullableCronJobResponse struct {

@@ -35,25 +35,25 @@ Add credit card
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    creditCardRequest := *openapiclient.NewCreditCardRequest("Number_example", "Cvv_example", int32(6), int32(2025)) // CreditCardRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	creditCardRequest := *openapiclient.NewCreditCardRequest("Number_example", "Cvv_example", int32(6), int32(2025)) // CreditCardRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.AddCreditCard(context.Background(), organizationId).CreditCardRequest(creditCardRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AddCreditCard``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `AddCreditCard`: CreditCard
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.AddCreditCard`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.AddCreditCard(context.Background(), organizationId).CreditCardRequest(creditCardRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AddCreditCard``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `AddCreditCard`: CreditCard
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.AddCreditCard`: %v\n", resp)
 }
 ```
 
@@ -105,23 +105,23 @@ Add credit code
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationCreditCodeRequest := *openapiclient.NewOrganizationCreditCodeRequest() // OrganizationCreditCodeRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationCreditCodeRequest := *openapiclient.NewOrganizationCreditCodeRequest() // OrganizationCreditCodeRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BillingAPI.AddCreditCode(context.Background(), organizationId).OrganizationCreditCodeRequest(organizationCreditCodeRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AddCreditCode``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BillingAPI.AddCreditCode(context.Background(), organizationId).OrganizationCreditCodeRequest(organizationCreditCodeRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.AddCreditCode``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -173,25 +173,25 @@ Change organization plan
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationChangePlanRequest := *openapiclient.NewOrganizationChangePlanRequest() // OrganizationChangePlanRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationChangePlanRequest := *openapiclient.NewOrganizationChangePlanRequest() // OrganizationChangePlanRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.ChangePlan(context.Background(), organizationId).OrganizationChangePlanRequest(organizationChangePlanRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ChangePlan``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ChangePlan`: Organization
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ChangePlan`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.ChangePlan(context.Background(), organizationId).OrganizationChangePlanRequest(organizationChangePlanRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ChangePlan``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ChangePlan`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ChangePlan`: %v\n", resp)
 }
 ```
 
@@ -243,23 +243,23 @@ Delete credit card
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    creditCardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit Card ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	creditCardId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credit Card ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BillingAPI.DeleteCreditCard(context.Background(), organizationId, creditCardId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.DeleteCreditCard``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BillingAPI.DeleteCreditCard(context.Background(), organizationId, creditCardId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.DeleteCreditCard``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -312,25 +312,25 @@ Edit Organization Billing Info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    billingInfoRequest := *openapiclient.NewBillingInfoRequest("Forrest", "Gump", "forrest@gump.com", "21 Jenny Street", "Greenbow", "36744", "US") // BillingInfoRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	billingInfoRequest := *openapiclient.NewBillingInfoRequest("Forrest", "Gump", "forrest@gump.com", "21 Jenny Street", "Greenbow", "36744", "US") // BillingInfoRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.EditOrganizationBillingInfo(context.Background(), organizationId).BillingInfoRequest(billingInfoRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.EditOrganizationBillingInfo``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditOrganizationBillingInfo`: BillingInfo
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.EditOrganizationBillingInfo`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.EditOrganizationBillingInfo(context.Background(), organizationId).BillingInfoRequest(billingInfoRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.EditOrganizationBillingInfo``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganizationBillingInfo`: BillingInfo
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.EditOrganizationBillingInfo`: %v\n", resp)
 }
 ```
 
@@ -382,26 +382,26 @@ Generate organization billing usage report
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
+	"context"
+	"fmt"
+	"os"
     "time"
-    openapiclient "github.com/qovery/qovery-client-go"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationBillingUsageReportRequest := *openapiclient.NewOrganizationBillingUsageReportRequest(time.Now(), time.Now(), int32(3600)) // OrganizationBillingUsageReportRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationBillingUsageReportRequest := *openapiclient.NewOrganizationBillingUsageReportRequest(time.Now(), time.Now(), int32(3600)) // OrganizationBillingUsageReportRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GenerateBillingUsageReport(context.Background(), organizationId).OrganizationBillingUsageReportRequest(organizationBillingUsageReportRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GenerateBillingUsageReport``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GenerateBillingUsageReport`: OrganizationBillingUsageReportResponse
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GenerateBillingUsageReport`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GenerateBillingUsageReport(context.Background(), organizationId).OrganizationBillingUsageReportRequest(organizationBillingUsageReportRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GenerateBillingUsageReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateBillingUsageReport`: OrganizationBillingUsageReportResponse
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GenerateBillingUsageReport`: %v\n", resp)
 }
 ```
 
@@ -455,25 +455,25 @@ Get cluster current cost
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetClusterCurrentCost(context.Background(), organizationId, clusterId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetClusterCurrentCost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetClusterCurrentCost`: CostRange
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetClusterCurrentCost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetClusterCurrentCost(context.Background(), organizationId, clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetClusterCurrentCost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterCurrentCost`: CostRange
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetClusterCurrentCost`: %v\n", resp)
 }
 ```
 
@@ -528,24 +528,24 @@ Get organization billing external ID
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationBillingExternalId(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingExternalId``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationBillingExternalId`: BillingExternalId
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingExternalId`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationBillingExternalId(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingExternalId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationBillingExternalId`: BillingExternalId
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingExternalId`: %v\n", resp)
 }
 ```
 
@@ -596,24 +596,24 @@ Get organization billing info
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationBillingInfo(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingInfo``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationBillingInfo`: BillingInfo
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingInfo`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationBillingInfo(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingInfo``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationBillingInfo`: BillingInfo
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingInfo`: %v\n", resp)
 }
 ```
 
@@ -666,24 +666,24 @@ Get organization billing status
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationBillingStatus(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingStatus``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationBillingStatus`: BillingStatus
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingStatus`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationBillingStatus(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationBillingStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationBillingStatus`: BillingStatus
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationBillingStatus`: %v\n", resp)
 }
 ```
 
@@ -734,24 +734,24 @@ Get organization current cost
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationCurrentCost(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationCurrentCost``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationCurrentCost`: OrganizationCurrentCost
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationCurrentCost`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationCurrentCost(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationCurrentCost``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationCurrentCost`: OrganizationCurrentCost
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationCurrentCost`: %v\n", resp)
 }
 ```
 
@@ -802,25 +802,25 @@ Get organization invoice
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationInvoice(context.Background(), organizationId, invoiceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationInvoice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationInvoice`: Invoice
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationInvoice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationInvoice(context.Background(), organizationId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationInvoice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationInvoice`: Invoice
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationInvoice`: %v\n", resp)
 }
 ```
 
@@ -875,25 +875,25 @@ Get invoice link
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	invoiceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Invoice ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.GetOrganizationInvoicePDF(context.Background(), organizationId, invoiceId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationInvoicePDF``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationInvoicePDF`: Link
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationInvoicePDF`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.GetOrganizationInvoicePDF(context.Background(), organizationId, invoiceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetOrganizationInvoicePDF``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationInvoicePDF`: Link
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetOrganizationInvoicePDF`: %v\n", resp)
 }
 ```
 
@@ -946,24 +946,24 @@ List organization credit cards
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.ListOrganizationCreditCards(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ListOrganizationCreditCards``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationCreditCards`: CreditCardResponseList
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ListOrganizationCreditCards`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.ListOrganizationCreditCards(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ListOrganizationCreditCards``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationCreditCards`: CreditCardResponseList
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ListOrganizationCreditCards`: %v\n", resp)
 }
 ```
 
@@ -1014,24 +1014,24 @@ List organization invoices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.BillingAPI.ListOrganizationInvoice(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ListOrganizationInvoice``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationInvoice`: InvoiceResponseList
-    fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ListOrganizationInvoice`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BillingAPI.ListOrganizationInvoice(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.ListOrganizationInvoice``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationInvoice`: InvoiceResponseList
+	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.ListOrganizationInvoice`: %v\n", resp)
 }
 ```
 
@@ -1082,22 +1082,22 @@ Download all invoices
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.BillingAPI.OrganizationDownloadAllInvoices(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.OrganizationDownloadAllInvoices``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.BillingAPI.OrganizationDownloadAllInvoices(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.OrganizationDownloadAllInvoices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

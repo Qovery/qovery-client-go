@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -37,6 +39,8 @@ type OrganizationWebhookResponse struct {
 	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
 }
+
+type _OrganizationWebhookResponse OrganizationWebhookResponse
 
 // NewOrganizationWebhookResponse instantiates a new OrganizationWebhookResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -433,6 +437,44 @@ func (o OrganizationWebhookResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
 	}
 	return toSerialize, nil
+}
+
+func (o *OrganizationWebhookResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationWebhookResponse := _OrganizationWebhookResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationWebhookResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationWebhookResponse(varOrganizationWebhookResponse)
+
+	return err
 }
 
 type NullableOrganizationWebhookResponse struct {

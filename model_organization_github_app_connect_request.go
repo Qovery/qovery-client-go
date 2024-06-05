@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OrganizationGithubAppConnectRequest type satisfies the MappedNullable interface at compile time
@@ -23,6 +25,8 @@ type OrganizationGithubAppConnectRequest struct {
 	InstallationId string `json:"installation_id"`
 	Code           string `json:"code"`
 }
+
+type _OrganizationGithubAppConnectRequest OrganizationGithubAppConnectRequest
 
 // NewOrganizationGithubAppConnectRequest instantiates a new OrganizationGithubAppConnectRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -104,6 +108,44 @@ func (o OrganizationGithubAppConnectRequest) ToMap() (map[string]interface{}, er
 	toSerialize["installation_id"] = o.InstallationId
 	toSerialize["code"] = o.Code
 	return toSerialize, nil
+}
+
+func (o *OrganizationGithubAppConnectRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"installation_id",
+		"code",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationGithubAppConnectRequest := _OrganizationGithubAppConnectRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationGithubAppConnectRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationGithubAppConnectRequest(varOrganizationGithubAppConnectRequest)
+
+	return err
 }
 
 type NullableOrganizationGithubAppConnectRequest struct {

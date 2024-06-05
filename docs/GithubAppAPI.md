@@ -21,23 +21,23 @@ Connect a github account to an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationGithubAppConnectRequest := *openapiclient.NewOrganizationGithubAppConnectRequest("InstallationId_example", "Code_example") // OrganizationGithubAppConnectRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationGithubAppConnectRequest := *openapiclient.NewOrganizationGithubAppConnectRequest("InstallationId_example", "Code_example") // OrganizationGithubAppConnectRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.GithubAppAPI.OrganizationGithubAppConnect(context.Background(), organizationId).OrganizationGithubAppConnectRequest(organizationGithubAppConnectRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GithubAppAPI.OrganizationGithubAppConnect``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.GithubAppAPI.OrganizationGithubAppConnect(context.Background(), organizationId).OrganizationGithubAppConnectRequest(organizationGithubAppConnectRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GithubAppAPI.OrganizationGithubAppConnect``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -89,23 +89,23 @@ Disconnect a github account from an organization
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    force := true // bool | Indicates if the github app should be disconnected despite github applications linked to organization (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	force := true // bool | Indicates if the github app should be disconnected despite github applications linked to organization (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.GithubAppAPI.OrganizationGithubAppDisconnect(context.Background(), organizationId).Force(force).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GithubAppAPI.OrganizationGithubAppDisconnect``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.GithubAppAPI.OrganizationGithubAppDisconnect(context.Background(), organizationId).Force(force).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GithubAppAPI.OrganizationGithubAppDisconnect``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 

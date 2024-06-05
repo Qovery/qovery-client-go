@@ -23,24 +23,24 @@ Deploy database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsAPI.DeployDatabase(context.Background(), databaseId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.DeployDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployDatabase`: Status
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.DeployDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseActionsAPI.DeployDatabase(context.Background(), databaseId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.DeployDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployDatabase`: Status
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.DeployDatabase`: %v\n", resp)
 }
 ```
 
@@ -91,24 +91,24 @@ Retart database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsAPI.RebootDatabase(context.Background(), databaseId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RebootDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RebootDatabase`: Status
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RebootDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseActionsAPI.RebootDatabase(context.Background(), databaseId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RebootDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RebootDatabase`: Status
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RebootDatabase`: %v\n", resp)
 }
 ```
 
@@ -159,24 +159,24 @@ Redeploy database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RedeployDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RedeployDatabase`: Status
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RedeployDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RedeployDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RedeployDatabase`: Status
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.RedeployDatabase`: %v\n", resp)
 }
 ```
 
@@ -227,24 +227,24 @@ Stop database
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.DatabaseActionsAPI.StopDatabase(context.Background(), databaseId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.StopDatabase``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StopDatabase`: Status
-    fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.StopDatabase`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.DatabaseActionsAPI.StopDatabase(context.Background(), databaseId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.StopDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StopDatabase`: Status
+	fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.StopDatabase`: %v\n", resp)
 }
 ```
 

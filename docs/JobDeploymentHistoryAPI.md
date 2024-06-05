@@ -22,24 +22,24 @@ List job deployments
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobDeploymentHistoryAPI.ListJobDeploymentHistory(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentHistoryAPI.ListJobDeploymentHistory``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListJobDeploymentHistory`: ListJobDeploymentHistory200Response
-    fmt.Fprintf(os.Stdout, "Response from `JobDeploymentHistoryAPI.ListJobDeploymentHistory`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobDeploymentHistoryAPI.ListJobDeploymentHistory(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentHistoryAPI.ListJobDeploymentHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListJobDeploymentHistory`: ListJobDeploymentHistory200Response
+	fmt.Fprintf(os.Stdout, "Response from `JobDeploymentHistoryAPI.ListJobDeploymentHistory`: %v\n", resp)
 }
 ```
 

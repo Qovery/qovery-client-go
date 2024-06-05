@@ -26,23 +26,23 @@ Get bitbucket repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetBitbucketRepositories(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetBitbucketRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBitbucketRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetBitbucketRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetBitbucketRepositories(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetBitbucketRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBitbucketRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetBitbucketRepositories`: %v\n", resp)
 }
 ```
 
@@ -85,24 +85,24 @@ Get bitbucket branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
+	name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetBitbucketRepositoryBranches(context.Background()).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetBitbucketRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetBitbucketRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetBitbucketRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetBitbucketRepositoryBranches(context.Background()).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetBitbucketRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBitbucketRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetBitbucketRepositoryBranches`: %v\n", resp)
 }
 ```
 
@@ -149,23 +149,23 @@ Get git provider accounts
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetGitProviderAccount(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitProviderAccount``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGitProviderAccount`: GitAuthProviderResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitProviderAccount`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetGitProviderAccount(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitProviderAccount``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitProviderAccount`: GitAuthProviderResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitProviderAccount`: %v\n", resp)
 }
 ```
 
@@ -208,23 +208,23 @@ Get github repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetGithubRepositories(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGithubRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGithubRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGithubRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetGithubRepositories(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGithubRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGithubRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGithubRepositories`: %v\n", resp)
 }
 ```
 
@@ -267,24 +267,24 @@ Get github branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
+	name := "name_example" // string | The name of the repository where to retrieve the branches (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetGithubRepositoryBranches(context.Background()).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGithubRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGithubRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGithubRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetGithubRepositoryBranches(context.Background()).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGithubRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGithubRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGithubRepositoryBranches`: %v\n", resp)
 }
 ```
 
@@ -331,23 +331,23 @@ Get gitlab repositories of the connected user
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetGitlabRepositories(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitlabRepositories``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGitlabRepositories`: GitRepositoryResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitlabRepositories`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetGitlabRepositories(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitlabRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitlabRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitlabRepositories`: %v\n", resp)
 }
 ```
 
@@ -390,24 +390,24 @@ Get gitlab branches of the specified repository
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    name := "name_example" // string | The name of the repository to retrieve the branches (optional)
+	name := "name_example" // string | The name of the repository to retrieve the branches (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GitRepositoriesAPI.GetGitlabRepositoryBranches(context.Background()).Name(name).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitlabRepositoryBranches``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetGitlabRepositoryBranches`: GitRepositoryBranchResponseList
-    fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitlabRepositoryBranches`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GitRepositoriesAPI.GetGitlabRepositoryBranches(context.Background()).Name(name).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GitRepositoriesAPI.GetGitlabRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitlabRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `GitRepositoriesAPI.GetGitlabRepositoryBranches`: %v\n", resp)
 }
 ```
 

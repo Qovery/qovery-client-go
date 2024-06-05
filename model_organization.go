@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -36,6 +38,8 @@ type Organization struct {
 	// uuid of the user owning the organization
 	Owner *string `json:"owner,omitempty"`
 }
+
+type _Organization Organization
 
 // NewOrganization instantiates a new Organization object
 // This constructor will assign default values to properties that have it defined,
@@ -422,7 +426,7 @@ func (o *Organization) GetAdminEmailsOk() ([]string, bool) {
 
 // HasAdminEmails returns a boolean if a field has been set.
 func (o *Organization) HasAdminEmails() bool {
-	if o != nil && IsNil(o.AdminEmails) {
+	if o != nil && !IsNil(o.AdminEmails) {
 		return true
 	}
 
@@ -505,6 +509,46 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 		toSerialize["owner"] = o.Owner
 	}
 	return toSerialize, nil
+}
+
+func (o *Organization) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"name",
+		"plan",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganization := _Organization{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganization)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Organization(varOrganization)
+
+	return err
 }
 
 type NullableOrganization struct {

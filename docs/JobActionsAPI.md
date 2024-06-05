@@ -24,26 +24,26 @@ Deploy job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    forceEvent := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
-    jobDeployRequest := *openapiclient.NewJobDeployRequest() // JobDeployRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	forceEvent := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
+	jobDeployRequest := *openapiclient.NewJobDeployRequest() // JobDeployRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsAPI.DeployJob(context.Background(), jobId).ForceEvent(forceEvent).JobDeployRequest(jobDeployRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.DeployJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `DeployJob`: Status
-    fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.DeployJob`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobActionsAPI.DeployJob(context.Background(), jobId).ForceEvent(forceEvent).JobDeployRequest(jobDeployRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.DeployJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployJob`: Status
+	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.DeployJob`: %v\n", resp)
 }
 ```
 
@@ -96,25 +96,25 @@ Redeploy job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    forceEvent := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	forceEvent := openapiclient.JobForceEvent("START") // JobForceEvent | When filled, it indicates the target event to be deployed.   If the concerned job hasn't the target event provided, the job won't be deployed.  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsAPI.RedeployJob(context.Background(), jobId).ForceEvent(forceEvent).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.RedeployJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `RedeployJob`: Status
-    fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.RedeployJob`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobActionsAPI.RedeployJob(context.Background(), jobId).ForceEvent(forceEvent).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.RedeployJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `RedeployJob`: Status
+	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.RedeployJob`: %v\n", resp)
 }
 ```
 
@@ -166,24 +166,24 @@ Stop job
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobActionsAPI.StopJob(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.StopJob``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `StopJob`: Status
-    fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.StopJob`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobActionsAPI.StopJob(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.StopJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StopJob`: Status
+	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.StopJob`: %v\n", resp)
 }
 ```
 

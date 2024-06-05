@@ -26,25 +26,25 @@ Create an organization webhook
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.CreateOrganizationWebhook``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrganizationWebhook`: OrganizationWebhookCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.CreateOrganizationWebhook`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.CreateOrganizationWebhook``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrganizationWebhook`: OrganizationWebhookCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.CreateOrganizationWebhook`: %v\n", resp)
 }
 ```
 
@@ -98,23 +98,23 @@ Delete organization webhook
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationWebhookAPI.DeleteOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.DeleteOrganizationWebhook``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationWebhookAPI.DeleteOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.DeleteOrganizationWebhook``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -169,26 +169,26 @@ Edit an organization webhook
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
-    organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
+	organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookAPI.EditOrganizationWebhook(context.Background(), organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.EditOrganizationWebhook``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditOrganizationWebhook`: OrganizationWebhookCreateResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.EditOrganizationWebhook`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationWebhookAPI.EditOrganizationWebhook(context.Background(), organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.EditOrganizationWebhook``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganizationWebhook`: OrganizationWebhookCreateResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.EditOrganizationWebhook`: %v\n", resp)
 }
 ```
 
@@ -244,25 +244,25 @@ Get an Organization webhook
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookAPI.GetOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.GetOrganizationWebhook``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationWebhook`: OrganizationWebhookResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.GetOrganizationWebhook`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationWebhookAPI.GetOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.GetOrganizationWebhook``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationWebhook`: OrganizationWebhookResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.GetOrganizationWebhook`: %v\n", resp)
 }
 ```
 
@@ -317,24 +317,24 @@ List organization webhooks
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.ListOrganizationWebHooks``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationWebHooks`: OrganizationWebhookResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.ListOrganizationWebHooks`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.ListOrganizationWebHooks``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationWebHooks`: OrganizationWebhookResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.ListOrganizationWebHooks`: %v\n", resp)
 }
 ```
 

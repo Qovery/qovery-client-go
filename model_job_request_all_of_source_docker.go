@@ -23,6 +23,8 @@ type JobRequestAllOfSourceDocker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath NullableString                   `json:"dockerfile_path,omitempty"`
 	GitRepository  *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
+	// The content of your dockerfile if it is not stored inside your git repository
+	DockerfileRaw NullableString `json:"dockerfile_raw,omitempty"`
 }
 
 // NewJobRequestAllOfSourceDocker instantiates a new JobRequestAllOfSourceDocker object
@@ -117,6 +119,49 @@ func (o *JobRequestAllOfSourceDocker) SetGitRepository(v ApplicationGitRepositor
 	o.GitRepository = &v
 }
 
+// GetDockerfileRaw returns the DockerfileRaw field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobRequestAllOfSourceDocker) GetDockerfileRaw() string {
+	if o == nil || IsNil(o.DockerfileRaw.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DockerfileRaw.Get()
+}
+
+// GetDockerfileRawOk returns a tuple with the DockerfileRaw field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobRequestAllOfSourceDocker) GetDockerfileRawOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DockerfileRaw.Get(), o.DockerfileRaw.IsSet()
+}
+
+// HasDockerfileRaw returns a boolean if a field has been set.
+func (o *JobRequestAllOfSourceDocker) HasDockerfileRaw() bool {
+	if o != nil && o.DockerfileRaw.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDockerfileRaw gets a reference to the given NullableString and assigns it to the DockerfileRaw field.
+func (o *JobRequestAllOfSourceDocker) SetDockerfileRaw(v string) {
+	o.DockerfileRaw.Set(&v)
+}
+
+// SetDockerfileRawNil sets the value for DockerfileRaw to be an explicit nil
+func (o *JobRequestAllOfSourceDocker) SetDockerfileRawNil() {
+	o.DockerfileRaw.Set(nil)
+}
+
+// UnsetDockerfileRaw ensures that no value is present for DockerfileRaw, not even an explicit nil
+func (o *JobRequestAllOfSourceDocker) UnsetDockerfileRaw() {
+	o.DockerfileRaw.Unset()
+}
+
 func (o JobRequestAllOfSourceDocker) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -132,6 +177,9 @@ func (o JobRequestAllOfSourceDocker) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
+	}
+	if o.DockerfileRaw.IsSet() {
+		toSerialize["dockerfile_raw"] = o.DockerfileRaw.Get()
 	}
 	return toSerialize, nil
 }

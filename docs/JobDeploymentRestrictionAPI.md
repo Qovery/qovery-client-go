@@ -25,25 +25,25 @@ Create a job deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    jobDeploymentRestrictionRequest := *openapiclient.NewJobDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "job1/src/") // JobDeploymentRestrictionRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobDeploymentRestrictionRequest := *openapiclient.NewJobDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "job1/src/") // JobDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction(context.Background(), jobId).JobDeploymentRestrictionRequest(jobDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateJobDeploymentRestriction`: JobDeploymentRestrictionResponse
-    fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction(context.Background(), jobId).JobDeploymentRestrictionRequest(jobDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateJobDeploymentRestriction`: JobDeploymentRestrictionResponse
+	fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.CreateJobDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -97,23 +97,23 @@ Delete a job deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.JobDeploymentRestrictionAPI.DeleteJobDeploymentRestriction(context.Background(), jobId, deploymentRestrictionId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.DeleteJobDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.JobDeploymentRestrictionAPI.DeleteJobDeploymentRestriction(context.Background(), jobId, deploymentRestrictionId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.DeleteJobDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -168,26 +168,26 @@ Edit a job deployment restriction
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
-    jobDeploymentRestrictionRequest := *openapiclient.NewJobDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "job1/src/") // JobDeploymentRestrictionRequest |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	jobDeploymentRestrictionRequest := *openapiclient.NewJobDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "job1/src/") // JobDeploymentRestrictionRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobDeploymentRestrictionAPI.EditJobDeploymentRestriction(context.Background(), jobId, deploymentRestrictionId).JobDeploymentRestrictionRequest(jobDeploymentRestrictionRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.EditJobDeploymentRestriction``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditJobDeploymentRestriction`: JobDeploymentRestrictionResponse
-    fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.EditJobDeploymentRestriction`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobDeploymentRestrictionAPI.EditJobDeploymentRestriction(context.Background(), jobId, deploymentRestrictionId).JobDeploymentRestrictionRequest(jobDeploymentRestrictionRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.EditJobDeploymentRestriction``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditJobDeploymentRestriction`: JobDeploymentRestrictionResponse
+	fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.EditJobDeploymentRestriction`: %v\n", resp)
 }
 ```
 
@@ -243,24 +243,24 @@ Get job deployment restrictions
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetJobDeploymentRestrictions`: JobDeploymentRestrictionResponseList
-    fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetJobDeploymentRestrictions`: JobDeploymentRestrictionResponseList
+	fmt.Fprintf(os.Stdout, "Response from `JobDeploymentRestrictionAPI.GetJobDeploymentRestrictions`: %v\n", resp)
 }
 ```
 

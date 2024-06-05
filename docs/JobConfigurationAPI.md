@@ -23,25 +23,25 @@ Edit advanced settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
-    jobAdvancedSettings := *openapiclient.NewJobAdvancedSettings() // JobAdvancedSettings |  (optional)
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobAdvancedSettings := *openapiclient.NewJobAdvancedSettings() // JobAdvancedSettings |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobConfigurationAPI.EditJobAdvancedSettings(context.Background(), jobId).JobAdvancedSettings(jobAdvancedSettings).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobConfigurationAPI.EditJobAdvancedSettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditJobAdvancedSettings`: JobAdvancedSettings
-    fmt.Fprintf(os.Stdout, "Response from `JobConfigurationAPI.EditJobAdvancedSettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobConfigurationAPI.EditJobAdvancedSettings(context.Background(), jobId).JobAdvancedSettings(jobAdvancedSettings).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobConfigurationAPI.EditJobAdvancedSettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditJobAdvancedSettings`: JobAdvancedSettings
+	fmt.Fprintf(os.Stdout, "Response from `JobConfigurationAPI.EditJobAdvancedSettings`: %v\n", resp)
 }
 ```
 
@@ -95,24 +95,24 @@ Get advanced settings
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.JobConfigurationAPI.GetJobAdvancedSettings(context.Background(), jobId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `JobConfigurationAPI.GetJobAdvancedSettings``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetJobAdvancedSettings`: JobAdvancedSettings
-    fmt.Fprintf(os.Stdout, "Response from `JobConfigurationAPI.GetJobAdvancedSettings`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobConfigurationAPI.GetJobAdvancedSettings(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobConfigurationAPI.GetJobAdvancedSettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetJobAdvancedSettings`: JobAdvancedSettings
+	fmt.Fprintf(os.Stdout, "Response from `JobConfigurationAPI.GetJobAdvancedSettings`: %v\n", resp)
 }
 ```
 

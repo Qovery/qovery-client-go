@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -28,6 +30,8 @@ type OrganizationAnnotationsGroupResponse struct {
 	Annotations []Annotation                            `json:"annotations"`
 	Scopes      []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
 }
+
+type _OrganizationAnnotationsGroupResponse OrganizationAnnotationsGroupResponse
 
 // NewOrganizationAnnotationsGroupResponse instantiates a new OrganizationAnnotationsGroupResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -222,6 +226,47 @@ func (o OrganizationAnnotationsGroupResponse) ToMap() (map[string]interface{}, e
 	toSerialize["annotations"] = o.Annotations
 	toSerialize["scopes"] = o.Scopes
 	return toSerialize, nil
+}
+
+func (o *OrganizationAnnotationsGroupResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"id",
+		"created_at",
+		"name",
+		"annotations",
+		"scopes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varOrganizationAnnotationsGroupResponse := _OrganizationAnnotationsGroupResponse{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varOrganizationAnnotationsGroupResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationAnnotationsGroupResponse(varOrganizationAnnotationsGroupResponse)
+
+	return err
 }
 
 type NullableOrganizationAnnotationsGroupResponse struct {

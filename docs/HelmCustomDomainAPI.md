@@ -26,25 +26,25 @@ Add custom domain to the helm.
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmCustomDomainAPI.CreateHelmCustomDomain(context.Background(), helmId).CustomDomainRequest(customDomainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.CreateHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateHelmCustomDomain`: CustomDomain
-    fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.CreateHelmCustomDomain`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmCustomDomainAPI.CreateHelmCustomDomain(context.Background(), helmId).CustomDomainRequest(customDomainRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.CreateHelmCustomDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateHelmCustomDomain`: CustomDomain
+	fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.CreateHelmCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -98,23 +98,23 @@ Delete a Custom Domain
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.HelmCustomDomainAPI.DeleteHelmCustomDomain(context.Background(), helmId, customDomainId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.DeleteHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.HelmCustomDomainAPI.DeleteHelmCustomDomain(context.Background(), helmId, customDomainId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.DeleteHelmCustomDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -169,26 +169,26 @@ Edit a Custom Domain
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
-    customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+	customDomainRequest := *openapiclient.NewCustomDomainRequest("my.domain.tld", false) // CustomDomainRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmCustomDomainAPI.EditHelmCustomDomain(context.Background(), helmId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.EditHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditHelmCustomDomain`: CustomDomain
-    fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.EditHelmCustomDomain`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmCustomDomainAPI.EditHelmCustomDomain(context.Background(), helmId, customDomainId).CustomDomainRequest(customDomainRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.EditHelmCustomDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditHelmCustomDomain`: CustomDomain
+	fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.EditHelmCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -244,25 +244,25 @@ Get a Custom Domain
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
-    customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	customDomainId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Custom Domain ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmCustomDomainAPI.GetHelmCustomDomain(context.Background(), helmId, customDomainId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.GetHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetHelmCustomDomain`: CustomDomain
-    fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.GetHelmCustomDomain`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmCustomDomainAPI.GetHelmCustomDomain(context.Background(), helmId, customDomainId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.GetHelmCustomDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmCustomDomain`: CustomDomain
+	fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.GetHelmCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -317,24 +317,24 @@ List helm custom domains
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.HelmCustomDomainAPI.ListHelmCustomDomain(context.Background(), helmId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.ListHelmCustomDomain``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListHelmCustomDomain`: CustomDomainResponseList
-    fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.ListHelmCustomDomain`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmCustomDomainAPI.ListHelmCustomDomain(context.Background(), helmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmCustomDomainAPI.ListHelmCustomDomain``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListHelmCustomDomain`: CustomDomainResponseList
+	fmt.Fprintf(os.Stdout, "Response from `HelmCustomDomainAPI.ListHelmCustomDomain`: %v\n", resp)
 }
 ```
 

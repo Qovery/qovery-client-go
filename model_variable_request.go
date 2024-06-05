@@ -12,7 +12,9 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the VariableRequest type satisfies the MappedNullable interface at compile time
@@ -32,6 +34,8 @@ type VariableRequest struct {
 	// based on the selected scope, it contains the ID of the service, environment or project where the variable is attached
 	VariableParentId string `json:"variable_parent_id"`
 }
+
+type _VariableRequest VariableRequest
 
 // NewVariableRequest instantiates a new VariableRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -237,6 +241,47 @@ func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["variable_scope"] = o.VariableScope
 	toSerialize["variable_parent_id"] = o.VariableParentId
 	return toSerialize, nil
+}
+
+func (o *VariableRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"key",
+		"value",
+		"is_secret",
+		"variable_scope",
+		"variable_parent_id",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varVariableRequest := _VariableRequest{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varVariableRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = VariableRequest(varVariableRequest)
+
+	return err
 }
 
 type NullableVariableRequest struct {

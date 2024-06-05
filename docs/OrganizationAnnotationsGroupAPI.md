@@ -27,25 +27,25 @@ Create an organization annotations group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup(context.Background(), organizationId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CreateOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup(context.Background(), organizationId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.CreateOrganizationAnnotationsGroup`: %v\n", resp)
 }
 ```
 
@@ -99,23 +99,23 @@ Delete organization annotations group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    r, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.DeleteOrganizationAnnotationsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
 }
 ```
 
@@ -170,26 +170,26 @@ Edit organization annotations group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
-    organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
+	organizationAnnotationsGroupCreateRequest := *openapiclient.NewOrganizationAnnotationsGroupCreateRequest("Name_example", []openapiclient.Annotation{*openapiclient.NewAnnotation("Key_example", "Value_example")}, []openapiclient.OrganizationAnnotationsGroupScopeEnum{openapiclient.OrganizationAnnotationsGroupScopeEnum("DEPLOYMENTS")}) // OrganizationAnnotationsGroupCreateRequest |  (optional)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `EditOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).OrganizationAnnotationsGroupCreateRequest(organizationAnnotationsGroupCreateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.EditOrganizationAnnotationsGroup`: %v\n", resp)
 }
 ```
 
@@ -245,25 +245,25 @@ Get organization annotations group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup(context.Background(), organizationId, annotationsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationAnnotationsGroup`: OrganizationAnnotationsGroupResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroup`: %v\n", resp)
 }
 ```
 
@@ -318,25 +318,25 @@ Get organization annotations group associated items
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-    annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	annotationsGroupId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization annotations group ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId, annotationsGroupId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `GetOrganizationAnnotationsGroupAssociatedItems`: OrganizationAnnotationsGroupAssociatedItemsResponseList
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems(context.Background(), organizationId, annotationsGroupId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationAnnotationsGroupAssociatedItems`: OrganizationAnnotationsGroupAssociatedItemsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.GetOrganizationAnnotationsGroupAssociatedItems`: %v\n", resp)
 }
 ```
 
@@ -391,24 +391,24 @@ List organization annotations group
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/qovery/qovery-client-go"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
 )
 
 func main() {
-    organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `ListOrganizationAnnotationsGroup`: ListOrganizationAnnotationsGroup200Response
-    fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationAnnotationsGroup`: ListOrganizationAnnotationsGroup200Response
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAnnotationsGroupAPI.ListOrganizationAnnotationsGroup`: %v\n", resp)
 }
 ```
 
