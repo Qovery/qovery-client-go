@@ -391,7 +391,7 @@ func (r ApiDeployAllServicesRequest) DeployAllRequest(deployAllRequest DeployAll
 	return r
 }
 
-func (r ApiDeployAllServicesRequest) Execute() (*Status, *http.Response, error) {
+func (r ApiDeployAllServicesRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
 	return r.ApiService.DeployAllServicesExecute(r)
 }
 
@@ -413,13 +413,13 @@ func (a *EnvironmentActionsAPIService) DeployAllServices(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return Status
-func (a *EnvironmentActionsAPIService) DeployAllServicesExecute(r ApiDeployAllServicesRequest) (*Status, *http.Response, error) {
+//  @return EnvironmentStatus
+func (a *EnvironmentActionsAPIService) DeployAllServicesExecute(r ApiDeployAllServicesRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *Status
+		localVarReturnValue *EnvironmentStatus
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentActionsAPIService.DeployAllServices")

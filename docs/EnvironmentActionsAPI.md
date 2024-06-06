@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 
 ## DeployAllServices
 
-> Status DeployAllServices(ctx, environmentId).DeployAllRequest(deployAllRequest).Execute()
+> EnvironmentStatus DeployAllServices(ctx, environmentId).DeployAllRequest(deployAllRequest).Execute()
 
 Deploy services
 
@@ -259,7 +259,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.DeployAllServices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `DeployAllServices`: Status
+	// response from `DeployAllServices`: EnvironmentStatus
 	fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.DeployAllServices`: %v\n", resp)
 }
 ```
@@ -284,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Status**](Status.md)
+[**EnvironmentStatus**](EnvironmentStatus.md)
 
 ### Authorization
 
