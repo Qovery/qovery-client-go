@@ -23596,22 +23596,7 @@ components:
         auto_deploy: true
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        source:
-          git:
-            git_repository:
-              owner: John Doe
-              git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              has_access: true
-              branch: branch
-              deployed_commit_id: deployed_commit_id
-              url: https://openapi-generator.tech
-              deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-              root_path: root_path
-              deployed_commit_tag: v1.0.1
-              deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              provider: BITBUCKET
-              name: simple-node-app
-              git_token_name: git_token_name
+        source: null
         ports:
         - protocol: HTTP
           external_port: 8080
@@ -23687,22 +23672,7 @@ components:
         - auto_deploy: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          source:
-            git:
-              git_repository:
-                owner: John Doe
-                git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                has_access: true
-                branch: branch
-                deployed_commit_id: deployed_commit_id
-                url: https://openapi-generator.tech
-                deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-                root_path: root_path
-                deployed_commit_tag: v1.0.1
-                deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                provider: BITBUCKET
-                name: simple-node-app
-                git_token_name: git_token_name
+          source: null
           ports:
           - protocol: HTTP
             external_port: 8080
@@ -23775,22 +23745,7 @@ components:
         - auto_deploy: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          source:
-            git:
-              git_repository:
-                owner: John Doe
-                git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                has_access: true
-                branch: branch
-                deployed_commit_id: deployed_commit_id
-                url: https://openapi-generator.tech
-                deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-                root_path: root_path
-                deployed_commit_tag: v1.0.1
-                deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                provider: BITBUCKET
-                name: simple-node-app
-                git_token_name: git_token_name
+          source: null
           ports:
           - protocol: HTTP
             external_port: 8080
@@ -27228,7 +27183,7 @@ components:
             nullable: true
             type: integer
           source:
-            $ref: '#/components/schemas/BaseJobResponse_allOf_source'
+            $ref: '#/components/schemas/HelmResponse_allOf_source'
           healthchecks:
             $ref: '#/components/schemas/Healthcheck'
           auto_deploy:
@@ -27437,6 +27392,36 @@ components:
       type: object
       x-stoplight:
         id: s59m8wajnieny
+    HelmSourceRepositoryResponse:
+      properties:
+        chart_name:
+          type: string
+          x-stoplight:
+            id: myqqxis6r2wum
+        chart_version:
+          type: string
+          x-stoplight:
+            id: bxqymhkfiwauw
+        repository:
+          $ref: '#/components/schemas/HelmSourceRepositoryResponse_repository'
+      required:
+      - chart_name
+      - chart_version
+      - repository
+      title: HelmSourceRepositoryResponse
+      type: object
+      x-stoplight:
+        id: 4u8sg5mvbz502
+    HelmSourceGitResponse:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+      required:
+      - git_repository
+      title: HelmSourceGitResponse
+      type: object
+      x-stoplight:
+        id: lsxautcdafty6
     deleteMember_request:
       properties:
         user_id:
@@ -28653,89 +28638,9 @@ components:
       - protocol
       - service_name
       type: object
-    HelmResponse_allOf_source_oneOf_git:
-      example:
-        git_repository:
-          owner: John Doe
-          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          has_access: true
-          branch: branch
-          deployed_commit_id: deployed_commit_id
-          url: https://openapi-generator.tech
-          deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-          root_path: root_path
-          deployed_commit_tag: v1.0.1
-          deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          provider: BITBUCKET
-          name: simple-node-app
-          git_token_name: git_token_name
-      properties:
-        git_repository:
-          $ref: '#/components/schemas/ApplicationGitRepository'
-      type: object
-    HelmResponse_allOf_source_oneOf:
-      example:
-        git:
-          git_repository:
-            owner: John Doe
-            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            has_access: true
-            branch: branch
-            deployed_commit_id: deployed_commit_id
-            url: https://openapi-generator.tech
-            deployed_commit_date: 2000-01-23T04:56:07.000+00:00
-            root_path: root_path
-            deployed_commit_tag: v1.0.1
-            deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            provider: BITBUCKET
-            name: simple-node-app
-            git_token_name: git_token_name
-      properties:
-        git:
-          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_git'
-      type: object
-    HelmResponse_allOf_source_oneOf_1_repository_repository:
-      properties:
-        id:
-          description: The id of the helm repository
-          format: UUID
-          type: string
-        name:
-          description: The name of the helm repository
-          type: string
-        url:
-          description: The url the helm repository
-          type: string
-      required:
-      - id
-      - name
-      - url
-      type: object
-    HelmResponse_allOf_source_oneOf_1_repository:
-      properties:
-        chart_name:
-          description: The name of the chart in the repository
-          type: string
-        chart_version:
-          description: The version of the chart to use
-          type: string
-        repository:
-          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1_repository_repository'
-      required:
-      - chart_name
-      - chart_version
-      - repository
-      type: object
-    HelmResponse_allOf_source_oneOf_1:
-      properties:
-        repository:
-          $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1_repository'
-      type: object
     HelmResponse_allOf_source:
-      nullable: false
-      oneOf:
-      - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf'
-      - $ref: '#/components/schemas/HelmResponse_allOf_source_oneOf_1'
+      nullable: true
+      type: object
     HelmResponse_allOf_values_override_file_raw_values:
       example:
         name: name
@@ -29312,9 +29217,29 @@ components:
       required:
       - cronjob
       type: object
-    BaseJobResponse_allOf_source:
-      nullable: true
+    HelmSourceRepositoryResponse_repository:
+      properties:
+        id:
+          format: uu
+          type: string
+          x-stoplight:
+            id: 4mb2ymh7anud4
+        name:
+          type: string
+          x-stoplight:
+            id: bamkqh6qvsenc
+        url:
+          format: uri
+          type: string
+          x-stoplight:
+            id: qxjxb9crdcsyv
+      required:
+      - id
+      - name
+      - url
       type: object
+      x-stoplight:
+        id: fr4th9yrro2rh
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
