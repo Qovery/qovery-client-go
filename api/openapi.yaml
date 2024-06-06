@@ -17201,6 +17201,7 @@ components:
       - BOOLEAN
       - AWS_USER_PROVIDED_NETWORK
       - GCP_USER_PROVIDED_NETWORK
+      - KARPENTER
       type: string
     ClusterFeatureStringResponse:
       example:
@@ -27435,6 +27436,47 @@ components:
       type: object
       x-stoplight:
         id: lsxautcdafty6
+    CpuArchitectureEnum:
+      enum:
+      - AMD64
+      - ARM64
+      title: CpuArchitectureEnum
+      type: string
+      x-stoplight:
+        id: jlrd3r03vjzoy
+    ClusterFeatureKarpenterParameters:
+      properties:
+        spot_enabled:
+          type: boolean
+          x-stoplight:
+            id: fuolcs5q8ncp8
+        disk_size_in_gib:
+          type: integer
+          x-stoplight:
+            id: nwpjqw3bf7px0
+        default_service_architecture:
+          $ref: '#/components/schemas/CpuArchitectureEnum'
+      required:
+      - default_service_architecture
+      - disk_size_in_gib
+      - spot_enabled
+      title: ClusterFeatureKarpenterParameters
+      type: object
+      x-stoplight:
+        id: fzprvq41bcge1
+    ClusterFeatureKarpenterParametersResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          $ref: '#/components/schemas/ClusterFeatureKarpenterParameters'
+      required:
+      - type
+      - value
+      title: ClusterFeatureKarpenterParametersResponse
+      type: object
+      x-stoplight:
+        id: q33tdlz4ychh5
     deleteMember_request:
       properties:
         user_id:
@@ -27888,6 +27930,7 @@ components:
           BOOLEAN: '#/components/schemas/ClusterFeatureBooleanResponse'
           AWS_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
           GCP_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
+          KARPENTER: '#/components/schemas/ClusterFeatureKarpenterParametersResponse'
         propertyName: type
       nullable: true
       oneOf:
@@ -27895,6 +27938,7 @@ components:
       - $ref: '#/components/schemas/ClusterFeatureBooleanResponse'
       - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
       - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
+      - $ref: '#/components/schemas/ClusterFeatureKarpenterParametersResponse'
     ClusterFeatureResponse_accepted_values_inner:
       oneOf:
       - type: string
@@ -27945,6 +27989,7 @@ components:
       - type: boolean
       - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
       - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
+      - $ref: '#/components/schemas/ClusterFeatureKarpenterParameters'
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

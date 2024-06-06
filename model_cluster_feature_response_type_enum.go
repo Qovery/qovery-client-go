@@ -25,6 +25,7 @@ const (
 	CLUSTERFEATURERESPONSETYPEENUM_BOOLEAN                   ClusterFeatureResponseTypeEnum = "BOOLEAN"
 	CLUSTERFEATURERESPONSETYPEENUM_AWS_USER_PROVIDED_NETWORK ClusterFeatureResponseTypeEnum = "AWS_USER_PROVIDED_NETWORK"
 	CLUSTERFEATURERESPONSETYPEENUM_GCP_USER_PROVIDED_NETWORK ClusterFeatureResponseTypeEnum = "GCP_USER_PROVIDED_NETWORK"
+	CLUSTERFEATURERESPONSETYPEENUM_KARPENTER                 ClusterFeatureResponseTypeEnum = "KARPENTER"
 )
 
 // All allowed values of ClusterFeatureResponseTypeEnum enum
@@ -33,6 +34,7 @@ var AllowedClusterFeatureResponseTypeEnumEnumValues = []ClusterFeatureResponseTy
 	"BOOLEAN",
 	"AWS_USER_PROVIDED_NETWORK",
 	"GCP_USER_PROVIDED_NETWORK",
+	"KARPENTER",
 }
 
 func (v *ClusterFeatureResponseTypeEnum) UnmarshalJSON(src []byte) error {

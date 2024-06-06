@@ -18,10 +18,11 @@ import (
 
 // ClusterFeatureResponseValueObject - struct for ClusterFeatureResponseValueObject
 type ClusterFeatureResponseValueObject struct {
-	ClusterFeatureAwsExistingVpcResponse *ClusterFeatureAwsExistingVpcResponse
-	ClusterFeatureBooleanResponse        *ClusterFeatureBooleanResponse
-	ClusterFeatureGcpExistingVpcResponse *ClusterFeatureGcpExistingVpcResponse
-	ClusterFeatureStringResponse         *ClusterFeatureStringResponse
+	ClusterFeatureAwsExistingVpcResponse      *ClusterFeatureAwsExistingVpcResponse
+	ClusterFeatureBooleanResponse             *ClusterFeatureBooleanResponse
+	ClusterFeatureGcpExistingVpcResponse      *ClusterFeatureGcpExistingVpcResponse
+	ClusterFeatureKarpenterParametersResponse *ClusterFeatureKarpenterParametersResponse
+	ClusterFeatureStringResponse              *ClusterFeatureStringResponse
 }
 
 // ClusterFeatureAwsExistingVpcResponseAsClusterFeatureResponseValueObject is a convenience function that returns ClusterFeatureAwsExistingVpcResponse wrapped in ClusterFeatureResponseValueObject
@@ -42,6 +43,13 @@ func ClusterFeatureBooleanResponseAsClusterFeatureResponseValueObject(v *Cluster
 func ClusterFeatureGcpExistingVpcResponseAsClusterFeatureResponseValueObject(v *ClusterFeatureGcpExistingVpcResponse) ClusterFeatureResponseValueObject {
 	return ClusterFeatureResponseValueObject{
 		ClusterFeatureGcpExistingVpcResponse: v,
+	}
+}
+
+// ClusterFeatureKarpenterParametersResponseAsClusterFeatureResponseValueObject is a convenience function that returns ClusterFeatureKarpenterParametersResponse wrapped in ClusterFeatureResponseValueObject
+func ClusterFeatureKarpenterParametersResponseAsClusterFeatureResponseValueObject(v *ClusterFeatureKarpenterParametersResponse) ClusterFeatureResponseValueObject {
+	return ClusterFeatureResponseValueObject{
+		ClusterFeatureKarpenterParametersResponse: v,
 	}
 }
 
@@ -103,6 +111,18 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'KARPENTER'
+	if jsonDict["type"] == "KARPENTER" {
+		// try to unmarshal JSON data into ClusterFeatureKarpenterParametersResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureKarpenterParametersResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureKarpenterParametersResponse, return on the first match
+		} else {
+			dst.ClusterFeatureKarpenterParametersResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureKarpenterParametersResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'STRING'
 	if jsonDict["type"] == "STRING" {
 		// try to unmarshal JSON data into ClusterFeatureStringResponse
@@ -151,6 +171,18 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ClusterFeatureKarpenterParametersResponse'
+	if jsonDict["type"] == "ClusterFeatureKarpenterParametersResponse" {
+		// try to unmarshal JSON data into ClusterFeatureKarpenterParametersResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureKarpenterParametersResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureKarpenterParametersResponse, return on the first match
+		} else {
+			dst.ClusterFeatureKarpenterParametersResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureKarpenterParametersResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ClusterFeatureStringResponse'
 	if jsonDict["type"] == "ClusterFeatureStringResponse" {
 		// try to unmarshal JSON data into ClusterFeatureStringResponse
@@ -180,6 +212,10 @@ func (src ClusterFeatureResponseValueObject) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ClusterFeatureGcpExistingVpcResponse)
 	}
 
+	if src.ClusterFeatureKarpenterParametersResponse != nil {
+		return json.Marshal(&src.ClusterFeatureKarpenterParametersResponse)
+	}
+
 	if src.ClusterFeatureStringResponse != nil {
 		return json.Marshal(&src.ClusterFeatureStringResponse)
 	}
@@ -202,6 +238,10 @@ func (obj *ClusterFeatureResponseValueObject) GetActualInstance() interface{} {
 
 	if obj.ClusterFeatureGcpExistingVpcResponse != nil {
 		return obj.ClusterFeatureGcpExistingVpcResponse
+	}
+
+	if obj.ClusterFeatureKarpenterParametersResponse != nil {
+		return obj.ClusterFeatureKarpenterParametersResponse
 	}
 
 	if obj.ClusterFeatureStringResponse != nil {
