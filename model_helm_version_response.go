@@ -20,9 +20,12 @@ var _ MappedNullable = &HelmVersionResponse{}
 
 // HelmVersionResponse struct for HelmVersionResponse
 type HelmVersionResponse struct {
-	ChartName *string  `json:"chart_name,omitempty"`
-	Versions  []string `json:"versions,omitempty"`
+	ChartName            *string  `json:"chart_name,omitempty"`
+	Versions             []string `json:"versions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmVersionResponse HelmVersionResponse
 
 // NewHelmVersionResponse instantiates a new HelmVersionResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o HelmVersionResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Versions) {
 		toSerialize["versions"] = o.Versions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmVersionResponse) UnmarshalJSON(data []byte) (err error) {
+	varHelmVersionResponse := _HelmVersionResponse{}
+
+	err = json.Unmarshal(data, &varHelmVersionResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmVersionResponse(varHelmVersionResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "chart_name")
+		delete(additionalProperties, "versions")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmVersionResponse struct {

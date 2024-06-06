@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &EnvironmentStats{}
 
 // EnvironmentStats struct for EnvironmentStats
 type EnvironmentStats struct {
-	Id                 string   `json:"id"`
-	ServiceTotalNumber *float32 `json:"service_total_number,omitempty"`
+	Id                   string   `json:"id"`
+	ServiceTotalNumber   *float32 `json:"service_total_number,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentStats EnvironmentStats
@@ -116,6 +116,11 @@ func (o EnvironmentStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ServiceTotalNumber) {
 		toSerialize["service_total_number"] = o.ServiceTotalNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -143,15 +148,21 @@ func (o *EnvironmentStats) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentStats := _EnvironmentStats{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentStats)
+	err = json.Unmarshal(data, &varEnvironmentStats)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentStats(varEnvironmentStats)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "service_total_number")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

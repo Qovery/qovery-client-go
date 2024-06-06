@@ -20,8 +20,11 @@ var _ MappedNullable = &GitRepositoryBranchResponseList{}
 
 // GitRepositoryBranchResponseList struct for GitRepositoryBranchResponseList
 type GitRepositoryBranchResponseList struct {
-	Results []GitRepositoryBranch `json:"results,omitempty"`
+	Results              []GitRepositoryBranch `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GitRepositoryBranchResponseList GitRepositoryBranchResponseList
 
 // NewGitRepositoryBranchResponseList instantiates a new GitRepositoryBranchResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o GitRepositoryBranchResponseList) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GitRepositoryBranchResponseList) UnmarshalJSON(data []byte) (err error) {
+	varGitRepositoryBranchResponseList := _GitRepositoryBranchResponseList{}
+
+	err = json.Unmarshal(data, &varGitRepositoryBranchResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GitRepositoryBranchResponseList(varGitRepositoryBranchResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGitRepositoryBranchResponseList struct {

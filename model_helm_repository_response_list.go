@@ -20,8 +20,11 @@ var _ MappedNullable = &HelmRepositoryResponseList{}
 
 // HelmRepositoryResponseList struct for HelmRepositoryResponseList
 type HelmRepositoryResponseList struct {
-	Results []HelmRepositoryResponse `json:"results,omitempty"`
+	Results              []HelmRepositoryResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmRepositoryResponseList HelmRepositoryResponseList
 
 // NewHelmRepositoryResponseList instantiates a new HelmRepositoryResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o HelmRepositoryResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmRepositoryResponseList) UnmarshalJSON(data []byte) (err error) {
+	varHelmRepositoryResponseList := _HelmRepositoryResponseList{}
+
+	err = json.Unmarshal(data, &varHelmRepositoryResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRepositoryResponseList(varHelmRepositoryResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmRepositoryResponseList struct {

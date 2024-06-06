@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,6 +34,7 @@ type SignUpRequest struct {
 	CurrentStep           NullableString   `json:"current_step,omitempty"`
 	DxAuth                NullableBool     `json:"dx_auth,omitempty"`
 	InfrastructureHosting NullableString   `json:"infrastructure_hosting,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _SignUpRequest SignUpRequest
@@ -553,6 +553,11 @@ func (o SignUpRequest) ToMap() (map[string]interface{}, error) {
 	if o.InfrastructureHosting.IsSet() {
 		toSerialize["infrastructure_hosting"] = o.InfrastructureHosting.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -584,15 +589,32 @@ func (o *SignUpRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varSignUpRequest := _SignUpRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varSignUpRequest)
+	err = json.Unmarshal(data, &varSignUpRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = SignUpRequest(varSignUpRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "user_email")
+		delete(additionalProperties, "type_of_use")
+		delete(additionalProperties, "qovery_usage")
+		delete(additionalProperties, "company_name")
+		delete(additionalProperties, "company_size")
+		delete(additionalProperties, "user_role")
+		delete(additionalProperties, "qovery_usage_other")
+		delete(additionalProperties, "user_questions")
+		delete(additionalProperties, "current_step")
+		delete(additionalProperties, "dx_auth")
+		delete(additionalProperties, "infrastructure_hosting")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

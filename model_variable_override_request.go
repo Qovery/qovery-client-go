@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type VariableOverrideRequest struct {
 	Value         string               `json:"value"`
 	OverrideScope APIVariableScopeEnum `json:"override_scope"`
 	// the id of the variable that is aliased.
-	OverrideParentId string `json:"override_parent_id"`
+	OverrideParentId     string `json:"override_parent_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableOverrideRequest VariableOverrideRequest
@@ -136,6 +136,11 @@ func (o VariableOverrideRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["value"] = o.Value
 	toSerialize["override_scope"] = o.OverrideScope
 	toSerialize["override_parent_id"] = o.OverrideParentId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *VariableOverrideRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableOverrideRequest := _VariableOverrideRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableOverrideRequest)
+	err = json.Unmarshal(data, &varVariableOverrideRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableOverrideRequest(varVariableOverrideRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "override_scope")
+		delete(additionalProperties, "override_parent_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

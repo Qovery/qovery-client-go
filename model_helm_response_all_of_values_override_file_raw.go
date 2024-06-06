@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverrideFileRaw{}
 
 // HelmResponseAllOfValuesOverrideFileRaw struct for HelmResponseAllOfValuesOverrideFileRaw
 type HelmResponseAllOfValuesOverrideFileRaw struct {
-	Values []HelmResponseAllOfValuesOverrideFileRawValues `json:"values"`
+	Values               []HelmResponseAllOfValuesOverrideFileRawValues `json:"values"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponseAllOfValuesOverrideFileRaw HelmResponseAllOfValuesOverrideFileRaw
@@ -80,6 +80,11 @@ func (o HelmResponseAllOfValuesOverrideFileRaw) MarshalJSON() ([]byte, error) {
 func (o HelmResponseAllOfValuesOverrideFileRaw) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["values"] = o.Values
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *HelmResponseAllOfValuesOverrideFileRaw) UnmarshalJSON(data []byte) (err
 
 	varHelmResponseAllOfValuesOverrideFileRaw := _HelmResponseAllOfValuesOverrideFileRaw{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponseAllOfValuesOverrideFileRaw)
+	err = json.Unmarshal(data, &varHelmResponseAllOfValuesOverrideFileRaw)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponseAllOfValuesOverrideFileRaw(varHelmResponseAllOfValuesOverrideFileRaw)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "values")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

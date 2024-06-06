@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,8 +24,9 @@ type ContainerRegistryProviderDetailsResponse struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
 	// URL of the container registry
-	Url  string                    `json:"url"`
-	Kind ContainerRegistryKindEnum `json:"kind"`
+	Url                  string                    `json:"url"`
+	Kind                 ContainerRegistryKindEnum `json:"kind"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerRegistryProviderDetailsResponse ContainerRegistryProviderDetailsResponse
@@ -162,6 +162,11 @@ func (o ContainerRegistryProviderDetailsResponse) ToMap() (map[string]interface{
 	toSerialize["name"] = o.Name
 	toSerialize["url"] = o.Url
 	toSerialize["kind"] = o.Kind
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -192,15 +197,23 @@ func (o *ContainerRegistryProviderDetailsResponse) UnmarshalJSON(data []byte) (e
 
 	varContainerRegistryProviderDetailsResponse := _ContainerRegistryProviderDetailsResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerRegistryProviderDetailsResponse)
+	err = json.Unmarshal(data, &varContainerRegistryProviderDetailsResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerRegistryProviderDetailsResponse(varContainerRegistryProviderDetailsResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "kind")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

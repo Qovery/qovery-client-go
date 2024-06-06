@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -48,9 +47,10 @@ type ApplicationEditRequest struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
-	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ApplicationEditRequest ApplicationEditRequest
@@ -795,6 +795,11 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -822,15 +827,38 @@ func (o *ApplicationEditRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varApplicationEditRequest := _ApplicationEditRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplicationEditRequest)
+	err = json.Unmarshal(data, &varApplicationEditRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ApplicationEditRequest(varApplicationEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "build_mode")
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "buildpack_language")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "min_running_instances")
+		delete(additionalProperties, "max_running_instances")
+		delete(additionalProperties, "healthchecks")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "ports")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "annotations_groups")
+		delete(additionalProperties, "labels_groups")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

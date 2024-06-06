@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ClusterFeatureAwsExistingVpcResponse{}
 
 // ClusterFeatureAwsExistingVpcResponse struct for ClusterFeatureAwsExistingVpcResponse
 type ClusterFeatureAwsExistingVpcResponse struct {
-	Type  ClusterFeatureResponseTypeEnum `json:"type"`
-	Value ClusterFeatureAwsExistingVpc   `json:"value"`
+	Type                 ClusterFeatureResponseTypeEnum `json:"type"`
+	Value                ClusterFeatureAwsExistingVpc   `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterFeatureAwsExistingVpcResponse ClusterFeatureAwsExistingVpcResponse
@@ -107,6 +107,11 @@ func (o ClusterFeatureAwsExistingVpcResponse) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ClusterFeatureAwsExistingVpcResponse) UnmarshalJSON(data []byte) (err e
 
 	varClusterFeatureAwsExistingVpcResponse := _ClusterFeatureAwsExistingVpcResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterFeatureAwsExistingVpcResponse)
+	err = json.Unmarshal(data, &varClusterFeatureAwsExistingVpcResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterFeatureAwsExistingVpcResponse(varClusterFeatureAwsExistingVpcResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

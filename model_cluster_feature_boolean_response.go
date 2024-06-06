@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ClusterFeatureBooleanResponse{}
 
 // ClusterFeatureBooleanResponse struct for ClusterFeatureBooleanResponse
 type ClusterFeatureBooleanResponse struct {
-	Type  ClusterFeatureResponseTypeEnum `json:"type"`
-	Value bool                           `json:"value"`
+	Type                 ClusterFeatureResponseTypeEnum `json:"type"`
+	Value                bool                           `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterFeatureBooleanResponse ClusterFeatureBooleanResponse
@@ -107,6 +107,11 @@ func (o ClusterFeatureBooleanResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ClusterFeatureBooleanResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterFeatureBooleanResponse := _ClusterFeatureBooleanResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterFeatureBooleanResponse)
+	err = json.Unmarshal(data, &varClusterFeatureBooleanResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterFeatureBooleanResponse(varClusterFeatureBooleanResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

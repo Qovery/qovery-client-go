@@ -21,14 +21,17 @@ var _ MappedNullable = &AccountInfo{}
 
 // AccountInfo struct for AccountInfo
 type AccountInfo struct {
-	Id                 *string    `json:"id,omitempty"`
-	CreatedAt          *time.Time `json:"created_at,omitempty"`
-	Nickname           *string    `json:"nickname,omitempty"`
-	FirstName          *string    `json:"first_name,omitempty"`
-	LastName           *string    `json:"last_name,omitempty"`
-	ProfilePictureUrl  *string    `json:"profile_picture_url,omitempty"`
-	CommunicationEmail *string    `json:"communication_email,omitempty"`
+	Id                   *string    `json:"id,omitempty"`
+	CreatedAt            *time.Time `json:"created_at,omitempty"`
+	Nickname             *string    `json:"nickname,omitempty"`
+	FirstName            *string    `json:"first_name,omitempty"`
+	LastName             *string    `json:"last_name,omitempty"`
+	ProfilePictureUrl    *string    `json:"profile_picture_url,omitempty"`
+	CommunicationEmail   *string    `json:"communication_email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccountInfo AccountInfo
 
 // NewAccountInfo instantiates a new AccountInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -302,7 +305,39 @@ func (o AccountInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CommunicationEmail) {
 		toSerialize["communication_email"] = o.CommunicationEmail
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccountInfo) UnmarshalJSON(data []byte) (err error) {
+	varAccountInfo := _AccountInfo{}
+
+	err = json.Unmarshal(data, &varAccountInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccountInfo(varAccountInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "nickname")
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "profile_picture_url")
+		delete(additionalProperties, "communication_email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccountInfo struct {

@@ -21,7 +21,10 @@ var _ MappedNullable = &ProjectDeploymentRulesPriorityOrderRequest{}
 // ProjectDeploymentRulesPriorityOrderRequest struct for ProjectDeploymentRulesPriorityOrderRequest
 type ProjectDeploymentRulesPriorityOrderRequest struct {
 	ProjectDeploymentRuleIdsInOrder []string `json:"project_deployment_rule_ids_in_order,omitempty"`
+	AdditionalProperties            map[string]interface{}
 }
+
+type _ProjectDeploymentRulesPriorityOrderRequest ProjectDeploymentRulesPriorityOrderRequest
 
 // NewProjectDeploymentRulesPriorityOrderRequest instantiates a new ProjectDeploymentRulesPriorityOrderRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ProjectDeploymentRulesPriorityOrderRequest) ToMap() (map[string]interfac
 	if !IsNil(o.ProjectDeploymentRuleIdsInOrder) {
 		toSerialize["project_deployment_rule_ids_in_order"] = o.ProjectDeploymentRuleIdsInOrder
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDeploymentRulesPriorityOrderRequest) UnmarshalJSON(data []byte) (err error) {
+	varProjectDeploymentRulesPriorityOrderRequest := _ProjectDeploymentRulesPriorityOrderRequest{}
+
+	err = json.Unmarshal(data, &varProjectDeploymentRulesPriorityOrderRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDeploymentRulesPriorityOrderRequest(varProjectDeploymentRulesPriorityOrderRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "project_deployment_rule_ids_in_order")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDeploymentRulesPriorityOrderRequest struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +26,8 @@ type HelmResponseAllOfSourceOneOf1RepositoryRepository struct {
 	// The name of the helm repository
 	Name string `json:"name"`
 	// The url the helm repository
-	Url string `json:"url"`
+	Url                  string `json:"url"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponseAllOfSourceOneOf1RepositoryRepository HelmResponseAllOfSourceOneOf1RepositoryRepository
@@ -137,6 +137,11 @@ func (o HelmResponseAllOfSourceOneOf1RepositoryRepository) ToMap() (map[string]i
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["url"] = o.Url
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -166,15 +171,22 @@ func (o *HelmResponseAllOfSourceOneOf1RepositoryRepository) UnmarshalJSON(data [
 
 	varHelmResponseAllOfSourceOneOf1RepositoryRepository := _HelmResponseAllOfSourceOneOf1RepositoryRepository{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponseAllOfSourceOneOf1RepositoryRepository)
+	err = json.Unmarshal(data, &varHelmResponseAllOfSourceOneOf1RepositoryRepository)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponseAllOfSourceOneOf1RepositoryRepository(varHelmResponseAllOfSourceOneOf1RepositoryRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

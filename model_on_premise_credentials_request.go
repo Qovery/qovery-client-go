@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &OnPremiseCredentialsRequest{}
 
 // OnPremiseCredentialsRequest struct for OnPremiseCredentialsRequest
 type OnPremiseCredentialsRequest struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OnPremiseCredentialsRequest OnPremiseCredentialsRequest
@@ -80,6 +80,11 @@ func (o OnPremiseCredentialsRequest) MarshalJSON() ([]byte, error) {
 func (o OnPremiseCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *OnPremiseCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varOnPremiseCredentialsRequest := _OnPremiseCredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOnPremiseCredentialsRequest)
+	err = json.Unmarshal(data, &varOnPremiseCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OnPremiseCredentialsRequest(varOnPremiseCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

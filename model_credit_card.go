@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &CreditCard{}
 
 // CreditCard struct for CreditCard
 type CreditCard struct {
-	Id          string    `json:"id"`
-	CreatedAt   time.Time `json:"created_at"`
-	ExpiryMonth int32     `json:"expiry_month"`
-	ExpiryYear  int32     `json:"expiry_year"`
-	LastDigit   string    `json:"last_digit"`
-	IsExpired   bool      `json:"is_expired"`
-	Brand       string    `json:"brand"`
+	Id                   string    `json:"id"`
+	CreatedAt            time.Time `json:"created_at"`
+	ExpiryMonth          int32     `json:"expiry_month"`
+	ExpiryYear           int32     `json:"expiry_year"`
+	LastDigit            string    `json:"last_digit"`
+	IsExpired            bool      `json:"is_expired"`
+	Brand                string    `json:"brand"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreditCard CreditCard
@@ -243,6 +243,11 @@ func (o CreditCard) ToMap() (map[string]interface{}, error) {
 	toSerialize["last_digit"] = o.LastDigit
 	toSerialize["is_expired"] = o.IsExpired
 	toSerialize["brand"] = o.Brand
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -276,15 +281,26 @@ func (o *CreditCard) UnmarshalJSON(data []byte) (err error) {
 
 	varCreditCard := _CreditCard{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreditCard)
+	err = json.Unmarshal(data, &varCreditCard)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreditCard(varCreditCard)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "expiry_month")
+		delete(additionalProperties, "expiry_year")
+		delete(additionalProperties, "last_digit")
+		delete(additionalProperties, "is_expired")
+		delete(additionalProperties, "brand")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

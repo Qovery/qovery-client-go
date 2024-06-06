@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,9 +22,10 @@ var _ MappedNullable = &CreateEnvironmentRequest{}
 // CreateEnvironmentRequest struct for CreateEnvironmentRequest
 type CreateEnvironmentRequest struct {
 	// name is case insensitive
-	Name    string                     `json:"name"`
-	Cluster *string                    `json:"cluster,omitempty"`
-	Mode    *CreateEnvironmentModeEnum `json:"mode,omitempty"`
+	Name                 string                     `json:"name"`
+	Cluster              *string                    `json:"cluster,omitempty"`
+	Mode                 *CreateEnvironmentModeEnum `json:"mode,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreateEnvironmentRequest CreateEnvironmentRequest
@@ -153,6 +153,11 @@ func (o CreateEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mode) {
 		toSerialize["mode"] = o.Mode
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -180,15 +185,22 @@ func (o *CreateEnvironmentRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCreateEnvironmentRequest := _CreateEnvironmentRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreateEnvironmentRequest)
+	err = json.Unmarshal(data, &varCreateEnvironmentRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreateEnvironmentRequest(varCreateEnvironmentRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cluster")
+		delete(additionalProperties, "mode")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

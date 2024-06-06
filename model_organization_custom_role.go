@@ -20,12 +20,15 @@ var _ MappedNullable = &OrganizationCustomRole{}
 
 // OrganizationCustomRole struct for OrganizationCustomRole
 type OrganizationCustomRole struct {
-	Id                 *string                                         `json:"id,omitempty"`
-	Name               *string                                         `json:"name,omitempty"`
-	Description        *string                                         `json:"description,omitempty"`
-	ClusterPermissions []OrganizationCustomRoleClusterPermissionsInner `json:"cluster_permissions,omitempty"`
-	ProjectPermissions []OrganizationCustomRoleProjectPermissionsInner `json:"project_permissions,omitempty"`
+	Id                   *string                                         `json:"id,omitempty"`
+	Name                 *string                                         `json:"name,omitempty"`
+	Description          *string                                         `json:"description,omitempty"`
+	ClusterPermissions   []OrganizationCustomRoleClusterPermissionsInner `json:"cluster_permissions,omitempty"`
+	ProjectPermissions   []OrganizationCustomRoleProjectPermissionsInner `json:"project_permissions,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationCustomRole OrganizationCustomRole
 
 // NewOrganizationCustomRole instantiates a new OrganizationCustomRole object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o OrganizationCustomRole) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ProjectPermissions) {
 		toSerialize["project_permissions"] = o.ProjectPermissions
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationCustomRole) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationCustomRole := _OrganizationCustomRole{}
+
+	err = json.Unmarshal(data, &varOrganizationCustomRole)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationCustomRole(varOrganizationCustomRole)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "cluster_permissions")
+		delete(additionalProperties, "project_permissions")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationCustomRole struct {

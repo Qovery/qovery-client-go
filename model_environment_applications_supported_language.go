@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &EnvironmentApplicationsSupportedLanguage{}
 
 // EnvironmentApplicationsSupportedLanguage struct for EnvironmentApplicationsSupportedLanguage
 type EnvironmentApplicationsSupportedLanguage struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentApplicationsSupportedLanguage EnvironmentApplicationsSupportedLanguage
@@ -80,6 +80,11 @@ func (o EnvironmentApplicationsSupportedLanguage) MarshalJSON() ([]byte, error) 
 func (o EnvironmentApplicationsSupportedLanguage) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *EnvironmentApplicationsSupportedLanguage) UnmarshalJSON(data []byte) (e
 
 	varEnvironmentApplicationsSupportedLanguage := _EnvironmentApplicationsSupportedLanguage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentApplicationsSupportedLanguage)
+	err = json.Unmarshal(data, &varEnvironmentApplicationsSupportedLanguage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentApplicationsSupportedLanguage(varEnvironmentApplicationsSupportedLanguage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

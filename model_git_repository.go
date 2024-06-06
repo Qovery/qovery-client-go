@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,11 +21,12 @@ var _ MappedNullable = &GitRepository{}
 
 // GitRepository struct for GitRepository
 type GitRepository struct {
-	Id            string  `json:"id"`
-	Name          string  `json:"name"`
-	Url           string  `json:"url"`
-	DefaultBranch *string `json:"default_branch,omitempty"`
-	IsPrivate     *bool   `json:"is_private,omitempty"`
+	Id                   string  `json:"id"`
+	Name                 string  `json:"name"`
+	Url                  string  `json:"url"`
+	DefaultBranch        *string `json:"default_branch,omitempty"`
+	IsPrivate            *bool   `json:"is_private,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitRepository GitRepository
@@ -206,6 +206,11 @@ func (o GitRepository) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsPrivate) {
 		toSerialize["is_private"] = o.IsPrivate
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -235,15 +240,24 @@ func (o *GitRepository) UnmarshalJSON(data []byte) (err error) {
 
 	varGitRepository := _GitRepository{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitRepository)
+	err = json.Unmarshal(data, &varGitRepository)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitRepository(varGitRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "default_branch")
+		delete(additionalProperties, "is_private")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

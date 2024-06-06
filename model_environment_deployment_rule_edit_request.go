@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &EnvironmentDeploymentRuleEditRequest{}
 
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
-	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
-	AutoPreview     *bool         `json:"auto_preview,omitempty"`
-	AutoStop        *bool         `json:"auto_stop,omitempty"`
-	Timezone        string        `json:"timezone"`
-	StartTime       time.Time     `json:"start_time"`
-	StopTime        time.Time     `json:"stop_time"`
-	Weekdays        []WeekdayEnum `json:"weekdays"`
+	OnDemandPreview      *bool         `json:"on_demand_preview,omitempty"`
+	AutoPreview          *bool         `json:"auto_preview,omitempty"`
+	AutoStop             *bool         `json:"auto_stop,omitempty"`
+	Timezone             string        `json:"timezone"`
+	StartTime            time.Time     `json:"start_time"`
+	StopTime             time.Time     `json:"stop_time"`
+	Weekdays             []WeekdayEnum `json:"weekdays"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentDeploymentRuleEditRequest EnvironmentDeploymentRuleEditRequest
@@ -282,6 +282,11 @@ func (o EnvironmentDeploymentRuleEditRequest) ToMap() (map[string]interface{}, e
 	toSerialize["start_time"] = o.StartTime
 	toSerialize["stop_time"] = o.StopTime
 	toSerialize["weekdays"] = o.Weekdays
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -312,15 +317,26 @@ func (o *EnvironmentDeploymentRuleEditRequest) UnmarshalJSON(data []byte) (err e
 
 	varEnvironmentDeploymentRuleEditRequest := _EnvironmentDeploymentRuleEditRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentDeploymentRuleEditRequest)
+	err = json.Unmarshal(data, &varEnvironmentDeploymentRuleEditRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentDeploymentRuleEditRequest(varEnvironmentDeploymentRuleEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "on_demand_preview")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "start_time")
+		delete(additionalProperties, "stop_time")
+		delete(additionalProperties, "weekdays")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

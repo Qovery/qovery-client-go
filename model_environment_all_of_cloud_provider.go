@@ -20,9 +20,12 @@ var _ MappedNullable = &EnvironmentAllOfCloudProvider{}
 
 // EnvironmentAllOfCloudProvider struct for EnvironmentAllOfCloudProvider
 type EnvironmentAllOfCloudProvider struct {
-	Provider *string `json:"provider,omitempty"`
-	Cluster  *string `json:"cluster,omitempty"`
+	Provider             *string `json:"provider,omitempty"`
+	Cluster              *string `json:"cluster,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentAllOfCloudProvider EnvironmentAllOfCloudProvider
 
 // NewEnvironmentAllOfCloudProvider instantiates a new EnvironmentAllOfCloudProvider object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o EnvironmentAllOfCloudProvider) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentAllOfCloudProvider) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentAllOfCloudProvider := _EnvironmentAllOfCloudProvider{}
+
+	err = json.Unmarshal(data, &varEnvironmentAllOfCloudProvider)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentAllOfCloudProvider(varEnvironmentAllOfCloudProvider)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "provider")
+		delete(additionalProperties, "cluster")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentAllOfCloudProvider struct {

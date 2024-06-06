@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &CreditCardRequest{}
 
 // CreditCardRequest struct for CreditCardRequest
 type CreditCardRequest struct {
-	Number      string `json:"number"`
-	Cvv         string `json:"cvv"`
-	ExpiryMonth int32  `json:"expiry_month"`
-	ExpiryYear  int32  `json:"expiry_year"`
+	Number               string `json:"number"`
+	Cvv                  string `json:"cvv"`
+	ExpiryMonth          int32  `json:"expiry_month"`
+	ExpiryYear           int32  `json:"expiry_year"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CreditCardRequest CreditCardRequest
@@ -161,6 +161,11 @@ func (o CreditCardRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["cvv"] = o.Cvv
 	toSerialize["expiry_month"] = o.ExpiryMonth
 	toSerialize["expiry_year"] = o.ExpiryYear
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *CreditCardRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCreditCardRequest := _CreditCardRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCreditCardRequest)
+	err = json.Unmarshal(data, &varCreditCardRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CreditCardRequest(varCreditCardRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "number")
+		delete(additionalProperties, "cvv")
+		delete(additionalProperties, "expiry_month")
+		delete(additionalProperties, "expiry_year")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

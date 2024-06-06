@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &CronJobResponseAllOfSchedule{}
 
 // CronJobResponseAllOfSchedule struct for CronJobResponseAllOfSchedule
 type CronJobResponseAllOfSchedule struct {
-	Cronjob CronJobResponseAllOfScheduleCronjob `json:"cronjob"`
+	Cronjob              CronJobResponseAllOfScheduleCronjob `json:"cronjob"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CronJobResponseAllOfSchedule CronJobResponseAllOfSchedule
@@ -80,6 +80,11 @@ func (o CronJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
 func (o CronJobResponseAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cronjob"] = o.Cronjob
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *CronJobResponseAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
 
 	varCronJobResponseAllOfSchedule := _CronJobResponseAllOfSchedule{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCronJobResponseAllOfSchedule)
+	err = json.Unmarshal(data, &varCronJobResponseAllOfSchedule)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CronJobResponseAllOfSchedule(varCronJobResponseAllOfSchedule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cronjob")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

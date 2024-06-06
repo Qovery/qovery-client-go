@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,7 +23,8 @@ var _ MappedNullable = &DockerfileCheckRequest{}
 type DockerfileCheckRequest struct {
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	// path of the dockerfile with root_path as base path
-	DockerfilePath string `json:"dockerfile_path"`
+	DockerfilePath       string `json:"dockerfile_path"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DockerfileCheckRequest DockerfileCheckRequest
@@ -108,6 +108,11 @@ func (o DockerfileCheckRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	toSerialize["dockerfile_path"] = o.DockerfilePath
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -136,15 +141,21 @@ func (o *DockerfileCheckRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDockerfileCheckRequest := _DockerfileCheckRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDockerfileCheckRequest)
+	err = json.Unmarshal(data, &varDockerfileCheckRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DockerfileCheckRequest(varDockerfileCheckRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "dockerfile_path")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

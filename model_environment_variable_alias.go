@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,12 +21,13 @@ var _ MappedNullable = &EnvironmentVariableAlias{}
 
 // EnvironmentVariableAlias struct for EnvironmentVariableAlias
 type EnvironmentVariableAlias struct {
-	Id           string               `json:"id"`
-	Key          string               `json:"key"`
-	Value        string               `json:"value"`
-	MountPath    string               `json:"mount_path"`
-	Scope        APIVariableScopeEnum `json:"scope"`
-	VariableType APIVariableTypeEnum  `json:"variable_type"`
+	Id                   string               `json:"id"`
+	Key                  string               `json:"key"`
+	Value                string               `json:"value"`
+	MountPath            string               `json:"mount_path"`
+	Scope                APIVariableScopeEnum `json:"scope"`
+	VariableType         APIVariableTypeEnum  `json:"variable_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentVariableAlias EnvironmentVariableAlias
@@ -215,6 +215,11 @@ func (o EnvironmentVariableAlias) ToMap() (map[string]interface{}, error) {
 	toSerialize["mount_path"] = o.MountPath
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -247,15 +252,25 @@ func (o *EnvironmentVariableAlias) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentVariableAlias := _EnvironmentVariableAlias{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentVariableAlias)
+	err = json.Unmarshal(data, &varEnvironmentVariableAlias)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentVariableAlias(varEnvironmentVariableAlias)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "mount_path")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "variable_type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

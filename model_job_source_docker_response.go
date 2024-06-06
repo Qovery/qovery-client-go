@@ -24,8 +24,11 @@ type JobSourceDockerResponse struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// The content of your dockerfile if it is not stored inside your git repository
-	DockerfileRaw NullableString `json:"dockerfile_raw,omitempty"`
+	DockerfileRaw        NullableString `json:"dockerfile_raw,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobSourceDockerResponse JobSourceDockerResponse
 
 // NewJobSourceDockerResponse instantiates a new JobSourceDockerResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -181,7 +184,35 @@ func (o JobSourceDockerResponse) ToMap() (map[string]interface{}, error) {
 	if o.DockerfileRaw.IsSet() {
 		toSerialize["dockerfile_raw"] = o.DockerfileRaw.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobSourceDockerResponse) UnmarshalJSON(data []byte) (err error) {
+	varJobSourceDockerResponse := _JobSourceDockerResponse{}
+
+	err = json.Unmarshal(data, &varJobSourceDockerResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobSourceDockerResponse(varJobSourceDockerResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "dockerfile_raw")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobSourceDockerResponse struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,15 +21,16 @@ var _ MappedNullable = &OrganizationLabelsGroupAssociatedItemsResponseListResult
 
 // OrganizationLabelsGroupAssociatedItemsResponseListResultsInner struct for OrganizationLabelsGroupAssociatedItemsResponseListResultsInner
 type OrganizationLabelsGroupAssociatedItemsResponseListResultsInner struct {
-	ClusterId       *string                       `json:"cluster_id,omitempty"`
-	ClusterName     *string                       `json:"cluster_name,omitempty"`
-	ProjectId       *string                       `json:"project_id,omitempty"`
-	ProjectName     *string                       `json:"project_name,omitempty"`
-	EnvironmentId   *string                       `json:"environment_id,omitempty"`
-	EnvironmentName *string                       `json:"environment_name,omitempty"`
-	ItemId          string                        `json:"item_id"`
-	ItemName        string                        `json:"item_name"`
-	ItemType        LabelsGroupAssociatedItemType `json:"item_type"`
+	ClusterId            *string                       `json:"cluster_id,omitempty"`
+	ClusterName          *string                       `json:"cluster_name,omitempty"`
+	ProjectId            *string                       `json:"project_id,omitempty"`
+	ProjectName          *string                       `json:"project_name,omitempty"`
+	EnvironmentId        *string                       `json:"environment_id,omitempty"`
+	EnvironmentName      *string                       `json:"environment_name,omitempty"`
+	ItemId               string                        `json:"item_id"`
+	ItemName             string                        `json:"item_name"`
+	ItemType             LabelsGroupAssociatedItemType `json:"item_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationLabelsGroupAssociatedItemsResponseListResultsInner OrganizationLabelsGroupAssociatedItemsResponseListResultsInner
@@ -350,6 +350,11 @@ func (o OrganizationLabelsGroupAssociatedItemsResponseListResultsInner) ToMap() 
 	toSerialize["item_id"] = o.ItemId
 	toSerialize["item_name"] = o.ItemName
 	toSerialize["item_type"] = o.ItemType
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -379,15 +384,28 @@ func (o *OrganizationLabelsGroupAssociatedItemsResponseListResultsInner) Unmarsh
 
 	varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner := _OrganizationLabelsGroupAssociatedItemsResponseListResultsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner)
+	err = json.Unmarshal(data, &varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationLabelsGroupAssociatedItemsResponseListResultsInner(varOrganizationLabelsGroupAssociatedItemsResponseListResultsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "cluster_name")
+		delete(additionalProperties, "project_id")
+		delete(additionalProperties, "project_name")
+		delete(additionalProperties, "environment_id")
+		delete(additionalProperties, "environment_name")
+		delete(additionalProperties, "item_id")
+		delete(additionalProperties, "item_name")
+		delete(additionalProperties, "item_type")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

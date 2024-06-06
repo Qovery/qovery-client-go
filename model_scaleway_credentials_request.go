@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,6 +26,7 @@ type ScalewayCredentialsRequest struct {
 	ScalewaySecretKey      string `json:"scaleway_secret_key"`
 	ScalewayProjectId      string `json:"scaleway_project_id"`
 	ScalewayOrganizationId string `json:"scaleway_organization_id"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _ScalewayCredentialsRequest ScalewayCredentialsRequest
@@ -188,6 +188,11 @@ func (o ScalewayCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	toSerialize["scaleway_project_id"] = o.ScalewayProjectId
 	toSerialize["scaleway_organization_id"] = o.ScalewayOrganizationId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -219,15 +224,24 @@ func (o *ScalewayCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varScalewayCredentialsRequest := _ScalewayCredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varScalewayCredentialsRequest)
+	err = json.Unmarshal(data, &varScalewayCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ScalewayCredentialsRequest(varScalewayCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "scaleway_access_key")
+		delete(additionalProperties, "scaleway_secret_key")
+		delete(additionalProperties, "scaleway_project_id")
+		delete(additionalProperties, "scaleway_organization_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -39,7 +38,8 @@ type ProjectDeploymentRule struct {
 	// wildcard pattern composed of '?' and/or '*' used to target new created environments
 	Wildcard string `json:"wildcard"`
 	// used to select the first deployment rule to match new created environments
-	PriorityIndex *int32 `json:"priority_index,omitempty"`
+	PriorityIndex        *int32 `json:"priority_index,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectDeploymentRule ProjectDeploymentRule
@@ -488,6 +488,11 @@ func (o ProjectDeploymentRule) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PriorityIndex) {
 		toSerialize["priority_index"] = o.PriorityIndex
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -524,15 +529,33 @@ func (o *ProjectDeploymentRule) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectDeploymentRule := _ProjectDeploymentRule{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectDeploymentRule)
+	err = json.Unmarshal(data, &varProjectDeploymentRule)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectDeploymentRule(varProjectDeploymentRule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "start_time")
+		delete(additionalProperties, "stop_time")
+		delete(additionalProperties, "weekdays")
+		delete(additionalProperties, "wildcard")
+		delete(additionalProperties, "priority_index")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

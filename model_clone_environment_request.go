@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,10 +22,11 @@ var _ MappedNullable = &CloneEnvironmentRequest{}
 // CloneEnvironmentRequest struct for CloneEnvironmentRequest
 type CloneEnvironmentRequest struct {
 	// name is case insensitive
-	Name                string               `json:"name"`
-	ClusterId           *string              `json:"cluster_id,omitempty"`
-	Mode                *EnvironmentModeEnum `json:"mode,omitempty"`
-	ApplyDeploymentRule *bool                `json:"apply_deployment_rule,omitempty"`
+	Name                 string               `json:"name"`
+	ClusterId            *string              `json:"cluster_id,omitempty"`
+	Mode                 *EnvironmentModeEnum `json:"mode,omitempty"`
+	ApplyDeploymentRule  *bool                `json:"apply_deployment_rule,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloneEnvironmentRequest CloneEnvironmentRequest
@@ -193,6 +193,11 @@ func (o CloneEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ApplyDeploymentRule) {
 		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -220,15 +225,23 @@ func (o *CloneEnvironmentRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCloneEnvironmentRequest := _CloneEnvironmentRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloneEnvironmentRequest)
+	err = json.Unmarshal(data, &varCloneEnvironmentRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloneEnvironmentRequest(varCloneEnvironmentRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "apply_deployment_rule")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

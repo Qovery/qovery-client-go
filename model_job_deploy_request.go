@@ -23,8 +23,11 @@ type JobDeployRequest struct {
 	// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
 	ImageTag *string `json:"image_tag,omitempty"`
 	// Commit to deploy Cannot be set if `image_tag` is defined
-	GitCommitId *string `json:"git_commit_id,omitempty"`
+	GitCommitId          *string `json:"git_commit_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _JobDeployRequest JobDeployRequest
 
 // NewJobDeployRequest instantiates a new JobDeployRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -123,7 +126,34 @@ func (o JobDeployRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobDeployRequest) UnmarshalJSON(data []byte) (err error) {
+	varJobDeployRequest := _JobDeployRequest{}
+
+	err = json.Unmarshal(data, &varJobDeployRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobDeployRequest(varJobDeployRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "image_tag")
+		delete(additionalProperties, "git_commit_id")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobDeployRequest struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,9 +22,10 @@ var _ MappedNullable = &Base{}
 
 // Base struct for Base
 type Base struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Id                   string     `json:"id"`
+	CreatedAt            time.Time  `json:"created_at"`
+	UpdatedAt            *time.Time `json:"updated_at,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Base Base
@@ -144,6 +144,11 @@ func (o Base) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -172,15 +177,22 @@ func (o *Base) UnmarshalJSON(data []byte) (err error) {
 
 	varBase := _Base{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBase)
+	err = json.Unmarshal(data, &varBase)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Base(varBase)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

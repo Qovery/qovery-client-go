@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &Annotation{}
 
 // Annotation struct for Annotation
 type Annotation struct {
-	Key   string `json:"key"`
-	Value string `json:"value"`
+	Key                  string `json:"key"`
+	Value                string `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Annotation Annotation
@@ -107,6 +107,11 @@ func (o Annotation) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *Annotation) UnmarshalJSON(data []byte) (err error) {
 
 	varAnnotation := _Annotation{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAnnotation)
+	err = json.Unmarshal(data, &varAnnotation)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Annotation(varAnnotation)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

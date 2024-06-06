@@ -27,10 +27,13 @@ type ClusterLogsError struct {
 	// link to our documentation
 	Link *string `json:"link,omitempty"`
 	// hint the user can follow
-	HintMessage     *string                          `json:"hint_message,omitempty"`
-	EventDetails    *ClusterLogsErrorEventDetails    `json:"event_details,omitempty"`
-	UnderlyingError *ClusterLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
+	HintMessage          *string                          `json:"hint_message,omitempty"`
+	EventDetails         *ClusterLogsErrorEventDetails    `json:"event_details,omitempty"`
+	UnderlyingError      *ClusterLogsErrorUnderlyingError `json:"underlying_error,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogsError ClusterLogsError
 
 // NewClusterLogsError instantiates a new ClusterLogsError object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,38 @@ func (o ClusterLogsError) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UnderlyingError) {
 		toSerialize["underlying_error"] = o.UnderlyingError
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogsError) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogsError := _ClusterLogsError{}
+
+	err = json.Unmarshal(data, &varClusterLogsError)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogsError(varClusterLogsError)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "user_log_message")
+		delete(additionalProperties, "link")
+		delete(additionalProperties, "hint_message")
+		delete(additionalProperties, "event_details")
+		delete(additionalProperties, "underlying_error")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogsError struct {

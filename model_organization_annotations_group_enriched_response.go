@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -30,6 +29,7 @@ type OrganizationAnnotationsGroupEnrichedResponse struct {
 	Annotations          []Annotation                            `json:"annotations"`
 	Scopes               []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
 	AssociatedItemsCount *int32                                  `json:"associated_items_count,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationAnnotationsGroupEnrichedResponse OrganizationAnnotationsGroupEnrichedResponse
@@ -261,6 +261,11 @@ func (o OrganizationAnnotationsGroupEnrichedResponse) ToMap() (map[string]interf
 	if !IsNil(o.AssociatedItemsCount) {
 		toSerialize["associated_items_count"] = o.AssociatedItemsCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -292,15 +297,26 @@ func (o *OrganizationAnnotationsGroupEnrichedResponse) UnmarshalJSON(data []byte
 
 	varOrganizationAnnotationsGroupEnrichedResponse := _OrganizationAnnotationsGroupEnrichedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationAnnotationsGroupEnrichedResponse)
+	err = json.Unmarshal(data, &varOrganizationAnnotationsGroupEnrichedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationAnnotationsGroupEnrichedResponse(varOrganizationAnnotationsGroupEnrichedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "scopes")
+		delete(additionalProperties, "associated_items_count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

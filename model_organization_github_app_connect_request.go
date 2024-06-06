@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &OrganizationGithubAppConnectRequest{}
 
 // OrganizationGithubAppConnectRequest struct for OrganizationGithubAppConnectRequest
 type OrganizationGithubAppConnectRequest struct {
-	InstallationId string `json:"installation_id"`
-	Code           string `json:"code"`
+	InstallationId       string `json:"installation_id"`
+	Code                 string `json:"code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationGithubAppConnectRequest OrganizationGithubAppConnectRequest
@@ -107,6 +107,11 @@ func (o OrganizationGithubAppConnectRequest) ToMap() (map[string]interface{}, er
 	toSerialize := map[string]interface{}{}
 	toSerialize["installation_id"] = o.InstallationId
 	toSerialize["code"] = o.Code
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *OrganizationGithubAppConnectRequest) UnmarshalJSON(data []byte) (err er
 
 	varOrganizationGithubAppConnectRequest := _OrganizationGithubAppConnectRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationGithubAppConnectRequest)
+	err = json.Unmarshal(data, &varOrganizationGithubAppConnectRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationGithubAppConnectRequest(varOrganizationGithubAppConnectRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "installation_id")
+		delete(additionalProperties, "code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

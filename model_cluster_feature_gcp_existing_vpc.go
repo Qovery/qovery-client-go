@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,6 +27,7 @@ type ClusterFeatureGcpExistingVpc struct {
 	IpRangeServicesName        NullableString `json:"ip_range_services_name,omitempty"`
 	IpRangePodsName            NullableString `json:"ip_range_pods_name,omitempty"`
 	AdditionalIpRangePodsNames []string       `json:"additional_ip_range_pods_names,omitempty"`
+	AdditionalProperties       map[string]interface{}
 }
 
 type _ClusterFeatureGcpExistingVpc ClusterFeatureGcpExistingVpc
@@ -304,6 +304,11 @@ func (o ClusterFeatureGcpExistingVpc) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AdditionalIpRangePodsNames) {
 		toSerialize["additional_ip_range_pods_names"] = o.AdditionalIpRangePodsNames
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -331,15 +336,25 @@ func (o *ClusterFeatureGcpExistingVpc) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterFeatureGcpExistingVpc := _ClusterFeatureGcpExistingVpc{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterFeatureGcpExistingVpc)
+	err = json.Unmarshal(data, &varClusterFeatureGcpExistingVpc)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterFeatureGcpExistingVpc(varClusterFeatureGcpExistingVpc)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "vpc_name")
+		delete(additionalProperties, "vpc_project_id")
+		delete(additionalProperties, "subnetwork_name")
+		delete(additionalProperties, "ip_range_services_name")
+		delete(additionalProperties, "ip_range_pods_name")
+		delete(additionalProperties, "additional_ip_range_pods_names")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

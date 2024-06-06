@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -28,7 +27,8 @@ type JobRequestAllOfScheduleCronjob struct {
 	// Specify a timezone identifier to run the schedule at. By default Etc/UTC
 	Timezone *string `json:"timezone,omitempty"`
 	// Can only be set if the event is CRON.   Represent the cron format for the job schedule without seconds.   For example: `* * * * *` represent the cron to launch the job every minute.   See https://crontab.guru/ to WISIWIG interface.   Timezone is UTC
-	ScheduledAt string `json:"scheduled_at"`
+	ScheduledAt          string `json:"scheduled_at"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _JobRequestAllOfScheduleCronjob JobRequestAllOfScheduleCronjob
@@ -191,6 +191,11 @@ func (o JobRequestAllOfScheduleCronjob) ToMap() (map[string]interface{}, error) 
 		toSerialize["timezone"] = o.Timezone
 	}
 	toSerialize["scheduled_at"] = o.ScheduledAt
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -218,15 +223,23 @@ func (o *JobRequestAllOfScheduleCronjob) UnmarshalJSON(data []byte) (err error) 
 
 	varJobRequestAllOfScheduleCronjob := _JobRequestAllOfScheduleCronjob{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varJobRequestAllOfScheduleCronjob)
+	err = json.Unmarshal(data, &varJobRequestAllOfScheduleCronjob)
 
 	if err != nil {
 		return err
 	}
 
 	*o = JobRequestAllOfScheduleCronjob(varJobRequestAllOfScheduleCronjob)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "scheduled_at")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

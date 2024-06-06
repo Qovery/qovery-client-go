@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ClusterCredentials{}
 
 // ClusterCredentials struct for ClusterCredentials
 type ClusterCredentials struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
+	Id                   string `json:"id"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterCredentials ClusterCredentials
@@ -107,6 +107,11 @@ func (o ClusterCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterCredentials := _ClusterCredentials{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterCredentials)
+	err = json.Unmarshal(data, &varClusterCredentials)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterCredentials(varClusterCredentials)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

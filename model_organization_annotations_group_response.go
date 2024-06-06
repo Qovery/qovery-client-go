@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,12 +22,13 @@ var _ MappedNullable = &OrganizationAnnotationsGroupResponse{}
 
 // OrganizationAnnotationsGroupResponse struct for OrganizationAnnotationsGroupResponse
 type OrganizationAnnotationsGroupResponse struct {
-	Id          string                                  `json:"id"`
-	CreatedAt   time.Time                               `json:"created_at"`
-	UpdatedAt   *time.Time                              `json:"updated_at,omitempty"`
-	Name        string                                  `json:"name"`
-	Annotations []Annotation                            `json:"annotations"`
-	Scopes      []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
+	Id                   string                                  `json:"id"`
+	CreatedAt            time.Time                               `json:"created_at"`
+	UpdatedAt            *time.Time                              `json:"updated_at,omitempty"`
+	Name                 string                                  `json:"name"`
+	Annotations          []Annotation                            `json:"annotations"`
+	Scopes               []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationAnnotationsGroupResponse OrganizationAnnotationsGroupResponse
@@ -225,6 +225,11 @@ func (o OrganizationAnnotationsGroupResponse) ToMap() (map[string]interface{}, e
 	toSerialize["name"] = o.Name
 	toSerialize["annotations"] = o.Annotations
 	toSerialize["scopes"] = o.Scopes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -256,15 +261,25 @@ func (o *OrganizationAnnotationsGroupResponse) UnmarshalJSON(data []byte) (err e
 
 	varOrganizationAnnotationsGroupResponse := _OrganizationAnnotationsGroupResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationAnnotationsGroupResponse)
+	err = json.Unmarshal(data, &varOrganizationAnnotationsGroupResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationAnnotationsGroupResponse(varOrganizationAnnotationsGroupResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "scopes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,10 +20,13 @@ var _ MappedNullable = &ClusterCloudProviderInfo{}
 
 // ClusterCloudProviderInfo struct for ClusterCloudProviderInfo
 type ClusterCloudProviderInfo struct {
-	CloudProvider *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
-	Credentials   *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
-	Region        *string                              `json:"region,omitempty"`
+	CloudProvider        *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
+	Credentials          *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
+	Region               *string                              `json:"region,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterCloudProviderInfo ClusterCloudProviderInfo
 
 // NewClusterCloudProviderInfo instantiates a new ClusterCloudProviderInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o ClusterCloudProviderInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterCloudProviderInfo) UnmarshalJSON(data []byte) (err error) {
+	varClusterCloudProviderInfo := _ClusterCloudProviderInfo{}
+
+	err = json.Unmarshal(data, &varClusterCloudProviderInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterCloudProviderInfo(varClusterCloudProviderInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloud_provider")
+		delete(additionalProperties, "credentials")
+		delete(additionalProperties, "region")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterCloudProviderInfo struct {

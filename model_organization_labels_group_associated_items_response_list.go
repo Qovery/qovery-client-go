@@ -20,8 +20,11 @@ var _ MappedNullable = &OrganizationLabelsGroupAssociatedItemsResponseList{}
 
 // OrganizationLabelsGroupAssociatedItemsResponseList struct for OrganizationLabelsGroupAssociatedItemsResponseList
 type OrganizationLabelsGroupAssociatedItemsResponseList struct {
-	Results []OrganizationLabelsGroupAssociatedItemsResponseListResultsInner `json:"results,omitempty"`
+	Results              []OrganizationLabelsGroupAssociatedItemsResponseListResultsInner `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationLabelsGroupAssociatedItemsResponseList OrganizationLabelsGroupAssociatedItemsResponseList
 
 // NewOrganizationLabelsGroupAssociatedItemsResponseList instantiates a new OrganizationLabelsGroupAssociatedItemsResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o OrganizationLabelsGroupAssociatedItemsResponseList) ToMap() (map[string]
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationLabelsGroupAssociatedItemsResponseList) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationLabelsGroupAssociatedItemsResponseList := _OrganizationLabelsGroupAssociatedItemsResponseList{}
+
+	err = json.Unmarshal(data, &varOrganizationLabelsGroupAssociatedItemsResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationLabelsGroupAssociatedItemsResponseList(varOrganizationLabelsGroupAssociatedItemsResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationLabelsGroupAssociatedItemsResponseList struct {

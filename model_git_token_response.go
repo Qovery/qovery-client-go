@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -34,6 +33,7 @@ type GitTokenResponse struct {
 	Workspace *string `json:"workspace,omitempty"`
 	// The number of services using this git token
 	AssociatedServicesCount float32 `json:"associated_services_count"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _GitTokenResponse GitTokenResponse
@@ -335,6 +335,11 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["workspace"] = o.Workspace
 	}
 	toSerialize["associated_services_count"] = o.AssociatedServicesCount
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -366,15 +371,28 @@ func (o *GitTokenResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varGitTokenResponse := _GitTokenResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitTokenResponse)
+	err = json.Unmarshal(data, &varGitTokenResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitTokenResponse(varGitTokenResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "expired_at")
+		delete(additionalProperties, "workspace")
+		delete(additionalProperties, "associated_services_count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

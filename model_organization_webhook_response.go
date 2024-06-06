@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -38,6 +37,7 @@ type OrganizationWebhookResponse struct {
 	ProjectNamesFilter []string `json:"project_names_filter,omitempty"`
 	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _OrganizationWebhookResponse OrganizationWebhookResponse
@@ -436,6 +436,11 @@ func (o OrganizationWebhookResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentTypesFilter) {
 		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -464,15 +469,30 @@ func (o *OrganizationWebhookResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationWebhookResponse := _OrganizationWebhookResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationWebhookResponse)
+	err = json.Unmarshal(data, &varOrganizationWebhookResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationWebhookResponse(varOrganizationWebhookResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "target_url")
+		delete(additionalProperties, "target_secret_set")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "events")
+		delete(additionalProperties, "project_names_filter")
+		delete(additionalProperties, "environment_types_filter")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

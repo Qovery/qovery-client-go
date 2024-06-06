@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &AwsCredentialsRequest{}
 
 // AwsCredentialsRequest struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
-	Name            string `json:"name"`
-	AccessKeyId     string `json:"access_key_id"`
-	SecretAccessKey string `json:"secret_access_key"`
+	Name                 string `json:"name"`
+	AccessKeyId          string `json:"access_key_id"`
+	SecretAccessKey      string `json:"secret_access_key"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AwsCredentialsRequest AwsCredentialsRequest
@@ -134,6 +134,11 @@ func (o AwsCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["access_key_id"] = o.AccessKeyId
 	toSerialize["secret_access_key"] = o.SecretAccessKey
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *AwsCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varAwsCredentialsRequest := _AwsCredentialsRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAwsCredentialsRequest)
+	err = json.Unmarshal(data, &varAwsCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AwsCredentialsRequest(varAwsCredentialsRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "access_key_id")
+		delete(additionalProperties, "secret_access_key")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

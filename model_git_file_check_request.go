@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &GitFileCheckRequest{}
 
 // GitFileCheckRequest struct for GitFileCheckRequest
 type GitFileCheckRequest struct {
-	GitRepository HelmGitRepositoryRequest `json:"git_repository"`
-	Files         []string                 `json:"files"`
+	GitRepository        HelmGitRepositoryRequest `json:"git_repository"`
+	Files                []string                 `json:"files"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _GitFileCheckRequest GitFileCheckRequest
@@ -107,6 +107,11 @@ func (o GitFileCheckRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	toSerialize["files"] = o.Files
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *GitFileCheckRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varGitFileCheckRequest := _GitFileCheckRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varGitFileCheckRequest)
+	err = json.Unmarshal(data, &varGitFileCheckRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = GitFileCheckRequest(varGitFileCheckRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "files")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

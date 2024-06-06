@@ -20,8 +20,11 @@ var _ MappedNullable = &Value{}
 
 // Value struct for Value
 type Value struct {
-	Value *string `json:"value,omitempty"`
+	Value                *string `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _Value Value
 
 // NewValue instantiates a new Value object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o Value) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *Value) UnmarshalJSON(data []byte) (err error) {
+	varValue := _Value{}
+
+	err = json.Unmarshal(data, &varValue)
+
+	if err != nil {
+		return err
+	}
+
+	*o = Value(varValue)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableValue struct {

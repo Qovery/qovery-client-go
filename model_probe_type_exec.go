@@ -20,8 +20,11 @@ var _ MappedNullable = &ProbeTypeExec{}
 
 // ProbeTypeExec struct for ProbeTypeExec
 type ProbeTypeExec struct {
-	Command []string `json:"command,omitempty"`
+	Command              []string `json:"command,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProbeTypeExec ProbeTypeExec
 
 // NewProbeTypeExec instantiates a new ProbeTypeExec object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ProbeTypeExec) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Command) {
 		toSerialize["command"] = o.Command
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProbeTypeExec) UnmarshalJSON(data []byte) (err error) {
+	varProbeTypeExec := _ProbeTypeExec{}
+
+	err = json.Unmarshal(data, &varProbeTypeExec)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProbeTypeExec(varProbeTypeExec)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "command")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProbeTypeExec struct {

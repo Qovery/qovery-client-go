@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,8 +25,9 @@ type ContainerRegistryRequest struct {
 	Kind        ContainerRegistryKindEnum `json:"kind"`
 	Description *string                   `json:"description,omitempty"`
 	// URL of the container registry: * For `DOCKER_HUB`: it must be `https://docker.io` (default with 'https://docker.io' if no url provided for `DOCKER_HUB`) * For `GITHUB_CR`: it must be `https://ghcr.io` (default with 'https://ghcr.io' if no url provided for `GITHUB_CR`) * For `GITLAB_CR`: it must be `https://registry.gitlab.com` (default with 'https://registry.gitlab.com' if no url provided for `GITLAB_CR`) * For others: it's required and must start by `https://`
-	Url    *string                        `json:"url,omitempty"`
-	Config ContainerRegistryRequestConfig `json:"config"`
+	Url                  *string                        `json:"url,omitempty"`
+	Config               ContainerRegistryRequestConfig `json:"config"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerRegistryRequest ContainerRegistryRequest
@@ -207,6 +207,11 @@ func (o ContainerRegistryRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["url"] = o.Url
 	}
 	toSerialize["config"] = o.Config
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -236,15 +241,24 @@ func (o *ContainerRegistryRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerRegistryRequest := _ContainerRegistryRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerRegistryRequest)
+	err = json.Unmarshal(data, &varContainerRegistryRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerRegistryRequest(varContainerRegistryRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "config")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

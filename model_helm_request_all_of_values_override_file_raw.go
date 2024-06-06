@@ -20,8 +20,11 @@ var _ MappedNullable = &HelmRequestAllOfValuesOverrideFileRaw{}
 
 // HelmRequestAllOfValuesOverrideFileRaw struct for HelmRequestAllOfValuesOverrideFileRaw
 type HelmRequestAllOfValuesOverrideFileRaw struct {
-	Values []HelmRequestAllOfValuesOverrideFileRawValues `json:"values,omitempty"`
+	Values               []HelmRequestAllOfValuesOverrideFileRawValues `json:"values,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _HelmRequestAllOfValuesOverrideFileRaw HelmRequestAllOfValuesOverrideFileRaw
 
 // NewHelmRequestAllOfValuesOverrideFileRaw instantiates a new HelmRequestAllOfValuesOverrideFileRaw object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o HelmRequestAllOfValuesOverrideFileRaw) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Values) {
 		toSerialize["values"] = o.Values
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmRequestAllOfValuesOverrideFileRaw) UnmarshalJSON(data []byte) (err error) {
+	varHelmRequestAllOfValuesOverrideFileRaw := _HelmRequestAllOfValuesOverrideFileRaw{}
+
+	err = json.Unmarshal(data, &varHelmRequestAllOfValuesOverrideFileRaw)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmRequestAllOfValuesOverrideFileRaw(varHelmRequestAllOfValuesOverrideFileRaw)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "values")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmRequestAllOfValuesOverrideFileRaw struct {

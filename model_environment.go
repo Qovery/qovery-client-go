@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,11 +30,12 @@ type Environment struct {
 	Organization ReferenceObject `json:"organization"`
 	Project      ReferenceObject `json:"project"`
 	// uuid of the user that made the last update
-	LastUpdatedBy *string                       `json:"last_updated_by,omitempty"`
-	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
-	Mode          EnvironmentModeEnum           `json:"mode"`
-	ClusterId     string                        `json:"cluster_id"`
-	ClusterName   *string                       `json:"cluster_name,omitempty"`
+	LastUpdatedBy        *string                       `json:"last_updated_by,omitempty"`
+	CloudProvider        EnvironmentAllOfCloudProvider `json:"cloud_provider"`
+	Mode                 EnvironmentModeEnum           `json:"mode"`
+	ClusterId            string                        `json:"cluster_id"`
+	ClusterName          *string                       `json:"cluster_name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Environment Environment
@@ -380,6 +380,11 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ClusterName) {
 		toSerialize["cluster_name"] = o.ClusterName
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -414,15 +419,30 @@ func (o *Environment) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironment := _Environment{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironment)
+	err = json.Unmarshal(data, &varEnvironment)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Environment(varEnvironment)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "organization")
+		delete(additionalProperties, "project")
+		delete(additionalProperties, "last_updated_by")
+		delete(additionalProperties, "cloud_provider")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "cluster_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

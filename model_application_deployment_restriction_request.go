@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type ApplicationDeploymentRestrictionRequest struct {
 	Mode DeploymentRestrictionModeEnum `json:"mode"`
 	Type DeploymentRestrictionTypeEnum `json:"type"`
 	// For `PATH` restrictions, the value must not start with `/`
-	Value string `json:"value"`
+	Value                string `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ApplicationDeploymentRestrictionRequest ApplicationDeploymentRestrictionRequest
@@ -135,6 +135,11 @@ func (o ApplicationDeploymentRestrictionRequest) ToMap() (map[string]interface{}
 	toSerialize["mode"] = o.Mode
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -164,15 +169,22 @@ func (o *ApplicationDeploymentRestrictionRequest) UnmarshalJSON(data []byte) (er
 
 	varApplicationDeploymentRestrictionRequest := _ApplicationDeploymentRestrictionRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varApplicationDeploymentRestrictionRequest)
+	err = json.Unmarshal(data, &varApplicationDeploymentRestrictionRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ApplicationDeploymentRestrictionRequest(varApplicationDeploymentRestrictionRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

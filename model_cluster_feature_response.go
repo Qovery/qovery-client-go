@@ -37,7 +37,10 @@ type ClusterFeatureResponse struct {
 	ValueObject                       NullableClusterFeatureResponseValueObject   `json:"value_object,omitempty"`
 	IsValueUpdatable                  *bool                                       `json:"is_value_updatable,omitempty"`
 	AcceptedValues                    []ClusterFeatureResponseAcceptedValuesInner `json:"accepted_values,omitempty"`
+	AdditionalProperties              map[string]interface{}
 }
+
+type _ClusterFeatureResponse ClusterFeatureResponse
 
 // NewClusterFeatureResponse instantiates a new ClusterFeatureResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -646,7 +649,46 @@ func (o ClusterFeatureResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AcceptedValues) {
 		toSerialize["accepted_values"] = o.AcceptedValues
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterFeatureResponse) UnmarshalJSON(data []byte) (err error) {
+	varClusterFeatureResponse := _ClusterFeatureResponse{}
+
+	err = json.Unmarshal(data, &varClusterFeatureResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterFeatureResponse(varClusterFeatureResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "title")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "cost_per_month_in_cents")
+		delete(additionalProperties, "cost_per_month")
+		delete(additionalProperties, "currency_code")
+		delete(additionalProperties, "is_cloud_provider_paying_feature")
+		delete(additionalProperties, "cloud_provider_feature_documentation")
+		delete(additionalProperties, "is_qovery_paying_feature")
+		delete(additionalProperties, "qovery_feature_documentation")
+		delete(additionalProperties, "value_type")
+		delete(additionalProperties, "value_object")
+		delete(additionalProperties, "is_value_updatable")
+		delete(additionalProperties, "accepted_values")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterFeatureResponse struct {

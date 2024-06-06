@@ -59,7 +59,10 @@ type HelmAdvancedSettings struct {
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
 	NetworkIngressEnableStickySession *bool `json:"network.ingress.enable_sticky_session,omitempty"`
+	AdditionalProperties              map[string]interface{}
 }
+
+type _HelmAdvancedSettings HelmAdvancedSettings
 
 // NewHelmAdvancedSettings instantiates a new HelmAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
@@ -858,7 +861,54 @@ func (o HelmAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkIngressEnableStickySession) {
 		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *HelmAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
+	varHelmAdvancedSettings := _HelmAdvancedSettings{}
+
+	err = json.Unmarshal(data, &varHelmAdvancedSettings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = HelmAdvancedSettings(varHelmAdvancedSettings)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "deployment.custom_domain_check_enabled")
+		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
+		delete(additionalProperties, "network.ingress.enable_cors")
+		delete(additionalProperties, "network.ingress.cors_allow_origin")
+		delete(additionalProperties, "network.ingress.cors_allow_methods")
+		delete(additionalProperties, "network.ingress.cors_allow_headers")
+		delete(additionalProperties, "network.ingress.proxy_buffer_size_kb")
+		delete(additionalProperties, "network.ingress.keepalive_time_seconds")
+		delete(additionalProperties, "network.ingress.keepalive_timeout_seconds")
+		delete(additionalProperties, "network.ingress.send_timeout_seconds")
+		delete(additionalProperties, "network.ingress.proxy_connect_timeout_seconds")
+		delete(additionalProperties, "network.ingress.proxy_send_timeout_seconds")
+		delete(additionalProperties, "network.ingress.proxy_read_timeout_seconds")
+		delete(additionalProperties, "network.ingress.proxy_buffering")
+		delete(additionalProperties, "network.ingress.proxy_request_buffering")
+		delete(additionalProperties, "network.ingress.grpc_send_timeout_seconds")
+		delete(additionalProperties, "network.ingress.grpc_read_timeout_seconds")
+		delete(additionalProperties, "network.ingress.whitelist_source_range")
+		delete(additionalProperties, "network.ingress.denylist_source_range")
+		delete(additionalProperties, "network.ingress.extra_headers")
+		delete(additionalProperties, "network.ingress.basic_auth_env_var")
+		delete(additionalProperties, "network.ingress.enable_sticky_session")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableHelmAdvancedSettings struct {

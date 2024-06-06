@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,7 +30,8 @@ type HelmPortRequestPortsInner struct {
 	Namespace    *string               `json:"namespace,omitempty"`
 	Protocol     *HelmPortProtocolEnum `json:"protocol,omitempty"`
 	// is the default port to use for domain
-	IsDefault *bool `json:"is_default,omitempty"`
+	IsDefault            *bool `json:"is_default,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmPortRequestPortsInner HelmPortRequestPortsInner
@@ -294,6 +294,11 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -322,15 +327,26 @@ func (o *HelmPortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmPortRequestPortsInner := _HelmPortRequestPortsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmPortRequestPortsInner)
+	err = json.Unmarshal(data, &varHelmPortRequestPortsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmPortRequestPortsInner(varHelmPortRequestPortsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "internal_port")
+		delete(additionalProperties, "external_port")
+		delete(additionalProperties, "service_name")
+		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "is_default")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

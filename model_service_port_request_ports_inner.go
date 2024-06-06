@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -31,8 +30,9 @@ type ServicePortRequestPortsInner struct {
 	// Expose the port to the world
 	PubliclyAccessible bool `json:"publicly_accessible"`
 	// is the default port to use for domain
-	IsDefault *bool             `json:"is_default,omitempty"`
-	Protocol  *PortProtocolEnum `json:"protocol,omitempty"`
+	IsDefault            *bool             `json:"is_default,omitempty"`
+	Protocol             *PortProtocolEnum `json:"protocol,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServicePortRequestPortsInner ServicePortRequestPortsInner
@@ -295,6 +295,11 @@ func (o ServicePortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -323,15 +328,26 @@ func (o *ServicePortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
 
 	varServicePortRequestPortsInner := _ServicePortRequestPortsInner{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServicePortRequestPortsInner)
+	err = json.Unmarshal(data, &varServicePortRequestPortsInner)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServicePortRequestPortsInner(varServicePortRequestPortsInner)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "internal_port")
+		delete(additionalProperties, "external_port")
+		delete(additionalProperties, "publicly_accessible")
+		delete(additionalProperties, "is_default")
+		delete(additionalProperties, "protocol")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

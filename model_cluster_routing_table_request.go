@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &ClusterRoutingTableRequest{}
 
 // ClusterRoutingTableRequest struct for ClusterRoutingTableRequest
 type ClusterRoutingTableRequest struct {
-	Routes []ClusterRoutingTableResultsInner `json:"routes"`
+	Routes               []ClusterRoutingTableResultsInner `json:"routes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterRoutingTableRequest ClusterRoutingTableRequest
@@ -80,6 +80,11 @@ func (o ClusterRoutingTableRequest) MarshalJSON() ([]byte, error) {
 func (o ClusterRoutingTableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["routes"] = o.Routes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *ClusterRoutingTableRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterRoutingTableRequest := _ClusterRoutingTableRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterRoutingTableRequest)
+	err = json.Unmarshal(data, &varClusterRoutingTableRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterRoutingTableRequest(varClusterRoutingTableRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "routes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &PaginationData{}
 
 // PaginationData struct for PaginationData
 type PaginationData struct {
-	Page     float32 `json:"page"`
-	PageSize float32 `json:"page_size"`
+	Page                 float32 `json:"page"`
+	PageSize             float32 `json:"page_size"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _PaginationData PaginationData
@@ -107,6 +107,11 @@ func (o PaginationData) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["page"] = o.Page
 	toSerialize["page_size"] = o.PageSize
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *PaginationData) UnmarshalJSON(data []byte) (err error) {
 
 	varPaginationData := _PaginationData{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varPaginationData)
+	err = json.Unmarshal(data, &varPaginationData)
 
 	if err != nil {
 		return err
 	}
 
 	*o = PaginationData(varPaginationData)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

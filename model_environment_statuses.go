@@ -20,13 +20,16 @@ var _ MappedNullable = &EnvironmentStatuses{}
 
 // EnvironmentStatuses struct for EnvironmentStatuses
 type EnvironmentStatuses struct {
-	Environment  *EnvironmentStatus `json:"environment,omitempty"`
-	Applications []Status           `json:"applications,omitempty"`
-	Containers   []Status           `json:"containers,omitempty"`
-	Jobs         []Status           `json:"jobs,omitempty"`
-	Databases    []Status           `json:"databases,omitempty"`
-	Helms        []Status           `json:"helms,omitempty"`
+	Environment          *EnvironmentStatus `json:"environment,omitempty"`
+	Applications         []Status           `json:"applications,omitempty"`
+	Containers           []Status           `json:"containers,omitempty"`
+	Jobs                 []Status           `json:"jobs,omitempty"`
+	Databases            []Status           `json:"databases,omitempty"`
+	Helms                []Status           `json:"helms,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentStatuses EnvironmentStatuses
 
 // NewEnvironmentStatuses instantiates a new EnvironmentStatuses object
 // This constructor will assign default values to properties that have it defined,
@@ -265,7 +268,38 @@ func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentStatuses) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentStatuses := _EnvironmentStatuses{}
+
+	err = json.Unmarshal(data, &varEnvironmentStatuses)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentStatuses(varEnvironmentStatuses)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "applications")
+		delete(additionalProperties, "containers")
+		delete(additionalProperties, "jobs")
+		delete(additionalProperties, "databases")
+		delete(additionalProperties, "helms")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentStatuses struct {

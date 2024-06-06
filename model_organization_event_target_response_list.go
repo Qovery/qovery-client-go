@@ -20,8 +20,11 @@ var _ MappedNullable = &OrganizationEventTargetResponseList{}
 
 // OrganizationEventTargetResponseList struct for OrganizationEventTargetResponseList
 type OrganizationEventTargetResponseList struct {
-	Targets []ClusterCloudProviderInfoCredentials `json:"targets,omitempty"`
+	Targets              []ClusterCloudProviderInfoCredentials `json:"targets,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationEventTargetResponseList OrganizationEventTargetResponseList
 
 // NewOrganizationEventTargetResponseList instantiates a new OrganizationEventTargetResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o OrganizationEventTargetResponseList) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Targets) {
 		toSerialize["targets"] = o.Targets
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationEventTargetResponseList) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationEventTargetResponseList := _OrganizationEventTargetResponseList{}
+
+	err = json.Unmarshal(data, &varOrganizationEventTargetResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationEventTargetResponseList(varOrganizationEventTargetResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "targets")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationEventTargetResponseList struct {

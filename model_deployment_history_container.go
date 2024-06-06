@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,12 +26,13 @@ type DeploymentHistoryContainer struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the container
-	Name       *string    `json:"name,omitempty"`
-	Status     *StateEnum `json:"status,omitempty"`
-	ImageName  *string    `json:"image_name,omitempty"`
-	Tag        *string    `json:"tag,omitempty"`
-	Arguments  []string   `json:"arguments,omitempty"`
-	Entrypoint *string    `json:"entrypoint,omitempty"`
+	Name                 *string    `json:"name,omitempty"`
+	Status               *StateEnum `json:"status,omitempty"`
+	ImageName            *string    `json:"image_name,omitempty"`
+	Tag                  *string    `json:"tag,omitempty"`
+	Arguments            []string   `json:"arguments,omitempty"`
+	Entrypoint           *string    `json:"entrypoint,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryContainer DeploymentHistoryContainer
@@ -361,6 +361,11 @@ func (o DeploymentHistoryContainer) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -389,15 +394,28 @@ func (o *DeploymentHistoryContainer) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryContainer := _DeploymentHistoryContainer{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryContainer)
+	err = json.Unmarshal(data, &varDeploymentHistoryContainer)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryContainer(varDeploymentHistoryContainer)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

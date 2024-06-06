@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,6 +24,7 @@ type Label struct {
 	Key                      string `json:"key"`
 	Value                    string `json:"value"`
 	PropagateToCloudProvider bool   `json:"propagate_to_cloud_provider"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _Label Label
@@ -134,6 +134,11 @@ func (o Label) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["value"] = o.Value
 	toSerialize["propagate_to_cloud_provider"] = o.PropagateToCloudProvider
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *Label) UnmarshalJSON(data []byte) (err error) {
 
 	varLabel := _Label{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varLabel)
+	err = json.Unmarshal(data, &varLabel)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Label(varLabel)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "propagate_to_cloud_provider")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

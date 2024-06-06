@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &ManagedDatabaseTypeResponse{}
 
 // ManagedDatabaseTypeResponse struct for ManagedDatabaseTypeResponse
 type ManagedDatabaseTypeResponse struct {
-	Name string `json:"name"`
+	Name                 string `json:"name"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ManagedDatabaseTypeResponse ManagedDatabaseTypeResponse
@@ -80,6 +80,11 @@ func (o ManagedDatabaseTypeResponse) MarshalJSON() ([]byte, error) {
 func (o ManagedDatabaseTypeResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *ManagedDatabaseTypeResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varManagedDatabaseTypeResponse := _ManagedDatabaseTypeResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varManagedDatabaseTypeResponse)
+	err = json.Unmarshal(data, &varManagedDatabaseTypeResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ManagedDatabaseTypeResponse(varManagedDatabaseTypeResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

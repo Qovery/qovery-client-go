@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -35,6 +34,7 @@ type OrganizationWebhookCreateRequest struct {
 	ProjectNamesFilter []string `json:"project_names_filter,omitempty"`
 	// Specify the environment modes you want to filter to. This webhook will be triggered only if the event is coming from an environment with the specified mode.
 	EnvironmentTypesFilter []EnvironmentModeEnum `json:"environment_types_filter,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _OrganizationWebhookCreateRequest OrganizationWebhookCreateRequest
@@ -319,6 +319,11 @@ func (o OrganizationWebhookCreateRequest) ToMap() (map[string]interface{}, error
 	if !IsNil(o.EnvironmentTypesFilter) {
 		toSerialize["environment_types_filter"] = o.EnvironmentTypesFilter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -348,15 +353,27 @@ func (o *OrganizationWebhookCreateRequest) UnmarshalJSON(data []byte) (err error
 
 	varOrganizationWebhookCreateRequest := _OrganizationWebhookCreateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationWebhookCreateRequest)
+	err = json.Unmarshal(data, &varOrganizationWebhookCreateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationWebhookCreateRequest(varOrganizationWebhookCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "target_url")
+		delete(additionalProperties, "target_secret")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "enabled")
+		delete(additionalProperties, "events")
+		delete(additionalProperties, "project_names_filter")
+		delete(additionalProperties, "environment_types_filter")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

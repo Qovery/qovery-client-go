@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &Commit{}
 
 // Commit struct for Commit
 type Commit struct {
-	CreatedAt       time.Time `json:"created_at"`
-	GitCommitId     string    `json:"git_commit_id"`
-	Tag             string    `json:"tag"`
-	Message         string    `json:"message"`
-	AuthorName      string    `json:"author_name"`
-	AuthorAvatarUrl *string   `json:"author_avatar_url,omitempty"`
-	CommitPageUrl   *string   `json:"commit_page_url,omitempty"`
+	CreatedAt            time.Time `json:"created_at"`
+	GitCommitId          string    `json:"git_commit_id"`
+	Tag                  string    `json:"tag"`
+	Message              string    `json:"message"`
+	AuthorName           string    `json:"author_name"`
+	AuthorAvatarUrl      *string   `json:"author_avatar_url,omitempty"`
+	CommitPageUrl        *string   `json:"commit_page_url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Commit Commit
@@ -261,6 +261,11 @@ func (o Commit) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CommitPageUrl) {
 		toSerialize["commit_page_url"] = o.CommitPageUrl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -292,15 +297,26 @@ func (o *Commit) UnmarshalJSON(data []byte) (err error) {
 
 	varCommit := _Commit{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCommit)
+	err = json.Unmarshal(data, &varCommit)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Commit(varCommit)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "git_commit_id")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "author_name")
+		delete(additionalProperties, "author_avatar_url")
+		delete(additionalProperties, "commit_page_url")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

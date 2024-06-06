@@ -21,8 +21,11 @@ var _ MappedNullable = &ClusterLogsMessage{}
 // ClusterLogsMessage struct for ClusterLogsMessage
 type ClusterLogsMessage struct {
 	// log global message
-	SafeMessage *string `json:"safe_message,omitempty"`
+	SafeMessage          *string `json:"safe_message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogsMessage ClusterLogsMessage
 
 // NewClusterLogsMessage instantiates a new ClusterLogsMessage object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o ClusterLogsMessage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SafeMessage) {
 		toSerialize["safe_message"] = o.SafeMessage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogsMessage) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogsMessage := _ClusterLogsMessage{}
+
+	err = json.Unmarshal(data, &varClusterLogsMessage)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogsMessage(varClusterLogsMessage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "safe_message")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogsMessage struct {

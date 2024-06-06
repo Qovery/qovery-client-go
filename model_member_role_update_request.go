@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,8 +22,9 @@ var _ MappedNullable = &MemberRoleUpdateRequest{}
 // MemberRoleUpdateRequest struct for MemberRoleUpdateRequest
 type MemberRoleUpdateRequest struct {
 	// specify the git provider user id
-	UserId string `json:"user_id"`
-	RoleId string `json:"role_id"`
+	UserId               string `json:"user_id"`
+	RoleId               string `json:"role_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _MemberRoleUpdateRequest MemberRoleUpdateRequest
@@ -108,6 +108,11 @@ func (o MemberRoleUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["user_id"] = o.UserId
 	toSerialize["role_id"] = o.RoleId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -136,15 +141,21 @@ func (o *MemberRoleUpdateRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varMemberRoleUpdateRequest := _MemberRoleUpdateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varMemberRoleUpdateRequest)
+	err = json.Unmarshal(data, &varMemberRoleUpdateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = MemberRoleUpdateRequest(varMemberRoleUpdateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "user_id")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

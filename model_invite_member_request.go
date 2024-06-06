@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type InviteMemberRequest struct {
 	Email string                `json:"email"`
 	Role  *InviteMemberRoleEnum `json:"role,omitempty"`
 	// the target role to attribute to the new member
-	RoleId *string `json:"role_id,omitempty"`
+	RoleId               *string `json:"role_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InviteMemberRequest InviteMemberRequest
@@ -153,6 +153,11 @@ func (o InviteMemberRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -180,15 +185,22 @@ func (o *InviteMemberRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varInviteMemberRequest := _InviteMemberRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInviteMemberRequest)
+	err = json.Unmarshal(data, &varInviteMemberRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InviteMemberRequest(varInviteMemberRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

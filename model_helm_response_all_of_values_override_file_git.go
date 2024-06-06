@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,7 +23,8 @@ var _ MappedNullable = &HelmResponseAllOfValuesOverrideFileGit{}
 type HelmResponseAllOfValuesOverrideFileGit struct {
 	GitRepository ApplicationGitRepository `json:"git_repository"`
 	// List of path inside your git repository to locate values file. Must start by a /
-	Paths []string `json:"paths"`
+	Paths                []string `json:"paths"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponseAllOfValuesOverrideFileGit HelmResponseAllOfValuesOverrideFileGit
@@ -108,6 +108,11 @@ func (o HelmResponseAllOfValuesOverrideFileGit) ToMap() (map[string]interface{},
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	toSerialize["paths"] = o.Paths
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -136,15 +141,21 @@ func (o *HelmResponseAllOfValuesOverrideFileGit) UnmarshalJSON(data []byte) (err
 
 	varHelmResponseAllOfValuesOverrideFileGit := _HelmResponseAllOfValuesOverrideFileGit{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponseAllOfValuesOverrideFileGit)
+	err = json.Unmarshal(data, &varHelmResponseAllOfValuesOverrideFileGit)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponseAllOfValuesOverrideFileGit(varHelmResponseAllOfValuesOverrideFileGit)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "paths")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

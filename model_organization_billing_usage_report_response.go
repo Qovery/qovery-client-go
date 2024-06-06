@@ -23,8 +23,11 @@ type OrganizationBillingUsageReportResponse struct {
 	// The URL of the report
 	ReportUrl *string `json:"report_url,omitempty"`
 	// The URL to delete the report. Use this URL to pro-actively delete the report before it expires
-	DeleteReportUrl *string `json:"delete_report_url,omitempty"`
+	DeleteReportUrl      *string `json:"delete_report_url,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationBillingUsageReportResponse OrganizationBillingUsageReportResponse
 
 // NewOrganizationBillingUsageReportResponse instantiates a new OrganizationBillingUsageReportResponse object
 // This constructor will assign default values to properties that have it defined,
@@ -123,7 +126,34 @@ func (o OrganizationBillingUsageReportResponse) ToMap() (map[string]interface{},
 	if !IsNil(o.DeleteReportUrl) {
 		toSerialize["delete_report_url"] = o.DeleteReportUrl
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationBillingUsageReportResponse) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationBillingUsageReportResponse := _OrganizationBillingUsageReportResponse{}
+
+	err = json.Unmarshal(data, &varOrganizationBillingUsageReportResponse)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationBillingUsageReportResponse(varOrganizationBillingUsageReportResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "report_url")
+		delete(additionalProperties, "delete_report_url")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationBillingUsageReportResponse struct {

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type VariableAliasRequest struct {
 	Key        string               `json:"key"`
 	AliasScope APIVariableScopeEnum `json:"alias_scope"`
 	// the id of the variable that is aliased.
-	AliasParentId string `json:"alias_parent_id"`
+	AliasParentId        string `json:"alias_parent_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableAliasRequest VariableAliasRequest
@@ -136,6 +136,11 @@ func (o VariableAliasRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["key"] = o.Key
 	toSerialize["alias_scope"] = o.AliasScope
 	toSerialize["alias_parent_id"] = o.AliasParentId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -165,15 +170,22 @@ func (o *VariableAliasRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varVariableAliasRequest := _VariableAliasRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varVariableAliasRequest)
+	err = json.Unmarshal(data, &varVariableAliasRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = VariableAliasRequest(varVariableAliasRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "alias_scope")
+		delete(additionalProperties, "alias_parent_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

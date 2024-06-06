@@ -32,9 +32,12 @@ type BillingInfo struct {
 	// ISO code of the country
 	CountryCode NullableString `json:"country_code,omitempty"`
 	// name of the company to bill
-	Company   NullableString `json:"company,omitempty"`
-	VatNumber NullableString `json:"vat_number,omitempty"`
+	Company              NullableString `json:"company,omitempty"`
+	VatNumber            NullableString `json:"vat_number,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BillingInfo BillingInfo
 
 // NewBillingInfo instantiates a new BillingInfo object
 // This constructor will assign default values to properties that have it defined,
@@ -523,7 +526,42 @@ func (o BillingInfo) ToMap() (map[string]interface{}, error) {
 	if o.VatNumber.IsSet() {
 		toSerialize["vat_number"] = o.VatNumber.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BillingInfo) UnmarshalJSON(data []byte) (err error) {
+	varBillingInfo := _BillingInfo{}
+
+	err = json.Unmarshal(data, &varBillingInfo)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BillingInfo(varBillingInfo)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "first_name")
+		delete(additionalProperties, "last_name")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "address")
+		delete(additionalProperties, "city")
+		delete(additionalProperties, "zip")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "country_code")
+		delete(additionalProperties, "company")
+		delete(additionalProperties, "vat_number")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBillingInfo struct {

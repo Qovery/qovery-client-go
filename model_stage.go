@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -24,8 +23,9 @@ var _ MappedNullable = &Stage{}
 type Stage struct {
 	Id string `json:"id"`
 	// stage name
-	Name  string            `json:"name"`
-	Steps *StageStepMetrics `json:"steps,omitempty"`
+	Name                 string            `json:"name"`
+	Steps                *StageStepMetrics `json:"steps,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Stage Stage
@@ -144,6 +144,11 @@ func (o Stage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -172,15 +177,22 @@ func (o *Stage) UnmarshalJSON(data []byte) (err error) {
 
 	varStage := _Stage{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varStage)
+	err = json.Unmarshal(data, &varStage)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Stage(varStage)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "steps")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

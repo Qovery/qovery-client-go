@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,16 +22,17 @@ var _ MappedNullable = &EnvironmentDeploymentRule{}
 
 // EnvironmentDeploymentRule struct for EnvironmentDeploymentRule
 type EnvironmentDeploymentRule struct {
-	Id              string        `json:"id"`
-	CreatedAt       time.Time     `json:"created_at"`
-	UpdatedAt       *time.Time    `json:"updated_at,omitempty"`
-	OnDemandPreview *bool         `json:"on_demand_preview,omitempty"`
-	AutoStop        *bool         `json:"auto_stop,omitempty"`
-	AutoPreview     *bool         `json:"auto_preview,omitempty"`
-	Timezone        string        `json:"timezone"`
-	StartTime       time.Time     `json:"start_time"`
-	StopTime        time.Time     `json:"stop_time"`
-	Weekdays        []WeekdayEnum `json:"weekdays"`
+	Id                   string        `json:"id"`
+	CreatedAt            time.Time     `json:"created_at"`
+	UpdatedAt            *time.Time    `json:"updated_at,omitempty"`
+	OnDemandPreview      *bool         `json:"on_demand_preview,omitempty"`
+	AutoStop             *bool         `json:"auto_stop,omitempty"`
+	AutoPreview          *bool         `json:"auto_preview,omitempty"`
+	Timezone             string        `json:"timezone"`
+	StartTime            time.Time     `json:"start_time"`
+	StopTime             time.Time     `json:"stop_time"`
+	Weekdays             []WeekdayEnum `json:"weekdays"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentDeploymentRule EnvironmentDeploymentRule
@@ -372,6 +372,11 @@ func (o EnvironmentDeploymentRule) ToMap() (map[string]interface{}, error) {
 	toSerialize["start_time"] = o.StartTime
 	toSerialize["stop_time"] = o.StopTime
 	toSerialize["weekdays"] = o.Weekdays
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -404,15 +409,29 @@ func (o *EnvironmentDeploymentRule) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentDeploymentRule := _EnvironmentDeploymentRule{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentDeploymentRule)
+	err = json.Unmarshal(data, &varEnvironmentDeploymentRule)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentDeploymentRule(varEnvironmentDeploymentRule)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "on_demand_preview")
+		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "timezone")
+		delete(additionalProperties, "start_time")
+		delete(additionalProperties, "stop_time")
+		delete(additionalProperties, "weekdays")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

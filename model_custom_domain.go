@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -31,8 +30,9 @@ type CustomDomain struct {
 	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
 	GenerateCertificate bool `json:"generate_certificate"`
 	// URL provided by Qovery. You must create a CNAME on your DNS provider using that URL
-	ValidationDomain *string                 `json:"validation_domain,omitempty"`
-	Status           *CustomDomainStatusEnum `json:"status,omitempty"`
+	ValidationDomain     *string                 `json:"validation_domain,omitempty"`
+	Status               *CustomDomainStatusEnum `json:"status,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CustomDomain CustomDomain
@@ -273,6 +273,11 @@ func (o CustomDomain) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -303,15 +308,26 @@ func (o *CustomDomain) UnmarshalJSON(data []byte) (err error) {
 
 	varCustomDomain := _CustomDomain{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCustomDomain)
+	err = json.Unmarshal(data, &varCustomDomain)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CustomDomain(varCustomDomain)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "domain")
+		delete(additionalProperties, "generate_certificate")
+		delete(additionalProperties, "validation_domain")
+		delete(additionalProperties, "status")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

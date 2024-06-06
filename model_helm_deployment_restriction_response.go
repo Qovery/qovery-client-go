@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,7 +28,8 @@ type HelmDeploymentRestrictionResponse struct {
 	Mode      DeploymentRestrictionModeEnum `json:"mode"`
 	Type      DeploymentRestrictionTypeEnum `json:"type"`
 	// For `PATH` restrictions, the value must not start with `/`
-	Value string `json:"value"`
+	Value                string `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmDeploymentRestrictionResponse HelmDeploymentRestrictionResponse
@@ -226,6 +226,11 @@ func (o HelmDeploymentRestrictionResponse) ToMap() (map[string]interface{}, erro
 	toSerialize["mode"] = o.Mode
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -257,15 +262,25 @@ func (o *HelmDeploymentRestrictionResponse) UnmarshalJSON(data []byte) (err erro
 
 	varHelmDeploymentRestrictionResponse := _HelmDeploymentRestrictionResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmDeploymentRestrictionResponse)
+	err = json.Unmarshal(data, &varHelmDeploymentRestrictionResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmDeploymentRestrictionResponse(varHelmDeploymentRestrictionResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

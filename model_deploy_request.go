@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,7 +22,8 @@ var _ MappedNullable = &DeployRequest{}
 // DeployRequest struct for DeployRequest
 type DeployRequest struct {
 	// Commit ID to deploy
-	GitCommitId string `json:"git_commit_id"`
+	GitCommitId          string `json:"git_commit_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeployRequest DeployRequest
@@ -81,6 +81,11 @@ func (o DeployRequest) MarshalJSON() ([]byte, error) {
 func (o DeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_commit_id"] = o.GitCommitId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -108,15 +113,20 @@ func (o *DeployRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varDeployRequest := _DeployRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeployRequest)
+	err = json.Unmarshal(data, &varDeployRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeployRequest(varDeployRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_commit_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

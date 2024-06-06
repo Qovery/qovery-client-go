@@ -20,8 +20,11 @@ var _ MappedNullable = &GitAuthProviderResponseList{}
 
 // GitAuthProviderResponseList struct for GitAuthProviderResponseList
 type GitAuthProviderResponseList struct {
-	Results []GitAuthProvider `json:"results,omitempty"`
+	Results              []GitAuthProvider `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _GitAuthProviderResponseList GitAuthProviderResponseList
 
 // NewGitAuthProviderResponseList instantiates a new GitAuthProviderResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o GitAuthProviderResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *GitAuthProviderResponseList) UnmarshalJSON(data []byte) (err error) {
+	varGitAuthProviderResponseList := _GitAuthProviderResponseList{}
+
+	err = json.Unmarshal(data, &varGitAuthProviderResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = GitAuthProviderResponseList(varGitAuthProviderResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableGitAuthProviderResponseList struct {

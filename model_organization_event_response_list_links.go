@@ -20,9 +20,12 @@ var _ MappedNullable = &OrganizationEventResponseListLinks{}
 
 // OrganizationEventResponseListLinks struct for OrganizationEventResponseListLinks
 type OrganizationEventResponseListLinks struct {
-	Previous *string `json:"previous,omitempty"`
-	Next     *string `json:"next,omitempty"`
+	Previous             *string `json:"previous,omitempty"`
+	Next                 *string `json:"next,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _OrganizationEventResponseListLinks OrganizationEventResponseListLinks
 
 // NewOrganizationEventResponseListLinks instantiates a new OrganizationEventResponseListLinks object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o OrganizationEventResponseListLinks) ToMap() (map[string]interface{}, err
 	if !IsNil(o.Next) {
 		toSerialize["next"] = o.Next
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *OrganizationEventResponseListLinks) UnmarshalJSON(data []byte) (err error) {
+	varOrganizationEventResponseListLinks := _OrganizationEventResponseListLinks{}
+
+	err = json.Unmarshal(data, &varOrganizationEventResponseListLinks)
+
+	if err != nil {
+		return err
+	}
+
+	*o = OrganizationEventResponseListLinks(varOrganizationEventResponseListLinks)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "previous")
+		delete(additionalProperties, "next")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableOrganizationEventResponseListLinks struct {

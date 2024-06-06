@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,14 +26,15 @@ type DeploymentHistoryJobResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the job
-	Name       *string                                    `json:"name,omitempty"`
-	Status     *StateEnum                                 `json:"status,omitempty"`
-	ImageName  *string                                    `json:"image_name,omitempty"`
-	Tag        *string                                    `json:"tag,omitempty"`
-	Commit     NullableCommit                             `json:"commit,omitempty"`
-	Schedule   *DeploymentHistoryJobResponseAllOfSchedule `json:"schedule,omitempty"`
-	Arguments  []string                                   `json:"arguments,omitempty"`
-	Entrypoint *string                                    `json:"entrypoint,omitempty"`
+	Name                 *string                                    `json:"name,omitempty"`
+	Status               *StateEnum                                 `json:"status,omitempty"`
+	ImageName            *string                                    `json:"image_name,omitempty"`
+	Tag                  *string                                    `json:"tag,omitempty"`
+	Commit               NullableCommit                             `json:"commit,omitempty"`
+	Schedule             *DeploymentHistoryJobResponseAllOfSchedule `json:"schedule,omitempty"`
+	Arguments            []string                                   `json:"arguments,omitempty"`
+	Entrypoint           *string                                    `json:"entrypoint,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryJobResponse DeploymentHistoryJobResponse
@@ -444,6 +444,11 @@ func (o DeploymentHistoryJobResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -472,15 +477,30 @@ func (o *DeploymentHistoryJobResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryJobResponse := _DeploymentHistoryJobResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryJobResponse)
+	err = json.Unmarshal(data, &varDeploymentHistoryJobResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryJobResponse(varDeploymentHistoryJobResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "commit")
+		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

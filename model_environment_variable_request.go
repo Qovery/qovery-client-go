@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -27,7 +26,8 @@ type EnvironmentVariableRequest struct {
 	// value of the env variable.
 	Value *string `json:"value,omitempty"`
 	// should be set for file only. variable mount path makes variable a file (where file should be mounted).
-	MountPath NullableString `json:"mount_path,omitempty"`
+	MountPath            NullableString `json:"mount_path,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentVariableRequest EnvironmentVariableRequest
@@ -166,6 +166,11 @@ func (o EnvironmentVariableRequest) ToMap() (map[string]interface{}, error) {
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -193,15 +198,22 @@ func (o *EnvironmentVariableRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varEnvironmentVariableRequest := _EnvironmentVariableRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentVariableRequest)
+	err = json.Unmarshal(data, &varEnvironmentVariableRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentVariableRequest(varEnvironmentVariableRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		delete(additionalProperties, "mount_path")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

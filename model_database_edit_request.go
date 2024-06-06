@@ -33,10 +33,13 @@ type DatabaseEditRequest struct {
 	// unit is GB
 	Storage *int32 `json:"storage,omitempty"`
 	// Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB.
-	InstanceType      *string                    `json:"instance_type,omitempty"`
-	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	InstanceType         *string                    `json:"instance_type,omitempty"`
+	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DatabaseEditRequest DatabaseEditRequest
 
 // NewDatabaseEditRequest instantiates a new DatabaseEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -423,7 +426,42 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DatabaseEditRequest) UnmarshalJSON(data []byte) (err error) {
+	varDatabaseEditRequest := _DatabaseEditRequest{}
+
+	err = json.Unmarshal(data, &varDatabaseEditRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DatabaseEditRequest(varDatabaseEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "version")
+		delete(additionalProperties, "accessibility")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "instance_type")
+		delete(additionalProperties, "annotations_groups")
+		delete(additionalProperties, "labels_groups")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDatabaseEditRequest struct {

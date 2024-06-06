@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,6 +28,7 @@ type ReferenceObjectStatus struct {
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ReferenceObjectStatus ReferenceObjectStatus
@@ -243,6 +243,11 @@ func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -272,15 +277,25 @@ func (o *ReferenceObjectStatus) UnmarshalJSON(data []byte) (err error) {
 
 	varReferenceObjectStatus := _ReferenceObjectStatus{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varReferenceObjectStatus)
+	err = json.Unmarshal(data, &varReferenceObjectStatus)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ReferenceObjectStatus(varReferenceObjectStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "state")
+		delete(additionalProperties, "service_deployment_status")
+		delete(additionalProperties, "last_deployment_date")
+		delete(additionalProperties, "is_part_last_deployment")
+		delete(additionalProperties, "steps")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

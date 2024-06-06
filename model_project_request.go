@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,8 +22,9 @@ var _ MappedNullable = &ProjectRequest{}
 // ProjectRequest struct for ProjectRequest
 type ProjectRequest struct {
 	// name is case insensitive
-	Name        string  `json:"name"`
-	Description *string `json:"description,omitempty"`
+	Name                 string  `json:"name"`
+	Description          *string `json:"description,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ProjectRequest ProjectRequest
@@ -117,6 +117,11 @@ func (o ProjectRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -144,15 +149,21 @@ func (o *ProjectRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectRequest := _ProjectRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectRequest)
+	err = json.Unmarshal(data, &varProjectRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectRequest(varProjectRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

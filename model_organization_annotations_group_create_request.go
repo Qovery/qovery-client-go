@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,9 +22,10 @@ var _ MappedNullable = &OrganizationAnnotationsGroupCreateRequest{}
 // OrganizationAnnotationsGroupCreateRequest struct for OrganizationAnnotationsGroupCreateRequest
 type OrganizationAnnotationsGroupCreateRequest struct {
 	// name of the annotations group
-	Name        string                                  `json:"name"`
-	Annotations []Annotation                            `json:"annotations"`
-	Scopes      []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
+	Name                 string                                  `json:"name"`
+	Annotations          []Annotation                            `json:"annotations"`
+	Scopes               []OrganizationAnnotationsGroupScopeEnum `json:"scopes"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationAnnotationsGroupCreateRequest OrganizationAnnotationsGroupCreateRequest
@@ -135,6 +135,11 @@ func (o OrganizationAnnotationsGroupCreateRequest) ToMap() (map[string]interface
 	toSerialize["name"] = o.Name
 	toSerialize["annotations"] = o.Annotations
 	toSerialize["scopes"] = o.Scopes
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -164,15 +169,22 @@ func (o *OrganizationAnnotationsGroupCreateRequest) UnmarshalJSON(data []byte) (
 
 	varOrganizationAnnotationsGroupCreateRequest := _OrganizationAnnotationsGroupCreateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationAnnotationsGroupCreateRequest)
+	err = json.Unmarshal(data, &varOrganizationAnnotationsGroupCreateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationAnnotationsGroupCreateRequest(varOrganizationAnnotationsGroupCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "annotations")
+		delete(additionalProperties, "scopes")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

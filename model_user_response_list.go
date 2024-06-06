@@ -20,8 +20,11 @@ var _ MappedNullable = &UserResponseList{}
 
 // UserResponseList struct for UserResponseList
 type UserResponseList struct {
-	Results []User `json:"results,omitempty"`
+	Results              []User `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _UserResponseList UserResponseList
 
 // NewUserResponseList instantiates a new UserResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o UserResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *UserResponseList) UnmarshalJSON(data []byte) (err error) {
+	varUserResponseList := _UserResponseList{}
+
+	err = json.Unmarshal(data, &varUserResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UserResponseList(varUserResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableUserResponseList struct {

@@ -20,8 +20,11 @@ var _ MappedNullable = &ManagedDatabaseInstanceTypeResponseList{}
 
 // ManagedDatabaseInstanceTypeResponseList struct for ManagedDatabaseInstanceTypeResponseList
 type ManagedDatabaseInstanceTypeResponseList struct {
-	Results []ManagedDatabaseInstanceTypeResponse `json:"results,omitempty"`
+	Results              []ManagedDatabaseInstanceTypeResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ManagedDatabaseInstanceTypeResponseList ManagedDatabaseInstanceTypeResponseList
 
 // NewManagedDatabaseInstanceTypeResponseList instantiates a new ManagedDatabaseInstanceTypeResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ManagedDatabaseInstanceTypeResponseList) ToMap() (map[string]interface{}
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ManagedDatabaseInstanceTypeResponseList) UnmarshalJSON(data []byte) (err error) {
+	varManagedDatabaseInstanceTypeResponseList := _ManagedDatabaseInstanceTypeResponseList{}
+
+	err = json.Unmarshal(data, &varManagedDatabaseInstanceTypeResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ManagedDatabaseInstanceTypeResponseList(varManagedDatabaseInstanceTypeResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableManagedDatabaseInstanceTypeResponseList struct {

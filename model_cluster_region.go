@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &ClusterRegion{}
 
 // ClusterRegion struct for ClusterRegion
 type ClusterRegion struct {
-	Name        string `json:"name"`
-	CountryCode string `json:"country_code"`
-	Country     string `json:"country"`
-	City        string `json:"city"`
+	Name                 string `json:"name"`
+	CountryCode          string `json:"country_code"`
+	Country              string `json:"country"`
+	City                 string `json:"city"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterRegion ClusterRegion
@@ -161,6 +161,11 @@ func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["country_code"] = o.CountryCode
 	toSerialize["country"] = o.Country
 	toSerialize["city"] = o.City
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *ClusterRegion) UnmarshalJSON(data []byte) (err error) {
 
 	varClusterRegion := _ClusterRegion{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterRegion)
+	err = json.Unmarshal(data, &varClusterRegion)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterRegion(varClusterRegion)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "country_code")
+		delete(additionalProperties, "country")
+		delete(additionalProperties, "city")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

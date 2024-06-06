@@ -20,9 +20,12 @@ var _ MappedNullable = &DeploymentHistoryHelmResponseAllOfRepository{}
 
 // DeploymentHistoryHelmResponseAllOfRepository If the chart source if from a repository, the chart name and its version
 type DeploymentHistoryHelmResponseAllOfRepository struct {
-	ChartName    *string `json:"chart_name,omitempty"`
-	ChartVersion *string `json:"chart_version,omitempty"`
+	ChartName            *string `json:"chart_name,omitempty"`
+	ChartVersion         *string `json:"chart_version,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _DeploymentHistoryHelmResponseAllOfRepository DeploymentHistoryHelmResponseAllOfRepository
 
 // NewDeploymentHistoryHelmResponseAllOfRepository instantiates a new DeploymentHistoryHelmResponseAllOfRepository object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o DeploymentHistoryHelmResponseAllOfRepository) ToMap() (map[string]interf
 	if !IsNil(o.ChartVersion) {
 		toSerialize["chart_version"] = o.ChartVersion
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *DeploymentHistoryHelmResponseAllOfRepository) UnmarshalJSON(data []byte) (err error) {
+	varDeploymentHistoryHelmResponseAllOfRepository := _DeploymentHistoryHelmResponseAllOfRepository{}
+
+	err = json.Unmarshal(data, &varDeploymentHistoryHelmResponseAllOfRepository)
+
+	if err != nil {
+		return err
+	}
+
+	*o = DeploymentHistoryHelmResponseAllOfRepository(varDeploymentHistoryHelmResponseAllOfRepository)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "chart_name")
+		delete(additionalProperties, "chart_version")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableDeploymentHistoryHelmResponseAllOfRepository struct {

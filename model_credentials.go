@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,10 +21,11 @@ var _ MappedNullable = &Credentials{}
 
 // Credentials struct for Credentials
 type Credentials struct {
-	Host     string `json:"host"`
-	Port     int32  `json:"port"`
-	Login    string `json:"login"`
-	Password string `json:"password"`
+	Host                 string `json:"host"`
+	Port                 int32  `json:"port"`
+	Login                string `json:"login"`
+	Password             string `json:"password"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Credentials Credentials
@@ -161,6 +161,11 @@ func (o Credentials) ToMap() (map[string]interface{}, error) {
 	toSerialize["port"] = o.Port
 	toSerialize["login"] = o.Login
 	toSerialize["password"] = o.Password
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -191,15 +196,23 @@ func (o *Credentials) UnmarshalJSON(data []byte) (err error) {
 
 	varCredentials := _Credentials{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCredentials)
+	err = json.Unmarshal(data, &varCredentials)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Credentials(varCredentials)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "host")
+		delete(additionalProperties, "port")
+		delete(additionalProperties, "login")
+		delete(additionalProperties, "password")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -20,8 +20,11 @@ var _ MappedNullable = &ReferenceObjectStatusResponseList{}
 
 // ReferenceObjectStatusResponseList struct for ReferenceObjectStatusResponseList
 type ReferenceObjectStatusResponseList struct {
-	Results []ReferenceObjectStatus `json:"results,omitempty"`
+	Results              []ReferenceObjectStatus `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ReferenceObjectStatusResponseList ReferenceObjectStatusResponseList
 
 // NewReferenceObjectStatusResponseList instantiates a new ReferenceObjectStatusResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ReferenceObjectStatusResponseList) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ReferenceObjectStatusResponseList) UnmarshalJSON(data []byte) (err error) {
+	varReferenceObjectStatusResponseList := _ReferenceObjectStatusResponseList{}
+
+	err = json.Unmarshal(data, &varReferenceObjectStatusResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ReferenceObjectStatusResponseList(varReferenceObjectStatusResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableReferenceObjectStatusResponseList struct {

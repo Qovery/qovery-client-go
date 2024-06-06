@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,6 +24,7 @@ type ProjectStats struct {
 	Id                     string   `json:"id"`
 	ServiceTotalNumber     *float32 `json:"service_total_number,omitempty"`
 	EnvironmentTotalNumber *float32 `json:"environment_total_number,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _ProjectStats ProjectStats
@@ -152,6 +152,11 @@ func (o ProjectStats) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentTotalNumber) {
 		toSerialize["environment_total_number"] = o.EnvironmentTotalNumber
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -179,15 +184,22 @@ func (o *ProjectStats) UnmarshalJSON(data []byte) (err error) {
 
 	varProjectStats := _ProjectStats{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varProjectStats)
+	err = json.Unmarshal(data, &varProjectStats)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ProjectStats(varProjectStats)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "service_total_number")
+		delete(additionalProperties, "environment_total_number")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

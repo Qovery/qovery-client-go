@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &AvailableHelmRepositoryResponse{}
 
 // AvailableHelmRepositoryResponse struct for AvailableHelmRepositoryResponse
 type AvailableHelmRepositoryResponse struct {
-	Kind           HelmRepositoryKindEnum `json:"kind"`
-	RequiredConfig map[string]interface{} `json:"required_config"`
-	IsMandatory    bool                   `json:"is_mandatory"`
+	Kind                 HelmRepositoryKindEnum `json:"kind"`
+	RequiredConfig       map[string]interface{} `json:"required_config"`
+	IsMandatory          bool                   `json:"is_mandatory"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AvailableHelmRepositoryResponse AvailableHelmRepositoryResponse
@@ -134,6 +134,11 @@ func (o AvailableHelmRepositoryResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["kind"] = o.Kind
 	toSerialize["required_config"] = o.RequiredConfig
 	toSerialize["is_mandatory"] = o.IsMandatory
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *AvailableHelmRepositoryResponse) UnmarshalJSON(data []byte) (err error)
 
 	varAvailableHelmRepositoryResponse := _AvailableHelmRepositoryResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varAvailableHelmRepositoryResponse)
+	err = json.Unmarshal(data, &varAvailableHelmRepositoryResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = AvailableHelmRepositoryResponse(varAvailableHelmRepositoryResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "required_config")
+		delete(additionalProperties, "is_mandatory")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

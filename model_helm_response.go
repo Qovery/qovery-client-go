@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -43,6 +42,7 @@ type HelmResponse struct {
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _HelmResponse HelmResponse
@@ -480,6 +480,11 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["arguments"] = o.Arguments
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -516,15 +521,33 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmResponse := _HelmResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmResponse)
+	err = json.Unmarshal(data, &varHelmResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmResponse(varHelmResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "environment")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "timeout_sec")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "ports")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "allow_cluster_wide_resources")
+		delete(additionalProperties, "values_override")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

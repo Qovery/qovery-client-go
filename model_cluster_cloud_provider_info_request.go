@@ -20,10 +20,13 @@ var _ MappedNullable = &ClusterCloudProviderInfoRequest{}
 
 // ClusterCloudProviderInfoRequest struct for ClusterCloudProviderInfoRequest
 type ClusterCloudProviderInfoRequest struct {
-	CloudProvider *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
-	Credentials   *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
-	Region        *string                              `json:"region,omitempty"`
+	CloudProvider        *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
+	Credentials          *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
+	Region               *string                              `json:"region,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterCloudProviderInfoRequest ClusterCloudProviderInfoRequest
 
 // NewClusterCloudProviderInfoRequest instantiates a new ClusterCloudProviderInfoRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -157,7 +160,35 @@ func (o ClusterCloudProviderInfoRequest) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterCloudProviderInfoRequest) UnmarshalJSON(data []byte) (err error) {
+	varClusterCloudProviderInfoRequest := _ClusterCloudProviderInfoRequest{}
+
+	err = json.Unmarshal(data, &varClusterCloudProviderInfoRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterCloudProviderInfoRequest(varClusterCloudProviderInfoRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "cloud_provider")
+		delete(additionalProperties, "credentials")
+		delete(additionalProperties, "region")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterCloudProviderInfoRequest struct {

@@ -20,8 +20,11 @@ var _ MappedNullable = &ProjectDeploymentRuleResponseList{}
 
 // ProjectDeploymentRuleResponseList struct for ProjectDeploymentRuleResponseList
 type ProjectDeploymentRuleResponseList struct {
-	Results []ProjectDeploymentRule `json:"results,omitempty"`
+	Results              []ProjectDeploymentRule `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ProjectDeploymentRuleResponseList ProjectDeploymentRuleResponseList
 
 // NewProjectDeploymentRuleResponseList instantiates a new ProjectDeploymentRuleResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o ProjectDeploymentRuleResponseList) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ProjectDeploymentRuleResponseList) UnmarshalJSON(data []byte) (err error) {
+	varProjectDeploymentRuleResponseList := _ProjectDeploymentRuleResponseList{}
+
+	err = json.Unmarshal(data, &varProjectDeploymentRuleResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ProjectDeploymentRuleResponseList(varProjectDeploymentRuleResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableProjectDeploymentRuleResponseList struct {

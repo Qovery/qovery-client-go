@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &CloneServiceRequest{}
 
 // CloneServiceRequest struct for CloneServiceRequest
 type CloneServiceRequest struct {
-	Name          string `json:"name"`
-	EnvironmentId string `json:"environment_id"`
+	Name                 string `json:"name"`
+	EnvironmentId        string `json:"environment_id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _CloneServiceRequest CloneServiceRequest
@@ -107,6 +107,11 @@ func (o CloneServiceRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["environment_id"] = o.EnvironmentId
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *CloneServiceRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varCloneServiceRequest := _CloneServiceRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCloneServiceRequest)
+	err = json.Unmarshal(data, &varCloneServiceRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = CloneServiceRequest(varCloneServiceRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "environment_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

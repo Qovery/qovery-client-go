@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ListJobDeploymentHistory200Response{}
 
 // ListJobDeploymentHistory200Response struct for ListJobDeploymentHistory200Response
 type ListJobDeploymentHistory200Response struct {
-	Page     float32                        `json:"page"`
-	PageSize float32                        `json:"page_size"`
-	Results  []DeploymentHistoryJobResponse `json:"results,omitempty"`
+	Page                 float32                        `json:"page"`
+	PageSize             float32                        `json:"page_size"`
+	Results              []DeploymentHistoryJobResponse `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ListJobDeploymentHistory200Response ListJobDeploymentHistory200Response
@@ -143,6 +143,11 @@ func (o ListJobDeploymentHistory200Response) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ListJobDeploymentHistory200Response) UnmarshalJSON(data []byte) (err er
 
 	varListJobDeploymentHistory200Response := _ListJobDeploymentHistory200Response{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varListJobDeploymentHistory200Response)
+	err = json.Unmarshal(data, &varListJobDeploymentHistory200Response)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ListJobDeploymentHistory200Response(varListJobDeploymentHistory200Response)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

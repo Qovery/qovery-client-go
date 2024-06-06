@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,6 +28,7 @@ type OrganizationBillingUsageReportRequest struct {
 	To time.Time `json:"to"`
 	// The number of seconds the report will be publicly available
 	ReportExpirationInSeconds int32 `json:"report_expiration_in_seconds"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _OrganizationBillingUsageReportRequest OrganizationBillingUsageReportRequest
@@ -138,6 +138,11 @@ func (o OrganizationBillingUsageReportRequest) ToMap() (map[string]interface{}, 
 	toSerialize["from"] = o.From
 	toSerialize["to"] = o.To
 	toSerialize["report_expiration_in_seconds"] = o.ReportExpirationInSeconds
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -167,15 +172,22 @@ func (o *OrganizationBillingUsageReportRequest) UnmarshalJSON(data []byte) (err 
 
 	varOrganizationBillingUsageReportRequest := _OrganizationBillingUsageReportRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationBillingUsageReportRequest)
+	err = json.Unmarshal(data, &varOrganizationBillingUsageReportRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationBillingUsageReportRequest(varOrganizationBillingUsageReportRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "from")
+		delete(additionalProperties, "to")
+		delete(additionalProperties, "report_expiration_in_seconds")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

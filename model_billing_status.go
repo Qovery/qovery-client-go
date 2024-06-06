@@ -20,9 +20,12 @@ var _ MappedNullable = &BillingStatus{}
 
 // BillingStatus struct for BillingStatus
 type BillingStatus struct {
-	IsValid *bool   `json:"is_valid,omitempty"`
-	Message *string `json:"message,omitempty"`
+	IsValid              *bool   `json:"is_valid,omitempty"`
+	Message              *string `json:"message,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _BillingStatus BillingStatus
 
 // NewBillingStatus instantiates a new BillingStatus object
 // This constructor will assign default values to properties that have it defined,
@@ -121,7 +124,34 @@ func (o BillingStatus) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *BillingStatus) UnmarshalJSON(data []byte) (err error) {
+	varBillingStatus := _BillingStatus{}
+
+	err = json.Unmarshal(data, &varBillingStatus)
+
+	if err != nil {
+		return err
+	}
+
+	*o = BillingStatus(varBillingStatus)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "is_valid")
+		delete(additionalProperties, "message")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableBillingStatus struct {

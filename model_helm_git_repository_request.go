@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -29,7 +28,8 @@ type HelmGitRepositoryRequest struct {
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
 	// The git token id on Qovery side
-	GitTokenId NullableString `json:"git_token_id,omitempty"`
+	GitTokenId           NullableString `json:"git_token_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmGitRepositoryRequest HelmGitRepositoryRequest
@@ -207,6 +207,11 @@ func (o HelmGitRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	if o.GitTokenId.IsSet() {
 		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -234,15 +239,23 @@ func (o *HelmGitRepositoryRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmGitRepositoryRequest := _HelmGitRepositoryRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmGitRepositoryRequest)
+	err = json.Unmarshal(data, &varHelmGitRepositoryRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmGitRepositoryRequest(varHelmGitRepositoryRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "branch")
+		delete(additionalProperties, "root_path")
+		delete(additionalProperties, "git_token_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

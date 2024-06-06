@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -32,7 +31,8 @@ type HelmRepositoryResponse struct {
 	// URL of the helm repository
 	Url *string `json:"url,omitempty"`
 	// Bypass tls certificate verification when connecting to repository
-	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
+	SkipTlsVerification  *bool `json:"skip_tls_verification,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmRepositoryResponse HelmRepositoryResponse
@@ -317,6 +317,11 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SkipTlsVerification) {
 		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -346,15 +351,27 @@ func (o *HelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmRepositoryResponse := _HelmRepositoryResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmRepositoryResponse)
+	err = json.Unmarshal(data, &varHelmRepositoryResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmRepositoryResponse(varHelmRepositoryResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "kind")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "url")
+		delete(additionalProperties, "skip_tls_verification")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &Cost{}
 
 // Cost struct for Cost
 type Cost struct {
-	TotalInCents int32   `json:"total_in_cents"`
-	Total        float32 `json:"total"`
-	CurrencyCode string  `json:"currency_code"`
+	TotalInCents         int32   `json:"total_in_cents"`
+	Total                float32 `json:"total"`
+	CurrencyCode         string  `json:"currency_code"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Cost Cost
@@ -134,6 +134,11 @@ func (o Cost) ToMap() (map[string]interface{}, error) {
 	toSerialize["total_in_cents"] = o.TotalInCents
 	toSerialize["total"] = o.Total
 	toSerialize["currency_code"] = o.CurrencyCode
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -163,15 +168,22 @@ func (o *Cost) UnmarshalJSON(data []byte) (err error) {
 
 	varCost := _Cost{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varCost)
+	err = json.Unmarshal(data, &varCost)
 
 	if err != nil {
 		return err
 	}
 
 	*o = Cost(varCost)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "total_in_cents")
+		delete(additionalProperties, "total")
+		delete(additionalProperties, "currency_code")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

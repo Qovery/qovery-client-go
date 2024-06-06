@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,8 +21,9 @@ var _ MappedNullable = &ClusterFeatureGcpExistingVpcResponse{}
 
 // ClusterFeatureGcpExistingVpcResponse struct for ClusterFeatureGcpExistingVpcResponse
 type ClusterFeatureGcpExistingVpcResponse struct {
-	Type  ClusterFeatureResponseTypeEnum `json:"type"`
-	Value ClusterFeatureGcpExistingVpc   `json:"value"`
+	Type                 ClusterFeatureResponseTypeEnum `json:"type"`
+	Value                ClusterFeatureGcpExistingVpc   `json:"value"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ClusterFeatureGcpExistingVpcResponse ClusterFeatureGcpExistingVpcResponse
@@ -107,6 +107,11 @@ func (o ClusterFeatureGcpExistingVpcResponse) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
 	toSerialize["value"] = o.Value
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -135,15 +140,21 @@ func (o *ClusterFeatureGcpExistingVpcResponse) UnmarshalJSON(data []byte) (err e
 
 	varClusterFeatureGcpExistingVpcResponse := _ClusterFeatureGcpExistingVpcResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varClusterFeatureGcpExistingVpcResponse)
+	err = json.Unmarshal(data, &varClusterFeatureGcpExistingVpcResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ClusterFeatureGcpExistingVpcResponse(varClusterFeatureGcpExistingVpcResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

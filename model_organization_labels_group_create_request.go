@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,8 +22,9 @@ var _ MappedNullable = &OrganizationLabelsGroupCreateRequest{}
 // OrganizationLabelsGroupCreateRequest struct for OrganizationLabelsGroupCreateRequest
 type OrganizationLabelsGroupCreateRequest struct {
 	// name of the labels group
-	Name   string  `json:"name"`
-	Labels []Label `json:"labels"`
+	Name                 string  `json:"name"`
+	Labels               []Label `json:"labels"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationLabelsGroupCreateRequest OrganizationLabelsGroupCreateRequest
@@ -108,6 +108,11 @@ func (o OrganizationLabelsGroupCreateRequest) ToMap() (map[string]interface{}, e
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["labels"] = o.Labels
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -136,15 +141,21 @@ func (o *OrganizationLabelsGroupCreateRequest) UnmarshalJSON(data []byte) (err e
 
 	varOrganizationLabelsGroupCreateRequest := _OrganizationLabelsGroupCreateRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationLabelsGroupCreateRequest)
+	err = json.Unmarshal(data, &varOrganizationLabelsGroupCreateRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationLabelsGroupCreateRequest(varOrganizationLabelsGroupCreateRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "labels")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

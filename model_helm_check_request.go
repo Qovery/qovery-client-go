@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &HelmCheckRequest{}
 
 // HelmCheckRequest struct for HelmCheckRequest
 type HelmCheckRequest struct {
-	GitRepository HelmGitRepositoryRequest `json:"git_repository"`
+	GitRepository        HelmGitRepositoryRequest `json:"git_repository"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmCheckRequest HelmCheckRequest
@@ -80,6 +80,11 @@ func (o HelmCheckRequest) MarshalJSON() ([]byte, error) {
 func (o HelmCheckRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *HelmCheckRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varHelmCheckRequest := _HelmCheckRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varHelmCheckRequest)
+	err = json.Unmarshal(data, &varHelmCheckRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = HelmCheckRequest(varHelmCheckRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "git_repository")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

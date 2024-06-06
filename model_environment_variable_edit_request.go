@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -25,7 +24,8 @@ type EnvironmentVariableEditRequest struct {
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
-	Value *string `json:"value,omitempty"`
+	Value                *string `json:"value,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _EnvironmentVariableEditRequest EnvironmentVariableEditRequest
@@ -118,6 +118,11 @@ func (o EnvironmentVariableEditRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -145,15 +150,21 @@ func (o *EnvironmentVariableEditRequest) UnmarshalJSON(data []byte) (err error) 
 
 	varEnvironmentVariableEditRequest := _EnvironmentVariableEditRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varEnvironmentVariableEditRequest)
+	err = json.Unmarshal(data, &varEnvironmentVariableEditRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = EnvironmentVariableEditRequest(varEnvironmentVariableEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "key")
+		delete(additionalProperties, "value")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

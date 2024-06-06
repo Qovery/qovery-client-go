@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -29,6 +28,7 @@ type OrganizationLabelsGroupEnrichedResponse struct {
 	Name                 string     `json:"name"`
 	Labels               []Label    `json:"labels"`
 	AssociatedItemsCount *int32     `json:"associated_items_count,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationLabelsGroupEnrichedResponse OrganizationLabelsGroupEnrichedResponse
@@ -234,6 +234,11 @@ func (o OrganizationLabelsGroupEnrichedResponse) ToMap() (map[string]interface{}
 	if !IsNil(o.AssociatedItemsCount) {
 		toSerialize["associated_items_count"] = o.AssociatedItemsCount
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -264,15 +269,25 @@ func (o *OrganizationLabelsGroupEnrichedResponse) UnmarshalJSON(data []byte) (er
 
 	varOrganizationLabelsGroupEnrichedResponse := _OrganizationLabelsGroupEnrichedResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationLabelsGroupEnrichedResponse)
+	err = json.Unmarshal(data, &varOrganizationLabelsGroupEnrichedResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationLabelsGroupEnrichedResponse(varOrganizationLabelsGroupEnrichedResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "labels")
+		delete(additionalProperties, "associated_items_count")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

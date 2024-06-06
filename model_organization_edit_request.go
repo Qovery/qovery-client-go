@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,13 +22,14 @@ var _ MappedNullable = &OrganizationEditRequest{}
 // OrganizationEditRequest struct for OrganizationEditRequest
 type OrganizationEditRequest struct {
 	// name is case insensitive
-	Name        string         `json:"name"`
-	Description *string        `json:"description,omitempty"`
-	WebsiteUrl  NullableString `json:"website_url,omitempty"`
-	Repository  NullableString `json:"repository,omitempty"`
-	LogoUrl     NullableString `json:"logo_url,omitempty"`
-	IconUrl     NullableString `json:"icon_url,omitempty"`
-	AdminEmails []string       `json:"admin_emails,omitempty"`
+	Name                 string         `json:"name"`
+	Description          *string        `json:"description,omitempty"`
+	WebsiteUrl           NullableString `json:"website_url,omitempty"`
+	Repository           NullableString `json:"repository,omitempty"`
+	LogoUrl              NullableString `json:"logo_url,omitempty"`
+	IconUrl              NullableString `json:"icon_url,omitempty"`
+	AdminEmails          []string       `json:"admin_emails,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationEditRequest OrganizationEditRequest
@@ -342,6 +342,11 @@ func (o OrganizationEditRequest) ToMap() (map[string]interface{}, error) {
 	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -369,15 +374,26 @@ func (o *OrganizationEditRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationEditRequest := _OrganizationEditRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationEditRequest)
+	err = json.Unmarshal(data, &varOrganizationEditRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationEditRequest(varOrganizationEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "website_url")
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "logo_url")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "admin_emails")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

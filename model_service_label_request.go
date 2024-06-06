@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,7 +21,8 @@ var _ MappedNullable = &ServiceLabelRequest{}
 
 // ServiceLabelRequest struct for ServiceLabelRequest
 type ServiceLabelRequest struct {
-	Id string `json:"id"`
+	Id                   string `json:"id"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ServiceLabelRequest ServiceLabelRequest
@@ -80,6 +80,11 @@ func (o ServiceLabelRequest) MarshalJSON() ([]byte, error) {
 func (o ServiceLabelRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -107,15 +112,20 @@ func (o *ServiceLabelRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varServiceLabelRequest := _ServiceLabelRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varServiceLabelRequest)
+	err = json.Unmarshal(data, &varServiceLabelRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ServiceLabelRequest(varServiceLabelRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

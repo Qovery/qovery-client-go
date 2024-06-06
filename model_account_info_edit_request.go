@@ -21,8 +21,11 @@ var _ MappedNullable = &AccountInfoEditRequest{}
 // AccountInfoEditRequest struct for AccountInfoEditRequest
 type AccountInfoEditRequest struct {
 	// The email to be used for official Qovery communications
-	CommunicationEmail *string `json:"communication_email,omitempty"`
+	CommunicationEmail   *string `json:"communication_email,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _AccountInfoEditRequest AccountInfoEditRequest
 
 // NewAccountInfoEditRequest instantiates a new AccountInfoEditRequest object
 // This constructor will assign default values to properties that have it defined,
@@ -86,7 +89,33 @@ func (o AccountInfoEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CommunicationEmail) {
 		toSerialize["communication_email"] = o.CommunicationEmail
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *AccountInfoEditRequest) UnmarshalJSON(data []byte) (err error) {
+	varAccountInfoEditRequest := _AccountInfoEditRequest{}
+
+	err = json.Unmarshal(data, &varAccountInfoEditRequest)
+
+	if err != nil {
+		return err
+	}
+
+	*o = AccountInfoEditRequest(varAccountInfoEditRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "communication_email")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableAccountInfoEditRequest struct {

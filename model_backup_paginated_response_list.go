@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &BackupPaginatedResponseList{}
 
 // BackupPaginatedResponseList struct for BackupPaginatedResponseList
 type BackupPaginatedResponseList struct {
-	Page     float32  `json:"page"`
-	PageSize float32  `json:"page_size"`
-	Results  []Backup `json:"results,omitempty"`
+	Page                 float32  `json:"page"`
+	PageSize             float32  `json:"page_size"`
+	Results              []Backup `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _BackupPaginatedResponseList BackupPaginatedResponseList
@@ -143,6 +143,11 @@ func (o BackupPaginatedResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *BackupPaginatedResponseList) UnmarshalJSON(data []byte) (err error) {
 
 	varBackupPaginatedResponseList := _BackupPaginatedResponseList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varBackupPaginatedResponseList)
+	err = json.Unmarshal(data, &varBackupPaginatedResponseList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = BackupPaginatedResponseList(varBackupPaginatedResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

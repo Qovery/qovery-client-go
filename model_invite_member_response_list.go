@@ -20,8 +20,11 @@ var _ MappedNullable = &InviteMemberResponseList{}
 
 // InviteMemberResponseList struct for InviteMemberResponseList
 type InviteMemberResponseList struct {
-	Results []InviteMember `json:"results,omitempty"`
+	Results              []InviteMember `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _InviteMemberResponseList InviteMemberResponseList
 
 // NewInviteMemberResponseList instantiates a new InviteMemberResponseList object
 // This constructor will assign default values to properties that have it defined,
@@ -85,7 +88,33 @@ func (o InviteMemberResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *InviteMemberResponseList) UnmarshalJSON(data []byte) (err error) {
+	varInviteMemberResponseList := _InviteMemberResponseList{}
+
+	err = json.Unmarshal(data, &varInviteMemberResponseList)
+
+	if err != nil {
+		return err
+	}
+
+	*o = InviteMemberResponseList(varInviteMemberResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableInviteMemberResponseList struct {

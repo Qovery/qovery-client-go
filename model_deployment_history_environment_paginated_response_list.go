@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &DeploymentHistoryEnvironmentPaginatedResponseList{}
 
 // DeploymentHistoryEnvironmentPaginatedResponseList struct for DeploymentHistoryEnvironmentPaginatedResponseList
 type DeploymentHistoryEnvironmentPaginatedResponseList struct {
-	Page     float32                        `json:"page"`
-	PageSize float32                        `json:"page_size"`
-	Results  []DeploymentHistoryEnvironment `json:"results,omitempty"`
+	Page                 float32                        `json:"page"`
+	PageSize             float32                        `json:"page_size"`
+	Results              []DeploymentHistoryEnvironment `json:"results,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryEnvironmentPaginatedResponseList DeploymentHistoryEnvironmentPaginatedResponseList
@@ -143,6 +143,11 @@ func (o DeploymentHistoryEnvironmentPaginatedResponseList) ToMap() (map[string]i
 	if !IsNil(o.Results) {
 		toSerialize["results"] = o.Results
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseList) UnmarshalJSON(data [
 
 	varDeploymentHistoryEnvironmentPaginatedResponseList := _DeploymentHistoryEnvironmentPaginatedResponseList{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryEnvironmentPaginatedResponseList)
+	err = json.Unmarshal(data, &varDeploymentHistoryEnvironmentPaginatedResponseList)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryEnvironmentPaginatedResponseList(varDeploymentHistoryEnvironmentPaginatedResponseList)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "page")
+		delete(additionalProperties, "page_size")
+		delete(additionalProperties, "results")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

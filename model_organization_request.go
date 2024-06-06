@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -23,14 +22,15 @@ var _ MappedNullable = &OrganizationRequest{}
 // OrganizationRequest struct for OrganizationRequest
 type OrganizationRequest struct {
 	// name is case insensitive
-	Name        string         `json:"name"`
-	Description NullableString `json:"description,omitempty"`
-	Plan        PlanEnum       `json:"plan"`
-	WebsiteUrl  NullableString `json:"website_url,omitempty"`
-	Repository  NullableString `json:"repository,omitempty"`
-	LogoUrl     NullableString `json:"logo_url,omitempty"`
-	IconUrl     NullableString `json:"icon_url,omitempty"`
-	AdminEmails []string       `json:"admin_emails,omitempty"`
+	Name                 string         `json:"name"`
+	Description          NullableString `json:"description,omitempty"`
+	Plan                 PlanEnum       `json:"plan"`
+	WebsiteUrl           NullableString `json:"website_url,omitempty"`
+	Repository           NullableString `json:"repository,omitempty"`
+	LogoUrl              NullableString `json:"logo_url,omitempty"`
+	IconUrl              NullableString `json:"icon_url,omitempty"`
+	AdminEmails          []string       `json:"admin_emails,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationRequest OrganizationRequest
@@ -380,6 +380,11 @@ func (o OrganizationRequest) ToMap() (map[string]interface{}, error) {
 	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -408,15 +413,27 @@ func (o *OrganizationRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationRequest := _OrganizationRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationRequest)
+	err = json.Unmarshal(data, &varOrganizationRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationRequest(varOrganizationRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "plan")
+		delete(additionalProperties, "website_url")
+		delete(additionalProperties, "repository")
+		delete(additionalProperties, "logo_url")
+		delete(additionalProperties, "icon_url")
+		delete(additionalProperties, "admin_emails")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,13 +22,14 @@ var _ MappedNullable = &OrganizationApiToken{}
 
 // OrganizationApiToken struct for OrganizationApiToken
 type OrganizationApiToken struct {
-	Id          string     `json:"id"`
-	CreatedAt   time.Time  `json:"created_at"`
-	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
-	Name        *string    `json:"name,omitempty"`
-	Description *string    `json:"description,omitempty"`
-	RoleName    *string    `json:"role_name,omitempty"`
-	RoleId      *string    `json:"role_id,omitempty"`
+	Id                   string     `json:"id"`
+	CreatedAt            time.Time  `json:"created_at"`
+	UpdatedAt            *time.Time `json:"updated_at,omitempty"`
+	Name                 *string    `json:"name,omitempty"`
+	Description          *string    `json:"description,omitempty"`
+	RoleName             *string    `json:"role_name,omitempty"`
+	RoleId               *string    `json:"role_id,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _OrganizationApiToken OrganizationApiToken
@@ -288,6 +288,11 @@ func (o OrganizationApiToken) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleId) {
 		toSerialize["role_id"] = o.RoleId
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -316,15 +321,26 @@ func (o *OrganizationApiToken) UnmarshalJSON(data []byte) (err error) {
 
 	varOrganizationApiToken := _OrganizationApiToken{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varOrganizationApiToken)
+	err = json.Unmarshal(data, &varOrganizationApiToken)
 
 	if err != nil {
 		return err
 	}
 
 	*o = OrganizationApiToken(varOrganizationApiToken)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "role_name")
+		delete(additionalProperties, "role_id")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

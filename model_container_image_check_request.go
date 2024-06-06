@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -22,9 +21,10 @@ var _ MappedNullable = &ContainerImageCheckRequest{}
 
 // ContainerImageCheckRequest struct for ContainerImageCheckRequest
 type ContainerImageCheckRequest struct {
-	RegistryId *string `json:"registry_id,omitempty"`
-	ImageName  string  `json:"image_name"`
-	Tag        string  `json:"tag"`
+	RegistryId           *string `json:"registry_id,omitempty"`
+	ImageName            string  `json:"image_name"`
+	Tag                  string  `json:"tag"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerImageCheckRequest ContainerImageCheckRequest
@@ -143,6 +143,11 @@ func (o ContainerImageCheckRequest) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["tag"] = o.Tag
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -171,15 +176,22 @@ func (o *ContainerImageCheckRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerImageCheckRequest := _ContainerImageCheckRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerImageCheckRequest)
+	err = json.Unmarshal(data, &varContainerImageCheckRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerImageCheckRequest(varContainerImageCheckRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "registry_id")
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

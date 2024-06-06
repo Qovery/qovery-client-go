@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -27,10 +26,11 @@ type DeploymentHistoryHelmResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name of the helm
-	Name       *string                                              `json:"name,omitempty"`
-	Status     *StateEnum                                           `json:"status,omitempty"`
-	Commit     NullableCommit                                       `json:"commit,omitempty"`
-	Repository NullableDeploymentHistoryHelmResponseAllOfRepository `json:"repository,omitempty"`
+	Name                 *string                                              `json:"name,omitempty"`
+	Status               *StateEnum                                           `json:"status,omitempty"`
+	Commit               NullableCommit                                       `json:"commit,omitempty"`
+	Repository           NullableDeploymentHistoryHelmResponseAllOfRepository `json:"repository,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DeploymentHistoryHelmResponse DeploymentHistoryHelmResponse
@@ -311,6 +311,11 @@ func (o DeploymentHistoryHelmResponse) ToMap() (map[string]interface{}, error) {
 	if o.Repository.IsSet() {
 		toSerialize["repository"] = o.Repository.Get()
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -339,15 +344,26 @@ func (o *DeploymentHistoryHelmResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varDeploymentHistoryHelmResponse := _DeploymentHistoryHelmResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDeploymentHistoryHelmResponse)
+	err = json.Unmarshal(data, &varDeploymentHistoryHelmResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DeploymentHistoryHelmResponse(varDeploymentHistoryHelmResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "commit")
+		delete(additionalProperties, "repository")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

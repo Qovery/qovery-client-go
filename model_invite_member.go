@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"time"
@@ -23,18 +22,19 @@ var _ MappedNullable = &InviteMember{}
 
 // InviteMember struct for InviteMember
 type InviteMember struct {
-	Id               string               `json:"id"`
-	CreatedAt        time.Time            `json:"created_at"`
-	UpdatedAt        *time.Time           `json:"updated_at,omitempty"`
-	Email            string               `json:"email"`
-	Role             InviteMemberRoleEnum `json:"role"`
-	InvitationLink   string               `json:"invitation_link"`
-	InvitationStatus InviteStatusEnum     `json:"invitation_status"`
-	OrganizationName *string              `json:"organization_name,omitempty"`
-	Inviter          string               `json:"inviter"`
-	LogoUrl          *string              `json:"logo_url,omitempty"`
-	RoleId           *string              `json:"role_id,omitempty"`
-	RoleName         *string              `json:"role_name,omitempty"`
+	Id                   string               `json:"id"`
+	CreatedAt            time.Time            `json:"created_at"`
+	UpdatedAt            *time.Time           `json:"updated_at,omitempty"`
+	Email                string               `json:"email"`
+	Role                 InviteMemberRoleEnum `json:"role"`
+	InvitationLink       string               `json:"invitation_link"`
+	InvitationStatus     InviteStatusEnum     `json:"invitation_status"`
+	OrganizationName     *string              `json:"organization_name,omitempty"`
+	Inviter              string               `json:"inviter"`
+	LogoUrl              *string              `json:"logo_url,omitempty"`
+	RoleId               *string              `json:"role_id,omitempty"`
+	RoleName             *string              `json:"role_name,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _InviteMember InviteMember
@@ -423,6 +423,11 @@ func (o InviteMember) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RoleName) {
 		toSerialize["role_name"] = o.RoleName
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -456,15 +461,31 @@ func (o *InviteMember) UnmarshalJSON(data []byte) (err error) {
 
 	varInviteMember := _InviteMember{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varInviteMember)
+	err = json.Unmarshal(data, &varInviteMember)
 
 	if err != nil {
 		return err
 	}
 
 	*o = InviteMember(varInviteMember)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
+		delete(additionalProperties, "created_at")
+		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "email")
+		delete(additionalProperties, "role")
+		delete(additionalProperties, "invitation_link")
+		delete(additionalProperties, "invitation_status")
+		delete(additionalProperties, "organization_name")
+		delete(additionalProperties, "inviter")
+		delete(additionalProperties, "logo_url")
+		delete(additionalProperties, "role_id")
+		delete(additionalProperties, "role_name")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

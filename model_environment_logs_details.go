@@ -20,12 +20,15 @@ var _ MappedNullable = &EnvironmentLogsDetails{}
 
 // EnvironmentLogsDetails struct for EnvironmentLogsDetails
 type EnvironmentLogsDetails struct {
-	OrganizationId *string                            `json:"organization_id,omitempty"`
-	ClusterId      *string                            `json:"cluster_id,omitempty"`
-	ExecutionId    *string                            `json:"execution_id,omitempty"`
-	Transmitter    *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
-	Stage          *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
+	OrganizationId       *string                            `json:"organization_id,omitempty"`
+	ClusterId            *string                            `json:"cluster_id,omitempty"`
+	ExecutionId          *string                            `json:"execution_id,omitempty"`
+	Transmitter          *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
+	Stage                *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _EnvironmentLogsDetails EnvironmentLogsDetails
 
 // NewEnvironmentLogsDetails instantiates a new EnvironmentLogsDetails object
 // This constructor will assign default values to properties that have it defined,
@@ -229,7 +232,37 @@ func (o EnvironmentLogsDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *EnvironmentLogsDetails) UnmarshalJSON(data []byte) (err error) {
+	varEnvironmentLogsDetails := _EnvironmentLogsDetails{}
+
+	err = json.Unmarshal(data, &varEnvironmentLogsDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = EnvironmentLogsDetails(varEnvironmentLogsDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "organization_id")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "execution_id")
+		delete(additionalProperties, "transmitter")
+		delete(additionalProperties, "stage")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableEnvironmentLogsDetails struct {

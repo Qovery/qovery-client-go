@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -26,7 +25,8 @@ type DockerfileCheckResponse struct {
 	// All ARG variable declared in the Dockerfile
 	Arg []string `json:"arg,omitempty"`
 	// All image repositories we found declared in the Dockerfile
-	Repositories []string `json:"repositories,omitempty"`
+	Repositories         []string `json:"repositories,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _DockerfileCheckResponse DockerfileCheckResponse
@@ -154,6 +154,11 @@ func (o DockerfileCheckResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Repositories) {
 		toSerialize["repositories"] = o.Repositories
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -181,15 +186,22 @@ func (o *DockerfileCheckResponse) UnmarshalJSON(data []byte) (err error) {
 
 	varDockerfileCheckResponse := _DockerfileCheckResponse{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varDockerfileCheckResponse)
+	err = json.Unmarshal(data, &varDockerfileCheckResponse)
 
 	if err != nil {
 		return err
 	}
 
 	*o = DockerfileCheckResponse(varDockerfileCheckResponse)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "dockerfile_path")
+		delete(additionalProperties, "arg")
+		delete(additionalProperties, "repositories")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }

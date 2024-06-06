@@ -40,7 +40,10 @@ type JobAdvancedSettings struct {
 	SecurityAutomountServiceAccountToken *bool `json:"security.automount_service_account_token,omitempty"`
 	// Mounts the container's root filesystem as read-only
 	SecurityReadOnlyRootFilesystem *bool `json:"security.read_only_root_filesystem,omitempty"`
+	AdditionalProperties           map[string]interface{}
 }
+
+type _JobAdvancedSettings JobAdvancedSettings
 
 // NewJobAdvancedSettings instantiates a new JobAdvancedSettings object
 // This constructor will assign default values to properties that have it defined,
@@ -500,7 +503,44 @@ func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecurityReadOnlyRootFilesystem) {
 		toSerialize["security.read_only_root_filesystem"] = o.SecurityReadOnlyRootFilesystem
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *JobAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
+	varJobAdvancedSettings := _JobAdvancedSettings{}
+
+	err = json.Unmarshal(data, &varJobAdvancedSettings)
+
+	if err != nil {
+		return err
+	}
+
+	*o = JobAdvancedSettings(varJobAdvancedSettings)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "build.timeout_max_sec")
+		delete(additionalProperties, "build.cpu_max_in_milli")
+		delete(additionalProperties, "build.ram_max_in_gib")
+		delete(additionalProperties, "deployment.termination_grace_period_seconds")
+		delete(additionalProperties, "deployment.affinity.node.required")
+		delete(additionalProperties, "job.delete_ttl_seconds_after_finished")
+		delete(additionalProperties, "cronjob.concurrency_policy")
+		delete(additionalProperties, "cronjob.failed_jobs_history_limit")
+		delete(additionalProperties, "cronjob.success_jobs_history_limit")
+		delete(additionalProperties, "security.service_account_name")
+		delete(additionalProperties, "security.automount_service_account_token")
+		delete(additionalProperties, "security.read_only_root_filesystem")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableJobAdvancedSettings struct {

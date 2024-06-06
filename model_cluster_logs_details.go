@@ -21,10 +21,13 @@ var _ MappedNullable = &ClusterLogsDetails{}
 // ClusterLogsDetails Present only for `info`, `warning` and `debug` logs
 type ClusterLogsDetails struct {
 	// cloud provider used
-	ProviderKind *string                                  `json:"provider_kind,omitempty"`
-	Region       *string                                  `json:"region,omitempty"`
-	Transmitter  *ClusterLogsErrorEventDetailsTransmitter `json:"transmitter,omitempty"`
+	ProviderKind         *string                                  `json:"provider_kind,omitempty"`
+	Region               *string                                  `json:"region,omitempty"`
+	Transmitter          *ClusterLogsErrorEventDetailsTransmitter `json:"transmitter,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogsDetails ClusterLogsDetails
 
 // NewClusterLogsDetails instantiates a new ClusterLogsDetails object
 // This constructor will assign default values to properties that have it defined,
@@ -158,7 +161,35 @@ func (o ClusterLogsDetails) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Transmitter) {
 		toSerialize["transmitter"] = o.Transmitter
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogsDetails) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogsDetails := _ClusterLogsDetails{}
+
+	err = json.Unmarshal(data, &varClusterLogsDetails)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogsDetails(varClusterLogsDetails)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "provider_kind")
+		delete(additionalProperties, "region")
+		delete(additionalProperties, "transmitter")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogsDetails struct {

@@ -26,11 +26,14 @@ type ClusterLogs struct {
 	// log date creation
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 	// log step
-	Step    *string             `json:"step,omitempty"`
-	Message *ClusterLogsMessage `json:"message,omitempty"`
-	Error   *ClusterLogsError   `json:"error,omitempty"`
-	Details *ClusterLogsDetails `json:"details,omitempty"`
+	Step                 *string             `json:"step,omitempty"`
+	Message              *ClusterLogsMessage `json:"message,omitempty"`
+	Error                *ClusterLogsError   `json:"error,omitempty"`
+	Details              *ClusterLogsDetails `json:"details,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
+
+type _ClusterLogs ClusterLogs
 
 // NewClusterLogs instantiates a new ClusterLogs object
 // This constructor will assign default values to properties that have it defined,
@@ -269,7 +272,38 @@ func (o ClusterLogs) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Details) {
 		toSerialize["details"] = o.Details
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
+}
+
+func (o *ClusterLogs) UnmarshalJSON(data []byte) (err error) {
+	varClusterLogs := _ClusterLogs{}
+
+	err = json.Unmarshal(data, &varClusterLogs)
+
+	if err != nil {
+		return err
+	}
+
+	*o = ClusterLogs(varClusterLogs)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "timestamp")
+		delete(additionalProperties, "step")
+		delete(additionalProperties, "message")
+		delete(additionalProperties, "error")
+		delete(additionalProperties, "details")
+		o.AdditionalProperties = additionalProperties
+	}
+
+	return err
 }
 
 type NullableClusterLogs struct {

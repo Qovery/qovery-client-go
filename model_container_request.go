@@ -12,7 +12,6 @@ Contact: support+api+documentation@qovery.com
 package qovery
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 )
@@ -49,9 +48,10 @@ type ContainerRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
-	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ContainerRequest ContainerRequest
@@ -695,6 +695,11 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+
+	for key, value := range o.AdditionalProperties {
+		toSerialize[key] = value
+	}
+
 	return toSerialize, nil
 }
 
@@ -726,15 +731,37 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 
 	varContainerRequest := _ContainerRequest{}
 
-	decoder := json.NewDecoder(bytes.NewReader(data))
-	decoder.DisallowUnknownFields()
-	err = decoder.Decode(&varContainerRequest)
+	err = json.Unmarshal(data, &varContainerRequest)
 
 	if err != nil {
 		return err
 	}
 
 	*o = ContainerRequest(varContainerRequest)
+
+	additionalProperties := make(map[string]interface{})
+
+	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "storage")
+		delete(additionalProperties, "ports")
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "registry_id")
+		delete(additionalProperties, "image_name")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "arguments")
+		delete(additionalProperties, "entrypoint")
+		delete(additionalProperties, "cpu")
+		delete(additionalProperties, "memory")
+		delete(additionalProperties, "min_running_instances")
+		delete(additionalProperties, "max_running_instances")
+		delete(additionalProperties, "healthchecks")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "annotations_groups")
+		delete(additionalProperties, "labels_groups")
+		o.AdditionalProperties = additionalProperties
+	}
 
 	return err
 }
