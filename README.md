@@ -798,6 +798,7 @@ Class | Method | HTTP request | Description
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)
  - [OnPremiseCredentialsRequest](docs/OnPremiseCredentialsRequest.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationAllOfOrganizationPlan](docs/OrganizationAllOfOrganizationPlan.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
  - [OrganizationAnnotationsGroupCreateRequest](docs/OrganizationAnnotationsGroupCreateRequest.md)

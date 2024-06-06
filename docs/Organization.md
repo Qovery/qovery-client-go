@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
 **AdminEmails** | Pointer to **[]string** |  | [optional] 
 **Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
+**OrganizationPlan** | Pointer to [**OrganizationAllOfOrganizationPlan**](OrganizationAllOfOrganizationPlan.md) |  | [optional] 
 
 ## Methods
 
@@ -375,6 +376,31 @@ SetOwner sets Owner field to given value.
 `func (o *Organization) HasOwner() bool`
 
 HasOwner returns a boolean if a field has been set.
+
+### GetOrganizationPlan
+
+`func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan`
+
+GetOrganizationPlan returns the OrganizationPlan field if non-nil, zero value otherwise.
+
+### GetOrganizationPlanOk
+
+`func (o *Organization) GetOrganizationPlanOk() (*OrganizationAllOfOrganizationPlan, bool)`
+
+GetOrganizationPlanOk returns a tuple with the OrganizationPlan field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationPlan
+
+`func (o *Organization) SetOrganizationPlan(v OrganizationAllOfOrganizationPlan)`
+
+SetOrganizationPlan sets OrganizationPlan field to given value.
+
+### HasOrganizationPlan
+
+`func (o *Organization) HasOrganizationPlan() bool`
+
+HasOrganizationPlan returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

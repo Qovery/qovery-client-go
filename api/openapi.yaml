@@ -24326,20 +24326,27 @@ components:
             format: uuid
             type: string
         type: object
+      - properties:
+          organization_plan:
+            $ref: '#/components/schemas/Organization_allOf_organization_plan'
+        type: object
       example:
         icon_url: icon_url
         owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        logo_url: logo_url
+        organization_plan:
+          plan: null
+          audit_logs_retention_in_days: 0.8008281904610115
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        repository: repository
         admin_emails:
         - admin_emails
         - admin_emails
         updated_at: 2000-01-23T04:56:07.000+00:00
         website_url: website_url
-        logo_url: logo_url
         name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
-        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        repository: repository
         plan: FREE
     OrganizationApiToken:
       allOf:
@@ -24807,31 +24814,37 @@ components:
         results:
         - icon_url: icon_url
           owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          logo_url: logo_url
+          organization_plan:
+            plan: null
+            audit_logs_retention_in_days: 0.8008281904610115
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          repository: repository
           admin_emails:
           - admin_emails
           - admin_emails
           updated_at: 2000-01-23T04:56:07.000+00:00
           website_url: website_url
-          logo_url: logo_url
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          repository: repository
           plan: FREE
         - icon_url: icon_url
           owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          logo_url: logo_url
+          organization_plan:
+            plan: null
+            audit_logs_retention_in_days: 0.8008281904610115
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          repository: repository
           admin_emails:
           - admin_emails
           - admin_emails
           updated_at: 2000-01-23T04:56:07.000+00:00
           website_url: website_url
-          logo_url: logo_url
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          repository: repository
           plan: FREE
       properties:
         results:
@@ -28861,6 +28874,17 @@ components:
       oneOf:
       - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf'
       - $ref: '#/components/schemas/HelmRequest_allOf_source_oneOf_1'
+    Organization_allOf_organization_plan:
+      example:
+        plan: null
+        audit_logs_retention_in_days: 0.8008281904610115
+      properties:
+        plan:
+          $ref: '#/components/schemas/PlanEnum'
+        audit_logs_retention_in_days:
+          description: audit logs maximum period available in days
+          type: number
+      type: object
     OrganizationCustomRoleUpdateRequest_cluster_permissions_inner:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

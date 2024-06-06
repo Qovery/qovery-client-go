@@ -35,7 +35,8 @@ type Organization struct {
 	IconUrl     NullableString `json:"icon_url,omitempty"`
 	AdminEmails []string       `json:"admin_emails,omitempty"`
 	// uuid of the user owning the organization
-	Owner                *string `json:"owner,omitempty"`
+	Owner                *string                            `json:"owner,omitempty"`
+	OrganizationPlan     *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -470,6 +471,38 @@ func (o *Organization) SetOwner(v string) {
 	o.Owner = &v
 }
 
+// GetOrganizationPlan returns the OrganizationPlan field value if set, zero value otherwise.
+func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan {
+	if o == nil || IsNil(o.OrganizationPlan) {
+		var ret OrganizationAllOfOrganizationPlan
+		return ret
+	}
+	return *o.OrganizationPlan
+}
+
+// GetOrganizationPlanOk returns a tuple with the OrganizationPlan field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Organization) GetOrganizationPlanOk() (*OrganizationAllOfOrganizationPlan, bool) {
+	if o == nil || IsNil(o.OrganizationPlan) {
+		return nil, false
+	}
+	return o.OrganizationPlan, true
+}
+
+// HasOrganizationPlan returns a boolean if a field has been set.
+func (o *Organization) HasOrganizationPlan() bool {
+	if o != nil && !IsNil(o.OrganizationPlan) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationPlan gets a reference to the given OrganizationAllOfOrganizationPlan and assigns it to the OrganizationPlan field.
+func (o *Organization) SetOrganizationPlan(v OrganizationAllOfOrganizationPlan) {
+	o.OrganizationPlan = &v
+}
+
 func (o Organization) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -507,6 +540,9 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
+	}
+	if !IsNil(o.OrganizationPlan) {
+		toSerialize["organization_plan"] = o.OrganizationPlan
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -566,6 +602,7 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_url")
 		delete(additionalProperties, "admin_emails")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "organization_plan")
 		o.AdditionalProperties = additionalProperties
 	}
 
