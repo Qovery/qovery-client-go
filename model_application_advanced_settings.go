@@ -28,6 +28,10 @@ type ApplicationAdvancedSettings struct {
 	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
 	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
 	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
+	// Allows you to run a command after the application is started. The command should be a shell command or script.
+	DeploymentLifecyclePostStartExecCommand []string `json:"deployment.lifecycle.post_start_exec_command,omitempty"`
+	// Allows you to run a command before the application is stopped. The command should be a shell command or script. Qovery requires the sh shell by default and sets a sleep of 15 seconds to let Nginx update its config. Avoiding error codes returned during a rolling update.
+	DeploymentLifecyclePreStopExecCommand []string `json:"deployment.lifecycle.pre_stop_exec_command,omitempty"`
 	// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
 	DeploymentUpdateStrategyType *string `json:"deployment.update_strategy.type,omitempty"`
 	// Define the percentage of a maximum number of pods that can be unavailable during the update process
@@ -230,6 +234,70 @@ func (o *ApplicationAdvancedSettings) HasDeploymentAntiaffinityPod() bool {
 // SetDeploymentAntiaffinityPod gets a reference to the given string and assigns it to the DeploymentAntiaffinityPod field.
 func (o *ApplicationAdvancedSettings) SetDeploymentAntiaffinityPod(v string) {
 	o.DeploymentAntiaffinityPod = &v
+}
+
+// GetDeploymentLifecyclePostStartExecCommand returns the DeploymentLifecyclePostStartExecCommand field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePostStartExecCommand() []string {
+	if o == nil || IsNil(o.DeploymentLifecyclePostStartExecCommand) {
+		var ret []string
+		return ret
+	}
+	return o.DeploymentLifecyclePostStartExecCommand
+}
+
+// GetDeploymentLifecyclePostStartExecCommandOk returns a tuple with the DeploymentLifecyclePostStartExecCommand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePostStartExecCommandOk() ([]string, bool) {
+	if o == nil || IsNil(o.DeploymentLifecyclePostStartExecCommand) {
+		return nil, false
+	}
+	return o.DeploymentLifecyclePostStartExecCommand, true
+}
+
+// HasDeploymentLifecyclePostStartExecCommand returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasDeploymentLifecyclePostStartExecCommand() bool {
+	if o != nil && !IsNil(o.DeploymentLifecyclePostStartExecCommand) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentLifecyclePostStartExecCommand gets a reference to the given []string and assigns it to the DeploymentLifecyclePostStartExecCommand field.
+func (o *ApplicationAdvancedSettings) SetDeploymentLifecyclePostStartExecCommand(v []string) {
+	o.DeploymentLifecyclePostStartExecCommand = v
+}
+
+// GetDeploymentLifecyclePreStopExecCommand returns the DeploymentLifecyclePreStopExecCommand field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePreStopExecCommand() []string {
+	if o == nil || IsNil(o.DeploymentLifecyclePreStopExecCommand) {
+		var ret []string
+		return ret
+	}
+	return o.DeploymentLifecyclePreStopExecCommand
+}
+
+// GetDeploymentLifecyclePreStopExecCommandOk returns a tuple with the DeploymentLifecyclePreStopExecCommand field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePreStopExecCommandOk() ([]string, bool) {
+	if o == nil || IsNil(o.DeploymentLifecyclePreStopExecCommand) {
+		return nil, false
+	}
+	return o.DeploymentLifecyclePreStopExecCommand, true
+}
+
+// HasDeploymentLifecyclePreStopExecCommand returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasDeploymentLifecyclePreStopExecCommand() bool {
+	if o != nil && !IsNil(o.DeploymentLifecyclePreStopExecCommand) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentLifecyclePreStopExecCommand gets a reference to the given []string and assigns it to the DeploymentLifecyclePreStopExecCommand field.
+func (o *ApplicationAdvancedSettings) SetDeploymentLifecyclePreStopExecCommand(v []string) {
+	o.DeploymentLifecyclePreStopExecCommand = v
 }
 
 // GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field value if set, zero value otherwise.
@@ -1214,6 +1282,12 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeploymentAntiaffinityPod) {
 		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
 	}
+	if !IsNil(o.DeploymentLifecyclePostStartExecCommand) {
+		toSerialize["deployment.lifecycle.post_start_exec_command"] = o.DeploymentLifecyclePostStartExecCommand
+	}
+	if !IsNil(o.DeploymentLifecyclePreStopExecCommand) {
+		toSerialize["deployment.lifecycle.pre_stop_exec_command"] = o.DeploymentLifecyclePreStopExecCommand
+	}
 	if !IsNil(o.DeploymentUpdateStrategyType) {
 		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType
 	}
@@ -1330,6 +1404,8 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "deployment.antiaffinity.pod")
+		delete(additionalProperties, "deployment.lifecycle.post_start_exec_command")
+		delete(additionalProperties, "deployment.lifecycle.pre_stop_exec_command")
 		delete(additionalProperties, "deployment.update_strategy.type")
 		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_unavailable_percent")
 		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_surge_percent")

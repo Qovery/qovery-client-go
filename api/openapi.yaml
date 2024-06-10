@@ -15026,6 +15026,209 @@ components:
       - scope
       - variable_type
       type: object
+    ApplicationAdvancedSettings:
+      example:
+        deployment.affinity.node.required:
+          key: deployment.affinity.node.required
+        network.ingress.send_timeout_seconds: 4
+        deployment.lifecycle.pre_stop_exec_command:
+        - deployment.lifecycle.pre_stop_exec_command
+        - deployment.lifecycle.pre_stop_exec_command
+        deployment.antiaffinity.pod: Preferred
+        network.ingress.proxy_send_timeout_seconds: 1
+        deployment.lifecycle.post_start_exec_command:
+        - deployment.lifecycle.post_start_exec_command
+        - deployment.lifecycle.post_start_exec_command
+        deployment.update_strategy.type: RollingUpdate
+        deployment.update_strategy.rolling_update.max_surge_percent: 1
+        network.ingress.keepalive_time_seconds: 3
+        deployment.termination_grace_period_seconds: 0
+        network.ingress.grpc_send_timeout_seconds: 1
+        network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        build.cpu_max_in_milli: 5
+        deployment.custom_domain_check_enabled: true
+        network.ingress.enable_cors: true
+        network.ingress.enable_sticky_session: true
+        security.automount_service_account_token: true
+        network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
+        build.ram_max_in_gib: 2
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
+        network.ingress.proxy_body_size_mb: 7
+        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
+        hpa.cpu.average_utilization_percent: 7
+        network.ingress.keepalive_timeout_seconds: 2
+        network.ingress.proxy_connect_timeout_seconds: 7
+        network.ingress.proxy_buffering: network.ingress.proxy_buffering
+        network.ingress.proxy_buffer_size_kb: 9
+        network.ingress.proxy_read_timeout_seconds: 1
+        build.timeout_max_sec: 5
+        network.ingress.grpc_read_timeout_seconds: 6
+        security.read_only_root_filesystem: true
+        deployment.update_strategy.rolling_update.max_unavailable_percent: 6
+        security.service_account_name: security.service_account_name
+        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
+        network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
+          :\"nosniff\"}"
+        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
+      properties:
+        deployment.custom_domain_check_enabled:
+          description: disable custom domain check when deploying an application
+          type: boolean
+        deployment.termination_grace_period_seconds:
+          description: define how long in seconds an application is supposed to be
+            stopped gracefully
+          type: integer
+        deployment.affinity.node.required:
+          additionalProperties:
+            type: string
+          description: Set pod placement on specific Kubernetes nodes labels
+          type: object
+        deployment.antiaffinity.pod:
+          description: |
+            Define how you want pods affinity to behave:
+            * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
+            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+          enum:
+          - Preferred
+          - Requirred
+          type: string
+        deployment.lifecycle.post_start_exec_command:
+          description: Allows you to run a command after the application is started.
+            The command should be a shell command or script.
+          items:
+            type: string
+            x-stoplight:
+              id: 8zq97yrgn1iom
+          type: array
+          x-stoplight:
+            id: ucpjmpaclq1wl
+        deployment.lifecycle.pre_stop_exec_command:
+          description: Allows you to run a command before the application is stopped.
+            The command should be a shell command or script. Qovery requires the sh
+            shell by default and sets a sleep of 15 seconds to let Nginx update its
+            config. Avoiding error codes returned during a rolling update.
+          items:
+            type: string
+            x-stoplight:
+              id: oomiyuna5h91g
+          type: array
+          x-stoplight:
+            id: skk1wo5xhz5mc
+        deployment.update_strategy.type:
+          description: |
+            * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
+            * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
+          enum:
+          - RollingUpdate
+          - Recreate
+          type: string
+        deployment.update_strategy.rolling_update.max_unavailable_percent:
+          description: Define the percentage of a maximum number of pods that can
+            be unavailable during the update process
+          type: integer
+        deployment.update_strategy.rolling_update.max_surge_percent:
+          description: Define the percentage of the maximum number of pods that can
+            be created over the desired number of pods
+          type: integer
+        build.timeout_max_sec:
+          type: integer
+        build.cpu_max_in_milli:
+          description: define the max cpu resources (in milli)
+          type: integer
+        build.ram_max_in_gib:
+          description: define the max ram resources (in gib)
+          type: integer
+        network.ingress.proxy_body_size_mb:
+          type: integer
+        network.ingress.enable_cors:
+          type: boolean
+        network.ingress.cors_allow_origin:
+          type: string
+        network.ingress.cors_allow_methods:
+          type: string
+        network.ingress.cors_allow_headers:
+          type: string
+        network.ingress.proxy_buffer_size_kb:
+          description: header buffer size used while reading response header from
+            upstream
+          type: integer
+        network.ingress.keepalive_time_seconds:
+          description: Limits the maximum time (in seconds) during which requests
+            can be processed through one keepalive connection
+          type: integer
+        network.ingress.keepalive_timeout_seconds:
+          description: Sets a timeout (in seconds) during which an idle keepalive
+            connection to an upstream server will stay open.
+          type: integer
+        network.ingress.send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a response to
+            the client
+          type: integer
+        network.ingress.proxy_connect_timeout_seconds:
+          description: Sets a timeout (in seconds) for establishing a connection to
+            a proxied server
+          type: integer
+        network.ingress.proxy_send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            proxied server
+          type: integer
+        network.ingress.proxy_read_timeout_seconds:
+          description: Sets a timeout (in seconds) for reading a response from the
+            proxied server
+          type: integer
+        network.ingress.proxy_buffering:
+          description: Allows to enable or disable nginx `proxy-request-buffering`
+          type: string
+        network.ingress.whitelist_source_range:
+          description: "list of source ranges to allow access to ingress proxy. \n\
+            This property can be used to whitelist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
+            To allow all source ranges, set 0.0.0.0/0.\n"
+          type: string
+        network.ingress.denylist_source_range:
+          description: "list of source ranges to deny access to ingress proxy. \n\
+            This property can be used to blacklist source IP ranges for ingress proxy.\n\
+            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
+          type: string
+        network.ingress.basic_auth_env_var:
+          description: |
+            Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
+          type: string
+        network.ingress.enable_sticky_session:
+          description: |
+            Enable the load balancer to bind a user's session to a specific target.
+            This ensures that all requests from the user during the session are sent to the same target
+          type: boolean
+        network.ingress.grpc_send_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
+        network.ingress.grpc_read_timeout_seconds:
+          description: Sets a timeout (in seconds) for transmitting a request to the
+            grpc server
+          type: integer
+        network.ingress.extra_headers:
+          description: Allows to define response headers
+          example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
+            }"
+          type: string
+        hpa.cpu.average_utilization_percent:
+          description: Percentage value of cpu usage at which point pods should scale
+            up.
+          type: integer
+        security.service_account_name:
+          description: |
+            Allows you to set an existing Kubernetes service account name
+          type: string
+        security.automount_service_account_token:
+          description: |
+            Automount Kubernetes service account token to have access to Kubernetes API from pods
+          type: boolean
+        security.read_only_root_filesystem:
+          description: |
+            Mounts the container's root filesystem as read-only
+          type: boolean
+      type: object
     Application:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -15266,181 +15469,6 @@ components:
         arguments:
         - arguments
         - arguments
-    ApplicationAdvancedSettings:
-      example:
-        deployment.affinity.node.required:
-          key: deployment.affinity.node.required
-        network.ingress.send_timeout_seconds: 4
-        deployment.antiaffinity.pod: Preferred
-        network.ingress.proxy_send_timeout_seconds: 1
-        deployment.update_strategy.type: RollingUpdate
-        deployment.update_strategy.rolling_update.max_surge_percent: 1
-        network.ingress.keepalive_time_seconds: 3
-        deployment.termination_grace_period_seconds: 0
-        network.ingress.grpc_send_timeout_seconds: 1
-        network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        build.cpu_max_in_milli: 5
-        deployment.custom_domain_check_enabled: true
-        network.ingress.enable_cors: true
-        network.ingress.enable_sticky_session: true
-        security.automount_service_account_token: true
-        network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
-        build.ram_max_in_gib: 2
-        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 7
-        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        hpa.cpu.average_utilization_percent: 7
-        network.ingress.keepalive_timeout_seconds: 2
-        network.ingress.proxy_connect_timeout_seconds: 7
-        network.ingress.proxy_buffering: network.ingress.proxy_buffering
-        network.ingress.proxy_buffer_size_kb: 9
-        network.ingress.proxy_read_timeout_seconds: 1
-        build.timeout_max_sec: 5
-        network.ingress.grpc_read_timeout_seconds: 6
-        security.read_only_root_filesystem: true
-        deployment.update_strategy.rolling_update.max_unavailable_percent: 6
-        security.service_account_name: security.service_account_name
-        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
-        network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
-          :\"nosniff\"}"
-        network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
-      properties:
-        deployment.custom_domain_check_enabled:
-          description: disable custom domain check when deploying an application
-          type: boolean
-        deployment.termination_grace_period_seconds:
-          description: define how long in seconds an application is supposed to be
-            stopped gracefully
-          type: integer
-        deployment.affinity.node.required:
-          additionalProperties:
-            type: string
-          description: Set pod placement on specific Kubernetes nodes labels
-          type: object
-        deployment.antiaffinity.pod:
-          description: |
-            Define how you want pods affinity to behave:
-            * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
-            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
-          enum:
-          - Preferred
-          - Requirred
-          type: string
-        deployment.update_strategy.type:
-          description: |
-            * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start
-            * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
-          enum:
-          - RollingUpdate
-          - Recreate
-          type: string
-        deployment.update_strategy.rolling_update.max_unavailable_percent:
-          description: Define the percentage of a maximum number of pods that can
-            be unavailable during the update process
-          type: integer
-        deployment.update_strategy.rolling_update.max_surge_percent:
-          description: Define the percentage of the maximum number of pods that can
-            be created over the desired number of pods
-          type: integer
-        build.timeout_max_sec:
-          type: integer
-        build.cpu_max_in_milli:
-          description: define the max cpu resources (in milli)
-          type: integer
-        build.ram_max_in_gib:
-          description: define the max ram resources (in gib)
-          type: integer
-        network.ingress.proxy_body_size_mb:
-          type: integer
-        network.ingress.enable_cors:
-          type: boolean
-        network.ingress.cors_allow_origin:
-          type: string
-        network.ingress.cors_allow_methods:
-          type: string
-        network.ingress.cors_allow_headers:
-          type: string
-        network.ingress.proxy_buffer_size_kb:
-          description: header buffer size used while reading response header from
-            upstream
-          type: integer
-        network.ingress.keepalive_time_seconds:
-          description: Limits the maximum time (in seconds) during which requests
-            can be processed through one keepalive connection
-          type: integer
-        network.ingress.keepalive_timeout_seconds:
-          description: Sets a timeout (in seconds) during which an idle keepalive
-            connection to an upstream server will stay open.
-          type: integer
-        network.ingress.send_timeout_seconds:
-          description: Sets a timeout (in seconds) for transmitting a response to
-            the client
-          type: integer
-        network.ingress.proxy_connect_timeout_seconds:
-          description: Sets a timeout (in seconds) for establishing a connection to
-            a proxied server
-          type: integer
-        network.ingress.proxy_send_timeout_seconds:
-          description: Sets a timeout (in seconds) for transmitting a request to the
-            proxied server
-          type: integer
-        network.ingress.proxy_read_timeout_seconds:
-          description: Sets a timeout (in seconds) for reading a response from the
-            proxied server
-          type: integer
-        network.ingress.proxy_buffering:
-          description: Allows to enable or disable nginx `proxy-request-buffering`
-          type: string
-        network.ingress.whitelist_source_range:
-          description: "list of source ranges to allow access to ingress proxy. \n\
-            This property can be used to whitelist source IP ranges for ingress proxy.\n\
-            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n\
-            To allow all source ranges, set 0.0.0.0/0.\n"
-          type: string
-        network.ingress.denylist_source_range:
-          description: "list of source ranges to deny access to ingress proxy. \n\
-            This property can be used to blacklist source IP ranges for ingress proxy.\n\
-            The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1\n"
-          type: string
-        network.ingress.basic_auth_env_var:
-          description: |
-            Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command.
-          type: string
-        network.ingress.enable_sticky_session:
-          description: |
-            Enable the load balancer to bind a user's session to a specific target.
-            This ensures that all requests from the user during the session are sent to the same target
-          type: boolean
-        network.ingress.grpc_send_timeout_seconds:
-          description: Sets a timeout (in seconds) for transmitting a request to the
-            grpc server
-          type: integer
-        network.ingress.grpc_read_timeout_seconds:
-          description: Sets a timeout (in seconds) for transmitting a request to the
-            grpc server
-          type: integer
-        network.ingress.extra_headers:
-          description: Allows to define response headers
-          example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
-            }"
-          type: string
-        hpa.cpu.average_utilization_percent:
-          description: Percentage value of cpu usage at which point pods should scale
-            up.
-          type: integer
-        security.service_account_name:
-          description: |
-            Allows you to set an existing Kubernetes service account name
-          type: string
-        security.automount_service_account_token:
-          description: |
-            Automount Kubernetes service account token to have access to Kubernetes API from pods
-          type: boolean
-        security.read_only_root_filesystem:
-          description: |
-            Mounts the container's root filesystem as read-only
-          type: boolean
-      type: object
     ApplicationDeploymentRestriction:
       allOf:
       - $ref: '#/components/schemas/Base'

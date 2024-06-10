@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **DeploymentAntiaffinityPod** | Pointer to **string** | Define how you want pods affinity to behave: * &#x60;Preferred&#x60; allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * &#x60;Requirred&#x60; ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)  | [optional] 
+**DeploymentLifecyclePostStartExecCommand** | Pointer to **[]string** | Allows you to run a command after the application is started. The command should be a shell command or script. | [optional] 
+**DeploymentLifecyclePreStopExecCommand** | Pointer to **[]string** | Allows you to run a command before the application is stopped. The command should be a shell command or script. Qovery requires the sh shell by default and sets a sleep of 15 seconds to let Nginx update its config. Avoiding error codes returned during a rolling update. | [optional] 
 **DeploymentUpdateStrategyType** | Pointer to **string** | * &#x60;RollingUpdate&#x60; gracefully rollout new versions, and automatically rollback if the new version fails to start * &#x60;Recreate&#x60; stop all current versions and create new ones once all old ones have been shutdown  | [optional] 
 **DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent** | Pointer to **int32** | Define the percentage of a maximum number of pods that can be unavailable during the update process | [optional] 
 **DeploymentUpdateStrategyRollingUpdateMaxSurgePercent** | Pointer to **int32** | Define the percentage of the maximum number of pods that can be created over the desired number of pods | [optional] 
@@ -157,6 +159,56 @@ SetDeploymentAntiaffinityPod sets DeploymentAntiaffinityPod field to given value
 `func (o *ApplicationAdvancedSettings) HasDeploymentAntiaffinityPod() bool`
 
 HasDeploymentAntiaffinityPod returns a boolean if a field has been set.
+
+### GetDeploymentLifecyclePostStartExecCommand
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePostStartExecCommand() []string`
+
+GetDeploymentLifecyclePostStartExecCommand returns the DeploymentLifecyclePostStartExecCommand field if non-nil, zero value otherwise.
+
+### GetDeploymentLifecyclePostStartExecCommandOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePostStartExecCommandOk() (*[]string, bool)`
+
+GetDeploymentLifecyclePostStartExecCommandOk returns a tuple with the DeploymentLifecyclePostStartExecCommand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentLifecyclePostStartExecCommand
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentLifecyclePostStartExecCommand(v []string)`
+
+SetDeploymentLifecyclePostStartExecCommand sets DeploymentLifecyclePostStartExecCommand field to given value.
+
+### HasDeploymentLifecyclePostStartExecCommand
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentLifecyclePostStartExecCommand() bool`
+
+HasDeploymentLifecyclePostStartExecCommand returns a boolean if a field has been set.
+
+### GetDeploymentLifecyclePreStopExecCommand
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePreStopExecCommand() []string`
+
+GetDeploymentLifecyclePreStopExecCommand returns the DeploymentLifecyclePreStopExecCommand field if non-nil, zero value otherwise.
+
+### GetDeploymentLifecyclePreStopExecCommandOk
+
+`func (o *ApplicationAdvancedSettings) GetDeploymentLifecyclePreStopExecCommandOk() (*[]string, bool)`
+
+GetDeploymentLifecyclePreStopExecCommandOk returns a tuple with the DeploymentLifecyclePreStopExecCommand field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentLifecyclePreStopExecCommand
+
+`func (o *ApplicationAdvancedSettings) SetDeploymentLifecyclePreStopExecCommand(v []string)`
+
+SetDeploymentLifecyclePreStopExecCommand sets DeploymentLifecyclePreStopExecCommand field to given value.
+
+### HasDeploymentLifecyclePreStopExecCommand
+
+`func (o *ApplicationAdvancedSettings) HasDeploymentLifecyclePreStopExecCommand() bool`
+
+HasDeploymentLifecyclePreStopExecCommand returns a boolean if a field has been set.
 
 ### GetDeploymentUpdateStrategyType
 
