@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the HelmResponseAllOfSourceOneOf type satisfies the MappedNullable interface at compile time
@@ -20,7 +21,7 @@ var _ MappedNullable = &HelmResponseAllOfSourceOneOf{}
 
 // HelmResponseAllOfSourceOneOf struct for HelmResponseAllOfSourceOneOf
 type HelmResponseAllOfSourceOneOf struct {
-	Git                  *HelmSourceGitResponse `json:"git,omitempty"`
+	Git                  HelmSourceGitResponse `json:"git"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -30,8 +31,9 @@ type _HelmResponseAllOfSourceOneOf HelmResponseAllOfSourceOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponseAllOfSourceOneOf() *HelmResponseAllOfSourceOneOf {
+func NewHelmResponseAllOfSourceOneOf(git HelmSourceGitResponse) *HelmResponseAllOfSourceOneOf {
 	this := HelmResponseAllOfSourceOneOf{}
+	this.Git = git
 	return &this
 }
 
@@ -43,36 +45,28 @@ func NewHelmResponseAllOfSourceOneOfWithDefaults() *HelmResponseAllOfSourceOneOf
 	return &this
 }
 
-// GetGit returns the Git field value if set, zero value otherwise.
+// GetGit returns the Git field value
 func (o *HelmResponseAllOfSourceOneOf) GetGit() HelmSourceGitResponse {
-	if o == nil || IsNil(o.Git) {
+	if o == nil {
 		var ret HelmSourceGitResponse
 		return ret
 	}
-	return *o.Git
+
+	return o.Git
 }
 
-// GetGitOk returns a tuple with the Git field value if set, nil otherwise
+// GetGitOk returns a tuple with the Git field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponseAllOfSourceOneOf) GetGitOk() (*HelmSourceGitResponse, bool) {
-	if o == nil || IsNil(o.Git) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Git, true
+	return &o.Git, true
 }
 
-// HasGit returns a boolean if a field has been set.
-func (o *HelmResponseAllOfSourceOneOf) HasGit() bool {
-	if o != nil && !IsNil(o.Git) {
-		return true
-	}
-
-	return false
-}
-
-// SetGit gets a reference to the given HelmSourceGitResponse and assigns it to the Git field.
+// SetGit sets field value
 func (o *HelmResponseAllOfSourceOneOf) SetGit(v HelmSourceGitResponse) {
-	o.Git = &v
+	o.Git = v
 }
 
 func (o HelmResponseAllOfSourceOneOf) MarshalJSON() ([]byte, error) {
@@ -85,9 +79,7 @@ func (o HelmResponseAllOfSourceOneOf) MarshalJSON() ([]byte, error) {
 
 func (o HelmResponseAllOfSourceOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Git) {
-		toSerialize["git"] = o.Git
-	}
+	toSerialize["git"] = o.Git
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -97,6 +89,27 @@ func (o HelmResponseAllOfSourceOneOf) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *HelmResponseAllOfSourceOneOf) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"git",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varHelmResponseAllOfSourceOneOf := _HelmResponseAllOfSourceOneOf{}
 
 	err = json.Unmarshal(data, &varHelmResponseAllOfSourceOneOf)

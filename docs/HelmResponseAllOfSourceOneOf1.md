@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Repository** | Pointer to [**HelmSourceRepositoryResponse**](HelmSourceRepositoryResponse.md) |  | [optional] 
+**Repository** | [**HelmSourceRepositoryResponse**](HelmSourceRepositoryResponse.md) |  | 
 
 ## Methods
 
 ### NewHelmResponseAllOfSourceOneOf1
 
-`func NewHelmResponseAllOfSourceOneOf1() *HelmResponseAllOfSourceOneOf1`
+`func NewHelmResponseAllOfSourceOneOf1(repository HelmSourceRepositoryResponse, ) *HelmResponseAllOfSourceOneOf1`
 
 NewHelmResponseAllOfSourceOneOf1 instantiates a new HelmResponseAllOfSourceOneOf1 object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetRepository sets Repository field to given value.
 
-### HasRepository
-
-`func (o *HelmResponseAllOfSourceOneOf1) HasRepository() bool`
-
-HasRepository returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Git** | Pointer to [**HelmSourceGitResponse**](HelmSourceGitResponse.md) |  | [optional] 
-**Repository** | Pointer to [**HelmSourceRepositoryResponse**](HelmSourceRepositoryResponse.md) |  | [optional] 
+**Git** | [**HelmSourceGitResponse**](HelmSourceGitResponse.md) |  | 
+**Repository** | [**HelmSourceRepositoryResponse**](HelmSourceRepositoryResponse.md) |  | 
 
 ## Methods
 
 ### NewHelmResponseAllOfSource
 
-`func NewHelmResponseAllOfSource() *HelmResponseAllOfSource`
+`func NewHelmResponseAllOfSource(git HelmSourceGitResponse, repository HelmSourceRepositoryResponse, ) *HelmResponseAllOfSource`
 
 NewHelmResponseAllOfSource instantiates a new HelmResponseAllOfSource object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetGit sets Git field to given value.
 
-### HasGit
-
-`func (o *HelmResponseAllOfSource) HasGit() bool`
-
-HasGit returns a boolean if a field has been set.
 
 ### GetRepository
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetRepository sets Repository field to given value.
 
-### HasRepository
-
-`func (o *HelmResponseAllOfSource) HasRepository() bool`
-
-HasRepository returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

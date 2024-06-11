@@ -28913,11 +28913,15 @@ components:
       properties:
         git:
           $ref: '#/components/schemas/HelmSourceGitResponse'
+      required:
+      - git
       type: object
     HelmResponse_allOf_source_oneOf_1:
       properties:
         repository:
           $ref: '#/components/schemas/HelmSourceRepositoryResponse'
+      required:
+      - repository
       type: object
       x-stoplight:
         id: 0prdehm6z8pua

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Git** | Pointer to [**HelmSourceGitResponse**](HelmSourceGitResponse.md) |  | [optional] 
+**Git** | [**HelmSourceGitResponse**](HelmSourceGitResponse.md) |  | 
 
 ## Methods
 
 ### NewHelmResponseAllOfSourceOneOf
 
-`func NewHelmResponseAllOfSourceOneOf() *HelmResponseAllOfSourceOneOf`
+`func NewHelmResponseAllOfSourceOneOf(git HelmSourceGitResponse, ) *HelmResponseAllOfSourceOneOf`
 
 NewHelmResponseAllOfSourceOneOf instantiates a new HelmResponseAllOfSourceOneOf object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetGit sets Git field to given value.
 
-### HasGit
-
-`func (o *HelmResponseAllOfSourceOneOf) HasGit() bool`
-
-HasGit returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
