@@ -44,9 +44,9 @@ type LifecycleJobResponse struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32          `json:"port,omitempty"`
-	Source       map[string]interface{} `json:"source"`
-	Healthchecks Healthcheck            `json:"healthchecks"`
+	Port         NullableInt32              `json:"port,omitempty"`
+	Source       BaseJobResponseAllOfSource `json:"source"`
+	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy           *bool                                  `json:"auto_deploy,omitempty"`
 	JobType              string                                 `json:"job_type"`
@@ -62,7 +62,7 @@ type _LifecycleJobResponse LifecycleJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source map[string]interface{}, healthchecks Healthcheck, jobType string, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
+func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, jobType string, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
 	this := LifecycleJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -476,10 +476,9 @@ func (o *LifecycleJobResponse) UnsetPort() {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *LifecycleJobResponse) GetSource() map[string]interface{} {
+func (o *LifecycleJobResponse) GetSource() BaseJobResponseAllOfSource {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret BaseJobResponseAllOfSource
 		return ret
 	}
 
@@ -488,16 +487,15 @@ func (o *LifecycleJobResponse) GetSource() map[string]interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *LifecycleJobResponse) GetSourceOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Source) {
-		return map[string]interface{}{}, false
+func (o *LifecycleJobResponse) GetSourceOk() (*BaseJobResponseAllOfSource, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *LifecycleJobResponse) SetSource(v map[string]interface{}) {
+func (o *LifecycleJobResponse) SetSource(v BaseJobResponseAllOfSource) {
 	o.Source = v
 }
 
@@ -703,9 +701,7 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
+	toSerialize["source"] = o.Source
 	toSerialize["healthchecks"] = o.Healthchecks
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy

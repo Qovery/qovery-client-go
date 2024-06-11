@@ -36,7 +36,7 @@ type HelmResponse struct {
 	// Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.
 	AutoDeploy bool                     `json:"auto_deploy"`
 	Ports      []HelmResponseAllOfPorts `json:"ports,omitempty"`
-	Source     map[string]interface{}   `json:"source"`
+	Source     HelmResponseAllOfSource  `json:"source"`
 	// The extra arguments to pass to helm
 	Arguments []string `json:"arguments"`
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
@@ -51,7 +51,7 @@ type _HelmResponse HelmResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source map[string]interface{}, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -353,10 +353,9 @@ func (o *HelmResponse) SetPorts(v []HelmResponseAllOfPorts) {
 }
 
 // GetSource returns the Source field value
-// If the value is explicit nil, the zero value for map[string]interface{} will be returned
-func (o *HelmResponse) GetSource() map[string]interface{} {
+func (o *HelmResponse) GetSource() HelmResponseAllOfSource {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret HelmResponseAllOfSource
 		return ret
 	}
 
@@ -365,16 +364,15 @@ func (o *HelmResponse) GetSource() map[string]interface{} {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *HelmResponse) GetSourceOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Source) {
-		return map[string]interface{}{}, false
+func (o *HelmResponse) GetSourceOk() (*HelmResponseAllOfSource, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.Source, true
+	return &o.Source, true
 }
 
 // SetSource sets field value
-func (o *HelmResponse) SetSource(v map[string]interface{}) {
+func (o *HelmResponse) SetSource(v HelmResponseAllOfSource) {
 	o.Source = v
 }
 
@@ -478,9 +476,7 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Ports) {
 		toSerialize["ports"] = o.Ports
 	}
-	if o.Source != nil {
-		toSerialize["source"] = o.Source
-	}
+	toSerialize["source"] = o.Source
 	toSerialize["arguments"] = o.Arguments
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride

@@ -122,6 +122,9 @@ docs/BackupResponseList.md
 docs/BackupsAPI.md
 docs/Base.md
 docs/BaseJobResponse.md
+docs/BaseJobResponseAllOfSource.md
+docs/BaseJobResponseAllOfSourceOneOf.md
+docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BillingAPI.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -379,6 +382,9 @@ docs/HelmRequestAllOfValuesOverrideFileRaw.md
 docs/HelmRequestAllOfValuesOverrideFileRawValues.md
 docs/HelmResponse.md
 docs/HelmResponseAllOfPorts.md
+docs/HelmResponseAllOfSource.md
+docs/HelmResponseAllOfSourceOneOf.md
+docs/HelmResponseAllOfSourceOneOf1.md
 docs/HelmResponseAllOfValuesOverride.md
 docs/HelmResponseAllOfValuesOverrideFile.md
 docs/HelmResponseAllOfValuesOverrideFileGit.md
@@ -637,6 +643,9 @@ model_backup_request.go
 model_backup_response_list.go
 model_base.go
 model_base_job_response.go
+model_base_job_response_all_of_source.go
+model_base_job_response_all_of_source_one_of.go
+model_base_job_response_all_of_source_one_of_1.go
 model_billing_external_id.go
 model_billing_info.go
 model_billing_info_request.go
@@ -854,6 +863,9 @@ model_helm_request_all_of_values_override_file_raw.go
 model_helm_request_all_of_values_override_file_raw_values.go
 model_helm_response.go
 model_helm_response_all_of_ports.go
+model_helm_response_all_of_source.go
+model_helm_response_all_of_source_one_of.go
+model_helm_response_all_of_source_one_of_1.go
 model_helm_response_all_of_values_override.go
 model_helm_response_all_of_values_override_file.go
 model_helm_response_all_of_values_override_file_git.go
