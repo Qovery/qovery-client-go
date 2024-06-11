@@ -22947,12 +22947,17 @@ components:
             type: boolean
           annotations_groups:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
+          labels_groups:
+            $ref: '#/components/schemas/ServiceLabelsRequestList'
         required:
         - healthchecks
         - name
       example:
         auto_deploy: true
         memory: 1024
+        labels_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
             period_seconds: 7
@@ -23058,6 +23063,29 @@ components:
         - job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
+          labels_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
@@ -23160,6 +23188,29 @@ components:
         - job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
+          labels_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
@@ -27048,6 +27099,8 @@ components:
             $ref: '#/components/schemas/LifecycleJobResponse_allOf_schedule'
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+          labels_groups:
+            $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
         required:
         - job_type
         - schedule
@@ -27056,6 +27109,29 @@ components:
         job_type: LIFECYCLE
         auto_deploy: true
         memory: 1024
+        labels_groups:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          labels:
+          - propagate_to_cloud_provider: true
+            value: value
+            key: key
+          - propagate_to_cloud_provider: true
+            value: value
+            key: key
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          labels:
+          - propagate_to_cloud_provider: true
+            value: value
+            key: key
+          - propagate_to_cloud_provider: true
+            value: value
+            key: key
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
@@ -27167,6 +27243,8 @@ components:
             $ref: '#/components/schemas/CronJobResponse_allOf_schedule'
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
+          labels_groups:
+            $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
         required:
         - job_type
         - schedule

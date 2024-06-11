@@ -42,6 +42,7 @@ type JobRequest struct {
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
 	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -500,6 +501,38 @@ func (o *JobRequest) SetAnnotationsGroups(v []ServiceAnnotationRequest) {
 	o.AnnotationsGroups = v
 }
 
+// GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
+func (o *JobRequest) GetLabelsGroups() []ServiceLabelRequest {
+	if o == nil || IsNil(o.LabelsGroups) {
+		var ret []ServiceLabelRequest
+		return ret
+	}
+	return o.LabelsGroups
+}
+
+// GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetLabelsGroupsOk() ([]ServiceLabelRequest, bool) {
+	if o == nil || IsNil(o.LabelsGroups) {
+		return nil, false
+	}
+	return o.LabelsGroups, true
+}
+
+// HasLabelsGroups returns a boolean if a field has been set.
+func (o *JobRequest) HasLabelsGroups() bool {
+	if o != nil && !IsNil(o.LabelsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelsGroups gets a reference to the given []ServiceLabelRequest and assigns it to the LabelsGroups field.
+func (o *JobRequest) SetLabelsGroups(v []ServiceLabelRequest) {
+	o.LabelsGroups = v
+}
+
 func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -544,6 +577,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
+	}
+	if !IsNil(o.LabelsGroups) {
+		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -602,6 +638,7 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
+		delete(additionalProperties, "labels_groups")
 		o.AdditionalProperties = additionalProperties
 	}
 

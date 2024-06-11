@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **JobType** | **string** |  | 
 **Schedule** | [**CronJobResponseAllOfSchedule**](CronJobResponseAllOfSchedule.md) |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -498,6 +499,31 @@ SetAnnotationsGroups sets AnnotationsGroups field to given value.
 `func (o *CronJobResponse) HasAnnotationsGroups() bool`
 
 HasAnnotationsGroups returns a boolean if a field has been set.
+
+### GetLabelsGroups
+
+`func (o *CronJobResponse) GetLabelsGroups() []OrganizationLabelsGroupResponse`
+
+GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
+
+### GetLabelsGroupsOk
+
+`func (o *CronJobResponse) GetLabelsGroupsOk() (*[]OrganizationLabelsGroupResponse, bool)`
+
+GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabelsGroups
+
+`func (o *CronJobResponse) SetLabelsGroups(v []OrganizationLabelsGroupResponse)`
+
+SetLabelsGroups sets LabelsGroups field to given value.
+
+### HasLabelsGroups
+
+`func (o *CronJobResponse) HasLabelsGroups() bool`
+
+HasLabelsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

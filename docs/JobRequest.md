@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -371,6 +372,31 @@ SetAnnotationsGroups sets AnnotationsGroups field to given value.
 `func (o *JobRequest) HasAnnotationsGroups() bool`
 
 HasAnnotationsGroups returns a boolean if a field has been set.
+
+### GetLabelsGroups
+
+`func (o *JobRequest) GetLabelsGroups() []ServiceLabelRequest`
+
+GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
+
+### GetLabelsGroupsOk
+
+`func (o *JobRequest) GetLabelsGroupsOk() (*[]ServiceLabelRequest, bool)`
+
+GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabelsGroups
+
+`func (o *JobRequest) SetLabelsGroups(v []ServiceLabelRequest)`
+
+SetLabelsGroups sets LabelsGroups field to given value.
+
+### HasLabelsGroups
+
+`func (o *JobRequest) HasLabelsGroups() bool`
+
+HasLabelsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
