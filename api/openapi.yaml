@@ -18318,9 +18318,7 @@ components:
         type: object
       example:
         cluster:
-          updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
         kind: ECR
@@ -18356,9 +18354,7 @@ components:
       example:
         results:
         - cluster:
-            updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           kind: ECR
@@ -18368,9 +18364,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
         - cluster:
-            updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           kind: ECR
@@ -28271,22 +28265,23 @@ components:
           type: string
       type: object
     ContainerRegistryResponse_allOf_cluster:
-      allOf:
-      - $ref: '#/components/schemas/Base'
-      - properties:
-          id:
-            description: Id of the cluster of which the registry belongs to
-            format: uuid
-            type: string
-          name:
-            description: Name of the cluster of which the registry belongs to
-            type: string
-        type: object
       example:
-        updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: y0l22s5yhh4ez
+        name:
+          type: string
+          x-stoplight:
+            id: 5jak2m85ljxaa
+      required:
+      - id
+      - name
+      type: object
     HelmRepositoryRequest_config:
       example:
         access_key_id: access_key_id

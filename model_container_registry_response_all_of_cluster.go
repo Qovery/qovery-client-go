@@ -14,7 +14,6 @@ package qovery
 import (
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
 // checks if the ContainerRegistryResponseAllOfCluster type satisfies the MappedNullable interface at compile time
@@ -22,12 +21,8 @@ var _ MappedNullable = &ContainerRegistryResponseAllOfCluster{}
 
 // ContainerRegistryResponseAllOfCluster struct for ContainerRegistryResponseAllOfCluster
 type ContainerRegistryResponseAllOfCluster struct {
-	// Id of the cluster of which the registry belongs to
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
-	// Name of the cluster of which the registry belongs to
-	Name                 *string `json:"name,omitempty"`
+	Id                   string `json:"id"`
+	Name                 string `json:"name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,10 +32,10 @@ type _ContainerRegistryResponseAllOfCluster ContainerRegistryResponseAllOfCluste
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRegistryResponseAllOfCluster(id string, createdAt time.Time) *ContainerRegistryResponseAllOfCluster {
+func NewContainerRegistryResponseAllOfCluster(id string, name string) *ContainerRegistryResponseAllOfCluster {
 	this := ContainerRegistryResponseAllOfCluster{}
 	this.Id = id
-	this.CreatedAt = createdAt
+	this.Name = name
 	return &this
 }
 
@@ -76,92 +71,28 @@ func (o *ContainerRegistryResponseAllOfCluster) SetId(v string) {
 	o.Id = v
 }
 
-// GetCreatedAt returns the CreatedAt field value
-func (o *ContainerRegistryResponseAllOfCluster) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *ContainerRegistryResponseAllOfCluster) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *ContainerRegistryResponseAllOfCluster) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *ContainerRegistryResponseAllOfCluster) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerRegistryResponseAllOfCluster) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *ContainerRegistryResponseAllOfCluster) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *ContainerRegistryResponseAllOfCluster) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *ContainerRegistryResponseAllOfCluster) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *ContainerRegistryResponseAllOfCluster) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *ContainerRegistryResponseAllOfCluster) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *ContainerRegistryResponseAllOfCluster) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
 func (o ContainerRegistryResponseAllOfCluster) MarshalJSON() ([]byte, error) {
@@ -175,13 +106,7 @@ func (o ContainerRegistryResponseAllOfCluster) MarshalJSON() ([]byte, error) {
 func (o ContainerRegistryResponseAllOfCluster) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["created_at"] = o.CreatedAt
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
+	toSerialize["name"] = o.Name
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -196,7 +121,7 @@ func (o *ContainerRegistryResponseAllOfCluster) UnmarshalJSON(data []byte) (err 
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"created_at",
+		"name",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -227,8 +152,6 @@ func (o *ContainerRegistryResponseAllOfCluster) UnmarshalJSON(data []byte) (err 
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		o.AdditionalProperties = additionalProperties
 	}
