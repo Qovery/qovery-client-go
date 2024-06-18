@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## CancelEnvironmentDeployment
 
-> EnvironmentStatus CancelEnvironmentDeployment(ctx, environmentId).Execute()
+> EnvironmentStatus CancelEnvironmentDeployment(ctx, environmentId).CancelEnvironmentDeploymentRequest(cancelEnvironmentDeploymentRequest).Execute()
 
 Cancel environment deployment
 
@@ -38,10 +38,11 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	cancelEnvironmentDeploymentRequest := *openapiclient.NewCancelEnvironmentDeploymentRequest() // CancelEnvironmentDeploymentRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentActionsAPI.CancelEnvironmentDeployment(context.Background(), environmentId).Execute()
+	resp, r, err := apiClient.EnvironmentActionsAPI.CancelEnvironmentDeployment(context.Background(), environmentId).CancelEnvironmentDeploymentRequest(cancelEnvironmentDeploymentRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.CancelEnvironmentDeployment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -67,6 +68,7 @@ Other parameters are passed through a pointer to a apiCancelEnvironmentDeploymen
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **cancelEnvironmentDeploymentRequest** | [**CancelEnvironmentDeploymentRequest**](CancelEnvironmentDeploymentRequest.md) |  | 
 
 ### Return type
 
@@ -78,7 +80,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

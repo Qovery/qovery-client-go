@@ -532,6 +532,7 @@ Class | Method | HTTP request | Description
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [BuildPackLanguageEnum](docs/BuildPackLanguageEnum.md)
+ - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
  - [CloneEnvironmentRequest](docs/CloneEnvironmentRequest.md)
  - [CloneServiceRequest](docs/CloneServiceRequest.md)
  - [CloudProvider](docs/CloudProvider.md)

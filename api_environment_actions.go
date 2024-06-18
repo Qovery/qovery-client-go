@@ -24,9 +24,15 @@ import (
 type EnvironmentActionsAPIService service
 
 type ApiCancelEnvironmentDeploymentRequest struct {
-	ctx           context.Context
-	ApiService    *EnvironmentActionsAPIService
-	environmentId string
+	ctx                                context.Context
+	ApiService                         *EnvironmentActionsAPIService
+	environmentId                      string
+	cancelEnvironmentDeploymentRequest *CancelEnvironmentDeploymentRequest
+}
+
+func (r ApiCancelEnvironmentDeploymentRequest) CancelEnvironmentDeploymentRequest(cancelEnvironmentDeploymentRequest CancelEnvironmentDeploymentRequest) ApiCancelEnvironmentDeploymentRequest {
+	r.cancelEnvironmentDeploymentRequest = &cancelEnvironmentDeploymentRequest
+	return r
 }
 
 func (r ApiCancelEnvironmentDeploymentRequest) Execute() (*EnvironmentStatus, *http.Response, error) {
@@ -73,7 +79,7 @@ func (a *EnvironmentActionsAPIService) CancelEnvironmentDeploymentExecute(r ApiC
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -89,6 +95,8 @@ func (a *EnvironmentActionsAPIService) CancelEnvironmentDeploymentExecute(r ApiC
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.cancelEnvironmentDeploymentRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

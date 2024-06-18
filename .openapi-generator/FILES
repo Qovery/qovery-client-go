@@ -133,6 +133,7 @@ docs/BillingStatus.md
 docs/Budget.md
 docs/BuildModeEnum.md
 docs/BuildPackLanguageEnum.md
+docs/CancelEnvironmentDeploymentRequest.md
 docs/CloneEnvironmentRequest.md
 docs/CloneServiceRequest.md
 docs/CloudProvider.md
@@ -653,6 +654,7 @@ model_billing_status.go
 model_budget.go
 model_build_mode_enum.go
 model_build_pack_language_enum.go
+model_cancel_environment_deployment_request.go
 model_clone_environment_request.go
 model_clone_service_request.go
 model_cloud_provider.go

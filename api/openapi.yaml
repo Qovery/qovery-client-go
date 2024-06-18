@@ -6867,6 +6867,11 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cancelEnvironmentDeployment_request'
       responses:
         "202":
           content:
@@ -27752,6 +27757,16 @@ components:
             $ref: '#/components/schemas/OrganizationLabelsGroupEnrichedResponse'
           title: OrganizationLabelsGroupEnrichedResponseList
           type: array
+      type: object
+    cancelEnvironmentDeployment_request:
+      properties:
+        force_cancel:
+          default: false
+          description: Force cancel everything running in this environment if set
+            to true (e.q lifecycle jobs triggered during the deployment).
+          type: boolean
+          x-stoplight:
+            id: c5k0n6yafpsig
       type: object
     listContainerDeploymentHistory_200_response:
       allOf:
