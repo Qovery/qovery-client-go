@@ -17864,7 +17864,7 @@ components:
         - database.mongodb.allowed_cidrs
         aws.cloudwatch.eks_logs_retention_days: 0
         aws.iam.admin_group: aws.iam.admin_group
-        registry.mirroring_mode: SERVICE
+        registry.mirroring_mode: Service
         nginx.vcpu.request_in_milli_cpu: 2
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
@@ -27141,14 +27141,14 @@ components:
           type: string
       type: object
     RegistryMirroringModeEnum:
-      default: SERVICE
+      default: Service
       description: |
         Mirroring mode when deploying a service from a container registry
-        - CLUSTER: This is not available on Scaleway. Images within the mirroring registry are organized by "Qovery cluster", meaning that the application deployed on the same cluster are all mirrored on the same repository.
-        - SERVICE: Images within the mirroring registry are organized by "Qovery service", each service has its own repository
+        - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by "Qovery cluster", meaning that the application deployed on the same cluster are all mirrored on the same repository.
+        - Service: Images within the mirroring registry are organized by "Qovery service", each service has its own repository
       enum:
-      - CLUSTER
-      - SERVICE
+      - Cluster
+      - Service
       type: string
     ServiceTypeForVariableEnum:
       description: type of the service
