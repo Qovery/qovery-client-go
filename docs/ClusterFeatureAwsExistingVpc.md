@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **RdsSubnetsZoneAIds** | Pointer to **[]string** |  | [optional] 
 **RdsSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
 **RdsSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
+**EksKarpenterFargateSubnetsZoneAIds** | Pointer to **[]string** |  | [optional] 
+**EksKarpenterFargateSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
+**EksKarpenterFargateSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -432,6 +435,111 @@ HasRdsSubnetsZoneCIds returns a boolean if a field has been set.
 `func (o *ClusterFeatureAwsExistingVpc) UnsetRdsSubnetsZoneCIds()`
 
 UnsetRdsSubnetsZoneCIds ensures that no value is present for RdsSubnetsZoneCIds, not even an explicit nil
+### GetEksKarpenterFargateSubnetsZoneAIds
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIds() []string`
+
+GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field if non-nil, zero value otherwise.
+
+### GetEksKarpenterFargateSubnetsZoneAIdsOk
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIdsOk() (*[]string, bool)`
+
+GetEksKarpenterFargateSubnetsZoneAIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneAIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEksKarpenterFargateSubnetsZoneAIds
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneAIds(v []string)`
+
+SetEksKarpenterFargateSubnetsZoneAIds sets EksKarpenterFargateSubnetsZoneAIds field to given value.
+
+### HasEksKarpenterFargateSubnetsZoneAIds
+
+`func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneAIds() bool`
+
+HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
+
+### SetEksKarpenterFargateSubnetsZoneAIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneAIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneAIdsNil sets the value for EksKarpenterFargateSubnetsZoneAIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneAIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneAIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneAIds ensures that no value is present for EksKarpenterFargateSubnetsZoneAIds, not even an explicit nil
+### GetEksKarpenterFargateSubnetsZoneBIds
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIds() []string`
+
+GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field if non-nil, zero value otherwise.
+
+### GetEksKarpenterFargateSubnetsZoneBIdsOk
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIdsOk() (*[]string, bool)`
+
+GetEksKarpenterFargateSubnetsZoneBIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneBIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEksKarpenterFargateSubnetsZoneBIds
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneBIds(v []string)`
+
+SetEksKarpenterFargateSubnetsZoneBIds sets EksKarpenterFargateSubnetsZoneBIds field to given value.
+
+### HasEksKarpenterFargateSubnetsZoneBIds
+
+`func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneBIds() bool`
+
+HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
+
+### SetEksKarpenterFargateSubnetsZoneBIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneBIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneBIdsNil sets the value for EksKarpenterFargateSubnetsZoneBIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneBIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneBIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneBIds ensures that no value is present for EksKarpenterFargateSubnetsZoneBIds, not even an explicit nil
+### GetEksKarpenterFargateSubnetsZoneCIds
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIds() []string`
+
+GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field if non-nil, zero value otherwise.
+
+### GetEksKarpenterFargateSubnetsZoneCIdsOk
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIdsOk() (*[]string, bool)`
+
+GetEksKarpenterFargateSubnetsZoneCIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneCIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEksKarpenterFargateSubnetsZoneCIds
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneCIds(v []string)`
+
+SetEksKarpenterFargateSubnetsZoneCIds sets EksKarpenterFargateSubnetsZoneCIds field to given value.
+
+### HasEksKarpenterFargateSubnetsZoneCIds
+
+`func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneCIds() bool`
+
+HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
+
+### SetEksKarpenterFargateSubnetsZoneCIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneCIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneCIdsNil sets the value for EksKarpenterFargateSubnetsZoneCIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneCIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneCIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneCIds ensures that no value is present for EksKarpenterFargateSubnetsZoneCIds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -17340,6 +17340,33 @@ components:
             type: string
           nullable: true
           type: array
+        eks_karpenter_fargate_subnets_zone_a_ids:
+          items:
+            type: string
+            x-stoplight:
+              id: rtxx96v011irr
+          nullable: true
+          type: array
+          x-stoplight:
+            id: 8rttrya00wmkr
+        eks_karpenter_fargate_subnets_zone_b_ids:
+          items:
+            type: string
+            x-stoplight:
+              id: 1w592qk4spodn
+          nullable: true
+          type: array
+          x-stoplight:
+            id: xnbtr8676culs
+        eks_karpenter_fargate_subnets_zone_c_ids:
+          items:
+            type: string
+            x-stoplight:
+              id: xyjjh50ckrzee
+          nullable: true
+          type: array
+          x-stoplight:
+            id: st5domzqqkcoh
       required:
       - aws_vpc_eks_id
       - eks_subnets_zone_a_ids

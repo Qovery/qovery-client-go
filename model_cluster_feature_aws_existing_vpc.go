@@ -21,20 +21,23 @@ var _ MappedNullable = &ClusterFeatureAwsExistingVpc{}
 
 // ClusterFeatureAwsExistingVpc struct for ClusterFeatureAwsExistingVpc
 type ClusterFeatureAwsExistingVpc struct {
-	AwsVpcEksId                string   `json:"aws_vpc_eks_id"`
-	EksSubnetsZoneAIds         []string `json:"eks_subnets_zone_a_ids"`
-	EksSubnetsZoneBIds         []string `json:"eks_subnets_zone_b_ids"`
-	EksSubnetsZoneCIds         []string `json:"eks_subnets_zone_c_ids"`
-	DocumentdbSubnetsZoneAIds  []string `json:"documentdb_subnets_zone_a_ids,omitempty"`
-	DocumentdbSubnetsZoneBIds  []string `json:"documentdb_subnets_zone_b_ids,omitempty"`
-	DocumentdbSubnetsZoneCIds  []string `json:"documentdb_subnets_zone_c_ids,omitempty"`
-	ElasticacheSubnetsZoneAIds []string `json:"elasticache_subnets_zone_a_ids,omitempty"`
-	ElasticacheSubnetsZoneBIds []string `json:"elasticache_subnets_zone_b_ids,omitempty"`
-	ElasticacheSubnetsZoneCIds []string `json:"elasticache_subnets_zone_c_ids,omitempty"`
-	RdsSubnetsZoneAIds         []string `json:"rds_subnets_zone_a_ids,omitempty"`
-	RdsSubnetsZoneBIds         []string `json:"rds_subnets_zone_b_ids,omitempty"`
-	RdsSubnetsZoneCIds         []string `json:"rds_subnets_zone_c_ids,omitempty"`
-	AdditionalProperties       map[string]interface{}
+	AwsVpcEksId                        string   `json:"aws_vpc_eks_id"`
+	EksSubnetsZoneAIds                 []string `json:"eks_subnets_zone_a_ids"`
+	EksSubnetsZoneBIds                 []string `json:"eks_subnets_zone_b_ids"`
+	EksSubnetsZoneCIds                 []string `json:"eks_subnets_zone_c_ids"`
+	DocumentdbSubnetsZoneAIds          []string `json:"documentdb_subnets_zone_a_ids,omitempty"`
+	DocumentdbSubnetsZoneBIds          []string `json:"documentdb_subnets_zone_b_ids,omitempty"`
+	DocumentdbSubnetsZoneCIds          []string `json:"documentdb_subnets_zone_c_ids,omitempty"`
+	ElasticacheSubnetsZoneAIds         []string `json:"elasticache_subnets_zone_a_ids,omitempty"`
+	ElasticacheSubnetsZoneBIds         []string `json:"elasticache_subnets_zone_b_ids,omitempty"`
+	ElasticacheSubnetsZoneCIds         []string `json:"elasticache_subnets_zone_c_ids,omitempty"`
+	RdsSubnetsZoneAIds                 []string `json:"rds_subnets_zone_a_ids,omitempty"`
+	RdsSubnetsZoneBIds                 []string `json:"rds_subnets_zone_b_ids,omitempty"`
+	RdsSubnetsZoneCIds                 []string `json:"rds_subnets_zone_c_ids,omitempty"`
+	EksKarpenterFargateSubnetsZoneAIds []string `json:"eks_karpenter_fargate_subnets_zone_a_ids,omitempty"`
+	EksKarpenterFargateSubnetsZoneBIds []string `json:"eks_karpenter_fargate_subnets_zone_b_ids,omitempty"`
+	EksKarpenterFargateSubnetsZoneCIds []string `json:"eks_karpenter_fargate_subnets_zone_c_ids,omitempty"`
+	AdditionalProperties               map[string]interface{}
 }
 
 type _ClusterFeatureAwsExistingVpc ClusterFeatureAwsExistingVpc
@@ -453,6 +456,105 @@ func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneCIds(v []string) {
 	o.RdsSubnetsZoneCIds = v
 }
 
+// GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.EksKarpenterFargateSubnetsZoneAIds
+}
+
+// GetEksKarpenterFargateSubnetsZoneAIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneAIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
+		return nil, false
+	}
+	return o.EksKarpenterFargateSubnetsZoneAIds, true
+}
+
+// HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
+func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneAIds() bool {
+	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetEksKarpenterFargateSubnetsZoneAIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneAIds field.
+func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneAIds(v []string) {
+	o.EksKarpenterFargateSubnetsZoneAIds = v
+}
+
+// GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.EksKarpenterFargateSubnetsZoneBIds
+}
+
+// GetEksKarpenterFargateSubnetsZoneBIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneBIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
+		return nil, false
+	}
+	return o.EksKarpenterFargateSubnetsZoneBIds, true
+}
+
+// HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
+func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneBIds() bool {
+	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetEksKarpenterFargateSubnetsZoneBIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneBIds field.
+func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneBIds(v []string) {
+	o.EksKarpenterFargateSubnetsZoneBIds = v
+}
+
+// GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.EksKarpenterFargateSubnetsZoneCIds
+}
+
+// GetEksKarpenterFargateSubnetsZoneCIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneCIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
+		return nil, false
+	}
+	return o.EksKarpenterFargateSubnetsZoneCIds, true
+}
+
+// HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
+func (o *ClusterFeatureAwsExistingVpc) HasEksKarpenterFargateSubnetsZoneCIds() bool {
+	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetEksKarpenterFargateSubnetsZoneCIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneCIds field.
+func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneCIds(v []string) {
+	o.EksKarpenterFargateSubnetsZoneCIds = v
+}
+
 func (o ClusterFeatureAwsExistingVpc) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -493,6 +595,15 @@ func (o ClusterFeatureAwsExistingVpc) ToMap() (map[string]interface{}, error) {
 	}
 	if o.RdsSubnetsZoneCIds != nil {
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
+	}
+	if o.EksKarpenterFargateSubnetsZoneAIds != nil {
+		toSerialize["eks_karpenter_fargate_subnets_zone_a_ids"] = o.EksKarpenterFargateSubnetsZoneAIds
+	}
+	if o.EksKarpenterFargateSubnetsZoneBIds != nil {
+		toSerialize["eks_karpenter_fargate_subnets_zone_b_ids"] = o.EksKarpenterFargateSubnetsZoneBIds
+	}
+	if o.EksKarpenterFargateSubnetsZoneCIds != nil {
+		toSerialize["eks_karpenter_fargate_subnets_zone_c_ids"] = o.EksKarpenterFargateSubnetsZoneCIds
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -553,6 +664,9 @@ func (o *ClusterFeatureAwsExistingVpc) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "rds_subnets_zone_a_ids")
 		delete(additionalProperties, "rds_subnets_zone_b_ids")
 		delete(additionalProperties, "rds_subnets_zone_c_ids")
+		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_a_ids")
+		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_b_ids")
+		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_c_ids")
 		o.AdditionalProperties = additionalProperties
 	}
 
