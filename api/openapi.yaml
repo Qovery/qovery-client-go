@@ -23075,6 +23075,7 @@ components:
             arguments:
             - arguments
             - arguments
+          lifecycle_type: GENERIC
         port: 1
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23195,6 +23196,7 @@ components:
               arguments:
               - arguments
               - arguments
+            lifecycle_type: GENERIC
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -23329,6 +23331,7 @@ components:
               arguments:
               - arguments
               - arguments
+            lifecycle_type: GENERIC
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -27304,6 +27307,7 @@ components:
             arguments:
             - arguments
             - arguments
+          lifecycle_type: GENERIC
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -27705,6 +27709,15 @@ components:
       type: object
       x-stoplight:
         id: q33tdlz4ychh5
+    JobLifecycleTypeEnum:
+      enum:
+      - GENERIC
+      - TERRAFORM
+      - CLOUDFORMATION
+      title: JobLifecycleTypeEnum
+      type: string
+      x-stoplight:
+        id: tz1t23a291l51
     deleteMember_request:
       properties:
         user_id:
@@ -28696,6 +28709,7 @@ components:
           arguments:
           - arguments
           - arguments
+        lifecycle_type: GENERIC
       properties:
         on_start:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
@@ -28705,6 +28719,8 @@ components:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
         cronjob:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_cronjob'
+        lifecycle_type:
+          $ref: '#/components/schemas/JobLifecycleTypeEnum'
       type: object
     DeploymentHistoryJobResponse_allOf_schedule:
       example:
@@ -29521,6 +29537,7 @@ components:
           arguments:
           - arguments
           - arguments
+        lifecycle_type: GENERIC
       properties:
         on_start:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
@@ -29528,6 +29545,8 @@ components:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
         on_delete:
           $ref: '#/components/schemas/JobRequest_allOf_schedule_on_start'
+        lifecycle_type:
+          $ref: '#/components/schemas/JobLifecycleTypeEnum'
       type: object
     CronJobResponse_allOf_schedule_cronjob:
       properties:

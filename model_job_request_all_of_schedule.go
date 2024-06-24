@@ -24,6 +24,7 @@ type JobRequestAllOfSchedule struct {
 	OnStop               *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
 	OnDelete             *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
 	Cronjob              *JobRequestAllOfScheduleCronjob `json:"cronjob,omitempty"`
+	LifecycleType        *JobLifecycleTypeEnum           `json:"lifecycle_type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -174,6 +175,38 @@ func (o *JobRequestAllOfSchedule) SetCronjob(v JobRequestAllOfScheduleCronjob) {
 	o.Cronjob = &v
 }
 
+// GetLifecycleType returns the LifecycleType field value if set, zero value otherwise.
+func (o *JobRequestAllOfSchedule) GetLifecycleType() JobLifecycleTypeEnum {
+	if o == nil || IsNil(o.LifecycleType) {
+		var ret JobLifecycleTypeEnum
+		return ret
+	}
+	return *o.LifecycleType
+}
+
+// GetLifecycleTypeOk returns a tuple with the LifecycleType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequestAllOfSchedule) GetLifecycleTypeOk() (*JobLifecycleTypeEnum, bool) {
+	if o == nil || IsNil(o.LifecycleType) {
+		return nil, false
+	}
+	return o.LifecycleType, true
+}
+
+// HasLifecycleType returns a boolean if a field has been set.
+func (o *JobRequestAllOfSchedule) HasLifecycleType() bool {
+	if o != nil && !IsNil(o.LifecycleType) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifecycleType gets a reference to the given JobLifecycleTypeEnum and assigns it to the LifecycleType field.
+func (o *JobRequestAllOfSchedule) SetLifecycleType(v JobLifecycleTypeEnum) {
+	o.LifecycleType = &v
+}
+
 func (o JobRequestAllOfSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -195,6 +228,9 @@ func (o JobRequestAllOfSchedule) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Cronjob) {
 		toSerialize["cronjob"] = o.Cronjob
+	}
+	if !IsNil(o.LifecycleType) {
+		toSerialize["lifecycle_type"] = o.LifecycleType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -222,6 +258,7 @@ func (o *JobRequestAllOfSchedule) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "on_stop")
 		delete(additionalProperties, "on_delete")
 		delete(additionalProperties, "cronjob")
+		delete(additionalProperties, "lifecycle_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

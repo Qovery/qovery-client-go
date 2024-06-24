@@ -771,6 +771,7 @@ Class | Method | HTTP request | Description
  - [JobDeploymentRestrictionResponse](docs/JobDeploymentRestrictionResponse.md)
  - [JobDeploymentRestrictionResponseList](docs/JobDeploymentRestrictionResponseList.md)
  - [JobForceEvent](docs/JobForceEvent.md)
+ - [JobLifecycleTypeEnum](docs/JobLifecycleTypeEnum.md)
  - [JobRequest](docs/JobRequest.md)
  - [JobRequestAllOfSchedule](docs/JobRequestAllOfSchedule.md)
  - [JobRequestAllOfScheduleCronjob](docs/JobRequestAllOfScheduleCronjob.md)

@@ -23,6 +23,7 @@ type LifecycleJobResponseAllOfSchedule struct {
 	OnStart              *JobRequestAllOfScheduleOnStart `json:"on_start,omitempty"`
 	OnStop               *JobRequestAllOfScheduleOnStart `json:"on_stop,omitempty"`
 	OnDelete             *JobRequestAllOfScheduleOnStart `json:"on_delete,omitempty"`
+	LifecycleType        *JobLifecycleTypeEnum           `json:"lifecycle_type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -141,6 +142,38 @@ func (o *LifecycleJobResponseAllOfSchedule) SetOnDelete(v JobRequestAllOfSchedul
 	o.OnDelete = &v
 }
 
+// GetLifecycleType returns the LifecycleType field value if set, zero value otherwise.
+func (o *LifecycleJobResponseAllOfSchedule) GetLifecycleType() JobLifecycleTypeEnum {
+	if o == nil || IsNil(o.LifecycleType) {
+		var ret JobLifecycleTypeEnum
+		return ret
+	}
+	return *o.LifecycleType
+}
+
+// GetLifecycleTypeOk returns a tuple with the LifecycleType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LifecycleJobResponseAllOfSchedule) GetLifecycleTypeOk() (*JobLifecycleTypeEnum, bool) {
+	if o == nil || IsNil(o.LifecycleType) {
+		return nil, false
+	}
+	return o.LifecycleType, true
+}
+
+// HasLifecycleType returns a boolean if a field has been set.
+func (o *LifecycleJobResponseAllOfSchedule) HasLifecycleType() bool {
+	if o != nil && !IsNil(o.LifecycleType) {
+		return true
+	}
+
+	return false
+}
+
+// SetLifecycleType gets a reference to the given JobLifecycleTypeEnum and assigns it to the LifecycleType field.
+func (o *LifecycleJobResponseAllOfSchedule) SetLifecycleType(v JobLifecycleTypeEnum) {
+	o.LifecycleType = &v
+}
+
 func (o LifecycleJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -159,6 +192,9 @@ func (o LifecycleJobResponseAllOfSchedule) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.OnDelete) {
 		toSerialize["on_delete"] = o.OnDelete
+	}
+	if !IsNil(o.LifecycleType) {
+		toSerialize["lifecycle_type"] = o.LifecycleType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +221,7 @@ func (o *LifecycleJobResponseAllOfSchedule) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "on_start")
 		delete(additionalProperties, "on_stop")
 		delete(additionalProperties, "on_delete")
+		delete(additionalProperties, "lifecycle_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

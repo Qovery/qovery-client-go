@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **OnStart** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
 **OnStop** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
 **OnDelete** | Pointer to [**JobRequestAllOfScheduleOnStart**](JobRequestAllOfScheduleOnStart.md) |  | [optional] 
+**LifecycleType** | Pointer to [**JobLifecycleTypeEnum**](JobLifecycleTypeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetOnDelete sets OnDelete field to given value.
 `func (o *LifecycleJobResponseAllOfSchedule) HasOnDelete() bool`
 
 HasOnDelete returns a boolean if a field has been set.
+
+### GetLifecycleType
+
+`func (o *LifecycleJobResponseAllOfSchedule) GetLifecycleType() JobLifecycleTypeEnum`
+
+GetLifecycleType returns the LifecycleType field if non-nil, zero value otherwise.
+
+### GetLifecycleTypeOk
+
+`func (o *LifecycleJobResponseAllOfSchedule) GetLifecycleTypeOk() (*JobLifecycleTypeEnum, bool)`
+
+GetLifecycleTypeOk returns a tuple with the LifecycleType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLifecycleType
+
+`func (o *LifecycleJobResponseAllOfSchedule) SetLifecycleType(v JobLifecycleTypeEnum)`
+
+SetLifecycleType sets LifecycleType field to given value.
+
+### HasLifecycleType
+
+`func (o *LifecycleJobResponseAllOfSchedule) HasLifecycleType() bool`
+
+HasLifecycleType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

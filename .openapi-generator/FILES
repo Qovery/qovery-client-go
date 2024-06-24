@@ -417,6 +417,7 @@ docs/JobDeploymentRestrictionResponse.md
 docs/JobDeploymentRestrictionResponseList.md
 docs/JobEnvironmentVariableAPI.md
 docs/JobForceEvent.md
+docs/JobLifecycleTypeEnum.md
 docs/JobMainCallsAPI.md
 docs/JobRequest.md
 docs/JobRequestAllOfSchedule.md
@@ -893,6 +894,7 @@ model_job_deployment_restriction_request.go
 model_job_deployment_restriction_response.go
 model_job_deployment_restriction_response_list.go
 model_job_force_event.go
+model_job_lifecycle_type_enum.go
 model_job_request.go
 model_job_request_all_of_schedule.go
 model_job_request_all_of_schedule_cronjob.go
