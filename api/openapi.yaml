@@ -14574,6 +14574,57 @@ paths:
       summary: Import variables
       tags:
       - Variable Main Calls
+  /environment/{environmentId}/cleanFailedJobs:
+    post:
+      operationId: cleanFailedJobs
+      parameters:
+      - explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cleanFailedJobs_request'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cleanFailedJobs_200_response'
+          description: OK
+      summary: Clean failed jobs within an environment
+      tags:
+      - Environment Actions
+      x-stoplight:
+        id: ivybizdyn78lh
+  /job/{jobId}/cleanFailedJob:
+    post:
+      operationId: cleanFailedJob
+      parameters:
+      - explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/cleanFailedJob_200_response'
+          description: OK
+      summary: Clean a failed job
+      tags:
+      - Job Actions
+      x-stoplight:
+        id: eu77thczavme3
 components:
   parameters:
     applicationId:
@@ -27968,6 +28019,60 @@ components:
           tag: tag
           status: null
         page_size: 20
+    cleanFailedJobs_request:
+      properties:
+        job_ids:
+          items:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: j5zm35sm6zxp4
+          type: array
+          x-stoplight:
+            id: 9buks2moeeppz
+      type: object
+    cleanFailedJobs_200_response:
+      example:
+        clean_job_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        clean_kubernetes_jobs:
+        - clean_kubernetes_jobs
+        - clean_kubernetes_jobs
+      properties:
+        clean_job_ids:
+          items:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: 7w5e7cmsx9pol
+          type: array
+          x-stoplight:
+            id: wfo0kfbtlr6uu
+        clean_kubernetes_jobs:
+          items:
+            type: string
+            x-stoplight:
+              id: y2fcpi3zltomf
+          type: array
+          x-stoplight:
+            id: hga9nj7dygmcf
+      type: object
+    cleanFailedJob_200_response:
+      example:
+        clean_kubernetes_jobs:
+        - clean_kubernetes_jobs
+        - clean_kubernetes_jobs
+      properties:
+        clean_kubernetes_jobs:
+          items:
+            type: string
+            x-stoplight:
+              id: r4hfdr509e05z
+          type: array
+          x-stoplight:
+            id: 2mgfos3e33m8v
+      type: object
     ServicePortRequest_ports_inner:
       example:
         publicly_accessible: true

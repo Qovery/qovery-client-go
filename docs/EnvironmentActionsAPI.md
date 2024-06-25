@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CancelEnvironmentDeployment**](EnvironmentActionsAPI.md#CancelEnvironmentDeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
+[**CleanFailedJobs**](EnvironmentActionsAPI.md#CleanFailedJobs) | **Post** /environment/{environmentId}/cleanFailedJobs | Clean failed jobs within an environment
 [**CloneEnvironment**](EnvironmentActionsAPI.md#CloneEnvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 [**DeleteSelectedServices**](EnvironmentActionsAPI.md#DeleteSelectedServices) | **Post** /environment/{environmentId}/service/delete | Delete services
 [**DeployAllServices**](EnvironmentActionsAPI.md#DeployAllServices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
@@ -73,6 +74,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EnvironmentStatus**](EnvironmentStatus.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CleanFailedJobs
+
+> CleanFailedJobs200Response CleanFailedJobs(ctx, environmentId).CleanFailedJobsRequest(cleanFailedJobsRequest).Execute()
+
+Clean failed jobs within an environment
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "environmentId_example" // string | 
+	cleanFailedJobsRequest := *openapiclient.NewCleanFailedJobsRequest() // CleanFailedJobsRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentActionsAPI.CleanFailedJobs(context.Background(), environmentId).CleanFailedJobsRequest(cleanFailedJobsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.CleanFailedJobs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CleanFailedJobs`: CleanFailedJobs200Response
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.CleanFailedJobs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCleanFailedJobsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cleanFailedJobsRequest** | [**CleanFailedJobsRequest**](CleanFailedJobsRequest.md) |  | 
+
+### Return type
+
+[**CleanFailedJobs200Response**](CleanFailedJobs200Response.md)
 
 ### Authorization
 

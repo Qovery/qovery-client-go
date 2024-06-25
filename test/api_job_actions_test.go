@@ -22,6 +22,20 @@ func Test_qovery_JobActionsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test JobActionsAPIService CleanFailedJob", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var jobId string
+
+		resp, httpRes, err := apiClient.JobActionsAPI.CleanFailedJob(context.Background(), jobId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test JobActionsAPIService DeployJob", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

@@ -286,6 +286,7 @@ Class | Method | HTTP request | Description
 *EnvironmentAPI* | [**CheckHelmRepository**](docs/EnvironmentAPI.md#checkhelmrepository) | **Post** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
 *EnvironmentAPI* | [**DeployAllApplications**](docs/EnvironmentAPI.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsAPI* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsAPI.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
+*EnvironmentActionsAPI* | [**CleanFailedJobs**](docs/EnvironmentActionsAPI.md#cleanfailedjobs) | **Post** /environment/{environmentId}/cleanFailedJobs | Clean failed jobs within an environment
 *EnvironmentActionsAPI* | [**CloneEnvironment**](docs/EnvironmentActionsAPI.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
 *EnvironmentActionsAPI* | [**DeleteSelectedServices**](docs/EnvironmentActionsAPI.md#deleteselectedservices) | **Post** /environment/{environmentId}/service/delete | Delete services
 *EnvironmentActionsAPI* | [**DeployAllServices**](docs/EnvironmentActionsAPI.md#deployallservices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
@@ -365,6 +366,7 @@ Class | Method | HTTP request | Description
 *HelmsAPI* | [**GetDefaultHelmAdvancedSettings**](docs/HelmsAPI.md#getdefaulthelmadvancedsettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 *HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
+*JobActionsAPI* | [**CleanFailedJob**](docs/JobActionsAPI.md#cleanfailedjob) | **Post** /job/{jobId}/cleanFailedJob | Clean a failed job
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
 *JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
@@ -533,6 +535,9 @@ Class | Method | HTTP request | Description
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [BuildPackLanguageEnum](docs/BuildPackLanguageEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
+ - [CleanFailedJob200Response](docs/CleanFailedJob200Response.md)
+ - [CleanFailedJobs200Response](docs/CleanFailedJobs200Response.md)
+ - [CleanFailedJobsRequest](docs/CleanFailedJobsRequest.md)
  - [CloneEnvironmentRequest](docs/CloneEnvironmentRequest.md)
  - [CloneServiceRequest](docs/CloneServiceRequest.md)
  - [CloudProvider](docs/CloudProvider.md)

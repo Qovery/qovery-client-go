@@ -4,10 +4,79 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CleanFailedJob**](JobActionsAPI.md#CleanFailedJob) | **Post** /job/{jobId}/cleanFailedJob | Clean a failed job
 [**DeployJob**](JobActionsAPI.md#DeployJob) | **Post** /job/{jobId}/deploy | Deploy job
 [**RedeployJob**](JobActionsAPI.md#RedeployJob) | **Post** /job/{jobId}/redeploy | Redeploy job
 [**StopJob**](JobActionsAPI.md#StopJob) | **Post** /job/{jobId}/stop | Stop job
 
+
+
+## CleanFailedJob
+
+> CleanFailedJob200Response CleanFailedJob(ctx, jobId).Execute()
+
+Clean a failed job
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	jobId := "jobId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobActionsAPI.CleanFailedJob(context.Background(), jobId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.CleanFailedJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CleanFailedJob`: CleanFailedJob200Response
+	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.CleanFailedJob`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCleanFailedJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**CleanFailedJob200Response**](CleanFailedJob200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## DeployJob
