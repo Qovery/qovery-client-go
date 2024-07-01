@@ -271,6 +271,8 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DefaultAPI* | [**GetEnvironmentLifecycleTemplate**](docs/DefaultAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle tempalte
+*DefaultAPI* | [**GetEnvironmentLifecycleTemplates**](docs/DefaultAPI.md#getenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | Your GET endpoint
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -794,6 +796,13 @@ Class | Method | HTTP request | Description
  - [LabelsGroupAssociatedItemType](docs/LabelsGroupAssociatedItemType.md)
  - [LifecycleJobResponse](docs/LifecycleJobResponse.md)
  - [LifecycleJobResponseAllOfSchedule](docs/LifecycleJobResponseAllOfSchedule.md)
+ - [LifecycleTemplateListResponse](docs/LifecycleTemplateListResponse.md)
+ - [LifecycleTemplateListResponseResultsInner](docs/LifecycleTemplateListResponseResultsInner.md)
+ - [LifecycleTemplateResponse](docs/LifecycleTemplateResponse.md)
+ - [LifecycleTemplateResponseEventsInner](docs/LifecycleTemplateResponseEventsInner.md)
+ - [LifecycleTemplateResponseResources](docs/LifecycleTemplateResponseResources.md)
+ - [LifecycleTemplateResponseVariables](docs/LifecycleTemplateResponseVariables.md)
+ - [LifecycleTemplateResponseVariablesFile](docs/LifecycleTemplateResponseVariablesFile.md)
  - [Link](docs/Link.md)
  - [LinkResponseList](docs/LinkResponseList.md)
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)

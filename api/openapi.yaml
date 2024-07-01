@@ -14625,6 +14625,69 @@ paths:
       - Job Actions
       x-stoplight:
         id: eu77thczavme3
+  /environment/{environmentId}/lifecycleTemplate:
+    get:
+      operationId: getEnvironmentLifecycleTemplates
+      parameters:
+      - explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LifecycleTemplateListResponse'
+          description: List available lifecyle templates for this environment
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Your GET endpoint
+      tags: []
+      x-stoplight:
+        id: 597v5i445zf0v
+  /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId}:
+    get:
+      operationId: getEnvironmentLifecycleTemplate
+      parameters:
+      - explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: lifecycleTemplateId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LifecycleTemplateResponse'
+          description: Lifecycle templ
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get specific lifecycle tempalte
+      tags: []
+      x-stoplight:
+        id: yatyf4hs2kwc0
 components:
   parameters:
     applicationId:
@@ -27769,6 +27832,102 @@ components:
       type: string
       x-stoplight:
         id: tz1t23a291l51
+    LifecycleTemplateListResponse:
+      example:
+        results:
+        - name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/LifecycleTemplateListResponse_results_inner'
+          type: array
+          x-stoplight:
+            id: 7641tagxo4zpi
+      required:
+      - results
+      title: LifecycleTemplateListResponse
+      type: object
+      x-stoplight:
+        id: xors8ncf4ky35
+    LifecycleTemplateResponse:
+      example:
+        sourceUrl: https://openapi-generator.tech
+        variables:
+          default: default
+          file:
+            path: path
+          is_secret: true
+          name: name
+          description: description
+        name: name
+        description: description
+        resources:
+          cpu_milli: 0
+          ram_mib: 6
+        cloud_provider: AWS
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        events:
+        - entrpoint: entrpoint
+          name: name
+          command:
+          - command
+          - command
+        - entrpoint: entrpoint
+          name: name
+          command:
+          - command
+          - command
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: glttp2ir2fk7e
+        name:
+          type: string
+          x-stoplight:
+            id: xrjua7zbq9eut
+        description:
+          type: string
+          x-stoplight:
+            id: humhra0a53b09
+        sourceUrl:
+          description: location of the template
+          format: uri
+          type: string
+          x-stoplight:
+            id: 6wwoi4u4iggbr
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+        events:
+          description: lis of pre-defined command for each event
+          items:
+            $ref: '#/components/schemas/LifecycleTemplateResponse_events_inner'
+          type: array
+          x-stoplight:
+            id: 5dzxa31dbj27j
+        resources:
+          $ref: '#/components/schemas/LifecycleTemplateResponse_resources'
+        variables:
+          $ref: '#/components/schemas/LifecycleTemplateResponse_variables'
+      required:
+      - cloud_provider
+      - description
+      - events
+      - id
+      - name
+      - resources
+      - sourceUrl
+      - variables
+      title: LifecycleTemplateResponse
+      type: object
+      x-stoplight:
+        id: bvzo0blwz03tn
     deleteMember_request:
       properties:
         user_id:
@@ -29735,6 +29894,136 @@ components:
       type: object
       x-stoplight:
         id: fr4th9yrro2rh
+    LifecycleTemplateListResponse_results_inner:
+      example:
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: qwkicuwqfvcw4
+        name:
+          type: string
+          x-stoplight:
+            id: eec0zks0ju8mm
+        description:
+          type: string
+          x-stoplight:
+            id: yg0unyqcvyzcn
+      required:
+      - description
+      - id
+      - name
+      type: object
+      x-stoplight:
+        id: uozhvuyd6pdmu
+    LifecycleTemplateResponse_events_inner:
+      example:
+        entrpoint: entrpoint
+        name: name
+        command:
+        - command
+        - command
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: gjv4fce8vssmm
+        entrpoint:
+          type: string
+          x-stoplight:
+            id: 0i1rd5p3sk6f5
+        command:
+          items:
+            type: string
+            x-stoplight:
+              id: pcxa5np84g1ze
+          type: array
+          x-stoplight:
+            id: gpsvjqfwkwwft
+      required:
+      - command
+      - name
+      type: object
+      x-stoplight:
+        id: c2tzn0jhhq3o9
+    LifecycleTemplateResponse_resources:
+      example:
+        cpu_milli: 0
+        ram_mib: 6
+      properties:
+        cpu_milli:
+          type: integer
+          x-stoplight:
+            id: jayn5f1p1jxh2
+        ram_mib:
+          type: integer
+          x-stoplight:
+            id: 65ta45mnalu3c
+      required:
+      - cpu_milli
+      - ram_mib
+      type: object
+      x-stoplight:
+        id: q6p0dfgqw56m2
+    LifecycleTemplateResponse_variables_file:
+      description: |
+        If present, the variable should be a file instead of a raw value
+      example:
+        path: path
+      properties:
+        path:
+          type: string
+          x-stoplight:
+            id: njn2ukyaf5ra1
+      required:
+      - path
+      type: object
+      x-stoplight:
+        id: p59g1uihh0oby
+    LifecycleTemplateResponse_variables:
+      description: Variables to inject at the creation of this lifecycle job
+      example:
+        default: default
+        file:
+          path: path
+        is_secret: true
+        name: name
+        description: description
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: anzb9mq0akzg0
+        description:
+          description: |
+            Short description to explain the purpose of the variable
+          type: string
+          x-stoplight:
+            id: pqluj2oprib19
+        default:
+          description: Default value for the variable
+          type: string
+          x-stoplight:
+            id: 3hb20sjk3hlcd
+        is_secret:
+          description: If the variable should be injected as a secret
+          type: boolean
+          x-stoplight:
+            id: zf4hv4n1piid6
+        file:
+          $ref: '#/components/schemas/LifecycleTemplateResponse_variables_file'
+      required:
+      - default
+      - description
+      - is_secret
+      - name
+      type: object
+      x-stoplight:
+        id: 6a91s0nhrkccw
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

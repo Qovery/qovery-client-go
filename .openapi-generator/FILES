@@ -34,6 +34,7 @@ api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
+api_default.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -256,6 +257,7 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
+docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -441,6 +443,13 @@ docs/Label.md
 docs/LabelsGroupAssociatedItemType.md
 docs/LifecycleJobResponse.md
 docs/LifecycleJobResponseAllOfSchedule.md
+docs/LifecycleTemplateListResponse.md
+docs/LifecycleTemplateListResponseResultsInner.md
+docs/LifecycleTemplateResponse.md
+docs/LifecycleTemplateResponseEventsInner.md
+docs/LifecycleTemplateResponseResources.md
+docs/LifecycleTemplateResponseVariables.md
+docs/LifecycleTemplateResponseVariablesFile.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/LinkedServiceTypeEnum.md
@@ -918,6 +927,13 @@ model_label.go
 model_labels_group_associated_item_type.go
 model_lifecycle_job_response.go
 model_lifecycle_job_response_all_of_schedule.go
+model_lifecycle_template_list_response.go
+model_lifecycle_template_list_response_results_inner.go
+model_lifecycle_template_response.go
+model_lifecycle_template_response_events_inner.go
+model_lifecycle_template_response_resources.go
+model_lifecycle_template_response_variables.go
+model_lifecycle_template_response_variables_file.go
 model_link.go
 model_link_response_list.go
 model_linked_service_type_enum.go
@@ -1108,6 +1124,7 @@ test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
+test/api_default_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go
