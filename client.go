@@ -111,8 +111,6 @@ type APIClient struct {
 
 	DatabasesAPI *DatabasesAPIService
 
-	DefaultAPI *DefaultAPIService
-
 	DeploymentStageMainCallsAPI *DeploymentStageMainCallsAPIService
 
 	EnvironmentAPI *EnvironmentAPIService
@@ -170,6 +168,8 @@ type APIClient struct {
 	JobSecretAPI *JobSecretAPIService
 
 	JobsAPI *JobsAPIService
+
+	LifecycleTemplateMainCallsAPI *LifecycleTemplateMainCallsAPIService
 
 	MembersAPI *MembersAPIService
 
@@ -253,7 +253,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DatabaseDeploymentHistoryAPI = (*DatabaseDeploymentHistoryAPIService)(&c.common)
 	c.DatabaseMainCallsAPI = (*DatabaseMainCallsAPIService)(&c.common)
 	c.DatabasesAPI = (*DatabasesAPIService)(&c.common)
-	c.DefaultAPI = (*DefaultAPIService)(&c.common)
 	c.DeploymentStageMainCallsAPI = (*DeploymentStageMainCallsAPIService)(&c.common)
 	c.EnvironmentAPI = (*EnvironmentAPIService)(&c.common)
 	c.EnvironmentActionsAPI = (*EnvironmentActionsAPIService)(&c.common)
@@ -283,6 +282,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobMainCallsAPI = (*JobMainCallsAPIService)(&c.common)
 	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
+	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
 	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)
 	c.OrganizationAnnotationsGroupAPI = (*OrganizationAnnotationsGroupAPIService)(&c.common)

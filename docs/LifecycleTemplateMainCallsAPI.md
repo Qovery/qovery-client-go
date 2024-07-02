@@ -1,11 +1,11 @@
-# \DefaultAPI
+# \LifecycleTemplateMainCallsAPI
 
 All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetEnvironmentLifecycleTemplate**](DefaultAPI.md#GetEnvironmentLifecycleTemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle tempalte
-[**GetEnvironmentLifecycleTemplates**](DefaultAPI.md#GetEnvironmentLifecycleTemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | Your GET endpoint
+[**GetEnvironmentLifecycleTemplate**](LifecycleTemplateMainCallsAPI.md#GetEnvironmentLifecycleTemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
+[**ListEnvironmentLifecycleTemplates**](LifecycleTemplateMainCallsAPI.md#ListEnvironmentLifecycleTemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 
 
 
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 > LifecycleTemplateResponse GetEnvironmentLifecycleTemplate(ctx, environmentId, lifecycleTemplateId).Execute()
 
-Get specific lifecycle tempalte
+Get specific lifecycle template
 
 ### Example
 
@@ -33,13 +33,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.GetEnvironmentLifecycleTemplate(context.Background(), environmentId, lifecycleTemplateId).Execute()
+	resp, r, err := apiClient.LifecycleTemplateMainCallsAPI.GetEnvironmentLifecycleTemplate(context.Background(), environmentId, lifecycleTemplateId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetEnvironmentLifecycleTemplate``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `LifecycleTemplateMainCallsAPI.GetEnvironmentLifecycleTemplate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 	// response from `GetEnvironmentLifecycleTemplate`: LifecycleTemplateResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetEnvironmentLifecycleTemplate`: %v\n", resp)
+	fmt.Fprintf(os.Stdout, "Response from `LifecycleTemplateMainCallsAPI.GetEnvironmentLifecycleTemplate`: %v\n", resp)
 }
 ```
 
@@ -80,11 +80,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetEnvironmentLifecycleTemplates
+## ListEnvironmentLifecycleTemplates
 
-> LifecycleTemplateListResponse GetEnvironmentLifecycleTemplates(ctx, environmentId).Execute()
+> LifecycleTemplateListResponse ListEnvironmentLifecycleTemplates(ctx, environmentId).Execute()
 
-Your GET endpoint
+List available lifecycle template for this environment
 
 ### Example
 
@@ -103,13 +103,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.GetEnvironmentLifecycleTemplates(context.Background(), environmentId).Execute()
+	resp, r, err := apiClient.LifecycleTemplateMainCallsAPI.ListEnvironmentLifecycleTemplates(context.Background(), environmentId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetEnvironmentLifecycleTemplates``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `LifecycleTemplateMainCallsAPI.ListEnvironmentLifecycleTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetEnvironmentLifecycleTemplates`: LifecycleTemplateListResponse
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetEnvironmentLifecycleTemplates`: %v\n", resp)
+	// response from `ListEnvironmentLifecycleTemplates`: LifecycleTemplateListResponse
+	fmt.Fprintf(os.Stdout, "Response from `LifecycleTemplateMainCallsAPI.ListEnvironmentLifecycleTemplates`: %v\n", resp)
 }
 ```
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetEnvironmentLifecycleTemplatesRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListEnvironmentLifecycleTemplatesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

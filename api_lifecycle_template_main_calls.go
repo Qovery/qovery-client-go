@@ -20,12 +20,12 @@ import (
 	"strings"
 )
 
-// DefaultAPIService DefaultAPI service
-type DefaultAPIService service
+// LifecycleTemplateMainCallsAPIService LifecycleTemplateMainCallsAPI service
+type LifecycleTemplateMainCallsAPIService service
 
 type ApiGetEnvironmentLifecycleTemplateRequest struct {
 	ctx                 context.Context
-	ApiService          *DefaultAPIService
+	ApiService          *LifecycleTemplateMainCallsAPIService
 	environmentId       string
 	lifecycleTemplateId string
 }
@@ -35,14 +35,14 @@ func (r ApiGetEnvironmentLifecycleTemplateRequest) Execute() (*LifecycleTemplate
 }
 
 /*
-GetEnvironmentLifecycleTemplate Get specific lifecycle tempalte
+GetEnvironmentLifecycleTemplate Get specific lifecycle template
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId
  @param lifecycleTemplateId
  @return ApiGetEnvironmentLifecycleTemplateRequest
 */
-func (a *DefaultAPIService) GetEnvironmentLifecycleTemplate(ctx context.Context, environmentId string, lifecycleTemplateId string) ApiGetEnvironmentLifecycleTemplateRequest {
+func (a *LifecycleTemplateMainCallsAPIService) GetEnvironmentLifecycleTemplate(ctx context.Context, environmentId string, lifecycleTemplateId string) ApiGetEnvironmentLifecycleTemplateRequest {
 	return ApiGetEnvironmentLifecycleTemplateRequest{
 		ApiService:          a,
 		ctx:                 ctx,
@@ -53,7 +53,7 @@ func (a *DefaultAPIService) GetEnvironmentLifecycleTemplate(ctx context.Context,
 
 // Execute executes the request
 //  @return LifecycleTemplateResponse
-func (a *DefaultAPIService) GetEnvironmentLifecycleTemplateExecute(r ApiGetEnvironmentLifecycleTemplateRequest) (*LifecycleTemplateResponse, *http.Response, error) {
+func (a *LifecycleTemplateMainCallsAPIService) GetEnvironmentLifecycleTemplateExecute(r ApiGetEnvironmentLifecycleTemplateRequest) (*LifecycleTemplateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -61,7 +61,7 @@ func (a *DefaultAPIService) GetEnvironmentLifecycleTemplateExecute(r ApiGetEnvir
 		localVarReturnValue *LifecycleTemplateResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetEnvironmentLifecycleTemplate")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleTemplateMainCallsAPIService.GetEnvironmentLifecycleTemplate")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -142,25 +142,25 @@ func (a *DefaultAPIService) GetEnvironmentLifecycleTemplateExecute(r ApiGetEnvir
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetEnvironmentLifecycleTemplatesRequest struct {
+type ApiListEnvironmentLifecycleTemplatesRequest struct {
 	ctx           context.Context
-	ApiService    *DefaultAPIService
+	ApiService    *LifecycleTemplateMainCallsAPIService
 	environmentId string
 }
 
-func (r ApiGetEnvironmentLifecycleTemplatesRequest) Execute() (*LifecycleTemplateListResponse, *http.Response, error) {
-	return r.ApiService.GetEnvironmentLifecycleTemplatesExecute(r)
+func (r ApiListEnvironmentLifecycleTemplatesRequest) Execute() (*LifecycleTemplateListResponse, *http.Response, error) {
+	return r.ApiService.ListEnvironmentLifecycleTemplatesExecute(r)
 }
 
 /*
-GetEnvironmentLifecycleTemplates Your GET endpoint
+ListEnvironmentLifecycleTemplates List available lifecycle template for this environment
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId
- @return ApiGetEnvironmentLifecycleTemplatesRequest
+ @return ApiListEnvironmentLifecycleTemplatesRequest
 */
-func (a *DefaultAPIService) GetEnvironmentLifecycleTemplates(ctx context.Context, environmentId string) ApiGetEnvironmentLifecycleTemplatesRequest {
-	return ApiGetEnvironmentLifecycleTemplatesRequest{
+func (a *LifecycleTemplateMainCallsAPIService) ListEnvironmentLifecycleTemplates(ctx context.Context, environmentId string) ApiListEnvironmentLifecycleTemplatesRequest {
+	return ApiListEnvironmentLifecycleTemplatesRequest{
 		ApiService:    a,
 		ctx:           ctx,
 		environmentId: environmentId,
@@ -169,7 +169,7 @@ func (a *DefaultAPIService) GetEnvironmentLifecycleTemplates(ctx context.Context
 
 // Execute executes the request
 //  @return LifecycleTemplateListResponse
-func (a *DefaultAPIService) GetEnvironmentLifecycleTemplatesExecute(r ApiGetEnvironmentLifecycleTemplatesRequest) (*LifecycleTemplateListResponse, *http.Response, error) {
+func (a *LifecycleTemplateMainCallsAPIService) ListEnvironmentLifecycleTemplatesExecute(r ApiListEnvironmentLifecycleTemplatesRequest) (*LifecycleTemplateListResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -177,7 +177,7 @@ func (a *DefaultAPIService) GetEnvironmentLifecycleTemplatesExecute(r ApiGetEnvi
 		localVarReturnValue *LifecycleTemplateListResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.GetEnvironmentLifecycleTemplates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "LifecycleTemplateMainCallsAPIService.ListEnvironmentLifecycleTemplates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

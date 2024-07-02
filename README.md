@@ -271,8 +271,6 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
-*DefaultAPI* | [**GetEnvironmentLifecycleTemplate**](docs/DefaultAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle tempalte
-*DefaultAPI* | [**GetEnvironmentLifecycleTemplates**](docs/DefaultAPI.md#getenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | Your GET endpoint
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -403,6 +401,8 @@ Class | Method | HTTP request | Description
 *JobsAPI* | [**GetDefaultJobAdvancedSettings**](docs/JobsAPI.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 *JobsAPI* | [**GetEnvironmentJobStatus**](docs/JobsAPI.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 *JobsAPI* | [**ListJobs**](docs/JobsAPI.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
+*LifecycleTemplateMainCallsAPI* | [**GetEnvironmentLifecycleTemplate**](docs/LifecycleTemplateMainCallsAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
+*LifecycleTemplateMainCallsAPI* | [**ListEnvironmentLifecycleTemplates**](docs/LifecycleTemplateMainCallsAPI.md#listenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 *MembersAPI* | [**DeleteInviteMember**](docs/MembersAPI.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
 *MembersAPI* | [**DeleteMember**](docs/MembersAPI.md#deletemember) | **Delete** /organization/{organizationId}/member | Remove a member
 *MembersAPI* | [**EditOrganizationMemberRole**](docs/MembersAPI.md#editorganizationmemberrole) | **Put** /organization/{organizationId}/member | Edit an organization member role

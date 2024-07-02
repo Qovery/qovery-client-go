@@ -1,7 +1,7 @@
 /*
 Qovery API
 
-Testing DefaultAPIService
+Testing LifecycleTemplateMainCallsAPIService
 
 */
 
@@ -17,19 +17,19 @@ import (
 	"testing"
 )
 
-func Test_qovery_DefaultAPIService(t *testing.T) {
+func Test_qovery_LifecycleTemplateMainCallsAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test DefaultAPIService GetEnvironmentLifecycleTemplate", func(t *testing.T) {
+	t.Run("Test LifecycleTemplateMainCallsAPIService GetEnvironmentLifecycleTemplate", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var environmentId string
 		var lifecycleTemplateId string
 
-		resp, httpRes, err := apiClient.DefaultAPI.GetEnvironmentLifecycleTemplate(context.Background(), environmentId, lifecycleTemplateId).Execute()
+		resp, httpRes, err := apiClient.LifecycleTemplateMainCallsAPI.GetEnvironmentLifecycleTemplate(context.Background(), environmentId, lifecycleTemplateId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -37,13 +37,13 @@ func Test_qovery_DefaultAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DefaultAPIService GetEnvironmentLifecycleTemplates", func(t *testing.T) {
+	t.Run("Test LifecycleTemplateMainCallsAPIService ListEnvironmentLifecycleTemplates", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var environmentId string
 
-		resp, httpRes, err := apiClient.DefaultAPI.GetEnvironmentLifecycleTemplates(context.Background(), environmentId).Execute()
+		resp, httpRes, err := apiClient.LifecycleTemplateMainCallsAPI.ListEnvironmentLifecycleTemplates(context.Background(), environmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

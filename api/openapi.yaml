@@ -118,6 +118,7 @@ tags:
 - name: User Sign Up
 - name: Variable Main Calls
 - name: Helm Custom Domain
+- name: Lifecycle Template Main Calls
 paths:
   /organization:
     get:
@@ -14627,7 +14628,7 @@ paths:
         id: eu77thczavme3
   /environment/{environmentId}/lifecycleTemplate:
     get:
-      operationId: getEnvironmentLifecycleTemplates
+      operationId: listEnvironmentLifecycleTemplates
       parameters:
       - explode: false
         in: path
@@ -14649,8 +14650,9 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Your GET endpoint
-      tags: []
+      summary: List available lifecycle template for this environment
+      tags:
+      - Lifecycle Template Main Calls
       x-stoplight:
         id: 597v5i445zf0v
   /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId}:
@@ -14677,15 +14679,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/LifecycleTemplateResponse'
-          description: Lifecycle templ
+          description: Lifecycle template
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Get specific lifecycle tempalte
-      tags: []
+      summary: Get specific lifecycle template
+      tags:
+      - Lifecycle Template Main Calls
       x-stoplight:
         id: yatyf4hs2kwc0
 components:
@@ -30151,6 +30154,9 @@ x-tagGroups:
 - name: Variable
   tags:
   - Variable Main Calls
+- name: Lifecycle Template
+  tags:
+  - Lifecycle Template Main Calls
 - name: Admin
   tags:
   - User Sign Up

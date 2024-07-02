@@ -34,7 +34,6 @@ api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
-api_default.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -64,6 +63,7 @@ api_job_environment_variable.go
 api_job_main_calls.go
 api_job_secret.go
 api_jobs.go
+api_lifecycle_template_main_calls.go
 api_members.go
 api_organization_account_git_repositories.go
 api_organization_annotations_group.go
@@ -257,7 +257,6 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
-docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -445,6 +444,7 @@ docs/LifecycleJobResponse.md
 docs/LifecycleJobResponseAllOfSchedule.md
 docs/LifecycleTemplateListResponse.md
 docs/LifecycleTemplateListResponseResultsInner.md
+docs/LifecycleTemplateMainCallsAPI.md
 docs/LifecycleTemplateResponse.md
 docs/LifecycleTemplateResponseEventsInner.md
 docs/LifecycleTemplateResponseResources.md
@@ -1124,7 +1124,6 @@ test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
-test/api_default_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go
@@ -1154,6 +1153,7 @@ test/api_job_environment_variable_test.go
 test/api_job_main_calls_test.go
 test/api_job_secret_test.go
 test/api_jobs_test.go
+test/api_lifecycle_template_main_calls_test.go
 test/api_members_test.go
 test/api_organization_account_git_repositories_test.go
 test/api_organization_annotations_group_test.go
