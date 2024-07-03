@@ -40,6 +40,7 @@ type VariableResponse struct {
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
 	OwnedBy              *string `json:"owned_by,omitempty"`
 	IsSecret             bool    `json:"is_secret"`
+	Description          *string `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -506,6 +507,38 @@ func (o *VariableResponse) SetIsSecret(v bool) {
 	o.IsSecret = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise.
+func (o *VariableResponse) GetDescription() string {
+	if o == nil || IsNil(o.Description) {
+		var ret string
+		return ret
+	}
+	return *o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VariableResponse) GetDescriptionOk() (*string, bool) {
+	if o == nil || IsNil(o.Description) {
+		return nil, false
+	}
+	return o.Description, true
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *VariableResponse) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
+func (o *VariableResponse) SetDescription(v string) {
+	o.Description = &v
+}
+
 func (o VariableResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -547,6 +580,9 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
 	toSerialize["is_secret"] = o.IsSecret
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -611,6 +647,7 @@ func (o *VariableResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "owned_by")
 		delete(additionalProperties, "is_secret")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -31,7 +31,9 @@ type VariableRequest struct {
 	IsSecret      bool                 `json:"is_secret"`
 	VariableScope APIVariableScopeEnum `json:"variable_scope"`
 	// based on the selected scope, it contains the ID of the service, environment or project where the variable is attached
-	VariableParentId     string `json:"variable_parent_id"`
+	VariableParentId string `json:"variable_parent_id"`
+	// optional variable description (255 characters maximum)
+	Description          NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -222,6 +224,49 @@ func (o *VariableRequest) SetVariableParentId(v string) {
 	o.VariableParentId = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableRequest) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *VariableRequest) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *VariableRequest) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *VariableRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *VariableRequest) UnsetDescription() {
+	o.Description.Unset()
+}
+
 func (o VariableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -240,6 +285,9 @@ func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_secret"] = o.IsSecret
 	toSerialize["variable_scope"] = o.VariableScope
 	toSerialize["variable_parent_id"] = o.VariableParentId
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -293,6 +341,7 @@ func (o *VariableRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "is_secret")
 		delete(additionalProperties, "variable_scope")
 		delete(additionalProperties, "variable_parent_id")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 

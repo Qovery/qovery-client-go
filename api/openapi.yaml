@@ -21953,6 +21953,8 @@ components:
       type: object
     EnvironmentVariableEditRequest:
       example:
+        mount_path: mount_path
+        description: description
         value: value
         key: key
       properties:
@@ -21962,6 +21964,18 @@ components:
         value:
           description: value of the env variable.
           type: string
+        mount_path:
+          nullable: true
+          type: string
+          x-stoplight:
+            id: dj004tdqp6pe7
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: rf6wxepnkcoyv
       required:
       - key
       type: object
@@ -26863,6 +26877,7 @@ components:
       example:
         alias_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         alias_scope: APPLICATION
+        description: description
         key: key
       properties:
         key:
@@ -26874,6 +26889,13 @@ components:
           description: the id of the variable that is aliased.
           format: uuid
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: e1tqebew6jfe8
       required:
       - alias_parent_id
       - alias_scope
@@ -26881,6 +26903,7 @@ components:
       type: object
     VariableOverrideRequest:
       example:
+        description: description
         override_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         override_scope: APPLICATION
         value: value
@@ -26895,6 +26918,13 @@ components:
           description: the id of the variable that is aliased.
           format: uuid
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 4u5nndk8qphxp
       required:
       - override_parent_id
       - override_scope
@@ -26906,6 +26936,7 @@ components:
         variable_scope: APPLICATION
         is_secret: true
         variable_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        description: description
         value: value
         key: key
       properties:
@@ -26931,6 +26962,13 @@ components:
             \ environment or project where the variable is attached"
           format: uuid
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 328cipvix8hjo
       required:
       - is_secret
       - key
@@ -26940,6 +26978,7 @@ components:
       type: object
     VariableEditRequest:
       example:
+        description: description
         value: value
         key: key
       properties:
@@ -26949,6 +26988,13 @@ components:
         value:
           description: the value of the environment variable
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: y471ewdkdpr4r
       required:
       - key
       - value
@@ -26987,6 +27033,10 @@ components:
             type: string
           is_secret:
             type: boolean
+          description:
+            type: string
+            x-stoplight:
+              id: n9u4ex1jj4rxa
         required:
         - is_secret
         - key
@@ -27000,6 +27050,7 @@ components:
         service_name: service_name
         is_secret: true
         created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
         owned_by: owned_by
         overridden_variable:
           mount_path: mount_path
@@ -27030,6 +27081,7 @@ components:
           service_name: service_name
           is_secret: true
           created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
           owned_by: owned_by
           overridden_variable:
             mount_path: mount_path
@@ -27057,6 +27109,7 @@ components:
           service_name: service_name
           is_secret: true
           created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
           owned_by: owned_by
           overridden_variable:
             mount_path: mount_path

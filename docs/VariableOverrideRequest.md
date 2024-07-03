@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Value** | **string** | the value to be used as Override of the targeted environment variable. | 
 **OverrideScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **OverrideParentId** | **string** | the id of the variable that is aliased. | 
+**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 
 ## Methods
 
@@ -87,6 +88,41 @@ and a boolean to check if the value has been set.
 SetOverrideParentId sets OverrideParentId field to given value.
 
 
+### GetDescription
+
+`func (o *VariableOverrideRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *VariableOverrideRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *VariableOverrideRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *VariableOverrideRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *VariableOverrideRequest) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *VariableOverrideRequest) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
