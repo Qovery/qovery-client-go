@@ -21868,6 +21868,7 @@ components:
         variable_type: null
         service_name: service_name
         created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
         owned_by: owned_by
         overridden_variable:
           mount_path: mount_path
@@ -21982,6 +21983,7 @@ components:
     EnvironmentVariableRequest:
       example:
         mount_path: mount_path
+        description: description
         value: value
         key: key
       properties:
@@ -21996,6 +21998,13 @@ components:
             a file (where file should be mounted).
           nullable: true
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 1k835w52vgl4m
       required:
       - key
       type: object
@@ -22006,6 +22015,7 @@ components:
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
           owned_by: owned_by
           overridden_variable:
             mount_path: mount_path
@@ -22032,6 +22042,7 @@ components:
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
           owned_by: owned_by
           overridden_variable:
             mount_path: mount_path
@@ -24377,12 +24388,21 @@ components:
             url: https://github.com/Qovery/simple-node-app
     Key:
       example:
+        description: description
         key: key
       properties:
         key:
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: qe7qh1tjtkwrm
       required:
       - key
+      title: EnvironmentVariableAliasRequest
       type: object
     KubernetesEnum:
       default: MANAGED
@@ -26789,10 +26809,19 @@ components:
       type: object
     Value:
       example:
+        description: description
         value: value
       properties:
         value:
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: ygzxe4xek3thk
+      title: EnvironmentVariableOverrideRequest
       type: object
     VariableImport:
       example:

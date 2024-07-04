@@ -30,7 +30,9 @@ type EnvironmentVariable struct {
 	// value of the env variable.
 	Value *string `json:"value,omitempty"`
 	// should be set for file only. variable mount path makes variable a file (where file should be mounted).
-	MountPath          NullableString               `json:"mount_path,omitempty"`
+	MountPath NullableString `json:"mount_path,omitempty"`
+	// optional variable description (255 characters maximum)
+	Description        NullableString               `json:"description,omitempty"`
 	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
 	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
 	Scope              APIVariableScopeEnum         `json:"scope"`
@@ -244,6 +246,49 @@ func (o *EnvironmentVariable) SetMountPathNil() {
 // UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 func (o *EnvironmentVariable) UnsetMountPath() {
 	o.MountPath.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentVariable) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentVariable) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *EnvironmentVariable) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *EnvironmentVariable) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *EnvironmentVariable) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *EnvironmentVariable) UnsetDescription() {
+	o.Description.Unset()
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
@@ -508,6 +553,9 @@ func (o EnvironmentVariable) ToMap() (map[string]interface{}, error) {
 	if o.MountPath.IsSet() {
 		toSerialize["mount_path"] = o.MountPath.Get()
 	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 	if !IsNil(o.OverriddenVariable) {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}
@@ -581,6 +629,7 @@ func (o *EnvironmentVariable) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "mount_path")
+		delete(additionalProperties, "description")
 		delete(additionalProperties, "overridden_variable")
 		delete(additionalProperties, "aliased_variable")
 		delete(additionalProperties, "scope")

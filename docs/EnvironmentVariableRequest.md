@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Key** | **string** | key is case sensitive. | 
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
+**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 
 ## Methods
 
@@ -107,6 +108,41 @@ HasMountPath returns a boolean if a field has been set.
 `func (o *EnvironmentVariableRequest) UnsetMountPath()`
 
 UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+### GetDescription
+
+`func (o *EnvironmentVariableRequest) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *EnvironmentVariableRequest) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *EnvironmentVariableRequest) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *EnvironmentVariableRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *EnvironmentVariableRequest) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *EnvironmentVariableRequest) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

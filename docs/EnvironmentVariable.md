@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Key** | **string** | key is case sensitive. | 
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
+**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
@@ -183,6 +184,41 @@ HasMountPath returns a boolean if a field has been set.
 `func (o *EnvironmentVariable) UnsetMountPath()`
 
 UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+### GetDescription
+
+`func (o *EnvironmentVariable) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *EnvironmentVariable) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *EnvironmentVariable) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *EnvironmentVariable) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *EnvironmentVariable) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *EnvironmentVariable) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetOverriddenVariable
 
 `func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride`
