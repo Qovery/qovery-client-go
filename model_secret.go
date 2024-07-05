@@ -35,7 +35,9 @@ type Secret struct {
 	ServiceName      *string                `json:"service_name,omitempty"`
 	ServiceType      *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy              *string `json:"owned_by,omitempty"`
+	OwnedBy *string `json:"owned_by,omitempty"`
+	// optional variable description (255 characters maximum)
+	Description          NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -414,6 +416,49 @@ func (o *Secret) SetOwnedBy(v string) {
 	o.OwnedBy = &v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Secret) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Secret) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *Secret) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *Secret) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *Secret) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *Secret) UnsetDescription() {
+	o.Description.Unset()
+}
+
 func (o Secret) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -451,6 +496,9 @@ func (o Secret) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.OwnedBy) {
 		toSerialize["owned_by"] = o.OwnedBy
+	}
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -510,6 +558,7 @@ func (o *Secret) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "service_name")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "owned_by")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **MountPath** | **string** |  | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
+**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 
 ## Methods
 
@@ -129,6 +130,41 @@ and a boolean to check if the value has been set.
 SetVariableType sets VariableType field to given value.
 
 
+### GetDescription
+
+`func (o *SecretAlias) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *SecretAlias) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *SecretAlias) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *SecretAlias) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *SecretAlias) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *SecretAlias) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

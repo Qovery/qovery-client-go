@@ -15126,6 +15126,7 @@ components:
         mount_path: mount_path
         variable_type: null
         scope: null
+        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: QOVERY_DATABASE_PSQL_NAME
       properties:
@@ -15141,6 +15142,13 @@ components:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 14nham449j6uk
       required:
       - id
       - key
@@ -25371,6 +25379,7 @@ components:
         mount_path: mount_path
         variable_type: VALUE
         scope: APPLICATION
+        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: key
       properties:
@@ -25385,6 +25394,13 @@ components:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: edfpfqj87ezos
       required:
       - id
       - key
@@ -26349,35 +26365,46 @@ components:
           owned_by:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
+          description:
+            description: optional variable description (255 characters maximum)
+            maxLength: 255
+            nullable: true
+            type: string
+            x-stoplight:
+              id: fznezq37gx9ux
         required:
         - key
         - scope
         type: object
       example:
+        variable_type: null
+        service_name: service_name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        owned_by: owned_by
         service_type: APPLICATION
         aliased_secret:
           mount_path: mount_path
           variable_type: null
           scope: null
+          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: QOVERY_DATABASE_PSQL_NAME
         updated_at: 2000-01-23T04:56:07.000+00:00
-        variable_type: null
-        service_name: service_name
         scope: null
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        created_at: 2000-01-23T04:56:07.000+00:00
-        owned_by: owned_by
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         overridden_secret:
           mount_path: mount_path
           variable_type: VALUE
           scope: APPLICATION
+          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: key
         key: key
     SecretEditRequest:
       example:
+        description: description
         value: value
         key: key
       properties:
@@ -26385,12 +26412,20 @@ components:
           type: string
         key:
           type: string
+        description:
+          description: optional variable description (255 characters maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: kpr7b04o3wqkq
       required:
       - key
       type: object
     SecretRequest:
       example:
         mount_path: mount_path
+        description: description
         value: value
         key: key
       properties:
@@ -26405,53 +26440,66 @@ components:
             a file (where file should be mounted).
           nullable: true
           type: string
+        description:
+          description: optional variable description (255 character maximum)
+          maxLength: 255
+          nullable: true
+          type: string
+          x-stoplight:
+            id: dzjq13ney82de
       required:
       - key
       type: object
     SecretResponseList:
       example:
         results:
-        - service_type: APPLICATION
+        - variable_type: null
+          service_name: service_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          owned_by: owned_by
+          service_type: APPLICATION
           aliased_secret:
             mount_path: mount_path
             variable_type: null
             scope: null
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
-          variable_type: null
-          service_name: service_name
           scope: null
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          created_at: 2000-01-23T04:56:07.000+00:00
-          owned_by: owned_by
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: key
           key: key
-        - service_type: APPLICATION
+        - variable_type: null
+          service_name: service_name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          owned_by: owned_by
+          service_type: APPLICATION
           aliased_secret:
             mount_path: mount_path
             variable_type: null
             scope: null
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
-          variable_type: null
-          service_name: service_name
           scope: null
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          created_at: 2000-01-23T04:56:07.000+00:00
-          owned_by: owned_by
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: key
           key: key

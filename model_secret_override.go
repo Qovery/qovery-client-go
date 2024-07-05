@@ -21,11 +21,13 @@ var _ MappedNullable = &SecretOverride{}
 
 // SecretOverride struct for SecretOverride
 type SecretOverride struct {
-	Id                   string               `json:"id"`
-	Key                  string               `json:"key"`
-	MountPath            string               `json:"mount_path"`
-	Scope                APIVariableScopeEnum `json:"scope"`
-	VariableType         APIVariableTypeEnum  `json:"variable_type"`
+	Id           string               `json:"id"`
+	Key          string               `json:"key"`
+	MountPath    string               `json:"mount_path"`
+	Scope        APIVariableScopeEnum `json:"scope"`
+	VariableType APIVariableTypeEnum  `json:"variable_type"`
+	// optional variable description (255 characters maximum)
+	Description          NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -173,6 +175,49 @@ func (o *SecretOverride) SetVariableType(v APIVariableTypeEnum) {
 	o.VariableType = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SecretOverride) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SecretOverride) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *SecretOverride) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *SecretOverride) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *SecretOverride) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *SecretOverride) UnsetDescription() {
+	o.Description.Unset()
+}
+
 func (o SecretOverride) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -188,6 +233,9 @@ func (o SecretOverride) ToMap() (map[string]interface{}, error) {
 	toSerialize["mount_path"] = o.MountPath
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -240,6 +288,7 @@ func (o *SecretOverride) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "mount_path")
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "variable_type")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 
