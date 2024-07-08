@@ -28,9 +28,11 @@ type LifecycleTemplateResponse struct {
 	SourceUrl     string            `json:"sourceUrl"`
 	CloudProvider CloudProviderEnum `json:"cloud_provider"`
 	// lis of pre-defined command for each event
-	Events               []LifecycleTemplateResponseEventsInner `json:"events"`
-	Resources            LifecycleTemplateResponseResources     `json:"resources"`
-	Variables            LifecycleTemplateResponseVariables     `json:"variables"`
+	Events []LifecycleTemplateResponseEventsInner `json:"events"`
+	// Job max allowed duration in minutes. After this allowed time, the job is going to be killed.
+	MaxDurationInMinutes int32                              `json:"max_duration_in_minutes"`
+	Resources            LifecycleTemplateResponseResources `json:"resources"`
+	Variables            LifecycleTemplateResponseVariables `json:"variables"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,7 +42,7 @@ type _LifecycleTemplateResponse LifecycleTemplateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables) *LifecycleTemplateResponse {
+func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables) *LifecycleTemplateResponse {
 	this := LifecycleTemplateResponse{}
 	this.Id = id
 	this.Name = name
@@ -48,6 +50,7 @@ func NewLifecycleTemplateResponse(id string, name string, description string, so
 	this.SourceUrl = sourceUrl
 	this.CloudProvider = cloudProvider
 	this.Events = events
+	this.MaxDurationInMinutes = maxDurationInMinutes
 	this.Resources = resources
 	this.Variables = variables
 	return &this
@@ -205,6 +208,30 @@ func (o *LifecycleTemplateResponse) SetEvents(v []LifecycleTemplateResponseEvent
 	o.Events = v
 }
 
+// GetMaxDurationInMinutes returns the MaxDurationInMinutes field value
+func (o *LifecycleTemplateResponse) GetMaxDurationInMinutes() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MaxDurationInMinutes
+}
+
+// GetMaxDurationInMinutesOk returns a tuple with the MaxDurationInMinutes field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleTemplateResponse) GetMaxDurationInMinutesOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MaxDurationInMinutes, true
+}
+
+// SetMaxDurationInMinutes sets field value
+func (o *LifecycleTemplateResponse) SetMaxDurationInMinutes(v int32) {
+	o.MaxDurationInMinutes = v
+}
+
 // GetResources returns the Resources field value
 func (o *LifecycleTemplateResponse) GetResources() LifecycleTemplateResponseResources {
 	if o == nil {
@@ -269,6 +296,7 @@ func (o LifecycleTemplateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["sourceUrl"] = o.SourceUrl
 	toSerialize["cloud_provider"] = o.CloudProvider
 	toSerialize["events"] = o.Events
+	toSerialize["max_duration_in_minutes"] = o.MaxDurationInMinutes
 	toSerialize["resources"] = o.Resources
 	toSerialize["variables"] = o.Variables
 
@@ -290,6 +318,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		"sourceUrl",
 		"cloud_provider",
 		"events",
+		"max_duration_in_minutes",
 		"resources",
 		"variables",
 	}
@@ -327,6 +356,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sourceUrl")
 		delete(additionalProperties, "cloud_provider")
 		delete(additionalProperties, "events")
+		delete(additionalProperties, "max_duration_in_minutes")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "variables")
 		o.AdditionalProperties = additionalProperties

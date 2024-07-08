@@ -27997,11 +27997,12 @@ components:
           is_secret: true
           name: name
           description: description
+        max_duration_in_minutes: 0
         name: name
         description: description
         resources:
-          cpu_milli: 0
-          ram_mib: 6
+          cpu_milli: 6
+          ram_mib: 1
         cloud_provider: AWS
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         events:
@@ -28044,6 +28045,13 @@ components:
           type: array
           x-stoplight:
             id: 5dzxa31dbj27j
+        max_duration_in_minutes:
+          description: |-
+            Job max allowed duration in minutes.
+            After this allowed time, the job is going to be killed.
+          type: integer
+          x-stoplight:
+            id: l4kjmki90lplm
         resources:
           $ref: '#/components/schemas/LifecycleTemplateResponse_resources'
         variables:
@@ -28053,6 +28061,7 @@ components:
       - description
       - events
       - id
+      - max_duration_in_minutes
       - name
       - resources
       - sourceUrl
@@ -28061,6 +28070,7 @@ components:
       type: object
       x-stoplight:
         id: bvzo0blwz03tn
+      x-internal: false
     deleteMember_request:
       properties:
         user_id:
@@ -30085,8 +30095,8 @@ components:
         id: c2tzn0jhhq3o9
     LifecycleTemplateResponse_resources:
       example:
-        cpu_milli: 0
-        ram_mib: 6
+        cpu_milli: 6
+        ram_mib: 1
       properties:
         cpu_milli:
           type: integer
