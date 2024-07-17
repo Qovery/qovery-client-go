@@ -25372,7 +25372,10 @@ components:
       - TRIGGER_CANCEL
       - TRIGGER_RESTART
       - TRIGGER_DELETE
+      - SHELL
+      - PORT_FORWARD
       example: CREATE
+      title: ""
       type: string
     SecretOverride:
       example:
