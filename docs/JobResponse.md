@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Source** | [**BaseJobResponseAllOfSource**](BaseJobResponseAllOfSource.md) |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
+**IconUri** | **string** | Icon URI representing the job. | 
 **JobType** | **string** |  | 
 **Schedule** | [**CronJobResponseAllOfSchedule**](CronJobResponseAllOfSchedule.md) |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewJobResponse
 
-`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, jobType string, schedule CronJobResponseAllOfSchedule, ) *JobResponse`
+`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, jobType string, schedule CronJobResponseAllOfSchedule, ) *JobResponse`
 
 NewJobResponse instantiates a new JobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -424,6 +425,26 @@ SetAutoDeploy sets AutoDeploy field to given value.
 `func (o *JobResponse) HasAutoDeploy() bool`
 
 HasAutoDeploy returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *JobResponse) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *JobResponse) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *JobResponse) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
 
 ### GetJobType
 

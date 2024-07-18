@@ -15442,9 +15442,16 @@ components:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
           labels_groups:
             $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
+          icon_uri:
+            description: Icon URI representing the application.
+            format: uri
+            type: string
+            x-stoplight:
+              id: b8karc43pdxpu
         required:
         - environment
         - healthchecks
+        - icon_uri
         - name
         type: object
       example:
@@ -15592,6 +15599,7 @@ components:
         build_mode: BUILDPACKS
         cpu: 1250
         dockerfile_path: dockerfile_path
+        icon_uri: https://openapi-generator.tech
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         maximum_cpu: 16000
@@ -16088,6 +16096,12 @@ components:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
           labels_groups:
             $ref: '#/components/schemas/ServiceLabelsRequestList'
+          icon_uri:
+            description: Icon URI representing the application.
+            format: uri
+            type: string
+            x-stoplight:
+              id: om4lw1ulknsrg
         required:
         - git_repository
         - healthchecks
@@ -16177,6 +16191,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        icon_uri: https://openapi-generator.tech
         buildpack_language: CLOJURE
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16334,6 +16349,7 @@ components:
           build_mode: BUILDPACKS
           cpu: 1250
           dockerfile_path: dockerfile_path
+          icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 16000
@@ -16485,6 +16501,7 @@ components:
           build_mode: BUILDPACKS
           cpu: 1250
           dockerfile_path: dockerfile_path
+          icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 16000
@@ -18762,6 +18779,12 @@ components:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
           labels_groups:
             $ref: '#/components/schemas/ServiceLabelsRequestList'
+          icon_uri:
+            description: Icon URI representing the container.
+            format: uri
+            type: string
+            x-stoplight:
+              id: jiypvl6nd63dm
         required:
         - healthchecks
         - image_name
@@ -18847,6 +18870,7 @@ components:
           internal_port: 8080
           is_default: true
         registry_id: registry_id
+        icon_uri: https://openapi-generator.tech
         image_name: image_name
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18931,11 +18955,18 @@ components:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
           labels_groups:
             $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
+          icon_uri:
+            description: Icon URI representing the container.
+            format: uri
+            type: string
+            x-stoplight:
+              id: o2bdci7ak3bmz
         required:
         - auto_preview
         - cpu
         - environment
         - healthchecks
+        - icon_uri
         - max_running_instances
         - maximum_cpu
         - maximum_memory
@@ -19079,6 +19110,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
         cpu: 1250
+        icon_uri: https://openapi-generator.tech
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         maximum_cpu: 16000
@@ -19224,6 +19256,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url: url
           cpu: 1250
+          icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 16000
@@ -19366,6 +19399,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url: url
           cpu: 1250
+          icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           maximum_cpu: 16000
@@ -19738,6 +19772,7 @@ components:
         storage: 0
         type: MONGODB
         version: "10.1"
+        icon_uri: https://openapi-generator.tech
         mode: CONTAINER
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19891,21 +19926,22 @@ components:
       type: string
     DatabaseRequest:
       example:
-        mode: CONTAINER
         memory: 1024
         labels_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         accessibility: PRIVATE
-        annotations_groups:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
         description: description
         cpu: 1250
         storage: 0
         type: MONGODB
         version: "10.1"
+        icon_uri: https://openapi-generator.tech
+        mode: CONTAINER
+        annotations_groups:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
         instance_type: db.t3.medium
       properties:
         name:
@@ -19961,6 +19997,12 @@ components:
           items:
             $ref: '#/components/schemas/ServiceLabelRequest'
           type: array
+        icon_uri:
+          description: Icon URI representing the database.
+          format: uri
+          type: string
+          x-stoplight:
+            id: ls6yevnhskd5y
       required:
       - mode
       - name
@@ -20002,6 +20044,7 @@ components:
           storage: 0
           type: MONGODB
           version: "10.1"
+          icon_uri: https://openapi-generator.tech
           mode: CONTAINER
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -20070,6 +20113,7 @@ components:
           storage: 0
           type: MONGODB
           version: "10.1"
+          icon_uri: https://openapi-generator.tech
           mode: CONTAINER
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23134,6 +23178,12 @@ components:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
           labels_groups:
             $ref: '#/components/schemas/ServiceLabelsRequestList'
+          icon_uri:
+            description: Icon URI representing the job.
+            format: uri
+            type: string
+            x-stoplight:
+              id: k3gangiisgxpc
         required:
         - healthchecks
         - name
@@ -23202,6 +23252,7 @@ components:
               url: https://github.com/Qovery/simple-node-app
             dockerfile_path: dockerfile_path
         max_nb_restart: 0
+        icon_uri: https://openapi-generator.tech
         schedule:
           on_start:
             entrypoint: entrypoint
@@ -23330,6 +23381,7 @@ components:
               tag: tag
               registry_id: registry_id
           max_nb_restart: 0
+          icon_uri: https://openapi-generator.tech
           schedule:
             on_start:
               entrypoint: entrypoint
@@ -23465,6 +23517,7 @@ components:
               tag: tag
               registry_id: registry_id
           max_nb_restart: 0
+          icon_uri: https://openapi-generator.tech
           schedule:
             on_start:
               entrypoint: entrypoint
@@ -23752,6 +23805,12 @@ components:
             type: boolean
           values_override:
             $ref: '#/components/schemas/HelmRequest_allOf_values_override'
+          icon_uri:
+            description: Icon URI representing the helm service.
+            format: uri
+            type: string
+            x-stoplight:
+              id: 117p5u95nwx2p
         required:
         - arguments
         - auto_deploy
@@ -23822,6 +23881,7 @@ components:
           internal_port: 8080
           is_default: true
         allow_cluster_wide_resources: false
+        icon_uri: https://openapi-generator.tech
     HelmResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -23868,12 +23928,19 @@ components:
             type: boolean
           values_override:
             $ref: '#/components/schemas/HelmResponse_allOf_values_override'
+          icon_uri:
+            description: Icon URI representing the helm service.
+            format: uri
+            type: string
+            x-stoplight:
+              id: i2pvbugqsldhe
         required:
         - allow_cluster_wide_resources
         - arguments
         - auto_deploy
         - auto_preview
         - environment
+        - icon_uri
         - name
         - source
         - values_override
@@ -23915,6 +23982,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        icon_uri: https://openapi-generator.tech
         values_override:
           set:
           - - set
@@ -24006,6 +24074,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
+          icon_uri: https://openapi-generator.tech
           values_override:
             set:
             - - set
@@ -24094,6 +24163,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
+          icon_uri: https://openapi-generator.tech
           values_override:
             set:
             - - set
@@ -27541,6 +27611,7 @@ components:
             tag: tag
             registry_id: registry_id
         max_nb_restart: 0
+        icon_uri: https://openapi-generator.tech
         schedule:
           on_start:
             entrypoint: entrypoint
@@ -27673,11 +27744,18 @@ components:
               \ new image tag shall be communicated via the \"Auto Deploy job\" endpoint\
               \ https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments\n"
             type: boolean
+          icon_uri:
+            description: Icon URI representing the job.
+            format: uri
+            type: string
+            x-stoplight:
+              id: p1secr7kxozsd
         required:
         - auto_preview
         - cpu
         - environment
         - healthchecks
+        - icon_uri
         - maximum_cpu
         - maximum_memory
         - memory

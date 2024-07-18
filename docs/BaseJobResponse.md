@@ -21,12 +21,13 @@ Name | Type | Description | Notes
 **Source** | [**BaseJobResponseAllOfSource**](BaseJobResponseAllOfSource.md) |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
+**IconUri** | **string** | Icon URI representing the job. | 
 
 ## Methods
 
 ### NewBaseJobResponse
 
-`func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, ) *BaseJobResponse`
+`func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, ) *BaseJobResponse`
 
 NewBaseJobResponse instantiates a new BaseJobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -420,6 +421,26 @@ SetAutoDeploy sets AutoDeploy field to given value.
 `func (o *BaseJobResponse) HasAutoDeploy() bool`
 
 HasAutoDeploy returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *BaseJobResponse) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *BaseJobResponse) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *BaseJobResponse) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

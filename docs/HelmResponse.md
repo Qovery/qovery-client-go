@@ -18,12 +18,13 @@ Name | Type | Description | Notes
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
+**IconUri** | **string** | Icon URI representing the helm service. | 
 
 ## Methods
 
 ### NewHelmResponse
 
-`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, ) *HelmResponse`
+`func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, iconUri string, ) *HelmResponse`
 
 NewHelmResponse instantiates a new HelmResponse object
 This constructor will assign default values to properties that have it defined,
@@ -336,6 +337,26 @@ and a boolean to check if the value has been set.
 `func (o *HelmResponse) SetValuesOverride(v HelmResponseAllOfValuesOverride)`
 
 SetValuesOverride sets ValuesOverride field to given value.
+
+
+### GetIconUri
+
+`func (o *HelmResponse) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *HelmResponse) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *HelmResponse) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
 
 
 

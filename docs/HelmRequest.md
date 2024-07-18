@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
 **ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
+**IconUri** | Pointer to **string** | Icon URI representing the helm service. | [optional] 
 
 ## Methods
 
@@ -268,6 +269,31 @@ and a boolean to check if the value has been set.
 
 SetValuesOverride sets ValuesOverride field to given value.
 
+
+### GetIconUri
+
+`func (o *HelmRequest) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *HelmRequest) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *HelmRequest) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+### HasIconUri
+
+`func (o *HelmRequest) HasIconUri() bool`
+
+HasIconUri returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -42,7 +42,9 @@ type HelmResponse struct {
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
-	AdditionalProperties      map[string]interface{}
+	// Icon URI representing the helm service.
+	IconUri              string `json:"icon_uri"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmResponse HelmResponse
@@ -51,7 +53,7 @@ type _HelmResponse HelmResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, iconUri string) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -65,6 +67,7 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 	this.Arguments = arguments
 	this.AllowClusterWideResources = allowClusterWideResources
 	this.ValuesOverride = valuesOverride
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -448,6 +451,30 @@ func (o *HelmResponse) SetValuesOverride(v HelmResponseAllOfValuesOverride) {
 	o.ValuesOverride = v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *HelmResponse) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *HelmResponse) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *HelmResponse) SetIconUri(v string) {
+	o.IconUri = v
+}
+
 func (o HelmResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -480,6 +507,7 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["arguments"] = o.Arguments
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
+	toSerialize["icon_uri"] = o.IconUri
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -503,6 +531,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		"arguments",
 		"allow_cluster_wide_resources",
 		"values_override",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -546,6 +575,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "arguments")
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

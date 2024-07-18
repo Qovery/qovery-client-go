@@ -37,7 +37,9 @@ type HelmRequest struct {
 	// If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights
 	AllowClusterWideResources *bool                          `json:"allow_cluster_wide_resources,omitempty"`
 	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
-	AdditionalProperties      map[string]interface{}
+	// Icon URI representing the helm service.
+	IconUri              *string `json:"icon_uri,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _HelmRequest HelmRequest
@@ -363,6 +365,38 @@ func (o *HelmRequest) SetValuesOverride(v HelmRequestAllOfValuesOverride) {
 	o.ValuesOverride = v
 }
 
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *HelmRequest) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRequest) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *HelmRequest) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *HelmRequest) SetIconUri(v string) {
+	o.IconUri = &v
+}
+
 func (o HelmRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -393,6 +427,9 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	}
 	toSerialize["values_override"] = o.ValuesOverride
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -450,6 +487,7 @@ func (o *HelmRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "arguments")
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

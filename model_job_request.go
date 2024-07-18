@@ -40,9 +40,11 @@ type JobRequest struct {
 	Healthchecks Healthcheck              `json:"healthchecks"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
-	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	// Icon URI representing the job.
+	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -533,6 +535,38 @@ func (o *JobRequest) SetLabelsGroups(v []ServiceLabelRequest) {
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *JobRequest) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *JobRequest) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *JobRequest) SetIconUri(v string) {
+	o.IconUri = &v
+}
+
 func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -580,6 +614,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
+	}
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -639,6 +676,7 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

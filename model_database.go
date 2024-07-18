@@ -43,9 +43,11 @@ type Database struct {
 	Storage           *int32                                 `json:"storage,omitempty"`
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
-	Environment       ReferenceObject                        `json:"environment"`
-	Host              *string                                `json:"host,omitempty"`
-	Port              *int32                                 `json:"port,omitempty"`
+	// Icon URI representing the database.
+	IconUri     *string         `json:"icon_uri,omitempty"`
+	Environment ReferenceObject `json:"environment"`
+	Host        *string         `json:"host,omitempty"`
+	Port        *int32          `json:"port,omitempty"`
 	// Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -525,6 +527,38 @@ func (o *Database) SetLabelsGroups(v []OrganizationLabelsGroupResponse) {
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *Database) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Database) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *Database) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *Database) SetIconUri(v string) {
+	o.IconUri = &v
+}
+
 // GetEnvironment returns the Environment field value
 func (o *Database) GetEnvironment() ReferenceObject {
 	if o == nil {
@@ -752,6 +786,9 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
+	}
 	toSerialize["environment"] = o.Environment
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
@@ -832,6 +869,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "storage")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "host")
 		delete(additionalProperties, "port")

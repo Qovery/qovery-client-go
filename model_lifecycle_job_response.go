@@ -48,7 +48,9 @@ type LifecycleJobResponse struct {
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy           *bool                                  `json:"auto_deploy,omitempty"`
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	// Icon URI representing the job.
+	IconUri              string                                 `json:"icon_uri"`
 	JobType              string                                 `json:"job_type"`
 	Schedule             LifecycleJobResponseAllOfSchedule      `json:"schedule"`
 	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
@@ -62,7 +64,7 @@ type _LifecycleJobResponse LifecycleJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, jobType string, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
+func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, jobType string, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
 	this := LifecycleJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -75,6 +77,7 @@ func NewLifecycleJobResponse(id string, createdAt time.Time, environment Referen
 	this.AutoPreview = autoPreview
 	this.Source = source
 	this.Healthchecks = healthchecks
+	this.IconUri = iconUri
 	this.JobType = jobType
 	this.Schedule = schedule
 	return &this
@@ -555,6 +558,30 @@ func (o *LifecycleJobResponse) SetAutoDeploy(v bool) {
 	o.AutoDeploy = &v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *LifecycleJobResponse) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleJobResponse) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *LifecycleJobResponse) SetIconUri(v string) {
+	o.IconUri = v
+}
+
 // GetJobType returns the JobType field value
 func (o *LifecycleJobResponse) GetJobType() string {
 	if o == nil {
@@ -706,6 +733,7 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
+	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
 	if !IsNil(o.AnnotationsGroups) {
@@ -738,6 +766,7 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		"auto_preview",
 		"source",
 		"healthchecks",
+		"icon_uri",
 		"job_type",
 		"schedule",
 	}
@@ -786,6 +815,7 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "job_type")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "annotations_groups")

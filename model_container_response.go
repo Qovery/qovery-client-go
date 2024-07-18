@@ -58,9 +58,11 @@ type ContainerResponse struct {
 	AutoPreview bool          `json:"auto_preview"`
 	Ports       []ServicePort `json:"ports,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy           *bool                                  `json:"auto_deploy,omitempty"`
-	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
-	LabelsGroups         []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
+	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
+	// Icon URI representing the container.
+	IconUri              string `json:"icon_uri"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,7 +72,7 @@ type _ContainerResponse ContainerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -87,6 +89,7 @@ func NewContainerResponse(id string, createdAt time.Time, imageName string, tag 
 	this.MaxRunningInstances = maxRunningInstances
 	this.Healthchecks = healthchecks
 	this.AutoPreview = autoPreview
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -782,6 +785,30 @@ func (o *ContainerResponse) SetLabelsGroups(v []OrganizationLabelsGroupResponse)
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *ContainerResponse) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *ContainerResponse) SetIconUri(v string) {
+	o.IconUri = v
+}
+
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -837,6 +864,7 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+	toSerialize["icon_uri"] = o.IconUri
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -865,6 +893,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		"max_running_instances",
 		"healthchecks",
 		"auto_preview",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -919,6 +948,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

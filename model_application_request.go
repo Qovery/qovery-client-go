@@ -47,9 +47,11 @@ type ApplicationRequest struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
-	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	// Icon URI representing the application.
+	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -727,6 +729,38 @@ func (o *ApplicationRequest) SetLabelsGroups(v []ServiceLabelRequest) {
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *ApplicationRequest) SetIconUri(v string) {
+	o.IconUri = &v
+}
+
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -787,6 +821,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
+	}
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -852,6 +889,7 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

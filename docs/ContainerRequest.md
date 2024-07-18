@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
+**IconUri** | Pointer to **string** | Icon URI representing the container. | [optional] 
 
 ## Methods
 
@@ -476,6 +477,31 @@ SetLabelsGroups sets LabelsGroups field to given value.
 `func (o *ContainerRequest) HasLabelsGroups() bool`
 
 HasLabelsGroups returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *ContainerRequest) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *ContainerRequest) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *ContainerRequest) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+### HasIconUri
+
+`func (o *ContainerRequest) HasIconUri() bool`
+
+HasIconUri returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
+**IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
@@ -389,6 +390,31 @@ SetLabelsGroups sets LabelsGroups field to given value.
 `func (o *Database) HasLabelsGroups() bool`
 
 HasLabelsGroups returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *Database) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *Database) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *Database) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+### HasIconUri
+
+`func (o *Database) HasIconUri() bool`
+
+HasIconUri returns a boolean if a field has been set.
 
 ### GetEnvironment
 

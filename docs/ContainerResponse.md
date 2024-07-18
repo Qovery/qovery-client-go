@@ -29,12 +29,13 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **bool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
+**IconUri** | **string** | Icon URI representing the container. | 
 
 ## Methods
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -598,6 +599,26 @@ SetLabelsGroups sets LabelsGroups field to given value.
 `func (o *ContainerResponse) HasLabelsGroups() bool`
 
 HasLabelsGroups returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *ContainerResponse) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *ContainerResponse) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *ContainerResponse) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

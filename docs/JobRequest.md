@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
+**IconUri** | Pointer to **string** | Icon URI representing the job. | [optional] 
 
 ## Methods
 
@@ -397,6 +398,31 @@ SetLabelsGroups sets LabelsGroups field to given value.
 `func (o *JobRequest) HasLabelsGroups() bool`
 
 HasLabelsGroups returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *JobRequest) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *JobRequest) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *JobRequest) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+### HasIconUri
+
+`func (o *JobRequest) HasIconUri() bool`
+
+HasIconUri returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

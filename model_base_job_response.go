@@ -48,7 +48,9 @@ type BaseJobResponse struct {
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy           *bool `json:"auto_deploy,omitempty"`
+	AutoDeploy *bool `json:"auto_deploy,omitempty"`
+	// Icon URI representing the job.
+	IconUri              string `json:"icon_uri"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -58,7 +60,7 @@ type _BaseJobResponse BaseJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck) *BaseJobResponse {
+func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string) *BaseJobResponse {
 	this := BaseJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -71,6 +73,7 @@ func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObj
 	this.AutoPreview = autoPreview
 	this.Source = source
 	this.Healthchecks = healthchecks
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -549,6 +552,30 @@ func (o *BaseJobResponse) SetAutoDeploy(v bool) {
 	o.AutoDeploy = &v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *BaseJobResponse) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *BaseJobResponse) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *BaseJobResponse) SetIconUri(v string) {
+	o.IconUri = v
+}
+
 func (o BaseJobResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -588,6 +615,7 @@ func (o BaseJobResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
+	toSerialize["icon_uri"] = o.IconUri
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -612,6 +640,7 @@ func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
 		"auto_preview",
 		"source",
 		"healthchecks",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -658,6 +687,7 @@ func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

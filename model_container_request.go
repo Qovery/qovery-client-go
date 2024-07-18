@@ -48,9 +48,11 @@ type ContainerRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy           NullableBool               `json:"auto_deploy,omitempty"`
-	AnnotationsGroups    []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
-	LabelsGroups         []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
+	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
+	// Icon URI representing the container.
+	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -641,6 +643,38 @@ func (o *ContainerRequest) SetLabelsGroups(v []ServiceLabelRequest) {
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *ContainerRequest) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *ContainerRequest) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *ContainerRequest) SetIconUri(v string) {
+	o.IconUri = &v
+}
+
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -694,6 +728,9 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
+	}
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -760,6 +797,7 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

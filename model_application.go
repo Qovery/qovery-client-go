@@ -56,9 +56,11 @@ type Application struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy           *bool                                  `json:"auto_deploy,omitempty"`
-	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
-	LabelsGroups         []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
+	AutoDeploy        *bool                                  `json:"auto_deploy,omitempty"`
+	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
+	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
+	// Icon URI representing the application.
+	IconUri              string `json:"icon_uri"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -68,7 +70,7 @@ type _Application Application
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck) *Application {
+func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, iconUri string) *Application {
 	this := Application{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -83,6 +85,7 @@ func NewApplication(id string, createdAt time.Time, environment ReferenceObject,
 	this.Healthchecks = healthchecks
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -884,6 +887,30 @@ func (o *Application) SetLabelsGroups(v []OrganizationLabelsGroupResponse) {
 	o.LabelsGroups = v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *Application) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *Application) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *Application) SetIconUri(v string) {
+	o.IconUri = v
+}
+
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -959,6 +986,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
+	toSerialize["icon_uri"] = o.IconUri
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -977,6 +1005,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		"environment",
 		"name",
 		"healthchecks",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1031,6 +1060,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 
