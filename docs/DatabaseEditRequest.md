@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **InstanceType** | Pointer to **string** | Database instance type to be used for this database. The list of values can be retrieved via the endpoint /{CloudProvider}/managedDatabase/instanceType/{region}/{dbType}. This field SHOULD NOT be set for container DB. | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
+**IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetLabelsGroups sets LabelsGroups field to given value.
 `func (o *DatabaseEditRequest) HasLabelsGroups() bool`
 
 HasLabelsGroups returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *DatabaseEditRequest) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *DatabaseEditRequest) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *DatabaseEditRequest) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+### HasIconUri
+
+`func (o *DatabaseEditRequest) HasIconUri() bool`
+
+HasIconUri returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

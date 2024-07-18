@@ -15729,6 +15729,10 @@ components:
             $ref: '#/components/schemas/ServiceAnnotationsRequestList'
           labels_groups:
             $ref: '#/components/schemas/ServiceLabelsRequestList'
+          icon_uri:
+            description: Icon URI representing the application.
+            format: uri
+            type: string
         required:
         - healthchecks
         type: object
@@ -15816,6 +15820,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        icon_uri: https://openapi-generator.tech
         buildpack_language: CLOJURE
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19736,8 +19741,13 @@ components:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
           labels_groups:
             $ref: '#/components/schemas/OrganizationLabelsGroupResponseList'
+          icon_uri:
+            description: Icon URI representing the database.
+            format: uri
+            type: string
         required:
         - environment
+        - icon_uri
         type: object
       example:
         memory: 1024
@@ -19868,6 +19878,7 @@ components:
         storage: 4
         version: "10.1"
         instance_type: db.t3.medium
+        icon_uri: https://openapi-generator.tech
       properties:
         name:
           description: name is case-insensitive
@@ -19918,6 +19929,10 @@ components:
           items:
             $ref: '#/components/schemas/ServiceLabelRequest'
           type: array
+        icon_uri:
+          description: Icon URI representing the database.
+          format: uri
+          type: string
       type: object
     DatabaseModeEnum:
       enum:

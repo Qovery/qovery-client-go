@@ -44,7 +44,7 @@ type Database struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the database.
-	IconUri     *string         `json:"icon_uri,omitempty"`
+	IconUri     string          `json:"icon_uri"`
 	Environment ReferenceObject `json:"environment"`
 	Host        *string         `json:"host,omitempty"`
 	Port        *int32          `json:"port,omitempty"`
@@ -63,7 +63,7 @@ type _Database Database
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, environment ReferenceObject) *Database {
+func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject) *Database {
 	this := Database{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -77,6 +77,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Cpu = &cpu
 	var storage int32 = 10
 	this.Storage = &storage
+	this.IconUri = iconUri
 	this.Environment = environment
 	return &this
 }
@@ -527,36 +528,28 @@ func (o *Database) SetLabelsGroups(v []OrganizationLabelsGroupResponse) {
 	o.LabelsGroups = v
 }
 
-// GetIconUri returns the IconUri field value if set, zero value otherwise.
+// GetIconUri returns the IconUri field value
 func (o *Database) GetIconUri() string {
-	if o == nil || IsNil(o.IconUri) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IconUri
+
+	return o.IconUri
 }
 
-// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// GetIconUriOk returns a tuple with the IconUri field value
 // and a boolean to check if the value has been set.
 func (o *Database) GetIconUriOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUri) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IconUri, true
+	return &o.IconUri, true
 }
 
-// HasIconUri returns a boolean if a field has been set.
-func (o *Database) HasIconUri() bool {
-	if o != nil && !IsNil(o.IconUri) {
-		return true
-	}
-
-	return false
-}
-
-// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+// SetIconUri sets field value
 func (o *Database) SetIconUri(v string) {
-	o.IconUri = &v
+	o.IconUri = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -786,9 +779,7 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
-	if !IsNil(o.IconUri) {
-		toSerialize["icon_uri"] = o.IconUri
-	}
+	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["environment"] = o.Environment
 	if !IsNil(o.Host) {
 		toSerialize["host"] = o.Host
@@ -824,6 +815,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		"type",
 		"version",
 		"mode",
+		"icon_uri",
 		"environment",
 	}
 

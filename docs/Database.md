@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
-**IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
+**IconUri** | **string** | Icon URI representing the database. | 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
@@ -31,7 +31,7 @@ Name | Type | Description | Notes
 
 ### NewDatabase
 
-`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, environment ReferenceObject, ) *Database`
+`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject, ) *Database`
 
 NewDatabase instantiates a new Database object
 This constructor will assign default values to properties that have it defined,
@@ -410,11 +410,6 @@ and a boolean to check if the value has been set.
 
 SetIconUri sets IconUri field to given value.
 
-### HasIconUri
-
-`func (o *Database) HasIconUri() bool`
-
-HasIconUri returns a boolean if a field has been set.
 
 ### GetEnvironment
 
