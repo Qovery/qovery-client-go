@@ -19649,12 +19649,20 @@ components:
               be set to `false` if a CDN or other entities are managing the certificate
               for the specified domain and the traffic is proxied by the CDN to Qovery.
             type: boolean
+          use_cdn:
+            description: |
+              Indicates if the custom domain is behind a CDN (i.e Cloudflare).
+              This will condition the way we are checking CNAME before & during a deployment:
+              * If `true` then we only check the domain points to an IP
+              * If `false` then we check that the domain resolves to the correct service Load Balancer
+            type: boolean
         type: object
       example:
         generate_certificate: true
         validation_domain: validation_domain
         updated_at: 2000-01-23T04:56:07.000+00:00
         domain: my.domain.tld
+        use_cdn: true
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: VALIDATION_PENDING
@@ -19662,6 +19670,7 @@ components:
       example:
         generate_certificate: true
         domain: my.domain.tld
+        use_cdn: true
       properties:
         domain:
           description: your custom domain
@@ -19672,6 +19681,13 @@ components:
             domain by Qovery. The default value is `true`. This flag should be set
             to `false` if a CDN or other entities are managing the certificate for
             the specified domain and the traffic is proxied by the CDN to Qovery.
+          type: boolean
+        use_cdn:
+          description: |
+            Indicates if the custom domain is behind a CDN (i.e Cloudflare).
+            This will condition the way we are checking CNAME before & during a deployment:
+            * If `true` then we only check the domain points to an IP
+            * If `false` then we check that the domain resolves to the correct service Load Balancer
           type: boolean
       required:
       - domain
@@ -19684,6 +19700,7 @@ components:
           validation_domain: validation_domain
           updated_at: 2000-01-23T04:56:07.000+00:00
           domain: my.domain.tld
+          use_cdn: true
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: VALIDATION_PENDING
@@ -19691,6 +19708,7 @@ components:
           validation_domain: validation_domain
           updated_at: 2000-01-23T04:56:07.000+00:00
           domain: my.domain.tld
+          use_cdn: true
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: VALIDATION_PENDING

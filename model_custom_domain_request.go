@@ -24,7 +24,9 @@ type CustomDomainRequest struct {
 	// your custom domain
 	Domain string `json:"domain"`
 	// to control if a certificate has to be generated for this custom domain by Qovery. The default value is `true`. This flag should be set to `false` if a CDN or other entities are managing the certificate for the specified domain and the traffic is proxied by the CDN to Qovery.
-	GenerateCertificate  bool `json:"generate_certificate"`
+	GenerateCertificate bool `json:"generate_certificate"`
+	// Indicates if the custom domain is behind a CDN (i.e Cloudflare). This will condition the way we are checking CNAME before & during a deployment: * If `true` then we only check the domain points to an IP * If `false` then we check that the domain resolves to the correct service Load Balancer
+	UseCdn               *bool `json:"use_cdn,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -97,6 +99,38 @@ func (o *CustomDomainRequest) SetGenerateCertificate(v bool) {
 	o.GenerateCertificate = v
 }
 
+// GetUseCdn returns the UseCdn field value if set, zero value otherwise.
+func (o *CustomDomainRequest) GetUseCdn() bool {
+	if o == nil || IsNil(o.UseCdn) {
+		var ret bool
+		return ret
+	}
+	return *o.UseCdn
+}
+
+// GetUseCdnOk returns a tuple with the UseCdn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CustomDomainRequest) GetUseCdnOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseCdn) {
+		return nil, false
+	}
+	return o.UseCdn, true
+}
+
+// HasUseCdn returns a boolean if a field has been set.
+func (o *CustomDomainRequest) HasUseCdn() bool {
+	if o != nil && !IsNil(o.UseCdn) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseCdn gets a reference to the given bool and assigns it to the UseCdn field.
+func (o *CustomDomainRequest) SetUseCdn(v bool) {
+	o.UseCdn = &v
+}
+
 func (o CustomDomainRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -109,6 +143,9 @@ func (o CustomDomainRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["domain"] = o.Domain
 	toSerialize["generate_certificate"] = o.GenerateCertificate
+	if !IsNil(o.UseCdn) {
+		toSerialize["use_cdn"] = o.UseCdn
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -155,6 +192,7 @@ func (o *CustomDomainRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "domain")
 		delete(additionalProperties, "generate_certificate")
+		delete(additionalProperties, "use_cdn")
 		o.AdditionalProperties = additionalProperties
 	}
 
