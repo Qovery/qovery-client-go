@@ -27,7 +27,7 @@ type LifecycleTemplateResponseVariablesInner struct {
 	// Default value for the variable
 	Default string `json:"default"`
 	// If the variable should be injected as a secret
-	IsSecret             string                                       `json:"is_secret"`
+	IsSecret             bool                                         `json:"is_secret"`
 	File                 *LifecycleTemplateResponseVariablesInnerFile `json:"file,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -38,7 +38,7 @@ type _LifecycleTemplateResponseVariablesInner LifecycleTemplateResponseVariables
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponseVariablesInner(name string, description string, default_ string, isSecret string) *LifecycleTemplateResponseVariablesInner {
+func NewLifecycleTemplateResponseVariablesInner(name string, description string, default_ string, isSecret bool) *LifecycleTemplateResponseVariablesInner {
 	this := LifecycleTemplateResponseVariablesInner{}
 	this.Name = name
 	this.Description = description
@@ -128,9 +128,9 @@ func (o *LifecycleTemplateResponseVariablesInner) SetDefault(v string) {
 }
 
 // GetIsSecret returns the IsSecret field value
-func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() string {
+func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() bool {
 	if o == nil {
-		var ret string
+		var ret bool
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() string {
 
 // GetIsSecretOk returns a tuple with the IsSecret field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*string, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*string, bool
 }
 
 // SetIsSecret sets field value
-func (o *LifecycleTemplateResponseVariablesInner) SetIsSecret(v string) {
+func (o *LifecycleTemplateResponseVariablesInner) SetIsSecret(v bool) {
 	o.IsSecret = v
 }
 

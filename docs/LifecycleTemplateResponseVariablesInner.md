@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | **string** | Short description to explain the purpose of the variable | 
 **Default** | **string** | Default value for the variable | 
-**IsSecret** | **string** | If the variable should be injected as a secret | 
+**IsSecret** | **bool** | If the variable should be injected as a secret | 
 **File** | Pointer to [**LifecycleTemplateResponseVariablesInnerFile**](LifecycleTemplateResponseVariablesInnerFile.md) |  | [optional] 
 
 ## Methods
 
 ### NewLifecycleTemplateResponseVariablesInner
 
-`func NewLifecycleTemplateResponseVariablesInner(name string, description string, default_ string, isSecret string, ) *LifecycleTemplateResponseVariablesInner`
+`func NewLifecycleTemplateResponseVariablesInner(name string, description string, default_ string, isSecret bool, ) *LifecycleTemplateResponseVariablesInner`
 
 NewLifecycleTemplateResponseVariablesInner instantiates a new LifecycleTemplateResponseVariablesInner object
 This constructor will assign default values to properties that have it defined,
@@ -91,20 +91,20 @@ SetDefault sets Default field to given value.
 
 ### GetIsSecret
 
-`func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() string`
+`func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() bool`
 
 GetIsSecret returns the IsSecret field if non-nil, zero value otherwise.
 
 ### GetIsSecretOk
 
-`func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*string, bool)`
+`func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*bool, bool)`
 
 GetIsSecretOk returns a tuple with the IsSecret field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetIsSecret
 
-`func (o *LifecycleTemplateResponseVariablesInner) SetIsSecret(v string)`
+`func (o *LifecycleTemplateResponseVariablesInner) SetIsSecret(v bool)`
 
 SetIsSecret sets IsSecret field to given value.
 

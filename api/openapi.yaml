@@ -28108,13 +28108,13 @@ components:
         - default: default
           file:
             path: path
-          is_secret: is_secret
+          is_secret: true
           name: name
           description: description
         - default: default
           file:
             path: path
-          is_secret: is_secret
+          is_secret: true
           name: name
           description: description
         max_duration_in_minutes: 0
@@ -30263,7 +30263,7 @@ components:
         default: default
         file:
           path: path
-        is_secret: is_secret
+        is_secret: true
         name: name
         description: description
       properties:
@@ -30283,7 +30283,7 @@ components:
             id: p9jb40lqlaj4a
         is_secret:
           description: If the variable should be injected as a secret
-          type: string
+          type: boolean
           x-stoplight:
             id: v6y3uhp3xivq5
         file:
