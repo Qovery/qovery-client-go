@@ -1,4 +1,4 @@
-# LifecycleTemplateResponseVariablesFile
+# LifecycleTemplateResponseVariablesInnerFile
 
 ## Properties
 
@@ -8,39 +8,39 @@ Name | Type | Description | Notes
 
 ## Methods
 
-### NewLifecycleTemplateResponseVariablesFile
+### NewLifecycleTemplateResponseVariablesInnerFile
 
-`func NewLifecycleTemplateResponseVariablesFile(path string, ) *LifecycleTemplateResponseVariablesFile`
+`func NewLifecycleTemplateResponseVariablesInnerFile(path string, ) *LifecycleTemplateResponseVariablesInnerFile`
 
-NewLifecycleTemplateResponseVariablesFile instantiates a new LifecycleTemplateResponseVariablesFile object
+NewLifecycleTemplateResponseVariablesInnerFile instantiates a new LifecycleTemplateResponseVariablesInnerFile object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewLifecycleTemplateResponseVariablesFileWithDefaults
+### NewLifecycleTemplateResponseVariablesInnerFileWithDefaults
 
-`func NewLifecycleTemplateResponseVariablesFileWithDefaults() *LifecycleTemplateResponseVariablesFile`
+`func NewLifecycleTemplateResponseVariablesInnerFileWithDefaults() *LifecycleTemplateResponseVariablesInnerFile`
 
-NewLifecycleTemplateResponseVariablesFileWithDefaults instantiates a new LifecycleTemplateResponseVariablesFile object
+NewLifecycleTemplateResponseVariablesInnerFileWithDefaults instantiates a new LifecycleTemplateResponseVariablesInnerFile object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetPath
 
-`func (o *LifecycleTemplateResponseVariablesFile) GetPath() string`
+`func (o *LifecycleTemplateResponseVariablesInnerFile) GetPath() string`
 
 GetPath returns the Path field if non-nil, zero value otherwise.
 
 ### GetPathOk
 
-`func (o *LifecycleTemplateResponseVariablesFile) GetPathOk() (*string, bool)`
+`func (o *LifecycleTemplateResponseVariablesInnerFile) GetPathOk() (*string, bool)`
 
 GetPathOk returns a tuple with the Path field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPath
 
-`func (o *LifecycleTemplateResponseVariablesFile) SetPath(v string)`
+`func (o *LifecycleTemplateResponseVariablesInnerFile) SetPath(v string)`
 
 SetPath sets Path field to given value.
 

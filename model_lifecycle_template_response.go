@@ -32,7 +32,8 @@ type LifecycleTemplateResponse struct {
 	// Job max allowed duration in minutes. After this allowed time, the job is going to be killed.
 	MaxDurationInMinutes int32                              `json:"max_duration_in_minutes"`
 	Resources            LifecycleTemplateResponseResources `json:"resources"`
-	Variables            LifecycleTemplateResponseVariables `json:"variables"`
+	// Variables to inject at the creation of this lifecycle job
+	Variables []LifecycleTemplateResponseVariablesInner `json:"variables"`
 	// Dockerfile of the template
 	Dockerfile           string `json:"dockerfile"`
 	AdditionalProperties map[string]interface{}
@@ -44,7 +45,7 @@ type _LifecycleTemplateResponse LifecycleTemplateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables, dockerfile string) *LifecycleTemplateResponse {
+func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string) *LifecycleTemplateResponse {
 	this := LifecycleTemplateResponse{}
 	this.Id = id
 	this.Name = name
@@ -260,9 +261,9 @@ func (o *LifecycleTemplateResponse) SetResources(v LifecycleTemplateResponseReso
 }
 
 // GetVariables returns the Variables field value
-func (o *LifecycleTemplateResponse) GetVariables() LifecycleTemplateResponseVariables {
+func (o *LifecycleTemplateResponse) GetVariables() []LifecycleTemplateResponseVariablesInner {
 	if o == nil {
-		var ret LifecycleTemplateResponseVariables
+		var ret []LifecycleTemplateResponseVariablesInner
 		return ret
 	}
 
@@ -271,15 +272,15 @@ func (o *LifecycleTemplateResponse) GetVariables() LifecycleTemplateResponseVari
 
 // GetVariablesOk returns a tuple with the Variables field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponse) GetVariablesOk() (*LifecycleTemplateResponseVariables, bool) {
+func (o *LifecycleTemplateResponse) GetVariablesOk() ([]LifecycleTemplateResponseVariablesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Variables, true
+	return o.Variables, true
 }
 
 // SetVariables sets field value
-func (o *LifecycleTemplateResponse) SetVariables(v LifecycleTemplateResponseVariables) {
+func (o *LifecycleTemplateResponse) SetVariables(v []LifecycleTemplateResponseVariablesInner) {
 	o.Variables = v
 }
 

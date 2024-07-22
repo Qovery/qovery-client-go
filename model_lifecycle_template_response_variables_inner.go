@@ -16,30 +16,30 @@ import (
 	"fmt"
 )
 
-// checks if the LifecycleTemplateResponseVariables type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &LifecycleTemplateResponseVariables{}
+// checks if the LifecycleTemplateResponseVariablesInner type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &LifecycleTemplateResponseVariablesInner{}
 
-// LifecycleTemplateResponseVariables Variables to inject at the creation of this lifecycle job
-type LifecycleTemplateResponseVariables struct {
+// LifecycleTemplateResponseVariablesInner struct for LifecycleTemplateResponseVariablesInner
+type LifecycleTemplateResponseVariablesInner struct {
 	Name string `json:"name"`
 	// Short description to explain the purpose of the variable
 	Description string `json:"description"`
 	// Default value for the variable
 	Default string `json:"default"`
 	// If the variable should be injected as a secret
-	IsSecret             bool                                    `json:"is_secret"`
-	File                 *LifecycleTemplateResponseVariablesFile `json:"file,omitempty"`
+	IsSecret             string                                       `json:"is_secret"`
+	File                 *LifecycleTemplateResponseVariablesInnerFile `json:"file,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _LifecycleTemplateResponseVariables LifecycleTemplateResponseVariables
+type _LifecycleTemplateResponseVariablesInner LifecycleTemplateResponseVariablesInner
 
-// NewLifecycleTemplateResponseVariables instantiates a new LifecycleTemplateResponseVariables object
+// NewLifecycleTemplateResponseVariablesInner instantiates a new LifecycleTemplateResponseVariablesInner object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponseVariables(name string, description string, default_ string, isSecret bool) *LifecycleTemplateResponseVariables {
-	this := LifecycleTemplateResponseVariables{}
+func NewLifecycleTemplateResponseVariablesInner(name string, description string, default_ string, isSecret string) *LifecycleTemplateResponseVariablesInner {
+	this := LifecycleTemplateResponseVariablesInner{}
 	this.Name = name
 	this.Description = description
 	this.Default = default_
@@ -47,16 +47,16 @@ func NewLifecycleTemplateResponseVariables(name string, description string, defa
 	return &this
 }
 
-// NewLifecycleTemplateResponseVariablesWithDefaults instantiates a new LifecycleTemplateResponseVariables object
+// NewLifecycleTemplateResponseVariablesInnerWithDefaults instantiates a new LifecycleTemplateResponseVariablesInner object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewLifecycleTemplateResponseVariablesWithDefaults() *LifecycleTemplateResponseVariables {
-	this := LifecycleTemplateResponseVariables{}
+func NewLifecycleTemplateResponseVariablesInnerWithDefaults() *LifecycleTemplateResponseVariablesInner {
+	this := LifecycleTemplateResponseVariablesInner{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *LifecycleTemplateResponseVariables) GetName() string {
+func (o *LifecycleTemplateResponseVariablesInner) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -67,7 +67,7 @@ func (o *LifecycleTemplateResponseVariables) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariables) GetNameOk() (*string, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -75,12 +75,12 @@ func (o *LifecycleTemplateResponseVariables) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *LifecycleTemplateResponseVariables) SetName(v string) {
+func (o *LifecycleTemplateResponseVariablesInner) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value
-func (o *LifecycleTemplateResponseVariables) GetDescription() string {
+func (o *LifecycleTemplateResponseVariablesInner) GetDescription() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -91,7 +91,7 @@ func (o *LifecycleTemplateResponseVariables) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariables) GetDescriptionOk() (*string, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -99,12 +99,12 @@ func (o *LifecycleTemplateResponseVariables) GetDescriptionOk() (*string, bool) 
 }
 
 // SetDescription sets field value
-func (o *LifecycleTemplateResponseVariables) SetDescription(v string) {
+func (o *LifecycleTemplateResponseVariablesInner) SetDescription(v string) {
 	o.Description = v
 }
 
 // GetDefault returns the Default field value
-func (o *LifecycleTemplateResponseVariables) GetDefault() string {
+func (o *LifecycleTemplateResponseVariablesInner) GetDefault() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -115,7 +115,7 @@ func (o *LifecycleTemplateResponseVariables) GetDefault() string {
 
 // GetDefaultOk returns a tuple with the Default field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariables) GetDefaultOk() (*string, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetDefaultOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,14 +123,14 @@ func (o *LifecycleTemplateResponseVariables) GetDefaultOk() (*string, bool) {
 }
 
 // SetDefault sets field value
-func (o *LifecycleTemplateResponseVariables) SetDefault(v string) {
+func (o *LifecycleTemplateResponseVariablesInner) SetDefault(v string) {
 	o.Default = v
 }
 
 // GetIsSecret returns the IsSecret field value
-func (o *LifecycleTemplateResponseVariables) GetIsSecret() bool {
+func (o *LifecycleTemplateResponseVariablesInner) GetIsSecret() string {
 	if o == nil {
-		var ret bool
+		var ret string
 		return ret
 	}
 
@@ -139,7 +139,7 @@ func (o *LifecycleTemplateResponseVariables) GetIsSecret() bool {
 
 // GetIsSecretOk returns a tuple with the IsSecret field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariables) GetIsSecretOk() (*bool, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetIsSecretOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -147,14 +147,14 @@ func (o *LifecycleTemplateResponseVariables) GetIsSecretOk() (*bool, bool) {
 }
 
 // SetIsSecret sets field value
-func (o *LifecycleTemplateResponseVariables) SetIsSecret(v bool) {
+func (o *LifecycleTemplateResponseVariablesInner) SetIsSecret(v string) {
 	o.IsSecret = v
 }
 
 // GetFile returns the File field value if set, zero value otherwise.
-func (o *LifecycleTemplateResponseVariables) GetFile() LifecycleTemplateResponseVariablesFile {
+func (o *LifecycleTemplateResponseVariablesInner) GetFile() LifecycleTemplateResponseVariablesInnerFile {
 	if o == nil || IsNil(o.File) {
-		var ret LifecycleTemplateResponseVariablesFile
+		var ret LifecycleTemplateResponseVariablesInnerFile
 		return ret
 	}
 	return *o.File
@@ -162,7 +162,7 @@ func (o *LifecycleTemplateResponseVariables) GetFile() LifecycleTemplateResponse
 
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseVariables) GetFileOk() (*LifecycleTemplateResponseVariablesFile, bool) {
+func (o *LifecycleTemplateResponseVariablesInner) GetFileOk() (*LifecycleTemplateResponseVariablesInnerFile, bool) {
 	if o == nil || IsNil(o.File) {
 		return nil, false
 	}
@@ -170,7 +170,7 @@ func (o *LifecycleTemplateResponseVariables) GetFileOk() (*LifecycleTemplateResp
 }
 
 // HasFile returns a boolean if a field has been set.
-func (o *LifecycleTemplateResponseVariables) HasFile() bool {
+func (o *LifecycleTemplateResponseVariablesInner) HasFile() bool {
 	if o != nil && !IsNil(o.File) {
 		return true
 	}
@@ -178,12 +178,12 @@ func (o *LifecycleTemplateResponseVariables) HasFile() bool {
 	return false
 }
 
-// SetFile gets a reference to the given LifecycleTemplateResponseVariablesFile and assigns it to the File field.
-func (o *LifecycleTemplateResponseVariables) SetFile(v LifecycleTemplateResponseVariablesFile) {
+// SetFile gets a reference to the given LifecycleTemplateResponseVariablesInnerFile and assigns it to the File field.
+func (o *LifecycleTemplateResponseVariablesInner) SetFile(v LifecycleTemplateResponseVariablesInnerFile) {
 	o.File = &v
 }
 
-func (o LifecycleTemplateResponseVariables) MarshalJSON() ([]byte, error) {
+func (o LifecycleTemplateResponseVariablesInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -191,7 +191,7 @@ func (o LifecycleTemplateResponseVariables) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o LifecycleTemplateResponseVariables) ToMap() (map[string]interface{}, error) {
+func (o LifecycleTemplateResponseVariablesInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
@@ -208,7 +208,7 @@ func (o LifecycleTemplateResponseVariables) ToMap() (map[string]interface{}, err
 	return toSerialize, nil
 }
 
-func (o *LifecycleTemplateResponseVariables) UnmarshalJSON(data []byte) (err error) {
+func (o *LifecycleTemplateResponseVariablesInner) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -233,15 +233,15 @@ func (o *LifecycleTemplateResponseVariables) UnmarshalJSON(data []byte) (err err
 		}
 	}
 
-	varLifecycleTemplateResponseVariables := _LifecycleTemplateResponseVariables{}
+	varLifecycleTemplateResponseVariablesInner := _LifecycleTemplateResponseVariablesInner{}
 
-	err = json.Unmarshal(data, &varLifecycleTemplateResponseVariables)
+	err = json.Unmarshal(data, &varLifecycleTemplateResponseVariablesInner)
 
 	if err != nil {
 		return err
 	}
 
-	*o = LifecycleTemplateResponseVariables(varLifecycleTemplateResponseVariables)
+	*o = LifecycleTemplateResponseVariablesInner(varLifecycleTemplateResponseVariablesInner)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -257,38 +257,38 @@ func (o *LifecycleTemplateResponseVariables) UnmarshalJSON(data []byte) (err err
 	return err
 }
 
-type NullableLifecycleTemplateResponseVariables struct {
-	value *LifecycleTemplateResponseVariables
+type NullableLifecycleTemplateResponseVariablesInner struct {
+	value *LifecycleTemplateResponseVariablesInner
 	isSet bool
 }
 
-func (v NullableLifecycleTemplateResponseVariables) Get() *LifecycleTemplateResponseVariables {
+func (v NullableLifecycleTemplateResponseVariablesInner) Get() *LifecycleTemplateResponseVariablesInner {
 	return v.value
 }
 
-func (v *NullableLifecycleTemplateResponseVariables) Set(val *LifecycleTemplateResponseVariables) {
+func (v *NullableLifecycleTemplateResponseVariablesInner) Set(val *LifecycleTemplateResponseVariablesInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableLifecycleTemplateResponseVariables) IsSet() bool {
+func (v NullableLifecycleTemplateResponseVariablesInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableLifecycleTemplateResponseVariables) Unset() {
+func (v *NullableLifecycleTemplateResponseVariablesInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableLifecycleTemplateResponseVariables(val *LifecycleTemplateResponseVariables) *NullableLifecycleTemplateResponseVariables {
-	return &NullableLifecycleTemplateResponseVariables{value: val, isSet: true}
+func NewNullableLifecycleTemplateResponseVariablesInner(val *LifecycleTemplateResponseVariablesInner) *NullableLifecycleTemplateResponseVariablesInner {
+	return &NullableLifecycleTemplateResponseVariablesInner{value: val, isSet: true}
 }
 
-func (v NullableLifecycleTemplateResponseVariables) MarshalJSON() ([]byte, error) {
+func (v NullableLifecycleTemplateResponseVariablesInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableLifecycleTemplateResponseVariables) UnmarshalJSON(src []byte) error {
+func (v *NullableLifecycleTemplateResponseVariablesInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

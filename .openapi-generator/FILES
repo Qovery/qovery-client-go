@@ -448,8 +448,8 @@ docs/LifecycleTemplateMainCallsAPI.md
 docs/LifecycleTemplateResponse.md
 docs/LifecycleTemplateResponseEventsInner.md
 docs/LifecycleTemplateResponseResources.md
-docs/LifecycleTemplateResponseVariables.md
-docs/LifecycleTemplateResponseVariablesFile.md
+docs/LifecycleTemplateResponseVariablesInner.md
+docs/LifecycleTemplateResponseVariablesInnerFile.md
 docs/Link.md
 docs/LinkResponseList.md
 docs/LinkedServiceTypeEnum.md
@@ -932,8 +932,8 @@ model_lifecycle_template_list_response_results_inner.go
 model_lifecycle_template_response.go
 model_lifecycle_template_response_events_inner.go
 model_lifecycle_template_response_resources.go
-model_lifecycle_template_response_variables.go
-model_lifecycle_template_response_variables_file.go
+model_lifecycle_template_response_variables_inner.go
+model_lifecycle_template_response_variables_inner_file.go
 model_link.go
 model_link_response_list.go
 model_linked_service_type_enum.go

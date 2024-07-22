@@ -12,14 +12,14 @@ Name | Type | Description | Notes
 **Events** | [**[]LifecycleTemplateResponseEventsInner**](LifecycleTemplateResponseEventsInner.md) | lis of pre-defined command for each event | 
 **MaxDurationInMinutes** | **int32** | Job max allowed duration in minutes. After this allowed time, the job is going to be killed. | 
 **Resources** | [**LifecycleTemplateResponseResources**](LifecycleTemplateResponseResources.md) |  | 
-**Variables** | [**LifecycleTemplateResponseVariables**](LifecycleTemplateResponseVariables.md) |  | 
+**Variables** | [**[]LifecycleTemplateResponseVariablesInner**](LifecycleTemplateResponseVariablesInner.md) | Variables to inject at the creation of this lifecycle job | 
 **Dockerfile** | **string** | Dockerfile of the template | 
 
 ## Methods
 
 ### NewLifecycleTemplateResponse
 
-`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables, dockerfile string, ) *LifecycleTemplateResponse`
+`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string, ) *LifecycleTemplateResponse`
 
 NewLifecycleTemplateResponse instantiates a new LifecycleTemplateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -196,20 +196,20 @@ SetResources sets Resources field to given value.
 
 ### GetVariables
 
-`func (o *LifecycleTemplateResponse) GetVariables() LifecycleTemplateResponseVariables`
+`func (o *LifecycleTemplateResponse) GetVariables() []LifecycleTemplateResponseVariablesInner`
 
 GetVariables returns the Variables field if non-nil, zero value otherwise.
 
 ### GetVariablesOk
 
-`func (o *LifecycleTemplateResponse) GetVariablesOk() (*LifecycleTemplateResponseVariables, bool)`
+`func (o *LifecycleTemplateResponse) GetVariablesOk() (*[]LifecycleTemplateResponseVariablesInner, bool)`
 
 GetVariablesOk returns a tuple with the Variables field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetVariables
 
-`func (o *LifecycleTemplateResponse) SetVariables(v LifecycleTemplateResponseVariables)`
+`func (o *LifecycleTemplateResponse) SetVariables(v []LifecycleTemplateResponseVariablesInner)`
 
 SetVariables sets Variables field to given value.
 
