@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **MaxDurationInMinutes** | **int32** | Job max allowed duration in minutes. After this allowed time, the job is going to be killed. | 
 **Resources** | [**LifecycleTemplateResponseResources**](LifecycleTemplateResponseResources.md) |  | 
 **Variables** | [**LifecycleTemplateResponseVariables**](LifecycleTemplateResponseVariables.md) |  | 
+**Dockerfile** | **string** | Dockerfile of the template | 
 
 ## Methods
 
 ### NewLifecycleTemplateResponse
 
-`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables, ) *LifecycleTemplateResponse`
+`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables, dockerfile string, ) *LifecycleTemplateResponse`
 
 NewLifecycleTemplateResponse instantiates a new LifecycleTemplateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -211,6 +212,26 @@ and a boolean to check if the value has been set.
 `func (o *LifecycleTemplateResponse) SetVariables(v LifecycleTemplateResponseVariables)`
 
 SetVariables sets Variables field to given value.
+
+
+### GetDockerfile
+
+`func (o *LifecycleTemplateResponse) GetDockerfile() string`
+
+GetDockerfile returns the Dockerfile field if non-nil, zero value otherwise.
+
+### GetDockerfileOk
+
+`func (o *LifecycleTemplateResponse) GetDockerfileOk() (*string, bool)`
+
+GetDockerfileOk returns a tuple with the Dockerfile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerfile
+
+`func (o *LifecycleTemplateResponse) SetDockerfile(v string)`
+
+SetDockerfile sets Dockerfile field to given value.
 
 
 

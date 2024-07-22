@@ -33,6 +33,8 @@ type LifecycleTemplateResponse struct {
 	MaxDurationInMinutes int32                              `json:"max_duration_in_minutes"`
 	Resources            LifecycleTemplateResponseResources `json:"resources"`
 	Variables            LifecycleTemplateResponseVariables `json:"variables"`
+	// Dockerfile of the template
+	Dockerfile           string `json:"dockerfile"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +44,7 @@ type _LifecycleTemplateResponse LifecycleTemplateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables) *LifecycleTemplateResponse {
+func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables LifecycleTemplateResponseVariables, dockerfile string) *LifecycleTemplateResponse {
 	this := LifecycleTemplateResponse{}
 	this.Id = id
 	this.Name = name
@@ -53,6 +55,7 @@ func NewLifecycleTemplateResponse(id string, name string, description string, so
 	this.MaxDurationInMinutes = maxDurationInMinutes
 	this.Resources = resources
 	this.Variables = variables
+	this.Dockerfile = dockerfile
 	return &this
 }
 
@@ -280,6 +283,30 @@ func (o *LifecycleTemplateResponse) SetVariables(v LifecycleTemplateResponseVari
 	o.Variables = v
 }
 
+// GetDockerfile returns the Dockerfile field value
+func (o *LifecycleTemplateResponse) GetDockerfile() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Dockerfile
+}
+
+// GetDockerfileOk returns a tuple with the Dockerfile field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleTemplateResponse) GetDockerfileOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Dockerfile, true
+}
+
+// SetDockerfile sets field value
+func (o *LifecycleTemplateResponse) SetDockerfile(v string) {
+	o.Dockerfile = v
+}
+
 func (o LifecycleTemplateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -299,6 +326,7 @@ func (o LifecycleTemplateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["max_duration_in_minutes"] = o.MaxDurationInMinutes
 	toSerialize["resources"] = o.Resources
 	toSerialize["variables"] = o.Variables
+	toSerialize["dockerfile"] = o.Dockerfile
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -321,6 +349,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		"max_duration_in_minutes",
 		"resources",
 		"variables",
+		"dockerfile",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -359,6 +388,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "max_duration_in_minutes")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "variables")
+		delete(additionalProperties, "dockerfile")
 		o.AdditionalProperties = additionalProperties
 	}
 

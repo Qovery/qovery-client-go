@@ -28094,6 +28094,7 @@ components:
           name: name
           description: description
         max_duration_in_minutes: 0
+        dockerfile: dockerfile
         name: name
         description: description
         resources:
@@ -28152,9 +28153,15 @@ components:
           $ref: '#/components/schemas/LifecycleTemplateResponse_resources'
         variables:
           $ref: '#/components/schemas/LifecycleTemplateResponse_variables'
+        dockerfile:
+          description: Dockerfile of the template
+          type: string
+          x-stoplight:
+            id: 0xkypu9qkowv3
       required:
       - cloud_provider
       - description
+      - dockerfile
       - events
       - id
       - max_duration_in_minutes
