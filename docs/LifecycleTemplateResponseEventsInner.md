@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Entrpoint** | Pointer to **string** |  | [optional] 
+**Entrypoint** | Pointer to **string** |  | [optional] 
 **Command** | **[]string** |  | 
 
 ## Methods
@@ -47,30 +47,30 @@ and a boolean to check if the value has been set.
 SetName sets Name field to given value.
 
 
-### GetEntrpoint
+### GetEntrypoint
 
-`func (o *LifecycleTemplateResponseEventsInner) GetEntrpoint() string`
+`func (o *LifecycleTemplateResponseEventsInner) GetEntrypoint() string`
 
-GetEntrpoint returns the Entrpoint field if non-nil, zero value otherwise.
+GetEntrypoint returns the Entrypoint field if non-nil, zero value otherwise.
 
-### GetEntrpointOk
+### GetEntrypointOk
 
-`func (o *LifecycleTemplateResponseEventsInner) GetEntrpointOk() (*string, bool)`
+`func (o *LifecycleTemplateResponseEventsInner) GetEntrypointOk() (*string, bool)`
 
-GetEntrpointOk returns a tuple with the Entrpoint field if it's non-nil, zero value otherwise
+GetEntrypointOk returns a tuple with the Entrypoint field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEntrpoint
+### SetEntrypoint
 
-`func (o *LifecycleTemplateResponseEventsInner) SetEntrpoint(v string)`
+`func (o *LifecycleTemplateResponseEventsInner) SetEntrypoint(v string)`
 
-SetEntrpoint sets Entrpoint field to given value.
+SetEntrypoint sets Entrypoint field to given value.
 
-### HasEntrpoint
+### HasEntrypoint
 
-`func (o *LifecycleTemplateResponseEventsInner) HasEntrpoint() bool`
+`func (o *LifecycleTemplateResponseEventsInner) HasEntrypoint() bool`
 
-HasEntrpoint returns a boolean if a field has been set.
+HasEntrypoint returns a boolean if a field has been set.
 
 ### GetCommand
 

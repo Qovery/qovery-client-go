@@ -22,7 +22,7 @@ var _ MappedNullable = &LifecycleTemplateResponseEventsInner{}
 // LifecycleTemplateResponseEventsInner struct for LifecycleTemplateResponseEventsInner
 type LifecycleTemplateResponseEventsInner struct {
 	Name                 string   `json:"name"`
-	Entrpoint            *string  `json:"entrpoint,omitempty"`
+	Entrypoint           *string  `json:"entrypoint,omitempty"`
 	Command              []string `json:"command"`
 	AdditionalProperties map[string]interface{}
 }
@@ -72,36 +72,36 @@ func (o *LifecycleTemplateResponseEventsInner) SetName(v string) {
 	o.Name = v
 }
 
-// GetEntrpoint returns the Entrpoint field value if set, zero value otherwise.
-func (o *LifecycleTemplateResponseEventsInner) GetEntrpoint() string {
-	if o == nil || IsNil(o.Entrpoint) {
+// GetEntrypoint returns the Entrypoint field value if set, zero value otherwise.
+func (o *LifecycleTemplateResponseEventsInner) GetEntrypoint() string {
+	if o == nil || IsNil(o.Entrypoint) {
 		var ret string
 		return ret
 	}
-	return *o.Entrpoint
+	return *o.Entrypoint
 }
 
-// GetEntrpointOk returns a tuple with the Entrpoint field value if set, nil otherwise
+// GetEntrypointOk returns a tuple with the Entrypoint field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *LifecycleTemplateResponseEventsInner) GetEntrpointOk() (*string, bool) {
-	if o == nil || IsNil(o.Entrpoint) {
+func (o *LifecycleTemplateResponseEventsInner) GetEntrypointOk() (*string, bool) {
+	if o == nil || IsNil(o.Entrypoint) {
 		return nil, false
 	}
-	return o.Entrpoint, true
+	return o.Entrypoint, true
 }
 
-// HasEntrpoint returns a boolean if a field has been set.
-func (o *LifecycleTemplateResponseEventsInner) HasEntrpoint() bool {
-	if o != nil && !IsNil(o.Entrpoint) {
+// HasEntrypoint returns a boolean if a field has been set.
+func (o *LifecycleTemplateResponseEventsInner) HasEntrypoint() bool {
+	if o != nil && !IsNil(o.Entrypoint) {
 		return true
 	}
 
 	return false
 }
 
-// SetEntrpoint gets a reference to the given string and assigns it to the Entrpoint field.
-func (o *LifecycleTemplateResponseEventsInner) SetEntrpoint(v string) {
-	o.Entrpoint = &v
+// SetEntrypoint gets a reference to the given string and assigns it to the Entrypoint field.
+func (o *LifecycleTemplateResponseEventsInner) SetEntrypoint(v string) {
+	o.Entrypoint = &v
 }
 
 // GetCommand returns the Command field value
@@ -139,8 +139,8 @@ func (o LifecycleTemplateResponseEventsInner) MarshalJSON() ([]byte, error) {
 func (o LifecycleTemplateResponseEventsInner) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	if !IsNil(o.Entrpoint) {
-		toSerialize["entrpoint"] = o.Entrpoint
+	if !IsNil(o.Entrypoint) {
+		toSerialize["entrypoint"] = o.Entrypoint
 	}
 	toSerialize["command"] = o.Command
 
@@ -188,7 +188,7 @@ func (o *LifecycleTemplateResponseEventsInner) UnmarshalJSON(data []byte) (err e
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
-		delete(additionalProperties, "entrpoint")
+		delete(additionalProperties, "entrypoint")
 		delete(additionalProperties, "command")
 		o.AdditionalProperties = additionalProperties
 	}

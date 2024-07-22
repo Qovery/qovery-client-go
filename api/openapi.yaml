@@ -28121,12 +28121,12 @@ components:
         cloud_provider: AWS
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         events:
-        - entrpoint: entrpoint
+        - entrypoint: entrypoint
           name: name
           command:
           - command
           - command
-        - entrpoint: entrpoint
+        - entrypoint: entrypoint
           name: name
           command:
           - command
@@ -30186,7 +30186,7 @@ components:
         id: uozhvuyd6pdmu
     LifecycleTemplateResponse_events_inner:
       example:
-        entrpoint: entrpoint
+        entrypoint: entrypoint
         name: name
         command:
         - command
@@ -30196,7 +30196,7 @@ components:
           type: string
           x-stoplight:
             id: gjv4fce8vssmm
-        entrpoint:
+        entrypoint:
           type: string
           x-stoplight:
             id: 0i1rd5p3sk6f5
