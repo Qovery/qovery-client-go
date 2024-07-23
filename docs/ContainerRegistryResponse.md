@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
 **Cluster** | Pointer to [**ContainerRegistryResponseAllOfCluster**](ContainerRegistryResponseAllOfCluster.md) |  | [optional] 
+**AssociatedServicesCount** | Pointer to **int32** | The number of services using this container registry | [optional] 
 
 ## Methods
 
@@ -221,6 +222,31 @@ SetCluster sets Cluster field to given value.
 `func (o *ContainerRegistryResponse) HasCluster() bool`
 
 HasCluster returns a boolean if a field has been set.
+
+### GetAssociatedServicesCount
+
+`func (o *ContainerRegistryResponse) GetAssociatedServicesCount() int32`
+
+GetAssociatedServicesCount returns the AssociatedServicesCount field if non-nil, zero value otherwise.
+
+### GetAssociatedServicesCountOk
+
+`func (o *ContainerRegistryResponse) GetAssociatedServicesCountOk() (*int32, bool)`
+
+GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedServicesCount
+
+`func (o *ContainerRegistryResponse) SetAssociatedServicesCount(v int32)`
+
+SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
+
+### HasAssociatedServicesCount
+
+`func (o *ContainerRegistryResponse) HasAssociatedServicesCount() bool`
+
+HasAssociatedServicesCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

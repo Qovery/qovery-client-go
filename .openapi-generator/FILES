@@ -34,6 +34,7 @@ api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
+api_default.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -208,6 +209,9 @@ docs/ContainerMainCallsAPI.md
 docs/ContainerNetwork.md
 docs/ContainerNetworkRequest.md
 docs/ContainerRegistriesAPI.md
+docs/ContainerRegistryAssociatedServiceType.md
+docs/ContainerRegistryAssociatedServicesResponse.md
+docs/ContainerRegistryAssociatedServicesResponseList.md
 docs/ContainerRegistryKindEnum.md
 docs/ContainerRegistryProviderDetailsResponse.md
 docs/ContainerRegistryRequest.md
@@ -257,6 +261,7 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
+docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -730,6 +735,9 @@ model_container_deploy_request.go
 model_container_image_check_request.go
 model_container_network.go
 model_container_network_request.go
+model_container_registry_associated_service_type.go
+model_container_registry_associated_services_response.go
+model_container_registry_associated_services_response_list.go
 model_container_registry_kind_enum.go
 model_container_registry_provider_details_response.go
 model_container_registry_request.go
@@ -1124,6 +1132,7 @@ test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
+test/api_default_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go

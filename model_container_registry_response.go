@@ -29,9 +29,11 @@ type ContainerRegistryResponse struct {
 	Kind        *ContainerRegistryKindEnum `json:"kind,omitempty"`
 	Description *string                    `json:"description,omitempty"`
 	// URL of the container registry
-	Url                  *string                                `json:"url,omitempty"`
-	Cluster              *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Url     *string                                `json:"url,omitempty"`
+	Cluster *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
+	// The number of services using this container registry
+	AssociatedServicesCount *int32 `json:"associated_services_count,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ContainerRegistryResponse ContainerRegistryResponse
@@ -295,6 +297,38 @@ func (o *ContainerRegistryResponse) SetCluster(v ContainerRegistryResponseAllOfC
 	o.Cluster = &v
 }
 
+// GetAssociatedServicesCount returns the AssociatedServicesCount field value if set, zero value otherwise.
+func (o *ContainerRegistryResponse) GetAssociatedServicesCount() int32 {
+	if o == nil || IsNil(o.AssociatedServicesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AssociatedServicesCount
+}
+
+// GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponse) GetAssociatedServicesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AssociatedServicesCount) {
+		return nil, false
+	}
+	return o.AssociatedServicesCount, true
+}
+
+// HasAssociatedServicesCount returns a boolean if a field has been set.
+func (o *ContainerRegistryResponse) HasAssociatedServicesCount() bool {
+	if o != nil && !IsNil(o.AssociatedServicesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssociatedServicesCount gets a reference to the given int32 and assigns it to the AssociatedServicesCount field.
+func (o *ContainerRegistryResponse) SetAssociatedServicesCount(v int32) {
+	o.AssociatedServicesCount = &v
+}
+
 func (o ContainerRegistryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -324,6 +358,9 @@ func (o ContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Cluster) {
 		toSerialize["cluster"] = o.Cluster
+	}
+	if !IsNil(o.AssociatedServicesCount) {
+		toSerialize["associated_services_count"] = o.AssociatedServicesCount
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -377,6 +414,7 @@ func (o *ContainerRegistryResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "cluster")
+		delete(additionalProperties, "associated_services_count")
 		o.AdditionalProperties = additionalProperties
 	}
 

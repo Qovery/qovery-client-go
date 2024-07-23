@@ -271,6 +271,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DefaultAPI* | [**GetContainerRegistryAssociatedServices**](docs/DefaultAPI.md#getcontainerregistryassociatedservices) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -599,6 +600,9 @@ Class | Method | HTTP request | Description
  - [ContainerImageCheckRequest](docs/ContainerImageCheckRequest.md)
  - [ContainerNetwork](docs/ContainerNetwork.md)
  - [ContainerNetworkRequest](docs/ContainerNetworkRequest.md)
+ - [ContainerRegistryAssociatedServiceType](docs/ContainerRegistryAssociatedServiceType.md)
+ - [ContainerRegistryAssociatedServicesResponse](docs/ContainerRegistryAssociatedServicesResponse.md)
+ - [ContainerRegistryAssociatedServicesResponseList](docs/ContainerRegistryAssociatedServicesResponseList.md)
  - [ContainerRegistryKindEnum](docs/ContainerRegistryKindEnum.md)
  - [ContainerRegistryProviderDetailsResponse](docs/ContainerRegistryProviderDetailsResponse.md)
  - [ContainerRegistryRequest](docs/ContainerRegistryRequest.md)

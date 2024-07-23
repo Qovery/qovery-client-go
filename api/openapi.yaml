@@ -14691,6 +14691,42 @@ paths:
       - Lifecycle Template Main Calls
       x-stoplight:
         id: yatyf4hs2kwc0
+  /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices:
+    get:
+      description: Get organization container registry associated services
+      operationId: getContainerRegistryAssociatedServices
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: containerRegistryId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContainerRegistryAssociatedServicesResponseList'
+          description: Get organization container registry associated services
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get organization container registry associated services
+      tags: []
+      x-stoplight:
+        id: dgh8t73nqaetm
 components:
   parameters:
     applicationId:
@@ -18494,8 +18530,14 @@ components:
             type: string
           cluster:
             $ref: '#/components/schemas/ContainerRegistryResponse_allOf_cluster'
+          associated_services_count:
+            description: The number of services using this container registry
+            type: integer
+            x-stoplight:
+              id: 02mqr04rogfem
         type: object
       example:
+        associated_services_count: 0
         cluster:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18532,7 +18574,8 @@ components:
     ContainerRegistryResponseList:
       example:
         results:
-        - cluster:
+        - associated_services_count: 0
+          cluster:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18542,7 +18585,8 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
-        - cluster:
+        - associated_services_count: 0
+          cluster:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -28203,6 +28247,82 @@ components:
       x-stoplight:
         id: bvzo0blwz03tn
       x-internal: false
+    ContainerRegistryAssociatedServicesResponseList:
+      example:
+        results:
+          service_type: CONTAINER
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          $ref: '#/components/schemas/ContainerRegistryAssociatedServicesResponse'
+      title: ContainerRegistryAssociatedServicesResponseList
+      type: object
+      x-stoplight:
+        id: xn1fsp17ahwfi
+    ContainerRegistryAssociatedServicesResponse:
+      example:
+        service_type: CONTAINER
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_name: service_name
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 9jdx3t62nttjz
+        project_name:
+          type: string
+          x-stoplight:
+            id: cjlfx1ucomdv9
+        environment_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: gk5r4dcoliuac
+        environment_name:
+          type: string
+          x-stoplight:
+            id: kxry5d624susz
+        service_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: kmouxjf3vbtjo
+        service_name:
+          type: string
+          x-stoplight:
+            id: ga0yqhtmi4nl6
+        service_type:
+          $ref: '#/components/schemas/ContainerRegistryAssociatedServiceType'
+      required:
+      - environment_id
+      - environment_name
+      - project_id
+      - project_name
+      - service_id
+      - service_name
+      - service_type
+      title: ContainerRegistryAssociatedServicesResponse
+      type: object
+      x-stoplight:
+        id: uxbkfqdj9zyi6
+    ContainerRegistryAssociatedServiceType:
+      enum:
+      - CONTAINER
+      - JOB
+      title: ContainerRegistryAssociatedServiceType
+      type: string
+      x-stoplight:
+        id: dif8pj1ys444y
     deleteMember_request:
       properties:
         user_id:
