@@ -20,7 +20,7 @@ var _ MappedNullable = &ContainerRegistryAssociatedServicesResponseList{}
 
 // ContainerRegistryAssociatedServicesResponseList struct for ContainerRegistryAssociatedServicesResponseList
 type ContainerRegistryAssociatedServicesResponseList struct {
-	Results              *ContainerRegistryAssociatedServicesResponse `json:"results,omitempty"`
+	Results              []ContainerRegistryAssociatedServicesResponse `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,17 +44,17 @@ func NewContainerRegistryAssociatedServicesResponseListWithDefaults() *Container
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ContainerRegistryAssociatedServicesResponseList) GetResults() ContainerRegistryAssociatedServicesResponse {
+func (o *ContainerRegistryAssociatedServicesResponseList) GetResults() []ContainerRegistryAssociatedServicesResponse {
 	if o == nil || IsNil(o.Results) {
-		var ret ContainerRegistryAssociatedServicesResponse
+		var ret []ContainerRegistryAssociatedServicesResponse
 		return ret
 	}
-	return *o.Results
+	return o.Results
 }
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerRegistryAssociatedServicesResponseList) GetResultsOk() (*ContainerRegistryAssociatedServicesResponse, bool) {
+func (o *ContainerRegistryAssociatedServicesResponseList) GetResultsOk() ([]ContainerRegistryAssociatedServicesResponse, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -70,9 +70,9 @@ func (o *ContainerRegistryAssociatedServicesResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given ContainerRegistryAssociatedServicesResponse and assigns it to the Results field.
-func (o *ContainerRegistryAssociatedServicesResponseList) SetResults(v ContainerRegistryAssociatedServicesResponse) {
-	o.Results = &v
+// SetResults gets a reference to the given []ContainerRegistryAssociatedServicesResponse and assigns it to the Results field.
+func (o *ContainerRegistryAssociatedServicesResponseList) SetResults(v []ContainerRegistryAssociatedServicesResponse) {
+	o.Results = v
 }
 
 func (o ContainerRegistryAssociatedServicesResponseList) MarshalJSON() ([]byte, error) {

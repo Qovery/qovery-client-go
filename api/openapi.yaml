@@ -14727,6 +14727,42 @@ paths:
       tags: []
       x-stoplight:
         id: dgh8t73nqaetm
+  /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices:
+    get:
+      description: Get organization helm repository associated services
+      operationId: getHelmRepositoryAssociatedServices
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: helmRepositoryId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelmRepositoryAssociatedServicesResponseList'
+          description: Get organization helm repository associated services
+        "401":
+          description: ' Access token is missing or invalid'
+        "403":
+          description: AccessForbidden
+        "404":
+          description: ResourceNot Found
+      summary: Get organization helm repository associated services
+      tags: []
+      x-stoplight:
+        id: 5jvrv87m4tk5s
 components:
   parameters:
     applicationId:
@@ -18689,10 +18725,16 @@ components:
           skip_tls_verification:
             description: Bypass tls certificate verification when connecting to repository
             type: boolean
+          associated_services_count:
+            description: The number of services using this helm repository
+            type: integer
+            x-stoplight:
+              id: 287g4iunwmf2d
         required:
         - name
         type: object
       example:
+        associated_services_count: 0
         updated_at: 2000-01-23T04:56:07.000+00:00
         kind: HTTPS
         skip_tls_verification: true
@@ -18735,7 +18777,8 @@ components:
     HelmRepositoryResponseList:
       example:
         results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - associated_services_count: 0
+          updated_at: 2000-01-23T04:56:07.000+00:00
           kind: HTTPS
           skip_tls_verification: true
           name: name
@@ -18743,7 +18786,8 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - associated_services_count: 0
+          updated_at: 2000-01-23T04:56:07.000+00:00
           kind: HTTPS
           skip_tls_verification: true
           name: name
@@ -28250,7 +28294,14 @@ components:
     ContainerRegistryAssociatedServicesResponseList:
       example:
         results:
-          service_type: CONTAINER
+        - service_type: CONTAINER
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+        - service_type: CONTAINER
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           service_name: service_name
@@ -28259,7 +28310,9 @@ components:
           environment_name: environment_name
       properties:
         results:
-          $ref: '#/components/schemas/ContainerRegistryAssociatedServicesResponse'
+          items:
+            $ref: '#/components/schemas/ContainerRegistryAssociatedServicesResponse'
+          type: array
       title: ContainerRegistryAssociatedServicesResponseList
       type: object
       x-stoplight:
@@ -28323,6 +28376,92 @@ components:
       type: string
       x-stoplight:
         id: dif8pj1ys444y
+    HelmRepositoryAssociatedServiceType:
+      enum:
+      - HELM
+      title: HelmRepositoryAssociatedServiceType
+      type: string
+      x-stoplight:
+        id: 7afohg0qwqoht
+    HelmRepositoryAssociatedServicesResponse:
+      example:
+        service_type: HELM
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_name: service_name
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 5p4tj302re42n
+        project_name:
+          type: string
+          x-stoplight:
+            id: j9o1qaceqfiu8
+        environment_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: oe1zp7vzdukve
+        environment_name:
+          type: string
+          x-stoplight:
+            id: n2usi4loyu8kn
+        service_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 9nnymt6uz7zdq
+        service_name:
+          type: string
+          x-stoplight:
+            id: rb0g9ev15frmu
+        service_type:
+          $ref: '#/components/schemas/HelmRepositoryAssociatedServiceType'
+      required:
+      - environment_id
+      - environment_name
+      - project_id
+      - project_name
+      - service_id
+      - service_name
+      - service_type
+      title: HelmRepositoryAssociatedServicesResponse
+      type: object
+      x-stoplight:
+        id: een4pa4di1fir
+    HelmRepositoryAssociatedServicesResponseList:
+      example:
+        results:
+        - service_type: HELM
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+        - service_type: HELM
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/HelmRepositoryAssociatedServicesResponse'
+          type: array
+          x-stoplight:
+            id: 00sn35cw5lnb4
+      title: HelmRepositoryAssociatedServicesResponseList
+      type: object
+      x-stoplight:
+        id: lyrvkahz5uw6s
     deleteMember_request:
       properties:
         user_id:

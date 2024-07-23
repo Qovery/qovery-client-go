@@ -272,6 +272,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetContainerRegistryAssociatedServices**](docs/DefaultAPI.md#getcontainerregistryassociatedservices) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
+*DefaultAPI* | [**GetHelmRepositoryAssociatedServices**](docs/DefaultAPI.md#gethelmrepositoryassociatedservices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -737,6 +738,9 @@ Class | Method | HTTP request | Description
  - [HelmPortProtocolEnum](docs/HelmPortProtocolEnum.md)
  - [HelmPortRequest](docs/HelmPortRequest.md)
  - [HelmPortRequestPortsInner](docs/HelmPortRequestPortsInner.md)
+ - [HelmRepositoryAssociatedServiceType](docs/HelmRepositoryAssociatedServiceType.md)
+ - [HelmRepositoryAssociatedServicesResponse](docs/HelmRepositoryAssociatedServicesResponse.md)
+ - [HelmRepositoryAssociatedServicesResponseList](docs/HelmRepositoryAssociatedServicesResponseList.md)
  - [HelmRepositoryKindEnum](docs/HelmRepositoryKindEnum.md)
  - [HelmRepositoryRequest](docs/HelmRepositoryRequest.md)
  - [HelmRepositoryRequestConfig](docs/HelmRepositoryRequestConfig.md)

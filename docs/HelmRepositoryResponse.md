@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Url** | Pointer to **string** | URL of the helm repository | [optional] 
 **SkipTlsVerification** | Pointer to **bool** | Bypass tls certificate verification when connecting to repository | [optional] 
+**AssociatedServicesCount** | Pointer to **int32** | The number of services using this helm repository | [optional] 
 
 ## Methods
 
@@ -216,6 +217,31 @@ SetSkipTlsVerification sets SkipTlsVerification field to given value.
 `func (o *HelmRepositoryResponse) HasSkipTlsVerification() bool`
 
 HasSkipTlsVerification returns a boolean if a field has been set.
+
+### GetAssociatedServicesCount
+
+`func (o *HelmRepositoryResponse) GetAssociatedServicesCount() int32`
+
+GetAssociatedServicesCount returns the AssociatedServicesCount field if non-nil, zero value otherwise.
+
+### GetAssociatedServicesCountOk
+
+`func (o *HelmRepositoryResponse) GetAssociatedServicesCountOk() (*int32, bool)`
+
+GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedServicesCount
+
+`func (o *HelmRepositoryResponse) SetAssociatedServicesCount(v int32)`
+
+SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
+
+### HasAssociatedServicesCount
+
+`func (o *HelmRepositoryResponse) HasAssociatedServicesCount() bool`
+
+HasAssociatedServicesCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

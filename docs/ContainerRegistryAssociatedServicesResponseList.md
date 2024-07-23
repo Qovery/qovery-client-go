@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | Pointer to [**ContainerRegistryAssociatedServicesResponse**](ContainerRegistryAssociatedServicesResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]ContainerRegistryAssociatedServicesResponse**](ContainerRegistryAssociatedServicesResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *ContainerRegistryAssociatedServicesResponseList) GetResults() ContainerRegistryAssociatedServicesResponse`
+`func (o *ContainerRegistryAssociatedServicesResponseList) GetResults() []ContainerRegistryAssociatedServicesResponse`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *ContainerRegistryAssociatedServicesResponseList) GetResultsOk() (*ContainerRegistryAssociatedServicesResponse, bool)`
+`func (o *ContainerRegistryAssociatedServicesResponseList) GetResultsOk() (*[]ContainerRegistryAssociatedServicesResponse, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *ContainerRegistryAssociatedServicesResponseList) SetResults(v ContainerRegistryAssociatedServicesResponse)`
+`func (o *ContainerRegistryAssociatedServicesResponseList) SetResults(v []ContainerRegistryAssociatedServicesResponse)`
 
 SetResults sets Results field to given value.
 

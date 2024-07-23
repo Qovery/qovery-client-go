@@ -31,8 +31,10 @@ type HelmRepositoryResponse struct {
 	// URL of the helm repository
 	Url *string `json:"url,omitempty"`
 	// Bypass tls certificate verification when connecting to repository
-	SkipTlsVerification  *bool `json:"skip_tls_verification,omitempty"`
-	AdditionalProperties map[string]interface{}
+	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
+	// The number of services using this helm repository
+	AssociatedServicesCount *int32 `json:"associated_services_count,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _HelmRepositoryResponse HelmRepositoryResponse
@@ -289,6 +291,38 @@ func (o *HelmRepositoryResponse) SetSkipTlsVerification(v bool) {
 	o.SkipTlsVerification = &v
 }
 
+// GetAssociatedServicesCount returns the AssociatedServicesCount field value if set, zero value otherwise.
+func (o *HelmRepositoryResponse) GetAssociatedServicesCount() int32 {
+	if o == nil || IsNil(o.AssociatedServicesCount) {
+		var ret int32
+		return ret
+	}
+	return *o.AssociatedServicesCount
+}
+
+// GetAssociatedServicesCountOk returns a tuple with the AssociatedServicesCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponse) GetAssociatedServicesCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.AssociatedServicesCount) {
+		return nil, false
+	}
+	return o.AssociatedServicesCount, true
+}
+
+// HasAssociatedServicesCount returns a boolean if a field has been set.
+func (o *HelmRepositoryResponse) HasAssociatedServicesCount() bool {
+	if o != nil && !IsNil(o.AssociatedServicesCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetAssociatedServicesCount gets a reference to the given int32 and assigns it to the AssociatedServicesCount field.
+func (o *HelmRepositoryResponse) SetAssociatedServicesCount(v int32) {
+	o.AssociatedServicesCount = &v
+}
+
 func (o HelmRepositoryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -316,6 +350,9 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SkipTlsVerification) {
 		toSerialize["skip_tls_verification"] = o.SkipTlsVerification
+	}
+	if !IsNil(o.AssociatedServicesCount) {
+		toSerialize["associated_services_count"] = o.AssociatedServicesCount
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -370,6 +407,7 @@ func (o *HelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "skip_tls_verification")
+		delete(additionalProperties, "associated_services_count")
 		o.AdditionalProperties = additionalProperties
 	}
 
