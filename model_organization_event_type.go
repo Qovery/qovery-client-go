@@ -34,6 +34,7 @@ const (
 	ORGANIZATIONEVENTTYPE_TRIGGER_DELETE   OrganizationEventType = "TRIGGER_DELETE"
 	ORGANIZATIONEVENTTYPE_SHELL            OrganizationEventType = "SHELL"
 	ORGANIZATIONEVENTTYPE_PORT_FORWARD     OrganizationEventType = "PORT_FORWARD"
+	ORGANIZATIONEVENTTYPE_CLONE            OrganizationEventType = "CLONE"
 )
 
 // All allowed values of OrganizationEventType enum
@@ -51,6 +52,7 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"TRIGGER_DELETE",
 	"SHELL",
 	"PORT_FORWARD",
+	"CLONE",
 }
 
 func (v *OrganizationEventType) UnmarshalJSON(src []byte) error {

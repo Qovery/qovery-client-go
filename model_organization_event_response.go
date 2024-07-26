@@ -19,7 +19,7 @@ import (
 // checks if the OrganizationEventResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &OrganizationEventResponse{}
 
-// OrganizationEventResponse struct for OrganizationEventResponse
+// OrganizationEventResponse
 type OrganizationEventResponse struct {
 	Id                   *string                                `json:"id,omitempty"`
 	Timestamp            *time.Time                             `json:"timestamp,omitempty"`

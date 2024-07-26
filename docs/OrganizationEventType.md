@@ -29,6 +29,8 @@
 
 * `PORT_FORWARD` (value: `"PORT_FORWARD"`)
 
+* `CLONE` (value: `"CLONE"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

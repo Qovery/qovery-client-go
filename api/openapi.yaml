@@ -25384,6 +25384,7 @@ components:
           type: array
       type: object
     OrganizationEventResponse:
+      description: ""
       example:
         target_name: target_name
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -25436,6 +25437,7 @@ components:
           type: string
         environment_name:
           type: string
+      title: ""
       type: object
     OrganizationEventResponseList:
       example:
@@ -25548,6 +25550,7 @@ components:
       - PROJECT
       - WEBHOOK
       example: APPLICATION
+      title: ""
       type: string
     OrganizationEventType:
       description: Type of the organization event
@@ -25565,6 +25568,7 @@ components:
       - TRIGGER_DELETE
       - SHELL
       - PORT_FORWARD
+      - CLONE
       example: CREATE
       title: ""
       type: string
