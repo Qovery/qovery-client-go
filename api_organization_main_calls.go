@@ -733,6 +733,127 @@ func (a *OrganizationMainCallsAPIService) EditOrganizationExecute(r ApiEditOrgan
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetContainerRegistryAssociatedServicesRequest struct {
+	ctx                 context.Context
+	ApiService          *OrganizationMainCallsAPIService
+	organizationId      string
+	containerRegistryId string
+}
+
+func (r ApiGetContainerRegistryAssociatedServicesRequest) Execute() (*ContainerRegistryAssociatedServicesResponseList, *http.Response, error) {
+	return r.ApiService.GetContainerRegistryAssociatedServicesExecute(r)
+}
+
+/*
+GetContainerRegistryAssociatedServices Get organization container registry associated services
+
+Get organization container registry associated services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId
+ @param containerRegistryId
+ @return ApiGetContainerRegistryAssociatedServicesRequest
+*/
+func (a *OrganizationMainCallsAPIService) GetContainerRegistryAssociatedServices(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryAssociatedServicesRequest {
+	return ApiGetContainerRegistryAssociatedServicesRequest{
+		ApiService:          a,
+		ctx:                 ctx,
+		organizationId:      organizationId,
+		containerRegistryId: containerRegistryId,
+	}
+}
+
+// Execute executes the request
+//  @return ContainerRegistryAssociatedServicesResponseList
+func (a *OrganizationMainCallsAPIService) GetContainerRegistryAssociatedServicesExecute(r ApiGetContainerRegistryAssociatedServicesRequest) (*ContainerRegistryAssociatedServicesResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ContainerRegistryAssociatedServicesResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetContainerRegistryAssociatedServices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"containerRegistryId"+"}", url.PathEscape(parameterValueToString(r.containerRegistryId, "containerRegistryId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetGitTokenAssociatedServicesRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationMainCallsAPIService
@@ -781,6 +902,127 @@ func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServicesExecute(r
 	localVarPath := localBasePath + "/organization/{organizationId}/gitToken/{gitTokenId}/associatedServices"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"gitTokenId"+"}", url.PathEscape(parameterValueToString(r.gitTokenId, "gitTokenId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetHelmRepositoryAssociatedServicesRequest struct {
+	ctx              context.Context
+	ApiService       *OrganizationMainCallsAPIService
+	organizationId   string
+	helmRepositoryId string
+}
+
+func (r ApiGetHelmRepositoryAssociatedServicesRequest) Execute() (*HelmRepositoryAssociatedServicesResponseList, *http.Response, error) {
+	return r.ApiService.GetHelmRepositoryAssociatedServicesExecute(r)
+}
+
+/*
+GetHelmRepositoryAssociatedServices Get organization helm repository associated services
+
+Get organization helm repository associated services
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId
+ @param helmRepositoryId
+ @return ApiGetHelmRepositoryAssociatedServicesRequest
+*/
+func (a *OrganizationMainCallsAPIService) GetHelmRepositoryAssociatedServices(ctx context.Context, organizationId string, helmRepositoryId string) ApiGetHelmRepositoryAssociatedServicesRequest {
+	return ApiGetHelmRepositoryAssociatedServicesRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		organizationId:   organizationId,
+		helmRepositoryId: helmRepositoryId,
+	}
+}
+
+// Execute executes the request
+//  @return HelmRepositoryAssociatedServicesResponseList
+func (a *OrganizationMainCallsAPIService) GetHelmRepositoryAssociatedServicesExecute(r ApiGetHelmRepositoryAssociatedServicesRequest) (*HelmRepositoryAssociatedServicesResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *HelmRepositoryAssociatedServicesResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationMainCallsAPIService.GetHelmRepositoryAssociatedServices")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"helmRepositoryId"+"}", url.PathEscape(parameterValueToString(r.helmRepositoryId, "helmRepositoryId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

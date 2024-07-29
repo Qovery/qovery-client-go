@@ -14724,7 +14724,8 @@ paths:
         "404":
           description: Resource not found
       summary: Get organization container registry associated services
-      tags: []
+      tags:
+      - Organization Main Calls
       x-stoplight:
         id: dgh8t73nqaetm
   /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices:
@@ -14760,7 +14761,8 @@ paths:
         "404":
           description: ResourceNot Found
       summary: Get organization helm repository associated services
-      tags: []
+      tags:
+      - Organization Main Calls
       x-stoplight:
         id: 5jvrv87m4tk5s
 components:

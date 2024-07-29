@@ -10,7 +10,9 @@ Method | HTTP request | Description
 [**DeleteOrganization**](OrganizationMainCallsAPI.md#DeleteOrganization) | **Delete** /organization/{organizationId} | Delete an organization
 [**EditGitToken**](OrganizationMainCallsAPI.md#EditGitToken) | **Put** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 [**EditOrganization**](OrganizationMainCallsAPI.md#EditOrganization) | **Put** /organization/{organizationId} | Edit an organization
+[**GetContainerRegistryAssociatedServices**](OrganizationMainCallsAPI.md#GetContainerRegistryAssociatedServices) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
 [**GetGitTokenAssociatedServices**](OrganizationMainCallsAPI.md#GetGitTokenAssociatedServices) | **Get** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
+[**GetHelmRepositoryAssociatedServices**](OrganizationMainCallsAPI.md#GetHelmRepositoryAssociatedServices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 [**GetOrganization**](OrganizationMainCallsAPI.md#GetOrganization) | **Get** /organization/{organizationId} | Get organization by ID
 [**GetOrganizationGitToken**](OrganizationMainCallsAPI.md#GetOrganizationGitToken) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 [**ListOrganization**](OrganizationMainCallsAPI.md#ListOrganization) | **Get** /organization | List user organizations
@@ -437,6 +439,79 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetContainerRegistryAssociatedServices
+
+> ContainerRegistryAssociatedServicesResponseList GetContainerRegistryAssociatedServices(ctx, organizationId, containerRegistryId).Execute()
+
+Get organization container registry associated services
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "organizationId_example" // string | 
+	containerRegistryId := "containerRegistryId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetContainerRegistryAssociatedServices(context.Background(), organizationId, containerRegistryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetContainerRegistryAssociatedServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetContainerRegistryAssociatedServices`: ContainerRegistryAssociatedServicesResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetContainerRegistryAssociatedServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**containerRegistryId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetContainerRegistryAssociatedServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ContainerRegistryAssociatedServicesResponseList**](ContainerRegistryAssociatedServicesResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetGitTokenAssociatedServices
 
 > GitTokenAssociatedServicesResponseList GetGitTokenAssociatedServices(ctx, organizationId, gitTokenId).Execute()
@@ -495,6 +570,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GitTokenAssociatedServicesResponseList**](GitTokenAssociatedServicesResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHelmRepositoryAssociatedServices
+
+> HelmRepositoryAssociatedServicesResponseList GetHelmRepositoryAssociatedServices(ctx, organizationId, helmRepositoryId).Execute()
+
+Get organization helm repository associated services
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "organizationId_example" // string | 
+	helmRepositoryId := "helmRepositoryId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetHelmRepositoryAssociatedServices(context.Background(), organizationId, helmRepositoryId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetHelmRepositoryAssociatedServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmRepositoryAssociatedServices`: HelmRepositoryAssociatedServicesResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetHelmRepositoryAssociatedServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+**helmRepositoryId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHelmRepositoryAssociatedServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**HelmRepositoryAssociatedServicesResponseList**](HelmRepositoryAssociatedServicesResponseList.md)
 
 ### Authorization
 

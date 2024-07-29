@@ -34,7 +34,6 @@ api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
-api_default.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -261,7 +260,6 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
-docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -1138,7 +1136,6 @@ test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
-test/api_default_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go

@@ -104,6 +104,21 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationMainCallsAPIService GetContainerRegistryAssociatedServices", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var containerRegistryId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetContainerRegistryAssociatedServices(context.Background(), organizationId, containerRegistryId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationMainCallsAPIService GetGitTokenAssociatedServices", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -112,6 +127,21 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 		var gitTokenId string
 
 		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetGitTokenAssociatedServices(context.Background(), organizationId, gitTokenId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationMainCallsAPIService GetHelmRepositoryAssociatedServices", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var helmRepositoryId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetHelmRepositoryAssociatedServices(context.Background(), organizationId, helmRepositoryId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
