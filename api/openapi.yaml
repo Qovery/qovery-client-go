@@ -28377,7 +28377,8 @@ components:
     ContainerRegistryAssociatedServiceType:
       enum:
       - CONTAINER
-      - JOB
+      - LIFECYCLE
+      - CRON
       title: ContainerRegistryAssociatedServiceType
       type: string
       x-stoplight:

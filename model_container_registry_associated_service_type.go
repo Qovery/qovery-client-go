@@ -22,13 +22,15 @@ type ContainerRegistryAssociatedServiceType string
 // List of ContainerRegistryAssociatedServiceType
 const (
 	CONTAINERREGISTRYASSOCIATEDSERVICETYPE_CONTAINER ContainerRegistryAssociatedServiceType = "CONTAINER"
-	CONTAINERREGISTRYASSOCIATEDSERVICETYPE_JOB       ContainerRegistryAssociatedServiceType = "JOB"
+	CONTAINERREGISTRYASSOCIATEDSERVICETYPE_LIFECYCLE ContainerRegistryAssociatedServiceType = "LIFECYCLE"
+	CONTAINERREGISTRYASSOCIATEDSERVICETYPE_CRON      ContainerRegistryAssociatedServiceType = "CRON"
 )
 
 // All allowed values of ContainerRegistryAssociatedServiceType enum
 var AllowedContainerRegistryAssociatedServiceTypeEnumValues = []ContainerRegistryAssociatedServiceType{
 	"CONTAINER",
-	"JOB",
+	"LIFECYCLE",
+	"CRON",
 }
 
 func (v *ContainerRegistryAssociatedServiceType) UnmarshalJSON(src []byte) error {
