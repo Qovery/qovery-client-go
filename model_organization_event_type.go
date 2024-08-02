@@ -35,6 +35,14 @@ const (
 	ORGANIZATIONEVENTTYPE_SHELL            OrganizationEventType = "SHELL"
 	ORGANIZATIONEVENTTYPE_PORT_FORWARD     OrganizationEventType = "PORT_FORWARD"
 	ORGANIZATIONEVENTTYPE_CLONE            OrganizationEventType = "CLONE"
+	ORGANIZATIONEVENTTYPE_DEPLOYED         OrganizationEventType = "DEPLOYED"
+	ORGANIZATIONEVENTTYPE_STOPPED          OrganizationEventType = "STOPPED"
+	ORGANIZATIONEVENTTYPE_DELETED          OrganizationEventType = "DELETED"
+	ORGANIZATIONEVENTTYPE_RESTARTED        OrganizationEventType = "RESTARTED"
+	ORGANIZATIONEVENTTYPE_DEPLOY_FAILED    OrganizationEventType = "DEPLOY_FAILED"
+	ORGANIZATIONEVENTTYPE_STOP_FAILED      OrganizationEventType = "STOP_FAILED"
+	ORGANIZATIONEVENTTYPE_DELETE_FAILED    OrganizationEventType = "DELETE_FAILED"
+	ORGANIZATIONEVENTTYPE_RESTART_FAILED   OrganizationEventType = "RESTART_FAILED"
 )
 
 // All allowed values of OrganizationEventType enum
@@ -53,6 +61,14 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"SHELL",
 	"PORT_FORWARD",
 	"CLONE",
+	"DEPLOYED",
+	"STOPPED",
+	"DELETED",
+	"RESTARTED",
+	"DEPLOY_FAILED",
+	"STOP_FAILED",
+	"DELETE_FAILED",
+	"RESTART_FAILED",
 }
 
 func (v *OrganizationEventType) UnmarshalJSON(src []byte) error {

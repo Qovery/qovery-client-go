@@ -31,6 +31,22 @@
 
 * `CLONE` (value: `"CLONE"`)
 
+* `DEPLOYED` (value: `"DEPLOYED"`)
+
+* `STOPPED` (value: `"STOPPED"`)
+
+* `DELETED` (value: `"DELETED"`)
+
+* `RESTARTED` (value: `"RESTARTED"`)
+
+* `DEPLOY_FAILED` (value: `"DEPLOY_FAILED"`)
+
+* `STOP_FAILED` (value: `"STOP_FAILED"`)
+
+* `DELETE_FAILED` (value: `"DELETE_FAILED"`)
+
+* `RESTART_FAILED` (value: `"RESTART_FAILED"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
