@@ -16,147 +16,155 @@ import (
 	"fmt"
 )
 
-// checks if the ClusterCredentials type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ClusterCredentials{}
-
-// ClusterCredentials struct for ClusterCredentials
+// ClusterCredentials - struct for ClusterCredentials
 type ClusterCredentials struct {
-	Id                   string `json:"id"`
-	Name                 string `json:"name"`
-	AdditionalProperties map[string]interface{}
+	AwsClusterCredentials      *AwsClusterCredentials
+	GenericClusterCredentials  *GenericClusterCredentials
+	ScalewayClusterCredentials *ScalewayClusterCredentials
 }
 
-type _ClusterCredentials ClusterCredentials
-
-// NewClusterCredentials instantiates a new ClusterCredentials object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewClusterCredentials(id string, name string) *ClusterCredentials {
-	this := ClusterCredentials{}
-	this.Id = id
-	this.Name = name
-	return &this
-}
-
-// NewClusterCredentialsWithDefaults instantiates a new ClusterCredentials object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewClusterCredentialsWithDefaults() *ClusterCredentials {
-	this := ClusterCredentials{}
-	return &this
-}
-
-// GetId returns the Id field value
-func (o *ClusterCredentials) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
+// AwsClusterCredentialsAsClusterCredentials is a convenience function that returns AwsClusterCredentials wrapped in ClusterCredentials
+func AwsClusterCredentialsAsClusterCredentials(v *AwsClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		AwsClusterCredentials: v,
 	}
-
-	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *ClusterCredentials) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// GenericClusterCredentialsAsClusterCredentials is a convenience function that returns GenericClusterCredentials wrapped in ClusterCredentials
+func GenericClusterCredentialsAsClusterCredentials(v *GenericClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		GenericClusterCredentials: v,
 	}
-	return &o.Id, true
 }
 
-// SetId sets field value
-func (o *ClusterCredentials) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value
-func (o *ClusterCredentials) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
+// ScalewayClusterCredentialsAsClusterCredentials is a convenience function that returns ScalewayClusterCredentials wrapped in ClusterCredentials
+func ScalewayClusterCredentialsAsClusterCredentials(v *ScalewayClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		ScalewayClusterCredentials: v,
 	}
-
-	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *ClusterCredentials) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *ClusterCredentials) SetName(v string) {
-	o.Name = v
-}
-
-func (o ClusterCredentials) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o ClusterCredentials) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["name"] = o.Name
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	return toSerialize, nil
-}
-
-func (o *ClusterCredentials) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"name",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'AWS'
+	if jsonDict["object_type"] == "AWS" {
+		// try to unmarshal JSON data into AwsClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.AwsClusterCredentials, return on the first match
+		} else {
+			dst.AwsClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsClusterCredentials: %s", err.Error())
 		}
 	}
 
-	varClusterCredentials := _ClusterCredentials{}
-
-	err = json.Unmarshal(data, &varClusterCredentials)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'OTHER'
+	if jsonDict["object_type"] == "OTHER" {
+		// try to unmarshal JSON data into GenericClusterCredentials
+		err = json.Unmarshal(data, &dst.GenericClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.GenericClusterCredentials, return on the first match
+		} else {
+			dst.GenericClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as GenericClusterCredentials: %s", err.Error())
+		}
 	}
 
-	*o = ClusterCredentials(varClusterCredentials)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		o.AdditionalProperties = additionalProperties
+	// check if the discriminator value is 'SCW'
+	if jsonDict["object_type"] == "SCW" {
+		// try to unmarshal JSON data into ScalewayClusterCredentials
+		err = json.Unmarshal(data, &dst.ScalewayClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.ScalewayClusterCredentials, return on the first match
+		} else {
+			dst.ScalewayClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as ScalewayClusterCredentials: %s", err.Error())
+		}
 	}
 
-	return err
+	// check if the discriminator value is 'AwsClusterCredentials'
+	if jsonDict["object_type"] == "AwsClusterCredentials" {
+		// try to unmarshal JSON data into AwsClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.AwsClusterCredentials, return on the first match
+		} else {
+			dst.AwsClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsClusterCredentials: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'GenericClusterCredentials'
+	if jsonDict["object_type"] == "GenericClusterCredentials" {
+		// try to unmarshal JSON data into GenericClusterCredentials
+		err = json.Unmarshal(data, &dst.GenericClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.GenericClusterCredentials, return on the first match
+		} else {
+			dst.GenericClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as GenericClusterCredentials: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ScalewayClusterCredentials'
+	if jsonDict["object_type"] == "ScalewayClusterCredentials" {
+		// try to unmarshal JSON data into ScalewayClusterCredentials
+		err = json.Unmarshal(data, &dst.ScalewayClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.ScalewayClusterCredentials, return on the first match
+		} else {
+			dst.ScalewayClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as ScalewayClusterCredentials: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src ClusterCredentials) MarshalJSON() ([]byte, error) {
+	if src.AwsClusterCredentials != nil {
+		return json.Marshal(&src.AwsClusterCredentials)
+	}
+
+	if src.GenericClusterCredentials != nil {
+		return json.Marshal(&src.GenericClusterCredentials)
+	}
+
+	if src.ScalewayClusterCredentials != nil {
+		return json.Marshal(&src.ScalewayClusterCredentials)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *ClusterCredentials) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.AwsClusterCredentials != nil {
+		return obj.AwsClusterCredentials
+	}
+
+	if obj.GenericClusterCredentials != nil {
+		return obj.GenericClusterCredentials
+	}
+
+	if obj.ScalewayClusterCredentials != nil {
+		return obj.ScalewayClusterCredentials
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableClusterCredentials struct {

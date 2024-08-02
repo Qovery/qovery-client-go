@@ -1,4 +1,4 @@
-# ClusterCredentials
+# AwsClusterCredentials
 
 ## Properties
 
@@ -8,125 +8,104 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AccessKeyId** | **string** |  | 
 **ObjectType** | **string** |  | 
-**ScalewayAccessKey** | **string** |  | 
 
 ## Methods
 
-### NewClusterCredentials
+### NewAwsClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, ) *ClusterCredentials`
+`func NewAwsClusterCredentials(id string, name string, accessKeyId string, objectType string, ) *AwsClusterCredentials`
 
-NewClusterCredentials instantiates a new ClusterCredentials object
+NewAwsClusterCredentials instantiates a new AwsClusterCredentials object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewClusterCredentialsWithDefaults
+### NewAwsClusterCredentialsWithDefaults
 
-`func NewClusterCredentialsWithDefaults() *ClusterCredentials`
+`func NewAwsClusterCredentialsWithDefaults() *AwsClusterCredentials`
 
-NewClusterCredentialsWithDefaults instantiates a new ClusterCredentials object
+NewAwsClusterCredentialsWithDefaults instantiates a new AwsClusterCredentials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *ClusterCredentials) GetId() string`
+`func (o *AwsClusterCredentials) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *ClusterCredentials) GetIdOk() (*string, bool)`
+`func (o *AwsClusterCredentials) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *ClusterCredentials) SetId(v string)`
+`func (o *AwsClusterCredentials) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetName
 
-`func (o *ClusterCredentials) GetName() string`
+`func (o *AwsClusterCredentials) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *ClusterCredentials) GetNameOk() (*string, bool)`
+`func (o *AwsClusterCredentials) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *ClusterCredentials) SetName(v string)`
+`func (o *AwsClusterCredentials) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetAccessKeyId
 
-`func (o *ClusterCredentials) GetAccessKeyId() string`
+`func (o *AwsClusterCredentials) GetAccessKeyId() string`
 
 GetAccessKeyId returns the AccessKeyId field if non-nil, zero value otherwise.
 
 ### GetAccessKeyIdOk
 
-`func (o *ClusterCredentials) GetAccessKeyIdOk() (*string, bool)`
+`func (o *AwsClusterCredentials) GetAccessKeyIdOk() (*string, bool)`
 
 GetAccessKeyIdOk returns a tuple with the AccessKeyId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAccessKeyId
 
-`func (o *ClusterCredentials) SetAccessKeyId(v string)`
+`func (o *AwsClusterCredentials) SetAccessKeyId(v string)`
 
 SetAccessKeyId sets AccessKeyId field to given value.
 
 
 ### GetObjectType
 
-`func (o *ClusterCredentials) GetObjectType() string`
+`func (o *AwsClusterCredentials) GetObjectType() string`
 
 GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
 
 ### GetObjectTypeOk
 
-`func (o *ClusterCredentials) GetObjectTypeOk() (*string, bool)`
+`func (o *AwsClusterCredentials) GetObjectTypeOk() (*string, bool)`
 
 GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectType
 
-`func (o *ClusterCredentials) SetObjectType(v string)`
+`func (o *AwsClusterCredentials) SetObjectType(v string)`
 
 SetObjectType sets ObjectType field to given value.
-
-
-### GetScalewayAccessKey
-
-`func (o *ClusterCredentials) GetScalewayAccessKey() string`
-
-GetScalewayAccessKey returns the ScalewayAccessKey field if non-nil, zero value otherwise.
-
-### GetScalewayAccessKeyOk
-
-`func (o *ClusterCredentials) GetScalewayAccessKeyOk() (*string, bool)`
-
-GetScalewayAccessKeyOk returns a tuple with the ScalewayAccessKey field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetScalewayAccessKey
-
-`func (o *ClusterCredentials) SetScalewayAccessKey(v string)`
-
-SetScalewayAccessKey sets ScalewayAccessKey field to given value.
 
 
 

@@ -17347,25 +17347,104 @@ components:
           type: string
       type: object
     ClusterCredentials:
+      discriminator:
+        mapping:
+          AWS: '#/components/schemas/AwsClusterCredentials'
+          SCW: '#/components/schemas/ScalewayClusterCredentials'
+          OTHER: '#/components/schemas/GenericClusterCredentials'
+        propertyName: object_type
+      oneOf:
+      - $ref: '#/components/schemas/AwsClusterCredentials'
+      - $ref: '#/components/schemas/ScalewayClusterCredentials'
+      - $ref: '#/components/schemas/GenericClusterCredentials'
+    AwsClusterCredentials:
       example:
+        access_key_id: access_key_id
+        object_type: AWS
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
           format: uuid
           type: string
+          x-stoplight:
+            id: en79y0yc76xhp
         name:
+          type: string
+          x-stoplight:
+            id: mx0mwek4ubieo
+        access_key_id:
+          type: string
+          x-stoplight:
+            id: 6g20j0ggu8nqc
+        object_type:
+          enum:
+          - AWS
+          type: string
+          x-stoplight:
+            id: ravczabg8e2sp
+      required:
+      - access_key_id
+      - id
+      - name
+      - object_type
+      title: AwsClusterCredentials
+      type: object
+      x-stoplight:
+        id: s0aosg7la96hp
+    ScalewayClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        scaleway_access_key:
+          type: string
+          x-stoplight:
+            id: 4db3031sq6tea
+        object_type:
+          enum:
+          - SCW
           type: string
       required:
       - id
       - name
+      - object_type
+      - scaleway_access_key
+      title: ScalewayClusterCredentials
       type: object
+      x-stoplight:
+        id: j3ep46eyah9p5
+    GenericClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        object_type:
+          enum:
+          - OTHER
+          type: string
+      required:
+      - id
+      - name
+      - object_type
+      title: GenericClusterCredentials
+      type: object
+      x-stoplight:
+        id: gtibx4nzrvxm9
     ClusterCredentialsResponseList:
       example:
         results:
-        - name: name
+        - access_key_id: access_key_id
+          object_type: AWS
+          name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - name: name
+        - access_key_id: access_key_id
+          object_type: AWS
+          name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         results:
@@ -27790,6 +27869,7 @@ components:
         max_duration_seconds: 0
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      title: ""
     CronJobResponse:
       allOf:
       - $ref: '#/components/schemas/BaseJobResponse'
