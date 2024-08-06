@@ -10,8 +10,7 @@ Name | Type | Description | Notes
 **SourceUrl** | **string** | location of the template | 
 **CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
 **Events** | [**[]LifecycleTemplateResponseEventsInner**](LifecycleTemplateResponseEventsInner.md) | lis of pre-defined command for each event | 
-**MaxDurationInMinutes** | **int32** | Job max allowed duration in minutes. After this allowed time, the job is going to be killed. | 
-**MaxDurationInSec** | **int32** | Job max allowed duration in secondes. After this allowed time, the job is going to be killed. | 
+**MaxDurationInSec** | **int32** | Job max allowed duration in seconds. After this allowed time, the job is going to be killed. | 
 **Resources** | [**LifecycleTemplateResponseResources**](LifecycleTemplateResponseResources.md) |  | 
 **Variables** | [**[]LifecycleTemplateResponseVariablesInner**](LifecycleTemplateResponseVariablesInner.md) | Variables to inject at the creation of this lifecycle job | 
 **Dockerfile** | **string** | Dockerfile of the template | 
@@ -20,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewLifecycleTemplateResponse
 
-`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, maxDurationInSec int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string, ) *LifecycleTemplateResponse`
+`func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInSec int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string, ) *LifecycleTemplateResponse`
 
 NewLifecycleTemplateResponse instantiates a new LifecycleTemplateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -153,26 +152,6 @@ and a boolean to check if the value has been set.
 `func (o *LifecycleTemplateResponse) SetEvents(v []LifecycleTemplateResponseEventsInner)`
 
 SetEvents sets Events field to given value.
-
-
-### GetMaxDurationInMinutes
-
-`func (o *LifecycleTemplateResponse) GetMaxDurationInMinutes() int32`
-
-GetMaxDurationInMinutes returns the MaxDurationInMinutes field if non-nil, zero value otherwise.
-
-### GetMaxDurationInMinutesOk
-
-`func (o *LifecycleTemplateResponse) GetMaxDurationInMinutesOk() (*int32, bool)`
-
-GetMaxDurationInMinutesOk returns a tuple with the MaxDurationInMinutes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetMaxDurationInMinutes
-
-`func (o *LifecycleTemplateResponse) SetMaxDurationInMinutes(v int32)`
-
-SetMaxDurationInMinutes sets MaxDurationInMinutes field to given value.
 
 
 ### GetMaxDurationInSec
