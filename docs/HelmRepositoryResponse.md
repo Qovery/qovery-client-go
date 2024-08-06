@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** | URL of the helm repository | [optional] 
 **SkipTlsVerification** | Pointer to **bool** | Bypass tls certificate verification when connecting to repository | [optional] 
 **AssociatedServicesCount** | Pointer to **int32** | The number of services using this helm repository | [optional] 
+**Config** | Pointer to [**HelmRepositoryResponseAllOfConfig**](HelmRepositoryResponseAllOfConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -242,6 +243,31 @@ SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
 `func (o *HelmRepositoryResponse) HasAssociatedServicesCount() bool`
 
 HasAssociatedServicesCount returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *HelmRepositoryResponse) GetConfig() HelmRepositoryResponseAllOfConfig`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *HelmRepositoryResponse) GetConfigOk() (*HelmRepositoryResponseAllOfConfig, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *HelmRepositoryResponse) SetConfig(v HelmRepositoryResponseAllOfConfig)`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *HelmRepositoryResponse) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

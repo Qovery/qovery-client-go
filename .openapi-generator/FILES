@@ -218,6 +218,7 @@ docs/ContainerRegistryRequest.md
 docs/ContainerRegistryRequestConfig.md
 docs/ContainerRegistryResponse.md
 docs/ContainerRegistryResponseAllOfCluster.md
+docs/ContainerRegistryResponseAllOfConfig.md
 docs/ContainerRegistryResponseList.md
 docs/ContainerRequest.md
 docs/ContainerResponse.md
@@ -382,6 +383,7 @@ docs/HelmRepositoryKindEnum.md
 docs/HelmRepositoryRequest.md
 docs/HelmRepositoryRequestConfig.md
 docs/HelmRepositoryResponse.md
+docs/HelmRepositoryResponseAllOfConfig.md
 docs/HelmRepositoryResponseList.md
 docs/HelmRequest.md
 docs/HelmRequestAllOfSource.md
@@ -749,6 +751,7 @@ model_container_registry_request.go
 model_container_registry_request_config.go
 model_container_registry_response.go
 model_container_registry_response_all_of_cluster.go
+model_container_registry_response_all_of_config.go
 model_container_registry_response_list.go
 model_container_request.go
 model_container_response.go
@@ -885,6 +888,7 @@ model_helm_repository_kind_enum.go
 model_helm_repository_request.go
 model_helm_repository_request_config.go
 model_helm_repository_response.go
+model_helm_repository_response_all_of_config.go
 model_helm_repository_response_list.go
 model_helm_request.go
 model_helm_request_all_of_source.go

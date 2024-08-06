@@ -33,7 +33,8 @@ type HelmRepositoryResponse struct {
 	// Bypass tls certificate verification when connecting to repository
 	SkipTlsVerification *bool `json:"skip_tls_verification,omitempty"`
 	// The number of services using this helm repository
-	AssociatedServicesCount *int32 `json:"associated_services_count,omitempty"`
+	AssociatedServicesCount *int32                             `json:"associated_services_count,omitempty"`
+	Config                  *HelmRepositoryResponseAllOfConfig `json:"config,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -323,6 +324,38 @@ func (o *HelmRepositoryResponse) SetAssociatedServicesCount(v int32) {
 	o.AssociatedServicesCount = &v
 }
 
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *HelmRepositoryResponse) GetConfig() HelmRepositoryResponseAllOfConfig {
+	if o == nil || IsNil(o.Config) {
+		var ret HelmRepositoryResponseAllOfConfig
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponse) GetConfigOk() (*HelmRepositoryResponseAllOfConfig, bool) {
+	if o == nil || IsNil(o.Config) {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *HelmRepositoryResponse) HasConfig() bool {
+	if o != nil && !IsNil(o.Config) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given HelmRepositoryResponseAllOfConfig and assigns it to the Config field.
+func (o *HelmRepositoryResponse) SetConfig(v HelmRepositoryResponseAllOfConfig) {
+	o.Config = &v
+}
+
 func (o HelmRepositoryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -353,6 +386,9 @@ func (o HelmRepositoryResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AssociatedServicesCount) {
 		toSerialize["associated_services_count"] = o.AssociatedServicesCount
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -408,6 +444,7 @@ func (o *HelmRepositoryResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "skip_tls_verification")
 		delete(additionalProperties, "associated_services_count")
+		delete(additionalProperties, "config")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -18652,6 +18652,8 @@ components:
             type: integer
             x-stoplight:
               id: 02mqr04rogfem
+          config:
+            $ref: '#/components/schemas/ContainerRegistryResponse_allOf_config'
         type: object
       example:
         associated_services_count: 0
@@ -18664,6 +18666,11 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        config:
+          access_key_id: access_key_id
+          region: region
+          scaleway_access_key: scaleway_access_key
+          username: username
         url: url
     ContainerRegistryProviderDetailsResponse:
       example:
@@ -18701,6 +18708,11 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          config:
+            access_key_id: access_key_id
+            region: region
+            scaleway_access_key: scaleway_access_key
+            username: username
           url: url
         - associated_services_count: 0
           cluster:
@@ -18712,6 +18724,11 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          config:
+            access_key_id: access_key_id
+            region: region
+            scaleway_access_key: scaleway_access_key
+            username: username
           url: url
       properties:
         results:
@@ -18811,6 +18828,8 @@ components:
             type: integer
             x-stoplight:
               id: 287g4iunwmf2d
+          config:
+            $ref: '#/components/schemas/HelmRepositoryResponse_allOf_config'
         required:
         - name
         type: object
@@ -18823,6 +18842,11 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        config:
+          access_key_id: access_key_id
+          region: region
+          scaleway_access_key: scaleway_access_key
+          username: username
         url: url
     HelmVersionResponseList:
       example:
@@ -18866,6 +18890,11 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          config:
+            access_key_id: access_key_id
+            region: region
+            scaleway_access_key: scaleway_access_key
+            username: username
           url: url
         - associated_services_count: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -18875,6 +18904,11 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          config:
+            access_key_id: access_key_id
+            region: region
+            scaleway_access_key: scaleway_access_key
+            username: username
           url: url
       properties:
         results:
@@ -29229,6 +29263,32 @@ components:
       - id
       - name
       type: object
+    ContainerRegistryResponse_allOf_config:
+      example:
+        access_key_id: access_key_id
+        region: region
+        scaleway_access_key: scaleway_access_key
+        username: username
+      properties:
+        username:
+          type: string
+          x-stoplight:
+            id: 9g2hk57o11s8k
+        region:
+          type: string
+          x-stoplight:
+            id: fo0nnlsnrdn0k
+        scaleway_access_key:
+          type: string
+          x-stoplight:
+            id: fdb55y4vnpndk
+        access_key_id:
+          type: string
+          x-stoplight:
+            id: s5elye0gv4lks
+      type: object
+      x-stoplight:
+        id: s9rg5wox9j00z
     HelmRepositoryRequest_config:
       example:
         access_key_id: access_key_id
@@ -29261,6 +29321,32 @@ components:
           description: Required if kind is `SCALEWAY_CR`
           type: string
       type: object
+    HelmRepositoryResponse_allOf_config:
+      example:
+        access_key_id: access_key_id
+        region: region
+        scaleway_access_key: scaleway_access_key
+        username: username
+      properties:
+        username:
+          type: string
+          x-stoplight:
+            id: 6xxbs3971acz5
+        region:
+          type: string
+          x-stoplight:
+            id: pvi5oq9omlae8
+        access_key_id:
+          type: string
+          x-stoplight:
+            id: 9tdfunoniwzed
+        scaleway_access_key:
+          type: string
+          x-stoplight:
+            id: pyfdpz1vk4qq1
+      type: object
+      x-stoplight:
+        id: 224az7um9x51z
     DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id

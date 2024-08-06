@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Url** | Pointer to **string** | URL of the container registry | [optional] 
 **Cluster** | Pointer to [**ContainerRegistryResponseAllOfCluster**](ContainerRegistryResponseAllOfCluster.md) |  | [optional] 
 **AssociatedServicesCount** | Pointer to **int32** | The number of services using this container registry | [optional] 
+**Config** | Pointer to [**ContainerRegistryResponseAllOfConfig**](ContainerRegistryResponseAllOfConfig.md) |  | [optional] 
 
 ## Methods
 
@@ -247,6 +248,31 @@ SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
 `func (o *ContainerRegistryResponse) HasAssociatedServicesCount() bool`
 
 HasAssociatedServicesCount returns a boolean if a field has been set.
+
+### GetConfig
+
+`func (o *ContainerRegistryResponse) GetConfig() ContainerRegistryResponseAllOfConfig`
+
+GetConfig returns the Config field if non-nil, zero value otherwise.
+
+### GetConfigOk
+
+`func (o *ContainerRegistryResponse) GetConfigOk() (*ContainerRegistryResponseAllOfConfig, bool)`
+
+GetConfigOk returns a tuple with the Config field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfig
+
+`func (o *ContainerRegistryResponse) SetConfig(v ContainerRegistryResponseAllOfConfig)`
+
+SetConfig sets Config field to given value.
+
+### HasConfig
+
+`func (o *ContainerRegistryResponse) HasConfig() bool`
+
+HasConfig returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

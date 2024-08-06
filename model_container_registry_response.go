@@ -32,7 +32,8 @@ type ContainerRegistryResponse struct {
 	Url     *string                                `json:"url,omitempty"`
 	Cluster *ContainerRegistryResponseAllOfCluster `json:"cluster,omitempty"`
 	// The number of services using this container registry
-	AssociatedServicesCount *int32 `json:"associated_services_count,omitempty"`
+	AssociatedServicesCount *int32                                `json:"associated_services_count,omitempty"`
+	Config                  *ContainerRegistryResponseAllOfConfig `json:"config,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -329,6 +330,38 @@ func (o *ContainerRegistryResponse) SetAssociatedServicesCount(v int32) {
 	o.AssociatedServicesCount = &v
 }
 
+// GetConfig returns the Config field value if set, zero value otherwise.
+func (o *ContainerRegistryResponse) GetConfig() ContainerRegistryResponseAllOfConfig {
+	if o == nil || IsNil(o.Config) {
+		var ret ContainerRegistryResponseAllOfConfig
+		return ret
+	}
+	return *o.Config
+}
+
+// GetConfigOk returns a tuple with the Config field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponse) GetConfigOk() (*ContainerRegistryResponseAllOfConfig, bool) {
+	if o == nil || IsNil(o.Config) {
+		return nil, false
+	}
+	return o.Config, true
+}
+
+// HasConfig returns a boolean if a field has been set.
+func (o *ContainerRegistryResponse) HasConfig() bool {
+	if o != nil && !IsNil(o.Config) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfig gets a reference to the given ContainerRegistryResponseAllOfConfig and assigns it to the Config field.
+func (o *ContainerRegistryResponse) SetConfig(v ContainerRegistryResponseAllOfConfig) {
+	o.Config = &v
+}
+
 func (o ContainerRegistryResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -361,6 +394,9 @@ func (o ContainerRegistryResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AssociatedServicesCount) {
 		toSerialize["associated_services_count"] = o.AssociatedServicesCount
+	}
+	if !IsNil(o.Config) {
+		toSerialize["config"] = o.Config
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -415,6 +451,7 @@ func (o *ContainerRegistryResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "cluster")
 		delete(additionalProperties, "associated_services_count")
+		delete(additionalProperties, "config")
 		o.AdditionalProperties = additionalProperties
 	}
 
