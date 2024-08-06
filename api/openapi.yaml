@@ -28333,12 +28333,13 @@ components:
           name: name
           description: description
         max_duration_in_minutes: 0
+        max_duration_in_sec: 6
         dockerfile: dockerfile
         name: name
         description: description
         resources:
-          cpu_milli: 6
-          ram_mib: 1
+          cpu_milli: 1
+          ram_mib: 5
         cloud_provider: AWS
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         events:
@@ -28388,6 +28389,13 @@ components:
           type: integer
           x-stoplight:
             id: l4kjmki90lplm
+        max_duration_in_sec:
+          description: |-
+            Job max allowed duration in secondes.
+            After this allowed time, the job is going to be killed.
+          type: integer
+          x-stoplight:
+            id: 6uoktngysqxii
         resources:
           $ref: '#/components/schemas/LifecycleTemplateResponse_resources'
         variables:
@@ -28409,6 +28417,7 @@ components:
       - events
       - id
       - max_duration_in_minutes
+      - max_duration_in_sec
       - name
       - resources
       - sourceUrl
@@ -30666,8 +30675,8 @@ components:
         id: c2tzn0jhhq3o9
     LifecycleTemplateResponse_resources:
       example:
-        cpu_milli: 6
-        ram_mib: 1
+        cpu_milli: 1
+        ram_mib: 5
       properties:
         cpu_milli:
           type: integer

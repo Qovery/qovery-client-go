@@ -30,8 +30,10 @@ type LifecycleTemplateResponse struct {
 	// lis of pre-defined command for each event
 	Events []LifecycleTemplateResponseEventsInner `json:"events"`
 	// Job max allowed duration in minutes. After this allowed time, the job is going to be killed.
-	MaxDurationInMinutes int32                              `json:"max_duration_in_minutes"`
-	Resources            LifecycleTemplateResponseResources `json:"resources"`
+	MaxDurationInMinutes int32 `json:"max_duration_in_minutes"`
+	// Job max allowed duration in secondes. After this allowed time, the job is going to be killed.
+	MaxDurationInSec int32                              `json:"max_duration_in_sec"`
+	Resources        LifecycleTemplateResponseResources `json:"resources"`
 	// Variables to inject at the creation of this lifecycle job
 	Variables []LifecycleTemplateResponseVariablesInner `json:"variables"`
 	// Dockerfile of the template
@@ -45,7 +47,7 @@ type _LifecycleTemplateResponse LifecycleTemplateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string) *LifecycleTemplateResponse {
+func NewLifecycleTemplateResponse(id string, name string, description string, sourceUrl string, cloudProvider CloudProviderEnum, events []LifecycleTemplateResponseEventsInner, maxDurationInMinutes int32, maxDurationInSec int32, resources LifecycleTemplateResponseResources, variables []LifecycleTemplateResponseVariablesInner, dockerfile string) *LifecycleTemplateResponse {
 	this := LifecycleTemplateResponse{}
 	this.Id = id
 	this.Name = name
@@ -54,6 +56,7 @@ func NewLifecycleTemplateResponse(id string, name string, description string, so
 	this.CloudProvider = cloudProvider
 	this.Events = events
 	this.MaxDurationInMinutes = maxDurationInMinutes
+	this.MaxDurationInSec = maxDurationInSec
 	this.Resources = resources
 	this.Variables = variables
 	this.Dockerfile = dockerfile
@@ -236,6 +239,30 @@ func (o *LifecycleTemplateResponse) SetMaxDurationInMinutes(v int32) {
 	o.MaxDurationInMinutes = v
 }
 
+// GetMaxDurationInSec returns the MaxDurationInSec field value
+func (o *LifecycleTemplateResponse) GetMaxDurationInSec() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MaxDurationInSec
+}
+
+// GetMaxDurationInSecOk returns a tuple with the MaxDurationInSec field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleTemplateResponse) GetMaxDurationInSecOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MaxDurationInSec, true
+}
+
+// SetMaxDurationInSec sets field value
+func (o *LifecycleTemplateResponse) SetMaxDurationInSec(v int32) {
+	o.MaxDurationInSec = v
+}
+
 // GetResources returns the Resources field value
 func (o *LifecycleTemplateResponse) GetResources() LifecycleTemplateResponseResources {
 	if o == nil {
@@ -325,6 +352,7 @@ func (o LifecycleTemplateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["cloud_provider"] = o.CloudProvider
 	toSerialize["events"] = o.Events
 	toSerialize["max_duration_in_minutes"] = o.MaxDurationInMinutes
+	toSerialize["max_duration_in_sec"] = o.MaxDurationInSec
 	toSerialize["resources"] = o.Resources
 	toSerialize["variables"] = o.Variables
 	toSerialize["dockerfile"] = o.Dockerfile
@@ -348,6 +376,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		"cloud_provider",
 		"events",
 		"max_duration_in_minutes",
+		"max_duration_in_sec",
 		"resources",
 		"variables",
 		"dockerfile",
@@ -387,6 +416,7 @@ func (o *LifecycleTemplateResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cloud_provider")
 		delete(additionalProperties, "events")
 		delete(additionalProperties, "max_duration_in_minutes")
+		delete(additionalProperties, "max_duration_in_sec")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "variables")
 		delete(additionalProperties, "dockerfile")
