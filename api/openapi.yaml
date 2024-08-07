@@ -9531,7 +9531,7 @@ paths:
       summary: Get Custom Domain status
       tags:
       - Custom Domain
-  /application/{applicationId}/customDomain/check:
+  /application/{applicationId}/checkCustomDomain:
     get:
       operationId: checkApplicationCustomDomain
       parameters:
@@ -10893,7 +10893,7 @@ paths:
       summary: Get Custom Domain status
       tags:
       - Container Custom Domain
-  /container/{containerId}/customDomain/check:
+  /container/{containerId}/checkCustomDomain:
     get:
       operationId: checkContainerCustomDomain
       parameters:
@@ -12931,7 +12931,7 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Helm Custom Domain
-  /helm/{helmId}/customDomain/check:
+  /helm/{helmId}/checkCustomDomain:
     get:
       operationId: checkHelmCustomDomain
       parameters:

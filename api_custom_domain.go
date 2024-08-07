@@ -63,7 +63,7 @@ func (a *CustomDomainAPIService) CheckApplicationCustomDomainExecute(r ApiCheckA
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/application/{applicationId}/customDomain/check"
+	localVarPath := localBasePath + "/application/{applicationId}/checkCustomDomain"
 	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -178,7 +178,7 @@ func (a *CustomDomainAPIService) CheckContainerCustomDomainExecute(r ApiCheckCon
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/container/{containerId}/customDomain/check"
+	localVarPath := localBasePath + "/container/{containerId}/checkCustomDomain"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -293,7 +293,7 @@ func (a *CustomDomainAPIService) CheckHelmCustomDomainExecute(r ApiCheckHelmCust
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/helm/{helmId}/customDomain/check"
+	localVarPath := localBasePath + "/helm/{helmId}/checkCustomDomain"
 	localVarPath = strings.Replace(localVarPath, "{"+"helmId"+"}", url.PathEscape(parameterValueToString(r.helmId, "helmId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

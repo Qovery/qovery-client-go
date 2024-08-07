@@ -4,9 +4,9 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CheckApplicationCustomDomain**](CustomDomainAPI.md#CheckApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain/check | Check Application Custom Domain
-[**CheckContainerCustomDomain**](CustomDomainAPI.md#CheckContainerCustomDomain) | **Get** /container/{containerId}/customDomain/check | Check Container Custom Domain
-[**CheckHelmCustomDomain**](CustomDomainAPI.md#CheckHelmCustomDomain) | **Get** /helm/{helmId}/customDomain/check | Check Helm Custom Domain
+[**CheckApplicationCustomDomain**](CustomDomainAPI.md#CheckApplicationCustomDomain) | **Get** /application/{applicationId}/checkCustomDomain | Check Application Custom Domain
+[**CheckContainerCustomDomain**](CustomDomainAPI.md#CheckContainerCustomDomain) | **Get** /container/{containerId}/checkCustomDomain | Check Container Custom Domain
+[**CheckHelmCustomDomain**](CustomDomainAPI.md#CheckHelmCustomDomain) | **Get** /helm/{helmId}/checkCustomDomain | Check Helm Custom Domain
 [**CreateApplicationCustomDomain**](CustomDomainAPI.md#CreateApplicationCustomDomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
 [**DeleteCustomDomain**](CustomDomainAPI.md#DeleteCustomDomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**EditCustomDomain**](CustomDomainAPI.md#EditCustomDomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
