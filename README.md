@@ -247,6 +247,9 @@ Class | Method | HTTP request | Description
 *ContainersAPI* | [**GetEnvironmentContainerStatus**](docs/ContainersAPI.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 *ContainersAPI* | [**ListContainer**](docs/ContainersAPI.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
 *ContainersAPI* | [**PreviewContainerEnvironments**](docs/ContainersAPI.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
+*CustomDomainAPI* | [**CheckApplicationCustomDomain**](docs/CustomDomainAPI.md#checkapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain/check | Check Application Custom Domain
+*CustomDomainAPI* | [**CheckContainerCustomDomain**](docs/CustomDomainAPI.md#checkcontainercustomdomain) | **Get** /container/{containerId}/customDomain/check | Check Container Custom Domain
+*CustomDomainAPI* | [**CheckHelmCustomDomain**](docs/CustomDomainAPI.md#checkhelmcustomdomain) | **Get** /helm/{helmId}/customDomain/check | Check Helm Custom Domain
 *CustomDomainAPI* | [**CreateApplicationCustomDomain**](docs/CustomDomainAPI.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
 *CustomDomainAPI* | [**DeleteCustomDomain**](docs/CustomDomainAPI.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 *CustomDomainAPI* | [**EditCustomDomain**](docs/CustomDomainAPI.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
@@ -540,6 +543,9 @@ Class | Method | HTTP request | Description
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [BuildPackLanguageEnum](docs/BuildPackLanguageEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
+ - [CheckedCustomDomainResponse](docs/CheckedCustomDomainResponse.md)
+ - [CheckedCustomDomainStatus](docs/CheckedCustomDomainStatus.md)
+ - [CheckedCustomDomainsResponse](docs/CheckedCustomDomainsResponse.md)
  - [CleanFailedJob200Response](docs/CleanFailedJob200Response.md)
  - [CleanFailedJobs200Response](docs/CleanFailedJobs200Response.md)
  - [CleanFailedJobsRequest](docs/CleanFailedJobsRequest.md)

@@ -9531,6 +9531,35 @@ paths:
       summary: Get Custom Domain status
       tags:
       - Custom Domain
+  /application/{applicationId}/customDomain/check:
+    get:
+      operationId: checkApplicationCustomDomain
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckedCustomDomainsResponse'
+          description: Check Application Custom Domain
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check Application Custom Domain
+      tags:
+      - Custom Domain
   /application/{applicationId}/log:
     get:
       description: This will list the last 1000 logs of the application
@@ -10864,6 +10893,35 @@ paths:
       summary: Get Custom Domain status
       tags:
       - Container Custom Domain
+  /container/{containerId}/customDomain/check:
+    get:
+      operationId: checkContainerCustomDomain
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckedCustomDomainsResponse'
+          description: Check Container Custom Domain
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check Container Custom Domain
+      tags:
+      - Custom Domain
   /container/{containerId}/log:
     get:
       description: This will list the last 1000 logs of the container
@@ -12873,6 +12931,35 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Helm Custom Domain
+  /helm/{helmId}/customDomain/check:
+    get:
+      operationId: checkHelmCustomDomain
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckedCustomDomainsResponse'
+          description: Check Helm Custom Domain
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Check Helm Custom Domain
+      tags:
+      - Custom Domain
   /environment/{environmentId}/checkDockerfile:
     post:
       operationId: checkDockerfile
@@ -28444,6 +28531,53 @@ components:
       type: object
       x-stoplight:
         id: xn1fsp17ahwfi
+    CheckedCustomDomainsResponse:
+      example:
+        results:
+        - domain_name: my.domain.tld
+          error_details: error_details
+          status: RESOLVES_TO_IP
+        - domain_name: my.domain.tld
+          error_details: error_details
+          status: RESOLVES_TO_IP
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/CheckedCustomDomainResponse'
+          type: array
+      required:
+      - results
+      title: CheckedCustomDomainsResponse
+      type: object
+    CheckedCustomDomainStatus:
+      enum:
+      - RESOLVES_TO_IP
+      - MATCHES_LOAD_BALANCER_HOST
+      - DOMAIN_NOT_CONFIGURED
+      - DOMAIN_LINKED_TO_WRONG_HOST
+      - GENERIC_FAILURE
+      type: string
+    CheckedCustomDomainResponse:
+      example:
+        domain_name: my.domain.tld
+        error_details: error_details
+        status: RESOLVES_TO_IP
+      properties:
+        domain_name:
+          description: domain name checked
+          example: my.domain.tld
+          type: string
+        status:
+          $ref: '#/components/schemas/CheckedCustomDomainStatus'
+        error_details:
+          description: optional field containing information about failure check
+          nullable: true
+          type: string
+      required:
+      - domain_name
+      - status
+      title: CheckedCustomDomainResponse
+      type: object
     ContainerRegistryAssociatedServicesResponse:
       example:
         service_type: CONTAINER

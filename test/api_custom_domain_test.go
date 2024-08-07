@@ -22,6 +22,48 @@ func Test_qovery_CustomDomainAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test CustomDomainAPIService CheckApplicationCustomDomain", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var applicationId string
+
+		resp, httpRes, err := apiClient.CustomDomainAPI.CheckApplicationCustomDomain(context.Background(), applicationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomDomainAPIService CheckContainerCustomDomain", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var containerId string
+
+		resp, httpRes, err := apiClient.CustomDomainAPI.CheckContainerCustomDomain(context.Background(), containerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CustomDomainAPIService CheckHelmCustomDomain", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var helmId string
+
+		resp, httpRes, err := apiClient.CustomDomainAPI.CheckHelmCustomDomain(context.Background(), helmId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test CustomDomainAPIService CreateApplicationCustomDomain", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

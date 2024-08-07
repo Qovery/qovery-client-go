@@ -136,6 +136,9 @@ docs/Budget.md
 docs/BuildModeEnum.md
 docs/BuildPackLanguageEnum.md
 docs/CancelEnvironmentDeploymentRequest.md
+docs/CheckedCustomDomainResponse.md
+docs/CheckedCustomDomainStatus.md
+docs/CheckedCustomDomainsResponse.md
 docs/CleanFailedJob200Response.md
 docs/CleanFailedJobs200Response.md
 docs/CleanFailedJobsRequest.md
@@ -680,6 +683,9 @@ model_budget.go
 model_build_mode_enum.go
 model_build_pack_language_enum.go
 model_cancel_environment_deployment_request.go
+model_checked_custom_domain_response.go
+model_checked_custom_domain_status.go
+model_checked_custom_domains_response.go
 model_clean_failed_job_200_response.go
 model_clean_failed_jobs_200_response.go
 model_clean_failed_jobs_request.go
