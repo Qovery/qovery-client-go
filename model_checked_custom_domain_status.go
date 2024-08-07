@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// CheckedCustomDomainStatus the model 'CheckedCustomDomainStatus'
+// CheckedCustomDomainStatus This enum represents the final status for your domain. There are 2 successful statuses:   * `RESOLVES_TO_IP`: we succeeded to resolve an IP to your domain. This is the successful final status for custom domains where `use_cdn` is `true`   * `MATCHES_LOAD_BALANCER_HOST`: we succeeded to lookup CNAMEs & found that it matches your cluser Load Balancer host. This is the successful final status for custom domain where `use_cdn` is `false`   * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look at the `error_details` field for more information    * `DOMAIN_LINKED_TO_WRONG_HOST`: the domain has CNAME(s) that matches a different host than your Load Balancer one   * `GENERIC_FAILURE`: an error occured when attempting to validate your domain, look at the `error_details` field for more information
 type CheckedCustomDomainStatus string
 
 // List of CheckedCustomDomainStatus

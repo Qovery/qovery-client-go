@@ -28556,6 +28556,17 @@ components:
       title: CheckedCustomDomainsResponse
       type: object
     CheckedCustomDomainStatus:
+      description: "This enum represents the final status for your domain.\nThere\
+        \ are 2 successful statuses:\n  * `RESOLVES_TO_IP`: we succeeded to resolve\
+        \ an IP to your domain. This is the successful final status for custom domains\
+        \ where `use_cdn` is `true`\n  * `MATCHES_LOAD_BALANCER_HOST`: we succeeded\
+        \ to lookup CNAMEs & found that it matches your cluser Load Balancer host.\
+        \ This is the successful final status for custom domain where `use_cdn` is\
+        \ `false`\n  * `DOMAIN_NOT_CONFIGURED`: the domain is not configured, look\
+        \ at the `error_details` field for more information \n  * `DOMAIN_LINKED_TO_WRONG_HOST`:\
+        \ the domain has CNAME(s) that matches a different host than your Load Balancer\
+        \ one\n  * `GENERIC_FAILURE`: an error occured when attempting to validate\
+        \ your domain, look at the `error_details` field for more information \n"
       enum:
       - RESOLVES_TO_IP
       - MATCHES_LOAD_BALANCER_HOST
