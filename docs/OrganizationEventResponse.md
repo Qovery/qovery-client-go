@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ProjectName** | Pointer to **string** |  | [optional] 
 **EnvironmentId** | Pointer to **NullableString** |  | [optional] 
 **EnvironmentName** | Pointer to **string** |  | [optional] 
+**UserAgent** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -428,6 +429,41 @@ SetEnvironmentName sets EnvironmentName field to given value.
 
 HasEnvironmentName returns a boolean if a field has been set.
 
+### GetUserAgent
+
+`func (o *OrganizationEventResponse) GetUserAgent() string`
+
+GetUserAgent returns the UserAgent field if non-nil, zero value otherwise.
+
+### GetUserAgentOk
+
+`func (o *OrganizationEventResponse) GetUserAgentOk() (*string, bool)`
+
+GetUserAgentOk returns a tuple with the UserAgent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserAgent
+
+`func (o *OrganizationEventResponse) SetUserAgent(v string)`
+
+SetUserAgent sets UserAgent field to given value.
+
+### HasUserAgent
+
+`func (o *OrganizationEventResponse) HasUserAgent() bool`
+
+HasUserAgent returns a boolean if a field has been set.
+
+### SetUserAgentNil
+
+`func (o *OrganizationEventResponse) SetUserAgentNil(b bool)`
+
+ SetUserAgentNil sets the value for UserAgent to be an explicit nil
+
+### UnsetUserAgent
+`func (o *OrganizationEventResponse) UnsetUserAgent()`
+
+UnsetUserAgent ensures that no value is present for UserAgent, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

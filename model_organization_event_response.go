@@ -35,6 +35,7 @@ type OrganizationEventResponse struct {
 	ProjectName          *string                                `json:"project_name,omitempty"`
 	EnvironmentId        NullableString                         `json:"environment_id,omitempty"`
 	EnvironmentName      *string                                `json:"environment_name,omitempty"`
+	UserAgent            NullableString                         `json:"user_agent,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -549,6 +550,49 @@ func (o *OrganizationEventResponse) SetEnvironmentName(v string) {
 	o.EnvironmentName = &v
 }
 
+// GetUserAgent returns the UserAgent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationEventResponse) GetUserAgent() string {
+	if o == nil || IsNil(o.UserAgent.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UserAgent.Get()
+}
+
+// GetUserAgentOk returns a tuple with the UserAgent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationEventResponse) GetUserAgentOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UserAgent.Get(), o.UserAgent.IsSet()
+}
+
+// HasUserAgent returns a boolean if a field has been set.
+func (o *OrganizationEventResponse) HasUserAgent() bool {
+	if o != nil && o.UserAgent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUserAgent gets a reference to the given NullableString and assigns it to the UserAgent field.
+func (o *OrganizationEventResponse) SetUserAgent(v string) {
+	o.UserAgent.Set(&v)
+}
+
+// SetUserAgentNil sets the value for UserAgent to be an explicit nil
+func (o *OrganizationEventResponse) SetUserAgentNil() {
+	o.UserAgent.Set(nil)
+}
+
+// UnsetUserAgent ensures that no value is present for UserAgent, not even an explicit nil
+func (o *OrganizationEventResponse) UnsetUserAgent() {
+	o.UserAgent.Unset()
+}
+
 func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -601,6 +645,9 @@ func (o OrganizationEventResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EnvironmentName) {
 		toSerialize["environment_name"] = o.EnvironmentName
 	}
+	if o.UserAgent.IsSet() {
+		toSerialize["user_agent"] = o.UserAgent.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -637,6 +684,7 @@ func (o *OrganizationEventResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project_name")
 		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "environment_name")
+		delete(additionalProperties, "user_agent")
 		o.AdditionalProperties = additionalProperties
 	}
 

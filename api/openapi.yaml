@@ -25600,6 +25600,7 @@ components:
         event_type: CREATE
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        user_agent: user_agent
         timestamp: 2000-01-23T04:56:07.000+00:00
         environment_name: environment_name
       properties:
@@ -25639,6 +25640,9 @@ components:
           type: string
         environment_name:
           type: string
+        user_agent:
+          nullable: true
+          type: string
       title: ""
       type: object
     OrganizationEventResponseList:
@@ -25659,6 +25663,7 @@ components:
           event_type: CREATE
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_agent: user_agent
           timestamp: 2000-01-23T04:56:07.000+00:00
           environment_name: environment_name
         - target_name: target_name
@@ -25673,6 +25678,7 @@ components:
           event_type: CREATE
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          user_agent: user_agent
           timestamp: 2000-01-23T04:56:07.000+00:00
           environment_name: environment_name
       properties:
