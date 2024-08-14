@@ -32,14 +32,15 @@ type EnvironmentVariable struct {
 	// should be set for file only. variable mount path makes variable a file (where file should be mounted).
 	MountPath NullableString `json:"mount_path,omitempty"`
 	// optional variable description (255 characters maximum)
-	Description        NullableString               `json:"description,omitempty"`
-	OverriddenVariable *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
-	AliasedVariable    *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
-	Scope              APIVariableScopeEnum         `json:"scope"`
-	VariableType       APIVariableTypeEnum          `json:"variable_type"`
-	ServiceId          *string                      `json:"service_id,omitempty"`
-	ServiceName        *string                      `json:"service_name,omitempty"`
-	ServiceType        *LinkedServiceTypeEnum       `json:"service_type,omitempty"`
+	Description               NullableString               `json:"description,omitempty"`
+	EnableInterpolationInFile NullableBool                 `json:"enable_interpolation_in_file,omitempty"`
+	OverriddenVariable        *EnvironmentVariableOverride `json:"overridden_variable,omitempty"`
+	AliasedVariable           *EnvironmentVariableAlias    `json:"aliased_variable,omitempty"`
+	Scope                     APIVariableScopeEnum         `json:"scope"`
+	VariableType              APIVariableTypeEnum          `json:"variable_type"`
+	ServiceId                 *string                      `json:"service_id,omitempty"`
+	ServiceName               *string                      `json:"service_name,omitempty"`
+	ServiceType               *LinkedServiceTypeEnum       `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
 	OwnedBy              *string `json:"owned_by,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -289,6 +290,49 @@ func (o *EnvironmentVariable) SetDescriptionNil() {
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
 func (o *EnvironmentVariable) UnsetDescription() {
 	o.Description.Unset()
+}
+
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentVariable) GetEnableInterpolationInFile() bool {
+	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableInterpolationInFile.Get()
+}
+
+// GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentVariable) GetEnableInterpolationInFileOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
+}
+
+// HasEnableInterpolationInFile returns a boolean if a field has been set.
+func (o *EnvironmentVariable) HasEnableInterpolationInFile() bool {
+	if o != nil && o.EnableInterpolationInFile.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
+func (o *EnvironmentVariable) SetEnableInterpolationInFile(v bool) {
+	o.EnableInterpolationInFile.Set(&v)
+}
+
+// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+func (o *EnvironmentVariable) SetEnableInterpolationInFileNil() {
+	o.EnableInterpolationInFile.Set(nil)
+}
+
+// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+func (o *EnvironmentVariable) UnsetEnableInterpolationInFile() {
+	o.EnableInterpolationInFile.Unset()
 }
 
 // GetOverriddenVariable returns the OverriddenVariable field value if set, zero value otherwise.
@@ -556,6 +600,9 @@ func (o EnvironmentVariable) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+	if o.EnableInterpolationInFile.IsSet() {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
+	}
 	if !IsNil(o.OverriddenVariable) {
 		toSerialize["overridden_variable"] = o.OverriddenVariable
 	}
@@ -630,6 +677,7 @@ func (o *EnvironmentVariable) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "mount_path")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "enable_interpolation_in_file")
 		delete(additionalProperties, "overridden_variable")
 		delete(additionalProperties, "aliased_variable")
 		delete(additionalProperties, "scope")

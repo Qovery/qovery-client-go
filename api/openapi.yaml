@@ -15288,6 +15288,7 @@ components:
         variable_type: null
         scope: null
         description: description
+        enable_interpolatin_in_file: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: QOVERY_DATABASE_PSQL_NAME
       properties:
@@ -15310,6 +15311,11 @@ components:
           type: string
           x-stoplight:
             id: 14nham449j6uk
+        enable_interpolatin_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: bm88z8ltgrcc6
       required:
       - id
       - key
@@ -22239,6 +22245,7 @@ components:
         - variable_type
         type: object
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: null
         service_name: service_name
@@ -22329,6 +22336,7 @@ components:
       type: object
     EnvironmentVariableEditRequest:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         description: description
         value: value
@@ -22352,11 +22360,17 @@ components:
           type: string
           x-stoplight:
             id: rf6wxepnkcoyv
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: bw41elfsxminc
       required:
       - key
       type: object
     EnvironmentVariableRequest:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         description: description
         value: value
@@ -22380,13 +22394,19 @@ components:
           type: string
           x-stoplight:
             id: 1k835w52vgl4m
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: yzgx9eytturo9
       required:
       - key
       type: object
     EnvironmentVariableResponseList:
       example:
         results:
-        - mount_path: mount_path
+        - enable_interpolation_in_file: true
+          mount_path: mount_path
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -22413,7 +22433,8 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
-        - mount_path: mount_path
+        - enable_interpolation_in_file: true
+          mount_path: mount_path
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -24789,6 +24810,7 @@ components:
             url: https://github.com/Qovery/simple-node-app
     Key:
       example:
+        enable_interpolation_in_file: true
         description: description
         key: key
       properties:
@@ -24801,6 +24823,11 @@ components:
           type: string
           x-stoplight:
             id: qe7qh1tjtkwrm
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: alajw1h9vgr9e
       required:
       - key
       title: EnvironmentVariableAliasRequest
@@ -25789,6 +25816,7 @@ components:
       type: string
     SecretOverride:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: VALUE
         scope: APPLICATION
@@ -25814,6 +25842,11 @@ components:
           type: string
           x-stoplight:
             id: edfpfqj87ezos
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: ls2iylkcayehn
       required:
       - id
       - key
@@ -26785,11 +26818,17 @@ components:
             type: string
             x-stoplight:
               id: fznezq37gx9ux
+          enable_interpolation_in_file:
+            nullable: true
+            type: boolean
+            x-stoplight:
+              id: j13355s39qy21
         required:
         - key
         - scope
         type: object
       example:
+        enable_interpolation_in_file: true
         variable_type: null
         service_name: service_name
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -26801,6 +26840,7 @@ components:
           variable_type: null
           scope: null
           description: description
+          enable_interpolatin_in_file: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: QOVERY_DATABASE_PSQL_NAME
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -26808,6 +26848,7 @@ components:
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         overridden_secret:
+          enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: VALUE
           scope: APPLICATION
@@ -26817,6 +26858,7 @@ components:
         key: key
     SecretEditRequest:
       example:
+        enable_interpolation_in_file: true
         description: description
         value: value
         key: key
@@ -26832,11 +26874,17 @@ components:
           type: string
           x-stoplight:
             id: kpr7b04o3wqkq
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: kfzgtx3qmrqsk
       required:
       - key
       type: object
     SecretRequest:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         description: description
         value: value
@@ -26860,13 +26908,19 @@ components:
           type: string
           x-stoplight:
             id: dzjq13ney82de
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: 5d202hkrquox8
       required:
       - key
       type: object
     SecretResponseList:
       example:
         results:
-        - variable_type: null
+        - enable_interpolation_in_file: true
+          variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -26877,6 +26931,7 @@ components:
             variable_type: null
             scope: null
             description: description
+            enable_interpolatin_in_file: true
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -26884,6 +26939,7 @@ components:
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
+            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
@@ -26891,7 +26947,8 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: key
           key: key
-        - variable_type: null
+        - enable_interpolation_in_file: true
+          variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -26902,6 +26959,7 @@ components:
             variable_type: null
             scope: null
             description: description
+            enable_interpolatin_in_file: true
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -26909,6 +26967,7 @@ components:
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
+            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
@@ -27270,6 +27329,7 @@ components:
       type: object
     Value:
       example:
+        enable_interpolation_in_file: true
         description: description
         value: value
       properties:
@@ -27282,6 +27342,11 @@ components:
           type: string
           x-stoplight:
             id: ygzxe4xek3thk
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: ercieri1t6gqn
       title: EnvironmentVariableOverrideRequest
       type: object
     VariableImport:
@@ -27365,6 +27430,7 @@ components:
       type: string
     VariableAliasRequest:
       example:
+        enable_interpolation_in_file: true
         alias_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         alias_scope: APPLICATION
         description: description
@@ -27386,6 +27452,11 @@ components:
           type: string
           x-stoplight:
             id: e1tqebew6jfe8
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: udmfa3jcpde9q
       required:
       - alias_parent_id
       - alias_scope
@@ -27393,6 +27464,7 @@ components:
       type: object
     VariableOverrideRequest:
       example:
+        enable_interpolation_in_file: true
         description: description
         override_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         override_scope: APPLICATION
@@ -27415,6 +27487,11 @@ components:
           type: string
           x-stoplight:
             id: 4u5nndk8qphxp
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: smk0wzzy31f5u
       required:
       - override_parent_id
       - override_scope

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **AliasScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **AliasParentId** | **string** | the id of the variable that is aliased. | 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
@@ -123,6 +124,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *VariableAliasRequest) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetEnableInterpolationInFile
+
+`func (o *VariableAliasRequest) GetEnableInterpolationInFile() bool`
+
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
+
+### GetEnableInterpolationInFileOk
+
+`func (o *VariableAliasRequest) GetEnableInterpolationInFileOk() (*bool, bool)`
+
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableInterpolationInFile
+
+`func (o *VariableAliasRequest) SetEnableInterpolationInFile(v bool)`
+
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
+
+### HasEnableInterpolationInFile
+
+`func (o *VariableAliasRequest) HasEnableInterpolationInFile() bool`
+
+HasEnableInterpolationInFile returns a boolean if a field has been set.
+
+### SetEnableInterpolationInFileNil
+
+`func (o *VariableAliasRequest) SetEnableInterpolationInFileNil(b bool)`
+
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+
+### UnsetEnableInterpolationInFile
+`func (o *VariableAliasRequest) UnsetEnableInterpolationInFile()`
+
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** |  | 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
@@ -81,6 +82,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *Key) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetEnableInterpolationInFile
+
+`func (o *Key) GetEnableInterpolationInFile() bool`
+
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
+
+### GetEnableInterpolationInFileOk
+
+`func (o *Key) GetEnableInterpolationInFileOk() (*bool, bool)`
+
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableInterpolationInFile
+
+`func (o *Key) SetEnableInterpolationInFile(v bool)`
+
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
+
+### HasEnableInterpolationInFile
+
+`func (o *Key) HasEnableInterpolationInFile() bool`
+
+HasEnableInterpolationInFile returns a boolean if a field has been set.
+
+### SetEnableInterpolationInFileNil
+
+`func (o *Key) SetEnableInterpolationInFileNil(b bool)`
+
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+
+### UnsetEnableInterpolationInFile
+`func (o *Key) UnsetEnableInterpolationInFile()`
+
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

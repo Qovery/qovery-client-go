@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
@@ -219,6 +220,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *EnvironmentVariable) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetEnableInterpolationInFile
+
+`func (o *EnvironmentVariable) GetEnableInterpolationInFile() bool`
+
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
+
+### GetEnableInterpolationInFileOk
+
+`func (o *EnvironmentVariable) GetEnableInterpolationInFileOk() (*bool, bool)`
+
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableInterpolationInFile
+
+`func (o *EnvironmentVariable) SetEnableInterpolationInFile(v bool)`
+
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
+
+### HasEnableInterpolationInFile
+
+`func (o *EnvironmentVariable) HasEnableInterpolationInFile() bool`
+
+HasEnableInterpolationInFile returns a boolean if a field has been set.
+
+### SetEnableInterpolationInFileNil
+
+`func (o *EnvironmentVariable) SetEnableInterpolationInFileNil(b bool)`
+
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+
+### UnsetEnableInterpolationInFile
+`func (o *EnvironmentVariable) UnsetEnableInterpolationInFile()`
+
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 ### GetOverriddenVariable
 
 `func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride`

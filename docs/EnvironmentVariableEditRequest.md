@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
 **MountPath** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
@@ -143,6 +144,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *EnvironmentVariableEditRequest) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetEnableInterpolationInFile
+
+`func (o *EnvironmentVariableEditRequest) GetEnableInterpolationInFile() bool`
+
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
+
+### GetEnableInterpolationInFileOk
+
+`func (o *EnvironmentVariableEditRequest) GetEnableInterpolationInFileOk() (*bool, bool)`
+
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableInterpolationInFile
+
+`func (o *EnvironmentVariableEditRequest) SetEnableInterpolationInFile(v bool)`
+
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
+
+### HasEnableInterpolationInFile
+
+`func (o *EnvironmentVariableEditRequest) HasEnableInterpolationInFile() bool`
+
+HasEnableInterpolationInFile returns a boolean if a field has been set.
+
+### SetEnableInterpolationInFileNil
+
+`func (o *EnvironmentVariableEditRequest) SetEnableInterpolationInFileNil(b bool)`
+
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+
+### UnsetEnableInterpolationInFile
+`func (o *EnvironmentVariableEditRequest) UnsetEnableInterpolationInFile()`
+
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
