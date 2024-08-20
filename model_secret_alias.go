@@ -27,9 +27,9 @@ type SecretAlias struct {
 	Scope        APIVariableScopeEnum `json:"scope"`
 	VariableType APIVariableTypeEnum  `json:"variable_type"`
 	// optional variable description (255 characters maximum)
-	Description              NullableString `json:"description,omitempty"`
-	EnableInterpolatinInFile NullableBool   `json:"enable_interpolatin_in_file,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	Description               NullableString `json:"description,omitempty"`
+	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _SecretAlias SecretAlias
@@ -219,47 +219,47 @@ func (o *SecretAlias) UnsetDescription() {
 	o.Description.Unset()
 }
 
-// GetEnableInterpolatinInFile returns the EnableInterpolatinInFile field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SecretAlias) GetEnableInterpolatinInFile() bool {
-	if o == nil || IsNil(o.EnableInterpolatinInFile.Get()) {
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SecretAlias) GetEnableInterpolationInFile() bool {
+	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableInterpolatinInFile.Get()
+	return *o.EnableInterpolationInFile.Get()
 }
 
-// GetEnableInterpolatinInFileOk returns a tuple with the EnableInterpolatinInFile field value if set, nil otherwise
+// GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SecretAlias) GetEnableInterpolatinInFileOk() (*bool, bool) {
+func (o *SecretAlias) GetEnableInterpolationInFileOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.EnableInterpolatinInFile.Get(), o.EnableInterpolatinInFile.IsSet()
+	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
 }
 
-// HasEnableInterpolatinInFile returns a boolean if a field has been set.
-func (o *SecretAlias) HasEnableInterpolatinInFile() bool {
-	if o != nil && o.EnableInterpolatinInFile.IsSet() {
+// HasEnableInterpolationInFile returns a boolean if a field has been set.
+func (o *SecretAlias) HasEnableInterpolationInFile() bool {
+	if o != nil && o.EnableInterpolationInFile.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableInterpolatinInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolatinInFile field.
-func (o *SecretAlias) SetEnableInterpolatinInFile(v bool) {
-	o.EnableInterpolatinInFile.Set(&v)
+// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
+func (o *SecretAlias) SetEnableInterpolationInFile(v bool) {
+	o.EnableInterpolationInFile.Set(&v)
 }
 
-// SetEnableInterpolatinInFileNil sets the value for EnableInterpolatinInFile to be an explicit nil
-func (o *SecretAlias) SetEnableInterpolatinInFileNil() {
-	o.EnableInterpolatinInFile.Set(nil)
+// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+func (o *SecretAlias) SetEnableInterpolationInFileNil() {
+	o.EnableInterpolationInFile.Set(nil)
 }
 
-// UnsetEnableInterpolatinInFile ensures that no value is present for EnableInterpolatinInFile, not even an explicit nil
-func (o *SecretAlias) UnsetEnableInterpolatinInFile() {
-	o.EnableInterpolatinInFile.Unset()
+// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+func (o *SecretAlias) UnsetEnableInterpolationInFile() {
+	o.EnableInterpolationInFile.Unset()
 }
 
 func (o SecretAlias) MarshalJSON() ([]byte, error) {
@@ -280,8 +280,8 @@ func (o SecretAlias) ToMap() (map[string]interface{}, error) {
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
-	if o.EnableInterpolatinInFile.IsSet() {
-		toSerialize["enable_interpolatin_in_file"] = o.EnableInterpolatinInFile.Get()
+	if o.EnableInterpolationInFile.IsSet() {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -336,7 +336,7 @@ func (o *SecretAlias) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "variable_type")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "enable_interpolatin_in_file")
+		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties
 	}
 

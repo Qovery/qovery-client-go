@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolatinInFile** | Pointer to **NullableBool** |  | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
@@ -166,41 +166,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *SecretAlias) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetEnableInterpolatinInFile
+### GetEnableInterpolationInFile
 
-`func (o *SecretAlias) GetEnableInterpolatinInFile() bool`
+`func (o *SecretAlias) GetEnableInterpolationInFile() bool`
 
-GetEnableInterpolatinInFile returns the EnableInterpolatinInFile field if non-nil, zero value otherwise.
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
 
-### GetEnableInterpolatinInFileOk
+### GetEnableInterpolationInFileOk
 
-`func (o *SecretAlias) GetEnableInterpolatinInFileOk() (*bool, bool)`
+`func (o *SecretAlias) GetEnableInterpolationInFileOk() (*bool, bool)`
 
-GetEnableInterpolatinInFileOk returns a tuple with the EnableInterpolatinInFile field if it's non-nil, zero value otherwise
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEnableInterpolatinInFile
+### SetEnableInterpolationInFile
 
-`func (o *SecretAlias) SetEnableInterpolatinInFile(v bool)`
+`func (o *SecretAlias) SetEnableInterpolationInFile(v bool)`
 
-SetEnableInterpolatinInFile sets EnableInterpolatinInFile field to given value.
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
 
-### HasEnableInterpolatinInFile
+### HasEnableInterpolationInFile
 
-`func (o *SecretAlias) HasEnableInterpolatinInFile() bool`
+`func (o *SecretAlias) HasEnableInterpolationInFile() bool`
 
-HasEnableInterpolatinInFile returns a boolean if a field has been set.
+HasEnableInterpolationInFile returns a boolean if a field has been set.
 
-### SetEnableInterpolatinInFileNil
+### SetEnableInterpolationInFileNil
 
-`func (o *SecretAlias) SetEnableInterpolatinInFileNil(b bool)`
+`func (o *SecretAlias) SetEnableInterpolationInFileNil(b bool)`
 
- SetEnableInterpolatinInFileNil sets the value for EnableInterpolatinInFile to be an explicit nil
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
 
-### UnsetEnableInterpolatinInFile
-`func (o *SecretAlias) UnsetEnableInterpolatinInFile()`
+### UnsetEnableInterpolationInFile
+`func (o *SecretAlias) UnsetEnableInterpolationInFile()`
 
-UnsetEnableInterpolatinInFile ensures that no value is present for EnableInterpolatinInFile, not even an explicit nil
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -38,10 +38,11 @@ type VariableResponse struct {
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy              *string `json:"owned_by,omitempty"`
-	IsSecret             bool    `json:"is_secret"`
-	Description          *string `json:"description,omitempty"`
-	AdditionalProperties map[string]interface{}
+	OwnedBy                   *string `json:"owned_by,omitempty"`
+	IsSecret                  bool    `json:"is_secret"`
+	Description               *string `json:"description,omitempty"`
+	EnableInterpolationInFile *string `json:"enable_interpolation_in_file,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _VariableResponse VariableResponse
@@ -539,6 +540,38 @@ func (o *VariableResponse) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise.
+func (o *VariableResponse) GetEnableInterpolationInFile() string {
+	if o == nil || IsNil(o.EnableInterpolationInFile) {
+		var ret string
+		return ret
+	}
+	return *o.EnableInterpolationInFile
+}
+
+// GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *VariableResponse) GetEnableInterpolationInFileOk() (*string, bool) {
+	if o == nil || IsNil(o.EnableInterpolationInFile) {
+		return nil, false
+	}
+	return o.EnableInterpolationInFile, true
+}
+
+// HasEnableInterpolationInFile returns a boolean if a field has been set.
+func (o *VariableResponse) HasEnableInterpolationInFile() bool {
+	if o != nil && !IsNil(o.EnableInterpolationInFile) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableInterpolationInFile gets a reference to the given string and assigns it to the EnableInterpolationInFile field.
+func (o *VariableResponse) SetEnableInterpolationInFile(v string) {
+	o.EnableInterpolationInFile = &v
+}
+
 func (o VariableResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -582,6 +615,9 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["is_secret"] = o.IsSecret
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.EnableInterpolationInFile) {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -648,6 +684,7 @@ func (o *VariableResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "owned_by")
 		delete(additionalProperties, "is_secret")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties
 	}
 

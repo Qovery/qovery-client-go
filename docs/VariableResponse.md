@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **OwnedBy** | Pointer to **string** | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional] 
 **IsSecret** | **bool** |  | 
 **Description** | Pointer to **string** |  | [optional] 
+**EnableInterpolationInFile** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -424,6 +425,31 @@ SetDescription sets Description field to given value.
 `func (o *VariableResponse) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetEnableInterpolationInFile
+
+`func (o *VariableResponse) GetEnableInterpolationInFile() string`
+
+GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
+
+### GetEnableInterpolationInFileOk
+
+`func (o *VariableResponse) GetEnableInterpolationInFileOk() (*string, bool)`
+
+GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnableInterpolationInFile
+
+`func (o *VariableResponse) SetEnableInterpolationInFile(v string)`
+
+SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
+
+### HasEnableInterpolationInFile
+
+`func (o *VariableResponse) HasEnableInterpolationInFile() bool`
+
+HasEnableInterpolationInFile returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

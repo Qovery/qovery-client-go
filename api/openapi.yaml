@@ -15284,11 +15284,11 @@ components:
       type: object
     SecretAlias:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: null
         scope: null
         description: description
-        enable_interpolatin_in_file: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: QOVERY_DATABASE_PSQL_NAME
       properties:
@@ -15311,7 +15311,7 @@ components:
           type: string
           x-stoplight:
             id: 14nham449j6uk
-        enable_interpolatin_in_file:
+        enable_interpolation_in_file:
           nullable: true
           type: boolean
           x-stoplight:
@@ -26836,11 +26836,11 @@ components:
         owned_by: owned_by
         service_type: APPLICATION
         aliased_secret:
+          enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: null
           scope: null
           description: description
-          enable_interpolatin_in_file: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: QOVERY_DATABASE_PSQL_NAME
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -26927,11 +26927,11 @@ components:
           owned_by: owned_by
           service_type: APPLICATION
           aliased_secret:
+            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: null
             scope: null
             description: description
-            enable_interpolatin_in_file: true
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -26955,11 +26955,11 @@ components:
           owned_by: owned_by
           service_type: APPLICATION
           aliased_secret:
+            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: null
             scope: null
             description: description
-            enable_interpolatin_in_file: true
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -27499,6 +27499,7 @@ components:
       type: object
     VariableRequest:
       example:
+        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_scope: APPLICATION
         is_secret: true
@@ -27536,6 +27537,11 @@ components:
           type: string
           x-stoplight:
             id: 328cipvix8hjo
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
+          x-stoplight:
+            id: docfts24qtko6
       required:
       - is_secret
       - key
@@ -27604,6 +27610,10 @@ components:
             type: string
             x-stoplight:
               id: n9u4ex1jj4rxa
+          enable_interpolation_in_file:
+            type: string
+            x-stoplight:
+              id: 43yxsvszy5k8o
         required:
         - is_secret
         - key
@@ -27612,6 +27622,7 @@ components:
         - variable_type
         type: object
       example:
+        enable_interpolation_in_file: enable_interpolation_in_file
         mount_path: mount_path
         variable_type: null
         service_name: service_name
@@ -27643,7 +27654,8 @@ components:
     VariableResponseList:
       example:
         results:
-        - mount_path: mount_path
+        - enable_interpolation_in_file: enable_interpolation_in_file
+          mount_path: mount_path
           variable_type: null
           service_name: service_name
           is_secret: true
@@ -27671,7 +27683,8 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
-        - mount_path: mount_path
+        - enable_interpolation_in_file: enable_interpolation_in_file
+          mount_path: mount_path
           variable_type: null
           service_name: service_name
           is_secret: true
