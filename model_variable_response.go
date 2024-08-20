@@ -41,7 +41,7 @@ type VariableResponse struct {
 	OwnedBy                   *string `json:"owned_by,omitempty"`
 	IsSecret                  bool    `json:"is_secret"`
 	Description               *string `json:"description,omitempty"`
-	EnableInterpolationInFile *string `json:"enable_interpolation_in_file,omitempty"`
+	EnableInterpolationInFile *bool   `json:"enable_interpolation_in_file,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -541,9 +541,9 @@ func (o *VariableResponse) SetDescription(v string) {
 }
 
 // GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise.
-func (o *VariableResponse) GetEnableInterpolationInFile() string {
+func (o *VariableResponse) GetEnableInterpolationInFile() bool {
 	if o == nil || IsNil(o.EnableInterpolationInFile) {
-		var ret string
+		var ret bool
 		return ret
 	}
 	return *o.EnableInterpolationInFile
@@ -551,7 +551,7 @@ func (o *VariableResponse) GetEnableInterpolationInFile() string {
 
 // GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *VariableResponse) GetEnableInterpolationInFileOk() (*string, bool) {
+func (o *VariableResponse) GetEnableInterpolationInFileOk() (*bool, bool) {
 	if o == nil || IsNil(o.EnableInterpolationInFile) {
 		return nil, false
 	}
@@ -567,8 +567,8 @@ func (o *VariableResponse) HasEnableInterpolationInFile() bool {
 	return false
 }
 
-// SetEnableInterpolationInFile gets a reference to the given string and assigns it to the EnableInterpolationInFile field.
-func (o *VariableResponse) SetEnableInterpolationInFile(v string) {
+// SetEnableInterpolationInFile gets a reference to the given bool and assigns it to the EnableInterpolationInFile field.
+func (o *VariableResponse) SetEnableInterpolationInFile(v bool) {
 	o.EnableInterpolationInFile = &v
 }
 

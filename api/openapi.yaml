@@ -27611,7 +27611,7 @@ components:
             x-stoplight:
               id: n9u4ex1jj4rxa
           enable_interpolation_in_file:
-            type: string
+            type: boolean
             x-stoplight:
               id: 43yxsvszy5k8o
         required:
@@ -27622,7 +27622,7 @@ components:
         - variable_type
         type: object
       example:
-        enable_interpolation_in_file: enable_interpolation_in_file
+        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: null
         service_name: service_name
@@ -27654,7 +27654,7 @@ components:
     VariableResponseList:
       example:
         results:
-        - enable_interpolation_in_file: enable_interpolation_in_file
+        - enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name
@@ -27683,7 +27683,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
-        - enable_interpolation_in_file: enable_interpolation_in_file
+        - enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name

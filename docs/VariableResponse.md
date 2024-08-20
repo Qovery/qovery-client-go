@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **OwnedBy** | Pointer to **string** | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional] 
 **IsSecret** | **bool** |  | 
 **Description** | Pointer to **string** |  | [optional] 
-**EnableInterpolationInFile** | Pointer to **string** |  | [optional] 
+**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -428,20 +428,20 @@ HasDescription returns a boolean if a field has been set.
 
 ### GetEnableInterpolationInFile
 
-`func (o *VariableResponse) GetEnableInterpolationInFile() string`
+`func (o *VariableResponse) GetEnableInterpolationInFile() bool`
 
 GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
 
 ### GetEnableInterpolationInFileOk
 
-`func (o *VariableResponse) GetEnableInterpolationInFileOk() (*string, bool)`
+`func (o *VariableResponse) GetEnableInterpolationInFileOk() (*bool, bool)`
 
 GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEnableInterpolationInFile
 
-`func (o *VariableResponse) SetEnableInterpolationInFile(v string)`
+`func (o *VariableResponse) SetEnableInterpolationInFile(v bool)`
 
 SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
 
