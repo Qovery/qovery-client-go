@@ -21,7 +21,9 @@ var _ MappedNullable = &LifecycleTemplateResponseVariablesInnerFile{}
 
 // LifecycleTemplateResponseVariablesInnerFile If present, the variable should be a file instead of a raw value
 type LifecycleTemplateResponseVariablesInnerFile struct {
-	Path                 string `json:"path"`
+	Path string `json:"path"`
+	// if we should interpolate variable inside the file
+	EnableInterpolation  *bool `json:"enable_interpolation,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +36,8 @@ type _LifecycleTemplateResponseVariablesInnerFile LifecycleTemplateResponseVaria
 func NewLifecycleTemplateResponseVariablesInnerFile(path string) *LifecycleTemplateResponseVariablesInnerFile {
 	this := LifecycleTemplateResponseVariablesInnerFile{}
 	this.Path = path
+	var enableInterpolation bool = false
+	this.EnableInterpolation = &enableInterpolation
 	return &this
 }
 
@@ -42,6 +46,8 @@ func NewLifecycleTemplateResponseVariablesInnerFile(path string) *LifecycleTempl
 // but it doesn't guarantee that properties required by API are set
 func NewLifecycleTemplateResponseVariablesInnerFileWithDefaults() *LifecycleTemplateResponseVariablesInnerFile {
 	this := LifecycleTemplateResponseVariablesInnerFile{}
+	var enableInterpolation bool = false
+	this.EnableInterpolation = &enableInterpolation
 	return &this
 }
 
@@ -69,6 +75,38 @@ func (o *LifecycleTemplateResponseVariablesInnerFile) SetPath(v string) {
 	o.Path = v
 }
 
+// GetEnableInterpolation returns the EnableInterpolation field value if set, zero value otherwise.
+func (o *LifecycleTemplateResponseVariablesInnerFile) GetEnableInterpolation() bool {
+	if o == nil || IsNil(o.EnableInterpolation) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableInterpolation
+}
+
+// GetEnableInterpolationOk returns a tuple with the EnableInterpolation field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LifecycleTemplateResponseVariablesInnerFile) GetEnableInterpolationOk() (*bool, bool) {
+	if o == nil || IsNil(o.EnableInterpolation) {
+		return nil, false
+	}
+	return o.EnableInterpolation, true
+}
+
+// HasEnableInterpolation returns a boolean if a field has been set.
+func (o *LifecycleTemplateResponseVariablesInnerFile) HasEnableInterpolation() bool {
+	if o != nil && !IsNil(o.EnableInterpolation) {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableInterpolation gets a reference to the given bool and assigns it to the EnableInterpolation field.
+func (o *LifecycleTemplateResponseVariablesInnerFile) SetEnableInterpolation(v bool) {
+	o.EnableInterpolation = &v
+}
+
 func (o LifecycleTemplateResponseVariablesInnerFile) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -80,6 +118,9 @@ func (o LifecycleTemplateResponseVariablesInnerFile) MarshalJSON() ([]byte, erro
 func (o LifecycleTemplateResponseVariablesInnerFile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["path"] = o.Path
+	if !IsNil(o.EnableInterpolation) {
+		toSerialize["enable_interpolation"] = o.EnableInterpolation
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +165,7 @@ func (o *LifecycleTemplateResponseVariablesInnerFile) UnmarshalJSON(data []byte)
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "path")
+		delete(additionalProperties, "enable_interpolation")
 		o.AdditionalProperties = additionalProperties
 	}
 

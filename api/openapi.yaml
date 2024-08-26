@@ -28506,12 +28506,14 @@ components:
         - default: default
           file:
             path: path
+            enable_interpolation: false
           is_secret: true
           name: name
           description: description
         - default: default
           file:
             path: path
+            enable_interpolation: false
           is_secret: true
           name: name
           description: description
@@ -30928,11 +30930,18 @@ components:
       description: "If present, the variable should be a file instead of a raw value"
       example:
         path: path
+        enable_interpolation: false
       properties:
         path:
           type: string
           x-stoplight:
             id: d7xqu15fk6iat
+        enable_interpolation:
+          default: false
+          description: if we should interpolate variable inside the file
+          type: boolean
+          x-stoplight:
+            id: mbvppc2tt4l2t
       required:
       - path
       type: object
@@ -30943,6 +30952,7 @@ components:
         default: default
         file:
           path: path
+          enable_interpolation: false
         is_secret: true
         name: name
         description: description
