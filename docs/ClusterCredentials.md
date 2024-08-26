@@ -9,12 +9,14 @@ Name | Type | Description | Notes
 **AccessKeyId** | **string** |  | 
 **ObjectType** | **string** |  | 
 **ScalewayAccessKey** | **string** |  | 
+**ScalewayProjectId** | **string** |  | 
+**ScalewayOrganizationId** | **string** |  | 
 
 ## Methods
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +129,46 @@ and a boolean to check if the value has been set.
 `func (o *ClusterCredentials) SetScalewayAccessKey(v string)`
 
 SetScalewayAccessKey sets ScalewayAccessKey field to given value.
+
+
+### GetScalewayProjectId
+
+`func (o *ClusterCredentials) GetScalewayProjectId() string`
+
+GetScalewayProjectId returns the ScalewayProjectId field if non-nil, zero value otherwise.
+
+### GetScalewayProjectIdOk
+
+`func (o *ClusterCredentials) GetScalewayProjectIdOk() (*string, bool)`
+
+GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScalewayProjectId
+
+`func (o *ClusterCredentials) SetScalewayProjectId(v string)`
+
+SetScalewayProjectId sets ScalewayProjectId field to given value.
+
+
+### GetScalewayOrganizationId
+
+`func (o *ClusterCredentials) GetScalewayOrganizationId() string`
+
+GetScalewayOrganizationId returns the ScalewayOrganizationId field if non-nil, zero value otherwise.
+
+### GetScalewayOrganizationIdOk
+
+`func (o *ClusterCredentials) GetScalewayOrganizationIdOk() (*string, bool)`
+
+GetScalewayOrganizationIdOk returns a tuple with the ScalewayOrganizationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScalewayOrganizationId
+
+`func (o *ClusterCredentials) SetScalewayOrganizationId(v string)`
+
+SetScalewayOrganizationId sets ScalewayOrganizationId field to given value.
 
 
 

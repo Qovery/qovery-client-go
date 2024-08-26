@@ -17500,11 +17500,21 @@ components:
           enum:
           - SCW
           type: string
+        scaleway_project_id:
+          type: string
+          x-stoplight:
+            id: 0630fqc615vg4
+        scaleway_organization_id:
+          type: string
+          x-stoplight:
+            id: 5ui02pola5ndr
       required:
       - id
       - name
       - object_type
       - scaleway_access_key
+      - scaleway_organization_id
+      - scaleway_project_id
       title: ScalewayClusterCredentials
       type: object
       x-stoplight:

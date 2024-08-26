@@ -21,11 +21,13 @@ var _ MappedNullable = &ScalewayClusterCredentials{}
 
 // ScalewayClusterCredentials struct for ScalewayClusterCredentials
 type ScalewayClusterCredentials struct {
-	Id                   string `json:"id"`
-	Name                 string `json:"name"`
-	ScalewayAccessKey    string `json:"scaleway_access_key"`
-	ObjectType           string `json:"object_type"`
-	AdditionalProperties map[string]interface{}
+	Id                     string `json:"id"`
+	Name                   string `json:"name"`
+	ScalewayAccessKey      string `json:"scaleway_access_key"`
+	ObjectType             string `json:"object_type"`
+	ScalewayProjectId      string `json:"scaleway_project_id"`
+	ScalewayOrganizationId string `json:"scaleway_organization_id"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _ScalewayClusterCredentials ScalewayClusterCredentials
@@ -34,12 +36,14 @@ type _ScalewayClusterCredentials ScalewayClusterCredentials
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewScalewayClusterCredentials(id string, name string, scalewayAccessKey string, objectType string) *ScalewayClusterCredentials {
+func NewScalewayClusterCredentials(id string, name string, scalewayAccessKey string, objectType string, scalewayProjectId string, scalewayOrganizationId string) *ScalewayClusterCredentials {
 	this := ScalewayClusterCredentials{}
 	this.Id = id
 	this.Name = name
 	this.ScalewayAccessKey = scalewayAccessKey
 	this.ObjectType = objectType
+	this.ScalewayProjectId = scalewayProjectId
+	this.ScalewayOrganizationId = scalewayOrganizationId
 	return &this
 }
 
@@ -147,6 +151,54 @@ func (o *ScalewayClusterCredentials) SetObjectType(v string) {
 	o.ObjectType = v
 }
 
+// GetScalewayProjectId returns the ScalewayProjectId field value
+func (o *ScalewayClusterCredentials) GetScalewayProjectId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ScalewayProjectId
+}
+
+// GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field value
+// and a boolean to check if the value has been set.
+func (o *ScalewayClusterCredentials) GetScalewayProjectIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ScalewayProjectId, true
+}
+
+// SetScalewayProjectId sets field value
+func (o *ScalewayClusterCredentials) SetScalewayProjectId(v string) {
+	o.ScalewayProjectId = v
+}
+
+// GetScalewayOrganizationId returns the ScalewayOrganizationId field value
+func (o *ScalewayClusterCredentials) GetScalewayOrganizationId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ScalewayOrganizationId
+}
+
+// GetScalewayOrganizationIdOk returns a tuple with the ScalewayOrganizationId field value
+// and a boolean to check if the value has been set.
+func (o *ScalewayClusterCredentials) GetScalewayOrganizationIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ScalewayOrganizationId, true
+}
+
+// SetScalewayOrganizationId sets field value
+func (o *ScalewayClusterCredentials) SetScalewayOrganizationId(v string) {
+	o.ScalewayOrganizationId = v
+}
+
 func (o ScalewayClusterCredentials) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -161,6 +213,8 @@ func (o ScalewayClusterCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
 	toSerialize["object_type"] = o.ObjectType
+	toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	toSerialize["scaleway_organization_id"] = o.ScalewayOrganizationId
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -178,6 +232,8 @@ func (o *ScalewayClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"scaleway_access_key",
 		"object_type",
+		"scaleway_project_id",
+		"scaleway_organization_id",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -211,6 +267,8 @@ func (o *ScalewayClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "object_type")
+		delete(additionalProperties, "scaleway_project_id")
+		delete(additionalProperties, "scaleway_organization_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
