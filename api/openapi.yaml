@@ -14883,6 +14883,35 @@ paths:
       tags: []
       x-stoplight:
         id: zggx5u9ayalz7
+  /helm/{helmId}/listServices:
+    get:
+      description: Get helm kubernetes services
+      operationId: getHelmKubernetesServices
+      parameters:
+      - explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KubernetesServiceResponseList'
+          description: OK
+        "401":
+          description: ' Access token is missing or invalid'
+        "403":
+          description: Resource not found
+        "404":
+          description: Not Found
+      summary: Get helm kubernetes services
+      tags: []
+      x-stoplight:
+        id: 7cl74u6hzmccd
 components:
   parameters:
     applicationId:
@@ -28874,6 +28903,126 @@ components:
       type: object
       x-stoplight:
         id: lyrvkahz5uw6s
+    KubernetesServiceResponseList:
+      items:
+        $ref: '#/components/schemas/KubernetesService'
+      title: KubernetesServiceResponseList
+      type: array
+      x-stoplight:
+        id: 91mgvynk8ostk
+    KubernetesService:
+      example:
+        service_spec:
+          type: type
+          ports:
+          - port: 0
+            name: name
+          - port: 0
+            name: name
+          selectors:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        metadata:
+          name: name
+      properties:
+        metadata:
+          $ref: '#/components/schemas/KubernetesMetadata'
+        service_spec:
+          $ref: '#/components/schemas/KubernetesServiceSpec'
+      required:
+      - metadata
+      - service_spec
+      title: KubernetesService
+      type: object
+      x-stoplight:
+        id: e93yew0imhkxz
+    KubernetesMetadata:
+      example:
+        name: name
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: n0gt58vsemvlv
+      title: KubernetesMetadata
+      type: object
+      x-stoplight:
+        id: ajq08tq9ym2vh
+    KubernetesServiceSpec:
+      example:
+        type: type
+        ports:
+        - port: 0
+          name: name
+        - port: 0
+          name: name
+        selectors:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        type:
+          type: string
+          x-stoplight:
+            id: 5bi9ckakwdfod
+        ports:
+          items:
+            $ref: '#/components/schemas/KubernetesServicePort'
+          type: array
+          x-stoplight:
+            id: xaa6ow6ugihju
+        selectors:
+          items:
+            $ref: '#/components/schemas/KubernetesSelector'
+          type: array
+          x-stoplight:
+            id: snld7nhiy088w
+      title: KubernetesServiceSpec
+      type: object
+      x-stoplight:
+        id: qecw98tpxage0
+    KubernetesServicePort:
+      example:
+        port: 0
+        name: name
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: tusjgcztulh9m
+        port:
+          type: integer
+          x-stoplight:
+            id: iloqun4s628bz
+      required:
+      - port
+      title: KubernetesServicePort
+      type: object
+      x-stoplight:
+        id: wgdmnyglzosd6
+    KubernetesSelector:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+          x-stoplight:
+            id: 1zcgvzdknhr8n
+        value:
+          type: string
+          x-stoplight:
+            id: 6zpc45u4laog4
+      required:
+      - key
+      - value
+      title: KubernetesSelector
+      type: object
+      x-stoplight:
+        id: 4i1ztgngi75vs
     deleteMember_request:
       properties:
         user_id:

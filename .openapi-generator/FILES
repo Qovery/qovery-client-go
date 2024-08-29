@@ -455,6 +455,11 @@ docs/JobSourceDockerResponse.md
 docs/JobsAPI.md
 docs/Key.md
 docs/KubernetesEnum.md
+docs/KubernetesMetadata.md
+docs/KubernetesSelector.md
+docs/KubernetesService.md
+docs/KubernetesServicePort.md
+docs/KubernetesServiceSpec.md
 docs/Label.md
 docs/LabelsGroupAssociatedItemType.md
 docs/LifecycleJobResponse.md
@@ -956,6 +961,11 @@ model_job_schedule_event.go
 model_job_source_docker_response.go
 model_key.go
 model_kubernetes_enum.go
+model_kubernetes_metadata.go
+model_kubernetes_selector.go
+model_kubernetes_service.go
+model_kubernetes_service_port.go
+model_kubernetes_service_spec.go
 model_label.go
 model_labels_group_associated_item_type.go
 model_lifecycle_job_response.go
