@@ -1818,6 +1818,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "If true, the user auth part will have an exec command with qovery\
+          \ cli"
+        explode: true
+        in: query
+        name: withTokenFromCli
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "200":
           content:
@@ -14852,6 +14861,28 @@ paths:
       - Organization Main Calls
       x-stoplight:
         id: 5jvrv87m4tk5s
+  /cluster/{clusterId}/token:
+    get:
+      operationId: get-cluster-token-by-clusterId
+      parameters:
+      - explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_cluster_token_by_clusterId_200_response'
+          description: OK
+      summary: Get cluster token by clusterId
+      tags: []
+      x-stoplight:
+        id: zggx5u9ayalz7
 components:
   parameters:
     applicationId:
@@ -29146,6 +29177,55 @@ components:
           type: array
           x-stoplight:
             id: 2mgfos3e33m8v
+      type: object
+    get_cluster_token_by_clusterId_200_response_status:
+      example:
+        expirationTimestamp: 2000-01-23T04:56:07.000+00:00
+        token: token
+      properties:
+        token:
+          type: string
+          x-stoplight:
+            id: l3j67ojfrx07j
+        expirationTimestamp:
+          format: date-time
+          type: string
+          x-stoplight:
+            id: h0vsj9rkz1y83
+      required:
+      - expirationTimestamp
+      - token
+      type: object
+      x-stoplight:
+        id: kpc7oees1ex6o
+    get_cluster_token_by_clusterId_200_response:
+      example:
+        apiVersion: apiVersion
+        kind: kind
+        spec: "{}"
+        status:
+          expirationTimestamp: 2000-01-23T04:56:07.000+00:00
+          token: token
+      properties:
+        apiVersion:
+          type: string
+          x-stoplight:
+            id: 3v8hnweel0h59
+        kind:
+          type: string
+          x-stoplight:
+            id: j71s6bsnathbc
+        spec:
+          type: object
+          x-stoplight:
+            id: yceokavn3wmmt
+        status:
+          $ref: '#/components/schemas/get_cluster_token_by_clusterId_200_response_status'
+      required:
+      - apiVersion
+      - kind
+      - spec
+      - status
       type: object
     ServicePortRequest_ports_inner:
       example:

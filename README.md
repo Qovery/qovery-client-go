@@ -274,6 +274,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -719,6 +720,8 @@ Class | Method | HTTP request | Description
  - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
  - [GenericClusterCredentials](docs/GenericClusterCredentials.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
+ - [GetClusterTokenByClusterId200Response](docs/GetClusterTokenByClusterId200Response.md)
+ - [GetClusterTokenByClusterId200ResponseStatus](docs/GetClusterTokenByClusterId200ResponseStatus.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitFileCheckRequest](docs/GitFileCheckRequest.md)

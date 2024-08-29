@@ -34,6 +34,7 @@ api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
+api_default.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -265,6 +266,7 @@ docs/DatabaseResponseList.md
 docs/DatabaseTypeEnum.md
 docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
+docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
@@ -342,6 +344,8 @@ docs/EnvironmentsAPI.md
 docs/GcpCredentialsRequest.md
 docs/GenericClusterCredentials.md
 docs/GenericObjectCurrentCost.md
+docs/GetClusterTokenByClusterId200Response.md
+docs/GetClusterTokenByClusterId200ResponseStatus.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitFileCheckRequest.md
@@ -859,6 +863,8 @@ model_environment_variable_response_list.go
 model_gcp_credentials_request.go
 model_generic_cluster_credentials.go
 model_generic_object_current_cost.go
+model_get_cluster_token_by_cluster_id_200_response.go
+model_get_cluster_token_by_cluster_id_200_response_status.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_file_check_request.go
@@ -1152,6 +1158,7 @@ test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
+test/api_default_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go

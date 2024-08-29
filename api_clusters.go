@@ -1012,10 +1012,17 @@ func (a *ClustersAPIService) GetClusterAdvancedSettingsExecute(r ApiGetClusterAd
 }
 
 type ApiGetClusterKubeconfigRequest struct {
-	ctx            context.Context
-	ApiService     *ClustersAPIService
-	organizationId string
-	clusterId      string
+	ctx              context.Context
+	ApiService       *ClustersAPIService
+	organizationId   string
+	clusterId        string
+	withTokenFromCli *bool
+}
+
+// If true, the user auth part will have an exec command with qovery cli
+func (r ApiGetClusterKubeconfigRequest) WithTokenFromCli(withTokenFromCli bool) ApiGetClusterKubeconfigRequest {
+	r.withTokenFromCli = &withTokenFromCli
+	return r
 }
 
 func (r ApiGetClusterKubeconfigRequest) Execute() (string, *http.Response, error) {
@@ -1062,6 +1069,9 @@ func (a *ClustersAPIService) GetClusterKubeconfigExecute(r ApiGetClusterKubeconf
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.withTokenFromCli != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "withTokenFromCli", r.withTokenFromCli, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
