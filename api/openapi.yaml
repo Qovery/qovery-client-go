@@ -1822,7 +1822,7 @@ paths:
           \ cli"
         explode: true
         in: query
-        name: withTokenFromCli
+        name: with_token_from_cli
         required: false
         schema:
           type: boolean

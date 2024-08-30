@@ -1070,7 +1070,7 @@ func (a *ClustersAPIService) GetClusterKubeconfigExecute(r ApiGetClusterKubeconf
 	localVarFormParams := url.Values{}
 
 	if r.withTokenFromCli != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "withTokenFromCli", r.withTokenFromCli, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "with_token_from_cli", r.withTokenFromCli, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
