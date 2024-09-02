@@ -20,10 +20,12 @@ var _ MappedNullable = &ClusterStatus{}
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId            *string           `json:"cluster_id,omitempty"`
-	Status               *ClusterStateEnum `json:"status,omitempty"`
-	IsDeployed           *bool             `json:"is_deployed,omitempty"`
-	AdditionalProperties map[string]interface{}
+	ClusterId               *string           `json:"cluster_id,omitempty"`
+	Status                  *ClusterStateEnum `json:"status,omitempty"`
+	IsDeployed              *bool             `json:"is_deployed,omitempty"`
+	NextK8sAvailableVersion NullableString    `json:"next_k8s_available_version,omitempty"`
+	LastExecutionId         *string           `json:"last_execution_id,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _ClusterStatus ClusterStatus
@@ -141,6 +143,81 @@ func (o *ClusterStatus) SetIsDeployed(v bool) {
 	o.IsDeployed = &v
 }
 
+// GetNextK8sAvailableVersion returns the NextK8sAvailableVersion field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterStatus) GetNextK8sAvailableVersion() string {
+	if o == nil || IsNil(o.NextK8sAvailableVersion.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NextK8sAvailableVersion.Get()
+}
+
+// GetNextK8sAvailableVersionOk returns a tuple with the NextK8sAvailableVersion field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterStatus) GetNextK8sAvailableVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NextK8sAvailableVersion.Get(), o.NextK8sAvailableVersion.IsSet()
+}
+
+// HasNextK8sAvailableVersion returns a boolean if a field has been set.
+func (o *ClusterStatus) HasNextK8sAvailableVersion() bool {
+	if o != nil && o.NextK8sAvailableVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNextK8sAvailableVersion gets a reference to the given NullableString and assigns it to the NextK8sAvailableVersion field.
+func (o *ClusterStatus) SetNextK8sAvailableVersion(v string) {
+	o.NextK8sAvailableVersion.Set(&v)
+}
+
+// SetNextK8sAvailableVersionNil sets the value for NextK8sAvailableVersion to be an explicit nil
+func (o *ClusterStatus) SetNextK8sAvailableVersionNil() {
+	o.NextK8sAvailableVersion.Set(nil)
+}
+
+// UnsetNextK8sAvailableVersion ensures that no value is present for NextK8sAvailableVersion, not even an explicit nil
+func (o *ClusterStatus) UnsetNextK8sAvailableVersion() {
+	o.NextK8sAvailableVersion.Unset()
+}
+
+// GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise.
+func (o *ClusterStatus) GetLastExecutionId() string {
+	if o == nil || IsNil(o.LastExecutionId) {
+		var ret string
+		return ret
+	}
+	return *o.LastExecutionId
+}
+
+// GetLastExecutionIdOk returns a tuple with the LastExecutionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatus) GetLastExecutionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.LastExecutionId) {
+		return nil, false
+	}
+	return o.LastExecutionId, true
+}
+
+// HasLastExecutionId returns a boolean if a field has been set.
+func (o *ClusterStatus) HasLastExecutionId() bool {
+	if o != nil && !IsNil(o.LastExecutionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastExecutionId gets a reference to the given string and assigns it to the LastExecutionId field.
+func (o *ClusterStatus) SetLastExecutionId(v string) {
+	o.LastExecutionId = &v
+}
+
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -159,6 +236,12 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDeployed) {
 		toSerialize["is_deployed"] = o.IsDeployed
+	}
+	if o.NextK8sAvailableVersion.IsSet() {
+		toSerialize["next_k8s_available_version"] = o.NextK8sAvailableVersion.Get()
+	}
+	if !IsNil(o.LastExecutionId) {
+		toSerialize["last_execution_id"] = o.LastExecutionId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +268,8 @@ func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "is_deployed")
+		delete(additionalProperties, "next_k8s_available_version")
+		delete(additionalProperties, "last_execution_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

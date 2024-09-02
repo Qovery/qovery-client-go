@@ -20,7 +20,7 @@ var _ MappedNullable = &ClusterStatusResponseList{}
 
 // ClusterStatusResponseList struct for ClusterStatusResponseList
 type ClusterStatusResponseList struct {
-	Results              []ClusterStatusGet `json:"results,omitempty"`
+	Results              []ClusterStatus `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,9 +44,9 @@ func NewClusterStatusResponseListWithDefaults() *ClusterStatusResponseList {
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *ClusterStatusResponseList) GetResults() []ClusterStatusGet {
+func (o *ClusterStatusResponseList) GetResults() []ClusterStatus {
 	if o == nil || IsNil(o.Results) {
-		var ret []ClusterStatusGet
+		var ret []ClusterStatus
 		return ret
 	}
 	return o.Results
@@ -54,7 +54,7 @@ func (o *ClusterStatusResponseList) GetResults() []ClusterStatusGet {
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatusGet, bool) {
+func (o *ClusterStatusResponseList) GetResultsOk() ([]ClusterStatus, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -70,8 +70,8 @@ func (o *ClusterStatusResponseList) HasResults() bool {
 	return false
 }
 
-// SetResults gets a reference to the given []ClusterStatusGet and assigns it to the Results field.
-func (o *ClusterStatusResponseList) SetResults(v []ClusterStatusGet) {
+// SetResults gets a reference to the given []ClusterStatus and assigns it to the Results field.
+func (o *ClusterStatusResponseList) SetResults(v []ClusterStatus) {
 	o.Results = v
 }
 

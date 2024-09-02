@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**ListOrganizationCluster**](ClustersAPI.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 [**SpecifyClusterCloudProviderInfo**](ClustersAPI.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 [**StopCluster**](ClustersAPI.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+[**UpgradeCluster**](ClustersAPI.md#UpgradeCluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 
 
 
@@ -754,7 +755,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterStatus
 
-> ClusterStatusGet GetClusterStatus(ctx, organizationId, clusterId).Execute()
+> ClusterStatus GetClusterStatus(ctx, organizationId, clusterId).Execute()
 
 Get cluster status
 
@@ -781,7 +782,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterStatus``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetClusterStatus`: ClusterStatusGet
+	// response from `GetClusterStatus`: ClusterStatus
 	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterStatus`: %v\n", resp)
 }
 ```
@@ -807,7 +808,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClusterStatusGet**](ClusterStatusGet.md)
+[**ClusterStatus**](ClusterStatus.md)
 
 ### Authorization
 
@@ -1436,6 +1437,76 @@ Other parameters are passed through a pointer to a apiStopClusterRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+
+### Return type
+
+[**ClusterStatus**](ClusterStatus.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpgradeCluster
+
+> ClusterStatus UpgradeCluster(ctx, clusterId).Execute()
+
+Upgrade a cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.UpgradeCluster(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpgradeCluster``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpgradeCluster`: ClusterStatus
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.UpgradeCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpgradeClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
 
 
 ### Return type

@@ -199,6 +199,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**ListOrganizationCluster**](docs/ClustersAPI.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersAPI* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersAPI.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+*ClustersAPI* | [**UpgradeCluster**](docs/ClustersAPI.md#upgradecluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 *ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
 *ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
 *ContainerActionsAPI* | [**RedeployContainer**](docs/ContainerActionsAPI.md#redeploycontainer) | **Post** /container/{containerId}/redeploy | Redeploy container
@@ -600,7 +601,6 @@ Class | Method | HTTP request | Description
  - [ClusterRoutingTableResultsInner](docs/ClusterRoutingTableResultsInner.md)
  - [ClusterStateEnum](docs/ClusterStateEnum.md)
  - [ClusterStatus](docs/ClusterStatus.md)
- - [ClusterStatusGet](docs/ClusterStatusGet.md)
  - [ClusterStatusResponseList](docs/ClusterStatusResponseList.md)
  - [Commit](docs/Commit.md)
  - [CommitResponseList](docs/CommitResponseList.md)

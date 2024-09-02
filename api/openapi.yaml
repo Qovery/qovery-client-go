@@ -1747,7 +1747,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ClusterStatusGet'
+                $ref: '#/components/schemas/ClusterStatus'
           description: Get status
         "401":
           description: Access token is missing or invalid
@@ -4717,6 +4717,38 @@ paths:
         "404":
           description: Resource not found
       summary: Deploy a cluster
+      tags:
+      - Clusters
+  /cluster/{clusterId}/upgrade:
+    post:
+      description: allows to upgrade a cluster to next available kubernetes version
+      operationId: upgradeCluster
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterStatus'
+          description: Upgrade cluster
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Upgrade a cluster
       tags:
       - Clusters
   /organization/{organizationId}/cluster/{clusterId}/stop:
@@ -18280,20 +18312,7 @@ components:
     ClusterStatus:
       example:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        is_deployed: true
-        status: BUILDING
-      properties:
-        cluster_id:
-          format: uuid
-          type: string
-        status:
-          $ref: '#/components/schemas/ClusterStateEnum'
-        is_deployed:
-          type: boolean
-      type: object
-    ClusterStatusGet:
-      example:
-        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        next_k8s_available_version: "1.28"
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
         is_deployed: true
         status: BUILDING
@@ -18305,6 +18324,10 @@ components:
           $ref: '#/components/schemas/ClusterStateEnum'
         is_deployed:
           type: boolean
+        next_k8s_available_version:
+          example: "1.28"
+          nullable: true
+          type: string
         last_execution_id:
           example: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           type: string
@@ -18313,17 +18336,19 @@ components:
       example:
         results:
         - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           is_deployed: true
           status: BUILDING
         - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           is_deployed: true
           status: BUILDING
       properties:
         results:
           items:
-            $ref: '#/components/schemas/ClusterStatusGet'
+            $ref: '#/components/schemas/ClusterStatus'
           type: array
       type: object
     ClusterAdvancedSettings:
