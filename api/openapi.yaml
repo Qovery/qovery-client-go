@@ -28930,10 +28930,43 @@ components:
       x-stoplight:
         id: lyrvkahz5uw6s
     KubernetesServiceResponseList:
-      items:
-        $ref: '#/components/schemas/KubernetesService'
+      example:
+        results:
+        - service_spec:
+            type: type
+            ports:
+            - port: 0
+              name: name
+            - port: 0
+              name: name
+            selectors:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          metadata:
+            name: name
+        - service_spec:
+            type: type
+            ports:
+            - port: 0
+              name: name
+            - port: 0
+              name: name
+            selectors:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          metadata:
+            name: name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/KubernetesService'
+          type: array
       title: KubernetesServiceResponseList
-      type: array
+      type: object
       x-stoplight:
         id: 91mgvynk8ostk
     KubernetesService:

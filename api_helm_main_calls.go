@@ -376,7 +376,7 @@ type ApiGetHelmKubernetesServicesRequest struct {
 	helmId     string
 }
 
-func (r ApiGetHelmKubernetesServicesRequest) Execute() ([]KubernetesService, *http.Response, error) {
+func (r ApiGetHelmKubernetesServicesRequest) Execute() (*KubernetesServiceResponseList, *http.Response, error) {
 	return r.ApiService.GetHelmKubernetesServicesExecute(r)
 }
 
@@ -398,13 +398,13 @@ func (a *HelmMainCallsAPIService) GetHelmKubernetesServices(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return []KubernetesService
-func (a *HelmMainCallsAPIService) GetHelmKubernetesServicesExecute(r ApiGetHelmKubernetesServicesRequest) ([]KubernetesService, *http.Response, error) {
+//  @return KubernetesServiceResponseList
+func (a *HelmMainCallsAPIService) GetHelmKubernetesServicesExecute(r ApiGetHelmKubernetesServicesRequest) (*KubernetesServiceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []KubernetesService
+		localVarReturnValue *KubernetesServiceResponseList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmMainCallsAPIService.GetHelmKubernetesServices")

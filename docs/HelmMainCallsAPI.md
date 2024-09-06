@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 
 ## GetHelmKubernetesServices
 
-> []KubernetesService GetHelmKubernetesServices(ctx, helmId).Execute()
+> KubernetesServiceResponseList GetHelmKubernetesServices(ctx, helmId).Execute()
 
 Get helm kubernetes services
 
@@ -252,7 +252,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HelmMainCallsAPI.GetHelmKubernetesServices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetHelmKubernetesServices`: []KubernetesService
+	// response from `GetHelmKubernetesServices`: KubernetesServiceResponseList
 	fmt.Fprintf(os.Stdout, "Response from `HelmMainCallsAPI.GetHelmKubernetesServices`: %v\n", resp)
 }
 ```
@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]KubernetesService**](KubernetesService.md)
+[**KubernetesServiceResponseList**](KubernetesServiceResponseList.md)
 
 ### Authorization
 

@@ -458,6 +458,7 @@ docs/KubernetesMetadata.md
 docs/KubernetesSelector.md
 docs/KubernetesService.md
 docs/KubernetesServicePort.md
+docs/KubernetesServiceResponseList.md
 docs/KubernetesServiceSpec.md
 docs/Label.md
 docs/LabelsGroupAssociatedItemType.md
@@ -963,6 +964,7 @@ model_kubernetes_metadata.go
 model_kubernetes_selector.go
 model_kubernetes_service.go
 model_kubernetes_service_port.go
+model_kubernetes_service_response_list.go
 model_kubernetes_service_spec.go
 model_label.go
 model_labels_group_associated_item_type.go

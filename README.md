@@ -818,6 +818,7 @@ Class | Method | HTTP request | Description
  - [KubernetesSelector](docs/KubernetesSelector.md)
  - [KubernetesService](docs/KubernetesService.md)
  - [KubernetesServicePort](docs/KubernetesServicePort.md)
+ - [KubernetesServiceResponseList](docs/KubernetesServiceResponseList.md)
  - [KubernetesServiceSpec](docs/KubernetesServiceSpec.md)
  - [Label](docs/Label.md)
  - [LabelsGroupAssociatedItemType](docs/LabelsGroupAssociatedItemType.md)
