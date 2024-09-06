@@ -276,7 +276,6 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
-*DefaultAPI* | [**GetHelmKubernetesServices**](docs/DefaultAPI.md#gethelmkubernetesservices) | **Get** /helm/{helmId}/listServices | Get helm kubernetes services
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -356,6 +355,7 @@ Class | Method | HTTP request | Description
 *HelmMainCallsAPI* | [**DeleteHelm**](docs/HelmMainCallsAPI.md#deletehelm) | **Delete** /helm/{helmId} | Delete helm
 *HelmMainCallsAPI* | [**EditHelm**](docs/HelmMainCallsAPI.md#edithelm) | **Put** /helm/{helmId} | Edit helm
 *HelmMainCallsAPI* | [**GetHelm**](docs/HelmMainCallsAPI.md#gethelm) | **Get** /helm/{helmId} | Get helm by ID
+*HelmMainCallsAPI* | [**GetHelmKubernetesServices**](docs/HelmMainCallsAPI.md#gethelmkubernetesservices) | **Get** /helm/{helmId}/listServices | Get helm kubernetes services
 *HelmMainCallsAPI* | [**GetHelmStatus**](docs/HelmMainCallsAPI.md#gethelmstatus) | **Get** /helm/{helmId}/status | Get helm status
 *HelmMainCallsAPI* | [**ListHelmCommit**](docs/HelmMainCallsAPI.md#listhelmcommit) | **Get** /helm/{helmId}/commit | List last helm commits
 *HelmMainCallsAPI* | [**ListHelmLinks**](docs/HelmMainCallsAPI.md#listhelmlinks) | **Get** /helm/{helmId}/link | List all URLs of the helm

@@ -14941,7 +14941,8 @@ paths:
         "404":
           description: Not Found
       summary: Get helm kubernetes services
-      tags: []
+      tags:
+      - Helm Main Calls
       x-stoplight:
         id: 7cl74u6hzmccd
 components:

@@ -5,7 +5,6 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetClusterTokenByClusterId**](DefaultAPI.md#GetClusterTokenByClusterId) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
-[**GetHelmKubernetesServices**](DefaultAPI.md#GetHelmKubernetesServices) | **Get** /helm/{helmId}/listServices | Get helm kubernetes services
 
 
 
@@ -62,76 +61,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetClusterTokenByClusterId200Response**](GetClusterTokenByClusterId200Response.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetHelmKubernetesServices
-
-> []KubernetesService GetHelmKubernetesServices(ctx, helmId).Execute()
-
-Get helm kubernetes services
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	helmId := "helmId_example" // string | 
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.GetHelmKubernetesServices(context.Background(), helmId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.GetHelmKubernetesServices``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetHelmKubernetesServices`: []KubernetesService
-	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.GetHelmKubernetesServices`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** |  | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetHelmKubernetesServicesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**[]KubernetesService**](KubernetesService.md)
 
 ### Authorization
 

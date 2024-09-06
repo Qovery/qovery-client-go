@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeleteHelm**](HelmMainCallsAPI.md#DeleteHelm) | **Delete** /helm/{helmId} | Delete helm
 [**EditHelm**](HelmMainCallsAPI.md#EditHelm) | **Put** /helm/{helmId} | Edit helm
 [**GetHelm**](HelmMainCallsAPI.md#GetHelm) | **Get** /helm/{helmId} | Get helm by ID
+[**GetHelmKubernetesServices**](HelmMainCallsAPI.md#GetHelmKubernetesServices) | **Get** /helm/{helmId}/listServices | Get helm kubernetes services
 [**GetHelmStatus**](HelmMainCallsAPI.md#GetHelmStatus) | **Get** /helm/{helmId}/status | Get helm status
 [**ListHelmCommit**](HelmMainCallsAPI.md#ListHelmCommit) | **Get** /helm/{helmId}/commit | List last helm commits
 [**ListHelmLinks**](HelmMainCallsAPI.md#ListHelmLinks) | **Get** /helm/{helmId}/link | List all URLs of the helm
@@ -206,6 +207,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**HelmResponse**](HelmResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetHelmKubernetesServices
+
+> []KubernetesService GetHelmKubernetesServices(ctx, helmId).Execute()
+
+Get helm kubernetes services
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	helmId := "helmId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.HelmMainCallsAPI.GetHelmKubernetesServices(context.Background(), helmId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `HelmMainCallsAPI.GetHelmKubernetesServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetHelmKubernetesServices`: []KubernetesService
+	fmt.Fprintf(os.Stdout, "Response from `HelmMainCallsAPI.GetHelmKubernetesServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**helmId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetHelmKubernetesServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]KubernetesService**](KubernetesService.md)
 
 ### Authorization
 
