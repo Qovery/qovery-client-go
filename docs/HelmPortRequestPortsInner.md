@@ -7,16 +7,17 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** |  | [optional] 
 **InternalPort** | **int32** | The listening port of your service. | 
 **ExternalPort** | Pointer to **int32** | The exposed port for your service. This is optional. If not set a default port will be used. | [optional] 
-**ServiceName** | **string** |  | 
 **Namespace** | Pointer to **string** |  | [optional] 
 **Protocol** | Pointer to [**HelmPortProtocolEnum**](HelmPortProtocolEnum.md) |  | [optional] [default to HELMPORTPROTOCOLENUM_HTTP]
 **IsDefault** | Pointer to **bool** | is the default port to use for domain | [optional] 
+**ServiceSelectors** | Pointer to [**[]KubernetesSelector**](KubernetesSelector.md) |  | [optional] 
+**ServiceName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewHelmPortRequestPortsInner
 
-`func NewHelmPortRequestPortsInner(internalPort int32, serviceName string, ) *HelmPortRequestPortsInner`
+`func NewHelmPortRequestPortsInner(internalPort int32, ) *HelmPortRequestPortsInner`
 
 NewHelmPortRequestPortsInner instantiates a new HelmPortRequestPortsInner object
 This constructor will assign default values to properties that have it defined,
@@ -101,26 +102,6 @@ SetExternalPort sets ExternalPort field to given value.
 
 HasExternalPort returns a boolean if a field has been set.
 
-### GetServiceName
-
-`func (o *HelmPortRequestPortsInner) GetServiceName() string`
-
-GetServiceName returns the ServiceName field if non-nil, zero value otherwise.
-
-### GetServiceNameOk
-
-`func (o *HelmPortRequestPortsInner) GetServiceNameOk() (*string, bool)`
-
-GetServiceNameOk returns a tuple with the ServiceName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetServiceName
-
-`func (o *HelmPortRequestPortsInner) SetServiceName(v string)`
-
-SetServiceName sets ServiceName field to given value.
-
-
 ### GetNamespace
 
 `func (o *HelmPortRequestPortsInner) GetNamespace() string`
@@ -195,6 +176,56 @@ SetIsDefault sets IsDefault field to given value.
 `func (o *HelmPortRequestPortsInner) HasIsDefault() bool`
 
 HasIsDefault returns a boolean if a field has been set.
+
+### GetServiceSelectors
+
+`func (o *HelmPortRequestPortsInner) GetServiceSelectors() []KubernetesSelector`
+
+GetServiceSelectors returns the ServiceSelectors field if non-nil, zero value otherwise.
+
+### GetServiceSelectorsOk
+
+`func (o *HelmPortRequestPortsInner) GetServiceSelectorsOk() (*[]KubernetesSelector, bool)`
+
+GetServiceSelectorsOk returns a tuple with the ServiceSelectors field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceSelectors
+
+`func (o *HelmPortRequestPortsInner) SetServiceSelectors(v []KubernetesSelector)`
+
+SetServiceSelectors sets ServiceSelectors field to given value.
+
+### HasServiceSelectors
+
+`func (o *HelmPortRequestPortsInner) HasServiceSelectors() bool`
+
+HasServiceSelectors returns a boolean if a field has been set.
+
+### GetServiceName
+
+`func (o *HelmPortRequestPortsInner) GetServiceName() string`
+
+GetServiceName returns the ServiceName field if non-nil, zero value otherwise.
+
+### GetServiceNameOk
+
+`func (o *HelmPortRequestPortsInner) GetServiceNameOk() (*string, bool)`
+
+GetServiceNameOk returns a tuple with the ServiceName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceName
+
+`func (o *HelmPortRequestPortsInner) SetServiceName(v string)`
+
+SetServiceName sets ServiceName field to given value.
+
+### HasServiceName
+
+`func (o *HelmPortRequestPortsInner) HasServiceName() bool`
+
+HasServiceName returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

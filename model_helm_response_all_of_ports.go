@@ -16,358 +16,115 @@ import (
 	"fmt"
 )
 
-// checks if the HelmResponseAllOfPorts type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &HelmResponseAllOfPorts{}
-
-// HelmResponseAllOfPorts struct for HelmResponseAllOfPorts
+// HelmResponseAllOfPorts - struct for HelmResponseAllOfPorts
 type HelmResponseAllOfPorts struct {
-	Id   string  `json:"id"`
-	Name *string `json:"name,omitempty"`
-	// The listening port of your service.
-	InternalPort int32 `json:"internal_port"`
-	// The exposed port for your service. This is optional. If not set a default port will be used.
-	ExternalPort *int32               `json:"external_port,omitempty"`
-	ServiceName  string               `json:"service_name"`
-	Namespace    *string              `json:"namespace,omitempty"`
-	Protocol     HelmPortProtocolEnum `json:"protocol"`
-	// is the default port to use for domain
-	IsDefault            *bool `json:"is_default,omitempty"`
-	AdditionalProperties map[string]interface{}
+	HelmPortResponseWithServiceName      *HelmPortResponseWithServiceName
+	HelmPortResponseWithServiceSelectors *HelmPortResponseWithServiceSelectors
 }
 
-type _HelmResponseAllOfPorts HelmResponseAllOfPorts
-
-// NewHelmResponseAllOfPorts instantiates a new HelmResponseAllOfPorts object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewHelmResponseAllOfPorts(id string, internalPort int32, serviceName string, protocol HelmPortProtocolEnum) *HelmResponseAllOfPorts {
-	this := HelmResponseAllOfPorts{}
-	this.Id = id
-	this.InternalPort = internalPort
-	this.ServiceName = serviceName
-	this.Protocol = protocol
-	return &this
-}
-
-// NewHelmResponseAllOfPortsWithDefaults instantiates a new HelmResponseAllOfPorts object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewHelmResponseAllOfPortsWithDefaults() *HelmResponseAllOfPorts {
-	this := HelmResponseAllOfPorts{}
-	var protocol HelmPortProtocolEnum = HELMPORTPROTOCOLENUM_HTTP
-	this.Protocol = protocol
-	return &this
-}
-
-// GetId returns the Id field value
-func (o *HelmResponseAllOfPorts) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
+// HelmPortResponseWithServiceNameAsHelmResponseAllOfPorts is a convenience function that returns HelmPortResponseWithServiceName wrapped in HelmResponseAllOfPorts
+func HelmPortResponseWithServiceNameAsHelmResponseAllOfPorts(v *HelmPortResponseWithServiceName) HelmResponseAllOfPorts {
+	return HelmResponseAllOfPorts{
+		HelmPortResponseWithServiceName: v,
 	}
-
-	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// HelmPortResponseWithServiceSelectorsAsHelmResponseAllOfPorts is a convenience function that returns HelmPortResponseWithServiceSelectors wrapped in HelmResponseAllOfPorts
+func HelmPortResponseWithServiceSelectorsAsHelmResponseAllOfPorts(v *HelmPortResponseWithServiceSelectors) HelmResponseAllOfPorts {
+	return HelmResponseAllOfPorts{
+		HelmPortResponseWithServiceSelectors: v,
 	}
-	return &o.Id, true
 }
 
-// SetId sets field value
-func (o *HelmResponseAllOfPorts) SetId(v string) {
-	o.Id = v
-}
-
-// GetName returns the Name field value if set, zero value otherwise.
-func (o *HelmResponseAllOfPorts) GetName() string {
-	if o == nil || IsNil(o.Name) {
-		var ret string
-		return ret
-	}
-	return *o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
-		return nil, false
-	}
-	return o.Name, true
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *HelmResponseAllOfPorts) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
-func (o *HelmResponseAllOfPorts) SetName(v string) {
-	o.Name = &v
-}
-
-// GetInternalPort returns the InternalPort field value
-func (o *HelmResponseAllOfPorts) GetInternalPort() int32 {
-	if o == nil {
-		var ret int32
-		return ret
-	}
-
-	return o.InternalPort
-}
-
-// GetInternalPortOk returns a tuple with the InternalPort field value
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetInternalPortOk() (*int32, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.InternalPort, true
-}
-
-// SetInternalPort sets field value
-func (o *HelmResponseAllOfPorts) SetInternalPort(v int32) {
-	o.InternalPort = v
-}
-
-// GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
-func (o *HelmResponseAllOfPorts) GetExternalPort() int32 {
-	if o == nil || IsNil(o.ExternalPort) {
-		var ret int32
-		return ret
-	}
-	return *o.ExternalPort
-}
-
-// GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetExternalPortOk() (*int32, bool) {
-	if o == nil || IsNil(o.ExternalPort) {
-		return nil, false
-	}
-	return o.ExternalPort, true
-}
-
-// HasExternalPort returns a boolean if a field has been set.
-func (o *HelmResponseAllOfPorts) HasExternalPort() bool {
-	if o != nil && !IsNil(o.ExternalPort) {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
-func (o *HelmResponseAllOfPorts) SetExternalPort(v int32) {
-	o.ExternalPort = &v
-}
-
-// GetServiceName returns the ServiceName field value
-func (o *HelmResponseAllOfPorts) GetServiceName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ServiceName
-}
-
-// GetServiceNameOk returns a tuple with the ServiceName field value
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetServiceNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServiceName, true
-}
-
-// SetServiceName sets field value
-func (o *HelmResponseAllOfPorts) SetServiceName(v string) {
-	o.ServiceName = v
-}
-
-// GetNamespace returns the Namespace field value if set, zero value otherwise.
-func (o *HelmResponseAllOfPorts) GetNamespace() string {
-	if o == nil || IsNil(o.Namespace) {
-		var ret string
-		return ret
-	}
-	return *o.Namespace
-}
-
-// GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetNamespaceOk() (*string, bool) {
-	if o == nil || IsNil(o.Namespace) {
-		return nil, false
-	}
-	return o.Namespace, true
-}
-
-// HasNamespace returns a boolean if a field has been set.
-func (o *HelmResponseAllOfPorts) HasNamespace() bool {
-	if o != nil && !IsNil(o.Namespace) {
-		return true
-	}
-
-	return false
-}
-
-// SetNamespace gets a reference to the given string and assigns it to the Namespace field.
-func (o *HelmResponseAllOfPorts) SetNamespace(v string) {
-	o.Namespace = &v
-}
-
-// GetProtocol returns the Protocol field value
-func (o *HelmResponseAllOfPorts) GetProtocol() HelmPortProtocolEnum {
-	if o == nil {
-		var ret HelmPortProtocolEnum
-		return ret
-	}
-
-	return o.Protocol
-}
-
-// GetProtocolOk returns a tuple with the Protocol field value
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetProtocolOk() (*HelmPortProtocolEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Protocol, true
-}
-
-// SetProtocol sets field value
-func (o *HelmResponseAllOfPorts) SetProtocol(v HelmPortProtocolEnum) {
-	o.Protocol = v
-}
-
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
-func (o *HelmResponseAllOfPorts) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
-		var ret bool
-		return ret
-	}
-	return *o.IsDefault
-}
-
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *HelmResponseAllOfPorts) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
-		return nil, false
-	}
-	return o.IsDefault, true
-}
-
-// HasIsDefault returns a boolean if a field has been set.
-func (o *HelmResponseAllOfPorts) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
-func (o *HelmResponseAllOfPorts) SetIsDefault(v bool) {
-	o.IsDefault = &v
-}
-
-func (o HelmResponseAllOfPorts) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *HelmResponseAllOfPorts) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o HelmResponseAllOfPorts) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	toSerialize["internal_port"] = o.InternalPort
-	if !IsNil(o.ExternalPort) {
-		toSerialize["external_port"] = o.ExternalPort
-	}
-	toSerialize["service_name"] = o.ServiceName
-	if !IsNil(o.Namespace) {
-		toSerialize["namespace"] = o.Namespace
-	}
-	toSerialize["protocol"] = o.Protocol
-	if !IsNil(o.IsDefault) {
-		toSerialize["is_default"] = o.IsDefault
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *HelmResponseAllOfPorts) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"internal_port",
-		"service_name",
-		"protocol",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'SERVICE_NAME'
+	if jsonDict["port_type"] == "SERVICE_NAME" {
+		// try to unmarshal JSON data into HelmPortResponseWithServiceName
+		err = json.Unmarshal(data, &dst.HelmPortResponseWithServiceName)
+		if err == nil {
+			return nil // data stored in dst.HelmPortResponseWithServiceName, return on the first match
+		} else {
+			dst.HelmPortResponseWithServiceName = nil
+			return fmt.Errorf("failed to unmarshal HelmResponseAllOfPorts as HelmPortResponseWithServiceName: %s", err.Error())
 		}
 	}
 
-	varHelmResponseAllOfPorts := _HelmResponseAllOfPorts{}
-
-	err = json.Unmarshal(data, &varHelmResponseAllOfPorts)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'SERVICE_SELECTORS'
+	if jsonDict["port_type"] == "SERVICE_SELECTORS" {
+		// try to unmarshal JSON data into HelmPortResponseWithServiceSelectors
+		err = json.Unmarshal(data, &dst.HelmPortResponseWithServiceSelectors)
+		if err == nil {
+			return nil // data stored in dst.HelmPortResponseWithServiceSelectors, return on the first match
+		} else {
+			dst.HelmPortResponseWithServiceSelectors = nil
+			return fmt.Errorf("failed to unmarshal HelmResponseAllOfPorts as HelmPortResponseWithServiceSelectors: %s", err.Error())
+		}
 	}
 
-	*o = HelmResponseAllOfPorts(varHelmResponseAllOfPorts)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "internal_port")
-		delete(additionalProperties, "external_port")
-		delete(additionalProperties, "service_name")
-		delete(additionalProperties, "namespace")
-		delete(additionalProperties, "protocol")
-		delete(additionalProperties, "is_default")
-		o.AdditionalProperties = additionalProperties
+	// check if the discriminator value is 'HelmPortResponseWithServiceName'
+	if jsonDict["port_type"] == "HelmPortResponseWithServiceName" {
+		// try to unmarshal JSON data into HelmPortResponseWithServiceName
+		err = json.Unmarshal(data, &dst.HelmPortResponseWithServiceName)
+		if err == nil {
+			return nil // data stored in dst.HelmPortResponseWithServiceName, return on the first match
+		} else {
+			dst.HelmPortResponseWithServiceName = nil
+			return fmt.Errorf("failed to unmarshal HelmResponseAllOfPorts as HelmPortResponseWithServiceName: %s", err.Error())
+		}
 	}
 
-	return err
+	// check if the discriminator value is 'HelmPortResponseWithServiceSelectors'
+	if jsonDict["port_type"] == "HelmPortResponseWithServiceSelectors" {
+		// try to unmarshal JSON data into HelmPortResponseWithServiceSelectors
+		err = json.Unmarshal(data, &dst.HelmPortResponseWithServiceSelectors)
+		if err == nil {
+			return nil // data stored in dst.HelmPortResponseWithServiceSelectors, return on the first match
+		} else {
+			dst.HelmPortResponseWithServiceSelectors = nil
+			return fmt.Errorf("failed to unmarshal HelmResponseAllOfPorts as HelmPortResponseWithServiceSelectors: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src HelmResponseAllOfPorts) MarshalJSON() ([]byte, error) {
+	if src.HelmPortResponseWithServiceName != nil {
+		return json.Marshal(&src.HelmPortResponseWithServiceName)
+	}
+
+	if src.HelmPortResponseWithServiceSelectors != nil {
+		return json.Marshal(&src.HelmPortResponseWithServiceSelectors)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *HelmResponseAllOfPorts) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.HelmPortResponseWithServiceName != nil {
+		return obj.HelmPortResponseWithServiceName
+	}
+
+	if obj.HelmPortResponseWithServiceSelectors != nil {
+		return obj.HelmPortResponseWithServiceSelectors
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableHelmResponseAllOfPorts struct {

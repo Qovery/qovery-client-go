@@ -381,6 +381,11 @@ docs/HelmMainCallsAPI.md
 docs/HelmPortProtocolEnum.md
 docs/HelmPortRequest.md
 docs/HelmPortRequestPortsInner.md
+docs/HelmPortRequestPortsInnerAllOfOneOf.md
+docs/HelmPortRequestPortsInnerAllOfOneOf1.md
+docs/HelmPortResponseBase.md
+docs/HelmPortResponseWithServiceName.md
+docs/HelmPortResponseWithServiceSelectors.md
 docs/HelmRepositoriesAPI.md
 docs/HelmRepositoryAssociatedServiceType.md
 docs/HelmRepositoryAssociatedServicesResponse.md
@@ -897,6 +902,11 @@ model_helm_git_repository_request.go
 model_helm_port_protocol_enum.go
 model_helm_port_request.go
 model_helm_port_request_ports_inner.go
+model_helm_port_request_ports_inner_all_of_one_of.go
+model_helm_port_request_ports_inner_all_of_one_of_1.go
+model_helm_port_response_base.go
+model_helm_port_response_with_service_name.go
+model_helm_port_response_with_service_selectors.go
 model_helm_repository_associated_service_type.go
 model_helm_repository_associated_services_response.go
 model_helm_repository_associated_services_response_list.go

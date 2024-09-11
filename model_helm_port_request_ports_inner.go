@@ -26,11 +26,12 @@ type HelmPortRequestPortsInner struct {
 	InternalPort int32 `json:"internal_port"`
 	// The exposed port for your service. This is optional. If not set a default port will be used.
 	ExternalPort *int32                `json:"external_port,omitempty"`
-	ServiceName  string                `json:"service_name"`
 	Namespace    *string               `json:"namespace,omitempty"`
 	Protocol     *HelmPortProtocolEnum `json:"protocol,omitempty"`
 	// is the default port to use for domain
-	IsDefault            *bool `json:"is_default,omitempty"`
+	IsDefault            *bool                `json:"is_default,omitempty"`
+	ServiceSelectors     []KubernetesSelector `json:"service_selectors,omitempty"`
+	ServiceName          *string              `json:"service_name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,10 +41,9 @@ type _HelmPortRequestPortsInner HelmPortRequestPortsInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmPortRequestPortsInner(internalPort int32, serviceName string) *HelmPortRequestPortsInner {
+func NewHelmPortRequestPortsInner(internalPort int32) *HelmPortRequestPortsInner {
 	this := HelmPortRequestPortsInner{}
 	this.InternalPort = internalPort
-	this.ServiceName = serviceName
 	var protocol HelmPortProtocolEnum = HELMPORTPROTOCOLENUM_HTTP
 	this.Protocol = &protocol
 	return &this
@@ -147,30 +147,6 @@ func (o *HelmPortRequestPortsInner) SetExternalPort(v int32) {
 	o.ExternalPort = &v
 }
 
-// GetServiceName returns the ServiceName field value
-func (o *HelmPortRequestPortsInner) GetServiceName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ServiceName
-}
-
-// GetServiceNameOk returns a tuple with the ServiceName field value
-// and a boolean to check if the value has been set.
-func (o *HelmPortRequestPortsInner) GetServiceNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ServiceName, true
-}
-
-// SetServiceName sets field value
-func (o *HelmPortRequestPortsInner) SetServiceName(v string) {
-	o.ServiceName = v
-}
-
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *HelmPortRequestPortsInner) GetNamespace() string {
 	if o == nil || IsNil(o.Namespace) {
@@ -267,6 +243,70 @@ func (o *HelmPortRequestPortsInner) SetIsDefault(v bool) {
 	o.IsDefault = &v
 }
 
+// GetServiceSelectors returns the ServiceSelectors field value if set, zero value otherwise.
+func (o *HelmPortRequestPortsInner) GetServiceSelectors() []KubernetesSelector {
+	if o == nil || IsNil(o.ServiceSelectors) {
+		var ret []KubernetesSelector
+		return ret
+	}
+	return o.ServiceSelectors
+}
+
+// GetServiceSelectorsOk returns a tuple with the ServiceSelectors field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmPortRequestPortsInner) GetServiceSelectorsOk() ([]KubernetesSelector, bool) {
+	if o == nil || IsNil(o.ServiceSelectors) {
+		return nil, false
+	}
+	return o.ServiceSelectors, true
+}
+
+// HasServiceSelectors returns a boolean if a field has been set.
+func (o *HelmPortRequestPortsInner) HasServiceSelectors() bool {
+	if o != nil && !IsNil(o.ServiceSelectors) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceSelectors gets a reference to the given []KubernetesSelector and assigns it to the ServiceSelectors field.
+func (o *HelmPortRequestPortsInner) SetServiceSelectors(v []KubernetesSelector) {
+	o.ServiceSelectors = v
+}
+
+// GetServiceName returns the ServiceName field value if set, zero value otherwise.
+func (o *HelmPortRequestPortsInner) GetServiceName() string {
+	if o == nil || IsNil(o.ServiceName) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceName
+}
+
+// GetServiceNameOk returns a tuple with the ServiceName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmPortRequestPortsInner) GetServiceNameOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceName) {
+		return nil, false
+	}
+	return o.ServiceName, true
+}
+
+// HasServiceName returns a boolean if a field has been set.
+func (o *HelmPortRequestPortsInner) HasServiceName() bool {
+	if o != nil && !IsNil(o.ServiceName) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceName gets a reference to the given string and assigns it to the ServiceName field.
+func (o *HelmPortRequestPortsInner) SetServiceName(v string) {
+	o.ServiceName = &v
+}
+
 func (o HelmPortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -284,7 +324,6 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExternalPort) {
 		toSerialize["external_port"] = o.ExternalPort
 	}
-	toSerialize["service_name"] = o.ServiceName
 	if !IsNil(o.Namespace) {
 		toSerialize["namespace"] = o.Namespace
 	}
@@ -293,6 +332,12 @@ func (o HelmPortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsDefault) {
 		toSerialize["is_default"] = o.IsDefault
+	}
+	if !IsNil(o.ServiceSelectors) {
+		toSerialize["service_selectors"] = o.ServiceSelectors
+	}
+	if !IsNil(o.ServiceName) {
+		toSerialize["service_name"] = o.ServiceName
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -308,7 +353,6 @@ func (o *HelmPortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"internal_port",
-		"service_name",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -341,10 +385,11 @@ func (o *HelmPortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "internal_port")
 		delete(additionalProperties, "external_port")
-		delete(additionalProperties, "service_name")
 		delete(additionalProperties, "namespace")
 		delete(additionalProperties, "protocol")
 		delete(additionalProperties, "is_default")
+		delete(additionalProperties, "service_selectors")
+		delete(additionalProperties, "service_name")
 		o.AdditionalProperties = additionalProperties
 	}
 

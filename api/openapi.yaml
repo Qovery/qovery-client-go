@@ -24308,14 +24308,12 @@ components:
         ports:
         - protocol: HTTP
           external_port: 8080
-          service_name: service_name
           name: name
           namespace: namespace
           internal_port: 8080
           is_default: true
         - protocol: HTTP
           external_port: 8080
-          service_name: service_name
           name: name
           namespace: namespace
           internal_port: 8080
@@ -24407,6 +24405,7 @@ components:
               git_token_name: git_token_name
         ports:
         - protocol: HTTP
+          port_type: port_type
           external_port: 8080
           service_name: service_name
           name: name
@@ -24415,6 +24414,7 @@ components:
           internal_port: 8080
           is_default: true
         - protocol: HTTP
+          port_type: port_type
           external_port: 8080
           service_name: service_name
           name: name
@@ -24475,6 +24475,67 @@ components:
         - arguments
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_cluster_wide_resources: false
+    HelmPortResponseBase:
+      properties:
+        id:
+          format: uuid
+          type: string
+        port_type:
+          type: string
+        name:
+          type: string
+        internal_port:
+          description: The listening port of your service.
+          example: 8080
+          type: integer
+        external_port:
+          description: The exposed port for your service. This is optional. If not
+            set a default port will be used.
+          example: 8080
+          type: integer
+        namespace:
+          type: string
+        protocol:
+          $ref: '#/components/schemas/HelmPortProtocolEnum'
+        is_default:
+          description: is the default port to use for domain
+          type: boolean
+      required:
+      - id
+      - internal_port
+      - port_type
+      - protocol
+      type: object
+    HelmPortResponseWithServiceName:
+      allOf:
+      - $ref: '#/components/schemas/HelmPortResponseBase'
+      - properties:
+          service_name:
+            type: string
+        required:
+        - service_name
+        type: object
+      example:
+        protocol: HTTP
+        port_type: port_type
+        external_port: 8080
+        service_name: service_name
+        name: name
+        namespace: namespace
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        internal_port: 8080
+        is_default: true
+    HelmPortResponseWithServiceSelectors:
+      allOf:
+      - $ref: '#/components/schemas/HelmPortResponseBase'
+      - properties:
+          service_selectors:
+            items:
+              $ref: '#/components/schemas/KubernetesSelector'
+            type: array
+        required:
+        - service_selectors
+        type: object
     HelmResponseList:
       example:
         results:
@@ -24499,6 +24560,7 @@ components:
                 git_token_name: git_token_name
           ports:
           - protocol: HTTP
+            port_type: port_type
             external_port: 8080
             service_name: service_name
             name: name
@@ -24507,6 +24569,7 @@ components:
             internal_port: 8080
             is_default: true
           - protocol: HTTP
+            port_type: port_type
             external_port: 8080
             service_name: service_name
             name: name
@@ -24588,6 +24651,7 @@ components:
                 git_token_name: git_token_name
           ports:
           - protocol: HTTP
+            port_type: port_type
             external_port: 8080
             service_name: service_name
             name: name
@@ -24596,6 +24660,7 @@ components:
             internal_port: 8080
             is_default: true
           - protocol: HTTP
+            port_type: port_type
             external_port: 8080
             service_name: service_name
             name: name
@@ -30431,45 +30496,14 @@ components:
           $ref: '#/components/schemas/HelmRequest_allOf_values_override_file'
       type: object
     HelmResponse_allOf_ports:
-      example:
-        protocol: HTTP
-        external_port: 8080
-        service_name: service_name
-        name: name
-        namespace: namespace
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        internal_port: 8080
-        is_default: true
-      properties:
-        id:
-          format: uuid
-          type: string
-        name:
-          type: string
-        internal_port:
-          description: The listening port of your service.
-          example: 8080
-          type: integer
-        external_port:
-          description: The exposed port for your service. This is optional. If not
-            set a default port will be used.
-          example: 8080
-          type: integer
-        service_name:
-          type: string
-        namespace:
-          type: string
-        protocol:
-          $ref: '#/components/schemas/HelmPortProtocolEnum'
-        is_default:
-          description: is the default port to use for domain
-          type: boolean
-      required:
-      - id
-      - internal_port
-      - protocol
-      - service_name
-      type: object
+      discriminator:
+        mapping:
+          SERVICE_NAME: '#/components/schemas/HelmPortResponseWithServiceName'
+          SERVICE_SELECTORS: '#/components/schemas/HelmPortResponseWithServiceSelectors'
+        propertyName: port_type
+      oneOf:
+      - $ref: '#/components/schemas/HelmPortResponseWithServiceName'
+      - $ref: '#/components/schemas/HelmPortResponseWithServiceSelectors'
     HelmResponse_allOf_source_oneOf:
       example:
         git:
@@ -30676,40 +30710,52 @@ components:
         file:
           $ref: '#/components/schemas/HelmResponse_allOf_values_override_file'
       type: object
+    HelmPortRequest_ports_inner_allOf_oneOf:
+      properties:
+        service_selectors:
+          items:
+            $ref: '#/components/schemas/KubernetesSelector'
+          type: array
+      type: object
+    HelmPortRequest_ports_inner_allOf_oneOf_1:
+      properties:
+        service_name:
+          type: string
+      type: object
     HelmPortRequest_ports_inner:
+      allOf:
+      - properties:
+          name:
+            type: string
+          internal_port:
+            description: The listening port of your service.
+            example: 8080
+            type: integer
+          external_port:
+            description: The exposed port for your service. This is optional. If not
+              set a default port will be used.
+            example: 8080
+            type: integer
+          namespace:
+            type: string
+          protocol:
+            $ref: '#/components/schemas/HelmPortProtocolEnum'
+          is_default:
+            description: is the default port to use for domain
+            type: boolean
+        required:
+        - internal_port
+        type: object
+      - oneOf:
+        - $ref: '#/components/schemas/HelmPortRequest_ports_inner_allOf_oneOf'
+        - $ref: '#/components/schemas/HelmPortRequest_ports_inner_allOf_oneOf_1'
       example:
         protocol: HTTP
         external_port: 8080
-        service_name: service_name
         name: name
         namespace: namespace
         internal_port: 8080
         is_default: true
-      properties:
-        name:
-          type: string
-        internal_port:
-          description: The listening port of your service.
-          example: 8080
-          type: integer
-        external_port:
-          description: The exposed port for your service. This is optional. If not
-            set a default port will be used.
-          example: 8080
-          type: integer
-        service_name:
-          type: string
-        namespace:
-          type: string
-        protocol:
-          $ref: '#/components/schemas/HelmPortProtocolEnum'
-        is_default:
-          description: is the default port to use for domain
-          type: boolean
-      required:
-      - internal_port
-      - service_name
-      type: object
     DeploymentHistoryHelmResponse_allOf_repository:
       description: "If the chart source if from a repository, the chart name and its\
         \ version"
