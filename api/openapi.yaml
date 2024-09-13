@@ -18382,6 +18382,7 @@ components:
         aws.iam.admin_group: aws.iam.admin_group
         registry.mirroring_mode: Service
         nginx.vcpu.request_in_milli_cpu: 2
+        aws.eks.enable_alb_controller: true
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
         database.postgresql.allowed_cidrs:
@@ -18413,6 +18414,14 @@ components:
             type: string
           description: Add additional tags on the cluster dedicated registry
           type: object
+        aws.eks.enable_alb_controller:
+          default: true
+          description: |-
+            Enable the AWS ALB controller to manage the load balancer for the cluster.
+            Note: Changing this feature will create a 10 min max downtime on your application's public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports.
+          type: boolean
+          x-stoplight:
+            id: m2nc6klof8mvh
         load_balancer.size:
           description: Select the size of the main load_balancer (only effective for
             Scaleway)

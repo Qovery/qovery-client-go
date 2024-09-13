@@ -32,6 +32,8 @@ type ClusterAdvancedSettings struct {
 	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
 	// Add additional tags on the cluster dedicated registry
 	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
+	// Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application's public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports.
+	AwsEksEnableAlbController *bool `json:"aws.eks.enable_alb_controller,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deny public access to any PostgreSQL database
@@ -84,6 +86,8 @@ type _ClusterAdvancedSettings ClusterAdvancedSettings
 // will change when the set of required properties is changed
 func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
+	var awsEksEnableAlbController bool = true
+	this.AwsEksEnableAlbController = &awsEksEnableAlbController
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -94,6 +98,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 // but it doesn't guarantee that properties required by API are set
 func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
+	var awsEksEnableAlbController bool = true
+	this.AwsEksEnableAlbController = &awsEksEnableAlbController
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -289,6 +295,38 @@ func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
 // SetCloudProviderContainerRegistryTags gets a reference to the given map[string]string and assigns it to the CloudProviderContainerRegistryTags field.
 func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string) {
 	o.CloudProviderContainerRegistryTags = &v
+}
+
+// GetAwsEksEnableAlbController returns the AwsEksEnableAlbController field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEnableAlbController() bool {
+	if o == nil || IsNil(o.AwsEksEnableAlbController) {
+		var ret bool
+		return ret
+	}
+	return *o.AwsEksEnableAlbController
+}
+
+// GetAwsEksEnableAlbControllerOk returns a tuple with the AwsEksEnableAlbController field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEnableAlbControllerOk() (*bool, bool) {
+	if o == nil || IsNil(o.AwsEksEnableAlbController) {
+		return nil, false
+	}
+	return o.AwsEksEnableAlbController, true
+}
+
+// HasAwsEksEnableAlbController returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEnableAlbController() bool {
+	if o != nil && !IsNil(o.AwsEksEnableAlbController) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEnableAlbController gets a reference to the given bool and assigns it to the AwsEksEnableAlbController field.
+func (o *ClusterAdvancedSettings) SetAwsEksEnableAlbController(v bool) {
+	o.AwsEksEnableAlbController = &v
 }
 
 // GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
@@ -994,6 +1032,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.CloudProviderContainerRegistryTags) {
 		toSerialize["cloud_provider.container_registry.tags"] = o.CloudProviderContainerRegistryTags
 	}
+	if !IsNil(o.AwsEksEnableAlbController) {
+		toSerialize["aws.eks.enable_alb_controller"] = o.AwsEksEnableAlbController
+	}
 	if !IsNil(o.LoadBalancerSize) {
 		toSerialize["load_balancer.size"] = o.LoadBalancerSize
 	}
@@ -1085,6 +1126,7 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "loki.log_retention_in_week")
 		delete(additionalProperties, "registry.image_retention_time")
 		delete(additionalProperties, "cloud_provider.container_registry.tags")
+		delete(additionalProperties, "aws.eks.enable_alb_controller")
 		delete(additionalProperties, "load_balancer.size")
 		delete(additionalProperties, "database.postgresql.deny_public_access")
 		delete(additionalProperties, "database.postgresql.allowed_cidrs")

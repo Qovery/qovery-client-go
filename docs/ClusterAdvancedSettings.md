@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] 
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] 
 **CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
+**AwsEksEnableAlbController** | Pointer to **bool** | Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application&#39;s public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports. | [optional] [default to true]
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] 
 **DatabasePostgresqlDenyPublicAccess** | Pointer to **bool** | Deny public access to any PostgreSQL database | [optional] 
 **DatabasePostgresqlAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the PostgreSQL database | [optional] 
@@ -200,6 +201,31 @@ SetCloudProviderContainerRegistryTags sets CloudProviderContainerRegistryTags fi
 `func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool`
 
 HasCloudProviderContainerRegistryTags returns a boolean if a field has been set.
+
+### GetAwsEksEnableAlbController
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEnableAlbController() bool`
+
+GetAwsEksEnableAlbController returns the AwsEksEnableAlbController field if non-nil, zero value otherwise.
+
+### GetAwsEksEnableAlbControllerOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEnableAlbControllerOk() (*bool, bool)`
+
+GetAwsEksEnableAlbControllerOk returns a tuple with the AwsEksEnableAlbController field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEnableAlbController
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEnableAlbController(v bool)`
+
+SetAwsEksEnableAlbController sets AwsEksEnableAlbController field to given value.
+
+### HasAwsEksEnableAlbController
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEnableAlbController() bool`
+
+HasAwsEksEnableAlbController returns a boolean if a field has been set.
 
 ### GetLoadBalancerSize
 
