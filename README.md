@@ -214,6 +214,7 @@ Class | Method | HTTP request | Description
 *ContainerConfigurationAPI* | [**EditContainerNetwork**](docs/ContainerConfigurationAPI.md#editcontainernetwork) | **Put** /container/{containerId}/network | Edit Container Network
 *ContainerConfigurationAPI* | [**GetContainerAdvancedSettings**](docs/ContainerConfigurationAPI.md#getcontaineradvancedsettings) | **Get** /container/{containerId}/advancedSettings | Get advanced settings
 *ContainerConfigurationAPI* | [**GetContainerNetwork**](docs/ContainerConfigurationAPI.md#getcontainernetwork) | **Get** /container/{containerId}/network | Get Container Network information
+*ContainerCustomDomainAPI* | [**CheckContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#checkcontainercustomdomain) | **Get** /container/{containerId}/checkCustomDomain | Check Container Custom Domain
 *ContainerCustomDomainAPI* | [**CreateContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#createcontainercustomdomain) | **Post** /container/{containerId}/customDomain | Add custom domain to the container.
 *ContainerCustomDomainAPI* | [**DeleteContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#deletecontainercustomdomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
 *ContainerCustomDomainAPI* | [**EditContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#editcontainercustomdomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
@@ -254,8 +255,6 @@ Class | Method | HTTP request | Description
 *ContainersAPI* | [**GetEnvironmentContainerStatus**](docs/ContainersAPI.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 *ContainersAPI* | [**ListContainer**](docs/ContainersAPI.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
 *ContainersAPI* | [**PreviewContainerEnvironments**](docs/ContainersAPI.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
-*CustomDomainAPI* | [**CheckContainerCustomDomain**](docs/CustomDomainAPI.md#checkcontainercustomdomain) | **Get** /container/{containerId}/checkCustomDomain | Check Container Custom Domain
-*CustomDomainAPI* | [**CheckHelmCustomDomain**](docs/CustomDomainAPI.md#checkhelmcustomdomain) | **Get** /helm/{helmId}/checkCustomDomain | Check Helm Custom Domain
 *DatabaseActionsAPI* | [**DeployDatabase**](docs/DatabaseActionsAPI.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsAPI* | [**RedeployDatabase**](docs/DatabaseActionsAPI.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
@@ -342,6 +341,7 @@ Class | Method | HTTP request | Description
 *HelmActionsAPI* | [**StopHelm**](docs/HelmActionsAPI.md#stophelm) | **Post** /helm/{helmId}/stop | Stop helm
 *HelmConfigurationAPI* | [**EditHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#edithelmadvancedsettings) | **Put** /helm/{helmId}/advancedSettings | Edit advanced settings
 *HelmConfigurationAPI* | [**GetHelmAdvancedSettings**](docs/HelmConfigurationAPI.md#gethelmadvancedsettings) | **Get** /helm/{helmId}/advancedSettings | Get advanced settings
+*HelmCustomDomainAPI* | [**CheckHelmCustomDomain**](docs/HelmCustomDomainAPI.md#checkhelmcustomdomain) | **Get** /helm/{helmId}/checkCustomDomain | Check Helm Custom Domain
 *HelmCustomDomainAPI* | [**CreateHelmCustomDomain**](docs/HelmCustomDomainAPI.md#createhelmcustomdomain) | **Post** /helm/{helmId}/customDomain | Add custom domain to the helm.
 *HelmCustomDomainAPI* | [**DeleteHelmCustomDomain**](docs/HelmCustomDomainAPI.md#deletehelmcustomdomain) | **Delete** /helm/{helmId}/customDomain/{customDomainId} | Delete a Custom Domain
 *HelmCustomDomainAPI* | [**EditHelmCustomDomain**](docs/HelmCustomDomainAPI.md#edithelmcustomdomain) | **Put** /helm/{helmId}/customDomain/{customDomainId} | Edit a Custom Domain

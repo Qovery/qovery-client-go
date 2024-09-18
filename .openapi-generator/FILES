@@ -29,7 +29,6 @@ api_container_main_calls.go
 api_container_registries.go
 api_container_secret.go
 api_containers.go
-api_custom_domain.go
 api_database_actions.go
 api_database_application.go
 api_database_deployment_history.go
@@ -248,7 +247,6 @@ docs/CronJobResponseAllOfSchedule.md
 docs/CronJobResponseAllOfScheduleCronjob.md
 docs/CurrentCost.md
 docs/CustomDomain.md
-docs/CustomDomainAPI.md
 docs/CustomDomainRequest.md
 docs/CustomDomainResponseList.md
 docs/CustomDomainStatusEnum.md
@@ -1175,7 +1173,6 @@ test/api_container_main_calls_test.go
 test/api_container_registries_test.go
 test/api_container_secret_test.go
 test/api_containers_test.go
-test/api_custom_domain_test.go
 test/api_database_actions_test.go
 test/api_database_application_test.go
 test/api_database_deployment_history_test.go

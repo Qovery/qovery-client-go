@@ -10962,7 +10962,7 @@ paths:
           description: Resource not found
       summary: Check Container Custom Domain
       tags:
-      - Custom Domain
+      - Container Custom Domain
   /container/{containerId}/log:
     get:
       description: This will list the last 1000 logs of the container
@@ -13000,7 +13000,7 @@ paths:
           description: Resource not found
       summary: Check Helm Custom Domain
       tags:
-      - Custom Domain
+      - Helm Custom Domain
   /environment/{environmentId}/checkDockerfile:
     post:
       operationId: checkDockerfile

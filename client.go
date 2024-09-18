@@ -101,8 +101,6 @@ type APIClient struct {
 
 	ContainersAPI *ContainersAPIService
 
-	CustomDomainAPI *CustomDomainAPIService
-
 	DatabaseActionsAPI *DatabaseActionsAPIService
 
 	DatabaseApplicationAPI *DatabaseApplicationAPIService
@@ -252,7 +250,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerRegistriesAPI = (*ContainerRegistriesAPIService)(&c.common)
 	c.ContainerSecretAPI = (*ContainerSecretAPIService)(&c.common)
 	c.ContainersAPI = (*ContainersAPIService)(&c.common)
-	c.CustomDomainAPI = (*CustomDomainAPIService)(&c.common)
 	c.DatabaseActionsAPI = (*DatabaseActionsAPIService)(&c.common)
 	c.DatabaseApplicationAPI = (*DatabaseApplicationAPIService)(&c.common)
 	c.DatabaseDeploymentHistoryAPI = (*DatabaseDeploymentHistoryAPIService)(&c.common)
