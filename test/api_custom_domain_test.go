@@ -22,20 +22,6 @@ func Test_qovery_CustomDomainAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test CustomDomainAPIService CheckApplicationCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.CheckApplicationCustomDomain(context.Background(), applicationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CustomDomainAPIService CheckContainerCustomDomain", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -57,78 +43,6 @@ func Test_qovery_CustomDomainAPIService(t *testing.T) {
 		var helmId string
 
 		resp, httpRes, err := apiClient.CustomDomainAPI.CheckHelmCustomDomain(context.Background(), helmId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService CreateApplicationCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.CreateApplicationCustomDomain(context.Background(), applicationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService DeleteCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-		var customDomainId string
-
-		httpRes, err := apiClient.CustomDomainAPI.DeleteCustomDomain(context.Background(), applicationId, customDomainId).Execute()
-
-		require.Nil(t, err)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService EditCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-		var customDomainId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.EditCustomDomain(context.Background(), applicationId, customDomainId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService GetCustomDomainStatus", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-		var customDomainId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.GetCustomDomainStatus(context.Background(), applicationId, customDomainId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CustomDomainAPIService ListApplicationCustomDomain", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-
-		resp, httpRes, err := apiClient.CustomDomainAPI.ListApplicationCustomDomain(context.Background(), applicationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

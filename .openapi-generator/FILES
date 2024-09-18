@@ -6,6 +6,7 @@ api/openapi.yaml
 api_account_info.go
 api_application_actions.go
 api_application_configuration.go
+api_application_custom_domain.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
 api_application_environment_variable.go
@@ -95,6 +96,7 @@ docs/Application.md
 docs/ApplicationActionsAPI.md
 docs/ApplicationAdvancedSettings.md
 docs/ApplicationConfigurationAPI.md
+docs/ApplicationCustomDomainAPI.md
 docs/ApplicationDeploymentHistoryAPI.md
 docs/ApplicationDeploymentRestriction.md
 docs/ApplicationDeploymentRestrictionAPI.md
@@ -1150,6 +1152,7 @@ response.go
 test/api_account_info_test.go
 test/api_application_actions_test.go
 test/api_application_configuration_test.go
+test/api_application_custom_domain_test.go
 test/api_application_deployment_history_test.go
 test/api_application_deployment_restriction_test.go
 test/api_application_environment_variable_test.go

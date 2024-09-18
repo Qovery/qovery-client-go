@@ -55,6 +55,8 @@ type APIClient struct {
 
 	ApplicationConfigurationAPI *ApplicationConfigurationAPIService
 
+	ApplicationCustomDomainAPI *ApplicationCustomDomainAPIService
+
 	ApplicationDeploymentHistoryAPI *ApplicationDeploymentHistoryAPIService
 
 	ApplicationDeploymentRestrictionAPI *ApplicationDeploymentRestrictionAPIService
@@ -227,6 +229,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AccountInfoAPI = (*AccountInfoAPIService)(&c.common)
 	c.ApplicationActionsAPI = (*ApplicationActionsAPIService)(&c.common)
 	c.ApplicationConfigurationAPI = (*ApplicationConfigurationAPIService)(&c.common)
+	c.ApplicationCustomDomainAPI = (*ApplicationCustomDomainAPIService)(&c.common)
 	c.ApplicationDeploymentHistoryAPI = (*ApplicationDeploymentHistoryAPIService)(&c.common)
 	c.ApplicationDeploymentRestrictionAPI = (*ApplicationDeploymentRestrictionAPIService)(&c.common)
 	c.ApplicationEnvironmentVariableAPI = (*ApplicationEnvironmentVariableAPIService)(&c.common)

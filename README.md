@@ -91,6 +91,12 @@ Class | Method | HTTP request | Description
 *ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
 *ApplicationConfigurationAPI* | [**GetApplicationNetwork**](docs/ApplicationConfigurationAPI.md#getapplicationnetwork) | **Get** /application/{applicationId}/network | Get Application Network information
+*ApplicationCustomDomainAPI* | [**CheckApplicationCustomDomain**](docs/ApplicationCustomDomainAPI.md#checkapplicationcustomdomain) | **Get** /application/{applicationId}/checkCustomDomain | Check Application Custom Domain
+*ApplicationCustomDomainAPI* | [**CreateApplicationCustomDomain**](docs/ApplicationCustomDomainAPI.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
+*ApplicationCustomDomainAPI* | [**DeleteCustomDomain**](docs/ApplicationCustomDomainAPI.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
+*ApplicationCustomDomainAPI* | [**EditCustomDomain**](docs/ApplicationCustomDomainAPI.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
+*ApplicationCustomDomainAPI* | [**GetCustomDomainStatus**](docs/ApplicationCustomDomainAPI.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
+*ApplicationCustomDomainAPI* | [**ListApplicationCustomDomain**](docs/ApplicationCustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *ApplicationDeploymentHistoryAPI* | [**ListApplicationDeploymentHistory**](docs/ApplicationDeploymentHistoryAPI.md#listapplicationdeploymenthistory) | **Get** /application/{applicationId}/deploymentHistory | List application deploys
 *ApplicationDeploymentRestrictionAPI* | [**CreateApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#createapplicationdeploymentrestriction) | **Post** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
 *ApplicationDeploymentRestrictionAPI* | [**DeleteApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#deleteapplicationdeploymentrestriction) | **Delete** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Delete an application deployment restriction
@@ -248,14 +254,8 @@ Class | Method | HTTP request | Description
 *ContainersAPI* | [**GetEnvironmentContainerStatus**](docs/ContainersAPI.md#getenvironmentcontainerstatus) | **Get** /environment/{environmentId}/container/status | List all environment container statuses
 *ContainersAPI* | [**ListContainer**](docs/ContainersAPI.md#listcontainer) | **Get** /environment/{environmentId}/container | List containers
 *ContainersAPI* | [**PreviewContainerEnvironments**](docs/ContainersAPI.md#previewcontainerenvironments) | **Post** /organization/{organizationId}/container/preview | Preview container environments
-*CustomDomainAPI* | [**CheckApplicationCustomDomain**](docs/CustomDomainAPI.md#checkapplicationcustomdomain) | **Get** /application/{applicationId}/checkCustomDomain | Check Application Custom Domain
 *CustomDomainAPI* | [**CheckContainerCustomDomain**](docs/CustomDomainAPI.md#checkcontainercustomdomain) | **Get** /container/{containerId}/checkCustomDomain | Check Container Custom Domain
 *CustomDomainAPI* | [**CheckHelmCustomDomain**](docs/CustomDomainAPI.md#checkhelmcustomdomain) | **Get** /helm/{helmId}/checkCustomDomain | Check Helm Custom Domain
-*CustomDomainAPI* | [**CreateApplicationCustomDomain**](docs/CustomDomainAPI.md#createapplicationcustomdomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
-*CustomDomainAPI* | [**DeleteCustomDomain**](docs/CustomDomainAPI.md#deletecustomdomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
-*CustomDomainAPI* | [**EditCustomDomain**](docs/CustomDomainAPI.md#editcustomdomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
-*CustomDomainAPI* | [**GetCustomDomainStatus**](docs/CustomDomainAPI.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
-*CustomDomainAPI* | [**ListApplicationCustomDomain**](docs/CustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *DatabaseActionsAPI* | [**DeployDatabase**](docs/DatabaseActionsAPI.md#deploydatabase) | **Post** /database/{databaseId}/deploy | Deploy database 
 *DatabaseActionsAPI* | [**RebootDatabase**](docs/DatabaseActionsAPI.md#rebootdatabase) | **Post** /database/{databaseId}/restart-service | Retart database
 *DatabaseActionsAPI* | [**RedeployDatabase**](docs/DatabaseActionsAPI.md#redeploydatabase) | **Post** /database/{databaseId}/redeploy | Redeploy database
