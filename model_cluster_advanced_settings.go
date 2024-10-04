@@ -74,8 +74,12 @@ type ClusterAdvancedSettings struct {
 	// hpa maximum number of instances
 	NginxHpaMaxNumberInstances *int32 `json:"nginx.hpa.max_number_instances,omitempty"`
 	// storage class name to use to provision pvc
-	StorageclassFastSsd  *string `json:"storageclass.fast_ssd,omitempty"`
-	AdditionalProperties map[string]interface{}
+	StorageclassFastSsd *string `json:"storageclass.fast_ssd,omitempty"`
+	// To limit public access from the internet to your Kubernetes cluster endpoint. You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs.
+	QoveryStaticIpMode *bool `json:"qovery.static_ip_mode,omitempty"`
+	// Set custom sources to public access endpoint Use CIDR notation to specify an IP address range  (for example, ['203.0.113.5/32','203.0.100/32'])
+	K8sApiAllowedPublicAccessCidrs []string `json:"k8s.api.allowed_public_access_cidrs,omitempty"`
+	AdditionalProperties           map[string]interface{}
 }
 
 type _ClusterAdvancedSettings ClusterAdvancedSettings
@@ -1004,6 +1008,70 @@ func (o *ClusterAdvancedSettings) SetStorageclassFastSsd(v string) {
 	o.StorageclassFastSsd = &v
 }
 
+// GetQoveryStaticIpMode returns the QoveryStaticIpMode field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetQoveryStaticIpMode() bool {
+	if o == nil || IsNil(o.QoveryStaticIpMode) {
+		var ret bool
+		return ret
+	}
+	return *o.QoveryStaticIpMode
+}
+
+// GetQoveryStaticIpModeOk returns a tuple with the QoveryStaticIpMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetQoveryStaticIpModeOk() (*bool, bool) {
+	if o == nil || IsNil(o.QoveryStaticIpMode) {
+		return nil, false
+	}
+	return o.QoveryStaticIpMode, true
+}
+
+// HasQoveryStaticIpMode returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasQoveryStaticIpMode() bool {
+	if o != nil && !IsNil(o.QoveryStaticIpMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetQoveryStaticIpMode gets a reference to the given bool and assigns it to the QoveryStaticIpMode field.
+func (o *ClusterAdvancedSettings) SetQoveryStaticIpMode(v bool) {
+	o.QoveryStaticIpMode = &v
+}
+
+// GetK8sApiAllowedPublicAccessCidrs returns the K8sApiAllowedPublicAccessCidrs field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetK8sApiAllowedPublicAccessCidrs() []string {
+	if o == nil || IsNil(o.K8sApiAllowedPublicAccessCidrs) {
+		var ret []string
+		return ret
+	}
+	return o.K8sApiAllowedPublicAccessCidrs
+}
+
+// GetK8sApiAllowedPublicAccessCidrsOk returns a tuple with the K8sApiAllowedPublicAccessCidrs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetK8sApiAllowedPublicAccessCidrsOk() ([]string, bool) {
+	if o == nil || IsNil(o.K8sApiAllowedPublicAccessCidrs) {
+		return nil, false
+	}
+	return o.K8sApiAllowedPublicAccessCidrs, true
+}
+
+// HasK8sApiAllowedPublicAccessCidrs returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasK8sApiAllowedPublicAccessCidrs() bool {
+	if o != nil && !IsNil(o.K8sApiAllowedPublicAccessCidrs) {
+		return true
+	}
+
+	return false
+}
+
+// SetK8sApiAllowedPublicAccessCidrs gets a reference to the given []string and assigns it to the K8sApiAllowedPublicAccessCidrs field.
+func (o *ClusterAdvancedSettings) SetK8sApiAllowedPublicAccessCidrs(v []string) {
+	o.K8sApiAllowedPublicAccessCidrs = v
+}
+
 func (o ClusterAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1098,6 +1166,12 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.StorageclassFastSsd) {
 		toSerialize["storageclass.fast_ssd"] = o.StorageclassFastSsd
 	}
+	if !IsNil(o.QoveryStaticIpMode) {
+		toSerialize["qovery.static_ip_mode"] = o.QoveryStaticIpMode
+	}
+	if !IsNil(o.K8sApiAllowedPublicAccessCidrs) {
+		toSerialize["k8s.api.allowed_public_access_cidrs"] = o.K8sApiAllowedPublicAccessCidrs
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1148,6 +1222,8 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "nginx.hpa.min_number_instances")
 		delete(additionalProperties, "nginx.hpa.max_number_instances")
 		delete(additionalProperties, "storageclass.fast_ssd")
+		delete(additionalProperties, "qovery.static_ip_mode")
+		delete(additionalProperties, "k8s.api.allowed_public_access_cidrs")
 		o.AdditionalProperties = additionalProperties
 	}
 

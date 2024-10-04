@@ -32,6 +32,8 @@ Name | Type | Description | Notes
 **NginxHpaMinNumberInstances** | Pointer to **int32** | hpa minimum number of instances | [optional] 
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] 
 **StorageclassFastSsd** | Pointer to **string** | storage class name to use to provision pvc | [optional] 
+**QoveryStaticIpMode** | Pointer to **bool** | To limit public access from the internet to your Kubernetes cluster endpoint. You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs. | [optional] 
+**K8sApiAllowedPublicAccessCidrs** | Pointer to **[]string** | Set custom sources to public access endpoint Use CIDR notation to specify an IP address range  (for example, [&#39;203.0.113.5/32&#39;,&#39;203.0.100/32&#39;]) | [optional] 
 
 ## Methods
 
@@ -751,6 +753,56 @@ SetStorageclassFastSsd sets StorageclassFastSsd field to given value.
 `func (o *ClusterAdvancedSettings) HasStorageclassFastSsd() bool`
 
 HasStorageclassFastSsd returns a boolean if a field has been set.
+
+### GetQoveryStaticIpMode
+
+`func (o *ClusterAdvancedSettings) GetQoveryStaticIpMode() bool`
+
+GetQoveryStaticIpMode returns the QoveryStaticIpMode field if non-nil, zero value otherwise.
+
+### GetQoveryStaticIpModeOk
+
+`func (o *ClusterAdvancedSettings) GetQoveryStaticIpModeOk() (*bool, bool)`
+
+GetQoveryStaticIpModeOk returns a tuple with the QoveryStaticIpMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQoveryStaticIpMode
+
+`func (o *ClusterAdvancedSettings) SetQoveryStaticIpMode(v bool)`
+
+SetQoveryStaticIpMode sets QoveryStaticIpMode field to given value.
+
+### HasQoveryStaticIpMode
+
+`func (o *ClusterAdvancedSettings) HasQoveryStaticIpMode() bool`
+
+HasQoveryStaticIpMode returns a boolean if a field has been set.
+
+### GetK8sApiAllowedPublicAccessCidrs
+
+`func (o *ClusterAdvancedSettings) GetK8sApiAllowedPublicAccessCidrs() []string`
+
+GetK8sApiAllowedPublicAccessCidrs returns the K8sApiAllowedPublicAccessCidrs field if non-nil, zero value otherwise.
+
+### GetK8sApiAllowedPublicAccessCidrsOk
+
+`func (o *ClusterAdvancedSettings) GetK8sApiAllowedPublicAccessCidrsOk() (*[]string, bool)`
+
+GetK8sApiAllowedPublicAccessCidrsOk returns a tuple with the K8sApiAllowedPublicAccessCidrs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetK8sApiAllowedPublicAccessCidrs
+
+`func (o *ClusterAdvancedSettings) SetK8sApiAllowedPublicAccessCidrs(v []string)`
+
+SetK8sApiAllowedPublicAccessCidrs sets K8sApiAllowedPublicAccessCidrs field to given value.
+
+### HasK8sApiAllowedPublicAccessCidrs
+
+`func (o *ClusterAdvancedSettings) HasK8sApiAllowedPublicAccessCidrs() bool`
+
+HasK8sApiAllowedPublicAccessCidrs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

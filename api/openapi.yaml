@@ -18373,6 +18373,7 @@ components:
         aws.vpc.enable_s3_flow_logs: true
         registry.image_retention_time: 5
         database.postgresql.deny_public_access: true
+        qovery.static_ip_mode: true
         load_balancer.size: load_balancer.size
         nginx.memory.request_in_mib: 9
         database.mongodb.allowed_cidrs:
@@ -18383,6 +18384,9 @@ components:
         registry.mirroring_mode: Service
         nginx.vcpu.request_in_milli_cpu: 2
         aws.eks.enable_alb_controller: true
+        k8s.api.allowed_public_access_cidrs:
+        - k8s.api.allowed_public_access_cidrs
+        - k8s.api.allowed_public_access_cidrs
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
         database.postgresql.allowed_cidrs:
@@ -18499,6 +18503,23 @@ components:
         storageclass.fast_ssd:
           description: storage class name to use to provision pvc
           type: string
+        qovery.static_ip_mode:
+          description: |-
+            To limit public access from the internet to your Kubernetes cluster endpoint.
+            You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs.
+          type: boolean
+          x-stoplight:
+            id: i7u9vjd0o89g8
+        k8s.api.allowed_public_access_cidrs:
+          description: "Set custom sources to public access endpoint\nUse CIDR notation\
+            \ to specify an IP address range \n(for example, ['203.0.113.5/32','203.0.100/32'])"
+          items:
+            type: string
+            x-stoplight:
+              id: v8r1f6alk5abp
+          type: array
+          x-stoplight:
+            id: w7d7zyd1de9n6
       type: object
     Commit:
       example:
