@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Region** | Pointer to **string** | Required if kind is &#x60;ECR&#x60; or &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewayAccessKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewaySecretKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
+**ScalewayProjectId** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **JsonCredentials** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; | [optional] 
 **Username** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **Password** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
@@ -156,6 +157,31 @@ SetScalewaySecretKey sets ScalewaySecretKey field to given value.
 `func (o *ContainerRegistryRequestConfig) HasScalewaySecretKey() bool`
 
 HasScalewaySecretKey returns a boolean if a field has been set.
+
+### GetScalewayProjectId
+
+`func (o *ContainerRegistryRequestConfig) GetScalewayProjectId() string`
+
+GetScalewayProjectId returns the ScalewayProjectId field if non-nil, zero value otherwise.
+
+### GetScalewayProjectIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetScalewayProjectIdOk() (*string, bool)`
+
+GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScalewayProjectId
+
+`func (o *ContainerRegistryRequestConfig) SetScalewayProjectId(v string)`
+
+SetScalewayProjectId sets ScalewayProjectId field to given value.
+
+### HasScalewayProjectId
+
+`func (o *ContainerRegistryRequestConfig) HasScalewayProjectId() bool`
+
+HasScalewayProjectId returns a boolean if a field has been set.
 
 ### GetJsonCredentials
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **ScalewayAccessKey** | Pointer to **string** |  | [optional] 
+**ScalewayProjectId** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 
 ## Methods
@@ -102,6 +103,31 @@ SetScalewayAccessKey sets ScalewayAccessKey field to given value.
 `func (o *ContainerRegistryResponseAllOfConfig) HasScalewayAccessKey() bool`
 
 HasScalewayAccessKey returns a boolean if a field has been set.
+
+### GetScalewayProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetScalewayProjectId() string`
+
+GetScalewayProjectId returns the ScalewayProjectId field if non-nil, zero value otherwise.
+
+### GetScalewayProjectIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetScalewayProjectIdOk() (*string, bool)`
+
+GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScalewayProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetScalewayProjectId(v string)`
+
+SetScalewayProjectId sets ScalewayProjectId field to given value.
+
+### HasScalewayProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasScalewayProjectId() bool`
+
+HasScalewayProjectId returns a boolean if a field has been set.
 
 ### GetAccessKeyId
 

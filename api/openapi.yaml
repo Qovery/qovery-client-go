@@ -18826,6 +18826,7 @@ components:
           scaleway_secret_key: scaleway_secret_key
           region: region
           scaleway_access_key: scaleway_access_key
+          scaleway_project_id: scaleway_project_id
           username: username
         url: https://openapi-generator.tech
       properties:
@@ -18890,6 +18891,7 @@ components:
           region: region
           scaleway_access_key: scaleway_access_key
           username: username
+          scaleway_project_id: scaleway_project_id
         url: url
     ContainerRegistryProviderDetailsResponse:
       example:
@@ -18932,6 +18934,7 @@ components:
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
+            scaleway_project_id: scaleway_project_id
           url: url
         - associated_services_count: 0
           cluster:
@@ -18948,6 +18951,7 @@ components:
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
+            scaleway_project_id: scaleway_project_id
           url: url
       properties:
         results:
@@ -29852,6 +29856,7 @@ components:
         scaleway_secret_key: scaleway_secret_key
         region: region
         scaleway_access_key: scaleway_access_key
+        scaleway_project_id: scaleway_project_id
         username: username
       properties:
         access_key_id:
@@ -29869,6 +29874,11 @@ components:
         scaleway_secret_key:
           description: Required if kind is `SCALEWAY_CR`
           type: string
+        scaleway_project_id:
+          description: Required if kind is `SCALEWAY_CR`
+          type: string
+          x-stoplight:
+            id: eomu5mjvhi6uu
         json_credentials:
           description: Required if kind is `GCP_ARTIFACT_REGISTRY`
           type: string
@@ -29905,6 +29915,7 @@ components:
         region: region
         scaleway_access_key: scaleway_access_key
         username: username
+        scaleway_project_id: scaleway_project_id
       properties:
         username:
           type: string
@@ -29918,6 +29929,10 @@ components:
           type: string
           x-stoplight:
             id: fdb55y4vnpndk
+        scaleway_project_id:
+          type: string
+          x-stoplight:
+            id: ra9oc489c2wyt
         access_key_id:
           type: string
           x-stoplight:

@@ -23,6 +23,7 @@ type ContainerRegistryResponseAllOfConfig struct {
 	Username             *string `json:"username,omitempty"`
 	Region               *string `json:"region,omitempty"`
 	ScalewayAccessKey    *string `json:"scaleway_access_key,omitempty"`
+	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
 	AccessKeyId          *string `json:"access_key_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -142,6 +143,38 @@ func (o *ContainerRegistryResponseAllOfConfig) SetScalewayAccessKey(v string) {
 	o.ScalewayAccessKey = &v
 }
 
+// GetScalewayProjectId returns the ScalewayProjectId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetScalewayProjectId() string {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ScalewayProjectId
+}
+
+// GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetScalewayProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		return nil, false
+	}
+	return o.ScalewayProjectId, true
+}
+
+// HasScalewayProjectId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasScalewayProjectId() bool {
+	if o != nil && !IsNil(o.ScalewayProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScalewayProjectId gets a reference to the given string and assigns it to the ScalewayProjectId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetScalewayProjectId(v string) {
+	o.ScalewayProjectId = &v
+}
+
 // GetAccessKeyId returns the AccessKeyId field value if set, zero value otherwise.
 func (o *ContainerRegistryResponseAllOfConfig) GetAccessKeyId() string {
 	if o == nil || IsNil(o.AccessKeyId) {
@@ -193,6 +226,9 @@ func (o ContainerRegistryResponseAllOfConfig) ToMap() (map[string]interface{}, e
 	if !IsNil(o.ScalewayAccessKey) {
 		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
 	}
+	if !IsNil(o.ScalewayProjectId) {
+		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	}
 	if !IsNil(o.AccessKeyId) {
 		toSerialize["access_key_id"] = o.AccessKeyId
 	}
@@ -221,6 +257,7 @@ func (o *ContainerRegistryResponseAllOfConfig) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "scaleway_access_key")
+		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "access_key_id")
 		o.AdditionalProperties = additionalProperties
 	}

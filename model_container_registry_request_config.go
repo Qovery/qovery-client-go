@@ -30,6 +30,8 @@ type ContainerRegistryRequestConfig struct {
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
 	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
+	// Required if kind is `SCALEWAY_CR`
+	ScalewayProjectId *string `json:"scaleway_project_id,omitempty"`
 	// Required if kind is `GCP_ARTIFACT_REGISTRY`
 	JsonCredentials *string `json:"json_credentials,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
@@ -218,6 +220,38 @@ func (o *ContainerRegistryRequestConfig) SetScalewaySecretKey(v string) {
 	o.ScalewaySecretKey = &v
 }
 
+// GetScalewayProjectId returns the ScalewayProjectId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetScalewayProjectId() string {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ScalewayProjectId
+}
+
+// GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetScalewayProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		return nil, false
+	}
+	return o.ScalewayProjectId, true
+}
+
+// HasScalewayProjectId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasScalewayProjectId() bool {
+	if o != nil && !IsNil(o.ScalewayProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScalewayProjectId gets a reference to the given string and assigns it to the ScalewayProjectId field.
+func (o *ContainerRegistryRequestConfig) SetScalewayProjectId(v string) {
+	o.ScalewayProjectId = &v
+}
+
 // GetJsonCredentials returns the JsonCredentials field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetJsonCredentials() string {
 	if o == nil || IsNil(o.JsonCredentials) {
@@ -339,6 +373,9 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.ScalewaySecretKey) {
 		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	}
+	if !IsNil(o.ScalewayProjectId) {
+		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	}
 	if !IsNil(o.JsonCredentials) {
 		toSerialize["json_credentials"] = o.JsonCredentials
 	}
@@ -375,6 +412,7 @@ func (o *ContainerRegistryRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "scaleway_secret_key")
+		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "json_credentials")
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "password")
