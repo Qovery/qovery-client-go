@@ -18511,7 +18511,7 @@ components:
           x-stoplight:
             id: i7u9vjd0o89g8
         k8s.api.allowed_public_access_cidrs:
-          description: "Set custom sources to public access endpoint\nUse CIDR notation\
+          description: "Set custom sources to public access endpoint.\nUse CIDR notation\
             \ to specify an IP address range \n(for example, ['203.0.113.5/32','203.0.100/32'])"
           items:
             type: string

@@ -77,7 +77,7 @@ type ClusterAdvancedSettings struct {
 	StorageclassFastSsd *string `json:"storageclass.fast_ssd,omitempty"`
 	// To limit public access from the internet to your Kubernetes cluster endpoint. You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs.
 	QoveryStaticIpMode *bool `json:"qovery.static_ip_mode,omitempty"`
-	// Set custom sources to public access endpoint Use CIDR notation to specify an IP address range  (for example, ['203.0.113.5/32','203.0.100/32'])
+	// Set custom sources to public access endpoint. Use CIDR notation to specify an IP address range  (for example, ['203.0.113.5/32','203.0.100/32'])
 	K8sApiAllowedPublicAccessCidrs []string `json:"k8s.api.allowed_public_access_cidrs,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }

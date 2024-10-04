@@ -33,7 +33,7 @@ Name | Type | Description | Notes
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] 
 **StorageclassFastSsd** | Pointer to **string** | storage class name to use to provision pvc | [optional] 
 **QoveryStaticIpMode** | Pointer to **bool** | To limit public access from the internet to your Kubernetes cluster endpoint. You can define whitelisted CIDR in k8s.api.allowed_public_access_cidrs. | [optional] 
-**K8sApiAllowedPublicAccessCidrs** | Pointer to **[]string** | Set custom sources to public access endpoint Use CIDR notation to specify an IP address range  (for example, [&#39;203.0.113.5/32&#39;,&#39;203.0.100/32&#39;]) | [optional] 
+**K8sApiAllowedPublicAccessCidrs** | Pointer to **[]string** | Set custom sources to public access endpoint. Use CIDR notation to specify an IP address range  (for example, [&#39;203.0.113.5/32&#39;,&#39;203.0.100/32&#39;]) | [optional] 
 
 ## Methods
 
