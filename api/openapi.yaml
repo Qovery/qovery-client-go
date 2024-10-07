@@ -19004,6 +19004,7 @@ components:
           region: region
           scaleway_access_key: scaleway_access_key
           username: username
+          scaleway_project_id: scaleway_project_id
         url: https://openapi-generator.tech
       properties:
         name:
@@ -19070,6 +19071,7 @@ components:
           region: region
           scaleway_access_key: scaleway_access_key
           username: username
+          scaleway_project_id: scaleway_project_id
         url: url
     HelmVersionResponseList:
       example:
@@ -19118,6 +19120,7 @@ components:
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
+            scaleway_project_id: scaleway_project_id
           url: url
         - associated_services_count: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -19132,6 +19135,7 @@ components:
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
+            scaleway_project_id: scaleway_project_id
           url: url
       properties:
         results:
@@ -29949,6 +29953,7 @@ components:
         region: region
         scaleway_access_key: scaleway_access_key
         username: username
+        scaleway_project_id: scaleway_project_id
       properties:
         username:
           description: Required if the repository is private
@@ -29971,6 +29976,11 @@ components:
         scaleway_secret_key:
           description: Required if kind is `SCALEWAY_CR`
           type: string
+        scaleway_project_id:
+          description: Required if kind is `SCALEWAY_CR`
+          type: string
+          x-stoplight:
+            id: 9dw16j7cex4i6
       type: object
     HelmRepositoryResponse_allOf_config:
       example:
@@ -29978,6 +29988,7 @@ components:
         region: region
         scaleway_access_key: scaleway_access_key
         username: username
+        scaleway_project_id: scaleway_project_id
       properties:
         username:
           type: string
@@ -29995,6 +30006,10 @@ components:
           type: string
           x-stoplight:
             id: pyfdpz1vk4qq1
+        scaleway_project_id:
+          type: string
+          x-stoplight:
+            id: kbrcr9377ly0q
       type: object
       x-stoplight:
         id: 224az7um9x51z

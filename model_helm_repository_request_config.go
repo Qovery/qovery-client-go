@@ -33,7 +33,9 @@ type HelmRepositoryRequestConfig struct {
 	// Required if kind is `SCALEWAY_CR`
 	ScalewayAccessKey *string `json:"scaleway_access_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
-	ScalewaySecretKey    *string `json:"scaleway_secret_key,omitempty"`
+	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
+	// Required if kind is `SCALEWAY_CR`
+	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -280,6 +282,38 @@ func (o *HelmRepositoryRequestConfig) SetScalewaySecretKey(v string) {
 	o.ScalewaySecretKey = &v
 }
 
+// GetScalewayProjectId returns the ScalewayProjectId field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetScalewayProjectId() string {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ScalewayProjectId
+}
+
+// GetScalewayProjectIdOk returns a tuple with the ScalewayProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetScalewayProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ScalewayProjectId) {
+		return nil, false
+	}
+	return o.ScalewayProjectId, true
+}
+
+// HasScalewayProjectId returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasScalewayProjectId() bool {
+	if o != nil && !IsNil(o.ScalewayProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetScalewayProjectId gets a reference to the given string and assigns it to the ScalewayProjectId field.
+func (o *HelmRepositoryRequestConfig) SetScalewayProjectId(v string) {
+	o.ScalewayProjectId = &v
+}
+
 func (o HelmRepositoryRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -311,6 +345,9 @@ func (o HelmRepositoryRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ScalewaySecretKey) {
 		toSerialize["scaleway_secret_key"] = o.ScalewaySecretKey
 	}
+	if !IsNil(o.ScalewayProjectId) {
+		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -340,6 +377,7 @@ func (o *HelmRepositoryRequestConfig) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "scaleway_secret_key")
+		delete(additionalProperties, "scaleway_project_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
