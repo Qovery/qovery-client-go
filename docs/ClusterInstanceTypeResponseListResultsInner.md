@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **BandwidthInGbps** | **string** |  | 
 **BandwidthGuarantee** | **string** |  | 
 **Architecture** | Pointer to **string** |  | [optional] 
+**GpuInfo** | Pointer to [**ClusterInstanceGpuInfo**](ClusterInstanceGpuInfo.md) |  | [optional] 
+**Attributes** | Pointer to [**ClusterInstanceAttributes**](ClusterInstanceAttributes.md) |  | [optional] 
 
 ## Methods
 
@@ -175,6 +177,56 @@ SetArchitecture sets Architecture field to given value.
 `func (o *ClusterInstanceTypeResponseListResultsInner) HasArchitecture() bool`
 
 HasArchitecture returns a boolean if a field has been set.
+
+### GetGpuInfo
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetGpuInfo() ClusterInstanceGpuInfo`
+
+GetGpuInfo returns the GpuInfo field if non-nil, zero value otherwise.
+
+### GetGpuInfoOk
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetGpuInfoOk() (*ClusterInstanceGpuInfo, bool)`
+
+GetGpuInfoOk returns a tuple with the GpuInfo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpuInfo
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) SetGpuInfo(v ClusterInstanceGpuInfo)`
+
+SetGpuInfo sets GpuInfo field to given value.
+
+### HasGpuInfo
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) HasGpuInfo() bool`
+
+HasGpuInfo returns a boolean if a field has been set.
+
+### GetAttributes
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetAttributes() ClusterInstanceAttributes`
+
+GetAttributes returns the Attributes field if non-nil, zero value otherwise.
+
+### GetAttributesOk
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) GetAttributesOk() (*ClusterInstanceAttributes, bool)`
+
+GetAttributesOk returns a tuple with the Attributes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAttributes
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) SetAttributes(v ClusterInstanceAttributes)`
+
+SetAttributes sets Attributes field to given value.
+
+### HasAttributes
+
+`func (o *ClusterInstanceTypeResponseListResultsInner) HasAttributes() bool`
+
+HasAttributes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

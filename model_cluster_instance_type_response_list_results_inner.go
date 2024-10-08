@@ -21,13 +21,15 @@ var _ MappedNullable = &ClusterInstanceTypeResponseListResultsInner{}
 
 // ClusterInstanceTypeResponseListResultsInner struct for ClusterInstanceTypeResponseListResultsInner
 type ClusterInstanceTypeResponseListResultsInner struct {
-	Type                 string  `json:"type"`
-	Name                 string  `json:"name"`
-	Cpu                  int32   `json:"cpu"`
-	RamInGb              int32   `json:"ram_in_gb"`
-	BandwidthInGbps      string  `json:"bandwidth_in_gbps"`
-	BandwidthGuarantee   string  `json:"bandwidth_guarantee"`
-	Architecture         *string `json:"architecture,omitempty"`
+	Type                 string                     `json:"type"`
+	Name                 string                     `json:"name"`
+	Cpu                  int32                      `json:"cpu"`
+	RamInGb              int32                      `json:"ram_in_gb"`
+	BandwidthInGbps      string                     `json:"bandwidth_in_gbps"`
+	BandwidthGuarantee   string                     `json:"bandwidth_guarantee"`
+	Architecture         *string                    `json:"architecture,omitempty"`
+	GpuInfo              *ClusterInstanceGpuInfo    `json:"gpu_info,omitempty"`
+	Attributes           *ClusterInstanceAttributes `json:"attributes,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -232,6 +234,70 @@ func (o *ClusterInstanceTypeResponseListResultsInner) SetArchitecture(v string) 
 	o.Architecture = &v
 }
 
+// GetGpuInfo returns the GpuInfo field value if set, zero value otherwise.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetGpuInfo() ClusterInstanceGpuInfo {
+	if o == nil || IsNil(o.GpuInfo) {
+		var ret ClusterInstanceGpuInfo
+		return ret
+	}
+	return *o.GpuInfo
+}
+
+// GetGpuInfoOk returns a tuple with the GpuInfo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetGpuInfoOk() (*ClusterInstanceGpuInfo, bool) {
+	if o == nil || IsNil(o.GpuInfo) {
+		return nil, false
+	}
+	return o.GpuInfo, true
+}
+
+// HasGpuInfo returns a boolean if a field has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) HasGpuInfo() bool {
+	if o != nil && !IsNil(o.GpuInfo) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuInfo gets a reference to the given ClusterInstanceGpuInfo and assigns it to the GpuInfo field.
+func (o *ClusterInstanceTypeResponseListResultsInner) SetGpuInfo(v ClusterInstanceGpuInfo) {
+	o.GpuInfo = &v
+}
+
+// GetAttributes returns the Attributes field value if set, zero value otherwise.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetAttributes() ClusterInstanceAttributes {
+	if o == nil || IsNil(o.Attributes) {
+		var ret ClusterInstanceAttributes
+		return ret
+	}
+	return *o.Attributes
+}
+
+// GetAttributesOk returns a tuple with the Attributes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) GetAttributesOk() (*ClusterInstanceAttributes, bool) {
+	if o == nil || IsNil(o.Attributes) {
+		return nil, false
+	}
+	return o.Attributes, true
+}
+
+// HasAttributes returns a boolean if a field has been set.
+func (o *ClusterInstanceTypeResponseListResultsInner) HasAttributes() bool {
+	if o != nil && !IsNil(o.Attributes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAttributes gets a reference to the given ClusterInstanceAttributes and assigns it to the Attributes field.
+func (o *ClusterInstanceTypeResponseListResultsInner) SetAttributes(v ClusterInstanceAttributes) {
+	o.Attributes = &v
+}
+
 func (o ClusterInstanceTypeResponseListResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -250,6 +316,12 @@ func (o ClusterInstanceTypeResponseListResultsInner) ToMap() (map[string]interfa
 	toSerialize["bandwidth_guarantee"] = o.BandwidthGuarantee
 	if !IsNil(o.Architecture) {
 		toSerialize["architecture"] = o.Architecture
+	}
+	if !IsNil(o.GpuInfo) {
+		toSerialize["gpu_info"] = o.GpuInfo
+	}
+	if !IsNil(o.Attributes) {
+		toSerialize["attributes"] = o.Attributes
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -306,6 +378,8 @@ func (o *ClusterInstanceTypeResponseListResultsInner) UnmarshalJSON(data []byte)
 		delete(additionalProperties, "bandwidth_in_gbps")
 		delete(additionalProperties, "bandwidth_guarantee")
 		delete(additionalProperties, "architecture")
+		delete(additionalProperties, "gpu_info")
+		delete(additionalProperties, "attributes")
 		o.AdditionalProperties = additionalProperties
 	}
 

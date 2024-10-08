@@ -173,6 +173,8 @@ docs/ClusterFeatureResponseList.md
 docs/ClusterFeatureResponseTypeEnum.md
 docs/ClusterFeatureResponseValueObject.md
 docs/ClusterFeatureStringResponse.md
+docs/ClusterInstanceAttributes.md
+docs/ClusterInstanceGpuInfo.md
 docs/ClusterInstanceTypeResponseList.md
 docs/ClusterInstanceTypeResponseListResultsInner.md
 docs/ClusterLogs.md
@@ -730,6 +732,8 @@ model_cluster_feature_response_list.go
 model_cluster_feature_response_type_enum.go
 model_cluster_feature_response_value_object.go
 model_cluster_feature_string_response.go
+model_cluster_instance_attributes.go
+model_cluster_instance_gpu_info.go
 model_cluster_instance_type_response_list.go
 model_cluster_instance_type_response_list_results_inner.go
 model_cluster_logs.go

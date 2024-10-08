@@ -17940,16 +17940,38 @@ components:
     ClusterInstanceTypeResponseList:
       example:
         results:
-        - name: t3a.xlarge
+        - gpu_info:
+            count: 0
+            name: name
+            memory_in_mib: memory_in_mib
+            manufacturer: manufacturer
+          name: t3a.xlarge
           cpu: 2
           bandwidth_in_gbps: "5.2"
+          attributes:
+            instance_generation: 6
+            instance_size: instance_size
+            meets_resource_reqs: true
+            instance_family: instance_family
+            instance_category: instance_category
           type: T3A_XLARGE
           bandwidth_guarantee: UpTo
           ram_in_gb: 8
           architecture: ARM64
-        - name: t3a.xlarge
+        - gpu_info:
+            count: 0
+            name: name
+            memory_in_mib: memory_in_mib
+            manufacturer: manufacturer
+          name: t3a.xlarge
           cpu: 2
           bandwidth_in_gbps: "5.2"
+          attributes:
+            instance_generation: 6
+            instance_size: instance_size
+            meets_resource_reqs: true
+            instance_family: instance_family
+            instance_category: instance_category
           type: T3A_XLARGE
           bandwidth_guarantee: UpTo
           ram_in_gb: 8
@@ -29185,6 +29207,75 @@ components:
       type: object
       x-stoplight:
         id: 4i1ztgngi75vs
+    ClusterInstanceGpuInfo:
+      example:
+        count: 0
+        name: name
+        memory_in_mib: memory_in_mib
+        manufacturer: manufacturer
+      properties:
+        count:
+          description: The number of GPUs included in the instance.
+          type: integer
+          x-stoplight:
+            id: hbl5jxfcth747
+        name:
+          description: The model name of the GPU.
+          type: string
+          x-stoplight:
+            id: pregmt5l22afi
+        manufacturer:
+          description: The manufacturer of the GPUs in the instance.
+          type: string
+          x-stoplight:
+            id: a0e1rvah0xfms
+        memory_in_mib:
+          description: The total GPU memory available.
+          type: string
+          x-stoplight:
+            id: 20yjj7h8sjtdu
+      title: ClusterInstanceGpuInfo
+      type: object
+      x-stoplight:
+        id: dfdp50z2mr1cs
+    ClusterInstanceAttributes:
+      example:
+        instance_generation: 6
+        instance_size: instance_size
+        meets_resource_reqs: true
+        instance_family: instance_family
+        instance_category: instance_category
+      properties:
+        instance_category:
+          description: The category of the instance.
+          type: string
+          x-stoplight:
+            id: epo9cqt13zoqp
+        instance_generation:
+          description: The generation of the instance.
+          type: integer
+          x-stoplight:
+            id: 274hjvkvlycxp
+        instance_family:
+          description: The family or series of the instance.
+          type: string
+          x-stoplight:
+            id: ixmy1d0nokjh5
+        instance_size:
+          description: Specifies the size of the instance within its family.
+          type: string
+          x-stoplight:
+            id: dmnfjmvowgd0a
+        meets_resource_reqs:
+          description: The instance has sufficient resources to be chosen as a standalone
+            instance in a cluster.
+          type: boolean
+          x-stoplight:
+            id: 8gytpdzm751we
+      title: ClusterInstanceAttributes
+      type: object
+      x-stoplight:
+        id: nxbpo7v2ecz72
     deleteMember_request:
       properties:
         user_id:
@@ -29766,9 +29857,20 @@ components:
       - type: boolean
     ClusterInstanceTypeResponseList_results_inner:
       example:
+        gpu_info:
+          count: 0
+          name: name
+          memory_in_mib: memory_in_mib
+          manufacturer: manufacturer
         name: t3a.xlarge
         cpu: 2
         bandwidth_in_gbps: "5.2"
+        attributes:
+          instance_generation: 6
+          instance_size: instance_size
+          meets_resource_reqs: true
+          instance_family: instance_family
+          instance_category: instance_category
         type: T3A_XLARGE
         bandwidth_guarantee: UpTo
         ram_in_gb: 8
@@ -29795,6 +29897,10 @@ components:
         architecture:
           example: ARM64
           type: string
+        gpu_info:
+          $ref: '#/components/schemas/ClusterInstanceGpuInfo'
+        attributes:
+          $ref: '#/components/schemas/ClusterInstanceAttributes'
       required:
       - bandwidth_guarantee
       - bandwidth_in_gbps

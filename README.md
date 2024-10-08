@@ -579,6 +579,8 @@ Class | Method | HTTP request | Description
  - [ClusterFeatureResponseTypeEnum](docs/ClusterFeatureResponseTypeEnum.md)
  - [ClusterFeatureResponseValueObject](docs/ClusterFeatureResponseValueObject.md)
  - [ClusterFeatureStringResponse](docs/ClusterFeatureStringResponse.md)
+ - [ClusterInstanceAttributes](docs/ClusterInstanceAttributes.md)
+ - [ClusterInstanceGpuInfo](docs/ClusterInstanceGpuInfo.md)
  - [ClusterInstanceTypeResponseList](docs/ClusterInstanceTypeResponseList.md)
  - [ClusterInstanceTypeResponseListResultsInner](docs/ClusterInstanceTypeResponseListResultsInner.md)
  - [ClusterLogs](docs/ClusterLogs.md)
