@@ -28656,26 +28656,6 @@ components:
       type: string
       x-stoplight:
         id: jlrd3r03vjzoy
-    ClusterFeatureKarpenterParameters:
-      properties:
-        spot_enabled:
-          type: boolean
-          x-stoplight:
-            id: fuolcs5q8ncp8
-        disk_size_in_gib:
-          type: integer
-          x-stoplight:
-            id: nwpjqw3bf7px0
-        default_service_architecture:
-          $ref: '#/components/schemas/CpuArchitectureEnum'
-      required:
-      - default_service_architecture
-      - disk_size_in_gib
-      - spot_enabled
-      title: ClusterFeatureKarpenterParameters
-      type: object
-      x-stoplight:
-        id: fzprvq41bcge1
     ClusterFeatureKarpenterParametersResponse:
       properties:
         type:
@@ -28689,6 +28669,28 @@ components:
       type: object
       x-stoplight:
         id: q33tdlz4ychh5
+    ClusterFeatureKarpenterParameters:
+      properties:
+        spot_enabled:
+          type: boolean
+          x-stoplight:
+            id: fuolcs5q8ncp8
+        disk_size_in_gib:
+          type: integer
+          x-stoplight:
+            id: nwpjqw3bf7px0
+        default_service_architecture:
+          $ref: '#/components/schemas/CpuArchitectureEnum'
+        qovery_node_pools:
+          $ref: '#/components/schemas/KarpenterNodePool'
+      required:
+      - default_service_architecture
+      - disk_size_in_gib
+      - spot_enabled
+      title: ClusterFeatureKarpenterParameters
+      type: object
+      x-stoplight:
+        id: fzprvq41bcge1
     JobLifecycleTypeEnum:
       enum:
       - GENERIC
@@ -29276,6 +29278,59 @@ components:
       type: object
       x-stoplight:
         id: nxbpo7v2ecz72
+    KarpenterNodePool:
+      description: ""
+      properties:
+        requirements:
+          items:
+            $ref: '#/components/schemas/KarpenterNodePoolRequirement'
+          type: array
+          x-stoplight:
+            id: pkowctfxv7q77
+      required:
+      - requirements
+      title: KarpenterNodePool
+      type: object
+      x-stoplight:
+        id: q8vks57rql8x1
+    KarpenterNodePoolRequirementKey:
+      enum:
+      - InstanceFamily
+      - InstanceSize
+      - Arch
+      title: KarpenterNodePoolRequirementKey
+      type: string
+      x-stoplight:
+        id: eancn656efy06
+    KarpenterNodePoolRequirementOperator:
+      enum:
+      - In
+      title: KarpenterNodePoolRequirementOperator
+      type: string
+      x-stoplight:
+        id: wkzlvifywpa0t
+    KarpenterNodePoolRequirement:
+      properties:
+        key:
+          $ref: '#/components/schemas/KarpenterNodePoolRequirementKey'
+        operator:
+          $ref: '#/components/schemas/KarpenterNodePoolRequirementOperator'
+        values:
+          items:
+            type: string
+            x-stoplight:
+              id: 02kz5mierypik
+          type: array
+          x-stoplight:
+            id: qf036o7tch5ed
+      required:
+      - key
+      - operator
+      - values
+      title: KarpenterNodePoolRequirement
+      type: object
+      x-stoplight:
+        id: 4ebed64emvn09
     deleteMember_request:
       properties:
         user_id:

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **SpotEnabled** | **bool** |  | 
 **DiskSizeInGib** | **int32** |  | 
 **DefaultServiceArchitecture** | [**CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
+**QoveryNodePools** | Pointer to [**KarpenterNodePool**](KarpenterNodePool.md) |  | [optional] 
 
 ## Methods
 
@@ -86,6 +87,31 @@ and a boolean to check if the value has been set.
 
 SetDefaultServiceArchitecture sets DefaultServiceArchitecture field to given value.
 
+
+### GetQoveryNodePools
+
+`func (o *ClusterFeatureKarpenterParameters) GetQoveryNodePools() KarpenterNodePool`
+
+GetQoveryNodePools returns the QoveryNodePools field if non-nil, zero value otherwise.
+
+### GetQoveryNodePoolsOk
+
+`func (o *ClusterFeatureKarpenterParameters) GetQoveryNodePoolsOk() (*KarpenterNodePool, bool)`
+
+GetQoveryNodePoolsOk returns a tuple with the QoveryNodePools field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetQoveryNodePools
+
+`func (o *ClusterFeatureKarpenterParameters) SetQoveryNodePools(v KarpenterNodePool)`
+
+SetQoveryNodePools sets QoveryNodePools field to given value.
+
+### HasQoveryNodePools
+
+`func (o *ClusterFeatureKarpenterParameters) HasQoveryNodePools() bool`
+
+HasQoveryNodePools returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

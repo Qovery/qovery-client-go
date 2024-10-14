@@ -24,6 +24,7 @@ type ClusterFeatureKarpenterParameters struct {
 	SpotEnabled                bool                `json:"spot_enabled"`
 	DiskSizeInGib              int32               `json:"disk_size_in_gib"`
 	DefaultServiceArchitecture CpuArchitectureEnum `json:"default_service_architecture"`
+	QoveryNodePools            *KarpenterNodePool  `json:"qovery_node_pools,omitempty"`
 	AdditionalProperties       map[string]interface{}
 }
 
@@ -121,6 +122,38 @@ func (o *ClusterFeatureKarpenterParameters) SetDefaultServiceArchitecture(v CpuA
 	o.DefaultServiceArchitecture = v
 }
 
+// GetQoveryNodePools returns the QoveryNodePools field value if set, zero value otherwise.
+func (o *ClusterFeatureKarpenterParameters) GetQoveryNodePools() KarpenterNodePool {
+	if o == nil || IsNil(o.QoveryNodePools) {
+		var ret KarpenterNodePool
+		return ret
+	}
+	return *o.QoveryNodePools
+}
+
+// GetQoveryNodePoolsOk returns a tuple with the QoveryNodePools field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterFeatureKarpenterParameters) GetQoveryNodePoolsOk() (*KarpenterNodePool, bool) {
+	if o == nil || IsNil(o.QoveryNodePools) {
+		return nil, false
+	}
+	return o.QoveryNodePools, true
+}
+
+// HasQoveryNodePools returns a boolean if a field has been set.
+func (o *ClusterFeatureKarpenterParameters) HasQoveryNodePools() bool {
+	if o != nil && !IsNil(o.QoveryNodePools) {
+		return true
+	}
+
+	return false
+}
+
+// SetQoveryNodePools gets a reference to the given KarpenterNodePool and assigns it to the QoveryNodePools field.
+func (o *ClusterFeatureKarpenterParameters) SetQoveryNodePools(v KarpenterNodePool) {
+	o.QoveryNodePools = &v
+}
+
 func (o ClusterFeatureKarpenterParameters) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -134,6 +167,9 @@ func (o ClusterFeatureKarpenterParameters) ToMap() (map[string]interface{}, erro
 	toSerialize["spot_enabled"] = o.SpotEnabled
 	toSerialize["disk_size_in_gib"] = o.DiskSizeInGib
 	toSerialize["default_service_architecture"] = o.DefaultServiceArchitecture
+	if !IsNil(o.QoveryNodePools) {
+		toSerialize["qovery_node_pools"] = o.QoveryNodePools
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -182,6 +218,7 @@ func (o *ClusterFeatureKarpenterParameters) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "spot_enabled")
 		delete(additionalProperties, "disk_size_in_gib")
 		delete(additionalProperties, "default_service_architecture")
+		delete(additionalProperties, "qovery_node_pools")
 		o.AdditionalProperties = additionalProperties
 	}
 
