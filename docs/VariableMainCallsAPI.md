@@ -314,7 +314,7 @@ import (
 
 func main() {
 	variableId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Variable ID
-	variableEditRequest := *openapiclient.NewVariableEditRequest("Key_example", "Value_example") // VariableEditRequest | 
+	variableEditRequest := *openapiclient.NewVariableEditRequest("Key_example") // VariableEditRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

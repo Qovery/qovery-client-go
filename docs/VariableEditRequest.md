@@ -5,14 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | the key of the environment variable | 
-**Value** | **string** | the value of the environment variable | 
+**Value** | Pointer to **NullableString** | the value of the environment variable | [optional] 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 
 ## Methods
 
 ### NewVariableEditRequest
 
-`func NewVariableEditRequest(key string, value string, ) *VariableEditRequest`
+`func NewVariableEditRequest(key string, ) *VariableEditRequest`
 
 NewVariableEditRequest instantiates a new VariableEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -66,7 +66,22 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
+### HasValue
 
+`func (o *VariableEditRequest) HasValue() bool`
+
+HasValue returns a boolean if a field has been set.
+
+### SetValueNil
+
+`func (o *VariableEditRequest) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *VariableEditRequest) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetDescription
 
 `func (o *VariableEditRequest) GetDescription() string`

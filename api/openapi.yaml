@@ -27781,6 +27781,7 @@ components:
           type: string
         value:
           description: the value of the environment variable
+          nullable: true
           type: string
         description:
           description: optional variable description (255 characters maximum)
@@ -27791,7 +27792,6 @@ components:
             id: y471ewdkdpr4r
       required:
       - key
-      - value
       type: object
     VariableResponse:
       allOf:
