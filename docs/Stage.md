@@ -7,12 +7,14 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **Name** | **string** | stage name | 
 **Steps** | Pointer to [**StageStepMetrics**](StageStepMetrics.md) |  | [optional] 
+**Description** | **string** |  | 
+**Status** | Pointer to [**StageStatusEnum**](StageStatusEnum.md) |  | [optional] 
 
 ## Methods
 
 ### NewStage
 
-`func NewStage(id string, name string, ) *Stage`
+`func NewStage(id string, name string, description string, ) *Stage`
 
 NewStage instantiates a new Stage object
 This constructor will assign default values to properties that have it defined,
@@ -91,6 +93,51 @@ SetSteps sets Steps field to given value.
 `func (o *Stage) HasSteps() bool`
 
 HasSteps returns a boolean if a field has been set.
+
+### GetDescription
+
+`func (o *Stage) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *Stage) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *Stage) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+
+### GetStatus
+
+`func (o *Stage) GetStatus() StageStatusEnum`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *Stage) GetStatusOk() (*StageStatusEnum, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *Stage) SetStatus(v StageStatusEnum)`
+
+SetStatus sets Status field to given value.
+
+### HasStatus
+
+`func (o *Stage) HasStatus() bool`
+
+HasStatus returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

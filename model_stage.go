@@ -25,6 +25,8 @@ type Stage struct {
 	// stage name
 	Name                 string            `json:"name"`
 	Steps                *StageStepMetrics `json:"steps,omitempty"`
+	Description          string            `json:"description"`
+	Status               *StageStatusEnum  `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,10 +36,11 @@ type _Stage Stage
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStage(id string, name string) *Stage {
+func NewStage(id string, name string, description string) *Stage {
 	this := Stage{}
 	this.Id = id
 	this.Name = name
+	this.Description = description
 	return &this
 }
 
@@ -129,6 +132,62 @@ func (o *Stage) SetSteps(v StageStepMetrics) {
 	o.Steps = &v
 }
 
+// GetDescription returns the Description field value
+func (o *Stage) GetDescription() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value
+// and a boolean to check if the value has been set.
+func (o *Stage) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Description, true
+}
+
+// SetDescription sets field value
+func (o *Stage) SetDescription(v string) {
+	o.Description = v
+}
+
+// GetStatus returns the Status field value if set, zero value otherwise.
+func (o *Stage) GetStatus() StageStatusEnum {
+	if o == nil || IsNil(o.Status) {
+		var ret StageStatusEnum
+		return ret
+	}
+	return *o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Stage) GetStatusOk() (*StageStatusEnum, bool) {
+	if o == nil || IsNil(o.Status) {
+		return nil, false
+	}
+	return o.Status, true
+}
+
+// HasStatus returns a boolean if a field has been set.
+func (o *Stage) HasStatus() bool {
+	if o != nil && !IsNil(o.Status) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatus gets a reference to the given StageStatusEnum and assigns it to the Status field.
+func (o *Stage) SetStatus(v StageStatusEnum) {
+	o.Status = &v
+}
+
 func (o Stage) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -143,6 +202,10 @@ func (o Stage) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
+	}
+	toSerialize["description"] = o.Description
+	if !IsNil(o.Status) {
+		toSerialize["status"] = o.Status
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -159,6 +222,7 @@ func (o *Stage) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"name",
+		"description",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -191,6 +255,8 @@ func (o *Stage) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "steps")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -20,8 +20,9 @@ var _ MappedNullable = &EnvironmentStatusesWithStages{}
 
 // EnvironmentStatusesWithStages struct for EnvironmentStatusesWithStages
 type EnvironmentStatusesWithStages struct {
-	Environment          *EnvironmentStatus                    `json:"environment,omitempty"`
-	Stages               []DeploymentStageWithServicesStatuses `json:"stages,omitempty"`
+	Environment          *EnvironmentStatus                          `json:"environment,omitempty"`
+	Stages               []DeploymentStageWithServicesStatuses       `json:"stages,omitempty"`
+	PreCheckStage        *EnvironmentStatusesWithStagesPreCheckStage `json:"pre_check_stage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +109,38 @@ func (o *EnvironmentStatusesWithStages) SetStages(v []DeploymentStageWithService
 	o.Stages = v
 }
 
+// GetPreCheckStage returns the PreCheckStage field value if set, zero value otherwise.
+func (o *EnvironmentStatusesWithStages) GetPreCheckStage() EnvironmentStatusesWithStagesPreCheckStage {
+	if o == nil || IsNil(o.PreCheckStage) {
+		var ret EnvironmentStatusesWithStagesPreCheckStage
+		return ret
+	}
+	return *o.PreCheckStage
+}
+
+// GetPreCheckStageOk returns a tuple with the PreCheckStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatusesWithStages) GetPreCheckStageOk() (*EnvironmentStatusesWithStagesPreCheckStage, bool) {
+	if o == nil || IsNil(o.PreCheckStage) {
+		return nil, false
+	}
+	return o.PreCheckStage, true
+}
+
+// HasPreCheckStage returns a boolean if a field has been set.
+func (o *EnvironmentStatusesWithStages) HasPreCheckStage() bool {
+	if o != nil && !IsNil(o.PreCheckStage) {
+		return true
+	}
+
+	return false
+}
+
+// SetPreCheckStage gets a reference to the given EnvironmentStatusesWithStagesPreCheckStage and assigns it to the PreCheckStage field.
+func (o *EnvironmentStatusesWithStages) SetPreCheckStage(v EnvironmentStatusesWithStagesPreCheckStage) {
+	o.PreCheckStage = &v
+}
+
 func (o EnvironmentStatusesWithStages) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -123,6 +156,9 @@ func (o EnvironmentStatusesWithStages) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Stages) {
 		toSerialize["stages"] = o.Stages
+	}
+	if !IsNil(o.PreCheckStage) {
+		toSerialize["pre_check_stage"] = o.PreCheckStage
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -148,6 +184,7 @@ func (o *EnvironmentStatusesWithStages) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "stages")
+		delete(additionalProperties, "pre_check_stage")
 		o.AdditionalProperties = additionalProperties
 	}
 

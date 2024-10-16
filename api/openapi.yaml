@@ -21998,6 +21998,9 @@ components:
           last_deployment_id: last_deployment_id
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
+        pre_check_stage:
+          total_duration_sec: 1
+          status: null
         stages:
         - databases:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
@@ -22032,6 +22035,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           stage:
             name: name
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             steps:
               total_duration_sec: 0
@@ -22042,6 +22046,7 @@ components:
               - step_name: QUEUEING
                 duration_sec: 6
                 status: SUCCESS
+            status: QUEUED
           jobs:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22199,6 +22204,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           stage:
             name: name
+            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             steps:
               total_duration_sec: 0
@@ -22209,6 +22215,7 @@ components:
               - step_name: QUEUEING
                 duration_sec: 6
                 status: SUCCESS
+            status: QUEUED
           jobs:
           - last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22340,6 +22347,8 @@ components:
           items:
             $ref: '#/components/schemas/DeploymentStageWithServicesStatuses'
           type: array
+        pre_check_stage:
+          $ref: '#/components/schemas/EnvironmentStatusesWithStages_pre_check_stage'
       type: object
     EnvironmentStatusList:
       example:
@@ -23358,6 +23367,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         stage:
           name: name
+          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           steps:
             total_duration_sec: 0
@@ -23368,6 +23378,7 @@ components:
             - step_name: QUEUEING
               duration_sec: 6
               status: SUCCESS
+          status: QUEUED
         jobs:
         - last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27367,6 +27378,17 @@ components:
       - WAITING_RUNNING
       - WAITING_STOPPING
       type: string
+    StageStatusEnum:
+      enum:
+      - QUEUED
+      - ONGOING
+      - DONE
+      - ERROR
+      - SKIPPED
+      - CANCELED
+      type: string
+      x-stoplight:
+        id: lv5pyjmui11rn
     ClusterStateEnum:
       enum:
       - BUILDING
@@ -27433,6 +27455,7 @@ components:
     Stage:
       example:
         name: name
+        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         steps:
           total_duration_sec: 0
@@ -27443,6 +27466,7 @@ components:
           - step_name: QUEUEING
             duration_sec: 6
             status: SUCCESS
+        status: QUEUED
       properties:
         id:
           format: uuid
@@ -27452,7 +27476,14 @@ components:
           type: string
         steps:
           $ref: '#/components/schemas/StageStepMetrics'
+        description:
+          type: string
+          x-stoplight:
+            id: gwpra9face692
+        status:
+          $ref: '#/components/schemas/StageStatusEnum'
       required:
+      - description
       - id
       - name
       type: object
@@ -30377,6 +30408,20 @@ components:
         full_details:
           type: string
       type: object
+    EnvironmentStatusesWithStages_pre_check_stage:
+      example:
+        total_duration_sec: 1
+        status: null
+      properties:
+        status:
+          $ref: '#/components/schemas/StepMetricStatusEnum'
+        total_duration_sec:
+          type: integer
+          x-stoplight:
+            id: t6u28t17lth1l
+      type: object
+      x-stoplight:
+        id: l9y5i1bt4jmsk
     JobRequest_allOf_source_image:
       example:
         image_name: image_name

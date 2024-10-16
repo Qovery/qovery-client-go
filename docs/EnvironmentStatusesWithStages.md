@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Environment** | Pointer to [**EnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
 **Stages** | Pointer to [**[]DeploymentStageWithServicesStatuses**](DeploymentStageWithServicesStatuses.md) |  | [optional] 
+**PreCheckStage** | Pointer to [**EnvironmentStatusesWithStagesPreCheckStage**](EnvironmentStatusesWithStagesPreCheckStage.md) |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetStages sets Stages field to given value.
 `func (o *EnvironmentStatusesWithStages) HasStages() bool`
 
 HasStages returns a boolean if a field has been set.
+
+### GetPreCheckStage
+
+`func (o *EnvironmentStatusesWithStages) GetPreCheckStage() EnvironmentStatusesWithStagesPreCheckStage`
+
+GetPreCheckStage returns the PreCheckStage field if non-nil, zero value otherwise.
+
+### GetPreCheckStageOk
+
+`func (o *EnvironmentStatusesWithStages) GetPreCheckStageOk() (*EnvironmentStatusesWithStagesPreCheckStage, bool)`
+
+GetPreCheckStageOk returns a tuple with the PreCheckStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPreCheckStage
+
+`func (o *EnvironmentStatusesWithStages) SetPreCheckStage(v EnvironmentStatusesWithStagesPreCheckStage)`
+
+SetPreCheckStage sets PreCheckStage field to given value.
+
+### HasPreCheckStage
+
+`func (o *EnvironmentStatusesWithStages) HasPreCheckStage() bool`
+
+HasPreCheckStage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

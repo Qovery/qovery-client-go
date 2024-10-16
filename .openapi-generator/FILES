@@ -333,6 +333,7 @@ docs/EnvironmentStatusEventOriginEnum.md
 docs/EnvironmentStatusList.md
 docs/EnvironmentStatuses.md
 docs/EnvironmentStatusesWithStages.md
+docs/EnvironmentStatusesWithStagesPreCheckStage.md
 docs/EnvironmentTotalNumber.md
 docs/EnvironmentVariable.md
 docs/EnvironmentVariableAPI.md
@@ -629,6 +630,7 @@ docs/ServiceTypeForVariableEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
 docs/Stage.md
+docs/StageStatusEnum.md
 docs/StageStepMetric.md
 docs/StageStepMetricNameEnum.md
 docs/StageStepMetrics.md
@@ -870,6 +872,7 @@ model_environment_status_event_origin_enum.go
 model_environment_status_list.go
 model_environment_statuses.go
 model_environment_statuses_with_stages.go
+model_environment_statuses_with_stages_pre_check_stage.go
 model_environment_total_number.go
 model_environment_variable.go
 model_environment_variable_alias.go
@@ -1130,6 +1133,7 @@ model_service_type_for_variable_enum.go
 model_sign_up.go
 model_sign_up_request.go
 model_stage.go
+model_stage_status_enum.go
 model_stage_step_metric.go
 model_stage_step_metric_name_enum.go
 model_stage_step_metrics.go
