@@ -18377,8 +18377,6 @@ components:
     ClusterAdvancedSettings:
       example:
         loki.log_retention_in_week: 1
-        database.mysql.deny_public_access: true
-        database.mongodb.deny_public_access: true
         nginx.memory.limit_in_mib: 3
         nginx.hpa.cpu_utilization_percentage_threshold: 2
         nginx.hpa.max_number_instances: 7
@@ -18388,19 +18386,20 @@ components:
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
+        database.mysql.deny_any_access: true
         aws.vpc.flow_logs_retention_days: 6
         database.redis.allowed_cidrs:
         - database.redis.allowed_cidrs
         - database.redis.allowed_cidrs
         aws.vpc.enable_s3_flow_logs: true
         registry.image_retention_time: 5
-        database.postgresql.deny_public_access: true
         qovery.static_ip_mode: true
         load_balancer.size: load_balancer.size
         nginx.memory.request_in_mib: 9
         database.mongodb.allowed_cidrs:
         - database.mongodb.allowed_cidrs
         - database.mongodb.allowed_cidrs
+        database.mongodb.deny_any_access: true
         aws.cloudwatch.eks_logs_retention_days: 0
         aws.iam.admin_group: aws.iam.admin_group
         registry.mirroring_mode: Service
@@ -18414,7 +18413,8 @@ components:
         database.postgresql.allowed_cidrs:
         - database.postgresql.allowed_cidrs
         - database.postgresql.allowed_cidrs
-        database.redis.deny_public_access: true
+        database.redis.deny_any_access: true
+        database.postgresql.deny_any_access: true
         storageclass.fast_ssd: storageclass.fast_ssd
         nginx.hpa.min_number_instances: 4
       properties:
@@ -18452,33 +18452,41 @@ components:
           description: Select the size of the main load_balancer (only effective for
             Scaleway)
           type: string
-        database.postgresql.deny_public_access:
+        database.postgresql.deny_any_access:
           description: Deny public access to any PostgreSQL database
           type: boolean
+          x-stoplight:
+            id: zltwd7w7mxld8
         database.postgresql.allowed_cidrs:
           description: List of CIDRs allowed to access the PostgreSQL database
           items:
             type: string
           type: array
-        database.mysql.deny_public_access:
+        database.mysql.deny_any_access:
           description: Deny public access to any MySql database
           type: boolean
+          x-stoplight:
+            id: kst5exbae6ory
         database.mysql.allowed_cidrs:
           description: List of CIDRs allowed to access the MySql database
           items:
             type: string
           type: array
-        database.mongodb.deny_public_access:
+        database.mongodb.deny_any_access:
           description: Deny public access to any MongoDB/DocumentDB database
           type: boolean
+          x-stoplight:
+            id: nc66h7gqz809g
         database.mongodb.allowed_cidrs:
           description: List of CIDRs allowed to access the MongoDB/DocumentDB database
           items:
             type: string
           type: array
-        database.redis.deny_public_access:
+        database.redis.deny_any_access:
           description: Deny public access to any Redis database
           type: boolean
+          x-stoplight:
+            id: djo0khm8r7gdy
         database.redis.allowed_cidrs:
           description: List of CIDRs allowed to access the Redis database
           items:

@@ -12,13 +12,13 @@ Name | Type | Description | Notes
 **CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
 **AwsEksEnableAlbController** | Pointer to **bool** | Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application&#39;s public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports. | [optional] [default to true]
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] 
-**DatabasePostgresqlDenyPublicAccess** | Pointer to **bool** | Deny public access to any PostgreSQL database | [optional] 
+**DatabasePostgresqlDenyAnyAccess** | Pointer to **bool** | Deny public access to any PostgreSQL database | [optional] 
 **DatabasePostgresqlAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the PostgreSQL database | [optional] 
-**DatabaseMysqlDenyPublicAccess** | Pointer to **bool** | Deny public access to any MySql database | [optional] 
+**DatabaseMysqlDenyAnyAccess** | Pointer to **bool** | Deny public access to any MySql database | [optional] 
 **DatabaseMysqlAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the MySql database | [optional] 
-**DatabaseMongodbDenyPublicAccess** | Pointer to **bool** | Deny public access to any MongoDB/DocumentDB database | [optional] 
+**DatabaseMongodbDenyAnyAccess** | Pointer to **bool** | Deny public access to any MongoDB/DocumentDB database | [optional] 
 **DatabaseMongodbAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the MongoDB/DocumentDB database | [optional] 
-**DatabaseRedisDenyPublicAccess** | Pointer to **bool** | Deny public access to any Redis database | [optional] 
+**DatabaseRedisDenyAnyAccess** | Pointer to **bool** | Deny public access to any Redis database | [optional] 
 **DatabaseRedisAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the Redis database | [optional] 
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] 
 **AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] 
@@ -254,30 +254,30 @@ SetLoadBalancerSize sets LoadBalancerSize field to given value.
 
 HasLoadBalancerSize returns a boolean if a field has been set.
 
-### GetDatabasePostgresqlDenyPublicAccess
+### GetDatabasePostgresqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyAnyAccess() bool`
 
-GetDatabasePostgresqlDenyPublicAccess returns the DatabasePostgresqlDenyPublicAccess field if non-nil, zero value otherwise.
+GetDatabasePostgresqlDenyAnyAccess returns the DatabasePostgresqlDenyAnyAccess field if non-nil, zero value otherwise.
 
-### GetDatabasePostgresqlDenyPublicAccessOk
+### GetDatabasePostgresqlDenyAnyAccessOk
 
-`func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccessOk() (*bool, bool)`
+`func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyAnyAccessOk() (*bool, bool)`
 
-GetDatabasePostgresqlDenyPublicAccessOk returns a tuple with the DatabasePostgresqlDenyPublicAccess field if it's non-nil, zero value otherwise
+GetDatabasePostgresqlDenyAnyAccessOk returns a tuple with the DatabasePostgresqlDenyAnyAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDatabasePostgresqlDenyPublicAccess
+### SetDatabasePostgresqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyPublicAccess(v bool)`
+`func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyAnyAccess(v bool)`
 
-SetDatabasePostgresqlDenyPublicAccess sets DatabasePostgresqlDenyPublicAccess field to given value.
+SetDatabasePostgresqlDenyAnyAccess sets DatabasePostgresqlDenyAnyAccess field to given value.
 
-### HasDatabasePostgresqlDenyPublicAccess
+### HasDatabasePostgresqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyAnyAccess() bool`
 
-HasDatabasePostgresqlDenyPublicAccess returns a boolean if a field has been set.
+HasDatabasePostgresqlDenyAnyAccess returns a boolean if a field has been set.
 
 ### GetDatabasePostgresqlAllowedCidrs
 
@@ -304,30 +304,30 @@ SetDatabasePostgresqlAllowedCidrs sets DatabasePostgresqlAllowedCidrs field to g
 
 HasDatabasePostgresqlAllowedCidrs returns a boolean if a field has been set.
 
-### GetDatabaseMysqlDenyPublicAccess
+### GetDatabaseMysqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyAnyAccess() bool`
 
-GetDatabaseMysqlDenyPublicAccess returns the DatabaseMysqlDenyPublicAccess field if non-nil, zero value otherwise.
+GetDatabaseMysqlDenyAnyAccess returns the DatabaseMysqlDenyAnyAccess field if non-nil, zero value otherwise.
 
-### GetDatabaseMysqlDenyPublicAccessOk
+### GetDatabaseMysqlDenyAnyAccessOk
 
-`func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccessOk() (*bool, bool)`
+`func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyAnyAccessOk() (*bool, bool)`
 
-GetDatabaseMysqlDenyPublicAccessOk returns a tuple with the DatabaseMysqlDenyPublicAccess field if it's non-nil, zero value otherwise
+GetDatabaseMysqlDenyAnyAccessOk returns a tuple with the DatabaseMysqlDenyAnyAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDatabaseMysqlDenyPublicAccess
+### SetDatabaseMysqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyPublicAccess(v bool)`
+`func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyAnyAccess(v bool)`
 
-SetDatabaseMysqlDenyPublicAccess sets DatabaseMysqlDenyPublicAccess field to given value.
+SetDatabaseMysqlDenyAnyAccess sets DatabaseMysqlDenyAnyAccess field to given value.
 
-### HasDatabaseMysqlDenyPublicAccess
+### HasDatabaseMysqlDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyAnyAccess() bool`
 
-HasDatabaseMysqlDenyPublicAccess returns a boolean if a field has been set.
+HasDatabaseMysqlDenyAnyAccess returns a boolean if a field has been set.
 
 ### GetDatabaseMysqlAllowedCidrs
 
@@ -354,30 +354,30 @@ SetDatabaseMysqlAllowedCidrs sets DatabaseMysqlAllowedCidrs field to given value
 
 HasDatabaseMysqlAllowedCidrs returns a boolean if a field has been set.
 
-### GetDatabaseMongodbDenyPublicAccess
+### GetDatabaseMongodbDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyAnyAccess() bool`
 
-GetDatabaseMongodbDenyPublicAccess returns the DatabaseMongodbDenyPublicAccess field if non-nil, zero value otherwise.
+GetDatabaseMongodbDenyAnyAccess returns the DatabaseMongodbDenyAnyAccess field if non-nil, zero value otherwise.
 
-### GetDatabaseMongodbDenyPublicAccessOk
+### GetDatabaseMongodbDenyAnyAccessOk
 
-`func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccessOk() (*bool, bool)`
+`func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyAnyAccessOk() (*bool, bool)`
 
-GetDatabaseMongodbDenyPublicAccessOk returns a tuple with the DatabaseMongodbDenyPublicAccess field if it's non-nil, zero value otherwise
+GetDatabaseMongodbDenyAnyAccessOk returns a tuple with the DatabaseMongodbDenyAnyAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDatabaseMongodbDenyPublicAccess
+### SetDatabaseMongodbDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyPublicAccess(v bool)`
+`func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyAnyAccess(v bool)`
 
-SetDatabaseMongodbDenyPublicAccess sets DatabaseMongodbDenyPublicAccess field to given value.
+SetDatabaseMongodbDenyAnyAccess sets DatabaseMongodbDenyAnyAccess field to given value.
 
-### HasDatabaseMongodbDenyPublicAccess
+### HasDatabaseMongodbDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyAnyAccess() bool`
 
-HasDatabaseMongodbDenyPublicAccess returns a boolean if a field has been set.
+HasDatabaseMongodbDenyAnyAccess returns a boolean if a field has been set.
 
 ### GetDatabaseMongodbAllowedCidrs
 
@@ -404,30 +404,30 @@ SetDatabaseMongodbAllowedCidrs sets DatabaseMongodbAllowedCidrs field to given v
 
 HasDatabaseMongodbAllowedCidrs returns a boolean if a field has been set.
 
-### GetDatabaseRedisDenyPublicAccess
+### GetDatabaseRedisDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyAnyAccess() bool`
 
-GetDatabaseRedisDenyPublicAccess returns the DatabaseRedisDenyPublicAccess field if non-nil, zero value otherwise.
+GetDatabaseRedisDenyAnyAccess returns the DatabaseRedisDenyAnyAccess field if non-nil, zero value otherwise.
 
-### GetDatabaseRedisDenyPublicAccessOk
+### GetDatabaseRedisDenyAnyAccessOk
 
-`func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccessOk() (*bool, bool)`
+`func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyAnyAccessOk() (*bool, bool)`
 
-GetDatabaseRedisDenyPublicAccessOk returns a tuple with the DatabaseRedisDenyPublicAccess field if it's non-nil, zero value otherwise
+GetDatabaseRedisDenyAnyAccessOk returns a tuple with the DatabaseRedisDenyAnyAccess field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDatabaseRedisDenyPublicAccess
+### SetDatabaseRedisDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyPublicAccess(v bool)`
+`func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyAnyAccess(v bool)`
 
-SetDatabaseRedisDenyPublicAccess sets DatabaseRedisDenyPublicAccess field to given value.
+SetDatabaseRedisDenyAnyAccess sets DatabaseRedisDenyAnyAccess field to given value.
 
-### HasDatabaseRedisDenyPublicAccess
+### HasDatabaseRedisDenyAnyAccess
 
-`func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyPublicAccess() bool`
+`func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyAnyAccess() bool`
 
-HasDatabaseRedisDenyPublicAccess returns a boolean if a field has been set.
+HasDatabaseRedisDenyAnyAccess returns a boolean if a field has been set.
 
 ### GetDatabaseRedisAllowedCidrs
 

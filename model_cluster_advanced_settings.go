@@ -37,19 +37,19 @@ type ClusterAdvancedSettings struct {
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deny public access to any PostgreSQL database
-	DatabasePostgresqlDenyPublicAccess *bool `json:"database.postgresql.deny_public_access,omitempty"`
+	DatabasePostgresqlDenyAnyAccess *bool `json:"database.postgresql.deny_any_access,omitempty"`
 	// List of CIDRs allowed to access the PostgreSQL database
 	DatabasePostgresqlAllowedCidrs []string `json:"database.postgresql.allowed_cidrs,omitempty"`
 	// Deny public access to any MySql database
-	DatabaseMysqlDenyPublicAccess *bool `json:"database.mysql.deny_public_access,omitempty"`
+	DatabaseMysqlDenyAnyAccess *bool `json:"database.mysql.deny_any_access,omitempty"`
 	// List of CIDRs allowed to access the MySql database
 	DatabaseMysqlAllowedCidrs []string `json:"database.mysql.allowed_cidrs,omitempty"`
 	// Deny public access to any MongoDB/DocumentDB database
-	DatabaseMongodbDenyPublicAccess *bool `json:"database.mongodb.deny_public_access,omitempty"`
+	DatabaseMongodbDenyAnyAccess *bool `json:"database.mongodb.deny_any_access,omitempty"`
 	// List of CIDRs allowed to access the MongoDB/DocumentDB database
 	DatabaseMongodbAllowedCidrs []string `json:"database.mongodb.allowed_cidrs,omitempty"`
 	// Deny public access to any Redis database
-	DatabaseRedisDenyPublicAccess *bool `json:"database.redis.deny_public_access,omitempty"`
+	DatabaseRedisDenyAnyAccess *bool `json:"database.redis.deny_any_access,omitempty"`
 	// List of CIDRs allowed to access the Redis database
 	DatabaseRedisAllowedCidrs []string `json:"database.redis.allowed_cidrs,omitempty"`
 	// AWS IAM group name with cluster access
@@ -365,36 +365,36 @@ func (o *ClusterAdvancedSettings) SetLoadBalancerSize(v string) {
 	o.LoadBalancerSize = &v
 }
 
-// GetDatabasePostgresqlDenyPublicAccess returns the DatabasePostgresqlDenyPublicAccess field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccess() bool {
-	if o == nil || IsNil(o.DatabasePostgresqlDenyPublicAccess) {
+// GetDatabasePostgresqlDenyAnyAccess returns the DatabasePostgresqlDenyAnyAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyAnyAccess() bool {
+	if o == nil || IsNil(o.DatabasePostgresqlDenyAnyAccess) {
 		var ret bool
 		return ret
 	}
-	return *o.DatabasePostgresqlDenyPublicAccess
+	return *o.DatabasePostgresqlDenyAnyAccess
 }
 
-// GetDatabasePostgresqlDenyPublicAccessOk returns a tuple with the DatabasePostgresqlDenyPublicAccess field value if set, nil otherwise
+// GetDatabasePostgresqlDenyAnyAccessOk returns a tuple with the DatabasePostgresqlDenyAnyAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.DatabasePostgresqlDenyPublicAccess) {
+func (o *ClusterAdvancedSettings) GetDatabasePostgresqlDenyAnyAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.DatabasePostgresqlDenyAnyAccess) {
 		return nil, false
 	}
-	return o.DatabasePostgresqlDenyPublicAccess, true
+	return o.DatabasePostgresqlDenyAnyAccess, true
 }
 
-// HasDatabasePostgresqlDenyPublicAccess returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyPublicAccess() bool {
-	if o != nil && !IsNil(o.DatabasePostgresqlDenyPublicAccess) {
+// HasDatabasePostgresqlDenyAnyAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabasePostgresqlDenyAnyAccess() bool {
+	if o != nil && !IsNil(o.DatabasePostgresqlDenyAnyAccess) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatabasePostgresqlDenyPublicAccess gets a reference to the given bool and assigns it to the DatabasePostgresqlDenyPublicAccess field.
-func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyPublicAccess(v bool) {
-	o.DatabasePostgresqlDenyPublicAccess = &v
+// SetDatabasePostgresqlDenyAnyAccess gets a reference to the given bool and assigns it to the DatabasePostgresqlDenyAnyAccess field.
+func (o *ClusterAdvancedSettings) SetDatabasePostgresqlDenyAnyAccess(v bool) {
+	o.DatabasePostgresqlDenyAnyAccess = &v
 }
 
 // GetDatabasePostgresqlAllowedCidrs returns the DatabasePostgresqlAllowedCidrs field value if set, zero value otherwise.
@@ -429,36 +429,36 @@ func (o *ClusterAdvancedSettings) SetDatabasePostgresqlAllowedCidrs(v []string) 
 	o.DatabasePostgresqlAllowedCidrs = v
 }
 
-// GetDatabaseMysqlDenyPublicAccess returns the DatabaseMysqlDenyPublicAccess field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccess() bool {
-	if o == nil || IsNil(o.DatabaseMysqlDenyPublicAccess) {
+// GetDatabaseMysqlDenyAnyAccess returns the DatabaseMysqlDenyAnyAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyAnyAccess() bool {
+	if o == nil || IsNil(o.DatabaseMysqlDenyAnyAccess) {
 		var ret bool
 		return ret
 	}
-	return *o.DatabaseMysqlDenyPublicAccess
+	return *o.DatabaseMysqlDenyAnyAccess
 }
 
-// GetDatabaseMysqlDenyPublicAccessOk returns a tuple with the DatabaseMysqlDenyPublicAccess field value if set, nil otherwise
+// GetDatabaseMysqlDenyAnyAccessOk returns a tuple with the DatabaseMysqlDenyAnyAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.DatabaseMysqlDenyPublicAccess) {
+func (o *ClusterAdvancedSettings) GetDatabaseMysqlDenyAnyAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.DatabaseMysqlDenyAnyAccess) {
 		return nil, false
 	}
-	return o.DatabaseMysqlDenyPublicAccess, true
+	return o.DatabaseMysqlDenyAnyAccess, true
 }
 
-// HasDatabaseMysqlDenyPublicAccess returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyPublicAccess() bool {
-	if o != nil && !IsNil(o.DatabaseMysqlDenyPublicAccess) {
+// HasDatabaseMysqlDenyAnyAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMysqlDenyAnyAccess() bool {
+	if o != nil && !IsNil(o.DatabaseMysqlDenyAnyAccess) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatabaseMysqlDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseMysqlDenyPublicAccess field.
-func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyPublicAccess(v bool) {
-	o.DatabaseMysqlDenyPublicAccess = &v
+// SetDatabaseMysqlDenyAnyAccess gets a reference to the given bool and assigns it to the DatabaseMysqlDenyAnyAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseMysqlDenyAnyAccess(v bool) {
+	o.DatabaseMysqlDenyAnyAccess = &v
 }
 
 // GetDatabaseMysqlAllowedCidrs returns the DatabaseMysqlAllowedCidrs field value if set, zero value otherwise.
@@ -493,36 +493,36 @@ func (o *ClusterAdvancedSettings) SetDatabaseMysqlAllowedCidrs(v []string) {
 	o.DatabaseMysqlAllowedCidrs = v
 }
 
-// GetDatabaseMongodbDenyPublicAccess returns the DatabaseMongodbDenyPublicAccess field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccess() bool {
-	if o == nil || IsNil(o.DatabaseMongodbDenyPublicAccess) {
+// GetDatabaseMongodbDenyAnyAccess returns the DatabaseMongodbDenyAnyAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyAnyAccess() bool {
+	if o == nil || IsNil(o.DatabaseMongodbDenyAnyAccess) {
 		var ret bool
 		return ret
 	}
-	return *o.DatabaseMongodbDenyPublicAccess
+	return *o.DatabaseMongodbDenyAnyAccess
 }
 
-// GetDatabaseMongodbDenyPublicAccessOk returns a tuple with the DatabaseMongodbDenyPublicAccess field value if set, nil otherwise
+// GetDatabaseMongodbDenyAnyAccessOk returns a tuple with the DatabaseMongodbDenyAnyAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.DatabaseMongodbDenyPublicAccess) {
+func (o *ClusterAdvancedSettings) GetDatabaseMongodbDenyAnyAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.DatabaseMongodbDenyAnyAccess) {
 		return nil, false
 	}
-	return o.DatabaseMongodbDenyPublicAccess, true
+	return o.DatabaseMongodbDenyAnyAccess, true
 }
 
-// HasDatabaseMongodbDenyPublicAccess returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyPublicAccess() bool {
-	if o != nil && !IsNil(o.DatabaseMongodbDenyPublicAccess) {
+// HasDatabaseMongodbDenyAnyAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseMongodbDenyAnyAccess() bool {
+	if o != nil && !IsNil(o.DatabaseMongodbDenyAnyAccess) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatabaseMongodbDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseMongodbDenyPublicAccess field.
-func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyPublicAccess(v bool) {
-	o.DatabaseMongodbDenyPublicAccess = &v
+// SetDatabaseMongodbDenyAnyAccess gets a reference to the given bool and assigns it to the DatabaseMongodbDenyAnyAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseMongodbDenyAnyAccess(v bool) {
+	o.DatabaseMongodbDenyAnyAccess = &v
 }
 
 // GetDatabaseMongodbAllowedCidrs returns the DatabaseMongodbAllowedCidrs field value if set, zero value otherwise.
@@ -557,36 +557,36 @@ func (o *ClusterAdvancedSettings) SetDatabaseMongodbAllowedCidrs(v []string) {
 	o.DatabaseMongodbAllowedCidrs = v
 }
 
-// GetDatabaseRedisDenyPublicAccess returns the DatabaseRedisDenyPublicAccess field value if set, zero value otherwise.
-func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccess() bool {
-	if o == nil || IsNil(o.DatabaseRedisDenyPublicAccess) {
+// GetDatabaseRedisDenyAnyAccess returns the DatabaseRedisDenyAnyAccess field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyAnyAccess() bool {
+	if o == nil || IsNil(o.DatabaseRedisDenyAnyAccess) {
 		var ret bool
 		return ret
 	}
-	return *o.DatabaseRedisDenyPublicAccess
+	return *o.DatabaseRedisDenyAnyAccess
 }
 
-// GetDatabaseRedisDenyPublicAccessOk returns a tuple with the DatabaseRedisDenyPublicAccess field value if set, nil otherwise
+// GetDatabaseRedisDenyAnyAccessOk returns a tuple with the DatabaseRedisDenyAnyAccess field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyPublicAccessOk() (*bool, bool) {
-	if o == nil || IsNil(o.DatabaseRedisDenyPublicAccess) {
+func (o *ClusterAdvancedSettings) GetDatabaseRedisDenyAnyAccessOk() (*bool, bool) {
+	if o == nil || IsNil(o.DatabaseRedisDenyAnyAccess) {
 		return nil, false
 	}
-	return o.DatabaseRedisDenyPublicAccess, true
+	return o.DatabaseRedisDenyAnyAccess, true
 }
 
-// HasDatabaseRedisDenyPublicAccess returns a boolean if a field has been set.
-func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyPublicAccess() bool {
-	if o != nil && !IsNil(o.DatabaseRedisDenyPublicAccess) {
+// HasDatabaseRedisDenyAnyAccess returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasDatabaseRedisDenyAnyAccess() bool {
+	if o != nil && !IsNil(o.DatabaseRedisDenyAnyAccess) {
 		return true
 	}
 
 	return false
 }
 
-// SetDatabaseRedisDenyPublicAccess gets a reference to the given bool and assigns it to the DatabaseRedisDenyPublicAccess field.
-func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyPublicAccess(v bool) {
-	o.DatabaseRedisDenyPublicAccess = &v
+// SetDatabaseRedisDenyAnyAccess gets a reference to the given bool and assigns it to the DatabaseRedisDenyAnyAccess field.
+func (o *ClusterAdvancedSettings) SetDatabaseRedisDenyAnyAccess(v bool) {
+	o.DatabaseRedisDenyAnyAccess = &v
 }
 
 // GetDatabaseRedisAllowedCidrs returns the DatabaseRedisAllowedCidrs field value if set, zero value otherwise.
@@ -1106,26 +1106,26 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.LoadBalancerSize) {
 		toSerialize["load_balancer.size"] = o.LoadBalancerSize
 	}
-	if !IsNil(o.DatabasePostgresqlDenyPublicAccess) {
-		toSerialize["database.postgresql.deny_public_access"] = o.DatabasePostgresqlDenyPublicAccess
+	if !IsNil(o.DatabasePostgresqlDenyAnyAccess) {
+		toSerialize["database.postgresql.deny_any_access"] = o.DatabasePostgresqlDenyAnyAccess
 	}
 	if !IsNil(o.DatabasePostgresqlAllowedCidrs) {
 		toSerialize["database.postgresql.allowed_cidrs"] = o.DatabasePostgresqlAllowedCidrs
 	}
-	if !IsNil(o.DatabaseMysqlDenyPublicAccess) {
-		toSerialize["database.mysql.deny_public_access"] = o.DatabaseMysqlDenyPublicAccess
+	if !IsNil(o.DatabaseMysqlDenyAnyAccess) {
+		toSerialize["database.mysql.deny_any_access"] = o.DatabaseMysqlDenyAnyAccess
 	}
 	if !IsNil(o.DatabaseMysqlAllowedCidrs) {
 		toSerialize["database.mysql.allowed_cidrs"] = o.DatabaseMysqlAllowedCidrs
 	}
-	if !IsNil(o.DatabaseMongodbDenyPublicAccess) {
-		toSerialize["database.mongodb.deny_public_access"] = o.DatabaseMongodbDenyPublicAccess
+	if !IsNil(o.DatabaseMongodbDenyAnyAccess) {
+		toSerialize["database.mongodb.deny_any_access"] = o.DatabaseMongodbDenyAnyAccess
 	}
 	if !IsNil(o.DatabaseMongodbAllowedCidrs) {
 		toSerialize["database.mongodb.allowed_cidrs"] = o.DatabaseMongodbAllowedCidrs
 	}
-	if !IsNil(o.DatabaseRedisDenyPublicAccess) {
-		toSerialize["database.redis.deny_public_access"] = o.DatabaseRedisDenyPublicAccess
+	if !IsNil(o.DatabaseRedisDenyAnyAccess) {
+		toSerialize["database.redis.deny_any_access"] = o.DatabaseRedisDenyAnyAccess
 	}
 	if !IsNil(o.DatabaseRedisAllowedCidrs) {
 		toSerialize["database.redis.allowed_cidrs"] = o.DatabaseRedisAllowedCidrs
@@ -1202,13 +1202,13 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cloud_provider.container_registry.tags")
 		delete(additionalProperties, "aws.eks.enable_alb_controller")
 		delete(additionalProperties, "load_balancer.size")
-		delete(additionalProperties, "database.postgresql.deny_public_access")
+		delete(additionalProperties, "database.postgresql.deny_any_access")
 		delete(additionalProperties, "database.postgresql.allowed_cidrs")
-		delete(additionalProperties, "database.mysql.deny_public_access")
+		delete(additionalProperties, "database.mysql.deny_any_access")
 		delete(additionalProperties, "database.mysql.allowed_cidrs")
-		delete(additionalProperties, "database.mongodb.deny_public_access")
+		delete(additionalProperties, "database.mongodb.deny_any_access")
 		delete(additionalProperties, "database.mongodb.allowed_cidrs")
-		delete(additionalProperties, "database.redis.deny_public_access")
+		delete(additionalProperties, "database.redis.deny_any_access")
 		delete(additionalProperties, "database.redis.allowed_cidrs")
 		delete(additionalProperties, "aws.iam.admin_group")
 		delete(additionalProperties, "aws.eks.ec2.metadata_imds")
