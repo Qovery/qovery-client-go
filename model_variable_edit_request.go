@@ -26,8 +26,9 @@ type VariableEditRequest struct {
 	// the value of the environment variable
 	Value NullableString `json:"value,omitempty"`
 	// optional variable description (255 characters maximum)
-	Description          NullableString `json:"description,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Description               NullableString `json:"description,omitempty"`
+	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _VariableEditRequest VariableEditRequest
@@ -160,6 +161,49 @@ func (o *VariableEditRequest) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableEditRequest) GetEnableInterpolationInFile() bool {
+	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.EnableInterpolationInFile.Get()
+}
+
+// GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableEditRequest) GetEnableInterpolationInFileOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
+}
+
+// HasEnableInterpolationInFile returns a boolean if a field has been set.
+func (o *VariableEditRequest) HasEnableInterpolationInFile() bool {
+	if o != nil && o.EnableInterpolationInFile.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
+func (o *VariableEditRequest) SetEnableInterpolationInFile(v bool) {
+	o.EnableInterpolationInFile.Set(&v)
+}
+
+// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+func (o *VariableEditRequest) SetEnableInterpolationInFileNil() {
+	o.EnableInterpolationInFile.Set(nil)
+}
+
+// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+func (o *VariableEditRequest) UnsetEnableInterpolationInFile() {
+	o.EnableInterpolationInFile.Unset()
+}
+
 func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -176,6 +220,9 @@ func (o VariableEditRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if o.EnableInterpolationInFile.IsSet() {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -223,6 +270,7 @@ func (o *VariableEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties
 	}
 

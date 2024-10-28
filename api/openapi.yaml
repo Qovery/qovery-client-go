@@ -27811,6 +27811,7 @@ components:
       type: object
     VariableEditRequest:
       example:
+        enable_interpolation_in_file: true
         description: description
         value: value
         key: key
@@ -27829,6 +27830,9 @@ components:
           type: string
           x-stoplight:
             id: y471ewdkdpr4r
+        enable_interpolation_in_file:
+          nullable: true
+          type: boolean
       required:
       - key
       type: object
