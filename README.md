@@ -98,6 +98,7 @@ Class | Method | HTTP request | Description
 *ApplicationCustomDomainAPI* | [**GetCustomDomainStatus**](docs/ApplicationCustomDomainAPI.md#getcustomdomainstatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *ApplicationCustomDomainAPI* | [**ListApplicationCustomDomain**](docs/ApplicationCustomDomainAPI.md#listapplicationcustomdomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 *ApplicationDeploymentHistoryAPI* | [**ListApplicationDeploymentHistory**](docs/ApplicationDeploymentHistoryAPI.md#listapplicationdeploymenthistory) | **Get** /application/{applicationId}/deploymentHistory | List application deploys
+*ApplicationDeploymentHistoryAPI* | [**ListApplicationDeploymentHistoryV2**](docs/ApplicationDeploymentHistoryAPI.md#listapplicationdeploymenthistoryv2) | **Get** /application/{applicationId}/deploymentHistoryV2 | List application deploys
 *ApplicationDeploymentRestrictionAPI* | [**CreateApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#createapplicationdeploymentrestriction) | **Post** /application/{applicationId}/deploymentRestriction | Create an application deployment restriction
 *ApplicationDeploymentRestrictionAPI* | [**DeleteApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#deleteapplicationdeploymentrestriction) | **Delete** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Delete an application deployment restriction
 *ApplicationDeploymentRestrictionAPI* | [**EditApplicationDeploymentRestriction**](docs/ApplicationDeploymentRestrictionAPI.md#editapplicationdeploymentrestriction) | **Put** /application/{applicationId}/deploymentRestriction/{deploymentRestrictionId} | Edit an application deployment restriction
@@ -221,6 +222,7 @@ Class | Method | HTTP request | Description
 *ContainerCustomDomainAPI* | [**GetContainerCustomDomainStatus**](docs/ContainerCustomDomainAPI.md#getcontainercustomdomainstatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
 *ContainerCustomDomainAPI* | [**ListContainerCustomDomain**](docs/ContainerCustomDomainAPI.md#listcontainercustomdomain) | **Get** /container/{containerId}/customDomain | List container custom domains
 *ContainerDeploymentHistoryAPI* | [**ListContainerDeploymentHistory**](docs/ContainerDeploymentHistoryAPI.md#listcontainerdeploymenthistory) | **Get** /container/{containerId}/deploymentHistory | List container deployments
+*ContainerDeploymentHistoryAPI* | [**ListContainerDeploymentHistoryV2**](docs/ContainerDeploymentHistoryAPI.md#listcontainerdeploymenthistoryv2) | **Get** /container/{containerId}/deploymentHistoryV2 | List container deployments
 *ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariable**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariable) | **Post** /container/{containerId}/environmentVariable | Add an environment variable to the container
 *ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariableAlias**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariablealias) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/alias | Create an environment variable alias at the container level
 *ContainerEnvironmentVariableAPI* | [**CreateContainerEnvironmentVariableOverride**](docs/ContainerEnvironmentVariableAPI.md#createcontainerenvironmentvariableoverride) | **Post** /container/{containerId}/environmentVariable/{environmentVariableId}/override | Create an environment variable override at the container level
@@ -262,6 +264,7 @@ Class | Method | HTTP request | Description
 *DatabaseApplicationAPI* | [**ListDatabaseApplication**](docs/DatabaseApplicationAPI.md#listdatabaseapplication) | **Get** /database/{databaseId}/application | List applications using the database
 *DatabaseApplicationAPI* | [**RemoveApplicationFromDatabase**](docs/DatabaseApplicationAPI.md#removeapplicationfromdatabase) | **Delete** /database/{databaseId}/application/{targetApplicationId} | Remove an application from this database 
 *DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistory**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistory) | **Get** /database/{databaseId}/deploymentHistory | List database deploys
+*DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistoryV2**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistoryv2) | **Get** /database/{databaseId}/deploymentHistoryV2 | List database deploys
 *DatabaseMainCallsAPI* | [**DeleteDatabase**](docs/DatabaseMainCallsAPI.md#deletedatabase) | **Delete** /database/{databaseId} | Delete a database 
 *DatabaseMainCallsAPI* | [**EditDatabase**](docs/DatabaseMainCallsAPI.md#editdatabase) | **Put** /database/{databaseId} | Edit a database 
 *DatabaseMainCallsAPI* | [**EditDatabaseCredentials**](docs/DatabaseMainCallsAPI.md#editdatabasecredentials) | **Put** /database/{databaseId}/masterCredentials | Edit database  master credentials
@@ -300,6 +303,7 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsAPI* | [**StopEnvironment**](docs/EnvironmentActionsAPI.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentActionsAPI* | [**StopSelectedServices**](docs/EnvironmentActionsAPI.md#stopselectedservices) | **Post** /environment/{environmentId}/service/stop | Stop services
 *EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
+*EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistoryV2**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistoryv2) | **Get** /environment/{environmentId}/deploymentHistoryV2 | List environment deployments
 *EnvironmentDeploymentRuleAPI* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleAPI.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule
 *EnvironmentDeploymentRuleAPI* | [**GetEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleAPI.md#getenvironmentdeploymentrule) | **Get** /environment/{environmentId}/deploymentRule | Get environment deployment rule
 *EnvironmentExportAPI* | [**ExportEnvironmentConfigurationIntoTerraform**](docs/EnvironmentExportAPI.md#exportenvironmentconfigurationintoterraform) | **Get** /environment/{environmentId}/terraformExport | Export full environment and its resources into Terraform manifests
@@ -348,6 +352,7 @@ Class | Method | HTTP request | Description
 *HelmCustomDomainAPI* | [**GetHelmCustomDomain**](docs/HelmCustomDomainAPI.md#gethelmcustomdomain) | **Get** /helm/{helmId}/customDomain/{customDomainId} | Get a Custom Domain
 *HelmCustomDomainAPI* | [**ListHelmCustomDomain**](docs/HelmCustomDomainAPI.md#listhelmcustomdomain) | **Get** /helm/{helmId}/customDomain | List helm custom domains
 *HelmDeploymentHistoryAPI* | [**ListHelmDeploymentHistory**](docs/HelmDeploymentHistoryAPI.md#listhelmdeploymenthistory) | **Get** /helm/{helmId}/deploymentHistory | List helm deployments
+*HelmDeploymentHistoryAPI* | [**ListHelmDeploymentHistoryV2**](docs/HelmDeploymentHistoryAPI.md#listhelmdeploymenthistoryv2) | **Get** /helm/{helmId}/deploymentHistoryV2 | List helm deployments
 *HelmDeploymentRestrictionAPI* | [**CreateHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#createhelmdeploymentrestriction) | **Post** /helm/{helmId}/deploymentRestriction | Create a helm deployment restriction
 *HelmDeploymentRestrictionAPI* | [**DeleteHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#deletehelmdeploymentrestriction) | **Delete** /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId} | Delete a helm deployment restriction
 *HelmDeploymentRestrictionAPI* | [**EditHelmDeploymentRestriction**](docs/HelmDeploymentRestrictionAPI.md#edithelmdeploymentrestriction) | **Put** /helm/{helmId}/deploymentRestriction/{deploymentRestrictionId} | Edit a helm deployment restriction
@@ -379,6 +384,7 @@ Class | Method | HTTP request | Description
 *JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
+*JobDeploymentHistoryAPI* | [**ListJobDeploymentHistoryV2**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistoryv2) | **Get** /job/{jobId}/deploymentHistoryV2 | List job deployments
 *JobDeploymentRestrictionAPI* | [**CreateJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#createjobdeploymentrestriction) | **Post** /job/{jobId}/deploymentRestriction | Create a job deployment restriction
 *JobDeploymentRestrictionAPI* | [**DeleteJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#deletejobdeploymentrestriction) | **Delete** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Delete a job deployment restriction
 *JobDeploymentRestrictionAPI* | [**EditJobDeploymentRestriction**](docs/JobDeploymentRestrictionAPI.md#editjobdeploymentrestriction) | **Put** /job/{jobId}/deploymentRestriction/{deploymentRestrictionId} | Edit a job deployment restriction
@@ -666,16 +672,32 @@ Class | Method | HTTP request | Description
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
  - [DeploymentHistoryApplication](docs/DeploymentHistoryApplication.md)
+ - [DeploymentHistoryAuditingData](docs/DeploymentHistoryAuditingData.md)
  - [DeploymentHistoryContainer](docs/DeploymentHistoryContainer.md)
  - [DeploymentHistoryDatabase](docs/DeploymentHistoryDatabase.md)
  - [DeploymentHistoryEnvironment](docs/DeploymentHistoryEnvironment.md)
  - [DeploymentHistoryEnvironmentPaginatedResponseList](docs/DeploymentHistoryEnvironmentPaginatedResponseList.md)
+ - [DeploymentHistoryEnvironmentPaginatedResponseListV2](docs/DeploymentHistoryEnvironmentPaginatedResponseListV2.md)
+ - [DeploymentHistoryEnvironmentV2](docs/DeploymentHistoryEnvironmentV2.md)
+ - [DeploymentHistoryEnvironmentV2Identifier](docs/DeploymentHistoryEnvironmentV2Identifier.md)
  - [DeploymentHistoryHelmResponse](docs/DeploymentHistoryHelmResponse.md)
  - [DeploymentHistoryHelmResponseAllOfRepository](docs/DeploymentHistoryHelmResponseAllOfRepository.md)
  - [DeploymentHistoryJobResponse](docs/DeploymentHistoryJobResponse.md)
  - [DeploymentHistoryJobResponseAllOfSchedule](docs/DeploymentHistoryJobResponseAllOfSchedule.md)
  - [DeploymentHistoryPaginatedResponseList](docs/DeploymentHistoryPaginatedResponseList.md)
+ - [DeploymentHistoryService](docs/DeploymentHistoryService.md)
+ - [DeploymentHistoryServiceDetails](docs/DeploymentHistoryServiceDetails.md)
+ - [DeploymentHistoryServiceDetailsOneOf](docs/DeploymentHistoryServiceDetailsOneOf.md)
+ - [DeploymentHistoryServiceDetailsOneOf1](docs/DeploymentHistoryServiceDetailsOneOf1.md)
+ - [DeploymentHistoryServiceDetailsOneOf2](docs/DeploymentHistoryServiceDetailsOneOf2.md)
+ - [DeploymentHistoryServiceDetailsOneOf2Schedule](docs/DeploymentHistoryServiceDetailsOneOf2Schedule.md)
+ - [DeploymentHistoryServiceDetailsOneOf3](docs/DeploymentHistoryServiceDetailsOneOf3.md)
+ - [DeploymentHistoryServiceDetailsOneOf3Repository](docs/DeploymentHistoryServiceDetailsOneOf3Repository.md)
+ - [DeploymentHistoryServiceIdentifier](docs/DeploymentHistoryServiceIdentifier.md)
+ - [DeploymentHistoryServicePaginatedResponseListV2](docs/DeploymentHistoryServicePaginatedResponseListV2.md)
+ - [DeploymentHistoryStage](docs/DeploymentHistoryStage.md)
  - [DeploymentHistoryStatusEnum](docs/DeploymentHistoryStatusEnum.md)
+ - [DeploymentHistoryTriggerAction](docs/DeploymentHistoryTriggerAction.md)
  - [DeploymentRestrictionModeEnum](docs/DeploymentRestrictionModeEnum.md)
  - [DeploymentRestrictionTypeEnum](docs/DeploymentRestrictionTypeEnum.md)
  - [DeploymentStageRequest](docs/DeploymentStageRequest.md)
@@ -803,12 +825,14 @@ Class | Method | HTTP request | Description
  - [InvoiceResponseList](docs/InvoiceResponseList.md)
  - [InvoiceStatusEnum](docs/InvoiceStatusEnum.md)
  - [JobAdvancedSettings](docs/JobAdvancedSettings.md)
+ - [JobCronSchedule](docs/JobCronSchedule.md)
  - [JobDeployRequest](docs/JobDeployRequest.md)
  - [JobDeploymentRestrictionRequest](docs/JobDeploymentRestrictionRequest.md)
  - [JobDeploymentRestrictionResponse](docs/JobDeploymentRestrictionResponse.md)
  - [JobDeploymentRestrictionResponseList](docs/JobDeploymentRestrictionResponseList.md)
  - [JobForceEvent](docs/JobForceEvent.md)
  - [JobLifecycleTypeEnum](docs/JobLifecycleTypeEnum.md)
+ - [JobLifecyleSchedule](docs/JobLifecyleSchedule.md)
  - [JobRequest](docs/JobRequest.md)
  - [JobRequestAllOfSchedule](docs/JobRequestAllOfSchedule.md)
  - [JobRequestAllOfScheduleCronjob](docs/JobRequestAllOfScheduleCronjob.md)

@@ -36,4 +36,18 @@ func Test_qovery_ContainerDeploymentHistoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ContainerDeploymentHistoryAPIService ListContainerDeploymentHistoryV2", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var containerId string
+
+		resp, httpRes, err := apiClient.ContainerDeploymentHistoryAPI.ListContainerDeploymentHistoryV2(context.Background(), containerId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

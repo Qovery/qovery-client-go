@@ -23,12 +23,20 @@ type ServiceTypeEnum string
 const (
 	SERVICETYPEENUM_APPLICATION ServiceTypeEnum = "APPLICATION"
 	SERVICETYPEENUM_DATABASE    ServiceTypeEnum = "DATABASE"
+	SERVICETYPEENUM_CONTAINER   ServiceTypeEnum = "CONTAINER"
+	SERVICETYPEENUM_JOB         ServiceTypeEnum = "JOB"
+	SERVICETYPEENUM_HELM        ServiceTypeEnum = "HELM"
+	SERVICETYPEENUM_ROUTER      ServiceTypeEnum = "ROUTER"
 )
 
 // All allowed values of ServiceTypeEnum enum
 var AllowedServiceTypeEnumEnumValues = []ServiceTypeEnum{
 	"APPLICATION",
 	"DATABASE",
+	"CONTAINER",
+	"JOB",
+	"HELM",
+	"ROUTER",
 }
 
 func (v *ServiceTypeEnum) UnmarshalJSON(src []byte) error {

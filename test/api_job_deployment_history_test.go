@@ -36,4 +36,18 @@ func Test_qovery_JobDeploymentHistoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test JobDeploymentHistoryAPIService ListJobDeploymentHistoryV2", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var jobId string
+
+		resp, httpRes, err := apiClient.JobDeploymentHistoryAPI.ListJobDeploymentHistoryV2(context.Background(), jobId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

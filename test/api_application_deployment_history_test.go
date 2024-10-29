@@ -36,4 +36,18 @@ func Test_qovery_ApplicationDeploymentHistoryAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApplicationDeploymentHistoryAPIService ListApplicationDeploymentHistoryV2", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var applicationId string
+
+		resp, httpRes, err := apiClient.ApplicationDeploymentHistoryAPI.ListApplicationDeploymentHistoryV2(context.Background(), applicationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

@@ -7620,6 +7620,50 @@ paths:
       summary: List environment deployments
       tags:
       - Environment Deployment History
+  /environment/{environmentId}/deploymentHistoryV2:
+    get:
+      description: "List previous and current environment deployments with the status\
+        \ deployment and the related services. By default it returns the 20 last results.\
+        \ The response is paginated. In order to request the next page, you can use\
+        \ the startId query parameter"
+      operationId: listEnvironmentDeploymentHistoryV2
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryEnvironmentPaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environment deployments
+      tags:
+      - Environment Deployment History
+      x-stoplight:
+        id: pqsu5pghhay1j
   /environment/{environmentId}/environmentVariable:
     get:
       operationId: listEnvironmentEnvironmentVariable
@@ -8826,6 +8870,49 @@ paths:
       summary: List application deploys
       tags:
       - Application Deployment History
+  /application/{applicationId}/deploymentHistoryV2:
+    get:
+      description: "By default it returns the 20 last results. The response is paginated.\
+        \ In order to request the next page, you can use the startId query parameter.\
+        \ You can also filter by status (FAILED or SUCCESS), and git_commit_id"
+      operationId: listApplicationDeploymentHistoryV2
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List application deploys
+      tags:
+      - Application Deployment History
+      x-stoplight:
+        id: 59xza5oe7uvet
   /application/{applicationId}/environmentVariable:
     get:
       operationId: listApplicationEnvironmentVariable
@@ -9988,6 +10075,38 @@ paths:
       summary: List container deployments
       tags:
       - Container Deployment History
+  /container/{containerId}/deploymentHistoryV2:
+    get:
+      description: Returns the 20 last container deployments
+      operationId: listContainerDeploymentHistoryV2
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List container deployments
+      tags:
+      - Container Deployment History
+      x-stoplight:
+        id: qfy5ueb8cyebe
   /container/{containerId}/advancedSettings:
     get:
       description: |
@@ -11664,6 +11783,47 @@ paths:
       summary: List database deploys
       tags:
       - Database Deployment History
+  /database/{databaseId}/deploymentHistoryV2:
+    get:
+      description: By default it returns the 20 last results. The response is paginated.
+      operationId: listDatabaseDeploymentHistoryV2
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List database deploys
+      tags:
+      - Database Deployment History
+      x-stoplight:
+        id: mzftpr17opgzp
   /database/{databaseId}/backup:
     get:
       description: "By default it returns the 20 last results. The response is paginated.\
@@ -12569,6 +12729,38 @@ paths:
       summary: List helm deployments
       tags:
       - Helm Deployment History
+  /helm/{helmId}/deploymentHistoryV2:
+    get:
+      description: Returns the 20 last helm deployments
+      operationId: listHelmDeploymentHistoryV2
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List helm deployments
+      tags:
+      - Helm Deployment History
+      x-stoplight:
+        id: fn9qd5qn7dhdv
   /helm/{helmId}/deploymentRestriction:
     get:
       description: Get helm deployment restrictions
@@ -13592,6 +13784,38 @@ paths:
       summary: List job deployments
       tags:
       - Job Deployment History
+  /job/{jobId}/deploymentHistoryV2:
+    get:
+      description: Returns the 20 last job deployments
+      operationId: listJobDeploymentHistoryV2
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List job deployments
+      tags:
+      - Job Deployment History
+      x-stoplight:
+        id: mcu1nwkl3q2bb
   /job/{jobId}/deploymentRestriction:
     get:
       description: Get job deployment restrictions
@@ -16194,10 +16418,9 @@ components:
       properties:
         sticky_session:
           default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this application.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the application. \n"
+          description: |
+            Specify if the sticky session option (also called persistant session) is activated or not for this application.
+            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
           type: boolean
       type: object
     ApplicationNetworkRequest:
@@ -16206,10 +16429,9 @@ components:
       properties:
         sticky_session:
           default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this application.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the application. \n"
+          description: |
+            Specify if the sticky session option (also called persistant session) is activated or not for this application.
+            If activated, user will be redirected by the load balancer to the same instance each time he access to the application.
           type: boolean
       type: object
     ServicePort:
@@ -18790,10 +19012,9 @@ components:
       properties:
         sticky_session:
           default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this container.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the container. \n"
+          description: |
+            Specify if the sticky session option (also called persistant session) is activated or not for this container.
+            If activated, user will be redirected by the load balancer to the same instance each time he access to the container.
           type: boolean
       type: object
     ContainerNetworkRequest:
@@ -18802,10 +19023,9 @@ components:
       properties:
         sticky_session:
           default: false
-          description: "Specify if the sticky session option (also called persistant\
-            \ session) is activated or not for this container.\nIf activated, user\
-            \ will be redirected by the load balancer to the same instance each time\
-            \ he access to the container. \n"
+          description: |
+            Specify if the sticky session option (also called persistant session) is activated or not for this container.
+            If activated, user will be redirected by the load balancer to the same instance each time he access to the container.
           type: boolean
       type: object
     ContainerDeployRequest:
@@ -20757,6 +20977,16 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: FAILED
+    DeploymentHistoryTriggerAction:
+      enum:
+      - DEPLOY
+      - DELETE
+      - RESTART
+      - STOP
+      - UNKNOWN
+      type: string
+      x-stoplight:
+        id: 1hzy6riqo7lq4
     DeploymentHistoryApplication:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -20798,6 +21028,36 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: null
+    DeploymentHistoryAuditingData:
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        origin: API
+        created_at: 2000-01-23T04:56:07.000+00:00
+        triggered_by: triggered_by
+      properties:
+        created_at:
+          format: date-time
+          type: string
+          x-stoplight:
+            id: e1idlr92680lb
+        updated_at:
+          format: date-time
+          type: string
+          x-stoplight:
+            id: mz8yet1k3voef
+        triggered_by:
+          type: string
+          x-stoplight:
+            id: hf405wx2g73py
+        origin:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+      required:
+      - created_at
+      - triggered_by
+      - updated_at
+      type: object
+      x-stoplight:
+        id: 5oovmby4u1mxw
     DeploymentHistoryContainer:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -21007,6 +21267,153 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: null
+    DeploymentHistoryEnvironmentV2:
+      properties:
+        identifier:
+          $ref: '#/components/schemas/DeploymentHistoryEnvironmentV2_identifier'
+        auditing_data:
+          $ref: '#/components/schemas/DeploymentHistoryAuditingData'
+        status:
+          $ref: '#/components/schemas/StateEnum'
+        trigger_action:
+          $ref: '#/components/schemas/DeploymentHistoryTriggerAction'
+        total_duration:
+          format: duration
+          type: string
+          x-stoplight:
+            id: 3qptomnr4oly4
+        stages:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryStage'
+          type: array
+          x-stoplight:
+            id: rz2b0h9r3p6tv
+      required:
+      - auditing_data
+      - identifier
+      - stages
+      - status
+      - total_duration
+      - trigger_action
+      type: object
+      x-stoplight:
+        id: j6o3qzzhhu0me
+    DeploymentHistoryStage:
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: e1fv4x2xo0wo0
+        status:
+          $ref: '#/components/schemas/StageStatusEnum'
+        duration:
+          format: duration
+          type: string
+          x-stoplight:
+            id: mdqlsz36jtl4j
+        services:
+          items:
+            $ref: '#/components/schemas/DeploymentHistoryService'
+          type: array
+          x-stoplight:
+            id: sel4jtb8tbjwz
+      required:
+      - duration
+      - name
+      - services
+      - status
+      type: object
+      x-stoplight:
+        id: crvf2cbwrvxyh
+    JobLifecyleSchedule:
+      properties:
+        arguments:
+          items:
+            type: string
+            x-stoplight:
+              id: 4a4sqxpll8vlc
+          type: array
+          x-stoplight:
+            id: wj3fkami4h2b7
+        entrypoint:
+          type: string
+          x-stoplight:
+            id: 951clotz2i2na
+      required:
+      - arguments
+      type: object
+      x-stoplight:
+        id: nbir5gxiux1ei
+    JobCronSchedule:
+      properties:
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          type: string
+        scheduled_at:
+          type: string
+          x-stoplight:
+            id: a5x1s5kc53r1v
+        timezone:
+          type: string
+          x-stoplight:
+            id: btav5l3tp9w3l
+      required:
+      - arguments
+      - scheduled_at
+      - timezone
+      type: object
+      x-stoplight:
+        id: y5hby49m8v5zc
+    DeploymentHistoryService:
+      example:
+        identifier:
+          execution_id: execution_id
+          service_type: APPLICATION
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+        auditing_data:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          origin: API
+          created_at: 2000-01-23T04:56:07.000+00:00
+          triggered_by: triggered_by
+        details:
+          commit:
+            author_name: author_name
+            git_commit_id: git_commit_id
+            created_at: 2000-01-23T04:56:07.000+00:00
+            author_avatar_url: author_avatar_url
+            tag: v2.1.1
+            message: message
+            commit_page_url: commit_page_url
+        status: BUILDING
+      properties:
+        identifier:
+          $ref: '#/components/schemas/DeploymentHistoryService_identifier'
+        status:
+          $ref: '#/components/schemas/StateEnum'
+        auditing_data:
+          $ref: '#/components/schemas/DeploymentHistoryAuditingData'
+        details:
+          $ref: '#/components/schemas/DeploymentHistoryServiceDetails'
+      required:
+      - auditing_data
+      - details
+      - identifier
+      - status
+      type: object
+      x-stoplight:
+        id: 316ilxlmws82a
+    DeploymentHistoryServiceDetails:
+      oneOf:
+      - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf'
+      - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_1'
+      - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_2'
+      - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_3'
+      x-stoplight:
+        id: vx9hzryfyv7sb
     DeploymentHistoryEnvironmentPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
@@ -21310,6 +21717,366 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             status: null
         page_size: 20
+    DeploymentHistoryEnvironmentPaginatedResponseListV2:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryEnvironment'
+            type: array
+        type: object
+      example:
+        page: 1
+        results:
+        - databases:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          origin: API
+          jobs:
+          - image_name: image_name
+            schedule:
+              schedule_at: schedule_at
+              event: ON_START
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          - image_name: image_name
+            schedule:
+              schedule_at: schedule_at
+              event: ON_START
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          created_at: 2000-01-23T04:56:07.000+00:00
+          containers:
+          - image_name: image_name
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          - image_name: image_name
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          triggered_by: triggered_by
+          helms:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            repository:
+              chart_name: chart_name
+              chart_version: chart_version
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            repository:
+              chart_name: chart_name
+              chart_version: chart_version
+            status: null
+          status: BUILDING
+          applications:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+        - databases:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          origin: API
+          jobs:
+          - image_name: image_name
+            schedule:
+              schedule_at: schedule_at
+              event: ON_START
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          - image_name: image_name
+            schedule:
+              schedule_at: schedule_at
+              event: ON_START
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          created_at: 2000-01-23T04:56:07.000+00:00
+          containers:
+          - image_name: image_name
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          - image_name: image_name
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            entrypoint: entrypoint
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            arguments:
+            - arguments
+            - arguments
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            tag: tag
+            status: null
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          triggered_by: triggered_by
+          helms:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            repository:
+              chart_name: chart_name
+              chart_version: chart_version
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            repository:
+              chart_name: chart_name
+              chart_version: chart_version
+            status: null
+          status: BUILDING
+          applications:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            status: null
+        page_size: 20
+      x-stoplight:
+        id: 0anfgzdi689ht
+    DeploymentHistoryServicePaginatedResponseListV2:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/DeploymentHistoryService'
+            type: array
+        type: object
+      example:
+        page: 1
+        results:
+        - identifier:
+            execution_id: execution_id
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            origin: API
+            created_at: 2000-01-23T04:56:07.000+00:00
+            triggered_by: triggered_by
+          details:
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+          status: BUILDING
+        - identifier:
+            execution_id: execution_id
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            origin: API
+            created_at: 2000-01-23T04:56:07.000+00:00
+            triggered_by: triggered_by
+          details:
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+          status: BUILDING
+        page_size: 20
+      x-stoplight:
+        id: e2g667def2r2z
     DeploymentHistoryPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
@@ -22695,8 +23462,8 @@ components:
       - HELM
       type: string
     APIVariableTypeEnum:
-      description: "type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE\
-        \ or BUIT_IN) \n"
+      description: |
+        type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN)
       enum:
       - VALUE
       - ALIAS
@@ -24220,7 +24987,7 @@ components:
       description: "On which event the job is going to run.  \nON_START means when\
         \ a deployment is requested for the environment  \nON_STOP means when a stop\
         \ of the environment is requested  \nON_DELETE means when an environment delete\
-        \ is requested  \nCRON means at a scheduled interval  \n"
+        \ is requested  \nCRON means at a scheduled interval\n"
       enum:
       - ON_START
       - ON_STOP
@@ -24305,9 +25072,8 @@ components:
             nullable: true
             type: boolean
           auto_deploy:
-            description: "Specify if the helm will be automatically updated after\
-              \ receiving a new image tag or a new commit according to the source\
-              \ type. \n"
+            description: |
+              Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.
             type: boolean
           source:
             $ref: '#/components/schemas/HelmRequest_allOf_source'
@@ -27278,6 +28044,10 @@ components:
       enum:
       - APPLICATION
       - DATABASE
+      - CONTAINER
+      - JOB
+      - HELM
+      - ROUTER
       type: string
     SignUp:
       allOf:
@@ -28924,7 +29694,7 @@ components:
         \ at the `error_details` field for more information \n  * `DOMAIN_LINKED_TO_WRONG_HOST`:\
         \ the domain has CNAME(s) that matches a different host than your Load Balancer\
         \ one\n  * `GENERIC_FAILURE`: an error occured when attempting to validate\
-        \ your domain, look at the `error_details` field for more information \n"
+        \ your domain, look at the `error_details` field for more information\n"
       enum:
       - RESOLVES_TO_IP
       - MATCHES_LOAD_BALANCER_HOST
@@ -30293,6 +31063,130 @@ components:
           description: The commit Id of the override values to deploy. Use only if
             the helm has a Git override values repository.
           type: string
+      type: object
+    DeploymentHistoryEnvironmentV2_identifier:
+      properties:
+        execution_id:
+          type: string
+          x-stoplight:
+            id: 6psngtbgz1bub
+        environment_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 6o54s8cbk0lo6
+      required:
+      - environment_id
+      - execution_id
+      type: object
+      x-stoplight:
+        id: cpv6dbyt9dng2
+    DeploymentHistoryService_identifier:
+      example:
+        execution_id: execution_id
+        service_type: APPLICATION
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: h0xxiocxiusqw
+        service_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 0hb95ufaj9z82
+        service_type:
+          $ref: '#/components/schemas/ServiceTypeEnum'
+        execution_id:
+          type: string
+          x-stoplight:
+            id: 9ww6nh5lrwg37
+      required:
+      - name
+      - service_id
+      - service_type
+      type: object
+      x-stoplight:
+        id: yklp44eea5vaq
+    DeploymentHistoryServiceDetails_oneOf:
+      description: ApplicationDeploymentHistoryData
+      example:
+        commit:
+          author_name: author_name
+          git_commit_id: git_commit_id
+          created_at: 2000-01-23T04:56:07.000+00:00
+          author_avatar_url: author_avatar_url
+          tag: v2.1.1
+          message: message
+          commit_page_url: commit_page_url
+      properties:
+        commit:
+          $ref: '#/components/schemas/Commit'
+      required:
+      - commit
+      type: object
+    DeploymentHistoryServiceDetails_oneOf_1:
+      description: ContainerDeploymentHistoryData
+      properties:
+        image_name:
+          type: string
+        tag:
+          type: string
+        arguments:
+          items:
+            type: string
+          type: array
+        entrypoint:
+          type: string
+      required:
+      - arguments
+      - image_name
+      - tag
+      type: object
+    DeploymentHistoryServiceDetails_oneOf_2_schedule:
+      properties:
+        on_start:
+          $ref: '#/components/schemas/JobLifecyleSchedule'
+        on_stop:
+          $ref: '#/components/schemas/JobLifecyleSchedule'
+        on_delete:
+          $ref: '#/components/schemas/JobLifecyleSchedule'
+        cron_job:
+          $ref: '#/components/schemas/JobCronSchedule'
+        lifecycle_type:
+          $ref: '#/components/schemas/JobLifecycleTypeEnum'
+      type: object
+    DeploymentHistoryServiceDetails_oneOf_2:
+      description: JobDeploymentHistoryDetails
+      properties:
+        image_name:
+          type: string
+        tag:
+          type: string
+        commit:
+          $ref: '#/components/schemas/Commit'
+        schedule:
+          $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_2_schedule'
+      required:
+      - image_name
+      - tag
+      type: object
+    DeploymentHistoryServiceDetails_oneOf_3_repository:
+      properties:
+        chart_name:
+          type: string
+        chart_version:
+          type: string
+      type: object
+    DeploymentHistoryServiceDetails_oneOf_3:
+      description: HelmDeploymentHistoryDetails
+      properties:
+        commit:
+          $ref: '#/components/schemas/Commit'
+        repository:
+          $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_3_repository'
       type: object
     Environment_allOf_cloud_provider:
       example:
