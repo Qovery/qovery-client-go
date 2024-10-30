@@ -24,9 +24,15 @@ import (
 type CloudProviderAPIService service
 
 type ApiListAWSEKSInstanceTypeRequest struct {
-	ctx        context.Context
-	ApiService *CloudProviderAPIService
-	region     string
+	ctx                   context.Context
+	ApiService            *CloudProviderAPIService
+	region                string
+	onlyMeetsResourceReqs *string
+}
+
+func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs string) ApiListAWSEKSInstanceTypeRequest {
+	r.onlyMeetsResourceReqs = &onlyMeetsResourceReqs
+	return r
 }
 
 func (r ApiListAWSEKSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
@@ -70,6 +76,9 @@ func (a *CloudProviderAPIService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.onlyMeetsResourceReqs != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "only_meets_resource_reqs", r.onlyMeetsResourceReqs, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

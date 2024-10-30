@@ -4341,6 +4341,13 @@ paths:
           example: us-east-2
           type: string
         style: simple
+      - explode: true
+        in: query
+        name: only_meets_resource_reqs
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
