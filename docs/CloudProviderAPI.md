@@ -44,7 +44,7 @@ import (
 
 func main() {
 	region := "us-east-2" // string | region name
-	onlyMeetsResourceReqs := "onlyMeetsResourceReqs_example" // string |  (optional)
+	onlyMeetsResourceReqs := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -74,7 +74,7 @@ Other parameters are passed through a pointer to a apiListAWSEKSInstanceTypeRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **onlyMeetsResourceReqs** | **string** |  | 
+ **onlyMeetsResourceReqs** | **bool** |  | 
 
 ### Return type
 

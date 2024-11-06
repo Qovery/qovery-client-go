@@ -27,10 +27,10 @@ type ApiListAWSEKSInstanceTypeRequest struct {
 	ctx                   context.Context
 	ApiService            *CloudProviderAPIService
 	region                string
-	onlyMeetsResourceReqs *string
+	onlyMeetsResourceReqs *bool
 }
 
-func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs string) ApiListAWSEKSInstanceTypeRequest {
+func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs bool) ApiListAWSEKSInstanceTypeRequest {
 	r.onlyMeetsResourceReqs = &onlyMeetsResourceReqs
 	return r
 }

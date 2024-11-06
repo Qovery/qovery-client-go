@@ -4346,7 +4346,7 @@ paths:
         name: only_meets_resource_reqs
         required: false
         schema:
-          type: string
+          type: boolean
         style: form
       responses:
         "200":
