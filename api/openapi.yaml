@@ -18178,6 +18178,7 @@ components:
           cpu: 2
           bandwidth_in_gbps: "5.2"
           attributes:
+            with_gpu: true
             instance_generation: 6
             instance_size: instance_size
             meets_resource_reqs: true
@@ -18196,6 +18197,7 @@ components:
           cpu: 2
           bandwidth_in_gbps: "5.2"
           attributes:
+            with_gpu: true
             instance_generation: 6
             instance_size: instance_size
             meets_resource_reqs: true
@@ -30067,6 +30069,7 @@ components:
         id: dfdp50z2mr1cs
     ClusterInstanceAttributes:
       example:
+        with_gpu: true
         instance_generation: 6
         instance_size: instance_size
         meets_resource_reqs: true
@@ -30093,6 +30096,9 @@ components:
           type: string
           x-stoplight:
             id: dmnfjmvowgd0a
+        with_gpu:
+          description: The instance has gpu.
+          type: boolean
         meets_resource_reqs:
           description: The instance has sufficient resources to be chosen as a standalone
             instance in a cluster.
@@ -30746,6 +30752,7 @@ components:
         cpu: 2
         bandwidth_in_gbps: "5.2"
         attributes:
+          with_gpu: true
           instance_generation: 6
           instance_size: instance_size
           meets_resource_reqs: true

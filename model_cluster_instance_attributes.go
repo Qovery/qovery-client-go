@@ -28,6 +28,8 @@ type ClusterInstanceAttributes struct {
 	InstanceFamily *string `json:"instance_family,omitempty"`
 	// Specifies the size of the instance within its family.
 	InstanceSize *string `json:"instance_size,omitempty"`
+	// The instance has gpu.
+	WithGpu *bool `json:"with_gpu,omitempty"`
 	// The instance has sufficient resources to be chosen as a standalone instance in a cluster.
 	MeetsResourceReqs    *bool `json:"meets_resource_reqs,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -180,6 +182,38 @@ func (o *ClusterInstanceAttributes) SetInstanceSize(v string) {
 	o.InstanceSize = &v
 }
 
+// GetWithGpu returns the WithGpu field value if set, zero value otherwise.
+func (o *ClusterInstanceAttributes) GetWithGpu() bool {
+	if o == nil || IsNil(o.WithGpu) {
+		var ret bool
+		return ret
+	}
+	return *o.WithGpu
+}
+
+// GetWithGpuOk returns a tuple with the WithGpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInstanceAttributes) GetWithGpuOk() (*bool, bool) {
+	if o == nil || IsNil(o.WithGpu) {
+		return nil, false
+	}
+	return o.WithGpu, true
+}
+
+// HasWithGpu returns a boolean if a field has been set.
+func (o *ClusterInstanceAttributes) HasWithGpu() bool {
+	if o != nil && !IsNil(o.WithGpu) {
+		return true
+	}
+
+	return false
+}
+
+// SetWithGpu gets a reference to the given bool and assigns it to the WithGpu field.
+func (o *ClusterInstanceAttributes) SetWithGpu(v bool) {
+	o.WithGpu = &v
+}
+
 // GetMeetsResourceReqs returns the MeetsResourceReqs field value if set, zero value otherwise.
 func (o *ClusterInstanceAttributes) GetMeetsResourceReqs() bool {
 	if o == nil || IsNil(o.MeetsResourceReqs) {
@@ -234,6 +268,9 @@ func (o ClusterInstanceAttributes) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InstanceSize) {
 		toSerialize["instance_size"] = o.InstanceSize
 	}
+	if !IsNil(o.WithGpu) {
+		toSerialize["with_gpu"] = o.WithGpu
+	}
 	if !IsNil(o.MeetsResourceReqs) {
 		toSerialize["meets_resource_reqs"] = o.MeetsResourceReqs
 	}
@@ -263,6 +300,7 @@ func (o *ClusterInstanceAttributes) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "instance_generation")
 		delete(additionalProperties, "instance_family")
 		delete(additionalProperties, "instance_size")
+		delete(additionalProperties, "with_gpu")
 		delete(additionalProperties, "meets_resource_reqs")
 		o.AdditionalProperties = additionalProperties
 	}
