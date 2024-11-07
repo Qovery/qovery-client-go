@@ -26687,6 +26687,7 @@ components:
       type: object
     OrganizationEventResponseList:
       example:
+        organization_max_limit_reached: true
         links:
           next: https://openapi-generator.tech
           previous: https://openapi-generator.tech
@@ -26724,6 +26725,10 @@ components:
       properties:
         links:
           $ref: '#/components/schemas/OrganizationEventResponseList_links'
+        organization_max_limit_reached:
+          description: Indicates if you cannot see previous logs according to your
+            organization max limit
+          type: boolean
         events:
           items:
             $ref: '#/components/schemas/OrganizationEventResponse'

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Links** | Pointer to [**OrganizationEventResponseListLinks**](OrganizationEventResponseListLinks.md) |  | [optional] 
+**OrganizationMaxLimitReached** | Pointer to **bool** | Indicates if you cannot see previous logs according to your organization max limit | [optional] 
 **Events** | Pointer to [**[]OrganizationEventResponse**](OrganizationEventResponse.md) |  | [optional] 
 
 ## Methods
@@ -50,6 +51,31 @@ SetLinks sets Links field to given value.
 `func (o *OrganizationEventResponseList) HasLinks() bool`
 
 HasLinks returns a boolean if a field has been set.
+
+### GetOrganizationMaxLimitReached
+
+`func (o *OrganizationEventResponseList) GetOrganizationMaxLimitReached() bool`
+
+GetOrganizationMaxLimitReached returns the OrganizationMaxLimitReached field if non-nil, zero value otherwise.
+
+### GetOrganizationMaxLimitReachedOk
+
+`func (o *OrganizationEventResponseList) GetOrganizationMaxLimitReachedOk() (*bool, bool)`
+
+GetOrganizationMaxLimitReachedOk returns a tuple with the OrganizationMaxLimitReached field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOrganizationMaxLimitReached
+
+`func (o *OrganizationEventResponseList) SetOrganizationMaxLimitReached(v bool)`
+
+SetOrganizationMaxLimitReached sets OrganizationMaxLimitReached field to given value.
+
+### HasOrganizationMaxLimitReached
+
+`func (o *OrganizationEventResponseList) HasOrganizationMaxLimitReached() bool`
+
+HasOrganizationMaxLimitReached returns a boolean if a field has been set.
 
 ### GetEvents
 

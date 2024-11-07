@@ -20,9 +20,11 @@ var _ MappedNullable = &OrganizationEventResponseList{}
 
 // OrganizationEventResponseList struct for OrganizationEventResponseList
 type OrganizationEventResponseList struct {
-	Links                *OrganizationEventResponseListLinks `json:"links,omitempty"`
-	Events               []OrganizationEventResponse         `json:"events,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Links *OrganizationEventResponseListLinks `json:"links,omitempty"`
+	// Indicates if you cannot see previous logs according to your organization max limit
+	OrganizationMaxLimitReached *bool                       `json:"organization_max_limit_reached,omitempty"`
+	Events                      []OrganizationEventResponse `json:"events,omitempty"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _OrganizationEventResponseList OrganizationEventResponseList
@@ -76,6 +78,38 @@ func (o *OrganizationEventResponseList) SetLinks(v OrganizationEventResponseList
 	o.Links = &v
 }
 
+// GetOrganizationMaxLimitReached returns the OrganizationMaxLimitReached field value if set, zero value otherwise.
+func (o *OrganizationEventResponseList) GetOrganizationMaxLimitReached() bool {
+	if o == nil || IsNil(o.OrganizationMaxLimitReached) {
+		var ret bool
+		return ret
+	}
+	return *o.OrganizationMaxLimitReached
+}
+
+// GetOrganizationMaxLimitReachedOk returns a tuple with the OrganizationMaxLimitReached field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationEventResponseList) GetOrganizationMaxLimitReachedOk() (*bool, bool) {
+	if o == nil || IsNil(o.OrganizationMaxLimitReached) {
+		return nil, false
+	}
+	return o.OrganizationMaxLimitReached, true
+}
+
+// HasOrganizationMaxLimitReached returns a boolean if a field has been set.
+func (o *OrganizationEventResponseList) HasOrganizationMaxLimitReached() bool {
+	if o != nil && !IsNil(o.OrganizationMaxLimitReached) {
+		return true
+	}
+
+	return false
+}
+
+// SetOrganizationMaxLimitReached gets a reference to the given bool and assigns it to the OrganizationMaxLimitReached field.
+func (o *OrganizationEventResponseList) SetOrganizationMaxLimitReached(v bool) {
+	o.OrganizationMaxLimitReached = &v
+}
+
 // GetEvents returns the Events field value if set, zero value otherwise.
 func (o *OrganizationEventResponseList) GetEvents() []OrganizationEventResponse {
 	if o == nil || IsNil(o.Events) {
@@ -121,6 +155,9 @@ func (o OrganizationEventResponseList) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Links) {
 		toSerialize["links"] = o.Links
 	}
+	if !IsNil(o.OrganizationMaxLimitReached) {
+		toSerialize["organization_max_limit_reached"] = o.OrganizationMaxLimitReached
+	}
 	if !IsNil(o.Events) {
 		toSerialize["events"] = o.Events
 	}
@@ -147,6 +184,7 @@ func (o *OrganizationEventResponseList) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "links")
+		delete(additionalProperties, "organization_max_limit_reached")
 		delete(additionalProperties, "events")
 		o.AdditionalProperties = additionalProperties
 	}
