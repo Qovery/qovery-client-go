@@ -28,10 +28,16 @@ type ApiListAWSEKSInstanceTypeRequest struct {
 	ApiService            *CloudProviderAPIService
 	region                string
 	onlyMeetsResourceReqs *bool
+	withGpu               *bool
 }
 
 func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs bool) ApiListAWSEKSInstanceTypeRequest {
 	r.onlyMeetsResourceReqs = &onlyMeetsResourceReqs
+	return r
+}
+
+func (r ApiListAWSEKSInstanceTypeRequest) WithGpu(withGpu bool) ApiListAWSEKSInstanceTypeRequest {
+	r.withGpu = &withGpu
 	return r
 }
 
@@ -78,6 +84,9 @@ func (a *CloudProviderAPIService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 
 	if r.onlyMeetsResourceReqs != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "only_meets_resource_reqs", r.onlyMeetsResourceReqs, "")
+	}
+	if r.withGpu != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "with_gpu", r.withGpu, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

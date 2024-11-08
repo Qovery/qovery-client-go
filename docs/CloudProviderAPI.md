@@ -26,7 +26,7 @@ Method | HTTP request | Description
 
 ## ListAWSEKSInstanceType
 
-> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).Execute()
+> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
 
 List AWS EKS available instance types
 
@@ -45,10 +45,11 @@ import (
 func main() {
 	region := "us-east-2" // string | region name
 	onlyMeetsResourceReqs := true // bool |  (optional)
+	withGpu := true // bool |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).Execute()
+	resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEKSInstanceType``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -75,6 +76,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **onlyMeetsResourceReqs** | **bool** |  | 
+ **withGpu** | **bool** |  | 
 
 ### Return type
 

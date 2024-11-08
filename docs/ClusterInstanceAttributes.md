@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **InstanceGeneration** | Pointer to **int32** | The generation of the instance. | [optional] 
 **InstanceFamily** | Pointer to **string** | The family or series of the instance. | [optional] 
 **InstanceSize** | Pointer to **string** | Specifies the size of the instance within its family. | [optional] 
-**WithGpu** | Pointer to **bool** | The instance has gpu. | [optional] 
 **MeetsResourceReqs** | Pointer to **bool** | The instance has sufficient resources to be chosen as a standalone instance in a cluster. | [optional] 
 
 ## Methods
@@ -129,31 +128,6 @@ SetInstanceSize sets InstanceSize field to given value.
 `func (o *ClusterInstanceAttributes) HasInstanceSize() bool`
 
 HasInstanceSize returns a boolean if a field has been set.
-
-### GetWithGpu
-
-`func (o *ClusterInstanceAttributes) GetWithGpu() bool`
-
-GetWithGpu returns the WithGpu field if non-nil, zero value otherwise.
-
-### GetWithGpuOk
-
-`func (o *ClusterInstanceAttributes) GetWithGpuOk() (*bool, bool)`
-
-GetWithGpuOk returns a tuple with the WithGpu field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWithGpu
-
-`func (o *ClusterInstanceAttributes) SetWithGpu(v bool)`
-
-SetWithGpu sets WithGpu field to given value.
-
-### HasWithGpu
-
-`func (o *ClusterInstanceAttributes) HasWithGpu() bool`
-
-HasWithGpu returns a boolean if a field has been set.
 
 ### GetMeetsResourceReqs
 
