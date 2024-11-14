@@ -4765,6 +4765,48 @@ paths:
       summary: Upgrade a cluster
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds:
+    put:
+      description: Update karpenter private fargate subnet ids
+      operationId: updateKarpenterPrivateFargateSubnetIds
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterKarpenterPrivateSubnetIdsPutRequest'
+      responses:
+        "200":
+          description: Updated
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update karpenter private fargate subnet ids
+      tags:
+      - Clusters
   /organization/{organizationId}/cluster/{clusterId}/stop:
     post:
       description: Cluster stop has been requester.
@@ -17767,6 +17809,31 @@ components:
           $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
+      type: object
+    ClusterKarpenterPrivateSubnetIdsPutRequest:
+      example:
+        eks_karpenter_fargate_subnets_zone_b_ids:
+        - eks_karpenter_fargate_subnets_zone_b_ids
+        - eks_karpenter_fargate_subnets_zone_b_ids
+        eks_karpenter_fargate_subnets_zone_c_ids:
+        - eks_karpenter_fargate_subnets_zone_c_ids
+        - eks_karpenter_fargate_subnets_zone_c_ids
+        eks_karpenter_fargate_subnets_zone_a_ids:
+        - eks_karpenter_fargate_subnets_zone_a_ids
+        - eks_karpenter_fargate_subnets_zone_a_ids
+      properties:
+        eks_karpenter_fargate_subnets_zone_a_ids:
+          items:
+            type: string
+          type: array
+        eks_karpenter_fargate_subnets_zone_b_ids:
+          items:
+            type: string
+          type: array
+        eks_karpenter_fargate_subnets_zone_c_ids:
+          items:
+            type: string
+          type: array
       type: object
     ClusterCredentials:
       discriminator:

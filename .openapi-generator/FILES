@@ -177,6 +177,7 @@ docs/ClusterInstanceAttributes.md
 docs/ClusterInstanceGpuInfo.md
 docs/ClusterInstanceTypeResponseList.md
 docs/ClusterInstanceTypeResponseListResultsInner.md
+docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md
 docs/ClusterLogs.md
 docs/ClusterLogsDetails.md
 docs/ClusterLogsError.md
@@ -760,6 +761,7 @@ model_cluster_instance_attributes.go
 model_cluster_instance_gpu_info.go
 model_cluster_instance_type_response_list.go
 model_cluster_instance_type_response_list_results_inner.go
+model_cluster_karpenter_private_subnet_ids_put_request.go
 model_cluster_logs.go
 model_cluster_logs_details.go
 model_cluster_logs_error.go

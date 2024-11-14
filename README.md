@@ -206,6 +206,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**ListOrganizationCluster**](docs/ClustersAPI.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersAPI* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersAPI.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+*ClustersAPI* | [**UpdateKarpenterPrivateFargateSubnetIds**](docs/ClustersAPI.md#updatekarpenterprivatefargatesubnetids) | **Put** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 *ClustersAPI* | [**UpgradeCluster**](docs/ClustersAPI.md#upgradecluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 *ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
 *ContainerActionsAPI* | [**RebootContainer**](docs/ContainerActionsAPI.md#rebootcontainer) | **Post** /container/{containerId}/restart-service | Reboot container
@@ -589,6 +590,7 @@ Class | Method | HTTP request | Description
  - [ClusterInstanceGpuInfo](docs/ClusterInstanceGpuInfo.md)
  - [ClusterInstanceTypeResponseList](docs/ClusterInstanceTypeResponseList.md)
  - [ClusterInstanceTypeResponseListResultsInner](docs/ClusterInstanceTypeResponseListResultsInner.md)
+ - [ClusterKarpenterPrivateSubnetIdsPutRequest](docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md)
  - [ClusterLogs](docs/ClusterLogs.md)
  - [ClusterLogsDetails](docs/ClusterLogsDetails.md)
  - [ClusterLogsError](docs/ClusterLogsError.md)

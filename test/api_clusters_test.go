@@ -314,6 +314,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService UpdateKarpenterPrivateFargateSubnetIds", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var clusterId string
+
+		httpRes, err := apiClient.ClustersAPI.UpdateKarpenterPrivateFargateSubnetIds(context.Background(), organizationId, clusterId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService UpgradeCluster", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

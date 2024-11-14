@@ -24,6 +24,7 @@ Method | HTTP request | Description
 [**ListOrganizationCluster**](ClustersAPI.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 [**SpecifyClusterCloudProviderInfo**](ClustersAPI.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 [**StopCluster**](ClustersAPI.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+[**UpdateKarpenterPrivateFargateSubnetIds**](ClustersAPI.md#UpdateKarpenterPrivateFargateSubnetIds) | **Put** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 [**UpgradeCluster**](ClustersAPI.md#UpgradeCluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 
 
@@ -1451,6 +1452,79 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateKarpenterPrivateFargateSubnetIds
+
+> UpdateKarpenterPrivateFargateSubnetIds(ctx, organizationId, clusterId).ClusterKarpenterPrivateSubnetIdsPutRequest(clusterKarpenterPrivateSubnetIdsPutRequest).Execute()
+
+Update karpenter private fargate subnet ids
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	clusterKarpenterPrivateSubnetIdsPutRequest := *openapiclient.NewClusterKarpenterPrivateSubnetIdsPutRequest() // ClusterKarpenterPrivateSubnetIdsPutRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ClustersAPI.UpdateKarpenterPrivateFargateSubnetIds(context.Background(), organizationId, clusterId).ClusterKarpenterPrivateSubnetIdsPutRequest(clusterKarpenterPrivateSubnetIdsPutRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UpdateKarpenterPrivateFargateSubnetIds``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateKarpenterPrivateFargateSubnetIdsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **clusterKarpenterPrivateSubnetIdsPutRequest** | [**ClusterKarpenterPrivateSubnetIdsPutRequest**](ClusterKarpenterPrivateSubnetIdsPutRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

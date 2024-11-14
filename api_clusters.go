@@ -2451,6 +2451,124 @@ func (a *ClustersAPIService) StopClusterExecute(r ApiStopClusterRequest) (*Clust
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiUpdateKarpenterPrivateFargateSubnetIdsRequest struct {
+	ctx                                        context.Context
+	ApiService                                 *ClustersAPIService
+	organizationId                             string
+	clusterId                                  string
+	clusterKarpenterPrivateSubnetIdsPutRequest *ClusterKarpenterPrivateSubnetIdsPutRequest
+}
+
+func (r ApiUpdateKarpenterPrivateFargateSubnetIdsRequest) ClusterKarpenterPrivateSubnetIdsPutRequest(clusterKarpenterPrivateSubnetIdsPutRequest ClusterKarpenterPrivateSubnetIdsPutRequest) ApiUpdateKarpenterPrivateFargateSubnetIdsRequest {
+	r.clusterKarpenterPrivateSubnetIdsPutRequest = &clusterKarpenterPrivateSubnetIdsPutRequest
+	return r
+}
+
+func (r ApiUpdateKarpenterPrivateFargateSubnetIdsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.UpdateKarpenterPrivateFargateSubnetIdsExecute(r)
+}
+
+/*
+UpdateKarpenterPrivateFargateSubnetIds Update karpenter private fargate subnet ids
+
+Update karpenter private fargate subnet ids
+
+ @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ @param organizationId Organization ID
+ @param clusterId Cluster ID
+ @return ApiUpdateKarpenterPrivateFargateSubnetIdsRequest
+*/
+func (a *ClustersAPIService) UpdateKarpenterPrivateFargateSubnetIds(ctx context.Context, organizationId string, clusterId string) ApiUpdateKarpenterPrivateFargateSubnetIdsRequest {
+	return ApiUpdateKarpenterPrivateFargateSubnetIdsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+func (a *ClustersAPIService) UpdateKarpenterPrivateFargateSubnetIdsExecute(r ApiUpdateKarpenterPrivateFargateSubnetIdsRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPut
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateKarpenterPrivateFargateSubnetIds")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clusterKarpenterPrivateSubnetIdsPutRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiUpgradeClusterRequest struct {
 	ctx        context.Context
 	ApiService *ClustersAPIService
