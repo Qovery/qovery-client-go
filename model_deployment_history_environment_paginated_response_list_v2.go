@@ -21,9 +21,9 @@ var _ MappedNullable = &DeploymentHistoryEnvironmentPaginatedResponseListV2{}
 
 // DeploymentHistoryEnvironmentPaginatedResponseListV2 struct for DeploymentHistoryEnvironmentPaginatedResponseListV2
 type DeploymentHistoryEnvironmentPaginatedResponseListV2 struct {
-	Page                 float32                        `json:"page"`
-	PageSize             float32                        `json:"page_size"`
-	Results              []DeploymentHistoryEnvironment `json:"results,omitempty"`
+	Page                 float32                          `json:"page"`
+	PageSize             float32                          `json:"page_size"`
+	Results              []DeploymentHistoryEnvironmentV2 `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -97,9 +97,9 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) SetPageSize(v floa
 }
 
 // GetResults returns the Results field value if set, zero value otherwise.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) GetResults() []DeploymentHistoryEnvironment {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) GetResults() []DeploymentHistoryEnvironmentV2 {
 	if o == nil || IsNil(o.Results) {
-		var ret []DeploymentHistoryEnvironment
+		var ret []DeploymentHistoryEnvironmentV2
 		return ret
 	}
 	return o.Results
@@ -107,7 +107,7 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) GetResults() []Dep
 
 // GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) GetResultsOk() ([]DeploymentHistoryEnvironment, bool) {
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) GetResultsOk() ([]DeploymentHistoryEnvironmentV2, bool) {
 	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
@@ -123,8 +123,8 @@ func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) HasResults() bool 
 	return false
 }
 
-// SetResults gets a reference to the given []DeploymentHistoryEnvironment and assigns it to the Results field.
-func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) SetResults(v []DeploymentHistoryEnvironment) {
+// SetResults gets a reference to the given []DeploymentHistoryEnvironmentV2 and assigns it to the Results field.
+func (o *DeploymentHistoryEnvironmentPaginatedResponseListV2) SetResults(v []DeploymentHistoryEnvironmentV2) {
 	o.Results = v
 }
 

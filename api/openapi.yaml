@@ -21349,6 +21349,107 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: null
     DeploymentHistoryEnvironmentV2:
+      example:
+        identifier:
+          execution_id: execution_id
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        auditing_data:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          origin: API
+          created_at: 2000-01-23T04:56:07.000+00:00
+          triggered_by: triggered_by
+        total_duration: total_duration
+        trigger_action: DEPLOY
+        stages:
+        - duration: duration
+          name: name
+          services:
+          - identifier:
+              execution_id: execution_id
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            auditing_data:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              origin: API
+              created_at: 2000-01-23T04:56:07.000+00:00
+              triggered_by: triggered_by
+            details:
+              commit:
+                author_name: author_name
+                git_commit_id: git_commit_id
+                created_at: 2000-01-23T04:56:07.000+00:00
+                author_avatar_url: author_avatar_url
+                tag: v2.1.1
+                message: message
+                commit_page_url: commit_page_url
+            status: null
+          - identifier:
+              execution_id: execution_id
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            auditing_data:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              origin: API
+              created_at: 2000-01-23T04:56:07.000+00:00
+              triggered_by: triggered_by
+            details:
+              commit:
+                author_name: author_name
+                git_commit_id: git_commit_id
+                created_at: 2000-01-23T04:56:07.000+00:00
+                author_avatar_url: author_avatar_url
+                tag: v2.1.1
+                message: message
+                commit_page_url: commit_page_url
+            status: null
+          status: QUEUED
+        - duration: duration
+          name: name
+          services:
+          - identifier:
+              execution_id: execution_id
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            auditing_data:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              origin: API
+              created_at: 2000-01-23T04:56:07.000+00:00
+              triggered_by: triggered_by
+            details:
+              commit:
+                author_name: author_name
+                git_commit_id: git_commit_id
+                created_at: 2000-01-23T04:56:07.000+00:00
+                author_avatar_url: author_avatar_url
+                tag: v2.1.1
+                message: message
+                commit_page_url: commit_page_url
+            status: null
+          - identifier:
+              execution_id: execution_id
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            auditing_data:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              origin: API
+              created_at: 2000-01-23T04:56:07.000+00:00
+              triggered_by: triggered_by
+            details:
+              commit:
+                author_name: author_name
+                git_commit_id: git_commit_id
+                created_at: 2000-01-23T04:56:07.000+00:00
+                author_avatar_url: author_avatar_url
+                tag: v2.1.1
+                message: message
+                commit_page_url: commit_page_url
+            status: null
+          status: QUEUED
+        status: BUILDING
       properties:
         identifier:
           $ref: '#/components/schemas/DeploymentHistoryEnvironmentV2_identifier'
@@ -21380,6 +21481,51 @@ components:
       x-stoplight:
         id: j6o3qzzhhu0me
     DeploymentHistoryStage:
+      example:
+        duration: duration
+        name: name
+        services:
+        - identifier:
+            execution_id: execution_id
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            origin: API
+            created_at: 2000-01-23T04:56:07.000+00:00
+            triggered_by: triggered_by
+          details:
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+          status: null
+        - identifier:
+            execution_id: execution_id
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            origin: API
+            created_at: 2000-01-23T04:56:07.000+00:00
+            triggered_by: triggered_by
+          details:
+            commit:
+              author_name: author_name
+              git_commit_id: git_commit_id
+              created_at: 2000-01-23T04:56:07.000+00:00
+              author_avatar_url: author_avatar_url
+              tag: v2.1.1
+              message: message
+              commit_page_url: commit_page_url
+          status: null
+        status: QUEUED
       properties:
         name:
           type: string
@@ -21469,7 +21615,7 @@ components:
             tag: v2.1.1
             message: message
             commit_page_url: commit_page_url
-        status: BUILDING
+        status: null
       properties:
         identifier:
           $ref: '#/components/schemas/DeploymentHistoryService_identifier'
@@ -21804,302 +21950,212 @@ components:
       - properties:
           results:
             items:
-              $ref: '#/components/schemas/DeploymentHistoryEnvironment'
+              $ref: '#/components/schemas/DeploymentHistoryEnvironmentV2'
             type: array
         type: object
       example:
         page: 1
         results:
-        - databases:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          origin: API
-          jobs:
-          - image_name: image_name
-            schedule:
-              schedule_at: schedule_at
-              event: ON_START
+        - identifier:
+            execution_id: execution_id
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
+            origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          - image_name: image_name
-            schedule:
-              schedule_at: schedule_at
-              event: ON_START
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
+            triggered_by: triggered_by
+          total_duration: total_duration
+          trigger_action: DEPLOY
+          stages:
+          - duration: duration
             name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          created_at: 2000-01-23T04:56:07.000+00:00
-          containers:
-          - image_name: image_name
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
+            services:
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            status: QUEUED
+          - duration: duration
             name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          - image_name: image_name
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          triggered_by: triggered_by
-          helms:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            repository:
-              chart_name: chart_name
-              chart_version: chart_version
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            repository:
-              chart_name: chart_name
-              chart_version: chart_version
-            status: null
+            services:
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            status: QUEUED
           status: BUILDING
-          applications:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-        - databases:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          updated_at: 2000-01-23T04:56:07.000+00:00
-          origin: API
-          jobs:
-          - image_name: image_name
-            schedule:
-              schedule_at: schedule_at
-              event: ON_START
+        - identifier:
+            execution_id: execution_id
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
+            origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          - image_name: image_name
-            schedule:
-              schedule_at: schedule_at
-              event: ON_START
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
+            triggered_by: triggered_by
+          total_duration: total_duration
+          trigger_action: DEPLOY
+          stages:
+          - duration: duration
             name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          created_at: 2000-01-23T04:56:07.000+00:00
-          containers:
-          - image_name: image_name
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
+            services:
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            status: QUEUED
+          - duration: duration
             name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          - image_name: image_name
-            updated_at: 2000-01-23T04:56:07.000+00:00
-            entrypoint: entrypoint
-            name: name
-            created_at: 2000-01-23T04:56:07.000+00:00
-            arguments:
-            - arguments
-            - arguments
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            tag: tag
-            status: null
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          triggered_by: triggered_by
-          helms:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            repository:
-              chart_name: chart_name
-              chart_version: chart_version
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            repository:
-              chart_name: chart_name
-              chart_version: chart_version
-            status: null
+            services:
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            - identifier:
+                execution_id: execution_id
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              auditing_data:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                origin: API
+                created_at: 2000-01-23T04:56:07.000+00:00
+                triggered_by: triggered_by
+              details:
+                commit:
+                  author_name: author_name
+                  git_commit_id: git_commit_id
+                  created_at: 2000-01-23T04:56:07.000+00:00
+                  author_avatar_url: author_avatar_url
+                  tag: v2.1.1
+                  message: message
+                  commit_page_url: commit_page_url
+              status: null
+            status: QUEUED
           status: BUILDING
-          applications:
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
-          - updated_at: 2000-01-23T04:56:07.000+00:00
-            name: name
-            commit:
-              author_name: author_name
-              git_commit_id: git_commit_id
-              created_at: 2000-01-23T04:56:07.000+00:00
-              author_avatar_url: author_avatar_url
-              tag: v2.1.1
-              message: message
-              commit_page_url: commit_page_url
-            created_at: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            status: null
         page_size: 20
       x-stoplight:
         id: 0anfgzdi689ht
@@ -22134,7 +22190,7 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
-          status: BUILDING
+          status: null
         - identifier:
             execution_id: execution_id
             service_type: APPLICATION
@@ -22154,7 +22210,7 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
-          status: BUILDING
+          status: null
         page_size: 20
       x-stoplight:
         id: e2g667def2r2z
@@ -31151,6 +31207,9 @@ components:
           type: string
       type: object
     DeploymentHistoryEnvironmentV2_identifier:
+      example:
+        execution_id: execution_id
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         execution_id:
           type: string
