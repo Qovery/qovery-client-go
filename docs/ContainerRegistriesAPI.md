@@ -318,8 +318,8 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
-	imageName := "imageName_example" // string | container image name
-	search := "search_example" // string | partial container image name to search
+	imageName := "imageName_example" // string | container image name (optional)
+	search := "search_example" // string | partial container image name to search (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

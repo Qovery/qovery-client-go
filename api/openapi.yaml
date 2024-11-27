@@ -5053,7 +5053,7 @@ paths:
         explode: true
         in: query
         name: imageName
-        required: true
+        required: false
         schema:
           type: string
         style: form
@@ -5061,7 +5061,7 @@ paths:
         explode: true
         in: query
         name: search
-        required: true
+        required: false
         schema:
           type: string
         style: form
@@ -15290,7 +15290,7 @@ components:
       explode: true
       in: query
       name: imageName
-      required: true
+      required: false
       schema:
         type: string
       style: form
@@ -15299,7 +15299,7 @@ components:
       explode: true
       in: query
       name: search
-      required: true
+      required: false
       schema:
         type: string
       style: form

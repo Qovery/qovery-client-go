@@ -564,15 +564,13 @@ func (a *ContainerRegistriesAPIService) GetContainerVersionsExecute(r ApiGetCont
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.imageName == nil {
-		return localVarReturnValue, nil, reportError("imageName is required and must be specified")
-	}
-	if r.search == nil {
-		return localVarReturnValue, nil, reportError("search is required and must be specified")
-	}
 
-	parameterAddToHeaderOrQuery(localVarQueryParams, "imageName", r.imageName, "")
-	parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+	if r.imageName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "imageName", r.imageName, "")
+	}
+	if r.search != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
