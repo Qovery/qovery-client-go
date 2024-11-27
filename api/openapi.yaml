@@ -5057,6 +5057,14 @@ paths:
         schema:
           type: string
         style: form
+      - description: partial container image name to search
+        explode: true
+        in: query
+        name: search
+        required: true
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -15282,6 +15290,15 @@ components:
       explode: true
       in: query
       name: imageName
+      required: true
+      schema:
+        type: string
+      style: form
+    searchImageName:
+      description: partial container image name to search
+      explode: true
+      in: query
+      name: search
       required: true
       schema:
         type: string

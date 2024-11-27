@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 
 ## GetContainerVersions
 
-> ContainerVersionResponseList GetContainerVersions(ctx, organizationId, containerRegistryId).ImageName(imageName).Execute()
+> ContainerVersionResponseList GetContainerVersions(ctx, organizationId, containerRegistryId).ImageName(imageName).Search(search).Execute()
 
 List image version for a container registry
 
@@ -319,10 +319,11 @@ func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	containerRegistryId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container Registry ID
 	imageName := "imageName_example" // string | container image name
+	search := "search_example" // string | partial container image name to search
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerRegistriesAPI.GetContainerVersions(context.Background(), organizationId, containerRegistryId).ImageName(imageName).Execute()
+	resp, r, err := apiClient.ContainerRegistriesAPI.GetContainerVersions(context.Background(), organizationId, containerRegistryId).ImageName(imageName).Search(search).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContainerRegistriesAPI.GetContainerVersions``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -351,6 +352,7 @@ Name | Type | Description  | Notes
 
 
  **imageName** | **string** | container image name | 
+ **search** | **string** | partial container image name to search | 
 
 ### Return type
 

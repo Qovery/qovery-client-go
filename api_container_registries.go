@@ -506,11 +506,18 @@ type ApiGetContainerVersionsRequest struct {
 	organizationId      string
 	containerRegistryId string
 	imageName           *string
+	search              *string
 }
 
 // container image name
 func (r ApiGetContainerVersionsRequest) ImageName(imageName string) ApiGetContainerVersionsRequest {
 	r.imageName = &imageName
+	return r
+}
+
+// partial container image name to search
+func (r ApiGetContainerVersionsRequest) Search(search string) ApiGetContainerVersionsRequest {
+	r.search = &search
 	return r
 }
 
@@ -560,8 +567,12 @@ func (a *ContainerRegistriesAPIService) GetContainerVersionsExecute(r ApiGetCont
 	if r.imageName == nil {
 		return localVarReturnValue, nil, reportError("imageName is required and must be specified")
 	}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "imageName", r.imageName, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
