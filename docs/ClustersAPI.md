@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 ## DeployCluster
 
-> ClusterStatus DeployCluster(ctx, organizationId, clusterId).Execute()
+> ClusterStatus DeployCluster(ctx, organizationId, clusterId).DryRun(dryRun).Execute()
 
 Deploy a cluster
 
@@ -193,10 +193,11 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	dryRun := true // bool | default: false. Decide if the deployment of the cluster should be done in dry_run mode. Avoiding any changes (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.DeployCluster(context.Background(), organizationId, clusterId).Execute()
+	resp, r, err := apiClient.ClustersAPI.DeployCluster(context.Background(), organizationId, clusterId).DryRun(dryRun).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeployCluster``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -224,6 +225,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **dryRun** | **bool** | default: false. Decide if the deployment of the cluster should be done in dry_run mode. Avoiding any changes | 
 
 ### Return type
 

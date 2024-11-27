@@ -4715,6 +4715,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "default: false. Decide if the deployment of the cluster should\
+          \ be done in dry_run mode. Avoiding any changes"
+        explode: true
+        in: query
+        name: dry_run
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "201":
           content:

@@ -271,6 +271,13 @@ type ApiDeployClusterRequest struct {
 	ApiService     *ClustersAPIService
 	organizationId string
 	clusterId      string
+	dryRun         *bool
+}
+
+// default: false. Decide if the deployment of the cluster should be done in dry_run mode. Avoiding any changes
+func (r ApiDeployClusterRequest) DryRun(dryRun bool) ApiDeployClusterRequest {
+	r.dryRun = &dryRun
+	return r
 }
 
 func (r ApiDeployClusterRequest) Execute() (*ClusterStatus, *http.Response, error) {
@@ -319,6 +326,9 @@ func (a *ClustersAPIService) DeployClusterExecute(r ApiDeployClusterRequest) (*C
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.dryRun != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "dry_run", r.dryRun, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
