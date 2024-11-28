@@ -7171,49 +7171,6 @@ paths:
       summary: List supported languages
       tags:
       - Applications
-  /environment/{environmentId}/application/deploy:
-    post:
-      description: "Start a deployment of the environment. Any of the services within\
-        \ the chosen environment based on the following rule: a service is deployed\
-        \ only if a new version is specified in the payload for that application/container\
-        \ or if there was a change in its configuration that needs to be applied (vCPU,RAM\
-        \ etc..)"
-      operationId: deployAllApplications
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DeployAllRequest'
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Deployed applications
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Deploy applications
-      tags:
-      - Environment
   /environment/{environmentId}/container:
     get:
       operationId: listContainer

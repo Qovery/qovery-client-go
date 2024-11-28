@@ -292,7 +292,6 @@ Class | Method | HTTP request | Description
 *EnvironmentAPI* | [**CheckDockerfile**](docs/EnvironmentAPI.md#checkdockerfile) | **Post** /environment/{environmentId}/checkDockerfile | Check dockerfile configuration is correct
 *EnvironmentAPI* | [**CheckGitFile**](docs/EnvironmentAPI.md#checkgitfile) | **Post** /environment/{environmentId}/checkGitFile | Check git file configuration is correct
 *EnvironmentAPI* | [**CheckHelmRepository**](docs/EnvironmentAPI.md#checkhelmrepository) | **Post** /environment/{environmentId}/checkHelmRepository | Check helm repository configuration is correct
-*EnvironmentAPI* | [**DeployAllApplications**](docs/EnvironmentAPI.md#deployallapplications) | **Post** /environment/{environmentId}/application/deploy | Deploy applications
 *EnvironmentActionsAPI* | [**CancelEnvironmentDeployment**](docs/EnvironmentActionsAPI.md#cancelenvironmentdeployment) | **Post** /environment/{environmentId}/cancelDeployment | Cancel environment deployment
 *EnvironmentActionsAPI* | [**CleanFailedJobs**](docs/EnvironmentActionsAPI.md#cleanfailedjobs) | **Post** /environment/{environmentId}/cleanFailedJobs | Clean failed jobs within an environment
 *EnvironmentActionsAPI* | [**CloneEnvironment**](docs/EnvironmentActionsAPI.md#cloneenvironment) | **Post** /environment/{environmentId}/clone | Clone environment
