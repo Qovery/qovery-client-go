@@ -29,8 +29,7 @@ type ApplicationEditRequest struct {
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
 	BuildMode     *BuildModeEnum                   `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
-	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
-	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
+	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -63,7 +62,7 @@ type _ApplicationEditRequest ApplicationEditRequest
 // will change when the set of required properties is changed
 func NewApplicationEditRequest(healthchecks Healthcheck) *ApplicationEditRequest {
 	this := ApplicationEditRequest{}
-	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
 	var cpu int32 = 500
 	this.Cpu = &cpu
@@ -84,7 +83,7 @@ func NewApplicationEditRequest(healthchecks Healthcheck) *ApplicationEditRequest
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationEditRequestWithDefaults() *ApplicationEditRequest {
 	this := ApplicationEditRequest{}
-	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
 	var cpu int32 = 500
 	this.Cpu = &cpu
@@ -300,49 +299,6 @@ func (o *ApplicationEditRequest) SetDockerfilePathNil() {
 // UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 func (o *ApplicationEditRequest) UnsetDockerfilePath() {
 	o.DockerfilePath.Unset()
-}
-
-// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationEditRequest) GetBuildpackLanguage() BuildPackLanguageEnum {
-	if o == nil || IsNil(o.BuildpackLanguage.Get()) {
-		var ret BuildPackLanguageEnum
-		return ret
-	}
-	return *o.BuildpackLanguage.Get()
-}
-
-// GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationEditRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BuildpackLanguage.Get(), o.BuildpackLanguage.IsSet()
-}
-
-// HasBuildpackLanguage returns a boolean if a field has been set.
-func (o *ApplicationEditRequest) HasBuildpackLanguage() bool {
-	if o != nil && o.BuildpackLanguage.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBuildpackLanguage gets a reference to the given NullableBuildPackLanguageEnum and assigns it to the BuildpackLanguage field.
-func (o *ApplicationEditRequest) SetBuildpackLanguage(v BuildPackLanguageEnum) {
-	o.BuildpackLanguage.Set(&v)
-}
-
-// SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
-func (o *ApplicationEditRequest) SetBuildpackLanguageNil() {
-	o.BuildpackLanguage.Set(nil)
-}
-
-// UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
-func (o *ApplicationEditRequest) UnsetBuildpackLanguage() {
-	o.BuildpackLanguage.Unset()
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -792,9 +748,6 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if o.DockerfilePath.IsSet() {
 		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
-	if o.BuildpackLanguage.IsSet() {
-		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
-	}
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
@@ -881,7 +834,6 @@ func (o *ApplicationEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "build_mode")
 		delete(additionalProperties, "dockerfile_path")
-		delete(additionalProperties, "buildpack_language")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "min_running_instances")

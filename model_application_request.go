@@ -30,8 +30,7 @@ type ApplicationRequest struct {
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	BuildMode     *BuildModeEnum                  `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath    NullableString                `json:"dockerfile_path,omitempty"`
-	BuildpackLanguage NullableBuildPackLanguageEnum `json:"buildpack_language,omitempty"`
+	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -65,7 +64,7 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 	this := ApplicationRequest{}
 	this.Name = name
 	this.GitRepository = gitRepository
-	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
 	var cpu int32 = 500
 	this.Cpu = &cpu
@@ -86,7 +85,7 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this := ApplicationRequest{}
-	var buildMode BuildModeEnum = BUILDMODEENUM_BUILDPACKS
+	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
 	var cpu int32 = 500
 	this.Cpu = &cpu
@@ -329,49 +328,6 @@ func (o *ApplicationRequest) SetDockerfilePathNil() {
 // UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 func (o *ApplicationRequest) UnsetDockerfilePath() {
 	o.DockerfilePath.Unset()
-}
-
-// GetBuildpackLanguage returns the BuildpackLanguage field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ApplicationRequest) GetBuildpackLanguage() BuildPackLanguageEnum {
-	if o == nil || IsNil(o.BuildpackLanguage.Get()) {
-		var ret BuildPackLanguageEnum
-		return ret
-	}
-	return *o.BuildpackLanguage.Get()
-}
-
-// GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ApplicationRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.BuildpackLanguage.Get(), o.BuildpackLanguage.IsSet()
-}
-
-// HasBuildpackLanguage returns a boolean if a field has been set.
-func (o *ApplicationRequest) HasBuildpackLanguage() bool {
-	if o != nil && o.BuildpackLanguage.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetBuildpackLanguage gets a reference to the given NullableBuildPackLanguageEnum and assigns it to the BuildpackLanguage field.
-func (o *ApplicationRequest) SetBuildpackLanguage(v BuildPackLanguageEnum) {
-	o.BuildpackLanguage.Set(&v)
-}
-
-// SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
-func (o *ApplicationRequest) SetBuildpackLanguageNil() {
-	o.BuildpackLanguage.Set(nil)
-}
-
-// UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
-func (o *ApplicationRequest) UnsetBuildpackLanguage() {
-	o.BuildpackLanguage.Unset()
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -788,9 +744,6 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if o.DockerfilePath.IsSet() {
 		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
-	if o.BuildpackLanguage.IsSet() {
-		toSerialize["buildpack_language"] = o.BuildpackLanguage.Get()
-	}
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
 	}
@@ -877,7 +830,6 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "build_mode")
 		delete(additionalProperties, "dockerfile_path")
-		delete(additionalProperties, "buildpack_language")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "min_running_instances")

@@ -128,7 +128,6 @@ Class | Method | HTTP request | Description
 *ApplicationsAPI* | [**CreateApplication**](docs/ApplicationsAPI.md#createapplication) | **Post** /environment/{environmentId}/application | Create an application
 *ApplicationsAPI* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsAPI.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsAPI* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsAPI.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
-*ApplicationsAPI* | [**GetEnvironmentApplicationSupportedLanguages**](docs/ApplicationsAPI.md#getenvironmentapplicationsupportedlanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
 *ApplicationsAPI* | [**ListApplication**](docs/ApplicationsAPI.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
 *BackupsAPI* | [**AddBackupDatabase**](docs/BackupsAPI.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
 *BackupsAPI* | [**ListDatabaseBackup**](docs/BackupsAPI.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
@@ -550,7 +549,6 @@ Class | Method | HTTP request | Description
  - [BillingStatus](docs/BillingStatus.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
- - [BuildPackLanguageEnum](docs/BuildPackLanguageEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
  - [CheckedCustomDomainResponse](docs/CheckedCustomDomainResponse.md)
  - [CheckedCustomDomainStatus](docs/CheckedCustomDomainStatus.md)
@@ -710,8 +708,6 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
- - [EnvironmentApplicationsSupportedLanguage](docs/EnvironmentApplicationsSupportedLanguage.md)
- - [EnvironmentApplicationsSupportedLanguageList](docs/EnvironmentApplicationsSupportedLanguageList.md)
  - [EnvironmentDeploymentRule](docs/EnvironmentDeploymentRule.md)
  - [EnvironmentDeploymentRuleEditRequest](docs/EnvironmentDeploymentRuleEditRequest.md)
  - [EnvironmentEditRequest](docs/EnvironmentEditRequest.md)

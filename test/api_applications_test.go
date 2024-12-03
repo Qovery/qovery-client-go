@@ -76,20 +76,6 @@ func Test_qovery_ApplicationsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationsAPIService GetEnvironmentApplicationSupportedLanguages", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.ApplicationsAPI.GetEnvironmentApplicationSupportedLanguages(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ApplicationsAPIService ListApplication", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

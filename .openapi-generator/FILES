@@ -136,7 +136,6 @@ docs/BillingInfoRequest.md
 docs/BillingStatus.md
 docs/Budget.md
 docs/BuildModeEnum.md
-docs/BuildPackLanguageEnum.md
 docs/CancelEnvironmentDeploymentRequest.md
 docs/CheckedCustomDomainResponse.md
 docs/CheckedCustomDomainStatus.md
@@ -318,8 +317,6 @@ docs/Environment.md
 docs/EnvironmentAPI.md
 docs/EnvironmentActionsAPI.md
 docs/EnvironmentAllOfCloudProvider.md
-docs/EnvironmentApplicationsSupportedLanguage.md
-docs/EnvironmentApplicationsSupportedLanguageList.md
 docs/EnvironmentDeploymentHistoryAPI.md
 docs/EnvironmentDeploymentRule.md
 docs/EnvironmentDeploymentRuleAPI.md
@@ -722,7 +719,6 @@ model_billing_info_request.go
 model_billing_status.go
 model_budget.go
 model_build_mode_enum.go
-model_build_pack_language_enum.go
 model_cancel_environment_deployment_request.go
 model_checked_custom_domain_response.go
 model_checked_custom_domain_status.go
@@ -882,8 +878,6 @@ model_dockerfile_check_request.go
 model_dockerfile_check_response.go
 model_environment.go
 model_environment_all_of_cloud_provider.go
-model_environment_applications_supported_language.go
-model_environment_applications_supported_language_list.go
 model_environment_deployment_rule.go
 model_environment_deployment_rule_edit_request.go
 model_environment_edit_request.go

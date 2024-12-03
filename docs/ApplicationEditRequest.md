@@ -8,9 +8,8 @@ Name | Type | Description | Notes
 **Name** | Pointer to **string** | name is case insensitive | [optional] 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
-**BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_BUILDPACKS]
+**BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile | [optional] 
-**BuildpackLanguage** | Pointer to [**NullableBuildPackLanguageEnum**](BuildPackLanguageEnum.md) |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
@@ -204,41 +203,6 @@ HasDockerfilePath returns a boolean if a field has been set.
 `func (o *ApplicationEditRequest) UnsetDockerfilePath()`
 
 UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
-### GetBuildpackLanguage
-
-`func (o *ApplicationEditRequest) GetBuildpackLanguage() BuildPackLanguageEnum`
-
-GetBuildpackLanguage returns the BuildpackLanguage field if non-nil, zero value otherwise.
-
-### GetBuildpackLanguageOk
-
-`func (o *ApplicationEditRequest) GetBuildpackLanguageOk() (*BuildPackLanguageEnum, bool)`
-
-GetBuildpackLanguageOk returns a tuple with the BuildpackLanguage field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetBuildpackLanguage
-
-`func (o *ApplicationEditRequest) SetBuildpackLanguage(v BuildPackLanguageEnum)`
-
-SetBuildpackLanguage sets BuildpackLanguage field to given value.
-
-### HasBuildpackLanguage
-
-`func (o *ApplicationEditRequest) HasBuildpackLanguage() bool`
-
-HasBuildpackLanguage returns a boolean if a field has been set.
-
-### SetBuildpackLanguageNil
-
-`func (o *ApplicationEditRequest) SetBuildpackLanguageNil(b bool)`
-
- SetBuildpackLanguageNil sets the value for BuildpackLanguage to be an explicit nil
-
-### UnsetBuildpackLanguage
-`func (o *ApplicationEditRequest) UnsetBuildpackLanguage()`
-
-UnsetBuildpackLanguage ensures that no value is present for BuildpackLanguage, not even an explicit nil
 ### GetCpu
 
 `func (o *ApplicationEditRequest) GetCpu() int32`

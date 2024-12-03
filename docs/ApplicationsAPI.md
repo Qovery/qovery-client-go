@@ -8,7 +8,6 @@ Method | HTTP request | Description
 [**CreateApplication**](ApplicationsAPI.md#CreateApplication) | **Post** /environment/{environmentId}/application | Create an application
 [**GetDefaultApplicationAdvancedSettings**](ApplicationsAPI.md#GetDefaultApplicationAdvancedSettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 [**GetEnvironmentApplicationStatus**](ApplicationsAPI.md#GetEnvironmentApplicationStatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
-[**GetEnvironmentApplicationSupportedLanguages**](ApplicationsAPI.md#GetEnvironmentApplicationSupportedLanguages) | **Get** /environment/{environmentId}/application/supportedLanguage | List supported languages
 [**ListApplication**](ApplicationsAPI.md#ListApplication) | **Get** /environment/{environmentId}/application | List applications
 
 
@@ -271,76 +270,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReferenceObjectStatusResponseList**](ReferenceObjectStatusResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetEnvironmentApplicationSupportedLanguages
-
-> EnvironmentApplicationsSupportedLanguageList GetEnvironmentApplicationSupportedLanguages(ctx, environmentId).Execute()
-
-List supported languages
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.GetEnvironmentApplicationSupportedLanguages(context.Background(), environmentId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.GetEnvironmentApplicationSupportedLanguages``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetEnvironmentApplicationSupportedLanguages`: EnvironmentApplicationsSupportedLanguageList
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationsAPI.GetEnvironmentApplicationSupportedLanguages`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetEnvironmentApplicationSupportedLanguagesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**EnvironmentApplicationsSupportedLanguageList**](EnvironmentApplicationsSupportedLanguageList.md)
 
 ### Authorization
 

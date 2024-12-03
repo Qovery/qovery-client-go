@@ -7141,36 +7141,6 @@ paths:
       summary: List all environment applications statuses
       tags:
       - Applications
-  /environment/{environmentId}/application/supportedLanguage:
-    get:
-      description: Returns list of languages supported by Buildpacks.
-      operationId: getEnvironmentApplicationSupportedLanguages
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguageList'
-          description: Supported languages list.
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List supported languages
-      tags:
-      - Applications
   /environment/{environmentId}/container:
     get:
       operationId: listContainer
@@ -15915,8 +15885,6 @@ components:
               build_mode = DOCKER
             nullable: true
             type: string
-          buildpack_language:
-            $ref: '#/components/schemas/BuildPackLanguageEnum'
           cpu:
             description: unit is millicores (m). 1000m = 1 cpu
             example: 1250
@@ -16089,7 +16057,6 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        buildpack_language: CLOJURE
         updated_at: 2000-01-23T04:56:07.000+00:00
         annotations_groups:
         - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -16119,7 +16086,7 @@ components:
         entrypoint: entrypoint
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        build_mode: BUILDPACKS
+        build_mode: DOCKER
         cpu: 1250
         dockerfile_path: dockerfile_path
         icon_uri: https://openapi-generator.tech
@@ -16199,8 +16166,6 @@ components:
             description: The path of the associated Dockerfile
             nullable: true
             type: string
-          buildpack_language:
-            $ref: '#/components/schemas/BuildPackLanguageEnum'
           cpu:
             default: 500
             description: unit is millicores (m). 1000m = 1 cpu
@@ -16309,7 +16274,7 @@ components:
                 port: 5
                 service: service
             timeout_seconds: 9
-        build_mode: BUILDPACKS
+        build_mode: DOCKER
         description: description
         cpu: 1250
         max_running_instances: 6
@@ -16344,7 +16309,6 @@ components:
           internal_port: 8080
           is_default: true
         icon_uri: https://openapi-generator.tech
-        buildpack_language: CLOJURE
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16571,8 +16535,6 @@ components:
               build_mode = DOCKER
             nullable: true
             type: string
-          buildpack_language:
-            $ref: '#/components/schemas/BuildPackLanguageEnum'
           cpu:
             default: 500
             description: unit is millicores (m). 1000m = 1 cpu
@@ -16683,7 +16645,7 @@ components:
                 port: 5
                 service: service
             timeout_seconds: 9
-        build_mode: BUILDPACKS
+        build_mode: DOCKER
         description: description
         cpu: 1250
         max_running_instances: 6
@@ -16718,7 +16680,6 @@ components:
           internal_port: 8080
           is_default: true
         icon_uri: https://openapi-generator.tech
-        buildpack_language: CLOJURE
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -16842,7 +16803,6 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          buildpack_language: CLOJURE
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -16872,7 +16832,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          build_mode: BUILDPACKS
+          build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
           icon_uri: https://openapi-generator.tech
@@ -16994,7 +16954,6 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          buildpack_language: CLOJURE
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -17024,7 +16983,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          build_mode: BUILDPACKS
+          build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
           icon_uri: https://openapi-generator.tech
@@ -17413,29 +17372,11 @@ components:
           type: string
       type: object
     BuildModeEnum:
-      default: BUILDPACKS
+      default: DOCKER
       description: |
         `DOCKER` requires `dockerfile_path`
-        `BUILDPACKS` does not require any `dockerfile_path`
       enum:
-      - BUILDPACKS
       - DOCKER
-      type: string
-    BuildPackLanguageEnum:
-      description: Development language of the application
-      enum:
-      - CLOJURE
-      - GO
-      - GRADLE
-      - GRAILS
-      - JAVA
-      - JVM
-      - NODE_JS
-      - PHP
-      - PLAY
-      - PYTHON
-      - SCALA
-      nullable: true
       type: string
     CloneEnvironmentRequest:
       example:
@@ -22340,27 +22281,6 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Environment'
-          type: array
-      type: object
-    EnvironmentApplicationsSupportedLanguage:
-      example:
-        name: Ruby
-      properties:
-        name:
-          example: Ruby
-          type: string
-      required:
-      - name
-      type: object
-    EnvironmentApplicationsSupportedLanguageList:
-      example:
-        results:
-        - name: Ruby
-        - name: Ruby
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/EnvironmentApplicationsSupportedLanguage'
           type: array
       type: object
     EnvironmentDeploymentRule:

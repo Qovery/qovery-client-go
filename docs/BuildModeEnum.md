@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `BUILDPACKS` (value: `"BUILDPACKS"`)
-
 * `DOCKER` (value: `"DOCKER"`)
 
 
