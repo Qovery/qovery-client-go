@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// ServiceTypeEnum type of the service (application, database, job, gateway...)
+// ServiceTypeEnum type of the service (application, database, job, ...)
 type ServiceTypeEnum string
 
 // List of ServiceTypeEnum
@@ -26,7 +26,6 @@ const (
 	SERVICETYPEENUM_CONTAINER   ServiceTypeEnum = "CONTAINER"
 	SERVICETYPEENUM_JOB         ServiceTypeEnum = "JOB"
 	SERVICETYPEENUM_HELM        ServiceTypeEnum = "HELM"
-	SERVICETYPEENUM_ROUTER      ServiceTypeEnum = "ROUTER"
 )
 
 // All allowed values of ServiceTypeEnum enum
@@ -36,7 +35,6 @@ var AllowedServiceTypeEnumEnumValues = []ServiceTypeEnum{
 	"CONTAINER",
 	"JOB",
 	"HELM",
-	"ROUTER",
 }
 
 func (v *ServiceTypeEnum) UnmarshalJSON(src []byte) error {

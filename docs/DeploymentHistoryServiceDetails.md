@@ -10,13 +10,14 @@ Name | Type | Description | Notes
 **Arguments** | **[]string** |  | 
 **Entrypoint** | Pointer to **string** |  | [optional] 
 **Schedule** | Pointer to [**DeploymentHistoryServiceDetailsOneOf2Schedule**](DeploymentHistoryServiceDetailsOneOf2Schedule.md) |  | [optional] 
+**JobType** | **string** |  | 
 **Repository** | Pointer to [**DeploymentHistoryServiceDetailsOneOf3Repository**](DeploymentHistoryServiceDetailsOneOf3Repository.md) |  | [optional] 
 
 ## Methods
 
 ### NewDeploymentHistoryServiceDetails
 
-`func NewDeploymentHistoryServiceDetails(commit NullableCommit, imageName string, tag string, arguments []string, ) *DeploymentHistoryServiceDetails`
+`func NewDeploymentHistoryServiceDetails(commit NullableCommit, imageName string, tag string, arguments []string, jobType string, ) *DeploymentHistoryServiceDetails`
 
 NewDeploymentHistoryServiceDetails instantiates a new DeploymentHistoryServiceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -170,6 +171,26 @@ SetSchedule sets Schedule field to given value.
 `func (o *DeploymentHistoryServiceDetails) HasSchedule() bool`
 
 HasSchedule returns a boolean if a field has been set.
+
+### GetJobType
+
+`func (o *DeploymentHistoryServiceDetails) GetJobType() string`
+
+GetJobType returns the JobType field if non-nil, zero value otherwise.
+
+### GetJobTypeOk
+
+`func (o *DeploymentHistoryServiceDetails) GetJobTypeOk() (*string, bool)`
+
+GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobType
+
+`func (o *DeploymentHistoryServiceDetails) SetJobType(v string)`
+
+SetJobType sets JobType field to given value.
+
 
 ### GetRepository
 

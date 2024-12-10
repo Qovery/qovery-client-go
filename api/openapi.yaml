@@ -21563,6 +21563,7 @@ components:
       - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_1'
       - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_2'
       - $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_3'
+      type: object
       x-stoplight:
         id: vx9hzryfyv7sb
     DeploymentHistoryEnvironmentPaginatedResponseList:
@@ -28085,15 +28086,16 @@ components:
       - number
       type: object
     ServiceTypeEnum:
-      description: "type of the service (application, database, job, gateway...)"
+      description: "type of the service (application, database, job, ...)"
       enum:
       - APPLICATION
       - DATABASE
       - CONTAINER
       - JOB
       - HELM
-      - ROUTER
       type: string
+      x-stoplight:
+        id: d66063cd29913
     SignUp:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -31217,8 +31219,16 @@ components:
           $ref: '#/components/schemas/Commit'
         schedule:
           $ref: '#/components/schemas/DeploymentHistoryServiceDetails_oneOf_2_schedule'
+        job_type:
+          enum:
+          - CRON
+          - LIFECYCLE
+          type: string
+          x-stoplight:
+            id: tz8apy1pqi9c5
       required:
       - image_name
+      - job_type
       - tag
       type: object
     DeploymentHistoryServiceDetails_oneOf_3_repository:

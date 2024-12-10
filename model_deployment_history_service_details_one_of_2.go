@@ -25,6 +25,7 @@ type DeploymentHistoryServiceDetailsOneOf2 struct {
 	Tag                  string                                         `json:"tag"`
 	Commit               NullableCommit                                 `json:"commit,omitempty"`
 	Schedule             *DeploymentHistoryServiceDetailsOneOf2Schedule `json:"schedule,omitempty"`
+	JobType              string                                         `json:"job_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,10 +35,11 @@ type _DeploymentHistoryServiceDetailsOneOf2 DeploymentHistoryServiceDetailsOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryServiceDetailsOneOf2(imageName string, tag string) *DeploymentHistoryServiceDetailsOneOf2 {
+func NewDeploymentHistoryServiceDetailsOneOf2(imageName string, tag string, jobType string) *DeploymentHistoryServiceDetailsOneOf2 {
 	this := DeploymentHistoryServiceDetailsOneOf2{}
 	this.ImageName = imageName
 	this.Tag = tag
+	this.JobType = jobType
 	return &this
 }
 
@@ -172,6 +174,30 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) SetSchedule(v DeploymentHistoryS
 	o.Schedule = &v
 }
 
+// GetJobType returns the JobType field value
+func (o *DeploymentHistoryServiceDetailsOneOf2) GetJobType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.JobType
+}
+
+// GetJobTypeOk returns a tuple with the JobType field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryServiceDetailsOneOf2) GetJobTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.JobType, true
+}
+
+// SetJobType sets field value
+func (o *DeploymentHistoryServiceDetailsOneOf2) SetJobType(v string) {
+	o.JobType = v
+}
+
 func (o DeploymentHistoryServiceDetailsOneOf2) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -190,6 +216,7 @@ func (o DeploymentHistoryServiceDetailsOneOf2) ToMap() (map[string]interface{}, 
 	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
 	}
+	toSerialize["job_type"] = o.JobType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -205,6 +232,7 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) UnmarshalJSON(data []byte) (err 
 	requiredProperties := []string{
 		"image_name",
 		"tag",
+		"job_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -238,6 +266,7 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "tag")
 		delete(additionalProperties, "commit")
 		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "job_type")
 		o.AdditionalProperties = additionalProperties
 	}
 
