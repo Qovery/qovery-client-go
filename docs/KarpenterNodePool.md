@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Requirements** | [**[]KarpenterNodePoolRequirement**](KarpenterNodePoolRequirement.md) |  | 
+**StableOverride** | Pointer to [**KarpenterNodePoolOverride**](KarpenterNodePoolOverride.md) |  | [optional] 
 
 ## Methods
 
@@ -44,6 +45,31 @@ and a boolean to check if the value has been set.
 
 SetRequirements sets Requirements field to given value.
 
+
+### GetStableOverride
+
+`func (o *KarpenterNodePool) GetStableOverride() KarpenterNodePoolOverride`
+
+GetStableOverride returns the StableOverride field if non-nil, zero value otherwise.
+
+### GetStableOverrideOk
+
+`func (o *KarpenterNodePool) GetStableOverrideOk() (*KarpenterNodePoolOverride, bool)`
+
+GetStableOverrideOk returns a tuple with the StableOverride field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStableOverride
+
+`func (o *KarpenterNodePool) SetStableOverride(v KarpenterNodePoolOverride)`
+
+SetStableOverride sets StableOverride field to given value.
+
+### HasStableOverride
+
+`func (o *KarpenterNodePool) HasStableOverride() bool`
+
+HasStableOverride returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

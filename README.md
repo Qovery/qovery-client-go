@@ -842,6 +842,8 @@ Class | Method | HTTP request | Description
  - [JobScheduleEvent](docs/JobScheduleEvent.md)
  - [JobSourceDockerResponse](docs/JobSourceDockerResponse.md)
  - [KarpenterNodePool](docs/KarpenterNodePool.md)
+ - [KarpenterNodePoolConsolidation](docs/KarpenterNodePoolConsolidation.md)
+ - [KarpenterNodePoolOverride](docs/KarpenterNodePoolOverride.md)
  - [KarpenterNodePoolRequirement](docs/KarpenterNodePoolRequirement.md)
  - [KarpenterNodePoolRequirementKey](docs/KarpenterNodePoolRequirementKey.md)
  - [KarpenterNodePoolRequirementOperator](docs/KarpenterNodePoolRequirementOperator.md)

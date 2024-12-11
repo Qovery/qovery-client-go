@@ -22,6 +22,7 @@ var _ MappedNullable = &KarpenterNodePool{}
 // KarpenterNodePool
 type KarpenterNodePool struct {
 	Requirements         []KarpenterNodePoolRequirement `json:"requirements"`
+	StableOverride       *KarpenterNodePoolOverride     `json:"stable_override,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -69,6 +70,38 @@ func (o *KarpenterNodePool) SetRequirements(v []KarpenterNodePoolRequirement) {
 	o.Requirements = v
 }
 
+// GetStableOverride returns the StableOverride field value if set, zero value otherwise.
+func (o *KarpenterNodePool) GetStableOverride() KarpenterNodePoolOverride {
+	if o == nil || IsNil(o.StableOverride) {
+		var ret KarpenterNodePoolOverride
+		return ret
+	}
+	return *o.StableOverride
+}
+
+// GetStableOverrideOk returns a tuple with the StableOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePool) GetStableOverrideOk() (*KarpenterNodePoolOverride, bool) {
+	if o == nil || IsNil(o.StableOverride) {
+		return nil, false
+	}
+	return o.StableOverride, true
+}
+
+// HasStableOverride returns a boolean if a field has been set.
+func (o *KarpenterNodePool) HasStableOverride() bool {
+	if o != nil && !IsNil(o.StableOverride) {
+		return true
+	}
+
+	return false
+}
+
+// SetStableOverride gets a reference to the given KarpenterNodePoolOverride and assigns it to the StableOverride field.
+func (o *KarpenterNodePool) SetStableOverride(v KarpenterNodePoolOverride) {
+	o.StableOverride = &v
+}
+
 func (o KarpenterNodePool) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -80,6 +113,9 @@ func (o KarpenterNodePool) MarshalJSON() ([]byte, error) {
 func (o KarpenterNodePool) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["requirements"] = o.Requirements
+	if !IsNil(o.StableOverride) {
+		toSerialize["stable_override"] = o.StableOverride
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +160,7 @@ func (o *KarpenterNodePool) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requirements")
+		delete(additionalProperties, "stable_override")
 		o.AdditionalProperties = additionalProperties
 	}
 

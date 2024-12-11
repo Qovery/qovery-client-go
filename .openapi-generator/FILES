@@ -477,6 +477,8 @@ docs/JobSecretAPI.md
 docs/JobSourceDockerResponse.md
 docs/JobsAPI.md
 docs/KarpenterNodePool.md
+docs/KarpenterNodePoolConsolidation.md
+docs/KarpenterNodePoolOverride.md
 docs/KarpenterNodePoolRequirement.md
 docs/KarpenterNodePoolRequirementKey.md
 docs/KarpenterNodePoolRequirementOperator.md
@@ -1012,6 +1014,8 @@ model_job_response_list.go
 model_job_schedule_event.go
 model_job_source_docker_response.go
 model_karpenter_node_pool.go
+model_karpenter_node_pool_consolidation.go
+model_karpenter_node_pool_override.go
 model_karpenter_node_pool_requirement.go
 model_karpenter_node_pool_requirement_key.go
 model_karpenter_node_pool_requirement_operator.go
