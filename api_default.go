@@ -144,7 +144,7 @@ type ApiListServicesByEnvironmentIdRequest struct {
 	environmentId string
 }
 
-func (r ApiListServicesByEnvironmentIdRequest) Execute() ([]ListServicesByEnvironmentId200ResponseInner, *http.Response, error) {
+func (r ApiListServicesByEnvironmentIdRequest) Execute() (*ListServicesByEnvironmentId200Response, *http.Response, error) {
 	return r.ApiService.ListServicesByEnvironmentIdExecute(r)
 }
 
@@ -164,13 +164,13 @@ func (a *DefaultAPIService) ListServicesByEnvironmentId(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return []ListServicesByEnvironmentId200ResponseInner
-func (a *DefaultAPIService) ListServicesByEnvironmentIdExecute(r ApiListServicesByEnvironmentIdRequest) ([]ListServicesByEnvironmentId200ResponseInner, *http.Response, error) {
+//  @return ListServicesByEnvironmentId200Response
+func (a *DefaultAPIService) ListServicesByEnvironmentIdExecute(r ApiListServicesByEnvironmentIdRequest) (*ListServicesByEnvironmentId200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ListServicesByEnvironmentId200ResponseInner
+		localVarReturnValue *ListServicesByEnvironmentId200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DefaultAPIService.ListServicesByEnvironmentId")

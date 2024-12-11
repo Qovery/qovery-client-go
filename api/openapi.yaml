@@ -15185,9 +15185,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/listServicesByEnvironmentId_200_response_inner'
-                type: array
+                $ref: '#/components/schemas/listServicesByEnvironmentId_200_response'
           description: Service List
       summary: List Services By EnvironmentId
       tags: []
@@ -30638,7 +30636,7 @@ components:
       - spec
       - status
       type: object
-    listServicesByEnvironmentId_200_response_inner:
+    listServicesByEnvironmentId_200_response_results_inner:
       oneOf:
       - $ref: '#/components/schemas/Application'
       - $ref: '#/components/schemas/ContainerResponse'
@@ -30646,7 +30644,322 @@ components:
       - $ref: '#/components/schemas/HelmResponse'
       - $ref: '#/components/schemas/JobResponse'
       x-stoplight:
-        id: naz8145q04e1j
+        id: lzycmwmefigki
+    listServicesByEnvironmentId_200_response:
+      example:
+        results:
+        - min_running_instances: 0
+          serviceType: APPLICATION
+          auto_deploy: true
+          memory: 1024
+          labels_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          maximum_memory: 16384
+          healthchecks:
+            readiness_probe:
+              period_seconds: 7
+              initial_delay_seconds: 2
+              failure_threshold: 2
+              success_threshold: 3
+              type:
+                tcp:
+                  port: 1
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 5
+                exec:
+                  command:
+                  - command
+                  - command
+                grpc:
+                  port: 5
+                  service: service
+              timeout_seconds: 9
+            liveness_probe:
+              period_seconds: 7
+              initial_delay_seconds: 2
+              failure_threshold: 2
+              success_threshold: 3
+              type:
+                tcp:
+                  port: 1
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 5
+                exec:
+                  command:
+                  - command
+                  - command
+                grpc:
+                  port: 5
+                  service: service
+              timeout_seconds: 9
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          max_running_instances: 6
+          git_repository:
+            owner: John Doe
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            has_access: true
+            branch: branch
+            deployed_commit_id: deployed_commit_id
+            url: https://openapi-generator.tech
+            deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+            root_path: root_path
+            deployed_commit_tag: v1.0.1
+            deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            provider: BITBUCKET
+            name: simple-node-app
+            git_token_name: git_token_name
+          storage:
+          - size: 16
+            mount_point: /mnt/images
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: FAST_SSD
+          - size: 16
+            mount_point: /mnt/images
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: FAST_SSD
+          ports:
+          - publicly_accessible: true
+            protocol: HTTP
+            external_port: 8080
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            internal_port: 8080
+            is_default: true
+          - publicly_accessible: true
+            protocol: HTTP
+            external_port: 8080
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            internal_port: 8080
+            is_default: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          annotations_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            annotations:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scopes:
+            - DEPLOYMENTS
+            - DEPLOYMENTS
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            annotations:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scopes:
+            - DEPLOYMENTS
+            - DEPLOYMENTS
+          entrypoint: entrypoint
+          auto_preview: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          build_mode: DOCKER
+          cpu: 1250
+          dockerfile_path: dockerfile_path
+          icon_uri: https://openapi-generator.tech
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          maximum_cpu: 16000
+          name: name
+          arguments:
+          - arguments
+          - arguments
+        - min_running_instances: 0
+          serviceType: APPLICATION
+          auto_deploy: true
+          memory: 1024
+          labels_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            labels:
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+            - propagate_to_cloud_provider: true
+              value: value
+              key: key
+          maximum_memory: 16384
+          healthchecks:
+            readiness_probe:
+              period_seconds: 7
+              initial_delay_seconds: 2
+              failure_threshold: 2
+              success_threshold: 3
+              type:
+                tcp:
+                  port: 1
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 5
+                exec:
+                  command:
+                  - command
+                  - command
+                grpc:
+                  port: 5
+                  service: service
+              timeout_seconds: 9
+            liveness_probe:
+              period_seconds: 7
+              initial_delay_seconds: 2
+              failure_threshold: 2
+              success_threshold: 3
+              type:
+                tcp:
+                  port: 1
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 5
+                exec:
+                  command:
+                  - command
+                  - command
+                grpc:
+                  port: 5
+                  service: service
+              timeout_seconds: 9
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          max_running_instances: 6
+          git_repository:
+            owner: John Doe
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            has_access: true
+            branch: branch
+            deployed_commit_id: deployed_commit_id
+            url: https://openapi-generator.tech
+            deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+            root_path: root_path
+            deployed_commit_tag: v1.0.1
+            deployed_commit_contributor: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            provider: BITBUCKET
+            name: simple-node-app
+            git_token_name: git_token_name
+          storage:
+          - size: 16
+            mount_point: /mnt/images
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: FAST_SSD
+          - size: 16
+            mount_point: /mnt/images
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: FAST_SSD
+          ports:
+          - publicly_accessible: true
+            protocol: HTTP
+            external_port: 8080
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            internal_port: 8080
+            is_default: true
+          - publicly_accessible: true
+            protocol: HTTP
+            external_port: 8080
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            internal_port: 8080
+            is_default: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          annotations_groups:
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            annotations:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scopes:
+            - DEPLOYMENTS
+            - DEPLOYMENTS
+          - updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            annotations:
+            - value: value
+              key: key
+            - value: value
+              key: key
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scopes:
+            - DEPLOYMENTS
+            - DEPLOYMENTS
+          entrypoint: entrypoint
+          auto_preview: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          build_mode: DOCKER
+          cpu: 1250
+          dockerfile_path: dockerfile_path
+          icon_uri: https://openapi-generator.tech
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          maximum_cpu: 16000
+          name: name
+          arguments:
+          - arguments
+          - arguments
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/listServicesByEnvironmentId_200_response_results_inner'
+          type: array
+          x-stoplight:
+            id: 0t9ccei2ecd8d
+      type: object
     ServicePortRequest_ports_inner:
       example:
         publicly_accessible: true

@@ -16,8 +16,8 @@ import (
 	"fmt"
 )
 
-// ListServicesByEnvironmentId200ResponseInner - struct for ListServicesByEnvironmentId200ResponseInner
-type ListServicesByEnvironmentId200ResponseInner struct {
+// ListServicesByEnvironmentId200ResponseResultsInner - struct for ListServicesByEnvironmentId200ResponseResultsInner
+type ListServicesByEnvironmentId200ResponseResultsInner struct {
 	Application       *Application
 	ContainerResponse *ContainerResponse
 	Database          *Database
@@ -25,43 +25,43 @@ type ListServicesByEnvironmentId200ResponseInner struct {
 	JobResponse       *JobResponse
 }
 
-// ApplicationAsListServicesByEnvironmentId200ResponseInner is a convenience function that returns Application wrapped in ListServicesByEnvironmentId200ResponseInner
-func ApplicationAsListServicesByEnvironmentId200ResponseInner(v *Application) ListServicesByEnvironmentId200ResponseInner {
-	return ListServicesByEnvironmentId200ResponseInner{
+// ApplicationAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns Application wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func ApplicationAsListServicesByEnvironmentId200ResponseResultsInner(v *Application) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
 		Application: v,
 	}
 }
 
-// ContainerResponseAsListServicesByEnvironmentId200ResponseInner is a convenience function that returns ContainerResponse wrapped in ListServicesByEnvironmentId200ResponseInner
-func ContainerResponseAsListServicesByEnvironmentId200ResponseInner(v *ContainerResponse) ListServicesByEnvironmentId200ResponseInner {
-	return ListServicesByEnvironmentId200ResponseInner{
+// ContainerResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns ContainerResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func ContainerResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *ContainerResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
 		ContainerResponse: v,
 	}
 }
 
-// DatabaseAsListServicesByEnvironmentId200ResponseInner is a convenience function that returns Database wrapped in ListServicesByEnvironmentId200ResponseInner
-func DatabaseAsListServicesByEnvironmentId200ResponseInner(v *Database) ListServicesByEnvironmentId200ResponseInner {
-	return ListServicesByEnvironmentId200ResponseInner{
+// DatabaseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns Database wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func DatabaseAsListServicesByEnvironmentId200ResponseResultsInner(v *Database) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
 		Database: v,
 	}
 }
 
-// HelmResponseAsListServicesByEnvironmentId200ResponseInner is a convenience function that returns HelmResponse wrapped in ListServicesByEnvironmentId200ResponseInner
-func HelmResponseAsListServicesByEnvironmentId200ResponseInner(v *HelmResponse) ListServicesByEnvironmentId200ResponseInner {
-	return ListServicesByEnvironmentId200ResponseInner{
+// HelmResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns HelmResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func HelmResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *HelmResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
 		HelmResponse: v,
 	}
 }
 
-// JobResponseAsListServicesByEnvironmentId200ResponseInner is a convenience function that returns JobResponse wrapped in ListServicesByEnvironmentId200ResponseInner
-func JobResponseAsListServicesByEnvironmentId200ResponseInner(v *JobResponse) ListServicesByEnvironmentId200ResponseInner {
-	return ListServicesByEnvironmentId200ResponseInner{
+// JobResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns JobResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func JobResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *JobResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
 		JobResponse: v,
 	}
 }
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *ListServicesByEnvironmentId200ResponseInner) UnmarshalJSON(data []byte) error {
+func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(data []byte) error {
 	var err error
 	match := 0
 	// try to unmarshal data into Application
@@ -137,16 +137,16 @@ func (dst *ListServicesByEnvironmentId200ResponseInner) UnmarshalJSON(data []byt
 		dst.HelmResponse = nil
 		dst.JobResponse = nil
 
-		return fmt.Errorf("data matches more than one schema in oneOf(ListServicesByEnvironmentId200ResponseInner)")
+		return fmt.Errorf("data matches more than one schema in oneOf(ListServicesByEnvironmentId200ResponseResultsInner)")
 	} else if match == 1 {
 		return nil // exactly one match
 	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ListServicesByEnvironmentId200ResponseInner)")
+		return fmt.Errorf("data failed to match schemas in oneOf(ListServicesByEnvironmentId200ResponseResultsInner)")
 	}
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src ListServicesByEnvironmentId200ResponseInner) MarshalJSON() ([]byte, error) {
+func (src ListServicesByEnvironmentId200ResponseResultsInner) MarshalJSON() ([]byte, error) {
 	if src.Application != nil {
 		return json.Marshal(&src.Application)
 	}
@@ -171,7 +171,7 @@ func (src ListServicesByEnvironmentId200ResponseInner) MarshalJSON() ([]byte, er
 }
 
 // Get the actual instance
-func (obj *ListServicesByEnvironmentId200ResponseInner) GetActualInstance() interface{} {
+func (obj *ListServicesByEnvironmentId200ResponseResultsInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -199,38 +199,38 @@ func (obj *ListServicesByEnvironmentId200ResponseInner) GetActualInstance() inte
 	return nil
 }
 
-type NullableListServicesByEnvironmentId200ResponseInner struct {
-	value *ListServicesByEnvironmentId200ResponseInner
+type NullableListServicesByEnvironmentId200ResponseResultsInner struct {
+	value *ListServicesByEnvironmentId200ResponseResultsInner
 	isSet bool
 }
 
-func (v NullableListServicesByEnvironmentId200ResponseInner) Get() *ListServicesByEnvironmentId200ResponseInner {
+func (v NullableListServicesByEnvironmentId200ResponseResultsInner) Get() *ListServicesByEnvironmentId200ResponseResultsInner {
 	return v.value
 }
 
-func (v *NullableListServicesByEnvironmentId200ResponseInner) Set(val *ListServicesByEnvironmentId200ResponseInner) {
+func (v *NullableListServicesByEnvironmentId200ResponseResultsInner) Set(val *ListServicesByEnvironmentId200ResponseResultsInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableListServicesByEnvironmentId200ResponseInner) IsSet() bool {
+func (v NullableListServicesByEnvironmentId200ResponseResultsInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableListServicesByEnvironmentId200ResponseInner) Unset() {
+func (v *NullableListServicesByEnvironmentId200ResponseResultsInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableListServicesByEnvironmentId200ResponseInner(val *ListServicesByEnvironmentId200ResponseInner) *NullableListServicesByEnvironmentId200ResponseInner {
-	return &NullableListServicesByEnvironmentId200ResponseInner{value: val, isSet: true}
+func NewNullableListServicesByEnvironmentId200ResponseResultsInner(val *ListServicesByEnvironmentId200ResponseResultsInner) *NullableListServicesByEnvironmentId200ResponseResultsInner {
+	return &NullableListServicesByEnvironmentId200ResponseResultsInner{value: val, isSet: true}
 }
 
-func (v NullableListServicesByEnvironmentId200ResponseInner) MarshalJSON() ([]byte, error) {
+func (v NullableListServicesByEnvironmentId200ResponseResultsInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableListServicesByEnvironmentId200ResponseInner) UnmarshalJSON(src []byte) error {
+func (v *NullableListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

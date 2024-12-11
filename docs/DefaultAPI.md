@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 ## ListServicesByEnvironmentId
 
-> []ListServicesByEnvironmentId200ResponseInner ListServicesByEnvironmentId(ctx, environmentId).Execute()
+> ListServicesByEnvironmentId200Response ListServicesByEnvironmentId(ctx, environmentId).Execute()
 
 List Services By EnvironmentId
 
@@ -105,7 +105,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.ListServicesByEnvironmentId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListServicesByEnvironmentId`: []ListServicesByEnvironmentId200ResponseInner
+	// response from `ListServicesByEnvironmentId`: ListServicesByEnvironmentId200Response
 	fmt.Fprintf(os.Stdout, "Response from `DefaultAPI.ListServicesByEnvironmentId`: %v\n", resp)
 }
 ```
@@ -129,7 +129,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ListServicesByEnvironmentId200ResponseInner**](ListServicesByEnvironmentId200ResponseInner.md)
+[**ListServicesByEnvironmentId200Response**](ListServicesByEnvironmentId200Response.md)
 
 ### Authorization
 
