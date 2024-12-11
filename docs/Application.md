@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the application. | 
+**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -653,6 +654,31 @@ and a boolean to check if the value has been set.
 
 SetIconUri sets IconUri field to given value.
 
+
+### GetServiceType
+
+`func (o *Application) GetServiceType() ServiceTypeEnum`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *Application) GetServiceTypeOk() (*ServiceTypeEnum, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *Application) SetServiceType(v ServiceTypeEnum)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *Application) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

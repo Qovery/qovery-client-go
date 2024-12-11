@@ -62,7 +62,8 @@ type ContainerResponse struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              string `json:"icon_uri"`
+	IconUri              string           `json:"icon_uri"`
+	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -809,6 +810,38 @@ func (o *ContainerResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *ContainerResponse) GetServiceType() ServiceTypeEnum {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret ServiceTypeEnum
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *ContainerResponse) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+func (o *ContainerResponse) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = &v
+}
+
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -865,6 +898,9 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	toSerialize["icon_uri"] = o.IconUri
+	if !IsNil(o.ServiceType) {
+		toSerialize["serviceType"] = o.ServiceType
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -949,6 +985,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "serviceType")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -53,7 +53,8 @@ type Database struct {
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted        *bool `json:"disk_encrypted,omitempty"`
+	DiskEncrypted        *bool            `json:"disk_encrypted,omitempty"`
+	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -736,6 +737,38 @@ func (o *Database) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *Database) GetServiceType() ServiceTypeEnum {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret ServiceTypeEnum
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Database) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *Database) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+func (o *Database) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = &v
+}
+
 func (o Database) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -795,6 +828,9 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskEncrypted) {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
+	}
+	if !IsNil(o.ServiceType) {
+		toSerialize["serviceType"] = o.ServiceType
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -868,6 +904,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "disk_encrypted")
+		delete(additionalProperties, "serviceType")
 		o.AdditionalProperties = additionalProperties
 	}
 

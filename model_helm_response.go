@@ -43,7 +43,8 @@ type HelmResponse struct {
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
 	// Icon URI representing the helm service.
-	IconUri              string `json:"icon_uri"`
+	IconUri              string           `json:"icon_uri"`
+	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -475,6 +476,38 @@ func (o *HelmResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *HelmResponse) GetServiceType() ServiceTypeEnum {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret ServiceTypeEnum
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *HelmResponse) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+func (o *HelmResponse) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = &v
+}
+
 func (o HelmResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -508,6 +541,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
 	toSerialize["icon_uri"] = o.IconUri
+	if !IsNil(o.ServiceType) {
+		toSerialize["serviceType"] = o.ServiceType
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -576,6 +612,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "serviceType")
 		o.AdditionalProperties = additionalProperties
 	}
 

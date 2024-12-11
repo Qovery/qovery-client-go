@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **IconUri** | **string** | Icon URI representing the job. | 
+**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
 **JobType** | **string** |  | 
 **Schedule** | [**CronJobResponseAllOfSchedule**](CronJobResponseAllOfSchedule.md) |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
@@ -445,6 +446,31 @@ and a boolean to check if the value has been set.
 
 SetIconUri sets IconUri field to given value.
 
+
+### GetServiceType
+
+`func (o *CronJobResponse) GetServiceType() ServiceTypeEnum`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *CronJobResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *CronJobResponse) SetServiceType(v ServiceTypeEnum)`
+
+SetServiceType sets ServiceType field to given value.
+
+### HasServiceType
+
+`func (o *CronJobResponse) HasServiceType() bool`
+
+HasServiceType returns a boolean if a field has been set.
 
 ### GetJobType
 

@@ -51,6 +51,7 @@ type LifecycleJobResponse struct {
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 	// Icon URI representing the job.
 	IconUri              string                                 `json:"icon_uri"`
+	ServiceType          *ServiceTypeEnum                       `json:"serviceType,omitempty"`
 	JobType              string                                 `json:"job_type"`
 	Schedule             LifecycleJobResponseAllOfSchedule      `json:"schedule"`
 	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
@@ -582,6 +583,38 @@ func (o *LifecycleJobResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
+// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+func (o *LifecycleJobResponse) GetServiceType() ServiceTypeEnum {
+	if o == nil || IsNil(o.ServiceType) {
+		var ret ServiceTypeEnum
+		return ret
+	}
+	return *o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *LifecycleJobResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil || IsNil(o.ServiceType) {
+		return nil, false
+	}
+	return o.ServiceType, true
+}
+
+// HasServiceType returns a boolean if a field has been set.
+func (o *LifecycleJobResponse) HasServiceType() bool {
+	if o != nil && !IsNil(o.ServiceType) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+func (o *LifecycleJobResponse) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = &v
+}
+
 // GetJobType returns the JobType field value
 func (o *LifecycleJobResponse) GetJobType() string {
 	if o == nil {
@@ -734,6 +767,9 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	toSerialize["icon_uri"] = o.IconUri
+	if !IsNil(o.ServiceType) {
+		toSerialize["serviceType"] = o.ServiceType
+	}
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
 	if !IsNil(o.AnnotationsGroups) {
@@ -816,6 +852,7 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "serviceType")
 		delete(additionalProperties, "job_type")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "annotations_groups")

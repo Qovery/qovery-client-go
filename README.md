@@ -278,6 +278,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
+*DefaultAPI* | [**ListServicesByEnvironmentId**](docs/DefaultAPI.md#listservicesbyenvironmentid) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -875,6 +876,7 @@ Class | Method | HTTP request | Description
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)
  - [ListOrganizationLabelsGroup200Response](docs/ListOrganizationLabelsGroup200Response.md)
+ - [ListServicesByEnvironmentId200ResponseInner](docs/ListServicesByEnvironmentId200ResponseInner.md)
  - [Log](docs/Log.md)
  - [LogResponseList](docs/LogResponseList.md)
  - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)

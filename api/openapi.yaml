@@ -15169,6 +15169,30 @@ paths:
       - Helm Main Calls
       x-stoplight:
         id: 7cl74u6hzmccd
+  /environment/{environmentId}/services:
+    get:
+      operationId: listServicesByEnvironmentId
+      parameters:
+      - explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/listServicesByEnvironmentId_200_response_inner'
+                type: array
+          description: Service List
+      summary: List Services By EnvironmentId
+      tags: []
+      x-stoplight:
+        id: 9adquhr5t6qx3
 components:
   parameters:
     applicationId:
@@ -15939,6 +15963,8 @@ components:
             type: string
             x-stoplight:
               id: b8karc43pdxpu
+          serviceType:
+            $ref: '#/components/schemas/ServiceTypeEnum'
         required:
         - environment
         - healthchecks
@@ -15947,6 +15973,7 @@ components:
         type: object
       example:
         min_running_instances: 0
+        serviceType: APPLICATION
         auto_deploy: true
         memory: 1024
         labels_groups:
@@ -16693,6 +16720,7 @@ components:
       example:
         results:
         - min_running_instances: 0
+          serviceType: APPLICATION
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -16844,6 +16872,7 @@ components:
           - arguments
           - arguments
         - min_running_instances: 0
+          serviceType: APPLICATION
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -19651,6 +19680,8 @@ components:
             type: string
             x-stoplight:
               id: o2bdci7ak3bmz
+          serviceType:
+            $ref: '#/components/schemas/ServiceTypeEnum'
         required:
         - auto_preview
         - cpu
@@ -19666,6 +19697,7 @@ components:
         type: object
       example:
         min_running_instances: 0
+        serviceType: APPLICATION
         auto_deploy: true
         memory: 1024
         labels_groups:
@@ -19812,6 +19844,7 @@ components:
       example:
         results:
         - min_running_instances: 0
+          serviceType: APPLICATION
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -19955,6 +19988,7 @@ components:
           - arguments
           - arguments
         - min_running_instances: 0
+          serviceType: APPLICATION
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -20448,11 +20482,14 @@ components:
             description: Icon URI representing the database.
             format: uri
             type: string
+          serviceType:
+            $ref: '#/components/schemas/ServiceTypeEnum'
         required:
         - environment
         - icon_uri
         type: object
       example:
+        serviceType: APPLICATION
         memory: 1024
         labels_groups:
         - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -20730,7 +20767,8 @@ components:
     DatabaseResponseList:
       example:
         results:
-        - memory: 1024
+        - serviceType: APPLICATION
+          memory: 1024
           labels_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -20799,7 +20837,8 @@ components:
           host: host
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           instance_type: db.t3.medium
-        - memory: 1024
+        - serviceType: APPLICATION
+          memory: 1024
           labels_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -24624,7 +24663,8 @@ components:
     JobResponseList:
       example:
         results:
-        - job_type: LIFECYCLE
+        - serviceType: APPLICATION
+          job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -24760,7 +24800,8 @@ components:
           max_duration_seconds: 0
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - job_type: LIFECYCLE
+        - serviceType: APPLICATION
+          job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -25258,6 +25299,8 @@ components:
             type: string
             x-stoplight:
               id: i2pvbugqsldhe
+          serviceType:
+            $ref: '#/components/schemas/ServiceTypeEnum'
         required:
         - allow_cluster_wide_resources
         - arguments
@@ -25270,6 +25313,7 @@ components:
         - values_override
         type: object
       example:
+        serviceType: APPLICATION
         auto_deploy: true
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -25425,7 +25469,8 @@ components:
     HelmResponseList:
       example:
         results:
-        - auto_deploy: true
+        - serviceType: APPLICATION
+          auto_deploy: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -25516,7 +25561,8 @@ components:
           - arguments
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           allow_cluster_wide_resources: false
-        - auto_deploy: true
+        - serviceType: APPLICATION
+          auto_deploy: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -29038,6 +29084,7 @@ components:
         - schedule
         type: object
       example:
+        serviceType: APPLICATION
         job_type: LIFECYCLE
         auto_deploy: true
         memory: 1024
@@ -29262,6 +29309,8 @@ components:
             type: string
             x-stoplight:
               id: p1secr7kxozsd
+          serviceType:
+            $ref: '#/components/schemas/ServiceTypeEnum'
         required:
         - auto_preview
         - cpu
@@ -30589,6 +30638,15 @@ components:
       - spec
       - status
       type: object
+    listServicesByEnvironmentId_200_response_inner:
+      oneOf:
+      - $ref: '#/components/schemas/Application'
+      - $ref: '#/components/schemas/ContainerResponse'
+      - $ref: '#/components/schemas/Database'
+      - $ref: '#/components/schemas/HelmResponse'
+      - $ref: '#/components/schemas/JobResponse'
+      x-stoplight:
+        id: naz8145q04e1j
     ServicePortRequest_ports_inner:
       example:
         publicly_accessible: true
