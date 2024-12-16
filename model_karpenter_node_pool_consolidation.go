@@ -21,9 +21,8 @@ var _ MappedNullable = &KarpenterNodePoolConsolidation{}
 
 // KarpenterNodePoolConsolidation struct for KarpenterNodePoolConsolidation
 type KarpenterNodePoolConsolidation struct {
-	Enabled bool `json:"enabled"`
-	// The list of days where the consolidation will occur. The days are indicated in the same manner as for a cron (sunday=0, monday=1, tuesday=2, wednesday=3, thursday=4, friday=5, saturday=6).
-	Days []float32 `json:"days"`
+	Enabled bool          `json:"enabled"`
+	Days    []WeekdayEnum `json:"days"`
 	// The start date of the consolidation. The expected format is \"hh24:mm\".
 	StartTime string `json:"start_time"`
 	// The duration during the consolidation will be active. Only hours and minutes can be defined, no seconds. The expected format is \"h:m\".
@@ -37,7 +36,7 @@ type _KarpenterNodePoolConsolidation KarpenterNodePoolConsolidation
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKarpenterNodePoolConsolidation(enabled bool, days []float32, startTime string, duration string) *KarpenterNodePoolConsolidation {
+func NewKarpenterNodePoolConsolidation(enabled bool, days []WeekdayEnum, startTime string, duration string) *KarpenterNodePoolConsolidation {
 	this := KarpenterNodePoolConsolidation{}
 	this.Enabled = enabled
 	this.Days = days
@@ -81,9 +80,9 @@ func (o *KarpenterNodePoolConsolidation) SetEnabled(v bool) {
 }
 
 // GetDays returns the Days field value
-func (o *KarpenterNodePoolConsolidation) GetDays() []float32 {
+func (o *KarpenterNodePoolConsolidation) GetDays() []WeekdayEnum {
 	if o == nil {
-		var ret []float32
+		var ret []WeekdayEnum
 		return ret
 	}
 
@@ -92,7 +91,7 @@ func (o *KarpenterNodePoolConsolidation) GetDays() []float32 {
 
 // GetDaysOk returns a tuple with the Days field value
 // and a boolean to check if the value has been set.
-func (o *KarpenterNodePoolConsolidation) GetDaysOk() ([]float32, bool) {
+func (o *KarpenterNodePoolConsolidation) GetDaysOk() ([]WeekdayEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,7 +99,7 @@ func (o *KarpenterNodePoolConsolidation) GetDaysOk() ([]float32, bool) {
 }
 
 // SetDays sets field value
-func (o *KarpenterNodePoolConsolidation) SetDays(v []float32) {
+func (o *KarpenterNodePoolConsolidation) SetDays(v []WeekdayEnum) {
 	o.Days = v
 }
 

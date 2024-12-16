@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | [default to false]
-**Days** | **[]float32** | The list of days where the consolidation will occur. The days are indicated in the same manner as for a cron (sunday&#x3D;0, monday&#x3D;1, tuesday&#x3D;2, wednesday&#x3D;3, thursday&#x3D;4, friday&#x3D;5, saturday&#x3D;6).  | 
+**Days** | [**[]WeekdayEnum**](WeekdayEnum.md) |  | 
 **StartTime** | **string** | The start date of the consolidation. The expected format is \&quot;hh24:mm\&quot;.  | 
 **Duration** | **string** | The duration during the consolidation will be active. Only hours and minutes can be defined, no seconds. The expected format is \&quot;h:m\&quot;.  | 
 
@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 
 ### NewKarpenterNodePoolConsolidation
 
-`func NewKarpenterNodePoolConsolidation(enabled bool, days []float32, startTime string, duration string, ) *KarpenterNodePoolConsolidation`
+`func NewKarpenterNodePoolConsolidation(enabled bool, days []WeekdayEnum, startTime string, duration string, ) *KarpenterNodePoolConsolidation`
 
 NewKarpenterNodePoolConsolidation instantiates a new KarpenterNodePoolConsolidation object
 This constructor will assign default values to properties that have it defined,
@@ -50,20 +50,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetDays
 
-`func (o *KarpenterNodePoolConsolidation) GetDays() []float32`
+`func (o *KarpenterNodePoolConsolidation) GetDays() []WeekdayEnum`
 
 GetDays returns the Days field if non-nil, zero value otherwise.
 
 ### GetDaysOk
 
-`func (o *KarpenterNodePoolConsolidation) GetDaysOk() (*[]float32, bool)`
+`func (o *KarpenterNodePoolConsolidation) GetDaysOk() (*[]WeekdayEnum, bool)`
 
 GetDaysOk returns a tuple with the Days field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDays
 
-`func (o *KarpenterNodePoolConsolidation) SetDays(v []float32)`
+`func (o *KarpenterNodePoolConsolidation) SetDays(v []WeekdayEnum)`
 
 SetDays sets Days field to given value.
 
