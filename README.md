@@ -711,6 +711,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
  - [EnvironmentDeploymentRule](docs/EnvironmentDeploymentRule.md)
  - [EnvironmentDeploymentRuleEditRequest](docs/EnvironmentDeploymentRuleEditRequest.md)
+ - [EnvironmentDeploymentStatusEnum](docs/EnvironmentDeploymentStatusEnum.md)
  - [EnvironmentEditRequest](docs/EnvironmentEditRequest.md)
  - [EnvironmentLog](docs/EnvironmentLog.md)
  - [EnvironmentLogResponseList](docs/EnvironmentLogResponseList.md)

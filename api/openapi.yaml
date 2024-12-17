@@ -22591,6 +22591,7 @@ components:
       example:
         last_deployment_state: null
         origin: API
+        deployment_status: NEVER_DEPLOYED
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: BUILDING
@@ -22620,6 +22621,8 @@ components:
         triggered_by:
           nullable: true
           type: string
+        deployment_status:
+          $ref: '#/components/schemas/EnvironmentDeploymentStatusEnum'
       required:
       - id
       - last_deployment_state
@@ -22674,6 +22677,7 @@ components:
         environment:
           last_deployment_state: null
           origin: API
+          deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -22845,6 +22849,7 @@ components:
         environment:
           last_deployment_state: null
           origin: API
+          deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23208,6 +23213,7 @@ components:
         results:
         - last_deployment_state: null
           origin: API
+          deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23216,6 +23222,7 @@ components:
           triggered_by: triggered_by
         - last_deployment_state: null
           origin: API
+          deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -30279,6 +30286,15 @@ components:
       - start_time
       title: KarpenterNodePoolConsolidation
       type: object
+    EnvironmentDeploymentStatusEnum:
+      enum:
+      - NEVER_DEPLOYED
+      - UP_TO_DATE
+      - OUT_OF_DATE
+      title: EnvironmentDeploymentStatusEnum
+      type: string
+      x-stoplight:
+        id: sbw3iw6yteyba
     deleteMember_request:
       properties:
         user_id:

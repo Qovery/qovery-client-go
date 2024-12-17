@@ -30,6 +30,7 @@ type EnvironmentStatus struct {
 	TotalDeploymentDurationInSeconds NullableInt32                            `json:"total_deployment_duration_in_seconds,omitempty"`
 	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
 	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
+	DeploymentStatus                 *EnvironmentDeploymentStatusEnum         `json:"deployment_status,omitempty"`
 	AdditionalProperties             map[string]interface{}
 }
 
@@ -342,6 +343,38 @@ func (o *EnvironmentStatus) UnsetTriggeredBy() {
 	o.TriggeredBy.Unset()
 }
 
+// GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise.
+func (o *EnvironmentStatus) GetDeploymentStatus() EnvironmentDeploymentStatusEnum {
+	if o == nil || IsNil(o.DeploymentStatus) {
+		var ret EnvironmentDeploymentStatusEnum
+		return ret
+	}
+	return *o.DeploymentStatus
+}
+
+// GetDeploymentStatusOk returns a tuple with the DeploymentStatus field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatus) GetDeploymentStatusOk() (*EnvironmentDeploymentStatusEnum, bool) {
+	if o == nil || IsNil(o.DeploymentStatus) {
+		return nil, false
+	}
+	return o.DeploymentStatus, true
+}
+
+// HasDeploymentStatus returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasDeploymentStatus() bool {
+	if o != nil && !IsNil(o.DeploymentStatus) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentStatus gets a reference to the given EnvironmentDeploymentStatusEnum and assigns it to the DeploymentStatus field.
+func (o *EnvironmentStatus) SetDeploymentStatus(v EnvironmentDeploymentStatusEnum) {
+	o.DeploymentStatus = &v
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -369,6 +402,9 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if o.TriggeredBy.IsSet() {
 		toSerialize["triggered_by"] = o.TriggeredBy.Get()
+	}
+	if !IsNil(o.DeploymentStatus) {
+		toSerialize["deployment_status"] = o.DeploymentStatus
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -423,6 +459,7 @@ func (o *EnvironmentStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "total_deployment_duration_in_seconds")
 		delete(additionalProperties, "origin")
 		delete(additionalProperties, "triggered_by")
+		delete(additionalProperties, "deployment_status")
 		o.AdditionalProperties = additionalProperties
 	}
 

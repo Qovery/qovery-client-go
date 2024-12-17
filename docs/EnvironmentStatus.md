@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **TotalDeploymentDurationInSeconds** | Pointer to **NullableInt32** |  | [optional] 
 **Origin** | Pointer to [**NullableEnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md) |  | [optional] 
 **TriggeredBy** | Pointer to **NullableString** |  | [optional] 
+**DeploymentStatus** | Pointer to [**EnvironmentDeploymentStatusEnum**](EnvironmentDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
 
@@ -267,6 +268,31 @@ HasTriggeredBy returns a boolean if a field has been set.
 `func (o *EnvironmentStatus) UnsetTriggeredBy()`
 
 UnsetTriggeredBy ensures that no value is present for TriggeredBy, not even an explicit nil
+### GetDeploymentStatus
+
+`func (o *EnvironmentStatus) GetDeploymentStatus() EnvironmentDeploymentStatusEnum`
+
+GetDeploymentStatus returns the DeploymentStatus field if non-nil, zero value otherwise.
+
+### GetDeploymentStatusOk
+
+`func (o *EnvironmentStatus) GetDeploymentStatusOk() (*EnvironmentDeploymentStatusEnum, bool)`
+
+GetDeploymentStatusOk returns a tuple with the DeploymentStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentStatus
+
+`func (o *EnvironmentStatus) SetDeploymentStatus(v EnvironmentDeploymentStatusEnum)`
+
+SetDeploymentStatus sets DeploymentStatus field to given value.
+
+### HasDeploymentStatus
+
+`func (o *EnvironmentStatus) HasDeploymentStatus() bool`
+
+HasDeploymentStatus returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

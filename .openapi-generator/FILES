@@ -321,6 +321,7 @@ docs/EnvironmentDeploymentHistoryAPI.md
 docs/EnvironmentDeploymentRule.md
 docs/EnvironmentDeploymentRuleAPI.md
 docs/EnvironmentDeploymentRuleEditRequest.md
+docs/EnvironmentDeploymentStatusEnum.md
 docs/EnvironmentEditRequest.md
 docs/EnvironmentExportAPI.md
 docs/EnvironmentLog.md
@@ -884,6 +885,7 @@ model_environment.go
 model_environment_all_of_cloud_provider.go
 model_environment_deployment_rule.go
 model_environment_deployment_rule_edit_request.go
+model_environment_deployment_status_enum.go
 model_environment_edit_request.go
 model_environment_log.go
 model_environment_log_response_list.go
