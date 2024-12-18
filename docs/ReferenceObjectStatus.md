@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
 **IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
 **Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
+**ExecutionId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -164,6 +165,31 @@ SetSteps sets Steps field to given value.
 `func (o *ReferenceObjectStatus) HasSteps() bool`
 
 HasSteps returns a boolean if a field has been set.
+
+### GetExecutionId
+
+`func (o *ReferenceObjectStatus) GetExecutionId() string`
+
+GetExecutionId returns the ExecutionId field if non-nil, zero value otherwise.
+
+### GetExecutionIdOk
+
+`func (o *ReferenceObjectStatus) GetExecutionIdOk() (*string, bool)`
+
+GetExecutionIdOk returns a tuple with the ExecutionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExecutionId
+
+`func (o *ReferenceObjectStatus) SetExecutionId(v string)`
+
+SetExecutionId sets ExecutionId field to given value.
+
+### HasExecutionId
+
+`func (o *ReferenceObjectStatus) HasExecutionId() bool`
+
+HasExecutionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

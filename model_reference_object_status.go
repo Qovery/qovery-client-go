@@ -28,6 +28,7 @@ type ReferenceObjectStatus struct {
 	LastDeploymentDate      *time.Time                  `json:"last_deployment_date,omitempty"`
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
+	ExecutionId             *string                     `json:"execution_id,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -221,6 +222,38 @@ func (o *ReferenceObjectStatus) SetSteps(v ServiceStepMetrics) {
 	o.Steps = &v
 }
 
+// GetExecutionId returns the ExecutionId field value if set, zero value otherwise.
+func (o *ReferenceObjectStatus) GetExecutionId() string {
+	if o == nil || IsNil(o.ExecutionId) {
+		var ret string
+		return ret
+	}
+	return *o.ExecutionId
+}
+
+// GetExecutionIdOk returns a tuple with the ExecutionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReferenceObjectStatus) GetExecutionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ExecutionId) {
+		return nil, false
+	}
+	return o.ExecutionId, true
+}
+
+// HasExecutionId returns a boolean if a field has been set.
+func (o *ReferenceObjectStatus) HasExecutionId() bool {
+	if o != nil && !IsNil(o.ExecutionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetExecutionId gets a reference to the given string and assigns it to the ExecutionId field.
+func (o *ReferenceObjectStatus) SetExecutionId(v string) {
+	o.ExecutionId = &v
+}
+
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -242,6 +275,9 @@ func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Steps) {
 		toSerialize["steps"] = o.Steps
+	}
+	if !IsNil(o.ExecutionId) {
+		toSerialize["execution_id"] = o.ExecutionId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -294,6 +330,7 @@ func (o *ReferenceObjectStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "last_deployment_date")
 		delete(additionalProperties, "is_part_last_deployment")
 		delete(additionalProperties, "steps")
+		delete(additionalProperties, "execution_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
