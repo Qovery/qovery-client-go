@@ -21,8 +21,9 @@ var _ MappedNullable = &KarpenterNodePool{}
 
 // KarpenterNodePool
 type KarpenterNodePool struct {
-	Requirements         []KarpenterNodePoolRequirement `json:"requirements"`
-	StableOverride       *KarpenterNodePoolOverride     `json:"stable_override,omitempty"`
+	Requirements         []KarpenterNodePoolRequirement    `json:"requirements"`
+	StableOverride       *KarpenterStableNodePoolOverride  `json:"stable_override,omitempty"`
+	DefaultOverride      *KarpenterDefaultNodePoolOverride `json:"default_override,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -71,9 +72,9 @@ func (o *KarpenterNodePool) SetRequirements(v []KarpenterNodePoolRequirement) {
 }
 
 // GetStableOverride returns the StableOverride field value if set, zero value otherwise.
-func (o *KarpenterNodePool) GetStableOverride() KarpenterNodePoolOverride {
+func (o *KarpenterNodePool) GetStableOverride() KarpenterStableNodePoolOverride {
 	if o == nil || IsNil(o.StableOverride) {
-		var ret KarpenterNodePoolOverride
+		var ret KarpenterStableNodePoolOverride
 		return ret
 	}
 	return *o.StableOverride
@@ -81,7 +82,7 @@ func (o *KarpenterNodePool) GetStableOverride() KarpenterNodePoolOverride {
 
 // GetStableOverrideOk returns a tuple with the StableOverride field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KarpenterNodePool) GetStableOverrideOk() (*KarpenterNodePoolOverride, bool) {
+func (o *KarpenterNodePool) GetStableOverrideOk() (*KarpenterStableNodePoolOverride, bool) {
 	if o == nil || IsNil(o.StableOverride) {
 		return nil, false
 	}
@@ -97,9 +98,41 @@ func (o *KarpenterNodePool) HasStableOverride() bool {
 	return false
 }
 
-// SetStableOverride gets a reference to the given KarpenterNodePoolOverride and assigns it to the StableOverride field.
-func (o *KarpenterNodePool) SetStableOverride(v KarpenterNodePoolOverride) {
+// SetStableOverride gets a reference to the given KarpenterStableNodePoolOverride and assigns it to the StableOverride field.
+func (o *KarpenterNodePool) SetStableOverride(v KarpenterStableNodePoolOverride) {
 	o.StableOverride = &v
+}
+
+// GetDefaultOverride returns the DefaultOverride field value if set, zero value otherwise.
+func (o *KarpenterNodePool) GetDefaultOverride() KarpenterDefaultNodePoolOverride {
+	if o == nil || IsNil(o.DefaultOverride) {
+		var ret KarpenterDefaultNodePoolOverride
+		return ret
+	}
+	return *o.DefaultOverride
+}
+
+// GetDefaultOverrideOk returns a tuple with the DefaultOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePool) GetDefaultOverrideOk() (*KarpenterDefaultNodePoolOverride, bool) {
+	if o == nil || IsNil(o.DefaultOverride) {
+		return nil, false
+	}
+	return o.DefaultOverride, true
+}
+
+// HasDefaultOverride returns a boolean if a field has been set.
+func (o *KarpenterNodePool) HasDefaultOverride() bool {
+	if o != nil && !IsNil(o.DefaultOverride) {
+		return true
+	}
+
+	return false
+}
+
+// SetDefaultOverride gets a reference to the given KarpenterDefaultNodePoolOverride and assigns it to the DefaultOverride field.
+func (o *KarpenterNodePool) SetDefaultOverride(v KarpenterDefaultNodePoolOverride) {
+	o.DefaultOverride = &v
 }
 
 func (o KarpenterNodePool) MarshalJSON() ([]byte, error) {
@@ -115,6 +148,9 @@ func (o KarpenterNodePool) ToMap() (map[string]interface{}, error) {
 	toSerialize["requirements"] = o.Requirements
 	if !IsNil(o.StableOverride) {
 		toSerialize["stable_override"] = o.StableOverride
+	}
+	if !IsNil(o.DefaultOverride) {
+		toSerialize["default_override"] = o.DefaultOverride
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -161,6 +197,7 @@ func (o *KarpenterNodePool) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "stable_override")
+		delete(additionalProperties, "default_override")
 		o.AdditionalProperties = additionalProperties
 	}
 

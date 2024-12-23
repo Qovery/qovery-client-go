@@ -30253,7 +30253,9 @@ components:
           x-stoplight:
             id: pkowctfxv7q77
         stable_override:
-          $ref: '#/components/schemas/KarpenterNodePoolOverride'
+          $ref: '#/components/schemas/KarpenterStableNodePoolOverride'
+        default_override:
+          $ref: '#/components/schemas/KarpenterDefaultNodePoolOverride'
       required:
       - requirements
       title: KarpenterNodePool
@@ -30298,11 +30300,19 @@ components:
       type: object
       x-stoplight:
         id: 4ebed64emvn09
-    KarpenterNodePoolOverride:
+    KarpenterStableNodePoolOverride:
       properties:
         consolidation:
           $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
-      title: KarpenterNodePoolOverride
+        limits:
+          $ref: '#/components/schemas/KarpenterNodePoolLimits'
+      title: KarpenterStableNodePoolOverride
+      type: object
+    KarpenterDefaultNodePoolOverride:
+      properties:
+        limits:
+          $ref: '#/components/schemas/KarpenterNodePoolLimits'
+      title: KarpenterDefaultNodePoolOverride
       type: object
     KarpenterNodePoolConsolidation:
       properties:
@@ -30346,6 +30356,21 @@ components:
       type: string
       x-stoplight:
         id: sbw3iw6yteyba
+    KarpenterNodePoolLimits:
+      properties:
+        max_cpu_in_vcpu:
+          description: "CPU limit that will be applied for the node pool (in vCPU\
+            \ unit: 1 vCPU = 1000 millicores)"
+          type: number
+        max_memory_in_gibibytes:
+          description: "Memory limit that will be applied for the node pool (in Gibibytes\
+            \ unit: 1Gi = 1024 mebibytes)"
+          type: number
+      required:
+      - max_cpu_in_vcpu
+      - max_memory_in_gibibytes
+      title: KarpenterNodePoolLimits
+      type: object
     deleteMember_request:
       properties:
         user_id:
