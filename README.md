@@ -278,7 +278,6 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
-*DefaultAPI* | [**ListServicesByEnvironmentId**](docs/DefaultAPI.md#listservicesbyenvironmentid) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -315,6 +314,7 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
+*EnvironmentMainCallsAPI* | [**ListServicesByEnvironmentId**](docs/EnvironmentMainCallsAPI.md#listservicesbyenvironmentid) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretAPI.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretAPI.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecretOverride**](docs/EnvironmentSecretAPI.md#createenvironmentsecretoverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level

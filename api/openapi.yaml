@@ -15188,7 +15188,8 @@ paths:
                 $ref: '#/components/schemas/listServicesByEnvironmentId_200_response'
           description: Service List
       summary: List Services By EnvironmentId
-      tags: []
+      tags:
+      - Environment Main Calls
       x-stoplight:
         id: 9adquhr5t6qx3
 components:
