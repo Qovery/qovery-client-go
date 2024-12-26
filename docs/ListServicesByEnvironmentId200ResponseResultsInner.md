@@ -29,7 +29,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the helm service. | 
-**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
@@ -51,7 +51,7 @@ Name | Type | Description | Notes
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -645,11 +645,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-### HasServiceType
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasServiceType() bool`
-
-HasServiceType returns a boolean if a field has been set.
 
 ### GetImageName
 

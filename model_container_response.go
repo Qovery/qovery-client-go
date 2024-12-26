@@ -62,8 +62,8 @@ type ContainerResponse struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              string           `json:"icon_uri"`
-	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
+	IconUri              string          `json:"icon_uri"`
+	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -73,7 +73,7 @@ type _ContainerResponse ContainerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -91,6 +91,7 @@ func NewContainerResponse(id string, createdAt time.Time, imageName string, tag 
 	this.Healthchecks = healthchecks
 	this.AutoPreview = autoPreview
 	this.IconUri = iconUri
+	this.ServiceType = serviceType
 	return &this
 }
 
@@ -810,36 +811,28 @@ func (o *ContainerResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *ContainerResponse) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *ContainerResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *ContainerResponse) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *ContainerResponse) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
@@ -898,9 +891,7 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	toSerialize["icon_uri"] = o.IconUri
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -930,6 +921,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		"healthchecks",
 		"auto_preview",
 		"icon_uri",
+		"service_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -985,7 +977,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

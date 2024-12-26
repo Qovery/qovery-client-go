@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **IconUri** | **string** | Icon URI representing the job. | 
-**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **JobType** | **string** |  | 
 **Schedule** | [**LifecycleJobResponseAllOfSchedule**](LifecycleJobResponseAllOfSchedule.md) |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewLifecycleJobResponse
 
-`func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, jobType string, schedule LifecycleJobResponseAllOfSchedule, ) *LifecycleJobResponse`
+`func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType string, schedule LifecycleJobResponseAllOfSchedule, ) *LifecycleJobResponse`
 
 NewLifecycleJobResponse instantiates a new LifecycleJobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -466,11 +466,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-### HasServiceType
-
-`func (o *LifecycleJobResponse) HasServiceType() bool`
-
-HasServiceType returns a boolean if a field has been set.
 
 ### GetJobType
 

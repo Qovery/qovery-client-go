@@ -51,7 +51,7 @@ type CronJobResponse struct {
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 	// Icon URI representing the job.
 	IconUri              string                                 `json:"icon_uri"`
-	ServiceType          *ServiceTypeEnum                       `json:"serviceType,omitempty"`
+	ServiceType          ServiceTypeEnum                        `json:"service_type"`
 	JobType              string                                 `json:"job_type"`
 	Schedule             CronJobResponseAllOfSchedule           `json:"schedule"`
 	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
@@ -65,7 +65,7 @@ type _CronJobResponse CronJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCronJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, jobType string, schedule CronJobResponseAllOfSchedule) *CronJobResponse {
+func NewCronJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType string, schedule CronJobResponseAllOfSchedule) *CronJobResponse {
 	this := CronJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -79,6 +79,7 @@ func NewCronJobResponse(id string, createdAt time.Time, environment ReferenceObj
 	this.Source = source
 	this.Healthchecks = healthchecks
 	this.IconUri = iconUri
+	this.ServiceType = serviceType
 	this.JobType = jobType
 	this.Schedule = schedule
 	return &this
@@ -583,36 +584,28 @@ func (o *CronJobResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *CronJobResponse) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *CronJobResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *CronJobResponse) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *CronJobResponse) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 // GetJobType returns the JobType field value
@@ -767,9 +760,7 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	toSerialize["icon_uri"] = o.IconUri
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 	toSerialize["job_type"] = o.JobType
 	toSerialize["schedule"] = o.Schedule
 	if !IsNil(o.AnnotationsGroups) {
@@ -803,6 +794,7 @@ func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
 		"source",
 		"healthchecks",
 		"icon_uri",
+		"service_type",
 		"job_type",
 		"schedule",
 	}
@@ -852,7 +844,7 @@ func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "job_type")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "annotations_groups")

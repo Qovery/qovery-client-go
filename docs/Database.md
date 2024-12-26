@@ -26,13 +26,13 @@ Name | Type | Description | Notes
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
-**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewDatabase
 
-`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject, ) *Database`
+`func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject, serviceType ServiceTypeEnum, ) *Database`
 
 NewDatabase instantiates a new Database object
 This constructor will assign default values to properties that have it defined,
@@ -576,11 +576,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-### HasServiceType
-
-`func (o *Database) HasServiceType() bool`
-
-HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

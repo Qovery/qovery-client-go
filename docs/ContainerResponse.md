@@ -30,13 +30,13 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the container. | 
-**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -640,11 +640,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-### HasServiceType
-
-`func (o *ContainerResponse) HasServiceType() bool`
-
-HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

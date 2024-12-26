@@ -43,8 +43,8 @@ type HelmResponse struct {
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
 	// Icon URI representing the helm service.
-	IconUri              string           `json:"icon_uri"`
-	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
+	IconUri              string          `json:"icon_uri"`
+	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -54,7 +54,7 @@ type _HelmResponse HelmResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, iconUri string) *HelmResponse {
+func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject, name string, autoPreview bool, autoDeploy bool, source HelmResponseAllOfSource, arguments []string, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, iconUri string, serviceType ServiceTypeEnum) *HelmResponse {
 	this := HelmResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -69,6 +69,7 @@ func NewHelmResponse(id string, createdAt time.Time, environment ReferenceObject
 	this.AllowClusterWideResources = allowClusterWideResources
 	this.ValuesOverride = valuesOverride
 	this.IconUri = iconUri
+	this.ServiceType = serviceType
 	return &this
 }
 
@@ -476,36 +477,28 @@ func (o *HelmResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *HelmResponse) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *HelmResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *HelmResponse) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *HelmResponse) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 func (o HelmResponse) MarshalJSON() ([]byte, error) {
@@ -541,9 +534,7 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["allow_cluster_wide_resources"] = o.AllowClusterWideResources
 	toSerialize["values_override"] = o.ValuesOverride
 	toSerialize["icon_uri"] = o.IconUri
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -568,6 +559,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		"allow_cluster_wide_resources",
 		"values_override",
 		"icon_uri",
+		"service_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -612,7 +604,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

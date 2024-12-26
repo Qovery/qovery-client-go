@@ -53,8 +53,8 @@ type Database struct {
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted        *bool            `json:"disk_encrypted,omitempty"`
-	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
+	DiskEncrypted        *bool           `json:"disk_encrypted,omitempty"`
+	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -64,7 +64,7 @@ type _Database Database
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject) *Database {
+func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, iconUri string, environment ReferenceObject, serviceType ServiceTypeEnum) *Database {
 	this := Database{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -80,6 +80,7 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Storage = &storage
 	this.IconUri = iconUri
 	this.Environment = environment
+	this.ServiceType = serviceType
 	return &this
 }
 
@@ -737,36 +738,28 @@ func (o *Database) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *Database) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *Database) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *Database) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *Database) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 func (o Database) MarshalJSON() ([]byte, error) {
@@ -829,9 +822,7 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskEncrypted) {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
 	}
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -853,6 +844,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		"mode",
 		"icon_uri",
 		"environment",
+		"service_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -904,7 +896,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "disk_encrypted")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

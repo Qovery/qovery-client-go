@@ -59,8 +59,8 @@ type Application struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the application.
-	IconUri              string           `json:"icon_uri"`
-	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
+	IconUri              string          `json:"icon_uri"`
+	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -70,7 +70,7 @@ type _Application Application
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, iconUri string) *Application {
+func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum) *Application {
 	this := Application{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -86,6 +86,7 @@ func NewApplication(id string, createdAt time.Time, environment ReferenceObject,
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
 	this.IconUri = iconUri
+	this.ServiceType = serviceType
 	return &this
 }
 
@@ -868,36 +869,28 @@ func (o *Application) SetIconUri(v string) {
 	o.IconUri = v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *Application) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *Application) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *Application) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *Application) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 func (o Application) MarshalJSON() ([]byte, error) {
@@ -973,9 +966,7 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 	toSerialize["icon_uri"] = o.IconUri
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -995,6 +986,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"healthchecks",
 		"icon_uri",
+		"service_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -1049,7 +1041,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

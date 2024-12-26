@@ -50,8 +50,8 @@ type BaseJobResponse struct {
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 	// Icon URI representing the job.
-	IconUri              string           `json:"icon_uri"`
-	ServiceType          *ServiceTypeEnum `json:"serviceType,omitempty"`
+	IconUri              string          `json:"icon_uri"`
+	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -61,7 +61,7 @@ type _BaseJobResponse BaseJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string) *BaseJobResponse {
+func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum) *BaseJobResponse {
 	this := BaseJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -75,6 +75,7 @@ func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObj
 	this.Source = source
 	this.Healthchecks = healthchecks
 	this.IconUri = iconUri
+	this.ServiceType = serviceType
 	return &this
 }
 
@@ -577,36 +578,28 @@ func (o *BaseJobResponse) SetIconUri(v string) {
 	o.IconUri = v
 }
 
-// GetServiceType returns the ServiceType field value if set, zero value otherwise.
+// GetServiceType returns the ServiceType field value
 func (o *BaseJobResponse) GetServiceType() ServiceTypeEnum {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		var ret ServiceTypeEnum
 		return ret
 	}
-	return *o.ServiceType
+
+	return o.ServiceType
 }
 
-// GetServiceTypeOk returns a tuple with the ServiceType field value if set, nil otherwise
+// GetServiceTypeOk returns a tuple with the ServiceType field value
 // and a boolean to check if the value has been set.
 func (o *BaseJobResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
-	if o == nil || IsNil(o.ServiceType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ServiceType, true
+	return &o.ServiceType, true
 }
 
-// HasServiceType returns a boolean if a field has been set.
-func (o *BaseJobResponse) HasServiceType() bool {
-	if o != nil && !IsNil(o.ServiceType) {
-		return true
-	}
-
-	return false
-}
-
-// SetServiceType gets a reference to the given ServiceTypeEnum and assigns it to the ServiceType field.
+// SetServiceType sets field value
 func (o *BaseJobResponse) SetServiceType(v ServiceTypeEnum) {
-	o.ServiceType = &v
+	o.ServiceType = v
 }
 
 func (o BaseJobResponse) MarshalJSON() ([]byte, error) {
@@ -649,9 +642,7 @@ func (o BaseJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	toSerialize["icon_uri"] = o.IconUri
-	if !IsNil(o.ServiceType) {
-		toSerialize["serviceType"] = o.ServiceType
-	}
+	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -677,6 +668,7 @@ func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
 		"source",
 		"healthchecks",
 		"icon_uri",
+		"service_type",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -724,7 +716,7 @@ func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "serviceType")
+		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -29,13 +29,13 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the application. | 
-**ServiceType** | Pointer to [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | [optional] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 ## Methods
 
 ### NewApplication
 
-`func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, iconUri string, ) *Application`
+`func NewApplication(id string, createdAt time.Time, environment ReferenceObject, name string, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, ) *Application`
 
 NewApplication instantiates a new Application object
 This constructor will assign default values to properties that have it defined,
@@ -674,11 +674,6 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
-### HasServiceType
-
-`func (o *Application) HasServiceType() bool`
-
-HasServiceType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
