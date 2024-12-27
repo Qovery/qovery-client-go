@@ -15278,9 +15278,7 @@ paths:
           content:
             application/json:
               schema:
-                items:
-                  $ref: '#/components/schemas/ClusterLockList'
-                type: array
+                $ref: '#/components/schemas/ClusterLockList'
           description: OK
         "401":
           description: Unauthorized
@@ -18699,7 +18697,7 @@ components:
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
           locked_at: 6.027456183070403
-          ttl_in_days: 0.8008281904610115
+          ttl_in_days: 0
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         next_k8s_available_version: "1.28"
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
@@ -18731,7 +18729,7 @@ components:
             cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             owner_name: owner_name
             locked_at: 6.027456183070403
-            ttl_in_days: 0.8008281904610115
+            ttl_in_days: 0
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
@@ -18742,7 +18740,7 @@ components:
             cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             owner_name: owner_name
             locked_at: 6.027456183070403
-            ttl_in_days: 0.8008281904610115
+            ttl_in_days: 0
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
@@ -30501,14 +30499,14 @@ components:
     ClusterLockRequest:
       example:
         reason: reason
-        ttl_in_days: 0.8008281904610115
+        ttl_in_days: 0
       properties:
         reason:
           type: string
           x-stoplight:
             id: r7sy48ofln6xf
         ttl_in_days:
-          type: number
+          type: integer
           x-stoplight:
             id: m7spawrlr0mii
       required:
@@ -30523,14 +30521,14 @@ components:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         owner_name: owner_name
         locked_at: 6.027456183070403
-        ttl_in_days: 0.8008281904610115
+        ttl_in_days: 0
       properties:
         reason:
           type: string
           x-stoplight:
             id: 24t21mhr6yvb8
         ttl_in_days:
-          type: number
+          type: integer
           x-stoplight:
             id: hkgmap89j628o
         cluster_id:
@@ -30562,12 +30560,12 @@ components:
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
           locked_at: 6.027456183070403
-          ttl_in_days: 0.8008281904610115
+          ttl_in_days: 0
         - reason: reason
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
           locked_at: 6.027456183070403
-          ttl_in_days: 0.8008281904610115
+          ttl_in_days: 0
       properties:
         results:
           items:

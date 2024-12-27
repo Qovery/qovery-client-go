@@ -21,8 +21,8 @@ var _ MappedNullable = &ClusterLockRequest{}
 
 // ClusterLockRequest struct for ClusterLockRequest
 type ClusterLockRequest struct {
-	Reason               string   `json:"reason"`
-	TtlInDays            *float32 `json:"ttl_in_days,omitempty"`
+	Reason               string `json:"reason"`
+	TtlInDays            *int32 `json:"ttl_in_days,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -71,9 +71,9 @@ func (o *ClusterLockRequest) SetReason(v string) {
 }
 
 // GetTtlInDays returns the TtlInDays field value if set, zero value otherwise.
-func (o *ClusterLockRequest) GetTtlInDays() float32 {
+func (o *ClusterLockRequest) GetTtlInDays() int32 {
 	if o == nil || IsNil(o.TtlInDays) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.TtlInDays
@@ -81,7 +81,7 @@ func (o *ClusterLockRequest) GetTtlInDays() float32 {
 
 // GetTtlInDaysOk returns a tuple with the TtlInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterLockRequest) GetTtlInDaysOk() (*float32, bool) {
+func (o *ClusterLockRequest) GetTtlInDaysOk() (*int32, bool) {
 	if o == nil || IsNil(o.TtlInDays) {
 		return nil, false
 	}
@@ -97,8 +97,8 @@ func (o *ClusterLockRequest) HasTtlInDays() bool {
 	return false
 }
 
-// SetTtlInDays gets a reference to the given float32 and assigns it to the TtlInDays field.
-func (o *ClusterLockRequest) SetTtlInDays(v float32) {
+// SetTtlInDays gets a reference to the given int32 and assigns it to the TtlInDays field.
+func (o *ClusterLockRequest) SetTtlInDays(v int32) {
 	o.TtlInDays = &v
 }
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListClusterLock
 
-> []ClusterLockList ListClusterLock(ctx, organizationId).Execute()
+> ClusterLockList ListClusterLock(ctx, organizationId).Execute()
 
 List locked Cluster by organization
 
@@ -36,7 +36,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationClusterLockAPI.ListClusterLock``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListClusterLock`: []ClusterLockList
+	// response from `ListClusterLock`: ClusterLockList
 	fmt.Fprintf(os.Stdout, "Response from `OrganizationClusterLockAPI.ListClusterLock`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**[]ClusterLockList**](ClusterLockList.md)
+[**ClusterLockList**](ClusterLockList.md)
 
 ### Authorization
 

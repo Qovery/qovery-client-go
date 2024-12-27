@@ -21,11 +21,11 @@ var _ MappedNullable = &ClusterLock{}
 
 // ClusterLock struct for ClusterLock
 type ClusterLock struct {
-	Reason               string   `json:"reason"`
-	TtlInDays            *float32 `json:"ttl_in_days,omitempty"`
-	ClusterId            string   `json:"cluster_id"`
-	LockedAt             float32  `json:"locked_at"`
-	OwnerName            string   `json:"owner_name"`
+	Reason               string  `json:"reason"`
+	TtlInDays            *int32  `json:"ttl_in_days,omitempty"`
+	ClusterId            string  `json:"cluster_id"`
+	LockedAt             float32 `json:"locked_at"`
+	OwnerName            string  `json:"owner_name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *ClusterLock) SetReason(v string) {
 }
 
 // GetTtlInDays returns the TtlInDays field value if set, zero value otherwise.
-func (o *ClusterLock) GetTtlInDays() float32 {
+func (o *ClusterLock) GetTtlInDays() int32 {
 	if o == nil || IsNil(o.TtlInDays) {
-		var ret float32
+		var ret int32
 		return ret
 	}
 	return *o.TtlInDays
@@ -87,7 +87,7 @@ func (o *ClusterLock) GetTtlInDays() float32 {
 
 // GetTtlInDaysOk returns a tuple with the TtlInDays field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterLock) GetTtlInDaysOk() (*float32, bool) {
+func (o *ClusterLock) GetTtlInDaysOk() (*int32, bool) {
 	if o == nil || IsNil(o.TtlInDays) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *ClusterLock) HasTtlInDays() bool {
 	return false
 }
 
-// SetTtlInDays gets a reference to the given float32 and assigns it to the TtlInDays field.
-func (o *ClusterLock) SetTtlInDays(v float32) {
+// SetTtlInDays gets a reference to the given int32 and assigns it to the TtlInDays field.
+func (o *ClusterLock) SetTtlInDays(v int32) {
 	o.TtlInDays = &v
 }
 

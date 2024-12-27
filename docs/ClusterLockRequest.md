@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Reason** | **string** |  | 
-**TtlInDays** | Pointer to **float32** |  | [optional] 
+**TtlInDays** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -48,20 +48,20 @@ SetReason sets Reason field to given value.
 
 ### GetTtlInDays
 
-`func (o *ClusterLockRequest) GetTtlInDays() float32`
+`func (o *ClusterLockRequest) GetTtlInDays() int32`
 
 GetTtlInDays returns the TtlInDays field if non-nil, zero value otherwise.
 
 ### GetTtlInDaysOk
 
-`func (o *ClusterLockRequest) GetTtlInDaysOk() (*float32, bool)`
+`func (o *ClusterLockRequest) GetTtlInDaysOk() (*int32, bool)`
 
 GetTtlInDaysOk returns a tuple with the TtlInDays field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTtlInDays
 
-`func (o *ClusterLockRequest) SetTtlInDays(v float32)`
+`func (o *ClusterLockRequest) SetTtlInDays(v int32)`
 
 SetTtlInDays sets TtlInDays field to given value.
 

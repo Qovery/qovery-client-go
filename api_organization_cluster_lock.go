@@ -29,7 +29,7 @@ type ApiListClusterLockRequest struct {
 	organizationId string
 }
 
-func (r ApiListClusterLockRequest) Execute() ([]ClusterLockList, *http.Response, error) {
+func (r ApiListClusterLockRequest) Execute() (*ClusterLockList, *http.Response, error) {
 	return r.ApiService.ListClusterLockExecute(r)
 }
 
@@ -49,13 +49,13 @@ func (a *OrganizationClusterLockAPIService) ListClusterLock(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return []ClusterLockList
-func (a *OrganizationClusterLockAPIService) ListClusterLockExecute(r ApiListClusterLockRequest) ([]ClusterLockList, *http.Response, error) {
+//  @return ClusterLockList
+func (a *OrganizationClusterLockAPIService) ListClusterLockExecute(r ApiListClusterLockRequest) (*ClusterLockList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue []ClusterLockList
+		localVarReturnValue *ClusterLockList
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationClusterLockAPIService.ListClusterLock")
