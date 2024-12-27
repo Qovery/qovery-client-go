@@ -25,6 +25,7 @@ type ClusterStatus struct {
 	IsDeployed              *bool             `json:"is_deployed,omitempty"`
 	NextK8sAvailableVersion NullableString    `json:"next_k8s_available_version,omitempty"`
 	LastExecutionId         *string           `json:"last_execution_id,omitempty"`
+	ClusterLock             *ClusterLock      `json:"cluster_lock,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -218,6 +219,38 @@ func (o *ClusterStatus) SetLastExecutionId(v string) {
 	o.LastExecutionId = &v
 }
 
+// GetClusterLock returns the ClusterLock field value if set, zero value otherwise.
+func (o *ClusterStatus) GetClusterLock() ClusterLock {
+	if o == nil || IsNil(o.ClusterLock) {
+		var ret ClusterLock
+		return ret
+	}
+	return *o.ClusterLock
+}
+
+// GetClusterLockOk returns a tuple with the ClusterLock field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatus) GetClusterLockOk() (*ClusterLock, bool) {
+	if o == nil || IsNil(o.ClusterLock) {
+		return nil, false
+	}
+	return o.ClusterLock, true
+}
+
+// HasClusterLock returns a boolean if a field has been set.
+func (o *ClusterStatus) HasClusterLock() bool {
+	if o != nil && !IsNil(o.ClusterLock) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterLock gets a reference to the given ClusterLock and assigns it to the ClusterLock field.
+func (o *ClusterStatus) SetClusterLock(v ClusterLock) {
+	o.ClusterLock = &v
+}
+
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -242,6 +275,9 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LastExecutionId) {
 		toSerialize["last_execution_id"] = o.LastExecutionId
+	}
+	if !IsNil(o.ClusterLock) {
+		toSerialize["cluster_lock"] = o.ClusterLock
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -270,6 +306,7 @@ func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "is_deployed")
 		delete(additionalProperties, "next_k8s_available_version")
 		delete(additionalProperties, "last_execution_id")
+		delete(additionalProperties, "cluster_lock")
 		o.AdditionalProperties = additionalProperties
 	}
 

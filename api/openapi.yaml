@@ -99,6 +99,7 @@ tags:
 - name: Members
 - name: Organization
 - name: Organization Account Git Repositories
+- name: Organization Cluster Lock
 - name: Organization Main Calls
 - name: Organization Custom Role
 - name: Organization Event
@@ -15192,6 +15193,106 @@ paths:
       - Environment Main Calls
       x-stoplight:
         id: 9adquhr5t6qx3
+  /cluster/{clusterId}/lock:
+    delete:
+      description: Unlock a cluster
+      operationId: unlock-cluster
+      parameters:
+      - explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: |-
+            Unauthorized responses:
+                    '204':
+                      $ref: '#/components/responses/204-deletion'
+                    '401':
+                      $ref: '#/components/responses/401'
+                    '403':
+                      $ref: '#/components/responses/403'
+                    '404':
+                      $ref: '#/components/responses/404'
+        "403":
+          description: Forbidden
+        "404":
+          description: ""
+      summary: Unlock Cluster
+      tags:
+      - Clusters
+      x-stoplight:
+        id: vkn00s3mt1vew
+    post:
+      description: Lock a Cluster
+      operationId: lockCluster
+      parameters:
+      - explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterLockRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterLock'
+          description: OK
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      summary: Lock Cluster
+      tags:
+      - Clusters
+      x-stoplight:
+        id: kttp2yd6qq7m7
+  /organization/{organizationId}/lock:
+    get:
+      operationId: list-cluster-lock
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ClusterLockList'
+                type: array
+          description: OK
+        "401":
+          description: Unauthorized
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      summary: List locked Cluster by organization
+      tags:
+      - Organization Cluster Lock
+      x-stoplight:
+        id: 3n7iq6cr6xx43
 components:
   parameters:
     applicationId:
@@ -18593,6 +18694,12 @@ components:
       type: object
     ClusterStatus:
       example:
+        cluster_lock:
+          reason: reason
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          owner_name: owner_name
+          locked_at: 6.027456183070403
+          ttl_in_days: 0.8008281904610115
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         next_k8s_available_version: "1.28"
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
@@ -18613,16 +18720,30 @@ components:
         last_execution_id:
           example: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           type: string
+        cluster_lock:
+          $ref: '#/components/schemas/ClusterLock'
       type: object
     ClusterStatusResponseList:
       example:
         results:
-        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - cluster_lock:
+            reason: reason
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            owner_name: owner_name
+            locked_at: 6.027456183070403
+            ttl_in_days: 0.8008281904610115
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           is_deployed: true
           status: BUILDING
-        - cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - cluster_lock:
+            reason: reason
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            owner_name: owner_name
+            locked_at: 6.027456183070403
+            ttl_in_days: 0.8008281904610115
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           is_deployed: true
@@ -30377,6 +30498,87 @@ components:
       - max_memory_in_gibibytes
       title: KarpenterNodePoolLimits
       type: object
+    ClusterLockRequest:
+      example:
+        reason: reason
+        ttl_in_days: 0.8008281904610115
+      properties:
+        reason:
+          type: string
+          x-stoplight:
+            id: r7sy48ofln6xf
+        ttl_in_days:
+          type: number
+          x-stoplight:
+            id: m7spawrlr0mii
+      required:
+      - reason
+      title: ClusterLockRequest
+      type: object
+      x-stoplight:
+        id: d0zigj2okjq2u
+    ClusterLock:
+      example:
+        reason: reason
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        owner_name: owner_name
+        locked_at: 6.027456183070403
+        ttl_in_days: 0.8008281904610115
+      properties:
+        reason:
+          type: string
+          x-stoplight:
+            id: 24t21mhr6yvb8
+        ttl_in_days:
+          type: number
+          x-stoplight:
+            id: hkgmap89j628o
+        cluster_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: uvcmzekexkogh
+        locked_at:
+          type: number
+          x-stoplight:
+            id: aqpw2xs6xlw6b
+        owner_name:
+          type: string
+          x-stoplight:
+            id: 92n5bq5he0utp
+      required:
+      - cluster_id
+      - locked_at
+      - owner_name
+      - reason
+      title: ClusterLock
+      type: object
+      x-stoplight:
+        id: cfl44h3tyj8p9
+    ClusterLockList:
+      example:
+        results:
+        - reason: reason
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          owner_name: owner_name
+          locked_at: 6.027456183070403
+          ttl_in_days: 0.8008281904610115
+        - reason: reason
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          owner_name: owner_name
+          locked_at: 6.027456183070403
+          ttl_in_days: 0.8008281904610115
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterLock'
+          type: array
+          x-stoplight:
+            id: xpi2ooy1zclay
+      title: ClusterLockList
+      type: object
+      x-stoplight:
+        id: 87swuavftz0gk
     deleteMember_request:
       properties:
         user_id:
@@ -33092,6 +33294,7 @@ x-tagGroups:
   - Organization Main Calls
   - Organization Api Token
   - Organization Account Git Repositories
+  - Organization Cluster Lock
   - Organization Webhook
   - Organization Custom Role
   - Organization Event

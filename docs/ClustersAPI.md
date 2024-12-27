@@ -22,8 +22,10 @@ Method | HTTP request | Description
 [**GetRoutingTable**](ClustersAPI.md#GetRoutingTable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 [**ListClusterLogs**](ClustersAPI.md#ListClusterLogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
 [**ListOrganizationCluster**](ClustersAPI.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
+[**LockCluster**](ClustersAPI.md#LockCluster) | **Post** /cluster/{clusterId}/lock | Lock Cluster
 [**SpecifyClusterCloudProviderInfo**](ClustersAPI.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 [**StopCluster**](ClustersAPI.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+[**UnlockCluster**](ClustersAPI.md#UnlockCluster) | **Delete** /cluster/{clusterId}/lock | Unlock Cluster
 [**UpdateKarpenterPrivateFargateSubnetIds**](ClustersAPI.md#UpdateKarpenterPrivateFargateSubnetIds) | **Put** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 [**UpgradeCluster**](ClustersAPI.md#UpgradeCluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 
@@ -1314,6 +1316,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## LockCluster
+
+> ClusterLock LockCluster(ctx, clusterId).ClusterLockRequest(clusterLockRequest).Execute()
+
+Lock Cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "clusterId_example" // string | 
+	clusterLockRequest := *openapiclient.NewClusterLockRequest("Reason_example") // ClusterLockRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.LockCluster(context.Background(), clusterId).ClusterLockRequest(clusterLockRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.LockCluster``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `LockCluster`: ClusterLock
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.LockCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiLockClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clusterLockRequest** | [**ClusterLockRequest**](ClusterLockRequest.md) |  | 
+
+### Return type
+
+[**ClusterLock**](ClusterLock.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SpecifyClusterCloudProviderInfo
 
 > ClusterCloudProviderInfo SpecifyClusterCloudProviderInfo(ctx, organizationId, clusterId).ClusterCloudProviderInfoRequest(clusterCloudProviderInfoRequest).Execute()
@@ -1454,6 +1528,74 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UnlockCluster
+
+> UnlockCluster(ctx, clusterId).Execute()
+
+Unlock Cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "clusterId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ClustersAPI.UnlockCluster(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.UnlockCluster``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUnlockClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

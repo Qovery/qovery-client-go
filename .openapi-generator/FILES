@@ -69,6 +69,7 @@ api_members.go
 api_organization_account_git_repositories.go
 api_organization_annotations_group.go
 api_organization_api_token.go
+api_organization_cluster_lock.go
 api_organization_custom_role.go
 api_organization_event.go
 api_organization_labels_group.go
@@ -177,6 +178,9 @@ docs/ClusterInstanceGpuInfo.md
 docs/ClusterInstanceTypeResponseList.md
 docs/ClusterInstanceTypeResponseListResultsInner.md
 docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md
+docs/ClusterLock.md
+docs/ClusterLockList.md
+docs/ClusterLockRequest.md
 docs/ClusterLogs.md
 docs/ClusterLogsDetails.md
 docs/ClusterLogsError.md
@@ -548,6 +552,7 @@ docs/OrganizationAvailableRoleList.md
 docs/OrganizationBillingUsageReportRequest.md
 docs/OrganizationBillingUsageReportResponse.md
 docs/OrganizationChangePlanRequest.md
+docs/OrganizationClusterLockAPI.md
 docs/OrganizationContainerAutoDeployRequest.md
 docs/OrganizationContainerPreviewRequest.md
 docs/OrganizationCreditCodeRequest.md
@@ -765,6 +770,9 @@ model_cluster_instance_gpu_info.go
 model_cluster_instance_type_response_list.go
 model_cluster_instance_type_response_list_results_inner.go
 model_cluster_karpenter_private_subnet_ids_put_request.go
+model_cluster_lock.go
+model_cluster_lock_list.go
+model_cluster_lock_request.go
 model_cluster_logs.go
 model_cluster_logs_details.go
 model_cluster_logs_error.go
@@ -1275,6 +1283,7 @@ test/api_members_test.go
 test/api_organization_account_git_repositories_test.go
 test/api_organization_annotations_group_test.go
 test/api_organization_api_token_test.go
+test/api_organization_cluster_lock_test.go
 test/api_organization_custom_role_test.go
 test/api_organization_event_test.go
 test/api_organization_labels_group_test.go

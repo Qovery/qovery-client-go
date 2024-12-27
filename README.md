@@ -203,8 +203,10 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**GetRoutingTable**](docs/ClustersAPI.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 *ClustersAPI* | [**ListClusterLogs**](docs/ClustersAPI.md#listclusterlogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
 *ClustersAPI* | [**ListOrganizationCluster**](docs/ClustersAPI.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
+*ClustersAPI* | [**LockCluster**](docs/ClustersAPI.md#lockcluster) | **Post** /cluster/{clusterId}/lock | Lock Cluster
 *ClustersAPI* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersAPI.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
+*ClustersAPI* | [**UnlockCluster**](docs/ClustersAPI.md#unlockcluster) | **Delete** /cluster/{clusterId}/lock | Unlock Cluster
 *ClustersAPI* | [**UpdateKarpenterPrivateFargateSubnetIds**](docs/ClustersAPI.md#updatekarpenterprivatefargatesubnetids) | **Put** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 *ClustersAPI* | [**UpgradeCluster**](docs/ClustersAPI.md#upgradecluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 *ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
@@ -440,6 +442,7 @@ Class | Method | HTTP request | Description
 *OrganizationApiTokenAPI* | [**CreateOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#createorganizationapitoken) | **Post** /organization/{organizationId}/apiToken | Create an organization api token
 *OrganizationApiTokenAPI* | [**DeleteOrganizationApiToken**](docs/OrganizationApiTokenAPI.md#deleteorganizationapitoken) | **Delete** /organization/{organizationId}/apiToken/{apiTokenId} | Delete organization api token
 *OrganizationApiTokenAPI* | [**ListOrganizationApiTokens**](docs/OrganizationApiTokenAPI.md#listorganizationapitokens) | **Get** /organization/{organizationId}/apiToken | List organization api tokens
+*OrganizationClusterLockAPI* | [**ListClusterLock**](docs/OrganizationClusterLockAPI.md#listclusterlock) | **Get** /organization/{organizationId}/lock | List locked Cluster by organization
 *OrganizationCustomRoleAPI* | [**CreateOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#createorganizationcustomrole) | **Post** /organization/{organizationId}/customRole | Create an organization custom role
 *OrganizationCustomRoleAPI* | [**DeleteOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#deleteorganizationcustomrole) | **Delete** /organization/{organizationId}/customRole/{customRoleId} | Delete organization custom role
 *OrganizationCustomRoleAPI* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
@@ -589,6 +592,9 @@ Class | Method | HTTP request | Description
  - [ClusterInstanceTypeResponseList](docs/ClusterInstanceTypeResponseList.md)
  - [ClusterInstanceTypeResponseListResultsInner](docs/ClusterInstanceTypeResponseListResultsInner.md)
  - [ClusterKarpenterPrivateSubnetIdsPutRequest](docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md)
+ - [ClusterLock](docs/ClusterLock.md)
+ - [ClusterLockList](docs/ClusterLockList.md)
+ - [ClusterLockRequest](docs/ClusterLockRequest.md)
  - [ClusterLogs](docs/ClusterLogs.md)
  - [ClusterLogsDetails](docs/ClusterLogsDetails.md)
  - [ClusterLogsError](docs/ClusterLogsError.md)

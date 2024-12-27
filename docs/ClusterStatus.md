@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **IsDeployed** | Pointer to **bool** |  | [optional] 
 **NextK8sAvailableVersion** | Pointer to **NullableString** |  | [optional] 
 **LastExecutionId** | Pointer to **string** |  | [optional] 
+**ClusterLock** | Pointer to [**ClusterLock**](ClusterLock.md) |  | [optional] 
 
 ## Methods
 
@@ -163,6 +164,31 @@ SetLastExecutionId sets LastExecutionId field to given value.
 `func (o *ClusterStatus) HasLastExecutionId() bool`
 
 HasLastExecutionId returns a boolean if a field has been set.
+
+### GetClusterLock
+
+`func (o *ClusterStatus) GetClusterLock() ClusterLock`
+
+GetClusterLock returns the ClusterLock field if non-nil, zero value otherwise.
+
+### GetClusterLockOk
+
+`func (o *ClusterStatus) GetClusterLockOk() (*ClusterLock, bool)`
+
+GetClusterLockOk returns a tuple with the ClusterLock field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterLock
+
+`func (o *ClusterStatus) SetClusterLock(v ClusterLock)`
+
+SetClusterLock sets ClusterLock field to given value.
+
+### HasClusterLock
+
+`func (o *ClusterStatus) HasClusterLock() bool`
+
+HasClusterLock returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

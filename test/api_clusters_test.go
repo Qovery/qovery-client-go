@@ -284,6 +284,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService LockCluster", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.LockCluster(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService SpecifyClusterCloudProviderInfo", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -310,6 +324,19 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ClustersAPIService UnlockCluster", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		httpRes, err := apiClient.ClustersAPI.UnlockCluster(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
