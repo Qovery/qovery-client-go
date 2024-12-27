@@ -18696,7 +18696,7 @@ components:
           reason: reason
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
-          locked_at: 6.027456183070403
+          locked_at: 2000-01-23T04:56:07.000+00:00
           ttl_in_days: 0
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         next_k8s_available_version: "1.28"
@@ -18728,7 +18728,7 @@ components:
             reason: reason
             cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             owner_name: owner_name
-            locked_at: 6.027456183070403
+            locked_at: 2000-01-23T04:56:07.000+00:00
             ttl_in_days: 0
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
@@ -18739,7 +18739,7 @@ components:
             reason: reason
             cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             owner_name: owner_name
-            locked_at: 6.027456183070403
+            locked_at: 2000-01-23T04:56:07.000+00:00
             ttl_in_days: 0
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
@@ -30520,7 +30520,7 @@ components:
         reason: reason
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         owner_name: owner_name
-        locked_at: 6.027456183070403
+        locked_at: 2000-01-23T04:56:07.000+00:00
         ttl_in_days: 0
       properties:
         reason:
@@ -30537,7 +30537,8 @@ components:
           x-stoplight:
             id: uvcmzekexkogh
         locked_at:
-          type: number
+          format: date-time
+          type: string
           x-stoplight:
             id: aqpw2xs6xlw6b
         owner_name:
@@ -30559,12 +30560,12 @@ components:
         - reason: reason
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
-          locked_at: 6.027456183070403
+          locked_at: 2000-01-23T04:56:07.000+00:00
           ttl_in_days: 0
         - reason: reason
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           owner_name: owner_name
-          locked_at: 6.027456183070403
+          locked_at: 2000-01-23T04:56:07.000+00:00
           ttl_in_days: 0
       properties:
         results:

@@ -7,14 +7,14 @@ Name | Type | Description | Notes
 **Reason** | **string** |  | 
 **TtlInDays** | Pointer to **int32** |  | [optional] 
 **ClusterId** | **string** |  | 
-**LockedAt** | **float32** |  | 
+**LockedAt** | **time.Time** |  | 
 **OwnerName** | **string** |  | 
 
 ## Methods
 
 ### NewClusterLock
 
-`func NewClusterLock(reason string, clusterId string, lockedAt float32, ownerName string, ) *ClusterLock`
+`func NewClusterLock(reason string, clusterId string, lockedAt time.Time, ownerName string, ) *ClusterLock`
 
 NewClusterLock instantiates a new ClusterLock object
 This constructor will assign default values to properties that have it defined,
@@ -96,20 +96,20 @@ SetClusterId sets ClusterId field to given value.
 
 ### GetLockedAt
 
-`func (o *ClusterLock) GetLockedAt() float32`
+`func (o *ClusterLock) GetLockedAt() time.Time`
 
 GetLockedAt returns the LockedAt field if non-nil, zero value otherwise.
 
 ### GetLockedAtOk
 
-`func (o *ClusterLock) GetLockedAtOk() (*float32, bool)`
+`func (o *ClusterLock) GetLockedAtOk() (*time.Time, bool)`
 
 GetLockedAtOk returns a tuple with the LockedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLockedAt
 
-`func (o *ClusterLock) SetLockedAt(v float32)`
+`func (o *ClusterLock) SetLockedAt(v time.Time)`
 
 SetLockedAt sets LockedAt field to given value.
 

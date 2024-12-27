@@ -14,6 +14,7 @@ package qovery
 import (
 	"encoding/json"
 	"fmt"
+	"time"
 )
 
 // checks if the ClusterLock type satisfies the MappedNullable interface at compile time
@@ -21,11 +22,11 @@ var _ MappedNullable = &ClusterLock{}
 
 // ClusterLock struct for ClusterLock
 type ClusterLock struct {
-	Reason               string  `json:"reason"`
-	TtlInDays            *int32  `json:"ttl_in_days,omitempty"`
-	ClusterId            string  `json:"cluster_id"`
-	LockedAt             float32 `json:"locked_at"`
-	OwnerName            string  `json:"owner_name"`
+	Reason               string    `json:"reason"`
+	TtlInDays            *int32    `json:"ttl_in_days,omitempty"`
+	ClusterId            string    `json:"cluster_id"`
+	LockedAt             time.Time `json:"locked_at"`
+	OwnerName            string    `json:"owner_name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,7 +36,7 @@ type _ClusterLock ClusterLock
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterLock(reason string, clusterId string, lockedAt float32, ownerName string) *ClusterLock {
+func NewClusterLock(reason string, clusterId string, lockedAt time.Time, ownerName string) *ClusterLock {
 	this := ClusterLock{}
 	this.Reason = reason
 	this.ClusterId = clusterId
@@ -133,9 +134,9 @@ func (o *ClusterLock) SetClusterId(v string) {
 }
 
 // GetLockedAt returns the LockedAt field value
-func (o *ClusterLock) GetLockedAt() float32 {
+func (o *ClusterLock) GetLockedAt() time.Time {
 	if o == nil {
-		var ret float32
+		var ret time.Time
 		return ret
 	}
 
@@ -144,7 +145,7 @@ func (o *ClusterLock) GetLockedAt() float32 {
 
 // GetLockedAtOk returns a tuple with the LockedAt field value
 // and a boolean to check if the value has been set.
-func (o *ClusterLock) GetLockedAtOk() (*float32, bool) {
+func (o *ClusterLock) GetLockedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -152,7 +153,7 @@ func (o *ClusterLock) GetLockedAtOk() (*float32, bool) {
 }
 
 // SetLockedAt sets field value
-func (o *ClusterLock) SetLockedAt(v float32) {
+func (o *ClusterLock) SetLockedAt(v time.Time) {
 	o.LockedAt = v
 }
 
