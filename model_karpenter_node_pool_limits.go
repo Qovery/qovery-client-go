@@ -22,9 +22,9 @@ var _ MappedNullable = &KarpenterNodePoolLimits{}
 // KarpenterNodePoolLimits struct for KarpenterNodePoolLimits
 type KarpenterNodePoolLimits struct {
 	// CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU = 1000 millicores)
-	MaxCpuInVcpu float32 `json:"max_cpu_in_vcpu"`
+	MaxCpuInVcpu int32 `json:"max_cpu_in_vcpu"`
 	// Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi = 1024 mebibytes)
-	MaxMemoryInGibibytes float32 `json:"max_memory_in_gibibytes"`
+	MaxMemoryInGibibytes int32 `json:"max_memory_in_gibibytes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +34,7 @@ type _KarpenterNodePoolLimits KarpenterNodePoolLimits
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKarpenterNodePoolLimits(maxCpuInVcpu float32, maxMemoryInGibibytes float32) *KarpenterNodePoolLimits {
+func NewKarpenterNodePoolLimits(maxCpuInVcpu int32, maxMemoryInGibibytes int32) *KarpenterNodePoolLimits {
 	this := KarpenterNodePoolLimits{}
 	this.MaxCpuInVcpu = maxCpuInVcpu
 	this.MaxMemoryInGibibytes = maxMemoryInGibibytes
@@ -50,9 +50,9 @@ func NewKarpenterNodePoolLimitsWithDefaults() *KarpenterNodePoolLimits {
 }
 
 // GetMaxCpuInVcpu returns the MaxCpuInVcpu field value
-func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpu() float32 {
+func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpu() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -61,7 +61,7 @@ func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpu() float32 {
 
 // GetMaxCpuInVcpuOk returns a tuple with the MaxCpuInVcpu field value
 // and a boolean to check if the value has been set.
-func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpuOk() (*float32, bool) {
+func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpuOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,14 +69,14 @@ func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpuOk() (*float32, bool) {
 }
 
 // SetMaxCpuInVcpu sets field value
-func (o *KarpenterNodePoolLimits) SetMaxCpuInVcpu(v float32) {
+func (o *KarpenterNodePoolLimits) SetMaxCpuInVcpu(v int32) {
 	o.MaxCpuInVcpu = v
 }
 
 // GetMaxMemoryInGibibytes returns the MaxMemoryInGibibytes field value
-func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytes() float32 {
+func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytes() int32 {
 	if o == nil {
-		var ret float32
+		var ret int32
 		return ret
 	}
 
@@ -85,7 +85,7 @@ func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytes() float32 {
 
 // GetMaxMemoryInGibibytesOk returns a tuple with the MaxMemoryInGibibytes field value
 // and a boolean to check if the value has been set.
-func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytesOk() (*float32, bool) {
+func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytesOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -93,7 +93,7 @@ func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytesOk() (*float32, bool) {
 }
 
 // SetMaxMemoryInGibibytes sets field value
-func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v float32) {
+func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v int32) {
 	o.MaxMemoryInGibibytes = v
 }
 

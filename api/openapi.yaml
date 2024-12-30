@@ -30485,11 +30485,11 @@ components:
         max_cpu_in_vcpu:
           description: "CPU limit that will be applied for the node pool (in vCPU\
             \ unit: 1 vCPU = 1000 millicores)"
-          type: number
+          type: integer
         max_memory_in_gibibytes:
           description: "Memory limit that will be applied for the node pool (in Gibibytes\
             \ unit: 1Gi = 1024 mebibytes)"
-          type: number
+          type: integer
       required:
       - max_cpu_in_vcpu
       - max_memory_in_gibibytes

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**MaxCpuInVcpu** | **float32** | CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU &#x3D; 1000 millicores) | 
-**MaxMemoryInGibibytes** | **float32** | Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi &#x3D; 1024 mebibytes) | 
+**MaxCpuInVcpu** | **int32** | CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU &#x3D; 1000 millicores) | 
+**MaxMemoryInGibibytes** | **int32** | Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi &#x3D; 1024 mebibytes) | 
 
 ## Methods
 
 ### NewKarpenterNodePoolLimits
 
-`func NewKarpenterNodePoolLimits(maxCpuInVcpu float32, maxMemoryInGibibytes float32, ) *KarpenterNodePoolLimits`
+`func NewKarpenterNodePoolLimits(maxCpuInVcpu int32, maxMemoryInGibibytes int32, ) *KarpenterNodePoolLimits`
 
 NewKarpenterNodePoolLimits instantiates a new KarpenterNodePoolLimits object
 This constructor will assign default values to properties that have it defined,
@@ -28,40 +28,40 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetMaxCpuInVcpu
 
-`func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpu() float32`
+`func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpu() int32`
 
 GetMaxCpuInVcpu returns the MaxCpuInVcpu field if non-nil, zero value otherwise.
 
 ### GetMaxCpuInVcpuOk
 
-`func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpuOk() (*float32, bool)`
+`func (o *KarpenterNodePoolLimits) GetMaxCpuInVcpuOk() (*int32, bool)`
 
 GetMaxCpuInVcpuOk returns a tuple with the MaxCpuInVcpu field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxCpuInVcpu
 
-`func (o *KarpenterNodePoolLimits) SetMaxCpuInVcpu(v float32)`
+`func (o *KarpenterNodePoolLimits) SetMaxCpuInVcpu(v int32)`
 
 SetMaxCpuInVcpu sets MaxCpuInVcpu field to given value.
 
 
 ### GetMaxMemoryInGibibytes
 
-`func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytes() float32`
+`func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytes() int32`
 
 GetMaxMemoryInGibibytes returns the MaxMemoryInGibibytes field if non-nil, zero value otherwise.
 
 ### GetMaxMemoryInGibibytesOk
 
-`func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytesOk() (*float32, bool)`
+`func (o *KarpenterNodePoolLimits) GetMaxMemoryInGibibytesOk() (*int32, bool)`
 
 GetMaxMemoryInGibibytesOk returns a tuple with the MaxMemoryInGibibytes field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMaxMemoryInGibibytes
 
-`func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v float32)`
+`func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v int32)`
 
 SetMaxMemoryInGibibytes sets MaxMemoryInGibibytes field to given value.
 
