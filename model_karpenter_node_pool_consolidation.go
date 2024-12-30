@@ -23,9 +23,9 @@ var _ MappedNullable = &KarpenterNodePoolConsolidation{}
 type KarpenterNodePoolConsolidation struct {
 	Enabled bool          `json:"enabled"`
 	Days    []WeekdayEnum `json:"days"`
-	// The start date of the consolidation. The expected format is \"hh24:mm\".
+	// The start date of the consolidation. The format should follow ISO-8601 convention: \"PThh:mm\"
 	StartTime string `json:"start_time"`
-	// The duration during the consolidation will be active. Only hours and minutes can be defined, no seconds. The expected format is \"h:m\".
+	// The duration during the consolidation will be active. The format should follow ISO-8601 convention: \"PThhHmmM\"
 	Duration             string `json:"duration"`
 	AdditionalProperties map[string]interface{}
 }

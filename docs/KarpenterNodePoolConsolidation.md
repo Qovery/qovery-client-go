@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | [default to false]
 **Days** | [**[]WeekdayEnum**](WeekdayEnum.md) |  | 
-**StartTime** | **string** | The start date of the consolidation. The expected format is \&quot;hh24:mm\&quot;.  | 
-**Duration** | **string** | The duration during the consolidation will be active. Only hours and minutes can be defined, no seconds. The expected format is \&quot;h:m\&quot;.  | 
+**StartTime** | **string** | The start date of the consolidation. The format should follow ISO-8601 convention: \&quot;PThh:mm\&quot;  | 
+**Duration** | **string** | The duration during the consolidation will be active. The format should follow ISO-8601 convention: \&quot;PThhHmmM\&quot;  | 
 
 ## Methods
 

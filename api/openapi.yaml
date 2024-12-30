@@ -30453,16 +30453,15 @@ components:
         start_time:
           description: |
             The start date of the consolidation.
-            The expected format is "hh24:mm".
-          example: 22:30
+            The format should follow ISO-8601 convention: "PThh:mm"
+          example: PT22:30
           nullable: false
           type: string
         duration:
           description: |
             The duration during the consolidation will be active.
-            Only hours and minutes can be defined, no seconds.
-            The expected format is "h:m".
-          example: 1h05m
+            The format should follow ISO-8601 convention: "PThhHmmM"
+          example: PT2H45M
           nullable: false
           type: string
       required:
