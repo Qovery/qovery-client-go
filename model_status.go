@@ -29,6 +29,7 @@ type Status struct {
 	IsPartLastDeployment    *bool                       `json:"is_part_last_deployment,omitempty"`
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
 	ExecutionId             *string                     `json:"execution_id,omitempty"`
+	StatusDetails           StatusDetails               `json:"status_details"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -38,11 +39,12 @@ type _Status Status
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum) *Status {
+func NewStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, statusDetails StatusDetails) *Status {
 	this := Status{}
 	this.Id = id
 	this.State = state
 	this.ServiceDeploymentStatus = serviceDeploymentStatus
+	this.StatusDetails = statusDetails
 	return &this
 }
 
@@ -254,6 +256,30 @@ func (o *Status) SetExecutionId(v string) {
 	o.ExecutionId = &v
 }
 
+// GetStatusDetails returns the StatusDetails field value
+func (o *Status) GetStatusDetails() StatusDetails {
+	if o == nil {
+		var ret StatusDetails
+		return ret
+	}
+
+	return o.StatusDetails
+}
+
+// GetStatusDetailsOk returns a tuple with the StatusDetails field value
+// and a boolean to check if the value has been set.
+func (o *Status) GetStatusDetailsOk() (*StatusDetails, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.StatusDetails, true
+}
+
+// SetStatusDetails sets field value
+func (o *Status) SetStatusDetails(v StatusDetails) {
+	o.StatusDetails = v
+}
+
 func (o Status) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -279,6 +305,7 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ExecutionId) {
 		toSerialize["execution_id"] = o.ExecutionId
 	}
+	toSerialize["status_details"] = o.StatusDetails
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -295,6 +322,7 @@ func (o *Status) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"state",
 		"service_deployment_status",
+		"status_details",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -331,6 +359,7 @@ func (o *Status) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "is_part_last_deployment")
 		delete(additionalProperties, "steps")
 		delete(additionalProperties, "execution_id")
+		delete(additionalProperties, "status_details")
 		o.AdditionalProperties = additionalProperties
 	}
 

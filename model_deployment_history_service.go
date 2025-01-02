@@ -25,6 +25,7 @@ type DeploymentHistoryService struct {
 	Status               StateEnum                          `json:"status"`
 	AuditingData         DeploymentHistoryAuditingData      `json:"auditing_data"`
 	Details              DeploymentHistoryServiceDetails    `json:"details"`
+	StatusDetails        *StatusDetails                     `json:"status_details,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,6 +148,38 @@ func (o *DeploymentHistoryService) SetDetails(v DeploymentHistoryServiceDetails)
 	o.Details = v
 }
 
+// GetStatusDetails returns the StatusDetails field value if set, zero value otherwise.
+func (o *DeploymentHistoryService) GetStatusDetails() StatusDetails {
+	if o == nil || IsNil(o.StatusDetails) {
+		var ret StatusDetails
+		return ret
+	}
+	return *o.StatusDetails
+}
+
+// GetStatusDetailsOk returns a tuple with the StatusDetails field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryService) GetStatusDetailsOk() (*StatusDetails, bool) {
+	if o == nil || IsNil(o.StatusDetails) {
+		return nil, false
+	}
+	return o.StatusDetails, true
+}
+
+// HasStatusDetails returns a boolean if a field has been set.
+func (o *DeploymentHistoryService) HasStatusDetails() bool {
+	if o != nil && !IsNil(o.StatusDetails) {
+		return true
+	}
+
+	return false
+}
+
+// SetStatusDetails gets a reference to the given StatusDetails and assigns it to the StatusDetails field.
+func (o *DeploymentHistoryService) SetStatusDetails(v StatusDetails) {
+	o.StatusDetails = &v
+}
+
 func (o DeploymentHistoryService) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -161,6 +194,9 @@ func (o DeploymentHistoryService) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["auditing_data"] = o.AuditingData
 	toSerialize["details"] = o.Details
+	if !IsNil(o.StatusDetails) {
+		toSerialize["status_details"] = o.StatusDetails
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -211,6 +247,7 @@ func (o *DeploymentHistoryService) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "auditing_data")
 		delete(additionalProperties, "details")
+		delete(additionalProperties, "status_details")
 		o.AdditionalProperties = additionalProperties
 	}
 

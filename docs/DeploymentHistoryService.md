@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Status** | [**StateEnum**](StateEnum.md) |  | 
 **AuditingData** | [**DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **Details** | [**DeploymentHistoryServiceDetails**](DeploymentHistoryServiceDetails.md) |  | 
+**StatusDetails** | Pointer to [**StatusDetails**](StatusDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -107,6 +108,31 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
+
+### GetStatusDetails
+
+`func (o *DeploymentHistoryService) GetStatusDetails() StatusDetails`
+
+GetStatusDetails returns the StatusDetails field if non-nil, zero value otherwise.
+
+### GetStatusDetailsOk
+
+`func (o *DeploymentHistoryService) GetStatusDetailsOk() (*StatusDetails, bool)`
+
+GetStatusDetailsOk returns a tuple with the StatusDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusDetails
+
+`func (o *DeploymentHistoryService) SetStatusDetails(v StatusDetails)`
+
+SetStatusDetails sets StatusDetails field to given value.
+
+### HasStatusDetails
+
+`func (o *DeploymentHistoryService) HasStatusDetails() bool`
+
+HasStatusDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

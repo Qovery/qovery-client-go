@@ -17269,6 +17269,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
     BackupPaginatedResponseList:
@@ -17298,6 +17301,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
         - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -17320,6 +17326,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
         page_size: 20
@@ -21470,6 +21479,9 @@ components:
                 tag: v2.1.1
                 message: message
                 commit_page_url: commit_page_url
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             status: null
           - identifier:
               execution_id: execution_id
@@ -21490,6 +21502,9 @@ components:
                 tag: v2.1.1
                 message: message
                 commit_page_url: commit_page_url
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             status: null
           status: QUEUED
         - duration: duration
@@ -21514,6 +21529,9 @@ components:
                 tag: v2.1.1
                 message: message
                 commit_page_url: commit_page_url
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             status: null
           - identifier:
               execution_id: execution_id
@@ -21534,6 +21552,9 @@ components:
                 tag: v2.1.1
                 message: message
                 commit_page_url: commit_page_url
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             status: null
           status: QUEUED
         status: BUILDING
@@ -21591,6 +21612,9 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           status: null
         - identifier:
             execution_id: execution_id
@@ -21611,6 +21635,9 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           status: null
         status: QUEUED
       properties:
@@ -21702,6 +21729,9 @@ components:
             tag: v2.1.1
             message: message
             commit_page_url: commit_page_url
+        status_details:
+          action: DEPLOY
+          status: QUEUED
         status: null
       properties:
         identifier:
@@ -21712,6 +21742,8 @@ components:
           $ref: '#/components/schemas/DeploymentHistoryAuditingData'
         details:
           $ref: '#/components/schemas/DeploymentHistoryServiceDetails'
+        status_details:
+          $ref: '#/components/schemas/StatusDetails'
       required:
       - auditing_data
       - details
@@ -22077,6 +22109,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             - identifier:
                 execution_id: execution_id
@@ -22097,6 +22132,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             status: QUEUED
           - duration: duration
@@ -22121,6 +22159,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             - identifier:
                 execution_id: execution_id
@@ -22141,6 +22182,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             status: QUEUED
           status: BUILDING
@@ -22177,6 +22221,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             - identifier:
                 execution_id: execution_id
@@ -22197,6 +22244,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             status: QUEUED
           - duration: duration
@@ -22221,6 +22271,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             - identifier:
                 execution_id: execution_id
@@ -22241,6 +22294,9 @@ components:
                   tag: v2.1.1
                   message: message
                   commit_page_url: commit_page_url
+              status_details:
+                action: DEPLOY
+                status: QUEUED
               status: null
             status: QUEUED
           status: BUILDING
@@ -22278,6 +22334,9 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           status: null
         - identifier:
             execution_id: execution_id
@@ -22298,6 +22357,9 @@ components:
               tag: v2.1.1
               message: message
               commit_page_url: commit_page_url
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           status: null
         page_size: 20
       x-stoplight:
@@ -22784,6 +22846,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -22800,6 +22865,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         environment:
@@ -22827,6 +22895,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -22843,6 +22914,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         containers:
@@ -22860,6 +22934,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -22876,6 +22953,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         helms:
@@ -22893,6 +22973,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -22909,6 +22992,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         applications:
@@ -22926,6 +23012,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -22942,6 +23031,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
       properties:
@@ -23011,6 +23103,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23027,6 +23122,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           stage:
@@ -23058,6 +23156,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23074,6 +23175,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           containers:
@@ -23091,6 +23195,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23107,6 +23214,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           helms:
@@ -23124,6 +23234,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23140,6 +23253,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           applications:
@@ -23157,6 +23273,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23173,6 +23292,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
         - databases:
@@ -23190,6 +23312,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23206,6 +23331,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           stage:
@@ -23237,6 +23365,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23253,6 +23384,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           containers:
@@ -23270,6 +23404,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23286,6 +23423,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           helms:
@@ -23303,6 +23443,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23319,6 +23462,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           applications:
@@ -23336,6 +23482,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
           - execution_id: execution_id
@@ -23352,6 +23501,9 @@ components:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 duration_sec: 1
                 status: SUCCESS
+            status_details:
+              action: DEPLOY
+              status: QUEUED
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
       properties:
@@ -24365,6 +24517,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -24381,6 +24536,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         stage:
@@ -24412,6 +24570,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -24428,6 +24589,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         containers:
@@ -24445,6 +24609,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -24461,6 +24628,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         helms:
@@ -24478,6 +24648,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -24494,6 +24667,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         applications:
@@ -24511,6 +24687,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -24527,6 +24706,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
       properties:
@@ -27966,6 +28148,9 @@ components:
           - step_name: REGISTRY_CREATE_REPOSITORY
             duration_sec: 1
             status: SUCCESS
+        status_details:
+          action: DEPLOY
+          status: QUEUED
         is_part_last_deployment: true
         service_deployment_status: NEVER_DEPLOYED
     ReferenceObjectStatusResponseList:
@@ -27985,6 +28170,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         - execution_id: execution_id
@@ -28001,6 +28189,9 @@ components:
             - step_name: REGISTRY_CREATE_REPOSITORY
               duration_sec: 1
               status: SUCCESS
+          status_details:
+            action: DEPLOY
+            status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
       properties:
@@ -28424,6 +28615,24 @@ components:
       - WAITING_RUNNING
       - WAITING_STOPPING
       type: string
+    ServiceActionEnum:
+      enum:
+      - DEPLOY
+      - DELETE
+      - RESTART
+      - STOP
+      - UNKNOWN
+      type: string
+    ServiceActionStatusEnum:
+      enum:
+      - QUEUED
+      - ONGOING
+      - SUCCESS
+      - ERROR
+      - CANCELED
+      - CANCELING
+      - NEVER
+      type: string
     StageStatusEnum:
       enum:
       - QUEUED
@@ -28477,6 +28686,9 @@ components:
           - step_name: REGISTRY_CREATE_REPOSITORY
             duration_sec: 1
             status: SUCCESS
+        status_details:
+          action: DEPLOY
+          status: QUEUED
         is_part_last_deployment: true
         service_deployment_status: NEVER_DEPLOYED
       properties:
@@ -28498,10 +28710,26 @@ components:
           type: string
           x-stoplight:
             id: 3o9tz4272s2ct
+        status_details:
+          $ref: '#/components/schemas/StatusDetails'
       required:
       - id
       - service_deployment_status
       - state
+      - status_details
+      type: object
+    StatusDetails:
+      example:
+        action: DEPLOY
+        status: QUEUED
+      properties:
+        action:
+          $ref: '#/components/schemas/ServiceActionEnum'
+        status:
+          $ref: '#/components/schemas/ServiceActionStatusEnum'
+      required:
+      - action
+      - status
       type: object
     Stage:
       example:
@@ -31867,6 +32095,7 @@ components:
       - name
       - service_id
       - service_type
+      - status_details
       type: object
       x-stoplight:
         id: yklp44eea5vaq

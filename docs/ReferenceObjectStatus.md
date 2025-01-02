@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
 **Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 **ExecutionId** | Pointer to **string** |  | [optional] 
+**StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
 
 ## Methods
 
 ### NewReferenceObjectStatus
 
-`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, ) *ReferenceObjectStatus`
+`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, statusDetails StatusDetails, ) *ReferenceObjectStatus`
 
 NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 This constructor will assign default values to properties that have it defined,
@@ -190,6 +191,26 @@ SetExecutionId sets ExecutionId field to given value.
 `func (o *ReferenceObjectStatus) HasExecutionId() bool`
 
 HasExecutionId returns a boolean if a field has been set.
+
+### GetStatusDetails
+
+`func (o *ReferenceObjectStatus) GetStatusDetails() StatusDetails`
+
+GetStatusDetails returns the StatusDetails field if non-nil, zero value otherwise.
+
+### GetStatusDetailsOk
+
+`func (o *ReferenceObjectStatus) GetStatusDetailsOk() (*StatusDetails, bool)`
+
+GetStatusDetailsOk returns a tuple with the StatusDetails field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatusDetails
+
+`func (o *ReferenceObjectStatus) SetStatusDetails(v StatusDetails)`
+
+SetStatusDetails sets StatusDetails field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -639,6 +639,8 @@ docs/SecretOverride.md
 docs/SecretRequest.md
 docs/SecretResponseList.md
 docs/Service.md
+docs/ServiceActionEnum.md
+docs/ServiceActionStatusEnum.md
 docs/ServiceAnnotationRequest.md
 docs/ServiceDeploymentStatusEnum.md
 docs/ServiceLabelRequest.md
@@ -664,6 +666,7 @@ docs/StageStepMetricNameEnum.md
 docs/StageStepMetrics.md
 docs/StateEnum.md
 docs/Status.md
+docs/StatusDetails.md
 docs/StatusKindEnum.md
 docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
@@ -1168,6 +1171,8 @@ model_secret_override.go
 model_secret_request.go
 model_secret_response_list.go
 model_service.go
+model_service_action_enum.go
+model_service_action_status_enum.go
 model_service_annotation_request.go
 model_service_deployment_status_enum.go
 model_service_label_request.go
@@ -1193,6 +1198,7 @@ model_stage_step_metric_name_enum.go
 model_stage_step_metrics.go
 model_state_enum.go
 model_status.go
+model_status_details.go
 model_status_kind_enum.go
 model_step_metric_status_enum.go
 model_storage_type_enum.go
