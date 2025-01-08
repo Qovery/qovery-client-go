@@ -29,13 +29,13 @@ Name | Type | Description | Notes
 **SpotEnabled** | **bool** |  | 
 **DiskSizeInGib** | **int32** |  | 
 **DefaultServiceArchitecture** | [**CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
-**QoveryNodePools** | [**KarpenterNodePool**](KarpenterNodePool.md) |  | 
+**QoveryNodePools** | Pointer to [**KarpenterNodePool**](KarpenterNodePool.md) |  | [optional] 
 
 ## Methods
 
 ### NewClusterRequestFeaturesInnerValue
 
-`func NewClusterRequestFeaturesInnerValue(awsVpcEksId string, eksSubnetsZoneAIds []string, eksSubnetsZoneBIds []string, eksSubnetsZoneCIds []string, vpcName string, spotEnabled bool, diskSizeInGib int32, defaultServiceArchitecture CpuArchitectureEnum, qoveryNodePools KarpenterNodePool, ) *ClusterRequestFeaturesInnerValue`
+`func NewClusterRequestFeaturesInnerValue(awsVpcEksId string, eksSubnetsZoneAIds []string, eksSubnetsZoneBIds []string, eksSubnetsZoneCIds []string, vpcName string, spotEnabled bool, diskSizeInGib int32, defaultServiceArchitecture CpuArchitectureEnum, ) *ClusterRequestFeaturesInnerValue`
 
 NewClusterRequestFeaturesInnerValue instantiates a new ClusterRequestFeaturesInnerValue object
 This constructor will assign default values to properties that have it defined,
@@ -814,6 +814,11 @@ and a boolean to check if the value has been set.
 
 SetQoveryNodePools sets QoveryNodePools field to given value.
 
+### HasQoveryNodePools
+
+`func (o *ClusterRequestFeaturesInnerValue) HasQoveryNodePools() bool`
+
+HasQoveryNodePools returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -30004,7 +30004,6 @@ components:
       required:
       - default_service_architecture
       - disk_size_in_gib
-      - qovery_node_pools
       - spot_enabled
       title: ClusterFeatureKarpenterParameters
       type: object
