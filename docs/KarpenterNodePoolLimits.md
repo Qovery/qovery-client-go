@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Enabled** | **bool** |  | [default to false]
 **MaxCpuInVcpu** | **int32** | CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU &#x3D; 1000 millicores) | 
 **MaxMemoryInGibibytes** | **int32** | Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi &#x3D; 1024 mebibytes) | 
 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewKarpenterNodePoolLimits
 
-`func NewKarpenterNodePoolLimits(maxCpuInVcpu int32, maxMemoryInGibibytes int32, ) *KarpenterNodePoolLimits`
+`func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32, ) *KarpenterNodePoolLimits`
 
 NewKarpenterNodePoolLimits instantiates a new KarpenterNodePoolLimits object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,26 @@ will change when the set of required properties is changed
 NewKarpenterNodePoolLimitsWithDefaults instantiates a new KarpenterNodePoolLimits object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetEnabled
+
+`func (o *KarpenterNodePoolLimits) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *KarpenterNodePoolLimits) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *KarpenterNodePoolLimits) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
 
 ### GetMaxCpuInVcpu
 

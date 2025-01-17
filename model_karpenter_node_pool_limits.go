@@ -21,6 +21,7 @@ var _ MappedNullable = &KarpenterNodePoolLimits{}
 
 // KarpenterNodePoolLimits struct for KarpenterNodePoolLimits
 type KarpenterNodePoolLimits struct {
+	Enabled bool `json:"enabled"`
 	// CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU = 1000 millicores)
 	MaxCpuInVcpu int32 `json:"max_cpu_in_vcpu"`
 	// Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi = 1024 mebibytes)
@@ -34,8 +35,9 @@ type _KarpenterNodePoolLimits KarpenterNodePoolLimits
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKarpenterNodePoolLimits(maxCpuInVcpu int32, maxMemoryInGibibytes int32) *KarpenterNodePoolLimits {
+func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32) *KarpenterNodePoolLimits {
 	this := KarpenterNodePoolLimits{}
+	this.Enabled = enabled
 	this.MaxCpuInVcpu = maxCpuInVcpu
 	this.MaxMemoryInGibibytes = maxMemoryInGibibytes
 	return &this
@@ -46,7 +48,33 @@ func NewKarpenterNodePoolLimits(maxCpuInVcpu int32, maxMemoryInGibibytes int32) 
 // but it doesn't guarantee that properties required by API are set
 func NewKarpenterNodePoolLimitsWithDefaults() *KarpenterNodePoolLimits {
 	this := KarpenterNodePoolLimits{}
+	var enabled bool = false
+	this.Enabled = enabled
 	return &this
+}
+
+// GetEnabled returns the Enabled field value
+func (o *KarpenterNodePoolLimits) GetEnabled() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Enabled
+}
+
+// GetEnabledOk returns a tuple with the Enabled field value
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePoolLimits) GetEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Enabled, true
+}
+
+// SetEnabled sets field value
+func (o *KarpenterNodePoolLimits) SetEnabled(v bool) {
+	o.Enabled = v
 }
 
 // GetMaxCpuInVcpu returns the MaxCpuInVcpu field value
@@ -107,6 +135,7 @@ func (o KarpenterNodePoolLimits) MarshalJSON() ([]byte, error) {
 
 func (o KarpenterNodePoolLimits) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["enabled"] = o.Enabled
 	toSerialize["max_cpu_in_vcpu"] = o.MaxCpuInVcpu
 	toSerialize["max_memory_in_gibibytes"] = o.MaxMemoryInGibibytes
 
@@ -122,6 +151,7 @@ func (o *KarpenterNodePoolLimits) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"enabled",
 		"max_cpu_in_vcpu",
 		"max_memory_in_gibibytes",
 	}
@@ -153,6 +183,7 @@ func (o *KarpenterNodePoolLimits) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "max_cpu_in_vcpu")
 		delete(additionalProperties, "max_memory_in_gibibytes")
 		o.AdditionalProperties = additionalProperties

@@ -30711,6 +30711,10 @@ components:
         id: sbw3iw6yteyba
     KarpenterNodePoolLimits:
       properties:
+        enabled:
+          default: false
+          nullable: false
+          type: boolean
         max_cpu_in_vcpu:
           description: "CPU limit that will be applied for the node pool (in vCPU\
             \ unit: 1 vCPU = 1000 millicores)"
@@ -30720,6 +30724,7 @@ components:
             \ unit: 1Gi = 1024 mebibytes)"
           type: integer
       required:
+      - enabled
       - max_cpu_in_vcpu
       - max_memory_in_gibibytes
       title: KarpenterNodePoolLimits
