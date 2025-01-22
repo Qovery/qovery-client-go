@@ -280,6 +280,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
+*DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -713,6 +714,7 @@ Class | Method | HTTP request | Description
  - [DeploymentStageWithServicesStatuses](docs/DeploymentStageWithServicesStatuses.md)
  - [DockerfileCheckRequest](docs/DockerfileCheckRequest.md)
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
+ - [EnvDeploymentStatus](docs/EnvDeploymentStatus.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
  - [EnvironmentDeploymentRule](docs/EnvironmentDeploymentRule.md)

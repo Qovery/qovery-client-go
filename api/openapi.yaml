@@ -15291,6 +15291,29 @@ paths:
       - Organization Cluster Lock
       x-stoplight:
         id: 3n7iq6cr6xx43
+  /environment/deploymentStatus:
+    get:
+      operationId: getDeploymentStatusByDeploymentRequestId
+      parameters:
+      - explode: true
+        in: query
+        name: deploymentRequestId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvDeploymentStatus'
+          description: OK
+      summary: Get Deployment Status By DeploymentRequestId
+      tags: []
+      x-stoplight:
+        id: dtvjdlz9teqld
 components:
   parameters:
     applicationId:
@@ -30811,6 +30834,28 @@ components:
       type: object
       x-stoplight:
         id: 87swuavftz0gk
+    EnvDeploymentStatus:
+      example:
+        deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: BUILDING
+      properties:
+        deployment_request_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: moe7npwga4pwm
+        environment_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: t6sa9u90dayva
+        status:
+          $ref: '#/components/schemas/StateEnum'
+      title: EnvDeploymentStatus
+      type: object
+      x-stoplight:
+        id: 3t1ibpp18xhmy
     deleteMember_request:
       properties:
         user_id:

@@ -317,6 +317,7 @@ docs/DeploymentStageServiceResponse.md
 docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
+docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentAPI.md
 docs/EnvironmentActionsAPI.md
@@ -894,6 +895,7 @@ model_deployment_stage_service_response.go
 model_deployment_stage_with_services_statuses.go
 model_dockerfile_check_request.go
 model_dockerfile_check_response.go
+model_env_deployment_status.go
 model_environment.go
 model_environment_all_of_cloud_provider.go
 model_environment_deployment_rule.go
