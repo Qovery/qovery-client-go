@@ -21581,6 +21581,7 @@ components:
             status: null
           status: QUEUED
         status: BUILDING
+        action_status: QUEUED
       properties:
         identifier:
           $ref: '#/components/schemas/DeploymentHistoryEnvironmentV2_identifier'
@@ -21601,7 +21602,10 @@ components:
           type: array
           x-stoplight:
             id: rz2b0h9r3p6tv
+        action_status:
+          $ref: '#/components/schemas/DeploymentHistoryActionStatus'
       required:
+      - action_status
       - auditing_data
       - identifier
       - stages
@@ -22211,6 +22215,7 @@ components:
               status: null
             status: QUEUED
           status: BUILDING
+          action_status: QUEUED
         - identifier:
             execution_id: execution_id
             environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -22323,6 +22328,7 @@ components:
               status: null
             status: QUEUED
           status: BUILDING
+          action_status: QUEUED
         page_size: 20
       x-stoplight:
         id: 0anfgzdi689ht
@@ -30856,6 +30862,19 @@ components:
       type: object
       x-stoplight:
         id: 3t1ibpp18xhmy
+    DeploymentHistoryActionStatus:
+      enum:
+      - QUEUED
+      - ONGOING
+      - SUCCESS
+      - ERROR
+      - CANCELED
+      - CANCELING
+      - NEVER
+      title: DeploymentHistoryActionStatus
+      type: string
+      x-stoplight:
+        id: qppeluzk1hor1
     deleteMember_request:
       properties:
         user_id:

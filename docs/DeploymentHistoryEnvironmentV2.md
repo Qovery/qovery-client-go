@@ -10,12 +10,13 @@ Name | Type | Description | Notes
 **TriggerAction** | [**DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 
 **TotalDuration** | **string** |  | 
 **Stages** | [**[]DeploymentHistoryStage**](DeploymentHistoryStage.md) |  | 
+**ActionStatus** | [**DeploymentHistoryActionStatus**](DeploymentHistoryActionStatus.md) |  | 
 
 ## Methods
 
 ### NewDeploymentHistoryEnvironmentV2
 
-`func NewDeploymentHistoryEnvironmentV2(identifier DeploymentHistoryEnvironmentV2Identifier, auditingData DeploymentHistoryAuditingData, status StateEnum, triggerAction DeploymentHistoryTriggerAction, totalDuration string, stages []DeploymentHistoryStage, ) *DeploymentHistoryEnvironmentV2`
+`func NewDeploymentHistoryEnvironmentV2(identifier DeploymentHistoryEnvironmentV2Identifier, auditingData DeploymentHistoryAuditingData, status StateEnum, triggerAction DeploymentHistoryTriggerAction, totalDuration string, stages []DeploymentHistoryStage, actionStatus DeploymentHistoryActionStatus, ) *DeploymentHistoryEnvironmentV2`
 
 NewDeploymentHistoryEnvironmentV2 instantiates a new DeploymentHistoryEnvironmentV2 object
 This constructor will assign default values to properties that have it defined,
@@ -148,6 +149,26 @@ and a boolean to check if the value has been set.
 `func (o *DeploymentHistoryEnvironmentV2) SetStages(v []DeploymentHistoryStage)`
 
 SetStages sets Stages field to given value.
+
+
+### GetActionStatus
+
+`func (o *DeploymentHistoryEnvironmentV2) GetActionStatus() DeploymentHistoryActionStatus`
+
+GetActionStatus returns the ActionStatus field if non-nil, zero value otherwise.
+
+### GetActionStatusOk
+
+`func (o *DeploymentHistoryEnvironmentV2) GetActionStatusOk() (*DeploymentHistoryActionStatus, bool)`
+
+GetActionStatusOk returns a tuple with the ActionStatus field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionStatus
+
+`func (o *DeploymentHistoryEnvironmentV2) SetActionStatus(v DeploymentHistoryActionStatus)`
+
+SetActionStatus sets ActionStatus field to given value.
 
 
 

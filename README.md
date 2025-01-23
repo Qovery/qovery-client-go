@@ -678,6 +678,7 @@ Class | Method | HTTP request | Description
  - [DeployAllRequestJobsInner](docs/DeployAllRequestJobsInner.md)
  - [DeployRequest](docs/DeployRequest.md)
  - [DeploymentHistory](docs/DeploymentHistory.md)
+ - [DeploymentHistoryActionStatus](docs/DeploymentHistoryActionStatus.md)
  - [DeploymentHistoryApplication](docs/DeploymentHistoryApplication.md)
  - [DeploymentHistoryAuditingData](docs/DeploymentHistoryAuditingData.md)
  - [DeploymentHistoryContainer](docs/DeploymentHistoryContainer.md)

@@ -27,6 +27,7 @@ type DeploymentHistoryEnvironmentV2 struct {
 	TriggerAction        DeploymentHistoryTriggerAction           `json:"trigger_action"`
 	TotalDuration        string                                   `json:"total_duration"`
 	Stages               []DeploymentHistoryStage                 `json:"stages"`
+	ActionStatus         DeploymentHistoryActionStatus            `json:"action_status"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +37,7 @@ type _DeploymentHistoryEnvironmentV2 DeploymentHistoryEnvironmentV2
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryEnvironmentV2(identifier DeploymentHistoryEnvironmentV2Identifier, auditingData DeploymentHistoryAuditingData, status StateEnum, triggerAction DeploymentHistoryTriggerAction, totalDuration string, stages []DeploymentHistoryStage) *DeploymentHistoryEnvironmentV2 {
+func NewDeploymentHistoryEnvironmentV2(identifier DeploymentHistoryEnvironmentV2Identifier, auditingData DeploymentHistoryAuditingData, status StateEnum, triggerAction DeploymentHistoryTriggerAction, totalDuration string, stages []DeploymentHistoryStage, actionStatus DeploymentHistoryActionStatus) *DeploymentHistoryEnvironmentV2 {
 	this := DeploymentHistoryEnvironmentV2{}
 	this.Identifier = identifier
 	this.AuditingData = auditingData
@@ -44,6 +45,7 @@ func NewDeploymentHistoryEnvironmentV2(identifier DeploymentHistoryEnvironmentV2
 	this.TriggerAction = triggerAction
 	this.TotalDuration = totalDuration
 	this.Stages = stages
+	this.ActionStatus = actionStatus
 	return &this
 }
 
@@ -199,6 +201,30 @@ func (o *DeploymentHistoryEnvironmentV2) SetStages(v []DeploymentHistoryStage) {
 	o.Stages = v
 }
 
+// GetActionStatus returns the ActionStatus field value
+func (o *DeploymentHistoryEnvironmentV2) GetActionStatus() DeploymentHistoryActionStatus {
+	if o == nil {
+		var ret DeploymentHistoryActionStatus
+		return ret
+	}
+
+	return o.ActionStatus
+}
+
+// GetActionStatusOk returns a tuple with the ActionStatus field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryEnvironmentV2) GetActionStatusOk() (*DeploymentHistoryActionStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ActionStatus, true
+}
+
+// SetActionStatus sets field value
+func (o *DeploymentHistoryEnvironmentV2) SetActionStatus(v DeploymentHistoryActionStatus) {
+	o.ActionStatus = v
+}
+
 func (o DeploymentHistoryEnvironmentV2) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -215,6 +241,7 @@ func (o DeploymentHistoryEnvironmentV2) ToMap() (map[string]interface{}, error) 
 	toSerialize["trigger_action"] = o.TriggerAction
 	toSerialize["total_duration"] = o.TotalDuration
 	toSerialize["stages"] = o.Stages
+	toSerialize["action_status"] = o.ActionStatus
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -234,6 +261,7 @@ func (o *DeploymentHistoryEnvironmentV2) UnmarshalJSON(data []byte) (err error) 
 		"trigger_action",
 		"total_duration",
 		"stages",
+		"action_status",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -269,6 +297,7 @@ func (o *DeploymentHistoryEnvironmentV2) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "trigger_action")
 		delete(additionalProperties, "total_duration")
 		delete(additionalProperties, "stages")
+		delete(additionalProperties, "action_status")
 		o.AdditionalProperties = additionalProperties
 	}
 

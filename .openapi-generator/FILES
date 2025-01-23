@@ -280,6 +280,7 @@ docs/DeployAllRequestHelmsInner.md
 docs/DeployAllRequestJobsInner.md
 docs/DeployRequest.md
 docs/DeploymentHistory.md
+docs/DeploymentHistoryActionStatus.md
 docs/DeploymentHistoryApplication.md
 docs/DeploymentHistoryAuditingData.md
 docs/DeploymentHistoryContainer.md
@@ -859,6 +860,7 @@ model_deploy_all_request_helms_inner.go
 model_deploy_all_request_jobs_inner.go
 model_deploy_request.go
 model_deployment_history.go
+model_deployment_history_action_status.go
 model_deployment_history_application.go
 model_deployment_history_auditing_data.go
 model_deployment_history_container.go
