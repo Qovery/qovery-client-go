@@ -63,20 +63,6 @@ func Test_qovery_EnvironmentMainCallsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test EnvironmentMainCallsAPIService GetEnvironmentDeploymentQueue", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.EnvironmentMainCallsAPI.GetEnvironmentDeploymentQueue(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test EnvironmentMainCallsAPIService GetEnvironmentStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -112,6 +98,20 @@ func Test_qovery_EnvironmentMainCallsAPIService(t *testing.T) {
 		var environmentId string
 
 		resp, httpRes, err := apiClient.EnvironmentMainCallsAPI.GetEnvironmentStatusesWithStages(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EnvironmentMainCallsAPIService ListDeploymentRequestByEnvironmentId", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		resp, httpRes, err := apiClient.EnvironmentMainCallsAPI.ListDeploymentRequestByEnvironmentId(context.Background(), environmentId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

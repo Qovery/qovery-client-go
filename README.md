@@ -315,10 +315,10 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsAPI* | [**DeleteEnvironment**](docs/EnvironmentMainCallsAPI.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
 *EnvironmentMainCallsAPI* | [**EditEnvironment**](docs/EnvironmentMainCallsAPI.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
 *EnvironmentMainCallsAPI* | [**GetEnvironment**](docs/EnvironmentMainCallsAPI.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
-*EnvironmentMainCallsAPI* | [**GetEnvironmentDeploymentQueue**](docs/EnvironmentMainCallsAPI.md#getenvironmentdeploymentqueue) | **Get** /environment/{environmentId}/deploymentQueue | Get Deployment Queue By EnvironmentId
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
+*EnvironmentMainCallsAPI* | [**ListDeploymentRequestByEnvironmentId**](docs/EnvironmentMainCallsAPI.md#listdeploymentrequestbyenvironmentid) | **Get** /environment/{environmentId}/deploymentQueue | List Deployment Request By EnvironmentId
 *EnvironmentMainCallsAPI* | [**ListServicesByEnvironmentId**](docs/EnvironmentMainCallsAPI.md#listservicesbyenvironmentid) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretAPI.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretAPI.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
@@ -886,6 +886,7 @@ Class | Method | HTTP request | Description
  - [LinkedServiceTypeEnum](docs/LinkedServiceTypeEnum.md)
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
+ - [ListDeploymentRequestByEnvironmentId200Response](docs/ListDeploymentRequestByEnvironmentId200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)

@@ -15354,7 +15354,7 @@ paths:
         id: qvqb4d0bpjy0v
   /environment/{environmentId}/deploymentQueue:
     get:
-      operationId: getEnvironmentDeploymentQueue
+      operationId: listDeploymentRequestByEnvironmentId
       parameters:
       - explode: false
         in: path
@@ -15369,9 +15369,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/QueuedDeploymentRequestWithStages'
+                $ref: '#/components/schemas/listDeploymentRequestByEnvironmentId_200_response'
           description: OK
-      summary: Get Deployment Queue By EnvironmentId
+      summary: List Deployment Request By EnvironmentId
       tags:
       - Environment Main Calls
       x-stoplight:
@@ -31794,6 +31794,63 @@ components:
           type: array
           x-stoplight:
             id: gjtgeehwg4lb9
+      type: object
+    listDeploymentRequestByEnvironmentId_200_response:
+      example:
+        results:
+        - identifier:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auditing_data:
+            origin: API
+            triggered_by: triggered_by
+          trigger_action: DEPLOY
+          stages:
+            name: name
+            services:
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            status: QUEUED
+        - identifier:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          auditing_data:
+            origin: API
+            triggered_by: triggered_by
+          trigger_action: DEPLOY
+          stages:
+            name: name
+            services:
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            status: QUEUED
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/QueuedDeploymentRequestWithStages'
+          type: array
+          x-stoplight:
+            id: zbjhuwhtkvxkj
       type: object
     ServicePortRequest_ports_inner:
       example:
