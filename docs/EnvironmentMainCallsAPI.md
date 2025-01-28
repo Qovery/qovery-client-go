@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**DeleteEnvironment**](EnvironmentMainCallsAPI.md#DeleteEnvironment) | **Delete** /environment/{environmentId} | Delete an environment
 [**EditEnvironment**](EnvironmentMainCallsAPI.md#EditEnvironment) | **Put** /environment/{environmentId} | Edit an environment
 [**GetEnvironment**](EnvironmentMainCallsAPI.md#GetEnvironment) | **Get** /environment/{environmentId} | Get environment by ID
+[**GetEnvironmentDeploymentQueue**](EnvironmentMainCallsAPI.md#GetEnvironmentDeploymentQueue) | **Get** /environment/{environmentId}/deploymentQueue | Get Deployment Queue By EnvironmentId
 [**GetEnvironmentStatus**](EnvironmentMainCallsAPI.md#GetEnvironmentStatus) | **Get** /environment/{environmentId}/status | Get environment status
 [**GetEnvironmentStatuses**](EnvironmentMainCallsAPI.md#GetEnvironmentStatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 [**GetEnvironmentStatusesWithStages**](EnvironmentMainCallsAPI.md#GetEnvironmentStatusesWithStages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
@@ -207,6 +208,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Environment**](Environment.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetEnvironmentDeploymentQueue
+
+> QueuedDeploymentRequestWithStages GetEnvironmentDeploymentQueue(ctx, environmentId).Execute()
+
+Get Deployment Queue By EnvironmentId
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentMainCallsAPI.GetEnvironmentDeploymentQueue(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsAPI.GetEnvironmentDeploymentQueue``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetEnvironmentDeploymentQueue`: QueuedDeploymentRequestWithStages
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsAPI.GetEnvironmentDeploymentQueue`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEnvironmentDeploymentQueueRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**QueuedDeploymentRequestWithStages**](QueuedDeploymentRequestWithStages.md)
 
 ### Authorization
 

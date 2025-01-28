@@ -281,7 +281,6 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
-*DefaultAPI* | [**GetEnvironmentDeploymentQueue**](docs/DefaultAPI.md#getenvironmentdeploymentqueue) | **Get** /environment/{environmentId}/deploymentQueue | Get Deployment Queue By EnvironmentId
 *DefaultAPI* | [**ListServicesByOrganizationId**](docs/DefaultAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
@@ -316,6 +315,7 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsAPI* | [**DeleteEnvironment**](docs/EnvironmentMainCallsAPI.md#deleteenvironment) | **Delete** /environment/{environmentId} | Delete an environment
 *EnvironmentMainCallsAPI* | [**EditEnvironment**](docs/EnvironmentMainCallsAPI.md#editenvironment) | **Put** /environment/{environmentId} | Edit an environment
 *EnvironmentMainCallsAPI* | [**GetEnvironment**](docs/EnvironmentMainCallsAPI.md#getenvironment) | **Get** /environment/{environmentId} | Get environment by ID
+*EnvironmentMainCallsAPI* | [**GetEnvironmentDeploymentQueue**](docs/EnvironmentMainCallsAPI.md#getenvironmentdeploymentqueue) | **Get** /environment/{environmentId}/deploymentQueue | Get Deployment Queue By EnvironmentId
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatus**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatus) | **Get** /environment/{environmentId}/status | Get environment status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages

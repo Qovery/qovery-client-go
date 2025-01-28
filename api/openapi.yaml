@@ -15372,7 +15372,8 @@ paths:
                 $ref: '#/components/schemas/QueuedDeploymentRequestWithStages'
           description: OK
       summary: Get Deployment Queue By EnvironmentId
-      tags: []
+      tags:
+      - Environment Main Calls
       x-stoplight:
         id: 0zhr0vfxayg96
 components:
