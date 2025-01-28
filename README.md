@@ -281,6 +281,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
+*DefaultAPI* | [**GetEnvironmentDeploymentQueue**](docs/DefaultAPI.md#getenvironmentdeploymentqueue) | **Get** /environment/{environmentId}/deploymentQueue | Get Deployment Queue By EnvironmentId
 *DefaultAPI* | [**ListServicesByOrganizationId**](docs/DefaultAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
@@ -979,6 +980,12 @@ Class | Method | HTTP request | Description
  - [ProjectResponseList](docs/ProjectResponseList.md)
  - [ProjectStats](docs/ProjectStats.md)
  - [ProjectStatsResponseList](docs/ProjectStatsResponseList.md)
+ - [QueuedDeploymentRequestWithStages](docs/QueuedDeploymentRequestWithStages.md)
+ - [QueuedDeploymentRequestWithStagesAuditingData](docs/QueuedDeploymentRequestWithStagesAuditingData.md)
+ - [QueuedDeploymentRequestWithStagesIdentifier](docs/QueuedDeploymentRequestWithStagesIdentifier.md)
+ - [QueuedDeploymentRequestWithStagesStages](docs/QueuedDeploymentRequestWithStagesStages.md)
+ - [QueuedDeploymentRequestWithStagesStagesServicesInner](docs/QueuedDeploymentRequestWithStagesStagesServicesInner.md)
+ - [QueuedDeploymentRequestWithStagesStagesServicesInnerIdentifier](docs/QueuedDeploymentRequestWithStagesStagesServicesInnerIdentifier.md)
  - [RebootServicesRequest](docs/RebootServicesRequest.md)
  - [ReferenceObject](docs/ReferenceObject.md)
  - [ReferenceObjectStatus](docs/ReferenceObjectStatus.md)
