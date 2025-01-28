@@ -281,6 +281,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
+*DefaultAPI* | [**ListServicesByOrganizationId**](docs/DefaultAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage
@@ -890,6 +891,7 @@ Class | Method | HTTP request | Description
  - [ListOrganizationLabelsGroup200Response](docs/ListOrganizationLabelsGroup200Response.md)
  - [ListServicesByEnvironmentId200Response](docs/ListServicesByEnvironmentId200Response.md)
  - [ListServicesByEnvironmentId200ResponseResultsInner](docs/ListServicesByEnvironmentId200ResponseResultsInner.md)
+ - [ListServicesByOrganizationId200Response](docs/ListServicesByOrganizationId200Response.md)
  - [Log](docs/Log.md)
  - [LogResponseList](docs/LogResponseList.md)
  - [ManagedDatabaseInstanceTypeResponse](docs/ManagedDatabaseInstanceTypeResponse.md)
@@ -998,6 +1000,7 @@ Class | Method | HTTP request | Description
  - [ServiceAnnotationRequest](docs/ServiceAnnotationRequest.md)
  - [ServiceDeploymentStatusEnum](docs/ServiceDeploymentStatusEnum.md)
  - [ServiceLabelRequest](docs/ServiceLabelRequest.md)
+ - [ServiceLightResponse](docs/ServiceLightResponse.md)
  - [ServicePort](docs/ServicePort.md)
  - [ServicePortRequest](docs/ServicePortRequest.md)
  - [ServicePortRequestPortsInner](docs/ServicePortRequestPortsInner.md)

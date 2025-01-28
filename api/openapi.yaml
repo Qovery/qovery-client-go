@@ -15314,6 +15314,44 @@ paths:
       tags: []
       x-stoplight:
         id: dtvjdlz9teqld
+  /organization/{organizationId}/services:
+    get:
+      operationId: listServicesByOrganizationId
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: project_id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: environment_id
+        required: false
+        schema:
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listServicesByOrganizationId_200_response'
+          description: Service List
+      summary: List Services By OrganizationId
+      tags: []
+      x-stoplight:
+        id: qvqb4d0bpjy0v
 components:
   parameters:
     applicationId:
@@ -21488,6 +21526,7 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
@@ -21511,6 +21550,7 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
@@ -21538,6 +21578,7 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
@@ -21561,6 +21602,7 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
@@ -21625,6 +21667,7 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
@@ -21648,6 +21691,7 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
@@ -21742,6 +21786,7 @@ components:
           service_type: APPLICATION
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          icon_uri: https://openapi-generator.tech
         auditing_data:
           updated_at: 2000-01-23T04:56:07.000+00:00
           origin: API
@@ -22122,6 +22167,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22145,6 +22191,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22172,6 +22219,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22195,6 +22243,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22235,6 +22284,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22258,6 +22308,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22285,6 +22336,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22308,6 +22360,7 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
@@ -22349,6 +22402,7 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
@@ -22372,6 +22426,7 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
@@ -30875,6 +30930,70 @@ components:
       type: string
       x-stoplight:
         id: qppeluzk1hor1
+    ServiceLightResponse:
+      example:
+        service_type: APPLICATION
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_name: project_name
+        icon_uri: https://openapi-generator.tech
+        environment_name: environment_name
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: kusnde41nhbq0
+        name:
+          type: string
+          x-stoplight:
+            id: uxr40wquz4uo4
+        description:
+          type: string
+          x-stoplight:
+            id: 71c9yrajgrd9f
+        icon_uri:
+          format: uri
+          type: string
+          x-stoplight:
+            id: k6zs0jdg7k95f
+        service_type:
+          $ref: '#/components/schemas/ServiceTypeEnum'
+        project_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 6j6xz0qq65mbs
+        project_name:
+          type: string
+          x-stoplight:
+            id: jfl0pof91101b
+        environment_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: cs79bi0ic3r18
+        environment_name:
+          type: string
+          x-stoplight:
+            id: s8c6hmto9njzg
+      required:
+      - description
+      - environment_id
+      - environment_name
+      - icon_uri
+      - id
+      - name
+      - project_id
+      - project_name
+      - service_type
+      title: ServiceLightResponse
+      type: object
+      x-stoplight:
+        id: tg1rwcmait89l
     deleteMember_request:
       properties:
         user_id:
@@ -31552,6 +31671,35 @@ components:
           x-stoplight:
             id: 0t9ccei2ecd8d
       type: object
+    listServicesByOrganizationId_200_response:
+      example:
+        results:
+        - service_type: APPLICATION
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          icon_uri: https://openapi-generator.tech
+          environment_name: environment_name
+        - service_type: APPLICATION
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          icon_uri: https://openapi-generator.tech
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ServiceLightResponse'
+          type: array
+          x-stoplight:
+            id: gjtgeehwg4lb9
+      type: object
     ServicePortRequest_ports_inner:
       example:
         publicly_accessible: true
@@ -32145,6 +32293,7 @@ components:
         service_type: APPLICATION
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        icon_uri: https://openapi-generator.tech
       properties:
         name:
           type: string
@@ -32161,7 +32310,13 @@ components:
           type: string
           x-stoplight:
             id: 9ww6nh5lrwg37
+        icon_uri:
+          format: uri
+          type: string
+          x-stoplight:
+            id: luoyctr9gup67
       required:
+      - icon_uri
       - name
       - service_id
       - service_type

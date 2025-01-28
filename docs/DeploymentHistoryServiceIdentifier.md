@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **ServiceId** | **string** |  | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **ExecutionId** | Pointer to **string** |  | [optional] 
+**IconUri** | **string** |  | 
 
 ## Methods
 
 ### NewDeploymentHistoryServiceIdentifier
 
-`func NewDeploymentHistoryServiceIdentifier(name string, serviceId string, serviceType ServiceTypeEnum, ) *DeploymentHistoryServiceIdentifier`
+`func NewDeploymentHistoryServiceIdentifier(name string, serviceId string, serviceType ServiceTypeEnum, iconUri string, ) *DeploymentHistoryServiceIdentifier`
 
 NewDeploymentHistoryServiceIdentifier instantiates a new DeploymentHistoryServiceIdentifier object
 This constructor will assign default values to properties that have it defined,
@@ -112,6 +113,26 @@ SetExecutionId sets ExecutionId field to given value.
 `func (o *DeploymentHistoryServiceIdentifier) HasExecutionId() bool`
 
 HasExecutionId returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *DeploymentHistoryServiceIdentifier) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *DeploymentHistoryServiceIdentifier) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *DeploymentHistoryServiceIdentifier) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
