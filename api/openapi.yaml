@@ -21549,12 +21549,12 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
-              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
               created_at: 2000-01-23T04:56:07.000+00:00
               triggered_by: triggered_by
+            total_duration: total_duration
             details:
               commit:
                 author_name: author_name
@@ -21568,17 +21568,18 @@ components:
               action: DEPLOY
               status: QUEUED
             status: null
+            icon_uri: https://openapi-generator.tech
           - identifier:
               execution_id: execution_id
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
-              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
               created_at: 2000-01-23T04:56:07.000+00:00
               triggered_by: triggered_by
+            total_duration: total_duration
             details:
               commit:
                 author_name: author_name
@@ -21592,6 +21593,7 @@ components:
               action: DEPLOY
               status: QUEUED
             status: null
+            icon_uri: https://openapi-generator.tech
           status: QUEUED
         - duration: duration
           name: name
@@ -21601,12 +21603,12 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
-              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
               created_at: 2000-01-23T04:56:07.000+00:00
               triggered_by: triggered_by
+            total_duration: total_duration
             details:
               commit:
                 author_name: author_name
@@ -21620,17 +21622,18 @@ components:
               action: DEPLOY
               status: QUEUED
             status: null
+            icon_uri: https://openapi-generator.tech
           - identifier:
               execution_id: execution_id
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
-              icon_uri: https://openapi-generator.tech
             auditing_data:
               updated_at: 2000-01-23T04:56:07.000+00:00
               origin: API
               created_at: 2000-01-23T04:56:07.000+00:00
               triggered_by: triggered_by
+            total_duration: total_duration
             details:
               commit:
                 author_name: author_name
@@ -21644,6 +21647,7 @@ components:
               action: DEPLOY
               status: QUEUED
             status: null
+            icon_uri: https://openapi-generator.tech
           status: QUEUED
         status: BUILDING
         action_status: QUEUED
@@ -21690,12 +21694,12 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
-            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
             triggered_by: triggered_by
+          total_duration: total_duration
           details:
             commit:
               author_name: author_name
@@ -21709,17 +21713,18 @@ components:
             action: DEPLOY
             status: QUEUED
           status: null
+          icon_uri: https://openapi-generator.tech
         - identifier:
             execution_id: execution_id
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
-            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
             triggered_by: triggered_by
+          total_duration: total_duration
           details:
             commit:
               author_name: author_name
@@ -21733,6 +21738,7 @@ components:
             action: DEPLOY
             status: QUEUED
           status: null
+          icon_uri: https://openapi-generator.tech
         status: QUEUED
       properties:
         name:
@@ -21809,12 +21815,12 @@ components:
           service_type: APPLICATION
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
-          icon_uri: https://openapi-generator.tech
         auditing_data:
           updated_at: 2000-01-23T04:56:07.000+00:00
           origin: API
           created_at: 2000-01-23T04:56:07.000+00:00
           triggered_by: triggered_by
+        total_duration: total_duration
         details:
           commit:
             author_name: author_name
@@ -21828,6 +21834,7 @@ components:
           action: DEPLOY
           status: QUEUED
         status: null
+        icon_uri: https://openapi-generator.tech
       properties:
         identifier:
           $ref: '#/components/schemas/DeploymentHistoryService_identifier'
@@ -21839,9 +21846,20 @@ components:
           $ref: '#/components/schemas/DeploymentHistoryServiceDetails'
         status_details:
           $ref: '#/components/schemas/StatusDetails'
+        icon_uri:
+          format: uri
+          type: string
+          x-stoplight:
+            id: 3418v53rx3mn9
+        total_duration:
+          format: duration
+          type: string
+          x-stoplight:
+            id: adofwhd0bgwuw
       required:
       - auditing_data
       - details
+      - icon_uri
       - identifier
       - status
       type: object
@@ -22190,12 +22208,12 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22209,17 +22227,18 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             - identifier:
                 execution_id: execution_id
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22233,6 +22252,7 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             status: QUEUED
           - duration: duration
             name: name
@@ -22242,12 +22262,12 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22261,17 +22281,18 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             - identifier:
                 execution_id: execution_id
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22285,6 +22306,7 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             status: QUEUED
           status: BUILDING
           action_status: QUEUED
@@ -22307,12 +22329,12 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22326,17 +22348,18 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             - identifier:
                 execution_id: execution_id
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22350,6 +22373,7 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             status: QUEUED
           - duration: duration
             name: name
@@ -22359,12 +22383,12 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22378,17 +22402,18 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             - identifier:
                 execution_id: execution_id
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
-                icon_uri: https://openapi-generator.tech
               auditing_data:
                 updated_at: 2000-01-23T04:56:07.000+00:00
                 origin: API
                 created_at: 2000-01-23T04:56:07.000+00:00
                 triggered_by: triggered_by
+              total_duration: total_duration
               details:
                 commit:
                   author_name: author_name
@@ -22402,6 +22427,7 @@ components:
                 action: DEPLOY
                 status: QUEUED
               status: null
+              icon_uri: https://openapi-generator.tech
             status: QUEUED
           status: BUILDING
           action_status: QUEUED
@@ -22425,12 +22451,12 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
-            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
             triggered_by: triggered_by
+          total_duration: total_duration
           details:
             commit:
               author_name: author_name
@@ -22444,17 +22470,18 @@ components:
             action: DEPLOY
             status: QUEUED
           status: null
+          icon_uri: https://openapi-generator.tech
         - identifier:
             execution_id: execution_id
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
-            icon_uri: https://openapi-generator.tech
           auditing_data:
             updated_at: 2000-01-23T04:56:07.000+00:00
             origin: API
             created_at: 2000-01-23T04:56:07.000+00:00
             triggered_by: triggered_by
+          total_duration: total_duration
           details:
             commit:
               author_name: author_name
@@ -22468,6 +22495,7 @@ components:
             action: DEPLOY
             status: QUEUED
           status: null
+          icon_uri: https://openapi-generator.tech
         page_size: 20
       x-stoplight:
         id: e2g667def2r2z
@@ -32359,7 +32387,6 @@ components:
         service_type: APPLICATION
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
-        icon_uri: https://openapi-generator.tech
       properties:
         name:
           type: string
@@ -32376,17 +32403,10 @@ components:
           type: string
           x-stoplight:
             id: 9ww6nh5lrwg37
-        icon_uri:
-          format: uri
-          type: string
-          x-stoplight:
-            id: luoyctr9gup67
       required:
-      - icon_uri
       - name
       - service_id
       - service_type
-      - status_details
       type: object
       x-stoplight:
         id: yklp44eea5vaq

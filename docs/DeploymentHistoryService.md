@@ -9,12 +9,14 @@ Name | Type | Description | Notes
 **AuditingData** | [**DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **Details** | [**DeploymentHistoryServiceDetails**](DeploymentHistoryServiceDetails.md) |  | 
 **StatusDetails** | Pointer to [**StatusDetails**](StatusDetails.md) |  | [optional] 
+**IconUri** | **string** |  | 
+**TotalDuration** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewDeploymentHistoryService
 
-`func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, ) *DeploymentHistoryService`
+`func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, iconUri string, ) *DeploymentHistoryService`
 
 NewDeploymentHistoryService instantiates a new DeploymentHistoryService object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +135,51 @@ SetStatusDetails sets StatusDetails field to given value.
 `func (o *DeploymentHistoryService) HasStatusDetails() bool`
 
 HasStatusDetails returns a boolean if a field has been set.
+
+### GetIconUri
+
+`func (o *DeploymentHistoryService) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *DeploymentHistoryService) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *DeploymentHistoryService) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
+
+
+### GetTotalDuration
+
+`func (o *DeploymentHistoryService) GetTotalDuration() string`
+
+GetTotalDuration returns the TotalDuration field if non-nil, zero value otherwise.
+
+### GetTotalDurationOk
+
+`func (o *DeploymentHistoryService) GetTotalDurationOk() (*string, bool)`
+
+GetTotalDurationOk returns a tuple with the TotalDuration field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTotalDuration
+
+`func (o *DeploymentHistoryService) SetTotalDuration(v string)`
+
+SetTotalDuration sets TotalDuration field to given value.
+
+### HasTotalDuration
+
+`func (o *DeploymentHistoryService) HasTotalDuration() bool`
+
+HasTotalDuration returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

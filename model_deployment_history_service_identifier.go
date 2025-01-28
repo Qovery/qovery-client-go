@@ -25,7 +25,6 @@ type DeploymentHistoryServiceIdentifier struct {
 	ServiceId            string          `json:"service_id"`
 	ServiceType          ServiceTypeEnum `json:"service_type"`
 	ExecutionId          *string         `json:"execution_id,omitempty"`
-	IconUri              string          `json:"icon_uri"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,12 +34,11 @@ type _DeploymentHistoryServiceIdentifier DeploymentHistoryServiceIdentifier
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryServiceIdentifier(name string, serviceId string, serviceType ServiceTypeEnum, iconUri string) *DeploymentHistoryServiceIdentifier {
+func NewDeploymentHistoryServiceIdentifier(name string, serviceId string, serviceType ServiceTypeEnum) *DeploymentHistoryServiceIdentifier {
 	this := DeploymentHistoryServiceIdentifier{}
 	this.Name = name
 	this.ServiceId = serviceId
 	this.ServiceType = serviceType
-	this.IconUri = iconUri
 	return &this
 }
 
@@ -156,30 +154,6 @@ func (o *DeploymentHistoryServiceIdentifier) SetExecutionId(v string) {
 	o.ExecutionId = &v
 }
 
-// GetIconUri returns the IconUri field value
-func (o *DeploymentHistoryServiceIdentifier) GetIconUri() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.IconUri
-}
-
-// GetIconUriOk returns a tuple with the IconUri field value
-// and a boolean to check if the value has been set.
-func (o *DeploymentHistoryServiceIdentifier) GetIconUriOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.IconUri, true
-}
-
-// SetIconUri sets field value
-func (o *DeploymentHistoryServiceIdentifier) SetIconUri(v string) {
-	o.IconUri = v
-}
-
 func (o DeploymentHistoryServiceIdentifier) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -196,7 +170,6 @@ func (o DeploymentHistoryServiceIdentifier) ToMap() (map[string]interface{}, err
 	if !IsNil(o.ExecutionId) {
 		toSerialize["execution_id"] = o.ExecutionId
 	}
-	toSerialize["icon_uri"] = o.IconUri
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -213,7 +186,6 @@ func (o *DeploymentHistoryServiceIdentifier) UnmarshalJSON(data []byte) (err err
 		"name",
 		"service_id",
 		"service_type",
-		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -247,7 +219,6 @@ func (o *DeploymentHistoryServiceIdentifier) UnmarshalJSON(data []byte) (err err
 		delete(additionalProperties, "service_id")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "execution_id")
-		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 

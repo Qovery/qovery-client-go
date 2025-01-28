@@ -26,6 +26,8 @@ type DeploymentHistoryService struct {
 	AuditingData         DeploymentHistoryAuditingData      `json:"auditing_data"`
 	Details              DeploymentHistoryServiceDetails    `json:"details"`
 	StatusDetails        *StatusDetails                     `json:"status_details,omitempty"`
+	IconUri              string                             `json:"icon_uri"`
+	TotalDuration        *string                            `json:"total_duration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,12 +37,13 @@ type _DeploymentHistoryService DeploymentHistoryService
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails) *DeploymentHistoryService {
+func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, iconUri string) *DeploymentHistoryService {
 	this := DeploymentHistoryService{}
 	this.Identifier = identifier
 	this.Status = status
 	this.AuditingData = auditingData
 	this.Details = details
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -180,6 +183,62 @@ func (o *DeploymentHistoryService) SetStatusDetails(v StatusDetails) {
 	o.StatusDetails = &v
 }
 
+// GetIconUri returns the IconUri field value
+func (o *DeploymentHistoryService) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryService) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *DeploymentHistoryService) SetIconUri(v string) {
+	o.IconUri = v
+}
+
+// GetTotalDuration returns the TotalDuration field value if set, zero value otherwise.
+func (o *DeploymentHistoryService) GetTotalDuration() string {
+	if o == nil || IsNil(o.TotalDuration) {
+		var ret string
+		return ret
+	}
+	return *o.TotalDuration
+}
+
+// GetTotalDurationOk returns a tuple with the TotalDuration field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryService) GetTotalDurationOk() (*string, bool) {
+	if o == nil || IsNil(o.TotalDuration) {
+		return nil, false
+	}
+	return o.TotalDuration, true
+}
+
+// HasTotalDuration returns a boolean if a field has been set.
+func (o *DeploymentHistoryService) HasTotalDuration() bool {
+	if o != nil && !IsNil(o.TotalDuration) {
+		return true
+	}
+
+	return false
+}
+
+// SetTotalDuration gets a reference to the given string and assigns it to the TotalDuration field.
+func (o *DeploymentHistoryService) SetTotalDuration(v string) {
+	o.TotalDuration = &v
+}
+
 func (o DeploymentHistoryService) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -196,6 +255,10 @@ func (o DeploymentHistoryService) ToMap() (map[string]interface{}, error) {
 	toSerialize["details"] = o.Details
 	if !IsNil(o.StatusDetails) {
 		toSerialize["status_details"] = o.StatusDetails
+	}
+	toSerialize["icon_uri"] = o.IconUri
+	if !IsNil(o.TotalDuration) {
+		toSerialize["total_duration"] = o.TotalDuration
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -214,6 +277,7 @@ func (o *DeploymentHistoryService) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"auditing_data",
 		"details",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -248,6 +312,8 @@ func (o *DeploymentHistoryService) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auditing_data")
 		delete(additionalProperties, "details")
 		delete(additionalProperties, "status_details")
+		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "total_duration")
 		o.AdditionalProperties = additionalProperties
 	}
 
