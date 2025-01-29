@@ -31027,6 +31027,7 @@ components:
         id: ididqvn23k30w
     ServiceLightResponse:
       example:
+        job_type: CRON
         service_type: APPLICATION
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31075,6 +31076,13 @@ components:
           type: string
           x-stoplight:
             id: s8c6hmto9njzg
+        job_type:
+          enum:
+          - CRON
+          - LIFECYCLE
+          type: string
+          x-stoplight:
+            id: jwtmqb1fq5a6m
       required:
       - description
       - environment_id
@@ -31769,7 +31777,8 @@ components:
     listServicesByOrganizationId_200_response:
       example:
         results:
-        - service_type: APPLICATION
+        - job_type: CRON
+          service_type: APPLICATION
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -31778,7 +31787,8 @@ components:
           project_name: project_name
           icon_uri: https://openapi-generator.tech
           environment_name: environment_name
-        - service_type: APPLICATION
+        - job_type: CRON
+          service_type: APPLICATION
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name

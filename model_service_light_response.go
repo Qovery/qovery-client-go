@@ -30,6 +30,7 @@ type ServiceLightResponse struct {
 	ProjectName          string          `json:"project_name"`
 	EnvironmentId        string          `json:"environment_id"`
 	EnvironmentName      string          `json:"environment_name"`
+	JobType              *string         `json:"job_type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -277,6 +278,38 @@ func (o *ServiceLightResponse) SetEnvironmentName(v string) {
 	o.EnvironmentName = v
 }
 
+// GetJobType returns the JobType field value if set, zero value otherwise.
+func (o *ServiceLightResponse) GetJobType() string {
+	if o == nil || IsNil(o.JobType) {
+		var ret string
+		return ret
+	}
+	return *o.JobType
+}
+
+// GetJobTypeOk returns a tuple with the JobType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceLightResponse) GetJobTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.JobType) {
+		return nil, false
+	}
+	return o.JobType, true
+}
+
+// HasJobType returns a boolean if a field has been set.
+func (o *ServiceLightResponse) HasJobType() bool {
+	if o != nil && !IsNil(o.JobType) {
+		return true
+	}
+
+	return false
+}
+
+// SetJobType gets a reference to the given string and assigns it to the JobType field.
+func (o *ServiceLightResponse) SetJobType(v string) {
+	o.JobType = &v
+}
+
 func (o ServiceLightResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -296,6 +329,9 @@ func (o ServiceLightResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["project_name"] = o.ProjectName
 	toSerialize["environment_id"] = o.EnvironmentId
 	toSerialize["environment_name"] = o.EnvironmentName
+	if !IsNil(o.JobType) {
+		toSerialize["job_type"] = o.JobType
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -356,6 +392,7 @@ func (o *ServiceLightResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project_name")
 		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "environment_name")
+		delete(additionalProperties, "job_type")
 		o.AdditionalProperties = additionalProperties
 	}
 

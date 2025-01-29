@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ProjectName** | **string** |  | 
 **EnvironmentId** | **string** |  | 
 **EnvironmentName** | **string** |  | 
+**JobType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -212,6 +213,31 @@ and a boolean to check if the value has been set.
 
 SetEnvironmentName sets EnvironmentName field to given value.
 
+
+### GetJobType
+
+`func (o *ServiceLightResponse) GetJobType() string`
+
+GetJobType returns the JobType field if non-nil, zero value otherwise.
+
+### GetJobTypeOk
+
+`func (o *ServiceLightResponse) GetJobTypeOk() (*string, bool)`
+
+GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobType
+
+`func (o *ServiceLightResponse) SetJobType(v string)`
+
+SetJobType sets JobType field to given value.
+
+### HasJobType
+
+`func (o *ServiceLightResponse) HasJobType() bool`
+
+HasJobType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
