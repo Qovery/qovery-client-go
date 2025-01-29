@@ -30998,12 +30998,16 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+            details:
+              job_type: CRON
             status: null
             icon_uri: icon_uri
           - identifier:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+            details:
+              job_type: CRON
             status: null
             icon_uri: icon_uri
           status: QUEUED
@@ -31013,12 +31017,16 @@ components:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+            details:
+              job_type: CRON
             status: null
             icon_uri: icon_uri
           - identifier:
               service_type: APPLICATION
               service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
+            details:
+              job_type: CRON
             status: null
             icon_uri: icon_uri
           status: QUEUED
@@ -31841,12 +31849,16 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             - identifier:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             status: QUEUED
@@ -31856,12 +31868,16 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             - identifier:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             status: QUEUED
@@ -31879,12 +31895,16 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             - identifier:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             status: QUEUED
@@ -31894,12 +31914,16 @@ components:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             - identifier:
                 service_type: APPLICATION
                 service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 name: name
+              details:
+                job_type: CRON
               status: null
               icon_uri: icon_uri
             status: QUEUED
@@ -33988,12 +34012,37 @@ components:
       type: object
       x-stoplight:
         id: 2qiq6p8loxy0n
+    QueuedDeploymentRequestWithStages_stages_inner_services_inner_details_oneOf:
+      description: JobDetails
+      example:
+        job_type: CRON
+      properties:
+        job_type:
+          enum:
+          - CRON
+          - LIFECYCLE
+          type: string
+          x-stoplight:
+            id: tg4bw75mf4084
+      required:
+      - job_type
+      type: object
+      x-stoplight:
+        id: ibi93dbff8m63
+    QueuedDeploymentRequestWithStages_stages_inner_services_inner_details:
+      oneOf:
+      - $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_inner_services_inner_details_oneOf'
+      type: object
+      x-stoplight:
+        id: 8pjqibbjgziqn
     QueuedDeploymentRequestWithStages_stages_inner_services_inner:
       example:
         identifier:
           service_type: APPLICATION
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+        details:
+          job_type: CRON
         status: null
         icon_uri: icon_uri
       properties:
@@ -34005,6 +34054,8 @@ components:
           type: string
           x-stoplight:
             id: vr9mfika0841x
+        details:
+          $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_inner_services_inner_details'
       required:
       - identifier
       - status
@@ -34019,12 +34070,16 @@ components:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+          details:
+            job_type: CRON
           status: null
           icon_uri: icon_uri
         - identifier:
             service_type: APPLICATION
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
+          details:
+            job_type: CRON
           status: null
           icon_uri: icon_uri
         status: QUEUED

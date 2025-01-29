@@ -986,6 +986,8 @@ Class | Method | HTTP request | Description
  - [QueuedDeploymentRequestWithStagesIdentifier](docs/QueuedDeploymentRequestWithStagesIdentifier.md)
  - [QueuedDeploymentRequestWithStagesStagesInner](docs/QueuedDeploymentRequestWithStagesStagesInner.md)
  - [QueuedDeploymentRequestWithStagesStagesInnerServicesInner](docs/QueuedDeploymentRequestWithStagesStagesInnerServicesInner.md)
+ - [QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails](docs/QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails.md)
+ - [QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetailsOneOf](docs/QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetailsOneOf.md)
  - [QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier](docs/QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier.md)
  - [RebootServicesRequest](docs/RebootServicesRequest.md)
  - [ReferenceObject](docs/ReferenceObject.md)

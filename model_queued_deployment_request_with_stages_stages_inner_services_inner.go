@@ -24,6 +24,7 @@ type QueuedDeploymentRequestWithStagesStagesInnerServicesInner struct {
 	Identifier           QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier `json:"identifier"`
 	Status               StageStatusEnum                                                     `json:"status"`
 	IconUri              *string                                                             `json:"icon_uri,omitempty"`
+	Details              *QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails   `json:"details,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -128,6 +129,38 @@ func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) SetIconUri(v
 	o.IconUri = &v
 }
 
+// GetDetails returns the Details field value if set, zero value otherwise.
+func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) GetDetails() QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails {
+	if o == nil || IsNil(o.Details) {
+		var ret QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails
+		return ret
+	}
+	return *o.Details
+}
+
+// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) GetDetailsOk() (*QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails, bool) {
+	if o == nil || IsNil(o.Details) {
+		return nil, false
+	}
+	return o.Details, true
+}
+
+// HasDetails returns a boolean if a field has been set.
+func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) HasDetails() bool {
+	if o != nil && !IsNil(o.Details) {
+		return true
+	}
+
+	return false
+}
+
+// SetDetails gets a reference to the given QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails and assigns it to the Details field.
+func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) SetDetails(v QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails) {
+	o.Details = &v
+}
+
 func (o QueuedDeploymentRequestWithStagesStagesInnerServicesInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -142,6 +175,9 @@ func (o QueuedDeploymentRequestWithStagesStagesInnerServicesInner) ToMap() (map[
 	toSerialize["status"] = o.Status
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
+	}
+	if !IsNil(o.Details) {
+		toSerialize["details"] = o.Details
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -190,6 +226,7 @@ func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) UnmarshalJSO
 		delete(additionalProperties, "identifier")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "details")
 		o.AdditionalProperties = additionalProperties
 	}
 

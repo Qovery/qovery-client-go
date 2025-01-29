@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Identifier** | [**QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier**](QueuedDeploymentRequestWithStagesStagesInnerServicesInnerIdentifier.md) |  | 
 **Status** | [**StageStatusEnum**](StageStatusEnum.md) |  | 
 **IconUri** | Pointer to **string** |  | [optional] 
+**Details** | Pointer to [**QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails**](QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails.md) |  | [optional] 
 
 ## Methods
 
@@ -91,6 +92,31 @@ SetIconUri sets IconUri field to given value.
 `func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) HasIconUri() bool`
 
 HasIconUri returns a boolean if a field has been set.
+
+### GetDetails
+
+`func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) GetDetails() QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails`
+
+GetDetails returns the Details field if non-nil, zero value otherwise.
+
+### GetDetailsOk
+
+`func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) GetDetailsOk() (*QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails, bool)`
+
+GetDetailsOk returns a tuple with the Details field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDetails
+
+`func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) SetDetails(v QueuedDeploymentRequestWithStagesStagesInnerServicesInnerDetails)`
+
+SetDetails sets Details field to given value.
+
+### HasDetails
+
+`func (o *QueuedDeploymentRequestWithStagesStagesInnerServicesInner) HasDetails() bool`
+
+HasDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
