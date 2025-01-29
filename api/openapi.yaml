@@ -30992,7 +30992,22 @@ components:
           triggered_by: triggered_by
         trigger_action: DEPLOY
         stages:
-          name: name
+        - name: name
+          services:
+          - identifier:
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            status: null
+            icon_uri: icon_uri
+          - identifier:
+              service_type: APPLICATION
+              service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+            status: null
+            icon_uri: icon_uri
+          status: QUEUED
+        - name: name
           services:
           - identifier:
               service_type: APPLICATION
@@ -31015,7 +31030,11 @@ components:
         trigger_action:
           $ref: '#/components/schemas/DeploymentHistoryTriggerAction'
         stages:
-          $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages'
+          items:
+            $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_inner'
+          type: array
+          x-stoplight:
+            id: snkercfc1t8iq
       required:
       - auditing_data
       - identifier
@@ -31816,7 +31835,22 @@ components:
             triggered_by: triggered_by
           trigger_action: DEPLOY
           stages:
-            name: name
+          - name: name
+            services:
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            status: QUEUED
+          - name: name
             services:
             - identifier:
                 service_type: APPLICATION
@@ -31839,7 +31873,22 @@ components:
             triggered_by: triggered_by
           trigger_action: DEPLOY
           stages:
-            name: name
+          - name: name
+            services:
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            - identifier:
+                service_type: APPLICATION
+                service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                name: name
+              status: null
+              icon_uri: icon_uri
+            status: QUEUED
+          - name: name
             services:
             - identifier:
                 service_type: APPLICATION
@@ -33915,7 +33964,7 @@ components:
       type: object
       x-stoplight:
         id: 0npwbfsta4xai
-    QueuedDeploymentRequestWithStages_stages_services_inner_identifier:
+    QueuedDeploymentRequestWithStages_stages_inner_services_inner_identifier:
       example:
         service_type: APPLICATION
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33925,21 +33974,21 @@ components:
           format: uuid
           type: string
           x-stoplight:
-            id: 5efai0wdk5vrr
+            id: ixyztl7bo1e7r
         service_type:
           $ref: '#/components/schemas/ServiceTypeEnum'
         name:
           type: string
           x-stoplight:
-            id: k499ggbogft3n
+            id: rqj252xn7e17p
       required:
       - name
       - service_id
       - service_type
       type: object
       x-stoplight:
-        id: mnc5k25pmnnr9
-    QueuedDeploymentRequestWithStages_stages_services_inner:
+        id: 2qiq6p8loxy0n
+    QueuedDeploymentRequestWithStages_stages_inner_services_inner:
       example:
         identifier:
           service_type: APPLICATION
@@ -33949,20 +33998,20 @@ components:
         icon_uri: icon_uri
       properties:
         identifier:
-          $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_services_inner_identifier'
+          $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_inner_services_inner_identifier'
         status:
           $ref: '#/components/schemas/StageStatusEnum'
         icon_uri:
           type: string
           x-stoplight:
-            id: ykh7e1zapcvxp
+            id: vr9mfika0841x
       required:
       - identifier
       - status
       type: object
       x-stoplight:
-        id: ghtuhxe6f1ukw
-    QueuedDeploymentRequestWithStages_stages:
+        id: yn2f0fy77v6gj
+    QueuedDeploymentRequestWithStages_stages_inner:
       example:
         name: name
         services:
@@ -33983,22 +34032,22 @@ components:
         name:
           type: string
           x-stoplight:
-            id: 7oi55clryikks
+            id: 7p40i9fzfddii
         status:
           $ref: '#/components/schemas/StageStatusEnum'
         services:
           items:
-            $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_services_inner'
+            $ref: '#/components/schemas/QueuedDeploymentRequestWithStages_stages_inner_services_inner'
           type: array
           x-stoplight:
-            id: ywiz9lx5zr2gg
+            id: 8cnjdpbn1xllp
       required:
       - name
       - services
       - status
       type: object
       x-stoplight:
-        id: snkercfc1t8iq
+        id: ym6jl6374zowd
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

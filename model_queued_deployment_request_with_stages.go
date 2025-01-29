@@ -21,10 +21,10 @@ var _ MappedNullable = &QueuedDeploymentRequestWithStages{}
 
 // QueuedDeploymentRequestWithStages struct for QueuedDeploymentRequestWithStages
 type QueuedDeploymentRequestWithStages struct {
-	Identifier           QueuedDeploymentRequestWithStagesIdentifier   `json:"identifier"`
-	AuditingData         QueuedDeploymentRequestWithStagesAuditingData `json:"auditing_data"`
-	TriggerAction        DeploymentHistoryTriggerAction                `json:"trigger_action"`
-	Stages               QueuedDeploymentRequestWithStagesStages       `json:"stages"`
+	Identifier           QueuedDeploymentRequestWithStagesIdentifier    `json:"identifier"`
+	AuditingData         QueuedDeploymentRequestWithStagesAuditingData  `json:"auditing_data"`
+	TriggerAction        DeploymentHistoryTriggerAction                 `json:"trigger_action"`
+	Stages               []QueuedDeploymentRequestWithStagesStagesInner `json:"stages"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +34,7 @@ type _QueuedDeploymentRequestWithStages QueuedDeploymentRequestWithStages
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewQueuedDeploymentRequestWithStages(identifier QueuedDeploymentRequestWithStagesIdentifier, auditingData QueuedDeploymentRequestWithStagesAuditingData, triggerAction DeploymentHistoryTriggerAction, stages QueuedDeploymentRequestWithStagesStages) *QueuedDeploymentRequestWithStages {
+func NewQueuedDeploymentRequestWithStages(identifier QueuedDeploymentRequestWithStagesIdentifier, auditingData QueuedDeploymentRequestWithStagesAuditingData, triggerAction DeploymentHistoryTriggerAction, stages []QueuedDeploymentRequestWithStagesStagesInner) *QueuedDeploymentRequestWithStages {
 	this := QueuedDeploymentRequestWithStages{}
 	this.Identifier = identifier
 	this.AuditingData = auditingData
@@ -124,9 +124,9 @@ func (o *QueuedDeploymentRequestWithStages) SetTriggerAction(v DeploymentHistory
 }
 
 // GetStages returns the Stages field value
-func (o *QueuedDeploymentRequestWithStages) GetStages() QueuedDeploymentRequestWithStagesStages {
+func (o *QueuedDeploymentRequestWithStages) GetStages() []QueuedDeploymentRequestWithStagesStagesInner {
 	if o == nil {
-		var ret QueuedDeploymentRequestWithStagesStages
+		var ret []QueuedDeploymentRequestWithStagesStagesInner
 		return ret
 	}
 
@@ -135,15 +135,15 @@ func (o *QueuedDeploymentRequestWithStages) GetStages() QueuedDeploymentRequestW
 
 // GetStagesOk returns a tuple with the Stages field value
 // and a boolean to check if the value has been set.
-func (o *QueuedDeploymentRequestWithStages) GetStagesOk() (*QueuedDeploymentRequestWithStagesStages, bool) {
+func (o *QueuedDeploymentRequestWithStages) GetStagesOk() ([]QueuedDeploymentRequestWithStagesStagesInner, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Stages, true
+	return o.Stages, true
 }
 
 // SetStages sets field value
-func (o *QueuedDeploymentRequestWithStages) SetStages(v QueuedDeploymentRequestWithStagesStages) {
+func (o *QueuedDeploymentRequestWithStages) SetStages(v []QueuedDeploymentRequestWithStagesStagesInner) {
 	o.Stages = v
 }
 
