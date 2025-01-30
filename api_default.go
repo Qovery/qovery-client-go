@@ -265,6 +265,7 @@ type ApiListServicesByOrganizationIdRequest struct {
 	organizationId string
 	projectId      *string
 	environmentId  *string
+	clusterId      *string
 }
 
 func (r ApiListServicesByOrganizationIdRequest) ProjectId(projectId string) ApiListServicesByOrganizationIdRequest {
@@ -274,6 +275,11 @@ func (r ApiListServicesByOrganizationIdRequest) ProjectId(projectId string) ApiL
 
 func (r ApiListServicesByOrganizationIdRequest) EnvironmentId(environmentId string) ApiListServicesByOrganizationIdRequest {
 	r.environmentId = &environmentId
+	return r
+}
+
+func (r ApiListServicesByOrganizationIdRequest) ClusterId(clusterId string) ApiListServicesByOrganizationIdRequest {
+	r.clusterId = &clusterId
 	return r
 }
 
@@ -323,6 +329,9 @@ func (a *DefaultAPIService) ListServicesByOrganizationIdExecute(r ApiListService
 	}
 	if r.environmentId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "environment_id", r.environmentId, "")
+	}
+	if r.clusterId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cluster_id", r.clusterId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

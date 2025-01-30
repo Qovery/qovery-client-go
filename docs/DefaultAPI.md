@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ## ListServicesByOrganizationId
 
-> ListServicesByOrganizationId200Response ListServicesByOrganizationId(ctx, organizationId).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+> ListServicesByOrganizationId200Response ListServicesByOrganizationId(ctx, organizationId).ProjectId(projectId).EnvironmentId(environmentId).ClusterId(clusterId).Execute()
 
 List Services By OrganizationId
 
@@ -164,10 +164,11 @@ func main() {
 	organizationId := "organizationId_example" // string | 
 	projectId := "projectId_example" // string |  (optional)
 	environmentId := "environmentId_example" // string |  (optional)
+	clusterId := "clusterId_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DefaultAPI.ListServicesByOrganizationId(context.Background(), organizationId).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+	resp, r, err := apiClient.DefaultAPI.ListServicesByOrganizationId(context.Background(), organizationId).ProjectId(projectId).EnvironmentId(environmentId).ClusterId(clusterId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DefaultAPI.ListServicesByOrganizationId``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -195,6 +196,7 @@ Name | Type | Description  | Notes
 
  **projectId** | **string** |  | 
  **environmentId** | **string** |  | 
+ **clusterId** | **string** |  | 
 
 ### Return type
 

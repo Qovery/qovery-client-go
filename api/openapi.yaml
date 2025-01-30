@@ -15341,6 +15341,13 @@ paths:
           nullable: true
           type: string
         style: form
+      - explode: true
+        in: query
+        name: cluster_id
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
