@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 **ExecutionId** | Pointer to **string** |  | [optional] 
 **StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
+**DeploymentRequestId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -212,6 +213,41 @@ and a boolean to check if the value has been set.
 SetStatusDetails sets StatusDetails field to given value.
 
 
+### GetDeploymentRequestId
+
+`func (o *ReferenceObjectStatus) GetDeploymentRequestId() string`
+
+GetDeploymentRequestId returns the DeploymentRequestId field if non-nil, zero value otherwise.
+
+### GetDeploymentRequestIdOk
+
+`func (o *ReferenceObjectStatus) GetDeploymentRequestIdOk() (*string, bool)`
+
+GetDeploymentRequestIdOk returns a tuple with the DeploymentRequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentRequestId
+
+`func (o *ReferenceObjectStatus) SetDeploymentRequestId(v string)`
+
+SetDeploymentRequestId sets DeploymentRequestId field to given value.
+
+### HasDeploymentRequestId
+
+`func (o *ReferenceObjectStatus) HasDeploymentRequestId() bool`
+
+HasDeploymentRequestId returns a boolean if a field has been set.
+
+### SetDeploymentRequestIdNil
+
+`func (o *ReferenceObjectStatus) SetDeploymentRequestIdNil(b bool)`
+
+ SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
+
+### UnsetDeploymentRequestId
+`func (o *ReferenceObjectStatus) UnsetDeploymentRequestId()`
+
+UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -30,6 +30,7 @@ type Status struct {
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
 	ExecutionId             *string                     `json:"execution_id,omitempty"`
 	StatusDetails           StatusDetails               `json:"status_details"`
+	DeploymentRequestId     NullableString              `json:"deployment_request_id,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -280,6 +281,49 @@ func (o *Status) SetStatusDetails(v StatusDetails) {
 	o.StatusDetails = v
 }
 
+// GetDeploymentRequestId returns the DeploymentRequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Status) GetDeploymentRequestId() string {
+	if o == nil || IsNil(o.DeploymentRequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentRequestId.Get()
+}
+
+// GetDeploymentRequestIdOk returns a tuple with the DeploymentRequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Status) GetDeploymentRequestIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeploymentRequestId.Get(), o.DeploymentRequestId.IsSet()
+}
+
+// HasDeploymentRequestId returns a boolean if a field has been set.
+func (o *Status) HasDeploymentRequestId() bool {
+	if o != nil && o.DeploymentRequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentRequestId gets a reference to the given NullableString and assigns it to the DeploymentRequestId field.
+func (o *Status) SetDeploymentRequestId(v string) {
+	o.DeploymentRequestId.Set(&v)
+}
+
+// SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
+func (o *Status) SetDeploymentRequestIdNil() {
+	o.DeploymentRequestId.Set(nil)
+}
+
+// UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
+func (o *Status) UnsetDeploymentRequestId() {
+	o.DeploymentRequestId.Unset()
+}
+
 func (o Status) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -306,6 +350,9 @@ func (o Status) ToMap() (map[string]interface{}, error) {
 		toSerialize["execution_id"] = o.ExecutionId
 	}
 	toSerialize["status_details"] = o.StatusDetails
+	if o.DeploymentRequestId.IsSet() {
+		toSerialize["deployment_request_id"] = o.DeploymentRequestId.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -360,6 +407,7 @@ func (o *Status) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "steps")
 		delete(additionalProperties, "execution_id")
 		delete(additionalProperties, "status_details")
+		delete(additionalProperties, "deployment_request_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
