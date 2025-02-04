@@ -49,7 +49,7 @@ func (r ApiDeployHelmRequest) Execute() (*Status, *http.Response, error) {
 /*
 DeployHelm Deploy helm
 
-You must provide a git commit id or an image tag depending on the source location of your code (git vs image repository).
+You must provide a git commit id or a helm version depending on the source location of your code (git vs helm repository).
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param helmId Helm ID

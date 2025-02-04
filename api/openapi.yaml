@@ -10178,7 +10178,7 @@ paths:
       - Container Configuration
   /container/{containerId}/deploy:
     post:
-      description: You must provide a git commit id
+      description: You must provide a container image tag
       operationId: deployContainer
       parameters:
       - description: Container ID
@@ -12551,8 +12551,8 @@ paths:
       - Helm Configuration
   /helm/{helmId}/deploy:
     post:
-      description: You must provide a git commit id or an image tag depending on the
-        source location of your code (git vs image repository).
+      description: You must provide a git commit id or a helm version depending on
+        the source location of your code (git vs helm repository).
       operationId: deployHelm
       parameters:
       - description: Helm ID
