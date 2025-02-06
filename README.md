@@ -319,6 +319,7 @@ Class | Method | HTTP request | Description
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatuses**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 *EnvironmentMainCallsAPI* | [**GetEnvironmentStatusesWithStages**](docs/EnvironmentMainCallsAPI.md#getenvironmentstatuseswithstages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
 *EnvironmentMainCallsAPI* | [**ListDeploymentRequestByEnvironmentId**](docs/EnvironmentMainCallsAPI.md#listdeploymentrequestbyenvironmentid) | **Get** /environment/{environmentId}/deploymentQueue | List Deployment Request By EnvironmentId
+*EnvironmentMainCallsAPI* | [**ListDeploymentRequestByServiceId**](docs/EnvironmentMainCallsAPI.md#listdeploymentrequestbyserviceid) | **Get** /service/{serviceId}/deploymentQueue | List Deployment Request By ServiceId
 *EnvironmentMainCallsAPI* | [**ListServicesByEnvironmentId**](docs/EnvironmentMainCallsAPI.md#listservicesbyenvironmentid) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecret**](docs/EnvironmentSecretAPI.md#createenvironmentsecret) | **Post** /environment/{environmentId}/secret | Add a secret to the environment
 *EnvironmentSecretAPI* | [**CreateEnvironmentSecretAlias**](docs/EnvironmentSecretAPI.md#createenvironmentsecretalias) | **Post** /environment/{environmentId}/secret/{secretId}/alias | Create a secret alias at the environment level
@@ -887,6 +888,7 @@ Class | Method | HTTP request | Description
  - [ListContainerDeploymentHistory200Response](docs/ListContainerDeploymentHistory200Response.md)
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListDeploymentRequestByEnvironmentId200Response](docs/ListDeploymentRequestByEnvironmentId200Response.md)
+ - [ListDeploymentRequestByServiceId200Response](docs/ListDeploymentRequestByServiceId200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)
@@ -981,6 +983,9 @@ Class | Method | HTTP request | Description
  - [ProjectResponseList](docs/ProjectResponseList.md)
  - [ProjectStats](docs/ProjectStats.md)
  - [ProjectStatsResponseList](docs/ProjectStatsResponseList.md)
+ - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
+ - [QueuedDeploymentRequestForServiceAuditingData](docs/QueuedDeploymentRequestForServiceAuditingData.md)
+ - [QueuedDeploymentRequestForServiceIdentifier](docs/QueuedDeploymentRequestForServiceIdentifier.md)
  - [QueuedDeploymentRequestWithStages](docs/QueuedDeploymentRequestWithStages.md)
  - [QueuedDeploymentRequestWithStagesAuditingData](docs/QueuedDeploymentRequestWithStagesAuditingData.md)
  - [QueuedDeploymentRequestWithStagesIdentifier](docs/QueuedDeploymentRequestWithStagesIdentifier.md)

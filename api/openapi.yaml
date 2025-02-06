@@ -15383,6 +15383,30 @@ paths:
       - Environment Main Calls
       x-stoplight:
         id: 0zhr0vfxayg96
+  /service/{serviceId}/deploymentQueue:
+    get:
+      operationId: listDeploymentRequestByServiceId
+      parameters:
+      - explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listDeploymentRequestByServiceId_200_response'
+          description: OK
+      summary: List Deployment Request By ServiceId
+      tags:
+      - Environment Main Calls
+      x-stoplight:
+        id: augmimjz30ix3
 components:
   parameters:
     applicationId:
@@ -31112,6 +31136,40 @@ components:
       type: object
       x-stoplight:
         id: ididqvn23k30w
+    QueuedDeploymentRequestForService:
+      example:
+        identifier:
+          deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_type: APPLICATION
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+        auditing_data:
+          origin: API
+          triggered_by: triggered_by
+        status_details:
+          action: DEPLOY
+          status: QUEUED
+        icon_uri: icon_uri
+      properties:
+        identifier:
+          $ref: '#/components/schemas/QueuedDeploymentRequestForService_identifier'
+        auditing_data:
+          $ref: '#/components/schemas/QueuedDeploymentRequestForService_auditing_data'
+        status_details:
+          $ref: '#/components/schemas/StatusDetails'
+        icon_uri:
+          type: string
+          x-stoplight:
+            id: h69hlvf3roanf
+      required:
+      - auditing_data
+      - icon_uri
+      - identifier
+      - status_details
+      title: QueuedDeploymentRequestForService
+      type: object
+      x-stoplight:
+        id: 6tjmdk549eeaq
     ServiceLightResponse:
       example:
         job_type: CRON
@@ -31994,6 +32052,39 @@ components:
           type: array
           x-stoplight:
             id: zbjhuwhtkvxkj
+      type: object
+    listDeploymentRequestByServiceId_200_response:
+      example:
+        results:
+        - identifier:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            origin: API
+            triggered_by: triggered_by
+          status_details:
+            action: DEPLOY
+            status: QUEUED
+          icon_uri: icon_uri
+        - identifier:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service_type: APPLICATION
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+          auditing_data:
+            origin: API
+            triggered_by: triggered_by
+          status_details:
+            action: DEPLOY
+            status: QUEUED
+          icon_uri: icon_uri
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/QueuedDeploymentRequestForService'
+          type: array
       type: object
     ServicePortRequest_ports_inner:
       example:
@@ -34163,6 +34254,45 @@ components:
       type: object
       x-stoplight:
         id: ym6jl6374zowd
+    QueuedDeploymentRequestForService_identifier:
+      example:
+        deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_type: APPLICATION
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+      properties:
+        deployment_request_id:
+          format: uuid
+          type: string
+        service_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 0l33zc2pd2ie0
+        service_type:
+          $ref: '#/components/schemas/ServiceTypeEnum'
+        name:
+          type: string
+          x-stoplight:
+            id: 476yle3ji5f9q
+      required:
+      - deployment_request_id
+      - name
+      - service_id
+      - service_type
+      type: object
+    QueuedDeploymentRequestForService_auditing_data:
+      example:
+        origin: API
+        triggered_by: triggered_by
+      properties:
+        triggered_by:
+          type: string
+        origin:
+          $ref: '#/components/schemas/OrganizationEventOrigin'
+      required:
+      - triggered_by
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**GetEnvironmentStatuses**](EnvironmentMainCallsAPI.md#GetEnvironmentStatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 [**GetEnvironmentStatusesWithStages**](EnvironmentMainCallsAPI.md#GetEnvironmentStatusesWithStages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
 [**ListDeploymentRequestByEnvironmentId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByEnvironmentId) | **Get** /environment/{environmentId}/deploymentQueue | List Deployment Request By EnvironmentId
+[**ListDeploymentRequestByServiceId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByServiceId) | **Get** /service/{serviceId}/deploymentQueue | List Deployment Request By ServiceId
 [**ListServicesByEnvironmentId**](EnvironmentMainCallsAPI.md#ListServicesByEnvironmentId) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 
 
@@ -480,6 +481,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListDeploymentRequestByEnvironmentId200Response**](ListDeploymentRequestByEnvironmentId200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListDeploymentRequestByServiceId
+
+> ListDeploymentRequestByServiceId200Response ListDeploymentRequestByServiceId(ctx, serviceId).Execute()
+
+List Deployment Request By ServiceId
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentMainCallsAPI.ListDeploymentRequestByServiceId(context.Background(), serviceId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsAPI.ListDeploymentRequestByServiceId``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListDeploymentRequestByServiceId`: ListDeploymentRequestByServiceId200Response
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentMainCallsAPI.ListDeploymentRequestByServiceId`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**serviceId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListDeploymentRequestByServiceIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ListDeploymentRequestByServiceId200Response**](ListDeploymentRequestByServiceId200Response.md)
 
 ### Authorization
 
