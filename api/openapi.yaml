@@ -15378,7 +15378,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/listDeploymentRequestByEnvironmentId_200_response'
           description: OK
-      summary: List Deployment Request By EnvironmentId
+      summary: List Deployment Queue Request By EnvironmentId
       tags:
       - Environment Main Calls
       x-stoplight:
@@ -15402,7 +15402,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/listDeploymentRequestByServiceId_200_response'
           description: OK
-      summary: List Deployment Request By ServiceId
+      summary: List Deployment Queue Request By ServiceId
       tags:
       - Environment Main Calls
       x-stoplight:

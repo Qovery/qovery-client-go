@@ -725,7 +725,7 @@ func (r ApiListDeploymentRequestByEnvironmentIdRequest) Execute() (*ListDeployme
 }
 
 /*
-ListDeploymentRequestByEnvironmentId List Deployment Request By EnvironmentId
+ListDeploymentRequestByEnvironmentId List Deployment Queue Request By EnvironmentId
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param environmentId
@@ -840,7 +840,7 @@ func (r ApiListDeploymentRequestByServiceIdRequest) Execute() (*ListDeploymentRe
 }
 
 /*
-ListDeploymentRequestByServiceId List Deployment Request By ServiceId
+ListDeploymentRequestByServiceId List Deployment Queue Request By ServiceId
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param serviceId

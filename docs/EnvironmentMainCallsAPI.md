@@ -10,8 +10,8 @@ Method | HTTP request | Description
 [**GetEnvironmentStatus**](EnvironmentMainCallsAPI.md#GetEnvironmentStatus) | **Get** /environment/{environmentId}/status | Get environment status
 [**GetEnvironmentStatuses**](EnvironmentMainCallsAPI.md#GetEnvironmentStatuses) | **Get** /environment/{environmentId}/statuses | Get environment statuses with services status
 [**GetEnvironmentStatusesWithStages**](EnvironmentMainCallsAPI.md#GetEnvironmentStatusesWithStages) | **Get** /environment/{environmentId}/statusesWithStages | Get environment statuses with stages
-[**ListDeploymentRequestByEnvironmentId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByEnvironmentId) | **Get** /environment/{environmentId}/deploymentQueue | List Deployment Request By EnvironmentId
-[**ListDeploymentRequestByServiceId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByServiceId) | **Get** /service/{serviceId}/deploymentQueue | List Deployment Request By ServiceId
+[**ListDeploymentRequestByEnvironmentId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByEnvironmentId) | **Get** /environment/{environmentId}/deploymentQueue | List Deployment Queue Request By EnvironmentId
+[**ListDeploymentRequestByServiceId**](EnvironmentMainCallsAPI.md#ListDeploymentRequestByServiceId) | **Get** /service/{serviceId}/deploymentQueue | List Deployment Queue Request By ServiceId
 [**ListServicesByEnvironmentId**](EnvironmentMainCallsAPI.md#ListServicesByEnvironmentId) | **Get** /environment/{environmentId}/services | List Services By EnvironmentId
 
 
@@ -432,7 +432,7 @@ Name | Type | Description  | Notes
 
 > ListDeploymentRequestByEnvironmentId200Response ListDeploymentRequestByEnvironmentId(ctx, environmentId).Execute()
 
-List Deployment Request By EnvironmentId
+List Deployment Queue Request By EnvironmentId
 
 ### Example
 
@@ -500,7 +500,7 @@ Name | Type | Description  | Notes
 
 > ListDeploymentRequestByServiceId200Response ListDeploymentRequestByServiceId(ctx, serviceId).Execute()
 
-List Deployment Request By ServiceId
+List Deployment Queue Request By ServiceId
 
 ### Example
 
