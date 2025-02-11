@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the application. | [optional] 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -533,6 +534,41 @@ SetIconUri sets IconUri field to given value.
 
 HasIconUri returns a boolean if a field has been set.
 
+### GetDockerTargetBuildStage
+
+`func (o *ApplicationEditRequest) GetDockerTargetBuildStage() string`
+
+GetDockerTargetBuildStage returns the DockerTargetBuildStage field if non-nil, zero value otherwise.
+
+### GetDockerTargetBuildStageOk
+
+`func (o *ApplicationEditRequest) GetDockerTargetBuildStageOk() (*string, bool)`
+
+GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerTargetBuildStage
+
+`func (o *ApplicationEditRequest) SetDockerTargetBuildStage(v string)`
+
+SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
+
+### HasDockerTargetBuildStage
+
+`func (o *ApplicationEditRequest) HasDockerTargetBuildStage() bool`
+
+HasDockerTargetBuildStage returns a boolean if a field has been set.
+
+### SetDockerTargetBuildStageNil
+
+`func (o *ApplicationEditRequest) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *ApplicationEditRequest) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

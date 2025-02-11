@@ -16470,6 +16470,10 @@ components:
             description: Icon URI representing the application.
             format: uri
             type: string
+          docker_target_build_stage:
+            description: The target build stage in the Dockerfile to build
+            nullable: true
+            type: string
         required:
         - healthchecks
         type: object
@@ -16563,6 +16567,7 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         entrypoint: entrypoint
         name: name
+        docker_target_build_stage: docker_target_build_stage
         auto_preview: true
         arguments:
         - arguments
