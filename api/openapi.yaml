@@ -16179,6 +16179,12 @@ components:
               id: b8karc43pdxpu
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
+          docker_target_build_stage:
+            description: The target build stage in the Dockerfile to build
+            nullable: true
+            type: string
+            x-stoplight:
+              id: tdxdfoyowutcx
         required:
         - environment
         - healthchecks
@@ -16336,6 +16342,7 @@ components:
         service_type: APPLICATION
         maximum_cpu: 16000
         name: name
+        docker_target_build_stage: docker_target_build_stage
         arguments:
         - arguments
         - arguments
@@ -16832,6 +16839,12 @@ components:
             type: string
             x-stoplight:
               id: om4lw1ulknsrg
+          docker_target_build_stage:
+            description: The target build stage in the Dockerfile to build
+            nullable: true
+            type: string
+            x-stoplight:
+              id: xg9q0urac8kdq
         required:
         - git_repository
         - healthchecks
@@ -16927,6 +16940,7 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         entrypoint: entrypoint
         name: name
+        docker_target_build_stage: docker_target_build_stage
         auto_preview: true
         arguments:
         - arguments
@@ -17083,6 +17097,7 @@ components:
           service_type: APPLICATION
           maximum_cpu: 16000
           name: name
+          docker_target_build_stage: docker_target_build_stage
           arguments:
           - arguments
           - arguments
@@ -17235,6 +17250,7 @@ components:
           service_type: APPLICATION
           maximum_cpu: 16000
           name: name
+          docker_target_build_stage: docker_target_build_stage
           arguments:
           - arguments
           - arguments
@@ -25174,6 +25190,7 @@ components:
             registry_id: registry_id
           docker:
             dockerfile_raw: dockerfile_raw
+            docker_target_build_stage: docker_target_build_stage
             git_repository:
               root_path: /
               git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -30137,6 +30154,12 @@ components:
           type: string
           x-stoplight:
             id: 7s4l0qg285y48
+        docker_target_build_stage:
+          description: The target build stage in the Dockerfile to build
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 8o1faq3bgz92i
       title: JobSourceDockerResponse
       type: object
       x-stoplight:
@@ -31756,6 +31779,7 @@ components:
           service_type: APPLICATION
           maximum_cpu: 16000
           name: name
+          docker_target_build_stage: docker_target_build_stage
           arguments:
           - arguments
           - arguments
@@ -31908,6 +31932,7 @@ components:
           service_type: APPLICATION
           maximum_cpu: 16000
           name: name
+          docker_target_build_stage: docker_target_build_stage
           arguments:
           - arguments
           - arguments
@@ -32950,6 +32975,7 @@ components:
     JobRequest_allOf_source_docker:
       example:
         dockerfile_raw: dockerfile_raw
+        docker_target_build_stage: docker_target_build_stage
         git_repository:
           root_path: /
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32972,6 +32998,12 @@ components:
           type: string
           x-stoplight:
             id: 2ksmhx7hfs9pi
+        docker_target_build_stage:
+          description: The target build stage in the Dockerfile to build
+          nullable: true
+          type: string
+          x-stoplight:
+            id: qogoqube2vtez
       type: object
     JobRequest_allOf_source:
       example:
@@ -32981,6 +33013,7 @@ components:
           registry_id: registry_id
         docker:
           dockerfile_raw: dockerfile_raw
+          docker_target_build_stage: docker_target_build_stage
           git_repository:
             root_path: /
             git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

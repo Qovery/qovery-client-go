@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **DockerfileRaw** | Pointer to **NullableString** | The content of your dockerfile if it is not stored inside your git repository | [optional] 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -122,6 +123,41 @@ HasDockerfileRaw returns a boolean if a field has been set.
 `func (o *JobRequestAllOfSourceDocker) UnsetDockerfileRaw()`
 
 UnsetDockerfileRaw ensures that no value is present for DockerfileRaw, not even an explicit nil
+### GetDockerTargetBuildStage
+
+`func (o *JobRequestAllOfSourceDocker) GetDockerTargetBuildStage() string`
+
+GetDockerTargetBuildStage returns the DockerTargetBuildStage field if non-nil, zero value otherwise.
+
+### GetDockerTargetBuildStageOk
+
+`func (o *JobRequestAllOfSourceDocker) GetDockerTargetBuildStageOk() (*string, bool)`
+
+GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerTargetBuildStage
+
+`func (o *JobRequestAllOfSourceDocker) SetDockerTargetBuildStage(v string)`
+
+SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
+
+### HasDockerTargetBuildStage
+
+`func (o *JobRequestAllOfSourceDocker) HasDockerTargetBuildStage() bool`
+
+HasDockerTargetBuildStage returns a boolean if a field has been set.
+
+### SetDockerTargetBuildStageNil
+
+`func (o *JobRequestAllOfSourceDocker) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *JobRequestAllOfSourceDocker) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

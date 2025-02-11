@@ -24,8 +24,10 @@ type JobRequestAllOfSourceDocker struct {
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
 	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// The content of your dockerfile if it is not stored inside your git repository
-	DockerfileRaw        NullableString `json:"dockerfile_raw,omitempty"`
-	AdditionalProperties map[string]interface{}
+	DockerfileRaw NullableString `json:"dockerfile_raw,omitempty"`
+	// The target build stage in the Dockerfile to build
+	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _JobRequestAllOfSourceDocker JobRequestAllOfSourceDocker
@@ -165,6 +167,49 @@ func (o *JobRequestAllOfSourceDocker) UnsetDockerfileRaw() {
 	o.DockerfileRaw.Unset()
 }
 
+// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobRequestAllOfSourceDocker) GetDockerTargetBuildStage() string {
+	if o == nil || IsNil(o.DockerTargetBuildStage.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DockerTargetBuildStage.Get()
+}
+
+// GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobRequestAllOfSourceDocker) GetDockerTargetBuildStageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DockerTargetBuildStage.Get(), o.DockerTargetBuildStage.IsSet()
+}
+
+// HasDockerTargetBuildStage returns a boolean if a field has been set.
+func (o *JobRequestAllOfSourceDocker) HasDockerTargetBuildStage() bool {
+	if o != nil && o.DockerTargetBuildStage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDockerTargetBuildStage gets a reference to the given NullableString and assigns it to the DockerTargetBuildStage field.
+func (o *JobRequestAllOfSourceDocker) SetDockerTargetBuildStage(v string) {
+	o.DockerTargetBuildStage.Set(&v)
+}
+
+// SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+func (o *JobRequestAllOfSourceDocker) SetDockerTargetBuildStageNil() {
+	o.DockerTargetBuildStage.Set(nil)
+}
+
+// UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+func (o *JobRequestAllOfSourceDocker) UnsetDockerTargetBuildStage() {
+	o.DockerTargetBuildStage.Unset()
+}
+
 func (o JobRequestAllOfSourceDocker) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -183,6 +228,9 @@ func (o JobRequestAllOfSourceDocker) ToMap() (map[string]interface{}, error) {
 	}
 	if o.DockerfileRaw.IsSet() {
 		toSerialize["dockerfile_raw"] = o.DockerfileRaw.Get()
+	}
+	if o.DockerTargetBuildStage.IsSet() {
+		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -209,6 +257,7 @@ func (o *JobRequestAllOfSourceDocker) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "dockerfile_path")
 		delete(additionalProperties, "dockerfile_raw")
+		delete(additionalProperties, "docker_target_build_stage")
 		o.AdditionalProperties = additionalProperties
 	}
 

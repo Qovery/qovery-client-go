@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the application. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -675,6 +676,41 @@ and a boolean to check if the value has been set.
 SetServiceType sets ServiceType field to given value.
 
 
+### GetDockerTargetBuildStage
+
+`func (o *Application) GetDockerTargetBuildStage() string`
+
+GetDockerTargetBuildStage returns the DockerTargetBuildStage field if non-nil, zero value otherwise.
+
+### GetDockerTargetBuildStageOk
+
+`func (o *Application) GetDockerTargetBuildStageOk() (*string, bool)`
+
+GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerTargetBuildStage
+
+`func (o *Application) SetDockerTargetBuildStage(v string)`
+
+SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
+
+### HasDockerTargetBuildStage
+
+`func (o *Application) HasDockerTargetBuildStage() bool`
+
+HasDockerTargetBuildStage returns a boolean if a field has been set.
+
+### SetDockerTargetBuildStageNil
+
+`func (o *Application) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *Application) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

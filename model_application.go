@@ -59,9 +59,11 @@ type Application struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the application.
-	IconUri              string          `json:"icon_uri"`
-	ServiceType          ServiceTypeEnum `json:"service_type"`
-	AdditionalProperties map[string]interface{}
+	IconUri     string          `json:"icon_uri"`
+	ServiceType ServiceTypeEnum `json:"service_type"`
+	// The target build stage in the Dockerfile to build
+	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	AdditionalProperties   map[string]interface{}
 }
 
 type _Application Application
@@ -893,6 +895,49 @@ func (o *Application) SetServiceType(v ServiceTypeEnum) {
 	o.ServiceType = v
 }
 
+// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Application) GetDockerTargetBuildStage() string {
+	if o == nil || IsNil(o.DockerTargetBuildStage.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DockerTargetBuildStage.Get()
+}
+
+// GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Application) GetDockerTargetBuildStageOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DockerTargetBuildStage.Get(), o.DockerTargetBuildStage.IsSet()
+}
+
+// HasDockerTargetBuildStage returns a boolean if a field has been set.
+func (o *Application) HasDockerTargetBuildStage() bool {
+	if o != nil && o.DockerTargetBuildStage.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDockerTargetBuildStage gets a reference to the given NullableString and assigns it to the DockerTargetBuildStage field.
+func (o *Application) SetDockerTargetBuildStage(v string) {
+	o.DockerTargetBuildStage.Set(&v)
+}
+
+// SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+func (o *Application) SetDockerTargetBuildStageNil() {
+	o.DockerTargetBuildStage.Set(nil)
+}
+
+// UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+func (o *Application) UnsetDockerTargetBuildStage() {
+	o.DockerTargetBuildStage.Unset()
+}
+
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -967,6 +1012,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
+	if o.DockerTargetBuildStage.IsSet() {
+		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1042,6 +1090,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "docker_target_build_stage")
 		o.AdditionalProperties = additionalProperties
 	}
 

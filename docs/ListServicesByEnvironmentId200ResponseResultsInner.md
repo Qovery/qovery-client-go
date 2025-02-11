@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the helm service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
@@ -646,6 +647,41 @@ and a boolean to check if the value has been set.
 SetServiceType sets ServiceType field to given value.
 
 
+### GetDockerTargetBuildStage
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerTargetBuildStage() string`
+
+GetDockerTargetBuildStage returns the DockerTargetBuildStage field if non-nil, zero value otherwise.
+
+### GetDockerTargetBuildStageOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerTargetBuildStageOk() (*string, bool)`
+
+GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerTargetBuildStage
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerTargetBuildStage(v string)`
+
+SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
+
+### HasDockerTargetBuildStage
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasDockerTargetBuildStage() bool`
+
+HasDockerTargetBuildStage returns a boolean if a field has been set.
+
+### SetDockerTargetBuildStageNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 ### GetImageName
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetImageName() string`
