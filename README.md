@@ -282,6 +282,7 @@ Class | Method | HTTP request | Description
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
 *DefaultAPI* | [**ListServicesByOrganizationId**](docs/DefaultAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
+*DeploymentQueueActionsAPI* | [**CancelDeploymentRequest**](docs/DeploymentQueueActionsAPI.md#canceldeploymentrequest) | **Post** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
 *DeploymentStageMainCallsAPI* | [**DeleteDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#deletedeploymentstage) | **Delete** /deploymentStage/{deploymentStageId} | Delete deployment stage

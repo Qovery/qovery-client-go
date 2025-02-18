@@ -7007,6 +7007,44 @@ paths:
       summary: Cancel environment deployment
       tags:
       - Environment Actions
+  /deploymentQueue/{deploymentRequestId}/cancelDeployment:
+    post:
+      description: Cancel the a deployment request.
+      operationId: cancelDeploymentRequest
+      parameters:
+      - description: Deployment Request ID
+        explode: false
+        in: path
+        name: deploymentRequestId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content: {}
+          description: deployment request cancelling has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Deployment request is already cancelled or an operation is
+            in progress
+      summary: Cancel deployment request
+      tags:
+      - Deployment Queue Actions
+      x-stoplight:
+        id: tybevwlak1oip
   /environment/{environmentId}/clone:
     post:
       description: "You must provide a name. This will create a new environment, with\
@@ -15454,6 +15492,16 @@ components:
       explode: false
       in: path
       name: containerRegistryId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    deploymentRequestId:
+      description: Deployment Request ID
+      explode: false
+      in: path
+      name: deploymentRequestId
       required: true
       schema:
         format: uuid

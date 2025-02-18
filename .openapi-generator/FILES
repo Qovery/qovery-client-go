@@ -35,6 +35,7 @@ api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
 api_default.go
+api_deployment_queue_actions.go
 api_deployment_stage_main_calls.go
 api_environment.go
 api_environment_actions.go
@@ -308,6 +309,7 @@ docs/DeploymentHistoryServicePaginatedResponseListV2.md
 docs/DeploymentHistoryStage.md
 docs/DeploymentHistoryStatusEnum.md
 docs/DeploymentHistoryTriggerAction.md
+docs/DeploymentQueueActionsAPI.md
 docs/DeploymentRestrictionModeEnum.md
 docs/DeploymentRestrictionTypeEnum.md
 docs/DeploymentStageMainCallsAPI.md
@@ -1289,6 +1291,7 @@ test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
 test/api_default_test.go
+test/api_deployment_queue_actions_test.go
 test/api_deployment_stage_main_calls_test.go
 test/api_environment_actions_test.go
 test/api_environment_deployment_history_test.go

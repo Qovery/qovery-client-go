@@ -113,6 +113,8 @@ type APIClient struct {
 
 	DefaultAPI *DefaultAPIService
 
+	DeploymentQueueActionsAPI *DeploymentQueueActionsAPIService
+
 	DeploymentStageMainCallsAPI *DeploymentStageMainCallsAPIService
 
 	EnvironmentAPI *EnvironmentAPIService
@@ -258,6 +260,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.DatabaseMainCallsAPI = (*DatabaseMainCallsAPIService)(&c.common)
 	c.DatabasesAPI = (*DatabasesAPIService)(&c.common)
 	c.DefaultAPI = (*DefaultAPIService)(&c.common)
+	c.DeploymentQueueActionsAPI = (*DeploymentQueueActionsAPIService)(&c.common)
 	c.DeploymentStageMainCallsAPI = (*DeploymentStageMainCallsAPIService)(&c.common)
 	c.EnvironmentAPI = (*EnvironmentAPIService)(&c.common)
 	c.EnvironmentActionsAPI = (*EnvironmentActionsAPIService)(&c.common)
