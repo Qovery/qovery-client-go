@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**EditRoutingTable**](ClustersAPI.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
+[**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events/{nodeName} | List Cluster Kubernetes Events
 [**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetDefaultClusterAdvancedSettings**](ClustersAPI.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
@@ -681,6 +682,83 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/x-yaml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterKubernetesEvents
+
+> GetClusterKubernetesEvents200Response GetClusterKubernetesEvents(ctx, clusterId, nodeName).FromDateTime(fromDateTime).ToDateTime(toDateTime).Execute()
+
+List Cluster Kubernetes Events
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	nodeName := "nodeName_example" // string | 
+	fromDateTime := "2025-03-03T09:00:00+00:00" // string | The start date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`) 
+	toDateTime := "2025-03-03T03:00:00+00:00" // string | The end date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`) 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetClusterKubernetesEvents(context.Background(), clusterId, nodeName).FromDateTime(fromDateTime).ToDateTime(toDateTime).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubernetesEvents``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterKubernetesEvents`: GetClusterKubernetesEvents200Response
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterKubernetesEvents`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+**nodeName** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterKubernetesEventsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **fromDateTime** | **string** | The start date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)  | 
+ **toDateTime** | **string** | The end date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)  | 
+
+### Return type
+
+[**GetClusterKubernetesEvents200Response**](GetClusterKubernetesEvents200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

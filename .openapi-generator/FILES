@@ -369,6 +369,8 @@ docs/EnvironmentsAPI.md
 docs/GcpCredentialsRequest.md
 docs/GenericClusterCredentials.md
 docs/GenericObjectCurrentCost.md
+docs/GetClusterKubernetesEvents200Response.md
+docs/GetClusterKubernetesEvents200ResponseResultsInner.md
 docs/GetClusterTokenByClusterId200Response.md
 docs/GetClusterTokenByClusterId200ResponseStatus.md
 docs/GitAuthProvider.md
@@ -953,6 +955,8 @@ model_environment_variable_response_list.go
 model_gcp_credentials_request.go
 model_generic_cluster_credentials.go
 model_generic_object_current_cost.go
+model_get_cluster_kubernetes_events_200_response.go
+model_get_cluster_kubernetes_events_200_response_results_inner.go
 model_get_cluster_token_by_cluster_id_200_response.go
 model_get_cluster_token_by_cluster_id_200_response_status.go
 model_git_auth_provider.go

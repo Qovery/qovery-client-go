@@ -15300,6 +15300,60 @@ paths:
       - Clusters
       x-stoplight:
         id: kttp2yd6qq7m7
+  /cluster/{clusterId}/events/{nodeName}:
+    get:
+      description: List Cluster Kubernetes Events
+      operationId: get-cluster-kubernetes-events
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: nodeName
+        required: true
+        schema:
+          nullable: false
+          type: string
+        style: simple
+      - description: "The start date time to fetch events from, following ISO-8601\
+          \ format.  \nThe `+` character must be escaped (`%2B`)\n"
+        example: 2025-03-03T09:00:00+00:00
+        explode: true
+        in: query
+        name: from_date_time
+        required: true
+        schema:
+          nullable: false
+          type: string
+        style: form
+      - description: "The end date time to fetch events from, following ISO-8601 format.\
+          \  \nThe `+` character must be escaped (`%2B`)\n"
+        example: 2025-03-03T03:00:00+00:00
+        explode: true
+        in: query
+        name: to_date_time
+        required: true
+        schema:
+          nullable: false
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_cluster_kubernetes_events_200_response'
+          description: List Cluster Kubernetes Events
+      summary: List Cluster Kubernetes Events
+      tags:
+      - Clusters
   /organization/{organizationId}/lock:
     get:
       operationId: list-cluster-lock
@@ -31996,6 +32050,64 @@ components:
           type: array
           x-stoplight:
             id: 0t9ccei2ecd8d
+      type: object
+    get_cluster_kubernetes_events_200_response_results_inner:
+      example:
+        reason: reason
+        kind: kind
+        namespace: namespace
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        message: message
+        type: type
+      properties:
+        created_at:
+          description: The created date following ISO-8601 format
+          format: date-time
+          type: string
+        kind:
+          description: The source kubernetes object related to the Event
+          type: string
+        namespace:
+          description: The namespace of the kubernetes object related to the Event
+            (optional)
+          type: string
+        name:
+          description: The name of the Event
+          type: string
+        reason:
+          description: The action that triggered the Event
+          type: string
+        message:
+          description: A description of the Event
+          type: string
+        type:
+          description: As of today it can be either Warning or Normal (can evolve
+            in the next releases)
+          type: string
+      type: object
+    get_cluster_kubernetes_events_200_response:
+      example:
+        results:
+        - reason: reason
+          kind: kind
+          namespace: namespace
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          message: message
+          type: type
+        - reason: reason
+          kind: kind
+          namespace: namespace
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          message: message
+          type: type
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/get_cluster_kubernetes_events_200_response_results_inner'
+          type: array
       type: object
     listServicesByOrganizationId_200_response:
       example:
