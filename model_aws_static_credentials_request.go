@@ -16,67 +16,41 @@ import (
 	"fmt"
 )
 
-// checks if the AwsClusterCredentials type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AwsClusterCredentials{}
+// checks if the AwsStaticCredentialsRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AwsStaticCredentialsRequest{}
 
-// AwsClusterCredentials struct for AwsClusterCredentials
-type AwsClusterCredentials struct {
-	Id                   string `json:"id"`
+// AwsStaticCredentialsRequest struct for AwsStaticCredentialsRequest
+type AwsStaticCredentialsRequest struct {
 	Name                 string `json:"name"`
 	AccessKeyId          string `json:"access_key_id"`
-	ObjectType           string `json:"object_type"`
+	SecretAccessKey      string `json:"secret_access_key"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _AwsClusterCredentials AwsClusterCredentials
+type _AwsStaticCredentialsRequest AwsStaticCredentialsRequest
 
-// NewAwsClusterCredentials instantiates a new AwsClusterCredentials object
+// NewAwsStaticCredentialsRequest instantiates a new AwsStaticCredentialsRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsClusterCredentials(id string, name string, accessKeyId string, objectType string) *AwsClusterCredentials {
-	this := AwsClusterCredentials{}
-	this.Id = id
+func NewAwsStaticCredentialsRequest(name string, accessKeyId string, secretAccessKey string) *AwsStaticCredentialsRequest {
+	this := AwsStaticCredentialsRequest{}
 	this.Name = name
 	this.AccessKeyId = accessKeyId
-	this.ObjectType = objectType
+	this.SecretAccessKey = secretAccessKey
 	return &this
 }
 
-// NewAwsClusterCredentialsWithDefaults instantiates a new AwsClusterCredentials object
+// NewAwsStaticCredentialsRequestWithDefaults instantiates a new AwsStaticCredentialsRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewAwsClusterCredentialsWithDefaults() *AwsClusterCredentials {
-	this := AwsClusterCredentials{}
+func NewAwsStaticCredentialsRequestWithDefaults() *AwsStaticCredentialsRequest {
+	this := AwsStaticCredentialsRequest{}
 	return &this
-}
-
-// GetId returns the Id field value
-func (o *AwsClusterCredentials) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Id
-}
-
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AwsClusterCredentials) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Id, true
-}
-
-// SetId sets field value
-func (o *AwsClusterCredentials) SetId(v string) {
-	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *AwsClusterCredentials) GetName() string {
+func (o *AwsStaticCredentialsRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -87,7 +61,7 @@ func (o *AwsClusterCredentials) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *AwsClusterCredentials) GetNameOk() (*string, bool) {
+func (o *AwsStaticCredentialsRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -95,12 +69,12 @@ func (o *AwsClusterCredentials) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *AwsClusterCredentials) SetName(v string) {
+func (o *AwsStaticCredentialsRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetAccessKeyId returns the AccessKeyId field value
-func (o *AwsClusterCredentials) GetAccessKeyId() string {
+func (o *AwsStaticCredentialsRequest) GetAccessKeyId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -111,7 +85,7 @@ func (o *AwsClusterCredentials) GetAccessKeyId() string {
 
 // GetAccessKeyIdOk returns a tuple with the AccessKeyId field value
 // and a boolean to check if the value has been set.
-func (o *AwsClusterCredentials) GetAccessKeyIdOk() (*string, bool) {
+func (o *AwsStaticCredentialsRequest) GetAccessKeyIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -119,35 +93,35 @@ func (o *AwsClusterCredentials) GetAccessKeyIdOk() (*string, bool) {
 }
 
 // SetAccessKeyId sets field value
-func (o *AwsClusterCredentials) SetAccessKeyId(v string) {
+func (o *AwsStaticCredentialsRequest) SetAccessKeyId(v string) {
 	o.AccessKeyId = v
 }
 
-// GetObjectType returns the ObjectType field value
-func (o *AwsClusterCredentials) GetObjectType() string {
+// GetSecretAccessKey returns the SecretAccessKey field value
+func (o *AwsStaticCredentialsRequest) GetSecretAccessKey() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.ObjectType
+	return o.SecretAccessKey
 }
 
-// GetObjectTypeOk returns a tuple with the ObjectType field value
+// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value
 // and a boolean to check if the value has been set.
-func (o *AwsClusterCredentials) GetObjectTypeOk() (*string, bool) {
+func (o *AwsStaticCredentialsRequest) GetSecretAccessKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ObjectType, true
+	return &o.SecretAccessKey, true
 }
 
-// SetObjectType sets field value
-func (o *AwsClusterCredentials) SetObjectType(v string) {
-	o.ObjectType = v
+// SetSecretAccessKey sets field value
+func (o *AwsStaticCredentialsRequest) SetSecretAccessKey(v string) {
+	o.SecretAccessKey = v
 }
 
-func (o AwsClusterCredentials) MarshalJSON() ([]byte, error) {
+func (o AwsStaticCredentialsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -155,12 +129,11 @@ func (o AwsClusterCredentials) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o AwsClusterCredentials) ToMap() (map[string]interface{}, error) {
+func (o AwsStaticCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
 	toSerialize["access_key_id"] = o.AccessKeyId
-	toSerialize["object_type"] = o.ObjectType
+	toSerialize["secret_access_key"] = o.SecretAccessKey
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -169,15 +142,14 @@ func (o AwsClusterCredentials) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *AwsClusterCredentials) UnmarshalJSON(data []byte) (err error) {
+func (o *AwsStaticCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"id",
 		"name",
 		"access_key_id",
-		"object_type",
+		"secret_access_key",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -194,61 +166,60 @@ func (o *AwsClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAwsClusterCredentials := _AwsClusterCredentials{}
+	varAwsStaticCredentialsRequest := _AwsStaticCredentialsRequest{}
 
-	err = json.Unmarshal(data, &varAwsClusterCredentials)
+	err = json.Unmarshal(data, &varAwsStaticCredentialsRequest)
 
 	if err != nil {
 		return err
 	}
 
-	*o = AwsClusterCredentials(varAwsClusterCredentials)
+	*o = AwsStaticCredentialsRequest(varAwsStaticCredentialsRequest)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "access_key_id")
-		delete(additionalProperties, "object_type")
+		delete(additionalProperties, "secret_access_key")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableAwsClusterCredentials struct {
-	value *AwsClusterCredentials
+type NullableAwsStaticCredentialsRequest struct {
+	value *AwsStaticCredentialsRequest
 	isSet bool
 }
 
-func (v NullableAwsClusterCredentials) Get() *AwsClusterCredentials {
+func (v NullableAwsStaticCredentialsRequest) Get() *AwsStaticCredentialsRequest {
 	return v.value
 }
 
-func (v *NullableAwsClusterCredentials) Set(val *AwsClusterCredentials) {
+func (v *NullableAwsStaticCredentialsRequest) Set(val *AwsStaticCredentialsRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableAwsClusterCredentials) IsSet() bool {
+func (v NullableAwsStaticCredentialsRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableAwsClusterCredentials) Unset() {
+func (v *NullableAwsStaticCredentialsRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableAwsClusterCredentials(val *AwsClusterCredentials) *NullableAwsClusterCredentials {
-	return &NullableAwsClusterCredentials{value: val, isSet: true}
+func NewNullableAwsStaticCredentialsRequest(val *AwsStaticCredentialsRequest) *NullableAwsStaticCredentialsRequest {
+	return &NullableAwsStaticCredentialsRequest{value: val, isSet: true}
 }
 
-func (v NullableAwsClusterCredentials) MarshalJSON() ([]byte, error) {
+func (v NullableAwsStaticCredentialsRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableAwsClusterCredentials) UnmarshalJSON(src []byte) error {
+func (v *NullableAwsStaticCredentialsRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **JsonCredentials** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; | [optional] 
 **Username** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **Password** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
+**RoleArn** | Pointer to **string** | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional] 
 
 ## Methods
 
@@ -257,6 +258,31 @@ SetPassword sets Password field to given value.
 `func (o *ContainerRegistryRequestConfig) HasPassword() bool`
 
 HasPassword returns a boolean if a field has been set.
+
+### GetRoleArn
+
+`func (o *ContainerRegistryRequestConfig) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *ContainerRegistryRequestConfig) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *ContainerRegistryRequestConfig) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *ContainerRegistryRequestConfig) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

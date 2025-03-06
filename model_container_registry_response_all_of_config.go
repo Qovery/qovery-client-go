@@ -25,6 +25,7 @@ type ContainerRegistryResponseAllOfConfig struct {
 	ScalewayAccessKey    *string `json:"scaleway_access_key,omitempty"`
 	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
 	AccessKeyId          *string `json:"access_key_id,omitempty"`
+	RoleArn              *string `json:"role_arn,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +208,38 @@ func (o *ContainerRegistryResponseAllOfConfig) SetAccessKeyId(v string) {
 	o.AccessKeyId = &v
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetRoleArnOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleArn) {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasRoleArn() bool {
+	if o != nil && !IsNil(o.RoleArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *ContainerRegistryResponseAllOfConfig) SetRoleArn(v string) {
+	o.RoleArn = &v
+}
+
 func (o ContainerRegistryResponseAllOfConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -231,6 +264,9 @@ func (o ContainerRegistryResponseAllOfConfig) ToMap() (map[string]interface{}, e
 	}
 	if !IsNil(o.AccessKeyId) {
 		toSerialize["access_key_id"] = o.AccessKeyId
+	}
+	if !IsNil(o.RoleArn) {
+		toSerialize["role_arn"] = o.RoleArn
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -259,6 +295,7 @@ func (o *ContainerRegistryResponseAllOfConfig) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "access_key_id")
+		delete(additionalProperties, "role_arn")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -17454,10 +17454,10 @@ components:
           type: array
       type: object
     AwsCredentialsRequest:
-      example:
-        access_key_id: access_key_id
-        name: name
-        secret_access_key: secret_access_key
+      oneOf:
+      - $ref: '#/components/schemas/AwsRoleCredentialsRequest'
+      - $ref: '#/components/schemas/AwsStaticCredentialsRequest'
+    AwsStaticCredentialsRequest:
       properties:
         name:
           type: string
@@ -17470,6 +17470,25 @@ components:
       - name
       - secret_access_key
       type: object
+      x-stoplight:
+        id: l0s0fv735914p
+    AwsRoleCredentialsRequest:
+      example:
+        role_arn: role_arn
+        name: name
+      properties:
+        name:
+          type: string
+        role_arn:
+          type: string
+          x-stoplight:
+            id: my3ry04bqibxp
+      required:
+      - name
+      - role_arn
+      type: object
+      x-stoplight:
+        id: jn74pfty2eq7c
     OnPremiseCredentialsRequest:
       example:
         name: name
@@ -18144,15 +18163,17 @@ components:
     ClusterCredentials:
       discriminator:
         mapping:
-          AWS: '#/components/schemas/AwsClusterCredentials'
+          AWS: '#/components/schemas/AwsStaticClusterCredentials'
+          AWS_ROLE: '#/components/schemas/AwsRoleClusterCredentials'
           SCW: '#/components/schemas/ScalewayClusterCredentials'
           OTHER: '#/components/schemas/GenericClusterCredentials'
         propertyName: object_type
       oneOf:
-      - $ref: '#/components/schemas/AwsClusterCredentials'
+      - $ref: '#/components/schemas/AwsStaticClusterCredentials'
       - $ref: '#/components/schemas/ScalewayClusterCredentials'
       - $ref: '#/components/schemas/GenericClusterCredentials'
-    AwsClusterCredentials:
+      - $ref: '#/components/schemas/AwsRoleClusterCredentials'
+    AwsStaticClusterCredentials:
       example:
         access_key_id: access_key_id
         object_type: AWS
@@ -18183,10 +18204,34 @@ components:
       - id
       - name
       - object_type
-      title: AwsClusterCredentials
+      title: AwsStaticClusterCredentials
       type: object
       x-stoplight:
         id: s0aosg7la96hp
+    AwsRoleClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        role_arn:
+          type: string
+          x-stoplight:
+            id: 8l5tuxflg76d2
+        object_type:
+          enum:
+          - AWS_ROLE
+          type: string
+      required:
+      - id
+      - name
+      - object_type
+      - role_arn
+      title: AwsRoleClusterCredentials
+      type: object
+      x-stoplight:
+        id: f5c1iewg51zam
     ScalewayClusterCredentials:
       properties:
         id:
@@ -19478,6 +19523,7 @@ components:
         config:
           access_key_id: access_key_id
           password: password
+          role_arn: role_arn
           json_credentials: json_credentials
           secret_access_key: secret_access_key
           scaleway_secret_key: scaleway_secret_key
@@ -19545,6 +19591,7 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config:
           access_key_id: access_key_id
+          role_arn: role_arn
           region: region
           scaleway_access_key: scaleway_access_key
           username: username
@@ -19588,6 +19635,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            role_arn: role_arn
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
@@ -19605,6 +19653,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            role_arn: role_arn
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
@@ -32608,6 +32657,7 @@ components:
       example:
         access_key_id: access_key_id
         password: password
+        role_arn: role_arn
         json_credentials: json_credentials
         secret_access_key: secret_access_key
         scaleway_secret_key: scaleway_secret_key
@@ -32647,6 +32697,12 @@ components:
           description: "optional, for kind `DOCKER_HUB`  \nWe encourage you to set\
             \ credentials for Docker Hub due to the limits on the pull rate\n"
           type: string
+        role_arn:
+          description: "For ECR, you can either set a static access_key or use a role\
+            \ arn that we are going to assume"
+          type: string
+          x-stoplight:
+            id: mzi9w1zsswj47
       type: object
     ContainerRegistryResponse_allOf_cluster:
       example:
@@ -32669,6 +32725,7 @@ components:
     ContainerRegistryResponse_allOf_config:
       example:
         access_key_id: access_key_id
+        role_arn: role_arn
         region: region
         scaleway_access_key: scaleway_access_key
         username: username
@@ -32694,6 +32751,10 @@ components:
           type: string
           x-stoplight:
             id: s5elye0gv4lks
+        role_arn:
+          type: string
+          x-stoplight:
+            id: iusxfgcmg72tl
       type: object
       x-stoplight:
         id: s9rg5wox9j00z

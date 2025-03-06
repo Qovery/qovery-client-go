@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **ScalewayAccessKey** | **string** |  | 
 **ScalewayProjectId** | **string** |  | 
 **ScalewayOrganizationId** | **string** |  | 
+**RoleArn** | **string** |  | 
 
 ## Methods
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -169,6 +170,26 @@ and a boolean to check if the value has been set.
 `func (o *ClusterCredentials) SetScalewayOrganizationId(v string)`
 
 SetScalewayOrganizationId sets ScalewayOrganizationId field to given value.
+
+
+### GetRoleArn
+
+`func (o *ClusterCredentials) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *ClusterCredentials) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *ClusterCredentials) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
 
 
 

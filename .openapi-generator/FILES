@@ -119,8 +119,11 @@ docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
 docs/AvailableHelmRepositoryResponseList.md
-docs/AwsClusterCredentials.md
 docs/AwsCredentialsRequest.md
+docs/AwsRoleClusterCredentials.md
+docs/AwsRoleCredentialsRequest.md
+docs/AwsStaticClusterCredentials.md
+docs/AwsStaticCredentialsRequest.md
 docs/Backup.md
 docs/BackupPaginatedResponseList.md
 docs/BackupRequest.md
@@ -738,8 +741,11 @@ model_available_container_registry_response.go
 model_available_container_registry_response_list.go
 model_available_helm_repository_response.go
 model_available_helm_repository_response_list.go
-model_aws_cluster_credentials.go
 model_aws_credentials_request.go
+model_aws_role_cluster_credentials.go
+model_aws_role_credentials_request.go
+model_aws_static_cluster_credentials.go
+model_aws_static_credentials_request.go
 model_backup.go
 model_backup_paginated_response_list.go
 model_backup_request.go

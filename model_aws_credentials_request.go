@@ -16,176 +16,97 @@ import (
 	"fmt"
 )
 
-// checks if the AwsCredentialsRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AwsCredentialsRequest{}
-
-// AwsCredentialsRequest struct for AwsCredentialsRequest
+// AwsCredentialsRequest - struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
-	Name                 string `json:"name"`
-	AccessKeyId          string `json:"access_key_id"`
-	SecretAccessKey      string `json:"secret_access_key"`
-	AdditionalProperties map[string]interface{}
+	AwsRoleCredentialsRequest   *AwsRoleCredentialsRequest
+	AwsStaticCredentialsRequest *AwsStaticCredentialsRequest
 }
 
-type _AwsCredentialsRequest AwsCredentialsRequest
-
-// NewAwsCredentialsRequest instantiates a new AwsCredentialsRequest object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAwsCredentialsRequest(name string, accessKeyId string, secretAccessKey string) *AwsCredentialsRequest {
-	this := AwsCredentialsRequest{}
-	this.Name = name
-	this.AccessKeyId = accessKeyId
-	this.SecretAccessKey = secretAccessKey
-	return &this
-}
-
-// NewAwsCredentialsRequestWithDefaults instantiates a new AwsCredentialsRequest object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAwsCredentialsRequestWithDefaults() *AwsCredentialsRequest {
-	this := AwsCredentialsRequest{}
-	return &this
-}
-
-// GetName returns the Name field value
-func (o *AwsCredentialsRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
+// AwsRoleCredentialsRequestAsAwsCredentialsRequest is a convenience function that returns AwsRoleCredentialsRequest wrapped in AwsCredentialsRequest
+func AwsRoleCredentialsRequestAsAwsCredentialsRequest(v *AwsRoleCredentialsRequest) AwsCredentialsRequest {
+	return AwsCredentialsRequest{
+		AwsRoleCredentialsRequest: v,
 	}
-
-	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AwsCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// AwsStaticCredentialsRequestAsAwsCredentialsRequest is a convenience function that returns AwsStaticCredentialsRequest wrapped in AwsCredentialsRequest
+func AwsStaticCredentialsRequestAsAwsCredentialsRequest(v *AwsStaticCredentialsRequest) AwsCredentialsRequest {
+	return AwsCredentialsRequest{
+		AwsStaticCredentialsRequest: v,
 	}
-	return &o.Name, true
 }
 
-// SetName sets field value
-func (o *AwsCredentialsRequest) SetName(v string) {
-	o.Name = v
-}
-
-// GetAccessKeyId returns the AccessKeyId field value
-func (o *AwsCredentialsRequest) GetAccessKeyId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AccessKeyId
-}
-
-// GetAccessKeyIdOk returns a tuple with the AccessKeyId field value
-// and a boolean to check if the value has been set.
-func (o *AwsCredentialsRequest) GetAccessKeyIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AccessKeyId, true
-}
-
-// SetAccessKeyId sets field value
-func (o *AwsCredentialsRequest) SetAccessKeyId(v string) {
-	o.AccessKeyId = v
-}
-
-// GetSecretAccessKey returns the SecretAccessKey field value
-func (o *AwsCredentialsRequest) GetSecretAccessKey() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.SecretAccessKey
-}
-
-// GetSecretAccessKeyOk returns a tuple with the SecretAccessKey field value
-// and a boolean to check if the value has been set.
-func (o *AwsCredentialsRequest) GetSecretAccessKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SecretAccessKey, true
-}
-
-// SetSecretAccessKey sets field value
-func (o *AwsCredentialsRequest) SetSecretAccessKey(v string) {
-	o.SecretAccessKey = v
-}
-
-func (o AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AwsCredentialsRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["access_key_id"] = o.AccessKeyId
-	toSerialize["secret_access_key"] = o.SecretAccessKey
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *AwsCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"access_key_id",
-		"secret_access_key",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AwsCredentialsRequest) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into AwsRoleCredentialsRequest
+	err = json.Unmarshal(data, &dst.AwsRoleCredentialsRequest)
+	if err == nil {
+		jsonAwsRoleCredentialsRequest, _ := json.Marshal(dst.AwsRoleCredentialsRequest)
+		if string(jsonAwsRoleCredentialsRequest) == "{}" { // empty struct
+			dst.AwsRoleCredentialsRequest = nil
+		} else {
+			match++
 		}
+	} else {
+		dst.AwsRoleCredentialsRequest = nil
 	}
 
-	varAwsCredentialsRequest := _AwsCredentialsRequest{}
-
-	err = json.Unmarshal(data, &varAwsCredentialsRequest)
-
-	if err != nil {
-		return err
+	// try to unmarshal data into AwsStaticCredentialsRequest
+	err = json.Unmarshal(data, &dst.AwsStaticCredentialsRequest)
+	if err == nil {
+		jsonAwsStaticCredentialsRequest, _ := json.Marshal(dst.AwsStaticCredentialsRequest)
+		if string(jsonAwsStaticCredentialsRequest) == "{}" { // empty struct
+			dst.AwsStaticCredentialsRequest = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.AwsStaticCredentialsRequest = nil
 	}
 
-	*o = AwsCredentialsRequest(varAwsCredentialsRequest)
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.AwsRoleCredentialsRequest = nil
+		dst.AwsStaticCredentialsRequest = nil
 
-	additionalProperties := make(map[string]interface{})
+		return fmt.Errorf("data matches more than one schema in oneOf(AwsCredentialsRequest)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(AwsCredentialsRequest)")
+	}
+}
 
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "access_key_id")
-		delete(additionalProperties, "secret_access_key")
-		o.AdditionalProperties = additionalProperties
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
+	if src.AwsRoleCredentialsRequest != nil {
+		return json.Marshal(&src.AwsRoleCredentialsRequest)
 	}
 
-	return err
+	if src.AwsStaticCredentialsRequest != nil {
+		return json.Marshal(&src.AwsStaticCredentialsRequest)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AwsCredentialsRequest) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.AwsRoleCredentialsRequest != nil {
+		return obj.AwsRoleCredentialsRequest
+	}
+
+	if obj.AwsStaticCredentialsRequest != nil {
+		return obj.AwsStaticCredentialsRequest
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAwsCredentialsRequest struct {

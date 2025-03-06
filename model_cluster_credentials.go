@@ -18,15 +18,23 @@ import (
 
 // ClusterCredentials - struct for ClusterCredentials
 type ClusterCredentials struct {
-	AwsClusterCredentials      *AwsClusterCredentials
-	GenericClusterCredentials  *GenericClusterCredentials
-	ScalewayClusterCredentials *ScalewayClusterCredentials
+	AwsRoleClusterCredentials   *AwsRoleClusterCredentials
+	AwsStaticClusterCredentials *AwsStaticClusterCredentials
+	GenericClusterCredentials   *GenericClusterCredentials
+	ScalewayClusterCredentials  *ScalewayClusterCredentials
 }
 
-// AwsClusterCredentialsAsClusterCredentials is a convenience function that returns AwsClusterCredentials wrapped in ClusterCredentials
-func AwsClusterCredentialsAsClusterCredentials(v *AwsClusterCredentials) ClusterCredentials {
+// AwsRoleClusterCredentialsAsClusterCredentials is a convenience function that returns AwsRoleClusterCredentials wrapped in ClusterCredentials
+func AwsRoleClusterCredentialsAsClusterCredentials(v *AwsRoleClusterCredentials) ClusterCredentials {
 	return ClusterCredentials{
-		AwsClusterCredentials: v,
+		AwsRoleClusterCredentials: v,
+	}
+}
+
+// AwsStaticClusterCredentialsAsClusterCredentials is a convenience function that returns AwsStaticClusterCredentials wrapped in ClusterCredentials
+func AwsStaticClusterCredentialsAsClusterCredentials(v *AwsStaticClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		AwsStaticClusterCredentials: v,
 	}
 }
 
@@ -56,13 +64,25 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 
 	// check if the discriminator value is 'AWS'
 	if jsonDict["object_type"] == "AWS" {
-		// try to unmarshal JSON data into AwsClusterCredentials
-		err = json.Unmarshal(data, &dst.AwsClusterCredentials)
+		// try to unmarshal JSON data into AwsStaticClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsStaticClusterCredentials)
 		if err == nil {
-			return nil // data stored in dst.AwsClusterCredentials, return on the first match
+			return nil // data stored in dst.AwsStaticClusterCredentials, return on the first match
 		} else {
-			dst.AwsClusterCredentials = nil
-			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsClusterCredentials: %s", err.Error())
+			dst.AwsStaticClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsStaticClusterCredentials: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AWS_ROLE'
+	if jsonDict["object_type"] == "AWS_ROLE" {
+		// try to unmarshal JSON data into AwsRoleClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsRoleClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.AwsRoleClusterCredentials, return on the first match
+		} else {
+			dst.AwsRoleClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsRoleClusterCredentials: %s", err.Error())
 		}
 	}
 
@@ -90,15 +110,27 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 		}
 	}
 
-	// check if the discriminator value is 'AwsClusterCredentials'
-	if jsonDict["object_type"] == "AwsClusterCredentials" {
-		// try to unmarshal JSON data into AwsClusterCredentials
-		err = json.Unmarshal(data, &dst.AwsClusterCredentials)
+	// check if the discriminator value is 'AwsRoleClusterCredentials'
+	if jsonDict["object_type"] == "AwsRoleClusterCredentials" {
+		// try to unmarshal JSON data into AwsRoleClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsRoleClusterCredentials)
 		if err == nil {
-			return nil // data stored in dst.AwsClusterCredentials, return on the first match
+			return nil // data stored in dst.AwsRoleClusterCredentials, return on the first match
 		} else {
-			dst.AwsClusterCredentials = nil
-			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsClusterCredentials: %s", err.Error())
+			dst.AwsRoleClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsRoleClusterCredentials: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AwsStaticClusterCredentials'
+	if jsonDict["object_type"] == "AwsStaticClusterCredentials" {
+		// try to unmarshal JSON data into AwsStaticClusterCredentials
+		err = json.Unmarshal(data, &dst.AwsStaticClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.AwsStaticClusterCredentials, return on the first match
+		} else {
+			dst.AwsStaticClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as AwsStaticClusterCredentials: %s", err.Error())
 		}
 	}
 
@@ -131,8 +163,12 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ClusterCredentials) MarshalJSON() ([]byte, error) {
-	if src.AwsClusterCredentials != nil {
-		return json.Marshal(&src.AwsClusterCredentials)
+	if src.AwsRoleClusterCredentials != nil {
+		return json.Marshal(&src.AwsRoleClusterCredentials)
+	}
+
+	if src.AwsStaticClusterCredentials != nil {
+		return json.Marshal(&src.AwsStaticClusterCredentials)
 	}
 
 	if src.GenericClusterCredentials != nil {
@@ -151,8 +187,12 @@ func (obj *ClusterCredentials) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
-	if obj.AwsClusterCredentials != nil {
-		return obj.AwsClusterCredentials
+	if obj.AwsRoleClusterCredentials != nil {
+		return obj.AwsRoleClusterCredentials
+	}
+
+	if obj.AwsStaticClusterCredentials != nil {
+		return obj.AwsStaticClusterCredentials
 	}
 
 	if obj.GenericClusterCredentials != nil {

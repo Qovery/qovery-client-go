@@ -37,7 +37,9 @@ type ContainerRegistryRequestConfig struct {
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Username *string `json:"username,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
-	Password             *string `json:"password,omitempty"`
+	Password *string `json:"password,omitempty"`
+	// For ECR, you can either set a static access_key or use a role arn that we are going to assume
+	RoleArn              *string `json:"role_arn,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -348,6 +350,38 @@ func (o *ContainerRegistryRequestConfig) SetPassword(v string) {
 	o.Password = &v
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetRoleArnOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleArn) {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasRoleArn() bool {
+	if o != nil && !IsNil(o.RoleArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *ContainerRegistryRequestConfig) SetRoleArn(v string) {
+	o.RoleArn = &v
+}
+
 func (o ContainerRegistryRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -385,6 +419,9 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Password) {
 		toSerialize["password"] = o.Password
 	}
+	if !IsNil(o.RoleArn) {
+		toSerialize["role_arn"] = o.RoleArn
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -416,6 +453,7 @@ func (o *ContainerRegistryRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "json_credentials")
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "password")
+		delete(additionalProperties, "role_arn")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ScalewayAccessKey** | Pointer to **string** |  | [optional] 
 **ScalewayProjectId** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
+**RoleArn** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetAccessKeyId sets AccessKeyId field to given value.
 `func (o *ContainerRegistryResponseAllOfConfig) HasAccessKeyId() bool`
 
 HasAccessKeyId returns a boolean if a field has been set.
+
+### GetRoleArn
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

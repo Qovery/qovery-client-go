@@ -1,4 +1,4 @@
-# AwsClusterCredentials
+# AwsRoleClusterCredentials
 
 ## Properties
 
@@ -6,104 +6,104 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**AccessKeyId** | **string** |  | 
+**RoleArn** | **string** |  | 
 **ObjectType** | **string** |  | 
 
 ## Methods
 
-### NewAwsClusterCredentials
+### NewAwsRoleClusterCredentials
 
-`func NewAwsClusterCredentials(id string, name string, accessKeyId string, objectType string, ) *AwsClusterCredentials`
+`func NewAwsRoleClusterCredentials(id string, name string, roleArn string, objectType string, ) *AwsRoleClusterCredentials`
 
-NewAwsClusterCredentials instantiates a new AwsClusterCredentials object
+NewAwsRoleClusterCredentials instantiates a new AwsRoleClusterCredentials object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewAwsClusterCredentialsWithDefaults
+### NewAwsRoleClusterCredentialsWithDefaults
 
-`func NewAwsClusterCredentialsWithDefaults() *AwsClusterCredentials`
+`func NewAwsRoleClusterCredentialsWithDefaults() *AwsRoleClusterCredentials`
 
-NewAwsClusterCredentialsWithDefaults instantiates a new AwsClusterCredentials object
+NewAwsRoleClusterCredentialsWithDefaults instantiates a new AwsRoleClusterCredentials object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *AwsClusterCredentials) GetId() string`
+`func (o *AwsRoleClusterCredentials) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *AwsClusterCredentials) GetIdOk() (*string, bool)`
+`func (o *AwsRoleClusterCredentials) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *AwsClusterCredentials) SetId(v string)`
+`func (o *AwsRoleClusterCredentials) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetName
 
-`func (o *AwsClusterCredentials) GetName() string`
+`func (o *AwsRoleClusterCredentials) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *AwsClusterCredentials) GetNameOk() (*string, bool)`
+`func (o *AwsRoleClusterCredentials) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *AwsClusterCredentials) SetName(v string)`
+`func (o *AwsRoleClusterCredentials) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
-### GetAccessKeyId
+### GetRoleArn
 
-`func (o *AwsClusterCredentials) GetAccessKeyId() string`
+`func (o *AwsRoleClusterCredentials) GetRoleArn() string`
 
-GetAccessKeyId returns the AccessKeyId field if non-nil, zero value otherwise.
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
 
-### GetAccessKeyIdOk
+### GetRoleArnOk
 
-`func (o *AwsClusterCredentials) GetAccessKeyIdOk() (*string, bool)`
+`func (o *AwsRoleClusterCredentials) GetRoleArnOk() (*string, bool)`
 
-GetAccessKeyIdOk returns a tuple with the AccessKeyId field if it's non-nil, zero value otherwise
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAccessKeyId
+### SetRoleArn
 
-`func (o *AwsClusterCredentials) SetAccessKeyId(v string)`
+`func (o *AwsRoleClusterCredentials) SetRoleArn(v string)`
 
-SetAccessKeyId sets AccessKeyId field to given value.
+SetRoleArn sets RoleArn field to given value.
 
 
 ### GetObjectType
 
-`func (o *AwsClusterCredentials) GetObjectType() string`
+`func (o *AwsRoleClusterCredentials) GetObjectType() string`
 
 GetObjectType returns the ObjectType field if non-nil, zero value otherwise.
 
 ### GetObjectTypeOk
 
-`func (o *AwsClusterCredentials) GetObjectTypeOk() (*string, bool)`
+`func (o *AwsRoleClusterCredentials) GetObjectTypeOk() (*string, bool)`
 
 GetObjectTypeOk returns a tuple with the ObjectType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetObjectType
 
-`func (o *AwsClusterCredentials) SetObjectType(v string)`
+`func (o *AwsRoleClusterCredentials) SetObjectType(v string)`
 
 SetObjectType sets ObjectType field to given value.
 

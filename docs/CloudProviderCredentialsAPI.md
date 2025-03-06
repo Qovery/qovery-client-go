@@ -47,7 +47,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
+	awsCredentialsRequest := openapiclient.AwsCredentialsRequest{AwsRoleCredentialsRequest: openapiclient.NewAwsRoleCredentialsRequest("Name_example", "RoleArn_example")} // AwsCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -604,7 +604,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-	awsCredentialsRequest := *openapiclient.NewAwsCredentialsRequest("Name_example", "AccessKeyId_example", "SecretAccessKey_example") // AwsCredentialsRequest |  (optional)
+	awsCredentialsRequest := openapiclient.AwsCredentialsRequest{AwsRoleCredentialsRequest: openapiclient.NewAwsRoleCredentialsRequest("Name_example", "RoleArn_example")} // AwsCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
