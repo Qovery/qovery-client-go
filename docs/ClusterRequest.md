@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case-insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **Region** | **string** |  | 
-**CloudProvider** | [**CloudProviderEnum**](CloudProviderEnum.md) |  | 
+**CloudProvider** | [**CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **CloudProviderCredentials** | Pointer to [**ClusterCloudProviderInfoRequest**](ClusterCloudProviderInfoRequest.md) |  | [optional] 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewClusterRequest
 
-`func NewClusterRequest(name string, region string, cloudProvider CloudProviderEnum, ) *ClusterRequest`
+`func NewClusterRequest(name string, region string, cloudProvider CloudVendorEnum, ) *ClusterRequest`
 
 NewClusterRequest instantiates a new ClusterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -104,20 +104,20 @@ SetRegion sets Region field to given value.
 
 ### GetCloudProvider
 
-`func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum`
+`func (o *ClusterRequest) GetCloudProvider() CloudVendorEnum`
 
 GetCloudProvider returns the CloudProvider field if non-nil, zero value otherwise.
 
 ### GetCloudProviderOk
 
-`func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool)`
+`func (o *ClusterRequest) GetCloudProviderOk() (*CloudVendorEnum, bool)`
 
 GetCloudProviderOk returns a tuple with the CloudProvider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCloudProvider
 
-`func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum)`
+`func (o *ClusterRequest) SetCloudProvider(v CloudVendorEnum)`
 
 SetCloudProvider sets CloudProvider field to given value.
 

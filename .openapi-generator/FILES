@@ -155,6 +155,7 @@ docs/CloudProviderAPI.md
 docs/CloudProviderCredentialsAPI.md
 docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
+docs/CloudVendorEnum.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterCloudProviderInfo.md
@@ -773,6 +774,7 @@ model_clone_service_request.go
 model_cloud_provider.go
 model_cloud_provider_enum.go
 model_cloud_provider_response_list.go
+model_cloud_vendor_enum.go
 model_cluster.go
 model_cluster_advanced_settings.go
 model_cluster_cloud_provider_info.go

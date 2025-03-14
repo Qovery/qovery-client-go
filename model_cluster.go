@@ -27,12 +27,12 @@ type Cluster struct {
 	UpdatedAt    *time.Time      `json:"updated_at,omitempty"`
 	Organization ReferenceObject `json:"organization"`
 	// name is case-insensitive
-	Name            string            `json:"name"`
-	Description     *string           `json:"description,omitempty"`
-	Region          string            `json:"region"`
-	CloudProvider   CloudProviderEnum `json:"cloud_provider"`
-	MinRunningNodes *int32            `json:"min_running_nodes,omitempty"`
-	MaxRunningNodes *int32            `json:"max_running_nodes,omitempty"`
+	Name            string          `json:"name"`
+	Description     *string         `json:"description,omitempty"`
+	Region          string          `json:"region"`
+	CloudProvider   CloudVendorEnum `json:"cloud_provider"`
+	MinRunningNodes *int32          `json:"min_running_nodes,omitempty"`
+	MaxRunningNodes *int32          `json:"max_running_nodes,omitempty"`
 	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
@@ -65,7 +65,7 @@ type _Cluster Cluster
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewCluster(id string, createdAt time.Time, organization ReferenceObject, name string, region string, cloudProvider CloudProviderEnum) *Cluster {
+func NewCluster(id string, createdAt time.Time, organization ReferenceObject, name string, region string, cloudProvider CloudVendorEnum) *Cluster {
 	this := Cluster{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -285,9 +285,9 @@ func (o *Cluster) SetRegion(v string) {
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *Cluster) GetCloudProvider() CloudProviderEnum {
+func (o *Cluster) GetCloudProvider() CloudVendorEnum {
 	if o == nil {
-		var ret CloudProviderEnum
+		var ret CloudVendorEnum
 		return ret
 	}
 
@@ -296,7 +296,7 @@ func (o *Cluster) GetCloudProvider() CloudProviderEnum {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetCloudProviderOk() (*CloudProviderEnum, bool) {
+func (o *Cluster) GetCloudProviderOk() (*CloudVendorEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -304,7 +304,7 @@ func (o *Cluster) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *Cluster) SetCloudProvider(v CloudProviderEnum) {
+func (o *Cluster) SetCloudProvider(v CloudVendorEnum) {
 	o.CloudProvider = v
 }
 

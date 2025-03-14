@@ -574,6 +574,7 @@ Class | Method | HTTP request | Description
  - [CloudProvider](docs/CloudProvider.md)
  - [CloudProviderEnum](docs/CloudProviderEnum.md)
  - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
+ - [CloudVendorEnum](docs/CloudVendorEnum.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)

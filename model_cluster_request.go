@@ -25,7 +25,7 @@ type ClusterRequest struct {
 	Name                     string                           `json:"name"`
 	Description              *string                          `json:"description,omitempty"`
 	Region                   string                           `json:"region"`
-	CloudProvider            CloudProviderEnum                `json:"cloud_provider"`
+	CloudProvider            CloudVendorEnum                  `json:"cloud_provider"`
 	CloudProviderCredentials *ClusterCloudProviderInfoRequest `json:"cloud_provider_credentials,omitempty"`
 	MinRunningNodes          *int32                           `json:"min_running_nodes,omitempty"`
 	MaxRunningNodes          *int32                           `json:"max_running_nodes,omitempty"`
@@ -48,7 +48,7 @@ type _ClusterRequest ClusterRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterRequest(name string, region string, cloudProvider CloudProviderEnum) *ClusterRequest {
+func NewClusterRequest(name string, region string, cloudProvider CloudVendorEnum) *ClusterRequest {
 	this := ClusterRequest{}
 	this.Name = name
 	this.Region = region
@@ -161,9 +161,9 @@ func (o *ClusterRequest) SetRegion(v string) {
 }
 
 // GetCloudProvider returns the CloudProvider field value
-func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum {
+func (o *ClusterRequest) GetCloudProvider() CloudVendorEnum {
 	if o == nil {
-		var ret CloudProviderEnum
+		var ret CloudVendorEnum
 		return ret
 	}
 
@@ -172,7 +172,7 @@ func (o *ClusterRequest) GetCloudProvider() CloudProviderEnum {
 
 // GetCloudProviderOk returns a tuple with the CloudProvider field value
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool) {
+func (o *ClusterRequest) GetCloudProviderOk() (*CloudVendorEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -180,7 +180,7 @@ func (o *ClusterRequest) GetCloudProviderOk() (*CloudProviderEnum, bool) {
 }
 
 // SetCloudProvider sets field value
-func (o *ClusterRequest) SetCloudProvider(v CloudProviderEnum) {
+func (o *ClusterRequest) SetCloudProvider(v CloudVendorEnum) {
 	o.CloudProvider = v
 }
 
