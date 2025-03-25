@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the ClusterStatus type satisfies the MappedNullable interface at compile time
@@ -26,6 +27,7 @@ type ClusterStatus struct {
 	NextK8sAvailableVersion NullableString    `json:"next_k8s_available_version,omitempty"`
 	LastExecutionId         *string           `json:"last_execution_id,omitempty"`
 	ClusterLock             *ClusterLock      `json:"cluster_lock,omitempty"`
+	LastDeploymentDate      *time.Time        `json:"last_deployment_date,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -251,6 +253,38 @@ func (o *ClusterStatus) SetClusterLock(v ClusterLock) {
 	o.ClusterLock = &v
 }
 
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
+func (o *ClusterStatus) GetLastDeploymentDate() time.Time {
+	if o == nil || IsNil(o.LastDeploymentDate) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastDeploymentDate
+}
+
+// GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastDeploymentDate) {
+		return nil, false
+	}
+	return o.LastDeploymentDate, true
+}
+
+// HasLastDeploymentDate returns a boolean if a field has been set.
+func (o *ClusterStatus) HasLastDeploymentDate() bool {
+	if o != nil && !IsNil(o.LastDeploymentDate) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
+func (o *ClusterStatus) SetLastDeploymentDate(v time.Time) {
+	o.LastDeploymentDate = &v
+}
+
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -278,6 +312,9 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ClusterLock) {
 		toSerialize["cluster_lock"] = o.ClusterLock
+	}
+	if !IsNil(o.LastDeploymentDate) {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -307,6 +344,7 @@ func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "next_k8s_available_version")
 		delete(additionalProperties, "last_execution_id")
 		delete(additionalProperties, "cluster_lock")
+		delete(additionalProperties, "last_deployment_date")
 		o.AdditionalProperties = additionalProperties
 	}
 

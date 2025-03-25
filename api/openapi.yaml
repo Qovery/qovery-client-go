@@ -17515,6 +17515,7 @@ components:
         status:
           deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -17548,6 +17549,7 @@ components:
           status:
             deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -17574,6 +17576,7 @@ components:
           status:
             deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -19011,6 +19014,7 @@ components:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         next_k8s_available_version: "1.28"
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
+        last_deployment_date: 2022-06-22T14:20:17.733084815Z
         is_deployed: true
         status: BUILDING
       properties:
@@ -19030,6 +19034,10 @@ components:
           type: string
         cluster_lock:
           $ref: '#/components/schemas/ClusterLock'
+        last_deployment_date:
+          example: 2022-06-22T14:20:17.733084815Z
+          format: date-time
+          type: string
       type: object
     ClusterStatusResponseList:
       example:
@@ -19043,6 +19051,7 @@ components:
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
+          last_deployment_date: 2022-06-22T14:20:17.733084815Z
           is_deployed: true
           status: BUILDING
         - cluster_lock:
@@ -19054,6 +19063,7 @@ components:
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
+          last_deployment_date: 2022-06-22T14:20:17.733084815Z
           is_deployed: true
           status: BUILDING
       properties:
@@ -23190,6 +23200,7 @@ components:
         databases:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23210,6 +23221,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23241,6 +23253,7 @@ components:
         jobs:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23261,6 +23274,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23282,6 +23296,7 @@ components:
         containers:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23302,6 +23317,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23323,6 +23339,7 @@ components:
         helms:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23343,6 +23360,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23364,6 +23382,7 @@ components:
         applications:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23384,6 +23403,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -23457,6 +23477,7 @@ components:
         - databases:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23477,6 +23498,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23512,6 +23534,7 @@ components:
           jobs:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23532,6 +23555,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23553,6 +23577,7 @@ components:
           containers:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23573,6 +23598,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23594,6 +23620,7 @@ components:
           helms:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23614,6 +23641,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23635,6 +23663,7 @@ components:
           applications:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23655,6 +23684,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23676,6 +23706,7 @@ components:
         - databases:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23696,6 +23727,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23731,6 +23763,7 @@ components:
           jobs:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23751,6 +23784,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23772,6 +23806,7 @@ components:
           containers:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23792,6 +23827,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23813,6 +23849,7 @@ components:
           helms:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23833,6 +23870,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23854,6 +23892,7 @@ components:
           applications:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -23874,6 +23913,7 @@ components:
             service_deployment_status: NEVER_DEPLOYED
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
+            deployment_requests_count: 0
             last_deployment_date: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
@@ -24891,6 +24931,7 @@ components:
         databases:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -24911,6 +24952,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -24946,6 +24988,7 @@ components:
         jobs:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -24966,6 +25009,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -24987,6 +25031,7 @@ components:
         containers:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -25007,6 +25052,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -25028,6 +25074,7 @@ components:
         helms:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -25048,6 +25095,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -25069,6 +25117,7 @@ components:
         applications:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -25089,6 +25138,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 0
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -28533,6 +28583,7 @@ components:
       example:
         deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         execution_id: execution_id
+        deployment_requests_count: 5
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: BUILDING
@@ -28556,6 +28607,7 @@ components:
         results:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 5
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -28576,6 +28628,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
+          deployment_requests_count: 5
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -29074,6 +29127,7 @@ components:
       example:
         deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         execution_id: execution_id
+        deployment_requests_count: 0
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: BUILDING
@@ -29119,6 +29173,10 @@ components:
           type: string
           x-stoplight:
             id: bepixrb7tyzme
+        deployment_requests_count:
+          type: integer
+          x-stoplight:
+            id: crku532vt3v4p
       required:
       - id
       - service_deployment_status
