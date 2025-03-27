@@ -15300,7 +15300,7 @@ paths:
       - Clusters
       x-stoplight:
         id: kttp2yd6qq7m7
-  /cluster/{clusterId}/events/{nodeName}:
+  /cluster/{clusterId}/events:
     get:
       description: List Cluster Kubernetes Events
       operationId: get-cluster-kubernetes-events
@@ -15312,14 +15312,6 @@ paths:
         required: true
         schema:
           format: uuid
-          type: string
-        style: simple
-      - explode: false
-        in: path
-        name: nodeName
-        required: true
-        schema:
-          nullable: false
           type: string
         style: simple
       - description: "The start date time to fetch events from, following ISO-8601\
@@ -15342,6 +15334,22 @@ paths:
         required: true
         schema:
           nullable: false
+          type: string
+        style: form
+      - description: The name of the node to fetch event from
+        explode: true
+        in: query
+        name: node_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The name of the pod to fetch event from
+        explode: true
+        in: query
+        name: pod_name
+        required: false
+        schema:
           type: string
         style: form
       responses:

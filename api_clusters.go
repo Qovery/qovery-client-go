@@ -1154,9 +1154,10 @@ type ApiGetClusterKubernetesEventsRequest struct {
 	ctx          context.Context
 	ApiService   *ClustersAPIService
 	clusterId    string
-	nodeName     string
 	fromDateTime *string
 	toDateTime   *string
+	nodeName     *string
+	podName      *string
 }
 
 // The start date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)
@@ -1171,6 +1172,18 @@ func (r ApiGetClusterKubernetesEventsRequest) ToDateTime(toDateTime string) ApiG
 	return r
 }
 
+// The name of the node to fetch event from
+func (r ApiGetClusterKubernetesEventsRequest) NodeName(nodeName string) ApiGetClusterKubernetesEventsRequest {
+	r.nodeName = &nodeName
+	return r
+}
+
+// The name of the pod to fetch event from
+func (r ApiGetClusterKubernetesEventsRequest) PodName(podName string) ApiGetClusterKubernetesEventsRequest {
+	r.podName = &podName
+	return r
+}
+
 func (r ApiGetClusterKubernetesEventsRequest) Execute() (*GetClusterKubernetesEvents200Response, *http.Response, error) {
 	return r.ApiService.GetClusterKubernetesEventsExecute(r)
 }
@@ -1182,15 +1195,13 @@ List Cluster Kubernetes Events
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  @param clusterId Cluster ID
- @param nodeName
  @return ApiGetClusterKubernetesEventsRequest
 */
-func (a *ClustersAPIService) GetClusterKubernetesEvents(ctx context.Context, clusterId string, nodeName string) ApiGetClusterKubernetesEventsRequest {
+func (a *ClustersAPIService) GetClusterKubernetesEvents(ctx context.Context, clusterId string) ApiGetClusterKubernetesEventsRequest {
 	return ApiGetClusterKubernetesEventsRequest{
 		ApiService: a,
 		ctx:        ctx,
 		clusterId:  clusterId,
-		nodeName:   nodeName,
 	}
 }
 
@@ -1209,9 +1220,8 @@ func (a *ClustersAPIService) GetClusterKubernetesEventsExecute(r ApiGetClusterKu
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/cluster/{clusterId}/events/{nodeName}"
+	localVarPath := localBasePath + "/cluster/{clusterId}/events"
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"nodeName"+"}", url.PathEscape(parameterValueToString(r.nodeName, "nodeName")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1225,6 +1235,12 @@ func (a *ClustersAPIService) GetClusterKubernetesEventsExecute(r ApiGetClusterKu
 
 	parameterAddToHeaderOrQuery(localVarQueryParams, "from_date_time", r.fromDateTime, "")
 	parameterAddToHeaderOrQuery(localVarQueryParams, "to_date_time", r.toDateTime, "")
+	if r.nodeName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "node_name", r.nodeName, "")
+	}
+	if r.podName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pod_name", r.podName, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

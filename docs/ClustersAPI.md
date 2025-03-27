@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**EditRoutingTable**](ClustersAPI.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
-[**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events/{nodeName} | List Cluster Kubernetes Events
+[**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 [**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetDefaultClusterAdvancedSettings**](ClustersAPI.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
@@ -690,7 +690,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterKubernetesEvents
 
-> GetClusterKubernetesEvents200Response GetClusterKubernetesEvents(ctx, clusterId, nodeName).FromDateTime(fromDateTime).ToDateTime(toDateTime).Execute()
+> GetClusterKubernetesEvents200Response GetClusterKubernetesEvents(ctx, clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).Execute()
 
 List Cluster Kubernetes Events
 
@@ -710,13 +710,14 @@ import (
 
 func main() {
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	nodeName := "nodeName_example" // string | 
 	fromDateTime := "2025-03-03T09:00:00+00:00" // string | The start date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`) 
 	toDateTime := "2025-03-03T03:00:00+00:00" // string | The end date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`) 
+	nodeName := "nodeName_example" // string | The name of the node to fetch event from (optional)
+	podName := "podName_example" // string | The name of the pod to fetch event from (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterKubernetesEvents(context.Background(), clusterId, nodeName).FromDateTime(fromDateTime).ToDateTime(toDateTime).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterKubernetesEvents(context.Background(), clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubernetesEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -733,7 +734,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **clusterId** | **string** | Cluster ID | 
-**nodeName** | **string** |  | 
 
 ### Other Parameters
 
@@ -743,9 +743,10 @@ Other parameters are passed through a pointer to a apiGetClusterKubernetesEvents
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
-
  **fromDateTime** | **string** | The start date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)  | 
  **toDateTime** | **string** | The end date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)  | 
+ **nodeName** | **string** | The name of the node to fetch event from | 
+ **podName** | **string** | The name of the pod to fetch event from | 
 
 ### Return type
 
