@@ -282,7 +282,6 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
-*DefaultAPI* | [**ListServicesByOrganizationId**](docs/DefaultAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 *DeploymentQueueActionsAPI* | [**CancelDeploymentRequest**](docs/DeploymentQueueActionsAPI.md#canceldeploymentrequest) | **Post** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
@@ -476,6 +475,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**ListOrganization**](docs/OrganizationMainCallsAPI.md#listorganization) | **Get** /organization | List user organizations
 *OrganizationMainCallsAPI* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsAPI.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 *OrganizationMainCallsAPI* | [**ListOrganizationGitTokens**](docs/OrganizationMainCallsAPI.md#listorganizationgittokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
+*OrganizationMainCallsAPI* | [**ListServicesByOrganizationId**](docs/OrganizationMainCallsAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 *OrganizationWebhookAPI* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookAPI.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookAPI* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookAPI.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookAPI* | [**EditOrganizationWebhook**](docs/OrganizationWebhookAPI.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook

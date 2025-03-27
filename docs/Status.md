@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **ExecutionId** | Pointer to **string** |  | [optional] 
 **StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
 **DeploymentRequestId** | Pointer to **NullableString** |  | [optional] 
+**DeploymentRequestsCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
 
@@ -248,6 +249,31 @@ HasDeploymentRequestId returns a boolean if a field has been set.
 `func (o *Status) UnsetDeploymentRequestId()`
 
 UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
+### GetDeploymentRequestsCount
+
+`func (o *Status) GetDeploymentRequestsCount() int32`
+
+GetDeploymentRequestsCount returns the DeploymentRequestsCount field if non-nil, zero value otherwise.
+
+### GetDeploymentRequestsCountOk
+
+`func (o *Status) GetDeploymentRequestsCountOk() (*int32, bool)`
+
+GetDeploymentRequestsCountOk returns a tuple with the DeploymentRequestsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentRequestsCount
+
+`func (o *Status) SetDeploymentRequestsCount(v int32)`
+
+SetDeploymentRequestsCount sets DeploymentRequestsCount field to given value.
+
+### HasDeploymentRequestsCount
+
+`func (o *Status) HasDeploymentRequestsCount() bool`
+
+HasDeploymentRequestsCount returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

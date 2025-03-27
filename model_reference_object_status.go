@@ -31,6 +31,7 @@ type ReferenceObjectStatus struct {
 	ExecutionId             *string                     `json:"execution_id,omitempty"`
 	StatusDetails           StatusDetails               `json:"status_details"`
 	DeploymentRequestId     NullableString              `json:"deployment_request_id,omitempty"`
+	DeploymentRequestsCount *int32                      `json:"deployment_requests_count,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -324,6 +325,38 @@ func (o *ReferenceObjectStatus) UnsetDeploymentRequestId() {
 	o.DeploymentRequestId.Unset()
 }
 
+// GetDeploymentRequestsCount returns the DeploymentRequestsCount field value if set, zero value otherwise.
+func (o *ReferenceObjectStatus) GetDeploymentRequestsCount() int32 {
+	if o == nil || IsNil(o.DeploymentRequestsCount) {
+		var ret int32
+		return ret
+	}
+	return *o.DeploymentRequestsCount
+}
+
+// GetDeploymentRequestsCountOk returns a tuple with the DeploymentRequestsCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ReferenceObjectStatus) GetDeploymentRequestsCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.DeploymentRequestsCount) {
+		return nil, false
+	}
+	return o.DeploymentRequestsCount, true
+}
+
+// HasDeploymentRequestsCount returns a boolean if a field has been set.
+func (o *ReferenceObjectStatus) HasDeploymentRequestsCount() bool {
+	if o != nil && !IsNil(o.DeploymentRequestsCount) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentRequestsCount gets a reference to the given int32 and assigns it to the DeploymentRequestsCount field.
+func (o *ReferenceObjectStatus) SetDeploymentRequestsCount(v int32) {
+	o.DeploymentRequestsCount = &v
+}
+
 func (o ReferenceObjectStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -352,6 +385,9 @@ func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize["status_details"] = o.StatusDetails
 	if o.DeploymentRequestId.IsSet() {
 		toSerialize["deployment_request_id"] = o.DeploymentRequestId.Get()
+	}
+	if !IsNil(o.DeploymentRequestsCount) {
+		toSerialize["deployment_requests_count"] = o.DeploymentRequestsCount
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -408,6 +444,7 @@ func (o *ReferenceObjectStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "execution_id")
 		delete(additionalProperties, "status_details")
 		delete(additionalProperties, "deployment_request_id")
+		delete(additionalProperties, "deployment_requests_count")
 		o.AdditionalProperties = additionalProperties
 	}
 
