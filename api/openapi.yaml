@@ -17795,6 +17795,7 @@ components:
       example:
         mode: PRODUCTION
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         apply_deployment_rule: false
       properties:
@@ -17809,6 +17810,9 @@ components:
         apply_deployment_rule:
           default: false
           type: boolean
+        project_id:
+          format: uuid
+          type: string
       required:
       - name
       type: object

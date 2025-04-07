@@ -26,6 +26,7 @@ type CloneEnvironmentRequest struct {
 	ClusterId            *string              `json:"cluster_id,omitempty"`
 	Mode                 *EnvironmentModeEnum `json:"mode,omitempty"`
 	ApplyDeploymentRule  *bool                `json:"apply_deployment_rule,omitempty"`
+	ProjectId            *string              `json:"project_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -173,6 +174,38 @@ func (o *CloneEnvironmentRequest) SetApplyDeploymentRule(v bool) {
 	o.ApplyDeploymentRule = &v
 }
 
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *CloneEnvironmentRequest) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CloneEnvironmentRequest) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *CloneEnvironmentRequest) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *CloneEnvironmentRequest) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
 func (o CloneEnvironmentRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -192,6 +225,9 @@ func (o CloneEnvironmentRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ApplyDeploymentRule) {
 		toSerialize["apply_deployment_rule"] = o.ApplyDeploymentRule
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -240,6 +276,7 @@ func (o *CloneEnvironmentRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "apply_deployment_rule")
+		delete(additionalProperties, "project_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

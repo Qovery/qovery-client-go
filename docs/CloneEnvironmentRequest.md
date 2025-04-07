@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Mode** | Pointer to [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | [optional] 
 **ApplyDeploymentRule** | Pointer to **bool** |  | [optional] [default to false]
+**ProjectId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ SetApplyDeploymentRule sets ApplyDeploymentRule field to given value.
 `func (o *CloneEnvironmentRequest) HasApplyDeploymentRule() bool`
 
 HasApplyDeploymentRule returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *CloneEnvironmentRequest) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *CloneEnvironmentRequest) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *CloneEnvironmentRequest) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *CloneEnvironmentRequest) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
