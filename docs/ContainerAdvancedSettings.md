@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent** | Pointer to **int32** | Define the percentage of a maximum number of pods that can be unavailable during the update process | [optional] 
 **DeploymentUpdateStrategyRollingUpdateMaxSurgePercent** | Pointer to **int32** | Define the percentage of the maximum number of pods that can be created over the desired number of pods | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
+**NetworkIngressForceSslRedirect** | Pointer to **bool** | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] 
 **NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] 
@@ -255,6 +256,31 @@ SetNetworkIngressProxyBodySizeMb sets NetworkIngressProxyBodySizeMb field to giv
 `func (o *ContainerAdvancedSettings) HasNetworkIngressProxyBodySizeMb() bool`
 
 HasNetworkIngressProxyBodySizeMb returns a boolean if a field has been set.
+
+### GetNetworkIngressForceSslRedirect
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressForceSslRedirect() bool`
+
+GetNetworkIngressForceSslRedirect returns the NetworkIngressForceSslRedirect field if non-nil, zero value otherwise.
+
+### GetNetworkIngressForceSslRedirectOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkIngressForceSslRedirectOk() (*bool, bool)`
+
+GetNetworkIngressForceSslRedirectOk returns a tuple with the NetworkIngressForceSslRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressForceSslRedirect
+
+`func (o *ContainerAdvancedSettings) SetNetworkIngressForceSslRedirect(v bool)`
+
+SetNetworkIngressForceSslRedirect sets NetworkIngressForceSslRedirect field to given value.
+
+### HasNetworkIngressForceSslRedirect
+
+`func (o *ContainerAdvancedSettings) HasNetworkIngressForceSslRedirect() bool`
+
+HasNetworkIngressForceSslRedirect returns a boolean if a field has been set.
 
 ### GetNetworkIngressEnableCors
 

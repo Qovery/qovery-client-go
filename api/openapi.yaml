@@ -16026,6 +16026,7 @@ components:
         build.ram_max_in_gib: 2
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 7
+        network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 7
         network.ingress.keepalive_timeout_seconds: 2
@@ -16112,6 +16113,12 @@ components:
           type: integer
         network.ingress.proxy_body_size_mb:
           type: integer
+        network.ingress.force_ssl_redirect:
+          description: "When using SSL offloading outside of cluster, you can enforce\
+            \ a redirect to HTTPS even when there is no TLS certificate available"
+          type: boolean
+          x-stoplight:
+            id: am7oh5tdono3z
         network.ingress.enable_cors:
           type: boolean
         network.ingress.cors_allow_origin:
@@ -19348,6 +19355,7 @@ components:
         network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
+        network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 1
         network.ingress.keepalive_timeout_seconds: 7
@@ -19403,6 +19411,12 @@ components:
           type: integer
         network.ingress.proxy_body_size_mb:
           type: integer
+        network.ingress.force_ssl_redirect:
+          description: "When using SSL offloading outside of cluster, you can enforce\
+            \ a redirect to HTTPS even when there is no TLS certificate available"
+          type: boolean
+          x-stoplight:
+            id: xrdjy3znm8mpg
         network.ingress.enable_cors:
           type: boolean
         network.ingress.cors_allow_origin:
@@ -26479,6 +26493,7 @@ components:
         network.ingress.proxy_send_timeout_seconds: 7
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 0
+        network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         network.ingress.keepalive_timeout_seconds: 5
         network.ingress.keepalive_time_seconds: 1
@@ -26504,6 +26519,12 @@ components:
           type: boolean
         network.ingress.proxy_body_size_mb:
           type: integer
+        network.ingress.force_ssl_redirect:
+          description: "When using SSL offloading outside of cluster, you can enforce\
+            \ a redirect to HTTPS even when there is no TLS certificate available"
+          type: boolean
+          x-stoplight:
+            id: 6tcwjiqqo99ii
         network.ingress.enable_cors:
           type: boolean
         network.ingress.cors_allow_origin:

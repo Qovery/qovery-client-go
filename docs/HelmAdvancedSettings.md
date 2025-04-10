@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DeploymentCustomDomainCheckEnabled** | Pointer to **bool** | disable custom domain check when deploying a helm | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
+**NetworkIngressForceSslRedirect** | Pointer to **bool** | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
 **NetworkIngressCorsAllowOrigin** | Pointer to **string** |  | [optional] 
 **NetworkIngressCorsAllowMethods** | Pointer to **string** |  | [optional] 
@@ -95,6 +96,31 @@ SetNetworkIngressProxyBodySizeMb sets NetworkIngressProxyBodySizeMb field to giv
 `func (o *HelmAdvancedSettings) HasNetworkIngressProxyBodySizeMb() bool`
 
 HasNetworkIngressProxyBodySizeMb returns a boolean if a field has been set.
+
+### GetNetworkIngressForceSslRedirect
+
+`func (o *HelmAdvancedSettings) GetNetworkIngressForceSslRedirect() bool`
+
+GetNetworkIngressForceSslRedirect returns the NetworkIngressForceSslRedirect field if non-nil, zero value otherwise.
+
+### GetNetworkIngressForceSslRedirectOk
+
+`func (o *HelmAdvancedSettings) GetNetworkIngressForceSslRedirectOk() (*bool, bool)`
+
+GetNetworkIngressForceSslRedirectOk returns a tuple with the NetworkIngressForceSslRedirect field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkIngressForceSslRedirect
+
+`func (o *HelmAdvancedSettings) SetNetworkIngressForceSslRedirect(v bool)`
+
+SetNetworkIngressForceSslRedirect sets NetworkIngressForceSslRedirect field to given value.
+
+### HasNetworkIngressForceSslRedirect
+
+`func (o *HelmAdvancedSettings) HasNetworkIngressForceSslRedirect() bool`
+
+HasNetworkIngressForceSslRedirect returns a boolean if a field has been set.
 
 ### GetNetworkIngressEnableCors
 

@@ -42,8 +42,10 @@ type ApplicationAdvancedSettings struct {
 	// define the max cpu resources (in milli)
 	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
 	// define the max ram resources (in gib)
-	BuildRamMaxInGib               *int32  `json:"build.ram_max_in_gib,omitempty"`
-	NetworkIngressProxyBodySizeMb  *int32  `json:"network.ingress.proxy_body_size_mb,omitempty"`
+	BuildRamMaxInGib              *int32 `json:"build.ram_max_in_gib,omitempty"`
+	NetworkIngressProxyBodySizeMb *int32 `json:"network.ingress.proxy_body_size_mb,omitempty"`
+	// When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available
+	NetworkIngressForceSslRedirect *bool   `json:"network.ingress.force_ssl_redirect,omitempty"`
 	NetworkIngressEnableCors       *bool   `json:"network.ingress.enable_cors,omitempty"`
 	NetworkIngressCorsAllowOrigin  *string `json:"network.ingress.cors_allow_origin,omitempty"`
 	NetworkIngressCorsAllowMethods *string `json:"network.ingress.cors_allow_methods,omitempty"`
@@ -522,6 +524,38 @@ func (o *ApplicationAdvancedSettings) HasNetworkIngressProxyBodySizeMb() bool {
 // SetNetworkIngressProxyBodySizeMb gets a reference to the given int32 and assigns it to the NetworkIngressProxyBodySizeMb field.
 func (o *ApplicationAdvancedSettings) SetNetworkIngressProxyBodySizeMb(v int32) {
 	o.NetworkIngressProxyBodySizeMb = &v
+}
+
+// GetNetworkIngressForceSslRedirect returns the NetworkIngressForceSslRedirect field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressForceSslRedirect() bool {
+	if o == nil || IsNil(o.NetworkIngressForceSslRedirect) {
+		var ret bool
+		return ret
+	}
+	return *o.NetworkIngressForceSslRedirect
+}
+
+// GetNetworkIngressForceSslRedirectOk returns a tuple with the NetworkIngressForceSslRedirect field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetNetworkIngressForceSslRedirectOk() (*bool, bool) {
+	if o == nil || IsNil(o.NetworkIngressForceSslRedirect) {
+		return nil, false
+	}
+	return o.NetworkIngressForceSslRedirect, true
+}
+
+// HasNetworkIngressForceSslRedirect returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkIngressForceSslRedirect() bool {
+	if o != nil && !IsNil(o.NetworkIngressForceSslRedirect) {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkIngressForceSslRedirect gets a reference to the given bool and assigns it to the NetworkIngressForceSslRedirect field.
+func (o *ApplicationAdvancedSettings) SetNetworkIngressForceSslRedirect(v bool) {
+	o.NetworkIngressForceSslRedirect = &v
 }
 
 // GetNetworkIngressEnableCors returns the NetworkIngressEnableCors field value if set, zero value otherwise.
@@ -1309,6 +1343,9 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
 	}
+	if !IsNil(o.NetworkIngressForceSslRedirect) {
+		toSerialize["network.ingress.force_ssl_redirect"] = o.NetworkIngressForceSslRedirect
+	}
 	if !IsNil(o.NetworkIngressEnableCors) {
 		toSerialize["network.ingress.enable_cors"] = o.NetworkIngressEnableCors
 	}
@@ -1413,6 +1450,7 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.cpu_max_in_milli")
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
+		delete(additionalProperties, "network.ingress.force_ssl_redirect")
 		delete(additionalProperties, "network.ingress.enable_cors")
 		delete(additionalProperties, "network.ingress.cors_allow_origin")
 		delete(additionalProperties, "network.ingress.cors_allow_methods")
