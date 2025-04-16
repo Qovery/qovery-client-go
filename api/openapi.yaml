@@ -15362,6 +15362,95 @@ paths:
       summary: List Cluster Kubernetes Events
       tags:
       - Clusters
+  /cluster/{clusterId}/metrics:
+    get:
+      description: Fetch cluster metrics
+      operationId: get-cluster-metrics
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: endpoint
+        required: true
+        schema:
+          nullable: false
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: true
+        schema:
+          nullable: false
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: end
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: step
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: time
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: timeout
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: dedup
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: partial_response
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterMetricsResponse'
+          description: Cluster Metrics
+      summary: Fetch cluster metrics
+      tags:
+      - Clusters
   /organization/{organizationId}/lock:
     get:
       operationId: list-cluster-lock
@@ -31527,6 +31616,18 @@ components:
       type: object
       x-stoplight:
         id: tg1rwcmait89l
+    ClusterMetricsResponse:
+      example:
+        metrics: metrics
+      properties:
+        metrics:
+          type: string
+          x-stoplight:
+            id: nyp9g89joz1wv
+      title: ClusterMetricsResponse
+      type: object
+      x-stoplight:
+        id: 7z04ha035fh6s
     deleteMember_request:
       properties:
         user_id:

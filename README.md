@@ -195,6 +195,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**GetClusterAdvancedSettings**](docs/ClustersAPI.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 *ClustersAPI* | [**GetClusterKubeconfig**](docs/ClustersAPI.md#getclusterkubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 *ClustersAPI* | [**GetClusterKubernetesEvents**](docs/ClustersAPI.md#getclusterkubernetesevents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
+*ClustersAPI* | [**GetClusterMetrics**](docs/ClustersAPI.md#getclustermetrics) | **Get** /cluster/{clusterId}/metrics | Fetch cluster metrics
 *ClustersAPI* | [**GetClusterReadinessStatus**](docs/ClustersAPI.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersAPI* | [**GetClusterStatus**](docs/ClustersAPI.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersAPI* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersAPI.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
@@ -613,6 +614,7 @@ Class | Method | HTTP request | Description
  - [ClusterLogsErrorUnderlyingError](docs/ClusterLogsErrorUnderlyingError.md)
  - [ClusterLogsMessage](docs/ClusterLogsMessage.md)
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
+ - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)
  - [ClusterRegion](docs/ClusterRegion.md)
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)

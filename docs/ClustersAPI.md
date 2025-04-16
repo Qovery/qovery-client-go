@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
+[**GetClusterMetrics**](ClustersAPI.md#GetClusterMetrics) | **Get** /cluster/{clusterId}/metrics | Fetch cluster metrics
 [**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetDefaultClusterAdvancedSettings**](ClustersAPI.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
@@ -751,6 +752,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetClusterKubernetesEvents200Response**](GetClusterKubernetesEvents200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterMetrics
+
+> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).Execute()
+
+Fetch cluster metrics
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	endpoint := "endpoint_example" // string | 
+	query := "query_example" // string | 
+	start := "start_example" // string |  (optional)
+	end := "end_example" // string |  (optional)
+	step := "step_example" // string |  (optional)
+	time := "time_example" // string |  (optional)
+	timeout := "timeout_example" // string |  (optional)
+	dedup := "dedup_example" // string |  (optional)
+	partialResponse := "partialResponse_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterMetrics``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterMetrics`: ClusterMetricsResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterMetrics`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterMetricsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **endpoint** | **string** |  | 
+ **query** | **string** |  | 
+ **start** | **string** |  | 
+ **end** | **string** |  | 
+ **step** | **string** |  | 
+ **time** | **string** |  | 
+ **timeout** | **string** |  | 
+ **dedup** | **string** |  | 
+ **partialResponse** | **string** |  | 
+
+### Return type
+
+[**ClusterMetricsResponse**](ClusterMetricsResponse.md)
 
 ### Authorization
 
