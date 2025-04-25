@@ -27,6 +27,8 @@
 
 * `DEPLOYMENT_QUEUED` (value: `"DEPLOYMENT_QUEUED"`)
 
+* `DRY_RUN` (value: `"DRY_RUN"`)
+
 * `QUEUED` (value: `"QUEUED"`)
 
 * `READY` (value: `"READY"`)

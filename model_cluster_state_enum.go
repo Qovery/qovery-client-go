@@ -33,6 +33,7 @@ const (
 	CLUSTERSTATEENUM_DEPLOYING           ClusterStateEnum = "DEPLOYING"
 	CLUSTERSTATEENUM_DEPLOYMENT_ERROR    ClusterStateEnum = "DEPLOYMENT_ERROR"
 	CLUSTERSTATEENUM_DEPLOYMENT_QUEUED   ClusterStateEnum = "DEPLOYMENT_QUEUED"
+	CLUSTERSTATEENUM_DRY_RUN             ClusterStateEnum = "DRY_RUN"
 	CLUSTERSTATEENUM_QUEUED              ClusterStateEnum = "QUEUED"
 	CLUSTERSTATEENUM_READY               ClusterStateEnum = "READY"
 	CLUSTERSTATEENUM_STOPPED             ClusterStateEnum = "STOPPED"
@@ -60,6 +61,7 @@ var AllowedClusterStateEnumEnumValues = []ClusterStateEnum{
 	"DEPLOYING",
 	"DEPLOYMENT_ERROR",
 	"DEPLOYMENT_QUEUED",
+	"DRY_RUN",
 	"QUEUED",
 	"READY",
 	"STOPPED",

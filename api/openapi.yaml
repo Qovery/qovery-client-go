@@ -29234,6 +29234,7 @@ components:
       - DEPLOYING
       - DEPLOYMENT_ERROR
       - DEPLOYMENT_QUEUED
+      - DRY_RUN
       - QUEUED
       - READY
       - STOPPED
