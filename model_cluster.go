@@ -56,6 +56,7 @@ type Cluster struct {
 	SshKeys              []string                     `json:"ssh_keys,omitempty"`
 	Features             []ClusterFeatureResponse     `json:"features,omitempty"`
 	DeploymentStatus     *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
+	MetricsParameters    *MetricsParameters           `json:"metrics_parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -852,6 +853,38 @@ func (o *Cluster) SetDeploymentStatus(v ClusterDeploymentStatusEnum) {
 	o.DeploymentStatus = &v
 }
 
+// GetMetricsParameters returns the MetricsParameters field value if set, zero value otherwise.
+func (o *Cluster) GetMetricsParameters() MetricsParameters {
+	if o == nil || IsNil(o.MetricsParameters) {
+		var ret MetricsParameters
+		return ret
+	}
+	return *o.MetricsParameters
+}
+
+// GetMetricsParametersOk returns a tuple with the MetricsParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetMetricsParametersOk() (*MetricsParameters, bool) {
+	if o == nil || IsNil(o.MetricsParameters) {
+		return nil, false
+	}
+	return o.MetricsParameters, true
+}
+
+// HasMetricsParameters returns a boolean if a field has been set.
+func (o *Cluster) HasMetricsParameters() bool {
+	if o != nil && !IsNil(o.MetricsParameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricsParameters gets a reference to the given MetricsParameters and assigns it to the MetricsParameters field.
+func (o *Cluster) SetMetricsParameters(v MetricsParameters) {
+	o.MetricsParameters = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -924,6 +957,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeploymentStatus) {
 		toSerialize["deployment_status"] = o.DeploymentStatus
+	}
+	if !IsNil(o.MetricsParameters) {
+		toSerialize["metrics_parameters"] = o.MetricsParameters
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -998,6 +1034,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ssh_keys")
 		delete(additionalProperties, "features")
 		delete(additionalProperties, "deployment_status")
+		delete(additionalProperties, "metrics_parameters")
 		o.AdditionalProperties = additionalProperties
 	}
 

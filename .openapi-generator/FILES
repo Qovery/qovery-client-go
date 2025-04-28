@@ -544,6 +544,9 @@ docs/Member.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
 docs/MembersAPI.md
+docs/MetricsConfigurationManagedByQovery.md
+docs/MetricsParameters.md
+docs/MetricsParametersConfiguration.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesAPI.md
@@ -1115,6 +1118,9 @@ model_managed_database_type_response_list.go
 model_member.go
 model_member_response_list.go
 model_member_role_update_request.go
+model_metrics_configuration_managed_by_qovery.go
+model_metrics_parameters.go
+model_metrics_parameters_configuration.go
 model_on_premise_credentials_request.go
 model_organization.go
 model_organization_all_of_organization_plan.go

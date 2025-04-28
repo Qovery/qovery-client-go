@@ -39,6 +39,7 @@ type ClusterRequest struct {
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
 	SshKeys              []string                      `json:"ssh_keys,omitempty"`
 	Features             []ClusterRequestFeaturesInner `json:"features,omitempty"`
+	MetricsParameters    *MetricsParameters            `json:"metrics_parameters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -472,6 +473,38 @@ func (o *ClusterRequest) SetFeatures(v []ClusterRequestFeaturesInner) {
 	o.Features = v
 }
 
+// GetMetricsParameters returns the MetricsParameters field value if set, zero value otherwise.
+func (o *ClusterRequest) GetMetricsParameters() MetricsParameters {
+	if o == nil || IsNil(o.MetricsParameters) {
+		var ret MetricsParameters
+		return ret
+	}
+	return *o.MetricsParameters
+}
+
+// GetMetricsParametersOk returns a tuple with the MetricsParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetMetricsParametersOk() (*MetricsParameters, bool) {
+	if o == nil || IsNil(o.MetricsParameters) {
+		return nil, false
+	}
+	return o.MetricsParameters, true
+}
+
+// HasMetricsParameters returns a boolean if a field has been set.
+func (o *ClusterRequest) HasMetricsParameters() bool {
+	if o != nil && !IsNil(o.MetricsParameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetricsParameters gets a reference to the given MetricsParameters and assigns it to the MetricsParameters field.
+func (o *ClusterRequest) SetMetricsParameters(v MetricsParameters) {
+	o.MetricsParameters = &v
+}
+
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -514,6 +547,9 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Features) {
 		toSerialize["features"] = o.Features
+	}
+	if !IsNil(o.MetricsParameters) {
+		toSerialize["metrics_parameters"] = o.MetricsParameters
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -573,6 +609,7 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "production")
 		delete(additionalProperties, "ssh_keys")
 		delete(additionalProperties, "features")
+		delete(additionalProperties, "metrics_parameters")
 		o.AdditionalProperties = additionalProperties
 	}
 

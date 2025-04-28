@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterRequestFeaturesInner**](ClusterRequestFeaturesInner.md) |  | [optional] 
+**MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
 
 ## Methods
 
@@ -346,6 +347,31 @@ SetFeatures sets Features field to given value.
 `func (o *ClusterRequest) HasFeatures() bool`
 
 HasFeatures returns a boolean if a field has been set.
+
+### GetMetricsParameters
+
+`func (o *ClusterRequest) GetMetricsParameters() MetricsParameters`
+
+GetMetricsParameters returns the MetricsParameters field if non-nil, zero value otherwise.
+
+### GetMetricsParametersOk
+
+`func (o *ClusterRequest) GetMetricsParametersOk() (*MetricsParameters, bool)`
+
+GetMetricsParametersOk returns a tuple with the MetricsParameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricsParameters
+
+`func (o *ClusterRequest) SetMetricsParameters(v MetricsParameters)`
+
+SetMetricsParameters sets MetricsParameters field to given value.
+
+### HasMetricsParameters
+
+`func (o *ClusterRequest) HasMetricsParameters() bool`
+
+HasMetricsParameters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

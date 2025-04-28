@@ -18078,6 +18078,8 @@ components:
             type: array
           deployment_status:
             $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
+          metrics_parameters:
+            $ref: '#/components/schemas/MetricsParameters'
         required:
         - cloud_provider
         - name
@@ -18140,6 +18142,10 @@ components:
         has_access: true
         is_default: true
         version: version
+        metrics_parameters:
+          configuration:
+            kind: MANAGED_BY_QOVERY
+          enabled: true
         ssh_keys:
         - ssh_keys
         - ssh_keys
@@ -18816,6 +18822,10 @@ components:
         min_running_nodes: 0
         disk_size: 50
         cloud_provider: AWS
+        metrics_parameters:
+          configuration:
+            kind: MANAGED_BY_QOVERY
+          enabled: true
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: ClusterRequest_features_inner_value
@@ -18877,6 +18887,8 @@ components:
           items:
             $ref: '#/components/schemas/ClusterRequest_features_inner'
           type: array
+        metrics_parameters:
+          $ref: '#/components/schemas/MetricsParameters'
       required:
       - cloud_provider
       - name
@@ -18940,6 +18952,10 @@ components:
           has_access: true
           is_default: true
           version: version
+          metrics_parameters:
+            configuration:
+              kind: MANAGED_BY_QOVERY
+            enabled: true
           ssh_keys:
           - ssh_keys
           - ssh_keys
@@ -19004,6 +19020,10 @@ components:
           has_access: true
           is_default: true
           version: version
+          metrics_parameters:
+            configuration:
+              kind: MANAGED_BY_QOVERY
+            enabled: true
           ssh_keys:
           - ssh_keys
           - ssh_keys
@@ -31629,6 +31649,36 @@ components:
       type: object
       x-stoplight:
         id: 7z04ha035fh6s
+    MetricsParameters:
+      example:
+        configuration:
+          kind: MANAGED_BY_QOVERY
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: 0y1427jsrtwmg
+        configuration:
+          $ref: '#/components/schemas/MetricsParameters_configuration'
+      title: MetricsParameters
+      type: object
+      x-stoplight:
+        id: 25tfm065x6c64
+    MetricsConfigurationManagedByQovery:
+      example:
+        kind: MANAGED_BY_QOVERY
+      properties:
+        kind:
+          enum:
+          - MANAGED_BY_QOVERY
+          type: string
+          x-stoplight:
+            id: i8z3rzufjt5uk
+      title: MetricsConfigurationManagedByQovery
+      type: object
+      x-stoplight:
+        id: d6oy3aiodk659
     deleteMember_request:
       properties:
         user_id:
@@ -34760,6 +34810,15 @@ components:
       required:
       - triggered_by
       type: object
+    MetricsParameters_configuration:
+      discriminator:
+        mapping:
+          MANAGED_BY_QOVERY: '#/components/schemas/MetricsConfigurationManagedByQovery'
+        propertyName: kind
+      oneOf:
+      - $ref: '#/components/schemas/MetricsConfigurationManagedByQovery'
+      x-stoplight:
+        id: 1e9r2at0nxziv
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

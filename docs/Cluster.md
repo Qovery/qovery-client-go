@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterFeatureResponse**](ClusterFeatureResponse.md) |  | [optional] 
 **DeploymentStatus** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
+**MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
 
 ## Methods
 
@@ -643,6 +644,31 @@ SetDeploymentStatus sets DeploymentStatus field to given value.
 `func (o *Cluster) HasDeploymentStatus() bool`
 
 HasDeploymentStatus returns a boolean if a field has been set.
+
+### GetMetricsParameters
+
+`func (o *Cluster) GetMetricsParameters() MetricsParameters`
+
+GetMetricsParameters returns the MetricsParameters field if non-nil, zero value otherwise.
+
+### GetMetricsParametersOk
+
+`func (o *Cluster) GetMetricsParametersOk() (*MetricsParameters, bool)`
+
+GetMetricsParametersOk returns a tuple with the MetricsParameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetricsParameters
+
+`func (o *Cluster) SetMetricsParameters(v MetricsParameters)`
+
+SetMetricsParameters sets MetricsParameters field to given value.
+
+### HasMetricsParameters
+
+`func (o *Cluster) HasMetricsParameters() bool`
+
+HasMetricsParameters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
