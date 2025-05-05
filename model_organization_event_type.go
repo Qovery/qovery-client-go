@@ -43,6 +43,7 @@ const (
 	ORGANIZATIONEVENTTYPE_STOP_FAILED      OrganizationEventType = "STOP_FAILED"
 	ORGANIZATIONEVENTTYPE_DELETE_FAILED    OrganizationEventType = "DELETE_FAILED"
 	ORGANIZATIONEVENTTYPE_RESTART_FAILED   OrganizationEventType = "RESTART_FAILED"
+	ORGANIZATIONEVENTTYPE_MAINTENANCE      OrganizationEventType = "MAINTENANCE"
 )
 
 // All allowed values of OrganizationEventType enum
@@ -69,6 +70,7 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"STOP_FAILED",
 	"DELETE_FAILED",
 	"RESTART_FAILED",
+	"MAINTENANCE",
 }
 
 func (v *OrganizationEventType) UnmarshalJSON(src []byte) error {
