@@ -15597,6 +15597,41 @@ paths:
       - Environment Main Calls
       x-stoplight:
         id: augmimjz30ix3
+  /{serviceType}/{serviceId}/ingressDeploymentStatus:
+    get:
+      operationId: getIngressDeploymentStatus
+      parameters:
+      - explode: false
+        in: path
+        name: serviceType
+        required: true
+        schema:
+          enum:
+          - container
+          - application
+          - helm
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IngressDeploymentStatusResponse'
+          description: OK
+      summary: Get Ingress Deployment Status By Service
+      tags:
+      - service_status
+      x-stoplight:
+        id: cji3h6qjunupa
 components:
   parameters:
     applicationId:
@@ -31680,6 +31715,22 @@ components:
       type: object
       x-stoplight:
         id: d6oy3aiodk659
+    IngressDeploymentStatusResponse:
+      example:
+        routerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        status: BUILDING
+      properties:
+        routerId:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: e507c0na5om2i
+        status:
+          $ref: '#/components/schemas/StateEnum'
+      title: IngressDeploymentStatusResponse
+      type: object
+      x-stoplight:
+        id: uebtvs1ouszf2
     deleteMember_request:
       properties:
         user_id:

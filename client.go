@@ -207,6 +207,8 @@ type APIClient struct {
 
 	ReferralRewardsAPI *ReferralRewardsAPIService
 
+	ServiceStatusAPI *ServiceStatusAPIService
+
 	UserSignUpAPI *UserSignUpAPIService
 
 	VariableMainCallsAPI *VariableMainCallsAPIService
@@ -307,6 +309,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ProjectSecretAPI = (*ProjectSecretAPIService)(&c.common)
 	c.ProjectsAPI = (*ProjectsAPIService)(&c.common)
 	c.ReferralRewardsAPI = (*ReferralRewardsAPIService)(&c.common)
+	c.ServiceStatusAPI = (*ServiceStatusAPIService)(&c.common)
 	c.UserSignUpAPI = (*UserSignUpAPIService)(&c.common)
 	c.VariableMainCallsAPI = (*VariableMainCallsAPIService)(&c.common)
 

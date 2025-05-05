@@ -508,6 +508,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ListProject**](docs/ProjectsAPI.md#listproject) | **Get** /organization/{organizationId}/project | List projects
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
+*ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *UserSignUpAPI* | [**CreateUserSignUp**](docs/UserSignUpAPI.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
 *UserSignUpAPI* | [**GetUserSignUp**](docs/UserSignUpAPI.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
 *VariableMainCallsAPI* | [**CreateVariable**](docs/VariableMainCallsAPI.md#createvariable) | **Post** /variable | Create a variable
@@ -837,6 +838,7 @@ Class | Method | HTTP request | Description
  - [HelmSourceRepositoryResponseRepository](docs/HelmSourceRepositoryResponseRepository.md)
  - [HelmVersionResponse](docs/HelmVersionResponse.md)
  - [HelmVersionResponseList](docs/HelmVersionResponseList.md)
+ - [IngressDeploymentStatusResponse](docs/IngressDeploymentStatusResponse.md)
  - [InviteMember](docs/InviteMember.md)
  - [InviteMemberRequest](docs/InviteMemberRequest.md)
  - [InviteMemberResponseList](docs/InviteMemberResponseList.md)

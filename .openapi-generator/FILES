@@ -82,6 +82,7 @@ api_project_main_calls.go
 api_project_secret.go
 api_projects.go
 api_referral_rewards.go
+api_service_status.go
 api_user_sign_up.go
 api_variable_main_calls.go
 client.go
@@ -456,6 +457,7 @@ docs/HelmSourceRepositoryResponseRepository.md
 docs/HelmVersionResponse.md
 docs/HelmVersionResponseList.md
 docs/HelmsAPI.md
+docs/IngressDeploymentStatusResponse.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
 docs/InviteMemberResponseList.md
@@ -676,6 +678,7 @@ docs/ServiceLightResponse.md
 docs/ServicePort.md
 docs/ServicePortRequest.md
 docs/ServicePortRequestPortsInner.md
+docs/ServiceStatusAPI.md
 docs/ServiceStepMetric.md
 docs/ServiceStepMetricNameEnum.md
 docs/ServiceStepMetrics.md
@@ -1040,6 +1043,7 @@ model_helm_source_repository_response.go
 model_helm_source_repository_response_repository.go
 model_helm_version_response.go
 model_helm_version_response_list.go
+model_ingress_deployment_status_response.go
 model_invite_member.go
 model_invite_member_request.go
 model_invite_member_response_list.go
@@ -1358,6 +1362,7 @@ test/api_project_main_calls_test.go
 test/api_project_secret_test.go
 test/api_projects_test.go
 test/api_referral_rewards_test.go
+test/api_service_status_test.go
 test/api_user_sign_up_test.go
 test/api_variable_main_calls_test.go
 utils.go
