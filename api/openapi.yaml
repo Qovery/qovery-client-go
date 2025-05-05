@@ -4300,35 +4300,6 @@ paths:
       summary: List AWS available managed database instance types
       tags:
       - Cloud Provider
-  /aws/ec2/instanceType/{region}:
-    get:
-      operationId: listAWSEc2InstanceType
-      parameters:
-      - description: region name
-        explode: false
-        in: path
-        name: region
-        required: true
-        schema:
-          example: us-east-2
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
-          description: list the instance types available for AWS Ec2 by region
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List AWS EC2 available instance types
-      tags:
-      - Cloud Provider
   /aws/eks/instanceType/{region}:
     get:
       operationId: listAWSEKSInstanceType
@@ -26907,7 +26878,6 @@ components:
     KubernetesEnum:
       default: MANAGED
       enum:
-      - K3S
       - MANAGED
       - SELF_MANAGED
       type: string

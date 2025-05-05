@@ -36,20 +36,6 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderAPIService ListAWSEc2InstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var region string
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListAWSEc2InstanceType(context.Background(), region).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CloudProviderAPIService ListAWSFeatures", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
