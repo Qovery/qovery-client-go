@@ -5,22 +5,27 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateAWSCredentials**](CloudProviderCredentialsAPI.md#CreateAWSCredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
+[**CreateAzureCredentials**](CloudProviderCredentialsAPI.md#CreateAzureCredentials) | **Post** /organization/{organizationId}/azure/credentials | Create Azure credentials set
 [**CreateGcpCredentials**](CloudProviderCredentialsAPI.md#CreateGcpCredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
 [**CreateOnPremiseCredentials**](CloudProviderCredentialsAPI.md#CreateOnPremiseCredentials) | **Post** /organization/{organizationId}/onPremise/credentials | Create OnPremise credentials set
 [**CreateScalewayCredentials**](CloudProviderCredentialsAPI.md#CreateScalewayCredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 [**DeleteAWSCredentials**](CloudProviderCredentialsAPI.md#DeleteAWSCredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
+[**DeleteAzureCredentials**](CloudProviderCredentialsAPI.md#DeleteAzureCredentials) | **Delete** /organization/{organizationId}/azure/credentials/{credentialsId} | Delete a set of Azure credentials
 [**DeleteGcpCredentials**](CloudProviderCredentialsAPI.md#DeleteGcpCredentials) | **Delete** /organization/{organizationId}/gcp/credentials/{credentialsId} | Delete a set of GCP credentials
 [**DeleteOnPremiseCredentials**](CloudProviderCredentialsAPI.md#DeleteOnPremiseCredentials) | **Delete** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Delete a set of OnPremise credentials
 [**DeleteScalewayCredentials**](CloudProviderCredentialsAPI.md#DeleteScalewayCredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
 [**EditAWSCredentials**](CloudProviderCredentialsAPI.md#EditAWSCredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
+[**EditAzureCredentials**](CloudProviderCredentialsAPI.md#EditAzureCredentials) | **Put** /organization/{organizationId}/azure/credentials/{credentialsId} | Edit a set of Azure credentials
 [**EditGcpCredentials**](CloudProviderCredentialsAPI.md#EditGcpCredentials) | **Put** /organization/{organizationId}/gcp/credentials/{credentialsId} | Edit a set of GCP credentials
 [**EditOnPremiseCredentials**](CloudProviderCredentialsAPI.md#EditOnPremiseCredentials) | **Put** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Edit a set of OnPremise credentials
 [**EditScalewayCredentials**](CloudProviderCredentialsAPI.md#EditScalewayCredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 [**GetAWSCredentials**](CloudProviderCredentialsAPI.md#GetAWSCredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
+[**GetAzureCredentials**](CloudProviderCredentialsAPI.md#GetAzureCredentials) | **Get** /organization/{organizationId}/azure/credentials/{credentialsId} | Get a set of Azure credentials
 [**GetGcpCredentials**](CloudProviderCredentialsAPI.md#GetGcpCredentials) | **Get** /organization/{organizationId}/gcp/credentials/{credentialsId} | Get a set of GCP credentials
 [**GetOnPremiseCredentials**](CloudProviderCredentialsAPI.md#GetOnPremiseCredentials) | **Get** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Get a set of OnPremise credentials
 [**GetScalewayCredentials**](CloudProviderCredentialsAPI.md#GetScalewayCredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
 [**ListAWSCredentials**](CloudProviderCredentialsAPI.md#ListAWSCredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
+[**ListAzureCredentials**](CloudProviderCredentialsAPI.md#ListAzureCredentials) | **Get** /organization/{organizationId}/azure/credentials | List Azure credentials
 [**ListGcpCredentials**](CloudProviderCredentialsAPI.md#ListGcpCredentials) | **Get** /organization/{organizationId}/gcp/credentials | List GCP credentials
 [**ListOnPremiseCredentials**](CloudProviderCredentialsAPI.md#ListOnPremiseCredentials) | **Get** /organization/{organizationId}/onPremise/credentials | List OnPremise credentials
 [**ListScalewayCredentials**](CloudProviderCredentialsAPI.md#ListScalewayCredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
@@ -78,6 +83,76 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **awsCredentialsRequest** | [**AwsCredentialsRequest**](AwsCredentialsRequest.md) |  | 
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateAzureCredentials
+
+> ClusterCredentials CreateAzureCredentials(ctx, organizationId).AzureCredentialsRequest(azureCredentialsRequest).Execute()
+
+Create Azure credentials set
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example", "AzureResourceGroupName_example") // AzureCredentialsRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.CreateAzureCredentials(context.Background(), organizationId).AzureCredentialsRequest(azureCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.CreateAzureCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateAzureCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.CreateAzureCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateAzureCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **azureCredentialsRequest** | [**AzureCredentialsRequest**](AzureCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -376,6 +451,75 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## DeleteAzureCredentials
+
+> DeleteAzureCredentials(ctx, organizationId, credentialsId).Execute()
+
+Delete a set of Azure credentials
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.CloudProviderCredentialsAPI.DeleteAzureCredentials(context.Background(), organizationId, credentialsId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.DeleteAzureCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteAzureCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeleteGcpCredentials
 
 > DeleteGcpCredentials(ctx, credentialsId, organizationId).Execute()
@@ -637,6 +781,79 @@ Name | Type | Description  | Notes
 
 
  **awsCredentialsRequest** | [**AwsCredentialsRequest**](AwsCredentialsRequest.md) |  | 
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EditAzureCredentials
+
+> ClusterCredentials EditAzureCredentials(ctx, organizationId, credentialsId).AzureCredentialsRequest(azureCredentialsRequest).Execute()
+
+Edit a set of Azure credentials
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example", "AzureResourceGroupName_example") // AzureCredentialsRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.EditAzureCredentials(context.Background(), organizationId, credentialsId).AzureCredentialsRequest(azureCredentialsRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.EditAzureCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditAzureCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.EditAzureCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditAzureCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **azureCredentialsRequest** | [**AzureCredentialsRequest**](AzureCredentialsRequest.md) |  | 
 
 ### Return type
 
@@ -946,6 +1163,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetAzureCredentials
+
+> ClusterCredentials GetAzureCredentials(ctx, organizationId, credentialsId).Execute()
+
+Get a set of Azure credentials
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.GetAzureCredentials(context.Background(), organizationId, credentialsId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.GetAzureCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetAzureCredentials`: ClusterCredentials
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.GetAzureCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**credentialsId** | **string** | Credentials ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetAzureCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterCredentials**](ClusterCredentials.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## GetGcpCredentials
 
 > ClusterCredentials GetGcpCredentials(ctx, organizationId, credentialsId).Execute()
@@ -1203,6 +1491,74 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiListAWSCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterCredentialsResponseList**](ClusterCredentialsResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAzureCredentials
+
+> ClusterCredentialsResponseList ListAzureCredentials(ctx, organizationId).Execute()
+
+List Azure credentials
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderCredentialsAPI.ListAzureCredentials(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderCredentialsAPI.ListAzureCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAzureCredentials`: ClusterCredentialsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderCredentialsAPI.ListAzureCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAzureCredentialsRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

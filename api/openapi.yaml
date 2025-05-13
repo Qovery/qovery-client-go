@@ -15603,6 +15603,229 @@ paths:
       - service_status
       x-stoplight:
         id: cji3h6qjunupa
+  /organization/{organizationId}/azure/credentials:
+    get:
+      operationId: listAzureCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentialsResponseList'
+          description: list credentials
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Azure credentials
+      tags:
+      - Cloud Provider Credentials
+    post:
+      operationId: createAzureCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureCredentialsRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Credentials created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create Azure credentials set
+      tags:
+      - Cloud Provider Credentials
+  /organization/{organizationId}/azure/credentials/{credentialsId}:
+    delete:
+      operationId: deleteAzureCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a set of Azure credentials
+      tags:
+      - Cloud Provider Credentials
+    get:
+      operationId: getAzureCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Get a set of Azure credentials
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a set of Azure credentials
+      tags:
+      - Cloud Provider Credentials
+    put:
+      operationId: editAzureCredentials
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Credentials ID
+        explode: false
+        in: path
+        name: credentialsId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AzureCredentialsRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterCredentials'
+          description: Edit a set of Azure credentials
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a set of Azure credentials
+      tags:
+      - Cloud Provider Credentials
+  /azure/region:
+    get:
+      operationId: listAzureRegions
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterRegionResponseList'
+          description: list regions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Azure regions
+      tags:
+      - Cloud Provider
+      x-stoplight:
+        id: pccuw0fgrkcyf
+  /azure/clusterFeature:
+    get:
+      operationId: listAzureFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: list features available for Azure cloud provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Azure features available
+      tags:
+      - Cloud Provider
+      x-stoplight:
+        id: gjin553b2f7mz
 components:
   parameters:
     applicationId:
@@ -17964,6 +18187,7 @@ components:
       - SCW
       - GCP
       - ON_PREMISE
+      - AZURE
       type: string
     CloudProviderResponseList:
       example:
@@ -18011,6 +18235,7 @@ components:
       - ORACLE
       - IBM
       - ON_PREMISE
+      - AZURE
       type: string
     Cluster:
       allOf:
@@ -18305,12 +18530,14 @@ components:
           AWS_ROLE: '#/components/schemas/AwsRoleClusterCredentials'
           SCW: '#/components/schemas/ScalewayClusterCredentials'
           OTHER: '#/components/schemas/GenericClusterCredentials'
+          AZURE: '#/components/schemas/AzureStaticClusterCredentials'
         propertyName: object_type
       oneOf:
       - $ref: '#/components/schemas/AwsStaticClusterCredentials'
       - $ref: '#/components/schemas/ScalewayClusterCredentials'
       - $ref: '#/components/schemas/GenericClusterCredentials'
       - $ref: '#/components/schemas/AwsRoleClusterCredentials'
+      - $ref: '#/components/schemas/AzureStaticClusterCredentials'
     AwsStaticClusterCredentials:
       example:
         access_key_id: access_key_id
@@ -19668,6 +19895,7 @@ components:
       - DOCR
       - GENERIC_CR
       - GCP_ARTIFACT_REGISTRY
+      - AZURE_CR
       type: string
     HelmRepositoryKindEnum:
       description: The type of your helm repository
@@ -31701,6 +31929,95 @@ components:
       type: object
       x-stoplight:
         id: uebtvs1ouszf2
+    AzureStaticClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 7qy00mrnhmclv
+        name:
+          type: string
+          x-stoplight:
+            id: f5c1wc467emz3
+        azure_subscription_id:
+          type: string
+          x-stoplight:
+            id: x0s5zbj6l1yx0
+        azure_tenant_id:
+          type: string
+          x-stoplight:
+            id: ygjwz6uqfexsc
+        azure_client_id:
+          type: string
+          x-stoplight:
+            id: vqjd5qddm3p8g
+        azure_resource_group_name:
+          type: string
+          x-stoplight:
+            id: lnc8rl0idrvve
+        object_type:
+          enum:
+          - AZURE
+          type: string
+          x-stoplight:
+            id: 8oodrxjznyahm
+      required:
+      - azure_client_id
+      - azure_resource_group_name
+      - azure_subscription_id
+      - azure_tenant_id
+      - id
+      - name
+      - object_type
+      title: AzureStaticClusterCredentials
+      type: object
+      x-stoplight:
+        id: wo7v4e4c0jlfu
+    AzureCredentialsRequest:
+      example:
+        azure_subscription_id: azure_subscription_id
+        name: name
+        azure_resource_group_name: azure_resource_group_name
+        azure_client_secret: azure_client_secret
+        azure_tenant_id: azure_tenant_id
+        azure_client_id: azure_client_id
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: ywkpnhxrygsf4
+        azure_subscription_id:
+          type: string
+          x-stoplight:
+            id: 4py3o45wxewvh
+        azure_tenant_id:
+          type: string
+          x-stoplight:
+            id: u776tz269mjb0
+        azure_client_id:
+          type: string
+          x-stoplight:
+            id: 6d8yrq1enhyc8
+        azure_client_secret:
+          type: string
+          x-stoplight:
+            id: mj5vuoojyw05b
+        azure_resource_group_name:
+          type: string
+          x-stoplight:
+            id: uudq68b36g6nk
+      required:
+      - azure_client_id
+      - azure_client_secret
+      - azure_resource_group_name
+      - azure_subscription_id
+      - azure_tenant_id
+      - name
+      title: AzureCredentialsRequest
+      type: object
+      x-stoplight:
+        id: gjzlt9ldnn7ip
     deleteMember_request:
       properties:
         user_id:

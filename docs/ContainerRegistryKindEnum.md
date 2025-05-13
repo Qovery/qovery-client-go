@@ -21,6 +21,8 @@
 
 * `GCP_ARTIFACT_REGISTRY` (value: `"GCP_ARTIFACT_REGISTRY"`)
 
+* `AZURE_CR` (value: `"AZURE_CR"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

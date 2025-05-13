@@ -30,6 +30,7 @@ const (
 	CONTAINERREGISTRYKINDENUM_DOCR                  ContainerRegistryKindEnum = "DOCR"
 	CONTAINERREGISTRYKINDENUM_GENERIC_CR            ContainerRegistryKindEnum = "GENERIC_CR"
 	CONTAINERREGISTRYKINDENUM_GCP_ARTIFACT_REGISTRY ContainerRegistryKindEnum = "GCP_ARTIFACT_REGISTRY"
+	CONTAINERREGISTRYKINDENUM_AZURE_CR              ContainerRegistryKindEnum = "AZURE_CR"
 )
 
 // All allowed values of ContainerRegistryKindEnum enum
@@ -43,6 +44,7 @@ var AllowedContainerRegistryKindEnumEnumValues = []ContainerRegistryKindEnum{
 	"DOCR",
 	"GENERIC_CR",
 	"GCP_ARTIFACT_REGISTRY",
+	"AZURE_CR",
 }
 
 func (v *ContainerRegistryKindEnum) UnmarshalJSON(src []byte) error {

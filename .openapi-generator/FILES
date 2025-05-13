@@ -125,6 +125,8 @@ docs/AwsRoleClusterCredentials.md
 docs/AwsRoleCredentialsRequest.md
 docs/AwsStaticClusterCredentials.md
 docs/AwsStaticCredentialsRequest.md
+docs/AzureCredentialsRequest.md
+docs/AzureStaticClusterCredentials.md
 docs/Backup.md
 docs/BackupPaginatedResponseList.md
 docs/BackupRequest.md
@@ -754,6 +756,8 @@ model_aws_role_cluster_credentials.go
 model_aws_role_credentials_request.go
 model_aws_static_cluster_credentials.go
 model_aws_static_credentials_request.go
+model_azure_credentials_request.go
+model_azure_static_cluster_credentials.go
 model_backup.go
 model_backup_paginated_response_list.go
 model_backup_request.go

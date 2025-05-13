@@ -32,6 +32,7 @@ const (
 	CLOUDVENDORENUM_ORACLE     CloudVendorEnum = "ORACLE"
 	CLOUDVENDORENUM_IBM        CloudVendorEnum = "IBM"
 	CLOUDVENDORENUM_ON_PREMISE CloudVendorEnum = "ON_PREMISE"
+	CLOUDVENDORENUM_AZURE2     CloudVendorEnum = "AZURE"
 )
 
 // All allowed values of CloudVendorEnum enum
@@ -47,6 +48,7 @@ var AllowedCloudVendorEnumEnumValues = []CloudVendorEnum{
 	"ORACLE",
 	"IBM",
 	"ON_PREMISE",
+	"AZURE",
 }
 
 func (v *CloudVendorEnum) UnmarshalJSON(src []byte) error {

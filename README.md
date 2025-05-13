@@ -154,6 +154,8 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListAWSManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listawsmanageddatabaseinstancetype) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
 *CloudProviderAPI* | [**ListAWSManagedDatabaseType**](docs/CloudProviderAPI.md#listawsmanageddatabasetype) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 *CloudProviderAPI* | [**ListAWSRegions**](docs/CloudProviderAPI.md#listawsregions) | **Get** /aws/region | List AWS regions
+*CloudProviderAPI* | [**ListAzureFeatures**](docs/CloudProviderAPI.md#listazurefeatures) | **Get** /azure/clusterFeature | List Azure features available
+*CloudProviderAPI* | [**ListAzureRegions**](docs/CloudProviderAPI.md#listazureregions) | **Get** /azure/region | List Azure regions
 *CloudProviderAPI* | [**ListCloudProvider**](docs/CloudProviderAPI.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available
 *CloudProviderAPI* | [**ListGcpFeatures**](docs/CloudProviderAPI.md#listgcpfeatures) | **Get** /gcp/clusterFeature | List GCP features available
 *CloudProviderAPI* | [**ListGcpGkeInstanceType**](docs/CloudProviderAPI.md#listgcpgkeinstancetype) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
@@ -165,22 +167,27 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListScalewayKapsuleInstanceType**](docs/CloudProviderAPI.md#listscalewaykapsuleinstancetype) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 *CloudProviderAPI* | [**ListScalewayRegions**](docs/CloudProviderAPI.md#listscalewayregions) | **Get** /scaleway/region | List Scaleway regions
 *CloudProviderCredentialsAPI* | [**CreateAWSCredentials**](docs/CloudProviderCredentialsAPI.md#createawscredentials) | **Post** /organization/{organizationId}/aws/credentials | Create AWS credentials set
+*CloudProviderCredentialsAPI* | [**CreateAzureCredentials**](docs/CloudProviderCredentialsAPI.md#createazurecredentials) | **Post** /organization/{organizationId}/azure/credentials | Create Azure credentials set
 *CloudProviderCredentialsAPI* | [**CreateGcpCredentials**](docs/CloudProviderCredentialsAPI.md#creategcpcredentials) | **Post** /organization/{organizationId}/gcp/credentials | Create GCP credentials set
 *CloudProviderCredentialsAPI* | [**CreateOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#createonpremisecredentials) | **Post** /organization/{organizationId}/onPremise/credentials | Create OnPremise credentials set
 *CloudProviderCredentialsAPI* | [**CreateScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#createscalewaycredentials) | **Post** /organization/{organizationId}/scaleway/credentials | Create Scaleway credentials set
 *CloudProviderCredentialsAPI* | [**DeleteAWSCredentials**](docs/CloudProviderCredentialsAPI.md#deleteawscredentials) | **Delete** /organization/{organizationId}/aws/credentials/{credentialsId} | Delete a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**DeleteAzureCredentials**](docs/CloudProviderCredentialsAPI.md#deleteazurecredentials) | **Delete** /organization/{organizationId}/azure/credentials/{credentialsId} | Delete a set of Azure credentials
 *CloudProviderCredentialsAPI* | [**DeleteGcpCredentials**](docs/CloudProviderCredentialsAPI.md#deletegcpcredentials) | **Delete** /organization/{organizationId}/gcp/credentials/{credentialsId} | Delete a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**DeleteOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#deleteonpremisecredentials) | **Delete** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Delete a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**DeleteScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#deletescalewaycredentials) | **Delete** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Delete a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**EditAWSCredentials**](docs/CloudProviderCredentialsAPI.md#editawscredentials) | **Put** /organization/{organizationId}/aws/credentials/{credentialsId} | Edit a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**EditAzureCredentials**](docs/CloudProviderCredentialsAPI.md#editazurecredentials) | **Put** /organization/{organizationId}/azure/credentials/{credentialsId} | Edit a set of Azure credentials
 *CloudProviderCredentialsAPI* | [**EditGcpCredentials**](docs/CloudProviderCredentialsAPI.md#editgcpcredentials) | **Put** /organization/{organizationId}/gcp/credentials/{credentialsId} | Edit a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**EditOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#editonpremisecredentials) | **Put** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Edit a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**EditScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#editscalewaycredentials) | **Put** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Edit a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**GetAWSCredentials**](docs/CloudProviderCredentialsAPI.md#getawscredentials) | **Get** /organization/{organizationId}/aws/credentials/{credentialsId} | Get a set of AWS credentials
+*CloudProviderCredentialsAPI* | [**GetAzureCredentials**](docs/CloudProviderCredentialsAPI.md#getazurecredentials) | **Get** /organization/{organizationId}/azure/credentials/{credentialsId} | Get a set of Azure credentials
 *CloudProviderCredentialsAPI* | [**GetGcpCredentials**](docs/CloudProviderCredentialsAPI.md#getgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials/{credentialsId} | Get a set of GCP credentials
 *CloudProviderCredentialsAPI* | [**GetOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#getonpremisecredentials) | **Get** /organization/{organizationId}/onPremise/credentials/{credentialsId} | Get a set of OnPremise credentials
 *CloudProviderCredentialsAPI* | [**GetScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#getscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials/{credentialsId} | Get a set of Scaleway credentials
 *CloudProviderCredentialsAPI* | [**ListAWSCredentials**](docs/CloudProviderCredentialsAPI.md#listawscredentials) | **Get** /organization/{organizationId}/aws/credentials | List AWS credentials
+*CloudProviderCredentialsAPI* | [**ListAzureCredentials**](docs/CloudProviderCredentialsAPI.md#listazurecredentials) | **Get** /organization/{organizationId}/azure/credentials | List Azure credentials
 *CloudProviderCredentialsAPI* | [**ListGcpCredentials**](docs/CloudProviderCredentialsAPI.md#listgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials | List GCP credentials
 *CloudProviderCredentialsAPI* | [**ListOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#listonpremisecredentials) | **Get** /organization/{organizationId}/onPremise/credentials | List OnPremise credentials
 *CloudProviderCredentialsAPI* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
@@ -548,6 +555,8 @@ Class | Method | HTTP request | Description
  - [AwsRoleCredentialsRequest](docs/AwsRoleCredentialsRequest.md)
  - [AwsStaticClusterCredentials](docs/AwsStaticClusterCredentials.md)
  - [AwsStaticCredentialsRequest](docs/AwsStaticCredentialsRequest.md)
+ - [AzureCredentialsRequest](docs/AzureCredentialsRequest.md)
+ - [AzureStaticClusterCredentials](docs/AzureStaticClusterCredentials.md)
  - [Backup](docs/Backup.md)
  - [BackupPaginatedResponseList](docs/BackupPaginatedResponseList.md)
  - [BackupRequest](docs/BackupRequest.md)
