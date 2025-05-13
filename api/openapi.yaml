@@ -18235,7 +18235,6 @@ components:
       - ORACLE
       - IBM
       - ON_PREMISE
-      - AZURE
       type: string
     Cluster:
       allOf:
