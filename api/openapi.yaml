@@ -31512,6 +31512,8 @@ components:
       - InstanceFamily
       - InstanceSize
       - Arch
+      - SkuFamily
+      - SkuVersion
       title: KarpenterNodePoolRequirementKey
       type: string
       x-stoplight:

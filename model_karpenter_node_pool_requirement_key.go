@@ -24,6 +24,8 @@ const (
 	KARPENTERNODEPOOLREQUIREMENTKEY_INSTANCE_FAMILY KarpenterNodePoolRequirementKey = "InstanceFamily"
 	KARPENTERNODEPOOLREQUIREMENTKEY_INSTANCE_SIZE   KarpenterNodePoolRequirementKey = "InstanceSize"
 	KARPENTERNODEPOOLREQUIREMENTKEY_ARCH            KarpenterNodePoolRequirementKey = "Arch"
+	KARPENTERNODEPOOLREQUIREMENTKEY_SKU_FAMILY      KarpenterNodePoolRequirementKey = "SkuFamily"
+	KARPENTERNODEPOOLREQUIREMENTKEY_SKU_VERSION     KarpenterNodePoolRequirementKey = "SkuVersion"
 )
 
 // All allowed values of KarpenterNodePoolRequirementKey enum
@@ -31,6 +33,8 @@ var AllowedKarpenterNodePoolRequirementKeyEnumValues = []KarpenterNodePoolRequir
 	"InstanceFamily",
 	"InstanceSize",
 	"Arch",
+	"SkuFamily",
+	"SkuVersion",
 }
 
 func (v *KarpenterNodePoolRequirementKey) UnmarshalJSON(src []byte) error {
