@@ -21,17 +21,17 @@ var _ MappedNullable = &TerraformRequest{}
 
 // TerraformRequest struct for TerraformRequest
 type TerraformRequest struct {
-	Name                     string                       `json:"name"`
-	Description              string                       `json:"description"`
-	AutoApprove              bool                         `json:"auto_approve"`
-	AutoDeploy               bool                         `json:"auto_deploy"`
-	TerraformFilesSource     string                       `json:"terraform_files_source"`
-	TerraformVariablesSource string                       `json:"terraform_variables_source"`
-	Provider                 string                       `json:"provider"`
-	ProviderVersion          string                       `json:"provider_version"`
-	TimeoutSec               *string                      `json:"timeout_sec,omitempty"`
-	IconUri                  *string                      `json:"icon_uri,omitempty"`
-	JobResources             TerraformRequestJobResources `json:"job_resources"`
+	Name                     string                          `json:"name"`
+	Description              string                          `json:"description"`
+	AutoApprove              bool                            `json:"auto_approve"`
+	AutoDeploy               bool                            `json:"auto_deploy"`
+	TerraformFilesSource     string                          `json:"terraform_files_source"`
+	TerraformVariablesSource TerraformVariablesSourceRequest `json:"terraform_variables_source"`
+	Provider                 string                          `json:"provider"`
+	ProviderVersion          TerraformProviderVersion        `json:"provider_version"`
+	TimeoutSec               *string                         `json:"timeout_sec,omitempty"`
+	IconUri                  *string                         `json:"icon_uri,omitempty"`
+	JobResources             TerraformRequestJobResources    `json:"job_resources"`
 	AdditionalProperties     map[string]interface{}
 }
 
@@ -41,7 +41,7 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource string, provider string, providerVersion string, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource TerraformVariablesSourceRequest, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
@@ -184,9 +184,9 @@ func (o *TerraformRequest) SetTerraformFilesSource(v string) {
 }
 
 // GetTerraformVariablesSource returns the TerraformVariablesSource field value
-func (o *TerraformRequest) GetTerraformVariablesSource() string {
+func (o *TerraformRequest) GetTerraformVariablesSource() TerraformVariablesSourceRequest {
 	if o == nil {
-		var ret string
+		var ret TerraformVariablesSourceRequest
 		return ret
 	}
 
@@ -195,7 +195,7 @@ func (o *TerraformRequest) GetTerraformVariablesSource() string {
 
 // GetTerraformVariablesSourceOk returns a tuple with the TerraformVariablesSource field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*string, bool) {
+func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*TerraformVariablesSourceRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -203,7 +203,7 @@ func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*string, bool) {
 }
 
 // SetTerraformVariablesSource sets field value
-func (o *TerraformRequest) SetTerraformVariablesSource(v string) {
+func (o *TerraformRequest) SetTerraformVariablesSource(v TerraformVariablesSourceRequest) {
 	o.TerraformVariablesSource = v
 }
 
@@ -232,9 +232,9 @@ func (o *TerraformRequest) SetProvider(v string) {
 }
 
 // GetProviderVersion returns the ProviderVersion field value
-func (o *TerraformRequest) GetProviderVersion() string {
+func (o *TerraformRequest) GetProviderVersion() TerraformProviderVersion {
 	if o == nil {
-		var ret string
+		var ret TerraformProviderVersion
 		return ret
 	}
 
@@ -243,7 +243,7 @@ func (o *TerraformRequest) GetProviderVersion() string {
 
 // GetProviderVersionOk returns a tuple with the ProviderVersion field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetProviderVersionOk() (*string, bool) {
+func (o *TerraformRequest) GetProviderVersionOk() (*TerraformProviderVersion, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -251,7 +251,7 @@ func (o *TerraformRequest) GetProviderVersionOk() (*string, bool) {
 }
 
 // SetProviderVersion sets field value
-func (o *TerraformRequest) SetProviderVersion(v string) {
+func (o *TerraformRequest) SetProviderVersion(v TerraformProviderVersion) {
 	o.ProviderVersion = v
 }
 

@@ -32083,17 +32083,15 @@ components:
           x-stoplight:
             id: 5sbx6bluino9w
         terraform_variables_source:
-          type: string
-          x-stoplight:
-            id: nq4f0h1ehl6n1
+          $ref: '#/components/schemas/TerraformVariablesSourceRequest'
         provider:
+          enum:
+          - Terraform
           type: string
           x-stoplight:
             id: w8o05dpbvcxp1
         provider_version:
-          type: string
-          x-stoplight:
-            id: y0qif36j1ok5j
+          $ref: '#/components/schemas/TerraformProviderVersion'
         timeout_sec:
           type: string
           x-stoplight:
@@ -32151,6 +32149,62 @@ components:
       type: object
       x-stoplight:
         id: ucc7l63gajzu8
+    TerraformProviderVersion:
+      properties:
+        read_from_terraform_block:
+          type: boolean
+          x-stoplight:
+            id: p2dnmuifo0fki
+        explicit_version:
+          type: string
+          x-stoplight:
+            id: 611hxcvuy68lv
+      required:
+      - read_from_terraform_block
+      title: TerraformProviderVersion
+      type: object
+      x-stoplight:
+        id: 1a1hkhvei2wjq
+    TerraformVariablesSourceRequest:
+      properties:
+        tf_var_file_paths:
+          items:
+            type: string
+            x-stoplight:
+              id: 7ns22ue58d2zb
+          type: array
+          x-stoplight:
+            id: kk82s9qjluugt
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
+          x-stoplight:
+            id: hg4hduxkje573
+      required:
+      - tf_var_file_paths
+      - tf_vars
+      title: TerraformVariablesSourceRequest
+      type: object
+      x-stoplight:
+        id: w9dp75z2a944z
+    TerraformVarKeyValue:
+      properties:
+        key:
+          type: string
+          x-stoplight:
+            id: s9jeb1aergb9d
+        value:
+          type: string
+          x-stoplight:
+            id: 1gxsc1tzlxv3w
+      required:
+      - key
+      - value
+      title: TerraformVarKeyValue
+      type: object
+      x-stoplight:
+        id: 86bw027e72i7f
     deleteMember_request:
       properties:
         user_id:

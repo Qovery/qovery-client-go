@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
 **TerraformFilesSource** | **string** |  | 
-**TerraformVariablesSource** | **string** |  | 
+**TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **Provider** | **string** |  | 
-**ProviderVersion** | **string** |  | 
+**ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **TimeoutSec** | Pointer to **string** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
 **JobResources** | [**TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource string, provider string, providerVersion string, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource TerraformVariablesSourceRequest, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -137,20 +137,20 @@ SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
 ### GetTerraformVariablesSource
 
-`func (o *TerraformRequest) GetTerraformVariablesSource() string`
+`func (o *TerraformRequest) GetTerraformVariablesSource() TerraformVariablesSourceRequest`
 
 GetTerraformVariablesSource returns the TerraformVariablesSource field if non-nil, zero value otherwise.
 
 ### GetTerraformVariablesSourceOk
 
-`func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*string, bool)`
+`func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*TerraformVariablesSourceRequest, bool)`
 
 GetTerraformVariablesSourceOk returns a tuple with the TerraformVariablesSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerraformVariablesSource
 
-`func (o *TerraformRequest) SetTerraformVariablesSource(v string)`
+`func (o *TerraformRequest) SetTerraformVariablesSource(v TerraformVariablesSourceRequest)`
 
 SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
 
@@ -177,20 +177,20 @@ SetProvider sets Provider field to given value.
 
 ### GetProviderVersion
 
-`func (o *TerraformRequest) GetProviderVersion() string`
+`func (o *TerraformRequest) GetProviderVersion() TerraformProviderVersion`
 
 GetProviderVersion returns the ProviderVersion field if non-nil, zero value otherwise.
 
 ### GetProviderVersionOk
 
-`func (o *TerraformRequest) GetProviderVersionOk() (*string, bool)`
+`func (o *TerraformRequest) GetProviderVersionOk() (*TerraformProviderVersion, bool)`
 
 GetProviderVersionOk returns a tuple with the ProviderVersion field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProviderVersion
 
-`func (o *TerraformRequest) SetProviderVersion(v string)`
+`func (o *TerraformRequest) SetProviderVersion(v TerraformProviderVersion)`
 
 SetProviderVersion sets ProviderVersion field to given value.
 
