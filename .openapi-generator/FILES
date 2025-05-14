@@ -704,12 +704,6 @@ docs/StatusDetails.md
 docs/StatusKindEnum.md
 docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
-docs/TerraformProviderVersion.md
-docs/TerraformRequest.md
-docs/TerraformRequestJobResources.md
-docs/TerraformResponse.md
-docs/TerraformVarKeyValue.md
-docs/TerraformVariablesSourceRequest.md
 docs/TransferOwnershipRequest.md
 docs/TypeOfUseEnum.md
 docs/User.md
@@ -1272,12 +1266,6 @@ model_status_details.go
 model_status_kind_enum.go
 model_step_metric_status_enum.go
 model_storage_type_enum.go
-model_terraform_provider_version.go
-model_terraform_request.go
-model_terraform_request_job_resources.go
-model_terraform_response.go
-model_terraform_var_key_value.go
-model_terraform_variables_source_request.go
 model_transfer_ownership_request.go
 model_type_of_use_enum.go
 model_user.go
