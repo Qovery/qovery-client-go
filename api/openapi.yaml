@@ -32060,6 +32060,66 @@ components:
       type: object
       x-stoplight:
         id: gjzlt9ldnn7ip
+    TerraformRequest:
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: 6mlmgpyzwe46t
+        description:
+          type: string
+          x-stoplight:
+            id: ltvpnbhjz1oho
+        auto_approve:
+          type: boolean
+          x-stoplight:
+            id: zxy6gcsq4q6bc
+        auto_deploy:
+          type: boolean
+          x-stoplight:
+            id: 38iixcrw933wy
+        terraform_files_source:
+          type: string
+          x-stoplight:
+            id: 5sbx6bluino9w
+        terraform_variables_source:
+          type: string
+          x-stoplight:
+            id: nq4f0h1ehl6n1
+        provider:
+          type: string
+          x-stoplight:
+            id: w8o05dpbvcxp1
+        provider_version:
+          type: string
+          x-stoplight:
+            id: y0qif36j1ok5j
+        timeout_sec:
+          type: string
+          x-stoplight:
+            id: 3e5ngsw45atsd
+        icon_uri:
+          type: string
+          x-stoplight:
+            id: nem7zoh97kyzc
+        job_resources:
+          type: string
+          x-stoplight:
+            id: u2yuoawne6ewi
+      title: TerraformRequest
+      type: object
+      x-stoplight:
+        id: 7ujl5rx7sd38b
+    TerraformResponse:
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: 84sw6z0ckzvpg
+      title: TerraformResponse
+      type: object
+      x-stoplight:
+        id: qu1xiz3m74hum
     deleteMember_request:
       properties:
         user_id:

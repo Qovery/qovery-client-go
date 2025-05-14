@@ -704,6 +704,8 @@ docs/StatusDetails.md
 docs/StatusKindEnum.md
 docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
+docs/TerraformRequest.md
+docs/TerraformResponse.md
 docs/TransferOwnershipRequest.md
 docs/TypeOfUseEnum.md
 docs/User.md
@@ -1266,6 +1268,8 @@ model_status_details.go
 model_status_kind_enum.go
 model_step_metric_status_enum.go
 model_storage_type_enum.go
+model_terraform_request.go
+model_terraform_response.go
 model_transfer_ownership_request.go
 model_type_of_use_enum.go
 model_user.go
