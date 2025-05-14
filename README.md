@@ -154,6 +154,7 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListAWSManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listawsmanageddatabaseinstancetype) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
 *CloudProviderAPI* | [**ListAWSManagedDatabaseType**](docs/CloudProviderAPI.md#listawsmanageddatabasetype) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 *CloudProviderAPI* | [**ListAWSRegions**](docs/CloudProviderAPI.md#listawsregions) | **Get** /aws/region | List AWS regions
+*CloudProviderAPI* | [**ListAzureAKSInstanceType**](docs/CloudProviderAPI.md#listazureaksinstancetype) | **Get** /azure/aks/instanceType/{region} | List Azure AKS available instance types
 *CloudProviderAPI* | [**ListAzureFeatures**](docs/CloudProviderAPI.md#listazurefeatures) | **Get** /azure/clusterFeature | List Azure features available
 *CloudProviderAPI* | [**ListAzureRegions**](docs/CloudProviderAPI.md#listazureregions) | **Get** /azure/region | List Azure regions
 *CloudProviderAPI* | [**ListCloudProvider**](docs/CloudProviderAPI.md#listcloudprovider) | **Get** /cloudProvider | List Cloud providers available

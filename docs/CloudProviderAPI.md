@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**ListAWSManagedDatabaseInstanceType**](CloudProviderAPI.md#ListAWSManagedDatabaseInstanceType) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
 [**ListAWSManagedDatabaseType**](CloudProviderAPI.md#ListAWSManagedDatabaseType) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 [**ListAWSRegions**](CloudProviderAPI.md#ListAWSRegions) | **Get** /aws/region | List AWS regions
+[**ListAzureAKSInstanceType**](CloudProviderAPI.md#ListAzureAKSInstanceType) | **Get** /azure/aks/instanceType/{region} | List Azure AKS available instance types
 [**ListAzureFeatures**](CloudProviderAPI.md#ListAzureFeatures) | **Get** /azure/clusterFeature | List Azure features available
 [**ListAzureRegions**](CloudProviderAPI.md#ListAzureRegions) | **Get** /azure/region | List Azure regions
 [**ListCloudProvider**](CloudProviderAPI.md#ListCloudProvider) | **Get** /cloudProvider | List Cloud providers available
@@ -389,6 +390,78 @@ Other parameters are passed through a pointer to a apiListAWSRegionsRequest stru
 ### Return type
 
 [**ClusterRegionResponseList**](ClusterRegionResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAzureAKSInstanceType
+
+> ClusterInstanceTypeResponseList ListAzureAKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+
+List Azure AKS available instance types
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	region := "us-east-2" // string | region name
+	onlyMeetsResourceReqs := true // bool |  (optional)
+	withGpu := true // bool |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderAPI.ListAzureAKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAzureAKSInstanceType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAzureAKSInstanceType`: ClusterInstanceTypeResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAzureAKSInstanceType`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAzureAKSInstanceTypeRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **onlyMeetsResourceReqs** | **bool** |  | 
+ **withGpu** | **bool** |  | 
+
+### Return type
+
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
 
 ### Authorization
 

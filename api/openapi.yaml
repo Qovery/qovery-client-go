@@ -4300,6 +4300,49 @@ paths:
       summary: List AWS available managed database instance types
       tags:
       - Cloud Provider
+  /azure/aks/instanceType/{region}:
+    get:
+      operationId: listAzureAKSInstanceType
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: only_meets_resource_reqs
+        required: false
+        schema:
+          type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: with_gpu
+        required: false
+        schema:
+          type: boolean
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: list the instance types available for Azure AKS by region
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Azure AKS available instance types
+      tags:
+      - Cloud Provider
   /aws/eks/instanceType/{region}:
     get:
       operationId: listAWSEKSInstanceType
