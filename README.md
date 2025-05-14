@@ -1067,6 +1067,7 @@ Class | Method | HTTP request | Description
  - [StepMetricStatusEnum](docs/StepMetricStatusEnum.md)
  - [StorageTypeEnum](docs/StorageTypeEnum.md)
  - [TerraformRequest](docs/TerraformRequest.md)
+ - [TerraformRequestJobResources](docs/TerraformRequestJobResources.md)
  - [TerraformResponse](docs/TerraformResponse.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)
  - [TypeOfUseEnum](docs/TypeOfUseEnum.md)

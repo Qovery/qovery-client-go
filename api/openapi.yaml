@@ -32099,13 +32099,22 @@ components:
           x-stoplight:
             id: 3e5ngsw45atsd
         icon_uri:
+          format: uri
           type: string
           x-stoplight:
             id: nem7zoh97kyzc
         job_resources:
-          type: string
-          x-stoplight:
-            id: u2yuoawne6ewi
+          $ref: '#/components/schemas/TerraformRequestJobResources'
+      required:
+      - auto_approve
+      - auto_deploy
+      - description
+      - job_resources
+      - name
+      - provider
+      - provider_version
+      - terraform_files_source
+      - terraform_variables_source
       title: TerraformRequest
       type: object
       x-stoplight:
@@ -32120,6 +32129,28 @@ components:
       type: object
       x-stoplight:
         id: qu1xiz3m74hum
+    TerraformRequestJobResources:
+      properties:
+        cpu_milli:
+          type: integer
+          x-stoplight:
+            id: alsilze9jc23e
+        ram_mib:
+          type: integer
+          x-stoplight:
+            id: a5y9bv1avatm3
+        storage_gb:
+          type: integer
+          x-stoplight:
+            id: 627awhyjj26ny
+      required:
+      - cpu_milli
+      - ram_mib
+      - storage_gb
+      title: TerraformRequestJobResources
+      type: object
+      x-stoplight:
+        id: ucc7l63gajzu8
     deleteMember_request:
       properties:
         user_id:

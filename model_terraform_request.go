@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TerraformRequest type satisfies the MappedNullable interface at compile time
@@ -20,17 +21,17 @@ var _ MappedNullable = &TerraformRequest{}
 
 // TerraformRequest struct for TerraformRequest
 type TerraformRequest struct {
-	Name                     *string `json:"name,omitempty"`
-	Description              *string `json:"description,omitempty"`
-	AutoApprove              *bool   `json:"auto_approve,omitempty"`
-	AutoDeploy               *bool   `json:"auto_deploy,omitempty"`
-	TerraformFilesSource     *string `json:"terraform_files_source,omitempty"`
-	TerraformVariablesSource *string `json:"terraform_variables_source,omitempty"`
-	Provider                 *string `json:"provider,omitempty"`
-	ProviderVersion          *string `json:"provider_version,omitempty"`
-	TimeoutSec               *string `json:"timeout_sec,omitempty"`
-	IconUri                  *string `json:"icon_uri,omitempty"`
-	JobResources             *string `json:"job_resources,omitempty"`
+	Name                     string                       `json:"name"`
+	Description              string                       `json:"description"`
+	AutoApprove              bool                         `json:"auto_approve"`
+	AutoDeploy               bool                         `json:"auto_deploy"`
+	TerraformFilesSource     string                       `json:"terraform_files_source"`
+	TerraformVariablesSource string                       `json:"terraform_variables_source"`
+	Provider                 string                       `json:"provider"`
+	ProviderVersion          string                       `json:"provider_version"`
+	TimeoutSec               *string                      `json:"timeout_sec,omitempty"`
+	IconUri                  *string                      `json:"icon_uri,omitempty"`
+	JobResources             TerraformRequestJobResources `json:"job_resources"`
 	AdditionalProperties     map[string]interface{}
 }
 
@@ -40,8 +41,17 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest() *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource string, provider string, providerVersion string, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
+	this.Name = name
+	this.Description = description
+	this.AutoApprove = autoApprove
+	this.AutoDeploy = autoDeploy
+	this.TerraformFilesSource = terraformFilesSource
+	this.TerraformVariablesSource = terraformVariablesSource
+	this.Provider = provider
+	this.ProviderVersion = providerVersion
+	this.JobResources = jobResources
 	return &this
 }
 
@@ -53,260 +63,196 @@ func NewTerraformRequestWithDefaults() *TerraformRequest {
 	return &this
 }
 
-// GetName returns the Name field value if set, zero value otherwise.
+// GetName returns the Name field value
 func (o *TerraformRequest) GetName() string {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Name
+
+	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetNameOk() (*string, bool) {
-	if o == nil || IsNil(o.Name) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Name, true
+	return &o.Name, true
 }
 
-// HasName returns a boolean if a field has been set.
-func (o *TerraformRequest) HasName() bool {
-	if o != nil && !IsNil(o.Name) {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given string and assigns it to the Name field.
+// SetName sets field value
 func (o *TerraformRequest) SetName(v string) {
-	o.Name = &v
+	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// GetDescription returns the Description field value
 func (o *TerraformRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Description
+
+	return o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return &o.Description, true
 }
 
-// HasDescription returns a boolean if a field has been set.
-func (o *TerraformRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription sets field value
 func (o *TerraformRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description = v
 }
 
-// GetAutoApprove returns the AutoApprove field value if set, zero value otherwise.
+// GetAutoApprove returns the AutoApprove field value
 func (o *TerraformRequest) GetAutoApprove() bool {
-	if o == nil || IsNil(o.AutoApprove) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AutoApprove
+
+	return o.AutoApprove
 }
 
-// GetAutoApproveOk returns a tuple with the AutoApprove field value if set, nil otherwise
+// GetAutoApproveOk returns a tuple with the AutoApprove field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetAutoApproveOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoApprove) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoApprove, true
+	return &o.AutoApprove, true
 }
 
-// HasAutoApprove returns a boolean if a field has been set.
-func (o *TerraformRequest) HasAutoApprove() bool {
-	if o != nil && !IsNil(o.AutoApprove) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoApprove gets a reference to the given bool and assigns it to the AutoApprove field.
+// SetAutoApprove sets field value
 func (o *TerraformRequest) SetAutoApprove(v bool) {
-	o.AutoApprove = &v
+	o.AutoApprove = v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+// GetAutoDeploy returns the AutoDeploy field value
 func (o *TerraformRequest) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy
+
+	return o.AutoDeploy
 }
 
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoDeploy, true
+	return &o.AutoDeploy, true
 }
 
-// HasAutoDeploy returns a boolean if a field has been set.
-func (o *TerraformRequest) HasAutoDeploy() bool {
-	if o != nil && !IsNil(o.AutoDeploy) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+// SetAutoDeploy sets field value
 func (o *TerraformRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
+	o.AutoDeploy = v
 }
 
-// GetTerraformFilesSource returns the TerraformFilesSource field value if set, zero value otherwise.
+// GetTerraformFilesSource returns the TerraformFilesSource field value
 func (o *TerraformRequest) GetTerraformFilesSource() string {
-	if o == nil || IsNil(o.TerraformFilesSource) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TerraformFilesSource
+
+	return o.TerraformFilesSource
 }
 
-// GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field value if set, nil otherwise
+// GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetTerraformFilesSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.TerraformFilesSource) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TerraformFilesSource, true
+	return &o.TerraformFilesSource, true
 }
 
-// HasTerraformFilesSource returns a boolean if a field has been set.
-func (o *TerraformRequest) HasTerraformFilesSource() bool {
-	if o != nil && !IsNil(o.TerraformFilesSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetTerraformFilesSource gets a reference to the given string and assigns it to the TerraformFilesSource field.
+// SetTerraformFilesSource sets field value
 func (o *TerraformRequest) SetTerraformFilesSource(v string) {
-	o.TerraformFilesSource = &v
+	o.TerraformFilesSource = v
 }
 
-// GetTerraformVariablesSource returns the TerraformVariablesSource field value if set, zero value otherwise.
+// GetTerraformVariablesSource returns the TerraformVariablesSource field value
 func (o *TerraformRequest) GetTerraformVariablesSource() string {
-	if o == nil || IsNil(o.TerraformVariablesSource) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.TerraformVariablesSource
+
+	return o.TerraformVariablesSource
 }
 
-// GetTerraformVariablesSourceOk returns a tuple with the TerraformVariablesSource field value if set, nil otherwise
+// GetTerraformVariablesSourceOk returns a tuple with the TerraformVariablesSource field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*string, bool) {
-	if o == nil || IsNil(o.TerraformVariablesSource) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TerraformVariablesSource, true
+	return &o.TerraformVariablesSource, true
 }
 
-// HasTerraformVariablesSource returns a boolean if a field has been set.
-func (o *TerraformRequest) HasTerraformVariablesSource() bool {
-	if o != nil && !IsNil(o.TerraformVariablesSource) {
-		return true
-	}
-
-	return false
-}
-
-// SetTerraformVariablesSource gets a reference to the given string and assigns it to the TerraformVariablesSource field.
+// SetTerraformVariablesSource sets field value
 func (o *TerraformRequest) SetTerraformVariablesSource(v string) {
-	o.TerraformVariablesSource = &v
+	o.TerraformVariablesSource = v
 }
 
-// GetProvider returns the Provider field value if set, zero value otherwise.
+// GetProvider returns the Provider field value
 func (o *TerraformRequest) GetProvider() string {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Provider
+
+	return o.Provider
 }
 
-// GetProviderOk returns a tuple with the Provider field value if set, nil otherwise
+// GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetProviderOk() (*string, bool) {
-	if o == nil || IsNil(o.Provider) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Provider, true
+	return &o.Provider, true
 }
 
-// HasProvider returns a boolean if a field has been set.
-func (o *TerraformRequest) HasProvider() bool {
-	if o != nil && !IsNil(o.Provider) {
-		return true
-	}
-
-	return false
-}
-
-// SetProvider gets a reference to the given string and assigns it to the Provider field.
+// SetProvider sets field value
 func (o *TerraformRequest) SetProvider(v string) {
-	o.Provider = &v
+	o.Provider = v
 }
 
-// GetProviderVersion returns the ProviderVersion field value if set, zero value otherwise.
+// GetProviderVersion returns the ProviderVersion field value
 func (o *TerraformRequest) GetProviderVersion() string {
-	if o == nil || IsNil(o.ProviderVersion) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ProviderVersion
+
+	return o.ProviderVersion
 }
 
-// GetProviderVersionOk returns a tuple with the ProviderVersion field value if set, nil otherwise
+// GetProviderVersionOk returns a tuple with the ProviderVersion field value
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetProviderVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.ProviderVersion) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ProviderVersion, true
+	return &o.ProviderVersion, true
 }
 
-// HasProviderVersion returns a boolean if a field has been set.
-func (o *TerraformRequest) HasProviderVersion() bool {
-	if o != nil && !IsNil(o.ProviderVersion) {
-		return true
-	}
-
-	return false
-}
-
-// SetProviderVersion gets a reference to the given string and assigns it to the ProviderVersion field.
+// SetProviderVersion sets field value
 func (o *TerraformRequest) SetProviderVersion(v string) {
-	o.ProviderVersion = &v
+	o.ProviderVersion = v
 }
 
 // GetTimeoutSec returns the TimeoutSec field value if set, zero value otherwise.
@@ -373,36 +319,28 @@ func (o *TerraformRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
-// GetJobResources returns the JobResources field value if set, zero value otherwise.
-func (o *TerraformRequest) GetJobResources() string {
-	if o == nil || IsNil(o.JobResources) {
-		var ret string
+// GetJobResources returns the JobResources field value
+func (o *TerraformRequest) GetJobResources() TerraformRequestJobResources {
+	if o == nil {
+		var ret TerraformRequestJobResources
 		return ret
 	}
-	return *o.JobResources
+
+	return o.JobResources
 }
 
-// GetJobResourcesOk returns a tuple with the JobResources field value if set, nil otherwise
+// GetJobResourcesOk returns a tuple with the JobResources field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetJobResourcesOk() (*string, bool) {
-	if o == nil || IsNil(o.JobResources) {
+func (o *TerraformRequest) GetJobResourcesOk() (*TerraformRequestJobResources, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.JobResources, true
+	return &o.JobResources, true
 }
 
-// HasJobResources returns a boolean if a field has been set.
-func (o *TerraformRequest) HasJobResources() bool {
-	if o != nil && !IsNil(o.JobResources) {
-		return true
-	}
-
-	return false
-}
-
-// SetJobResources gets a reference to the given string and assigns it to the JobResources field.
-func (o *TerraformRequest) SetJobResources(v string) {
-	o.JobResources = &v
+// SetJobResources sets field value
+func (o *TerraformRequest) SetJobResources(v TerraformRequestJobResources) {
+	o.JobResources = v
 }
 
 func (o TerraformRequest) MarshalJSON() ([]byte, error) {
@@ -415,39 +353,21 @@ func (o TerraformRequest) MarshalJSON() ([]byte, error) {
 
 func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Name) {
-		toSerialize["name"] = o.Name
-	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
-	}
-	if !IsNil(o.AutoApprove) {
-		toSerialize["auto_approve"] = o.AutoApprove
-	}
-	if !IsNil(o.AutoDeploy) {
-		toSerialize["auto_deploy"] = o.AutoDeploy
-	}
-	if !IsNil(o.TerraformFilesSource) {
-		toSerialize["terraform_files_source"] = o.TerraformFilesSource
-	}
-	if !IsNil(o.TerraformVariablesSource) {
-		toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
-	}
-	if !IsNil(o.Provider) {
-		toSerialize["provider"] = o.Provider
-	}
-	if !IsNil(o.ProviderVersion) {
-		toSerialize["provider_version"] = o.ProviderVersion
-	}
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	toSerialize["auto_approve"] = o.AutoApprove
+	toSerialize["auto_deploy"] = o.AutoDeploy
+	toSerialize["terraform_files_source"] = o.TerraformFilesSource
+	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
+	toSerialize["provider"] = o.Provider
+	toSerialize["provider_version"] = o.ProviderVersion
 	if !IsNil(o.TimeoutSec) {
 		toSerialize["timeout_sec"] = o.TimeoutSec
 	}
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
-	if !IsNil(o.JobResources) {
-		toSerialize["job_resources"] = o.JobResources
-	}
+	toSerialize["job_resources"] = o.JobResources
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -457,6 +377,35 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"name",
+		"description",
+		"auto_approve",
+		"auto_deploy",
+		"terraform_files_source",
+		"terraform_variables_source",
+		"provider",
+		"provider_version",
+		"job_resources",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varTerraformRequest := _TerraformRequest{}
 
 	err = json.Unmarshal(data, &varTerraformRequest)

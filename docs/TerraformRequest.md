@@ -4,23 +4,23 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **string** |  | [optional] 
-**AutoApprove** | Pointer to **bool** |  | [optional] 
-**AutoDeploy** | Pointer to **bool** |  | [optional] 
-**TerraformFilesSource** | Pointer to **string** |  | [optional] 
-**TerraformVariablesSource** | Pointer to **string** |  | [optional] 
-**Provider** | Pointer to **string** |  | [optional] 
-**ProviderVersion** | Pointer to **string** |  | [optional] 
+**Name** | **string** |  | 
+**Description** | **string** |  | 
+**AutoApprove** | **bool** |  | 
+**AutoDeploy** | **bool** |  | 
+**TerraformFilesSource** | **string** |  | 
+**TerraformVariablesSource** | **string** |  | 
+**Provider** | **string** |  | 
+**ProviderVersion** | **string** |  | 
 **TimeoutSec** | Pointer to **string** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
-**JobResources** | Pointer to **string** |  | [optional] 
+**JobResources** | [**TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
 
 ## Methods
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest() *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource string, terraformVariablesSource string, provider string, providerVersion string, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -54,11 +54,6 @@ and a boolean to check if the value has been set.
 
 SetName sets Name field to given value.
 
-### HasName
-
-`func (o *TerraformRequest) HasName() bool`
-
-HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
@@ -79,11 +74,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *TerraformRequest) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetAutoApprove
 
@@ -104,11 +94,6 @@ and a boolean to check if the value has been set.
 
 SetAutoApprove sets AutoApprove field to given value.
 
-### HasAutoApprove
-
-`func (o *TerraformRequest) HasAutoApprove() bool`
-
-HasAutoApprove returns a boolean if a field has been set.
 
 ### GetAutoDeploy
 
@@ -129,11 +114,6 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
-### HasAutoDeploy
-
-`func (o *TerraformRequest) HasAutoDeploy() bool`
-
-HasAutoDeploy returns a boolean if a field has been set.
 
 ### GetTerraformFilesSource
 
@@ -154,11 +134,6 @@ and a boolean to check if the value has been set.
 
 SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
-### HasTerraformFilesSource
-
-`func (o *TerraformRequest) HasTerraformFilesSource() bool`
-
-HasTerraformFilesSource returns a boolean if a field has been set.
 
 ### GetTerraformVariablesSource
 
@@ -179,11 +154,6 @@ and a boolean to check if the value has been set.
 
 SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
 
-### HasTerraformVariablesSource
-
-`func (o *TerraformRequest) HasTerraformVariablesSource() bool`
-
-HasTerraformVariablesSource returns a boolean if a field has been set.
 
 ### GetProvider
 
@@ -204,11 +174,6 @@ and a boolean to check if the value has been set.
 
 SetProvider sets Provider field to given value.
 
-### HasProvider
-
-`func (o *TerraformRequest) HasProvider() bool`
-
-HasProvider returns a boolean if a field has been set.
 
 ### GetProviderVersion
 
@@ -229,11 +194,6 @@ and a boolean to check if the value has been set.
 
 SetProviderVersion sets ProviderVersion field to given value.
 
-### HasProviderVersion
-
-`func (o *TerraformRequest) HasProviderVersion() bool`
-
-HasProviderVersion returns a boolean if a field has been set.
 
 ### GetTimeoutSec
 
@@ -287,28 +247,23 @@ HasIconUri returns a boolean if a field has been set.
 
 ### GetJobResources
 
-`func (o *TerraformRequest) GetJobResources() string`
+`func (o *TerraformRequest) GetJobResources() TerraformRequestJobResources`
 
 GetJobResources returns the JobResources field if non-nil, zero value otherwise.
 
 ### GetJobResourcesOk
 
-`func (o *TerraformRequest) GetJobResourcesOk() (*string, bool)`
+`func (o *TerraformRequest) GetJobResourcesOk() (*TerraformRequestJobResources, bool)`
 
 GetJobResourcesOk returns a tuple with the JobResources field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJobResources
 
-`func (o *TerraformRequest) SetJobResources(v string)`
+`func (o *TerraformRequest) SetJobResources(v TerraformRequestJobResources)`
 
 SetJobResources sets JobResources field to given value.
 
-### HasJobResources
-
-`func (o *TerraformRequest) HasJobResources() bool`
-
-HasJobResources returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
