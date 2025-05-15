@@ -15621,9 +15621,9 @@ paths:
         required: true
         schema:
           enum:
-          - container
-          - application
-          - helm
+          - CONTAINER
+          - APPLICATION
+          - HELM
           type: string
         style: simple
       - explode: false
