@@ -8298,11 +8298,12 @@ paths:
       responses:
         "200":
           content:
-            application/zip:
+            application/octet-stream:
               schema:
                 format: binary
                 type: string
           description: Export full environment and its resources into Terraform manifests
+            (ZIP file)
         "401":
           description: Access token is missing or invalid
         "403":

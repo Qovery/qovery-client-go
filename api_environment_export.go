@@ -94,7 +94,7 @@ func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerrafor
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/zip"}
+	localVarHTTPHeaderAccepts := []string{"application/octet-stream"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
