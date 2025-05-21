@@ -516,6 +516,13 @@ Class | Method | HTTP request | Description
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
+*TerraformConfigurationAPI* | [**EditTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#editterraformadvancedsettings) | **Put** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
+*TerraformConfigurationAPI* | [**GetTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#getterraformadvancedsettings) | **Get** /terraform/{terraformId}/advancedSettings | Get Advanced settings
+*TerraformMainCallsAPI* | [**DeleteTerraform**](docs/TerraformMainCallsAPI.md#deleteterraform) | **Delete** /terraform/{terraformId} | Delete Terraform
+*TerraformMainCallsAPI* | [**EditTerraform**](docs/TerraformMainCallsAPI.md#editterraform) | **Put** /terraform/{terraformId} | Edit Terraform
+*TerraformMainCallsAPI* | [**GetTerraform**](docs/TerraformMainCallsAPI.md#getterraform) | **Get** /terraform/{terraformId} | Get terraform by ID
+*TerraformsAPI* | [**CreateTerraform**](docs/TerraformsAPI.md#createterraform) | **Post** /environment/{environmentId}/terraform | Create a terraform
+*TerraformsAPI* | [**ListTerraforms**](docs/TerraformsAPI.md#listterraforms) | **Get** /environment/{environmentId}/terraform | List terraforms
 *UserSignUpAPI* | [**CreateUserSignUp**](docs/UserSignUpAPI.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
 *UserSignUpAPI* | [**GetUserSignUp**](docs/UserSignUpAPI.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information
 *VariableMainCallsAPI* | [**CreateVariable**](docs/VariableMainCallsAPI.md#createvariable) | **Post** /variable | Create a variable
@@ -1066,6 +1073,20 @@ Class | Method | HTTP request | Description
  - [StatusKindEnum](docs/StatusKindEnum.md)
  - [StepMetricStatusEnum](docs/StepMetricStatusEnum.md)
  - [StorageTypeEnum](docs/StorageTypeEnum.md)
+ - [TerraformAdvancedSettings](docs/TerraformAdvancedSettings.md)
+ - [TerraformFilesSourceRequest](docs/TerraformFilesSourceRequest.md)
+ - [TerraformGitRepositoryRequest](docs/TerraformGitRepositoryRequest.md)
+ - [TerraformJobResourcesResponse](docs/TerraformJobResourcesResponse.md)
+ - [TerraformProviderVersion](docs/TerraformProviderVersion.md)
+ - [TerraformRequest](docs/TerraformRequest.md)
+ - [TerraformRequestJobResources](docs/TerraformRequestJobResources.md)
+ - [TerraformRequestTerraformFilesSource](docs/TerraformRequestTerraformFilesSource.md)
+ - [TerraformRequestTerraformFilesSourceOneOf](docs/TerraformRequestTerraformFilesSourceOneOf.md)
+ - [TerraformResponse](docs/TerraformResponse.md)
+ - [TerraformResponseList](docs/TerraformResponseList.md)
+ - [TerraformVarKeyValue](docs/TerraformVarKeyValue.md)
+ - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
+ - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)
  - [TypeOfUseEnum](docs/TypeOfUseEnum.md)
  - [User](docs/User.md)

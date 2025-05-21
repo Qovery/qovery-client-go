@@ -15870,6 +15870,238 @@ paths:
       - Cloud Provider
       x-stoplight:
         id: gjin553b2f7mz
+  /environment/{environmentId}/terraform:
+    get:
+      operationId: listTerraforms
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResponseList'
+          description: List terraforms
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List terraforms
+      tags:
+      - Terraforms
+      x-stoplight:
+        id: 2azyhtuthfuft
+    post:
+      operationId: createTerraform
+      parameters:
+      - explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResponse'
+          description: Create terraform
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Terraform name within the environment is already taken
+      summary: Create a terraform
+      tags:
+      - Terraforms
+      x-stoplight:
+        id: qgpat08kc3wir
+  /terraform/{terraformId}:
+    delete:
+      operationId: deleteTerraform
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete Terraform
+      tags:
+      - Terraform Main Calls
+      x-stoplight:
+        id: 518sjlmziel46
+    get:
+      operationId: getTerraform
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResponse'
+          description: Get terrafor by ID
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get terraform by ID
+      tags:
+      - Terraform Main Calls
+      x-stoplight:
+        id: s1dctms0dixdl
+    put:
+      operationId: editTerraform
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResponse'
+          description: Edit Terraform
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Terraform name within the environment is already taken
+      summary: Edit Terraform
+      tags:
+      - Terraform Main Calls
+      x-stoplight:
+        id: pb6cdzqcvmnkh
+  /terraform/{terraformId}/advancedSettings:
+    get:
+      operationId: getTerraformAdvancedSettings
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformAdvancedSettings'
+          description: Advanced settings list
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get Advanced settings
+      tags:
+      - Terraform Configuration
+      x-stoplight:
+        id: hth6esl7sqliu
+    put:
+      operationId: editTerraformAdvancedSettings
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformAdvancedSettings'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformAdvancedSettings'
+          description: Updated advanced settings
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit Advanced settings
+      tags:
+      - Terraform Configuration
+      x-stoplight:
+        id: 0rd396pcy9m0e
 components:
   parameters:
     applicationId:
@@ -16269,6 +16501,16 @@ components:
         default: chart
         type: string
       style: form
+    terraformId:
+      description: Terraform ID
+      explode: false
+      in: path
+      name: terraformId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
   responses:
     "204":
       description: no content
@@ -17116,6 +17358,7 @@ components:
       - owner
       - provider
       - url
+      title: ""
       type: object
     ApplicationGitRepositoryRequest:
       example:
@@ -29378,6 +29621,7 @@ components:
       - CONTAINER
       - JOB
       - HELM
+      - TERRAFORM
       type: string
       x-stoplight:
         id: d66063cd29913
@@ -30649,6 +30893,7 @@ components:
       - owner
       - provider
       - url
+      title: ""
       type: object
     HelmKeyValues:
       description: "The input is in json array format: [ [$KEY,$VALUE], [...] ]"
@@ -32063,6 +32308,478 @@ components:
       type: object
       x-stoplight:
         id: gjzlt9ldnn7ip
+    TerraformRequest:
+      example:
+        terraform_variables_source:
+          tf_var_file_paths:
+          - tf_var_file_paths
+          - tf_var_file_paths
+          tf_vars:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        auto_deploy: true
+        job_resources:
+          storage_gb: 1
+          cpu_milli: 0
+          ram_mib: 6
+        provider: Terraform
+        timeout_sec: timeout_sec
+        name: name
+        description: description
+        provider_version:
+          read_from_terraform_block: true
+          explicit_version: explicit_version
+        terraform_files_source:
+          git_repository:
+            root_path: root_path
+            git_token_id: git_token_id
+            branch: branch
+            url: url
+        auto_approve: true
+        icon_uri: https://openapi-generator.tech
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: 6mlmgpyzwe46t
+        description:
+          type: string
+          x-stoplight:
+            id: ltvpnbhjz1oho
+        auto_approve:
+          type: boolean
+          x-stoplight:
+            id: zxy6gcsq4q6bc
+        auto_deploy:
+          type: boolean
+          x-stoplight:
+            id: 38iixcrw933wy
+        terraform_files_source:
+          $ref: '#/components/schemas/TerraformRequest_terraform_files_source'
+        terraform_variables_source:
+          $ref: '#/components/schemas/TerraformVariablesSourceRequest'
+        provider:
+          enum:
+          - Terraform
+          type: string
+          x-stoplight:
+            id: w8o05dpbvcxp1
+        provider_version:
+          $ref: '#/components/schemas/TerraformProviderVersion'
+        timeout_sec:
+          type: string
+          x-stoplight:
+            id: 3e5ngsw45atsd
+        icon_uri:
+          format: uri
+          type: string
+          x-stoplight:
+            id: nem7zoh97kyzc
+        job_resources:
+          $ref: '#/components/schemas/TerraformRequestJobResources'
+      required:
+      - auto_approve
+      - auto_deploy
+      - description
+      - job_resources
+      - name
+      - provider
+      - provider_version
+      - terraform_files_source
+      - terraform_variables_source
+      title: TerraformRequest
+      type: object
+      x-stoplight:
+        id: 7ujl5rx7sd38b
+    TerraformResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          timeout_sec:
+            default: 600
+            minimum: 0
+            type: integer
+          auto_approve:
+            type: boolean
+          auto_deploy:
+            type: boolean
+          terraform_files_source:
+            $ref: '#/components/schemas/TerraformResponse_allOf_terraform_files_source'
+          icon_uri:
+            description: Icon URI representing the terraform service.
+            format: uri
+            type: string
+            x-stoplight:
+              id: i2pvbugqsldhe
+          service_type:
+            $ref: '#/components/schemas/ServiceTypeEnum'
+          terraform_variables_source:
+            $ref: '#/components/schemas/TerraformVariablesSourceResponse'
+          provider:
+            enum:
+            - TERRAFORM
+            type: string
+            x-stoplight:
+              id: d2ykapq57se4s
+          provider_version:
+            $ref: '#/components/schemas/TerraformProviderVersion'
+          job_resources:
+            $ref: '#/components/schemas/TerraformJobResourcesResponse'
+        required:
+        - auto_approve
+        - auto_deploy
+        - job_resources
+        - name
+        - provider
+        - provider_version
+        - service_type
+        - terraform_variables_source
+        - timeout_sec
+        type: object
+      example:
+        auto_deploy: true
+        job_resources:
+          storage_gb: 5
+          cpu_milli: 6
+          ram_mib: 1
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        provider_version:
+          read_from_terraform_block: true
+          explicit_version: explicit_version
+        auto_approve: true
+        icon_uri: https://openapi-generator.tech
+        terraform_variables_source:
+          tf_var_file_paths:
+          - tf_var_file_paths
+          - tf_var_file_paths
+          tf_vars:
+          - value: value
+            key: key
+          - value: value
+            key: key
+        service_type: APPLICATION
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        provider: TERRAFORM
+        timeout_sec: 0
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        terraform_files_source: null
+    TerraformRequestJobResources:
+      example:
+        storage_gb: 1
+        cpu_milli: 0
+        ram_mib: 6
+      properties:
+        cpu_milli:
+          type: integer
+          x-stoplight:
+            id: alsilze9jc23e
+        ram_mib:
+          type: integer
+          x-stoplight:
+            id: a5y9bv1avatm3
+        storage_gb:
+          type: integer
+          x-stoplight:
+            id: 627awhyjj26ny
+      required:
+      - cpu_milli
+      - ram_mib
+      - storage_gb
+      title: TerraformRequestJobResources
+      type: object
+      x-stoplight:
+        id: ucc7l63gajzu8
+    TerraformProviderVersion:
+      example:
+        read_from_terraform_block: true
+        explicit_version: explicit_version
+      properties:
+        read_from_terraform_block:
+          type: boolean
+          x-stoplight:
+            id: p2dnmuifo0fki
+        explicit_version:
+          type: string
+          x-stoplight:
+            id: 611hxcvuy68lv
+      required:
+      - read_from_terraform_block
+      title: TerraformProviderVersion
+      type: object
+      x-stoplight:
+        id: 1a1hkhvei2wjq
+    TerraformVariablesSourceRequest:
+      example:
+        tf_var_file_paths:
+        - tf_var_file_paths
+        - tf_var_file_paths
+        tf_vars:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        tf_var_file_paths:
+          items:
+            type: string
+            x-stoplight:
+              id: 7ns22ue58d2zb
+          type: array
+          x-stoplight:
+            id: kk82s9qjluugt
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
+          x-stoplight:
+            id: hg4hduxkje573
+      required:
+      - tf_var_file_paths
+      - tf_vars
+      title: TerraformVariablesSourceRequest
+      type: object
+      x-stoplight:
+        id: w9dp75z2a944z
+    TerraformVarKeyValue:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+          x-stoplight:
+            id: s9jeb1aergb9d
+        value:
+          type: string
+          x-stoplight:
+            id: 1gxsc1tzlxv3w
+      required:
+      - key
+      - value
+      title: TerraformVarKeyValue
+      type: object
+      x-stoplight:
+        id: 86bw027e72i7f
+    TerraformFilesSourceRequest:
+      properties:
+        id:
+          type: string
+          x-stoplight:
+            id: vtpiblf7t37xq
+      title: TerraformFilesSourceRequest
+      type: object
+      x-stoplight:
+        id: n91jcyroi7kt4
+    TerraformGitRepositoryRequest:
+      example:
+        root_path: root_path
+        git_token_id: git_token_id
+        branch: branch
+        url: url
+      properties:
+        url:
+          type: string
+          x-stoplight:
+            id: yjnlaiu6umfgc
+        branch:
+          type: string
+          x-stoplight:
+            id: 7txz9hngsrt2a
+        root_path:
+          type: string
+          x-stoplight:
+            id: 2sdr8f1ia9yr1
+        git_token_id:
+          type: string
+          x-stoplight:
+            id: ddhd4pztgc43y
+      required:
+      - url
+      title: TerraformGitRepositoryRequest
+      type: object
+      x-stoplight:
+        id: ot316adf8cqn0
+    TerraformVariablesSourceResponse:
+      example:
+        tf_var_file_paths:
+        - tf_var_file_paths
+        - tf_var_file_paths
+        tf_vars:
+        - value: value
+          key: key
+        - value: value
+          key: key
+      properties:
+        tf_var_file_paths:
+          items:
+            type: string
+            x-stoplight:
+              id: qsy17gz9fl3n3
+          type: array
+          x-stoplight:
+            id: ua5d71it2yiu5
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
+          x-stoplight:
+            id: gy48tvwnicoi7
+      required:
+      - tf_var_file_paths
+      - tf_vars
+      title: TerraformVariablesSourceResponse
+      type: object
+      x-stoplight:
+        id: 2lr1mv2b3y7xy
+    TerraformJobResourcesResponse:
+      example:
+        storage_gb: 5
+        cpu_milli: 6
+        ram_mib: 1
+      properties:
+        cpu_milli:
+          type: integer
+          x-stoplight:
+            id: bg054290feb9c
+        ram_mib:
+          type: integer
+          x-stoplight:
+            id: f6dur44ah2bwe
+        storage_gb:
+          type: integer
+          x-stoplight:
+            id: dsf78pwnvmqi8
+      required:
+      - cpu_milli
+      - ram_mib
+      - storage_gb
+      title: TerraformJobResourcesResponse
+      type: object
+      x-stoplight:
+        id: xhswkmfwyerrv
+    TerraformResponseList:
+      example:
+        id:
+        - auto_deploy: true
+          job_resources:
+            storage_gb: 5
+            cpu_milli: 6
+            ram_mib: 1
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          provider_version:
+            read_from_terraform_block: true
+            explicit_version: explicit_version
+          auto_approve: true
+          icon_uri: https://openapi-generator.tech
+          terraform_variables_source:
+            tf_var_file_paths:
+            - tf_var_file_paths
+            - tf_var_file_paths
+            tf_vars:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          service_type: APPLICATION
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          provider: TERRAFORM
+          timeout_sec: 0
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          terraform_files_source: null
+        - auto_deploy: true
+          job_resources:
+            storage_gb: 5
+            cpu_milli: 6
+            ram_mib: 1
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          provider_version:
+            read_from_terraform_block: true
+            explicit_version: explicit_version
+          auto_approve: true
+          icon_uri: https://openapi-generator.tech
+          terraform_variables_source:
+            tf_var_file_paths:
+            - tf_var_file_paths
+            - tf_var_file_paths
+            tf_vars:
+            - value: value
+              key: key
+            - value: value
+              key: key
+          service_type: APPLICATION
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          provider: TERRAFORM
+          timeout_sec: 0
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          terraform_files_source: null
+      properties:
+        id:
+          items:
+            $ref: '#/components/schemas/TerraformResponse'
+          type: array
+          x-stoplight:
+            id: mkzx2zfzysbnp
+      title: TerraformResponseList
+      type: object
+      x-stoplight:
+        id: ipapoxduvpkk7
+    TerraformAdvancedSettings:
+      example:
+        build.timeout_max_sec: 0
+        build.cpu_max_in_milli: 6
+        deployment.affinity.node.required:
+          key: deployment.affinity.node.required
+        security.read_only_root_filesystem: true
+        security.service_account_name: security.service_account_name
+        build.ephemeral_storage_in_gib: 5
+        build.ram_max_in_gib: 1
+        deployment.termination_grace_period_seconds: 5
+      properties:
+        build.timeout_max_sec:
+          description: define the max timeout for the build
+          type: integer
+        build.cpu_max_in_milli:
+          description: define the max cpu resources (in milli)
+          type: integer
+        build.ram_max_in_gib:
+          description: define the max ram resources (in gib)
+          type: integer
+        build.ephemeral_storage_in_gib:
+          type: integer
+        deployment.termination_grace_period_seconds:
+          description: define how long in seconds an application is supposed to be
+            stopped gracefully
+          type: integer
+        deployment.affinity.node.required:
+          additionalProperties:
+            type: string
+          description: Set pod placement on specific Kubernetes nodes labels
+          type: object
+        security.service_account_name:
+          description: |
+            Allows you to set an existing Kubernetes service account name
+          type: string
+        security.read_only_root_filesystem:
+          description: |
+            Mounts the container's root filesystem as read-only
+          type: boolean
+      title: TerraformAdvancedSettings
+      type: object
+      x-stoplight:
+        id: vykzi46lkt2y1
     deleteMember_request:
       properties:
         user_id:
@@ -35203,6 +35920,25 @@ components:
       - $ref: '#/components/schemas/MetricsConfigurationManagedByQovery'
       x-stoplight:
         id: 1e9r2at0nxziv
+    TerraformRequest_terraform_files_source_oneOf:
+      example:
+        git_repository:
+          root_path: root_path
+          git_token_id: git_token_id
+          branch: branch
+          url: url
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/TerraformGitRepositoryRequest'
+      type: object
+    TerraformRequest_terraform_files_source:
+      oneOf:
+      - $ref: '#/components/schemas/TerraformRequest_terraform_files_source_oneOf'
+    TerraformResponse_allOf_terraform_files_source:
+      nullable: true
+      type: object
+      x-stoplight:
+        id: abfhjb6q74upq
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
