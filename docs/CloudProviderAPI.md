@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**ListGcpFeatures**](CloudProviderAPI.md#ListGcpFeatures) | **Get** /gcp/clusterFeature | List GCP features available
 [**ListGcpGkeInstanceType**](CloudProviderAPI.md#ListGcpGkeInstanceType) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
 [**ListGcpRegions**](CloudProviderAPI.md#ListGcpRegions) | **Get** /gcp/region | List GCP regions
-[**ListSCWManagedDatabaseInstanceType**](CloudProviderAPI.md#ListSCWManagedDatabaseInstanceType) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 [**ListSCWManagedDatabaseType**](CloudProviderAPI.md#ListSCWManagedDatabaseType) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 [**ListScalewayFeatures**](CloudProviderAPI.md#ListScalewayFeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
 [**ListScalewayInstanceType**](CloudProviderAPI.md#ListScalewayInstanceType) | **Get** /scaleway/instanceType | List Scaleway available instance types
@@ -825,74 +824,6 @@ Other parameters are passed through a pointer to a apiListGcpRegionsRequest stru
 ### Return type
 
 [**ClusterRegionResponseList**](ClusterRegionResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListSCWManagedDatabaseInstanceType
-
-> ManagedDatabaseInstanceTypeResponseList ListSCWManagedDatabaseInstanceType(ctx, databaseType).Execute()
-
-List Scaleway available managed database instance types
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	databaseType := "MYSQL" // string | Database type
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseInstanceType(context.Background(), databaseType).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListSCWManagedDatabaseInstanceType`: ManagedDatabaseInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseInstanceType`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseType** | **string** | Database type | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListSCWManagedDatabaseInstanceTypeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**ManagedDatabaseInstanceTypeResponseList**](ManagedDatabaseInstanceTypeResponseList.md)
 
 ### Authorization
 

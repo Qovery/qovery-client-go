@@ -161,7 +161,6 @@ Class | Method | HTTP request | Description
 *CloudProviderAPI* | [**ListGcpFeatures**](docs/CloudProviderAPI.md#listgcpfeatures) | **Get** /gcp/clusterFeature | List GCP features available
 *CloudProviderAPI* | [**ListGcpGkeInstanceType**](docs/CloudProviderAPI.md#listgcpgkeinstancetype) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
 *CloudProviderAPI* | [**ListGcpRegions**](docs/CloudProviderAPI.md#listgcpregions) | **Get** /gcp/region | List GCP regions
-*CloudProviderAPI* | [**ListSCWManagedDatabaseInstanceType**](docs/CloudProviderAPI.md#listscwmanageddatabaseinstancetype) | **Get** /scaleway/managedDatabase/instanceType/{zone}/{databaseType} | List Scaleway available managed database instance types
 *CloudProviderAPI* | [**ListSCWManagedDatabaseType**](docs/CloudProviderAPI.md#listscwmanageddatabasetype) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
 *CloudProviderAPI* | [**ListScalewayFeatures**](docs/CloudProviderAPI.md#listscalewayfeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
 *CloudProviderAPI* | [**ListScalewayInstanceType**](docs/CloudProviderAPI.md#listscalewayinstancetype) | **Get** /scaleway/instanceType | List Scaleway available instance types
