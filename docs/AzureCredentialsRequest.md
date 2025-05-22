@@ -9,13 +9,12 @@ Name | Type | Description | Notes
 **AzureTenantId** | **string** |  | 
 **AzureClientId** | **string** |  | 
 **AzureClientSecret** | **string** |  | 
-**AzureResourceGroupName** | **string** |  | 
 
 ## Methods
 
 ### NewAzureCredentialsRequest
 
-`func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string, azureResourceGroupName string, ) *AzureCredentialsRequest`
+`func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string, ) *AzureCredentialsRequest`
 
 NewAzureCredentialsRequest instantiates a new AzureCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -128,26 +127,6 @@ and a boolean to check if the value has been set.
 `func (o *AzureCredentialsRequest) SetAzureClientSecret(v string)`
 
 SetAzureClientSecret sets AzureClientSecret field to given value.
-
-
-### GetAzureResourceGroupName
-
-`func (o *AzureCredentialsRequest) GetAzureResourceGroupName() string`
-
-GetAzureResourceGroupName returns the AzureResourceGroupName field if non-nil, zero value otherwise.
-
-### GetAzureResourceGroupNameOk
-
-`func (o *AzureCredentialsRequest) GetAzureResourceGroupNameOk() (*string, bool)`
-
-GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureResourceGroupName
-
-`func (o *AzureCredentialsRequest) SetAzureResourceGroupName(v string)`
-
-SetAzureResourceGroupName sets AzureResourceGroupName field to given value.
 
 
 

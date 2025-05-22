@@ -32213,10 +32213,6 @@ components:
           type: string
           x-stoplight:
             id: vqjd5qddm3p8g
-        azure_resource_group_name:
-          type: string
-          x-stoplight:
-            id: lnc8rl0idrvve
         object_type:
           enum:
           - AZURE
@@ -32225,7 +32221,6 @@ components:
             id: 8oodrxjznyahm
       required:
       - azure_client_id
-      - azure_resource_group_name
       - azure_subscription_id
       - azure_tenant_id
       - id
@@ -32239,7 +32234,6 @@ components:
       example:
         azure_subscription_id: azure_subscription_id
         name: name
-        azure_resource_group_name: azure_resource_group_name
         azure_client_secret: azure_client_secret
         azure_tenant_id: azure_tenant_id
         azure_client_id: azure_client_id
@@ -32264,14 +32258,9 @@ components:
           type: string
           x-stoplight:
             id: mj5vuoojyw05b
-        azure_resource_group_name:
-          type: string
-          x-stoplight:
-            id: uudq68b36g6nk
       required:
       - azure_client_id
       - azure_client_secret
-      - azure_resource_group_name
       - azure_subscription_id
       - azure_tenant_id
       - name

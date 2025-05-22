@@ -21,14 +21,13 @@ var _ MappedNullable = &AzureStaticClusterCredentials{}
 
 // AzureStaticClusterCredentials struct for AzureStaticClusterCredentials
 type AzureStaticClusterCredentials struct {
-	Id                     string `json:"id"`
-	Name                   string `json:"name"`
-	AzureSubscriptionId    string `json:"azure_subscription_id"`
-	AzureTenantId          string `json:"azure_tenant_id"`
-	AzureClientId          string `json:"azure_client_id"`
-	AzureResourceGroupName string `json:"azure_resource_group_name"`
-	ObjectType             string `json:"object_type"`
-	AdditionalProperties   map[string]interface{}
+	Id                   string `json:"id"`
+	Name                 string `json:"name"`
+	AzureSubscriptionId  string `json:"azure_subscription_id"`
+	AzureTenantId        string `json:"azure_tenant_id"`
+	AzureClientId        string `json:"azure_client_id"`
+	ObjectType           string `json:"object_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AzureStaticClusterCredentials AzureStaticClusterCredentials
@@ -37,14 +36,13 @@ type _AzureStaticClusterCredentials AzureStaticClusterCredentials
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureResourceGroupName string, objectType string) *AzureStaticClusterCredentials {
+func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, azureClientId string, objectType string) *AzureStaticClusterCredentials {
 	this := AzureStaticClusterCredentials{}
 	this.Id = id
 	this.Name = name
 	this.AzureSubscriptionId = azureSubscriptionId
 	this.AzureTenantId = azureTenantId
 	this.AzureClientId = azureClientId
-	this.AzureResourceGroupName = azureResourceGroupName
 	this.ObjectType = objectType
 	return &this
 }
@@ -177,30 +175,6 @@ func (o *AzureStaticClusterCredentials) SetAzureClientId(v string) {
 	o.AzureClientId = v
 }
 
-// GetAzureResourceGroupName returns the AzureResourceGroupName field value
-func (o *AzureStaticClusterCredentials) GetAzureResourceGroupName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AzureResourceGroupName
-}
-
-// GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field value
-// and a boolean to check if the value has been set.
-func (o *AzureStaticClusterCredentials) GetAzureResourceGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AzureResourceGroupName, true
-}
-
-// SetAzureResourceGroupName sets field value
-func (o *AzureStaticClusterCredentials) SetAzureResourceGroupName(v string) {
-	o.AzureResourceGroupName = v
-}
-
 // GetObjectType returns the ObjectType field value
 func (o *AzureStaticClusterCredentials) GetObjectType() string {
 	if o == nil {
@@ -240,7 +214,6 @@ func (o AzureStaticClusterCredentials) ToMap() (map[string]interface{}, error) {
 	toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	toSerialize["azure_tenant_id"] = o.AzureTenantId
 	toSerialize["azure_client_id"] = o.AzureClientId
-	toSerialize["azure_resource_group_name"] = o.AzureResourceGroupName
 	toSerialize["object_type"] = o.ObjectType
 
 	for key, value := range o.AdditionalProperties {
@@ -260,7 +233,6 @@ func (o *AzureStaticClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 		"azure_subscription_id",
 		"azure_tenant_id",
 		"azure_client_id",
-		"azure_resource_group_name",
 		"object_type",
 	}
 
@@ -296,7 +268,6 @@ func (o *AzureStaticClusterCredentials) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azure_subscription_id")
 		delete(additionalProperties, "azure_tenant_id")
 		delete(additionalProperties, "azure_client_id")
-		delete(additionalProperties, "azure_resource_group_name")
 		delete(additionalProperties, "object_type")
 		o.AdditionalProperties = additionalProperties
 	}

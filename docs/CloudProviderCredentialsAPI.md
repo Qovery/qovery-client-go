@@ -122,7 +122,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example", "AzureResourceGroupName_example") // AzureCredentialsRequest |  (optional)
+	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example") // AzureCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -821,7 +821,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example", "AzureResourceGroupName_example") // AzureCredentialsRequest |  (optional)
+	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example") // AzureCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

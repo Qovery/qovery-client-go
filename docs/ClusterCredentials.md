@@ -15,13 +15,12 @@ Name | Type | Description | Notes
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
 **AzureClientId** | **string** |  | 
-**AzureResourceGroupName** | **string** |  | 
 
 ## Methods
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureResourceGroupName string, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, azureSubscriptionId string, azureTenantId string, azureClientId string, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -254,26 +253,6 @@ and a boolean to check if the value has been set.
 `func (o *ClusterCredentials) SetAzureClientId(v string)`
 
 SetAzureClientId sets AzureClientId field to given value.
-
-
-### GetAzureResourceGroupName
-
-`func (o *ClusterCredentials) GetAzureResourceGroupName() string`
-
-GetAzureResourceGroupName returns the AzureResourceGroupName field if non-nil, zero value otherwise.
-
-### GetAzureResourceGroupNameOk
-
-`func (o *ClusterCredentials) GetAzureResourceGroupNameOk() (*string, bool)`
-
-GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureResourceGroupName
-
-`func (o *ClusterCredentials) SetAzureResourceGroupName(v string)`
-
-SetAzureResourceGroupName sets AzureResourceGroupName field to given value.
 
 
 

@@ -21,13 +21,12 @@ var _ MappedNullable = &AzureCredentialsRequest{}
 
 // AzureCredentialsRequest struct for AzureCredentialsRequest
 type AzureCredentialsRequest struct {
-	Name                   string `json:"name"`
-	AzureSubscriptionId    string `json:"azure_subscription_id"`
-	AzureTenantId          string `json:"azure_tenant_id"`
-	AzureClientId          string `json:"azure_client_id"`
-	AzureClientSecret      string `json:"azure_client_secret"`
-	AzureResourceGroupName string `json:"azure_resource_group_name"`
-	AdditionalProperties   map[string]interface{}
+	Name                 string `json:"name"`
+	AzureSubscriptionId  string `json:"azure_subscription_id"`
+	AzureTenantId        string `json:"azure_tenant_id"`
+	AzureClientId        string `json:"azure_client_id"`
+	AzureClientSecret    string `json:"azure_client_secret"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _AzureCredentialsRequest AzureCredentialsRequest
@@ -36,14 +35,13 @@ type _AzureCredentialsRequest AzureCredentialsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string, azureResourceGroupName string) *AzureCredentialsRequest {
+func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string) *AzureCredentialsRequest {
 	this := AzureCredentialsRequest{}
 	this.Name = name
 	this.AzureSubscriptionId = azureSubscriptionId
 	this.AzureTenantId = azureTenantId
 	this.AzureClientId = azureClientId
 	this.AzureClientSecret = azureClientSecret
-	this.AzureResourceGroupName = azureResourceGroupName
 	return &this
 }
 
@@ -175,30 +173,6 @@ func (o *AzureCredentialsRequest) SetAzureClientSecret(v string) {
 	o.AzureClientSecret = v
 }
 
-// GetAzureResourceGroupName returns the AzureResourceGroupName field value
-func (o *AzureCredentialsRequest) GetAzureResourceGroupName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AzureResourceGroupName
-}
-
-// GetAzureResourceGroupNameOk returns a tuple with the AzureResourceGroupName field value
-// and a boolean to check if the value has been set.
-func (o *AzureCredentialsRequest) GetAzureResourceGroupNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AzureResourceGroupName, true
-}
-
-// SetAzureResourceGroupName sets field value
-func (o *AzureCredentialsRequest) SetAzureResourceGroupName(v string) {
-	o.AzureResourceGroupName = v
-}
-
 func (o AzureCredentialsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -214,7 +188,6 @@ func (o AzureCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["azure_tenant_id"] = o.AzureTenantId
 	toSerialize["azure_client_id"] = o.AzureClientId
 	toSerialize["azure_client_secret"] = o.AzureClientSecret
-	toSerialize["azure_resource_group_name"] = o.AzureResourceGroupName
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -233,7 +206,6 @@ func (o *AzureCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 		"azure_tenant_id",
 		"azure_client_id",
 		"azure_client_secret",
-		"azure_resource_group_name",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -268,7 +240,6 @@ func (o *AzureCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "azure_tenant_id")
 		delete(additionalProperties, "azure_client_id")
 		delete(additionalProperties, "azure_client_secret")
-		delete(additionalProperties, "azure_resource_group_name")
 		o.AdditionalProperties = additionalProperties
 	}
 
