@@ -28565,6 +28565,7 @@ components:
       - ORGANIZATION
       - PROJECT
       - WEBHOOK
+      - TERRAFORM
       example: APPLICATION
       title: ""
       type: string

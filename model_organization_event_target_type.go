@@ -33,6 +33,7 @@ const (
 	ORGANIZATIONEVENTTARGETTYPE_ORGANIZATION       OrganizationEventTargetType = "ORGANIZATION"
 	ORGANIZATIONEVENTTARGETTYPE_PROJECT            OrganizationEventTargetType = "PROJECT"
 	ORGANIZATIONEVENTTARGETTYPE_WEBHOOK            OrganizationEventTargetType = "WEBHOOK"
+	ORGANIZATIONEVENTTARGETTYPE_TERRAFORM          OrganizationEventTargetType = "TERRAFORM"
 )
 
 // All allowed values of OrganizationEventTargetType enum
@@ -49,6 +50,7 @@ var AllowedOrganizationEventTargetTypeEnumValues = []OrganizationEventTargetType
 	"ORGANIZATION",
 	"PROJECT",
 	"WEBHOOK",
+	"TERRAFORM",
 }
 
 func (v *OrganizationEventTargetType) UnmarshalJSON(src []byte) error {
