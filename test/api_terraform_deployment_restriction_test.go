@@ -36,6 +36,35 @@ func Test_qovery_TerraformDeploymentRestrictionAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TerraformDeploymentRestrictionAPIService DeleteTerraformDeploymentRestriction", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+		var deploymentRestrictionId string
+
+		httpRes, err := apiClient.TerraformDeploymentRestrictionAPI.DeleteTerraformDeploymentRestriction(context.Background(), terraformId, deploymentRestrictionId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TerraformDeploymentRestrictionAPIService EditTerraformDeploymentRestriction", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+		var deploymentRestrictionId string
+
+		resp, httpRes, err := apiClient.TerraformDeploymentRestrictionAPI.EditTerraformDeploymentRestriction(context.Background(), terraformId, deploymentRestrictionId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TerraformDeploymentRestrictionAPIService GetTerraformDeploymentRestrictions", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

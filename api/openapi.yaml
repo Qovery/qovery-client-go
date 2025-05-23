@@ -16237,6 +16237,90 @@ paths:
       - Terraform Deployment Restriction
       x-stoplight:
         id: l6192gxde3sbv
+  /terraform/{terraformId}/deploymentRestriction/{deploymentRestrictionId}:
+    delete:
+      description: Delete a terraform deployment restriction
+      operationId: deleteTerraformDeploymentRestriction
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a terraform deployment restriction
+      tags:
+      - Terraform Deployment Restriction
+      x-stoplight:
+        id: d896flm9ibi54
+    put:
+      description: Edit a terraform deployment restriction
+      operationId: editTerraformDeploymentRestriction
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Deployment Restriction ID
+        explode: false
+        in: path
+        name: deploymentRestrictionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformDeploymentRestrictionRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformDeploymentRestrictionResponse'
+          description: Edit a terraform deployment restriction
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit a terraform deployment restriction
+      tags:
+      - Terraform Deployment Restriction
+      x-stoplight:
+        id: w3jp2xci6bogt
 components:
   parameters:
     applicationId:
