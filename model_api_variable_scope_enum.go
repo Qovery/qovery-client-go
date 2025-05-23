@@ -28,6 +28,7 @@ const (
 	APIVARIABLESCOPEENUM_CONTAINER   APIVariableScopeEnum = "CONTAINER"
 	APIVARIABLESCOPEENUM_JOB         APIVariableScopeEnum = "JOB"
 	APIVARIABLESCOPEENUM_HELM        APIVariableScopeEnum = "HELM"
+	APIVARIABLESCOPEENUM_TERRAFORM   APIVariableScopeEnum = "TERRAFORM"
 )
 
 // All allowed values of APIVariableScopeEnum enum
@@ -39,6 +40,7 @@ var AllowedAPIVariableScopeEnumEnumValues = []APIVariableScopeEnum{
 	"CONTAINER",
 	"JOB",
 	"HELM",
+	"TERRAFORM",
 }
 
 func (v *APIVariableScopeEnum) UnmarshalJSON(src []byte) error {

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateTerraform**](TerraformsAPI.md#CreateTerraform) | **Post** /environment/{environmentId}/terraform | Create a terraform
+[**GetDefaultTerraformAdvancedSettings**](TerraformsAPI.md#GetDefaultTerraformAdvancedSettings) | **Get** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
 [**ListTerraforms**](TerraformsAPI.md#ListTerraforms) | **Get** /environment/{environmentId}/terraform | List terraforms
 
 
@@ -72,6 +73,65 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetDefaultTerraformAdvancedSettings
+
+> TerraformAdvancedSettings GetDefaultTerraformAdvancedSettings(ctx).Execute()
+
+List default terraform advanced settings
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.TerraformsAPI.GetDefaultTerraformAdvancedSettings(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TerraformsAPI.GetDefaultTerraformAdvancedSettings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetDefaultTerraformAdvancedSettings`: TerraformAdvancedSettings
+	fmt.Fprintf(os.Stdout, "Response from `TerraformsAPI.GetDefaultTerraformAdvancedSettings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetDefaultTerraformAdvancedSettingsRequest struct via the builder pattern
+
+
+### Return type
+
+[**TerraformAdvancedSettings**](TerraformAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

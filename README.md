@@ -521,6 +521,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsAPI* | [**EditTerraform**](docs/TerraformMainCallsAPI.md#editterraform) | **Put** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsAPI* | [**GetTerraform**](docs/TerraformMainCallsAPI.md#getterraform) | **Get** /terraform/{terraformId} | Get terraform by ID
 *TerraformsAPI* | [**CreateTerraform**](docs/TerraformsAPI.md#createterraform) | **Post** /environment/{environmentId}/terraform | Create a terraform
+*TerraformsAPI* | [**GetDefaultTerraformAdvancedSettings**](docs/TerraformsAPI.md#getdefaultterraformadvancedsettings) | **Get** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
 *TerraformsAPI* | [**ListTerraforms**](docs/TerraformsAPI.md#listterraforms) | **Get** /environment/{environmentId}/terraform | List terraforms
 *UserSignUpAPI* | [**CreateUserSignUp**](docs/UserSignUpAPI.md#createusersignup) | **Post** /admin/userSignUp | Send Sign Up request
 *UserSignUpAPI* | [**GetUserSignUp**](docs/UserSignUpAPI.md#getusersignup) | **Get** /admin/userSignUp | Get Sign up information

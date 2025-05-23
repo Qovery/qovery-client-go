@@ -114,6 +114,8 @@ tags:
 - name: Project Secret
 - name: Projects
 - name: Referral & Rewards
+- name: Terraforms
+- name: Terraform Main Calls
 - name: Container Registries
 - name: Helm Repositories
 - name: User Sign Up
@@ -16073,6 +16075,25 @@ paths:
       - Terraform Configuration
       x-stoplight:
         id: 0rd396pcy9m0e
+  '/defaultTerraformAdvancedSettings:':
+    get:
+      operationId: getDefaultTerraformAdvancedSettings
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformAdvancedSettings'
+          description: Default terraform advanced settings
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List default terraform advanced settings
+      tags:
+      - Terraforms
+      x-stoplight:
+        id: 5qcyy764ewhk3
 components:
   parameters:
     applicationId:
@@ -24906,6 +24927,7 @@ components:
       - CONTAINER
       - JOB
       - HELM
+      - TERRAFORM
       type: string
     APIVariableTypeEnum:
       description: |
@@ -35951,6 +35973,7 @@ x-tagGroups:
   - Databases
   - Jobs
   - Helms
+  - Terraforms
   - Environment Actions
   - Environment Logs
   - Environment Deployment History
@@ -36016,6 +36039,13 @@ x-tagGroups:
   - Helm Custom Domain
   - Helm Deployment Restriction
   - Helm Deployment History
+- name: Terraform
+  tags:
+  - Terraform Main Calls
+  - Terraform Actions
+  - Terraform Configuration
+  - Terraform Deployment Restriction
+  - Terraform Deployment History
 - name: Account
   tags:
   - Account Info
