@@ -117,6 +117,7 @@ tags:
 - name: Terraforms
 - name: Terraform Main Calls
 - name: Terraform Deployment History
+- name: Terraform Deployment Restriction
 - name: Container Registries
 - name: Helm Repositories
 - name: User Sign Up
@@ -16165,6 +16166,77 @@ paths:
       - Terraform Deployment History
       x-stoplight:
         id: qxm14ubc0l5dq
+  /terraform/{terraformId}/deploymentRestriction:
+    get:
+      description: Get terraform deployment restrictions
+      operationId: getTerraformDeploymentRestrictions
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformDeploymentRestrictionResponseList'
+          description: Get terraform deployment restrictions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get terraform deployment restrictions
+      tags:
+      - Terraform Deployment Restriction
+      x-stoplight:
+        id: q3y44x1wdigcd
+    post:
+      description: Create a terraform deployment restriction
+      operationId: createTerraformDeploymentRestriction
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformDeploymentRestrictionRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformDeploymentRestrictionResponse'
+          description: Added an terraform deployment restriction
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "409":
+          description: A terraform deployment restriction with same properties already
+            exists for this terraform
+      summary: Create a terraform deployment restriction
+      tags:
+      - Terraform Deployment Restriction
+      x-stoplight:
+        id: l6192gxde3sbv
 components:
   parameters:
     applicationId:
@@ -32833,6 +32905,68 @@ components:
       type: object
       x-stoplight:
         id: vykzi46lkt2y1
+    TerraformDeploymentRestrictionRequest:
+      example:
+        mode: MATCH
+        type: PATH
+        value: value
+      properties:
+        mode:
+          $ref: '#/components/schemas/DeploymentRestrictionModeEnum'
+        type:
+          $ref: '#/components/schemas/DeploymentRestrictionTypeEnum'
+        value:
+          description: "‘For `PATH` restrictions, the value must not start with `/`’"
+          type: string
+          x-stoplight:
+            id: hsk8w0ydpuwm4
+      required:
+      - mode
+      - type
+      title: TerraformDeploymentRestrictionRequest
+      type: object
+      x-stoplight:
+        id: gtjm33l5m7q0x
+    TerraformDeploymentRestrictionResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/TerraformDeploymentRestrictionRequest'
+      example:
+        mode: MATCH
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: PATH
+        value: value
+      title: TerraformDeploymentRestrictionResponse
+      x-stoplight:
+        id: 9t9zdouc9tao0
+    TerraformDeploymentRestrictionResponseList:
+      example:
+        results:
+        - mode: MATCH
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: PATH
+          value: value
+        - mode: MATCH
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: PATH
+          value: value
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/TerraformDeploymentRestrictionResponse'
+          type: array
+          x-stoplight:
+            id: iu0k7b7tkayre
+      title: TerraformDeploymentRestrictionResponseList
+      type: object
+      x-stoplight:
+        id: olvqymwxtdfeq
     deleteMember_request:
       properties:
         user_id:
