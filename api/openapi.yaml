@@ -116,6 +116,7 @@ tags:
 - name: Referral & Rewards
 - name: Terraforms
 - name: Terraform Main Calls
+- name: Terraform Deployment History
 - name: Container Registries
 - name: Helm Repositories
 - name: User Sign Up
@@ -16094,6 +16095,76 @@ paths:
       - Terraforms
       x-stoplight:
         id: 5qcyy764ewhk3
+  /terraform/{terraformId}/clone:
+    post:
+      description: This will create a new terraform with the same configuration on
+        the targeted environment Id.
+      operationId: cloneTerraform
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CloneServiceRequest'
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResponse'
+          description: Terraform clone has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Clone terraform
+      tags:
+      - Terraforms
+  /terraform/{terraformId}/deploymentHistoryV2:
+    get:
+      description: Returns the 20 last terraform deployments
+      operationId: listTerraformDeploymentHistoryV2
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List terraform deployments
+      tags:
+      - Terraform Deployment History
+      x-stoplight:
+        id: qxm14ubc0l5dq
 components:
   parameters:
     applicationId:

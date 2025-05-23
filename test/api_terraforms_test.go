@@ -22,6 +22,20 @@ func Test_qovery_TerraformsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test TerraformsAPIService CloneTerraform", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+
+		resp, httpRes, err := apiClient.TerraformsAPI.CloneTerraform(context.Background(), terraformId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TerraformsAPIService CreateTerraform", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

@@ -84,6 +84,7 @@ api_projects.go
 api_referral_rewards.go
 api_service_status.go
 api_terraform_configuration.go
+api_terraform_deployment_history.go
 api_terraform_main_calls.go
 api_terraforms.go
 api_user_sign_up.go
@@ -709,6 +710,7 @@ docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformConfigurationAPI.md
+docs/TerraformDeploymentHistoryAPI.md
 docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
@@ -1402,6 +1404,7 @@ test/api_projects_test.go
 test/api_referral_rewards_test.go
 test/api_service_status_test.go
 test/api_terraform_configuration_test.go
+test/api_terraform_deployment_history_test.go
 test/api_terraform_main_calls_test.go
 test/api_terraforms_test.go
 test/api_user_sign_up_test.go
