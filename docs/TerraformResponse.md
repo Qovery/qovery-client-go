@@ -13,18 +13,19 @@ Name | Type | Description | Notes
 **AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
 **TerraformFilesSource** | Pointer to **map[string]interface{}** |  | [optional] 
-**IconUri** | Pointer to **string** | Icon URI representing the terraform service. | [optional] 
+**IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **Provider** | **string** |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
+**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 
 ## Methods
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -263,11 +264,6 @@ and a boolean to check if the value has been set.
 
 SetIconUri sets IconUri field to given value.
 
-### HasIconUri
-
-`func (o *TerraformResponse) HasIconUri() bool`
-
-HasIconUri returns a boolean if a field has been set.
 
 ### GetServiceType
 
@@ -367,6 +363,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformResponse) SetJobResources(v TerraformJobResourcesResponse)`
 
 SetJobResources sets JobResources field to given value.
+
+
+### GetEnvironment
+
+`func (o *TerraformResponse) GetEnvironment() ReferenceObject`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *TerraformResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *TerraformResponse) SetEnvironment(v ReferenceObject)`
+
+SetEnvironment sets Environment field to given value.
 
 
 

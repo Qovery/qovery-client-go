@@ -32642,9 +32642,13 @@ components:
             $ref: '#/components/schemas/TerraformProviderVersion'
           job_resources:
             $ref: '#/components/schemas/TerraformJobResourcesResponse'
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
         required:
         - auto_approve
         - auto_deploy
+        - environment
+        - icon_uri
         - job_resources
         - name
         - provider
@@ -32676,6 +32680,8 @@ components:
           - value: value
             key: key
         service_type: APPLICATION
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
         provider: TERRAFORM
         timeout_sec: 0
@@ -32901,6 +32907,8 @@ components:
             - value: value
               key: key
           service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           provider: TERRAFORM
           timeout_sec: 0
@@ -32929,6 +32937,8 @@ components:
             - value: value
               key: key
           service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           provider: TERRAFORM
           timeout_sec: 0

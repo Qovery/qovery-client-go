@@ -33,12 +33,13 @@ type TerraformResponse struct {
 	AutoDeploy           bool                   `json:"auto_deploy"`
 	TerraformFilesSource map[string]interface{} `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
-	IconUri                  *string                          `json:"icon_uri,omitempty"`
+	IconUri                  string                           `json:"icon_uri"`
 	ServiceType              ServiceTypeEnum                  `json:"service_type"`
 	TerraformVariablesSource TerraformVariablesSourceResponse `json:"terraform_variables_source"`
 	Provider                 string                           `json:"provider"`
 	ProviderVersion          TerraformProviderVersion         `json:"provider_version"`
 	JobResources             TerraformJobResourcesResponse    `json:"job_resources"`
+	Environment              ReferenceObject                  `json:"environment"`
 	AdditionalProperties     map[string]interface{}
 }
 
@@ -48,7 +49,7 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -56,11 +57,13 @@ func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSe
 	this.TimeoutSec = timeoutSec
 	this.AutoApprove = autoApprove
 	this.AutoDeploy = autoDeploy
+	this.IconUri = iconUri
 	this.ServiceType = serviceType
 	this.TerraformVariablesSource = terraformVariablesSource
 	this.Provider = provider
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
+	this.Environment = environment
 	return &this
 }
 
@@ -315,36 +318,28 @@ func (o *TerraformResponse) SetTerraformFilesSource(v map[string]interface{}) {
 	o.TerraformFilesSource = v
 }
 
-// GetIconUri returns the IconUri field value if set, zero value otherwise.
+// GetIconUri returns the IconUri field value
 func (o *TerraformResponse) GetIconUri() string {
-	if o == nil || IsNil(o.IconUri) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.IconUri
+
+	return o.IconUri
 }
 
-// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// GetIconUriOk returns a tuple with the IconUri field value
 // and a boolean to check if the value has been set.
 func (o *TerraformResponse) GetIconUriOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUri) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IconUri, true
+	return &o.IconUri, true
 }
 
-// HasIconUri returns a boolean if a field has been set.
-func (o *TerraformResponse) HasIconUri() bool {
-	if o != nil && !IsNil(o.IconUri) {
-		return true
-	}
-
-	return false
-}
-
-// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+// SetIconUri sets field value
 func (o *TerraformResponse) SetIconUri(v string) {
-	o.IconUri = &v
+	o.IconUri = v
 }
 
 // GetServiceType returns the ServiceType field value
@@ -467,6 +462,30 @@ func (o *TerraformResponse) SetJobResources(v TerraformJobResourcesResponse) {
 	o.JobResources = v
 }
 
+// GetEnvironment returns the Environment field value
+func (o *TerraformResponse) GetEnvironment() ReferenceObject {
+	if o == nil {
+		var ret ReferenceObject
+		return ret
+	}
+
+	return o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Environment, true
+}
+
+// SetEnvironment sets field value
+func (o *TerraformResponse) SetEnvironment(v ReferenceObject) {
+	o.Environment = v
+}
+
 func (o TerraformResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -492,14 +511,13 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	if o.TerraformFilesSource != nil {
 		toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	}
-	if !IsNil(o.IconUri) {
-		toSerialize["icon_uri"] = o.IconUri
-	}
+	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
 	toSerialize["provider"] = o.Provider
 	toSerialize["provider_version"] = o.ProviderVersion
 	toSerialize["job_resources"] = o.JobResources
+	toSerialize["environment"] = o.Environment
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -519,11 +537,13 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"timeout_sec",
 		"auto_approve",
 		"auto_deploy",
+		"icon_uri",
 		"service_type",
 		"terraform_variables_source",
 		"provider",
 		"provider_version",
 		"job_resources",
+		"environment",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -568,6 +588,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "job_resources")
+		delete(additionalProperties, "environment")
 		o.AdditionalProperties = additionalProperties
 	}
 
