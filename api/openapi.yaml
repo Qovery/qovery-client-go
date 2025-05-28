@@ -18816,6 +18816,8 @@ components:
             $ref: '#/components/schemas/ClusterDeploymentStatusEnum'
           metrics_parameters:
             $ref: '#/components/schemas/MetricsParameters'
+          infrastructure_outputs:
+            $ref: '#/components/schemas/InfrastructureOutputs'
         required:
         - cloud_provider
         - name
@@ -18824,6 +18826,10 @@ components:
         type: object
       example:
         kubernetes: MANAGED
+        infrastructure_outputs:
+          cluster_oidc_issuer: cluster_oidc_issuer
+          cluster_name: cluster_name
+          kind: AKS
         memory: 4096
         production: true
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -19636,6 +19642,10 @@ components:
       example:
         results:
         - kubernetes: MANAGED
+          infrastructure_outputs:
+            cluster_oidc_issuer: cluster_oidc_issuer
+            cluster_name: cluster_name
+            kind: AKS
           memory: 4096
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -19704,6 +19714,10 @@ components:
           instance_type: T3A_LARGE
           status: BUILDING
         - kubernetes: MANAGED
+          infrastructure_outputs:
+            cluster_oidc_issuer: cluster_oidc_issuer
+            cluster_name: cluster_name
+            kind: AKS
           memory: 4096
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -32424,6 +32438,89 @@ components:
       type: object
       x-stoplight:
         id: d6oy3aiodk659
+    InfrastructureOutputs:
+      discriminator:
+        mapping:
+          AKS: '#/components/schemas/AksInfrastructureOutputs'
+          EKS: '#/components/schemas/EksInfrastructureOutputs'
+          GKE: '#/components/schemas/GkeInfrastructureOutputs'
+          SCW_KAPSULE: '#/components/schemas/KapsuleInfrastructureOutputs'
+        propertyName: kind
+      oneOf:
+      - $ref: '#/components/schemas/AksInfrastructureOutputs'
+      - $ref: '#/components/schemas/EksInfrastructureOutputs'
+      - $ref: '#/components/schemas/GkeInfrastructureOutputs'
+      - $ref: '#/components/schemas/KapsuleInfrastructureOutputs'
+      required:
+      - kind
+      type: object
+    AksInfrastructureOutputs:
+      example:
+        cluster_oidc_issuer: cluster_oidc_issuer
+        cluster_name: cluster_name
+        kind: AKS
+      properties:
+        kind:
+          enum:
+          - AKS
+          type: string
+        cluster_name:
+          type: string
+        cluster_oidc_issuer:
+          type: string
+      required:
+      - cluster_name
+      - cluster_oidc_issuer
+      - kind
+      type: object
+    EksInfrastructureOutputs:
+      properties:
+        kind:
+          enum:
+          - EKS
+          type: string
+        cluster_name:
+          type: string
+        cluster_arn:
+          type: string
+        cluster_oidc_issuer:
+          type: string
+        vpc_id:
+          type: string
+      required:
+      - cluster_arn
+      - cluster_name
+      - cluster_oidc_issuer
+      - kind
+      - vpc_id
+      type: object
+    GkeInfrastructureOutputs:
+      properties:
+        kind:
+          enum:
+          - GKE
+          type: string
+        cluster_name:
+          type: string
+        cluster_self_link:
+          type: string
+      required:
+      - cluster_name
+      - cluster_self_link
+      - kind
+      type: object
+    KapsuleInfrastructureOutputs:
+      properties:
+        kind:
+          enum:
+          - SCW_KAPSULE
+          type: string
+        cluster_name:
+          type: string
+      required:
+      - cluster_name
+      - kind
+      type: object
     IngressDeploymentStatusResponse:
       example:
         routerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

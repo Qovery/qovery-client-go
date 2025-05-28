@@ -53,11 +53,12 @@ type Cluster struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys              []string                     `json:"ssh_keys,omitempty"`
-	Features             []ClusterFeatureResponse     `json:"features,omitempty"`
-	DeploymentStatus     *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
-	MetricsParameters    *MetricsParameters           `json:"metrics_parameters,omitempty"`
-	AdditionalProperties map[string]interface{}
+	SshKeys               []string                     `json:"ssh_keys,omitempty"`
+	Features              []ClusterFeatureResponse     `json:"features,omitempty"`
+	DeploymentStatus      *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
+	MetricsParameters     *MetricsParameters           `json:"metrics_parameters,omitempty"`
+	InfrastructureOutputs *InfrastructureOutputs       `json:"infrastructure_outputs,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _Cluster Cluster
@@ -885,6 +886,38 @@ func (o *Cluster) SetMetricsParameters(v MetricsParameters) {
 	o.MetricsParameters = &v
 }
 
+// GetInfrastructureOutputs returns the InfrastructureOutputs field value if set, zero value otherwise.
+func (o *Cluster) GetInfrastructureOutputs() InfrastructureOutputs {
+	if o == nil || IsNil(o.InfrastructureOutputs) {
+		var ret InfrastructureOutputs
+		return ret
+	}
+	return *o.InfrastructureOutputs
+}
+
+// GetInfrastructureOutputsOk returns a tuple with the InfrastructureOutputs field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetInfrastructureOutputsOk() (*InfrastructureOutputs, bool) {
+	if o == nil || IsNil(o.InfrastructureOutputs) {
+		return nil, false
+	}
+	return o.InfrastructureOutputs, true
+}
+
+// HasInfrastructureOutputs returns a boolean if a field has been set.
+func (o *Cluster) HasInfrastructureOutputs() bool {
+	if o != nil && !IsNil(o.InfrastructureOutputs) {
+		return true
+	}
+
+	return false
+}
+
+// SetInfrastructureOutputs gets a reference to the given InfrastructureOutputs and assigns it to the InfrastructureOutputs field.
+func (o *Cluster) SetInfrastructureOutputs(v InfrastructureOutputs) {
+	o.InfrastructureOutputs = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -961,6 +994,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MetricsParameters) {
 		toSerialize["metrics_parameters"] = o.MetricsParameters
 	}
+	if !IsNil(o.InfrastructureOutputs) {
+		toSerialize["infrastructure_outputs"] = o.InfrastructureOutputs
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1035,6 +1071,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "features")
 		delete(additionalProperties, "deployment_status")
 		delete(additionalProperties, "metrics_parameters")
+		delete(additionalProperties, "infrastructure_outputs")
 		o.AdditionalProperties = additionalProperties
 	}
 

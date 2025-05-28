@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **Features** | Pointer to [**[]ClusterFeatureResponse**](ClusterFeatureResponse.md) |  | [optional] 
 **DeploymentStatus** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
 **MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
+**InfrastructureOutputs** | Pointer to [**InfrastructureOutputs**](InfrastructureOutputs.md) |  | [optional] 
 
 ## Methods
 
@@ -669,6 +670,31 @@ SetMetricsParameters sets MetricsParameters field to given value.
 `func (o *Cluster) HasMetricsParameters() bool`
 
 HasMetricsParameters returns a boolean if a field has been set.
+
+### GetInfrastructureOutputs
+
+`func (o *Cluster) GetInfrastructureOutputs() InfrastructureOutputs`
+
+GetInfrastructureOutputs returns the InfrastructureOutputs field if non-nil, zero value otherwise.
+
+### GetInfrastructureOutputsOk
+
+`func (o *Cluster) GetInfrastructureOutputsOk() (*InfrastructureOutputs, bool)`
+
+GetInfrastructureOutputsOk returns a tuple with the InfrastructureOutputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInfrastructureOutputs
+
+`func (o *Cluster) SetInfrastructureOutputs(v InfrastructureOutputs)`
+
+SetInfrastructureOutputs sets InfrastructureOutputs field to given value.
+
+### HasInfrastructureOutputs
+
+`func (o *Cluster) HasInfrastructureOutputs() bool`
+
+HasInfrastructureOutputs returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

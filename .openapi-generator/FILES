@@ -97,6 +97,7 @@ docs/APIVariableTypeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoAPI.md
 docs/AccountInfoEditRequest.md
+docs/AksInfrastructureOutputs.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
@@ -333,6 +334,7 @@ docs/DeploymentStageServiceResponse.md
 docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
+docs/EksInfrastructureOutputs.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentAPI.md
@@ -402,6 +404,7 @@ docs/GitTokenRequest.md
 docs/GitTokenResponse.md
 docs/GitTokenResponseList.md
 docs/GithubAppAPI.md
+docs/GkeInfrastructureOutputs.md
 docs/Healthcheck.md
 docs/HelmActionsAPI.md
 docs/HelmAdvancedSettings.md
@@ -464,6 +467,7 @@ docs/HelmSourceRepositoryResponseRepository.md
 docs/HelmVersionResponse.md
 docs/HelmVersionResponseList.md
 docs/HelmsAPI.md
+docs/InfrastructureOutputs.md
 docs/IngressDeploymentStatusResponse.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
@@ -501,6 +505,7 @@ docs/JobScheduleEvent.md
 docs/JobSecretAPI.md
 docs/JobSourceDockerResponse.md
 docs/JobsAPI.md
+docs/KapsuleInfrastructureOutputs.md
 docs/KarpenterDefaultNodePoolOverride.md
 docs/KarpenterNodePool.md
 docs/KarpenterNodePoolConsolidation.md
@@ -758,6 +763,7 @@ go.mod
 go.sum
 model_account_info.go
 model_account_info_edit_request.go
+model_aks_infrastructure_outputs.go
 model_annotation.go
 model_annotations_group_associated_item_type.go
 model_api_variable_scope_enum.go
@@ -963,6 +969,7 @@ model_deployment_stage_service_response.go
 model_deployment_stage_with_services_statuses.go
 model_dockerfile_check_request.go
 model_dockerfile_check_response.go
+model_eks_infrastructure_outputs.go
 model_env_deployment_status.go
 model_environment.go
 model_environment_all_of_cloud_provider.go
@@ -1020,6 +1027,7 @@ model_git_token_associated_services_response_list.go
 model_git_token_request.go
 model_git_token_response.go
 model_git_token_response_list.go
+model_gke_infrastructure_outputs.go
 model_healthcheck.go
 model_helm_advanced_settings.go
 model_helm_check_request.go
@@ -1074,6 +1082,7 @@ model_helm_source_repository_response.go
 model_helm_source_repository_response_repository.go
 model_helm_version_response.go
 model_helm_version_response_list.go
+model_infrastructure_outputs.go
 model_ingress_deployment_status_response.go
 model_invite_member.go
 model_invite_member_request.go
@@ -1103,6 +1112,7 @@ model_job_response.go
 model_job_response_list.go
 model_job_schedule_event.go
 model_job_source_docker_response.go
+model_kapsule_infrastructure_outputs.go
 model_karpenter_default_node_pool_override.go
 model_karpenter_node_pool.go
 model_karpenter_node_pool_consolidation.go
