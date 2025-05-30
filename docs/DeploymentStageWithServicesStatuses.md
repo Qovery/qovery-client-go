@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Terraforms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Stage** | Pointer to [**Stage**](Stage.md) |  | [optional] 
 
 ## Methods
@@ -154,6 +155,31 @@ SetHelms sets Helms field to given value.
 `func (o *DeploymentStageWithServicesStatuses) HasHelms() bool`
 
 HasHelms returns a boolean if a field has been set.
+
+### GetTerraforms
+
+`func (o *DeploymentStageWithServicesStatuses) GetTerraforms() []Status`
+
+GetTerraforms returns the Terraforms field if non-nil, zero value otherwise.
+
+### GetTerraformsOk
+
+`func (o *DeploymentStageWithServicesStatuses) GetTerraformsOk() (*[]Status, bool)`
+
+GetTerraformsOk returns a tuple with the Terraforms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraforms
+
+`func (o *DeploymentStageWithServicesStatuses) SetTerraforms(v []Status)`
+
+SetTerraforms sets Terraforms field to given value.
+
+### HasTerraforms
+
+`func (o *DeploymentStageWithServicesStatuses) HasTerraforms() bool`
+
+HasTerraforms returns a boolean if a field has been set.
 
 ### GetStage
 
