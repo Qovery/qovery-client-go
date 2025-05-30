@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Terraforms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetHelms sets Helms field to given value.
 `func (o *EnvironmentStatuses) HasHelms() bool`
 
 HasHelms returns a boolean if a field has been set.
+
+### GetTerraforms
+
+`func (o *EnvironmentStatuses) GetTerraforms() []Status`
+
+GetTerraforms returns the Terraforms field if non-nil, zero value otherwise.
+
+### GetTerraformsOk
+
+`func (o *EnvironmentStatuses) GetTerraformsOk() (*[]Status, bool)`
+
+GetTerraformsOk returns a tuple with the Terraforms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraforms
+
+`func (o *EnvironmentStatuses) SetTerraforms(v []Status)`
+
+SetTerraforms sets Terraforms field to given value.
+
+### HasTerraforms
+
+`func (o *EnvironmentStatuses) HasTerraforms() bool`
+
+HasTerraforms returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -26,6 +26,7 @@ type EnvironmentStatuses struct {
 	Jobs                 []Status           `json:"jobs,omitempty"`
 	Databases            []Status           `json:"databases,omitempty"`
 	Helms                []Status           `json:"helms,omitempty"`
+	Terraforms           []Status           `json:"terraforms,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -240,6 +241,38 @@ func (o *EnvironmentStatuses) SetHelms(v []Status) {
 	o.Helms = v
 }
 
+// GetTerraforms returns the Terraforms field value if set, zero value otherwise.
+func (o *EnvironmentStatuses) GetTerraforms() []Status {
+	if o == nil || IsNil(o.Terraforms) {
+		var ret []Status
+		return ret
+	}
+	return o.Terraforms
+}
+
+// GetTerraformsOk returns a tuple with the Terraforms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatuses) GetTerraformsOk() ([]Status, bool) {
+	if o == nil || IsNil(o.Terraforms) {
+		return nil, false
+	}
+	return o.Terraforms, true
+}
+
+// HasTerraforms returns a boolean if a field has been set.
+func (o *EnvironmentStatuses) HasTerraforms() bool {
+	if o != nil && !IsNil(o.Terraforms) {
+		return true
+	}
+
+	return false
+}
+
+// SetTerraforms gets a reference to the given []Status and assigns it to the Terraforms field.
+func (o *EnvironmentStatuses) SetTerraforms(v []Status) {
+	o.Terraforms = v
+}
+
 func (o EnvironmentStatuses) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -267,6 +300,9 @@ func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
+	}
+	if !IsNil(o.Terraforms) {
+		toSerialize["terraforms"] = o.Terraforms
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -296,6 +332,7 @@ func (o *EnvironmentStatuses) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "jobs")
 		delete(additionalProperties, "databases")
 		delete(additionalProperties, "helms")
+		delete(additionalProperties, "terraforms")
 		o.AdditionalProperties = additionalProperties
 	}
 
