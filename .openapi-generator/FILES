@@ -732,7 +732,6 @@ docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformRequestTerraformFilesSourceOneOf.md
 docs/TerraformResponse.md
 docs/TerraformResponseList.md
-docs/TerraformVarKeyValue.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
 docs/TerraformsAPI.md
@@ -1317,7 +1316,6 @@ model_terraform_request_terraform_files_source.go
 model_terraform_request_terraform_files_source_one_of.go
 model_terraform_response.go
 model_terraform_response_list.go
-model_terraform_var_key_value.go
 model_terraform_variables_source_request.go
 model_terraform_variables_source_response.go
 model_transfer_ownership_request.go

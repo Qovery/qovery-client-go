@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TfVarFilePaths** | **[]string** |  | 
-**TfVars** | [**[]TerraformVarKeyValue**](TerraformVarKeyValue.md) |  | 
+**TfVars** | [**[][][]string**]([][]string.md) |  | 
 
 ## Methods
 
 ### NewTerraformVariablesSourceRequest
 
-`func NewTerraformVariablesSourceRequest(tfVarFilePaths []string, tfVars []TerraformVarKeyValue, ) *TerraformVariablesSourceRequest`
+`func NewTerraformVariablesSourceRequest(tfVarFilePaths []string, tfVars [][][]string, ) *TerraformVariablesSourceRequest`
 
 NewTerraformVariablesSourceRequest instantiates a new TerraformVariablesSourceRequest object
 This constructor will assign default values to properties that have it defined,
@@ -48,20 +48,20 @@ SetTfVarFilePaths sets TfVarFilePaths field to given value.
 
 ### GetTfVars
 
-`func (o *TerraformVariablesSourceRequest) GetTfVars() []TerraformVarKeyValue`
+`func (o *TerraformVariablesSourceRequest) GetTfVars() [][][]string`
 
 GetTfVars returns the TfVars field if non-nil, zero value otherwise.
 
 ### GetTfVarsOk
 
-`func (o *TerraformVariablesSourceRequest) GetTfVarsOk() (*[]TerraformVarKeyValue, bool)`
+`func (o *TerraformVariablesSourceRequest) GetTfVarsOk() (*[][][]string, bool)`
 
 GetTfVarsOk returns a tuple with the TfVars field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTfVars
 
-`func (o *TerraformVariablesSourceRequest) SetTfVars(v []TerraformVarKeyValue)`
+`func (o *TerraformVariablesSourceRequest) SetTfVars(v [][][]string)`
 
 SetTfVars sets TfVars field to given value.
 

@@ -21,8 +21,8 @@ var _ MappedNullable = &TerraformVariablesSourceRequest{}
 
 // TerraformVariablesSourceRequest struct for TerraformVariablesSourceRequest
 type TerraformVariablesSourceRequest struct {
-	TfVarFilePaths       []string               `json:"tf_var_file_paths"`
-	TfVars               []TerraformVarKeyValue `json:"tf_vars"`
+	TfVarFilePaths       []string     `json:"tf_var_file_paths"`
+	TfVars               [][][]string `json:"tf_vars"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,7 +32,7 @@ type _TerraformVariablesSourceRequest TerraformVariablesSourceRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVariablesSourceRequest(tfVarFilePaths []string, tfVars []TerraformVarKeyValue) *TerraformVariablesSourceRequest {
+func NewTerraformVariablesSourceRequest(tfVarFilePaths []string, tfVars [][][]string) *TerraformVariablesSourceRequest {
 	this := TerraformVariablesSourceRequest{}
 	this.TfVarFilePaths = tfVarFilePaths
 	this.TfVars = tfVars
@@ -72,9 +72,9 @@ func (o *TerraformVariablesSourceRequest) SetTfVarFilePaths(v []string) {
 }
 
 // GetTfVars returns the TfVars field value
-func (o *TerraformVariablesSourceRequest) GetTfVars() []TerraformVarKeyValue {
+func (o *TerraformVariablesSourceRequest) GetTfVars() [][][]string {
 	if o == nil {
-		var ret []TerraformVarKeyValue
+		var ret [][][]string
 		return ret
 	}
 
@@ -83,7 +83,7 @@ func (o *TerraformVariablesSourceRequest) GetTfVars() []TerraformVarKeyValue {
 
 // GetTfVarsOk returns a tuple with the TfVars field value
 // and a boolean to check if the value has been set.
-func (o *TerraformVariablesSourceRequest) GetTfVarsOk() ([]TerraformVarKeyValue, bool) {
+func (o *TerraformVariablesSourceRequest) GetTfVarsOk() ([][][]string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -91,7 +91,7 @@ func (o *TerraformVariablesSourceRequest) GetTfVarsOk() ([]TerraformVarKeyValue,
 }
 
 // SetTfVars sets field value
-func (o *TerraformVariablesSourceRequest) SetTfVars(v []TerraformVarKeyValue) {
+func (o *TerraformVariablesSourceRequest) SetTfVars(v [][][]string) {
 	o.TfVars = v
 }
 

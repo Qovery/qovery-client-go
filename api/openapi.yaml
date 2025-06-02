@@ -32802,10 +32802,14 @@ components:
           - tf_var_file_paths
           - tf_var_file_paths
           tf_vars:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - - - null
+              - null
+            - - null
+              - null
+          - - - null
+              - null
+            - - null
+              - null
         auto_deploy: true
         job_resources:
           storage_gb: 1
@@ -32952,10 +32956,14 @@ components:
           - tf_var_file_paths
           - tf_var_file_paths
           tf_vars:
-          - value: value
-            key: key
-          - value: value
-            key: key
+          - - - null
+              - null
+            - - null
+              - null
+          - - - null
+              - null
+            - - null
+              - null
         service_type: APPLICATION
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33016,10 +33024,14 @@ components:
         - tf_var_file_paths
         - tf_var_file_paths
         tf_vars:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        - - - null
+            - null
+          - - null
+            - null
+        - - - null
+            - null
+          - - null
+            - null
       properties:
         tf_var_file_paths:
           items:
@@ -33043,25 +33055,13 @@ components:
       x-stoplight:
         id: w9dp75z2a944z
     TerraformVarKeyValue:
-      example:
-        value: value
-        key: key
-      properties:
-        key:
+      description: "The input is in json array format: [ [$KEY,$VALUE], [...] ]"
+      items:
+        items:
           type: string
-          x-stoplight:
-            id: s9jeb1aergb9d
-        value:
-          type: string
-          x-stoplight:
-            id: 1gxsc1tzlxv3w
-      required:
-      - key
-      - value
+        type: array
       title: TerraformVarKeyValue
-      type: object
-      x-stoplight:
-        id: 86bw027e72i7f
+      type: array
     TerraformFilesSourceRequest:
       properties:
         id:
@@ -33107,10 +33107,14 @@ components:
         - tf_var_file_paths
         - tf_var_file_paths
         tf_vars:
-        - value: value
-          key: key
-        - value: value
-          key: key
+        - - - null
+            - null
+          - - null
+            - null
+        - - - null
+            - null
+          - - null
+            - null
       properties:
         tf_var_file_paths:
           items:
@@ -33179,10 +33183,14 @@ components:
             - tf_var_file_paths
             - tf_var_file_paths
             tf_vars:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - - - null
+                - null
+              - - null
+                - null
+            - - - null
+                - null
+              - - null
+                - null
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33209,10 +33217,14 @@ components:
             - tf_var_file_paths
             - tf_var_file_paths
             tf_vars:
-            - value: value
-              key: key
-            - value: value
-              key: key
+            - - - null
+                - null
+              - - null
+                - null
+            - - - null
+                - null
+              - - null
+                - null
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
