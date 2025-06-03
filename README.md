@@ -515,6 +515,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
+*TerraformActionsAPI* | [**DeployTerraform**](docs/TerraformActionsAPI.md#deployterraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformConfigurationAPI* | [**EditTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#editterraformadvancedsettings) | **Put** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationAPI* | [**GetTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#getterraformadvancedsettings) | **Get** /terraform/{terraformId}/advancedSettings | Get Advanced settings
 *TerraformDeploymentHistoryAPI* | [**ListTerraformDeploymentHistoryV2**](docs/TerraformDeploymentHistoryAPI.md#listterraformdeploymenthistoryv2) | **Get** /terraform/{terraformId}/deploymentHistoryV2 | List terraform deployments
@@ -1085,6 +1086,7 @@ Class | Method | HTTP request | Description
  - [StepMetricStatusEnum](docs/StepMetricStatusEnum.md)
  - [StorageTypeEnum](docs/StorageTypeEnum.md)
  - [TerraformAdvancedSettings](docs/TerraformAdvancedSettings.md)
+ - [TerraformDeployRequest](docs/TerraformDeployRequest.md)
  - [TerraformDeploymentRestrictionRequest](docs/TerraformDeploymentRestrictionRequest.md)
  - [TerraformDeploymentRestrictionResponse](docs/TerraformDeploymentRestrictionResponse.md)
  - [TerraformDeploymentRestrictionResponseList](docs/TerraformDeploymentRestrictionResponseList.md)

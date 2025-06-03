@@ -83,6 +83,7 @@ api_project_secret.go
 api_projects.go
 api_referral_rewards.go
 api_service_status.go
+api_terraform_actions.go
 api_terraform_configuration.go
 api_terraform_deployment_history.go
 api_terraform_deployment_restriction.go
@@ -714,8 +715,10 @@ docs/StatusDetails.md
 docs/StatusKindEnum.md
 docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
+docs/TerraformActionsAPI.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformConfigurationAPI.md
+docs/TerraformDeployRequest.md
 docs/TerraformDeploymentHistoryAPI.md
 docs/TerraformDeploymentRestrictionAPI.md
 docs/TerraformDeploymentRestrictionRequest.md
@@ -1303,6 +1306,7 @@ model_status_kind_enum.go
 model_step_metric_status_enum.go
 model_storage_type_enum.go
 model_terraform_advanced_settings.go
+model_terraform_deploy_request.go
 model_terraform_deployment_restriction_request.go
 model_terraform_deployment_restriction_response.go
 model_terraform_deployment_restriction_response_list.go
@@ -1419,6 +1423,7 @@ test/api_project_secret_test.go
 test/api_projects_test.go
 test/api_referral_rewards_test.go
 test/api_service_status_test.go
+test/api_terraform_actions_test.go
 test/api_terraform_configuration_test.go
 test/api_terraform_deployment_history_test.go
 test/api_terraform_deployment_restriction_test.go
