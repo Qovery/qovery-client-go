@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **UserEmail** | **string** |  | 
 **TypeOfUse** | [**TypeOfUseEnum**](TypeOfUseEnum.md) |  | 
 **QoveryUsage** | **string** |  | 
-**CompanyName** | Pointer to **NullableString** |  | [optional] 
+**CompanyName** | Pointer to **string** |  | [optional] 
 **CompanySize** | Pointer to [**CompanySizeEnum**](CompanySizeEnum.md) |  | [optional] 
-**UserRole** | Pointer to **NullableString** |  | [optional] 
-**QoveryUsageOther** | Pointer to **NullableString** |  | [optional] 
-**UserQuestions** | Pointer to **NullableString** |  | [optional] 
-**CurrentStep** | Pointer to **NullableString** |  | [optional] 
-**DxAuth** | Pointer to **NullableBool** |  | [optional] 
-**InfrastructureHosting** | Pointer to **NullableString** |  | [optional] 
+**UserRole** | Pointer to **string** |  | [optional] 
+**QoveryUsageOther** | Pointer to **string** |  | [optional] 
+**UserQuestions** | Pointer to **string** |  | [optional] 
+**CurrentStep** | Pointer to **string** |  | [optional] 
+**DxAuth** | Pointer to **bool** |  | [optional] 
+**InfrastructureHosting** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -162,16 +162,6 @@ SetCompanyName sets CompanyName field to given value.
 
 HasCompanyName returns a boolean if a field has been set.
 
-### SetCompanyNameNil
-
-`func (o *SignUpRequest) SetCompanyNameNil(b bool)`
-
- SetCompanyNameNil sets the value for CompanyName to be an explicit nil
-
-### UnsetCompanyName
-`func (o *SignUpRequest) UnsetCompanyName()`
-
-UnsetCompanyName ensures that no value is present for CompanyName, not even an explicit nil
 ### GetCompanySize
 
 `func (o *SignUpRequest) GetCompanySize() CompanySizeEnum`
@@ -222,16 +212,6 @@ SetUserRole sets UserRole field to given value.
 
 HasUserRole returns a boolean if a field has been set.
 
-### SetUserRoleNil
-
-`func (o *SignUpRequest) SetUserRoleNil(b bool)`
-
- SetUserRoleNil sets the value for UserRole to be an explicit nil
-
-### UnsetUserRole
-`func (o *SignUpRequest) UnsetUserRole()`
-
-UnsetUserRole ensures that no value is present for UserRole, not even an explicit nil
 ### GetQoveryUsageOther
 
 `func (o *SignUpRequest) GetQoveryUsageOther() string`
@@ -257,16 +237,6 @@ SetQoveryUsageOther sets QoveryUsageOther field to given value.
 
 HasQoveryUsageOther returns a boolean if a field has been set.
 
-### SetQoveryUsageOtherNil
-
-`func (o *SignUpRequest) SetQoveryUsageOtherNil(b bool)`
-
- SetQoveryUsageOtherNil sets the value for QoveryUsageOther to be an explicit nil
-
-### UnsetQoveryUsageOther
-`func (o *SignUpRequest) UnsetQoveryUsageOther()`
-
-UnsetQoveryUsageOther ensures that no value is present for QoveryUsageOther, not even an explicit nil
 ### GetUserQuestions
 
 `func (o *SignUpRequest) GetUserQuestions() string`
@@ -292,16 +262,6 @@ SetUserQuestions sets UserQuestions field to given value.
 
 HasUserQuestions returns a boolean if a field has been set.
 
-### SetUserQuestionsNil
-
-`func (o *SignUpRequest) SetUserQuestionsNil(b bool)`
-
- SetUserQuestionsNil sets the value for UserQuestions to be an explicit nil
-
-### UnsetUserQuestions
-`func (o *SignUpRequest) UnsetUserQuestions()`
-
-UnsetUserQuestions ensures that no value is present for UserQuestions, not even an explicit nil
 ### GetCurrentStep
 
 `func (o *SignUpRequest) GetCurrentStep() string`
@@ -327,16 +287,6 @@ SetCurrentStep sets CurrentStep field to given value.
 
 HasCurrentStep returns a boolean if a field has been set.
 
-### SetCurrentStepNil
-
-`func (o *SignUpRequest) SetCurrentStepNil(b bool)`
-
- SetCurrentStepNil sets the value for CurrentStep to be an explicit nil
-
-### UnsetCurrentStep
-`func (o *SignUpRequest) UnsetCurrentStep()`
-
-UnsetCurrentStep ensures that no value is present for CurrentStep, not even an explicit nil
 ### GetDxAuth
 
 `func (o *SignUpRequest) GetDxAuth() bool`
@@ -362,16 +312,6 @@ SetDxAuth sets DxAuth field to given value.
 
 HasDxAuth returns a boolean if a field has been set.
 
-### SetDxAuthNil
-
-`func (o *SignUpRequest) SetDxAuthNil(b bool)`
-
- SetDxAuthNil sets the value for DxAuth to be an explicit nil
-
-### UnsetDxAuth
-`func (o *SignUpRequest) UnsetDxAuth()`
-
-UnsetDxAuth ensures that no value is present for DxAuth, not even an explicit nil
 ### GetInfrastructureHosting
 
 `func (o *SignUpRequest) GetInfrastructureHosting() string`
@@ -397,16 +337,6 @@ SetInfrastructureHosting sets InfrastructureHosting field to given value.
 
 HasInfrastructureHosting returns a boolean if a field has been set.
 
-### SetInfrastructureHostingNil
-
-`func (o *SignUpRequest) SetInfrastructureHostingNil(b bool)`
-
- SetInfrastructureHostingNil sets the value for InfrastructureHosting to be an explicit nil
-
-### UnsetInfrastructureHosting
-`func (o *SignUpRequest) UnsetInfrastructureHosting()`
-
-UnsetInfrastructureHosting ensures that no value is present for InfrastructureHosting, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

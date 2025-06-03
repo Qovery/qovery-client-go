@@ -48,7 +48,7 @@ type ContainerRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
-	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AutoDeploy        *bool                      `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
@@ -536,47 +536,36 @@ func (o *ContainerRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *ContainerRequest) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy.Get()) {
+	if o == nil || IsNil(o.AutoDeploy) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy.Get()
+	return *o.AutoDeploy
 }
 
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContainerRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		return nil, false
 	}
-	return o.AutoDeploy.Get(), o.AutoDeploy.IsSet()
+	return o.AutoDeploy, true
 }
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *ContainerRequest) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy.IsSet() {
+	if o != nil && !IsNil(o.AutoDeploy) {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoDeploy gets a reference to the given NullableBool and assigns it to the AutoDeploy field.
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
 func (o *ContainerRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy.Set(&v)
-}
-
-// SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
-func (o *ContainerRequest) SetAutoDeployNil() {
-	o.AutoDeploy.Set(nil)
-}
-
-// UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
-func (o *ContainerRequest) UnsetAutoDeploy() {
-	o.AutoDeploy.Unset()
+	o.AutoDeploy = &v
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
@@ -720,8 +709,8 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
-	if o.AutoDeploy.IsSet() {
-		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
+	if !IsNil(o.AutoDeploy) {
+		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups

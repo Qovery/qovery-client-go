@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Plan** | Pointer to [**PlanEnum**](PlanEnum.md) |  | [optional] 
 **RemainingTrialDay** | Pointer to **int32** | number of days remaining before the end of the trial period | [optional] 
-**RenewalAt** | Pointer to **NullableTime** | date when the current plan will be renewed | [optional] [readonly] 
+**RenewalAt** | Pointer to **time.Time** | date when the current plan will be renewed | [optional] [readonly] 
 **Cost** | Pointer to [**Cost**](Cost.md) |  | [optional] 
 
 ## Methods
@@ -103,16 +103,6 @@ SetRenewalAt sets RenewalAt field to given value.
 
 HasRenewalAt returns a boolean if a field has been set.
 
-### SetRenewalAtNil
-
-`func (o *OrganizationCurrentCost) SetRenewalAtNil(b bool)`
-
- SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
-
-### UnsetRenewalAt
-`func (o *OrganizationCurrentCost) UnsetRenewalAt()`
-
-UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
 ### GetCost
 
 `func (o *OrganizationCurrentCost) GetCost() Cost`

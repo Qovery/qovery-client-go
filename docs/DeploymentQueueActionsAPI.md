@@ -29,7 +29,7 @@ import (
 )
 
 func main() {
-	deploymentRequestId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Request ID
+	deploymentRequestId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -48,7 +48,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**deploymentRequestId** | **string** | Deployment Request ID | 
+**deploymentRequestId** | **string** |  | 
 
 ### Other Parameters
 

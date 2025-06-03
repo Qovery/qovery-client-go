@@ -44,9 +44,9 @@ CreateHelmDeploymentRestriction Create a helm deployment restriction
 
 Create a helm deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiCreateHelmDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiCreateHelmDeploymentRestrictionRequest
 */
 func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestriction(ctx context.Context, helmId string) ApiCreateHelmDeploymentRestrictionRequest {
 	return ApiCreateHelmDeploymentRestrictionRequest{
@@ -57,7 +57,8 @@ func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestriction(ct
 }
 
 // Execute executes the request
-//  @return HelmDeploymentRestrictionResponse
+//
+//	@return HelmDeploymentRestrictionResponse
 func (a *HelmDeploymentRestrictionAPIService) CreateHelmDeploymentRestrictionExecute(r ApiCreateHelmDeploymentRestrictionRequest) (*HelmDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteHelmDeploymentRestriction Delete a helm deployment restriction
 
 Delete a helm deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @param deploymentRestrictionId Deployment Restriction ID
- @return ApiDeleteHelmDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@param deploymentRestrictionId Deployment Restriction ID
+	@return ApiDeleteHelmDeploymentRestrictionRequest
 */
 func (a *HelmDeploymentRestrictionAPIService) DeleteHelmDeploymentRestriction(ctx context.Context, helmId string, deploymentRestrictionId string) ApiDeleteHelmDeploymentRestrictionRequest {
 	return ApiDeleteHelmDeploymentRestrictionRequest{
@@ -280,10 +281,10 @@ EditHelmDeploymentRestriction Edit a helm deployment restriction
 
 Edit a helm deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @param deploymentRestrictionId Deployment Restriction ID
- @return ApiEditHelmDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@param deploymentRestrictionId Deployment Restriction ID
+	@return ApiEditHelmDeploymentRestrictionRequest
 */
 func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestriction(ctx context.Context, helmId string, deploymentRestrictionId string) ApiEditHelmDeploymentRestrictionRequest {
 	return ApiEditHelmDeploymentRestrictionRequest{
@@ -295,7 +296,8 @@ func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestriction(ctx 
 }
 
 // Execute executes the request
-//  @return HelmDeploymentRestrictionResponse
+//
+//	@return HelmDeploymentRestrictionResponse
 func (a *HelmDeploymentRestrictionAPIService) EditHelmDeploymentRestrictionExecute(r ApiEditHelmDeploymentRestrictionRequest) (*HelmDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,9 +404,9 @@ GetHelmDeploymentRestrictions Get helm deployment restrictions
 
 Get helm deployment restrictions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiGetHelmDeploymentRestrictionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiGetHelmDeploymentRestrictionsRequest
 */
 func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictions(ctx context.Context, helmId string) ApiGetHelmDeploymentRestrictionsRequest {
 	return ApiGetHelmDeploymentRestrictionsRequest{
@@ -415,7 +417,8 @@ func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictions(ctx 
 }
 
 // Execute executes the request
-//  @return HelmDeploymentRestrictionResponseList
+//
+//	@return HelmDeploymentRestrictionResponseList
 func (a *HelmDeploymentRestrictionAPIService) GetHelmDeploymentRestrictionsExecute(r ApiGetHelmDeploymentRestrictionsRequest) (*HelmDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

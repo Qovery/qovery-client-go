@@ -44,9 +44,9 @@ DeployApplication Deploy application
 
 You must provide a git commit id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiDeployApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiDeployApplicationRequest
 */
 func (a *ApplicationActionsAPIService) DeployApplication(ctx context.Context, applicationId string) ApiDeployApplicationRequest {
 	return ApiDeployApplicationRequest{
@@ -57,7 +57,8 @@ func (a *ApplicationActionsAPIService) DeployApplication(ctx context.Context, ap
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ApplicationActionsAPIService) DeployApplicationExecute(r ApiDeployApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -161,9 +162,9 @@ func (r ApiRebootApplicationRequest) Execute() (*Status, *http.Response, error) 
 /*
 RebootApplication Reboot application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiRebootApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiRebootApplicationRequest
 */
 func (a *ApplicationActionsAPIService) RebootApplication(ctx context.Context, applicationId string) ApiRebootApplicationRequest {
 	return ApiRebootApplicationRequest{
@@ -174,7 +175,8 @@ func (a *ApplicationActionsAPIService) RebootApplication(ctx context.Context, ap
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ApplicationActionsAPIService) RebootApplicationExecute(r ApiRebootApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -276,9 +278,9 @@ func (r ApiRedeployApplicationRequest) Execute() (*Status, *http.Response, error
 /*
 RedeployApplication Redeploy application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiRedeployApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiRedeployApplicationRequest
 */
 func (a *ApplicationActionsAPIService) RedeployApplication(ctx context.Context, applicationId string) ApiRedeployApplicationRequest {
 	return ApiRedeployApplicationRequest{
@@ -289,7 +291,8 @@ func (a *ApplicationActionsAPIService) RedeployApplication(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ApplicationActionsAPIService) RedeployApplicationExecute(r ApiRedeployApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -391,9 +394,9 @@ func (r ApiStopApplicationRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopApplication Stop application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiStopApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiStopApplicationRequest
 */
 func (a *ApplicationActionsAPIService) StopApplication(ctx context.Context, applicationId string) ApiStopApplicationRequest {
 	return ApiStopApplicationRequest{
@@ -404,7 +407,8 @@ func (a *ApplicationActionsAPIService) StopApplication(ctx context.Context, appl
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ApplicationActionsAPIService) StopApplicationExecute(r ApiStopApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

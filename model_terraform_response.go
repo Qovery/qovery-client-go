@@ -26,12 +26,12 @@ type TerraformResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name                 string                 `json:"name"`
-	Description          *string                `json:"description,omitempty"`
-	TimeoutSec           int32                  `json:"timeout_sec"`
-	AutoApprove          bool                   `json:"auto_approve"`
-	AutoDeploy           bool                   `json:"auto_deploy"`
-	TerraformFilesSource map[string]interface{} `json:"terraform_files_source,omitempty"`
+	Name                 string      `json:"name"`
+	Description          *string     `json:"description,omitempty"`
+	TimeoutSec           int32       `json:"timeout_sec"`
+	AutoApprove          bool        `json:"auto_approve"`
+	AutoDeploy           bool        `json:"auto_deploy"`
+	TerraformFilesSource interface{} `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
 	IconUri                  string                           `json:"icon_uri"`
 	ServiceType              ServiceTypeEnum                  `json:"service_type"`
@@ -286,9 +286,9 @@ func (o *TerraformResponse) SetAutoDeploy(v bool) {
 }
 
 // GetTerraformFilesSource returns the TerraformFilesSource field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TerraformResponse) GetTerraformFilesSource() map[string]interface{} {
+func (o *TerraformResponse) GetTerraformFilesSource() interface{} {
 	if o == nil {
-		var ret map[string]interface{}
+		var ret interface{}
 		return ret
 	}
 	return o.TerraformFilesSource
@@ -297,11 +297,11 @@ func (o *TerraformResponse) GetTerraformFilesSource() map[string]interface{} {
 // GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TerraformResponse) GetTerraformFilesSourceOk() (map[string]interface{}, bool) {
+func (o *TerraformResponse) GetTerraformFilesSourceOk() (*interface{}, bool) {
 	if o == nil || IsNil(o.TerraformFilesSource) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
-	return o.TerraformFilesSource, true
+	return &o.TerraformFilesSource, true
 }
 
 // HasTerraformFilesSource returns a boolean if a field has been set.
@@ -313,8 +313,8 @@ func (o *TerraformResponse) HasTerraformFilesSource() bool {
 	return false
 }
 
-// SetTerraformFilesSource gets a reference to the given map[string]interface{} and assigns it to the TerraformFilesSource field.
-func (o *TerraformResponse) SetTerraformFilesSource(v map[string]interface{}) {
+// SetTerraformFilesSource gets a reference to the given interface{} and assigns it to the TerraformFilesSource field.
+func (o *TerraformResponse) SetTerraformFilesSource(v interface{}) {
 	o.TerraformFilesSource = v
 }
 

@@ -44,9 +44,9 @@ CreateTerraformDeploymentRestriction Create a terraform deployment restriction
 
 Create a terraform deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiCreateTerraformDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@return ApiCreateTerraformDeploymentRestrictionRequest
 */
 func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRestriction(ctx context.Context, terraformId string) ApiCreateTerraformDeploymentRestrictionRequest {
 	return ApiCreateTerraformDeploymentRestrictionRequest{
@@ -57,7 +57,8 @@ func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRest
 }
 
 // Execute executes the request
-//  @return TerraformDeploymentRestrictionResponse
+//
+//	@return TerraformDeploymentRestrictionResponse
 func (a *TerraformDeploymentRestrictionAPIService) CreateTerraformDeploymentRestrictionExecute(r ApiCreateTerraformDeploymentRestrictionRequest) (*TerraformDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteTerraformDeploymentRestriction Delete a terraform deployment restriction
 
 Delete a terraform deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @param deploymentRestrictionId Deployment Restriction ID
- @return ApiDeleteTerraformDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@param deploymentRestrictionId
+	@return ApiDeleteTerraformDeploymentRestrictionRequest
 */
 func (a *TerraformDeploymentRestrictionAPIService) DeleteTerraformDeploymentRestriction(ctx context.Context, terraformId string, deploymentRestrictionId string) ApiDeleteTerraformDeploymentRestrictionRequest {
 	return ApiDeleteTerraformDeploymentRestrictionRequest{
@@ -280,10 +281,10 @@ EditTerraformDeploymentRestriction Edit a terraform deployment restriction
 
 Edit a terraform deployment restriction
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @param deploymentRestrictionId Deployment Restriction ID
- @return ApiEditTerraformDeploymentRestrictionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@param deploymentRestrictionId
+	@return ApiEditTerraformDeploymentRestrictionRequest
 */
 func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestriction(ctx context.Context, terraformId string, deploymentRestrictionId string) ApiEditTerraformDeploymentRestrictionRequest {
 	return ApiEditTerraformDeploymentRestrictionRequest{
@@ -295,7 +296,8 @@ func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestri
 }
 
 // Execute executes the request
-//  @return TerraformDeploymentRestrictionResponse
+//
+//	@return TerraformDeploymentRestrictionResponse
 func (a *TerraformDeploymentRestrictionAPIService) EditTerraformDeploymentRestrictionExecute(r ApiEditTerraformDeploymentRestrictionRequest) (*TerraformDeploymentRestrictionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -402,9 +404,9 @@ GetTerraformDeploymentRestrictions Get terraform deployment restrictions
 
 Get terraform deployment restrictions
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiGetTerraformDeploymentRestrictionsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@return ApiGetTerraformDeploymentRestrictionsRequest
 */
 func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestrictions(ctx context.Context, terraformId string) ApiGetTerraformDeploymentRestrictionsRequest {
 	return ApiGetTerraformDeploymentRestrictionsRequest{
@@ -415,7 +417,8 @@ func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestric
 }
 
 // Execute executes the request
-//  @return TerraformDeploymentRestrictionResponseList
+//
+//	@return TerraformDeploymentRestrictionResponseList
 func (a *TerraformDeploymentRestrictionAPIService) GetTerraformDeploymentRestrictionsExecute(r ApiGetTerraformDeploymentRestrictionsRequest) (*TerraformDeploymentRestrictionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

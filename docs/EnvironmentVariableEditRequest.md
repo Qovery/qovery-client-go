@@ -6,9 +6,9 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | key is case sensitive | 
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
-**MountPath** | Pointer to **NullableString** |  | [optional] 
-**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**MountPath** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **string** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -99,16 +99,6 @@ SetMountPath sets MountPath field to given value.
 
 HasMountPath returns a boolean if a field has been set.
 
-### SetMountPathNil
-
-`func (o *EnvironmentVariableEditRequest) SetMountPathNil(b bool)`
-
- SetMountPathNil sets the value for MountPath to be an explicit nil
-
-### UnsetMountPath
-`func (o *EnvironmentVariableEditRequest) UnsetMountPath()`
-
-UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetDescription
 
 `func (o *EnvironmentVariableEditRequest) GetDescription() string`
@@ -134,16 +124,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *EnvironmentVariableEditRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *EnvironmentVariableEditRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEnableInterpolationInFile
 
 `func (o *EnvironmentVariableEditRequest) GetEnableInterpolationInFile() bool`
@@ -169,16 +149,6 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
-### SetEnableInterpolationInFileNil
-
-`func (o *EnvironmentVariableEditRequest) SetEnableInterpolationInFileNil(b bool)`
-
- SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-
-### UnsetEnableInterpolationInFile
-`func (o *EnvironmentVariableEditRequest) UnsetEnableInterpolationInFile()`
-
-UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Repository** | Pointer to **NullableString** | The id of the helm repository | [optional] 
+**Repository** | Pointer to **string** | The id of the helm repository | [optional] 
 **ChartName** | Pointer to **string** | The name of the chart in the repository | [optional] 
 **ChartVersion** | Pointer to **string** | The version of the chart to use | [optional] 
 
@@ -52,16 +52,6 @@ SetRepository sets Repository field to given value.
 
 HasRepository returns a boolean if a field has been set.
 
-### SetRepositoryNil
-
-`func (o *HelmRequestAllOfSourceOneOf1HelmRepository) SetRepositoryNil(b bool)`
-
- SetRepositoryNil sets the value for Repository to be an explicit nil
-
-### UnsetRepository
-`func (o *HelmRequestAllOfSourceOneOf1HelmRepository) UnsetRepository()`
-
-UnsetRepository ensures that no value is present for Repository, not even an explicit nil
 ### GetChartName
 
 `func (o *HelmRequestAllOfSourceOneOf1HelmRepository) GetChartName() string`

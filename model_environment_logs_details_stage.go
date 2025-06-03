@@ -20,9 +20,9 @@ var _ MappedNullable = &EnvironmentLogsDetailsStage{}
 
 // EnvironmentLogsDetailsStage struct for EnvironmentLogsDetailsStage
 type EnvironmentLogsDetailsStage struct {
-	Step                 *string        `json:"step,omitempty"`
-	Id                   NullableString `json:"id,omitempty"`
-	Name                 NullableString `json:"name,omitempty"`
+	Step                 *string `json:"step,omitempty"`
+	Id                   *string `json:"id,omitempty"`
+	Name                 *string `json:"name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,90 +77,68 @@ func (o *EnvironmentLogsDetailsStage) SetStep(v string) {
 	o.Step = &v
 }
 
-// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetId returns the Id field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetailsStage) GetId() string {
-	if o == nil || IsNil(o.Id.Get()) {
+	if o == nil || IsNil(o.Id) {
 		var ret string
 		return ret
 	}
-	return *o.Id.Get()
+	return *o.Id
 }
 
 // GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLogsDetailsStage) GetIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Id) {
 		return nil, false
 	}
-	return o.Id.Get(), o.Id.IsSet()
+	return o.Id, true
 }
 
 // HasId returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetailsStage) HasId() bool {
-	if o != nil && o.Id.IsSet() {
+	if o != nil && !IsNil(o.Id) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given NullableString and assigns it to the Id field.
+// SetId gets a reference to the given string and assigns it to the Id field.
 func (o *EnvironmentLogsDetailsStage) SetId(v string) {
-	o.Id.Set(&v)
+	o.Id = &v
 }
 
-// SetIdNil sets the value for Id to be an explicit nil
-func (o *EnvironmentLogsDetailsStage) SetIdNil() {
-	o.Id.Set(nil)
-}
-
-// UnsetId ensures that no value is present for Id, not even an explicit nil
-func (o *EnvironmentLogsDetailsStage) UnsetId() {
-	o.Id.Unset()
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetName returns the Name field value if set, zero value otherwise.
 func (o *EnvironmentLogsDetailsStage) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
+	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
 	}
-	return *o.Name.Get()
+	return *o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLogsDetailsStage) GetNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
-	return o.Name.Get(), o.Name.IsSet()
+	return o.Name, true
 }
 
 // HasName returns a boolean if a field has been set.
 func (o *EnvironmentLogsDetailsStage) HasName() bool {
-	if o != nil && o.Name.IsSet() {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
 	return false
 }
 
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
+// SetName gets a reference to the given string and assigns it to the Name field.
 func (o *EnvironmentLogsDetailsStage) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *EnvironmentLogsDetailsStage) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *EnvironmentLogsDetailsStage) UnsetName() {
-	o.Name.Unset()
+	o.Name = &v
 }
 
 func (o EnvironmentLogsDetailsStage) MarshalJSON() ([]byte, error) {
@@ -176,11 +154,11 @@ func (o EnvironmentLogsDetailsStage) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Step) {
 		toSerialize["step"] = o.Step
 	}
-	if o.Id.IsSet() {
-		toSerialize["id"] = o.Id.Get()
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
 	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
+	if !IsNil(o.Name) {
+		toSerialize["name"] = o.Name
 	}
 
 	for key, value := range o.AdditionalProperties {

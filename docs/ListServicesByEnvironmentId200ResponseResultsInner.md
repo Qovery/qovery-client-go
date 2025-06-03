@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
-**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu This field will be ignored for managed DB (instance type will be used instead).  | [default to 250]
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | 
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
@@ -25,12 +25,12 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]HelmResponseAllOfPorts**](HelmResponseAllOfPorts.md) |  | [optional] 
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
-**AutoDeploy** | **bool** | Specify if the service will be automatically updated after receiving a new image tag or a new commit according to the source type.  | 
+**AutoDeploy** | **bool** |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
-**IconUri** | **string** | Icon URI representing the helm service. | 
+**IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
-**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
@@ -43,16 +43,22 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
-**TimeoutSec** | Pointer to **int32** | Maximum number of seconds allowed for helm to run before killing it and mark it as failed  | [optional] [default to 600]
+**TimeoutSec** | **int32** |  | [default to 600]
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
+**AutoApprove** | **bool** |  | 
+**TerraformFilesSource** | Pointer to **interface{}** |  | [optional] 
+**TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
+**Provider** | **string** |  | 
+**ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
+**JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 
 ## Methods
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, autoApprove bool, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -337,16 +343,6 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
-### SetDockerfilePathNil
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerfilePathNil(b bool)`
-
- SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-
-### UnsetDockerfilePath
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerfilePath()`
-
-UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetCpu
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetCpu() int32`
@@ -672,16 +668,6 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
-### SetDockerTargetBuildStageNil
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerTargetBuildStageNil(b bool)`
-
- SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-
-### UnsetDockerTargetBuildStage
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerTargetBuildStage()`
-
-UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 ### GetImageName
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetImageName() string`
@@ -971,11 +957,6 @@ and a boolean to check if the value has been set.
 
 SetTimeoutSec sets TimeoutSec field to given value.
 
-### HasTimeoutSec
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasTimeoutSec() bool`
-
-HasTimeoutSec returns a boolean if a field has been set.
 
 ### GetSource
 
@@ -1035,6 +1016,141 @@ and a boolean to check if the value has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetValuesOverride(v HelmResponseAllOfValuesOverride)`
 
 SetValuesOverride sets ValuesOverride field to given value.
+
+
+### GetAutoApprove
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoApprove() bool`
+
+GetAutoApprove returns the AutoApprove field if non-nil, zero value otherwise.
+
+### GetAutoApproveOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoApproveOk() (*bool, bool)`
+
+GetAutoApproveOk returns a tuple with the AutoApprove field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoApprove
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetAutoApprove(v bool)`
+
+SetAutoApprove sets AutoApprove field to given value.
+
+
+### GetTerraformFilesSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSource() interface{}`
+
+GetTerraformFilesSource returns the TerraformFilesSource field if non-nil, zero value otherwise.
+
+### GetTerraformFilesSourceOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSourceOk() (*interface{}, bool)`
+
+GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraformFilesSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSource(v interface{})`
+
+SetTerraformFilesSource sets TerraformFilesSource field to given value.
+
+### HasTerraformFilesSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasTerraformFilesSource() bool`
+
+HasTerraformFilesSource returns a boolean if a field has been set.
+
+### SetTerraformFilesSourceNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSourceNil(b bool)`
+
+ SetTerraformFilesSourceNil sets the value for TerraformFilesSource to be an explicit nil
+
+### UnsetTerraformFilesSource
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetTerraformFilesSource()`
+
+UnsetTerraformFilesSource ensures that no value is present for TerraformFilesSource, not even an explicit nil
+### GetTerraformVariablesSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformVariablesSource() TerraformVariablesSourceResponse`
+
+GetTerraformVariablesSource returns the TerraformVariablesSource field if non-nil, zero value otherwise.
+
+### GetTerraformVariablesSourceOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformVariablesSourceOk() (*TerraformVariablesSourceResponse, bool)`
+
+GetTerraformVariablesSourceOk returns a tuple with the TerraformVariablesSource field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraformVariablesSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformVariablesSource(v TerraformVariablesSourceResponse)`
+
+SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
+
+
+### GetProvider
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProvider() string`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProviderOk() (*string, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetProvider(v string)`
+
+SetProvider sets Provider field to given value.
+
+
+### GetProviderVersion
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProviderVersion() TerraformProviderVersion`
+
+GetProviderVersion returns the ProviderVersion field if non-nil, zero value otherwise.
+
+### GetProviderVersionOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProviderVersionOk() (*TerraformProviderVersion, bool)`
+
+GetProviderVersionOk returns a tuple with the ProviderVersion field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProviderVersion
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetProviderVersion(v TerraformProviderVersion)`
+
+SetProviderVersion sets ProviderVersion field to given value.
+
+
+### GetJobResources
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetJobResources() TerraformJobResourcesResponse`
+
+GetJobResources returns the JobResources field if non-nil, zero value otherwise.
+
+### GetJobResourcesOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetJobResourcesOk() (*TerraformJobResourcesResponse, bool)`
+
+GetJobResourcesOk returns a tuple with the JobResources field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJobResources
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetJobResources(v TerraformJobResourcesResponse)`
+
+SetJobResources sets JobResources field to given value.
 
 
 

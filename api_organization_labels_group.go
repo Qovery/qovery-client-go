@@ -44,9 +44,9 @@ CreateOrganizationLabelsGroup Create an organization labels group
 
 Create an organization labels group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateOrganizationLabelsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateOrganizationLabelsGroupRequest
 */
 func (a *OrganizationLabelsGroupAPIService) CreateOrganizationLabelsGroup(ctx context.Context, organizationId string) ApiCreateOrganizationLabelsGroupRequest {
 	return ApiCreateOrganizationLabelsGroupRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationLabelsGroupAPIService) CreateOrganizationLabelsGroup(ctx co
 }
 
 // Execute executes the request
-//  @return OrganizationLabelsGroupResponse
+//
+//	@return OrganizationLabelsGroupResponse
 func (a *OrganizationLabelsGroupAPIService) CreateOrganizationLabelsGroupExecute(r ApiCreateOrganizationLabelsGroupRequest) (*OrganizationLabelsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteOrganizationLabelsGroup Delete organization labels group
 
 Delete organization labels group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param labelsGroupId Organization labels group ID
- @return ApiDeleteOrganizationLabelsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param labelsGroupId Organization labels group ID
+	@return ApiDeleteOrganizationLabelsGroupRequest
 */
 func (a *OrganizationLabelsGroupAPIService) DeleteOrganizationLabelsGroup(ctx context.Context, organizationId string, labelsGroupId string) ApiDeleteOrganizationLabelsGroupRequest {
 	return ApiDeleteOrganizationLabelsGroupRequest{
@@ -280,10 +281,10 @@ EditOrganizationLabelsGroup Edit organization labels group
 
 Edit organization labels group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param labelsGroupId Organization labels group ID
- @return ApiEditOrganizationLabelsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param labelsGroupId Organization labels group ID
+	@return ApiEditOrganizationLabelsGroupRequest
 */
 func (a *OrganizationLabelsGroupAPIService) EditOrganizationLabelsGroup(ctx context.Context, organizationId string, labelsGroupId string) ApiEditOrganizationLabelsGroupRequest {
 	return ApiEditOrganizationLabelsGroupRequest{
@@ -295,7 +296,8 @@ func (a *OrganizationLabelsGroupAPIService) EditOrganizationLabelsGroup(ctx cont
 }
 
 // Execute executes the request
-//  @return OrganizationLabelsGroupResponse
+//
+//	@return OrganizationLabelsGroupResponse
 func (a *OrganizationLabelsGroupAPIService) EditOrganizationLabelsGroupExecute(r ApiEditOrganizationLabelsGroupRequest) (*OrganizationLabelsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -403,10 +405,10 @@ GetOrganizationLabelsGroupAssociatedItems Get organization labels group associat
 
 Get organization labels group associated items
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param labelsGroupId Organization labels group ID
- @return ApiGetOrganizationLabelsGroupAssociatedItemsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param labelsGroupId Organization labels group ID
+	@return ApiGetOrganizationLabelsGroupAssociatedItemsRequest
 */
 func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelsGroupAssociatedItems(ctx context.Context, organizationId string, labelsGroupId string) ApiGetOrganizationLabelsGroupAssociatedItemsRequest {
 	return ApiGetOrganizationLabelsGroupAssociatedItemsRequest{
@@ -418,7 +420,8 @@ func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelsGroupAssociated
 }
 
 // Execute executes the request
-//  @return OrganizationLabelsGroupAssociatedItemsResponseList
+//
+//	@return OrganizationLabelsGroupAssociatedItemsResponseList
 func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelsGroupAssociatedItemsExecute(r ApiGetOrganizationLabelsGroupAssociatedItemsRequest) (*OrganizationLabelsGroupAssociatedItemsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -524,10 +527,10 @@ GetOrganizationLabelssGroup Get organization labels group
 
 Get organization labels group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param labelsGroupId Organization labels group ID
- @return ApiGetOrganizationLabelssGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param labelsGroupId Organization labels group ID
+	@return ApiGetOrganizationLabelssGroupRequest
 */
 func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelssGroup(ctx context.Context, organizationId string, labelsGroupId string) ApiGetOrganizationLabelssGroupRequest {
 	return ApiGetOrganizationLabelssGroupRequest{
@@ -539,7 +542,8 @@ func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelssGroup(ctx cont
 }
 
 // Execute executes the request
-//  @return OrganizationLabelsGroupResponse
+//
+//	@return OrganizationLabelsGroupResponse
 func (a *OrganizationLabelsGroupAPIService) GetOrganizationLabelssGroupExecute(r ApiGetOrganizationLabelssGroupRequest) (*OrganizationLabelsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -644,9 +648,9 @@ ListOrganizationLabelsGroup List organization labels group
 
 List organization labels group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationLabelsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationLabelsGroupRequest
 */
 func (a *OrganizationLabelsGroupAPIService) ListOrganizationLabelsGroup(ctx context.Context, organizationId string) ApiListOrganizationLabelsGroupRequest {
 	return ApiListOrganizationLabelsGroupRequest{
@@ -657,7 +661,8 @@ func (a *OrganizationLabelsGroupAPIService) ListOrganizationLabelsGroup(ctx cont
 }
 
 // Execute executes the request
-//  @return ListOrganizationLabelsGroup200Response
+//
+//	@return ListOrganizationLabelsGroup200Response
 func (a *OrganizationLabelsGroupAPIService) ListOrganizationLabelsGroupExecute(r ApiListOrganizationLabelsGroupRequest) (*ListOrganizationLabelsGroup200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

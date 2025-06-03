@@ -11,11 +11,11 @@ Name | Type | Description | Notes
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] [default to 0]
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
-**Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
+**Port** | Pointer to **int32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
 **Source** | Pointer to [**JobRequestAllOfSource**](JobRequestAllOfSource.md) |  | [optional] 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
-**AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
+**AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the job. | [optional] 
@@ -234,16 +234,6 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
-### SetPortNil
-
-`func (o *JobRequest) SetPortNil(b bool)`
-
- SetPortNil sets the value for Port to be an explicit nil
-
-### UnsetPort
-`func (o *JobRequest) UnsetPort()`
-
-UnsetPort ensures that no value is present for Port, not even an explicit nil
 ### GetSource
 
 `func (o *JobRequest) GetSource() JobRequestAllOfSource`
@@ -339,16 +329,6 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
-### SetAutoDeployNil
-
-`func (o *JobRequest) SetAutoDeployNil(b bool)`
-
- SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
-
-### UnsetAutoDeploy
-`func (o *JobRequest) UnsetAutoDeploy()`
-
-UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 ### GetAnnotationsGroups
 
 `func (o *JobRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`

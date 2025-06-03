@@ -470,8 +470,8 @@ import (
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -489,8 +489,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** |  | 
+**credentialsId** | **string** |  | 
 
 ### Other Parameters
 
@@ -819,8 +819,8 @@ import (
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	azureCredentialsRequest := *openapiclient.NewAzureCredentialsRequest("Name_example", "AzureSubscriptionId_example", "AzureTenantId_example", "AzureClientId_example", "AzureClientSecret_example") // AzureCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -841,8 +841,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** |  | 
+**credentialsId** | **string** |  | 
 
 ### Other Parameters
 
@@ -1182,8 +1182,8 @@ import (
 )
 
 func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -1203,8 +1203,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**credentialsId** | **string** | Credentials ID | 
+**organizationId** | **string** |  | 
+**credentialsId** | **string** |  | 
 
 ### Other Parameters
 

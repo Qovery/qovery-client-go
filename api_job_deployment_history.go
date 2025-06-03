@@ -38,9 +38,9 @@ ListJobDeploymentHistory List job deployments
 
 Returns the 20 last job deployments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiListJobDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiListJobDeploymentHistoryRequest
 */
 func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistory(ctx context.Context, jobId string) ApiListJobDeploymentHistoryRequest {
 	return ApiListJobDeploymentHistoryRequest{
@@ -51,7 +51,8 @@ func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistory(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ListJobDeploymentHistory200Response
+//
+//	@return ListJobDeploymentHistory200Response
 func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistoryExecute(r ApiListJobDeploymentHistoryRequest) (*ListJobDeploymentHistory200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -155,9 +156,9 @@ ListJobDeploymentHistoryV2 List job deployments
 
 Returns the 20 last job deployments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiListJobDeploymentHistoryV2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId
+	@return ApiListJobDeploymentHistoryV2Request
 */
 func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistoryV2(ctx context.Context, jobId string) ApiListJobDeploymentHistoryV2Request {
 	return ApiListJobDeploymentHistoryV2Request{
@@ -168,7 +169,8 @@ func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistoryV2(ctx context.
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryServicePaginatedResponseListV2
+//
+//	@return DeploymentHistoryServicePaginatedResponseListV2
 func (a *JobDeploymentHistoryAPIService) ListJobDeploymentHistoryV2Execute(r ApiListJobDeploymentHistoryV2Request) (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

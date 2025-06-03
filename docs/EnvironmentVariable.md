@@ -9,9 +9,9 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Key** | **string** | key is case sensitive. | 
 **Value** | Pointer to **string** | value of the env variable. | [optional] 
-**MountPath** | Pointer to **NullableString** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
-**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**MountPath** | Pointer to **string** | should be set for file only. variable mount path makes variable a file (where file should be mounted). | [optional] 
+**Description** | Pointer to **string** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 **OverriddenVariable** | Pointer to [**EnvironmentVariableOverride**](EnvironmentVariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**EnvironmentVariableAlias**](EnvironmentVariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
@@ -175,16 +175,6 @@ SetMountPath sets MountPath field to given value.
 
 HasMountPath returns a boolean if a field has been set.
 
-### SetMountPathNil
-
-`func (o *EnvironmentVariable) SetMountPathNil(b bool)`
-
- SetMountPathNil sets the value for MountPath to be an explicit nil
-
-### UnsetMountPath
-`func (o *EnvironmentVariable) UnsetMountPath()`
-
-UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetDescription
 
 `func (o *EnvironmentVariable) GetDescription() string`
@@ -210,16 +200,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *EnvironmentVariable) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *EnvironmentVariable) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEnableInterpolationInFile
 
 `func (o *EnvironmentVariable) GetEnableInterpolationInFile() bool`
@@ -245,16 +225,6 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
-### SetEnableInterpolationInFileNil
-
-`func (o *EnvironmentVariable) SetEnableInterpolationInFileNil(b bool)`
-
- SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-
-### UnsetEnableInterpolationInFile
-`func (o *EnvironmentVariable) UnsetEnableInterpolationInFile()`
-
-UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 ### GetOverriddenVariable
 
 `func (o *EnvironmentVariable) GetOverriddenVariable() EnvironmentVariableOverride`

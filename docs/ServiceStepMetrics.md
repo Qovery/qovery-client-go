@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the service deployment or null if the deployment is not completed. | [optional] 
+**TotalDurationSec** | Pointer to **int32** | The total duration in seconds of the service deployment or null if the deployment is not completed. | [optional] 
 **TotalComputingDurationSec** | Pointer to **int32** | The total duration in seconds of the service deployment without queuing steps. | [optional] 
 **Details** | Pointer to [**[]ServiceStepMetric**](ServiceStepMetric.md) | A list of metrics for deployment steps of the service. | [optional] 
 
@@ -52,16 +52,6 @@ SetTotalDurationSec sets TotalDurationSec field to given value.
 
 HasTotalDurationSec returns a boolean if a field has been set.
 
-### SetTotalDurationSecNil
-
-`func (o *ServiceStepMetrics) SetTotalDurationSecNil(b bool)`
-
- SetTotalDurationSecNil sets the value for TotalDurationSec to be an explicit nil
-
-### UnsetTotalDurationSec
-`func (o *ServiceStepMetrics) UnsetTotalDurationSec()`
-
-UnsetTotalDurationSec ensures that no value is present for TotalDurationSec, not even an explicit nil
 ### GetTotalComputingDurationSec
 
 `func (o *ServiceStepMetrics) GetTotalComputingDurationSec() int32`

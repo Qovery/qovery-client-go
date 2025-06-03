@@ -38,9 +38,9 @@ DeleteDatabase Delete a database
 
 To delete a database you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiDeleteDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiDeleteDatabaseRequest
 */
 func (a *DatabaseMainCallsAPIService) DeleteDatabase(ctx context.Context, databaseId string) ApiDeleteDatabaseRequest {
 	return ApiDeleteDatabaseRequest{
@@ -150,9 +150,9 @@ EditDatabase Edit a database
 
 To edit a database  you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiEditDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiEditDatabaseRequest
 */
 func (a *DatabaseMainCallsAPIService) EditDatabase(ctx context.Context, databaseId string) ApiEditDatabaseRequest {
 	return ApiEditDatabaseRequest{
@@ -163,7 +163,8 @@ func (a *DatabaseMainCallsAPIService) EditDatabase(ctx context.Context, database
 }
 
 // Execute executes the request
-//  @return Database
+//
+//	@return Database
 func (a *DatabaseMainCallsAPIService) EditDatabaseExecute(r ApiEditDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -273,9 +274,9 @@ func (r ApiEditDatabaseCredentialsRequest) Execute() (*Credentials, *http.Respon
 /*
 EditDatabaseCredentials Edit database  master credentials
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiEditDatabaseCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiEditDatabaseCredentialsRequest
 */
 func (a *DatabaseMainCallsAPIService) EditDatabaseCredentials(ctx context.Context, databaseId string) ApiEditDatabaseCredentialsRequest {
 	return ApiEditDatabaseCredentialsRequest{
@@ -286,7 +287,8 @@ func (a *DatabaseMainCallsAPIService) EditDatabaseCredentials(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Credentials
+//
+//	@return Credentials
 func (a *DatabaseMainCallsAPIService) EditDatabaseCredentialsExecute(r ApiEditDatabaseCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -390,9 +392,9 @@ func (r ApiGetDatabaseRequest) Execute() (*Database, *http.Response, error) {
 /*
 GetDatabase Get database by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiGetDatabaseRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiGetDatabaseRequest
 */
 func (a *DatabaseMainCallsAPIService) GetDatabase(ctx context.Context, databaseId string) ApiGetDatabaseRequest {
 	return ApiGetDatabaseRequest{
@@ -403,7 +405,8 @@ func (a *DatabaseMainCallsAPIService) GetDatabase(ctx context.Context, databaseI
 }
 
 // Execute executes the request
-//  @return Database
+//
+//	@return Database
 func (a *DatabaseMainCallsAPIService) GetDatabaseExecute(r ApiGetDatabaseRequest) (*Database, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -505,9 +508,9 @@ func (r ApiGetDatabaseMasterCredentialsRequest) Execute() (*Credentials, *http.R
 /*
 GetDatabaseMasterCredentials Get master credentials of the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiGetDatabaseMasterCredentialsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiGetDatabaseMasterCredentialsRequest
 */
 func (a *DatabaseMainCallsAPIService) GetDatabaseMasterCredentials(ctx context.Context, databaseId string) ApiGetDatabaseMasterCredentialsRequest {
 	return ApiGetDatabaseMasterCredentialsRequest{
@@ -518,7 +521,8 @@ func (a *DatabaseMainCallsAPIService) GetDatabaseMasterCredentials(ctx context.C
 }
 
 // Execute executes the request
-//  @return Credentials
+//
+//	@return Credentials
 func (a *DatabaseMainCallsAPIService) GetDatabaseMasterCredentialsExecute(r ApiGetDatabaseMasterCredentialsRequest) (*Credentials, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -620,9 +624,9 @@ func (r ApiGetDatabaseStatusRequest) Execute() (*Status, *http.Response, error) 
 /*
 GetDatabaseStatus Get database status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiGetDatabaseStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiGetDatabaseStatusRequest
 */
 func (a *DatabaseMainCallsAPIService) GetDatabaseStatus(ctx context.Context, databaseId string) ApiGetDatabaseStatusRequest {
 	return ApiGetDatabaseStatusRequest{
@@ -633,7 +637,8 @@ func (a *DatabaseMainCallsAPIService) GetDatabaseStatus(ctx context.Context, dat
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *DatabaseMainCallsAPIService) GetDatabaseStatusExecute(r ApiGetDatabaseStatusRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -735,9 +740,9 @@ func (r ApiListDatabaseVersionRequest) Execute() (*VersionResponseList, *http.Re
 /*
 ListDatabaseVersion List eligible versions for the database
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param databaseId Database ID
- @return ApiListDatabaseVersionRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param databaseId Database ID
+	@return ApiListDatabaseVersionRequest
 */
 func (a *DatabaseMainCallsAPIService) ListDatabaseVersion(ctx context.Context, databaseId string) ApiListDatabaseVersionRequest {
 	return ApiListDatabaseVersionRequest{
@@ -748,7 +753,8 @@ func (a *DatabaseMainCallsAPIService) ListDatabaseVersion(ctx context.Context, d
 }
 
 // Execute executes the request
-//  @return VersionResponseList
+//
+//	@return VersionResponseList
 func (a *DatabaseMainCallsAPIService) ListDatabaseVersionExecute(r ApiListDatabaseVersionRequest) (*VersionResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

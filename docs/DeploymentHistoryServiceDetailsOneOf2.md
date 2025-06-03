@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ImageName** | **string** |  | 
 **Tag** | **string** |  | 
-**Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
+**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
 **Schedule** | Pointer to [**DeploymentHistoryServiceDetailsOneOf2Schedule**](DeploymentHistoryServiceDetailsOneOf2Schedule.md) |  | [optional] 
 **JobType** | **string** |  | 
 
@@ -94,16 +94,6 @@ SetCommit sets Commit field to given value.
 
 HasCommit returns a boolean if a field has been set.
 
-### SetCommitNil
-
-`func (o *DeploymentHistoryServiceDetailsOneOf2) SetCommitNil(b bool)`
-
- SetCommitNil sets the value for Commit to be an explicit nil
-
-### UnsetCommit
-`func (o *DeploymentHistoryServiceDetailsOneOf2) UnsetCommit()`
-
-UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetSchedule
 
 `func (o *DeploymentHistoryServiceDetailsOneOf2) GetSchedule() DeploymentHistoryServiceDetailsOneOf2Schedule`

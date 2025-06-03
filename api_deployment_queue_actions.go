@@ -44,9 +44,9 @@ CancelDeploymentRequest Cancel deployment request
 
 Cancel the a deployment request.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param deploymentRequestId Deployment Request ID
- @return ApiCancelDeploymentRequestRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param deploymentRequestId
+	@return ApiCancelDeploymentRequestRequest
 */
 func (a *DeploymentQueueActionsAPIService) CancelDeploymentRequest(ctx context.Context, deploymentRequestId string) ApiCancelDeploymentRequestRequest {
 	return ApiCancelDeploymentRequestRequest{

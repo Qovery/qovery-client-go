@@ -21,10 +21,10 @@ Name | Type | Description | Notes
 **EksKarpenterFargateSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
 **EksKarpenterFargateSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
 **VpcName** | **string** |  | 
-**VpcProjectId** | Pointer to **NullableString** |  | [optional] 
-**SubnetworkName** | Pointer to **NullableString** |  | [optional] 
-**IpRangeServicesName** | Pointer to **NullableString** |  | [optional] 
-**IpRangePodsName** | Pointer to **NullableString** |  | [optional] 
+**VpcProjectId** | Pointer to **string** |  | [optional] 
+**SubnetworkName** | Pointer to **string** |  | [optional] 
+**IpRangeServicesName** | Pointer to **string** |  | [optional] 
+**IpRangePodsName** | Pointer to **string** |  | [optional] 
 **AdditionalIpRangePodsNames** | Pointer to **[]string** |  | [optional] 
 **SpotEnabled** | **bool** |  | 
 **DiskSizeInGib** | **int32** |  | 
@@ -155,16 +155,6 @@ SetDocumentdbSubnetsZoneAIds sets DocumentdbSubnetsZoneAIds field to given value
 
 HasDocumentdbSubnetsZoneAIds returns a boolean if a field has been set.
 
-### SetDocumentdbSubnetsZoneAIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetDocumentdbSubnetsZoneAIdsNil(b bool)`
-
- SetDocumentdbSubnetsZoneAIdsNil sets the value for DocumentdbSubnetsZoneAIds to be an explicit nil
-
-### UnsetDocumentdbSubnetsZoneAIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetDocumentdbSubnetsZoneAIds()`
-
-UnsetDocumentdbSubnetsZoneAIds ensures that no value is present for DocumentdbSubnetsZoneAIds, not even an explicit nil
 ### GetDocumentdbSubnetsZoneBIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetDocumentdbSubnetsZoneBIds() []string`
@@ -190,16 +180,6 @@ SetDocumentdbSubnetsZoneBIds sets DocumentdbSubnetsZoneBIds field to given value
 
 HasDocumentdbSubnetsZoneBIds returns a boolean if a field has been set.
 
-### SetDocumentdbSubnetsZoneBIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetDocumentdbSubnetsZoneBIdsNil(b bool)`
-
- SetDocumentdbSubnetsZoneBIdsNil sets the value for DocumentdbSubnetsZoneBIds to be an explicit nil
-
-### UnsetDocumentdbSubnetsZoneBIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetDocumentdbSubnetsZoneBIds()`
-
-UnsetDocumentdbSubnetsZoneBIds ensures that no value is present for DocumentdbSubnetsZoneBIds, not even an explicit nil
 ### GetDocumentdbSubnetsZoneCIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetDocumentdbSubnetsZoneCIds() []string`
@@ -225,16 +205,6 @@ SetDocumentdbSubnetsZoneCIds sets DocumentdbSubnetsZoneCIds field to given value
 
 HasDocumentdbSubnetsZoneCIds returns a boolean if a field has been set.
 
-### SetDocumentdbSubnetsZoneCIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetDocumentdbSubnetsZoneCIdsNil(b bool)`
-
- SetDocumentdbSubnetsZoneCIdsNil sets the value for DocumentdbSubnetsZoneCIds to be an explicit nil
-
-### UnsetDocumentdbSubnetsZoneCIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetDocumentdbSubnetsZoneCIds()`
-
-UnsetDocumentdbSubnetsZoneCIds ensures that no value is present for DocumentdbSubnetsZoneCIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneAIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetElasticacheSubnetsZoneAIds() []string`
@@ -260,16 +230,6 @@ SetElasticacheSubnetsZoneAIds sets ElasticacheSubnetsZoneAIds field to given val
 
 HasElasticacheSubnetsZoneAIds returns a boolean if a field has been set.
 
-### SetElasticacheSubnetsZoneAIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetElasticacheSubnetsZoneAIdsNil(b bool)`
-
- SetElasticacheSubnetsZoneAIdsNil sets the value for ElasticacheSubnetsZoneAIds to be an explicit nil
-
-### UnsetElasticacheSubnetsZoneAIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetElasticacheSubnetsZoneAIds()`
-
-UnsetElasticacheSubnetsZoneAIds ensures that no value is present for ElasticacheSubnetsZoneAIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneBIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetElasticacheSubnetsZoneBIds() []string`
@@ -295,16 +255,6 @@ SetElasticacheSubnetsZoneBIds sets ElasticacheSubnetsZoneBIds field to given val
 
 HasElasticacheSubnetsZoneBIds returns a boolean if a field has been set.
 
-### SetElasticacheSubnetsZoneBIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetElasticacheSubnetsZoneBIdsNil(b bool)`
-
- SetElasticacheSubnetsZoneBIdsNil sets the value for ElasticacheSubnetsZoneBIds to be an explicit nil
-
-### UnsetElasticacheSubnetsZoneBIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetElasticacheSubnetsZoneBIds()`
-
-UnsetElasticacheSubnetsZoneBIds ensures that no value is present for ElasticacheSubnetsZoneBIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneCIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetElasticacheSubnetsZoneCIds() []string`
@@ -330,16 +280,6 @@ SetElasticacheSubnetsZoneCIds sets ElasticacheSubnetsZoneCIds field to given val
 
 HasElasticacheSubnetsZoneCIds returns a boolean if a field has been set.
 
-### SetElasticacheSubnetsZoneCIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetElasticacheSubnetsZoneCIdsNil(b bool)`
-
- SetElasticacheSubnetsZoneCIdsNil sets the value for ElasticacheSubnetsZoneCIds to be an explicit nil
-
-### UnsetElasticacheSubnetsZoneCIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetElasticacheSubnetsZoneCIds()`
-
-UnsetElasticacheSubnetsZoneCIds ensures that no value is present for ElasticacheSubnetsZoneCIds, not even an explicit nil
 ### GetRdsSubnetsZoneAIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetRdsSubnetsZoneAIds() []string`
@@ -365,16 +305,6 @@ SetRdsSubnetsZoneAIds sets RdsSubnetsZoneAIds field to given value.
 
 HasRdsSubnetsZoneAIds returns a boolean if a field has been set.
 
-### SetRdsSubnetsZoneAIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetRdsSubnetsZoneAIdsNil(b bool)`
-
- SetRdsSubnetsZoneAIdsNil sets the value for RdsSubnetsZoneAIds to be an explicit nil
-
-### UnsetRdsSubnetsZoneAIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetRdsSubnetsZoneAIds()`
-
-UnsetRdsSubnetsZoneAIds ensures that no value is present for RdsSubnetsZoneAIds, not even an explicit nil
 ### GetRdsSubnetsZoneBIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetRdsSubnetsZoneBIds() []string`
@@ -400,16 +330,6 @@ SetRdsSubnetsZoneBIds sets RdsSubnetsZoneBIds field to given value.
 
 HasRdsSubnetsZoneBIds returns a boolean if a field has been set.
 
-### SetRdsSubnetsZoneBIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetRdsSubnetsZoneBIdsNil(b bool)`
-
- SetRdsSubnetsZoneBIdsNil sets the value for RdsSubnetsZoneBIds to be an explicit nil
-
-### UnsetRdsSubnetsZoneBIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetRdsSubnetsZoneBIds()`
-
-UnsetRdsSubnetsZoneBIds ensures that no value is present for RdsSubnetsZoneBIds, not even an explicit nil
 ### GetRdsSubnetsZoneCIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetRdsSubnetsZoneCIds() []string`
@@ -435,16 +355,6 @@ SetRdsSubnetsZoneCIds sets RdsSubnetsZoneCIds field to given value.
 
 HasRdsSubnetsZoneCIds returns a boolean if a field has been set.
 
-### SetRdsSubnetsZoneCIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetRdsSubnetsZoneCIdsNil(b bool)`
-
- SetRdsSubnetsZoneCIdsNil sets the value for RdsSubnetsZoneCIds to be an explicit nil
-
-### UnsetRdsSubnetsZoneCIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetRdsSubnetsZoneCIds()`
-
-UnsetRdsSubnetsZoneCIds ensures that no value is present for RdsSubnetsZoneCIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneAIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetEksKarpenterFargateSubnetsZoneAIds() []string`
@@ -470,16 +380,6 @@ SetEksKarpenterFargateSubnetsZoneAIds sets EksKarpenterFargateSubnetsZoneAIds fi
 
 HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
 
-### SetEksKarpenterFargateSubnetsZoneAIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetEksKarpenterFargateSubnetsZoneAIdsNil(b bool)`
-
- SetEksKarpenterFargateSubnetsZoneAIdsNil sets the value for EksKarpenterFargateSubnetsZoneAIds to be an explicit nil
-
-### UnsetEksKarpenterFargateSubnetsZoneAIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetEksKarpenterFargateSubnetsZoneAIds()`
-
-UnsetEksKarpenterFargateSubnetsZoneAIds ensures that no value is present for EksKarpenterFargateSubnetsZoneAIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneBIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetEksKarpenterFargateSubnetsZoneBIds() []string`
@@ -505,16 +405,6 @@ SetEksKarpenterFargateSubnetsZoneBIds sets EksKarpenterFargateSubnetsZoneBIds fi
 
 HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
 
-### SetEksKarpenterFargateSubnetsZoneBIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetEksKarpenterFargateSubnetsZoneBIdsNil(b bool)`
-
- SetEksKarpenterFargateSubnetsZoneBIdsNil sets the value for EksKarpenterFargateSubnetsZoneBIds to be an explicit nil
-
-### UnsetEksKarpenterFargateSubnetsZoneBIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetEksKarpenterFargateSubnetsZoneBIds()`
-
-UnsetEksKarpenterFargateSubnetsZoneBIds ensures that no value is present for EksKarpenterFargateSubnetsZoneBIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneCIds
 
 `func (o *ClusterRequestFeaturesInnerValue) GetEksKarpenterFargateSubnetsZoneCIds() []string`
@@ -540,16 +430,6 @@ SetEksKarpenterFargateSubnetsZoneCIds sets EksKarpenterFargateSubnetsZoneCIds fi
 
 HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
 
-### SetEksKarpenterFargateSubnetsZoneCIdsNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetEksKarpenterFargateSubnetsZoneCIdsNil(b bool)`
-
- SetEksKarpenterFargateSubnetsZoneCIdsNil sets the value for EksKarpenterFargateSubnetsZoneCIds to be an explicit nil
-
-### UnsetEksKarpenterFargateSubnetsZoneCIds
-`func (o *ClusterRequestFeaturesInnerValue) UnsetEksKarpenterFargateSubnetsZoneCIds()`
-
-UnsetEksKarpenterFargateSubnetsZoneCIds ensures that no value is present for EksKarpenterFargateSubnetsZoneCIds, not even an explicit nil
 ### GetVpcName
 
 `func (o *ClusterRequestFeaturesInnerValue) GetVpcName() string`
@@ -595,16 +475,6 @@ SetVpcProjectId sets VpcProjectId field to given value.
 
 HasVpcProjectId returns a boolean if a field has been set.
 
-### SetVpcProjectIdNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetVpcProjectIdNil(b bool)`
-
- SetVpcProjectIdNil sets the value for VpcProjectId to be an explicit nil
-
-### UnsetVpcProjectId
-`func (o *ClusterRequestFeaturesInnerValue) UnsetVpcProjectId()`
-
-UnsetVpcProjectId ensures that no value is present for VpcProjectId, not even an explicit nil
 ### GetSubnetworkName
 
 `func (o *ClusterRequestFeaturesInnerValue) GetSubnetworkName() string`
@@ -630,16 +500,6 @@ SetSubnetworkName sets SubnetworkName field to given value.
 
 HasSubnetworkName returns a boolean if a field has been set.
 
-### SetSubnetworkNameNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetSubnetworkNameNil(b bool)`
-
- SetSubnetworkNameNil sets the value for SubnetworkName to be an explicit nil
-
-### UnsetSubnetworkName
-`func (o *ClusterRequestFeaturesInnerValue) UnsetSubnetworkName()`
-
-UnsetSubnetworkName ensures that no value is present for SubnetworkName, not even an explicit nil
 ### GetIpRangeServicesName
 
 `func (o *ClusterRequestFeaturesInnerValue) GetIpRangeServicesName() string`
@@ -665,16 +525,6 @@ SetIpRangeServicesName sets IpRangeServicesName field to given value.
 
 HasIpRangeServicesName returns a boolean if a field has been set.
 
-### SetIpRangeServicesNameNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetIpRangeServicesNameNil(b bool)`
-
- SetIpRangeServicesNameNil sets the value for IpRangeServicesName to be an explicit nil
-
-### UnsetIpRangeServicesName
-`func (o *ClusterRequestFeaturesInnerValue) UnsetIpRangeServicesName()`
-
-UnsetIpRangeServicesName ensures that no value is present for IpRangeServicesName, not even an explicit nil
 ### GetIpRangePodsName
 
 `func (o *ClusterRequestFeaturesInnerValue) GetIpRangePodsName() string`
@@ -700,16 +550,6 @@ SetIpRangePodsName sets IpRangePodsName field to given value.
 
 HasIpRangePodsName returns a boolean if a field has been set.
 
-### SetIpRangePodsNameNil
-
-`func (o *ClusterRequestFeaturesInnerValue) SetIpRangePodsNameNil(b bool)`
-
- SetIpRangePodsNameNil sets the value for IpRangePodsName to be an explicit nil
-
-### UnsetIpRangePodsName
-`func (o *ClusterRequestFeaturesInnerValue) UnsetIpRangePodsName()`
-
-UnsetIpRangePodsName ensures that no value is present for IpRangePodsName, not even an explicit nil
 ### GetAdditionalIpRangePodsNames
 
 `func (o *ClusterRequestFeaturesInnerValue) GetAdditionalIpRangePodsNames() []string`

@@ -36,9 +36,9 @@ func (r ApiDeleteTerraformRequest) Execute() (*http.Response, error) {
 /*
 DeleteTerraform Delete Terraform
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiDeleteTerraformRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId Terraform ID
+	@return ApiDeleteTerraformRequest
 */
 func (a *TerraformMainCallsAPIService) DeleteTerraform(ctx context.Context, terraformId string) ApiDeleteTerraformRequest {
 	return ApiDeleteTerraformRequest{
@@ -146,9 +146,9 @@ func (r ApiEditTerraformRequest) Execute() (*TerraformResponse, *http.Response, 
 /*
 EditTerraform Edit Terraform
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiEditTerraformRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId Terraform ID
+	@return ApiEditTerraformRequest
 */
 func (a *TerraformMainCallsAPIService) EditTerraform(ctx context.Context, terraformId string) ApiEditTerraformRequest {
 	return ApiEditTerraformRequest{
@@ -159,7 +159,8 @@ func (a *TerraformMainCallsAPIService) EditTerraform(ctx context.Context, terraf
 }
 
 // Execute executes the request
-//  @return TerraformResponse
+//
+//	@return TerraformResponse
 func (a *TerraformMainCallsAPIService) EditTerraformExecute(r ApiEditTerraformRequest) (*TerraformResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -263,9 +264,9 @@ func (r ApiGetTerraformRequest) Execute() (*TerraformResponse, *http.Response, e
 /*
 GetTerraform Get terraform by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiGetTerraformRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId Terraform ID
+	@return ApiGetTerraformRequest
 */
 func (a *TerraformMainCallsAPIService) GetTerraform(ctx context.Context, terraformId string) ApiGetTerraformRequest {
 	return ApiGetTerraformRequest{
@@ -276,7 +277,8 @@ func (a *TerraformMainCallsAPIService) GetTerraform(ctx context.Context, terrafo
 }
 
 // Execute executes the request
-//  @return TerraformResponse
+//
+//	@return TerraformResponse
 func (a *TerraformMainCallsAPIService) GetTerraformExecute(r ApiGetTerraformRequest) (*TerraformResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

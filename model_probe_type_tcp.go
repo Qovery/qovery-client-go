@@ -20,8 +20,8 @@ var _ MappedNullable = &ProbeTypeTcp{}
 
 // ProbeTypeTcp struct for ProbeTypeTcp
 type ProbeTypeTcp struct {
-	Port                 *int32         `json:"port,omitempty"`
-	Host                 NullableString `json:"host,omitempty"`
+	Port                 *int32  `json:"port,omitempty"`
+	Host                 *string `json:"host,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,47 +76,36 @@ func (o *ProbeTypeTcp) SetPort(v int32) {
 	o.Port = &v
 }
 
-// GetHost returns the Host field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetHost returns the Host field value if set, zero value otherwise.
 func (o *ProbeTypeTcp) GetHost() string {
-	if o == nil || IsNil(o.Host.Get()) {
+	if o == nil || IsNil(o.Host) {
 		var ret string
 		return ret
 	}
-	return *o.Host.Get()
+	return *o.Host
 }
 
 // GetHostOk returns a tuple with the Host field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeTypeTcp) GetHostOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Host) {
 		return nil, false
 	}
-	return o.Host.Get(), o.Host.IsSet()
+	return o.Host, true
 }
 
 // HasHost returns a boolean if a field has been set.
 func (o *ProbeTypeTcp) HasHost() bool {
-	if o != nil && o.Host.IsSet() {
+	if o != nil && !IsNil(o.Host) {
 		return true
 	}
 
 	return false
 }
 
-// SetHost gets a reference to the given NullableString and assigns it to the Host field.
+// SetHost gets a reference to the given string and assigns it to the Host field.
 func (o *ProbeTypeTcp) SetHost(v string) {
-	o.Host.Set(&v)
-}
-
-// SetHostNil sets the value for Host to be an explicit nil
-func (o *ProbeTypeTcp) SetHostNil() {
-	o.Host.Set(nil)
-}
-
-// UnsetHost ensures that no value is present for Host, not even an explicit nil
-func (o *ProbeTypeTcp) UnsetHost() {
-	o.Host.Unset()
+	o.Host = &v
 }
 
 func (o ProbeTypeTcp) MarshalJSON() ([]byte, error) {
@@ -132,8 +121,8 @@ func (o ProbeTypeTcp) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port
 	}
-	if o.Host.IsSet() {
-		toSerialize["host"] = o.Host.Get()
+	if !IsNil(o.Host) {
+		toSerialize["host"] = o.Host
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
-**Value** | Pointer to [**NullableClusterRequestFeaturesInnerValue**](ClusterRequestFeaturesInnerValue.md) |  | [optional] 
+**Value** | Pointer to [**ClusterRequestFeaturesInnerValue**](ClusterRequestFeaturesInnerValue.md) |  | [optional] 
 
 ## Methods
 
@@ -76,16 +76,6 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
-### SetValueNil
-
-`func (o *ClusterRequestFeaturesInner) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *ClusterRequestFeaturesInner) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

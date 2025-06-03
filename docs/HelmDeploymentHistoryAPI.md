@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -120,7 +120,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**helmId** | **string** | Helm ID | 
+**helmId** | **string** |  | 
 
 ### Other Parameters
 

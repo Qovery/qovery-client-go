@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | the key of the environment variable | 
 **Value** | **string** | the value of the environment variable | 
-**MountPath** | Pointer to **NullableString** | the path where the file will be mounted (only if type &#x3D;file) | [optional] 
+**MountPath** | Pointer to **string** | the path where the file will be mounted (only if type &#x3D;file) | [optional] 
 **IsSecret** | **bool** | if true, the variable will be considered as a secret and will not be accessible after its creation. Only your applications will be able to access its value at build and run time. | 
 **VariableScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableParentId** | **string** | based on the selected scope, it contains the ID of the service, environment or project where the variable is attached | 
-**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**Description** | Pointer to **string** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -97,16 +97,6 @@ SetMountPath sets MountPath field to given value.
 
 HasMountPath returns a boolean if a field has been set.
 
-### SetMountPathNil
-
-`func (o *VariableRequest) SetMountPathNil(b bool)`
-
- SetMountPathNil sets the value for MountPath to be an explicit nil
-
-### UnsetMountPath
-`func (o *VariableRequest) UnsetMountPath()`
-
-UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetIsSecret
 
 `func (o *VariableRequest) GetIsSecret() bool`
@@ -192,16 +182,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *VariableRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *VariableRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEnableInterpolationInFile
 
 `func (o *VariableRequest) GetEnableInterpolationInFile() bool`
@@ -227,16 +207,6 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
-### SetEnableInterpolationInFileNil
-
-`func (o *VariableRequest) SetEnableInterpolationInFileNil(b bool)`
-
- SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-
-### UnsetEnableInterpolationInFile
-`func (o *VariableRequest) UnsetEnableInterpolationInFile()`
-
-UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

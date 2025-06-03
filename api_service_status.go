@@ -37,10 +37,10 @@ func (r ApiGetIngressDeploymentStatusRequest) Execute() (*IngressDeploymentStatu
 /*
 GetIngressDeploymentStatus Get Ingress Deployment Status By Service
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param serviceType
- @param serviceId
- @return ApiGetIngressDeploymentStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param serviceType
+	@param serviceId
+	@return ApiGetIngressDeploymentStatusRequest
 */
 func (a *ServiceStatusAPIService) GetIngressDeploymentStatus(ctx context.Context, serviceType string, serviceId string) ApiGetIngressDeploymentStatusRequest {
 	return ApiGetIngressDeploymentStatusRequest{
@@ -52,7 +52,8 @@ func (a *ServiceStatusAPIService) GetIngressDeploymentStatus(ctx context.Context
 }
 
 // Execute executes the request
-//  @return IngressDeploymentStatusResponse
+//
+//	@return IngressDeploymentStatusResponse
 func (a *ServiceStatusAPIService) GetIngressDeploymentStatusExecute(r ApiGetIngressDeploymentStatusRequest) (*IngressDeploymentStatusResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -44,7 +44,7 @@ type LifecycleJobResponse struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32              `json:"port,omitempty"`
+	Port         *int32                     `json:"port,omitempty"`
 	Source       BaseJobResponseAllOfSource `json:"source"`
 	Healthchecks Healthcheck                `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
@@ -437,47 +437,36 @@ func (o *LifecycleJobResponse) SetAutoPreview(v bool) {
 	o.AutoPreview = v
 }
 
-// GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetPort returns the Port field value if set, zero value otherwise.
 func (o *LifecycleJobResponse) GetPort() int32 {
-	if o == nil || IsNil(o.Port.Get()) {
+	if o == nil || IsNil(o.Port) {
 		var ret int32
 		return ret
 	}
-	return *o.Port.Get()
+	return *o.Port
 }
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *LifecycleJobResponse) GetPortOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Port) {
 		return nil, false
 	}
-	return o.Port.Get(), o.Port.IsSet()
+	return o.Port, true
 }
 
 // HasPort returns a boolean if a field has been set.
 func (o *LifecycleJobResponse) HasPort() bool {
-	if o != nil && o.Port.IsSet() {
+	if o != nil && !IsNil(o.Port) {
 		return true
 	}
 
 	return false
 }
 
-// SetPort gets a reference to the given NullableInt32 and assigns it to the Port field.
+// SetPort gets a reference to the given int32 and assigns it to the Port field.
 func (o *LifecycleJobResponse) SetPort(v int32) {
-	o.Port.Set(&v)
-}
-
-// SetPortNil sets the value for Port to be an explicit nil
-func (o *LifecycleJobResponse) SetPortNil() {
-	o.Port.Set(nil)
-}
-
-// UnsetPort ensures that no value is present for Port, not even an explicit nil
-func (o *LifecycleJobResponse) UnsetPort() {
-	o.Port.Unset()
+	o.Port = &v
 }
 
 // GetSource returns the Source field value
@@ -751,8 +740,8 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["max_duration_seconds"] = o.MaxDurationSeconds
 	}
 	toSerialize["auto_preview"] = o.AutoPreview
-	if o.Port.IsSet() {
-		toSerialize["port"] = o.Port.Get()
+	if !IsNil(o.Port) {
+		toSerialize["port"] = o.Port
 	}
 	toSerialize["source"] = o.Source
 	toSerialize["healthchecks"] = o.Healthchecks

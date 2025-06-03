@@ -23,8 +23,8 @@ var _ MappedNullable = &EnvironmentDeploymentRuleEditRequest{}
 // EnvironmentDeploymentRuleEditRequest struct for EnvironmentDeploymentRuleEditRequest
 type EnvironmentDeploymentRuleEditRequest struct {
 	OnDemandPreview      *bool         `json:"on_demand_preview,omitempty"`
-	AutoPreview          *bool         `json:"auto_preview,omitempty"`
 	AutoStop             *bool         `json:"auto_stop,omitempty"`
+	AutoPreview          *bool         `json:"auto_preview,omitempty"`
 	Timezone             string        `json:"timezone"`
 	StartTime            time.Time     `json:"start_time"`
 	StopTime             time.Time     `json:"stop_time"`
@@ -42,10 +42,10 @@ func NewEnvironmentDeploymentRuleEditRequest(timezone string, startTime time.Tim
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
-	var autoPreview bool = false
-	this.AutoPreview = &autoPreview
 	var autoStop bool = false
 	this.AutoStop = &autoStop
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
 	this.Timezone = timezone
 	this.StartTime = startTime
 	this.StopTime = stopTime
@@ -60,10 +60,10 @@ func NewEnvironmentDeploymentRuleEditRequestWithDefaults() *EnvironmentDeploymen
 	this := EnvironmentDeploymentRuleEditRequest{}
 	var onDemandPreview bool = false
 	this.OnDemandPreview = &onDemandPreview
-	var autoPreview bool = false
-	this.AutoPreview = &autoPreview
 	var autoStop bool = false
 	this.AutoStop = &autoStop
+	var autoPreview bool = false
+	this.AutoPreview = &autoPreview
 	return &this
 }
 
@@ -99,38 +99,6 @@ func (o *EnvironmentDeploymentRuleEditRequest) SetOnDemandPreview(v bool) {
 	o.OnDemandPreview = &v
 }
 
-// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
-func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool {
-	if o == nil || IsNil(o.AutoPreview) {
-		var ret bool
-		return ret
-	}
-	return *o.AutoPreview
-}
-
-// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoPreview) {
-		return nil, false
-	}
-	return o.AutoPreview, true
-}
-
-// HasAutoPreview returns a boolean if a field has been set.
-func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool {
-	if o != nil && !IsNil(o.AutoPreview) {
-		return true
-	}
-
-	return false
-}
-
-// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
-func (o *EnvironmentDeploymentRuleEditRequest) SetAutoPreview(v bool) {
-	o.AutoPreview = &v
-}
-
 // GetAutoStop returns the AutoStop field value if set, zero value otherwise.
 func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool {
 	if o == nil || IsNil(o.AutoStop) {
@@ -161,6 +129,38 @@ func (o *EnvironmentDeploymentRuleEditRequest) HasAutoStop() bool {
 // SetAutoStop gets a reference to the given bool and assigns it to the AutoStop field.
 func (o *EnvironmentDeploymentRuleEditRequest) SetAutoStop(v bool) {
 	o.AutoStop = &v
+}
+
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool {
+	if o == nil || IsNil(o.AutoPreview) {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || IsNil(o.AutoPreview) {
+		return nil, false
+	}
+	return o.AutoPreview, true
+}
+
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool {
+	if o != nil && !IsNil(o.AutoPreview) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *EnvironmentDeploymentRuleEditRequest) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
 }
 
 // GetTimezone returns the Timezone field value
@@ -272,11 +272,11 @@ func (o EnvironmentDeploymentRuleEditRequest) ToMap() (map[string]interface{}, e
 	if !IsNil(o.OnDemandPreview) {
 		toSerialize["on_demand_preview"] = o.OnDemandPreview
 	}
-	if !IsNil(o.AutoPreview) {
-		toSerialize["auto_preview"] = o.AutoPreview
-	}
 	if !IsNil(o.AutoStop) {
 		toSerialize["auto_stop"] = o.AutoStop
+	}
+	if !IsNil(o.AutoPreview) {
+		toSerialize["auto_preview"] = o.AutoPreview
 	}
 	toSerialize["timezone"] = o.Timezone
 	toSerialize["start_time"] = o.StartTime
@@ -329,8 +329,8 @@ func (o *EnvironmentDeploymentRuleEditRequest) UnmarshalJSON(data []byte) (err e
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "on_demand_preview")
-		delete(additionalProperties, "auto_preview")
 		delete(additionalProperties, "auto_stop")
+		delete(additionalProperties, "auto_preview")
 		delete(additionalProperties, "timezone")
 		delete(additionalProperties, "start_time")
 		delete(additionalProperties, "stop_time")

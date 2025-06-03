@@ -7,10 +7,10 @@ Name | Type | Description | Notes
 **Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
 **Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **NullableString** | give a description to this application | [optional] 
+**Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
-**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
@@ -19,11 +19,11 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
-**AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
+**AutoDeploy** | Pointer to **bool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the application. | [optional] 
-**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -139,16 +139,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *ApplicationRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *ApplicationRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetGitRepository
 
 `func (o *ApplicationRequest) GetGitRepository() ApplicationGitRepositoryRequest`
@@ -219,16 +209,6 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
-### SetDockerfilePathNil
-
-`func (o *ApplicationRequest) SetDockerfilePathNil(b bool)`
-
- SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-
-### UnsetDockerfilePath
-`func (o *ApplicationRequest) UnsetDockerfilePath()`
-
-UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetCpu
 
 `func (o *ApplicationRequest) GetCpu() int32`
@@ -449,16 +429,6 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
-### SetAutoDeployNil
-
-`func (o *ApplicationRequest) SetAutoDeployNil(b bool)`
-
- SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
-
-### UnsetAutoDeploy
-`func (o *ApplicationRequest) UnsetAutoDeploy()`
-
-UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 ### GetAnnotationsGroups
 
 `func (o *ApplicationRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`
@@ -559,16 +529,6 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
-### SetDockerTargetBuildStageNil
-
-`func (o *ApplicationRequest) SetDockerTargetBuildStageNil(b bool)`
-
- SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-
-### UnsetDockerTargetBuildStage
-`func (o *ApplicationRequest) UnsetDockerTargetBuildStage()`
-
-UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

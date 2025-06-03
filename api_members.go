@@ -37,10 +37,10 @@ func (r ApiDeleteInviteMemberRequest) Execute() (*http.Response, error) {
 /*
 DeleteInviteMember Remove an invited member
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param inviteId Invite ID
- @return ApiDeleteInviteMemberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param inviteId Invite ID
+	@return ApiDeleteInviteMemberRequest
 */
 func (a *MembersAPIService) DeleteInviteMember(ctx context.Context, organizationId string, inviteId string) ApiDeleteInviteMemberRequest {
 	return ApiDeleteInviteMemberRequest{
@@ -150,9 +150,9 @@ func (r ApiDeleteMemberRequest) Execute() (*http.Response, error) {
 /*
 DeleteMember Remove a member
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiDeleteMemberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiDeleteMemberRequest
 */
 func (a *MembersAPIService) DeleteMember(ctx context.Context, organizationId string) ApiDeleteMemberRequest {
 	return ApiDeleteMemberRequest{
@@ -264,9 +264,9 @@ EditOrganizationMemberRole Edit an organization member role
 
 Edit an organization member role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiEditOrganizationMemberRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiEditOrganizationMemberRoleRequest
 */
 func (a *MembersAPIService) EditOrganizationMemberRole(ctx context.Context, organizationId string) ApiEditOrganizationMemberRoleRequest {
 	return ApiEditOrganizationMemberRoleRequest{
@@ -371,10 +371,10 @@ func (r ApiGetMemberInvitationRequest) Execute() (*InviteMember, *http.Response,
 /*
 GetMemberInvitation Get member invitation
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param inviteId Invite ID
- @return ApiGetMemberInvitationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param inviteId Invite ID
+	@return ApiGetMemberInvitationRequest
 */
 func (a *MembersAPIService) GetMemberInvitation(ctx context.Context, organizationId string, inviteId string) ApiGetMemberInvitationRequest {
 	return ApiGetMemberInvitationRequest{
@@ -386,7 +386,8 @@ func (a *MembersAPIService) GetMemberInvitation(ctx context.Context, organizatio
 }
 
 // Execute executes the request
-//  @return InviteMember
+//
+//	@return InviteMember
 func (a *MembersAPIService) GetMemberInvitationExecute(r ApiGetMemberInvitationRequest) (*InviteMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -489,9 +490,9 @@ func (r ApiGetOrganizationInvitedMembersRequest) Execute() (*InviteMemberRespons
 /*
 GetOrganizationInvitedMembers Get invited members
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationInvitedMembersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationInvitedMembersRequest
 */
 func (a *MembersAPIService) GetOrganizationInvitedMembers(ctx context.Context, organizationId string) ApiGetOrganizationInvitedMembersRequest {
 	return ApiGetOrganizationInvitedMembersRequest{
@@ -502,7 +503,8 @@ func (a *MembersAPIService) GetOrganizationInvitedMembers(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return InviteMemberResponseList
+//
+//	@return InviteMemberResponseList
 func (a *MembersAPIService) GetOrganizationInvitedMembersExecute(r ApiGetOrganizationInvitedMembersRequest) (*InviteMemberResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -604,9 +606,9 @@ func (r ApiGetOrganizationMembersRequest) Execute() (*MemberResponseList, *http.
 /*
 GetOrganizationMembers Get organization members
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationMembersRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationMembersRequest
 */
 func (a *MembersAPIService) GetOrganizationMembers(ctx context.Context, organizationId string) ApiGetOrganizationMembersRequest {
 	return ApiGetOrganizationMembersRequest{
@@ -617,7 +619,8 @@ func (a *MembersAPIService) GetOrganizationMembers(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//  @return MemberResponseList
+//
+//	@return MemberResponseList
 func (a *MembersAPIService) GetOrganizationMembersExecute(r ApiGetOrganizationMembersRequest) (*MemberResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -720,10 +723,10 @@ func (r ApiPostAcceptInviteMemberRequest) Execute() (*InviteMember, *http.Respon
 /*
 PostAcceptInviteMember Accept Invite in the organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param inviteId Invite ID
- @return ApiPostAcceptInviteMemberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param inviteId Invite ID
+	@return ApiPostAcceptInviteMemberRequest
 */
 func (a *MembersAPIService) PostAcceptInviteMember(ctx context.Context, organizationId string, inviteId string) ApiPostAcceptInviteMemberRequest {
 	return ApiPostAcceptInviteMemberRequest{
@@ -735,7 +738,8 @@ func (a *MembersAPIService) PostAcceptInviteMember(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//  @return InviteMember
+//
+//	@return InviteMember
 func (a *MembersAPIService) PostAcceptInviteMemberExecute(r ApiPostAcceptInviteMemberRequest) (*InviteMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -844,9 +848,9 @@ func (r ApiPostInviteMemberRequest) Execute() (*InviteMember, *http.Response, er
 /*
 PostInviteMember Invite someone in the organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiPostInviteMemberRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiPostInviteMemberRequest
 */
 func (a *MembersAPIService) PostInviteMember(ctx context.Context, organizationId string) ApiPostInviteMemberRequest {
 	return ApiPostInviteMemberRequest{
@@ -857,7 +861,8 @@ func (a *MembersAPIService) PostInviteMember(ctx context.Context, organizationId
 }
 
 // Execute executes the request
-//  @return InviteMember
+//
+//	@return InviteMember
 func (a *MembersAPIService) PostInviteMemberExecute(r ApiPostInviteMemberRequest) (*InviteMember, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -967,9 +972,9 @@ func (r ApiPostOrganizationTransferOwnershipRequest) Execute() (*http.Response, 
 /*
 PostOrganizationTransferOwnership Transfer organization ownership to another user
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiPostOrganizationTransferOwnershipRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiPostOrganizationTransferOwnershipRequest
 */
 func (a *MembersAPIService) PostOrganizationTransferOwnership(ctx context.Context, organizationId string) ApiPostOrganizationTransferOwnershipRequest {
 	return ApiPostOrganizationTransferOwnershipRequest{

@@ -42,9 +42,9 @@ func (r ApiCreateProjectRequest) Execute() (*Project, *http.Response, error) {
 /*
 CreateProject Create a project
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateProjectRequest
 */
 func (a *ProjectsAPIService) CreateProject(ctx context.Context, organizationId string) ApiCreateProjectRequest {
 	return ApiCreateProjectRequest{
@@ -55,7 +55,8 @@ func (a *ProjectsAPIService) CreateProject(ctx context.Context, organizationId s
 }
 
 // Execute executes the request
-//  @return Project
+//
+//	@return Project
 func (a *ProjectsAPIService) CreateProjectExecute(r ApiCreateProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -161,9 +162,9 @@ GetOrganizationProjectStats List total number of services and environments for e
 
 Returns a list of project ids, and for each its total numberof services and environments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationProjectStatsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationProjectStatsRequest
 */
 func (a *ProjectsAPIService) GetOrganizationProjectStats(ctx context.Context, organizationId string) ApiGetOrganizationProjectStatsRequest {
 	return ApiGetOrganizationProjectStatsRequest{
@@ -174,7 +175,8 @@ func (a *ProjectsAPIService) GetOrganizationProjectStats(ctx context.Context, or
 }
 
 // Execute executes the request
-//  @return ProjectStatsResponseList
+//
+//	@return ProjectStatsResponseList
 func (a *ProjectsAPIService) GetOrganizationProjectStatsExecute(r ApiGetOrganizationProjectStatsRequest) (*ProjectStatsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -276,9 +278,9 @@ func (r ApiListProjectRequest) Execute() (*ProjectResponseList, *http.Response, 
 /*
 ListProject List projects
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListProjectRequest
 */
 func (a *ProjectsAPIService) ListProject(ctx context.Context, organizationId string) ApiListProjectRequest {
 	return ApiListProjectRequest{
@@ -289,7 +291,8 @@ func (a *ProjectsAPIService) ListProject(ctx context.Context, organizationId str
 }
 
 // Execute executes the request
-//  @return ProjectResponseList
+//
+//	@return ProjectResponseList
 func (a *ProjectsAPIService) ListProjectExecute(r ApiListProjectRequest) (*ProjectResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

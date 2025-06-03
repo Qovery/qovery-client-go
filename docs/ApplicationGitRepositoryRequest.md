@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Url** | **string** | application git repository URL | 
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional If not specified, then the branch used is the &#x60;main&#x60; or &#x60;master&#x60; one  | [optional] 
 **RootPath** | Pointer to **string** | indicates the root path of the application. | [optional] [default to "/"]
-**GitTokenId** | Pointer to **NullableString** | The git token id on Qovery side | [optional] 
+**GitTokenId** | Pointer to **string** | The git token id on Qovery side | [optional] 
 
 ## Methods
 
@@ -123,16 +123,6 @@ SetGitTokenId sets GitTokenId field to given value.
 
 HasGitTokenId returns a boolean if a field has been set.
 
-### SetGitTokenIdNil
-
-`func (o *ApplicationGitRepositoryRequest) SetGitTokenIdNil(b bool)`
-
- SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
-
-### UnsetGitTokenId
-`func (o *ApplicationGitRepositoryRequest) UnsetGitTokenId()`
-
-UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

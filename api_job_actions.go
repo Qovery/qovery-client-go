@@ -36,9 +36,9 @@ func (r ApiCleanFailedJobRequest) Execute() (*CleanFailedJob200Response, *http.R
 /*
 CleanFailedJob Clean a failed job
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId
- @return ApiCleanFailedJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId
+	@return ApiCleanFailedJobRequest
 */
 func (a *JobActionsAPIService) CleanFailedJob(ctx context.Context, jobId string) ApiCleanFailedJobRequest {
 	return ApiCleanFailedJobRequest{
@@ -49,7 +49,8 @@ func (a *JobActionsAPIService) CleanFailedJob(ctx context.Context, jobId string)
 }
 
 // Execute executes the request
-//  @return CleanFailedJob200Response
+//
+//	@return CleanFailedJob200Response
 func (a *JobActionsAPIService) CleanFailedJobExecute(r ApiCleanFailedJobRequest) (*CleanFailedJob200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -166,9 +167,9 @@ DeployJob Deploy job
 
 You must provide a git commit id or an image tag depending on the source location of your code (git vs image repository).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiDeployJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiDeployJobRequest
 */
 func (a *JobActionsAPIService) DeployJob(ctx context.Context, jobId string) ApiDeployJobRequest {
 	return ApiDeployJobRequest{
@@ -179,7 +180,8 @@ func (a *JobActionsAPIService) DeployJob(ctx context.Context, jobId string) ApiD
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) DeployJobExecute(r ApiDeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -293,9 +295,9 @@ func (r ApiRedeployJobRequest) Execute() (*Status, *http.Response, error) {
 /*
 RedeployJob Redeploy job
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiRedeployJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiRedeployJobRequest
 */
 func (a *JobActionsAPIService) RedeployJob(ctx context.Context, jobId string) ApiRedeployJobRequest {
 	return ApiRedeployJobRequest{
@@ -306,7 +308,8 @@ func (a *JobActionsAPIService) RedeployJob(ctx context.Context, jobId string) Ap
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) RedeployJobExecute(r ApiRedeployJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -411,9 +414,9 @@ func (r ApiStopJobRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopJob Stop job
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiStopJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiStopJobRequest
 */
 func (a *JobActionsAPIService) StopJob(ctx context.Context, jobId string) ApiStopJobRequest {
 	return ApiStopJobRequest{
@@ -424,7 +427,8 @@ func (a *JobActionsAPIService) StopJob(ctx context.Context, jobId string) ApiSto
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobActionsAPIService) StopJobExecute(r ApiStopJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

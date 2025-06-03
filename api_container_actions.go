@@ -44,9 +44,9 @@ DeployContainer Deploy container
 
 You must provide a container image tag
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiDeployContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiDeployContainerRequest
 */
 func (a *ContainerActionsAPIService) DeployContainer(ctx context.Context, containerId string) ApiDeployContainerRequest {
 	return ApiDeployContainerRequest{
@@ -57,7 +57,8 @@ func (a *ContainerActionsAPIService) DeployContainer(ctx context.Context, contai
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainerActionsAPIService) DeployContainerExecute(r ApiDeployContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -161,9 +162,9 @@ func (r ApiRebootContainerRequest) Execute() (*Status, *http.Response, error) {
 /*
 RebootContainer Reboot container
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiRebootContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiRebootContainerRequest
 */
 func (a *ContainerActionsAPIService) RebootContainer(ctx context.Context, containerId string) ApiRebootContainerRequest {
 	return ApiRebootContainerRequest{
@@ -174,7 +175,8 @@ func (a *ContainerActionsAPIService) RebootContainer(ctx context.Context, contai
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainerActionsAPIService) RebootContainerExecute(r ApiRebootContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -276,9 +278,9 @@ func (r ApiRedeployContainerRequest) Execute() (*Status, *http.Response, error) 
 /*
 RedeployContainer Redeploy container
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiRedeployContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiRedeployContainerRequest
 */
 func (a *ContainerActionsAPIService) RedeployContainer(ctx context.Context, containerId string) ApiRedeployContainerRequest {
 	return ApiRedeployContainerRequest{
@@ -289,7 +291,8 @@ func (a *ContainerActionsAPIService) RedeployContainer(ctx context.Context, cont
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainerActionsAPIService) RedeployContainerExecute(r ApiRedeployContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -391,9 +394,9 @@ func (r ApiStopContainerRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopContainer Stop container
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiStopContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiStopContainerRequest
 */
 func (a *ContainerActionsAPIService) StopContainer(ctx context.Context, containerId string) ApiStopContainerRequest {
 	return ApiStopContainerRequest{
@@ -404,7 +407,8 @@ func (a *ContainerActionsAPIService) StopContainer(ctx context.Context, containe
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainerActionsAPIService) StopContainerExecute(r ApiStopContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

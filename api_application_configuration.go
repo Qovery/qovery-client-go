@@ -44,9 +44,9 @@ EditAdvancedSettings Edit advanced settings
 
 Edit advanced settings by returning table of advanced settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiEditAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiEditAdvancedSettingsRequest
 */
 func (a *ApplicationConfigurationAPIService) EditAdvancedSettings(ctx context.Context, applicationId string) ApiEditAdvancedSettingsRequest {
 	return ApiEditAdvancedSettingsRequest{
@@ -57,7 +57,8 @@ func (a *ApplicationConfigurationAPIService) EditAdvancedSettings(ctx context.Co
 }
 
 // Execute executes the request
-//  @return ApplicationAdvancedSettings
+//
+//	@return ApplicationAdvancedSettings
 func (a *ApplicationConfigurationAPIService) EditAdvancedSettingsExecute(r ApiEditAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -169,9 +170,9 @@ EditApplicationNetwork Edit Application Network
 
 Edit the Network settings of the application.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiEditApplicationNetworkRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiEditApplicationNetworkRequest
 */
 func (a *ApplicationConfigurationAPIService) EditApplicationNetwork(ctx context.Context, applicationId string) ApiEditApplicationNetworkRequest {
 	return ApiEditApplicationNetworkRequest{
@@ -182,7 +183,8 @@ func (a *ApplicationConfigurationAPIService) EditApplicationNetwork(ctx context.
 }
 
 // Execute executes the request
-//  @return ApplicationNetwork
+//
+//	@return ApplicationNetwork
 func (a *ApplicationConfigurationAPIService) EditApplicationNetworkExecute(r ApiEditApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -289,10 +291,9 @@ GetAdvancedSettings Get advanced settings
 Get list and values of the advanced settings of the application.
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiGetAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiGetAdvancedSettingsRequest
 */
 func (a *ApplicationConfigurationAPIService) GetAdvancedSettings(ctx context.Context, applicationId string) ApiGetAdvancedSettingsRequest {
 	return ApiGetAdvancedSettingsRequest{
@@ -303,7 +304,8 @@ func (a *ApplicationConfigurationAPIService) GetAdvancedSettings(ctx context.Con
 }
 
 // Execute executes the request
-//  @return ApplicationAdvancedSettings
+//
+//	@return ApplicationAdvancedSettings
 func (a *ApplicationConfigurationAPIService) GetAdvancedSettingsExecute(r ApiGetAdvancedSettingsRequest) (*ApplicationAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -407,9 +409,9 @@ GetApplicationNetwork Get Application Network information
 
 Get status of the application network settings.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiGetApplicationNetworkRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiGetApplicationNetworkRequest
 */
 func (a *ApplicationConfigurationAPIService) GetApplicationNetwork(ctx context.Context, applicationId string) ApiGetApplicationNetworkRequest {
 	return ApiGetApplicationNetworkRequest{
@@ -420,7 +422,8 @@ func (a *ApplicationConfigurationAPIService) GetApplicationNetwork(ctx context.C
 }
 
 // Execute executes the request
-//  @return ApplicationNetwork
+//
+//	@return ApplicationNetwork
 func (a *ApplicationConfigurationAPIService) GetApplicationNetworkExecute(r ApiGetApplicationNetworkRequest) (*ApplicationNetwork, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

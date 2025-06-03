@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Commit** | [**NullableCommit**](Commit.md) |  | 
+**Commit** | [**Commit**](Commit.md) |  | 
 
 ## Methods
 
 ### NewDeploymentHistoryServiceDetailsOneOf
 
-`func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit, ) *DeploymentHistoryServiceDetailsOneOf`
+`func NewDeploymentHistoryServiceDetailsOneOf(commit Commit, ) *DeploymentHistoryServiceDetailsOneOf`
 
 NewDeploymentHistoryServiceDetailsOneOf instantiates a new DeploymentHistoryServiceDetailsOneOf object
 This constructor will assign default values to properties that have it defined,
@@ -45,16 +45,6 @@ and a boolean to check if the value has been set.
 SetCommit sets Commit field to given value.
 
 
-### SetCommitNil
-
-`func (o *DeploymentHistoryServiceDetailsOneOf) SetCommitNil(b bool)`
-
- SetCommitNil sets the value for Commit to be an explicit nil
-
-### UnsetCommit
-`func (o *DeploymentHistoryServiceDetailsOneOf) UnsetCommit()`
-
-UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

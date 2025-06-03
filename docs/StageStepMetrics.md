@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the stage deployment or null if the deployment is not completed | [optional] 
+**TotalDurationSec** | Pointer to **int32** | The total duration in seconds of the stage deployment or null if the deployment is not completed | [optional] 
 **Details** | Pointer to [**[]StageStepMetric**](StageStepMetric.md) | A list of metrics for deployment steps of the stage. | [optional] 
 
 ## Methods
@@ -51,16 +51,6 @@ SetTotalDurationSec sets TotalDurationSec field to given value.
 
 HasTotalDurationSec returns a boolean if a field has been set.
 
-### SetTotalDurationSecNil
-
-`func (o *StageStepMetrics) SetTotalDurationSecNil(b bool)`
-
- SetTotalDurationSecNil sets the value for TotalDurationSec to be an explicit nil
-
-### UnsetTotalDurationSec
-`func (o *StageStepMetrics) UnsetTotalDurationSec()`
-
-UnsetTotalDurationSec ensures that no value is present for TotalDurationSec, not even an explicit nil
 ### GetDetails
 
 `func (o *StageStepMetrics) GetDetails() []StageStepMetric`

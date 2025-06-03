@@ -44,10 +44,9 @@ CreateJobSecret Add a secret to the job
 
 - Add a secret to the job.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiCreateJobSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiCreateJobSecretRequest
 */
 func (a *JobSecretAPIService) CreateJobSecret(ctx context.Context, jobId string) ApiCreateJobSecretRequest {
 	return ApiCreateJobSecretRequest{
@@ -58,7 +57,8 @@ func (a *JobSecretAPIService) CreateJobSecret(ctx context.Context, jobId string)
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *JobSecretAPIService) CreateJobSecretExecute(r ApiCreateJobSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,11 +176,10 @@ CreateJobSecretAlias Create a secret alias at the job level
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param secretId Secret ID
- @return ApiCreateJobSecretAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param secretId Secret ID
+	@return ApiCreateJobSecretAliasRequest
 */
 func (a *JobSecretAPIService) CreateJobSecretAlias(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretAliasRequest {
 	return ApiCreateJobSecretAliasRequest{
@@ -192,7 +191,8 @@ func (a *JobSecretAPIService) CreateJobSecretAlias(ctx context.Context, jobId st
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *JobSecretAPIService) CreateJobSecretAliasExecute(r ApiCreateJobSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -310,11 +310,10 @@ CreateJobSecretOverride Create a secret override at the job level
 - The response body will contain the newly created secret
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param secretId Secret ID
- @return ApiCreateJobSecretOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param secretId Secret ID
+	@return ApiCreateJobSecretOverrideRequest
 */
 func (a *JobSecretAPIService) CreateJobSecretOverride(ctx context.Context, jobId string, secretId string) ApiCreateJobSecretOverrideRequest {
 	return ApiCreateJobSecretOverrideRequest{
@@ -326,7 +325,8 @@ func (a *JobSecretAPIService) CreateJobSecretOverride(ctx context.Context, jobId
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *JobSecretAPIService) CreateJobSecretOverrideExecute(r ApiCreateJobSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -436,11 +436,10 @@ DeleteJobSecret Delete a secret from an job
 - You can't delete a BUILT_IN secret
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param secretId Secret ID
- @return ApiDeleteJobSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param secretId Secret ID
+	@return ApiDeleteJobSecretRequest
 */
 func (a *JobSecretAPIService) DeleteJobSecret(ctx context.Context, jobId string, secretId string) ApiDeleteJobSecretRequest {
 	return ApiDeleteJobSecretRequest{
@@ -556,11 +555,10 @@ EditJobSecret Edit a secret belonging to the job
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @param secretId Secret ID
- @return ApiEditJobSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@param secretId Secret ID
+	@return ApiEditJobSecretRequest
 */
 func (a *JobSecretAPIService) EditJobSecret(ctx context.Context, jobId string, secretId string) ApiEditJobSecretRequest {
 	return ApiEditJobSecretRequest{
@@ -572,7 +570,8 @@ func (a *JobSecretAPIService) EditJobSecret(ctx context.Context, jobId string, s
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *JobSecretAPIService) EditJobSecretExecute(r ApiEditJobSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -682,9 +681,9 @@ ListJobSecrets List job secrets
 
 Secrets are like environment variables, but they are secured and can't be revealed.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiListJobSecretsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiListJobSecretsRequest
 */
 func (a *JobSecretAPIService) ListJobSecrets(ctx context.Context, jobId string) ApiListJobSecretsRequest {
 	return ApiListJobSecretsRequest{
@@ -695,7 +694,8 @@ func (a *JobSecretAPIService) ListJobSecrets(ctx context.Context, jobId string) 
 }
 
 // Execute executes the request
-//  @return SecretResponseList
+//
+//	@return SecretResponseList
 func (a *JobSecretAPIService) ListJobSecretsExecute(r ApiListJobSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Key** | **string** |  | 
-**Value** | Pointer to **NullableString** |  | [optional] 
+**Value** | Pointer to **string** |  | [optional] 
 **MountPath** | **string** |  | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
@@ -95,16 +95,6 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
-### SetValueNil
-
-`func (o *VariableAlias) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *VariableAlias) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetMountPath
 
 `func (o *VariableAlias) GetMountPath() string`

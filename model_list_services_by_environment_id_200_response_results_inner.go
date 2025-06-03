@@ -23,6 +23,7 @@ type ListServicesByEnvironmentId200ResponseResultsInner struct {
 	Database          *Database
 	HelmResponse      *HelmResponse
 	JobResponse       *JobResponse
+	TerraformResponse *TerraformResponse
 }
 
 // ApplicationAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns Application wrapped in ListServicesByEnvironmentId200ResponseResultsInner
@@ -60,89 +61,168 @@ func JobResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *JobRespo
 	}
 }
 
+// TerraformResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns TerraformResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func TerraformResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *TerraformResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
+		TerraformResponse: v,
+	}
+}
+
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into Application
-	err = json.Unmarshal(data, &dst.Application)
-	if err == nil {
-		jsonApplication, _ := json.Marshal(dst.Application)
-		if string(jsonApplication) == "{}" { // empty struct
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'APPLICATION'
+	if jsonDict["service_type"] == "APPLICATION" {
+		// try to unmarshal JSON data into Application
+		err = json.Unmarshal(data, &dst.Application)
+		if err == nil {
+			return nil // data stored in dst.Application, return on the first match
+		} else {
 			dst.Application = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as Application: %s", err.Error())
 		}
-	} else {
-		dst.Application = nil
 	}
 
-	// try to unmarshal data into ContainerResponse
-	err = json.Unmarshal(data, &dst.ContainerResponse)
-	if err == nil {
-		jsonContainerResponse, _ := json.Marshal(dst.ContainerResponse)
-		if string(jsonContainerResponse) == "{}" { // empty struct
+	// check if the discriminator value is 'CONTAINER'
+	if jsonDict["service_type"] == "CONTAINER" {
+		// try to unmarshal JSON data into ContainerResponse
+		err = json.Unmarshal(data, &dst.ContainerResponse)
+		if err == nil {
+			return nil // data stored in dst.ContainerResponse, return on the first match
+		} else {
 			dst.ContainerResponse = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as ContainerResponse: %s", err.Error())
 		}
-	} else {
-		dst.ContainerResponse = nil
 	}
 
-	// try to unmarshal data into Database
-	err = json.Unmarshal(data, &dst.Database)
-	if err == nil {
-		jsonDatabase, _ := json.Marshal(dst.Database)
-		if string(jsonDatabase) == "{}" { // empty struct
+	// check if the discriminator value is 'DATABASE'
+	if jsonDict["service_type"] == "DATABASE" {
+		// try to unmarshal JSON data into Database
+		err = json.Unmarshal(data, &dst.Database)
+		if err == nil {
+			return nil // data stored in dst.Database, return on the first match
+		} else {
 			dst.Database = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as Database: %s", err.Error())
 		}
-	} else {
-		dst.Database = nil
 	}
 
-	// try to unmarshal data into HelmResponse
-	err = json.Unmarshal(data, &dst.HelmResponse)
-	if err == nil {
-		jsonHelmResponse, _ := json.Marshal(dst.HelmResponse)
-		if string(jsonHelmResponse) == "{}" { // empty struct
+	// check if the discriminator value is 'HELM'
+	if jsonDict["service_type"] == "HELM" {
+		// try to unmarshal JSON data into HelmResponse
+		err = json.Unmarshal(data, &dst.HelmResponse)
+		if err == nil {
+			return nil // data stored in dst.HelmResponse, return on the first match
+		} else {
 			dst.HelmResponse = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as HelmResponse: %s", err.Error())
 		}
-	} else {
-		dst.HelmResponse = nil
 	}
 
-	// try to unmarshal data into JobResponse
-	err = json.Unmarshal(data, &dst.JobResponse)
-	if err == nil {
-		jsonJobResponse, _ := json.Marshal(dst.JobResponse)
-		if string(jsonJobResponse) == "{}" { // empty struct
+	// check if the discriminator value is 'JOB'
+	if jsonDict["service_type"] == "JOB" {
+		// try to unmarshal JSON data into JobResponse
+		err = json.Unmarshal(data, &dst.JobResponse)
+		if err == nil {
+			return nil // data stored in dst.JobResponse, return on the first match
+		} else {
 			dst.JobResponse = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as JobResponse: %s", err.Error())
 		}
-	} else {
-		dst.JobResponse = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.Application = nil
-		dst.ContainerResponse = nil
-		dst.Database = nil
-		dst.HelmResponse = nil
-		dst.JobResponse = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(ListServicesByEnvironmentId200ResponseResultsInner)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(ListServicesByEnvironmentId200ResponseResultsInner)")
+	// check if the discriminator value is 'TERRAFORM'
+	if jsonDict["service_type"] == "TERRAFORM" {
+		// try to unmarshal JSON data into TerraformResponse
+		err = json.Unmarshal(data, &dst.TerraformResponse)
+		if err == nil {
+			return nil // data stored in dst.TerraformResponse, return on the first match
+		} else {
+			dst.TerraformResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as TerraformResponse: %s", err.Error())
+		}
 	}
+
+	// check if the discriminator value is 'Application'
+	if jsonDict["service_type"] == "Application" {
+		// try to unmarshal JSON data into Application
+		err = json.Unmarshal(data, &dst.Application)
+		if err == nil {
+			return nil // data stored in dst.Application, return on the first match
+		} else {
+			dst.Application = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as Application: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ContainerResponse'
+	if jsonDict["service_type"] == "ContainerResponse" {
+		// try to unmarshal JSON data into ContainerResponse
+		err = json.Unmarshal(data, &dst.ContainerResponse)
+		if err == nil {
+			return nil // data stored in dst.ContainerResponse, return on the first match
+		} else {
+			dst.ContainerResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as ContainerResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'Database'
+	if jsonDict["service_type"] == "Database" {
+		// try to unmarshal JSON data into Database
+		err = json.Unmarshal(data, &dst.Database)
+		if err == nil {
+			return nil // data stored in dst.Database, return on the first match
+		} else {
+			dst.Database = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as Database: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'HelmResponse'
+	if jsonDict["service_type"] == "HelmResponse" {
+		// try to unmarshal JSON data into HelmResponse
+		err = json.Unmarshal(data, &dst.HelmResponse)
+		if err == nil {
+			return nil // data stored in dst.HelmResponse, return on the first match
+		} else {
+			dst.HelmResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as HelmResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'JobResponse'
+	if jsonDict["service_type"] == "JobResponse" {
+		// try to unmarshal JSON data into JobResponse
+		err = json.Unmarshal(data, &dst.JobResponse)
+		if err == nil {
+			return nil // data stored in dst.JobResponse, return on the first match
+		} else {
+			dst.JobResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as JobResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'TerraformResponse'
+	if jsonDict["service_type"] == "TerraformResponse" {
+		// try to unmarshal JSON data into TerraformResponse
+		err = json.Unmarshal(data, &dst.TerraformResponse)
+		if err == nil {
+			return nil // data stored in dst.TerraformResponse, return on the first match
+		} else {
+			dst.TerraformResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as TerraformResponse: %s", err.Error())
+		}
+	}
+
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -165,6 +245,10 @@ func (src ListServicesByEnvironmentId200ResponseResultsInner) MarshalJSON() ([]b
 
 	if src.JobResponse != nil {
 		return json.Marshal(&src.JobResponse)
+	}
+
+	if src.TerraformResponse != nil {
+		return json.Marshal(&src.TerraformResponse)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -193,6 +277,10 @@ func (obj *ListServicesByEnvironmentId200ResponseResultsInner) GetActualInstance
 
 	if obj.JobResponse != nil {
 		return obj.JobResponse
+	}
+
+	if obj.TerraformResponse != nil {
+		return obj.TerraformResponse
 	}
 
 	// all schemas are nil

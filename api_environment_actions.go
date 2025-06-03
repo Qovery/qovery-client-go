@@ -44,9 +44,9 @@ CancelEnvironmentDeployment Cancel environment deployment
 
 Cancel the current deployment of your environment.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCancelEnvironmentDeploymentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCancelEnvironmentDeploymentRequest
 */
 func (a *EnvironmentActionsAPIService) CancelEnvironmentDeployment(ctx context.Context, environmentId string) ApiCancelEnvironmentDeploymentRequest {
 	return ApiCancelEnvironmentDeploymentRequest{
@@ -57,7 +57,8 @@ func (a *EnvironmentActionsAPIService) CancelEnvironmentDeployment(ctx context.C
 }
 
 // Execute executes the request
-//  @return EnvironmentStatus
+//
+//	@return EnvironmentStatus
 func (a *EnvironmentActionsAPIService) CancelEnvironmentDeploymentExecute(r ApiCancelEnvironmentDeploymentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -167,9 +168,9 @@ func (r ApiCleanFailedJobsRequest) Execute() (*CleanFailedJobs200Response, *http
 /*
 CleanFailedJobs Clean failed jobs within an environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId
- @return ApiCleanFailedJobsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId
+	@return ApiCleanFailedJobsRequest
 */
 func (a *EnvironmentActionsAPIService) CleanFailedJobs(ctx context.Context, environmentId string) ApiCleanFailedJobsRequest {
 	return ApiCleanFailedJobsRequest{
@@ -180,7 +181,8 @@ func (a *EnvironmentActionsAPIService) CleanFailedJobs(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return CleanFailedJobs200Response
+//
+//	@return CleanFailedJobs200Response
 func (a *EnvironmentActionsAPIService) CleanFailedJobsExecute(r ApiCleanFailedJobsRequest) (*CleanFailedJobs200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -292,9 +294,9 @@ CloneEnvironment Clone environment
 
 You must provide a name. This will create a new environment, with the same configuration, and same applications and databases. Database data is not cloned.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCloneEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCloneEnvironmentRequest
 */
 func (a *EnvironmentActionsAPIService) CloneEnvironment(ctx context.Context, environmentId string) ApiCloneEnvironmentRequest {
 	return ApiCloneEnvironmentRequest{
@@ -305,7 +307,8 @@ func (a *EnvironmentActionsAPIService) CloneEnvironment(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return Environment
+//
+//	@return Environment
 func (a *EnvironmentActionsAPIService) CloneEnvironmentExecute(r ApiCloneEnvironmentRequest) (*Environment, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -417,9 +420,9 @@ DeleteSelectedServices Delete services
 
 Delete selected services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiDeleteSelectedServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiDeleteSelectedServicesRequest
 */
 func (a *EnvironmentActionsAPIService) DeleteSelectedServices(ctx context.Context, environmentId string) ApiDeleteSelectedServicesRequest {
 	return ApiDeleteSelectedServicesRequest{
@@ -531,9 +534,9 @@ DeployAllServices Deploy services
 
 Update and deploy the selected services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiDeployAllServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiDeployAllServicesRequest
 */
 func (a *EnvironmentActionsAPIService) DeployAllServices(ctx context.Context, environmentId string) ApiDeployAllServicesRequest {
 	return ApiDeployAllServicesRequest{
@@ -544,7 +547,8 @@ func (a *EnvironmentActionsAPIService) DeployAllServices(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return EnvironmentStatus
+//
+//	@return EnvironmentStatus
 func (a *EnvironmentActionsAPIService) DeployAllServicesExecute(r ApiDeployAllServicesRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -650,9 +654,9 @@ DeployEnvironment Deploy environment
 
 This will deploy all the services of this environment to their latest version.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiDeployEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiDeployEnvironmentRequest
 */
 func (a *EnvironmentActionsAPIService) DeployEnvironment(ctx context.Context, environmentId string) ApiDeployEnvironmentRequest {
 	return ApiDeployEnvironmentRequest{
@@ -663,7 +667,8 @@ func (a *EnvironmentActionsAPIService) DeployEnvironment(ctx context.Context, en
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *EnvironmentActionsAPIService) DeployEnvironmentExecute(r ApiDeployEnvironmentRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -773,9 +778,9 @@ RebootServices Reboot services
 
 Update and reboot the selected services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiRebootServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiRebootServicesRequest
 */
 func (a *EnvironmentActionsAPIService) RebootServices(ctx context.Context, environmentId string) ApiRebootServicesRequest {
 	return ApiRebootServicesRequest{
@@ -786,7 +791,8 @@ func (a *EnvironmentActionsAPIService) RebootServices(ctx context.Context, envir
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *EnvironmentActionsAPIService) RebootServicesExecute(r ApiRebootServicesRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -890,9 +896,9 @@ func (r ApiRedeployEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Resp
 /*
 RedeployEnvironment Redeploy environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiRedeployEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiRedeployEnvironmentRequest
 */
 func (a *EnvironmentActionsAPIService) RedeployEnvironment(ctx context.Context, environmentId string) ApiRedeployEnvironmentRequest {
 	return ApiRedeployEnvironmentRequest{
@@ -903,7 +909,8 @@ func (a *EnvironmentActionsAPIService) RedeployEnvironment(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return EnvironmentStatus
+//
+//	@return EnvironmentStatus
 func (a *EnvironmentActionsAPIService) RedeployEnvironmentExecute(r ApiRedeployEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1005,9 +1012,9 @@ func (r ApiStopEnvironmentRequest) Execute() (*EnvironmentStatus, *http.Response
 /*
 StopEnvironment Stop environment
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiStopEnvironmentRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiStopEnvironmentRequest
 */
 func (a *EnvironmentActionsAPIService) StopEnvironment(ctx context.Context, environmentId string) ApiStopEnvironmentRequest {
 	return ApiStopEnvironmentRequest{
@@ -1018,7 +1025,8 @@ func (a *EnvironmentActionsAPIService) StopEnvironment(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return EnvironmentStatus
+//
+//	@return EnvironmentStatus
 func (a *EnvironmentActionsAPIService) StopEnvironmentExecute(r ApiStopEnvironmentRequest) (*EnvironmentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -1128,9 +1136,9 @@ StopSelectedServices Stop services
 
 Stop selected services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiStopSelectedServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiStopSelectedServicesRequest
 */
 func (a *EnvironmentActionsAPIService) StopSelectedServices(ctx context.Context, environmentId string) ApiStopSelectedServicesRequest {
 	return ApiStopSelectedServicesRequest{

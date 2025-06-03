@@ -30,7 +30,7 @@ type ReferenceObjectStatus struct {
 	Steps                   *ServiceStepMetrics         `json:"steps,omitempty"`
 	ExecutionId             *string                     `json:"execution_id,omitempty"`
 	StatusDetails           StatusDetails               `json:"status_details"`
-	DeploymentRequestId     NullableString              `json:"deployment_request_id,omitempty"`
+	DeploymentRequestId     *string                     `json:"deployment_request_id,omitempty"`
 	DeploymentRequestsCount *int32                      `json:"deployment_requests_count,omitempty"`
 	AdditionalProperties    map[string]interface{}
 }
@@ -282,47 +282,36 @@ func (o *ReferenceObjectStatus) SetStatusDetails(v StatusDetails) {
 	o.StatusDetails = v
 }
 
-// GetDeploymentRequestId returns the DeploymentRequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDeploymentRequestId returns the DeploymentRequestId field value if set, zero value otherwise.
 func (o *ReferenceObjectStatus) GetDeploymentRequestId() string {
-	if o == nil || IsNil(o.DeploymentRequestId.Get()) {
+	if o == nil || IsNil(o.DeploymentRequestId) {
 		var ret string
 		return ret
 	}
-	return *o.DeploymentRequestId.Get()
+	return *o.DeploymentRequestId
 }
 
 // GetDeploymentRequestIdOk returns a tuple with the DeploymentRequestId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ReferenceObjectStatus) GetDeploymentRequestIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DeploymentRequestId) {
 		return nil, false
 	}
-	return o.DeploymentRequestId.Get(), o.DeploymentRequestId.IsSet()
+	return o.DeploymentRequestId, true
 }
 
 // HasDeploymentRequestId returns a boolean if a field has been set.
 func (o *ReferenceObjectStatus) HasDeploymentRequestId() bool {
-	if o != nil && o.DeploymentRequestId.IsSet() {
+	if o != nil && !IsNil(o.DeploymentRequestId) {
 		return true
 	}
 
 	return false
 }
 
-// SetDeploymentRequestId gets a reference to the given NullableString and assigns it to the DeploymentRequestId field.
+// SetDeploymentRequestId gets a reference to the given string and assigns it to the DeploymentRequestId field.
 func (o *ReferenceObjectStatus) SetDeploymentRequestId(v string) {
-	o.DeploymentRequestId.Set(&v)
-}
-
-// SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
-func (o *ReferenceObjectStatus) SetDeploymentRequestIdNil() {
-	o.DeploymentRequestId.Set(nil)
-}
-
-// UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
-func (o *ReferenceObjectStatus) UnsetDeploymentRequestId() {
-	o.DeploymentRequestId.Unset()
+	o.DeploymentRequestId = &v
 }
 
 // GetDeploymentRequestsCount returns the DeploymentRequestsCount field value if set, zero value otherwise.
@@ -383,8 +372,8 @@ func (o ReferenceObjectStatus) ToMap() (map[string]interface{}, error) {
 		toSerialize["execution_id"] = o.ExecutionId
 	}
 	toSerialize["status_details"] = o.StatusDetails
-	if o.DeploymentRequestId.IsSet() {
-		toSerialize["deployment_request_id"] = o.DeploymentRequestId.Get()
+	if !IsNil(o.DeploymentRequestId) {
+		toSerialize["deployment_request_id"] = o.DeploymentRequestId
 	}
 	if !IsNil(o.DeploymentRequestsCount) {
 		toSerialize["deployment_requests_count"] = o.DeploymentRequestsCount

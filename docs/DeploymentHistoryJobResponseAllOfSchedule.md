@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Event** | Pointer to [**JobScheduleEvent**](JobScheduleEvent.md) |  | [optional] 
-**ScheduleAt** | Pointer to **NullableString** | Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: &#x60;* * * * *&#x60; represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC  | [optional] 
+**ScheduleAt** | Pointer to **string** | Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: &#x60;* * * * *&#x60; represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC  | [optional] 
 
 ## Methods
 
@@ -76,16 +76,6 @@ SetScheduleAt sets ScheduleAt field to given value.
 
 HasScheduleAt returns a boolean if a field has been set.
 
-### SetScheduleAtNil
-
-`func (o *DeploymentHistoryJobResponseAllOfSchedule) SetScheduleAtNil(b bool)`
-
- SetScheduleAtNil sets the value for ScheduleAt to be an explicit nil
-
-### UnsetScheduleAt
-`func (o *DeploymentHistoryJobResponseAllOfSchedule) UnsetScheduleAt()`
-
-UnsetScheduleAt ensures that no value is present for ScheduleAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

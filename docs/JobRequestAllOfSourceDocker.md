@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
-**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
-**DockerfileRaw** | Pointer to **NullableString** | The content of your dockerfile if it is not stored inside your git repository | [optional] 
-**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**DockerfileRaw** | Pointer to **string** | The content of your dockerfile if it is not stored inside your git repository | [optional] 
+**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -78,16 +78,6 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
-### SetDockerfilePathNil
-
-`func (o *JobRequestAllOfSourceDocker) SetDockerfilePathNil(b bool)`
-
- SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-
-### UnsetDockerfilePath
-`func (o *JobRequestAllOfSourceDocker) UnsetDockerfilePath()`
-
-UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetDockerfileRaw
 
 `func (o *JobRequestAllOfSourceDocker) GetDockerfileRaw() string`
@@ -113,16 +103,6 @@ SetDockerfileRaw sets DockerfileRaw field to given value.
 
 HasDockerfileRaw returns a boolean if a field has been set.
 
-### SetDockerfileRawNil
-
-`func (o *JobRequestAllOfSourceDocker) SetDockerfileRawNil(b bool)`
-
- SetDockerfileRawNil sets the value for DockerfileRaw to be an explicit nil
-
-### UnsetDockerfileRaw
-`func (o *JobRequestAllOfSourceDocker) UnsetDockerfileRaw()`
-
-UnsetDockerfileRaw ensures that no value is present for DockerfileRaw, not even an explicit nil
 ### GetDockerTargetBuildStage
 
 `func (o *JobRequestAllOfSourceDocker) GetDockerTargetBuildStage() string`
@@ -148,16 +128,6 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
-### SetDockerTargetBuildStageNil
-
-`func (o *JobRequestAllOfSourceDocker) SetDockerTargetBuildStageNil(b bool)`
-
- SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-
-### UnsetDockerTargetBuildStage
-`func (o *JobRequestAllOfSourceDocker) UnsetDockerTargetBuildStage()`
-
-UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Type** | **string** |  | 
 **Timestamp** | **time.Time** |  | 
 **Details** | [**EnvironmentLogsDetails**](EnvironmentLogsDetails.md) |  | 
-**Error** | Pointer to [**NullableEnvironmentLogsError**](EnvironmentLogsError.md) |  | [optional] 
-**Message** | Pointer to [**NullableEnvironmentLogsMessage**](EnvironmentLogsMessage.md) |  | [optional] 
+**Error** | Pointer to [**EnvironmentLogsError**](EnvironmentLogsError.md) |  | [optional] 
+**Message** | Pointer to [**EnvironmentLogsMessage**](EnvironmentLogsMessage.md) |  | [optional] 
 
 ## Methods
 
@@ -114,16 +114,6 @@ SetError sets Error field to given value.
 
 HasError returns a boolean if a field has been set.
 
-### SetErrorNil
-
-`func (o *EnvironmentLogs) SetErrorNil(b bool)`
-
- SetErrorNil sets the value for Error to be an explicit nil
-
-### UnsetError
-`func (o *EnvironmentLogs) UnsetError()`
-
-UnsetError ensures that no value is present for Error, not even an explicit nil
 ### GetMessage
 
 `func (o *EnvironmentLogs) GetMessage() EnvironmentLogsMessage`
@@ -149,16 +139,6 @@ SetMessage sets Message field to given value.
 
 HasMessage returns a boolean if a field has been set.
 
-### SetMessageNil
-
-`func (o *EnvironmentLogs) SetMessageNil(b bool)`
-
- SetMessageNil sets the value for Message to be an explicit nil
-
-### UnsetMessage
-`func (o *EnvironmentLogs) UnsetMessage()`
-
-UnsetMessage ensures that no value is present for Message, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

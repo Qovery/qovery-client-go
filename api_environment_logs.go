@@ -38,9 +38,9 @@ ListEnvironmentLog List environment deployment logs
 
 This returns the last 1000 environment deployment logs.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentLogRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListEnvironmentLogRequest
 */
 func (a *EnvironmentLogsAPIService) ListEnvironmentLog(ctx context.Context, environmentId string) ApiListEnvironmentLogRequest {
 	return ApiListEnvironmentLogRequest{
@@ -51,7 +51,8 @@ func (a *EnvironmentLogsAPIService) ListEnvironmentLog(ctx context.Context, envi
 }
 
 // Execute executes the request
-//  @return EnvironmentLogResponseList
+//
+//	@return EnvironmentLogResponseList
 func (a *EnvironmentLogsAPIService) ListEnvironmentLogExecute(r ApiListEnvironmentLogRequest) (*EnvironmentLogResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -161,9 +162,9 @@ ListEnvironmentLogs List environment deployment logs v2
 
 This returns the last 1000 environment deployment logs v2
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentLogsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListEnvironmentLogsRequest
 */
 func (a *EnvironmentLogsAPIService) ListEnvironmentLogs(ctx context.Context, environmentId string) ApiListEnvironmentLogsRequest {
 	return ApiListEnvironmentLogsRequest{
@@ -174,7 +175,8 @@ func (a *EnvironmentLogsAPIService) ListEnvironmentLogs(ctx context.Context, env
 }
 
 // Execute executes the request
-//  @return []EnvironmentLogs
+//
+//	@return []EnvironmentLogs
 func (a *EnvironmentLogsAPIService) ListEnvironmentLogsExecute(r ApiListEnvironmentLogsRequest) ([]EnvironmentLogs, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

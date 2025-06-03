@@ -29,7 +29,7 @@ type ApplicationEditRequest struct {
 	GitRepository *ApplicationGitRepositoryRequest `json:"git_repository,omitempty"`
 	BuildMode     *BuildModeEnum                   `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile
-	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
+	DockerfilePath *string `json:"dockerfile_path,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -46,13 +46,13 @@ type ApplicationEditRequest struct {
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
-	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
+	AutoDeploy        *bool                      `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the application.
 	IconUri *string `json:"icon_uri,omitempty"`
 	// The target build stage in the Dockerfile to build
-	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	DockerTargetBuildStage *string `json:"docker_target_build_stage,omitempty"`
 	AdditionalProperties   map[string]interface{}
 }
 
@@ -260,47 +260,36 @@ func (o *ApplicationEditRequest) SetBuildMode(v BuildModeEnum) {
 	o.BuildMode = &v
 }
 
-// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
 func (o *ApplicationEditRequest) GetDockerfilePath() string {
-	if o == nil || IsNil(o.DockerfilePath.Get()) {
+	if o == nil || IsNil(o.DockerfilePath) {
 		var ret string
 		return ret
 	}
-	return *o.DockerfilePath.Get()
+	return *o.DockerfilePath
 }
 
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationEditRequest) GetDockerfilePathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DockerfilePath) {
 		return nil, false
 	}
-	return o.DockerfilePath.Get(), o.DockerfilePath.IsSet()
+	return o.DockerfilePath, true
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
 func (o *ApplicationEditRequest) HasDockerfilePath() bool {
-	if o != nil && o.DockerfilePath.IsSet() {
+	if o != nil && !IsNil(o.DockerfilePath) {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
+// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
 func (o *ApplicationEditRequest) SetDockerfilePath(v string) {
-	o.DockerfilePath.Set(&v)
-}
-
-// SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-func (o *ApplicationEditRequest) SetDockerfilePathNil() {
-	o.DockerfilePath.Set(nil)
-}
-
-// UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
-func (o *ApplicationEditRequest) UnsetDockerfilePath() {
-	o.DockerfilePath.Unset()
+	o.DockerfilePath = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -583,47 +572,36 @@ func (o *ApplicationEditRequest) SetEntrypoint(v string) {
 	o.Entrypoint = &v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
 func (o *ApplicationEditRequest) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy.Get()) {
+	if o == nil || IsNil(o.AutoDeploy) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy.Get()
+	return *o.AutoDeploy
 }
 
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationEditRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.AutoDeploy) {
 		return nil, false
 	}
-	return o.AutoDeploy.Get(), o.AutoDeploy.IsSet()
+	return o.AutoDeploy, true
 }
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *ApplicationEditRequest) HasAutoDeploy() bool {
-	if o != nil && o.AutoDeploy.IsSet() {
+	if o != nil && !IsNil(o.AutoDeploy) {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoDeploy gets a reference to the given NullableBool and assigns it to the AutoDeploy field.
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
 func (o *ApplicationEditRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy.Set(&v)
-}
-
-// SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
-func (o *ApplicationEditRequest) SetAutoDeployNil() {
-	o.AutoDeploy.Set(nil)
-}
-
-// UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
-func (o *ApplicationEditRequest) UnsetAutoDeploy() {
-	o.AutoDeploy.Unset()
+	o.AutoDeploy = &v
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
@@ -722,47 +700,36 @@ func (o *ApplicationEditRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
-// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise.
 func (o *ApplicationEditRequest) GetDockerTargetBuildStage() string {
-	if o == nil || IsNil(o.DockerTargetBuildStage.Get()) {
+	if o == nil || IsNil(o.DockerTargetBuildStage) {
 		var ret string
 		return ret
 	}
-	return *o.DockerTargetBuildStage.Get()
+	return *o.DockerTargetBuildStage
 }
 
 // GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationEditRequest) GetDockerTargetBuildStageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DockerTargetBuildStage) {
 		return nil, false
 	}
-	return o.DockerTargetBuildStage.Get(), o.DockerTargetBuildStage.IsSet()
+	return o.DockerTargetBuildStage, true
 }
 
 // HasDockerTargetBuildStage returns a boolean if a field has been set.
 func (o *ApplicationEditRequest) HasDockerTargetBuildStage() bool {
-	if o != nil && o.DockerTargetBuildStage.IsSet() {
+	if o != nil && !IsNil(o.DockerTargetBuildStage) {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerTargetBuildStage gets a reference to the given NullableString and assigns it to the DockerTargetBuildStage field.
+// SetDockerTargetBuildStage gets a reference to the given string and assigns it to the DockerTargetBuildStage field.
 func (o *ApplicationEditRequest) SetDockerTargetBuildStage(v string) {
-	o.DockerTargetBuildStage.Set(&v)
-}
-
-// SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-func (o *ApplicationEditRequest) SetDockerTargetBuildStageNil() {
-	o.DockerTargetBuildStage.Set(nil)
-}
-
-// UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
-func (o *ApplicationEditRequest) UnsetDockerTargetBuildStage() {
-	o.DockerTargetBuildStage.Unset()
+	o.DockerTargetBuildStage = &v
 }
 
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
@@ -790,8 +757,8 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildMode) {
 		toSerialize["build_mode"] = o.BuildMode
 	}
-	if o.DockerfilePath.IsSet() {
-		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
+	if !IsNil(o.DockerfilePath) {
+		toSerialize["dockerfile_path"] = o.DockerfilePath
 	}
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
@@ -818,8 +785,8 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Entrypoint) {
 		toSerialize["entrypoint"] = o.Entrypoint
 	}
-	if o.AutoDeploy.IsSet() {
-		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
+	if !IsNil(o.AutoDeploy) {
+		toSerialize["auto_deploy"] = o.AutoDeploy
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups
@@ -830,8 +797,8 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
-	if o.DockerTargetBuildStage.IsSet() {
-		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
+	if !IsNil(o.DockerTargetBuildStage) {
+		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | The id of the overriden variable | 
 **Key** | **string** | The key of the overriden variable | 
-**Value** | Pointer to **NullableString** | The value of the overriden variable | [optional] 
+**Value** | Pointer to **string** | The value of the overriden variable | [optional] 
 **MountPath** | **string** | The mounth path of the overriden variable (only if environment variable type is &#39;file&#39;) | 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
@@ -95,16 +95,6 @@ SetValue sets Value field to given value.
 
 HasValue returns a boolean if a field has been set.
 
-### SetValueNil
-
-`func (o *VariableOverride) SetValueNil(b bool)`
-
- SetValueNil sets the value for Value to be an explicit nil
-
-### UnsetValue
-`func (o *VariableOverride) UnsetValue()`
-
-UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetMountPath
 
 `func (o *VariableOverride) GetMountPath() string`

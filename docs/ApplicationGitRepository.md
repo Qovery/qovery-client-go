@@ -15,8 +15,8 @@ Name | Type | Description | Notes
 **DeployedCommitDate** | Pointer to **time.Time** | Git commit date corresponding to the deployed version of the app | [optional] [readonly] 
 **DeployedCommitContributor** | Pointer to **string** | Git commit user corresponding to the deployed version of the app | [optional] 
 **DeployedCommitTag** | Pointer to **string** |  | [optional] 
-**GitTokenId** | Pointer to **NullableString** |  | [optional] 
-**GitTokenName** | Pointer to **NullableString** |  | [optional] 
+**GitTokenId** | Pointer to **string** |  | [optional] 
+**GitTokenName** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -317,16 +317,6 @@ SetGitTokenId sets GitTokenId field to given value.
 
 HasGitTokenId returns a boolean if a field has been set.
 
-### SetGitTokenIdNil
-
-`func (o *ApplicationGitRepository) SetGitTokenIdNil(b bool)`
-
- SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
-
-### UnsetGitTokenId
-`func (o *ApplicationGitRepository) UnsetGitTokenId()`
-
-UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
 ### GetGitTokenName
 
 `func (o *ApplicationGitRepository) GetGitTokenName() string`
@@ -352,16 +342,6 @@ SetGitTokenName sets GitTokenName field to given value.
 
 HasGitTokenName returns a boolean if a field has been set.
 
-### SetGitTokenNameNil
-
-`func (o *ApplicationGitRepository) SetGitTokenNameNil(b bool)`
-
- SetGitTokenNameNil sets the value for GitTokenName to be an explicit nil
-
-### UnsetGitTokenName
-`func (o *ApplicationGitRepository) UnsetGitTokenName()`
-
-UnsetGitTokenName ensures that no value is present for GitTokenName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

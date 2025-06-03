@@ -45,9 +45,9 @@ ListApplicationDeploymentHistory List application deploys
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter. You can also filter by status (FAILED or SUCCESS), and git_commit_id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationDeploymentHistoryRequest
 */
 func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistory(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryRequest {
 	return ApiListApplicationDeploymentHistoryRequest{
@@ -58,7 +58,8 @@ func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistor
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryPaginatedResponseList
+//
+//	@return DeploymentHistoryPaginatedResponseList
 func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistoryExecute(r ApiListApplicationDeploymentHistoryRequest) (*DeploymentHistoryPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -172,9 +173,9 @@ ListApplicationDeploymentHistoryV2 List application deploys
 
 By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter. You can also filter by status (FAILED or SUCCESS), and git_commit_id
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationDeploymentHistoryV2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId
+	@return ApiListApplicationDeploymentHistoryV2Request
 */
 func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistoryV2(ctx context.Context, applicationId string) ApiListApplicationDeploymentHistoryV2Request {
 	return ApiListApplicationDeploymentHistoryV2Request{
@@ -185,7 +186,8 @@ func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistor
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryServicePaginatedResponseListV2
+//
+//	@return DeploymentHistoryServicePaginatedResponseListV2
 func (a *ApplicationDeploymentHistoryAPIService) ListApplicationDeploymentHistoryV2Execute(r ApiListApplicationDeploymentHistoryV2Request) (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

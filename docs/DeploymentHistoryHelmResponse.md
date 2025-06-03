@@ -9,8 +9,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** | name of the helm | [optional] 
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
-**Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
-**Repository** | Pointer to [**NullableDeploymentHistoryHelmResponseAllOfRepository**](DeploymentHistoryHelmResponseAllOfRepository.md) |  | [optional] 
+**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
+**Repository** | Pointer to [**DeploymentHistoryHelmResponseAllOfRepository**](DeploymentHistoryHelmResponseAllOfRepository.md) |  | [optional] 
 
 ## Methods
 
@@ -171,16 +171,6 @@ SetCommit sets Commit field to given value.
 
 HasCommit returns a boolean if a field has been set.
 
-### SetCommitNil
-
-`func (o *DeploymentHistoryHelmResponse) SetCommitNil(b bool)`
-
- SetCommitNil sets the value for Commit to be an explicit nil
-
-### UnsetCommit
-`func (o *DeploymentHistoryHelmResponse) UnsetCommit()`
-
-UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetRepository
 
 `func (o *DeploymentHistoryHelmResponse) GetRepository() DeploymentHistoryHelmResponseAllOfRepository`
@@ -206,16 +196,6 @@ SetRepository sets Repository field to given value.
 
 HasRepository returns a boolean if a field has been set.
 
-### SetRepositoryNil
-
-`func (o *DeploymentHistoryHelmResponse) SetRepositoryNil(b bool)`
-
- SetRepositoryNil sets the value for Repository to be an explicit nil
-
-### UnsetRepository
-`func (o *DeploymentHistoryHelmResponse) UnsetRepository()`
-
-UnsetRepository ensures that no value is present for Repository, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

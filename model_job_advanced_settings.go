@@ -29,11 +29,11 @@ type JobAdvancedSettings struct {
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
-	DeploymentAffinityNodeRequired   *map[string]string `json:"deployment.affinity.node.required,omitempty"`
-	JobDeleteTtlSecondsAfterFinished NullableInt32      `json:"job.delete_ttl_seconds_after_finished,omitempty"`
-	CronjobConcurrencyPolicy         *string            `json:"cronjob.concurrency_policy,omitempty"`
-	CronjobFailedJobsHistoryLimit    *int32             `json:"cronjob.failed_jobs_history_limit,omitempty"`
-	CronjobSuccessJobsHistoryLimit   *int32             `json:"cronjob.success_jobs_history_limit,omitempty"`
+	DeploymentAffinityNodeRequired   map[string]string `json:"deployment.affinity.node.required,omitempty"`
+	JobDeleteTtlSecondsAfterFinished *int32            `json:"job.delete_ttl_seconds_after_finished,omitempty"`
+	CronjobConcurrencyPolicy         *string           `json:"cronjob.concurrency_policy,omitempty"`
+	CronjobFailedJobsHistoryLimit    *int32            `json:"cronjob.failed_jobs_history_limit,omitempty"`
+	CronjobSuccessJobsHistoryLimit   *int32            `json:"cronjob.success_jobs_history_limit,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Automount Kubernetes service account token to have access to Kubernetes API from pods
@@ -196,14 +196,14 @@ func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequired() map[string]str
 		var ret map[string]string
 		return ret
 	}
-	return *o.DeploymentAffinityNodeRequired
+	return o.DeploymentAffinityNodeRequired
 }
 
 // GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
+func (o *JobAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
-		return nil, false
+		return map[string]string{}, false
 	}
 	return o.DeploymentAffinityNodeRequired, true
 }
@@ -219,50 +219,39 @@ func (o *JobAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
 
 // SetDeploymentAffinityNodeRequired gets a reference to the given map[string]string and assigns it to the DeploymentAffinityNodeRequired field.
 func (o *JobAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string) {
-	o.DeploymentAffinityNodeRequired = &v
+	o.DeploymentAffinityNodeRequired = v
 }
 
-// GetJobDeleteTtlSecondsAfterFinished returns the JobDeleteTtlSecondsAfterFinished field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetJobDeleteTtlSecondsAfterFinished returns the JobDeleteTtlSecondsAfterFinished field value if set, zero value otherwise.
 func (o *JobAdvancedSettings) GetJobDeleteTtlSecondsAfterFinished() int32 {
-	if o == nil || IsNil(o.JobDeleteTtlSecondsAfterFinished.Get()) {
+	if o == nil || IsNil(o.JobDeleteTtlSecondsAfterFinished) {
 		var ret int32
 		return ret
 	}
-	return *o.JobDeleteTtlSecondsAfterFinished.Get()
+	return *o.JobDeleteTtlSecondsAfterFinished
 }
 
 // GetJobDeleteTtlSecondsAfterFinishedOk returns a tuple with the JobDeleteTtlSecondsAfterFinished field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobAdvancedSettings) GetJobDeleteTtlSecondsAfterFinishedOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.JobDeleteTtlSecondsAfterFinished) {
 		return nil, false
 	}
-	return o.JobDeleteTtlSecondsAfterFinished.Get(), o.JobDeleteTtlSecondsAfterFinished.IsSet()
+	return o.JobDeleteTtlSecondsAfterFinished, true
 }
 
 // HasJobDeleteTtlSecondsAfterFinished returns a boolean if a field has been set.
 func (o *JobAdvancedSettings) HasJobDeleteTtlSecondsAfterFinished() bool {
-	if o != nil && o.JobDeleteTtlSecondsAfterFinished.IsSet() {
+	if o != nil && !IsNil(o.JobDeleteTtlSecondsAfterFinished) {
 		return true
 	}
 
 	return false
 }
 
-// SetJobDeleteTtlSecondsAfterFinished gets a reference to the given NullableInt32 and assigns it to the JobDeleteTtlSecondsAfterFinished field.
+// SetJobDeleteTtlSecondsAfterFinished gets a reference to the given int32 and assigns it to the JobDeleteTtlSecondsAfterFinished field.
 func (o *JobAdvancedSettings) SetJobDeleteTtlSecondsAfterFinished(v int32) {
-	o.JobDeleteTtlSecondsAfterFinished.Set(&v)
-}
-
-// SetJobDeleteTtlSecondsAfterFinishedNil sets the value for JobDeleteTtlSecondsAfterFinished to be an explicit nil
-func (o *JobAdvancedSettings) SetJobDeleteTtlSecondsAfterFinishedNil() {
-	o.JobDeleteTtlSecondsAfterFinished.Set(nil)
-}
-
-// UnsetJobDeleteTtlSecondsAfterFinished ensures that no value is present for JobDeleteTtlSecondsAfterFinished, not even an explicit nil
-func (o *JobAdvancedSettings) UnsetJobDeleteTtlSecondsAfterFinished() {
-	o.JobDeleteTtlSecondsAfterFinished.Unset()
+	o.JobDeleteTtlSecondsAfterFinished = &v
 }
 
 // GetCronjobConcurrencyPolicy returns the CronjobConcurrencyPolicy field value if set, zero value otherwise.
@@ -482,8 +471,8 @@ func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeploymentAffinityNodeRequired) {
 		toSerialize["deployment.affinity.node.required"] = o.DeploymentAffinityNodeRequired
 	}
-	if o.JobDeleteTtlSecondsAfterFinished.IsSet() {
-		toSerialize["job.delete_ttl_seconds_after_finished"] = o.JobDeleteTtlSecondsAfterFinished.Get()
+	if !IsNil(o.JobDeleteTtlSecondsAfterFinished) {
+		toSerialize["job.delete_ttl_seconds_after_finished"] = o.JobDeleteTtlSecondsAfterFinished
 	}
 	if !IsNil(o.CronjobConcurrencyPolicy) {
 		toSerialize["cronjob.concurrency_policy"] = o.CronjobConcurrencyPolicy

@@ -44,10 +44,9 @@ CreateContainerSecret Add a secret to the container
 
 - Add a secret to the container.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiCreateContainerSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiCreateContainerSecretRequest
 */
 func (a *ContainerSecretAPIService) CreateContainerSecret(ctx context.Context, containerId string) ApiCreateContainerSecretRequest {
 	return ApiCreateContainerSecretRequest{
@@ -58,7 +57,8 @@ func (a *ContainerSecretAPIService) CreateContainerSecret(ctx context.Context, c
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ContainerSecretAPIService) CreateContainerSecretExecute(r ApiCreateContainerSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -176,11 +176,10 @@ CreateContainerSecretAlias Create a secret alias at the container level
 - Information regarding the aliased_secret will be exposed in the "aliased_secret" field of the newly created secret
 - You can't create an alias on an alias
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @param secretId Secret ID
- @return ApiCreateContainerSecretAliasRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@param secretId Secret ID
+	@return ApiCreateContainerSecretAliasRequest
 */
 func (a *ContainerSecretAPIService) CreateContainerSecretAlias(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretAliasRequest {
 	return ApiCreateContainerSecretAliasRequest{
@@ -192,7 +191,8 @@ func (a *ContainerSecretAPIService) CreateContainerSecretAlias(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ContainerSecretAPIService) CreateContainerSecretAliasExecute(r ApiCreateContainerSecretAliasRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -310,11 +310,10 @@ CreateContainerSecretOverride Create a secret override at the container level
 - The response body will contain the newly created secret
 - Information regarding the overridden_secret will be exposed in the "overridden_secret" field of the newly created secret
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @param secretId Secret ID
- @return ApiCreateContainerSecretOverrideRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@param secretId Secret ID
+	@return ApiCreateContainerSecretOverrideRequest
 */
 func (a *ContainerSecretAPIService) CreateContainerSecretOverride(ctx context.Context, containerId string, secretId string) ApiCreateContainerSecretOverrideRequest {
 	return ApiCreateContainerSecretOverrideRequest{
@@ -326,7 +325,8 @@ func (a *ContainerSecretAPIService) CreateContainerSecretOverride(ctx context.Co
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ContainerSecretAPIService) CreateContainerSecretOverrideExecute(r ApiCreateContainerSecretOverrideRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -436,11 +436,10 @@ DeleteContainerSecret Delete a secret from an container
 - You can't delete a BUILT_IN secret
 - If you delete a secret having override or alias, the associated override/alias will be deleted as well
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @param secretId Secret ID
- @return ApiDeleteContainerSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@param secretId Secret ID
+	@return ApiDeleteContainerSecretRequest
 */
 func (a *ContainerSecretAPIService) DeleteContainerSecret(ctx context.Context, containerId string, secretId string) ApiDeleteContainerSecretRequest {
 	return ApiDeleteContainerSecretRequest{
@@ -556,11 +555,10 @@ EditContainerSecret Edit a secret belonging to the container
 - For an alias, you can't edit the value
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > CONTAINER)
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @param secretId Secret ID
- @return ApiEditContainerSecretRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@param secretId Secret ID
+	@return ApiEditContainerSecretRequest
 */
 func (a *ContainerSecretAPIService) EditContainerSecret(ctx context.Context, containerId string, secretId string) ApiEditContainerSecretRequest {
 	return ApiEditContainerSecretRequest{
@@ -572,7 +570,8 @@ func (a *ContainerSecretAPIService) EditContainerSecret(ctx context.Context, con
 }
 
 // Execute executes the request
-//  @return Secret
+//
+//	@return Secret
 func (a *ContainerSecretAPIService) EditContainerSecretExecute(r ApiEditContainerSecretRequest) (*Secret, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -682,9 +681,9 @@ ListContainerSecrets List container secrets
 
 Secrets are like environment variables, but they are secured and can't be revealed.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiListContainerSecretsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiListContainerSecretsRequest
 */
 func (a *ContainerSecretAPIService) ListContainerSecrets(ctx context.Context, containerId string) ApiListContainerSecretsRequest {
 	return ApiListContainerSecretsRequest{
@@ -695,7 +694,8 @@ func (a *ContainerSecretAPIService) ListContainerSecrets(ctx context.Context, co
 }
 
 // Execute executes the request
-//  @return SecretResponseList
+//
+//	@return SecretResponseList
 func (a *ContainerSecretAPIService) ListContainerSecretsExecute(r ApiListContainerSecretsRequest) (*SecretResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

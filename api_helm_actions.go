@@ -51,9 +51,9 @@ DeployHelm Deploy helm
 
 You must provide a git commit id or a helm version depending on the source location of your code (git vs helm repository).
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiDeployHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiDeployHelmRequest
 */
 func (a *HelmActionsAPIService) DeployHelm(ctx context.Context, helmId string) ApiDeployHelmRequest {
 	return ApiDeployHelmRequest{
@@ -64,7 +64,8 @@ func (a *HelmActionsAPIService) DeployHelm(ctx context.Context, helmId string) A
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *HelmActionsAPIService) DeployHelmExecute(r ApiDeployHelmRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -178,9 +179,9 @@ func (r ApiRedeployHelmRequest) Execute() (*Status, *http.Response, error) {
 /*
 RedeployHelm Redeploy helm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiRedeployHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiRedeployHelmRequest
 */
 func (a *HelmActionsAPIService) RedeployHelm(ctx context.Context, helmId string) ApiRedeployHelmRequest {
 	return ApiRedeployHelmRequest{
@@ -191,7 +192,8 @@ func (a *HelmActionsAPIService) RedeployHelm(ctx context.Context, helmId string)
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *HelmActionsAPIService) RedeployHelmExecute(r ApiRedeployHelmRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -296,9 +298,9 @@ func (r ApiStopHelmRequest) Execute() (*Status, *http.Response, error) {
 /*
 StopHelm Stop helm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiStopHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiStopHelmRequest
 */
 func (a *HelmActionsAPIService) StopHelm(ctx context.Context, helmId string) ApiStopHelmRequest {
 	return ApiStopHelmRequest{
@@ -309,7 +311,8 @@ func (a *HelmActionsAPIService) StopHelm(ctx context.Context, helmId string) Api
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *HelmActionsAPIService) StopHelmExecute(r ApiStopHelmRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

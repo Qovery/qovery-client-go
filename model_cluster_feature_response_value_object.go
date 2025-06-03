@@ -63,11 +63,6 @@ func ClusterFeatureStringResponseAsClusterFeatureResponseValueObject(v *ClusterF
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 	var err error
-	// this object is nullable so check if the payload is null or empty string
-	if string(data) == "" || string(data) == "{}" {
-		return nil
-	}
-
 	// use discriminator value to speed up the lookup
 	var jsonDict map[string]interface{}
 	err = newStrictDecoder(data).Decode(&jsonDict)

@@ -38,7 +38,7 @@ type Application struct {
 	Description *string        `json:"description,omitempty"`
 	BuildMode   *BuildModeEnum `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
+	DockerfilePath *string `json:"dockerfile_path,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
@@ -62,7 +62,7 @@ type Application struct {
 	IconUri     string          `json:"icon_uri"`
 	ServiceType ServiceTypeEnum `json:"service_type"`
 	// The target build stage in the Dockerfile to build
-	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	DockerTargetBuildStage *string `json:"docker_target_build_stage,omitempty"`
 	AdditionalProperties   map[string]interface{}
 }
 
@@ -428,47 +428,36 @@ func (o *Application) SetBuildMode(v BuildModeEnum) {
 	o.BuildMode = &v
 }
 
-// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
 func (o *Application) GetDockerfilePath() string {
-	if o == nil || IsNil(o.DockerfilePath.Get()) {
+	if o == nil || IsNil(o.DockerfilePath) {
 		var ret string
 		return ret
 	}
-	return *o.DockerfilePath.Get()
+	return *o.DockerfilePath
 }
 
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetDockerfilePathOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DockerfilePath) {
 		return nil, false
 	}
-	return o.DockerfilePath.Get(), o.DockerfilePath.IsSet()
+	return o.DockerfilePath, true
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
 func (o *Application) HasDockerfilePath() bool {
-	if o != nil && o.DockerfilePath.IsSet() {
+	if o != nil && !IsNil(o.DockerfilePath) {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
+// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
 func (o *Application) SetDockerfilePath(v string) {
-	o.DockerfilePath.Set(&v)
-}
-
-// SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-func (o *Application) SetDockerfilePathNil() {
-	o.DockerfilePath.Set(nil)
-}
-
-// UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
-func (o *Application) UnsetDockerfilePath() {
-	o.DockerfilePath.Unset()
+	o.DockerfilePath = &v
 }
 
 // GetCpu returns the Cpu field value if set, zero value otherwise.
@@ -895,47 +884,36 @@ func (o *Application) SetServiceType(v ServiceTypeEnum) {
 	o.ServiceType = v
 }
 
-// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise.
 func (o *Application) GetDockerTargetBuildStage() string {
-	if o == nil || IsNil(o.DockerTargetBuildStage.Get()) {
+	if o == nil || IsNil(o.DockerTargetBuildStage) {
 		var ret string
 		return ret
 	}
-	return *o.DockerTargetBuildStage.Get()
+	return *o.DockerTargetBuildStage
 }
 
 // GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Application) GetDockerTargetBuildStageOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.DockerTargetBuildStage) {
 		return nil, false
 	}
-	return o.DockerTargetBuildStage.Get(), o.DockerTargetBuildStage.IsSet()
+	return o.DockerTargetBuildStage, true
 }
 
 // HasDockerTargetBuildStage returns a boolean if a field has been set.
 func (o *Application) HasDockerTargetBuildStage() bool {
-	if o != nil && o.DockerTargetBuildStage.IsSet() {
+	if o != nil && !IsNil(o.DockerTargetBuildStage) {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerTargetBuildStage gets a reference to the given NullableString and assigns it to the DockerTargetBuildStage field.
+// SetDockerTargetBuildStage gets a reference to the given string and assigns it to the DockerTargetBuildStage field.
 func (o *Application) SetDockerTargetBuildStage(v string) {
-	o.DockerTargetBuildStage.Set(&v)
-}
-
-// SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-func (o *Application) SetDockerTargetBuildStageNil() {
-	o.DockerTargetBuildStage.Set(nil)
-}
-
-// UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
-func (o *Application) UnsetDockerTargetBuildStage() {
-	o.DockerTargetBuildStage.Unset()
+	o.DockerTargetBuildStage = &v
 }
 
 func (o Application) MarshalJSON() ([]byte, error) {
@@ -973,8 +951,8 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildMode) {
 		toSerialize["build_mode"] = o.BuildMode
 	}
-	if o.DockerfilePath.IsSet() {
-		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
+	if !IsNil(o.DockerfilePath) {
+		toSerialize["dockerfile_path"] = o.DockerfilePath
 	}
 	if !IsNil(o.Cpu) {
 		toSerialize["cpu"] = o.Cpu
@@ -1012,8 +990,8 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
-	if o.DockerTargetBuildStage.IsSet() {
-		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
+	if !IsNil(o.DockerTargetBuildStage) {
+		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage
 	}
 
 	for key, value := range o.AdditionalProperties {

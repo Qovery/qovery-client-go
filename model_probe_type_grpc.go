@@ -20,8 +20,8 @@ var _ MappedNullable = &ProbeTypeGrpc{}
 
 // ProbeTypeGrpc struct for ProbeTypeGrpc
 type ProbeTypeGrpc struct {
-	Service              NullableString `json:"service,omitempty"`
-	Port                 *int32         `json:"port,omitempty"`
+	Service              *string `json:"service,omitempty"`
+	Port                 *int32  `json:"port,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,47 +44,36 @@ func NewProbeTypeGrpcWithDefaults() *ProbeTypeGrpc {
 	return &this
 }
 
-// GetService returns the Service field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetService returns the Service field value if set, zero value otherwise.
 func (o *ProbeTypeGrpc) GetService() string {
-	if o == nil || IsNil(o.Service.Get()) {
+	if o == nil || IsNil(o.Service) {
 		var ret string
 		return ret
 	}
-	return *o.Service.Get()
+	return *o.Service
 }
 
 // GetServiceOk returns a tuple with the Service field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeTypeGrpc) GetServiceOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Service) {
 		return nil, false
 	}
-	return o.Service.Get(), o.Service.IsSet()
+	return o.Service, true
 }
 
 // HasService returns a boolean if a field has been set.
 func (o *ProbeTypeGrpc) HasService() bool {
-	if o != nil && o.Service.IsSet() {
+	if o != nil && !IsNil(o.Service) {
 		return true
 	}
 
 	return false
 }
 
-// SetService gets a reference to the given NullableString and assigns it to the Service field.
+// SetService gets a reference to the given string and assigns it to the Service field.
 func (o *ProbeTypeGrpc) SetService(v string) {
-	o.Service.Set(&v)
-}
-
-// SetServiceNil sets the value for Service to be an explicit nil
-func (o *ProbeTypeGrpc) SetServiceNil() {
-	o.Service.Set(nil)
-}
-
-// UnsetService ensures that no value is present for Service, not even an explicit nil
-func (o *ProbeTypeGrpc) UnsetService() {
-	o.Service.Unset()
+	o.Service = &v
 }
 
 // GetPort returns the Port field value if set, zero value otherwise.
@@ -129,8 +118,8 @@ func (o ProbeTypeGrpc) MarshalJSON() ([]byte, error) {
 
 func (o ProbeTypeGrpc) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Service.IsSet() {
-		toSerialize["service"] = o.Service.Get()
+	if !IsNil(o.Service) {
+		toSerialize["service"] = o.Service
 	}
 	if !IsNil(o.Port) {
 		toSerialize["port"] = o.Port

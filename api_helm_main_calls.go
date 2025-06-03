@@ -38,9 +38,9 @@ DeleteHelm Delete helm
 
 To delete the helm you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiDeleteHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiDeleteHelmRequest
 */
 func (a *HelmMainCallsAPIService) DeleteHelm(ctx context.Context, helmId string) ApiDeleteHelmRequest {
 	return ApiDeleteHelmRequest{
@@ -150,10 +150,9 @@ EditHelm Edit helm
 
 - To edit the helm you must have the admin permission.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiEditHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiEditHelmRequest
 */
 func (a *HelmMainCallsAPIService) EditHelm(ctx context.Context, helmId string) ApiEditHelmRequest {
 	return ApiEditHelmRequest{
@@ -164,7 +163,8 @@ func (a *HelmMainCallsAPIService) EditHelm(ctx context.Context, helmId string) A
 }
 
 // Execute executes the request
-//  @return HelmResponse
+//
+//	@return HelmResponse
 func (a *HelmMainCallsAPIService) EditHelmExecute(r ApiEditHelmRequest) (*HelmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -268,9 +268,9 @@ func (r ApiGetHelmRequest) Execute() (*HelmResponse, *http.Response, error) {
 /*
 GetHelm Get helm by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiGetHelmRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiGetHelmRequest
 */
 func (a *HelmMainCallsAPIService) GetHelm(ctx context.Context, helmId string) ApiGetHelmRequest {
 	return ApiGetHelmRequest{
@@ -281,7 +281,8 @@ func (a *HelmMainCallsAPIService) GetHelm(ctx context.Context, helmId string) Ap
 }
 
 // Execute executes the request
-//  @return HelmResponse
+//
+//	@return HelmResponse
 func (a *HelmMainCallsAPIService) GetHelmExecute(r ApiGetHelmRequest) (*HelmResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -385,9 +386,9 @@ GetHelmKubernetesServices Get helm kubernetes services
 
 Get helm kubernetes services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId
- @return ApiGetHelmKubernetesServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId
+	@return ApiGetHelmKubernetesServicesRequest
 */
 func (a *HelmMainCallsAPIService) GetHelmKubernetesServices(ctx context.Context, helmId string) ApiGetHelmKubernetesServicesRequest {
 	return ApiGetHelmKubernetesServicesRequest{
@@ -398,7 +399,8 @@ func (a *HelmMainCallsAPIService) GetHelmKubernetesServices(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return KubernetesServiceResponseList
+//
+//	@return KubernetesServiceResponseList
 func (a *HelmMainCallsAPIService) GetHelmKubernetesServicesExecute(r ApiGetHelmKubernetesServicesRequest) (*KubernetesServiceResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -500,9 +502,9 @@ func (r ApiGetHelmStatusRequest) Execute() (*Status, *http.Response, error) {
 /*
 GetHelmStatus Get helm status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiGetHelmStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiGetHelmStatusRequest
 */
 func (a *HelmMainCallsAPIService) GetHelmStatus(ctx context.Context, helmId string) ApiGetHelmStatusRequest {
 	return ApiGetHelmStatusRequest{
@@ -513,7 +515,8 @@ func (a *HelmMainCallsAPIService) GetHelmStatus(ctx context.Context, helmId stri
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *HelmMainCallsAPIService) GetHelmStatusExecute(r ApiGetHelmStatusRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -624,9 +627,9 @@ ListHelmCommit List last helm commits
 
 Returns list of the last 100 commits made on the repository linked to helm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiListHelmCommitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiListHelmCommitRequest
 */
 func (a *HelmMainCallsAPIService) ListHelmCommit(ctx context.Context, helmId string) ApiListHelmCommitRequest {
 	return ApiListHelmCommitRequest{
@@ -637,7 +640,8 @@ func (a *HelmMainCallsAPIService) ListHelmCommit(ctx context.Context, helmId str
 }
 
 // Execute executes the request
-//  @return CommitResponseList
+//
+//	@return CommitResponseList
 func (a *HelmMainCallsAPIService) ListHelmCommitExecute(r ApiListHelmCommitRequest) (*CommitResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -747,9 +751,9 @@ ListHelmLinks List all URLs of the helm
 
 This will return all the custom domains and Qovery autogenerated domain for the given helm
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param helmId Helm ID
- @return ApiListHelmLinksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param helmId Helm ID
+	@return ApiListHelmLinksRequest
 */
 func (a *HelmMainCallsAPIService) ListHelmLinks(ctx context.Context, helmId string) ApiListHelmLinksRequest {
 	return ApiListHelmLinksRequest{
@@ -760,7 +764,8 @@ func (a *HelmMainCallsAPIService) ListHelmLinks(ctx context.Context, helmId stri
 }
 
 // Execute executes the request
-//  @return LinkResponseList
+//
+//	@return LinkResponseList
 func (a *HelmMainCallsAPIService) ListHelmLinksExecute(r ApiListHelmLinksRequest) (*LinkResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

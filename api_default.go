@@ -36,9 +36,9 @@ func (r ApiGetClusterTokenByClusterIdRequest) Execute() (*GetClusterTokenByClust
 /*
 GetClusterTokenByClusterId Get cluster token by clusterId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param clusterId
- @return ApiGetClusterTokenByClusterIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterId
+	@return ApiGetClusterTokenByClusterIdRequest
 */
 func (a *DefaultAPIService) GetClusterTokenByClusterId(ctx context.Context, clusterId string) ApiGetClusterTokenByClusterIdRequest {
 	return ApiGetClusterTokenByClusterIdRequest{
@@ -49,7 +49,8 @@ func (a *DefaultAPIService) GetClusterTokenByClusterId(ctx context.Context, clus
 }
 
 // Execute executes the request
-//  @return GetClusterTokenByClusterId200Response
+//
+//	@return GetClusterTokenByClusterId200Response
 func (a *DefaultAPIService) GetClusterTokenByClusterIdExecute(r ApiGetClusterTokenByClusterIdRequest) (*GetClusterTokenByClusterId200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -156,8 +157,8 @@ func (r ApiGetDeploymentStatusByDeploymentRequestIdRequest) Execute() (*EnvDeplo
 /*
 GetDeploymentStatusByDeploymentRequestId Get Deployment Status By DeploymentRequestId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDeploymentStatusByDeploymentRequestIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDeploymentStatusByDeploymentRequestIdRequest
 */
 func (a *DefaultAPIService) GetDeploymentStatusByDeploymentRequestId(ctx context.Context) ApiGetDeploymentStatusByDeploymentRequestIdRequest {
 	return ApiGetDeploymentStatusByDeploymentRequestIdRequest{
@@ -167,7 +168,8 @@ func (a *DefaultAPIService) GetDeploymentStatusByDeploymentRequestId(ctx context
 }
 
 // Execute executes the request
-//  @return EnvDeploymentStatus
+//
+//	@return EnvDeploymentStatus
 func (a *DefaultAPIService) GetDeploymentStatusByDeploymentRequestIdExecute(r ApiGetDeploymentStatusByDeploymentRequestIdRequest) (*EnvDeploymentStatus, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -44,9 +44,9 @@ CreateOrganizationAnnotationsGroup Create an organization annotations group
 
 Create an organization annotations group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateOrganizationAnnotationsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateOrganizationAnnotationsGroupRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) CreateOrganizationAnnotationsGroup(ctx context.Context, organizationId string) ApiCreateOrganizationAnnotationsGroupRequest {
 	return ApiCreateOrganizationAnnotationsGroupRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationAnnotationsGroupAPIService) CreateOrganizationAnnotationsGr
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponse
+//
+//	@return OrganizationAnnotationsGroupResponse
 func (a *OrganizationAnnotationsGroupAPIService) CreateOrganizationAnnotationsGroupExecute(r ApiCreateOrganizationAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteOrganizationAnnotationsGroup Delete organization annotations group
 
 Delete organization annotations group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param annotationsGroupId Organization annotations group ID
- @return ApiDeleteOrganizationAnnotationsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param annotationsGroupId Organization annotations group ID
+	@return ApiDeleteOrganizationAnnotationsGroupRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) DeleteOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiDeleteOrganizationAnnotationsGroupRequest {
 	return ApiDeleteOrganizationAnnotationsGroupRequest{
@@ -280,10 +281,10 @@ EditOrganizationAnnotationsGroup Edit organization annotations group
 
 Edit organization annotations group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param annotationsGroupId Organization annotations group ID
- @return ApiEditOrganizationAnnotationsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param annotationsGroupId Organization annotations group ID
+	@return ApiEditOrganizationAnnotationsGroupRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiEditOrganizationAnnotationsGroupRequest {
 	return ApiEditOrganizationAnnotationsGroupRequest{
@@ -295,7 +296,8 @@ func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGrou
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponse
+//
+//	@return OrganizationAnnotationsGroupResponse
 func (a *OrganizationAnnotationsGroupAPIService) EditOrganizationAnnotationsGroupExecute(r ApiEditOrganizationAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -403,10 +405,10 @@ GetOrganizationAnnotationsGroup Get organization annotations group
 
 Get organization annotations group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param annotationsGroupId Organization annotations group ID
- @return ApiGetOrganizationAnnotationsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param annotationsGroupId Organization annotations group ID
+	@return ApiGetOrganizationAnnotationsGroupRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup(ctx context.Context, organizationId string, annotationsGroupId string) ApiGetOrganizationAnnotationsGroupRequest {
 	return ApiGetOrganizationAnnotationsGroupRequest{
@@ -418,7 +420,8 @@ func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupResponse
+//
+//	@return OrganizationAnnotationsGroupResponse
 func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroupExecute(r ApiGetOrganizationAnnotationsGroupRequest) (*OrganizationAnnotationsGroupResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -524,10 +527,10 @@ GetOrganizationAnnotationsGroupAssociatedItems Get organization annotations grou
 
 Get organization annotations group associated items
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param annotationsGroupId Organization annotations group ID
- @return ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param annotationsGroupId Organization annotations group ID
+	@return ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroupAssociatedItems(ctx context.Context, organizationId string, annotationsGroupId string) ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest {
 	return ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest{
@@ -539,7 +542,8 @@ func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroup
 }
 
 // Execute executes the request
-//  @return OrganizationAnnotationsGroupAssociatedItemsResponseList
+//
+//	@return OrganizationAnnotationsGroupAssociatedItemsResponseList
 func (a *OrganizationAnnotationsGroupAPIService) GetOrganizationAnnotationsGroupAssociatedItemsExecute(r ApiGetOrganizationAnnotationsGroupAssociatedItemsRequest) (*OrganizationAnnotationsGroupAssociatedItemsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -644,9 +648,9 @@ ListOrganizationAnnotationsGroup List organization annotations group
 
 List organization annotations group
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationAnnotationsGroupRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationAnnotationsGroupRequest
 */
 func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGroup(ctx context.Context, organizationId string) ApiListOrganizationAnnotationsGroupRequest {
 	return ApiListOrganizationAnnotationsGroupRequest{
@@ -657,7 +661,8 @@ func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGrou
 }
 
 // Execute executes the request
-//  @return ListOrganizationAnnotationsGroup200Response
+//
+//	@return ListOrganizationAnnotationsGroup200Response
 func (a *OrganizationAnnotationsGroupAPIService) ListOrganizationAnnotationsGroupExecute(r ApiListOrganizationAnnotationsGroupRequest) (*ListOrganizationAnnotationsGroup200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

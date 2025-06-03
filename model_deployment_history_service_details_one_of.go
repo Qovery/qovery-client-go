@@ -21,7 +21,7 @@ var _ MappedNullable = &DeploymentHistoryServiceDetailsOneOf{}
 
 // DeploymentHistoryServiceDetailsOneOf ApplicationDeploymentHistoryData
 type DeploymentHistoryServiceDetailsOneOf struct {
-	Commit               NullableCommit `json:"commit"`
+	Commit               Commit `json:"commit"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _DeploymentHistoryServiceDetailsOneOf DeploymentHistoryServiceDetailsOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit) *DeploymentHistoryServiceDetailsOneOf {
+func NewDeploymentHistoryServiceDetailsOneOf(commit Commit) *DeploymentHistoryServiceDetailsOneOf {
 	this := DeploymentHistoryServiceDetailsOneOf{}
 	this.Commit = commit
 	return &this
@@ -46,29 +46,27 @@ func NewDeploymentHistoryServiceDetailsOneOfWithDefaults() *DeploymentHistorySer
 }
 
 // GetCommit returns the Commit field value
-// If the value is explicit nil, the zero value for Commit will be returned
 func (o *DeploymentHistoryServiceDetailsOneOf) GetCommit() Commit {
-	if o == nil || o.Commit.Get() == nil {
+	if o == nil {
 		var ret Commit
 		return ret
 	}
 
-	return *o.Commit.Get()
+	return o.Commit
 }
 
 // GetCommitOk returns a tuple with the Commit field value
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentHistoryServiceDetailsOneOf) GetCommitOk() (*Commit, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Commit.Get(), o.Commit.IsSet()
+	return &o.Commit, true
 }
 
 // SetCommit sets field value
 func (o *DeploymentHistoryServiceDetailsOneOf) SetCommit(v Commit) {
-	o.Commit.Set(&v)
+	o.Commit = v
 }
 
 func (o DeploymentHistoryServiceDetailsOneOf) MarshalJSON() ([]byte, error) {
@@ -81,7 +79,7 @@ func (o DeploymentHistoryServiceDetailsOneOf) MarshalJSON() ([]byte, error) {
 
 func (o DeploymentHistoryServiceDetailsOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["commit"] = o.Commit.Get()
+	toSerialize["commit"] = o.Commit
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value

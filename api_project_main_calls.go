@@ -38,9 +38,9 @@ DeleteProject Delete a project
 
 To delete a project you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @return ApiDeleteProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@return ApiDeleteProjectRequest
 */
 func (a *ProjectMainCallsAPIService) DeleteProject(ctx context.Context, projectId string) ApiDeleteProjectRequest {
 	return ApiDeleteProjectRequest{
@@ -150,9 +150,9 @@ EditProject Edit a project
 
 To edit a project you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @return ApiEditProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@return ApiEditProjectRequest
 */
 func (a *ProjectMainCallsAPIService) EditProject(ctx context.Context, projectId string) ApiEditProjectRequest {
 	return ApiEditProjectRequest{
@@ -163,7 +163,8 @@ func (a *ProjectMainCallsAPIService) EditProject(ctx context.Context, projectId 
 }
 
 // Execute executes the request
-//  @return Project
+//
+//	@return Project
 func (a *ProjectMainCallsAPIService) EditProjectExecute(r ApiEditProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -267,9 +268,9 @@ func (r ApiGetProjectRequest) Execute() (*Project, *http.Response, error) {
 /*
 GetProject Get project by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param projectId Project ID
- @return ApiGetProjectRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param projectId Project ID
+	@return ApiGetProjectRequest
 */
 func (a *ProjectMainCallsAPIService) GetProject(ctx context.Context, projectId string) ApiGetProjectRequest {
 	return ApiGetProjectRequest{
@@ -280,7 +281,8 @@ func (a *ProjectMainCallsAPIService) GetProject(ctx context.Context, projectId s
 }
 
 // Execute executes the request
-//  @return Project
+//
+//	@return Project
 func (a *ProjectMainCallsAPIService) GetProjectExecute(r ApiGetProjectRequest) (*Project, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

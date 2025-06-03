@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | Pointer to **int32** | Maximum number of seconds allowed for helm to run before killing it and mark it as failed  | [optional] [default to 600]
-**AutoPreview** | Pointer to **NullableBool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called or when a new commit is updated. If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
+**AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called or when a new commit is updated. If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **AutoDeploy** | **bool** | Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.  | 
 **Source** | [**HelmRequestAllOfSource**](HelmRequestAllOfSource.md) |  | 
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
@@ -155,16 +155,6 @@ SetAutoPreview sets AutoPreview field to given value.
 
 HasAutoPreview returns a boolean if a field has been set.
 
-### SetAutoPreviewNil
-
-`func (o *HelmRequest) SetAutoPreviewNil(b bool)`
-
- SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
-
-### UnsetAutoPreview
-`func (o *HelmRequest) UnsetAutoPreview()`
-
-UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
 ### GetAutoDeploy
 
 `func (o *HelmRequest) GetAutoDeploy() bool`

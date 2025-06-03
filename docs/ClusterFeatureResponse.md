@@ -6,16 +6,16 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **string** |  | [optional] 
 **Title** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to **NullableString** |  | [optional] 
-**CostPerMonthInCents** | Pointer to **NullableInt32** |  | [optional] 
-**CostPerMonth** | Pointer to **NullableFloat32** |  | [optional] 
-**CurrencyCode** | Pointer to **NullableString** |  | [optional] 
+**Description** | Pointer to **string** |  | [optional] 
+**CostPerMonthInCents** | Pointer to **int32** |  | [optional] 
+**CostPerMonth** | Pointer to **float32** |  | [optional] 
+**CurrencyCode** | Pointer to **string** |  | [optional] 
 **IsCloudProviderPayingFeature** | Pointer to **bool** |  | [optional] 
-**CloudProviderFeatureDocumentation** | Pointer to **NullableString** |  | [optional] 
+**CloudProviderFeatureDocumentation** | Pointer to **string** |  | [optional] 
 **IsQoveryPayingFeature** | Pointer to **bool** |  | [optional] 
-**QoveryFeatureDocumentation** | Pointer to **NullableString** |  | [optional] 
+**QoveryFeatureDocumentation** | Pointer to **string** |  | [optional] 
 **ValueType** | Pointer to **string** |  | [optional] 
-**ValueObject** | Pointer to [**NullableClusterFeatureResponseValueObject**](ClusterFeatureResponseValueObject.md) |  | [optional] 
+**ValueObject** | Pointer to [**ClusterFeatureResponseValueObject**](ClusterFeatureResponseValueObject.md) |  | [optional] 
 **IsValueUpdatable** | Pointer to **bool** |  | [optional] [default to false]
 **AcceptedValues** | Pointer to [**[]ClusterFeatureResponseAcceptedValuesInner**](ClusterFeatureResponseAcceptedValuesInner.md) |  | [optional] 
 
@@ -113,16 +113,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *ClusterFeatureResponse) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *ClusterFeatureResponse) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetCostPerMonthInCents
 
 `func (o *ClusterFeatureResponse) GetCostPerMonthInCents() int32`
@@ -148,16 +138,6 @@ SetCostPerMonthInCents sets CostPerMonthInCents field to given value.
 
 HasCostPerMonthInCents returns a boolean if a field has been set.
 
-### SetCostPerMonthInCentsNil
-
-`func (o *ClusterFeatureResponse) SetCostPerMonthInCentsNil(b bool)`
-
- SetCostPerMonthInCentsNil sets the value for CostPerMonthInCents to be an explicit nil
-
-### UnsetCostPerMonthInCents
-`func (o *ClusterFeatureResponse) UnsetCostPerMonthInCents()`
-
-UnsetCostPerMonthInCents ensures that no value is present for CostPerMonthInCents, not even an explicit nil
 ### GetCostPerMonth
 
 `func (o *ClusterFeatureResponse) GetCostPerMonth() float32`
@@ -183,16 +163,6 @@ SetCostPerMonth sets CostPerMonth field to given value.
 
 HasCostPerMonth returns a boolean if a field has been set.
 
-### SetCostPerMonthNil
-
-`func (o *ClusterFeatureResponse) SetCostPerMonthNil(b bool)`
-
- SetCostPerMonthNil sets the value for CostPerMonth to be an explicit nil
-
-### UnsetCostPerMonth
-`func (o *ClusterFeatureResponse) UnsetCostPerMonth()`
-
-UnsetCostPerMonth ensures that no value is present for CostPerMonth, not even an explicit nil
 ### GetCurrencyCode
 
 `func (o *ClusterFeatureResponse) GetCurrencyCode() string`
@@ -218,16 +188,6 @@ SetCurrencyCode sets CurrencyCode field to given value.
 
 HasCurrencyCode returns a boolean if a field has been set.
 
-### SetCurrencyCodeNil
-
-`func (o *ClusterFeatureResponse) SetCurrencyCodeNil(b bool)`
-
- SetCurrencyCodeNil sets the value for CurrencyCode to be an explicit nil
-
-### UnsetCurrencyCode
-`func (o *ClusterFeatureResponse) UnsetCurrencyCode()`
-
-UnsetCurrencyCode ensures that no value is present for CurrencyCode, not even an explicit nil
 ### GetIsCloudProviderPayingFeature
 
 `func (o *ClusterFeatureResponse) GetIsCloudProviderPayingFeature() bool`
@@ -278,16 +238,6 @@ SetCloudProviderFeatureDocumentation sets CloudProviderFeatureDocumentation fiel
 
 HasCloudProviderFeatureDocumentation returns a boolean if a field has been set.
 
-### SetCloudProviderFeatureDocumentationNil
-
-`func (o *ClusterFeatureResponse) SetCloudProviderFeatureDocumentationNil(b bool)`
-
- SetCloudProviderFeatureDocumentationNil sets the value for CloudProviderFeatureDocumentation to be an explicit nil
-
-### UnsetCloudProviderFeatureDocumentation
-`func (o *ClusterFeatureResponse) UnsetCloudProviderFeatureDocumentation()`
-
-UnsetCloudProviderFeatureDocumentation ensures that no value is present for CloudProviderFeatureDocumentation, not even an explicit nil
 ### GetIsQoveryPayingFeature
 
 `func (o *ClusterFeatureResponse) GetIsQoveryPayingFeature() bool`
@@ -338,16 +288,6 @@ SetQoveryFeatureDocumentation sets QoveryFeatureDocumentation field to given val
 
 HasQoveryFeatureDocumentation returns a boolean if a field has been set.
 
-### SetQoveryFeatureDocumentationNil
-
-`func (o *ClusterFeatureResponse) SetQoveryFeatureDocumentationNil(b bool)`
-
- SetQoveryFeatureDocumentationNil sets the value for QoveryFeatureDocumentation to be an explicit nil
-
-### UnsetQoveryFeatureDocumentation
-`func (o *ClusterFeatureResponse) UnsetQoveryFeatureDocumentation()`
-
-UnsetQoveryFeatureDocumentation ensures that no value is present for QoveryFeatureDocumentation, not even an explicit nil
 ### GetValueType
 
 `func (o *ClusterFeatureResponse) GetValueType() string`
@@ -398,16 +338,6 @@ SetValueObject sets ValueObject field to given value.
 
 HasValueObject returns a boolean if a field has been set.
 
-### SetValueObjectNil
-
-`func (o *ClusterFeatureResponse) SetValueObjectNil(b bool)`
-
- SetValueObjectNil sets the value for ValueObject to be an explicit nil
-
-### UnsetValueObject
-`func (o *ClusterFeatureResponse) UnsetValueObject()`
-
-UnsetValueObject ensures that no value is present for ValueObject, not even an explicit nil
 ### GetIsValueUpdatable
 
 `func (o *ClusterFeatureResponse) GetIsValueUpdatable() bool`

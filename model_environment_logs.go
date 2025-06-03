@@ -22,11 +22,11 @@ var _ MappedNullable = &EnvironmentLogs{}
 
 // EnvironmentLogs struct for EnvironmentLogs
 type EnvironmentLogs struct {
-	Type                 string                         `json:"type"`
-	Timestamp            time.Time                      `json:"timestamp"`
-	Details              EnvironmentLogsDetails         `json:"details"`
-	Error                NullableEnvironmentLogsError   `json:"error,omitempty"`
-	Message              NullableEnvironmentLogsMessage `json:"message,omitempty"`
+	Type                 string                  `json:"type"`
+	Timestamp            time.Time               `json:"timestamp"`
+	Details              EnvironmentLogsDetails  `json:"details"`
+	Error                *EnvironmentLogsError   `json:"error,omitempty"`
+	Message              *EnvironmentLogsMessage `json:"message,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -124,90 +124,68 @@ func (o *EnvironmentLogs) SetDetails(v EnvironmentLogsDetails) {
 	o.Details = v
 }
 
-// GetError returns the Error field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetError returns the Error field value if set, zero value otherwise.
 func (o *EnvironmentLogs) GetError() EnvironmentLogsError {
-	if o == nil || IsNil(o.Error.Get()) {
+	if o == nil || IsNil(o.Error) {
 		var ret EnvironmentLogsError
 		return ret
 	}
-	return *o.Error.Get()
+	return *o.Error
 }
 
 // GetErrorOk returns a tuple with the Error field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLogs) GetErrorOk() (*EnvironmentLogsError, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Error) {
 		return nil, false
 	}
-	return o.Error.Get(), o.Error.IsSet()
+	return o.Error, true
 }
 
 // HasError returns a boolean if a field has been set.
 func (o *EnvironmentLogs) HasError() bool {
-	if o != nil && o.Error.IsSet() {
+	if o != nil && !IsNil(o.Error) {
 		return true
 	}
 
 	return false
 }
 
-// SetError gets a reference to the given NullableEnvironmentLogsError and assigns it to the Error field.
+// SetError gets a reference to the given EnvironmentLogsError and assigns it to the Error field.
 func (o *EnvironmentLogs) SetError(v EnvironmentLogsError) {
-	o.Error.Set(&v)
+	o.Error = &v
 }
 
-// SetErrorNil sets the value for Error to be an explicit nil
-func (o *EnvironmentLogs) SetErrorNil() {
-	o.Error.Set(nil)
-}
-
-// UnsetError ensures that no value is present for Error, not even an explicit nil
-func (o *EnvironmentLogs) UnsetError() {
-	o.Error.Unset()
-}
-
-// GetMessage returns the Message field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetMessage returns the Message field value if set, zero value otherwise.
 func (o *EnvironmentLogs) GetMessage() EnvironmentLogsMessage {
-	if o == nil || IsNil(o.Message.Get()) {
+	if o == nil || IsNil(o.Message) {
 		var ret EnvironmentLogsMessage
 		return ret
 	}
-	return *o.Message.Get()
+	return *o.Message
 }
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLogs) GetMessageOk() (*EnvironmentLogsMessage, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
-	return o.Message.Get(), o.Message.IsSet()
+	return o.Message, true
 }
 
 // HasMessage returns a boolean if a field has been set.
 func (o *EnvironmentLogs) HasMessage() bool {
-	if o != nil && o.Message.IsSet() {
+	if o != nil && !IsNil(o.Message) {
 		return true
 	}
 
 	return false
 }
 
-// SetMessage gets a reference to the given NullableEnvironmentLogsMessage and assigns it to the Message field.
+// SetMessage gets a reference to the given EnvironmentLogsMessage and assigns it to the Message field.
 func (o *EnvironmentLogs) SetMessage(v EnvironmentLogsMessage) {
-	o.Message.Set(&v)
-}
-
-// SetMessageNil sets the value for Message to be an explicit nil
-func (o *EnvironmentLogs) SetMessageNil() {
-	o.Message.Set(nil)
-}
-
-// UnsetMessage ensures that no value is present for Message, not even an explicit nil
-func (o *EnvironmentLogs) UnsetMessage() {
-	o.Message.Unset()
+	o.Message = &v
 }
 
 func (o EnvironmentLogs) MarshalJSON() ([]byte, error) {
@@ -223,11 +201,11 @@ func (o EnvironmentLogs) ToMap() (map[string]interface{}, error) {
 	toSerialize["type"] = o.Type
 	toSerialize["timestamp"] = o.Timestamp
 	toSerialize["details"] = o.Details
-	if o.Error.IsSet() {
-		toSerialize["error"] = o.Error.Get()
+	if !IsNil(o.Error) {
+		toSerialize["error"] = o.Error
 	}
-	if o.Message.IsSet() {
-		toSerialize["message"] = o.Message.Get()
+	if !IsNil(o.Message) {
+		toSerialize["message"] = o.Message
 	}
 
 	for key, value := range o.AdditionalProperties {

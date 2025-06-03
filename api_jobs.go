@@ -46,10 +46,9 @@ Triggers a new job deploy in each environment matching the following conditions
 - environment should have the auto-deploy enabled
 - the job should have the same image name and a different tag
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiAutoDeployJobEnvironmentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiAutoDeployJobEnvironmentsRequest
 */
 func (a *JobsAPIService) AutoDeployJobEnvironments(ctx context.Context, organizationId string) ApiAutoDeployJobEnvironmentsRequest {
 	return ApiAutoDeployJobEnvironmentsRequest{
@@ -60,7 +59,8 @@ func (a *JobsAPIService) AutoDeployJobEnvironments(ctx context.Context, organiza
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *JobsAPIService) AutoDeployJobEnvironmentsExecute(r ApiAutoDeployJobEnvironmentsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -172,9 +172,9 @@ CloneJob Clone job
 
 This will create a new job with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param jobId Job ID
- @return ApiCloneJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param jobId Job ID
+	@return ApiCloneJobRequest
 */
 func (a *JobsAPIService) CloneJob(ctx context.Context, jobId string) ApiCloneJobRequest {
 	return ApiCloneJobRequest{
@@ -185,7 +185,8 @@ func (a *JobsAPIService) CloneJob(ctx context.Context, jobId string) ApiCloneJob
 }
 
 // Execute executes the request
-//  @return JobResponse
+//
+//	@return JobResponse
 func (a *JobsAPIService) CloneJobExecute(r ApiCloneJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -295,9 +296,9 @@ func (r ApiCreateJobRequest) Execute() (*JobResponse, *http.Response, error) {
 /*
 CreateJob Create a job
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateJobRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateJobRequest
 */
 func (a *JobsAPIService) CreateJob(ctx context.Context, environmentId string) ApiCreateJobRequest {
 	return ApiCreateJobRequest{
@@ -308,7 +309,8 @@ func (a *JobsAPIService) CreateJob(ctx context.Context, environmentId string) Ap
 }
 
 // Execute executes the request
-//  @return JobResponse
+//
+//	@return JobResponse
 func (a *JobsAPIService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -413,8 +415,8 @@ GetDefaultJobAdvancedSettings List default job advanced settings
 
 Default values for each setting is available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultJobAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultJobAdvancedSettingsRequest
 */
 func (a *JobsAPIService) GetDefaultJobAdvancedSettings(ctx context.Context) ApiGetDefaultJobAdvancedSettingsRequest {
 	return ApiGetDefaultJobAdvancedSettingsRequest{
@@ -424,7 +426,8 @@ func (a *JobsAPIService) GetDefaultJobAdvancedSettings(ctx context.Context) ApiG
 }
 
 // Execute executes the request
-//  @return JobAdvancedSettings
+//
+//	@return JobAdvancedSettings
 func (a *JobsAPIService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJobAdvancedSettingsRequest) (*JobAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -527,9 +530,9 @@ GetEnvironmentJobStatus List all environment job statuses
 
 Returns a list of jobs with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentJobStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentJobStatusRequest
 */
 func (a *JobsAPIService) GetEnvironmentJobStatus(ctx context.Context, environmentId string) ApiGetEnvironmentJobStatusRequest {
 	return ApiGetEnvironmentJobStatusRequest{
@@ -540,7 +543,8 @@ func (a *JobsAPIService) GetEnvironmentJobStatus(ctx context.Context, environmen
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *JobsAPIService) GetEnvironmentJobStatusExecute(r ApiGetEnvironmentJobStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -649,9 +653,9 @@ func (r ApiListJobsRequest) Execute() (*JobResponseList, *http.Response, error) 
 /*
 ListJobs List jobs
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListJobsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListJobsRequest
 */
 func (a *JobsAPIService) ListJobs(ctx context.Context, environmentId string) ApiListJobsRequest {
 	return ApiListJobsRequest{
@@ -662,7 +666,8 @@ func (a *JobsAPIService) ListJobs(ctx context.Context, environmentId string) Api
 }
 
 // Execute executes the request
-//  @return JobResponseList
+//
+//	@return JobResponseList
 func (a *JobsAPIService) ListJobsExecute(r ApiListJobsRequest) (*JobResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

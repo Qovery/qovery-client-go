@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
+	terraformId := "terraformId_example" // string | 
 	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH")) // TerraformDeploymentRestrictionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -53,7 +53,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terraformId** | **string** | Terraform ID | 
+**terraformId** | **string** |  | 
 
 ### Other Parameters
 
@@ -104,8 +104,8 @@ import (
 )
 
 func main() {
-	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
-	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -123,8 +123,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terraformId** | **string** | Terraform ID | 
-**deploymentRestrictionId** | **string** | Deployment Restriction ID | 
+**terraformId** | **string** |  | 
+**deploymentRestrictionId** | **string** |  | 
 
 ### Other Parameters
 
@@ -175,8 +175,8 @@ import (
 )
 
 func main() {
-	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
-	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Restriction ID
+	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH")) // TerraformDeploymentRestrictionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -197,8 +197,8 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terraformId** | **string** | Terraform ID | 
-**deploymentRestrictionId** | **string** | Deployment Restriction ID | 
+**terraformId** | **string** |  | 
+**deploymentRestrictionId** | **string** |  | 
 
 ### Other Parameters
 
@@ -250,7 +250,7 @@ import (
 )
 
 func main() {
-	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
+	terraformId := "terraformId_example" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -270,7 +270,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**terraformId** | **string** | Terraform ID | 
+**terraformId** | **string** |  | 
 
 ### Other Parameters
 

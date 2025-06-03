@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
-**JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
+**JobDeleteTtlSecondsAfterFinished** | Pointer to **int32** |  | [optional] 
 **CronjobConcurrencyPolicy** | Pointer to **string** |  | [optional] 
 **CronjobFailedJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
 **CronjobSuccessJobsHistoryLimit** | Pointer to **int32** |  | [optional] 
@@ -186,16 +186,6 @@ SetJobDeleteTtlSecondsAfterFinished sets JobDeleteTtlSecondsAfterFinished field 
 
 HasJobDeleteTtlSecondsAfterFinished returns a boolean if a field has been set.
 
-### SetJobDeleteTtlSecondsAfterFinishedNil
-
-`func (o *JobAdvancedSettings) SetJobDeleteTtlSecondsAfterFinishedNil(b bool)`
-
- SetJobDeleteTtlSecondsAfterFinishedNil sets the value for JobDeleteTtlSecondsAfterFinished to be an explicit nil
-
-### UnsetJobDeleteTtlSecondsAfterFinished
-`func (o *JobAdvancedSettings) UnsetJobDeleteTtlSecondsAfterFinished()`
-
-UnsetJobDeleteTtlSecondsAfterFinished ensures that no value is present for JobDeleteTtlSecondsAfterFinished, not even an explicit nil
 ### GetCronjobConcurrencyPolicy
 
 `func (o *JobAdvancedSettings) GetCronjobConcurrencyPolicy() string`

@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -123,7 +123,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
+**environmentId** | **string** |  | 
 
 ### Other Parameters
 

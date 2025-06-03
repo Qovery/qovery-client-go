@@ -5,10 +5,10 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **VpcName** | **string** |  | 
-**VpcProjectId** | Pointer to **NullableString** |  | [optional] 
-**SubnetworkName** | Pointer to **NullableString** |  | [optional] 
-**IpRangeServicesName** | Pointer to **NullableString** |  | [optional] 
-**IpRangePodsName** | Pointer to **NullableString** |  | [optional] 
+**VpcProjectId** | Pointer to **string** |  | [optional] 
+**SubnetworkName** | Pointer to **string** |  | [optional] 
+**IpRangeServicesName** | Pointer to **string** |  | [optional] 
+**IpRangePodsName** | Pointer to **string** |  | [optional] 
 **AdditionalIpRangePodsNames** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -75,16 +75,6 @@ SetVpcProjectId sets VpcProjectId field to given value.
 
 HasVpcProjectId returns a boolean if a field has been set.
 
-### SetVpcProjectIdNil
-
-`func (o *ClusterFeatureGcpExistingVpc) SetVpcProjectIdNil(b bool)`
-
- SetVpcProjectIdNil sets the value for VpcProjectId to be an explicit nil
-
-### UnsetVpcProjectId
-`func (o *ClusterFeatureGcpExistingVpc) UnsetVpcProjectId()`
-
-UnsetVpcProjectId ensures that no value is present for VpcProjectId, not even an explicit nil
 ### GetSubnetworkName
 
 `func (o *ClusterFeatureGcpExistingVpc) GetSubnetworkName() string`
@@ -110,16 +100,6 @@ SetSubnetworkName sets SubnetworkName field to given value.
 
 HasSubnetworkName returns a boolean if a field has been set.
 
-### SetSubnetworkNameNil
-
-`func (o *ClusterFeatureGcpExistingVpc) SetSubnetworkNameNil(b bool)`
-
- SetSubnetworkNameNil sets the value for SubnetworkName to be an explicit nil
-
-### UnsetSubnetworkName
-`func (o *ClusterFeatureGcpExistingVpc) UnsetSubnetworkName()`
-
-UnsetSubnetworkName ensures that no value is present for SubnetworkName, not even an explicit nil
 ### GetIpRangeServicesName
 
 `func (o *ClusterFeatureGcpExistingVpc) GetIpRangeServicesName() string`
@@ -145,16 +125,6 @@ SetIpRangeServicesName sets IpRangeServicesName field to given value.
 
 HasIpRangeServicesName returns a boolean if a field has been set.
 
-### SetIpRangeServicesNameNil
-
-`func (o *ClusterFeatureGcpExistingVpc) SetIpRangeServicesNameNil(b bool)`
-
- SetIpRangeServicesNameNil sets the value for IpRangeServicesName to be an explicit nil
-
-### UnsetIpRangeServicesName
-`func (o *ClusterFeatureGcpExistingVpc) UnsetIpRangeServicesName()`
-
-UnsetIpRangeServicesName ensures that no value is present for IpRangeServicesName, not even an explicit nil
 ### GetIpRangePodsName
 
 `func (o *ClusterFeatureGcpExistingVpc) GetIpRangePodsName() string`
@@ -180,16 +150,6 @@ SetIpRangePodsName sets IpRangePodsName field to given value.
 
 HasIpRangePodsName returns a boolean if a field has been set.
 
-### SetIpRangePodsNameNil
-
-`func (o *ClusterFeatureGcpExistingVpc) SetIpRangePodsNameNil(b bool)`
-
- SetIpRangePodsNameNil sets the value for IpRangePodsName to be an explicit nil
-
-### UnsetIpRangePodsName
-`func (o *ClusterFeatureGcpExistingVpc) UnsetIpRangePodsName()`
-
-UnsetIpRangePodsName ensures that no value is present for IpRangePodsName, not even an explicit nil
 ### GetAdditionalIpRangePodsNames
 
 `func (o *ClusterFeatureGcpExistingVpc) GetAdditionalIpRangePodsNames() []string`

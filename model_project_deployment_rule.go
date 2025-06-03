@@ -27,7 +27,7 @@ type ProjectDeploymentRule struct {
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
 	Name        string              `json:"name"`
-	Description NullableString      `json:"description,omitempty"`
+	Description *string             `json:"description,omitempty"`
 	Mode        EnvironmentModeEnum `json:"mode"`
 	ClusterId   string              `json:"cluster_id"`
 	AutoStop    *bool               `json:"auto_stop,omitempty"`
@@ -181,47 +181,36 @@ func (o *ProjectDeploymentRule) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ProjectDeploymentRule) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProjectDeploymentRule) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ProjectDeploymentRule) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ProjectDeploymentRule) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ProjectDeploymentRule) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ProjectDeploymentRule) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetMode returns the Mode field value
@@ -472,8 +461,8 @@ func (o ProjectDeploymentRule) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	toSerialize["name"] = o.Name
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	toSerialize["mode"] = o.Mode
 	toSerialize["cluster_id"] = o.ClusterId

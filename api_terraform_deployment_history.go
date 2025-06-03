@@ -38,9 +38,9 @@ ListTerraformDeploymentHistoryV2 List terraform deployments
 
 Returns the 20 last terraform deployments
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiListTerraformDeploymentHistoryV2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@return ApiListTerraformDeploymentHistoryV2Request
 */
 func (a *TerraformDeploymentHistoryAPIService) ListTerraformDeploymentHistoryV2(ctx context.Context, terraformId string) ApiListTerraformDeploymentHistoryV2Request {
 	return ApiListTerraformDeploymentHistoryV2Request{
@@ -51,7 +51,8 @@ func (a *TerraformDeploymentHistoryAPIService) ListTerraformDeploymentHistoryV2(
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryServicePaginatedResponseListV2
+//
+//	@return DeploymentHistoryServicePaginatedResponseListV2
 func (a *TerraformDeploymentHistoryAPIService) ListTerraformDeploymentHistoryV2Execute(r ApiListTerraformDeploymentHistoryV2Request) (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

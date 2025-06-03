@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **ServiceName** | Pointer to **string** |  | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
 **OwnedBy** | Pointer to **string** | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional] 
-**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**Description** | Pointer to **string** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -343,16 +343,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *Secret) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *Secret) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEnableInterpolationInFile
 
 `func (o *Secret) GetEnableInterpolationInFile() bool`
@@ -378,16 +368,6 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
-### SetEnableInterpolationInFileNil
-
-`func (o *Secret) SetEnableInterpolationInFileNil(b bool)`
-
- SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-
-### UnsetEnableInterpolationInFile
-`func (o *Secret) UnsetEnableInterpolationInFile()`
-
-UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

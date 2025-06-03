@@ -22,15 +22,15 @@ var _ MappedNullable = &EnvironmentStatus{}
 
 // EnvironmentStatus struct for EnvironmentStatus
 type EnvironmentStatus struct {
-	Id                               string                                   `json:"id"`
-	State                            StateEnum                                `json:"state"`
-	LastDeploymentDate               NullableTime                             `json:"last_deployment_date,omitempty"`
-	LastDeploymentState              StateEnum                                `json:"last_deployment_state"`
-	LastDeploymentId                 NullableString                           `json:"last_deployment_id,omitempty"`
-	TotalDeploymentDurationInSeconds NullableInt32                            `json:"total_deployment_duration_in_seconds,omitempty"`
-	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
-	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
-	DeploymentStatus                 *EnvironmentDeploymentStatusEnum         `json:"deployment_status,omitempty"`
+	Id                               string                            `json:"id"`
+	State                            StateEnum                         `json:"state"`
+	LastDeploymentDate               *time.Time                        `json:"last_deployment_date,omitempty"`
+	LastDeploymentState              StateEnum                         `json:"last_deployment_state"`
+	LastDeploymentId                 *string                           `json:"last_deployment_id,omitempty"`
+	TotalDeploymentDurationInSeconds *int32                            `json:"total_deployment_duration_in_seconds,omitempty"`
+	Origin                           *EnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
+	TriggeredBy                      *string                           `json:"triggered_by,omitempty"`
+	DeploymentStatus                 *EnvironmentDeploymentStatusEnum  `json:"deployment_status,omitempty"`
 	AdditionalProperties             map[string]interface{}
 }
 
@@ -104,47 +104,36 @@ func (o *EnvironmentStatus) SetState(v StateEnum) {
 	o.State = v
 }
 
-// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
 func (o *EnvironmentStatus) GetLastDeploymentDate() time.Time {
-	if o == nil || IsNil(o.LastDeploymentDate.Get()) {
+	if o == nil || IsNil(o.LastDeploymentDate) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastDeploymentDate.Get()
+	return *o.LastDeploymentDate
 }
 
 // GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastDeploymentDate) {
 		return nil, false
 	}
-	return o.LastDeploymentDate.Get(), o.LastDeploymentDate.IsSet()
+	return o.LastDeploymentDate, true
 }
 
 // HasLastDeploymentDate returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasLastDeploymentDate() bool {
-	if o != nil && o.LastDeploymentDate.IsSet() {
+	if o != nil && !IsNil(o.LastDeploymentDate) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastDeploymentDate gets a reference to the given NullableTime and assigns it to the LastDeploymentDate field.
+// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
 func (o *EnvironmentStatus) SetLastDeploymentDate(v time.Time) {
-	o.LastDeploymentDate.Set(&v)
-}
-
-// SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
-func (o *EnvironmentStatus) SetLastDeploymentDateNil() {
-	o.LastDeploymentDate.Set(nil)
-}
-
-// UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
-func (o *EnvironmentStatus) UnsetLastDeploymentDate() {
-	o.LastDeploymentDate.Unset()
+	o.LastDeploymentDate = &v
 }
 
 // GetLastDeploymentState returns the LastDeploymentState field value
@@ -171,176 +160,132 @@ func (o *EnvironmentStatus) SetLastDeploymentState(v StateEnum) {
 	o.LastDeploymentState = v
 }
 
-// GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetLastDeploymentId returns the LastDeploymentId field value if set, zero value otherwise.
 func (o *EnvironmentStatus) GetLastDeploymentId() string {
-	if o == nil || IsNil(o.LastDeploymentId.Get()) {
+	if o == nil || IsNil(o.LastDeploymentId) {
 		var ret string
 		return ret
 	}
-	return *o.LastDeploymentId.Get()
+	return *o.LastDeploymentId
 }
 
 // GetLastDeploymentIdOk returns a tuple with the LastDeploymentId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetLastDeploymentIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.LastDeploymentId) {
 		return nil, false
 	}
-	return o.LastDeploymentId.Get(), o.LastDeploymentId.IsSet()
+	return o.LastDeploymentId, true
 }
 
 // HasLastDeploymentId returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasLastDeploymentId() bool {
-	if o != nil && o.LastDeploymentId.IsSet() {
+	if o != nil && !IsNil(o.LastDeploymentId) {
 		return true
 	}
 
 	return false
 }
 
-// SetLastDeploymentId gets a reference to the given NullableString and assigns it to the LastDeploymentId field.
+// SetLastDeploymentId gets a reference to the given string and assigns it to the LastDeploymentId field.
 func (o *EnvironmentStatus) SetLastDeploymentId(v string) {
-	o.LastDeploymentId.Set(&v)
+	o.LastDeploymentId = &v
 }
 
-// SetLastDeploymentIdNil sets the value for LastDeploymentId to be an explicit nil
-func (o *EnvironmentStatus) SetLastDeploymentIdNil() {
-	o.LastDeploymentId.Set(nil)
-}
-
-// UnsetLastDeploymentId ensures that no value is present for LastDeploymentId, not even an explicit nil
-func (o *EnvironmentStatus) UnsetLastDeploymentId() {
-	o.LastDeploymentId.Unset()
-}
-
-// GetTotalDeploymentDurationInSeconds returns the TotalDeploymentDurationInSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTotalDeploymentDurationInSeconds returns the TotalDeploymentDurationInSeconds field value if set, zero value otherwise.
 func (o *EnvironmentStatus) GetTotalDeploymentDurationInSeconds() int32 {
-	if o == nil || IsNil(o.TotalDeploymentDurationInSeconds.Get()) {
+	if o == nil || IsNil(o.TotalDeploymentDurationInSeconds) {
 		var ret int32
 		return ret
 	}
-	return *o.TotalDeploymentDurationInSeconds.Get()
+	return *o.TotalDeploymentDurationInSeconds
 }
 
 // GetTotalDeploymentDurationInSecondsOk returns a tuple with the TotalDeploymentDurationInSeconds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetTotalDeploymentDurationInSecondsOk() (*int32, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TotalDeploymentDurationInSeconds) {
 		return nil, false
 	}
-	return o.TotalDeploymentDurationInSeconds.Get(), o.TotalDeploymentDurationInSeconds.IsSet()
+	return o.TotalDeploymentDurationInSeconds, true
 }
 
 // HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasTotalDeploymentDurationInSeconds() bool {
-	if o != nil && o.TotalDeploymentDurationInSeconds.IsSet() {
+	if o != nil && !IsNil(o.TotalDeploymentDurationInSeconds) {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalDeploymentDurationInSeconds gets a reference to the given NullableInt32 and assigns it to the TotalDeploymentDurationInSeconds field.
+// SetTotalDeploymentDurationInSeconds gets a reference to the given int32 and assigns it to the TotalDeploymentDurationInSeconds field.
 func (o *EnvironmentStatus) SetTotalDeploymentDurationInSeconds(v int32) {
-	o.TotalDeploymentDurationInSeconds.Set(&v)
+	o.TotalDeploymentDurationInSeconds = &v
 }
 
-// SetTotalDeploymentDurationInSecondsNil sets the value for TotalDeploymentDurationInSeconds to be an explicit nil
-func (o *EnvironmentStatus) SetTotalDeploymentDurationInSecondsNil() {
-	o.TotalDeploymentDurationInSeconds.Set(nil)
-}
-
-// UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
-func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds() {
-	o.TotalDeploymentDurationInSeconds.Unset()
-}
-
-// GetOrigin returns the Origin field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetOrigin returns the Origin field value if set, zero value otherwise.
 func (o *EnvironmentStatus) GetOrigin() EnvironmentStatusEventOriginEnum {
-	if o == nil || IsNil(o.Origin.Get()) {
+	if o == nil || IsNil(o.Origin) {
 		var ret EnvironmentStatusEventOriginEnum
 		return ret
 	}
-	return *o.Origin.Get()
+	return *o.Origin
 }
 
 // GetOriginOk returns a tuple with the Origin field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetOriginOk() (*EnvironmentStatusEventOriginEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Origin) {
 		return nil, false
 	}
-	return o.Origin.Get(), o.Origin.IsSet()
+	return o.Origin, true
 }
 
 // HasOrigin returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasOrigin() bool {
-	if o != nil && o.Origin.IsSet() {
+	if o != nil && !IsNil(o.Origin) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrigin gets a reference to the given NullableEnvironmentStatusEventOriginEnum and assigns it to the Origin field.
+// SetOrigin gets a reference to the given EnvironmentStatusEventOriginEnum and assigns it to the Origin field.
 func (o *EnvironmentStatus) SetOrigin(v EnvironmentStatusEventOriginEnum) {
-	o.Origin.Set(&v)
+	o.Origin = &v
 }
 
-// SetOriginNil sets the value for Origin to be an explicit nil
-func (o *EnvironmentStatus) SetOriginNil() {
-	o.Origin.Set(nil)
-}
-
-// UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
-func (o *EnvironmentStatus) UnsetOrigin() {
-	o.Origin.Unset()
-}
-
-// GetTriggeredBy returns the TriggeredBy field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTriggeredBy returns the TriggeredBy field value if set, zero value otherwise.
 func (o *EnvironmentStatus) GetTriggeredBy() string {
-	if o == nil || IsNil(o.TriggeredBy.Get()) {
+	if o == nil || IsNil(o.TriggeredBy) {
 		var ret string
 		return ret
 	}
-	return *o.TriggeredBy.Get()
+	return *o.TriggeredBy
 }
 
 // GetTriggeredByOk returns a tuple with the TriggeredBy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentStatus) GetTriggeredByOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.TriggeredBy) {
 		return nil, false
 	}
-	return o.TriggeredBy.Get(), o.TriggeredBy.IsSet()
+	return o.TriggeredBy, true
 }
 
 // HasTriggeredBy returns a boolean if a field has been set.
 func (o *EnvironmentStatus) HasTriggeredBy() bool {
-	if o != nil && o.TriggeredBy.IsSet() {
+	if o != nil && !IsNil(o.TriggeredBy) {
 		return true
 	}
 
 	return false
 }
 
-// SetTriggeredBy gets a reference to the given NullableString and assigns it to the TriggeredBy field.
+// SetTriggeredBy gets a reference to the given string and assigns it to the TriggeredBy field.
 func (o *EnvironmentStatus) SetTriggeredBy(v string) {
-	o.TriggeredBy.Set(&v)
-}
-
-// SetTriggeredByNil sets the value for TriggeredBy to be an explicit nil
-func (o *EnvironmentStatus) SetTriggeredByNil() {
-	o.TriggeredBy.Set(nil)
-}
-
-// UnsetTriggeredBy ensures that no value is present for TriggeredBy, not even an explicit nil
-func (o *EnvironmentStatus) UnsetTriggeredBy() {
-	o.TriggeredBy.Unset()
+	o.TriggeredBy = &v
 }
 
 // GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise.
@@ -387,21 +332,21 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["state"] = o.State
-	if o.LastDeploymentDate.IsSet() {
-		toSerialize["last_deployment_date"] = o.LastDeploymentDate.Get()
+	if !IsNil(o.LastDeploymentDate) {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate
 	}
 	toSerialize["last_deployment_state"] = o.LastDeploymentState
-	if o.LastDeploymentId.IsSet() {
-		toSerialize["last_deployment_id"] = o.LastDeploymentId.Get()
+	if !IsNil(o.LastDeploymentId) {
+		toSerialize["last_deployment_id"] = o.LastDeploymentId
 	}
-	if o.TotalDeploymentDurationInSeconds.IsSet() {
-		toSerialize["total_deployment_duration_in_seconds"] = o.TotalDeploymentDurationInSeconds.Get()
+	if !IsNil(o.TotalDeploymentDurationInSeconds) {
+		toSerialize["total_deployment_duration_in_seconds"] = o.TotalDeploymentDurationInSeconds
 	}
-	if o.Origin.IsSet() {
-		toSerialize["origin"] = o.Origin.Get()
+	if !IsNil(o.Origin) {
+		toSerialize["origin"] = o.Origin
 	}
-	if o.TriggeredBy.IsSet() {
-		toSerialize["triggered_by"] = o.TriggeredBy.Get()
+	if !IsNil(o.TriggeredBy) {
+		toSerialize["triggered_by"] = o.TriggeredBy
 	}
 	if !IsNil(o.DeploymentStatus) {
 		toSerialize["deployment_status"] = o.DeploymentStatus

@@ -45,9 +45,9 @@ ListEnvironmentDeploymentHistory List environment deployments
 
 List previous and current environment deployments with the status deployment and the related services. By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentDeploymentHistoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListEnvironmentDeploymentHistoryRequest
 */
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistory(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryRequest {
 	return ApiListEnvironmentDeploymentHistoryRequest{
@@ -58,7 +58,8 @@ func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistor
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryEnvironmentPaginatedResponseList
+//
+//	@return DeploymentHistoryEnvironmentPaginatedResponseList
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistoryExecute(r ApiListEnvironmentDeploymentHistoryRequest) (*DeploymentHistoryEnvironmentPaginatedResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -172,9 +173,9 @@ ListEnvironmentDeploymentHistoryV2 List environment deployments
 
 List previous and current environment deployments with the status deployment and the related services. By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListEnvironmentDeploymentHistoryV2Request
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId
+	@return ApiListEnvironmentDeploymentHistoryV2Request
 */
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistoryV2(ctx context.Context, environmentId string) ApiListEnvironmentDeploymentHistoryV2Request {
 	return ApiListEnvironmentDeploymentHistoryV2Request{
@@ -185,7 +186,8 @@ func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistor
 }
 
 // Execute executes the request
-//  @return DeploymentHistoryEnvironmentPaginatedResponseListV2
+//
+//	@return DeploymentHistoryEnvironmentPaginatedResponseListV2
 func (a *EnvironmentDeploymentHistoryAPIService) ListEnvironmentDeploymentHistoryV2Execute(r ApiListEnvironmentDeploymentHistoryV2Request) (*DeploymentHistoryEnvironmentPaginatedResponseListV2, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

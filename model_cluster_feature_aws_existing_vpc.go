@@ -159,9 +159,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetEksSubnetsZoneCIds(v []string) {
 	o.EksSubnetsZoneCIds = v
 }
 
-// GetDocumentdbSubnetsZoneAIds returns the DocumentdbSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDocumentdbSubnetsZoneAIds returns the DocumentdbSubnetsZoneAIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.DocumentdbSubnetsZoneAIds) {
 		var ret []string
 		return ret
 	}
@@ -170,7 +170,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIds() []string {
 
 // GetDocumentdbSubnetsZoneAIdsOk returns a tuple with the DocumentdbSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneAIds) {
 		return nil, false
@@ -192,9 +191,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneAIds(v []string) 
 	o.DocumentdbSubnetsZoneAIds = v
 }
 
-// GetDocumentdbSubnetsZoneBIds returns the DocumentdbSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDocumentdbSubnetsZoneBIds returns the DocumentdbSubnetsZoneBIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.DocumentdbSubnetsZoneBIds) {
 		var ret []string
 		return ret
 	}
@@ -203,7 +202,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIds() []string {
 
 // GetDocumentdbSubnetsZoneBIdsOk returns a tuple with the DocumentdbSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneBIds) {
 		return nil, false
@@ -225,9 +223,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneBIds(v []string) 
 	o.DocumentdbSubnetsZoneBIds = v
 }
 
-// GetDocumentdbSubnetsZoneCIds returns the DocumentdbSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDocumentdbSubnetsZoneCIds returns the DocumentdbSubnetsZoneCIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.DocumentdbSubnetsZoneCIds) {
 		var ret []string
 		return ret
 	}
@@ -236,7 +234,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIds() []string {
 
 // GetDocumentdbSubnetsZoneCIdsOk returns a tuple with the DocumentdbSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.DocumentdbSubnetsZoneCIds) {
 		return nil, false
@@ -258,9 +255,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneCIds(v []string) 
 	o.DocumentdbSubnetsZoneCIds = v
 }
 
-// GetElasticacheSubnetsZoneAIds returns the ElasticacheSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetElasticacheSubnetsZoneAIds returns the ElasticacheSubnetsZoneAIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ElasticacheSubnetsZoneAIds) {
 		var ret []string
 		return ret
 	}
@@ -269,7 +266,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIds() []string 
 
 // GetElasticacheSubnetsZoneAIdsOk returns a tuple with the ElasticacheSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneAIds) {
 		return nil, false
@@ -291,9 +287,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneAIds(v []string)
 	o.ElasticacheSubnetsZoneAIds = v
 }
 
-// GetElasticacheSubnetsZoneBIds returns the ElasticacheSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetElasticacheSubnetsZoneBIds returns the ElasticacheSubnetsZoneBIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ElasticacheSubnetsZoneBIds) {
 		var ret []string
 		return ret
 	}
@@ -302,7 +298,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIds() []string 
 
 // GetElasticacheSubnetsZoneBIdsOk returns a tuple with the ElasticacheSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneBIds) {
 		return nil, false
@@ -324,9 +319,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneBIds(v []string)
 	o.ElasticacheSubnetsZoneBIds = v
 }
 
-// GetElasticacheSubnetsZoneCIds returns the ElasticacheSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetElasticacheSubnetsZoneCIds returns the ElasticacheSubnetsZoneCIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.ElasticacheSubnetsZoneCIds) {
 		var ret []string
 		return ret
 	}
@@ -335,7 +330,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIds() []string 
 
 // GetElasticacheSubnetsZoneCIdsOk returns a tuple with the ElasticacheSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.ElasticacheSubnetsZoneCIds) {
 		return nil, false
@@ -357,9 +351,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneCIds(v []string)
 	o.ElasticacheSubnetsZoneCIds = v
 }
 
-// GetRdsSubnetsZoneAIds returns the RdsSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRdsSubnetsZoneAIds returns the RdsSubnetsZoneAIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.RdsSubnetsZoneAIds) {
 		var ret []string
 		return ret
 	}
@@ -368,7 +362,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIds() []string {
 
 // GetRdsSubnetsZoneAIdsOk returns a tuple with the RdsSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneAIds) {
 		return nil, false
@@ -390,9 +383,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneAIds(v []string) {
 	o.RdsSubnetsZoneAIds = v
 }
 
-// GetRdsSubnetsZoneBIds returns the RdsSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRdsSubnetsZoneBIds returns the RdsSubnetsZoneBIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.RdsSubnetsZoneBIds) {
 		var ret []string
 		return ret
 	}
@@ -401,7 +394,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIds() []string {
 
 // GetRdsSubnetsZoneBIdsOk returns a tuple with the RdsSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneBIds) {
 		return nil, false
@@ -423,9 +415,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneBIds(v []string) {
 	o.RdsSubnetsZoneBIds = v
 }
 
-// GetRdsSubnetsZoneCIds returns the RdsSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetRdsSubnetsZoneCIds returns the RdsSubnetsZoneCIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.RdsSubnetsZoneCIds) {
 		var ret []string
 		return ret
 	}
@@ -434,7 +426,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIds() []string {
 
 // GetRdsSubnetsZoneCIdsOk returns a tuple with the RdsSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.RdsSubnetsZoneCIds) {
 		return nil, false
@@ -456,9 +447,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneCIds(v []string) {
 	o.RdsSubnetsZoneCIds = v
 }
 
-// GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
 		var ret []string
 		return ret
 	}
@@ -467,7 +458,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIds() [
 
 // GetEksKarpenterFargateSubnetsZoneAIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneAIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
 		return nil, false
@@ -489,9 +479,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneAIds(v [
 	o.EksKarpenterFargateSubnetsZoneAIds = v
 }
 
-// GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
 		var ret []string
 		return ret
 	}
@@ -500,7 +490,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIds() [
 
 // GetEksKarpenterFargateSubnetsZoneBIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneBIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
 		return nil, false
@@ -522,9 +511,9 @@ func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneBIds(v [
 	o.EksKarpenterFargateSubnetsZoneBIds = v
 }
 
-// GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field value if set, zero value otherwise.
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIds() []string {
-	if o == nil {
+	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
 		var ret []string
 		return ret
 	}
@@ -533,7 +522,6 @@ func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIds() [
 
 // GetEksKarpenterFargateSubnetsZoneCIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneCIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
 		return nil, false
@@ -569,40 +557,40 @@ func (o ClusterFeatureAwsExistingVpc) ToMap() (map[string]interface{}, error) {
 	toSerialize["eks_subnets_zone_a_ids"] = o.EksSubnetsZoneAIds
 	toSerialize["eks_subnets_zone_b_ids"] = o.EksSubnetsZoneBIds
 	toSerialize["eks_subnets_zone_c_ids"] = o.EksSubnetsZoneCIds
-	if o.DocumentdbSubnetsZoneAIds != nil {
+	if !IsNil(o.DocumentdbSubnetsZoneAIds) {
 		toSerialize["documentdb_subnets_zone_a_ids"] = o.DocumentdbSubnetsZoneAIds
 	}
-	if o.DocumentdbSubnetsZoneBIds != nil {
+	if !IsNil(o.DocumentdbSubnetsZoneBIds) {
 		toSerialize["documentdb_subnets_zone_b_ids"] = o.DocumentdbSubnetsZoneBIds
 	}
-	if o.DocumentdbSubnetsZoneCIds != nil {
+	if !IsNil(o.DocumentdbSubnetsZoneCIds) {
 		toSerialize["documentdb_subnets_zone_c_ids"] = o.DocumentdbSubnetsZoneCIds
 	}
-	if o.ElasticacheSubnetsZoneAIds != nil {
+	if !IsNil(o.ElasticacheSubnetsZoneAIds) {
 		toSerialize["elasticache_subnets_zone_a_ids"] = o.ElasticacheSubnetsZoneAIds
 	}
-	if o.ElasticacheSubnetsZoneBIds != nil {
+	if !IsNil(o.ElasticacheSubnetsZoneBIds) {
 		toSerialize["elasticache_subnets_zone_b_ids"] = o.ElasticacheSubnetsZoneBIds
 	}
-	if o.ElasticacheSubnetsZoneCIds != nil {
+	if !IsNil(o.ElasticacheSubnetsZoneCIds) {
 		toSerialize["elasticache_subnets_zone_c_ids"] = o.ElasticacheSubnetsZoneCIds
 	}
-	if o.RdsSubnetsZoneAIds != nil {
+	if !IsNil(o.RdsSubnetsZoneAIds) {
 		toSerialize["rds_subnets_zone_a_ids"] = o.RdsSubnetsZoneAIds
 	}
-	if o.RdsSubnetsZoneBIds != nil {
+	if !IsNil(o.RdsSubnetsZoneBIds) {
 		toSerialize["rds_subnets_zone_b_ids"] = o.RdsSubnetsZoneBIds
 	}
-	if o.RdsSubnetsZoneCIds != nil {
+	if !IsNil(o.RdsSubnetsZoneCIds) {
 		toSerialize["rds_subnets_zone_c_ids"] = o.RdsSubnetsZoneCIds
 	}
-	if o.EksKarpenterFargateSubnetsZoneAIds != nil {
+	if !IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
 		toSerialize["eks_karpenter_fargate_subnets_zone_a_ids"] = o.EksKarpenterFargateSubnetsZoneAIds
 	}
-	if o.EksKarpenterFargateSubnetsZoneBIds != nil {
+	if !IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
 		toSerialize["eks_karpenter_fargate_subnets_zone_b_ids"] = o.EksKarpenterFargateSubnetsZoneBIds
 	}
-	if o.EksKarpenterFargateSubnetsZoneCIds != nil {
+	if !IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
 		toSerialize["eks_karpenter_fargate_subnets_zone_c_ids"] = o.EksKarpenterFargateSubnetsZoneCIds
 	}
 

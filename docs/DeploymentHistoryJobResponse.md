@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**StateEnum**](StateEnum.md) |  | [optional] 
 **ImageName** | Pointer to **string** |  | [optional] 
 **Tag** | Pointer to **string** |  | [optional] 
-**Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
+**Commit** | Pointer to [**Commit**](Commit.md) |  | [optional] 
 **Schedule** | Pointer to [**DeploymentHistoryJobResponseAllOfSchedule**](DeploymentHistoryJobResponseAllOfSchedule.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** |  | [optional] 
@@ -225,16 +225,6 @@ SetCommit sets Commit field to given value.
 
 HasCommit returns a boolean if a field has been set.
 
-### SetCommitNil
-
-`func (o *DeploymentHistoryJobResponse) SetCommitNil(b bool)`
-
- SetCommitNil sets the value for Commit to be an explicit nil
-
-### UnsetCommit
-`func (o *DeploymentHistoryJobResponse) UnsetCommit()`
-
-UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetSchedule
 
 `func (o *DeploymentHistoryJobResponse) GetSchedule() DeploymentHistoryJobResponseAllOfSchedule`

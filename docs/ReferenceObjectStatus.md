@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 **ExecutionId** | Pointer to **string** |  | [optional] 
 **StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
-**DeploymentRequestId** | Pointer to **NullableString** |  | [optional] 
+**DeploymentRequestId** | Pointer to **string** |  | [optional] 
 **DeploymentRequestsCount** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -239,16 +239,6 @@ SetDeploymentRequestId sets DeploymentRequestId field to given value.
 
 HasDeploymentRequestId returns a boolean if a field has been set.
 
-### SetDeploymentRequestIdNil
-
-`func (o *ReferenceObjectStatus) SetDeploymentRequestIdNil(b bool)`
-
- SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
-
-### UnsetDeploymentRequestId
-`func (o *ReferenceObjectStatus) UnsetDeploymentRequestId()`
-
-UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
 ### GetDeploymentRequestsCount
 
 `func (o *ReferenceObjectStatus) GetDeploymentRequestsCount() int32`

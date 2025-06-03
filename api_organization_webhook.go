@@ -44,9 +44,9 @@ CreateOrganizationWebhook Create an organization webhook
 
 Create an organization webhook.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateOrganizationWebhookRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateOrganizationWebhookRequest
 */
 func (a *OrganizationWebhookAPIService) CreateOrganizationWebhook(ctx context.Context, organizationId string) ApiCreateOrganizationWebhookRequest {
 	return ApiCreateOrganizationWebhookRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationWebhookAPIService) CreateOrganizationWebhook(ctx context.Co
 }
 
 // Execute executes the request
-//  @return OrganizationWebhookCreateResponse
+//
+//	@return OrganizationWebhookCreateResponse
 func (a *OrganizationWebhookAPIService) CreateOrganizationWebhookExecute(r ApiCreateOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteOrganizationWebhook Delete organization webhook
 
 Delete organization webhook
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param webhookId Webhook ID
- @return ApiDeleteOrganizationWebhookRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param webhookId Webhook ID
+	@return ApiDeleteOrganizationWebhookRequest
 */
 func (a *OrganizationWebhookAPIService) DeleteOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiDeleteOrganizationWebhookRequest {
 	return ApiDeleteOrganizationWebhookRequest{
@@ -280,10 +281,10 @@ EditOrganizationWebhook Edit an organization webhook
 
 Edit an organization webhook
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param webhookId Webhook ID
- @return ApiEditOrganizationWebhookRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param webhookId Webhook ID
+	@return ApiEditOrganizationWebhookRequest
 */
 func (a *OrganizationWebhookAPIService) EditOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiEditOrganizationWebhookRequest {
 	return ApiEditOrganizationWebhookRequest{
@@ -295,7 +296,8 @@ func (a *OrganizationWebhookAPIService) EditOrganizationWebhook(ctx context.Cont
 }
 
 // Execute executes the request
-//  @return OrganizationWebhookCreateResponse
+//
+//	@return OrganizationWebhookCreateResponse
 func (a *OrganizationWebhookAPIService) EditOrganizationWebhookExecute(r ApiEditOrganizationWebhookRequest) (*OrganizationWebhookCreateResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -403,10 +405,10 @@ GetOrganizationWebhook Get an Organization webhook
 
 Get an Organization webhook
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param webhookId Webhook ID
- @return ApiGetOrganizationWebhookRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param webhookId Webhook ID
+	@return ApiGetOrganizationWebhookRequest
 */
 func (a *OrganizationWebhookAPIService) GetOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiGetOrganizationWebhookRequest {
 	return ApiGetOrganizationWebhookRequest{
@@ -418,7 +420,8 @@ func (a *OrganizationWebhookAPIService) GetOrganizationWebhook(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return OrganizationWebhookResponse
+//
+//	@return OrganizationWebhookResponse
 func (a *OrganizationWebhookAPIService) GetOrganizationWebhookExecute(r ApiGetOrganizationWebhookRequest) (*OrganizationWebhookResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -523,9 +526,9 @@ ListOrganizationWebHooks List organization webhooks
 
 List organization webhooks
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationWebHooksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationWebHooksRequest
 */
 func (a *OrganizationWebhookAPIService) ListOrganizationWebHooks(ctx context.Context, organizationId string) ApiListOrganizationWebHooksRequest {
 	return ApiListOrganizationWebHooksRequest{
@@ -536,7 +539,8 @@ func (a *OrganizationWebhookAPIService) ListOrganizationWebHooks(ctx context.Con
 }
 
 // Execute executes the request
-//  @return OrganizationWebhookResponseList
+//
+//	@return OrganizationWebhookResponseList
 func (a *OrganizationWebhookAPIService) ListOrganizationWebHooksExecute(r ApiListOrganizationWebHooksRequest) (*OrganizationWebhookResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

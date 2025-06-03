@@ -42,9 +42,9 @@ func (r ApiCheckContainerImageRequest) Execute() (map[string]interface{}, *http.
 /*
 CheckContainerImage Check container image configuration is correct
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCheckContainerImageRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCheckContainerImageRequest
 */
 func (a *EnvironmentAPIService) CheckContainerImage(ctx context.Context, environmentId string) ApiCheckContainerImageRequest {
 	return ApiCheckContainerImageRequest{
@@ -55,7 +55,8 @@ func (a *EnvironmentAPIService) CheckContainerImage(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *EnvironmentAPIService) CheckContainerImageExecute(r ApiCheckContainerImageRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -165,9 +166,9 @@ func (r ApiCheckDockerfileRequest) Execute() (*DockerfileCheckResponse, *http.Re
 /*
 CheckDockerfile Check dockerfile configuration is correct
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCheckDockerfileRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCheckDockerfileRequest
 */
 func (a *EnvironmentAPIService) CheckDockerfile(ctx context.Context, environmentId string) ApiCheckDockerfileRequest {
 	return ApiCheckDockerfileRequest{
@@ -178,7 +179,8 @@ func (a *EnvironmentAPIService) CheckDockerfile(ctx context.Context, environment
 }
 
 // Execute executes the request
-//  @return DockerfileCheckResponse
+//
+//	@return DockerfileCheckResponse
 func (a *EnvironmentAPIService) CheckDockerfileExecute(r ApiCheckDockerfileRequest) (*DockerfileCheckResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -288,9 +290,9 @@ func (r ApiCheckGitFileRequest) Execute() (map[string]interface{}, *http.Respons
 /*
 CheckGitFile Check git file configuration is correct
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCheckGitFileRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCheckGitFileRequest
 */
 func (a *EnvironmentAPIService) CheckGitFile(ctx context.Context, environmentId string) ApiCheckGitFileRequest {
 	return ApiCheckGitFileRequest{
@@ -301,7 +303,8 @@ func (a *EnvironmentAPIService) CheckGitFile(ctx context.Context, environmentId 
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *EnvironmentAPIService) CheckGitFileExecute(r ApiCheckGitFileRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -411,9 +414,9 @@ func (r ApiCheckHelmRepositoryRequest) Execute() (map[string]interface{}, *http.
 /*
 CheckHelmRepository Check helm repository configuration is correct
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCheckHelmRepositoryRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCheckHelmRepositoryRequest
 */
 func (a *EnvironmentAPIService) CheckHelmRepository(ctx context.Context, environmentId string) ApiCheckHelmRepositoryRequest {
 	return ApiCheckHelmRepositoryRequest{
@@ -424,7 +427,8 @@ func (a *EnvironmentAPIService) CheckHelmRepository(ctx context.Context, environ
 }
 
 // Execute executes the request
-//  @return map[string]interface{}
+//
+//	@return map[string]interface{}
 func (a *EnvironmentAPIService) CheckHelmRepositoryExecute(r ApiCheckHelmRepositoryRequest) (map[string]interface{}, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

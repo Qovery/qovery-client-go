@@ -44,9 +44,9 @@ CloneTerraform Clone terraform
 
 This will create a new terraform with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiCloneTerraformRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId Terraform ID
+	@return ApiCloneTerraformRequest
 */
 func (a *TerraformsAPIService) CloneTerraform(ctx context.Context, terraformId string) ApiCloneTerraformRequest {
 	return ApiCloneTerraformRequest{
@@ -57,7 +57,8 @@ func (a *TerraformsAPIService) CloneTerraform(ctx context.Context, terraformId s
 }
 
 // Execute executes the request
-//  @return TerraformResponse
+//
+//	@return TerraformResponse
 func (a *TerraformsAPIService) CloneTerraformExecute(r ApiCloneTerraformRequest) (*TerraformResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -167,9 +168,9 @@ func (r ApiCreateTerraformRequest) Execute() (*TerraformResponse, *http.Response
 /*
 CreateTerraform Create a terraform
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId
- @return ApiCreateTerraformRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId
+	@return ApiCreateTerraformRequest
 */
 func (a *TerraformsAPIService) CreateTerraform(ctx context.Context, environmentId string) ApiCreateTerraformRequest {
 	return ApiCreateTerraformRequest{
@@ -180,7 +181,8 @@ func (a *TerraformsAPIService) CreateTerraform(ctx context.Context, environmentI
 }
 
 // Execute executes the request
-//  @return TerraformResponse
+//
+//	@return TerraformResponse
 func (a *TerraformsAPIService) CreateTerraformExecute(r ApiCreateTerraformRequest) (*TerraformResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -283,8 +285,8 @@ func (r ApiGetDefaultTerraformAdvancedSettingsRequest) Execute() (*TerraformAdva
 /*
 GetDefaultTerraformAdvancedSettings List default terraform advanced settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultTerraformAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultTerraformAdvancedSettingsRequest
 */
 func (a *TerraformsAPIService) GetDefaultTerraformAdvancedSettings(ctx context.Context) ApiGetDefaultTerraformAdvancedSettingsRequest {
 	return ApiGetDefaultTerraformAdvancedSettingsRequest{
@@ -294,7 +296,8 @@ func (a *TerraformsAPIService) GetDefaultTerraformAdvancedSettings(ctx context.C
 }
 
 // Execute executes the request
-//  @return TerraformAdvancedSettings
+//
+//	@return TerraformAdvancedSettings
 func (a *TerraformsAPIService) GetDefaultTerraformAdvancedSettingsExecute(r ApiGetDefaultTerraformAdvancedSettingsRequest) (*TerraformAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -395,9 +398,9 @@ func (r ApiListTerraformsRequest) Execute() (*TerraformResponseList, *http.Respo
 /*
 ListTerraforms List terraforms
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListTerraformsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId
+	@return ApiListTerraformsRequest
 */
 func (a *TerraformsAPIService) ListTerraforms(ctx context.Context, environmentId string) ApiListTerraformsRequest {
 	return ApiListTerraformsRequest{
@@ -408,7 +411,8 @@ func (a *TerraformsAPIService) ListTerraforms(ctx context.Context, environmentId
 }
 
 // Execute executes the request
-//  @return TerraformResponseList
+//
+//	@return TerraformResponseList
 func (a *TerraformsAPIService) ListTerraformsExecute(r ApiListTerraformsRequest) (*TerraformResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

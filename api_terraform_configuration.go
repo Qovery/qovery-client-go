@@ -42,9 +42,9 @@ func (r ApiEditTerraformAdvancedSettingsRequest) Execute() (*TerraformAdvancedSe
 /*
 EditTerraformAdvancedSettings Edit Advanced settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiEditTerraformAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@return ApiEditTerraformAdvancedSettingsRequest
 */
 func (a *TerraformConfigurationAPIService) EditTerraformAdvancedSettings(ctx context.Context, terraformId string) ApiEditTerraformAdvancedSettingsRequest {
 	return ApiEditTerraformAdvancedSettingsRequest{
@@ -55,7 +55,8 @@ func (a *TerraformConfigurationAPIService) EditTerraformAdvancedSettings(ctx con
 }
 
 // Execute executes the request
-//  @return TerraformAdvancedSettings
+//
+//	@return TerraformAdvancedSettings
 func (a *TerraformConfigurationAPIService) EditTerraformAdvancedSettingsExecute(r ApiEditTerraformAdvancedSettingsRequest) (*TerraformAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -159,9 +160,9 @@ func (r ApiGetTerraformAdvancedSettingsRequest) Execute() (*TerraformAdvancedSet
 /*
 GetTerraformAdvancedSettings Get Advanced settings
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param terraformId Terraform ID
- @return ApiGetTerraformAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param terraformId
+	@return ApiGetTerraformAdvancedSettingsRequest
 */
 func (a *TerraformConfigurationAPIService) GetTerraformAdvancedSettings(ctx context.Context, terraformId string) ApiGetTerraformAdvancedSettingsRequest {
 	return ApiGetTerraformAdvancedSettingsRequest{
@@ -172,7 +173,8 @@ func (a *TerraformConfigurationAPIService) GetTerraformAdvancedSettings(ctx cont
 }
 
 // Execute executes the request
-//  @return TerraformAdvancedSettings
+//
+//	@return TerraformAdvancedSettings
 func (a *TerraformConfigurationAPIService) GetTerraformAdvancedSettingsExecute(r ApiGetTerraformAdvancedSettingsRequest) (*TerraformAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

@@ -36,9 +36,9 @@ func (r ApiListClusterLockRequest) Execute() (*ClusterLockList, *http.Response, 
 /*
 ListClusterLock List locked Cluster by organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId
- @return ApiListClusterLockRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId
+	@return ApiListClusterLockRequest
 */
 func (a *OrganizationClusterLockAPIService) ListClusterLock(ctx context.Context, organizationId string) ApiListClusterLockRequest {
 	return ApiListClusterLockRequest{
@@ -49,7 +49,8 @@ func (a *OrganizationClusterLockAPIService) ListClusterLock(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return ClusterLockList
+//
+//	@return ClusterLockList
 func (a *OrganizationClusterLockAPIService) ListClusterLockExecute(r ApiListClusterLockRequest) (*ClusterLockList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

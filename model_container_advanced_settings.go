@@ -25,7 +25,7 @@ type ContainerAdvancedSettings struct {
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
-	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
+	DeploymentAffinityNodeRequired map[string]string `json:"deployment.affinity.node.required,omitempty"`
 	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
 	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
 	// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
@@ -173,14 +173,14 @@ func (o *ContainerAdvancedSettings) GetDeploymentAffinityNodeRequired() map[stri
 		var ret map[string]string
 		return ret
 	}
-	return *o.DeploymentAffinityNodeRequired
+	return o.DeploymentAffinityNodeRequired
 }
 
 // GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ContainerAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
+func (o *ContainerAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (map[string]string, bool) {
 	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
-		return nil, false
+		return map[string]string{}, false
 	}
 	return o.DeploymentAffinityNodeRequired, true
 }
@@ -196,7 +196,7 @@ func (o *ContainerAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
 
 // SetDeploymentAffinityNodeRequired gets a reference to the given map[string]string and assigns it to the DeploymentAffinityNodeRequired field.
 func (o *ContainerAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string) {
-	o.DeploymentAffinityNodeRequired = &v
+	o.DeploymentAffinityNodeRequired = v
 }
 
 // GetDeploymentAntiaffinityPod returns the DeploymentAntiaffinityPod field value if set, zero value otherwise.

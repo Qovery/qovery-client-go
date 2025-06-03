@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Raw** | Pointer to [**NullableHelmResponseAllOfValuesOverrideFileRaw**](HelmResponseAllOfValuesOverrideFileRaw.md) |  | [optional] 
-**Git** | Pointer to [**NullableHelmResponseAllOfValuesOverrideFileGit**](HelmResponseAllOfValuesOverrideFileGit.md) |  | [optional] 
+**Raw** | Pointer to [**HelmResponseAllOfValuesOverrideFileRaw**](HelmResponseAllOfValuesOverrideFileRaw.md) |  | [optional] 
+**Git** | Pointer to [**HelmResponseAllOfValuesOverrideFileGit**](HelmResponseAllOfValuesOverrideFileGit.md) |  | [optional] 
 
 ## Methods
 
@@ -51,16 +51,6 @@ SetRaw sets Raw field to given value.
 
 HasRaw returns a boolean if a field has been set.
 
-### SetRawNil
-
-`func (o *HelmResponseAllOfValuesOverrideFile) SetRawNil(b bool)`
-
- SetRawNil sets the value for Raw to be an explicit nil
-
-### UnsetRaw
-`func (o *HelmResponseAllOfValuesOverrideFile) UnsetRaw()`
-
-UnsetRaw ensures that no value is present for Raw, not even an explicit nil
 ### GetGit
 
 `func (o *HelmResponseAllOfValuesOverrideFile) GetGit() HelmResponseAllOfValuesOverrideFileGit`
@@ -86,16 +76,6 @@ SetGit sets Git field to given value.
 
 HasGit returns a boolean if a field has been set.
 
-### SetGitNil
-
-`func (o *HelmResponseAllOfValuesOverrideFile) SetGitNil(b bool)`
-
- SetGitNil sets the value for Git to be an explicit nil
-
-### UnsetGit
-`func (o *HelmResponseAllOfValuesOverrideFile) UnsetGit()`
-
-UnsetGit ensures that no value is present for Git, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

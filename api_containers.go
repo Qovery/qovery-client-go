@@ -46,10 +46,9 @@ Triggers a new container deploy in each environment matching the following condi
 - environment should have the auto-deploy enabled
 - the container should have the same image name and a different tag
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiAutoDeployContainerEnvironmentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiAutoDeployContainerEnvironmentsRequest
 */
 func (a *ContainersAPIService) AutoDeployContainerEnvironments(ctx context.Context, organizationId string) ApiAutoDeployContainerEnvironmentsRequest {
 	return ApiAutoDeployContainerEnvironmentsRequest{
@@ -60,7 +59,8 @@ func (a *ContainersAPIService) AutoDeployContainerEnvironments(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainersAPIService) AutoDeployContainerEnvironmentsExecute(r ApiAutoDeployContainerEnvironmentsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -172,9 +172,9 @@ CloneContainer Clone container
 
 This will create a new container with the same configuration on the targeted environment Id.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param containerId Container ID
- @return ApiCloneContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiCloneContainerRequest
 */
 func (a *ContainersAPIService) CloneContainer(ctx context.Context, containerId string) ApiCloneContainerRequest {
 	return ApiCloneContainerRequest{
@@ -185,7 +185,8 @@ func (a *ContainersAPIService) CloneContainer(ctx context.Context, containerId s
 }
 
 // Execute executes the request
-//  @return ContainerResponse
+//
+//	@return ContainerResponse
 func (a *ContainersAPIService) CloneContainerExecute(r ApiCloneContainerRequest) (*ContainerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -295,9 +296,9 @@ func (r ApiCreateContainerRequest) Execute() (*ContainerResponse, *http.Response
 /*
 CreateContainer Create a container
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiCreateContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiCreateContainerRequest
 */
 func (a *ContainersAPIService) CreateContainer(ctx context.Context, environmentId string) ApiCreateContainerRequest {
 	return ApiCreateContainerRequest{
@@ -308,7 +309,8 @@ func (a *ContainersAPIService) CreateContainer(ctx context.Context, environmentI
 }
 
 // Execute executes the request
-//  @return ContainerResponse
+//
+//	@return ContainerResponse
 func (a *ContainersAPIService) CreateContainerExecute(r ApiCreateContainerRequest) (*ContainerResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -415,10 +417,10 @@ GetContainerRegistryContainerStatus List all container registry container status
 
 Returns a list of containers with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param containerRegistryId Container Registry ID
- @return ApiGetContainerRegistryContainerStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param containerRegistryId Container Registry ID
+	@return ApiGetContainerRegistryContainerStatusRequest
 */
 func (a *ContainersAPIService) GetContainerRegistryContainerStatus(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryContainerStatusRequest {
 	return ApiGetContainerRegistryContainerStatusRequest{
@@ -430,7 +432,8 @@ func (a *ContainersAPIService) GetContainerRegistryContainerStatus(ctx context.C
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *ContainersAPIService) GetContainerRegistryContainerStatusExecute(r ApiGetContainerRegistryContainerStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -534,8 +537,8 @@ GetDefaultContainerAdvancedSettings List default container advanced settings
 
 Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiGetDefaultContainerAdvancedSettingsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetDefaultContainerAdvancedSettingsRequest
 */
 func (a *ContainersAPIService) GetDefaultContainerAdvancedSettings(ctx context.Context) ApiGetDefaultContainerAdvancedSettingsRequest {
 	return ApiGetDefaultContainerAdvancedSettingsRequest{
@@ -545,7 +548,8 @@ func (a *ContainersAPIService) GetDefaultContainerAdvancedSettings(ctx context.C
 }
 
 // Execute executes the request
-//  @return ContainerAdvancedSettings
+//
+//	@return ContainerAdvancedSettings
 func (a *ContainersAPIService) GetDefaultContainerAdvancedSettingsExecute(r ApiGetDefaultContainerAdvancedSettingsRequest) (*ContainerAdvancedSettings, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -648,9 +652,9 @@ GetEnvironmentContainerStatus List all environment container statuses
 
 Returns a list of containers with only their id and status.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiGetEnvironmentContainerStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGetEnvironmentContainerStatusRequest
 */
 func (a *ContainersAPIService) GetEnvironmentContainerStatus(ctx context.Context, environmentId string) ApiGetEnvironmentContainerStatusRequest {
 	return ApiGetEnvironmentContainerStatusRequest{
@@ -661,7 +665,8 @@ func (a *ContainersAPIService) GetEnvironmentContainerStatus(ctx context.Context
 }
 
 // Execute executes the request
-//  @return ReferenceObjectStatusResponseList
+//
+//	@return ReferenceObjectStatusResponseList
 func (a *ContainersAPIService) GetEnvironmentContainerStatusExecute(r ApiGetEnvironmentContainerStatusRequest) (*ReferenceObjectStatusResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -763,9 +768,9 @@ func (r ApiListContainerRequest) Execute() (*ContainerResponseList, *http.Respon
 /*
 ListContainer List containers
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param environmentId Environment ID
- @return ApiListContainerRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiListContainerRequest
 */
 func (a *ContainersAPIService) ListContainer(ctx context.Context, environmentId string) ApiListContainerRequest {
 	return ApiListContainerRequest{
@@ -776,7 +781,8 @@ func (a *ContainersAPIService) ListContainer(ctx context.Context, environmentId 
 }
 
 // Execute executes the request
-//  @return ContainerResponseList
+//
+//	@return ContainerResponseList
 func (a *ContainersAPIService) ListContainerExecute(r ApiListContainerRequest) (*ContainerResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -888,10 +894,9 @@ Triggers a new container preview for each environment matching the following con
 - preview environment feature should be enabled for the container
 - the container should have the same image name and a different tag
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiPreviewContainerEnvironmentsRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiPreviewContainerEnvironmentsRequest
 */
 func (a *ContainersAPIService) PreviewContainerEnvironments(ctx context.Context, organizationId string) ApiPreviewContainerEnvironmentsRequest {
 	return ApiPreviewContainerEnvironmentsRequest{
@@ -902,7 +907,8 @@ func (a *ContainersAPIService) PreviewContainerEnvironments(ctx context.Context,
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ContainersAPIService) PreviewContainerEnvironmentsExecute(r ApiPreviewContainerEnvironmentsRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost

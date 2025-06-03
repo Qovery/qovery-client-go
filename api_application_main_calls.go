@@ -38,9 +38,9 @@ DeleteApplication Delete application
 
 To delete the application you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiDeleteApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiDeleteApplicationRequest
 */
 func (a *ApplicationMainCallsAPIService) DeleteApplication(ctx context.Context, applicationId string) ApiDeleteApplicationRequest {
 	return ApiDeleteApplicationRequest{
@@ -152,10 +152,9 @@ EditApplication Edit application
 - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
 - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
 
-
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiEditApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiEditApplicationRequest
 */
 func (a *ApplicationMainCallsAPIService) EditApplication(ctx context.Context, applicationId string) ApiEditApplicationRequest {
 	return ApiEditApplicationRequest{
@@ -166,7 +165,8 @@ func (a *ApplicationMainCallsAPIService) EditApplication(ctx context.Context, ap
 }
 
 // Execute executes the request
-//  @return Application
+//
+//	@return Application
 func (a *ApplicationMainCallsAPIService) EditApplicationExecute(r ApiEditApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -270,9 +270,9 @@ func (r ApiGetApplicationRequest) Execute() (*Application, *http.Response, error
 /*
 GetApplication Get application by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiGetApplicationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiGetApplicationRequest
 */
 func (a *ApplicationMainCallsAPIService) GetApplication(ctx context.Context, applicationId string) ApiGetApplicationRequest {
 	return ApiGetApplicationRequest{
@@ -283,7 +283,8 @@ func (a *ApplicationMainCallsAPIService) GetApplication(ctx context.Context, app
 }
 
 // Execute executes the request
-//  @return Application
+//
+//	@return Application
 func (a *ApplicationMainCallsAPIService) GetApplicationExecute(r ApiGetApplicationRequest) (*Application, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -385,9 +386,9 @@ func (r ApiGetApplicationStatusRequest) Execute() (*Status, *http.Response, erro
 /*
 GetApplicationStatus Get application status
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiGetApplicationStatusRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiGetApplicationStatusRequest
 */
 func (a *ApplicationMainCallsAPIService) GetApplicationStatus(ctx context.Context, applicationId string) ApiGetApplicationStatusRequest {
 	return ApiGetApplicationStatusRequest{
@@ -398,7 +399,8 @@ func (a *ApplicationMainCallsAPIService) GetApplicationStatus(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return Status
+//
+//	@return Status
 func (a *ApplicationMainCallsAPIService) GetApplicationStatusExecute(r ApiGetApplicationStatusRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -516,9 +518,9 @@ ListApplicationCommit List last commits
 
 Returns list of the last 100 commits made on the repository linked to the application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationCommitRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationCommitRequest
 */
 func (a *ApplicationMainCallsAPIService) ListApplicationCommit(ctx context.Context, applicationId string) ApiListApplicationCommitRequest {
 	return ApiListApplicationCommitRequest{
@@ -529,7 +531,8 @@ func (a *ApplicationMainCallsAPIService) ListApplicationCommit(ctx context.Conte
 }
 
 // Execute executes the request
-//  @return CommitResponseList
+//
+//	@return CommitResponseList
 func (a *ApplicationMainCallsAPIService) ListApplicationCommitExecute(r ApiListApplicationCommitRequest) (*CommitResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -637,9 +640,9 @@ func (r ApiListApplicationContributorRequest) Execute() (*UserResponseList, *htt
 /*
 ListApplicationContributor List contributors
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationContributorRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationContributorRequest
 */
 func (a *ApplicationMainCallsAPIService) ListApplicationContributor(ctx context.Context, applicationId string) ApiListApplicationContributorRequest {
 	return ApiListApplicationContributorRequest{
@@ -650,7 +653,8 @@ func (a *ApplicationMainCallsAPIService) ListApplicationContributor(ctx context.
 }
 
 // Execute executes the request
-//  @return UserResponseList
+//
+//	@return UserResponseList
 func (a *ApplicationMainCallsAPIService) ListApplicationContributorExecute(r ApiListApplicationContributorRequest) (*UserResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -754,9 +758,9 @@ ListApplicationLinks List all URLs of the application
 
 This will return all the custom domains and Qovery autogenerated domain for the given application
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param applicationId Application ID
- @return ApiListApplicationLinksRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param applicationId Application ID
+	@return ApiListApplicationLinksRequest
 */
 func (a *ApplicationMainCallsAPIService) ListApplicationLinks(ctx context.Context, applicationId string) ApiListApplicationLinksRequest {
 	return ApiListApplicationLinksRequest{
@@ -767,7 +771,8 @@ func (a *ApplicationMainCallsAPIService) ListApplicationLinks(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return LinkResponseList
+//
+//	@return LinkResponseList
 func (a *ApplicationMainCallsAPIService) ListApplicationLinksExecute(r ApiListApplicationLinksRequest) (*LinkResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

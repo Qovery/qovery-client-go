@@ -102,7 +102,7 @@ import (
 )
 
 func main() {
-	environmentId := "environmentId_example" // string | 
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	terraformRequest := *openapiclient.NewTerraformRequest("Name_example", "Description_example", false, false, openapiclient.TerraformRequest_terraform_files_source{TerraformRequestTerraformFilesSourceOneOf: openapiclient.NewTerraformRequestTerraformFilesSourceOneOf()}, *openapiclient.NewTerraformVariablesSourceRequest([]string{"TfVarFilePaths_example"}, [][]string{[]string{"TfVars_example"}}), "Provider_example", *openapiclient.NewTerraformProviderVersion(false), *openapiclient.NewTerraformRequestJobResources(int32(123), int32(123), int32(123))) // TerraformRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -231,7 +231,7 @@ import (
 )
 
 func main() {
-	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -251,7 +251,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**environmentId** | **string** | Environment ID | 
+**environmentId** | **string** |  | 
 
 ### Other Parameters
 

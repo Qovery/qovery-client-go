@@ -44,9 +44,9 @@ CreateOrganizationCustomRole Create an organization custom role
 
 Create an organization custom role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateOrganizationCustomRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateOrganizationCustomRoleRequest
 */
 func (a *OrganizationCustomRoleAPIService) CreateOrganizationCustomRole(ctx context.Context, organizationId string) ApiCreateOrganizationCustomRoleRequest {
 	return ApiCreateOrganizationCustomRoleRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationCustomRoleAPIService) CreateOrganizationCustomRole(ctx cont
 }
 
 // Execute executes the request
-//  @return OrganizationCustomRole
+//
+//	@return OrganizationCustomRole
 func (a *OrganizationCustomRoleAPIService) CreateOrganizationCustomRoleExecute(r ApiCreateOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -164,10 +165,10 @@ DeleteOrganizationCustomRole Delete organization custom role
 
 Delete organization custom role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param customRoleId Custom Role ID
- @return ApiDeleteOrganizationCustomRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param customRoleId Custom Role ID
+	@return ApiDeleteOrganizationCustomRoleRequest
 */
 func (a *OrganizationCustomRoleAPIService) DeleteOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiDeleteOrganizationCustomRoleRequest {
 	return ApiDeleteOrganizationCustomRoleRequest{
@@ -280,10 +281,10 @@ EditOrganizationCustomRole Edit an organization custom role
 
 Edit an organization custom role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param customRoleId Custom Role ID
- @return ApiEditOrganizationCustomRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param customRoleId Custom Role ID
+	@return ApiEditOrganizationCustomRoleRequest
 */
 func (a *OrganizationCustomRoleAPIService) EditOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiEditOrganizationCustomRoleRequest {
 	return ApiEditOrganizationCustomRoleRequest{
@@ -295,7 +296,8 @@ func (a *OrganizationCustomRoleAPIService) EditOrganizationCustomRole(ctx contex
 }
 
 // Execute executes the request
-//  @return OrganizationCustomRole
+//
+//	@return OrganizationCustomRole
 func (a *OrganizationCustomRoleAPIService) EditOrganizationCustomRoleExecute(r ApiEditOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -403,10 +405,10 @@ GetOrganizationCustomRole Get an organization custom role
 
 Get an organization custom role
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param customRoleId Custom Role ID
- @return ApiGetOrganizationCustomRoleRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param customRoleId Custom Role ID
+	@return ApiGetOrganizationCustomRoleRequest
 */
 func (a *OrganizationCustomRoleAPIService) GetOrganizationCustomRole(ctx context.Context, organizationId string, customRoleId string) ApiGetOrganizationCustomRoleRequest {
 	return ApiGetOrganizationCustomRoleRequest{
@@ -418,7 +420,8 @@ func (a *OrganizationCustomRoleAPIService) GetOrganizationCustomRole(ctx context
 }
 
 // Execute executes the request
-//  @return OrganizationCustomRole
+//
+//	@return OrganizationCustomRole
 func (a *OrganizationCustomRoleAPIService) GetOrganizationCustomRoleExecute(r ApiGetOrganizationCustomRoleRequest) (*OrganizationCustomRole, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -523,9 +526,9 @@ ListOrganizationCustomRoles List organization custom roles
 
 List organization custom roles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationCustomRolesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationCustomRolesRequest
 */
 func (a *OrganizationCustomRoleAPIService) ListOrganizationCustomRoles(ctx context.Context, organizationId string) ApiListOrganizationCustomRolesRequest {
 	return ApiListOrganizationCustomRolesRequest{
@@ -536,7 +539,8 @@ func (a *OrganizationCustomRoleAPIService) ListOrganizationCustomRoles(ctx conte
 }
 
 // Execute executes the request
-//  @return OrganizationCustomRoleList
+//
+//	@return OrganizationCustomRoleList
 func (a *OrganizationCustomRoleAPIService) ListOrganizationCustomRolesExecute(r ApiListOrganizationCustomRolesRequest) (*OrganizationCustomRoleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

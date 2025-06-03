@@ -44,9 +44,9 @@ CreateGitToken Create a git token
 
 Create a new git token to be used as a git provider by a service
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiCreateGitTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateGitTokenRequest
 */
 func (a *OrganizationMainCallsAPIService) CreateGitToken(ctx context.Context, organizationId string) ApiCreateGitTokenRequest {
 	return ApiCreateGitTokenRequest{
@@ -57,7 +57,8 @@ func (a *OrganizationMainCallsAPIService) CreateGitToken(ctx context.Context, or
 }
 
 // Execute executes the request
-//  @return GitTokenResponse
+//
+//	@return GitTokenResponse
 func (a *OrganizationMainCallsAPIService) CreateGitTokenExecute(r ApiCreateGitTokenRequest) (*GitTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -166,8 +167,8 @@ func (r ApiCreateOrganizationRequest) Execute() (*Organization, *http.Response, 
 /*
 CreateOrganization Create an organization
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiCreateOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiCreateOrganizationRequest
 */
 func (a *OrganizationMainCallsAPIService) CreateOrganization(ctx context.Context) ApiCreateOrganizationRequest {
 	return ApiCreateOrganizationRequest{
@@ -177,7 +178,8 @@ func (a *OrganizationMainCallsAPIService) CreateOrganization(ctx context.Context
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationMainCallsAPIService) CreateOrganizationExecute(r ApiCreateOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -281,10 +283,10 @@ func (r ApiDeleteGitTokenRequest) Execute() (*http.Response, error) {
 /*
 DeleteGitToken Delete a git token
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param gitTokenId Git Token ID
- @return ApiDeleteGitTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param gitTokenId Git Token ID
+	@return ApiDeleteGitTokenRequest
 */
 func (a *OrganizationMainCallsAPIService) DeleteGitToken(ctx context.Context, organizationId string, gitTokenId string) ApiDeleteGitTokenRequest {
 	return ApiDeleteGitTokenRequest{
@@ -390,9 +392,9 @@ DeleteOrganization Delete an organization
 
 To delete an organization you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiDeleteOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiDeleteOrganizationRequest
 */
 func (a *OrganizationMainCallsAPIService) DeleteOrganization(ctx context.Context, organizationId string) ApiDeleteOrganizationRequest {
 	return ApiDeleteOrganizationRequest{
@@ -501,10 +503,10 @@ func (r ApiEditGitTokenRequest) Execute() (*GitTokenResponse, *http.Response, er
 /*
 EditGitToken Edit a git token
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param gitTokenId Git Token ID
- @return ApiEditGitTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param gitTokenId Git Token ID
+	@return ApiEditGitTokenRequest
 */
 func (a *OrganizationMainCallsAPIService) EditGitToken(ctx context.Context, organizationId string, gitTokenId string) ApiEditGitTokenRequest {
 	return ApiEditGitTokenRequest{
@@ -516,7 +518,8 @@ func (a *OrganizationMainCallsAPIService) EditGitToken(ctx context.Context, orga
 }
 
 // Execute executes the request
-//  @return GitTokenResponse
+//
+//	@return GitTokenResponse
 func (a *OrganizationMainCallsAPIService) EditGitTokenExecute(r ApiEditGitTokenRequest) (*GitTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -629,9 +632,9 @@ EditOrganization Edit an organization
 
 To edit an organization you must have the admin permission
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiEditOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiEditOrganizationRequest
 */
 func (a *OrganizationMainCallsAPIService) EditOrganization(ctx context.Context, organizationId string) ApiEditOrganizationRequest {
 	return ApiEditOrganizationRequest{
@@ -642,7 +645,8 @@ func (a *OrganizationMainCallsAPIService) EditOrganization(ctx context.Context, 
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationMainCallsAPIService) EditOrganizationExecute(r ApiEditOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -749,10 +753,10 @@ GetContainerRegistryAssociatedServices Get organization container registry assoc
 
 Get organization container registry associated services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId
- @param containerRegistryId
- @return ApiGetContainerRegistryAssociatedServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId
+	@param containerRegistryId
+	@return ApiGetContainerRegistryAssociatedServicesRequest
 */
 func (a *OrganizationMainCallsAPIService) GetContainerRegistryAssociatedServices(ctx context.Context, organizationId string, containerRegistryId string) ApiGetContainerRegistryAssociatedServicesRequest {
 	return ApiGetContainerRegistryAssociatedServicesRequest{
@@ -764,7 +768,8 @@ func (a *OrganizationMainCallsAPIService) GetContainerRegistryAssociatedServices
 }
 
 // Execute executes the request
-//  @return ContainerRegistryAssociatedServicesResponseList
+//
+//	@return ContainerRegistryAssociatedServicesResponseList
 func (a *OrganizationMainCallsAPIService) GetContainerRegistryAssociatedServicesExecute(r ApiGetContainerRegistryAssociatedServicesRequest) (*ContainerRegistryAssociatedServicesResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -870,10 +875,10 @@ GetGitTokenAssociatedServices Get organization git token associated services
 
 Get organization git tokens associated services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param gitTokenId Git Token ID
- @return ApiGetGitTokenAssociatedServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param gitTokenId Git Token ID
+	@return ApiGetGitTokenAssociatedServicesRequest
 */
 func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServices(ctx context.Context, organizationId string, gitTokenId string) ApiGetGitTokenAssociatedServicesRequest {
 	return ApiGetGitTokenAssociatedServicesRequest{
@@ -885,7 +890,8 @@ func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServices(ctx cont
 }
 
 // Execute executes the request
-//  @return GitTokenAssociatedServicesResponseList
+//
+//	@return GitTokenAssociatedServicesResponseList
 func (a *OrganizationMainCallsAPIService) GetGitTokenAssociatedServicesExecute(r ApiGetGitTokenAssociatedServicesRequest) (*GitTokenAssociatedServicesResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -991,10 +997,10 @@ GetHelmRepositoryAssociatedServices Get organization helm repository associated 
 
 Get organization helm repository associated services
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId
- @param helmRepositoryId
- @return ApiGetHelmRepositoryAssociatedServicesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId
+	@param helmRepositoryId
+	@return ApiGetHelmRepositoryAssociatedServicesRequest
 */
 func (a *OrganizationMainCallsAPIService) GetHelmRepositoryAssociatedServices(ctx context.Context, organizationId string, helmRepositoryId string) ApiGetHelmRepositoryAssociatedServicesRequest {
 	return ApiGetHelmRepositoryAssociatedServicesRequest{
@@ -1006,7 +1012,8 @@ func (a *OrganizationMainCallsAPIService) GetHelmRepositoryAssociatedServices(ct
 }
 
 // Execute executes the request
-//  @return HelmRepositoryAssociatedServicesResponseList
+//
+//	@return HelmRepositoryAssociatedServicesResponseList
 func (a *OrganizationMainCallsAPIService) GetHelmRepositoryAssociatedServicesExecute(r ApiGetHelmRepositoryAssociatedServicesRequest) (*HelmRepositoryAssociatedServicesResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1109,9 +1116,9 @@ func (r ApiGetOrganizationRequest) Execute() (*Organization, *http.Response, err
 /*
 GetOrganization Get organization by ID
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiGetOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiGetOrganizationRequest
 */
 func (a *OrganizationMainCallsAPIService) GetOrganization(ctx context.Context, organizationId string) ApiGetOrganizationRequest {
 	return ApiGetOrganizationRequest{
@@ -1122,7 +1129,8 @@ func (a *OrganizationMainCallsAPIService) GetOrganization(ctx context.Context, o
 }
 
 // Execute executes the request
-//  @return Organization
+//
+//	@return Organization
 func (a *OrganizationMainCallsAPIService) GetOrganizationExecute(r ApiGetOrganizationRequest) (*Organization, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1227,10 +1235,10 @@ GetOrganizationGitToken Get organization git token
 
 Get organization git token
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @param gitTokenId Git Token ID
- @return ApiGetOrganizationGitTokenRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param gitTokenId Git Token ID
+	@return ApiGetOrganizationGitTokenRequest
 */
 func (a *OrganizationMainCallsAPIService) GetOrganizationGitToken(ctx context.Context, organizationId string, gitTokenId string) ApiGetOrganizationGitTokenRequest {
 	return ApiGetOrganizationGitTokenRequest{
@@ -1242,7 +1250,8 @@ func (a *OrganizationMainCallsAPIService) GetOrganizationGitToken(ctx context.Co
 }
 
 // Execute executes the request
-//  @return GitTokenResponse
+//
+//	@return GitTokenResponse
 func (a *OrganizationMainCallsAPIService) GetOrganizationGitTokenExecute(r ApiGetOrganizationGitTokenRequest) (*GitTokenResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1344,8 +1353,8 @@ func (r ApiListOrganizationRequest) Execute() (*OrganizationResponseList, *http.
 /*
 ListOrganization List user organizations
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiListOrganizationRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListOrganizationRequest
 */
 func (a *OrganizationMainCallsAPIService) ListOrganization(ctx context.Context) ApiListOrganizationRequest {
 	return ApiListOrganizationRequest{
@@ -1355,7 +1364,8 @@ func (a *OrganizationMainCallsAPIService) ListOrganization(ctx context.Context) 
 }
 
 // Execute executes the request
-//  @return OrganizationResponseList
+//
+//	@return OrganizationResponseList
 func (a *OrganizationMainCallsAPIService) ListOrganizationExecute(r ApiListOrganizationRequest) (*OrganizationResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1458,9 +1468,9 @@ ListOrganizationAvailableRoles List organization available roles
 
 List organization available roles
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationAvailableRolesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationAvailableRolesRequest
 */
 func (a *OrganizationMainCallsAPIService) ListOrganizationAvailableRoles(ctx context.Context, organizationId string) ApiListOrganizationAvailableRolesRequest {
 	return ApiListOrganizationAvailableRolesRequest{
@@ -1471,7 +1481,8 @@ func (a *OrganizationMainCallsAPIService) ListOrganizationAvailableRoles(ctx con
 }
 
 // Execute executes the request
-//  @return OrganizationAvailableRoleList
+//
+//	@return OrganizationAvailableRoleList
 func (a *OrganizationMainCallsAPIService) ListOrganizationAvailableRolesExecute(r ApiListOrganizationAvailableRolesRequest) (*OrganizationAvailableRoleList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1575,9 +1586,9 @@ ListOrganizationGitTokens List organization git tokens
 
 List organization git tokens
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId Organization ID
- @return ApiListOrganizationGitTokensRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListOrganizationGitTokensRequest
 */
 func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokens(ctx context.Context, organizationId string) ApiListOrganizationGitTokensRequest {
 	return ApiListOrganizationGitTokensRequest{
@@ -1588,7 +1599,8 @@ func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokens(ctx context.
 }
 
 // Execute executes the request
-//  @return GitTokenResponseList
+//
+//	@return GitTokenResponseList
 func (a *OrganizationMainCallsAPIService) ListOrganizationGitTokensExecute(r ApiListOrganizationGitTokensRequest) (*GitTokenResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -1708,9 +1720,9 @@ func (r ApiListServicesByOrganizationIdRequest) Execute() (*ListServicesByOrgani
 /*
 ListServicesByOrganizationId List Services By OrganizationId
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @param organizationId
- @return ApiListServicesByOrganizationIdRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId
+	@return ApiListServicesByOrganizationIdRequest
 */
 func (a *OrganizationMainCallsAPIService) ListServicesByOrganizationId(ctx context.Context, organizationId string) ApiListServicesByOrganizationIdRequest {
 	return ApiListServicesByOrganizationIdRequest{
@@ -1721,7 +1733,8 @@ func (a *OrganizationMainCallsAPIService) ListServicesByOrganizationId(ctx conte
 }
 
 // Execute executes the request
-//  @return ListServicesByOrganizationId200Response
+//
+//	@return ListServicesByOrganizationId200Response
 func (a *OrganizationMainCallsAPIService) ListServicesByOrganizationIdExecute(r ApiListServicesByOrganizationIdRequest) (*ListServicesByOrganizationId200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

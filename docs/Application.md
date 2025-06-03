@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
-**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the application. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
-**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -331,16 +331,6 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
-### SetDockerfilePathNil
-
-`func (o *Application) SetDockerfilePathNil(b bool)`
-
- SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
-
-### UnsetDockerfilePath
-`func (o *Application) UnsetDockerfilePath()`
-
-UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetCpu
 
 `func (o *Application) GetCpu() int32`
@@ -701,16 +691,6 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
-### SetDockerTargetBuildStageNil
-
-`func (o *Application) SetDockerTargetBuildStageNil(b bool)`
-
- SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
-
-### UnsetDockerTargetBuildStage
-`func (o *Application) UnsetDockerTargetBuildStage()`
-
-UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
