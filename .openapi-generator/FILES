@@ -505,6 +505,7 @@ docs/JobResponseList.md
 docs/JobScheduleEvent.md
 docs/JobSecretAPI.md
 docs/JobSourceDockerResponse.md
+docs/JobTypeEnum.md
 docs/JobsAPI.md
 docs/KapsuleInfrastructureOutputs.md
 docs/KarpenterDefaultNodePoolOverride.md
@@ -1114,6 +1115,7 @@ model_job_response.go
 model_job_response_list.go
 model_job_schedule_event.go
 model_job_source_docker_response.go
+model_job_type_enum.go
 model_kapsule_infrastructure_outputs.go
 model_karpenter_default_node_pool_override.go
 model_karpenter_node_pool.go

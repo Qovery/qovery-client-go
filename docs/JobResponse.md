@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **IconUri** | **string** | Icon URI representing the job. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
-**JobType** | **string** |  | 
+**JobType** | [**JobTypeEnum**](JobTypeEnum.md) |  | 
 **Schedule** | [**CronJobResponseAllOfSchedule**](CronJobResponseAllOfSchedule.md) |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
@@ -32,7 +32,7 @@ Name | Type | Description | Notes
 
 ### NewJobResponse
 
-`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType string, schedule CronJobResponseAllOfSchedule, ) *JobResponse`
+`func NewJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType JobTypeEnum, schedule CronJobResponseAllOfSchedule, ) *JobResponse`
 
 NewJobResponse instantiates a new JobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -469,20 +469,20 @@ SetServiceType sets ServiceType field to given value.
 
 ### GetJobType
 
-`func (o *JobResponse) GetJobType() string`
+`func (o *JobResponse) GetJobType() JobTypeEnum`
 
 GetJobType returns the JobType field if non-nil, zero value otherwise.
 
 ### GetJobTypeOk
 
-`func (o *JobResponse) GetJobTypeOk() (*string, bool)`
+`func (o *JobResponse) GetJobTypeOk() (*JobTypeEnum, bool)`
 
 GetJobTypeOk returns a tuple with the JobType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetJobType
 
-`func (o *JobResponse) SetJobType(v string)`
+`func (o *JobResponse) SetJobType(v JobTypeEnum)`
 
 SetJobType sets JobType field to given value.
 

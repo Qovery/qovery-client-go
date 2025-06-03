@@ -31034,14 +31034,18 @@ components:
       - HELM
       - TERRAFORM
       type: string
+    JobTypeEnum:
+      description: type of job
+      enum:
+      - LIFECYCLE
+      - CRON
+      type: string
     LifecycleJobResponse:
       allOf:
       - $ref: '#/components/schemas/BaseJobResponse'
       - properties:
           job_type:
-            enum:
-            - LIFECYCLE
-            type: string
+            $ref: '#/components/schemas/JobTypeEnum'
           schedule:
             $ref: '#/components/schemas/LifecycleJobResponse_allOf_schedule'
           annotations_groups:
@@ -31196,9 +31200,7 @@ components:
       - $ref: '#/components/schemas/BaseJobResponse'
       - properties:
           job_type:
-            enum:
-            - CRON
-            type: string
+            $ref: '#/components/schemas/JobTypeEnum'
           schedule:
             $ref: '#/components/schemas/CronJobResponse_allOf_schedule'
           annotations_groups:

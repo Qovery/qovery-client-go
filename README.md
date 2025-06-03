@@ -894,6 +894,7 @@ Class | Method | HTTP request | Description
  - [JobResponseList](docs/JobResponseList.md)
  - [JobScheduleEvent](docs/JobScheduleEvent.md)
  - [JobSourceDockerResponse](docs/JobSourceDockerResponse.md)
+ - [JobTypeEnum](docs/JobTypeEnum.md)
  - [KapsuleInfrastructureOutputs](docs/KapsuleInfrastructureOutputs.md)
  - [KarpenterDefaultNodePoolOverride](docs/KarpenterDefaultNodePoolOverride.md)
  - [KarpenterNodePool](docs/KarpenterNodePool.md)

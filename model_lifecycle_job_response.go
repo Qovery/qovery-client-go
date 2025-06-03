@@ -52,7 +52,7 @@ type LifecycleJobResponse struct {
 	// Icon URI representing the job.
 	IconUri              string                                 `json:"icon_uri"`
 	ServiceType          ServiceTypeEnum                        `json:"service_type"`
-	JobType              string                                 `json:"job_type"`
+	JobType              JobTypeEnum                            `json:"job_type"`
 	Schedule             LifecycleJobResponseAllOfSchedule      `json:"schedule"`
 	AnnotationsGroups    []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups         []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
@@ -65,7 +65,7 @@ type _LifecycleJobResponse LifecycleJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType string, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
+func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType JobTypeEnum, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
 	this := LifecycleJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -609,9 +609,9 @@ func (o *LifecycleJobResponse) SetServiceType(v ServiceTypeEnum) {
 }
 
 // GetJobType returns the JobType field value
-func (o *LifecycleJobResponse) GetJobType() string {
+func (o *LifecycleJobResponse) GetJobType() JobTypeEnum {
 	if o == nil {
-		var ret string
+		var ret JobTypeEnum
 		return ret
 	}
 
@@ -620,7 +620,7 @@ func (o *LifecycleJobResponse) GetJobType() string {
 
 // GetJobTypeOk returns a tuple with the JobType field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleJobResponse) GetJobTypeOk() (*string, bool) {
+func (o *LifecycleJobResponse) GetJobTypeOk() (*JobTypeEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -628,7 +628,7 @@ func (o *LifecycleJobResponse) GetJobTypeOk() (*string, bool) {
 }
 
 // SetJobType sets field value
-func (o *LifecycleJobResponse) SetJobType(v string) {
+func (o *LifecycleJobResponse) SetJobType(v JobTypeEnum) {
 	o.JobType = v
 }
 
