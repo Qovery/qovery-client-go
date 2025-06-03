@@ -23,7 +23,7 @@ var _ MappedNullable = &TerraformRequestJobResources{}
 type TerraformRequestJobResources struct {
 	CpuMilli             int32 `json:"cpu_milli"`
 	RamMib               int32 `json:"ram_mib"`
-	StorageGb            int32 `json:"storage_gb"`
+	StorageGib           int32 `json:"storage_gib"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,11 +33,11 @@ type _TerraformRequestJobResources TerraformRequestJobResources
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequestJobResources(cpuMilli int32, ramMib int32, storageGb int32) *TerraformRequestJobResources {
+func NewTerraformRequestJobResources(cpuMilli int32, ramMib int32, storageGib int32) *TerraformRequestJobResources {
 	this := TerraformRequestJobResources{}
 	this.CpuMilli = cpuMilli
 	this.RamMib = ramMib
-	this.StorageGb = storageGb
+	this.StorageGib = storageGib
 	return &this
 }
 
@@ -97,28 +97,28 @@ func (o *TerraformRequestJobResources) SetRamMib(v int32) {
 	o.RamMib = v
 }
 
-// GetStorageGb returns the StorageGb field value
-func (o *TerraformRequestJobResources) GetStorageGb() int32 {
+// GetStorageGib returns the StorageGib field value
+func (o *TerraformRequestJobResources) GetStorageGib() int32 {
 	if o == nil {
 		var ret int32
 		return ret
 	}
 
-	return o.StorageGb
+	return o.StorageGib
 }
 
-// GetStorageGbOk returns a tuple with the StorageGb field value
+// GetStorageGibOk returns a tuple with the StorageGib field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequestJobResources) GetStorageGbOk() (*int32, bool) {
+func (o *TerraformRequestJobResources) GetStorageGibOk() (*int32, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.StorageGb, true
+	return &o.StorageGib, true
 }
 
-// SetStorageGb sets field value
-func (o *TerraformRequestJobResources) SetStorageGb(v int32) {
-	o.StorageGb = v
+// SetStorageGib sets field value
+func (o *TerraformRequestJobResources) SetStorageGib(v int32) {
+	o.StorageGib = v
 }
 
 func (o TerraformRequestJobResources) MarshalJSON() ([]byte, error) {
@@ -133,7 +133,7 @@ func (o TerraformRequestJobResources) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cpu_milli"] = o.CpuMilli
 	toSerialize["ram_mib"] = o.RamMib
-	toSerialize["storage_gb"] = o.StorageGb
+	toSerialize["storage_gib"] = o.StorageGib
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -149,7 +149,7 @@ func (o *TerraformRequestJobResources) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"cpu_milli",
 		"ram_mib",
-		"storage_gb",
+		"storage_gib",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -181,7 +181,7 @@ func (o *TerraformRequestJobResources) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "cpu_milli")
 		delete(additionalProperties, "ram_mib")
-		delete(additionalProperties, "storage_gb")
+		delete(additionalProperties, "storage_gib")
 		o.AdditionalProperties = additionalProperties
 	}
 

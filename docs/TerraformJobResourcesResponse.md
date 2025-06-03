@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CpuMilli** | **int32** |  | 
 **RamMib** | **int32** |  | 
-**StorageGb** | **int32** |  | 
+**StorageGib** | **int32** |  | 
 
 ## Methods
 
 ### NewTerraformJobResourcesResponse
 
-`func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, storageGb int32, ) *TerraformJobResourcesResponse`
+`func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, storageGib int32, ) *TerraformJobResourcesResponse`
 
 NewTerraformJobResourcesResponse instantiates a new TerraformJobResourcesResponse object
 This constructor will assign default values to properties that have it defined,
@@ -67,24 +67,24 @@ and a boolean to check if the value has been set.
 SetRamMib sets RamMib field to given value.
 
 
-### GetStorageGb
+### GetStorageGib
 
-`func (o *TerraformJobResourcesResponse) GetStorageGb() int32`
+`func (o *TerraformJobResourcesResponse) GetStorageGib() int32`
 
-GetStorageGb returns the StorageGb field if non-nil, zero value otherwise.
+GetStorageGib returns the StorageGib field if non-nil, zero value otherwise.
 
-### GetStorageGbOk
+### GetStorageGibOk
 
-`func (o *TerraformJobResourcesResponse) GetStorageGbOk() (*int32, bool)`
+`func (o *TerraformJobResourcesResponse) GetStorageGibOk() (*int32, bool)`
 
-GetStorageGbOk returns a tuple with the StorageGb field if it's non-nil, zero value otherwise
+GetStorageGibOk returns a tuple with the StorageGib field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetStorageGb
+### SetStorageGib
 
-`func (o *TerraformJobResourcesResponse) SetStorageGb(v int32)`
+`func (o *TerraformJobResourcesResponse) SetStorageGib(v int32)`
 
-SetStorageGb sets StorageGb field to given value.
+SetStorageGib sets StorageGib field to given value.
 
 
 

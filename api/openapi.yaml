@@ -28508,9 +28508,9 @@ components:
             - tf_vars
         auto_deploy: true
         job_resources:
-          storage_gb: 1
           cpu_milli: 0
           ram_mib: 6
+          storage_gib: 1
         provider: Terraform
         timeout_sec: timeout_sec
         name: name
@@ -28635,9 +28635,9 @@ components:
       example:
         auto_deploy: true
         job_resources:
-          storage_gb: 5
           cpu_milli: 6
           ram_mib: 1
+          storage_gib: 5
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         provider_version:
@@ -28665,9 +28665,9 @@ components:
         terraform_files_source: null
     TerraformRequestJobResources:
       example:
-        storage_gb: 1
         cpu_milli: 0
         ram_mib: 6
+        storage_gib: 1
       properties:
         cpu_milli:
           type: integer
@@ -28677,14 +28677,14 @@ components:
           type: integer
           x-stoplight:
             id: a5y9bv1avatm3
-        storage_gb:
+        storage_gib:
           type: integer
           x-stoplight:
             id: 627awhyjj26ny
       required:
       - cpu_milli
       - ram_mib
-      - storage_gb
+      - storage_gib
       title: TerraformRequestJobResources
       x-stoplight:
         id: ucc7l63gajzu8
@@ -28818,9 +28818,9 @@ components:
         id: 2lr1mv2b3y7xy
     TerraformJobResourcesResponse:
       example:
-        storage_gb: 5
         cpu_milli: 6
         ram_mib: 1
+        storage_gib: 5
       properties:
         cpu_milli:
           type: integer
@@ -28830,14 +28830,14 @@ components:
           type: integer
           x-stoplight:
             id: f6dur44ah2bwe
-        storage_gb:
+        storage_gib:
           type: integer
           x-stoplight:
             id: dsf78pwnvmqi8
       required:
       - cpu_milli
       - ram_mib
-      - storage_gb
+      - storage_gib
       title: TerraformJobResourcesResponse
       x-stoplight:
         id: xhswkmfwyerrv
@@ -28846,9 +28846,9 @@ components:
         id:
         - auto_deploy: true
           job_resources:
-            storage_gb: 5
             cpu_milli: 6
             ram_mib: 1
+            storage_gib: 5
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           provider_version:
@@ -28876,9 +28876,9 @@ components:
           terraform_files_source: null
         - auto_deploy: true
           job_resources:
-            storage_gb: 5
             cpu_milli: 6
             ram_mib: 1
+            storage_gib: 5
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           provider_version:
