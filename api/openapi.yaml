@@ -16101,7 +16101,7 @@ paths:
       summary: Deploy terraform
       tags:
       - Terraform Actions
-  '/defaultTerraformAdvancedSettings:':
+  /defaultTerraformAdvancedSettings:
     get:
       operationId: getDefaultTerraformAdvancedSettings
       responses:

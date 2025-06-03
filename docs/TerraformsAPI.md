@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CloneTerraform**](TerraformsAPI.md#CloneTerraform) | **Post** /terraform/{terraformId}/clone | Clone terraform
 [**CreateTerraform**](TerraformsAPI.md#CreateTerraform) | **Post** /environment/{environmentId}/terraform | Create a terraform
-[**GetDefaultTerraformAdvancedSettings**](TerraformsAPI.md#GetDefaultTerraformAdvancedSettings) | **Get** /defaultTerraformAdvancedSettings: | List default terraform advanced settings
+[**GetDefaultTerraformAdvancedSettings**](TerraformsAPI.md#GetDefaultTerraformAdvancedSettings) | **Get** /defaultTerraformAdvancedSettings | List default terraform advanced settings
 [**ListTerraforms**](TerraformsAPI.md#ListTerraforms) | **Get** /environment/{environmentId}/terraform | List terraforms
 
 
