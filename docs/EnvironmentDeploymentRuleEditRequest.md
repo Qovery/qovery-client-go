@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **OnDemandPreview** | Pointer to **bool** |  | [optional] [default to false]
-**AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **AutoPreview** | Pointer to **bool** |  | [optional] [default to false]
+**AutoStop** | Pointer to **bool** |  | [optional] [default to false]
 **Timezone** | **string** |  | 
 **StartTime** | **time.Time** |  | 
 **StopTime** | **time.Time** |  | 
@@ -56,31 +56,6 @@ SetOnDemandPreview sets OnDemandPreview field to given value.
 
 HasOnDemandPreview returns a boolean if a field has been set.
 
-### GetAutoStop
-
-`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool`
-
-GetAutoStop returns the AutoStop field if non-nil, zero value otherwise.
-
-### GetAutoStopOk
-
-`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStopOk() (*bool, bool)`
-
-GetAutoStopOk returns a tuple with the AutoStop field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoStop
-
-`func (o *EnvironmentDeploymentRuleEditRequest) SetAutoStop(v bool)`
-
-SetAutoStop sets AutoStop field to given value.
-
-### HasAutoStop
-
-`func (o *EnvironmentDeploymentRuleEditRequest) HasAutoStop() bool`
-
-HasAutoStop returns a boolean if a field has been set.
-
 ### GetAutoPreview
 
 `func (o *EnvironmentDeploymentRuleEditRequest) GetAutoPreview() bool`
@@ -105,6 +80,31 @@ SetAutoPreview sets AutoPreview field to given value.
 `func (o *EnvironmentDeploymentRuleEditRequest) HasAutoPreview() bool`
 
 HasAutoPreview returns a boolean if a field has been set.
+
+### GetAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStop() bool`
+
+GetAutoStop returns the AutoStop field if non-nil, zero value otherwise.
+
+### GetAutoStopOk
+
+`func (o *EnvironmentDeploymentRuleEditRequest) GetAutoStopOk() (*bool, bool)`
+
+GetAutoStopOk returns a tuple with the AutoStop field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) SetAutoStop(v bool)`
+
+SetAutoStop sets AutoStop field to given value.
+
+### HasAutoStop
+
+`func (o *EnvironmentDeploymentRuleEditRequest) HasAutoStop() bool`
+
+HasAutoStop returns a boolean if a field has been set.
 
 ### GetTimezone
 

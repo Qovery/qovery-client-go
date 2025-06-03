@@ -22,13 +22,13 @@ var _ MappedNullable = &OrganizationEditRequest{}
 // OrganizationEditRequest struct for OrganizationEditRequest
 type OrganizationEditRequest struct {
 	// name is case insensitive
-	Name                 string   `json:"name"`
-	Description          *string  `json:"description,omitempty"`
-	WebsiteUrl           *string  `json:"website_url,omitempty"`
-	Repository           *string  `json:"repository,omitempty"`
-	LogoUrl              *string  `json:"logo_url,omitempty"`
-	IconUrl              *string  `json:"icon_url,omitempty"`
-	AdminEmails          []string `json:"admin_emails,omitempty"`
+	Name                 string         `json:"name"`
+	Description          *string        `json:"description,omitempty"`
+	WebsiteUrl           NullableString `json:"website_url,omitempty"`
+	Repository           NullableString `json:"repository,omitempty"`
+	LogoUrl              NullableString `json:"logo_url,omitempty"`
+	IconUrl              NullableString `json:"icon_url,omitempty"`
+	AdminEmails          []string       `json:"admin_emails,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,137 +108,181 @@ func (o *OrganizationEditRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise.
+// GetWebsiteUrl returns the WebsiteUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetWebsiteUrl() string {
-	if o == nil || IsNil(o.WebsiteUrl) {
+	if o == nil || IsNil(o.WebsiteUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.WebsiteUrl
+	return *o.WebsiteUrl.Get()
 }
 
 // GetWebsiteUrlOk returns a tuple with the WebsiteUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetWebsiteUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.WebsiteUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.WebsiteUrl, true
+	return o.WebsiteUrl.Get(), o.WebsiteUrl.IsSet()
 }
 
 // HasWebsiteUrl returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasWebsiteUrl() bool {
-	if o != nil && !IsNil(o.WebsiteUrl) {
+	if o != nil && o.WebsiteUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetWebsiteUrl gets a reference to the given string and assigns it to the WebsiteUrl field.
+// SetWebsiteUrl gets a reference to the given NullableString and assigns it to the WebsiteUrl field.
 func (o *OrganizationEditRequest) SetWebsiteUrl(v string) {
-	o.WebsiteUrl = &v
+	o.WebsiteUrl.Set(&v)
 }
 
-// GetRepository returns the Repository field value if set, zero value otherwise.
+// SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
+func (o *OrganizationEditRequest) SetWebsiteUrlNil() {
+	o.WebsiteUrl.Set(nil)
+}
+
+// UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
+func (o *OrganizationEditRequest) UnsetWebsiteUrl() {
+	o.WebsiteUrl.Unset()
+}
+
+// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetRepository() string {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil || IsNil(o.Repository.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Repository
+	return *o.Repository.Get()
 }
 
 // GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetRepositoryOk() (*string, bool) {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Repository, true
+	return o.Repository.Get(), o.Repository.IsSet()
 }
 
 // HasRepository returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasRepository() bool {
-	if o != nil && !IsNil(o.Repository) {
+	if o != nil && o.Repository.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepository gets a reference to the given string and assigns it to the Repository field.
+// SetRepository gets a reference to the given NullableString and assigns it to the Repository field.
 func (o *OrganizationEditRequest) SetRepository(v string) {
-	o.Repository = &v
+	o.Repository.Set(&v)
 }
 
-// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise.
+// SetRepositoryNil sets the value for Repository to be an explicit nil
+func (o *OrganizationEditRequest) SetRepositoryNil() {
+	o.Repository.Set(nil)
+}
+
+// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
+func (o *OrganizationEditRequest) UnsetRepository() {
+	o.Repository.Unset()
+}
+
+// GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetLogoUrl() string {
-	if o == nil || IsNil(o.LogoUrl) {
+	if o == nil || IsNil(o.LogoUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LogoUrl
+	return *o.LogoUrl.Get()
 }
 
 // GetLogoUrlOk returns a tuple with the LogoUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetLogoUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.LogoUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LogoUrl, true
+	return o.LogoUrl.Get(), o.LogoUrl.IsSet()
 }
 
 // HasLogoUrl returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasLogoUrl() bool {
-	if o != nil && !IsNil(o.LogoUrl) {
+	if o != nil && o.LogoUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLogoUrl gets a reference to the given string and assigns it to the LogoUrl field.
+// SetLogoUrl gets a reference to the given NullableString and assigns it to the LogoUrl field.
 func (o *OrganizationEditRequest) SetLogoUrl(v string) {
-	o.LogoUrl = &v
+	o.LogoUrl.Set(&v)
 }
 
-// GetIconUrl returns the IconUrl field value if set, zero value otherwise.
+// SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+func (o *OrganizationEditRequest) SetLogoUrlNil() {
+	o.LogoUrl.Set(nil)
+}
+
+// UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
+func (o *OrganizationEditRequest) UnsetLogoUrl() {
+	o.LogoUrl.Unset()
+}
+
+// GetIconUrl returns the IconUrl field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetIconUrl() string {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil || IsNil(o.IconUrl.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IconUrl
+	return *o.IconUrl.Get()
 }
 
 // GetIconUrlOk returns a tuple with the IconUrl field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetIconUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.IconUrl) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IconUrl, true
+	return o.IconUrl.Get(), o.IconUrl.IsSet()
 }
 
 // HasIconUrl returns a boolean if a field has been set.
 func (o *OrganizationEditRequest) HasIconUrl() bool {
-	if o != nil && !IsNil(o.IconUrl) {
+	if o != nil && o.IconUrl.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIconUrl gets a reference to the given string and assigns it to the IconUrl field.
+// SetIconUrl gets a reference to the given NullableString and assigns it to the IconUrl field.
 func (o *OrganizationEditRequest) SetIconUrl(v string) {
-	o.IconUrl = &v
+	o.IconUrl.Set(&v)
 }
 
-// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise.
+// SetIconUrlNil sets the value for IconUrl to be an explicit nil
+func (o *OrganizationEditRequest) SetIconUrlNil() {
+	o.IconUrl.Set(nil)
+}
+
+// UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
+func (o *OrganizationEditRequest) UnsetIconUrl() {
+	o.IconUrl.Unset()
+}
+
+// GetAdminEmails returns the AdminEmails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationEditRequest) GetAdminEmails() []string {
-	if o == nil || IsNil(o.AdminEmails) {
+	if o == nil {
 		var ret []string
 		return ret
 	}
@@ -247,6 +291,7 @@ func (o *OrganizationEditRequest) GetAdminEmails() []string {
 
 // GetAdminEmailsOk returns a tuple with the AdminEmails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationEditRequest) GetAdminEmailsOk() ([]string, bool) {
 	if o == nil || IsNil(o.AdminEmails) {
 		return nil, false
@@ -282,19 +327,19 @@ func (o OrganizationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.WebsiteUrl) {
-		toSerialize["website_url"] = o.WebsiteUrl
+	if o.WebsiteUrl.IsSet() {
+		toSerialize["website_url"] = o.WebsiteUrl.Get()
 	}
-	if !IsNil(o.Repository) {
-		toSerialize["repository"] = o.Repository
+	if o.Repository.IsSet() {
+		toSerialize["repository"] = o.Repository.Get()
 	}
-	if !IsNil(o.LogoUrl) {
-		toSerialize["logo_url"] = o.LogoUrl
+	if o.LogoUrl.IsSet() {
+		toSerialize["logo_url"] = o.LogoUrl.Get()
 	}
-	if !IsNil(o.IconUrl) {
-		toSerialize["icon_url"] = o.IconUrl
+	if o.IconUrl.IsSet() {
+		toSerialize["icon_url"] = o.IconUrl.Get()
 	}
-	if !IsNil(o.AdminEmails) {
+	if o.AdminEmails != nil {
 		toSerialize["admin_emails"] = o.AdminEmails
 	}
 

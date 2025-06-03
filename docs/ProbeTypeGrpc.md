@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Service** | Pointer to **string** |  | [optional] 
+**Service** | Pointer to **NullableString** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 
 ## Methods
@@ -51,6 +51,16 @@ SetService sets Service field to given value.
 
 HasService returns a boolean if a field has been set.
 
+### SetServiceNil
+
+`func (o *ProbeTypeGrpc) SetServiceNil(b bool)`
+
+ SetServiceNil sets the value for Service to be an explicit nil
+
+### UnsetService
+`func (o *ProbeTypeGrpc) UnsetService()`
+
+UnsetService ensures that no value is present for Service, not even an explicit nil
 ### GetPort
 
 `func (o *ProbeTypeGrpc) GetPort() int32`

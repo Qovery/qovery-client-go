@@ -20,8 +20,8 @@ var _ MappedNullable = &HelmRequestAllOfValuesOverrideFile{}
 
 // HelmRequestAllOfValuesOverrideFile struct for HelmRequestAllOfValuesOverrideFile
 type HelmRequestAllOfValuesOverrideFile struct {
-	Git                  *HelmRequestAllOfValuesOverrideFileGit `json:"git,omitempty"`
-	Raw                  *HelmRequestAllOfValuesOverrideFileRaw `json:"raw,omitempty"`
+	Git                  NullableHelmRequestAllOfValuesOverrideFileGit `json:"git,omitempty"`
+	Raw                  NullableHelmRequestAllOfValuesOverrideFileRaw `json:"raw,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,68 +44,90 @@ func NewHelmRequestAllOfValuesOverrideFileWithDefaults() *HelmRequestAllOfValues
 	return &this
 }
 
-// GetGit returns the Git field value if set, zero value otherwise.
+// GetGit returns the Git field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmRequestAllOfValuesOverrideFile) GetGit() HelmRequestAllOfValuesOverrideFileGit {
-	if o == nil || IsNil(o.Git) {
+	if o == nil || IsNil(o.Git.Get()) {
 		var ret HelmRequestAllOfValuesOverrideFileGit
 		return ret
 	}
-	return *o.Git
+	return *o.Git.Get()
 }
 
 // GetGitOk returns a tuple with the Git field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRequestAllOfValuesOverrideFile) GetGitOk() (*HelmRequestAllOfValuesOverrideFileGit, bool) {
-	if o == nil || IsNil(o.Git) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Git, true
+	return o.Git.Get(), o.Git.IsSet()
 }
 
 // HasGit returns a boolean if a field has been set.
 func (o *HelmRequestAllOfValuesOverrideFile) HasGit() bool {
-	if o != nil && !IsNil(o.Git) {
+	if o != nil && o.Git.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGit gets a reference to the given HelmRequestAllOfValuesOverrideFileGit and assigns it to the Git field.
+// SetGit gets a reference to the given NullableHelmRequestAllOfValuesOverrideFileGit and assigns it to the Git field.
 func (o *HelmRequestAllOfValuesOverrideFile) SetGit(v HelmRequestAllOfValuesOverrideFileGit) {
-	o.Git = &v
+	o.Git.Set(&v)
 }
 
-// GetRaw returns the Raw field value if set, zero value otherwise.
+// SetGitNil sets the value for Git to be an explicit nil
+func (o *HelmRequestAllOfValuesOverrideFile) SetGitNil() {
+	o.Git.Set(nil)
+}
+
+// UnsetGit ensures that no value is present for Git, not even an explicit nil
+func (o *HelmRequestAllOfValuesOverrideFile) UnsetGit() {
+	o.Git.Unset()
+}
+
+// GetRaw returns the Raw field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmRequestAllOfValuesOverrideFile) GetRaw() HelmRequestAllOfValuesOverrideFileRaw {
-	if o == nil || IsNil(o.Raw) {
+	if o == nil || IsNil(o.Raw.Get()) {
 		var ret HelmRequestAllOfValuesOverrideFileRaw
 		return ret
 	}
-	return *o.Raw
+	return *o.Raw.Get()
 }
 
 // GetRawOk returns a tuple with the Raw field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRequestAllOfValuesOverrideFile) GetRawOk() (*HelmRequestAllOfValuesOverrideFileRaw, bool) {
-	if o == nil || IsNil(o.Raw) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Raw, true
+	return o.Raw.Get(), o.Raw.IsSet()
 }
 
 // HasRaw returns a boolean if a field has been set.
 func (o *HelmRequestAllOfValuesOverrideFile) HasRaw() bool {
-	if o != nil && !IsNil(o.Raw) {
+	if o != nil && o.Raw.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRaw gets a reference to the given HelmRequestAllOfValuesOverrideFileRaw and assigns it to the Raw field.
+// SetRaw gets a reference to the given NullableHelmRequestAllOfValuesOverrideFileRaw and assigns it to the Raw field.
 func (o *HelmRequestAllOfValuesOverrideFile) SetRaw(v HelmRequestAllOfValuesOverrideFileRaw) {
-	o.Raw = &v
+	o.Raw.Set(&v)
+}
+
+// SetRawNil sets the value for Raw to be an explicit nil
+func (o *HelmRequestAllOfValuesOverrideFile) SetRawNil() {
+	o.Raw.Set(nil)
+}
+
+// UnsetRaw ensures that no value is present for Raw, not even an explicit nil
+func (o *HelmRequestAllOfValuesOverrideFile) UnsetRaw() {
+	o.Raw.Unset()
 }
 
 func (o HelmRequestAllOfValuesOverrideFile) MarshalJSON() ([]byte, error) {
@@ -118,11 +140,11 @@ func (o HelmRequestAllOfValuesOverrideFile) MarshalJSON() ([]byte, error) {
 
 func (o HelmRequestAllOfValuesOverrideFile) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Git) {
-		toSerialize["git"] = o.Git
+	if o.Git.IsSet() {
+		toSerialize["git"] = o.Git.Get()
 	}
-	if !IsNil(o.Raw) {
-		toSerialize["raw"] = o.Raw
+	if o.Raw.IsSet() {
+		toSerialize["raw"] = o.Raw.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Image** | Pointer to [**JobRequestAllOfSourceImage**](JobRequestAllOfSourceImage.md) |  | [optional] 
-**Docker** | Pointer to [**JobRequestAllOfSourceDocker**](JobRequestAllOfSourceDocker.md) |  | [optional] 
+**Image** | Pointer to [**NullableJobRequestAllOfSourceImage**](JobRequestAllOfSourceImage.md) |  | [optional] 
+**Docker** | Pointer to [**NullableJobRequestAllOfSourceDocker**](JobRequestAllOfSourceDocker.md) |  | [optional] 
 
 ## Methods
 
@@ -51,6 +51,16 @@ SetImage sets Image field to given value.
 
 HasImage returns a boolean if a field has been set.
 
+### SetImageNil
+
+`func (o *JobRequestAllOfSource) SetImageNil(b bool)`
+
+ SetImageNil sets the value for Image to be an explicit nil
+
+### UnsetImage
+`func (o *JobRequestAllOfSource) UnsetImage()`
+
+UnsetImage ensures that no value is present for Image, not even an explicit nil
 ### GetDocker
 
 `func (o *JobRequestAllOfSource) GetDocker() JobRequestAllOfSourceDocker`
@@ -76,6 +86,16 @@ SetDocker sets Docker field to given value.
 
 HasDocker returns a boolean if a field has been set.
 
+### SetDockerNil
+
+`func (o *JobRequestAllOfSource) SetDockerNil(b bool)`
+
+ SetDockerNil sets the value for Docker to be an explicit nil
+
+### UnsetDocker
+`func (o *JobRequestAllOfSource) UnsetDocker()`
+
+UnsetDocker ensures that no value is present for Docker, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

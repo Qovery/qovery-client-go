@@ -35,10 +35,10 @@ type ApplicationGitRepository struct {
 	// Git commit date corresponding to the deployed version of the app
 	DeployedCommitDate *time.Time `json:"deployed_commit_date,omitempty"`
 	// Git commit user corresponding to the deployed version of the app
-	DeployedCommitContributor *string `json:"deployed_commit_contributor,omitempty"`
-	DeployedCommitTag         *string `json:"deployed_commit_tag,omitempty"`
-	GitTokenId                *string `json:"git_token_id,omitempty"`
-	GitTokenName              *string `json:"git_token_name,omitempty"`
+	DeployedCommitContributor *string        `json:"deployed_commit_contributor,omitempty"`
+	DeployedCommitTag         *string        `json:"deployed_commit_tag,omitempty"`
+	GitTokenId                NullableString `json:"git_token_id,omitempty"`
+	GitTokenName              NullableString `json:"git_token_name,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -385,68 +385,90 @@ func (o *ApplicationGitRepository) SetDeployedCommitTag(v string) {
 	o.DeployedCommitTag = &v
 }
 
-// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise.
+// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationGitRepository) GetGitTokenId() string {
-	if o == nil || IsNil(o.GitTokenId) {
+	if o == nil || IsNil(o.GitTokenId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.GitTokenId
+	return *o.GitTokenId.Get()
 }
 
 // GetGitTokenIdOk returns a tuple with the GitTokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationGitRepository) GetGitTokenIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GitTokenId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GitTokenId, true
+	return o.GitTokenId.Get(), o.GitTokenId.IsSet()
 }
 
 // HasGitTokenId returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasGitTokenId() bool {
-	if o != nil && !IsNil(o.GitTokenId) {
+	if o != nil && o.GitTokenId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGitTokenId gets a reference to the given string and assigns it to the GitTokenId field.
+// SetGitTokenId gets a reference to the given NullableString and assigns it to the GitTokenId field.
 func (o *ApplicationGitRepository) SetGitTokenId(v string) {
-	o.GitTokenId = &v
+	o.GitTokenId.Set(&v)
 }
 
-// GetGitTokenName returns the GitTokenName field value if set, zero value otherwise.
+// SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+func (o *ApplicationGitRepository) SetGitTokenIdNil() {
+	o.GitTokenId.Set(nil)
+}
+
+// UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+func (o *ApplicationGitRepository) UnsetGitTokenId() {
+	o.GitTokenId.Unset()
+}
+
+// GetGitTokenName returns the GitTokenName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationGitRepository) GetGitTokenName() string {
-	if o == nil || IsNil(o.GitTokenName) {
+	if o == nil || IsNil(o.GitTokenName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.GitTokenName
+	return *o.GitTokenName.Get()
 }
 
 // GetGitTokenNameOk returns a tuple with the GitTokenName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationGitRepository) GetGitTokenNameOk() (*string, bool) {
-	if o == nil || IsNil(o.GitTokenName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GitTokenName, true
+	return o.GitTokenName.Get(), o.GitTokenName.IsSet()
 }
 
 // HasGitTokenName returns a boolean if a field has been set.
 func (o *ApplicationGitRepository) HasGitTokenName() bool {
-	if o != nil && !IsNil(o.GitTokenName) {
+	if o != nil && o.GitTokenName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGitTokenName gets a reference to the given string and assigns it to the GitTokenName field.
+// SetGitTokenName gets a reference to the given NullableString and assigns it to the GitTokenName field.
 func (o *ApplicationGitRepository) SetGitTokenName(v string) {
-	o.GitTokenName = &v
+	o.GitTokenName.Set(&v)
+}
+
+// SetGitTokenNameNil sets the value for GitTokenName to be an explicit nil
+func (o *ApplicationGitRepository) SetGitTokenNameNil() {
+	o.GitTokenName.Set(nil)
+}
+
+// UnsetGitTokenName ensures that no value is present for GitTokenName, not even an explicit nil
+func (o *ApplicationGitRepository) UnsetGitTokenName() {
+	o.GitTokenName.Unset()
 }
 
 func (o ApplicationGitRepository) MarshalJSON() ([]byte, error) {
@@ -484,11 +506,11 @@ func (o ApplicationGitRepository) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeployedCommitTag) {
 		toSerialize["deployed_commit_tag"] = o.DeployedCommitTag
 	}
-	if !IsNil(o.GitTokenId) {
-		toSerialize["git_token_id"] = o.GitTokenId
+	if o.GitTokenId.IsSet() {
+		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
-	if !IsNil(o.GitTokenName) {
-		toSerialize["git_token_name"] = o.GitTokenName
+	if o.GitTokenName.IsSet() {
+		toSerialize["git_token_name"] = o.GitTokenName.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

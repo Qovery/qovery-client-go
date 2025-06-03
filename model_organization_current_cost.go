@@ -25,8 +25,8 @@ type OrganizationCurrentCost struct {
 	// number of days remaining before the end of the trial period
 	RemainingTrialDay *int32 `json:"remaining_trial_day,omitempty"`
 	// date when the current plan will be renewed
-	RenewalAt            *time.Time `json:"renewal_at,omitempty"`
-	Cost                 *Cost      `json:"cost,omitempty"`
+	RenewalAt            NullableTime `json:"renewal_at,omitempty"`
+	Cost                 *Cost        `json:"cost,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -113,36 +113,47 @@ func (o *OrganizationCurrentCost) SetRemainingTrialDay(v int32) {
 	o.RemainingTrialDay = &v
 }
 
-// GetRenewalAt returns the RenewalAt field value if set, zero value otherwise.
+// GetRenewalAt returns the RenewalAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationCurrentCost) GetRenewalAt() time.Time {
-	if o == nil || IsNil(o.RenewalAt) {
+	if o == nil || IsNil(o.RenewalAt.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.RenewalAt
+	return *o.RenewalAt.Get()
 }
 
 // GetRenewalAtOk returns a tuple with the RenewalAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *OrganizationCurrentCost) GetRenewalAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.RenewalAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.RenewalAt, true
+	return o.RenewalAt.Get(), o.RenewalAt.IsSet()
 }
 
 // HasRenewalAt returns a boolean if a field has been set.
 func (o *OrganizationCurrentCost) HasRenewalAt() bool {
-	if o != nil && !IsNil(o.RenewalAt) {
+	if o != nil && o.RenewalAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRenewalAt gets a reference to the given time.Time and assigns it to the RenewalAt field.
+// SetRenewalAt gets a reference to the given NullableTime and assigns it to the RenewalAt field.
 func (o *OrganizationCurrentCost) SetRenewalAt(v time.Time) {
-	o.RenewalAt = &v
+	o.RenewalAt.Set(&v)
+}
+
+// SetRenewalAtNil sets the value for RenewalAt to be an explicit nil
+func (o *OrganizationCurrentCost) SetRenewalAtNil() {
+	o.RenewalAt.Set(nil)
+}
+
+// UnsetRenewalAt ensures that no value is present for RenewalAt, not even an explicit nil
+func (o *OrganizationCurrentCost) UnsetRenewalAt() {
+	o.RenewalAt.Unset()
 }
 
 // GetCost returns the Cost field value if set, zero value otherwise.
@@ -193,8 +204,8 @@ func (o OrganizationCurrentCost) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RemainingTrialDay) {
 		toSerialize["remaining_trial_day"] = o.RemainingTrialDay
 	}
-	if !IsNil(o.RenewalAt) {
-		toSerialize["renewal_at"] = o.RenewalAt
+	if o.RenewalAt.IsSet() {
+		toSerialize["renewal_at"] = o.RenewalAt.Get()
 	}
 	if !IsNil(o.Cost) {
 		toSerialize["cost"] = o.Cost

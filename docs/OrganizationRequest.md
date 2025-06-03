@@ -5,12 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 **Plan** | [**PlanEnum**](PlanEnum.md) |  | 
-**WebsiteUrl** | Pointer to **string** |  | [optional] 
-**Repository** | Pointer to **string** |  | [optional] 
-**LogoUrl** | Pointer to **string** |  | [optional] 
-**IconUrl** | Pointer to **string** |  | [optional] 
+**WebsiteUrl** | Pointer to **NullableString** |  | [optional] 
+**Repository** | Pointer to **NullableString** |  | [optional] 
+**LogoUrl** | Pointer to **NullableString** |  | [optional] 
+**IconUrl** | Pointer to **NullableString** |  | [optional] 
 **AdminEmails** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
@@ -77,6 +77,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *OrganizationRequest) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *OrganizationRequest) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetPlan
 
 `func (o *OrganizationRequest) GetPlan() PlanEnum`
@@ -122,6 +132,16 @@ SetWebsiteUrl sets WebsiteUrl field to given value.
 
 HasWebsiteUrl returns a boolean if a field has been set.
 
+### SetWebsiteUrlNil
+
+`func (o *OrganizationRequest) SetWebsiteUrlNil(b bool)`
+
+ SetWebsiteUrlNil sets the value for WebsiteUrl to be an explicit nil
+
+### UnsetWebsiteUrl
+`func (o *OrganizationRequest) UnsetWebsiteUrl()`
+
+UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
 ### GetRepository
 
 `func (o *OrganizationRequest) GetRepository() string`
@@ -147,6 +167,16 @@ SetRepository sets Repository field to given value.
 
 HasRepository returns a boolean if a field has been set.
 
+### SetRepositoryNil
+
+`func (o *OrganizationRequest) SetRepositoryNil(b bool)`
+
+ SetRepositoryNil sets the value for Repository to be an explicit nil
+
+### UnsetRepository
+`func (o *OrganizationRequest) UnsetRepository()`
+
+UnsetRepository ensures that no value is present for Repository, not even an explicit nil
 ### GetLogoUrl
 
 `func (o *OrganizationRequest) GetLogoUrl() string`
@@ -172,6 +202,16 @@ SetLogoUrl sets LogoUrl field to given value.
 
 HasLogoUrl returns a boolean if a field has been set.
 
+### SetLogoUrlNil
+
+`func (o *OrganizationRequest) SetLogoUrlNil(b bool)`
+
+ SetLogoUrlNil sets the value for LogoUrl to be an explicit nil
+
+### UnsetLogoUrl
+`func (o *OrganizationRequest) UnsetLogoUrl()`
+
+UnsetLogoUrl ensures that no value is present for LogoUrl, not even an explicit nil
 ### GetIconUrl
 
 `func (o *OrganizationRequest) GetIconUrl() string`
@@ -197,6 +237,16 @@ SetIconUrl sets IconUrl field to given value.
 
 HasIconUrl returns a boolean if a field has been set.
 
+### SetIconUrlNil
+
+`func (o *OrganizationRequest) SetIconUrlNil(b bool)`
+
+ SetIconUrlNil sets the value for IconUrl to be an explicit nil
+
+### UnsetIconUrl
+`func (o *OrganizationRequest) UnsetIconUrl()`
+
+UnsetIconUrl ensures that no value is present for IconUrl, not even an explicit nil
 ### GetAdminEmails
 
 `func (o *OrganizationRequest) GetAdminEmails() []string`
@@ -222,6 +272,16 @@ SetAdminEmails sets AdminEmails field to given value.
 
 HasAdminEmails returns a boolean if a field has been set.
 
+### SetAdminEmailsNil
+
+`func (o *OrganizationRequest) SetAdminEmailsNil(b bool)`
+
+ SetAdminEmailsNil sets the value for AdminEmails to be an explicit nil
+
+### UnsetAdminEmails
+`func (o *OrganizationRequest) UnsetAdminEmails()`
+
+UnsetAdminEmails ensures that no value is present for AdminEmails, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

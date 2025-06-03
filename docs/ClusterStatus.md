@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **ClusterId** | Pointer to **string** |  | [optional] 
 **Status** | Pointer to [**ClusterStateEnum**](ClusterStateEnum.md) |  | [optional] 
 **IsDeployed** | Pointer to **bool** |  | [optional] 
-**NextK8sAvailableVersion** | Pointer to **string** |  | [optional] 
+**NextK8sAvailableVersion** | Pointer to **NullableString** |  | [optional] 
 **LastExecutionId** | Pointer to **string** |  | [optional] 
 **ClusterLock** | Pointer to [**ClusterLock**](ClusterLock.md) |  | [optional] 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
@@ -131,6 +131,16 @@ SetNextK8sAvailableVersion sets NextK8sAvailableVersion field to given value.
 
 HasNextK8sAvailableVersion returns a boolean if a field has been set.
 
+### SetNextK8sAvailableVersionNil
+
+`func (o *ClusterStatus) SetNextK8sAvailableVersionNil(b bool)`
+
+ SetNextK8sAvailableVersionNil sets the value for NextK8sAvailableVersion to be an explicit nil
+
+### UnsetNextK8sAvailableVersion
+`func (o *ClusterStatus) UnsetNextK8sAvailableVersion()`
+
+UnsetNextK8sAvailableVersion ensures that no value is present for NextK8sAvailableVersion, not even an explicit nil
 ### GetLastExecutionId
 
 `func (o *ClusterStatus) GetLastExecutionId() string`

@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Key** | **string** |  | 
-**Value** | **string** |  | 
-**MountPath** | Pointer to **string** |  | [optional] 
+**Value** | **NullableString** |  | 
+**MountPath** | Pointer to **NullableString** |  | [optional] 
 **OverriddenVariable** | Pointer to [**VariableOverride**](VariableOverride.md) |  | [optional] 
 **AliasedVariable** | Pointer to [**VariableAlias**](VariableAlias.md) |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewVariableResponse
 
-`func NewVariableResponse(id string, createdAt time.Time, key string, value string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, isSecret bool, ) *VariableResponse`
+`func NewVariableResponse(id string, createdAt time.Time, key string, value NullableString, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, isSecret bool, ) *VariableResponse`
 
 NewVariableResponse instantiates a new VariableResponse object
 This constructor will assign default values to properties that have it defined,
@@ -146,6 +146,16 @@ and a boolean to check if the value has been set.
 SetValue sets Value field to given value.
 
 
+### SetValueNil
+
+`func (o *VariableResponse) SetValueNil(b bool)`
+
+ SetValueNil sets the value for Value to be an explicit nil
+
+### UnsetValue
+`func (o *VariableResponse) UnsetValue()`
+
+UnsetValue ensures that no value is present for Value, not even an explicit nil
 ### GetMountPath
 
 `func (o *VariableResponse) GetMountPath() string`
@@ -171,6 +181,16 @@ SetMountPath sets MountPath field to given value.
 
 HasMountPath returns a boolean if a field has been set.
 
+### SetMountPathNil
+
+`func (o *VariableResponse) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *VariableResponse) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetOverriddenVariable
 
 `func (o *VariableResponse) GetOverriddenVariable() VariableOverride`

@@ -24,10 +24,10 @@ type VariableEditRequest struct {
 	// the key of the environment variable
 	Key string `json:"key"`
 	// the value of the environment variable
-	Value *string `json:"value,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 	// optional variable description (255 characters maximum)
-	Description               *string `json:"description,omitempty"`
-	EnableInterpolationInFile *bool   `json:"enable_interpolation_in_file,omitempty"`
+	Description               NullableString `json:"description,omitempty"`
+	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -75,100 +75,133 @@ func (o *VariableEditRequest) SetKey(v string) {
 	o.Key = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableEditRequest) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VariableEditRequest) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *VariableEditRequest) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *VariableEditRequest) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *VariableEditRequest) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *VariableEditRequest) UnsetValue() {
+	o.Value.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableEditRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VariableEditRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *VariableEditRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *VariableEditRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
 }
 
-// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise.
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *VariableEditRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *VariableEditRequest) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableEditRequest) GetEnableInterpolationInFile() bool {
-	if o == nil || IsNil(o.EnableInterpolationInFile) {
+	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableInterpolationInFile
+	return *o.EnableInterpolationInFile.Get()
 }
 
 // GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VariableEditRequest) GetEnableInterpolationInFileOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableInterpolationInFile) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableInterpolationInFile, true
+	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
 }
 
 // HasEnableInterpolationInFile returns a boolean if a field has been set.
 func (o *VariableEditRequest) HasEnableInterpolationInFile() bool {
-	if o != nil && !IsNil(o.EnableInterpolationInFile) {
+	if o != nil && o.EnableInterpolationInFile.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableInterpolationInFile gets a reference to the given bool and assigns it to the EnableInterpolationInFile field.
+// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
 func (o *VariableEditRequest) SetEnableInterpolationInFile(v bool) {
-	o.EnableInterpolationInFile = &v
+	o.EnableInterpolationInFile.Set(&v)
+}
+
+// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+func (o *VariableEditRequest) SetEnableInterpolationInFileNil() {
+	o.EnableInterpolationInFile.Set(nil)
+}
+
+// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+func (o *VariableEditRequest) UnsetEnableInterpolationInFile() {
+	o.EnableInterpolationInFile.Unset()
 }
 
 func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
@@ -182,14 +215,14 @@ func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
 func (o VariableEditRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.EnableInterpolationInFile) {
-		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile
+	if o.EnableInterpolationInFile.IsSet() {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

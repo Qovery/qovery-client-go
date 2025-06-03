@@ -23,7 +23,7 @@ var _ MappedNullable = &DeploymentHistoryServiceDetailsOneOf2{}
 type DeploymentHistoryServiceDetailsOneOf2 struct {
 	ImageName            string                                         `json:"image_name"`
 	Tag                  string                                         `json:"tag"`
-	Commit               *Commit                                        `json:"commit,omitempty"`
+	Commit               NullableCommit                                 `json:"commit,omitempty"`
 	Schedule             *DeploymentHistoryServiceDetailsOneOf2Schedule `json:"schedule,omitempty"`
 	JobType              string                                         `json:"job_type"`
 	AdditionalProperties map[string]interface{}
@@ -99,36 +99,47 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) SetTag(v string) {
 	o.Tag = v
 }
 
-// GetCommit returns the Commit field value if set, zero value otherwise.
+// GetCommit returns the Commit field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryServiceDetailsOneOf2) GetCommit() Commit {
-	if o == nil || IsNil(o.Commit) {
+	if o == nil || IsNil(o.Commit.Get()) {
 		var ret Commit
 		return ret
 	}
-	return *o.Commit
+	return *o.Commit.Get()
 }
 
 // GetCommitOk returns a tuple with the Commit field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentHistoryServiceDetailsOneOf2) GetCommitOk() (*Commit, bool) {
-	if o == nil || IsNil(o.Commit) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Commit, true
+	return o.Commit.Get(), o.Commit.IsSet()
 }
 
 // HasCommit returns a boolean if a field has been set.
 func (o *DeploymentHistoryServiceDetailsOneOf2) HasCommit() bool {
-	if o != nil && !IsNil(o.Commit) {
+	if o != nil && o.Commit.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCommit gets a reference to the given Commit and assigns it to the Commit field.
+// SetCommit gets a reference to the given NullableCommit and assigns it to the Commit field.
 func (o *DeploymentHistoryServiceDetailsOneOf2) SetCommit(v Commit) {
-	o.Commit = &v
+	o.Commit.Set(&v)
+}
+
+// SetCommitNil sets the value for Commit to be an explicit nil
+func (o *DeploymentHistoryServiceDetailsOneOf2) SetCommitNil() {
+	o.Commit.Set(nil)
+}
+
+// UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+func (o *DeploymentHistoryServiceDetailsOneOf2) UnsetCommit() {
+	o.Commit.Unset()
 }
 
 // GetSchedule returns the Schedule field value if set, zero value otherwise.
@@ -199,8 +210,8 @@ func (o DeploymentHistoryServiceDetailsOneOf2) ToMap() (map[string]interface{}, 
 	toSerialize := map[string]interface{}{}
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["tag"] = o.Tag
-	if !IsNil(o.Commit) {
-		toSerialize["commit"] = o.Commit
+	if o.Commit.IsSet() {
+		toSerialize["commit"] = o.Commit.Get()
 	}
 	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule

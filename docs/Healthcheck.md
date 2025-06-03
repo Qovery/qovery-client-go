@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReadinessProbe** | Pointer to [**Probe**](Probe.md) |  | [optional] 
-**LivenessProbe** | Pointer to [**Probe**](Probe.md) |  | [optional] 
+**ReadinessProbe** | Pointer to [**NullableProbe**](Probe.md) |  | [optional] 
+**LivenessProbe** | Pointer to [**NullableProbe**](Probe.md) |  | [optional] 
 
 ## Methods
 
@@ -51,6 +51,16 @@ SetReadinessProbe sets ReadinessProbe field to given value.
 
 HasReadinessProbe returns a boolean if a field has been set.
 
+### SetReadinessProbeNil
+
+`func (o *Healthcheck) SetReadinessProbeNil(b bool)`
+
+ SetReadinessProbeNil sets the value for ReadinessProbe to be an explicit nil
+
+### UnsetReadinessProbe
+`func (o *Healthcheck) UnsetReadinessProbe()`
+
+UnsetReadinessProbe ensures that no value is present for ReadinessProbe, not even an explicit nil
 ### GetLivenessProbe
 
 `func (o *Healthcheck) GetLivenessProbe() Probe`
@@ -76,6 +86,16 @@ SetLivenessProbe sets LivenessProbe field to given value.
 
 HasLivenessProbe returns a boolean if a field has been set.
 
+### SetLivenessProbeNil
+
+`func (o *Healthcheck) SetLivenessProbeNil(b bool)`
+
+ SetLivenessProbeNil sets the value for LivenessProbe to be an explicit nil
+
+### UnsetLivenessProbe
+`func (o *Healthcheck) UnsetLivenessProbe()`
+
+UnsetLivenessProbe ensures that no value is present for LivenessProbe, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

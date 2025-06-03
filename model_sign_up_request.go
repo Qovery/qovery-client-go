@@ -26,14 +26,14 @@ type SignUpRequest struct {
 	UserEmail             string           `json:"user_email"`
 	TypeOfUse             TypeOfUseEnum    `json:"type_of_use"`
 	QoveryUsage           string           `json:"qovery_usage"`
-	CompanyName           *string          `json:"company_name,omitempty"`
+	CompanyName           NullableString   `json:"company_name,omitempty"`
 	CompanySize           *CompanySizeEnum `json:"company_size,omitempty"`
-	UserRole              *string          `json:"user_role,omitempty"`
-	QoveryUsageOther      *string          `json:"qovery_usage_other,omitempty"`
-	UserQuestions         *string          `json:"user_questions,omitempty"`
-	CurrentStep           *string          `json:"current_step,omitempty"`
-	DxAuth                *bool            `json:"dx_auth,omitempty"`
-	InfrastructureHosting *string          `json:"infrastructure_hosting,omitempty"`
+	UserRole              NullableString   `json:"user_role,omitempty"`
+	QoveryUsageOther      NullableString   `json:"qovery_usage_other,omitempty"`
+	UserQuestions         NullableString   `json:"user_questions,omitempty"`
+	CurrentStep           NullableString   `json:"current_step,omitempty"`
+	DxAuth                NullableBool     `json:"dx_auth,omitempty"`
+	InfrastructureHosting NullableString   `json:"infrastructure_hosting,omitempty"`
 	AdditionalProperties  map[string]interface{}
 }
 
@@ -181,36 +181,47 @@ func (o *SignUpRequest) SetQoveryUsage(v string) {
 	o.QoveryUsage = v
 }
 
-// GetCompanyName returns the CompanyName field value if set, zero value otherwise.
+// GetCompanyName returns the CompanyName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetCompanyName() string {
-	if o == nil || IsNil(o.CompanyName) {
+	if o == nil || IsNil(o.CompanyName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CompanyName
+	return *o.CompanyName.Get()
 }
 
 // GetCompanyNameOk returns a tuple with the CompanyName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetCompanyNameOk() (*string, bool) {
-	if o == nil || IsNil(o.CompanyName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CompanyName, true
+	return o.CompanyName.Get(), o.CompanyName.IsSet()
 }
 
 // HasCompanyName returns a boolean if a field has been set.
 func (o *SignUpRequest) HasCompanyName() bool {
-	if o != nil && !IsNil(o.CompanyName) {
+	if o != nil && o.CompanyName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCompanyName gets a reference to the given string and assigns it to the CompanyName field.
+// SetCompanyName gets a reference to the given NullableString and assigns it to the CompanyName field.
 func (o *SignUpRequest) SetCompanyName(v string) {
-	o.CompanyName = &v
+	o.CompanyName.Set(&v)
+}
+
+// SetCompanyNameNil sets the value for CompanyName to be an explicit nil
+func (o *SignUpRequest) SetCompanyNameNil() {
+	o.CompanyName.Set(nil)
+}
+
+// UnsetCompanyName ensures that no value is present for CompanyName, not even an explicit nil
+func (o *SignUpRequest) UnsetCompanyName() {
+	o.CompanyName.Unset()
 }
 
 // GetCompanySize returns the CompanySize field value if set, zero value otherwise.
@@ -245,196 +256,262 @@ func (o *SignUpRequest) SetCompanySize(v CompanySizeEnum) {
 	o.CompanySize = &v
 }
 
-// GetUserRole returns the UserRole field value if set, zero value otherwise.
+// GetUserRole returns the UserRole field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetUserRole() string {
-	if o == nil || IsNil(o.UserRole) {
+	if o == nil || IsNil(o.UserRole.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UserRole
+	return *o.UserRole.Get()
 }
 
 // GetUserRoleOk returns a tuple with the UserRole field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetUserRoleOk() (*string, bool) {
-	if o == nil || IsNil(o.UserRole) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserRole, true
+	return o.UserRole.Get(), o.UserRole.IsSet()
 }
 
 // HasUserRole returns a boolean if a field has been set.
 func (o *SignUpRequest) HasUserRole() bool {
-	if o != nil && !IsNil(o.UserRole) {
+	if o != nil && o.UserRole.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserRole gets a reference to the given string and assigns it to the UserRole field.
+// SetUserRole gets a reference to the given NullableString and assigns it to the UserRole field.
 func (o *SignUpRequest) SetUserRole(v string) {
-	o.UserRole = &v
+	o.UserRole.Set(&v)
 }
 
-// GetQoveryUsageOther returns the QoveryUsageOther field value if set, zero value otherwise.
+// SetUserRoleNil sets the value for UserRole to be an explicit nil
+func (o *SignUpRequest) SetUserRoleNil() {
+	o.UserRole.Set(nil)
+}
+
+// UnsetUserRole ensures that no value is present for UserRole, not even an explicit nil
+func (o *SignUpRequest) UnsetUserRole() {
+	o.UserRole.Unset()
+}
+
+// GetQoveryUsageOther returns the QoveryUsageOther field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetQoveryUsageOther() string {
-	if o == nil || IsNil(o.QoveryUsageOther) {
+	if o == nil || IsNil(o.QoveryUsageOther.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.QoveryUsageOther
+	return *o.QoveryUsageOther.Get()
 }
 
 // GetQoveryUsageOtherOk returns a tuple with the QoveryUsageOther field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetQoveryUsageOtherOk() (*string, bool) {
-	if o == nil || IsNil(o.QoveryUsageOther) {
+	if o == nil {
 		return nil, false
 	}
-	return o.QoveryUsageOther, true
+	return o.QoveryUsageOther.Get(), o.QoveryUsageOther.IsSet()
 }
 
 // HasQoveryUsageOther returns a boolean if a field has been set.
 func (o *SignUpRequest) HasQoveryUsageOther() bool {
-	if o != nil && !IsNil(o.QoveryUsageOther) {
+	if o != nil && o.QoveryUsageOther.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetQoveryUsageOther gets a reference to the given string and assigns it to the QoveryUsageOther field.
+// SetQoveryUsageOther gets a reference to the given NullableString and assigns it to the QoveryUsageOther field.
 func (o *SignUpRequest) SetQoveryUsageOther(v string) {
-	o.QoveryUsageOther = &v
+	o.QoveryUsageOther.Set(&v)
 }
 
-// GetUserQuestions returns the UserQuestions field value if set, zero value otherwise.
+// SetQoveryUsageOtherNil sets the value for QoveryUsageOther to be an explicit nil
+func (o *SignUpRequest) SetQoveryUsageOtherNil() {
+	o.QoveryUsageOther.Set(nil)
+}
+
+// UnsetQoveryUsageOther ensures that no value is present for QoveryUsageOther, not even an explicit nil
+func (o *SignUpRequest) UnsetQoveryUsageOther() {
+	o.QoveryUsageOther.Unset()
+}
+
+// GetUserQuestions returns the UserQuestions field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetUserQuestions() string {
-	if o == nil || IsNil(o.UserQuestions) {
+	if o == nil || IsNil(o.UserQuestions.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.UserQuestions
+	return *o.UserQuestions.Get()
 }
 
 // GetUserQuestionsOk returns a tuple with the UserQuestions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetUserQuestionsOk() (*string, bool) {
-	if o == nil || IsNil(o.UserQuestions) {
+	if o == nil {
 		return nil, false
 	}
-	return o.UserQuestions, true
+	return o.UserQuestions.Get(), o.UserQuestions.IsSet()
 }
 
 // HasUserQuestions returns a boolean if a field has been set.
 func (o *SignUpRequest) HasUserQuestions() bool {
-	if o != nil && !IsNil(o.UserQuestions) {
+	if o != nil && o.UserQuestions.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetUserQuestions gets a reference to the given string and assigns it to the UserQuestions field.
+// SetUserQuestions gets a reference to the given NullableString and assigns it to the UserQuestions field.
 func (o *SignUpRequest) SetUserQuestions(v string) {
-	o.UserQuestions = &v
+	o.UserQuestions.Set(&v)
 }
 
-// GetCurrentStep returns the CurrentStep field value if set, zero value otherwise.
+// SetUserQuestionsNil sets the value for UserQuestions to be an explicit nil
+func (o *SignUpRequest) SetUserQuestionsNil() {
+	o.UserQuestions.Set(nil)
+}
+
+// UnsetUserQuestions ensures that no value is present for UserQuestions, not even an explicit nil
+func (o *SignUpRequest) UnsetUserQuestions() {
+	o.UserQuestions.Unset()
+}
+
+// GetCurrentStep returns the CurrentStep field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetCurrentStep() string {
-	if o == nil || IsNil(o.CurrentStep) {
+	if o == nil || IsNil(o.CurrentStep.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.CurrentStep
+	return *o.CurrentStep.Get()
 }
 
 // GetCurrentStepOk returns a tuple with the CurrentStep field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetCurrentStepOk() (*string, bool) {
-	if o == nil || IsNil(o.CurrentStep) {
+	if o == nil {
 		return nil, false
 	}
-	return o.CurrentStep, true
+	return o.CurrentStep.Get(), o.CurrentStep.IsSet()
 }
 
 // HasCurrentStep returns a boolean if a field has been set.
 func (o *SignUpRequest) HasCurrentStep() bool {
-	if o != nil && !IsNil(o.CurrentStep) {
+	if o != nil && o.CurrentStep.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetCurrentStep gets a reference to the given string and assigns it to the CurrentStep field.
+// SetCurrentStep gets a reference to the given NullableString and assigns it to the CurrentStep field.
 func (o *SignUpRequest) SetCurrentStep(v string) {
-	o.CurrentStep = &v
+	o.CurrentStep.Set(&v)
 }
 
-// GetDxAuth returns the DxAuth field value if set, zero value otherwise.
+// SetCurrentStepNil sets the value for CurrentStep to be an explicit nil
+func (o *SignUpRequest) SetCurrentStepNil() {
+	o.CurrentStep.Set(nil)
+}
+
+// UnsetCurrentStep ensures that no value is present for CurrentStep, not even an explicit nil
+func (o *SignUpRequest) UnsetCurrentStep() {
+	o.CurrentStep.Unset()
+}
+
+// GetDxAuth returns the DxAuth field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetDxAuth() bool {
-	if o == nil || IsNil(o.DxAuth) {
+	if o == nil || IsNil(o.DxAuth.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.DxAuth
+	return *o.DxAuth.Get()
 }
 
 // GetDxAuthOk returns a tuple with the DxAuth field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetDxAuthOk() (*bool, bool) {
-	if o == nil || IsNil(o.DxAuth) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DxAuth, true
+	return o.DxAuth.Get(), o.DxAuth.IsSet()
 }
 
 // HasDxAuth returns a boolean if a field has been set.
 func (o *SignUpRequest) HasDxAuth() bool {
-	if o != nil && !IsNil(o.DxAuth) {
+	if o != nil && o.DxAuth.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDxAuth gets a reference to the given bool and assigns it to the DxAuth field.
+// SetDxAuth gets a reference to the given NullableBool and assigns it to the DxAuth field.
 func (o *SignUpRequest) SetDxAuth(v bool) {
-	o.DxAuth = &v
+	o.DxAuth.Set(&v)
 }
 
-// GetInfrastructureHosting returns the InfrastructureHosting field value if set, zero value otherwise.
+// SetDxAuthNil sets the value for DxAuth to be an explicit nil
+func (o *SignUpRequest) SetDxAuthNil() {
+	o.DxAuth.Set(nil)
+}
+
+// UnsetDxAuth ensures that no value is present for DxAuth, not even an explicit nil
+func (o *SignUpRequest) UnsetDxAuth() {
+	o.DxAuth.Unset()
+}
+
+// GetInfrastructureHosting returns the InfrastructureHosting field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SignUpRequest) GetInfrastructureHosting() string {
-	if o == nil || IsNil(o.InfrastructureHosting) {
+	if o == nil || IsNil(o.InfrastructureHosting.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.InfrastructureHosting
+	return *o.InfrastructureHosting.Get()
 }
 
 // GetInfrastructureHostingOk returns a tuple with the InfrastructureHosting field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SignUpRequest) GetInfrastructureHostingOk() (*string, bool) {
-	if o == nil || IsNil(o.InfrastructureHosting) {
+	if o == nil {
 		return nil, false
 	}
-	return o.InfrastructureHosting, true
+	return o.InfrastructureHosting.Get(), o.InfrastructureHosting.IsSet()
 }
 
 // HasInfrastructureHosting returns a boolean if a field has been set.
 func (o *SignUpRequest) HasInfrastructureHosting() bool {
-	if o != nil && !IsNil(o.InfrastructureHosting) {
+	if o != nil && o.InfrastructureHosting.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetInfrastructureHosting gets a reference to the given string and assigns it to the InfrastructureHosting field.
+// SetInfrastructureHosting gets a reference to the given NullableString and assigns it to the InfrastructureHosting field.
 func (o *SignUpRequest) SetInfrastructureHosting(v string) {
-	o.InfrastructureHosting = &v
+	o.InfrastructureHosting.Set(&v)
+}
+
+// SetInfrastructureHostingNil sets the value for InfrastructureHosting to be an explicit nil
+func (o *SignUpRequest) SetInfrastructureHostingNil() {
+	o.InfrastructureHosting.Set(nil)
+}
+
+// UnsetInfrastructureHosting ensures that no value is present for InfrastructureHosting, not even an explicit nil
+func (o *SignUpRequest) UnsetInfrastructureHosting() {
+	o.InfrastructureHosting.Unset()
 }
 
 func (o SignUpRequest) MarshalJSON() ([]byte, error) {
@@ -452,29 +529,29 @@ func (o SignUpRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["user_email"] = o.UserEmail
 	toSerialize["type_of_use"] = o.TypeOfUse
 	toSerialize["qovery_usage"] = o.QoveryUsage
-	if !IsNil(o.CompanyName) {
-		toSerialize["company_name"] = o.CompanyName
+	if o.CompanyName.IsSet() {
+		toSerialize["company_name"] = o.CompanyName.Get()
 	}
 	if !IsNil(o.CompanySize) {
 		toSerialize["company_size"] = o.CompanySize
 	}
-	if !IsNil(o.UserRole) {
-		toSerialize["user_role"] = o.UserRole
+	if o.UserRole.IsSet() {
+		toSerialize["user_role"] = o.UserRole.Get()
 	}
-	if !IsNil(o.QoveryUsageOther) {
-		toSerialize["qovery_usage_other"] = o.QoveryUsageOther
+	if o.QoveryUsageOther.IsSet() {
+		toSerialize["qovery_usage_other"] = o.QoveryUsageOther.Get()
 	}
-	if !IsNil(o.UserQuestions) {
-		toSerialize["user_questions"] = o.UserQuestions
+	if o.UserQuestions.IsSet() {
+		toSerialize["user_questions"] = o.UserQuestions.Get()
 	}
-	if !IsNil(o.CurrentStep) {
-		toSerialize["current_step"] = o.CurrentStep
+	if o.CurrentStep.IsSet() {
+		toSerialize["current_step"] = o.CurrentStep.Get()
 	}
-	if !IsNil(o.DxAuth) {
-		toSerialize["dx_auth"] = o.DxAuth
+	if o.DxAuth.IsSet() {
+		toSerialize["dx_auth"] = o.DxAuth.Get()
 	}
-	if !IsNil(o.InfrastructureHosting) {
-		toSerialize["infrastructure_hosting"] = o.InfrastructureHosting
+	if o.InfrastructureHosting.IsSet() {
+		toSerialize["infrastructure_hosting"] = o.InfrastructureHosting.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

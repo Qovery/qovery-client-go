@@ -20,10 +20,10 @@ var _ MappedNullable = &ProbeType{}
 
 // ProbeType struct for ProbeType
 type ProbeType struct {
-	Tcp                  *ProbeTypeTcp  `json:"tcp,omitempty"`
-	Http                 *ProbeTypeHttp `json:"http,omitempty"`
-	Exec                 *ProbeTypeExec `json:"exec,omitempty"`
-	Grpc                 *ProbeTypeGrpc `json:"grpc,omitempty"`
+	Tcp                  NullableProbeTypeTcp  `json:"tcp,omitempty"`
+	Http                 NullableProbeTypeHttp `json:"http,omitempty"`
+	Exec                 NullableProbeTypeExec `json:"exec,omitempty"`
+	Grpc                 NullableProbeTypeGrpc `json:"grpc,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -46,132 +46,176 @@ func NewProbeTypeWithDefaults() *ProbeType {
 	return &this
 }
 
-// GetTcp returns the Tcp field value if set, zero value otherwise.
+// GetTcp returns the Tcp field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetTcp() ProbeTypeTcp {
-	if o == nil || IsNil(o.Tcp) {
+	if o == nil || IsNil(o.Tcp.Get()) {
 		var ret ProbeTypeTcp
 		return ret
 	}
-	return *o.Tcp
+	return *o.Tcp.Get()
 }
 
 // GetTcpOk returns a tuple with the Tcp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeType) GetTcpOk() (*ProbeTypeTcp, bool) {
-	if o == nil || IsNil(o.Tcp) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Tcp, true
+	return o.Tcp.Get(), o.Tcp.IsSet()
 }
 
 // HasTcp returns a boolean if a field has been set.
 func (o *ProbeType) HasTcp() bool {
-	if o != nil && !IsNil(o.Tcp) {
+	if o != nil && o.Tcp.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTcp gets a reference to the given ProbeTypeTcp and assigns it to the Tcp field.
+// SetTcp gets a reference to the given NullableProbeTypeTcp and assigns it to the Tcp field.
 func (o *ProbeType) SetTcp(v ProbeTypeTcp) {
-	o.Tcp = &v
+	o.Tcp.Set(&v)
 }
 
-// GetHttp returns the Http field value if set, zero value otherwise.
+// SetTcpNil sets the value for Tcp to be an explicit nil
+func (o *ProbeType) SetTcpNil() {
+	o.Tcp.Set(nil)
+}
+
+// UnsetTcp ensures that no value is present for Tcp, not even an explicit nil
+func (o *ProbeType) UnsetTcp() {
+	o.Tcp.Unset()
+}
+
+// GetHttp returns the Http field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetHttp() ProbeTypeHttp {
-	if o == nil || IsNil(o.Http) {
+	if o == nil || IsNil(o.Http.Get()) {
 		var ret ProbeTypeHttp
 		return ret
 	}
-	return *o.Http
+	return *o.Http.Get()
 }
 
 // GetHttpOk returns a tuple with the Http field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeType) GetHttpOk() (*ProbeTypeHttp, bool) {
-	if o == nil || IsNil(o.Http) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Http, true
+	return o.Http.Get(), o.Http.IsSet()
 }
 
 // HasHttp returns a boolean if a field has been set.
 func (o *ProbeType) HasHttp() bool {
-	if o != nil && !IsNil(o.Http) {
+	if o != nil && o.Http.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetHttp gets a reference to the given ProbeTypeHttp and assigns it to the Http field.
+// SetHttp gets a reference to the given NullableProbeTypeHttp and assigns it to the Http field.
 func (o *ProbeType) SetHttp(v ProbeTypeHttp) {
-	o.Http = &v
+	o.Http.Set(&v)
 }
 
-// GetExec returns the Exec field value if set, zero value otherwise.
+// SetHttpNil sets the value for Http to be an explicit nil
+func (o *ProbeType) SetHttpNil() {
+	o.Http.Set(nil)
+}
+
+// UnsetHttp ensures that no value is present for Http, not even an explicit nil
+func (o *ProbeType) UnsetHttp() {
+	o.Http.Unset()
+}
+
+// GetExec returns the Exec field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetExec() ProbeTypeExec {
-	if o == nil || IsNil(o.Exec) {
+	if o == nil || IsNil(o.Exec.Get()) {
 		var ret ProbeTypeExec
 		return ret
 	}
-	return *o.Exec
+	return *o.Exec.Get()
 }
 
 // GetExecOk returns a tuple with the Exec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeType) GetExecOk() (*ProbeTypeExec, bool) {
-	if o == nil || IsNil(o.Exec) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Exec, true
+	return o.Exec.Get(), o.Exec.IsSet()
 }
 
 // HasExec returns a boolean if a field has been set.
 func (o *ProbeType) HasExec() bool {
-	if o != nil && !IsNil(o.Exec) {
+	if o != nil && o.Exec.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetExec gets a reference to the given ProbeTypeExec and assigns it to the Exec field.
+// SetExec gets a reference to the given NullableProbeTypeExec and assigns it to the Exec field.
 func (o *ProbeType) SetExec(v ProbeTypeExec) {
-	o.Exec = &v
+	o.Exec.Set(&v)
 }
 
-// GetGrpc returns the Grpc field value if set, zero value otherwise.
+// SetExecNil sets the value for Exec to be an explicit nil
+func (o *ProbeType) SetExecNil() {
+	o.Exec.Set(nil)
+}
+
+// UnsetExec ensures that no value is present for Exec, not even an explicit nil
+func (o *ProbeType) UnsetExec() {
+	o.Exec.Unset()
+}
+
+// GetGrpc returns the Grpc field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ProbeType) GetGrpc() ProbeTypeGrpc {
-	if o == nil || IsNil(o.Grpc) {
+	if o == nil || IsNil(o.Grpc.Get()) {
 		var ret ProbeTypeGrpc
 		return ret
 	}
-	return *o.Grpc
+	return *o.Grpc.Get()
 }
 
 // GetGrpcOk returns a tuple with the Grpc field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ProbeType) GetGrpcOk() (*ProbeTypeGrpc, bool) {
-	if o == nil || IsNil(o.Grpc) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Grpc, true
+	return o.Grpc.Get(), o.Grpc.IsSet()
 }
 
 // HasGrpc returns a boolean if a field has been set.
 func (o *ProbeType) HasGrpc() bool {
-	if o != nil && !IsNil(o.Grpc) {
+	if o != nil && o.Grpc.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGrpc gets a reference to the given ProbeTypeGrpc and assigns it to the Grpc field.
+// SetGrpc gets a reference to the given NullableProbeTypeGrpc and assigns it to the Grpc field.
 func (o *ProbeType) SetGrpc(v ProbeTypeGrpc) {
-	o.Grpc = &v
+	o.Grpc.Set(&v)
+}
+
+// SetGrpcNil sets the value for Grpc to be an explicit nil
+func (o *ProbeType) SetGrpcNil() {
+	o.Grpc.Set(nil)
+}
+
+// UnsetGrpc ensures that no value is present for Grpc, not even an explicit nil
+func (o *ProbeType) UnsetGrpc() {
+	o.Grpc.Unset()
 }
 
 func (o ProbeType) MarshalJSON() ([]byte, error) {
@@ -184,17 +228,17 @@ func (o ProbeType) MarshalJSON() ([]byte, error) {
 
 func (o ProbeType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Tcp) {
-		toSerialize["tcp"] = o.Tcp
+	if o.Tcp.IsSet() {
+		toSerialize["tcp"] = o.Tcp.Get()
 	}
-	if !IsNil(o.Http) {
-		toSerialize["http"] = o.Http
+	if o.Http.IsSet() {
+		toSerialize["http"] = o.Http.Get()
 	}
-	if !IsNil(o.Exec) {
-		toSerialize["exec"] = o.Exec
+	if o.Exec.IsSet() {
+		toSerialize["exec"] = o.Exec.Get()
 	}
-	if !IsNil(o.Grpc) {
-		toSerialize["grpc"] = o.Grpc
+	if o.Grpc.IsSet() {
+		toSerialize["grpc"] = o.Grpc.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

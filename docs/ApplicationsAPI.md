@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ## ListApplication
 
-> ApplicationResponseList ListApplication(ctx, environmentId).ToUpdate(toUpdate).Execute()
+> ApplicationResponseList ListApplication(ctx, environmentId).Execute()
 
 List applications
 
@@ -305,11 +305,10 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	toUpdate := true // bool | return (or not) results that must be updated (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationsAPI.ListApplication(context.Background(), environmentId).ToUpdate(toUpdate).Execute()
+	resp, r, err := apiClient.ApplicationsAPI.ListApplication(context.Background(), environmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationsAPI.ListApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -335,7 +334,6 @@ Other parameters are passed through a pointer to a apiListApplicationRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **toUpdate** | **bool** | return (or not) results that must be updated | [default to false]
 
 ### Return type
 

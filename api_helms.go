@@ -631,13 +631,6 @@ type ApiListHelmsRequest struct {
 	ctx           context.Context
 	ApiService    *HelmsAPIService
 	environmentId string
-	toUpdate      *bool
-}
-
-// return (or not) results that must be updated
-func (r ApiListHelmsRequest) ToUpdate(toUpdate bool) ApiListHelmsRequest {
-	r.toUpdate = &toUpdate
-	return r
 }
 
 func (r ApiListHelmsRequest) Execute() (*HelmResponseList, *http.Response, error) {
@@ -682,12 +675,6 @@ func (a *HelmsAPIService) ListHelmsExecute(r ApiListHelmsRequest) (*HelmResponse
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.toUpdate != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "toUpdate", r.toUpdate, "")
-	} else {
-		var defaultValue bool = false
-		r.toUpdate = &defaultValue
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

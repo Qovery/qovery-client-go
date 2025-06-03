@@ -20,8 +20,8 @@ var _ MappedNullable = &ClusterRequestFeaturesInner{}
 
 // ClusterRequestFeaturesInner struct for ClusterRequestFeaturesInner
 type ClusterRequestFeaturesInner struct {
-	Id                   *string                           `json:"id,omitempty"`
-	Value                *ClusterRequestFeaturesInnerValue `json:"value,omitempty"`
+	Id                   *string                                  `json:"id,omitempty"`
+	Value                NullableClusterRequestFeaturesInnerValue `json:"value,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -76,36 +76,47 @@ func (o *ClusterRequestFeaturesInner) SetId(v string) {
 	o.Id = &v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterRequestFeaturesInner) GetValue() ClusterRequestFeaturesInnerValue {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret ClusterRequestFeaturesInnerValue
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterRequestFeaturesInner) GetValueOk() (*ClusterRequestFeaturesInnerValue, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *ClusterRequestFeaturesInner) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given ClusterRequestFeaturesInnerValue and assigns it to the Value field.
+// SetValue gets a reference to the given NullableClusterRequestFeaturesInnerValue and assigns it to the Value field.
 func (o *ClusterRequestFeaturesInner) SetValue(v ClusterRequestFeaturesInnerValue) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *ClusterRequestFeaturesInner) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *ClusterRequestFeaturesInner) UnsetValue() {
+	o.Value.Unset()
 }
 
 func (o ClusterRequestFeaturesInner) MarshalJSON() ([]byte, error) {
@@ -121,8 +132,8 @@ func (o ClusterRequestFeaturesInner) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Id) {
 		toSerialize["id"] = o.Id
 	}
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

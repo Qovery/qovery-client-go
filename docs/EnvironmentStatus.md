@@ -6,12 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **State** | [**StateEnum**](StateEnum.md) |  | 
-**LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
+**LastDeploymentDate** | Pointer to **NullableTime** |  | [optional] 
 **LastDeploymentState** | [**StateEnum**](StateEnum.md) |  | 
-**LastDeploymentId** | Pointer to **string** |  | [optional] 
-**TotalDeploymentDurationInSeconds** | Pointer to **int32** |  | [optional] 
-**Origin** | Pointer to [**EnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md) |  | [optional] 
-**TriggeredBy** | Pointer to **string** |  | [optional] 
+**LastDeploymentId** | Pointer to **NullableString** |  | [optional] 
+**TotalDeploymentDurationInSeconds** | Pointer to **NullableInt32** |  | [optional] 
+**Origin** | Pointer to [**NullableEnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md) |  | [optional] 
+**TriggeredBy** | Pointer to **NullableString** |  | [optional] 
 **DeploymentStatus** | Pointer to [**EnvironmentDeploymentStatusEnum**](EnvironmentDeploymentStatusEnum.md) |  | [optional] 
 
 ## Methods
@@ -98,6 +98,16 @@ SetLastDeploymentDate sets LastDeploymentDate field to given value.
 
 HasLastDeploymentDate returns a boolean if a field has been set.
 
+### SetLastDeploymentDateNil
+
+`func (o *EnvironmentStatus) SetLastDeploymentDateNil(b bool)`
+
+ SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
+
+### UnsetLastDeploymentDate
+`func (o *EnvironmentStatus) UnsetLastDeploymentDate()`
+
+UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
 ### GetLastDeploymentState
 
 `func (o *EnvironmentStatus) GetLastDeploymentState() StateEnum`
@@ -143,6 +153,16 @@ SetLastDeploymentId sets LastDeploymentId field to given value.
 
 HasLastDeploymentId returns a boolean if a field has been set.
 
+### SetLastDeploymentIdNil
+
+`func (o *EnvironmentStatus) SetLastDeploymentIdNil(b bool)`
+
+ SetLastDeploymentIdNil sets the value for LastDeploymentId to be an explicit nil
+
+### UnsetLastDeploymentId
+`func (o *EnvironmentStatus) UnsetLastDeploymentId()`
+
+UnsetLastDeploymentId ensures that no value is present for LastDeploymentId, not even an explicit nil
 ### GetTotalDeploymentDurationInSeconds
 
 `func (o *EnvironmentStatus) GetTotalDeploymentDurationInSeconds() int32`
@@ -168,6 +188,16 @@ SetTotalDeploymentDurationInSeconds sets TotalDeploymentDurationInSeconds field 
 
 HasTotalDeploymentDurationInSeconds returns a boolean if a field has been set.
 
+### SetTotalDeploymentDurationInSecondsNil
+
+`func (o *EnvironmentStatus) SetTotalDeploymentDurationInSecondsNil(b bool)`
+
+ SetTotalDeploymentDurationInSecondsNil sets the value for TotalDeploymentDurationInSeconds to be an explicit nil
+
+### UnsetTotalDeploymentDurationInSeconds
+`func (o *EnvironmentStatus) UnsetTotalDeploymentDurationInSeconds()`
+
+UnsetTotalDeploymentDurationInSeconds ensures that no value is present for TotalDeploymentDurationInSeconds, not even an explicit nil
 ### GetOrigin
 
 `func (o *EnvironmentStatus) GetOrigin() EnvironmentStatusEventOriginEnum`
@@ -193,6 +223,16 @@ SetOrigin sets Origin field to given value.
 
 HasOrigin returns a boolean if a field has been set.
 
+### SetOriginNil
+
+`func (o *EnvironmentStatus) SetOriginNil(b bool)`
+
+ SetOriginNil sets the value for Origin to be an explicit nil
+
+### UnsetOrigin
+`func (o *EnvironmentStatus) UnsetOrigin()`
+
+UnsetOrigin ensures that no value is present for Origin, not even an explicit nil
 ### GetTriggeredBy
 
 `func (o *EnvironmentStatus) GetTriggeredBy() string`
@@ -218,6 +258,16 @@ SetTriggeredBy sets TriggeredBy field to given value.
 
 HasTriggeredBy returns a boolean if a field has been set.
 
+### SetTriggeredByNil
+
+`func (o *EnvironmentStatus) SetTriggeredByNil(b bool)`
+
+ SetTriggeredByNil sets the value for TriggeredBy to be an explicit nil
+
+### UnsetTriggeredBy
+`func (o *EnvironmentStatus) UnsetTriggeredBy()`
+
+UnsetTriggeredBy ensures that no value is present for TriggeredBy, not even an explicit nil
 ### GetDeploymentStatus
 
 `func (o *EnvironmentStatus) GetDeploymentStatus() EnvironmentDeploymentStatusEnum`

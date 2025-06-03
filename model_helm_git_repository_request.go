@@ -28,7 +28,7 @@ type HelmGitRepositoryRequest struct {
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
 	// The git token id on Qovery side
-	GitTokenId           *string `json:"git_token_id,omitempty"`
+	GitTokenId           NullableString `json:"git_token_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,36 +144,47 @@ func (o *HelmGitRepositoryRequest) SetRootPath(v string) {
 	o.RootPath = &v
 }
 
-// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise.
+// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmGitRepositoryRequest) GetGitTokenId() string {
-	if o == nil || IsNil(o.GitTokenId) {
+	if o == nil || IsNil(o.GitTokenId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.GitTokenId
+	return *o.GitTokenId.Get()
 }
 
 // GetGitTokenIdOk returns a tuple with the GitTokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmGitRepositoryRequest) GetGitTokenIdOk() (*string, bool) {
-	if o == nil || IsNil(o.GitTokenId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.GitTokenId, true
+	return o.GitTokenId.Get(), o.GitTokenId.IsSet()
 }
 
 // HasGitTokenId returns a boolean if a field has been set.
 func (o *HelmGitRepositoryRequest) HasGitTokenId() bool {
-	if o != nil && !IsNil(o.GitTokenId) {
+	if o != nil && o.GitTokenId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetGitTokenId gets a reference to the given string and assigns it to the GitTokenId field.
+// SetGitTokenId gets a reference to the given NullableString and assigns it to the GitTokenId field.
 func (o *HelmGitRepositoryRequest) SetGitTokenId(v string) {
-	o.GitTokenId = &v
+	o.GitTokenId.Set(&v)
+}
+
+// SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+func (o *HelmGitRepositoryRequest) SetGitTokenIdNil() {
+	o.GitTokenId.Set(nil)
+}
+
+// UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+func (o *HelmGitRepositoryRequest) UnsetGitTokenId() {
+	o.GitTokenId.Unset()
 }
 
 func (o HelmGitRepositoryRequest) MarshalJSON() ([]byte, error) {
@@ -193,8 +204,8 @@ func (o HelmGitRepositoryRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.RootPath) {
 		toSerialize["root_path"] = o.RootPath
 	}
-	if !IsNil(o.GitTokenId) {
-		toSerialize["git_token_id"] = o.GitTokenId
+	if o.GitTokenId.IsSet() {
+		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

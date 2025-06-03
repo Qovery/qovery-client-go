@@ -30,7 +30,7 @@ type TerraformAdvancedSettings struct {
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
-	DeploymentAffinityNodeRequired map[string]string `json:"deployment.affinity.node.required,omitempty"`
+	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
 	// Allows you to set an existing Kubernetes service account name
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Mounts the container's root filesystem as read-only
@@ -223,14 +223,14 @@ func (o *TerraformAdvancedSettings) GetDeploymentAffinityNodeRequired() map[stri
 		var ret map[string]string
 		return ret
 	}
-	return o.DeploymentAffinityNodeRequired
+	return *o.DeploymentAffinityNodeRequired
 }
 
 // GetDeploymentAffinityNodeRequiredOk returns a tuple with the DeploymentAffinityNodeRequired field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TerraformAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (map[string]string, bool) {
+func (o *TerraformAdvancedSettings) GetDeploymentAffinityNodeRequiredOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.DeploymentAffinityNodeRequired) {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.DeploymentAffinityNodeRequired, true
 }
@@ -246,7 +246,7 @@ func (o *TerraformAdvancedSettings) HasDeploymentAffinityNodeRequired() bool {
 
 // SetDeploymentAffinityNodeRequired gets a reference to the given map[string]string and assigns it to the DeploymentAffinityNodeRequired field.
 func (o *TerraformAdvancedSettings) SetDeploymentAffinityNodeRequired(v map[string]string) {
-	o.DeploymentAffinityNodeRequired = v
+	o.DeploymentAffinityNodeRequired = &v
 }
 
 // GetSecurityServiceAccountName returns the SecurityServiceAccountName field value if set, zero value otherwise.

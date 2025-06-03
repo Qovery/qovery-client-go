@@ -22,11 +22,11 @@ var _ MappedNullable = &JobSourceDockerResponse{}
 type JobSourceDockerResponse struct {
 	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
-	DockerfilePath *string `json:"dockerfile_path,omitempty"`
+	DockerfilePath NullableString `json:"dockerfile_path,omitempty"`
 	// The content of your dockerfile if it is not stored inside your git repository
-	DockerfileRaw *string `json:"dockerfile_raw,omitempty"`
+	DockerfileRaw NullableString `json:"dockerfile_raw,omitempty"`
 	// The target build stage in the Dockerfile to build
-	DockerTargetBuildStage *string `json:"docker_target_build_stage,omitempty"`
+	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
 	AdditionalProperties   map[string]interface{}
 }
 
@@ -81,100 +81,133 @@ func (o *JobSourceDockerResponse) SetGitRepository(v ApplicationGitRepository) {
 	o.GitRepository = &v
 }
 
-// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise.
+// GetDockerfilePath returns the DockerfilePath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobSourceDockerResponse) GetDockerfilePath() string {
-	if o == nil || IsNil(o.DockerfilePath) {
+	if o == nil || IsNil(o.DockerfilePath.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DockerfilePath
+	return *o.DockerfilePath.Get()
 }
 
 // GetDockerfilePathOk returns a tuple with the DockerfilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobSourceDockerResponse) GetDockerfilePathOk() (*string, bool) {
-	if o == nil || IsNil(o.DockerfilePath) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DockerfilePath, true
+	return o.DockerfilePath.Get(), o.DockerfilePath.IsSet()
 }
 
 // HasDockerfilePath returns a boolean if a field has been set.
 func (o *JobSourceDockerResponse) HasDockerfilePath() bool {
-	if o != nil && !IsNil(o.DockerfilePath) {
+	if o != nil && o.DockerfilePath.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfilePath gets a reference to the given string and assigns it to the DockerfilePath field.
+// SetDockerfilePath gets a reference to the given NullableString and assigns it to the DockerfilePath field.
 func (o *JobSourceDockerResponse) SetDockerfilePath(v string) {
-	o.DockerfilePath = &v
+	o.DockerfilePath.Set(&v)
 }
 
-// GetDockerfileRaw returns the DockerfileRaw field value if set, zero value otherwise.
+// SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+func (o *JobSourceDockerResponse) SetDockerfilePathNil() {
+	o.DockerfilePath.Set(nil)
+}
+
+// UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
+func (o *JobSourceDockerResponse) UnsetDockerfilePath() {
+	o.DockerfilePath.Unset()
+}
+
+// GetDockerfileRaw returns the DockerfileRaw field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobSourceDockerResponse) GetDockerfileRaw() string {
-	if o == nil || IsNil(o.DockerfileRaw) {
+	if o == nil || IsNil(o.DockerfileRaw.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DockerfileRaw
+	return *o.DockerfileRaw.Get()
 }
 
 // GetDockerfileRawOk returns a tuple with the DockerfileRaw field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobSourceDockerResponse) GetDockerfileRawOk() (*string, bool) {
-	if o == nil || IsNil(o.DockerfileRaw) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DockerfileRaw, true
+	return o.DockerfileRaw.Get(), o.DockerfileRaw.IsSet()
 }
 
 // HasDockerfileRaw returns a boolean if a field has been set.
 func (o *JobSourceDockerResponse) HasDockerfileRaw() bool {
-	if o != nil && !IsNil(o.DockerfileRaw) {
+	if o != nil && o.DockerfileRaw.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerfileRaw gets a reference to the given string and assigns it to the DockerfileRaw field.
+// SetDockerfileRaw gets a reference to the given NullableString and assigns it to the DockerfileRaw field.
 func (o *JobSourceDockerResponse) SetDockerfileRaw(v string) {
-	o.DockerfileRaw = &v
+	o.DockerfileRaw.Set(&v)
 }
 
-// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise.
+// SetDockerfileRawNil sets the value for DockerfileRaw to be an explicit nil
+func (o *JobSourceDockerResponse) SetDockerfileRawNil() {
+	o.DockerfileRaw.Set(nil)
+}
+
+// UnsetDockerfileRaw ensures that no value is present for DockerfileRaw, not even an explicit nil
+func (o *JobSourceDockerResponse) UnsetDockerfileRaw() {
+	o.DockerfileRaw.Unset()
+}
+
+// GetDockerTargetBuildStage returns the DockerTargetBuildStage field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobSourceDockerResponse) GetDockerTargetBuildStage() string {
-	if o == nil || IsNil(o.DockerTargetBuildStage) {
+	if o == nil || IsNil(o.DockerTargetBuildStage.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DockerTargetBuildStage
+	return *o.DockerTargetBuildStage.Get()
 }
 
 // GetDockerTargetBuildStageOk returns a tuple with the DockerTargetBuildStage field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobSourceDockerResponse) GetDockerTargetBuildStageOk() (*string, bool) {
-	if o == nil || IsNil(o.DockerTargetBuildStage) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DockerTargetBuildStage, true
+	return o.DockerTargetBuildStage.Get(), o.DockerTargetBuildStage.IsSet()
 }
 
 // HasDockerTargetBuildStage returns a boolean if a field has been set.
 func (o *JobSourceDockerResponse) HasDockerTargetBuildStage() bool {
-	if o != nil && !IsNil(o.DockerTargetBuildStage) {
+	if o != nil && o.DockerTargetBuildStage.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDockerTargetBuildStage gets a reference to the given string and assigns it to the DockerTargetBuildStage field.
+// SetDockerTargetBuildStage gets a reference to the given NullableString and assigns it to the DockerTargetBuildStage field.
 func (o *JobSourceDockerResponse) SetDockerTargetBuildStage(v string) {
-	o.DockerTargetBuildStage = &v
+	o.DockerTargetBuildStage.Set(&v)
+}
+
+// SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+func (o *JobSourceDockerResponse) SetDockerTargetBuildStageNil() {
+	o.DockerTargetBuildStage.Set(nil)
+}
+
+// UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+func (o *JobSourceDockerResponse) UnsetDockerTargetBuildStage() {
+	o.DockerTargetBuildStage.Unset()
 }
 
 func (o JobSourceDockerResponse) MarshalJSON() ([]byte, error) {
@@ -190,14 +223,14 @@ func (o JobSourceDockerResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
-	if !IsNil(o.DockerfilePath) {
-		toSerialize["dockerfile_path"] = o.DockerfilePath
+	if o.DockerfilePath.IsSet() {
+		toSerialize["dockerfile_path"] = o.DockerfilePath.Get()
 	}
-	if !IsNil(o.DockerfileRaw) {
-		toSerialize["dockerfile_raw"] = o.DockerfileRaw
+	if o.DockerfileRaw.IsSet() {
+		toSerialize["dockerfile_raw"] = o.DockerfileRaw.Get()
 	}
-	if !IsNil(o.DockerTargetBuildStage) {
-		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage
+	if o.DockerTargetBuildStage.IsSet() {
+		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

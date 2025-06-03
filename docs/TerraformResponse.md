@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **TimeoutSec** | **int32** |  | [default to 600]
 **AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
-**TerraformFilesSource** | Pointer to **interface{}** |  | [optional] 
+**TerraformFilesSource** | Pointer to **map[string]interface{}** |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
@@ -212,20 +212,20 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 ### GetTerraformFilesSource
 
-`func (o *TerraformResponse) GetTerraformFilesSource() interface{}`
+`func (o *TerraformResponse) GetTerraformFilesSource() map[string]interface{}`
 
 GetTerraformFilesSource returns the TerraformFilesSource field if non-nil, zero value otherwise.
 
 ### GetTerraformFilesSourceOk
 
-`func (o *TerraformResponse) GetTerraformFilesSourceOk() (*interface{}, bool)`
+`func (o *TerraformResponse) GetTerraformFilesSourceOk() (*map[string]interface{}, bool)`
 
 GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerraformFilesSource
 
-`func (o *TerraformResponse) SetTerraformFilesSource(v interface{})`
+`func (o *TerraformResponse) SetTerraformFilesSource(v map[string]interface{})`
 
 SetTerraformFilesSource sets TerraformFilesSource field to given value.
 

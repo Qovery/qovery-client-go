@@ -356,7 +356,7 @@ Name | Type | Description  | Notes
 
 ## ListHelms
 
-> HelmResponseList ListHelms(ctx, environmentId).ToUpdate(toUpdate).Execute()
+> HelmResponseList ListHelms(ctx, environmentId).Execute()
 
 List helms
 
@@ -374,11 +374,10 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	toUpdate := true // bool | return (or not) results that must be updated (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmsAPI.ListHelms(context.Background(), environmentId).ToUpdate(toUpdate).Execute()
+	resp, r, err := apiClient.HelmsAPI.ListHelms(context.Background(), environmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `HelmsAPI.ListHelms``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -404,7 +403,6 @@ Other parameters are passed through a pointer to a apiListHelmsRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **toUpdate** | **bool** | return (or not) results that must be updated | [default to false]
 
 ### Return type
 

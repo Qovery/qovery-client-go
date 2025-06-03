@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Port** | Pointer to **int32** |  | [optional] 
-**Host** | Pointer to **string** |  | [optional] 
+**Host** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -76,6 +76,16 @@ SetHost sets Host field to given value.
 
 HasHost returns a boolean if a field has been set.
 
+### SetHostNil
+
+`func (o *ProbeTypeTcp) SetHostNil(b bool)`
+
+ SetHostNil sets the value for Host to be an explicit nil
+
+### UnsetHost
+`func (o *ProbeTypeTcp) UnsetHost()`
+
+UnsetHost ensures that no value is present for Host, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

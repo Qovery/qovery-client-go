@@ -21,7 +21,7 @@ var _ MappedNullable = &HelmRequestAllOfSourceOneOf1HelmRepository{}
 // HelmRequestAllOfSourceOneOf1HelmRepository struct for HelmRequestAllOfSourceOneOf1HelmRepository
 type HelmRequestAllOfSourceOneOf1HelmRepository struct {
 	// The id of the helm repository
-	Repository *string `json:"repository,omitempty"`
+	Repository NullableString `json:"repository,omitempty"`
 	// The name of the chart in the repository
 	ChartName *string `json:"chart_name,omitempty"`
 	// The version of the chart to use
@@ -48,36 +48,47 @@ func NewHelmRequestAllOfSourceOneOf1HelmRepositoryWithDefaults() *HelmRequestAll
 	return &this
 }
 
-// GetRepository returns the Repository field value if set, zero value otherwise.
+// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmRequestAllOfSourceOneOf1HelmRepository) GetRepository() string {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil || IsNil(o.Repository.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Repository
+	return *o.Repository.Get()
 }
 
 // GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRequestAllOfSourceOneOf1HelmRepository) GetRepositoryOk() (*string, bool) {
-	if o == nil || IsNil(o.Repository) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Repository, true
+	return o.Repository.Get(), o.Repository.IsSet()
 }
 
 // HasRepository returns a boolean if a field has been set.
 func (o *HelmRequestAllOfSourceOneOf1HelmRepository) HasRepository() bool {
-	if o != nil && !IsNil(o.Repository) {
+	if o != nil && o.Repository.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetRepository gets a reference to the given string and assigns it to the Repository field.
+// SetRepository gets a reference to the given NullableString and assigns it to the Repository field.
 func (o *HelmRequestAllOfSourceOneOf1HelmRepository) SetRepository(v string) {
-	o.Repository = &v
+	o.Repository.Set(&v)
+}
+
+// SetRepositoryNil sets the value for Repository to be an explicit nil
+func (o *HelmRequestAllOfSourceOneOf1HelmRepository) SetRepositoryNil() {
+	o.Repository.Set(nil)
+}
+
+// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
+func (o *HelmRequestAllOfSourceOneOf1HelmRepository) UnsetRepository() {
+	o.Repository.Unset()
 }
 
 // GetChartName returns the ChartName field value if set, zero value otherwise.
@@ -154,8 +165,8 @@ func (o HelmRequestAllOfSourceOneOf1HelmRepository) MarshalJSON() ([]byte, error
 
 func (o HelmRequestAllOfSourceOneOf1HelmRepository) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Repository) {
-		toSerialize["repository"] = o.Repository
+	if o.Repository.IsSet() {
+		toSerialize["repository"] = o.Repository.Get()
 	}
 	if !IsNil(o.ChartName) {
 		toSerialize["chart_name"] = o.ChartName

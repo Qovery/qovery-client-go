@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Commit** | [**Commit**](Commit.md) |  | 
+**Commit** | [**NullableCommit**](Commit.md) |  | 
 **ImageName** | **string** |  | 
 **Tag** | **string** |  | 
 **Arguments** | **[]string** |  | 
@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewDeploymentHistoryServiceDetails
 
-`func NewDeploymentHistoryServiceDetails(commit Commit, imageName string, tag string, arguments []string, jobType string, ) *DeploymentHistoryServiceDetails`
+`func NewDeploymentHistoryServiceDetails(commit NullableCommit, imageName string, tag string, arguments []string, jobType string, ) *DeploymentHistoryServiceDetails`
 
 NewDeploymentHistoryServiceDetails instantiates a new DeploymentHistoryServiceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -52,6 +52,16 @@ and a boolean to check if the value has been set.
 SetCommit sets Commit field to given value.
 
 
+### SetCommitNil
+
+`func (o *DeploymentHistoryServiceDetails) SetCommitNil(b bool)`
+
+ SetCommitNil sets the value for Commit to be an explicit nil
+
+### UnsetCommit
+`func (o *DeploymentHistoryServiceDetails) UnsetCommit()`
+
+UnsetCommit ensures that no value is present for Commit, not even an explicit nil
 ### GetImageName
 
 `func (o *DeploymentHistoryServiceDetails) GetImageName() string`

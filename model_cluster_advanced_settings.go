@@ -31,7 +31,7 @@ type ClusterAdvancedSettings struct {
 	// Configure the number of seconds before cleaning images in the registry
 	RegistryImageRetentionTime *int32 `json:"registry.image_retention_time,omitempty"`
 	// Add additional tags on the cluster dedicated registry
-	CloudProviderContainerRegistryTags map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
+	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
 	// Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application's public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports.
 	AwsEksEnableAlbController *bool `json:"aws.eks.enable_alb_controller,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
@@ -275,14 +275,14 @@ func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTags() map[st
 		var ret map[string]string
 		return ret
 	}
-	return o.CloudProviderContainerRegistryTags
+	return *o.CloudProviderContainerRegistryTags
 }
 
 // GetCloudProviderContainerRegistryTagsOk returns a tuple with the CloudProviderContainerRegistryTags field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (map[string]string, bool) {
+func (o *ClusterAdvancedSettings) GetCloudProviderContainerRegistryTagsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.CloudProviderContainerRegistryTags) {
-		return map[string]string{}, false
+		return nil, false
 	}
 	return o.CloudProviderContainerRegistryTags, true
 }
@@ -298,7 +298,7 @@ func (o *ClusterAdvancedSettings) HasCloudProviderContainerRegistryTags() bool {
 
 // SetCloudProviderContainerRegistryTags gets a reference to the given map[string]string and assigns it to the CloudProviderContainerRegistryTags field.
 func (o *ClusterAdvancedSettings) SetCloudProviderContainerRegistryTags(v map[string]string) {
-	o.CloudProviderContainerRegistryTags = v
+	o.CloudProviderContainerRegistryTags = &v
 }
 
 // GetAwsEksEnableAlbController returns the AwsEksEnableAlbController field value if set, zero value otherwise.

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | Pointer to **NullableString** |  | [optional] 
 **Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
 **ClusterId** | **string** |  | 
 **AutoStop** | Pointer to **bool** |  | [optional] [default to false]
@@ -148,6 +148,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *ProjectDeploymentRule) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *ProjectDeploymentRule) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetMode
 
 `func (o *ProjectDeploymentRule) GetMode() EnvironmentModeEnum`

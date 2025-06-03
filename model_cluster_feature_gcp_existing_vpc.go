@@ -21,12 +21,12 @@ var _ MappedNullable = &ClusterFeatureGcpExistingVpc{}
 
 // ClusterFeatureGcpExistingVpc struct for ClusterFeatureGcpExistingVpc
 type ClusterFeatureGcpExistingVpc struct {
-	VpcName                    string   `json:"vpc_name"`
-	VpcProjectId               *string  `json:"vpc_project_id,omitempty"`
-	SubnetworkName             *string  `json:"subnetwork_name,omitempty"`
-	IpRangeServicesName        *string  `json:"ip_range_services_name,omitempty"`
-	IpRangePodsName            *string  `json:"ip_range_pods_name,omitempty"`
-	AdditionalIpRangePodsNames []string `json:"additional_ip_range_pods_names,omitempty"`
+	VpcName                    string         `json:"vpc_name"`
+	VpcProjectId               NullableString `json:"vpc_project_id,omitempty"`
+	SubnetworkName             NullableString `json:"subnetwork_name,omitempty"`
+	IpRangeServicesName        NullableString `json:"ip_range_services_name,omitempty"`
+	IpRangePodsName            NullableString `json:"ip_range_pods_name,omitempty"`
+	AdditionalIpRangePodsNames []string       `json:"additional_ip_range_pods_names,omitempty"`
 	AdditionalProperties       map[string]interface{}
 }
 
@@ -74,132 +74,176 @@ func (o *ClusterFeatureGcpExistingVpc) SetVpcName(v string) {
 	o.VpcName = v
 }
 
-// GetVpcProjectId returns the VpcProjectId field value if set, zero value otherwise.
+// GetVpcProjectId returns the VpcProjectId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterFeatureGcpExistingVpc) GetVpcProjectId() string {
-	if o == nil || IsNil(o.VpcProjectId) {
+	if o == nil || IsNil(o.VpcProjectId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.VpcProjectId
+	return *o.VpcProjectId.Get()
 }
 
 // GetVpcProjectIdOk returns a tuple with the VpcProjectId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureGcpExistingVpc) GetVpcProjectIdOk() (*string, bool) {
-	if o == nil || IsNil(o.VpcProjectId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.VpcProjectId, true
+	return o.VpcProjectId.Get(), o.VpcProjectId.IsSet()
 }
 
 // HasVpcProjectId returns a boolean if a field has been set.
 func (o *ClusterFeatureGcpExistingVpc) HasVpcProjectId() bool {
-	if o != nil && !IsNil(o.VpcProjectId) {
+	if o != nil && o.VpcProjectId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetVpcProjectId gets a reference to the given string and assigns it to the VpcProjectId field.
+// SetVpcProjectId gets a reference to the given NullableString and assigns it to the VpcProjectId field.
 func (o *ClusterFeatureGcpExistingVpc) SetVpcProjectId(v string) {
-	o.VpcProjectId = &v
+	o.VpcProjectId.Set(&v)
 }
 
-// GetSubnetworkName returns the SubnetworkName field value if set, zero value otherwise.
+// SetVpcProjectIdNil sets the value for VpcProjectId to be an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) SetVpcProjectIdNil() {
+	o.VpcProjectId.Set(nil)
+}
+
+// UnsetVpcProjectId ensures that no value is present for VpcProjectId, not even an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) UnsetVpcProjectId() {
+	o.VpcProjectId.Unset()
+}
+
+// GetSubnetworkName returns the SubnetworkName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterFeatureGcpExistingVpc) GetSubnetworkName() string {
-	if o == nil || IsNil(o.SubnetworkName) {
+	if o == nil || IsNil(o.SubnetworkName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.SubnetworkName
+	return *o.SubnetworkName.Get()
 }
 
 // GetSubnetworkNameOk returns a tuple with the SubnetworkName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureGcpExistingVpc) GetSubnetworkNameOk() (*string, bool) {
-	if o == nil || IsNil(o.SubnetworkName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SubnetworkName, true
+	return o.SubnetworkName.Get(), o.SubnetworkName.IsSet()
 }
 
 // HasSubnetworkName returns a boolean if a field has been set.
 func (o *ClusterFeatureGcpExistingVpc) HasSubnetworkName() bool {
-	if o != nil && !IsNil(o.SubnetworkName) {
+	if o != nil && o.SubnetworkName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSubnetworkName gets a reference to the given string and assigns it to the SubnetworkName field.
+// SetSubnetworkName gets a reference to the given NullableString and assigns it to the SubnetworkName field.
 func (o *ClusterFeatureGcpExistingVpc) SetSubnetworkName(v string) {
-	o.SubnetworkName = &v
+	o.SubnetworkName.Set(&v)
 }
 
-// GetIpRangeServicesName returns the IpRangeServicesName field value if set, zero value otherwise.
+// SetSubnetworkNameNil sets the value for SubnetworkName to be an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) SetSubnetworkNameNil() {
+	o.SubnetworkName.Set(nil)
+}
+
+// UnsetSubnetworkName ensures that no value is present for SubnetworkName, not even an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) UnsetSubnetworkName() {
+	o.SubnetworkName.Unset()
+}
+
+// GetIpRangeServicesName returns the IpRangeServicesName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterFeatureGcpExistingVpc) GetIpRangeServicesName() string {
-	if o == nil || IsNil(o.IpRangeServicesName) {
+	if o == nil || IsNil(o.IpRangeServicesName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IpRangeServicesName
+	return *o.IpRangeServicesName.Get()
 }
 
 // GetIpRangeServicesNameOk returns a tuple with the IpRangeServicesName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureGcpExistingVpc) GetIpRangeServicesNameOk() (*string, bool) {
-	if o == nil || IsNil(o.IpRangeServicesName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IpRangeServicesName, true
+	return o.IpRangeServicesName.Get(), o.IpRangeServicesName.IsSet()
 }
 
 // HasIpRangeServicesName returns a boolean if a field has been set.
 func (o *ClusterFeatureGcpExistingVpc) HasIpRangeServicesName() bool {
-	if o != nil && !IsNil(o.IpRangeServicesName) {
+	if o != nil && o.IpRangeServicesName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIpRangeServicesName gets a reference to the given string and assigns it to the IpRangeServicesName field.
+// SetIpRangeServicesName gets a reference to the given NullableString and assigns it to the IpRangeServicesName field.
 func (o *ClusterFeatureGcpExistingVpc) SetIpRangeServicesName(v string) {
-	o.IpRangeServicesName = &v
+	o.IpRangeServicesName.Set(&v)
 }
 
-// GetIpRangePodsName returns the IpRangePodsName field value if set, zero value otherwise.
+// SetIpRangeServicesNameNil sets the value for IpRangeServicesName to be an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) SetIpRangeServicesNameNil() {
+	o.IpRangeServicesName.Set(nil)
+}
+
+// UnsetIpRangeServicesName ensures that no value is present for IpRangeServicesName, not even an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) UnsetIpRangeServicesName() {
+	o.IpRangeServicesName.Unset()
+}
+
+// GetIpRangePodsName returns the IpRangePodsName field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterFeatureGcpExistingVpc) GetIpRangePodsName() string {
-	if o == nil || IsNil(o.IpRangePodsName) {
+	if o == nil || IsNil(o.IpRangePodsName.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.IpRangePodsName
+	return *o.IpRangePodsName.Get()
 }
 
 // GetIpRangePodsNameOk returns a tuple with the IpRangePodsName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterFeatureGcpExistingVpc) GetIpRangePodsNameOk() (*string, bool) {
-	if o == nil || IsNil(o.IpRangePodsName) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IpRangePodsName, true
+	return o.IpRangePodsName.Get(), o.IpRangePodsName.IsSet()
 }
 
 // HasIpRangePodsName returns a boolean if a field has been set.
 func (o *ClusterFeatureGcpExistingVpc) HasIpRangePodsName() bool {
-	if o != nil && !IsNil(o.IpRangePodsName) {
+	if o != nil && o.IpRangePodsName.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetIpRangePodsName gets a reference to the given string and assigns it to the IpRangePodsName field.
+// SetIpRangePodsName gets a reference to the given NullableString and assigns it to the IpRangePodsName field.
 func (o *ClusterFeatureGcpExistingVpc) SetIpRangePodsName(v string) {
-	o.IpRangePodsName = &v
+	o.IpRangePodsName.Set(&v)
+}
+
+// SetIpRangePodsNameNil sets the value for IpRangePodsName to be an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) SetIpRangePodsNameNil() {
+	o.IpRangePodsName.Set(nil)
+}
+
+// UnsetIpRangePodsName ensures that no value is present for IpRangePodsName, not even an explicit nil
+func (o *ClusterFeatureGcpExistingVpc) UnsetIpRangePodsName() {
+	o.IpRangePodsName.Unset()
 }
 
 // GetAdditionalIpRangePodsNames returns the AdditionalIpRangePodsNames field value if set, zero value otherwise.
@@ -245,17 +289,17 @@ func (o ClusterFeatureGcpExistingVpc) MarshalJSON() ([]byte, error) {
 func (o ClusterFeatureGcpExistingVpc) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["vpc_name"] = o.VpcName
-	if !IsNil(o.VpcProjectId) {
-		toSerialize["vpc_project_id"] = o.VpcProjectId
+	if o.VpcProjectId.IsSet() {
+		toSerialize["vpc_project_id"] = o.VpcProjectId.Get()
 	}
-	if !IsNil(o.SubnetworkName) {
-		toSerialize["subnetwork_name"] = o.SubnetworkName
+	if o.SubnetworkName.IsSet() {
+		toSerialize["subnetwork_name"] = o.SubnetworkName.Get()
 	}
-	if !IsNil(o.IpRangeServicesName) {
-		toSerialize["ip_range_services_name"] = o.IpRangeServicesName
+	if o.IpRangeServicesName.IsSet() {
+		toSerialize["ip_range_services_name"] = o.IpRangeServicesName.Get()
 	}
-	if !IsNil(o.IpRangePodsName) {
-		toSerialize["ip_range_pods_name"] = o.IpRangePodsName
+	if o.IpRangePodsName.IsSet() {
+		toSerialize["ip_range_pods_name"] = o.IpRangePodsName.Get()
 	}
 	if !IsNil(o.AdditionalIpRangePodsNames) {
 		toSerialize["additional_ip_range_pods_names"] = o.AdditionalIpRangePodsNames

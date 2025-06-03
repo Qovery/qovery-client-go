@@ -25,7 +25,7 @@ type CheckedCustomDomainResponse struct {
 	DomainName string                    `json:"domain_name"`
 	Status     CheckedCustomDomainStatus `json:"status"`
 	// optional field containing information about failure check
-	ErrorDetails         *string `json:"error_details,omitempty"`
+	ErrorDetails         NullableString `json:"error_details,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -98,36 +98,47 @@ func (o *CheckedCustomDomainResponse) SetStatus(v CheckedCustomDomainStatus) {
 	o.Status = v
 }
 
-// GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise.
+// GetErrorDetails returns the ErrorDetails field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *CheckedCustomDomainResponse) GetErrorDetails() string {
-	if o == nil || IsNil(o.ErrorDetails) {
+	if o == nil || IsNil(o.ErrorDetails.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ErrorDetails
+	return *o.ErrorDetails.Get()
 }
 
 // GetErrorDetailsOk returns a tuple with the ErrorDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *CheckedCustomDomainResponse) GetErrorDetailsOk() (*string, bool) {
-	if o == nil || IsNil(o.ErrorDetails) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ErrorDetails, true
+	return o.ErrorDetails.Get(), o.ErrorDetails.IsSet()
 }
 
 // HasErrorDetails returns a boolean if a field has been set.
 func (o *CheckedCustomDomainResponse) HasErrorDetails() bool {
-	if o != nil && !IsNil(o.ErrorDetails) {
+	if o != nil && o.ErrorDetails.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetErrorDetails gets a reference to the given string and assigns it to the ErrorDetails field.
+// SetErrorDetails gets a reference to the given NullableString and assigns it to the ErrorDetails field.
 func (o *CheckedCustomDomainResponse) SetErrorDetails(v string) {
-	o.ErrorDetails = &v
+	o.ErrorDetails.Set(&v)
+}
+
+// SetErrorDetailsNil sets the value for ErrorDetails to be an explicit nil
+func (o *CheckedCustomDomainResponse) SetErrorDetailsNil() {
+	o.ErrorDetails.Set(nil)
+}
+
+// UnsetErrorDetails ensures that no value is present for ErrorDetails, not even an explicit nil
+func (o *CheckedCustomDomainResponse) UnsetErrorDetails() {
+	o.ErrorDetails.Unset()
 }
 
 func (o CheckedCustomDomainResponse) MarshalJSON() ([]byte, error) {
@@ -142,8 +153,8 @@ func (o CheckedCustomDomainResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["domain_name"] = o.DomainName
 	toSerialize["status"] = o.Status
-	if !IsNil(o.ErrorDetails) {
-		toSerialize["error_details"] = o.ErrorDetails
+	if o.ErrorDetails.IsSet() {
+		toSerialize["error_details"] = o.ErrorDetails.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

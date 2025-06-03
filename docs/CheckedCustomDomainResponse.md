@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **DomainName** | **string** | domain name checked | 
 **Status** | [**CheckedCustomDomainStatus**](CheckedCustomDomainStatus.md) |  | 
-**ErrorDetails** | Pointer to **string** | optional field containing information about failure check | [optional] 
+**ErrorDetails** | Pointer to **NullableString** | optional field containing information about failure check | [optional] 
 
 ## Methods
 
@@ -92,6 +92,16 @@ SetErrorDetails sets ErrorDetails field to given value.
 
 HasErrorDetails returns a boolean if a field has been set.
 
+### SetErrorDetailsNil
+
+`func (o *CheckedCustomDomainResponse) SetErrorDetailsNil(b bool)`
+
+ SetErrorDetailsNil sets the value for ErrorDetails to be an explicit nil
+
+### UnsetErrorDetails
+`func (o *CheckedCustomDomainResponse) UnsetErrorDetails()`
+
+UnsetErrorDetails ensures that no value is present for ErrorDetails, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

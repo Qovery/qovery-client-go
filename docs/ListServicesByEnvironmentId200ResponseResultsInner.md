@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
-**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
+**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu This field will be ignored for managed DB (instance type will be used instead).  | [default to 250]
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | 
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
-**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **AutoApprove** | **bool** |  | 
-**TerraformFilesSource** | Pointer to **interface{}** |  | [optional] 
+**TerraformFilesSource** | Pointer to **map[string]interface{}** |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **Provider** | **string** |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
@@ -343,6 +343,16 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
+### SetDockerfilePathNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerfilePathNil(b bool)`
+
+ SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+
+### UnsetDockerfilePath
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerfilePath()`
+
+UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetCpu
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetCpu() int32`
@@ -668,6 +678,16 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
+### SetDockerTargetBuildStageNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 ### GetImageName
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetImageName() string`
@@ -1040,20 +1060,20 @@ SetAutoApprove sets AutoApprove field to given value.
 
 ### GetTerraformFilesSource
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSource() interface{}`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSource() map[string]interface{}`
 
 GetTerraformFilesSource returns the TerraformFilesSource field if non-nil, zero value otherwise.
 
 ### GetTerraformFilesSourceOk
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSourceOk() (*interface{}, bool)`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSourceOk() (*map[string]interface{}, bool)`
 
 GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerraformFilesSource
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSource(v interface{})`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSource(v map[string]interface{})`
 
 SetTerraformFilesSource sets TerraformFilesSource field to given value.
 

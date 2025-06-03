@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **GitRepository** | Pointer to [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
-**DockerfilePath** | Pointer to **string** | The path of the associated Dockerfile | [optional] 
+**DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
@@ -19,11 +19,11 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServicePort**](ServicePort.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
-**AutoDeploy** | Pointer to **bool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the application. | [optional] 
-**DockerTargetBuildStage** | Pointer to **string** | The target build stage in the Dockerfile to build | [optional] 
+**DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 
 ## Methods
 
@@ -194,6 +194,16 @@ SetDockerfilePath sets DockerfilePath field to given value.
 
 HasDockerfilePath returns a boolean if a field has been set.
 
+### SetDockerfilePathNil
+
+`func (o *ApplicationEditRequest) SetDockerfilePathNil(b bool)`
+
+ SetDockerfilePathNil sets the value for DockerfilePath to be an explicit nil
+
+### UnsetDockerfilePath
+`func (o *ApplicationEditRequest) UnsetDockerfilePath()`
+
+UnsetDockerfilePath ensures that no value is present for DockerfilePath, not even an explicit nil
 ### GetCpu
 
 `func (o *ApplicationEditRequest) GetCpu() int32`
@@ -439,6 +449,16 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
+### SetAutoDeployNil
+
+`func (o *ApplicationEditRequest) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *ApplicationEditRequest) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 ### GetAnnotationsGroups
 
 `func (o *ApplicationEditRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`
@@ -539,6 +559,16 @@ SetDockerTargetBuildStage sets DockerTargetBuildStage field to given value.
 
 HasDockerTargetBuildStage returns a boolean if a field has been set.
 
+### SetDockerTargetBuildStageNil
+
+`func (o *ApplicationEditRequest) SetDockerTargetBuildStageNil(b bool)`
+
+ SetDockerTargetBuildStageNil sets the value for DockerTargetBuildStage to be an explicit nil
+
+### UnsetDockerTargetBuildStage
+`func (o *ApplicationEditRequest) UnsetDockerTargetBuildStage()`
+
+UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

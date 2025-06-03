@@ -26,7 +26,7 @@ type VariableOverride struct {
 	// The key of the overriden variable
 	Key string `json:"key"`
 	// The value of the overriden variable
-	Value *string `json:"value,omitempty"`
+	Value NullableString `json:"value,omitempty"`
 	// The mounth path of the overriden variable (only if environment variable type is 'file')
 	MountPath            string               `json:"mount_path"`
 	Scope                APIVariableScopeEnum `json:"scope"`
@@ -106,36 +106,47 @@ func (o *VariableOverride) SetKey(v string) {
 	o.Key = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *VariableOverride) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil || IsNil(o.Value.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Value
+	return *o.Value.Get()
 }
 
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *VariableOverride) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return o.Value.Get(), o.Value.IsSet()
 }
 
 // HasValue returns a boolean if a field has been set.
 func (o *VariableOverride) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
+	if o != nil && o.Value.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue gets a reference to the given NullableString and assigns it to the Value field.
 func (o *VariableOverride) SetValue(v string) {
-	o.Value = &v
+	o.Value.Set(&v)
+}
+
+// SetValueNil sets the value for Value to be an explicit nil
+func (o *VariableOverride) SetValueNil() {
+	o.Value.Set(nil)
+}
+
+// UnsetValue ensures that no value is present for Value, not even an explicit nil
+func (o *VariableOverride) UnsetValue() {
+	o.Value.Unset()
 }
 
 // GetMountPath returns the MountPath field value
@@ -222,8 +233,8 @@ func (o VariableOverride) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["key"] = o.Key
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
+	if o.Value.IsSet() {
+		toSerialize["value"] = o.Value.Get()
 	}
 	toSerialize["mount_path"] = o.MountPath
 	toSerialize["scope"] = o.Scope

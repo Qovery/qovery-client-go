@@ -22,7 +22,7 @@ var _ MappedNullable = &DeploymentHistoryJobResponseAllOfSchedule{}
 type DeploymentHistoryJobResponseAllOfSchedule struct {
 	Event *JobScheduleEvent `json:"event,omitempty"`
 	// Can only be set if the event is CRON. Represent the cron format for the job schedule without seconds. For example: `* * * * *` represent the cron to launch the job every minute. See https://crontab.guru/ to WISIWIG interface. Timezone is UTC
-	ScheduleAt           *string `json:"schedule_at,omitempty"`
+	ScheduleAt           NullableString `json:"schedule_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,36 +77,47 @@ func (o *DeploymentHistoryJobResponseAllOfSchedule) SetEvent(v JobScheduleEvent)
 	o.Event = &v
 }
 
-// GetScheduleAt returns the ScheduleAt field value if set, zero value otherwise.
+// GetScheduleAt returns the ScheduleAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DeploymentHistoryJobResponseAllOfSchedule) GetScheduleAt() string {
-	if o == nil || IsNil(o.ScheduleAt) {
+	if o == nil || IsNil(o.ScheduleAt.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.ScheduleAt
+	return *o.ScheduleAt.Get()
 }
 
 // GetScheduleAtOk returns a tuple with the ScheduleAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DeploymentHistoryJobResponseAllOfSchedule) GetScheduleAtOk() (*string, bool) {
-	if o == nil || IsNil(o.ScheduleAt) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ScheduleAt, true
+	return o.ScheduleAt.Get(), o.ScheduleAt.IsSet()
 }
 
 // HasScheduleAt returns a boolean if a field has been set.
 func (o *DeploymentHistoryJobResponseAllOfSchedule) HasScheduleAt() bool {
-	if o != nil && !IsNil(o.ScheduleAt) {
+	if o != nil && o.ScheduleAt.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetScheduleAt gets a reference to the given string and assigns it to the ScheduleAt field.
+// SetScheduleAt gets a reference to the given NullableString and assigns it to the ScheduleAt field.
 func (o *DeploymentHistoryJobResponseAllOfSchedule) SetScheduleAt(v string) {
-	o.ScheduleAt = &v
+	o.ScheduleAt.Set(&v)
+}
+
+// SetScheduleAtNil sets the value for ScheduleAt to be an explicit nil
+func (o *DeploymentHistoryJobResponseAllOfSchedule) SetScheduleAtNil() {
+	o.ScheduleAt.Set(nil)
+}
+
+// UnsetScheduleAt ensures that no value is present for ScheduleAt, not even an explicit nil
+func (o *DeploymentHistoryJobResponseAllOfSchedule) UnsetScheduleAt() {
+	o.ScheduleAt.Unset()
 }
 
 func (o DeploymentHistoryJobResponseAllOfSchedule) MarshalJSON() ([]byte, error) {
@@ -122,8 +133,8 @@ func (o DeploymentHistoryJobResponseAllOfSchedule) ToMap() (map[string]interface
 	if !IsNil(o.Event) {
 		toSerialize["event"] = o.Event
 	}
-	if !IsNil(o.ScheduleAt) {
-		toSerialize["schedule_at"] = o.ScheduleAt
+	if o.ScheduleAt.IsSet() {
+		toSerialize["schedule_at"] = o.ScheduleAt.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

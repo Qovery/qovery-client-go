@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Set** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
 **SetString** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
 **SetJson** | Pointer to **[][]string** | The input is in json array format: [ [$KEY,$VALUE], [...] ] | [optional] 
-**File** | Pointer to [**HelmResponseAllOfValuesOverrideFile**](HelmResponseAllOfValuesOverrideFile.md) |  | [optional] 
+**File** | Pointer to [**NullableHelmResponseAllOfValuesOverrideFile**](HelmResponseAllOfValuesOverrideFile.md) |  | [optional] 
 
 ## Methods
 
@@ -128,6 +128,16 @@ SetFile sets File field to given value.
 
 HasFile returns a boolean if a field has been set.
 
+### SetFileNil
+
+`func (o *HelmResponseAllOfValuesOverride) SetFileNil(b bool)`
+
+ SetFileNil sets the value for File to be an explicit nil
+
+### UnsetFile
+`func (o *HelmResponseAllOfValuesOverride) UnsetFile()`
+
+UnsetFile ensures that no value is present for File, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

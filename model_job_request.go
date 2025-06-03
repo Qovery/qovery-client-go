@@ -35,12 +35,12 @@ type JobRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         *int32                   `json:"port,omitempty"`
+	Port         NullableInt32            `json:"port,omitempty"`
 	Source       *JobRequestAllOfSource   `json:"source,omitempty"`
 	Healthchecks Healthcheck              `json:"healthchecks"`
 	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
-	AutoDeploy        *bool                      `json:"auto_deploy,omitempty"`
+	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the job.
@@ -297,36 +297,47 @@ func (o *JobRequest) SetAutoPreview(v bool) {
 	o.AutoPreview = &v
 }
 
-// GetPort returns the Port field value if set, zero value otherwise.
+// GetPort returns the Port field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequest) GetPort() int32 {
-	if o == nil || IsNil(o.Port) {
+	if o == nil || IsNil(o.Port.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.Port
+	return *o.Port.Get()
 }
 
 // GetPortOk returns a tuple with the Port field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobRequest) GetPortOk() (*int32, bool) {
-	if o == nil || IsNil(o.Port) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Port, true
+	return o.Port.Get(), o.Port.IsSet()
 }
 
 // HasPort returns a boolean if a field has been set.
 func (o *JobRequest) HasPort() bool {
-	if o != nil && !IsNil(o.Port) {
+	if o != nil && o.Port.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetPort gets a reference to the given int32 and assigns it to the Port field.
+// SetPort gets a reference to the given NullableInt32 and assigns it to the Port field.
 func (o *JobRequest) SetPort(v int32) {
-	o.Port = &v
+	o.Port.Set(&v)
+}
+
+// SetPortNil sets the value for Port to be an explicit nil
+func (o *JobRequest) SetPortNil() {
+	o.Port.Set(nil)
+}
+
+// UnsetPort ensures that no value is present for Port, not even an explicit nil
+func (o *JobRequest) UnsetPort() {
+	o.Port.Unset()
 }
 
 // GetSource returns the Source field value if set, zero value otherwise.
@@ -417,36 +428,47 @@ func (o *JobRequest) SetSchedule(v JobRequestAllOfSchedule) {
 	o.Schedule = &v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequest) GetAutoDeploy() bool {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil || IsNil(o.AutoDeploy.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoDeploy
+	return *o.AutoDeploy.Get()
 }
 
 // GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobRequest) GetAutoDeployOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoDeploy) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoDeploy, true
+	return o.AutoDeploy.Get(), o.AutoDeploy.IsSet()
 }
 
 // HasAutoDeploy returns a boolean if a field has been set.
 func (o *JobRequest) HasAutoDeploy() bool {
-	if o != nil && !IsNil(o.AutoDeploy) {
+	if o != nil && o.AutoDeploy.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+// SetAutoDeploy gets a reference to the given NullableBool and assigns it to the AutoDeploy field.
 func (o *JobRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy = &v
+	o.AutoDeploy.Set(&v)
+}
+
+// SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+func (o *JobRequest) SetAutoDeployNil() {
+	o.AutoDeploy.Set(nil)
+}
+
+// UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
+func (o *JobRequest) UnsetAutoDeploy() {
+	o.AutoDeploy.Unset()
 }
 
 // GetAnnotationsGroups returns the AnnotationsGroups field value if set, zero value otherwise.
@@ -574,8 +596,8 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AutoPreview) {
 		toSerialize["auto_preview"] = o.AutoPreview
 	}
-	if !IsNil(o.Port) {
-		toSerialize["port"] = o.Port
+	if o.Port.IsSet() {
+		toSerialize["port"] = o.Port.Get()
 	}
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
@@ -584,8 +606,8 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
 	}
-	if !IsNil(o.AutoDeploy) {
-		toSerialize["auto_deploy"] = o.AutoDeploy
+	if o.AutoDeploy.IsSet() {
+		toSerialize["auto_deploy"] = o.AutoDeploy.Get()
 	}
 	if !IsNil(o.AnnotationsGroups) {
 		toSerialize["annotations_groups"] = o.AnnotationsGroups

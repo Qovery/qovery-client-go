@@ -20,8 +20,8 @@ var _ MappedNullable = &Healthcheck{}
 
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
-	ReadinessProbe       *Probe `json:"readiness_probe,omitempty"`
-	LivenessProbe        *Probe `json:"liveness_probe,omitempty"`
+	ReadinessProbe       NullableProbe `json:"readiness_probe,omitempty"`
+	LivenessProbe        NullableProbe `json:"liveness_probe,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,68 +44,90 @@ func NewHealthcheckWithDefaults() *Healthcheck {
 	return &this
 }
 
-// GetReadinessProbe returns the ReadinessProbe field value if set, zero value otherwise.
+// GetReadinessProbe returns the ReadinessProbe field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Healthcheck) GetReadinessProbe() Probe {
-	if o == nil || IsNil(o.ReadinessProbe) {
+	if o == nil || IsNil(o.ReadinessProbe.Get()) {
 		var ret Probe
 		return ret
 	}
-	return *o.ReadinessProbe
+	return *o.ReadinessProbe.Get()
 }
 
 // GetReadinessProbeOk returns a tuple with the ReadinessProbe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Healthcheck) GetReadinessProbeOk() (*Probe, bool) {
-	if o == nil || IsNil(o.ReadinessProbe) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ReadinessProbe, true
+	return o.ReadinessProbe.Get(), o.ReadinessProbe.IsSet()
 }
 
 // HasReadinessProbe returns a boolean if a field has been set.
 func (o *Healthcheck) HasReadinessProbe() bool {
-	if o != nil && !IsNil(o.ReadinessProbe) {
+	if o != nil && o.ReadinessProbe.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetReadinessProbe gets a reference to the given Probe and assigns it to the ReadinessProbe field.
+// SetReadinessProbe gets a reference to the given NullableProbe and assigns it to the ReadinessProbe field.
 func (o *Healthcheck) SetReadinessProbe(v Probe) {
-	o.ReadinessProbe = &v
+	o.ReadinessProbe.Set(&v)
 }
 
-// GetLivenessProbe returns the LivenessProbe field value if set, zero value otherwise.
+// SetReadinessProbeNil sets the value for ReadinessProbe to be an explicit nil
+func (o *Healthcheck) SetReadinessProbeNil() {
+	o.ReadinessProbe.Set(nil)
+}
+
+// UnsetReadinessProbe ensures that no value is present for ReadinessProbe, not even an explicit nil
+func (o *Healthcheck) UnsetReadinessProbe() {
+	o.ReadinessProbe.Unset()
+}
+
+// GetLivenessProbe returns the LivenessProbe field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Healthcheck) GetLivenessProbe() Probe {
-	if o == nil || IsNil(o.LivenessProbe) {
+	if o == nil || IsNil(o.LivenessProbe.Get()) {
 		var ret Probe
 		return ret
 	}
-	return *o.LivenessProbe
+	return *o.LivenessProbe.Get()
 }
 
 // GetLivenessProbeOk returns a tuple with the LivenessProbe field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *Healthcheck) GetLivenessProbeOk() (*Probe, bool) {
-	if o == nil || IsNil(o.LivenessProbe) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LivenessProbe, true
+	return o.LivenessProbe.Get(), o.LivenessProbe.IsSet()
 }
 
 // HasLivenessProbe returns a boolean if a field has been set.
 func (o *Healthcheck) HasLivenessProbe() bool {
-	if o != nil && !IsNil(o.LivenessProbe) {
+	if o != nil && o.LivenessProbe.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLivenessProbe gets a reference to the given Probe and assigns it to the LivenessProbe field.
+// SetLivenessProbe gets a reference to the given NullableProbe and assigns it to the LivenessProbe field.
 func (o *Healthcheck) SetLivenessProbe(v Probe) {
-	o.LivenessProbe = &v
+	o.LivenessProbe.Set(&v)
+}
+
+// SetLivenessProbeNil sets the value for LivenessProbe to be an explicit nil
+func (o *Healthcheck) SetLivenessProbeNil() {
+	o.LivenessProbe.Set(nil)
+}
+
+// UnsetLivenessProbe ensures that no value is present for LivenessProbe, not even an explicit nil
+func (o *Healthcheck) UnsetLivenessProbe() {
+	o.LivenessProbe.Unset()
 }
 
 func (o Healthcheck) MarshalJSON() ([]byte, error) {
@@ -118,11 +140,11 @@ func (o Healthcheck) MarshalJSON() ([]byte, error) {
 
 func (o Healthcheck) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ReadinessProbe) {
-		toSerialize["readiness_probe"] = o.ReadinessProbe
+	if o.ReadinessProbe.IsSet() {
+		toSerialize["readiness_probe"] = o.ReadinessProbe.Get()
 	}
-	if !IsNil(o.LivenessProbe) {
-		toSerialize["liveness_probe"] = o.LivenessProbe
+	if o.LivenessProbe.IsSet() {
+		toSerialize["liveness_probe"] = o.LivenessProbe.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

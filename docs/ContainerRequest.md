@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
-**AutoDeploy** | Pointer to **bool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the container. | [optional] 
@@ -418,6 +418,16 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 HasAutoDeploy returns a boolean if a field has been set.
 
+### SetAutoDeployNil
+
+`func (o *ContainerRequest) SetAutoDeployNil(b bool)`
+
+ SetAutoDeployNil sets the value for AutoDeploy to be an explicit nil
+
+### UnsetAutoDeploy
+`func (o *ContainerRequest) UnsetAutoDeploy()`
+
+UnsetAutoDeploy ensures that no value is present for AutoDeploy, not even an explicit nil
 ### GetAnnotationsGroups
 
 `func (o *ContainerRequest) GetAnnotationsGroups() []ServiceAnnotationRequest`

@@ -28,7 +28,7 @@ type HelmRequest struct {
 	// Maximum number of seconds allowed for helm to run before killing it and mark it as failed
 	TimeoutSec *int32 `json:"timeout_sec,omitempty"`
 	// Indicates if the 'environment preview option' is enabled.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called or when a new commit is updated. If not specified, it takes the value of the `auto_preview` property from the associated environment.
-	AutoPreview *bool `json:"auto_preview,omitempty"`
+	AutoPreview NullableBool `json:"auto_preview,omitempty"`
 	// Specify if the helm will be automatically updated after receiving a new image tag or a new commit according to the source type.
 	AutoDeploy bool                   `json:"auto_deploy"`
 	Source     HelmRequestAllOfSource `json:"source"`
@@ -194,36 +194,47 @@ func (o *HelmRequest) SetTimeoutSec(v int32) {
 	o.TimeoutSec = &v
 }
 
-// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmRequest) GetAutoPreview() bool {
-	if o == nil || IsNil(o.AutoPreview) {
+	if o == nil || IsNil(o.AutoPreview.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoPreview
+	return *o.AutoPreview.Get()
 }
 
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoPreview) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoPreview, true
+	return o.AutoPreview.Get(), o.AutoPreview.IsSet()
 }
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *HelmRequest) HasAutoPreview() bool {
-	if o != nil && !IsNil(o.AutoPreview) {
+	if o != nil && o.AutoPreview.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+// SetAutoPreview gets a reference to the given NullableBool and assigns it to the AutoPreview field.
 func (o *HelmRequest) SetAutoPreview(v bool) {
-	o.AutoPreview = &v
+	o.AutoPreview.Set(&v)
+}
+
+// SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
+func (o *HelmRequest) SetAutoPreviewNil() {
+	o.AutoPreview.Set(nil)
+}
+
+// UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
+func (o *HelmRequest) UnsetAutoPreview() {
+	o.AutoPreview.Unset()
 }
 
 // GetAutoDeploy returns the AutoDeploy field value
@@ -406,8 +417,8 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.TimeoutSec) {
 		toSerialize["timeout_sec"] = o.TimeoutSec
 	}
-	if !IsNil(o.AutoPreview) {
-		toSerialize["auto_preview"] = o.AutoPreview
+	if o.AutoPreview.IsSet() {
+		toSerialize["auto_preview"] = o.AutoPreview.Get()
 	}
 	toSerialize["auto_deploy"] = o.AutoDeploy
 	toSerialize["source"] = o.Source

@@ -21,7 +21,7 @@ var _ MappedNullable = &ServiceStepMetrics{}
 // ServiceStepMetrics struct for ServiceStepMetrics
 type ServiceStepMetrics struct {
 	// The total duration in seconds of the service deployment or null if the deployment is not completed.
-	TotalDurationSec *int32 `json:"total_duration_sec,omitempty"`
+	TotalDurationSec NullableInt32 `json:"total_duration_sec,omitempty"`
 	// The total duration in seconds of the service deployment without queuing steps.
 	TotalComputingDurationSec *int32 `json:"total_computing_duration_sec,omitempty"`
 	// A list of metrics for deployment steps of the service.
@@ -48,36 +48,47 @@ func NewServiceStepMetricsWithDefaults() *ServiceStepMetrics {
 	return &this
 }
 
-// GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise.
+// GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ServiceStepMetrics) GetTotalDurationSec() int32 {
-	if o == nil || IsNil(o.TotalDurationSec) {
+	if o == nil || IsNil(o.TotalDurationSec.Get()) {
 		var ret int32
 		return ret
 	}
-	return *o.TotalDurationSec
+	return *o.TotalDurationSec.Get()
 }
 
 // GetTotalDurationSecOk returns a tuple with the TotalDurationSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceStepMetrics) GetTotalDurationSecOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalDurationSec) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalDurationSec, true
+	return o.TotalDurationSec.Get(), o.TotalDurationSec.IsSet()
 }
 
 // HasTotalDurationSec returns a boolean if a field has been set.
 func (o *ServiceStepMetrics) HasTotalDurationSec() bool {
-	if o != nil && !IsNil(o.TotalDurationSec) {
+	if o != nil && o.TotalDurationSec.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetTotalDurationSec gets a reference to the given int32 and assigns it to the TotalDurationSec field.
+// SetTotalDurationSec gets a reference to the given NullableInt32 and assigns it to the TotalDurationSec field.
 func (o *ServiceStepMetrics) SetTotalDurationSec(v int32) {
-	o.TotalDurationSec = &v
+	o.TotalDurationSec.Set(&v)
+}
+
+// SetTotalDurationSecNil sets the value for TotalDurationSec to be an explicit nil
+func (o *ServiceStepMetrics) SetTotalDurationSecNil() {
+	o.TotalDurationSec.Set(nil)
+}
+
+// UnsetTotalDurationSec ensures that no value is present for TotalDurationSec, not even an explicit nil
+func (o *ServiceStepMetrics) UnsetTotalDurationSec() {
+	o.TotalDurationSec.Unset()
 }
 
 // GetTotalComputingDurationSec returns the TotalComputingDurationSec field value if set, zero value otherwise.
@@ -154,8 +165,8 @@ func (o ServiceStepMetrics) MarshalJSON() ([]byte, error) {
 
 func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.TotalDurationSec) {
-		toSerialize["total_duration_sec"] = o.TotalDurationSec
+	if o.TotalDurationSec.IsSet() {
+		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
 	}
 	if !IsNil(o.TotalComputingDurationSec) {
 		toSerialize["total_computing_duration_sec"] = o.TotalComputingDurationSec

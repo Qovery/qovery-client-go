@@ -24,11 +24,11 @@ type EnvironmentVariableEditRequest struct {
 	// key is case sensitive
 	Key string `json:"key"`
 	// value of the env variable.
-	Value     *string `json:"value,omitempty"`
-	MountPath *string `json:"mount_path,omitempty"`
+	Value     *string        `json:"value,omitempty"`
+	MountPath NullableString `json:"mount_path,omitempty"`
 	// optional variable description (255 characters maximum)
-	Description               *string `json:"description,omitempty"`
-	EnableInterpolationInFile *bool   `json:"enable_interpolation_in_file,omitempty"`
+	Description               NullableString `json:"description,omitempty"`
+	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -108,100 +108,133 @@ func (o *EnvironmentVariableEditRequest) SetValue(v string) {
 	o.Value = &v
 }
 
-// GetMountPath returns the MountPath field value if set, zero value otherwise.
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentVariableEditRequest) GetMountPath() string {
-	if o == nil || IsNil(o.MountPath) {
+	if o == nil || IsNil(o.MountPath.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.MountPath
+	return *o.MountPath.Get()
 }
 
 // GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentVariableEditRequest) GetMountPathOk() (*string, bool) {
-	if o == nil || IsNil(o.MountPath) {
+	if o == nil {
 		return nil, false
 	}
-	return o.MountPath, true
+	return o.MountPath.Get(), o.MountPath.IsSet()
 }
 
 // HasMountPath returns a boolean if a field has been set.
 func (o *EnvironmentVariableEditRequest) HasMountPath() bool {
-	if o != nil && !IsNil(o.MountPath) {
+	if o != nil && o.MountPath.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetMountPath gets a reference to the given string and assigns it to the MountPath field.
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
 func (o *EnvironmentVariableEditRequest) SetMountPath(v string) {
-	o.MountPath = &v
+	o.MountPath.Set(&v)
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise.
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *EnvironmentVariableEditRequest) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *EnvironmentVariableEditRequest) UnsetMountPath() {
+	o.MountPath.Unset()
+}
+
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentVariableEditRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description) {
+	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.Description
+	return *o.Description.Get()
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentVariableEditRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil || IsNil(o.Description) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Description, true
+	return o.Description.Get(), o.Description.IsSet()
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *EnvironmentVariableEditRequest) HasDescription() bool {
-	if o != nil && !IsNil(o.Description) {
+	if o != nil && o.Description.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given string and assigns it to the Description field.
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
 func (o *EnvironmentVariableEditRequest) SetDescription(v string) {
-	o.Description = &v
+	o.Description.Set(&v)
 }
 
-// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise.
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *EnvironmentVariableEditRequest) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *EnvironmentVariableEditRequest) UnsetDescription() {
+	o.Description.Unset()
+}
+
+// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentVariableEditRequest) GetEnableInterpolationInFile() bool {
-	if o == nil || IsNil(o.EnableInterpolationInFile) {
+	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.EnableInterpolationInFile
+	return *o.EnableInterpolationInFile.Get()
 }
 
 // GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentVariableEditRequest) GetEnableInterpolationInFileOk() (*bool, bool) {
-	if o == nil || IsNil(o.EnableInterpolationInFile) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EnableInterpolationInFile, true
+	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
 }
 
 // HasEnableInterpolationInFile returns a boolean if a field has been set.
 func (o *EnvironmentVariableEditRequest) HasEnableInterpolationInFile() bool {
-	if o != nil && !IsNil(o.EnableInterpolationInFile) {
+	if o != nil && o.EnableInterpolationInFile.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetEnableInterpolationInFile gets a reference to the given bool and assigns it to the EnableInterpolationInFile field.
+// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
 func (o *EnvironmentVariableEditRequest) SetEnableInterpolationInFile(v bool) {
-	o.EnableInterpolationInFile = &v
+	o.EnableInterpolationInFile.Set(&v)
+}
+
+// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+func (o *EnvironmentVariableEditRequest) SetEnableInterpolationInFileNil() {
+	o.EnableInterpolationInFile.Set(nil)
+}
+
+// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+func (o *EnvironmentVariableEditRequest) UnsetEnableInterpolationInFile() {
+	o.EnableInterpolationInFile.Unset()
 }
 
 func (o EnvironmentVariableEditRequest) MarshalJSON() ([]byte, error) {
@@ -218,14 +251,14 @@ func (o EnvironmentVariableEditRequest) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.Value) {
 		toSerialize["value"] = o.Value
 	}
-	if !IsNil(o.MountPath) {
-		toSerialize["mount_path"] = o.MountPath
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
 	}
-	if !IsNil(o.Description) {
-		toSerialize["description"] = o.Description
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
 	}
-	if !IsNil(o.EnableInterpolationInFile) {
-		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile
+	if o.EnableInterpolationInFile.IsSet() {
+		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

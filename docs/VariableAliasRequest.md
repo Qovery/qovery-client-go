@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 **Key** | **string** | the value to be used as Alias of the targeted environment variable. | 
 **AliasScope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **AliasParentId** | **string** | the id of the variable that is aliased. | 
-**Description** | Pointer to **string** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
+**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
+**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
@@ -114,6 +114,16 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
+### SetDescriptionNil
+
+`func (o *VariableAliasRequest) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *VariableAliasRequest) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetEnableInterpolationInFile
 
 `func (o *VariableAliasRequest) GetEnableInterpolationInFile() bool`
@@ -139,6 +149,16 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
+### SetEnableInterpolationInFileNil
+
+`func (o *VariableAliasRequest) SetEnableInterpolationInFileNil(b bool)`
+
+ SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
+
+### UnsetEnableInterpolationInFile
+`func (o *VariableAliasRequest) UnsetEnableInterpolationInFile()`
+
+UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

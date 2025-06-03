@@ -7,18 +7,18 @@ Name | Type | Description | Notes
 **Id** | Pointer to **string** |  | [optional] 
 **Timestamp** | Pointer to **time.Time** |  | [optional] 
 **EventType** | Pointer to [**OrganizationEventType**](OrganizationEventType.md) |  | [optional] 
-**TargetId** | Pointer to **string** |  | [optional] 
+**TargetId** | Pointer to **NullableString** |  | [optional] 
 **TargetName** | Pointer to **string** |  | [optional] 
 **TargetType** | Pointer to [**OrganizationEventTargetType**](OrganizationEventTargetType.md) |  | [optional] 
-**SubTargetType** | Pointer to [**OrganizationEventSubTargetType**](OrganizationEventSubTargetType.md) |  | [optional] 
+**SubTargetType** | Pointer to [**NullableOrganizationEventSubTargetType**](OrganizationEventSubTargetType.md) |  | [optional] 
 **Change** | Pointer to **string** |  | [optional] 
 **Origin** | Pointer to [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | [optional] 
 **TriggeredBy** | Pointer to **string** |  | [optional] 
-**ProjectId** | Pointer to **string** |  | [optional] 
+**ProjectId** | Pointer to **NullableString** |  | [optional] 
 **ProjectName** | Pointer to **string** |  | [optional] 
-**EnvironmentId** | Pointer to **string** |  | [optional] 
+**EnvironmentId** | Pointer to **NullableString** |  | [optional] 
 **EnvironmentName** | Pointer to **string** |  | [optional] 
-**UserAgent** | Pointer to **string** |  | [optional] 
+**UserAgent** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -139,6 +139,16 @@ SetTargetId sets TargetId field to given value.
 
 HasTargetId returns a boolean if a field has been set.
 
+### SetTargetIdNil
+
+`func (o *OrganizationEventResponse) SetTargetIdNil(b bool)`
+
+ SetTargetIdNil sets the value for TargetId to be an explicit nil
+
+### UnsetTargetId
+`func (o *OrganizationEventResponse) UnsetTargetId()`
+
+UnsetTargetId ensures that no value is present for TargetId, not even an explicit nil
 ### GetTargetName
 
 `func (o *OrganizationEventResponse) GetTargetName() string`
@@ -214,6 +224,16 @@ SetSubTargetType sets SubTargetType field to given value.
 
 HasSubTargetType returns a boolean if a field has been set.
 
+### SetSubTargetTypeNil
+
+`func (o *OrganizationEventResponse) SetSubTargetTypeNil(b bool)`
+
+ SetSubTargetTypeNil sets the value for SubTargetType to be an explicit nil
+
+### UnsetSubTargetType
+`func (o *OrganizationEventResponse) UnsetSubTargetType()`
+
+UnsetSubTargetType ensures that no value is present for SubTargetType, not even an explicit nil
 ### GetChange
 
 `func (o *OrganizationEventResponse) GetChange() string`
@@ -314,6 +334,16 @@ SetProjectId sets ProjectId field to given value.
 
 HasProjectId returns a boolean if a field has been set.
 
+### SetProjectIdNil
+
+`func (o *OrganizationEventResponse) SetProjectIdNil(b bool)`
+
+ SetProjectIdNil sets the value for ProjectId to be an explicit nil
+
+### UnsetProjectId
+`func (o *OrganizationEventResponse) UnsetProjectId()`
+
+UnsetProjectId ensures that no value is present for ProjectId, not even an explicit nil
 ### GetProjectName
 
 `func (o *OrganizationEventResponse) GetProjectName() string`
@@ -364,6 +394,16 @@ SetEnvironmentId sets EnvironmentId field to given value.
 
 HasEnvironmentId returns a boolean if a field has been set.
 
+### SetEnvironmentIdNil
+
+`func (o *OrganizationEventResponse) SetEnvironmentIdNil(b bool)`
+
+ SetEnvironmentIdNil sets the value for EnvironmentId to be an explicit nil
+
+### UnsetEnvironmentId
+`func (o *OrganizationEventResponse) UnsetEnvironmentId()`
+
+UnsetEnvironmentId ensures that no value is present for EnvironmentId, not even an explicit nil
 ### GetEnvironmentName
 
 `func (o *OrganizationEventResponse) GetEnvironmentName() string`
@@ -414,6 +454,16 @@ SetUserAgent sets UserAgent field to given value.
 
 HasUserAgent returns a boolean if a field has been set.
 
+### SetUserAgentNil
+
+`func (o *OrganizationEventResponse) SetUserAgentNil(b bool)`
+
+ SetUserAgentNil sets the value for UserAgent to be an explicit nil
+
+### UnsetUserAgent
+`func (o *OrganizationEventResponse) UnsetUserAgent()`
+
+UnsetUserAgent ensures that no value is present for UserAgent, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

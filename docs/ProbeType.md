@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Tcp** | Pointer to [**ProbeTypeTcp**](ProbeTypeTcp.md) |  | [optional] 
-**Http** | Pointer to [**ProbeTypeHttp**](ProbeTypeHttp.md) |  | [optional] 
-**Exec** | Pointer to [**ProbeTypeExec**](ProbeTypeExec.md) |  | [optional] 
-**Grpc** | Pointer to [**ProbeTypeGrpc**](ProbeTypeGrpc.md) |  | [optional] 
+**Tcp** | Pointer to [**NullableProbeTypeTcp**](ProbeTypeTcp.md) |  | [optional] 
+**Http** | Pointer to [**NullableProbeTypeHttp**](ProbeTypeHttp.md) |  | [optional] 
+**Exec** | Pointer to [**NullableProbeTypeExec**](ProbeTypeExec.md) |  | [optional] 
+**Grpc** | Pointer to [**NullableProbeTypeGrpc**](ProbeTypeGrpc.md) |  | [optional] 
 
 ## Methods
 
@@ -53,6 +53,16 @@ SetTcp sets Tcp field to given value.
 
 HasTcp returns a boolean if a field has been set.
 
+### SetTcpNil
+
+`func (o *ProbeType) SetTcpNil(b bool)`
+
+ SetTcpNil sets the value for Tcp to be an explicit nil
+
+### UnsetTcp
+`func (o *ProbeType) UnsetTcp()`
+
+UnsetTcp ensures that no value is present for Tcp, not even an explicit nil
 ### GetHttp
 
 `func (o *ProbeType) GetHttp() ProbeTypeHttp`
@@ -78,6 +88,16 @@ SetHttp sets Http field to given value.
 
 HasHttp returns a boolean if a field has been set.
 
+### SetHttpNil
+
+`func (o *ProbeType) SetHttpNil(b bool)`
+
+ SetHttpNil sets the value for Http to be an explicit nil
+
+### UnsetHttp
+`func (o *ProbeType) UnsetHttp()`
+
+UnsetHttp ensures that no value is present for Http, not even an explicit nil
 ### GetExec
 
 `func (o *ProbeType) GetExec() ProbeTypeExec`
@@ -103,6 +123,16 @@ SetExec sets Exec field to given value.
 
 HasExec returns a boolean if a field has been set.
 
+### SetExecNil
+
+`func (o *ProbeType) SetExecNil(b bool)`
+
+ SetExecNil sets the value for Exec to be an explicit nil
+
+### UnsetExec
+`func (o *ProbeType) UnsetExec()`
+
+UnsetExec ensures that no value is present for Exec, not even an explicit nil
 ### GetGrpc
 
 `func (o *ProbeType) GetGrpc() ProbeTypeGrpc`
@@ -128,6 +158,16 @@ SetGrpc sets Grpc field to given value.
 
 HasGrpc returns a boolean if a field has been set.
 
+### SetGrpcNil
+
+`func (o *ProbeType) SetGrpcNil(b bool)`
+
+ SetGrpcNil sets the value for Grpc to be an explicit nil
+
+### UnsetGrpc
+`func (o *ProbeType) UnsetGrpc()`
+
+UnsetGrpc ensures that no value is present for Grpc, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

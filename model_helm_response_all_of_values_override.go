@@ -25,8 +25,8 @@ type HelmResponseAllOfValuesOverride struct {
 	// The input is in json array format: [ [$KEY,$VALUE], [...] ]
 	SetString [][]string `json:"set_string,omitempty"`
 	// The input is in json array format: [ [$KEY,$VALUE], [...] ]
-	SetJson              [][]string                           `json:"set_json,omitempty"`
-	File                 *HelmResponseAllOfValuesOverrideFile `json:"file,omitempty"`
+	SetJson              [][]string                                  `json:"set_json,omitempty"`
+	File                 NullableHelmResponseAllOfValuesOverrideFile `json:"file,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,36 +145,47 @@ func (o *HelmResponseAllOfValuesOverride) SetSetJson(v [][]string) {
 	o.SetJson = v
 }
 
-// GetFile returns the File field value if set, zero value otherwise.
+// GetFile returns the File field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *HelmResponseAllOfValuesOverride) GetFile() HelmResponseAllOfValuesOverrideFile {
-	if o == nil || IsNil(o.File) {
+	if o == nil || IsNil(o.File.Get()) {
 		var ret HelmResponseAllOfValuesOverrideFile
 		return ret
 	}
-	return *o.File
+	return *o.File.Get()
 }
 
 // GetFileOk returns a tuple with the File field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *HelmResponseAllOfValuesOverride) GetFileOk() (*HelmResponseAllOfValuesOverrideFile, bool) {
-	if o == nil || IsNil(o.File) {
+	if o == nil {
 		return nil, false
 	}
-	return o.File, true
+	return o.File.Get(), o.File.IsSet()
 }
 
 // HasFile returns a boolean if a field has been set.
 func (o *HelmResponseAllOfValuesOverride) HasFile() bool {
-	if o != nil && !IsNil(o.File) {
+	if o != nil && o.File.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetFile gets a reference to the given HelmResponseAllOfValuesOverrideFile and assigns it to the File field.
+// SetFile gets a reference to the given NullableHelmResponseAllOfValuesOverrideFile and assigns it to the File field.
 func (o *HelmResponseAllOfValuesOverride) SetFile(v HelmResponseAllOfValuesOverrideFile) {
-	o.File = &v
+	o.File.Set(&v)
+}
+
+// SetFileNil sets the value for File to be an explicit nil
+func (o *HelmResponseAllOfValuesOverride) SetFileNil() {
+	o.File.Set(nil)
+}
+
+// UnsetFile ensures that no value is present for File, not even an explicit nil
+func (o *HelmResponseAllOfValuesOverride) UnsetFile() {
+	o.File.Unset()
 }
 
 func (o HelmResponseAllOfValuesOverride) MarshalJSON() ([]byte, error) {
@@ -196,8 +207,8 @@ func (o HelmResponseAllOfValuesOverride) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.SetJson) {
 		toSerialize["set_json"] = o.SetJson
 	}
-	if !IsNil(o.File) {
-		toSerialize["file"] = o.File
+	if o.File.IsSet() {
+		toSerialize["file"] = o.File.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

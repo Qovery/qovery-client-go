@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] 
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
-**Port** | Pointer to **int32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
+**Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
 **Source** | [**BaseJobResponseAllOfSource**](BaseJobResponseAllOfSource.md) |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
@@ -352,6 +352,16 @@ SetPort sets Port field to given value.
 
 HasPort returns a boolean if a field has been set.
 
+### SetPortNil
+
+`func (o *JobResponse) SetPortNil(b bool)`
+
+ SetPortNil sets the value for Port to be an explicit nil
+
+### UnsetPort
+`func (o *JobResponse) UnsetPort()`
+
+UnsetPort ensures that no value is present for Port, not even an explicit nil
 ### GetSource
 
 `func (o *JobResponse) GetSource() BaseJobResponseAllOfSource`

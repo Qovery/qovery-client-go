@@ -20,8 +20,8 @@ var _ MappedNullable = &JobRequestAllOfSource{}
 
 // JobRequestAllOfSource struct for JobRequestAllOfSource
 type JobRequestAllOfSource struct {
-	Image                *JobRequestAllOfSourceImage  `json:"image,omitempty"`
-	Docker               *JobRequestAllOfSourceDocker `json:"docker,omitempty"`
+	Image                NullableJobRequestAllOfSourceImage  `json:"image,omitempty"`
+	Docker               NullableJobRequestAllOfSourceDocker `json:"docker,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,68 +44,90 @@ func NewJobRequestAllOfSourceWithDefaults() *JobRequestAllOfSource {
 	return &this
 }
 
-// GetImage returns the Image field value if set, zero value otherwise.
+// GetImage returns the Image field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequestAllOfSource) GetImage() JobRequestAllOfSourceImage {
-	if o == nil || IsNil(o.Image) {
+	if o == nil || IsNil(o.Image.Get()) {
 		var ret JobRequestAllOfSourceImage
 		return ret
 	}
-	return *o.Image
+	return *o.Image.Get()
 }
 
 // GetImageOk returns a tuple with the Image field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobRequestAllOfSource) GetImageOk() (*JobRequestAllOfSourceImage, bool) {
-	if o == nil || IsNil(o.Image) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Image, true
+	return o.Image.Get(), o.Image.IsSet()
 }
 
 // HasImage returns a boolean if a field has been set.
 func (o *JobRequestAllOfSource) HasImage() bool {
-	if o != nil && !IsNil(o.Image) {
+	if o != nil && o.Image.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetImage gets a reference to the given JobRequestAllOfSourceImage and assigns it to the Image field.
+// SetImage gets a reference to the given NullableJobRequestAllOfSourceImage and assigns it to the Image field.
 func (o *JobRequestAllOfSource) SetImage(v JobRequestAllOfSourceImage) {
-	o.Image = &v
+	o.Image.Set(&v)
 }
 
-// GetDocker returns the Docker field value if set, zero value otherwise.
+// SetImageNil sets the value for Image to be an explicit nil
+func (o *JobRequestAllOfSource) SetImageNil() {
+	o.Image.Set(nil)
+}
+
+// UnsetImage ensures that no value is present for Image, not even an explicit nil
+func (o *JobRequestAllOfSource) UnsetImage() {
+	o.Image.Unset()
+}
+
+// GetDocker returns the Docker field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *JobRequestAllOfSource) GetDocker() JobRequestAllOfSourceDocker {
-	if o == nil || IsNil(o.Docker) {
+	if o == nil || IsNil(o.Docker.Get()) {
 		var ret JobRequestAllOfSourceDocker
 		return ret
 	}
-	return *o.Docker
+	return *o.Docker.Get()
 }
 
 // GetDockerOk returns a tuple with the Docker field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *JobRequestAllOfSource) GetDockerOk() (*JobRequestAllOfSourceDocker, bool) {
-	if o == nil || IsNil(o.Docker) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Docker, true
+	return o.Docker.Get(), o.Docker.IsSet()
 }
 
 // HasDocker returns a boolean if a field has been set.
 func (o *JobRequestAllOfSource) HasDocker() bool {
-	if o != nil && !IsNil(o.Docker) {
+	if o != nil && o.Docker.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDocker gets a reference to the given JobRequestAllOfSourceDocker and assigns it to the Docker field.
+// SetDocker gets a reference to the given NullableJobRequestAllOfSourceDocker and assigns it to the Docker field.
 func (o *JobRequestAllOfSource) SetDocker(v JobRequestAllOfSourceDocker) {
-	o.Docker = &v
+	o.Docker.Set(&v)
+}
+
+// SetDockerNil sets the value for Docker to be an explicit nil
+func (o *JobRequestAllOfSource) SetDockerNil() {
+	o.Docker.Set(nil)
+}
+
+// UnsetDocker ensures that no value is present for Docker, not even an explicit nil
+func (o *JobRequestAllOfSource) UnsetDocker() {
+	o.Docker.Unset()
 }
 
 func (o JobRequestAllOfSource) MarshalJSON() ([]byte, error) {
@@ -118,11 +140,11 @@ func (o JobRequestAllOfSource) MarshalJSON() ([]byte, error) {
 
 func (o JobRequestAllOfSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Image) {
-		toSerialize["image"] = o.Image
+	if o.Image.IsSet() {
+		toSerialize["image"] = o.Image.Get()
 	}
-	if !IsNil(o.Docker) {
-		toSerialize["docker"] = o.Docker
+	if o.Docker.IsSet() {
+		toSerialize["docker"] = o.Docker.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

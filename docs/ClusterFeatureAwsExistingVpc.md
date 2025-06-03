@@ -145,6 +145,16 @@ SetDocumentdbSubnetsZoneAIds sets DocumentdbSubnetsZoneAIds field to given value
 
 HasDocumentdbSubnetsZoneAIds returns a boolean if a field has been set.
 
+### SetDocumentdbSubnetsZoneAIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneAIdsNil(b bool)`
+
+ SetDocumentdbSubnetsZoneAIdsNil sets the value for DocumentdbSubnetsZoneAIds to be an explicit nil
+
+### UnsetDocumentdbSubnetsZoneAIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetDocumentdbSubnetsZoneAIds()`
+
+UnsetDocumentdbSubnetsZoneAIds ensures that no value is present for DocumentdbSubnetsZoneAIds, not even an explicit nil
 ### GetDocumentdbSubnetsZoneBIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneBIds() []string`
@@ -170,6 +180,16 @@ SetDocumentdbSubnetsZoneBIds sets DocumentdbSubnetsZoneBIds field to given value
 
 HasDocumentdbSubnetsZoneBIds returns a boolean if a field has been set.
 
+### SetDocumentdbSubnetsZoneBIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneBIdsNil(b bool)`
+
+ SetDocumentdbSubnetsZoneBIdsNil sets the value for DocumentdbSubnetsZoneBIds to be an explicit nil
+
+### UnsetDocumentdbSubnetsZoneBIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetDocumentdbSubnetsZoneBIds()`
+
+UnsetDocumentdbSubnetsZoneBIds ensures that no value is present for DocumentdbSubnetsZoneBIds, not even an explicit nil
 ### GetDocumentdbSubnetsZoneCIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetDocumentdbSubnetsZoneCIds() []string`
@@ -195,6 +215,16 @@ SetDocumentdbSubnetsZoneCIds sets DocumentdbSubnetsZoneCIds field to given value
 
 HasDocumentdbSubnetsZoneCIds returns a boolean if a field has been set.
 
+### SetDocumentdbSubnetsZoneCIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetDocumentdbSubnetsZoneCIdsNil(b bool)`
+
+ SetDocumentdbSubnetsZoneCIdsNil sets the value for DocumentdbSubnetsZoneCIds to be an explicit nil
+
+### UnsetDocumentdbSubnetsZoneCIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetDocumentdbSubnetsZoneCIds()`
+
+UnsetDocumentdbSubnetsZoneCIds ensures that no value is present for DocumentdbSubnetsZoneCIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneAIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneAIds() []string`
@@ -220,6 +250,16 @@ SetElasticacheSubnetsZoneAIds sets ElasticacheSubnetsZoneAIds field to given val
 
 HasElasticacheSubnetsZoneAIds returns a boolean if a field has been set.
 
+### SetElasticacheSubnetsZoneAIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneAIdsNil(b bool)`
+
+ SetElasticacheSubnetsZoneAIdsNil sets the value for ElasticacheSubnetsZoneAIds to be an explicit nil
+
+### UnsetElasticacheSubnetsZoneAIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetElasticacheSubnetsZoneAIds()`
+
+UnsetElasticacheSubnetsZoneAIds ensures that no value is present for ElasticacheSubnetsZoneAIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneBIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneBIds() []string`
@@ -245,6 +285,16 @@ SetElasticacheSubnetsZoneBIds sets ElasticacheSubnetsZoneBIds field to given val
 
 HasElasticacheSubnetsZoneBIds returns a boolean if a field has been set.
 
+### SetElasticacheSubnetsZoneBIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneBIdsNil(b bool)`
+
+ SetElasticacheSubnetsZoneBIdsNil sets the value for ElasticacheSubnetsZoneBIds to be an explicit nil
+
+### UnsetElasticacheSubnetsZoneBIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetElasticacheSubnetsZoneBIds()`
+
+UnsetElasticacheSubnetsZoneBIds ensures that no value is present for ElasticacheSubnetsZoneBIds, not even an explicit nil
 ### GetElasticacheSubnetsZoneCIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetElasticacheSubnetsZoneCIds() []string`
@@ -270,6 +320,16 @@ SetElasticacheSubnetsZoneCIds sets ElasticacheSubnetsZoneCIds field to given val
 
 HasElasticacheSubnetsZoneCIds returns a boolean if a field has been set.
 
+### SetElasticacheSubnetsZoneCIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetElasticacheSubnetsZoneCIdsNil(b bool)`
+
+ SetElasticacheSubnetsZoneCIdsNil sets the value for ElasticacheSubnetsZoneCIds to be an explicit nil
+
+### UnsetElasticacheSubnetsZoneCIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetElasticacheSubnetsZoneCIds()`
+
+UnsetElasticacheSubnetsZoneCIds ensures that no value is present for ElasticacheSubnetsZoneCIds, not even an explicit nil
 ### GetRdsSubnetsZoneAIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneAIds() []string`
@@ -295,6 +355,16 @@ SetRdsSubnetsZoneAIds sets RdsSubnetsZoneAIds field to given value.
 
 HasRdsSubnetsZoneAIds returns a boolean if a field has been set.
 
+### SetRdsSubnetsZoneAIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneAIdsNil(b bool)`
+
+ SetRdsSubnetsZoneAIdsNil sets the value for RdsSubnetsZoneAIds to be an explicit nil
+
+### UnsetRdsSubnetsZoneAIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetRdsSubnetsZoneAIds()`
+
+UnsetRdsSubnetsZoneAIds ensures that no value is present for RdsSubnetsZoneAIds, not even an explicit nil
 ### GetRdsSubnetsZoneBIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneBIds() []string`
@@ -320,6 +390,16 @@ SetRdsSubnetsZoneBIds sets RdsSubnetsZoneBIds field to given value.
 
 HasRdsSubnetsZoneBIds returns a boolean if a field has been set.
 
+### SetRdsSubnetsZoneBIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneBIdsNil(b bool)`
+
+ SetRdsSubnetsZoneBIdsNil sets the value for RdsSubnetsZoneBIds to be an explicit nil
+
+### UnsetRdsSubnetsZoneBIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetRdsSubnetsZoneBIds()`
+
+UnsetRdsSubnetsZoneBIds ensures that no value is present for RdsSubnetsZoneBIds, not even an explicit nil
 ### GetRdsSubnetsZoneCIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetRdsSubnetsZoneCIds() []string`
@@ -345,6 +425,16 @@ SetRdsSubnetsZoneCIds sets RdsSubnetsZoneCIds field to given value.
 
 HasRdsSubnetsZoneCIds returns a boolean if a field has been set.
 
+### SetRdsSubnetsZoneCIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetRdsSubnetsZoneCIdsNil(b bool)`
+
+ SetRdsSubnetsZoneCIdsNil sets the value for RdsSubnetsZoneCIds to be an explicit nil
+
+### UnsetRdsSubnetsZoneCIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetRdsSubnetsZoneCIds()`
+
+UnsetRdsSubnetsZoneCIds ensures that no value is present for RdsSubnetsZoneCIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneAIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneAIds() []string`
@@ -370,6 +460,16 @@ SetEksKarpenterFargateSubnetsZoneAIds sets EksKarpenterFargateSubnetsZoneAIds fi
 
 HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
 
+### SetEksKarpenterFargateSubnetsZoneAIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneAIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneAIdsNil sets the value for EksKarpenterFargateSubnetsZoneAIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneAIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneAIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneAIds ensures that no value is present for EksKarpenterFargateSubnetsZoneAIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneBIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneBIds() []string`
@@ -395,6 +495,16 @@ SetEksKarpenterFargateSubnetsZoneBIds sets EksKarpenterFargateSubnetsZoneBIds fi
 
 HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
 
+### SetEksKarpenterFargateSubnetsZoneBIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneBIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneBIdsNil sets the value for EksKarpenterFargateSubnetsZoneBIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneBIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneBIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneBIds ensures that no value is present for EksKarpenterFargateSubnetsZoneBIds, not even an explicit nil
 ### GetEksKarpenterFargateSubnetsZoneCIds
 
 `func (o *ClusterFeatureAwsExistingVpc) GetEksKarpenterFargateSubnetsZoneCIds() []string`
@@ -420,6 +530,16 @@ SetEksKarpenterFargateSubnetsZoneCIds sets EksKarpenterFargateSubnetsZoneCIds fi
 
 HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
 
+### SetEksKarpenterFargateSubnetsZoneCIdsNil
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneCIdsNil(b bool)`
+
+ SetEksKarpenterFargateSubnetsZoneCIdsNil sets the value for EksKarpenterFargateSubnetsZoneCIds to be an explicit nil
+
+### UnsetEksKarpenterFargateSubnetsZoneCIds
+`func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneCIds()`
+
+UnsetEksKarpenterFargateSubnetsZoneCIds ensures that no value is present for EksKarpenterFargateSubnetsZoneCIds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

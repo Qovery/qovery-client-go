@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **Scope** | Pointer to [**EnvironmentLogScope**](EnvironmentLogScope.md) |  | [optional] 
 **State** | Pointer to [**StatusKindEnum**](StatusKindEnum.md) |  | [optional] 
-**Message** | **string** | Log message | 
+**Message** | **NullableString** | Log message | 
 **ExecutionId** | Pointer to **string** | Only for errors. Helps Qovery team to investigate. | [optional] 
 **Hint** | Pointer to **string** |  | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewEnvironmentLog
 
-`func NewEnvironmentLog(id string, createdAt time.Time, message string, ) *EnvironmentLog`
+`func NewEnvironmentLog(id string, createdAt time.Time, message NullableString, ) *EnvironmentLog`
 
 NewEnvironmentLog instantiates a new EnvironmentLog object
 This constructor will assign default values to properties that have it defined,
@@ -141,6 +141,16 @@ and a boolean to check if the value has been set.
 SetMessage sets Message field to given value.
 
 
+### SetMessageNil
+
+`func (o *EnvironmentLog) SetMessageNil(b bool)`
+
+ SetMessageNil sets the value for Message to be an explicit nil
+
+### UnsetMessage
+`func (o *EnvironmentLog) UnsetMessage()`
+
+UnsetMessage ensures that no value is present for Message, not even an explicit nil
 ### GetExecutionId
 
 `func (o *EnvironmentLog) GetExecutionId() string`

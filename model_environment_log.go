@@ -27,7 +27,7 @@ type EnvironmentLog struct {
 	Scope     *EnvironmentLogScope `json:"scope,omitempty"`
 	State     *StatusKindEnum      `json:"state,omitempty"`
 	// Log message
-	Message string `json:"message"`
+	Message NullableString `json:"message"`
 	// Only for errors. Helps Qovery team to investigate.
 	ExecutionId          *string `json:"execution_id,omitempty"`
 	Hint                 *string `json:"hint,omitempty"`
@@ -40,7 +40,7 @@ type _EnvironmentLog EnvironmentLog
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentLog(id string, createdAt time.Time, message string) *EnvironmentLog {
+func NewEnvironmentLog(id string, createdAt time.Time, message NullableString) *EnvironmentLog {
 	this := EnvironmentLog{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -169,27 +169,29 @@ func (o *EnvironmentLog) SetState(v StatusKindEnum) {
 }
 
 // GetMessage returns the Message field value
+// If the value is explicit nil, the zero value for string will be returned
 func (o *EnvironmentLog) GetMessage() string {
-	if o == nil {
+	if o == nil || o.Message.Get() == nil {
 		var ret string
 		return ret
 	}
 
-	return o.Message
+	return *o.Message.Get()
 }
 
 // GetMessageOk returns a tuple with the Message field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentLog) GetMessageOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Message, true
+	return o.Message.Get(), o.Message.IsSet()
 }
 
 // SetMessage sets field value
 func (o *EnvironmentLog) SetMessage(v string) {
-	o.Message = v
+	o.Message.Set(&v)
 }
 
 // GetExecutionId returns the ExecutionId field value if set, zero value otherwise.
@@ -274,7 +276,7 @@ func (o EnvironmentLog) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.State) {
 		toSerialize["state"] = o.State
 	}
-	toSerialize["message"] = o.Message
+	toSerialize["message"] = o.Message.Get()
 	if !IsNil(o.ExecutionId) {
 		toSerialize["execution_id"] = o.ExecutionId
 	}
