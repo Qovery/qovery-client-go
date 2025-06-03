@@ -21365,6 +21365,7 @@ components:
       - CRON
       - LIFECYCLE
       - HELM
+      - TERRAFORM
       type: string
     GitTokenAssociatedServiceResponse:
       example:
@@ -23723,6 +23724,7 @@ components:
       - DATABASE
       - JOB
       - HELM
+      - TERRAFORM
       type: string
     Log:
       example:
@@ -26775,6 +26777,7 @@ components:
       - CONTAINER
       - JOB
       - HELM
+      - TERRAFORM
       type: string
     LifecycleJobResponse:
       allOf:

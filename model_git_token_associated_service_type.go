@@ -25,6 +25,7 @@ const (
 	GITTOKENASSOCIATEDSERVICETYPE_CRON        GitTokenAssociatedServiceType = "CRON"
 	GITTOKENASSOCIATEDSERVICETYPE_LIFECYCLE   GitTokenAssociatedServiceType = "LIFECYCLE"
 	GITTOKENASSOCIATEDSERVICETYPE_HELM        GitTokenAssociatedServiceType = "HELM"
+	GITTOKENASSOCIATEDSERVICETYPE_TERRAFORM   GitTokenAssociatedServiceType = "TERRAFORM"
 )
 
 // All allowed values of GitTokenAssociatedServiceType enum
@@ -33,6 +34,7 @@ var AllowedGitTokenAssociatedServiceTypeEnumValues = []GitTokenAssociatedService
 	"CRON",
 	"LIFECYCLE",
 	"HELM",
+	"TERRAFORM",
 }
 
 func (v *GitTokenAssociatedServiceType) UnmarshalJSON(src []byte) error {
