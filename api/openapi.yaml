@@ -16189,6 +16189,37 @@ paths:
       - Terraform Deployment History
       x-stoplight:
         id: qxm14ubc0l5dq
+  /terraform/{terraformId}/commit:
+    get:
+      description: Returns list of the last 100 commits made on the repository linked
+        to the terraform service
+      operationId: listTerraformCommit
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponseList'
+          description: List commits
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List last commits
+      tags:
+      - Terraform Main Calls
   /terraform/{terraformId}/deploymentRestriction:
     get:
       description: Get terraform deployment restrictions

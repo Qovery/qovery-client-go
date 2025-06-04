@@ -63,4 +63,18 @@ func Test_qovery_TerraformMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TerraformMainCallsAPIService ListTerraformCommit", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+
+		resp, httpRes, err := apiClient.TerraformMainCallsAPI.ListTerraformCommit(context.Background(), terraformId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }
