@@ -28,7 +28,7 @@ type TerraformDeploymentRestrictionResponse struct {
 	Mode      DeploymentRestrictionModeEnum `json:"mode"`
 	Type      DeploymentRestrictionTypeEnum `json:"type"`
 	// ‘For `PATH` restrictions, the value must not start with `/`’
-	Value                *string `json:"value,omitempty"`
+	Value                string `json:"value"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,12 +38,13 @@ type _TerraformDeploymentRestrictionResponse TerraformDeploymentRestrictionRespo
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformDeploymentRestrictionResponse(id string, createdAt time.Time, mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum) *TerraformDeploymentRestrictionResponse {
+func NewTerraformDeploymentRestrictionResponse(id string, createdAt time.Time, mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum, value string) *TerraformDeploymentRestrictionResponse {
 	this := TerraformDeploymentRestrictionResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Mode = mode
 	this.Type = type_
+	this.Value = value
 	return &this
 }
 
@@ -183,36 +184,28 @@ func (o *TerraformDeploymentRestrictionResponse) SetType(v DeploymentRestriction
 	o.Type = v
 }
 
-// GetValue returns the Value field value if set, zero value otherwise.
+// GetValue returns the Value field value
 func (o *TerraformDeploymentRestrictionResponse) GetValue() string {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Value
+
+	return o.Value
 }
 
-// GetValueOk returns a tuple with the Value field value if set, nil otherwise
+// GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
 func (o *TerraformDeploymentRestrictionResponse) GetValueOk() (*string, bool) {
-	if o == nil || IsNil(o.Value) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Value, true
+	return &o.Value, true
 }
 
-// HasValue returns a boolean if a field has been set.
-func (o *TerraformDeploymentRestrictionResponse) HasValue() bool {
-	if o != nil && !IsNil(o.Value) {
-		return true
-	}
-
-	return false
-}
-
-// SetValue gets a reference to the given string and assigns it to the Value field.
+// SetValue sets field value
 func (o *TerraformDeploymentRestrictionResponse) SetValue(v string) {
-	o.Value = &v
+	o.Value = v
 }
 
 func (o TerraformDeploymentRestrictionResponse) MarshalJSON() ([]byte, error) {
@@ -232,9 +225,7 @@ func (o TerraformDeploymentRestrictionResponse) ToMap() (map[string]interface{},
 	}
 	toSerialize["mode"] = o.Mode
 	toSerialize["type"] = o.Type
-	if !IsNil(o.Value) {
-		toSerialize["value"] = o.Value
-	}
+	toSerialize["value"] = o.Value
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -252,6 +243,7 @@ func (o *TerraformDeploymentRestrictionResponse) UnmarshalJSON(data []byte) (err
 		"created_at",
 		"mode",
 		"type",
+		"value",
 	}
 
 	allProperties := make(map[string]interface{})

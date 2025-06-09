@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Mode** | [**DeploymentRestrictionModeEnum**](DeploymentRestrictionModeEnum.md) |  | 
 **Type** | [**DeploymentRestrictionTypeEnum**](DeploymentRestrictionTypeEnum.md) |  | 
-**Value** | Pointer to **string** | ‘For &#x60;PATH&#x60; restrictions, the value must not start with &#x60;/&#x60;’ | [optional] 
+**Value** | **string** | ‘For &#x60;PATH&#x60; restrictions, the value must not start with &#x60;/&#x60;’ | 
 
 ## Methods
 
 ### NewTerraformDeploymentRestrictionRequest
 
-`func NewTerraformDeploymentRestrictionRequest(mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum, ) *TerraformDeploymentRestrictionRequest`
+`func NewTerraformDeploymentRestrictionRequest(mode DeploymentRestrictionModeEnum, type_ DeploymentRestrictionTypeEnum, value string, ) *TerraformDeploymentRestrictionRequest`
 
 NewTerraformDeploymentRestrictionRequest instantiates a new TerraformDeploymentRestrictionRequest object
 This constructor will assign default values to properties that have it defined,
@@ -86,11 +86,6 @@ and a boolean to check if the value has been set.
 
 SetValue sets Value field to given value.
 
-### HasValue
-
-`func (o *TerraformDeploymentRestrictionRequest) HasValue() bool`
-
-HasValue returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

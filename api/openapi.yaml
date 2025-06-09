@@ -33350,6 +33350,7 @@ components:
       required:
       - mode
       - type
+      - value
       title: TerraformDeploymentRestrictionRequest
       type: object
       x-stoplight:

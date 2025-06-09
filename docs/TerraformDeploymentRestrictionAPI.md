@@ -33,7 +33,7 @@ import (
 
 func main() {
 	terraformId := "terraformId_example" // string | 
-	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH")) // TerraformDeploymentRestrictionRequest |  (optional)
+	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "Value_example") // TerraformDeploymentRestrictionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -177,7 +177,7 @@ import (
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
 	deploymentRestrictionId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH")) // TerraformDeploymentRestrictionRequest |  (optional)
+	terraformDeploymentRestrictionRequest := *openapiclient.NewTerraformDeploymentRestrictionRequest(openapiclient.DeploymentRestrictionModeEnum("EXCLUDE"), openapiclient.DeploymentRestrictionTypeEnum("PATH"), "Value_example") // TerraformDeploymentRestrictionRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
