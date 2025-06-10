@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **TimeoutSec** | Pointer to **string** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
 **JobResources** | [**TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
+**UseClusterCredentials** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -264,6 +265,31 @@ and a boolean to check if the value has been set.
 
 SetJobResources sets JobResources field to given value.
 
+
+### GetUseClusterCredentials
+
+`func (o *TerraformRequest) GetUseClusterCredentials() bool`
+
+GetUseClusterCredentials returns the UseClusterCredentials field if non-nil, zero value otherwise.
+
+### GetUseClusterCredentialsOk
+
+`func (o *TerraformRequest) GetUseClusterCredentialsOk() (*bool, bool)`
+
+GetUseClusterCredentialsOk returns a tuple with the UseClusterCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseClusterCredentials
+
+`func (o *TerraformRequest) SetUseClusterCredentials(v bool)`
+
+SetUseClusterCredentials sets UseClusterCredentials field to given value.
+
+### HasUseClusterCredentials
+
+`func (o *TerraformRequest) HasUseClusterCredentials() bool`
+
+HasUseClusterCredentials returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

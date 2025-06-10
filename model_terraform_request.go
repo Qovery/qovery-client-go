@@ -32,6 +32,7 @@ type TerraformRequest struct {
 	TimeoutSec               *string                              `json:"timeout_sec,omitempty"`
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
 	JobResources             TerraformRequestJobResources         `json:"job_resources"`
+	UseClusterCredentials    *bool                                `json:"use_cluster_credentials,omitempty"`
 	AdditionalProperties     map[string]interface{}
 }
 
@@ -343,6 +344,38 @@ func (o *TerraformRequest) SetJobResources(v TerraformRequestJobResources) {
 	o.JobResources = v
 }
 
+// GetUseClusterCredentials returns the UseClusterCredentials field value if set, zero value otherwise.
+func (o *TerraformRequest) GetUseClusterCredentials() bool {
+	if o == nil || IsNil(o.UseClusterCredentials) {
+		var ret bool
+		return ret
+	}
+	return *o.UseClusterCredentials
+}
+
+// GetUseClusterCredentialsOk returns a tuple with the UseClusterCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformRequest) GetUseClusterCredentialsOk() (*bool, bool) {
+	if o == nil || IsNil(o.UseClusterCredentials) {
+		return nil, false
+	}
+	return o.UseClusterCredentials, true
+}
+
+// HasUseClusterCredentials returns a boolean if a field has been set.
+func (o *TerraformRequest) HasUseClusterCredentials() bool {
+	if o != nil && !IsNil(o.UseClusterCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetUseClusterCredentials gets a reference to the given bool and assigns it to the UseClusterCredentials field.
+func (o *TerraformRequest) SetUseClusterCredentials(v bool) {
+	o.UseClusterCredentials = &v
+}
+
 func (o TerraformRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -368,6 +401,9 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
 	toSerialize["job_resources"] = o.JobResources
+	if !IsNil(o.UseClusterCredentials) {
+		toSerialize["use_cluster_credentials"] = o.UseClusterCredentials
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -430,6 +466,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "timeout_sec")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "job_resources")
+		delete(additionalProperties, "use_cluster_credentials")
 		o.AdditionalProperties = additionalProperties
 	}
 

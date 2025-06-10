@@ -32862,6 +32862,7 @@ components:
           storage_gib: 1
         provider: Terraform
         timeout_sec: timeout_sec
+        use_cluster_credentials: true
         name: name
         description: description
         provider_version:
@@ -32915,6 +32916,10 @@ components:
             id: nem7zoh97kyzc
         job_resources:
           $ref: '#/components/schemas/TerraformRequestJobResources'
+        use_cluster_credentials:
+          type: boolean
+          x-stoplight:
+            id: w9ncq63nukwe0
       required:
       - auto_approve
       - auto_deploy
@@ -32970,6 +32975,10 @@ components:
             $ref: '#/components/schemas/TerraformJobResourcesResponse'
           environment:
             $ref: '#/components/schemas/ReferenceObject'
+          use_cluster_credentials:
+            type: boolean
+            x-stoplight:
+              id: ixjejij08tgfo
         required:
         - auto_approve
         - auto_deploy
@@ -32982,6 +32991,7 @@ components:
         - service_type
         - terraform_variables_source
         - timeout_sec
+        - use_cluster_credentials
         type: object
       example:
         auto_deploy: true
@@ -33011,6 +33021,7 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         provider: TERRAFORM
         timeout_sec: 0
+        use_cluster_credentials: true
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_files_source: null
@@ -33232,6 +33243,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           provider: TERRAFORM
           timeout_sec: 0
+          use_cluster_credentials: true
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_files_source: null
@@ -33262,6 +33274,7 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           provider: TERRAFORM
           timeout_sec: 0
+          use_cluster_credentials: true
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_files_source: null

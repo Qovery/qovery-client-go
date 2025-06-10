@@ -20,12 +20,13 @@ Name | Type | Description | Notes
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
+**UseClusterCredentials** | **bool** |  | 
 
 ## Methods
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -383,6 +384,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformResponse) SetEnvironment(v ReferenceObject)`
 
 SetEnvironment sets Environment field to given value.
+
+
+### GetUseClusterCredentials
+
+`func (o *TerraformResponse) GetUseClusterCredentials() bool`
+
+GetUseClusterCredentials returns the UseClusterCredentials field if non-nil, zero value otherwise.
+
+### GetUseClusterCredentialsOk
+
+`func (o *TerraformResponse) GetUseClusterCredentialsOk() (*bool, bool)`
+
+GetUseClusterCredentialsOk returns a tuple with the UseClusterCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUseClusterCredentials
+
+`func (o *TerraformResponse) SetUseClusterCredentials(v bool)`
+
+SetUseClusterCredentials sets UseClusterCredentials field to given value.
 
 
 

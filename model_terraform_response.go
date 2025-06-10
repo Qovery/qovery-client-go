@@ -40,6 +40,7 @@ type TerraformResponse struct {
 	ProviderVersion          TerraformProviderVersion         `json:"provider_version"`
 	JobResources             TerraformJobResourcesResponse    `json:"job_resources"`
 	Environment              ReferenceObject                  `json:"environment"`
+	UseClusterCredentials    bool                             `json:"use_cluster_credentials"`
 	AdditionalProperties     map[string]interface{}
 }
 
@@ -49,7 +50,7 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -64,6 +65,7 @@ func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSe
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
 	this.Environment = environment
+	this.UseClusterCredentials = useClusterCredentials
 	return &this
 }
 
@@ -486,6 +488,30 @@ func (o *TerraformResponse) SetEnvironment(v ReferenceObject) {
 	o.Environment = v
 }
 
+// GetUseClusterCredentials returns the UseClusterCredentials field value
+func (o *TerraformResponse) GetUseClusterCredentials() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.UseClusterCredentials
+}
+
+// GetUseClusterCredentialsOk returns a tuple with the UseClusterCredentials field value
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetUseClusterCredentialsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.UseClusterCredentials, true
+}
+
+// SetUseClusterCredentials sets field value
+func (o *TerraformResponse) SetUseClusterCredentials(v bool) {
+	o.UseClusterCredentials = v
+}
+
 func (o TerraformResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -518,6 +544,7 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["provider_version"] = o.ProviderVersion
 	toSerialize["job_resources"] = o.JobResources
 	toSerialize["environment"] = o.Environment
+	toSerialize["use_cluster_credentials"] = o.UseClusterCredentials
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -544,6 +571,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"provider_version",
 		"job_resources",
 		"environment",
+		"use_cluster_credentials",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -589,6 +617,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "job_resources")
 		delete(additionalProperties, "environment")
+		delete(additionalProperties, "use_cluster_credentials")
 		o.AdditionalProperties = additionalProperties
 	}
 
