@@ -24,9 +24,15 @@ import (
 type TerraformMainCallsAPIService service
 
 type ApiDeleteTerraformRequest struct {
-	ctx         context.Context
-	ApiService  *TerraformMainCallsAPIService
-	terraformId string
+	ctx                 context.Context
+	ApiService          *TerraformMainCallsAPIService
+	terraformId         string
+	deleteResourcesOnly *bool
+}
+
+func (r ApiDeleteTerraformRequest) DeleteResourcesOnly(deleteResourcesOnly bool) ApiDeleteTerraformRequest {
+	r.deleteResourcesOnly = &deleteResourcesOnly
+	return r
 }
 
 func (r ApiDeleteTerraformRequest) Execute() (*http.Response, error) {
@@ -68,6 +74,9 @@ func (a *TerraformMainCallsAPIService) DeleteTerraformExecute(r ApiDeleteTerrafo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.deleteResourcesOnly != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "delete_resources_only", r.deleteResourcesOnly, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
