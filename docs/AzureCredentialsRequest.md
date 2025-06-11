@@ -7,14 +7,12 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
-**AzureClientId** | **string** |  | 
-**AzureClientSecret** | **string** |  | 
 
 ## Methods
 
 ### NewAzureCredentialsRequest
 
-`func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string, ) *AzureCredentialsRequest`
+`func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, ) *AzureCredentialsRequest`
 
 NewAzureCredentialsRequest instantiates a new AzureCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
@@ -87,46 +85,6 @@ and a boolean to check if the value has been set.
 `func (o *AzureCredentialsRequest) SetAzureTenantId(v string)`
 
 SetAzureTenantId sets AzureTenantId field to given value.
-
-
-### GetAzureClientId
-
-`func (o *AzureCredentialsRequest) GetAzureClientId() string`
-
-GetAzureClientId returns the AzureClientId field if non-nil, zero value otherwise.
-
-### GetAzureClientIdOk
-
-`func (o *AzureCredentialsRequest) GetAzureClientIdOk() (*string, bool)`
-
-GetAzureClientIdOk returns a tuple with the AzureClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureClientId
-
-`func (o *AzureCredentialsRequest) SetAzureClientId(v string)`
-
-SetAzureClientId sets AzureClientId field to given value.
-
-
-### GetAzureClientSecret
-
-`func (o *AzureCredentialsRequest) GetAzureClientSecret() string`
-
-GetAzureClientSecret returns the AzureClientSecret field if non-nil, zero value otherwise.
-
-### GetAzureClientSecretOk
-
-`func (o *AzureCredentialsRequest) GetAzureClientSecretOk() (*string, bool)`
-
-GetAzureClientSecretOk returns a tuple with the AzureClientSecret field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureClientSecret
-
-`func (o *AzureCredentialsRequest) SetAzureClientSecret(v string)`
-
-SetAzureClientSecret sets AzureClientSecret field to given value.
 
 
 

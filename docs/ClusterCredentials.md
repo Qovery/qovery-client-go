@@ -14,13 +14,12 @@ Name | Type | Description | Notes
 **RoleArn** | **string** |  | 
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
-**AzureClientId** | **string** |  | 
 
 ## Methods
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, azureSubscriptionId string, azureTenantId string, azureClientId string, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, azureSubscriptionId string, azureTenantId string, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -233,26 +232,6 @@ and a boolean to check if the value has been set.
 `func (o *ClusterCredentials) SetAzureTenantId(v string)`
 
 SetAzureTenantId sets AzureTenantId field to given value.
-
-
-### GetAzureClientId
-
-`func (o *ClusterCredentials) GetAzureClientId() string`
-
-GetAzureClientId returns the AzureClientId field if non-nil, zero value otherwise.
-
-### GetAzureClientIdOk
-
-`func (o *ClusterCredentials) GetAzureClientIdOk() (*string, bool)`
-
-GetAzureClientIdOk returns a tuple with the AzureClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureClientId
-
-`func (o *ClusterCredentials) SetAzureClientId(v string)`
-
-SetAzureClientId sets AzureClientId field to given value.
 
 
 

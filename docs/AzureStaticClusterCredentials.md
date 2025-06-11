@@ -8,14 +8,13 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
-**AzureClientId** | **string** |  | 
 **ObjectType** | **string** |  | 
 
 ## Methods
 
 ### NewAzureStaticClusterCredentials
 
-`func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, azureClientId string, objectType string, ) *AzureStaticClusterCredentials`
+`func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, objectType string, ) *AzureStaticClusterCredentials`
 
 NewAzureStaticClusterCredentials instantiates a new AzureStaticClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -108,26 +107,6 @@ and a boolean to check if the value has been set.
 `func (o *AzureStaticClusterCredentials) SetAzureTenantId(v string)`
 
 SetAzureTenantId sets AzureTenantId field to given value.
-
-
-### GetAzureClientId
-
-`func (o *AzureStaticClusterCredentials) GetAzureClientId() string`
-
-GetAzureClientId returns the AzureClientId field if non-nil, zero value otherwise.
-
-### GetAzureClientIdOk
-
-`func (o *AzureStaticClusterCredentials) GetAzureClientIdOk() (*string, bool)`
-
-GetAzureClientIdOk returns a tuple with the AzureClientId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAzureClientId
-
-`func (o *AzureStaticClusterCredentials) SetAzureClientId(v string)`
-
-SetAzureClientId sets AzureClientId field to given value.
 
 
 ### GetObjectType

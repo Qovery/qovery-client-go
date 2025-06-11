@@ -24,8 +24,6 @@ type AzureCredentialsRequest struct {
 	Name                 string `json:"name"`
 	AzureSubscriptionId  string `json:"azure_subscription_id"`
 	AzureTenantId        string `json:"azure_tenant_id"`
-	AzureClientId        string `json:"azure_client_id"`
-	AzureClientSecret    string `json:"azure_client_secret"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,13 +33,11 @@ type _AzureCredentialsRequest AzureCredentialsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string, azureClientId string, azureClientSecret string) *AzureCredentialsRequest {
+func NewAzureCredentialsRequest(name string, azureSubscriptionId string, azureTenantId string) *AzureCredentialsRequest {
 	this := AzureCredentialsRequest{}
 	this.Name = name
 	this.AzureSubscriptionId = azureSubscriptionId
 	this.AzureTenantId = azureTenantId
-	this.AzureClientId = azureClientId
-	this.AzureClientSecret = azureClientSecret
 	return &this
 }
 
@@ -125,54 +121,6 @@ func (o *AzureCredentialsRequest) SetAzureTenantId(v string) {
 	o.AzureTenantId = v
 }
 
-// GetAzureClientId returns the AzureClientId field value
-func (o *AzureCredentialsRequest) GetAzureClientId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AzureClientId
-}
-
-// GetAzureClientIdOk returns a tuple with the AzureClientId field value
-// and a boolean to check if the value has been set.
-func (o *AzureCredentialsRequest) GetAzureClientIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AzureClientId, true
-}
-
-// SetAzureClientId sets field value
-func (o *AzureCredentialsRequest) SetAzureClientId(v string) {
-	o.AzureClientId = v
-}
-
-// GetAzureClientSecret returns the AzureClientSecret field value
-func (o *AzureCredentialsRequest) GetAzureClientSecret() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.AzureClientSecret
-}
-
-// GetAzureClientSecretOk returns a tuple with the AzureClientSecret field value
-// and a boolean to check if the value has been set.
-func (o *AzureCredentialsRequest) GetAzureClientSecretOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AzureClientSecret, true
-}
-
-// SetAzureClientSecret sets field value
-func (o *AzureCredentialsRequest) SetAzureClientSecret(v string) {
-	o.AzureClientSecret = v
-}
-
 func (o AzureCredentialsRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -186,8 +134,6 @@ func (o AzureCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	toSerialize["azure_tenant_id"] = o.AzureTenantId
-	toSerialize["azure_client_id"] = o.AzureClientId
-	toSerialize["azure_client_secret"] = o.AzureClientSecret
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -204,8 +150,6 @@ func (o *AzureCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"azure_subscription_id",
 		"azure_tenant_id",
-		"azure_client_id",
-		"azure_client_secret",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -238,8 +182,6 @@ func (o *AzureCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "azure_subscription_id")
 		delete(additionalProperties, "azure_tenant_id")
-		delete(additionalProperties, "azure_client_id")
-		delete(additionalProperties, "azure_client_secret")
 		o.AdditionalProperties = additionalProperties
 	}
 

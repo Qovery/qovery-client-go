@@ -32785,10 +32785,6 @@ components:
           type: string
           x-stoplight:
             id: ygjwz6uqfexsc
-        azure_client_id:
-          type: string
-          x-stoplight:
-            id: vqjd5qddm3p8g
         object_type:
           enum:
           - AZURE
@@ -32796,7 +32792,6 @@ components:
           x-stoplight:
             id: 8oodrxjznyahm
       required:
-      - azure_client_id
       - azure_subscription_id
       - azure_tenant_id
       - id
@@ -32810,9 +32805,7 @@ components:
       example:
         azure_subscription_id: azure_subscription_id
         name: name
-        azure_client_secret: azure_client_secret
         azure_tenant_id: azure_tenant_id
-        azure_client_id: azure_client_id
       properties:
         name:
           type: string
@@ -32826,17 +32819,7 @@ components:
           type: string
           x-stoplight:
             id: u776tz269mjb0
-        azure_client_id:
-          type: string
-          x-stoplight:
-            id: 6d8yrq1enhyc8
-        azure_client_secret:
-          type: string
-          x-stoplight:
-            id: mj5vuoojyw05b
       required:
-      - azure_client_id
-      - azure_client_secret
       - azure_subscription_id
       - azure_tenant_id
       - name
