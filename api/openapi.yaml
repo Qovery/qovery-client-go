@@ -32860,7 +32860,7 @@ components:
           cpu_milli: 0
           ram_mib: 6
           storage_gib: 1
-        provider: Terraform
+        provider: TERRAFORM
         timeout_sec: timeout_sec
         use_cluster_credentials: true
         name: name
@@ -32899,7 +32899,7 @@ components:
           $ref: '#/components/schemas/TerraformVariablesSourceRequest'
         provider:
           enum:
-          - Terraform
+          - TERRAFORM
           type: string
           x-stoplight:
             id: w8o05dpbvcxp1
