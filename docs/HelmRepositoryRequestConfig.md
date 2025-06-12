@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **ScalewayAccessKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewaySecretKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewayProjectId** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
+**AzureTenantId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
+**AzureSubscriptionId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
 
 ## Methods
 
@@ -231,6 +233,56 @@ SetScalewayProjectId sets ScalewayProjectId field to given value.
 `func (o *HelmRepositoryRequestConfig) HasScalewayProjectId() bool`
 
 HasScalewayProjectId returns a boolean if a field has been set.
+
+### GetAzureTenantId
+
+`func (o *HelmRepositoryRequestConfig) GetAzureTenantId() string`
+
+GetAzureTenantId returns the AzureTenantId field if non-nil, zero value otherwise.
+
+### GetAzureTenantIdOk
+
+`func (o *HelmRepositoryRequestConfig) GetAzureTenantIdOk() (*string, bool)`
+
+GetAzureTenantIdOk returns a tuple with the AzureTenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureTenantId
+
+`func (o *HelmRepositoryRequestConfig) SetAzureTenantId(v string)`
+
+SetAzureTenantId sets AzureTenantId field to given value.
+
+### HasAzureTenantId
+
+`func (o *HelmRepositoryRequestConfig) HasAzureTenantId() bool`
+
+HasAzureTenantId returns a boolean if a field has been set.
+
+### GetAzureSubscriptionId
+
+`func (o *HelmRepositoryRequestConfig) GetAzureSubscriptionId() string`
+
+GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
+
+### GetAzureSubscriptionIdOk
+
+`func (o *HelmRepositoryRequestConfig) GetAzureSubscriptionIdOk() (*string, bool)`
+
+GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureSubscriptionId
+
+`func (o *HelmRepositoryRequestConfig) SetAzureSubscriptionId(v string)`
+
+SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
+
+### HasAzureSubscriptionId
+
+`func (o *HelmRepositoryRequestConfig) HasAzureSubscriptionId() bool`
+
+HasAzureSubscriptionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

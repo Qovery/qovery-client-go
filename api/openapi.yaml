@@ -20654,61 +20654,6 @@ components:
             $ref: '#/components/schemas/ContainerVersionResponse'
           type: array
       type: object
-    ContainerVersionResponse:
-      example:
-        image_name: image_name
-        versions:
-        - versions
-        - versions
-      properties:
-        image_name:
-          type: string
-        versions:
-          items:
-            type: string
-          type: array
-      type: object
-    HelmRepositoryRequest:
-      example:
-        kind: HTTPS
-        skip_tls_verification: true
-        name: name
-        description: description
-        config:
-          access_key_id: access_key_id
-          password: password
-          secret_access_key: secret_access_key
-          scaleway_secret_key: scaleway_secret_key
-          region: region
-          scaleway_access_key: scaleway_access_key
-          username: username
-          scaleway_project_id: scaleway_project_id
-        url: https://openapi-generator.tech
-      properties:
-        name:
-          type: string
-        kind:
-          $ref: '#/components/schemas/HelmRepositoryKindEnum'
-        description:
-          type: string
-        url:
-          description: |
-            URL of the helm chart repository:
-            * For `OCI`: it must start by oci://
-            * For `HTTPS`: it must be start by https://
-          format: uri
-          type: string
-        skip_tls_verification:
-          description: Bypass tls certificate verification when connecting to repository
-          type: boolean
-        config:
-          $ref: '#/components/schemas/HelmRepositoryRequest_config'
-      required:
-      - config
-      - kind
-      - name
-      - skip_tls_verification
-      type: object
     HelmRepositoryResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -20753,6 +20698,63 @@ components:
           scaleway_project_id: scaleway_project_id
           azure_tenant_id: azure_tenant_id
         url: url
+    ContainerVersionResponse:
+      example:
+        image_name: image_name
+        versions:
+        - versions
+        - versions
+      properties:
+        image_name:
+          type: string
+        versions:
+          items:
+            type: string
+          type: array
+      type: object
+    HelmRepositoryRequest:
+      example:
+        kind: HTTPS
+        skip_tls_verification: true
+        name: name
+        description: description
+        config:
+          access_key_id: access_key_id
+          password: password
+          azure_subscription_id: azure_subscription_id
+          secret_access_key: secret_access_key
+          scaleway_secret_key: scaleway_secret_key
+          region: region
+          scaleway_access_key: scaleway_access_key
+          username: username
+          scaleway_project_id: scaleway_project_id
+          azure_tenant_id: azure_tenant_id
+        url: https://openapi-generator.tech
+      properties:
+        name:
+          type: string
+        kind:
+          $ref: '#/components/schemas/HelmRepositoryKindEnum'
+        description:
+          type: string
+        url:
+          description: |
+            URL of the helm chart repository:
+            * For `OCI`: it must start by oci://
+            * For `HTTPS`: it must be start by https://
+          format: uri
+          type: string
+        skip_tls_verification:
+          description: Bypass tls certificate verification when connecting to repository
+          type: boolean
+        config:
+          $ref: '#/components/schemas/HelmRepositoryRequest_config'
+      required:
+      - config
+      - kind
+      - name
+      - skip_tls_verification
+      type: object
     HelmVersionResponseList:
       example:
         results:
@@ -34781,44 +34783,6 @@ components:
       type: object
       x-stoplight:
         id: s9rg5wox9j00z
-    HelmRepositoryRequest_config:
-      example:
-        access_key_id: access_key_id
-        password: password
-        secret_access_key: secret_access_key
-        scaleway_secret_key: scaleway_secret_key
-        region: region
-        scaleway_access_key: scaleway_access_key
-        username: username
-        scaleway_project_id: scaleway_project_id
-      properties:
-        username:
-          description: Required if the repository is private
-          type: string
-        password:
-          description: Required if the repository is private
-          type: string
-        access_key_id:
-          description: Required if kind is `ECR` or `PUBLIC_ECR`
-          type: string
-        secret_access_key:
-          description: Required if kind is `ECR` or `PUBLIC_ECR`
-          type: string
-        region:
-          description: Required if kind is `ECR` or `SCALEWAY_CR`
-          type: string
-        scaleway_access_key:
-          description: Required if kind is `SCALEWAY_CR`
-          type: string
-        scaleway_secret_key:
-          description: Required if kind is `SCALEWAY_CR`
-          type: string
-        scaleway_project_id:
-          description: Required if kind is `SCALEWAY_CR`
-          type: string
-          x-stoplight:
-            id: 9dw16j7cex4i6
-      type: object
     HelmRepositoryResponse_allOf_config:
       example:
         access_key_id: access_key_id
@@ -34860,6 +34824,56 @@ components:
       type: object
       x-stoplight:
         id: 224az7um9x51z
+    HelmRepositoryRequest_config:
+      example:
+        access_key_id: access_key_id
+        password: password
+        azure_subscription_id: azure_subscription_id
+        secret_access_key: secret_access_key
+        scaleway_secret_key: scaleway_secret_key
+        region: region
+        scaleway_access_key: scaleway_access_key
+        username: username
+        scaleway_project_id: scaleway_project_id
+        azure_tenant_id: azure_tenant_id
+      properties:
+        username:
+          description: Required if the repository is private
+          type: string
+        password:
+          description: Required if the repository is private
+          type: string
+        access_key_id:
+          description: Required if kind is `ECR` or `PUBLIC_ECR`
+          type: string
+        secret_access_key:
+          description: Required if kind is `ECR` or `PUBLIC_ECR`
+          type: string
+        region:
+          description: Required if kind is `ECR` or `SCALEWAY_CR`
+          type: string
+        scaleway_access_key:
+          description: Required if kind is `SCALEWAY_CR`
+          type: string
+        scaleway_secret_key:
+          description: Required if kind is `SCALEWAY_CR`
+          type: string
+        scaleway_project_id:
+          description: Required if kind is `SCALEWAY_CR`
+          type: string
+          x-stoplight:
+            id: 9dw16j7cex4i6
+        azure_tenant_id:
+          description: Required if kind is `AZURE_CR`.
+          type: string
+          x-stoplight:
+            id: dxxkwv9xyo1zq
+        azure_subscription_id:
+          description: Required if kind is `AZURE_CR`.
+          type: string
+          x-stoplight:
+            id: rboo4bgsvgfco
+      type: object
     DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id
