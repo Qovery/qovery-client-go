@@ -20746,10 +20746,12 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config:
           access_key_id: access_key_id
+          azure_subscription_id: azure_subscription_id
           region: region
           scaleway_access_key: scaleway_access_key
           username: username
           scaleway_project_id: scaleway_project_id
+          azure_tenant_id: azure_tenant_id
         url: url
     HelmVersionResponseList:
       example:
@@ -20795,10 +20797,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            azure_subscription_id: azure_subscription_id
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
             scaleway_project_id: scaleway_project_id
+            azure_tenant_id: azure_tenant_id
           url: url
         - associated_services_count: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -20810,10 +20814,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            azure_subscription_id: azure_subscription_id
             region: region
             scaleway_access_key: scaleway_access_key
             username: username
             scaleway_project_id: scaleway_project_id
+            azure_tenant_id: azure_tenant_id
           url: url
       properties:
         results:
@@ -34816,10 +34822,12 @@ components:
     HelmRepositoryResponse_allOf_config:
       example:
         access_key_id: access_key_id
+        azure_subscription_id: azure_subscription_id
         region: region
         scaleway_access_key: scaleway_access_key
         username: username
         scaleway_project_id: scaleway_project_id
+        azure_tenant_id: azure_tenant_id
       properties:
         username:
           type: string
@@ -34841,6 +34849,14 @@ components:
           type: string
           x-stoplight:
             id: kbrcr9377ly0q
+        azure_tenant_id:
+          type: string
+          x-stoplight:
+            id: yd92ly1zmep1u
+        azure_subscription_id:
+          type: string
+          x-stoplight:
+            id: rs3gk07qe1oy1
       type: object
       x-stoplight:
         id: 224az7um9x51z

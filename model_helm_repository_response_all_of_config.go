@@ -25,6 +25,8 @@ type HelmRepositoryResponseAllOfConfig struct {
 	AccessKeyId          *string `json:"access_key_id,omitempty"`
 	ScalewayAccessKey    *string `json:"scaleway_access_key,omitempty"`
 	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
+	AzureTenantId        *string `json:"azure_tenant_id,omitempty"`
+	AzureSubscriptionId  *string `json:"azure_subscription_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +209,70 @@ func (o *HelmRepositoryResponseAllOfConfig) SetScalewayProjectId(v string) {
 	o.ScalewayProjectId = &v
 }
 
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
+func (o *HelmRepositoryResponseAllOfConfig) GetAzureTenantId() string {
+	if o == nil || IsNil(o.AzureTenantId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureTenantId
+}
+
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponseAllOfConfig) GetAzureTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureTenantId) {
+		return nil, false
+	}
+	return o.AzureTenantId, true
+}
+
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *HelmRepositoryResponseAllOfConfig) HasAzureTenantId() bool {
+	if o != nil && !IsNil(o.AzureTenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
+func (o *HelmRepositoryResponseAllOfConfig) SetAzureTenantId(v string) {
+	o.AzureTenantId = &v
+}
+
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+func (o *HelmRepositoryResponseAllOfConfig) GetAzureSubscriptionId() string {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureSubscriptionId
+}
+
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponseAllOfConfig) GetAzureSubscriptionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
+		return nil, false
+	}
+	return o.AzureSubscriptionId, true
+}
+
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *HelmRepositoryResponseAllOfConfig) HasAzureSubscriptionId() bool {
+	if o != nil && !IsNil(o.AzureSubscriptionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
+func (o *HelmRepositoryResponseAllOfConfig) SetAzureSubscriptionId(v string) {
+	o.AzureSubscriptionId = &v
+}
+
 func (o HelmRepositoryResponseAllOfConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -231,6 +297,12 @@ func (o HelmRepositoryResponseAllOfConfig) ToMap() (map[string]interface{}, erro
 	}
 	if !IsNil(o.ScalewayProjectId) {
 		toSerialize["scaleway_project_id"] = o.ScalewayProjectId
+	}
+	if !IsNil(o.AzureTenantId) {
+		toSerialize["azure_tenant_id"] = o.AzureTenantId
+	}
+	if !IsNil(o.AzureSubscriptionId) {
+		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -259,6 +331,8 @@ func (o *HelmRepositoryResponseAllOfConfig) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "access_key_id")
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "scaleway_project_id")
+		delete(additionalProperties, "azure_tenant_id")
+		delete(additionalProperties, "azure_subscription_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
