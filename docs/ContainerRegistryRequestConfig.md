@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **Password** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **RoleArn** | Pointer to **string** | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional] 
+**AzureTenantId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
+**AzureSubscriptionId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
 
 ## Methods
 
@@ -283,6 +285,56 @@ SetRoleArn sets RoleArn field to given value.
 `func (o *ContainerRegistryRequestConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
+
+### GetAzureTenantId
+
+`func (o *ContainerRegistryRequestConfig) GetAzureTenantId() string`
+
+GetAzureTenantId returns the AzureTenantId field if non-nil, zero value otherwise.
+
+### GetAzureTenantIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetAzureTenantIdOk() (*string, bool)`
+
+GetAzureTenantIdOk returns a tuple with the AzureTenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureTenantId
+
+`func (o *ContainerRegistryRequestConfig) SetAzureTenantId(v string)`
+
+SetAzureTenantId sets AzureTenantId field to given value.
+
+### HasAzureTenantId
+
+`func (o *ContainerRegistryRequestConfig) HasAzureTenantId() bool`
+
+HasAzureTenantId returns a boolean if a field has been set.
+
+### GetAzureSubscriptionId
+
+`func (o *ContainerRegistryRequestConfig) GetAzureSubscriptionId() string`
+
+GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
+
+### GetAzureSubscriptionIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetAzureSubscriptionIdOk() (*string, bool)`
+
+GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureSubscriptionId
+
+`func (o *ContainerRegistryRequestConfig) SetAzureSubscriptionId(v string)`
+
+SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
+
+### HasAzureSubscriptionId
+
+`func (o *ContainerRegistryRequestConfig) HasAzureSubscriptionId() bool`
+
+HasAzureSubscriptionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

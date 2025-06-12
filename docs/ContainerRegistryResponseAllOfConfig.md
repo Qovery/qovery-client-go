@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **ScalewayProjectId** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 **RoleArn** | Pointer to **string** |  | [optional] 
+**AzureTenantId** | Pointer to **string** |  | [optional] 
+**AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +181,56 @@ SetRoleArn sets RoleArn field to given value.
 `func (o *ContainerRegistryResponseAllOfConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
+
+### GetAzureTenantId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureTenantId() string`
+
+GetAzureTenantId returns the AzureTenantId field if non-nil, zero value otherwise.
+
+### GetAzureTenantIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureTenantIdOk() (*string, bool)`
+
+GetAzureTenantIdOk returns a tuple with the AzureTenantId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureTenantId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetAzureTenantId(v string)`
+
+SetAzureTenantId sets AzureTenantId field to given value.
+
+### HasAzureTenantId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasAzureTenantId() bool`
+
+HasAzureTenantId returns a boolean if a field has been set.
+
+### GetAzureSubscriptionId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureSubscriptionId() string`
+
+GetAzureSubscriptionId returns the AzureSubscriptionId field if non-nil, zero value otherwise.
+
+### GetAzureSubscriptionIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureSubscriptionIdOk() (*string, bool)`
+
+GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureSubscriptionId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetAzureSubscriptionId(v string)`
+
+SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
+
+### HasAzureSubscriptionId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasAzureSubscriptionId() bool`
+
+HasAzureSubscriptionId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

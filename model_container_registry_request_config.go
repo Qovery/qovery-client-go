@@ -39,7 +39,11 @@ type ContainerRegistryRequestConfig struct {
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Password *string `json:"password,omitempty"`
 	// For ECR, you can either set a static access_key or use a role arn that we are going to assume
-	RoleArn              *string `json:"role_arn,omitempty"`
+	RoleArn *string `json:"role_arn,omitempty"`
+	// Required if kind is `AZURE_CR`.
+	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
+	// Required if kind is `AZURE_CR`.
+	AzureSubscriptionId  *string `json:"azure_subscription_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -382,6 +386,70 @@ func (o *ContainerRegistryRequestConfig) SetRoleArn(v string) {
 	o.RoleArn = &v
 }
 
+// GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetAzureTenantId() string {
+	if o == nil || IsNil(o.AzureTenantId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureTenantId
+}
+
+// GetAzureTenantIdOk returns a tuple with the AzureTenantId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetAzureTenantIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureTenantId) {
+		return nil, false
+	}
+	return o.AzureTenantId, true
+}
+
+// HasAzureTenantId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasAzureTenantId() bool {
+	if o != nil && !IsNil(o.AzureTenantId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureTenantId gets a reference to the given string and assigns it to the AzureTenantId field.
+func (o *ContainerRegistryRequestConfig) SetAzureTenantId(v string) {
+	o.AzureTenantId = &v
+}
+
+// GetAzureSubscriptionId returns the AzureSubscriptionId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetAzureSubscriptionId() string {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureSubscriptionId
+}
+
+// GetAzureSubscriptionIdOk returns a tuple with the AzureSubscriptionId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetAzureSubscriptionIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureSubscriptionId) {
+		return nil, false
+	}
+	return o.AzureSubscriptionId, true
+}
+
+// HasAzureSubscriptionId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasAzureSubscriptionId() bool {
+	if o != nil && !IsNil(o.AzureSubscriptionId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureSubscriptionId gets a reference to the given string and assigns it to the AzureSubscriptionId field.
+func (o *ContainerRegistryRequestConfig) SetAzureSubscriptionId(v string) {
+	o.AzureSubscriptionId = &v
+}
+
 func (o ContainerRegistryRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -422,6 +490,12 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.RoleArn) {
 		toSerialize["role_arn"] = o.RoleArn
 	}
+	if !IsNil(o.AzureTenantId) {
+		toSerialize["azure_tenant_id"] = o.AzureTenantId
+	}
+	if !IsNil(o.AzureSubscriptionId) {
+		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -454,6 +528,8 @@ func (o *ContainerRegistryRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "password")
 		delete(additionalProperties, "role_arn")
+		delete(additionalProperties, "azure_tenant_id")
+		delete(additionalProperties, "azure_subscription_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
