@@ -11,6 +11,10 @@ Name | Type | Description | Notes
 **Reason** | Pointer to **string** | The action that triggered the Event | [optional] 
 **Message** | Pointer to **string** | A description of the Event | [optional] 
 **Type** | Pointer to **string** | As of today it can be either Warning or Normal (can evolve in the next releases) | [optional] 
+**ReportingComponent** | Pointer to **string** |  | [optional] 
+**Count** | Pointer to **int32** |  | [optional] 
+**FirstOccurrence** | Pointer to **time.Time** |  | [optional] 
+**LastOccurrence** | Pointer to **time.Time** |  | [optional] 
 
 ## Methods
 
@@ -205,6 +209,106 @@ SetType sets Type field to given value.
 `func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasType() bool`
 
 HasType returns a boolean if a field has been set.
+
+### GetReportingComponent
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetReportingComponent() string`
+
+GetReportingComponent returns the ReportingComponent field if non-nil, zero value otherwise.
+
+### GetReportingComponentOk
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetReportingComponentOk() (*string, bool)`
+
+GetReportingComponentOk returns a tuple with the ReportingComponent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportingComponent
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetReportingComponent(v string)`
+
+SetReportingComponent sets ReportingComponent field to given value.
+
+### HasReportingComponent
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasReportingComponent() bool`
+
+HasReportingComponent returns a boolean if a field has been set.
+
+### GetCount
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetCount() int32`
+
+GetCount returns the Count field if non-nil, zero value otherwise.
+
+### GetCountOk
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetCountOk() (*int32, bool)`
+
+GetCountOk returns a tuple with the Count field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCount
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetCount(v int32)`
+
+SetCount sets Count field to given value.
+
+### HasCount
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasCount() bool`
+
+HasCount returns a boolean if a field has been set.
+
+### GetFirstOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetFirstOccurrence() time.Time`
+
+GetFirstOccurrence returns the FirstOccurrence field if non-nil, zero value otherwise.
+
+### GetFirstOccurrenceOk
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetFirstOccurrenceOk() (*time.Time, bool)`
+
+GetFirstOccurrenceOk returns a tuple with the FirstOccurrence field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFirstOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetFirstOccurrence(v time.Time)`
+
+SetFirstOccurrence sets FirstOccurrence field to given value.
+
+### HasFirstOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasFirstOccurrence() bool`
+
+HasFirstOccurrence returns a boolean if a field has been set.
+
+### GetLastOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetLastOccurrence() time.Time`
+
+GetLastOccurrence returns the LastOccurrence field if non-nil, zero value otherwise.
+
+### GetLastOccurrenceOk
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetLastOccurrenceOk() (*time.Time, bool)`
+
+GetLastOccurrenceOk returns a tuple with the LastOccurrence field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetLastOccurrence(v time.Time)`
+
+SetLastOccurrence sets LastOccurrence field to given value.
+
+### HasLastOccurrence
+
+`func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasLastOccurrence() bool`
+
+HasLastOccurrence returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -15335,6 +15335,14 @@ paths:
         schema:
           type: string
         style: form
+      - description: The name of the reporting component used to filter events.
+        explode: true
+        in: query
+        name: reporting_component
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -34106,9 +34114,13 @@ components:
     get_cluster_kubernetes_events_200_response_results_inner:
       example:
         reason: reason
+        first_occurrence: 2000-01-23T04:56:07.000+00:00
+        last_occurrence: 2000-01-23T04:56:07.000+00:00
+        reporting_component: reporting_component
         kind: kind
         namespace: namespace
         name: name
+        count: 0
         created_at: 2000-01-23T04:56:07.000+00:00
         message: message
         type: type
@@ -34137,21 +34149,47 @@ components:
           description: As of today it can be either Warning or Normal (can evolve
             in the next releases)
           type: string
+        reporting_component:
+          type: string
+          x-stoplight:
+            id: j80d7nbe0d7t5
+        count:
+          type: integer
+          x-stoplight:
+            id: dg0q4lb53n9bu
+        first_occurrence:
+          format: date-time
+          type: string
+          x-stoplight:
+            id: 2gfzxsksepqu1
+        last_occurrence:
+          format: date-time
+          type: string
+          x-stoplight:
+            id: 5pap12d1475w9
       type: object
     get_cluster_kubernetes_events_200_response:
       example:
         results:
         - reason: reason
+          first_occurrence: 2000-01-23T04:56:07.000+00:00
+          last_occurrence: 2000-01-23T04:56:07.000+00:00
+          reporting_component: reporting_component
           kind: kind
           namespace: namespace
           name: name
+          count: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           message: message
           type: type
         - reason: reason
+          first_occurrence: 2000-01-23T04:56:07.000+00:00
+          last_occurrence: 2000-01-23T04:56:07.000+00:00
+          reporting_component: reporting_component
           kind: kind
           namespace: namespace
           name: name
+          count: 0
           created_at: 2000-01-23T04:56:07.000+00:00
           message: message
           type: type

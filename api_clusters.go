@@ -1157,13 +1157,14 @@ func (a *ClustersAPIService) GetClusterKubeconfigExecute(r ApiGetClusterKubeconf
 }
 
 type ApiGetClusterKubernetesEventsRequest struct {
-	ctx          context.Context
-	ApiService   *ClustersAPIService
-	clusterId    string
-	fromDateTime *string
-	toDateTime   *string
-	nodeName     *string
-	podName      *string
+	ctx                context.Context
+	ApiService         *ClustersAPIService
+	clusterId          string
+	fromDateTime       *string
+	toDateTime         *string
+	nodeName           *string
+	podName            *string
+	reportingComponent *string
 }
 
 // The start date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)
@@ -1187,6 +1188,12 @@ func (r ApiGetClusterKubernetesEventsRequest) NodeName(nodeName string) ApiGetCl
 // The name of the pod to fetch event from
 func (r ApiGetClusterKubernetesEventsRequest) PodName(podName string) ApiGetClusterKubernetesEventsRequest {
 	r.podName = &podName
+	return r
+}
+
+// The name of the reporting component used to filter events.
+func (r ApiGetClusterKubernetesEventsRequest) ReportingComponent(reportingComponent string) ApiGetClusterKubernetesEventsRequest {
+	r.reportingComponent = &reportingComponent
 	return r
 }
 
@@ -1247,6 +1254,9 @@ func (a *ClustersAPIService) GetClusterKubernetesEventsExecute(r ApiGetClusterKu
 	}
 	if r.podName != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "pod_name", r.podName, "")
+	}
+	if r.reportingComponent != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "reporting_component", r.reportingComponent, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

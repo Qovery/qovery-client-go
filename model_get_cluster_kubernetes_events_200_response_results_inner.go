@@ -34,7 +34,11 @@ type GetClusterKubernetesEvents200ResponseResultsInner struct {
 	// A description of the Event
 	Message *string `json:"message,omitempty"`
 	// As of today it can be either Warning or Normal (can evolve in the next releases)
-	Type                 *string `json:"type,omitempty"`
+	Type                 *string    `json:"type,omitempty"`
+	ReportingComponent   *string    `json:"reporting_component,omitempty"`
+	Count                *int32     `json:"count,omitempty"`
+	FirstOccurrence      *time.Time `json:"first_occurrence,omitempty"`
+	LastOccurrence       *time.Time `json:"last_occurrence,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -281,6 +285,134 @@ func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetType(v string) {
 	o.Type = &v
 }
 
+// GetReportingComponent returns the ReportingComponent field value if set, zero value otherwise.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetReportingComponent() string {
+	if o == nil || IsNil(o.ReportingComponent) {
+		var ret string
+		return ret
+	}
+	return *o.ReportingComponent
+}
+
+// GetReportingComponentOk returns a tuple with the ReportingComponent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetReportingComponentOk() (*string, bool) {
+	if o == nil || IsNil(o.ReportingComponent) {
+		return nil, false
+	}
+	return o.ReportingComponent, true
+}
+
+// HasReportingComponent returns a boolean if a field has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasReportingComponent() bool {
+	if o != nil && !IsNil(o.ReportingComponent) {
+		return true
+	}
+
+	return false
+}
+
+// SetReportingComponent gets a reference to the given string and assigns it to the ReportingComponent field.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetReportingComponent(v string) {
+	o.ReportingComponent = &v
+}
+
+// GetCount returns the Count field value if set, zero value otherwise.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetCount() int32 {
+	if o == nil || IsNil(o.Count) {
+		var ret int32
+		return ret
+	}
+	return *o.Count
+}
+
+// GetCountOk returns a tuple with the Count field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetCountOk() (*int32, bool) {
+	if o == nil || IsNil(o.Count) {
+		return nil, false
+	}
+	return o.Count, true
+}
+
+// HasCount returns a boolean if a field has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasCount() bool {
+	if o != nil && !IsNil(o.Count) {
+		return true
+	}
+
+	return false
+}
+
+// SetCount gets a reference to the given int32 and assigns it to the Count field.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetCount(v int32) {
+	o.Count = &v
+}
+
+// GetFirstOccurrence returns the FirstOccurrence field value if set, zero value otherwise.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetFirstOccurrence() time.Time {
+	if o == nil || IsNil(o.FirstOccurrence) {
+		var ret time.Time
+		return ret
+	}
+	return *o.FirstOccurrence
+}
+
+// GetFirstOccurrenceOk returns a tuple with the FirstOccurrence field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetFirstOccurrenceOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.FirstOccurrence) {
+		return nil, false
+	}
+	return o.FirstOccurrence, true
+}
+
+// HasFirstOccurrence returns a boolean if a field has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasFirstOccurrence() bool {
+	if o != nil && !IsNil(o.FirstOccurrence) {
+		return true
+	}
+
+	return false
+}
+
+// SetFirstOccurrence gets a reference to the given time.Time and assigns it to the FirstOccurrence field.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetFirstOccurrence(v time.Time) {
+	o.FirstOccurrence = &v
+}
+
+// GetLastOccurrence returns the LastOccurrence field value if set, zero value otherwise.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetLastOccurrence() time.Time {
+	if o == nil || IsNil(o.LastOccurrence) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastOccurrence
+}
+
+// GetLastOccurrenceOk returns a tuple with the LastOccurrence field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) GetLastOccurrenceOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.LastOccurrence) {
+		return nil, false
+	}
+	return o.LastOccurrence, true
+}
+
+// HasLastOccurrence returns a boolean if a field has been set.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) HasLastOccurrence() bool {
+	if o != nil && !IsNil(o.LastOccurrence) {
+		return true
+	}
+
+	return false
+}
+
+// SetLastOccurrence gets a reference to the given time.Time and assigns it to the LastOccurrence field.
+func (o *GetClusterKubernetesEvents200ResponseResultsInner) SetLastOccurrence(v time.Time) {
+	o.LastOccurrence = &v
+}
+
 func (o GetClusterKubernetesEvents200ResponseResultsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -312,6 +444,18 @@ func (o GetClusterKubernetesEvents200ResponseResultsInner) ToMap() (map[string]i
 	if !IsNil(o.Type) {
 		toSerialize["type"] = o.Type
 	}
+	if !IsNil(o.ReportingComponent) {
+		toSerialize["reporting_component"] = o.ReportingComponent
+	}
+	if !IsNil(o.Count) {
+		toSerialize["count"] = o.Count
+	}
+	if !IsNil(o.FirstOccurrence) {
+		toSerialize["first_occurrence"] = o.FirstOccurrence
+	}
+	if !IsNil(o.LastOccurrence) {
+		toSerialize["last_occurrence"] = o.LastOccurrence
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -341,6 +485,10 @@ func (o *GetClusterKubernetesEvents200ResponseResultsInner) UnmarshalJSON(data [
 		delete(additionalProperties, "reason")
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "reporting_component")
+		delete(additionalProperties, "count")
+		delete(additionalProperties, "first_occurrence")
+		delete(additionalProperties, "last_occurrence")
 		o.AdditionalProperties = additionalProperties
 	}
 

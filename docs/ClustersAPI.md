@@ -691,7 +691,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterKubernetesEvents
 
-> GetClusterKubernetesEvents200Response GetClusterKubernetesEvents(ctx, clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).Execute()
+> GetClusterKubernetesEvents200Response GetClusterKubernetesEvents(ctx, clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).ReportingComponent(reportingComponent).Execute()
 
 List Cluster Kubernetes Events
 
@@ -715,10 +715,11 @@ func main() {
 	toDateTime := "2025-03-03T03:00:00+00:00" // string | The end date time to fetch events from, following ISO-8601 format.   The `+` character must be escaped (`%2B`) 
 	nodeName := "nodeName_example" // string | The name of the node to fetch event from (optional)
 	podName := "podName_example" // string | The name of the pod to fetch event from (optional)
+	reportingComponent := "reportingComponent_example" // string | The name of the reporting component used to filter events. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterKubernetesEvents(context.Background(), clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterKubernetesEvents(context.Background(), clusterId).FromDateTime(fromDateTime).ToDateTime(toDateTime).NodeName(nodeName).PodName(podName).ReportingComponent(reportingComponent).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubernetesEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -748,6 +749,7 @@ Name | Type | Description  | Notes
  **toDateTime** | **string** | The end date time to fetch events from, following ISO-8601 format.   The &#x60;+&#x60; character must be escaped (&#x60;%2B&#x60;)  | 
  **nodeName** | **string** | The name of the node to fetch event from | 
  **podName** | **string** | The name of the pod to fetch event from | 
+ **reportingComponent** | **string** | The name of the reporting component used to filter events. | 
 
 ### Return type
 
