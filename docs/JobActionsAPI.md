@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**DeployJob**](JobActionsAPI.md#DeployJob) | **Post** /job/{jobId}/deploy | Deploy job
 [**RedeployJob**](JobActionsAPI.md#RedeployJob) | **Post** /job/{jobId}/redeploy | Redeploy job
 [**StopJob**](JobActionsAPI.md#StopJob) | **Post** /job/{jobId}/stop | Stop job
+[**UninstallJob**](JobActionsAPI.md#UninstallJob) | **Post** /job/{jobId}/uninstall | Uninstall job
 
 
 
@@ -284,6 +285,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UninstallJob
+
+> map[string]interface{} UninstallJob(ctx, jobId).Body(body).Execute()
+
+Uninstall job
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.JobActionsAPI.UninstallJob(context.Background(), jobId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.UninstallJob``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UninstallJob`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.UninstallJob`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**jobId** | **string** | Job ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUninstallJobRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

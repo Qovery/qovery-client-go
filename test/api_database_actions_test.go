@@ -78,4 +78,18 @@ func Test_qovery_DatabaseActionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test DatabaseActionsAPIService UninstallDatabase", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var databaseId string
+
+		resp, httpRes, err := apiClient.DatabaseActionsAPI.UninstallDatabase(context.Background(), databaseId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

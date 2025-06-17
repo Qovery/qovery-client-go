@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**RebootApplication**](ApplicationActionsAPI.md#RebootApplication) | **Post** /application/{applicationId}/restart-service | Reboot application
 [**RedeployApplication**](ApplicationActionsAPI.md#RedeployApplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
 [**StopApplication**](ApplicationActionsAPI.md#StopApplication) | **Post** /application/{applicationId}/stop | Stop application
+[**UninstallApplication**](ApplicationActionsAPI.md#UninstallApplication) | **Post** /application/{applicationId}/uninstall | Uninstall application
 
 
 
@@ -280,6 +281,78 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UninstallApplication
+
+> map[string]interface{} UninstallApplication(ctx, applicationId).Body(body).Execute()
+
+Uninstall application
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ApplicationActionsAPI.UninstallApplication(context.Background(), applicationId).Body(body).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.UninstallApplication``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UninstallApplication`: map[string]interface{}
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.UninstallApplication`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**applicationId** | **string** | Application ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUninstallApplicationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **body** | **map[string]interface{}** |  | 
+
+### Return type
+
+**map[string]interface{}**
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

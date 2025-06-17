@@ -36,4 +36,18 @@ func Test_qovery_TerraformActionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test TerraformActionsAPIService UninstallTerraform", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+
+		resp, httpRes, err := apiClient.TerraformActionsAPI.UninstallTerraform(context.Background(), terraformId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

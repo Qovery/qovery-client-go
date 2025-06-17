@@ -8763,6 +8763,50 @@ paths:
       summary: Deploy application
       tags:
       - Application Actions
+  /application/{applicationId}/uninstall:
+    post:
+      description: |
+        Delete the resources of an application but keep the Qovery config.
+      operationId: uninstallApplication
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: Deploy application
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall application
+      tags:
+      - Application Actions
+      x-stoplight:
+        id: vrnx0mllgta48
   /application/{applicationId}/stop:
     post:
       operationId: stopApplication
@@ -10239,6 +10283,49 @@ paths:
       summary: Deploy container
       tags:
       - Container Actions
+  /container/{containerId}/uninstall:
+    post:
+      description: Delete the resources of the container but keep Qovery configuration
+      operationId: uninstallContainer
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: Delete the resources of the container but keep Qovery configuration
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall container
+      tags:
+      - Container Actions
+      x-stoplight:
+        id: tyqhmv3tdihmm
   /container/{containerId}/stop:
     post:
       operationId: stopContainer
@@ -11769,6 +11856,46 @@ paths:
       summary: 'Deploy database '
       tags:
       - Database Actions
+  /database/{databaseId}/uninstall:
+    post:
+      operationId: uninstallDatabase
+      parameters:
+      - description: Database ID
+        explode: false
+        in: path
+        name: databaseId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: Delete the resources of the database but keep Qovery configuration
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall database
+      tags:
+      - Database Actions
+      x-stoplight:
+        id: dn8xf9tcthfqn
   /database/{databaseId}/deploymentHistory:
     get:
       description: By default it returns the 20 last results. The response is paginated.
@@ -12622,6 +12749,48 @@ paths:
       summary: Deploy helm
       tags:
       - Helm Actions
+  /helm/{helmId}/uninstall:
+    post:
+      description: Delete the resources of the helm but keep Qovery configuration
+      operationId: uninstallHelm
+      parameters:
+      - description: Helm ID
+        explode: false
+        in: path
+        name: helmId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: ""
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall helm
+      tags:
+      - Helm Actions
+      x-stoplight:
+        id: cdps3bcv0l0wa
   /helm/{helmId}/redeploy:
     post:
       operationId: redeployHelm
@@ -13676,6 +13845,49 @@ paths:
       summary: Deploy job
       tags:
       - Job Actions
+  /job/{jobId}/uninstall:
+    post:
+      description: Delete the resources of the job but keep Qovery configuration
+      operationId: uninstallJob
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: Deploy job
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall job
+      tags:
+      - Job Actions
+      x-stoplight:
+        id: s4xgct6hdxymt
   /job/{jobId}/redeploy:
     post:
       operationId: redeployJob
@@ -16116,6 +16328,49 @@ paths:
       summary: Deploy terraform
       tags:
       - Terraform Actions
+  /terraform/{terraformId}/uninstall:
+    post:
+      description: Delete the resources of the terraform but keep Qovery configuration
+      operationId: uninstallTerraform
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: object
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: ""
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall terraform
+      tags:
+      - Terraform Actions
+      x-stoplight:
+        id: awjvr4y02cr23
   /defaultTerraformAdvancedSettings:
     get:
       operationId: getDefaultTerraformAdvancedSettings
