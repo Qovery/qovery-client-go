@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**RedeployEnvironment**](EnvironmentActionsAPI.md#RedeployEnvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
 [**StopEnvironment**](EnvironmentActionsAPI.md#StopEnvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 [**StopSelectedServices**](EnvironmentActionsAPI.md#StopSelectedServices) | **Post** /environment/{environmentId}/service/stop | Stop services
+[**UninstallSelectedServices**](EnvironmentActionsAPI.md#UninstallSelectedServices) | **Post** /environment/{environmentId}/service/uninstall | Uninstall services
 
 
 
@@ -696,6 +697,76 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiStopSelectedServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **environmentServiceIdsAllRequest** | [**EnvironmentServiceIdsAllRequest**](EnvironmentServiceIdsAllRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UninstallSelectedServices
+
+> UninstallSelectedServices(ctx, environmentId).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
+
+Uninstall services
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	environmentServiceIdsAllRequest := *openapiclient.NewEnvironmentServiceIdsAllRequest() // EnvironmentServiceIdsAllRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnvironmentActionsAPI.UninstallSelectedServices(context.Background(), environmentId).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.UninstallSelectedServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUninstallSelectedServicesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

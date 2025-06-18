@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DatabaseIds** | Pointer to **[]string** |  | [optional] 
 **JobIds** | Pointer to **[]string** |  | [optional] 
 **HelmIds** | Pointer to **[]string** |  | [optional] 
+**TerraformIds** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetHelmIds sets HelmIds field to given value.
 `func (o *EnvironmentServiceIdsAllRequest) HasHelmIds() bool`
 
 HasHelmIds returns a boolean if a field has been set.
+
+### GetTerraformIds
+
+`func (o *EnvironmentServiceIdsAllRequest) GetTerraformIds() []string`
+
+GetTerraformIds returns the TerraformIds field if non-nil, zero value otherwise.
+
+### GetTerraformIdsOk
+
+`func (o *EnvironmentServiceIdsAllRequest) GetTerraformIdsOk() (*[]string, bool)`
+
+GetTerraformIdsOk returns a tuple with the TerraformIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraformIds
+
+`func (o *EnvironmentServiceIdsAllRequest) SetTerraformIds(v []string)`
+
+SetTerraformIds sets TerraformIds field to given value.
+
+### HasTerraformIds
+
+`func (o *EnvironmentServiceIdsAllRequest) HasTerraformIds() bool`
+
+HasTerraformIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

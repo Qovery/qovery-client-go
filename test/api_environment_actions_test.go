@@ -160,4 +160,17 @@ func Test_qovery_EnvironmentActionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EnvironmentActionsAPIService UninstallSelectedServices", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		httpRes, err := apiClient.EnvironmentActionsAPI.UninstallSelectedServices(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

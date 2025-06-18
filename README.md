@@ -316,6 +316,7 @@ Class | Method | HTTP request | Description
 *EnvironmentActionsAPI* | [**RedeployEnvironment**](docs/EnvironmentActionsAPI.md#redeployenvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
 *EnvironmentActionsAPI* | [**StopEnvironment**](docs/EnvironmentActionsAPI.md#stopenvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 *EnvironmentActionsAPI* | [**StopSelectedServices**](docs/EnvironmentActionsAPI.md#stopselectedservices) | **Post** /environment/{environmentId}/service/stop | Stop services
+*EnvironmentActionsAPI* | [**UninstallSelectedServices**](docs/EnvironmentActionsAPI.md#uninstallselectedservices) | **Post** /environment/{environmentId}/service/uninstall | Uninstall services
 *EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistory**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 *EnvironmentDeploymentHistoryAPI* | [**ListEnvironmentDeploymentHistoryV2**](docs/EnvironmentDeploymentHistoryAPI.md#listenvironmentdeploymenthistoryv2) | **Get** /environment/{environmentId}/deploymentHistoryV2 | List environment deployments
 *EnvironmentDeploymentRuleAPI* | [**EditEnvironmentDeploymentRule**](docs/EnvironmentDeploymentRuleAPI.md#editenvironmentdeploymentrule) | **Put** /environment/{environmentId}/deploymentRule/{deploymentRuleId} | Edit an environment deployment rule

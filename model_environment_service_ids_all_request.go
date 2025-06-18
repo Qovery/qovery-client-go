@@ -25,6 +25,7 @@ type EnvironmentServiceIdsAllRequest struct {
 	DatabaseIds          []string `json:"database_ids,omitempty"`
 	JobIds               []string `json:"job_ids,omitempty"`
 	HelmIds              []string `json:"helm_ids,omitempty"`
+	TerraformIds         []string `json:"terraform_ids,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +208,38 @@ func (o *EnvironmentServiceIdsAllRequest) SetHelmIds(v []string) {
 	o.HelmIds = v
 }
 
+// GetTerraformIds returns the TerraformIds field value if set, zero value otherwise.
+func (o *EnvironmentServiceIdsAllRequest) GetTerraformIds() []string {
+	if o == nil || IsNil(o.TerraformIds) {
+		var ret []string
+		return ret
+	}
+	return o.TerraformIds
+}
+
+// GetTerraformIdsOk returns a tuple with the TerraformIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentServiceIdsAllRequest) GetTerraformIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.TerraformIds) {
+		return nil, false
+	}
+	return o.TerraformIds, true
+}
+
+// HasTerraformIds returns a boolean if a field has been set.
+func (o *EnvironmentServiceIdsAllRequest) HasTerraformIds() bool {
+	if o != nil && !IsNil(o.TerraformIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetTerraformIds gets a reference to the given []string and assigns it to the TerraformIds field.
+func (o *EnvironmentServiceIdsAllRequest) SetTerraformIds(v []string) {
+	o.TerraformIds = v
+}
+
 func (o EnvironmentServiceIdsAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -231,6 +264,9 @@ func (o EnvironmentServiceIdsAllRequest) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.HelmIds) {
 		toSerialize["helm_ids"] = o.HelmIds
+	}
+	if !IsNil(o.TerraformIds) {
+		toSerialize["terraform_ids"] = o.TerraformIds
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -259,6 +295,7 @@ func (o *EnvironmentServiceIdsAllRequest) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "database_ids")
 		delete(additionalProperties, "job_ids")
 		delete(additionalProperties, "helm_ids")
+		delete(additionalProperties, "terraform_ids")
 		o.AdditionalProperties = additionalProperties
 	}
 

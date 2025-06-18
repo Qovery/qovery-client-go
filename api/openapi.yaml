@@ -7412,6 +7412,43 @@ paths:
       summary: Delete services
       tags:
       - Environment Actions
+  /environment/{environmentId}/service/uninstall:
+    post:
+      description: uninstall selected services
+      operationId: uninstallSelectedServices
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnvironmentServiceIdsAllRequest'
+      responses:
+        "200":
+          description: Services have been triggered to be uninstalled
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall services
+      tags:
+      - Environment Actions
+      x-stoplight:
+        id: m4lfkqr1n8s97
   /organization/{organizationId}/container/deploy:
     post:
       description: |
@@ -25592,6 +25629,9 @@ components:
         container_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        terraform_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         database_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -25620,6 +25660,13 @@ components:
           items:
             format: uuid
             type: string
+          type: array
+        terraform_ids:
+          items:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: w1tqy39oq25pf
           type: array
       type: object
     APIVariableScopeEnum:
