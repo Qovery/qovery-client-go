@@ -6896,6 +6896,41 @@ paths:
       summary: Deploy environment
       tags:
       - Environment Actions
+  /environment/{environmentId}/uninstall:
+    post:
+      description: This will uninstall all the services of this environment.
+      operationId: uninstallEnvironment
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                properties: {}
+                type: object
+          description: uninstall environment
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Uninstall environment
+      tags:
+      - Environment Actions
+      x-stoplight:
+        id: g57d57j59zihv
   /environment/{environmentId}/stop:
     post:
       operationId: stopEnvironment
