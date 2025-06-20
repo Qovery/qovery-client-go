@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 
 ## UninstallJob
 
-> map[string]interface{} UninstallJob(ctx, jobId).Body(body).Execute()
+> Status UninstallJob(ctx, jobId).Body(body).Execute()
 
 Uninstall job
 
@@ -323,7 +323,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobActionsAPI.UninstallJob``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallJob`: map[string]interface{}
+	// response from `UninstallJob`: Status
 	fmt.Fprintf(os.Stdout, "Response from `JobActionsAPI.UninstallJob`: %v\n", resp)
 }
 ```
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 

@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ## UninstallHelm
 
-> map[string]interface{} UninstallHelm(ctx, helmId).Body(body).Execute()
+> Status UninstallHelm(ctx, helmId).Body(body).Execute()
 
 Uninstall helm
 
@@ -254,7 +254,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `HelmActionsAPI.UninstallHelm``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallHelm`: map[string]interface{}
+	// response from `UninstallHelm`: Status
 	fmt.Fprintf(os.Stdout, "Response from `HelmActionsAPI.UninstallHelm`: %v\n", resp)
 }
 ```
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 

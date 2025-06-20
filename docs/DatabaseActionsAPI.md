@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 
 ## UninstallDatabase
 
-> map[string]interface{} UninstallDatabase(ctx, databaseId).Body(body).Execute()
+> Status UninstallDatabase(ctx, databaseId).Body(body).Execute()
 
 Uninstall database
 
@@ -313,7 +313,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.UninstallDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallDatabase`: map[string]interface{}
+	// response from `UninstallDatabase`: Status
 	fmt.Fprintf(os.Stdout, "Response from `DatabaseActionsAPI.UninstallDatabase`: %v\n", resp)
 }
 ```
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 

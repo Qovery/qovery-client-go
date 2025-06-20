@@ -413,7 +413,7 @@ func (r ApiUninstallHelmRequest) Body(body map[string]interface{}) ApiUninstallH
 	return r
 }
 
-func (r ApiUninstallHelmRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallHelmRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallHelmExecute(r)
 }
 
@@ -436,13 +436,13 @@ func (a *HelmActionsAPIService) UninstallHelm(ctx context.Context, helmId string
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *HelmActionsAPIService) UninstallHelmExecute(r ApiUninstallHelmRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *HelmActionsAPIService) UninstallHelmExecute(r ApiUninstallHelmRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "HelmActionsAPIService.UninstallHelm")

@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## UninstallApplication
 
-> map[string]interface{} UninstallApplication(ctx, applicationId).Body(body).Execute()
+> Status UninstallApplication(ctx, applicationId).Body(body).Execute()
 
 Uninstall application
 
@@ -319,7 +319,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationActionsAPI.UninstallApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallApplication`: map[string]interface{}
+	// response from `UninstallApplication`: Status
 	fmt.Fprintf(os.Stdout, "Response from `ApplicationActionsAPI.UninstallApplication`: %v\n", resp)
 }
 ```
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 

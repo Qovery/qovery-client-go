@@ -290,7 +290,7 @@ Name | Type | Description  | Notes
 
 ## UninstallContainer
 
-> map[string]interface{} UninstallContainer(ctx, containerId).Body(body).Execute()
+> Status UninstallContainer(ctx, containerId).Body(body).Execute()
 
 Uninstall container
 
@@ -319,7 +319,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContainerActionsAPI.UninstallContainer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallContainer`: map[string]interface{}
+	// response from `UninstallContainer`: Status
 	fmt.Fprintf(os.Stdout, "Response from `ContainerActionsAPI.UninstallContainer`: %v\n", resp)
 }
 ```
@@ -344,7 +344,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 

@@ -8861,9 +8861,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: Deploy application
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "400":
           description: Bad request
         "401":
@@ -10380,9 +10382,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: Delete the resources of the container but keep Qovery configuration
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "400":
           description: Bad request
         "401":
@@ -11952,9 +11956,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: Delete the resources of the database but keep Qovery configuration
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "401":
           description: Access token is missing or invalid
         "403":
@@ -12845,9 +12851,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: ""
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "400":
           description: Bad request
         "401":
@@ -13942,9 +13950,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: Deploy job
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "400":
           description: Bad request
         "401":
@@ -16425,9 +16435,11 @@ paths:
           content:
             application/json:
               schema:
-                properties: {}
-                type: object
-          description: ""
+                $ref: '#/components/schemas/Status'
+          description: "Delete the compute and data of the service, but keep Qovery\
+            \ configuration"
+        "204":
+          description: No deployment has been triggered
         "400":
           description: Bad request
         "401":

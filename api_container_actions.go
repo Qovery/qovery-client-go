@@ -509,7 +509,7 @@ func (r ApiUninstallContainerRequest) Body(body map[string]interface{}) ApiUnins
 	return r
 }
 
-func (r ApiUninstallContainerRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallContainerRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallContainerExecute(r)
 }
 
@@ -532,13 +532,13 @@ func (a *ContainerActionsAPIService) UninstallContainer(ctx context.Context, con
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ContainerActionsAPIService) UninstallContainerExecute(r ApiUninstallContainerRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *ContainerActionsAPIService) UninstallContainerExecute(r ApiUninstallContainerRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerActionsAPIService.UninstallContainer")

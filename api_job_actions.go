@@ -529,7 +529,7 @@ func (r ApiUninstallJobRequest) Body(body map[string]interface{}) ApiUninstallJo
 	return r
 }
 
-func (r ApiUninstallJobRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallJobRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallJobExecute(r)
 }
 
@@ -552,13 +552,13 @@ func (a *JobActionsAPIService) UninstallJob(ctx context.Context, jobId string) A
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *JobActionsAPIService) UninstallJobExecute(r ApiUninstallJobRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *JobActionsAPIService) UninstallJobExecute(r ApiUninstallJobRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "JobActionsAPIService.UninstallJob")

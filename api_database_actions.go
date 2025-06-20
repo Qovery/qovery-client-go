@@ -499,7 +499,7 @@ func (r ApiUninstallDatabaseRequest) Body(body map[string]interface{}) ApiUninst
 	return r
 }
 
-func (r ApiUninstallDatabaseRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallDatabaseRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallDatabaseExecute(r)
 }
 
@@ -520,13 +520,13 @@ func (a *DatabaseActionsAPIService) UninstallDatabase(ctx context.Context, datab
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *DatabaseActionsAPIService) UninstallDatabaseExecute(r ApiUninstallDatabaseRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *DatabaseActionsAPIService) UninstallDatabaseExecute(r ApiUninstallDatabaseRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DatabaseActionsAPIService.UninstallDatabase")

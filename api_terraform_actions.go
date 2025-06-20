@@ -161,7 +161,7 @@ func (r ApiUninstallTerraformRequest) Body(body map[string]interface{}) ApiUnins
 	return r
 }
 
-func (r ApiUninstallTerraformRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallTerraformRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallTerraformExecute(r)
 }
 
@@ -184,13 +184,13 @@ func (a *TerraformActionsAPIService) UninstallTerraform(ctx context.Context, ter
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *TerraformActionsAPIService) UninstallTerraformExecute(r ApiUninstallTerraformRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *TerraformActionsAPIService) UninstallTerraformExecute(r ApiUninstallTerraformRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TerraformActionsAPIService.UninstallTerraform")

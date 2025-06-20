@@ -509,7 +509,7 @@ func (r ApiUninstallApplicationRequest) Body(body map[string]interface{}) ApiUni
 	return r
 }
 
-func (r ApiUninstallApplicationRequest) Execute() (map[string]interface{}, *http.Response, error) {
+func (r ApiUninstallApplicationRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.UninstallApplicationExecute(r)
 }
 
@@ -532,13 +532,13 @@ func (a *ApplicationActionsAPIService) UninstallApplication(ctx context.Context,
 
 // Execute executes the request
 //
-//	@return map[string]interface{}
-func (a *ApplicationActionsAPIService) UninstallApplicationExecute(r ApiUninstallApplicationRequest) (map[string]interface{}, *http.Response, error) {
+//	@return Status
+func (a *ApplicationActionsAPIService) UninstallApplicationExecute(r ApiUninstallApplicationRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue map[string]interface{}
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationActionsAPIService.UninstallApplication")

@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## UninstallTerraform
 
-> map[string]interface{} UninstallTerraform(ctx, terraformId).Body(body).Execute()
+> Status UninstallTerraform(ctx, terraformId).Body(body).Execute()
 
 Uninstall terraform
 
@@ -112,7 +112,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `TerraformActionsAPI.UninstallTerraform``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UninstallTerraform`: map[string]interface{}
+	// response from `UninstallTerraform`: Status
 	fmt.Fprintf(os.Stdout, "Response from `TerraformActionsAPI.UninstallTerraform`: %v\n", resp)
 }
 ```
@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]interface{}**
+[**Status**](Status.md)
 
 ### Authorization
 
