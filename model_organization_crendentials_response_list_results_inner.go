@@ -20,8 +20,8 @@ var _ MappedNullable = &OrganizationCrendentialsResponseListResultsInner{}
 
 // OrganizationCrendentialsResponseListResultsInner struct for OrganizationCrendentialsResponseListResultsInner
 type OrganizationCrendentialsResponseListResultsInner struct {
-	Credential           *ClusterCredentials                                             `json:"credential,omitempty"`
-	Clusters             []OrganizationCrendentialsResponseListResultsInnerClustersInner `json:"clusters,omitempty"`
+	Credential           *ClusterCredentials `json:"credential,omitempty"`
+	Clusters             []CredentialCluster `json:"clusters,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -77,9 +77,9 @@ func (o *OrganizationCrendentialsResponseListResultsInner) SetCredential(v Clust
 }
 
 // GetClusters returns the Clusters field value if set, zero value otherwise.
-func (o *OrganizationCrendentialsResponseListResultsInner) GetClusters() []OrganizationCrendentialsResponseListResultsInnerClustersInner {
+func (o *OrganizationCrendentialsResponseListResultsInner) GetClusters() []CredentialCluster {
 	if o == nil || IsNil(o.Clusters) {
-		var ret []OrganizationCrendentialsResponseListResultsInnerClustersInner
+		var ret []CredentialCluster
 		return ret
 	}
 	return o.Clusters
@@ -87,7 +87,7 @@ func (o *OrganizationCrendentialsResponseListResultsInner) GetClusters() []Organ
 
 // GetClustersOk returns a tuple with the Clusters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationCrendentialsResponseListResultsInner) GetClustersOk() ([]OrganizationCrendentialsResponseListResultsInnerClustersInner, bool) {
+func (o *OrganizationCrendentialsResponseListResultsInner) GetClustersOk() ([]CredentialCluster, bool) {
 	if o == nil || IsNil(o.Clusters) {
 		return nil, false
 	}
@@ -103,8 +103,8 @@ func (o *OrganizationCrendentialsResponseListResultsInner) HasClusters() bool {
 	return false
 }
 
-// SetClusters gets a reference to the given []OrganizationCrendentialsResponseListResultsInnerClustersInner and assigns it to the Clusters field.
-func (o *OrganizationCrendentialsResponseListResultsInner) SetClusters(v []OrganizationCrendentialsResponseListResultsInnerClustersInner) {
+// SetClusters gets a reference to the given []CredentialCluster and assigns it to the Clusters field.
+func (o *OrganizationCrendentialsResponseListResultsInner) SetClusters(v []CredentialCluster) {
 	o.Clusters = v
 }
 

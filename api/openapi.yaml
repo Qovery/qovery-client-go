@@ -33823,6 +33823,27 @@ components:
       type: object
       x-stoplight:
         id: 0tv1xnjgh98nm
+    CredentialCluster:
+      example:
+        name: name
+        cloud_provider: AWS
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: ksymb5hxvrlq9
+        name:
+          type: string
+          x-stoplight:
+            id: skztj7io7an31
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+      title: CredentialCluster
+      type: object
+      x-stoplight:
+        id: oyhk9uf5vcqlk
     deleteMember_request:
       properties:
         user_id:
@@ -37066,26 +37087,6 @@ components:
       type: object
       x-stoplight:
         id: abfhjb6q74upq
-    OrganizationCrendentialsResponseList_results_inner_clusters_inner:
-      example:
-        name: name
-        cloud_provider: AWS
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-          x-stoplight:
-            id: wnvat56nlwu77
-        name:
-          type: string
-          x-stoplight:
-            id: b3yop31ksrfno
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-      type: object
-      x-stoplight:
-        id: syr6b0jbtlr9j
     OrganizationCrendentialsResponseList_results_inner:
       example:
         credential:
@@ -37105,7 +37106,7 @@ components:
           $ref: '#/components/schemas/ClusterCredentials'
         clusters:
           items:
-            $ref: '#/components/schemas/OrganizationCrendentialsResponseList_results_inner_clusters_inner'
+            $ref: '#/components/schemas/CredentialCluster'
           type: array
           x-stoplight:
             id: 7o7dzkbyt78bu

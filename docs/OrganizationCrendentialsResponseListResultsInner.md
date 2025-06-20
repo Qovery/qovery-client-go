@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Credential** | Pointer to [**ClusterCredentials**](ClusterCredentials.md) |  | [optional] 
-**Clusters** | Pointer to [**[]OrganizationCrendentialsResponseListResultsInnerClustersInner**](OrganizationCrendentialsResponseListResultsInnerClustersInner.md) |  | [optional] 
+**Clusters** | Pointer to [**[]CredentialCluster**](CredentialCluster.md) |  | [optional] 
 
 ## Methods
 
@@ -53,20 +53,20 @@ HasCredential returns a boolean if a field has been set.
 
 ### GetClusters
 
-`func (o *OrganizationCrendentialsResponseListResultsInner) GetClusters() []OrganizationCrendentialsResponseListResultsInnerClustersInner`
+`func (o *OrganizationCrendentialsResponseListResultsInner) GetClusters() []CredentialCluster`
 
 GetClusters returns the Clusters field if non-nil, zero value otherwise.
 
 ### GetClustersOk
 
-`func (o *OrganizationCrendentialsResponseListResultsInner) GetClustersOk() (*[]OrganizationCrendentialsResponseListResultsInnerClustersInner, bool)`
+`func (o *OrganizationCrendentialsResponseListResultsInner) GetClustersOk() (*[]CredentialCluster, bool)`
 
 GetClustersOk returns a tuple with the Clusters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetClusters
 
-`func (o *OrganizationCrendentialsResponseListResultsInner) SetClusters(v []OrganizationCrendentialsResponseListResultsInnerClustersInner)`
+`func (o *OrganizationCrendentialsResponseListResultsInner) SetClusters(v []CredentialCluster)`
 
 SetClusters sets Clusters field to given value.
 
