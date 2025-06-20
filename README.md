@@ -292,6 +292,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
+*DefaultAPI* | [**GetOrganizationOrganizationIdCredentials**](docs/DefaultAPI.md#getorganizationorganizationidcredentials) | **Get** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 *DeploymentQueueActionsAPI* | [**CancelDeploymentRequest**](docs/DeploymentQueueActionsAPI.md#canceldeploymentrequest) | **Post** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
 *DeploymentStageMainCallsAPI* | [**AttachServiceToDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#attachservicetodeploymentstage) | **Put** /deploymentStage/{deploymentStageId}/service/{serviceId} | Attach service to deployment stage
 *DeploymentStageMainCallsAPI* | [**CreateEnvironmentDeploymentStage**](docs/DeploymentStageMainCallsAPI.md#createenvironmentdeploymentstage) | **Post** /environment/{environmentId}/deploymentStage | Create environment deployment stage
@@ -804,6 +805,9 @@ Class | Method | HTTP request | Description
  - [GetClusterKubernetesEvents200ResponseResultsInner](docs/GetClusterKubernetesEvents200ResponseResultsInner.md)
  - [GetClusterTokenByClusterId200Response](docs/GetClusterTokenByClusterId200Response.md)
  - [GetClusterTokenByClusterId200ResponseStatus](docs/GetClusterTokenByClusterId200ResponseStatus.md)
+ - [GetOrganizationOrganizationIdCredentials200Response](docs/GetOrganizationOrganizationIdCredentials200Response.md)
+ - [GetOrganizationOrganizationIdCredentials200ResponseResultsInner](docs/GetOrganizationOrganizationIdCredentials200ResponseResultsInner.md)
+ - [GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner](docs/GetOrganizationOrganizationIdCredentials200ResponseResultsInnerClustersInner.md)
  - [GitAuthProvider](docs/GitAuthProvider.md)
  - [GitAuthProviderResponseList](docs/GitAuthProviderResponseList.md)
  - [GitFileCheckRequest](docs/GitFileCheckRequest.md)

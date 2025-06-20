@@ -16709,6 +16709,31 @@ paths:
       - Terraform Deployment Restriction
       x-stoplight:
         id: w3jp2xci6bogt
+  /organization/{organizationId}/credentials:
+    get:
+      description: List credentials of an organization and their associated clusters
+      operationId: get-organization-organizationId-credentials
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response'
+          description: OK
+        "400":
+          description: Bad Request
+      summary: List credentials of an organization and their associated clusters
+      tags: []
+      x-stoplight:
+        id: 2jm9tyqfhw4xf
 components:
   parameters:
     applicationId:
@@ -34702,6 +34727,87 @@ components:
           items:
             $ref: '#/components/schemas/QueuedDeploymentRequestForService'
           type: array
+      type: object
+    get_organization_organizationId_credentials_200_response_results_inner_clusters_inner:
+      example:
+        name: name
+        cloud_provider: AWS
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: o6stt5oblpe6y
+        name:
+          type: string
+          x-stoplight:
+            id: h6il8uvbrw1tx
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+      type: object
+      x-stoplight:
+        id: vab972cu2647e
+    get_organization_organizationId_credentials_200_response_results_inner:
+      example:
+        credential:
+          access_key_id: access_key_id
+          object_type: AWS
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        clusters:
+        - name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        credential:
+          $ref: '#/components/schemas/ClusterCredentials'
+        clusters:
+          items:
+            $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response_results_inner_clusters_inner'
+          type: array
+          x-stoplight:
+            id: 7g2m9pq5qfos9
+      type: object
+      x-stoplight:
+        id: qyhg1ik1rzaz1
+    get_organization_organizationId_credentials_200_response:
+      example:
+        results:
+        - credential:
+            access_key_id: access_key_id
+            object_type: AWS
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          clusters:
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - credential:
+            access_key_id: access_key_id
+            object_type: AWS
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          clusters:
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response_results_inner'
+          type: array
+          x-stoplight:
+            id: cl66r2zbfnreo
       type: object
     ServicePortRequest_ports_inner:
       example:
