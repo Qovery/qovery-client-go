@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**GetOrganizationGitToken**](OrganizationMainCallsAPI.md#GetOrganizationGitToken) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
 [**ListOrganization**](OrganizationMainCallsAPI.md#ListOrganization) | **Get** /organization | List user organizations
 [**ListOrganizationAvailableRoles**](OrganizationMainCallsAPI.md#ListOrganizationAvailableRoles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
+[**ListOrganizationCredentials**](OrganizationMainCallsAPI.md#ListOrganizationCredentials) | **Get** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 [**ListOrganizationGitTokens**](OrganizationMainCallsAPI.md#ListOrganizationGitTokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
 [**ListServicesByOrganizationId**](OrganizationMainCallsAPI.md#ListServicesByOrganizationId) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 
@@ -914,6 +915,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationAvailableRoleList**](OrganizationAvailableRoleList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOrganizationCredentials
+
+> OrganizationCrendentialsResponseList ListOrganizationCredentials(ctx, organizationId).Execute()
+
+List credentials of an organization and their associated clusters
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "organizationId_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.ListOrganizationCredentials(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.ListOrganizationCredentials``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOrganizationCredentials`: OrganizationCrendentialsResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.ListOrganizationCredentials`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOrganizationCredentialsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationCrendentialsResponseList**](OrganizationCrendentialsResponseList.md)
 
 ### Authorization
 

@@ -16712,7 +16712,7 @@ paths:
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
-      operationId: get-organization-organizationId-credentials
+      operationId: listOrganizationCredentials
       parameters:
       - explode: false
         in: path
@@ -16726,12 +16726,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response'
+                $ref: '#/components/schemas/OrganizationCrendentialsResponseList'
           description: OK
         "400":
           description: Bad Request
       summary: List credentials of an organization and their associated clusters
-      tags: []
+      tags:
+      - Organization Main Calls
       x-stoplight:
         id: 2jm9tyqfhw4xf
 components:
@@ -33784,6 +33785,44 @@ components:
       type: object
       x-stoplight:
         id: olvqymwxtdfeq
+    OrganizationCrendentialsResponseList:
+      example:
+        results:
+        - credential:
+            access_key_id: access_key_id
+            object_type: AWS
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          clusters:
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - credential:
+            access_key_id: access_key_id
+            object_type: AWS
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          clusters:
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationCrendentialsResponseList_results_inner'
+          type: array
+          x-stoplight:
+            id: dyld95hlync5e
+      title: OrganizationCrendentialsResponseList
+      type: object
+      x-stoplight:
+        id: 0tv1xnjgh98nm
     deleteMember_request:
       properties:
         user_id:
@@ -34727,87 +34766,6 @@ components:
           items:
             $ref: '#/components/schemas/QueuedDeploymentRequestForService'
           type: array
-      type: object
-    get_organization_organizationId_credentials_200_response_results_inner_clusters_inner:
-      example:
-        name: name
-        cloud_provider: AWS
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          format: uuid
-          type: string
-          x-stoplight:
-            id: o6stt5oblpe6y
-        name:
-          type: string
-          x-stoplight:
-            id: h6il8uvbrw1tx
-        cloud_provider:
-          $ref: '#/components/schemas/CloudProviderEnum'
-      type: object
-      x-stoplight:
-        id: vab972cu2647e
-    get_organization_organizationId_credentials_200_response_results_inner:
-      example:
-        credential:
-          access_key_id: access_key_id
-          object_type: AWS
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        clusters:
-        - name: name
-          cloud_provider: AWS
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - name: name
-          cloud_provider: AWS
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        credential:
-          $ref: '#/components/schemas/ClusterCredentials'
-        clusters:
-          items:
-            $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response_results_inner_clusters_inner'
-          type: array
-          x-stoplight:
-            id: 7g2m9pq5qfos9
-      type: object
-      x-stoplight:
-        id: qyhg1ik1rzaz1
-    get_organization_organizationId_credentials_200_response:
-      example:
-        results:
-        - credential:
-            access_key_id: access_key_id
-            object_type: AWS
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          clusters:
-          - name: name
-            cloud_provider: AWS
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - name: name
-            cloud_provider: AWS
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - credential:
-            access_key_id: access_key_id
-            object_type: AWS
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          clusters:
-          - name: name
-            cloud_provider: AWS
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - name: name
-            cloud_provider: AWS
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/get_organization_organizationId_credentials_200_response_results_inner'
-          type: array
-          x-stoplight:
-            id: cl66r2zbfnreo
       type: object
     ServicePortRequest_ports_inner:
       example:
@@ -37108,6 +37066,52 @@ components:
       type: object
       x-stoplight:
         id: abfhjb6q74upq
+    OrganizationCrendentialsResponseList_results_inner_clusters_inner:
+      example:
+        name: name
+        cloud_provider: AWS
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: wnvat56nlwu77
+        name:
+          type: string
+          x-stoplight:
+            id: b3yop31ksrfno
+        cloud_provider:
+          $ref: '#/components/schemas/CloudProviderEnum'
+      type: object
+      x-stoplight:
+        id: syr6b0jbtlr9j
+    OrganizationCrendentialsResponseList_results_inner:
+      example:
+        credential:
+          access_key_id: access_key_id
+          object_type: AWS
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        clusters:
+        - name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        credential:
+          $ref: '#/components/schemas/ClusterCredentials'
+        clusters:
+          items:
+            $ref: '#/components/schemas/OrganizationCrendentialsResponseList_results_inner_clusters_inner'
+          type: array
+          x-stoplight:
+            id: 7o7dzkbyt78bu
+      type: object
+      x-stoplight:
+        id: qjal2umjmvumz
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
