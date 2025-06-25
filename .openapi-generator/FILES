@@ -384,6 +384,7 @@ docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsAPI.md
 docs/GcpCredentialsRequest.md
+docs/GcpStaticClusterCredentials.md
 docs/GenericClusterCredentials.md
 docs/GenericObjectCurrentCost.md
 docs/GetClusterKubernetesEvents200Response.md
@@ -1014,6 +1015,7 @@ model_environment_variable_override.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
 model_gcp_credentials_request.go
+model_gcp_static_cluster_credentials.go
 model_generic_cluster_credentials.go
 model_generic_object_current_cost.go
 model_get_cluster_kubernetes_events_200_response.go

@@ -800,6 +800,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentVariableRequest](docs/EnvironmentVariableRequest.md)
  - [EnvironmentVariableResponseList](docs/EnvironmentVariableResponseList.md)
  - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
+ - [GcpStaticClusterCredentials](docs/GcpStaticClusterCredentials.md)
  - [GenericClusterCredentials](docs/GenericClusterCredentials.md)
  - [GenericObjectCurrentCost](docs/GenericObjectCurrentCost.md)
  - [GetClusterKubernetesEvents200Response](docs/GetClusterKubernetesEvents200Response.md)

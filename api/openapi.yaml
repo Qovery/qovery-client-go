@@ -19466,6 +19466,7 @@ components:
           SCW: '#/components/schemas/ScalewayClusterCredentials'
           OTHER: '#/components/schemas/GenericClusterCredentials'
           AZURE: '#/components/schemas/AzureStaticClusterCredentials'
+          GCP: '#/components/schemas/GcpStaticClusterCredentials'
         propertyName: object_type
       oneOf:
       - $ref: '#/components/schemas/AwsStaticClusterCredentials'
@@ -19473,6 +19474,7 @@ components:
       - $ref: '#/components/schemas/GenericClusterCredentials'
       - $ref: '#/components/schemas/AwsRoleClusterCredentials'
       - $ref: '#/components/schemas/AzureStaticClusterCredentials'
+      - $ref: '#/components/schemas/GcpStaticClusterCredentials'
     AwsStaticClusterCredentials:
       example:
         access_key_id: access_key_id
@@ -33172,6 +33174,25 @@ components:
       type: object
       x-stoplight:
         id: uebtvs1ouszf2
+    GcpStaticClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        object_type:
+          enum:
+          - GCP
+          type: string
+      required:
+      - id
+      - name
+      - object_type
+      title: GcpStaticClusterCredentials
+      type: object
+      x-stoplight:
+        id: qtvaepejqookw
     AzureStaticClusterCredentials:
       properties:
         id:
