@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 
 ## ListApplicationDeploymentHistoryV2
 
-> DeploymentHistoryServicePaginatedResponseListV2 ListApplicationDeploymentHistoryV2(ctx, applicationId).StartId(startId).Execute()
+> DeploymentHistoryServicePaginatedResponseListV2 ListApplicationDeploymentHistoryV2(ctx, applicationId).PageSize(pageSize).Execute()
 
 List application deploys
 
@@ -103,11 +103,11 @@ import (
 
 func main() {
 	applicationId := "applicationId_example" // string | 
-	startId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Starting point after which to return results (optional)
+	pageSize := float32(8.14) // float32 | The number of deployments to return in the current page (optional) (default to 20)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationDeploymentHistoryAPI.ListApplicationDeploymentHistoryV2(context.Background(), applicationId).StartId(startId).Execute()
+	resp, r, err := apiClient.ApplicationDeploymentHistoryAPI.ListApplicationDeploymentHistoryV2(context.Background(), applicationId).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationDeploymentHistoryAPI.ListApplicationDeploymentHistoryV2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -133,7 +133,7 @@ Other parameters are passed through a pointer to a apiListApplicationDeploymentH
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **startId** | **string** | Starting point after which to return results | 
+ **pageSize** | **float32** | The number of deployments to return in the current page | [default to 20]
 
 ### Return type
 

@@ -7735,14 +7735,15 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: Starting point after which to return results
+      - description: The number of deployments to return in the current page
         explode: true
         in: query
-        name: startId
+        name: pageSize
         required: false
         schema:
-          format: uuid
-          type: string
+          default: 20
+          nullable: true
+          type: number
         style: form
       responses:
         "200":
@@ -9029,14 +9030,15 @@ paths:
         schema:
           type: string
         style: simple
-      - description: Starting point after which to return results
+      - description: The number of deployments to return in the current page
         explode: true
         in: query
-        name: startId
+        name: pageSize
         required: false
         schema:
-          format: uuid
-          type: string
+          default: 20
+          nullable: true
+          type: number
         style: form
       responses:
         "200":
@@ -10232,6 +10234,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The number of deployments to return in the current page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          nullable: true
+          type: number
+        style: form
       responses:
         "200":
           content:
@@ -12026,14 +12038,15 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: Starting point after which to return results
+      - description: The number of deployments to return in the current page
         explode: true
         in: query
-        name: startId
+        name: pageSize
         required: false
         schema:
-          format: uuid
-          type: string
+          default: 20
+          nullable: true
+          type: number
         style: form
       responses:
         "200":
@@ -13015,6 +13028,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The number of deployments to return in the current page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          nullable: true
+          type: number
+        style: form
       responses:
         "200":
           content:
@@ -14114,6 +14137,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The number of deployments to return in the current page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          nullable: true
+          type: number
+        style: form
       responses:
         "200":
           content:
@@ -16525,6 +16558,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: The number of deployments to return in the current page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          nullable: true
+          type: number
+        style: form
       responses:
         "200":
           content:

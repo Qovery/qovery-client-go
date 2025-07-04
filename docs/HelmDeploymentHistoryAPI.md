@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ListHelmDeploymentHistoryV2
 
-> DeploymentHistoryServicePaginatedResponseListV2 ListHelmDeploymentHistoryV2(ctx, helmId).Execute()
+> DeploymentHistoryServicePaginatedResponseListV2 ListHelmDeploymentHistoryV2(ctx, helmId).PageSize(pageSize).Execute()
 
 List helm deployments
 
@@ -101,10 +101,11 @@ import (
 
 func main() {
 	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	pageSize := float32(8.14) // float32 | The number of deployments to return in the current page (optional) (default to 20)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.HelmDeploymentHistoryAPI.ListHelmDeploymentHistoryV2(context.Background(), helmId).Execute()
+	resp, r, err := apiClient.HelmDeploymentHistoryAPI.ListHelmDeploymentHistoryV2(context.Background(), helmId).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `HelmDeploymentHistoryAPI.ListHelmDeploymentHistoryV2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +131,7 @@ Other parameters are passed through a pointer to a apiListHelmDeploymentHistoryV
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **pageSize** | **float32** | The number of deployments to return in the current page | [default to 20]
 
 ### Return type
 

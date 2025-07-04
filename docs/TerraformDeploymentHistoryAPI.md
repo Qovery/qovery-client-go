@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## ListTerraformDeploymentHistoryV2
 
-> DeploymentHistoryServicePaginatedResponseListV2 ListTerraformDeploymentHistoryV2(ctx, terraformId).Execute()
+> DeploymentHistoryServicePaginatedResponseListV2 ListTerraformDeploymentHistoryV2(ctx, terraformId).PageSize(pageSize).Execute()
 
 List terraform deployments
 
@@ -30,10 +30,11 @@ import (
 
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	pageSize := float32(8.14) // float32 | The number of deployments to return in the current page (optional) (default to 20)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TerraformDeploymentHistoryAPI.ListTerraformDeploymentHistoryV2(context.Background(), terraformId).Execute()
+	resp, r, err := apiClient.TerraformDeploymentHistoryAPI.ListTerraformDeploymentHistoryV2(context.Background(), terraformId).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TerraformDeploymentHistoryAPI.ListTerraformDeploymentHistoryV2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,6 +60,7 @@ Other parameters are passed through a pointer to a apiListTerraformDeploymentHis
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **pageSize** | **float32** | The number of deployments to return in the current page | [default to 20]
 
 ### Return type
 

@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 
 ## ListJobDeploymentHistoryV2
 
-> DeploymentHistoryServicePaginatedResponseListV2 ListJobDeploymentHistoryV2(ctx, jobId).Execute()
+> DeploymentHistoryServicePaginatedResponseListV2 ListJobDeploymentHistoryV2(ctx, jobId).PageSize(pageSize).Execute()
 
 List job deployments
 
@@ -101,10 +101,11 @@ import (
 
 func main() {
 	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	pageSize := float32(8.14) // float32 | The number of deployments to return in the current page (optional) (default to 20)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobDeploymentHistoryAPI.ListJobDeploymentHistoryV2(context.Background(), jobId).Execute()
+	resp, r, err := apiClient.JobDeploymentHistoryAPI.ListJobDeploymentHistoryV2(context.Background(), jobId).PageSize(pageSize).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobDeploymentHistoryAPI.ListJobDeploymentHistoryV2``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -130,6 +131,7 @@ Other parameters are passed through a pointer to a apiListJobDeploymentHistoryV2
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **pageSize** | **float32** | The number of deployments to return in the current page | [default to 20]
 
 ### Return type
 

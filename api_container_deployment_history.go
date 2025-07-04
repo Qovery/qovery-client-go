@@ -145,6 +145,13 @@ type ApiListContainerDeploymentHistoryV2Request struct {
 	ctx         context.Context
 	ApiService  *ContainerDeploymentHistoryAPIService
 	containerId string
+	pageSize    *float32
+}
+
+// The number of deployments to return in the current page
+func (r ApiListContainerDeploymentHistoryV2Request) PageSize(pageSize float32) ApiListContainerDeploymentHistoryV2Request {
+	r.pageSize = &pageSize
+	return r
 }
 
 func (r ApiListContainerDeploymentHistoryV2Request) Execute() (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
@@ -191,6 +198,12 @@ func (a *ContainerDeploymentHistoryAPIService) ListContainerDeploymentHistoryV2E
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue float32 = 20
+		r.pageSize = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -155,12 +155,12 @@ type ApiListDatabaseDeploymentHistoryV2Request struct {
 	ctx        context.Context
 	ApiService *DatabaseDeploymentHistoryAPIService
 	databaseId string
-	startId    *string
+	pageSize   *float32
 }
 
-// Starting point after which to return results
-func (r ApiListDatabaseDeploymentHistoryV2Request) StartId(startId string) ApiListDatabaseDeploymentHistoryV2Request {
-	r.startId = &startId
+// The number of deployments to return in the current page
+func (r ApiListDatabaseDeploymentHistoryV2Request) PageSize(pageSize float32) ApiListDatabaseDeploymentHistoryV2Request {
+	r.pageSize = &pageSize
 	return r
 }
 
@@ -208,8 +208,11 @@ func (a *DatabaseDeploymentHistoryAPIService) ListDatabaseDeploymentHistoryV2Exe
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.startId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue float32 = 20
+		r.pageSize = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
