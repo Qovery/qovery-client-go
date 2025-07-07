@@ -33261,7 +33261,17 @@ components:
           type: string
           x-stoplight:
             id: 8oodrxjznyahm
+        azure_application_id:
+          type: string
+          x-stoplight:
+            id: wc0e8cqceyopu
+        azure_application_object_id:
+          type: string
+          x-stoplight:
+            id: q20e71qkfsk1k
       required:
+      - azure_application_id
+      - azure_application_object_id
       - azure_subscription_id
       - azure_tenant_id
       - id

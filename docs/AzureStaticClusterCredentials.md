@@ -9,12 +9,14 @@ Name | Type | Description | Notes
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
 **ObjectType** | **string** |  | 
+**AzureApplicationId** | **string** |  | 
+**AzureApplicationObjectId** | **string** |  | 
 
 ## Methods
 
 ### NewAzureStaticClusterCredentials
 
-`func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, objectType string, ) *AzureStaticClusterCredentials`
+`func NewAzureStaticClusterCredentials(id string, name string, azureSubscriptionId string, azureTenantId string, objectType string, azureApplicationId string, azureApplicationObjectId string, ) *AzureStaticClusterCredentials`
 
 NewAzureStaticClusterCredentials instantiates a new AzureStaticClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +129,46 @@ and a boolean to check if the value has been set.
 `func (o *AzureStaticClusterCredentials) SetObjectType(v string)`
 
 SetObjectType sets ObjectType field to given value.
+
+
+### GetAzureApplicationId
+
+`func (o *AzureStaticClusterCredentials) GetAzureApplicationId() string`
+
+GetAzureApplicationId returns the AzureApplicationId field if non-nil, zero value otherwise.
+
+### GetAzureApplicationIdOk
+
+`func (o *AzureStaticClusterCredentials) GetAzureApplicationIdOk() (*string, bool)`
+
+GetAzureApplicationIdOk returns a tuple with the AzureApplicationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureApplicationId
+
+`func (o *AzureStaticClusterCredentials) SetAzureApplicationId(v string)`
+
+SetAzureApplicationId sets AzureApplicationId field to given value.
+
+
+### GetAzureApplicationObjectId
+
+`func (o *AzureStaticClusterCredentials) GetAzureApplicationObjectId() string`
+
+GetAzureApplicationObjectId returns the AzureApplicationObjectId field if non-nil, zero value otherwise.
+
+### GetAzureApplicationObjectIdOk
+
+`func (o *AzureStaticClusterCredentials) GetAzureApplicationObjectIdOk() (*string, bool)`
+
+GetAzureApplicationObjectIdOk returns a tuple with the AzureApplicationObjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureApplicationObjectId
+
+`func (o *AzureStaticClusterCredentials) SetAzureApplicationObjectId(v string)`
+
+SetAzureApplicationObjectId sets AzureApplicationObjectId field to given value.
 
 
 
