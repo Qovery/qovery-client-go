@@ -20979,6 +20979,8 @@ components:
           role_arn: role_arn
           region: region
           scaleway_access_key: scaleway_access_key
+          azure_application_id: azure_application_id
+          azure_application_object_id: azure_application_object_id
           username: username
           scaleway_project_id: scaleway_project_id
           azure_tenant_id: azure_tenant_id
@@ -21025,6 +21027,8 @@ components:
             role_arn: role_arn
             region: region
             scaleway_access_key: scaleway_access_key
+            azure_application_id: azure_application_id
+            azure_application_object_id: azure_application_object_id
             username: username
             scaleway_project_id: scaleway_project_id
             azure_tenant_id: azure_tenant_id
@@ -21045,6 +21049,8 @@ components:
             role_arn: role_arn
             region: region
             scaleway_access_key: scaleway_access_key
+            azure_application_id: azure_application_id
+            azure_application_object_id: azure_application_object_id
             username: username
             scaleway_project_id: scaleway_project_id
             azure_tenant_id: azure_tenant_id
@@ -35290,6 +35296,8 @@ components:
         role_arn: role_arn
         region: region
         scaleway_access_key: scaleway_access_key
+        azure_application_id: azure_application_id
+        azure_application_object_id: azure_application_object_id
         username: username
         scaleway_project_id: scaleway_project_id
         azure_tenant_id: azure_tenant_id
@@ -35326,6 +35334,14 @@ components:
           type: string
           x-stoplight:
             id: nrvn3j8xq81da
+        azure_application_id:
+          type: string
+          x-stoplight:
+            id: t4jvfihz1ml04
+        azure_application_object_id:
+          type: string
+          x-stoplight:
+            id: 2soynl0stz0lh
       type: object
       x-stoplight:
         id: s9rg5wox9j00z

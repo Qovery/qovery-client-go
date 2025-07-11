@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **RoleArn** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
+**AzureApplicationId** | Pointer to **string** |  | [optional] 
+**AzureApplicationObjectId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -231,6 +233,56 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *ContainerRegistryResponseAllOfConfig) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
+
+### GetAzureApplicationId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationId() string`
+
+GetAzureApplicationId returns the AzureApplicationId field if non-nil, zero value otherwise.
+
+### GetAzureApplicationIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationIdOk() (*string, bool)`
+
+GetAzureApplicationIdOk returns a tuple with the AzureApplicationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureApplicationId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetAzureApplicationId(v string)`
+
+SetAzureApplicationId sets AzureApplicationId field to given value.
+
+### HasAzureApplicationId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasAzureApplicationId() bool`
+
+HasAzureApplicationId returns a boolean if a field has been set.
+
+### GetAzureApplicationObjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationObjectId() string`
+
+GetAzureApplicationObjectId returns the AzureApplicationObjectId field if non-nil, zero value otherwise.
+
+### GetAzureApplicationObjectIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationObjectIdOk() (*string, bool)`
+
+GetAzureApplicationObjectIdOk returns a tuple with the AzureApplicationObjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAzureApplicationObjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetAzureApplicationObjectId(v string)`
+
+SetAzureApplicationObjectId sets AzureApplicationObjectId field to given value.
+
+### HasAzureApplicationObjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasAzureApplicationObjectId() bool`
+
+HasAzureApplicationObjectId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

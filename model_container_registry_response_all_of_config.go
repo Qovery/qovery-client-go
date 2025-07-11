@@ -20,15 +20,17 @@ var _ MappedNullable = &ContainerRegistryResponseAllOfConfig{}
 
 // ContainerRegistryResponseAllOfConfig struct for ContainerRegistryResponseAllOfConfig
 type ContainerRegistryResponseAllOfConfig struct {
-	Username             *string `json:"username,omitempty"`
-	Region               *string `json:"region,omitempty"`
-	ScalewayAccessKey    *string `json:"scaleway_access_key,omitempty"`
-	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
-	AccessKeyId          *string `json:"access_key_id,omitempty"`
-	RoleArn              *string `json:"role_arn,omitempty"`
-	AzureTenantId        *string `json:"azure_tenant_id,omitempty"`
-	AzureSubscriptionId  *string `json:"azure_subscription_id,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Username                 *string `json:"username,omitempty"`
+	Region                   *string `json:"region,omitempty"`
+	ScalewayAccessKey        *string `json:"scaleway_access_key,omitempty"`
+	ScalewayProjectId        *string `json:"scaleway_project_id,omitempty"`
+	AccessKeyId              *string `json:"access_key_id,omitempty"`
+	RoleArn                  *string `json:"role_arn,omitempty"`
+	AzureTenantId            *string `json:"azure_tenant_id,omitempty"`
+	AzureSubscriptionId      *string `json:"azure_subscription_id,omitempty"`
+	AzureApplicationId       *string `json:"azure_application_id,omitempty"`
+	AzureApplicationObjectId *string `json:"azure_application_object_id,omitempty"`
+	AdditionalProperties     map[string]interface{}
 }
 
 type _ContainerRegistryResponseAllOfConfig ContainerRegistryResponseAllOfConfig
@@ -306,6 +308,70 @@ func (o *ContainerRegistryResponseAllOfConfig) SetAzureSubscriptionId(v string) 
 	o.AzureSubscriptionId = &v
 }
 
+// GetAzureApplicationId returns the AzureApplicationId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationId() string {
+	if o == nil || IsNil(o.AzureApplicationId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureApplicationId
+}
+
+// GetAzureApplicationIdOk returns a tuple with the AzureApplicationId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureApplicationId) {
+		return nil, false
+	}
+	return o.AzureApplicationId, true
+}
+
+// HasAzureApplicationId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasAzureApplicationId() bool {
+	if o != nil && !IsNil(o.AzureApplicationId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureApplicationId gets a reference to the given string and assigns it to the AzureApplicationId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetAzureApplicationId(v string) {
+	o.AzureApplicationId = &v
+}
+
+// GetAzureApplicationObjectId returns the AzureApplicationObjectId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationObjectId() string {
+	if o == nil || IsNil(o.AzureApplicationObjectId) {
+		var ret string
+		return ret
+	}
+	return *o.AzureApplicationObjectId
+}
+
+// GetAzureApplicationObjectIdOk returns a tuple with the AzureApplicationObjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetAzureApplicationObjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.AzureApplicationObjectId) {
+		return nil, false
+	}
+	return o.AzureApplicationObjectId, true
+}
+
+// HasAzureApplicationObjectId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasAzureApplicationObjectId() bool {
+	if o != nil && !IsNil(o.AzureApplicationObjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetAzureApplicationObjectId gets a reference to the given string and assigns it to the AzureApplicationObjectId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetAzureApplicationObjectId(v string) {
+	o.AzureApplicationObjectId = &v
+}
+
 func (o ContainerRegistryResponseAllOfConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -340,6 +406,12 @@ func (o ContainerRegistryResponseAllOfConfig) ToMap() (map[string]interface{}, e
 	if !IsNil(o.AzureSubscriptionId) {
 		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	}
+	if !IsNil(o.AzureApplicationId) {
+		toSerialize["azure_application_id"] = o.AzureApplicationId
+	}
+	if !IsNil(o.AzureApplicationObjectId) {
+		toSerialize["azure_application_object_id"] = o.AzureApplicationObjectId
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -370,6 +442,8 @@ func (o *ContainerRegistryResponseAllOfConfig) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "role_arn")
 		delete(additionalProperties, "azure_tenant_id")
 		delete(additionalProperties, "azure_subscription_id")
+		delete(additionalProperties, "azure_application_id")
+		delete(additionalProperties, "azure_application_object_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
