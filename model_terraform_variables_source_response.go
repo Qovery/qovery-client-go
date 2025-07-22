@@ -21,9 +21,7 @@ var _ MappedNullable = &TerraformVariablesSourceResponse{}
 
 // TerraformVariablesSourceResponse struct for TerraformVariablesSourceResponse
 type TerraformVariablesSourceResponse struct {
-	TfVarFilePaths []string `json:"tf_var_file_paths"`
-	// The input is in json array format: [ [$KEY,$VALUE], [...] ]
-	TfVars               [][]string `json:"tf_vars"`
+	TfVarFilePaths       []string `json:"tf_var_file_paths"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,10 +31,9 @@ type _TerraformVariablesSourceResponse TerraformVariablesSourceResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVariablesSourceResponse(tfVarFilePaths []string, tfVars [][]string) *TerraformVariablesSourceResponse {
+func NewTerraformVariablesSourceResponse(tfVarFilePaths []string) *TerraformVariablesSourceResponse {
 	this := TerraformVariablesSourceResponse{}
 	this.TfVarFilePaths = tfVarFilePaths
-	this.TfVars = tfVars
 	return &this
 }
 
@@ -72,30 +69,6 @@ func (o *TerraformVariablesSourceResponse) SetTfVarFilePaths(v []string) {
 	o.TfVarFilePaths = v
 }
 
-// GetTfVars returns the TfVars field value
-func (o *TerraformVariablesSourceResponse) GetTfVars() [][]string {
-	if o == nil {
-		var ret [][]string
-		return ret
-	}
-
-	return o.TfVars
-}
-
-// GetTfVarsOk returns a tuple with the TfVars field value
-// and a boolean to check if the value has been set.
-func (o *TerraformVariablesSourceResponse) GetTfVarsOk() ([][]string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.TfVars, true
-}
-
-// SetTfVars sets field value
-func (o *TerraformVariablesSourceResponse) SetTfVars(v [][]string) {
-	o.TfVars = v
-}
-
 func (o TerraformVariablesSourceResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -107,7 +80,6 @@ func (o TerraformVariablesSourceResponse) MarshalJSON() ([]byte, error) {
 func (o TerraformVariablesSourceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["tf_var_file_paths"] = o.TfVarFilePaths
-	toSerialize["tf_vars"] = o.TfVars
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -122,7 +94,6 @@ func (o *TerraformVariablesSourceResponse) UnmarshalJSON(data []byte) (err error
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"tf_var_file_paths",
-		"tf_vars",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -153,7 +124,6 @@ func (o *TerraformVariablesSourceResponse) UnmarshalJSON(data []byte) (err error
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "tf_var_file_paths")
-		delete(additionalProperties, "tf_vars")
 		o.AdditionalProperties = additionalProperties
 	}
 
