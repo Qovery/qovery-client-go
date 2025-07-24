@@ -29274,24 +29274,46 @@ components:
       - DELETE
       - ACCEPT
       - EXPORT
-      - TRIGGER_DEPLOY
+      - CLONE
+      - DEPLOY_QUEUED
+      - STOP_QUEUED
+      - RESTART_QUEUED
+      - DELETE_QUEUED
+      - MAINTENANCE
+      - DRY_RUN
       - TRIGGER_REDEPLOY
-      - TRIGGER_STOP
       - TRIGGER_CANCEL
+      - FORCE_RUN_QUEUED
+      - FORCE_RUN_QUEUED_DEPLOY
+      - FORCE_RUN_QUEUED_STOP
+      - FORCE_RUN_QUEUED_DELETE
+      - TRIGGER_DEPLOY
+      - TRIGGER_STOP
       - TRIGGER_RESTART
       - TRIGGER_DELETE
-      - SHELL
-      - PORT_FORWARD
-      - CLONE
+      - TRIGGER_DEPLOY_DRY_RUN
+      - TRIGGER_DELETE_RESOURCES_ONLY
+      - TRIGGER_FORCE_RUN
+      - TRIGGER_FORCE_RUN_DEPLOY
+      - TRIGGER_FORCE_RUN_STOP
+      - TRIGGER_FORCE_RUN_DELETE
       - DEPLOYED
       - STOPPED
       - DELETED
       - RESTARTED
+      - DEPLOYED_DRY_RUN
+      - DELETE_RESOURCES_ONLY
       - DEPLOY_FAILED
       - STOP_FAILED
       - DELETE_FAILED
       - RESTART_FAILED
-      - MAINTENANCE
+      - DEPLOYED_DRY_RUN_FAILED
+      - SHELL
+      - PORT_FORWARD
+      - REMOTE_DEBUG
+      - IMPORT
+      - LOCK
+      - UNLOCK
       example: CREATE
       type: string
     SecretOverride:
