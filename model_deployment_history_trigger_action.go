@@ -21,11 +21,12 @@ type DeploymentHistoryTriggerAction string
 
 // List of DeploymentHistoryTriggerAction
 const (
-	DEPLOYMENTHISTORYTRIGGERACTION_DEPLOY  DeploymentHistoryTriggerAction = "DEPLOY"
-	DEPLOYMENTHISTORYTRIGGERACTION_DELETE  DeploymentHistoryTriggerAction = "DELETE"
-	DEPLOYMENTHISTORYTRIGGERACTION_RESTART DeploymentHistoryTriggerAction = "RESTART"
-	DEPLOYMENTHISTORYTRIGGERACTION_STOP    DeploymentHistoryTriggerAction = "STOP"
-	DEPLOYMENTHISTORYTRIGGERACTION_UNKNOWN DeploymentHistoryTriggerAction = "UNKNOWN"
+	DEPLOYMENTHISTORYTRIGGERACTION_DEPLOY    DeploymentHistoryTriggerAction = "DEPLOY"
+	DEPLOYMENTHISTORYTRIGGERACTION_DELETE    DeploymentHistoryTriggerAction = "DELETE"
+	DEPLOYMENTHISTORYTRIGGERACTION_RESTART   DeploymentHistoryTriggerAction = "RESTART"
+	DEPLOYMENTHISTORYTRIGGERACTION_STOP      DeploymentHistoryTriggerAction = "STOP"
+	DEPLOYMENTHISTORYTRIGGERACTION_UNKNOWN   DeploymentHistoryTriggerAction = "UNKNOWN"
+	DEPLOYMENTHISTORYTRIGGERACTION_UNINSTALL DeploymentHistoryTriggerAction = "UNINSTALL"
 )
 
 // All allowed values of DeploymentHistoryTriggerAction enum
@@ -35,6 +36,7 @@ var AllowedDeploymentHistoryTriggerActionEnumValues = []DeploymentHistoryTrigger
 	"RESTART",
 	"STOP",
 	"UNKNOWN",
+	"UNINSTALL",
 }
 
 func (v *DeploymentHistoryTriggerAction) UnmarshalJSON(src []byte) error {

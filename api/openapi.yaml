@@ -22856,6 +22856,7 @@ components:
       - RESTART
       - STOP
       - UNKNOWN
+      - UNINSTALL
       type: string
       x-stoplight:
         id: 1hzy6riqo7lq4
