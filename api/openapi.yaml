@@ -33343,7 +33343,10 @@ components:
           - tf_var_file_paths
           - tf_var_file_paths
           tf_vars:
-            secret: true
+          - secret: true
+            value: value
+            key: key
+          - secret: true
             value: value
             key: key
         auto_deploy: true
@@ -33562,7 +33565,10 @@ components:
         - tf_var_file_paths
         - tf_var_file_paths
         tf_vars:
-          secret: true
+        - secret: true
+          value: value
+          key: key
+        - secret: true
           value: value
           key: key
       properties:
@@ -33575,7 +33581,9 @@ components:
           x-stoplight:
             id: kk82s9qjluugt
         tf_vars:
-          $ref: '#/components/schemas/TerraformVarKeyValue'
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
       required:
       - tf_var_file_paths
       - tf_vars

@@ -103,7 +103,7 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
-	terraformRequest := *openapiclient.NewTerraformRequest("Name_example", "Description_example", false, false, openapiclient.TerraformRequest_terraform_files_source{TerraformRequestTerraformFilesSourceOneOf: openapiclient.NewTerraformRequestTerraformFilesSourceOneOf()}, *openapiclient.NewTerraformVariablesSourceRequest([]string{"TfVarFilePaths_example"}, *openapiclient.NewTerraformVarKeyValue()), "Provider_example", *openapiclient.NewTerraformProviderVersion(false), *openapiclient.NewTerraformRequestJobResources(int32(123), int32(123), int32(123))) // TerraformRequest |  (optional)
+	terraformRequest := *openapiclient.NewTerraformRequest("Name_example", "Description_example", false, false, openapiclient.TerraformRequest_terraform_files_source{TerraformRequestTerraformFilesSourceOneOf: openapiclient.NewTerraformRequestTerraformFilesSourceOneOf()}, *openapiclient.NewTerraformVariablesSourceRequest([]string{"TfVarFilePaths_example"}, []openapiclient.TerraformVarKeyValue{*openapiclient.NewTerraformVarKeyValue()}), "Provider_example", *openapiclient.NewTerraformProviderVersion(false), *openapiclient.NewTerraformRequestJobResources(int32(123), int32(123), int32(123))) // TerraformRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
