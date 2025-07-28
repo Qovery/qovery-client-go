@@ -21,7 +21,7 @@ var _ MappedNullable = &TerraformVariableParsingRequest{}
 
 // TerraformVariableParsingRequest struct for TerraformVariableParsingRequest
 type TerraformVariableParsingRequest struct {
-	GitRepository        ApplicationGitRepositoryRequest `json:"gitRepository"`
+	GitRepository        ApplicationGitRepositoryRequest `json:"git_repository"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -79,7 +79,7 @@ func (o TerraformVariableParsingRequest) MarshalJSON() ([]byte, error) {
 
 func (o TerraformVariableParsingRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["gitRepository"] = o.GitRepository
+	toSerialize["git_repository"] = o.GitRepository
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -93,7 +93,7 @@ func (o *TerraformVariableParsingRequest) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"gitRepository",
+		"git_repository",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -123,7 +123,7 @@ func (o *TerraformVariableParsingRequest) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "gitRepository")
+		delete(additionalProperties, "git_repository")
 		o.AdditionalProperties = additionalProperties
 	}
 

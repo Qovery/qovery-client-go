@@ -33599,16 +33599,16 @@ components:
         id: 1a1hkhvei2wjq
     TerraformVariableParsingRequest:
       example:
-        gitRepository:
+        git_repository:
           root_path: /
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
       properties:
-        gitRepository:
+        git_repository:
           $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
       required:
-      - gitRepository
+      - git_repository
       type: object
     TerraformVariablesSourceRequest:
       example:
