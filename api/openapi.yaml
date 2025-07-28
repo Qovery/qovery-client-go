@@ -33592,7 +33592,7 @@ components:
       x-stoplight:
         id: w9dp75z2a944z
     TerraformVarKeyValue:
-      description: ""
+      description: A Terraform input variable
       example:
         secret: true
         value: value

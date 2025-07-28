@@ -18,7 +18,7 @@ import (
 // checks if the TerraformVarKeyValue type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TerraformVarKeyValue{}
 
-// TerraformVarKeyValue
+// TerraformVarKeyValue A Terraform input variable
 type TerraformVarKeyValue struct {
 	Key                  *string `json:"key,omitempty"`
 	Value                *string `json:"value,omitempty"`
