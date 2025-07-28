@@ -20,7 +20,7 @@ import (
 // checks if the TerraformResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &TerraformResponse{}
 
-// TerraformResponse struct for TerraformResponse
+// TerraformResponse A Terraform service
 type TerraformResponse struct {
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`

@@ -33487,6 +33487,7 @@ components:
         - timeout_sec
         - use_cluster_credentials
         type: object
+      description: A Terraform service
       example:
         auto_deploy: true
         job_resources:
