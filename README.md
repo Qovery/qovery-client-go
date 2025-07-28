@@ -491,6 +491,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**ListOrganizationCredentials**](docs/OrganizationMainCallsAPI.md#listorganizationcredentials) | **Get** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
 *OrganizationMainCallsAPI* | [**ListOrganizationGitTokens**](docs/OrganizationMainCallsAPI.md#listorganizationgittokens) | **Get** /organization/{organizationId}/gitToken | List organization git tokens
 *OrganizationMainCallsAPI* | [**ListServicesByOrganizationId**](docs/OrganizationMainCallsAPI.md#listservicesbyorganizationid) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
+*OrganizationMainCallsAPI* | [**ParseTerraformVariablesFromGitRepo**](docs/OrganizationMainCallsAPI.md#parseterraformvariablesfromgitrepo) | **Post** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
 *OrganizationWebhookAPI* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookAPI.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookAPI* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookAPI.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookAPI* | [**EditOrganizationWebhook**](docs/OrganizationWebhookAPI.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
@@ -1022,6 +1023,7 @@ Class | Method | HTTP request | Description
  - [OrganizationWebhookResponse](docs/OrganizationWebhookResponse.md)
  - [OrganizationWebhookResponseList](docs/OrganizationWebhookResponseList.md)
  - [PaginationData](docs/PaginationData.md)
+ - [ParseTerraformVariablesFromGitRepo200Response](docs/ParseTerraformVariablesFromGitRepo200Response.md)
  - [PlanEnum](docs/PlanEnum.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
  - [Probe](docs/Probe.md)
@@ -1116,6 +1118,8 @@ Class | Method | HTTP request | Description
  - [TerraformResponse](docs/TerraformResponse.md)
  - [TerraformResponseList](docs/TerraformResponseList.md)
  - [TerraformVarKeyValue](docs/TerraformVarKeyValue.md)
+ - [TerraformVariableDefinition](docs/TerraformVariableDefinition.md)
+ - [TerraformVariableParsingRequest](docs/TerraformVariableParsingRequest.md)
  - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
  - [TransferOwnershipRequest](docs/TransferOwnershipRequest.md)

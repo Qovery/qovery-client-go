@@ -246,4 +246,18 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationMainCallsAPIService ParseTerraformVariablesFromGitRepo", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.ParseTerraformVariablesFromGitRepo(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

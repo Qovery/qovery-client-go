@@ -635,6 +635,7 @@ docs/OrganizationWebhookKindEnum.md
 docs/OrganizationWebhookResponse.md
 docs/OrganizationWebhookResponseList.md
 docs/PaginationData.md
+docs/ParseTerraformVariablesFromGitRepo200Response.md
 docs/PlanEnum.md
 docs/PortProtocolEnum.md
 docs/Probe.md
@@ -741,6 +742,8 @@ docs/TerraformRequestTerraformFilesSourceOneOf.md
 docs/TerraformResponse.md
 docs/TerraformResponseList.md
 docs/TerraformVarKeyValue.md
+docs/TerraformVariableDefinition.md
+docs/TerraformVariableParsingRequest.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
 docs/TerraformsAPI.md
@@ -1238,6 +1241,7 @@ model_organization_webhook_kind_enum.go
 model_organization_webhook_response.go
 model_organization_webhook_response_list.go
 model_pagination_data.go
+model_parse_terraform_variables_from_git_repo_200_response.go
 model_plan_enum.go
 model_port_protocol_enum.go
 model_probe.go
@@ -1332,6 +1336,8 @@ model_terraform_request_terraform_files_source_one_of.go
 model_terraform_response.go
 model_terraform_response_list.go
 model_terraform_var_key_value.go
+model_terraform_variable_definition.go
+model_terraform_variable_parsing_request.go
 model_terraform_variables_source_request.go
 model_terraform_variables_source_response.go
 model_transfer_ownership_request.go

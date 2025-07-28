@@ -15867,6 +15867,43 @@ paths:
       - Organization Main Calls
       x-stoplight:
         id: qvqb4d0bpjy0v
+  /organization/{organizationId}/parseTerraformVariablesFromGitRepo:
+    post:
+      operationId: parseTerraformVariablesFromGitRepo
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformVariableParsingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/parseTerraformVariablesFromGitRepo_200_response'
+          description: List of Terraform variable definitions
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Parse Terraform variables from Git repository
+      tags:
+      - Organization Main Calls
   /environment/{environmentId}/deploymentQueue:
     get:
       operationId: listDeploymentRequestByEnvironmentId
@@ -33560,6 +33597,19 @@ components:
       type: object
       x-stoplight:
         id: 1a1hkhvei2wjq
+    TerraformVariableParsingRequest:
+      example:
+        gitRepository:
+          root_path: /
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: feat/text_xxx
+          url: https://github.com/Qovery/simple-node-app
+      properties:
+        gitRepository:
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      required:
+      - gitRepository
+      type: object
     TerraformVariablesSourceRequest:
       example:
         tf_var_file_paths:
@@ -33612,6 +33662,30 @@ components:
           x-stoplight:
             id: df80p2az3whjg
       title: TerraformVarKeyValue
+      type: object
+    TerraformVariableDefinition:
+      description: Represents a Terraform variable definition extracted from a Terraform
+        file.
+      example:
+        default: default
+        sensitive: true
+        key: key
+      properties:
+        key:
+          description: The name of the variable
+          type: string
+        sensitive:
+          description: Whether the variable is marked as sensitive
+          type: boolean
+        default:
+          description: "The default value of the variable, or null if no default is\
+            \ provided"
+          nullable: true
+          type: string
+      required:
+      - key
+      - sensitive
+      title: TerraformVariableDefinition
       type: object
     TerraformFilesSourceRequest:
       properties:
@@ -34749,6 +34823,21 @@ components:
           type: array
           x-stoplight:
             id: gjtgeehwg4lb9
+      type: object
+    parseTerraformVariablesFromGitRepo_200_response:
+      example:
+        results:
+        - default: default
+          sensitive: true
+          key: key
+        - default: default
+          sensitive: true
+          key: key
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/TerraformVariableDefinition'
+          type: array
       type: object
     listDeploymentRequestByEnvironmentId_200_response:
       example:
