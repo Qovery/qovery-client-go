@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **TimeoutSec** | **int32** |  | [default to 600]
 **AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
-**TerraformFilesSource** | Pointer to **map[string]interface{}** |  | [optional] 
+**TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
@@ -213,20 +213,20 @@ SetAutoDeploy sets AutoDeploy field to given value.
 
 ### GetTerraformFilesSource
 
-`func (o *TerraformResponse) GetTerraformFilesSource() map[string]interface{}`
+`func (o *TerraformResponse) GetTerraformFilesSource() TerraformResponseAllOfTerraformFilesSource`
 
 GetTerraformFilesSource returns the TerraformFilesSource field if non-nil, zero value otherwise.
 
 ### GetTerraformFilesSourceOk
 
-`func (o *TerraformResponse) GetTerraformFilesSourceOk() (*map[string]interface{}, bool)`
+`func (o *TerraformResponse) GetTerraformFilesSourceOk() (*TerraformResponseAllOfTerraformFilesSource, bool)`
 
 GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerraformFilesSource
 
-`func (o *TerraformResponse) SetTerraformFilesSource(v map[string]interface{})`
+`func (o *TerraformResponse) SetTerraformFilesSource(v TerraformResponseAllOfTerraformFilesSource)`
 
 SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
@@ -236,16 +236,6 @@ SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
 HasTerraformFilesSource returns a boolean if a field has been set.
 
-### SetTerraformFilesSourceNil
-
-`func (o *TerraformResponse) SetTerraformFilesSourceNil(b bool)`
-
- SetTerraformFilesSourceNil sets the value for TerraformFilesSource to be an explicit nil
-
-### UnsetTerraformFilesSource
-`func (o *TerraformResponse) UnsetTerraformFilesSource()`
-
-UnsetTerraformFilesSource ensures that no value is present for TerraformFilesSource, not even an explicit nil
 ### GetIconUri
 
 `func (o *TerraformResponse) GetIconUri() string`

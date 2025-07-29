@@ -33551,7 +33551,22 @@ components:
         use_cluster_credentials: true
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        terraform_files_source: null
+        terraform_files_source:
+          git:
+            git_repository:
+              owner: John Doe
+              git_token_id: git_token_id
+              has_access: true
+              branch: branch
+              deployed_commit_id: deployed_commit_id
+              url: https://openapi-generator.tech
+              deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+              root_path: root_path
+              deployed_commit_tag: v1.0.1
+              deployed_commit_contributor: deployed_commit_contributor
+              provider: BITBUCKET
+              name: simple-node-app
+              git_token_name: git_token_name
     TerraformRequestJobResources:
       example:
         cpu_milli: 0
@@ -33800,7 +33815,22 @@ components:
           use_cluster_credentials: true
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          terraform_files_source: null
+          terraform_files_source:
+            git:
+              git_repository:
+                owner: John Doe
+                git_token_id: git_token_id
+                has_access: true
+                branch: branch
+                deployed_commit_id: deployed_commit_id
+                url: https://openapi-generator.tech
+                deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+                root_path: root_path
+                deployed_commit_tag: v1.0.1
+                deployed_commit_contributor: deployed_commit_contributor
+                provider: BITBUCKET
+                name: simple-node-app
+                git_token_name: git_token_name
         - auto_deploy: true
           job_resources:
             cpu_milli: 6
@@ -33826,7 +33856,22 @@ components:
           use_cluster_credentials: true
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          terraform_files_source: null
+          terraform_files_source:
+            git:
+              git_repository:
+                owner: John Doe
+                git_token_id: git_token_id
+                has_access: true
+                branch: branch
+                deployed_commit_id: deployed_commit_id
+                url: https://openapi-generator.tech
+                deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+                root_path: root_path
+                deployed_commit_tag: v1.0.1
+                deployed_commit_contributor: deployed_commit_contributor
+                provider: BITBUCKET
+                name: simple-node-app
+                git_token_name: git_token_name
       properties:
         id:
           items:
@@ -34016,6 +34061,30 @@ components:
       type: object
       x-stoplight:
         id: oyhk9uf5vcqlk
+    TerraformFilesSource:
+      example:
+        git:
+          git_repository:
+            owner: John Doe
+            git_token_id: git_token_id
+            has_access: true
+            branch: branch
+            deployed_commit_id: deployed_commit_id
+            url: https://openapi-generator.tech
+            deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+            root_path: root_path
+            deployed_commit_tag: v1.0.1
+            deployed_commit_contributor: deployed_commit_contributor
+            provider: BITBUCKET
+            name: simple-node-app
+            git_token_name: git_token_name
+      properties:
+        git:
+          $ref: '#/components/schemas/TerraformFilesSource_git'
+      title: TerraformFilesSource
+      type: object
+      x-stoplight:
+        id: ynhtfa5yo20ee
     deleteMember_request:
       properties:
         user_id:
@@ -37280,8 +37349,9 @@ components:
       oneOf:
       - $ref: '#/components/schemas/TerraformRequest_terraform_files_source_oneOf'
     TerraformResponse_allOf_terraform_files_source:
-      nullable: true
-      type: object
+      nullable: false
+      oneOf:
+      - $ref: '#/components/schemas/TerraformFilesSource'
       x-stoplight:
         id: abfhjb6q74upq
     OrganizationCrendentialsResponseList_results_inner:
@@ -37310,6 +37380,28 @@ components:
       type: object
       x-stoplight:
         id: qjal2umjmvumz
+    TerraformFilesSource_git:
+      example:
+        git_repository:
+          owner: John Doe
+          git_token_id: git_token_id
+          has_access: true
+          branch: branch
+          deployed_commit_id: deployed_commit_id
+          url: https://openapi-generator.tech
+          deployed_commit_date: 2000-01-23T04:56:07.000+00:00
+          root_path: root_path
+          deployed_commit_tag: v1.0.1
+          deployed_commit_contributor: deployed_commit_contributor
+          provider: BITBUCKET
+          name: simple-node-app
+          git_token_name: git_token_name
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ApplicationGitRepository'
+      type: object
+      x-stoplight:
+        id: iavjewfs0d12k
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

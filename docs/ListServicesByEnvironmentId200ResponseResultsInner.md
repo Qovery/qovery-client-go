@@ -48,7 +48,7 @@ Name | Type | Description | Notes
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **AutoApprove** | **bool** |  | 
-**TerraformFilesSource** | Pointer to **map[string]interface{}** |  | [optional] 
+**TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **Provider** | **string** |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
@@ -1061,20 +1061,20 @@ SetAutoApprove sets AutoApprove field to given value.
 
 ### GetTerraformFilesSource
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSource() map[string]interface{}`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSource() TerraformResponseAllOfTerraformFilesSource`
 
 GetTerraformFilesSource returns the TerraformFilesSource field if non-nil, zero value otherwise.
 
 ### GetTerraformFilesSourceOk
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSourceOk() (*map[string]interface{}, bool)`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformFilesSourceOk() (*TerraformResponseAllOfTerraformFilesSource, bool)`
 
 GetTerraformFilesSourceOk returns a tuple with the TerraformFilesSource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTerraformFilesSource
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSource(v map[string]interface{})`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSource(v TerraformResponseAllOfTerraformFilesSource)`
 
 SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
@@ -1084,16 +1084,6 @@ SetTerraformFilesSource sets TerraformFilesSource field to given value.
 
 HasTerraformFilesSource returns a boolean if a field has been set.
 
-### SetTerraformFilesSourceNil
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTerraformFilesSourceNil(b bool)`
-
- SetTerraformFilesSourceNil sets the value for TerraformFilesSource to be an explicit nil
-
-### UnsetTerraformFilesSource
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetTerraformFilesSource()`
-
-UnsetTerraformFilesSource ensures that no value is present for TerraformFilesSource, not even an explicit nil
 ### GetTerraformVariablesSource
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTerraformVariablesSource() TerraformVariablesSourceResponse`

@@ -730,6 +730,8 @@ docs/TerraformDeploymentRestrictionAPI.md
 docs/TerraformDeploymentRestrictionRequest.md
 docs/TerraformDeploymentRestrictionResponse.md
 docs/TerraformDeploymentRestrictionResponseList.md
+docs/TerraformFilesSource.md
+docs/TerraformFilesSourceGit.md
 docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
@@ -740,6 +742,7 @@ docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformRequestTerraformFilesSourceOneOf.md
 docs/TerraformResponse.md
+docs/TerraformResponseAllOfTerraformFilesSource.md
 docs/TerraformResponseList.md
 docs/TerraformVarKeyValue.md
 docs/TerraformVariableDefinition.md
@@ -1325,6 +1328,8 @@ model_terraform_deploy_request.go
 model_terraform_deployment_restriction_request.go
 model_terraform_deployment_restriction_response.go
 model_terraform_deployment_restriction_response_list.go
+model_terraform_files_source.go
+model_terraform_files_source_git.go
 model_terraform_files_source_request.go
 model_terraform_git_repository_request.go
 model_terraform_job_resources_response.go
@@ -1334,6 +1339,7 @@ model_terraform_request_job_resources.go
 model_terraform_request_terraform_files_source.go
 model_terraform_request_terraform_files_source_one_of.go
 model_terraform_response.go
+model_terraform_response_all_of_terraform_files_source.go
 model_terraform_response_list.go
 model_terraform_var_key_value.go
 model_terraform_variable_definition.go
