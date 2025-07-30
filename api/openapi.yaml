@@ -14034,6 +14034,37 @@ paths:
       summary: Redeploy job
       tags:
       - Job Actions
+  /terraform/{terraformId}/redeploy:
+    post:
+      operationId: redeployTerrraform
+      parameters:
+      - explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Terraform redeploy has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: Operation is in progress
+      summary: Redeploy terraform
+      tags:
+      - Terraform Actions
+      x-stoplight:
+        id: 69fa5itbg5w43
   /job/{jobId}/stop:
     post:
       operationId: stopJob
