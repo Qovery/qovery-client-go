@@ -149,25 +149,25 @@ func (a *TerraformActionsAPIService) DeployTerraformExecute(r ApiDeployTerraform
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRedeployTerrraformRequest struct {
+type ApiRedeployTerraformRequest struct {
 	ctx         context.Context
 	ApiService  *TerraformActionsAPIService
 	terraformId string
 }
 
-func (r ApiRedeployTerrraformRequest) Execute() (*Status, *http.Response, error) {
-	return r.ApiService.RedeployTerrraformExecute(r)
+func (r ApiRedeployTerraformRequest) Execute() (*Status, *http.Response, error) {
+	return r.ApiService.RedeployTerraformExecute(r)
 }
 
 /*
-RedeployTerrraform Redeploy terraform
+RedeployTerraform Redeploy terraform
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId
-	@return ApiRedeployTerrraformRequest
+	@return ApiRedeployTerraformRequest
 */
-func (a *TerraformActionsAPIService) RedeployTerrraform(ctx context.Context, terraformId string) ApiRedeployTerrraformRequest {
-	return ApiRedeployTerrraformRequest{
+func (a *TerraformActionsAPIService) RedeployTerraform(ctx context.Context, terraformId string) ApiRedeployTerraformRequest {
+	return ApiRedeployTerraformRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		terraformId: terraformId,
@@ -177,7 +177,7 @@ func (a *TerraformActionsAPIService) RedeployTerrraform(ctx context.Context, ter
 // Execute executes the request
 //
 //	@return Status
-func (a *TerraformActionsAPIService) RedeployTerrraformExecute(r ApiRedeployTerrraformRequest) (*Status, *http.Response, error) {
+func (a *TerraformActionsAPIService) RedeployTerraformExecute(r ApiRedeployTerraformRequest) (*Status, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
@@ -185,7 +185,7 @@ func (a *TerraformActionsAPIService) RedeployTerrraformExecute(r ApiRedeployTerr
 		localVarReturnValue *Status
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TerraformActionsAPIService.RedeployTerrraform")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TerraformActionsAPIService.RedeployTerraform")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

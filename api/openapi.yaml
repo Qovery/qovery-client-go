@@ -14036,7 +14036,7 @@ paths:
       - Job Actions
   /terraform/{terraformId}/redeploy:
     post:
-      operationId: redeployTerrraform
+      operationId: redeployTerraform
       parameters:
       - explode: false
         in: path

@@ -36,13 +36,13 @@ func Test_qovery_TerraformActionsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TerraformActionsAPIService RedeployTerrraform", func(t *testing.T) {
+	t.Run("Test TerraformActionsAPIService RedeployTerraform", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var terraformId string
 
-		resp, httpRes, err := apiClient.TerraformActionsAPI.RedeployTerrraform(context.Background(), terraformId).Execute()
+		resp, httpRes, err := apiClient.TerraformActionsAPI.RedeployTerraform(context.Background(), terraformId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

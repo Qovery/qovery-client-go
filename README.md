@@ -525,7 +525,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsAPI* | [**DeployTerraform**](docs/TerraformActionsAPI.md#deployterraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
-*TerraformActionsAPI* | [**RedeployTerrraform**](docs/TerraformActionsAPI.md#redeployterrraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
+*TerraformActionsAPI* | [**RedeployTerraform**](docs/TerraformActionsAPI.md#redeployterraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
 *TerraformActionsAPI* | [**UninstallTerraform**](docs/TerraformActionsAPI.md#uninstallterraform) | **Post** /terraform/{terraformId}/uninstall | Uninstall terraform
 *TerraformConfigurationAPI* | [**EditTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#editterraformadvancedsettings) | **Put** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationAPI* | [**GetTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#getterraformadvancedsettings) | **Get** /terraform/{terraformId}/advancedSettings | Get Advanced settings

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeployTerraform**](TerraformActionsAPI.md#DeployTerraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
-[**RedeployTerrraform**](TerraformActionsAPI.md#RedeployTerrraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
+[**RedeployTerraform**](TerraformActionsAPI.md#RedeployTerraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
 [**UninstallTerraform**](TerraformActionsAPI.md#UninstallTerraform) | **Post** /terraform/{terraformId}/uninstall | Uninstall terraform
 
 
@@ -82,9 +82,9 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## RedeployTerrraform
+## RedeployTerraform
 
-> Status RedeployTerrraform(ctx, terraformId).Execute()
+> Status RedeployTerraform(ctx, terraformId).Execute()
 
 Redeploy terraform
 
@@ -105,13 +105,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TerraformActionsAPI.RedeployTerrraform(context.Background(), terraformId).Execute()
+	resp, r, err := apiClient.TerraformActionsAPI.RedeployTerraform(context.Background(), terraformId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TerraformActionsAPI.RedeployTerrraform``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TerraformActionsAPI.RedeployTerraform``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RedeployTerrraform`: Status
-	fmt.Fprintf(os.Stdout, "Response from `TerraformActionsAPI.RedeployTerrraform`: %v\n", resp)
+	// response from `RedeployTerraform`: Status
+	fmt.Fprintf(os.Stdout, "Response from `TerraformActionsAPI.RedeployTerraform`: %v\n", resp)
 }
 ```
 
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiRedeployTerrraformRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiRedeployTerraformRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
