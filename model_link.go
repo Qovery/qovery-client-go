@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the Link type satisfies the MappedNullable interface at compile time
@@ -20,15 +21,19 @@ var _ MappedNullable = &Link{}
 
 // Link struct for Link
 type Link struct {
-	Url *string `json:"url,omitempty"`
+	// ID of the associated service
+	ServiceId   string          `json:"service_id"`
+	ServiceType ServiceTypeEnum `json:"service_type"`
+	// URL to access the service
+	Url string `json:"url"`
 	// The port from which the service is reachable from within the cluster
-	InternalPort *int32 `json:"internal_port,omitempty"`
+	InternalPort int32 `json:"internal_port"`
 	// The port from which the service is reachable from externally (i.e: 443 for HTTPS)
-	ExternalPort *int32 `json:"external_port,omitempty"`
+	ExternalPort int32 `json:"external_port"`
 	// True if the domain is managed by Qovery, false if it belongs to the user
-	IsQoveryDomain *bool `json:"is_qovery_domain,omitempty"`
+	IsQoveryDomain bool `json:"is_qovery_domain"`
 	// Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      => is_default = false, is_qovery = true zxxxx.jvm.world           => is_default = true, is_qovery = true p8080-my-super-domain.com => is_default = false, is_qovery = false my-super-domain.com       => is_default = true, is_qovery = false
-	IsDefault            *bool `json:"is_default,omitempty"`
+	IsDefault            bool `json:"is_default"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,8 +43,15 @@ type _Link Link
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLink() *Link {
+func NewLink(serviceId string, serviceType ServiceTypeEnum, url string, internalPort int32, externalPort int32, isQoveryDomain bool, isDefault bool) *Link {
 	this := Link{}
+	this.ServiceId = serviceId
+	this.ServiceType = serviceType
+	this.Url = url
+	this.InternalPort = internalPort
+	this.ExternalPort = externalPort
+	this.IsQoveryDomain = isQoveryDomain
+	this.IsDefault = isDefault
 	return &this
 }
 
@@ -51,164 +63,172 @@ func NewLinkWithDefaults() *Link {
 	return &this
 }
 
-// GetUrl returns the Url field value if set, zero value otherwise.
-func (o *Link) GetUrl() string {
-	if o == nil || IsNil(o.Url) {
+// GetServiceId returns the ServiceId field value
+func (o *Link) GetServiceId() string {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Url
+
+	return o.ServiceId
 }
 
-// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// GetServiceIdOk returns a tuple with the ServiceId field value
+// and a boolean to check if the value has been set.
+func (o *Link) GetServiceIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServiceId, true
+}
+
+// SetServiceId sets field value
+func (o *Link) SetServiceId(v string) {
+	o.ServiceId = v
+}
+
+// GetServiceType returns the ServiceType field value
+func (o *Link) GetServiceType() ServiceTypeEnum {
+	if o == nil {
+		var ret ServiceTypeEnum
+		return ret
+	}
+
+	return o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value
+// and a boolean to check if the value has been set.
+func (o *Link) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServiceType, true
+}
+
+// SetServiceType sets field value
+func (o *Link) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = v
+}
+
+// GetUrl returns the Url field value
+func (o *Link) GetUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value
 // and a boolean to check if the value has been set.
 func (o *Link) GetUrlOk() (*string, bool) {
-	if o == nil || IsNil(o.Url) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Url, true
+	return &o.Url, true
 }
 
-// HasUrl returns a boolean if a field has been set.
-func (o *Link) HasUrl() bool {
-	if o != nil && !IsNil(o.Url) {
-		return true
-	}
-
-	return false
-}
-
-// SetUrl gets a reference to the given string and assigns it to the Url field.
+// SetUrl sets field value
 func (o *Link) SetUrl(v string) {
-	o.Url = &v
+	o.Url = v
 }
 
-// GetInternalPort returns the InternalPort field value if set, zero value otherwise.
+// GetInternalPort returns the InternalPort field value
 func (o *Link) GetInternalPort() int32 {
-	if o == nil || IsNil(o.InternalPort) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.InternalPort
+
+	return o.InternalPort
 }
 
-// GetInternalPortOk returns a tuple with the InternalPort field value if set, nil otherwise
+// GetInternalPortOk returns a tuple with the InternalPort field value
 // and a boolean to check if the value has been set.
 func (o *Link) GetInternalPortOk() (*int32, bool) {
-	if o == nil || IsNil(o.InternalPort) {
+	if o == nil {
 		return nil, false
 	}
-	return o.InternalPort, true
+	return &o.InternalPort, true
 }
 
-// HasInternalPort returns a boolean if a field has been set.
-func (o *Link) HasInternalPort() bool {
-	if o != nil && !IsNil(o.InternalPort) {
-		return true
-	}
-
-	return false
-}
-
-// SetInternalPort gets a reference to the given int32 and assigns it to the InternalPort field.
+// SetInternalPort sets field value
 func (o *Link) SetInternalPort(v int32) {
-	o.InternalPort = &v
+	o.InternalPort = v
 }
 
-// GetExternalPort returns the ExternalPort field value if set, zero value otherwise.
+// GetExternalPort returns the ExternalPort field value
 func (o *Link) GetExternalPort() int32 {
-	if o == nil || IsNil(o.ExternalPort) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.ExternalPort
+
+	return o.ExternalPort
 }
 
-// GetExternalPortOk returns a tuple with the ExternalPort field value if set, nil otherwise
+// GetExternalPortOk returns a tuple with the ExternalPort field value
 // and a boolean to check if the value has been set.
 func (o *Link) GetExternalPortOk() (*int32, bool) {
-	if o == nil || IsNil(o.ExternalPort) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ExternalPort, true
+	return &o.ExternalPort, true
 }
 
-// HasExternalPort returns a boolean if a field has been set.
-func (o *Link) HasExternalPort() bool {
-	if o != nil && !IsNil(o.ExternalPort) {
-		return true
-	}
-
-	return false
-}
-
-// SetExternalPort gets a reference to the given int32 and assigns it to the ExternalPort field.
+// SetExternalPort sets field value
 func (o *Link) SetExternalPort(v int32) {
-	o.ExternalPort = &v
+	o.ExternalPort = v
 }
 
-// GetIsQoveryDomain returns the IsQoveryDomain field value if set, zero value otherwise.
+// GetIsQoveryDomain returns the IsQoveryDomain field value
 func (o *Link) GetIsQoveryDomain() bool {
-	if o == nil || IsNil(o.IsQoveryDomain) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsQoveryDomain
+
+	return o.IsQoveryDomain
 }
 
-// GetIsQoveryDomainOk returns a tuple with the IsQoveryDomain field value if set, nil otherwise
+// GetIsQoveryDomainOk returns a tuple with the IsQoveryDomain field value
 // and a boolean to check if the value has been set.
 func (o *Link) GetIsQoveryDomainOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsQoveryDomain) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsQoveryDomain, true
+	return &o.IsQoveryDomain, true
 }
 
-// HasIsQoveryDomain returns a boolean if a field has been set.
-func (o *Link) HasIsQoveryDomain() bool {
-	if o != nil && !IsNil(o.IsQoveryDomain) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsQoveryDomain gets a reference to the given bool and assigns it to the IsQoveryDomain field.
+// SetIsQoveryDomain sets field value
 func (o *Link) SetIsQoveryDomain(v bool) {
-	o.IsQoveryDomain = &v
+	o.IsQoveryDomain = v
 }
 
-// GetIsDefault returns the IsDefault field value if set, zero value otherwise.
+// GetIsDefault returns the IsDefault field value
 func (o *Link) GetIsDefault() bool {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDefault
+
+	return o.IsDefault
 }
 
-// GetIsDefaultOk returns a tuple with the IsDefault field value if set, nil otherwise
+// GetIsDefaultOk returns a tuple with the IsDefault field value
 // and a boolean to check if the value has been set.
 func (o *Link) GetIsDefaultOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDefault) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDefault, true
+	return &o.IsDefault, true
 }
 
-// HasIsDefault returns a boolean if a field has been set.
-func (o *Link) HasIsDefault() bool {
-	if o != nil && !IsNil(o.IsDefault) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDefault gets a reference to the given bool and assigns it to the IsDefault field.
+// SetIsDefault sets field value
 func (o *Link) SetIsDefault(v bool) {
-	o.IsDefault = &v
+	o.IsDefault = v
 }
 
 func (o Link) MarshalJSON() ([]byte, error) {
@@ -221,21 +241,13 @@ func (o Link) MarshalJSON() ([]byte, error) {
 
 func (o Link) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Url) {
-		toSerialize["url"] = o.Url
-	}
-	if !IsNil(o.InternalPort) {
-		toSerialize["internal_port"] = o.InternalPort
-	}
-	if !IsNil(o.ExternalPort) {
-		toSerialize["external_port"] = o.ExternalPort
-	}
-	if !IsNil(o.IsQoveryDomain) {
-		toSerialize["is_qovery_domain"] = o.IsQoveryDomain
-	}
-	if !IsNil(o.IsDefault) {
-		toSerialize["is_default"] = o.IsDefault
-	}
+	toSerialize["service_id"] = o.ServiceId
+	toSerialize["service_type"] = o.ServiceType
+	toSerialize["url"] = o.Url
+	toSerialize["internal_port"] = o.InternalPort
+	toSerialize["external_port"] = o.ExternalPort
+	toSerialize["is_qovery_domain"] = o.IsQoveryDomain
+	toSerialize["is_default"] = o.IsDefault
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -245,6 +257,33 @@ func (o Link) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *Link) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"service_id",
+		"service_type",
+		"url",
+		"internal_port",
+		"external_port",
+		"is_qovery_domain",
+		"is_default",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varLink := _Link{}
 
 	err = json.Unmarshal(data, &varLink)
@@ -258,6 +297,8 @@ func (o *Link) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "service_id")
+		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "internal_port")
 		delete(additionalProperties, "external_port")

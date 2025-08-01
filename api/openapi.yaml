@@ -16303,6 +16303,35 @@ paths:
       - Terraforms
       x-stoplight:
         id: qgpat08kc3wir
+  /api/environment/{environmentId}/link:
+    get:
+      operationId: listEnvironmentServicesLinks
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LinkResponseList'
+          description: List environment services links
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environment services links
+      tags:
+      - Environment
   /terraform/{terraformId}:
     delete:
       operationId: deleteTerraform
@@ -28382,13 +28411,22 @@ components:
       type: string
     Link:
       example:
+        service_type: APPLICATION
         is_qovery_domain: true
         external_port: 6
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         internal_port: 0
         is_default: true
         url: url
       properties:
+        service_id:
+          description: ID of the associated service
+          format: uuid
+          type: string
+        service_type:
+          $ref: '#/components/schemas/ServiceTypeEnum'
         url:
+          description: URL to access the service
           type: string
         internal_port:
           description: The port from which the service is reachable from within the
@@ -28411,17 +28449,29 @@ components:
             p8080-my-super-domain.com => is_default = false, is_qovery = false
             my-super-domain.com       => is_default = true, is_qovery = false
           type: boolean
+      required:
+      - external_port
+      - internal_port
+      - is_default
+      - is_qovery_domain
+      - service_id
+      - service_type
+      - url
       type: object
     LinkResponseList:
       example:
         results:
-        - is_qovery_domain: true
+        - service_type: APPLICATION
+          is_qovery_domain: true
           external_port: 6
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 0
           is_default: true
           url: url
-        - is_qovery_domain: true
+        - service_type: APPLICATION
+          is_qovery_domain: true
           external_port: 6
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 0
           is_default: true
           url: url

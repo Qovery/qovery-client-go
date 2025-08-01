@@ -4,17 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | Pointer to **string** |  | [optional] 
-**InternalPort** | Pointer to **int32** | The port from which the service is reachable from within the cluster | [optional] 
-**ExternalPort** | Pointer to **int32** | The port from which the service is reachable from externally (i.e: 443 for HTTPS) | [optional] 
-**IsQoveryDomain** | Pointer to **bool** | True if the domain is managed by Qovery, false if it belongs to the user | [optional] 
-**IsDefault** | Pointer to **bool** | Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      &#x3D;&gt; is_default &#x3D; false, is_qovery &#x3D; true zxxxx.jvm.world           &#x3D;&gt; is_default &#x3D; true, is_qovery &#x3D; true p8080-my-super-domain.com &#x3D;&gt; is_default &#x3D; false, is_qovery &#x3D; false my-super-domain.com       &#x3D;&gt; is_default &#x3D; true, is_qovery &#x3D; false  | [optional] 
+**ServiceId** | **string** | ID of the associated service | 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**Url** | **string** | URL to access the service | 
+**InternalPort** | **int32** | The port from which the service is reachable from within the cluster | 
+**ExternalPort** | **int32** | The port from which the service is reachable from externally (i.e: 443 for HTTPS) | 
+**IsQoveryDomain** | **bool** | True if the domain is managed by Qovery, false if it belongs to the user | 
+**IsDefault** | **bool** | Indicate if the link is using the root of the domain and not one derivated from port i.e: p8080.zxxxx.jvm.worl      &#x3D;&gt; is_default &#x3D; false, is_qovery &#x3D; true zxxxx.jvm.world           &#x3D;&gt; is_default &#x3D; true, is_qovery &#x3D; true p8080-my-super-domain.com &#x3D;&gt; is_default &#x3D; false, is_qovery &#x3D; false my-super-domain.com       &#x3D;&gt; is_default &#x3D; true, is_qovery &#x3D; false  | 
 
 ## Methods
 
 ### NewLink
 
-`func NewLink() *Link`
+`func NewLink(serviceId string, serviceType ServiceTypeEnum, url string, internalPort int32, externalPort int32, isQoveryDomain bool, isDefault bool, ) *Link`
 
 NewLink instantiates a new Link object
 This constructor will assign default values to properties that have it defined,
@@ -28,6 +30,46 @@ will change when the set of required properties is changed
 NewLinkWithDefaults instantiates a new Link object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetServiceId
+
+`func (o *Link) GetServiceId() string`
+
+GetServiceId returns the ServiceId field if non-nil, zero value otherwise.
+
+### GetServiceIdOk
+
+`func (o *Link) GetServiceIdOk() (*string, bool)`
+
+GetServiceIdOk returns a tuple with the ServiceId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceId
+
+`func (o *Link) SetServiceId(v string)`
+
+SetServiceId sets ServiceId field to given value.
+
+
+### GetServiceType
+
+`func (o *Link) GetServiceType() ServiceTypeEnum`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *Link) GetServiceTypeOk() (*ServiceTypeEnum, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *Link) SetServiceType(v ServiceTypeEnum)`
+
+SetServiceType sets ServiceType field to given value.
+
 
 ### GetUrl
 
@@ -48,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetUrl sets Url field to given value.
 
-### HasUrl
-
-`func (o *Link) HasUrl() bool`
-
-HasUrl returns a boolean if a field has been set.
 
 ### GetInternalPort
 
@@ -73,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetInternalPort sets InternalPort field to given value.
 
-### HasInternalPort
-
-`func (o *Link) HasInternalPort() bool`
-
-HasInternalPort returns a boolean if a field has been set.
 
 ### GetExternalPort
 
@@ -98,11 +130,6 @@ and a boolean to check if the value has been set.
 
 SetExternalPort sets ExternalPort field to given value.
 
-### HasExternalPort
-
-`func (o *Link) HasExternalPort() bool`
-
-HasExternalPort returns a boolean if a field has been set.
 
 ### GetIsQoveryDomain
 
@@ -123,11 +150,6 @@ and a boolean to check if the value has been set.
 
 SetIsQoveryDomain sets IsQoveryDomain field to given value.
 
-### HasIsQoveryDomain
-
-`func (o *Link) HasIsQoveryDomain() bool`
-
-HasIsQoveryDomain returns a boolean if a field has been set.
 
 ### GetIsDefault
 
@@ -148,11 +170,6 @@ and a boolean to check if the value has been set.
 
 SetIsDefault sets IsDefault field to given value.
 
-### HasIsDefault
-
-`func (o *Link) HasIsDefault() bool`
-
-HasIsDefault returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
