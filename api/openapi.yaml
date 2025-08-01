@@ -18040,6 +18040,7 @@ components:
         max_running_instances: 6
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -18146,6 +18147,7 @@ components:
     ApplicationGitRepositoryRequest:
       example:
         root_path: /
+        provider: BITBUCKET
         git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branch: feat/text_xxx
         url: https://github.com/Qovery/simple-node-app
@@ -18169,6 +18171,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        provider:
+          $ref: '#/components/schemas/GitProviderEnum'
       required:
       - name
       - owner
@@ -18417,6 +18421,7 @@ components:
         max_running_instances: 6
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -26855,6 +26860,7 @@ components:
       example:
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -27083,6 +27089,7 @@ components:
             docker_target_build_stage: docker_target_build_stage
             git_repository:
               root_path: /
+              provider: BITBUCKET
               git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               branch: feat/text_xxx
               url: https://github.com/Qovery/simple-node-app
@@ -27669,6 +27676,7 @@ components:
               - paths
               git_repository:
                 root_path: /
+                provider: BITBUCKET
                 git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 branch: feat/text_xxx
                 url: https://github.com/Qovery/simple-node-app
@@ -33699,6 +33707,7 @@ components:
       example:
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -36060,6 +36069,7 @@ components:
         docker_target_build_stage: docker_target_build_stage
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -36098,6 +36108,7 @@ components:
           docker_target_build_stage: docker_target_build_stage
           git_repository:
             root_path: /
+            provider: BITBUCKET
             git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: feat/text_xxx
             url: https://github.com/Qovery/simple-node-app
@@ -36252,6 +36263,7 @@ components:
         - paths
         git_repository:
           root_path: /
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: feat/text_xxx
           url: https://github.com/Qovery/simple-node-app
@@ -36303,6 +36315,7 @@ components:
           - paths
           git_repository:
             root_path: /
+            provider: BITBUCKET
             git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: feat/text_xxx
             url: https://github.com/Qovery/simple-node-app
@@ -36335,6 +36348,7 @@ components:
             - paths
             git_repository:
               root_path: /
+              provider: BITBUCKET
               git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               branch: feat/text_xxx
               url: https://github.com/Qovery/simple-node-app

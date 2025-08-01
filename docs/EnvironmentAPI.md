@@ -102,7 +102,7 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	dockerfileCheckRequest := *openapiclient.NewDockerfileCheckRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app"), "DockerfilePath_example") // DockerfileCheckRequest |  (optional)
+	dockerfileCheckRequest := *openapiclient.NewDockerfileCheckRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app", openapiclient.GitProviderEnum("BITBUCKET")), "DockerfilePath_example") // DockerfileCheckRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

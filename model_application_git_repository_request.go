@@ -28,7 +28,8 @@ type ApplicationGitRepositoryRequest struct {
 	// indicates the root path of the application.
 	RootPath *string `json:"root_path,omitempty"`
 	// The git token id on Qovery side
-	GitTokenId           NullableString `json:"git_token_id,omitempty"`
+	GitTokenId           NullableString  `json:"git_token_id,omitempty"`
+	Provider             GitProviderEnum `json:"provider"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,11 +39,12 @@ type _ApplicationGitRepositoryRequest ApplicationGitRepositoryRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewApplicationGitRepositoryRequest(url string) *ApplicationGitRepositoryRequest {
+func NewApplicationGitRepositoryRequest(url string, provider GitProviderEnum) *ApplicationGitRepositoryRequest {
 	this := ApplicationGitRepositoryRequest{}
 	this.Url = url
 	var rootPath string = "/"
 	this.RootPath = &rootPath
+	this.Provider = provider
 	return &this
 }
 
@@ -187,6 +189,30 @@ func (o *ApplicationGitRepositoryRequest) UnsetGitTokenId() {
 	o.GitTokenId.Unset()
 }
 
+// GetProvider returns the Provider field value
+func (o *ApplicationGitRepositoryRequest) GetProvider() GitProviderEnum {
+	if o == nil {
+		var ret GitProviderEnum
+		return ret
+	}
+
+	return o.Provider
+}
+
+// GetProviderOk returns a tuple with the Provider field value
+// and a boolean to check if the value has been set.
+func (o *ApplicationGitRepositoryRequest) GetProviderOk() (*GitProviderEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Provider, true
+}
+
+// SetProvider sets field value
+func (o *ApplicationGitRepositoryRequest) SetProvider(v GitProviderEnum) {
+	o.Provider = v
+}
+
 func (o ApplicationGitRepositoryRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -207,6 +233,7 @@ func (o ApplicationGitRepositoryRequest) ToMap() (map[string]interface{}, error)
 	if o.GitTokenId.IsSet() {
 		toSerialize["git_token_id"] = o.GitTokenId.Get()
 	}
+	toSerialize["provider"] = o.Provider
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -221,6 +248,7 @@ func (o *ApplicationGitRepositoryRequest) UnmarshalJSON(data []byte) (err error)
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"url",
+		"provider",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -254,6 +282,7 @@ func (o *ApplicationGitRepositoryRequest) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "branch")
 		delete(additionalProperties, "root_path")
 		delete(additionalProperties, "git_token_id")
+		delete(additionalProperties, "provider")
 		o.AdditionalProperties = additionalProperties
 	}
 

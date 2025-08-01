@@ -1165,7 +1165,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	terraformVariableParsingRequest := *openapiclient.NewTerraformVariableParsingRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app")) // TerraformVariableParsingRequest | 
+	terraformVariableParsingRequest := *openapiclient.NewTerraformVariableParsingRequest(*openapiclient.NewApplicationGitRepositoryRequest("https://github.com/Qovery/simple-node-app", openapiclient.GitProviderEnum("BITBUCKET"))) // TerraformVariableParsingRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

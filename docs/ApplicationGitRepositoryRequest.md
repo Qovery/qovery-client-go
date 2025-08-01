@@ -8,12 +8,13 @@ Name | Type | Description | Notes
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional If not specified, then the branch used is the &#x60;main&#x60; or &#x60;master&#x60; one  | [optional] 
 **RootPath** | Pointer to **string** | indicates the root path of the application. | [optional] [default to "/"]
 **GitTokenId** | Pointer to **NullableString** | The git token id on Qovery side | [optional] 
+**Provider** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
 
 ## Methods
 
 ### NewApplicationGitRepositoryRequest
 
-`func NewApplicationGitRepositoryRequest(url string, ) *ApplicationGitRepositoryRequest`
+`func NewApplicationGitRepositoryRequest(url string, provider GitProviderEnum, ) *ApplicationGitRepositoryRequest`
 
 NewApplicationGitRepositoryRequest instantiates a new ApplicationGitRepositoryRequest object
 This constructor will assign default values to properties that have it defined,
@@ -133,6 +134,26 @@ HasGitTokenId returns a boolean if a field has been set.
 `func (o *ApplicationGitRepositoryRequest) UnsetGitTokenId()`
 
 UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+### GetProvider
+
+`func (o *ApplicationGitRepositoryRequest) GetProvider() GitProviderEnum`
+
+GetProvider returns the Provider field if non-nil, zero value otherwise.
+
+### GetProviderOk
+
+`func (o *ApplicationGitRepositoryRequest) GetProviderOk() (*GitProviderEnum, bool)`
+
+GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProvider
+
+`func (o *ApplicationGitRepositoryRequest) SetProvider(v GitProviderEnum)`
+
+SetProvider sets Provider field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
