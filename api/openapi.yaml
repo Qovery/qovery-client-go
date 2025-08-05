@@ -26129,6 +26129,7 @@ components:
       example:
         workspace: workspace
         name: name
+        git_api_url: https://openapi-generator.tech
         description: description
         type: BITBUCKET
         token: token
@@ -26146,6 +26147,14 @@ components:
           description: "Mandatory only for BITBUCKET git provider, to allow us to\
             \ fetch repositories at creation/edition of a service"
           type: string
+        git_api_url:
+          description: |-
+            custom git api url for the given git provider/type.
+            I.e: Self-hosted version of Gitlab
+          format: uri
+          type: string
+          x-stoplight:
+            id: 8g38vvoghxzdf
       required:
       - name
       - token
@@ -26170,8 +26179,14 @@ components:
           associated_services_count:
             description: The number of services using this git token
             type: number
+          git_api_url:
+            format: uri
+            type: string
+            x-stoplight:
+              id: 27n37ox3lysq4
         required:
         - associated_services_count
+        - git_api_url
         - name
         - type
         type: object
@@ -26180,6 +26195,7 @@ components:
         workspace: workspace
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
+        git_api_url: https://openapi-generator.tech
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26192,6 +26208,7 @@ components:
           workspace: workspace
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
+          git_api_url: https://openapi-generator.tech
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26201,6 +26218,7 @@ components:
           workspace: workspace
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
+          git_api_url: https://openapi-generator.tech
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

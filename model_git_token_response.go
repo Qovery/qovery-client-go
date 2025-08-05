@@ -33,6 +33,7 @@ type GitTokenResponse struct {
 	Workspace *string `json:"workspace,omitempty"`
 	// The number of services using this git token
 	AssociatedServicesCount float32 `json:"associated_services_count"`
+	GitApiUrl               string  `json:"git_api_url"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -42,13 +43,14 @@ type _GitTokenResponse GitTokenResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32) *GitTokenResponse {
+func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32, gitApiUrl string) *GitTokenResponse {
 	this := GitTokenResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.Type = type_
 	this.AssociatedServicesCount = associatedServicesCount
+	this.GitApiUrl = gitApiUrl
 	return &this
 }
 
@@ -308,6 +310,30 @@ func (o *GitTokenResponse) SetAssociatedServicesCount(v float32) {
 	o.AssociatedServicesCount = v
 }
 
+// GetGitApiUrl returns the GitApiUrl field value
+func (o *GitTokenResponse) GetGitApiUrl() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.GitApiUrl
+}
+
+// GetGitApiUrlOk returns a tuple with the GitApiUrl field value
+// and a boolean to check if the value has been set.
+func (o *GitTokenResponse) GetGitApiUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.GitApiUrl, true
+}
+
+// SetGitApiUrl sets field value
+func (o *GitTokenResponse) SetGitApiUrl(v string) {
+	o.GitApiUrl = v
+}
+
 func (o GitTokenResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -335,6 +361,7 @@ func (o GitTokenResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["workspace"] = o.Workspace
 	}
 	toSerialize["associated_services_count"] = o.AssociatedServicesCount
+	toSerialize["git_api_url"] = o.GitApiUrl
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -353,6 +380,7 @@ func (o *GitTokenResponse) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"type",
 		"associated_services_count",
+		"git_api_url",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -391,6 +419,7 @@ func (o *GitTokenResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "expired_at")
 		delete(additionalProperties, "workspace")
 		delete(additionalProperties, "associated_services_count")
+		delete(additionalProperties, "git_api_url")
 		o.AdditionalProperties = additionalProperties
 	}
 

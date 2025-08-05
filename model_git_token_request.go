@@ -27,7 +27,9 @@ type GitTokenRequest struct {
 	// The token from your git provider side
 	Token string `json:"token"`
 	// Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service
-	Workspace            *string `json:"workspace,omitempty"`
+	Workspace *string `json:"workspace,omitempty"`
+	// custom git api url for the given git provider/type. I.e: Self-hosted version of Gitlab
+	GitApiUrl            *string `json:"git_api_url,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -189,6 +191,38 @@ func (o *GitTokenRequest) SetWorkspace(v string) {
 	o.Workspace = &v
 }
 
+// GetGitApiUrl returns the GitApiUrl field value if set, zero value otherwise.
+func (o *GitTokenRequest) GetGitApiUrl() string {
+	if o == nil || IsNil(o.GitApiUrl) {
+		var ret string
+		return ret
+	}
+	return *o.GitApiUrl
+}
+
+// GetGitApiUrlOk returns a tuple with the GitApiUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *GitTokenRequest) GetGitApiUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.GitApiUrl) {
+		return nil, false
+	}
+	return o.GitApiUrl, true
+}
+
+// HasGitApiUrl returns a boolean if a field has been set.
+func (o *GitTokenRequest) HasGitApiUrl() bool {
+	if o != nil && !IsNil(o.GitApiUrl) {
+		return true
+	}
+
+	return false
+}
+
+// SetGitApiUrl gets a reference to the given string and assigns it to the GitApiUrl field.
+func (o *GitTokenRequest) SetGitApiUrl(v string) {
+	o.GitApiUrl = &v
+}
+
 func (o GitTokenRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -207,6 +241,9 @@ func (o GitTokenRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["token"] = o.Token
 	if !IsNil(o.Workspace) {
 		toSerialize["workspace"] = o.Workspace
+	}
+	if !IsNil(o.GitApiUrl) {
+		toSerialize["git_api_url"] = o.GitApiUrl
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -258,6 +295,7 @@ func (o *GitTokenRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "token")
 		delete(additionalProperties, "workspace")
+		delete(additionalProperties, "git_api_url")
 		o.AdditionalProperties = additionalProperties
 	}
 

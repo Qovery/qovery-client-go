@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Type** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
 **Token** | **string** | The token from your git provider side | 
 **Workspace** | Pointer to **string** | Mandatory only for BITBUCKET git provider, to allow us to fetch repositories at creation/edition of a service | [optional] 
+**GitApiUrl** | Pointer to **string** | custom git api url for the given git provider/type. I.e: Self-hosted version of Gitlab | [optional] 
 
 ## Methods
 
@@ -138,6 +139,31 @@ SetWorkspace sets Workspace field to given value.
 `func (o *GitTokenRequest) HasWorkspace() bool`
 
 HasWorkspace returns a boolean if a field has been set.
+
+### GetGitApiUrl
+
+`func (o *GitTokenRequest) GetGitApiUrl() string`
+
+GetGitApiUrl returns the GitApiUrl field if non-nil, zero value otherwise.
+
+### GetGitApiUrlOk
+
+`func (o *GitTokenRequest) GetGitApiUrlOk() (*string, bool)`
+
+GetGitApiUrlOk returns a tuple with the GitApiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitApiUrl
+
+`func (o *GitTokenRequest) SetGitApiUrl(v string)`
+
+SetGitApiUrl sets GitApiUrl field to given value.
+
+### HasGitApiUrl
+
+`func (o *GitTokenRequest) HasGitApiUrl() bool`
+
+HasGitApiUrl returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

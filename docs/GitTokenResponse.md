@@ -13,12 +13,13 @@ Name | Type | Description | Notes
 **ExpiredAt** | Pointer to **string** |  | [optional] 
 **Workspace** | Pointer to **string** | Mandatory only for BITBUCKET git provider | [optional] 
 **AssociatedServicesCount** | **float32** | The number of services using this git token | 
+**GitApiUrl** | **string** |  | 
 
 ## Methods
 
 ### NewGitTokenResponse
 
-`func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32, ) *GitTokenResponse`
+`func NewGitTokenResponse(id string, createdAt time.Time, name string, type_ GitProviderEnum, associatedServicesCount float32, gitApiUrl string, ) *GitTokenResponse`
 
 NewGitTokenResponse instantiates a new GitTokenResponse object
 This constructor will assign default values to properties that have it defined,
@@ -231,6 +232,26 @@ and a boolean to check if the value has been set.
 `func (o *GitTokenResponse) SetAssociatedServicesCount(v float32)`
 
 SetAssociatedServicesCount sets AssociatedServicesCount field to given value.
+
+
+### GetGitApiUrl
+
+`func (o *GitTokenResponse) GetGitApiUrl() string`
+
+GetGitApiUrl returns the GitApiUrl field if non-nil, zero value otherwise.
+
+### GetGitApiUrlOk
+
+`func (o *GitTokenResponse) GetGitApiUrlOk() (*string, bool)`
+
+GetGitApiUrlOk returns a tuple with the GitApiUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitApiUrl
+
+`func (o *GitTokenResponse) SetGitApiUrl(v string)`
+
+SetGitApiUrl sets GitApiUrl field to given value.
 
 
 
