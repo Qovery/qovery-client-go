@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterMetrics
 
-> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Execute()
+> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyse(analyse).Execute()
 
 Fetch cluster metrics
 
@@ -801,10 +801,12 @@ func main() {
 	dedup := "dedup_example" // string |  (optional)
 	partialResponse := "partialResponse_example" // string |  (optional)
 	maxSourceResolution := "maxSourceResolution_example" // string |  (optional)
+	engine := "engine_example" // string |  (optional)
+	analyse := "analyse_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyse(analyse).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterMetrics``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -840,6 +842,8 @@ Name | Type | Description  | Notes
  **dedup** | **string** |  | 
  **partialResponse** | **string** |  | 
  **maxSourceResolution** | **string** |  | 
+ **engine** | **string** |  | 
+ **analyse** | **string** |  | 
 
 ### Return type
 
