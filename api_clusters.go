@@ -1341,7 +1341,7 @@ type ApiGetClusterMetricsRequest struct {
 	partialResponse     *string
 	maxSourceResolution *string
 	engine              *string
-	analyse             *string
+	analyze             *string
 }
 
 func (r ApiGetClusterMetricsRequest) Endpoint(endpoint string) ApiGetClusterMetricsRequest {
@@ -1399,8 +1399,8 @@ func (r ApiGetClusterMetricsRequest) Engine(engine string) ApiGetClusterMetricsR
 	return r
 }
 
-func (r ApiGetClusterMetricsRequest) Analyse(analyse string) ApiGetClusterMetricsRequest {
-	r.analyse = &analyse
+func (r ApiGetClusterMetricsRequest) Analyze(analyze string) ApiGetClusterMetricsRequest {
+	r.analyze = &analyze
 	return r
 }
 
@@ -1483,8 +1483,8 @@ func (a *ClustersAPIService) GetClusterMetricsExecute(r ApiGetClusterMetricsRequ
 	if r.engine != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "engine", r.engine, "")
 	}
-	if r.analyse != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "analyse", r.analyse, "")
+	if r.analyze != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "analyze", r.analyze, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

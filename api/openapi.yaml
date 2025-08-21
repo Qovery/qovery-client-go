@@ -15806,7 +15806,7 @@ paths:
         style: form
       - explode: true
         in: query
-        name: analyse
+        name: analyze
         required: false
         schema:
           type: string
