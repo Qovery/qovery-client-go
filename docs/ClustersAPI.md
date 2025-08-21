@@ -771,7 +771,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterMetrics
 
-> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).Execute()
+> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Execute()
 
 Fetch cluster metrics
 
@@ -800,10 +800,11 @@ func main() {
 	timeout := "timeout_example" // string |  (optional)
 	dedup := "dedup_example" // string |  (optional)
 	partialResponse := "partialResponse_example" // string |  (optional)
+	maxSourceResolution := "maxSourceResolution_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterMetrics``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -838,6 +839,7 @@ Name | Type | Description  | Notes
  **timeout** | **string** |  | 
  **dedup** | **string** |  | 
  **partialResponse** | **string** |  | 
+ **maxSourceResolution** | **string** |  | 
 
 ### Return type
 

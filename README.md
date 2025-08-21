@@ -290,6 +290,7 @@ Class | Method | HTTP request | Description
 *DatabasesAPI* | [**GetEnvironmentDatabaseStatus**](docs/DatabasesAPI.md#getenvironmentdatabasestatus) | **Get** /environment/{environmentId}/database/status | List all environment databases statuses
 *DatabasesAPI* | [**ListDatabase**](docs/DatabasesAPI.md#listdatabase) | **Get** /environment/{environmentId}/database | List environment databases
 *DatabasesAPI* | [**ListEnvironmentDatabaseConfig**](docs/DatabasesAPI.md#listenvironmentdatabaseconfig) | **Get** /environment/{environmentId}/databaseConfiguration | List eligible database types, versions and modes for the environment
+*DefaultAPI* | [**GetClusterLogs**](docs/DefaultAPI.md#getclusterlogs) | **Get** /cluster/{clusterId}/logs | Fetch cluster logs
 *DefaultAPI* | [**GetClusterTokenByClusterId**](docs/DefaultAPI.md#getclustertokenbyclusterid) | **Get** /cluster/{clusterId}/token | Get cluster token by clusterId
 *DefaultAPI* | [**GetDeploymentStatusByDeploymentRequestId**](docs/DefaultAPI.md#getdeploymentstatusbydeploymentrequestid) | **Get** /environment/deploymentStatus | Get Deployment Status By DeploymentRequestId
 *DeploymentQueueActionsAPI* | [**CancelDeploymentRequest**](docs/DeploymentQueueActionsAPI.md#canceldeploymentrequest) | **Post** /deploymentQueue/{deploymentRequestId}/cancelDeployment | Cancel deployment request
@@ -651,6 +652,7 @@ Class | Method | HTTP request | Description
  - [ClusterLogsErrorEventDetailsTransmitter](docs/ClusterLogsErrorEventDetailsTransmitter.md)
  - [ClusterLogsErrorUnderlyingError](docs/ClusterLogsErrorUnderlyingError.md)
  - [ClusterLogsMessage](docs/ClusterLogsMessage.md)
+ - [ClusterLogsResponse](docs/ClusterLogsResponse.md)
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
  - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)

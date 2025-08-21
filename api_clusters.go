@@ -1327,18 +1327,19 @@ func (a *ClustersAPIService) GetClusterKubernetesEventsExecute(r ApiGetClusterKu
 }
 
 type ApiGetClusterMetricsRequest struct {
-	ctx             context.Context
-	ApiService      *ClustersAPIService
-	clusterId       string
-	endpoint        *string
-	query           *string
-	start           *string
-	end             *string
-	step            *string
-	time            *string
-	timeout         *string
-	dedup           *string
-	partialResponse *string
+	ctx                 context.Context
+	ApiService          *ClustersAPIService
+	clusterId           string
+	endpoint            *string
+	query               *string
+	start               *string
+	end                 *string
+	step                *string
+	time                *string
+	timeout             *string
+	dedup               *string
+	partialResponse     *string
+	maxSourceResolution *string
 }
 
 func (r ApiGetClusterMetricsRequest) Endpoint(endpoint string) ApiGetClusterMetricsRequest {
@@ -1383,6 +1384,11 @@ func (r ApiGetClusterMetricsRequest) Dedup(dedup string) ApiGetClusterMetricsReq
 
 func (r ApiGetClusterMetricsRequest) PartialResponse(partialResponse string) ApiGetClusterMetricsRequest {
 	r.partialResponse = &partialResponse
+	return r
+}
+
+func (r ApiGetClusterMetricsRequest) MaxSourceResolution(maxSourceResolution string) ApiGetClusterMetricsRequest {
+	r.maxSourceResolution = &maxSourceResolution
 	return r
 }
 
@@ -1458,6 +1464,9 @@ func (a *ClustersAPIService) GetClusterMetricsExecute(r ApiGetClusterMetricsRequ
 	}
 	if r.partialResponse != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "partial_response", r.partialResponse, "")
+	}
+	if r.maxSourceResolution != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "max_source_resolution", r.maxSourceResolution, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

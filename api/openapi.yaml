@@ -15790,6 +15790,13 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: max_source_resolution
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -16887,6 +16894,92 @@ paths:
       - Organization Main Calls
       x-stoplight:
         id: 2jm9tyqfhw4xf
+  /cluster/{clusterId}/logs:
+    get:
+      description: Fetch cluster logs
+      operationId: get-cluster-logs
+      parameters:
+      - explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: endpoint
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: query
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: end
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: since
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: step
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: interval
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: direction
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterLogsResponse'
+          description: Cluster Logs
+      summary: Fetch cluster logs
+      tags: []
+      x-stoplight:
+        id: eodcl3enjp2ax
 components:
   parameters:
     applicationId:
@@ -34195,6 +34288,18 @@ components:
       type: object
       x-stoplight:
         id: ynhtfa5yo20ee
+    ClusterLogsResponse:
+      example:
+        response: response
+      properties:
+        response:
+          type: string
+          x-stoplight:
+            id: 7vk339giarxht
+      title: ClusterLogsResponse
+      type: object
+      x-stoplight:
+        id: 93ntufnd3epke
     deleteMember_request:
       properties:
         user_id:
