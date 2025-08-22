@@ -16324,7 +16324,7 @@ paths:
       - Terraforms
       x-stoplight:
         id: qgpat08kc3wir
-  /api/environment/{environmentId}/link:
+  /environment/{environmentId}/link:
     get:
       operationId: listEnvironmentServicesLinks
       parameters:
@@ -16353,6 +16353,8 @@ paths:
       summary: List environment services links
       tags:
       - Environment
+      x-stoplight:
+        id: 94az7c0v1enav
   /terraform/{terraformId}:
     delete:
       operationId: deleteTerraform

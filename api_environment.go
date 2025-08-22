@@ -560,7 +560,7 @@ func (a *EnvironmentAPIService) ListEnvironmentServicesLinksExecute(r ApiListEnv
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/environment/{environmentId}/link"
+	localVarPath := localBasePath + "/environment/{environmentId}/link"
 	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
