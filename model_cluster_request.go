@@ -37,10 +37,10 @@ type ClusterRequest struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys                        []string                                   `json:"ssh_keys,omitempty"`
-	Features                       []ClusterRequestFeaturesInner              `json:"features,omitempty"`
-	MetricsParameters              *MetricsParameters                         `json:"metrics_parameters,omitempty"`
-	InfrastructureChartsParameters *ClusterInfrastructureNginxChartParameters `json:"infrastructure_charts_parameters,omitempty"`
+	SshKeys                        []string                               `json:"ssh_keys,omitempty"`
+	Features                       []ClusterRequestFeaturesInner          `json:"features,omitempty"`
+	MetricsParameters              *MetricsParameters                     `json:"metrics_parameters,omitempty"`
+	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -507,9 +507,9 @@ func (o *ClusterRequest) SetMetricsParameters(v MetricsParameters) {
 }
 
 // GetInfrastructureChartsParameters returns the InfrastructureChartsParameters field value if set, zero value otherwise.
-func (o *ClusterRequest) GetInfrastructureChartsParameters() ClusterInfrastructureNginxChartParameters {
+func (o *ClusterRequest) GetInfrastructureChartsParameters() ClusterInfrastructureChartsParameters {
 	if o == nil || IsNil(o.InfrastructureChartsParameters) {
-		var ret ClusterInfrastructureNginxChartParameters
+		var ret ClusterInfrastructureChartsParameters
 		return ret
 	}
 	return *o.InfrastructureChartsParameters
@@ -517,7 +517,7 @@ func (o *ClusterRequest) GetInfrastructureChartsParameters() ClusterInfrastructu
 
 // GetInfrastructureChartsParametersOk returns a tuple with the InfrastructureChartsParameters field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureNginxChartParameters, bool) {
+func (o *ClusterRequest) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureChartsParameters, bool) {
 	if o == nil || IsNil(o.InfrastructureChartsParameters) {
 		return nil, false
 	}
@@ -533,8 +533,8 @@ func (o *ClusterRequest) HasInfrastructureChartsParameters() bool {
 	return false
 }
 
-// SetInfrastructureChartsParameters gets a reference to the given ClusterInfrastructureNginxChartParameters and assigns it to the InfrastructureChartsParameters field.
-func (o *ClusterRequest) SetInfrastructureChartsParameters(v ClusterInfrastructureNginxChartParameters) {
+// SetInfrastructureChartsParameters gets a reference to the given ClusterInfrastructureChartsParameters and assigns it to the InfrastructureChartsParameters field.
+func (o *ClusterRequest) SetInfrastructureChartsParameters(v ClusterInfrastructureChartsParameters) {
 	o.InfrastructureChartsParameters = &v
 }
 

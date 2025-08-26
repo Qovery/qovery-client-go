@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterRequestFeaturesInner**](ClusterRequestFeaturesInner.md) |  | [optional] 
 **MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
-**InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureNginxChartParameters**](ClusterInfrastructureNginxChartParameters.md) |  | [optional] 
+**InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md) |  | [optional] 
 
 ## Methods
 
@@ -376,20 +376,20 @@ HasMetricsParameters returns a boolean if a field has been set.
 
 ### GetInfrastructureChartsParameters
 
-`func (o *ClusterRequest) GetInfrastructureChartsParameters() ClusterInfrastructureNginxChartParameters`
+`func (o *ClusterRequest) GetInfrastructureChartsParameters() ClusterInfrastructureChartsParameters`
 
 GetInfrastructureChartsParameters returns the InfrastructureChartsParameters field if non-nil, zero value otherwise.
 
 ### GetInfrastructureChartsParametersOk
 
-`func (o *ClusterRequest) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureNginxChartParameters, bool)`
+`func (o *ClusterRequest) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureChartsParameters, bool)`
 
 GetInfrastructureChartsParametersOk returns a tuple with the InfrastructureChartsParameters field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetInfrastructureChartsParameters
 
-`func (o *ClusterRequest) SetInfrastructureChartsParameters(v ClusterInfrastructureNginxChartParameters)`
+`func (o *ClusterRequest) SetInfrastructureChartsParameters(v ClusterInfrastructureChartsParameters)`
 
 SetInfrastructureChartsParameters sets InfrastructureChartsParameters field to given value.
 

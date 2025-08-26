@@ -638,6 +638,7 @@ Class | Method | HTTP request | Description
  - [ClusterFeatureResponseValueObject](docs/ClusterFeatureResponseValueObject.md)
  - [ClusterFeatureStringResponse](docs/ClusterFeatureStringResponse.md)
  - [ClusterInfrastructureCertManagerChartParameters](docs/ClusterInfrastructureCertManagerChartParameters.md)
+ - [ClusterInfrastructureChartsParameters](docs/ClusterInfrastructureChartsParameters.md)
  - [ClusterInfrastructureMetalLbChartParameters](docs/ClusterInfrastructureMetalLbChartParameters.md)
  - [ClusterInfrastructureNginxChartParameters](docs/ClusterInfrastructureNginxChartParameters.md)
  - [ClusterInstanceAttributes](docs/ClusterInstanceAttributes.md)

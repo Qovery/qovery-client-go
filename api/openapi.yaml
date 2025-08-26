@@ -19556,7 +19556,19 @@ components:
             value: value
         updated_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        infrastructure_charts_parameters: null
+        infrastructure_charts_parameters:
+          metalLb_parameters:
+            ip_address_pools:
+            - ip_address_pools
+            - ip_address_pools
+          nginx_parameters:
+            annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+            replica_count: 0
+            annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+            default_ssl_certificate: default_ssl_certificate
+            publish_status_address: publish_status_address
+          cert_manager_parameters:
+            kubernetes_namespace: kubernetes_namespace
         max_running_nodes: 6
         min_running_nodes: 0
         disk_size: 50
@@ -20245,11 +20257,18 @@ components:
       example:
         kubernetes: MANAGED
         infrastructure_charts_parameters:
-          annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
-          replica_count: 0
-          annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
-          default_ssl_certificate: default_ssl_certificate
-          publish_status_address: publish_status_address
+          metalLb_parameters:
+            ip_address_pools:
+            - ip_address_pools
+            - ip_address_pools
+          nginx_parameters:
+            annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+            replica_count: 0
+            annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+            default_ssl_certificate: default_ssl_certificate
+            publish_status_address: publish_status_address
+          cert_manager_parameters:
+            kubernetes_namespace: kubernetes_namespace
         production: true
         max_running_nodes: 6
         description: description
@@ -20324,7 +20343,7 @@ components:
         metrics_parameters:
           $ref: '#/components/schemas/MetricsParameters'
         infrastructure_charts_parameters:
-          $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
+          $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
       required:
       - cloud_provider
       - name
@@ -20383,7 +20402,19 @@ components:
               value: value
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          infrastructure_charts_parameters: null
+          infrastructure_charts_parameters:
+            metalLb_parameters:
+              ip_address_pools:
+              - ip_address_pools
+              - ip_address_pools
+            nginx_parameters:
+              annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+              replica_count: 0
+              annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+              default_ssl_certificate: default_ssl_certificate
+              publish_status_address: publish_status_address
+            cert_manager_parameters:
+              kubernetes_namespace: kubernetes_namespace
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -20456,7 +20487,19 @@ components:
               value: value
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          infrastructure_charts_parameters: null
+          infrastructure_charts_parameters:
+            metalLb_parameters:
+              ip_address_pools:
+              - ip_address_pools
+              - ip_address_pools
+            nginx_parameters:
+              annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+              replica_count: 0
+              annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+              default_ssl_certificate: default_ssl_certificate
+              publish_status_address: publish_status_address
+            cert_manager_parameters:
+              kubernetes_namespace: kubernetes_namespace
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -34332,7 +34375,27 @@ components:
       x-stoplight:
         id: 93ntufnd3epke
     ClusterInfrastructureChartsParameters:
-      $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
+      example:
+        metalLb_parameters:
+          ip_address_pools:
+          - ip_address_pools
+          - ip_address_pools
+        nginx_parameters:
+          annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+          replica_count: 0
+          annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+          default_ssl_certificate: default_ssl_certificate
+          publish_status_address: publish_status_address
+        cert_manager_parameters:
+          kubernetes_namespace: kubernetes_namespace
+      properties:
+        nginx_parameters:
+          $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
+        cert_manager_parameters:
+          $ref: '#/components/schemas/ClusterInfrastructureCertManagerChartParameters'
+        metalLb_parameters:
+          $ref: '#/components/schemas/ClusterInfrastructureMetalLbChartParameters'
+      type: object
     ClusterInfrastructureNginxChartParameters:
       example:
         annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -34367,6 +34430,8 @@ components:
       x-stoplight:
         id: c9r0h8ey6ugzr
     ClusterInfrastructureCertManagerChartParameters:
+      example:
+        kubernetes_namespace: kubernetes_namespace
       properties:
         kubernetes_namespace:
           type: string
@@ -34377,6 +34442,10 @@ components:
       x-stoplight:
         id: xsidu7mikkhq3
     ClusterInfrastructureMetalLbChartParameters:
+      example:
+        ip_address_pools:
+        - ip_address_pools
+        - ip_address_pools
       properties:
         ip_address_pools:
           items:
