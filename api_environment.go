@@ -532,6 +532,8 @@ func (r ApiListEnvironmentServicesLinksRequest) Execute() (*LinkResponseList, *h
 /*
 ListEnvironmentServicesLinks List environment services links
 
+List services links of an environment
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentId Environment ID
 	@return ApiListEnvironmentServicesLinksRequest
