@@ -53,12 +53,13 @@ type Cluster struct {
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
-	SshKeys               []string                     `json:"ssh_keys,omitempty"`
-	Features              []ClusterFeatureResponse     `json:"features,omitempty"`
-	DeploymentStatus      *ClusterDeploymentStatusEnum `json:"deployment_status,omitempty"`
-	MetricsParameters     *MetricsParameters           `json:"metrics_parameters,omitempty"`
-	InfrastructureOutputs *InfrastructureOutputs       `json:"infrastructure_outputs,omitempty"`
-	AdditionalProperties  map[string]interface{}
+	SshKeys                        []string                                   `json:"ssh_keys,omitempty"`
+	Features                       []ClusterFeatureResponse                   `json:"features,omitempty"`
+	DeploymentStatus               *ClusterDeploymentStatusEnum               `json:"deployment_status,omitempty"`
+	MetricsParameters              *MetricsParameters                         `json:"metrics_parameters,omitempty"`
+	InfrastructureOutputs          *InfrastructureOutputs                     `json:"infrastructure_outputs,omitempty"`
+	InfrastructureChartsParameters *ClusterInfrastructureNginxChartParameters `json:"infrastructure_charts_parameters,omitempty"`
+	AdditionalProperties           map[string]interface{}
 }
 
 type _Cluster Cluster
@@ -918,6 +919,38 @@ func (o *Cluster) SetInfrastructureOutputs(v InfrastructureOutputs) {
 	o.InfrastructureOutputs = &v
 }
 
+// GetInfrastructureChartsParameters returns the InfrastructureChartsParameters field value if set, zero value otherwise.
+func (o *Cluster) GetInfrastructureChartsParameters() ClusterInfrastructureNginxChartParameters {
+	if o == nil || IsNil(o.InfrastructureChartsParameters) {
+		var ret ClusterInfrastructureNginxChartParameters
+		return ret
+	}
+	return *o.InfrastructureChartsParameters
+}
+
+// GetInfrastructureChartsParametersOk returns a tuple with the InfrastructureChartsParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureNginxChartParameters, bool) {
+	if o == nil || IsNil(o.InfrastructureChartsParameters) {
+		return nil, false
+	}
+	return o.InfrastructureChartsParameters, true
+}
+
+// HasInfrastructureChartsParameters returns a boolean if a field has been set.
+func (o *Cluster) HasInfrastructureChartsParameters() bool {
+	if o != nil && !IsNil(o.InfrastructureChartsParameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetInfrastructureChartsParameters gets a reference to the given ClusterInfrastructureNginxChartParameters and assigns it to the InfrastructureChartsParameters field.
+func (o *Cluster) SetInfrastructureChartsParameters(v ClusterInfrastructureNginxChartParameters) {
+	o.InfrastructureChartsParameters = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -997,6 +1030,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InfrastructureOutputs) {
 		toSerialize["infrastructure_outputs"] = o.InfrastructureOutputs
 	}
+	if !IsNil(o.InfrastructureChartsParameters) {
+		toSerialize["infrastructure_charts_parameters"] = o.InfrastructureChartsParameters
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1072,6 +1108,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "deployment_status")
 		delete(additionalProperties, "metrics_parameters")
 		delete(additionalProperties, "infrastructure_outputs")
+		delete(additionalProperties, "infrastructure_charts_parameters")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **DeploymentStatus** | Pointer to [**ClusterDeploymentStatusEnum**](ClusterDeploymentStatusEnum.md) |  | [optional] 
 **MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
 **InfrastructureOutputs** | Pointer to [**InfrastructureOutputs**](InfrastructureOutputs.md) |  | [optional] 
+**InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureNginxChartParameters**](ClusterInfrastructureNginxChartParameters.md) |  | [optional] 
 
 ## Methods
 
@@ -695,6 +696,31 @@ SetInfrastructureOutputs sets InfrastructureOutputs field to given value.
 `func (o *Cluster) HasInfrastructureOutputs() bool`
 
 HasInfrastructureOutputs returns a boolean if a field has been set.
+
+### GetInfrastructureChartsParameters
+
+`func (o *Cluster) GetInfrastructureChartsParameters() ClusterInfrastructureNginxChartParameters`
+
+GetInfrastructureChartsParameters returns the InfrastructureChartsParameters field if non-nil, zero value otherwise.
+
+### GetInfrastructureChartsParametersOk
+
+`func (o *Cluster) GetInfrastructureChartsParametersOk() (*ClusterInfrastructureNginxChartParameters, bool)`
+
+GetInfrastructureChartsParametersOk returns a tuple with the InfrastructureChartsParameters field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetInfrastructureChartsParameters
+
+`func (o *Cluster) SetInfrastructureChartsParameters(v ClusterInfrastructureNginxChartParameters)`
+
+SetInfrastructureChartsParameters sets InfrastructureChartsParameters field to given value.
+
+### HasInfrastructureChartsParameters
+
+`func (o *Cluster) HasInfrastructureChartsParameters() bool`
+
+HasInfrastructureChartsParameters returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

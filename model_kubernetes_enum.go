@@ -21,14 +21,16 @@ type KubernetesEnum string
 
 // List of KubernetesEnum
 const (
-	KUBERNETESENUM_MANAGED      KubernetesEnum = "MANAGED"
-	KUBERNETESENUM_SELF_MANAGED KubernetesEnum = "SELF_MANAGED"
+	KUBERNETESENUM_MANAGED           KubernetesEnum = "MANAGED"
+	KUBERNETESENUM_SELF_MANAGED      KubernetesEnum = "SELF_MANAGED"
+	KUBERNETESENUM_PARTIALLY_MANAGED KubernetesEnum = "PARTIALLY_MANAGED"
 )
 
 // All allowed values of KubernetesEnum enum
 var AllowedKubernetesEnumEnumValues = []KubernetesEnum{
 	"MANAGED",
 	"SELF_MANAGED",
+	"PARTIALLY_MANAGED",
 }
 
 func (v *KubernetesEnum) UnmarshalJSON(src []byte) error {

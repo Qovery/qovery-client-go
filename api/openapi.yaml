@@ -19496,6 +19496,8 @@ components:
             $ref: '#/components/schemas/MetricsParameters'
           infrastructure_outputs:
             $ref: '#/components/schemas/InfrastructureOutputs'
+          infrastructure_charts_parameters:
+            $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
         required:
         - cloud_provider
         - name
@@ -19553,6 +19555,7 @@ components:
             value: value
         updated_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        infrastructure_charts_parameters: null
         max_running_nodes: 6
         min_running_nodes: 0
         disk_size: 50
@@ -20240,6 +20243,12 @@ components:
     ClusterRequest:
       example:
         kubernetes: MANAGED
+        infrastructure_charts_parameters:
+          annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+          replica_count: 0
+          annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+          default_ssl_certificate: default_ssl_certificate
+          publish_status_address: publish_status_address
         production: true
         max_running_nodes: 6
         description: description
@@ -20313,6 +20322,8 @@ components:
           type: array
         metrics_parameters:
           $ref: '#/components/schemas/MetricsParameters'
+        infrastructure_charts_parameters:
+          $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
       required:
       - cloud_provider
       - name
@@ -20371,6 +20382,7 @@ components:
               value: value
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          infrastructure_charts_parameters: null
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -20443,6 +20455,7 @@ components:
               value: value
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          infrastructure_charts_parameters: null
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -28543,6 +28556,7 @@ components:
       enum:
       - MANAGED
       - SELF_MANAGED
+      - PARTIALLY_MANAGED
       type: string
     Link:
       example:
@@ -34316,6 +34330,65 @@ components:
       type: object
       x-stoplight:
         id: 93ntufnd3epke
+    ClusterInfrastructureChartsParameters:
+      $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
+    ClusterInfrastructureNginxChartParameters:
+      example:
+        annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
+        replica_count: 0
+        annotation_external_dns_kubernetes_target: annotation_external_dns_kubernetes_target
+        default_ssl_certificate: default_ssl_certificate
+        publish_status_address: publish_status_address
+      properties:
+        replica_count:
+          minimum: 0
+          type: integer
+          x-stoplight:
+            id: zdwoxwir7ygnw
+        default_ssl_certificate:
+          type: string
+          x-stoplight:
+            id: z1l1xmwud3yjq
+        publish_status_address:
+          type: string
+          x-stoplight:
+            id: da9klqdcxew6n
+        annotation_metal_lb_load_balancer_ips:
+          type: string
+          x-stoplight:
+            id: 4ji26purdr956
+        annotation_external_dns_kubernetes_target:
+          type: string
+          x-stoplight:
+            id: ytwsmm8mzre3g
+      title: ClusterInfrastructureNginxChartParameters
+      type: object
+      x-stoplight:
+        id: c9r0h8ey6ugzr
+    ClusterInfrastructureCertManagerChartParameters:
+      properties:
+        kubernetes_namespace:
+          type: string
+          x-stoplight:
+            id: y5txd86avhe6j
+      title: InfrastructureCertManagerChartParameters
+      type: object
+      x-stoplight:
+        id: xsidu7mikkhq3
+    ClusterInfrastructureMetalLbChartParameters:
+      properties:
+        ip_address_pools:
+          items:
+            type: string
+            x-stoplight:
+              id: lstjwwfo9ys6i
+          type: array
+          x-stoplight:
+            id: sfxtfy7n1uddw
+      title: InfrastructureMetalLbChartParameters
+      type: object
+      x-stoplight:
+        id: evxswes22ykhd
     deleteMember_request:
       properties:
         user_id:
