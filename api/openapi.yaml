@@ -19557,10 +19557,6 @@ components:
         updated_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         infrastructure_charts_parameters:
-          metalLb_parameters:
-            ip_address_pools:
-            - ip_address_pools
-            - ip_address_pools
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
             replica_count: 0
@@ -19569,6 +19565,10 @@ components:
             publish_status_address: publish_status_address
           cert_manager_parameters:
             kubernetes_namespace: kubernetes_namespace
+          metal_lb_parameters:
+            ip_address_pools:
+            - ip_address_pools
+            - ip_address_pools
         max_running_nodes: 6
         min_running_nodes: 0
         disk_size: 50
@@ -20257,10 +20257,6 @@ components:
       example:
         kubernetes: MANAGED
         infrastructure_charts_parameters:
-          metalLb_parameters:
-            ip_address_pools:
-            - ip_address_pools
-            - ip_address_pools
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
             replica_count: 0
@@ -20269,6 +20265,10 @@ components:
             publish_status_address: publish_status_address
           cert_manager_parameters:
             kubernetes_namespace: kubernetes_namespace
+          metal_lb_parameters:
+            ip_address_pools:
+            - ip_address_pools
+            - ip_address_pools
         production: true
         max_running_nodes: 6
         description: description
@@ -20403,10 +20403,6 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
-            metalLb_parameters:
-              ip_address_pools:
-              - ip_address_pools
-              - ip_address_pools
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
               replica_count: 0
@@ -20415,6 +20411,10 @@ components:
               publish_status_address: publish_status_address
             cert_manager_parameters:
               kubernetes_namespace: kubernetes_namespace
+            metal_lb_parameters:
+              ip_address_pools:
+              - ip_address_pools
+              - ip_address_pools
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -20488,10 +20488,6 @@ components:
           updated_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
-            metalLb_parameters:
-              ip_address_pools:
-              - ip_address_pools
-              - ip_address_pools
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
               replica_count: 0
@@ -20500,6 +20496,10 @@ components:
               publish_status_address: publish_status_address
             cert_manager_parameters:
               kubernetes_namespace: kubernetes_namespace
+            metal_lb_parameters:
+              ip_address_pools:
+              - ip_address_pools
+              - ip_address_pools
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -34376,10 +34376,6 @@ components:
         id: 93ntufnd3epke
     ClusterInfrastructureChartsParameters:
       example:
-        metalLb_parameters:
-          ip_address_pools:
-          - ip_address_pools
-          - ip_address_pools
         nginx_parameters:
           annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
           replica_count: 0
@@ -34388,12 +34384,16 @@ components:
           publish_status_address: publish_status_address
         cert_manager_parameters:
           kubernetes_namespace: kubernetes_namespace
+        metal_lb_parameters:
+          ip_address_pools:
+          - ip_address_pools
+          - ip_address_pools
       properties:
         nginx_parameters:
           $ref: '#/components/schemas/ClusterInfrastructureNginxChartParameters'
         cert_manager_parameters:
           $ref: '#/components/schemas/ClusterInfrastructureCertManagerChartParameters'
-        metalLb_parameters:
+        metal_lb_parameters:
           $ref: '#/components/schemas/ClusterInfrastructureMetalLbChartParameters'
       type: object
     ClusterInfrastructureNginxChartParameters:

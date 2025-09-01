@@ -22,7 +22,7 @@ var _ MappedNullable = &ClusterInfrastructureChartsParameters{}
 type ClusterInfrastructureChartsParameters struct {
 	NginxParameters       *ClusterInfrastructureNginxChartParameters       `json:"nginx_parameters,omitempty"`
 	CertManagerParameters *ClusterInfrastructureCertManagerChartParameters `json:"cert_manager_parameters,omitempty"`
-	MetalLbParameters     *ClusterInfrastructureMetalLbChartParameters     `json:"metalLb_parameters,omitempty"`
+	MetalLbParameters     *ClusterInfrastructureMetalLbChartParameters     `json:"metal_lb_parameters,omitempty"`
 	AdditionalProperties  map[string]interface{}
 }
 
@@ -158,7 +158,7 @@ func (o ClusterInfrastructureChartsParameters) ToMap() (map[string]interface{}, 
 		toSerialize["cert_manager_parameters"] = o.CertManagerParameters
 	}
 	if !IsNil(o.MetalLbParameters) {
-		toSerialize["metalLb_parameters"] = o.MetalLbParameters
+		toSerialize["metal_lb_parameters"] = o.MetalLbParameters
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -184,7 +184,7 @@ func (o *ClusterInfrastructureChartsParameters) UnmarshalJSON(data []byte) (err 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "nginx_parameters")
 		delete(additionalProperties, "cert_manager_parameters")
-		delete(additionalProperties, "metalLb_parameters")
+		delete(additionalProperties, "metal_lb_parameters")
 		o.AdditionalProperties = additionalProperties
 	}
 
