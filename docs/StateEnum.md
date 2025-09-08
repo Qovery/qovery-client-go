@@ -27,6 +27,8 @@
 
 * `DEPLOYMENT_QUEUED` (value: `"DEPLOYMENT_QUEUED"`)
 
+* `EXECUTING` (value: `"EXECUTING"`)
+
 * `QUEUED` (value: `"QUEUED"`)
 
 * `READY` (value: `"READY"`)

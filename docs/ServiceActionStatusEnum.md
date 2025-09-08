@@ -11,6 +11,8 @@
 
 * `ERROR` (value: `"ERROR"`)
 
+* `EXECUTING` (value: `"EXECUTING"`)
+
 * `CANCELED` (value: `"CANCELED"`)
 
 * `CANCELING` (value: `"CANCELING"`)
