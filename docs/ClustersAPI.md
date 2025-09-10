@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
+[**GetClusterLogs**](ClustersAPI.md#GetClusterLogs) | **Get** /cluster/{clusterId}/logs | Fetch cluster logs
 [**GetClusterMetrics**](ClustersAPI.md#GetClusterMetrics) | **Get** /cluster/{clusterId}/metrics | Fetch cluster metrics
 [**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
@@ -754,6 +755,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetClusterKubernetesEvents200Response**](GetClusterKubernetesEvents200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterLogs
+
+> ClusterLogsResponse GetClusterLogs(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Execute()
+
+Fetch cluster logs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "clusterId_example" // string | 
+	endpoint := "endpoint_example" // string | 
+	query := "query_example" // string | 
+	start := "start_example" // string |  (optional)
+	end := "end_example" // string |  (optional)
+	limit := "limit_example" // string |  (optional)
+	since := "since_example" // string |  (optional)
+	step := "step_example" // string |  (optional)
+	interval := "interval_example" // string |  (optional)
+	direction := "direction_example" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetClusterLogs(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterLogs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterLogs`: ClusterLogsResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterLogs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterLogsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **endpoint** | **string** |  | 
+ **query** | **string** |  | 
+ **start** | **string** |  | 
+ **end** | **string** |  | 
+ **limit** | **string** |  | 
+ **since** | **string** |  | 
+ **step** | **string** |  | 
+ **interval** | **string** |  | 
+ **direction** | **string** |  | 
+
+### Return type
+
+[**ClusterLogsResponse**](ClusterLogsResponse.md)
 
 ### Authorization
 

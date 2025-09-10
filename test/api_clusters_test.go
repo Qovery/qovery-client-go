@@ -168,6 +168,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService GetClusterLogs", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.GetClusterLogs(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService GetClusterMetrics", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

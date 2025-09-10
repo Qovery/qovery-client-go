@@ -16994,7 +16994,8 @@ paths:
                 $ref: '#/components/schemas/ClusterLogsResponse'
           description: Cluster Logs
       summary: Fetch cluster logs
-      tags: []
+      tags:
+      - Clusters
       x-stoplight:
         id: eodcl3enjp2ax
 components:
