@@ -23,6 +23,7 @@ type TerraformDeployRequest struct {
 	// Commit to deploy for chart source.
 	GitCommitId          *string `json:"git_commit_id,omitempty"`
 	DryRun               *bool   `json:"dry_run,omitempty"`
+	ForceUnlockState     *bool   `json:"force_unlock_state,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -109,6 +110,38 @@ func (o *TerraformDeployRequest) SetDryRun(v bool) {
 	o.DryRun = &v
 }
 
+// GetForceUnlockState returns the ForceUnlockState field value if set, zero value otherwise.
+func (o *TerraformDeployRequest) GetForceUnlockState() bool {
+	if o == nil || IsNil(o.ForceUnlockState) {
+		var ret bool
+		return ret
+	}
+	return *o.ForceUnlockState
+}
+
+// GetForceUnlockStateOk returns a tuple with the ForceUnlockState field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformDeployRequest) GetForceUnlockStateOk() (*bool, bool) {
+	if o == nil || IsNil(o.ForceUnlockState) {
+		return nil, false
+	}
+	return o.ForceUnlockState, true
+}
+
+// HasForceUnlockState returns a boolean if a field has been set.
+func (o *TerraformDeployRequest) HasForceUnlockState() bool {
+	if o != nil && !IsNil(o.ForceUnlockState) {
+		return true
+	}
+
+	return false
+}
+
+// SetForceUnlockState gets a reference to the given bool and assigns it to the ForceUnlockState field.
+func (o *TerraformDeployRequest) SetForceUnlockState(v bool) {
+	o.ForceUnlockState = &v
+}
+
 func (o TerraformDeployRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -124,6 +157,9 @@ func (o TerraformDeployRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DryRun) {
 		toSerialize["dry_run"] = o.DryRun
+	}
+	if !IsNil(o.ForceUnlockState) {
+		toSerialize["force_unlock_state"] = o.ForceUnlockState
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +185,7 @@ func (o *TerraformDeployRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "git_commit_id")
 		delete(additionalProperties, "dry_run")
+		delete(additionalProperties, "force_unlock_state")
 		o.AdditionalProperties = additionalProperties
 	}
 

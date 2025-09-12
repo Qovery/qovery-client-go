@@ -34210,6 +34210,7 @@ components:
     TerraformDeployRequest:
       example:
         git_commit_id: git_commit_id
+        force_unlock_state: true
         dry_run: true
       properties:
         git_commit_id:
@@ -34217,6 +34218,8 @@ components:
             Commit to deploy for chart source.
           type: string
         dry_run:
+          type: boolean
+        force_unlock_state:
           type: boolean
       type: object
     TerraformDeploymentRestrictionRequest:

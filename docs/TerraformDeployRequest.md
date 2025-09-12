@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GitCommitId** | Pointer to **string** | Commit to deploy for chart source.  | [optional] 
 **DryRun** | Pointer to **bool** |  | [optional] 
+**ForceUnlockState** | Pointer to **bool** |  | [optional] 
 
 ## Methods
 
@@ -75,6 +76,31 @@ SetDryRun sets DryRun field to given value.
 `func (o *TerraformDeployRequest) HasDryRun() bool`
 
 HasDryRun returns a boolean if a field has been set.
+
+### GetForceUnlockState
+
+`func (o *TerraformDeployRequest) GetForceUnlockState() bool`
+
+GetForceUnlockState returns the ForceUnlockState field if non-nil, zero value otherwise.
+
+### GetForceUnlockStateOk
+
+`func (o *TerraformDeployRequest) GetForceUnlockStateOk() (*bool, bool)`
+
+GetForceUnlockStateOk returns a tuple with the ForceUnlockState field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetForceUnlockState
+
+`func (o *TerraformDeployRequest) SetForceUnlockState(v bool)`
+
+SetForceUnlockState sets ForceUnlockState field to given value.
+
+### HasForceUnlockState
+
+`func (o *TerraformDeployRequest) HasForceUnlockState() bool`
+
+HasForceUnlockState returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
