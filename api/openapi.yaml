@@ -33667,11 +33667,11 @@ components:
             key: key
         auto_deploy: true
         job_resources:
-          cpu_milli: 0
-          ram_mib: 6
-          storage_gib: 1
+          cpu_milli: 6
+          ram_mib: 1
+          storage_gib: 5
         provider: TERRAFORM
-        timeout_sec: timeout_sec
+        timeout_sec: 0
         use_cluster_credentials: true
         name: name
         description: description
@@ -33716,7 +33716,7 @@ components:
         provider_version:
           $ref: '#/components/schemas/TerraformProviderVersion'
         timeout_sec:
-          type: string
+          type: integer
           x-stoplight:
             id: 3e5ngsw45atsd
         icon_uri:
@@ -33848,9 +33848,9 @@ components:
               git_token_name: git_token_name
     TerraformRequestJobResources:
       example:
-        cpu_milli: 0
-        ram_mib: 6
-        storage_gib: 1
+        cpu_milli: 6
+        ram_mib: 1
+        storage_gib: 5
       properties:
         cpu_milli:
           type: integer

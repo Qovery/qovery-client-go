@@ -29,7 +29,7 @@ type TerraformRequest struct {
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
 	Provider                 string                               `json:"provider"`
 	ProviderVersion          TerraformProviderVersion             `json:"provider_version"`
-	TimeoutSec               *string                              `json:"timeout_sec,omitempty"`
+	TimeoutSec               *int32                               `json:"timeout_sec,omitempty"`
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
 	JobResources             TerraformRequestJobResources         `json:"job_resources"`
 	UseClusterCredentials    *bool                                `json:"use_cluster_credentials,omitempty"`
@@ -257,9 +257,9 @@ func (o *TerraformRequest) SetProviderVersion(v TerraformProviderVersion) {
 }
 
 // GetTimeoutSec returns the TimeoutSec field value if set, zero value otherwise.
-func (o *TerraformRequest) GetTimeoutSec() string {
+func (o *TerraformRequest) GetTimeoutSec() int32 {
 	if o == nil || IsNil(o.TimeoutSec) {
-		var ret string
+		var ret int32
 		return ret
 	}
 	return *o.TimeoutSec
@@ -267,7 +267,7 @@ func (o *TerraformRequest) GetTimeoutSec() string {
 
 // GetTimeoutSecOk returns a tuple with the TimeoutSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetTimeoutSecOk() (*string, bool) {
+func (o *TerraformRequest) GetTimeoutSecOk() (*int32, bool) {
 	if o == nil || IsNil(o.TimeoutSec) {
 		return nil, false
 	}
@@ -283,8 +283,8 @@ func (o *TerraformRequest) HasTimeoutSec() bool {
 	return false
 }
 
-// SetTimeoutSec gets a reference to the given string and assigns it to the TimeoutSec field.
-func (o *TerraformRequest) SetTimeoutSec(v string) {
+// SetTimeoutSec gets a reference to the given int32 and assigns it to the TimeoutSec field.
+func (o *TerraformRequest) SetTimeoutSec(v int32) {
 	o.TimeoutSec = &v
 }
 

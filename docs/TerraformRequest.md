@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **Provider** | **string** |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
-**TimeoutSec** | Pointer to **string** |  | [optional] 
+**TimeoutSec** | Pointer to **int32** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
 **JobResources** | [**TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
 **UseClusterCredentials** | Pointer to **bool** |  | [optional] 
@@ -198,20 +198,20 @@ SetProviderVersion sets ProviderVersion field to given value.
 
 ### GetTimeoutSec
 
-`func (o *TerraformRequest) GetTimeoutSec() string`
+`func (o *TerraformRequest) GetTimeoutSec() int32`
 
 GetTimeoutSec returns the TimeoutSec field if non-nil, zero value otherwise.
 
 ### GetTimeoutSecOk
 
-`func (o *TerraformRequest) GetTimeoutSecOk() (*string, bool)`
+`func (o *TerraformRequest) GetTimeoutSecOk() (*int32, bool)`
 
 GetTimeoutSecOk returns a tuple with the TimeoutSec field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTimeoutSec
 
-`func (o *TerraformRequest) SetTimeoutSec(v string)`
+`func (o *TerraformRequest) SetTimeoutSec(v int32)`
 
 SetTimeoutSec sets TimeoutSec field to given value.
 
