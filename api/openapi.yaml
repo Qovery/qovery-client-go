@@ -31824,7 +31824,8 @@ components:
         \ code.\n- DEPLOYMENT_QUEUEING: The queuing time preceding the actual deployment\
         \ step.\n- DEPLOYMENT: The step to deploy the service. \n- ROUTER_DEPLOYMENT:\
         \ The step to deploy the router. \n- MIRROR_IMAGE: The step to mirror the\
-        \ image to the private registry.\n"
+        \ image to the private registry.\n- EXECUTING: The step to execute a job or\
+        \ terraform apply.\n"
       enum:
       - REGISTRY_CREATE_REPOSITORY
       - GIT_CLONE
@@ -31834,6 +31835,7 @@ components:
       - DEPLOYMENT
       - ROUTER_DEPLOYMENT
       - MIRROR_IMAGE
+      - EXECUTING
       type: string
     OrganizationJobAutoDeployRequest:
       example:
