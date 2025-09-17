@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ReadFromTerraformBlock** | **bool** |  | 
-**ExplicitVersion** | Pointer to **string** |  | [optional] 
+**ReadFromTerraformBlock** | Pointer to **bool** |  | [optional] 
+**ExplicitVersion** | **string** |  | 
 
 ## Methods
 
 ### NewTerraformProviderVersion
 
-`func NewTerraformProviderVersion(readFromTerraformBlock bool, ) *TerraformProviderVersion`
+`func NewTerraformProviderVersion(explicitVersion string, ) *TerraformProviderVersion`
 
 NewTerraformProviderVersion instantiates a new TerraformProviderVersion object
 This constructor will assign default values to properties that have it defined,
@@ -45,6 +45,11 @@ and a boolean to check if the value has been set.
 
 SetReadFromTerraformBlock sets ReadFromTerraformBlock field to given value.
 
+### HasReadFromTerraformBlock
+
+`func (o *TerraformProviderVersion) HasReadFromTerraformBlock() bool`
+
+HasReadFromTerraformBlock returns a boolean if a field has been set.
 
 ### GetExplicitVersion
 
@@ -65,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetExplicitVersion sets ExplicitVersion field to given value.
 
-### HasExplicitVersion
-
-`func (o *TerraformProviderVersion) HasExplicitVersion() bool`
-
-HasExplicitVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

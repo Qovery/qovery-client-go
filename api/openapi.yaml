@@ -33893,7 +33893,7 @@ components:
           x-stoplight:
             id: 611hxcvuy68lv
       required:
-      - read_from_terraform_block
+      - explicit_version
       title: TerraformProviderVersion
       type: object
       x-stoplight:

@@ -21,8 +21,8 @@ var _ MappedNullable = &TerraformProviderVersion{}
 
 // TerraformProviderVersion struct for TerraformProviderVersion
 type TerraformProviderVersion struct {
-	ReadFromTerraformBlock bool    `json:"read_from_terraform_block"`
-	ExplicitVersion        *string `json:"explicit_version,omitempty"`
+	ReadFromTerraformBlock *bool  `json:"read_from_terraform_block,omitempty"`
+	ExplicitVersion        string `json:"explicit_version"`
 	AdditionalProperties   map[string]interface{}
 }
 
@@ -32,9 +32,9 @@ type _TerraformProviderVersion TerraformProviderVersion
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformProviderVersion(readFromTerraformBlock bool) *TerraformProviderVersion {
+func NewTerraformProviderVersion(explicitVersion string) *TerraformProviderVersion {
 	this := TerraformProviderVersion{}
-	this.ReadFromTerraformBlock = readFromTerraformBlock
+	this.ExplicitVersion = explicitVersion
 	return &this
 }
 
@@ -46,60 +46,60 @@ func NewTerraformProviderVersionWithDefaults() *TerraformProviderVersion {
 	return &this
 }
 
-// GetReadFromTerraformBlock returns the ReadFromTerraformBlock field value
+// GetReadFromTerraformBlock returns the ReadFromTerraformBlock field value if set, zero value otherwise.
 func (o *TerraformProviderVersion) GetReadFromTerraformBlock() bool {
-	if o == nil {
+	if o == nil || IsNil(o.ReadFromTerraformBlock) {
 		var ret bool
 		return ret
 	}
-
-	return o.ReadFromTerraformBlock
+	return *o.ReadFromTerraformBlock
 }
 
-// GetReadFromTerraformBlockOk returns a tuple with the ReadFromTerraformBlock field value
+// GetReadFromTerraformBlockOk returns a tuple with the ReadFromTerraformBlock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformProviderVersion) GetReadFromTerraformBlockOk() (*bool, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ReadFromTerraformBlock) {
 		return nil, false
 	}
-	return &o.ReadFromTerraformBlock, true
+	return o.ReadFromTerraformBlock, true
 }
 
-// SetReadFromTerraformBlock sets field value
-func (o *TerraformProviderVersion) SetReadFromTerraformBlock(v bool) {
-	o.ReadFromTerraformBlock = v
-}
-
-// GetExplicitVersion returns the ExplicitVersion field value if set, zero value otherwise.
-func (o *TerraformProviderVersion) GetExplicitVersion() string {
-	if o == nil || IsNil(o.ExplicitVersion) {
-		var ret string
-		return ret
-	}
-	return *o.ExplicitVersion
-}
-
-// GetExplicitVersionOk returns a tuple with the ExplicitVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TerraformProviderVersion) GetExplicitVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.ExplicitVersion) {
-		return nil, false
-	}
-	return o.ExplicitVersion, true
-}
-
-// HasExplicitVersion returns a boolean if a field has been set.
-func (o *TerraformProviderVersion) HasExplicitVersion() bool {
-	if o != nil && !IsNil(o.ExplicitVersion) {
+// HasReadFromTerraformBlock returns a boolean if a field has been set.
+func (o *TerraformProviderVersion) HasReadFromTerraformBlock() bool {
+	if o != nil && !IsNil(o.ReadFromTerraformBlock) {
 		return true
 	}
 
 	return false
 }
 
-// SetExplicitVersion gets a reference to the given string and assigns it to the ExplicitVersion field.
+// SetReadFromTerraformBlock gets a reference to the given bool and assigns it to the ReadFromTerraformBlock field.
+func (o *TerraformProviderVersion) SetReadFromTerraformBlock(v bool) {
+	o.ReadFromTerraformBlock = &v
+}
+
+// GetExplicitVersion returns the ExplicitVersion field value
+func (o *TerraformProviderVersion) GetExplicitVersion() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ExplicitVersion
+}
+
+// GetExplicitVersionOk returns a tuple with the ExplicitVersion field value
+// and a boolean to check if the value has been set.
+func (o *TerraformProviderVersion) GetExplicitVersionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExplicitVersion, true
+}
+
+// SetExplicitVersion sets field value
 func (o *TerraformProviderVersion) SetExplicitVersion(v string) {
-	o.ExplicitVersion = &v
+	o.ExplicitVersion = v
 }
 
 func (o TerraformProviderVersion) MarshalJSON() ([]byte, error) {
@@ -112,10 +112,10 @@ func (o TerraformProviderVersion) MarshalJSON() ([]byte, error) {
 
 func (o TerraformProviderVersion) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["read_from_terraform_block"] = o.ReadFromTerraformBlock
-	if !IsNil(o.ExplicitVersion) {
-		toSerialize["explicit_version"] = o.ExplicitVersion
+	if !IsNil(o.ReadFromTerraformBlock) {
+		toSerialize["read_from_terraform_block"] = o.ReadFromTerraformBlock
 	}
+	toSerialize["explicit_version"] = o.ExplicitVersion
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -129,7 +129,7 @@ func (o *TerraformProviderVersion) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"read_from_terraform_block",
+		"explicit_version",
 	}
 
 	allProperties := make(map[string]interface{})
