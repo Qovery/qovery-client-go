@@ -1543,6 +1543,10 @@ type ApiGetClusterMetricsRequest struct {
 	maxSourceResolution *string
 	engine              *string
 	analyze             *string
+	boardShortName      *string
+	metricShortName     *string
+	traceId             *string
+	range_              *string
 }
 
 func (r ApiGetClusterMetricsRequest) Endpoint(endpoint string) ApiGetClusterMetricsRequest {
@@ -1602,6 +1606,26 @@ func (r ApiGetClusterMetricsRequest) Engine(engine string) ApiGetClusterMetricsR
 
 func (r ApiGetClusterMetricsRequest) Analyze(analyze string) ApiGetClusterMetricsRequest {
 	r.analyze = &analyze
+	return r
+}
+
+func (r ApiGetClusterMetricsRequest) BoardShortName(boardShortName string) ApiGetClusterMetricsRequest {
+	r.boardShortName = &boardShortName
+	return r
+}
+
+func (r ApiGetClusterMetricsRequest) MetricShortName(metricShortName string) ApiGetClusterMetricsRequest {
+	r.metricShortName = &metricShortName
+	return r
+}
+
+func (r ApiGetClusterMetricsRequest) TraceId(traceId string) ApiGetClusterMetricsRequest {
+	r.traceId = &traceId
+	return r
+}
+
+func (r ApiGetClusterMetricsRequest) Range_(range_ string) ApiGetClusterMetricsRequest {
+	r.range_ = &range_
 	return r
 }
 
@@ -1686,6 +1710,18 @@ func (a *ClustersAPIService) GetClusterMetricsExecute(r ApiGetClusterMetricsRequ
 	}
 	if r.analyze != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "analyze", r.analyze, "")
+	}
+	if r.boardShortName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "board_short_name", r.boardShortName, "")
+	}
+	if r.metricShortName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "metric_short_name", r.metricShortName, "")
+	}
+	if r.traceId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "trace_id", r.traceId, "")
+	}
+	if r.range_ != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "range", r.range_, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

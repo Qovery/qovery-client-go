@@ -15811,6 +15811,34 @@ paths:
         schema:
           type: string
         style: form
+      - explode: true
+        in: query
+        name: board_short_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: metric_short_name
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: trace_id
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: range
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:

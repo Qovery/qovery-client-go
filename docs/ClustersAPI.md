@@ -860,7 +860,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterMetrics
 
-> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyze(analyze).Execute()
+> ClusterMetricsResponse GetClusterMetrics(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyze(analyze).BoardShortName(boardShortName).MetricShortName(metricShortName).TraceId(traceId).Range_(range_).Execute()
 
 Fetch cluster metrics
 
@@ -892,10 +892,14 @@ func main() {
 	maxSourceResolution := "maxSourceResolution_example" // string |  (optional)
 	engine := "engine_example" // string |  (optional)
 	analyze := "analyze_example" // string |  (optional)
+	boardShortName := "boardShortName_example" // string |  (optional)
+	metricShortName := "metricShortName_example" // string |  (optional)
+	traceId := "traceId_example" // string |  (optional)
+	range_ := "range__example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyze(analyze).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterMetrics(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Step(step).Time(time).Timeout(timeout).Dedup(dedup).PartialResponse(partialResponse).MaxSourceResolution(maxSourceResolution).Engine(engine).Analyze(analyze).BoardShortName(boardShortName).MetricShortName(metricShortName).TraceId(traceId).Range_(range_).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterMetrics``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -933,6 +937,10 @@ Name | Type | Description  | Notes
  **maxSourceResolution** | **string** |  | 
  **engine** | **string** |  | 
  **analyze** | **string** |  | 
+ **boardShortName** | **string** |  | 
+ **metricShortName** | **string** |  | 
+ **traceId** | **string** |  | 
+ **range_** | **string** |  | 
 
 ### Return type
 
