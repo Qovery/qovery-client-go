@@ -15713,7 +15713,7 @@ paths:
       - Clusters
   /cluster/{clusterId}/metrics:
     get:
-      description: Fetch cluster metrics
+      description: Fetch cluster metrics.
       operationId: get-cluster-metrics
       parameters:
       - description: Cluster ID

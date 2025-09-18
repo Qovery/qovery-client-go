@@ -1636,7 +1636,7 @@ func (r ApiGetClusterMetricsRequest) Execute() (*ClusterMetricsResponse, *http.R
 /*
 GetClusterMetrics Fetch cluster metrics
 
-Fetch cluster metrics
+Fetch cluster metrics.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param clusterId Cluster ID
