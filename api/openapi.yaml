@@ -34104,7 +34104,7 @@ components:
         id: xhswkmfwyerrv
     TerraformResponseList:
       example:
-        id:
+        results:
         - auto_deploy: true
           job_resources:
             cpu_milli: 6
@@ -34188,7 +34188,7 @@ components:
                 name: simple-node-app
                 git_token_name: git_token_name
       properties:
-        id:
+        results:
           items:
             $ref: '#/components/schemas/TerraformResponse'
           type: array

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | Pointer to [**[]TerraformResponse**](TerraformResponse.md) |  | [optional] 
+**Results** | Pointer to [**[]TerraformResponse**](TerraformResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -25,30 +25,30 @@ NewTerraformResponseListWithDefaults instantiates a new TerraformResponseList ob
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetId
+### GetResults
 
-`func (o *TerraformResponseList) GetId() []TerraformResponse`
+`func (o *TerraformResponseList) GetResults() []TerraformResponse`
 
-GetId returns the Id field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetIdOk
+### GetResultsOk
 
-`func (o *TerraformResponseList) GetIdOk() (*[]TerraformResponse, bool)`
+`func (o *TerraformResponseList) GetResultsOk() (*[]TerraformResponse, bool)`
 
-GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetId
+### SetResults
 
-`func (o *TerraformResponseList) SetId(v []TerraformResponse)`
+`func (o *TerraformResponseList) SetResults(v []TerraformResponse)`
 
-SetId sets Id field to given value.
+SetResults sets Results field to given value.
 
-### HasId
+### HasResults
 
-`func (o *TerraformResponseList) HasId() bool`
+`func (o *TerraformResponseList) HasResults() bool`
 
-HasId returns a boolean if a field has been set.
+HasResults returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

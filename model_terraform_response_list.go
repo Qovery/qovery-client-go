@@ -20,7 +20,7 @@ var _ MappedNullable = &TerraformResponseList{}
 
 // TerraformResponseList struct for TerraformResponseList
 type TerraformResponseList struct {
-	Id                   []TerraformResponse `json:"id,omitempty"`
+	Results              []TerraformResponse `json:"results,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,36 +43,36 @@ func NewTerraformResponseListWithDefaults() *TerraformResponseList {
 	return &this
 }
 
-// GetId returns the Id field value if set, zero value otherwise.
-func (o *TerraformResponseList) GetId() []TerraformResponse {
-	if o == nil || IsNil(o.Id) {
+// GetResults returns the Results field value if set, zero value otherwise.
+func (o *TerraformResponseList) GetResults() []TerraformResponse {
+	if o == nil || IsNil(o.Results) {
 		var ret []TerraformResponse
 		return ret
 	}
-	return o.Id
+	return o.Results
 }
 
-// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// GetResultsOk returns a tuple with the Results field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *TerraformResponseList) GetIdOk() ([]TerraformResponse, bool) {
-	if o == nil || IsNil(o.Id) {
+func (o *TerraformResponseList) GetResultsOk() ([]TerraformResponse, bool) {
+	if o == nil || IsNil(o.Results) {
 		return nil, false
 	}
-	return o.Id, true
+	return o.Results, true
 }
 
-// HasId returns a boolean if a field has been set.
-func (o *TerraformResponseList) HasId() bool {
-	if o != nil && !IsNil(o.Id) {
+// HasResults returns a boolean if a field has been set.
+func (o *TerraformResponseList) HasResults() bool {
+	if o != nil && !IsNil(o.Results) {
 		return true
 	}
 
 	return false
 }
 
-// SetId gets a reference to the given []TerraformResponse and assigns it to the Id field.
-func (o *TerraformResponseList) SetId(v []TerraformResponse) {
-	o.Id = v
+// SetResults gets a reference to the given []TerraformResponse and assigns it to the Results field.
+func (o *TerraformResponseList) SetResults(v []TerraformResponse) {
+	o.Results = v
 }
 
 func (o TerraformResponseList) MarshalJSON() ([]byte, error) {
@@ -85,8 +85,8 @@ func (o TerraformResponseList) MarshalJSON() ([]byte, error) {
 
 func (o TerraformResponseList) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Id) {
-		toSerialize["id"] = o.Id
+	if !IsNil(o.Results) {
+		toSerialize["results"] = o.Results
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -110,7 +110,7 @@ func (o *TerraformResponseList) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
+		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}
 
