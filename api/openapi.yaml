@@ -17449,6 +17449,18 @@ components:
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
+    TerraformBackend:
+      description: Configuration for Terraform backend - exactly one backend type
+        must be specified
+      oneOf:
+      - $ref: '#/components/schemas/TerraformBackend_oneOf'
+      - $ref: '#/components/schemas/TerraformBackend_oneOf_1'
+    TerraformBackendKubernetes:
+      description: Kubernetes-specific backend configuration
+      type: object
+    TerraformBackendUserProvided:
+      description: User-provided backend configuration
+      type: object
     AccountInfo:
       example:
         communication_email: communication_email
@@ -33689,6 +33701,17 @@ components:
         id: gjzlt9ldnn7ip
     TerraformRequest:
       example:
+        auto_deploy: true
+        job_resources:
+          cpu_milli: 6
+          ram_mib: 1
+          storage_gib: 5
+        description: description
+        provider_version:
+          read_from_terraform_block: true
+          explicit_version: explicit_version
+        auto_approve: true
+        icon_uri: https://openapi-generator.tech
         terraform_variables_source:
           tf_var_file_paths:
           - tf_var_file_paths
@@ -33700,27 +33723,18 @@ components:
           - secret: true
             value: value
             key: key
-        auto_deploy: true
-        job_resources:
-          cpu_milli: 6
-          ram_mib: 1
-          storage_gib: 5
         provider: TERRAFORM
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
-        description: description
-        provider_version:
-          read_from_terraform_block: true
-          explicit_version: explicit_version
+        backend:
+          kubernetes: "{}"
         terraform_files_source:
           git_repository:
             root_path: root_path
             git_token_id: git_token_id
             branch: branch
             url: url
-        auto_approve: true
-        icon_uri: https://openapi-generator.tech
       properties:
         name:
           type: string
@@ -33742,6 +33756,8 @@ components:
           $ref: '#/components/schemas/TerraformRequest_terraform_files_source'
         terraform_variables_source:
           $ref: '#/components/schemas/TerraformVariablesSourceRequest'
+        backend:
+          $ref: '#/components/schemas/TerraformBackend'
         provider:
           enum:
           - TERRAFORM
@@ -33768,6 +33784,7 @@ components:
       required:
       - auto_approve
       - auto_deploy
+      - backend
       - description
       - job_resources
       - name
@@ -33814,6 +33831,8 @@ components:
             type: string
             x-stoplight:
               id: d2ykapq57se4s
+          backend:
+            $ref: '#/components/schemas/TerraformBackend'
           provider_version:
             $ref: '#/components/schemas/TerraformProviderVersion'
           job_resources:
@@ -33827,6 +33846,7 @@ components:
         required:
         - auto_approve
         - auto_deploy
+        - backend
         - environment
         - icon_uri
         - job_resources
@@ -33864,6 +33884,8 @@ components:
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
+        backend:
+          kubernetes: "{}"
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_files_source:
           git:
@@ -34129,6 +34151,8 @@ components:
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
+          backend:
+            kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_files_source:
             git:
@@ -34170,6 +34194,8 @@ components:
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
+          backend:
+            kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_files_source:
             git:
@@ -35458,6 +35484,20 @@ components:
           items:
             $ref: '#/components/schemas/QueuedDeploymentRequestForService'
           type: array
+      type: object
+    TerraformBackend_oneOf:
+      example:
+        kubernetes: "{}"
+      properties:
+        kubernetes:
+          description: Kubernetes-specific backend configuration
+          type: object
+      type: object
+    TerraformBackend_oneOf_1:
+      properties:
+        user_provided:
+          description: User-provided backend configuration
+          type: object
       type: object
     ServicePortRequest_ports_inner:
       example:

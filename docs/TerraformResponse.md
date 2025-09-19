@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **Provider** | **string** |  | 
+**Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -314,6 +315,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformResponse) SetProvider(v string)`
 
 SetProvider sets Provider field to given value.
+
+
+### GetBackend
+
+`func (o *TerraformResponse) GetBackend() TerraformBackend`
+
+GetBackend returns the Backend field if non-nil, zero value otherwise.
+
+### GetBackendOk
+
+`func (o *TerraformResponse) GetBackendOk() (*TerraformBackend, bool)`
+
+GetBackendOk returns a tuple with the Backend field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackend
+
+`func (o *TerraformResponse) SetBackend(v TerraformBackend)`
+
+SetBackend sets Backend field to given value.
 
 
 ### GetProviderVersion

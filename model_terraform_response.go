@@ -37,6 +37,7 @@ type TerraformResponse struct {
 	ServiceType              ServiceTypeEnum                  `json:"service_type"`
 	TerraformVariablesSource TerraformVariablesSourceResponse `json:"terraform_variables_source"`
 	Provider                 string                           `json:"provider"`
+	Backend                  TerraformBackend                 `json:"backend"`
 	ProviderVersion          TerraformProviderVersion         `json:"provider_version"`
 	JobResources             TerraformJobResourcesResponse    `json:"job_resources"`
 	Environment              ReferenceObject                  `json:"environment"`
@@ -50,7 +51,7 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -62,6 +63,7 @@ func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSe
 	this.ServiceType = serviceType
 	this.TerraformVariablesSource = terraformVariablesSource
 	this.Provider = provider
+	this.Backend = backend
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
 	this.Environment = environment
@@ -415,6 +417,30 @@ func (o *TerraformResponse) SetProvider(v string) {
 	o.Provider = v
 }
 
+// GetBackend returns the Backend field value
+func (o *TerraformResponse) GetBackend() TerraformBackend {
+	if o == nil {
+		var ret TerraformBackend
+		return ret
+	}
+
+	return o.Backend
+}
+
+// GetBackendOk returns a tuple with the Backend field value
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetBackendOk() (*TerraformBackend, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Backend, true
+}
+
+// SetBackend sets field value
+func (o *TerraformResponse) SetBackend(v TerraformBackend) {
+	o.Backend = v
+}
+
 // GetProviderVersion returns the ProviderVersion field value
 func (o *TerraformResponse) GetProviderVersion() TerraformProviderVersion {
 	if o == nil {
@@ -540,6 +566,7 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["service_type"] = o.ServiceType
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
 	toSerialize["provider"] = o.Provider
+	toSerialize["backend"] = o.Backend
 	toSerialize["provider_version"] = o.ProviderVersion
 	toSerialize["job_resources"] = o.JobResources
 	toSerialize["environment"] = o.Environment
@@ -567,6 +594,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"service_type",
 		"terraform_variables_source",
 		"provider",
+		"backend",
 		"provider_version",
 		"job_resources",
 		"environment",
@@ -613,6 +641,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "terraform_variables_source")
 		delete(additionalProperties, "provider")
+		delete(additionalProperties, "backend")
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "job_resources")
 		delete(additionalProperties, "environment")

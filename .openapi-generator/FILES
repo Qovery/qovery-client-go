@@ -728,6 +728,9 @@ docs/StepMetricStatusEnum.md
 docs/StorageTypeEnum.md
 docs/TerraformActionsAPI.md
 docs/TerraformAdvancedSettings.md
+docs/TerraformBackend.md
+docs/TerraformBackendOneOf.md
+docs/TerraformBackendOneOf1.md
 docs/TerraformConfigurationAPI.md
 docs/TerraformDeployRequest.md
 docs/TerraformDeploymentHistoryAPI.md
@@ -1334,6 +1337,9 @@ model_status_kind_enum.go
 model_step_metric_status_enum.go
 model_storage_type_enum.go
 model_terraform_advanced_settings.go
+model_terraform_backend.go
+model_terraform_backend_one_of.go
+model_terraform_backend_one_of_1.go
 model_terraform_deploy_request.go
 model_terraform_deployment_restriction_request.go
 model_terraform_deployment_restriction_response.go

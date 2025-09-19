@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | **bool** |  | 
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
+**Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
 **Provider** | **string** |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **TimeoutSec** | Pointer to **int32** |  | [optional] 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -154,6 +155,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformRequest) SetTerraformVariablesSource(v TerraformVariablesSourceRequest)`
 
 SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
+
+
+### GetBackend
+
+`func (o *TerraformRequest) GetBackend() TerraformBackend`
+
+GetBackend returns the Backend field if non-nil, zero value otherwise.
+
+### GetBackendOk
+
+`func (o *TerraformRequest) GetBackendOk() (*TerraformBackend, bool)`
+
+GetBackendOk returns a tuple with the Backend field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBackend
+
+`func (o *TerraformRequest) SetBackend(v TerraformBackend)`
+
+SetBackend sets Backend field to given value.
 
 
 ### GetProvider

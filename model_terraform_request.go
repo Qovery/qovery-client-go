@@ -27,6 +27,7 @@ type TerraformRequest struct {
 	AutoDeploy               bool                                 `json:"auto_deploy"`
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
+	Backend                  TerraformBackend                     `json:"backend"`
 	Provider                 string                               `json:"provider"`
 	ProviderVersion          TerraformProviderVersion             `json:"provider_version"`
 	TimeoutSec               *int32                               `json:"timeout_sec,omitempty"`
@@ -42,7 +43,7 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
@@ -50,6 +51,7 @@ func NewTerraformRequest(name string, description string, autoApprove bool, auto
 	this.AutoDeploy = autoDeploy
 	this.TerraformFilesSource = terraformFilesSource
 	this.TerraformVariablesSource = terraformVariablesSource
+	this.Backend = backend
 	this.Provider = provider
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
@@ -206,6 +208,30 @@ func (o *TerraformRequest) GetTerraformVariablesSourceOk() (*TerraformVariablesS
 // SetTerraformVariablesSource sets field value
 func (o *TerraformRequest) SetTerraformVariablesSource(v TerraformVariablesSourceRequest) {
 	o.TerraformVariablesSource = v
+}
+
+// GetBackend returns the Backend field value
+func (o *TerraformRequest) GetBackend() TerraformBackend {
+	if o == nil {
+		var ret TerraformBackend
+		return ret
+	}
+
+	return o.Backend
+}
+
+// GetBackendOk returns a tuple with the Backend field value
+// and a boolean to check if the value has been set.
+func (o *TerraformRequest) GetBackendOk() (*TerraformBackend, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Backend, true
+}
+
+// SetBackend sets field value
+func (o *TerraformRequest) SetBackend(v TerraformBackend) {
+	o.Backend = v
 }
 
 // GetProvider returns the Provider field value
@@ -392,6 +418,7 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["auto_deploy"] = o.AutoDeploy
 	toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
+	toSerialize["backend"] = o.Backend
 	toSerialize["provider"] = o.Provider
 	toSerialize["provider_version"] = o.ProviderVersion
 	if !IsNil(o.TimeoutSec) {
@@ -423,6 +450,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		"auto_deploy",
 		"terraform_files_source",
 		"terraform_variables_source",
+		"backend",
 		"provider",
 		"provider_version",
 		"job_resources",
@@ -461,6 +489,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "terraform_variables_source")
+		delete(additionalProperties, "backend")
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "timeout_sec")
