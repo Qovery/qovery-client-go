@@ -30,8 +30,12 @@ type ServicePortRequestPortsInner struct {
 	// Expose the port to the world
 	PubliclyAccessible bool `json:"publicly_accessible"`
 	// is the default port to use for domain
-	IsDefault            *bool             `json:"is_default,omitempty"`
-	Protocol             *PortProtocolEnum `json:"protocol,omitempty"`
+	IsDefault *bool             `json:"is_default,omitempty"`
+	Protocol  *PortProtocolEnum `json:"protocol,omitempty"`
+	// Indicate the path or regex that must match for traffic to be accepted on your service i.e: /api/ will only accept http calls that start with /api/  Only valid for publicly_accessible HTTP or GRPC ports.
+	PublicPath *string `json:"public_path,omitempty"`
+	// Indicate the new path that will be used to reach your service after replacement i.e: public_path -> /(.*)  public_path_rewrite -> /api/$1 will append /api/ on all externaly requested url when reaching the service  external/use url -> example.com/foobar  -> url seen by the service -> example.com/api/foobar Only valid for publicly_accessible HTTP or GRPC ports.
+	PublicPathRewrite    *string `json:"public_path_rewrite,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -268,6 +272,70 @@ func (o *ServicePortRequestPortsInner) SetProtocol(v PortProtocolEnum) {
 	o.Protocol = &v
 }
 
+// GetPublicPath returns the PublicPath field value if set, zero value otherwise.
+func (o *ServicePortRequestPortsInner) GetPublicPath() string {
+	if o == nil || IsNil(o.PublicPath) {
+		var ret string
+		return ret
+	}
+	return *o.PublicPath
+}
+
+// GetPublicPathOk returns a tuple with the PublicPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortRequestPortsInner) GetPublicPathOk() (*string, bool) {
+	if o == nil || IsNil(o.PublicPath) {
+		return nil, false
+	}
+	return o.PublicPath, true
+}
+
+// HasPublicPath returns a boolean if a field has been set.
+func (o *ServicePortRequestPortsInner) HasPublicPath() bool {
+	if o != nil && !IsNil(o.PublicPath) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicPath gets a reference to the given string and assigns it to the PublicPath field.
+func (o *ServicePortRequestPortsInner) SetPublicPath(v string) {
+	o.PublicPath = &v
+}
+
+// GetPublicPathRewrite returns the PublicPathRewrite field value if set, zero value otherwise.
+func (o *ServicePortRequestPortsInner) GetPublicPathRewrite() string {
+	if o == nil || IsNil(o.PublicPathRewrite) {
+		var ret string
+		return ret
+	}
+	return *o.PublicPathRewrite
+}
+
+// GetPublicPathRewriteOk returns a tuple with the PublicPathRewrite field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServicePortRequestPortsInner) GetPublicPathRewriteOk() (*string, bool) {
+	if o == nil || IsNil(o.PublicPathRewrite) {
+		return nil, false
+	}
+	return o.PublicPathRewrite, true
+}
+
+// HasPublicPathRewrite returns a boolean if a field has been set.
+func (o *ServicePortRequestPortsInner) HasPublicPathRewrite() bool {
+	if o != nil && !IsNil(o.PublicPathRewrite) {
+		return true
+	}
+
+	return false
+}
+
+// SetPublicPathRewrite gets a reference to the given string and assigns it to the PublicPathRewrite field.
+func (o *ServicePortRequestPortsInner) SetPublicPathRewrite(v string) {
+	o.PublicPathRewrite = &v
+}
+
 func (o ServicePortRequestPortsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -294,6 +362,12 @@ func (o ServicePortRequestPortsInner) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Protocol) {
 		toSerialize["protocol"] = o.Protocol
+	}
+	if !IsNil(o.PublicPath) {
+		toSerialize["public_path"] = o.PublicPath
+	}
+	if !IsNil(o.PublicPathRewrite) {
+		toSerialize["public_path_rewrite"] = o.PublicPathRewrite
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -346,6 +420,8 @@ func (o *ServicePortRequestPortsInner) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "publicly_accessible")
 		delete(additionalProperties, "is_default")
 		delete(additionalProperties, "protocol")
+		delete(additionalProperties, "public_path")
+		delete(additionalProperties, "public_path_rewrite")
 		o.AdditionalProperties = additionalProperties
 	}
 

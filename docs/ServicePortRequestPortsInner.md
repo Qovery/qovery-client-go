@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
 **IsDefault** | Pointer to **bool** | is the default port to use for domain | [optional] 
 **Protocol** | Pointer to [**PortProtocolEnum**](PortProtocolEnum.md) |  | [optional] [default to PORTPROTOCOLENUM_HTTP]
+**PublicPath** | Pointer to **string** | Indicate the path or regex that must match for traffic to be accepted on your service i.e: /api/ will only accept http calls that start with /api/  Only valid for publicly_accessible HTTP or GRPC ports.  | [optional] 
+**PublicPathRewrite** | Pointer to **string** | Indicate the new path that will be used to reach your service after replacement i.e: public_path -&gt; /(.*)  public_path_rewrite -&gt; /api/$1 will append /api/ on all externaly requested url when reaching the service  external/use url -&gt; example.com/foobar  -&gt; url seen by the service -&gt; example.com/api/foobar Only valid for publicly_accessible HTTP or GRPC ports.  | [optional] 
 
 ## Methods
 
@@ -195,6 +197,56 @@ SetProtocol sets Protocol field to given value.
 `func (o *ServicePortRequestPortsInner) HasProtocol() bool`
 
 HasProtocol returns a boolean if a field has been set.
+
+### GetPublicPath
+
+`func (o *ServicePortRequestPortsInner) GetPublicPath() string`
+
+GetPublicPath returns the PublicPath field if non-nil, zero value otherwise.
+
+### GetPublicPathOk
+
+`func (o *ServicePortRequestPortsInner) GetPublicPathOk() (*string, bool)`
+
+GetPublicPathOk returns a tuple with the PublicPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicPath
+
+`func (o *ServicePortRequestPortsInner) SetPublicPath(v string)`
+
+SetPublicPath sets PublicPath field to given value.
+
+### HasPublicPath
+
+`func (o *ServicePortRequestPortsInner) HasPublicPath() bool`
+
+HasPublicPath returns a boolean if a field has been set.
+
+### GetPublicPathRewrite
+
+`func (o *ServicePortRequestPortsInner) GetPublicPathRewrite() string`
+
+GetPublicPathRewrite returns the PublicPathRewrite field if non-nil, zero value otherwise.
+
+### GetPublicPathRewriteOk
+
+`func (o *ServicePortRequestPortsInner) GetPublicPathRewriteOk() (*string, bool)`
+
+GetPublicPathRewriteOk returns a tuple with the PublicPathRewrite field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPublicPathRewrite
+
+`func (o *ServicePortRequestPortsInner) SetPublicPathRewrite(v string)`
+
+SetPublicPathRewrite sets PublicPathRewrite field to given value.
+
+### HasPublicPathRewrite
+
+`func (o *ServicePortRequestPortsInner) HasPublicPathRewrite() bool`
+
+HasPublicPathRewrite returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

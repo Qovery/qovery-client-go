@@ -18039,14 +18039,18 @@ components:
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
@@ -18297,14 +18301,18 @@ components:
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
@@ -18445,7 +18453,9 @@ components:
         publicly_accessible: true
         protocol: HTTP
         external_port: 8080
+        public_path: public_path
         name: name
+        public_path_rewrite: public_path_rewrite
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         internal_port: 8080
         is_default: true
@@ -18472,6 +18482,20 @@ components:
           type: boolean
         protocol:
           $ref: '#/components/schemas/PortProtocolEnum'
+        public_path:
+          description: "Indicate the path or regex that must match for traffic to\
+            \ be accepted on your service\ni.e: /api/ will only accept http calls\
+            \ that start with /api/ \nOnly valid for publicly_accessible HTTP or GRPC\
+            \ ports. "
+          type: string
+        public_path_rewrite:
+          description: "Indicate the new path that will be used to reach your service\
+            \ after replacement\ni.e: public_path -> /(.*)  public_path_rewrite ->\
+            \ /api/$1 will append /api/ on all externaly requested url when reaching\
+            \ the service \nexternal/use url -> example.com/foobar  -> url seen by\
+            \ the service -> example.com/api/foobar\nOnly valid for publicly_accessible\
+            \ HTTP or GRPC ports. "
+          type: string
       required:
       - id
       - internal_port
@@ -18678,14 +18702,18 @@ components:
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
@@ -18803,14 +18831,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -18956,14 +18988,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -21800,14 +21836,18 @@ components:
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
@@ -22006,14 +22046,18 @@ components:
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
         - publicly_accessible: true
           protocol: HTTP
           external_port: 8080
+          public_path: public_path
           name: name
+          public_path_rewrite: public_path_rewrite
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
@@ -22153,14 +22197,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -22297,14 +22345,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -35122,14 +35174,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -35275,14 +35331,18 @@ components:
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
           - publicly_accessible: true
             protocol: HTTP
             external_port: 8080
+            public_path: public_path
             name: name
+            public_path_rewrite: public_path_rewrite
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
@@ -35625,7 +35685,9 @@ components:
         publicly_accessible: true
         protocol: HTTP
         external_port: 8080
+        public_path: public_path
         name: name
+        public_path_rewrite: public_path_rewrite
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         internal_port: 8080
         is_default: true
@@ -35652,6 +35714,20 @@ components:
           type: boolean
         protocol:
           $ref: '#/components/schemas/PortProtocolEnum'
+        public_path:
+          description: "Indicate the path or regex that must match for traffic to\
+            \ be accepted on your service\ni.e: /api/ will only accept http calls\
+            \ that start with /api/ \nOnly valid for publicly_accessible HTTP or GRPC\
+            \ ports. "
+          type: string
+        public_path_rewrite:
+          description: "Indicate the new path that will be used to reach your service\
+            \ after replacement\ni.e: public_path -> /(.*)  public_path_rewrite ->\
+            \ /api/$1 will append /api/ on all externaly requested url when reaching\
+            \ the service \nexternal/use url -> example.com/foobar  -> url seen by\
+            \ the service -> example.com/api/foobar\nOnly valid for publicly_accessible\
+            \ HTTP or GRPC ports. "
+          type: string
       required:
       - internal_port
       - publicly_accessible
