@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TerraformBackendOneOf1 type satisfies the MappedNullable interface at compile time
@@ -21,7 +22,7 @@ var _ MappedNullable = &TerraformBackendOneOf1{}
 // TerraformBackendOneOf1 struct for TerraformBackendOneOf1
 type TerraformBackendOneOf1 struct {
 	// User-provided backend configuration
-	UserProvided         map[string]interface{} `json:"user_provided,omitempty"`
+	UserProvided         map[string]interface{} `json:"user_provided"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +32,9 @@ type _TerraformBackendOneOf1 TerraformBackendOneOf1
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformBackendOneOf1() *TerraformBackendOneOf1 {
+func NewTerraformBackendOneOf1(userProvided map[string]interface{}) *TerraformBackendOneOf1 {
 	this := TerraformBackendOneOf1{}
+	this.UserProvided = userProvided
 	return &this
 }
 
@@ -44,34 +46,26 @@ func NewTerraformBackendOneOf1WithDefaults() *TerraformBackendOneOf1 {
 	return &this
 }
 
-// GetUserProvided returns the UserProvided field value if set, zero value otherwise.
+// GetUserProvided returns the UserProvided field value
 func (o *TerraformBackendOneOf1) GetUserProvided() map[string]interface{} {
-	if o == nil || IsNil(o.UserProvided) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
+
 	return o.UserProvided
 }
 
-// GetUserProvidedOk returns a tuple with the UserProvided field value if set, nil otherwise
+// GetUserProvidedOk returns a tuple with the UserProvided field value
 // and a boolean to check if the value has been set.
 func (o *TerraformBackendOneOf1) GetUserProvidedOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.UserProvided) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.UserProvided, true
 }
 
-// HasUserProvided returns a boolean if a field has been set.
-func (o *TerraformBackendOneOf1) HasUserProvided() bool {
-	if o != nil && !IsNil(o.UserProvided) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserProvided gets a reference to the given map[string]interface{} and assigns it to the UserProvided field.
+// SetUserProvided sets field value
 func (o *TerraformBackendOneOf1) SetUserProvided(v map[string]interface{}) {
 	o.UserProvided = v
 }
@@ -86,9 +80,7 @@ func (o TerraformBackendOneOf1) MarshalJSON() ([]byte, error) {
 
 func (o TerraformBackendOneOf1) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.UserProvided) {
-		toSerialize["user_provided"] = o.UserProvided
-	}
+	toSerialize["user_provided"] = o.UserProvided
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -98,6 +90,27 @@ func (o TerraformBackendOneOf1) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *TerraformBackendOneOf1) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"user_provided",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varTerraformBackendOneOf1 := _TerraformBackendOneOf1{}
 
 	err = json.Unmarshal(data, &varTerraformBackendOneOf1)

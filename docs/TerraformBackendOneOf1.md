@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UserProvided** | Pointer to **map[string]interface{}** | User-provided backend configuration | [optional] 
+**UserProvided** | **map[string]interface{}** | User-provided backend configuration | 
 
 ## Methods
 
 ### NewTerraformBackendOneOf1
 
-`func NewTerraformBackendOneOf1() *TerraformBackendOneOf1`
+`func NewTerraformBackendOneOf1(userProvided map[string]interface{}, ) *TerraformBackendOneOf1`
 
 NewTerraformBackendOneOf1 instantiates a new TerraformBackendOneOf1 object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetUserProvided sets UserProvided field to given value.
 
-### HasUserProvided
-
-`func (o *TerraformBackendOneOf1) HasUserProvided() bool`
-
-HasUserProvided returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

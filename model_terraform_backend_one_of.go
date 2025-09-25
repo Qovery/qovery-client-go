@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TerraformBackendOneOf type satisfies the MappedNullable interface at compile time
@@ -21,7 +22,7 @@ var _ MappedNullable = &TerraformBackendOneOf{}
 // TerraformBackendOneOf struct for TerraformBackendOneOf
 type TerraformBackendOneOf struct {
 	// Kubernetes-specific backend configuration
-	Kubernetes           map[string]interface{} `json:"kubernetes,omitempty"`
+	Kubernetes           map[string]interface{} `json:"kubernetes"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +32,9 @@ type _TerraformBackendOneOf TerraformBackendOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformBackendOneOf() *TerraformBackendOneOf {
+func NewTerraformBackendOneOf(kubernetes map[string]interface{}) *TerraformBackendOneOf {
 	this := TerraformBackendOneOf{}
+	this.Kubernetes = kubernetes
 	return &this
 }
 
@@ -44,34 +46,26 @@ func NewTerraformBackendOneOfWithDefaults() *TerraformBackendOneOf {
 	return &this
 }
 
-// GetKubernetes returns the Kubernetes field value if set, zero value otherwise.
+// GetKubernetes returns the Kubernetes field value
 func (o *TerraformBackendOneOf) GetKubernetes() map[string]interface{} {
-	if o == nil || IsNil(o.Kubernetes) {
+	if o == nil {
 		var ret map[string]interface{}
 		return ret
 	}
+
 	return o.Kubernetes
 }
 
-// GetKubernetesOk returns a tuple with the Kubernetes field value if set, nil otherwise
+// GetKubernetesOk returns a tuple with the Kubernetes field value
 // and a boolean to check if the value has been set.
 func (o *TerraformBackendOneOf) GetKubernetesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.Kubernetes) {
+	if o == nil {
 		return map[string]interface{}{}, false
 	}
 	return o.Kubernetes, true
 }
 
-// HasKubernetes returns a boolean if a field has been set.
-func (o *TerraformBackendOneOf) HasKubernetes() bool {
-	if o != nil && !IsNil(o.Kubernetes) {
-		return true
-	}
-
-	return false
-}
-
-// SetKubernetes gets a reference to the given map[string]interface{} and assigns it to the Kubernetes field.
+// SetKubernetes sets field value
 func (o *TerraformBackendOneOf) SetKubernetes(v map[string]interface{}) {
 	o.Kubernetes = v
 }
@@ -86,9 +80,7 @@ func (o TerraformBackendOneOf) MarshalJSON() ([]byte, error) {
 
 func (o TerraformBackendOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Kubernetes) {
-		toSerialize["kubernetes"] = o.Kubernetes
-	}
+	toSerialize["kubernetes"] = o.Kubernetes
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -98,6 +90,27 @@ func (o TerraformBackendOneOf) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *TerraformBackendOneOf) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"kubernetes",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varTerraformBackendOneOf := _TerraformBackendOneOf{}
 
 	err = json.Unmarshal(data, &varTerraformBackendOneOf)

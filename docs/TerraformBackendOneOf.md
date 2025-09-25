@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kubernetes** | Pointer to **map[string]interface{}** | Kubernetes-specific backend configuration | [optional] 
+**Kubernetes** | **map[string]interface{}** | Kubernetes-specific backend configuration | 
 
 ## Methods
 
 ### NewTerraformBackendOneOf
 
-`func NewTerraformBackendOneOf() *TerraformBackendOneOf`
+`func NewTerraformBackendOneOf(kubernetes map[string]interface{}, ) *TerraformBackendOneOf`
 
 NewTerraformBackendOneOf instantiates a new TerraformBackendOneOf object
 This constructor will assign default values to properties that have it defined,
@@ -44,11 +44,6 @@ and a boolean to check if the value has been set.
 
 SetKubernetes sets Kubernetes field to given value.
 
-### HasKubernetes
-
-`func (o *TerraformBackendOneOf) HasKubernetes() bool`
-
-HasKubernetes returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

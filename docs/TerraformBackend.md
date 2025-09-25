@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Kubernetes** | Pointer to **map[string]interface{}** | Kubernetes-specific backend configuration | [optional] 
-**UserProvided** | Pointer to **map[string]interface{}** | User-provided backend configuration | [optional] 
+**Kubernetes** | **map[string]interface{}** | Kubernetes-specific backend configuration | 
+**UserProvided** | **map[string]interface{}** | User-provided backend configuration | 
 
 ## Methods
 
 ### NewTerraformBackend
 
-`func NewTerraformBackend() *TerraformBackend`
+`func NewTerraformBackend(kubernetes map[string]interface{}, userProvided map[string]interface{}, ) *TerraformBackend`
 
 NewTerraformBackend instantiates a new TerraformBackend object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetKubernetes sets Kubernetes field to given value.
 
-### HasKubernetes
-
-`func (o *TerraformBackend) HasKubernetes() bool`
-
-HasKubernetes returns a boolean if a field has been set.
 
 ### GetUserProvided
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetUserProvided sets UserProvided field to given value.
 
-### HasUserProvided
-
-`func (o *TerraformBackend) HasUserProvided() bool`
-
-HasUserProvided returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

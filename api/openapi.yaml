@@ -35673,12 +35673,16 @@ components:
         kubernetes:
           description: Kubernetes-specific backend configuration
           type: object
+      required:
+      - kubernetes
       type: object
     TerraformBackend_oneOf_1:
       properties:
         user_provided:
           description: User-provided backend configuration
           type: object
+      required:
+      - user_provided
       type: object
     ServicePortRequest_ports_inner:
       example:
