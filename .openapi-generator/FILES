@@ -72,6 +72,7 @@ api_organization_annotations_group.go
 api_organization_api_token.go
 api_organization_cluster_lock.go
 api_organization_custom_role.go
+api_organization_enterprise_connection.go
 api_organization_event.go
 api_organization_labels_group.go
 api_organization_main_calls.go
@@ -342,6 +343,7 @@ docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
 docs/EksInfrastructureOutputs.md
+docs/EnterpriseConnectionDto.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
 docs/EnvironmentAPI.md
@@ -612,6 +614,7 @@ docs/OrganizationCustomRoleUpdateRequestClusterPermissionsInner.md
 docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md
 docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md
 docs/OrganizationEditRequest.md
+docs/OrganizationEnterpriseConnectionAPI.md
 docs/OrganizationEventAPI.md
 docs/OrganizationEventOrigin.md
 docs/OrganizationEventResponse.md
@@ -998,6 +1001,7 @@ model_deployment_stage_with_services_statuses.go
 model_dockerfile_check_request.go
 model_dockerfile_check_response.go
 model_eks_infrastructure_outputs.go
+model_enterprise_connection_dto.go
 model_env_deployment_status.go
 model_environment.go
 model_environment_all_of_cloud_provider.go
@@ -1452,6 +1456,7 @@ test/api_organization_annotations_group_test.go
 test/api_organization_api_token_test.go
 test/api_organization_cluster_lock_test.go
 test/api_organization_custom_role_test.go
+test/api_organization_enterprise_connection_test.go
 test/api_organization_event_test.go
 test/api_organization_labels_group_test.go
 test/api_organization_main_calls_test.go

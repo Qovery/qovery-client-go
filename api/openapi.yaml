@@ -107,6 +107,7 @@ tags:
 - name: Organization Webhook
 - name: Organization Annotations Group
 - name: Organization Labels Group
+- name: Organization Enterprise Connection
 - name: Project
 - name: Project Deployment Rule
 - name: Project Environment Variable
@@ -17026,6 +17027,84 @@ paths:
       - Clusters
       x-stoplight:
         id: eodcl3enjp2ax
+  /organization/{organizationId}/enterpriseconnection/{connectionName}:
+    get:
+      operationId: getOrganizationEnterpriseConnection
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The name of the Organization's Enterprise Connection
+        explode: false
+        in: path
+        name: connectionName
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterpriseConnectionDto'
+          description: Get enterprise connection
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get enterprise connection
+      tags:
+      - Organization Enterprise Connection
+    put:
+      operationId: updateOrganizationEnterpriseConnection
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The name of the Organization's Enterprise Connection
+        explode: false
+        in: path
+        name: connectionName
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnterpriseConnectionDto'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterpriseConnectionDto'
+          description: Update enterprise connection
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update enterprise connection
+      tags:
+      - Organization Enterprise Connection
 components:
   parameters:
     applicationId:
@@ -17433,6 +17512,15 @@ components:
       required: true
       schema:
         format: uuid
+        type: string
+      style: simple
+    connectionName:
+      description: The name of the Organization's Enterprise Connection
+      explode: false
+      in: path
+      name: connectionName
+      required: true
+      schema:
         type: string
       style: simple
   responses:
@@ -34526,6 +34614,39 @@ components:
       type: object
       x-stoplight:
         id: evxswes22ykhd
+    EnterpriseConnectionDto:
+      example:
+        default_role: default_role
+        group_mappings:
+          key:
+          - group_mappings
+          - group_mappings
+      properties:
+        default_role:
+          description: |
+            The purpose of this default role is to be associated to your users if:
+            - you choose to not expose your IDPs groups to the SAML / OIDC connection
+            - no associated group is found in your `group_mappings` defined
+
+            You can define either a Qovery provided role (i.e `viewer`) or one of your custom role`s uuid.
+          type: string
+        group_mappings:
+          additionalProperties:
+            items:
+              nullable: false
+              type: string
+            type: array
+          description: "This will allow to create mapping rules based on your IDP\
+            \ group names.  \nIt's a dictionnary having:\n- key: either a Qovery provided\
+            \ role (i.e `viewer`) or one of your custom role`s uuid\n- value: an array\
+            \ of your IDP group names\n\nExample: \"I want to associate the Qovery\
+            \ role `devops` to my IDP groups ['Administrators', 'DevSecOps']\"\n"
+          type: object
+      required:
+      - default_role
+      - group_mappings
+      title: EnterpriseConnectionDto
+      type: object
     deleteMember_request:
       properties:
         user_id:
@@ -37890,6 +38011,7 @@ x-tagGroups:
   - Organization Event
   - Organization Annotations Group
   - Organization Labels Group
+  - Organization Enterprise Connection
   - Projects
   - Members
   - Billing

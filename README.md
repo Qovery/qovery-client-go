@@ -469,6 +469,8 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleAPI* | [**EditOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#editorganizationcustomrole) | **Put** /organization/{organizationId}/customRole/{customRoleId} | Edit an organization custom role
 *OrganizationCustomRoleAPI* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
 *OrganizationCustomRoleAPI* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleAPI.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
+*OrganizationEnterpriseConnectionAPI* | [**GetOrganizationEnterpriseConnection**](docs/OrganizationEnterpriseConnectionAPI.md#getorganizationenterpriseconnection) | **Get** /organization/{organizationId}/enterpriseconnection/{connectionName} | Get enterprise connection
+*OrganizationEnterpriseConnectionAPI* | [**UpdateOrganizationEnterpriseConnection**](docs/OrganizationEnterpriseConnectionAPI.md#updateorganizationenterpriseconnection) | **Put** /organization/{organizationId}/enterpriseconnection/{connectionName} | Update enterprise connection
 *OrganizationEventAPI* | [**GetOrganizationEventTargets**](docs/OrganizationEventAPI.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
 *OrganizationEventAPI* | [**GetOrganizationEvents**](docs/OrganizationEventAPI.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
 *OrganizationLabelsGroupAPI* | [**CreateOrganizationLabelsGroup**](docs/OrganizationLabelsGroupAPI.md#createorganizationlabelsgroup) | **Post** /organization/{organizationId}/labelsGroups | Create an organization labels group
@@ -772,6 +774,7 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckRequest](docs/DockerfileCheckRequest.md)
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [EksInfrastructureOutputs](docs/EksInfrastructureOutputs.md)
+ - [EnterpriseConnectionDto](docs/EnterpriseConnectionDto.md)
  - [EnvDeploymentStatus](docs/EnvDeploymentStatus.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)
