@@ -29748,6 +29748,7 @@ components:
       - CONTAINER
       - CONTAINER_REGISTRY
       - DATABASE
+      - ENTERPRISE_CONNECTION
       - ENVIRONMENT
       - JOB
       - HELM
@@ -29809,6 +29810,7 @@ components:
       - FORCE_RUN_FAILED
       - FORCE_UNLOCK_STATE_FAILED
       - SHELL
+      - SSO
       - PORT_FORWARD
       - REMOTE_DEBUG
       - IMPORT

@@ -13,6 +13,8 @@
 
 * `DATABASE` (value: `"DATABASE"`)
 
+* `ENTERPRISE_CONNECTION` (value: `"ENTERPRISE_CONNECTION"`)
+
 * `ENVIRONMENT` (value: `"ENVIRONMENT"`)
 
 * `JOB` (value: `"JOB"`)

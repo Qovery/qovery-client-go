@@ -68,6 +68,7 @@ const (
 	ORGANIZATIONEVENTTYPE_FORCE_RUN_FAILED             OrganizationEventType = "FORCE_RUN_FAILED"
 	ORGANIZATIONEVENTTYPE_FORCE_UNLOCK_STATE_FAILED    OrganizationEventType = "FORCE_UNLOCK_STATE_FAILED"
 	ORGANIZATIONEVENTTYPE_SHELL                        OrganizationEventType = "SHELL"
+	ORGANIZATIONEVENTTYPE_SSO                          OrganizationEventType = "SSO"
 	ORGANIZATIONEVENTTYPE_PORT_FORWARD                 OrganizationEventType = "PORT_FORWARD"
 	ORGANIZATIONEVENTTYPE_REMOTE_DEBUG                 OrganizationEventType = "REMOTE_DEBUG"
 	ORGANIZATIONEVENTTYPE_IMPORT                       OrganizationEventType = "IMPORT"
@@ -124,6 +125,7 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"FORCE_RUN_FAILED",
 	"FORCE_UNLOCK_STATE_FAILED",
 	"SHELL",
+	"SSO",
 	"PORT_FORWARD",
 	"REMOTE_DEBUG",
 	"IMPORT",
