@@ -34672,6 +34672,7 @@ components:
     EnterpriseConnectionDto:
       example:
         default_role: default_role
+        enforce_group_sync: true
         group_mappings:
           key:
           - group_mappings
@@ -34685,6 +34686,11 @@ components:
 
             You can define either a Qovery provided role (i.e `viewer`) or one of your custom role`s uuid.
           type: string
+        enforce_group_sync:
+          description: |
+            * if `true`, roles will be synchronized at each user login according to your `group_mappings` configuration based on your IDP groups
+            * if `false`, no synchronization is done for your users and `group_mappings` configuration will be ignored
+          type: boolean
         group_mappings:
           additionalProperties:
             items:
@@ -34699,6 +34705,7 @@ components:
           type: object
       required:
       - default_role
+      - enforce_group_sync
       - group_mappings
       title: EnterpriseConnectionDto
       type: object

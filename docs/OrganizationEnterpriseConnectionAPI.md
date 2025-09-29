@@ -101,7 +101,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	connectionName := "connectionName_example" // string | The name of the Organization's Enterprise Connection
-	enterpriseConnectionDto := *openapiclient.NewEnterpriseConnectionDto("DefaultRole_example", map[string][]string{"key": []string{"Inner_example"}}) // EnterpriseConnectionDto |  (optional)
+	enterpriseConnectionDto := *openapiclient.NewEnterpriseConnectionDto("DefaultRole_example", false, map[string][]string{"key": []string{"Inner_example"}}) // EnterpriseConnectionDto |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
