@@ -11,6 +11,8 @@
 
 * `GITHUB_CR` (value: `"GITHUB_CR"`)
 
+* `GITHUB_ENTERPRISE_CR` (value: `"GITHUB_ENTERPRISE_CR"`)
+
 * `GITLAB_CR` (value: `"GITLAB_CR"`)
 
 * `PUBLIC_ECR` (value: `"PUBLIC_ECR"`)

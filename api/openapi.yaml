@@ -21311,6 +21311,7 @@ components:
       - SCALEWAY_CR
       - DOCKER_HUB
       - GITHUB_CR
+      - GITHUB_ENTERPRISE_CR
       - GITLAB_CR
       - PUBLIC_ECR
       - DOCR
