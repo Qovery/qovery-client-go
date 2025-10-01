@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Containers** | Pointer to [**[]DeployAllRequestContainersInner**](DeployAllRequestContainersInner.md) |  | [optional] 
 **Jobs** | Pointer to [**[]DeployAllRequestJobsInner**](DeployAllRequestJobsInner.md) |  | [optional] 
 **Helms** | Pointer to [**[]DeployAllRequestHelmsInner**](DeployAllRequestHelmsInner.md) |  | [optional] 
+**Terraforms** | Pointer to [**[]TerraformDeployRequest**](TerraformDeployRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,31 @@ SetHelms sets Helms field to given value.
 `func (o *DeployAllRequest) HasHelms() bool`
 
 HasHelms returns a boolean if a field has been set.
+
+### GetTerraforms
+
+`func (o *DeployAllRequest) GetTerraforms() []TerraformDeployRequest`
+
+GetTerraforms returns the Terraforms field if non-nil, zero value otherwise.
+
+### GetTerraformsOk
+
+`func (o *DeployAllRequest) GetTerraformsOk() (*[]TerraformDeployRequest, bool)`
+
+GetTerraformsOk returns a tuple with the Terraforms field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTerraforms
+
+`func (o *DeployAllRequest) SetTerraforms(v []TerraformDeployRequest)`
+
+SetTerraforms sets Terraforms field to given value.
+
+### HasTerraforms
+
+`func (o *DeployAllRequest) HasTerraforms() bool`
+
+HasTerraforms returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

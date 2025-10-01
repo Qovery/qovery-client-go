@@ -25,6 +25,7 @@ type DeployAllRequest struct {
 	Containers           []DeployAllRequestContainersInner   `json:"containers,omitempty"`
 	Jobs                 []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
 	Helms                []DeployAllRequestHelmsInner        `json:"helms,omitempty"`
+	Terraforms           []TerraformDeployRequest            `json:"terraforms,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +208,38 @@ func (o *DeployAllRequest) SetHelms(v []DeployAllRequestHelmsInner) {
 	o.Helms = v
 }
 
+// GetTerraforms returns the Terraforms field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetTerraforms() []TerraformDeployRequest {
+	if o == nil || IsNil(o.Terraforms) {
+		var ret []TerraformDeployRequest
+		return ret
+	}
+	return o.Terraforms
+}
+
+// GetTerraformsOk returns a tuple with the Terraforms field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetTerraformsOk() ([]TerraformDeployRequest, bool) {
+	if o == nil || IsNil(o.Terraforms) {
+		return nil, false
+	}
+	return o.Terraforms, true
+}
+
+// HasTerraforms returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasTerraforms() bool {
+	if o != nil && !IsNil(o.Terraforms) {
+		return true
+	}
+
+	return false
+}
+
+// SetTerraforms gets a reference to the given []TerraformDeployRequest and assigns it to the Terraforms field.
+func (o *DeployAllRequest) SetTerraforms(v []TerraformDeployRequest) {
+	o.Terraforms = v
+}
+
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -231,6 +264,9 @@ func (o DeployAllRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Helms) {
 		toSerialize["helms"] = o.Helms
+	}
+	if !IsNil(o.Terraforms) {
+		toSerialize["terraforms"] = o.Terraforms
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -259,6 +295,7 @@ func (o *DeployAllRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "containers")
 		delete(additionalProperties, "jobs")
 		delete(additionalProperties, "helms")
+		delete(additionalProperties, "terraforms")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -23214,6 +23214,17 @@ components:
         databases:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        terraforms:
+        - git_commit_id: git_commit_id
+          force_unlock_state: true
+          action: PLAN
+          dry_run: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_commit_id: git_commit_id
+          force_unlock_state: true
+          action: PLAN
+          dry_run: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         jobs:
         - git_commit_id: git_commit_id
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23261,6 +23272,10 @@ components:
         helms:
           items:
             $ref: '#/components/schemas/DeployAllRequest_helms_inner'
+          type: array
+        terraforms:
+          items:
+            $ref: '#/components/schemas/TerraformDeployRequest'
           type: array
       type: object
     DeployRequest:
@@ -34415,16 +34430,34 @@ components:
       example:
         git_commit_id: git_commit_id
         force_unlock_state: true
+        action: PLAN
         dry_run: true
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
+        id:
+          description: Terraform service identifier
+          format: uuid
+          nullable: true
+          type: string
         git_commit_id:
-          description: |
-            Commit to deploy for chart source.
+          description: Commit to deploy for chart source.
           type: string
         dry_run:
+          description: "Deprecated: use action=PLAN instead."
           type: boolean
         force_unlock_state:
+          description: "Deprecated: use action=FORCE_UNLOCK instead."
+          nullable: true
           type: boolean
+        action:
+          description: Terraform action to execute.
+          enum:
+          - PLAN
+          - PLAN_AND_APPLY
+          - FORCE_UNLOCK
+          - DESTROY
+          nullable: true
+          type: string
       type: object
     TerraformDeploymentRestrictionRequest:
       example:
