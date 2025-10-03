@@ -30,6 +30,8 @@ type LifecycleJobResponse struct {
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory int32 `json:"maximum_memory"`
+	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
+	MaximumGpu int32 `json:"maximum_gpu"`
 	// name is case insensitive
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
@@ -37,6 +39,7 @@ type LifecycleJobResponse struct {
 	Cpu int32 `json:"cpu"`
 	// unit is MB. 1024 MB = 1GB
 	Memory int32 `json:"memory"`
+	Gpu    int32 `json:"gpu"`
 	// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
 	MaxNbRestart *int32 `json:"max_nb_restart,omitempty"`
 	// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
@@ -44,9 +47,9 @@ type LifecycleJobResponse struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview bool `json:"auto_preview"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32              `json:"port,omitempty"`
-	Source       BaseJobResponseAllOfSource `json:"source"`
-	Healthchecks Healthcheck                `json:"healthchecks"`
+	Port         NullableInt32          `json:"port,omitempty"`
+	Source       map[string]interface{} `json:"source"`
+	Healthchecks Healthcheck            `json:"healthchecks"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy *bool `json:"auto_deploy,omitempty"`
 	// Icon URI representing the job.
@@ -65,16 +68,18 @@ type _LifecycleJobResponse LifecycleJobResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType JobTypeEnum, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
+func NewLifecycleJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, maximumGpu int32, name string, cpu int32, memory int32, gpu int32, autoPreview bool, source map[string]interface{}, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, jobType JobTypeEnum, schedule LifecycleJobResponseAllOfSchedule) *LifecycleJobResponse {
 	this := LifecycleJobResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Environment = environment
 	this.MaximumCpu = maximumCpu
 	this.MaximumMemory = maximumMemory
+	this.MaximumGpu = maximumGpu
 	this.Name = name
 	this.Cpu = cpu
 	this.Memory = memory
+	this.Gpu = gpu
 	this.AutoPreview = autoPreview
 	this.Source = source
 	this.Healthchecks = healthchecks
@@ -90,6 +95,10 @@ func NewLifecycleJobResponse(id string, createdAt time.Time, environment Referen
 // but it doesn't guarantee that properties required by API are set
 func NewLifecycleJobResponseWithDefaults() *LifecycleJobResponse {
 	this := LifecycleJobResponse{}
+	var maximumGpu int32 = 0
+	this.MaximumGpu = maximumGpu
+	var gpu int32 = 0
+	this.Gpu = gpu
 	return &this
 }
 
@@ -245,6 +254,30 @@ func (o *LifecycleJobResponse) SetMaximumMemory(v int32) {
 	o.MaximumMemory = v
 }
 
+// GetMaximumGpu returns the MaximumGpu field value
+func (o *LifecycleJobResponse) GetMaximumGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MaximumGpu
+}
+
+// GetMaximumGpuOk returns a tuple with the MaximumGpu field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleJobResponse) GetMaximumGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MaximumGpu, true
+}
+
+// SetMaximumGpu sets field value
+func (o *LifecycleJobResponse) SetMaximumGpu(v int32) {
+	o.MaximumGpu = v
+}
+
 // GetName returns the Name field value
 func (o *LifecycleJobResponse) GetName() string {
 	if o == nil {
@@ -347,6 +380,30 @@ func (o *LifecycleJobResponse) GetMemoryOk() (*int32, bool) {
 // SetMemory sets field value
 func (o *LifecycleJobResponse) SetMemory(v int32) {
 	o.Memory = v
+}
+
+// GetGpu returns the Gpu field value
+func (o *LifecycleJobResponse) GetGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value
+// and a boolean to check if the value has been set.
+func (o *LifecycleJobResponse) GetGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Gpu, true
+}
+
+// SetGpu sets field value
+func (o *LifecycleJobResponse) SetGpu(v int32) {
+	o.Gpu = v
 }
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
@@ -481,9 +538,10 @@ func (o *LifecycleJobResponse) UnsetPort() {
 }
 
 // GetSource returns the Source field value
-func (o *LifecycleJobResponse) GetSource() BaseJobResponseAllOfSource {
+// If the value is explicit nil, the zero value for map[string]interface{} will be returned
+func (o *LifecycleJobResponse) GetSource() map[string]interface{} {
 	if o == nil {
-		var ret BaseJobResponseAllOfSource
+		var ret map[string]interface{}
 		return ret
 	}
 
@@ -492,15 +550,16 @@ func (o *LifecycleJobResponse) GetSource() BaseJobResponseAllOfSource {
 
 // GetSourceOk returns a tuple with the Source field value
 // and a boolean to check if the value has been set.
-func (o *LifecycleJobResponse) GetSourceOk() (*BaseJobResponseAllOfSource, bool) {
-	if o == nil {
-		return nil, false
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LifecycleJobResponse) GetSourceOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.Source) {
+		return map[string]interface{}{}, false
 	}
-	return &o.Source, true
+	return o.Source, true
 }
 
 // SetSource sets field value
-func (o *LifecycleJobResponse) SetSource(v BaseJobResponseAllOfSource) {
+func (o *LifecycleJobResponse) SetSource(v map[string]interface{}) {
 	o.Source = v
 }
 
@@ -738,12 +797,14 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["environment"] = o.Environment
 	toSerialize["maximum_cpu"] = o.MaximumCpu
 	toSerialize["maximum_memory"] = o.MaximumMemory
+	toSerialize["maximum_gpu"] = o.MaximumGpu
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["memory"] = o.Memory
+	toSerialize["gpu"] = o.Gpu
 	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
@@ -754,7 +815,9 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	if o.Port.IsSet() {
 		toSerialize["port"] = o.Port.Get()
 	}
-	toSerialize["source"] = o.Source
+	if o.Source != nil {
+		toSerialize["source"] = o.Source
+	}
 	toSerialize["healthchecks"] = o.Healthchecks
 	if !IsNil(o.AutoDeploy) {
 		toSerialize["auto_deploy"] = o.AutoDeploy
@@ -787,9 +850,11 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		"environment",
 		"maximum_cpu",
 		"maximum_memory",
+		"maximum_gpu",
 		"name",
 		"cpu",
 		"memory",
+		"gpu",
 		"auto_preview",
 		"source",
 		"healthchecks",
@@ -832,10 +897,12 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
+		delete(additionalProperties, "maximum_gpu")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "max_nb_restart")
 		delete(additionalProperties, "max_duration_seconds")
 		delete(additionalProperties, "auto_preview")

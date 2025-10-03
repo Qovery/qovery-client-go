@@ -10,15 +10,17 @@ Name | Type | Description | Notes
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
+**MaximumGpu** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
+**Gpu** | **int32** |  | [default to 0]
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] 
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
-**Source** | [**BaseJobResponseAllOfSource**](BaseJobResponseAllOfSource.md) |  | 
+**Source** | **map[string]interface{}** |  | 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **AutoDeploy** | Pointer to **bool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
 **IconUri** | **string** | Icon URI representing the job. | 
@@ -28,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewBaseJobResponse
 
-`func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, autoPreview bool, source BaseJobResponseAllOfSource, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, ) *BaseJobResponse`
+`func NewBaseJobResponse(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, maximumGpu int32, name string, cpu int32, memory int32, gpu int32, autoPreview bool, source map[string]interface{}, healthchecks Healthcheck, iconUri string, serviceType ServiceTypeEnum, ) *BaseJobResponse`
 
 NewBaseJobResponse instantiates a new BaseJobResponse object
 This constructor will assign default values to properties that have it defined,
@@ -168,6 +170,26 @@ and a boolean to check if the value has been set.
 SetMaximumMemory sets MaximumMemory field to given value.
 
 
+### GetMaximumGpu
+
+`func (o *BaseJobResponse) GetMaximumGpu() int32`
+
+GetMaximumGpu returns the MaximumGpu field if non-nil, zero value otherwise.
+
+### GetMaximumGpuOk
+
+`func (o *BaseJobResponse) GetMaximumGpuOk() (*int32, bool)`
+
+GetMaximumGpuOk returns a tuple with the MaximumGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumGpu
+
+`func (o *BaseJobResponse) SetMaximumGpu(v int32)`
+
+SetMaximumGpu sets MaximumGpu field to given value.
+
+
 ### GetName
 
 `func (o *BaseJobResponse) GetName() string`
@@ -251,6 +273,26 @@ and a boolean to check if the value has been set.
 `func (o *BaseJobResponse) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
+
+
+### GetGpu
+
+`func (o *BaseJobResponse) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *BaseJobResponse) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *BaseJobResponse) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
 
 
 ### GetMaxNbRestart
@@ -360,24 +402,34 @@ HasPort returns a boolean if a field has been set.
 UnsetPort ensures that no value is present for Port, not even an explicit nil
 ### GetSource
 
-`func (o *BaseJobResponse) GetSource() BaseJobResponseAllOfSource`
+`func (o *BaseJobResponse) GetSource() map[string]interface{}`
 
 GetSource returns the Source field if non-nil, zero value otherwise.
 
 ### GetSourceOk
 
-`func (o *BaseJobResponse) GetSourceOk() (*BaseJobResponseAllOfSource, bool)`
+`func (o *BaseJobResponse) GetSourceOk() (*map[string]interface{}, bool)`
 
 GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSource
 
-`func (o *BaseJobResponse) SetSource(v BaseJobResponseAllOfSource)`
+`func (o *BaseJobResponse) SetSource(v map[string]interface{})`
 
 SetSource sets Source field to given value.
 
 
+### SetSourceNil
+
+`func (o *BaseJobResponse) SetSourceNil(b bool)`
+
+ SetSourceNil sets the value for Source to be an explicit nil
+
+### UnsetSource
+`func (o *BaseJobResponse) UnsetSource()`
+
+UnsetSource ensures that no value is present for Source, not even an explicit nil
 ### GetHealthchecks
 
 `func (o *BaseJobResponse) GetHealthchecks() Healthcheck`

@@ -28,6 +28,7 @@ type JobRequest struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
+	Gpu    *int32 `json:"gpu,omitempty"`
 	// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
 	MaxNbRestart *int32 `json:"max_nb_restart,omitempty"`
 	// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
@@ -61,6 +62,8 @@ func NewJobRequest(name string, healthchecks Healthcheck) *JobRequest {
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var maxNbRestart int32 = 0
 	this.MaxNbRestart = &maxNbRestart
 	this.Healthchecks = healthchecks
@@ -76,6 +79,8 @@ func NewJobRequestWithDefaults() *JobRequest {
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var maxNbRestart int32 = 0
 	this.MaxNbRestart = &maxNbRestart
 	return &this
@@ -199,6 +204,38 @@ func (o *JobRequest) HasMemory() bool {
 // SetMemory gets a reference to the given int32 and assigns it to the Memory field.
 func (o *JobRequest) SetMemory(v int32) {
 	o.Memory = &v
+}
+
+// GetGpu returns the Gpu field value if set, zero value otherwise.
+func (o *JobRequest) GetGpu() int32 {
+	if o == nil || IsNil(o.Gpu) {
+		var ret int32
+		return ret
+	}
+	return *o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetGpuOk() (*int32, bool) {
+	if o == nil || IsNil(o.Gpu) {
+		return nil, false
+	}
+	return o.Gpu, true
+}
+
+// HasGpu returns a boolean if a field has been set.
+func (o *JobRequest) HasGpu() bool {
+	if o != nil && !IsNil(o.Gpu) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpu gets a reference to the given int32 and assigns it to the Gpu field.
+func (o *JobRequest) SetGpu(v int32) {
+	o.Gpu = &v
 }
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
@@ -587,6 +624,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
+	if !IsNil(o.Gpu) {
+		toSerialize["gpu"] = o.Gpu
+	}
 	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
@@ -666,6 +706,7 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "max_nb_restart")
 		delete(additionalProperties, "max_duration_seconds")
 		delete(additionalProperties, "auto_preview")

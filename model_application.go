@@ -32,6 +32,7 @@ type Application struct {
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
+	MaximunGpu    *int32 `json:"maximun_gpu,omitempty"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
@@ -43,6 +44,7 @@ type Application struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
+	Gpu    *int32 `json:"gpu,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -77,9 +79,13 @@ func NewApplication(id string, createdAt time.Time, environment ReferenceObject,
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Environment = environment
+	var maximunGpu int32 = 0
+	this.MaximunGpu = &maximunGpu
 	this.Name = name
 	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -97,8 +103,12 @@ func NewApplication(id string, createdAt time.Time, environment ReferenceObject,
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationWithDefaults() *Application {
 	this := Application{}
+	var maximunGpu int32 = 0
+	this.MaximunGpu = &maximunGpu
 	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -340,6 +350,38 @@ func (o *Application) SetMaximumMemory(v int32) {
 	o.MaximumMemory = &v
 }
 
+// GetMaximunGpu returns the MaximunGpu field value if set, zero value otherwise.
+func (o *Application) GetMaximunGpu() int32 {
+	if o == nil || IsNil(o.MaximunGpu) {
+		var ret int32
+		return ret
+	}
+	return *o.MaximunGpu
+}
+
+// GetMaximunGpuOk returns a tuple with the MaximunGpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetMaximunGpuOk() (*int32, bool) {
+	if o == nil || IsNil(o.MaximunGpu) {
+		return nil, false
+	}
+	return o.MaximunGpu, true
+}
+
+// HasMaximunGpu returns a boolean if a field has been set.
+func (o *Application) HasMaximunGpu() bool {
+	if o != nil && !IsNil(o.MaximunGpu) {
+		return true
+	}
+
+	return false
+}
+
+// SetMaximunGpu gets a reference to the given int32 and assigns it to the MaximunGpu field.
+func (o *Application) SetMaximunGpu(v int32) {
+	o.MaximunGpu = &v
+}
+
 // GetName returns the Name field value
 func (o *Application) GetName() string {
 	if o == nil {
@@ -533,6 +575,38 @@ func (o *Application) HasMemory() bool {
 // SetMemory gets a reference to the given int32 and assigns it to the Memory field.
 func (o *Application) SetMemory(v int32) {
 	o.Memory = &v
+}
+
+// GetGpu returns the Gpu field value if set, zero value otherwise.
+func (o *Application) GetGpu() int32 {
+	if o == nil || IsNil(o.Gpu) {
+		var ret int32
+		return ret
+	}
+	return *o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetGpuOk() (*int32, bool) {
+	if o == nil || IsNil(o.Gpu) {
+		return nil, false
+	}
+	return o.Gpu, true
+}
+
+// HasGpu returns a boolean if a field has been set.
+func (o *Application) HasGpu() bool {
+	if o != nil && !IsNil(o.Gpu) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpu gets a reference to the given int32 and assigns it to the Gpu field.
+func (o *Application) SetGpu(v int32) {
+	o.Gpu = &v
 }
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
@@ -966,6 +1040,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MaximumMemory) {
 		toSerialize["maximum_memory"] = o.MaximumMemory
 	}
+	if !IsNil(o.MaximunGpu) {
+		toSerialize["maximun_gpu"] = o.MaximunGpu
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -981,6 +1058,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
+	}
+	if !IsNil(o.Gpu) {
+		toSerialize["gpu"] = o.Gpu
 	}
 	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
@@ -1072,12 +1152,14 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
+		delete(additionalProperties, "maximun_gpu")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "build_mode")
 		delete(additionalProperties, "dockerfile_path")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "min_running_instances")
 		delete(additionalProperties, "max_running_instances")
 		delete(additionalProperties, "healthchecks")

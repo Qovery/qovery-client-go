@@ -38,6 +38,8 @@ type ContainerResponse struct {
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory int32 `json:"maximum_memory"`
+	// Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB = 1GB
+	MaximumGpu int32 `json:"maximum_gpu"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this container
@@ -49,6 +51,7 @@ type ContainerResponse struct {
 	Cpu int32 `json:"cpu"`
 	// unit is MB. 1024 MB = 1GB
 	Memory int32 `json:"memory"`
+	Gpu    int32 `json:"gpu"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.
 	MinRunningInstances int32 `json:"min_running_instances"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -73,7 +76,7 @@ type _ContainerResponse ContainerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum) *ContainerResponse {
+func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, maximumGpu int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum) *ContainerResponse {
 	this := ContainerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -83,9 +86,11 @@ func NewContainerResponse(id string, createdAt time.Time, imageName string, tag 
 	this.Environment = environment
 	this.MaximumCpu = maximumCpu
 	this.MaximumMemory = maximumMemory
+	this.MaximumGpu = maximumGpu
 	this.Name = name
 	this.Cpu = cpu
 	this.Memory = memory
+	this.Gpu = gpu
 	this.MinRunningInstances = minRunningInstances
 	this.MaxRunningInstances = maxRunningInstances
 	this.Healthchecks = healthchecks
@@ -100,6 +105,10 @@ func NewContainerResponse(id string, createdAt time.Time, imageName string, tag 
 // but it doesn't guarantee that properties required by API are set
 func NewContainerResponseWithDefaults() *ContainerResponse {
 	this := ContainerResponse{}
+	var maximumGpu int32 = 0
+	this.MaximumGpu = maximumGpu
+	var gpu int32 = 0
+	this.Gpu = gpu
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -395,6 +404,30 @@ func (o *ContainerResponse) SetMaximumMemory(v int32) {
 	o.MaximumMemory = v
 }
 
+// GetMaximumGpu returns the MaximumGpu field value
+func (o *ContainerResponse) GetMaximumGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MaximumGpu
+}
+
+// GetMaximumGpuOk returns a tuple with the MaximumGpu field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetMaximumGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MaximumGpu, true
+}
+
+// SetMaximumGpu sets field value
+func (o *ContainerResponse) SetMaximumGpu(v int32) {
+	o.MaximumGpu = v
+}
+
 // GetName returns the Name field value
 func (o *ContainerResponse) GetName() string {
 	if o == nil {
@@ -561,6 +594,30 @@ func (o *ContainerResponse) GetMemoryOk() (*int32, bool) {
 // SetMemory sets field value
 func (o *ContainerResponse) SetMemory(v int32) {
 	o.Memory = v
+}
+
+// GetGpu returns the Gpu field value
+func (o *ContainerResponse) GetGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Gpu, true
+}
+
+// SetGpu sets field value
+func (o *ContainerResponse) SetGpu(v int32) {
+	o.Gpu = v
 }
 
 // GetMinRunningInstances returns the MinRunningInstances field value
@@ -862,6 +919,7 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["environment"] = o.Environment
 	toSerialize["maximum_cpu"] = o.MaximumCpu
 	toSerialize["maximum_memory"] = o.MaximumMemory
+	toSerialize["maximum_gpu"] = o.MaximumGpu
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -874,6 +932,7 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["memory"] = o.Memory
+	toSerialize["gpu"] = o.Gpu
 	toSerialize["min_running_instances"] = o.MinRunningInstances
 	toSerialize["max_running_instances"] = o.MaxRunningInstances
 	toSerialize["healthchecks"] = o.Healthchecks
@@ -913,9 +972,11 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		"environment",
 		"maximum_cpu",
 		"maximum_memory",
+		"maximum_gpu",
 		"name",
 		"cpu",
 		"memory",
+		"gpu",
 		"min_running_instances",
 		"max_running_instances",
 		"healthchecks",
@@ -962,12 +1023,14 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
+		delete(additionalProperties, "maximum_gpu")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "arguments")
 		delete(additionalProperties, "entrypoint")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "min_running_instances")
 		delete(additionalProperties, "max_running_instances")
 		delete(additionalProperties, "healthchecks")

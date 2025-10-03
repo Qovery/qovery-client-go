@@ -15,12 +15,14 @@ Name | Type | Description | Notes
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
+**MaximumGpu** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** | give a description to this container | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
+**Gpu** | **int32** |  | [default to 0]
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
@@ -36,7 +38,7 @@ Name | Type | Description | Notes
 
 ### NewContainerResponse
 
-`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum, ) *ContainerResponse`
+`func NewContainerResponse(id string, createdAt time.Time, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, environment ReferenceObject, maximumCpu int32, maximumMemory int32, maximumGpu int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, iconUri string, serviceType ServiceTypeEnum, ) *ContainerResponse`
 
 NewContainerResponse instantiates a new ContainerResponse object
 This constructor will assign default values to properties that have it defined,
@@ -286,6 +288,26 @@ and a boolean to check if the value has been set.
 SetMaximumMemory sets MaximumMemory field to given value.
 
 
+### GetMaximumGpu
+
+`func (o *ContainerResponse) GetMaximumGpu() int32`
+
+GetMaximumGpu returns the MaximumGpu field if non-nil, zero value otherwise.
+
+### GetMaximumGpuOk
+
+`func (o *ContainerResponse) GetMaximumGpuOk() (*int32, bool)`
+
+GetMaximumGpuOk returns a tuple with the MaximumGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumGpu
+
+`func (o *ContainerResponse) SetMaximumGpu(v int32)`
+
+SetMaximumGpu sets MaximumGpu field to given value.
+
+
 ### GetName
 
 `func (o *ContainerResponse) GetName() string`
@@ -419,6 +441,26 @@ and a boolean to check if the value has been set.
 `func (o *ContainerResponse) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
+
+
+### GetGpu
+
+`func (o *ContainerResponse) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *ContainerResponse) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *ContainerResponse) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
 
 
 ### GetMinRunningInstances

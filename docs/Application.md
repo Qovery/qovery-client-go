@@ -12,12 +12,14 @@ Name | Type | Description | Notes
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
+**MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** | give a description to this application | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] 
+**Gpu** | Pointer to **int32** |  | [optional] [default to 0]
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
@@ -236,6 +238,31 @@ SetMaximumMemory sets MaximumMemory field to given value.
 
 HasMaximumMemory returns a boolean if a field has been set.
 
+### GetMaximunGpu
+
+`func (o *Application) GetMaximunGpu() int32`
+
+GetMaximunGpu returns the MaximunGpu field if non-nil, zero value otherwise.
+
+### GetMaximunGpuOk
+
+`func (o *Application) GetMaximunGpuOk() (*int32, bool)`
+
+GetMaximunGpuOk returns a tuple with the MaximunGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximunGpu
+
+`func (o *Application) SetMaximunGpu(v int32)`
+
+SetMaximunGpu sets MaximunGpu field to given value.
+
+### HasMaximunGpu
+
+`func (o *Application) HasMaximunGpu() bool`
+
+HasMaximunGpu returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *Application) GetName() string`
@@ -390,6 +417,31 @@ SetMemory sets Memory field to given value.
 `func (o *Application) HasMemory() bool`
 
 HasMemory returns a boolean if a field has been set.
+
+### GetGpu
+
+`func (o *Application) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *Application) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *Application) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
+
+### HasGpu
+
+`func (o *Application) HasGpu() bool`
+
+HasGpu returns a boolean if a field has been set.
 
 ### GetMinRunningInstances
 

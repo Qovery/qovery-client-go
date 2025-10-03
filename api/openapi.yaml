@@ -17856,6 +17856,12 @@ components:
               on organization cluster configuration. unit is MB. 1024 MB = 1GB
             example: 16384
             type: integer
+          maximun_gpu:
+            default: 0
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: ho7l9maiyqe52
           name:
             description: name is case insensitive
             type: string
@@ -17877,6 +17883,12 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: 3n3pebmhkah3k
           min_running_instances:
             default: 1
             description: |
@@ -17940,6 +17952,7 @@ components:
         type: object
       example:
         min_running_instances: 0
+        maximun_gpu: 0
         auto_deploy: true
         memory: 1024
         labels_groups:
@@ -17968,50 +17981,50 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        max_running_instances: 6
+        max_running_instances: 5
         git_repository:
           owner: John Doe
           git_token_id: git_token_id
@@ -18086,6 +18099,7 @@ components:
         build_mode: DOCKER
         cpu: 1250
         dockerfile_path: dockerfile_path
+        gpu: 0
         icon_uri: https://openapi-generator.tech
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18236,47 +18250,47 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         build_mode: DOCKER
         description: description
         cpu: 1250
@@ -18572,6 +18586,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: 1jq9ic2dbgx3l
           min_running_instances:
             default: 1
             description: |
@@ -18637,47 +18658,47 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         build_mode: DOCKER
         description: description
         cpu: 1250
@@ -18717,6 +18738,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        gpu: 1
         icon_uri: https://openapi-generator.tech
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18732,6 +18754,7 @@ components:
       example:
         results:
         - min_running_instances: 0
+          maximun_gpu: 0
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -18760,50 +18783,50 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 6
+          max_running_instances: 5
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -18878,6 +18901,7 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -18889,6 +18913,7 @@ components:
           - arguments
           - arguments
         - min_running_instances: 0
+          maximun_gpu: 0
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -18917,50 +18942,50 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 6
+          max_running_instances: 5
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -19035,6 +19060,7 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -21726,6 +21752,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: j1i1u2mlnlgfm
           min_running_instances:
             default: 1
             description: |
@@ -21780,47 +21813,47 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         description: description
         cpu: 1250
         max_running_instances: 6
@@ -21852,6 +21885,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        gpu: 1
         registry_id: registry_id
         icon_uri: https://openapi-generator.tech
         image_name: image_name
@@ -21884,6 +21918,15 @@ components:
               on organization cluster configuration. unit is MB. 1024 MB = 1GB
             example: 16384
             type: integer
+          maximum_gpu:
+            default: 0
+            description: Maximum memory that can be allocated to the container based
+              on organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 2
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: zdw9ry7s5s0e8
           name:
             description: name is case insensitive
             type: string
@@ -21905,6 +21948,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: qthonnmak3re3
           min_running_instances:
             default: 1
             description: |
@@ -21950,10 +22000,12 @@ components:
         - auto_preview
         - cpu
         - environment
+        - gpu
         - healthchecks
         - icon_uri
         - max_running_instances
         - maximum_cpu
+        - maximum_gpu
         - maximum_memory
         - memory
         - min_running_instances
@@ -21990,47 +22042,47 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         max_running_instances: 6
@@ -22100,10 +22152,12 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
         cpu: 1250
+        gpu: 1
         icon_uri: https://openapi-generator.tech
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         service_type: APPLICATION
+        maximum_gpu: 2
         maximum_cpu: 16000
         name: name
         arguments:
@@ -22141,47 +22195,47 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           max_running_instances: 6
@@ -22251,10 +22305,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url: url
           cpu: 1250
+          gpu: 1
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           service_type: APPLICATION
+          maximum_gpu: 2
           maximum_cpu: 16000
           name: name
           arguments:
@@ -22289,47 +22345,47 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           max_running_instances: 6
@@ -22399,10 +22455,12 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url: url
           cpu: 1250
+          gpu: 1
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           service_type: APPLICATION
+          maximum_gpu: 2
           maximum_cpu: 16000
           name: name
           arguments:
@@ -22415,15 +22473,6 @@ components:
           type: array
       type: object
     ContainerSource:
-      example:
-        image_name: image_name
-        registry:
-          kind: ECR
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          url: url
-        tag: tag
-        registry_id: registry_id
       properties:
         image_name:
           description: |
@@ -26596,47 +26645,47 @@ components:
     Healthcheck:
       example:
         readiness_probe:
-          period_seconds: 7
-          initial_delay_seconds: 2
-          failure_threshold: 2
-          success_threshold: 3
+          period_seconds: 3
+          initial_delay_seconds: 9
+          failure_threshold: 7
+          success_threshold: 4
           type:
             tcp:
-              port: 1
+              port: 5
               host: host
             http:
               path: /
               scheme: HTTP
-              port: 5
+              port: 2
             exec:
               command:
               - command
               - command
             grpc:
-              port: 5
+              port: 7
               service: service
-          timeout_seconds: 9
+          timeout_seconds: 2
         liveness_probe:
-          period_seconds: 7
-          initial_delay_seconds: 2
-          failure_threshold: 2
-          success_threshold: 3
+          period_seconds: 3
+          initial_delay_seconds: 9
+          failure_threshold: 7
+          success_threshold: 4
           type:
             tcp:
-              port: 1
+              port: 5
               host: host
             http:
               path: /
               scheme: HTTP
-              port: 5
+              port: 2
             exec:
               command:
               - command
               - command
             grpc:
-              port: 5
+              port: 7
               service: service
-          timeout_seconds: 9
+          timeout_seconds: 2
       nullable: false
       properties:
         readiness_probe:
@@ -27358,6 +27407,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: 4074yrndptih5
           max_nb_restart:
             default: 0
             description: |
@@ -27417,47 +27473,47 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         description: description
         cpu: 1250
         source:
@@ -27476,6 +27532,7 @@ components:
               url: https://github.com/Qovery/simple-node-app
             dockerfile_path: dockerfile_path
         max_nb_restart: 0
+        gpu: 1
         icon_uri: https://openapi-generator.tech
         schedule:
           on_start:
@@ -27550,84 +27607,52 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          cpu: 1250
-          source:
-            image:
-              image_name: image_name
-              registry:
-                kind: ECR
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                url: url
-              tag: tag
-              registry_id: registry_id
+          source: null
           max_nb_restart: 0
-          icon_uri: https://openapi-generator.tech
-          schedule:
-            on_start:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            on_delete:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            on_stop:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            lifecycle_type: GENERIC
-          environment:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
-          port: 1
           annotations_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -27653,11 +27678,36 @@ components:
             scopes:
             - DEPLOYMENTS
             - DEPLOYMENTS
-          maximum_cpu: 16000
-          name: name
           max_duration_seconds: 0
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cpu: 1250
+          gpu: 1
+          icon_uri: https://openapi-generator.tech
+          schedule:
+            on_start:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            on_delete:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            on_stop:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            lifecycle_type: GENERIC
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_type: APPLICATION
+          maximum_gpu: 2
+          port: 1
+          maximum_cpu: 16000
+          name: name
         - job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
@@ -27687,84 +27737,52 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          cpu: 1250
-          source:
-            image:
-              image_name: image_name
-              registry:
-                kind: ECR
-                name: name
-                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-                url: url
-              tag: tag
-              registry_id: registry_id
+          source: null
           max_nb_restart: 0
-          icon_uri: https://openapi-generator.tech
-          schedule:
-            on_start:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            on_delete:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            on_stop:
-              entrypoint: entrypoint
-              arguments:
-              - arguments
-              - arguments
-            lifecycle_type: GENERIC
-          environment:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
-          port: 1
           annotations_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -27790,11 +27808,36 @@ components:
             scopes:
             - DEPLOYMENTS
             - DEPLOYMENTS
-          maximum_cpu: 16000
-          name: name
           max_duration_seconds: 0
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          cpu: 1250
+          gpu: 1
+          icon_uri: https://openapi-generator.tech
+          schedule:
+            on_start:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            on_delete:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            on_stop:
+              entrypoint: entrypoint
+              arguments:
+              - arguments
+              - arguments
+            lifecycle_type: GENERIC
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_type: APPLICATION
+          maximum_gpu: 2
+          port: 1
+          maximum_cpu: 16000
+          name: name
       properties:
         results:
           items:
@@ -30377,26 +30420,26 @@ components:
       type: string
     Probe:
       example:
-        period_seconds: 7
-        initial_delay_seconds: 2
-        failure_threshold: 2
-        success_threshold: 3
+        period_seconds: 3
+        initial_delay_seconds: 9
+        failure_threshold: 7
+        success_threshold: 4
         type:
           tcp:
-            port: 1
+            port: 5
             host: host
           http:
             path: /
             scheme: HTTP
-            port: 5
+            port: 2
           exec:
             command:
             - command
             - command
           grpc:
-            port: 5
+            port: 7
             service: service
-        timeout_seconds: 9
+        timeout_seconds: 2
       nullable: true
       properties:
         type:
@@ -32118,84 +32161,52 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
           liveness_probe:
-            period_seconds: 7
-            initial_delay_seconds: 2
-            failure_threshold: 2
-            success_threshold: 3
+            period_seconds: 3
+            initial_delay_seconds: 9
+            failure_threshold: 7
+            success_threshold: 4
             type:
               tcp:
-                port: 1
+                port: 5
                 host: host
               http:
                 path: /
                 scheme: HTTP
-                port: 5
+                port: 2
               exec:
                 command:
                 - command
                 - command
               grpc:
-                port: 5
+                port: 7
                 service: service
-            timeout_seconds: 9
+            timeout_seconds: 2
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        cpu: 1250
-        source:
-          image:
-            image_name: image_name
-            registry:
-              kind: ECR
-              name: name
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              url: url
-            tag: tag
-            registry_id: registry_id
+        source: null
         max_nb_restart: 0
-        icon_uri: https://openapi-generator.tech
-        schedule:
-          on_start:
-            entrypoint: entrypoint
-            arguments:
-            - arguments
-            - arguments
-          on_delete:
-            entrypoint: entrypoint
-            arguments:
-            - arguments
-            - arguments
-          on_stop:
-            entrypoint: entrypoint
-            arguments:
-            - arguments
-            - arguments
-          lifecycle_type: GENERIC
-        environment:
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        service_type: APPLICATION
         updated_at: 2000-01-23T04:56:07.000+00:00
-        port: 1
         annotations_groups:
         - updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
@@ -32221,11 +32232,36 @@ components:
           scopes:
           - DEPLOYMENTS
           - DEPLOYMENTS
-        maximum_cpu: 16000
-        name: name
         max_duration_seconds: 0
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cpu: 1250
+        gpu: 1
+        icon_uri: https://openapi-generator.tech
+        schedule:
+          on_start:
+            entrypoint: entrypoint
+            arguments:
+            - arguments
+            - arguments
+          on_delete:
+            entrypoint: entrypoint
+            arguments:
+            - arguments
+            - arguments
+          on_stop:
+            entrypoint: entrypoint
+            arguments:
+            - arguments
+            - arguments
+          lifecycle_type: GENERIC
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_type: APPLICATION
+        maximum_gpu: 2
+        port: 1
+        maximum_cpu: 16000
+        name: name
       title: ""
     CronJobResponse:
       allOf:
@@ -32259,6 +32295,15 @@ components:
               organization cluster configuration. unit is MB. 1024 MB = 1GB
             example: 16384
             type: integer
+          maximum_gpu:
+            default: 0
+            description: Maximum memory that can be allocated to the job based on
+              organization cluster configuration. unit is MB. 1024 MB = 1GB
+            example: 2
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: 7o0e6wrgnxgcc
           name:
             description: name is case insensitive
             type: string
@@ -32272,6 +32317,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: 50sj2wtkdypgg
           max_nb_restart:
             description: |
               Maximum number of restart allowed before the job is considered as failed
@@ -32318,9 +32370,11 @@ components:
         - auto_preview
         - cpu
         - environment
+        - gpu
         - healthchecks
         - icon_uri
         - maximum_cpu
+        - maximum_gpu
         - maximum_memory
         - memory
         - name
@@ -33200,7 +33254,6 @@ components:
       x-stoplight:
         id: nxbpo7v2ecz72
     KarpenterNodePool:
-      description: ""
       properties:
         requirements:
           items:
@@ -33212,6 +33265,8 @@ components:
           $ref: '#/components/schemas/KarpenterStableNodePoolOverride'
         default_override:
           $ref: '#/components/schemas/KarpenterDefaultNodePoolOverride'
+        gpu_override:
+          $ref: '#/components/schemas/KarpenterGpuNodePoolOverride'
       required:
       - requirements
       title: KarpenterNodePool
@@ -33266,6 +33321,22 @@ components:
           $ref: '#/components/schemas/KarpenterNodePoolLimits'
       title: KarpenterStableNodePoolOverride
       type: object
+    KarpenterGpuNodePoolOverride:
+      properties:
+        consolidation:
+          $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
+        limits:
+          $ref: '#/components/schemas/KarpenterNodePoolLimits'
+        requirements:
+          items:
+            $ref: '#/components/schemas/KarpenterNodePoolRequirement'
+          type: array
+          x-stoplight:
+            id: 38pdri17ozql9
+      title: KarpenterGpuNodePoolOverride
+      type: object
+      x-stoplight:
+        id: fi2s446xdrdu1
     KarpenterDefaultNodePoolOverride:
       properties:
         limits:
@@ -33863,6 +33934,7 @@ components:
         job_resources:
           cpu_milli: 6
           ram_mib: 1
+          gpu: 1
           storage_gib: 5
         description: description
         provider_version:
@@ -34022,6 +34094,7 @@ components:
         job_resources:
           cpu_milli: 6
           ram_mib: 1
+          gpu: 1
           storage_gib: 5
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -34065,6 +34138,7 @@ components:
       example:
         cpu_milli: 6
         ram_mib: 1
+        gpu: 1
         storage_gib: 5
       properties:
         cpu_milli:
@@ -34075,12 +34149,20 @@ components:
           type: integer
           x-stoplight:
             id: a5y9bv1avatm3
+        gpu:
+          default: 0
+          example: 1
+          minimum: 0
+          type: integer
+          x-stoplight:
+            id: rql3vn2yhkwec
         storage_gib:
           type: integer
           x-stoplight:
             id: 627awhyjj26ny
       required:
       - cpu_milli
+      - gpu
       - ram_mib
       - storage_gib
       title: TerraformRequestJobResources
@@ -34260,6 +34342,7 @@ components:
       example:
         cpu_milli: 6
         ram_mib: 1
+        gpu: 1
         storage_gib: 5
       properties:
         cpu_milli:
@@ -34270,12 +34353,20 @@ components:
           type: integer
           x-stoplight:
             id: f6dur44ah2bwe
+        gpu:
+          default: 0
+          example: 1
+          minimum: 0
+          type: integer
+          x-stoplight:
+            id: y8lomc204l40z
         storage_gib:
           type: integer
           x-stoplight:
             id: dsf78pwnvmqi8
       required:
       - cpu_milli
+      - gpu
       - ram_mib
       - storage_gib
       title: TerraformJobResourcesResponse
@@ -34289,6 +34380,7 @@ components:
           job_resources:
             cpu_milli: 6
             ram_mib: 1
+            gpu: 1
             storage_gib: 5
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -34332,6 +34424,7 @@ components:
           job_resources:
             cpu_milli: 6
             ram_mib: 1
+            gpu: 1
             storage_gib: 5
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -35118,6 +35211,7 @@ components:
       example:
         results:
         - min_running_instances: 0
+          maximun_gpu: 0
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -35146,50 +35240,50 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 6
+          max_running_instances: 5
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -35264,6 +35358,7 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35275,6 +35370,7 @@ components:
           - arguments
           - arguments
         - min_running_instances: 0
+          maximun_gpu: 0
           auto_deploy: true
           memory: 1024
           labels_groups:
@@ -35303,50 +35399,50 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
             liveness_probe:
-              period_seconds: 7
-              initial_delay_seconds: 2
-              failure_threshold: 2
-              success_threshold: 3
+              period_seconds: 3
+              initial_delay_seconds: 9
+              failure_threshold: 7
+              success_threshold: 4
               type:
                 tcp:
-                  port: 1
+                  port: 5
                   host: host
                 http:
                   path: /
                   scheme: HTTP
-                  port: 5
+                  port: 2
                 exec:
                   command:
                   - command
                   - command
                 grpc:
-                  port: 5
+                  port: 7
                   service: service
-              timeout_seconds: 9
+              timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 6
+          max_running_instances: 5
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -35421,6 +35517,7 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37475,7 +37572,7 @@ components:
       type: object
     Probe_type_tcp:
       example:
-        port: 1
+        port: 5
         host: host
       nullable: true
       properties:
@@ -37489,7 +37586,7 @@ components:
       example:
         path: /
         scheme: HTTP
-        port: 5
+        port: 2
       nullable: true
       properties:
         path:
@@ -37515,7 +37612,7 @@ components:
       type: object
     Probe_type_grpc:
       example:
-        port: 5
+        port: 7
         service: service
       nullable: true
       properties:
@@ -37528,18 +37625,18 @@ components:
     Probe_type:
       example:
         tcp:
-          port: 1
+          port: 5
           host: host
         http:
           path: /
           scheme: HTTP
-          port: 5
+          port: 2
         exec:
           command:
           - command
           - command
         grpc:
-          port: 5
+          port: 7
           service: service
       properties:
         tcp:
@@ -37651,35 +37748,9 @@ components:
       required:
       - cronjob
       type: object
-    BaseJobResponse_allOf_source_oneOf:
-      example:
-        image:
-          image_name: image_name
-          registry:
-            kind: ECR
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            url: url
-          tag: tag
-          registry_id: registry_id
-      properties:
-        image:
-          $ref: '#/components/schemas/ContainerSource'
-      required:
-      - image
-      type: object
-    BaseJobResponse_allOf_source_oneOf_1:
-      properties:
-        docker:
-          $ref: '#/components/schemas/JobSourceDockerResponse'
-      required:
-      - docker
-      type: object
     BaseJobResponse_allOf_source:
-      nullable: false
-      oneOf:
-      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf'
-      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf_1'
+      nullable: true
+      type: object
     HelmSourceRepositoryResponse_repository:
       properties:
         id:

@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
+**Gpu** | Pointer to **int32** |  | [optional] [default to 0]
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] [default to 0]
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
@@ -133,6 +134,31 @@ SetMemory sets Memory field to given value.
 `func (o *JobRequest) HasMemory() bool`
 
 HasMemory returns a boolean if a field has been set.
+
+### GetGpu
+
+`func (o *JobRequest) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *JobRequest) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *JobRequest) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
+
+### HasGpu
+
+`func (o *JobRequest) HasGpu() bool`
+
+HasGpu returns a boolean if a field has been set.
 
 ### GetMaxNbRestart
 

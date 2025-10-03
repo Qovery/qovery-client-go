@@ -35,6 +35,7 @@ type ApplicationRequest struct {
 	Cpu *int32 `json:"cpu,omitempty"`
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
+	Gpu    *int32 `json:"gpu,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -72,6 +73,8 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -93,6 +96,8 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this.Cpu = &cpu
 	var memory int32 = 512
 	this.Memory = &memory
+	var gpu int32 = 0
+	this.Gpu = &gpu
 	var minRunningInstances int32 = 1
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
@@ -394,6 +399,38 @@ func (o *ApplicationRequest) HasMemory() bool {
 // SetMemory gets a reference to the given int32 and assigns it to the Memory field.
 func (o *ApplicationRequest) SetMemory(v int32) {
 	o.Memory = &v
+}
+
+// GetGpu returns the Gpu field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetGpu() int32 {
+	if o == nil || IsNil(o.Gpu) {
+		var ret int32
+		return ret
+	}
+	return *o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetGpuOk() (*int32, bool) {
+	if o == nil || IsNil(o.Gpu) {
+		return nil, false
+	}
+	return o.Gpu, true
+}
+
+// HasGpu returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasGpu() bool {
+	if o != nil && !IsNil(o.Gpu) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpu gets a reference to the given int32 and assigns it to the Gpu field.
+func (o *ApplicationRequest) SetGpu(v int32) {
+	o.Gpu = &v
 }
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
@@ -795,6 +832,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Memory) {
 		toSerialize["memory"] = o.Memory
 	}
+	if !IsNil(o.Gpu) {
+		toSerialize["gpu"] = o.Gpu
+	}
 	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
@@ -880,6 +920,7 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "dockerfile_path")
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "min_running_instances")
 		delete(additionalProperties, "max_running_instances")
 		delete(additionalProperties, "healthchecks")

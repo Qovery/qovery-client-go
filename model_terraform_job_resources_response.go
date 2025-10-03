@@ -23,6 +23,7 @@ var _ MappedNullable = &TerraformJobResourcesResponse{}
 type TerraformJobResourcesResponse struct {
 	CpuMilli             int32 `json:"cpu_milli"`
 	RamMib               int32 `json:"ram_mib"`
+	Gpu                  int32 `json:"gpu"`
 	StorageGib           int32 `json:"storage_gib"`
 	AdditionalProperties map[string]interface{}
 }
@@ -33,10 +34,11 @@ type _TerraformJobResourcesResponse TerraformJobResourcesResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, storageGib int32) *TerraformJobResourcesResponse {
+func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, gpu int32, storageGib int32) *TerraformJobResourcesResponse {
 	this := TerraformJobResourcesResponse{}
 	this.CpuMilli = cpuMilli
 	this.RamMib = ramMib
+	this.Gpu = gpu
 	this.StorageGib = storageGib
 	return &this
 }
@@ -46,6 +48,8 @@ func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, storageGib i
 // but it doesn't guarantee that properties required by API are set
 func NewTerraformJobResourcesResponseWithDefaults() *TerraformJobResourcesResponse {
 	this := TerraformJobResourcesResponse{}
+	var gpu int32 = 0
+	this.Gpu = gpu
 	return &this
 }
 
@@ -97,6 +101,30 @@ func (o *TerraformJobResourcesResponse) SetRamMib(v int32) {
 	o.RamMib = v
 }
 
+// GetGpu returns the Gpu field value
+func (o *TerraformJobResourcesResponse) GetGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.Gpu
+}
+
+// GetGpuOk returns a tuple with the Gpu field value
+// and a boolean to check if the value has been set.
+func (o *TerraformJobResourcesResponse) GetGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Gpu, true
+}
+
+// SetGpu sets field value
+func (o *TerraformJobResourcesResponse) SetGpu(v int32) {
+	o.Gpu = v
+}
+
 // GetStorageGib returns the StorageGib field value
 func (o *TerraformJobResourcesResponse) GetStorageGib() int32 {
 	if o == nil {
@@ -133,6 +161,7 @@ func (o TerraformJobResourcesResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["cpu_milli"] = o.CpuMilli
 	toSerialize["ram_mib"] = o.RamMib
+	toSerialize["gpu"] = o.Gpu
 	toSerialize["storage_gib"] = o.StorageGib
 
 	for key, value := range o.AdditionalProperties {
@@ -149,6 +178,7 @@ func (o *TerraformJobResourcesResponse) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"cpu_milli",
 		"ram_mib",
+		"gpu",
 		"storage_gib",
 	}
 
@@ -181,6 +211,7 @@ func (o *TerraformJobResourcesResponse) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "cpu_milli")
 		delete(additionalProperties, "ram_mib")
+		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "storage_gib")
 		o.AdditionalProperties = additionalProperties
 	}

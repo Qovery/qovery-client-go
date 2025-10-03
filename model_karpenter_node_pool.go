@@ -19,11 +19,12 @@ import (
 // checks if the KarpenterNodePool type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &KarpenterNodePool{}
 
-// KarpenterNodePool
+// KarpenterNodePool struct for KarpenterNodePool
 type KarpenterNodePool struct {
 	Requirements         []KarpenterNodePoolRequirement    `json:"requirements"`
 	StableOverride       *KarpenterStableNodePoolOverride  `json:"stable_override,omitempty"`
 	DefaultOverride      *KarpenterDefaultNodePoolOverride `json:"default_override,omitempty"`
+	GpuOverride          *KarpenterGpuNodePoolOverride     `json:"gpu_override,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -135,6 +136,38 @@ func (o *KarpenterNodePool) SetDefaultOverride(v KarpenterDefaultNodePoolOverrid
 	o.DefaultOverride = &v
 }
 
+// GetGpuOverride returns the GpuOverride field value if set, zero value otherwise.
+func (o *KarpenterNodePool) GetGpuOverride() KarpenterGpuNodePoolOverride {
+	if o == nil || IsNil(o.GpuOverride) {
+		var ret KarpenterGpuNodePoolOverride
+		return ret
+	}
+	return *o.GpuOverride
+}
+
+// GetGpuOverrideOk returns a tuple with the GpuOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePool) GetGpuOverrideOk() (*KarpenterGpuNodePoolOverride, bool) {
+	if o == nil || IsNil(o.GpuOverride) {
+		return nil, false
+	}
+	return o.GpuOverride, true
+}
+
+// HasGpuOverride returns a boolean if a field has been set.
+func (o *KarpenterNodePool) HasGpuOverride() bool {
+	if o != nil && !IsNil(o.GpuOverride) {
+		return true
+	}
+
+	return false
+}
+
+// SetGpuOverride gets a reference to the given KarpenterGpuNodePoolOverride and assigns it to the GpuOverride field.
+func (o *KarpenterNodePool) SetGpuOverride(v KarpenterGpuNodePoolOverride) {
+	o.GpuOverride = &v
+}
+
 func (o KarpenterNodePool) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -151,6 +184,9 @@ func (o KarpenterNodePool) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DefaultOverride) {
 		toSerialize["default_override"] = o.DefaultOverride
+	}
+	if !IsNil(o.GpuOverride) {
+		toSerialize["gpu_override"] = o.GpuOverride
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -198,6 +234,7 @@ func (o *KarpenterNodePool) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "stable_override")
 		delete(additionalProperties, "default_override")
+		delete(additionalProperties, "gpu_override")
 		o.AdditionalProperties = additionalProperties
 	}
 

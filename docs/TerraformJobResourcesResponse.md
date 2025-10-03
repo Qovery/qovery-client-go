@@ -6,13 +6,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **CpuMilli** | **int32** |  | 
 **RamMib** | **int32** |  | 
+**Gpu** | **int32** |  | [default to 0]
 **StorageGib** | **int32** |  | 
 
 ## Methods
 
 ### NewTerraformJobResourcesResponse
 
-`func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, storageGib int32, ) *TerraformJobResourcesResponse`
+`func NewTerraformJobResourcesResponse(cpuMilli int32, ramMib int32, gpu int32, storageGib int32, ) *TerraformJobResourcesResponse`
 
 NewTerraformJobResourcesResponse instantiates a new TerraformJobResourcesResponse object
 This constructor will assign default values to properties that have it defined,
@@ -65,6 +66,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformJobResourcesResponse) SetRamMib(v int32)`
 
 SetRamMib sets RamMib field to given value.
+
+
+### GetGpu
+
+`func (o *TerraformJobResourcesResponse) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *TerraformJobResourcesResponse) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *TerraformJobResourcesResponse) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
 
 
 ### GetStorageGib

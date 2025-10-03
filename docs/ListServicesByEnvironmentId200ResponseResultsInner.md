@@ -12,12 +12,14 @@ Name | Type | Description | Notes
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
+**MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu This field will be ignored for managed DB (instance type will be used instead).  | [default to 250]
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB This field will be ignored for managed DB (instance type will be used instead). Default value is linked to the database type: - MANAGED: &#x60;100&#x60; - CONTAINER   - POSTGRES: &#x60;100&#x60;   - REDIS: &#x60;100&#x60;   - MYSQL: &#x60;512&#x60;   - MONGODB: &#x60;256&#x60;  | 
+**Gpu** | **int32** |  | [default to 0]
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
@@ -35,6 +37,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
 **Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
+**MaximumGpu** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
 **Type** | [**DatabaseTypeEnum**](DatabaseTypeEnum.md) |  | 
 **Version** | **string** |  | 
 **Mode** | [**DatabaseModeEnum**](DatabaseModeEnum.md) |  | 
@@ -60,7 +63,7 @@ Name | Type | Description | Notes
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, autoApprove bool, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, autoApprove bool, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -250,6 +253,31 @@ and a boolean to check if the value has been set.
 SetMaximumMemory sets MaximumMemory field to given value.
 
 
+### GetMaximunGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximunGpu() int32`
+
+GetMaximunGpu returns the MaximunGpu field if non-nil, zero value otherwise.
+
+### GetMaximunGpuOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximunGpuOk() (*int32, bool)`
+
+GetMaximunGpuOk returns a tuple with the MaximunGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximunGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetMaximunGpu(v int32)`
+
+SetMaximunGpu sets MaximunGpu field to given value.
+
+### HasMaximunGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasMaximunGpu() bool`
+
+HasMaximunGpu returns a boolean if a field has been set.
+
 ### GetName
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetName() string`
@@ -393,6 +421,26 @@ and a boolean to check if the value has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetMemory(v int32)`
 
 SetMemory sets Memory field to given value.
+
+
+### GetGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
 
 
 ### GetMinRunningInstances
@@ -773,6 +821,26 @@ and a boolean to check if the value has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetRegistry(v ContainerRegistryProviderDetailsResponse)`
 
 SetRegistry sets Registry field to given value.
+
+
+### GetMaximumGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximumGpu() int32`
+
+GetMaximumGpu returns the MaximumGpu field if non-nil, zero value otherwise.
+
+### GetMaximumGpuOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximumGpuOk() (*int32, bool)`
+
+GetMaximumGpuOk returns a tuple with the MaximumGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaximumGpu
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetMaximumGpu(v int32)`
+
+SetMaximumGpu sets MaximumGpu field to given value.
 
 
 ### GetType

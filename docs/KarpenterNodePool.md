@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Requirements** | [**[]KarpenterNodePoolRequirement**](KarpenterNodePoolRequirement.md) |  | 
 **StableOverride** | Pointer to [**KarpenterStableNodePoolOverride**](KarpenterStableNodePoolOverride.md) |  | [optional] 
 **DefaultOverride** | Pointer to [**KarpenterDefaultNodePoolOverride**](KarpenterDefaultNodePoolOverride.md) |  | [optional] 
+**GpuOverride** | Pointer to [**KarpenterGpuNodePoolOverride**](KarpenterGpuNodePoolOverride.md) |  | [optional] 
 
 ## Methods
 
@@ -96,6 +97,31 @@ SetDefaultOverride sets DefaultOverride field to given value.
 `func (o *KarpenterNodePool) HasDefaultOverride() bool`
 
 HasDefaultOverride returns a boolean if a field has been set.
+
+### GetGpuOverride
+
+`func (o *KarpenterNodePool) GetGpuOverride() KarpenterGpuNodePoolOverride`
+
+GetGpuOverride returns the GpuOverride field if non-nil, zero value otherwise.
+
+### GetGpuOverrideOk
+
+`func (o *KarpenterNodePool) GetGpuOverrideOk() (*KarpenterGpuNodePoolOverride, bool)`
+
+GetGpuOverrideOk returns a tuple with the GpuOverride field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpuOverride
+
+`func (o *KarpenterNodePool) SetGpuOverride(v KarpenterGpuNodePoolOverride)`
+
+SetGpuOverride sets GpuOverride field to given value.
+
+### HasGpuOverride
+
+`func (o *KarpenterNodePool) HasGpuOverride() bool`
+
+HasGpuOverride returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
