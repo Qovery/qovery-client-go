@@ -33965,6 +33965,10 @@ components:
             git_token_id: git_token_id
             branch: branch
             url: url
+        action_extra_arguments:
+          key:
+          - action_extra_arguments
+          - action_extra_arguments
       properties:
         name:
           type: string
@@ -34011,6 +34015,23 @@ components:
           type: boolean
           x-stoplight:
             id: w9ncq63nukwe0
+        action_extra_arguments:
+          additionalProperties:
+            items:
+              type: string
+              x-stoplight:
+                id: c6p960bh9qcu4
+            type: array
+            x-stoplight:
+              id: 99o28tw5chbb1
+          description: |-
+            The key represent the action command name i.e: "plan"
+            The value represent the extra arguments to pass to this command
+
+            i.e: {"apply", ["-lock=false"]} is going to prepend `-lock=false` to terraform apply commands
+          type: object
+          x-stoplight:
+            id: guh2uio7aztct
       required:
       - auto_approve
       - auto_deploy
@@ -34073,7 +34094,25 @@ components:
             type: boolean
             x-stoplight:
               id: ixjejij08tgfo
+          action_extra_arguments:
+            additionalProperties:
+              items:
+                type: string
+                x-stoplight:
+                  id: 2mkmankga2thw
+              type: array
+              x-stoplight:
+                id: 57b09dqz1jwra
+            description: |-
+              The key represent the action command name i.e: "plan"
+              The value represent the extra arguments to pass to this command
+
+              i.e: {"apply", ["-lock=false"]} is going to prepend `-lock=false` to terraform apply commands
+            type: object
+            x-stoplight:
+              id: rnkzwlf29dgb5
         required:
+        - action_extra_arguments
         - auto_approve
         - auto_deploy
         - backend
@@ -34134,6 +34173,10 @@ components:
               provider: BITBUCKET
               name: simple-node-app
               git_token_name: git_token_name
+        action_extra_arguments:
+          key:
+          - action_extra_arguments
+          - action_extra_arguments
     TerraformRequestJobResources:
       example:
         cpu_milli: 6
@@ -34420,6 +34463,10 @@ components:
                 provider: BITBUCKET
                 name: simple-node-app
                 git_token_name: git_token_name
+          action_extra_arguments:
+            key:
+            - action_extra_arguments
+            - action_extra_arguments
         - auto_deploy: true
           job_resources:
             cpu_milli: 6
@@ -34464,6 +34511,10 @@ components:
                 provider: BITBUCKET
                 name: simple-node-app
                 git_token_name: git_token_name
+          action_extra_arguments:
+            key:
+            - action_extra_arguments
+            - action_extra_arguments
       properties:
         results:
           items:

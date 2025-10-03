@@ -22,12 +22,13 @@ Name | Type | Description | Notes
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **UseClusterCredentials** | **bool** |  | 
+**ActionExtraArguments** | **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | 
 
 ## Methods
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -415,6 +416,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformResponse) SetUseClusterCredentials(v bool)`
 
 SetUseClusterCredentials sets UseClusterCredentials field to given value.
+
+
+### GetActionExtraArguments
+
+`func (o *TerraformResponse) GetActionExtraArguments() map[string][]string`
+
+GetActionExtraArguments returns the ActionExtraArguments field if non-nil, zero value otherwise.
+
+### GetActionExtraArgumentsOk
+
+`func (o *TerraformResponse) GetActionExtraArgumentsOk() (*map[string][]string, bool)`
+
+GetActionExtraArgumentsOk returns a tuple with the ActionExtraArguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionExtraArguments
+
+`func (o *TerraformResponse) SetActionExtraArguments(v map[string][]string)`
+
+SetActionExtraArguments sets ActionExtraArguments field to given value.
 
 
 

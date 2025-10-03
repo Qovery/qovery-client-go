@@ -42,7 +42,9 @@ type TerraformResponse struct {
 	JobResources             TerraformJobResourcesResponse    `json:"job_resources"`
 	Environment              ReferenceObject                  `json:"environment"`
 	UseClusterCredentials    bool                             `json:"use_cluster_credentials"`
-	AdditionalProperties     map[string]interface{}
+	// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
+	ActionExtraArguments map[string][]string `json:"action_extra_arguments"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TerraformResponse TerraformResponse
@@ -51,7 +53,7 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -68,6 +70,7 @@ func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSe
 	this.JobResources = jobResources
 	this.Environment = environment
 	this.UseClusterCredentials = useClusterCredentials
+	this.ActionExtraArguments = actionExtraArguments
 	return &this
 }
 
@@ -537,6 +540,30 @@ func (o *TerraformResponse) SetUseClusterCredentials(v bool) {
 	o.UseClusterCredentials = v
 }
 
+// GetActionExtraArguments returns the ActionExtraArguments field value
+func (o *TerraformResponse) GetActionExtraArguments() map[string][]string {
+	if o == nil {
+		var ret map[string][]string
+		return ret
+	}
+
+	return o.ActionExtraArguments
+}
+
+// GetActionExtraArgumentsOk returns a tuple with the ActionExtraArguments field value
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetActionExtraArgumentsOk() (*map[string][]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ActionExtraArguments, true
+}
+
+// SetActionExtraArguments sets field value
+func (o *TerraformResponse) SetActionExtraArguments(v map[string][]string) {
+	o.ActionExtraArguments = v
+}
+
 func (o TerraformResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -571,6 +598,7 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["job_resources"] = o.JobResources
 	toSerialize["environment"] = o.Environment
 	toSerialize["use_cluster_credentials"] = o.UseClusterCredentials
+	toSerialize["action_extra_arguments"] = o.ActionExtraArguments
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -599,6 +627,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"job_resources",
 		"environment",
 		"use_cluster_credentials",
+		"action_extra_arguments",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -646,6 +675,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "job_resources")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "use_cluster_credentials")
+		delete(additionalProperties, "action_extra_arguments")
 		o.AdditionalProperties = additionalProperties
 	}
 

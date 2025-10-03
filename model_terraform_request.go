@@ -34,7 +34,9 @@ type TerraformRequest struct {
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
 	JobResources             TerraformRequestJobResources         `json:"job_resources"`
 	UseClusterCredentials    *bool                                `json:"use_cluster_credentials,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
+	ActionExtraArguments *map[string][]string `json:"action_extra_arguments,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _TerraformRequest TerraformRequest
@@ -402,6 +404,38 @@ func (o *TerraformRequest) SetUseClusterCredentials(v bool) {
 	o.UseClusterCredentials = &v
 }
 
+// GetActionExtraArguments returns the ActionExtraArguments field value if set, zero value otherwise.
+func (o *TerraformRequest) GetActionExtraArguments() map[string][]string {
+	if o == nil || IsNil(o.ActionExtraArguments) {
+		var ret map[string][]string
+		return ret
+	}
+	return *o.ActionExtraArguments
+}
+
+// GetActionExtraArgumentsOk returns a tuple with the ActionExtraArguments field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformRequest) GetActionExtraArgumentsOk() (*map[string][]string, bool) {
+	if o == nil || IsNil(o.ActionExtraArguments) {
+		return nil, false
+	}
+	return o.ActionExtraArguments, true
+}
+
+// HasActionExtraArguments returns a boolean if a field has been set.
+func (o *TerraformRequest) HasActionExtraArguments() bool {
+	if o != nil && !IsNil(o.ActionExtraArguments) {
+		return true
+	}
+
+	return false
+}
+
+// SetActionExtraArguments gets a reference to the given map[string][]string and assigns it to the ActionExtraArguments field.
+func (o *TerraformRequest) SetActionExtraArguments(v map[string][]string) {
+	o.ActionExtraArguments = &v
+}
+
 func (o TerraformRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -430,6 +464,9 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["job_resources"] = o.JobResources
 	if !IsNil(o.UseClusterCredentials) {
 		toSerialize["use_cluster_credentials"] = o.UseClusterCredentials
+	}
+	if !IsNil(o.ActionExtraArguments) {
+		toSerialize["action_extra_arguments"] = o.ActionExtraArguments
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -496,6 +533,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "job_resources")
 		delete(additionalProperties, "use_cluster_credentials")
+		delete(additionalProperties, "action_extra_arguments")
 		o.AdditionalProperties = additionalProperties
 	}
 

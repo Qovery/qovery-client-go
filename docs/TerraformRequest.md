@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **IconUri** | Pointer to **string** |  | [optional] 
 **JobResources** | [**TerraformRequestJobResources**](TerraformRequestJobResources.md) |  | 
 **UseClusterCredentials** | Pointer to **bool** |  | [optional] 
+**ActionExtraArguments** | Pointer to **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | [optional] 
 
 ## Methods
 
@@ -311,6 +312,31 @@ SetUseClusterCredentials sets UseClusterCredentials field to given value.
 `func (o *TerraformRequest) HasUseClusterCredentials() bool`
 
 HasUseClusterCredentials returns a boolean if a field has been set.
+
+### GetActionExtraArguments
+
+`func (o *TerraformRequest) GetActionExtraArguments() map[string][]string`
+
+GetActionExtraArguments returns the ActionExtraArguments field if non-nil, zero value otherwise.
+
+### GetActionExtraArgumentsOk
+
+`func (o *TerraformRequest) GetActionExtraArgumentsOk() (*map[string][]string, bool)`
+
+GetActionExtraArgumentsOk returns a tuple with the ActionExtraArguments field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetActionExtraArguments
+
+`func (o *TerraformRequest) SetActionExtraArguments(v map[string][]string)`
+
+SetActionExtraArguments sets ActionExtraArguments field to given value.
+
+### HasActionExtraArguments
+
+`func (o *TerraformRequest) HasActionExtraArguments() bool`
+
+HasActionExtraArguments returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
