@@ -18189,6 +18189,13 @@ components:
             description: unit is MB. 1024 MB = 1GB
             example: 1024
             type: integer
+          gpu:
+            default: 0
+            example: 1
+            minimum: 0
+            type: integer
+            x-stoplight:
+              id: tkd7it621esyj
           min_running_instances:
             default: 1
             description: |
@@ -18330,6 +18337,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        gpu: 1
         icon_uri: https://openapi-generator.tech
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
