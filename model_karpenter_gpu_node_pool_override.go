@@ -23,6 +23,7 @@ type KarpenterGpuNodePoolOverride struct {
 	Consolidation        *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
 	Limits               *KarpenterNodePoolLimits        `json:"limits,omitempty"`
 	Requirements         []KarpenterNodePoolRequirement  `json:"requirements,omitempty"`
+	DiskSizeInGib        *int32                          `json:"disk_size_in_gib,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +35,8 @@ type _KarpenterGpuNodePoolOverride KarpenterGpuNodePoolOverride
 // will change when the set of required properties is changed
 func NewKarpenterGpuNodePoolOverride() *KarpenterGpuNodePoolOverride {
 	this := KarpenterGpuNodePoolOverride{}
+	var diskSizeInGib int32 = 100
+	this.DiskSizeInGib = &diskSizeInGib
 	return &this
 }
 
@@ -42,6 +45,8 @@ func NewKarpenterGpuNodePoolOverride() *KarpenterGpuNodePoolOverride {
 // but it doesn't guarantee that properties required by API are set
 func NewKarpenterGpuNodePoolOverrideWithDefaults() *KarpenterGpuNodePoolOverride {
 	this := KarpenterGpuNodePoolOverride{}
+	var diskSizeInGib int32 = 100
+	this.DiskSizeInGib = &diskSizeInGib
 	return &this
 }
 
@@ -141,6 +146,38 @@ func (o *KarpenterGpuNodePoolOverride) SetRequirements(v []KarpenterNodePoolRequ
 	o.Requirements = v
 }
 
+// GetDiskSizeInGib returns the DiskSizeInGib field value if set, zero value otherwise.
+func (o *KarpenterGpuNodePoolOverride) GetDiskSizeInGib() int32 {
+	if o == nil || IsNil(o.DiskSizeInGib) {
+		var ret int32
+		return ret
+	}
+	return *o.DiskSizeInGib
+}
+
+// GetDiskSizeInGibOk returns a tuple with the DiskSizeInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterGpuNodePoolOverride) GetDiskSizeInGibOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskSizeInGib) {
+		return nil, false
+	}
+	return o.DiskSizeInGib, true
+}
+
+// HasDiskSizeInGib returns a boolean if a field has been set.
+func (o *KarpenterGpuNodePoolOverride) HasDiskSizeInGib() bool {
+	if o != nil && !IsNil(o.DiskSizeInGib) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskSizeInGib gets a reference to the given int32 and assigns it to the DiskSizeInGib field.
+func (o *KarpenterGpuNodePoolOverride) SetDiskSizeInGib(v int32) {
+	o.DiskSizeInGib = &v
+}
+
 func (o KarpenterGpuNodePoolOverride) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -159,6 +196,9 @@ func (o KarpenterGpuNodePoolOverride) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Requirements) {
 		toSerialize["requirements"] = o.Requirements
+	}
+	if !IsNil(o.DiskSizeInGib) {
+		toSerialize["disk_size_in_gib"] = o.DiskSizeInGib
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +225,7 @@ func (o *KarpenterGpuNodePoolOverride) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "consolidation")
 		delete(additionalProperties, "limits")
 		delete(additionalProperties, "requirements")
+		delete(additionalProperties, "disk_size_in_gib")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -33333,6 +33333,13 @@ components:
           type: array
           x-stoplight:
             id: 38pdri17ozql9
+        disk_size_in_gib:
+          default: 100
+          example: 150
+          minimum: 0
+          type: integer
+          x-stoplight:
+            id: xq5ycmme7o025
       title: KarpenterGpuNodePoolOverride
       type: object
       x-stoplight:
