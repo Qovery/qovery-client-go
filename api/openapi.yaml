@@ -22481,6 +22481,15 @@ components:
           type: array
       type: object
     ContainerSource:
+      example:
+        image_name: image_name
+        registry:
+          kind: ECR
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          url: url
+        tag: tag
+        registry_id: registry_id
       properties:
         image_name:
           description: |
@@ -27658,7 +27667,16 @@ components:
               timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          source: null
+          source:
+            image:
+              image_name: image_name
+              registry:
+                kind: ECR
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url: url
+              tag: tag
+              registry_id: registry_id
           max_nb_restart: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -27788,7 +27806,16 @@ components:
               timeout_seconds: 2
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          source: null
+          source:
+            image:
+              image_name: image_name
+              registry:
+                kind: ECR
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url: url
+              tag: tag
+              registry_id: registry_id
           max_nb_restart: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -32212,7 +32239,16 @@ components:
             timeout_seconds: 2
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        source: null
+        source:
+          image:
+            image_name: image_name
+            registry:
+              kind: ECR
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: url
+            tag: tag
+            registry_id: registry_id
         max_nb_restart: 0
         updated_at: 2000-01-23T04:56:07.000+00:00
         annotations_groups:
@@ -37814,9 +37850,35 @@ components:
       required:
       - cronjob
       type: object
-    BaseJobResponse_allOf_source:
-      nullable: true
+    BaseJobResponse_allOf_source_oneOf:
+      example:
+        image:
+          image_name: image_name
+          registry:
+            kind: ECR
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: url
+          tag: tag
+          registry_id: registry_id
+      properties:
+        image:
+          $ref: '#/components/schemas/ContainerSource'
+      required:
+      - image
       type: object
+    BaseJobResponse_allOf_source_oneOf_1:
+      properties:
+        docker:
+          $ref: '#/components/schemas/JobSourceDockerResponse'
+      required:
+      - docker
+      type: object
+    BaseJobResponse_allOf_source:
+      nullable: false
+      oneOf:
+      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf'
+      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf_1'
     HelmSourceRepositoryResponse_repository:
       properties:
         id:
