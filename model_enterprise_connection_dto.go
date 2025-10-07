@@ -21,6 +21,8 @@ var _ MappedNullable = &EnterpriseConnectionDto{}
 
 // EnterpriseConnectionDto struct for EnterpriseConnectionDto
 type EnterpriseConnectionDto struct {
+	// The connection name
+	ConnectionName string `json:"connection_name"`
 	// The purpose of this default role is to be associated to your users if: - you choose to not expose your IDPs groups to the SAML / OIDC connection - no associated group is found in your `group_mappings` defined  You can define either a Qovery provided role (i.e `viewer`) or one of your custom role`s uuid.
 	DefaultRole string `json:"default_role"`
 	// * if `true`, roles will be synchronized at each user login according to your `group_mappings` configuration based on your IDP groups * if `false`, no synchronization is done for your users and `group_mappings` configuration will be ignored
@@ -36,8 +38,9 @@ type _EnterpriseConnectionDto EnterpriseConnectionDto
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnterpriseConnectionDto(defaultRole string, enforceGroupSync bool, groupMappings map[string][]string) *EnterpriseConnectionDto {
+func NewEnterpriseConnectionDto(connectionName string, defaultRole string, enforceGroupSync bool, groupMappings map[string][]string) *EnterpriseConnectionDto {
 	this := EnterpriseConnectionDto{}
+	this.ConnectionName = connectionName
 	this.DefaultRole = defaultRole
 	this.EnforceGroupSync = enforceGroupSync
 	this.GroupMappings = groupMappings
@@ -50,6 +53,30 @@ func NewEnterpriseConnectionDto(defaultRole string, enforceGroupSync bool, group
 func NewEnterpriseConnectionDtoWithDefaults() *EnterpriseConnectionDto {
 	this := EnterpriseConnectionDto{}
 	return &this
+}
+
+// GetConnectionName returns the ConnectionName field value
+func (o *EnterpriseConnectionDto) GetConnectionName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ConnectionName
+}
+
+// GetConnectionNameOk returns a tuple with the ConnectionName field value
+// and a boolean to check if the value has been set.
+func (o *EnterpriseConnectionDto) GetConnectionNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ConnectionName, true
+}
+
+// SetConnectionName sets field value
+func (o *EnterpriseConnectionDto) SetConnectionName(v string) {
+	o.ConnectionName = v
 }
 
 // GetDefaultRole returns the DefaultRole field value
@@ -134,6 +161,7 @@ func (o EnterpriseConnectionDto) MarshalJSON() ([]byte, error) {
 
 func (o EnterpriseConnectionDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["connection_name"] = o.ConnectionName
 	toSerialize["default_role"] = o.DefaultRole
 	toSerialize["enforce_group_sync"] = o.EnforceGroupSync
 	toSerialize["group_mappings"] = o.GroupMappings
@@ -150,6 +178,7 @@ func (o *EnterpriseConnectionDto) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"connection_name",
 		"default_role",
 		"enforce_group_sync",
 		"group_mappings",
@@ -182,6 +211,7 @@ func (o *EnterpriseConnectionDto) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "connection_name")
 		delete(additionalProperties, "default_role")
 		delete(additionalProperties, "enforce_group_sync")
 		delete(additionalProperties, "group_mappings")

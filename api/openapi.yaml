@@ -34929,13 +34929,15 @@ components:
     EnterpriseConnectionResponseList:
       example:
         results:
-        - default_role: default_role
+        - connection_name: connection_name
+          default_role: default_role
           enforce_group_sync: true
           group_mappings:
             key:
             - group_mappings
             - group_mappings
-        - default_role: default_role
+        - connection_name: connection_name
+          default_role: default_role
           enforce_group_sync: true
           group_mappings:
             key:
@@ -34950,6 +34952,7 @@ components:
       type: object
     EnterpriseConnectionDto:
       example:
+        connection_name: connection_name
         default_role: default_role
         enforce_group_sync: true
         group_mappings:
@@ -34957,6 +34960,9 @@ components:
           - group_mappings
           - group_mappings
       properties:
+        connection_name:
+          description: The connection name
+          type: string
         default_role:
           description: |
             The purpose of this default role is to be associated to your users if:
@@ -34983,6 +34989,7 @@ components:
             \ role `devops` to my IDP groups ['Administrators', 'DevSecOps']\"\n"
           type: object
       required:
+      - connection_name
       - default_role
       - enforce_group_sync
       - group_mappings
