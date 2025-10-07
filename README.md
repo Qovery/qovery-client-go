@@ -470,6 +470,7 @@ Class | Method | HTTP request | Description
 *OrganizationCustomRoleAPI* | [**GetOrganizationCustomRole**](docs/OrganizationCustomRoleAPI.md#getorganizationcustomrole) | **Get** /organization/{organizationId}/customRole/{customRoleId} | Get an organization custom role 
 *OrganizationCustomRoleAPI* | [**ListOrganizationCustomRoles**](docs/OrganizationCustomRoleAPI.md#listorganizationcustomroles) | **Get** /organization/{organizationId}/customRole | List organization custom roles
 *OrganizationEnterpriseConnectionAPI* | [**GetOrganizationEnterpriseConnection**](docs/OrganizationEnterpriseConnectionAPI.md#getorganizationenterpriseconnection) | **Get** /organization/{organizationId}/enterpriseconnection/{connectionName} | Get enterprise connection
+*OrganizationEnterpriseConnectionAPI* | [**ListOrganizationEnterpriseConnections**](docs/OrganizationEnterpriseConnectionAPI.md#listorganizationenterpriseconnections) | **Get** /organization/{organizationId}/enterpriseconnection | List enterprise connections
 *OrganizationEnterpriseConnectionAPI* | [**UpdateOrganizationEnterpriseConnection**](docs/OrganizationEnterpriseConnectionAPI.md#updateorganizationenterpriseconnection) | **Put** /organization/{organizationId}/enterpriseconnection/{connectionName} | Update enterprise connection
 *OrganizationEventAPI* | [**GetOrganizationEventTargets**](docs/OrganizationEventAPI.md#getorganizationeventtargets) | **Get** /organization/{organizationId}/targets | Get available event targets to filter events
 *OrganizationEventAPI* | [**GetOrganizationEvents**](docs/OrganizationEventAPI.md#getorganizationevents) | **Get** /organization/{organizationId}/events | Get all events inside the organization
@@ -775,6 +776,7 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [EksInfrastructureOutputs](docs/EksInfrastructureOutputs.md)
  - [EnterpriseConnectionDto](docs/EnterpriseConnectionDto.md)
+ - [EnterpriseConnectionResponseList](docs/EnterpriseConnectionResponseList.md)
  - [EnvDeploymentStatus](docs/EnvDeploymentStatus.md)
  - [Environment](docs/Environment.md)
  - [EnvironmentAllOfCloudProvider](docs/EnvironmentAllOfCloudProvider.md)

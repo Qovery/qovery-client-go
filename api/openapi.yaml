@@ -17027,6 +17027,35 @@ paths:
       - Clusters
       x-stoplight:
         id: eodcl3enjp2ax
+  /organization/{organizationId}/enterpriseconnection:
+    get:
+      operationId: listOrganizationEnterpriseConnections
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterpriseConnectionResponseList'
+          description: List enterprise connections
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List enterprise connections
+      tags:
+      - Organization Enterprise Connection
   /organization/{organizationId}/enterpriseconnection/{connectionName}:
     get:
       operationId: getOrganizationEnterpriseConnection
@@ -34897,6 +34926,28 @@ components:
       type: object
       x-stoplight:
         id: evxswes22ykhd
+    EnterpriseConnectionResponseList:
+      example:
+        results:
+        - default_role: default_role
+          enforce_group_sync: true
+          group_mappings:
+            key:
+            - group_mappings
+            - group_mappings
+        - default_role: default_role
+          enforce_group_sync: true
+          group_mappings:
+            key:
+            - group_mappings
+            - group_mappings
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EnterpriseConnectionDto'
+          type: array
+      title: EnterpriseConnectionResponseList
+      type: object
     EnterpriseConnectionDto:
       example:
         default_role: default_role

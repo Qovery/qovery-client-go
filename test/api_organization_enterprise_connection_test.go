@@ -37,6 +37,20 @@ func Test_qovery_OrganizationEnterpriseConnectionAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationEnterpriseConnectionAPIService ListOrganizationEnterpriseConnections", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationEnterpriseConnectionAPI.ListOrganizationEnterpriseConnections(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationEnterpriseConnectionAPIService UpdateOrganizationEnterpriseConnection", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
