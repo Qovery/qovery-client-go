@@ -27,7 +27,7 @@ Method | HTTP request | Description
 
 ## ListAWSEKSInstanceType
 
-> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+> ClusterInstanceTypeResponseList ListAWSEKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Gpu(gpu).Execute()
 
 List AWS EKS available instance types
 
@@ -46,11 +46,12 @@ import (
 func main() {
 	region := "us-east-2" // string | region name
 	onlyMeetsResourceReqs := true // bool |  (optional)
-	withGpu := true // bool |  (optional)
+	withGpu := true // bool | deprecated field, use `gpu` instead (optional)
+	gpu := "gpu_example" // string |  (optional) (default to "INCLUDE")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+	resp, r, err := apiClient.CloudProviderAPI.ListAWSEKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Gpu(gpu).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSEKSInstanceType``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -77,7 +78,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **onlyMeetsResourceReqs** | **bool** |  | 
- **withGpu** | **bool** |  | 
+ **withGpu** | **bool** | deprecated field, use &#x60;gpu&#x60; instead | 
+ **gpu** | **string** |  | [default to &quot;INCLUDE&quot;]
 
 ### Return type
 
@@ -406,7 +408,7 @@ Other parameters are passed through a pointer to a apiListAWSRegionsRequest stru
 
 ## ListAzureAKSInstanceType
 
-> ClusterInstanceTypeResponseList ListAzureAKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+> ClusterInstanceTypeResponseList ListAzureAKSInstanceType(ctx, region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Gpu(gpu).Execute()
 
 List Azure AKS available instance types
 
@@ -425,11 +427,12 @@ import (
 func main() {
 	region := "us-east-2" // string | region name
 	onlyMeetsResourceReqs := true // bool |  (optional)
-	withGpu := true // bool |  (optional)
+	withGpu := true // bool | deprecated field, use `gpu` instead (optional)
+	gpu := "gpu_example" // string |  (optional) (default to "INCLUDE")
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAzureAKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Execute()
+	resp, r, err := apiClient.CloudProviderAPI.ListAzureAKSInstanceType(context.Background(), region).OnlyMeetsResourceReqs(onlyMeetsResourceReqs).WithGpu(withGpu).Gpu(gpu).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAzureAKSInstanceType``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -456,7 +459,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **onlyMeetsResourceReqs** | **bool** |  | 
- **withGpu** | **bool** |  | 
+ **withGpu** | **bool** | deprecated field, use &#x60;gpu&#x60; instead | 
+ **gpu** | **string** |  | [default to &quot;INCLUDE&quot;]
 
 ### Return type
 

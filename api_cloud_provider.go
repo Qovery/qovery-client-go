@@ -29,6 +29,7 @@ type ApiListAWSEKSInstanceTypeRequest struct {
 	region                string
 	onlyMeetsResourceReqs *bool
 	withGpu               *bool
+	gpu                   *string
 }
 
 func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs bool) ApiListAWSEKSInstanceTypeRequest {
@@ -36,8 +37,16 @@ func (r ApiListAWSEKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourc
 	return r
 }
 
+// deprecated field, use &#x60;gpu&#x60; instead
+// Deprecated
 func (r ApiListAWSEKSInstanceTypeRequest) WithGpu(withGpu bool) ApiListAWSEKSInstanceTypeRequest {
 	r.withGpu = &withGpu
+	return r
+}
+
+// Deprecated
+func (r ApiListAWSEKSInstanceTypeRequest) Gpu(gpu string) ApiListAWSEKSInstanceTypeRequest {
+	r.gpu = &gpu
 	return r
 }
 
@@ -88,6 +97,12 @@ func (a *CloudProviderAPIService) ListAWSEKSInstanceTypeExecute(r ApiListAWSEKSI
 	}
 	if r.withGpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "with_gpu", r.withGpu, "")
+	}
+	if r.gpu != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gpu", r.gpu, "")
+	} else {
+		var defaultValue string = "INCLUDE"
+		r.gpu = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -731,6 +746,7 @@ type ApiListAzureAKSInstanceTypeRequest struct {
 	region                string
 	onlyMeetsResourceReqs *bool
 	withGpu               *bool
+	gpu                   *string
 }
 
 func (r ApiListAzureAKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResourceReqs bool) ApiListAzureAKSInstanceTypeRequest {
@@ -738,8 +754,15 @@ func (r ApiListAzureAKSInstanceTypeRequest) OnlyMeetsResourceReqs(onlyMeetsResou
 	return r
 }
 
+// deprecated field, use &#x60;gpu&#x60; instead
+// Deprecated
 func (r ApiListAzureAKSInstanceTypeRequest) WithGpu(withGpu bool) ApiListAzureAKSInstanceTypeRequest {
 	r.withGpu = &withGpu
+	return r
+}
+
+func (r ApiListAzureAKSInstanceTypeRequest) Gpu(gpu string) ApiListAzureAKSInstanceTypeRequest {
+	r.gpu = &gpu
 	return r
 }
 
@@ -790,6 +813,12 @@ func (a *CloudProviderAPIService) ListAzureAKSInstanceTypeExecute(r ApiListAzure
 	}
 	if r.withGpu != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "with_gpu", r.withGpu, "")
+	}
+	if r.gpu != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gpu", r.gpu, "")
+	} else {
+		var defaultValue string = "INCLUDE"
+		r.gpu = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

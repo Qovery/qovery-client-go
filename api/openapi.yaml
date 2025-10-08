@@ -4325,12 +4325,26 @@ paths:
         schema:
           type: boolean
         style: form
-      - explode: true
+      - deprecated: true
+        description: "deprecated field, use `gpu` instead"
+        explode: true
         in: query
         name: with_gpu
         required: false
         schema:
           type: boolean
+        style: form
+      - explode: true
+        in: query
+        name: gpu
+        required: false
+        schema:
+          default: INCLUDE
+          enum:
+          - ONLY
+          - INCLUDE
+          - EXCLUDE
+          type: string
         style: form
       responses:
         "200":
@@ -4368,12 +4382,27 @@ paths:
         schema:
           type: boolean
         style: form
-      - explode: true
+      - deprecated: true
+        description: "deprecated field, use `gpu` instead"
+        explode: true
         in: query
         name: with_gpu
         required: false
         schema:
           type: boolean
+        style: form
+      - deprecated: true
+        explode: true
+        in: query
+        name: gpu
+        required: false
+        schema:
+          default: INCLUDE
+          enum:
+          - INCLUDE
+          - EXCLUDE
+          - ONLY
+          type: string
         style: form
       responses:
         "200":
