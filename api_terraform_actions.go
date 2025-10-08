@@ -266,10 +266,17 @@ func (a *TerraformActionsAPIService) RedeployTerraformExecute(r ApiRedeployTerra
 }
 
 type ApiUninstallTerraformRequest struct {
-	ctx         context.Context
-	ApiService  *TerraformActionsAPIService
-	terraformId string
-	body        *map[string]interface{}
+	ctx                  context.Context
+	ApiService           *TerraformActionsAPIService
+	terraformId          string
+	forceTerraformAction *DeleteTerraformAction
+	body                 *map[string]interface{}
+}
+
+// Force a specific action to be executed by Terraform during uninstall.
+func (r ApiUninstallTerraformRequest) ForceTerraformAction(forceTerraformAction DeleteTerraformAction) ApiUninstallTerraformRequest {
+	r.forceTerraformAction = &forceTerraformAction
+	return r
 }
 
 func (r ApiUninstallTerraformRequest) Body(body map[string]interface{}) ApiUninstallTerraformRequest {
@@ -321,6 +328,9 @@ func (a *TerraformActionsAPIService) UninstallTerraformExecute(r ApiUninstallTer
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.forceTerraformAction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force_terraform_action", r.forceTerraformAction, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{"application/json"}
 

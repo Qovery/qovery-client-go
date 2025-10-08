@@ -16427,12 +16427,23 @@ paths:
           format: uuid
           type: string
         style: simple
-      - explode: true
+      - description: "When true, only resources are deleted and Qovery configuration\
+          \ is kept."
+        explode: true
         in: query
-        name: delete_resources_only
+        name: resources_only
         required: false
         schema:
+          default: false
           type: boolean
+        style: form
+      - description: Force a specific action to be executed by Terraform during deletion.
+        explode: true
+        in: query
+        name: force_terraform_action
+        required: false
+        schema:
+          $ref: '#/components/schemas/DeleteTerraformAction'
         style: form
       responses:
         "204":
@@ -16636,6 +16647,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Force a specific action to be executed by Terraform during uninstall.
+        explode: true
+        in: query
+        name: force_terraform_action
+        required: false
+        schema:
+          $ref: '#/components/schemas/DeleteTerraformAction'
+        style: form
       requestBody:
         content:
           application/json:
@@ -17607,6 +17626,11 @@ components:
     TerraformBackendUserProvided:
       description: User-provided backend configuration
       type: object
+    DeleteTerraformAction:
+      description: Action to force a specific Terraform behavior during deletion/uninstall.
+      enum:
+      - SKIP_DESTROY
+      type: string
     AccountInfo:
       example:
         communication_email: communication_email
@@ -18566,7 +18590,7 @@ components:
           description: "Indicate the path or regex that must match for traffic to\
             \ be accepted on your service\ni.e: /api/ will only accept http calls\
             \ that start with /api/ \nOnly valid for publicly_accessible HTTP or GRPC\
-            \ ports. "
+            \ ports."
           type: string
         public_path_rewrite:
           description: "Indicate the new path that will be used to reach your service\
@@ -18574,7 +18598,7 @@ components:
             \ /api/$1 will append /api/ on all externaly requested url when reaching\
             \ the service \nexternal/use url -> example.com/foobar  -> url seen by\
             \ the service -> example.com/api/foobar\nOnly valid for publicly_accessible\
-            \ HTTP or GRPC ports. "
+            \ HTTP or GRPC ports."
           type: string
       required:
       - id
@@ -36043,7 +36067,7 @@ components:
           description: "Indicate the path or regex that must match for traffic to\
             \ be accepted on your service\ni.e: /api/ will only accept http calls\
             \ that start with /api/ \nOnly valid for publicly_accessible HTTP or GRPC\
-            \ ports. "
+            \ ports."
           type: string
         public_path_rewrite:
           description: "Indicate the new path that will be used to reach your service\
@@ -36051,7 +36075,7 @@ components:
             \ /api/$1 will append /api/ on all externaly requested url when reaching\
             \ the service \nexternal/use url -> example.com/foobar  -> url seen by\
             \ the service -> example.com/api/foobar\nOnly valid for publicly_accessible\
-            \ HTTP or GRPC ports. "
+            \ HTTP or GRPC ports."
           type: string
       required:
       - internal_port

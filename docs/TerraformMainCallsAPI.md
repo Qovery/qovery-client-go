@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## DeleteTerraform
 
-> DeleteTerraform(ctx, terraformId).DeleteResourcesOnly(deleteResourcesOnly).Execute()
+> DeleteTerraform(ctx, terraformId).ResourcesOnly(resourcesOnly).ForceTerraformAction(forceTerraformAction).Execute()
 
 Delete Terraform
 
@@ -31,11 +31,12 @@ import (
 
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
-	deleteResourcesOnly := true // bool |  (optional)
+	resourcesOnly := true // bool | When true, only resources are deleted and Qovery configuration is kept. (optional) (default to false)
+	forceTerraformAction := openapiclient.DeleteTerraformAction("SKIP_DESTROY") // DeleteTerraformAction | Force a specific action to be executed by Terraform during deletion. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TerraformMainCallsAPI.DeleteTerraform(context.Background(), terraformId).DeleteResourcesOnly(deleteResourcesOnly).Execute()
+	r, err := apiClient.TerraformMainCallsAPI.DeleteTerraform(context.Background(), terraformId).ResourcesOnly(resourcesOnly).ForceTerraformAction(forceTerraformAction).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TerraformMainCallsAPI.DeleteTerraform``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -59,7 +60,8 @@ Other parameters are passed through a pointer to a apiDeleteTerraformRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **deleteResourcesOnly** | **bool** |  | 
+ **resourcesOnly** | **bool** | When true, only resources are deleted and Qovery configuration is kept. | [default to false]
+ **forceTerraformAction** | [**DeleteTerraformAction**](DeleteTerraformAction.md) | Force a specific action to be executed by Terraform during deletion. | 
 
 ### Return type
 

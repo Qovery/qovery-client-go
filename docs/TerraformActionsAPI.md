@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## UninstallTerraform
 
-> Status UninstallTerraform(ctx, terraformId).Body(body).Execute()
+> Status UninstallTerraform(ctx, terraformId).ForceTerraformAction(forceTerraformAction).Body(body).Execute()
 
 Uninstall terraform
 
@@ -172,11 +172,12 @@ import (
 
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
+	forceTerraformAction := openapiclient.DeleteTerraformAction("SKIP_DESTROY") // DeleteTerraformAction | Force a specific action to be executed by Terraform during uninstall. (optional)
 	body := map[string]interface{}{ ... } // map[string]interface{} |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.TerraformActionsAPI.UninstallTerraform(context.Background(), terraformId).Body(body).Execute()
+	resp, r, err := apiClient.TerraformActionsAPI.UninstallTerraform(context.Background(), terraformId).ForceTerraformAction(forceTerraformAction).Body(body).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TerraformActionsAPI.UninstallTerraform``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -202,6 +203,7 @@ Other parameters are passed through a pointer to a apiUninstallTerraformRequest 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **forceTerraformAction** | [**DeleteTerraformAction**](DeleteTerraformAction.md) | Force a specific action to be executed by Terraform during uninstall. | 
  **body** | **map[string]interface{}** |  | 
 
 ### Return type

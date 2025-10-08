@@ -296,6 +296,7 @@ docs/DatabaseVersionMode.md
 docs/DatabasesAPI.md
 docs/DefaultAPI.md
 docs/DeleteMemberRequest.md
+docs/DeleteTerraformAction.md
 docs/DeployAllRequest.md
 docs/DeployAllRequestApplicationsInner.md
 docs/DeployAllRequestContainersInner.md
@@ -958,6 +959,7 @@ model_database_response_list.go
 model_database_type_enum.go
 model_database_version_mode.go
 model_delete_member_request.go
+model_delete_terraform_action.go
 model_deploy_all_request.go
 model_deploy_all_request_applications_inner.go
 model_deploy_all_request_containers_inner.go

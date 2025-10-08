@@ -730,6 +730,7 @@ Class | Method | HTTP request | Description
  - [DatabaseTypeEnum](docs/DatabaseTypeEnum.md)
  - [DatabaseVersionMode](docs/DatabaseVersionMode.md)
  - [DeleteMemberRequest](docs/DeleteMemberRequest.md)
+ - [DeleteTerraformAction](docs/DeleteTerraformAction.md)
  - [DeployAllRequest](docs/DeployAllRequest.md)
  - [DeployAllRequestApplicationsInner](docs/DeployAllRequestApplicationsInner.md)
  - [DeployAllRequestContainersInner](docs/DeployAllRequestContainersInner.md)

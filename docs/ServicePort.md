@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **PubliclyAccessible** | **bool** | Expose the port to the world | 
 **IsDefault** | Pointer to **bool** | is the default port to use for domain | [optional] 
 **Protocol** | [**PortProtocolEnum**](PortProtocolEnum.md) |  | [default to PORTPROTOCOLENUM_HTTP]
-**PublicPath** | Pointer to **string** | Indicate the path or regex that must match for traffic to be accepted on your service i.e: /api/ will only accept http calls that start with /api/  Only valid for publicly_accessible HTTP or GRPC ports.  | [optional] 
-**PublicPathRewrite** | Pointer to **string** | Indicate the new path that will be used to reach your service after replacement i.e: public_path -&gt; /(.*)  public_path_rewrite -&gt; /api/$1 will append /api/ on all externaly requested url when reaching the service  external/use url -&gt; example.com/foobar  -&gt; url seen by the service -&gt; example.com/api/foobar Only valid for publicly_accessible HTTP or GRPC ports.  | [optional] 
+**PublicPath** | Pointer to **string** | Indicate the path or regex that must match for traffic to be accepted on your service i.e: /api/ will only accept http calls that start with /api/  Only valid for publicly_accessible HTTP or GRPC ports. | [optional] 
+**PublicPathRewrite** | Pointer to **string** | Indicate the new path that will be used to reach your service after replacement i.e: public_path -&gt; /(.*)  public_path_rewrite -&gt; /api/$1 will append /api/ on all externaly requested url when reaching the service  external/use url -&gt; example.com/foobar  -&gt; url seen by the service -&gt; example.com/api/foobar Only valid for publicly_accessible HTTP or GRPC ports. | [optional] 
 
 ## Methods
 

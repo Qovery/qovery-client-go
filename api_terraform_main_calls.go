@@ -24,14 +24,22 @@ import (
 type TerraformMainCallsAPIService service
 
 type ApiDeleteTerraformRequest struct {
-	ctx                 context.Context
-	ApiService          *TerraformMainCallsAPIService
-	terraformId         string
-	deleteResourcesOnly *bool
+	ctx                  context.Context
+	ApiService           *TerraformMainCallsAPIService
+	terraformId          string
+	resourcesOnly        *bool
+	forceTerraformAction *DeleteTerraformAction
 }
 
-func (r ApiDeleteTerraformRequest) DeleteResourcesOnly(deleteResourcesOnly bool) ApiDeleteTerraformRequest {
-	r.deleteResourcesOnly = &deleteResourcesOnly
+// When true, only resources are deleted and Qovery configuration is kept.
+func (r ApiDeleteTerraformRequest) ResourcesOnly(resourcesOnly bool) ApiDeleteTerraformRequest {
+	r.resourcesOnly = &resourcesOnly
+	return r
+}
+
+// Force a specific action to be executed by Terraform during deletion.
+func (r ApiDeleteTerraformRequest) ForceTerraformAction(forceTerraformAction DeleteTerraformAction) ApiDeleteTerraformRequest {
+	r.forceTerraformAction = &forceTerraformAction
 	return r
 }
 
@@ -74,8 +82,14 @@ func (a *TerraformMainCallsAPIService) DeleteTerraformExecute(r ApiDeleteTerrafo
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.deleteResourcesOnly != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "delete_resources_only", r.deleteResourcesOnly, "")
+	if r.resourcesOnly != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "resources_only", r.resourcesOnly, "")
+	} else {
+		var defaultValue bool = false
+		r.resourcesOnly = &defaultValue
+	}
+	if r.forceTerraformAction != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "force_terraform_action", r.forceTerraformAction, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
