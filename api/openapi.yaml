@@ -34023,7 +34023,6 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
-        auto_approve: true
         icon_uri: https://openapi-generator.tech
         terraform_variables_source:
           tf_var_file_paths:
@@ -34061,10 +34060,6 @@ components:
           type: string
           x-stoplight:
             id: ltvpnbhjz1oho
-        auto_approve:
-          type: boolean
-          x-stoplight:
-            id: zxy6gcsq4q6bc
         auto_deploy:
           type: boolean
           x-stoplight:
@@ -34116,7 +34111,6 @@ components:
           x-stoplight:
             id: guh2uio7aztct
       required:
-      - auto_approve
       - auto_deploy
       - backend
       - description
@@ -34143,8 +34137,6 @@ components:
             default: 600
             minimum: 0
             type: integer
-          auto_approve:
-            type: boolean
           auto_deploy:
             type: boolean
           terraform_files_source:
@@ -34196,7 +34188,6 @@ components:
               id: rnkzwlf29dgb5
         required:
         - action_extra_arguments
-        - auto_approve
         - auto_deploy
         - backend
         - environment
@@ -34223,7 +34214,6 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
-        auto_approve: true
         icon_uri: https://openapi-generator.tech
         terraform_variables_source:
           tf_var_file_paths:
@@ -34513,7 +34503,6 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          auto_approve: true
           icon_uri: https://openapi-generator.tech
           terraform_variables_source:
             tf_var_file_paths:
@@ -34561,7 +34550,6 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          auto_approve: true
           icon_uri: https://openapi-generator.tech
           terraform_variables_source:
             tf_var_file_paths:

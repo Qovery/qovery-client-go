@@ -6,7 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Description** | **string** |  | 
-**AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
@@ -23,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -76,26 +75,6 @@ and a boolean to check if the value has been set.
 `func (o *TerraformRequest) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
-
-
-### GetAutoApprove
-
-`func (o *TerraformRequest) GetAutoApprove() bool`
-
-GetAutoApprove returns the AutoApprove field if non-nil, zero value otherwise.
-
-### GetAutoApproveOk
-
-`func (o *TerraformRequest) GetAutoApproveOk() (*bool, bool)`
-
-GetAutoApproveOk returns a tuple with the AutoApprove field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoApprove
-
-`func (o *TerraformRequest) SetAutoApprove(v bool)`
-
-SetAutoApprove sets AutoApprove field to given value.
 
 
 ### GetAutoDeploy

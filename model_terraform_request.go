@@ -23,7 +23,6 @@ var _ MappedNullable = &TerraformRequest{}
 type TerraformRequest struct {
 	Name                     string                               `json:"name"`
 	Description              string                               `json:"description"`
-	AutoApprove              bool                                 `json:"auto_approve"`
 	AutoDeploy               bool                                 `json:"auto_deploy"`
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
@@ -45,11 +44,10 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoApprove bool, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
-	this.AutoApprove = autoApprove
 	this.AutoDeploy = autoDeploy
 	this.TerraformFilesSource = terraformFilesSource
 	this.TerraformVariablesSource = terraformVariablesSource
@@ -114,30 +112,6 @@ func (o *TerraformRequest) GetDescriptionOk() (*string, bool) {
 // SetDescription sets field value
 func (o *TerraformRequest) SetDescription(v string) {
 	o.Description = v
-}
-
-// GetAutoApprove returns the AutoApprove field value
-func (o *TerraformRequest) GetAutoApprove() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.AutoApprove
-}
-
-// GetAutoApproveOk returns a tuple with the AutoApprove field value
-// and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetAutoApproveOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AutoApprove, true
-}
-
-// SetAutoApprove sets field value
-func (o *TerraformRequest) SetAutoApprove(v bool) {
-	o.AutoApprove = v
 }
 
 // GetAutoDeploy returns the AutoDeploy field value
@@ -448,7 +422,6 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["auto_approve"] = o.AutoApprove
 	toSerialize["auto_deploy"] = o.AutoDeploy
 	toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
@@ -483,7 +456,6 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"name",
 		"description",
-		"auto_approve",
 		"auto_deploy",
 		"terraform_files_source",
 		"terraform_variables_source",
@@ -522,7 +494,6 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "auto_approve")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "terraform_variables_source")

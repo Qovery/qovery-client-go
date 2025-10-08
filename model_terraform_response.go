@@ -29,7 +29,6 @@ type TerraformResponse struct {
 	Name                 string                                      `json:"name"`
 	Description          *string                                     `json:"description,omitempty"`
 	TimeoutSec           int32                                       `json:"timeout_sec"`
-	AutoApprove          bool                                        `json:"auto_approve"`
 	AutoDeploy           bool                                        `json:"auto_deploy"`
 	TerraformFilesSource *TerraformResponseAllOfTerraformFilesSource `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
@@ -53,13 +52,12 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.TimeoutSec = timeoutSec
-	this.AutoApprove = autoApprove
 	this.AutoDeploy = autoDeploy
 	this.IconUri = iconUri
 	this.ServiceType = serviceType
@@ -242,30 +240,6 @@ func (o *TerraformResponse) GetTimeoutSecOk() (*int32, bool) {
 // SetTimeoutSec sets field value
 func (o *TerraformResponse) SetTimeoutSec(v int32) {
 	o.TimeoutSec = v
-}
-
-// GetAutoApprove returns the AutoApprove field value
-func (o *TerraformResponse) GetAutoApprove() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.AutoApprove
-}
-
-// GetAutoApproveOk returns a tuple with the AutoApprove field value
-// and a boolean to check if the value has been set.
-func (o *TerraformResponse) GetAutoApproveOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.AutoApprove, true
-}
-
-// SetAutoApprove sets field value
-func (o *TerraformResponse) SetAutoApprove(v bool) {
-	o.AutoApprove = v
 }
 
 // GetAutoDeploy returns the AutoDeploy field value
@@ -584,7 +558,6 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["timeout_sec"] = o.TimeoutSec
-	toSerialize["auto_approve"] = o.AutoApprove
 	toSerialize["auto_deploy"] = o.AutoDeploy
 	if !IsNil(o.TerraformFilesSource) {
 		toSerialize["terraform_files_source"] = o.TerraformFilesSource
@@ -616,7 +589,6 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"name",
 		"timeout_sec",
-		"auto_approve",
 		"auto_deploy",
 		"icon_uri",
 		"service_type",
@@ -663,7 +635,6 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "timeout_sec")
-		delete(additionalProperties, "auto_approve")
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "icon_uri")

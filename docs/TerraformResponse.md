@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | **int32** |  | [default to 600]
-**AutoApprove** | **bool** |  | 
 **AutoDeploy** | **bool** |  | 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
@@ -28,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoApprove bool, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -171,26 +170,6 @@ and a boolean to check if the value has been set.
 `func (o *TerraformResponse) SetTimeoutSec(v int32)`
 
 SetTimeoutSec sets TimeoutSec field to given value.
-
-
-### GetAutoApprove
-
-`func (o *TerraformResponse) GetAutoApprove() bool`
-
-GetAutoApprove returns the AutoApprove field if non-nil, zero value otherwise.
-
-### GetAutoApproveOk
-
-`func (o *TerraformResponse) GetAutoApproveOk() (*bool, bool)`
-
-GetAutoApproveOk returns a tuple with the AutoApprove field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetAutoApprove
-
-`func (o *TerraformResponse) SetAutoApprove(v bool)`
-
-SetAutoApprove sets AutoApprove field to given value.
 
 
 ### GetAutoDeploy
