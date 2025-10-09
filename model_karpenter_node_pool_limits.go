@@ -26,6 +26,8 @@ type KarpenterNodePoolLimits struct {
 	MaxCpuInVcpu int32 `json:"max_cpu_in_vcpu"`
 	// Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi = 1024 mebibytes)
 	MaxMemoryInGibibytes int32 `json:"max_memory_in_gibibytes"`
+	// GPU limit that will be applied for the node pool
+	MaxGpu               int32 `json:"max_gpu"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,11 +37,12 @@ type _KarpenterNodePoolLimits KarpenterNodePoolLimits
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32) *KarpenterNodePoolLimits {
+func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32, maxGpu int32) *KarpenterNodePoolLimits {
 	this := KarpenterNodePoolLimits{}
 	this.Enabled = enabled
 	this.MaxCpuInVcpu = maxCpuInVcpu
 	this.MaxMemoryInGibibytes = maxMemoryInGibibytes
+	this.MaxGpu = maxGpu
 	return &this
 }
 
@@ -50,6 +53,8 @@ func NewKarpenterNodePoolLimitsWithDefaults() *KarpenterNodePoolLimits {
 	this := KarpenterNodePoolLimits{}
 	var enabled bool = false
 	this.Enabled = enabled
+	var maxGpu int32 = 0
+	this.MaxGpu = maxGpu
 	return &this
 }
 
@@ -125,6 +130,30 @@ func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v int32) {
 	o.MaxMemoryInGibibytes = v
 }
 
+// GetMaxGpu returns the MaxGpu field value
+func (o *KarpenterNodePoolLimits) GetMaxGpu() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.MaxGpu
+}
+
+// GetMaxGpuOk returns a tuple with the MaxGpu field value
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePoolLimits) GetMaxGpuOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.MaxGpu, true
+}
+
+// SetMaxGpu sets field value
+func (o *KarpenterNodePoolLimits) SetMaxGpu(v int32) {
+	o.MaxGpu = v
+}
+
 func (o KarpenterNodePoolLimits) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -138,6 +167,7 @@ func (o KarpenterNodePoolLimits) ToMap() (map[string]interface{}, error) {
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["max_cpu_in_vcpu"] = o.MaxCpuInVcpu
 	toSerialize["max_memory_in_gibibytes"] = o.MaxMemoryInGibibytes
+	toSerialize["max_gpu"] = o.MaxGpu
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -154,6 +184,7 @@ func (o *KarpenterNodePoolLimits) UnmarshalJSON(data []byte) (err error) {
 		"enabled",
 		"max_cpu_in_vcpu",
 		"max_memory_in_gibibytes",
+		"max_gpu",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -186,6 +217,7 @@ func (o *KarpenterNodePoolLimits) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "max_cpu_in_vcpu")
 		delete(additionalProperties, "max_memory_in_gibibytes")
+		delete(additionalProperties, "max_gpu")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -33534,9 +33534,18 @@ components:
           description: "Memory limit that will be applied for the node pool (in Gibibytes\
             \ unit: 1Gi = 1024 mebibytes)"
           type: integer
+        max_gpu:
+          default: 0
+          description: GPU limit that will be applied for the node pool
+          example: 10
+          minimum: 0
+          type: integer
+          x-stoplight:
+            id: fn3k34ck5abe4
       required:
       - enabled
       - max_cpu_in_vcpu
+      - max_gpu
       - max_memory_in_gibibytes
       title: KarpenterNodePoolLimits
       type: object

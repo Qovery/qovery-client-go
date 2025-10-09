@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Enabled** | **bool** |  | [default to false]
 **MaxCpuInVcpu** | **int32** | CPU limit that will be applied for the node pool (in vCPU unit: 1 vCPU &#x3D; 1000 millicores) | 
 **MaxMemoryInGibibytes** | **int32** | Memory limit that will be applied for the node pool (in Gibibytes unit: 1Gi &#x3D; 1024 mebibytes) | 
+**MaxGpu** | **int32** | GPU limit that will be applied for the node pool | [default to 0]
 
 ## Methods
 
 ### NewKarpenterNodePoolLimits
 
-`func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32, ) *KarpenterNodePoolLimits`
+`func NewKarpenterNodePoolLimits(enabled bool, maxCpuInVcpu int32, maxMemoryInGibibytes int32, maxGpu int32, ) *KarpenterNodePoolLimits`
 
 NewKarpenterNodePoolLimits instantiates a new KarpenterNodePoolLimits object
 This constructor will assign default values to properties that have it defined,
@@ -85,6 +86,26 @@ and a boolean to check if the value has been set.
 `func (o *KarpenterNodePoolLimits) SetMaxMemoryInGibibytes(v int32)`
 
 SetMaxMemoryInGibibytes sets MaxMemoryInGibibytes field to given value.
+
+
+### GetMaxGpu
+
+`func (o *KarpenterNodePoolLimits) GetMaxGpu() int32`
+
+GetMaxGpu returns the MaxGpu field if non-nil, zero value otherwise.
+
+### GetMaxGpuOk
+
+`func (o *KarpenterNodePoolLimits) GetMaxGpuOk() (*int32, bool)`
+
+GetMaxGpuOk returns a tuple with the MaxGpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMaxGpu
+
+`func (o *KarpenterNodePoolLimits) SetMaxGpu(v int32)`
+
+SetMaxGpu sets MaxGpu field to given value.
 
 
 
