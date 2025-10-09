@@ -16705,6 +16705,25 @@ paths:
       - Terraforms
       x-stoplight:
         id: 5qcyy764ewhk3
+  /terraform/available-versions:
+    get:
+      operationId: listTerraformVersions
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformVersionResponseList'
+          description: List available Terraform versions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List available Terraform versions
+      tags:
+      - Terraform Main Calls
   /terraform/{terraformId}/clone:
     post:
       description: This will create a new terraform with the same configuration on
@@ -34659,6 +34678,25 @@ components:
       type: object
       x-stoplight:
         id: ipapoxduvpkk7
+    TerraformVersionResponse:
+      example:
+        version: version
+      properties:
+        version:
+          description: Terraform version string
+          type: string
+      type: object
+    TerraformVersionResponseList:
+      example:
+        results:
+        - version: version
+        - version: version
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/TerraformVersionResponse'
+          type: array
+      type: object
     TerraformAdvancedSettings:
       example:
         build.timeout_max_sec: 0
