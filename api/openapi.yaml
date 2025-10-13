@@ -21,6 +21,7 @@ tags:
 - name: Account
 - name: Account Info
 - name: Alert Receivers
+- name: Alert Rules
 - name: Admin
 - name: Application
 - name: Application Actions
@@ -17358,6 +17359,130 @@ paths:
       - Alert Receivers
       x-stoplight:
         id: lcy99zdslr1cb
+  /api/alert-rules:
+    post:
+      description: Create a new alert rule with PromQL expression
+      operationId: createAlertRule
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRuleCreationRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResponse'
+          description: Created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: Create alert rule
+      tags:
+      - Alert Rules
+      x-stoplight:
+        id: htbtqo7s45dzg
+  /api/alert-rules/{alertRuleId}:
+    delete:
+      description: Delete an alert rule
+      operationId: deleteAlertRule
+      parameters:
+      - description: Alert Rule ID
+        explode: false
+        in: path
+        name: alertRuleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Alert rule successfully deleted
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete alert rule
+      tags:
+      - Alert Rules
+      x-stoplight:
+        id: 812453spx2l0f
+    get:
+      description: Retrieve a specific alert rule by its ID
+      operationId: getAlertRule
+      parameters:
+      - description: Alert Rule ID
+        explode: false
+        in: path
+        name: alertRuleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResponse'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get alert rule
+      tags:
+      - Alert Rules
+      x-stoplight:
+        id: qfitd78wejspk
+    put:
+      description: Update an existing alert rule
+      operationId: editAlertRule
+      parameters:
+      - description: Alert Rule ID
+        explode: false
+        in: path
+        name: alertRuleId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertRuleEditRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update alert rule
+      tags:
+      - Alert Rules
+      x-stoplight:
+        id: cj5a3t08qw1aj
 components:
   parameters:
     alertReceiverId:
@@ -17365,6 +17490,16 @@ components:
       explode: false
       in: path
       name: alertReceiverId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    alertRuleId:
+      description: Alert Rule ID
+      explode: false
+      in: path
+      name: alertRuleId
       required: true
       schema:
         format: uuid
@@ -35434,6 +35569,309 @@ components:
       type: object
       x-stoplight:
         id: adq5zt8oqtve1
+    AlertPresentation:
+      example:
+        summary: summary
+        runbook_url: https://openapi-generator.tech
+      properties:
+        summary:
+          nullable: true
+          type: string
+          x-stoplight:
+            id: 4q8s7z1uu8kvm
+        runbook_url:
+          description: URL to runbook with remediation steps
+          format: uri
+          nullable: true
+          type: string
+          x-stoplight:
+            id: fe7wk13airhnu
+      title: AlertPresentation
+      type: object
+      x-stoplight:
+        id: csg2krsbv2i40
+    AlertRuleCreationRequest:
+      example:
+        severity: WARNING
+        presentation:
+          summary: summary
+          runbook_url: https://openapi-generator.tech
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        for_duration: for_duration
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        promql_expr: promql_expr
+        enabled: true
+        alert_receiver_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        organization_id:
+          description: Organization identifier
+          format: uuid
+          type: string
+          x-stoplight:
+            id: qe8mxuqf5rerq
+        cluster_id:
+          description: ' Cluster identifier where the rule will be deployed'
+          format: uuid
+          type: string
+          x-stoplight:
+            id: luojx47y8mgl1
+        name:
+          description: Name of the alert rule
+          type: string
+          x-stoplight:
+            id: 7ih1egmfghew9
+        description:
+          description: |
+            Description of what the alert monitors
+          type: string
+          x-stoplight:
+            id: jhc5u599bha5a
+        promql_expr:
+          description: PromQL expression to evaluate
+          type: string
+          x-stoplight:
+            id: 2ojznqgimdacq
+        for_duration:
+          description: Duration the condition must be true before firing (ISO-8601
+            duration format)
+          format: duration
+          type: string
+          x-stoplight:
+            id: 8jk0kcca7whc6
+        severity:
+          $ref: '#/components/schemas/AlertSeverity'
+        enabled:
+          description: Whether the alert rule is enabled
+          type: boolean
+          x-stoplight:
+            id: 0ksuq2b0flii5
+        alert_receiver_ids:
+          description: List of alert receiver IDs to send notifications to
+          items:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: cc3sm9sjduuqf
+          minItems: 1
+          type: array
+          x-stoplight:
+            id: oy3dbybxgmvs5
+        presentation:
+          $ref: '#/components/schemas/AlertPresentation'
+      required:
+      - alert_receiver_ids
+      - cluster_id
+      - description
+      - enabled
+      - for_duration
+      - name
+      - organization_id
+      - presentation
+      - promql_expr
+      - severity
+      title: AlertRuleCreationRequest
+      type: object
+      x-stoplight:
+        id: mcgiquvv7m2vp
+    AlertSeverity:
+      description: |-
+        Alert severity level:
+                - WARNING: Non-critical issue requiring attention
+                - CRITICAL: Critical issue requiring immediate action
+      enum:
+      - WARNING
+      - CRITICAL
+      title: AlertSeverity
+      type: string
+      x-stoplight:
+        id: 74rrc7nvxpc30
+    AlertRuleEditRequest:
+      example:
+        severity: WARNING
+        presentation:
+          summary: summary
+          runbook_url: https://openapi-generator.tech
+        for_duration: for_duration
+        name: name
+        description: description
+        promql_expr: promql_expr
+        enabled: true
+        alert_receiver_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        name:
+          description: Name of the alert rule
+          type: string
+          x-stoplight:
+            id: 7zbib93n861tt
+        description:
+          description: Description of what the alert monitors
+          type: string
+          x-stoplight:
+            id: 2xpgzz03za6jo
+        promql_expr:
+          description: PromQL expression to evaluate
+          type: string
+          x-stoplight:
+            id: 6smsj3iavzowc
+        for_duration:
+          description: Duration the condition must be true before firing (ISO-8601
+            duration format)
+          format: duration
+          type: string
+          x-stoplight:
+            id: auoq20czr9ouh
+        severity:
+          $ref: '#/components/schemas/AlertSeverity'
+        enabled:
+          description: Whether the alert rule is enabled
+          type: boolean
+          x-stoplight:
+            id: uayodiines5vd
+        alert_receiver_ids:
+          description: List of alert receiver IDs to send notifications to
+          items:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: xt3qvn76g9znl
+          minItems: 1
+          type: array
+          x-stoplight:
+            id: n42yd3ffbfzdq
+        presentation:
+          $ref: '#/components/schemas/AlertPresentation'
+      required:
+      - alert_receiver_ids
+      - description
+      - enabled
+      - for_duration
+      - name
+      - presentation
+      - promql_expr
+      - severity
+      title: AlertRuleEditRequest
+      type: object
+      x-stoplight:
+        id: 6914x54u4sgg0
+    AlertPresentationResponse:
+      example:
+        summary: summary
+        runbook_url: https://openapi-generator.tech
+      properties:
+        summary:
+          description: ' Alert summary template'
+          nullable: true
+          type: string
+          x-stoplight:
+            id: z5t89ub093022
+        runbook_url:
+          description: URL to runbook with remediation steps
+          format: uri
+          nullable: true
+          type: string
+          x-stoplight:
+            id: kf94o17fes7zl
+      title: AlertPresentationResponse
+      type: object
+      x-stoplight:
+        id: dx514vxebudw0
+    AlertRuleResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          organization_id:
+            description: Organization identifier
+            format: uuid
+            type: string
+            x-stoplight:
+              id: 40agisyi9s6no
+          cluster_id:
+            description: ' Cluster identifier'
+            format: uuid
+            type: string
+            x-stoplight:
+              id: nd3oz9h1qpa6w
+          name:
+            description: |
+              Name of the alert rule
+            type: string
+            x-stoplight:
+              id: 866jtxgaipphh
+          description:
+            description: Description of what the alert monitors
+            type: string
+            x-stoplight:
+              id: r728dl0e8ef6x
+          promql_expr:
+            description: PromQL expression to evaluate
+            type: string
+            x-stoplight:
+              id: 5e2ku0srk67e7
+          for_duration:
+            description: Duration the condition must be true before firing (ISO-8601
+              duration format)
+            format: duration
+            type: string
+            x-stoplight:
+              id: 3aceb4kbdv4pz
+          severity:
+            $ref: '#/components/schemas/AlertSeverity'
+          enabled:
+            description: Whether the alert rule is enabled
+            type: boolean
+            x-stoplight:
+              id: du2v3ss6fb66f
+          alert_receiver_ids:
+            description: List of alert receiver IDs to send notifications to
+            items:
+              format: uuid
+              type: string
+              x-stoplight:
+                id: xdka1kakao7s0
+            type: array
+            x-stoplight:
+              id: 7lerayyele2ss
+          presentation:
+            $ref: '#/components/schemas/AlertPresentationResponse'
+        required:
+        - alert_receiver_ids
+        - cluster_id
+        - description
+        - enabled
+        - for_duration
+        - name
+        - organization_id
+        - presentation
+        - promql_expr
+        - severity
+        type: object
+      example:
+        severity: WARNING
+        for_duration: for_duration
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        enabled: true
+        presentation:
+          summary: summary
+          runbook_url: https://openapi-generator.tech
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        promql_expr: promql_expr
+        alert_receiver_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      title: AlertRuleResponse
+      x-stoplight:
+        id: jsi9jy70651hv
     deleteMember_request:
       properties:
         user_id:
