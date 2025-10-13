@@ -20,6 +20,7 @@ security:
 tags:
 - name: Account
 - name: Account Info
+- name: Alert Receivers
 - name: Admin
 - name: Application
 - name: Application Actions
@@ -17201,8 +17202,174 @@ paths:
       summary: Update enterprise connection
       tags:
       - Organization Enterprise Connection
+  /api/organization/{organizationId}/alert-receivers:
+    get:
+      description: Retrieve all alert receivers for a specific organization
+      operationId: getAlertReceivers
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertReceiverList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List alert receivers
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: 3cqb2xpmir9n8
+  /api/alert-receivers:
+    post:
+      description: Create a new alert receiver
+      operationId: createAlertReceiver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertReceiverCreationRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertReceiverResponse'
+          description: ' Alert receiver successfully created'
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: Create alert receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: 56wdp3pyd4jfy
+  /api/alert-receivers/{alertReceiverId}:
+    delete:
+      description: Delete an alert receiver
+      operationId: deleteAlertReceiver
+      parameters:
+      - description: Alert Receiver ID
+        explode: false
+        in: path
+        name: alertReceiverId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Alert receiver successfully deleted
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete alert receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: vwt0mube2wcb6
+    get:
+      description: Retrieve a specific alert receiver by its ID
+      operationId: getAlertReceiver
+      parameters:
+      - description: Alert Receiver ID
+        explode: false
+        in: path
+        name: alertReceiverId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertReceiverResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get alert receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: z0qs6btegz9c3
+    put:
+      description: Update an existing alert receiver
+      operationId: editAlertReceiver
+      parameters:
+      - description: Alert Receiver ID
+        explode: false
+        in: path
+        name: alertReceiverId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertReceiverEditRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertReceiverResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update alert receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: lcy99zdslr1cb
 components:
   parameters:
+    alertReceiverId:
+      description: Alert Receiver ID
+      explode: false
+      in: path
+      name: alertReceiverId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     applicationId:
       description: Application ID
       explode: false
@@ -35087,6 +35254,186 @@ components:
       - group_mappings
       title: EnterpriseConnectionDto
       type: object
+    AlertReceiverCreationRequest:
+      discriminator:
+        mapping:
+          SLACK: '#/components/schemas/SlackAlertReceiverCreationRequest'
+        propertyName: type
+      example:
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        send_resolved: true
+        type: SLACK
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: bojx2ynimjvnr
+        name:
+          type: string
+          x-stoplight:
+            id: vhcpsitoy9mm1
+        description:
+          type: string
+          x-stoplight:
+            id: lrlxf8a34veta
+        type:
+          $ref: '#/components/schemas/AlertReceiverType'
+        send_resolved:
+          type: boolean
+          x-stoplight:
+            id: ucf1p0q2vpohv
+      required:
+      - description
+      - name
+      - organization_id
+      - send_resolved
+      - type
+      title: AlertReceiverCreationRequest
+      type: object
+      x-stoplight:
+        id: q1oj36zhkhmvp
+      x-internal: false
+    SlackAlertReceiverCreationRequest:
+      allOf:
+      - $ref: '#/components/schemas/AlertReceiverCreationRequest'
+      - properties:
+          webhook_url:
+            format: uri
+            type: string
+            x-stoplight:
+              id: dre0gsq0bs0xv
+        required:
+        - webhook_url
+        type: object
+        x-stoplight:
+          id: jw3lis4cbm2nf
+      title: SlackAlertReceiverCreationRequest
+      x-stoplight:
+        id: awuv9zidg4qxx
+    AlertReceiverType:
+      enum:
+      - SLACK
+      title: AlertReceiverType
+      type: string
+      x-stoplight:
+        id: 79fodqa89swh7
+    AlertReceiverEditRequest:
+      discriminator:
+        mapping:
+          SLACK: '#/components/schemas/SlackAlertReceiverEditRequest'
+        propertyName: type
+      example:
+        name: name
+        description: description
+        send_resolved: true
+        type: SLACK
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: x7yi5mef1y2le
+        description:
+          type: string
+          x-stoplight:
+            id: 0l6xifjl3s4e2
+        type:
+          $ref: '#/components/schemas/AlertReceiverType'
+        send_resolved:
+          type: boolean
+          x-stoplight:
+            id: hk2x1t8ixk5sf
+      required:
+      - description
+      - name
+      - send_resolved
+      - type
+      title: AlertReceiverEditRequest
+      type: object
+      x-stoplight:
+        id: y2od6vkbmt7yr
+    SlackAlertReceiverEditRequest:
+      allOf:
+      - $ref: '#/components/schemas/AlertReceiverEditRequest'
+      - properties:
+          webhook_url:
+            nullable: true
+            type: string
+            x-stoplight:
+              id: 8c5ze7hwv90q2
+        type: object
+        x-stoplight:
+          id: 0nkbeafo42gqk
+      title: SlackAlertReceiverEditRequest
+      x-stoplight:
+        id: hcxf6sxx1jrv9
+    AlertReceiverResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+            x-stoplight:
+              id: 5zeqm4fc5c8bf
+          description:
+            type: string
+            x-stoplight:
+              id: aja5apvg882lo
+          type:
+            $ref: '#/components/schemas/AlertReceiverType'
+          send_resolved:
+            type: boolean
+            x-stoplight:
+              id: xpyx1p6hna34g
+        required:
+        - description
+        - name
+        - send_resolved
+        - type
+        type: object
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        send_resolved: true
+        type: SLACK
+      title: AlertReceiverResponse
+      x-stoplight:
+        id: qyrx61cvx84cz
+    AlertReceiverList:
+      example:
+        results:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          send_resolved: true
+          type: SLACK
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          send_resolved: true
+          type: SLACK
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AlertReceiverResponse'
+          type: array
+          x-stoplight:
+            id: e8a6xqrax75d5
+      required:
+      - results
+      title: AlertReceiverList
+      type: object
+      x-stoplight:
+        id: adq5zt8oqtve1
     deleteMember_request:
       properties:
         user_id:

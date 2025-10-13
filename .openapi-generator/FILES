@@ -4,6 +4,7 @@
 README.md
 api/openapi.yaml
 api_account_info.go
+api_alert_receivers.go
 api_application_actions.go
 api_application_configuration.go
 api_application_custom_domain.go
@@ -100,6 +101,12 @@ docs/AccountInfo.md
 docs/AccountInfoAPI.md
 docs/AccountInfoEditRequest.md
 docs/AksInfrastructureOutputs.md
+docs/AlertReceiverCreationRequest.md
+docs/AlertReceiverEditRequest.md
+docs/AlertReceiverList.md
+docs/AlertReceiverResponse.md
+docs/AlertReceiverType.md
+docs/AlertReceiversAPI.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
@@ -721,6 +728,8 @@ docs/ServiceTypeEnum.md
 docs/ServiceTypeForVariableEnum.md
 docs/SignUp.md
 docs/SignUpRequest.md
+docs/SlackAlertReceiverCreationRequest.md
+docs/SlackAlertReceiverEditRequest.md
 docs/Stage.md
 docs/StageStatusEnum.md
 docs/StageStepMetric.md
@@ -794,6 +803,11 @@ go.sum
 model_account_info.go
 model_account_info_edit_request.go
 model_aks_infrastructure_outputs.go
+model_alert_receiver_creation_request.go
+model_alert_receiver_edit_request.go
+model_alert_receiver_list.go
+model_alert_receiver_response.go
+model_alert_receiver_type.go
 model_annotation.go
 model_annotations_group_associated_item_type.go
 model_api_variable_scope_enum.go
@@ -1337,6 +1351,8 @@ model_service_type_enum.go
 model_service_type_for_variable_enum.go
 model_sign_up.go
 model_sign_up_request.go
+model_slack_alert_receiver_creation_request.go
+model_slack_alert_receiver_edit_request.go
 model_stage.go
 model_stage_status_enum.go
 model_stage_step_metric.go
@@ -1398,6 +1414,7 @@ model_version_response_list.go
 model_weekday_enum.go
 response.go
 test/api_account_info_test.go
+test/api_alert_receivers_test.go
 test/api_application_actions_test.go
 test/api_application_configuration_test.go
 test/api_application_custom_domain_test.go
