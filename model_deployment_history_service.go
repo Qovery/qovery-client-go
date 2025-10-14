@@ -25,7 +25,7 @@ type DeploymentHistoryService struct {
 	Status               StateEnum                          `json:"status"`
 	AuditingData         DeploymentHistoryAuditingData      `json:"auditing_data"`
 	Details              DeploymentHistoryServiceDetails    `json:"details"`
-	StatusDetails        *StatusDetails                     `json:"status_details,omitempty"`
+	StatusDetails        StatusDetails                      `json:"status_details"`
 	IconUri              string                             `json:"icon_uri"`
 	TotalDuration        *string                            `json:"total_duration,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -37,12 +37,13 @@ type _DeploymentHistoryService DeploymentHistoryService
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, iconUri string) *DeploymentHistoryService {
+func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, statusDetails StatusDetails, iconUri string) *DeploymentHistoryService {
 	this := DeploymentHistoryService{}
 	this.Identifier = identifier
 	this.Status = status
 	this.AuditingData = auditingData
 	this.Details = details
+	this.StatusDetails = statusDetails
 	this.IconUri = iconUri
 	return &this
 }
@@ -151,36 +152,28 @@ func (o *DeploymentHistoryService) SetDetails(v DeploymentHistoryServiceDetails)
 	o.Details = v
 }
 
-// GetStatusDetails returns the StatusDetails field value if set, zero value otherwise.
+// GetStatusDetails returns the StatusDetails field value
 func (o *DeploymentHistoryService) GetStatusDetails() StatusDetails {
-	if o == nil || IsNil(o.StatusDetails) {
+	if o == nil {
 		var ret StatusDetails
 		return ret
 	}
-	return *o.StatusDetails
+
+	return o.StatusDetails
 }
 
-// GetStatusDetailsOk returns a tuple with the StatusDetails field value if set, nil otherwise
+// GetStatusDetailsOk returns a tuple with the StatusDetails field value
 // and a boolean to check if the value has been set.
 func (o *DeploymentHistoryService) GetStatusDetailsOk() (*StatusDetails, bool) {
-	if o == nil || IsNil(o.StatusDetails) {
+	if o == nil {
 		return nil, false
 	}
-	return o.StatusDetails, true
+	return &o.StatusDetails, true
 }
 
-// HasStatusDetails returns a boolean if a field has been set.
-func (o *DeploymentHistoryService) HasStatusDetails() bool {
-	if o != nil && !IsNil(o.StatusDetails) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatusDetails gets a reference to the given StatusDetails and assigns it to the StatusDetails field.
+// SetStatusDetails sets field value
 func (o *DeploymentHistoryService) SetStatusDetails(v StatusDetails) {
-	o.StatusDetails = &v
+	o.StatusDetails = v
 }
 
 // GetIconUri returns the IconUri field value
@@ -253,9 +246,7 @@ func (o DeploymentHistoryService) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["auditing_data"] = o.AuditingData
 	toSerialize["details"] = o.Details
-	if !IsNil(o.StatusDetails) {
-		toSerialize["status_details"] = o.StatusDetails
-	}
+	toSerialize["status_details"] = o.StatusDetails
 	toSerialize["icon_uri"] = o.IconUri
 	if !IsNil(o.TotalDuration) {
 		toSerialize["total_duration"] = o.TotalDuration
@@ -277,6 +268,7 @@ func (o *DeploymentHistoryService) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"auditing_data",
 		"details",
+		"status_details",
 		"icon_uri",
 	}
 

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Status** | [**StateEnum**](StateEnum.md) |  | 
 **AuditingData** | [**DeploymentHistoryAuditingData**](DeploymentHistoryAuditingData.md) |  | 
 **Details** | [**DeploymentHistoryServiceDetails**](DeploymentHistoryServiceDetails.md) |  | 
-**StatusDetails** | Pointer to [**StatusDetails**](StatusDetails.md) |  | [optional] 
+**StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
 **IconUri** | **string** |  | 
 **TotalDuration** | Pointer to **string** |  | [optional] 
 
@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 
 ### NewDeploymentHistoryService
 
-`func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, iconUri string, ) *DeploymentHistoryService`
+`func NewDeploymentHistoryService(identifier DeploymentHistoryServiceIdentifier, status StateEnum, auditingData DeploymentHistoryAuditingData, details DeploymentHistoryServiceDetails, statusDetails StatusDetails, iconUri string, ) *DeploymentHistoryService`
 
 NewDeploymentHistoryService instantiates a new DeploymentHistoryService object
 This constructor will assign default values to properties that have it defined,
@@ -130,11 +130,6 @@ and a boolean to check if the value has been set.
 
 SetStatusDetails sets StatusDetails field to given value.
 
-### HasStatusDetails
-
-`func (o *DeploymentHistoryService) HasStatusDetails() bool`
-
-HasStatusDetails returns a boolean if a field has been set.
 
 ### GetIconUri
 

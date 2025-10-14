@@ -24408,6 +24408,7 @@ components:
       - icon_uri
       - identifier
       - status
+      - status_details
       type: object
       x-stoplight:
         id: 316ilxlmws82a
