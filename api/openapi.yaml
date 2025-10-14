@@ -39258,6 +39258,10 @@ components:
 x-tagGroups:
 - name: Organization
   tags:
+  - Alert Receivers
+  - Alert Rules
+- name: Organization
+  tags:
   - Organization Main Calls
   - Organization Api Token
   - Organization Account Git Repositories
