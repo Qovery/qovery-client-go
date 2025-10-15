@@ -43,6 +43,7 @@ type AlertRuleResponse struct {
 	// List of alert receiver IDs to send notifications to
 	AlertReceiverIds     []string                  `json:"alert_receiver_ids"`
 	Presentation         AlertPresentationResponse `json:"presentation"`
+	Target               AlertTarget               `json:"target"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -52,7 +53,7 @@ type _AlertRuleResponse AlertRuleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse) *AlertRuleResponse {
+func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget) *AlertRuleResponse {
 	this := AlertRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -66,6 +67,7 @@ func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string,
 	this.Enabled = enabled
 	this.AlertReceiverIds = alertReceiverIds
 	this.Presentation = presentation
+	this.Target = target
 	return &this
 }
 
@@ -397,6 +399,30 @@ func (o *AlertRuleResponse) SetPresentation(v AlertPresentationResponse) {
 	o.Presentation = v
 }
 
+// GetTarget returns the Target field value
+func (o *AlertRuleResponse) GetTarget() AlertTarget {
+	if o == nil {
+		var ret AlertTarget
+		return ret
+	}
+
+	return o.Target
+}
+
+// GetTargetOk returns a tuple with the Target field value
+// and a boolean to check if the value has been set.
+func (o *AlertRuleResponse) GetTargetOk() (*AlertTarget, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Target, true
+}
+
+// SetTarget sets field value
+func (o *AlertRuleResponse) SetTarget(v AlertTarget) {
+	o.Target = v
+}
+
 func (o AlertRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -422,6 +448,7 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["alert_receiver_ids"] = o.AlertReceiverIds
 	toSerialize["presentation"] = o.Presentation
+	toSerialize["target"] = o.Target
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -447,6 +474,7 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		"enabled",
 		"alert_receiver_ids",
 		"presentation",
+		"target",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -489,6 +517,7 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "alert_receiver_ids")
 		delete(additionalProperties, "presentation")
+		delete(additionalProperties, "target")
 		o.AdditionalProperties = additionalProperties
 	}
 

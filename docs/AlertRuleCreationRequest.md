@@ -11,15 +11,16 @@ Name | Type | Description | Notes
 **PromqlExpr** | **string** | PromQL expression to evaluate | 
 **ForDuration** | **string** | Duration the condition must be true before firing (ISO-8601 duration format) | 
 **Severity** | [**AlertSeverity**](AlertSeverity.md) |  | 
+**Presentation** | [**AlertPresentation**](AlertPresentation.md) |  | 
 **Enabled** | **bool** | Whether the alert rule is enabled | 
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
-**Presentation** | [**AlertPresentation**](AlertPresentation.md) |  | 
+**Target** | [**AlertTarget**](AlertTarget.md) |  | 
 
 ## Methods
 
 ### NewAlertRuleCreationRequest
 
-`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation, ) *AlertRuleCreationRequest`
+`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget, ) *AlertRuleCreationRequest`
 
 NewAlertRuleCreationRequest instantiates a new AlertRuleCreationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -174,6 +175,26 @@ and a boolean to check if the value has been set.
 SetSeverity sets Severity field to given value.
 
 
+### GetPresentation
+
+`func (o *AlertRuleCreationRequest) GetPresentation() AlertPresentation`
+
+GetPresentation returns the Presentation field if non-nil, zero value otherwise.
+
+### GetPresentationOk
+
+`func (o *AlertRuleCreationRequest) GetPresentationOk() (*AlertPresentation, bool)`
+
+GetPresentationOk returns a tuple with the Presentation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPresentation
+
+`func (o *AlertRuleCreationRequest) SetPresentation(v AlertPresentation)`
+
+SetPresentation sets Presentation field to given value.
+
+
 ### GetEnabled
 
 `func (o *AlertRuleCreationRequest) GetEnabled() bool`
@@ -214,24 +235,24 @@ and a boolean to check if the value has been set.
 SetAlertReceiverIds sets AlertReceiverIds field to given value.
 
 
-### GetPresentation
+### GetTarget
 
-`func (o *AlertRuleCreationRequest) GetPresentation() AlertPresentation`
+`func (o *AlertRuleCreationRequest) GetTarget() AlertTarget`
 
-GetPresentation returns the Presentation field if non-nil, zero value otherwise.
+GetTarget returns the Target field if non-nil, zero value otherwise.
 
-### GetPresentationOk
+### GetTargetOk
 
-`func (o *AlertRuleCreationRequest) GetPresentationOk() (*AlertPresentation, bool)`
+`func (o *AlertRuleCreationRequest) GetTargetOk() (*AlertTarget, bool)`
 
-GetPresentationOk returns a tuple with the Presentation field if it's non-nil, zero value otherwise
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPresentation
+### SetTarget
 
-`func (o *AlertRuleCreationRequest) SetPresentation(v AlertPresentation)`
+`func (o *AlertRuleCreationRequest) SetTarget(v AlertTarget)`
 
-SetPresentation sets Presentation field to given value.
+SetTarget sets Target field to given value.
 
 
 

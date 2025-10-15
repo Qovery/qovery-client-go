@@ -115,6 +115,8 @@ docs/AlertRuleEditRequest.md
 docs/AlertRuleResponse.md
 docs/AlertRulesAPI.md
 docs/AlertSeverity.md
+docs/AlertTarget.md
+docs/AlertTargetType.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
@@ -822,6 +824,8 @@ model_alert_rule_creation_request.go
 model_alert_rule_edit_request.go
 model_alert_rule_response.go
 model_alert_severity.go
+model_alert_target.go
+model_alert_target_type.go
 model_annotation.go
 model_annotations_group_associated_item_type.go
 model_api_variable_scope_enum.go

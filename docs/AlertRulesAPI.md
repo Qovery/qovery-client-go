@@ -32,7 +32,7 @@ import (
 )
 
 func main() {
-	alertRuleCreationRequest := *openapiclient.NewAlertRuleCreationRequest("OrganizationId_example", "ClusterId_example", "Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("WARNING"), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertPresentation()) // AlertRuleCreationRequest |  (optional)
+	alertRuleCreationRequest := *openapiclient.NewAlertRuleCreationRequest("OrganizationId_example", "ClusterId_example", "Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("WARNING"), *openapiclient.NewAlertPresentation(), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertTarget(openapiclient.AlertTargetType(" CLUSTER"), "TargetId_example")) // AlertRuleCreationRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

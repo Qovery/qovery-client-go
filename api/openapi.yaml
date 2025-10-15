@@ -35605,6 +35605,9 @@ components:
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        target:
+          target_type: ' CLUSTER'
+          target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         organization_id:
           description: Organization identifier
@@ -35643,6 +35646,8 @@ components:
             id: 8jk0kcca7whc6
         severity:
           $ref: '#/components/schemas/AlertSeverity'
+        presentation:
+          $ref: '#/components/schemas/AlertPresentation'
         enabled:
           description: Whether the alert rule is enabled
           type: boolean
@@ -35659,8 +35664,8 @@ components:
           type: array
           x-stoplight:
             id: oy3dbybxgmvs5
-        presentation:
-          $ref: '#/components/schemas/AlertPresentation'
+        target:
+          $ref: '#/components/schemas/AlertTarget'
       required:
       - alert_receiver_ids
       - cluster_id
@@ -35672,6 +35677,7 @@ components:
       - presentation
       - promql_expr
       - severity
+      - target
       title: AlertRuleCreationRequest
       type: object
       x-stoplight:
@@ -35838,6 +35844,8 @@ components:
               id: 7lerayyele2ss
           presentation:
             $ref: '#/components/schemas/AlertPresentationResponse'
+          target:
+            $ref: '#/components/schemas/AlertTarget'
         required:
         - alert_receiver_ids
         - cluster_id
@@ -35849,6 +35857,7 @@ components:
         - presentation
         - promql_expr
         - severity
+        - target
         type: object
       example:
         severity: WARNING
@@ -35856,6 +35865,9 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         enabled: true
+        target:
+          target_type: ' CLUSTER'
+          target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         presentation:
           summary: summary
           runbook_url: https://openapi-generator.tech
@@ -35871,6 +35883,40 @@ components:
       title: AlertRuleResponse
       x-stoplight:
         id: jsi9jy70651hv
+    AlertTargetType:
+      description: The target of an alert
+      enum:
+      - ' CLUSTER'
+      - ENVIRONMENT
+      - APPLICATION
+      - CONTAINER
+      - JOB
+      - CRONJOB
+      - HELM
+      - TERRAFORM
+      title: AlertTargetType
+      type: string
+      x-stoplight:
+        id: y45ivkwhr7wb4
+    AlertTarget:
+      example:
+        target_type: ' CLUSTER'
+        target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        target_type:
+          $ref: '#/components/schemas/AlertTargetType'
+        target_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 8begp36fsknxq
+      required:
+      - target_id
+      - target_type
+      title: AlertTarget
+      type: object
+      x-stoplight:
+        id: rv11vyq7cy4dn
     deleteMember_request:
       properties:
         user_id:

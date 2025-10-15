@@ -17,12 +17,13 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | Whether the alert rule is enabled | 
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
 **Presentation** | [**AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
+**Target** | [**AlertTarget**](AlertTarget.md) |  | 
 
 ## Methods
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -300,6 +301,26 @@ and a boolean to check if the value has been set.
 `func (o *AlertRuleResponse) SetPresentation(v AlertPresentationResponse)`
 
 SetPresentation sets Presentation field to given value.
+
+
+### GetTarget
+
+`func (o *AlertRuleResponse) GetTarget() AlertTarget`
+
+GetTarget returns the Target field if non-nil, zero value otherwise.
+
+### GetTargetOk
+
+`func (o *AlertRuleResponse) GetTargetOk() (*AlertTarget, bool)`
+
+GetTargetOk returns a tuple with the Target field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTarget
+
+`func (o *AlertRuleResponse) SetTarget(v AlertTarget)`
+
+SetTarget sets Target field to given value.
 
 
 

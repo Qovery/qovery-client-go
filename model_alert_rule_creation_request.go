@@ -32,13 +32,14 @@ type AlertRuleCreationRequest struct {
 	// PromQL expression to evaluate
 	PromqlExpr string `json:"promql_expr"`
 	// Duration the condition must be true before firing (ISO-8601 duration format)
-	ForDuration string        `json:"for_duration"`
-	Severity    AlertSeverity `json:"severity"`
+	ForDuration  string            `json:"for_duration"`
+	Severity     AlertSeverity     `json:"severity"`
+	Presentation AlertPresentation `json:"presentation"`
 	// Whether the alert rule is enabled
 	Enabled bool `json:"enabled"`
 	// List of alert receiver IDs to send notifications to
-	AlertReceiverIds     []string          `json:"alert_receiver_ids"`
-	Presentation         AlertPresentation `json:"presentation"`
+	AlertReceiverIds     []string    `json:"alert_receiver_ids"`
+	Target               AlertTarget `json:"target"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -48,7 +49,7 @@ type _AlertRuleCreationRequest AlertRuleCreationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation) *AlertRuleCreationRequest {
+func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget) *AlertRuleCreationRequest {
 	this := AlertRuleCreationRequest{}
 	this.OrganizationId = organizationId
 	this.ClusterId = clusterId
@@ -57,9 +58,10 @@ func NewAlertRuleCreationRequest(organizationId string, clusterId string, name s
 	this.PromqlExpr = promqlExpr
 	this.ForDuration = forDuration
 	this.Severity = severity
+	this.Presentation = presentation
 	this.Enabled = enabled
 	this.AlertReceiverIds = alertReceiverIds
-	this.Presentation = presentation
+	this.Target = target
 	return &this
 }
 
@@ -239,6 +241,30 @@ func (o *AlertRuleCreationRequest) SetSeverity(v AlertSeverity) {
 	o.Severity = v
 }
 
+// GetPresentation returns the Presentation field value
+func (o *AlertRuleCreationRequest) GetPresentation() AlertPresentation {
+	if o == nil {
+		var ret AlertPresentation
+		return ret
+	}
+
+	return o.Presentation
+}
+
+// GetPresentationOk returns a tuple with the Presentation field value
+// and a boolean to check if the value has been set.
+func (o *AlertRuleCreationRequest) GetPresentationOk() (*AlertPresentation, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Presentation, true
+}
+
+// SetPresentation sets field value
+func (o *AlertRuleCreationRequest) SetPresentation(v AlertPresentation) {
+	o.Presentation = v
+}
+
 // GetEnabled returns the Enabled field value
 func (o *AlertRuleCreationRequest) GetEnabled() bool {
 	if o == nil {
@@ -287,28 +313,28 @@ func (o *AlertRuleCreationRequest) SetAlertReceiverIds(v []string) {
 	o.AlertReceiverIds = v
 }
 
-// GetPresentation returns the Presentation field value
-func (o *AlertRuleCreationRequest) GetPresentation() AlertPresentation {
+// GetTarget returns the Target field value
+func (o *AlertRuleCreationRequest) GetTarget() AlertTarget {
 	if o == nil {
-		var ret AlertPresentation
+		var ret AlertTarget
 		return ret
 	}
 
-	return o.Presentation
+	return o.Target
 }
 
-// GetPresentationOk returns a tuple with the Presentation field value
+// GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
-func (o *AlertRuleCreationRequest) GetPresentationOk() (*AlertPresentation, bool) {
+func (o *AlertRuleCreationRequest) GetTargetOk() (*AlertTarget, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Presentation, true
+	return &o.Target, true
 }
 
-// SetPresentation sets field value
-func (o *AlertRuleCreationRequest) SetPresentation(v AlertPresentation) {
-	o.Presentation = v
+// SetTarget sets field value
+func (o *AlertRuleCreationRequest) SetTarget(v AlertTarget) {
+	o.Target = v
 }
 
 func (o AlertRuleCreationRequest) MarshalJSON() ([]byte, error) {
@@ -328,9 +354,10 @@ func (o AlertRuleCreationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["promql_expr"] = o.PromqlExpr
 	toSerialize["for_duration"] = o.ForDuration
 	toSerialize["severity"] = o.Severity
+	toSerialize["presentation"] = o.Presentation
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["alert_receiver_ids"] = o.AlertReceiverIds
-	toSerialize["presentation"] = o.Presentation
+	toSerialize["target"] = o.Target
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -351,9 +378,10 @@ func (o *AlertRuleCreationRequest) UnmarshalJSON(data []byte) (err error) {
 		"promql_expr",
 		"for_duration",
 		"severity",
+		"presentation",
 		"enabled",
 		"alert_receiver_ids",
-		"presentation",
+		"target",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -390,9 +418,10 @@ func (o *AlertRuleCreationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "promql_expr")
 		delete(additionalProperties, "for_duration")
 		delete(additionalProperties, "severity")
+		delete(additionalProperties, "presentation")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "alert_receiver_ids")
-		delete(additionalProperties, "presentation")
+		delete(additionalProperties, "target")
 		o.AdditionalProperties = additionalProperties
 	}
 

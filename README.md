@@ -586,6 +586,8 @@ Class | Method | HTTP request | Description
  - [AlertRuleEditRequest](docs/AlertRuleEditRequest.md)
  - [AlertRuleResponse](docs/AlertRuleResponse.md)
  - [AlertSeverity](docs/AlertSeverity.md)
+ - [AlertTarget](docs/AlertTarget.md)
+ - [AlertTargetType](docs/AlertTargetType.md)
  - [Annotation](docs/Annotation.md)
  - [AnnotationsGroupAssociatedItemType](docs/AnnotationsGroupAssociatedItemType.md)
  - [Application](docs/Application.md)
