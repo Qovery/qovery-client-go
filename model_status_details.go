@@ -23,6 +23,7 @@ var _ MappedNullable = &StatusDetails{}
 type StatusDetails struct {
 	Action               ServiceActionEnum       `json:"action"`
 	Status               ServiceActionStatusEnum `json:"status"`
+	SubAction            ServiceSubActionEnum    `json:"sub_action"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,10 +33,11 @@ type _StatusDetails StatusDetails
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewStatusDetails(action ServiceActionEnum, status ServiceActionStatusEnum) *StatusDetails {
+func NewStatusDetails(action ServiceActionEnum, status ServiceActionStatusEnum, subAction ServiceSubActionEnum) *StatusDetails {
 	this := StatusDetails{}
 	this.Action = action
 	this.Status = status
+	this.SubAction = subAction
 	return &this
 }
 
@@ -44,6 +46,8 @@ func NewStatusDetails(action ServiceActionEnum, status ServiceActionStatusEnum) 
 // but it doesn't guarantee that properties required by API are set
 func NewStatusDetailsWithDefaults() *StatusDetails {
 	this := StatusDetails{}
+	var subAction ServiceSubActionEnum = SERVICESUBACTIONENUM_NONE
+	this.SubAction = subAction
 	return &this
 }
 
@@ -95,6 +99,30 @@ func (o *StatusDetails) SetStatus(v ServiceActionStatusEnum) {
 	o.Status = v
 }
 
+// GetSubAction returns the SubAction field value
+func (o *StatusDetails) GetSubAction() ServiceSubActionEnum {
+	if o == nil {
+		var ret ServiceSubActionEnum
+		return ret
+	}
+
+	return o.SubAction
+}
+
+// GetSubActionOk returns a tuple with the SubAction field value
+// and a boolean to check if the value has been set.
+func (o *StatusDetails) GetSubActionOk() (*ServiceSubActionEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SubAction, true
+}
+
+// SetSubAction sets field value
+func (o *StatusDetails) SetSubAction(v ServiceSubActionEnum) {
+	o.SubAction = v
+}
+
 func (o StatusDetails) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -107,6 +135,7 @@ func (o StatusDetails) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["action"] = o.Action
 	toSerialize["status"] = o.Status
+	toSerialize["sub_action"] = o.SubAction
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -122,6 +151,7 @@ func (o *StatusDetails) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"action",
 		"status",
+		"sub_action",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -153,6 +183,7 @@ func (o *StatusDetails) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "action")
 		delete(additionalProperties, "status")
+		delete(additionalProperties, "sub_action")
 		o.AdditionalProperties = additionalProperties
 	}
 

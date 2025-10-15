@@ -1124,6 +1124,7 @@ Class | Method | HTTP request | Description
  - [ServiceStorageRequest](docs/ServiceStorageRequest.md)
  - [ServiceStorageRequestStorageInner](docs/ServiceStorageRequestStorageInner.md)
  - [ServiceStorageStorageInner](docs/ServiceStorageStorageInner.md)
+ - [ServiceSubActionEnum](docs/ServiceSubActionEnum.md)
  - [ServiceTotalNumber](docs/ServiceTotalNumber.md)
  - [ServiceTypeEnum](docs/ServiceTypeEnum.md)
  - [ServiceTypeForVariableEnum](docs/ServiceTypeForVariableEnum.md)

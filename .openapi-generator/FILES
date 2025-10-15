@@ -733,6 +733,7 @@ docs/ServiceStorage.md
 docs/ServiceStorageRequest.md
 docs/ServiceStorageRequestStorageInner.md
 docs/ServiceStorageStorageInner.md
+docs/ServiceSubActionEnum.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/ServiceTypeForVariableEnum.md
@@ -1364,6 +1365,7 @@ model_service_storage.go
 model_service_storage_request.go
 model_service_storage_request_storage_inner.go
 model_service_storage_storage_inner.go
+model_service_sub_action_enum.go
 model_service_total_number.go
 model_service_type_enum.go
 model_service_type_for_variable_enum.go

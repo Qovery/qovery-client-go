@@ -19651,6 +19651,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -19685,6 +19686,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -19712,6 +19714,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -24111,6 +24114,7 @@ components:
                 message: message
                 commit_page_url: commit_page_url
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             status: null
@@ -24136,6 +24140,7 @@ components:
                 message: message
                 commit_page_url: commit_page_url
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             status: null
@@ -24165,6 +24170,7 @@ components:
                 message: message
                 commit_page_url: commit_page_url
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             status: null
@@ -24190,6 +24196,7 @@ components:
                 message: message
                 commit_page_url: commit_page_url
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             status: null
@@ -24256,6 +24263,7 @@ components:
               message: message
               commit_page_url: commit_page_url
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           status: null
@@ -24281,6 +24289,7 @@ components:
               message: message
               commit_page_url: commit_page_url
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           status: null
@@ -24377,6 +24386,7 @@ components:
             message: message
             commit_page_url: commit_page_url
         status_details:
+          sub_action: NONE
           action: DEPLOY
           status: QUEUED
         status: null
@@ -24771,6 +24781,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24796,6 +24807,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24825,6 +24837,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24850,6 +24863,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24892,6 +24906,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24917,6 +24932,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24946,6 +24962,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -24971,6 +24988,7 @@ components:
                   message: message
                   commit_page_url: commit_page_url
               status_details:
+                sub_action: NONE
                 action: DEPLOY
                 status: QUEUED
               status: null
@@ -25014,6 +25032,7 @@ components:
               message: message
               commit_page_url: commit_page_url
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           status: null
@@ -25039,6 +25058,7 @@ components:
               message: message
               commit_page_url: commit_page_url
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           status: null
@@ -25531,6 +25551,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25552,6 +25573,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25584,6 +25606,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25605,6 +25628,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25627,6 +25651,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25648,6 +25673,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25670,6 +25696,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25691,6 +25718,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25713,6 +25741,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25734,6 +25763,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25756,6 +25786,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25777,6 +25808,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -25855,6 +25887,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25876,6 +25909,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25898,6 +25932,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25919,6 +25954,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25955,6 +25991,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25976,6 +26013,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -25998,6 +26036,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26019,6 +26058,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26041,6 +26081,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26062,6 +26103,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26084,6 +26126,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26105,6 +26148,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26127,6 +26171,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26148,6 +26193,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26170,6 +26216,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26191,6 +26238,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26227,6 +26275,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26248,6 +26297,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26270,6 +26320,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26291,6 +26342,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26313,6 +26365,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26334,6 +26387,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26356,6 +26410,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -26377,6 +26432,7 @@ components:
                 duration_sec: 1
                 status: SUCCESS
             status_details:
+              sub_action: NONE
               action: DEPLOY
               status: QUEUED
             is_part_last_deployment: true
@@ -27425,6 +27481,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27446,6 +27503,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27468,6 +27526,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27489,6 +27548,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27525,6 +27585,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27546,6 +27607,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27568,6 +27630,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27589,6 +27652,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27611,6 +27675,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27632,6 +27697,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27654,6 +27720,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -27675,6 +27742,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -31204,6 +31272,7 @@ components:
             duration_sec: 1
             status: SUCCESS
         status_details:
+          sub_action: NONE
           action: DEPLOY
           status: QUEUED
         is_part_last_deployment: true
@@ -31228,6 +31297,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -31249,6 +31319,7 @@ components:
               duration_sec: 1
               status: SUCCESS
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           is_part_last_deployment: true
@@ -31684,6 +31755,16 @@ components:
       - STOP
       - UNKNOWN
       type: string
+    ServiceSubActionEnum:
+      default: NONE
+      enum:
+      - NONE
+      - TERRAFORM_PLAN_ONLY
+      - TERRAFORM_PLAN_AND_APPLY
+      - TERRAFORM_DESTROY
+      - TERRAFORM_FORCE_UNLOCK_STATE
+      - TERRAFORM_MIGRATE_STATE
+      type: string
     ServiceActionStatusEnum:
       enum:
       - QUEUED
@@ -31752,6 +31833,7 @@ components:
             duration_sec: 1
             status: SUCCESS
         status_details:
+          sub_action: NONE
           action: DEPLOY
           status: QUEUED
         is_part_last_deployment: true
@@ -31795,6 +31877,7 @@ components:
       type: object
     StatusDetails:
       example:
+        sub_action: NONE
         action: DEPLOY
         status: QUEUED
       properties:
@@ -31802,9 +31885,12 @@ components:
           $ref: '#/components/schemas/ServiceActionEnum'
         status:
           $ref: '#/components/schemas/ServiceActionStatusEnum'
+        sub_action:
+          $ref: '#/components/schemas/ServiceSubActionEnum'
       required:
       - action
       - status
+      - sub_action
       type: object
     Stage:
       example:
@@ -34069,6 +34155,7 @@ components:
           origin: API
           triggered_by: triggered_by
         status_details:
+          sub_action: NONE
           action: DEPLOY
           status: QUEUED
         icon_uri: icon_uri
@@ -36867,6 +36954,7 @@ components:
             origin: API
             triggered_by: triggered_by
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           icon_uri: icon_uri
@@ -36879,6 +36967,7 @@ components:
             origin: API
             triggered_by: triggered_by
           status_details:
+            sub_action: NONE
             action: DEPLOY
             status: QUEUED
           icon_uri: icon_uri
