@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the EnvironmentStatuses type satisfies the MappedNullable interface at compile time
@@ -20,13 +21,13 @@ var _ MappedNullable = &EnvironmentStatuses{}
 
 // EnvironmentStatuses struct for EnvironmentStatuses
 type EnvironmentStatuses struct {
-	Environment          *EnvironmentStatus `json:"environment,omitempty"`
-	Applications         []Status           `json:"applications,omitempty"`
-	Containers           []Status           `json:"containers,omitempty"`
-	Jobs                 []Status           `json:"jobs,omitempty"`
-	Databases            []Status           `json:"databases,omitempty"`
-	Helms                []Status           `json:"helms,omitempty"`
-	Terraforms           []Status           `json:"terraforms,omitempty"`
+	Environment          EnvironmentStatus `json:"environment"`
+	Applications         []Status          `json:"applications"`
+	Containers           []Status          `json:"containers"`
+	Jobs                 []Status          `json:"jobs"`
+	Databases            []Status          `json:"databases"`
+	Helms                []Status          `json:"helms"`
+	Terraforms           []Status          `json:"terraforms"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,8 +37,15 @@ type _EnvironmentStatuses EnvironmentStatuses
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentStatuses() *EnvironmentStatuses {
+func NewEnvironmentStatuses(environment EnvironmentStatus, applications []Status, containers []Status, jobs []Status, databases []Status, helms []Status, terraforms []Status) *EnvironmentStatuses {
 	this := EnvironmentStatuses{}
+	this.Environment = environment
+	this.Applications = applications
+	this.Containers = containers
+	this.Jobs = jobs
+	this.Databases = databases
+	this.Helms = helms
+	this.Terraforms = terraforms
 	return &this
 }
 
@@ -49,226 +57,170 @@ func NewEnvironmentStatusesWithDefaults() *EnvironmentStatuses {
 	return &this
 }
 
-// GetEnvironment returns the Environment field value if set, zero value otherwise.
+// GetEnvironment returns the Environment field value
 func (o *EnvironmentStatuses) GetEnvironment() EnvironmentStatus {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		var ret EnvironmentStatus
 		return ret
 	}
-	return *o.Environment
+
+	return o.Environment
 }
 
-// GetEnvironmentOk returns a tuple with the Environment field value if set, nil otherwise
+// GetEnvironmentOk returns a tuple with the Environment field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetEnvironmentOk() (*EnvironmentStatus, bool) {
-	if o == nil || IsNil(o.Environment) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Environment, true
+	return &o.Environment, true
 }
 
-// HasEnvironment returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasEnvironment() bool {
-	if o != nil && !IsNil(o.Environment) {
-		return true
-	}
-
-	return false
-}
-
-// SetEnvironment gets a reference to the given EnvironmentStatus and assigns it to the Environment field.
+// SetEnvironment sets field value
 func (o *EnvironmentStatuses) SetEnvironment(v EnvironmentStatus) {
-	o.Environment = &v
+	o.Environment = v
 }
 
-// GetApplications returns the Applications field value if set, zero value otherwise.
+// GetApplications returns the Applications field value
 func (o *EnvironmentStatuses) GetApplications() []Status {
-	if o == nil || IsNil(o.Applications) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Applications
 }
 
-// GetApplicationsOk returns a tuple with the Applications field value if set, nil otherwise
+// GetApplicationsOk returns a tuple with the Applications field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetApplicationsOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Applications) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Applications, true
 }
 
-// HasApplications returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasApplications() bool {
-	if o != nil && !IsNil(o.Applications) {
-		return true
-	}
-
-	return false
-}
-
-// SetApplications gets a reference to the given []Status and assigns it to the Applications field.
+// SetApplications sets field value
 func (o *EnvironmentStatuses) SetApplications(v []Status) {
 	o.Applications = v
 }
 
-// GetContainers returns the Containers field value if set, zero value otherwise.
+// GetContainers returns the Containers field value
 func (o *EnvironmentStatuses) GetContainers() []Status {
-	if o == nil || IsNil(o.Containers) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Containers
 }
 
-// GetContainersOk returns a tuple with the Containers field value if set, nil otherwise
+// GetContainersOk returns a tuple with the Containers field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetContainersOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Containers) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Containers, true
 }
 
-// HasContainers returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasContainers() bool {
-	if o != nil && !IsNil(o.Containers) {
-		return true
-	}
-
-	return false
-}
-
-// SetContainers gets a reference to the given []Status and assigns it to the Containers field.
+// SetContainers sets field value
 func (o *EnvironmentStatuses) SetContainers(v []Status) {
 	o.Containers = v
 }
 
-// GetJobs returns the Jobs field value if set, zero value otherwise.
+// GetJobs returns the Jobs field value
 func (o *EnvironmentStatuses) GetJobs() []Status {
-	if o == nil || IsNil(o.Jobs) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Jobs
 }
 
-// GetJobsOk returns a tuple with the Jobs field value if set, nil otherwise
+// GetJobsOk returns a tuple with the Jobs field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetJobsOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Jobs) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Jobs, true
 }
 
-// HasJobs returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasJobs() bool {
-	if o != nil && !IsNil(o.Jobs) {
-		return true
-	}
-
-	return false
-}
-
-// SetJobs gets a reference to the given []Status and assigns it to the Jobs field.
+// SetJobs sets field value
 func (o *EnvironmentStatuses) SetJobs(v []Status) {
 	o.Jobs = v
 }
 
-// GetDatabases returns the Databases field value if set, zero value otherwise.
+// GetDatabases returns the Databases field value
 func (o *EnvironmentStatuses) GetDatabases() []Status {
-	if o == nil || IsNil(o.Databases) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Databases
 }
 
-// GetDatabasesOk returns a tuple with the Databases field value if set, nil otherwise
+// GetDatabasesOk returns a tuple with the Databases field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetDatabasesOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Databases) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Databases, true
 }
 
-// HasDatabases returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasDatabases() bool {
-	if o != nil && !IsNil(o.Databases) {
-		return true
-	}
-
-	return false
-}
-
-// SetDatabases gets a reference to the given []Status and assigns it to the Databases field.
+// SetDatabases sets field value
 func (o *EnvironmentStatuses) SetDatabases(v []Status) {
 	o.Databases = v
 }
 
-// GetHelms returns the Helms field value if set, zero value otherwise.
+// GetHelms returns the Helms field value
 func (o *EnvironmentStatuses) GetHelms() []Status {
-	if o == nil || IsNil(o.Helms) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Helms
 }
 
-// GetHelmsOk returns a tuple with the Helms field value if set, nil otherwise
+// GetHelmsOk returns a tuple with the Helms field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetHelmsOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Helms) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Helms, true
 }
 
-// HasHelms returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasHelms() bool {
-	if o != nil && !IsNil(o.Helms) {
-		return true
-	}
-
-	return false
-}
-
-// SetHelms gets a reference to the given []Status and assigns it to the Helms field.
+// SetHelms sets field value
 func (o *EnvironmentStatuses) SetHelms(v []Status) {
 	o.Helms = v
 }
 
-// GetTerraforms returns the Terraforms field value if set, zero value otherwise.
+// GetTerraforms returns the Terraforms field value
 func (o *EnvironmentStatuses) GetTerraforms() []Status {
-	if o == nil || IsNil(o.Terraforms) {
+	if o == nil {
 		var ret []Status
 		return ret
 	}
+
 	return o.Terraforms
 }
 
-// GetTerraformsOk returns a tuple with the Terraforms field value if set, nil otherwise
+// GetTerraformsOk returns a tuple with the Terraforms field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentStatuses) GetTerraformsOk() ([]Status, bool) {
-	if o == nil || IsNil(o.Terraforms) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Terraforms, true
 }
 
-// HasTerraforms returns a boolean if a field has been set.
-func (o *EnvironmentStatuses) HasTerraforms() bool {
-	if o != nil && !IsNil(o.Terraforms) {
-		return true
-	}
-
-	return false
-}
-
-// SetTerraforms gets a reference to the given []Status and assigns it to the Terraforms field.
+// SetTerraforms sets field value
 func (o *EnvironmentStatuses) SetTerraforms(v []Status) {
 	o.Terraforms = v
 }
@@ -283,27 +235,13 @@ func (o EnvironmentStatuses) MarshalJSON() ([]byte, error) {
 
 func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Environment) {
-		toSerialize["environment"] = o.Environment
-	}
-	if !IsNil(o.Applications) {
-		toSerialize["applications"] = o.Applications
-	}
-	if !IsNil(o.Containers) {
-		toSerialize["containers"] = o.Containers
-	}
-	if !IsNil(o.Jobs) {
-		toSerialize["jobs"] = o.Jobs
-	}
-	if !IsNil(o.Databases) {
-		toSerialize["databases"] = o.Databases
-	}
-	if !IsNil(o.Helms) {
-		toSerialize["helms"] = o.Helms
-	}
-	if !IsNil(o.Terraforms) {
-		toSerialize["terraforms"] = o.Terraforms
-	}
+	toSerialize["environment"] = o.Environment
+	toSerialize["applications"] = o.Applications
+	toSerialize["containers"] = o.Containers
+	toSerialize["jobs"] = o.Jobs
+	toSerialize["databases"] = o.Databases
+	toSerialize["helms"] = o.Helms
+	toSerialize["terraforms"] = o.Terraforms
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -313,6 +251,33 @@ func (o EnvironmentStatuses) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *EnvironmentStatuses) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"environment",
+		"applications",
+		"containers",
+		"jobs",
+		"databases",
+		"helms",
+		"terraforms",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varEnvironmentStatuses := _EnvironmentStatuses{}
 
 	err = json.Unmarshal(data, &varEnvironmentStatuses)

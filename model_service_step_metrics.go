@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ServiceStepMetrics type satisfies the MappedNullable interface at compile time
@@ -21,11 +22,11 @@ var _ MappedNullable = &ServiceStepMetrics{}
 // ServiceStepMetrics struct for ServiceStepMetrics
 type ServiceStepMetrics struct {
 	// The total duration in seconds of the service deployment or null if the deployment is not completed.
-	TotalDurationSec NullableInt32 `json:"total_duration_sec,omitempty"`
+	TotalDurationSec NullableInt32 `json:"total_duration_sec"`
 	// The total duration in seconds of the service deployment without queuing steps.
-	TotalComputingDurationSec *int32 `json:"total_computing_duration_sec,omitempty"`
+	TotalComputingDurationSec int32 `json:"total_computing_duration_sec"`
 	// A list of metrics for deployment steps of the service.
-	Details              []ServiceStepMetric `json:"details,omitempty"`
+	Details              []ServiceStepMetric `json:"details"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -35,8 +36,11 @@ type _ServiceStepMetrics ServiceStepMetrics
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceStepMetrics() *ServiceStepMetrics {
+func NewServiceStepMetrics(totalDurationSec NullableInt32, totalComputingDurationSec int32, details []ServiceStepMetric) *ServiceStepMetrics {
 	this := ServiceStepMetrics{}
+	this.TotalDurationSec = totalDurationSec
+	this.TotalComputingDurationSec = totalComputingDurationSec
+	this.Details = details
 	return &this
 }
 
@@ -48,16 +52,18 @@ func NewServiceStepMetricsWithDefaults() *ServiceStepMetrics {
 	return &this
 }
 
-// GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetTotalDurationSec returns the TotalDurationSec field value
+// If the value is explicit nil, the zero value for int32 will be returned
 func (o *ServiceStepMetrics) GetTotalDurationSec() int32 {
-	if o == nil || IsNil(o.TotalDurationSec.Get()) {
+	if o == nil || o.TotalDurationSec.Get() == nil {
 		var ret int32
 		return ret
 	}
+
 	return *o.TotalDurationSec.Get()
 }
 
-// GetTotalDurationSecOk returns a tuple with the TotalDurationSec field value if set, nil otherwise
+// GetTotalDurationSecOk returns a tuple with the TotalDurationSec field value
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ServiceStepMetrics) GetTotalDurationSecOk() (*int32, bool) {
@@ -67,90 +73,55 @@ func (o *ServiceStepMetrics) GetTotalDurationSecOk() (*int32, bool) {
 	return o.TotalDurationSec.Get(), o.TotalDurationSec.IsSet()
 }
 
-// HasTotalDurationSec returns a boolean if a field has been set.
-func (o *ServiceStepMetrics) HasTotalDurationSec() bool {
-	if o != nil && o.TotalDurationSec.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalDurationSec gets a reference to the given NullableInt32 and assigns it to the TotalDurationSec field.
+// SetTotalDurationSec sets field value
 func (o *ServiceStepMetrics) SetTotalDurationSec(v int32) {
 	o.TotalDurationSec.Set(&v)
 }
 
-// SetTotalDurationSecNil sets the value for TotalDurationSec to be an explicit nil
-func (o *ServiceStepMetrics) SetTotalDurationSecNil() {
-	o.TotalDurationSec.Set(nil)
-}
-
-// UnsetTotalDurationSec ensures that no value is present for TotalDurationSec, not even an explicit nil
-func (o *ServiceStepMetrics) UnsetTotalDurationSec() {
-	o.TotalDurationSec.Unset()
-}
-
-// GetTotalComputingDurationSec returns the TotalComputingDurationSec field value if set, zero value otherwise.
+// GetTotalComputingDurationSec returns the TotalComputingDurationSec field value
 func (o *ServiceStepMetrics) GetTotalComputingDurationSec() int32 {
-	if o == nil || IsNil(o.TotalComputingDurationSec) {
+	if o == nil {
 		var ret int32
 		return ret
 	}
-	return *o.TotalComputingDurationSec
+
+	return o.TotalComputingDurationSec
 }
 
-// GetTotalComputingDurationSecOk returns a tuple with the TotalComputingDurationSec field value if set, nil otherwise
+// GetTotalComputingDurationSecOk returns a tuple with the TotalComputingDurationSec field value
 // and a boolean to check if the value has been set.
 func (o *ServiceStepMetrics) GetTotalComputingDurationSecOk() (*int32, bool) {
-	if o == nil || IsNil(o.TotalComputingDurationSec) {
+	if o == nil {
 		return nil, false
 	}
-	return o.TotalComputingDurationSec, true
+	return &o.TotalComputingDurationSec, true
 }
 
-// HasTotalComputingDurationSec returns a boolean if a field has been set.
-func (o *ServiceStepMetrics) HasTotalComputingDurationSec() bool {
-	if o != nil && !IsNil(o.TotalComputingDurationSec) {
-		return true
-	}
-
-	return false
-}
-
-// SetTotalComputingDurationSec gets a reference to the given int32 and assigns it to the TotalComputingDurationSec field.
+// SetTotalComputingDurationSec sets field value
 func (o *ServiceStepMetrics) SetTotalComputingDurationSec(v int32) {
-	o.TotalComputingDurationSec = &v
+	o.TotalComputingDurationSec = v
 }
 
-// GetDetails returns the Details field value if set, zero value otherwise.
+// GetDetails returns the Details field value
 func (o *ServiceStepMetrics) GetDetails() []ServiceStepMetric {
-	if o == nil || IsNil(o.Details) {
+	if o == nil {
 		var ret []ServiceStepMetric
 		return ret
 	}
+
 	return o.Details
 }
 
-// GetDetailsOk returns a tuple with the Details field value if set, nil otherwise
+// GetDetailsOk returns a tuple with the Details field value
 // and a boolean to check if the value has been set.
 func (o *ServiceStepMetrics) GetDetailsOk() ([]ServiceStepMetric, bool) {
-	if o == nil || IsNil(o.Details) {
+	if o == nil {
 		return nil, false
 	}
 	return o.Details, true
 }
 
-// HasDetails returns a boolean if a field has been set.
-func (o *ServiceStepMetrics) HasDetails() bool {
-	if o != nil && !IsNil(o.Details) {
-		return true
-	}
-
-	return false
-}
-
-// SetDetails gets a reference to the given []ServiceStepMetric and assigns it to the Details field.
+// SetDetails sets field value
 func (o *ServiceStepMetrics) SetDetails(v []ServiceStepMetric) {
 	o.Details = v
 }
@@ -165,15 +136,9 @@ func (o ServiceStepMetrics) MarshalJSON() ([]byte, error) {
 
 func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if o.TotalDurationSec.IsSet() {
-		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
-	}
-	if !IsNil(o.TotalComputingDurationSec) {
-		toSerialize["total_computing_duration_sec"] = o.TotalComputingDurationSec
-	}
-	if !IsNil(o.Details) {
-		toSerialize["details"] = o.Details
-	}
+	toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
+	toSerialize["total_computing_duration_sec"] = o.TotalComputingDurationSec
+	toSerialize["details"] = o.Details
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -183,6 +148,29 @@ func (o ServiceStepMetrics) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ServiceStepMetrics) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"total_duration_sec",
+		"total_computing_duration_sec",
+		"details",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varServiceStepMetrics := _ServiceStepMetrics{}
 
 	err = json.Unmarshal(data, &varServiceStepMetrics)

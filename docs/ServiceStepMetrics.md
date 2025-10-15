@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the service deployment or null if the deployment is not completed. | [optional] 
-**TotalComputingDurationSec** | Pointer to **int32** | The total duration in seconds of the service deployment without queuing steps. | [optional] 
-**Details** | Pointer to [**[]ServiceStepMetric**](ServiceStepMetric.md) | A list of metrics for deployment steps of the service. | [optional] 
+**TotalDurationSec** | **NullableInt32** | The total duration in seconds of the service deployment or null if the deployment is not completed. | 
+**TotalComputingDurationSec** | **int32** | The total duration in seconds of the service deployment without queuing steps. | 
+**Details** | [**[]ServiceStepMetric**](ServiceStepMetric.md) | A list of metrics for deployment steps of the service. | 
 
 ## Methods
 
 ### NewServiceStepMetrics
 
-`func NewServiceStepMetrics() *ServiceStepMetrics`
+`func NewServiceStepMetrics(totalDurationSec NullableInt32, totalComputingDurationSec int32, details []ServiceStepMetric, ) *ServiceStepMetrics`
 
 NewServiceStepMetrics instantiates a new ServiceStepMetrics object
 This constructor will assign default values to properties that have it defined,
@@ -46,11 +46,6 @@ and a boolean to check if the value has been set.
 
 SetTotalDurationSec sets TotalDurationSec field to given value.
 
-### HasTotalDurationSec
-
-`func (o *ServiceStepMetrics) HasTotalDurationSec() bool`
-
-HasTotalDurationSec returns a boolean if a field has been set.
 
 ### SetTotalDurationSecNil
 
@@ -81,11 +76,6 @@ and a boolean to check if the value has been set.
 
 SetTotalComputingDurationSec sets TotalComputingDurationSec field to given value.
 
-### HasTotalComputingDurationSec
-
-`func (o *ServiceStepMetrics) HasTotalComputingDurationSec() bool`
-
-HasTotalComputingDurationSec returns a boolean if a field has been set.
 
 ### GetDetails
 
@@ -106,11 +96,6 @@ and a boolean to check if the value has been set.
 
 SetDetails sets Details field to given value.
 
-### HasDetails
-
-`func (o *ServiceStepMetrics) HasDetails() bool`
-
-HasDetails returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

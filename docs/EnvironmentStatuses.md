@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Environment** | Pointer to [**EnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
-**Applications** | Pointer to [**[]Status**](Status.md) |  | [optional] 
-**Containers** | Pointer to [**[]Status**](Status.md) |  | [optional] 
-**Jobs** | Pointer to [**[]Status**](Status.md) |  | [optional] 
-**Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
-**Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
-**Terraforms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**Environment** | [**EnvironmentStatus**](EnvironmentStatus.md) |  | 
+**Applications** | [**[]Status**](Status.md) |  | 
+**Containers** | [**[]Status**](Status.md) |  | 
+**Jobs** | [**[]Status**](Status.md) |  | 
+**Databases** | [**[]Status**](Status.md) |  | 
+**Helms** | [**[]Status**](Status.md) |  | 
+**Terraforms** | [**[]Status**](Status.md) |  | 
 
 ## Methods
 
 ### NewEnvironmentStatuses
 
-`func NewEnvironmentStatuses() *EnvironmentStatuses`
+`func NewEnvironmentStatuses(environment EnvironmentStatus, applications []Status, containers []Status, jobs []Status, databases []Status, helms []Status, terraforms []Status, ) *EnvironmentStatuses`
 
 NewEnvironmentStatuses instantiates a new EnvironmentStatuses object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +50,6 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
-### HasEnvironment
-
-`func (o *EnvironmentStatuses) HasEnvironment() bool`
-
-HasEnvironment returns a boolean if a field has been set.
 
 ### GetApplications
 
@@ -75,11 +70,6 @@ and a boolean to check if the value has been set.
 
 SetApplications sets Applications field to given value.
 
-### HasApplications
-
-`func (o *EnvironmentStatuses) HasApplications() bool`
-
-HasApplications returns a boolean if a field has been set.
 
 ### GetContainers
 
@@ -100,11 +90,6 @@ and a boolean to check if the value has been set.
 
 SetContainers sets Containers field to given value.
 
-### HasContainers
-
-`func (o *EnvironmentStatuses) HasContainers() bool`
-
-HasContainers returns a boolean if a field has been set.
 
 ### GetJobs
 
@@ -125,11 +110,6 @@ and a boolean to check if the value has been set.
 
 SetJobs sets Jobs field to given value.
 
-### HasJobs
-
-`func (o *EnvironmentStatuses) HasJobs() bool`
-
-HasJobs returns a boolean if a field has been set.
 
 ### GetDatabases
 
@@ -150,11 +130,6 @@ and a boolean to check if the value has been set.
 
 SetDatabases sets Databases field to given value.
 
-### HasDatabases
-
-`func (o *EnvironmentStatuses) HasDatabases() bool`
-
-HasDatabases returns a boolean if a field has been set.
 
 ### GetHelms
 
@@ -175,11 +150,6 @@ and a boolean to check if the value has been set.
 
 SetHelms sets Helms field to given value.
 
-### HasHelms
-
-`func (o *EnvironmentStatuses) HasHelms() bool`
-
-HasHelms returns a boolean if a field has been set.
 
 ### GetTerraforms
 
@@ -200,11 +170,6 @@ and a boolean to check if the value has been set.
 
 SetTerraforms sets Terraforms field to given value.
 
-### HasTerraforms
-
-`func (o *EnvironmentStatuses) HasTerraforms() bool`
-
-HasTerraforms returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

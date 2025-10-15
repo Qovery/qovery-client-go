@@ -25840,6 +25840,14 @@ components:
           items:
             $ref: '#/components/schemas/Status'
           type: array
+      required:
+      - applications
+      - containers
+      - databases
+      - environment
+      - helms
+      - jobs
+      - terraforms
       type: object
     EnvironmentStatusEventOriginEnum:
       description: Origin of the organization event
@@ -31870,7 +31878,10 @@ components:
           x-stoplight:
             id: crku532vt3v4p
       required:
+      - deployment_request_id
+      - deployment_requests_count
       - id
+      - is_part_last_deployment
       - service_deployment_status
       - state
       - status_details
@@ -32548,6 +32559,10 @@ components:
           items:
             $ref: '#/components/schemas/ServiceStepMetric'
           type: array
+      required:
+      - details
+      - total_computing_duration_sec
+      - total_duration_sec
       type: object
     StageStepMetric:
       example:

@@ -8,18 +8,18 @@ Name | Type | Description | Notes
 **State** | [**StateEnum**](StateEnum.md) |  | 
 **ServiceDeploymentStatus** | [**ServiceDeploymentStatusEnum**](ServiceDeploymentStatusEnum.md) |  | 
 **LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
-**IsPartLastDeployment** | Pointer to **bool** |  | [optional] 
+**IsPartLastDeployment** | **bool** |  | 
 **Steps** | Pointer to [**ServiceStepMetrics**](ServiceStepMetrics.md) |  | [optional] 
 **ExecutionId** | Pointer to **string** |  | [optional] 
 **StatusDetails** | [**StatusDetails**](StatusDetails.md) |  | 
-**DeploymentRequestId** | Pointer to **NullableString** |  | [optional] 
-**DeploymentRequestsCount** | Pointer to **int32** |  | [optional] 
+**DeploymentRequestId** | **NullableString** |  | 
+**DeploymentRequestsCount** | **int32** |  | 
 
 ## Methods
 
 ### NewReferenceObjectStatus
 
-`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, statusDetails StatusDetails, ) *ReferenceObjectStatus`
+`func NewReferenceObjectStatus(id string, state StateEnum, serviceDeploymentStatus ServiceDeploymentStatusEnum, isPartLastDeployment bool, statusDetails StatusDetails, deploymentRequestId NullableString, deploymentRequestsCount int32, ) *ReferenceObjectStatus`
 
 NewReferenceObjectStatus instantiates a new ReferenceObjectStatus object
 This constructor will assign default values to properties that have it defined,
@@ -138,11 +138,6 @@ and a boolean to check if the value has been set.
 
 SetIsPartLastDeployment sets IsPartLastDeployment field to given value.
 
-### HasIsPartLastDeployment
-
-`func (o *ReferenceObjectStatus) HasIsPartLastDeployment() bool`
-
-HasIsPartLastDeployment returns a boolean if a field has been set.
 
 ### GetSteps
 
@@ -233,11 +228,6 @@ and a boolean to check if the value has been set.
 
 SetDeploymentRequestId sets DeploymentRequestId field to given value.
 
-### HasDeploymentRequestId
-
-`func (o *ReferenceObjectStatus) HasDeploymentRequestId() bool`
-
-HasDeploymentRequestId returns a boolean if a field has been set.
 
 ### SetDeploymentRequestIdNil
 
@@ -268,11 +258,6 @@ and a boolean to check if the value has been set.
 
 SetDeploymentRequestsCount sets DeploymentRequestsCount field to given value.
 
-### HasDeploymentRequestsCount
-
-`func (o *ReferenceObjectStatus) HasDeploymentRequestsCount() bool`
-
-HasDeploymentRequestsCount returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
