@@ -33892,6 +33892,11 @@ components:
           type: integer
           x-stoplight:
             id: xq5ycmme7o025
+        spot_enabled:
+          default: false
+          type: boolean
+          x-stoplight:
+            id: rjzxs0e2rn0ij
       title: KarpenterGpuNodePoolOverride
       type: object
       x-stoplight:

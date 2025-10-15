@@ -24,6 +24,7 @@ type KarpenterGpuNodePoolOverride struct {
 	Limits               *KarpenterNodePoolLimits        `json:"limits,omitempty"`
 	Requirements         []KarpenterNodePoolRequirement  `json:"requirements,omitempty"`
 	DiskSizeInGib        *int32                          `json:"disk_size_in_gib,omitempty"`
+	SpotEnabled          *bool                           `json:"spot_enabled,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -37,6 +38,8 @@ func NewKarpenterGpuNodePoolOverride() *KarpenterGpuNodePoolOverride {
 	this := KarpenterGpuNodePoolOverride{}
 	var diskSizeInGib int32 = 100
 	this.DiskSizeInGib = &diskSizeInGib
+	var spotEnabled bool = false
+	this.SpotEnabled = &spotEnabled
 	return &this
 }
 
@@ -47,6 +50,8 @@ func NewKarpenterGpuNodePoolOverrideWithDefaults() *KarpenterGpuNodePoolOverride
 	this := KarpenterGpuNodePoolOverride{}
 	var diskSizeInGib int32 = 100
 	this.DiskSizeInGib = &diskSizeInGib
+	var spotEnabled bool = false
+	this.SpotEnabled = &spotEnabled
 	return &this
 }
 
@@ -178,6 +183,38 @@ func (o *KarpenterGpuNodePoolOverride) SetDiskSizeInGib(v int32) {
 	o.DiskSizeInGib = &v
 }
 
+// GetSpotEnabled returns the SpotEnabled field value if set, zero value otherwise.
+func (o *KarpenterGpuNodePoolOverride) GetSpotEnabled() bool {
+	if o == nil || IsNil(o.SpotEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.SpotEnabled
+}
+
+// GetSpotEnabledOk returns a tuple with the SpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterGpuNodePoolOverride) GetSpotEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.SpotEnabled) {
+		return nil, false
+	}
+	return o.SpotEnabled, true
+}
+
+// HasSpotEnabled returns a boolean if a field has been set.
+func (o *KarpenterGpuNodePoolOverride) HasSpotEnabled() bool {
+	if o != nil && !IsNil(o.SpotEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetSpotEnabled gets a reference to the given bool and assigns it to the SpotEnabled field.
+func (o *KarpenterGpuNodePoolOverride) SetSpotEnabled(v bool) {
+	o.SpotEnabled = &v
+}
+
 func (o KarpenterGpuNodePoolOverride) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -199,6 +236,9 @@ func (o KarpenterGpuNodePoolOverride) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DiskSizeInGib) {
 		toSerialize["disk_size_in_gib"] = o.DiskSizeInGib
+	}
+	if !IsNil(o.SpotEnabled) {
+		toSerialize["spot_enabled"] = o.SpotEnabled
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -226,6 +266,7 @@ func (o *KarpenterGpuNodePoolOverride) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "limits")
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "disk_size_in_gib")
+		delete(additionalProperties, "spot_enabled")
 		o.AdditionalProperties = additionalProperties
 	}
 
