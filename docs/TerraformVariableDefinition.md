@@ -7,12 +7,13 @@ Name | Type | Description | Notes
 **Key** | **string** | The name of the variable | 
 **Sensitive** | **bool** | Whether the variable is marked as sensitive | 
 **Default** | Pointer to **NullableString** | The default value of the variable, or null if no default is provided | [optional] 
+**Source** | **string** | The path inside your git repository where the variable is defined | 
 
 ## Methods
 
 ### NewTerraformVariableDefinition
 
-`func NewTerraformVariableDefinition(key string, sensitive bool, ) *TerraformVariableDefinition`
+`func NewTerraformVariableDefinition(key string, sensitive bool, source string, ) *TerraformVariableDefinition`
 
 NewTerraformVariableDefinition instantiates a new TerraformVariableDefinition object
 This constructor will assign default values to properties that have it defined,
@@ -102,6 +103,26 @@ HasDefault returns a boolean if a field has been set.
 `func (o *TerraformVariableDefinition) UnsetDefault()`
 
 UnsetDefault ensures that no value is present for Default, not even an explicit nil
+### GetSource
+
+`func (o *TerraformVariableDefinition) GetSource() string`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *TerraformVariableDefinition) GetSourceOk() (*string, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *TerraformVariableDefinition) SetSource(v string)`
+
+SetSource sets Source field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

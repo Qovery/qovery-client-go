@@ -26,7 +26,9 @@ type TerraformVariableDefinition struct {
 	// Whether the variable is marked as sensitive
 	Sensitive bool `json:"sensitive"`
 	// The default value of the variable, or null if no default is provided
-	Default              NullableString `json:"default,omitempty"`
+	Default NullableString `json:"default,omitempty"`
+	// The path inside your git repository where the variable is defined
+	Source               string `json:"source"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,10 +38,11 @@ type _TerraformVariableDefinition TerraformVariableDefinition
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVariableDefinition(key string, sensitive bool) *TerraformVariableDefinition {
+func NewTerraformVariableDefinition(key string, sensitive bool, source string) *TerraformVariableDefinition {
 	this := TerraformVariableDefinition{}
 	this.Key = key
 	this.Sensitive = sensitive
+	this.Source = source
 	return &this
 }
 
@@ -142,6 +145,30 @@ func (o *TerraformVariableDefinition) UnsetDefault() {
 	o.Default.Unset()
 }
 
+// GetSource returns the Source field value
+func (o *TerraformVariableDefinition) GetSource() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value
+// and a boolean to check if the value has been set.
+func (o *TerraformVariableDefinition) GetSourceOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Source, true
+}
+
+// SetSource sets field value
+func (o *TerraformVariableDefinition) SetSource(v string) {
+	o.Source = v
+}
+
 func (o TerraformVariableDefinition) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -157,6 +184,7 @@ func (o TerraformVariableDefinition) ToMap() (map[string]interface{}, error) {
 	if o.Default.IsSet() {
 		toSerialize["default"] = o.Default.Get()
 	}
+	toSerialize["source"] = o.Source
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -172,6 +200,7 @@ func (o *TerraformVariableDefinition) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"key",
 		"sensitive",
+		"source",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -204,6 +233,7 @@ func (o *TerraformVariableDefinition) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "sensitive")
 		delete(additionalProperties, "default")
+		delete(additionalProperties, "source")
 		o.AdditionalProperties = additionalProperties
 	}
 

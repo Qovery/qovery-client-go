@@ -34868,6 +34868,7 @@ components:
       example:
         default: default
         sensitive: true
+        source: source
         key: key
       properties:
         key:
@@ -34881,9 +34882,13 @@ components:
             \ provided"
           nullable: true
           type: string
+        source:
+          description: The path inside your git repository where the variable is defined
+          type: string
       required:
       - key
       - sensitive
+      - source
       title: TerraformVariableDefinition
       type: object
     TerraformFilesSourceRequest:
@@ -36849,9 +36854,11 @@ components:
         results:
         - default: default
           sensitive: true
+          source: source
           key: key
         - default: default
           sensitive: true
+          source: source
           key: key
       properties:
         results:
