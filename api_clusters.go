@@ -1339,6 +1339,7 @@ type ApiGetClusterLogsRequest struct {
 	step       *string
 	interval   *string
 	direction  *string
+	time       *string
 }
 
 func (r ApiGetClusterLogsRequest) Endpoint(endpoint string) ApiGetClusterLogsRequest {
@@ -1383,6 +1384,11 @@ func (r ApiGetClusterLogsRequest) Interval(interval string) ApiGetClusterLogsReq
 
 func (r ApiGetClusterLogsRequest) Direction(direction string) ApiGetClusterLogsRequest {
 	r.direction = &direction
+	return r
+}
+
+func (r ApiGetClusterLogsRequest) Time(time string) ApiGetClusterLogsRequest {
+	r.time = &time
 	return r
 }
 
@@ -1458,6 +1464,9 @@ func (a *ClustersAPIService) GetClusterLogsExecute(r ApiGetClusterLogsRequest) (
 	}
 	if r.direction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "direction", r.direction, "")
+	}
+	if r.time != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "time", r.time, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

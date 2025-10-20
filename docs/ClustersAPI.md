@@ -772,7 +772,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterLogs
 
-> ClusterLogsResponse GetClusterLogs(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Execute()
+> ClusterLogsResponse GetClusterLogs(ctx, clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Time(time).Execute()
 
 Fetch cluster logs
 
@@ -801,10 +801,11 @@ func main() {
 	step := "step_example" // string |  (optional)
 	interval := "interval_example" // string |  (optional)
 	direction := "direction_example" // string |  (optional)
+	time := "time_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterLogs(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterLogs(context.Background(), clusterId).Endpoint(endpoint).Query(query).Start(start).End(end).Limit(limit).Since(since).Step(step).Interval(interval).Direction(direction).Time(time).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterLogs``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -839,6 +840,7 @@ Name | Type | Description  | Notes
  **step** | **string** |  | 
  **interval** | **string** |  | 
  **direction** | **string** |  | 
+ **time** | **string** |  | 
 
 ### Return type
 
