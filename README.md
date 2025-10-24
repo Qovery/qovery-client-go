@@ -87,11 +87,12 @@ Class | Method | HTTP request | Description
 *AlertReceiversAPI* | [**DeleteAlertReceiver**](docs/AlertReceiversAPI.md#deletealertreceiver) | **Delete** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
 *AlertReceiversAPI* | [**EditAlertReceiver**](docs/AlertReceiversAPI.md#editalertreceiver) | **Put** /api/alert-receivers/{alertReceiverId} | Update alert receiver
 *AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /api/alert-receivers/{alertReceiverId} | Get alert receiver
-*AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /api/organization/{organizationId}/alert-receivers | List alert receivers
+*AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
 *AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /api/alert-rules | Create alert rule
 *AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /api/alert-rules/{alertRuleId} | Delete alert rule
 *AlertRulesAPI* | [**EditAlertRule**](docs/AlertRulesAPI.md#editalertrule) | **Put** /api/alert-rules/{alertRuleId} | Update alert rule
 *AlertRulesAPI* | [**GetAlertRule**](docs/AlertRulesAPI.md#getalertrule) | **Get** /api/alert-rules/{alertRuleId} | Get alert rule
+*AlertRulesAPI* | [**GetAlertRules**](docs/AlertRulesAPI.md#getalertrules) | **Get** /organization/{organizationId}/alert-rules | List alert rules
 *ApplicationActionsAPI* | [**DeployApplication**](docs/ApplicationActionsAPI.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application
 *ApplicationActionsAPI* | [**RedeployApplication**](docs/ApplicationActionsAPI.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
@@ -584,7 +585,9 @@ Class | Method | HTTP request | Description
  - [AlertReceiverType](docs/AlertReceiverType.md)
  - [AlertRuleCreationRequest](docs/AlertRuleCreationRequest.md)
  - [AlertRuleEditRequest](docs/AlertRuleEditRequest.md)
+ - [AlertRuleList](docs/AlertRuleList.md)
  - [AlertRuleResponse](docs/AlertRuleResponse.md)
+ - [AlertRuleState](docs/AlertRuleState.md)
  - [AlertSeverity](docs/AlertSeverity.md)
  - [AlertTarget](docs/AlertTarget.md)
  - [AlertTargetType](docs/AlertTargetType.md)

@@ -538,7 +538,7 @@ func (a *AlertReceiversAPIService) GetAlertReceiversExecute(r ApiGetAlertReceive
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/organization/{organizationId}/alert-receivers"
+	localVarPath := localBasePath + "/organization/{organizationId}/alert-receivers"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

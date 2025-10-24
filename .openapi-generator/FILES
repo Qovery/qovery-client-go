@@ -112,7 +112,9 @@ docs/AlertReceiverType.md
 docs/AlertReceiversAPI.md
 docs/AlertRuleCreationRequest.md
 docs/AlertRuleEditRequest.md
+docs/AlertRuleList.md
 docs/AlertRuleResponse.md
+docs/AlertRuleState.md
 docs/AlertRulesAPI.md
 docs/AlertSeverity.md
 docs/AlertTarget.md
@@ -823,7 +825,9 @@ model_alert_receiver_response.go
 model_alert_receiver_type.go
 model_alert_rule_creation_request.go
 model_alert_rule_edit_request.go
+model_alert_rule_list.go
 model_alert_rule_response.go
+model_alert_rule_state.go
 model_alert_severity.go
 model_alert_target.go
 model_alert_target_type.go

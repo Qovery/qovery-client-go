@@ -17132,6 +17132,38 @@ paths:
       summary: List enterprise connections
       tags:
       - Organization Enterprise Connection
+  /organization/{organizationId}/alert-receivers:
+    get:
+      description: Retrieve all alert receivers for a specific organization
+      operationId: getAlertReceivers
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertReceiverList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List alert receivers
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: 3cqb2xpmir9n8
   /organization/{organizationId}/enterpriseconnection/{connectionName}:
     get:
       operationId: getOrganizationEnterpriseConnection
@@ -17210,38 +17242,6 @@ paths:
       summary: Update enterprise connection
       tags:
       - Organization Enterprise Connection
-  /api/organization/{organizationId}/alert-receivers:
-    get:
-      description: Retrieve all alert receivers for a specific organization
-      operationId: getAlertReceivers
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AlertReceiverList'
-          description: OK
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List alert receivers
-      tags:
-      - Alert Receivers
-      x-stoplight:
-        id: 3cqb2xpmir9n8
   /api/alert-receivers:
     post:
       description: Create a new alert receiver
@@ -17490,6 +17490,38 @@ paths:
       - Alert Rules
       x-stoplight:
         id: cj5a3t08qw1aj
+  /organization/{organizationId}/alert-rules:
+    get:
+      description: Retrieve all alert rules for a specific organization
+      operationId: getAlertRules
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlertRuleList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List alert rules
+      tags:
+      - Alert Rules
+      x-stoplight:
+        id: xkza3tt52gwse
 components:
   parameters:
     alertReceiverId:
@@ -35965,6 +35997,8 @@ components:
             $ref: '#/components/schemas/AlertPresentationResponse'
           target:
             $ref: '#/components/schemas/AlertTarget'
+          state:
+            $ref: '#/components/schemas/AlertRuleState'
         required:
         - alert_receiver_ids
         - cluster_id
@@ -35976,6 +36010,7 @@ components:
         - presentation
         - promql_expr
         - severity
+        - state
         - target
         type: object
       example:
@@ -35995,6 +36030,7 @@ components:
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        state: UNDEPLOYED
         promql_expr: promql_expr
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36036,6 +36072,76 @@ components:
       type: object
       x-stoplight:
         id: rv11vyq7cy4dn
+    AlertRuleState:
+      enum:
+      - UNDEPLOYED
+      - OK
+      - TRIGGERED
+      - FIRED
+      - NOTIFIED
+      - SUPPRESSED
+      title: AlertRuleState
+      type: string
+      x-stoplight:
+        id: 05u4rv9rrfvcp
+    AlertRuleList:
+      example:
+        results:
+        - severity: WARNING
+          for_duration: for_duration
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          enabled: true
+          target:
+            target_type: ' CLUSTER'
+            target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          presentation:
+            summary: summary
+            runbook_url: https://openapi-generator.tech
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: UNDEPLOYED
+          promql_expr: promql_expr
+          alert_receiver_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - severity: WARNING
+          for_duration: for_duration
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          enabled: true
+          target:
+            target_type: ' CLUSTER'
+            target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          presentation:
+            summary: summary
+            runbook_url: https://openapi-generator.tech
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: UNDEPLOYED
+          promql_expr: promql_expr
+          alert_receiver_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AlertRuleResponse'
+          type: array
+          x-stoplight:
+            id: nsk4tfkil7yuf
+      required:
+      - results
+      title: AlertRuleList
+      type: object
+      x-stoplight:
+        id: hawsqfl98nqlz
     deleteMember_request:
       properties:
         user_id:

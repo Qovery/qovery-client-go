@@ -18,12 +18,13 @@ Name | Type | Description | Notes
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
 **Presentation** | [**AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **Target** | [**AlertTarget**](AlertTarget.md) |  | 
+**State** | [**AlertRuleState**](AlertRuleState.md) |  | 
 
 ## Methods
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -321,6 +322,26 @@ and a boolean to check if the value has been set.
 `func (o *AlertRuleResponse) SetTarget(v AlertTarget)`
 
 SetTarget sets Target field to given value.
+
+
+### GetState
+
+`func (o *AlertRuleResponse) GetState() AlertRuleState`
+
+GetState returns the State field if non-nil, zero value otherwise.
+
+### GetStateOk
+
+`func (o *AlertRuleResponse) GetStateOk() (*AlertRuleState, bool)`
+
+GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetState
+
+`func (o *AlertRuleResponse) SetState(v AlertRuleState)`
+
+SetState sets State field to given value.
 
 
 
