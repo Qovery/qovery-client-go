@@ -10,7 +10,7 @@ info:
   title: Qovery API
   version: 1.0.4
   x-logo:
-    url: https://raw.githubusercontent.com/Qovery/public-resources/master/qovery_new_logo_white.svg
+    url: https://console.qovery.com/assets/logos/logo-white.svg
     altText: Qovery
 servers:
 - url: https://api.qovery.com
