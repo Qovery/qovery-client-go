@@ -21,12 +21,13 @@ type AlertRuleState string
 
 // List of AlertRuleState
 const (
-	ALERTRULESTATE_UNDEPLOYED AlertRuleState = "UNDEPLOYED"
-	ALERTRULESTATE_OK         AlertRuleState = "OK"
-	ALERTRULESTATE_TRIGGERED  AlertRuleState = "TRIGGERED"
-	ALERTRULESTATE_FIRED      AlertRuleState = "FIRED"
-	ALERTRULESTATE_NOTIFIED   AlertRuleState = "NOTIFIED"
-	ALERTRULESTATE_SUPPRESSED AlertRuleState = "SUPPRESSED"
+	ALERTRULESTATE_UNDEPLOYED           AlertRuleState = "UNDEPLOYED"
+	ALERTRULESTATE_OK                   AlertRuleState = "OK"
+	ALERTRULESTATE_TRIGGERED            AlertRuleState = "TRIGGERED"
+	ALERTRULESTATE_PENDING_NOTIFICATION AlertRuleState = "PENDING_NOTIFICATION"
+	ALERTRULESTATE_NOTIFIED             AlertRuleState = "NOTIFIED"
+	ALERTRULESTATE_SUPPRESSED           AlertRuleState = "SUPPRESSED"
+	ALERTRULESTATE_UNROUTED             AlertRuleState = "UNROUTED"
 )
 
 // All allowed values of AlertRuleState enum
@@ -34,9 +35,10 @@ var AllowedAlertRuleStateEnumValues = []AlertRuleState{
 	"UNDEPLOYED",
 	"OK",
 	"TRIGGERED",
-	"FIRED",
+	"PENDING_NOTIFICATION",
 	"NOTIFIED",
 	"SUPPRESSED",
+	"UNROUTED",
 }
 
 func (v *AlertRuleState) UnmarshalJSON(src []byte) error {

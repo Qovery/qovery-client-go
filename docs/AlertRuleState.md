@@ -9,11 +9,13 @@
 
 * `TRIGGERED` (value: `"TRIGGERED"`)
 
-* `FIRED` (value: `"FIRED"`)
+* `PENDING_NOTIFICATION` (value: `"PENDING_NOTIFICATION"`)
 
 * `NOTIFIED` (value: `"NOTIFIED"`)
 
 * `SUPPRESSED` (value: `"SUPPRESSED"`)
+
+* `UNROUTED` (value: `"UNROUTED"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

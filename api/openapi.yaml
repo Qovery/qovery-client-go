@@ -36077,9 +36077,10 @@ components:
       - UNDEPLOYED
       - OK
       - TRIGGERED
-      - FIRED
+      - PENDING_NOTIFICATION
       - NOTIFIED
       - SUPPRESSED
+      - UNROUTED
       title: AlertRuleState
       type: string
       x-stoplight:
