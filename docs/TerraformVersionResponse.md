@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Engine** | Pointer to **string** | Terraform engine | [optional] 
-**Version** | Pointer to **string** | Terraform version string | [optional] 
+**Engine** | **string** | Terraform engine | 
+**Version** | **string** | Terraform version string | 
 
 ## Methods
 
 ### NewTerraformVersionResponse
 
-`func NewTerraformVersionResponse() *TerraformVersionResponse`
+`func NewTerraformVersionResponse(engine string, version string, ) *TerraformVersionResponse`
 
 NewTerraformVersionResponse instantiates a new TerraformVersionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -45,11 +45,6 @@ and a boolean to check if the value has been set.
 
 SetEngine sets Engine field to given value.
 
-### HasEngine
-
-`func (o *TerraformVersionResponse) HasEngine() bool`
-
-HasEngine returns a boolean if a field has been set.
 
 ### GetVersion
 
@@ -70,11 +65,6 @@ and a boolean to check if the value has been set.
 
 SetVersion sets Version field to given value.
 
-### HasVersion
-
-`func (o *TerraformVersionResponse) HasVersion() bool`
-
-HasVersion returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

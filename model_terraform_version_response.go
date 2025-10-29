@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the TerraformVersionResponse type satisfies the MappedNullable interface at compile time
@@ -21,9 +22,9 @@ var _ MappedNullable = &TerraformVersionResponse{}
 // TerraformVersionResponse struct for TerraformVersionResponse
 type TerraformVersionResponse struct {
 	// Terraform engine
-	Engine *string `json:"engine,omitempty"`
+	Engine string `json:"engine"`
 	// Terraform version string
-	Version              *string `json:"version,omitempty"`
+	Version              string `json:"version"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,8 +34,10 @@ type _TerraformVersionResponse TerraformVersionResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVersionResponse() *TerraformVersionResponse {
+func NewTerraformVersionResponse(engine string, version string) *TerraformVersionResponse {
 	this := TerraformVersionResponse{}
+	this.Engine = engine
+	this.Version = version
 	return &this
 }
 
@@ -46,68 +49,52 @@ func NewTerraformVersionResponseWithDefaults() *TerraformVersionResponse {
 	return &this
 }
 
-// GetEngine returns the Engine field value if set, zero value otherwise.
+// GetEngine returns the Engine field value
 func (o *TerraformVersionResponse) GetEngine() string {
-	if o == nil || IsNil(o.Engine) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Engine
+
+	return o.Engine
 }
 
-// GetEngineOk returns a tuple with the Engine field value if set, nil otherwise
+// GetEngineOk returns a tuple with the Engine field value
 // and a boolean to check if the value has been set.
 func (o *TerraformVersionResponse) GetEngineOk() (*string, bool) {
-	if o == nil || IsNil(o.Engine) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Engine, true
+	return &o.Engine, true
 }
 
-// HasEngine returns a boolean if a field has been set.
-func (o *TerraformVersionResponse) HasEngine() bool {
-	if o != nil && !IsNil(o.Engine) {
-		return true
-	}
-
-	return false
-}
-
-// SetEngine gets a reference to the given string and assigns it to the Engine field.
+// SetEngine sets field value
 func (o *TerraformVersionResponse) SetEngine(v string) {
-	o.Engine = &v
+	o.Engine = v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise.
+// GetVersion returns the Version field value
 func (o *TerraformVersionResponse) GetVersion() string {
-	if o == nil || IsNil(o.Version) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.Version
+
+	return o.Version
 }
 
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// GetVersionOk returns a tuple with the Version field value
 // and a boolean to check if the value has been set.
 func (o *TerraformVersionResponse) GetVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.Version) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Version, true
+	return &o.Version, true
 }
 
-// HasVersion returns a boolean if a field has been set.
-func (o *TerraformVersionResponse) HasVersion() bool {
-	if o != nil && !IsNil(o.Version) {
-		return true
-	}
-
-	return false
-}
-
-// SetVersion gets a reference to the given string and assigns it to the Version field.
+// SetVersion sets field value
 func (o *TerraformVersionResponse) SetVersion(v string) {
-	o.Version = &v
+	o.Version = v
 }
 
 func (o TerraformVersionResponse) MarshalJSON() ([]byte, error) {
@@ -120,12 +107,8 @@ func (o TerraformVersionResponse) MarshalJSON() ([]byte, error) {
 
 func (o TerraformVersionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.Engine) {
-		toSerialize["engine"] = o.Engine
-	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
-	}
+	toSerialize["engine"] = o.Engine
+	toSerialize["version"] = o.Version
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -135,6 +118,28 @@ func (o TerraformVersionResponse) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *TerraformVersionResponse) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"engine",
+		"version",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varTerraformVersionResponse := _TerraformVersionResponse{}
 
 	err = json.Unmarshal(data, &varTerraformVersionResponse)

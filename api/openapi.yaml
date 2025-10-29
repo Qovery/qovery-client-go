@@ -35285,6 +35285,9 @@ components:
         version:
           description: Terraform version string
           type: string
+      required:
+      - engine
+      - version
       type: object
     TerraformVersionResponseList:
       example:
