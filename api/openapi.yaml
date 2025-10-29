@@ -16016,6 +16016,43 @@ paths:
       summary: Parse Terraform variables from Git repository
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/listTfVarsFilesFromGitRepo:
+    post:
+      operationId: listTfVarsFilesFromGitRepo
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TfVarsListRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listTfVarsFilesFromGitRepo_200_response'
+          description: List of Terraform tfvars files with their variables
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List Terraform tfvars files from Git repository
+      tags:
+      - Organization Main Calls
   /environment/{environmentId}/deploymentQueue:
     get:
       operationId: listDeploymentRequestByEnvironmentId
@@ -34989,6 +35026,108 @@ components:
       type: object
       x-stoplight:
         id: 2lr1mv2b3y7xy
+    TfVarsListRequest:
+      description: Request to list Terraform tfvars files from a Git repository
+      example:
+        git_repository:
+          root_path: /
+          provider:
+            kind: GITHUB
+            url: https://openapi-generator.tech
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: main
+          url: https://github.com/Qovery/terraform-examples
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/GitRepositoryRequest'
+      required:
+      - git_repository
+      title: TfVarsListRequest
+      type: object
+    GitRepositoryRequest:
+      description: Git repository information for Terraform operations
+      example:
+        root_path: /
+        provider:
+          kind: GITHUB
+          url: https://openapi-generator.tech
+        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branch: main
+        url: https://github.com/Qovery/terraform-examples
+      properties:
+        url:
+          description: Git repository URL
+          example: https://github.com/Qovery/terraform-examples
+          format: uri
+          type: string
+        branch:
+          description: Name of the branch to use (optional)
+          example: main
+          nullable: true
+          type: string
+        root_path:
+          default: /
+          description: Root path within the repository
+          type: string
+        git_token_id:
+          description: The git token id on Qovery side
+          format: uuid
+          nullable: true
+          type: string
+        provider:
+          $ref: '#/components/schemas/GitProvider'
+      required:
+      - provider
+      - url
+      title: GitRepositoryRequest
+      type: object
+    GitProvider:
+      description: Git provider information
+      example:
+        kind: GITHUB
+        url: https://openapi-generator.tech
+      properties:
+        kind:
+          description: The type of git provider
+          enum:
+          - GITHUB
+          - GITLAB
+          - BITBUCKET
+          type: string
+        url:
+          description: Custom git provider URL (for self-hosted instances)
+          format: uri
+          nullable: true
+          type: string
+      required:
+      - kind
+      title: GitProvider
+      type: object
+    TfVarsFileResponse:
+      description: Represents a Terraform tfvars file with its variables
+      example:
+        variables:
+          environment: production
+          region: us-east-1
+        source: environments/prod.tfvars
+      properties:
+        source:
+          description: The path to the tfvars file within the Git repository
+          example: environments/prod.tfvars
+          type: string
+        variables:
+          additionalProperties:
+            type: string
+          description: Map of variable names to their values from the tfvars file
+          example:
+            environment: production
+            region: us-east-1
+          type: object
+      required:
+      - source
+      - variables
+      title: TfVarsFileResponse
+      type: object
     TerraformJobResourcesResponse:
       example:
         cpu_milli: 6
@@ -36987,6 +37126,23 @@ components:
         results:
           items:
             $ref: '#/components/schemas/TerraformVariableDefinition'
+          type: array
+      type: object
+    listTfVarsFilesFromGitRepo_200_response:
+      example:
+        results:
+        - variables:
+            environment: production
+            region: us-east-1
+          source: environments/prod.tfvars
+        - variables:
+            environment: production
+            region: us-east-1
+          source: environments/prod.tfvars
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/TfVarsFileResponse'
           type: array
       type: object
     listDeploymentRequestByEnvironmentId_200_response:
