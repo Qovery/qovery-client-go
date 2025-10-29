@@ -553,7 +553,7 @@ Class | Method | HTTP request | Description
 *TerraformMainCallsAPI* | [**EditTerraform**](docs/TerraformMainCallsAPI.md#editterraform) | **Put** /terraform/{terraformId} | Edit Terraform
 *TerraformMainCallsAPI* | [**GetTerraform**](docs/TerraformMainCallsAPI.md#getterraform) | **Get** /terraform/{terraformId} | Get terraform by ID
 *TerraformMainCallsAPI* | [**ListTerraformCommit**](docs/TerraformMainCallsAPI.md#listterraformcommit) | **Get** /terraform/{terraformId}/commit | List last commits
-*TerraformMainCallsAPI* | [**ListTerraformVersions**](docs/TerraformMainCallsAPI.md#listterraformversions) | **Get** /terraform/available-versions | List available Terraform versions
+*TerraformMainCallsAPI* | [**ListTerraformVersions**](docs/TerraformMainCallsAPI.md#listterraformversions) | **Get** /terraform/availableVersion | List available Terraform versions
 *TerraformsAPI* | [**CloneTerraform**](docs/TerraformsAPI.md#cloneterraform) | **Post** /terraform/{terraformId}/clone | Clone terraform
 *TerraformsAPI* | [**CreateTerraform**](docs/TerraformsAPI.md#createterraform) | **Post** /environment/{environmentId}/terraform | Create a terraform
 *TerraformsAPI* | [**GetDefaultTerraformAdvancedSettings**](docs/TerraformsAPI.md#getdefaultterraformadvancedsettings) | **Get** /defaultTerraformAdvancedSettings | List default terraform advanced settings

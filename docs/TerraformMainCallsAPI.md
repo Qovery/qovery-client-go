@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**EditTerraform**](TerraformMainCallsAPI.md#EditTerraform) | **Put** /terraform/{terraformId} | Edit Terraform
 [**GetTerraform**](TerraformMainCallsAPI.md#GetTerraform) | **Get** /terraform/{terraformId} | Get terraform by ID
 [**ListTerraformCommit**](TerraformMainCallsAPI.md#ListTerraformCommit) | **Get** /terraform/{terraformId}/commit | List last commits
-[**ListTerraformVersions**](TerraformMainCallsAPI.md#ListTerraformVersions) | **Get** /terraform/available-versions | List available Terraform versions
+[**ListTerraformVersions**](TerraformMainCallsAPI.md#ListTerraformVersions) | **Get** /terraform/availableVersion | List available Terraform versions
 
 
 

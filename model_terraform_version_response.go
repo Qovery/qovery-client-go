@@ -20,6 +20,8 @@ var _ MappedNullable = &TerraformVersionResponse{}
 
 // TerraformVersionResponse struct for TerraformVersionResponse
 type TerraformVersionResponse struct {
+	// Terraform engine
+	Engine *string `json:"engine,omitempty"`
 	// Terraform version string
 	Version              *string `json:"version,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -42,6 +44,38 @@ func NewTerraformVersionResponse() *TerraformVersionResponse {
 func NewTerraformVersionResponseWithDefaults() *TerraformVersionResponse {
 	this := TerraformVersionResponse{}
 	return &this
+}
+
+// GetEngine returns the Engine field value if set, zero value otherwise.
+func (o *TerraformVersionResponse) GetEngine() string {
+	if o == nil || IsNil(o.Engine) {
+		var ret string
+		return ret
+	}
+	return *o.Engine
+}
+
+// GetEngineOk returns a tuple with the Engine field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformVersionResponse) GetEngineOk() (*string, bool) {
+	if o == nil || IsNil(o.Engine) {
+		return nil, false
+	}
+	return o.Engine, true
+}
+
+// HasEngine returns a boolean if a field has been set.
+func (o *TerraformVersionResponse) HasEngine() bool {
+	if o != nil && !IsNil(o.Engine) {
+		return true
+	}
+
+	return false
+}
+
+// SetEngine gets a reference to the given string and assigns it to the Engine field.
+func (o *TerraformVersionResponse) SetEngine(v string) {
+	o.Engine = &v
 }
 
 // GetVersion returns the Version field value if set, zero value otherwise.
@@ -86,6 +120,9 @@ func (o TerraformVersionResponse) MarshalJSON() ([]byte, error) {
 
 func (o TerraformVersionResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Engine) {
+		toSerialize["engine"] = o.Engine
+	}
 	if !IsNil(o.Version) {
 		toSerialize["version"] = o.Version
 	}
@@ -111,6 +148,7 @@ func (o *TerraformVersionResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "engine")
 		delete(additionalProperties, "version")
 		o.AdditionalProperties = additionalProperties
 	}

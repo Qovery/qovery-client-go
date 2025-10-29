@@ -16707,7 +16707,7 @@ paths:
       - Terraforms
       x-stoplight:
         id: 5qcyy764ewhk3
-  /terraform/available-versions:
+  /terraform/availableVersion:
     get:
       operationId: listTerraformVersions
       responses:
@@ -35134,8 +35134,15 @@ components:
         id: ipapoxduvpkk7
     TerraformVersionResponse:
       example:
+        engine: TERRAFORM
         version: version
       properties:
+        engine:
+          description: Terraform engine
+          enum:
+          - TERRAFORM
+          - OPEN_TOFU
+          type: string
         version:
           description: Terraform version string
           type: string
@@ -35143,8 +35150,10 @@ components:
     TerraformVersionResponseList:
       example:
         results:
-        - version: version
-        - version: version
+        - engine: TERRAFORM
+          version: version
+        - engine: TERRAFORM
+          version: version
       properties:
         results:
           items:
