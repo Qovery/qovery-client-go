@@ -35029,6 +35029,8 @@ components:
     TfVarsListRequest:
       description: Request to list Terraform tfvars files from a Git repository
       example:
+        mode:
+          type: AutoDiscover
         git_repository:
           root_path: /
           provider:
@@ -35040,9 +35042,59 @@ components:
       properties:
         git_repository:
           $ref: '#/components/schemas/GitRepositoryRequest'
+        mode:
+          $ref: '#/components/schemas/TfVarsDiscoveryMode'
       required:
       - git_repository
+      - mode
       title: TfVarsListRequest
+      type: object
+    TfVarsDiscoveryMode:
+      description: Discovery mode for Terraform tfvars files - either auto-discover
+        or specify paths
+      discriminator:
+        mapping:
+          AutoDiscover: '#/components/schemas/TfVarsDiscoveryModeAutoDiscover'
+          SpecificPaths: '#/components/schemas/TfVarsDiscoveryModeSpecificPaths'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/TfVarsDiscoveryModeAutoDiscover'
+      - $ref: '#/components/schemas/TfVarsDiscoveryModeSpecificPaths'
+      title: TfVarsDiscoveryMode
+    TfVarsDiscoveryModeAutoDiscover:
+      description: Automatically discover all tfvars files in the repository
+      example:
+        type: AutoDiscover
+      properties:
+        type:
+          description: Discriminator for auto-discovery mode
+          enum:
+          - AutoDiscover
+          type: string
+      required:
+      - type
+      title: TfVarsDiscoveryModeAutoDiscover
+      type: object
+    TfVarsDiscoveryModeSpecificPaths:
+      description: Discover tfvars files at specific paths only
+      properties:
+        type:
+          description: Discriminator for specific paths mode
+          enum:
+          - SpecificPaths
+          type: string
+        paths:
+          description: List of specific paths to tfvars files
+          example:
+          - /environments/prod.tfvars
+          - /environments/staging.tfvars
+          items:
+            type: string
+          type: array
+      required:
+      - paths
+      - type
+      title: TfVarsDiscoveryModeSpecificPaths
       type: object
     GitRepositoryRequest:
       description: Git repository information for Terraform operations

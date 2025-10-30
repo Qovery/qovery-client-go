@@ -1166,7 +1166,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	tfVarsListRequest := *openapiclient.NewTfVarsListRequest(*openapiclient.NewGitRepositoryRequest("https://github.com/Qovery/terraform-examples", *openapiclient.NewGitProvider("Kind_example"))) // TfVarsListRequest | 
+	tfVarsListRequest := *openapiclient.NewTfVarsListRequest(*openapiclient.NewGitRepositoryRequest("https://github.com/Qovery/terraform-examples", *openapiclient.NewGitProvider("Kind_example")), openapiclient.TfVarsDiscoveryMode{TfVarsDiscoveryModeAutoDiscover: openapiclient.NewTfVarsDiscoveryModeAutoDiscover("Type_example")}) // TfVarsListRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

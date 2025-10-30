@@ -791,6 +791,9 @@ docs/TerraformVariablesSourceResponse.md
 docs/TerraformVersionResponse.md
 docs/TerraformVersionResponseList.md
 docs/TerraformsAPI.md
+docs/TfVarsDiscoveryMode.md
+docs/TfVarsDiscoveryModeAutoDiscover.md
+docs/TfVarsDiscoveryModeSpecificPaths.md
 docs/TfVarsFileResponse.md
 docs/TfVarsListRequest.md
 docs/TransferOwnershipRequest.md
@@ -1424,6 +1427,9 @@ model_terraform_variables_source_request.go
 model_terraform_variables_source_response.go
 model_terraform_version_response.go
 model_terraform_version_response_list.go
+model_tf_vars_discovery_mode.go
+model_tf_vars_discovery_mode_auto_discover.go
+model_tf_vars_discovery_mode_specific_paths.go
 model_tf_vars_file_response.go
 model_tf_vars_list_request.go
 model_transfer_ownership_request.go

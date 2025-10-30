@@ -22,6 +22,7 @@ var _ MappedNullable = &TfVarsListRequest{}
 // TfVarsListRequest Request to list Terraform tfvars files from a Git repository
 type TfVarsListRequest struct {
 	GitRepository        GitRepositoryRequest `json:"git_repository"`
+	Mode                 TfVarsDiscoveryMode  `json:"mode"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +32,10 @@ type _TfVarsListRequest TfVarsListRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTfVarsListRequest(gitRepository GitRepositoryRequest) *TfVarsListRequest {
+func NewTfVarsListRequest(gitRepository GitRepositoryRequest, mode TfVarsDiscoveryMode) *TfVarsListRequest {
 	this := TfVarsListRequest{}
 	this.GitRepository = gitRepository
+	this.Mode = mode
 	return &this
 }
 
@@ -69,6 +71,30 @@ func (o *TfVarsListRequest) SetGitRepository(v GitRepositoryRequest) {
 	o.GitRepository = v
 }
 
+// GetMode returns the Mode field value
+func (o *TfVarsListRequest) GetMode() TfVarsDiscoveryMode {
+	if o == nil {
+		var ret TfVarsDiscoveryMode
+		return ret
+	}
+
+	return o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value
+// and a boolean to check if the value has been set.
+func (o *TfVarsListRequest) GetModeOk() (*TfVarsDiscoveryMode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mode, true
+}
+
+// SetMode sets field value
+func (o *TfVarsListRequest) SetMode(v TfVarsDiscoveryMode) {
+	o.Mode = v
+}
+
 func (o TfVarsListRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -80,6 +106,7 @@ func (o TfVarsListRequest) MarshalJSON() ([]byte, error) {
 func (o TfVarsListRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
+	toSerialize["mode"] = o.Mode
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -94,6 +121,7 @@ func (o *TfVarsListRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"git_repository",
+		"mode",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -124,6 +152,7 @@ func (o *TfVarsListRequest) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "mode")
 		o.AdditionalProperties = additionalProperties
 	}
 
