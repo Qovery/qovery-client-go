@@ -35033,15 +35033,13 @@ components:
           type: AutoDiscover
         git_repository:
           root_path: /
-          provider:
-            kind: GITHUB
-            url: https://openapi-generator.tech
+          provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          branch: main
-          url: https://github.com/Qovery/terraform-examples
+          branch: feat/text_xxx
+          url: https://github.com/Qovery/simple-node-app
       properties:
         git_repository:
-          $ref: '#/components/schemas/GitRepositoryRequest'
+          $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
         mode:
           $ref: '#/components/schemas/TfVarsDiscoveryMode'
       required:
@@ -35095,65 +35093,6 @@ components:
       - paths
       - type
       title: TfVarsDiscoveryModeSpecificPaths
-      type: object
-    GitRepositoryRequest:
-      description: Git repository information for Terraform operations
-      example:
-        root_path: /
-        provider:
-          kind: GITHUB
-          url: https://openapi-generator.tech
-        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        branch: main
-        url: https://github.com/Qovery/terraform-examples
-      properties:
-        url:
-          description: Git repository URL
-          example: https://github.com/Qovery/terraform-examples
-          format: uri
-          type: string
-        branch:
-          description: Name of the branch to use (optional)
-          example: main
-          nullable: true
-          type: string
-        root_path:
-          default: /
-          description: Root path within the repository
-          type: string
-        git_token_id:
-          description: The git token id on Qovery side
-          format: uuid
-          nullable: true
-          type: string
-        provider:
-          $ref: '#/components/schemas/GitProvider'
-      required:
-      - provider
-      - url
-      title: GitRepositoryRequest
-      type: object
-    GitProvider:
-      description: Git provider information
-      example:
-        kind: GITHUB
-        url: https://openapi-generator.tech
-      properties:
-        kind:
-          description: The type of git provider
-          enum:
-          - GITHUB
-          - GITLAB
-          - BITBUCKET
-          type: string
-        url:
-          description: Custom git provider URL (for self-hosted instances)
-          format: uri
-          nullable: true
-          type: string
-      required:
-      - kind
-      title: GitProvider
       type: object
     TfVarsFileResponse:
       description: Represents a Terraform tfvars file with its variables

@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**GitRepository** | [**GitRepositoryRequest**](GitRepositoryRequest.md) |  | 
+**GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **Mode** | [**TfVarsDiscoveryMode**](TfVarsDiscoveryMode.md) |  | 
 
 ## Methods
 
 ### NewTfVarsListRequest
 
-`func NewTfVarsListRequest(gitRepository GitRepositoryRequest, mode TfVarsDiscoveryMode, ) *TfVarsListRequest`
+`func NewTfVarsListRequest(gitRepository ApplicationGitRepositoryRequest, mode TfVarsDiscoveryMode, ) *TfVarsListRequest`
 
 NewTfVarsListRequest instantiates a new TfVarsListRequest object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetGitRepository
 
-`func (o *TfVarsListRequest) GetGitRepository() GitRepositoryRequest`
+`func (o *TfVarsListRequest) GetGitRepository() ApplicationGitRepositoryRequest`
 
 GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
 ### GetGitRepositoryOk
 
-`func (o *TfVarsListRequest) GetGitRepositoryOk() (*GitRepositoryRequest, bool)`
+`func (o *TfVarsListRequest) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool)`
 
 GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetGitRepository
 
-`func (o *TfVarsListRequest) SetGitRepository(v GitRepositoryRequest)`
+`func (o *TfVarsListRequest) SetGitRepository(v ApplicationGitRepositoryRequest)`
 
 SetGitRepository sets GitRepository field to given value.
 

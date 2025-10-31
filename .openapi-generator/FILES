@@ -422,13 +422,11 @@ docs/GetClusterTokenByClusterId200ResponseStatus.md
 docs/GitAuthProvider.md
 docs/GitAuthProviderResponseList.md
 docs/GitFileCheckRequest.md
-docs/GitProvider.md
 docs/GitProviderEnum.md
 docs/GitRepositoriesAPI.md
 docs/GitRepository.md
 docs/GitRepositoryBranch.md
 docs/GitRepositoryBranchResponseList.md
-docs/GitRepositoryRequest.md
 docs/GitRepositoryResponseList.md
 docs/GitTokenAssociatedServiceResponse.md
 docs/GitTokenAssociatedServiceType.md
@@ -1101,12 +1099,10 @@ model_get_cluster_token_by_cluster_id_200_response_status.go
 model_git_auth_provider.go
 model_git_auth_provider_response_list.go
 model_git_file_check_request.go
-model_git_provider.go
 model_git_provider_enum.go
 model_git_repository.go
 model_git_repository_branch.go
 model_git_repository_branch_response_list.go
-model_git_repository_request.go
 model_git_repository_response_list.go
 model_git_token_associated_service_response.go
 model_git_token_associated_service_type.go

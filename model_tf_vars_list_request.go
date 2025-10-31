@@ -21,8 +21,8 @@ var _ MappedNullable = &TfVarsListRequest{}
 
 // TfVarsListRequest Request to list Terraform tfvars files from a Git repository
 type TfVarsListRequest struct {
-	GitRepository        GitRepositoryRequest `json:"git_repository"`
-	Mode                 TfVarsDiscoveryMode  `json:"mode"`
+	GitRepository        ApplicationGitRepositoryRequest `json:"git_repository"`
+	Mode                 TfVarsDiscoveryMode             `json:"mode"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,7 +32,7 @@ type _TfVarsListRequest TfVarsListRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTfVarsListRequest(gitRepository GitRepositoryRequest, mode TfVarsDiscoveryMode) *TfVarsListRequest {
+func NewTfVarsListRequest(gitRepository ApplicationGitRepositoryRequest, mode TfVarsDiscoveryMode) *TfVarsListRequest {
 	this := TfVarsListRequest{}
 	this.GitRepository = gitRepository
 	this.Mode = mode
@@ -48,9 +48,9 @@ func NewTfVarsListRequestWithDefaults() *TfVarsListRequest {
 }
 
 // GetGitRepository returns the GitRepository field value
-func (o *TfVarsListRequest) GetGitRepository() GitRepositoryRequest {
+func (o *TfVarsListRequest) GetGitRepository() ApplicationGitRepositoryRequest {
 	if o == nil {
-		var ret GitRepositoryRequest
+		var ret ApplicationGitRepositoryRequest
 		return ret
 	}
 
@@ -59,7 +59,7 @@ func (o *TfVarsListRequest) GetGitRepository() GitRepositoryRequest {
 
 // GetGitRepositoryOk returns a tuple with the GitRepository field value
 // and a boolean to check if the value has been set.
-func (o *TfVarsListRequest) GetGitRepositoryOk() (*GitRepositoryRequest, bool) {
+func (o *TfVarsListRequest) GetGitRepositoryOk() (*ApplicationGitRepositoryRequest, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *TfVarsListRequest) GetGitRepositoryOk() (*GitRepositoryRequest, bool) {
 }
 
 // SetGitRepository sets field value
-func (o *TfVarsListRequest) SetGitRepository(v GitRepositoryRequest) {
+func (o *TfVarsListRequest) SetGitRepository(v ApplicationGitRepositoryRequest) {
 	o.GitRepository = v
 }
 
