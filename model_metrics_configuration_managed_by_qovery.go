@@ -20,8 +20,13 @@ var _ MappedNullable = &MetricsConfigurationManagedByQovery{}
 
 // MetricsConfigurationManagedByQovery struct for MetricsConfigurationManagedByQovery
 type MetricsConfigurationManagedByQovery struct {
-	Kind                 *string `json:"kind,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Kind                      *string                       `json:"kind,omitempty"`
+	ResourceProfile           *ObservabilityResourceProfile `json:"resource_profile,omitempty"`
+	CloudWatchExportConfig    *CloudWatchExportConfig       `json:"cloudWatchExportConfig,omitempty"`
+	HighAvailability          *bool                         `json:"highAvailability,omitempty"`
+	InternalNetworkMonitoring *InternalNetworkMonitoring    `json:"internalNetworkMonitoring,omitempty"`
+	Alerting                  *AlertingConfig               `json:"alerting,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _MetricsConfigurationManagedByQovery MetricsConfigurationManagedByQovery
@@ -75,6 +80,166 @@ func (o *MetricsConfigurationManagedByQovery) SetKind(v string) {
 	o.Kind = &v
 }
 
+// GetResourceProfile returns the ResourceProfile field value if set, zero value otherwise.
+func (o *MetricsConfigurationManagedByQovery) GetResourceProfile() ObservabilityResourceProfile {
+	if o == nil || IsNil(o.ResourceProfile) {
+		var ret ObservabilityResourceProfile
+		return ret
+	}
+	return *o.ResourceProfile
+}
+
+// GetResourceProfileOk returns a tuple with the ResourceProfile field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricsConfigurationManagedByQovery) GetResourceProfileOk() (*ObservabilityResourceProfile, bool) {
+	if o == nil || IsNil(o.ResourceProfile) {
+		return nil, false
+	}
+	return o.ResourceProfile, true
+}
+
+// HasResourceProfile returns a boolean if a field has been set.
+func (o *MetricsConfigurationManagedByQovery) HasResourceProfile() bool {
+	if o != nil && !IsNil(o.ResourceProfile) {
+		return true
+	}
+
+	return false
+}
+
+// SetResourceProfile gets a reference to the given ObservabilityResourceProfile and assigns it to the ResourceProfile field.
+func (o *MetricsConfigurationManagedByQovery) SetResourceProfile(v ObservabilityResourceProfile) {
+	o.ResourceProfile = &v
+}
+
+// GetCloudWatchExportConfig returns the CloudWatchExportConfig field value if set, zero value otherwise.
+func (o *MetricsConfigurationManagedByQovery) GetCloudWatchExportConfig() CloudWatchExportConfig {
+	if o == nil || IsNil(o.CloudWatchExportConfig) {
+		var ret CloudWatchExportConfig
+		return ret
+	}
+	return *o.CloudWatchExportConfig
+}
+
+// GetCloudWatchExportConfigOk returns a tuple with the CloudWatchExportConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricsConfigurationManagedByQovery) GetCloudWatchExportConfigOk() (*CloudWatchExportConfig, bool) {
+	if o == nil || IsNil(o.CloudWatchExportConfig) {
+		return nil, false
+	}
+	return o.CloudWatchExportConfig, true
+}
+
+// HasCloudWatchExportConfig returns a boolean if a field has been set.
+func (o *MetricsConfigurationManagedByQovery) HasCloudWatchExportConfig() bool {
+	if o != nil && !IsNil(o.CloudWatchExportConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetCloudWatchExportConfig gets a reference to the given CloudWatchExportConfig and assigns it to the CloudWatchExportConfig field.
+func (o *MetricsConfigurationManagedByQovery) SetCloudWatchExportConfig(v CloudWatchExportConfig) {
+	o.CloudWatchExportConfig = &v
+}
+
+// GetHighAvailability returns the HighAvailability field value if set, zero value otherwise.
+func (o *MetricsConfigurationManagedByQovery) GetHighAvailability() bool {
+	if o == nil || IsNil(o.HighAvailability) {
+		var ret bool
+		return ret
+	}
+	return *o.HighAvailability
+}
+
+// GetHighAvailabilityOk returns a tuple with the HighAvailability field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricsConfigurationManagedByQovery) GetHighAvailabilityOk() (*bool, bool) {
+	if o == nil || IsNil(o.HighAvailability) {
+		return nil, false
+	}
+	return o.HighAvailability, true
+}
+
+// HasHighAvailability returns a boolean if a field has been set.
+func (o *MetricsConfigurationManagedByQovery) HasHighAvailability() bool {
+	if o != nil && !IsNil(o.HighAvailability) {
+		return true
+	}
+
+	return false
+}
+
+// SetHighAvailability gets a reference to the given bool and assigns it to the HighAvailability field.
+func (o *MetricsConfigurationManagedByQovery) SetHighAvailability(v bool) {
+	o.HighAvailability = &v
+}
+
+// GetInternalNetworkMonitoring returns the InternalNetworkMonitoring field value if set, zero value otherwise.
+func (o *MetricsConfigurationManagedByQovery) GetInternalNetworkMonitoring() InternalNetworkMonitoring {
+	if o == nil || IsNil(o.InternalNetworkMonitoring) {
+		var ret InternalNetworkMonitoring
+		return ret
+	}
+	return *o.InternalNetworkMonitoring
+}
+
+// GetInternalNetworkMonitoringOk returns a tuple with the InternalNetworkMonitoring field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricsConfigurationManagedByQovery) GetInternalNetworkMonitoringOk() (*InternalNetworkMonitoring, bool) {
+	if o == nil || IsNil(o.InternalNetworkMonitoring) {
+		return nil, false
+	}
+	return o.InternalNetworkMonitoring, true
+}
+
+// HasInternalNetworkMonitoring returns a boolean if a field has been set.
+func (o *MetricsConfigurationManagedByQovery) HasInternalNetworkMonitoring() bool {
+	if o != nil && !IsNil(o.InternalNetworkMonitoring) {
+		return true
+	}
+
+	return false
+}
+
+// SetInternalNetworkMonitoring gets a reference to the given InternalNetworkMonitoring and assigns it to the InternalNetworkMonitoring field.
+func (o *MetricsConfigurationManagedByQovery) SetInternalNetworkMonitoring(v InternalNetworkMonitoring) {
+	o.InternalNetworkMonitoring = &v
+}
+
+// GetAlerting returns the Alerting field value if set, zero value otherwise.
+func (o *MetricsConfigurationManagedByQovery) GetAlerting() AlertingConfig {
+	if o == nil || IsNil(o.Alerting) {
+		var ret AlertingConfig
+		return ret
+	}
+	return *o.Alerting
+}
+
+// GetAlertingOk returns a tuple with the Alerting field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *MetricsConfigurationManagedByQovery) GetAlertingOk() (*AlertingConfig, bool) {
+	if o == nil || IsNil(o.Alerting) {
+		return nil, false
+	}
+	return o.Alerting, true
+}
+
+// HasAlerting returns a boolean if a field has been set.
+func (o *MetricsConfigurationManagedByQovery) HasAlerting() bool {
+	if o != nil && !IsNil(o.Alerting) {
+		return true
+	}
+
+	return false
+}
+
+// SetAlerting gets a reference to the given AlertingConfig and assigns it to the Alerting field.
+func (o *MetricsConfigurationManagedByQovery) SetAlerting(v AlertingConfig) {
+	o.Alerting = &v
+}
+
 func (o MetricsConfigurationManagedByQovery) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -87,6 +252,21 @@ func (o MetricsConfigurationManagedByQovery) ToMap() (map[string]interface{}, er
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Kind) {
 		toSerialize["kind"] = o.Kind
+	}
+	if !IsNil(o.ResourceProfile) {
+		toSerialize["resource_profile"] = o.ResourceProfile
+	}
+	if !IsNil(o.CloudWatchExportConfig) {
+		toSerialize["cloudWatchExportConfig"] = o.CloudWatchExportConfig
+	}
+	if !IsNil(o.HighAvailability) {
+		toSerialize["highAvailability"] = o.HighAvailability
+	}
+	if !IsNil(o.InternalNetworkMonitoring) {
+		toSerialize["internalNetworkMonitoring"] = o.InternalNetworkMonitoring
+	}
+	if !IsNil(o.Alerting) {
+		toSerialize["alerting"] = o.Alerting
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -111,6 +291,11 @@ func (o *MetricsConfigurationManagedByQovery) UnmarshalJSON(data []byte) (err er
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "kind")
+		delete(additionalProperties, "resource_profile")
+		delete(additionalProperties, "cloudWatchExportConfig")
+		delete(additionalProperties, "highAvailability")
+		delete(additionalProperties, "internalNetworkMonitoring")
+		delete(additionalProperties, "alerting")
 		o.AdditionalProperties = additionalProperties
 	}
 

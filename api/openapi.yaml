@@ -20261,7 +20261,19 @@ components:
         version: version
         metrics_parameters:
           configuration:
+            cloudWatchExportConfig:
+              enabled: true
             kind: MANAGED_BY_QOVERY
+            resource_profile: LOW
+            internalNetworkMonitoring:
+              enabled: true
+            highAvailability: true
+            alerting:
+              config_name: config_name
+              spec_external_url: spec_external_url
+              default_rule_labels: default_rule_labels
+              spec_config_secret: spec_config_secret
+              enabled: true
           enabled: true
         ssh_keys:
         - ssh_keys
@@ -20958,7 +20970,19 @@ components:
         cloud_provider: AWS
         metrics_parameters:
           configuration:
+            cloudWatchExportConfig:
+              enabled: true
             kind: MANAGED_BY_QOVERY
+            resource_profile: LOW
+            internalNetworkMonitoring:
+              enabled: true
+            highAvailability: true
+            alerting:
+              config_name: config_name
+              spec_external_url: spec_external_url
+              default_rule_labels: default_rule_labels
+              spec_config_secret: spec_config_secret
+              enabled: true
           enabled: true
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -21107,7 +21131,19 @@ components:
           version: version
           metrics_parameters:
             configuration:
+              cloudWatchExportConfig:
+                enabled: true
               kind: MANAGED_BY_QOVERY
+              resource_profile: LOW
+              internalNetworkMonitoring:
+                enabled: true
+              highAvailability: true
+              alerting:
+                config_name: config_name
+                spec_external_url: spec_external_url
+                default_rule_labels: default_rule_labels
+                spec_config_secret: spec_config_secret
+                enabled: true
             enabled: true
           ssh_keys:
           - ssh_keys
@@ -21192,7 +21228,19 @@ components:
           version: version
           metrics_parameters:
             configuration:
+              cloudWatchExportConfig:
+                enabled: true
               kind: MANAGED_BY_QOVERY
+              resource_profile: LOW
+              internalNetworkMonitoring:
+                enabled: true
+              highAvailability: true
+              alerting:
+                config_name: config_name
+                spec_external_url: spec_external_url
+                default_rule_labels: default_rule_labels
+                spec_config_secret: spec_config_secret
+                enabled: true
             enabled: true
           ssh_keys:
           - ssh_keys
@@ -34362,7 +34410,19 @@ components:
     MetricsParameters:
       example:
         configuration:
+          cloudWatchExportConfig:
+            enabled: true
           kind: MANAGED_BY_QOVERY
+          resource_profile: LOW
+          internalNetworkMonitoring:
+            enabled: true
+          highAvailability: true
+          alerting:
+            config_name: config_name
+            spec_external_url: spec_external_url
+            default_rule_labels: default_rule_labels
+            spec_config_secret: spec_config_secret
+            enabled: true
         enabled: true
       properties:
         enabled:
@@ -34377,7 +34437,19 @@ components:
         id: 25tfm065x6c64
     MetricsConfigurationManagedByQovery:
       example:
+        cloudWatchExportConfig:
+          enabled: true
         kind: MANAGED_BY_QOVERY
+        resource_profile: LOW
+        internalNetworkMonitoring:
+          enabled: true
+        highAvailability: true
+        alerting:
+          config_name: config_name
+          spec_external_url: spec_external_url
+          default_rule_labels: default_rule_labels
+          spec_config_secret: spec_config_secret
+          enabled: true
       properties:
         kind:
           enum:
@@ -34385,6 +34457,18 @@ components:
           type: string
           x-stoplight:
             id: i8z3rzufjt5uk
+        resource_profile:
+          $ref: '#/components/schemas/ObservabilityResourceProfile'
+        cloudWatchExportConfig:
+          $ref: '#/components/schemas/CloudWatchExportConfig'
+        highAvailability:
+          type: boolean
+          x-stoplight:
+            id: zs2zhdd1p5e6q
+        internalNetworkMonitoring:
+          $ref: '#/components/schemas/InternalNetworkMonitoring'
+        alerting:
+          $ref: '#/components/schemas/AlertingConfig'
       title: MetricsConfigurationManagedByQovery
       type: object
       x-stoplight:
@@ -36282,6 +36366,77 @@ components:
       type: object
       x-stoplight:
         id: hawsqfl98nqlz
+    ObservabilityResourceProfile:
+      enum:
+      - LOW
+      - NORMAL
+      - HIGH
+      title: ObservabilityResourceProfile
+      type: string
+      x-stoplight:
+        id: 3a3rea0t85miz
+    CloudWatchExportConfig:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: zxwl3n47xffu4
+      required:
+      - enabled
+      title: CloudWatchExportConfig
+      type: object
+      x-stoplight:
+        id: 69hi4weirghk5
+    InternalNetworkMonitoring:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: 8fvsh62tnjurc
+      required:
+      - enabled
+      title: InternalNetworkMonitoring
+      type: object
+      x-stoplight:
+        id: d9zr14swvmont
+    AlertingConfig:
+      example:
+        config_name: config_name
+        spec_external_url: spec_external_url
+        default_rule_labels: default_rule_labels
+        spec_config_secret: spec_config_secret
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: spv3usiee6mc9
+        default_rule_labels:
+          type: string
+          x-stoplight:
+            id: tsp767d421sed
+        spec_config_secret:
+          type: string
+          x-stoplight:
+            id: vhloqa7s6ta17
+        spec_external_url:
+          type: string
+          x-stoplight:
+            id: 53c0p049mktbg
+        config_name:
+          type: string
+          x-stoplight:
+            id: 6ueyhx8jelz3f
+      required:
+      - enabled
+      title: AlertingConfig
+      type: object
+      x-stoplight:
+        id: 079kamufdt1pm
     deleteMember_request:
       properties:
         user_id:

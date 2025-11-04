@@ -119,6 +119,7 @@ docs/AlertRulesAPI.md
 docs/AlertSeverity.md
 docs/AlertTarget.md
 docs/AlertTargetType.md
+docs/AlertingConfig.md
 docs/Annotation.md
 docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
@@ -186,6 +187,7 @@ docs/CloudProviderCredentialsAPI.md
 docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
 docs/CloudVendorEnum.md
+docs/CloudWatchExportConfig.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterCloudProviderInfo.md
@@ -500,6 +502,7 @@ docs/HelmVersionResponseList.md
 docs/HelmsAPI.md
 docs/InfrastructureOutputs.md
 docs/IngressDeploymentStatusResponse.md
+docs/InternalNetworkMonitoring.md
 docs/InviteMember.md
 docs/InviteMemberRequest.md
 docs/InviteMemberResponseList.md
@@ -595,6 +598,7 @@ docs/MembersAPI.md
 docs/MetricsConfigurationManagedByQovery.md
 docs/MetricsParameters.md
 docs/MetricsParametersConfiguration.md
+docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAccountGitRepositoriesAPI.md
@@ -838,6 +842,7 @@ model_alert_rule_state.go
 model_alert_severity.go
 model_alert_target.go
 model_alert_target_type.go
+model_alerting_config.go
 model_annotation.go
 model_annotations_group_associated_item_type.go
 model_api_variable_scope_enum.go
@@ -893,6 +898,7 @@ model_cloud_provider.go
 model_cloud_provider_enum.go
 model_cloud_provider_response_list.go
 model_cloud_vendor_enum.go
+model_cloud_watch_export_config.go
 model_cluster.go
 model_cluster_advanced_settings.go
 model_cluster_cloud_provider_info.go
@@ -1168,6 +1174,7 @@ model_helm_version_response.go
 model_helm_version_response_list.go
 model_infrastructure_outputs.go
 model_ingress_deployment_status_response.go
+model_internal_network_monitoring.go
 model_invite_member.go
 model_invite_member_request.go
 model_invite_member_response_list.go
@@ -1253,6 +1260,7 @@ model_member_role_update_request.go
 model_metrics_configuration_managed_by_qovery.go
 model_metrics_parameters.go
 model_metrics_parameters_configuration.go
+model_observability_resource_profile.go
 model_on_premise_credentials_request.go
 model_organization.go
 model_organization_all_of_organization_plan.go
