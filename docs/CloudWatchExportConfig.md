@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Enabled** | **bool** |  | 
+**Enabled** | **bool** | To enable the cloudwatch exporter. | 
 
 ## Methods
 

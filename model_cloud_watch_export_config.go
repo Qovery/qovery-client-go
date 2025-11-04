@@ -21,6 +21,7 @@ var _ MappedNullable = &CloudWatchExportConfig{}
 
 // CloudWatchExportConfig struct for CloudWatchExportConfig
 type CloudWatchExportConfig struct {
+	// To enable the cloudwatch exporter.
 	Enabled              bool `json:"enabled"`
 	AdditionalProperties map[string]interface{}
 }
