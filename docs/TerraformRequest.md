@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
-**Provider** | **string** |  | 
+**Provider** | [**TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **TimeoutSec** | Pointer to **int32** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider TerraformProviderEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -159,20 +159,20 @@ SetBackend sets Backend field to given value.
 
 ### GetProvider
 
-`func (o *TerraformRequest) GetProvider() string`
+`func (o *TerraformRequest) GetProvider() TerraformProviderEnum`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *TerraformRequest) GetProviderOk() (*string, bool)`
+`func (o *TerraformRequest) GetProviderOk() (*TerraformProviderEnum, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *TerraformRequest) SetProvider(v string)`
+`func (o *TerraformRequest) SetProvider(v TerraformProviderEnum)`
 
 SetProvider sets Provider field to given value.
 

@@ -773,6 +773,7 @@ docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
 docs/TerraformMainCallsAPI.md
+docs/TerraformProviderEnum.md
 docs/TerraformProviderVersion.md
 docs/TerraformRequest.md
 docs/TerraformRequestJobResources.md
@@ -1408,6 +1409,7 @@ model_terraform_files_source_git.go
 model_terraform_files_source_request.go
 model_terraform_git_repository_request.go
 model_terraform_job_resources_response.go
+model_terraform_provider_enum.go
 model_terraform_provider_version.go
 model_terraform_request.go
 model_terraform_request_job_resources.go

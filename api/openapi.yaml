@@ -34578,6 +34578,11 @@ components:
       type: object
       x-stoplight:
         id: gjzlt9ldnn7ip
+    TerraformProviderEnum:
+      enum:
+      - TERRAFORM
+      - OPEN_TOFU
+      type: string
     TerraformRequest:
       example:
         auto_deploy: true
@@ -34638,11 +34643,7 @@ components:
         backend:
           $ref: '#/components/schemas/TerraformBackend'
         provider:
-          enum:
-          - TERRAFORM
-          type: string
-          x-stoplight:
-            id: w8o05dpbvcxp1
+          $ref: '#/components/schemas/TerraformProviderEnum'
         provider_version:
           $ref: '#/components/schemas/TerraformProviderVersion'
         timeout_sec:
@@ -34719,11 +34720,7 @@ components:
           terraform_variables_source:
             $ref: '#/components/schemas/TerraformVariablesSourceResponse'
           provider:
-            enum:
-            - TERRAFORM
-            type: string
-            x-stoplight:
-              id: d2ykapq57se4s
+            $ref: '#/components/schemas/TerraformProviderEnum'
           backend:
             $ref: '#/components/schemas/TerraformBackend'
           provider_version:

@@ -1161,6 +1161,7 @@ Class | Method | HTTP request | Description
  - [TerraformFilesSourceRequest](docs/TerraformFilesSourceRequest.md)
  - [TerraformGitRepositoryRequest](docs/TerraformGitRepositoryRequest.md)
  - [TerraformJobResourcesResponse](docs/TerraformJobResourcesResponse.md)
+ - [TerraformProviderEnum](docs/TerraformProviderEnum.md)
  - [TerraformProviderVersion](docs/TerraformProviderVersion.md)
  - [TerraformRequest](docs/TerraformRequest.md)
  - [TerraformRequestJobResources](docs/TerraformRequestJobResources.md)

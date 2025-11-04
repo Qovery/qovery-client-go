@@ -52,7 +52,7 @@ Name | Type | Description | Notes
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
-**Provider** | **string** |  | 
+**Provider** | [**TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
 **Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
@@ -63,7 +63,7 @@ Name | Type | Description | Notes
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, provider TerraformProviderEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -1155,20 +1155,20 @@ SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
 
 ### GetProvider
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProvider() string`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProvider() TerraformProviderEnum`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProviderOk() (*string, bool)`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProviderOk() (*TerraformProviderEnum, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetProvider(v string)`
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetProvider(v TerraformProviderEnum)`
 
 SetProvider sets Provider field to given value.
 

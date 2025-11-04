@@ -27,7 +27,7 @@ type TerraformRequest struct {
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
 	Backend                  TerraformBackend                     `json:"backend"`
-	Provider                 string                               `json:"provider"`
+	Provider                 TerraformProviderEnum                `json:"provider"`
 	ProviderVersion          TerraformProviderVersion             `json:"provider_version"`
 	TimeoutSec               *int32                               `json:"timeout_sec,omitempty"`
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
@@ -44,7 +44,7 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider string, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider TerraformProviderEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
@@ -211,9 +211,9 @@ func (o *TerraformRequest) SetBackend(v TerraformBackend) {
 }
 
 // GetProvider returns the Provider field value
-func (o *TerraformRequest) GetProvider() string {
+func (o *TerraformRequest) GetProvider() TerraformProviderEnum {
 	if o == nil {
-		var ret string
+		var ret TerraformProviderEnum
 		return ret
 	}
 
@@ -222,7 +222,7 @@ func (o *TerraformRequest) GetProvider() string {
 
 // GetProviderOk returns a tuple with the Provider field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetProviderOk() (*string, bool) {
+func (o *TerraformRequest) GetProviderOk() (*TerraformProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -230,7 +230,7 @@ func (o *TerraformRequest) GetProviderOk() (*string, bool) {
 }
 
 // SetProvider sets field value
-func (o *TerraformRequest) SetProvider(v string) {
+func (o *TerraformRequest) SetProvider(v TerraformProviderEnum) {
 	o.Provider = v
 }
 

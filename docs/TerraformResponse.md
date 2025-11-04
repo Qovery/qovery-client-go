@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
-**Provider** | **string** |  | 
+**Provider** | [**TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
 **Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformResponse
 
-`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider string, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *TerraformResponse`
+`func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider TerraformProviderEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string, ) *TerraformResponse`
 
 NewTerraformResponse instantiates a new TerraformResponse object
 This constructor will assign default values to properties that have it defined,
@@ -279,20 +279,20 @@ SetTerraformVariablesSource sets TerraformVariablesSource field to given value.
 
 ### GetProvider
 
-`func (o *TerraformResponse) GetProvider() string`
+`func (o *TerraformResponse) GetProvider() TerraformProviderEnum`
 
 GetProvider returns the Provider field if non-nil, zero value otherwise.
 
 ### GetProviderOk
 
-`func (o *TerraformResponse) GetProviderOk() (*string, bool)`
+`func (o *TerraformResponse) GetProviderOk() (*TerraformProviderEnum, bool)`
 
 GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProvider
 
-`func (o *TerraformResponse) SetProvider(v string)`
+`func (o *TerraformResponse) SetProvider(v TerraformProviderEnum)`
 
 SetProvider sets Provider field to given value.
 
