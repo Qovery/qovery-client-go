@@ -35349,11 +35349,7 @@ components:
         version: version
       properties:
         engine:
-          description: Terraform engine
-          enum:
-          - TERRAFORM
-          - OPEN_TOFU
-          type: string
+          $ref: '#/components/schemas/TerraformProviderEnum'
         version:
           description: Terraform version string
           type: string

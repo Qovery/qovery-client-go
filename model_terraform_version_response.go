@@ -21,8 +21,7 @@ var _ MappedNullable = &TerraformVersionResponse{}
 
 // TerraformVersionResponse struct for TerraformVersionResponse
 type TerraformVersionResponse struct {
-	// Terraform engine
-	Engine string `json:"engine"`
+	Engine TerraformProviderEnum `json:"engine"`
 	// Terraform version string
 	Version              string `json:"version"`
 	AdditionalProperties map[string]interface{}
@@ -34,7 +33,7 @@ type _TerraformVersionResponse TerraformVersionResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVersionResponse(engine string, version string) *TerraformVersionResponse {
+func NewTerraformVersionResponse(engine TerraformProviderEnum, version string) *TerraformVersionResponse {
 	this := TerraformVersionResponse{}
 	this.Engine = engine
 	this.Version = version
@@ -50,9 +49,9 @@ func NewTerraformVersionResponseWithDefaults() *TerraformVersionResponse {
 }
 
 // GetEngine returns the Engine field value
-func (o *TerraformVersionResponse) GetEngine() string {
+func (o *TerraformVersionResponse) GetEngine() TerraformProviderEnum {
 	if o == nil {
-		var ret string
+		var ret TerraformProviderEnum
 		return ret
 	}
 
@@ -61,7 +60,7 @@ func (o *TerraformVersionResponse) GetEngine() string {
 
 // GetEngineOk returns a tuple with the Engine field value
 // and a boolean to check if the value has been set.
-func (o *TerraformVersionResponse) GetEngineOk() (*string, bool) {
+func (o *TerraformVersionResponse) GetEngineOk() (*TerraformProviderEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -69,7 +68,7 @@ func (o *TerraformVersionResponse) GetEngineOk() (*string, bool) {
 }
 
 // SetEngine sets field value
-func (o *TerraformVersionResponse) SetEngine(v string) {
+func (o *TerraformVersionResponse) SetEngine(v TerraformProviderEnum) {
 	o.Engine = v
 }
 
