@@ -22,9 +22,9 @@ var _ MappedNullable = &MetricsConfigurationManagedByQovery{}
 type MetricsConfigurationManagedByQovery struct {
 	Kind                      *string                       `json:"kind,omitempty"`
 	ResourceProfile           *ObservabilityResourceProfile `json:"resource_profile,omitempty"`
-	CloudWatchExportConfig    *CloudWatchExportConfig       `json:"cloudWatchExportConfig,omitempty"`
-	HighAvailability          *bool                         `json:"highAvailability,omitempty"`
-	InternalNetworkMonitoring *InternalNetworkMonitoring    `json:"internalNetworkMonitoring,omitempty"`
+	CloudWatchExportConfig    *CloudWatchExportConfig       `json:"cloud_watch_export_config,omitempty"`
+	HighAvailability          *bool                         `json:"high_availability,omitempty"`
+	InternalNetworkMonitoring *InternalNetworkMonitoring    `json:"internal_network_monitoring,omitempty"`
 	Alerting                  *AlertingConfig               `json:"alerting,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
@@ -257,13 +257,13 @@ func (o MetricsConfigurationManagedByQovery) ToMap() (map[string]interface{}, er
 		toSerialize["resource_profile"] = o.ResourceProfile
 	}
 	if !IsNil(o.CloudWatchExportConfig) {
-		toSerialize["cloudWatchExportConfig"] = o.CloudWatchExportConfig
+		toSerialize["cloud_watch_export_config"] = o.CloudWatchExportConfig
 	}
 	if !IsNil(o.HighAvailability) {
-		toSerialize["highAvailability"] = o.HighAvailability
+		toSerialize["high_availability"] = o.HighAvailability
 	}
 	if !IsNil(o.InternalNetworkMonitoring) {
-		toSerialize["internalNetworkMonitoring"] = o.InternalNetworkMonitoring
+		toSerialize["internal_network_monitoring"] = o.InternalNetworkMonitoring
 	}
 	if !IsNil(o.Alerting) {
 		toSerialize["alerting"] = o.Alerting
@@ -292,9 +292,9 @@ func (o *MetricsConfigurationManagedByQovery) UnmarshalJSON(data []byte) (err er
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "resource_profile")
-		delete(additionalProperties, "cloudWatchExportConfig")
-		delete(additionalProperties, "highAvailability")
-		delete(additionalProperties, "internalNetworkMonitoring")
+		delete(additionalProperties, "cloud_watch_export_config")
+		delete(additionalProperties, "high_availability")
+		delete(additionalProperties, "internal_network_monitoring")
 		delete(additionalProperties, "alerting")
 		o.AdditionalProperties = additionalProperties
 	}

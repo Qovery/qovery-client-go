@@ -20261,13 +20261,13 @@ components:
         version: version
         metrics_parameters:
           configuration:
-            cloudWatchExportConfig:
-              enabled: true
             kind: MANAGED_BY_QOVERY
             resource_profile: LOW
-            internalNetworkMonitoring:
+            cloud_watch_export_config:
               enabled: true
-            highAvailability: true
+            internal_network_monitoring:
+              enabled: true
+            high_availability: true
             alerting:
               config_name: config_name
               spec_external_url: spec_external_url
@@ -20970,13 +20970,13 @@ components:
         cloud_provider: AWS
         metrics_parameters:
           configuration:
-            cloudWatchExportConfig:
-              enabled: true
             kind: MANAGED_BY_QOVERY
             resource_profile: LOW
-            internalNetworkMonitoring:
+            cloud_watch_export_config:
               enabled: true
-            highAvailability: true
+            internal_network_monitoring:
+              enabled: true
+            high_availability: true
             alerting:
               config_name: config_name
               spec_external_url: spec_external_url
@@ -21131,13 +21131,13 @@ components:
           version: version
           metrics_parameters:
             configuration:
-              cloudWatchExportConfig:
-                enabled: true
               kind: MANAGED_BY_QOVERY
               resource_profile: LOW
-              internalNetworkMonitoring:
+              cloud_watch_export_config:
                 enabled: true
-              highAvailability: true
+              internal_network_monitoring:
+                enabled: true
+              high_availability: true
               alerting:
                 config_name: config_name
                 spec_external_url: spec_external_url
@@ -21228,13 +21228,13 @@ components:
           version: version
           metrics_parameters:
             configuration:
-              cloudWatchExportConfig:
-                enabled: true
               kind: MANAGED_BY_QOVERY
               resource_profile: LOW
-              internalNetworkMonitoring:
+              cloud_watch_export_config:
                 enabled: true
-              highAvailability: true
+              internal_network_monitoring:
+                enabled: true
+              high_availability: true
               alerting:
                 config_name: config_name
                 spec_external_url: spec_external_url
@@ -34410,13 +34410,13 @@ components:
     MetricsParameters:
       example:
         configuration:
-          cloudWatchExportConfig:
-            enabled: true
           kind: MANAGED_BY_QOVERY
           resource_profile: LOW
-          internalNetworkMonitoring:
+          cloud_watch_export_config:
             enabled: true
-          highAvailability: true
+          internal_network_monitoring:
+            enabled: true
+          high_availability: true
           alerting:
             config_name: config_name
             spec_external_url: spec_external_url
@@ -34437,13 +34437,13 @@ components:
         id: 25tfm065x6c64
     MetricsConfigurationManagedByQovery:
       example:
-        cloudWatchExportConfig:
-          enabled: true
         kind: MANAGED_BY_QOVERY
         resource_profile: LOW
-        internalNetworkMonitoring:
+        cloud_watch_export_config:
           enabled: true
-        highAvailability: true
+        internal_network_monitoring:
+          enabled: true
+        high_availability: true
         alerting:
           config_name: config_name
           spec_external_url: spec_external_url
@@ -34459,13 +34459,13 @@ components:
             id: i8z3rzufjt5uk
         resource_profile:
           $ref: '#/components/schemas/ObservabilityResourceProfile'
-        cloudWatchExportConfig:
+        cloud_watch_export_config:
           $ref: '#/components/schemas/CloudWatchExportConfig'
-        highAvailability:
+        high_availability:
           type: boolean
           x-stoplight:
             id: zs2zhdd1p5e6q
-        internalNetworkMonitoring:
+        internal_network_monitoring:
           $ref: '#/components/schemas/InternalNetworkMonitoring'
         alerting:
           $ref: '#/components/schemas/AlertingConfig'
