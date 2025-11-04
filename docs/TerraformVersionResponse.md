@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Engine** | [**TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
+**Engine** | [**TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
 **Version** | **string** | Terraform version string | 
 
 ## Methods
 
 ### NewTerraformVersionResponse
 
-`func NewTerraformVersionResponse(engine TerraformProviderEnum, version string, ) *TerraformVersionResponse`
+`func NewTerraformVersionResponse(engine TerraformEngineEnum, version string, ) *TerraformVersionResponse`
 
 NewTerraformVersionResponse instantiates a new TerraformVersionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -28,20 +28,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetEngine
 
-`func (o *TerraformVersionResponse) GetEngine() TerraformProviderEnum`
+`func (o *TerraformVersionResponse) GetEngine() TerraformEngineEnum`
 
 GetEngine returns the Engine field if non-nil, zero value otherwise.
 
 ### GetEngineOk
 
-`func (o *TerraformVersionResponse) GetEngineOk() (*TerraformProviderEnum, bool)`
+`func (o *TerraformVersionResponse) GetEngineOk() (*TerraformEngineEnum, bool)`
 
 GetEngineOk returns a tuple with the Engine field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetEngine
 
-`func (o *TerraformVersionResponse) SetEngine(v TerraformProviderEnum)`
+`func (o *TerraformVersionResponse) SetEngine(v TerraformEngineEnum)`
 
 SetEngine sets Engine field to given value.
 

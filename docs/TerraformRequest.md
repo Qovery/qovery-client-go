@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
-**Provider** | [**TerraformProviderEnum**](TerraformProviderEnum.md) |  | 
+**Engine** | [**TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **TimeoutSec** | Pointer to **int32** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider TerraformProviderEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -157,24 +157,24 @@ and a boolean to check if the value has been set.
 SetBackend sets Backend field to given value.
 
 
-### GetProvider
+### GetEngine
 
-`func (o *TerraformRequest) GetProvider() TerraformProviderEnum`
+`func (o *TerraformRequest) GetEngine() TerraformEngineEnum`
 
-GetProvider returns the Provider field if non-nil, zero value otherwise.
+GetEngine returns the Engine field if non-nil, zero value otherwise.
 
-### GetProviderOk
+### GetEngineOk
 
-`func (o *TerraformRequest) GetProviderOk() (*TerraformProviderEnum, bool)`
+`func (o *TerraformRequest) GetEngineOk() (*TerraformEngineEnum, bool)`
 
-GetProviderOk returns a tuple with the Provider field if it's non-nil, zero value otherwise
+GetEngineOk returns a tuple with the Engine field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetProvider
+### SetEngine
 
-`func (o *TerraformRequest) SetProvider(v TerraformProviderEnum)`
+`func (o *TerraformRequest) SetEngine(v TerraformEngineEnum)`
 
-SetProvider sets Provider field to given value.
+SetEngine sets Engine field to given value.
 
 
 ### GetProviderVersion

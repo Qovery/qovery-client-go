@@ -21,7 +21,7 @@ var _ MappedNullable = &TerraformVersionResponse{}
 
 // TerraformVersionResponse struct for TerraformVersionResponse
 type TerraformVersionResponse struct {
-	Engine TerraformProviderEnum `json:"engine"`
+	Engine TerraformEngineEnum `json:"engine"`
 	// Terraform version string
 	Version              string `json:"version"`
 	AdditionalProperties map[string]interface{}
@@ -33,7 +33,7 @@ type _TerraformVersionResponse TerraformVersionResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformVersionResponse(engine TerraformProviderEnum, version string) *TerraformVersionResponse {
+func NewTerraformVersionResponse(engine TerraformEngineEnum, version string) *TerraformVersionResponse {
 	this := TerraformVersionResponse{}
 	this.Engine = engine
 	this.Version = version
@@ -49,9 +49,9 @@ func NewTerraformVersionResponseWithDefaults() *TerraformVersionResponse {
 }
 
 // GetEngine returns the Engine field value
-func (o *TerraformVersionResponse) GetEngine() TerraformProviderEnum {
+func (o *TerraformVersionResponse) GetEngine() TerraformEngineEnum {
 	if o == nil {
-		var ret TerraformProviderEnum
+		var ret TerraformEngineEnum
 		return ret
 	}
 
@@ -60,7 +60,7 @@ func (o *TerraformVersionResponse) GetEngine() TerraformProviderEnum {
 
 // GetEngineOk returns a tuple with the Engine field value
 // and a boolean to check if the value has been set.
-func (o *TerraformVersionResponse) GetEngineOk() (*TerraformProviderEnum, bool) {
+func (o *TerraformVersionResponse) GetEngineOk() (*TerraformEngineEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *TerraformVersionResponse) GetEngineOk() (*TerraformProviderEnum, bool) 
 }
 
 // SetEngine sets field value
-func (o *TerraformVersionResponse) SetEngine(v TerraformProviderEnum) {
+func (o *TerraformVersionResponse) SetEngine(v TerraformEngineEnum) {
 	o.Engine = v
 }
 

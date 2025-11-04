@@ -35,7 +35,7 @@ type TerraformResponse struct {
 	IconUri                  string                           `json:"icon_uri"`
 	ServiceType              ServiceTypeEnum                  `json:"service_type"`
 	TerraformVariablesSource TerraformVariablesSourceResponse `json:"terraform_variables_source"`
-	Provider                 TerraformProviderEnum            `json:"provider"`
+	Engine                   TerraformEngineEnum              `json:"engine"`
 	Backend                  TerraformBackend                 `json:"backend"`
 	ProviderVersion          TerraformProviderVersion         `json:"provider_version"`
 	JobResources             TerraformJobResourcesResponse    `json:"job_resources"`
@@ -52,7 +52,7 @@ type _TerraformResponse TerraformResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, provider TerraformProviderEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string) *TerraformResponse {
+func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSec int32, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, environment ReferenceObject, useClusterCredentials bool, actionExtraArguments map[string][]string) *TerraformResponse {
 	this := TerraformResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -62,7 +62,7 @@ func NewTerraformResponse(id string, createdAt time.Time, name string, timeoutSe
 	this.IconUri = iconUri
 	this.ServiceType = serviceType
 	this.TerraformVariablesSource = terraformVariablesSource
-	this.Provider = provider
+	this.Engine = engine
 	this.Backend = backend
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
@@ -370,28 +370,28 @@ func (o *TerraformResponse) SetTerraformVariablesSource(v TerraformVariablesSour
 	o.TerraformVariablesSource = v
 }
 
-// GetProvider returns the Provider field value
-func (o *TerraformResponse) GetProvider() TerraformProviderEnum {
+// GetEngine returns the Engine field value
+func (o *TerraformResponse) GetEngine() TerraformEngineEnum {
 	if o == nil {
-		var ret TerraformProviderEnum
+		var ret TerraformEngineEnum
 		return ret
 	}
 
-	return o.Provider
+	return o.Engine
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetEngineOk returns a tuple with the Engine field value
 // and a boolean to check if the value has been set.
-func (o *TerraformResponse) GetProviderOk() (*TerraformProviderEnum, bool) {
+func (o *TerraformResponse) GetEngineOk() (*TerraformEngineEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Provider, true
+	return &o.Engine, true
 }
 
-// SetProvider sets field value
-func (o *TerraformResponse) SetProvider(v TerraformProviderEnum) {
-	o.Provider = v
+// SetEngine sets field value
+func (o *TerraformResponse) SetEngine(v TerraformEngineEnum) {
+	o.Engine = v
 }
 
 // GetBackend returns the Backend field value
@@ -565,7 +565,7 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
-	toSerialize["provider"] = o.Provider
+	toSerialize["engine"] = o.Engine
 	toSerialize["backend"] = o.Backend
 	toSerialize["provider_version"] = o.ProviderVersion
 	toSerialize["job_resources"] = o.JobResources
@@ -593,7 +593,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		"icon_uri",
 		"service_type",
 		"terraform_variables_source",
-		"provider",
+		"engine",
 		"backend",
 		"provider_version",
 		"job_resources",
@@ -640,7 +640,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "terraform_variables_source")
-		delete(additionalProperties, "provider")
+		delete(additionalProperties, "engine")
 		delete(additionalProperties, "backend")
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "job_resources")

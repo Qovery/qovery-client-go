@@ -34756,7 +34756,7 @@ components:
       type: object
       x-stoplight:
         id: gjzlt9ldnn7ip
-    TerraformProviderEnum:
+    TerraformEngineEnum:
       enum:
       - TERRAFORM
       - OPEN_TOFU
@@ -34785,7 +34785,7 @@ components:
           - secret: true
             value: value
             key: key
-        provider: TERRAFORM
+        engine: TERRAFORM
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
@@ -34820,8 +34820,8 @@ components:
           $ref: '#/components/schemas/TerraformVariablesSourceRequest'
         backend:
           $ref: '#/components/schemas/TerraformBackend'
-        provider:
-          $ref: '#/components/schemas/TerraformProviderEnum'
+        engine:
+          $ref: '#/components/schemas/TerraformEngineEnum'
         provider_version:
           $ref: '#/components/schemas/TerraformProviderVersion'
         timeout_sec:
@@ -34860,9 +34860,9 @@ components:
       - auto_deploy
       - backend
       - description
+      - engine
       - job_resources
       - name
-      - provider
       - provider_version
       - terraform_files_source
       - terraform_variables_source
@@ -34897,8 +34897,8 @@ components:
             $ref: '#/components/schemas/ServiceTypeEnum'
           terraform_variables_source:
             $ref: '#/components/schemas/TerraformVariablesSourceResponse'
-          provider:
-            $ref: '#/components/schemas/TerraformProviderEnum'
+          engine:
+            $ref: '#/components/schemas/TerraformEngineEnum'
           backend:
             $ref: '#/components/schemas/TerraformBackend'
           provider_version:
@@ -34932,11 +34932,11 @@ components:
         - action_extra_arguments
         - auto_deploy
         - backend
+        - engine
         - environment
         - icon_uri
         - job_resources
         - name
-        - provider
         - provider_version
         - service_type
         - terraform_variables_source
@@ -34972,7 +34972,7 @@ components:
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
-        provider: TERRAFORM
+        engine: TERRAFORM
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
@@ -35419,7 +35419,7 @@ components:
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
-          provider: TERRAFORM
+          engine: TERRAFORM
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
@@ -35473,7 +35473,7 @@ components:
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
-          provider: TERRAFORM
+          engine: TERRAFORM
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
@@ -35517,7 +35517,7 @@ components:
         version: version
       properties:
         engine:
-          $ref: '#/components/schemas/TerraformProviderEnum'
+          $ref: '#/components/schemas/TerraformEngineEnum'
         version:
           description: Terraform version string
           type: string

@@ -27,7 +27,7 @@ type TerraformRequest struct {
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
 	Backend                  TerraformBackend                     `json:"backend"`
-	Provider                 TerraformProviderEnum                `json:"provider"`
+	Engine                   TerraformEngineEnum                  `json:"engine"`
 	ProviderVersion          TerraformProviderVersion             `json:"provider_version"`
 	TimeoutSec               *int32                               `json:"timeout_sec,omitempty"`
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
@@ -44,7 +44,7 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, provider TerraformProviderEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
@@ -52,7 +52,7 @@ func NewTerraformRequest(name string, description string, autoDeploy bool, terra
 	this.TerraformFilesSource = terraformFilesSource
 	this.TerraformVariablesSource = terraformVariablesSource
 	this.Backend = backend
-	this.Provider = provider
+	this.Engine = engine
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
 	return &this
@@ -210,28 +210,28 @@ func (o *TerraformRequest) SetBackend(v TerraformBackend) {
 	o.Backend = v
 }
 
-// GetProvider returns the Provider field value
-func (o *TerraformRequest) GetProvider() TerraformProviderEnum {
+// GetEngine returns the Engine field value
+func (o *TerraformRequest) GetEngine() TerraformEngineEnum {
 	if o == nil {
-		var ret TerraformProviderEnum
+		var ret TerraformEngineEnum
 		return ret
 	}
 
-	return o.Provider
+	return o.Engine
 }
 
-// GetProviderOk returns a tuple with the Provider field value
+// GetEngineOk returns a tuple with the Engine field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetProviderOk() (*TerraformProviderEnum, bool) {
+func (o *TerraformRequest) GetEngineOk() (*TerraformEngineEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Provider, true
+	return &o.Engine, true
 }
 
-// SetProvider sets field value
-func (o *TerraformRequest) SetProvider(v TerraformProviderEnum) {
-	o.Provider = v
+// SetEngine sets field value
+func (o *TerraformRequest) SetEngine(v TerraformEngineEnum) {
+	o.Engine = v
 }
 
 // GetProviderVersion returns the ProviderVersion field value
@@ -426,7 +426,7 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
 	toSerialize["backend"] = o.Backend
-	toSerialize["provider"] = o.Provider
+	toSerialize["engine"] = o.Engine
 	toSerialize["provider_version"] = o.ProviderVersion
 	if !IsNil(o.TimeoutSec) {
 		toSerialize["timeout_sec"] = o.TimeoutSec
@@ -460,7 +460,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		"terraform_files_source",
 		"terraform_variables_source",
 		"backend",
-		"provider",
+		"engine",
 		"provider_version",
 		"job_resources",
 	}
@@ -498,7 +498,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "terraform_variables_source")
 		delete(additionalProperties, "backend")
-		delete(additionalProperties, "provider")
+		delete(additionalProperties, "engine")
 		delete(additionalProperties, "provider_version")
 		delete(additionalProperties, "timeout_sec")
 		delete(additionalProperties, "icon_uri")
