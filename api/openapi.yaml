@@ -17020,6 +17020,100 @@ paths:
       - Terraform Deployment Restriction
       x-stoplight:
         id: w3jp2xci6bogt
+  /terraform/{terraformId}/variables:
+    get:
+      operationId: getTerraformVariables
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformVariablesResponse'
+          description: Get terraform variables
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get terraform variables
+      tags:
+      - Terraform Configuration
+    post:
+      operationId: updateTerraformVariable
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TerraformVarKeyValue'
+        required: true
+      responses:
+        "200":
+          description: Variable created or updated successfully
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create or update a terraform variable
+      tags:
+      - Terraform Configuration
+  /terraform/{terraformId}/variables/{key}:
+    delete:
+      operationId: deleteTerraformVariable
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Variable key to delete
+        explode: false
+        in: path
+        name: key
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The resource was deleted successfully
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a terraform variable
+      tags:
+      - Terraform Configuration
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
@@ -34867,6 +34961,13 @@ components:
           tf_var_file_paths:
           - tf_var_file_paths
           - tf_var_file_paths
+          tf_vars:
+          - secret: true
+            value: value
+            key: key
+          - secret: true
+            value: value
+            key: key
         service_type: APPLICATION
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35019,6 +35120,47 @@ components:
             id: df80p2az3whjg
       title: TerraformVarKeyValue
       type: object
+    TerraformVariablesResponse:
+      description: Response containing list of Terraform variables
+      example:
+        variables:
+        - secret: true
+          value: value
+          key: key
+        - secret: true
+          value: value
+          key: key
+      properties:
+        variables:
+          items:
+            $ref: '#/components/schemas/TerraformVariableResponse'
+          type: array
+      required:
+      - variables
+      title: TerraformVariablesResponse
+      type: object
+    TerraformVariableResponse:
+      description: A Terraform variable with its configuration
+      example:
+        secret: true
+        value: value
+        key: key
+      properties:
+        key:
+          description: The variable key/name
+          type: string
+        value:
+          description: The variable value (null if secret and not exposed)
+          nullable: true
+          type: string
+        secret:
+          description: Whether the variable is secret
+          type: boolean
+      required:
+      - key
+      - secret
+      title: TerraformVariableResponse
+      type: object
     TerraformVariableDefinition:
       description: Represents a Terraform variable definition extracted from a Terraform
         file.
@@ -35092,6 +35234,13 @@ components:
         tf_var_file_paths:
         - tf_var_file_paths
         - tf_var_file_paths
+        tf_vars:
+        - secret: true
+          value: value
+          key: key
+        - secret: true
+          value: value
+          key: key
       properties:
         tf_var_file_paths:
           items:
@@ -35101,8 +35250,13 @@ components:
           type: array
           x-stoplight:
             id: ua5d71it2yiu5
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
       required:
       - tf_var_file_paths
+      - tf_vars
       title: TerraformVariablesSourceResponse
       type: object
       x-stoplight:
@@ -35254,6 +35408,13 @@ components:
             tf_var_file_paths:
             - tf_var_file_paths
             - tf_var_file_paths
+            tf_vars:
+            - secret: true
+              value: value
+              key: key
+            - secret: true
+              value: value
+              key: key
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35301,6 +35462,13 @@ components:
             tf_var_file_paths:
             - tf_var_file_paths
             - tf_var_file_paths
+            tf_vars:
+            - secret: true
+              value: value
+              key: key
+            - secret: true
+              value: value
+              key: key
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

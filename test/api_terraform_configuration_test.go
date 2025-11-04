@@ -22,6 +22,20 @@ func Test_qovery_TerraformConfigurationAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test TerraformConfigurationAPIService DeleteTerraformVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+		var key string
+
+		httpRes, err := apiClient.TerraformConfigurationAPI.DeleteTerraformVariable(context.Background(), terraformId, key).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test TerraformConfigurationAPIService EditTerraformAdvancedSettings", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -46,6 +60,33 @@ func Test_qovery_TerraformConfigurationAPIService(t *testing.T) {
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TerraformConfigurationAPIService GetTerraformVariables", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+
+		resp, httpRes, err := apiClient.TerraformConfigurationAPI.GetTerraformVariables(context.Background(), terraformId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test TerraformConfigurationAPIService UpdateTerraformVariable", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var terraformId string
+
+		httpRes, err := apiClient.TerraformConfigurationAPI.UpdateTerraformVariable(context.Background(), terraformId).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
