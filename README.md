@@ -88,10 +88,10 @@ Class | Method | HTTP request | Description
 *AlertReceiversAPI* | [**EditAlertReceiver**](docs/AlertReceiversAPI.md#editalertreceiver) | **Put** /api/alert-receivers/{alertReceiverId} | Update alert receiver
 *AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /api/alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
-*AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /api/alert-rules | Create alert rule
-*AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /api/alert-rules/{alertRuleId} | Delete alert rule
-*AlertRulesAPI* | [**EditAlertRule**](docs/AlertRulesAPI.md#editalertrule) | **Put** /api/alert-rules/{alertRuleId} | Update alert rule
-*AlertRulesAPI* | [**GetAlertRule**](docs/AlertRulesAPI.md#getalertrule) | **Get** /api/alert-rules/{alertRuleId} | Get alert rule
+*AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /alert-rules | Create alert rule
+*AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /alert-rules/{alertRuleId} | Delete alert rule
+*AlertRulesAPI* | [**EditAlertRule**](docs/AlertRulesAPI.md#editalertrule) | **Put** /alert-rules/{alertRuleId} | Update alert rule
+*AlertRulesAPI* | [**GetAlertRule**](docs/AlertRulesAPI.md#getalertrule) | **Get** /alert-rules/{alertRuleId} | Get alert rule
 *AlertRulesAPI* | [**GetAlertRules**](docs/AlertRulesAPI.md#getalertrules) | **Get** /organization/{organizationId}/alert-rules | List alert rules
 *ApplicationActionsAPI* | [**DeployApplication**](docs/ApplicationActionsAPI.md#deployapplication) | **Post** /application/{applicationId}/deploy | Deploy application
 *ApplicationActionsAPI* | [**RebootApplication**](docs/ApplicationActionsAPI.md#rebootapplication) | **Post** /application/{applicationId}/restart-service | Reboot application

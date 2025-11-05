@@ -102,7 +102,7 @@ import (
 
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
-	terraformRequest := *openapiclient.NewTerraformRequest("Name_example", "Description_example", false, openapiclient.TerraformRequest_terraform_files_source{TerraformRequestTerraformFilesSourceOneOf: openapiclient.NewTerraformRequestTerraformFilesSourceOneOf()}, *openapiclient.NewTerraformVariablesSourceRequest([]string{"TfVarFilePaths_example"}, []openapiclient.TerraformVarKeyValue{*openapiclient.NewTerraformVarKeyValue()}), openapiclient.TerraformBackend{TerraformBackendOneOf: openapiclient.NewTerraformBackendOneOf(map[string]interface{}(123))}, openapiclient.TerraformEngineEnum("TERRAFORM"), *openapiclient.NewTerraformProviderVersion("ExplicitVersion_example"), *openapiclient.NewTerraformRequestJobResources(int32(123), int32(123), int32(1), int32(123))) // TerraformRequest |  (optional)
+	terraformRequest := *openapiclient.NewTerraformRequest("Name_example", "Description_example", false, openapiclient.TerraformRequest_terraform_files_source{TerraformRequestTerraformFilesSourceOneOf: openapiclient.NewTerraformRequestTerraformFilesSourceOneOf()}, *openapiclient.NewTerraformVariablesSourceRequest([]string{"TfVarFilePaths_example"}), openapiclient.TerraformBackend{TerraformBackendOneOf: openapiclient.NewTerraformBackendOneOf(map[string]interface{}(123))}, openapiclient.TerraformEngineEnum("TERRAFORM"), *openapiclient.NewTerraformProviderVersion("ExplicitVersion_example"), *openapiclient.NewTerraformRequestJobResources(int32(123), int32(123), int32(1), int32(123))) // TerraformRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

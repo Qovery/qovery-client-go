@@ -69,7 +69,7 @@ func (a *AlertRulesAPIService) CreateAlertRuleExecute(r ApiCreateAlertRuleReques
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-rules"
+	localVarPath := localBasePath + "/alert-rules"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -185,7 +185,7 @@ func (a *AlertRulesAPIService) DeleteAlertRuleExecute(r ApiDeleteAlertRuleReques
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-rules/{alertRuleId}"
+	localVarPath := localBasePath + "/alert-rules/{alertRuleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertRuleId"+"}", url.PathEscape(parameterValueToString(r.alertRuleId, "alertRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -300,7 +300,7 @@ func (a *AlertRulesAPIService) EditAlertRuleExecute(r ApiEditAlertRuleRequest) (
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-rules/{alertRuleId}"
+	localVarPath := localBasePath + "/alert-rules/{alertRuleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertRuleId"+"}", url.PathEscape(parameterValueToString(r.alertRuleId, "alertRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -420,7 +420,7 @@ func (a *AlertRulesAPIService) GetAlertRuleExecute(r ApiGetAlertRuleRequest) (*A
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-rules/{alertRuleId}"
+	localVarPath := localBasePath + "/alert-rules/{alertRuleId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertRuleId"+"}", url.PathEscape(parameterValueToString(r.alertRuleId, "alertRuleId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

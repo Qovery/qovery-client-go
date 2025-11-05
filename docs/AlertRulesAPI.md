@@ -4,10 +4,10 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateAlertRule**](AlertRulesAPI.md#CreateAlertRule) | **Post** /api/alert-rules | Create alert rule
-[**DeleteAlertRule**](AlertRulesAPI.md#DeleteAlertRule) | **Delete** /api/alert-rules/{alertRuleId} | Delete alert rule
-[**EditAlertRule**](AlertRulesAPI.md#EditAlertRule) | **Put** /api/alert-rules/{alertRuleId} | Update alert rule
-[**GetAlertRule**](AlertRulesAPI.md#GetAlertRule) | **Get** /api/alert-rules/{alertRuleId} | Get alert rule
+[**CreateAlertRule**](AlertRulesAPI.md#CreateAlertRule) | **Post** /alert-rules | Create alert rule
+[**DeleteAlertRule**](AlertRulesAPI.md#DeleteAlertRule) | **Delete** /alert-rules/{alertRuleId} | Delete alert rule
+[**EditAlertRule**](AlertRulesAPI.md#EditAlertRule) | **Put** /alert-rules/{alertRuleId} | Update alert rule
+[**GetAlertRule**](AlertRulesAPI.md#GetAlertRule) | **Get** /alert-rules/{alertRuleId} | Get alert rule
 [**GetAlertRules**](AlertRulesAPI.md#GetAlertRules) | **Get** /organization/{organizationId}/alert-rules | List alert rules
 
 
