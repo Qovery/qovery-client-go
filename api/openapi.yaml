@@ -34778,6 +34778,13 @@ components:
           tf_var_file_paths:
           - tf_var_file_paths
           - tf_var_file_paths
+          tf_vars:
+          - secret: true
+            value: value
+            key: key
+          - secret: true
+            value: value
+            key: key
         engine: TERRAFORM
         timeout_sec: 0
         use_cluster_credentials: true
@@ -34954,6 +34961,13 @@ components:
           tf_var_file_paths:
           - tf_var_file_paths
           - tf_var_file_paths
+          tf_vars:
+          - secret: true
+            value: value
+            key: key
+          - secret: true
+            value: value
+            key: key
         service_type: APPLICATION
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35058,6 +35072,13 @@ components:
         tf_var_file_paths:
         - tf_var_file_paths
         - tf_var_file_paths
+        tf_vars:
+        - secret: true
+          value: value
+          key: key
+        - secret: true
+          value: value
+          key: key
       properties:
         tf_var_file_paths:
           items:
@@ -35067,8 +35088,13 @@ components:
           type: array
           x-stoplight:
             id: kk82s9qjluugt
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
       required:
       - tf_var_file_paths
+      - tf_vars
       title: TerraformVariablesSourceRequest
       type: object
       x-stoplight:
@@ -35208,6 +35234,13 @@ components:
         tf_var_file_paths:
         - tf_var_file_paths
         - tf_var_file_paths
+        tf_vars:
+        - secret: true
+          value: value
+          key: key
+        - secret: true
+          value: value
+          key: key
       properties:
         tf_var_file_paths:
           items:
@@ -35217,8 +35250,13 @@ components:
           type: array
           x-stoplight:
             id: ua5d71it2yiu5
+        tf_vars:
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
       required:
       - tf_var_file_paths
+      - tf_vars
       title: TerraformVariablesSourceResponse
       type: object
       x-stoplight:
@@ -35370,6 +35408,13 @@ components:
             tf_var_file_paths:
             - tf_var_file_paths
             - tf_var_file_paths
+            tf_vars:
+            - secret: true
+              value: value
+              key: key
+            - secret: true
+              value: value
+              key: key
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -35417,6 +35462,13 @@ components:
             tf_var_file_paths:
             - tf_var_file_paths
             - tf_var_file_paths
+            tf_vars:
+            - secret: true
+              value: value
+              key: key
+            - secret: true
+              value: value
+              key: key
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
