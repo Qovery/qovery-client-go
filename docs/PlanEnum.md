@@ -17,6 +17,14 @@
 
 * `BUSINESS` (value: `"BUSINESS"`)
 
+* `USER_2025` (value: `"USER_2025"`)
+
+* `TEAM_2025` (value: `"TEAM_2025"`)
+
+* `BUSINESS_2025` (value: `"BUSINESS_2025"`)
+
+* `ENTERPRISE_2025` (value: `"ENTERPRISE_2025"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

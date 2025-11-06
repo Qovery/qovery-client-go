@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// PlanEnum BUSINESS & PROFESSIONAL are deprecated
+// PlanEnum FREE, BUSINESS & PROFESSIONAL are deprecated. 2025 plans are the new plans available.
 type PlanEnum string
 
 // List of PlanEnum
@@ -28,6 +28,10 @@ const (
 	PLANENUM_ENTERPRISE_YEARLY PlanEnum = "ENTERPRISE_YEARLY"
 	PLANENUM_PROFESSIONAL      PlanEnum = "PROFESSIONAL"
 	PLANENUM_BUSINESS          PlanEnum = "BUSINESS"
+	PLANENUM_USER_2025         PlanEnum = "USER_2025"
+	PLANENUM_TEAM_2025         PlanEnum = "TEAM_2025"
+	PLANENUM_BUSINESS_2025     PlanEnum = "BUSINESS_2025"
+	PLANENUM_ENTERPRISE_2025   PlanEnum = "ENTERPRISE_2025"
 )
 
 // All allowed values of PlanEnum enum
@@ -39,6 +43,10 @@ var AllowedPlanEnumEnumValues = []PlanEnum{
 	"ENTERPRISE_YEARLY",
 	"PROFESSIONAL",
 	"BUSINESS",
+	"USER_2025",
+	"TEAM_2025",
+	"BUSINESS_2025",
+	"ENTERPRISE_2025",
 }
 
 func (v *PlanEnum) UnmarshalJSON(src []byte) error {
