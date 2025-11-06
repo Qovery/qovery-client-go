@@ -16,18 +16,22 @@ import (
 	"fmt"
 )
 
-// AlertSeverity Alert severity level:         - WARNING: Non-critical issue requiring attention         - CRITICAL: Critical issue requiring immediate action
+// AlertSeverity Alert severity level:         - LOW: Minor issues or informational alerts that don't require immediate attention. Can be addressed during normal business hours.         - MEDIUM: Moderate issues that should be investigated soon but don't impact critical services. May cause degraded performance or minor service disruption.         - HIGH: Serious issues affecting service quality or availability. Requires prompt attention and resolution within hours.         - CRITICAL: Critical issue requiring immediate action. Service outage, data loss risk, or severe performance degradation affecting users.
 type AlertSeverity string
 
 // List of AlertSeverity
 const (
-	ALERTSEVERITY_WARNING  AlertSeverity = "WARNING"
+	ALERTSEVERITY_LOW      AlertSeverity = "LOW"
+	ALERTSEVERITY_MEDIUM   AlertSeverity = "MEDIUM"
+	ALERTSEVERITY_HIGH     AlertSeverity = "HIGH"
 	ALERTSEVERITY_CRITICAL AlertSeverity = "CRITICAL"
 )
 
 // All allowed values of AlertSeverity enum
 var AllowedAlertSeverityEnumValues = []AlertSeverity{
-	"WARNING",
+	"LOW",
+	"MEDIUM",
+	"HIGH",
 	"CRITICAL",
 }
 

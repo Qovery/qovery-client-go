@@ -36134,7 +36134,7 @@ components:
         id: csg2krsbv2i40
     AlertRuleCreationRequest:
       example:
-        severity: WARNING
+        severity: LOW
         presentation:
           summary: summary
           runbook_url: https://openapi-generator.tech
@@ -36228,10 +36228,14 @@ components:
     AlertSeverity:
       description: |-
         Alert severity level:
-                - WARNING: Non-critical issue requiring attention
-                - CRITICAL: Critical issue requiring immediate action
+                - LOW: Minor issues or informational alerts that don't require immediate attention. Can be addressed during normal business hours.
+                - MEDIUM: Moderate issues that should be investigated soon but don't impact critical services. May cause degraded performance or minor service disruption.
+                - HIGH: Serious issues affecting service quality or availability. Requires prompt attention and resolution within hours.
+                - CRITICAL: Critical issue requiring immediate action. Service outage, data loss risk, or severe performance degradation affecting users.
       enum:
-      - WARNING
+      - LOW
+      - MEDIUM
+      - HIGH
       - CRITICAL
       title: AlertSeverity
       type: string
@@ -36239,7 +36243,7 @@ components:
         id: 74rrc7nvxpc30
     AlertRuleEditRequest:
       example:
-        severity: WARNING
+        severity: LOW
         presentation:
           summary: summary
           runbook_url: https://openapi-generator.tech
@@ -36406,7 +36410,7 @@ components:
         - target
         type: object
       example:
-        severity: WARNING
+        severity: LOW
         for_duration: for_duration
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -36480,7 +36484,7 @@ components:
     AlertRuleList:
       example:
         results:
-        - severity: WARNING
+        - severity: LOW
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -36501,7 +36505,7 @@ components:
           alert_receiver_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - severity: WARNING
+        - severity: LOW
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description

@@ -33,7 +33,7 @@ import (
 )
 
 func main() {
-	alertRuleCreationRequest := *openapiclient.NewAlertRuleCreationRequest("OrganizationId_example", "ClusterId_example", "Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("WARNING"), *openapiclient.NewAlertPresentation(), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertTarget(openapiclient.AlertTargetType(" CLUSTER"), "TargetId_example")) // AlertRuleCreationRequest |  (optional)
+	alertRuleCreationRequest := *openapiclient.NewAlertRuleCreationRequest("OrganizationId_example", "ClusterId_example", "Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("LOW"), *openapiclient.NewAlertPresentation(), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertTarget(openapiclient.AlertTargetType(" CLUSTER"), "TargetId_example")) // AlertRuleCreationRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -168,7 +168,7 @@ import (
 
 func main() {
 	alertRuleId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Alert Rule ID
-	alertRuleEditRequest := *openapiclient.NewAlertRuleEditRequest("Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("WARNING"), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertPresentation()) // AlertRuleEditRequest |  (optional)
+	alertRuleEditRequest := *openapiclient.NewAlertRuleEditRequest("Name_example", "Description_example", "PromqlExpr_example", "ForDuration_example", openapiclient.AlertSeverity("LOW"), false, []string{"AlertReceiverIds_example"}, *openapiclient.NewAlertPresentation()) // AlertRuleEditRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
