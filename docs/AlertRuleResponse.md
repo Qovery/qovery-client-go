@@ -19,12 +19,13 @@ Name | Type | Description | Notes
 **Presentation** | [**AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **Target** | [**AlertTarget**](AlertTarget.md) |  | 
 **State** | [**AlertRuleState**](AlertRuleState.md) |  | 
+**IsUpToDate** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
 
 ## Methods
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -342,6 +343,26 @@ and a boolean to check if the value has been set.
 `func (o *AlertRuleResponse) SetState(v AlertRuleState)`
 
 SetState sets State field to given value.
+
+
+### GetIsUpToDate
+
+`func (o *AlertRuleResponse) GetIsUpToDate() bool`
+
+GetIsUpToDate returns the IsUpToDate field if non-nil, zero value otherwise.
+
+### GetIsUpToDateOk
+
+`func (o *AlertRuleResponse) GetIsUpToDateOk() (*bool, bool)`
+
+GetIsUpToDateOk returns a tuple with the IsUpToDate field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsUpToDate
+
+`func (o *AlertRuleResponse) SetIsUpToDate(v bool)`
+
+SetIsUpToDate sets IsUpToDate field to given value.
 
 
 

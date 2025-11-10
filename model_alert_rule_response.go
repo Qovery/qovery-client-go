@@ -41,10 +41,12 @@ type AlertRuleResponse struct {
 	// Whether the alert rule is enabled
 	Enabled bool `json:"enabled"`
 	// List of alert receiver IDs to send notifications to
-	AlertReceiverIds     []string                  `json:"alert_receiver_ids"`
-	Presentation         AlertPresentationResponse `json:"presentation"`
-	Target               AlertTarget               `json:"target"`
-	State                AlertRuleState            `json:"state"`
+	AlertReceiverIds []string                  `json:"alert_receiver_ids"`
+	Presentation     AlertPresentationResponse `json:"presentation"`
+	Target           AlertTarget               `json:"target"`
+	State            AlertRuleState            `json:"state"`
+	// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
+	IsUpToDate           bool `json:"is_up_to_date"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -54,7 +56,7 @@ type _AlertRuleResponse AlertRuleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState) *AlertRuleResponse {
+func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
 	this := AlertRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -70,6 +72,7 @@ func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string,
 	this.Presentation = presentation
 	this.Target = target
 	this.State = state
+	this.IsUpToDate = isUpToDate
 	return &this
 }
 
@@ -449,6 +452,30 @@ func (o *AlertRuleResponse) SetState(v AlertRuleState) {
 	o.State = v
 }
 
+// GetIsUpToDate returns the IsUpToDate field value
+func (o *AlertRuleResponse) GetIsUpToDate() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsUpToDate
+}
+
+// GetIsUpToDateOk returns a tuple with the IsUpToDate field value
+// and a boolean to check if the value has been set.
+func (o *AlertRuleResponse) GetIsUpToDateOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsUpToDate, true
+}
+
+// SetIsUpToDate sets field value
+func (o *AlertRuleResponse) SetIsUpToDate(v bool) {
+	o.IsUpToDate = v
+}
+
 func (o AlertRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -476,6 +503,7 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["presentation"] = o.Presentation
 	toSerialize["target"] = o.Target
 	toSerialize["state"] = o.State
+	toSerialize["is_up_to_date"] = o.IsUpToDate
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -503,6 +531,7 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		"presentation",
 		"target",
 		"state",
+		"is_up_to_date",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -547,6 +576,7 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "presentation")
 		delete(additionalProperties, "target")
 		delete(additionalProperties, "state")
+		delete(additionalProperties, "is_up_to_date")
 		o.AdditionalProperties = additionalProperties
 	}
 

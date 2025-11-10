@@ -36395,12 +36395,20 @@ components:
             $ref: '#/components/schemas/AlertTarget'
           state:
             $ref: '#/components/schemas/AlertRuleState'
+          is_up_to_date:
+            description: |-
+              Indicates whether the current version of the alert has been synced with the alerting system.
+              If false, an outdated version is currently deployed.
+            type: boolean
+            x-stoplight:
+              id: 4nfaupf2l1668
         required:
         - alert_receiver_ids
         - cluster_id
         - description
         - enabled
         - for_duration
+        - is_up_to_date
         - name
         - organization_id
         - presentation
@@ -36411,6 +36419,7 @@ components:
         type: object
       example:
         severity: LOW
+        is_up_to_date: true
         for_duration: for_duration
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -36485,6 +36494,7 @@ components:
       example:
         results:
         - severity: LOW
+          is_up_to_date: true
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -36506,6 +36516,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - severity: LOW
+          is_up_to_date: true
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
