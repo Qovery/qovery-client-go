@@ -36,6 +36,7 @@ type OrganizationEventResponse struct {
 	EnvironmentId        NullableString                         `json:"environment_id,omitempty"`
 	EnvironmentName      *string                                `json:"environment_name,omitempty"`
 	UserAgent            NullableString                         `json:"user_agent,omitempty"`
+	OriginalChange       NullableString                         `json:"original_change,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -593,6 +594,49 @@ func (o *OrganizationEventResponse) UnsetUserAgent() {
 	o.UserAgent.Unset()
 }
 
+// GetOriginalChange returns the OriginalChange field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationEventResponse) GetOriginalChange() string {
+	if o == nil || IsNil(o.OriginalChange.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OriginalChange.Get()
+}
+
+// GetOriginalChangeOk returns a tuple with the OriginalChange field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationEventResponse) GetOriginalChangeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OriginalChange.Get(), o.OriginalChange.IsSet()
+}
+
+// HasOriginalChange returns a boolean if a field has been set.
+func (o *OrganizationEventResponse) HasOriginalChange() bool {
+	if o != nil && o.OriginalChange.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOriginalChange gets a reference to the given NullableString and assigns it to the OriginalChange field.
+func (o *OrganizationEventResponse) SetOriginalChange(v string) {
+	o.OriginalChange.Set(&v)
+}
+
+// SetOriginalChangeNil sets the value for OriginalChange to be an explicit nil
+func (o *OrganizationEventResponse) SetOriginalChangeNil() {
+	o.OriginalChange.Set(nil)
+}
+
+// UnsetOriginalChange ensures that no value is present for OriginalChange, not even an explicit nil
+func (o *OrganizationEventResponse) UnsetOriginalChange() {
+	o.OriginalChange.Unset()
+}
+
 func (o OrganizationEventResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -648,6 +692,9 @@ func (o OrganizationEventResponse) ToMap() (map[string]interface{}, error) {
 	if o.UserAgent.IsSet() {
 		toSerialize["user_agent"] = o.UserAgent.Get()
 	}
+	if o.OriginalChange.IsSet() {
+		toSerialize["original_change"] = o.OriginalChange.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -685,6 +732,7 @@ func (o *OrganizationEventResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "environment_name")
 		delete(additionalProperties, "user_agent")
+		delete(additionalProperties, "original_change")
 		o.AdditionalProperties = additionalProperties
 	}
 

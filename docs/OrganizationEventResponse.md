@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **EnvironmentId** | Pointer to **NullableString** |  | [optional] 
 **EnvironmentName** | Pointer to **string** |  | [optional] 
 **UserAgent** | Pointer to **NullableString** |  | [optional] 
+**OriginalChange** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -464,6 +465,41 @@ HasUserAgent returns a boolean if a field has been set.
 `func (o *OrganizationEventResponse) UnsetUserAgent()`
 
 UnsetUserAgent ensures that no value is present for UserAgent, not even an explicit nil
+### GetOriginalChange
+
+`func (o *OrganizationEventResponse) GetOriginalChange() string`
+
+GetOriginalChange returns the OriginalChange field if non-nil, zero value otherwise.
+
+### GetOriginalChangeOk
+
+`func (o *OrganizationEventResponse) GetOriginalChangeOk() (*string, bool)`
+
+GetOriginalChangeOk returns a tuple with the OriginalChange field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOriginalChange
+
+`func (o *OrganizationEventResponse) SetOriginalChange(v string)`
+
+SetOriginalChange sets OriginalChange field to given value.
+
+### HasOriginalChange
+
+`func (o *OrganizationEventResponse) HasOriginalChange() bool`
+
+HasOriginalChange returns a boolean if a field has been set.
+
+### SetOriginalChangeNil
+
+`func (o *OrganizationEventResponse) SetOriginalChangeNil(b bool)`
+
+ SetOriginalChangeNil sets the value for OriginalChange to be an explicit nil
+
+### UnsetOriginalChange
+`func (o *OrganizationEventResponse) UnsetOriginalChange()`
+
+UnsetOriginalChange ensures that no value is present for OriginalChange, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
