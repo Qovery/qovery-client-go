@@ -24010,6 +24010,10 @@ components:
       - DELETE
       - RESTART
       - STOP
+      - "DEPLOY_DRY_RUN,"
+      - "TERRAFORM_FORCE_UNLOCK,"
+      - "TERRAFORM_MIGRATE_STATE,"
+      - "DELETE_RESOURCES_ONLY,"
       - UNKNOWN
       - UNINSTALL
       type: string

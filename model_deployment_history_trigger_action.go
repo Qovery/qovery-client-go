@@ -21,12 +21,16 @@ type DeploymentHistoryTriggerAction string
 
 // List of DeploymentHistoryTriggerAction
 const (
-	DEPLOYMENTHISTORYTRIGGERACTION_DEPLOY    DeploymentHistoryTriggerAction = "DEPLOY"
-	DEPLOYMENTHISTORYTRIGGERACTION_DELETE    DeploymentHistoryTriggerAction = "DELETE"
-	DEPLOYMENTHISTORYTRIGGERACTION_RESTART   DeploymentHistoryTriggerAction = "RESTART"
-	DEPLOYMENTHISTORYTRIGGERACTION_STOP      DeploymentHistoryTriggerAction = "STOP"
-	DEPLOYMENTHISTORYTRIGGERACTION_UNKNOWN   DeploymentHistoryTriggerAction = "UNKNOWN"
-	DEPLOYMENTHISTORYTRIGGERACTION_UNINSTALL DeploymentHistoryTriggerAction = "UNINSTALL"
+	DEPLOYMENTHISTORYTRIGGERACTION_DEPLOY                  DeploymentHistoryTriggerAction = "DEPLOY"
+	DEPLOYMENTHISTORYTRIGGERACTION_DELETE                  DeploymentHistoryTriggerAction = "DELETE"
+	DEPLOYMENTHISTORYTRIGGERACTION_RESTART                 DeploymentHistoryTriggerAction = "RESTART"
+	DEPLOYMENTHISTORYTRIGGERACTION_STOP                    DeploymentHistoryTriggerAction = "STOP"
+	DEPLOYMENTHISTORYTRIGGERACTION_DEPLOY_DRY_RUN          DeploymentHistoryTriggerAction = "DEPLOY_DRY_RUN,"
+	DEPLOYMENTHISTORYTRIGGERACTION_TERRAFORM_FORCE_UNLOCK  DeploymentHistoryTriggerAction = "TERRAFORM_FORCE_UNLOCK,"
+	DEPLOYMENTHISTORYTRIGGERACTION_TERRAFORM_MIGRATE_STATE DeploymentHistoryTriggerAction = "TERRAFORM_MIGRATE_STATE,"
+	DEPLOYMENTHISTORYTRIGGERACTION_DELETE_RESOURCES_ONLY   DeploymentHistoryTriggerAction = "DELETE_RESOURCES_ONLY,"
+	DEPLOYMENTHISTORYTRIGGERACTION_UNKNOWN                 DeploymentHistoryTriggerAction = "UNKNOWN"
+	DEPLOYMENTHISTORYTRIGGERACTION_UNINSTALL               DeploymentHistoryTriggerAction = "UNINSTALL"
 )
 
 // All allowed values of DeploymentHistoryTriggerAction enum
@@ -35,6 +39,10 @@ var AllowedDeploymentHistoryTriggerActionEnumValues = []DeploymentHistoryTrigger
 	"DELETE",
 	"RESTART",
 	"STOP",
+	"DEPLOY_DRY_RUN,",
+	"TERRAFORM_FORCE_UNLOCK,",
+	"TERRAFORM_MIGRATE_STATE,",
+	"DELETE_RESOURCES_ONLY,",
 	"UNKNOWN",
 	"UNINSTALL",
 }
