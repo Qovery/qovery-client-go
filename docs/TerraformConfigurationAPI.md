@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**EditTerraformAdvancedSettings**](TerraformConfigurationAPI.md#EditTerraformAdvancedSettings) | **Put** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 [**GetTerraformAdvancedSettings**](TerraformConfigurationAPI.md#GetTerraformAdvancedSettings) | **Get** /terraform/{terraformId}/advancedSettings | Get Advanced settings
 [**GetTerraformVariables**](TerraformConfigurationAPI.md#GetTerraformVariables) | **Get** /terraform/{terraformId}/variables | Get terraform variables
-[**UpdateTerraformVariable**](TerraformConfigurationAPI.md#UpdateTerraformVariable) | **Post** /terraform/{terraformId}/variables | Create or update a terraform variable
+[**ReplaceAllTerraformVariables**](TerraformConfigurationAPI.md#ReplaceAllTerraformVariables) | **Put** /terraform/{terraformId}/variables | Replace all terraform variables
 
 
 
@@ -287,11 +287,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## UpdateTerraformVariable
+## ReplaceAllTerraformVariables
 
-> UpdateTerraformVariable(ctx, terraformId).TerraformVarKeyValue(terraformVarKeyValue).Execute()
+> ReplaceAllTerraformVariables(ctx, terraformId).TerraformVariablesReplaceRequest(terraformVariablesReplaceRequest).Execute()
 
-Create or update a terraform variable
+Replace all terraform variables
 
 ### Example
 
@@ -307,13 +307,13 @@ import (
 
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
-	terraformVarKeyValue := *openapiclient.NewTerraformVarKeyValue() // TerraformVarKeyValue | 
+	terraformVariablesReplaceRequest := *openapiclient.NewTerraformVariablesReplaceRequest([]openapiclient.TerraformVarKeyValue{*openapiclient.NewTerraformVarKeyValue()}) // TerraformVariablesReplaceRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TerraformConfigurationAPI.UpdateTerraformVariable(context.Background(), terraformId).TerraformVarKeyValue(terraformVarKeyValue).Execute()
+	r, err := apiClient.TerraformConfigurationAPI.ReplaceAllTerraformVariables(context.Background(), terraformId).TerraformVariablesReplaceRequest(terraformVariablesReplaceRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `TerraformConfigurationAPI.UpdateTerraformVariable``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `TerraformConfigurationAPI.ReplaceAllTerraformVariables``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -329,13 +329,13 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiUpdateTerraformVariableRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiReplaceAllTerraformVariablesRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **terraformVarKeyValue** | [**TerraformVarKeyValue**](TerraformVarKeyValue.md) |  | 
+ **terraformVariablesReplaceRequest** | [**TerraformVariablesReplaceRequest**](TerraformVariablesReplaceRequest.md) |  | 
 
 ### Return type
 

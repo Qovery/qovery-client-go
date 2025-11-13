@@ -78,13 +78,13 @@ func Test_qovery_TerraformConfigurationAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test TerraformConfigurationAPIService UpdateTerraformVariable", func(t *testing.T) {
+	t.Run("Test TerraformConfigurationAPIService ReplaceAllTerraformVariables", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var terraformId string
 
-		httpRes, err := apiClient.TerraformConfigurationAPI.UpdateTerraformVariable(context.Background(), terraformId).Execute()
+		httpRes, err := apiClient.TerraformConfigurationAPI.ReplaceAllTerraformVariables(context.Background(), terraformId).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

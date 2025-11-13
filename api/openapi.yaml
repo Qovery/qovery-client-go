@@ -17049,8 +17049,8 @@ paths:
       summary: Get terraform variables
       tags:
       - Terraform Configuration
-    post:
-      operationId: updateTerraformVariable
+    put:
+      operationId: replaceAllTerraformVariables
       parameters:
       - description: Terraform ID
         explode: false
@@ -17065,11 +17065,11 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TerraformVarKeyValue'
+              $ref: '#/components/schemas/TerraformVariablesReplaceRequest'
         required: true
       responses:
         "200":
-          description: Variable created or updated successfully
+          description: Variables replaced successfully
         "400":
           description: Bad request
         "401":
@@ -17078,7 +17078,7 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-      summary: Create or update a terraform variable
+      summary: Replace all terraform variables
       tags:
       - Terraform Configuration
   /terraform/{terraformId}/variables/{key}:
@@ -35143,6 +35143,28 @@ components:
       required:
       - variables
       title: TerraformVariablesResponse
+      type: object
+    TerraformVariablesReplaceRequest:
+      description: "Request to atomically replace all Terraform variables. Note: For\
+        \ secret variables, use value \"SECRET_VALUE_UNCHANGED\" to preserve the existing\
+        \ secret value."
+      example:
+        variables:
+        - secret: true
+          value: value
+          key: key
+        - secret: true
+          value: value
+          key: key
+      properties:
+        variables:
+          description: Complete list of variables to set (replaces all existing variables)
+          items:
+            $ref: '#/components/schemas/TerraformVarKeyValue'
+          type: array
+      required:
+      - variables
+      title: TerraformVariablesReplaceRequest
       type: object
     TerraformVariableResponse:
       description: A Terraform variable with its configuration

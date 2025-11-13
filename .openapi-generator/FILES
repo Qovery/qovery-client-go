@@ -790,6 +790,7 @@ docs/TerraformVarKeyValue.md
 docs/TerraformVariableDefinition.md
 docs/TerraformVariableParsingRequest.md
 docs/TerraformVariableResponse.md
+docs/TerraformVariablesReplaceRequest.md
 docs/TerraformVariablesResponse.md
 docs/TerraformVariablesSourceRequest.md
 docs/TerraformVariablesSourceResponse.md
@@ -1432,6 +1433,7 @@ model_terraform_var_key_value.go
 model_terraform_variable_definition.go
 model_terraform_variable_parsing_request.go
 model_terraform_variable_response.go
+model_terraform_variables_replace_request.go
 model_terraform_variables_response.go
 model_terraform_variables_source_request.go
 model_terraform_variables_source_response.go

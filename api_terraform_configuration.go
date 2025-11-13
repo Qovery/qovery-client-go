@@ -487,31 +487,31 @@ func (a *TerraformConfigurationAPIService) GetTerraformVariablesExecute(r ApiGet
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiUpdateTerraformVariableRequest struct {
-	ctx                  context.Context
-	ApiService           *TerraformConfigurationAPIService
-	terraformId          string
-	terraformVarKeyValue *TerraformVarKeyValue
+type ApiReplaceAllTerraformVariablesRequest struct {
+	ctx                              context.Context
+	ApiService                       *TerraformConfigurationAPIService
+	terraformId                      string
+	terraformVariablesReplaceRequest *TerraformVariablesReplaceRequest
 }
 
-func (r ApiUpdateTerraformVariableRequest) TerraformVarKeyValue(terraformVarKeyValue TerraformVarKeyValue) ApiUpdateTerraformVariableRequest {
-	r.terraformVarKeyValue = &terraformVarKeyValue
+func (r ApiReplaceAllTerraformVariablesRequest) TerraformVariablesReplaceRequest(terraformVariablesReplaceRequest TerraformVariablesReplaceRequest) ApiReplaceAllTerraformVariablesRequest {
+	r.terraformVariablesReplaceRequest = &terraformVariablesReplaceRequest
 	return r
 }
 
-func (r ApiUpdateTerraformVariableRequest) Execute() (*http.Response, error) {
-	return r.ApiService.UpdateTerraformVariableExecute(r)
+func (r ApiReplaceAllTerraformVariablesRequest) Execute() (*http.Response, error) {
+	return r.ApiService.ReplaceAllTerraformVariablesExecute(r)
 }
 
 /*
-UpdateTerraformVariable Create or update a terraform variable
+ReplaceAllTerraformVariables Replace all terraform variables
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param terraformId Terraform ID
-	@return ApiUpdateTerraformVariableRequest
+	@return ApiReplaceAllTerraformVariablesRequest
 */
-func (a *TerraformConfigurationAPIService) UpdateTerraformVariable(ctx context.Context, terraformId string) ApiUpdateTerraformVariableRequest {
-	return ApiUpdateTerraformVariableRequest{
+func (a *TerraformConfigurationAPIService) ReplaceAllTerraformVariables(ctx context.Context, terraformId string) ApiReplaceAllTerraformVariablesRequest {
+	return ApiReplaceAllTerraformVariablesRequest{
 		ApiService:  a,
 		ctx:         ctx,
 		terraformId: terraformId,
@@ -519,14 +519,14 @@ func (a *TerraformConfigurationAPIService) UpdateTerraformVariable(ctx context.C
 }
 
 // Execute executes the request
-func (a *TerraformConfigurationAPIService) UpdateTerraformVariableExecute(r ApiUpdateTerraformVariableRequest) (*http.Response, error) {
+func (a *TerraformConfigurationAPIService) ReplaceAllTerraformVariablesExecute(r ApiReplaceAllTerraformVariablesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodPost
+		localVarHTTPMethod = http.MethodPut
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TerraformConfigurationAPIService.UpdateTerraformVariable")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "TerraformConfigurationAPIService.ReplaceAllTerraformVariables")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -537,8 +537,8 @@ func (a *TerraformConfigurationAPIService) UpdateTerraformVariableExecute(r ApiU
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.terraformVarKeyValue == nil {
-		return nil, reportError("terraformVarKeyValue is required and must be specified")
+	if r.terraformVariablesReplaceRequest == nil {
+		return nil, reportError("terraformVariablesReplaceRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -559,7 +559,7 @@ func (a *TerraformConfigurationAPIService) UpdateTerraformVariableExecute(r ApiU
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.terraformVarKeyValue
+	localVarPostBody = r.terraformVariablesReplaceRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
