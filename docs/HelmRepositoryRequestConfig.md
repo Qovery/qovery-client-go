@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **ScalewayProjectId** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **AzureTenantId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
 **AzureSubscriptionId** | Pointer to **string** | Required if kind is &#x60;AZURE_CR&#x60;. | [optional] 
+**RoleArn** | Pointer to **string** | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional] 
 
 ## Methods
 
@@ -283,6 +284,31 @@ SetAzureSubscriptionId sets AzureSubscriptionId field to given value.
 `func (o *HelmRepositoryRequestConfig) HasAzureSubscriptionId() bool`
 
 HasAzureSubscriptionId returns a boolean if a field has been set.
+
+### GetRoleArn
+
+`func (o *HelmRepositoryRequestConfig) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *HelmRepositoryRequestConfig) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *HelmRepositoryRequestConfig) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *HelmRepositoryRequestConfig) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

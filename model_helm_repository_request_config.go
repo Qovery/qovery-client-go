@@ -39,7 +39,9 @@ type HelmRepositoryRequestConfig struct {
 	// Required if kind is `AZURE_CR`.
 	AzureTenantId *string `json:"azure_tenant_id,omitempty"`
 	// Required if kind is `AZURE_CR`.
-	AzureSubscriptionId  *string `json:"azure_subscription_id,omitempty"`
+	AzureSubscriptionId *string `json:"azure_subscription_id,omitempty"`
+	// For ECR, you can either set a static access_key or use a role arn that we are going to assume
+	RoleArn              *string `json:"role_arn,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -382,6 +384,38 @@ func (o *HelmRepositoryRequestConfig) SetAzureSubscriptionId(v string) {
 	o.AzureSubscriptionId = &v
 }
 
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *HelmRepositoryRequestConfig) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryRequestConfig) GetRoleArnOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleArn) {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *HelmRepositoryRequestConfig) HasRoleArn() bool {
+	if o != nil && !IsNil(o.RoleArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *HelmRepositoryRequestConfig) SetRoleArn(v string) {
+	o.RoleArn = &v
+}
+
 func (o HelmRepositoryRequestConfig) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -422,6 +456,9 @@ func (o HelmRepositoryRequestConfig) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AzureSubscriptionId) {
 		toSerialize["azure_subscription_id"] = o.AzureSubscriptionId
 	}
+	if !IsNil(o.RoleArn) {
+		toSerialize["role_arn"] = o.RoleArn
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -454,6 +491,7 @@ func (o *HelmRepositoryRequestConfig) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "azure_tenant_id")
 		delete(additionalProperties, "azure_subscription_id")
+		delete(additionalProperties, "role_arn")
 		o.AdditionalProperties = additionalProperties
 	}
 

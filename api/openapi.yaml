@@ -22238,6 +22238,7 @@ components:
           access_key_id: access_key_id
           password: password
           azure_subscription_id: azure_subscription_id
+          role_arn: role_arn
           secret_access_key: secret_access_key
           scaleway_secret_key: scaleway_secret_key
           region: region
@@ -38191,6 +38192,7 @@ components:
         access_key_id: access_key_id
         password: password
         azure_subscription_id: azure_subscription_id
+        role_arn: role_arn
         secret_access_key: secret_access_key
         scaleway_secret_key: scaleway_secret_key
         region: region
@@ -38235,6 +38237,10 @@ components:
           type: string
           x-stoplight:
             id: rboo4bgsvgfco
+        role_arn:
+          description: "For ECR, you can either set a static access_key or use a role\
+            \ arn that we are going to assume"
+          type: string
       type: object
     DeployAllRequest_applications_inner:
       example:
