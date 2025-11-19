@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **EksKarpenterFargateSubnetsZoneAIds** | Pointer to **[]string** |  | [optional] 
 **EksKarpenterFargateSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
 **EksKarpenterFargateSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
+**EksCreateNodesInPrivateSubnet** | Pointer to **bool** |  | [optional] [default to true]
 **VpcName** | **string** |  | 
 **VpcProjectId** | Pointer to **NullableString** |  | [optional] 
 **SubnetworkName** | Pointer to **NullableString** |  | [optional] 
@@ -550,6 +551,31 @@ HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
 `func (o *ClusterRequestFeaturesInnerValue) UnsetEksKarpenterFargateSubnetsZoneCIds()`
 
 UnsetEksKarpenterFargateSubnetsZoneCIds ensures that no value is present for EksKarpenterFargateSubnetsZoneCIds, not even an explicit nil
+### GetEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterRequestFeaturesInnerValue) GetEksCreateNodesInPrivateSubnet() bool`
+
+GetEksCreateNodesInPrivateSubnet returns the EksCreateNodesInPrivateSubnet field if non-nil, zero value otherwise.
+
+### GetEksCreateNodesInPrivateSubnetOk
+
+`func (o *ClusterRequestFeaturesInnerValue) GetEksCreateNodesInPrivateSubnetOk() (*bool, bool)`
+
+GetEksCreateNodesInPrivateSubnetOk returns a tuple with the EksCreateNodesInPrivateSubnet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterRequestFeaturesInnerValue) SetEksCreateNodesInPrivateSubnet(v bool)`
+
+SetEksCreateNodesInPrivateSubnet sets EksCreateNodesInPrivateSubnet field to given value.
+
+### HasEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterRequestFeaturesInnerValue) HasEksCreateNodesInPrivateSubnet() bool`
+
+HasEksCreateNodesInPrivateSubnet returns a boolean if a field has been set.
+
 ### GetVpcName
 
 `func (o *ClusterRequestFeaturesInnerValue) GetVpcName() string`

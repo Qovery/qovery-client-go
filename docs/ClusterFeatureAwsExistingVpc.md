@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **EksKarpenterFargateSubnetsZoneAIds** | Pointer to **[]string** |  | [optional] 
 **EksKarpenterFargateSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
 **EksKarpenterFargateSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
+**EksCreateNodesInPrivateSubnet** | Pointer to **bool** |  | [optional] [default to true]
 
 ## Methods
 
@@ -540,6 +541,31 @@ HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
 `func (o *ClusterFeatureAwsExistingVpc) UnsetEksKarpenterFargateSubnetsZoneCIds()`
 
 UnsetEksKarpenterFargateSubnetsZoneCIds ensures that no value is present for EksKarpenterFargateSubnetsZoneCIds, not even an explicit nil
+### GetEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksCreateNodesInPrivateSubnet() bool`
+
+GetEksCreateNodesInPrivateSubnet returns the EksCreateNodesInPrivateSubnet field if non-nil, zero value otherwise.
+
+### GetEksCreateNodesInPrivateSubnetOk
+
+`func (o *ClusterFeatureAwsExistingVpc) GetEksCreateNodesInPrivateSubnetOk() (*bool, bool)`
+
+GetEksCreateNodesInPrivateSubnetOk returns a tuple with the EksCreateNodesInPrivateSubnet field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterFeatureAwsExistingVpc) SetEksCreateNodesInPrivateSubnet(v bool)`
+
+SetEksCreateNodesInPrivateSubnet sets EksCreateNodesInPrivateSubnet field to given value.
+
+### HasEksCreateNodesInPrivateSubnet
+
+`func (o *ClusterFeatureAwsExistingVpc) HasEksCreateNodesInPrivateSubnet() bool`
+
+HasEksCreateNodesInPrivateSubnet returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

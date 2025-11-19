@@ -20876,6 +20876,9 @@ components:
           type: array
           x-stoplight:
             id: st5domzqqkcoh
+        eks_create_nodes_in_private_subnet:
+          default: true
+          type: boolean
       required:
       - aws_vpc_eks_id
       - eks_subnets_zone_a_ids

@@ -37,6 +37,7 @@ type ClusterFeatureAwsExistingVpc struct {
 	EksKarpenterFargateSubnetsZoneAIds []string `json:"eks_karpenter_fargate_subnets_zone_a_ids,omitempty"`
 	EksKarpenterFargateSubnetsZoneBIds []string `json:"eks_karpenter_fargate_subnets_zone_b_ids,omitempty"`
 	EksKarpenterFargateSubnetsZoneCIds []string `json:"eks_karpenter_fargate_subnets_zone_c_ids,omitempty"`
+	EksCreateNodesInPrivateSubnet      *bool    `json:"eks_create_nodes_in_private_subnet,omitempty"`
 	AdditionalProperties               map[string]interface{}
 }
 
@@ -52,6 +53,8 @@ func NewClusterFeatureAwsExistingVpc(awsVpcEksId string, eksSubnetsZoneAIds []st
 	this.EksSubnetsZoneAIds = eksSubnetsZoneAIds
 	this.EksSubnetsZoneBIds = eksSubnetsZoneBIds
 	this.EksSubnetsZoneCIds = eksSubnetsZoneCIds
+	var eksCreateNodesInPrivateSubnet bool = true
+	this.EksCreateNodesInPrivateSubnet = &eksCreateNodesInPrivateSubnet
 	return &this
 }
 
@@ -60,6 +63,8 @@ func NewClusterFeatureAwsExistingVpc(awsVpcEksId string, eksSubnetsZoneAIds []st
 // but it doesn't guarantee that properties required by API are set
 func NewClusterFeatureAwsExistingVpcWithDefaults() *ClusterFeatureAwsExistingVpc {
 	this := ClusterFeatureAwsExistingVpc{}
+	var eksCreateNodesInPrivateSubnet bool = true
+	this.EksCreateNodesInPrivateSubnet = &eksCreateNodesInPrivateSubnet
 	return &this
 }
 
@@ -555,6 +560,38 @@ func (o *ClusterFeatureAwsExistingVpc) SetEksKarpenterFargateSubnetsZoneCIds(v [
 	o.EksKarpenterFargateSubnetsZoneCIds = v
 }
 
+// GetEksCreateNodesInPrivateSubnet returns the EksCreateNodesInPrivateSubnet field value if set, zero value otherwise.
+func (o *ClusterFeatureAwsExistingVpc) GetEksCreateNodesInPrivateSubnet() bool {
+	if o == nil || IsNil(o.EksCreateNodesInPrivateSubnet) {
+		var ret bool
+		return ret
+	}
+	return *o.EksCreateNodesInPrivateSubnet
+}
+
+// GetEksCreateNodesInPrivateSubnetOk returns a tuple with the EksCreateNodesInPrivateSubnet field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterFeatureAwsExistingVpc) GetEksCreateNodesInPrivateSubnetOk() (*bool, bool) {
+	if o == nil || IsNil(o.EksCreateNodesInPrivateSubnet) {
+		return nil, false
+	}
+	return o.EksCreateNodesInPrivateSubnet, true
+}
+
+// HasEksCreateNodesInPrivateSubnet returns a boolean if a field has been set.
+func (o *ClusterFeatureAwsExistingVpc) HasEksCreateNodesInPrivateSubnet() bool {
+	if o != nil && !IsNil(o.EksCreateNodesInPrivateSubnet) {
+		return true
+	}
+
+	return false
+}
+
+// SetEksCreateNodesInPrivateSubnet gets a reference to the given bool and assigns it to the EksCreateNodesInPrivateSubnet field.
+func (o *ClusterFeatureAwsExistingVpc) SetEksCreateNodesInPrivateSubnet(v bool) {
+	o.EksCreateNodesInPrivateSubnet = &v
+}
+
 func (o ClusterFeatureAwsExistingVpc) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -604,6 +641,9 @@ func (o ClusterFeatureAwsExistingVpc) ToMap() (map[string]interface{}, error) {
 	}
 	if o.EksKarpenterFargateSubnetsZoneCIds != nil {
 		toSerialize["eks_karpenter_fargate_subnets_zone_c_ids"] = o.EksKarpenterFargateSubnetsZoneCIds
+	}
+	if !IsNil(o.EksCreateNodesInPrivateSubnet) {
+		toSerialize["eks_create_nodes_in_private_subnet"] = o.EksCreateNodesInPrivateSubnet
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -667,6 +707,7 @@ func (o *ClusterFeatureAwsExistingVpc) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_a_ids")
 		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_b_ids")
 		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_c_ids")
+		delete(additionalProperties, "eks_create_nodes_in_private_subnet")
 		o.AdditionalProperties = additionalProperties
 	}
 
