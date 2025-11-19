@@ -43,7 +43,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	creditCardRequest := *openapiclient.NewCreditCardRequest("Number_example", "Cvv_example", int32(6), int32(2025), "Token_example") // CreditCardRequest |  (optional)
+	creditCardRequest := *openapiclient.NewCreditCardRequest("Number_example", "Cvv_example", int32(6), int32(2025)) // CreditCardRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
