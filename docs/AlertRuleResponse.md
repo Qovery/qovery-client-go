@@ -11,7 +11,8 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  Cluster identifier | 
 **Name** | **string** | Name of the alert rule  | 
 **Description** | **string** | Description of what the alert monitors | 
-**PromqlExpr** | **string** | PromQL expression to evaluate | 
+**Tag** | **string** |  | 
+**Condition** | [**AlertRuleCondition**](AlertRuleCondition.md) |  | 
 **ForDuration** | **string** | Duration the condition must be true before firing (ISO-8601 duration format) | 
 **Severity** | [**AlertSeverity**](AlertSeverity.md) |  | 
 **Enabled** | **bool** | Whether the alert rule is enabled | 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -185,24 +186,44 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetPromqlExpr
+### GetTag
 
-`func (o *AlertRuleResponse) GetPromqlExpr() string`
+`func (o *AlertRuleResponse) GetTag() string`
 
-GetPromqlExpr returns the PromqlExpr field if non-nil, zero value otherwise.
+GetTag returns the Tag field if non-nil, zero value otherwise.
 
-### GetPromqlExprOk
+### GetTagOk
 
-`func (o *AlertRuleResponse) GetPromqlExprOk() (*string, bool)`
+`func (o *AlertRuleResponse) GetTagOk() (*string, bool)`
 
-GetPromqlExprOk returns a tuple with the PromqlExpr field if it's non-nil, zero value otherwise
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPromqlExpr
+### SetTag
 
-`func (o *AlertRuleResponse) SetPromqlExpr(v string)`
+`func (o *AlertRuleResponse) SetTag(v string)`
 
-SetPromqlExpr sets PromqlExpr field to given value.
+SetTag sets Tag field to given value.
+
+
+### GetCondition
+
+`func (o *AlertRuleResponse) GetCondition() AlertRuleCondition`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *AlertRuleResponse) GetConditionOk() (*AlertRuleCondition, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *AlertRuleResponse) SetCondition(v AlertRuleCondition)`
+
+SetCondition sets Condition field to given value.
 
 
 ### GetForDuration

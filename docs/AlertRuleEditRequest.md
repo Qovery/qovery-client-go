@@ -6,7 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | Name of the alert rule | 
 **Description** | **string** | Description of what the alert monitors | 
-**PromqlExpr** | **string** | PromQL expression to evaluate | 
+**Tag** | **string** |  | 
+**Condition** | [**AlertRuleCondition**](AlertRuleCondition.md) |  | 
 **ForDuration** | **string** | Duration the condition must be true before firing (ISO-8601 duration format) | 
 **Severity** | [**AlertSeverity**](AlertSeverity.md) |  | 
 **Enabled** | **bool** | Whether the alert rule is enabled | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewAlertRuleEditRequest
 
-`func NewAlertRuleEditRequest(name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation, ) *AlertRuleEditRequest`
+`func NewAlertRuleEditRequest(name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation, ) *AlertRuleEditRequest`
 
 NewAlertRuleEditRequest instantiates a new AlertRuleEditRequest object
 This constructor will assign default values to properties that have it defined,
@@ -72,24 +73,44 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetPromqlExpr
+### GetTag
 
-`func (o *AlertRuleEditRequest) GetPromqlExpr() string`
+`func (o *AlertRuleEditRequest) GetTag() string`
 
-GetPromqlExpr returns the PromqlExpr field if non-nil, zero value otherwise.
+GetTag returns the Tag field if non-nil, zero value otherwise.
 
-### GetPromqlExprOk
+### GetTagOk
 
-`func (o *AlertRuleEditRequest) GetPromqlExprOk() (*string, bool)`
+`func (o *AlertRuleEditRequest) GetTagOk() (*string, bool)`
 
-GetPromqlExprOk returns a tuple with the PromqlExpr field if it's non-nil, zero value otherwise
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPromqlExpr
+### SetTag
 
-`func (o *AlertRuleEditRequest) SetPromqlExpr(v string)`
+`func (o *AlertRuleEditRequest) SetTag(v string)`
 
-SetPromqlExpr sets PromqlExpr field to given value.
+SetTag sets Tag field to given value.
+
+
+### GetCondition
+
+`func (o *AlertRuleEditRequest) GetCondition() AlertRuleCondition`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *AlertRuleEditRequest) GetConditionOk() (*AlertRuleCondition, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *AlertRuleEditRequest) SetCondition(v AlertRuleCondition)`
+
+SetCondition sets Condition field to given value.
 
 
 ### GetForDuration

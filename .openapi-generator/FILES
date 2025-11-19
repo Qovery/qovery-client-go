@@ -110,6 +110,10 @@ docs/AlertReceiverList.md
 docs/AlertReceiverResponse.md
 docs/AlertReceiverType.md
 docs/AlertReceiversAPI.md
+docs/AlertRuleCondition.md
+docs/AlertRuleConditionFunction.md
+docs/AlertRuleConditionKind.md
+docs/AlertRuleConditionOperator.md
 docs/AlertRuleCreationRequest.md
 docs/AlertRuleEditRequest.md
 docs/AlertRuleList.md
@@ -837,6 +841,10 @@ model_alert_receiver_edit_request.go
 model_alert_receiver_list.go
 model_alert_receiver_response.go
 model_alert_receiver_type.go
+model_alert_rule_condition.go
+model_alert_rule_condition_function.go
+model_alert_rule_condition_kind.go
+model_alert_rule_condition_operator.go
 model_alert_rule_creation_request.go
 model_alert_rule_edit_request.go
 model_alert_rule_list.go

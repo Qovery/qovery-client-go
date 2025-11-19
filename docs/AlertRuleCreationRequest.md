@@ -8,7 +8,8 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  Cluster identifier where the rule will be deployed | 
 **Name** | **string** | Name of the alert rule | 
 **Description** | **string** | Description of what the alert monitors  | 
-**PromqlExpr** | **string** | PromQL expression to evaluate | 
+**Tag** | **string** |  | 
+**Condition** | [**AlertRuleCondition**](AlertRuleCondition.md) |  | 
 **ForDuration** | **string** | Duration the condition must be true before firing (ISO-8601 duration format) | 
 **Severity** | [**AlertSeverity**](AlertSeverity.md) |  | 
 **Presentation** | [**AlertPresentation**](AlertPresentation.md) |  | 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 ### NewAlertRuleCreationRequest
 
-`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget, ) *AlertRuleCreationRequest`
+`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget, ) *AlertRuleCreationRequest`
 
 NewAlertRuleCreationRequest instantiates a new AlertRuleCreationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -115,24 +116,44 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetPromqlExpr
+### GetTag
 
-`func (o *AlertRuleCreationRequest) GetPromqlExpr() string`
+`func (o *AlertRuleCreationRequest) GetTag() string`
 
-GetPromqlExpr returns the PromqlExpr field if non-nil, zero value otherwise.
+GetTag returns the Tag field if non-nil, zero value otherwise.
 
-### GetPromqlExprOk
+### GetTagOk
 
-`func (o *AlertRuleCreationRequest) GetPromqlExprOk() (*string, bool)`
+`func (o *AlertRuleCreationRequest) GetTagOk() (*string, bool)`
 
-GetPromqlExprOk returns a tuple with the PromqlExpr field if it's non-nil, zero value otherwise
+GetTagOk returns a tuple with the Tag field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetPromqlExpr
+### SetTag
 
-`func (o *AlertRuleCreationRequest) SetPromqlExpr(v string)`
+`func (o *AlertRuleCreationRequest) SetTag(v string)`
 
-SetPromqlExpr sets PromqlExpr field to given value.
+SetTag sets Tag field to given value.
+
+
+### GetCondition
+
+`func (o *AlertRuleCreationRequest) GetCondition() AlertRuleCondition`
+
+GetCondition returns the Condition field if non-nil, zero value otherwise.
+
+### GetConditionOk
+
+`func (o *AlertRuleCreationRequest) GetConditionOk() (*AlertRuleCondition, bool)`
+
+GetConditionOk returns a tuple with the Condition field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCondition
+
+`func (o *AlertRuleCreationRequest) SetCondition(v AlertRuleCondition)`
+
+SetCondition sets Condition field to given value.
 
 
 ### GetForDuration

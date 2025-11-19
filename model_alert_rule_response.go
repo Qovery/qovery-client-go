@@ -32,9 +32,9 @@ type AlertRuleResponse struct {
 	// Name of the alert rule
 	Name string `json:"name"`
 	// Description of what the alert monitors
-	Description string `json:"description"`
-	// PromQL expression to evaluate
-	PromqlExpr string `json:"promql_expr"`
+	Description string             `json:"description"`
+	Tag         string             `json:"tag"`
+	Condition   AlertRuleCondition `json:"condition"`
 	// Duration the condition must be true before firing (ISO-8601 duration format)
 	ForDuration string        `json:"for_duration"`
 	Severity    AlertSeverity `json:"severity"`
@@ -56,7 +56,7 @@ type _AlertRuleResponse AlertRuleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
+func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
 	this := AlertRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -64,7 +64,8 @@ func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string,
 	this.ClusterId = clusterId
 	this.Name = name
 	this.Description = description
-	this.PromqlExpr = promqlExpr
+	this.Tag = tag
+	this.Condition = condition
 	this.ForDuration = forDuration
 	this.Severity = severity
 	this.Enabled = enabled
@@ -260,28 +261,52 @@ func (o *AlertRuleResponse) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetPromqlExpr returns the PromqlExpr field value
-func (o *AlertRuleResponse) GetPromqlExpr() string {
+// GetTag returns the Tag field value
+func (o *AlertRuleResponse) GetTag() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PromqlExpr
+	return o.Tag
 }
 
-// GetPromqlExprOk returns a tuple with the PromqlExpr field value
+// GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
-func (o *AlertRuleResponse) GetPromqlExprOk() (*string, bool) {
+func (o *AlertRuleResponse) GetTagOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PromqlExpr, true
+	return &o.Tag, true
 }
 
-// SetPromqlExpr sets field value
-func (o *AlertRuleResponse) SetPromqlExpr(v string) {
-	o.PromqlExpr = v
+// SetTag sets field value
+func (o *AlertRuleResponse) SetTag(v string) {
+	o.Tag = v
+}
+
+// GetCondition returns the Condition field value
+func (o *AlertRuleResponse) GetCondition() AlertRuleCondition {
+	if o == nil {
+		var ret AlertRuleCondition
+		return ret
+	}
+
+	return o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value
+// and a boolean to check if the value has been set.
+func (o *AlertRuleResponse) GetConditionOk() (*AlertRuleCondition, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Condition, true
+}
+
+// SetCondition sets field value
+func (o *AlertRuleResponse) SetCondition(v AlertRuleCondition) {
+	o.Condition = v
 }
 
 // GetForDuration returns the ForDuration field value
@@ -495,7 +520,8 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["cluster_id"] = o.ClusterId
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["promql_expr"] = o.PromqlExpr
+	toSerialize["tag"] = o.Tag
+	toSerialize["condition"] = o.Condition
 	toSerialize["for_duration"] = o.ForDuration
 	toSerialize["severity"] = o.Severity
 	toSerialize["enabled"] = o.Enabled
@@ -523,7 +549,8 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		"cluster_id",
 		"name",
 		"description",
-		"promql_expr",
+		"tag",
+		"condition",
 		"for_duration",
 		"severity",
 		"enabled",
@@ -568,7 +595,8 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "promql_expr")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "condition")
 		delete(additionalProperties, "for_duration")
 		delete(additionalProperties, "severity")
 		delete(additionalProperties, "enabled")

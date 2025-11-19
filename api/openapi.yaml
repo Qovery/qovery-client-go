@@ -36178,11 +36178,17 @@ components:
           summary: summary
           runbook_url: https://openapi-generator.tech
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        condition:
+          promql: promql
+          kind: CUSTOM
+          function: NONE
+          threshold: 0.8008281904610115
+          operator: ABOVE
         for_duration: for_duration
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
-        promql_expr: promql_expr
+        tag: tag
         enabled: true
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36214,11 +36220,12 @@ components:
           type: string
           x-stoplight:
             id: jhc5u599bha5a
-        promql_expr:
-          description: PromQL expression to evaluate
+        tag:
           type: string
           x-stoplight:
-            id: 2ojznqgimdacq
+            id: eaisshdmo1xgi
+        condition:
+          $ref: '#/components/schemas/AlertRuleCondition'
         for_duration:
           description: Duration the condition must be true before firing (ISO-8601
             duration format)
@@ -36251,14 +36258,15 @@ components:
       required:
       - alert_receiver_ids
       - cluster_id
+      - condition
       - description
       - enabled
       - for_duration
       - name
       - organization_id
       - presentation
-      - promql_expr
       - severity
+      - tag
       - target
       title: AlertRuleCreationRequest
       type: object
@@ -36286,10 +36294,16 @@ components:
         presentation:
           summary: summary
           runbook_url: https://openapi-generator.tech
+        condition:
+          promql: promql
+          kind: CUSTOM
+          function: NONE
+          threshold: 0.8008281904610115
+          operator: ABOVE
         for_duration: for_duration
         name: name
         description: description
-        promql_expr: promql_expr
+        tag: tag
         enabled: true
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36305,11 +36319,12 @@ components:
           type: string
           x-stoplight:
             id: 2xpgzz03za6jo
-        promql_expr:
-          description: PromQL expression to evaluate
+        tag:
           type: string
           x-stoplight:
-            id: 6smsj3iavzowc
+            id: p754eq1nh7gqp
+        condition:
+          $ref: '#/components/schemas/AlertRuleCondition'
         for_duration:
           description: Duration the condition must be true before firing (ISO-8601
             duration format)
@@ -36339,13 +36354,14 @@ components:
           $ref: '#/components/schemas/AlertPresentation'
       required:
       - alert_receiver_ids
+      - condition
       - description
       - enabled
       - for_duration
       - name
       - presentation
-      - promql_expr
       - severity
+      - tag
       title: AlertRuleEditRequest
       type: object
       x-stoplight:
@@ -36399,11 +36415,12 @@ components:
             type: string
             x-stoplight:
               id: r728dl0e8ef6x
-          promql_expr:
-            description: PromQL expression to evaluate
+          tag:
             type: string
             x-stoplight:
-              id: 5e2ku0srk67e7
+              id: kloew25gqdxqt
+          condition:
+            $ref: '#/components/schemas/AlertRuleCondition'
           for_duration:
             description: Duration the condition must be true before firing (ISO-8601
               duration format)
@@ -36444,6 +36461,7 @@ components:
         required:
         - alert_receiver_ids
         - cluster_id
+        - condition
         - description
         - enabled
         - for_duration
@@ -36451,9 +36469,9 @@ components:
         - name
         - organization_id
         - presentation
-        - promql_expr
         - severity
         - state
+        - tag
         - target
         type: object
       example:
@@ -36470,12 +36488,18 @@ components:
           summary: summary
           runbook_url: https://openapi-generator.tech
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        condition:
+          promql: promql
+          kind: CUSTOM
+          function: NONE
+          threshold: 0.8008281904610115
+          operator: ABOVE
         updated_at: 2000-01-23T04:56:07.000+00:00
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tag: tag
         state: UNDEPLOYED
-        promql_expr: promql_expr
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36545,12 +36569,18 @@ components:
             summary: summary
             runbook_url: https://openapi-generator.tech
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          condition:
+            promql: promql
+            kind: CUSTOM
+            function: NONE
+            threshold: 0.8008281904610115
+            operator: ABOVE
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tag: tag
           state: UNDEPLOYED
-          promql_expr: promql_expr
           alert_receiver_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36567,12 +36597,18 @@ components:
             summary: summary
             runbook_url: https://openapi-generator.tech
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          condition:
+            promql: promql
+            kind: CUSTOM
+            function: NONE
+            threshold: 0.8008281904610115
+            operator: ABOVE
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          tag: tag
           state: UNDEPLOYED
-          promql_expr: promql_expr
           alert_receiver_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36661,6 +36697,61 @@ components:
       type: object
       x-stoplight:
         id: 079kamufdt1pm
+    AlertRuleCondition:
+      example:
+        promql: promql
+        kind: CUSTOM
+        function: NONE
+        threshold: 0.8008281904610115
+        operator: ABOVE
+      properties:
+        kind:
+          $ref: '#/components/schemas/AlertRuleConditionKind'
+        operator:
+          $ref: '#/components/schemas/AlertRuleConditionOperator'
+        threshold:
+          type: number
+          x-stoplight:
+            id: ua0w1t89vrl0b
+        function:
+          $ref: '#/components/schemas/AlertRuleConditionFunction'
+        promql:
+          type: string
+          x-stoplight:
+            id: 6xaesnuka2c2q
+      required:
+      - kind
+      - promql
+      title: AlertRuleCondition
+      type: object
+      x-stoplight:
+        id: x5o1gdqlpoyei
+    AlertRuleConditionKind:
+      enum:
+      - CUSTOM
+      - BUILT
+      title: AlertRuleConditionKind
+      type: string
+      x-stoplight:
+        id: 275ykwbxqzr24
+    AlertRuleConditionOperator:
+      enum:
+      - ABOVE
+      - BELOW
+      title: AlertRuleConditionOperator
+      type: string
+      x-stoplight:
+        id: hpxq0ysquqnts
+    AlertRuleConditionFunction:
+      enum:
+      - NONE
+      - AVG
+      - MAX
+      - MIN
+      title: AlertRuleConditionFunction
+      type: string
+      x-stoplight:
+        id: 7tp2xk2ehojvz
     deleteMember_request:
       properties:
         user_id:

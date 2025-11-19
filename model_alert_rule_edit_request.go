@@ -24,9 +24,9 @@ type AlertRuleEditRequest struct {
 	// Name of the alert rule
 	Name string `json:"name"`
 	// Description of what the alert monitors
-	Description string `json:"description"`
-	// PromQL expression to evaluate
-	PromqlExpr string `json:"promql_expr"`
+	Description string             `json:"description"`
+	Tag         string             `json:"tag"`
+	Condition   AlertRuleCondition `json:"condition"`
 	// Duration the condition must be true before firing (ISO-8601 duration format)
 	ForDuration string        `json:"for_duration"`
 	Severity    AlertSeverity `json:"severity"`
@@ -44,11 +44,12 @@ type _AlertRuleEditRequest AlertRuleEditRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleEditRequest(name string, description string, promqlExpr string, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation) *AlertRuleEditRequest {
+func NewAlertRuleEditRequest(name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentation) *AlertRuleEditRequest {
 	this := AlertRuleEditRequest{}
 	this.Name = name
 	this.Description = description
-	this.PromqlExpr = promqlExpr
+	this.Tag = tag
+	this.Condition = condition
 	this.ForDuration = forDuration
 	this.Severity = severity
 	this.Enabled = enabled
@@ -113,28 +114,52 @@ func (o *AlertRuleEditRequest) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetPromqlExpr returns the PromqlExpr field value
-func (o *AlertRuleEditRequest) GetPromqlExpr() string {
+// GetTag returns the Tag field value
+func (o *AlertRuleEditRequest) GetTag() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.PromqlExpr
+	return o.Tag
 }
 
-// GetPromqlExprOk returns a tuple with the PromqlExpr field value
+// GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
-func (o *AlertRuleEditRequest) GetPromqlExprOk() (*string, bool) {
+func (o *AlertRuleEditRequest) GetTagOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.PromqlExpr, true
+	return &o.Tag, true
 }
 
-// SetPromqlExpr sets field value
-func (o *AlertRuleEditRequest) SetPromqlExpr(v string) {
-	o.PromqlExpr = v
+// SetTag sets field value
+func (o *AlertRuleEditRequest) SetTag(v string) {
+	o.Tag = v
+}
+
+// GetCondition returns the Condition field value
+func (o *AlertRuleEditRequest) GetCondition() AlertRuleCondition {
+	if o == nil {
+		var ret AlertRuleCondition
+		return ret
+	}
+
+	return o.Condition
+}
+
+// GetConditionOk returns a tuple with the Condition field value
+// and a boolean to check if the value has been set.
+func (o *AlertRuleEditRequest) GetConditionOk() (*AlertRuleCondition, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Condition, true
+}
+
+// SetCondition sets field value
+func (o *AlertRuleEditRequest) SetCondition(v AlertRuleCondition) {
+	o.Condition = v
 }
 
 // GetForDuration returns the ForDuration field value
@@ -269,7 +294,8 @@ func (o AlertRuleEditRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["promql_expr"] = o.PromqlExpr
+	toSerialize["tag"] = o.Tag
+	toSerialize["condition"] = o.Condition
 	toSerialize["for_duration"] = o.ForDuration
 	toSerialize["severity"] = o.Severity
 	toSerialize["enabled"] = o.Enabled
@@ -290,7 +316,8 @@ func (o *AlertRuleEditRequest) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"name",
 		"description",
-		"promql_expr",
+		"tag",
+		"condition",
 		"for_duration",
 		"severity",
 		"enabled",
@@ -327,7 +354,8 @@ func (o *AlertRuleEditRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "promql_expr")
+		delete(additionalProperties, "tag")
+		delete(additionalProperties, "condition")
 		delete(additionalProperties, "for_duration")
 		delete(additionalProperties, "severity")
 		delete(additionalProperties, "enabled")
