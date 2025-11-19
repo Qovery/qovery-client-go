@@ -69,7 +69,7 @@ func (a *AlertReceiversAPIService) CreateAlertReceiverExecute(r ApiCreateAlertRe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-receivers"
+	localVarPath := localBasePath + "/alert-receivers"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -185,7 +185,7 @@ func (a *AlertReceiversAPIService) DeleteAlertReceiverExecute(r ApiDeleteAlertRe
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-receivers/{alertReceiverId}"
+	localVarPath := localBasePath + "/alert-receivers/{alertReceiverId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertReceiverId"+"}", url.PathEscape(parameterValueToString(r.alertReceiverId, "alertReceiverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -300,7 +300,7 @@ func (a *AlertReceiversAPIService) EditAlertReceiverExecute(r ApiEditAlertReceiv
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-receivers/{alertReceiverId}"
+	localVarPath := localBasePath + "/alert-receivers/{alertReceiverId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertReceiverId"+"}", url.PathEscape(parameterValueToString(r.alertReceiverId, "alertReceiverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -420,7 +420,7 @@ func (a *AlertReceiversAPIService) GetAlertReceiverExecute(r ApiGetAlertReceiver
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/alert-receivers/{alertReceiverId}"
+	localVarPath := localBasePath + "/alert-receivers/{alertReceiverId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"alertReceiverId"+"}", url.PathEscape(parameterValueToString(r.alertReceiverId, "alertReceiverId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

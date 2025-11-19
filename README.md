@@ -83,10 +83,10 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoAPI* | [**EditAccountInformation**](docs/AccountInfoAPI.md#editaccountinformation) | **Put** /account | Edit account information
 *AccountInfoAPI* | [**GetAccountInformation**](docs/AccountInfoAPI.md#getaccountinformation) | **Get** /account | Get Account information
-*AlertReceiversAPI* | [**CreateAlertReceiver**](docs/AlertReceiversAPI.md#createalertreceiver) | **Post** /api/alert-receivers | Create alert receiver
-*AlertReceiversAPI* | [**DeleteAlertReceiver**](docs/AlertReceiversAPI.md#deletealertreceiver) | **Delete** /api/alert-receivers/{alertReceiverId} | Delete alert receiver
-*AlertReceiversAPI* | [**EditAlertReceiver**](docs/AlertReceiversAPI.md#editalertreceiver) | **Put** /api/alert-receivers/{alertReceiverId} | Update alert receiver
-*AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /api/alert-receivers/{alertReceiverId} | Get alert receiver
+*AlertReceiversAPI* | [**CreateAlertReceiver**](docs/AlertReceiversAPI.md#createalertreceiver) | **Post** /alert-receivers | Create alert receiver
+*AlertReceiversAPI* | [**DeleteAlertReceiver**](docs/AlertReceiversAPI.md#deletealertreceiver) | **Delete** /alert-receivers/{alertReceiverId} | Delete alert receiver
+*AlertReceiversAPI* | [**EditAlertReceiver**](docs/AlertReceiversAPI.md#editalertreceiver) | **Put** /alert-receivers/{alertReceiverId} | Update alert receiver
+*AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
 *AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /alert-rules | Create alert rule
 *AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /alert-rules/{alertRuleId} | Delete alert rule
