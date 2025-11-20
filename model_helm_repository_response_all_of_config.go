@@ -23,6 +23,7 @@ type HelmRepositoryResponseAllOfConfig struct {
 	Username             *string `json:"username,omitempty"`
 	Region               *string `json:"region,omitempty"`
 	AccessKeyId          *string `json:"access_key_id,omitempty"`
+	RoleArn              *string `json:"role_arn,omitempty"`
 	ScalewayAccessKey    *string `json:"scaleway_access_key,omitempty"`
 	ScalewayProjectId    *string `json:"scaleway_project_id,omitempty"`
 	AzureTenantId        *string `json:"azure_tenant_id,omitempty"`
@@ -143,6 +144,38 @@ func (o *HelmRepositoryResponseAllOfConfig) HasAccessKeyId() bool {
 // SetAccessKeyId gets a reference to the given string and assigns it to the AccessKeyId field.
 func (o *HelmRepositoryResponseAllOfConfig) SetAccessKeyId(v string) {
 	o.AccessKeyId = &v
+}
+
+// GetRoleArn returns the RoleArn field value if set, zero value otherwise.
+func (o *HelmRepositoryResponseAllOfConfig) GetRoleArn() string {
+	if o == nil || IsNil(o.RoleArn) {
+		var ret string
+		return ret
+	}
+	return *o.RoleArn
+}
+
+// GetRoleArnOk returns a tuple with the RoleArn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmRepositoryResponseAllOfConfig) GetRoleArnOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleArn) {
+		return nil, false
+	}
+	return o.RoleArn, true
+}
+
+// HasRoleArn returns a boolean if a field has been set.
+func (o *HelmRepositoryResponseAllOfConfig) HasRoleArn() bool {
+	if o != nil && !IsNil(o.RoleArn) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleArn gets a reference to the given string and assigns it to the RoleArn field.
+func (o *HelmRepositoryResponseAllOfConfig) SetRoleArn(v string) {
+	o.RoleArn = &v
 }
 
 // GetScalewayAccessKey returns the ScalewayAccessKey field value if set, zero value otherwise.
@@ -292,6 +325,9 @@ func (o HelmRepositoryResponseAllOfConfig) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.AccessKeyId) {
 		toSerialize["access_key_id"] = o.AccessKeyId
 	}
+	if !IsNil(o.RoleArn) {
+		toSerialize["role_arn"] = o.RoleArn
+	}
 	if !IsNil(o.ScalewayAccessKey) {
 		toSerialize["scaleway_access_key"] = o.ScalewayAccessKey
 	}
@@ -329,6 +365,7 @@ func (o *HelmRepositoryResponseAllOfConfig) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "region")
 		delete(additionalProperties, "access_key_id")
+		delete(additionalProperties, "role_arn")
 		delete(additionalProperties, "scaleway_access_key")
 		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "azure_tenant_id")

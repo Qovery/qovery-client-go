@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Username** | Pointer to **string** |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
+**RoleArn** | Pointer to **string** |  | [optional] 
 **ScalewayAccessKey** | Pointer to **string** |  | [optional] 
 **ScalewayProjectId** | Pointer to **string** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
@@ -105,6 +106,31 @@ SetAccessKeyId sets AccessKeyId field to given value.
 `func (o *HelmRepositoryResponseAllOfConfig) HasAccessKeyId() bool`
 
 HasAccessKeyId returns a boolean if a field has been set.
+
+### GetRoleArn
+
+`func (o *HelmRepositoryResponseAllOfConfig) GetRoleArn() string`
+
+GetRoleArn returns the RoleArn field if non-nil, zero value otherwise.
+
+### GetRoleArnOk
+
+`func (o *HelmRepositoryResponseAllOfConfig) GetRoleArnOk() (*string, bool)`
+
+GetRoleArnOk returns a tuple with the RoleArn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleArn
+
+`func (o *HelmRepositoryResponseAllOfConfig) SetRoleArn(v string)`
+
+SetRoleArn sets RoleArn field to given value.
+
+### HasRoleArn
+
+`func (o *HelmRepositoryResponseAllOfConfig) HasRoleArn() bool`
+
+HasRoleArn returns a boolean if a field has been set.
 
 ### GetScalewayAccessKey
 
