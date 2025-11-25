@@ -15,13 +15,13 @@ Name | Type | Description | Notes
 **Presentation** | [**AlertPresentation**](AlertPresentation.md) |  | 
 **Enabled** | **bool** | Whether the alert rule is enabled | 
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
-**Target** | [**NullableAlertTarget**](AlertTarget.md) |  | 
+**Target** | [**AlertTarget**](AlertTarget.md) |  | 
 
 ## Methods
 
 ### NewAlertRuleCreationRequest
 
-`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target NullableAlertTarget, ) *AlertRuleCreationRequest`
+`func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget, ) *AlertRuleCreationRequest`
 
 NewAlertRuleCreationRequest instantiates a new AlertRuleCreationRequest object
 This constructor will assign default values to properties that have it defined,
@@ -276,16 +276,6 @@ and a boolean to check if the value has been set.
 SetTarget sets Target field to given value.
 
 
-### SetTargetNil
-
-`func (o *AlertRuleCreationRequest) SetTargetNil(b bool)`
-
- SetTargetNil sets the value for Target to be an explicit nil
-
-### UnsetTarget
-`func (o *AlertRuleCreationRequest) UnsetTarget()`
-
-UnsetTarget ensures that no value is present for Target, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

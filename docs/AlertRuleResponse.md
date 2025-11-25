@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **Enabled** | **bool** | Whether the alert rule is enabled | 
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
 **Presentation** | [**AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
-**Target** | [**NullableAlertTarget**](AlertTarget.md) |  | 
+**Target** | [**AlertTarget**](AlertTarget.md) |  | 
 **State** | [**AlertRuleState**](AlertRuleState.md) |  | 
 **IsUpToDate** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
 
@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target NullableAlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -346,16 +346,6 @@ and a boolean to check if the value has been set.
 SetTarget sets Target field to given value.
 
 
-### SetTargetNil
-
-`func (o *AlertRuleResponse) SetTargetNil(b bool)`
-
- SetTargetNil sets the value for Target to be an explicit nil
-
-### UnsetTarget
-`func (o *AlertRuleResponse) UnsetTarget()`
-
-UnsetTarget ensures that no value is present for Target, not even an explicit nil
 ### GetState
 
 `func (o *AlertRuleResponse) GetState() AlertRuleState`

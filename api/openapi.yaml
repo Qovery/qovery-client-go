@@ -36199,6 +36199,17 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         target:
+          service:
+            job_type: CRON
+            service_type: APPLICATION
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            project_name: project_name
+            icon_uri: https://openapi-generator.tech
+            environment_name: environment_name
           target_type: ' CLUSTER'
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -36487,6 +36498,17 @@ components:
         description: description
         enabled: true
         target:
+          service:
+            job_type: CRON
+            service_type: APPLICATION
+            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            name: name
+            description: description
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            project_name: project_name
+            icon_uri: https://openapi-generator.tech
+            environment_name: environment_name
           target_type: ' CLUSTER'
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         presentation:
@@ -36528,10 +36550,19 @@ components:
         id: y45ivkwhr7wb4
     AlertTarget:
       example:
+        service:
+          job_type: CRON
+          service_type: APPLICATION
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          icon_uri: https://openapi-generator.tech
+          environment_name: environment_name
         target_type: ' CLUSTER'
         target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      nullable: true
-      oneOf: []
       properties:
         target_type:
           $ref: '#/components/schemas/AlertTargetType'
@@ -36540,6 +36571,8 @@ components:
           type: string
           x-stoplight:
             id: 8begp36fsknxq
+        service:
+          $ref: '#/components/schemas/ServiceLightResponse'
       required:
       - target_id
       - target_type
@@ -36570,6 +36603,17 @@ components:
           description: description
           enabled: true
           target:
+            service:
+              job_type: CRON
+              service_type: APPLICATION
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              project_name: project_name
+              icon_uri: https://openapi-generator.tech
+              environment_name: environment_name
             target_type: ' CLUSTER'
             target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           presentation:
@@ -36598,6 +36642,17 @@ components:
           description: description
           enabled: true
           target:
+            service:
+              job_type: CRON
+              service_type: APPLICATION
+              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              name: name
+              description: description
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              project_name: project_name
+              icon_uri: https://openapi-generator.tech
+              environment_name: environment_name
             target_type: ' CLUSTER'
             target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           presentation:

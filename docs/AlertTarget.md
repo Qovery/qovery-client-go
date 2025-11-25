@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TargetType** | [**AlertTargetType**](AlertTargetType.md) |  | 
 **TargetId** | **string** |  | 
+**Service** | Pointer to [**ServiceLightResponse**](ServiceLightResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetTargetId sets TargetId field to given value.
 
+
+### GetService
+
+`func (o *AlertTarget) GetService() ServiceLightResponse`
+
+GetService returns the Service field if non-nil, zero value otherwise.
+
+### GetServiceOk
+
+`func (o *AlertTarget) GetServiceOk() (*ServiceLightResponse, bool)`
+
+GetServiceOk returns a tuple with the Service field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetService
+
+`func (o *AlertTarget) SetService(v ServiceLightResponse)`
+
+SetService sets Service field to given value.
+
+### HasService
+
+`func (o *AlertTarget) HasService() bool`
+
+HasService returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

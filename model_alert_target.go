@@ -21,8 +21,9 @@ var _ MappedNullable = &AlertTarget{}
 
 // AlertTarget struct for AlertTarget
 type AlertTarget struct {
-	TargetType           AlertTargetType `json:"target_type"`
-	TargetId             string          `json:"target_id"`
+	TargetType           AlertTargetType       `json:"target_type"`
+	TargetId             string                `json:"target_id"`
+	Service              *ServiceLightResponse `json:"service,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,6 +35,8 @@ type _AlertTarget AlertTarget
 // will change when the set of required properties is changed
 func NewAlertTarget(targetType AlertTargetType, targetId string) *AlertTarget {
 	this := AlertTarget{}
+	this.TargetType = targetType
+	this.TargetId = targetId
 	return &this
 }
 
@@ -93,6 +96,38 @@ func (o *AlertTarget) SetTargetId(v string) {
 	o.TargetId = v
 }
 
+// GetService returns the Service field value if set, zero value otherwise.
+func (o *AlertTarget) GetService() ServiceLightResponse {
+	if o == nil || IsNil(o.Service) {
+		var ret ServiceLightResponse
+		return ret
+	}
+	return *o.Service
+}
+
+// GetServiceOk returns a tuple with the Service field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertTarget) GetServiceOk() (*ServiceLightResponse, bool) {
+	if o == nil || IsNil(o.Service) {
+		return nil, false
+	}
+	return o.Service, true
+}
+
+// HasService returns a boolean if a field has been set.
+func (o *AlertTarget) HasService() bool {
+	if o != nil && !IsNil(o.Service) {
+		return true
+	}
+
+	return false
+}
+
+// SetService gets a reference to the given ServiceLightResponse and assigns it to the Service field.
+func (o *AlertTarget) SetService(v ServiceLightResponse) {
+	o.Service = &v
+}
+
 func (o AlertTarget) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -105,6 +140,9 @@ func (o AlertTarget) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["target_type"] = o.TargetType
 	toSerialize["target_id"] = o.TargetId
+	if !IsNil(o.Service) {
+		toSerialize["service"] = o.Service
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -151,6 +189,7 @@ func (o *AlertTarget) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "target_type")
 		delete(additionalProperties, "target_id")
+		delete(additionalProperties, "service")
 		o.AdditionalProperties = additionalProperties
 	}
 
