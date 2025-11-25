@@ -34,8 +34,6 @@ type _AlertTarget AlertTarget
 // will change when the set of required properties is changed
 func NewAlertTarget(targetType AlertTargetType, targetId string) *AlertTarget {
 	this := AlertTarget{}
-	this.TargetType = targetType
-	this.TargetId = targetId
 	return &this
 }
 

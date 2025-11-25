@@ -43,7 +43,7 @@ type AlertRuleResponse struct {
 	// List of alert receiver IDs to send notifications to
 	AlertReceiverIds []string                  `json:"alert_receiver_ids"`
 	Presentation     AlertPresentationResponse `json:"presentation"`
-	Target           AlertTarget               `json:"target"`
+	Target           NullableAlertTarget       `json:"target"`
 	State            AlertRuleState            `json:"state"`
 	// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
 	IsUpToDate           bool `json:"is_up_to_date"`
@@ -56,7 +56,7 @@ type _AlertRuleResponse AlertRuleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
+func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target NullableAlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
 	this := AlertRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -430,27 +430,29 @@ func (o *AlertRuleResponse) SetPresentation(v AlertPresentationResponse) {
 }
 
 // GetTarget returns the Target field value
+// If the value is explicit nil, the zero value for AlertTarget will be returned
 func (o *AlertRuleResponse) GetTarget() AlertTarget {
-	if o == nil {
+	if o == nil || o.Target.Get() == nil {
 		var ret AlertTarget
 		return ret
 	}
 
-	return o.Target
+	return *o.Target.Get()
 }
 
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertRuleResponse) GetTargetOk() (*AlertTarget, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Target, true
+	return o.Target.Get(), o.Target.IsSet()
 }
 
 // SetTarget sets field value
 func (o *AlertRuleResponse) SetTarget(v AlertTarget) {
-	o.Target = v
+	o.Target.Set(&v)
 }
 
 // GetState returns the State field value
@@ -527,7 +529,7 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["alert_receiver_ids"] = o.AlertReceiverIds
 	toSerialize["presentation"] = o.Presentation
-	toSerialize["target"] = o.Target
+	toSerialize["target"] = o.Target.Get()
 	toSerialize["state"] = o.State
 	toSerialize["is_up_to_date"] = o.IsUpToDate
 

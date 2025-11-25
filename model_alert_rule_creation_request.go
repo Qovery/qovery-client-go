@@ -38,8 +38,8 @@ type AlertRuleCreationRequest struct {
 	// Whether the alert rule is enabled
 	Enabled bool `json:"enabled"`
 	// List of alert receiver IDs to send notifications to
-	AlertReceiverIds     []string    `json:"alert_receiver_ids"`
-	Target               AlertTarget `json:"target"`
+	AlertReceiverIds     []string            `json:"alert_receiver_ids"`
+	Target               NullableAlertTarget `json:"target"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,7 +49,7 @@ type _AlertRuleCreationRequest AlertRuleCreationRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target AlertTarget) *AlertRuleCreationRequest {
+func NewAlertRuleCreationRequest(organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, presentation AlertPresentation, enabled bool, alertReceiverIds []string, target NullableAlertTarget) *AlertRuleCreationRequest {
 	this := AlertRuleCreationRequest{}
 	this.OrganizationId = organizationId
 	this.ClusterId = clusterId
@@ -339,27 +339,29 @@ func (o *AlertRuleCreationRequest) SetAlertReceiverIds(v []string) {
 }
 
 // GetTarget returns the Target field value
+// If the value is explicit nil, the zero value for AlertTarget will be returned
 func (o *AlertRuleCreationRequest) GetTarget() AlertTarget {
-	if o == nil {
+	if o == nil || o.Target.Get() == nil {
 		var ret AlertTarget
 		return ret
 	}
 
-	return o.Target
+	return *o.Target.Get()
 }
 
 // GetTargetOk returns a tuple with the Target field value
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AlertRuleCreationRequest) GetTargetOk() (*AlertTarget, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Target, true
+	return o.Target.Get(), o.Target.IsSet()
 }
 
 // SetTarget sets field value
 func (o *AlertRuleCreationRequest) SetTarget(v AlertTarget) {
-	o.Target = v
+	o.Target.Set(&v)
 }
 
 func (o AlertRuleCreationRequest) MarshalJSON() ([]byte, error) {
@@ -383,7 +385,7 @@ func (o AlertRuleCreationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["presentation"] = o.Presentation
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["alert_receiver_ids"] = o.AlertReceiverIds
-	toSerialize["target"] = o.Target
+	toSerialize["target"] = o.Target.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
