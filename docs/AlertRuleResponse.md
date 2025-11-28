@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **Target** | [**AlertTarget**](AlertTarget.md) |  | 
 **State** | [**AlertRuleState**](AlertRuleState.md) |  | 
 **IsUpToDate** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
+**StartsAt** | Pointer to **time.Time** | when the alert starts firing | [optional] 
 
 ## Methods
 
@@ -385,6 +386,31 @@ and a boolean to check if the value has been set.
 
 SetIsUpToDate sets IsUpToDate field to given value.
 
+
+### GetStartsAt
+
+`func (o *AlertRuleResponse) GetStartsAt() time.Time`
+
+GetStartsAt returns the StartsAt field if non-nil, zero value otherwise.
+
+### GetStartsAtOk
+
+`func (o *AlertRuleResponse) GetStartsAtOk() (*time.Time, bool)`
+
+GetStartsAtOk returns a tuple with the StartsAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartsAt
+
+`func (o *AlertRuleResponse) SetStartsAt(v time.Time)`
+
+SetStartsAt sets StartsAt field to given value.
+
+### HasStartsAt
+
+`func (o *AlertRuleResponse) HasStartsAt() bool`
+
+HasStartsAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -36474,6 +36474,12 @@ components:
             type: boolean
             x-stoplight:
               id: 4nfaupf2l1668
+          starts_at:
+            description: when the alert starts firing
+            format: date-time
+            type: string
+            x-stoplight:
+              id: 9r76f8pipu6y5
         required:
         - alert_receiver_ids
         - cluster_id
@@ -36492,6 +36498,7 @@ components:
         type: object
       example:
         severity: LOW
+        starts_at: 2000-01-23T04:56:07.000+00:00
         is_up_to_date: true
         for_duration: for_duration
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -36597,6 +36604,7 @@ components:
       example:
         results:
         - severity: LOW
+          starts_at: 2000-01-23T04:56:07.000+00:00
           is_up_to_date: true
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -36636,6 +36644,7 @@ components:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - severity: LOW
+          starts_at: 2000-01-23T04:56:07.000+00:00
           is_up_to_date: true
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00

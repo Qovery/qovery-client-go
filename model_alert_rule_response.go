@@ -46,7 +46,9 @@ type AlertRuleResponse struct {
 	Target           AlertTarget               `json:"target"`
 	State            AlertRuleState            `json:"state"`
 	// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
-	IsUpToDate           bool `json:"is_up_to_date"`
+	IsUpToDate bool `json:"is_up_to_date"`
+	// when the alert starts firing
+	StartsAt             *time.Time `json:"starts_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -501,6 +503,38 @@ func (o *AlertRuleResponse) SetIsUpToDate(v bool) {
 	o.IsUpToDate = v
 }
 
+// GetStartsAt returns the StartsAt field value if set, zero value otherwise.
+func (o *AlertRuleResponse) GetStartsAt() time.Time {
+	if o == nil || IsNil(o.StartsAt) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartsAt
+}
+
+// GetStartsAtOk returns a tuple with the StartsAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AlertRuleResponse) GetStartsAtOk() (*time.Time, bool) {
+	if o == nil || IsNil(o.StartsAt) {
+		return nil, false
+	}
+	return o.StartsAt, true
+}
+
+// HasStartsAt returns a boolean if a field has been set.
+func (o *AlertRuleResponse) HasStartsAt() bool {
+	if o != nil && !IsNil(o.StartsAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartsAt gets a reference to the given time.Time and assigns it to the StartsAt field.
+func (o *AlertRuleResponse) SetStartsAt(v time.Time) {
+	o.StartsAt = &v
+}
+
 func (o AlertRuleResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -530,6 +564,9 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["target"] = o.Target
 	toSerialize["state"] = o.State
 	toSerialize["is_up_to_date"] = o.IsUpToDate
+	if !IsNil(o.StartsAt) {
+		toSerialize["starts_at"] = o.StartsAt
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -605,6 +642,7 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "target")
 		delete(additionalProperties, "state")
 		delete(additionalProperties, "is_up_to_date")
+		delete(additionalProperties, "starts_at")
 		o.AdditionalProperties = additionalProperties
 	}
 
