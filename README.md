@@ -543,11 +543,8 @@ Class | Method | HTTP request | Description
 *TerraformActionsAPI* | [**DeployTerraform**](docs/TerraformActionsAPI.md#deployterraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsAPI* | [**RedeployTerraform**](docs/TerraformActionsAPI.md#redeployterraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
 *TerraformActionsAPI* | [**UninstallTerraform**](docs/TerraformActionsAPI.md#uninstallterraform) | **Post** /terraform/{terraformId}/uninstall | Uninstall terraform
-*TerraformConfigurationAPI* | [**DeleteTerraformVariable**](docs/TerraformConfigurationAPI.md#deleteterraformvariable) | **Delete** /terraform/{terraformId}/variables/{key} | Delete a terraform variable
 *TerraformConfigurationAPI* | [**EditTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#editterraformadvancedsettings) | **Put** /terraform/{terraformId}/advancedSettings | Edit Advanced settings
 *TerraformConfigurationAPI* | [**GetTerraformAdvancedSettings**](docs/TerraformConfigurationAPI.md#getterraformadvancedsettings) | **Get** /terraform/{terraformId}/advancedSettings | Get Advanced settings
-*TerraformConfigurationAPI* | [**GetTerraformVariables**](docs/TerraformConfigurationAPI.md#getterraformvariables) | **Get** /terraform/{terraformId}/variables | Get terraform variables
-*TerraformConfigurationAPI* | [**ReplaceAllTerraformVariables**](docs/TerraformConfigurationAPI.md#replaceallterraformvariables) | **Put** /terraform/{terraformId}/variables | Replace all terraform variables
 *TerraformDeploymentHistoryAPI* | [**ListTerraformDeploymentHistoryV2**](docs/TerraformDeploymentHistoryAPI.md#listterraformdeploymenthistoryv2) | **Get** /terraform/{terraformId}/deploymentHistoryV2 | List terraform deployments
 *TerraformDeploymentRestrictionAPI* | [**CreateTerraformDeploymentRestriction**](docs/TerraformDeploymentRestrictionAPI.md#createterraformdeploymentrestriction) | **Post** /terraform/{terraformId}/deploymentRestriction | Create a terraform deployment restriction
 *TerraformDeploymentRestrictionAPI* | [**DeleteTerraformDeploymentRestriction**](docs/TerraformDeploymentRestrictionAPI.md#deleteterraformdeploymentrestriction) | **Delete** /terraform/{terraformId}/deploymentRestriction/{deploymentRestrictionId} | Delete a terraform deployment restriction
@@ -1184,9 +1181,6 @@ Class | Method | HTTP request | Description
  - [TerraformVarKeyValue](docs/TerraformVarKeyValue.md)
  - [TerraformVariableDefinition](docs/TerraformVariableDefinition.md)
  - [TerraformVariableParsingRequest](docs/TerraformVariableParsingRequest.md)
- - [TerraformVariableResponse](docs/TerraformVariableResponse.md)
- - [TerraformVariablesReplaceRequest](docs/TerraformVariablesReplaceRequest.md)
- - [TerraformVariablesResponse](docs/TerraformVariablesResponse.md)
  - [TerraformVariablesSourceRequest](docs/TerraformVariablesSourceRequest.md)
  - [TerraformVariablesSourceResponse](docs/TerraformVariablesSourceResponse.md)
  - [TerraformVersionResponse](docs/TerraformVersionResponse.md)
