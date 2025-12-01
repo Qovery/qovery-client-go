@@ -36031,7 +36031,7 @@ components:
           kind: CUSTOM
           function: NONE
           threshold: 0.8008281904610115
-          operator: ABOVE
+          operator: NONE
         for_duration: for_duration
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -36158,7 +36158,7 @@ components:
           kind: CUSTOM
           function: NONE
           threshold: 0.8008281904610115
-          operator: ABOVE
+          operator: NONE
         for_duration: for_duration
         name: name
         description: description
@@ -36370,7 +36370,7 @@ components:
           kind: CUSTOM
           function: NONE
           threshold: 0.8008281904610115
-          operator: ABOVE
+          operator: NONE
         updated_at: 2000-01-23T04:56:07.000+00:00
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -36476,7 +36476,7 @@ components:
             kind: CUSTOM
             function: NONE
             threshold: 0.8008281904610115
-            operator: ABOVE
+            operator: NONE
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -36516,7 +36516,7 @@ components:
             kind: CUSTOM
             function: NONE
             threshold: 0.8008281904610115
-            operator: ABOVE
+            operator: NONE
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -36617,7 +36617,7 @@ components:
         kind: CUSTOM
         function: NONE
         threshold: 0.8008281904610115
-        operator: ABOVE
+        operator: NONE
       properties:
         kind:
           $ref: '#/components/schemas/AlertRuleConditionKind'
@@ -36650,8 +36650,12 @@ components:
         id: 275ykwbxqzr24
     AlertRuleConditionOperator:
       enum:
+      - NONE
       - ABOVE
       - BELOW
+      - ABOVE_OR_EQUAL
+      - BELOW_OR_EQUAL
+      - EQUAL
       title: AlertRuleConditionOperator
       type: string
       x-stoplight:
@@ -36662,6 +36666,8 @@ components:
       - AVG
       - MAX
       - MIN
+      - SUM
+      - COUNT
       title: AlertRuleConditionFunction
       type: string
       x-stoplight:

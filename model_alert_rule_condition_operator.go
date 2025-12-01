@@ -21,14 +21,22 @@ type AlertRuleConditionOperator string
 
 // List of AlertRuleConditionOperator
 const (
-	ALERTRULECONDITIONOPERATOR_ABOVE AlertRuleConditionOperator = "ABOVE"
-	ALERTRULECONDITIONOPERATOR_BELOW AlertRuleConditionOperator = "BELOW"
+	ALERTRULECONDITIONOPERATOR_NONE           AlertRuleConditionOperator = "NONE"
+	ALERTRULECONDITIONOPERATOR_ABOVE          AlertRuleConditionOperator = "ABOVE"
+	ALERTRULECONDITIONOPERATOR_BELOW          AlertRuleConditionOperator = "BELOW"
+	ALERTRULECONDITIONOPERATOR_ABOVE_OR_EQUAL AlertRuleConditionOperator = "ABOVE_OR_EQUAL"
+	ALERTRULECONDITIONOPERATOR_BELOW_OR_EQUAL AlertRuleConditionOperator = "BELOW_OR_EQUAL"
+	ALERTRULECONDITIONOPERATOR_EQUAL          AlertRuleConditionOperator = "EQUAL"
 )
 
 // All allowed values of AlertRuleConditionOperator enum
 var AllowedAlertRuleConditionOperatorEnumValues = []AlertRuleConditionOperator{
+	"NONE",
 	"ABOVE",
 	"BELOW",
+	"ABOVE_OR_EQUAL",
+	"BELOW_OR_EQUAL",
+	"EQUAL",
 }
 
 func (v *AlertRuleConditionOperator) UnmarshalJSON(src []byte) error {

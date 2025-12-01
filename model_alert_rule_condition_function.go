@@ -21,10 +21,12 @@ type AlertRuleConditionFunction string
 
 // List of AlertRuleConditionFunction
 const (
-	ALERTRULECONDITIONFUNCTION_NONE AlertRuleConditionFunction = "NONE"
-	ALERTRULECONDITIONFUNCTION_AVG  AlertRuleConditionFunction = "AVG"
-	ALERTRULECONDITIONFUNCTION_MAX  AlertRuleConditionFunction = "MAX"
-	ALERTRULECONDITIONFUNCTION_MIN  AlertRuleConditionFunction = "MIN"
+	ALERTRULECONDITIONFUNCTION_NONE  AlertRuleConditionFunction = "NONE"
+	ALERTRULECONDITIONFUNCTION_AVG   AlertRuleConditionFunction = "AVG"
+	ALERTRULECONDITIONFUNCTION_MAX   AlertRuleConditionFunction = "MAX"
+	ALERTRULECONDITIONFUNCTION_MIN   AlertRuleConditionFunction = "MIN"
+	ALERTRULECONDITIONFUNCTION_SUM   AlertRuleConditionFunction = "SUM"
+	ALERTRULECONDITIONFUNCTION_COUNT AlertRuleConditionFunction = "COUNT"
 )
 
 // All allowed values of AlertRuleConditionFunction enum
@@ -33,6 +35,8 @@ var AllowedAlertRuleConditionFunctionEnumValues = []AlertRuleConditionFunction{
 	"AVG",
 	"MAX",
 	"MIN",
+	"SUM",
+	"COUNT",
 }
 
 func (v *AlertRuleConditionFunction) UnmarshalJSON(src []byte) error {
