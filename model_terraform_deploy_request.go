@@ -24,10 +24,6 @@ type TerraformDeployRequest struct {
 	Id NullableString `json:"id,omitempty"`
 	// Commit to deploy for chart source.
 	GitCommitId *string `json:"git_commit_id,omitempty"`
-	// Deprecated: use action=PLAN instead.
-	DryRun *bool `json:"dry_run,omitempty"`
-	// Deprecated: use action=FORCE_UNLOCK instead.
-	ForceUnlockState NullableBool `json:"force_unlock_state,omitempty"`
 	// Terraform action to execute.
 	Action               NullableString `json:"action,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -127,81 +123,6 @@ func (o *TerraformDeployRequest) SetGitCommitId(v string) {
 	o.GitCommitId = &v
 }
 
-// GetDryRun returns the DryRun field value if set, zero value otherwise.
-func (o *TerraformDeployRequest) GetDryRun() bool {
-	if o == nil || IsNil(o.DryRun) {
-		var ret bool
-		return ret
-	}
-	return *o.DryRun
-}
-
-// GetDryRunOk returns a tuple with the DryRun field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *TerraformDeployRequest) GetDryRunOk() (*bool, bool) {
-	if o == nil || IsNil(o.DryRun) {
-		return nil, false
-	}
-	return o.DryRun, true
-}
-
-// HasDryRun returns a boolean if a field has been set.
-func (o *TerraformDeployRequest) HasDryRun() bool {
-	if o != nil && !IsNil(o.DryRun) {
-		return true
-	}
-
-	return false
-}
-
-// SetDryRun gets a reference to the given bool and assigns it to the DryRun field.
-func (o *TerraformDeployRequest) SetDryRun(v bool) {
-	o.DryRun = &v
-}
-
-// GetForceUnlockState returns the ForceUnlockState field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *TerraformDeployRequest) GetForceUnlockState() bool {
-	if o == nil || IsNil(o.ForceUnlockState.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.ForceUnlockState.Get()
-}
-
-// GetForceUnlockStateOk returns a tuple with the ForceUnlockState field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *TerraformDeployRequest) GetForceUnlockStateOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ForceUnlockState.Get(), o.ForceUnlockState.IsSet()
-}
-
-// HasForceUnlockState returns a boolean if a field has been set.
-func (o *TerraformDeployRequest) HasForceUnlockState() bool {
-	if o != nil && o.ForceUnlockState.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetForceUnlockState gets a reference to the given NullableBool and assigns it to the ForceUnlockState field.
-func (o *TerraformDeployRequest) SetForceUnlockState(v bool) {
-	o.ForceUnlockState.Set(&v)
-}
-
-// SetForceUnlockStateNil sets the value for ForceUnlockState to be an explicit nil
-func (o *TerraformDeployRequest) SetForceUnlockStateNil() {
-	o.ForceUnlockState.Set(nil)
-}
-
-// UnsetForceUnlockState ensures that no value is present for ForceUnlockState, not even an explicit nil
-func (o *TerraformDeployRequest) UnsetForceUnlockState() {
-	o.ForceUnlockState.Unset()
-}
-
 // GetAction returns the Action field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *TerraformDeployRequest) GetAction() string {
 	if o == nil || IsNil(o.Action.Get()) {
@@ -261,12 +182,6 @@ func (o TerraformDeployRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitCommitId) {
 		toSerialize["git_commit_id"] = o.GitCommitId
 	}
-	if !IsNil(o.DryRun) {
-		toSerialize["dry_run"] = o.DryRun
-	}
-	if o.ForceUnlockState.IsSet() {
-		toSerialize["force_unlock_state"] = o.ForceUnlockState.Get()
-	}
 	if o.Action.IsSet() {
 		toSerialize["action"] = o.Action.Get()
 	}
@@ -294,8 +209,6 @@ func (o *TerraformDeployRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "git_commit_id")
-		delete(additionalProperties, "dry_run")
-		delete(additionalProperties, "force_unlock_state")
 		delete(additionalProperties, "action")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -6,8 +6,6 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** | Terraform service identifier | [optional] 
 **GitCommitId** | Pointer to **string** | Commit to deploy for chart source. | [optional] 
-**DryRun** | Pointer to **bool** | Deprecated: use action&#x3D;PLAN instead. | [optional] 
-**ForceUnlockState** | Pointer to **NullableBool** | Deprecated: use action&#x3D;FORCE_UNLOCK instead. | [optional] 
 **Action** | Pointer to **NullableString** | Terraform action to execute. | [optional] 
 
 ## Methods
@@ -89,66 +87,6 @@ SetGitCommitId sets GitCommitId field to given value.
 
 HasGitCommitId returns a boolean if a field has been set.
 
-### GetDryRun
-
-`func (o *TerraformDeployRequest) GetDryRun() bool`
-
-GetDryRun returns the DryRun field if non-nil, zero value otherwise.
-
-### GetDryRunOk
-
-`func (o *TerraformDeployRequest) GetDryRunOk() (*bool, bool)`
-
-GetDryRunOk returns a tuple with the DryRun field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDryRun
-
-`func (o *TerraformDeployRequest) SetDryRun(v bool)`
-
-SetDryRun sets DryRun field to given value.
-
-### HasDryRun
-
-`func (o *TerraformDeployRequest) HasDryRun() bool`
-
-HasDryRun returns a boolean if a field has been set.
-
-### GetForceUnlockState
-
-`func (o *TerraformDeployRequest) GetForceUnlockState() bool`
-
-GetForceUnlockState returns the ForceUnlockState field if non-nil, zero value otherwise.
-
-### GetForceUnlockStateOk
-
-`func (o *TerraformDeployRequest) GetForceUnlockStateOk() (*bool, bool)`
-
-GetForceUnlockStateOk returns a tuple with the ForceUnlockState field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetForceUnlockState
-
-`func (o *TerraformDeployRequest) SetForceUnlockState(v bool)`
-
-SetForceUnlockState sets ForceUnlockState field to given value.
-
-### HasForceUnlockState
-
-`func (o *TerraformDeployRequest) HasForceUnlockState() bool`
-
-HasForceUnlockState returns a boolean if a field has been set.
-
-### SetForceUnlockStateNil
-
-`func (o *TerraformDeployRequest) SetForceUnlockStateNil(b bool)`
-
- SetForceUnlockStateNil sets the value for ForceUnlockState to be an explicit nil
-
-### UnsetForceUnlockState
-`func (o *TerraformDeployRequest) UnsetForceUnlockState()`
-
-UnsetForceUnlockState ensures that no value is present for ForceUnlockState, not even an explicit nil
 ### GetAction
 
 `func (o *TerraformDeployRequest) GetAction() string`
