@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Sensitive** | **bool** | Whether the variable is marked as sensitive | 
 **Default** | Pointer to **NullableString** | The default value of the variable, or null if no default is provided | [optional] 
 **Source** | **string** | The path inside your git repository where the variable is defined | 
+**Description** | Pointer to **NullableString** | The description of the variable, or null if no description is provided | [optional] 
 
 ## Methods
 
@@ -123,6 +124,41 @@ and a boolean to check if the value has been set.
 SetSource sets Source field to given value.
 
 
+### GetDescription
+
+`func (o *TerraformVariableDefinition) GetDescription() string`
+
+GetDescription returns the Description field if non-nil, zero value otherwise.
+
+### GetDescriptionOk
+
+`func (o *TerraformVariableDefinition) GetDescriptionOk() (*string, bool)`
+
+GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDescription
+
+`func (o *TerraformVariableDefinition) SetDescription(v string)`
+
+SetDescription sets Description field to given value.
+
+### HasDescription
+
+`func (o *TerraformVariableDefinition) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
+
+### SetDescriptionNil
+
+`func (o *TerraformVariableDefinition) SetDescriptionNil(b bool)`
+
+ SetDescriptionNil sets the value for Description to be an explicit nil
+
+### UnsetDescription
+`func (o *TerraformVariableDefinition) UnsetDescription()`
+
+UnsetDescription ensures that no value is present for Description, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

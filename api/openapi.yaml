@@ -35069,6 +35069,7 @@ components:
         file.
       example:
         default: default
+        description: description
         sensitive: true
         source: source
         key: key
@@ -35086,6 +35087,11 @@ components:
           type: string
         source:
           description: The path inside your git repository where the variable is defined
+          type: string
+        description:
+          description: "The description of the variable, or null if no description\
+            \ is provided"
+          nullable: true
           type: string
       required:
       - key
@@ -37498,10 +37504,12 @@ components:
       example:
         results:
         - default: default
+          description: description
           sensitive: true
           source: source
           key: key
         - default: default
+          description: description
           sensitive: true
           source: source
           key: key

@@ -28,7 +28,9 @@ type TerraformVariableDefinition struct {
 	// The default value of the variable, or null if no default is provided
 	Default NullableString `json:"default,omitempty"`
 	// The path inside your git repository where the variable is defined
-	Source               string `json:"source"`
+	Source string `json:"source"`
+	// The description of the variable, or null if no description is provided
+	Description          NullableString `json:"description,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -169,6 +171,49 @@ func (o *TerraformVariableDefinition) SetSource(v string) {
 	o.Source = v
 }
 
+// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerraformVariableDefinition) GetDescription() string {
+	if o == nil || IsNil(o.Description.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Description.Get()
+}
+
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerraformVariableDefinition) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Description.Get(), o.Description.IsSet()
+}
+
+// HasDescription returns a boolean if a field has been set.
+func (o *TerraformVariableDefinition) HasDescription() bool {
+	if o != nil && o.Description.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+func (o *TerraformVariableDefinition) SetDescription(v string) {
+	o.Description.Set(&v)
+}
+
+// SetDescriptionNil sets the value for Description to be an explicit nil
+func (o *TerraformVariableDefinition) SetDescriptionNil() {
+	o.Description.Set(nil)
+}
+
+// UnsetDescription ensures that no value is present for Description, not even an explicit nil
+func (o *TerraformVariableDefinition) UnsetDescription() {
+	o.Description.Unset()
+}
+
 func (o TerraformVariableDefinition) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -185,6 +230,9 @@ func (o TerraformVariableDefinition) ToMap() (map[string]interface{}, error) {
 		toSerialize["default"] = o.Default.Get()
 	}
 	toSerialize["source"] = o.Source
+	if o.Description.IsSet() {
+		toSerialize["description"] = o.Description.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -234,6 +282,7 @@ func (o *TerraformVariableDefinition) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "sensitive")
 		delete(additionalProperties, "default")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "description")
 		o.AdditionalProperties = additionalProperties
 	}
 
