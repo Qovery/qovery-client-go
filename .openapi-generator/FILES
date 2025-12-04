@@ -652,6 +652,7 @@ docs/OrganizationEventResponse.md
 docs/OrganizationEventResponseList.md
 docs/OrganizationEventResponseListLinks.md
 docs/OrganizationEventSubTargetType.md
+docs/OrganizationEventTargetLevel.md
 docs/OrganizationEventTargetResponseList.md
 docs/OrganizationEventTargetType.md
 docs/OrganizationEventType.md
@@ -1311,6 +1312,7 @@ model_organization_event_response.go
 model_organization_event_response_list.go
 model_organization_event_response_list_links.go
 model_organization_event_sub_target_type.go
+model_organization_event_target_level.go
 model_organization_event_target_response_list.go
 model_organization_event_target_type.go
 model_organization_event_type.go

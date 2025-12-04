@@ -24,17 +24,18 @@ import (
 type OrganizationEventAPIService service
 
 type ApiGetOrganizationEventTargetsRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationEventAPIService
-	organizationId string
-	fromTimestamp  *string
-	toTimestamp    *string
-	eventType      *OrganizationEventType
-	targetType     *OrganizationEventTargetType
-	triggeredBy    *string
-	origin         *OrganizationEventOrigin
-	projectId      *string
-	environmentId  *string
+	ctx                context.Context
+	ApiService         *OrganizationEventAPIService
+	organizationId     string
+	fromTimestamp      *string
+	toTimestamp        *string
+	eventType          *OrganizationEventType
+	targetType         *OrganizationEventTargetType
+	triggeredBy        *string
+	origin             *OrganizationEventOrigin
+	projectId          *string
+	environmentId      *string
+	targetLevelToFetch *OrganizationEventTargetLevel
 }
 
 // Display targets available since this timestamp.   A range of date can be specified by using &#x60;from-timestamp&#x60; with &#x60;to-timestamp&#x60; The format is a timestamp with nano precision
@@ -79,6 +80,12 @@ func (r ApiGetOrganizationEventTargetsRequest) ProjectId(projectId string) ApiGe
 // Mandatory when requesting a service
 func (r ApiGetOrganizationEventTargetsRequest) EnvironmentId(environmentId string) ApiGetOrganizationEventTargetsRequest {
 	r.environmentId = &environmentId
+	return r
+}
+
+// Used only to retrieve projects or environments linked to service typed events
+func (r ApiGetOrganizationEventTargetsRequest) TargetLevelToFetch(targetLevelToFetch OrganizationEventTargetLevel) ApiGetOrganizationEventTargetsRequest {
+	r.targetLevelToFetch = &targetLevelToFetch
 	return r
 }
 
@@ -149,6 +156,9 @@ func (a *OrganizationEventAPIService) GetOrganizationEventTargetsExecute(r ApiGe
 	}
 	if r.environmentId != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
+	}
+	if r.targetLevelToFetch != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "targetLevelToFetch", r.targetLevelToFetch, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

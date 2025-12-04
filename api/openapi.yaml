@@ -3720,6 +3720,15 @@ paths:
           format: uuid
           type: string
         style: form
+      - description: Used only to retrieve projects or environments linked to service
+          typed events
+        explode: true
+        in: query
+        name: targetLevelToFetch
+        required: false
+        schema:
+          $ref: '#/components/schemas/OrganizationEventTargetLevel'
+        style: form
       responses:
         "200":
           content:
@@ -30426,6 +30435,12 @@ components:
       - QOVERY_INTERNAL
       - TERRAFORM_PROVIDER
       example: API
+      type: string
+    OrganizationEventTargetLevel:
+      description: The target level to fetch
+      enum:
+      - PROJECT
+      - ENVIRONMENT
       type: string
     OrganizationEventSubTargetType:
       description: Type of the organization event

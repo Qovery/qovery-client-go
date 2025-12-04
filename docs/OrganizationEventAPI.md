@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetOrganizationEventTargets
 
-> OrganizationEventTargetResponseList GetOrganizationEventTargets(ctx, organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+> OrganizationEventTargetResponseList GetOrganizationEventTargets(ctx, organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).TargetLevelToFetch(targetLevelToFetch).Execute()
 
 Get available event targets to filter events
 
@@ -39,10 +39,11 @@ func main() {
 	origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
 	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting an environment or a service (optional)
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Mandatory when requesting a service (optional)
+	targetLevelToFetch := openapiclient.OrganizationEventTargetLevel("PROJECT") // OrganizationEventTargetLevel | Used only to retrieve projects or environments linked to service typed events (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEventTargets(context.Background(), organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).Execute()
+	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEventTargets(context.Background(), organizationId).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).EventType(eventType).TargetType(targetType).TriggeredBy(triggeredBy).Origin(origin).ProjectId(projectId).EnvironmentId(environmentId).TargetLevelToFetch(targetLevelToFetch).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEventTargets``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -76,6 +77,7 @@ Name | Type | Description  | Notes
  **origin** | [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | 
  **projectId** | **string** | Mandatory when requesting an environment or a service | 
  **environmentId** | **string** | Mandatory when requesting a service | 
+ **targetLevelToFetch** | [**OrganizationEventTargetLevel**](OrganizationEventTargetLevel.md) | Used only to retrieve projects or environments linked to service typed events | 
 
 ### Return type
 
