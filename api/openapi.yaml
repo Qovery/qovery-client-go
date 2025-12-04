@@ -3620,6 +3620,22 @@ paths:
         schema:
           $ref: '#/components/schemas/OrganizationEventOrigin'
         style: form
+      - description: The project chosen when filtering on a service type
+        explode: true
+        in: query
+        name: serviceProjectId
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The environment chosen when filtering on a service type
+        explode: true
+        in: query
+        name: serviceEnvironmentId
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:

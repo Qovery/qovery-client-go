@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 
 ## GetOrganizationEvents
 
-> OrganizationEventResponseList GetOrganizationEvents(ctx, organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
+> OrganizationEventResponseList GetOrganizationEvents(ctx, organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).ServiceProjectId(serviceProjectId).ServiceEnvironmentId(serviceEnvironmentId).Execute()
 
 Get all events inside the organization
 
@@ -130,10 +130,12 @@ func main() {
 	subTargetType := openapiclient.OrganizationEventSubTargetType("ADVANCED_SETTINGS") // OrganizationEventSubTargetType |  (optional)
 	triggeredBy := "triggeredBy_example" // string | Information about the owner of the event (user name / apitoken / automatic action) (optional)
 	origin := openapiclient.OrganizationEventOrigin("API") // OrganizationEventOrigin |  (optional)
+	serviceProjectId := "serviceProjectId_example" // string | The project chosen when filtering on a service type (optional)
+	serviceEnvironmentId := "serviceEnvironmentId_example" // string | The environment chosen when filtering on a service type (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).Execute()
+	resp, r, err := apiClient.OrganizationEventAPI.GetOrganizationEvents(context.Background(), organizationId).PageSize(pageSize).FromTimestamp(fromTimestamp).ToTimestamp(toTimestamp).ContinueToken(continueToken).StepBackToken(stepBackToken).EventType(eventType).TargetType(targetType).TargetId(targetId).SubTargetType(subTargetType).TriggeredBy(triggeredBy).Origin(origin).ServiceProjectId(serviceProjectId).ServiceEnvironmentId(serviceEnvironmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEventAPI.GetOrganizationEvents``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -170,6 +172,8 @@ Name | Type | Description  | Notes
  **subTargetType** | [**OrganizationEventSubTargetType**](OrganizationEventSubTargetType.md) |  | 
  **triggeredBy** | **string** | Information about the owner of the event (user name / apitoken / automatic action) | 
  **origin** | [**OrganizationEventOrigin**](OrganizationEventOrigin.md) |  | 
+ **serviceProjectId** | **string** | The project chosen when filtering on a service type | 
+ **serviceEnvironmentId** | **string** | The environment chosen when filtering on a service type | 
 
 ### Return type
 

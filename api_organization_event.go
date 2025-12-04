@@ -229,20 +229,22 @@ func (a *OrganizationEventAPIService) GetOrganizationEventTargetsExecute(r ApiGe
 }
 
 type ApiGetOrganizationEventsRequest struct {
-	ctx            context.Context
-	ApiService     *OrganizationEventAPIService
-	organizationId string
-	pageSize       *float32
-	fromTimestamp  *string
-	toTimestamp    *string
-	continueToken  *string
-	stepBackToken  *string
-	eventType      *OrganizationEventType
-	targetType     *OrganizationEventTargetType
-	targetId       *string
-	subTargetType  *OrganizationEventSubTargetType
-	triggeredBy    *string
-	origin         *OrganizationEventOrigin
+	ctx                  context.Context
+	ApiService           *OrganizationEventAPIService
+	organizationId       string
+	pageSize             *float32
+	fromTimestamp        *string
+	toTimestamp          *string
+	continueToken        *string
+	stepBackToken        *string
+	eventType            *OrganizationEventType
+	targetType           *OrganizationEventTargetType
+	targetId             *string
+	subTargetType        *OrganizationEventSubTargetType
+	triggeredBy          *string
+	origin               *OrganizationEventOrigin
+	serviceProjectId     *string
+	serviceEnvironmentId *string
 }
 
 // The number of events to display in the current page
@@ -304,6 +306,18 @@ func (r ApiGetOrganizationEventsRequest) TriggeredBy(triggeredBy string) ApiGetO
 
 func (r ApiGetOrganizationEventsRequest) Origin(origin OrganizationEventOrigin) ApiGetOrganizationEventsRequest {
 	r.origin = &origin
+	return r
+}
+
+// The project chosen when filtering on a service type
+func (r ApiGetOrganizationEventsRequest) ServiceProjectId(serviceProjectId string) ApiGetOrganizationEventsRequest {
+	r.serviceProjectId = &serviceProjectId
+	return r
+}
+
+// The environment chosen when filtering on a service type
+func (r ApiGetOrganizationEventsRequest) ServiceEnvironmentId(serviceEnvironmentId string) ApiGetOrganizationEventsRequest {
+	r.serviceEnvironmentId = &serviceEnvironmentId
 	return r
 }
 
@@ -386,6 +400,12 @@ func (a *OrganizationEventAPIService) GetOrganizationEventsExecute(r ApiGetOrgan
 	}
 	if r.origin != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "origin", r.origin, "")
+	}
+	if r.serviceProjectId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "serviceProjectId", r.serviceProjectId, "")
+	}
+	if r.serviceEnvironmentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "serviceEnvironmentId", r.serviceEnvironmentId, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
