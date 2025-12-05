@@ -30462,8 +30462,11 @@ components:
       description: Type of the organization event
       enum:
       - ADVANCED_SETTINGS
+      - ALERT_RULE
+      - ANNOTATIONS_GROUP
       - API_TOKEN
       - BILLING_INFO
+      - BILLING_USAGE_REPORT
       - CLOUD_PROVIDER_CREDENTIALS
       - CLUSTER_CREDENTIALS
       - CLUSTER_ROUTING_TABLE
@@ -30478,9 +30481,14 @@ components:
       - GIT_REPOSITORY
       - GIT_TOKEN
       - INVITATION
+      - KUBERNETES_CONFIGURATION
+      - KUBERNETES_CREDENTIALS
+      - LABELS_GROUP
       - MEMBER_ROLE
       - PLAN
+      - REMOTE_ACCESS
       - SECRET
+      - SSO
       - TERRAFORM
       - TRANSFER_OWNERSHIP
       - VARIABLE
@@ -30499,6 +30507,7 @@ components:
       - ENVIRONMENT
       - JOB
       - HELM
+      - HELM_REPOSITORY
       - MEMBERS_AND_ROLES
       - ORGANIZATION
       - PROJECT

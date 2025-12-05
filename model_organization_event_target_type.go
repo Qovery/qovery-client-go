@@ -30,6 +30,7 @@ const (
 	ORGANIZATIONEVENTTARGETTYPE_ENVIRONMENT           OrganizationEventTargetType = "ENVIRONMENT"
 	ORGANIZATIONEVENTTARGETTYPE_JOB                   OrganizationEventTargetType = "JOB"
 	ORGANIZATIONEVENTTARGETTYPE_HELM                  OrganizationEventTargetType = "HELM"
+	ORGANIZATIONEVENTTARGETTYPE_HELM_REPOSITORY       OrganizationEventTargetType = "HELM_REPOSITORY"
 	ORGANIZATIONEVENTTARGETTYPE_MEMBERS_AND_ROLES     OrganizationEventTargetType = "MEMBERS_AND_ROLES"
 	ORGANIZATIONEVENTTARGETTYPE_ORGANIZATION          OrganizationEventTargetType = "ORGANIZATION"
 	ORGANIZATIONEVENTTARGETTYPE_PROJECT               OrganizationEventTargetType = "PROJECT"
@@ -48,6 +49,7 @@ var AllowedOrganizationEventTargetTypeEnumValues = []OrganizationEventTargetType
 	"ENVIRONMENT",
 	"JOB",
 	"HELM",
+	"HELM_REPOSITORY",
 	"MEMBERS_AND_ROLES",
 	"ORGANIZATION",
 	"PROJECT",

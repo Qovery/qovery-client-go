@@ -21,6 +21,8 @@
 
 * `HELM` (value: `"HELM"`)
 
+* `HELM_REPOSITORY` (value: `"HELM_REPOSITORY"`)
+
 * `MEMBERS_AND_ROLES` (value: `"MEMBERS_AND_ROLES"`)
 
 * `ORGANIZATION` (value: `"ORGANIZATION"`)
