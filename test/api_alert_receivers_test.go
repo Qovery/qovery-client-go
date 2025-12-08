@@ -89,4 +89,28 @@ func Test_qovery_AlertReceiversAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AlertReceiversAPIService ValidateExistingAlertReceiver", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var alertReceiverId string
+
+		httpRes, err := apiClient.AlertReceiversAPI.ValidateExistingAlertReceiver(context.Background(), alertReceiverId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AlertReceiversAPIService ValidateNewAlertReceiver", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		httpRes, err := apiClient.AlertReceiversAPI.ValidateNewAlertReceiver(context.Background()).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

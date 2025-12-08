@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**EditAlertReceiver**](AlertReceiversAPI.md#EditAlertReceiver) | **Put** /alert-receivers/{alertReceiverId} | Update alert receiver
 [**GetAlertReceiver**](AlertReceiversAPI.md#GetAlertReceiver) | **Get** /alert-receivers/{alertReceiverId} | Get alert receiver
 [**GetAlertReceivers**](AlertReceiversAPI.md#GetAlertReceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
+[**ValidateExistingAlertReceiver**](AlertReceiversAPI.md#ValidateExistingAlertReceiver) | **Post** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
+[**ValidateNewAlertReceiver**](AlertReceiversAPI.md#ValidateNewAlertReceiver) | **Get** /alert-receivers/validate | Validate New Alert Receiver
 
 
 
@@ -352,6 +354,140 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidateExistingAlertReceiver
+
+> ValidateExistingAlertReceiver(ctx, alertReceiverId).AlertReceiverValidationRequest(alertReceiverValidationRequest).Execute()
+
+Validate Existing Alert Receiver
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	alertReceiverId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Alert Receiver ID
+	alertReceiverValidationRequest := *openapiclient.NewAlertReceiverValidationRequest() // AlertReceiverValidationRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertReceiversAPI.ValidateExistingAlertReceiver(context.Background(), alertReceiverId).AlertReceiverValidationRequest(alertReceiverValidationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertReceiversAPI.ValidateExistingAlertReceiver``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**alertReceiverId** | **string** | Alert Receiver ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidateExistingAlertReceiverRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **alertReceiverValidationRequest** | [**AlertReceiverValidationRequest**](AlertReceiverValidationRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ValidateNewAlertReceiver
+
+> ValidateNewAlertReceiver(ctx).AlertReceiverCreationValidationRequest(alertReceiverCreationValidationRequest).Execute()
+
+Validate New Alert Receiver
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	alertReceiverCreationValidationRequest := *openapiclient.NewAlertReceiverCreationValidationRequest(*openapiclient.NewAlertReceiverCreationRequest("OrganizationId_example", "Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false)) // AlertReceiverCreationValidationRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AlertReceiversAPI.ValidateNewAlertReceiver(context.Background()).AlertReceiverCreationValidationRequest(alertReceiverCreationValidationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AlertReceiversAPI.ValidateNewAlertReceiver``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiValidateNewAlertReceiverRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **alertReceiverCreationValidationRequest** | [**AlertReceiverCreationValidationRequest**](AlertReceiverCreationValidationRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

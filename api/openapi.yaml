@@ -17584,6 +17584,68 @@ paths:
       - Alert Rules
       x-stoplight:
         id: xkza3tt52gwse
+  /alert-receivers/{alertReceiverId}/validate:
+    post:
+      description: Validate an existing alert receiver by sending a test message for
+        example
+      operationId: validateExistingAlertReceiver
+      parameters:
+      - description: Alert Receiver ID
+        explode: false
+        in: path
+        name: alertReceiverId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertReceiverValidationRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Validate Existing Alert Receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: uz8sv9wwxy3ib
+  /alert-receivers/validate:
+    get:
+      description: Validate a future alert receiver by sending a test message for
+        example
+      operationId: validateNewAlertReceiver
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AlertReceiverCreationValidationRequest'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Validate New Alert Receiver
+      tags:
+      - Alert Receivers
+      x-stoplight:
+        id: 98ki23k3jdr75
 components:
   parameters:
     alertReceiverId:
@@ -36705,6 +36767,40 @@ components:
       type: string
       x-stoplight:
         id: 7tp2xk2ehojvz
+    AlertReceiverValidationRequest:
+      example:
+        message: message
+      properties:
+        message:
+          type: string
+          x-stoplight:
+            id: fgi81witawggf
+      title: AlertReceiverValidationRequest
+      type: object
+      x-stoplight:
+        id: w6fc7rel27rie
+    AlertReceiverCreationValidationRequest:
+      example:
+        alertReceiver:
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          description: description
+          send_resolved: true
+          type: SLACK
+        message: message
+      properties:
+        alertReceiver:
+          $ref: '#/components/schemas/AlertReceiverCreationRequest'
+        message:
+          type: string
+          x-stoplight:
+            id: s7kbacgdp3fb4
+      required:
+      - alertReceiver
+      title: AlertReceiverCreationValidationRequest
+      type: object
+      x-stoplight:
+        id: xbtjouxwa280v
     deleteMember_request:
       properties:
         user_id:

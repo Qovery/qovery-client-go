@@ -88,6 +88,8 @@ Class | Method | HTTP request | Description
 *AlertReceiversAPI* | [**EditAlertReceiver**](docs/AlertReceiversAPI.md#editalertreceiver) | **Put** /alert-receivers/{alertReceiverId} | Update alert receiver
 *AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
+*AlertReceiversAPI* | [**ValidateExistingAlertReceiver**](docs/AlertReceiversAPI.md#validateexistingalertreceiver) | **Post** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
+*AlertReceiversAPI* | [**ValidateNewAlertReceiver**](docs/AlertReceiversAPI.md#validatenewalertreceiver) | **Get** /alert-receivers/validate | Validate New Alert Receiver
 *AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /alert-rules | Create alert rule
 *AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /alert-rules/{alertRuleId} | Delete alert rule
 *AlertRulesAPI* | [**EditAlertRule**](docs/AlertRulesAPI.md#editalertrule) | **Put** /alert-rules/{alertRuleId} | Update alert rule
@@ -580,10 +582,12 @@ Class | Method | HTTP request | Description
  - [AlertPresentation](docs/AlertPresentation.md)
  - [AlertPresentationResponse](docs/AlertPresentationResponse.md)
  - [AlertReceiverCreationRequest](docs/AlertReceiverCreationRequest.md)
+ - [AlertReceiverCreationValidationRequest](docs/AlertReceiverCreationValidationRequest.md)
  - [AlertReceiverEditRequest](docs/AlertReceiverEditRequest.md)
  - [AlertReceiverList](docs/AlertReceiverList.md)
  - [AlertReceiverResponse](docs/AlertReceiverResponse.md)
  - [AlertReceiverType](docs/AlertReceiverType.md)
+ - [AlertReceiverValidationRequest](docs/AlertReceiverValidationRequest.md)
  - [AlertRuleCondition](docs/AlertRuleCondition.md)
  - [AlertRuleConditionFunction](docs/AlertRuleConditionFunction.md)
  - [AlertRuleConditionKind](docs/AlertRuleConditionKind.md)
