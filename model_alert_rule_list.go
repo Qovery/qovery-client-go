@@ -21,7 +21,7 @@ var _ MappedNullable = &AlertRuleList{}
 
 // AlertRuleList struct for AlertRuleList
 type AlertRuleList struct {
-	Results              []AlertRuleResponse `json:"results"`
+	Results              []AlertRuleListResultsInner `json:"results"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _AlertRuleList AlertRuleList
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleList(results []AlertRuleResponse) *AlertRuleList {
+func NewAlertRuleList(results []AlertRuleListResultsInner) *AlertRuleList {
 	this := AlertRuleList{}
 	this.Results = results
 	return &this
@@ -46,9 +46,9 @@ func NewAlertRuleListWithDefaults() *AlertRuleList {
 }
 
 // GetResults returns the Results field value
-func (o *AlertRuleList) GetResults() []AlertRuleResponse {
+func (o *AlertRuleList) GetResults() []AlertRuleListResultsInner {
 	if o == nil {
-		var ret []AlertRuleResponse
+		var ret []AlertRuleListResultsInner
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *AlertRuleList) GetResults() []AlertRuleResponse {
 
 // GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *AlertRuleList) GetResultsOk() ([]AlertRuleResponse, bool) {
+func (o *AlertRuleList) GetResultsOk() ([]AlertRuleListResultsInner, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *AlertRuleList) GetResultsOk() ([]AlertRuleResponse, bool) {
 }
 
 // SetResults sets field value
-func (o *AlertRuleList) SetResults(v []AlertRuleResponse) {
+func (o *AlertRuleList) SetResults(v []AlertRuleListResultsInner) {
 	o.Results = v
 }
 

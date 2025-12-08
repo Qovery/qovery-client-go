@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **OrganizationId** | **string** | Organization identifier | 
 **ClusterId** | **string** |  Cluster identifier | 
-**Name** | **string** | Name of the alert rule  | 
 **Description** | **string** | Description of what the alert monitors | 
 **Tag** | **string** |  | 
 **Condition** | [**AlertRuleCondition**](AlertRuleCondition.md) |  | 
@@ -19,7 +18,6 @@ Name | Type | Description | Notes
 **AlertReceiverIds** | **[]string** | List of alert receiver IDs to send notifications to | 
 **Presentation** | [**AlertPresentationResponse**](AlertPresentationResponse.md) |  | 
 **Target** | [**AlertTarget**](AlertTarget.md) |  | 
-**State** | [**AlertRuleState**](AlertRuleState.md) |  | 
 **IsUpToDate** | **bool** | Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed. | 
 **StartsAt** | Pointer to **time.Time** | when the alert starts firing | [optional] 
 
@@ -27,7 +25,7 @@ Name | Type | Description | Notes
 
 ### NewAlertRuleResponse
 
-`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool, ) *AlertRuleResponse`
+`func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, isUpToDate bool, ) *AlertRuleResponse`
 
 NewAlertRuleResponse instantiates a new AlertRuleResponse object
 This constructor will assign default values to properties that have it defined,
@@ -145,26 +143,6 @@ and a boolean to check if the value has been set.
 `func (o *AlertRuleResponse) SetClusterId(v string)`
 
 SetClusterId sets ClusterId field to given value.
-
-
-### GetName
-
-`func (o *AlertRuleResponse) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *AlertRuleResponse) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *AlertRuleResponse) SetName(v string)`
-
-SetName sets Name field to given value.
 
 
 ### GetDescription
@@ -345,26 +323,6 @@ and a boolean to check if the value has been set.
 `func (o *AlertRuleResponse) SetTarget(v AlertTarget)`
 
 SetTarget sets Target field to given value.
-
-
-### GetState
-
-`func (o *AlertRuleResponse) GetState() AlertRuleState`
-
-GetState returns the State field if non-nil, zero value otherwise.
-
-### GetStateOk
-
-`func (o *AlertRuleResponse) GetStateOk() (*AlertRuleState, bool)`
-
-GetStateOk returns a tuple with the State field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetState
-
-`func (o *AlertRuleResponse) SetState(v AlertRuleState)`
-
-SetState sets State field to given value.
 
 
 ### GetIsUpToDate

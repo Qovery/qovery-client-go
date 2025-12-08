@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Results** | [**[]AlertRuleResponse**](AlertRuleResponse.md) |  | 
+**Results** | [**[]AlertRuleListResultsInner**](AlertRuleListResultsInner.md) |  | 
 
 ## Methods
 
 ### NewAlertRuleList
 
-`func NewAlertRuleList(results []AlertRuleResponse, ) *AlertRuleList`
+`func NewAlertRuleList(results []AlertRuleListResultsInner, ) *AlertRuleList`
 
 NewAlertRuleList instantiates a new AlertRuleList object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetResults
 
-`func (o *AlertRuleList) GetResults() []AlertRuleResponse`
+`func (o *AlertRuleList) GetResults() []AlertRuleListResultsInner`
 
 GetResults returns the Results field if non-nil, zero value otherwise.
 
 ### GetResultsOk
 
-`func (o *AlertRuleList) GetResultsOk() (*[]AlertRuleResponse, bool)`
+`func (o *AlertRuleList) GetResultsOk() (*[]AlertRuleListResultsInner, bool)`
 
 GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetResults
 
-`func (o *AlertRuleList) SetResults(v []AlertRuleResponse)`
+`func (o *AlertRuleList) SetResults(v []AlertRuleListResultsInner)`
 
 SetResults sets Results field to given value.
 

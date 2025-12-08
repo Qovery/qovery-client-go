@@ -14,6 +14,8 @@ package qovery
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
+	"strings"
 	"time"
 )
 
@@ -22,6 +24,7 @@ var _ MappedNullable = &AlertRuleResponse{}
 
 // AlertRuleResponse struct for AlertRuleResponse
 type AlertRuleResponse struct {
+	AlertRuleResponseBase
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
@@ -29,8 +32,6 @@ type AlertRuleResponse struct {
 	OrganizationId string `json:"organization_id"`
 	//  Cluster identifier
 	ClusterId string `json:"cluster_id"`
-	// Name of the alert rule
-	Name string `json:"name"`
 	// Description of what the alert monitors
 	Description string             `json:"description"`
 	Tag         string             `json:"tag"`
@@ -44,7 +45,6 @@ type AlertRuleResponse struct {
 	AlertReceiverIds []string                  `json:"alert_receiver_ids"`
 	Presentation     AlertPresentationResponse `json:"presentation"`
 	Target           AlertTarget               `json:"target"`
-	State            AlertRuleState            `json:"state"`
 	// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
 	IsUpToDate bool `json:"is_up_to_date"`
 	// when the alert starts firing
@@ -58,13 +58,15 @@ type _AlertRuleResponse AlertRuleResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, name string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, state AlertRuleState, isUpToDate bool) *AlertRuleResponse {
+func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string, clusterId string, description string, tag string, condition AlertRuleCondition, forDuration string, severity AlertSeverity, enabled bool, alertReceiverIds []string, presentation AlertPresentationResponse, target AlertTarget, isUpToDate bool, source AlertRuleSource, name string, state AlertRuleState) *AlertRuleResponse {
 	this := AlertRuleResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.Source = source
+	this.Name = name
+	this.State = state
 	this.OrganizationId = organizationId
 	this.ClusterId = clusterId
-	this.Name = name
 	this.Description = description
 	this.Tag = tag
 	this.Condition = condition
@@ -74,7 +76,6 @@ func NewAlertRuleResponse(id string, createdAt time.Time, organizationId string,
 	this.AlertReceiverIds = alertReceiverIds
 	this.Presentation = presentation
 	this.Target = target
-	this.State = state
 	this.IsUpToDate = isUpToDate
 	return &this
 }
@@ -213,30 +214,6 @@ func (o *AlertRuleResponse) GetClusterIdOk() (*string, bool) {
 // SetClusterId sets field value
 func (o *AlertRuleResponse) SetClusterId(v string) {
 	o.ClusterId = v
-}
-
-// GetName returns the Name field value
-func (o *AlertRuleResponse) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AlertRuleResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AlertRuleResponse) SetName(v string) {
-	o.Name = v
 }
 
 // GetDescription returns the Description field value
@@ -455,30 +432,6 @@ func (o *AlertRuleResponse) SetTarget(v AlertTarget) {
 	o.Target = v
 }
 
-// GetState returns the State field value
-func (o *AlertRuleResponse) GetState() AlertRuleState {
-	if o == nil {
-		var ret AlertRuleState
-		return ret
-	}
-
-	return o.State
-}
-
-// GetStateOk returns a tuple with the State field value
-// and a boolean to check if the value has been set.
-func (o *AlertRuleResponse) GetStateOk() (*AlertRuleState, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.State, true
-}
-
-// SetState sets field value
-func (o *AlertRuleResponse) SetState(v AlertRuleState) {
-	o.State = v
-}
-
 // GetIsUpToDate returns the IsUpToDate field value
 func (o *AlertRuleResponse) GetIsUpToDate() bool {
 	if o == nil {
@@ -545,6 +498,14 @@ func (o AlertRuleResponse) MarshalJSON() ([]byte, error) {
 
 func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	serializedAlertRuleResponseBase, errAlertRuleResponseBase := json.Marshal(o.AlertRuleResponseBase)
+	if errAlertRuleResponseBase != nil {
+		return map[string]interface{}{}, errAlertRuleResponseBase
+	}
+	errAlertRuleResponseBase = json.Unmarshal([]byte(serializedAlertRuleResponseBase), &toSerialize)
+	if errAlertRuleResponseBase != nil {
+		return map[string]interface{}{}, errAlertRuleResponseBase
+	}
 	toSerialize["id"] = o.Id
 	toSerialize["created_at"] = o.CreatedAt
 	if !IsNil(o.UpdatedAt) {
@@ -552,7 +513,6 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["organization_id"] = o.OrganizationId
 	toSerialize["cluster_id"] = o.ClusterId
-	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
 	toSerialize["tag"] = o.Tag
 	toSerialize["condition"] = o.Condition
@@ -562,7 +522,6 @@ func (o AlertRuleResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["alert_receiver_ids"] = o.AlertReceiverIds
 	toSerialize["presentation"] = o.Presentation
 	toSerialize["target"] = o.Target
-	toSerialize["state"] = o.State
 	toSerialize["is_up_to_date"] = o.IsUpToDate
 	if !IsNil(o.StartsAt) {
 		toSerialize["starts_at"] = o.StartsAt
@@ -584,7 +543,6 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"organization_id",
 		"cluster_id",
-		"name",
 		"description",
 		"tag",
 		"condition",
@@ -594,8 +552,10 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		"alert_receiver_ids",
 		"presentation",
 		"target",
-		"state",
 		"is_up_to_date",
+		"source",
+		"name",
+		"state",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -612,15 +572,67 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varAlertRuleResponse := _AlertRuleResponse{}
+	type AlertRuleResponseWithoutEmbeddedStruct struct {
+		Id        string     `json:"id"`
+		CreatedAt time.Time  `json:"created_at"`
+		UpdatedAt *time.Time `json:"updated_at,omitempty"`
+		// Organization identifier
+		OrganizationId string `json:"organization_id"`
+		//  Cluster identifier
+		ClusterId string `json:"cluster_id"`
+		// Description of what the alert monitors
+		Description string             `json:"description"`
+		Tag         string             `json:"tag"`
+		Condition   AlertRuleCondition `json:"condition"`
+		// Duration the condition must be true before firing (ISO-8601 duration format)
+		ForDuration string        `json:"for_duration"`
+		Severity    AlertSeverity `json:"severity"`
+		// Whether the alert rule is enabled
+		Enabled bool `json:"enabled"`
+		// List of alert receiver IDs to send notifications to
+		AlertReceiverIds []string                  `json:"alert_receiver_ids"`
+		Presentation     AlertPresentationResponse `json:"presentation"`
+		Target           AlertTarget               `json:"target"`
+		// Indicates whether the current version of the alert has been synced with the alerting system. If false, an outdated version is currently deployed.
+		IsUpToDate bool `json:"is_up_to_date"`
+		// when the alert starts firing
+		StartsAt *time.Time `json:"starts_at,omitempty"`
+	}
 
-	err = json.Unmarshal(data, &varAlertRuleResponse)
+	varAlertRuleResponseWithoutEmbeddedStruct := AlertRuleResponseWithoutEmbeddedStruct{}
 
-	if err != nil {
+	err = json.Unmarshal(data, &varAlertRuleResponseWithoutEmbeddedStruct)
+	if err == nil {
+		varAlertRuleResponse := _AlertRuleResponse{}
+		varAlertRuleResponse.Id = varAlertRuleResponseWithoutEmbeddedStruct.Id
+		varAlertRuleResponse.CreatedAt = varAlertRuleResponseWithoutEmbeddedStruct.CreatedAt
+		varAlertRuleResponse.UpdatedAt = varAlertRuleResponseWithoutEmbeddedStruct.UpdatedAt
+		varAlertRuleResponse.OrganizationId = varAlertRuleResponseWithoutEmbeddedStruct.OrganizationId
+		varAlertRuleResponse.ClusterId = varAlertRuleResponseWithoutEmbeddedStruct.ClusterId
+		varAlertRuleResponse.Description = varAlertRuleResponseWithoutEmbeddedStruct.Description
+		varAlertRuleResponse.Tag = varAlertRuleResponseWithoutEmbeddedStruct.Tag
+		varAlertRuleResponse.Condition = varAlertRuleResponseWithoutEmbeddedStruct.Condition
+		varAlertRuleResponse.ForDuration = varAlertRuleResponseWithoutEmbeddedStruct.ForDuration
+		varAlertRuleResponse.Severity = varAlertRuleResponseWithoutEmbeddedStruct.Severity
+		varAlertRuleResponse.Enabled = varAlertRuleResponseWithoutEmbeddedStruct.Enabled
+		varAlertRuleResponse.AlertReceiverIds = varAlertRuleResponseWithoutEmbeddedStruct.AlertReceiverIds
+		varAlertRuleResponse.Presentation = varAlertRuleResponseWithoutEmbeddedStruct.Presentation
+		varAlertRuleResponse.Target = varAlertRuleResponseWithoutEmbeddedStruct.Target
+		varAlertRuleResponse.IsUpToDate = varAlertRuleResponseWithoutEmbeddedStruct.IsUpToDate
+		varAlertRuleResponse.StartsAt = varAlertRuleResponseWithoutEmbeddedStruct.StartsAt
+		*o = AlertRuleResponse(varAlertRuleResponse)
+	} else {
 		return err
 	}
 
-	*o = AlertRuleResponse(varAlertRuleResponse)
+	varAlertRuleResponse := _AlertRuleResponse{}
+
+	err = json.Unmarshal(data, &varAlertRuleResponse)
+	if err == nil {
+		o.AlertRuleResponseBase = varAlertRuleResponse.AlertRuleResponseBase
+	} else {
+		return err
+	}
 
 	additionalProperties := make(map[string]interface{})
 
@@ -630,7 +642,6 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "organization_id")
 		delete(additionalProperties, "cluster_id")
-		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "tag")
 		delete(additionalProperties, "condition")
@@ -640,9 +651,27 @@ func (o *AlertRuleResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "alert_receiver_ids")
 		delete(additionalProperties, "presentation")
 		delete(additionalProperties, "target")
-		delete(additionalProperties, "state")
 		delete(additionalProperties, "is_up_to_date")
 		delete(additionalProperties, "starts_at")
+
+		// remove fields from embedded structs
+		reflectAlertRuleResponseBase := reflect.ValueOf(o.AlertRuleResponseBase)
+		for i := 0; i < reflectAlertRuleResponseBase.Type().NumField(); i++ {
+			t := reflectAlertRuleResponseBase.Type().Field(i)
+
+			if jsonTag := t.Tag.Get("json"); jsonTag != "" {
+				fieldName := ""
+				if commaIdx := strings.Index(jsonTag, ","); commaIdx > 0 {
+					fieldName = jsonTag[:commaIdx]
+				} else {
+					fieldName = jsonTag
+				}
+				if fieldName != "AdditionalProperties" {
+					delete(additionalProperties, fieldName)
+				}
+			}
+		}
+
 		o.AdditionalProperties = additionalProperties
 	}
 

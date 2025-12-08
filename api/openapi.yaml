@@ -36342,9 +36342,47 @@ components:
       type: object
       x-stoplight:
         id: dx514vxebudw0
+    AlertRuleSource:
+      description: |-
+        Source of the alert rule:
+        - MANAGED: Alert rule created and managed through the Qovery API
+        - GHOST: Alert rule that exists in Prometheus but has been deleted from the database
+      enum:
+      - MANAGED
+      - GHOST
+      title: AlertRuleSource
+      type: string
+      x-stoplight:
+        id: alert_rule_source_enum
+    AlertRuleResponseBase:
+      description: Base schema for alert rule responses with discriminator
+      discriminator:
+        mapping:
+          MANAGED: '#/components/schemas/AlertRuleResponse'
+          GHOST: '#/components/schemas/GhostAlertRuleResponse'
+        propertyName: source
+      properties:
+        source:
+          $ref: '#/components/schemas/AlertRuleSource'
+        name:
+          description: Name of the alert rule
+          type: string
+          x-stoplight:
+            id: base_name_prop
+        state:
+          $ref: '#/components/schemas/AlertRuleState'
+      required:
+      - name
+      - source
+      - state
+      title: AlertRuleResponseBase
+      type: object
+      x-stoplight:
+        id: alert_rule_response_base
     AlertRuleResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/AlertRuleResponseBase'
       - properties:
           organization_id:
             description: Organization identifier
@@ -36358,12 +36396,6 @@ components:
             type: string
             x-stoplight:
               id: nd3oz9h1qpa6w
-          name:
-            description: |
-              Name of the alert rule
-            type: string
-            x-stoplight:
-              id: 866jtxgaipphh
           description:
             description: Description of what the alert monitors
             type: string
@@ -36403,8 +36435,6 @@ components:
             $ref: '#/components/schemas/AlertPresentationResponse'
           target:
             $ref: '#/components/schemas/AlertTarget'
-          state:
-            $ref: '#/components/schemas/AlertRuleState'
           is_up_to_date:
             description: |-
               Indicates whether the current version of the alert has been synced with the alerting system.
@@ -36426,11 +36456,9 @@ components:
         - enabled
         - for_duration
         - is_up_to_date
-        - name
         - organization_id
         - presentation
         - severity
-        - state
         - tag
         - target
         type: object
@@ -36441,6 +36469,7 @@ components:
         for_duration: for_duration
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
+        source: MANAGED
         enabled: true
         target:
           service:
@@ -36470,14 +36499,33 @@ components:
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        tag: tag
         state: UNDEPLOYED
+        tag: tag
         alert_receiver_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       title: AlertRuleResponse
       x-stoplight:
         id: jsi9jy70651hv
+    GhostAlertRuleResponse:
+      allOf:
+      - $ref: '#/components/schemas/AlertRuleResponseBase'
+      - properties:
+          target:
+            $ref: '#/components/schemas/GhostAlertRuleResponse_allOf_target'
+          starts_at:
+            description: When the ghost alert started firing
+            format: date-time
+            nullable: true
+            type: string
+            x-stoplight:
+              id: ghost_starts_at
+        type: object
+      description: Response for ghost alerts that exist in Prometheus but have been
+        deleted from the database
+      title: GhostAlertRuleResponse
+      x-stoplight:
+        id: ghost_alert_rule_response
     AlertTargetType:
       description: The target of an alert
       enum:
@@ -36547,6 +36595,7 @@ components:
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          source: MANAGED
           enabled: true
           target:
             service:
@@ -36576,8 +36625,8 @@ components:
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          tag: tag
           state: UNDEPLOYED
+          tag: tag
           alert_receiver_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36587,6 +36636,7 @@ components:
           for_duration: for_duration
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          source: MANAGED
           enabled: true
           target:
             service:
@@ -36616,15 +36666,15 @@ components:
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          tag: tag
           state: UNDEPLOYED
+          tag: tag
           alert_receiver_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         results:
           items:
-            $ref: '#/components/schemas/AlertRuleResponse'
+            $ref: '#/components/schemas/AlertRuleList_results_inner'
           type: array
           x-stoplight:
             id: nsk4tfkil7yuf
@@ -40200,6 +40250,20 @@ components:
       type: object
       x-stoplight:
         id: iavjewfs0d12k
+    GhostAlertRuleResponse_allOf_target:
+      allOf:
+      - $ref: '#/components/schemas/AlertTarget'
+      - nullable: true
+      description: May be null if target info couldn't be extracted from Prometheus
+    AlertRuleList_results_inner:
+      discriminator:
+        mapping:
+          MANAGED: '#/components/schemas/AlertRuleResponse'
+          GHOST: '#/components/schemas/GhostAlertRuleResponse'
+        propertyName: source
+      oneOf:
+      - $ref: '#/components/schemas/AlertRuleResponse'
+      - $ref: '#/components/schemas/GhostAlertRuleResponse'
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
