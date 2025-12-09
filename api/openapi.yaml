@@ -35156,6 +35156,7 @@ components:
         file.
       example:
         default: default
+        nullable: true
         description: description
         sensitive: true
         source: source
@@ -35166,6 +35167,11 @@ components:
           type: string
         sensitive:
           description: Whether the variable is marked as sensitive
+          type: boolean
+        nullable:
+          default: true
+          description: "Whether the variable accepts null values. If false, the variable\
+            \ is required."
           type: boolean
         default:
           description: "The default value of the variable, or null if no default is\
@@ -37675,11 +37681,13 @@ components:
       example:
         results:
         - default: default
+          nullable: true
           description: description
           sensitive: true
           source: source
           key: key
         - default: default
+          nullable: true
           description: description
           sensitive: true
           source: source

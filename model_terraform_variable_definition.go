@@ -25,6 +25,8 @@ type TerraformVariableDefinition struct {
 	Key string `json:"key"`
 	// Whether the variable is marked as sensitive
 	Sensitive bool `json:"sensitive"`
+	// Whether the variable accepts null values. If false, the variable is required.
+	Nullable *bool `json:"nullable,omitempty"`
 	// The default value of the variable, or null if no default is provided
 	Default NullableString `json:"default,omitempty"`
 	// The path inside your git repository where the variable is defined
@@ -44,6 +46,8 @@ func NewTerraformVariableDefinition(key string, sensitive bool, source string) *
 	this := TerraformVariableDefinition{}
 	this.Key = key
 	this.Sensitive = sensitive
+	var nullable bool = true
+	this.Nullable = &nullable
 	this.Source = source
 	return &this
 }
@@ -53,6 +57,8 @@ func NewTerraformVariableDefinition(key string, sensitive bool, source string) *
 // but it doesn't guarantee that properties required by API are set
 func NewTerraformVariableDefinitionWithDefaults() *TerraformVariableDefinition {
 	this := TerraformVariableDefinition{}
+	var nullable bool = true
+	this.Nullable = &nullable
 	return &this
 }
 
@@ -102,6 +108,38 @@ func (o *TerraformVariableDefinition) GetSensitiveOk() (*bool, bool) {
 // SetSensitive sets field value
 func (o *TerraformVariableDefinition) SetSensitive(v bool) {
 	o.Sensitive = v
+}
+
+// GetNullable returns the Nullable field value if set, zero value otherwise.
+func (o *TerraformVariableDefinition) GetNullable() bool {
+	if o == nil || IsNil(o.Nullable) {
+		var ret bool
+		return ret
+	}
+	return *o.Nullable
+}
+
+// GetNullableOk returns a tuple with the Nullable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformVariableDefinition) GetNullableOk() (*bool, bool) {
+	if o == nil || IsNil(o.Nullable) {
+		return nil, false
+	}
+	return o.Nullable, true
+}
+
+// HasNullable returns a boolean if a field has been set.
+func (o *TerraformVariableDefinition) HasNullable() bool {
+	if o != nil && !IsNil(o.Nullable) {
+		return true
+	}
+
+	return false
+}
+
+// SetNullable gets a reference to the given bool and assigns it to the Nullable field.
+func (o *TerraformVariableDefinition) SetNullable(v bool) {
+	o.Nullable = &v
 }
 
 // GetDefault returns the Default field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -226,6 +264,9 @@ func (o TerraformVariableDefinition) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["sensitive"] = o.Sensitive
+	if !IsNil(o.Nullable) {
+		toSerialize["nullable"] = o.Nullable
+	}
 	if o.Default.IsSet() {
 		toSerialize["default"] = o.Default.Get()
 	}
@@ -280,6 +321,7 @@ func (o *TerraformVariableDefinition) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "sensitive")
+		delete(additionalProperties, "nullable")
 		delete(additionalProperties, "default")
 		delete(additionalProperties, "source")
 		delete(additionalProperties, "description")

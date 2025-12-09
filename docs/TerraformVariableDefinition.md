@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** | The name of the variable | 
 **Sensitive** | **bool** | Whether the variable is marked as sensitive | 
+**Nullable** | Pointer to **bool** | Whether the variable accepts null values. If false, the variable is required. | [optional] [default to true]
 **Default** | Pointer to **NullableString** | The default value of the variable, or null if no default is provided | [optional] 
 **Source** | **string** | The path inside your git repository where the variable is defined | 
 **Description** | Pointer to **NullableString** | The description of the variable, or null if no description is provided | [optional] 
@@ -68,6 +69,31 @@ and a boolean to check if the value has been set.
 
 SetSensitive sets Sensitive field to given value.
 
+
+### GetNullable
+
+`func (o *TerraformVariableDefinition) GetNullable() bool`
+
+GetNullable returns the Nullable field if non-nil, zero value otherwise.
+
+### GetNullableOk
+
+`func (o *TerraformVariableDefinition) GetNullableOk() (*bool, bool)`
+
+GetNullableOk returns a tuple with the Nullable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNullable
+
+`func (o *TerraformVariableDefinition) SetNullable(v bool)`
+
+SetNullable sets Nullable field to given value.
+
+### HasNullable
+
+`func (o *TerraformVariableDefinition) HasNullable() bool`
+
+HasNullable returns a boolean if a field has been set.
 
 ### GetDefault
 
