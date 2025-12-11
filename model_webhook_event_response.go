@@ -25,17 +25,17 @@ type WebhookEventResponse struct {
 	// Unique identifier
 	Id string `json:"id"`
 	// Timestamp when the webhook event was created
-	CreatedAt    time.Time                    `json:"createdAt"`
+	CreatedAt    time.Time                    `json:"created_at"`
 	Kind         OrganizationWebhookKindEnum  `json:"kind"`
-	MatchedEvent OrganizationWebhookEventEnum `json:"matchedEvent"`
+	MatchedEvent OrganizationWebhookEventEnum `json:"matched_event"`
 	// The webhook target URL that was invoked
-	TargetUrlUsed string `json:"targetUrlUsed"`
+	TargetUrlUsed string `json:"target_url_used"`
 	// The request payload sent to the webhook
 	Request map[string]interface{} `json:"request"`
 	// HTTP status code returned by the webhook target
-	TargetResponseStatusCode int32 `json:"targetResponseStatusCode"`
+	TargetResponseStatusCode int32 `json:"target_response_status_code"`
 	// Response body from the webhook target
-	TargetResponseBody   NullableString `json:"targetResponseBody,omitempty"`
+	TargetResponseBody   NullableString `json:"target_response_body,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -287,14 +287,14 @@ func (o WebhookEventResponse) MarshalJSON() ([]byte, error) {
 func (o WebhookEventResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["createdAt"] = o.CreatedAt
+	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["kind"] = o.Kind
-	toSerialize["matchedEvent"] = o.MatchedEvent
-	toSerialize["targetUrlUsed"] = o.TargetUrlUsed
+	toSerialize["matched_event"] = o.MatchedEvent
+	toSerialize["target_url_used"] = o.TargetUrlUsed
 	toSerialize["request"] = o.Request
-	toSerialize["targetResponseStatusCode"] = o.TargetResponseStatusCode
+	toSerialize["target_response_status_code"] = o.TargetResponseStatusCode
 	if o.TargetResponseBody.IsSet() {
-		toSerialize["targetResponseBody"] = o.TargetResponseBody.Get()
+		toSerialize["target_response_body"] = o.TargetResponseBody.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -310,12 +310,12 @@ func (o *WebhookEventResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"createdAt",
+		"created_at",
 		"kind",
-		"matchedEvent",
-		"targetUrlUsed",
+		"matched_event",
+		"target_url_used",
 		"request",
-		"targetResponseStatusCode",
+		"target_response_status_code",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -346,13 +346,13 @@ func (o *WebhookEventResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "createdAt")
+		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "kind")
-		delete(additionalProperties, "matchedEvent")
-		delete(additionalProperties, "targetUrlUsed")
+		delete(additionalProperties, "matched_event")
+		delete(additionalProperties, "target_url_used")
 		delete(additionalProperties, "request")
-		delete(additionalProperties, "targetResponseStatusCode")
-		delete(additionalProperties, "targetResponseBody")
+		delete(additionalProperties, "target_response_status_code")
+		delete(additionalProperties, "target_response_body")
 		o.AdditionalProperties = additionalProperties
 	}
 

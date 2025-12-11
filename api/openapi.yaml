@@ -30869,29 +30869,29 @@ components:
       type: string
     WebhookEventResponse:
       example:
-        createdAt: 2000-01-23T04:56:07.000+00:00
+        target_url_used: https://openapi-generator.tech
         request:
           key: ""
-        targetUrlUsed: https://openapi-generator.tech
+        target_response_body: target_response_body
         kind: STANDARD
-        matchedEvent: DEPLOYMENT_STARTED
-        targetResponseStatusCode: 0
+        created_at: 2000-01-23T04:56:07.000+00:00
+        matched_event: DEPLOYMENT_STARTED
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        targetResponseBody: targetResponseBody
+        target_response_status_code: 0
       properties:
         id:
           description: Unique identifier
           format: uuid
           type: string
-        createdAt:
+        created_at:
           description: Timestamp when the webhook event was created
           format: date-time
           type: string
         kind:
           $ref: '#/components/schemas/OrganizationWebhookKindEnum'
-        matchedEvent:
+        matched_event:
           $ref: '#/components/schemas/OrganizationWebhookEventEnum'
-        targetUrlUsed:
+        target_url_used:
           description: The webhook target URL that was invoked
           format: uri
           type: string
@@ -30899,22 +30899,22 @@ components:
           additionalProperties: true
           description: The request payload sent to the webhook
           type: object
-        targetResponseStatusCode:
+        target_response_status_code:
           description: HTTP status code returned by the webhook target
           format: int32
           type: integer
-        targetResponseBody:
+        target_response_body:
           description: Response body from the webhook target
           nullable: true
           type: string
       required:
-      - createdAt
+      - created_at
       - id
       - kind
-      - matchedEvent
+      - matched_event
       - request
-      - targetResponseStatusCode
-      - targetUrlUsed
+      - target_response_status_code
+      - target_url_used
       type: object
     OrganizationWebhookResponse:
       allOf:
@@ -31018,24 +31018,24 @@ components:
     WebhookEventResponseList:
       example:
         results:
-        - createdAt: 2000-01-23T04:56:07.000+00:00
+        - target_url_used: https://openapi-generator.tech
           request:
             key: ""
-          targetUrlUsed: https://openapi-generator.tech
+          target_response_body: target_response_body
           kind: STANDARD
-          matchedEvent: DEPLOYMENT_STARTED
-          targetResponseStatusCode: 0
+          created_at: 2000-01-23T04:56:07.000+00:00
+          matched_event: DEPLOYMENT_STARTED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          targetResponseBody: targetResponseBody
-        - createdAt: 2000-01-23T04:56:07.000+00:00
+          target_response_status_code: 0
+        - target_url_used: https://openapi-generator.tech
           request:
             key: ""
-          targetUrlUsed: https://openapi-generator.tech
+          target_response_body: target_response_body
           kind: STANDARD
-          matchedEvent: DEPLOYMENT_STARTED
-          targetResponseStatusCode: 0
+          created_at: 2000-01-23T04:56:07.000+00:00
+          matched_event: DEPLOYMENT_STARTED
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          targetResponseBody: targetResponseBody
+          target_response_status_code: 0
       properties:
         results:
           items:
