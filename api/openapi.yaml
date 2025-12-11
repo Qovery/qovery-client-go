@@ -17674,8 +17674,7 @@ paths:
         id: uz8sv9wwxy3ib
   /alert-receivers/validate:
     post:
-      description: Validate a future alert receiver by sending a test message for
-        example
+      description: Validate a future alert receiver by sending a test message.
       operationId: validateNewAlertReceiver
       requestBody:
         content:

@@ -745,7 +745,7 @@ func (r ApiValidateNewAlertReceiverRequest) Execute() (*http.Response, error) {
 /*
 ValidateNewAlertReceiver Validate New Alert Receiver
 
-Validate a future alert receiver by sending a test message for example
+Validate a future alert receiver by sending a test message.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiValidateNewAlertReceiverRequest
