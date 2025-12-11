@@ -89,7 +89,7 @@ Class | Method | HTTP request | Description
 *AlertReceiversAPI* | [**GetAlertReceiver**](docs/AlertReceiversAPI.md#getalertreceiver) | **Get** /alert-receivers/{alertReceiverId} | Get alert receiver
 *AlertReceiversAPI* | [**GetAlertReceivers**](docs/AlertReceiversAPI.md#getalertreceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
 *AlertReceiversAPI* | [**ValidateExistingAlertReceiver**](docs/AlertReceiversAPI.md#validateexistingalertreceiver) | **Post** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
-*AlertReceiversAPI* | [**ValidateNewAlertReceiver**](docs/AlertReceiversAPI.md#validatenewalertreceiver) | **Get** /alert-receivers/validate | Validate New Alert Receiver
+*AlertReceiversAPI* | [**ValidateNewAlertReceiver**](docs/AlertReceiversAPI.md#validatenewalertreceiver) | **Post** /alert-receivers/validate | Validate New Alert Receiver
 *AlertRulesAPI* | [**CreateAlertRule**](docs/AlertRulesAPI.md#createalertrule) | **Post** /alert-rules | Create alert rule
 *AlertRulesAPI* | [**DeleteAlertRule**](docs/AlertRulesAPI.md#deletealertrule) | **Delete** /alert-rules/{alertRuleId} | Delete alert rule
 *AlertRulesAPI* | [**EditAlertRule**](docs/AlertRulesAPI.md#editalertrule) | **Put** /alert-rules/{alertRuleId} | Update alert rule

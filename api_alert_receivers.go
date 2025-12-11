@@ -760,7 +760,7 @@ func (a *AlertReceiversAPIService) ValidateNewAlertReceiver(ctx context.Context)
 // Execute executes the request
 func (a *AlertReceiversAPIService) ValidateNewAlertReceiverExecute(r ApiValidateNewAlertReceiverRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodGet
+		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)

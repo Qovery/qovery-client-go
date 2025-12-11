@@ -10,7 +10,7 @@ Method | HTTP request | Description
 [**GetAlertReceiver**](AlertReceiversAPI.md#GetAlertReceiver) | **Get** /alert-receivers/{alertReceiverId} | Get alert receiver
 [**GetAlertReceivers**](AlertReceiversAPI.md#GetAlertReceivers) | **Get** /organization/{organizationId}/alert-receivers | List alert receivers
 [**ValidateExistingAlertReceiver**](AlertReceiversAPI.md#ValidateExistingAlertReceiver) | **Post** /alert-receivers/{alertReceiverId}/validate | Validate Existing Alert Receiver
-[**ValidateNewAlertReceiver**](AlertReceiversAPI.md#ValidateNewAlertReceiver) | **Get** /alert-receivers/validate | Validate New Alert Receiver
+[**ValidateNewAlertReceiver**](AlertReceiversAPI.md#ValidateNewAlertReceiver) | **Post** /alert-receivers/validate | Validate New Alert Receiver
 
 
 

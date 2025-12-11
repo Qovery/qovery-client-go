@@ -17660,7 +17660,7 @@ paths:
       x-stoplight:
         id: uz8sv9wwxy3ib
   /alert-receivers/validate:
-    get:
+    post:
       description: Validate a future alert receiver by sending a test message for
         example
       operationId: validateNewAlertReceiver
@@ -17684,7 +17684,7 @@ paths:
       tags:
       - Alert Receivers
       x-stoplight:
-        id: 98ki23k3jdr75
+        id: jqejmmiehaxlm
 components:
   parameters:
     alertReceiverId:
