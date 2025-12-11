@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## CreateOrganizationWebhook
 
-> OrganizationWebhookCreateResponse CreateOrganizationWebhook(ctx, organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+> OrganizationWebhookCreateResponse CreateOrganizationWebhook(ctx, organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
 
 Create an organization webhook
 
@@ -35,11 +35,12 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 	organizationWebhookCreateRequest := *openapiclient.NewOrganizationWebhookCreateRequest(openapiclient.OrganizationWebhookKindEnum("STANDARD"), "TargetUrl_example", []openapiclient.OrganizationWebhookEventEnum{openapiclient.OrganizationWebhookEventEnum("DEPLOYMENT_STARTED")}) // OrganizationWebhookCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
+	resp, r, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId, webhookId).OrganizationWebhookCreateRequest(organizationWebhookCreateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.CreateOrganizationWebhook``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -56,6 +57,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters
 
@@ -64,6 +66,7 @@ Other parameters are passed through a pointer to a apiCreateOrganizationWebhookR
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
  **organizationWebhookCreateRequest** | [**OrganizationWebhookCreateRequest**](OrganizationWebhookCreateRequest.md) |  | 
 

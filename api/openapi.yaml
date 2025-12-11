@@ -3211,6 +3211,8 @@ paths:
       summary: List events of a webhook
       tags:
       - Organization Webhook
+      x-stoplight:
+        id: y8fczmwndkgie
     post:
       description: Create an organization webhook.
       operationId: createOrganizationWebhook
@@ -3219,6 +3221,15 @@ paths:
         explode: false
         in: path
         name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Webhook ID
+        explode: false
+        in: path
+        name: webhookId
         required: true
         schema:
           format: uuid
@@ -3245,6 +3256,8 @@ paths:
       summary: Create an organization webhook
       tags:
       - Organization Webhook
+      x-stoplight:
+        id: ihun7iwf9rffw
   /organization/{organizationId}/webhook/{webhookId}:
     delete:
       description: Delete organization webhook

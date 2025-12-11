@@ -27,6 +27,7 @@ type ApiCreateOrganizationWebhookRequest struct {
 	ctx                              context.Context
 	ApiService                       *OrganizationWebhookAPIService
 	organizationId                   string
+	webhookId                        string
 	organizationWebhookCreateRequest *OrganizationWebhookCreateRequest
 }
 
@@ -46,13 +47,15 @@ Create an organization webhook.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
+	@param webhookId Webhook ID
 	@return ApiCreateOrganizationWebhookRequest
 */
-func (a *OrganizationWebhookAPIService) CreateOrganizationWebhook(ctx context.Context, organizationId string) ApiCreateOrganizationWebhookRequest {
+func (a *OrganizationWebhookAPIService) CreateOrganizationWebhook(ctx context.Context, organizationId string, webhookId string) ApiCreateOrganizationWebhookRequest {
 	return ApiCreateOrganizationWebhookRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		webhookId:      webhookId,
 	}
 }
 
@@ -74,6 +77,7 @@ func (a *OrganizationWebhookAPIService) CreateOrganizationWebhookExecute(r ApiCr
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}/event"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
