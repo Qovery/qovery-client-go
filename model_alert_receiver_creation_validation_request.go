@@ -21,7 +21,7 @@ var _ MappedNullable = &AlertReceiverCreationValidationRequest{}
 
 // AlertReceiverCreationValidationRequest struct for AlertReceiverCreationValidationRequest
 type AlertReceiverCreationValidationRequest struct {
-	AlertReceiver        AlertReceiverCreationRequest `json:"alertReceiver"`
+	AlertReceiver        AlertReceiverCreationRequest `json:"alert_receiver"`
 	Message              *string                      `json:"message,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -112,7 +112,7 @@ func (o AlertReceiverCreationValidationRequest) MarshalJSON() ([]byte, error) {
 
 func (o AlertReceiverCreationValidationRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["alertReceiver"] = o.AlertReceiver
+	toSerialize["alert_receiver"] = o.AlertReceiver
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
 	}
@@ -129,7 +129,7 @@ func (o *AlertReceiverCreationValidationRequest) UnmarshalJSON(data []byte) (err
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"alertReceiver",
+		"alert_receiver",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -159,7 +159,7 @@ func (o *AlertReceiverCreationValidationRequest) UnmarshalJSON(data []byte) (err
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "alertReceiver")
+		delete(additionalProperties, "alert_receiver")
 		delete(additionalProperties, "message")
 		o.AdditionalProperties = additionalProperties
 	}

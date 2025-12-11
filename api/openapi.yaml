@@ -36964,7 +36964,7 @@ components:
         id: w6fc7rel27rie
     AlertReceiverCreationValidationRequest:
       example:
-        alertReceiver:
+        alert_receiver:
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           description: description
@@ -36972,14 +36972,14 @@ components:
           type: SLACK
         message: message
       properties:
-        alertReceiver:
+        alert_receiver:
           $ref: '#/components/schemas/AlertReceiverCreationRequest'
         message:
           type: string
           x-stoplight:
             id: s7kbacgdp3fb4
       required:
-      - alertReceiver
+      - alert_receiver
       title: AlertReceiverCreationValidationRequest
       type: object
       x-stoplight:
