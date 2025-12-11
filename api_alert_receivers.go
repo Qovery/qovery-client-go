@@ -632,7 +632,7 @@ func (r ApiValidateExistingAlertReceiverRequest) Execute() (*http.Response, erro
 /*
 ValidateExistingAlertReceiver Validate Existing Alert Receiver
 
-Validate an existing alert receiver by sending a test message for example
+Validate an existing alert receiver by sending a test message for example.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param alertReceiverId Alert Receiver ID
