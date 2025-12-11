@@ -832,6 +832,8 @@ docs/VariableResponse.md
 docs/VariableResponseList.md
 docs/Version.md
 docs/VersionResponseList.md
+docs/WebhookEventResponse.md
+docs/WebhookEventResponseList.md
 docs/WeekdayEnum.md
 git_push.sh
 go.mod
@@ -1481,6 +1483,8 @@ model_variable_response.go
 model_variable_response_list.go
 model_version.go
 model_version_response_list.go
+model_webhook_event_response.go
+model_webhook_event_response_list.go
 model_weekday_enum.go
 response.go
 test/api_account_info_test.go

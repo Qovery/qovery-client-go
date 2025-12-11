@@ -3172,6 +3172,45 @@ paths:
       summary: List organization webhooks
       tags:
       - Organization Webhook
+  /organization/{organizationId}/webhook/{webhookId}/event:
+    get:
+      description: List events of a webhooks
+      operationId: listWebhookEvent
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Webhook ID
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookEventResponseList'
+          description: List of event for the webhook
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List events of a webhook
+      tags:
+      - Organization Webhook
     post:
       description: Create an organization webhook.
       operationId: createOrganizationWebhook
@@ -30815,6 +30854,55 @@ components:
       - SLACK
       example: STANDARD
       type: string
+    WebhookEventResponse:
+      example:
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        request:
+          key: ""
+        targetUrlUsed: https://openapi-generator.tech
+        kind: STANDARD
+        matchedEvent: DEPLOYMENT_STARTED
+        targetResponseStatusCode: 0
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        targetResponseBody: targetResponseBody
+      properties:
+        id:
+          description: Unique identifier
+          format: uuid
+          type: string
+        createdAt:
+          description: Timestamp when the webhook event was created
+          format: date-time
+          type: string
+        kind:
+          $ref: '#/components/schemas/OrganizationWebhookKindEnum'
+        matchedEvent:
+          $ref: '#/components/schemas/OrganizationWebhookEventEnum'
+        targetUrlUsed:
+          description: The webhook target URL that was invoked
+          format: uri
+          type: string
+        request:
+          additionalProperties: true
+          description: The request payload sent to the webhook
+          type: object
+        targetResponseStatusCode:
+          description: HTTP status code returned by the webhook target
+          format: int32
+          type: integer
+        targetResponseBody:
+          description: Response body from the webhook target
+          nullable: true
+          type: string
+      required:
+      - createdAt
+      - id
+      - kind
+      - matchedEvent
+      - request
+      - targetResponseStatusCode
+      - targetUrlUsed
+      type: object
     OrganizationWebhookResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -30912,6 +31000,33 @@ components:
         results:
           items:
             $ref: '#/components/schemas/OrganizationWebhookResponse'
+          type: array
+      type: object
+    WebhookEventResponseList:
+      example:
+        results:
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          request:
+            key: ""
+          targetUrlUsed: https://openapi-generator.tech
+          kind: STANDARD
+          matchedEvent: DEPLOYMENT_STARTED
+          targetResponseStatusCode: 0
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          targetResponseBody: targetResponseBody
+        - createdAt: 2000-01-23T04:56:07.000+00:00
+          request:
+            key: ""
+          targetUrlUsed: https://openapi-generator.tech
+          kind: STANDARD
+          matchedEvent: DEPLOYMENT_STARTED
+          targetResponseStatusCode: 0
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          targetResponseBody: targetResponseBody
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/WebhookEventResponse'
           type: array
       type: object
     OrganizationAnnotationsGroupCreateRequest:

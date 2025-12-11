@@ -4,11 +4,12 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrganizationWebhook**](OrganizationWebhookAPI.md#CreateOrganizationWebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
+[**CreateOrganizationWebhook**](OrganizationWebhookAPI.md#CreateOrganizationWebhook) | **Post** /organization/{organizationId}/webhook/{webhookId}/event | Create an organization webhook
 [**DeleteOrganizationWebhook**](OrganizationWebhookAPI.md#DeleteOrganizationWebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 [**EditOrganizationWebhook**](OrganizationWebhookAPI.md#EditOrganizationWebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
 [**GetOrganizationWebhook**](OrganizationWebhookAPI.md#GetOrganizationWebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
 [**ListOrganizationWebHooks**](OrganizationWebhookAPI.md#ListOrganizationWebHooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
+[**ListWebhookEvent**](OrganizationWebhookAPI.md#ListWebhookEvent) | **Get** /organization/{organizationId}/webhook/{webhookId}/event | List events of a webhook
 
 
 
@@ -358,6 +359,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationWebhookResponseList**](OrganizationWebhookResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListWebhookEvent
+
+> WebhookEventResponseList ListWebhookEvent(ctx, organizationId, webhookId).Execute()
+
+List events of a webhook
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationWebhookAPI.ListWebhookEvent(context.Background(), organizationId, webhookId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.ListWebhookEvent``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListWebhookEvent`: WebhookEventResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationWebhookAPI.ListWebhookEvent`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**webhookId** | **string** | Webhook ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListWebhookEventRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**WebhookEventResponseList**](WebhookEventResponseList.md)
 
 ### Authorization
 
