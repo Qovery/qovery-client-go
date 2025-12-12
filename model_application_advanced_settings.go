@@ -42,7 +42,9 @@ type ApplicationAdvancedSettings struct {
 	// define the max cpu resources (in milli)
 	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
 	// define the max ram resources (in gib)
-	BuildRamMaxInGib              *int32 `json:"build.ram_max_in_gib,omitempty"`
+	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
+	// disable buildkit registry cache during build
+	BuildDisableBuildkitCache     *bool  `json:"build.disable_buildkit_cache,omitempty"`
 	NetworkIngressProxyBodySizeMb *int32 `json:"network.ingress.proxy_body_size_mb,omitempty"`
 	// When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available
 	NetworkIngressForceSslRedirect *bool   `json:"network.ingress.force_ssl_redirect,omitempty"`
@@ -492,6 +494,38 @@ func (o *ApplicationAdvancedSettings) HasBuildRamMaxInGib() bool {
 // SetBuildRamMaxInGib gets a reference to the given int32 and assigns it to the BuildRamMaxInGib field.
 func (o *ApplicationAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 	o.BuildRamMaxInGib = &v
+}
+
+// GetBuildDisableBuildkitCache returns the BuildDisableBuildkitCache field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCache() bool {
+	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
+		var ret bool
+		return ret
+	}
+	return *o.BuildDisableBuildkitCache
+}
+
+// GetBuildDisableBuildkitCacheOk returns a tuple with the BuildDisableBuildkitCache field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCacheOk() (*bool, bool) {
+	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
+		return nil, false
+	}
+	return o.BuildDisableBuildkitCache, true
+}
+
+// HasBuildDisableBuildkitCache returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasBuildDisableBuildkitCache() bool {
+	if o != nil && !IsNil(o.BuildDisableBuildkitCache) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildDisableBuildkitCache gets a reference to the given bool and assigns it to the BuildDisableBuildkitCache field.
+func (o *ApplicationAdvancedSettings) SetBuildDisableBuildkitCache(v bool) {
+	o.BuildDisableBuildkitCache = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -1340,6 +1374,9 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildRamMaxInGib) {
 		toSerialize["build.ram_max_in_gib"] = o.BuildRamMaxInGib
 	}
+	if !IsNil(o.BuildDisableBuildkitCache) {
+		toSerialize["build.disable_buildkit_cache"] = o.BuildDisableBuildkitCache
+	}
 	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
 	}
@@ -1449,6 +1486,7 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.timeout_max_sec")
 		delete(additionalProperties, "build.cpu_max_in_milli")
 		delete(additionalProperties, "build.ram_max_in_gib")
+		delete(additionalProperties, "build.disable_buildkit_cache")
 		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
 		delete(additionalProperties, "network.ingress.force_ssl_redirect")
 		delete(additionalProperties, "network.ingress.enable_cors")

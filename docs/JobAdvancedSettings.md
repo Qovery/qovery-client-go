@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **BuildTimeoutMaxSec** | Pointer to **int32** | define the max timeout for the build | [optional] 
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
+**BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
@@ -110,6 +111,31 @@ SetBuildRamMaxInGib sets BuildRamMaxInGib field to given value.
 `func (o *JobAdvancedSettings) HasBuildRamMaxInGib() bool`
 
 HasBuildRamMaxInGib returns a boolean if a field has been set.
+
+### GetBuildDisableBuildkitCache
+
+`func (o *JobAdvancedSettings) GetBuildDisableBuildkitCache() bool`
+
+GetBuildDisableBuildkitCache returns the BuildDisableBuildkitCache field if non-nil, zero value otherwise.
+
+### GetBuildDisableBuildkitCacheOk
+
+`func (o *JobAdvancedSettings) GetBuildDisableBuildkitCacheOk() (*bool, bool)`
+
+GetBuildDisableBuildkitCacheOk returns a tuple with the BuildDisableBuildkitCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildDisableBuildkitCache
+
+`func (o *JobAdvancedSettings) SetBuildDisableBuildkitCache(v bool)`
+
+SetBuildDisableBuildkitCache sets BuildDisableBuildkitCache field to given value.
+
+### HasBuildDisableBuildkitCache
+
+`func (o *JobAdvancedSettings) HasBuildDisableBuildkitCache() bool`
+
+HasBuildDisableBuildkitCache returns a boolean if a field has been set.
 
 ### GetDeploymentTerminationGracePeriodSeconds
 

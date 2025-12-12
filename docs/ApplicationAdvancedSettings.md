@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **BuildTimeoutMaxSec** | Pointer to **int32** |  | [optional] 
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
+**BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
 **NetworkIngressForceSslRedirect** | Pointer to **bool** | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
@@ -360,6 +361,31 @@ SetBuildRamMaxInGib sets BuildRamMaxInGib field to given value.
 `func (o *ApplicationAdvancedSettings) HasBuildRamMaxInGib() bool`
 
 HasBuildRamMaxInGib returns a boolean if a field has been set.
+
+### GetBuildDisableBuildkitCache
+
+`func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCache() bool`
+
+GetBuildDisableBuildkitCache returns the BuildDisableBuildkitCache field if non-nil, zero value otherwise.
+
+### GetBuildDisableBuildkitCacheOk
+
+`func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCacheOk() (*bool, bool)`
+
+GetBuildDisableBuildkitCacheOk returns a tuple with the BuildDisableBuildkitCache field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildDisableBuildkitCache
+
+`func (o *ApplicationAdvancedSettings) SetBuildDisableBuildkitCache(v bool)`
+
+SetBuildDisableBuildkitCache sets BuildDisableBuildkitCache field to given value.
+
+### HasBuildDisableBuildkitCache
+
+`func (o *ApplicationAdvancedSettings) HasBuildDisableBuildkitCache() bool`
+
+HasBuildDisableBuildkitCache returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 

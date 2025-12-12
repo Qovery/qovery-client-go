@@ -18257,6 +18257,7 @@ components:
         - deployment.lifecycle.post_start_exec_command
         - deployment.lifecycle.post_start_exec_command
         deployment.update_strategy.type: RollingUpdate
+        build.disable_buildkit_cache: true
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
@@ -18356,6 +18357,9 @@ components:
         build.ram_max_in_gib:
           description: define the max ram resources (in gib)
           type: integer
+        build.disable_buildkit_cache:
+          description: disable buildkit registry cache during build
+          type: boolean
         network.ingress.proxy_body_size_mb:
           type: integer
         network.ingress.force_ssl_redirect:
@@ -28635,19 +28639,20 @@ components:
       type: object
     JobAdvancedSettings:
       example:
-        build.timeout_max_sec: 0
-        build.cpu_max_in_milli: 6
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
-        security.read_only_root_filesystem: true
         job.delete_ttl_seconds_after_finished: 5
+        cronjob.success_jobs_history_limit: 7
+        build.disable_buildkit_cache: true
+        deployment.termination_grace_period_seconds: 5
+        build.timeout_max_sec: 0
+        build.cpu_max_in_milli: 6
+        security.read_only_root_filesystem: true
         security.service_account_name: security.service_account_name
         cronjob.failed_jobs_history_limit: 2
         security.automount_service_account_token: true
         cronjob.concurrency_policy: cronjob.concurrency_policy
-        cronjob.success_jobs_history_limit: 7
         build.ram_max_in_gib: 1
-        deployment.termination_grace_period_seconds: 5
       properties:
         build.timeout_max_sec:
           description: define the max timeout for the build
@@ -28658,6 +28663,9 @@ components:
         build.ram_max_in_gib:
           description: define the max ram resources (in gib)
           type: integer
+        build.disable_buildkit_cache:
+          description: disable buildkit registry cache during build
+          type: boolean
         deployment.termination_grace_period_seconds:
           description: define how long in seconds an application is supposed to be
             stopped gracefully
