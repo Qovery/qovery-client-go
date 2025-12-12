@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrganizationWebhook**](OrganizationWebhookAPI.md#CreateOrganizationWebhook) | **Post** /organization/{organizationId}/webhook/{webhookId}/event | Create an organization webhook
+[**CreateOrganizationWebhook**](OrganizationWebhookAPI.md#CreateOrganizationWebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
 [**DeleteOrganizationWebhook**](OrganizationWebhookAPI.md#DeleteOrganizationWebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 [**EditOrganizationWebhook**](OrganizationWebhookAPI.md#EditOrganizationWebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
 [**GetOrganizationWebhook**](OrganizationWebhookAPI.md#GetOrganizationWebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
@@ -309,7 +309,7 @@ Name | Type | Description  | Notes
 
 ## ListOrganizationWebHooks
 
-> OrganizationWebhookResponseList ListOrganizationWebHooks(ctx, organizationId).Execute()
+> OrganizationWebhookResponseList ListOrganizationWebHooks(ctx, organizationId, webhookId).Execute()
 
 List organization webhooks
 
@@ -329,10 +329,11 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId).Execute()
+	resp, r, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId, webhookId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.ListOrganizationWebHooks``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -349,6 +350,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
+**webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters
 
@@ -357,6 +359,7 @@ Other parameters are passed through a pointer to a apiListOrganizationWebHooksRe
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+
 
 
 ### Return type
@@ -379,7 +382,7 @@ Name | Type | Description  | Notes
 
 ## ListWebhookEvent
 
-> WebhookEventResponseList ListWebhookEvent(ctx, organizationId, webhookId).Execute()
+> WebhookEventResponseList ListWebhookEvent(ctx, organizationId).Execute()
 
 List events of a webhook
 
@@ -399,11 +402,10 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	webhookId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Webhook ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationWebhookAPI.ListWebhookEvent(context.Background(), organizationId, webhookId).Execute()
+	resp, r, err := apiClient.OrganizationWebhookAPI.ListWebhookEvent(context.Background(), organizationId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationWebhookAPI.ListWebhookEvent``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -420,7 +422,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
-**webhookId** | **string** | Webhook ID | 
 
 ### Other Parameters
 
@@ -429,7 +430,6 @@ Other parameters are passed through a pointer to a apiListWebhookEventRequest st
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
-
 
 
 ### Return type

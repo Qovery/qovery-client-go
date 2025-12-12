@@ -75,7 +75,7 @@ func (a *OrganizationWebhookAPIService) CreateOrganizationWebhookExecute(r ApiCr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}/event"
+	localVarPath := localBasePath + "/organization/{organizationId}/webhook"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
@@ -519,6 +519,7 @@ type ApiListOrganizationWebHooksRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationWebhookAPIService
 	organizationId string
+	webhookId      string
 }
 
 func (r ApiListOrganizationWebHooksRequest) Execute() (*OrganizationWebhookResponseList, *http.Response, error) {
@@ -532,13 +533,15 @@ List organization webhooks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
+	@param webhookId Webhook ID
 	@return ApiListOrganizationWebHooksRequest
 */
-func (a *OrganizationWebhookAPIService) ListOrganizationWebHooks(ctx context.Context, organizationId string) ApiListOrganizationWebHooksRequest {
+func (a *OrganizationWebhookAPIService) ListOrganizationWebHooks(ctx context.Context, organizationId string, webhookId string) ApiListOrganizationWebHooksRequest {
 	return ApiListOrganizationWebHooksRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
+		webhookId:      webhookId,
 	}
 }
 
@@ -560,6 +563,7 @@ func (a *OrganizationWebhookAPIService) ListOrganizationWebHooksExecute(r ApiLis
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -637,7 +641,6 @@ type ApiListWebhookEventRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationWebhookAPIService
 	organizationId string
-	webhookId      string
 }
 
 func (r ApiListWebhookEventRequest) Execute() (*WebhookEventResponseList, *http.Response, error) {
@@ -651,15 +654,13 @@ List events of a webhooks
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
-	@param webhookId Webhook ID
 	@return ApiListWebhookEventRequest
 */
-func (a *OrganizationWebhookAPIService) ListWebhookEvent(ctx context.Context, organizationId string, webhookId string) ApiListWebhookEventRequest {
+func (a *OrganizationWebhookAPIService) ListWebhookEvent(ctx context.Context, organizationId string) ApiListWebhookEventRequest {
 	return ApiListWebhookEventRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
-		webhookId:      webhookId,
 	}
 }
 
@@ -681,7 +682,6 @@ func (a *OrganizationWebhookAPIService) ListWebhookEventExecute(r ApiListWebhook
 
 	localVarPath := localBasePath + "/organization/{organizationId}/webhook/{webhookId}/event"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"webhookId"+"}", url.PathEscape(parameterValueToString(r.webhookId, "webhookId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
