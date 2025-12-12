@@ -27,9 +27,8 @@ func Test_qovery_OrganizationWebhookAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
-		var webhookId string
 
-		resp, httpRes, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId, webhookId).Execute()
+		resp, httpRes, err := apiClient.OrganizationWebhookAPI.CreateOrganizationWebhook(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -86,9 +85,8 @@ func Test_qovery_OrganizationWebhookAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
-		var webhookId string
 
-		resp, httpRes, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId, webhookId).Execute()
+		resp, httpRes, err := apiClient.OrganizationWebhookAPI.ListOrganizationWebHooks(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -101,8 +99,9 @@ func Test_qovery_OrganizationWebhookAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		var organizationId string
+		var webhookId string
 
-		resp, httpRes, err := apiClient.OrganizationWebhookAPI.ListWebhookEvent(context.Background(), organizationId).Execute()
+		resp, httpRes, err := apiClient.OrganizationWebhookAPI.ListWebhookEvent(context.Background(), organizationId, webhookId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

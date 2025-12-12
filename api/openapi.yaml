@@ -3156,15 +3156,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: Webhook ID
-        explode: false
-        in: path
-        name: webhookId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
       responses:
         "200":
           content:
@@ -3189,15 +3180,6 @@ paths:
         explode: false
         in: path
         name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Webhook ID
-        explode: false
-        in: path
-        name: webhookId
         required: true
         schema:
           format: uuid
@@ -3240,6 +3222,15 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Webhook ID
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
       responses:
         "200":
           content:
@@ -3256,8 +3247,6 @@ paths:
       summary: List events of a webhook
       tags:
       - Organization Webhook
-      x-stoplight:
-        id: y8fczmwndkgie
   /organization/{organizationId}/webhook/{webhookId}:
     delete:
       description: Delete organization webhook
