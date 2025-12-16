@@ -34924,6 +34924,9 @@ components:
           ram_mib: 1
           gpu: 1
           storage_gib: 5
+        dockerfile_fragment:
+          path: /infra/terraform/custom-build.dockerfile
+          type: file
         description: description
         provider_version:
           read_from_terraform_block: true
@@ -35011,6 +35014,8 @@ components:
           type: object
           x-stoplight:
             id: guh2uio7aztct
+        dockerfile_fragment:
+          $ref: '#/components/schemas/TerraformRequest_dockerfile_fragment'
       required:
       - auto_deploy
       - backend
@@ -35083,6 +35088,8 @@ components:
             type: object
             x-stoplight:
               id: rnkzwlf29dgb5
+          dockerfile_fragment:
+            $ref: '#/components/schemas/TerraformResponse_allOf_dockerfile_fragment'
         required:
         - action_extra_arguments
         - auto_deploy
@@ -35106,6 +35113,9 @@ components:
           ram_mib: 1
           gpu: 1
           storage_gib: 5
+        dockerfile_fragment:
+          path: /infra/terraform/custom-build.dockerfile
+          type: file
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         provider_version:
@@ -35455,6 +35465,44 @@ components:
       - type
       title: TfVarsDiscoveryModeSpecificPaths
       type: object
+    DockerfileFragmentFile:
+      description: Reference a Dockerfile fragment file from your Git repository.
+      example:
+        path: /infra/terraform/custom-build.dockerfile
+        type: file
+      properties:
+        type:
+          description: Fragment type discriminator
+          enum:
+          - file
+          type: string
+        path:
+          description: Absolute path to the fragment file.
+          example: /infra/terraform/custom-build.dockerfile
+          type: string
+      required:
+      - path
+      - type
+      title: DockerfileFragmentFile
+      type: object
+    DockerfileFragmentInline:
+      description: Define Dockerfile commands directly in the configuration.
+      properties:
+        type:
+          description: Fragment type discriminator
+          enum:
+          - inline
+          type: string
+        content:
+          description: Dockerfile commands to inject (max 8KB).
+          example: RUN apt-get update && apt-get install -y aws-cli jq curl && rm
+            -rf /var/lib/apt/lists/*
+          type: string
+      required:
+      - content
+      - type
+      title: DockerfileFragmentInline
+      type: object
     TfVarsFileResponse:
       description: Represents a Terraform tfvars file with its variables
       example:
@@ -35524,6 +35572,9 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
+          dockerfile_fragment:
+            path: /infra/terraform/custom-build.dockerfile
+            type: file
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           provider_version:
@@ -35578,6 +35629,9 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
+          dockerfile_fragment:
+            path: /infra/terraform/custom-build.dockerfile
+            type: file
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           provider_version:
@@ -40328,12 +40382,38 @@ components:
     TerraformRequest_terraform_files_source:
       oneOf:
       - $ref: '#/components/schemas/TerraformRequest_terraform_files_source_oneOf'
+    TerraformRequest_dockerfile_fragment:
+      description: |
+        Custom Dockerfile fragment to inject during build. Optional field.
+        When null, no custom fragment is injected.
+      discriminator:
+        mapping:
+          file: '#/components/schemas/DockerfileFragmentFile'
+          inline: '#/components/schemas/DockerfileFragmentInline'
+        propertyName: type
+      nullable: true
+      oneOf:
+      - $ref: '#/components/schemas/DockerfileFragmentFile'
+      - $ref: '#/components/schemas/DockerfileFragmentInline'
     TerraformResponse_allOf_terraform_files_source:
       nullable: false
       oneOf:
       - $ref: '#/components/schemas/TerraformFilesSource'
       x-stoplight:
         id: abfhjb6q74upq
+    TerraformResponse_allOf_dockerfile_fragment:
+      description: |
+        Custom Dockerfile fragment to inject during build.
+        When null, no custom fragment is injected.
+      discriminator:
+        mapping:
+          file: '#/components/schemas/DockerfileFragmentFile'
+          inline: '#/components/schemas/DockerfileFragmentInline'
+        propertyName: type
+      nullable: true
+      oneOf:
+      - $ref: '#/components/schemas/DockerfileFragmentFile'
+      - $ref: '#/components/schemas/DockerfileFragmentInline'
     OrganizationCrendentialsResponseList_results_inner:
       example:
         credential:

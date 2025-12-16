@@ -42,7 +42,8 @@ type TerraformResponse struct {
 	Environment              ReferenceObject                  `json:"environment"`
 	UseClusterCredentials    bool                             `json:"use_cluster_credentials"`
 	// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
-	ActionExtraArguments map[string][]string `json:"action_extra_arguments"`
+	ActionExtraArguments map[string][]string                              `json:"action_extra_arguments"`
+	DockerfileFragment   NullableTerraformResponseAllOfDockerfileFragment `json:"dockerfile_fragment,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -538,6 +539,49 @@ func (o *TerraformResponse) SetActionExtraArguments(v map[string][]string) {
 	o.ActionExtraArguments = v
 }
 
+// GetDockerfileFragment returns the DockerfileFragment field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerraformResponse) GetDockerfileFragment() TerraformResponseAllOfDockerfileFragment {
+	if o == nil || IsNil(o.DockerfileFragment.Get()) {
+		var ret TerraformResponseAllOfDockerfileFragment
+		return ret
+	}
+	return *o.DockerfileFragment.Get()
+}
+
+// GetDockerfileFragmentOk returns a tuple with the DockerfileFragment field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerraformResponse) GetDockerfileFragmentOk() (*TerraformResponseAllOfDockerfileFragment, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DockerfileFragment.Get(), o.DockerfileFragment.IsSet()
+}
+
+// HasDockerfileFragment returns a boolean if a field has been set.
+func (o *TerraformResponse) HasDockerfileFragment() bool {
+	if o != nil && o.DockerfileFragment.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDockerfileFragment gets a reference to the given NullableTerraformResponseAllOfDockerfileFragment and assigns it to the DockerfileFragment field.
+func (o *TerraformResponse) SetDockerfileFragment(v TerraformResponseAllOfDockerfileFragment) {
+	o.DockerfileFragment.Set(&v)
+}
+
+// SetDockerfileFragmentNil sets the value for DockerfileFragment to be an explicit nil
+func (o *TerraformResponse) SetDockerfileFragmentNil() {
+	o.DockerfileFragment.Set(nil)
+}
+
+// UnsetDockerfileFragment ensures that no value is present for DockerfileFragment, not even an explicit nil
+func (o *TerraformResponse) UnsetDockerfileFragment() {
+	o.DockerfileFragment.Unset()
+}
+
 func (o TerraformResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -572,6 +616,9 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["environment"] = o.Environment
 	toSerialize["use_cluster_credentials"] = o.UseClusterCredentials
 	toSerialize["action_extra_arguments"] = o.ActionExtraArguments
+	if o.DockerfileFragment.IsSet() {
+		toSerialize["dockerfile_fragment"] = o.DockerfileFragment.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -647,6 +694,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "use_cluster_credentials")
 		delete(additionalProperties, "action_extra_arguments")
+		delete(additionalProperties, "dockerfile_fragment")
 		o.AdditionalProperties = additionalProperties
 	}
 

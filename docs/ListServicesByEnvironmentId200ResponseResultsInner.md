@@ -58,6 +58,7 @@ Name | Type | Description | Notes
 **JobResources** | [**TerraformJobResourcesResponse**](TerraformJobResourcesResponse.md) |  | 
 **UseClusterCredentials** | **bool** |  | 
 **ActionExtraArguments** | **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | 
+**DockerfileFragment** | Pointer to [**NullableTerraformResponseAllOfDockerfileFragment**](TerraformResponseAllOfDockerfileFragment.md) |  | [optional] 
 
 ## Methods
 
@@ -1273,6 +1274,41 @@ and a boolean to check if the value has been set.
 SetActionExtraArguments sets ActionExtraArguments field to given value.
 
 
+### GetDockerfileFragment
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerfileFragment() TerraformResponseAllOfDockerfileFragment`
+
+GetDockerfileFragment returns the DockerfileFragment field if non-nil, zero value otherwise.
+
+### GetDockerfileFragmentOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerfileFragmentOk() (*TerraformResponseAllOfDockerfileFragment, bool)`
+
+GetDockerfileFragmentOk returns a tuple with the DockerfileFragment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerfileFragment
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerfileFragment(v TerraformResponseAllOfDockerfileFragment)`
+
+SetDockerfileFragment sets DockerfileFragment field to given value.
+
+### HasDockerfileFragment
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasDockerfileFragment() bool`
+
+HasDockerfileFragment returns a boolean if a field has been set.
+
+### SetDockerfileFragmentNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerfileFragmentNil(b bool)`
+
+ SetDockerfileFragmentNil sets the value for DockerfileFragment to be an explicit nil
+
+### UnsetDockerfileFragment
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerfileFragment()`
+
+UnsetDockerfileFragment ensures that no value is present for DockerfileFragment, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

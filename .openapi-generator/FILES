@@ -373,6 +373,8 @@ docs/DeploymentStageServiceResponse.md
 docs/DeploymentStageWithServicesStatuses.md
 docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
+docs/DockerfileFragmentFile.md
+docs/DockerfileFragmentInline.md
 docs/EksInfrastructureOutputs.md
 docs/EnterpriseConnectionDto.md
 docs/EnterpriseConnectionResponseList.md
@@ -792,10 +794,12 @@ docs/TerraformJobResourcesResponse.md
 docs/TerraformMainCallsAPI.md
 docs/TerraformProviderVersion.md
 docs/TerraformRequest.md
+docs/TerraformRequestDockerfileFragment.md
 docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformRequestTerraformFilesSourceOneOf.md
 docs/TerraformResponse.md
+docs/TerraformResponseAllOfDockerfileFragment.md
 docs/TerraformResponseAllOfTerraformFilesSource.md
 docs/TerraformResponseList.md
 docs/TerraformVarKeyValue.md
@@ -1079,6 +1083,8 @@ model_deployment_stage_service_response.go
 model_deployment_stage_with_services_statuses.go
 model_dockerfile_check_request.go
 model_dockerfile_check_response.go
+model_dockerfile_fragment_file.go
+model_dockerfile_fragment_inline.go
 model_eks_infrastructure_outputs.go
 model_enterprise_connection_dto.go
 model_enterprise_connection_response_list.go
@@ -1446,10 +1452,12 @@ model_terraform_git_repository_request.go
 model_terraform_job_resources_response.go
 model_terraform_provider_version.go
 model_terraform_request.go
+model_terraform_request_dockerfile_fragment.go
 model_terraform_request_job_resources.go
 model_terraform_request_terraform_files_source.go
 model_terraform_request_terraform_files_source_one_of.go
 model_terraform_response.go
+model_terraform_response_all_of_dockerfile_fragment.go
 model_terraform_response_all_of_terraform_files_source.go
 model_terraform_response_list.go
 model_terraform_var_key_value.go
