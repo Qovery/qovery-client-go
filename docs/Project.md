@@ -9,13 +9,14 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
+**AssociatedEnvironmentsCount** | **int32** |  | 
 **Organization** | [**ReferenceObject**](ReferenceObject.md) |  | 
 
 ## Methods
 
 ### NewProject
 
-`func NewProject(id string, createdAt time.Time, name string, organization ReferenceObject, ) *Project`
+`func NewProject(id string, createdAt time.Time, name string, associatedEnvironmentsCount int32, organization ReferenceObject, ) *Project`
 
 NewProject instantiates a new Project object
 This constructor will assign default values to properties that have it defined,
@@ -139,6 +140,26 @@ SetDescription sets Description field to given value.
 `func (o *Project) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetAssociatedEnvironmentsCount
+
+`func (o *Project) GetAssociatedEnvironmentsCount() int32`
+
+GetAssociatedEnvironmentsCount returns the AssociatedEnvironmentsCount field if non-nil, zero value otherwise.
+
+### GetAssociatedEnvironmentsCountOk
+
+`func (o *Project) GetAssociatedEnvironmentsCountOk() (*int32, bool)`
+
+GetAssociatedEnvironmentsCountOk returns a tuple with the AssociatedEnvironmentsCount field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssociatedEnvironmentsCount
+
+`func (o *Project) SetAssociatedEnvironmentsCount(v int32)`
+
+SetAssociatedEnvironmentsCount sets AssociatedEnvironmentsCount field to given value.
+
 
 ### GetOrganization
 

@@ -31359,13 +31359,17 @@ components:
             type: string
           description:
             type: string
+          associated_environments_count:
+            type: integer
           organization:
             $ref: '#/components/schemas/ReferenceObject'
         required:
+        - associated_environments_count
         - name
         - organization
         type: object
       example:
+        associated_environments_count: 0
         updated_at: 2000-01-23T04:56:07.000+00:00
         organization:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -31548,14 +31552,16 @@ components:
     ProjectResponseList:
       example:
         results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - associated_environments_count: 0
+          updated_at: 2000-01-23T04:56:07.000+00:00
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - associated_environments_count: 0
+          updated_at: 2000-01-23T04:56:07.000+00:00
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name

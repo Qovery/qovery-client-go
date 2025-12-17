@@ -22,13 +22,14 @@ var _ MappedNullable = &Project{}
 
 // Project struct for Project
 type Project struct {
-	Id                   string          `json:"id"`
-	CreatedAt            time.Time       `json:"created_at"`
-	UpdatedAt            *time.Time      `json:"updated_at,omitempty"`
-	Name                 string          `json:"name"`
-	Description          *string         `json:"description,omitempty"`
-	Organization         ReferenceObject `json:"organization"`
-	AdditionalProperties map[string]interface{}
+	Id                          string          `json:"id"`
+	CreatedAt                   time.Time       `json:"created_at"`
+	UpdatedAt                   *time.Time      `json:"updated_at,omitempty"`
+	Name                        string          `json:"name"`
+	Description                 *string         `json:"description,omitempty"`
+	AssociatedEnvironmentsCount int32           `json:"associated_environments_count"`
+	Organization                ReferenceObject `json:"organization"`
+	AdditionalProperties        map[string]interface{}
 }
 
 type _Project Project
@@ -37,11 +38,12 @@ type _Project Project
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewProject(id string, createdAt time.Time, name string, organization ReferenceObject) *Project {
+func NewProject(id string, createdAt time.Time, name string, associatedEnvironmentsCount int32, organization ReferenceObject) *Project {
 	this := Project{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
+	this.AssociatedEnvironmentsCount = associatedEnvironmentsCount
 	this.Organization = organization
 	return &this
 }
@@ -190,6 +192,30 @@ func (o *Project) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetAssociatedEnvironmentsCount returns the AssociatedEnvironmentsCount field value
+func (o *Project) GetAssociatedEnvironmentsCount() int32 {
+	if o == nil {
+		var ret int32
+		return ret
+	}
+
+	return o.AssociatedEnvironmentsCount
+}
+
+// GetAssociatedEnvironmentsCountOk returns a tuple with the AssociatedEnvironmentsCount field value
+// and a boolean to check if the value has been set.
+func (o *Project) GetAssociatedEnvironmentsCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AssociatedEnvironmentsCount, true
+}
+
+// SetAssociatedEnvironmentsCount sets field value
+func (o *Project) SetAssociatedEnvironmentsCount(v int32) {
+	o.AssociatedEnvironmentsCount = v
+}
+
 // GetOrganization returns the Organization field value
 func (o *Project) GetOrganization() ReferenceObject {
 	if o == nil {
@@ -233,6 +259,7 @@ func (o Project) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	toSerialize["associated_environments_count"] = o.AssociatedEnvironmentsCount
 	toSerialize["organization"] = o.Organization
 
 	for key, value := range o.AdditionalProperties {
@@ -250,6 +277,7 @@ func (o *Project) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"created_at",
 		"name",
+		"associated_environments_count",
 		"organization",
 	}
 
@@ -285,6 +313,7 @@ func (o *Project) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "associated_environments_count")
 		delete(additionalProperties, "organization")
 		o.AdditionalProperties = additionalProperties
 	}
