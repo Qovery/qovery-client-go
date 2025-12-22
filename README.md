@@ -371,6 +371,7 @@ Class | Method | HTTP request | Description
 *GitRepositoriesAPI* | [**GetGithubRepositoryBranches**](docs/GitRepositoriesAPI.md#getgithubrepositorybranches) | **Get** /account/github/repository/branch | Get github branches of the specified repository
 *GitRepositoriesAPI* | [**GetGitlabRepositories**](docs/GitRepositoriesAPI.md#getgitlabrepositories) | **Get** /account/gitlab/repository | Get gitlab repositories of the connected user
 *GitRepositoriesAPI* | [**GetGitlabRepositoryBranches**](docs/GitRepositoriesAPI.md#getgitlabrepositorybranches) | **Get** /account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*GitRepositoriesAPI* | [**ListDirectoriesFromGitRepository**](docs/GitRepositoriesAPI.md#listdirectoriesfromgitrepository) | **Post** /organization/{organizationId}/listDirectoriesFromGitRepository | List directories from a git repository
 *GithubAppAPI* | [**OrganizationGithubAppConnect**](docs/GithubAppAPI.md#organizationgithubappconnect) | **Post** /organization/{organizationId}/github/connect | Connect a github account to an organization
 *GithubAppAPI* | [**OrganizationGithubAppDisconnect**](docs/GithubAppAPI.md#organizationgithubappdisconnect) | **Delete** /organization/{organizationId}/github/disconnect | Disconnect a github account from an organization
 *HelmActionsAPI* | [**DeployHelm**](docs/HelmActionsAPI.md#deployhelm) | **Post** /helm/{helmId}/deploy | Deploy helm
@@ -1004,6 +1005,7 @@ Class | Method | HTTP request | Description
  - [ListDatabaseDeploymentHistory200Response](docs/ListDatabaseDeploymentHistory200Response.md)
  - [ListDeploymentRequestByEnvironmentId200Response](docs/ListDeploymentRequestByEnvironmentId200Response.md)
  - [ListDeploymentRequestByServiceId200Response](docs/ListDeploymentRequestByServiceId200Response.md)
+ - [ListDirectoriesFromGitRepository200Response](docs/ListDirectoriesFromGitRepository200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)

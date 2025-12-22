@@ -619,6 +619,46 @@ paths:
       summary: Get organization git token associated services
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/listDirectoriesFromGitRepository:
+    post:
+      description: |
+        List immediate subdirectories at a specified path in a git repository.
+        This endpoint is used when creating Terraform services to help users browse
+        and select the appropriate root path.
+      operationId: listDirectoriesFromGitRepository
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listDirectoriesFromGitRepository_200_response'
+          description: List of directories at the specified path
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List directories from a git repository
+      tags:
+      - Git repositories
   /organization/{organizationId}/member:
     delete:
       operationId: deleteMember
@@ -37041,6 +37081,22 @@ components:
       type: object
       x-stoplight:
         id: xbtjouxwa280v
+    listDirectoriesFromGitRepository_200_response:
+      example:
+        results:
+        - infra
+        - terraform
+        - .github
+      properties:
+        results:
+          example:
+          - infra
+          - terraform
+          - .github
+          items:
+            type: string
+          type: array
+      type: object
     deleteMember_request:
       properties:
         user_id:

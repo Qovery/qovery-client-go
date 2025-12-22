@@ -106,4 +106,18 @@ func Test_qovery_GitRepositoriesAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test GitRepositoriesAPIService ListDirectoriesFromGitRepository", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.GitRepositoriesAPI.ListDirectoriesFromGitRepository(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }
