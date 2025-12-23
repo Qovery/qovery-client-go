@@ -1234,7 +1234,7 @@ paths:
   /organization/{organizationId}/billingExternalId:
     get:
       description: |
-        This endpoint returns the external ID of the organization's billing account.
+        This endpoint returns the external ID of the organization's billing account
       operationId: getOrganizationBillingExternalId
       parameters:
       - description: Organization ID

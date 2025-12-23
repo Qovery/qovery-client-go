@@ -875,7 +875,7 @@ func (r ApiGetOrganizationBillingExternalIdRequest) Execute() (*BillingExternalI
 /*
 GetOrganizationBillingExternalId Get organization billing external ID
 
-This endpoint returns the external ID of the organization's billing account.
+# This endpoint returns the external ID of the organization's billing account
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
