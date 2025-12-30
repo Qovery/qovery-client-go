@@ -30,6 +30,7 @@ type ServiceLightResponse struct {
 	ProjectName          string          `json:"project_name"`
 	EnvironmentId        string          `json:"environment_id"`
 	EnvironmentName      string          `json:"environment_name"`
+	ClusterId            string          `json:"cluster_id"`
 	JobType              *string         `json:"job_type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -40,7 +41,7 @@ type _ServiceLightResponse ServiceLightResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServiceLightResponse(id string, name string, description string, iconUri string, serviceType ServiceTypeEnum, projectId string, projectName string, environmentId string, environmentName string) *ServiceLightResponse {
+func NewServiceLightResponse(id string, name string, description string, iconUri string, serviceType ServiceTypeEnum, projectId string, projectName string, environmentId string, environmentName string, clusterId string) *ServiceLightResponse {
 	this := ServiceLightResponse{}
 	this.Id = id
 	this.Name = name
@@ -51,6 +52,7 @@ func NewServiceLightResponse(id string, name string, description string, iconUri
 	this.ProjectName = projectName
 	this.EnvironmentId = environmentId
 	this.EnvironmentName = environmentName
+	this.ClusterId = clusterId
 	return &this
 }
 
@@ -278,6 +280,30 @@ func (o *ServiceLightResponse) SetEnvironmentName(v string) {
 	o.EnvironmentName = v
 }
 
+// GetClusterId returns the ClusterId field value
+func (o *ServiceLightResponse) GetClusterId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value
+// and a boolean to check if the value has been set.
+func (o *ServiceLightResponse) GetClusterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ClusterId, true
+}
+
+// SetClusterId sets field value
+func (o *ServiceLightResponse) SetClusterId(v string) {
+	o.ClusterId = v
+}
+
 // GetJobType returns the JobType field value if set, zero value otherwise.
 func (o *ServiceLightResponse) GetJobType() string {
 	if o == nil || IsNil(o.JobType) {
@@ -329,6 +355,7 @@ func (o ServiceLightResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["project_name"] = o.ProjectName
 	toSerialize["environment_id"] = o.EnvironmentId
 	toSerialize["environment_name"] = o.EnvironmentName
+	toSerialize["cluster_id"] = o.ClusterId
 	if !IsNil(o.JobType) {
 		toSerialize["job_type"] = o.JobType
 	}
@@ -354,6 +381,7 @@ func (o *ServiceLightResponse) UnmarshalJSON(data []byte) (err error) {
 		"project_name",
 		"environment_id",
 		"environment_name",
+		"cluster_id",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -392,6 +420,7 @@ func (o *ServiceLightResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project_name")
 		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "environment_name")
+		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "job_type")
 		o.AdditionalProperties = additionalProperties
 	}

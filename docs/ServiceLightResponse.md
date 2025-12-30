@@ -13,13 +13,14 @@ Name | Type | Description | Notes
 **ProjectName** | **string** |  | 
 **EnvironmentId** | **string** |  | 
 **EnvironmentName** | **string** |  | 
+**ClusterId** | **string** |  | 
 **JobType** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
 ### NewServiceLightResponse
 
-`func NewServiceLightResponse(id string, name string, description string, iconUri string, serviceType ServiceTypeEnum, projectId string, projectName string, environmentId string, environmentName string, ) *ServiceLightResponse`
+`func NewServiceLightResponse(id string, name string, description string, iconUri string, serviceType ServiceTypeEnum, projectId string, projectName string, environmentId string, environmentName string, clusterId string, ) *ServiceLightResponse`
 
 NewServiceLightResponse instantiates a new ServiceLightResponse object
 This constructor will assign default values to properties that have it defined,
@@ -212,6 +213,26 @@ and a boolean to check if the value has been set.
 `func (o *ServiceLightResponse) SetEnvironmentName(v string)`
 
 SetEnvironmentName sets EnvironmentName field to given value.
+
+
+### GetClusterId
+
+`func (o *ServiceLightResponse) GetClusterId() string`
+
+GetClusterId returns the ClusterId field if non-nil, zero value otherwise.
+
+### GetClusterIdOk
+
+`func (o *ServiceLightResponse) GetClusterIdOk() (*string, bool)`
+
+GetClusterIdOk returns a tuple with the ClusterId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterId
+
+`func (o *ServiceLightResponse) SetClusterId(v string)`
+
+SetClusterId sets ClusterId field to given value.
 
 
 ### GetJobType

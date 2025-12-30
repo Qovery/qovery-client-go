@@ -34622,6 +34622,7 @@ components:
       example:
         job_type: CRON
         service_type: APPLICATION
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -34669,6 +34670,11 @@ components:
           type: string
           x-stoplight:
             id: s8c6hmto9njzg
+        cluster_id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: hg9qpxe5z7
         job_type:
           enum:
           - CRON
@@ -34677,6 +34683,7 @@ components:
           x-stoplight:
             id: jwtmqb1fq5a6m
       required:
+      - cluster_id
       - description
       - environment_id
       - environment_name
@@ -36370,6 +36377,7 @@ components:
           service:
             job_type: CRON
             service_type: APPLICATION
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -36705,6 +36713,7 @@ components:
           service:
             job_type: CRON
             service_type: APPLICATION
+            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             name: name
@@ -36776,6 +36785,7 @@ components:
         service:
           job_type: CRON
           service_type: APPLICATION
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -36831,6 +36841,7 @@ components:
             service:
               job_type: CRON
               service_type: APPLICATION
+              cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -36872,6 +36883,7 @@ components:
             service:
               job_type: CRON
               service_type: APPLICATION
+              cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               name: name
@@ -37891,6 +37903,7 @@ components:
         results:
         - job_type: CRON
           service_type: APPLICATION
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -37901,6 +37914,7 @@ components:
           environment_name: environment_name
         - job_type: CRON
           service_type: APPLICATION
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
