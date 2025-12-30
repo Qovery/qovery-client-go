@@ -229,7 +229,7 @@ paths:
       tags:
       - Organization Main Calls
     put:
-      description: To edit an organization you must have the admin permission
+      description: To edit an organization you must have the admin permission.
       operationId: editOrganization
       parameters:
       - description: Organization ID

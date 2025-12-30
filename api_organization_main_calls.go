@@ -630,7 +630,7 @@ func (r ApiEditOrganizationRequest) Execute() (*Organization, *http.Response, er
 /*
 EditOrganization Edit an organization
 
-To edit an organization you must have the admin permission
+To edit an organization you must have the admin permission.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
