@@ -53,7 +53,8 @@ type ContainerRequest struct {
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              *string `json:"icon_uri,omitempty"`
+	IconUri              *string                   `json:"icon_uri,omitempty"`
+	Autoscaling          *AutoscalingPolicyRequest `json:"autoscaling,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -712,6 +713,38 @@ func (o *ContainerRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise.
+func (o *ContainerRequest) GetAutoscaling() AutoscalingPolicyRequest {
+	if o == nil || IsNil(o.Autoscaling) {
+		var ret AutoscalingPolicyRequest
+		return ret
+	}
+	return *o.Autoscaling
+}
+
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetAutoscalingOk() (*AutoscalingPolicyRequest, bool) {
+	if o == nil || IsNil(o.Autoscaling) {
+		return nil, false
+	}
+	return o.Autoscaling, true
+}
+
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *ContainerRequest) HasAutoscaling() bool {
+	if o != nil && !IsNil(o.Autoscaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscaling gets a reference to the given AutoscalingPolicyRequest and assigns it to the Autoscaling field.
+func (o *ContainerRequest) SetAutoscaling(v AutoscalingPolicyRequest) {
+	o.Autoscaling = &v
+}
+
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -771,6 +804,9 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
+	}
+	if !IsNil(o.Autoscaling) {
+		toSerialize["autoscaling"] = o.Autoscaling
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -839,6 +875,7 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "autoscaling")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **IconUri** | **string** | Icon URI representing the application. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -763,6 +764,31 @@ HasDockerTargetBuildStage returns a boolean if a field has been set.
 `func (o *Application) UnsetDockerTargetBuildStage()`
 
 UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+### GetAutoscaling
+
+`func (o *Application) GetAutoscaling() AutoscalingPolicyResponse`
+
+GetAutoscaling returns the Autoscaling field if non-nil, zero value otherwise.
+
+### GetAutoscalingOk
+
+`func (o *Application) GetAutoscalingOk() (*AutoscalingPolicyResponse, bool)`
+
+GetAutoscalingOk returns a tuple with the Autoscaling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoscaling
+
+`func (o *Application) SetAutoscaling(v AutoscalingPolicyResponse)`
+
+SetAutoscaling sets Autoscaling field to given value.
+
+### HasAutoscaling
+
+`func (o *Application) HasAutoscaling() bool`
+
+HasAutoscaling returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

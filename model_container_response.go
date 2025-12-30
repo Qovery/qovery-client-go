@@ -65,8 +65,9 @@ type ContainerResponse struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              string          `json:"icon_uri"`
-	ServiceType          ServiceTypeEnum `json:"service_type"`
+	IconUri              string                     `json:"icon_uri"`
+	ServiceType          ServiceTypeEnum            `json:"service_type"`
+	Autoscaling          *AutoscalingPolicyResponse `json:"autoscaling,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -892,6 +893,38 @@ func (o *ContainerResponse) SetServiceType(v ServiceTypeEnum) {
 	o.ServiceType = v
 }
 
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise.
+func (o *ContainerResponse) GetAutoscaling() AutoscalingPolicyResponse {
+	if o == nil || IsNil(o.Autoscaling) {
+		var ret AutoscalingPolicyResponse
+		return ret
+	}
+	return *o.Autoscaling
+}
+
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetAutoscalingOk() (*AutoscalingPolicyResponse, bool) {
+	if o == nil || IsNil(o.Autoscaling) {
+		return nil, false
+	}
+	return o.Autoscaling, true
+}
+
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *ContainerResponse) HasAutoscaling() bool {
+	if o != nil && !IsNil(o.Autoscaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscaling gets a reference to the given AutoscalingPolicyResponse and assigns it to the Autoscaling field.
+func (o *ContainerResponse) SetAutoscaling(v AutoscalingPolicyResponse) {
+	o.Autoscaling = &v
+}
+
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -951,6 +984,9 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
+	if !IsNil(o.Autoscaling) {
+		toSerialize["autoscaling"] = o.Autoscaling
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1041,6 +1077,7 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "autoscaling")
 		o.AdditionalProperties = additionalProperties
 	}
 

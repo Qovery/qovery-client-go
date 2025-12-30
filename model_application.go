@@ -64,7 +64,8 @@ type Application struct {
 	IconUri     string          `json:"icon_uri"`
 	ServiceType ServiceTypeEnum `json:"service_type"`
 	// The target build stage in the Dockerfile to build
-	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	DockerTargetBuildStage NullableString             `json:"docker_target_build_stage,omitempty"`
+	Autoscaling            *AutoscalingPolicyResponse `json:"autoscaling,omitempty"`
 	AdditionalProperties   map[string]interface{}
 }
 
@@ -1012,6 +1013,38 @@ func (o *Application) UnsetDockerTargetBuildStage() {
 	o.DockerTargetBuildStage.Unset()
 }
 
+// GetAutoscaling returns the Autoscaling field value if set, zero value otherwise.
+func (o *Application) GetAutoscaling() AutoscalingPolicyResponse {
+	if o == nil || IsNil(o.Autoscaling) {
+		var ret AutoscalingPolicyResponse
+		return ret
+	}
+	return *o.Autoscaling
+}
+
+// GetAutoscalingOk returns a tuple with the Autoscaling field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetAutoscalingOk() (*AutoscalingPolicyResponse, bool) {
+	if o == nil || IsNil(o.Autoscaling) {
+		return nil, false
+	}
+	return o.Autoscaling, true
+}
+
+// HasAutoscaling returns a boolean if a field has been set.
+func (o *Application) HasAutoscaling() bool {
+	if o != nil && !IsNil(o.Autoscaling) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoscaling gets a reference to the given AutoscalingPolicyResponse and assigns it to the Autoscaling field.
+func (o *Application) SetAutoscaling(v AutoscalingPolicyResponse) {
+	o.Autoscaling = &v
+}
+
 func (o Application) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1095,6 +1128,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if o.DockerTargetBuildStage.IsSet() {
 		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
 	}
+	if !IsNil(o.Autoscaling) {
+		toSerialize["autoscaling"] = o.Autoscaling
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1173,6 +1209,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "docker_target_build_stage")
+		delete(additionalProperties, "autoscaling")
 		o.AdditionalProperties = additionalProperties
 	}
 

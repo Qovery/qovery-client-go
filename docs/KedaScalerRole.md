@@ -1,0 +1,13 @@
+# KedaScalerRole
+
+## Enum
+
+
+* `PRIMARY` (value: `"PRIMARY"`)
+
+* `SAFETY` (value: `"SAFETY"`)
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

@@ -16,6 +16,7 @@ api_application_logs.go
 api_application_main_calls.go
 api_application_secret.go
 api_applications.go
+api_autoscaling_policy.go
 api_backups.go
 api_billing.go
 api_cloud_provider.go
@@ -153,6 +154,10 @@ docs/ApplicationRequest.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretAPI.md
 docs/ApplicationsAPI.md
+docs/AutoscalingMode.md
+docs/AutoscalingPolicyAPI.md
+docs/AutoscalingPolicyRequest.md
+docs/AutoscalingPolicyResponse.md
 docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
@@ -564,6 +569,11 @@ docs/KarpenterNodePoolRequirement.md
 docs/KarpenterNodePoolRequirementKey.md
 docs/KarpenterNodePoolRequirementOperator.md
 docs/KarpenterStableNodePoolOverride.md
+docs/KedaAutoscalingRequest.md
+docs/KedaAutoscalingResponse.md
+docs/KedaScalerRequest.md
+docs/KedaScalerResponse.md
+docs/KedaScalerRole.md
 docs/Key.md
 docs/KubernetesEnum.md
 docs/KubernetesMetadata.md
@@ -888,6 +898,9 @@ model_application_network.go
 model_application_network_request.go
 model_application_request.go
 model_application_response_list.go
+model_autoscaling_mode.go
+model_autoscaling_policy_request.go
+model_autoscaling_policy_response.go
 model_available_container_registry_response.go
 model_available_container_registry_response_list.go
 model_available_helm_repository_response.go
@@ -1248,6 +1261,11 @@ model_karpenter_node_pool_requirement.go
 model_karpenter_node_pool_requirement_key.go
 model_karpenter_node_pool_requirement_operator.go
 model_karpenter_stable_node_pool_override.go
+model_keda_autoscaling_request.go
+model_keda_autoscaling_response.go
+model_keda_scaler_request.go
+model_keda_scaler_response.go
+model_keda_scaler_role.go
 model_key.go
 model_kubernetes_enum.go
 model_kubernetes_metadata.go
@@ -1512,6 +1530,7 @@ test/api_application_logs_test.go
 test/api_application_main_calls_test.go
 test/api_application_secret_test.go
 test/api_applications_test.go
+test/api_autoscaling_policy_test.go
 test/api_backups_test.go
 test/api_billing_test.go
 test/api_cloud_provider_credentials_test.go

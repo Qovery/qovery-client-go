@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
 **RegistryId** | Pointer to **string** | tag of the image container | [optional] 
@@ -739,6 +740,31 @@ HasDockerTargetBuildStage returns a boolean if a field has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDockerTargetBuildStage()`
 
 UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+### GetAutoscaling
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoscaling() AutoscalingPolicyResponse`
+
+GetAutoscaling returns the Autoscaling field if non-nil, zero value otherwise.
+
+### GetAutoscalingOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoscalingOk() (*AutoscalingPolicyResponse, bool)`
+
+GetAutoscalingOk returns a tuple with the Autoscaling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoscaling
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetAutoscaling(v AutoscalingPolicyResponse)`
+
+SetAutoscaling sets Autoscaling field to given value.
+
+### HasAutoscaling
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasAutoscaling() bool`
+
+HasAutoscaling returns a boolean if a field has been set.
+
 ### GetImageName
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetImageName() string`

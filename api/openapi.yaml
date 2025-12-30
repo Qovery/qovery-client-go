@@ -35,6 +35,7 @@ tags:
 - name: Application Secret
 - name: Application Annotations Group
 - name: Applications
+- name: AutoscalingPolicy
 - name: Container
 - name: Container Actions
 - name: Container Configuration
@@ -17726,6 +17727,102 @@ paths:
       - Alert Receivers
       x-stoplight:
         id: jqejmmiehaxlm
+  /service/{serviceId}/autoscalingPolicy:
+    delete:
+      operationId: deleteServiceAutoscaling
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: No Content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: deleteServiceAutoscaling
+      tags:
+      - AutoscalingPolicy
+      x-stoplight:
+        id: i4qa29t29fl3h
+    get:
+      operationId: getServiceAutoscaling
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscalingPolicyResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: getServiceAutoscaling
+      tags:
+      - AutoscalingPolicy
+      x-stoplight:
+        id: zghgbjo672uva
+    put:
+      operationId: createOrUpdateServiceAutoscaling
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AutoscalingPolicyRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AutoscalingPolicyResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: createOrUpdateServiceAutoscaling
+      tags:
+      - AutoscalingPolicy
+      x-stoplight:
+        id: pdw823mupws7v
 components:
   parameters:
     alertReceiverId:
@@ -18593,6 +18690,8 @@ components:
             type: string
             x-stoplight:
               id: tdxdfoyowutcx
+          autoscaling:
+            $ref: '#/components/schemas/AutoscalingPolicyResponse'
         required:
         - environment
         - healthchecks
@@ -18760,6 +18859,27 @@ components:
         arguments:
         - arguments
         - arguments
+        autoscaling:
+          mode: KEDA
+          cooldown_period_seconds: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          polling_interval_seconds: 1
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scalers:
+          - role: PRIMARY
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scaler_type: scaler_type
+            enabled: true
+          - role: PRIMARY
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scaler_type: scaler_type
+            enabled: true
     ApplicationDeploymentRestriction:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -19302,6 +19422,8 @@ components:
             type: string
             x-stoplight:
               id: xg9q0urac8kdq
+          autoscaling:
+            $ref: '#/components/schemas/AutoscalingPolicyRequest'
         required:
         - git_repository
         - healthchecks
@@ -19408,6 +19530,21 @@ components:
         arguments:
         - arguments
         - arguments
+        autoscaling:
+          mode: KEDA
+          cooldown_period_seconds: 5
+          polling_interval_seconds: 1
+          scalers:
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
     ApplicationResponseList:
       example:
         results:
@@ -19570,6 +19707,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
         - min_running_instances: 0
           maximun_gpu: 0
           auto_deploy: true
@@ -19729,6 +19887,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
       properties:
         results:
           items:
@@ -22525,6 +22704,8 @@ components:
             type: string
             x-stoplight:
               id: jiypvl6nd63dm
+          autoscaling:
+            $ref: '#/components/schemas/AutoscalingPolicyRequest'
         required:
         - healthchecks
         - image_name
@@ -22627,6 +22808,21 @@ components:
         - arguments
         - arguments
         tag: tag
+        autoscaling:
+          mode: KEDA
+          cooldown_period_seconds: 5
+          polling_interval_seconds: 1
+          scalers:
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -22724,6 +22920,8 @@ components:
               id: o2bdci7ak3bmz
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
+          autoscaling:
+            $ref: '#/components/schemas/AutoscalingPolicyResponse'
         required:
         - auto_preview
         - cpu
@@ -22891,6 +23089,27 @@ components:
         arguments:
         - arguments
         - arguments
+        autoscaling:
+          mode: KEDA
+          cooldown_period_seconds: 1
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          polling_interval_seconds: 1
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scalers:
+          - role: PRIMARY
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scaler_type: scaler_type
+            enabled: true
+          - role: PRIMARY
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scaler_type: scaler_type
+            enabled: true
     ContainerResponseList:
       example:
         results:
@@ -23044,6 +23263,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
         - min_running_instances: 0
           auto_deploy: true
           memory: 1024
@@ -23194,6 +23434,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
       properties:
         results:
           items:
@@ -37119,6 +37380,210 @@ components:
       type: object
       x-stoplight:
         id: apznbrc98va7j
+    AutoscalingPolicyRequest:
+      discriminator:
+        mapping:
+          KEDA: '#/components/schemas/KedaAutoscalingRequest'
+        propertyName: mode
+      oneOf:
+      - $ref: '#/components/schemas/KedaAutoscalingRequest'
+      title: AutoscalingPolicyRequest
+      x-stoplight:
+        id: ylgyx3ozik2hf
+    AutoscalingMode:
+      enum:
+      - KEDA
+      title: AutoscalingMode
+      type: string
+      x-stoplight:
+        id: vmgo27882mrl3
+    KedaAutoscalingRequest:
+      example:
+        mode: KEDA
+        cooldown_period_seconds: 5
+        polling_interval_seconds: 1
+        scalers:
+        - role: PRIMARY
+          config_json: "{}"
+          config_yaml: config_yaml
+          scaler_type: scaler_type
+          enabled: true
+        - role: PRIMARY
+          config_json: "{}"
+          config_yaml: config_yaml
+          scaler_type: scaler_type
+          enabled: true
+      properties:
+        mode:
+          $ref: '#/components/schemas/AutoscalingMode'
+        polling_interval_seconds:
+          format: int32
+          type: integer
+          x-stoplight:
+            id: wy5blh9au1d85
+        cooldown_period_seconds:
+          format: int32
+          type: integer
+          x-stoplight:
+            id: zy5rt4bh9fyph
+        scalers:
+          items:
+            $ref: '#/components/schemas/KedaScalerRequest'
+          minItems: 1
+          type: array
+          x-stoplight:
+            id: 6oh134v1tqb28
+      required:
+      - mode
+      - scalers
+      title: KedaAutoscalingRequest
+      type: object
+      x-stoplight:
+        id: 4vq8n2a7z3pen
+    KedaScalerRole:
+      enum:
+      - PRIMARY
+      - SAFETY
+      title: KedaScalerRole
+      type: string
+      x-stoplight:
+        id: 1sl0mlxoqzr8w
+    KedaAutoscalingResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          service_id:
+            format: uuid
+            type: string
+            x-stoplight:
+              id: j9bxhtiyyl0iv
+          mode:
+            $ref: '#/components/schemas/AutoscalingMode'
+          polling_interval_seconds:
+            format: int32
+            type: integer
+            x-stoplight:
+              id: uone6zr48amok
+          cooldown_period_seconds:
+            format: int32
+            type: integer
+            x-stoplight:
+              id: j2dapmjjjiafj
+          scalers:
+            items:
+              $ref: '#/components/schemas/KedaScalerResponse'
+            minItems: 1
+            type: array
+            x-stoplight:
+              id: oyhxgvwg36ixz
+        required:
+        - cooldown_period_seconds
+        - mode
+        - polling_interval_seconds
+        - scalers
+        - service_id
+        type: object
+        x-stoplight:
+          id: zjlwqohiiyuwf
+      description: ""
+      example:
+        mode: KEDA
+        cooldown_period_seconds: 1
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        polling_interval_seconds: 1
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        scalers:
+        - role: PRIMARY
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scaler_type: scaler_type
+          enabled: true
+        - role: PRIMARY
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          scaler_type: scaler_type
+          enabled: true
+      title: KedaAutoscalingResponse
+      x-stoplight:
+        id: dgcb902szizvv
+    KedaScalerRequest:
+      example:
+        role: PRIMARY
+        config_json: "{}"
+        config_yaml: config_yaml
+        scaler_type: scaler_type
+        enabled: true
+      properties:
+        scaler_type:
+          type: string
+          x-stoplight:
+            id: 3ba9iisjwqgsp
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: 9m67trg9m0ioz
+        role:
+          $ref: '#/components/schemas/KedaScalerRole'
+        config_json:
+          type: object
+          x-stoplight:
+            id: si5ekni2hc6w9
+        config_yaml:
+          type: string
+          x-stoplight:
+            id: 8c7vktd7svl30
+      required:
+      - role
+      - scaler_type
+      title: KedaScalerRequest
+      type: object
+      x-stoplight:
+        id: hfn4tfrtivkcs
+    KedaScalerResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          scaler_type:
+            type: string
+            x-stoplight:
+              id: 1ckp76ziimkg4
+          enabled:
+            type: boolean
+            x-stoplight:
+              id: 0dnjwnlkuj3kp
+          role:
+            $ref: '#/components/schemas/KedaScalerRole'
+        required:
+        - enabled
+        - role
+        - scaler_type
+        type: object
+        x-stoplight:
+          id: 74tt3hgf95nfe
+      example:
+        role: PRIMARY
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        scaler_type: scaler_type
+        enabled: true
+      title: KedaScalerResponse
+      x-stoplight:
+        id: gaaqg32ivl48h
+    AutoscalingPolicyResponse:
+      discriminator:
+        mapping:
+          KEDA: '#/components/schemas/KedaAutoscalingResponse'
+        propertyName: mode
+      oneOf:
+      - $ref: '#/components/schemas/KedaAutoscalingResponse'
+      title: AutoscalingPolicyResponse
+      x-stoplight:
+        id: mjawsx6obi237
     listDirectoriesFromGitRepository_200_response:
       example:
         results:
@@ -37669,6 +38134,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
         - min_running_instances: 0
           maximun_gpu: 0
           auto_deploy: true
@@ -37828,6 +38314,27 @@ components:
           arguments:
           - arguments
           - arguments
+          autoscaling:
+            mode: KEDA
+            cooldown_period_seconds: 1
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            polling_interval_seconds: 1
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            scalers:
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
+            - role: PRIMARY
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              created_at: 2000-01-23T04:56:07.000+00:00
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              scaler_type: scaler_type
+              enabled: true
       properties:
         results:
           items:

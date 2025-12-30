@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the container. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 
 
 ## Methods
 
@@ -682,6 +683,31 @@ and a boolean to check if the value has been set.
 
 SetServiceType sets ServiceType field to given value.
 
+
+### GetAutoscaling
+
+`func (o *ContainerResponse) GetAutoscaling() AutoscalingPolicyResponse`
+
+GetAutoscaling returns the Autoscaling field if non-nil, zero value otherwise.
+
+### GetAutoscalingOk
+
+`func (o *ContainerResponse) GetAutoscalingOk() (*AutoscalingPolicyResponse, bool)`
+
+GetAutoscalingOk returns a tuple with the Autoscaling field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoscaling
+
+`func (o *ContainerResponse) SetAutoscaling(v AutoscalingPolicyResponse)`
+
+SetAutoscaling sets Autoscaling field to given value.
+
+### HasAutoscaling
+
+`func (o *ContainerResponse) HasAutoscaling() bool`
+
+HasAutoscaling returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
