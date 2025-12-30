@@ -59,6 +59,7 @@ type Cluster struct {
 	MetricsParameters              *MetricsParameters                     `json:"metrics_parameters,omitempty"`
 	InfrastructureOutputs          *InfrastructureOutputs                 `json:"infrastructure_outputs,omitempty"`
 	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
+	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -951,6 +952,38 @@ func (o *Cluster) SetInfrastructureChartsParameters(v ClusterInfrastructureChart
 	o.InfrastructureChartsParameters = &v
 }
 
+// GetKeda returns the Keda field value if set, zero value otherwise.
+func (o *Cluster) GetKeda() ClusterKeda {
+	if o == nil || IsNil(o.Keda) {
+		var ret ClusterKeda
+		return ret
+	}
+	return *o.Keda
+}
+
+// GetKedaOk returns a tuple with the Keda field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetKedaOk() (*ClusterKeda, bool) {
+	if o == nil || IsNil(o.Keda) {
+		return nil, false
+	}
+	return o.Keda, true
+}
+
+// HasKeda returns a boolean if a field has been set.
+func (o *Cluster) HasKeda() bool {
+	if o != nil && !IsNil(o.Keda) {
+		return true
+	}
+
+	return false
+}
+
+// SetKeda gets a reference to the given ClusterKeda and assigns it to the Keda field.
+func (o *Cluster) SetKeda(v ClusterKeda) {
+	o.Keda = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1033,6 +1066,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.InfrastructureChartsParameters) {
 		toSerialize["infrastructure_charts_parameters"] = o.InfrastructureChartsParameters
 	}
+	if !IsNil(o.Keda) {
+		toSerialize["keda"] = o.Keda
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1109,6 +1145,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "metrics_parameters")
 		delete(additionalProperties, "infrastructure_outputs")
 		delete(additionalProperties, "infrastructure_charts_parameters")
+		delete(additionalProperties, "keda")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -691,6 +691,7 @@ Class | Method | HTTP request | Description
  - [ClusterInstanceTypeResponseList](docs/ClusterInstanceTypeResponseList.md)
  - [ClusterInstanceTypeResponseListResultsInner](docs/ClusterInstanceTypeResponseListResultsInner.md)
  - [ClusterKarpenterPrivateSubnetIdsPutRequest](docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md)
+ - [ClusterKeda](docs/ClusterKeda.md)
  - [ClusterLock](docs/ClusterLock.md)
  - [ClusterLockList](docs/ClusterLockList.md)
  - [ClusterLockRequest](docs/ClusterLockRequest.md)

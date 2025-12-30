@@ -20351,6 +20351,8 @@ components:
             $ref: '#/components/schemas/InfrastructureOutputs'
           infrastructure_charts_parameters:
             $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
+          keda:
+            $ref: '#/components/schemas/ClusterKeda'
         required:
         - cloud_provider
         - name
@@ -20421,6 +20423,8 @@ components:
             ip_address_pools:
             - ip_address_pools
             - ip_address_pools
+        keda:
+          enabled: true
         max_running_nodes: 6
         min_running_nodes: 0
         disk_size: 50
@@ -21137,6 +21141,8 @@ components:
             - ip_address_pools
             - ip_address_pools
         production: true
+        keda:
+          enabled: true
         max_running_nodes: 6
         description: description
         min_running_nodes: 0
@@ -21223,6 +21229,8 @@ components:
           $ref: '#/components/schemas/MetricsParameters'
         infrastructure_charts_parameters:
           $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
+        keda:
+          $ref: '#/components/schemas/ClusterKeda'
       required:
       - cloud_provider
       - name
@@ -21294,6 +21302,8 @@ components:
               ip_address_pools:
               - ip_address_pools
               - ip_address_pools
+          keda:
+            enabled: true
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -21391,6 +21401,8 @@ components:
               ip_address_pools:
               - ip_address_pools
               - ip_address_pools
+          keda:
+            enabled: true
           max_running_nodes: 6
           min_running_nodes: 0
           disk_size: 50
@@ -37093,6 +37105,20 @@ components:
       type: object
       x-stoplight:
         id: xbtjouxwa280v
+    ClusterKeda:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+          x-stoplight:
+            id: 46c6f1rqdvu55
+      required:
+      - enabled
+      title: ClusterKeda
+      type: object
+      x-stoplight:
+        id: apznbrc98va7j
     listDirectoriesFromGitRepository_200_response:
       example:
         results:

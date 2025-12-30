@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **Features** | Pointer to [**[]ClusterRequestFeaturesInner**](ClusterRequestFeaturesInner.md) |  | [optional] 
 **MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
 **InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md) |  | [optional] 
+**Keda** | Pointer to [**ClusterKeda**](ClusterKeda.md) |  | [optional] 
 
 ## Methods
 
@@ -398,6 +399,31 @@ SetInfrastructureChartsParameters sets InfrastructureChartsParameters field to g
 `func (o *ClusterRequest) HasInfrastructureChartsParameters() bool`
 
 HasInfrastructureChartsParameters returns a boolean if a field has been set.
+
+### GetKeda
+
+`func (o *ClusterRequest) GetKeda() ClusterKeda`
+
+GetKeda returns the Keda field if non-nil, zero value otherwise.
+
+### GetKedaOk
+
+`func (o *ClusterRequest) GetKedaOk() (*ClusterKeda, bool)`
+
+GetKedaOk returns a tuple with the Keda field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetKeda
+
+`func (o *ClusterRequest) SetKeda(v ClusterKeda)`
+
+SetKeda sets Keda field to given value.
+
+### HasKeda
+
+`func (o *ClusterRequest) HasKeda() bool`
+
+HasKeda returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
