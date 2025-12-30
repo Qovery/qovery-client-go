@@ -22,12 +22,14 @@ var _ MappedNullable = &KedaScalerResponse{}
 
 // KedaScalerResponse struct for KedaScalerResponse
 type KedaScalerResponse struct {
-	Id                   string         `json:"id"`
-	CreatedAt            time.Time      `json:"created_at"`
-	UpdatedAt            *time.Time     `json:"updated_at,omitempty"`
-	ScalerType           string         `json:"scaler_type"`
-	Enabled              bool           `json:"enabled"`
-	Role                 KedaScalerRole `json:"role"`
+	Id                   string                 `json:"id"`
+	CreatedAt            time.Time              `json:"created_at"`
+	UpdatedAt            *time.Time             `json:"updated_at,omitempty"`
+	ScalerType           string                 `json:"scaler_type"`
+	Enabled              bool                   `json:"enabled"`
+	Role                 KedaScalerRole         `json:"role"`
+	ConfigJson           map[string]interface{} `json:"config_json,omitempty"`
+	ConfigYaml           NullableString         `json:"config_yaml,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +209,82 @@ func (o *KedaScalerResponse) SetRole(v KedaScalerRole) {
 	o.Role = v
 }
 
+// GetConfigJson returns the ConfigJson field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KedaScalerResponse) GetConfigJson() map[string]interface{} {
+	if o == nil {
+		var ret map[string]interface{}
+		return ret
+	}
+	return o.ConfigJson
+}
+
+// GetConfigJsonOk returns a tuple with the ConfigJson field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KedaScalerResponse) GetConfigJsonOk() (map[string]interface{}, bool) {
+	if o == nil || IsNil(o.ConfigJson) {
+		return map[string]interface{}{}, false
+	}
+	return o.ConfigJson, true
+}
+
+// HasConfigJson returns a boolean if a field has been set.
+func (o *KedaScalerResponse) HasConfigJson() bool {
+	if o != nil && !IsNil(o.ConfigJson) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigJson gets a reference to the given map[string]interface{} and assigns it to the ConfigJson field.
+func (o *KedaScalerResponse) SetConfigJson(v map[string]interface{}) {
+	o.ConfigJson = v
+}
+
+// GetConfigYaml returns the ConfigYaml field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KedaScalerResponse) GetConfigYaml() string {
+	if o == nil || IsNil(o.ConfigYaml.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ConfigYaml.Get()
+}
+
+// GetConfigYamlOk returns a tuple with the ConfigYaml field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KedaScalerResponse) GetConfigYamlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ConfigYaml.Get(), o.ConfigYaml.IsSet()
+}
+
+// HasConfigYaml returns a boolean if a field has been set.
+func (o *KedaScalerResponse) HasConfigYaml() bool {
+	if o != nil && o.ConfigYaml.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigYaml gets a reference to the given NullableString and assigns it to the ConfigYaml field.
+func (o *KedaScalerResponse) SetConfigYaml(v string) {
+	o.ConfigYaml.Set(&v)
+}
+
+// SetConfigYamlNil sets the value for ConfigYaml to be an explicit nil
+func (o *KedaScalerResponse) SetConfigYamlNil() {
+	o.ConfigYaml.Set(nil)
+}
+
+// UnsetConfigYaml ensures that no value is present for ConfigYaml, not even an explicit nil
+func (o *KedaScalerResponse) UnsetConfigYaml() {
+	o.ConfigYaml.Unset()
+}
+
 func (o KedaScalerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -225,6 +303,12 @@ func (o KedaScalerResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["scaler_type"] = o.ScalerType
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["role"] = o.Role
+	if o.ConfigJson != nil {
+		toSerialize["config_json"] = o.ConfigJson
+	}
+	if o.ConfigYaml.IsSet() {
+		toSerialize["config_yaml"] = o.ConfigYaml.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -278,6 +362,8 @@ func (o *KedaScalerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "scaler_type")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "role")
+		delete(additionalProperties, "config_json")
+		delete(additionalProperties, "config_yaml")
 		o.AdditionalProperties = additionalProperties
 	}
 

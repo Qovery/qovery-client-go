@@ -10,6 +10,8 @@ Name | Type | Description | Notes
 **ScalerType** | **string** |  | 
 **Enabled** | **bool** |  | 
 **Role** | [**KedaScalerRole**](KedaScalerRole.md) |  | 
+**ConfigJson** | Pointer to **map[string]interface{}** |  | [optional] 
+**ConfigYaml** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -155,6 +157,76 @@ and a boolean to check if the value has been set.
 SetRole sets Role field to given value.
 
 
+### GetConfigJson
+
+`func (o *KedaScalerResponse) GetConfigJson() map[string]interface{}`
+
+GetConfigJson returns the ConfigJson field if non-nil, zero value otherwise.
+
+### GetConfigJsonOk
+
+`func (o *KedaScalerResponse) GetConfigJsonOk() (*map[string]interface{}, bool)`
+
+GetConfigJsonOk returns a tuple with the ConfigJson field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigJson
+
+`func (o *KedaScalerResponse) SetConfigJson(v map[string]interface{})`
+
+SetConfigJson sets ConfigJson field to given value.
+
+### HasConfigJson
+
+`func (o *KedaScalerResponse) HasConfigJson() bool`
+
+HasConfigJson returns a boolean if a field has been set.
+
+### SetConfigJsonNil
+
+`func (o *KedaScalerResponse) SetConfigJsonNil(b bool)`
+
+ SetConfigJsonNil sets the value for ConfigJson to be an explicit nil
+
+### UnsetConfigJson
+`func (o *KedaScalerResponse) UnsetConfigJson()`
+
+UnsetConfigJson ensures that no value is present for ConfigJson, not even an explicit nil
+### GetConfigYaml
+
+`func (o *KedaScalerResponse) GetConfigYaml() string`
+
+GetConfigYaml returns the ConfigYaml field if non-nil, zero value otherwise.
+
+### GetConfigYamlOk
+
+`func (o *KedaScalerResponse) GetConfigYamlOk() (*string, bool)`
+
+GetConfigYamlOk returns a tuple with the ConfigYaml field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigYaml
+
+`func (o *KedaScalerResponse) SetConfigYaml(v string)`
+
+SetConfigYaml sets ConfigYaml field to given value.
+
+### HasConfigYaml
+
+`func (o *KedaScalerResponse) HasConfigYaml() bool`
+
+HasConfigYaml returns a boolean if a field has been set.
+
+### SetConfigYamlNil
+
+`func (o *KedaScalerResponse) SetConfigYamlNil(b bool)`
+
+ SetConfigYamlNil sets the value for ConfigYaml to be an explicit nil
+
+### UnsetConfigYaml
+`func (o *KedaScalerResponse) UnsetConfigYaml()`
+
+UnsetConfigYaml ensures that no value is present for ConfigYaml, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
