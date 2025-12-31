@@ -19021,6 +19021,8 @@ components:
             description: The target build stage in the Dockerfile to build
             nullable: true
             type: string
+          autoscaling:
+            $ref: '#/components/schemas/AutoscalingPolicyRequest'
         required:
         - healthchecks
         type: object
@@ -19125,6 +19127,21 @@ components:
         arguments:
         - arguments
         - arguments
+        autoscaling:
+          mode: KEDA
+          cooldown_period_seconds: 5
+          polling_interval_seconds: 1
+          scalers:
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
+          - role: PRIMARY
+            config_json: "{}"
+            config_yaml: config_yaml
+            scaler_type: scaler_type
+            enabled: true
     ApplicationGitRepository:
       example:
         owner: John Doe
