@@ -19067,6 +19067,7 @@ components:
             config_json:
               key: ""
             updated_at: 2000-01-23T04:56:07.000+00:00
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19076,6 +19077,7 @@ components:
             config_json:
               key: ""
             updated_at: 2000-01-23T04:56:07.000+00:00
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19329,11 +19331,13 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
@@ -19755,11 +19759,13 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
@@ -19938,6 +19944,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19947,6 +19954,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -20124,6 +20132,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -20133,6 +20142,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23045,11 +23055,13 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
@@ -23332,6 +23344,7 @@ components:
             config_json:
               key: ""
             updated_at: 2000-01-23T04:56:07.000+00:00
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23341,6 +23354,7 @@ components:
             config_json:
               key: ""
             updated_at: 2000-01-23T04:56:07.000+00:00
+            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23512,6 +23526,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23521,6 +23536,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23689,6 +23705,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -23698,6 +23715,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37653,11 +37671,13 @@ components:
         scalers:
         - role: PRIMARY
           config_json: "{}"
+          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config_yaml: config_yaml
           scaler_type: scaler_type
           enabled: true
         - role: PRIMARY
           config_json: "{}"
+          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config_yaml: config_yaml
           scaler_type: scaler_type
           enabled: true
@@ -37747,6 +37767,7 @@ components:
           config_json:
             key: ""
           updated_at: 2000-01-23T04:56:07.000+00:00
+          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           config_yaml: config_yaml
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37756,6 +37777,7 @@ components:
           config_json:
             key: ""
           updated_at: 2000-01-23T04:56:07.000+00:00
+          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           config_yaml: config_yaml
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -37847,6 +37869,7 @@ components:
       example:
         role: PRIMARY
         config_json: "{}"
+        trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config_yaml: config_yaml
         scaler_type: scaler_type
         enabled: true
@@ -37869,6 +37892,9 @@ components:
           type: string
           x-stoplight:
             id: 8c7vktd7svl30
+        trigger_authentication_id:
+          format: uuid
+          type: string
       required:
       - role
       - scaler_type
@@ -37897,6 +37923,9 @@ components:
           config_yaml:
             nullable: true
             type: string
+          trigger_authentication_id:
+            format: uuid
+            type: string
         required:
         - enabled
         - role
@@ -37909,6 +37938,7 @@ components:
         config_json:
           key: ""
         updated_at: 2000-01-23T04:56:07.000+00:00
+        trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         created_at: 2000-01-23T04:56:07.000+00:00
         config_yaml: config_yaml
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38490,6 +38520,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38499,6 +38530,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38676,6 +38708,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -38685,6 +38718,7 @@ components:
               config_json:
                 key: ""
               updated_at: 2000-01-23T04:56:07.000+00:00
+              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **Role** | [**KedaScalerRole**](KedaScalerRole.md) |  | 
 **ConfigJson** | Pointer to **map[string]interface{}** |  | [optional] 
 **ConfigYaml** | Pointer to **NullableString** |  | [optional] 
+**TriggerAuthenticationId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -227,6 +228,31 @@ HasConfigYaml returns a boolean if a field has been set.
 `func (o *KedaScalerResponse) UnsetConfigYaml()`
 
 UnsetConfigYaml ensures that no value is present for ConfigYaml, not even an explicit nil
+### GetTriggerAuthenticationId
+
+`func (o *KedaScalerResponse) GetTriggerAuthenticationId() string`
+
+GetTriggerAuthenticationId returns the TriggerAuthenticationId field if non-nil, zero value otherwise.
+
+### GetTriggerAuthenticationIdOk
+
+`func (o *KedaScalerResponse) GetTriggerAuthenticationIdOk() (*string, bool)`
+
+GetTriggerAuthenticationIdOk returns a tuple with the TriggerAuthenticationId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTriggerAuthenticationId
+
+`func (o *KedaScalerResponse) SetTriggerAuthenticationId(v string)`
+
+SetTriggerAuthenticationId sets TriggerAuthenticationId field to given value.
+
+### HasTriggerAuthenticationId
+
+`func (o *KedaScalerResponse) HasTriggerAuthenticationId() bool`
+
+HasTriggerAuthenticationId returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
