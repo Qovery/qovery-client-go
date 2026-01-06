@@ -68,6 +68,7 @@ api_job_environment_variable.go
 api_job_main_calls.go
 api_job_secret.go
 api_jobs.go
+api_keda_trigger_authentication.go
 api_lifecycle_template_main_calls.go
 api_members.go
 api_organization_account_git_repositories.go
@@ -574,6 +575,10 @@ docs/KedaAutoscalingResponse.md
 docs/KedaScalerRequest.md
 docs/KedaScalerResponse.md
 docs/KedaScalerRole.md
+docs/KedaTriggerAuthenticationAPI.md
+docs/KedaTriggerAuthenticationRequest.md
+docs/KedaTriggerAuthenticationResponse.md
+docs/KedaTriggerAuthenticationResponseList.md
 docs/Key.md
 docs/KubernetesEnum.md
 docs/KubernetesMetadata.md
@@ -1266,6 +1271,9 @@ model_keda_autoscaling_response.go
 model_keda_scaler_request.go
 model_keda_scaler_response.go
 model_keda_scaler_role.go
+model_keda_trigger_authentication_request.go
+model_keda_trigger_authentication_response.go
+model_keda_trigger_authentication_response_list.go
 model_key.go
 model_kubernetes_enum.go
 model_kubernetes_metadata.go
@@ -1582,6 +1590,7 @@ test/api_job_environment_variable_test.go
 test/api_job_main_calls_test.go
 test/api_job_secret_test.go
 test/api_jobs_test.go
+test/api_keda_trigger_authentication_test.go
 test/api_lifecycle_template_main_calls_test.go
 test/api_members_test.go
 test/api_organization_account_git_repositories_test.go

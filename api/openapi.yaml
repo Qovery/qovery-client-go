@@ -62,6 +62,7 @@ tags:
 - name: Job Secret
 - name: Job Annotations Group
 - name: Jobs
+- name: KedaTriggerAuthentication
 - name: Helm
 - name: Helm Actions
 - name: Helm Configuration
@@ -17823,6 +17824,191 @@ paths:
       - AutoscalingPolicy
       x-stoplight:
         id: pdw823mupws7v
+  /organization/{organizationId}/keda-trigger-authentications:
+    get:
+      operationId: listKedaTriggerAuthentications
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KedaTriggerAuthenticationResponseList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: list Keda TriggerAuthentications
+      tags:
+      - KedaTriggerAuthentication
+      x-stoplight:
+        id: ii63vy4wqh8af
+    post:
+      operationId: createKedaTriggerAuthentication
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KedaTriggerAuthenticationRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
+          description: Created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "404":
+          description: Resource not found
+      summary: create Keda Trigger Authentications
+      tags:
+      - KedaTriggerAuthentication
+      x-stoplight:
+        id: ebkcpht10mc5d
+  /organization/{organizationId}/keda-trigger-authentications/{triggerAuthenticationId}:
+    delete:
+      operationId: deleteKedaTriggerAuthentication
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: KEDA triggerAuthentication ID
+        explode: false
+        in: path
+        name: triggerAuthenticationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: no content
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete a KEDA trigger authentication
+      tags:
+      - KedaTriggerAuthentication
+      x-stoplight:
+        id: vnb6lq8vk3e6l
+    get:
+      operationId: getKedaTriggerAuthentication
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: KEDA triggerAuthentication ID
+        explode: false
+        in: path
+        name: triggerAuthenticationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a KEDA trigger authentication
+      tags:
+      - KedaTriggerAuthentication
+      x-stoplight:
+        id: hskgxylk3bdko
+    put:
+      operationId: updateKedaTriggerAuthentication
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: KEDA triggerAuthentication ID
+        explode: false
+        in: path
+        name: triggerAuthenticationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/KedaTriggerAuthenticationRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update a KEDA trigger authentication
+      tags:
+      - KedaTriggerAuthentication
+      x-stoplight:
+        id: 71icltdzus0p2
 components:
   parameters:
     alertReceiverId:
@@ -18257,6 +18443,15 @@ components:
       explode: false
       in: path
       name: connectionName
+      required: true
+      schema:
+        type: string
+      style: simple
+    triggerAuthenticationId:
+      description: KEDA triggerAuthentication ID
+      explode: false
+      in: path
+      name: triggerAuthenticationId
       required: true
       schema:
         type: string
@@ -37569,6 +37764,85 @@ components:
       title: KedaAutoscalingResponse
       x-stoplight:
         id: dgcb902szizvv
+    KedaTriggerAuthenticationRequest:
+      example:
+        name: name
+        config_yaml: config_yaml
+      properties:
+        name:
+          type: string
+          x-stoplight:
+            id: ka4ltf1usuola
+        config_yaml:
+          description: Optional raw KEDA TriggerAuthentication YAML configuration.
+          type: string
+          x-stoplight:
+            id: 65znz6jclbew5
+      required:
+      - name
+      title: KedaTriggerAuthenticationRequest
+      type: object
+      x-stoplight:
+        id: wp51tmturog3b
+    KedaTriggerAuthenticationResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          organization_id:
+            type: string
+            x-stoplight:
+              id: akxa3zctvjj5h
+          name:
+            type: string
+            x-stoplight:
+              id: gpvwed95xygk1
+          config_yaml:
+            description: ' Optional raw KEDA TriggerAuthentication YAML configuration.'
+            type: string
+            x-stoplight:
+              id: r5lmrzakyk9o6
+        required:
+        - name
+        - organization_id
+        type: object
+        x-stoplight:
+          id: ssejnexbsra11
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        organization_id: organization_id
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        config_yaml: config_yaml
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      title: KedaTriggerAuthenticationResponse
+      x-stoplight:
+        id: 7mm4a4sk9jhz3
+    KedaTriggerAuthenticationResponseList:
+      example:
+        results:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          organization_id: organization_id
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          config_yaml: config_yaml
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          organization_id: organization_id
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          config_yaml: config_yaml
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
+          type: array
+          x-stoplight:
+            id: md92njfinutyy
+      title: KedaTriggerAuthenticationResponseList
+      type: object
+      x-stoplight:
+        id: dpalux2mc7v8t
     KedaScalerRequest:
       example:
         role: PRIMARY

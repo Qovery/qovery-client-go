@@ -452,6 +452,11 @@ Class | Method | HTTP request | Description
 *JobsAPI* | [**GetDefaultJobAdvancedSettings**](docs/JobsAPI.md#getdefaultjobadvancedsettings) | **Get** /defaultJobAdvancedSettings | List default job advanced settings
 *JobsAPI* | [**GetEnvironmentJobStatus**](docs/JobsAPI.md#getenvironmentjobstatus) | **Get** /environment/{environmentId}/job/status | List all environment job statuses
 *JobsAPI* | [**ListJobs**](docs/JobsAPI.md#listjobs) | **Get** /environment/{environmentId}/job | List jobs
+*KedaTriggerAuthenticationAPI* | [**CreateKedaTriggerAuthentication**](docs/KedaTriggerAuthenticationAPI.md#createkedatriggerauthentication) | **Post** /organization/{organizationId}/keda-trigger-authentications | create Keda Trigger Authentications
+*KedaTriggerAuthenticationAPI* | [**DeleteKedaTriggerAuthentication**](docs/KedaTriggerAuthenticationAPI.md#deletekedatriggerauthentication) | **Delete** /organization/{organizationId}/keda-trigger-authentications/{triggerAuthenticationId} | Delete a KEDA trigger authentication
+*KedaTriggerAuthenticationAPI* | [**GetKedaTriggerAuthentication**](docs/KedaTriggerAuthenticationAPI.md#getkedatriggerauthentication) | **Get** /organization/{organizationId}/keda-trigger-authentications/{triggerAuthenticationId} | Get a KEDA trigger authentication
+*KedaTriggerAuthenticationAPI* | [**ListKedaTriggerAuthentications**](docs/KedaTriggerAuthenticationAPI.md#listkedatriggerauthentications) | **Get** /organization/{organizationId}/keda-trigger-authentications | list Keda TriggerAuthentications
+*KedaTriggerAuthenticationAPI* | [**UpdateKedaTriggerAuthentication**](docs/KedaTriggerAuthenticationAPI.md#updatekedatriggerauthentication) | **Put** /organization/{organizationId}/keda-trigger-authentications/{triggerAuthenticationId} | Update a KEDA trigger authentication
 *LifecycleTemplateMainCallsAPI* | [**GetEnvironmentLifecycleTemplate**](docs/LifecycleTemplateMainCallsAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsAPI* | [**ListEnvironmentLifecycleTemplates**](docs/LifecycleTemplateMainCallsAPI.md#listenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 *MembersAPI* | [**DeleteInviteMember**](docs/MembersAPI.md#deleteinvitemember) | **Delete** /organization/{organizationId}/inviteMember/{inviteId} | Remove an invited member
@@ -991,6 +996,9 @@ Class | Method | HTTP request | Description
  - [KedaScalerRequest](docs/KedaScalerRequest.md)
  - [KedaScalerResponse](docs/KedaScalerResponse.md)
  - [KedaScalerRole](docs/KedaScalerRole.md)
+ - [KedaTriggerAuthenticationRequest](docs/KedaTriggerAuthenticationRequest.md)
+ - [KedaTriggerAuthenticationResponse](docs/KedaTriggerAuthenticationResponse.md)
+ - [KedaTriggerAuthenticationResponseList](docs/KedaTriggerAuthenticationResponseList.md)
  - [Key](docs/Key.md)
  - [KubernetesEnum](docs/KubernetesEnum.md)
  - [KubernetesMetadata](docs/KubernetesMetadata.md)
