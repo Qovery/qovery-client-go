@@ -16087,6 +16087,27 @@ paths:
       - Organization Main Calls
       x-stoplight:
         id: qvqb4d0bpjy0v
+  /organization/{organizationId}/environments:
+    get:
+      operationId: listEnvironmentsByOrganizationId
+      parameters:
+      - explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/listEnvironmentsByOrganizationId_200_response'
+          description: Environment List
+      summary: List Environments By OrganizationId
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/parseTerraformVariablesFromGitRepo:
     post:
       operationId: parseTerraformVariablesFromGitRepo
@@ -35236,6 +35257,35 @@ components:
       type: object
       x-stoplight:
         id: tg1rwcmait89l
+    OrganizationEnvironmentResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          organization:
+            $ref: '#/components/schemas/ReferenceObject'
+          project:
+            $ref: '#/components/schemas/ReferenceObject'
+          mode:
+            $ref: '#/components/schemas/EnvironmentModeEnum'
+        required:
+        - mode
+        - name
+        - organization
+        - project
+        type: object
+      example:
+        mode: PRODUCTION
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        organization:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        project:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     ClusterMetricsResponse:
       example:
         metrics: metrics
@@ -38852,6 +38902,33 @@ components:
           type: array
           x-stoplight:
             id: gjtgeehwg4lb9
+      type: object
+    listEnvironmentsByOrganizationId_200_response:
+      example:
+        results:
+        - mode: PRODUCTION
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          organization:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - mode: PRODUCTION
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          organization:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          project:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/OrganizationEnvironmentResponse'
+          type: array
       type: object
     parseTerraformVariablesFromGitRepo_200_response:
       example:

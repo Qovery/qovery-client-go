@@ -512,6 +512,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**GetHelmRepositoryAssociatedServices**](docs/OrganizationMainCallsAPI.md#gethelmrepositoryassociatedservices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 *OrganizationMainCallsAPI* | [**GetOrganization**](docs/OrganizationMainCallsAPI.md#getorganization) | **Get** /organization/{organizationId} | Get organization by ID
 *OrganizationMainCallsAPI* | [**GetOrganizationGitToken**](docs/OrganizationMainCallsAPI.md#getorganizationgittoken) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
+*OrganizationMainCallsAPI* | [**ListEnvironmentsByOrganizationId**](docs/OrganizationMainCallsAPI.md#listenvironmentsbyorganizationid) | **Get** /organization/{organizationId}/environments | List Environments By OrganizationId
 *OrganizationMainCallsAPI* | [**ListOrganization**](docs/OrganizationMainCallsAPI.md#listorganization) | **Get** /organization | List user organizations
 *OrganizationMainCallsAPI* | [**ListOrganizationAvailableRoles**](docs/OrganizationMainCallsAPI.md#listorganizationavailableroles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
 *OrganizationMainCallsAPI* | [**ListOrganizationCredentials**](docs/OrganizationMainCallsAPI.md#listorganizationcredentials) | **Get** /organization/{organizationId}/credentials | List credentials of an organization and their associated clusters
@@ -1026,6 +1027,7 @@ Class | Method | HTTP request | Description
  - [ListDeploymentRequestByEnvironmentId200Response](docs/ListDeploymentRequestByEnvironmentId200Response.md)
  - [ListDeploymentRequestByServiceId200Response](docs/ListDeploymentRequestByServiceId200Response.md)
  - [ListDirectoriesFromGitRepository200Response](docs/ListDirectoriesFromGitRepository200Response.md)
+ - [ListEnvironmentsByOrganizationId200Response](docs/ListEnvironmentsByOrganizationId200Response.md)
  - [ListHelmDeploymentHistory200Response](docs/ListHelmDeploymentHistory200Response.md)
  - [ListJobDeploymentHistory200Response](docs/ListJobDeploymentHistory200Response.md)
  - [ListOrganizationAnnotationsGroup200Response](docs/ListOrganizationAnnotationsGroup200Response.md)
@@ -1084,6 +1086,7 @@ Class | Method | HTTP request | Description
  - [OrganizationCustomRoleUpdateRequestProjectPermissionsInner](docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInner.md)
  - [OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner](docs/OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner.md)
  - [OrganizationEditRequest](docs/OrganizationEditRequest.md)
+ - [OrganizationEnvironmentResponse](docs/OrganizationEnvironmentResponse.md)
  - [OrganizationEventOrigin](docs/OrganizationEventOrigin.md)
  - [OrganizationEventResponse](docs/OrganizationEventResponse.md)
  - [OrganizationEventResponseList](docs/OrganizationEventResponseList.md)
