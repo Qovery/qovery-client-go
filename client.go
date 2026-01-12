@@ -179,8 +179,6 @@ type APIClient struct {
 
 	JobsAPI *JobsAPIService
 
-	KedaTriggerAuthenticationAPI *KedaTriggerAuthenticationAPIService
-
 	LifecycleTemplateMainCallsAPI *LifecycleTemplateMainCallsAPIService
 
 	MembersAPI *MembersAPIService
@@ -317,7 +315,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobMainCallsAPI = (*JobMainCallsAPIService)(&c.common)
 	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
-	c.KedaTriggerAuthenticationAPI = (*KedaTriggerAuthenticationAPIService)(&c.common)
 	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
 	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)

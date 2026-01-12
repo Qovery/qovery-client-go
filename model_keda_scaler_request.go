@@ -21,13 +21,13 @@ var _ MappedNullable = &KedaScalerRequest{}
 
 // KedaScalerRequest struct for KedaScalerRequest
 type KedaScalerRequest struct {
-	ScalerType              string                 `json:"scaler_type"`
-	Enabled                 *bool                  `json:"enabled,omitempty"`
-	Role                    KedaScalerRole         `json:"role"`
-	ConfigJson              map[string]interface{} `json:"config_json,omitempty"`
-	ConfigYaml              *string                `json:"config_yaml,omitempty"`
-	TriggerAuthenticationId *string                `json:"trigger_authentication_id,omitempty"`
-	AdditionalProperties    map[string]interface{}
+	ScalerType            string                            `json:"scaler_type"`
+	Enabled               *bool                             `json:"enabled,omitempty"`
+	Role                  KedaScalerRole                    `json:"role"`
+	ConfigJson            map[string]interface{}            `json:"config_json,omitempty"`
+	ConfigYaml            *string                           `json:"config_yaml,omitempty"`
+	TriggerAuthentication *KedaTriggerAuthenticationRequest `json:"trigger_authentication,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _KedaScalerRequest KedaScalerRequest
@@ -195,36 +195,36 @@ func (o *KedaScalerRequest) SetConfigYaml(v string) {
 	o.ConfigYaml = &v
 }
 
-// GetTriggerAuthenticationId returns the TriggerAuthenticationId field value if set, zero value otherwise.
-func (o *KedaScalerRequest) GetTriggerAuthenticationId() string {
-	if o == nil || IsNil(o.TriggerAuthenticationId) {
-		var ret string
+// GetTriggerAuthentication returns the TriggerAuthentication field value if set, zero value otherwise.
+func (o *KedaScalerRequest) GetTriggerAuthentication() KedaTriggerAuthenticationRequest {
+	if o == nil || IsNil(o.TriggerAuthentication) {
+		var ret KedaTriggerAuthenticationRequest
 		return ret
 	}
-	return *o.TriggerAuthenticationId
+	return *o.TriggerAuthentication
 }
 
-// GetTriggerAuthenticationIdOk returns a tuple with the TriggerAuthenticationId field value if set, nil otherwise
+// GetTriggerAuthenticationOk returns a tuple with the TriggerAuthentication field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *KedaScalerRequest) GetTriggerAuthenticationIdOk() (*string, bool) {
-	if o == nil || IsNil(o.TriggerAuthenticationId) {
+func (o *KedaScalerRequest) GetTriggerAuthenticationOk() (*KedaTriggerAuthenticationRequest, bool) {
+	if o == nil || IsNil(o.TriggerAuthentication) {
 		return nil, false
 	}
-	return o.TriggerAuthenticationId, true
+	return o.TriggerAuthentication, true
 }
 
-// HasTriggerAuthenticationId returns a boolean if a field has been set.
-func (o *KedaScalerRequest) HasTriggerAuthenticationId() bool {
-	if o != nil && !IsNil(o.TriggerAuthenticationId) {
+// HasTriggerAuthentication returns a boolean if a field has been set.
+func (o *KedaScalerRequest) HasTriggerAuthentication() bool {
+	if o != nil && !IsNil(o.TriggerAuthentication) {
 		return true
 	}
 
 	return false
 }
 
-// SetTriggerAuthenticationId gets a reference to the given string and assigns it to the TriggerAuthenticationId field.
-func (o *KedaScalerRequest) SetTriggerAuthenticationId(v string) {
-	o.TriggerAuthenticationId = &v
+// SetTriggerAuthentication gets a reference to the given KedaTriggerAuthenticationRequest and assigns it to the TriggerAuthentication field.
+func (o *KedaScalerRequest) SetTriggerAuthentication(v KedaTriggerAuthenticationRequest) {
+	o.TriggerAuthentication = &v
 }
 
 func (o KedaScalerRequest) MarshalJSON() ([]byte, error) {
@@ -248,8 +248,8 @@ func (o KedaScalerRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.ConfigYaml) {
 		toSerialize["config_yaml"] = o.ConfigYaml
 	}
-	if !IsNil(o.TriggerAuthenticationId) {
-		toSerialize["trigger_authentication_id"] = o.TriggerAuthenticationId
+	if !IsNil(o.TriggerAuthentication) {
+		toSerialize["trigger_authentication"] = o.TriggerAuthentication
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -300,7 +300,7 @@ func (o *KedaScalerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "role")
 		delete(additionalProperties, "config_json")
 		delete(additionalProperties, "config_yaml")
-		delete(additionalProperties, "trigger_authentication_id")
+		delete(additionalProperties, "trigger_authentication")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -17845,191 +17845,6 @@ paths:
       - AutoscalingPolicy
       x-stoplight:
         id: pdw823mupws7v
-  /organization/{organizationId}/keda-trigger-authentications:
-    get:
-      operationId: listKedaTriggerAuthentications
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KedaTriggerAuthenticationResponseList'
-          description: OK
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: list Keda TriggerAuthentications
-      tags:
-      - KedaTriggerAuthentication
-      x-stoplight:
-        id: ii63vy4wqh8af
-    post:
-      operationId: createKedaTriggerAuthentication
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/KedaTriggerAuthenticationRequest'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
-          description: Created
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "404":
-          description: Resource not found
-      summary: create Keda Trigger Authentications
-      tags:
-      - KedaTriggerAuthentication
-      x-stoplight:
-        id: ebkcpht10mc5d
-  /organization/{organizationId}/keda-trigger-authentications/{triggerAuthenticationId}:
-    delete:
-      operationId: deleteKedaTriggerAuthentication
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: KEDA triggerAuthentication ID
-        explode: false
-        in: path
-        name: triggerAuthenticationId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: no content
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Delete a KEDA trigger authentication
-      tags:
-      - KedaTriggerAuthentication
-      x-stoplight:
-        id: vnb6lq8vk3e6l
-    get:
-      operationId: getKedaTriggerAuthentication
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: KEDA triggerAuthentication ID
-        explode: false
-        in: path
-        name: triggerAuthenticationId
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
-          description: OK
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get a KEDA trigger authentication
-      tags:
-      - KedaTriggerAuthentication
-      x-stoplight:
-        id: hskgxylk3bdko
-    put:
-      operationId: updateKedaTriggerAuthentication
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: KEDA triggerAuthentication ID
-        explode: false
-        in: path
-        name: triggerAuthenticationId
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/KedaTriggerAuthenticationRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
-          description: OK
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Update a KEDA trigger authentication
-      tags:
-      - KedaTriggerAuthentication
-      x-stoplight:
-        id: 71icltdzus0p2
 components:
   parameters:
     alertReceiverId:
@@ -19085,23 +18900,33 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
           - role: PRIMARY
-            config_json:
-              key: ""
+            config_json: null
             updated_at: 2000-01-23T04:56:07.000+00:00
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            trigger_authentication:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              organization_id: organization_id
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              config_yaml: config_yaml
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
-            config_json:
-              key: ""
+            config_json: null
             updated_at: 2000-01-23T04:56:07.000+00:00
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            trigger_authentication:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              organization_id: organization_id
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              config_yaml: config_yaml
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scaler_type: scaler_type
             enabled: true
     ApplicationDeploymentRestriction:
@@ -19352,14 +19177,18 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
     ApplicationGitRepository:
@@ -19780,14 +19609,18 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
     ApplicationResponseList:
@@ -19962,23 +19795,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
         - min_running_instances: 0
@@ -20150,23 +19993,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
       properties:
@@ -23076,14 +22929,18 @@ components:
           scalers:
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
             config_json: "{}"
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             config_yaml: config_yaml
+            trigger_authentication:
+              name: name
+              config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
     ContainerResponse:
@@ -23362,23 +23219,33 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
           - role: PRIMARY
-            config_json:
-              key: ""
+            config_json: null
             updated_at: 2000-01-23T04:56:07.000+00:00
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            trigger_authentication:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              organization_id: organization_id
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              config_yaml: config_yaml
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scaler_type: scaler_type
             enabled: true
           - role: PRIMARY
-            config_json:
-              key: ""
+            config_json: null
             updated_at: 2000-01-23T04:56:07.000+00:00
-            trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             created_at: 2000-01-23T04:56:07.000+00:00
             config_yaml: config_yaml
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            trigger_authentication:
+              updated_at: 2000-01-23T04:56:07.000+00:00
+              organization_id: organization_id
+              name: name
+              created_at: 2000-01-23T04:56:07.000+00:00
+              config_yaml: config_yaml
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scaler_type: scaler_type
             enabled: true
     ContainerResponseList:
@@ -23544,23 +23411,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
         - min_running_instances: 0
@@ -23723,23 +23600,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
       properties:
@@ -37721,14 +37608,18 @@ components:
         scalers:
         - role: PRIMARY
           config_json: "{}"
-          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config_yaml: config_yaml
+          trigger_authentication:
+            name: name
+            config_yaml: config_yaml
           scaler_type: scaler_type
           enabled: true
         - role: PRIMARY
           config_json: "{}"
-          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config_yaml: config_yaml
+          trigger_authentication:
+            name: name
+            config_yaml: config_yaml
           scaler_type: scaler_type
           enabled: true
       properties:
@@ -37814,23 +37705,33 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scalers:
         - role: PRIMARY
-          config_json:
-            key: ""
+          config_json: null
           updated_at: 2000-01-23T04:56:07.000+00:00
-          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           config_yaml: config_yaml
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trigger_authentication:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            organization_id: organization_id
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scaler_type: scaler_type
           enabled: true
         - role: PRIMARY
-          config_json:
-            key: ""
+          config_json: null
           updated_at: 2000-01-23T04:56:07.000+00:00
-          trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           created_at: 2000-01-23T04:56:07.000+00:00
           config_yaml: config_yaml
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trigger_authentication:
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            organization_id: organization_id
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scaler_type: scaler_type
           enabled: true
       title: KedaAutoscalingResponse
@@ -37890,20 +37791,6 @@ components:
       x-stoplight:
         id: 7mm4a4sk9jhz3
     KedaTriggerAuthenticationResponseList:
-      example:
-        results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          organization_id: organization_id
-          name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          config_yaml: config_yaml
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          organization_id: organization_id
-          name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          config_yaml: config_yaml
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         results:
           items:
@@ -37919,8 +37806,10 @@ components:
       example:
         role: PRIMARY
         config_json: "{}"
-        trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config_yaml: config_yaml
+        trigger_authentication:
+          name: name
+          config_yaml: config_yaml
         scaler_type: scaler_type
         enabled: true
       properties:
@@ -37942,9 +37831,8 @@ components:
           type: string
           x-stoplight:
             id: 8c7vktd7svl30
-        trigger_authentication_id:
-          format: uuid
-          type: string
+        trigger_authentication:
+          $ref: '#/components/schemas/KedaTriggerAuthenticationRequest'
       required:
       - role
       - scaler_type
@@ -37967,15 +37855,12 @@ components:
           role:
             $ref: '#/components/schemas/KedaScalerRole'
           config_json:
-            additionalProperties: true
-            nullable: true
-            type: object
+            $ref: '#/components/schemas/KedaScalerResponse_allOf_config_json'
           config_yaml:
             nullable: true
             type: string
-          trigger_authentication_id:
-            format: uuid
-            type: string
+          trigger_authentication:
+            $ref: '#/components/schemas/KedaTriggerAuthenticationResponse'
         required:
         - enabled
         - role
@@ -37985,13 +37870,18 @@ components:
           id: 74tt3hgf95nfe
       example:
         role: PRIMARY
-        config_json:
-          key: ""
+        config_json: null
         updated_at: 2000-01-23T04:56:07.000+00:00
-        trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         created_at: 2000-01-23T04:56:07.000+00:00
         config_yaml: config_yaml
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        trigger_authentication:
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          organization_id: organization_id
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          config_yaml: config_yaml
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scaler_type: scaler_type
         enabled: true
       title: KedaScalerResponse
@@ -38567,23 +38457,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
         - min_running_instances: 0
@@ -38755,23 +38655,33 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
             - role: PRIMARY
-              config_json:
-                key: ""
+              config_json: null
               updated_at: 2000-01-23T04:56:07.000+00:00
-              trigger_authentication_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               created_at: 2000-01-23T04:56:07.000+00:00
               config_yaml: config_yaml
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              trigger_authentication:
+                updated_at: 2000-01-23T04:56:07.000+00:00
+                organization_id: organization_id
+                name: name
+                created_at: 2000-01-23T04:56:07.000+00:00
+                config_yaml: config_yaml
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               scaler_type: scaler_type
               enabled: true
       properties:
@@ -41551,6 +41461,9 @@ components:
       oneOf:
       - $ref: '#/components/schemas/AlertRuleResponse'
       - $ref: '#/components/schemas/GhostAlertRuleResponse'
+    KedaScalerResponse_allOf_config_json:
+      nullable: true
+      type: object
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
