@@ -31166,7 +31166,6 @@ components:
       - TERRAFORM_FORCE_UNLOCK_FAILED
       - TERRAFORM_MIGRATE_STATE_FAILED
       - SHELL
-      - SSO
       - PORT_FORWARD
       - REMOTE_DEBUG
       - IMPORT

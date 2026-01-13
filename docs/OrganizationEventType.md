@@ -103,8 +103,6 @@
 
 * `SHELL` (value: `"SHELL"`)
 
-* `SSO` (value: `"SSO"`)
-
 * `PORT_FORWARD` (value: `"PORT_FORWARD"`)
 
 * `REMOTE_DEBUG` (value: `"REMOTE_DEBUG"`)

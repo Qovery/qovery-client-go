@@ -71,7 +71,6 @@ const (
 	ORGANIZATIONEVENTTYPE_TERRAFORM_FORCE_UNLOCK_FAILED     OrganizationEventType = "TERRAFORM_FORCE_UNLOCK_FAILED"
 	ORGANIZATIONEVENTTYPE_TERRAFORM_MIGRATE_STATE_FAILED    OrganizationEventType = "TERRAFORM_MIGRATE_STATE_FAILED"
 	ORGANIZATIONEVENTTYPE_SHELL                             OrganizationEventType = "SHELL"
-	ORGANIZATIONEVENTTYPE_SSO                               OrganizationEventType = "SSO"
 	ORGANIZATIONEVENTTYPE_PORT_FORWARD                      OrganizationEventType = "PORT_FORWARD"
 	ORGANIZATIONEVENTTYPE_REMOTE_DEBUG                      OrganizationEventType = "REMOTE_DEBUG"
 	ORGANIZATIONEVENTTYPE_IMPORT                            OrganizationEventType = "IMPORT"
@@ -131,7 +130,6 @@ var AllowedOrganizationEventTypeEnumValues = []OrganizationEventType{
 	"TERRAFORM_FORCE_UNLOCK_FAILED",
 	"TERRAFORM_MIGRATE_STATE_FAILED",
 	"SHELL",
-	"SSO",
 	"PORT_FORWARD",
 	"REMOTE_DEBUG",
 	"IMPORT",
