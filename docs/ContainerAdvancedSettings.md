@@ -35,6 +35,7 @@ Name | Type | Description | Notes
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] 
+**HpaMemoryAverageUtilizationPercent** | Pointer to **NullableInt32** | Percentage value of memory usage at which point pods should scale up. | [optional] 
 **SecurityAutomountServiceAccountToken** | Pointer to **bool** | Automount Kubernetes service account token to have access to Kubernetes API from pods  | [optional] 
 **SecurityReadOnlyRootFilesystem** | Pointer to **bool** | Mounts the container&#39;s root filesystem as read-only  | [optional] 
 
@@ -832,6 +833,41 @@ SetHpaCpuAverageUtilizationPercent sets HpaCpuAverageUtilizationPercent field to
 
 HasHpaCpuAverageUtilizationPercent returns a boolean if a field has been set.
 
+### GetHpaMemoryAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) GetHpaMemoryAverageUtilizationPercent() int32`
+
+GetHpaMemoryAverageUtilizationPercent returns the HpaMemoryAverageUtilizationPercent field if non-nil, zero value otherwise.
+
+### GetHpaMemoryAverageUtilizationPercentOk
+
+`func (o *ContainerAdvancedSettings) GetHpaMemoryAverageUtilizationPercentOk() (*int32, bool)`
+
+GetHpaMemoryAverageUtilizationPercentOk returns a tuple with the HpaMemoryAverageUtilizationPercent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHpaMemoryAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) SetHpaMemoryAverageUtilizationPercent(v int32)`
+
+SetHpaMemoryAverageUtilizationPercent sets HpaMemoryAverageUtilizationPercent field to given value.
+
+### HasHpaMemoryAverageUtilizationPercent
+
+`func (o *ContainerAdvancedSettings) HasHpaMemoryAverageUtilizationPercent() bool`
+
+HasHpaMemoryAverageUtilizationPercent returns a boolean if a field has been set.
+
+### SetHpaMemoryAverageUtilizationPercentNil
+
+`func (o *ContainerAdvancedSettings) SetHpaMemoryAverageUtilizationPercentNil(b bool)`
+
+ SetHpaMemoryAverageUtilizationPercentNil sets the value for HpaMemoryAverageUtilizationPercent to be an explicit nil
+
+### UnsetHpaMemoryAverageUtilizationPercent
+`func (o *ContainerAdvancedSettings) UnsetHpaMemoryAverageUtilizationPercent()`
+
+UnsetHpaMemoryAverageUtilizationPercent ensures that no value is present for HpaMemoryAverageUtilizationPercent, not even an explicit nil
 ### GetSecurityAutomountServiceAccountToken
 
 `func (o *ContainerAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool`

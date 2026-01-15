@@ -77,6 +77,8 @@ type ContainerAdvancedSettings struct {
 	SecurityServiceAccountName *string `json:"security.service_account_name,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
+	// Percentage value of memory usage at which point pods should scale up.
+	HpaMemoryAverageUtilizationPercent NullableInt32 `json:"hpa.memory.average_utilization_percent,omitempty"`
 	// Automount Kubernetes service account token to have access to Kubernetes API from pods
 	SecurityAutomountServiceAccountToken *bool `json:"security.automount_service_account_token,omitempty"`
 	// Mounts the container's root filesystem as read-only
@@ -1095,6 +1097,49 @@ func (o *ContainerAdvancedSettings) SetHpaCpuAverageUtilizationPercent(v int32) 
 	o.HpaCpuAverageUtilizationPercent = &v
 }
 
+// GetHpaMemoryAverageUtilizationPercent returns the HpaMemoryAverageUtilizationPercent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerAdvancedSettings) GetHpaMemoryAverageUtilizationPercent() int32 {
+	if o == nil || IsNil(o.HpaMemoryAverageUtilizationPercent.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.HpaMemoryAverageUtilizationPercent.Get()
+}
+
+// GetHpaMemoryAverageUtilizationPercentOk returns a tuple with the HpaMemoryAverageUtilizationPercent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerAdvancedSettings) GetHpaMemoryAverageUtilizationPercentOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.HpaMemoryAverageUtilizationPercent.Get(), o.HpaMemoryAverageUtilizationPercent.IsSet()
+}
+
+// HasHpaMemoryAverageUtilizationPercent returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasHpaMemoryAverageUtilizationPercent() bool {
+	if o != nil && o.HpaMemoryAverageUtilizationPercent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetHpaMemoryAverageUtilizationPercent gets a reference to the given NullableInt32 and assigns it to the HpaMemoryAverageUtilizationPercent field.
+func (o *ContainerAdvancedSettings) SetHpaMemoryAverageUtilizationPercent(v int32) {
+	o.HpaMemoryAverageUtilizationPercent.Set(&v)
+}
+
+// SetHpaMemoryAverageUtilizationPercentNil sets the value for HpaMemoryAverageUtilizationPercent to be an explicit nil
+func (o *ContainerAdvancedSettings) SetHpaMemoryAverageUtilizationPercentNil() {
+	o.HpaMemoryAverageUtilizationPercent.Set(nil)
+}
+
+// UnsetHpaMemoryAverageUtilizationPercent ensures that no value is present for HpaMemoryAverageUtilizationPercent, not even an explicit nil
+func (o *ContainerAdvancedSettings) UnsetHpaMemoryAverageUtilizationPercent() {
+	o.HpaMemoryAverageUtilizationPercent.Unset()
+}
+
 // GetSecurityAutomountServiceAccountToken returns the SecurityAutomountServiceAccountToken field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetSecurityAutomountServiceAccountToken() bool {
 	if o == nil || IsNil(o.SecurityAutomountServiceAccountToken) {
@@ -1262,6 +1307,9 @@ func (o ContainerAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HpaCpuAverageUtilizationPercent) {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
 	}
+	if o.HpaMemoryAverageUtilizationPercent.IsSet() {
+		toSerialize["hpa.memory.average_utilization_percent"] = o.HpaMemoryAverageUtilizationPercent.Get()
+	}
 	if !IsNil(o.SecurityAutomountServiceAccountToken) {
 		toSerialize["security.automount_service_account_token"] = o.SecurityAutomountServiceAccountToken
 	}
@@ -1321,6 +1369,7 @@ func (o *ContainerAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "network.ingress.enable_sticky_session")
 		delete(additionalProperties, "security.service_account_name")
 		delete(additionalProperties, "hpa.cpu.average_utilization_percent")
+		delete(additionalProperties, "hpa.memory.average_utilization_percent")
 		delete(additionalProperties, "security.automount_service_account_token")
 		delete(additionalProperties, "security.read_only_root_filesystem")
 		o.AdditionalProperties = additionalProperties

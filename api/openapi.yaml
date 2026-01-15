@@ -18319,6 +18319,7 @@ components:
         - deployment.lifecycle.post_start_exec_command
         deployment.update_strategy.type: RollingUpdate
         build.disable_buildkit_cache: true
+        hpa.memory.average_utilization_percent: 1
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
@@ -18504,6 +18505,11 @@ components:
         hpa.cpu.average_utilization_percent:
           description: Percentage value of cpu usage at which point pods should scale
             up.
+          type: integer
+        hpa.memory.average_utilization_percent:
+          description: Percentage value of memory usage at which point pods should
+            scale up.
+          nullable: true
           type: integer
         security.service_account_name:
           description: |
@@ -22052,6 +22058,7 @@ components:
         deployment.antiaffinity.pod: Preferred
         network.ingress.proxy_send_timeout_seconds: 2
         deployment.update_strategy.type: RollingUpdate
+        hpa.memory.average_utilization_percent: 1
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
@@ -22209,6 +22216,11 @@ components:
         hpa.cpu.average_utilization_percent:
           description: Percentage value of cpu usage at which point pods should scale
             up.
+          type: integer
+        hpa.memory.average_utilization_percent:
+          description: Percentage value of memory usage at which point pods should
+            scale up.
+          nullable: true
           type: integer
         security.automount_service_account_token:
           description: |
