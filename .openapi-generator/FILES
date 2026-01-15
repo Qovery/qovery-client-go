@@ -16,7 +16,6 @@ api_application_logs.go
 api_application_main_calls.go
 api_application_secret.go
 api_applications.go
-api_autoscaling_policy.go
 api_backups.go
 api_billing.go
 api_cloud_provider.go
@@ -155,7 +154,6 @@ docs/ApplicationResponseList.md
 docs/ApplicationSecretAPI.md
 docs/ApplicationsAPI.md
 docs/AutoscalingMode.md
-docs/AutoscalingPolicyAPI.md
 docs/AutoscalingPolicyRequest.md
 docs/AutoscalingPolicyResponse.md
 docs/AvailableContainerRegistryResponse.md
@@ -1540,7 +1538,6 @@ test/api_application_logs_test.go
 test/api_application_main_calls_test.go
 test/api_application_secret_test.go
 test/api_applications_test.go
-test/api_autoscaling_policy_test.go
 test/api_backups_test.go
 test/api_billing_test.go
 test/api_cloud_provider_credentials_test.go

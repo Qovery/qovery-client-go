@@ -142,9 +142,6 @@ Class | Method | HTTP request | Description
 *ApplicationsAPI* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsAPI.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsAPI* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsAPI.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
 *ApplicationsAPI* | [**ListApplication**](docs/ApplicationsAPI.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
-*AutoscalingPolicyAPI* | [**CreateOrUpdateServiceAutoscaling**](docs/AutoscalingPolicyAPI.md#createorupdateserviceautoscaling) | **Put** /service/{serviceId}/autoscalingPolicy | createOrUpdateServiceAutoscaling
-*AutoscalingPolicyAPI* | [**DeleteServiceAutoscaling**](docs/AutoscalingPolicyAPI.md#deleteserviceautoscaling) | **Delete** /service/{serviceId}/autoscalingPolicy | deleteServiceAutoscaling
-*AutoscalingPolicyAPI* | [**GetServiceAutoscaling**](docs/AutoscalingPolicyAPI.md#getserviceautoscaling) | **Get** /service/{serviceId}/autoscalingPolicy | getServiceAutoscaling
 *BackupsAPI* | [**AddBackupDatabase**](docs/BackupsAPI.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
 *BackupsAPI* | [**ListDatabaseBackup**](docs/BackupsAPI.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
 *BackupsAPI* | [**RemoveDatabaseBackup**](docs/BackupsAPI.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
