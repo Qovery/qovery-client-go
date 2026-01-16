@@ -225,6 +225,8 @@ type APIClient struct {
 
 	TerraformMainCallsAPI *TerraformMainCallsAPIService
 
+	TerraformResourcesAPI *TerraformResourcesAPIService
+
 	TerraformsAPI *TerraformsAPIService
 
 	UserSignUpAPI *UserSignUpAPIService
@@ -336,6 +338,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.TerraformDeploymentHistoryAPI = (*TerraformDeploymentHistoryAPIService)(&c.common)
 	c.TerraformDeploymentRestrictionAPI = (*TerraformDeploymentRestrictionAPIService)(&c.common)
 	c.TerraformMainCallsAPI = (*TerraformMainCallsAPIService)(&c.common)
+	c.TerraformResourcesAPI = (*TerraformResourcesAPIService)(&c.common)
 	c.TerraformsAPI = (*TerraformsAPIService)(&c.common)
 	c.UserSignUpAPI = (*UserSignUpAPIService)(&c.common)
 	c.VariableMainCallsAPI = (*VariableMainCallsAPIService)(&c.common)

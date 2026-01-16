@@ -91,6 +91,7 @@ api_terraform_configuration.go
 api_terraform_deployment_history.go
 api_terraform_deployment_restriction.go
 api_terraform_main_calls.go
+api_terraform_resources.go
 api_terraforms.go
 api_user_sign_up.go
 api_variable_main_calls.go
@@ -813,6 +814,11 @@ docs/TerraformRequestDockerfileFragment.md
 docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformRequestTerraformFilesSourceOneOf.md
+docs/TerraformResourceAttribute.md
+docs/TerraformResourceResponse.md
+docs/TerraformResourcesAPI.md
+docs/TerraformResourcesRequest.md
+docs/TerraformResourcesResponse.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfDockerfileFragment.md
 docs/TerraformResponseAllOfTerraformFilesSource.md
@@ -1486,6 +1492,10 @@ model_terraform_request_dockerfile_fragment.go
 model_terraform_request_job_resources.go
 model_terraform_request_terraform_files_source.go
 model_terraform_request_terraform_files_source_one_of.go
+model_terraform_resource_attribute.go
+model_terraform_resource_response.go
+model_terraform_resources_request.go
+model_terraform_resources_response.go
 model_terraform_response.go
 model_terraform_response_all_of_dockerfile_fragment.go
 model_terraform_response_all_of_terraform_files_source.go
@@ -1613,6 +1623,7 @@ test/api_terraform_configuration_test.go
 test/api_terraform_deployment_history_test.go
 test/api_terraform_deployment_restriction_test.go
 test/api_terraform_main_calls_test.go
+test/api_terraform_resources_test.go
 test/api_terraforms_test.go
 test/api_user_sign_up_test.go
 test/api_variable_main_calls_test.go

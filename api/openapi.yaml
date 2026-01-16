@@ -121,6 +121,7 @@ tags:
 - name: Referral & Rewards
 - name: Terraforms
 - name: Terraform Main Calls
+- name: Terraform Resources
 - name: Terraform Deployment History
 - name: Terraform Deployment Restriction
 - name: Container Registries
@@ -17149,6 +17150,39 @@ paths:
       - Terraform Deployment Restriction
       x-stoplight:
         id: w3jp2xci6bogt
+  /api/v1/terraform/{terraformId}/terraformResources:
+    get:
+      description: Returns the list of Terraform resources from the most recent deployment
+        execution
+      operationId: getTerraformResources
+      parameters:
+      - description: Terraform ID
+        explode: false
+        in: path
+        name: terraformId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TerraformResourcesResponse'
+          description: List of terraform resources from latest deployment
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get terraform resources from latest deployment
+      tags:
+      - Terraform Resources
+      x-stoplight:
+        id: terraform-resources-get
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
@@ -35474,6 +35508,184 @@ components:
       type: object
       x-stoplight:
         id: 7ujl5rx7sd38b
+    TerraformResourceAttribute:
+      description: A single attribute of a Terraform resource with key and value
+      properties:
+        key:
+          description: The attribute key name
+          example: instance_id
+          type: string
+        value:
+          description: The attribute value as a string
+          example: i-1234567890abcdef0
+          type: string
+      required:
+      - key
+      - value
+      title: Resource Attribute
+      type: object
+    TerraformResourceResponse:
+      description: A Terraform resource from a deployment execution
+      example:
+        mode: managed
+        address: aws_instance.web_server
+        provider: aws
+        keyAttributes:
+        - key: instance_id
+          value: i-1234567890abcdef0
+        - key: instance_type
+          value: t2.micro
+        name: web_server
+        attributes:
+          instance_id: i-1234567890abcdef0
+          instance_type: t2.micro
+          public_ip: 10.0.0.1
+          private_ip: 172.31.0.1
+        id: 550e8400-e29b-41d4-a716-446655440000
+        extractedAt: 2023-01-15T10:30:00Z
+        resourceType: aws_instance
+      properties:
+        id:
+          description: Unique identifier for this resource record
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+        resourceType:
+          description: "Type of the Terraform resource (e.g., aws_instance, aws_s3_bucket)"
+          example: aws_instance
+          type: string
+        name:
+          description: Name of the resource as defined in Terraform configuration
+          example: web_server
+          type: string
+        address:
+          description: "Full address of the resource (e.g., aws_instance.web_server)"
+          example: aws_instance.web_server
+          type: string
+        provider:
+          description: "Terraform provider name (e.g., aws, google, azurerm)"
+          example: aws
+          type: string
+        mode:
+          description: Resource mode (managed or data source)
+          enum:
+          - managed
+          - data
+          example: managed
+          type: string
+        attributes:
+          additionalProperties: true
+          description: All resource attributes as key-value pairs
+          example:
+            instance_id: i-1234567890abcdef0
+            instance_type: t2.micro
+            public_ip: 10.0.0.1
+            private_ip: 172.31.0.1
+          type: object
+        extractedAt:
+          description: Timestamp when the resource was extracted from Terraform state
+          example: 2023-01-15T10:30:00Z
+          format: date-time
+          type: string
+        keyAttributes:
+          description: Most important attributes for this resource type (for display)
+          example:
+          - key: instance_id
+            value: i-1234567890abcdef0
+          - key: instance_type
+            value: t2.micro
+          items:
+            $ref: '#/components/schemas/TerraformResourceAttribute'
+          type: array
+      required:
+      - address
+      - attributes
+      - extractedAt
+      - id
+      - keyAttributes
+      - mode
+      - name
+      - provider
+      - resourceType
+      title: Terraform Resource Response
+      type: object
+    TerraformResourcesResponse:
+      description: List of Terraform resources from the latest deployment
+      example:
+        resources:
+        - mode: managed
+          address: aws_instance.web_server
+          provider: aws
+          keyAttributes:
+          - key: instance_id
+            value: i-1234567890abcdef0
+          - key: instance_type
+            value: t2.micro
+          name: web_server
+          attributes:
+            instance_id: i-1234567890abcdef0
+            instance_type: t2.micro
+            public_ip: 10.0.0.1
+            private_ip: 172.31.0.1
+          id: 550e8400-e29b-41d4-a716-446655440000
+          extractedAt: 2023-01-15T10:30:00Z
+          resourceType: aws_instance
+        - mode: managed
+          address: aws_instance.web_server
+          provider: aws
+          keyAttributes:
+          - key: instance_id
+            value: i-1234567890abcdef0
+          - key: instance_type
+            value: t2.micro
+          name: web_server
+          attributes:
+            instance_id: i-1234567890abcdef0
+            instance_type: t2.micro
+            public_ip: 10.0.0.1
+            private_ip: 172.31.0.1
+          id: 550e8400-e29b-41d4-a716-446655440000
+          extractedAt: 2023-01-15T10:30:00Z
+          resourceType: aws_instance
+      properties:
+        resources:
+          description: Array of Terraform resources
+          items:
+            $ref: '#/components/schemas/TerraformResourceResponse'
+          type: array
+      required:
+      - resources
+      title: Terraform Resources List Response
+      type: object
+    TerraformResourcesRequest:
+      description: Request to store terraform resources from engine after deployment
+      properties:
+        terraformId:
+          description: ID of the Terraform service
+          example: 550e8400-e29b-41d4-a716-446655440000
+          format: uuid
+          type: string
+        executionId:
+          description: |
+            Execution ID in format "UUID-version" or "UUID-version-timestamp"
+            Example: 550e8400-e29b-41d4-a716-446655440000-1
+          example: 550e8400-e29b-41d4-a716-446655440000-1
+          type: string
+        resourcesJson:
+          description: |
+            JSON array of terraform resources extracted from terraform show output.
+            Each resource contains: resource_type, name, provider, address, mode, attributes
+          example: "[{\"resource_type\":\"aws_instance\",\"name\":\"web_server\",\"\
+            provider\":\"aws\",\"address\":\"aws_instance.web_server\",\"mode\":\"\
+            managed\",\"attributes\":{\"instance_id\":\"i-1234567890abcdef0\",\"instance_type\"\
+            :\"t2.micro\"}}]"
+          type: string
+      required:
+      - executionId
+      - resourcesJson
+      - terraformId
+      title: Terraform Resources Request
+      type: object
     TerraformResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
