@@ -35514,6 +35514,7 @@ components:
         mode: managed
         address: aws_instance.web_server
         provider: aws
+        extracted_at: 2023-01-15T10:30:00Z
         resource_type: aws_instance
         name: web_server
         attributes:
@@ -35522,7 +35523,6 @@ components:
           public_ip: 10.0.0.1
           private_ip: 172.31.0.1
         id: 550e8400-e29b-41d4-a716-446655440000
-        extractedAt: 2023-01-15T10:30:00Z
       properties:
         id:
           description: Unique identifier for this resource record
@@ -35561,7 +35561,7 @@ components:
             public_ip: 10.0.0.1
             private_ip: 172.31.0.1
           type: object
-        extractedAt:
+        extracted_at:
           description: Timestamp when the resource was extracted from Terraform state
           example: 2023-01-15T10:30:00Z
           format: date-time
@@ -35584,6 +35584,7 @@ components:
         - mode: managed
           address: aws_instance.web_server
           provider: aws
+          extracted_at: 2023-01-15T10:30:00Z
           resource_type: aws_instance
           name: web_server
           attributes:
@@ -35592,10 +35593,10 @@ components:
             public_ip: 10.0.0.1
             private_ip: 172.31.0.1
           id: 550e8400-e29b-41d4-a716-446655440000
-          extractedAt: 2023-01-15T10:30:00Z
         - mode: managed
           address: aws_instance.web_server
           provider: aws
+          extracted_at: 2023-01-15T10:30:00Z
           resource_type: aws_instance
           name: web_server
           attributes:
@@ -35604,7 +35605,6 @@ components:
             public_ip: 10.0.0.1
             private_ip: 172.31.0.1
           id: 550e8400-e29b-41d4-a716-446655440000
-          extractedAt: 2023-01-15T10:30:00Z
       properties:
         results:
           description: Array of Terraform resources

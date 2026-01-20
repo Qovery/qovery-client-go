@@ -11,13 +11,13 @@ Name | Type | Description | Notes
 **Provider** | **string** | Terraform provider name (e.g., aws, google, azurerm) | 
 **Mode** | **string** | Resource mode (managed or data source) | 
 **Attributes** | **map[string]interface{}** | All resource attributes as key-value pairs | 
-**ExtractedAt** | Pointer to **time.Time** | Timestamp when the resource was extracted from Terraform state | [optional] 
+**ExtractedAt** | **time.Time** | Timestamp when the resource was extracted from Terraform state | 
 
 ## Methods
 
 ### NewTerraformResourceResponse
 
-`func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, ) *TerraformResourceResponse`
+`func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, extractedAt time.Time, ) *TerraformResourceResponse`
 
 NewTerraformResourceResponse instantiates a new TerraformResourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -191,11 +191,6 @@ and a boolean to check if the value has been set.
 
 SetExtractedAt sets ExtractedAt field to given value.
 
-### HasExtractedAt
-
-`func (o *TerraformResourceResponse) HasExtractedAt() bool`
-
-HasExtractedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
