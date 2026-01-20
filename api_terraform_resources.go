@@ -66,7 +66,7 @@ func (a *TerraformResourcesAPIService) GetTerraformResourcesExecute(r ApiGetTerr
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/v1/terraform/{terraformId}/terraformResources"
+	localVarPath := localBasePath + "/terraform/{terraformId}/terraformResources"
 	localVarPath = strings.Replace(localVarPath, "{"+"terraformId"+"}", url.PathEscape(parameterValueToString(r.terraformId, "terraformId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

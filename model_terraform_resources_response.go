@@ -22,7 +22,7 @@ var _ MappedNullable = &TerraformResourcesResponse{}
 // TerraformResourcesResponse List of Terraform resources from the latest deployment
 type TerraformResourcesResponse struct {
 	// Array of Terraform resources
-	Resources            []TerraformResourceResponse `json:"resources"`
+	Results              []TerraformResourceResponse `json:"results"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,9 +32,9 @@ type _TerraformResourcesResponse TerraformResourcesResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResourcesResponse(resources []TerraformResourceResponse) *TerraformResourcesResponse {
+func NewTerraformResourcesResponse(results []TerraformResourceResponse) *TerraformResourcesResponse {
 	this := TerraformResourcesResponse{}
-	this.Resources = resources
+	this.Results = results
 	return &this
 }
 
@@ -46,28 +46,28 @@ func NewTerraformResourcesResponseWithDefaults() *TerraformResourcesResponse {
 	return &this
 }
 
-// GetResources returns the Resources field value
-func (o *TerraformResourcesResponse) GetResources() []TerraformResourceResponse {
+// GetResults returns the Results field value
+func (o *TerraformResourcesResponse) GetResults() []TerraformResourceResponse {
 	if o == nil {
 		var ret []TerraformResourceResponse
 		return ret
 	}
 
-	return o.Resources
+	return o.Results
 }
 
-// GetResourcesOk returns a tuple with the Resources field value
+// GetResultsOk returns a tuple with the Results field value
 // and a boolean to check if the value has been set.
-func (o *TerraformResourcesResponse) GetResourcesOk() ([]TerraformResourceResponse, bool) {
+func (o *TerraformResourcesResponse) GetResultsOk() ([]TerraformResourceResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.Resources, true
+	return o.Results, true
 }
 
-// SetResources sets field value
-func (o *TerraformResourcesResponse) SetResources(v []TerraformResourceResponse) {
-	o.Resources = v
+// SetResults sets field value
+func (o *TerraformResourcesResponse) SetResults(v []TerraformResourceResponse) {
+	o.Results = v
 }
 
 func (o TerraformResourcesResponse) MarshalJSON() ([]byte, error) {
@@ -80,7 +80,7 @@ func (o TerraformResourcesResponse) MarshalJSON() ([]byte, error) {
 
 func (o TerraformResourcesResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["resources"] = o.Resources
+	toSerialize["results"] = o.Results
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -94,7 +94,7 @@ func (o *TerraformResourcesResponse) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"resources",
+		"results",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -124,7 +124,7 @@ func (o *TerraformResourcesResponse) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "resources")
+		delete(additionalProperties, "results")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -17150,7 +17150,7 @@ paths:
       - Terraform Deployment Restriction
       x-stoplight:
         id: w3jp2xci6bogt
-  /api/v1/terraform/{terraformId}/terraformResources:
+  /terraform/{terraformId}/terraformResources:
     get:
       description: Returns the list of Terraform resources from the most recent deployment
         execution
@@ -35612,7 +35612,7 @@ components:
     TerraformResourcesResponse:
       description: List of Terraform resources from the latest deployment
       example:
-        resources:
+        results:
         - mode: managed
           address: aws_instance.web_server
           provider: aws
@@ -35648,13 +35648,13 @@ components:
           extractedAt: 2023-01-15T10:30:00Z
           resourceType: aws_instance
       properties:
-        resources:
+        results:
           description: Array of Terraform resources
           items:
             $ref: '#/components/schemas/TerraformResourceResponse'
           type: array
       required:
-      - resources
+      - results
       title: Terraform Resources List Response
       type: object
     TerraformResourcesRequest:

@@ -4,7 +4,7 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**GetTerraformResources**](TerraformResourcesAPI.md#GetTerraformResources) | **Get** /api/v1/terraform/{terraformId}/terraformResources | Get terraform resources from latest deployment
+[**GetTerraformResources**](TerraformResourcesAPI.md#GetTerraformResources) | **Get** /terraform/{terraformId}/terraformResources | Get terraform resources from latest deployment
 
 
 

@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Resources** | [**[]TerraformResourceResponse**](TerraformResourceResponse.md) | Array of Terraform resources | 
+**Results** | [**[]TerraformResourceResponse**](TerraformResourceResponse.md) | Array of Terraform resources | 
 
 ## Methods
 
 ### NewTerraformResourcesResponse
 
-`func NewTerraformResourcesResponse(resources []TerraformResourceResponse, ) *TerraformResourcesResponse`
+`func NewTerraformResourcesResponse(results []TerraformResourceResponse, ) *TerraformResourcesResponse`
 
 NewTerraformResourcesResponse instantiates a new TerraformResourcesResponse object
 This constructor will assign default values to properties that have it defined,
@@ -25,24 +25,24 @@ NewTerraformResourcesResponseWithDefaults instantiates a new TerraformResourcesR
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetResources
+### GetResults
 
-`func (o *TerraformResourcesResponse) GetResources() []TerraformResourceResponse`
+`func (o *TerraformResourcesResponse) GetResults() []TerraformResourceResponse`
 
-GetResources returns the Resources field if non-nil, zero value otherwise.
+GetResults returns the Results field if non-nil, zero value otherwise.
 
-### GetResourcesOk
+### GetResultsOk
 
-`func (o *TerraformResourcesResponse) GetResourcesOk() (*[]TerraformResourceResponse, bool)`
+`func (o *TerraformResourcesResponse) GetResultsOk() (*[]TerraformResourceResponse, bool)`
 
-GetResourcesOk returns a tuple with the Resources field if it's non-nil, zero value otherwise
+GetResultsOk returns a tuple with the Results field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetResources
+### SetResults
 
-`func (o *TerraformResourcesResponse) SetResources(v []TerraformResourceResponse)`
+`func (o *TerraformResourcesResponse) SetResults(v []TerraformResourceResponse)`
 
-SetResources sets Resources field to given value.
+SetResults sets Results field to given value.
 
 
 
