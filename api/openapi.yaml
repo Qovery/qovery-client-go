@@ -35508,33 +35508,13 @@ components:
       type: object
       x-stoplight:
         id: 7ujl5rx7sd38b
-    TerraformResourceAttribute:
-      description: A single attribute of a Terraform resource with key and value
-      properties:
-        key:
-          description: The attribute key name
-          example: instance_id
-          type: string
-        value:
-          description: The attribute value as a string
-          example: i-1234567890abcdef0
-          type: string
-      required:
-      - key
-      - value
-      title: Resource Attribute
-      type: object
     TerraformResourceResponse:
       description: A Terraform resource from a deployment execution
       example:
         mode: managed
         address: aws_instance.web_server
         provider: aws
-        keyAttributes:
-        - key: instance_id
-          value: i-1234567890abcdef0
-        - key: instance_type
-          value: t2.micro
+        resource_type: aws_instance
         name: web_server
         attributes:
           instance_id: i-1234567890abcdef0
@@ -35543,14 +35523,13 @@ components:
           private_ip: 172.31.0.1
         id: 550e8400-e29b-41d4-a716-446655440000
         extractedAt: 2023-01-15T10:30:00Z
-        resourceType: aws_instance
       properties:
         id:
           description: Unique identifier for this resource record
           example: 550e8400-e29b-41d4-a716-446655440000
           format: uuid
           type: string
-        resourceType:
+        resource_type:
           description: "Type of the Terraform resource (e.g., aws_instance, aws_s3_bucket)"
           example: aws_instance
           type: string
@@ -35587,26 +35566,15 @@ components:
           example: 2023-01-15T10:30:00Z
           format: date-time
           type: string
-        keyAttributes:
-          description: Most important attributes for this resource type (for display)
-          example:
-          - key: instance_id
-            value: i-1234567890abcdef0
-          - key: instance_type
-            value: t2.micro
-          items:
-            $ref: '#/components/schemas/TerraformResourceAttribute'
-          type: array
       required:
       - address
       - attributes
-      - extractedAt
+      - extracted_at
       - id
-      - keyAttributes
       - mode
       - name
       - provider
-      - resourceType
+      - resource_type
       title: Terraform Resource Response
       type: object
     TerraformResourcesResponse:
@@ -35616,11 +35584,7 @@ components:
         - mode: managed
           address: aws_instance.web_server
           provider: aws
-          keyAttributes:
-          - key: instance_id
-            value: i-1234567890abcdef0
-          - key: instance_type
-            value: t2.micro
+          resource_type: aws_instance
           name: web_server
           attributes:
             instance_id: i-1234567890abcdef0
@@ -35629,15 +35593,10 @@ components:
             private_ip: 172.31.0.1
           id: 550e8400-e29b-41d4-a716-446655440000
           extractedAt: 2023-01-15T10:30:00Z
-          resourceType: aws_instance
         - mode: managed
           address: aws_instance.web_server
           provider: aws
-          keyAttributes:
-          - key: instance_id
-            value: i-1234567890abcdef0
-          - key: instance_type
-            value: t2.micro
+          resource_type: aws_instance
           name: web_server
           attributes:
             instance_id: i-1234567890abcdef0
@@ -35646,7 +35605,6 @@ components:
             private_ip: 172.31.0.1
           id: 550e8400-e29b-41d4-a716-446655440000
           extractedAt: 2023-01-15T10:30:00Z
-          resourceType: aws_instance
       properties:
         results:
           description: Array of Terraform resources

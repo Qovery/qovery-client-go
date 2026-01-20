@@ -25,7 +25,7 @@ type TerraformResourceResponse struct {
 	// Unique identifier for this resource record
 	Id string `json:"id"`
 	// Type of the Terraform resource (e.g., aws_instance, aws_s3_bucket)
-	ResourceType string `json:"resourceType"`
+	ResourceType string `json:"resource_type"`
 	// Name of the resource as defined in Terraform configuration
 	Name string `json:"name"`
 	// Full address of the resource (e.g., aws_instance.web_server)
@@ -37,9 +37,7 @@ type TerraformResourceResponse struct {
 	// All resource attributes as key-value pairs
 	Attributes map[string]interface{} `json:"attributes"`
 	// Timestamp when the resource was extracted from Terraform state
-	ExtractedAt time.Time `json:"extractedAt"`
-	// Most important attributes for this resource type (for display)
-	KeyAttributes        []TerraformResourceAttribute `json:"keyAttributes"`
+	ExtractedAt          *time.Time `json:"extractedAt,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -49,7 +47,7 @@ type _TerraformResourceResponse TerraformResourceResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, extractedAt time.Time, keyAttributes []TerraformResourceAttribute) *TerraformResourceResponse {
+func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}) *TerraformResourceResponse {
 	this := TerraformResourceResponse{}
 	this.Id = id
 	this.ResourceType = resourceType
@@ -58,8 +56,6 @@ func NewTerraformResourceResponse(id string, resourceType string, name string, a
 	this.Provider = provider
 	this.Mode = mode
 	this.Attributes = attributes
-	this.ExtractedAt = extractedAt
-	this.KeyAttributes = keyAttributes
 	return &this
 }
 
@@ -239,52 +235,36 @@ func (o *TerraformResourceResponse) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
-// GetExtractedAt returns the ExtractedAt field value
+// GetExtractedAt returns the ExtractedAt field value if set, zero value otherwise.
 func (o *TerraformResourceResponse) GetExtractedAt() time.Time {
-	if o == nil {
+	if o == nil || IsNil(o.ExtractedAt) {
 		var ret time.Time
 		return ret
 	}
-
-	return o.ExtractedAt
+	return *o.ExtractedAt
 }
 
-// GetExtractedAtOk returns a tuple with the ExtractedAt field value
+// GetExtractedAtOk returns a tuple with the ExtractedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformResourceResponse) GetExtractedAtOk() (*time.Time, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ExtractedAt) {
 		return nil, false
 	}
-	return &o.ExtractedAt, true
+	return o.ExtractedAt, true
 }
 
-// SetExtractedAt sets field value
+// HasExtractedAt returns a boolean if a field has been set.
+func (o *TerraformResourceResponse) HasExtractedAt() bool {
+	if o != nil && !IsNil(o.ExtractedAt) {
+		return true
+	}
+
+	return false
+}
+
+// SetExtractedAt gets a reference to the given time.Time and assigns it to the ExtractedAt field.
 func (o *TerraformResourceResponse) SetExtractedAt(v time.Time) {
-	o.ExtractedAt = v
-}
-
-// GetKeyAttributes returns the KeyAttributes field value
-func (o *TerraformResourceResponse) GetKeyAttributes() []TerraformResourceAttribute {
-	if o == nil {
-		var ret []TerraformResourceAttribute
-		return ret
-	}
-
-	return o.KeyAttributes
-}
-
-// GetKeyAttributesOk returns a tuple with the KeyAttributes field value
-// and a boolean to check if the value has been set.
-func (o *TerraformResourceResponse) GetKeyAttributesOk() ([]TerraformResourceAttribute, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.KeyAttributes, true
-}
-
-// SetKeyAttributes sets field value
-func (o *TerraformResourceResponse) SetKeyAttributes(v []TerraformResourceAttribute) {
-	o.KeyAttributes = v
+	o.ExtractedAt = &v
 }
 
 func (o TerraformResourceResponse) MarshalJSON() ([]byte, error) {
@@ -298,14 +278,15 @@ func (o TerraformResourceResponse) MarshalJSON() ([]byte, error) {
 func (o TerraformResourceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["resourceType"] = o.ResourceType
+	toSerialize["resource_type"] = o.ResourceType
 	toSerialize["name"] = o.Name
 	toSerialize["address"] = o.Address
 	toSerialize["provider"] = o.Provider
 	toSerialize["mode"] = o.Mode
 	toSerialize["attributes"] = o.Attributes
-	toSerialize["extractedAt"] = o.ExtractedAt
-	toSerialize["keyAttributes"] = o.KeyAttributes
+	if !IsNil(o.ExtractedAt) {
+		toSerialize["extractedAt"] = o.ExtractedAt
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -320,14 +301,12 @@ func (o *TerraformResourceResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"resourceType",
+		"resource_type",
 		"name",
 		"address",
 		"provider",
 		"mode",
 		"attributes",
-		"extractedAt",
-		"keyAttributes",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -358,14 +337,13 @@ func (o *TerraformResourceResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "resourceType")
+		delete(additionalProperties, "resource_type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "address")
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "attributes")
 		delete(additionalProperties, "extractedAt")
-		delete(additionalProperties, "keyAttributes")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -11,14 +11,13 @@ Name | Type | Description | Notes
 **Provider** | **string** | Terraform provider name (e.g., aws, google, azurerm) | 
 **Mode** | **string** | Resource mode (managed or data source) | 
 **Attributes** | **map[string]interface{}** | All resource attributes as key-value pairs | 
-**ExtractedAt** | **time.Time** | Timestamp when the resource was extracted from Terraform state | 
-**KeyAttributes** | [**[]TerraformResourceAttribute**](TerraformResourceAttribute.md) | Most important attributes for this resource type (for display) | 
+**ExtractedAt** | Pointer to **time.Time** | Timestamp when the resource was extracted from Terraform state | [optional] 
 
 ## Methods
 
 ### NewTerraformResourceResponse
 
-`func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, extractedAt time.Time, keyAttributes []TerraformResourceAttribute, ) *TerraformResourceResponse`
+`func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, ) *TerraformResourceResponse`
 
 NewTerraformResourceResponse instantiates a new TerraformResourceResponse object
 This constructor will assign default values to properties that have it defined,
@@ -192,26 +191,11 @@ and a boolean to check if the value has been set.
 
 SetExtractedAt sets ExtractedAt field to given value.
 
+### HasExtractedAt
 
-### GetKeyAttributes
+`func (o *TerraformResourceResponse) HasExtractedAt() bool`
 
-`func (o *TerraformResourceResponse) GetKeyAttributes() []TerraformResourceAttribute`
-
-GetKeyAttributes returns the KeyAttributes field if non-nil, zero value otherwise.
-
-### GetKeyAttributesOk
-
-`func (o *TerraformResourceResponse) GetKeyAttributesOk() (*[]TerraformResourceAttribute, bool)`
-
-GetKeyAttributesOk returns a tuple with the KeyAttributes field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetKeyAttributes
-
-`func (o *TerraformResourceResponse) SetKeyAttributes(v []TerraformResourceAttribute)`
-
-SetKeyAttributes sets KeyAttributes field to given value.
-
+HasExtractedAt returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
