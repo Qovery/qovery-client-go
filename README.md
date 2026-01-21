@@ -362,6 +362,7 @@ Class | Method | HTTP request | Description
 *EnvironmentVariableAPI* | [**ListEnvironmentEnvironmentVariable**](docs/EnvironmentVariableAPI.md#listenvironmentenvironmentvariable) | **Get** /environment/{environmentId}/environmentVariable | List environment variables
 *EnvironmentsAPI* | [**CreateEnvironment**](docs/EnvironmentsAPI.md#createenvironment) | **Post** /project/{projectId}/environment | Create an environment
 *EnvironmentsAPI* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsAPI.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
+*EnvironmentsAPI* | [**GetProjectEnvironmentsOverview**](docs/EnvironmentsAPI.md#getprojectenvironmentsoverview) | **Get** /project/{projectId}/environmentOverview | List environments overview
 *EnvironmentsAPI* | [**GetProjectEnvironmentsStatus**](docs/EnvironmentsAPI.md#getprojectenvironmentsstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 *EnvironmentsAPI* | [**ListEnvironment**](docs/EnvironmentsAPI.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
 *GitRepositoriesAPI* | [**GetBitbucketRepositories**](docs/GitRepositoriesAPI.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
@@ -710,6 +711,7 @@ Class | Method | HTTP request | Description
  - [ClusterLogsResponse](docs/ClusterLogsResponse.md)
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
  - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
+ - [ClusterOverviewResponse](docs/ClusterOverviewResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)
  - [ClusterRegion](docs/ClusterRegion.md)
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)
@@ -847,6 +849,8 @@ Class | Method | HTTP request | Description
  - [EnvironmentLogsErrorUnderlyingError](docs/EnvironmentLogsErrorUnderlyingError.md)
  - [EnvironmentLogsMessage](docs/EnvironmentLogsMessage.md)
  - [EnvironmentModeEnum](docs/EnvironmentModeEnum.md)
+ - [EnvironmentOverviewResponse](docs/EnvironmentOverviewResponse.md)
+ - [EnvironmentOverviewResponseList](docs/EnvironmentOverviewResponseList.md)
  - [EnvironmentResponseList](docs/EnvironmentResponseList.md)
  - [EnvironmentServiceIdsAllRequest](docs/EnvironmentServiceIdsAllRequest.md)
  - [EnvironmentStats](docs/EnvironmentStats.md)

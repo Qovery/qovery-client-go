@@ -6489,6 +6489,37 @@ paths:
       summary: List total number of services for each environment of the project
       tags:
       - Environments
+  /project/{projectId}/environmentOverview:
+    get:
+      description: "Returns a list of environments with their overview information\
+        \ including deployment status, service count, and cluster details."
+      operationId: getProjectEnvironmentsOverview
+      parameters:
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentOverviewResponseList'
+          description: List environments overview
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environments overview
+      tags:
+      - Environments
   /environment/{environmentId}:
     delete:
       description: To delete an environment you must have the admin permission
@@ -25914,6 +25945,131 @@ components:
           items:
             $ref: '#/components/schemas/Environment'
           type: array
+      type: object
+    EnvironmentOverviewResponseList:
+      example:
+        results:
+        - mode: PRODUCTION
+          cluster:
+            name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_demo: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          service_count: 0
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          deployment_status:
+            last_deployment_state: null
+            origin: API
+            deployment_status: NEVER_DEPLOYED
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            last_deployment_id: last_deployment_id
+            total_deployment_duration_in_seconds: 0
+            triggered_by: triggered_by
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - mode: PRODUCTION
+          cluster:
+            name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_demo: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          service_count: 0
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          deployment_status:
+            last_deployment_state: null
+            origin: API
+            deployment_status: NEVER_DEPLOYED
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            last_deployment_id: last_deployment_id
+            total_deployment_duration_in_seconds: 0
+            triggered_by: triggered_by
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EnvironmentOverviewResponse'
+          type: array
+      type: object
+    EnvironmentOverviewResponse:
+      example:
+        mode: PRODUCTION
+        cluster:
+          name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_demo: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        service_count: 0
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        deployment_status:
+          last_deployment_state: null
+          origin: API
+          deployment_status: NEVER_DEPLOYED
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: BUILDING
+          last_deployment_id: last_deployment_id
+          total_deployment_duration_in_seconds: 0
+          triggered_by: triggered_by
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        name:
+          type: string
+        mode:
+          $ref: '#/components/schemas/EnvironmentModeEnum'
+        cluster:
+          $ref: '#/components/schemas/ClusterOverviewResponse'
+        service_count:
+          format: int32
+          type: integer
+        deployment_status:
+          $ref: '#/components/schemas/EnvironmentStatus'
+      required:
+      - created_at
+      - id
+      - mode
+      - name
+      - service_count
+      - updated_at
+      type: object
+    ClusterOverviewResponse:
+      example:
+        name: name
+        cloud_provider: AWS
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_demo: true
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        cloud_provider:
+          $ref: '#/components/schemas/CloudVendorEnum'
+        is_demo:
+          type: boolean
+      required:
+      - cloud_provider
+      - id
+      - is_demo
+      - name
       type: object
     EnvironmentDeploymentRule:
       allOf:

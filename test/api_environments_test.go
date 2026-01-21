@@ -50,6 +50,20 @@ func Test_qovery_EnvironmentsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EnvironmentsAPIService GetProjectEnvironmentsOverview", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var projectId string
+
+		resp, httpRes, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentsOverview(context.Background(), projectId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EnvironmentsAPIService GetProjectEnvironmentsStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
