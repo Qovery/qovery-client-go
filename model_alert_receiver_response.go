@@ -14,303 +14,117 @@ package qovery
 import (
 	"encoding/json"
 	"fmt"
-	"time"
 )
 
-// checks if the AlertReceiverResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertReceiverResponse{}
-
-// AlertReceiverResponse struct for AlertReceiverResponse
+// AlertReceiverResponse - struct for AlertReceiverResponse
 type AlertReceiverResponse struct {
-	Id                   string            `json:"id"`
-	CreatedAt            time.Time         `json:"created_at"`
-	UpdatedAt            *time.Time        `json:"updated_at,omitempty"`
-	Name                 string            `json:"name"`
-	Description          string            `json:"description"`
-	Type                 AlertReceiverType `json:"type"`
-	SendResolved         bool              `json:"send_resolved"`
-	AdditionalProperties map[string]interface{}
+	EmailAlertReceiverResponse *EmailAlertReceiverResponse
+	SlackAlertReceiverResponse *SlackAlertReceiverResponse
 }
 
-type _AlertReceiverResponse AlertReceiverResponse
-
-// NewAlertReceiverResponse instantiates a new AlertReceiverResponse object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAlertReceiverResponse(id string, createdAt time.Time, name string, description string, type_ AlertReceiverType, sendResolved bool) *AlertReceiverResponse {
-	this := AlertReceiverResponse{}
-	this.Id = id
-	this.CreatedAt = createdAt
-	this.Name = name
-	this.Description = description
-	this.Type = type_
-	this.SendResolved = sendResolved
-	return &this
-}
-
-// NewAlertReceiverResponseWithDefaults instantiates a new AlertReceiverResponse object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAlertReceiverResponseWithDefaults() *AlertReceiverResponse {
-	this := AlertReceiverResponse{}
-	return &this
-}
-
-// GetId returns the Id field value
-func (o *AlertReceiverResponse) GetId() string {
-	if o == nil {
-		var ret string
-		return ret
+// EmailAlertReceiverResponseAsAlertReceiverResponse is a convenience function that returns EmailAlertReceiverResponse wrapped in AlertReceiverResponse
+func EmailAlertReceiverResponseAsAlertReceiverResponse(v *EmailAlertReceiverResponse) AlertReceiverResponse {
+	return AlertReceiverResponse{
+		EmailAlertReceiverResponse: v,
 	}
-
-	return o.Id
 }
 
-// GetIdOk returns a tuple with the Id field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// SlackAlertReceiverResponseAsAlertReceiverResponse is a convenience function that returns SlackAlertReceiverResponse wrapped in AlertReceiverResponse
+func SlackAlertReceiverResponseAsAlertReceiverResponse(v *SlackAlertReceiverResponse) AlertReceiverResponse {
+	return AlertReceiverResponse{
+		SlackAlertReceiverResponse: v,
 	}
-	return &o.Id, true
 }
 
-// SetId sets field value
-func (o *AlertReceiverResponse) SetId(v string) {
-	o.Id = v
-}
-
-// GetCreatedAt returns the CreatedAt field value
-func (o *AlertReceiverResponse) GetCreatedAt() time.Time {
-	if o == nil {
-		var ret time.Time
-		return ret
-	}
-
-	return o.CreatedAt
-}
-
-// GetCreatedAtOk returns a tuple with the CreatedAt field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetCreatedAtOk() (*time.Time, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.CreatedAt, true
-}
-
-// SetCreatedAt sets field value
-func (o *AlertReceiverResponse) SetCreatedAt(v time.Time) {
-	o.CreatedAt = v
-}
-
-// GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *AlertReceiverResponse) GetUpdatedAt() time.Time {
-	if o == nil || IsNil(o.UpdatedAt) {
-		var ret time.Time
-		return ret
-	}
-	return *o.UpdatedAt
-}
-
-// GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetUpdatedAtOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.UpdatedAt) {
-		return nil, false
-	}
-	return o.UpdatedAt, true
-}
-
-// HasUpdatedAt returns a boolean if a field has been set.
-func (o *AlertReceiverResponse) HasUpdatedAt() bool {
-	if o != nil && !IsNil(o.UpdatedAt) {
-		return true
-	}
-
-	return false
-}
-
-// SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *AlertReceiverResponse) SetUpdatedAt(v time.Time) {
-	o.UpdatedAt = &v
-}
-
-// GetName returns the Name field value
-func (o *AlertReceiverResponse) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AlertReceiverResponse) SetName(v string) {
-	o.Name = v
-}
-
-// GetDescription returns the Description field value
-func (o *AlertReceiverResponse) GetDescription() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Description, true
-}
-
-// SetDescription sets field value
-func (o *AlertReceiverResponse) SetDescription(v string) {
-	o.Description = v
-}
-
-// GetType returns the Type field value
-func (o *AlertReceiverResponse) GetType() AlertReceiverType {
-	if o == nil {
-		var ret AlertReceiverType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetTypeOk() (*AlertReceiverType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AlertReceiverResponse) SetType(v AlertReceiverType) {
-	o.Type = v
-}
-
-// GetSendResolved returns the SendResolved field value
-func (o *AlertReceiverResponse) GetSendResolved() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.SendResolved
-}
-
-// GetSendResolvedOk returns a tuple with the SendResolved field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverResponse) GetSendResolvedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SendResolved, true
-}
-
-// SetSendResolved sets field value
-func (o *AlertReceiverResponse) SetSendResolved(v bool) {
-	o.SendResolved = v
-}
-
-func (o AlertReceiverResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AlertReceiverResponse) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AlertReceiverResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["id"] = o.Id
-	toSerialize["created_at"] = o.CreatedAt
-	if !IsNil(o.UpdatedAt) {
-		toSerialize["updated_at"] = o.UpdatedAt
-	}
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
-	toSerialize["type"] = o.Type
-	toSerialize["send_resolved"] = o.SendResolved
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	return toSerialize, nil
-}
-
-func (o *AlertReceiverResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"id",
-		"created_at",
-		"name",
-		"description",
-		"type",
-		"send_resolved",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'EMAIL'
+	if jsonDict["type"] == "EMAIL" {
+		// try to unmarshal JSON data into EmailAlertReceiverResponse
+		err = json.Unmarshal(data, &dst.EmailAlertReceiverResponse)
+		if err == nil {
+			return nil // data stored in dst.EmailAlertReceiverResponse, return on the first match
+		} else {
+			dst.EmailAlertReceiverResponse = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverResponse as EmailAlertReceiverResponse: %s", err.Error())
 		}
 	}
 
-	varAlertReceiverResponse := _AlertReceiverResponse{}
-
-	err = json.Unmarshal(data, &varAlertReceiverResponse)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'SLACK'
+	if jsonDict["type"] == "SLACK" {
+		// try to unmarshal JSON data into SlackAlertReceiverResponse
+		err = json.Unmarshal(data, &dst.SlackAlertReceiverResponse)
+		if err == nil {
+			return nil // data stored in dst.SlackAlertReceiverResponse, return on the first match
+		} else {
+			dst.SlackAlertReceiverResponse = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverResponse as SlackAlertReceiverResponse: %s", err.Error())
+		}
 	}
 
-	*o = AlertReceiverResponse(varAlertReceiverResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "id")
-		delete(additionalProperties, "created_at")
-		delete(additionalProperties, "updated_at")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "send_resolved")
-		o.AdditionalProperties = additionalProperties
+	// check if the discriminator value is 'EmailAlertReceiverResponse'
+	if jsonDict["type"] == "EmailAlertReceiverResponse" {
+		// try to unmarshal JSON data into EmailAlertReceiverResponse
+		err = json.Unmarshal(data, &dst.EmailAlertReceiverResponse)
+		if err == nil {
+			return nil // data stored in dst.EmailAlertReceiverResponse, return on the first match
+		} else {
+			dst.EmailAlertReceiverResponse = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverResponse as EmailAlertReceiverResponse: %s", err.Error())
+		}
 	}
 
-	return err
+	// check if the discriminator value is 'SlackAlertReceiverResponse'
+	if jsonDict["type"] == "SlackAlertReceiverResponse" {
+		// try to unmarshal JSON data into SlackAlertReceiverResponse
+		err = json.Unmarshal(data, &dst.SlackAlertReceiverResponse)
+		if err == nil {
+			return nil // data stored in dst.SlackAlertReceiverResponse, return on the first match
+		} else {
+			dst.SlackAlertReceiverResponse = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverResponse as SlackAlertReceiverResponse: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AlertReceiverResponse) MarshalJSON() ([]byte, error) {
+	if src.EmailAlertReceiverResponse != nil {
+		return json.Marshal(&src.EmailAlertReceiverResponse)
+	}
+
+	if src.SlackAlertReceiverResponse != nil {
+		return json.Marshal(&src.SlackAlertReceiverResponse)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AlertReceiverResponse) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.EmailAlertReceiverResponse != nil {
+		return obj.EmailAlertReceiverResponse
+	}
+
+	if obj.SlackAlertReceiverResponse != nil {
+		return obj.SlackAlertReceiverResponse
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAlertReceiverResponse struct {

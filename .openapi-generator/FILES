@@ -106,8 +106,10 @@ docs/AksInfrastructureOutputs.md
 docs/AlertPresentation.md
 docs/AlertPresentationResponse.md
 docs/AlertReceiverCreationRequest.md
+docs/AlertReceiverCreationRequestBase.md
 docs/AlertReceiverCreationValidationRequest.md
 docs/AlertReceiverEditRequest.md
+docs/AlertReceiverEditRequestBase.md
 docs/AlertReceiverList.md
 docs/AlertReceiverResponse.md
 docs/AlertReceiverType.md
@@ -382,6 +384,9 @@ docs/DockerfileCheckResponse.md
 docs/DockerfileFragmentFile.md
 docs/DockerfileFragmentInline.md
 docs/EksInfrastructureOutputs.md
+docs/EmailAlertReceiverCreationRequest.md
+docs/EmailAlertReceiverEditRequest.md
+docs/EmailAlertReceiverResponse.md
 docs/EnterpriseConnectionDto.md
 docs/EnterpriseConnectionResponseList.md
 docs/EnvDeploymentStatus.md
@@ -781,6 +786,7 @@ docs/SignUp.md
 docs/SignUpRequest.md
 docs/SlackAlertReceiverCreationRequest.md
 docs/SlackAlertReceiverEditRequest.md
+docs/SlackAlertReceiverResponse.md
 docs/Stage.md
 docs/StageStatusEnum.md
 docs/StageStepMetric.md
@@ -871,8 +877,10 @@ model_aks_infrastructure_outputs.go
 model_alert_presentation.go
 model_alert_presentation_response.go
 model_alert_receiver_creation_request.go
+model_alert_receiver_creation_request_base.go
 model_alert_receiver_creation_validation_request.go
 model_alert_receiver_edit_request.go
+model_alert_receiver_edit_request_base.go
 model_alert_receiver_list.go
 model_alert_receiver_response.go
 model_alert_receiver_type.go
@@ -1114,6 +1122,9 @@ model_dockerfile_check_response.go
 model_dockerfile_fragment_file.go
 model_dockerfile_fragment_inline.go
 model_eks_infrastructure_outputs.go
+model_email_alert_receiver_creation_request.go
+model_email_alert_receiver_edit_request.go
+model_email_alert_receiver_response.go
 model_enterprise_connection_dto.go
 model_enterprise_connection_response_list.go
 model_env_deployment_status.go
@@ -1466,6 +1477,7 @@ model_sign_up.go
 model_sign_up_request.go
 model_slack_alert_receiver_creation_request.go
 model_slack_alert_receiver_edit_request.go
+model_slack_alert_receiver_response.go
 model_stage.go
 model_stage_status_enum.go
 model_stage_step_metric.go

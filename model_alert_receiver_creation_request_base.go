@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the SlackAlertReceiverCreationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SlackAlertReceiverCreationRequest{}
+// checks if the AlertReceiverCreationRequestBase type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &AlertReceiverCreationRequestBase{}
 
-// SlackAlertReceiverCreationRequest struct for SlackAlertReceiverCreationRequest
-type SlackAlertReceiverCreationRequest struct {
+// AlertReceiverCreationRequestBase struct for AlertReceiverCreationRequestBase
+type AlertReceiverCreationRequestBase struct {
 	OrganizationId       string            `json:"organization_id"`
 	Name                 string            `json:"name"`
 	Description          string            `json:"description"`
@@ -28,37 +28,35 @@ type SlackAlertReceiverCreationRequest struct {
 	SendResolved         bool              `json:"send_resolved"`
 	Owner                NullableString    `json:"owner,omitempty"`
 	Severity             NullableString    `json:"severity,omitempty"`
-	WebhookUrl           string            `json:"webhook_url"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _SlackAlertReceiverCreationRequest SlackAlertReceiverCreationRequest
+type _AlertReceiverCreationRequestBase AlertReceiverCreationRequestBase
 
-// NewSlackAlertReceiverCreationRequest instantiates a new SlackAlertReceiverCreationRequest object
+// NewAlertReceiverCreationRequestBase instantiates a new AlertReceiverCreationRequestBase object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSlackAlertReceiverCreationRequest(organizationId string, name string, description string, type_ AlertReceiverType, sendResolved bool, webhookUrl string) *SlackAlertReceiverCreationRequest {
-	this := SlackAlertReceiverCreationRequest{}
+func NewAlertReceiverCreationRequestBase(organizationId string, name string, description string, type_ AlertReceiverType, sendResolved bool) *AlertReceiverCreationRequestBase {
+	this := AlertReceiverCreationRequestBase{}
 	this.OrganizationId = organizationId
 	this.Name = name
 	this.Description = description
 	this.Type = type_
 	this.SendResolved = sendResolved
-	this.WebhookUrl = webhookUrl
 	return &this
 }
 
-// NewSlackAlertReceiverCreationRequestWithDefaults instantiates a new SlackAlertReceiverCreationRequest object
+// NewAlertReceiverCreationRequestBaseWithDefaults instantiates a new AlertReceiverCreationRequestBase object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSlackAlertReceiverCreationRequestWithDefaults() *SlackAlertReceiverCreationRequest {
-	this := SlackAlertReceiverCreationRequest{}
+func NewAlertReceiverCreationRequestBaseWithDefaults() *AlertReceiverCreationRequestBase {
+	this := AlertReceiverCreationRequestBase{}
 	return &this
 }
 
 // GetOrganizationId returns the OrganizationId field value
-func (o *SlackAlertReceiverCreationRequest) GetOrganizationId() string {
+func (o *AlertReceiverCreationRequestBase) GetOrganizationId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -69,7 +67,7 @@ func (o *SlackAlertReceiverCreationRequest) GetOrganizationId() string {
 
 // GetOrganizationIdOk returns a tuple with the OrganizationId field value
 // and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetOrganizationIdOk() (*string, bool) {
+func (o *AlertReceiverCreationRequestBase) GetOrganizationIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -77,12 +75,12 @@ func (o *SlackAlertReceiverCreationRequest) GetOrganizationIdOk() (*string, bool
 }
 
 // SetOrganizationId sets field value
-func (o *SlackAlertReceiverCreationRequest) SetOrganizationId(v string) {
+func (o *AlertReceiverCreationRequestBase) SetOrganizationId(v string) {
 	o.OrganizationId = v
 }
 
 // GetName returns the Name field value
-func (o *SlackAlertReceiverCreationRequest) GetName() string {
+func (o *AlertReceiverCreationRequestBase) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -93,7 +91,7 @@ func (o *SlackAlertReceiverCreationRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetNameOk() (*string, bool) {
+func (o *AlertReceiverCreationRequestBase) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,12 +99,12 @@ func (o *SlackAlertReceiverCreationRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *SlackAlertReceiverCreationRequest) SetName(v string) {
+func (o *AlertReceiverCreationRequestBase) SetName(v string) {
 	o.Name = v
 }
 
 // GetDescription returns the Description field value
-func (o *SlackAlertReceiverCreationRequest) GetDescription() string {
+func (o *AlertReceiverCreationRequestBase) GetDescription() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -117,7 +115,7 @@ func (o *SlackAlertReceiverCreationRequest) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value
 // and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetDescriptionOk() (*string, bool) {
+func (o *AlertReceiverCreationRequestBase) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -125,12 +123,12 @@ func (o *SlackAlertReceiverCreationRequest) GetDescriptionOk() (*string, bool) {
 }
 
 // SetDescription sets field value
-func (o *SlackAlertReceiverCreationRequest) SetDescription(v string) {
+func (o *AlertReceiverCreationRequestBase) SetDescription(v string) {
 	o.Description = v
 }
 
 // GetType returns the Type field value
-func (o *SlackAlertReceiverCreationRequest) GetType() AlertReceiverType {
+func (o *AlertReceiverCreationRequestBase) GetType() AlertReceiverType {
 	if o == nil {
 		var ret AlertReceiverType
 		return ret
@@ -141,7 +139,7 @@ func (o *SlackAlertReceiverCreationRequest) GetType() AlertReceiverType {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetTypeOk() (*AlertReceiverType, bool) {
+func (o *AlertReceiverCreationRequestBase) GetTypeOk() (*AlertReceiverType, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -149,12 +147,12 @@ func (o *SlackAlertReceiverCreationRequest) GetTypeOk() (*AlertReceiverType, boo
 }
 
 // SetType sets field value
-func (o *SlackAlertReceiverCreationRequest) SetType(v AlertReceiverType) {
+func (o *AlertReceiverCreationRequestBase) SetType(v AlertReceiverType) {
 	o.Type = v
 }
 
 // GetSendResolved returns the SendResolved field value
-func (o *SlackAlertReceiverCreationRequest) GetSendResolved() bool {
+func (o *AlertReceiverCreationRequestBase) GetSendResolved() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -165,7 +163,7 @@ func (o *SlackAlertReceiverCreationRequest) GetSendResolved() bool {
 
 // GetSendResolvedOk returns a tuple with the SendResolved field value
 // and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetSendResolvedOk() (*bool, bool) {
+func (o *AlertReceiverCreationRequestBase) GetSendResolvedOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -173,12 +171,12 @@ func (o *SlackAlertReceiverCreationRequest) GetSendResolvedOk() (*bool, bool) {
 }
 
 // SetSendResolved sets field value
-func (o *SlackAlertReceiverCreationRequest) SetSendResolved(v bool) {
+func (o *AlertReceiverCreationRequestBase) SetSendResolved(v bool) {
 	o.SendResolved = v
 }
 
 // GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SlackAlertReceiverCreationRequest) GetOwner() string {
+func (o *AlertReceiverCreationRequestBase) GetOwner() string {
 	if o == nil || IsNil(o.Owner.Get()) {
 		var ret string
 		return ret
@@ -189,7 +187,7 @@ func (o *SlackAlertReceiverCreationRequest) GetOwner() string {
 // GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SlackAlertReceiverCreationRequest) GetOwnerOk() (*string, bool) {
+func (o *AlertReceiverCreationRequestBase) GetOwnerOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -197,7 +195,7 @@ func (o *SlackAlertReceiverCreationRequest) GetOwnerOk() (*string, bool) {
 }
 
 // HasOwner returns a boolean if a field has been set.
-func (o *SlackAlertReceiverCreationRequest) HasOwner() bool {
+func (o *AlertReceiverCreationRequestBase) HasOwner() bool {
 	if o != nil && o.Owner.IsSet() {
 		return true
 	}
@@ -206,22 +204,22 @@ func (o *SlackAlertReceiverCreationRequest) HasOwner() bool {
 }
 
 // SetOwner gets a reference to the given NullableString and assigns it to the Owner field.
-func (o *SlackAlertReceiverCreationRequest) SetOwner(v string) {
+func (o *AlertReceiverCreationRequestBase) SetOwner(v string) {
 	o.Owner.Set(&v)
 }
 
 // SetOwnerNil sets the value for Owner to be an explicit nil
-func (o *SlackAlertReceiverCreationRequest) SetOwnerNil() {
+func (o *AlertReceiverCreationRequestBase) SetOwnerNil() {
 	o.Owner.Set(nil)
 }
 
 // UnsetOwner ensures that no value is present for Owner, not even an explicit nil
-func (o *SlackAlertReceiverCreationRequest) UnsetOwner() {
+func (o *AlertReceiverCreationRequestBase) UnsetOwner() {
 	o.Owner.Unset()
 }
 
 // GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SlackAlertReceiverCreationRequest) GetSeverity() string {
+func (o *AlertReceiverCreationRequestBase) GetSeverity() string {
 	if o == nil || IsNil(o.Severity.Get()) {
 		var ret string
 		return ret
@@ -232,7 +230,7 @@ func (o *SlackAlertReceiverCreationRequest) GetSeverity() string {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SlackAlertReceiverCreationRequest) GetSeverityOk() (*string, bool) {
+func (o *AlertReceiverCreationRequestBase) GetSeverityOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -240,7 +238,7 @@ func (o *SlackAlertReceiverCreationRequest) GetSeverityOk() (*string, bool) {
 }
 
 // HasSeverity returns a boolean if a field has been set.
-func (o *SlackAlertReceiverCreationRequest) HasSeverity() bool {
+func (o *AlertReceiverCreationRequestBase) HasSeverity() bool {
 	if o != nil && o.Severity.IsSet() {
 		return true
 	}
@@ -249,45 +247,21 @@ func (o *SlackAlertReceiverCreationRequest) HasSeverity() bool {
 }
 
 // SetSeverity gets a reference to the given NullableString and assigns it to the Severity field.
-func (o *SlackAlertReceiverCreationRequest) SetSeverity(v string) {
+func (o *AlertReceiverCreationRequestBase) SetSeverity(v string) {
 	o.Severity.Set(&v)
 }
 
 // SetSeverityNil sets the value for Severity to be an explicit nil
-func (o *SlackAlertReceiverCreationRequest) SetSeverityNil() {
+func (o *AlertReceiverCreationRequestBase) SetSeverityNil() {
 	o.Severity.Set(nil)
 }
 
 // UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
-func (o *SlackAlertReceiverCreationRequest) UnsetSeverity() {
+func (o *AlertReceiverCreationRequestBase) UnsetSeverity() {
 	o.Severity.Unset()
 }
 
-// GetWebhookUrl returns the WebhookUrl field value
-func (o *SlackAlertReceiverCreationRequest) GetWebhookUrl() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.WebhookUrl
-}
-
-// GetWebhookUrlOk returns a tuple with the WebhookUrl field value
-// and a boolean to check if the value has been set.
-func (o *SlackAlertReceiverCreationRequest) GetWebhookUrlOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.WebhookUrl, true
-}
-
-// SetWebhookUrl sets field value
-func (o *SlackAlertReceiverCreationRequest) SetWebhookUrl(v string) {
-	o.WebhookUrl = v
-}
-
-func (o SlackAlertReceiverCreationRequest) MarshalJSON() ([]byte, error) {
+func (o AlertReceiverCreationRequestBase) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -295,7 +269,7 @@ func (o SlackAlertReceiverCreationRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SlackAlertReceiverCreationRequest) ToMap() (map[string]interface{}, error) {
+func (o AlertReceiverCreationRequestBase) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["organization_id"] = o.OrganizationId
 	toSerialize["name"] = o.Name
@@ -308,7 +282,6 @@ func (o SlackAlertReceiverCreationRequest) ToMap() (map[string]interface{}, erro
 	if o.Severity.IsSet() {
 		toSerialize["severity"] = o.Severity.Get()
 	}
-	toSerialize["webhook_url"] = o.WebhookUrl
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -317,7 +290,7 @@ func (o SlackAlertReceiverCreationRequest) ToMap() (map[string]interface{}, erro
 	return toSerialize, nil
 }
 
-func (o *SlackAlertReceiverCreationRequest) UnmarshalJSON(data []byte) (err error) {
+func (o *AlertReceiverCreationRequestBase) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -327,7 +300,6 @@ func (o *SlackAlertReceiverCreationRequest) UnmarshalJSON(data []byte) (err erro
 		"description",
 		"type",
 		"send_resolved",
-		"webhook_url",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -344,15 +316,15 @@ func (o *SlackAlertReceiverCreationRequest) UnmarshalJSON(data []byte) (err erro
 		}
 	}
 
-	varSlackAlertReceiverCreationRequest := _SlackAlertReceiverCreationRequest{}
+	varAlertReceiverCreationRequestBase := _AlertReceiverCreationRequestBase{}
 
-	err = json.Unmarshal(data, &varSlackAlertReceiverCreationRequest)
+	err = json.Unmarshal(data, &varAlertReceiverCreationRequestBase)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SlackAlertReceiverCreationRequest(varSlackAlertReceiverCreationRequest)
+	*o = AlertReceiverCreationRequestBase(varAlertReceiverCreationRequestBase)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -364,45 +336,44 @@ func (o *SlackAlertReceiverCreationRequest) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "send_resolved")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "severity")
-		delete(additionalProperties, "webhook_url")
 		o.AdditionalProperties = additionalProperties
 	}
 
 	return err
 }
 
-type NullableSlackAlertReceiverCreationRequest struct {
-	value *SlackAlertReceiverCreationRequest
+type NullableAlertReceiverCreationRequestBase struct {
+	value *AlertReceiverCreationRequestBase
 	isSet bool
 }
 
-func (v NullableSlackAlertReceiverCreationRequest) Get() *SlackAlertReceiverCreationRequest {
+func (v NullableAlertReceiverCreationRequestBase) Get() *AlertReceiverCreationRequestBase {
 	return v.value
 }
 
-func (v *NullableSlackAlertReceiverCreationRequest) Set(val *SlackAlertReceiverCreationRequest) {
+func (v *NullableAlertReceiverCreationRequestBase) Set(val *AlertReceiverCreationRequestBase) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSlackAlertReceiverCreationRequest) IsSet() bool {
+func (v NullableAlertReceiverCreationRequestBase) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSlackAlertReceiverCreationRequest) Unset() {
+func (v *NullableAlertReceiverCreationRequestBase) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSlackAlertReceiverCreationRequest(val *SlackAlertReceiverCreationRequest) *NullableSlackAlertReceiverCreationRequest {
-	return &NullableSlackAlertReceiverCreationRequest{value: val, isSet: true}
+func NewNullableAlertReceiverCreationRequestBase(val *AlertReceiverCreationRequestBase) *NullableAlertReceiverCreationRequestBase {
+	return &NullableAlertReceiverCreationRequestBase{value: val, isSet: true}
 }
 
-func (v NullableSlackAlertReceiverCreationRequest) MarshalJSON() ([]byte, error) {
+func (v NullableAlertReceiverCreationRequestBase) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSlackAlertReceiverCreationRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableAlertReceiverCreationRequestBase) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

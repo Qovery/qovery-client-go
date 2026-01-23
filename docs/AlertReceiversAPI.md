@@ -35,7 +35,7 @@ import (
 )
 
 func main() {
-	alertReceiverCreationRequest := *openapiclient.NewAlertReceiverCreationRequest("OrganizationId_example", "Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false) // AlertReceiverCreationRequest |  (optional)
+	alertReceiverCreationRequest := openapiclient.AlertReceiverCreationRequest{EmailAlertReceiverCreationRequest: openapiclient.NewEmailAlertReceiverCreationRequest("OrganizationId_example", "Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false, "To_example", "From_example", "smtp.example.com:587", "AuthPassword_example", false)} // AlertReceiverCreationRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -170,7 +170,7 @@ import (
 
 func main() {
 	alertReceiverId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Alert Receiver ID
-	alertReceiverEditRequest := *openapiclient.NewAlertReceiverEditRequest("Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false) // AlertReceiverEditRequest |  (optional)
+	alertReceiverEditRequest := openapiclient.AlertReceiverEditRequest{EmailAlertReceiverEditRequest: openapiclient.NewEmailAlertReceiverEditRequest("Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false, "To_example", "From_example", "Smarthost_example", false)} // AlertReceiverEditRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -451,7 +451,7 @@ import (
 )
 
 func main() {
-	alertReceiverCreationValidationRequest := *openapiclient.NewAlertReceiverCreationValidationRequest(*openapiclient.NewAlertReceiverCreationRequest("OrganizationId_example", "Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false)) // AlertReceiverCreationValidationRequest |  (optional)
+	alertReceiverCreationValidationRequest := *openapiclient.NewAlertReceiverCreationValidationRequest(openapiclient.AlertReceiverCreationRequest{EmailAlertReceiverCreationRequest: openapiclient.NewEmailAlertReceiverCreationRequest("OrganizationId_example", "Name_example", "Description_example", openapiclient.AlertReceiverType("SLACK"), false, "To_example", "From_example", "smtp.example.com:587", "AuthPassword_example", false)}) // AlertReceiverCreationValidationRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

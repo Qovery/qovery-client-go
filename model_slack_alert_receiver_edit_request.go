@@ -14,8 +14,6 @@ package qovery
 import (
 	"encoding/json"
 	"fmt"
-	"reflect"
-	"strings"
 )
 
 // checks if the SlackAlertReceiverEditRequest type satisfies the MappedNullable interface at compile time
@@ -23,7 +21,13 @@ var _ MappedNullable = &SlackAlertReceiverEditRequest{}
 
 // SlackAlertReceiverEditRequest struct for SlackAlertReceiverEditRequest
 type SlackAlertReceiverEditRequest struct {
-	AlertReceiverEditRequest
+	Name         string            `json:"name"`
+	Description  string            `json:"description"`
+	Type         AlertReceiverType `json:"type"`
+	SendResolved bool              `json:"send_resolved"`
+	Owner        NullableString    `json:"owner,omitempty"`
+	Severity     NullableString    `json:"severity,omitempty"`
+	// Update webhook URL. If null, keeps existing value.
 	WebhookUrl           NullableString `json:"webhook_url,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -49,6 +53,188 @@ func NewSlackAlertReceiverEditRequest(name string, description string, type_ Ale
 func NewSlackAlertReceiverEditRequestWithDefaults() *SlackAlertReceiverEditRequest {
 	this := SlackAlertReceiverEditRequest{}
 	return &this
+}
+
+// GetName returns the Name field value
+func (o *SlackAlertReceiverEditRequest) GetName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Name
+}
+
+// GetNameOk returns a tuple with the Name field value
+// and a boolean to check if the value has been set.
+func (o *SlackAlertReceiverEditRequest) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Name, true
+}
+
+// SetName sets field value
+func (o *SlackAlertReceiverEditRequest) SetName(v string) {
+	o.Name = v
+}
+
+// GetDescription returns the Description field value
+func (o *SlackAlertReceiverEditRequest) GetDescription() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Description
+}
+
+// GetDescriptionOk returns a tuple with the Description field value
+// and a boolean to check if the value has been set.
+func (o *SlackAlertReceiverEditRequest) GetDescriptionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Description, true
+}
+
+// SetDescription sets field value
+func (o *SlackAlertReceiverEditRequest) SetDescription(v string) {
+	o.Description = v
+}
+
+// GetType returns the Type field value
+func (o *SlackAlertReceiverEditRequest) GetType() AlertReceiverType {
+	if o == nil {
+		var ret AlertReceiverType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *SlackAlertReceiverEditRequest) GetTypeOk() (*AlertReceiverType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *SlackAlertReceiverEditRequest) SetType(v AlertReceiverType) {
+	o.Type = v
+}
+
+// GetSendResolved returns the SendResolved field value
+func (o *SlackAlertReceiverEditRequest) GetSendResolved() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.SendResolved
+}
+
+// GetSendResolvedOk returns a tuple with the SendResolved field value
+// and a boolean to check if the value has been set.
+func (o *SlackAlertReceiverEditRequest) GetSendResolvedOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.SendResolved, true
+}
+
+// SetSendResolved sets field value
+func (o *SlackAlertReceiverEditRequest) SetSendResolved(v bool) {
+	o.SendResolved = v
+}
+
+// GetOwner returns the Owner field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SlackAlertReceiverEditRequest) GetOwner() string {
+	if o == nil || IsNil(o.Owner.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Owner.Get()
+}
+
+// GetOwnerOk returns a tuple with the Owner field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SlackAlertReceiverEditRequest) GetOwnerOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Owner.Get(), o.Owner.IsSet()
+}
+
+// HasOwner returns a boolean if a field has been set.
+func (o *SlackAlertReceiverEditRequest) HasOwner() bool {
+	if o != nil && o.Owner.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwner gets a reference to the given NullableString and assigns it to the Owner field.
+func (o *SlackAlertReceiverEditRequest) SetOwner(v string) {
+	o.Owner.Set(&v)
+}
+
+// SetOwnerNil sets the value for Owner to be an explicit nil
+func (o *SlackAlertReceiverEditRequest) SetOwnerNil() {
+	o.Owner.Set(nil)
+}
+
+// UnsetOwner ensures that no value is present for Owner, not even an explicit nil
+func (o *SlackAlertReceiverEditRequest) UnsetOwner() {
+	o.Owner.Unset()
+}
+
+// GetSeverity returns the Severity field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SlackAlertReceiverEditRequest) GetSeverity() string {
+	if o == nil || IsNil(o.Severity.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Severity.Get()
+}
+
+// GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SlackAlertReceiverEditRequest) GetSeverityOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Severity.Get(), o.Severity.IsSet()
+}
+
+// HasSeverity returns a boolean if a field has been set.
+func (o *SlackAlertReceiverEditRequest) HasSeverity() bool {
+	if o != nil && o.Severity.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSeverity gets a reference to the given NullableString and assigns it to the Severity field.
+func (o *SlackAlertReceiverEditRequest) SetSeverity(v string) {
+	o.Severity.Set(&v)
+}
+
+// SetSeverityNil sets the value for Severity to be an explicit nil
+func (o *SlackAlertReceiverEditRequest) SetSeverityNil() {
+	o.Severity.Set(nil)
+}
+
+// UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
+func (o *SlackAlertReceiverEditRequest) UnsetSeverity() {
+	o.Severity.Unset()
 }
 
 // GetWebhookUrl returns the WebhookUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -104,13 +290,15 @@ func (o SlackAlertReceiverEditRequest) MarshalJSON() ([]byte, error) {
 
 func (o SlackAlertReceiverEditRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	serializedAlertReceiverEditRequest, errAlertReceiverEditRequest := json.Marshal(o.AlertReceiverEditRequest)
-	if errAlertReceiverEditRequest != nil {
-		return map[string]interface{}{}, errAlertReceiverEditRequest
+	toSerialize["name"] = o.Name
+	toSerialize["description"] = o.Description
+	toSerialize["type"] = o.Type
+	toSerialize["send_resolved"] = o.SendResolved
+	if o.Owner.IsSet() {
+		toSerialize["owner"] = o.Owner.Get()
 	}
-	errAlertReceiverEditRequest = json.Unmarshal([]byte(serializedAlertReceiverEditRequest), &toSerialize)
-	if errAlertReceiverEditRequest != nil {
-		return map[string]interface{}{}, errAlertReceiverEditRequest
+	if o.Severity.IsSet() {
+		toSerialize["severity"] = o.Severity.Get()
 	}
 	if o.WebhookUrl.IsSet() {
 		toSerialize["webhook_url"] = o.WebhookUrl.Get()
@@ -148,53 +336,26 @@ func (o *SlackAlertReceiverEditRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	type SlackAlertReceiverEditRequestWithoutEmbeddedStruct struct {
-		WebhookUrl NullableString `json:"webhook_url,omitempty"`
-	}
-
-	varSlackAlertReceiverEditRequestWithoutEmbeddedStruct := SlackAlertReceiverEditRequestWithoutEmbeddedStruct{}
-
-	err = json.Unmarshal(data, &varSlackAlertReceiverEditRequestWithoutEmbeddedStruct)
-	if err == nil {
-		varSlackAlertReceiverEditRequest := _SlackAlertReceiverEditRequest{}
-		varSlackAlertReceiverEditRequest.WebhookUrl = varSlackAlertReceiverEditRequestWithoutEmbeddedStruct.WebhookUrl
-		*o = SlackAlertReceiverEditRequest(varSlackAlertReceiverEditRequest)
-	} else {
-		return err
-	}
-
 	varSlackAlertReceiverEditRequest := _SlackAlertReceiverEditRequest{}
 
 	err = json.Unmarshal(data, &varSlackAlertReceiverEditRequest)
-	if err == nil {
-		o.AlertReceiverEditRequest = varSlackAlertReceiverEditRequest.AlertReceiverEditRequest
-	} else {
+
+	if err != nil {
 		return err
 	}
+
+	*o = SlackAlertReceiverEditRequest(varSlackAlertReceiverEditRequest)
 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "name")
+		delete(additionalProperties, "description")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "send_resolved")
+		delete(additionalProperties, "owner")
+		delete(additionalProperties, "severity")
 		delete(additionalProperties, "webhook_url")
-
-		// remove fields from embedded structs
-		reflectAlertReceiverEditRequest := reflect.ValueOf(o.AlertReceiverEditRequest)
-		for i := 0; i < reflectAlertReceiverEditRequest.Type().NumField(); i++ {
-			t := reflectAlertReceiverEditRequest.Type().Field(i)
-
-			if jsonTag := t.Tag.Get("json"); jsonTag != "" {
-				fieldName := ""
-				if commaIdx := strings.Index(jsonTag, ","); commaIdx > 0 {
-					fieldName = jsonTag[:commaIdx]
-				} else {
-					fieldName = jsonTag
-				}
-				if fieldName != "AdditionalProperties" {
-					delete(additionalProperties, fieldName)
-				}
-			}
-		}
-
 		o.AdditionalProperties = additionalProperties
 	}
 

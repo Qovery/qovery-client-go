@@ -16,234 +16,115 @@ import (
 	"fmt"
 )
 
-// checks if the AlertReceiverCreationRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &AlertReceiverCreationRequest{}
-
-// AlertReceiverCreationRequest struct for AlertReceiverCreationRequest
+// AlertReceiverCreationRequest - struct for AlertReceiverCreationRequest
 type AlertReceiverCreationRequest struct {
-	OrganizationId       string            `json:"organization_id"`
-	Name                 string            `json:"name"`
-	Description          string            `json:"description"`
-	Type                 AlertReceiverType `json:"type"`
-	SendResolved         bool              `json:"send_resolved"`
-	AdditionalProperties map[string]interface{}
+	EmailAlertReceiverCreationRequest *EmailAlertReceiverCreationRequest
+	SlackAlertReceiverCreationRequest *SlackAlertReceiverCreationRequest
 }
 
-type _AlertReceiverCreationRequest AlertReceiverCreationRequest
-
-// NewAlertReceiverCreationRequest instantiates a new AlertReceiverCreationRequest object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewAlertReceiverCreationRequest(organizationId string, name string, description string, type_ AlertReceiverType, sendResolved bool) *AlertReceiverCreationRequest {
-	this := AlertReceiverCreationRequest{}
-	this.OrganizationId = organizationId
-	this.Name = name
-	this.Description = description
-	this.Type = type_
-	this.SendResolved = sendResolved
-	return &this
-}
-
-// NewAlertReceiverCreationRequestWithDefaults instantiates a new AlertReceiverCreationRequest object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewAlertReceiverCreationRequestWithDefaults() *AlertReceiverCreationRequest {
-	this := AlertReceiverCreationRequest{}
-	return &this
-}
-
-// GetOrganizationId returns the OrganizationId field value
-func (o *AlertReceiverCreationRequest) GetOrganizationId() string {
-	if o == nil {
-		var ret string
-		return ret
+// EmailAlertReceiverCreationRequestAsAlertReceiverCreationRequest is a convenience function that returns EmailAlertReceiverCreationRequest wrapped in AlertReceiverCreationRequest
+func EmailAlertReceiverCreationRequestAsAlertReceiverCreationRequest(v *EmailAlertReceiverCreationRequest) AlertReceiverCreationRequest {
+	return AlertReceiverCreationRequest{
+		EmailAlertReceiverCreationRequest: v,
 	}
-
-	return o.OrganizationId
 }
 
-// GetOrganizationIdOk returns a tuple with the OrganizationId field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverCreationRequest) GetOrganizationIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// SlackAlertReceiverCreationRequestAsAlertReceiverCreationRequest is a convenience function that returns SlackAlertReceiverCreationRequest wrapped in AlertReceiverCreationRequest
+func SlackAlertReceiverCreationRequestAsAlertReceiverCreationRequest(v *SlackAlertReceiverCreationRequest) AlertReceiverCreationRequest {
+	return AlertReceiverCreationRequest{
+		SlackAlertReceiverCreationRequest: v,
 	}
-	return &o.OrganizationId, true
 }
 
-// SetOrganizationId sets field value
-func (o *AlertReceiverCreationRequest) SetOrganizationId(v string) {
-	o.OrganizationId = v
-}
-
-// GetName returns the Name field value
-func (o *AlertReceiverCreationRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Name
-}
-
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverCreationRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Name, true
-}
-
-// SetName sets field value
-func (o *AlertReceiverCreationRequest) SetName(v string) {
-	o.Name = v
-}
-
-// GetDescription returns the Description field value
-func (o *AlertReceiverCreationRequest) GetDescription() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Description
-}
-
-// GetDescriptionOk returns a tuple with the Description field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverCreationRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Description, true
-}
-
-// SetDescription sets field value
-func (o *AlertReceiverCreationRequest) SetDescription(v string) {
-	o.Description = v
-}
-
-// GetType returns the Type field value
-func (o *AlertReceiverCreationRequest) GetType() AlertReceiverType {
-	if o == nil {
-		var ret AlertReceiverType
-		return ret
-	}
-
-	return o.Type
-}
-
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverCreationRequest) GetTypeOk() (*AlertReceiverType, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *AlertReceiverCreationRequest) SetType(v AlertReceiverType) {
-	o.Type = v
-}
-
-// GetSendResolved returns the SendResolved field value
-func (o *AlertReceiverCreationRequest) GetSendResolved() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.SendResolved
-}
-
-// GetSendResolvedOk returns a tuple with the SendResolved field value
-// and a boolean to check if the value has been set.
-func (o *AlertReceiverCreationRequest) GetSendResolvedOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.SendResolved, true
-}
-
-// SetSendResolved sets field value
-func (o *AlertReceiverCreationRequest) SetSendResolved(v bool) {
-	o.SendResolved = v
-}
-
-func (o AlertReceiverCreationRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *AlertReceiverCreationRequest) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o AlertReceiverCreationRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["organization_id"] = o.OrganizationId
-	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
-	toSerialize["type"] = o.Type
-	toSerialize["send_resolved"] = o.SendResolved
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	return toSerialize, nil
-}
-
-func (o *AlertReceiverCreationRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"organization_id",
-		"name",
-		"description",
-		"type",
-		"send_resolved",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'EMAIL'
+	if jsonDict["type"] == "EMAIL" {
+		// try to unmarshal JSON data into EmailAlertReceiverCreationRequest
+		err = json.Unmarshal(data, &dst.EmailAlertReceiverCreationRequest)
+		if err == nil {
+			return nil // data stored in dst.EmailAlertReceiverCreationRequest, return on the first match
+		} else {
+			dst.EmailAlertReceiverCreationRequest = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverCreationRequest as EmailAlertReceiverCreationRequest: %s", err.Error())
 		}
 	}
 
-	varAlertReceiverCreationRequest := _AlertReceiverCreationRequest{}
-
-	err = json.Unmarshal(data, &varAlertReceiverCreationRequest)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'SLACK'
+	if jsonDict["type"] == "SLACK" {
+		// try to unmarshal JSON data into SlackAlertReceiverCreationRequest
+		err = json.Unmarshal(data, &dst.SlackAlertReceiverCreationRequest)
+		if err == nil {
+			return nil // data stored in dst.SlackAlertReceiverCreationRequest, return on the first match
+		} else {
+			dst.SlackAlertReceiverCreationRequest = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverCreationRequest as SlackAlertReceiverCreationRequest: %s", err.Error())
+		}
 	}
 
-	*o = AlertReceiverCreationRequest(varAlertReceiverCreationRequest)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "organization_id")
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "send_resolved")
-		o.AdditionalProperties = additionalProperties
+	// check if the discriminator value is 'EmailAlertReceiverCreationRequest'
+	if jsonDict["type"] == "EmailAlertReceiverCreationRequest" {
+		// try to unmarshal JSON data into EmailAlertReceiverCreationRequest
+		err = json.Unmarshal(data, &dst.EmailAlertReceiverCreationRequest)
+		if err == nil {
+			return nil // data stored in dst.EmailAlertReceiverCreationRequest, return on the first match
+		} else {
+			dst.EmailAlertReceiverCreationRequest = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverCreationRequest as EmailAlertReceiverCreationRequest: %s", err.Error())
+		}
 	}
 
-	return err
+	// check if the discriminator value is 'SlackAlertReceiverCreationRequest'
+	if jsonDict["type"] == "SlackAlertReceiverCreationRequest" {
+		// try to unmarshal JSON data into SlackAlertReceiverCreationRequest
+		err = json.Unmarshal(data, &dst.SlackAlertReceiverCreationRequest)
+		if err == nil {
+			return nil // data stored in dst.SlackAlertReceiverCreationRequest, return on the first match
+		} else {
+			dst.SlackAlertReceiverCreationRequest = nil
+			return fmt.Errorf("failed to unmarshal AlertReceiverCreationRequest as SlackAlertReceiverCreationRequest: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src AlertReceiverCreationRequest) MarshalJSON() ([]byte, error) {
+	if src.EmailAlertReceiverCreationRequest != nil {
+		return json.Marshal(&src.EmailAlertReceiverCreationRequest)
+	}
+
+	if src.SlackAlertReceiverCreationRequest != nil {
+		return json.Marshal(&src.SlackAlertReceiverCreationRequest)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *AlertReceiverCreationRequest) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.EmailAlertReceiverCreationRequest != nil {
+		return obj.EmailAlertReceiverCreationRequest
+	}
+
+	if obj.SlackAlertReceiverCreationRequest != nil {
+		return obj.SlackAlertReceiverCreationRequest
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableAlertReceiverCreationRequest struct {

@@ -36871,13 +36871,16 @@ components:
       discriminator:
         mapping:
           SLACK: '#/components/schemas/SlackAlertReceiverCreationRequest'
+          EMAIL: '#/components/schemas/EmailAlertReceiverCreationRequest'
         propertyName: type
-      example:
-        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        description: description
-        send_resolved: true
-        type: SLACK
+      oneOf:
+      - $ref: '#/components/schemas/SlackAlertReceiverCreationRequest'
+      - $ref: '#/components/schemas/EmailAlertReceiverCreationRequest'
+      title: AlertReceiverCreationRequest
+      x-stoplight:
+        id: q1oj36zhkhmvp
+      x-internal: false
+    AlertReceiverCreationRequestBase:
       properties:
         organization_id:
           format: uuid
@@ -36898,20 +36901,23 @@ components:
           type: boolean
           x-stoplight:
             id: ucf1p0q2vpohv
+        owner:
+          nullable: true
+          type: string
+        severity:
+          nullable: true
+          type: string
       required:
       - description
       - name
       - organization_id
       - send_resolved
       - type
-      title: AlertReceiverCreationRequest
+      title: AlertReceiverCreationRequestBase
       type: object
-      x-stoplight:
-        id: q1oj36zhkhmvp
-      x-internal: false
     SlackAlertReceiverCreationRequest:
       allOf:
-      - $ref: '#/components/schemas/AlertReceiverCreationRequest'
+      - $ref: '#/components/schemas/AlertReceiverCreationRequestBase'
       - properties:
           webhook_url:
             format: uri
@@ -36921,14 +36927,57 @@ components:
         required:
         - webhook_url
         type: object
-        x-stoplight:
-          id: jw3lis4cbm2nf
+      example:
+        owner: owner
+        severity: severity
+        webhook_url: https://openapi-generator.tech
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        description: description
+        send_resolved: true
+        type: SLACK
       title: SlackAlertReceiverCreationRequest
       x-stoplight:
         id: awuv9zidg4qxx
+    EmailAlertReceiverCreationRequest:
+      allOf:
+      - $ref: '#/components/schemas/AlertReceiverCreationRequestBase'
+      - properties:
+          to:
+            description: Recipient email address
+            format: email
+            type: string
+          from:
+            description: Sender email address
+            format: email
+            type: string
+          smarthost:
+            description: SMTP server in format 'host:port'
+            example: smtp.example.com:587
+            type: string
+          auth_username:
+            description: SMTP authentication username. Defaults to 'from' if not provided.
+            nullable: true
+            type: string
+          auth_password:
+            description: SMTP authentication password
+            format: password
+            type: string
+          require_tls:
+            description: Whether to require TLS for SMTP connection
+            type: boolean
+        required:
+        - auth_password
+        - from
+        - require_tls
+        - smarthost
+        - to
+        type: object
+      title: EmailAlertReceiverCreationRequest
     AlertReceiverType:
       enum:
       - SLACK
+      - EMAIL
       title: AlertReceiverType
       type: string
       x-stoplight:
@@ -36937,12 +36986,15 @@ components:
       discriminator:
         mapping:
           SLACK: '#/components/schemas/SlackAlertReceiverEditRequest'
+          EMAIL: '#/components/schemas/EmailAlertReceiverEditRequest'
         propertyName: type
-      example:
-        name: name
-        description: description
-        send_resolved: true
-        type: SLACK
+      oneOf:
+      - $ref: '#/components/schemas/SlackAlertReceiverEditRequest'
+      - $ref: '#/components/schemas/EmailAlertReceiverEditRequest'
+      title: AlertReceiverEditRequest
+      x-stoplight:
+        id: y2od6vkbmt7yr
+    AlertReceiverEditRequestBase:
       properties:
         name:
           type: string
@@ -36958,31 +37010,85 @@ components:
           type: boolean
           x-stoplight:
             id: hk2x1t8ixk5sf
+        owner:
+          nullable: true
+          type: string
+        severity:
+          nullable: true
+          type: string
       required:
       - description
       - name
       - send_resolved
       - type
-      title: AlertReceiverEditRequest
+      title: AlertReceiverEditRequestBase
       type: object
-      x-stoplight:
-        id: y2od6vkbmt7yr
     SlackAlertReceiverEditRequest:
       allOf:
-      - $ref: '#/components/schemas/AlertReceiverEditRequest'
+      - $ref: '#/components/schemas/AlertReceiverEditRequestBase'
       - properties:
           webhook_url:
+            description: "Update webhook URL. If null, keeps existing value."
+            format: uri
             nullable: true
             type: string
             x-stoplight:
               id: 8c5ze7hwv90q2
         type: object
-        x-stoplight:
-          id: 0nkbeafo42gqk
+      example:
+        owner: owner
+        severity: severity
+        webhook_url: https://openapi-generator.tech
+        name: name
+        description: description
+        send_resolved: true
+        type: SLACK
       title: SlackAlertReceiverEditRequest
       x-stoplight:
         id: hcxf6sxx1jrv9
+    EmailAlertReceiverEditRequest:
+      allOf:
+      - $ref: '#/components/schemas/AlertReceiverEditRequestBase'
+      - properties:
+          to:
+            format: email
+            type: string
+          from:
+            format: email
+            type: string
+          smarthost:
+            description: SMTP server in format 'host:port'
+            type: string
+          auth_username:
+            nullable: true
+            type: string
+          auth_password:
+            description: "SMTP password. If null, keeps existing password."
+            format: password
+            nullable: true
+            type: string
+          require_tls:
+            type: boolean
+        required:
+        - from
+        - require_tls
+        - smarthost
+        - to
+        type: object
+      title: EmailAlertReceiverEditRequest
     AlertReceiverResponse:
+      discriminator:
+        mapping:
+          SLACK: '#/components/schemas/SlackAlertReceiverResponse'
+          EMAIL: '#/components/schemas/EmailAlertReceiverResponse'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/SlackAlertReceiverResponse'
+      - $ref: '#/components/schemas/EmailAlertReceiverResponse'
+      title: AlertReceiverResponse
+      x-stoplight:
+        id: qyrx61cvx84cz
+    SlackAlertReceiverResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
       - properties:
@@ -37000,6 +37106,12 @@ components:
             type: boolean
             x-stoplight:
               id: xpyx1p6hna34g
+          owner:
+            nullable: true
+            type: string
+          severity:
+            nullable: true
+            type: string
         required:
         - description
         - name
@@ -37007,6 +37119,8 @@ components:
         - type
         type: object
       example:
+        owner: owner
+        severity: severity
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -37014,20 +37128,65 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         send_resolved: true
         type: SLACK
-      title: AlertReceiverResponse
-      x-stoplight:
-        id: qyrx61cvx84cz
+      title: SlackAlertReceiverResponse
+    EmailAlertReceiverResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          type:
+            $ref: '#/components/schemas/AlertReceiverType'
+          send_resolved:
+            type: boolean
+          to:
+            format: email
+            type: string
+          from:
+            format: email
+            type: string
+          smarthost:
+            type: string
+          auth_username:
+            nullable: true
+            type: string
+          require_tls:
+            type: boolean
+          owner:
+            nullable: true
+            type: string
+          severity:
+            nullable: true
+            type: string
+        required:
+        - auth_username
+        - description
+        - from
+        - name
+        - require_tls
+        - send_resolved
+        - smarthost
+        - to
+        - type
+        type: object
+      title: EmailAlertReceiverResponse
     AlertReceiverList:
       example:
         results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - owner: owner
+          severity: severity
+          updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           send_resolved: true
           type: SLACK
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - owner: owner
+          severity: severity
+          updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -37791,6 +37950,9 @@ components:
     AlertReceiverCreationValidationRequest:
       example:
         alert_receiver:
+          owner: owner
+          severity: severity
+          webhook_url: https://openapi-generator.tech
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           description: description

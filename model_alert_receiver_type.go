@@ -22,11 +22,13 @@ type AlertReceiverType string
 // List of AlertReceiverType
 const (
 	ALERTRECEIVERTYPE_SLACK AlertReceiverType = "SLACK"
+	ALERTRECEIVERTYPE_EMAIL AlertReceiverType = "EMAIL"
 )
 
 // All allowed values of AlertReceiverType enum
 var AllowedAlertReceiverTypeEnumValues = []AlertReceiverType{
 	"SLACK",
+	"EMAIL",
 }
 
 func (v *AlertReceiverType) UnmarshalJSON(src []byte) error {
