@@ -545,6 +545,7 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ListProject**](docs/ProjectsAPI.md#listproject) | **Get** /organization/{organizationId}/project | List projects
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
+*ServiceMainCallsAPI* | [**GetServiceGitWebhookStatus**](docs/ServiceMainCallsAPI.md#getservicegitwebhookstatus) | **Get** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsAPI* | [**DeployTerraform**](docs/TerraformActionsAPI.md#deployterraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsAPI* | [**RedeployTerraform**](docs/TerraformActionsAPI.md#redeployterraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
@@ -897,6 +898,7 @@ Class | Method | HTTP request | Description
  - [GitTokenRequest](docs/GitTokenRequest.md)
  - [GitTokenResponse](docs/GitTokenResponse.md)
  - [GitTokenResponseList](docs/GitTokenResponseList.md)
+ - [GitWebhookStatusResponse](docs/GitWebhookStatusResponse.md)
  - [GkeInfrastructureOutputs](docs/GkeInfrastructureOutputs.md)
  - [Healthcheck](docs/Healthcheck.md)
  - [HelmAdvancedSettings](docs/HelmAdvancedSettings.md)
