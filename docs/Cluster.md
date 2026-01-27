@@ -15,6 +15,8 @@ Name | Type | Description | Notes
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 20]
+**DiskIops** | Pointer to **int32** | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional] 
+**DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk thoughput to be used for the node configuration | [optional] 
 **InstanceType** | Pointer to **string** | the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType | [optional] 
 **Kubernetes** | Pointer to [**KubernetesEnum**](KubernetesEnum.md) |  | [optional] [default to KUBERNETESENUM_MANAGED]
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
@@ -297,6 +299,56 @@ SetDiskSize sets DiskSize field to given value.
 `func (o *Cluster) HasDiskSize() bool`
 
 HasDiskSize returns a boolean if a field has been set.
+
+### GetDiskIops
+
+`func (o *Cluster) GetDiskIops() int32`
+
+GetDiskIops returns the DiskIops field if non-nil, zero value otherwise.
+
+### GetDiskIopsOk
+
+`func (o *Cluster) GetDiskIopsOk() (*int32, bool)`
+
+GetDiskIopsOk returns a tuple with the DiskIops field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskIops
+
+`func (o *Cluster) SetDiskIops(v int32)`
+
+SetDiskIops sets DiskIops field to given value.
+
+### HasDiskIops
+
+`func (o *Cluster) HasDiskIops() bool`
+
+HasDiskIops returns a boolean if a field has been set.
+
+### GetDiskThroughput
+
+`func (o *Cluster) GetDiskThroughput() int32`
+
+GetDiskThroughput returns the DiskThroughput field if non-nil, zero value otherwise.
+
+### GetDiskThroughputOk
+
+`func (o *Cluster) GetDiskThroughputOk() (*int32, bool)`
+
+GetDiskThroughputOk returns a tuple with the DiskThroughput field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskThroughput
+
+`func (o *Cluster) SetDiskThroughput(v int32)`
+
+SetDiskThroughput sets DiskThroughput field to given value.
+
+### HasDiskThroughput
+
+`func (o *Cluster) HasDiskThroughput() bool`
+
+HasDiskThroughput returns a boolean if a field has been set.
 
 ### GetInstanceType
 

@@ -35,6 +35,10 @@ type Cluster struct {
 	MaxRunningNodes *int32          `json:"max_running_nodes,omitempty"`
 	// Unit is in GB. The disk size to be used for the node configuration
 	DiskSize *int32 `json:"disk_size,omitempty"`
+	// Unit is operation/seconds. The disk IOPS to be used for the node configuration
+	DiskIops *int32 `json:"disk_iops,omitempty"`
+	// Unit is in MB/s. The disk thoughput to be used for the node configuration
+	DiskThroughput *int32 `json:"disk_throughput,omitempty"`
 	// the instance type to be used for this cluster. The list of values can be retrieved via the endpoint /{CloudProvider}/instanceType
 	InstanceType *string         `json:"instance_type,omitempty"`
 	Kubernetes   *KubernetesEnum `json:"kubernetes,omitempty"`
@@ -406,6 +410,70 @@ func (o *Cluster) HasDiskSize() bool {
 // SetDiskSize gets a reference to the given int32 and assigns it to the DiskSize field.
 func (o *Cluster) SetDiskSize(v int32) {
 	o.DiskSize = &v
+}
+
+// GetDiskIops returns the DiskIops field value if set, zero value otherwise.
+func (o *Cluster) GetDiskIops() int32 {
+	if o == nil || IsNil(o.DiskIops) {
+		var ret int32
+		return ret
+	}
+	return *o.DiskIops
+}
+
+// GetDiskIopsOk returns a tuple with the DiskIops field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetDiskIopsOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskIops) {
+		return nil, false
+	}
+	return o.DiskIops, true
+}
+
+// HasDiskIops returns a boolean if a field has been set.
+func (o *Cluster) HasDiskIops() bool {
+	if o != nil && !IsNil(o.DiskIops) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskIops gets a reference to the given int32 and assigns it to the DiskIops field.
+func (o *Cluster) SetDiskIops(v int32) {
+	o.DiskIops = &v
+}
+
+// GetDiskThroughput returns the DiskThroughput field value if set, zero value otherwise.
+func (o *Cluster) GetDiskThroughput() int32 {
+	if o == nil || IsNil(o.DiskThroughput) {
+		var ret int32
+		return ret
+	}
+	return *o.DiskThroughput
+}
+
+// GetDiskThroughputOk returns a tuple with the DiskThroughput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetDiskThroughputOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskThroughput) {
+		return nil, false
+	}
+	return o.DiskThroughput, true
+}
+
+// HasDiskThroughput returns a boolean if a field has been set.
+func (o *Cluster) HasDiskThroughput() bool {
+	if o != nil && !IsNil(o.DiskThroughput) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskThroughput gets a reference to the given int32 and assigns it to the DiskThroughput field.
+func (o *Cluster) SetDiskThroughput(v int32) {
+	o.DiskThroughput = &v
 }
 
 // GetInstanceType returns the InstanceType field value if set, zero value otherwise.
@@ -1015,6 +1083,12 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskSize) {
 		toSerialize["disk_size"] = o.DiskSize
 	}
+	if !IsNil(o.DiskIops) {
+		toSerialize["disk_iops"] = o.DiskIops
+	}
+	if !IsNil(o.DiskThroughput) {
+		toSerialize["disk_throughput"] = o.DiskThroughput
+	}
 	if !IsNil(o.InstanceType) {
 		toSerialize["instance_type"] = o.InstanceType
 	}
@@ -1128,6 +1202,8 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "min_running_nodes")
 		delete(additionalProperties, "max_running_nodes")
 		delete(additionalProperties, "disk_size")
+		delete(additionalProperties, "disk_iops")
+		delete(additionalProperties, "disk_throughput")
 		delete(additionalProperties, "instance_type")
 		delete(additionalProperties, "kubernetes")
 		delete(additionalProperties, "cpu")
