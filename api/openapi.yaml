@@ -15227,6 +15227,48 @@ paths:
       summary: Get git webhook status for a service
       tags:
       - Service Main Calls
+  /service/{serviceId}/gitWebhook/sync:
+    post:
+      description: |
+        Synchronizes the Qovery webhook configuration for a git-based service.
+        - If no webhook exists, creates one with the correct configuration
+        - If webhook exists but is misconfigured, updates it with the correct events
+        - If webhook is already correctly configured, returns current status
+        Works with GitHub, GitLab, and Bitbucket repositories.
+      operationId: syncServiceGitWebhook
+      parameters:
+      - description: Service ID of an application/job/container/database
+        explode: false
+        in: path
+        name: serviceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitWebhookStatusResponse'
+          description: Webhook synchronized successfully
+        "400":
+          description: Service does not have a git source
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "422":
+          description: "Cannot configure webhook (provider-specific issues, insufficient\
+            \ permissions)"
+        "429":
+          description: Git provider rate limit exceeded
+      summary: Synchronize git webhook for a service
+      tags:
+      - Service Main Calls
   /variable:
     get:
       description: Returns a list of variables. The result can be filtered by using

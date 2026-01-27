@@ -546,6 +546,7 @@ Class | Method | HTTP request | Description
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
 *ServiceMainCallsAPI* | [**GetServiceGitWebhookStatus**](docs/ServiceMainCallsAPI.md#getservicegitwebhookstatus) | **Get** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
+*ServiceMainCallsAPI* | [**SyncServiceGitWebhook**](docs/ServiceMainCallsAPI.md#syncservicegitwebhook) | **Post** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
 *TerraformActionsAPI* | [**DeployTerraform**](docs/TerraformActionsAPI.md#deployterraform) | **Post** /terraform/{terraformId}/deploy | Deploy terraform
 *TerraformActionsAPI* | [**RedeployTerraform**](docs/TerraformActionsAPI.md#redeployterraform) | **Post** /terraform/{terraformId}/redeploy | Redeploy terraform
