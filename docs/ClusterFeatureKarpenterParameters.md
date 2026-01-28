@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **SpotEnabled** | **bool** |  | 
 **DiskSizeInGib** | **int32** |  | 
 **DiskIops** | Pointer to **int32** |  | [optional] 
-**DiskThroughput** | Pointer to **int32** |  | [optional] 
+**DiskThrouput** | Pointer to **int32** |  | [optional] 
 **DefaultServiceArchitecture** | [**CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
 **QoveryNodePools** | [**KarpenterNodePool**](KarpenterNodePool.md) |  | 
 
@@ -95,30 +95,30 @@ SetDiskIops sets DiskIops field to given value.
 
 HasDiskIops returns a boolean if a field has been set.
 
-### GetDiskThroughput
+### GetDiskThrouput
 
-`func (o *ClusterFeatureKarpenterParameters) GetDiskThroughput() int32`
+`func (o *ClusterFeatureKarpenterParameters) GetDiskThrouput() int32`
 
-GetDiskThroughput returns the DiskThroughput field if non-nil, zero value otherwise.
+GetDiskThrouput returns the DiskThrouput field if non-nil, zero value otherwise.
 
-### GetDiskThroughputOk
+### GetDiskThrouputOk
 
-`func (o *ClusterFeatureKarpenterParameters) GetDiskThroughputOk() (*int32, bool)`
+`func (o *ClusterFeatureKarpenterParameters) GetDiskThrouputOk() (*int32, bool)`
 
-GetDiskThroughputOk returns a tuple with the DiskThroughput field if it's non-nil, zero value otherwise
+GetDiskThrouputOk returns a tuple with the DiskThrouput field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetDiskThroughput
+### SetDiskThrouput
 
-`func (o *ClusterFeatureKarpenterParameters) SetDiskThroughput(v int32)`
+`func (o *ClusterFeatureKarpenterParameters) SetDiskThrouput(v int32)`
 
-SetDiskThroughput sets DiskThroughput field to given value.
+SetDiskThrouput sets DiskThrouput field to given value.
 
-### HasDiskThroughput
+### HasDiskThrouput
 
-`func (o *ClusterFeatureKarpenterParameters) HasDiskThroughput() bool`
+`func (o *ClusterFeatureKarpenterParameters) HasDiskThrouput() bool`
 
-HasDiskThroughput returns a boolean if a field has been set.
+HasDiskThrouput returns a boolean if a field has been set.
 
 ### GetDefaultServiceArchitecture
 

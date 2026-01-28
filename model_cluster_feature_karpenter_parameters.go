@@ -24,7 +24,7 @@ type ClusterFeatureKarpenterParameters struct {
 	SpotEnabled                bool                `json:"spot_enabled"`
 	DiskSizeInGib              int32               `json:"disk_size_in_gib"`
 	DiskIops                   *int32              `json:"disk_iops,omitempty"`
-	DiskThroughput             *int32              `json:"disk_throughput,omitempty"`
+	DiskThrouput               *int32              `json:"disk_throuput,omitempty"`
 	DefaultServiceArchitecture CpuArchitectureEnum `json:"default_service_architecture"`
 	QoveryNodePools            KarpenterNodePool   `json:"qovery_node_pools"`
 	AdditionalProperties       map[string]interface{}
@@ -133,36 +133,36 @@ func (o *ClusterFeatureKarpenterParameters) SetDiskIops(v int32) {
 	o.DiskIops = &v
 }
 
-// GetDiskThroughput returns the DiskThroughput field value if set, zero value otherwise.
-func (o *ClusterFeatureKarpenterParameters) GetDiskThroughput() int32 {
-	if o == nil || IsNil(o.DiskThroughput) {
+// GetDiskThrouput returns the DiskThrouput field value if set, zero value otherwise.
+func (o *ClusterFeatureKarpenterParameters) GetDiskThrouput() int32 {
+	if o == nil || IsNil(o.DiskThrouput) {
 		var ret int32
 		return ret
 	}
-	return *o.DiskThroughput
+	return *o.DiskThrouput
 }
 
-// GetDiskThroughputOk returns a tuple with the DiskThroughput field value if set, nil otherwise
+// GetDiskThrouputOk returns a tuple with the DiskThrouput field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterFeatureKarpenterParameters) GetDiskThroughputOk() (*int32, bool) {
-	if o == nil || IsNil(o.DiskThroughput) {
+func (o *ClusterFeatureKarpenterParameters) GetDiskThrouputOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskThrouput) {
 		return nil, false
 	}
-	return o.DiskThroughput, true
+	return o.DiskThrouput, true
 }
 
-// HasDiskThroughput returns a boolean if a field has been set.
-func (o *ClusterFeatureKarpenterParameters) HasDiskThroughput() bool {
-	if o != nil && !IsNil(o.DiskThroughput) {
+// HasDiskThrouput returns a boolean if a field has been set.
+func (o *ClusterFeatureKarpenterParameters) HasDiskThrouput() bool {
+	if o != nil && !IsNil(o.DiskThrouput) {
 		return true
 	}
 
 	return false
 }
 
-// SetDiskThroughput gets a reference to the given int32 and assigns it to the DiskThroughput field.
-func (o *ClusterFeatureKarpenterParameters) SetDiskThroughput(v int32) {
-	o.DiskThroughput = &v
+// SetDiskThrouput gets a reference to the given int32 and assigns it to the DiskThrouput field.
+func (o *ClusterFeatureKarpenterParameters) SetDiskThrouput(v int32) {
+	o.DiskThrouput = &v
 }
 
 // GetDefaultServiceArchitecture returns the DefaultServiceArchitecture field value
@@ -228,8 +228,8 @@ func (o ClusterFeatureKarpenterParameters) ToMap() (map[string]interface{}, erro
 	if !IsNil(o.DiskIops) {
 		toSerialize["disk_iops"] = o.DiskIops
 	}
-	if !IsNil(o.DiskThroughput) {
-		toSerialize["disk_throughput"] = o.DiskThroughput
+	if !IsNil(o.DiskThrouput) {
+		toSerialize["disk_throuput"] = o.DiskThrouput
 	}
 	toSerialize["default_service_architecture"] = o.DefaultServiceArchitecture
 	toSerialize["qovery_node_pools"] = o.QoveryNodePools
@@ -282,7 +282,7 @@ func (o *ClusterFeatureKarpenterParameters) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "spot_enabled")
 		delete(additionalProperties, "disk_size_in_gib")
 		delete(additionalProperties, "disk_iops")
-		delete(additionalProperties, "disk_throughput")
+		delete(additionalProperties, "disk_throuput")
 		delete(additionalProperties, "default_service_architecture")
 		delete(additionalProperties, "qovery_node_pools")
 		o.AdditionalProperties = additionalProperties

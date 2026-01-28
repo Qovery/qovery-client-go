@@ -34326,7 +34326,7 @@ components:
           type: integer
         disk_iops:
           type: integer
-        disk_throughput:
+        disk_throuput:
           type: integer
           x-stoplight:
             id: nwpjqw3bf7px0
