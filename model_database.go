@@ -53,7 +53,9 @@ type Database struct {
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted        *bool           `json:"disk_encrypted,omitempty"`
+	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
+	// Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases.
+	ApplyImmediately     *bool           `json:"apply_immediately,omitempty"`
 	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
@@ -80,6 +82,8 @@ func NewDatabase(id string, createdAt time.Time, name string, type_ DatabaseType
 	this.Storage = &storage
 	this.IconUri = iconUri
 	this.Environment = environment
+	var applyImmediately bool = false
+	this.ApplyImmediately = &applyImmediately
 	this.ServiceType = serviceType
 	return &this
 }
@@ -95,6 +99,8 @@ func NewDatabaseWithDefaults() *Database {
 	this.Cpu = &cpu
 	var storage int32 = 10
 	this.Storage = &storage
+	var applyImmediately bool = false
+	this.ApplyImmediately = &applyImmediately
 	return &this
 }
 
@@ -738,6 +744,38 @@ func (o *Database) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
+// GetApplyImmediately returns the ApplyImmediately field value if set, zero value otherwise.
+func (o *Database) GetApplyImmediately() bool {
+	if o == nil || IsNil(o.ApplyImmediately) {
+		var ret bool
+		return ret
+	}
+	return *o.ApplyImmediately
+}
+
+// GetApplyImmediatelyOk returns a tuple with the ApplyImmediately field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Database) GetApplyImmediatelyOk() (*bool, bool) {
+	if o == nil || IsNil(o.ApplyImmediately) {
+		return nil, false
+	}
+	return o.ApplyImmediately, true
+}
+
+// HasApplyImmediately returns a boolean if a field has been set.
+func (o *Database) HasApplyImmediately() bool {
+	if o != nil && !IsNil(o.ApplyImmediately) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplyImmediately gets a reference to the given bool and assigns it to the ApplyImmediately field.
+func (o *Database) SetApplyImmediately(v bool) {
+	o.ApplyImmediately = &v
+}
+
 // GetServiceType returns the ServiceType field value
 func (o *Database) GetServiceType() ServiceTypeEnum {
 	if o == nil {
@@ -822,6 +860,9 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskEncrypted) {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
 	}
+	if !IsNil(o.ApplyImmediately) {
+		toSerialize["apply_immediately"] = o.ApplyImmediately
+	}
 	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
@@ -896,6 +937,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "disk_encrypted")
+		delete(additionalProperties, "apply_immediately")
 		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}

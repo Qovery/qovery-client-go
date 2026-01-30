@@ -24078,6 +24078,12 @@ components:
             description: Icon URI representing the database.
             format: uri
             type: string
+          apply_immediately:
+            default: false
+            description: |
+              Apply changes immediately instead of waiting for the maintenance window.
+              This field is only applicable for managed databases.
+            type: boolean
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
         required:
@@ -24086,6 +24092,7 @@ components:
         - service_type
         type: object
       example:
+        apply_immediately: false
         memory: 1024
         labels_groups:
         - updated_at: 2000-01-23T04:56:07.000+00:00
@@ -24201,6 +24208,7 @@ components:
       type: object
     DatabaseEditRequest:
       example:
+        apply_immediately: false
         memory: 1024
         labels_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -24270,6 +24278,13 @@ components:
           description: Icon URI representing the database.
           format: uri
           type: string
+        apply_immediately:
+          default: false
+          description: |
+            Apply changes immediately instead of waiting for the maintenance window.
+            This field is only applicable for managed databases.
+            Warning: Applying changes immediately may cause a brief service interruption.
+          type: boolean
       type: object
     DatabaseModeEnum:
       enum:
@@ -24364,7 +24379,8 @@ components:
     DatabaseResponseList:
       example:
         results:
-        - memory: 1024
+        - apply_immediately: false
+          memory: 1024
           labels_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name
@@ -24434,7 +24450,8 @@ components:
           host: host
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           instance_type: db.t3.medium
-        - memory: 1024
+        - apply_immediately: false
+          memory: 1024
           labels_groups:
           - updated_at: 2000-01-23T04:56:07.000+00:00
             name: name

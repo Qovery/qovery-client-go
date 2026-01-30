@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
+**ApplyImmediately** | Pointer to **bool** | Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases. Warning: Applying changes immediately may cause a brief service interruption.  | [optional] [default to false]
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetIconUri sets IconUri field to given value.
 `func (o *DatabaseEditRequest) HasIconUri() bool`
 
 HasIconUri returns a boolean if a field has been set.
+
+### GetApplyImmediately
+
+`func (o *DatabaseEditRequest) GetApplyImmediately() bool`
+
+GetApplyImmediately returns the ApplyImmediately field if non-nil, zero value otherwise.
+
+### GetApplyImmediatelyOk
+
+`func (o *DatabaseEditRequest) GetApplyImmediatelyOk() (*bool, bool)`
+
+GetApplyImmediatelyOk returns a tuple with the ApplyImmediately field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetApplyImmediately
+
+`func (o *DatabaseEditRequest) SetApplyImmediately(v bool)`
+
+SetApplyImmediately sets ApplyImmediately field to given value.
+
+### HasApplyImmediately
+
+`func (o *DatabaseEditRequest) HasApplyImmediately() bool`
+
+HasApplyImmediately returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

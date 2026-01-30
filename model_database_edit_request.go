@@ -37,7 +37,9 @@ type DatabaseEditRequest struct {
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the database.
-	IconUri              *string `json:"icon_uri,omitempty"`
+	IconUri *string `json:"icon_uri,omitempty"`
+	// Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases. Warning: Applying changes immediately may cause a brief service interruption.
+	ApplyImmediately     *bool `json:"apply_immediately,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,6 +55,8 @@ func NewDatabaseEditRequest() *DatabaseEditRequest {
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
+	var applyImmediately bool = false
+	this.ApplyImmediately = &applyImmediately
 	return &this
 }
 
@@ -65,6 +69,8 @@ func NewDatabaseEditRequestWithDefaults() *DatabaseEditRequest {
 	this.Accessibility = &accessibility
 	var cpu int32 = 250
 	this.Cpu = &cpu
+	var applyImmediately bool = false
+	this.ApplyImmediately = &applyImmediately
 	return &this
 }
 
@@ -420,6 +426,38 @@ func (o *DatabaseEditRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
+// GetApplyImmediately returns the ApplyImmediately field value if set, zero value otherwise.
+func (o *DatabaseEditRequest) GetApplyImmediately() bool {
+	if o == nil || IsNil(o.ApplyImmediately) {
+		var ret bool
+		return ret
+	}
+	return *o.ApplyImmediately
+}
+
+// GetApplyImmediatelyOk returns a tuple with the ApplyImmediately field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DatabaseEditRequest) GetApplyImmediatelyOk() (*bool, bool) {
+	if o == nil || IsNil(o.ApplyImmediately) {
+		return nil, false
+	}
+	return o.ApplyImmediately, true
+}
+
+// HasApplyImmediately returns a boolean if a field has been set.
+func (o *DatabaseEditRequest) HasApplyImmediately() bool {
+	if o != nil && !IsNil(o.ApplyImmediately) {
+		return true
+	}
+
+	return false
+}
+
+// SetApplyImmediately gets a reference to the given bool and assigns it to the ApplyImmediately field.
+func (o *DatabaseEditRequest) SetApplyImmediately(v bool) {
+	o.ApplyImmediately = &v
+}
+
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -463,6 +501,9 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
+	if !IsNil(o.ApplyImmediately) {
+		toSerialize["apply_immediately"] = o.ApplyImmediately
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -496,6 +537,7 @@ func (o *DatabaseEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "apply_immediately")
 		o.AdditionalProperties = additionalProperties
 	}
 
