@@ -26,7 +26,6 @@ Name | Type | Description | Notes
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
-**ApplyImmediately** | Pointer to **bool** | Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases.  | [optional] [default to false]
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 ## Methods
@@ -557,31 +556,6 @@ SetDiskEncrypted sets DiskEncrypted field to given value.
 `func (o *Database) HasDiskEncrypted() bool`
 
 HasDiskEncrypted returns a boolean if a field has been set.
-
-### GetApplyImmediately
-
-`func (o *Database) GetApplyImmediately() bool`
-
-GetApplyImmediately returns the ApplyImmediately field if non-nil, zero value otherwise.
-
-### GetApplyImmediatelyOk
-
-`func (o *Database) GetApplyImmediatelyOk() (*bool, bool)`
-
-GetApplyImmediatelyOk returns a tuple with the ApplyImmediately field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApplyImmediately
-
-`func (o *Database) SetApplyImmediately(v bool)`
-
-SetApplyImmediately sets ApplyImmediately field to given value.
-
-### HasApplyImmediately
-
-`func (o *Database) HasApplyImmediately() bool`
-
-HasApplyImmediately returns a boolean if a field has been set.
 
 ### GetServiceType
 

@@ -47,7 +47,6 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
-**ApplyImmediately** | Pointer to **bool** | Apply changes immediately instead of waiting for the maintenance window. This field is only applicable for managed databases.  | [optional] [default to false]
 **TimeoutSec** | **int32** |  | [default to 600]
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
@@ -1055,31 +1054,6 @@ SetDiskEncrypted sets DiskEncrypted field to given value.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasDiskEncrypted() bool`
 
 HasDiskEncrypted returns a boolean if a field has been set.
-
-### GetApplyImmediately
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetApplyImmediately() bool`
-
-GetApplyImmediately returns the ApplyImmediately field if non-nil, zero value otherwise.
-
-### GetApplyImmediatelyOk
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetApplyImmediatelyOk() (*bool, bool)`
-
-GetApplyImmediatelyOk returns a tuple with the ApplyImmediately field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetApplyImmediately
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetApplyImmediately(v bool)`
-
-SetApplyImmediately sets ApplyImmediately field to given value.
-
-### HasApplyImmediately
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasApplyImmediately() bool`
-
-HasApplyImmediately returns a boolean if a field has been set.
 
 ### GetTimeoutSec
 
