@@ -20711,6 +20711,8 @@ components:
             $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
           keda:
             $ref: '#/components/schemas/ClusterKeda'
+          labels_groups:
+            $ref: '#/components/schemas/ClusterLabelsGroupList'
         required:
         - cloud_provider
         - name
@@ -20724,6 +20726,10 @@ components:
           cluster_name: cluster_name
           kind: AKS
         memory: 4096
+        labels_groups:
+          id:
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         production: true
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -21500,6 +21506,10 @@ components:
             ip_address_pools:
             - ip_address_pools
             - ip_address_pools
+        labels_groups:
+          id:
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         production: true
         keda:
           enabled: true
@@ -21607,6 +21617,8 @@ components:
           $ref: '#/components/schemas/ClusterInfrastructureChartsParameters'
         keda:
           $ref: '#/components/schemas/ClusterKeda'
+        labels_groups:
+          $ref: '#/components/schemas/ClusterLabelsGroupList'
       required:
       - cloud_provider
       - name
@@ -21621,6 +21633,10 @@ components:
             cluster_name: cluster_name
             kind: AKS
           memory: 4096
+          labels_groups:
+            id:
+            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -21722,6 +21738,10 @@ components:
             cluster_name: cluster_name
             kind: AKS
           memory: 4096
+          labels_groups:
+            id:
+            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -31933,6 +31953,7 @@ components:
     OrganizationLabelsGroupResponseList:
       items:
         $ref: '#/components/schemas/OrganizationLabelsGroupResponse'
+      title: ""
       type: array
     OrganizationLabelsGroupResponse:
       allOf:
@@ -31960,6 +31981,7 @@ components:
         - propagate_to_cloud_provider: true
           value: value
           key: key
+      title: ""
     OrganizationLabelsGroupAssociatedItemsResponseList:
       example:
         results:
@@ -38454,6 +38476,35 @@ components:
       title: AutoscalingPolicyResponse
       x-stoplight:
         id: mjawsx6obi237
+    ClusterLabelsGroup:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+          x-stoplight:
+            id: 3b5pacfwyt1p2
+      title: ClusterLabelsGroup
+      type: object
+      x-stoplight:
+        id: mmho7lnvhxeqm
+    ClusterLabelsGroupList:
+      example:
+        id:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          items:
+            $ref: '#/components/schemas/ClusterLabelsGroup'
+          type: array
+          x-stoplight:
+            id: hnblgfxpizpd9
+      title: ClusterLabelsGroupList
+      type: object
+      x-stoplight:
+        id: imn8c9l4fab56
     listDirectoriesFromGitRepository_200_response:
       example:
         results:

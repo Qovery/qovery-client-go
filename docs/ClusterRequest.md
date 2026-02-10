@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **MetricsParameters** | Pointer to [**MetricsParameters**](MetricsParameters.md) |  | [optional] 
 **InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md) |  | [optional] 
 **Keda** | Pointer to [**ClusterKeda**](ClusterKeda.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**ClusterLabelsGroupList**](ClusterLabelsGroupList.md) |  | [optional] 
 
 ## Methods
 
@@ -476,6 +477,31 @@ SetKeda sets Keda field to given value.
 `func (o *ClusterRequest) HasKeda() bool`
 
 HasKeda returns a boolean if a field has been set.
+
+### GetLabelsGroups
+
+`func (o *ClusterRequest) GetLabelsGroups() ClusterLabelsGroupList`
+
+GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
+
+### GetLabelsGroupsOk
+
+`func (o *ClusterRequest) GetLabelsGroupsOk() (*ClusterLabelsGroupList, bool)`
+
+GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLabelsGroups
+
+`func (o *ClusterRequest) SetLabelsGroups(v ClusterLabelsGroupList)`
+
+SetLabelsGroups sets LabelsGroups field to given value.
+
+### HasLabelsGroups
+
+`func (o *ClusterRequest) HasLabelsGroups() bool`
+
+HasLabelsGroups returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

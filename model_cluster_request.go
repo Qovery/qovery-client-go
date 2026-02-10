@@ -46,6 +46,7 @@ type ClusterRequest struct {
 	MetricsParameters              *MetricsParameters                     `json:"metrics_parameters,omitempty"`
 	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
+	LabelsGroups                   *ClusterLabelsGroupList                `json:"labels_groups,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -639,6 +640,38 @@ func (o *ClusterRequest) SetKeda(v ClusterKeda) {
 	o.Keda = &v
 }
 
+// GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
+func (o *ClusterRequest) GetLabelsGroups() ClusterLabelsGroupList {
+	if o == nil || IsNil(o.LabelsGroups) {
+		var ret ClusterLabelsGroupList
+		return ret
+	}
+	return *o.LabelsGroups
+}
+
+// GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetLabelsGroupsOk() (*ClusterLabelsGroupList, bool) {
+	if o == nil || IsNil(o.LabelsGroups) {
+		return nil, false
+	}
+	return o.LabelsGroups, true
+}
+
+// HasLabelsGroups returns a boolean if a field has been set.
+func (o *ClusterRequest) HasLabelsGroups() bool {
+	if o != nil && !IsNil(o.LabelsGroups) {
+		return true
+	}
+
+	return false
+}
+
+// SetLabelsGroups gets a reference to the given ClusterLabelsGroupList and assigns it to the LabelsGroups field.
+func (o *ClusterRequest) SetLabelsGroups(v ClusterLabelsGroupList) {
+	o.LabelsGroups = &v
+}
+
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -696,6 +729,9 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Keda) {
 		toSerialize["keda"] = o.Keda
+	}
+	if !IsNil(o.LabelsGroups) {
+		toSerialize["labels_groups"] = o.LabelsGroups
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -760,6 +796,7 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "metrics_parameters")
 		delete(additionalProperties, "infrastructure_charts_parameters")
 		delete(additionalProperties, "keda")
+		delete(additionalProperties, "labels_groups")
 		o.AdditionalProperties = additionalProperties
 	}
 
