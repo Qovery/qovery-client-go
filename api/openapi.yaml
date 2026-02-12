@@ -12005,6 +12005,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Apply immediately regardless of the maintenance window
+        explode: true
+        in: query
+        name: applyImmediately
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "202":
           content:
@@ -12098,6 +12106,14 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Apply immediately regardless of the maintenance window
+        explode: true
+        in: query
+        name: applyImmediately
+        required: false
+        schema:
+          type: boolean
+        style: form
       responses:
         "202":
           content:

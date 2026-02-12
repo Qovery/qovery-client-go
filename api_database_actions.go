@@ -24,9 +24,16 @@ import (
 type DatabaseActionsAPIService service
 
 type ApiDeployDatabaseRequest struct {
-	ctx        context.Context
-	ApiService *DatabaseActionsAPIService
-	databaseId string
+	ctx              context.Context
+	ApiService       *DatabaseActionsAPIService
+	databaseId       string
+	applyImmediately *bool
+}
+
+// Apply immediately regardless of the maintenance window
+func (r ApiDeployDatabaseRequest) ApplyImmediately(applyImmediately bool) ApiDeployDatabaseRequest {
+	r.applyImmediately = &applyImmediately
+	return r
 }
 
 func (r ApiDeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
@@ -71,6 +78,9 @@ func (a *DatabaseActionsAPIService) DeployDatabaseExecute(r ApiDeployDatabaseReq
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.applyImmediately != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "applyImmediately", r.applyImmediately, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -256,9 +266,16 @@ func (a *DatabaseActionsAPIService) RebootDatabaseExecute(r ApiRebootDatabaseReq
 }
 
 type ApiRedeployDatabaseRequest struct {
-	ctx        context.Context
-	ApiService *DatabaseActionsAPIService
-	databaseId string
+	ctx              context.Context
+	ApiService       *DatabaseActionsAPIService
+	databaseId       string
+	applyImmediately *bool
+}
+
+// Apply immediately regardless of the maintenance window
+func (r ApiRedeployDatabaseRequest) ApplyImmediately(applyImmediately bool) ApiRedeployDatabaseRequest {
+	r.applyImmediately = &applyImmediately
+	return r
 }
 
 func (r ApiRedeployDatabaseRequest) Execute() (*Status, *http.Response, error) {
@@ -303,6 +320,9 @@ func (a *DatabaseActionsAPIService) RedeployDatabaseExecute(r ApiRedeployDatabas
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.applyImmediately != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "applyImmediately", r.applyImmediately, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

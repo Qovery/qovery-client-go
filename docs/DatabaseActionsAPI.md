@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## DeployDatabase
 
-> Status DeployDatabase(ctx, databaseId).Execute()
+> Status DeployDatabase(ctx, databaseId).ApplyImmediately(applyImmediately).Execute()
 
 Deploy database 
 
@@ -32,10 +32,11 @@ import (
 
 func main() {
 	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	applyImmediately := true // bool | Apply immediately regardless of the maintenance window (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseActionsAPI.DeployDatabase(context.Background(), databaseId).Execute()
+	resp, r, err := apiClient.DatabaseActionsAPI.DeployDatabase(context.Background(), databaseId).ApplyImmediately(applyImmediately).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.DeployDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiDeployDatabaseRequest stru
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **applyImmediately** | **bool** | Apply immediately regardless of the maintenance window | 
 
 ### Return type
 
@@ -150,7 +152,7 @@ Name | Type | Description  | Notes
 
 ## RedeployDatabase
 
-> Status RedeployDatabase(ctx, databaseId).Execute()
+> Status RedeployDatabase(ctx, databaseId).ApplyImmediately(applyImmediately).Execute()
 
 Redeploy database
 
@@ -168,10 +170,11 @@ import (
 
 func main() {
 	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
+	applyImmediately := true // bool | Apply immediately regardless of the maintenance window (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).Execute()
+	resp, r, err := apiClient.DatabaseActionsAPI.RedeployDatabase(context.Background(), databaseId).ApplyImmediately(applyImmediately).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseActionsAPI.RedeployDatabase``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -197,6 +200,7 @@ Other parameters are passed through a pointer to a apiRedeployDatabaseRequest st
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **applyImmediately** | **bool** | Apply immediately regardless of the maintenance window | 
 
 ### Return type
 
