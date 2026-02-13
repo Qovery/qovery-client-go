@@ -6849,6 +6849,10 @@ paths:
       - Deployment Stage Main Calls
   /deploymentStage/{deploymentStageId}/service/{serviceId}:
     put:
+      description: "Moves the service to the specified deployment stage. To skip a\
+        \ service from environment-level deployments while keeping it in its current\
+        \ stage, set `is_skipped: true` in the request body. Moving the service to\
+        \ a different stage automatically un-skips it (sets `is_skipped: false`)."
       operationId: AttachServiceToDeploymentStage
       parameters:
       - description: Deployment Stage ID
@@ -6869,6 +6873,11 @@ paths:
           format: uuid
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttachServiceToDeploymentStage_request'
       responses:
         "200":
           content:
@@ -28401,11 +28410,13 @@ components:
         - service_type: service_type
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_skipped: true
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - service_type: service_type
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_skipped: true
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     DeploymentStageResponseList:
@@ -28423,11 +28434,13 @@ components:
           - service_type: service_type
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_skipped: true
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - service_type: service_type
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_skipped: true
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - environment:
@@ -28442,11 +28455,13 @@ components:
           - service_type: service_type
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_skipped: true
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - service_type: service_type
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_skipped: true
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -28470,11 +28485,15 @@ components:
           service_type:
             description: "type of the service (i.e APPLICATION, JOB, DATABASE, ...)"
             type: string
+          is_skipped:
+            description: whether the service is excluded from environment-level deployments
+            type: boolean
         type: object
       example:
         service_type: service_type
         updated_at: 2000-01-23T04:56:07.000+00:00
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        is_skipped: true
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     DeploymentStageWithServicesStatuses:
@@ -38616,6 +38635,14 @@ components:
             $ref: '#/components/schemas/OrganizationLabelsGroupEnrichedResponse'
           title: OrganizationLabelsGroupEnrichedResponseList
           type: array
+      type: object
+    AttachServiceToDeploymentStage_request:
+      properties:
+        is_skipped:
+          description: "When true, marks the service as skipped (excluded from environment-level\
+            \ bulk deployments) while keeping it in the specified stage. When false\
+            \ or omitted, the service is moved to the specified stage and un-skipped."
+          type: boolean
       type: object
     cancelEnvironmentDeployment_request:
       properties:

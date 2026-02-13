@@ -24,10 +24,16 @@ import (
 type DeploymentStageMainCallsAPIService service
 
 type ApiAttachServiceToDeploymentStageRequest struct {
-	ctx               context.Context
-	ApiService        *DeploymentStageMainCallsAPIService
-	deploymentStageId string
-	serviceId         string
+	ctx                                   context.Context
+	ApiService                            *DeploymentStageMainCallsAPIService
+	deploymentStageId                     string
+	serviceId                             string
+	attachServiceToDeploymentStageRequest *AttachServiceToDeploymentStageRequest
+}
+
+func (r ApiAttachServiceToDeploymentStageRequest) AttachServiceToDeploymentStageRequest(attachServiceToDeploymentStageRequest AttachServiceToDeploymentStageRequest) ApiAttachServiceToDeploymentStageRequest {
+	r.attachServiceToDeploymentStageRequest = &attachServiceToDeploymentStageRequest
+	return r
 }
 
 func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*DeploymentStageResponseList, *http.Response, error) {
@@ -36,6 +42,8 @@ func (r ApiAttachServiceToDeploymentStageRequest) Execute() (*DeploymentStageRes
 
 /*
 AttachServiceToDeploymentStage Attach service to deployment stage
+
+Moves the service to the specified deployment stage. To skip a service from environment-level deployments while keeping it in its current stage, set `is_skipped: true` in the request body. Moving the service to a different stage automatically un-skips it (sets `is_skipped: false`).
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param deploymentStageId Deployment Stage ID
@@ -76,7 +84,7 @@ func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStageExecu
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/json"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -92,6 +100,8 @@ func (a *DeploymentStageMainCallsAPIService) AttachServiceToDeploymentStageExecu
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.attachServiceToDeploymentStageRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

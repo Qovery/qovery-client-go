@@ -28,7 +28,9 @@ type DeploymentStageServiceResponse struct {
 	// id of the service attached to the stage
 	ServiceId *string `json:"service_id,omitempty"`
 	// type of the service (i.e APPLICATION, JOB, DATABASE, ...)
-	ServiceType          *string `json:"service_type,omitempty"`
+	ServiceType *string `json:"service_type,omitempty"`
+	// whether the service is excluded from environment-level deployments
+	IsSkipped            *bool `json:"is_skipped,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -197,6 +199,38 @@ func (o *DeploymentStageServiceResponse) SetServiceType(v string) {
 	o.ServiceType = &v
 }
 
+// GetIsSkipped returns the IsSkipped field value if set, zero value otherwise.
+func (o *DeploymentStageServiceResponse) GetIsSkipped() bool {
+	if o == nil || IsNil(o.IsSkipped) {
+		var ret bool
+		return ret
+	}
+	return *o.IsSkipped
+}
+
+// GetIsSkippedOk returns a tuple with the IsSkipped field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentStageServiceResponse) GetIsSkippedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsSkipped) {
+		return nil, false
+	}
+	return o.IsSkipped, true
+}
+
+// HasIsSkipped returns a boolean if a field has been set.
+func (o *DeploymentStageServiceResponse) HasIsSkipped() bool {
+	if o != nil && !IsNil(o.IsSkipped) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsSkipped gets a reference to the given bool and assigns it to the IsSkipped field.
+func (o *DeploymentStageServiceResponse) SetIsSkipped(v bool) {
+	o.IsSkipped = &v
+}
+
 func (o DeploymentStageServiceResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -217,6 +251,9 @@ func (o DeploymentStageServiceResponse) ToMap() (map[string]interface{}, error) 
 	}
 	if !IsNil(o.ServiceType) {
 		toSerialize["service_type"] = o.ServiceType
+	}
+	if !IsNil(o.IsSkipped) {
+		toSerialize["is_skipped"] = o.IsSkipped
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -267,6 +304,7 @@ func (o *DeploymentStageServiceResponse) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "service_id")
 		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "is_skipped")
 		o.AdditionalProperties = additionalProperties
 	}
 

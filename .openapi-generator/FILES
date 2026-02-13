@@ -157,6 +157,7 @@ docs/ApplicationRequest.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretAPI.md
 docs/ApplicationsAPI.md
+docs/AttachServiceToDeploymentStageRequest.md
 docs/AutoscalingMode.md
 docs/AutoscalingPolicyRequest.md
 docs/AutoscalingPolicyResponse.md
@@ -922,6 +923,7 @@ model_application_network.go
 model_application_network_request.go
 model_application_request.go
 model_application_response_list.go
+model_attach_service_to_deployment_stage_request.go
 model_autoscaling_mode.go
 model_autoscaling_policy_request.go
 model_autoscaling_policy_response.go

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ServiceId** | Pointer to **string** | id of the service attached to the stage | [optional] 
 **ServiceType** | Pointer to **string** | type of the service (i.e APPLICATION, JOB, DATABASE, ...) | [optional] 
+**IsSkipped** | Pointer to **bool** | whether the service is excluded from environment-level deployments | [optional] 
 
 ## Methods
 
@@ -143,6 +144,31 @@ SetServiceType sets ServiceType field to given value.
 `func (o *DeploymentStageServiceResponse) HasServiceType() bool`
 
 HasServiceType returns a boolean if a field has been set.
+
+### GetIsSkipped
+
+`func (o *DeploymentStageServiceResponse) GetIsSkipped() bool`
+
+GetIsSkipped returns the IsSkipped field if non-nil, zero value otherwise.
+
+### GetIsSkippedOk
+
+`func (o *DeploymentStageServiceResponse) GetIsSkippedOk() (*bool, bool)`
+
+GetIsSkippedOk returns a tuple with the IsSkipped field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSkipped
+
+`func (o *DeploymentStageServiceResponse) SetIsSkipped(v bool)`
+
+SetIsSkipped sets IsSkipped field to given value.
+
+### HasIsSkipped
+
+`func (o *DeploymentStageServiceResponse) HasIsSkipped() bool`
+
+HasIsSkipped returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

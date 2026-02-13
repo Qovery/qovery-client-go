@@ -18,9 +18,11 @@ Method | HTTP request | Description
 
 ## AttachServiceToDeploymentStage
 
-> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).Execute()
+> DeploymentStageResponseList AttachServiceToDeploymentStage(ctx, deploymentStageId, serviceId).AttachServiceToDeploymentStageRequest(attachServiceToDeploymentStageRequest).Execute()
 
 Attach service to deployment stage
+
+
 
 ### Example
 
@@ -37,10 +39,11 @@ import (
 func main() {
 	deploymentStageId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Deployment Stage ID
 	serviceId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Service ID of an application/job/container/database
+	attachServiceToDeploymentStageRequest := *openapiclient.NewAttachServiceToDeploymentStageRequest() // AttachServiceToDeploymentStageRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).Execute()
+	resp, r, err := apiClient.DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage(context.Background(), deploymentStageId, serviceId).AttachServiceToDeploymentStageRequest(attachServiceToDeploymentStageRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `DeploymentStageMainCallsAPI.AttachServiceToDeploymentStage``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -68,6 +71,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
 
+ **attachServiceToDeploymentStageRequest** | [**AttachServiceToDeploymentStageRequest**](AttachServiceToDeploymentStageRequest.md) |  | 
 
 ### Return type
 
@@ -79,7 +83,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
