@@ -238,7 +238,6 @@ docs/ClusterInstanceTypeResponseListResultsInner.md
 docs/ClusterKarpenterPrivateSubnetIdsPutRequest.md
 docs/ClusterKeda.md
 docs/ClusterLabelsGroup.md
-docs/ClusterLabelsGroupList.md
 docs/ClusterLock.md
 docs/ClusterLockList.md
 docs/ClusterLockRequest.md
@@ -1000,7 +999,6 @@ model_cluster_instance_type_response_list_results_inner.go
 model_cluster_karpenter_private_subnet_ids_put_request.go
 model_cluster_keda.go
 model_cluster_labels_group.go
-model_cluster_labels_group_list.go
 model_cluster_lock.go
 model_cluster_lock_list.go
 model_cluster_lock_request.go

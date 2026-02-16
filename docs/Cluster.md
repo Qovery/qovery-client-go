@@ -35,7 +35,7 @@ Name | Type | Description | Notes
 **InfrastructureOutputs** | Pointer to [**InfrastructureOutputs**](InfrastructureOutputs.md) |  | [optional] 
 **InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md) |  | [optional] 
 **Keda** | Pointer to [**ClusterKeda**](ClusterKeda.md) |  | [optional] 
-**LabelsGroups** | Pointer to [**ClusterLabelsGroupList**](ClusterLabelsGroupList.md) |  | [optional] 
+**LabelsGroups** | Pointer to [**[]ClusterLabelsGroup**](ClusterLabelsGroup.md) |  | [optional] 
 
 ## Methods
 
@@ -803,20 +803,20 @@ HasKeda returns a boolean if a field has been set.
 
 ### GetLabelsGroups
 
-`func (o *Cluster) GetLabelsGroups() ClusterLabelsGroupList`
+`func (o *Cluster) GetLabelsGroups() []ClusterLabelsGroup`
 
 GetLabelsGroups returns the LabelsGroups field if non-nil, zero value otherwise.
 
 ### GetLabelsGroupsOk
 
-`func (o *Cluster) GetLabelsGroupsOk() (*ClusterLabelsGroupList, bool)`
+`func (o *Cluster) GetLabelsGroupsOk() (*[]ClusterLabelsGroup, bool)`
 
 GetLabelsGroupsOk returns a tuple with the LabelsGroups field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLabelsGroups
 
-`func (o *Cluster) SetLabelsGroups(v ClusterLabelsGroupList)`
+`func (o *Cluster) SetLabelsGroups(v []ClusterLabelsGroup)`
 
 SetLabelsGroups sets LabelsGroups field to given value.
 

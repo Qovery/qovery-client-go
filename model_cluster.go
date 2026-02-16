@@ -64,7 +64,7 @@ type Cluster struct {
 	InfrastructureOutputs          *InfrastructureOutputs                 `json:"infrastructure_outputs,omitempty"`
 	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
-	LabelsGroups                   *ClusterLabelsGroupList                `json:"labels_groups,omitempty"`
+	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -1054,17 +1054,17 @@ func (o *Cluster) SetKeda(v ClusterKeda) {
 }
 
 // GetLabelsGroups returns the LabelsGroups field value if set, zero value otherwise.
-func (o *Cluster) GetLabelsGroups() ClusterLabelsGroupList {
+func (o *Cluster) GetLabelsGroups() []ClusterLabelsGroup {
 	if o == nil || IsNil(o.LabelsGroups) {
-		var ret ClusterLabelsGroupList
+		var ret []ClusterLabelsGroup
 		return ret
 	}
-	return *o.LabelsGroups
+	return o.LabelsGroups
 }
 
 // GetLabelsGroupsOk returns a tuple with the LabelsGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetLabelsGroupsOk() (*ClusterLabelsGroupList, bool) {
+func (o *Cluster) GetLabelsGroupsOk() ([]ClusterLabelsGroup, bool) {
 	if o == nil || IsNil(o.LabelsGroups) {
 		return nil, false
 	}
@@ -1080,9 +1080,9 @@ func (o *Cluster) HasLabelsGroups() bool {
 	return false
 }
 
-// SetLabelsGroups gets a reference to the given ClusterLabelsGroupList and assigns it to the LabelsGroups field.
-func (o *Cluster) SetLabelsGroups(v ClusterLabelsGroupList) {
-	o.LabelsGroups = &v
+// SetLabelsGroups gets a reference to the given []ClusterLabelsGroup and assigns it to the LabelsGroups field.
+func (o *Cluster) SetLabelsGroups(v []ClusterLabelsGroup) {
+	o.LabelsGroups = v
 }
 
 func (o Cluster) MarshalJSON() ([]byte, error) {

@@ -20752,9 +20752,8 @@ components:
           kind: AKS
         memory: 4096
         labels_groups:
-          id:
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         production: true
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -21532,9 +21531,8 @@ components:
             - ip_address_pools
             - ip_address_pools
         labels_groups:
-          id:
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         production: true
         keda:
           enabled: true
@@ -21643,7 +21641,12 @@ components:
         keda:
           $ref: '#/components/schemas/ClusterKeda'
         labels_groups:
-          $ref: '#/components/schemas/ClusterLabelsGroupList'
+          items:
+            $ref: '#/components/schemas/ClusterLabelsGroup'
+          title: ClusterLabelsGroupList
+          type: array
+          x-stoplight:
+            id: imn8c9l4fab56
       required:
       - cloud_provider
       - name
@@ -21659,9 +21662,8 @@ components:
             kind: AKS
           memory: 4096
           labels_groups:
-            id:
-            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -21764,9 +21766,8 @@ components:
             kind: AKS
           memory: 4096
           labels_groups:
-            id:
-            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           production: true
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -38525,19 +38526,10 @@ components:
       x-stoplight:
         id: mmho7lnvhxeqm
     ClusterLabelsGroupList:
-      example:
-        id:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-      properties:
-        id:
-          items:
-            $ref: '#/components/schemas/ClusterLabelsGroup'
-          type: array
-          x-stoplight:
-            id: hnblgfxpizpd9
+      items:
+        $ref: '#/components/schemas/ClusterLabelsGroup'
       title: ClusterLabelsGroupList
-      type: object
+      type: array
       x-stoplight:
         id: imn8c9l4fab56
     listDirectoriesFromGitRepository_200_response:
