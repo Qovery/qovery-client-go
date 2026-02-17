@@ -20,11 +20,13 @@ var _ MappedNullable = &KarpenterGpuNodePoolOverride{}
 
 // KarpenterGpuNodePoolOverride struct for KarpenterGpuNodePoolOverride
 type KarpenterGpuNodePoolOverride struct {
-	Consolidation        *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
-	Limits               *KarpenterNodePoolLimits        `json:"limits,omitempty"`
-	Requirements         []KarpenterNodePoolRequirement  `json:"requirements,omitempty"`
-	DiskSizeInGib        *int32                          `json:"disk_size_in_gib,omitempty"`
-	SpotEnabled          *bool                           `json:"spot_enabled,omitempty"`
+	Consolidation *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
+	Limits        *KarpenterNodePoolLimits        `json:"limits,omitempty"`
+	Requirements  []KarpenterNodePoolRequirement  `json:"requirements,omitempty"`
+	DiskSizeInGib *int32                          `json:"disk_size_in_gib,omitempty"`
+	SpotEnabled   *bool                           `json:"spot_enabled,omitempty"`
+	// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
+	ConsolidateAfter     *string `json:"consolidate_after,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -215,6 +217,38 @@ func (o *KarpenterGpuNodePoolOverride) SetSpotEnabled(v bool) {
 	o.SpotEnabled = &v
 }
 
+// GetConsolidateAfter returns the ConsolidateAfter field value if set, zero value otherwise.
+func (o *KarpenterGpuNodePoolOverride) GetConsolidateAfter() string {
+	if o == nil || IsNil(o.ConsolidateAfter) {
+		var ret string
+		return ret
+	}
+	return *o.ConsolidateAfter
+}
+
+// GetConsolidateAfterOk returns a tuple with the ConsolidateAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterGpuNodePoolOverride) GetConsolidateAfterOk() (*string, bool) {
+	if o == nil || IsNil(o.ConsolidateAfter) {
+		return nil, false
+	}
+	return o.ConsolidateAfter, true
+}
+
+// HasConsolidateAfter returns a boolean if a field has been set.
+func (o *KarpenterGpuNodePoolOverride) HasConsolidateAfter() bool {
+	if o != nil && !IsNil(o.ConsolidateAfter) {
+		return true
+	}
+
+	return false
+}
+
+// SetConsolidateAfter gets a reference to the given string and assigns it to the ConsolidateAfter field.
+func (o *KarpenterGpuNodePoolOverride) SetConsolidateAfter(v string) {
+	o.ConsolidateAfter = &v
+}
+
 func (o KarpenterGpuNodePoolOverride) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -239,6 +273,9 @@ func (o KarpenterGpuNodePoolOverride) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SpotEnabled) {
 		toSerialize["spot_enabled"] = o.SpotEnabled
+	}
+	if !IsNil(o.ConsolidateAfter) {
+		toSerialize["consolidate_after"] = o.ConsolidateAfter
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -267,6 +304,7 @@ func (o *KarpenterGpuNodePoolOverride) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "disk_size_in_gib")
 		delete(additionalProperties, "spot_enabled")
+		delete(additionalProperties, "consolidate_after")
 		o.AdditionalProperties = additionalProperties
 	}
 

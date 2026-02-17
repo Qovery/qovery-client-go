@@ -35054,6 +35054,12 @@ components:
           $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
         limits:
           $ref: '#/components/schemas/KarpenterNodePoolLimits'
+        consolidate_after:
+          description: "Time to wait before consolidating empty or underutilized nodes\
+            \ (e.g., 1m, 10m, 1h). Maximum: 24h"
+          example: 30s
+          pattern: ^\d+(s|m|h)$
+          type: string
       title: KarpenterStableNodePoolOverride
       type: object
     KarpenterGpuNodePoolOverride:
@@ -35080,6 +35086,12 @@ components:
           type: boolean
           x-stoplight:
             id: rjzxs0e2rn0ij
+        consolidate_after:
+          description: "Time to wait before consolidating empty or underutilized nodes\
+            \ (e.g., 1m, 10m, 1h). Maximum: 24h"
+          example: 30s
+          pattern: ^\d+(s|m|h)$
+          type: string
       title: KarpenterGpuNodePoolOverride
       type: object
       x-stoplight:
@@ -35088,6 +35100,12 @@ components:
       properties:
         limits:
           $ref: '#/components/schemas/KarpenterNodePoolLimits'
+        consolidate_after:
+          description: "Time to wait before consolidating empty or underutilized nodes\
+            \ (e.g., 1m, 10m, 1h). Maximum: 24h"
+          example: 1m
+          pattern: ^\d+(s|m|h)$
+          type: string
       title: KarpenterDefaultNodePoolOverride
       type: object
     KarpenterNodePoolConsolidation:

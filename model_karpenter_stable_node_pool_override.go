@@ -20,8 +20,10 @@ var _ MappedNullable = &KarpenterStableNodePoolOverride{}
 
 // KarpenterStableNodePoolOverride struct for KarpenterStableNodePoolOverride
 type KarpenterStableNodePoolOverride struct {
-	Consolidation        *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
-	Limits               *KarpenterNodePoolLimits        `json:"limits,omitempty"`
+	Consolidation *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
+	Limits        *KarpenterNodePoolLimits        `json:"limits,omitempty"`
+	// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
+	ConsolidateAfter     *string `json:"consolidate_after,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +110,38 @@ func (o *KarpenterStableNodePoolOverride) SetLimits(v KarpenterNodePoolLimits) {
 	o.Limits = &v
 }
 
+// GetConsolidateAfter returns the ConsolidateAfter field value if set, zero value otherwise.
+func (o *KarpenterStableNodePoolOverride) GetConsolidateAfter() string {
+	if o == nil || IsNil(o.ConsolidateAfter) {
+		var ret string
+		return ret
+	}
+	return *o.ConsolidateAfter
+}
+
+// GetConsolidateAfterOk returns a tuple with the ConsolidateAfter field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterStableNodePoolOverride) GetConsolidateAfterOk() (*string, bool) {
+	if o == nil || IsNil(o.ConsolidateAfter) {
+		return nil, false
+	}
+	return o.ConsolidateAfter, true
+}
+
+// HasConsolidateAfter returns a boolean if a field has been set.
+func (o *KarpenterStableNodePoolOverride) HasConsolidateAfter() bool {
+	if o != nil && !IsNil(o.ConsolidateAfter) {
+		return true
+	}
+
+	return false
+}
+
+// SetConsolidateAfter gets a reference to the given string and assigns it to the ConsolidateAfter field.
+func (o *KarpenterStableNodePoolOverride) SetConsolidateAfter(v string) {
+	o.ConsolidateAfter = &v
+}
+
 func (o KarpenterStableNodePoolOverride) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -123,6 +157,9 @@ func (o KarpenterStableNodePoolOverride) ToMap() (map[string]interface{}, error)
 	}
 	if !IsNil(o.Limits) {
 		toSerialize["limits"] = o.Limits
+	}
+	if !IsNil(o.ConsolidateAfter) {
+		toSerialize["consolidate_after"] = o.ConsolidateAfter
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -148,6 +185,7 @@ func (o *KarpenterStableNodePoolOverride) UnmarshalJSON(data []byte) (err error)
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "consolidation")
 		delete(additionalProperties, "limits")
+		delete(additionalProperties, "consolidate_after")
 		o.AdditionalProperties = additionalProperties
 	}
 
