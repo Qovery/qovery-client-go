@@ -21,11 +21,12 @@ var _ MappedNullable = &AlertingConfig{}
 
 // AlertingConfig struct for AlertingConfig
 type AlertingConfig struct {
-	Enabled              bool    `json:"enabled"`
-	DefaultRuleLabels    *string `json:"default_rule_labels,omitempty"`
-	SpecConfigSecret     *string `json:"spec_config_secret,omitempty"`
-	SpecExternalUrl      *string `json:"spec_external_url,omitempty"`
-	ConfigName           *string `json:"config_name,omitempty"`
+	Enabled bool `json:"enabled"`
+	// Key-value pairs of default labels to be applied to alert rules
+	DefaultRuleLabels    map[string]string `json:"default_rule_labels,omitempty"`
+	SpecConfigSecret     *string           `json:"spec_config_secret,omitempty"`
+	SpecExternalUrl      *string           `json:"spec_external_url,omitempty"`
+	ConfigName           *string           `json:"config_name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -73,22 +74,23 @@ func (o *AlertingConfig) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
-// GetDefaultRuleLabels returns the DefaultRuleLabels field value if set, zero value otherwise.
-func (o *AlertingConfig) GetDefaultRuleLabels() string {
-	if o == nil || IsNil(o.DefaultRuleLabels) {
-		var ret string
+// GetDefaultRuleLabels returns the DefaultRuleLabels field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AlertingConfig) GetDefaultRuleLabels() map[string]string {
+	if o == nil {
+		var ret map[string]string
 		return ret
 	}
-	return *o.DefaultRuleLabels
+	return o.DefaultRuleLabels
 }
 
 // GetDefaultRuleLabelsOk returns a tuple with the DefaultRuleLabels field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AlertingConfig) GetDefaultRuleLabelsOk() (*string, bool) {
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AlertingConfig) GetDefaultRuleLabelsOk() (*map[string]string, bool) {
 	if o == nil || IsNil(o.DefaultRuleLabels) {
 		return nil, false
 	}
-	return o.DefaultRuleLabels, true
+	return &o.DefaultRuleLabels, true
 }
 
 // HasDefaultRuleLabels returns a boolean if a field has been set.
@@ -100,9 +102,9 @@ func (o *AlertingConfig) HasDefaultRuleLabels() bool {
 	return false
 }
 
-// SetDefaultRuleLabels gets a reference to the given string and assigns it to the DefaultRuleLabels field.
-func (o *AlertingConfig) SetDefaultRuleLabels(v string) {
-	o.DefaultRuleLabels = &v
+// SetDefaultRuleLabels gets a reference to the given map[string]string and assigns it to the DefaultRuleLabels field.
+func (o *AlertingConfig) SetDefaultRuleLabels(v map[string]string) {
+	o.DefaultRuleLabels = v
 }
 
 // GetSpecConfigSecret returns the SpecConfigSecret field value if set, zero value otherwise.
@@ -212,7 +214,7 @@ func (o AlertingConfig) MarshalJSON() ([]byte, error) {
 func (o AlertingConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["enabled"] = o.Enabled
-	if !IsNil(o.DefaultRuleLabels) {
+	if o.DefaultRuleLabels != nil {
 		toSerialize["default_rule_labels"] = o.DefaultRuleLabels
 	}
 	if !IsNil(o.SpecConfigSecret) {

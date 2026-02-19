@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Enabled** | **bool** |  | 
-**DefaultRuleLabels** | Pointer to **string** |  | [optional] 
+**DefaultRuleLabels** | Pointer to **map[string]string** | Key-value pairs of default labels to be applied to alert rules | [optional] 
 **SpecConfigSecret** | Pointer to **string** |  | [optional] 
 **SpecExternalUrl** | Pointer to **string** |  | [optional] 
 **ConfigName** | Pointer to **string** |  | [optional] 
@@ -51,20 +51,20 @@ SetEnabled sets Enabled field to given value.
 
 ### GetDefaultRuleLabels
 
-`func (o *AlertingConfig) GetDefaultRuleLabels() string`
+`func (o *AlertingConfig) GetDefaultRuleLabels() map[string]string`
 
 GetDefaultRuleLabels returns the DefaultRuleLabels field if non-nil, zero value otherwise.
 
 ### GetDefaultRuleLabelsOk
 
-`func (o *AlertingConfig) GetDefaultRuleLabelsOk() (*string, bool)`
+`func (o *AlertingConfig) GetDefaultRuleLabelsOk() (*map[string]string, bool)`
 
 GetDefaultRuleLabelsOk returns a tuple with the DefaultRuleLabels field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefaultRuleLabels
 
-`func (o *AlertingConfig) SetDefaultRuleLabels(v string)`
+`func (o *AlertingConfig) SetDefaultRuleLabels(v map[string]string)`
 
 SetDefaultRuleLabels sets DefaultRuleLabels field to given value.
 
@@ -74,6 +74,16 @@ SetDefaultRuleLabels sets DefaultRuleLabels field to given value.
 
 HasDefaultRuleLabels returns a boolean if a field has been set.
 
+### SetDefaultRuleLabelsNil
+
+`func (o *AlertingConfig) SetDefaultRuleLabelsNil(b bool)`
+
+ SetDefaultRuleLabelsNil sets the value for DefaultRuleLabels to be an explicit nil
+
+### UnsetDefaultRuleLabels
+`func (o *AlertingConfig) UnsetDefaultRuleLabels()`
+
+UnsetDefaultRuleLabels ensures that no value is present for DefaultRuleLabels, not even an explicit nil
 ### GetSpecConfigSecret
 
 `func (o *AlertingConfig) GetSpecConfigSecret() string`

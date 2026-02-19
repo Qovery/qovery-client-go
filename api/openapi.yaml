@@ -20836,7 +20836,8 @@ components:
             alerting:
               config_name: config_name
               spec_external_url: spec_external_url
-              default_rule_labels: default_rule_labels
+              default_rule_labels:
+                key: default_rule_labels
               spec_config_secret: spec_config_secret
               enabled: true
           enabled: true
@@ -21554,7 +21555,8 @@ components:
             alerting:
               config_name: config_name
               spec_external_url: spec_external_url
-              default_rule_labels: default_rule_labels
+              default_rule_labels:
+                key: default_rule_labels
               spec_config_secret: spec_config_secret
               enabled: true
           enabled: true
@@ -21746,7 +21748,8 @@ components:
               alerting:
                 config_name: config_name
                 spec_external_url: spec_external_url
-                default_rule_labels: default_rule_labels
+                default_rule_labels:
+                  key: default_rule_labels
                 spec_config_secret: spec_config_secret
                 enabled: true
             enabled: true
@@ -21850,7 +21853,8 @@ components:
               alerting:
                 config_name: config_name
                 spec_external_url: spec_external_url
-                default_rule_labels: default_rule_labels
+                default_rule_labels:
+                  key: default_rule_labels
                 spec_config_secret: spec_config_secret
                 enabled: true
             enabled: true
@@ -35533,7 +35537,8 @@ components:
           alerting:
             config_name: config_name
             spec_external_url: spec_external_url
-            default_rule_labels: default_rule_labels
+            default_rule_labels:
+              key: default_rule_labels
             spec_config_secret: spec_config_secret
             enabled: true
         enabled: true
@@ -35560,7 +35565,8 @@ components:
         alerting:
           config_name: config_name
           spec_external_url: spec_external_url
-          default_rule_labels: default_rule_labels
+          default_rule_labels:
+            key: default_rule_labels
           spec_config_secret: spec_config_secret
           enabled: true
       properties:
@@ -38074,7 +38080,8 @@ components:
       example:
         config_name: config_name
         spec_external_url: spec_external_url
-        default_rule_labels: default_rule_labels
+        default_rule_labels:
+          key: default_rule_labels
         spec_config_secret: spec_config_secret
         enabled: true
       properties:
@@ -38083,7 +38090,11 @@ components:
           x-stoplight:
             id: spv3usiee6mc9
         default_rule_labels:
-          type: string
+          additionalProperties:
+            type: string
+          description: Key-value pairs of default labels to be applied to alert rules
+          nullable: true
+          type: object
           x-stoplight:
             id: tsp767d421sed
         spec_config_secret:
