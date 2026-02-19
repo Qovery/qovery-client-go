@@ -35,9 +35,11 @@ type Organization struct {
 	IconUrl     NullableString `json:"icon_url,omitempty"`
 	AdminEmails []string       `json:"admin_emails,omitempty"`
 	// uuid of the user owning the organization
-	Owner                *string                            `json:"owner,omitempty"`
-	OrganizationPlan     *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
-	AdditionalProperties map[string]interface{}
+	Owner *string `json:"owner,omitempty"`
+	// If set, indicates a billing-related restriction on the organization. 'NO_CREDIT_CARD' means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction.
+	BillingDeploymentRestriction NullableString                     `json:"billing_deployment_restriction,omitempty"`
+	OrganizationPlan             *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
+	AdditionalProperties         map[string]interface{}
 }
 
 type _Organization Organization
@@ -471,6 +473,49 @@ func (o *Organization) SetOwner(v string) {
 	o.Owner = &v
 }
 
+// GetBillingDeploymentRestriction returns the BillingDeploymentRestriction field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Organization) GetBillingDeploymentRestriction() string {
+	if o == nil || IsNil(o.BillingDeploymentRestriction.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BillingDeploymentRestriction.Get()
+}
+
+// GetBillingDeploymentRestrictionOk returns a tuple with the BillingDeploymentRestriction field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Organization) GetBillingDeploymentRestrictionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BillingDeploymentRestriction.Get(), o.BillingDeploymentRestriction.IsSet()
+}
+
+// HasBillingDeploymentRestriction returns a boolean if a field has been set.
+func (o *Organization) HasBillingDeploymentRestriction() bool {
+	if o != nil && o.BillingDeploymentRestriction.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBillingDeploymentRestriction gets a reference to the given NullableString and assigns it to the BillingDeploymentRestriction field.
+func (o *Organization) SetBillingDeploymentRestriction(v string) {
+	o.BillingDeploymentRestriction.Set(&v)
+}
+
+// SetBillingDeploymentRestrictionNil sets the value for BillingDeploymentRestriction to be an explicit nil
+func (o *Organization) SetBillingDeploymentRestrictionNil() {
+	o.BillingDeploymentRestriction.Set(nil)
+}
+
+// UnsetBillingDeploymentRestriction ensures that no value is present for BillingDeploymentRestriction, not even an explicit nil
+func (o *Organization) UnsetBillingDeploymentRestriction() {
+	o.BillingDeploymentRestriction.Unset()
+}
+
 // GetOrganizationPlan returns the OrganizationPlan field value if set, zero value otherwise.
 func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan {
 	if o == nil || IsNil(o.OrganizationPlan) {
@@ -541,6 +586,9 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Owner) {
 		toSerialize["owner"] = o.Owner
 	}
+	if o.BillingDeploymentRestriction.IsSet() {
+		toSerialize["billing_deployment_restriction"] = o.BillingDeploymentRestriction.Get()
+	}
 	if !IsNil(o.OrganizationPlan) {
 		toSerialize["organization_plan"] = o.OrganizationPlan
 	}
@@ -602,6 +650,7 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_url")
 		delete(additionalProperties, "admin_emails")
 		delete(additionalProperties, "owner")
+		delete(additionalProperties, "billing_deployment_restriction")
 		delete(additionalProperties, "organization_plan")
 		o.AdditionalProperties = additionalProperties
 	}

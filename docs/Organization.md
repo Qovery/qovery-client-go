@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
 **AdminEmails** | Pointer to **[]string** |  | [optional] 
 **Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
+**BillingDeploymentRestriction** | Pointer to **NullableString** | If set, indicates a billing-related restriction on the organization. &#39;NO_CREDIT_CARD&#39; means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction. | [optional] 
 **OrganizationPlan** | Pointer to [**OrganizationAllOfOrganizationPlan**](OrganizationAllOfOrganizationPlan.md) |  | [optional] 
 
 ## Methods
@@ -377,6 +378,41 @@ SetOwner sets Owner field to given value.
 
 HasOwner returns a boolean if a field has been set.
 
+### GetBillingDeploymentRestriction
+
+`func (o *Organization) GetBillingDeploymentRestriction() string`
+
+GetBillingDeploymentRestriction returns the BillingDeploymentRestriction field if non-nil, zero value otherwise.
+
+### GetBillingDeploymentRestrictionOk
+
+`func (o *Organization) GetBillingDeploymentRestrictionOk() (*string, bool)`
+
+GetBillingDeploymentRestrictionOk returns a tuple with the BillingDeploymentRestriction field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBillingDeploymentRestriction
+
+`func (o *Organization) SetBillingDeploymentRestriction(v string)`
+
+SetBillingDeploymentRestriction sets BillingDeploymentRestriction field to given value.
+
+### HasBillingDeploymentRestriction
+
+`func (o *Organization) HasBillingDeploymentRestriction() bool`
+
+HasBillingDeploymentRestriction returns a boolean if a field has been set.
+
+### SetBillingDeploymentRestrictionNil
+
+`func (o *Organization) SetBillingDeploymentRestrictionNil(b bool)`
+
+ SetBillingDeploymentRestrictionNil sets the value for BillingDeploymentRestriction to be an explicit nil
+
+### UnsetBillingDeploymentRestriction
+`func (o *Organization) UnsetBillingDeploymentRestriction()`
+
+UnsetBillingDeploymentRestriction ensures that no value is present for BillingDeploymentRestriction, not even an explicit nil
 ### GetOrganizationPlan
 
 `func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan`

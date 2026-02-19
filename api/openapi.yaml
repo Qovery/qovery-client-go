@@ -30661,6 +30661,14 @@ components:
             description: uuid of the user owning the organization
             format: uuid
             type: string
+          billing_deployment_restriction:
+            description: "If set, indicates a billing-related restriction on the organization.\
+              \ 'NO_CREDIT_CARD' means the organization is on a free trial without\
+              \ a credit card — managed cluster creation and deployments on managed\
+              \ clusters are blocked, but demo cluster usage is allowed. Any other\
+              \ value blocks all deployments. null means no restriction."
+            nullable: true
+            type: string
         type: object
       - properties:
           organization_plan:
@@ -30669,6 +30677,7 @@ components:
       example:
         icon_url: icon_url
         owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        billing_deployment_restriction: billing_deployment_restriction
         logo_url: logo_url
         organization_plan:
           plan: null
@@ -31150,6 +31159,7 @@ components:
         results:
         - icon_url: icon_url
           owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          billing_deployment_restriction: billing_deployment_restriction
           logo_url: logo_url
           organization_plan:
             plan: null
@@ -31167,6 +31177,7 @@ components:
           plan: FREE
         - icon_url: icon_url
           owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          billing_deployment_restriction: billing_deployment_restriction
           logo_url: logo_url
           organization_plan:
             plan: null
