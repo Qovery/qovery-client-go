@@ -22047,6 +22047,7 @@ components:
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
+        aws.eks.ec2.ami: AmazonLinux2023
         database.mysql.deny_any_access: true
         aws.vpc.flow_logs_retention_days: 6
         database.redis.allowed_cidrs:
@@ -22164,6 +22165,18 @@ components:
           enum:
           - optional
           - required
+          type: string
+        aws.eks.ec2.ami:
+          default: AmazonLinux2023
+          description: |
+            Select the AMI to use for EKS worker nodes (Karpenter only):
+              * `AmazonLinux2`: Amazon Linux 2
+              * `AmazonLinux2023`: Amazon Linux 2023 (default)
+              * `Bottlerocket`: Bottlerocket OS
+              * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)
+              * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2
+              * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023
+              * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
           type: string
         pleco.resources_ttl:
           deprecated: true

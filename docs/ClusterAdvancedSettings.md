@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **DatabaseRedisAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the Redis database | [optional] 
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] 
 **AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] 
+**AwsEksEc2Ami** | Pointer to **string** | Select the AMI to use for EKS worker nodes (Karpenter only):   * &#x60;AmazonLinux2&#x60;: Amazon Linux 2   * &#x60;AmazonLinux2023&#x60;: Amazon Linux 2023 (default)   * &#x60;Bottlerocket&#x60;: Bottlerocket OS   * &#x60;ami-xxx&#x60; or &#x60;my-custom-ami-*&#x60;: A custom AMI ID or name pattern (assumes AL2023-based)   * &#x60;al2:ami-xxx&#x60;: A custom AMI based on Amazon Linux 2   * &#x60;al2023:ami-xxx&#x60;: A custom AMI based on Amazon Linux 2023   * &#x60;bottlerocket:ami-xxx&#x60;: A custom AMI based on Bottlerocket  | [optional] [default to "AmazonLinux2023"]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] 
 **RegistryMirroringMode** | Pointer to [**RegistryMirroringModeEnum**](RegistryMirroringModeEnum.md) |  | [optional] [default to REGISTRYMIRRORINGMODEENUM_SERVICE]
 **NginxVcpuRequestInMilliCpu** | Pointer to **int32** | vcpu request in millicores | [optional] 
@@ -503,6 +504,31 @@ SetAwsEksEc2MetadataImds sets AwsEksEc2MetadataImds field to given value.
 `func (o *ClusterAdvancedSettings) HasAwsEksEc2MetadataImds() bool`
 
 HasAwsEksEc2MetadataImds returns a boolean if a field has been set.
+
+### GetAwsEksEc2Ami
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEc2Ami() string`
+
+GetAwsEksEc2Ami returns the AwsEksEc2Ami field if non-nil, zero value otherwise.
+
+### GetAwsEksEc2AmiOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEc2AmiOk() (*string, bool)`
+
+GetAwsEksEc2AmiOk returns a tuple with the AwsEksEc2Ami field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEc2Ami
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEc2Ami(v string)`
+
+SetAwsEksEc2Ami sets AwsEksEc2Ami field to given value.
+
+### HasAwsEksEc2Ami
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEc2Ami() bool`
+
+HasAwsEksEc2Ami returns a boolean if a field has been set.
 
 ### GetPlecoResourcesTtl
 

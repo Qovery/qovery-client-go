@@ -56,6 +56,8 @@ type ClusterAdvancedSettings struct {
 	AwsIamAdminGroup *string `json:"aws.iam.admin_group,omitempty"`
 	// Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * `required`: IMDS V2 only   * `optional`: IMDS V1 + V2
 	AwsEksEc2MetadataImds *string `json:"aws.eks.ec2.metadata_imds,omitempty"`
+	// Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
+	AwsEksEc2Ami *string `json:"aws.eks.ec2.ami,omitempty"`
 	// Deprecated
 	PlecoResourcesTtl     *int32                     `json:"pleco.resources_ttl,omitempty"`
 	RegistryMirroringMode *RegistryMirroringModeEnum `json:"registry.mirroring_mode,omitempty"`
@@ -92,6 +94,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
 	var awsEksEnableAlbController bool = true
 	this.AwsEksEnableAlbController = &awsEksEnableAlbController
+	var awsEksEc2Ami string = "AmazonLinux2023"
+	this.AwsEksEc2Ami = &awsEksEc2Ami
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -104,6 +108,8 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
 	var awsEksEnableAlbController bool = true
 	this.AwsEksEnableAlbController = &awsEksEnableAlbController
+	var awsEksEc2Ami string = "AmazonLinux2023"
+	this.AwsEksEc2Ami = &awsEksEc2Ami
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -685,6 +691,38 @@ func (o *ClusterAdvancedSettings) SetAwsEksEc2MetadataImds(v string) {
 	o.AwsEksEc2MetadataImds = &v
 }
 
+// GetAwsEksEc2Ami returns the AwsEksEc2Ami field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEc2Ami() string {
+	if o == nil || IsNil(o.AwsEksEc2Ami) {
+		var ret string
+		return ret
+	}
+	return *o.AwsEksEc2Ami
+}
+
+// GetAwsEksEc2AmiOk returns a tuple with the AwsEksEc2Ami field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEc2AmiOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsEksEc2Ami) {
+		return nil, false
+	}
+	return o.AwsEksEc2Ami, true
+}
+
+// HasAwsEksEc2Ami returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEc2Ami() bool {
+	if o != nil && !IsNil(o.AwsEksEc2Ami) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEc2Ami gets a reference to the given string and assigns it to the AwsEksEc2Ami field.
+func (o *ClusterAdvancedSettings) SetAwsEksEc2Ami(v string) {
+	o.AwsEksEc2Ami = &v
+}
+
 // GetPlecoResourcesTtl returns the PlecoResourcesTtl field value if set, zero value otherwise.
 // Deprecated
 func (o *ClusterAdvancedSettings) GetPlecoResourcesTtl() int32 {
@@ -1136,6 +1174,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsEksEc2MetadataImds) {
 		toSerialize["aws.eks.ec2.metadata_imds"] = o.AwsEksEc2MetadataImds
 	}
+	if !IsNil(o.AwsEksEc2Ami) {
+		toSerialize["aws.eks.ec2.ami"] = o.AwsEksEc2Ami
+	}
 	if !IsNil(o.PlecoResourcesTtl) {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
 	}
@@ -1212,6 +1253,7 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "database.redis.allowed_cidrs")
 		delete(additionalProperties, "aws.iam.admin_group")
 		delete(additionalProperties, "aws.eks.ec2.metadata_imds")
+		delete(additionalProperties, "aws.eks.ec2.ami")
 		delete(additionalProperties, "pleco.resources_ttl")
 		delete(additionalProperties, "registry.mirroring_mode")
 		delete(additionalProperties, "nginx.vcpu.request_in_milli_cpu")
