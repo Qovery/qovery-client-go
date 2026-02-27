@@ -20568,10 +20568,18 @@ components:
           country: country
           city: city
           name: name
+          zones:
+          - "1"
+          - "2"
+          - "3"
         - country_code: country_code
           country: country
           city: city
           name: name
+          zones:
+          - "1"
+          - "2"
+          - "3"
         logo_url: logo_url
         name: name
         short_name: short_name
@@ -20603,10 +20611,18 @@ components:
             country: country
             city: city
             name: name
+            zones:
+            - "1"
+            - "2"
+            - "3"
           - country_code: country_code
             country: country
             city: city
             name: name
+            zones:
+            - "1"
+            - "2"
+            - "3"
           logo_url: logo_url
           name: name
           short_name: short_name
@@ -20615,10 +20631,18 @@ components:
             country: country
             city: city
             name: name
+            zones:
+            - "1"
+            - "2"
+            - "3"
           - country_code: country_code
             country: country
             city: city
             name: name
+            zones:
+            - "1"
+            - "2"
+            - "3"
           logo_url: logo_url
           name: name
           short_name: short_name
@@ -21483,6 +21507,10 @@ components:
         country: country
         city: city
         name: name
+        zones:
+        - "1"
+        - "2"
+        - "3"
       properties:
         name:
           type: string
@@ -21492,6 +21520,15 @@ components:
           type: string
         city:
           type: string
+        zones:
+          description: List of availability zones supported by this region
+          example:
+          - "1"
+          - "2"
+          - "3"
+          items:
+            type: string
+          type: array
       required:
       - city
       - country
@@ -21505,10 +21542,18 @@ components:
           country: country
           city: city
           name: name
+          zones:
+          - "1"
+          - "2"
+          - "3"
         - country_code: country_code
           country: country
           city: city
           name: name
+          zones:
+          - "1"
+          - "2"
+          - "3"
       properties:
         results:
           items:

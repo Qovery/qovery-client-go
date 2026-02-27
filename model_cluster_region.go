@@ -21,10 +21,12 @@ var _ MappedNullable = &ClusterRegion{}
 
 // ClusterRegion struct for ClusterRegion
 type ClusterRegion struct {
-	Name                 string `json:"name"`
-	CountryCode          string `json:"country_code"`
-	Country              string `json:"country"`
-	City                 string `json:"city"`
+	Name        string `json:"name"`
+	CountryCode string `json:"country_code"`
+	Country     string `json:"country"`
+	City        string `json:"city"`
+	// List of availability zones supported by this region
+	Zones                []string `json:"zones,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -147,6 +149,38 @@ func (o *ClusterRegion) SetCity(v string) {
 	o.City = v
 }
 
+// GetZones returns the Zones field value if set, zero value otherwise.
+func (o *ClusterRegion) GetZones() []string {
+	if o == nil || IsNil(o.Zones) {
+		var ret []string
+		return ret
+	}
+	return o.Zones
+}
+
+// GetZonesOk returns a tuple with the Zones field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRegion) GetZonesOk() ([]string, bool) {
+	if o == nil || IsNil(o.Zones) {
+		return nil, false
+	}
+	return o.Zones, true
+}
+
+// HasZones returns a boolean if a field has been set.
+func (o *ClusterRegion) HasZones() bool {
+	if o != nil && !IsNil(o.Zones) {
+		return true
+	}
+
+	return false
+}
+
+// SetZones gets a reference to the given []string and assigns it to the Zones field.
+func (o *ClusterRegion) SetZones(v []string) {
+	o.Zones = v
+}
+
 func (o ClusterRegion) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -161,6 +195,9 @@ func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["country_code"] = o.CountryCode
 	toSerialize["country"] = o.Country
 	toSerialize["city"] = o.City
+	if !IsNil(o.Zones) {
+		toSerialize["zones"] = o.Zones
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -211,6 +248,7 @@ func (o *ClusterRegion) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "country_code")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "city")
+		delete(additionalProperties, "zones")
 		o.AdditionalProperties = additionalProperties
 	}
 
