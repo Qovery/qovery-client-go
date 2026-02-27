@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | **int32** |  | [default to 600]
 **AutoDeploy** | **bool** |  | 
+**AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
@@ -192,6 +193,31 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
+
+### GetAutoDeployConfig
+
+`func (o *TerraformResponse) GetAutoDeployConfig() TerraformAutoDeployConfig`
+
+GetAutoDeployConfig returns the AutoDeployConfig field if non-nil, zero value otherwise.
+
+### GetAutoDeployConfigOk
+
+`func (o *TerraformResponse) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool)`
+
+GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeployConfig
+
+`func (o *TerraformResponse) SetAutoDeployConfig(v TerraformAutoDeployConfig)`
+
+SetAutoDeployConfig sets AutoDeployConfig field to given value.
+
+### HasAutoDeployConfig
+
+`func (o *TerraformResponse) HasAutoDeployConfig() bool`
+
+HasAutoDeployConfig returns a boolean if a field has been set.
 
 ### GetTerraformFilesSource
 

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Description** | **string** |  | 
-**AutoDeploy** | **bool** |  | 
+**AutoDeployConfig** | [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | 
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
 **Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, description string, autoDeployConfig TerraformAutoDeployConfig, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -78,24 +78,24 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetAutoDeploy
+### GetAutoDeployConfig
 
-`func (o *TerraformRequest) GetAutoDeploy() bool`
+`func (o *TerraformRequest) GetAutoDeployConfig() TerraformAutoDeployConfig`
 
-GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+GetAutoDeployConfig returns the AutoDeployConfig field if non-nil, zero value otherwise.
 
-### GetAutoDeployOk
+### GetAutoDeployConfigOk
 
-`func (o *TerraformRequest) GetAutoDeployOk() (*bool, bool)`
+`func (o *TerraformRequest) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool)`
 
-GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAutoDeploy
+### SetAutoDeployConfig
 
-`func (o *TerraformRequest) SetAutoDeploy(v bool)`
+`func (o *TerraformRequest) SetAutoDeployConfig(v TerraformAutoDeployConfig)`
 
-SetAutoDeploy sets AutoDeploy field to given value.
+SetAutoDeployConfig sets AutoDeployConfig field to given value.
 
 
 ### GetTerraformFilesSource

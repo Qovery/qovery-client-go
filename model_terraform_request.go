@@ -23,7 +23,7 @@ var _ MappedNullable = &TerraformRequest{}
 type TerraformRequest struct {
 	Name                     string                               `json:"name"`
 	Description              string                               `json:"description"`
-	AutoDeploy               bool                                 `json:"auto_deploy"`
+	AutoDeployConfig         TerraformAutoDeployConfig            `json:"auto_deploy_config"`
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
 	Backend                  TerraformBackend                     `json:"backend"`
@@ -45,11 +45,11 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoDeploy bool, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, description string, autoDeployConfig TerraformAutoDeployConfig, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
 	this.Description = description
-	this.AutoDeploy = autoDeploy
+	this.AutoDeployConfig = autoDeployConfig
 	this.TerraformFilesSource = terraformFilesSource
 	this.TerraformVariablesSource = terraformVariablesSource
 	this.Backend = backend
@@ -115,28 +115,28 @@ func (o *TerraformRequest) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetAutoDeploy returns the AutoDeploy field value
-func (o *TerraformRequest) GetAutoDeploy() bool {
+// GetAutoDeployConfig returns the AutoDeployConfig field value
+func (o *TerraformRequest) GetAutoDeployConfig() TerraformAutoDeployConfig {
 	if o == nil {
-		var ret bool
+		var ret TerraformAutoDeployConfig
 		return ret
 	}
 
-	return o.AutoDeploy
+	return o.AutoDeployConfig
 }
 
-// GetAutoDeployOk returns a tuple with the AutoDeploy field value
+// GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field value
 // and a boolean to check if the value has been set.
-func (o *TerraformRequest) GetAutoDeployOk() (*bool, bool) {
+func (o *TerraformRequest) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AutoDeploy, true
+	return &o.AutoDeployConfig, true
 }
 
-// SetAutoDeploy sets field value
-func (o *TerraformRequest) SetAutoDeploy(v bool) {
-	o.AutoDeploy = v
+// SetAutoDeployConfig sets field value
+func (o *TerraformRequest) SetAutoDeployConfig(v TerraformAutoDeployConfig) {
+	o.AutoDeployConfig = v
 }
 
 // GetTerraformFilesSource returns the TerraformFilesSource field value
@@ -466,7 +466,7 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["auto_deploy"] = o.AutoDeploy
+	toSerialize["auto_deploy_config"] = o.AutoDeployConfig
 	toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
 	toSerialize["backend"] = o.Backend
@@ -503,7 +503,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"name",
 		"description",
-		"auto_deploy",
+		"auto_deploy_config",
 		"terraform_files_source",
 		"terraform_variables_source",
 		"backend",
@@ -541,7 +541,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "auto_deploy_config")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "terraform_variables_source")
 		delete(additionalProperties, "backend")

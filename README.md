@@ -1203,6 +1203,7 @@ Class | Method | HTTP request | Description
  - [StepMetricStatusEnum](docs/StepMetricStatusEnum.md)
  - [StorageTypeEnum](docs/StorageTypeEnum.md)
  - [TerraformAdvancedSettings](docs/TerraformAdvancedSettings.md)
+ - [TerraformAutoDeployConfig](docs/TerraformAutoDeployConfig.md)
  - [TerraformBackend](docs/TerraformBackend.md)
  - [TerraformBackendOneOf](docs/TerraformBackendOneOf.md)
  - [TerraformBackendOneOf1](docs/TerraformBackendOneOf1.md)

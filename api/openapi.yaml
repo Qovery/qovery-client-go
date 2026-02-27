@@ -35857,7 +35857,9 @@ components:
       type: string
     TerraformRequest:
       example:
-        auto_deploy: true
+        auto_deploy_config:
+          auto_deploy: true
+          auto_deploy_action: DEFAULT
         job_resources:
           cpu_milli: 6
           ram_mib: 1
@@ -35907,10 +35909,8 @@ components:
           type: string
           x-stoplight:
             id: ltvpnbhjz1oho
-        auto_deploy:
-          type: boolean
-          x-stoplight:
-            id: 38iixcrw933wy
+        auto_deploy_config:
+          $ref: '#/components/schemas/TerraformAutoDeployConfig'
         terraform_files_source:
           $ref: '#/components/schemas/TerraformRequest_terraform_files_source'
         terraform_variables_source:
@@ -35956,7 +35956,7 @@ components:
         dockerfile_fragment:
           $ref: '#/components/schemas/TerraformRequest_dockerfile_fragment'
       required:
-      - auto_deploy
+      - auto_deploy_config
       - backend
       - description
       - engine
@@ -36120,6 +36120,8 @@ components:
             type: integer
           auto_deploy:
             type: boolean
+          auto_deploy_config:
+            $ref: '#/components/schemas/TerraformAutoDeployConfig'
           terraform_files_source:
             $ref: '#/components/schemas/TerraformResponse_allOf_terraform_files_source'
           icon_uri:
@@ -36182,6 +36184,9 @@ components:
         type: object
       description: A Terraform service
       example:
+        auto_deploy_config:
+          auto_deploy: true
+          auto_deploy_action: DEFAULT
         auto_deploy: true
         job_resources:
           cpu_milli: 6
@@ -36411,6 +36416,32 @@ components:
       type: object
       x-stoplight:
         id: n91jcyroi7kt4
+    TerraformAutoDeployConfig:
+      example:
+        auto_deploy: true
+        auto_deploy_action: DEFAULT
+      properties:
+        auto_deploy:
+          type: boolean
+        auto_deploy_action:
+          description: |
+            Action to force a specific Terraform behavior on autodeploy.
+            `DEFAULT`: The action is resolved based on the deployment type:
+              - Start/Restart -> PLAN_AND_APPLY
+              - Delete -> DESTROY
+              - Pause -> PLAN_ONLY
+          enum:
+          - DEFAULT
+          - PLAN
+          - FORCE_UNLOCK
+          - MIGRATE_STATE
+          - NOOP
+          type: string
+      required:
+      - auto_deploy
+      - auto_deploy_action
+      title: TerraformAutoDeployConfig
+      type: object
     TerraformGitRepositoryRequest:
       example:
         root_path: root_path
@@ -36641,7 +36672,10 @@ components:
     TerraformResponseList:
       example:
         results:
-        - auto_deploy: true
+        - auto_deploy_config:
+            auto_deploy: true
+            auto_deploy_action: DEFAULT
+          auto_deploy: true
           job_resources:
             cpu_milli: 6
             ram_mib: 1
@@ -36698,7 +36732,10 @@ components:
             key:
             - action_extra_arguments
             - action_extra_arguments
-        - auto_deploy: true
+        - auto_deploy_config:
+            auto_deploy: true
+            auto_deploy_action: DEFAULT
+          auto_deploy: true
           job_resources:
             cpu_milli: 6
             ram_mib: 1

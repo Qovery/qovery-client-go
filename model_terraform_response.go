@@ -30,6 +30,7 @@ type TerraformResponse struct {
 	Description          *string                                     `json:"description,omitempty"`
 	TimeoutSec           int32                                       `json:"timeout_sec"`
 	AutoDeploy           bool                                        `json:"auto_deploy"`
+	AutoDeployConfig     *TerraformAutoDeployConfig                  `json:"auto_deploy_config,omitempty"`
 	TerraformFilesSource *TerraformResponseAllOfTerraformFilesSource `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
 	IconUri                  string                           `json:"icon_uri"`
@@ -265,6 +266,38 @@ func (o *TerraformResponse) GetAutoDeployOk() (*bool, bool) {
 // SetAutoDeploy sets field value
 func (o *TerraformResponse) SetAutoDeploy(v bool) {
 	o.AutoDeploy = v
+}
+
+// GetAutoDeployConfig returns the AutoDeployConfig field value if set, zero value otherwise.
+func (o *TerraformResponse) GetAutoDeployConfig() TerraformAutoDeployConfig {
+	if o == nil || IsNil(o.AutoDeployConfig) {
+		var ret TerraformAutoDeployConfig
+		return ret
+	}
+	return *o.AutoDeployConfig
+}
+
+// GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool) {
+	if o == nil || IsNil(o.AutoDeployConfig) {
+		return nil, false
+	}
+	return o.AutoDeployConfig, true
+}
+
+// HasAutoDeployConfig returns a boolean if a field has been set.
+func (o *TerraformResponse) HasAutoDeployConfig() bool {
+	if o != nil && !IsNil(o.AutoDeployConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeployConfig gets a reference to the given TerraformAutoDeployConfig and assigns it to the AutoDeployConfig field.
+func (o *TerraformResponse) SetAutoDeployConfig(v TerraformAutoDeployConfig) {
+	o.AutoDeployConfig = &v
 }
 
 // GetTerraformFilesSource returns the TerraformFilesSource field value if set, zero value otherwise.
@@ -603,6 +636,9 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["timeout_sec"] = o.TimeoutSec
 	toSerialize["auto_deploy"] = o.AutoDeploy
+	if !IsNil(o.AutoDeployConfig) {
+		toSerialize["auto_deploy_config"] = o.AutoDeployConfig
+	}
 	if !IsNil(o.TerraformFilesSource) {
 		toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	}
@@ -683,6 +719,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "timeout_sec")
 		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "auto_deploy_config")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")

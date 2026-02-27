@@ -51,6 +51,7 @@ Name | Type | Description | Notes
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
+**AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
 **Engine** | [**TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
@@ -1134,6 +1135,31 @@ and a boolean to check if the value has been set.
 
 SetValuesOverride sets ValuesOverride field to given value.
 
+
+### GetAutoDeployConfig
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoDeployConfig() TerraformAutoDeployConfig`
+
+GetAutoDeployConfig returns the AutoDeployConfig field if non-nil, zero value otherwise.
+
+### GetAutoDeployConfigOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool)`
+
+GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeployConfig
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetAutoDeployConfig(v TerraformAutoDeployConfig)`
+
+SetAutoDeployConfig sets AutoDeployConfig field to given value.
+
+### HasAutoDeployConfig
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasAutoDeployConfig() bool`
+
+HasAutoDeployConfig returns a boolean if a field has been set.
 
 ### GetTerraformFilesSource
 
