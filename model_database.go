@@ -53,7 +53,9 @@ type Database struct {
 	// Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB = 1GB
 	MaximumMemory *int32 `json:"maximum_memory,omitempty"`
 	// indicates if the database disk is encrypted or not
-	DiskEncrypted        *bool           `json:"disk_encrypted,omitempty"`
+	DiskEncrypted *bool `json:"disk_encrypted,omitempty"`
+	// EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode.
+	DiskType             NullableString  `json:"disk_type,omitempty"`
 	ServiceType          ServiceTypeEnum `json:"service_type"`
 	AdditionalProperties map[string]interface{}
 }
@@ -738,6 +740,49 @@ func (o *Database) SetDiskEncrypted(v bool) {
 	o.DiskEncrypted = &v
 }
 
+// GetDiskType returns the DiskType field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Database) GetDiskType() string {
+	if o == nil || IsNil(o.DiskType.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DiskType.Get()
+}
+
+// GetDiskTypeOk returns a tuple with the DiskType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Database) GetDiskTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DiskType.Get(), o.DiskType.IsSet()
+}
+
+// HasDiskType returns a boolean if a field has been set.
+func (o *Database) HasDiskType() bool {
+	if o != nil && o.DiskType.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskType gets a reference to the given NullableString and assigns it to the DiskType field.
+func (o *Database) SetDiskType(v string) {
+	o.DiskType.Set(&v)
+}
+
+// SetDiskTypeNil sets the value for DiskType to be an explicit nil
+func (o *Database) SetDiskTypeNil() {
+	o.DiskType.Set(nil)
+}
+
+// UnsetDiskType ensures that no value is present for DiskType, not even an explicit nil
+func (o *Database) UnsetDiskType() {
+	o.DiskType.Unset()
+}
+
 // GetServiceType returns the ServiceType field value
 func (o *Database) GetServiceType() ServiceTypeEnum {
 	if o == nil {
@@ -822,6 +867,9 @@ func (o Database) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskEncrypted) {
 		toSerialize["disk_encrypted"] = o.DiskEncrypted
 	}
+	if o.DiskType.IsSet() {
+		toSerialize["disk_type"] = o.DiskType.Get()
+	}
 	toSerialize["service_type"] = o.ServiceType
 
 	for key, value := range o.AdditionalProperties {
@@ -896,6 +944,7 @@ func (o *Database) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "disk_encrypted")
+		delete(additionalProperties, "disk_type")
 		delete(additionalProperties, "service_type")
 		o.AdditionalProperties = additionalProperties
 	}

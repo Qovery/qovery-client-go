@@ -24178,6 +24178,14 @@ components:
               \ This field is null for container DB."
             example: db.t3.medium
             type: string
+          disk_type:
+            description: EBS disk type for the database. Only applicable for MANAGED
+              mode (gp2 or gp3). Null for CONTAINER mode.
+            enum:
+            - gp2
+            - gp3
+            nullable: true
+            type: string
           annotations_groups:
             $ref: '#/components/schemas/OrganizationAnnotationsGroupResponseList'
           labels_groups:
@@ -24260,6 +24268,7 @@ components:
         port: 5432
         maximum_cpu: 1250
         disk_encrypted: true
+        disk_type: gp2
         name: name
         host: host
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -24317,6 +24326,7 @@ components:
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        disk_type: gp2
         name: name
         description: description
         cpu: 1250
@@ -24377,6 +24387,13 @@ components:
         icon_uri:
           description: Icon URI representing the database.
           format: uri
+          type: string
+        disk_type:
+          description: "EBS disk type for MANAGED AWS databases. Allowed values: gp2,\
+            \ gp3. Only applicable for MANAGED mode."
+          enum:
+          - gp2
+          - gp3
           type: string
       type: object
     DatabaseModeEnum:
@@ -24538,6 +24555,7 @@ components:
           port: 5432
           maximum_cpu: 1250
           disk_encrypted: true
+          disk_type: gp2
           name: name
           host: host
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -24608,6 +24626,7 @@ components:
           port: 5432
           maximum_cpu: 1250
           disk_encrypted: true
+          disk_type: gp2
           name: name
           host: host
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

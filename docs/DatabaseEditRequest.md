@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
+**DiskType** | Pointer to **string** | EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode. | [optional] 
 
 ## Methods
 
@@ -309,6 +310,31 @@ SetIconUri sets IconUri field to given value.
 `func (o *DatabaseEditRequest) HasIconUri() bool`
 
 HasIconUri returns a boolean if a field has been set.
+
+### GetDiskType
+
+`func (o *DatabaseEditRequest) GetDiskType() string`
+
+GetDiskType returns the DiskType field if non-nil, zero value otherwise.
+
+### GetDiskTypeOk
+
+`func (o *DatabaseEditRequest) GetDiskTypeOk() (*string, bool)`
+
+GetDiskTypeOk returns a tuple with the DiskType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskType
+
+`func (o *DatabaseEditRequest) SetDiskType(v string)`
+
+SetDiskType sets DiskType field to given value.
+
+### HasDiskType
+
+`func (o *DatabaseEditRequest) HasDiskType() bool`
+
+HasDiskType returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

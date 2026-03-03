@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
+**DiskType** | Pointer to **NullableString** | EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode. | [optional] 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 
 ## Methods
@@ -557,6 +558,41 @@ SetDiskEncrypted sets DiskEncrypted field to given value.
 
 HasDiskEncrypted returns a boolean if a field has been set.
 
+### GetDiskType
+
+`func (o *Database) GetDiskType() string`
+
+GetDiskType returns the DiskType field if non-nil, zero value otherwise.
+
+### GetDiskTypeOk
+
+`func (o *Database) GetDiskTypeOk() (*string, bool)`
+
+GetDiskTypeOk returns a tuple with the DiskType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskType
+
+`func (o *Database) SetDiskType(v string)`
+
+SetDiskType sets DiskType field to given value.
+
+### HasDiskType
+
+`func (o *Database) HasDiskType() bool`
+
+HasDiskType returns a boolean if a field has been set.
+
+### SetDiskTypeNil
+
+`func (o *Database) SetDiskTypeNil(b bool)`
+
+ SetDiskTypeNil sets the value for DiskType to be an explicit nil
+
+### UnsetDiskType
+`func (o *Database) UnsetDiskType()`
+
+UnsetDiskType ensures that no value is present for DiskType, not even an explicit nil
 ### GetServiceType
 
 `func (o *Database) GetServiceType() ServiceTypeEnum`

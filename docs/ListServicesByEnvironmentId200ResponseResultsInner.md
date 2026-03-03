@@ -47,6 +47,7 @@ Name | Type | Description | Notes
 **Host** | Pointer to **string** |  | [optional] 
 **Port** | Pointer to **int32** |  | [optional] 
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
+**DiskType** | Pointer to **NullableString** | EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode. | [optional] 
 **TimeoutSec** | **int32** |  | [default to 600]
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
@@ -1056,6 +1057,41 @@ SetDiskEncrypted sets DiskEncrypted field to given value.
 
 HasDiskEncrypted returns a boolean if a field has been set.
 
+### GetDiskType
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDiskType() string`
+
+GetDiskType returns the DiskType field if non-nil, zero value otherwise.
+
+### GetDiskTypeOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDiskTypeOk() (*string, bool)`
+
+GetDiskTypeOk returns a tuple with the DiskType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskType
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDiskType(v string)`
+
+SetDiskType sets DiskType field to given value.
+
+### HasDiskType
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasDiskType() bool`
+
+HasDiskType returns a boolean if a field has been set.
+
+### SetDiskTypeNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDiskTypeNil(b bool)`
+
+ SetDiskTypeNil sets the value for DiskType to be an explicit nil
+
+### UnsetDiskType
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetDiskType()`
+
+UnsetDiskType ensures that no value is present for DiskType, not even an explicit nil
 ### GetTimeoutSec
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetTimeoutSec() int32`
