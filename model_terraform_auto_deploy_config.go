@@ -23,7 +23,7 @@ var _ MappedNullable = &TerraformAutoDeployConfig{}
 type TerraformAutoDeployConfig struct {
 	AutoDeploy bool `json:"auto_deploy"`
 	// Action to force a specific Terraform behavior on autodeploy. `DEFAULT`: The action is resolved based on the deployment type:   - Start/Restart -> PLAN_AND_APPLY   - Delete -> DESTROY   - Pause -> PLAN_ONLY
-	AutoDeployAction     string `json:"auto_deploy_action"`
+	TerraformAction      string `json:"terraform_action"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,10 +33,10 @@ type _TerraformAutoDeployConfig TerraformAutoDeployConfig
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformAutoDeployConfig(autoDeploy bool, autoDeployAction string) *TerraformAutoDeployConfig {
+func NewTerraformAutoDeployConfig(autoDeploy bool, terraformAction string) *TerraformAutoDeployConfig {
 	this := TerraformAutoDeployConfig{}
 	this.AutoDeploy = autoDeploy
-	this.AutoDeployAction = autoDeployAction
+	this.TerraformAction = terraformAction
 	return &this
 }
 
@@ -72,28 +72,28 @@ func (o *TerraformAutoDeployConfig) SetAutoDeploy(v bool) {
 	o.AutoDeploy = v
 }
 
-// GetAutoDeployAction returns the AutoDeployAction field value
-func (o *TerraformAutoDeployConfig) GetAutoDeployAction() string {
+// GetTerraformAction returns the TerraformAction field value
+func (o *TerraformAutoDeployConfig) GetTerraformAction() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.AutoDeployAction
+	return o.TerraformAction
 }
 
-// GetAutoDeployActionOk returns a tuple with the AutoDeployAction field value
+// GetTerraformActionOk returns a tuple with the TerraformAction field value
 // and a boolean to check if the value has been set.
-func (o *TerraformAutoDeployConfig) GetAutoDeployActionOk() (*string, bool) {
+func (o *TerraformAutoDeployConfig) GetTerraformActionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AutoDeployAction, true
+	return &o.TerraformAction, true
 }
 
-// SetAutoDeployAction sets field value
-func (o *TerraformAutoDeployConfig) SetAutoDeployAction(v string) {
-	o.AutoDeployAction = v
+// SetTerraformAction sets field value
+func (o *TerraformAutoDeployConfig) SetTerraformAction(v string) {
+	o.TerraformAction = v
 }
 
 func (o TerraformAutoDeployConfig) MarshalJSON() ([]byte, error) {
@@ -107,7 +107,7 @@ func (o TerraformAutoDeployConfig) MarshalJSON() ([]byte, error) {
 func (o TerraformAutoDeployConfig) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["auto_deploy"] = o.AutoDeploy
-	toSerialize["auto_deploy_action"] = o.AutoDeployAction
+	toSerialize["terraform_action"] = o.TerraformAction
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -122,7 +122,7 @@ func (o *TerraformAutoDeployConfig) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"auto_deploy",
-		"auto_deploy_action",
+		"terraform_action",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -153,7 +153,7 @@ func (o *TerraformAutoDeployConfig) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "auto_deploy")
-		delete(additionalProperties, "auto_deploy_action")
+		delete(additionalProperties, "terraform_action")
 		o.AdditionalProperties = additionalProperties
 	}
 

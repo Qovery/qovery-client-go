@@ -5,13 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AutoDeploy** | **bool** |  | 
-**AutoDeployAction** | **string** | Action to force a specific Terraform behavior on autodeploy. &#x60;DEFAULT&#x60;: The action is resolved based on the deployment type:   - Start/Restart -&gt; PLAN_AND_APPLY   - Delete -&gt; DESTROY   - Pause -&gt; PLAN_ONLY  | 
+**TerraformAction** | **string** | Action to force a specific Terraform behavior on autodeploy. &#x60;DEFAULT&#x60;: The action is resolved based on the deployment type:   - Start/Restart -&gt; PLAN_AND_APPLY   - Delete -&gt; DESTROY   - Pause -&gt; PLAN_ONLY  | 
 
 ## Methods
 
 ### NewTerraformAutoDeployConfig
 
-`func NewTerraformAutoDeployConfig(autoDeploy bool, autoDeployAction string, ) *TerraformAutoDeployConfig`
+`func NewTerraformAutoDeployConfig(autoDeploy bool, terraformAction string, ) *TerraformAutoDeployConfig`
 
 NewTerraformAutoDeployConfig instantiates a new TerraformAutoDeployConfig object
 This constructor will assign default values to properties that have it defined,
@@ -46,24 +46,24 @@ and a boolean to check if the value has been set.
 SetAutoDeploy sets AutoDeploy field to given value.
 
 
-### GetAutoDeployAction
+### GetTerraformAction
 
-`func (o *TerraformAutoDeployConfig) GetAutoDeployAction() string`
+`func (o *TerraformAutoDeployConfig) GetTerraformAction() string`
 
-GetAutoDeployAction returns the AutoDeployAction field if non-nil, zero value otherwise.
+GetTerraformAction returns the TerraformAction field if non-nil, zero value otherwise.
 
-### GetAutoDeployActionOk
+### GetTerraformActionOk
 
-`func (o *TerraformAutoDeployConfig) GetAutoDeployActionOk() (*string, bool)`
+`func (o *TerraformAutoDeployConfig) GetTerraformActionOk() (*string, bool)`
 
-GetAutoDeployActionOk returns a tuple with the AutoDeployAction field if it's non-nil, zero value otherwise
+GetTerraformActionOk returns a tuple with the TerraformAction field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetAutoDeployAction
+### SetTerraformAction
 
-`func (o *TerraformAutoDeployConfig) SetAutoDeployAction(v string)`
+`func (o *TerraformAutoDeployConfig) SetTerraformAction(v string)`
 
-SetAutoDeployAction sets AutoDeployAction field to given value.
+SetTerraformAction sets TerraformAction field to given value.
 
 
 

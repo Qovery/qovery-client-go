@@ -35859,7 +35859,7 @@ components:
       example:
         auto_deploy_config:
           auto_deploy: true
-          auto_deploy_action: DEFAULT
+          terraform_action: DEFAULT
         job_resources:
           cpu_milli: 6
           ram_mib: 1
@@ -36186,7 +36186,7 @@ components:
       example:
         auto_deploy_config:
           auto_deploy: true
-          auto_deploy_action: DEFAULT
+          terraform_action: DEFAULT
         auto_deploy: true
         job_resources:
           cpu_milli: 6
@@ -36419,11 +36419,11 @@ components:
     TerraformAutoDeployConfig:
       example:
         auto_deploy: true
-        auto_deploy_action: DEFAULT
+        terraform_action: DEFAULT
       properties:
         auto_deploy:
           type: boolean
-        auto_deploy_action:
+        terraform_action:
           description: |
             Action to force a specific Terraform behavior on autodeploy.
             `DEFAULT`: The action is resolved based on the deployment type:
@@ -36433,13 +36433,11 @@ components:
           enum:
           - DEFAULT
           - PLAN
-          - FORCE_UNLOCK
-          - MIGRATE_STATE
           - NOOP
           type: string
       required:
       - auto_deploy
-      - auto_deploy_action
+      - terraform_action
       title: TerraformAutoDeployConfig
       type: object
     TerraformGitRepositoryRequest:
@@ -36674,7 +36672,7 @@ components:
         results:
         - auto_deploy_config:
             auto_deploy: true
-            auto_deploy_action: DEFAULT
+            terraform_action: DEFAULT
           auto_deploy: true
           job_resources:
             cpu_milli: 6
@@ -36734,7 +36732,7 @@ components:
             - action_extra_arguments
         - auto_deploy_config:
             auto_deploy: true
-            auto_deploy_action: DEFAULT
+            terraform_action: DEFAULT
           auto_deploy: true
           job_resources:
             cpu_milli: 6
