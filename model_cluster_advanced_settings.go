@@ -26,6 +26,8 @@ type ClusterAdvancedSettings struct {
 	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
 	// Set the number of retention days for flow logs. Disable with value \"0\"
 	AwsVpcFlowLogsRetentionDays *int32 `json:"aws.vpc.flow_logs_retention_days,omitempty"`
+	// Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits.
+	AwsVpcEnableNatGatewaySecondaryEip *bool `json:"aws.vpc.enable_nat_gateway_secondary_eip,omitempty"`
 	// For how long in week loki is going to keep logs of your applications
 	LokiLogRetentionInWeek *int32 `json:"loki.log_retention_in_week,omitempty"`
 	// Configure the number of seconds before cleaning images in the registry
@@ -209,6 +211,38 @@ func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool {
 // SetAwsVpcFlowLogsRetentionDays gets a reference to the given int32 and assigns it to the AwsVpcFlowLogsRetentionDays field.
 func (o *ClusterAdvancedSettings) SetAwsVpcFlowLogsRetentionDays(v int32) {
 	o.AwsVpcFlowLogsRetentionDays = &v
+}
+
+// GetAwsVpcEnableNatGatewaySecondaryEip returns the AwsVpcEnableNatGatewaySecondaryEip field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsVpcEnableNatGatewaySecondaryEip() bool {
+	if o == nil || IsNil(o.AwsVpcEnableNatGatewaySecondaryEip) {
+		var ret bool
+		return ret
+	}
+	return *o.AwsVpcEnableNatGatewaySecondaryEip
+}
+
+// GetAwsVpcEnableNatGatewaySecondaryEipOk returns a tuple with the AwsVpcEnableNatGatewaySecondaryEip field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsVpcEnableNatGatewaySecondaryEipOk() (*bool, bool) {
+	if o == nil || IsNil(o.AwsVpcEnableNatGatewaySecondaryEip) {
+		return nil, false
+	}
+	return o.AwsVpcEnableNatGatewaySecondaryEip, true
+}
+
+// HasAwsVpcEnableNatGatewaySecondaryEip returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsVpcEnableNatGatewaySecondaryEip() bool {
+	if o != nil && !IsNil(o.AwsVpcEnableNatGatewaySecondaryEip) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsVpcEnableNatGatewaySecondaryEip gets a reference to the given bool and assigns it to the AwsVpcEnableNatGatewaySecondaryEip field.
+func (o *ClusterAdvancedSettings) SetAwsVpcEnableNatGatewaySecondaryEip(v bool) {
+	o.AwsVpcEnableNatGatewaySecondaryEip = &v
 }
 
 // GetLokiLogRetentionInWeek returns the LokiLogRetentionInWeek field value if set, zero value otherwise.
@@ -1129,6 +1163,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsVpcFlowLogsRetentionDays) {
 		toSerialize["aws.vpc.flow_logs_retention_days"] = o.AwsVpcFlowLogsRetentionDays
 	}
+	if !IsNil(o.AwsVpcEnableNatGatewaySecondaryEip) {
+		toSerialize["aws.vpc.enable_nat_gateway_secondary_eip"] = o.AwsVpcEnableNatGatewaySecondaryEip
+	}
 	if !IsNil(o.LokiLogRetentionInWeek) {
 		toSerialize["loki.log_retention_in_week"] = o.LokiLogRetentionInWeek
 	}
@@ -1238,6 +1275,7 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "aws.cloudwatch.eks_logs_retention_days")
 		delete(additionalProperties, "aws.vpc.enable_s3_flow_logs")
 		delete(additionalProperties, "aws.vpc.flow_logs_retention_days")
+		delete(additionalProperties, "aws.vpc.enable_nat_gateway_secondary_eip")
 		delete(additionalProperties, "loki.log_retention_in_week")
 		delete(additionalProperties, "registry.image_retention_time")
 		delete(additionalProperties, "cloud_provider.container_registry.tags")

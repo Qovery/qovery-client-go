@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **AwsCloudwatchEksLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for EKS Cloudwatch logs | [optional] 
 **AwsVpcEnableS3FlowLogs** | Pointer to **bool** | Enable flow logs for on the VPC and store them in an S3 bucket | [optional] 
 **AwsVpcFlowLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for flow logs. Disable with value \&quot;0\&quot; | [optional] 
+**AwsVpcEnableNatGatewaySecondaryEip** | Pointer to **bool** | Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits. | [optional] 
 **LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] 
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] 
 **CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
@@ -129,6 +130,31 @@ SetAwsVpcFlowLogsRetentionDays sets AwsVpcFlowLogsRetentionDays field to given v
 `func (o *ClusterAdvancedSettings) HasAwsVpcFlowLogsRetentionDays() bool`
 
 HasAwsVpcFlowLogsRetentionDays returns a boolean if a field has been set.
+
+### GetAwsVpcEnableNatGatewaySecondaryEip
+
+`func (o *ClusterAdvancedSettings) GetAwsVpcEnableNatGatewaySecondaryEip() bool`
+
+GetAwsVpcEnableNatGatewaySecondaryEip returns the AwsVpcEnableNatGatewaySecondaryEip field if non-nil, zero value otherwise.
+
+### GetAwsVpcEnableNatGatewaySecondaryEipOk
+
+`func (o *ClusterAdvancedSettings) GetAwsVpcEnableNatGatewaySecondaryEipOk() (*bool, bool)`
+
+GetAwsVpcEnableNatGatewaySecondaryEipOk returns a tuple with the AwsVpcEnableNatGatewaySecondaryEip field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsVpcEnableNatGatewaySecondaryEip
+
+`func (o *ClusterAdvancedSettings) SetAwsVpcEnableNatGatewaySecondaryEip(v bool)`
+
+SetAwsVpcEnableNatGatewaySecondaryEip sets AwsVpcEnableNatGatewaySecondaryEip field to given value.
+
+### HasAwsVpcEnableNatGatewaySecondaryEip
+
+`func (o *ClusterAdvancedSettings) HasAwsVpcEnableNatGatewaySecondaryEip() bool`
+
+HasAwsVpcEnableNatGatewaySecondaryEip returns a boolean if a field has been set.
 
 ### GetLokiLogRetentionInWeek
 

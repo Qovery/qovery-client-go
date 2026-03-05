@@ -22103,6 +22103,7 @@ components:
         qovery.static_ip_mode: true
         load_balancer.size: load_balancer.size
         nginx.memory.request_in_mib: 9
+        aws.vpc.enable_nat_gateway_secondary_eip: true
         database.mongodb.allowed_cidrs:
         - database.mongodb.allowed_cidrs
         - database.mongodb.allowed_cidrs
@@ -22135,6 +22136,11 @@ components:
           description: Set the number of retention days for flow logs. Disable with
             value "0"
           type: integer
+        aws.vpc.enable_nat_gateway_secondary_eip:
+          description: "Enable a secondary Elastic IP per NAT Gateway, increasing\
+            \ the number of outbound public IPs. Useful for services with IP-based\
+            \ rate limits."
+          type: boolean
         loki.log_retention_in_week:
           description: For how long in week loki is going to keep logs of your applications
           type: integer
