@@ -24428,6 +24428,7 @@ components:
           enum:
           - gp2
           - gp3
+          nullable: true
           type: string
       type: object
     DatabaseModeEnum:

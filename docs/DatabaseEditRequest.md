@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the database. | [optional] 
-**DiskType** | Pointer to **string** | EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode. | [optional] 
+**DiskType** | Pointer to **NullableString** | EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode. | [optional] 
 
 ## Methods
 
@@ -336,6 +336,16 @@ SetDiskType sets DiskType field to given value.
 
 HasDiskType returns a boolean if a field has been set.
 
+### SetDiskTypeNil
+
+`func (o *DatabaseEditRequest) SetDiskTypeNil(b bool)`
+
+ SetDiskTypeNil sets the value for DiskType to be an explicit nil
+
+### UnsetDiskType
+`func (o *DatabaseEditRequest) UnsetDiskType()`
+
+UnsetDiskType ensures that no value is present for DiskType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

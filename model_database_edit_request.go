@@ -39,7 +39,7 @@ type DatabaseEditRequest struct {
 	// Icon URI representing the database.
 	IconUri *string `json:"icon_uri,omitempty"`
 	// EBS disk type for MANAGED AWS databases. Allowed values: gp2, gp3. Only applicable for MANAGED mode.
-	DiskType             *string `json:"disk_type,omitempty"`
+	DiskType             NullableString `json:"disk_type,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -422,36 +422,47 @@ func (o *DatabaseEditRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
-// GetDiskType returns the DiskType field value if set, zero value otherwise.
+// GetDiskType returns the DiskType field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *DatabaseEditRequest) GetDiskType() string {
-	if o == nil || IsNil(o.DiskType) {
+	if o == nil || IsNil(o.DiskType.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.DiskType
+	return *o.DiskType.Get()
 }
 
 // GetDiskTypeOk returns a tuple with the DiskType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *DatabaseEditRequest) GetDiskTypeOk() (*string, bool) {
-	if o == nil || IsNil(o.DiskType) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DiskType, true
+	return o.DiskType.Get(), o.DiskType.IsSet()
 }
 
 // HasDiskType returns a boolean if a field has been set.
 func (o *DatabaseEditRequest) HasDiskType() bool {
-	if o != nil && !IsNil(o.DiskType) {
+	if o != nil && o.DiskType.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDiskType gets a reference to the given string and assigns it to the DiskType field.
+// SetDiskType gets a reference to the given NullableString and assigns it to the DiskType field.
 func (o *DatabaseEditRequest) SetDiskType(v string) {
-	o.DiskType = &v
+	o.DiskType.Set(&v)
+}
+
+// SetDiskTypeNil sets the value for DiskType to be an explicit nil
+func (o *DatabaseEditRequest) SetDiskTypeNil() {
+	o.DiskType.Set(nil)
+}
+
+// UnsetDiskType ensures that no value is present for DiskType, not even an explicit nil
+func (o *DatabaseEditRequest) UnsetDiskType() {
+	o.DiskType.Unset()
 }
 
 func (o DatabaseEditRequest) MarshalJSON() ([]byte, error) {
@@ -497,8 +508,8 @@ func (o DatabaseEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
-	if !IsNil(o.DiskType) {
-		toSerialize["disk_type"] = o.DiskType
+	if o.DiskType.IsSet() {
+		toSerialize["disk_type"] = o.DiskType.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
