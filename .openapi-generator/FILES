@@ -214,6 +214,7 @@ docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
 docs/ClusterDeleteMode.md
 docs/ClusterDeploymentStatusEnum.md
+docs/ClusterEksAnywhereGitRepository.md
 docs/ClusterFeatureAwsExistingVpc.md
 docs/ClusterFeatureAwsExistingVpcResponse.md
 docs/ClusterFeatureBooleanResponse.md
@@ -229,6 +230,7 @@ docs/ClusterFeatureResponseValueObject.md
 docs/ClusterFeatureStringResponse.md
 docs/ClusterInfrastructureCertManagerChartParameters.md
 docs/ClusterInfrastructureChartsParameters.md
+docs/ClusterInfrastructureEksAnywhereParameters.md
 docs/ClusterInfrastructureMetalLbChartParameters.md
 docs/ClusterInfrastructureNginxChartParameters.md
 docs/ClusterInstanceAttributes.md
@@ -976,6 +978,7 @@ model_cluster_credentials.go
 model_cluster_credentials_response_list.go
 model_cluster_delete_mode.go
 model_cluster_deployment_status_enum.go
+model_cluster_eks_anywhere_git_repository.go
 model_cluster_feature_aws_existing_vpc.go
 model_cluster_feature_aws_existing_vpc_response.go
 model_cluster_feature_boolean_response.go
@@ -991,6 +994,7 @@ model_cluster_feature_response_value_object.go
 model_cluster_feature_string_response.go
 model_cluster_infrastructure_cert_manager_chart_parameters.go
 model_cluster_infrastructure_charts_parameters.go
+model_cluster_infrastructure_eks_anywhere_parameters.go
 model_cluster_infrastructure_metal_lb_chart_parameters.go
 model_cluster_infrastructure_nginx_chart_parameters.go
 model_cluster_instance_attributes.go

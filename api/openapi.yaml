@@ -20825,6 +20825,13 @@ components:
         disk_throughput: 255
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         infrastructure_charts_parameters:
+          eks_anywhere_parameters:
+            yaml_file_path: /clusters/cluster-a.yaml
+            git_repository:
+              provider: BITBUCKET
+              git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              branch: main
+              url: https://github.com/Qovery/eks-anywhere-config.git
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
             replica_count: 0
@@ -21564,6 +21571,13 @@ components:
       example:
         kubernetes: MANAGED
         infrastructure_charts_parameters:
+          eks_anywhere_parameters:
+            yaml_file_path: /clusters/cluster-a.yaml
+            git_repository:
+              provider: BITBUCKET
+              git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              branch: main
+              url: https://github.com/Qovery/eks-anywhere-config.git
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
             replica_count: 0
@@ -21758,6 +21772,13 @@ components:
           disk_throughput: 255
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
+            eks_anywhere_parameters:
+              yaml_file_path: /clusters/cluster-a.yaml
+              git_repository:
+                provider: BITBUCKET
+                git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                branch: main
+                url: https://github.com/Qovery/eks-anywhere-config.git
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
               replica_count: 0
@@ -21863,6 +21884,13 @@ components:
           disk_throughput: 255
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
+            eks_anywhere_parameters:
+              yaml_file_path: /clusters/cluster-a.yaml
+              git_repository:
+                provider: BITBUCKET
+                git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                branch: main
+                url: https://github.com/Qovery/eks-anywhere-config.git
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
               replica_count: 0
@@ -37080,6 +37108,13 @@ components:
         id: 93ntufnd3epke
     ClusterInfrastructureChartsParameters:
       example:
+        eks_anywhere_parameters:
+          yaml_file_path: /clusters/cluster-a.yaml
+          git_repository:
+            provider: BITBUCKET
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            branch: main
+            url: https://github.com/Qovery/eks-anywhere-config.git
         nginx_parameters:
           annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
           replica_count: 0
@@ -37099,6 +37134,55 @@ components:
           $ref: '#/components/schemas/ClusterInfrastructureCertManagerChartParameters'
         metal_lb_parameters:
           $ref: '#/components/schemas/ClusterInfrastructureMetalLbChartParameters'
+        eks_anywhere_parameters:
+          $ref: '#/components/schemas/ClusterInfrastructureEksAnywhereParameters'
+      type: object
+    ClusterInfrastructureEksAnywhereParameters:
+      example:
+        yaml_file_path: /clusters/cluster-a.yaml
+        git_repository:
+          provider: BITBUCKET
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: main
+          url: https://github.com/Qovery/eks-anywhere-config.git
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ClusterEksAnywhereGitRepository'
+        yaml_file_path:
+          description: Path to the EKS Anywhere cluster YAML file in the git repository
+          example: /clusters/cluster-a.yaml
+          type: string
+      required:
+      - git_repository
+      - yaml_file_path
+      type: object
+    ClusterEksAnywhereGitRepository:
+      example:
+        provider: BITBUCKET
+        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branch: main
+        url: https://github.com/Qovery/eks-anywhere-config.git
+      properties:
+        url:
+          description: EKS Anywhere git repository URL
+          example: https://github.com/Qovery/eks-anywhere-config.git
+          format: uri
+          type: string
+        branch:
+          description: |
+            Name of the branch to use. This is optional.
+            If not specified, the default branch of the repository is used.
+          example: main
+          type: string
+        git_token_id:
+          description: Qovery git token id used to access the repository
+          format: uuid
+          type: string
+        provider:
+          $ref: '#/components/schemas/GitProviderEnum'
+      required:
+      - git_token_id
+      - url
       type: object
     ClusterInfrastructureNginxChartParameters:
       example:

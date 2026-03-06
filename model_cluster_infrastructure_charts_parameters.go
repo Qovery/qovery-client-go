@@ -23,6 +23,7 @@ type ClusterInfrastructureChartsParameters struct {
 	NginxParameters       *ClusterInfrastructureNginxChartParameters       `json:"nginx_parameters,omitempty"`
 	CertManagerParameters *ClusterInfrastructureCertManagerChartParameters `json:"cert_manager_parameters,omitempty"`
 	MetalLbParameters     *ClusterInfrastructureMetalLbChartParameters     `json:"metal_lb_parameters,omitempty"`
+	EksAnywhereParameters *ClusterInfrastructureEksAnywhereParameters      `json:"eks_anywhere_parameters,omitempty"`
 	AdditionalProperties  map[string]interface{}
 }
 
@@ -141,6 +142,38 @@ func (o *ClusterInfrastructureChartsParameters) SetMetalLbParameters(v ClusterIn
 	o.MetalLbParameters = &v
 }
 
+// GetEksAnywhereParameters returns the EksAnywhereParameters field value if set, zero value otherwise.
+func (o *ClusterInfrastructureChartsParameters) GetEksAnywhereParameters() ClusterInfrastructureEksAnywhereParameters {
+	if o == nil || IsNil(o.EksAnywhereParameters) {
+		var ret ClusterInfrastructureEksAnywhereParameters
+		return ret
+	}
+	return *o.EksAnywhereParameters
+}
+
+// GetEksAnywhereParametersOk returns a tuple with the EksAnywhereParameters field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInfrastructureChartsParameters) GetEksAnywhereParametersOk() (*ClusterInfrastructureEksAnywhereParameters, bool) {
+	if o == nil || IsNil(o.EksAnywhereParameters) {
+		return nil, false
+	}
+	return o.EksAnywhereParameters, true
+}
+
+// HasEksAnywhereParameters returns a boolean if a field has been set.
+func (o *ClusterInfrastructureChartsParameters) HasEksAnywhereParameters() bool {
+	if o != nil && !IsNil(o.EksAnywhereParameters) {
+		return true
+	}
+
+	return false
+}
+
+// SetEksAnywhereParameters gets a reference to the given ClusterInfrastructureEksAnywhereParameters and assigns it to the EksAnywhereParameters field.
+func (o *ClusterInfrastructureChartsParameters) SetEksAnywhereParameters(v ClusterInfrastructureEksAnywhereParameters) {
+	o.EksAnywhereParameters = &v
+}
+
 func (o ClusterInfrastructureChartsParameters) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -159,6 +192,9 @@ func (o ClusterInfrastructureChartsParameters) ToMap() (map[string]interface{}, 
 	}
 	if !IsNil(o.MetalLbParameters) {
 		toSerialize["metal_lb_parameters"] = o.MetalLbParameters
+	}
+	if !IsNil(o.EksAnywhereParameters) {
+		toSerialize["eks_anywhere_parameters"] = o.EksAnywhereParameters
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +221,7 @@ func (o *ClusterInfrastructureChartsParameters) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "nginx_parameters")
 		delete(additionalProperties, "cert_manager_parameters")
 		delete(additionalProperties, "metal_lb_parameters")
+		delete(additionalProperties, "eks_anywhere_parameters")
 		o.AdditionalProperties = additionalProperties
 	}
 
