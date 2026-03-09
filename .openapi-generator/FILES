@@ -16,6 +16,7 @@ api_application_logs.go
 api_application_main_calls.go
 api_application_secret.go
 api_applications.go
+api_argo_cd.go
 api_backups.go
 api_billing.go
 api_cloud_provider.go
@@ -157,6 +158,10 @@ docs/ApplicationRequest.md
 docs/ApplicationResponseList.md
 docs/ApplicationSecretAPI.md
 docs/ApplicationsAPI.md
+docs/ArgoCDAPI.md
+docs/ArgoCdConnectionCheckResponse.md
+docs/ArgoCdCredentialsRequest.md
+docs/ArgoCdCredentialsResponse.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutoscalingMode.md
 docs/AutoscalingPolicyRequest.md
@@ -925,6 +930,9 @@ model_application_network.go
 model_application_network_request.go
 model_application_request.go
 model_application_response_list.go
+model_argo_cd_connection_check_response.go
+model_argo_cd_credentials_request.go
+model_argo_cd_credentials_response.go
 model_attach_service_to_deployment_stage_request.go
 model_autoscaling_mode.go
 model_autoscaling_policy_request.go
@@ -1578,6 +1586,7 @@ test/api_application_logs_test.go
 test/api_application_main_calls_test.go
 test/api_application_secret_test.go
 test/api_applications_test.go
+test/api_argo_cd_test.go
 test/api_backups_test.go
 test/api_billing_test.go
 test/api_cloud_provider_credentials_test.go

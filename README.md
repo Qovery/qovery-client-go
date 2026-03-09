@@ -142,6 +142,10 @@ Class | Method | HTTP request | Description
 *ApplicationsAPI* | [**GetDefaultApplicationAdvancedSettings**](docs/ApplicationsAPI.md#getdefaultapplicationadvancedsettings) | **Get** /defaultApplicationAdvancedSettings | List default application advanced settings
 *ApplicationsAPI* | [**GetEnvironmentApplicationStatus**](docs/ApplicationsAPI.md#getenvironmentapplicationstatus) | **Get** /environment/{environmentId}/application/status | List all environment applications statuses
 *ApplicationsAPI* | [**ListApplication**](docs/ApplicationsAPI.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
+*ArgoCDAPI* | [**CheckArgoCdConnection**](docs/ArgoCDAPI.md#checkargocdconnection) | **Post** /cluster/{clusterId}/argoCdConfig/check | Check ArgoCD connection
+*ArgoCDAPI* | [**DeleteArgoCdCredentials**](docs/ArgoCDAPI.md#deleteargocdcredentials) | **Delete** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
+*ArgoCDAPI* | [**GetArgoCdCredentials**](docs/ArgoCDAPI.md#getargocdcredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
+*ArgoCDAPI* | [**SaveArgoCdCredentials**](docs/ArgoCDAPI.md#saveargocdcredentials) | **Post** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
 *BackupsAPI* | [**AddBackupDatabase**](docs/BackupsAPI.md#addbackupdatabase) | **Post** /database/{databaseId}/backup | Add a backup to the Database 
 *BackupsAPI* | [**ListDatabaseBackup**](docs/BackupsAPI.md#listdatabasebackup) | **Get** /database/{databaseId}/backup | List database  backups
 *BackupsAPI* | [**RemoveDatabaseBackup**](docs/BackupsAPI.md#removedatabasebackup) | **Delete** /database/{databaseId}/backup/{backupId} | Remove database  backup
@@ -627,6 +631,9 @@ Class | Method | HTTP request | Description
  - [ApplicationNetworkRequest](docs/ApplicationNetworkRequest.md)
  - [ApplicationRequest](docs/ApplicationRequest.md)
  - [ApplicationResponseList](docs/ApplicationResponseList.md)
+ - [ArgoCdConnectionCheckResponse](docs/ArgoCdConnectionCheckResponse.md)
+ - [ArgoCdCredentialsRequest](docs/ArgoCdCredentialsRequest.md)
+ - [ArgoCdCredentialsResponse](docs/ArgoCdCredentialsResponse.md)
  - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutoscalingMode](docs/AutoscalingMode.md)
  - [AutoscalingPolicyRequest](docs/AutoscalingPolicyRequest.md)
