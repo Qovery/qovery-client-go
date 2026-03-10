@@ -19073,8 +19073,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19094,8 +19095,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19390,8 +19392,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19411,8 +19414,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19822,8 +19826,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19843,8 +19848,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -19968,8 +19974,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -19989,8 +19996,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -20166,8 +20174,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -20187,8 +20196,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -23307,8 +23317,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -23328,8 +23339,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -23559,8 +23571,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -23580,8 +23593,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -23751,8 +23765,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -23772,8 +23787,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -23940,8 +23956,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -23961,8 +23978,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -28500,8 +28518,9 @@ components:
               port: 2
             exec:
               command:
-              - command
-              - command
+              - sh
+              - -c
+              - test -f /tmp/healthy
             grpc:
               port: 7
               service: service
@@ -28521,8 +28540,9 @@ components:
               port: 2
             exec:
               command:
-              - command
-              - command
+              - sh
+              - -c
+              - test -f /tmp/healthy
             grpc:
               port: 7
               service: service
@@ -29350,8 +29370,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -29371,8 +29392,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -29484,8 +29506,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -29505,8 +29528,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -29623,8 +29647,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -29644,8 +29669,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -32474,8 +32500,9 @@ components:
             port: 2
           exec:
             command:
-            - command
-            - command
+            - sh
+            - -c
+            - test -f /tmp/healthy
           grpc:
             port: 7
             service: service
@@ -34246,8 +34273,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -34267,8 +34295,9 @@ components:
                 port: 2
               exec:
                 command:
-                - command
-                - command
+                - sh
+                - -c
+                - test -f /tmp/healthy
               grpc:
                 port: 7
                 service: service
@@ -39440,8 +39469,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -39461,8 +39491,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -39638,8 +39669,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -39659,8 +39691,9 @@ components:
                   port: 2
                 exec:
                   command:
-                  - command
-                  - command
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
                 grpc:
                   port: 7
                   service: service
@@ -41925,15 +41958,26 @@ components:
           type: integer
       type: object
     Probe_type_exec:
+      description: Execute a command inside the container. The probe succeeds if the
+        command exits with status code 0.
       example:
         command:
-        - command
-        - command
+        - sh
+        - -c
+        - test -f /tmp/healthy
       nullable: true
       properties:
         command:
+          description: "Command to execute inside the container, specified as an array\
+            \ of strings. The first element is the executable, followed by its arguments.\
+            \ Example: [\"sh\", \"-c\", \"test -f /tmp/healthy\"]"
+          example:
+          - sh
+          - -c
+          - test -f /tmp/healthy
           items:
             type: string
+          minItems: 1
           type: array
       type: object
     Probe_type_grpc:
@@ -41959,8 +42003,9 @@ components:
           port: 2
         exec:
           command:
-          - command
-          - command
+          - sh
+          - -c
+          - test -f /tmp/healthy
         grpc:
           port: 7
           service: service

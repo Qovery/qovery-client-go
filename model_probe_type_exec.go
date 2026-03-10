@@ -18,8 +18,9 @@ import (
 // checks if the ProbeTypeExec type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ProbeTypeExec{}
 
-// ProbeTypeExec struct for ProbeTypeExec
+// ProbeTypeExec Execute a command inside the container. The probe succeeds if the command exits with status code 0.
 type ProbeTypeExec struct {
+	// Command to execute inside the container, specified as an array of strings. The first element is the executable, followed by its arguments. Example: [\"sh\", \"-c\", \"test -f /tmp/healthy\"]
 	Command              []string `json:"command,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

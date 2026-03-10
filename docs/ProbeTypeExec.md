@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Command** | Pointer to **[]string** |  | [optional] 
+**Command** | Pointer to **[]string** | Command to execute inside the container, specified as an array of strings. The first element is the executable, followed by its arguments. Example: [\&quot;sh\&quot;, \&quot;-c\&quot;, \&quot;test -f /tmp/healthy\&quot;] | [optional] 
 
 ## Methods
 
