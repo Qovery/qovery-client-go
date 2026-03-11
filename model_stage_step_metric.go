@@ -20,6 +20,7 @@ var _ MappedNullable = &StageStepMetric{}
 
 // StageStepMetric struct for StageStepMetric
 type StageStepMetric struct {
+	StageId  *string                  `json:"stage_id,omitempty"`
 	StepName *StageStepMetricNameEnum `json:"step_name,omitempty"`
 	Status   *StepMetricStatusEnum    `json:"status,omitempty"`
 	// The duration of the step in seconds.
@@ -44,6 +45,38 @@ func NewStageStepMetric() *StageStepMetric {
 func NewStageStepMetricWithDefaults() *StageStepMetric {
 	this := StageStepMetric{}
 	return &this
+}
+
+// GetStageId returns the StageId field value if set, zero value otherwise.
+func (o *StageStepMetric) GetStageId() string {
+	if o == nil || IsNil(o.StageId) {
+		var ret string
+		return ret
+	}
+	return *o.StageId
+}
+
+// GetStageIdOk returns a tuple with the StageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StageStepMetric) GetStageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StageId) {
+		return nil, false
+	}
+	return o.StageId, true
+}
+
+// HasStageId returns a boolean if a field has been set.
+func (o *StageStepMetric) HasStageId() bool {
+	if o != nil && !IsNil(o.StageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStageId gets a reference to the given string and assigns it to the StageId field.
+func (o *StageStepMetric) SetStageId(v string) {
+	o.StageId = &v
 }
 
 // GetStepName returns the StepName field value if set, zero value otherwise.
@@ -152,6 +185,9 @@ func (o StageStepMetric) MarshalJSON() ([]byte, error) {
 
 func (o StageStepMetric) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StageId) {
+		toSerialize["stage_id"] = o.StageId
+	}
 	if !IsNil(o.StepName) {
 		toSerialize["step_name"] = o.StepName
 	}
@@ -183,6 +219,7 @@ func (o *StageStepMetric) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "stage_id")
 		delete(additionalProperties, "step_name")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "duration_sec")

@@ -31,6 +31,8 @@ type EnvironmentStatus struct {
 	Origin                           NullableEnvironmentStatusEventOriginEnum `json:"origin,omitempty"`
 	TriggeredBy                      NullableString                           `json:"triggered_by,omitempty"`
 	DeploymentStatus                 *EnvironmentDeploymentStatusEnum         `json:"deployment_status,omitempty"`
+	DeploymentRequestId              NullableString                           `json:"deployment_request_id,omitempty"`
+	Metrics                          []StageStepMetrics                       `json:"metrics,omitempty"`
 	AdditionalProperties             map[string]interface{}
 }
 
@@ -375,6 +377,82 @@ func (o *EnvironmentStatus) SetDeploymentStatus(v EnvironmentDeploymentStatusEnu
 	o.DeploymentStatus = &v
 }
 
+// GetDeploymentRequestId returns the DeploymentRequestId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentStatus) GetDeploymentRequestId() string {
+	if o == nil || IsNil(o.DeploymentRequestId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentRequestId.Get()
+}
+
+// GetDeploymentRequestIdOk returns a tuple with the DeploymentRequestId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentStatus) GetDeploymentRequestIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DeploymentRequestId.Get(), o.DeploymentRequestId.IsSet()
+}
+
+// HasDeploymentRequestId returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasDeploymentRequestId() bool {
+	if o != nil && o.DeploymentRequestId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentRequestId gets a reference to the given NullableString and assigns it to the DeploymentRequestId field.
+func (o *EnvironmentStatus) SetDeploymentRequestId(v string) {
+	o.DeploymentRequestId.Set(&v)
+}
+
+// SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
+func (o *EnvironmentStatus) SetDeploymentRequestIdNil() {
+	o.DeploymentRequestId.Set(nil)
+}
+
+// UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
+func (o *EnvironmentStatus) UnsetDeploymentRequestId() {
+	o.DeploymentRequestId.Unset()
+}
+
+// GetMetrics returns the Metrics field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentStatus) GetMetrics() []StageStepMetrics {
+	if o == nil {
+		var ret []StageStepMetrics
+		return ret
+	}
+	return o.Metrics
+}
+
+// GetMetricsOk returns a tuple with the Metrics field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentStatus) GetMetricsOk() ([]StageStepMetrics, bool) {
+	if o == nil || IsNil(o.Metrics) {
+		return nil, false
+	}
+	return o.Metrics, true
+}
+
+// HasMetrics returns a boolean if a field has been set.
+func (o *EnvironmentStatus) HasMetrics() bool {
+	if o != nil && !IsNil(o.Metrics) {
+		return true
+	}
+
+	return false
+}
+
+// SetMetrics gets a reference to the given []StageStepMetrics and assigns it to the Metrics field.
+func (o *EnvironmentStatus) SetMetrics(v []StageStepMetrics) {
+	o.Metrics = v
+}
+
 func (o EnvironmentStatus) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -405,6 +483,12 @@ func (o EnvironmentStatus) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DeploymentStatus) {
 		toSerialize["deployment_status"] = o.DeploymentStatus
+	}
+	if o.DeploymentRequestId.IsSet() {
+		toSerialize["deployment_request_id"] = o.DeploymentRequestId.Get()
+	}
+	if o.Metrics != nil {
+		toSerialize["metrics"] = o.Metrics
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -460,6 +544,8 @@ func (o *EnvironmentStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "origin")
 		delete(additionalProperties, "triggered_by")
 		delete(additionalProperties, "deployment_status")
+		delete(additionalProperties, "deployment_request_id")
+		delete(additionalProperties, "metrics")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**StageId** | Pointer to **string** |  | [optional] 
 **StepName** | Pointer to [**StageStepMetricNameEnum**](StageStepMetricNameEnum.md) |  | [optional] 
 **Status** | Pointer to [**StepMetricStatusEnum**](StepMetricStatusEnum.md) |  | [optional] 
 **DurationSec** | Pointer to **int32** | The duration of the step in seconds. | [optional] 
@@ -26,6 +27,31 @@ will change when the set of required properties is changed
 NewStageStepMetricWithDefaults instantiates a new StageStepMetric object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetStageId
+
+`func (o *StageStepMetric) GetStageId() string`
+
+GetStageId returns the StageId field if non-nil, zero value otherwise.
+
+### GetStageIdOk
+
+`func (o *StageStepMetric) GetStageIdOk() (*string, bool)`
+
+GetStageIdOk returns a tuple with the StageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStageId
+
+`func (o *StageStepMetric) SetStageId(v string)`
+
+SetStageId sets StageId field to given value.
+
+### HasStageId
+
+`func (o *StageStepMetric) HasStageId() bool`
+
+HasStageId returns a boolean if a field has been set.
 
 ### GetStepName
 

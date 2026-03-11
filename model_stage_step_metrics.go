@@ -20,7 +20,8 @@ var _ MappedNullable = &StageStepMetrics{}
 
 // StageStepMetrics struct for StageStepMetrics
 type StageStepMetrics struct {
-	// The total duration in seconds of the stage deployment or null if the deployment is not completed
+	StageId *string `json:"stage_id,omitempty"`
+	// The total duration in seconds of the stage deployment or null if the deployment is not completed.
 	TotalDurationSec NullableInt32 `json:"total_duration_sec,omitempty"`
 	// A list of metrics for deployment steps of the stage.
 	Details              []StageStepMetric `json:"details,omitempty"`
@@ -44,6 +45,38 @@ func NewStageStepMetrics() *StageStepMetrics {
 func NewStageStepMetricsWithDefaults() *StageStepMetrics {
 	this := StageStepMetrics{}
 	return &this
+}
+
+// GetStageId returns the StageId field value if set, zero value otherwise.
+func (o *StageStepMetrics) GetStageId() string {
+	if o == nil || IsNil(o.StageId) {
+		var ret string
+		return ret
+	}
+	return *o.StageId
+}
+
+// GetStageIdOk returns a tuple with the StageId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *StageStepMetrics) GetStageIdOk() (*string, bool) {
+	if o == nil || IsNil(o.StageId) {
+		return nil, false
+	}
+	return o.StageId, true
+}
+
+// HasStageId returns a boolean if a field has been set.
+func (o *StageStepMetrics) HasStageId() bool {
+	if o != nil && !IsNil(o.StageId) {
+		return true
+	}
+
+	return false
+}
+
+// SetStageId gets a reference to the given string and assigns it to the StageId field.
+func (o *StageStepMetrics) SetStageId(v string) {
+	o.StageId = &v
 }
 
 // GetTotalDurationSec returns the TotalDurationSec field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -131,6 +164,9 @@ func (o StageStepMetrics) MarshalJSON() ([]byte, error) {
 
 func (o StageStepMetrics) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.StageId) {
+		toSerialize["stage_id"] = o.StageId
+	}
 	if o.TotalDurationSec.IsSet() {
 		toSerialize["total_duration_sec"] = o.TotalDurationSec.Get()
 	}
@@ -159,6 +195,7 @@ func (o *StageStepMetrics) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "stage_id")
 		delete(additionalProperties, "total_duration_sec")
 		delete(additionalProperties, "details")
 		o.AdditionalProperties = additionalProperties

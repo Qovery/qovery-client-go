@@ -26474,6 +26474,7 @@ components:
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           deployment_status:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             last_deployment_state: null
             origin: API
             deployment_status: NEVER_DEPLOYED
@@ -26481,6 +26482,29 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
             last_deployment_id: last_deployment_id
+            metrics:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
+              details:
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
+              details:
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
             total_deployment_duration_in_seconds: 0
             triggered_by: triggered_by
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26495,6 +26519,7 @@ components:
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           deployment_status:
+            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             last_deployment_state: null
             origin: API
             deployment_status: NEVER_DEPLOYED
@@ -26502,6 +26527,29 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             state: BUILDING
             last_deployment_id: last_deployment_id
+            metrics:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
+              details:
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
+              details:
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
+                status: SUCCESS
             total_deployment_duration_in_seconds: 0
             triggered_by: triggered_by
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26524,6 +26572,7 @@ components:
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
         deployment_status:
+          deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           last_deployment_state: null
           origin: API
           deployment_status: NEVER_DEPLOYED
@@ -26531,6 +26580,29 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
           last_deployment_id: last_deployment_id
+          metrics:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -26853,6 +26925,7 @@ components:
         service_total_number: 0.8008281904610115
     EnvironmentStatus:
       example:
+        deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         last_deployment_state: null
         origin: API
         deployment_status: NEVER_DEPLOYED
@@ -26860,6 +26933,29 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: BUILDING
         last_deployment_id: last_deployment_id
+        metrics:
+        - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          total_duration_sec: 6
+          details:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
+            status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
+            status: SUCCESS
+        - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          total_duration_sec: 6
+          details:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
+            status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
+            status: SUCCESS
         total_deployment_duration_in_seconds: 0
         triggered_by: triggered_by
       properties:
@@ -26887,6 +26983,15 @@ components:
           type: string
         deployment_status:
           $ref: '#/components/schemas/EnvironmentDeploymentStatusEnum'
+        deployment_request_id:
+          format: uuid
+          nullable: true
+          type: string
+        metrics:
+          items:
+            $ref: '#/components/schemas/StageStepMetrics'
+          nullable: true
+          type: array
       required:
       - id
       - last_deployment_state
@@ -26953,6 +27058,7 @@ components:
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
         environment:
+          deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           last_deployment_state: null
           origin: API
           deployment_status: NEVER_DEPLOYED
@@ -26960,6 +27066,29 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
           last_deployment_id: last_deployment_id
+          metrics:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         terraforms:
@@ -27238,6 +27367,7 @@ components:
     EnvironmentStatusesWithStages:
       example:
         environment:
+          deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           last_deployment_state: null
           origin: API
           deployment_status: NEVER_DEPLOYED
@@ -27245,11 +27375,34 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
           last_deployment_id: last_deployment_id
+          metrics:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         pre_check_stage:
-          total_duration_sec: 1
-          status: null
+          total_duration_sec: 0
+          status: SUCCESS
         stages:
         - databases:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -27346,13 +27499,16 @@ components:
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             steps:
-              total_duration_sec: 0
+              stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
               details:
-              - step_name: QUEUEING
-                duration_sec: 6
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
                 status: SUCCESS
-              - step_name: QUEUEING
-                duration_sec: 6
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
                 status: SUCCESS
             status: QUEUED
           jobs:
@@ -27630,13 +27786,16 @@ components:
             description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             steps:
-              total_duration_sec: 0
+              stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              total_duration_sec: 6
               details:
-              - step_name: QUEUEING
-                duration_sec: 6
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
                 status: SUCCESS
-              - step_name: QUEUEING
-                duration_sec: 6
+              - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                step_name: TOTAL
+                duration_sec: 1
                 status: SUCCESS
             status: QUEUED
           jobs:
@@ -27832,22 +27991,70 @@ components:
     EnvironmentStatusList:
       example:
         results:
-        - last_deployment_state: null
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          last_deployment_state: null
           origin: API
           deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
           last_deployment_id: last_deployment_id
+          metrics:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
-        - last_deployment_state: null
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          last_deployment_state: null
           origin: API
           deployment_status: NEVER_DEPLOYED
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
           last_deployment_id: last_deployment_id
+          metrics:
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
+            details:
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
+              status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
       properties:
@@ -28952,13 +29159,16 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           steps:
-            total_duration_sec: 0
+            stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            total_duration_sec: 6
             details:
-            - step_name: QUEUEING
-              duration_sec: 6
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
               status: SUCCESS
-            - step_name: QUEUEING
-              duration_sec: 6
+            - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              step_name: TOTAL
+              duration_sec: 1
               status: SUCCESS
           status: QUEUED
         jobs:
@@ -33464,13 +33674,16 @@ components:
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         steps:
-          total_duration_sec: 0
+          stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          total_duration_sec: 6
           details:
-          - step_name: QUEUEING
-            duration_sec: 6
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
             status: SUCCESS
-          - step_name: QUEUEING
-            duration_sec: 6
+          - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            step_name: TOTAL
+            duration_sec: 1
             status: SUCCESS
         status: QUEUED
       properties:
@@ -34068,18 +34281,24 @@ components:
       type: object
     StageStepMetrics:
       example:
-        total_duration_sec: 0
+        stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        total_duration_sec: 6
         details:
-        - step_name: QUEUEING
-          duration_sec: 6
+        - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          step_name: TOTAL
+          duration_sec: 1
           status: SUCCESS
-        - step_name: QUEUEING
-          duration_sec: 6
+        - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          step_name: TOTAL
+          duration_sec: 1
           status: SUCCESS
       properties:
+        stage_id:
+          format: uuid
+          type: string
         total_duration_sec:
           description: The total duration in seconds of the stage deployment or null
-            if the deployment is not completed
+            if the deployment is not completed.
           nullable: true
           type: integer
         details:
@@ -34121,10 +34340,14 @@ components:
       type: object
     StageStepMetric:
       example:
-        step_name: QUEUEING
-        duration_sec: 6
+        stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        step_name: TOTAL
+        duration_sec: 1
         status: SUCCESS
       properties:
+        stage_id:
+          format: uuid
+          type: string
         step_name:
           $ref: '#/components/schemas/StageStepMetricNameEnum'
         status:
@@ -34136,9 +34359,11 @@ components:
     StageStepMetricNameEnum:
       description: |
         The name of the deployment step at the stage level:
+        - TOTAL: The total duration of the stage deployment.
         - QUEUEING: The step preceding the actual stage deployment step.
         - PROVISION_BUILDER: The step to provision builders before the actual build.
       enum:
+      - TOTAL
       - QUEUEING
       - PROVISION_BUILDER
       type: string
@@ -41095,8 +41320,8 @@ components:
       type: object
     EnvironmentStatusesWithStages_pre_check_stage:
       example:
-        total_duration_sec: 1
-        status: null
+        total_duration_sec: 0
+        status: SUCCESS
       properties:
         status:
           $ref: '#/components/schemas/StepMetricStatusEnum'

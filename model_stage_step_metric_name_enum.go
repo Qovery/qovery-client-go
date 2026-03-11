@@ -16,17 +16,19 @@ import (
 	"fmt"
 )
 
-// StageStepMetricNameEnum The name of the deployment step at the stage level: - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
+// StageStepMetricNameEnum The name of the deployment step at the stage level: - TOTAL: The total duration of the stage deployment. - QUEUEING: The step preceding the actual stage deployment step. - PROVISION_BUILDER: The step to provision builders before the actual build.
 type StageStepMetricNameEnum string
 
 // List of StageStepMetricNameEnum
 const (
+	STAGESTEPMETRICNAMEENUM_TOTAL             StageStepMetricNameEnum = "TOTAL"
 	STAGESTEPMETRICNAMEENUM_QUEUEING          StageStepMetricNameEnum = "QUEUEING"
 	STAGESTEPMETRICNAMEENUM_PROVISION_BUILDER StageStepMetricNameEnum = "PROVISION_BUILDER"
 )
 
 // All allowed values of StageStepMetricNameEnum enum
 var AllowedStageStepMetricNameEnumEnumValues = []StageStepMetricNameEnum{
+	"TOTAL",
 	"QUEUEING",
 	"PROVISION_BUILDER",
 }

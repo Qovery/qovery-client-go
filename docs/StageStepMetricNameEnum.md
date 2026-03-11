@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `TOTAL` (value: `"TOTAL"`)
+
 * `QUEUEING` (value: `"QUEUEING"`)
 
 * `PROVISION_BUILDER` (value: `"PROVISION_BUILDER"`)

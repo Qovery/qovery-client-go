@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **Origin** | Pointer to [**NullableEnvironmentStatusEventOriginEnum**](EnvironmentStatusEventOriginEnum.md) |  | [optional] 
 **TriggeredBy** | Pointer to **NullableString** |  | [optional] 
 **DeploymentStatus** | Pointer to [**EnvironmentDeploymentStatusEnum**](EnvironmentDeploymentStatusEnum.md) |  | [optional] 
+**DeploymentRequestId** | Pointer to **NullableString** |  | [optional] 
+**Metrics** | Pointer to [**[]StageStepMetrics**](StageStepMetrics.md) |  | [optional] 
 
 ## Methods
 
@@ -293,6 +295,76 @@ SetDeploymentStatus sets DeploymentStatus field to given value.
 
 HasDeploymentStatus returns a boolean if a field has been set.
 
+### GetDeploymentRequestId
+
+`func (o *EnvironmentStatus) GetDeploymentRequestId() string`
+
+GetDeploymentRequestId returns the DeploymentRequestId field if non-nil, zero value otherwise.
+
+### GetDeploymentRequestIdOk
+
+`func (o *EnvironmentStatus) GetDeploymentRequestIdOk() (*string, bool)`
+
+GetDeploymentRequestIdOk returns a tuple with the DeploymentRequestId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentRequestId
+
+`func (o *EnvironmentStatus) SetDeploymentRequestId(v string)`
+
+SetDeploymentRequestId sets DeploymentRequestId field to given value.
+
+### HasDeploymentRequestId
+
+`func (o *EnvironmentStatus) HasDeploymentRequestId() bool`
+
+HasDeploymentRequestId returns a boolean if a field has been set.
+
+### SetDeploymentRequestIdNil
+
+`func (o *EnvironmentStatus) SetDeploymentRequestIdNil(b bool)`
+
+ SetDeploymentRequestIdNil sets the value for DeploymentRequestId to be an explicit nil
+
+### UnsetDeploymentRequestId
+`func (o *EnvironmentStatus) UnsetDeploymentRequestId()`
+
+UnsetDeploymentRequestId ensures that no value is present for DeploymentRequestId, not even an explicit nil
+### GetMetrics
+
+`func (o *EnvironmentStatus) GetMetrics() []StageStepMetrics`
+
+GetMetrics returns the Metrics field if non-nil, zero value otherwise.
+
+### GetMetricsOk
+
+`func (o *EnvironmentStatus) GetMetricsOk() (*[]StageStepMetrics, bool)`
+
+GetMetricsOk returns a tuple with the Metrics field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMetrics
+
+`func (o *EnvironmentStatus) SetMetrics(v []StageStepMetrics)`
+
+SetMetrics sets Metrics field to given value.
+
+### HasMetrics
+
+`func (o *EnvironmentStatus) HasMetrics() bool`
+
+HasMetrics returns a boolean if a field has been set.
+
+### SetMetricsNil
+
+`func (o *EnvironmentStatus) SetMetricsNil(b bool)`
+
+ SetMetricsNil sets the value for Metrics to be an explicit nil
+
+### UnsetMetrics
+`func (o *EnvironmentStatus) UnsetMetrics()`
+
+UnsetMetrics ensures that no value is present for Metrics, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

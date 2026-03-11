@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the stage deployment or null if the deployment is not completed | [optional] 
+**StageId** | Pointer to **string** |  | [optional] 
+**TotalDurationSec** | Pointer to **NullableInt32** | The total duration in seconds of the stage deployment or null if the deployment is not completed. | [optional] 
 **Details** | Pointer to [**[]StageStepMetric**](StageStepMetric.md) | A list of metrics for deployment steps of the stage. | [optional] 
 
 ## Methods
@@ -25,6 +26,31 @@ will change when the set of required properties is changed
 NewStageStepMetricsWithDefaults instantiates a new StageStepMetrics object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetStageId
+
+`func (o *StageStepMetrics) GetStageId() string`
+
+GetStageId returns the StageId field if non-nil, zero value otherwise.
+
+### GetStageIdOk
+
+`func (o *StageStepMetrics) GetStageIdOk() (*string, bool)`
+
+GetStageIdOk returns a tuple with the StageId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStageId
+
+`func (o *StageStepMetrics) SetStageId(v string)`
+
+SetStageId sets StageId field to given value.
+
+### HasStageId
+
+`func (o *StageStepMetrics) HasStageId() bool`
+
+HasStageId returns a boolean if a field has been set.
 
 ### GetTotalDurationSec
 
