@@ -21,9 +21,11 @@ var _ MappedNullable = &ClusterFeatureKarpenterParameters{}
 
 // ClusterFeatureKarpenterParameters struct for ClusterFeatureKarpenterParameters
 type ClusterFeatureKarpenterParameters struct {
-	SpotEnabled                bool                `json:"spot_enabled"`
-	DiskSizeInGib              int32               `json:"disk_size_in_gib"`
-	DiskIops                   *int32              `json:"disk_iops,omitempty"`
+	SpotEnabled   bool  `json:"spot_enabled"`
+	DiskSizeInGib int32 `json:"disk_size_in_gib"`
+	// Unit is operation/seconds. The disk IOPS to be used for the node configuration
+	DiskIops *int32 `json:"disk_iops,omitempty"`
+	// Unit is in MB/s. The disk throughput to be used for the node configuration
 	DiskThroughput             *int32              `json:"disk_throughput,omitempty"`
 	DefaultServiceArchitecture CpuArchitectureEnum `json:"default_service_architecture"`
 	QoveryNodePools            KarpenterNodePool   `json:"qovery_node_pools"`

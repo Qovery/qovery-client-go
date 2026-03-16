@@ -24,7 +24,11 @@ type KarpenterGpuNodePoolOverride struct {
 	Limits        *KarpenterNodePoolLimits        `json:"limits,omitempty"`
 	Requirements  []KarpenterNodePoolRequirement  `json:"requirements,omitempty"`
 	DiskSizeInGib *int32                          `json:"disk_size_in_gib,omitempty"`
-	SpotEnabled   *bool                           `json:"spot_enabled,omitempty"`
+	// Unit is operation/seconds. The disk IOPS to be used for the GPU node pool configuration
+	DiskIops *int32 `json:"disk_iops,omitempty"`
+	// Unit is in MB/s. The disk throughput to be used for the GPU node pool configuration
+	DiskThroughput *int32 `json:"disk_throughput,omitempty"`
+	SpotEnabled    *bool  `json:"spot_enabled,omitempty"`
 	// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
 	ConsolidateAfter     *string `json:"consolidate_after,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -185,6 +189,70 @@ func (o *KarpenterGpuNodePoolOverride) SetDiskSizeInGib(v int32) {
 	o.DiskSizeInGib = &v
 }
 
+// GetDiskIops returns the DiskIops field value if set, zero value otherwise.
+func (o *KarpenterGpuNodePoolOverride) GetDiskIops() int32 {
+	if o == nil || IsNil(o.DiskIops) {
+		var ret int32
+		return ret
+	}
+	return *o.DiskIops
+}
+
+// GetDiskIopsOk returns a tuple with the DiskIops field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterGpuNodePoolOverride) GetDiskIopsOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskIops) {
+		return nil, false
+	}
+	return o.DiskIops, true
+}
+
+// HasDiskIops returns a boolean if a field has been set.
+func (o *KarpenterGpuNodePoolOverride) HasDiskIops() bool {
+	if o != nil && !IsNil(o.DiskIops) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskIops gets a reference to the given int32 and assigns it to the DiskIops field.
+func (o *KarpenterGpuNodePoolOverride) SetDiskIops(v int32) {
+	o.DiskIops = &v
+}
+
+// GetDiskThroughput returns the DiskThroughput field value if set, zero value otherwise.
+func (o *KarpenterGpuNodePoolOverride) GetDiskThroughput() int32 {
+	if o == nil || IsNil(o.DiskThroughput) {
+		var ret int32
+		return ret
+	}
+	return *o.DiskThroughput
+}
+
+// GetDiskThroughputOk returns a tuple with the DiskThroughput field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterGpuNodePoolOverride) GetDiskThroughputOk() (*int32, bool) {
+	if o == nil || IsNil(o.DiskThroughput) {
+		return nil, false
+	}
+	return o.DiskThroughput, true
+}
+
+// HasDiskThroughput returns a boolean if a field has been set.
+func (o *KarpenterGpuNodePoolOverride) HasDiskThroughput() bool {
+	if o != nil && !IsNil(o.DiskThroughput) {
+		return true
+	}
+
+	return false
+}
+
+// SetDiskThroughput gets a reference to the given int32 and assigns it to the DiskThroughput field.
+func (o *KarpenterGpuNodePoolOverride) SetDiskThroughput(v int32) {
+	o.DiskThroughput = &v
+}
+
 // GetSpotEnabled returns the SpotEnabled field value if set, zero value otherwise.
 func (o *KarpenterGpuNodePoolOverride) GetSpotEnabled() bool {
 	if o == nil || IsNil(o.SpotEnabled) {
@@ -271,6 +339,12 @@ func (o KarpenterGpuNodePoolOverride) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DiskSizeInGib) {
 		toSerialize["disk_size_in_gib"] = o.DiskSizeInGib
 	}
+	if !IsNil(o.DiskIops) {
+		toSerialize["disk_iops"] = o.DiskIops
+	}
+	if !IsNil(o.DiskThroughput) {
+		toSerialize["disk_throughput"] = o.DiskThroughput
+	}
 	if !IsNil(o.SpotEnabled) {
 		toSerialize["spot_enabled"] = o.SpotEnabled
 	}
@@ -303,6 +377,8 @@ func (o *KarpenterGpuNodePoolOverride) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "limits")
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "disk_size_in_gib")
+		delete(additionalProperties, "disk_iops")
+		delete(additionalProperties, "disk_throughput")
 		delete(additionalProperties, "spot_enabled")
 		delete(additionalProperties, "consolidate_after")
 		o.AdditionalProperties = additionalProperties

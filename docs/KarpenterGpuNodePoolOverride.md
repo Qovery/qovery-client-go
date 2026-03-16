@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **Limits** | Pointer to [**KarpenterNodePoolLimits**](KarpenterNodePoolLimits.md) |  | [optional] 
 **Requirements** | Pointer to [**[]KarpenterNodePoolRequirement**](KarpenterNodePoolRequirement.md) |  | [optional] 
 **DiskSizeInGib** | Pointer to **int32** |  | [optional] [default to 100]
+**DiskIops** | Pointer to **int32** | Unit is operation/seconds. The disk IOPS to be used for the GPU node pool configuration | [optional] 
+**DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk throughput to be used for the GPU node pool configuration | [optional] 
 **SpotEnabled** | Pointer to **bool** |  | [optional] [default to false]
 **ConsolidateAfter** | Pointer to **string** | Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h | [optional] 
 
@@ -129,6 +131,56 @@ SetDiskSizeInGib sets DiskSizeInGib field to given value.
 `func (o *KarpenterGpuNodePoolOverride) HasDiskSizeInGib() bool`
 
 HasDiskSizeInGib returns a boolean if a field has been set.
+
+### GetDiskIops
+
+`func (o *KarpenterGpuNodePoolOverride) GetDiskIops() int32`
+
+GetDiskIops returns the DiskIops field if non-nil, zero value otherwise.
+
+### GetDiskIopsOk
+
+`func (o *KarpenterGpuNodePoolOverride) GetDiskIopsOk() (*int32, bool)`
+
+GetDiskIopsOk returns a tuple with the DiskIops field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskIops
+
+`func (o *KarpenterGpuNodePoolOverride) SetDiskIops(v int32)`
+
+SetDiskIops sets DiskIops field to given value.
+
+### HasDiskIops
+
+`func (o *KarpenterGpuNodePoolOverride) HasDiskIops() bool`
+
+HasDiskIops returns a boolean if a field has been set.
+
+### GetDiskThroughput
+
+`func (o *KarpenterGpuNodePoolOverride) GetDiskThroughput() int32`
+
+GetDiskThroughput returns the DiskThroughput field if non-nil, zero value otherwise.
+
+### GetDiskThroughputOk
+
+`func (o *KarpenterGpuNodePoolOverride) GetDiskThroughputOk() (*int32, bool)`
+
+GetDiskThroughputOk returns a tuple with the DiskThroughput field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDiskThroughput
+
+`func (o *KarpenterGpuNodePoolOverride) SetDiskThroughput(v int32)`
+
+SetDiskThroughput sets DiskThroughput field to given value.
+
+### HasDiskThroughput
+
+`func (o *KarpenterGpuNodePoolOverride) HasDiskThroughput() bool`
+
+HasDiskThroughput returns a boolean if a field has been set.
 
 ### GetSpotEnabled
 

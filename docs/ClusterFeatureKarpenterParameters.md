@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **SpotEnabled** | **bool** |  | 
 **DiskSizeInGib** | **int32** |  | 
-**DiskIops** | Pointer to **int32** |  | [optional] 
-**DiskThroughput** | Pointer to **int32** |  | [optional] 
+**DiskIops** | Pointer to **int32** | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional] 
+**DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk throughput to be used for the node configuration | [optional] 
 **DefaultServiceArchitecture** | [**CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
 **QoveryNodePools** | [**KarpenterNodePool**](KarpenterNodePool.md) |  | 
 

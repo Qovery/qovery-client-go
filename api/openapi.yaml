@@ -34986,8 +34986,18 @@ components:
         disk_size_in_gib:
           type: integer
         disk_iops:
+          description: Unit is operation/seconds. The disk IOPS to be used for the
+            node configuration
+          example: 7800
+          maximum: 16000
+          minimum: 3000
           type: integer
         disk_throughput:
+          description: Unit is in MB/s. The disk throughput to be used for the node
+            configuration
+          example: 255
+          maximum: 1000
+          minimum: 125
           type: integer
           x-stoplight:
             id: nwpjqw3bf7px0
@@ -35684,6 +35694,24 @@ components:
           type: integer
           x-stoplight:
             id: xq5ycmme7o025
+        disk_iops:
+          description: Unit is operation/seconds. The disk IOPS to be used for the
+            GPU node pool configuration
+          example: 7800
+          maximum: 16000
+          minimum: 3000
+          type: integer
+          x-stoplight:
+            id: gpu1d1skiops
+        disk_throughput:
+          description: Unit is in MB/s. The disk throughput to be used for the GPU
+            node pool configuration
+          example: 255
+          maximum: 1000
+          minimum: 125
+          type: integer
+          x-stoplight:
+            id: gpu1d1skthr
         spot_enabled:
           default: false
           type: boolean
