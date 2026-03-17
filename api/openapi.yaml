@@ -18707,7 +18707,7 @@ components:
         - deployment.lifecycle.post_start_exec_command
         deployment.update_strategy.type: RollingUpdate
         build.disable_buildkit_cache: true
-        hpa.memory.average_utilization_percent: 1
+        hpa.memory.average_utilization_percent: 5
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
@@ -18722,15 +18722,17 @@ components:
         build.ram_max_in_gib: 2
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 7
+        network.gateway_api.http_connection_idle_timeout_seconds: 0
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        hpa.cpu.average_utilization_percent: 7
+        hpa.cpu.average_utilization_percent: 4
         network.ingress.keepalive_timeout_seconds: 2
         network.ingress.proxy_connect_timeout_seconds: 7
         network.ingress.proxy_buffering: network.ingress.proxy_buffering
         network.ingress.proxy_buffer_size_kb: 9
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
+        network.gateway_api.http_request_timeout_seconds: 0
         network.ingress.grpc_read_timeout_seconds: 6
         security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
@@ -18890,6 +18892,18 @@ components:
           example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
             }"
           type: string
+        network.gateway_api.http_request_timeout_seconds:
+          description: Sets a timeout (in seconds) for requests proxied through the
+            Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.http_connection_idle_timeout_seconds:
+          description: Sets the idle timeout (in seconds) for HTTP connections proxied
+            through the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
         hpa.cpu.average_utilization_percent:
           description: Percentage value of cpu usage at which point pods should scale
             up.
@@ -22344,9 +22358,10 @@ components:
       example:
         loki.log_retention_in_week: 1
         nginx.memory.limit_in_mib: 3
-        nginx.hpa.cpu_utilization_percentage_threshold: 2
-        nginx.hpa.max_number_instances: 7
+        nginx.hpa.cpu_utilization_percentage_threshold: 7
+        nginx.hpa.max_number_instances: 1
         nginx.vcpu.limit_in_milli_cpu: 7
+        envoy.gateway_api.http_request_timeout_seconds: 0
         aws.eks.ec2.metadata_imds: optional
         pleco.resources_ttl: 5
         database.mysql.allowed_cidrs:
@@ -22384,7 +22399,8 @@ components:
         database.redis.deny_any_access: true
         database.postgresql.deny_any_access: true
         storageclass.fast_ssd: storageclass.fast_ssd
-        nginx.hpa.min_number_instances: 4
+        envoy.gateway_api.http_connection_idle_timeout_seconds: 0
+        nginx.hpa.min_number_instances: 1
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           description: Set the number of retention days for EKS Cloudwatch logs
@@ -22506,6 +22522,18 @@ components:
         nginx.memory.limit_in_mib:
           description: memory limit in MiB
           type: integer
+        envoy.gateway_api.http_request_timeout_seconds:
+          description: Sets the default request timeout (in seconds) applied to Gateway
+            API routes when the service does not override it.
+          minimum: 0
+          nullable: true
+          type: integer
+        envoy.gateway_api.http_connection_idle_timeout_seconds:
+          description: Sets the default idle connection timeout (in seconds) applied
+            to Gateway API routes when the service does not override it.
+          minimum: 0
+          nullable: true
+          type: integer
         nginx.hpa.cpu_utilization_percentage_threshold:
           description: hpa cpu threshold in percentage
           type: integer
@@ -22609,7 +22637,7 @@ components:
         deployment.antiaffinity.pod: Preferred
         network.ingress.proxy_send_timeout_seconds: 2
         deployment.update_strategy.type: RollingUpdate
-        hpa.memory.average_utilization_percent: 1
+        hpa.memory.average_utilization_percent: 7
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
@@ -22623,14 +22651,16 @@ components:
         network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
+        network.gateway_api.http_connection_idle_timeout_seconds: 0
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        hpa.cpu.average_utilization_percent: 1
+        hpa.cpu.average_utilization_percent: 6
         network.ingress.keepalive_timeout_seconds: 7
         network.ingress.proxy_connect_timeout_seconds: 3
         network.ingress.proxy_buffering: network.ingress.proxy_buffering
         network.ingress.proxy_buffer_size_kb: 5
         network.ingress.proxy_read_timeout_seconds: 4
+        network.gateway_api.http_request_timeout_seconds: 0
         network.ingress.grpc_read_timeout_seconds: 1
         security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
@@ -22751,6 +22781,18 @@ components:
           example: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\":\"nosniff\"\
             }"
           type: string
+        network.gateway_api.http_request_timeout_seconds:
+          description: Sets a timeout (in seconds) for requests proxied through the
+            Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.http_connection_idle_timeout_seconds:
+          description: Sets the idle timeout (in seconds) for HTTP connections proxied
+            through the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
         network.ingress.basic_auth_env_var:
           description: |
             Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
@@ -30687,25 +30729,27 @@ components:
       example:
         network.ingress.send_timeout_seconds: 5
         network.ingress.proxy_send_timeout_seconds: 7
-        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 0
-        network.ingress.force_ssl_redirect: true
-        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        network.ingress.keepalive_timeout_seconds: 5
         network.ingress.keepalive_time_seconds: 1
-        network.ingress.proxy_connect_timeout_seconds: 2
-        network.ingress.proxy_buffering: network.ingress.proxy_buffering
-        network.ingress.proxy_buffer_size_kb: 6
-        network.ingress.proxy_read_timeout_seconds: 9
         network.ingress.grpc_send_timeout_seconds: 3
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
-        network.ingress.grpc_read_timeout_seconds: 2
         deployment.custom_domain_check_enabled: true
-        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
         network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
         network.ingress.proxy_request_buffering: network.ingress.proxy_request_buffering
+        network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
+        network.ingress.proxy_body_size_mb: 0
+        network.gateway_api.http_connection_idle_timeout_seconds: 0
+        network.ingress.force_ssl_redirect: true
+        network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
+        network.ingress.keepalive_timeout_seconds: 5
+        network.ingress.proxy_connect_timeout_seconds: 2
+        network.ingress.proxy_buffering: network.ingress.proxy_buffering
+        network.ingress.proxy_buffer_size_kb: 6
+        network.ingress.proxy_read_timeout_seconds: 9
+        network.gateway_api.http_request_timeout_seconds: 0
+        network.ingress.grpc_read_timeout_seconds: 2
+        network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
         network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
@@ -30796,6 +30840,18 @@ components:
             Enable the load balancer to bind a user's session to a specific target.
             This ensures that all requests from the user during the session are sent to the same target
           type: boolean
+        network.gateway_api.http_request_timeout_seconds:
+          description: Sets a timeout (in seconds) for requests proxied through the
+            Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.http_connection_idle_timeout_seconds:
+          description: Sets the idle timeout (in seconds) for HTTP connections proxied
+            through the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
       type: object
     HelmDeployRequest:
       example:

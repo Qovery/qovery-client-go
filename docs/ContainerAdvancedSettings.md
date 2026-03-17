@@ -31,6 +31,8 @@ Name | Type | Description | Notes
 **NetworkIngressWhitelistSourceRange** | Pointer to **string** | list of source ranges to allow access to ingress proxy.  This property can be used to whitelist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1 To allow all source ranges, set 0.0.0.0/0.  | [optional] 
 **NetworkIngressDenylistSourceRange** | Pointer to **string** | list of source ranges to deny access to ingress proxy.  This property can be used to blacklist source IP ranges for ingress proxy. The value is a comma separated list of CIDRs, e.g. 10.0.0.0/24,172.10.0.1  | [optional] 
 **NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] 
+**NetworkGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional] 
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command. You can add multiples comma separated values.  | [optional] 
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
@@ -733,6 +735,76 @@ SetNetworkIngressExtraHeaders sets NetworkIngressExtraHeaders field to given val
 
 HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
 
+### GetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpRequestTimeoutSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpRequestTimeoutSeconds sets NetworkGatewayApiHttpRequestTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSecondsNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpRequestTimeoutSeconds
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds sets NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
 ### GetNetworkIngressBasicAuthEnvVar
 
 `func (o *ContainerAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string`

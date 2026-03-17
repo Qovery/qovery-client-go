@@ -30,6 +30,8 @@ Name | Type | Description | Notes
 **NginxVcpuLimitInMilliCpu** | Pointer to **int32** | vcpu limit in millicores | [optional] 
 **NginxMemoryRequestInMib** | Pointer to **int32** | memory request in MiB | [optional] 
 **NginxMemoryLimitInMib** | Pointer to **int32** | memory limit in MiB | [optional] 
+**EnvoyGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets the default request timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional] 
+**EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the default idle connection timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional] 
 **NginxHpaCpuUtilizationPercentageThreshold** | Pointer to **int32** | hpa cpu threshold in percentage | [optional] 
 **NginxHpaMinNumberInstances** | Pointer to **int32** | hpa minimum number of instances | [optional] 
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] 
@@ -706,6 +708,76 @@ SetNginxMemoryLimitInMib sets NginxMemoryLimitInMib field to given value.
 
 HasNginxMemoryLimitInMib returns a boolean if a field has been set.
 
+### GetEnvoyGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpRequestTimeoutSeconds() int32`
+
+GetEnvoyGatewayApiHttpRequestTimeoutSeconds returns the EnvoyGatewayApiHttpRequestTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiHttpRequestTimeoutSecondsOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool)`
+
+GetEnvoyGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the EnvoyGatewayApiHttpRequestTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpRequestTimeoutSeconds(v int32)`
+
+SetEnvoyGatewayApiHttpRequestTimeoutSeconds sets EnvoyGatewayApiHttpRequestTimeoutSeconds field to given value.
+
+### HasEnvoyGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiHttpRequestTimeoutSeconds() bool`
+
+HasEnvoyGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiHttpRequestTimeoutSecondsNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpRequestTimeoutSecondsNil(b bool)`
+
+ SetEnvoyGatewayApiHttpRequestTimeoutSecondsNil sets the value for EnvoyGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+
+### UnsetEnvoyGatewayApiHttpRequestTimeoutSeconds
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiHttpRequestTimeoutSeconds()`
+
+UnsetEnvoyGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for EnvoyGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+### GetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds() int32`
+
+GetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds returns the EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool)`
+
+GetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds(v int32)`
+
+SetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds sets EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field to given value.
+
+### HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds() bool`
+
+HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsNil(b bool)`
+
+ SetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+
+### UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds()`
+
+UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
 ### GetNginxHpaCpuUtilizationPercentageThreshold
 
 `func (o *ClusterAdvancedSettings) GetNginxHpaCpuUtilizationPercentageThreshold() int32`

@@ -38,6 +38,8 @@ Name | Type | Description | Notes
 **NetworkIngressGrpcSendTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] 
 **NetworkIngressGrpcReadTimeoutSeconds** | Pointer to **int32** | Sets a timeout (in seconds) for transmitting a request to the grpc server | [optional] 
 **NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] 
+**NetworkGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional] 
 **HpaCpuAverageUtilizationPercent** | Pointer to **int32** | Percentage value of cpu usage at which point pods should scale up. | [optional] 
 **HpaMemoryAverageUtilizationPercent** | Pointer to **NullableInt32** | Percentage value of memory usage at which point pods should scale up. | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
@@ -913,6 +915,76 @@ SetNetworkIngressExtraHeaders sets NetworkIngressExtraHeaders field to given val
 
 HasNetworkIngressExtraHeaders returns a boolean if a field has been set.
 
+### GetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpRequestTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpRequestTimeoutSeconds sets NetworkGatewayApiHttpRequestTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSecondsNil
+
+`func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpRequestTimeoutSeconds
+`func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk
+
+`func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds sets NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil
+
+`func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+`func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
 ### GetHpaCpuAverageUtilizationPercent
 
 `func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32`

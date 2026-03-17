@@ -61,7 +61,11 @@ type HelmAdvancedSettings struct {
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
 	NetworkIngressEnableStickySession *bool `json:"network.ingress.enable_sticky_session,omitempty"`
-	AdditionalProperties              map[string]interface{}
+	// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+	NetworkGatewayApiHttpRequestTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_request_timeout_seconds,omitempty"`
+	// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+	NetworkGatewayApiHttpConnectionIdleTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_connection_idle_timeout_seconds,omitempty"`
+	AdditionalProperties                              map[string]interface{}
 }
 
 type _HelmAdvancedSettings HelmAdvancedSettings
@@ -819,6 +823,92 @@ func (o *HelmAdvancedSettings) SetNetworkIngressEnableStickySession(v bool) {
 	o.NetworkIngressEnableStickySession = &v
 }
 
+// GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get(), o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+func (o *HelmAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpRequestTimeoutSeconds field.
+func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Unset()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get(), o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+func (o *HelmAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field.
+func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Unset()
+}
+
 func (o HelmAdvancedSettings) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -898,6 +988,12 @@ func (o HelmAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkIngressEnableStickySession) {
 		toSerialize["network.ingress.enable_sticky_session"] = o.NetworkIngressEnableStickySession
 	}
+	if o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_request_timeout_seconds"] = o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+	}
+	if o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_connection_idle_timeout_seconds"] = o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -943,6 +1039,8 @@ func (o *HelmAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "network.ingress.extra_headers")
 		delete(additionalProperties, "network.ingress.basic_auth_env_var")
 		delete(additionalProperties, "network.ingress.enable_sticky_session")
+		delete(additionalProperties, "network.gateway_api.http_request_timeout_seconds")
+		delete(additionalProperties, "network.gateway_api.http_connection_idle_timeout_seconds")
 		o.AdditionalProperties = additionalProperties
 	}
 

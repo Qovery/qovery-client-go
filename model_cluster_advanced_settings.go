@@ -71,6 +71,10 @@ type ClusterAdvancedSettings struct {
 	NginxMemoryRequestInMib *int32 `json:"nginx.memory.request_in_mib,omitempty"`
 	// memory limit in MiB
 	NginxMemoryLimitInMib *int32 `json:"nginx.memory.limit_in_mib,omitempty"`
+	// Sets the default request timeout (in seconds) applied to Gateway API routes when the service does not override it.
+	EnvoyGatewayApiHttpRequestTimeoutSeconds NullableInt32 `json:"envoy.gateway_api.http_request_timeout_seconds,omitempty"`
+	// Sets the default idle connection timeout (in seconds) applied to Gateway API routes when the service does not override it.
+	EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds NullableInt32 `json:"envoy.gateway_api.http_connection_idle_timeout_seconds,omitempty"`
 	// hpa cpu threshold in percentage
 	NginxHpaCpuUtilizationPercentageThreshold *int32 `json:"nginx.hpa.cpu_utilization_percentage_threshold,omitempty"`
 	// hpa minimum number of instances
@@ -952,6 +956,92 @@ func (o *ClusterAdvancedSettings) SetNginxMemoryLimitInMib(v int32) {
 	o.NginxMemoryLimitInMib = &v
 }
 
+// GetEnvoyGatewayApiHttpRequestTimeoutSeconds returns the EnvoyGatewayApiHttpRequestTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpRequestTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Get()
+}
+
+// GetEnvoyGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the EnvoyGatewayApiHttpRequestTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Get(), o.EnvoyGatewayApiHttpRequestTimeoutSeconds.IsSet()
+}
+
+// HasEnvoyGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiHttpRequestTimeoutSeconds() bool {
+	if o != nil && o.EnvoyGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvoyGatewayApiHttpRequestTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the EnvoyGatewayApiHttpRequestTimeoutSeconds field.
+func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpRequestTimeoutSeconds(v int32) {
+	o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Set(&v)
+}
+
+// SetEnvoyGatewayApiHttpRequestTimeoutSecondsNil sets the value for EnvoyGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpRequestTimeoutSecondsNil() {
+	o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Set(nil)
+}
+
+// UnsetEnvoyGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for EnvoyGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiHttpRequestTimeoutSeconds() {
+	o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Unset()
+}
+
+// GetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds returns the EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+}
+
+// GetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Get(), o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet()
+}
+
+// HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds() bool {
+	if o != nil && o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds field.
+func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds(v int32) {
+	o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Set(&v)
+}
+
+// SetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiHttpConnectionIdleTimeoutSecondsNil() {
+	o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Set(nil)
+}
+
+// UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds() {
+	o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Unset()
+}
+
 // GetNginxHpaCpuUtilizationPercentageThreshold returns the NginxHpaCpuUtilizationPercentageThreshold field value if set, zero value otherwise.
 func (o *ClusterAdvancedSettings) GetNginxHpaCpuUtilizationPercentageThreshold() int32 {
 	if o == nil || IsNil(o.NginxHpaCpuUtilizationPercentageThreshold) {
@@ -1232,6 +1322,12 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NginxMemoryLimitInMib) {
 		toSerialize["nginx.memory.limit_in_mib"] = o.NginxMemoryLimitInMib
 	}
+	if o.EnvoyGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		toSerialize["envoy.gateway_api.http_request_timeout_seconds"] = o.EnvoyGatewayApiHttpRequestTimeoutSeconds.Get()
+	}
+	if o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		toSerialize["envoy.gateway_api.http_connection_idle_timeout_seconds"] = o.EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+	}
 	if !IsNil(o.NginxHpaCpuUtilizationPercentageThreshold) {
 		toSerialize["nginx.hpa.cpu_utilization_percentage_threshold"] = o.NginxHpaCpuUtilizationPercentageThreshold
 	}
@@ -1298,6 +1394,8 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "nginx.vcpu.limit_in_milli_cpu")
 		delete(additionalProperties, "nginx.memory.request_in_mib")
 		delete(additionalProperties, "nginx.memory.limit_in_mib")
+		delete(additionalProperties, "envoy.gateway_api.http_request_timeout_seconds")
+		delete(additionalProperties, "envoy.gateway_api.http_connection_idle_timeout_seconds")
 		delete(additionalProperties, "nginx.hpa.cpu_utilization_percentage_threshold")
 		delete(additionalProperties, "nginx.hpa.min_number_instances")
 		delete(additionalProperties, "nginx.hpa.max_number_instances")

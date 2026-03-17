@@ -69,6 +69,10 @@ type ContainerAdvancedSettings struct {
 	NetworkIngressDenylistSourceRange *string `json:"network.ingress.denylist_source_range,omitempty"`
 	// Allows to define response headers
 	NetworkIngressExtraHeaders *string `json:"network.ingress.extra_headers,omitempty"`
+	// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+	NetworkGatewayApiHttpRequestTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_request_timeout_seconds,omitempty"`
+	// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+	NetworkGatewayApiHttpConnectionIdleTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_connection_idle_timeout_seconds,omitempty"`
 	// Set the name of an environment variable to use as a basic authentication (`login:crypted_password`) from `htpasswd` command. You can add multiples comma separated values.
 	NetworkIngressBasicAuthEnvVar *string `json:"network.ingress.basic_auth_env_var,omitempty"`
 	// Enable the load balancer to bind a user's session to a specific target. This ensures that all requests from the user during the session are sent to the same target
@@ -969,6 +973,92 @@ func (o *ContainerAdvancedSettings) SetNetworkIngressExtraHeaders(v string) {
 	o.NetworkIngressExtraHeaders = &v
 }
 
+// GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get(), o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpRequestTimeoutSeconds field.
+func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Unset()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get(), o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field.
+func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+func (o *ContainerAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Unset()
+}
+
 // GetNetworkIngressBasicAuthEnvVar returns the NetworkIngressBasicAuthEnvVar field value if set, zero value otherwise.
 func (o *ContainerAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string {
 	if o == nil || IsNil(o.NetworkIngressBasicAuthEnvVar) {
@@ -1295,6 +1385,12 @@ func (o ContainerAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkIngressExtraHeaders) {
 		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
 	}
+	if o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_request_timeout_seconds"] = o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+	}
+	if o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_connection_idle_timeout_seconds"] = o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+	}
 	if !IsNil(o.NetworkIngressBasicAuthEnvVar) {
 		toSerialize["network.ingress.basic_auth_env_var"] = o.NetworkIngressBasicAuthEnvVar
 	}
@@ -1365,6 +1461,8 @@ func (o *ContainerAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "network.ingress.whitelist_source_range")
 		delete(additionalProperties, "network.ingress.denylist_source_range")
 		delete(additionalProperties, "network.ingress.extra_headers")
+		delete(additionalProperties, "network.gateway_api.http_request_timeout_seconds")
+		delete(additionalProperties, "network.gateway_api.http_connection_idle_timeout_seconds")
 		delete(additionalProperties, "network.ingress.basic_auth_env_var")
 		delete(additionalProperties, "network.ingress.enable_sticky_session")
 		delete(additionalProperties, "security.service_account_name")

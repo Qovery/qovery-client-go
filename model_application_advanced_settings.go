@@ -82,6 +82,10 @@ type ApplicationAdvancedSettings struct {
 	NetworkIngressGrpcReadTimeoutSeconds *int32 `json:"network.ingress.grpc_read_timeout_seconds,omitempty"`
 	// Allows to define response headers
 	NetworkIngressExtraHeaders *string `json:"network.ingress.extra_headers,omitempty"`
+	// Sets a timeout (in seconds) for requests proxied through the Gateway API route.
+	NetworkGatewayApiHttpRequestTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_request_timeout_seconds,omitempty"`
+	// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
+	NetworkGatewayApiHttpConnectionIdleTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_connection_idle_timeout_seconds,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 	// Percentage value of memory usage at which point pods should scale up.
@@ -1202,6 +1206,92 @@ func (o *ApplicationAdvancedSettings) SetNetworkIngressExtraHeaders(v string) {
 	o.NetworkIngressExtraHeaders = &v
 }
 
+// GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get(), o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpRequestTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds() {
+	o.NetworkGatewayApiHttpRequestTimeoutSeconds.Unset()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get(), o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() {
+	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Unset()
+}
+
 // GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
 	if o == nil || IsNil(o.HpaCpuAverageUtilizationPercent) {
@@ -1485,6 +1575,12 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.NetworkIngressExtraHeaders) {
 		toSerialize["network.ingress.extra_headers"] = o.NetworkIngressExtraHeaders
 	}
+	if o.NetworkGatewayApiHttpRequestTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_request_timeout_seconds"] = o.NetworkGatewayApiHttpRequestTimeoutSeconds.Get()
+	}
+	if o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.http_connection_idle_timeout_seconds"] = o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
+	}
 	if !IsNil(o.HpaCpuAverageUtilizationPercent) {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
 	}
@@ -1556,6 +1652,8 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "network.ingress.grpc_send_timeout_seconds")
 		delete(additionalProperties, "network.ingress.grpc_read_timeout_seconds")
 		delete(additionalProperties, "network.ingress.extra_headers")
+		delete(additionalProperties, "network.gateway_api.http_request_timeout_seconds")
+		delete(additionalProperties, "network.gateway_api.http_connection_idle_timeout_seconds")
 		delete(additionalProperties, "hpa.cpu.average_utilization_percent")
 		delete(additionalProperties, "hpa.memory.average_utilization_percent")
 		delete(additionalProperties, "security.service_account_name")

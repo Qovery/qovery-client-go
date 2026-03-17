@@ -27,6 +27,8 @@ Name | Type | Description | Notes
 **NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] 
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command. You can add multiples comma separated values.  | [optional] 
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] 
+**NetworkGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional] 
 
 ## Methods
 
@@ -622,6 +624,76 @@ SetNetworkIngressEnableStickySession sets NetworkIngressEnableStickySession fiel
 
 HasNetworkIngressEnableStickySession returns a boolean if a field has been set.
 
+### GetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpRequestTimeoutSeconds returns the NetworkGatewayApiHttpRequestTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpRequestTimeoutSecondsOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpRequestTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpRequestTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpRequestTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpRequestTimeoutSeconds sets NetworkGatewayApiHttpRequestTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpRequestTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiHttpRequestTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpRequestTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpRequestTimeoutSecondsNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpRequestTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpRequestTimeoutSecondsNil sets the value for NetworkGatewayApiHttpRequestTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpRequestTimeoutSeconds
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiHttpRequestTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpRequestTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpRequestTimeoutSeconds, not even an explicit nil
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() int32`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsOk returns a tuple with the NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds sets NetworkGatewayApiHttpConnectionIdleTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds() bool`
+
+HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiHttpConnectionIdleTimeoutSecondsNil sets the value for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds()`
+
+UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
