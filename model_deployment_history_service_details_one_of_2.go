@@ -21,11 +21,13 @@ var _ MappedNullable = &DeploymentHistoryServiceDetailsOneOf2{}
 
 // DeploymentHistoryServiceDetailsOneOf2 JobDeploymentHistoryDetails
 type DeploymentHistoryServiceDetailsOneOf2 struct {
-	ImageName            string                                         `json:"image_name"`
-	Tag                  string                                         `json:"tag"`
-	Commit               NullableCommit                                 `json:"commit,omitempty"`
-	Schedule             *DeploymentHistoryServiceDetailsOneOf2Schedule `json:"schedule,omitempty"`
-	JobType              string                                         `json:"job_type"`
+	ImageName string                                         `json:"image_name"`
+	Tag       string                                         `json:"tag"`
+	Commit    NullableCommit                                 `json:"commit,omitempty"`
+	Schedule  *DeploymentHistoryServiceDetailsOneOf2Schedule `json:"schedule,omitempty"`
+	JobType   string                                         `json:"job_type"`
+	// The build pod name prefix. Only set for jobs with a git source (Docker build). Null for container-source jobs.
+	BuildPodName         NullableString `json:"build_pod_name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -198,6 +200,49 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) SetJobType(v string) {
 	o.JobType = v
 }
 
+// GetBuildPodName returns the BuildPodName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *DeploymentHistoryServiceDetailsOneOf2) GetBuildPodName() string {
+	if o == nil || IsNil(o.BuildPodName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BuildPodName.Get()
+}
+
+// GetBuildPodNameOk returns a tuple with the BuildPodName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *DeploymentHistoryServiceDetailsOneOf2) GetBuildPodNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BuildPodName.Get(), o.BuildPodName.IsSet()
+}
+
+// HasBuildPodName returns a boolean if a field has been set.
+func (o *DeploymentHistoryServiceDetailsOneOf2) HasBuildPodName() bool {
+	if o != nil && o.BuildPodName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildPodName gets a reference to the given NullableString and assigns it to the BuildPodName field.
+func (o *DeploymentHistoryServiceDetailsOneOf2) SetBuildPodName(v string) {
+	o.BuildPodName.Set(&v)
+}
+
+// SetBuildPodNameNil sets the value for BuildPodName to be an explicit nil
+func (o *DeploymentHistoryServiceDetailsOneOf2) SetBuildPodNameNil() {
+	o.BuildPodName.Set(nil)
+}
+
+// UnsetBuildPodName ensures that no value is present for BuildPodName, not even an explicit nil
+func (o *DeploymentHistoryServiceDetailsOneOf2) UnsetBuildPodName() {
+	o.BuildPodName.Unset()
+}
+
 func (o DeploymentHistoryServiceDetailsOneOf2) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -217,6 +262,9 @@ func (o DeploymentHistoryServiceDetailsOneOf2) ToMap() (map[string]interface{}, 
 		toSerialize["schedule"] = o.Schedule
 	}
 	toSerialize["job_type"] = o.JobType
+	if o.BuildPodName.IsSet() {
+		toSerialize["build_pod_name"] = o.BuildPodName.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -267,6 +315,7 @@ func (o *DeploymentHistoryServiceDetailsOneOf2) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "commit")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "job_type")
+		delete(additionalProperties, "build_pod_name")
 		o.AdditionalProperties = additionalProperties
 	}
 

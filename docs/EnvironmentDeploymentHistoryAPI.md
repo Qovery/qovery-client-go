@@ -4,9 +4,82 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GenerateDeploymentBuildUsageReport**](EnvironmentDeploymentHistoryAPI.md#GenerateDeploymentBuildUsageReport) | **Post** /environment/{environmentId}/deploymentBuildUsageReport | Generate a Grafana snapshot report showing build runner pod usage for a specific deployment
 [**ListEnvironmentDeploymentHistory**](EnvironmentDeploymentHistoryAPI.md#ListEnvironmentDeploymentHistory) | **Get** /environment/{environmentId}/deploymentHistory | List environment deployments
 [**ListEnvironmentDeploymentHistoryV2**](EnvironmentDeploymentHistoryAPI.md#ListEnvironmentDeploymentHistoryV2) | **Get** /environment/{environmentId}/deploymentHistoryV2 | List environment deployments
 
+
+
+## GenerateDeploymentBuildUsageReport
+
+> DeploymentBuildUsageReportResponse GenerateDeploymentBuildUsageReport(ctx, environmentId).DeploymentBuildUsageReportRequest(deploymentBuildUsageReportRequest).Execute()
+
+Generate a Grafana snapshot report showing build runner pod usage for a specific deployment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	deploymentBuildUsageReportRequest := *openapiclient.NewDeploymentBuildUsageReportRequest("ExecutionId_example", int32(86400)) // DeploymentBuildUsageReportRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentDeploymentHistoryAPI.GenerateDeploymentBuildUsageReport(context.Background(), environmentId).DeploymentBuildUsageReportRequest(deploymentBuildUsageReportRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentDeploymentHistoryAPI.GenerateDeploymentBuildUsageReport``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GenerateDeploymentBuildUsageReport`: DeploymentBuildUsageReportResponse
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentDeploymentHistoryAPI.GenerateDeploymentBuildUsageReport`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGenerateDeploymentBuildUsageReportRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **deploymentBuildUsageReportRequest** | [**DeploymentBuildUsageReportRequest**](DeploymentBuildUsageReportRequest.md) |  | 
+
+### Return type
+
+[**DeploymentBuildUsageReportResponse**](DeploymentBuildUsageReportResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## ListEnvironmentDeploymentHistory

@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Commit** | [**NullableCommit**](Commit.md) |  | 
+**BuildPodName** | **NullableString** | The build pod name prefix. Only set for jobs with a git source (Docker build). Null for container-source jobs. | 
 **ImageName** | **string** |  | 
 **Tag** | **string** |  | 
 **Arguments** | **[]string** |  | 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewDeploymentHistoryServiceDetails
 
-`func NewDeploymentHistoryServiceDetails(commit NullableCommit, imageName string, tag string, arguments []string, jobType string, ) *DeploymentHistoryServiceDetails`
+`func NewDeploymentHistoryServiceDetails(commit NullableCommit, buildPodName NullableString, imageName string, tag string, arguments []string, jobType string, ) *DeploymentHistoryServiceDetails`
 
 NewDeploymentHistoryServiceDetails instantiates a new DeploymentHistoryServiceDetails object
 This constructor will assign default values to properties that have it defined,
@@ -62,6 +63,36 @@ SetCommit sets Commit field to given value.
 `func (o *DeploymentHistoryServiceDetails) UnsetCommit()`
 
 UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+### GetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetails) GetBuildPodName() string`
+
+GetBuildPodName returns the BuildPodName field if non-nil, zero value otherwise.
+
+### GetBuildPodNameOk
+
+`func (o *DeploymentHistoryServiceDetails) GetBuildPodNameOk() (*string, bool)`
+
+GetBuildPodNameOk returns a tuple with the BuildPodName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetails) SetBuildPodName(v string)`
+
+SetBuildPodName sets BuildPodName field to given value.
+
+
+### SetBuildPodNameNil
+
+`func (o *DeploymentHistoryServiceDetails) SetBuildPodNameNil(b bool)`
+
+ SetBuildPodNameNil sets the value for BuildPodName to be an explicit nil
+
+### UnsetBuildPodName
+`func (o *DeploymentHistoryServiceDetails) UnsetBuildPodName()`
+
+UnsetBuildPodName ensures that no value is present for BuildPodName, not even an explicit nil
 ### GetImageName
 
 `func (o *DeploymentHistoryServiceDetails) GetImageName() string`

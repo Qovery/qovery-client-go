@@ -21,7 +21,9 @@ var _ MappedNullable = &DeploymentHistoryServiceDetailsOneOf{}
 
 // DeploymentHistoryServiceDetailsOneOf ApplicationDeploymentHistoryData
 type DeploymentHistoryServiceDetailsOneOf struct {
-	Commit               NullableCommit `json:"commit"`
+	Commit NullableCommit `json:"commit"`
+	// The build pod name prefix for monitoring build runner usage. Format build-{execution_id}-0
+	BuildPodName         string `json:"build_pod_name"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +33,10 @@ type _DeploymentHistoryServiceDetailsOneOf DeploymentHistoryServiceDetailsOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit) *DeploymentHistoryServiceDetailsOneOf {
+func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit, buildPodName string) *DeploymentHistoryServiceDetailsOneOf {
 	this := DeploymentHistoryServiceDetailsOneOf{}
 	this.Commit = commit
+	this.BuildPodName = buildPodName
 	return &this
 }
 
@@ -71,6 +74,30 @@ func (o *DeploymentHistoryServiceDetailsOneOf) SetCommit(v Commit) {
 	o.Commit.Set(&v)
 }
 
+// GetBuildPodName returns the BuildPodName field value
+func (o *DeploymentHistoryServiceDetailsOneOf) GetBuildPodName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.BuildPodName
+}
+
+// GetBuildPodNameOk returns a tuple with the BuildPodName field value
+// and a boolean to check if the value has been set.
+func (o *DeploymentHistoryServiceDetailsOneOf) GetBuildPodNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.BuildPodName, true
+}
+
+// SetBuildPodName sets field value
+func (o *DeploymentHistoryServiceDetailsOneOf) SetBuildPodName(v string) {
+	o.BuildPodName = v
+}
+
 func (o DeploymentHistoryServiceDetailsOneOf) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -82,6 +109,7 @@ func (o DeploymentHistoryServiceDetailsOneOf) MarshalJSON() ([]byte, error) {
 func (o DeploymentHistoryServiceDetailsOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["commit"] = o.Commit.Get()
+	toSerialize["build_pod_name"] = o.BuildPodName
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -96,6 +124,7 @@ func (o *DeploymentHistoryServiceDetailsOneOf) UnmarshalJSON(data []byte) (err e
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"commit",
+		"build_pod_name",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -126,6 +155,7 @@ func (o *DeploymentHistoryServiceDetailsOneOf) UnmarshalJSON(data []byte) (err e
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "commit")
+		delete(additionalProperties, "build_pod_name")
 		o.AdditionalProperties = additionalProperties
 	}
 

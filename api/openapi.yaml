@@ -8080,6 +8080,46 @@ paths:
       - Environment Deployment History
       x-stoplight:
         id: pqsu5pghhay1j
+  /environment/{environmentId}/deploymentBuildUsageReport:
+    post:
+      description: "Generate a Grafana snapshot report that shows the resource usage\
+        \ (CPU, memory) of build runner pods for a specific deployment execution.\
+        \ The report is publicly accessible for the specified duration."
+      operationId: generateDeploymentBuildUsageReport
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeploymentBuildUsageReportRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentBuildUsageReportResponse'
+          description: Build usage report snapshot has been successfully generated
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Generate a Grafana snapshot report showing build runner pod usage for
+        a specific deployment
+      tags:
+      - Environment Deployment History
   /environment/{environmentId}/environmentVariable:
     get:
       operationId: listEnvironmentEnvironmentVariable
@@ -25396,6 +25436,7 @@ components:
               triggered_by: triggered_by
             total_duration: total_duration
             details:
+              build_pod_name: build_pod_name
               commit:
                 author_name: author_name
                 git_commit_id: git_commit_id
@@ -25422,6 +25463,7 @@ components:
               triggered_by: triggered_by
             total_duration: total_duration
             details:
+              build_pod_name: build_pod_name
               commit:
                 author_name: author_name
                 git_commit_id: git_commit_id
@@ -25452,6 +25494,7 @@ components:
               triggered_by: triggered_by
             total_duration: total_duration
             details:
+              build_pod_name: build_pod_name
               commit:
                 author_name: author_name
                 git_commit_id: git_commit_id
@@ -25478,6 +25521,7 @@ components:
               triggered_by: triggered_by
             total_duration: total_duration
             details:
+              build_pod_name: build_pod_name
               commit:
                 author_name: author_name
                 git_commit_id: git_commit_id
@@ -25545,6 +25589,7 @@ components:
             triggered_by: triggered_by
           total_duration: total_duration
           details:
+            build_pod_name: build_pod_name
             commit:
               author_name: author_name
               git_commit_id: git_commit_id
@@ -25571,6 +25616,7 @@ components:
             triggered_by: triggered_by
           total_duration: total_duration
           details:
+            build_pod_name: build_pod_name
             commit:
               author_name: author_name
               git_commit_id: git_commit_id
@@ -25668,6 +25714,7 @@ components:
           triggered_by: triggered_by
         total_duration: total_duration
         details:
+          build_pod_name: build_pod_name
           commit:
             author_name: author_name
             git_commit_id: git_commit_id
@@ -26063,6 +26110,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26089,6 +26137,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26119,6 +26168,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26145,6 +26195,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26188,6 +26239,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26214,6 +26266,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26244,6 +26297,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26270,6 +26324,7 @@ components:
                 triggered_by: triggered_by
               total_duration: total_duration
               details:
+                build_pod_name: build_pod_name
                 commit:
                   author_name: author_name
                   git_commit_id: git_commit_id
@@ -26314,6 +26369,7 @@ components:
             triggered_by: triggered_by
           total_duration: total_duration
           details:
+            build_pod_name: build_pod_name
             commit:
               author_name: author_name
               git_commit_id: git_commit_id
@@ -26340,6 +26396,7 @@ components:
             triggered_by: triggered_by
           total_duration: total_duration
           details:
+            build_pod_name: build_pod_name
             commit:
               author_name: author_name
               git_commit_id: git_commit_id
@@ -34849,6 +34906,47 @@ components:
             delete the report before it expires
           type: string
       type: object
+    DeploymentBuildUsageReportRequest:
+      example:
+        execution_id: execution_id
+        report_expiration_in_seconds: 86400
+      properties:
+        execution_id:
+          description: The deployment execution ID (format environment_id-version)
+          type: string
+          x-stoplight:
+            id: build-report-execution-id
+        report_expiration_in_seconds:
+          description: The number of seconds the report will be publicly available
+          example: 86400
+          type: integer
+          x-stoplight:
+            id: build-report-expiration
+      required:
+      - execution_id
+      - report_expiration_in_seconds
+      type: object
+      x-stoplight:
+        id: deployment-build-usage-report-request
+    DeploymentBuildUsageReportResponse:
+      example:
+        report_url: report_url
+        delete_report_url: delete_report_url
+      properties:
+        report_url:
+          description: The publicly accessible URL of the Grafana snapshot report
+            showing build pod resource usage
+          type: string
+          x-stoplight:
+            id: build-report-url
+        delete_report_url:
+          description: The URL to pro-actively delete the report before it expires
+          type: string
+          x-stoplight:
+            id: build-report-delete-url
+      type: object
+      x-stoplight:
+        id: deployment-build-usage-report-response
     OrganizationAnnotationsGroupEnrichedResponseList:
       items:
         $ref: '#/components/schemas/OrganizationAnnotationsGroupEnrichedResponse'
@@ -41193,6 +41291,7 @@ components:
     DeploymentHistoryServiceDetails_oneOf:
       description: ApplicationDeploymentHistoryData
       example:
+        build_pod_name: build_pod_name
         commit:
           author_name: author_name
           git_commit_id: git_commit_id
@@ -41204,7 +41303,12 @@ components:
       properties:
         commit:
           $ref: '#/components/schemas/Commit'
+        build_pod_name:
+          description: "The build pod name prefix for monitoring build runner usage.\
+            \ Format build-{execution_id}-0"
+          type: string
       required:
+      - build_pod_name
       - commit
       type: object
     DeploymentHistoryServiceDetails_oneOf_1:
@@ -41256,6 +41360,11 @@ components:
           type: string
           x-stoplight:
             id: tz8apy1pqi9c5
+        build_pod_name:
+          description: The build pod name prefix. Only set for jobs with a git source
+            (Docker build). Null for container-source jobs.
+          nullable: true
+          type: string
       required:
       - image_name
       - job_type

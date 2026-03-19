@@ -351,6 +351,8 @@ docs/DeployAllRequestContainersInner.md
 docs/DeployAllRequestHelmsInner.md
 docs/DeployAllRequestJobsInner.md
 docs/DeployRequest.md
+docs/DeploymentBuildUsageReportRequest.md
+docs/DeploymentBuildUsageReportResponse.md
 docs/DeploymentHistory.md
 docs/DeploymentHistoryActionStatus.md
 docs/DeploymentHistoryApplication.md
@@ -1101,6 +1103,8 @@ model_deploy_all_request_containers_inner.go
 model_deploy_all_request_helms_inner.go
 model_deploy_all_request_jobs_inner.go
 model_deploy_request.go
+model_deployment_build_usage_report_request.go
+model_deployment_build_usage_report_response.go
 model_deployment_history.go
 model_deployment_history_action_status.go
 model_deployment_history_application.go

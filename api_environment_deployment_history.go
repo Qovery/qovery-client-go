@@ -23,6 +23,132 @@ import (
 // EnvironmentDeploymentHistoryAPIService EnvironmentDeploymentHistoryAPI service
 type EnvironmentDeploymentHistoryAPIService service
 
+type ApiGenerateDeploymentBuildUsageReportRequest struct {
+	ctx                               context.Context
+	ApiService                        *EnvironmentDeploymentHistoryAPIService
+	environmentId                     string
+	deploymentBuildUsageReportRequest *DeploymentBuildUsageReportRequest
+}
+
+func (r ApiGenerateDeploymentBuildUsageReportRequest) DeploymentBuildUsageReportRequest(deploymentBuildUsageReportRequest DeploymentBuildUsageReportRequest) ApiGenerateDeploymentBuildUsageReportRequest {
+	r.deploymentBuildUsageReportRequest = &deploymentBuildUsageReportRequest
+	return r
+}
+
+func (r ApiGenerateDeploymentBuildUsageReportRequest) Execute() (*DeploymentBuildUsageReportResponse, *http.Response, error) {
+	return r.ApiService.GenerateDeploymentBuildUsageReportExecute(r)
+}
+
+/*
+GenerateDeploymentBuildUsageReport Generate a Grafana snapshot report showing build runner pod usage for a specific deployment
+
+Generate a Grafana snapshot report that shows the resource usage (CPU, memory) of build runner pods for a specific deployment execution. The report is publicly accessible for the specified duration.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param environmentId Environment ID
+	@return ApiGenerateDeploymentBuildUsageReportRequest
+*/
+func (a *EnvironmentDeploymentHistoryAPIService) GenerateDeploymentBuildUsageReport(ctx context.Context, environmentId string) ApiGenerateDeploymentBuildUsageReportRequest {
+	return ApiGenerateDeploymentBuildUsageReportRequest{
+		ApiService:    a,
+		ctx:           ctx,
+		environmentId: environmentId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeploymentBuildUsageReportResponse
+func (a *EnvironmentDeploymentHistoryAPIService) GenerateDeploymentBuildUsageReportExecute(r ApiGenerateDeploymentBuildUsageReportRequest) (*DeploymentBuildUsageReportResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentBuildUsageReportResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "EnvironmentDeploymentHistoryAPIService.GenerateDeploymentBuildUsageReport")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/environment/{environmentId}/deploymentBuildUsageReport"
+	localVarPath = strings.Replace(localVarPath, "{"+"environmentId"+"}", url.PathEscape(parameterValueToString(r.environmentId, "environmentId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.deploymentBuildUsageReportRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListEnvironmentDeploymentHistoryRequest struct {
 	ctx           context.Context
 	ApiService    *EnvironmentDeploymentHistoryAPIService

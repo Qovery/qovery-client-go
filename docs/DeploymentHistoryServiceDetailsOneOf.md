@@ -5,12 +5,13 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Commit** | [**NullableCommit**](Commit.md) |  | 
+**BuildPodName** | **string** | The build pod name prefix for monitoring build runner usage. Format build-{execution_id}-0 | 
 
 ## Methods
 
 ### NewDeploymentHistoryServiceDetailsOneOf
 
-`func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit, ) *DeploymentHistoryServiceDetailsOneOf`
+`func NewDeploymentHistoryServiceDetailsOneOf(commit NullableCommit, buildPodName string, ) *DeploymentHistoryServiceDetailsOneOf`
 
 NewDeploymentHistoryServiceDetailsOneOf instantiates a new DeploymentHistoryServiceDetailsOneOf object
 This constructor will assign default values to properties that have it defined,
@@ -55,6 +56,26 @@ SetCommit sets Commit field to given value.
 `func (o *DeploymentHistoryServiceDetailsOneOf) UnsetCommit()`
 
 UnsetCommit ensures that no value is present for Commit, not even an explicit nil
+### GetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetailsOneOf) GetBuildPodName() string`
+
+GetBuildPodName returns the BuildPodName field if non-nil, zero value otherwise.
+
+### GetBuildPodNameOk
+
+`func (o *DeploymentHistoryServiceDetailsOneOf) GetBuildPodNameOk() (*string, bool)`
+
+GetBuildPodNameOk returns a tuple with the BuildPodName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetailsOneOf) SetBuildPodName(v string)`
+
+SetBuildPodName sets BuildPodName field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

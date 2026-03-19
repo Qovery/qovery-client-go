@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Commit** | Pointer to [**NullableCommit**](Commit.md) |  | [optional] 
 **Schedule** | Pointer to [**DeploymentHistoryServiceDetailsOneOf2Schedule**](DeploymentHistoryServiceDetailsOneOf2Schedule.md) |  | [optional] 
 **JobType** | **string** |  | 
+**BuildPodName** | Pointer to **NullableString** | The build pod name prefix. Only set for jobs with a git source (Docker build). Null for container-source jobs. | [optional] 
 
 ## Methods
 
@@ -149,6 +150,41 @@ and a boolean to check if the value has been set.
 SetJobType sets JobType field to given value.
 
 
+### GetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetailsOneOf2) GetBuildPodName() string`
+
+GetBuildPodName returns the BuildPodName field if non-nil, zero value otherwise.
+
+### GetBuildPodNameOk
+
+`func (o *DeploymentHistoryServiceDetailsOneOf2) GetBuildPodNameOk() (*string, bool)`
+
+GetBuildPodNameOk returns a tuple with the BuildPodName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildPodName
+
+`func (o *DeploymentHistoryServiceDetailsOneOf2) SetBuildPodName(v string)`
+
+SetBuildPodName sets BuildPodName field to given value.
+
+### HasBuildPodName
+
+`func (o *DeploymentHistoryServiceDetailsOneOf2) HasBuildPodName() bool`
+
+HasBuildPodName returns a boolean if a field has been set.
+
+### SetBuildPodNameNil
+
+`func (o *DeploymentHistoryServiceDetailsOneOf2) SetBuildPodNameNil(b bool)`
+
+ SetBuildPodNameNil sets the value for BuildPodName to be an explicit nil
+
+### UnsetBuildPodName
+`func (o *DeploymentHistoryServiceDetailsOneOf2) UnsetBuildPodName()`
+
+UnsetBuildPodName ensures that no value is present for BuildPodName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
