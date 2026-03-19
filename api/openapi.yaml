@@ -33628,6 +33628,7 @@ components:
       - STOPPING
       - STOP_ERROR
       - STOP_QUEUED
+      - UNAVAILABLE
       - WAITING_DELETING
       - WAITING_RESTARTING
       - WAITING_RUNNING
