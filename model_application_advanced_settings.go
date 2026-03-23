@@ -28,6 +28,8 @@ type ApplicationAdvancedSettings struct {
 	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
 	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
 	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
+	// Define how you want pods to be spread across availability zones: * `Disabled` no topology spread constraints are applied * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint) * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+	DeploymentTopologySpreadZone *string `json:"deployment.topology_spread.zone,omitempty"`
 	// Allows you to run a command after the application is started. The command should be a shell command or script.
 	DeploymentLifecyclePostStartExecCommand []string `json:"deployment.lifecycle.post_start_exec_command,omitempty"`
 	// Allows you to run a command before the application is stopped. The command should be a shell command or script. Qovery requires the sh shell by default and sets a sleep of 15 seconds to let Nginx update its config. Avoiding error codes returned during a rolling update.
@@ -244,6 +246,38 @@ func (o *ApplicationAdvancedSettings) HasDeploymentAntiaffinityPod() bool {
 // SetDeploymentAntiaffinityPod gets a reference to the given string and assigns it to the DeploymentAntiaffinityPod field.
 func (o *ApplicationAdvancedSettings) SetDeploymentAntiaffinityPod(v string) {
 	o.DeploymentAntiaffinityPod = &v
+}
+
+// GetDeploymentTopologySpreadZone returns the DeploymentTopologySpreadZone field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetDeploymentTopologySpreadZone() string {
+	if o == nil || IsNil(o.DeploymentTopologySpreadZone) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentTopologySpreadZone
+}
+
+// GetDeploymentTopologySpreadZoneOk returns a tuple with the DeploymentTopologySpreadZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetDeploymentTopologySpreadZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DeploymentTopologySpreadZone) {
+		return nil, false
+	}
+	return o.DeploymentTopologySpreadZone, true
+}
+
+// HasDeploymentTopologySpreadZone returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasDeploymentTopologySpreadZone() bool {
+	if o != nil && !IsNil(o.DeploymentTopologySpreadZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentTopologySpreadZone gets a reference to the given string and assigns it to the DeploymentTopologySpreadZone field.
+func (o *ApplicationAdvancedSettings) SetDeploymentTopologySpreadZone(v string) {
+	o.DeploymentTopologySpreadZone = &v
 }
 
 // GetDeploymentLifecyclePostStartExecCommand returns the DeploymentLifecyclePostStartExecCommand field value if set, zero value otherwise.
@@ -1485,6 +1519,9 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeploymentAntiaffinityPod) {
 		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
 	}
+	if !IsNil(o.DeploymentTopologySpreadZone) {
+		toSerialize["deployment.topology_spread.zone"] = o.DeploymentTopologySpreadZone
+	}
 	if !IsNil(o.DeploymentLifecyclePostStartExecCommand) {
 		toSerialize["deployment.lifecycle.post_start_exec_command"] = o.DeploymentLifecyclePostStartExecCommand
 	}
@@ -1622,6 +1659,7 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "deployment.antiaffinity.pod")
+		delete(additionalProperties, "deployment.topology_spread.zone")
 		delete(additionalProperties, "deployment.lifecycle.post_start_exec_command")
 		delete(additionalProperties, "deployment.lifecycle.pre_stop_exec_command")
 		delete(additionalProperties, "deployment.update_strategy.type")

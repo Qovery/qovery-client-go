@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **DeploymentAntiaffinityPod** | Pointer to **string** | Define how you want pods affinity to behave: * &#x60;Preferred&#x60; allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * &#x60;Requirred&#x60; ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)  | [optional] 
+**DeploymentTopologySpreadZone** | Pointer to **string** | Define how you want pods to be spread across availability zones: * &#x60;Disabled&#x60; no topology spread constraints are applied * &#x60;ScheduleAnyway&#x60; pods are spread across zones on a best-effort basis (soft constraint) * &#x60;DoNotSchedule&#x60; pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)  | [optional] 
 **DeploymentUpdateStrategyType** | Pointer to **string** | * &#x60;RollingUpdate&#x60; gracefully rollout new versions, and automatically rollback if the new version fails to start * &#x60;Recreate&#x60; stop all current versions and create new ones once all old ones have been shutdown  | [optional] 
 **DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent** | Pointer to **int32** | Define the percentage of a maximum number of pods that can be unavailable during the update process | [optional] 
 **DeploymentUpdateStrategyRollingUpdateMaxSurgePercent** | Pointer to **int32** | Define the percentage of the maximum number of pods that can be created over the desired number of pods | [optional] 
@@ -159,6 +160,31 @@ SetDeploymentAntiaffinityPod sets DeploymentAntiaffinityPod field to given value
 `func (o *ContainerAdvancedSettings) HasDeploymentAntiaffinityPod() bool`
 
 HasDeploymentAntiaffinityPod returns a boolean if a field has been set.
+
+### GetDeploymentTopologySpreadZone
+
+`func (o *ContainerAdvancedSettings) GetDeploymentTopologySpreadZone() string`
+
+GetDeploymentTopologySpreadZone returns the DeploymentTopologySpreadZone field if non-nil, zero value otherwise.
+
+### GetDeploymentTopologySpreadZoneOk
+
+`func (o *ContainerAdvancedSettings) GetDeploymentTopologySpreadZoneOk() (*string, bool)`
+
+GetDeploymentTopologySpreadZoneOk returns a tuple with the DeploymentTopologySpreadZone field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDeploymentTopologySpreadZone
+
+`func (o *ContainerAdvancedSettings) SetDeploymentTopologySpreadZone(v string)`
+
+SetDeploymentTopologySpreadZone sets DeploymentTopologySpreadZone field to given value.
+
+### HasDeploymentTopologySpreadZone
+
+`func (o *ContainerAdvancedSettings) HasDeploymentTopologySpreadZone() bool`
+
+HasDeploymentTopologySpreadZone returns a boolean if a field has been set.
 
 ### GetDeploymentUpdateStrategyType
 

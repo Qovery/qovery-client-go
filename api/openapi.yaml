@@ -18763,6 +18763,7 @@ components:
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 7
         network.gateway_api.http_connection_idle_timeout_seconds: 0
+        deployment.topology_spread.zone: Disabled
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 4
@@ -18802,6 +18803,17 @@ components:
           enum:
           - Preferred
           - Requirred
+          type: string
+        deployment.topology_spread.zone:
+          description: |
+            Define how you want pods to be spread across availability zones:
+            * `Disabled` no topology spread constraints are applied
+            * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint)
+            * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+          enum:
+          - Disabled
+          - ScheduleAnyway
+          - DoNotSchedule
           type: string
         deployment.lifecycle.post_start_exec_command:
           description: Allows you to run a command after the application is started.
@@ -22692,6 +22704,7 @@ components:
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
         network.gateway_api.http_connection_idle_timeout_seconds: 0
+        deployment.topology_spread.zone: Disabled
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 6
@@ -22730,6 +22743,17 @@ components:
           enum:
           - Preferred
           - Requirred
+          type: string
+        deployment.topology_spread.zone:
+          description: |
+            Define how you want pods to be spread across availability zones:
+            * `Disabled` no topology spread constraints are applied
+            * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint)
+            * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+          enum:
+          - Disabled
+          - ScheduleAnyway
+          - DoNotSchedule
           type: string
         deployment.update_strategy.type:
           description: |

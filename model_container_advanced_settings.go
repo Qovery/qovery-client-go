@@ -28,6 +28,8 @@ type ContainerAdvancedSettings struct {
 	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
 	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
 	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
+	// Define how you want pods to be spread across availability zones: * `Disabled` no topology spread constraints are applied * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint) * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
+	DeploymentTopologySpreadZone *string `json:"deployment.topology_spread.zone,omitempty"`
 	// * `RollingUpdate` gracefully rollout new versions, and automatically rollback if the new version fails to start * `Recreate` stop all current versions and create new ones once all old ones have been shutdown
 	DeploymentUpdateStrategyType *string `json:"deployment.update_strategy.type,omitempty"`
 	// Define the percentage of a maximum number of pods that can be unavailable during the update process
@@ -235,6 +237,38 @@ func (o *ContainerAdvancedSettings) HasDeploymentAntiaffinityPod() bool {
 // SetDeploymentAntiaffinityPod gets a reference to the given string and assigns it to the DeploymentAntiaffinityPod field.
 func (o *ContainerAdvancedSettings) SetDeploymentAntiaffinityPod(v string) {
 	o.DeploymentAntiaffinityPod = &v
+}
+
+// GetDeploymentTopologySpreadZone returns the DeploymentTopologySpreadZone field value if set, zero value otherwise.
+func (o *ContainerAdvancedSettings) GetDeploymentTopologySpreadZone() string {
+	if o == nil || IsNil(o.DeploymentTopologySpreadZone) {
+		var ret string
+		return ret
+	}
+	return *o.DeploymentTopologySpreadZone
+}
+
+// GetDeploymentTopologySpreadZoneOk returns a tuple with the DeploymentTopologySpreadZone field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerAdvancedSettings) GetDeploymentTopologySpreadZoneOk() (*string, bool) {
+	if o == nil || IsNil(o.DeploymentTopologySpreadZone) {
+		return nil, false
+	}
+	return o.DeploymentTopologySpreadZone, true
+}
+
+// HasDeploymentTopologySpreadZone returns a boolean if a field has been set.
+func (o *ContainerAdvancedSettings) HasDeploymentTopologySpreadZone() bool {
+	if o != nil && !IsNil(o.DeploymentTopologySpreadZone) {
+		return true
+	}
+
+	return false
+}
+
+// SetDeploymentTopologySpreadZone gets a reference to the given string and assigns it to the DeploymentTopologySpreadZone field.
+func (o *ContainerAdvancedSettings) SetDeploymentTopologySpreadZone(v string) {
+	o.DeploymentTopologySpreadZone = &v
 }
 
 // GetDeploymentUpdateStrategyType returns the DeploymentUpdateStrategyType field value if set, zero value otherwise.
@@ -1316,6 +1350,9 @@ func (o ContainerAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.DeploymentAntiaffinityPod) {
 		toSerialize["deployment.antiaffinity.pod"] = o.DeploymentAntiaffinityPod
 	}
+	if !IsNil(o.DeploymentTopologySpreadZone) {
+		toSerialize["deployment.topology_spread.zone"] = o.DeploymentTopologySpreadZone
+	}
 	if !IsNil(o.DeploymentUpdateStrategyType) {
 		toSerialize["deployment.update_strategy.type"] = o.DeploymentUpdateStrategyType
 	}
@@ -1438,6 +1475,7 @@ func (o *ContainerAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "deployment.antiaffinity.pod")
+		delete(additionalProperties, "deployment.topology_spread.zone")
 		delete(additionalProperties, "deployment.update_strategy.type")
 		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_unavailable_percent")
 		delete(additionalProperties, "deployment.update_strategy.rolling_update.max_surge_percent")
