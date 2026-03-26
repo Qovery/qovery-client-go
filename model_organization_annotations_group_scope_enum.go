@@ -21,15 +21,16 @@ type OrganizationAnnotationsGroupScopeEnum string
 
 // List of OrganizationAnnotationsGroupScopeEnum
 const (
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_DEPLOYMENTS   OrganizationAnnotationsGroupScopeEnum = "DEPLOYMENTS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_STATEFUL_SETS OrganizationAnnotationsGroupScopeEnum = "STATEFUL_SETS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SERVICES      OrganizationAnnotationsGroupScopeEnum = "SERVICES"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_INGRESS       OrganizationAnnotationsGroupScopeEnum = "INGRESS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_HPA           OrganizationAnnotationsGroupScopeEnum = "HPA"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PODS          OrganizationAnnotationsGroupScopeEnum = "PODS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SECRETS       OrganizationAnnotationsGroupScopeEnum = "SECRETS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_JOBS          OrganizationAnnotationsGroupScopeEnum = "JOBS"
-	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CRON_JOBS     OrganizationAnnotationsGroupScopeEnum = "CRON_JOBS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_DEPLOYMENTS        OrganizationAnnotationsGroupScopeEnum = "DEPLOYMENTS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_STATEFUL_SETS      OrganizationAnnotationsGroupScopeEnum = "STATEFUL_SETS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SERVICES           OrganizationAnnotationsGroupScopeEnum = "SERVICES"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_INGRESS            OrganizationAnnotationsGroupScopeEnum = "INGRESS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_GATEWAY_API_ROUTES OrganizationAnnotationsGroupScopeEnum = "GATEWAY_API_ROUTES"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_HPA                OrganizationAnnotationsGroupScopeEnum = "HPA"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_PODS               OrganizationAnnotationsGroupScopeEnum = "PODS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_SECRETS            OrganizationAnnotationsGroupScopeEnum = "SECRETS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_JOBS               OrganizationAnnotationsGroupScopeEnum = "JOBS"
+	ORGANIZATIONANNOTATIONSGROUPSCOPEENUM_CRON_JOBS          OrganizationAnnotationsGroupScopeEnum = "CRON_JOBS"
 )
 
 // All allowed values of OrganizationAnnotationsGroupScopeEnum enum
@@ -38,6 +39,7 @@ var AllowedOrganizationAnnotationsGroupScopeEnumEnumValues = []OrganizationAnnot
 	"STATEFUL_SETS",
 	"SERVICES",
 	"INGRESS",
+	"GATEWAY_API_ROUTES",
 	"HPA",
 	"PODS",
 	"SECRETS",

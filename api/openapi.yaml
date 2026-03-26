@@ -32629,6 +32629,7 @@ components:
       - STATEFUL_SETS
       - SERVICES
       - INGRESS
+      - GATEWAY_API_ROUTES
       - HPA
       - PODS
       - SECRETS

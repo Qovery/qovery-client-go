@@ -11,6 +11,8 @@
 
 * `INGRESS` (value: `"INGRESS"`)
 
+* `GATEWAY_API_ROUTES` (value: `"GATEWAY_API_ROUTES"`)
+
 * `HPA` (value: `"HPA"`)
 
 * `PODS` (value: `"PODS"`)
