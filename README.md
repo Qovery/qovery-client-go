@@ -228,11 +228,13 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**GetOrganizationClusterStatus**](docs/ClustersAPI.md#getorganizationclusterstatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 *ClustersAPI* | [**GetRoutingTable**](docs/ClustersAPI.md#getroutingtable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
 *ClustersAPI* | [**ListClusterLogs**](docs/ClustersAPI.md#listclusterlogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
+*ClustersAPI* | [**ListEksAnywhereCommits**](docs/ClustersAPI.md#listeksanywherecommits) | **Get** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 *ClustersAPI* | [**ListOrganizationCluster**](docs/ClustersAPI.md#listorganizationcluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 *ClustersAPI* | [**LockCluster**](docs/ClustersAPI.md#lockcluster) | **Post** /cluster/{clusterId}/lock | Lock Cluster
 *ClustersAPI* | [**SpecifyClusterCloudProviderInfo**](docs/ClustersAPI.md#specifyclustercloudproviderinfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
 *ClustersAPI* | [**StopCluster**](docs/ClustersAPI.md#stopcluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 *ClustersAPI* | [**UnlockCluster**](docs/ClustersAPI.md#unlockcluster) | **Delete** /cluster/{clusterId}/lock | Unlock Cluster
+*ClustersAPI* | [**UpdateEksAnywhereCommit**](docs/ClustersAPI.md#updateeksanywherecommit) | **Put** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
 *ClustersAPI* | [**UpdateKarpenterPrivateFargateSubnetIds**](docs/ClustersAPI.md#updatekarpenterprivatefargatesubnetids) | **Put** /organization/{organizationId}/cluster/{clusterId}/karpenterPrivateSubnetIds | Update karpenter private fargate subnet ids
 *ClustersAPI* | [**UpgradeCluster**](docs/ClustersAPI.md#upgradecluster) | **Post** /cluster/{clusterId}/upgrade | Upgrade a cluster
 *ContainerActionsAPI* | [**DeployContainer**](docs/ContainerActionsAPI.md#deploycontainer) | **Post** /container/{containerId}/deploy | Deploy container
@@ -845,6 +847,8 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [DockerfileFragmentFile](docs/DockerfileFragmentFile.md)
  - [DockerfileFragmentInline](docs/DockerfileFragmentInline.md)
+ - [EksAnywhereCommitRequest](docs/EksAnywhereCommitRequest.md)
+ - [EksAnywhereCommitResponse](docs/EksAnywhereCommitResponse.md)
  - [EksInfrastructureOutputs](docs/EksInfrastructureOutputs.md)
  - [EmailAlertReceiverCreationRequest](docs/EmailAlertReceiverCreationRequest.md)
  - [EmailAlertReceiverEditRequest](docs/EmailAlertReceiverEditRequest.md)

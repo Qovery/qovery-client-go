@@ -4874,6 +4874,94 @@ paths:
       summary: Deploy a cluster
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits:
+    get:
+      description: "Returns list of the last commits made on the repository linked\
+        \ to the EKS Anywhere cluster, filtered by the targeted YAML file when supported\
+        \ by provider."
+      operationId: listEksAnywhereCommits
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponseList'
+          description: List EKS Anywhere commits
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List EKS Anywhere commits
+      tags:
+      - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit:
+    put:
+      description: Persist selected commit for an EKS Anywhere cluster.
+      operationId: updateEksAnywhereCommit
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EksAnywhereCommitRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EksAnywhereCommitResponse'
+          description: Updated EKS Anywhere commit
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update selected EKS Anywhere commit
+      tags:
+      - Clusters
   /cluster/{clusterId}/argoCdConfig:
     delete:
       description: Remove the stored ArgoCD configuration for a cluster. Requires
@@ -21129,6 +21217,7 @@ components:
               provider: BITBUCKET
               git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               branch: main
+              commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
               url: https://github.com/Qovery/eks-anywhere-config.git
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -21875,6 +21964,7 @@ components:
               provider: BITBUCKET
               git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               branch: main
+              commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
               url: https://github.com/Qovery/eks-anywhere-config.git
           nginx_parameters:
             annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -22076,6 +22166,7 @@ components:
                 provider: BITBUCKET
                 git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 branch: main
+                commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
                 url: https://github.com/Qovery/eks-anywhere-config.git
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -22188,6 +22279,7 @@ components:
                 provider: BITBUCKET
                 git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 branch: main
+                commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
                 url: https://github.com/Qovery/eks-anywhere-config.git
             nginx_parameters:
               annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -22672,6 +22764,24 @@ components:
           items:
             $ref: '#/components/schemas/Commit'
           type: array
+      type: object
+    EksAnywhereCommitRequest:
+      example:
+        commit_id: commit_id
+      properties:
+        commit_id:
+          type: string
+      required:
+      - commit_id
+      type: object
+    EksAnywhereCommitResponse:
+      example:
+        commit_id: commit_id
+      properties:
+        commit_id:
+          type: string
+      required:
+      - commit_id
       type: object
     CompanySizeEnum:
       enum:
@@ -37799,6 +37909,7 @@ components:
             provider: BITBUCKET
             git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: main
+            commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
             url: https://github.com/Qovery/eks-anywhere-config.git
         nginx_parameters:
           annotation_metal_lb_load_balancer_ips: annotation_metal_lb_load_balancer_ips
@@ -37829,6 +37940,7 @@ components:
           provider: BITBUCKET
           git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: main
+          commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
           url: https://github.com/Qovery/eks-anywhere-config.git
       properties:
         git_repository:
@@ -37846,6 +37958,7 @@ components:
         provider: BITBUCKET
         git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branch: main
+        commit_id: 4e3128725f47140002fa47d65d83195a51f5140f
         url: https://github.com/Qovery/eks-anywhere-config.git
       properties:
         url:
@@ -37858,6 +37971,12 @@ components:
             Name of the branch to use. This is optional.
             If not specified, the default branch of the repository is used.
           example: main
+          type: string
+        commit_id:
+          description: |
+            Optional git commit SHA to pin EKS Anywhere configuration on a specific revision.
+            If omitted, the latest commit from the selected branch is used.
+          example: 4e3128725f47140002fa47d65d83195a51f5140f
           type: string
         git_token_id:
           description: Qovery git token id used to access the repository

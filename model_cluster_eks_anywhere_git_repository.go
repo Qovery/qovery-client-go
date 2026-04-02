@@ -25,6 +25,8 @@ type ClusterEksAnywhereGitRepository struct {
 	Url string `json:"url"`
 	// Name of the branch to use. This is optional. If not specified, the default branch of the repository is used.
 	Branch *string `json:"branch,omitempty"`
+	// Optional git commit SHA to pin EKS Anywhere configuration on a specific revision. If omitted, the latest commit from the selected branch is used.
+	CommitId *string `json:"commit_id,omitempty"`
 	// Qovery git token id used to access the repository
 	GitTokenId           string           `json:"git_token_id"`
 	Provider             *GitProviderEnum `json:"provider,omitempty"`
@@ -108,6 +110,38 @@ func (o *ClusterEksAnywhereGitRepository) SetBranch(v string) {
 	o.Branch = &v
 }
 
+// GetCommitId returns the CommitId field value if set, zero value otherwise.
+func (o *ClusterEksAnywhereGitRepository) GetCommitId() string {
+	if o == nil || IsNil(o.CommitId) {
+		var ret string
+		return ret
+	}
+	return *o.CommitId
+}
+
+// GetCommitIdOk returns a tuple with the CommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterEksAnywhereGitRepository) GetCommitIdOk() (*string, bool) {
+	if o == nil || IsNil(o.CommitId) {
+		return nil, false
+	}
+	return o.CommitId, true
+}
+
+// HasCommitId returns a boolean if a field has been set.
+func (o *ClusterEksAnywhereGitRepository) HasCommitId() bool {
+	if o != nil && !IsNil(o.CommitId) {
+		return true
+	}
+
+	return false
+}
+
+// SetCommitId gets a reference to the given string and assigns it to the CommitId field.
+func (o *ClusterEksAnywhereGitRepository) SetCommitId(v string) {
+	o.CommitId = &v
+}
+
 // GetGitTokenId returns the GitTokenId field value
 func (o *ClusterEksAnywhereGitRepository) GetGitTokenId() string {
 	if o == nil {
@@ -178,6 +212,9 @@ func (o ClusterEksAnywhereGitRepository) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Branch) {
 		toSerialize["branch"] = o.Branch
 	}
+	if !IsNil(o.CommitId) {
+		toSerialize["commit_id"] = o.CommitId
+	}
 	toSerialize["git_token_id"] = o.GitTokenId
 	if !IsNil(o.Provider) {
 		toSerialize["provider"] = o.Provider
@@ -228,6 +265,7 @@ func (o *ClusterEksAnywhereGitRepository) UnmarshalJSON(data []byte) (err error)
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "branch")
+		delete(additionalProperties, "commit_id")
 		delete(additionalProperties, "git_token_id")
 		delete(additionalProperties, "provider")
 		o.AdditionalProperties = additionalProperties

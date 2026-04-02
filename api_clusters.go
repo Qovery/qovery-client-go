@@ -2756,6 +2756,128 @@ func (a *ClustersAPIService) ListClusterLogsExecute(r ApiListClusterLogsRequest)
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListEksAnywhereCommitsRequest struct {
+	ctx            context.Context
+	ApiService     *ClustersAPIService
+	organizationId string
+	clusterId      string
+}
+
+func (r ApiListEksAnywhereCommitsRequest) Execute() (*CommitResponseList, *http.Response, error) {
+	return r.ApiService.ListEksAnywhereCommitsExecute(r)
+}
+
+/*
+ListEksAnywhereCommits List EKS Anywhere commits
+
+Returns list of the last commits made on the repository linked to the EKS Anywhere cluster, filtered by the targeted YAML file when supported by provider.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiListEksAnywhereCommitsRequest
+*/
+func (a *ClustersAPIService) ListEksAnywhereCommits(ctx context.Context, organizationId string, clusterId string) ApiListEksAnywhereCommitsRequest {
+	return ApiListEksAnywhereCommitsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CommitResponseList
+func (a *ClustersAPIService) ListEksAnywhereCommitsExecute(r ApiListEksAnywhereCommitsRequest) (*CommitResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.ListEksAnywhereCommits")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListOrganizationClusterRequest struct {
 	ctx            context.Context
 	ApiService     *ClustersAPIService
@@ -3352,6 +3474,139 @@ func (a *ClustersAPIService) UnlockClusterExecute(r ApiUnlockClusterRequest) (*h
 	}
 
 	return localVarHTTPResponse, nil
+}
+
+type ApiUpdateEksAnywhereCommitRequest struct {
+	ctx                      context.Context
+	ApiService               *ClustersAPIService
+	organizationId           string
+	clusterId                string
+	eksAnywhereCommitRequest *EksAnywhereCommitRequest
+}
+
+func (r ApiUpdateEksAnywhereCommitRequest) EksAnywhereCommitRequest(eksAnywhereCommitRequest EksAnywhereCommitRequest) ApiUpdateEksAnywhereCommitRequest {
+	r.eksAnywhereCommitRequest = &eksAnywhereCommitRequest
+	return r
+}
+
+func (r ApiUpdateEksAnywhereCommitRequest) Execute() (*EksAnywhereCommitResponse, *http.Response, error) {
+	return r.ApiService.UpdateEksAnywhereCommitExecute(r)
+}
+
+/*
+UpdateEksAnywhereCommit Update selected EKS Anywhere commit
+
+Persist selected commit for an EKS Anywhere cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiUpdateEksAnywhereCommitRequest
+*/
+func (a *ClustersAPIService) UpdateEksAnywhereCommit(ctx context.Context, organizationId string, clusterId string) ApiUpdateEksAnywhereCommitRequest {
+	return ApiUpdateEksAnywhereCommitRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return EksAnywhereCommitResponse
+func (a *ClustersAPIService) UpdateEksAnywhereCommitExecute(r ApiUpdateEksAnywhereCommitRequest) (*EksAnywhereCommitResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EksAnywhereCommitResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.UpdateEksAnywhereCommit")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.eksAnywhereCommitRequest == nil {
+		return localVarReturnValue, nil, reportError("eksAnywhereCommitRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.eksAnywhereCommitRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiUpdateKarpenterPrivateFargateSubnetIdsRequest struct {

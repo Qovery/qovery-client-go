@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** | EKS Anywhere git repository URL | 
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional. If not specified, the default branch of the repository is used.  | [optional] 
+**CommitId** | Pointer to **string** | Optional git commit SHA to pin EKS Anywhere configuration on a specific revision. If omitted, the latest commit from the selected branch is used.  | [optional] 
 **GitTokenId** | **string** | Qovery git token id used to access the repository | 
 **Provider** | Pointer to [**GitProviderEnum**](GitProviderEnum.md) |  | [optional] 
 
@@ -72,6 +73,31 @@ SetBranch sets Branch field to given value.
 `func (o *ClusterEksAnywhereGitRepository) HasBranch() bool`
 
 HasBranch returns a boolean if a field has been set.
+
+### GetCommitId
+
+`func (o *ClusterEksAnywhereGitRepository) GetCommitId() string`
+
+GetCommitId returns the CommitId field if non-nil, zero value otherwise.
+
+### GetCommitIdOk
+
+`func (o *ClusterEksAnywhereGitRepository) GetCommitIdOk() (*string, bool)`
+
+GetCommitIdOk returns a tuple with the CommitId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCommitId
+
+`func (o *ClusterEksAnywhereGitRepository) SetCommitId(v string)`
+
+SetCommitId sets CommitId field to given value.
+
+### HasCommitId
+
+`func (o *ClusterEksAnywhereGitRepository) HasCommitId() bool`
+
+HasCommitId returns a boolean if a field has been set.
 
 ### GetGitTokenId
 
