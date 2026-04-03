@@ -16056,6 +16056,33 @@ paths:
       tags: []
       x-stoplight:
         id: zggx5u9ayalz7
+  /cluster/{clusterId}/environments:
+    get:
+      operationId: get-environments-by-cluster-id
+      parameters:
+      - explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterEnvironmentResponseList'
+          description: List environments services by cluster id
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environments services by cluster id
+      tags:
+      - Clusters
   /helm/{helmId}/listServices:
     get:
       description: Get helm kubernetes services
@@ -39578,6 +39605,90 @@ components:
       type: array
       x-stoplight:
         id: imn8c9l4fab56
+    ClusterEnvironmentResponseList:
+      example:
+        results:
+        - environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          services:
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: APPLICATION
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: APPLICATION
+          project_name: project_name
+          environment_name: environment_name
+        - environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          services:
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: APPLICATION
+          - name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: APPLICATION
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterEnvironmentResponse'
+          type: array
+      type: object
+    ClusterEnvironmentResponse:
+      example:
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        services:
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+        - name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: APPLICATION
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        environment_id:
+          format: uuid
+          type: string
+        environment_name:
+          type: string
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        services:
+          items:
+            $ref: '#/components/schemas/ClusterEnvironmentServiceResponse'
+          type: array
+      required:
+      - environment_id
+      - environment_name
+      - project_id
+      - project_name
+      - services
+      type: object
+    ClusterEnvironmentServiceResponse:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: APPLICATION
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/LinkedServiceTypeEnum'
+      required:
+      - id
+      - name
+      - type
+      type: object
     listDirectoriesFromGitRepository_200_response:
       example:
         results:
