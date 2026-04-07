@@ -12,6 +12,10 @@ Name | Type | Description | Notes
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] 
 **CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
 **AwsEksEnableAlbController** | Pointer to **bool** | Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application&#39;s public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports. | [optional] [default to true]
+**AwsEksEnableEfsAddon** | Pointer to **bool** | Enable the AWS EFS CSI driver EKS add-on to provision EFS-backed persistent volumes on the cluster. | [optional] [default to false]
+**AwsEksEfsThroughputMode** | Pointer to **string** | EFS throughput mode. \&quot;elastic\&quot; scales automatically (pay-per-use), \&quot;bursting\&quot; uses burst credits based on file system size, \&quot;provisioned\&quot; requires a fixed throughput value. | [optional] [default to "elastic"]
+**AwsEksEfsPerformanceMode** | Pointer to **string** | EFS performance mode. \&quot;generalPurpose\&quot; offers lowest latency (recommended). \&quot;maxIO\&quot; provides higher aggregate throughput for highly parallelized workloads. Cannot be changed after creation. | [optional] [default to "generalPurpose"]
+**AwsEksEfsTransitionToIa** | Pointer to **string** | Lifecycle policy to transition files to Infrequent Access (IA) storage after the specified period. IA storage costs less but has a per-read charge. Empty string disables the policy. | [optional] [default to "AFTER_30_DAYS"]
 **LoadBalancerSize** | Pointer to **string** | Select the size of the main load_balancer (only effective for Scaleway) | [optional] 
 **DatabasePostgresqlDenyAnyAccess** | Pointer to **bool** | Deny public access to any PostgreSQL database | [optional] 
 **DatabasePostgresqlAllowedCidrs** | Pointer to **[]string** | List of CIDRs allowed to access the PostgreSQL database | [optional] 
@@ -257,6 +261,106 @@ SetAwsEksEnableAlbController sets AwsEksEnableAlbController field to given value
 `func (o *ClusterAdvancedSettings) HasAwsEksEnableAlbController() bool`
 
 HasAwsEksEnableAlbController returns a boolean if a field has been set.
+
+### GetAwsEksEnableEfsAddon
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEnableEfsAddon() bool`
+
+GetAwsEksEnableEfsAddon returns the AwsEksEnableEfsAddon field if non-nil, zero value otherwise.
+
+### GetAwsEksEnableEfsAddonOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEnableEfsAddonOk() (*bool, bool)`
+
+GetAwsEksEnableEfsAddonOk returns a tuple with the AwsEksEnableEfsAddon field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEnableEfsAddon
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEnableEfsAddon(v bool)`
+
+SetAwsEksEnableEfsAddon sets AwsEksEnableEfsAddon field to given value.
+
+### HasAwsEksEnableEfsAddon
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEnableEfsAddon() bool`
+
+HasAwsEksEnableEfsAddon returns a boolean if a field has been set.
+
+### GetAwsEksEfsThroughputMode
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsThroughputMode() string`
+
+GetAwsEksEfsThroughputMode returns the AwsEksEfsThroughputMode field if non-nil, zero value otherwise.
+
+### GetAwsEksEfsThroughputModeOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsThroughputModeOk() (*string, bool)`
+
+GetAwsEksEfsThroughputModeOk returns a tuple with the AwsEksEfsThroughputMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEfsThroughputMode
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEfsThroughputMode(v string)`
+
+SetAwsEksEfsThroughputMode sets AwsEksEfsThroughputMode field to given value.
+
+### HasAwsEksEfsThroughputMode
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEfsThroughputMode() bool`
+
+HasAwsEksEfsThroughputMode returns a boolean if a field has been set.
+
+### GetAwsEksEfsPerformanceMode
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsPerformanceMode() string`
+
+GetAwsEksEfsPerformanceMode returns the AwsEksEfsPerformanceMode field if non-nil, zero value otherwise.
+
+### GetAwsEksEfsPerformanceModeOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsPerformanceModeOk() (*string, bool)`
+
+GetAwsEksEfsPerformanceModeOk returns a tuple with the AwsEksEfsPerformanceMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEfsPerformanceMode
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEfsPerformanceMode(v string)`
+
+SetAwsEksEfsPerformanceMode sets AwsEksEfsPerformanceMode field to given value.
+
+### HasAwsEksEfsPerformanceMode
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEfsPerformanceMode() bool`
+
+HasAwsEksEfsPerformanceMode returns a boolean if a field has been set.
+
+### GetAwsEksEfsTransitionToIa
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsTransitionToIa() string`
+
+GetAwsEksEfsTransitionToIa returns the AwsEksEfsTransitionToIa field if non-nil, zero value otherwise.
+
+### GetAwsEksEfsTransitionToIaOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksEfsTransitionToIaOk() (*string, bool)`
+
+GetAwsEksEfsTransitionToIaOk returns a tuple with the AwsEksEfsTransitionToIa field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksEfsTransitionToIa
+
+`func (o *ClusterAdvancedSettings) SetAwsEksEfsTransitionToIa(v string)`
+
+SetAwsEksEfsTransitionToIa sets AwsEksEfsTransitionToIa field to given value.
+
+### HasAwsEksEfsTransitionToIa
+
+`func (o *ClusterAdvancedSettings) HasAwsEksEfsTransitionToIa() bool`
+
+HasAwsEksEfsTransitionToIa returns a boolean if a field has been set.
 
 ### GetLoadBalancerSize
 

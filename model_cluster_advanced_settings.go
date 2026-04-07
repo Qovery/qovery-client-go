@@ -36,6 +36,14 @@ type ClusterAdvancedSettings struct {
 	CloudProviderContainerRegistryTags *map[string]string `json:"cloud_provider.container_registry.tags,omitempty"`
 	// Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application's public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports.
 	AwsEksEnableAlbController *bool `json:"aws.eks.enable_alb_controller,omitempty"`
+	// Enable the AWS EFS CSI driver EKS add-on to provision EFS-backed persistent volumes on the cluster.
+	AwsEksEnableEfsAddon *bool `json:"aws.eks.enable_efs_addon,omitempty"`
+	// EFS throughput mode. \"elastic\" scales automatically (pay-per-use), \"bursting\" uses burst credits based on file system size, \"provisioned\" requires a fixed throughput value.
+	AwsEksEfsThroughputMode *string `json:"aws.eks.efs.throughput_mode,omitempty"`
+	// EFS performance mode. \"generalPurpose\" offers lowest latency (recommended). \"maxIO\" provides higher aggregate throughput for highly parallelized workloads. Cannot be changed after creation.
+	AwsEksEfsPerformanceMode *string `json:"aws.eks.efs.performance_mode,omitempty"`
+	// Lifecycle policy to transition files to Infrequent Access (IA) storage after the specified period. IA storage costs less but has a per-read charge. Empty string disables the policy.
+	AwsEksEfsTransitionToIa *string `json:"aws.eks.efs.transition_to_ia,omitempty"`
 	// Select the size of the main load_balancer (only effective for Scaleway)
 	LoadBalancerSize *string `json:"load_balancer.size,omitempty"`
 	// Deny public access to any PostgreSQL database
@@ -100,6 +108,14 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
 	var awsEksEnableAlbController bool = true
 	this.AwsEksEnableAlbController = &awsEksEnableAlbController
+	var awsEksEnableEfsAddon bool = false
+	this.AwsEksEnableEfsAddon = &awsEksEnableEfsAddon
+	var awsEksEfsThroughputMode string = "elastic"
+	this.AwsEksEfsThroughputMode = &awsEksEfsThroughputMode
+	var awsEksEfsPerformanceMode string = "generalPurpose"
+	this.AwsEksEfsPerformanceMode = &awsEksEfsPerformanceMode
+	var awsEksEfsTransitionToIa string = "AFTER_30_DAYS"
+	this.AwsEksEfsTransitionToIa = &awsEksEfsTransitionToIa
 	var awsEksEc2Ami string = "AmazonLinux2023"
 	this.AwsEksEc2Ami = &awsEksEc2Ami
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
@@ -114,6 +130,14 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this := ClusterAdvancedSettings{}
 	var awsEksEnableAlbController bool = true
 	this.AwsEksEnableAlbController = &awsEksEnableAlbController
+	var awsEksEnableEfsAddon bool = false
+	this.AwsEksEnableEfsAddon = &awsEksEnableEfsAddon
+	var awsEksEfsThroughputMode string = "elastic"
+	this.AwsEksEfsThroughputMode = &awsEksEfsThroughputMode
+	var awsEksEfsPerformanceMode string = "generalPurpose"
+	this.AwsEksEfsPerformanceMode = &awsEksEfsPerformanceMode
+	var awsEksEfsTransitionToIa string = "AFTER_30_DAYS"
+	this.AwsEksEfsTransitionToIa = &awsEksEfsTransitionToIa
 	var awsEksEc2Ami string = "AmazonLinux2023"
 	this.AwsEksEc2Ami = &awsEksEc2Ami
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
@@ -375,6 +399,134 @@ func (o *ClusterAdvancedSettings) HasAwsEksEnableAlbController() bool {
 // SetAwsEksEnableAlbController gets a reference to the given bool and assigns it to the AwsEksEnableAlbController field.
 func (o *ClusterAdvancedSettings) SetAwsEksEnableAlbController(v bool) {
 	o.AwsEksEnableAlbController = &v
+}
+
+// GetAwsEksEnableEfsAddon returns the AwsEksEnableEfsAddon field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEnableEfsAddon() bool {
+	if o == nil || IsNil(o.AwsEksEnableEfsAddon) {
+		var ret bool
+		return ret
+	}
+	return *o.AwsEksEnableEfsAddon
+}
+
+// GetAwsEksEnableEfsAddonOk returns a tuple with the AwsEksEnableEfsAddon field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEnableEfsAddonOk() (*bool, bool) {
+	if o == nil || IsNil(o.AwsEksEnableEfsAddon) {
+		return nil, false
+	}
+	return o.AwsEksEnableEfsAddon, true
+}
+
+// HasAwsEksEnableEfsAddon returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEnableEfsAddon() bool {
+	if o != nil && !IsNil(o.AwsEksEnableEfsAddon) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEnableEfsAddon gets a reference to the given bool and assigns it to the AwsEksEnableEfsAddon field.
+func (o *ClusterAdvancedSettings) SetAwsEksEnableEfsAddon(v bool) {
+	o.AwsEksEnableEfsAddon = &v
+}
+
+// GetAwsEksEfsThroughputMode returns the AwsEksEfsThroughputMode field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsThroughputMode() string {
+	if o == nil || IsNil(o.AwsEksEfsThroughputMode) {
+		var ret string
+		return ret
+	}
+	return *o.AwsEksEfsThroughputMode
+}
+
+// GetAwsEksEfsThroughputModeOk returns a tuple with the AwsEksEfsThroughputMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsThroughputModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsEksEfsThroughputMode) {
+		return nil, false
+	}
+	return o.AwsEksEfsThroughputMode, true
+}
+
+// HasAwsEksEfsThroughputMode returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEfsThroughputMode() bool {
+	if o != nil && !IsNil(o.AwsEksEfsThroughputMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEfsThroughputMode gets a reference to the given string and assigns it to the AwsEksEfsThroughputMode field.
+func (o *ClusterAdvancedSettings) SetAwsEksEfsThroughputMode(v string) {
+	o.AwsEksEfsThroughputMode = &v
+}
+
+// GetAwsEksEfsPerformanceMode returns the AwsEksEfsPerformanceMode field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsPerformanceMode() string {
+	if o == nil || IsNil(o.AwsEksEfsPerformanceMode) {
+		var ret string
+		return ret
+	}
+	return *o.AwsEksEfsPerformanceMode
+}
+
+// GetAwsEksEfsPerformanceModeOk returns a tuple with the AwsEksEfsPerformanceMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsPerformanceModeOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsEksEfsPerformanceMode) {
+		return nil, false
+	}
+	return o.AwsEksEfsPerformanceMode, true
+}
+
+// HasAwsEksEfsPerformanceMode returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEfsPerformanceMode() bool {
+	if o != nil && !IsNil(o.AwsEksEfsPerformanceMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEfsPerformanceMode gets a reference to the given string and assigns it to the AwsEksEfsPerformanceMode field.
+func (o *ClusterAdvancedSettings) SetAwsEksEfsPerformanceMode(v string) {
+	o.AwsEksEfsPerformanceMode = &v
+}
+
+// GetAwsEksEfsTransitionToIa returns the AwsEksEfsTransitionToIa field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsTransitionToIa() string {
+	if o == nil || IsNil(o.AwsEksEfsTransitionToIa) {
+		var ret string
+		return ret
+	}
+	return *o.AwsEksEfsTransitionToIa
+}
+
+// GetAwsEksEfsTransitionToIaOk returns a tuple with the AwsEksEfsTransitionToIa field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksEfsTransitionToIaOk() (*string, bool) {
+	if o == nil || IsNil(o.AwsEksEfsTransitionToIa) {
+		return nil, false
+	}
+	return o.AwsEksEfsTransitionToIa, true
+}
+
+// HasAwsEksEfsTransitionToIa returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksEfsTransitionToIa() bool {
+	if o != nil && !IsNil(o.AwsEksEfsTransitionToIa) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksEfsTransitionToIa gets a reference to the given string and assigns it to the AwsEksEfsTransitionToIa field.
+func (o *ClusterAdvancedSettings) SetAwsEksEfsTransitionToIa(v string) {
+	o.AwsEksEfsTransitionToIa = &v
 }
 
 // GetLoadBalancerSize returns the LoadBalancerSize field value if set, zero value otherwise.
@@ -1268,6 +1420,18 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsEksEnableAlbController) {
 		toSerialize["aws.eks.enable_alb_controller"] = o.AwsEksEnableAlbController
 	}
+	if !IsNil(o.AwsEksEnableEfsAddon) {
+		toSerialize["aws.eks.enable_efs_addon"] = o.AwsEksEnableEfsAddon
+	}
+	if !IsNil(o.AwsEksEfsThroughputMode) {
+		toSerialize["aws.eks.efs.throughput_mode"] = o.AwsEksEfsThroughputMode
+	}
+	if !IsNil(o.AwsEksEfsPerformanceMode) {
+		toSerialize["aws.eks.efs.performance_mode"] = o.AwsEksEfsPerformanceMode
+	}
+	if !IsNil(o.AwsEksEfsTransitionToIa) {
+		toSerialize["aws.eks.efs.transition_to_ia"] = o.AwsEksEfsTransitionToIa
+	}
 	if !IsNil(o.LoadBalancerSize) {
 		toSerialize["load_balancer.size"] = o.LoadBalancerSize
 	}
@@ -1376,6 +1540,10 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "registry.image_retention_time")
 		delete(additionalProperties, "cloud_provider.container_registry.tags")
 		delete(additionalProperties, "aws.eks.enable_alb_controller")
+		delete(additionalProperties, "aws.eks.enable_efs_addon")
+		delete(additionalProperties, "aws.eks.efs.throughput_mode")
+		delete(additionalProperties, "aws.eks.efs.performance_mode")
+		delete(additionalProperties, "aws.eks.efs.transition_to_ia")
 		delete(additionalProperties, "load_balancer.size")
 		delete(additionalProperties, "database.postgresql.deny_any_access")
 		delete(additionalProperties, "database.postgresql.allowed_cidrs")

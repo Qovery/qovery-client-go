@@ -22620,7 +22620,9 @@ components:
       type: object
     ClusterAdvancedSettings:
       example:
+        aws.eks.efs.performance_mode: generalPurpose
         loki.log_retention_in_week: 1
+        aws.eks.enable_efs_addon: false
         nginx.memory.limit_in_mib: 3
         nginx.hpa.cpu_utilization_percentage_threshold: 7
         nginx.hpa.max_number_instances: 1
@@ -22665,6 +22667,8 @@ components:
         storageclass.fast_ssd: storageclass.fast_ssd
         envoy.gateway_api.http_connection_idle_timeout_seconds: 0
         nginx.hpa.min_number_instances: 1
+        aws.eks.efs.throughput_mode: elastic
+        aws.eks.efs.transition_to_ia: AFTER_30_DAYS
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           description: Set the number of retention days for EKS Cloudwatch logs
@@ -22701,6 +22705,44 @@ components:
           type: boolean
           x-stoplight:
             id: m2nc6klof8mvh
+        aws.eks.enable_efs_addon:
+          default: false
+          description: Enable the AWS EFS CSI driver EKS add-on to provision EFS-backed
+            persistent volumes on the cluster.
+          type: boolean
+        aws.eks.efs.throughput_mode:
+          default: elastic
+          description: "EFS throughput mode. \"elastic\" scales automatically (pay-per-use),\
+            \ \"bursting\" uses burst credits based on file system size, \"provisioned\"\
+            \ requires a fixed throughput value."
+          enum:
+          - bursting
+          - elastic
+          - provisioned
+          type: string
+        aws.eks.efs.performance_mode:
+          default: generalPurpose
+          description: EFS performance mode. "generalPurpose" offers lowest latency
+            (recommended). "maxIO" provides higher aggregate throughput for highly
+            parallelized workloads. Cannot be changed after creation.
+          enum:
+          - generalPurpose
+          - maxIO
+          type: string
+        aws.eks.efs.transition_to_ia:
+          default: AFTER_30_DAYS
+          description: Lifecycle policy to transition files to Infrequent Access (IA)
+            storage after the specified period. IA storage costs less but has a per-read
+            charge. Empty string disables the policy.
+          enum:
+          - AFTER_1_DAY
+          - AFTER_7_DAYS
+          - AFTER_14_DAYS
+          - AFTER_30_DAYS
+          - AFTER_60_DAYS
+          - AFTER_90_DAYS
+          - ""
+          type: string
         load_balancer.size:
           description: Select the size of the main load_balancer (only effective for
             Scaleway)
