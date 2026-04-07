@@ -18,8 +18,10 @@ import (
 
 // AwsCredentialsRequest - struct for AwsCredentialsRequest
 type AwsCredentialsRequest struct {
-	AwsRoleCredentialsRequest   *AwsRoleCredentialsRequest
-	AwsStaticCredentialsRequest *AwsStaticCredentialsRequest
+	AwsRoleCredentialsRequest                  *AwsRoleCredentialsRequest
+	AwsStaticCredentialsRequest                *AwsStaticCredentialsRequest
+	EksAnywhereVsphereRoleCredentialsRequest   *EksAnywhereVsphereRoleCredentialsRequest
+	EksAnywhereVsphereStaticCredentialsRequest *EksAnywhereVsphereStaticCredentialsRequest
 }
 
 // AwsRoleCredentialsRequestAsAwsCredentialsRequest is a convenience function that returns AwsRoleCredentialsRequest wrapped in AwsCredentialsRequest
@@ -36,47 +38,127 @@ func AwsStaticCredentialsRequestAsAwsCredentialsRequest(v *AwsStaticCredentialsR
 	}
 }
 
+// EksAnywhereVsphereRoleCredentialsRequestAsAwsCredentialsRequest is a convenience function that returns EksAnywhereVsphereRoleCredentialsRequest wrapped in AwsCredentialsRequest
+func EksAnywhereVsphereRoleCredentialsRequestAsAwsCredentialsRequest(v *EksAnywhereVsphereRoleCredentialsRequest) AwsCredentialsRequest {
+	return AwsCredentialsRequest{
+		EksAnywhereVsphereRoleCredentialsRequest: v,
+	}
+}
+
+// EksAnywhereVsphereStaticCredentialsRequestAsAwsCredentialsRequest is a convenience function that returns EksAnywhereVsphereStaticCredentialsRequest wrapped in AwsCredentialsRequest
+func EksAnywhereVsphereStaticCredentialsRequestAsAwsCredentialsRequest(v *EksAnywhereVsphereStaticCredentialsRequest) AwsCredentialsRequest {
+	return AwsCredentialsRequest{
+		EksAnywhereVsphereStaticCredentialsRequest: v,
+	}
+}
+
 // Unmarshal JSON data into one of the pointers in the struct
 func (dst *AwsCredentialsRequest) UnmarshalJSON(data []byte) error {
 	var err error
-	match := 0
-	// try to unmarshal data into AwsRoleCredentialsRequest
-	err = json.Unmarshal(data, &dst.AwsRoleCredentialsRequest)
-	if err == nil {
-		jsonAwsRoleCredentialsRequest, _ := json.Marshal(dst.AwsRoleCredentialsRequest)
-		if string(jsonAwsRoleCredentialsRequest) == "{}" { // empty struct
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
+	if err != nil {
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'AWS_ROLE'
+	if jsonDict["type"] == "AWS_ROLE" {
+		// try to unmarshal JSON data into AwsRoleCredentialsRequest
+		err = json.Unmarshal(data, &dst.AwsRoleCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.AwsRoleCredentialsRequest, return on the first match
+		} else {
 			dst.AwsRoleCredentialsRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as AwsRoleCredentialsRequest: %s", err.Error())
 		}
-	} else {
-		dst.AwsRoleCredentialsRequest = nil
 	}
 
-	// try to unmarshal data into AwsStaticCredentialsRequest
-	err = json.Unmarshal(data, &dst.AwsStaticCredentialsRequest)
-	if err == nil {
-		jsonAwsStaticCredentialsRequest, _ := json.Marshal(dst.AwsStaticCredentialsRequest)
-		if string(jsonAwsStaticCredentialsRequest) == "{}" { // empty struct
+	// check if the discriminator value is 'AWS_STATIC'
+	if jsonDict["type"] == "AWS_STATIC" {
+		// try to unmarshal JSON data into AwsStaticCredentialsRequest
+		err = json.Unmarshal(data, &dst.AwsStaticCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.AwsStaticCredentialsRequest, return on the first match
+		} else {
 			dst.AwsStaticCredentialsRequest = nil
-		} else {
-			match++
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as AwsStaticCredentialsRequest: %s", err.Error())
 		}
-	} else {
-		dst.AwsStaticCredentialsRequest = nil
 	}
 
-	if match > 1 { // more than 1 match
-		// reset to nil
-		dst.AwsRoleCredentialsRequest = nil
-		dst.AwsStaticCredentialsRequest = nil
-
-		return fmt.Errorf("data matches more than one schema in oneOf(AwsCredentialsRequest)")
-	} else if match == 1 {
-		return nil // exactly one match
-	} else { // no match
-		return fmt.Errorf("data failed to match schemas in oneOf(AwsCredentialsRequest)")
+	// check if the discriminator value is 'EKS_ANYWHERE_VSPHERE_ROLE'
+	if jsonDict["type"] == "EKS_ANYWHERE_VSPHERE_ROLE" {
+		// try to unmarshal JSON data into EksAnywhereVsphereRoleCredentialsRequest
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereRoleCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereRoleCredentialsRequest, return on the first match
+		} else {
+			dst.EksAnywhereVsphereRoleCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as EksAnywhereVsphereRoleCredentialsRequest: %s", err.Error())
+		}
 	}
+
+	// check if the discriminator value is 'EKS_ANYWHERE_VSPHERE_STATIC'
+	if jsonDict["type"] == "EKS_ANYWHERE_VSPHERE_STATIC" {
+		// try to unmarshal JSON data into EksAnywhereVsphereStaticCredentialsRequest
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereStaticCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereStaticCredentialsRequest, return on the first match
+		} else {
+			dst.EksAnywhereVsphereStaticCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as EksAnywhereVsphereStaticCredentialsRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AwsRoleCredentialsRequest'
+	if jsonDict["type"] == "AwsRoleCredentialsRequest" {
+		// try to unmarshal JSON data into AwsRoleCredentialsRequest
+		err = json.Unmarshal(data, &dst.AwsRoleCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.AwsRoleCredentialsRequest, return on the first match
+		} else {
+			dst.AwsRoleCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as AwsRoleCredentialsRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AwsStaticCredentialsRequest'
+	if jsonDict["type"] == "AwsStaticCredentialsRequest" {
+		// try to unmarshal JSON data into AwsStaticCredentialsRequest
+		err = json.Unmarshal(data, &dst.AwsStaticCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.AwsStaticCredentialsRequest, return on the first match
+		} else {
+			dst.AwsStaticCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as AwsStaticCredentialsRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'EksAnywhereVsphereRoleCredentialsRequest'
+	if jsonDict["type"] == "EksAnywhereVsphereRoleCredentialsRequest" {
+		// try to unmarshal JSON data into EksAnywhereVsphereRoleCredentialsRequest
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereRoleCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereRoleCredentialsRequest, return on the first match
+		} else {
+			dst.EksAnywhereVsphereRoleCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as EksAnywhereVsphereRoleCredentialsRequest: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'EksAnywhereVsphereStaticCredentialsRequest'
+	if jsonDict["type"] == "EksAnywhereVsphereStaticCredentialsRequest" {
+		// try to unmarshal JSON data into EksAnywhereVsphereStaticCredentialsRequest
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereStaticCredentialsRequest)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereStaticCredentialsRequest, return on the first match
+		} else {
+			dst.EksAnywhereVsphereStaticCredentialsRequest = nil
+			return fmt.Errorf("failed to unmarshal AwsCredentialsRequest as EksAnywhereVsphereStaticCredentialsRequest: %s", err.Error())
+		}
+	}
+
+	return nil
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
@@ -87,6 +169,14 @@ func (src AwsCredentialsRequest) MarshalJSON() ([]byte, error) {
 
 	if src.AwsStaticCredentialsRequest != nil {
 		return json.Marshal(&src.AwsStaticCredentialsRequest)
+	}
+
+	if src.EksAnywhereVsphereRoleCredentialsRequest != nil {
+		return json.Marshal(&src.EksAnywhereVsphereRoleCredentialsRequest)
+	}
+
+	if src.EksAnywhereVsphereStaticCredentialsRequest != nil {
+		return json.Marshal(&src.EksAnywhereVsphereStaticCredentialsRequest)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -103,6 +193,14 @@ func (obj *AwsCredentialsRequest) GetActualInstance() interface{} {
 
 	if obj.AwsStaticCredentialsRequest != nil {
 		return obj.AwsStaticCredentialsRequest
+	}
+
+	if obj.EksAnywhereVsphereRoleCredentialsRequest != nil {
+		return obj.EksAnywhereVsphereRoleCredentialsRequest
+	}
+
+	if obj.EksAnywhereVsphereStaticCredentialsRequest != nil {
+		return obj.EksAnywhereVsphereStaticCredentialsRequest
 	}
 
 	// all schemas are nil

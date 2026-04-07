@@ -20604,11 +20604,24 @@ components:
           type: array
       type: object
     AwsCredentialsRequest:
+      discriminator:
+        mapping:
+          AWS_ROLE: '#/components/schemas/AwsRoleCredentialsRequest'
+          AWS_STATIC: '#/components/schemas/AwsStaticCredentialsRequest'
+          EKS_ANYWHERE_VSPHERE_ROLE: '#/components/schemas/EksAnywhereVsphereRoleCredentialsRequest'
+          EKS_ANYWHERE_VSPHERE_STATIC: '#/components/schemas/EksAnywhereVsphereStaticCredentialsRequest'
+        propertyName: type
       oneOf:
       - $ref: '#/components/schemas/AwsRoleCredentialsRequest'
       - $ref: '#/components/schemas/AwsStaticCredentialsRequest'
+      - $ref: '#/components/schemas/EksAnywhereVsphereRoleCredentialsRequest'
+      - $ref: '#/components/schemas/EksAnywhereVsphereStaticCredentialsRequest'
     AwsStaticCredentialsRequest:
       properties:
+        type:
+          enum:
+          - AWS_STATIC
+          type: string
         name:
           type: string
         access_key_id:
@@ -20619,6 +20632,7 @@ components:
       - access_key_id
       - name
       - secret_access_key
+      - type
       type: object
       x-stoplight:
         id: l0s0fv735914p
@@ -20626,7 +20640,12 @@ components:
       example:
         role_arn: role_arn
         name: name
+        type: AWS_ROLE
       properties:
+        type:
+          enum:
+          - AWS_ROLE
+          type: string
         name:
           type: string
         role_arn:
@@ -20636,9 +20655,55 @@ components:
       required:
       - name
       - role_arn
+      - type
       type: object
       x-stoplight:
         id: jn74pfty2eq7c
+    EksAnywhereVsphereStaticCredentialsRequest:
+      properties:
+        type:
+          enum:
+          - EKS_ANYWHERE_VSPHERE_STATIC
+          type: string
+        name:
+          type: string
+        vsphere_user:
+          type: string
+        vsphere_password:
+          type: string
+        access_key_id:
+          type: string
+        secret_access_key:
+          type: string
+      required:
+      - access_key_id
+      - name
+      - secret_access_key
+      - type
+      - vsphere_password
+      - vsphere_user
+      type: object
+    EksAnywhereVsphereRoleCredentialsRequest:
+      properties:
+        type:
+          enum:
+          - EKS_ANYWHERE_VSPHERE_ROLE
+          type: string
+        name:
+          type: string
+        vsphere_user:
+          type: string
+        vsphere_password:
+          type: string
+        role_arn:
+          type: string
+      required:
+      - name
+      - role_arn
+      - type
+      - vsphere_password
+      - vsphere_user
+      type: object
     OnPremiseCredentialsRequest:
       example:
         name: name
@@ -21437,6 +21502,7 @@ components:
         mapping:
           AWS: '#/components/schemas/AwsStaticClusterCredentials'
           AWS_ROLE: '#/components/schemas/AwsRoleClusterCredentials'
+          EKS_ANYWHERE_VSPHERE: '#/components/schemas/EksAnywhereVsphereClusterCredentials'
           SCW: '#/components/schemas/ScalewayClusterCredentials'
           OTHER: '#/components/schemas/GenericClusterCredentials'
           AZURE: '#/components/schemas/AzureStaticClusterCredentials'
@@ -21447,6 +21513,7 @@ components:
       - $ref: '#/components/schemas/ScalewayClusterCredentials'
       - $ref: '#/components/schemas/GenericClusterCredentials'
       - $ref: '#/components/schemas/AwsRoleClusterCredentials'
+      - $ref: '#/components/schemas/EksAnywhereVsphereClusterCredentials'
       - $ref: '#/components/schemas/AzureStaticClusterCredentials'
       - $ref: '#/components/schemas/GcpStaticClusterCredentials'
     AwsStaticClusterCredentials:
@@ -21508,6 +21575,32 @@ components:
       type: object
       x-stoplight:
         id: f5c1iewg51zam
+    EksAnywhereVsphereClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        vsphere_user:
+          type: string
+        access_key_id:
+          nullable: true
+          type: string
+        role_arn:
+          nullable: true
+          type: string
+        object_type:
+          enum:
+          - EKS_ANYWHERE_VSPHERE
+          type: string
+      required:
+      - id
+      - name
+      - object_type
+      - vsphere_user
+      title: EksAnywhereVsphereClusterCredentials
+      type: object
     ScalewayClusterCredentials:
       properties:
         id:

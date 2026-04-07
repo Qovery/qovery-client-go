@@ -21,6 +21,7 @@ var _ MappedNullable = &AwsRoleCredentialsRequest{}
 
 // AwsRoleCredentialsRequest struct for AwsRoleCredentialsRequest
 type AwsRoleCredentialsRequest struct {
+	Type                 string `json:"type"`
 	Name                 string `json:"name"`
 	RoleArn              string `json:"role_arn"`
 	AdditionalProperties map[string]interface{}
@@ -32,8 +33,9 @@ type _AwsRoleCredentialsRequest AwsRoleCredentialsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsRoleCredentialsRequest(name string, roleArn string) *AwsRoleCredentialsRequest {
+func NewAwsRoleCredentialsRequest(type_ string, name string, roleArn string) *AwsRoleCredentialsRequest {
 	this := AwsRoleCredentialsRequest{}
+	this.Type = type_
 	this.Name = name
 	this.RoleArn = roleArn
 	return &this
@@ -45,6 +47,30 @@ func NewAwsRoleCredentialsRequest(name string, roleArn string) *AwsRoleCredentia
 func NewAwsRoleCredentialsRequestWithDefaults() *AwsRoleCredentialsRequest {
 	this := AwsRoleCredentialsRequest{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AwsRoleCredentialsRequest) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AwsRoleCredentialsRequest) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AwsRoleCredentialsRequest) SetType(v string) {
+	o.Type = v
 }
 
 // GetName returns the Name field value
@@ -105,6 +131,7 @@ func (o AwsRoleCredentialsRequest) MarshalJSON() ([]byte, error) {
 
 func (o AwsRoleCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	toSerialize["name"] = o.Name
 	toSerialize["role_arn"] = o.RoleArn
 
@@ -120,6 +147,7 @@ func (o *AwsRoleCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"type",
 		"name",
 		"role_arn",
 	}
@@ -151,6 +179,7 @@ func (o *AwsRoleCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "role_arn")
 		o.AdditionalProperties = additionalProperties

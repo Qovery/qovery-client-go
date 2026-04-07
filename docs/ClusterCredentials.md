@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Name** | **string** |  | 
-**AccessKeyId** | **string** |  | 
+**AccessKeyId** | **NullableString** |  | 
 **ObjectType** | **string** |  | 
 **ScalewayAccessKey** | **string** |  | 
 **ScalewayProjectId** | **string** |  | 
 **ScalewayOrganizationId** | **string** |  | 
-**RoleArn** | **string** |  | 
+**RoleArn** | **NullableString** |  | 
+**VsphereUser** | **string** |  | 
 **AzureSubscriptionId** | **string** |  | 
 **AzureTenantId** | **string** |  | 
 **AzureApplicationId** | **string** |  | 
@@ -21,7 +22,7 @@ Name | Type | Description | Notes
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId string, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn string, azureSubscriptionId string, azureTenantId string, azureApplicationId string, azureApplicationObjectId string, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId NullableString, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn NullableString, vsphereUser string, azureSubscriptionId string, azureTenantId string, azureApplicationId string, azureApplicationObjectId string, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -96,6 +97,16 @@ and a boolean to check if the value has been set.
 SetAccessKeyId sets AccessKeyId field to given value.
 
 
+### SetAccessKeyIdNil
+
+`func (o *ClusterCredentials) SetAccessKeyIdNil(b bool)`
+
+ SetAccessKeyIdNil sets the value for AccessKeyId to be an explicit nil
+
+### UnsetAccessKeyId
+`func (o *ClusterCredentials) UnsetAccessKeyId()`
+
+UnsetAccessKeyId ensures that no value is present for AccessKeyId, not even an explicit nil
 ### GetObjectType
 
 `func (o *ClusterCredentials) GetObjectType() string`
@@ -194,6 +205,36 @@ and a boolean to check if the value has been set.
 `func (o *ClusterCredentials) SetRoleArn(v string)`
 
 SetRoleArn sets RoleArn field to given value.
+
+
+### SetRoleArnNil
+
+`func (o *ClusterCredentials) SetRoleArnNil(b bool)`
+
+ SetRoleArnNil sets the value for RoleArn to be an explicit nil
+
+### UnsetRoleArn
+`func (o *ClusterCredentials) UnsetRoleArn()`
+
+UnsetRoleArn ensures that no value is present for RoleArn, not even an explicit nil
+### GetVsphereUser
+
+`func (o *ClusterCredentials) GetVsphereUser() string`
+
+GetVsphereUser returns the VsphereUser field if non-nil, zero value otherwise.
+
+### GetVsphereUserOk
+
+`func (o *ClusterCredentials) GetVsphereUserOk() (*string, bool)`
+
+GetVsphereUserOk returns a tuple with the VsphereUser field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetVsphereUser
+
+`func (o *ClusterCredentials) SetVsphereUser(v string)`
+
+SetVsphereUser sets VsphereUser field to given value.
 
 
 ### GetAzureSubscriptionId

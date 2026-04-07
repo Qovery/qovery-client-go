@@ -18,12 +18,13 @@ import (
 
 // ClusterCredentials - struct for ClusterCredentials
 type ClusterCredentials struct {
-	AwsRoleClusterCredentials     *AwsRoleClusterCredentials
-	AwsStaticClusterCredentials   *AwsStaticClusterCredentials
-	AzureStaticClusterCredentials *AzureStaticClusterCredentials
-	GcpStaticClusterCredentials   *GcpStaticClusterCredentials
-	GenericClusterCredentials     *GenericClusterCredentials
-	ScalewayClusterCredentials    *ScalewayClusterCredentials
+	AwsRoleClusterCredentials            *AwsRoleClusterCredentials
+	AwsStaticClusterCredentials          *AwsStaticClusterCredentials
+	AzureStaticClusterCredentials        *AzureStaticClusterCredentials
+	EksAnywhereVsphereClusterCredentials *EksAnywhereVsphereClusterCredentials
+	GcpStaticClusterCredentials          *GcpStaticClusterCredentials
+	GenericClusterCredentials            *GenericClusterCredentials
+	ScalewayClusterCredentials           *ScalewayClusterCredentials
 }
 
 // AwsRoleClusterCredentialsAsClusterCredentials is a convenience function that returns AwsRoleClusterCredentials wrapped in ClusterCredentials
@@ -44,6 +45,13 @@ func AwsStaticClusterCredentialsAsClusterCredentials(v *AwsStaticClusterCredenti
 func AzureStaticClusterCredentialsAsClusterCredentials(v *AzureStaticClusterCredentials) ClusterCredentials {
 	return ClusterCredentials{
 		AzureStaticClusterCredentials: v,
+	}
+}
+
+// EksAnywhereVsphereClusterCredentialsAsClusterCredentials is a convenience function that returns EksAnywhereVsphereClusterCredentials wrapped in ClusterCredentials
+func EksAnywhereVsphereClusterCredentialsAsClusterCredentials(v *EksAnywhereVsphereClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		EksAnywhereVsphereClusterCredentials: v,
 	}
 }
 
@@ -111,6 +119,18 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 		} else {
 			dst.AzureStaticClusterCredentials = nil
 			return fmt.Errorf("failed to unmarshal ClusterCredentials as AzureStaticClusterCredentials: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'EKS_ANYWHERE_VSPHERE'
+	if jsonDict["object_type"] == "EKS_ANYWHERE_VSPHERE" {
+		// try to unmarshal JSON data into EksAnywhereVsphereClusterCredentials
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereClusterCredentials, return on the first match
+		} else {
+			dst.EksAnywhereVsphereClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as EksAnywhereVsphereClusterCredentials: %s", err.Error())
 		}
 	}
 
@@ -186,6 +206,18 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'EksAnywhereVsphereClusterCredentials'
+	if jsonDict["object_type"] == "EksAnywhereVsphereClusterCredentials" {
+		// try to unmarshal JSON data into EksAnywhereVsphereClusterCredentials
+		err = json.Unmarshal(data, &dst.EksAnywhereVsphereClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.EksAnywhereVsphereClusterCredentials, return on the first match
+		} else {
+			dst.EksAnywhereVsphereClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as EksAnywhereVsphereClusterCredentials: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'GcpStaticClusterCredentials'
 	if jsonDict["object_type"] == "GcpStaticClusterCredentials" {
 		// try to unmarshal JSON data into GcpStaticClusterCredentials
@@ -239,6 +271,10 @@ func (src ClusterCredentials) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.AzureStaticClusterCredentials)
 	}
 
+	if src.EksAnywhereVsphereClusterCredentials != nil {
+		return json.Marshal(&src.EksAnywhereVsphereClusterCredentials)
+	}
+
 	if src.GcpStaticClusterCredentials != nil {
 		return json.Marshal(&src.GcpStaticClusterCredentials)
 	}
@@ -269,6 +305,10 @@ func (obj *ClusterCredentials) GetActualInstance() interface{} {
 
 	if obj.AzureStaticClusterCredentials != nil {
 		return obj.AzureStaticClusterCredentials
+	}
+
+	if obj.EksAnywhereVsphereClusterCredentials != nil {
+		return obj.EksAnywhereVsphereClusterCredentials
 	}
 
 	if obj.GcpStaticClusterCredentials != nil {

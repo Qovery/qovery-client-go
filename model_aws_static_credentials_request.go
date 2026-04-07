@@ -21,6 +21,7 @@ var _ MappedNullable = &AwsStaticCredentialsRequest{}
 
 // AwsStaticCredentialsRequest struct for AwsStaticCredentialsRequest
 type AwsStaticCredentialsRequest struct {
+	Type                 string `json:"type"`
 	Name                 string `json:"name"`
 	AccessKeyId          string `json:"access_key_id"`
 	SecretAccessKey      string `json:"secret_access_key"`
@@ -33,8 +34,9 @@ type _AwsStaticCredentialsRequest AwsStaticCredentialsRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAwsStaticCredentialsRequest(name string, accessKeyId string, secretAccessKey string) *AwsStaticCredentialsRequest {
+func NewAwsStaticCredentialsRequest(type_ string, name string, accessKeyId string, secretAccessKey string) *AwsStaticCredentialsRequest {
 	this := AwsStaticCredentialsRequest{}
+	this.Type = type_
 	this.Name = name
 	this.AccessKeyId = accessKeyId
 	this.SecretAccessKey = secretAccessKey
@@ -47,6 +49,30 @@ func NewAwsStaticCredentialsRequest(name string, accessKeyId string, secretAcces
 func NewAwsStaticCredentialsRequestWithDefaults() *AwsStaticCredentialsRequest {
 	this := AwsStaticCredentialsRequest{}
 	return &this
+}
+
+// GetType returns the Type field value
+func (o *AwsStaticCredentialsRequest) GetType() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *AwsStaticCredentialsRequest) GetTypeOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *AwsStaticCredentialsRequest) SetType(v string) {
+	o.Type = v
 }
 
 // GetName returns the Name field value
@@ -131,6 +157,7 @@ func (o AwsStaticCredentialsRequest) MarshalJSON() ([]byte, error) {
 
 func (o AwsStaticCredentialsRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	toSerialize["type"] = o.Type
 	toSerialize["name"] = o.Name
 	toSerialize["access_key_id"] = o.AccessKeyId
 	toSerialize["secret_access_key"] = o.SecretAccessKey
@@ -147,6 +174,7 @@ func (o *AwsStaticCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
+		"type",
 		"name",
 		"access_key_id",
 		"secret_access_key",
@@ -179,6 +207,7 @@ func (o *AwsStaticCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "type")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "access_key_id")
 		delete(additionalProperties, "secret_access_key")
