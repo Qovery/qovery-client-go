@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **StableOverride** | Pointer to [**KarpenterStableNodePoolOverride**](KarpenterStableNodePoolOverride.md) |  | [optional] 
 **DefaultOverride** | Pointer to [**KarpenterDefaultNodePoolOverride**](KarpenterDefaultNodePoolOverride.md) |  | [optional] 
 **GpuOverride** | Pointer to [**KarpenterGpuNodePoolOverride**](KarpenterGpuNodePoolOverride.md) |  | [optional] 
+**CronjobOverride** | Pointer to [**KarpenterCronjobNodePoolOverride**](KarpenterCronjobNodePoolOverride.md) |  | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ SetGpuOverride sets GpuOverride field to given value.
 `func (o *KarpenterNodePool) HasGpuOverride() bool`
 
 HasGpuOverride returns a boolean if a field has been set.
+
+### GetCronjobOverride
+
+`func (o *KarpenterNodePool) GetCronjobOverride() KarpenterCronjobNodePoolOverride`
+
+GetCronjobOverride returns the CronjobOverride field if non-nil, zero value otherwise.
+
+### GetCronjobOverrideOk
+
+`func (o *KarpenterNodePool) GetCronjobOverrideOk() (*KarpenterCronjobNodePoolOverride, bool)`
+
+GetCronjobOverrideOk returns a tuple with the CronjobOverride field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCronjobOverride
+
+`func (o *KarpenterNodePool) SetCronjobOverride(v KarpenterCronjobNodePoolOverride)`
+
+SetCronjobOverride sets CronjobOverride field to given value.
+
+### HasCronjobOverride
+
+`func (o *KarpenterNodePool) HasCronjobOverride() bool`
+
+HasCronjobOverride returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

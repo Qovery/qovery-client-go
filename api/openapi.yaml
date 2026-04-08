@@ -36083,6 +36083,8 @@ components:
           $ref: '#/components/schemas/KarpenterDefaultNodePoolOverride'
         gpu_override:
           $ref: '#/components/schemas/KarpenterGpuNodePoolOverride'
+        cronjob_override:
+          $ref: '#/components/schemas/KarpenterCronjobNodePoolOverride'
       required:
       - requirements
       title: KarpenterNodePool
@@ -36195,6 +36197,20 @@ components:
       type: object
       x-stoplight:
         id: fi2s446xdrdu1
+    KarpenterCronjobNodePoolOverride:
+      properties:
+        consolidation:
+          $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
+        limits:
+          $ref: '#/components/schemas/KarpenterNodePoolLimits'
+        consolidate_after:
+          description: "Time to wait before consolidating empty or underutilized nodes\
+            \ (e.g., 1m, 10m, 1h). Maximum: 24h"
+          example: 30s
+          pattern: ^\d+(s|m|h)$
+          type: string
+      title: KarpenterCronjobNodePoolOverride
+      type: object
     KarpenterDefaultNodePoolOverride:
       properties:
         limits:

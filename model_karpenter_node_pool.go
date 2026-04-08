@@ -25,6 +25,7 @@ type KarpenterNodePool struct {
 	StableOverride       *KarpenterStableNodePoolOverride  `json:"stable_override,omitempty"`
 	DefaultOverride      *KarpenterDefaultNodePoolOverride `json:"default_override,omitempty"`
 	GpuOverride          *KarpenterGpuNodePoolOverride     `json:"gpu_override,omitempty"`
+	CronjobOverride      *KarpenterCronjobNodePoolOverride `json:"cronjob_override,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -168,6 +169,38 @@ func (o *KarpenterNodePool) SetGpuOverride(v KarpenterGpuNodePoolOverride) {
 	o.GpuOverride = &v
 }
 
+// GetCronjobOverride returns the CronjobOverride field value if set, zero value otherwise.
+func (o *KarpenterNodePool) GetCronjobOverride() KarpenterCronjobNodePoolOverride {
+	if o == nil || IsNil(o.CronjobOverride) {
+		var ret KarpenterCronjobNodePoolOverride
+		return ret
+	}
+	return *o.CronjobOverride
+}
+
+// GetCronjobOverrideOk returns a tuple with the CronjobOverride field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterNodePool) GetCronjobOverrideOk() (*KarpenterCronjobNodePoolOverride, bool) {
+	if o == nil || IsNil(o.CronjobOverride) {
+		return nil, false
+	}
+	return o.CronjobOverride, true
+}
+
+// HasCronjobOverride returns a boolean if a field has been set.
+func (o *KarpenterNodePool) HasCronjobOverride() bool {
+	if o != nil && !IsNil(o.CronjobOverride) {
+		return true
+	}
+
+	return false
+}
+
+// SetCronjobOverride gets a reference to the given KarpenterCronjobNodePoolOverride and assigns it to the CronjobOverride field.
+func (o *KarpenterNodePool) SetCronjobOverride(v KarpenterCronjobNodePoolOverride) {
+	o.CronjobOverride = &v
+}
+
 func (o KarpenterNodePool) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -187,6 +220,9 @@ func (o KarpenterNodePool) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.GpuOverride) {
 		toSerialize["gpu_override"] = o.GpuOverride
+	}
+	if !IsNil(o.CronjobOverride) {
+		toSerialize["cronjob_override"] = o.CronjobOverride
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -235,6 +271,7 @@ func (o *KarpenterNodePool) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "stable_override")
 		delete(additionalProperties, "default_override")
 		delete(additionalProperties, "gpu_override")
+		delete(additionalProperties, "cronjob_override")
 		o.AdditionalProperties = additionalProperties
 	}
 
