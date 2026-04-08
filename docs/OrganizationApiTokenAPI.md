@@ -155,7 +155,7 @@ Name | Type | Description  | Notes
 
 ## ListOrganizationApiTokens
 
-> OrganizationApiTokenResponseList ListOrganizationApiTokens(ctx, organizationId).Execute()
+> OrganizationApiTokenResponseList ListOrganizationApiTokens(ctx, organizationId).Name(name).CreatorName(creatorName).Execute()
 
 List organization api tokens
 
@@ -175,10 +175,12 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	name := "name_example" // string | Name of the token to filter results by. (optional)
+	creatorName := "creatorName_example" // string | Name of the token creator to filter results by. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationApiTokenAPI.ListOrganizationApiTokens(context.Background(), organizationId).Execute()
+	resp, r, err := apiClient.OrganizationApiTokenAPI.ListOrganizationApiTokens(context.Background(), organizationId).Name(name).CreatorName(creatorName).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationApiTokenAPI.ListOrganizationApiTokens``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -204,6 +206,8 @@ Other parameters are passed through a pointer to a apiListOrganizationApiTokensR
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **name** | **string** | Name of the token to filter results by. | 
+ **creatorName** | **string** | Name of the token creator to filter results by. | 
 
 ### Return type
 

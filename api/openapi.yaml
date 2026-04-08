@@ -284,6 +284,22 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Name of the token to filter results by.
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Name of the token creator to filter results by.
+        explode: true
+        in: query
+        name: creatorName
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:

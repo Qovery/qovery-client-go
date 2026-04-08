@@ -263,6 +263,20 @@ type ApiListOrganizationApiTokensRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationApiTokenAPIService
 	organizationId string
+	name           *string
+	creatorName    *string
+}
+
+// Name of the token to filter results by.
+func (r ApiListOrganizationApiTokensRequest) Name(name string) ApiListOrganizationApiTokensRequest {
+	r.name = &name
+	return r
+}
+
+// Name of the token creator to filter results by.
+func (r ApiListOrganizationApiTokensRequest) CreatorName(creatorName string) ApiListOrganizationApiTokensRequest {
+	r.creatorName = &creatorName
+	return r
 }
 
 func (r ApiListOrganizationApiTokensRequest) Execute() (*OrganizationApiTokenResponseList, *http.Response, error) {
@@ -309,6 +323,12 @@ func (a *OrganizationApiTokenAPIService) ListOrganizationApiTokensExecute(r ApiL
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.name != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "name", r.name, "")
+	}
+	if r.creatorName != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "creatorName", r.creatorName, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
