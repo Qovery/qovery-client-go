@@ -21320,6 +21320,15 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         infrastructure_charts_parameters:
           eks_anywhere_parameters:
+            cluster_backup:
+              s3:
+                bucket: bucket
+                role_arn: role_arn
+                key_prefix: key_prefix
+                region: region
+              certs_secret_name: certs_secret_name
+              timeout_seconds: 5
+              enabled: true
             yaml_file_path: /clusters/cluster-a.yaml
             git_repository:
               provider: BITBUCKET
@@ -22095,6 +22104,15 @@ components:
         kubernetes: MANAGED
         infrastructure_charts_parameters:
           eks_anywhere_parameters:
+            cluster_backup:
+              s3:
+                bucket: bucket
+                role_arn: role_arn
+                key_prefix: key_prefix
+                region: region
+              certs_secret_name: certs_secret_name
+              timeout_seconds: 5
+              enabled: true
             yaml_file_path: /clusters/cluster-a.yaml
             git_repository:
               provider: BITBUCKET
@@ -22297,6 +22315,15 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
             eks_anywhere_parameters:
+              cluster_backup:
+                s3:
+                  bucket: bucket
+                  role_arn: role_arn
+                  key_prefix: key_prefix
+                  region: region
+                certs_secret_name: certs_secret_name
+                timeout_seconds: 5
+                enabled: true
               yaml_file_path: /clusters/cluster-a.yaml
               git_repository:
                 provider: BITBUCKET
@@ -22410,6 +22437,15 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           infrastructure_charts_parameters:
             eks_anywhere_parameters:
+              cluster_backup:
+                s3:
+                  bucket: bucket
+                  role_arn: role_arn
+                  key_prefix: key_prefix
+                  region: region
+                certs_secret_name: certs_secret_name
+                timeout_seconds: 5
+                enabled: true
               yaml_file_path: /clusters/cluster-a.yaml
               git_repository:
                 provider: BITBUCKET
@@ -38098,6 +38134,15 @@ components:
     ClusterInfrastructureChartsParameters:
       example:
         eks_anywhere_parameters:
+          cluster_backup:
+            s3:
+              bucket: bucket
+              role_arn: role_arn
+              key_prefix: key_prefix
+              region: region
+            certs_secret_name: certs_secret_name
+            timeout_seconds: 5
+            enabled: true
           yaml_file_path: /clusters/cluster-a.yaml
           git_repository:
             provider: BITBUCKET
@@ -38129,6 +38174,15 @@ components:
       type: object
     ClusterInfrastructureEksAnywhereParameters:
       example:
+        cluster_backup:
+          s3:
+            bucket: bucket
+            role_arn: role_arn
+            key_prefix: key_prefix
+            region: region
+          certs_secret_name: certs_secret_name
+          timeout_seconds: 5
+          enabled: true
         yaml_file_path: /clusters/cluster-a.yaml
         git_repository:
           provider: BITBUCKET
@@ -38143,9 +38197,63 @@ components:
           description: Path to the EKS Anywhere cluster YAML file in the git repository
           example: /clusters/cluster-a.yaml
           type: string
+        cluster_backup:
+          $ref: '#/components/schemas/ClusterInfrastructureEksAnywhereBackupParameters'
       required:
       - git_repository
       - yaml_file_path
+      type: object
+    ClusterInfrastructureEksAnywhereBackupParameters:
+      example:
+        s3:
+          bucket: bucket
+          role_arn: role_arn
+          key_prefix: key_prefix
+          region: region
+        certs_secret_name: certs_secret_name
+        timeout_seconds: 5
+        enabled: true
+      properties:
+        enabled:
+          default: true
+          description: Enable or disable EKS Anywhere cluster backup.
+          type: boolean
+        timeout_seconds:
+          default: 300
+          description: Timeout in seconds for backup operations.
+          format: int64
+          type: integer
+        certs_secret_name:
+          description: Optional Kubernetes secret name holding etcd certificates.
+          type: string
+        s3:
+          $ref: '#/components/schemas/ClusterInfrastructureEksAnywhereBackupS3Parameters'
+      required:
+      - s3
+      type: object
+    ClusterInfrastructureEksAnywhereBackupS3Parameters:
+      example:
+        bucket: bucket
+        role_arn: role_arn
+        key_prefix: key_prefix
+        region: region
+      properties:
+        bucket:
+          description: S3 bucket name used to store EKS Anywhere backup artifacts.
+          type: string
+        region:
+          description: AWS region where the backup bucket is hosted.
+          type: string
+        role_arn:
+          description: IAM role ARN assumed to upload backup artifacts.
+          type: string
+        key_prefix:
+          description: Optional S3 key prefix used for backup object keys.
+          type: string
+      required:
+      - bucket
+      - region
+      - role_arn
       type: object
     ClusterEksAnywhereGitRepository:
       example:

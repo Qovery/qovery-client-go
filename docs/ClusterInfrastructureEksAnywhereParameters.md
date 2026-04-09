@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **GitRepository** | [**ClusterEksAnywhereGitRepository**](ClusterEksAnywhereGitRepository.md) |  | 
 **YamlFilePath** | **string** | Path to the EKS Anywhere cluster YAML file in the git repository | 
+**ClusterBackup** | Pointer to [**ClusterInfrastructureEksAnywhereBackupParameters**](ClusterInfrastructureEksAnywhereBackupParameters.md) |  | [optional] 
 
 ## Methods
 
@@ -65,6 +66,31 @@ and a boolean to check if the value has been set.
 
 SetYamlFilePath sets YamlFilePath field to given value.
 
+
+### GetClusterBackup
+
+`func (o *ClusterInfrastructureEksAnywhereParameters) GetClusterBackup() ClusterInfrastructureEksAnywhereBackupParameters`
+
+GetClusterBackup returns the ClusterBackup field if non-nil, zero value otherwise.
+
+### GetClusterBackupOk
+
+`func (o *ClusterInfrastructureEksAnywhereParameters) GetClusterBackupOk() (*ClusterInfrastructureEksAnywhereBackupParameters, bool)`
+
+GetClusterBackupOk returns a tuple with the ClusterBackup field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetClusterBackup
+
+`func (o *ClusterInfrastructureEksAnywhereParameters) SetClusterBackup(v ClusterInfrastructureEksAnywhereBackupParameters)`
+
+SetClusterBackup sets ClusterBackup field to given value.
+
+### HasClusterBackup
+
+`func (o *ClusterInfrastructureEksAnywhereParameters) HasClusterBackup() bool`
+
+HasClusterBackup returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

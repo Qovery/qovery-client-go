@@ -23,7 +23,8 @@ var _ MappedNullable = &ClusterInfrastructureEksAnywhereParameters{}
 type ClusterInfrastructureEksAnywhereParameters struct {
 	GitRepository ClusterEksAnywhereGitRepository `json:"git_repository"`
 	// Path to the EKS Anywhere cluster YAML file in the git repository
-	YamlFilePath         string `json:"yaml_file_path"`
+	YamlFilePath         string                                            `json:"yaml_file_path"`
+	ClusterBackup        *ClusterInfrastructureEksAnywhereBackupParameters `json:"cluster_backup,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -96,6 +97,38 @@ func (o *ClusterInfrastructureEksAnywhereParameters) SetYamlFilePath(v string) {
 	o.YamlFilePath = v
 }
 
+// GetClusterBackup returns the ClusterBackup field value if set, zero value otherwise.
+func (o *ClusterInfrastructureEksAnywhereParameters) GetClusterBackup() ClusterInfrastructureEksAnywhereBackupParameters {
+	if o == nil || IsNil(o.ClusterBackup) {
+		var ret ClusterInfrastructureEksAnywhereBackupParameters
+		return ret
+	}
+	return *o.ClusterBackup
+}
+
+// GetClusterBackupOk returns a tuple with the ClusterBackup field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterInfrastructureEksAnywhereParameters) GetClusterBackupOk() (*ClusterInfrastructureEksAnywhereBackupParameters, bool) {
+	if o == nil || IsNil(o.ClusterBackup) {
+		return nil, false
+	}
+	return o.ClusterBackup, true
+}
+
+// HasClusterBackup returns a boolean if a field has been set.
+func (o *ClusterInfrastructureEksAnywhereParameters) HasClusterBackup() bool {
+	if o != nil && !IsNil(o.ClusterBackup) {
+		return true
+	}
+
+	return false
+}
+
+// SetClusterBackup gets a reference to the given ClusterInfrastructureEksAnywhereBackupParameters and assigns it to the ClusterBackup field.
+func (o *ClusterInfrastructureEksAnywhereParameters) SetClusterBackup(v ClusterInfrastructureEksAnywhereBackupParameters) {
+	o.ClusterBackup = &v
+}
+
 func (o ClusterInfrastructureEksAnywhereParameters) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -108,6 +141,9 @@ func (o ClusterInfrastructureEksAnywhereParameters) ToMap() (map[string]interfac
 	toSerialize := map[string]interface{}{}
 	toSerialize["git_repository"] = o.GitRepository
 	toSerialize["yaml_file_path"] = o.YamlFilePath
+	if !IsNil(o.ClusterBackup) {
+		toSerialize["cluster_backup"] = o.ClusterBackup
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -154,6 +190,7 @@ func (o *ClusterInfrastructureEksAnywhereParameters) UnmarshalJSON(data []byte) 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "yaml_file_path")
+		delete(additionalProperties, "cluster_backup")
 		o.AdditionalProperties = additionalProperties
 	}
 

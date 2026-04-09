@@ -710,6 +710,8 @@ Class | Method | HTTP request | Description
  - [ClusterFeatureStringResponse](docs/ClusterFeatureStringResponse.md)
  - [ClusterInfrastructureCertManagerChartParameters](docs/ClusterInfrastructureCertManagerChartParameters.md)
  - [ClusterInfrastructureChartsParameters](docs/ClusterInfrastructureChartsParameters.md)
+ - [ClusterInfrastructureEksAnywhereBackupParameters](docs/ClusterInfrastructureEksAnywhereBackupParameters.md)
+ - [ClusterInfrastructureEksAnywhereBackupS3Parameters](docs/ClusterInfrastructureEksAnywhereBackupS3Parameters.md)
  - [ClusterInfrastructureEksAnywhereParameters](docs/ClusterInfrastructureEksAnywhereParameters.md)
  - [ClusterInfrastructureMetalLbChartParameters](docs/ClusterInfrastructureMetalLbChartParameters.md)
  - [ClusterInfrastructureNginxChartParameters](docs/ClusterInfrastructureNginxChartParameters.md)
