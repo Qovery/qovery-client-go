@@ -4978,6 +4978,48 @@ paths:
       summary: Update selected EKS Anywhere commit
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt:
+    get:
+      description: Returns the latest valid JWT currently used for engine deployments
+        for the specified EKS Anywhere cluster.
+      operationId: getEksAnywhereClusterJwt
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EksAnywhereClusterJwtResponse'
+          description: Latest EKS Anywhere cluster JWT
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get latest EKS Anywhere cluster JWT
+      tags:
+      - Clusters
   /cluster/{clusterId}/argoCdConfig:
     delete:
       description: Remove the stored ArgoCD configuration for a cluster. Requires
@@ -22996,6 +23038,15 @@ components:
           type: string
       required:
       - commit_id
+      type: object
+    EksAnywhereClusterJwtResponse:
+      example:
+        jwt: jwt
+      properties:
+        jwt:
+          type: string
+      required:
+      - jwt
       type: object
     CompanySizeEnum:
       enum:

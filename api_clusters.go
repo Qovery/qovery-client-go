@@ -2154,6 +2154,128 @@ func (a *ClustersAPIService) GetDefaultClusterAdvancedSettingsExecute(r ApiGetDe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiGetEksAnywhereClusterJwtRequest struct {
+	ctx            context.Context
+	ApiService     *ClustersAPIService
+	organizationId string
+	clusterId      string
+}
+
+func (r ApiGetEksAnywhereClusterJwtRequest) Execute() (*EksAnywhereClusterJwtResponse, *http.Response, error) {
+	return r.ApiService.GetEksAnywhereClusterJwtExecute(r)
+}
+
+/*
+GetEksAnywhereClusterJwt Get latest EKS Anywhere cluster JWT
+
+Returns the latest valid JWT currently used for engine deployments for the specified EKS Anywhere cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiGetEksAnywhereClusterJwtRequest
+*/
+func (a *ClustersAPIService) GetEksAnywhereClusterJwt(ctx context.Context, organizationId string, clusterId string) ApiGetEksAnywhereClusterJwtRequest {
+	return ApiGetEksAnywhereClusterJwtRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return EksAnywhereClusterJwtResponse
+func (a *ClustersAPIService) GetEksAnywhereClusterJwtExecute(r ApiGetEksAnywhereClusterJwtRequest) (*EksAnywhereClusterJwtResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EksAnywhereClusterJwtResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.GetEksAnywhereClusterJwt")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetEnvironmentsByClusterIdRequest struct {
 	ctx        context.Context
 	ApiService *ClustersAPIService

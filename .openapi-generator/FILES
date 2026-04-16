@@ -400,6 +400,7 @@ docs/DockerfileCheckRequest.md
 docs/DockerfileCheckResponse.md
 docs/DockerfileFragmentFile.md
 docs/DockerfileFragmentInline.md
+docs/EksAnywhereClusterJwtResponse.md
 docs/EksAnywhereCommitRequest.md
 docs/EksAnywhereCommitResponse.md
 docs/EksAnywhereVsphereClusterCredentials.md
@@ -1161,6 +1162,7 @@ model_dockerfile_check_request.go
 model_dockerfile_check_response.go
 model_dockerfile_fragment_file.go
 model_dockerfile_fragment_inline.go
+model_eks_anywhere_cluster_jwt_response.go
 model_eks_anywhere_commit_request.go
 model_eks_anywhere_commit_response.go
 model_eks_anywhere_vsphere_cluster_credentials.go

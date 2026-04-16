@@ -223,6 +223,7 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**GetClusterReadinessStatus**](docs/ClustersAPI.md#getclusterreadinessstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 *ClustersAPI* | [**GetClusterStatus**](docs/ClustersAPI.md#getclusterstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 *ClustersAPI* | [**GetDefaultClusterAdvancedSettings**](docs/ClustersAPI.md#getdefaultclusteradvancedsettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
+*ClustersAPI* | [**GetEksAnywhereClusterJwt**](docs/ClustersAPI.md#geteksanywhereclusterjwt) | **Get** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt | Get latest EKS Anywhere cluster JWT
 *ClustersAPI* | [**GetEnvironmentsByClusterId**](docs/ClustersAPI.md#getenvironmentsbyclusterid) | **Get** /cluster/{clusterId}/environments | List environments services by cluster id
 *ClustersAPI* | [**GetInstallationHelmValues**](docs/ClustersAPI.md#getinstallationhelmvalues) | **Get** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
 *ClustersAPI* | [**GetOrganizationCloudProviderInfo**](docs/ClustersAPI.md#getorganizationcloudproviderinfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
@@ -853,6 +854,7 @@ Class | Method | HTTP request | Description
  - [DockerfileCheckResponse](docs/DockerfileCheckResponse.md)
  - [DockerfileFragmentFile](docs/DockerfileFragmentFile.md)
  - [DockerfileFragmentInline](docs/DockerfileFragmentInline.md)
+ - [EksAnywhereClusterJwtResponse](docs/EksAnywhereClusterJwtResponse.md)
  - [EksAnywhereCommitRequest](docs/EksAnywhereCommitRequest.md)
  - [EksAnywhereCommitResponse](docs/EksAnywhereCommitResponse.md)
  - [EksAnywhereVsphereClusterCredentials](docs/EksAnywhereVsphereClusterCredentials.md)
