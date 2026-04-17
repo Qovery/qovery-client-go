@@ -6771,7 +6771,7 @@ paths:
       summary: List total number of services for each environment of the project
       tags:
       - Environments
-  /project/{projectId}/environmentOverview:
+  /project/{projectId}/environment/overview:
     get:
       description: "Returns a list of environments with their overview information\
         \ including deployment status, service count, and cluster details."
@@ -6792,6 +6792,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EnvironmentOverviewResponseList'
+          description: List environments overview
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List environments overview
+      tags:
+      - Environments
+  /project/{projectId}/environmentOverview:
+    get:
+      description: "Returns a list of environments with their overview information\
+        \ including deployment status, service count, and cluster details."
+      operationId: getProjectEnvironmentsOverviewDeprecated
+      parameters:
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentOverviewResponseListDeprecated'
           description: List environments overview
         "401":
           description: Access token is missing or invalid
@@ -26968,6 +26999,43 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             is_demo: true
           updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          services_overview:
+            managed_by: QOVERY
+            service_count: 0
+          created_at: 2000-01-23T04:56:07.000+00:00
+          deployment_status: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - mode: PRODUCTION
+          cluster:
+            name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_demo: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          services_overview:
+            managed_by: QOVERY
+            service_count: 0
+          created_at: 2000-01-23T04:56:07.000+00:00
+          deployment_status: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EnvironmentOverviewResponse'
+          type: array
+      type: object
+    EnvironmentOverviewResponseListDeprecated:
+      example:
+        results:
+        - mode: PRODUCTION
+          cluster:
+            name: name
+            cloud_provider: AWS
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            is_demo: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
           service_count: 0
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -27054,10 +27122,10 @@ components:
       properties:
         results:
           items:
-            $ref: '#/components/schemas/EnvironmentOverviewResponse'
+            $ref: '#/components/schemas/EnvironmentOverviewResponseDeprecated'
           type: array
       type: object
-    EnvironmentOverviewResponse:
+    EnvironmentOverviewResponseDeprecated:
       example:
         mode: PRODUCTION
         cluster:
@@ -27132,6 +27200,71 @@ components:
       - name
       - service_count
       - updated_at
+      type: object
+    EnvironmentOverviewResponse:
+      example:
+        mode: PRODUCTION
+        cluster:
+          name: name
+          cloud_provider: AWS
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          is_demo: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        services_overview:
+          managed_by: QOVERY
+          service_count: 0
+        created_at: 2000-01-23T04:56:07.000+00:00
+        deployment_status: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        name:
+          type: string
+        mode:
+          $ref: '#/components/schemas/EnvironmentModeEnum'
+        cluster:
+          $ref: '#/components/schemas/ClusterOverviewResponse'
+        services_overview:
+          $ref: '#/components/schemas/ServicesOverviewResponse'
+        deployment_status:
+          allOf:
+          - $ref: '#/components/schemas/EnvironmentStatus'
+          nullable: true
+      required:
+      - cluster
+      - created_at
+      - id
+      - mode
+      - name
+      - services_overview
+      - updated_at
+      type: object
+    ServicesOverviewResponse:
+      example:
+        managed_by: QOVERY
+        service_count: 0
+      properties:
+        service_count:
+          format: int32
+          type: integer
+        managed_by:
+          enum:
+          - QOVERY
+          - ARGOCD
+          - MIXED
+          type: string
+      required:
+      - managed_by
+      - service_count
       type: object
     ClusterOverviewResponse:
       example:

@@ -439,7 +439,9 @@ docs/EnvironmentLogsMessage.md
 docs/EnvironmentMainCallsAPI.md
 docs/EnvironmentModeEnum.md
 docs/EnvironmentOverviewResponse.md
+docs/EnvironmentOverviewResponseDeprecated.md
 docs/EnvironmentOverviewResponseList.md
+docs/EnvironmentOverviewResponseListDeprecated.md
 docs/EnvironmentResponseList.md
 docs/EnvironmentSecretAPI.md
 docs/EnvironmentServiceIdsAllRequest.md
@@ -808,6 +810,7 @@ docs/ServiceSubActionEnum.md
 docs/ServiceTotalNumber.md
 docs/ServiceTypeEnum.md
 docs/ServiceTypeForVariableEnum.md
+docs/ServicesOverviewResponse.md
 docs/SignUp.md
 docs/SignUpRequest.md
 docs/SlackAlertReceiverCreationRequest.md
@@ -1194,7 +1197,9 @@ model_environment_logs_error_underlying_error.go
 model_environment_logs_message.go
 model_environment_mode_enum.go
 model_environment_overview_response.go
+model_environment_overview_response_deprecated.go
 model_environment_overview_response_list.go
+model_environment_overview_response_list_deprecated.go
 model_environment_response_list.go
 model_environment_service_ids_all_request.go
 model_environment_stats.go
@@ -1522,6 +1527,7 @@ model_service_sub_action_enum.go
 model_service_total_number.go
 model_service_type_enum.go
 model_service_type_for_variable_enum.go
+model_services_overview_response.go
 model_sign_up.go
 model_sign_up_request.go
 model_slack_alert_receiver_creation_request.go

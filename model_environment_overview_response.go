@@ -22,14 +22,14 @@ var _ MappedNullable = &EnvironmentOverviewResponse{}
 
 // EnvironmentOverviewResponse struct for EnvironmentOverviewResponse
 type EnvironmentOverviewResponse struct {
-	Id                   string                   `json:"id"`
-	CreatedAt            time.Time                `json:"created_at"`
-	UpdatedAt            time.Time                `json:"updated_at"`
-	Name                 string                   `json:"name"`
-	Mode                 EnvironmentModeEnum      `json:"mode"`
-	Cluster              *ClusterOverviewResponse `json:"cluster,omitempty"`
-	ServiceCount         int32                    `json:"service_count"`
-	DeploymentStatus     *EnvironmentStatus       `json:"deployment_status,omitempty"`
+	Id                   string                    `json:"id"`
+	CreatedAt            time.Time                 `json:"created_at"`
+	UpdatedAt            time.Time                 `json:"updated_at"`
+	Name                 string                    `json:"name"`
+	Mode                 EnvironmentModeEnum       `json:"mode"`
+	Cluster              ClusterOverviewResponse   `json:"cluster"`
+	ServicesOverview     ServicesOverviewResponse  `json:"services_overview"`
+	DeploymentStatus     NullableEnvironmentStatus `json:"deployment_status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -39,14 +39,15 @@ type _EnvironmentOverviewResponse EnvironmentOverviewResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewEnvironmentOverviewResponse(id string, createdAt time.Time, updatedAt time.Time, name string, mode EnvironmentModeEnum, serviceCount int32) *EnvironmentOverviewResponse {
+func NewEnvironmentOverviewResponse(id string, createdAt time.Time, updatedAt time.Time, name string, mode EnvironmentModeEnum, cluster ClusterOverviewResponse, servicesOverview ServicesOverviewResponse) *EnvironmentOverviewResponse {
 	this := EnvironmentOverviewResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.UpdatedAt = updatedAt
 	this.Name = name
 	this.Mode = mode
-	this.ServiceCount = serviceCount
+	this.Cluster = cluster
+	this.ServicesOverview = servicesOverview
 	return &this
 }
 
@@ -178,92 +179,95 @@ func (o *EnvironmentOverviewResponse) SetMode(v EnvironmentModeEnum) {
 	o.Mode = v
 }
 
-// GetCluster returns the Cluster field value if set, zero value otherwise.
+// GetCluster returns the Cluster field value
 func (o *EnvironmentOverviewResponse) GetCluster() ClusterOverviewResponse {
-	if o == nil || IsNil(o.Cluster) {
+	if o == nil {
 		var ret ClusterOverviewResponse
 		return ret
 	}
-	return *o.Cluster
+
+	return o.Cluster
 }
 
-// GetClusterOk returns a tuple with the Cluster field value if set, nil otherwise
+// GetClusterOk returns a tuple with the Cluster field value
 // and a boolean to check if the value has been set.
 func (o *EnvironmentOverviewResponse) GetClusterOk() (*ClusterOverviewResponse, bool) {
-	if o == nil || IsNil(o.Cluster) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Cluster, true
+	return &o.Cluster, true
 }
 
-// HasCluster returns a boolean if a field has been set.
-func (o *EnvironmentOverviewResponse) HasCluster() bool {
-	if o != nil && !IsNil(o.Cluster) {
-		return true
-	}
-
-	return false
-}
-
-// SetCluster gets a reference to the given ClusterOverviewResponse and assigns it to the Cluster field.
+// SetCluster sets field value
 func (o *EnvironmentOverviewResponse) SetCluster(v ClusterOverviewResponse) {
-	o.Cluster = &v
+	o.Cluster = v
 }
 
-// GetServiceCount returns the ServiceCount field value
-func (o *EnvironmentOverviewResponse) GetServiceCount() int32 {
+// GetServicesOverview returns the ServicesOverview field value
+func (o *EnvironmentOverviewResponse) GetServicesOverview() ServicesOverviewResponse {
 	if o == nil {
-		var ret int32
+		var ret ServicesOverviewResponse
 		return ret
 	}
 
-	return o.ServiceCount
+	return o.ServicesOverview
 }
 
-// GetServiceCountOk returns a tuple with the ServiceCount field value
+// GetServicesOverviewOk returns a tuple with the ServicesOverview field value
 // and a boolean to check if the value has been set.
-func (o *EnvironmentOverviewResponse) GetServiceCountOk() (*int32, bool) {
+func (o *EnvironmentOverviewResponse) GetServicesOverviewOk() (*ServicesOverviewResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ServiceCount, true
+	return &o.ServicesOverview, true
 }
 
-// SetServiceCount sets field value
-func (o *EnvironmentOverviewResponse) SetServiceCount(v int32) {
-	o.ServiceCount = v
+// SetServicesOverview sets field value
+func (o *EnvironmentOverviewResponse) SetServicesOverview(v ServicesOverviewResponse) {
+	o.ServicesOverview = v
 }
 
-// GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise.
+// GetDeploymentStatus returns the DeploymentStatus field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *EnvironmentOverviewResponse) GetDeploymentStatus() EnvironmentStatus {
-	if o == nil || IsNil(o.DeploymentStatus) {
+	if o == nil || IsNil(o.DeploymentStatus.Get()) {
 		var ret EnvironmentStatus
 		return ret
 	}
-	return *o.DeploymentStatus
+	return *o.DeploymentStatus.Get()
 }
 
 // GetDeploymentStatusOk returns a tuple with the DeploymentStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *EnvironmentOverviewResponse) GetDeploymentStatusOk() (*EnvironmentStatus, bool) {
-	if o == nil || IsNil(o.DeploymentStatus) {
+	if o == nil {
 		return nil, false
 	}
-	return o.DeploymentStatus, true
+	return o.DeploymentStatus.Get(), o.DeploymentStatus.IsSet()
 }
 
 // HasDeploymentStatus returns a boolean if a field has been set.
 func (o *EnvironmentOverviewResponse) HasDeploymentStatus() bool {
-	if o != nil && !IsNil(o.DeploymentStatus) {
+	if o != nil && o.DeploymentStatus.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetDeploymentStatus gets a reference to the given EnvironmentStatus and assigns it to the DeploymentStatus field.
+// SetDeploymentStatus gets a reference to the given NullableEnvironmentStatus and assigns it to the DeploymentStatus field.
 func (o *EnvironmentOverviewResponse) SetDeploymentStatus(v EnvironmentStatus) {
-	o.DeploymentStatus = &v
+	o.DeploymentStatus.Set(&v)
+}
+
+// SetDeploymentStatusNil sets the value for DeploymentStatus to be an explicit nil
+func (o *EnvironmentOverviewResponse) SetDeploymentStatusNil() {
+	o.DeploymentStatus.Set(nil)
+}
+
+// UnsetDeploymentStatus ensures that no value is present for DeploymentStatus, not even an explicit nil
+func (o *EnvironmentOverviewResponse) UnsetDeploymentStatus() {
+	o.DeploymentStatus.Unset()
 }
 
 func (o EnvironmentOverviewResponse) MarshalJSON() ([]byte, error) {
@@ -281,12 +285,10 @@ func (o EnvironmentOverviewResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated_at"] = o.UpdatedAt
 	toSerialize["name"] = o.Name
 	toSerialize["mode"] = o.Mode
-	if !IsNil(o.Cluster) {
-		toSerialize["cluster"] = o.Cluster
-	}
-	toSerialize["service_count"] = o.ServiceCount
-	if !IsNil(o.DeploymentStatus) {
-		toSerialize["deployment_status"] = o.DeploymentStatus
+	toSerialize["cluster"] = o.Cluster
+	toSerialize["services_overview"] = o.ServicesOverview
+	if o.DeploymentStatus.IsSet() {
+		toSerialize["deployment_status"] = o.DeploymentStatus.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -306,7 +308,8 @@ func (o *EnvironmentOverviewResponse) UnmarshalJSON(data []byte) (err error) {
 		"updated_at",
 		"name",
 		"mode",
-		"service_count",
+		"cluster",
+		"services_overview",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -342,7 +345,7 @@ func (o *EnvironmentOverviewResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "cluster")
-		delete(additionalProperties, "service_count")
+		delete(additionalProperties, "services_overview")
 		delete(additionalProperties, "deployment_status")
 		o.AdditionalProperties = additionalProperties
 	}

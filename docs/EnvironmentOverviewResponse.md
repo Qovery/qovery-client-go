@@ -9,15 +9,15 @@ Name | Type | Description | Notes
 **UpdatedAt** | **time.Time** |  | 
 **Name** | **string** |  | 
 **Mode** | [**EnvironmentModeEnum**](EnvironmentModeEnum.md) |  | 
-**Cluster** | Pointer to [**ClusterOverviewResponse**](ClusterOverviewResponse.md) |  | [optional] 
-**ServiceCount** | **int32** |  | 
-**DeploymentStatus** | Pointer to [**EnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
+**Cluster** | [**ClusterOverviewResponse**](ClusterOverviewResponse.md) |  | 
+**ServicesOverview** | [**ServicesOverviewResponse**](ServicesOverviewResponse.md) |  | 
+**DeploymentStatus** | Pointer to [**NullableEnvironmentStatus**](EnvironmentStatus.md) |  | [optional] 
 
 ## Methods
 
 ### NewEnvironmentOverviewResponse
 
-`func NewEnvironmentOverviewResponse(id string, createdAt time.Time, updatedAt time.Time, name string, mode EnvironmentModeEnum, serviceCount int32, ) *EnvironmentOverviewResponse`
+`func NewEnvironmentOverviewResponse(id string, createdAt time.Time, updatedAt time.Time, name string, mode EnvironmentModeEnum, cluster ClusterOverviewResponse, servicesOverview ServicesOverviewResponse, ) *EnvironmentOverviewResponse`
 
 NewEnvironmentOverviewResponse instantiates a new EnvironmentOverviewResponse object
 This constructor will assign default values to properties that have it defined,
@@ -151,30 +151,25 @@ and a boolean to check if the value has been set.
 
 SetCluster sets Cluster field to given value.
 
-### HasCluster
 
-`func (o *EnvironmentOverviewResponse) HasCluster() bool`
+### GetServicesOverview
 
-HasCluster returns a boolean if a field has been set.
+`func (o *EnvironmentOverviewResponse) GetServicesOverview() ServicesOverviewResponse`
 
-### GetServiceCount
+GetServicesOverview returns the ServicesOverview field if non-nil, zero value otherwise.
 
-`func (o *EnvironmentOverviewResponse) GetServiceCount() int32`
+### GetServicesOverviewOk
 
-GetServiceCount returns the ServiceCount field if non-nil, zero value otherwise.
+`func (o *EnvironmentOverviewResponse) GetServicesOverviewOk() (*ServicesOverviewResponse, bool)`
 
-### GetServiceCountOk
-
-`func (o *EnvironmentOverviewResponse) GetServiceCountOk() (*int32, bool)`
-
-GetServiceCountOk returns a tuple with the ServiceCount field if it's non-nil, zero value otherwise
+GetServicesOverviewOk returns a tuple with the ServicesOverview field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetServiceCount
+### SetServicesOverview
 
-`func (o *EnvironmentOverviewResponse) SetServiceCount(v int32)`
+`func (o *EnvironmentOverviewResponse) SetServicesOverview(v ServicesOverviewResponse)`
 
-SetServiceCount sets ServiceCount field to given value.
+SetServicesOverview sets ServicesOverview field to given value.
 
 
 ### GetDeploymentStatus
@@ -202,6 +197,16 @@ SetDeploymentStatus sets DeploymentStatus field to given value.
 
 HasDeploymentStatus returns a boolean if a field has been set.
 
+### SetDeploymentStatusNil
+
+`func (o *EnvironmentOverviewResponse) SetDeploymentStatusNil(b bool)`
+
+ SetDeploymentStatusNil sets the value for DeploymentStatus to be an explicit nil
+
+### UnsetDeploymentStatus
+`func (o *EnvironmentOverviewResponse) UnsetDeploymentStatus()`
+
+UnsetDeploymentStatus ensures that no value is present for DeploymentStatus, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
