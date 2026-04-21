@@ -372,7 +372,6 @@ Class | Method | HTTP request | Description
 *EnvironmentsAPI* | [**CreateEnvironment**](docs/EnvironmentsAPI.md#createenvironment) | **Post** /project/{projectId}/environment | Create an environment
 *EnvironmentsAPI* | [**GetProjectEnvironmentServiceNumber**](docs/EnvironmentsAPI.md#getprojectenvironmentservicenumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
 *EnvironmentsAPI* | [**GetProjectEnvironmentsOverview**](docs/EnvironmentsAPI.md#getprojectenvironmentsoverview) | **Get** /project/{projectId}/environment/overview | List environments overview
-*EnvironmentsAPI* | [**GetProjectEnvironmentsOverviewDeprecated**](docs/EnvironmentsAPI.md#getprojectenvironmentsoverviewdeprecated) | **Get** /project/{projectId}/environmentOverview | List environments overview
 *EnvironmentsAPI* | [**GetProjectEnvironmentsStatus**](docs/EnvironmentsAPI.md#getprojectenvironmentsstatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 *EnvironmentsAPI* | [**ListEnvironment**](docs/EnvironmentsAPI.md#listenvironment) | **Get** /project/{projectId}/environment | List environments
 *GitRepositoriesAPI* | [**GetBitbucketRepositories**](docs/GitRepositoriesAPI.md#getbitbucketrepositories) | **Get** /account/bitbucket/repository | Get bitbucket repositories of the connected user
@@ -887,9 +886,7 @@ Class | Method | HTTP request | Description
  - [EnvironmentLogsMessage](docs/EnvironmentLogsMessage.md)
  - [EnvironmentModeEnum](docs/EnvironmentModeEnum.md)
  - [EnvironmentOverviewResponse](docs/EnvironmentOverviewResponse.md)
- - [EnvironmentOverviewResponseDeprecated](docs/EnvironmentOverviewResponseDeprecated.md)
  - [EnvironmentOverviewResponseList](docs/EnvironmentOverviewResponseList.md)
- - [EnvironmentOverviewResponseListDeprecated](docs/EnvironmentOverviewResponseListDeprecated.md)
  - [EnvironmentResponseList](docs/EnvironmentResponseList.md)
  - [EnvironmentServiceIdsAllRequest](docs/EnvironmentServiceIdsAllRequest.md)
  - [EnvironmentStats](docs/EnvironmentStats.md)

@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**CreateEnvironment**](EnvironmentsAPI.md#CreateEnvironment) | **Post** /project/{projectId}/environment | Create an environment
 [**GetProjectEnvironmentServiceNumber**](EnvironmentsAPI.md#GetProjectEnvironmentServiceNumber) | **Get** /project/{projectId}/environment/stats | List total number of services for each environment of the project
 [**GetProjectEnvironmentsOverview**](EnvironmentsAPI.md#GetProjectEnvironmentsOverview) | **Get** /project/{projectId}/environment/overview | List environments overview
-[**GetProjectEnvironmentsOverviewDeprecated**](EnvironmentsAPI.md#GetProjectEnvironmentsOverviewDeprecated) | **Get** /project/{projectId}/environmentOverview | List environments overview
 [**GetProjectEnvironmentsStatus**](EnvironmentsAPI.md#GetProjectEnvironmentsStatus) | **Get** /project/{projectId}/environment/status | List environments statuses
 [**ListEnvironment**](EnvironmentsAPI.md#ListEnvironment) | **Get** /project/{projectId}/environment | List environments
 
@@ -208,76 +207,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EnvironmentOverviewResponseList**](EnvironmentOverviewResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetProjectEnvironmentsOverviewDeprecated
-
-> EnvironmentOverviewResponseListDeprecated GetProjectEnvironmentsOverviewDeprecated(ctx, projectId).Execute()
-
-List environments overview
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentsAPI.GetProjectEnvironmentsOverviewDeprecated(context.Background(), projectId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentsAPI.GetProjectEnvironmentsOverviewDeprecated``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetProjectEnvironmentsOverviewDeprecated`: EnvironmentOverviewResponseListDeprecated
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentsAPI.GetProjectEnvironmentsOverviewDeprecated`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**projectId** | **string** | Project ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetProjectEnvironmentsOverviewDeprecatedRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**EnvironmentOverviewResponseListDeprecated**](EnvironmentOverviewResponseListDeprecated.md)
 
 ### Authorization
 
