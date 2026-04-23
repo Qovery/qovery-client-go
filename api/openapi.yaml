@@ -31483,7 +31483,6 @@ components:
       - JOB
       - HELM
       - TERRAFORM
-      - ARGOCD_APP
       type: string
     Log:
       example:
@@ -33850,6 +33849,7 @@ components:
       - JOB
       - HELM
       - TERRAFORM
+      - ARGOCD_APP
       type: string
       x-stoplight:
         id: d66063cd29913
