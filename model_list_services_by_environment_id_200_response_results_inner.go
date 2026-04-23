@@ -19,6 +19,7 @@ import (
 // ListServicesByEnvironmentId200ResponseResultsInner - struct for ListServicesByEnvironmentId200ResponseResultsInner
 type ListServicesByEnvironmentId200ResponseResultsInner struct {
 	Application       *Application
+	ArgocdAppResponse *ArgocdAppResponse
 	ContainerResponse *ContainerResponse
 	Database          *Database
 	HelmResponse      *HelmResponse
@@ -30,6 +31,13 @@ type ListServicesByEnvironmentId200ResponseResultsInner struct {
 func ApplicationAsListServicesByEnvironmentId200ResponseResultsInner(v *Application) ListServicesByEnvironmentId200ResponseResultsInner {
 	return ListServicesByEnvironmentId200ResponseResultsInner{
 		Application: v,
+	}
+}
+
+// ArgocdAppResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns ArgocdAppResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func ArgocdAppResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *ArgocdAppResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
+		ArgocdAppResponse: v,
 	}
 }
 
@@ -87,6 +95,18 @@ func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(dat
 		} else {
 			dst.Application = nil
 			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as Application: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ARGOCD_APP'
+	if jsonDict["service_type"] == "ARGOCD_APP" {
+		// try to unmarshal JSON data into ArgocdAppResponse
+		err = json.Unmarshal(data, &dst.ArgocdAppResponse)
+		if err == nil {
+			return nil // data stored in dst.ArgocdAppResponse, return on the first match
+		} else {
+			dst.ArgocdAppResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as ArgocdAppResponse: %s", err.Error())
 		}
 	}
 
@@ -162,6 +182,18 @@ func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(dat
 		}
 	}
 
+	// check if the discriminator value is 'ArgocdAppResponse'
+	if jsonDict["service_type"] == "ArgocdAppResponse" {
+		// try to unmarshal JSON data into ArgocdAppResponse
+		err = json.Unmarshal(data, &dst.ArgocdAppResponse)
+		if err == nil {
+			return nil // data stored in dst.ArgocdAppResponse, return on the first match
+		} else {
+			dst.ArgocdAppResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as ArgocdAppResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ContainerResponse'
 	if jsonDict["service_type"] == "ContainerResponse" {
 		// try to unmarshal JSON data into ContainerResponse
@@ -231,6 +263,10 @@ func (src ListServicesByEnvironmentId200ResponseResultsInner) MarshalJSON() ([]b
 		return json.Marshal(&src.Application)
 	}
 
+	if src.ArgocdAppResponse != nil {
+		return json.Marshal(&src.ArgocdAppResponse)
+	}
+
 	if src.ContainerResponse != nil {
 		return json.Marshal(&src.ContainerResponse)
 	}
@@ -261,6 +297,10 @@ func (obj *ListServicesByEnvironmentId200ResponseResultsInner) GetActualInstance
 	}
 	if obj.Application != nil {
 		return obj.Application
+	}
+
+	if obj.ArgocdAppResponse != nil {
+		return obj.ArgocdAppResponse
 	}
 
 	if obj.ContainerResponse != nil {

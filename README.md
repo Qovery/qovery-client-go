@@ -639,6 +639,7 @@ Class | Method | HTTP request | Description
  - [ArgoCdConnectionCheckResponse](docs/ArgoCdConnectionCheckResponse.md)
  - [ArgoCdCredentialsRequest](docs/ArgoCdCredentialsRequest.md)
  - [ArgoCdCredentialsResponse](docs/ArgoCdCredentialsResponse.md)
+ - [ArgocdAppResponse](docs/ArgocdAppResponse.md)
  - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutoscalingMode](docs/AutoscalingMode.md)
  - [AutoscalingPolicyRequest](docs/AutoscalingPolicyRequest.md)

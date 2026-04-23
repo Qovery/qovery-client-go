@@ -162,6 +162,7 @@ docs/ArgoCDAPI.md
 docs/ArgoCdConnectionCheckResponse.md
 docs/ArgoCdCredentialsRequest.md
 docs/ArgoCdCredentialsResponse.md
+docs/ArgocdAppResponse.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutoscalingMode.md
 docs/AutoscalingPolicyRequest.md
@@ -948,6 +949,7 @@ model_application_response_list.go
 model_argo_cd_connection_check_response.go
 model_argo_cd_credentials_request.go
 model_argo_cd_credentials_response.go
+model_argocd_app_response.go
 model_attach_service_to_deployment_stage_request.go
 model_autoscaling_mode.go
 model_autoscaling_policy_request.go

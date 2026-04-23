@@ -31483,6 +31483,7 @@ components:
       - JOB
       - HELM
       - TERRAFORM
+      - ARGOCD_APP
       type: string
     Log:
       example:
@@ -39942,6 +39943,23 @@ components:
       - name
       - type
       type: object
+    ArgocdAppResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          service_type:
+            $ref: '#/components/schemas/ServiceTypeEnum'
+          namespace:
+            type: string
+        required:
+        - name
+        - namespace
+        - service_type
+        type: object
+      description: An ArgoCD service
     listDirectoriesFromGitRepository_200_response:
       example:
         results:
@@ -40328,6 +40346,7 @@ components:
           HELM: '#/components/schemas/HelmResponse'
           JOB: '#/components/schemas/JobResponse'
           TERRAFORM: '#/components/schemas/TerraformResponse'
+          ARGOCD_APP: '#/components/schemas/ArgocdAppResponse'
         propertyName: service_type
       oneOf:
       - $ref: '#/components/schemas/Application'
@@ -40336,6 +40355,7 @@ components:
       - $ref: '#/components/schemas/HelmResponse'
       - $ref: '#/components/schemas/JobResponse'
       - $ref: '#/components/schemas/TerraformResponse'
+      - $ref: '#/components/schemas/ArgocdAppResponse'
       x-stoplight:
         id: lzycmwmefigki
     listServicesByEnvironmentId_200_response:
