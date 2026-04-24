@@ -22715,54 +22715,71 @@ components:
     ClusterAdvancedSettings:
       example:
         aws.eks.efs.performance_mode: generalPurpose
-        loki.log_retention_in_week: 1
         aws.eks.enable_efs_addon: false
-        nginx.memory.limit_in_mib: 3
-        nginx.hpa.cpu_utilization_percentage_threshold: 7
-        nginx.hpa.max_number_instances: 1
-        nginx.vcpu.limit_in_milli_cpu: 7
+        nginx.memory.limit_in_mib: 9
+        nginx.hpa.max_number_instances: 2
+        nginx.vcpu.limit_in_milli_cpu: 6
         envoy.gateway_api.http_request_timeout_seconds: 0
+        loki.write.cpu_request_m: 9
         aws.eks.ec2.metadata_imds: optional
-        pleco.resources_ttl: 5
         database.mysql.allowed_cidrs:
         - database.mysql.allowed_cidrs
         - database.mysql.allowed_cidrs
         aws.eks.ec2.ami: AmazonLinux2023
-        database.mysql.deny_any_access: true
         aws.vpc.flow_logs_retention_days: 6
+        loki.single_binary.memory_request_mib: 2
+        loki.read.memory_request_mib: 1
+        qovery.static_ip_mode: true
+        load_balancer.size: load_balancer.size
+        loki.single_binary.cpu_request_m: 5
+        database.mongodb.allowed_cidrs:
+        - database.mongodb.allowed_cidrs
+        - database.mongodb.allowed_cidrs
+        loki.backend.memory_request_mib: 1
+        registry.mirroring_mode: Service
+        aws.eks.enable_alb_controller: true
+        database.postgresql.allowed_cidrs:
+        - database.postgresql.allowed_cidrs
+        - database.postgresql.allowed_cidrs
+        storageclass.fast_ssd: storageclass.fast_ssd
+        loki.deployment_mode: single_binary
+        loki.single_binary.cpu_limit_m: 5
+        aws.eks.efs.transition_to_ia: AFTER_30_DAYS
+        loki.log_retention_in_week: 1
+        loki.read.memory_limit_mib: 1
+        loki.backend.cpu_limit_m: 7
+        nginx.hpa.cpu_utilization_percentage_threshold: 6
+        loki.backend.memory_limit_mib: 4
+        pleco.resources_ttl: 9
+        database.mysql.deny_any_access: true
+        loki.backend.cpu_request_m: 6
         database.redis.allowed_cidrs:
         - database.redis.allowed_cidrs
         - database.redis.allowed_cidrs
         aws.vpc.enable_s3_flow_logs: true
+        loki.read.cpu_request_m: 7
         registry.image_retention_time: 5
-        qovery.static_ip_mode: true
-        load_balancer.size: load_balancer.size
-        nginx.memory.request_in_mib: 9
+        loki.write.memory_limit_mib: 4
+        nginx.memory.request_in_mib: 8
         aws.vpc.enable_nat_gateway_secondary_eip: true
-        database.mongodb.allowed_cidrs:
-        - database.mongodb.allowed_cidrs
-        - database.mongodb.allowed_cidrs
         database.mongodb.deny_any_access: true
+        loki.write.cpu_limit_m: 3
         aws.cloudwatch.eks_logs_retention_days: 0
         aws.iam.admin_group: aws.iam.admin_group
-        registry.mirroring_mode: Service
-        nginx.vcpu.request_in_milli_cpu: 2
-        aws.eks.enable_alb_controller: true
+        nginx.vcpu.request_in_milli_cpu: 9
         k8s.api.allowed_public_access_cidrs:
         - k8s.api.allowed_public_access_cidrs
         - k8s.api.allowed_public_access_cidrs
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
-        database.postgresql.allowed_cidrs:
-        - database.postgresql.allowed_cidrs
-        - database.postgresql.allowed_cidrs
         database.redis.deny_any_access: true
+        loki.read.cpu_limit_m: 1
         database.postgresql.deny_any_access: true
-        storageclass.fast_ssd: storageclass.fast_ssd
         envoy.gateway_api.http_connection_idle_timeout_seconds: 0
         nginx.hpa.min_number_instances: 1
+        loki.single_binary.memory_limit_mib: 7
+        loki.write.memory_request_mib: 2
         aws.eks.efs.throughput_mode: elastic
-        aws.eks.efs.transition_to_ia: AFTER_30_DAYS
       properties:
         aws.cloudwatch.eks_logs_retention_days:
           description: Set the number of retention days for EKS Cloudwatch logs
@@ -22781,6 +22798,78 @@ components:
           type: boolean
         loki.log_retention_in_week:
           description: For how long in week loki is going to keep logs of your applications
+          type: integer
+        loki.deployment_mode:
+          description: "Loki deployment topology. \"single_binary\" runs Loki as one\
+            \ pod; \"simple_scalable\" splits it into separate write, read, and backend\
+            \ components for larger clusters."
+          enum:
+          - single_binary
+          - simple_scalable
+          type: string
+        loki.single_binary.cpu_request_m:
+          description: CPU request (in milli-CPU) for the Loki pod when running in
+            single_binary mode.
+          type: integer
+        loki.single_binary.cpu_limit_m:
+          description: CPU limit (in milli-CPU) for the Loki pod when running in single_binary
+            mode.
+          type: integer
+        loki.single_binary.memory_request_mib:
+          description: Memory request (in MiB) for the Loki pod when running in single_binary
+            mode.
+          type: integer
+        loki.single_binary.memory_limit_mib:
+          description: Memory limit (in MiB) for the Loki pod when running in single_binary
+            mode.
+          type: integer
+        loki.write.cpu_request_m:
+          description: CPU request (in milli-CPU) for the Loki write component when
+            running in simple_scalable mode.
+          type: integer
+        loki.write.cpu_limit_m:
+          description: CPU limit (in milli-CPU) for the Loki write component when
+            running in simple_scalable mode.
+          type: integer
+        loki.write.memory_request_mib:
+          description: Memory request (in MiB) for the Loki write component when running
+            in simple_scalable mode.
+          type: integer
+        loki.write.memory_limit_mib:
+          description: Memory limit (in MiB) for the Loki write component when running
+            in simple_scalable mode.
+          type: integer
+        loki.read.cpu_request_m:
+          description: CPU request (in milli-CPU) for the Loki read component when
+            running in simple_scalable mode.
+          type: integer
+        loki.read.cpu_limit_m:
+          description: CPU limit (in milli-CPU) for the Loki read component when running
+            in simple_scalable mode.
+          type: integer
+        loki.read.memory_request_mib:
+          description: Memory request (in MiB) for the Loki read component when running
+            in simple_scalable mode.
+          type: integer
+        loki.read.memory_limit_mib:
+          description: Memory limit (in MiB) for the Loki read component when running
+            in simple_scalable mode.
+          type: integer
+        loki.backend.cpu_request_m:
+          description: CPU request (in milli-CPU) for the Loki backend component when
+            running in simple_scalable mode.
+          type: integer
+        loki.backend.cpu_limit_m:
+          description: CPU limit (in milli-CPU) for the Loki backend component when
+            running in simple_scalable mode.
+          type: integer
+        loki.backend.memory_request_mib:
+          description: Memory request (in MiB) for the Loki backend component when
+            running in simple_scalable mode.
+          type: integer
+        loki.backend.memory_limit_mib:
+          description: Memory limit (in MiB) for the Loki backend component when running
+            in simple_scalable mode.
           type: integer
         registry.image_retention_time:
           description: Configure the number of seconds before cleaning images in the

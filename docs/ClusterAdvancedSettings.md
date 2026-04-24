@@ -9,6 +9,23 @@ Name | Type | Description | Notes
 **AwsVpcFlowLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for flow logs. Disable with value \&quot;0\&quot; | [optional] 
 **AwsVpcEnableNatGatewaySecondaryEip** | Pointer to **bool** | Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits. | [optional] 
 **LokiLogRetentionInWeek** | Pointer to **int32** | For how long in week loki is going to keep logs of your applications | [optional] 
+**LokiDeploymentMode** | Pointer to **string** | Loki deployment topology. \&quot;single_binary\&quot; runs Loki as one pod; \&quot;simple_scalable\&quot; splits it into separate write, read, and backend components for larger clusters. | [optional] 
+**LokiSingleBinaryCpuRequestM** | Pointer to **int32** | CPU request (in milli-CPU) for the Loki pod when running in single_binary mode. | [optional] 
+**LokiSingleBinaryCpuLimitM** | Pointer to **int32** | CPU limit (in milli-CPU) for the Loki pod when running in single_binary mode. | [optional] 
+**LokiSingleBinaryMemoryRequestMib** | Pointer to **int32** | Memory request (in MiB) for the Loki pod when running in single_binary mode. | [optional] 
+**LokiSingleBinaryMemoryLimitMib** | Pointer to **int32** | Memory limit (in MiB) for the Loki pod when running in single_binary mode. | [optional] 
+**LokiWriteCpuRequestM** | Pointer to **int32** | CPU request (in milli-CPU) for the Loki write component when running in simple_scalable mode. | [optional] 
+**LokiWriteCpuLimitM** | Pointer to **int32** | CPU limit (in milli-CPU) for the Loki write component when running in simple_scalable mode. | [optional] 
+**LokiWriteMemoryRequestMib** | Pointer to **int32** | Memory request (in MiB) for the Loki write component when running in simple_scalable mode. | [optional] 
+**LokiWriteMemoryLimitMib** | Pointer to **int32** | Memory limit (in MiB) for the Loki write component when running in simple_scalable mode. | [optional] 
+**LokiReadCpuRequestM** | Pointer to **int32** | CPU request (in milli-CPU) for the Loki read component when running in simple_scalable mode. | [optional] 
+**LokiReadCpuLimitM** | Pointer to **int32** | CPU limit (in milli-CPU) for the Loki read component when running in simple_scalable mode. | [optional] 
+**LokiReadMemoryRequestMib** | Pointer to **int32** | Memory request (in MiB) for the Loki read component when running in simple_scalable mode. | [optional] 
+**LokiReadMemoryLimitMib** | Pointer to **int32** | Memory limit (in MiB) for the Loki read component when running in simple_scalable mode. | [optional] 
+**LokiBackendCpuRequestM** | Pointer to **int32** | CPU request (in milli-CPU) for the Loki backend component when running in simple_scalable mode. | [optional] 
+**LokiBackendCpuLimitM** | Pointer to **int32** | CPU limit (in milli-CPU) for the Loki backend component when running in simple_scalable mode. | [optional] 
+**LokiBackendMemoryRequestMib** | Pointer to **int32** | Memory request (in MiB) for the Loki backend component when running in simple_scalable mode. | [optional] 
+**LokiBackendMemoryLimitMib** | Pointer to **int32** | Memory limit (in MiB) for the Loki backend component when running in simple_scalable mode. | [optional] 
 **RegistryImageRetentionTime** | Pointer to **int32** | Configure the number of seconds before cleaning images in the registry | [optional] 
 **CloudProviderContainerRegistryTags** | Pointer to **map[string]string** | Add additional tags on the cluster dedicated registry | [optional] 
 **AwsEksEnableAlbController** | Pointer to **bool** | Enable the AWS ALB controller to manage the load balancer for the cluster. Note: Changing this feature will create a 10 min max downtime on your application&#39;s public access (time to delete, replace and propagate DNS of the new load balancer) and will requiere to update all services with TCP/UDP open ports. | [optional] [default to true]
@@ -186,6 +203,431 @@ SetLokiLogRetentionInWeek sets LokiLogRetentionInWeek field to given value.
 `func (o *ClusterAdvancedSettings) HasLokiLogRetentionInWeek() bool`
 
 HasLokiLogRetentionInWeek returns a boolean if a field has been set.
+
+### GetLokiDeploymentMode
+
+`func (o *ClusterAdvancedSettings) GetLokiDeploymentMode() string`
+
+GetLokiDeploymentMode returns the LokiDeploymentMode field if non-nil, zero value otherwise.
+
+### GetLokiDeploymentModeOk
+
+`func (o *ClusterAdvancedSettings) GetLokiDeploymentModeOk() (*string, bool)`
+
+GetLokiDeploymentModeOk returns a tuple with the LokiDeploymentMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiDeploymentMode
+
+`func (o *ClusterAdvancedSettings) SetLokiDeploymentMode(v string)`
+
+SetLokiDeploymentMode sets LokiDeploymentMode field to given value.
+
+### HasLokiDeploymentMode
+
+`func (o *ClusterAdvancedSettings) HasLokiDeploymentMode() bool`
+
+HasLokiDeploymentMode returns a boolean if a field has been set.
+
+### GetLokiSingleBinaryCpuRequestM
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryCpuRequestM() int32`
+
+GetLokiSingleBinaryCpuRequestM returns the LokiSingleBinaryCpuRequestM field if non-nil, zero value otherwise.
+
+### GetLokiSingleBinaryCpuRequestMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryCpuRequestMOk() (*int32, bool)`
+
+GetLokiSingleBinaryCpuRequestMOk returns a tuple with the LokiSingleBinaryCpuRequestM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiSingleBinaryCpuRequestM
+
+`func (o *ClusterAdvancedSettings) SetLokiSingleBinaryCpuRequestM(v int32)`
+
+SetLokiSingleBinaryCpuRequestM sets LokiSingleBinaryCpuRequestM field to given value.
+
+### HasLokiSingleBinaryCpuRequestM
+
+`func (o *ClusterAdvancedSettings) HasLokiSingleBinaryCpuRequestM() bool`
+
+HasLokiSingleBinaryCpuRequestM returns a boolean if a field has been set.
+
+### GetLokiSingleBinaryCpuLimitM
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryCpuLimitM() int32`
+
+GetLokiSingleBinaryCpuLimitM returns the LokiSingleBinaryCpuLimitM field if non-nil, zero value otherwise.
+
+### GetLokiSingleBinaryCpuLimitMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryCpuLimitMOk() (*int32, bool)`
+
+GetLokiSingleBinaryCpuLimitMOk returns a tuple with the LokiSingleBinaryCpuLimitM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiSingleBinaryCpuLimitM
+
+`func (o *ClusterAdvancedSettings) SetLokiSingleBinaryCpuLimitM(v int32)`
+
+SetLokiSingleBinaryCpuLimitM sets LokiSingleBinaryCpuLimitM field to given value.
+
+### HasLokiSingleBinaryCpuLimitM
+
+`func (o *ClusterAdvancedSettings) HasLokiSingleBinaryCpuLimitM() bool`
+
+HasLokiSingleBinaryCpuLimitM returns a boolean if a field has been set.
+
+### GetLokiSingleBinaryMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryMemoryRequestMib() int32`
+
+GetLokiSingleBinaryMemoryRequestMib returns the LokiSingleBinaryMemoryRequestMib field if non-nil, zero value otherwise.
+
+### GetLokiSingleBinaryMemoryRequestMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryMemoryRequestMibOk() (*int32, bool)`
+
+GetLokiSingleBinaryMemoryRequestMibOk returns a tuple with the LokiSingleBinaryMemoryRequestMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiSingleBinaryMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) SetLokiSingleBinaryMemoryRequestMib(v int32)`
+
+SetLokiSingleBinaryMemoryRequestMib sets LokiSingleBinaryMemoryRequestMib field to given value.
+
+### HasLokiSingleBinaryMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) HasLokiSingleBinaryMemoryRequestMib() bool`
+
+HasLokiSingleBinaryMemoryRequestMib returns a boolean if a field has been set.
+
+### GetLokiSingleBinaryMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryMemoryLimitMib() int32`
+
+GetLokiSingleBinaryMemoryLimitMib returns the LokiSingleBinaryMemoryLimitMib field if non-nil, zero value otherwise.
+
+### GetLokiSingleBinaryMemoryLimitMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiSingleBinaryMemoryLimitMibOk() (*int32, bool)`
+
+GetLokiSingleBinaryMemoryLimitMibOk returns a tuple with the LokiSingleBinaryMemoryLimitMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiSingleBinaryMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) SetLokiSingleBinaryMemoryLimitMib(v int32)`
+
+SetLokiSingleBinaryMemoryLimitMib sets LokiSingleBinaryMemoryLimitMib field to given value.
+
+### HasLokiSingleBinaryMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) HasLokiSingleBinaryMemoryLimitMib() bool`
+
+HasLokiSingleBinaryMemoryLimitMib returns a boolean if a field has been set.
+
+### GetLokiWriteCpuRequestM
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteCpuRequestM() int32`
+
+GetLokiWriteCpuRequestM returns the LokiWriteCpuRequestM field if non-nil, zero value otherwise.
+
+### GetLokiWriteCpuRequestMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteCpuRequestMOk() (*int32, bool)`
+
+GetLokiWriteCpuRequestMOk returns a tuple with the LokiWriteCpuRequestM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiWriteCpuRequestM
+
+`func (o *ClusterAdvancedSettings) SetLokiWriteCpuRequestM(v int32)`
+
+SetLokiWriteCpuRequestM sets LokiWriteCpuRequestM field to given value.
+
+### HasLokiWriteCpuRequestM
+
+`func (o *ClusterAdvancedSettings) HasLokiWriteCpuRequestM() bool`
+
+HasLokiWriteCpuRequestM returns a boolean if a field has been set.
+
+### GetLokiWriteCpuLimitM
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteCpuLimitM() int32`
+
+GetLokiWriteCpuLimitM returns the LokiWriteCpuLimitM field if non-nil, zero value otherwise.
+
+### GetLokiWriteCpuLimitMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteCpuLimitMOk() (*int32, bool)`
+
+GetLokiWriteCpuLimitMOk returns a tuple with the LokiWriteCpuLimitM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiWriteCpuLimitM
+
+`func (o *ClusterAdvancedSettings) SetLokiWriteCpuLimitM(v int32)`
+
+SetLokiWriteCpuLimitM sets LokiWriteCpuLimitM field to given value.
+
+### HasLokiWriteCpuLimitM
+
+`func (o *ClusterAdvancedSettings) HasLokiWriteCpuLimitM() bool`
+
+HasLokiWriteCpuLimitM returns a boolean if a field has been set.
+
+### GetLokiWriteMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteMemoryRequestMib() int32`
+
+GetLokiWriteMemoryRequestMib returns the LokiWriteMemoryRequestMib field if non-nil, zero value otherwise.
+
+### GetLokiWriteMemoryRequestMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteMemoryRequestMibOk() (*int32, bool)`
+
+GetLokiWriteMemoryRequestMibOk returns a tuple with the LokiWriteMemoryRequestMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiWriteMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) SetLokiWriteMemoryRequestMib(v int32)`
+
+SetLokiWriteMemoryRequestMib sets LokiWriteMemoryRequestMib field to given value.
+
+### HasLokiWriteMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) HasLokiWriteMemoryRequestMib() bool`
+
+HasLokiWriteMemoryRequestMib returns a boolean if a field has been set.
+
+### GetLokiWriteMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteMemoryLimitMib() int32`
+
+GetLokiWriteMemoryLimitMib returns the LokiWriteMemoryLimitMib field if non-nil, zero value otherwise.
+
+### GetLokiWriteMemoryLimitMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiWriteMemoryLimitMibOk() (*int32, bool)`
+
+GetLokiWriteMemoryLimitMibOk returns a tuple with the LokiWriteMemoryLimitMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiWriteMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) SetLokiWriteMemoryLimitMib(v int32)`
+
+SetLokiWriteMemoryLimitMib sets LokiWriteMemoryLimitMib field to given value.
+
+### HasLokiWriteMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) HasLokiWriteMemoryLimitMib() bool`
+
+HasLokiWriteMemoryLimitMib returns a boolean if a field has been set.
+
+### GetLokiReadCpuRequestM
+
+`func (o *ClusterAdvancedSettings) GetLokiReadCpuRequestM() int32`
+
+GetLokiReadCpuRequestM returns the LokiReadCpuRequestM field if non-nil, zero value otherwise.
+
+### GetLokiReadCpuRequestMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiReadCpuRequestMOk() (*int32, bool)`
+
+GetLokiReadCpuRequestMOk returns a tuple with the LokiReadCpuRequestM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiReadCpuRequestM
+
+`func (o *ClusterAdvancedSettings) SetLokiReadCpuRequestM(v int32)`
+
+SetLokiReadCpuRequestM sets LokiReadCpuRequestM field to given value.
+
+### HasLokiReadCpuRequestM
+
+`func (o *ClusterAdvancedSettings) HasLokiReadCpuRequestM() bool`
+
+HasLokiReadCpuRequestM returns a boolean if a field has been set.
+
+### GetLokiReadCpuLimitM
+
+`func (o *ClusterAdvancedSettings) GetLokiReadCpuLimitM() int32`
+
+GetLokiReadCpuLimitM returns the LokiReadCpuLimitM field if non-nil, zero value otherwise.
+
+### GetLokiReadCpuLimitMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiReadCpuLimitMOk() (*int32, bool)`
+
+GetLokiReadCpuLimitMOk returns a tuple with the LokiReadCpuLimitM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiReadCpuLimitM
+
+`func (o *ClusterAdvancedSettings) SetLokiReadCpuLimitM(v int32)`
+
+SetLokiReadCpuLimitM sets LokiReadCpuLimitM field to given value.
+
+### HasLokiReadCpuLimitM
+
+`func (o *ClusterAdvancedSettings) HasLokiReadCpuLimitM() bool`
+
+HasLokiReadCpuLimitM returns a boolean if a field has been set.
+
+### GetLokiReadMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) GetLokiReadMemoryRequestMib() int32`
+
+GetLokiReadMemoryRequestMib returns the LokiReadMemoryRequestMib field if non-nil, zero value otherwise.
+
+### GetLokiReadMemoryRequestMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiReadMemoryRequestMibOk() (*int32, bool)`
+
+GetLokiReadMemoryRequestMibOk returns a tuple with the LokiReadMemoryRequestMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiReadMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) SetLokiReadMemoryRequestMib(v int32)`
+
+SetLokiReadMemoryRequestMib sets LokiReadMemoryRequestMib field to given value.
+
+### HasLokiReadMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) HasLokiReadMemoryRequestMib() bool`
+
+HasLokiReadMemoryRequestMib returns a boolean if a field has been set.
+
+### GetLokiReadMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) GetLokiReadMemoryLimitMib() int32`
+
+GetLokiReadMemoryLimitMib returns the LokiReadMemoryLimitMib field if non-nil, zero value otherwise.
+
+### GetLokiReadMemoryLimitMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiReadMemoryLimitMibOk() (*int32, bool)`
+
+GetLokiReadMemoryLimitMibOk returns a tuple with the LokiReadMemoryLimitMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiReadMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) SetLokiReadMemoryLimitMib(v int32)`
+
+SetLokiReadMemoryLimitMib sets LokiReadMemoryLimitMib field to given value.
+
+### HasLokiReadMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) HasLokiReadMemoryLimitMib() bool`
+
+HasLokiReadMemoryLimitMib returns a boolean if a field has been set.
+
+### GetLokiBackendCpuRequestM
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendCpuRequestM() int32`
+
+GetLokiBackendCpuRequestM returns the LokiBackendCpuRequestM field if non-nil, zero value otherwise.
+
+### GetLokiBackendCpuRequestMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendCpuRequestMOk() (*int32, bool)`
+
+GetLokiBackendCpuRequestMOk returns a tuple with the LokiBackendCpuRequestM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiBackendCpuRequestM
+
+`func (o *ClusterAdvancedSettings) SetLokiBackendCpuRequestM(v int32)`
+
+SetLokiBackendCpuRequestM sets LokiBackendCpuRequestM field to given value.
+
+### HasLokiBackendCpuRequestM
+
+`func (o *ClusterAdvancedSettings) HasLokiBackendCpuRequestM() bool`
+
+HasLokiBackendCpuRequestM returns a boolean if a field has been set.
+
+### GetLokiBackendCpuLimitM
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendCpuLimitM() int32`
+
+GetLokiBackendCpuLimitM returns the LokiBackendCpuLimitM field if non-nil, zero value otherwise.
+
+### GetLokiBackendCpuLimitMOk
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendCpuLimitMOk() (*int32, bool)`
+
+GetLokiBackendCpuLimitMOk returns a tuple with the LokiBackendCpuLimitM field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiBackendCpuLimitM
+
+`func (o *ClusterAdvancedSettings) SetLokiBackendCpuLimitM(v int32)`
+
+SetLokiBackendCpuLimitM sets LokiBackendCpuLimitM field to given value.
+
+### HasLokiBackendCpuLimitM
+
+`func (o *ClusterAdvancedSettings) HasLokiBackendCpuLimitM() bool`
+
+HasLokiBackendCpuLimitM returns a boolean if a field has been set.
+
+### GetLokiBackendMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendMemoryRequestMib() int32`
+
+GetLokiBackendMemoryRequestMib returns the LokiBackendMemoryRequestMib field if non-nil, zero value otherwise.
+
+### GetLokiBackendMemoryRequestMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendMemoryRequestMibOk() (*int32, bool)`
+
+GetLokiBackendMemoryRequestMibOk returns a tuple with the LokiBackendMemoryRequestMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiBackendMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) SetLokiBackendMemoryRequestMib(v int32)`
+
+SetLokiBackendMemoryRequestMib sets LokiBackendMemoryRequestMib field to given value.
+
+### HasLokiBackendMemoryRequestMib
+
+`func (o *ClusterAdvancedSettings) HasLokiBackendMemoryRequestMib() bool`
+
+HasLokiBackendMemoryRequestMib returns a boolean if a field has been set.
+
+### GetLokiBackendMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendMemoryLimitMib() int32`
+
+GetLokiBackendMemoryLimitMib returns the LokiBackendMemoryLimitMib field if non-nil, zero value otherwise.
+
+### GetLokiBackendMemoryLimitMibOk
+
+`func (o *ClusterAdvancedSettings) GetLokiBackendMemoryLimitMibOk() (*int32, bool)`
+
+GetLokiBackendMemoryLimitMibOk returns a tuple with the LokiBackendMemoryLimitMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLokiBackendMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) SetLokiBackendMemoryLimitMib(v int32)`
+
+SetLokiBackendMemoryLimitMib sets LokiBackendMemoryLimitMib field to given value.
+
+### HasLokiBackendMemoryLimitMib
+
+`func (o *ClusterAdvancedSettings) HasLokiBackendMemoryLimitMib() bool`
+
+HasLokiBackendMemoryLimitMib returns a boolean if a field has been set.
 
 ### GetRegistryImageRetentionTime
 
