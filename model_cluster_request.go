@@ -47,6 +47,7 @@ type ClusterRequest struct {
 	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
+	SecretManagerAccesses          []SecretManagerAccessRequest           `json:"secret_manager_accesses,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -672,6 +673,38 @@ func (o *ClusterRequest) SetLabelsGroups(v []ClusterLabelsGroup) {
 	o.LabelsGroups = v
 }
 
+// GetSecretManagerAccesses returns the SecretManagerAccesses field value if set, zero value otherwise.
+func (o *ClusterRequest) GetSecretManagerAccesses() []SecretManagerAccessRequest {
+	if o == nil || IsNil(o.SecretManagerAccesses) {
+		var ret []SecretManagerAccessRequest
+		return ret
+	}
+	return o.SecretManagerAccesses
+}
+
+// GetSecretManagerAccessesOk returns a tuple with the SecretManagerAccesses field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetSecretManagerAccessesOk() ([]SecretManagerAccessRequest, bool) {
+	if o == nil || IsNil(o.SecretManagerAccesses) {
+		return nil, false
+	}
+	return o.SecretManagerAccesses, true
+}
+
+// HasSecretManagerAccesses returns a boolean if a field has been set.
+func (o *ClusterRequest) HasSecretManagerAccesses() bool {
+	if o != nil && !IsNil(o.SecretManagerAccesses) {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretManagerAccesses gets a reference to the given []SecretManagerAccessRequest and assigns it to the SecretManagerAccesses field.
+func (o *ClusterRequest) SetSecretManagerAccesses(v []SecretManagerAccessRequest) {
+	o.SecretManagerAccesses = v
+}
+
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -732,6 +765,9 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.LabelsGroups) {
 		toSerialize["labels_groups"] = o.LabelsGroups
+	}
+	if !IsNil(o.SecretManagerAccesses) {
+		toSerialize["secret_manager_accesses"] = o.SecretManagerAccesses
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -797,6 +833,7 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "infrastructure_charts_parameters")
 		delete(additionalProperties, "keda")
 		delete(additionalProperties, "labels_groups")
+		delete(additionalProperties, "secret_manager_accesses")
 		o.AdditionalProperties = additionalProperties
 	}
 

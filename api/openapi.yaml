@@ -21337,6 +21337,8 @@ components:
             $ref: '#/components/schemas/ClusterKeda'
           labels_groups:
             $ref: '#/components/schemas/ClusterLabelsGroupList'
+          secret_manager_accesses:
+            $ref: '#/components/schemas/SecretManagerAccessResponseList'
         required:
         - cloud_provider
         - name
@@ -21465,6 +21467,25 @@ components:
         name: name
         region: region
         instance_type: T3A_LARGE
+        secret_manager_accesses:
+        - endpoint:
+            mode: AWS_SECRET_MANAGER
+            region: region
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          authentication:
+            mode: AUTOMATICALLY_CONFIGURED
+        - endpoint:
+            mode: AWS_SECRET_MANAGER
+            region: region
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          authentication:
+            mode: AUTOMATICALLY_CONFIGURED
         status: BUILDING
     ClusterDeleteMode:
       default: DEFAULT
@@ -22260,6 +22281,21 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cloud_provider: AWS
           region: region
+        secret_manager_accesses:
+        - endpoint:
+            mode: AWS_SECRET_MANAGER
+            region: region
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          authentication:
+            mode: AUTOMATICALLY_CONFIGURED
+        - endpoint:
+            mode: AWS_SECRET_MANAGER
+            region: region
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          authentication:
+            mode: AUTOMATICALLY_CONFIGURED
       properties:
         name:
           description: name is case-insensitive
@@ -22331,6 +22367,11 @@ components:
           type: array
           x-stoplight:
             id: imn8c9l4fab56
+        secret_manager_accesses:
+          items:
+            $ref: '#/components/schemas/SecretManagerAccessRequest'
+          title: SecretManagerAccessRequestList
+          type: array
       required:
       - cloud_provider
       - name
@@ -22460,6 +22501,25 @@ components:
           name: name
           region: region
           instance_type: T3A_LARGE
+          secret_manager_accesses:
+          - endpoint:
+              mode: AWS_SECRET_MANAGER
+              region: region
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            authentication:
+              mode: AUTOMATICALLY_CONFIGURED
+          - endpoint:
+              mode: AWS_SECRET_MANAGER
+              region: region
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            authentication:
+              mode: AUTOMATICALLY_CONFIGURED
           status: BUILDING
         - kubernetes: MANAGED
           infrastructure_outputs:
@@ -22582,6 +22642,25 @@ components:
           name: name
           region: region
           instance_type: T3A_LARGE
+          secret_manager_accesses:
+          - endpoint:
+              mode: AWS_SECRET_MANAGER
+              region: region
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            authentication:
+              mode: AUTOMATICALLY_CONFIGURED
+          - endpoint:
+              mode: AWS_SECRET_MANAGER
+              region: region
+            updated_at: 2000-01-23T04:56:07.000+00:00
+            name: name
+            created_at: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            authentication:
+              mode: AUTOMATICALLY_CONFIGURED
           status: BUILDING
       properties:
         results:
@@ -40004,6 +40083,195 @@ components:
       type: array
       x-stoplight:
         id: imn8c9l4fab56
+    SecretManagerAccessRequestList:
+      items:
+        $ref: '#/components/schemas/SecretManagerAccessRequest'
+      title: SecretManagerAccessRequestList
+      type: array
+    SecretManagerAccessRequest:
+      example:
+        endpoint:
+          mode: AWS_SECRET_MANAGER
+          region: region
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authentication:
+          mode: AUTOMATICALLY_CONFIGURED
+      properties:
+        id:
+          format: uuid
+          nullable: true
+          type: string
+        name:
+          type: string
+        endpoint:
+          $ref: '#/components/schemas/SecretManagerEndpointConfigurationDto'
+        authentication:
+          $ref: '#/components/schemas/SecretManagerAuthenticationDto'
+      required:
+      - authentication
+      - endpoint
+      - name
+      type: object
+    SecretManagerAccessResponseList:
+      items:
+        $ref: '#/components/schemas/SecretManagerAccessResponse'
+      title: SecretManagerAccessResponseList
+      type: array
+    SecretManagerAccessResponse:
+      example:
+        endpoint:
+          mode: AWS_SECRET_MANAGER
+          region: region
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        authentication:
+          mode: AUTOMATICALLY_CONFIGURED
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        endpoint:
+          $ref: '#/components/schemas/SecretManagerEndpointConfigurationDto'
+        authentication:
+          $ref: '#/components/schemas/SecretManagerAuthenticationDto'
+      required:
+      - authentication
+      - created_at
+      - endpoint
+      - id
+      - name
+      - updated_at
+      type: object
+    SecretManagerEndpointConfigurationDto:
+      discriminator:
+        mapping:
+          AWS_SECRET_MANAGER: '#/components/schemas/AwsSecretManagerEndpointDto'
+          AWS_PARAMETER_STORE: '#/components/schemas/AwsParameterStoreEndpointDto'
+          GCP_SECRET_MANAGER: '#/components/schemas/GcpSecretManagerEndpointDto'
+        propertyName: mode
+      oneOf:
+      - $ref: '#/components/schemas/AwsSecretManagerEndpointDto'
+      - $ref: '#/components/schemas/AwsParameterStoreEndpointDto'
+      - $ref: '#/components/schemas/GcpSecretManagerEndpointDto'
+    AwsSecretManagerEndpointDto:
+      example:
+        mode: AWS_SECRET_MANAGER
+        region: region
+      properties:
+        mode:
+          enum:
+          - AWS_SECRET_MANAGER
+          type: string
+        region:
+          type: string
+      required:
+      - mode
+      - region
+      type: object
+    AwsParameterStoreEndpointDto:
+      properties:
+        mode:
+          enum:
+          - AWS_PARAMETER_STORE
+          type: string
+        region:
+          type: string
+      required:
+      - mode
+      - region
+      type: object
+    GcpSecretManagerEndpointDto:
+      properties:
+        mode:
+          enum:
+          - GCP_SECRET_MANAGER
+          type: string
+        region:
+          type: string
+        projectId:
+          type: string
+      required:
+      - mode
+      - projectId
+      - region
+      type: object
+    SecretManagerAuthenticationDto:
+      discriminator:
+        mapping:
+          AUTOMATICALLY_CONFIGURED: '#/components/schemas/AutomaticallyConfiguredAuthDto'
+          AWS_ROLE_ARN: '#/components/schemas/AwsRoleArnAuthDto'
+          AWS_STATIC_CREDENTIALS: '#/components/schemas/AwsStaticCredentialsAuthDto'
+          GCP_JSON_CREDENTIALS: '#/components/schemas/GcpJsonCredentialsAuthDto'
+        propertyName: mode
+      oneOf:
+      - $ref: '#/components/schemas/AutomaticallyConfiguredAuthDto'
+      - $ref: '#/components/schemas/AwsRoleArnAuthDto'
+      - $ref: '#/components/schemas/AwsStaticCredentialsAuthDto'
+      - $ref: '#/components/schemas/GcpJsonCredentialsAuthDto'
+    AutomaticallyConfiguredAuthDto:
+      example:
+        mode: AUTOMATICALLY_CONFIGURED
+      properties:
+        mode:
+          enum:
+          - AUTOMATICALLY_CONFIGURED
+          type: string
+      required:
+      - mode
+      type: object
+    AwsRoleArnAuthDto:
+      properties:
+        mode:
+          enum:
+          - AWS_ROLE_ARN
+          type: string
+        role_arn:
+          type: string
+      required:
+      - mode
+      - role_arn
+      type: object
+    AwsStaticCredentialsAuthDto:
+      properties:
+        mode:
+          enum:
+          - AWS_STATIC_CREDENTIALS
+          type: string
+        region:
+          type: string
+        access_key:
+          type: string
+        secret_key:
+          nullable: true
+          type: string
+      required:
+      - access_key
+      - mode
+      - region
+      type: object
+    GcpJsonCredentialsAuthDto:
+      properties:
+        mode:
+          enum:
+          - GCP_JSON_CREDENTIALS
+          type: string
+        json_credentials:
+          nullable: true
+          type: string
+      required:
+      - mode
+      type: object
     ClusterEnvironmentResponseList:
       example:
         results:
