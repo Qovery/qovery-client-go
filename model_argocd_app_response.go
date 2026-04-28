@@ -29,6 +29,12 @@ type ArgocdAppResponse struct {
 	Name                 string          `json:"name"`
 	ServiceType          ServiceTypeEnum `json:"service_type"`
 	Namespace            string          `json:"namespace"`
+	EnvironmentId        string          `json:"environment_id"`
+	ClusterId            string          `json:"cluster_id"`
+	LastSyncedAt         NullableTime    `json:"last_synced_at,omitempty"`
+	ManifestRevision     NullableString  `json:"manifest_revision,omitempty"`
+	SourceRepoUrl        NullableString  `json:"source_repo_url,omitempty"`
+	SourceTargetRevision NullableString  `json:"source_target_revision,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,13 +44,15 @@ type _ArgocdAppResponse ArgocdAppResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string) *ArgocdAppResponse {
+func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string, environmentId string, clusterId string) *ArgocdAppResponse {
 	this := ArgocdAppResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.ServiceType = serviceType
 	this.Namespace = namespace
+	this.EnvironmentId = environmentId
+	this.ClusterId = clusterId
 	return &this
 }
 
@@ -208,6 +216,226 @@ func (o *ArgocdAppResponse) SetNamespace(v string) {
 	o.Namespace = v
 }
 
+// GetEnvironmentId returns the EnvironmentId field value
+func (o *ArgocdAppResponse) GetEnvironmentId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EnvironmentId
+}
+
+// GetEnvironmentIdOk returns a tuple with the EnvironmentId field value
+// and a boolean to check if the value has been set.
+func (o *ArgocdAppResponse) GetEnvironmentIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnvironmentId, true
+}
+
+// SetEnvironmentId sets field value
+func (o *ArgocdAppResponse) SetEnvironmentId(v string) {
+	o.EnvironmentId = v
+}
+
+// GetClusterId returns the ClusterId field value
+func (o *ArgocdAppResponse) GetClusterId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.ClusterId
+}
+
+// GetClusterIdOk returns a tuple with the ClusterId field value
+// and a boolean to check if the value has been set.
+func (o *ArgocdAppResponse) GetClusterIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ClusterId, true
+}
+
+// SetClusterId sets field value
+func (o *ArgocdAppResponse) SetClusterId(v string) {
+	o.ClusterId = v
+}
+
+// GetLastSyncedAt returns the LastSyncedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ArgocdAppResponse) GetLastSyncedAt() time.Time {
+	if o == nil || IsNil(o.LastSyncedAt.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastSyncedAt.Get()
+}
+
+// GetLastSyncedAtOk returns a tuple with the LastSyncedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ArgocdAppResponse) GetLastSyncedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastSyncedAt.Get(), o.LastSyncedAt.IsSet()
+}
+
+// HasLastSyncedAt returns a boolean if a field has been set.
+func (o *ArgocdAppResponse) HasLastSyncedAt() bool {
+	if o != nil && o.LastSyncedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastSyncedAt gets a reference to the given NullableTime and assigns it to the LastSyncedAt field.
+func (o *ArgocdAppResponse) SetLastSyncedAt(v time.Time) {
+	o.LastSyncedAt.Set(&v)
+}
+
+// SetLastSyncedAtNil sets the value for LastSyncedAt to be an explicit nil
+func (o *ArgocdAppResponse) SetLastSyncedAtNil() {
+	o.LastSyncedAt.Set(nil)
+}
+
+// UnsetLastSyncedAt ensures that no value is present for LastSyncedAt, not even an explicit nil
+func (o *ArgocdAppResponse) UnsetLastSyncedAt() {
+	o.LastSyncedAt.Unset()
+}
+
+// GetManifestRevision returns the ManifestRevision field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ArgocdAppResponse) GetManifestRevision() string {
+	if o == nil || IsNil(o.ManifestRevision.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ManifestRevision.Get()
+}
+
+// GetManifestRevisionOk returns a tuple with the ManifestRevision field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ArgocdAppResponse) GetManifestRevisionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ManifestRevision.Get(), o.ManifestRevision.IsSet()
+}
+
+// HasManifestRevision returns a boolean if a field has been set.
+func (o *ArgocdAppResponse) HasManifestRevision() bool {
+	if o != nil && o.ManifestRevision.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetManifestRevision gets a reference to the given NullableString and assigns it to the ManifestRevision field.
+func (o *ArgocdAppResponse) SetManifestRevision(v string) {
+	o.ManifestRevision.Set(&v)
+}
+
+// SetManifestRevisionNil sets the value for ManifestRevision to be an explicit nil
+func (o *ArgocdAppResponse) SetManifestRevisionNil() {
+	o.ManifestRevision.Set(nil)
+}
+
+// UnsetManifestRevision ensures that no value is present for ManifestRevision, not even an explicit nil
+func (o *ArgocdAppResponse) UnsetManifestRevision() {
+	o.ManifestRevision.Unset()
+}
+
+// GetSourceRepoUrl returns the SourceRepoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ArgocdAppResponse) GetSourceRepoUrl() string {
+	if o == nil || IsNil(o.SourceRepoUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SourceRepoUrl.Get()
+}
+
+// GetSourceRepoUrlOk returns a tuple with the SourceRepoUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ArgocdAppResponse) GetSourceRepoUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SourceRepoUrl.Get(), o.SourceRepoUrl.IsSet()
+}
+
+// HasSourceRepoUrl returns a boolean if a field has been set.
+func (o *ArgocdAppResponse) HasSourceRepoUrl() bool {
+	if o != nil && o.SourceRepoUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceRepoUrl gets a reference to the given NullableString and assigns it to the SourceRepoUrl field.
+func (o *ArgocdAppResponse) SetSourceRepoUrl(v string) {
+	o.SourceRepoUrl.Set(&v)
+}
+
+// SetSourceRepoUrlNil sets the value for SourceRepoUrl to be an explicit nil
+func (o *ArgocdAppResponse) SetSourceRepoUrlNil() {
+	o.SourceRepoUrl.Set(nil)
+}
+
+// UnsetSourceRepoUrl ensures that no value is present for SourceRepoUrl, not even an explicit nil
+func (o *ArgocdAppResponse) UnsetSourceRepoUrl() {
+	o.SourceRepoUrl.Unset()
+}
+
+// GetSourceTargetRevision returns the SourceTargetRevision field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ArgocdAppResponse) GetSourceTargetRevision() string {
+	if o == nil || IsNil(o.SourceTargetRevision.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SourceTargetRevision.Get()
+}
+
+// GetSourceTargetRevisionOk returns a tuple with the SourceTargetRevision field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ArgocdAppResponse) GetSourceTargetRevisionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SourceTargetRevision.Get(), o.SourceTargetRevision.IsSet()
+}
+
+// HasSourceTargetRevision returns a boolean if a field has been set.
+func (o *ArgocdAppResponse) HasSourceTargetRevision() bool {
+	if o != nil && o.SourceTargetRevision.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSourceTargetRevision gets a reference to the given NullableString and assigns it to the SourceTargetRevision field.
+func (o *ArgocdAppResponse) SetSourceTargetRevision(v string) {
+	o.SourceTargetRevision.Set(&v)
+}
+
+// SetSourceTargetRevisionNil sets the value for SourceTargetRevision to be an explicit nil
+func (o *ArgocdAppResponse) SetSourceTargetRevisionNil() {
+	o.SourceTargetRevision.Set(nil)
+}
+
+// UnsetSourceTargetRevision ensures that no value is present for SourceTargetRevision, not even an explicit nil
+func (o *ArgocdAppResponse) UnsetSourceTargetRevision() {
+	o.SourceTargetRevision.Unset()
+}
+
 func (o ArgocdAppResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -226,6 +454,20 @@ func (o ArgocdAppResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["service_type"] = o.ServiceType
 	toSerialize["namespace"] = o.Namespace
+	toSerialize["environment_id"] = o.EnvironmentId
+	toSerialize["cluster_id"] = o.ClusterId
+	if o.LastSyncedAt.IsSet() {
+		toSerialize["last_synced_at"] = o.LastSyncedAt.Get()
+	}
+	if o.ManifestRevision.IsSet() {
+		toSerialize["manifest_revision"] = o.ManifestRevision.Get()
+	}
+	if o.SourceRepoUrl.IsSet() {
+		toSerialize["source_repo_url"] = o.SourceRepoUrl.Get()
+	}
+	if o.SourceTargetRevision.IsSet() {
+		toSerialize["source_target_revision"] = o.SourceTargetRevision.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -244,6 +486,8 @@ func (o *ArgocdAppResponse) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"service_type",
 		"namespace",
+		"environment_id",
+		"cluster_id",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -279,6 +523,12 @@ func (o *ArgocdAppResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "environment_id")
+		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "last_synced_at")
+		delete(additionalProperties, "manifest_revision")
+		delete(additionalProperties, "source_repo_url")
+		delete(additionalProperties, "source_target_revision")
 		o.AdditionalProperties = additionalProperties
 	}
 

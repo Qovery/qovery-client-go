@@ -17664,6 +17664,35 @@ paths:
       - Terraform Resources
       x-stoplight:
         id: terraform-resources-get
+  /argocdApp/{argocdAppId}:
+    get:
+      operationId: getArgoCdApp
+      parameters:
+      - description: ArgoCD App ID
+        explode: false
+        in: path
+        name: argocdAppId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArgocdAppResponse'
+          description: Get ArgoCD app by ID
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get ArgoCD app by ID
+      tags:
+      - ArgoCD
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
@@ -18639,6 +18668,16 @@ components:
       explode: false
       in: path
       name: variableId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    argocdAppId:
+      description: ArgoCD App ID
+      explode: false
+      in: path
+      name: argocdAppId
       required: true
       schema:
         format: uuid
@@ -40043,12 +40082,46 @@ components:
             $ref: '#/components/schemas/ServiceTypeEnum'
           namespace:
             type: string
+          environment_id:
+            format: uuid
+            type: string
+          cluster_id:
+            format: uuid
+            type: string
+          last_synced_at:
+            format: date-time
+            nullable: true
+            type: string
+          manifest_revision:
+            nullable: true
+            type: string
+          source_repo_url:
+            nullable: true
+            type: string
+          source_target_revision:
+            nullable: true
+            type: string
         required:
+        - cluster_id
+        - environment_id
         - name
         - namespace
         - service_type
         type: object
       description: An ArgoCD service
+      example:
+        service_type: APPLICATION
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        last_synced_at: 2000-01-23T04:56:07.000+00:00
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        namespace: namespace
+        created_at: 2000-01-23T04:56:07.000+00:00
+        source_target_revision: source_target_revision
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        manifest_revision: manifest_revision
+        source_repo_url: source_repo_url
     listDirectoriesFromGitRepository_200_response:
       example:
         results:
