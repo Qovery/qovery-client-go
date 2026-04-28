@@ -34546,6 +34546,7 @@ components:
         is_secret: true
         variable_parent_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         description: description
+        secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         value: value
         key: key
       properties:
@@ -34583,6 +34584,10 @@ components:
           type: boolean
           x-stoplight:
             id: docfts24qtko6
+        secret_manager_access_id:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - is_secret
       - key
@@ -34594,6 +34599,7 @@ components:
       example:
         enable_interpolation_in_file: true
         description: description
+        secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         value: value
         key: key
       properties:
@@ -34614,6 +34620,10 @@ components:
         enable_interpolation_in_file:
           nullable: true
           type: boolean
+        secret_manager_access_id:
+          format: uuid
+          nullable: true
+          type: string
       required:
       - key
       type: object
@@ -34659,6 +34669,10 @@ components:
             type: boolean
             x-stoplight:
               id: 43yxsvszy5k8o
+          secret_manager_access_id:
+            format: uuid
+            nullable: true
+            type: string
         required:
         - is_secret
         - key
@@ -34694,6 +34708,7 @@ components:
           value: value
           key: DATABASE_PSQL_NAME
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         value: value
         key: key
     VariableResponseList:
@@ -34726,6 +34741,7 @@ components:
             value: value
             key: DATABASE_PSQL_NAME
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
         - enable_interpolation_in_file: true
@@ -34755,6 +34771,7 @@ components:
             value: value
             key: DATABASE_PSQL_NAME
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
       properties:

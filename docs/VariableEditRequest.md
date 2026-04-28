@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Value** | Pointer to **NullableString** | the value of the environment variable | [optional] 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 **EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -153,6 +154,41 @@ HasEnableInterpolationInFile returns a boolean if a field has been set.
 `func (o *VariableEditRequest) UnsetEnableInterpolationInFile()`
 
 UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+### GetSecretManagerAccessId
+
+`func (o *VariableEditRequest) GetSecretManagerAccessId() string`
+
+GetSecretManagerAccessId returns the SecretManagerAccessId field if non-nil, zero value otherwise.
+
+### GetSecretManagerAccessIdOk
+
+`func (o *VariableEditRequest) GetSecretManagerAccessIdOk() (*string, bool)`
+
+GetSecretManagerAccessIdOk returns a tuple with the SecretManagerAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretManagerAccessId
+
+`func (o *VariableEditRequest) SetSecretManagerAccessId(v string)`
+
+SetSecretManagerAccessId sets SecretManagerAccessId field to given value.
+
+### HasSecretManagerAccessId
+
+`func (o *VariableEditRequest) HasSecretManagerAccessId() bool`
+
+HasSecretManagerAccessId returns a boolean if a field has been set.
+
+### SetSecretManagerAccessIdNil
+
+`func (o *VariableEditRequest) SetSecretManagerAccessIdNil(b bool)`
+
+ SetSecretManagerAccessIdNil sets the value for SecretManagerAccessId to be an explicit nil
+
+### UnsetSecretManagerAccessId
+`func (o *VariableEditRequest) UnsetSecretManagerAccessId()`
+
+UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,6 +28,7 @@ type VariableEditRequest struct {
 	// optional variable description (255 characters maximum)
 	Description               NullableString `json:"description,omitempty"`
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
+	SecretManagerAccessId     NullableString `json:"secret_manager_access_id,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -204,6 +205,49 @@ func (o *VariableEditRequest) UnsetEnableInterpolationInFile() {
 	o.EnableInterpolationInFile.Unset()
 }
 
+// GetSecretManagerAccessId returns the SecretManagerAccessId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableEditRequest) GetSecretManagerAccessId() string {
+	if o == nil || IsNil(o.SecretManagerAccessId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SecretManagerAccessId.Get()
+}
+
+// GetSecretManagerAccessIdOk returns a tuple with the SecretManagerAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableEditRequest) GetSecretManagerAccessIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SecretManagerAccessId.Get(), o.SecretManagerAccessId.IsSet()
+}
+
+// HasSecretManagerAccessId returns a boolean if a field has been set.
+func (o *VariableEditRequest) HasSecretManagerAccessId() bool {
+	if o != nil && o.SecretManagerAccessId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretManagerAccessId gets a reference to the given NullableString and assigns it to the SecretManagerAccessId field.
+func (o *VariableEditRequest) SetSecretManagerAccessId(v string) {
+	o.SecretManagerAccessId.Set(&v)
+}
+
+// SetSecretManagerAccessIdNil sets the value for SecretManagerAccessId to be an explicit nil
+func (o *VariableEditRequest) SetSecretManagerAccessIdNil() {
+	o.SecretManagerAccessId.Set(nil)
+}
+
+// UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
+func (o *VariableEditRequest) UnsetSecretManagerAccessId() {
+	o.SecretManagerAccessId.Unset()
+}
+
 func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -223,6 +267,9 @@ func (o VariableEditRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.EnableInterpolationInFile.IsSet() {
 		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
+	}
+	if o.SecretManagerAccessId.IsSet() {
+		toSerialize["secret_manager_access_id"] = o.SecretManagerAccessId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -271,6 +318,7 @@ func (o *VariableEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
+		delete(additionalProperties, "secret_manager_access_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

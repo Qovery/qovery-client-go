@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **VariableParentId** | **string** | based on the selected scope, it contains the ID of the service, environment or project where the variable is attached | 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 **EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
+**SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -237,6 +238,41 @@ HasEnableInterpolationInFile returns a boolean if a field has been set.
 `func (o *VariableRequest) UnsetEnableInterpolationInFile()`
 
 UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
+### GetSecretManagerAccessId
+
+`func (o *VariableRequest) GetSecretManagerAccessId() string`
+
+GetSecretManagerAccessId returns the SecretManagerAccessId field if non-nil, zero value otherwise.
+
+### GetSecretManagerAccessIdOk
+
+`func (o *VariableRequest) GetSecretManagerAccessIdOk() (*string, bool)`
+
+GetSecretManagerAccessIdOk returns a tuple with the SecretManagerAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretManagerAccessId
+
+`func (o *VariableRequest) SetSecretManagerAccessId(v string)`
+
+SetSecretManagerAccessId sets SecretManagerAccessId field to given value.
+
+### HasSecretManagerAccessId
+
+`func (o *VariableRequest) HasSecretManagerAccessId() bool`
+
+HasSecretManagerAccessId returns a boolean if a field has been set.
+
+### SetSecretManagerAccessIdNil
+
+`func (o *VariableRequest) SetSecretManagerAccessIdNil(b bool)`
+
+ SetSecretManagerAccessIdNil sets the value for SecretManagerAccessId to be an explicit nil
+
+### UnsetSecretManagerAccessId
+`func (o *VariableRequest) UnsetSecretManagerAccessId()`
+
+UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

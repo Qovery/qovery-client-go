@@ -38,10 +38,11 @@ type VariableResponse struct {
 	ServiceName *string                `json:"service_name,omitempty"`
 	ServiceType *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
-	OwnedBy                   *string `json:"owned_by,omitempty"`
-	IsSecret                  bool    `json:"is_secret"`
-	Description               *string `json:"description,omitempty"`
-	EnableInterpolationInFile *bool   `json:"enable_interpolation_in_file,omitempty"`
+	OwnedBy                   *string        `json:"owned_by,omitempty"`
+	IsSecret                  bool           `json:"is_secret"`
+	Description               *string        `json:"description,omitempty"`
+	EnableInterpolationInFile *bool          `json:"enable_interpolation_in_file,omitempty"`
+	SecretManagerAccessId     NullableString `json:"secret_manager_access_id,omitempty"`
 	AdditionalProperties      map[string]interface{}
 }
 
@@ -572,6 +573,49 @@ func (o *VariableResponse) SetEnableInterpolationInFile(v bool) {
 	o.EnableInterpolationInFile = &v
 }
 
+// GetSecretManagerAccessId returns the SecretManagerAccessId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableResponse) GetSecretManagerAccessId() string {
+	if o == nil || IsNil(o.SecretManagerAccessId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SecretManagerAccessId.Get()
+}
+
+// GetSecretManagerAccessIdOk returns a tuple with the SecretManagerAccessId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableResponse) GetSecretManagerAccessIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SecretManagerAccessId.Get(), o.SecretManagerAccessId.IsSet()
+}
+
+// HasSecretManagerAccessId returns a boolean if a field has been set.
+func (o *VariableResponse) HasSecretManagerAccessId() bool {
+	if o != nil && o.SecretManagerAccessId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSecretManagerAccessId gets a reference to the given NullableString and assigns it to the SecretManagerAccessId field.
+func (o *VariableResponse) SetSecretManagerAccessId(v string) {
+	o.SecretManagerAccessId.Set(&v)
+}
+
+// SetSecretManagerAccessIdNil sets the value for SecretManagerAccessId to be an explicit nil
+func (o *VariableResponse) SetSecretManagerAccessIdNil() {
+	o.SecretManagerAccessId.Set(nil)
+}
+
+// UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
+func (o *VariableResponse) UnsetSecretManagerAccessId() {
+	o.SecretManagerAccessId.Unset()
+}
+
 func (o VariableResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -618,6 +662,9 @@ func (o VariableResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.EnableInterpolationInFile) {
 		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile
+	}
+	if o.SecretManagerAccessId.IsSet() {
+		toSerialize["secret_manager_access_id"] = o.SecretManagerAccessId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -685,6 +732,7 @@ func (o *VariableResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "is_secret")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
+		delete(additionalProperties, "secret_manager_access_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

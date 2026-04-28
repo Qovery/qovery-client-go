@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **IsSecret** | **bool** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
+**SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -451,6 +452,41 @@ SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value
 
 HasEnableInterpolationInFile returns a boolean if a field has been set.
 
+### GetSecretManagerAccessId
+
+`func (o *VariableResponse) GetSecretManagerAccessId() string`
+
+GetSecretManagerAccessId returns the SecretManagerAccessId field if non-nil, zero value otherwise.
+
+### GetSecretManagerAccessIdOk
+
+`func (o *VariableResponse) GetSecretManagerAccessIdOk() (*string, bool)`
+
+GetSecretManagerAccessIdOk returns a tuple with the SecretManagerAccessId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSecretManagerAccessId
+
+`func (o *VariableResponse) SetSecretManagerAccessId(v string)`
+
+SetSecretManagerAccessId sets SecretManagerAccessId field to given value.
+
+### HasSecretManagerAccessId
+
+`func (o *VariableResponse) HasSecretManagerAccessId() bool`
+
+HasSecretManagerAccessId returns a boolean if a field has been set.
+
+### SetSecretManagerAccessIdNil
+
+`func (o *VariableResponse) SetSecretManagerAccessIdNil(b bool)`
+
+ SetSecretManagerAccessIdNil sets the value for SecretManagerAccessId to be an explicit nil
+
+### UnsetSecretManagerAccessId
+`func (o *VariableResponse) UnsetSecretManagerAccessId()`
+
+UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
