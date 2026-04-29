@@ -493,6 +493,125 @@ func (a *ArgoCDAPIService) GetArgoCdCredentialsExecute(r ApiGetArgoCdCredentials
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListArgoCdDestinationClusterMappingsRequest struct {
+	ctx            context.Context
+	ApiService     *ArgoCDAPIService
+	organizationId string
+}
+
+func (r ApiListArgoCdDestinationClusterMappingsRequest) Execute() (*ArgoCdInstanceMappingResponseList, *http.Response, error) {
+	return r.ApiService.ListArgoCdDestinationClusterMappingsExecute(r)
+}
+
+/*
+ListArgoCdDestinationClusterMappings List ArgoCD instance mappings for an organization
+
+Returns one entry per ArgoCD agent cluster that has credentials configured.
+Each entry lists linked clusters and unlinked clusters. Requires VIEWER role.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiListArgoCdDestinationClusterMappingsRequest
+*/
+func (a *ArgoCDAPIService) ListArgoCdDestinationClusterMappings(ctx context.Context, organizationId string) ApiListArgoCdDestinationClusterMappingsRequest {
+	return ApiListArgoCdDestinationClusterMappingsRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ArgoCdInstanceMappingResponseList
+func (a *ArgoCDAPIService) ListArgoCdDestinationClusterMappingsExecute(r ApiListArgoCdDestinationClusterMappingsRequest) (*ArgoCdInstanceMappingResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ArgoCdInstanceMappingResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArgoCDAPIService.ListArgoCdDestinationClusterMappings")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/argoCdDestinationClusterMapping"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiSaveArgoCdCredentialsRequest struct {
 	ctx                      context.Context
 	ApiService               *ArgoCDAPIService
@@ -571,6 +690,137 @@ func (a *ArgoCDAPIService) SaveArgoCdCredentialsExecute(r ApiSaveArgoCdCredentia
 	}
 	// body params
 	localVarPostBody = r.argoCdCredentialsRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiSaveArgoCdDestinationClusterMappingRequest struct {
+	ctx                                    context.Context
+	ApiService                             *ArgoCDAPIService
+	organizationId                         string
+	argoCdDestinationClusterMappingRequest *ArgoCdDestinationClusterMappingRequest
+}
+
+func (r ApiSaveArgoCdDestinationClusterMappingRequest) ArgoCdDestinationClusterMappingRequest(argoCdDestinationClusterMappingRequest ArgoCdDestinationClusterMappingRequest) ApiSaveArgoCdDestinationClusterMappingRequest {
+	r.argoCdDestinationClusterMappingRequest = &argoCdDestinationClusterMappingRequest
+	return r
+}
+
+func (r ApiSaveArgoCdDestinationClusterMappingRequest) Execute() (*ArgoCdDestinationClusterMappingResponse, *http.Response, error) {
+	return r.ApiService.SaveArgoCdDestinationClusterMappingExecute(r)
+}
+
+/*
+SaveArgoCdDestinationClusterMapping Save an ArgoCD destination cluster mapping
+
+Map an ArgoCD destination cluster URL to a Qovery cluster for a given agent cluster.
+If a mapping for the same (agentClusterId, argocdClusterUrl) already exists, it is updated.
+Requires ADMIN role on the agent cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiSaveArgoCdDestinationClusterMappingRequest
+*/
+func (a *ArgoCDAPIService) SaveArgoCdDestinationClusterMapping(ctx context.Context, organizationId string) ApiSaveArgoCdDestinationClusterMappingRequest {
+	return ApiSaveArgoCdDestinationClusterMappingRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ArgoCdDestinationClusterMappingResponse
+func (a *ArgoCDAPIService) SaveArgoCdDestinationClusterMappingExecute(r ApiSaveArgoCdDestinationClusterMappingRequest) (*ArgoCdDestinationClusterMappingResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ArgoCdDestinationClusterMappingResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArgoCDAPIService.SaveArgoCdDestinationClusterMapping")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/argoCdDestinationClusterMapping"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.argoCdDestinationClusterMappingRequest == nil {
+		return localVarReturnValue, nil, reportError("argoCdDestinationClusterMappingRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.argoCdDestinationClusterMappingRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

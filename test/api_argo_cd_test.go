@@ -77,6 +77,20 @@ func Test_qovery_ArgoCDAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ArgoCDAPIService ListArgoCdDestinationClusterMappings", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ArgoCDAPI.ListArgoCdDestinationClusterMappings(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ArgoCDAPIService SaveArgoCdCredentials", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -84,6 +98,20 @@ func Test_qovery_ArgoCDAPIService(t *testing.T) {
 		var clusterId string
 
 		resp, httpRes, err := apiClient.ArgoCDAPI.SaveArgoCdCredentials(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ArgoCDAPIService SaveArgoCdDestinationClusterMapping", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ArgoCDAPI.SaveArgoCdDestinationClusterMapping(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

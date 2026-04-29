@@ -5155,6 +5155,78 @@ paths:
       summary: Check ArgoCD connection
       tags:
       - ArgoCD
+  /organization/{organizationId}/argoCdDestinationClusterMapping:
+    get:
+      description: |
+        Returns one entry per ArgoCD agent cluster that has credentials configured.
+        Each entry lists linked clusters and unlinked clusters. Requires VIEWER role.
+      operationId: listArgoCdDestinationClusterMappings
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArgoCdInstanceMappingResponseList'
+          description: ArgoCD instance mapping list
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List ArgoCD instance mappings for an organization
+      tags:
+      - ArgoCD
+    post:
+      description: |
+        Map an ArgoCD destination cluster URL to a Qovery cluster for a given agent cluster.
+        If a mapping for the same (agentClusterId, argocdClusterUrl) already exists, it is updated.
+        Requires ADMIN role on the agent cluster.
+      operationId: saveArgoCdDestinationClusterMapping
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ArgoCdDestinationClusterMappingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArgoCdDestinationClusterMappingResponse'
+          description: Mapping saved
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Save an ArgoCD destination cluster mapping
+      tags:
+      - ArgoCD
   /cluster/{clusterId}/upgrade:
     post:
       description: allows to upgrade a cluster to next available kubernetes version
@@ -18821,6 +18893,13 @@ components:
       - id
       - updated_at
       type: object
+    ArgoCdConnectionStatusEnum:
+      description: Connection status of an ArgoCD instance
+      enum:
+      - connected
+      - error
+      example: connected
+      type: string
     ArgoCdConnectionCheckResponse:
       example:
         reason: authentication_failed
@@ -18828,12 +18907,7 @@ components:
         status: connected
       properties:
         status:
-          description: Connection result
-          enum:
-          - connected
-          - error
-          example: connected
-          type: string
+          $ref: '#/components/schemas/ArgoCdConnectionStatusEnum'
         app_count:
           description: Number of ArgoCD applications visible with the provided token.
             Present only when status is "connected".
@@ -18849,6 +18923,251 @@ components:
           type: string
       required:
       - status
+      type: object
+    ArgoCdDestinationClusterMappingRequest:
+      example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        argocd_cluster_url: https://kubernetes.default.svc
+      properties:
+        agent_cluster_id:
+          description: ID of the Qovery cluster where the ArgoCD instance is running
+          format: uuid
+          type: string
+        argocd_cluster_url:
+          description: ArgoCD destination cluster URL as reported by ArgoCD
+          example: https://kubernetes.default.svc
+          type: string
+        cluster_id:
+          description: ID of the Qovery cluster to map this ArgoCD destination to
+          format: uuid
+          type: string
+      required:
+      - agent_cluster_id
+      - argocd_cluster_url
+      - cluster_id
+      type: object
+    ArgoCdDestinationClusterMappingResponse:
+      example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        argocd_cluster_url: https://kubernetes.default.svc
+      properties:
+        agent_cluster_id:
+          format: uuid
+          type: string
+        argocd_cluster_url:
+          example: https://kubernetes.default.svc
+          type: string
+        cluster_id:
+          format: uuid
+          nullable: true
+          type: string
+      required:
+      - agent_cluster_id
+      - argocd_cluster_url
+      - cluster_id
+      type: object
+    ArgoCdLinkedClusterDetails:
+      example:
+        qovery_cluster_name: My EKS Cluster
+        qovery_cluster_cloud_provider: AWS
+        qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        qovery_cluster_type: MANAGED
+        applications_count: 4
+        argocd_cluster_url: https://kubernetes.default.svc
+        argocd_cluster_name: https://kubernetes.default.svc
+      properties:
+        argocd_cluster_url:
+          description: ArgoCD destination cluster URL
+          example: https://kubernetes.default.svc
+          type: string
+        argocd_cluster_name:
+          description: ArgoCD cluster name (currently same as URL; will use ArgoCD
+            alias in future)
+          example: https://kubernetes.default.svc
+          type: string
+        qovery_cluster_id:
+          description: ID of the Qovery cluster this destination is mapped to
+          format: uuid
+          type: string
+        qovery_cluster_name:
+          description: Display name of the mapped Qovery cluster
+          example: My EKS Cluster
+          type: string
+        qovery_cluster_cloud_provider:
+          $ref: '#/components/schemas/CloudVendorEnum'
+        qovery_cluster_type:
+          $ref: '#/components/schemas/KubernetesEnum'
+        applications_count:
+          description: Number of ArgoCD applications targeting this destination
+          example: 4
+          type: integer
+      required:
+      - applications_count
+      - argocd_cluster_name
+      - argocd_cluster_url
+      - qovery_cluster_cloud_provider
+      - qovery_cluster_id
+      - qovery_cluster_name
+      - qovery_cluster_type
+      type: object
+    ArgoCdUnlinkedClusterDetails:
+      example:
+        applications_count: 0
+        argocd_cluster_url: https://old-cluster.example.com
+        argocd_cluster_name: https://old-cluster.example.com
+      properties:
+        argocd_cluster_url:
+          description: ArgoCD destination cluster URL for this stale mapping
+          example: https://old-cluster.example.com
+          type: string
+        argocd_cluster_name:
+          description: ArgoCD cluster name (currently same as URL; will use ArgoCD
+            alias in future)
+          example: https://old-cluster.example.com
+          type: string
+        applications_count:
+          description: Number of ArgoCD applications targeting this destination
+          example: 0
+          type: integer
+      required:
+      - applications_count
+      - argocd_cluster_name
+      - argocd_cluster_url
+      type: object
+    ArgoCdInstanceMappingResponse:
+      example:
+        credentials_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        linked_clusters:
+        - qovery_cluster_name: My EKS Cluster
+          qovery_cluster_cloud_provider: AWS
+          qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          qovery_cluster_type: MANAGED
+          applications_count: 4
+          argocd_cluster_url: https://kubernetes.default.svc
+          argocd_cluster_name: https://kubernetes.default.svc
+        - qovery_cluster_name: My EKS Cluster
+          qovery_cluster_cloud_provider: AWS
+          qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          qovery_cluster_type: MANAGED
+          applications_count: 4
+          argocd_cluster_url: https://kubernetes.default.svc
+          argocd_cluster_name: https://kubernetes.default.svc
+        unlinked_clusters:
+        - applications_count: 0
+          argocd_cluster_url: https://old-cluster.example.com
+          argocd_cluster_name: https://old-cluster.example.com
+        - applications_count: 0
+          argocd_cluster_url: https://old-cluster.example.com
+          argocd_cluster_name: https://old-cluster.example.com
+        argocd_url: https://argocd.example.com
+        status: connected
+        last_checked_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        agent_cluster_id:
+          description: ID of the Qovery cluster where the ArgoCD instance is running
+          format: uuid
+          type: string
+        credentials_id:
+          description: ID of the stored ArgoCD credentials for this instance
+          format: uuid
+          type: string
+        argocd_url:
+          description: URL of the ArgoCD instance
+          example: https://argocd.example.com
+          type: string
+        status:
+          $ref: '#/components/schemas/ArgoCdConnectionStatusEnum'
+        last_checked_at:
+          description: Timestamp of the last configuration update (will use last connectivity
+            check in future)
+          format: date-time
+          type: string
+        linked_clusters:
+          description: ArgoCD clusters detected and mapped to a Qovery cluster
+          items:
+            $ref: '#/components/schemas/ArgoCdLinkedClusterDetails'
+          type: array
+        unlinked_clusters:
+          description: ArgoCD clusters detected but mapping is missing
+          items:
+            $ref: '#/components/schemas/ArgoCdUnlinkedClusterDetails'
+          type: array
+      required:
+      - agent_cluster_id
+      - argocd_url
+      - credentials_id
+      - last_checked_at
+      - linked_clusters
+      - status
+      - unlinked_clusters
+      type: object
+    ArgoCdInstanceMappingResponseList:
+      example:
+        results:
+        - credentials_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          linked_clusters:
+          - qovery_cluster_name: My EKS Cluster
+            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            qovery_cluster_type: MANAGED
+            applications_count: 4
+            argocd_cluster_url: https://kubernetes.default.svc
+            argocd_cluster_name: https://kubernetes.default.svc
+          - qovery_cluster_name: My EKS Cluster
+            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            qovery_cluster_type: MANAGED
+            applications_count: 4
+            argocd_cluster_url: https://kubernetes.default.svc
+            argocd_cluster_name: https://kubernetes.default.svc
+          unlinked_clusters:
+          - applications_count: 0
+            argocd_cluster_url: https://old-cluster.example.com
+            argocd_cluster_name: https://old-cluster.example.com
+          - applications_count: 0
+            argocd_cluster_url: https://old-cluster.example.com
+            argocd_cluster_name: https://old-cluster.example.com
+          argocd_url: https://argocd.example.com
+          status: connected
+          last_checked_at: 2000-01-23T04:56:07.000+00:00
+        - credentials_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          linked_clusters:
+          - qovery_cluster_name: My EKS Cluster
+            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            qovery_cluster_type: MANAGED
+            applications_count: 4
+            argocd_cluster_url: https://kubernetes.default.svc
+            argocd_cluster_name: https://kubernetes.default.svc
+          - qovery_cluster_name: My EKS Cluster
+            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            qovery_cluster_type: MANAGED
+            applications_count: 4
+            argocd_cluster_url: https://kubernetes.default.svc
+            argocd_cluster_name: https://kubernetes.default.svc
+          unlinked_clusters:
+          - applications_count: 0
+            argocd_cluster_url: https://old-cluster.example.com
+            argocd_cluster_name: https://old-cluster.example.com
+          - applications_count: 0
+            argocd_cluster_url: https://old-cluster.example.com
+            argocd_cluster_name: https://old-cluster.example.com
+          argocd_url: https://argocd.example.com
+          status: connected
+          last_checked_at: 2000-01-23T04:56:07.000+00:00
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ArgoCdInstanceMappingResponse'
+          type: array
+      required:
+      - results
       type: object
     TerraformBackend:
       description: Configuration for Terraform backend - exactly one backend type

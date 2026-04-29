@@ -21,8 +21,7 @@ var _ MappedNullable = &ArgoCdConnectionCheckResponse{}
 
 // ArgoCdConnectionCheckResponse struct for ArgoCdConnectionCheckResponse
 type ArgoCdConnectionCheckResponse struct {
-	// Connection result
-	Status string `json:"status"`
+	Status ArgoCdConnectionStatusEnum `json:"status"`
 	// Number of ArgoCD applications visible with the provided token. Present only when status is \"connected\".
 	AppCount *int32 `json:"app_count,omitempty"`
 	// Failure reason. Present only when status is \"error\".
@@ -36,7 +35,7 @@ type _ArgoCdConnectionCheckResponse ArgoCdConnectionCheckResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArgoCdConnectionCheckResponse(status string) *ArgoCdConnectionCheckResponse {
+func NewArgoCdConnectionCheckResponse(status ArgoCdConnectionStatusEnum) *ArgoCdConnectionCheckResponse {
 	this := ArgoCdConnectionCheckResponse{}
 	this.Status = status
 	return &this
@@ -51,9 +50,9 @@ func NewArgoCdConnectionCheckResponseWithDefaults() *ArgoCdConnectionCheckRespon
 }
 
 // GetStatus returns the Status field value
-func (o *ArgoCdConnectionCheckResponse) GetStatus() string {
+func (o *ArgoCdConnectionCheckResponse) GetStatus() ArgoCdConnectionStatusEnum {
 	if o == nil {
-		var ret string
+		var ret ArgoCdConnectionStatusEnum
 		return ret
 	}
 
@@ -62,7 +61,7 @@ func (o *ArgoCdConnectionCheckResponse) GetStatus() string {
 
 // GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
-func (o *ArgoCdConnectionCheckResponse) GetStatusOk() (*string, bool) {
+func (o *ArgoCdConnectionCheckResponse) GetStatusOk() (*ArgoCdConnectionStatusEnum, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -70,7 +69,7 @@ func (o *ArgoCdConnectionCheckResponse) GetStatusOk() (*string, bool) {
 }
 
 // SetStatus sets field value
-func (o *ArgoCdConnectionCheckResponse) SetStatus(v string) {
+func (o *ArgoCdConnectionCheckResponse) SetStatus(v ArgoCdConnectionStatusEnum) {
 	o.Status = v
 }
 

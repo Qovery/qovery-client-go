@@ -8,7 +8,9 @@ Method | HTTP request | Description
 [**DeleteArgoCdCredentials**](ArgoCDAPI.md#DeleteArgoCdCredentials) | **Delete** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
 [**GetArgoCdApp**](ArgoCDAPI.md#GetArgoCdApp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 [**GetArgoCdCredentials**](ArgoCDAPI.md#GetArgoCdCredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
+[**ListArgoCdDestinationClusterMappings**](ArgoCDAPI.md#ListArgoCdDestinationClusterMappings) | **Get** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 [**SaveArgoCdCredentials**](ArgoCDAPI.md#SaveArgoCdCredentials) | **Post** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
+[**SaveArgoCdDestinationClusterMapping**](ArgoCDAPI.md#SaveArgoCdDestinationClusterMapping) | **Post** /organization/{organizationId}/argoCdDestinationClusterMapping | Save an ArgoCD destination cluster mapping
 
 
 
@@ -290,6 +292,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListArgoCdDestinationClusterMappings
+
+> ArgoCdInstanceMappingResponseList ListArgoCdDestinationClusterMappings(ctx, organizationId).Execute()
+
+List ArgoCD instance mappings for an organization
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArgoCDAPI.ListArgoCdDestinationClusterMappings(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArgoCDAPI.ListArgoCdDestinationClusterMappings``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListArgoCdDestinationClusterMappings`: ArgoCdInstanceMappingResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ArgoCDAPI.ListArgoCdDestinationClusterMappings`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListArgoCdDestinationClusterMappingsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ArgoCdInstanceMappingResponseList**](ArgoCdInstanceMappingResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SaveArgoCdCredentials
 
 > ArgoCdCredentialsResponse SaveArgoCdCredentials(ctx, clusterId).ArgoCdCredentialsRequest(argoCdCredentialsRequest).Execute()
@@ -347,6 +419,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ArgoCdCredentialsResponse**](ArgoCdCredentialsResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SaveArgoCdDestinationClusterMapping
+
+> ArgoCdDestinationClusterMappingResponse SaveArgoCdDestinationClusterMapping(ctx, organizationId).ArgoCdDestinationClusterMappingRequest(argoCdDestinationClusterMappingRequest).Execute()
+
+Save an ArgoCD destination cluster mapping
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	argoCdDestinationClusterMappingRequest := *openapiclient.NewArgoCdDestinationClusterMappingRequest("AgentClusterId_example", "https://kubernetes.default.svc", "ClusterId_example") // ArgoCdDestinationClusterMappingRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArgoCDAPI.SaveArgoCdDestinationClusterMapping(context.Background(), organizationId).ArgoCdDestinationClusterMappingRequest(argoCdDestinationClusterMappingRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArgoCDAPI.SaveArgoCdDestinationClusterMapping``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `SaveArgoCdDestinationClusterMapping`: ArgoCdDestinationClusterMappingResponse
+	fmt.Fprintf(os.Stdout, "Response from `ArgoCDAPI.SaveArgoCdDestinationClusterMapping`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiSaveArgoCdDestinationClusterMappingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **argoCdDestinationClusterMappingRequest** | [**ArgoCdDestinationClusterMappingRequest**](ArgoCdDestinationClusterMappingRequest.md) |  | 
+
+### Return type
+
+[**ArgoCdDestinationClusterMappingResponse**](ArgoCdDestinationClusterMappingResponse.md)
 
 ### Authorization
 

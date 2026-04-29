@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Status** | **string** | Connection result | 
+**Status** | [**ArgoCdConnectionStatusEnum**](ArgoCdConnectionStatusEnum.md) |  | 
 **AppCount** | Pointer to **int32** | Number of ArgoCD applications visible with the provided token. Present only when status is \&quot;connected\&quot;. | [optional] 
 **Reason** | Pointer to **string** | Failure reason. Present only when status is \&quot;error\&quot;. | [optional] 
 
@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 
 ### NewArgoCdConnectionCheckResponse
 
-`func NewArgoCdConnectionCheckResponse(status string, ) *ArgoCdConnectionCheckResponse`
+`func NewArgoCdConnectionCheckResponse(status ArgoCdConnectionStatusEnum, ) *ArgoCdConnectionCheckResponse`
 
 NewArgoCdConnectionCheckResponse instantiates a new ArgoCdConnectionCheckResponse object
 This constructor will assign default values to properties that have it defined,
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetStatus
 
-`func (o *ArgoCdConnectionCheckResponse) GetStatus() string`
+`func (o *ArgoCdConnectionCheckResponse) GetStatus() ArgoCdConnectionStatusEnum`
 
 GetStatus returns the Status field if non-nil, zero value otherwise.
 
 ### GetStatusOk
 
-`func (o *ArgoCdConnectionCheckResponse) GetStatusOk() (*string, bool)`
+`func (o *ArgoCdConnectionCheckResponse) GetStatusOk() (*ArgoCdConnectionStatusEnum, bool)`
 
 GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetStatus
 
-`func (o *ArgoCdConnectionCheckResponse) SetStatus(v string)`
+`func (o *ArgoCdConnectionCheckResponse) SetStatus(v ArgoCdConnectionStatusEnum)`
 
 SetStatus sets Status field to given value.
 
