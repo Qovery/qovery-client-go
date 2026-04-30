@@ -18971,7 +18971,7 @@ components:
     ArgoCdLinkedClusterDetails:
       example:
         qovery_cluster_name: My EKS Cluster
-        qovery_cluster_cloud_provider: AWS
+        qovery_cluster_cloud_provider: null
         qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         qovery_cluster_type: MANAGED
         applications_count: 4
@@ -19042,19 +19042,21 @@ components:
         agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         linked_clusters:
         - qovery_cluster_name: My EKS Cluster
-          qovery_cluster_cloud_provider: AWS
+          qovery_cluster_cloud_provider: null
           qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           qovery_cluster_type: MANAGED
           applications_count: 4
           argocd_cluster_url: https://kubernetes.default.svc
           argocd_cluster_name: https://kubernetes.default.svc
         - qovery_cluster_name: My EKS Cluster
-          qovery_cluster_cloud_provider: AWS
+          qovery_cluster_cloud_provider: null
           qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           qovery_cluster_type: MANAGED
           applications_count: 4
           argocd_cluster_url: https://kubernetes.default.svc
           argocd_cluster_name: https://kubernetes.default.svc
+        agent_cluster_cloud_provider: AWS
+        agent_cluster_name: My Agent Cluster
         unlinked_clusters:
         - applications_count: 0
           argocd_cluster_url: https://old-cluster.example.com
@@ -19070,6 +19072,13 @@ components:
           description: ID of the Qovery cluster where the ArgoCD instance is running
           format: uuid
           type: string
+        agent_cluster_name:
+          description: Display name of the Qovery cluster where the ArgoCD instance
+            is running
+          example: My Agent Cluster
+          type: string
+        agent_cluster_cloud_provider:
+          $ref: '#/components/schemas/CloudVendorEnum'
         credentials_id:
           description: ID of the stored ArgoCD credentials for this instance
           format: uuid
@@ -19096,7 +19105,9 @@ components:
             $ref: '#/components/schemas/ArgoCdUnlinkedClusterDetails'
           type: array
       required:
+      - agent_cluster_cloud_provider
       - agent_cluster_id
+      - agent_cluster_name
       - argocd_url
       - credentials_id
       - last_checked_at
@@ -19111,19 +19122,21 @@ components:
           agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           linked_clusters:
           - qovery_cluster_name: My EKS Cluster
-            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_cloud_provider: null
             qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             qovery_cluster_type: MANAGED
             applications_count: 4
             argocd_cluster_url: https://kubernetes.default.svc
             argocd_cluster_name: https://kubernetes.default.svc
           - qovery_cluster_name: My EKS Cluster
-            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_cloud_provider: null
             qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             qovery_cluster_type: MANAGED
             applications_count: 4
             argocd_cluster_url: https://kubernetes.default.svc
             argocd_cluster_name: https://kubernetes.default.svc
+          agent_cluster_cloud_provider: AWS
+          agent_cluster_name: My Agent Cluster
           unlinked_clusters:
           - applications_count: 0
             argocd_cluster_url: https://old-cluster.example.com
@@ -19138,19 +19151,21 @@ components:
           agent_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           linked_clusters:
           - qovery_cluster_name: My EKS Cluster
-            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_cloud_provider: null
             qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             qovery_cluster_type: MANAGED
             applications_count: 4
             argocd_cluster_url: https://kubernetes.default.svc
             argocd_cluster_name: https://kubernetes.default.svc
           - qovery_cluster_name: My EKS Cluster
-            qovery_cluster_cloud_provider: AWS
+            qovery_cluster_cloud_provider: null
             qovery_cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             qovery_cluster_type: MANAGED
             applications_count: 4
             argocd_cluster_url: https://kubernetes.default.svc
             argocd_cluster_name: https://kubernetes.default.svc
+          agent_cluster_cloud_provider: AWS
+          agent_cluster_name: My Agent Cluster
           unlinked_clusters:
           - applications_count: 0
             argocd_cluster_url: https://old-cluster.example.com

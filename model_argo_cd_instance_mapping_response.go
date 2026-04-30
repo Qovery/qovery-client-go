@@ -24,6 +24,9 @@ var _ MappedNullable = &ArgoCdInstanceMappingResponse{}
 type ArgoCdInstanceMappingResponse struct {
 	// ID of the Qovery cluster where the ArgoCD instance is running
 	AgentClusterId string `json:"agent_cluster_id"`
+	// Display name of the Qovery cluster where the ArgoCD instance is running
+	AgentClusterName          string          `json:"agent_cluster_name"`
+	AgentClusterCloudProvider CloudVendorEnum `json:"agent_cluster_cloud_provider"`
 	// ID of the stored ArgoCD credentials for this instance
 	CredentialsId string `json:"credentials_id"`
 	// URL of the ArgoCD instance
@@ -44,9 +47,11 @@ type _ArgoCdInstanceMappingResponse ArgoCdInstanceMappingResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArgoCdInstanceMappingResponse(agentClusterId string, credentialsId string, argocdUrl string, status ArgoCdConnectionStatusEnum, lastCheckedAt time.Time, linkedClusters []ArgoCdLinkedClusterDetails, unlinkedClusters []ArgoCdUnlinkedClusterDetails) *ArgoCdInstanceMappingResponse {
+func NewArgoCdInstanceMappingResponse(agentClusterId string, agentClusterName string, agentClusterCloudProvider CloudVendorEnum, credentialsId string, argocdUrl string, status ArgoCdConnectionStatusEnum, lastCheckedAt time.Time, linkedClusters []ArgoCdLinkedClusterDetails, unlinkedClusters []ArgoCdUnlinkedClusterDetails) *ArgoCdInstanceMappingResponse {
 	this := ArgoCdInstanceMappingResponse{}
 	this.AgentClusterId = agentClusterId
+	this.AgentClusterName = agentClusterName
+	this.AgentClusterCloudProvider = agentClusterCloudProvider
 	this.CredentialsId = credentialsId
 	this.ArgocdUrl = argocdUrl
 	this.Status = status
@@ -86,6 +91,54 @@ func (o *ArgoCdInstanceMappingResponse) GetAgentClusterIdOk() (*string, bool) {
 // SetAgentClusterId sets field value
 func (o *ArgoCdInstanceMappingResponse) SetAgentClusterId(v string) {
 	o.AgentClusterId = v
+}
+
+// GetAgentClusterName returns the AgentClusterName field value
+func (o *ArgoCdInstanceMappingResponse) GetAgentClusterName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AgentClusterName
+}
+
+// GetAgentClusterNameOk returns a tuple with the AgentClusterName field value
+// and a boolean to check if the value has been set.
+func (o *ArgoCdInstanceMappingResponse) GetAgentClusterNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentClusterName, true
+}
+
+// SetAgentClusterName sets field value
+func (o *ArgoCdInstanceMappingResponse) SetAgentClusterName(v string) {
+	o.AgentClusterName = v
+}
+
+// GetAgentClusterCloudProvider returns the AgentClusterCloudProvider field value
+func (o *ArgoCdInstanceMappingResponse) GetAgentClusterCloudProvider() CloudVendorEnum {
+	if o == nil {
+		var ret CloudVendorEnum
+		return ret
+	}
+
+	return o.AgentClusterCloudProvider
+}
+
+// GetAgentClusterCloudProviderOk returns a tuple with the AgentClusterCloudProvider field value
+// and a boolean to check if the value has been set.
+func (o *ArgoCdInstanceMappingResponse) GetAgentClusterCloudProviderOk() (*CloudVendorEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentClusterCloudProvider, true
+}
+
+// SetAgentClusterCloudProvider sets field value
+func (o *ArgoCdInstanceMappingResponse) SetAgentClusterCloudProvider(v CloudVendorEnum) {
+	o.AgentClusterCloudProvider = v
 }
 
 // GetCredentialsId returns the CredentialsId field value
@@ -243,6 +296,8 @@ func (o ArgoCdInstanceMappingResponse) MarshalJSON() ([]byte, error) {
 func (o ArgoCdInstanceMappingResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["agent_cluster_id"] = o.AgentClusterId
+	toSerialize["agent_cluster_name"] = o.AgentClusterName
+	toSerialize["agent_cluster_cloud_provider"] = o.AgentClusterCloudProvider
 	toSerialize["credentials_id"] = o.CredentialsId
 	toSerialize["argocd_url"] = o.ArgocdUrl
 	toSerialize["status"] = o.Status
@@ -263,6 +318,8 @@ func (o *ArgoCdInstanceMappingResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"agent_cluster_id",
+		"agent_cluster_name",
+		"agent_cluster_cloud_provider",
 		"credentials_id",
 		"argocd_url",
 		"status",
@@ -299,6 +356,8 @@ func (o *ArgoCdInstanceMappingResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "agent_cluster_id")
+		delete(additionalProperties, "agent_cluster_name")
+		delete(additionalProperties, "agent_cluster_cloud_provider")
 		delete(additionalProperties, "credentials_id")
 		delete(additionalProperties, "argocd_url")
 		delete(additionalProperties, "status")

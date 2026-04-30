@@ -5,6 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AgentClusterId** | **string** | ID of the Qovery cluster where the ArgoCD instance is running | 
+**AgentClusterName** | **string** | Display name of the Qovery cluster where the ArgoCD instance is running | 
+**AgentClusterCloudProvider** | [**CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **CredentialsId** | **string** | ID of the stored ArgoCD credentials for this instance | 
 **ArgocdUrl** | **string** | URL of the ArgoCD instance | 
 **Status** | [**ArgoCdConnectionStatusEnum**](ArgoCdConnectionStatusEnum.md) |  | 
@@ -16,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewArgoCdInstanceMappingResponse
 
-`func NewArgoCdInstanceMappingResponse(agentClusterId string, credentialsId string, argocdUrl string, status ArgoCdConnectionStatusEnum, lastCheckedAt time.Time, linkedClusters []ArgoCdLinkedClusterDetails, unlinkedClusters []ArgoCdUnlinkedClusterDetails, ) *ArgoCdInstanceMappingResponse`
+`func NewArgoCdInstanceMappingResponse(agentClusterId string, agentClusterName string, agentClusterCloudProvider CloudVendorEnum, credentialsId string, argocdUrl string, status ArgoCdConnectionStatusEnum, lastCheckedAt time.Time, linkedClusters []ArgoCdLinkedClusterDetails, unlinkedClusters []ArgoCdUnlinkedClusterDetails, ) *ArgoCdInstanceMappingResponse`
 
 NewArgoCdInstanceMappingResponse instantiates a new ArgoCdInstanceMappingResponse object
 This constructor will assign default values to properties that have it defined,
@@ -49,6 +51,46 @@ and a boolean to check if the value has been set.
 `func (o *ArgoCdInstanceMappingResponse) SetAgentClusterId(v string)`
 
 SetAgentClusterId sets AgentClusterId field to given value.
+
+
+### GetAgentClusterName
+
+`func (o *ArgoCdInstanceMappingResponse) GetAgentClusterName() string`
+
+GetAgentClusterName returns the AgentClusterName field if non-nil, zero value otherwise.
+
+### GetAgentClusterNameOk
+
+`func (o *ArgoCdInstanceMappingResponse) GetAgentClusterNameOk() (*string, bool)`
+
+GetAgentClusterNameOk returns a tuple with the AgentClusterName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentClusterName
+
+`func (o *ArgoCdInstanceMappingResponse) SetAgentClusterName(v string)`
+
+SetAgentClusterName sets AgentClusterName field to given value.
+
+
+### GetAgentClusterCloudProvider
+
+`func (o *ArgoCdInstanceMappingResponse) GetAgentClusterCloudProvider() CloudVendorEnum`
+
+GetAgentClusterCloudProvider returns the AgentClusterCloudProvider field if non-nil, zero value otherwise.
+
+### GetAgentClusterCloudProviderOk
+
+`func (o *ArgoCdInstanceMappingResponse) GetAgentClusterCloudProviderOk() (*CloudVendorEnum, bool)`
+
+GetAgentClusterCloudProviderOk returns a tuple with the AgentClusterCloudProvider field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentClusterCloudProvider
+
+`func (o *ArgoCdInstanceMappingResponse) SetAgentClusterCloudProvider(v CloudVendorEnum)`
+
+SetAgentClusterCloudProvider sets AgentClusterCloudProvider field to given value.
 
 
 ### GetCredentialsId
