@@ -29353,13 +29353,14 @@ components:
       type: string
     APIVariableTypeEnum:
       description: |
-        type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE or BUIT_IN)
+        type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET)
       enum:
       - VALUE
       - ALIAS
       - OVERRIDE
       - BUILT_IN
       - FILE
+      - EXTERNAL_SECRET
       type: string
     GcpCredentialsRequest:
       example:
