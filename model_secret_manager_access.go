@@ -17,11 +17,11 @@ import (
 	"time"
 )
 
-// checks if the SecretManagerAccessResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &SecretManagerAccessResponse{}
+// checks if the SecretManagerAccess type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &SecretManagerAccess{}
 
-// SecretManagerAccessResponse struct for SecretManagerAccessResponse
-type SecretManagerAccessResponse struct {
+// SecretManagerAccess struct for SecretManagerAccess
+type SecretManagerAccess struct {
 	Id                   string                                `json:"id"`
 	Name                 string                                `json:"name"`
 	CreatedAt            time.Time                             `json:"created_at"`
@@ -31,14 +31,14 @@ type SecretManagerAccessResponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _SecretManagerAccessResponse SecretManagerAccessResponse
+type _SecretManagerAccess SecretManagerAccess
 
-// NewSecretManagerAccessResponse instantiates a new SecretManagerAccessResponse object
+// NewSecretManagerAccess instantiates a new SecretManagerAccess object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretManagerAccessResponse(id string, name string, createdAt time.Time, updatedAt time.Time, endpoint SecretManagerEndpointConfigurationDto, authentication SecretManagerAuthenticationDto) *SecretManagerAccessResponse {
-	this := SecretManagerAccessResponse{}
+func NewSecretManagerAccess(id string, name string, createdAt time.Time, updatedAt time.Time, endpoint SecretManagerEndpointConfigurationDto, authentication SecretManagerAuthenticationDto) *SecretManagerAccess {
+	this := SecretManagerAccess{}
 	this.Id = id
 	this.Name = name
 	this.CreatedAt = createdAt
@@ -48,16 +48,16 @@ func NewSecretManagerAccessResponse(id string, name string, createdAt time.Time,
 	return &this
 }
 
-// NewSecretManagerAccessResponseWithDefaults instantiates a new SecretManagerAccessResponse object
+// NewSecretManagerAccessWithDefaults instantiates a new SecretManagerAccess object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewSecretManagerAccessResponseWithDefaults() *SecretManagerAccessResponse {
-	this := SecretManagerAccessResponse{}
+func NewSecretManagerAccessWithDefaults() *SecretManagerAccess {
+	this := SecretManagerAccess{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *SecretManagerAccessResponse) GetId() string {
+func (o *SecretManagerAccess) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *SecretManagerAccessResponse) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetIdOk() (*string, bool) {
+func (o *SecretManagerAccess) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,12 +76,12 @@ func (o *SecretManagerAccessResponse) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *SecretManagerAccessResponse) SetId(v string) {
+func (o *SecretManagerAccess) SetId(v string) {
 	o.Id = v
 }
 
 // GetName returns the Name field value
-func (o *SecretManagerAccessResponse) GetName() string {
+func (o *SecretManagerAccess) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -92,7 +92,7 @@ func (o *SecretManagerAccessResponse) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetNameOk() (*string, bool) {
+func (o *SecretManagerAccess) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +100,12 @@ func (o *SecretManagerAccessResponse) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *SecretManagerAccessResponse) SetName(v string) {
+func (o *SecretManagerAccess) SetName(v string) {
 	o.Name = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *SecretManagerAccessResponse) GetCreatedAt() time.Time {
+func (o *SecretManagerAccess) GetCreatedAt() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -116,7 +116,7 @@ func (o *SecretManagerAccessResponse) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetCreatedAtOk() (*time.Time, bool) {
+func (o *SecretManagerAccess) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,12 +124,12 @@ func (o *SecretManagerAccessResponse) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *SecretManagerAccessResponse) SetCreatedAt(v time.Time) {
+func (o *SecretManagerAccess) SetCreatedAt(v time.Time) {
 	o.CreatedAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value
-func (o *SecretManagerAccessResponse) GetUpdatedAt() time.Time {
+func (o *SecretManagerAccess) GetUpdatedAt() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -140,7 +140,7 @@ func (o *SecretManagerAccessResponse) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *SecretManagerAccess) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -148,12 +148,12 @@ func (o *SecretManagerAccessResponse) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // SetUpdatedAt sets field value
-func (o *SecretManagerAccessResponse) SetUpdatedAt(v time.Time) {
+func (o *SecretManagerAccess) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = v
 }
 
 // GetEndpoint returns the Endpoint field value
-func (o *SecretManagerAccessResponse) GetEndpoint() SecretManagerEndpointConfigurationDto {
+func (o *SecretManagerAccess) GetEndpoint() SecretManagerEndpointConfigurationDto {
 	if o == nil {
 		var ret SecretManagerEndpointConfigurationDto
 		return ret
@@ -164,7 +164,7 @@ func (o *SecretManagerAccessResponse) GetEndpoint() SecretManagerEndpointConfigu
 
 // GetEndpointOk returns a tuple with the Endpoint field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetEndpointOk() (*SecretManagerEndpointConfigurationDto, bool) {
+func (o *SecretManagerAccess) GetEndpointOk() (*SecretManagerEndpointConfigurationDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -172,12 +172,12 @@ func (o *SecretManagerAccessResponse) GetEndpointOk() (*SecretManagerEndpointCon
 }
 
 // SetEndpoint sets field value
-func (o *SecretManagerAccessResponse) SetEndpoint(v SecretManagerEndpointConfigurationDto) {
+func (o *SecretManagerAccess) SetEndpoint(v SecretManagerEndpointConfigurationDto) {
 	o.Endpoint = v
 }
 
 // GetAuthentication returns the Authentication field value
-func (o *SecretManagerAccessResponse) GetAuthentication() SecretManagerAuthenticationDto {
+func (o *SecretManagerAccess) GetAuthentication() SecretManagerAuthenticationDto {
 	if o == nil {
 		var ret SecretManagerAuthenticationDto
 		return ret
@@ -188,7 +188,7 @@ func (o *SecretManagerAccessResponse) GetAuthentication() SecretManagerAuthentic
 
 // GetAuthenticationOk returns a tuple with the Authentication field value
 // and a boolean to check if the value has been set.
-func (o *SecretManagerAccessResponse) GetAuthenticationOk() (*SecretManagerAuthenticationDto, bool) {
+func (o *SecretManagerAccess) GetAuthenticationOk() (*SecretManagerAuthenticationDto, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -196,11 +196,11 @@ func (o *SecretManagerAccessResponse) GetAuthenticationOk() (*SecretManagerAuthe
 }
 
 // SetAuthentication sets field value
-func (o *SecretManagerAccessResponse) SetAuthentication(v SecretManagerAuthenticationDto) {
+func (o *SecretManagerAccess) SetAuthentication(v SecretManagerAuthenticationDto) {
 	o.Authentication = v
 }
 
-func (o SecretManagerAccessResponse) MarshalJSON() ([]byte, error) {
+func (o SecretManagerAccess) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -208,7 +208,7 @@ func (o SecretManagerAccessResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o SecretManagerAccessResponse) ToMap() (map[string]interface{}, error) {
+func (o SecretManagerAccess) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["name"] = o.Name
@@ -224,7 +224,7 @@ func (o SecretManagerAccessResponse) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *SecretManagerAccessResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *SecretManagerAccess) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -251,15 +251,15 @@ func (o *SecretManagerAccessResponse) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varSecretManagerAccessResponse := _SecretManagerAccessResponse{}
+	varSecretManagerAccess := _SecretManagerAccess{}
 
-	err = json.Unmarshal(data, &varSecretManagerAccessResponse)
+	err = json.Unmarshal(data, &varSecretManagerAccess)
 
 	if err != nil {
 		return err
 	}
 
-	*o = SecretManagerAccessResponse(varSecretManagerAccessResponse)
+	*o = SecretManagerAccess(varSecretManagerAccess)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -276,38 +276,38 @@ func (o *SecretManagerAccessResponse) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableSecretManagerAccessResponse struct {
-	value *SecretManagerAccessResponse
+type NullableSecretManagerAccess struct {
+	value *SecretManagerAccess
 	isSet bool
 }
 
-func (v NullableSecretManagerAccessResponse) Get() *SecretManagerAccessResponse {
+func (v NullableSecretManagerAccess) Get() *SecretManagerAccess {
 	return v.value
 }
 
-func (v *NullableSecretManagerAccessResponse) Set(val *SecretManagerAccessResponse) {
+func (v *NullableSecretManagerAccess) Set(val *SecretManagerAccess) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableSecretManagerAccessResponse) IsSet() bool {
+func (v NullableSecretManagerAccess) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableSecretManagerAccessResponse) Unset() {
+func (v *NullableSecretManagerAccess) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableSecretManagerAccessResponse(val *SecretManagerAccessResponse) *NullableSecretManagerAccessResponse {
-	return &NullableSecretManagerAccessResponse{value: val, isSet: true}
+func NewNullableSecretManagerAccess(val *SecretManagerAccess) *NullableSecretManagerAccess {
+	return &NullableSecretManagerAccess{value: val, isSet: true}
 }
 
-func (v NullableSecretManagerAccessResponse) MarshalJSON() ([]byte, error) {
+func (v NullableSecretManagerAccess) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableSecretManagerAccessResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableSecretManagerAccess) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

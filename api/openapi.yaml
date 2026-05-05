@@ -21672,7 +21672,7 @@ components:
           labels_groups:
             $ref: '#/components/schemas/ClusterLabelsGroupList'
           secret_manager_accesses:
-            $ref: '#/components/schemas/SecretManagerAccessResponseList'
+            $ref: '#/components/schemas/SecretManagerAccessList'
         required:
         - cloud_provider
         - name
@@ -40448,12 +40448,12 @@ components:
       - endpoint
       - name
       type: object
-    SecretManagerAccessResponseList:
+    SecretManagerAccessList:
       items:
-        $ref: '#/components/schemas/SecretManagerAccessResponse'
-      title: SecretManagerAccessResponseList
+        $ref: '#/components/schemas/SecretManagerAccess'
+      title: SecretManagerAccessList
       type: array
-    SecretManagerAccessResponse:
+    SecretManagerAccess:
       example:
         endpoint:
           mode: AWS_SECRET_MANAGER

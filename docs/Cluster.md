@@ -36,7 +36,7 @@ Name | Type | Description | Notes
 **InfrastructureChartsParameters** | Pointer to [**ClusterInfrastructureChartsParameters**](ClusterInfrastructureChartsParameters.md) |  | [optional] 
 **Keda** | Pointer to [**ClusterKeda**](ClusterKeda.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ClusterLabelsGroup**](ClusterLabelsGroup.md) |  | [optional] 
-**SecretManagerAccesses** | Pointer to [**[]SecretManagerAccessResponse**](SecretManagerAccessResponse.md) |  | [optional] 
+**SecretManagerAccesses** | Pointer to [**[]SecretManagerAccess**](SecretManagerAccess.md) |  | [optional] 
 
 ## Methods
 
@@ -829,20 +829,20 @@ HasLabelsGroups returns a boolean if a field has been set.
 
 ### GetSecretManagerAccesses
 
-`func (o *Cluster) GetSecretManagerAccesses() []SecretManagerAccessResponse`
+`func (o *Cluster) GetSecretManagerAccesses() []SecretManagerAccess`
 
 GetSecretManagerAccesses returns the SecretManagerAccesses field if non-nil, zero value otherwise.
 
 ### GetSecretManagerAccessesOk
 
-`func (o *Cluster) GetSecretManagerAccessesOk() (*[]SecretManagerAccessResponse, bool)`
+`func (o *Cluster) GetSecretManagerAccessesOk() (*[]SecretManagerAccess, bool)`
 
 GetSecretManagerAccessesOk returns a tuple with the SecretManagerAccesses field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSecretManagerAccesses
 
-`func (o *Cluster) SetSecretManagerAccesses(v []SecretManagerAccessResponse)`
+`func (o *Cluster) SetSecretManagerAccesses(v []SecretManagerAccess)`
 
 SetSecretManagerAccesses sets SecretManagerAccesses field to given value.
 

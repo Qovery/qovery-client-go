@@ -65,7 +65,7 @@ type Cluster struct {
 	InfrastructureChartsParameters *ClusterInfrastructureChartsParameters `json:"infrastructure_charts_parameters,omitempty"`
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
-	SecretManagerAccesses          []SecretManagerAccessResponse          `json:"secret_manager_accesses,omitempty"`
+	SecretManagerAccesses          []SecretManagerAccess                  `json:"secret_manager_accesses,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -1087,9 +1087,9 @@ func (o *Cluster) SetLabelsGroups(v []ClusterLabelsGroup) {
 }
 
 // GetSecretManagerAccesses returns the SecretManagerAccesses field value if set, zero value otherwise.
-func (o *Cluster) GetSecretManagerAccesses() []SecretManagerAccessResponse {
+func (o *Cluster) GetSecretManagerAccesses() []SecretManagerAccess {
 	if o == nil || IsNil(o.SecretManagerAccesses) {
-		var ret []SecretManagerAccessResponse
+		var ret []SecretManagerAccess
 		return ret
 	}
 	return o.SecretManagerAccesses
@@ -1097,7 +1097,7 @@ func (o *Cluster) GetSecretManagerAccesses() []SecretManagerAccessResponse {
 
 // GetSecretManagerAccessesOk returns a tuple with the SecretManagerAccesses field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cluster) GetSecretManagerAccessesOk() ([]SecretManagerAccessResponse, bool) {
+func (o *Cluster) GetSecretManagerAccessesOk() ([]SecretManagerAccess, bool) {
 	if o == nil || IsNil(o.SecretManagerAccesses) {
 		return nil, false
 	}
@@ -1113,8 +1113,8 @@ func (o *Cluster) HasSecretManagerAccesses() bool {
 	return false
 }
 
-// SetSecretManagerAccesses gets a reference to the given []SecretManagerAccessResponse and assigns it to the SecretManagerAccesses field.
-func (o *Cluster) SetSecretManagerAccesses(v []SecretManagerAccessResponse) {
+// SetSecretManagerAccesses gets a reference to the given []SecretManagerAccess and assigns it to the SecretManagerAccesses field.
+func (o *Cluster) SetSecretManagerAccesses(v []SecretManagerAccess) {
 	o.SecretManagerAccesses = v
 }
 
