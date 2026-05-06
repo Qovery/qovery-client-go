@@ -30,7 +30,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | **bool** |  | 
 **AnnotationsGroups** | Pointer to [**[]OrganizationAnnotationsGroupResponse**](OrganizationAnnotationsGroupResponse.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]OrganizationLabelsGroupResponse**](OrganizationLabelsGroupResponse.md) |  | [optional] 
-**IconUri** | **string** | Icon URI representing the terraform service. | 
+**IconUri** | **string** | Icon URI representing the ArgoCD service. | [default to "app://qovery-console/argocd"]
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 **Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 

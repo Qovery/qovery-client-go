@@ -40702,11 +40702,18 @@ components:
             $ref: '#/components/schemas/ServiceTypeEnum'
           namespace:
             type: string
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
           environment_id:
             format: uuid
             type: string
           cluster_id:
             format: uuid
+            type: string
+          icon_uri:
+            default: app://qovery-console/argocd
+            description: Icon URI representing the ArgoCD service.
+            format: uri
             type: string
           last_synced_at:
             format: date-time
@@ -40723,25 +40730,30 @@ components:
             type: string
         required:
         - cluster_id
+        - environment
         - environment_id
+        - icon_uri
         - name
         - namespace
         - service_type
         type: object
       description: An ArgoCD service
       example:
-        service_type: APPLICATION
-        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         last_synced_at: 2000-01-23T04:56:07.000+00:00
-        updated_at: 2000-01-23T04:56:07.000+00:00
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        name: name
-        namespace: namespace
         created_at: 2000-01-23T04:56:07.000+00:00
         source_target_revision: source_target_revision
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         manifest_revision: manifest_revision
         source_repo_url: source_repo_url
+        icon_uri: https://openapi-generator.tech
+        service_type: APPLICATION
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        namespace: namespace
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     listDirectoriesFromGitRepository_200_response:
       example:
         results:

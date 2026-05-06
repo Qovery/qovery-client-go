@@ -10,8 +10,10 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **Namespace** | **string** |  | 
+**Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **EnvironmentId** | **string** |  | 
 **ClusterId** | **string** |  | 
+**IconUri** | **string** | Icon URI representing the ArgoCD service. | [default to "app://qovery-console/argocd"]
 **LastSyncedAt** | Pointer to **NullableTime** |  | [optional] 
 **ManifestRevision** | Pointer to **NullableString** |  | [optional] 
 **SourceRepoUrl** | Pointer to **NullableString** |  | [optional] 
@@ -21,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewArgocdAppResponse
 
-`func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string, environmentId string, clusterId string, ) *ArgocdAppResponse`
+`func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string, environment ReferenceObject, environmentId string, clusterId string, iconUri string, ) *ArgocdAppResponse`
 
 NewArgocdAppResponse instantiates a new ArgocdAppResponse object
 This constructor will assign default values to properties that have it defined,
@@ -161,6 +163,26 @@ and a boolean to check if the value has been set.
 SetNamespace sets Namespace field to given value.
 
 
+### GetEnvironment
+
+`func (o *ArgocdAppResponse) GetEnvironment() ReferenceObject`
+
+GetEnvironment returns the Environment field if non-nil, zero value otherwise.
+
+### GetEnvironmentOk
+
+`func (o *ArgocdAppResponse) GetEnvironmentOk() (*ReferenceObject, bool)`
+
+GetEnvironmentOk returns a tuple with the Environment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironment
+
+`func (o *ArgocdAppResponse) SetEnvironment(v ReferenceObject)`
+
+SetEnvironment sets Environment field to given value.
+
+
 ### GetEnvironmentId
 
 `func (o *ArgocdAppResponse) GetEnvironmentId() string`
@@ -199,6 +221,26 @@ and a boolean to check if the value has been set.
 `func (o *ArgocdAppResponse) SetClusterId(v string)`
 
 SetClusterId sets ClusterId field to given value.
+
+
+### GetIconUri
+
+`func (o *ArgocdAppResponse) GetIconUri() string`
+
+GetIconUri returns the IconUri field if non-nil, zero value otherwise.
+
+### GetIconUriOk
+
+`func (o *ArgocdAppResponse) GetIconUriOk() (*string, bool)`
+
+GetIconUriOk returns a tuple with the IconUri field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIconUri
+
+`func (o *ArgocdAppResponse) SetIconUri(v string)`
+
+SetIconUri sets IconUri field to given value.
 
 
 ### GetLastSyncedAt

@@ -26,15 +26,18 @@ type ArgocdAppResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// name is case insensitive
-	Name                 string          `json:"name"`
-	ServiceType          ServiceTypeEnum `json:"service_type"`
-	Namespace            string          `json:"namespace"`
-	EnvironmentId        string          `json:"environment_id"`
-	ClusterId            string          `json:"cluster_id"`
-	LastSyncedAt         NullableTime    `json:"last_synced_at,omitempty"`
-	ManifestRevision     NullableString  `json:"manifest_revision,omitempty"`
-	SourceRepoUrl        NullableString  `json:"source_repo_url,omitempty"`
-	SourceTargetRevision NullableString  `json:"source_target_revision,omitempty"`
+	Name          string          `json:"name"`
+	ServiceType   ServiceTypeEnum `json:"service_type"`
+	Namespace     string          `json:"namespace"`
+	Environment   ReferenceObject `json:"environment"`
+	EnvironmentId string          `json:"environment_id"`
+	ClusterId     string          `json:"cluster_id"`
+	// Icon URI representing the ArgoCD service.
+	IconUri              string         `json:"icon_uri"`
+	LastSyncedAt         NullableTime   `json:"last_synced_at,omitempty"`
+	ManifestRevision     NullableString `json:"manifest_revision,omitempty"`
+	SourceRepoUrl        NullableString `json:"source_repo_url,omitempty"`
+	SourceTargetRevision NullableString `json:"source_target_revision,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -44,15 +47,17 @@ type _ArgocdAppResponse ArgocdAppResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string, environmentId string, clusterId string) *ArgocdAppResponse {
+func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceType ServiceTypeEnum, namespace string, environment ReferenceObject, environmentId string, clusterId string, iconUri string) *ArgocdAppResponse {
 	this := ArgocdAppResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.ServiceType = serviceType
 	this.Namespace = namespace
+	this.Environment = environment
 	this.EnvironmentId = environmentId
 	this.ClusterId = clusterId
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -61,6 +66,8 @@ func NewArgocdAppResponse(id string, createdAt time.Time, name string, serviceTy
 // but it doesn't guarantee that properties required by API are set
 func NewArgocdAppResponseWithDefaults() *ArgocdAppResponse {
 	this := ArgocdAppResponse{}
+	var iconUri string = "app://qovery-console/argocd"
+	this.IconUri = iconUri
 	return &this
 }
 
@@ -216,6 +223,30 @@ func (o *ArgocdAppResponse) SetNamespace(v string) {
 	o.Namespace = v
 }
 
+// GetEnvironment returns the Environment field value
+func (o *ArgocdAppResponse) GetEnvironment() ReferenceObject {
+	if o == nil {
+		var ret ReferenceObject
+		return ret
+	}
+
+	return o.Environment
+}
+
+// GetEnvironmentOk returns a tuple with the Environment field value
+// and a boolean to check if the value has been set.
+func (o *ArgocdAppResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Environment, true
+}
+
+// SetEnvironment sets field value
+func (o *ArgocdAppResponse) SetEnvironment(v ReferenceObject) {
+	o.Environment = v
+}
+
 // GetEnvironmentId returns the EnvironmentId field value
 func (o *ArgocdAppResponse) GetEnvironmentId() string {
 	if o == nil {
@@ -262,6 +293,30 @@ func (o *ArgocdAppResponse) GetClusterIdOk() (*string, bool) {
 // SetClusterId sets field value
 func (o *ArgocdAppResponse) SetClusterId(v string) {
 	o.ClusterId = v
+}
+
+// GetIconUri returns the IconUri field value
+func (o *ArgocdAppResponse) GetIconUri() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value
+// and a boolean to check if the value has been set.
+func (o *ArgocdAppResponse) GetIconUriOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IconUri, true
+}
+
+// SetIconUri sets field value
+func (o *ArgocdAppResponse) SetIconUri(v string) {
+	o.IconUri = v
 }
 
 // GetLastSyncedAt returns the LastSyncedAt field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -454,8 +509,10 @@ func (o ArgocdAppResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["service_type"] = o.ServiceType
 	toSerialize["namespace"] = o.Namespace
+	toSerialize["environment"] = o.Environment
 	toSerialize["environment_id"] = o.EnvironmentId
 	toSerialize["cluster_id"] = o.ClusterId
+	toSerialize["icon_uri"] = o.IconUri
 	if o.LastSyncedAt.IsSet() {
 		toSerialize["last_synced_at"] = o.LastSyncedAt.Get()
 	}
@@ -486,8 +543,10 @@ func (o *ArgocdAppResponse) UnmarshalJSON(data []byte) (err error) {
 		"name",
 		"service_type",
 		"namespace",
+		"environment",
 		"environment_id",
 		"cluster_id",
+		"icon_uri",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -523,8 +582,10 @@ func (o *ArgocdAppResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "namespace")
+		delete(additionalProperties, "environment")
 		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "cluster_id")
+		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "last_synced_at")
 		delete(additionalProperties, "manifest_revision")
 		delete(additionalProperties, "source_repo_url")
