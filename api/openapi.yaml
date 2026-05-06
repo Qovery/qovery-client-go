@@ -19293,13 +19293,15 @@ components:
         - deployment.lifecycle.post_start_exec_command
         deployment.update_strategy.type: RollingUpdate
         build.disable_buildkit_cache: true
-        hpa.memory.average_utilization_percent: 5
+        hpa.memory.average_utilization_percent: 9
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 3
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 1
+        network.gateway_api.retry.retry_on: network.gateway_api.retry.retry_on
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
         build.cpu_max_in_milli: 5
+        network.gateway_api.retry.num_retries: 0
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
@@ -19309,10 +19311,11 @@ components:
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 7
         network.gateway_api.http_connection_idle_timeout_seconds: 0
+        network.gateway_api.retry.per_try_timeout_seconds: 1
         deployment.topology_spread.zone: Disabled
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        hpa.cpu.average_utilization_percent: 4
+        hpa.cpu.average_utilization_percent: 9
         network.ingress.keepalive_timeout_seconds: 2
         network.ingress.proxy_connect_timeout_seconds: 7
         network.ingress.proxy_buffering: network.ingress.proxy_buffering
@@ -19323,6 +19326,7 @@ components:
         network.ingress.grpc_read_timeout_seconds: 6
         security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
+        network.gateway_api.retry.http_status_codes: network.gateway_api.retry.http_status_codes
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
@@ -19500,6 +19504,28 @@ components:
           description: Sets the idle timeout (in seconds) for HTTP connections proxied
             through the Gateway API route.
           minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.num_retries:
+          description: Sets the number of retry attempts for requests proxied through
+            the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.retry_on:
+          description: "Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes)\
+            \ for requests proxied through the Gateway API route."
+          nullable: true
+          type: string
+        network.gateway_api.retry.http_status_codes:
+          description: Comma-separated HTTP status codes (100..599) retried when retry_on
+            includes retriable-status-codes.
+          nullable: true
+          type: string
+        network.gateway_api.retry.per_try_timeout_seconds:
+          description: Sets the timeout (in seconds) applied to each retry attempt
+            for requests proxied through the Gateway API route.
+          minimum: 1
           nullable: true
           type: integer
         hpa.cpu.average_utilization_percent:
@@ -23169,7 +23195,8 @@ components:
         aws.eks.efs.performance_mode: generalPurpose
         aws.eks.enable_efs_addon: false
         nginx.memory.limit_in_mib: 9
-        nginx.hpa.max_number_instances: 2
+        envoy.gateway_api.retry.per_try_timeout_seconds: 1
+        nginx.hpa.max_number_instances: 6
         nginx.vcpu.limit_in_milli_cpu: 6
         envoy.gateway_api.http_request_timeout_seconds: 0
         loki.write.cpu_request_m: 9
@@ -23195,12 +23222,13 @@ components:
         - database.postgresql.allowed_cidrs
         storageclass.fast_ssd: storageclass.fast_ssd
         loki.deployment_mode: single_binary
+        envoy.gateway_api.retry.num_retries: 0
         loki.single_binary.cpu_limit_m: 5
         aws.eks.efs.transition_to_ia: AFTER_30_DAYS
         loki.log_retention_in_week: 1
         loki.read.memory_limit_mib: 1
         loki.backend.cpu_limit_m: 7
-        nginx.hpa.cpu_utilization_percentage_threshold: 6
+        nginx.hpa.cpu_utilization_percentage_threshold: 2
         loki.backend.memory_limit_mib: 4
         pleco.resources_ttl: 9
         database.mysql.deny_any_access: true
@@ -23222,13 +23250,15 @@ components:
         k8s.api.allowed_public_access_cidrs:
         - k8s.api.allowed_public_access_cidrs
         - k8s.api.allowed_public_access_cidrs
+        envoy.gateway_api.retry.http_status_codes: envoy.gateway_api.retry.http_status_codes
         cloud_provider.container_registry.tags:
           key: cloud_provider.container_registry.tags
         database.redis.deny_any_access: true
         loki.read.cpu_limit_m: 1
         database.postgresql.deny_any_access: true
         envoy.gateway_api.http_connection_idle_timeout_seconds: 0
-        nginx.hpa.min_number_instances: 1
+        envoy.gateway_api.retry.retry_on: envoy.gateway_api.retry.retry_on
+        nginx.hpa.min_number_instances: 6
         loki.single_binary.memory_limit_mib: 7
         loki.write.memory_request_mib: 2
         aws.eks.efs.throughput_mode: elastic
@@ -23475,6 +23505,28 @@ components:
           minimum: 0
           nullable: true
           type: integer
+        envoy.gateway_api.retry.num_retries:
+          description: Sets the default number of retry attempts applied to Gateway
+            API routes when the service does not override it.
+          minimum: 0
+          nullable: true
+          type: integer
+        envoy.gateway_api.retry.retry_on:
+          description: Default comma-separated retry triggers applied to Gateway API
+            routes when the service does not override them.
+          nullable: true
+          type: string
+        envoy.gateway_api.retry.http_status_codes:
+          description: Default comma-separated HTTP status codes (100..599) retried
+            when retry_on includes retriable-status-codes.
+          nullable: true
+          type: string
+        envoy.gateway_api.retry.per_try_timeout_seconds:
+          description: Sets the default timeout (in seconds) applied to each retry
+            attempt when the service does not override it.
+          minimum: 1
+          nullable: true
+          type: integer
         nginx.hpa.cpu_utilization_percentage_threshold:
           description: hpa cpu threshold in percentage
           type: integer
@@ -23605,12 +23657,14 @@ components:
         deployment.antiaffinity.pod: Preferred
         network.ingress.proxy_send_timeout_seconds: 2
         deployment.update_strategy.type: RollingUpdate
-        hpa.memory.average_utilization_percent: 7
+        hpa.memory.average_utilization_percent: 4
         deployment.update_strategy.rolling_update.max_surge_percent: 1
         network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
         network.ingress.grpc_send_timeout_seconds: 7
+        network.gateway_api.retry.retry_on: network.gateway_api.retry.retry_on
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        network.gateway_api.retry.num_retries: 0
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
@@ -23620,10 +23674,11 @@ components:
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 5
         network.gateway_api.http_connection_idle_timeout_seconds: 0
+        network.gateway_api.retry.per_try_timeout_seconds: 1
         deployment.topology_spread.zone: Disabled
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
-        hpa.cpu.average_utilization_percent: 6
+        hpa.cpu.average_utilization_percent: 1
         network.ingress.keepalive_timeout_seconds: 7
         network.ingress.proxy_connect_timeout_seconds: 3
         network.ingress.proxy_buffering: network.ingress.proxy_buffering
@@ -23633,6 +23688,7 @@ components:
         network.ingress.grpc_read_timeout_seconds: 1
         security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
+        network.gateway_api.retry.http_status_codes: network.gateway_api.retry.http_status_codes
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
@@ -23771,6 +23827,28 @@ components:
           description: Sets the idle timeout (in seconds) for HTTP connections proxied
             through the Gateway API route.
           minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.num_retries:
+          description: Sets the number of retry attempts for requests proxied through
+            the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.retry_on:
+          description: "Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes)\
+            \ for requests proxied through the Gateway API route."
+          nullable: true
+          type: string
+        network.gateway_api.retry.http_status_codes:
+          description: Comma-separated HTTP status codes (100..599) retried when retry_on
+            includes retriable-status-codes.
+          nullable: true
+          type: string
+        network.gateway_api.retry.per_try_timeout_seconds:
+          description: Sets the timeout (in seconds) applied to each retry attempt
+            for requests proxied through the Gateway API route.
+          minimum: 1
           nullable: true
           type: integer
         network.ingress.basic_auth_env_var:
@@ -31656,7 +31734,9 @@ components:
         network.ingress.proxy_send_timeout_seconds: 7
         network.ingress.keepalive_time_seconds: 1
         network.ingress.grpc_send_timeout_seconds: 3
+        network.gateway_api.retry.retry_on: network.gateway_api.retry.retry_on
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
+        network.gateway_api.retry.num_retries: 0
         deployment.custom_domain_check_enabled: true
         network.ingress.enable_cors: true
         network.ingress.enable_sticky_session: true
@@ -31665,6 +31745,7 @@ components:
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
         network.ingress.proxy_body_size_mb: 0
         network.gateway_api.http_connection_idle_timeout_seconds: 0
+        network.gateway_api.retry.per_try_timeout_seconds: 1
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         network.ingress.keepalive_timeout_seconds: 5
@@ -31674,6 +31755,7 @@ components:
         network.ingress.proxy_read_timeout_seconds: 9
         network.gateway_api.http_request_timeout_seconds: 0
         network.ingress.grpc_read_timeout_seconds: 2
+        network.gateway_api.retry.http_status_codes: network.gateway_api.retry.http_status_codes
         network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
@@ -31775,6 +31857,28 @@ components:
           description: Sets the idle timeout (in seconds) for HTTP connections proxied
             through the Gateway API route.
           minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.num_retries:
+          description: Sets the number of retry attempts for requests proxied through
+            the Gateway API route.
+          minimum: 0
+          nullable: true
+          type: integer
+        network.gateway_api.retry.retry_on:
+          description: "Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes)\
+            \ for requests proxied through the Gateway API route."
+          nullable: true
+          type: string
+        network.gateway_api.retry.http_status_codes:
+          description: Comma-separated HTTP status codes (100..599) retried when retry_on
+            includes retriable-status-codes.
+          nullable: true
+          type: string
+        network.gateway_api.retry.per_try_timeout_seconds:
+          description: Sets the timeout (in seconds) applied to each retry attempt
+            for requests proxied through the Gateway API route.
+          minimum: 1
           nullable: true
           type: integer
       type: object

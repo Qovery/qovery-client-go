@@ -88,6 +88,14 @@ type ApplicationAdvancedSettings struct {
 	NetworkGatewayApiHttpRequestTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_request_timeout_seconds,omitempty"`
 	// Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route.
 	NetworkGatewayApiHttpConnectionIdleTimeoutSeconds NullableInt32 `json:"network.gateway_api.http_connection_idle_timeout_seconds,omitempty"`
+	// Sets the number of retry attempts for requests proxied through the Gateway API route.
+	NetworkGatewayApiRetryNumRetries NullableInt32 `json:"network.gateway_api.retry.num_retries,omitempty"`
+	// Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes) for requests proxied through the Gateway API route.
+	NetworkGatewayApiRetryRetryOn NullableString `json:"network.gateway_api.retry.retry_on,omitempty"`
+	// Comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes.
+	NetworkGatewayApiRetryHttpStatusCodes NullableString `json:"network.gateway_api.retry.http_status_codes,omitempty"`
+	// Sets the timeout (in seconds) applied to each retry attempt for requests proxied through the Gateway API route.
+	NetworkGatewayApiRetryPerTryTimeoutSeconds NullableInt32 `json:"network.gateway_api.retry.per_try_timeout_seconds,omitempty"`
 	// Percentage value of cpu usage at which point pods should scale up.
 	HpaCpuAverageUtilizationPercent *int32 `json:"hpa.cpu.average_utilization_percent,omitempty"`
 	// Percentage value of memory usage at which point pods should scale up.
@@ -1326,6 +1334,178 @@ func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTi
 	o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Unset()
 }
 
+// GetNetworkGatewayApiRetryNumRetries returns the NetworkGatewayApiRetryNumRetries field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryNumRetries() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiRetryNumRetries.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiRetryNumRetries.Get()
+}
+
+// GetNetworkGatewayApiRetryNumRetriesOk returns a tuple with the NetworkGatewayApiRetryNumRetries field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryNumRetriesOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiRetryNumRetries.Get(), o.NetworkGatewayApiRetryNumRetries.IsSet()
+}
+
+// HasNetworkGatewayApiRetryNumRetries returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiRetryNumRetries() bool {
+	if o != nil && o.NetworkGatewayApiRetryNumRetries.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiRetryNumRetries gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiRetryNumRetries field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryNumRetries(v int32) {
+	o.NetworkGatewayApiRetryNumRetries.Set(&v)
+}
+
+// SetNetworkGatewayApiRetryNumRetriesNil sets the value for NetworkGatewayApiRetryNumRetries to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryNumRetriesNil() {
+	o.NetworkGatewayApiRetryNumRetries.Set(nil)
+}
+
+// UnsetNetworkGatewayApiRetryNumRetries ensures that no value is present for NetworkGatewayApiRetryNumRetries, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiRetryNumRetries() {
+	o.NetworkGatewayApiRetryNumRetries.Unset()
+}
+
+// GetNetworkGatewayApiRetryRetryOn returns the NetworkGatewayApiRetryRetryOn field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryRetryOn() string {
+	if o == nil || IsNil(o.NetworkGatewayApiRetryRetryOn.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NetworkGatewayApiRetryRetryOn.Get()
+}
+
+// GetNetworkGatewayApiRetryRetryOnOk returns a tuple with the NetworkGatewayApiRetryRetryOn field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryRetryOnOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiRetryRetryOn.Get(), o.NetworkGatewayApiRetryRetryOn.IsSet()
+}
+
+// HasNetworkGatewayApiRetryRetryOn returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiRetryRetryOn() bool {
+	if o != nil && o.NetworkGatewayApiRetryRetryOn.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiRetryRetryOn gets a reference to the given NullableString and assigns it to the NetworkGatewayApiRetryRetryOn field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryRetryOn(v string) {
+	o.NetworkGatewayApiRetryRetryOn.Set(&v)
+}
+
+// SetNetworkGatewayApiRetryRetryOnNil sets the value for NetworkGatewayApiRetryRetryOn to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryRetryOnNil() {
+	o.NetworkGatewayApiRetryRetryOn.Set(nil)
+}
+
+// UnsetNetworkGatewayApiRetryRetryOn ensures that no value is present for NetworkGatewayApiRetryRetryOn, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiRetryRetryOn() {
+	o.NetworkGatewayApiRetryRetryOn.Unset()
+}
+
+// GetNetworkGatewayApiRetryHttpStatusCodes returns the NetworkGatewayApiRetryHttpStatusCodes field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodes() string {
+	if o == nil || IsNil(o.NetworkGatewayApiRetryHttpStatusCodes.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.NetworkGatewayApiRetryHttpStatusCodes.Get()
+}
+
+// GetNetworkGatewayApiRetryHttpStatusCodesOk returns a tuple with the NetworkGatewayApiRetryHttpStatusCodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodesOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiRetryHttpStatusCodes.Get(), o.NetworkGatewayApiRetryHttpStatusCodes.IsSet()
+}
+
+// HasNetworkGatewayApiRetryHttpStatusCodes returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiRetryHttpStatusCodes() bool {
+	if o != nil && o.NetworkGatewayApiRetryHttpStatusCodes.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiRetryHttpStatusCodes gets a reference to the given NullableString and assigns it to the NetworkGatewayApiRetryHttpStatusCodes field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodes(v string) {
+	o.NetworkGatewayApiRetryHttpStatusCodes.Set(&v)
+}
+
+// SetNetworkGatewayApiRetryHttpStatusCodesNil sets the value for NetworkGatewayApiRetryHttpStatusCodes to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodesNil() {
+	o.NetworkGatewayApiRetryHttpStatusCodes.Set(nil)
+}
+
+// UnsetNetworkGatewayApiRetryHttpStatusCodes ensures that no value is present for NetworkGatewayApiRetryHttpStatusCodes, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiRetryHttpStatusCodes() {
+	o.NetworkGatewayApiRetryHttpStatusCodes.Unset()
+}
+
+// GetNetworkGatewayApiRetryPerTryTimeoutSeconds returns the NetworkGatewayApiRetryPerTryTimeoutSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSeconds() int32 {
+	if o == nil || IsNil(o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Get()
+}
+
+// GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk returns a tuple with the NetworkGatewayApiRetryPerTryTimeoutSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Get(), o.NetworkGatewayApiRetryPerTryTimeoutSeconds.IsSet()
+}
+
+// HasNetworkGatewayApiRetryPerTryTimeoutSeconds returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasNetworkGatewayApiRetryPerTryTimeoutSeconds() bool {
+	if o != nil && o.NetworkGatewayApiRetryPerTryTimeoutSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetNetworkGatewayApiRetryPerTryTimeoutSeconds gets a reference to the given NullableInt32 and assigns it to the NetworkGatewayApiRetryPerTryTimeoutSeconds field.
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSeconds(v int32) {
+	o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Set(&v)
+}
+
+// SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil sets the value for NetworkGatewayApiRetryPerTryTimeoutSeconds to be an explicit nil
+func (o *ApplicationAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil() {
+	o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Set(nil)
+}
+
+// UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds ensures that no value is present for NetworkGatewayApiRetryPerTryTimeoutSeconds, not even an explicit nil
+func (o *ApplicationAdvancedSettings) UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds() {
+	o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Unset()
+}
+
 // GetHpaCpuAverageUtilizationPercent returns the HpaCpuAverageUtilizationPercent field value if set, zero value otherwise.
 func (o *ApplicationAdvancedSettings) GetHpaCpuAverageUtilizationPercent() int32 {
 	if o == nil || IsNil(o.HpaCpuAverageUtilizationPercent) {
@@ -1618,6 +1798,18 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.IsSet() {
 		toSerialize["network.gateway_api.http_connection_idle_timeout_seconds"] = o.NetworkGatewayApiHttpConnectionIdleTimeoutSeconds.Get()
 	}
+	if o.NetworkGatewayApiRetryNumRetries.IsSet() {
+		toSerialize["network.gateway_api.retry.num_retries"] = o.NetworkGatewayApiRetryNumRetries.Get()
+	}
+	if o.NetworkGatewayApiRetryRetryOn.IsSet() {
+		toSerialize["network.gateway_api.retry.retry_on"] = o.NetworkGatewayApiRetryRetryOn.Get()
+	}
+	if o.NetworkGatewayApiRetryHttpStatusCodes.IsSet() {
+		toSerialize["network.gateway_api.retry.http_status_codes"] = o.NetworkGatewayApiRetryHttpStatusCodes.Get()
+	}
+	if o.NetworkGatewayApiRetryPerTryTimeoutSeconds.IsSet() {
+		toSerialize["network.gateway_api.retry.per_try_timeout_seconds"] = o.NetworkGatewayApiRetryPerTryTimeoutSeconds.Get()
+	}
 	if !IsNil(o.HpaCpuAverageUtilizationPercent) {
 		toSerialize["hpa.cpu.average_utilization_percent"] = o.HpaCpuAverageUtilizationPercent
 	}
@@ -1692,6 +1884,10 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "network.ingress.extra_headers")
 		delete(additionalProperties, "network.gateway_api.http_request_timeout_seconds")
 		delete(additionalProperties, "network.gateway_api.http_connection_idle_timeout_seconds")
+		delete(additionalProperties, "network.gateway_api.retry.num_retries")
+		delete(additionalProperties, "network.gateway_api.retry.retry_on")
+		delete(additionalProperties, "network.gateway_api.retry.http_status_codes")
+		delete(additionalProperties, "network.gateway_api.retry.per_try_timeout_seconds")
 		delete(additionalProperties, "hpa.cpu.average_utilization_percent")
 		delete(additionalProperties, "hpa.memory.average_utilization_percent")
 		delete(additionalProperties, "security.service_account_name")

@@ -53,6 +53,10 @@ Name | Type | Description | Notes
 **NginxMemoryLimitInMib** | Pointer to **int32** | memory limit in MiB | [optional] 
 **EnvoyGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets the default request timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional] 
 **EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the default idle connection timeout (in seconds) applied to Gateway API routes when the service does not override it. | [optional] 
+**EnvoyGatewayApiRetryNumRetries** | Pointer to **NullableInt32** | Sets the default number of retry attempts applied to Gateway API routes when the service does not override it. | [optional] 
+**EnvoyGatewayApiRetryRetryOn** | Pointer to **NullableString** | Default comma-separated retry triggers applied to Gateway API routes when the service does not override them. | [optional] 
+**EnvoyGatewayApiRetryHttpStatusCodes** | Pointer to **NullableString** | Default comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes. | [optional] 
+**EnvoyGatewayApiRetryPerTryTimeoutSeconds** | Pointer to **NullableInt32** | Sets the default timeout (in seconds) applied to each retry attempt when the service does not override it. | [optional] 
 **NginxHpaCpuUtilizationPercentageThreshold** | Pointer to **int32** | hpa cpu threshold in percentage | [optional] 
 **NginxHpaMinNumberInstances** | Pointer to **int32** | hpa minimum number of instances | [optional] 
 **NginxHpaMaxNumberInstances** | Pointer to **int32** | hpa maximum number of instances | [optional] 
@@ -1324,6 +1328,146 @@ HasEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a field 
 `func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds()`
 
 UnsetEnvoyGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for EnvoyGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+### GetEnvoyGatewayApiRetryNumRetries
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryNumRetries() int32`
+
+GetEnvoyGatewayApiRetryNumRetries returns the EnvoyGatewayApiRetryNumRetries field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiRetryNumRetriesOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryNumRetriesOk() (*int32, bool)`
+
+GetEnvoyGatewayApiRetryNumRetriesOk returns a tuple with the EnvoyGatewayApiRetryNumRetries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiRetryNumRetries
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryNumRetries(v int32)`
+
+SetEnvoyGatewayApiRetryNumRetries sets EnvoyGatewayApiRetryNumRetries field to given value.
+
+### HasEnvoyGatewayApiRetryNumRetries
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiRetryNumRetries() bool`
+
+HasEnvoyGatewayApiRetryNumRetries returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiRetryNumRetriesNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryNumRetriesNil(b bool)`
+
+ SetEnvoyGatewayApiRetryNumRetriesNil sets the value for EnvoyGatewayApiRetryNumRetries to be an explicit nil
+
+### UnsetEnvoyGatewayApiRetryNumRetries
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiRetryNumRetries()`
+
+UnsetEnvoyGatewayApiRetryNumRetries ensures that no value is present for EnvoyGatewayApiRetryNumRetries, not even an explicit nil
+### GetEnvoyGatewayApiRetryRetryOn
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryRetryOn() string`
+
+GetEnvoyGatewayApiRetryRetryOn returns the EnvoyGatewayApiRetryRetryOn field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiRetryRetryOnOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryRetryOnOk() (*string, bool)`
+
+GetEnvoyGatewayApiRetryRetryOnOk returns a tuple with the EnvoyGatewayApiRetryRetryOn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiRetryRetryOn
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryRetryOn(v string)`
+
+SetEnvoyGatewayApiRetryRetryOn sets EnvoyGatewayApiRetryRetryOn field to given value.
+
+### HasEnvoyGatewayApiRetryRetryOn
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiRetryRetryOn() bool`
+
+HasEnvoyGatewayApiRetryRetryOn returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiRetryRetryOnNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryRetryOnNil(b bool)`
+
+ SetEnvoyGatewayApiRetryRetryOnNil sets the value for EnvoyGatewayApiRetryRetryOn to be an explicit nil
+
+### UnsetEnvoyGatewayApiRetryRetryOn
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiRetryRetryOn()`
+
+UnsetEnvoyGatewayApiRetryRetryOn ensures that no value is present for EnvoyGatewayApiRetryRetryOn, not even an explicit nil
+### GetEnvoyGatewayApiRetryHttpStatusCodes
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryHttpStatusCodes() string`
+
+GetEnvoyGatewayApiRetryHttpStatusCodes returns the EnvoyGatewayApiRetryHttpStatusCodes field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiRetryHttpStatusCodesOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryHttpStatusCodesOk() (*string, bool)`
+
+GetEnvoyGatewayApiRetryHttpStatusCodesOk returns a tuple with the EnvoyGatewayApiRetryHttpStatusCodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiRetryHttpStatusCodes
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryHttpStatusCodes(v string)`
+
+SetEnvoyGatewayApiRetryHttpStatusCodes sets EnvoyGatewayApiRetryHttpStatusCodes field to given value.
+
+### HasEnvoyGatewayApiRetryHttpStatusCodes
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiRetryHttpStatusCodes() bool`
+
+HasEnvoyGatewayApiRetryHttpStatusCodes returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiRetryHttpStatusCodesNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryHttpStatusCodesNil(b bool)`
+
+ SetEnvoyGatewayApiRetryHttpStatusCodesNil sets the value for EnvoyGatewayApiRetryHttpStatusCodes to be an explicit nil
+
+### UnsetEnvoyGatewayApiRetryHttpStatusCodes
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiRetryHttpStatusCodes()`
+
+UnsetEnvoyGatewayApiRetryHttpStatusCodes ensures that no value is present for EnvoyGatewayApiRetryHttpStatusCodes, not even an explicit nil
+### GetEnvoyGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryPerTryTimeoutSeconds() int32`
+
+GetEnvoyGatewayApiRetryPerTryTimeoutSeconds returns the EnvoyGatewayApiRetryPerTryTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetEnvoyGatewayApiRetryPerTryTimeoutSecondsOk
+
+`func (o *ClusterAdvancedSettings) GetEnvoyGatewayApiRetryPerTryTimeoutSecondsOk() (*int32, bool)`
+
+GetEnvoyGatewayApiRetryPerTryTimeoutSecondsOk returns a tuple with the EnvoyGatewayApiRetryPerTryTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvoyGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryPerTryTimeoutSeconds(v int32)`
+
+SetEnvoyGatewayApiRetryPerTryTimeoutSeconds sets EnvoyGatewayApiRetryPerTryTimeoutSeconds field to given value.
+
+### HasEnvoyGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ClusterAdvancedSettings) HasEnvoyGatewayApiRetryPerTryTimeoutSeconds() bool`
+
+HasEnvoyGatewayApiRetryPerTryTimeoutSeconds returns a boolean if a field has been set.
+
+### SetEnvoyGatewayApiRetryPerTryTimeoutSecondsNil
+
+`func (o *ClusterAdvancedSettings) SetEnvoyGatewayApiRetryPerTryTimeoutSecondsNil(b bool)`
+
+ SetEnvoyGatewayApiRetryPerTryTimeoutSecondsNil sets the value for EnvoyGatewayApiRetryPerTryTimeoutSeconds to be an explicit nil
+
+### UnsetEnvoyGatewayApiRetryPerTryTimeoutSeconds
+`func (o *ClusterAdvancedSettings) UnsetEnvoyGatewayApiRetryPerTryTimeoutSeconds()`
+
+UnsetEnvoyGatewayApiRetryPerTryTimeoutSeconds ensures that no value is present for EnvoyGatewayApiRetryPerTryTimeoutSeconds, not even an explicit nil
 ### GetNginxHpaCpuUtilizationPercentageThreshold
 
 `func (o *ClusterAdvancedSettings) GetNginxHpaCpuUtilizationPercentageThreshold() int32`

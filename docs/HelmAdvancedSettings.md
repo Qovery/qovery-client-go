@@ -29,6 +29,10 @@ Name | Type | Description | Notes
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] 
 **NetworkGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional] 
 **NetworkGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryNumRetries** | Pointer to **NullableInt32** | Sets the number of retry attempts for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryRetryOn** | Pointer to **NullableString** | Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes) for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryHttpStatusCodes** | Pointer to **NullableString** | Comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes. | [optional] 
+**NetworkGatewayApiRetryPerTryTimeoutSeconds** | Pointer to **NullableInt32** | Sets the timeout (in seconds) applied to each retry attempt for requests proxied through the Gateway API route. | [optional] 
 
 ## Methods
 
@@ -694,6 +698,146 @@ HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a fiel
 `func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds()`
 
 UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+### GetNetworkGatewayApiRetryNumRetries
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryNumRetries() int32`
+
+GetNetworkGatewayApiRetryNumRetries returns the NetworkGatewayApiRetryNumRetries field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryNumRetriesOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryNumRetriesOk() (*int32, bool)`
+
+GetNetworkGatewayApiRetryNumRetriesOk returns a tuple with the NetworkGatewayApiRetryNumRetries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryNumRetries
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryNumRetries(v int32)`
+
+SetNetworkGatewayApiRetryNumRetries sets NetworkGatewayApiRetryNumRetries field to given value.
+
+### HasNetworkGatewayApiRetryNumRetries
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiRetryNumRetries() bool`
+
+HasNetworkGatewayApiRetryNumRetries returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryNumRetriesNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryNumRetriesNil(b bool)`
+
+ SetNetworkGatewayApiRetryNumRetriesNil sets the value for NetworkGatewayApiRetryNumRetries to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryNumRetries
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiRetryNumRetries()`
+
+UnsetNetworkGatewayApiRetryNumRetries ensures that no value is present for NetworkGatewayApiRetryNumRetries, not even an explicit nil
+### GetNetworkGatewayApiRetryRetryOn
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryRetryOn() string`
+
+GetNetworkGatewayApiRetryRetryOn returns the NetworkGatewayApiRetryRetryOn field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryRetryOnOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryRetryOnOk() (*string, bool)`
+
+GetNetworkGatewayApiRetryRetryOnOk returns a tuple with the NetworkGatewayApiRetryRetryOn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryRetryOn
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryRetryOn(v string)`
+
+SetNetworkGatewayApiRetryRetryOn sets NetworkGatewayApiRetryRetryOn field to given value.
+
+### HasNetworkGatewayApiRetryRetryOn
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiRetryRetryOn() bool`
+
+HasNetworkGatewayApiRetryRetryOn returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryRetryOnNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryRetryOnNil(b bool)`
+
+ SetNetworkGatewayApiRetryRetryOnNil sets the value for NetworkGatewayApiRetryRetryOn to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryRetryOn
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiRetryRetryOn()`
+
+UnsetNetworkGatewayApiRetryRetryOn ensures that no value is present for NetworkGatewayApiRetryRetryOn, not even an explicit nil
+### GetNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodes() string`
+
+GetNetworkGatewayApiRetryHttpStatusCodes returns the NetworkGatewayApiRetryHttpStatusCodes field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryHttpStatusCodesOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodesOk() (*string, bool)`
+
+GetNetworkGatewayApiRetryHttpStatusCodesOk returns a tuple with the NetworkGatewayApiRetryHttpStatusCodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodes(v string)`
+
+SetNetworkGatewayApiRetryHttpStatusCodes sets NetworkGatewayApiRetryHttpStatusCodes field to given value.
+
+### HasNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiRetryHttpStatusCodes() bool`
+
+HasNetworkGatewayApiRetryHttpStatusCodes returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryHttpStatusCodesNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodesNil(b bool)`
+
+ SetNetworkGatewayApiRetryHttpStatusCodesNil sets the value for NetworkGatewayApiRetryHttpStatusCodes to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryHttpStatusCodes
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiRetryHttpStatusCodes()`
+
+UnsetNetworkGatewayApiRetryHttpStatusCodes ensures that no value is present for NetworkGatewayApiRetryHttpStatusCodes, not even an explicit nil
+### GetNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSeconds() int32`
+
+GetNetworkGatewayApiRetryPerTryTimeoutSeconds returns the NetworkGatewayApiRetryPerTryTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk
+
+`func (o *HelmAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk returns a tuple with the NetworkGatewayApiRetryPerTryTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiRetryPerTryTimeoutSeconds sets NetworkGatewayApiRetryPerTryTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *HelmAdvancedSettings) HasNetworkGatewayApiRetryPerTryTimeoutSeconds() bool`
+
+HasNetworkGatewayApiRetryPerTryTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil
+
+`func (o *HelmAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil sets the value for NetworkGatewayApiRetryPerTryTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds
+`func (o *HelmAdvancedSettings) UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds()`
+
+UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds ensures that no value is present for NetworkGatewayApiRetryPerTryTimeoutSeconds, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

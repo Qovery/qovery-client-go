@@ -34,6 +34,10 @@ Name | Type | Description | Notes
 **NetworkIngressExtraHeaders** | Pointer to **string** | Allows to define response headers | [optional] 
 **NetworkGatewayApiHttpRequestTimeoutSeconds** | Pointer to **NullableInt32** | Sets a timeout (in seconds) for requests proxied through the Gateway API route. | [optional] 
 **NetworkGatewayApiHttpConnectionIdleTimeoutSeconds** | Pointer to **NullableInt32** | Sets the idle timeout (in seconds) for HTTP connections proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryNumRetries** | Pointer to **NullableInt32** | Sets the number of retry attempts for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryRetryOn** | Pointer to **NullableString** | Comma-separated retry triggers (for example connect-failure,reset,refused-stream,retriable-status-codes) for requests proxied through the Gateway API route. | [optional] 
+**NetworkGatewayApiRetryHttpStatusCodes** | Pointer to **NullableString** | Comma-separated HTTP status codes (100..599) retried when retry_on includes retriable-status-codes. | [optional] 
+**NetworkGatewayApiRetryPerTryTimeoutSeconds** | Pointer to **NullableInt32** | Sets the timeout (in seconds) applied to each retry attempt for requests proxied through the Gateway API route. | [optional] 
 **NetworkIngressBasicAuthEnvVar** | Pointer to **string** | Set the name of an environment variable to use as a basic authentication (&#x60;login:crypted_password&#x60;) from &#x60;htpasswd&#x60; command. You can add multiples comma separated values.  | [optional] 
 **NetworkIngressEnableStickySession** | Pointer to **bool** | Enable the load balancer to bind a user&#39;s session to a specific target. This ensures that all requests from the user during the session are sent to the same target  | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
@@ -831,6 +835,146 @@ HasNetworkGatewayApiHttpConnectionIdleTimeoutSeconds returns a boolean if a fiel
 `func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds()`
 
 UnsetNetworkGatewayApiHttpConnectionIdleTimeoutSeconds ensures that no value is present for NetworkGatewayApiHttpConnectionIdleTimeoutSeconds, not even an explicit nil
+### GetNetworkGatewayApiRetryNumRetries
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryNumRetries() int32`
+
+GetNetworkGatewayApiRetryNumRetries returns the NetworkGatewayApiRetryNumRetries field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryNumRetriesOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryNumRetriesOk() (*int32, bool)`
+
+GetNetworkGatewayApiRetryNumRetriesOk returns a tuple with the NetworkGatewayApiRetryNumRetries field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryNumRetries
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryNumRetries(v int32)`
+
+SetNetworkGatewayApiRetryNumRetries sets NetworkGatewayApiRetryNumRetries field to given value.
+
+### HasNetworkGatewayApiRetryNumRetries
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiRetryNumRetries() bool`
+
+HasNetworkGatewayApiRetryNumRetries returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryNumRetriesNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryNumRetriesNil(b bool)`
+
+ SetNetworkGatewayApiRetryNumRetriesNil sets the value for NetworkGatewayApiRetryNumRetries to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryNumRetries
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiRetryNumRetries()`
+
+UnsetNetworkGatewayApiRetryNumRetries ensures that no value is present for NetworkGatewayApiRetryNumRetries, not even an explicit nil
+### GetNetworkGatewayApiRetryRetryOn
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryRetryOn() string`
+
+GetNetworkGatewayApiRetryRetryOn returns the NetworkGatewayApiRetryRetryOn field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryRetryOnOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryRetryOnOk() (*string, bool)`
+
+GetNetworkGatewayApiRetryRetryOnOk returns a tuple with the NetworkGatewayApiRetryRetryOn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryRetryOn
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryRetryOn(v string)`
+
+SetNetworkGatewayApiRetryRetryOn sets NetworkGatewayApiRetryRetryOn field to given value.
+
+### HasNetworkGatewayApiRetryRetryOn
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiRetryRetryOn() bool`
+
+HasNetworkGatewayApiRetryRetryOn returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryRetryOnNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryRetryOnNil(b bool)`
+
+ SetNetworkGatewayApiRetryRetryOnNil sets the value for NetworkGatewayApiRetryRetryOn to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryRetryOn
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiRetryRetryOn()`
+
+UnsetNetworkGatewayApiRetryRetryOn ensures that no value is present for NetworkGatewayApiRetryRetryOn, not even an explicit nil
+### GetNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodes() string`
+
+GetNetworkGatewayApiRetryHttpStatusCodes returns the NetworkGatewayApiRetryHttpStatusCodes field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryHttpStatusCodesOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryHttpStatusCodesOk() (*string, bool)`
+
+GetNetworkGatewayApiRetryHttpStatusCodesOk returns a tuple with the NetworkGatewayApiRetryHttpStatusCodes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodes(v string)`
+
+SetNetworkGatewayApiRetryHttpStatusCodes sets NetworkGatewayApiRetryHttpStatusCodes field to given value.
+
+### HasNetworkGatewayApiRetryHttpStatusCodes
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiRetryHttpStatusCodes() bool`
+
+HasNetworkGatewayApiRetryHttpStatusCodes returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryHttpStatusCodesNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryHttpStatusCodesNil(b bool)`
+
+ SetNetworkGatewayApiRetryHttpStatusCodesNil sets the value for NetworkGatewayApiRetryHttpStatusCodes to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryHttpStatusCodes
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiRetryHttpStatusCodes()`
+
+UnsetNetworkGatewayApiRetryHttpStatusCodes ensures that no value is present for NetworkGatewayApiRetryHttpStatusCodes, not even an explicit nil
+### GetNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSeconds() int32`
+
+GetNetworkGatewayApiRetryPerTryTimeoutSeconds returns the NetworkGatewayApiRetryPerTryTimeoutSeconds field if non-nil, zero value otherwise.
+
+### GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk
+
+`func (o *ContainerAdvancedSettings) GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk() (*int32, bool)`
+
+GetNetworkGatewayApiRetryPerTryTimeoutSecondsOk returns a tuple with the NetworkGatewayApiRetryPerTryTimeoutSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSeconds(v int32)`
+
+SetNetworkGatewayApiRetryPerTryTimeoutSeconds sets NetworkGatewayApiRetryPerTryTimeoutSeconds field to given value.
+
+### HasNetworkGatewayApiRetryPerTryTimeoutSeconds
+
+`func (o *ContainerAdvancedSettings) HasNetworkGatewayApiRetryPerTryTimeoutSeconds() bool`
+
+HasNetworkGatewayApiRetryPerTryTimeoutSeconds returns a boolean if a field has been set.
+
+### SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil
+
+`func (o *ContainerAdvancedSettings) SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil(b bool)`
+
+ SetNetworkGatewayApiRetryPerTryTimeoutSecondsNil sets the value for NetworkGatewayApiRetryPerTryTimeoutSeconds to be an explicit nil
+
+### UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds
+`func (o *ContainerAdvancedSettings) UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds()`
+
+UnsetNetworkGatewayApiRetryPerTryTimeoutSeconds ensures that no value is present for NetworkGatewayApiRetryPerTryTimeoutSeconds, not even an explicit nil
 ### GetNetworkIngressBasicAuthEnvVar
 
 `func (o *ContainerAdvancedSettings) GetNetworkIngressBasicAuthEnvVar() string`
