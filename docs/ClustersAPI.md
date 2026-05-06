@@ -9,9 +9,11 @@ Method | HTTP request | Description
 [**DeployCluster**](ClustersAPI.md#DeployCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**EditCluster**](ClustersAPI.md#EditCluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
 [**EditClusterAdvancedSettings**](ClustersAPI.md#EditClusterAdvancedSettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+[**EditClusterDnsProvider**](ClustersAPI.md#EditClusterDnsProvider) | **Put** /cluster/{clusterId}/dnsProvider | Edit cluster DNS provider
 [**EditClusterKubeconfig**](ClustersAPI.md#EditClusterKubeconfig) | **Put** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 [**EditRoutingTable**](ClustersAPI.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+[**GetClusterDnsProvider**](ClustersAPI.md#GetClusterDnsProvider) | **Get** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 [**GetClusterLogs**](ClustersAPI.md#GetClusterLogs) | **Get** /cluster/{clusterId}/logs | Fetch cluster logs
@@ -402,6 +404,78 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## EditClusterDnsProvider
+
+> ClusterDnsProviderResponse EditClusterDnsProvider(ctx, clusterId).ClusterDnsProviderRequest(clusterDnsProviderRequest).Execute()
+
+Edit cluster DNS provider
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	clusterDnsProviderRequest := *openapiclient.NewClusterDnsProviderRequest(openapiclient.ClusterDnsProviderRequestProvider{CloudflareDnsProviderRequest: openapiclient.NewCloudflareDnsProviderRequest("Provider_example", "example.com", "admin@example.com", "ApiToken_example")}) // ClusterDnsProviderRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.EditClusterDnsProvider(context.Background(), clusterId).ClusterDnsProviderRequest(clusterDnsProviderRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.EditClusterDnsProvider``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditClusterDnsProvider`: ClusterDnsProviderResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.EditClusterDnsProvider`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditClusterDnsProviderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clusterDnsProviderRequest** | [**ClusterDnsProviderRequest**](ClusterDnsProviderRequest.md) |  | 
+
+### Return type
+
+[**ClusterDnsProviderResponse**](ClusterDnsProviderResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## EditClusterKubeconfig
 
 > EditClusterKubeconfig(ctx, organizationId, clusterId).Body(body).Execute()
@@ -606,6 +680,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterDnsProvider
+
+> ClusterDnsProviderResponse GetClusterDnsProvider(ctx, clusterId).Execute()
+
+Get cluster DNS provider
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetClusterDnsProvider(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterDnsProvider``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterDnsProvider`: ClusterDnsProviderResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterDnsProvider`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterDnsProviderRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterDnsProviderResponse**](ClusterDnsProviderResponse.md)
 
 ### Authorization
 

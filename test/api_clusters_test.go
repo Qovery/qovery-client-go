@@ -95,6 +95,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService EditClusterDnsProvider", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.EditClusterDnsProvider(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService EditClusterKubeconfig", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -132,6 +146,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 		var clusterId string
 
 		resp, httpRes, err := apiClient.ClustersAPI.GetClusterAdvancedSettings(context.Background(), organizationId, clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ClustersAPIService GetClusterDnsProvider", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.GetClusterDnsProvider(context.Background(), clusterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

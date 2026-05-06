@@ -216,9 +216,11 @@ Class | Method | HTTP request | Description
 *ClustersAPI* | [**DeployCluster**](docs/ClustersAPI.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 *ClustersAPI* | [**EditCluster**](docs/ClustersAPI.md#editcluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
 *ClustersAPI* | [**EditClusterAdvancedSettings**](docs/ClustersAPI.md#editclusteradvancedsettings) | **Put** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Edit advanced settings
+*ClustersAPI* | [**EditClusterDnsProvider**](docs/ClustersAPI.md#editclusterdnsprovider) | **Put** /cluster/{clusterId}/dnsProvider | Edit cluster DNS provider
 *ClustersAPI* | [**EditClusterKubeconfig**](docs/ClustersAPI.md#editclusterkubeconfig) | **Put** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 *ClustersAPI* | [**EditRoutingTable**](docs/ClustersAPI.md#editroutingtable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 *ClustersAPI* | [**GetClusterAdvancedSettings**](docs/ClustersAPI.md#getclusteradvancedsettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+*ClustersAPI* | [**GetClusterDnsProvider**](docs/ClustersAPI.md#getclusterdnsprovider) | **Get** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 *ClustersAPI* | [**GetClusterKubeconfig**](docs/ClustersAPI.md#getclusterkubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 *ClustersAPI* | [**GetClusterKubernetesEvents**](docs/ClustersAPI.md#getclusterkubernetesevents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 *ClustersAPI* | [**GetClusterLogs**](docs/ClustersAPI.md#getclusterlogs) | **Get** /cluster/{clusterId}/logs | Fetch cluster logs
@@ -699,6 +701,8 @@ Class | Method | HTTP request | Description
  - [CloudProviderResponseList](docs/CloudProviderResponseList.md)
  - [CloudVendorEnum](docs/CloudVendorEnum.md)
  - [CloudWatchExportConfig](docs/CloudWatchExportConfig.md)
+ - [CloudflareDnsProviderRequest](docs/CloudflareDnsProviderRequest.md)
+ - [CloudflareDnsProviderResponse](docs/CloudflareDnsProviderResponse.md)
  - [Cluster](docs/Cluster.md)
  - [ClusterAdvancedSettings](docs/ClusterAdvancedSettings.md)
  - [ClusterCloudProviderInfo](docs/ClusterCloudProviderInfo.md)
@@ -708,6 +712,10 @@ Class | Method | HTTP request | Description
  - [ClusterCredentialsResponseList](docs/ClusterCredentialsResponseList.md)
  - [ClusterDeleteMode](docs/ClusterDeleteMode.md)
  - [ClusterDeploymentStatusEnum](docs/ClusterDeploymentStatusEnum.md)
+ - [ClusterDnsProviderRequest](docs/ClusterDnsProviderRequest.md)
+ - [ClusterDnsProviderRequestProvider](docs/ClusterDnsProviderRequestProvider.md)
+ - [ClusterDnsProviderResponse](docs/ClusterDnsProviderResponse.md)
+ - [ClusterDnsProviderResponseProvider](docs/ClusterDnsProviderResponseProvider.md)
  - [ClusterEksAnywhereGitRepository](docs/ClusterEksAnywhereGitRepository.md)
  - [ClusterEnvironmentResponse](docs/ClusterEnvironmentResponse.md)
  - [ClusterEnvironmentResponseList](docs/ClusterEnvironmentResponseList.md)
@@ -1185,6 +1193,8 @@ Class | Method | HTTP request | Description
  - [ProjectResponseList](docs/ProjectResponseList.md)
  - [ProjectStats](docs/ProjectStats.md)
  - [ProjectStatsResponseList](docs/ProjectStatsResponseList.md)
+ - [QoveryDnsProviderRequest](docs/QoveryDnsProviderRequest.md)
+ - [QoveryDnsProviderResponse](docs/QoveryDnsProviderResponse.md)
  - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
  - [QueuedDeploymentRequestForServiceAuditingData](docs/QueuedDeploymentRequestForServiceAuditingData.md)
  - [QueuedDeploymentRequestForServiceIdentifier](docs/QueuedDeploymentRequestForServiceIdentifier.md)
@@ -1203,6 +1213,12 @@ Class | Method | HTTP request | Description
  - [Referral](docs/Referral.md)
  - [RegistryMirroringModeEnum](docs/RegistryMirroringModeEnum.md)
  - [RewardClaim](docs/RewardClaim.md)
+ - [Route53DnsProviderRequest](docs/Route53DnsProviderRequest.md)
+ - [Route53DnsProviderRequestCredentials](docs/Route53DnsProviderRequestCredentials.md)
+ - [Route53DnsProviderResponse](docs/Route53DnsProviderResponse.md)
+ - [Route53DnsProviderResponseCredentials](docs/Route53DnsProviderResponseCredentials.md)
+ - [Route53StaticCredentialsRequest](docs/Route53StaticCredentialsRequest.md)
+ - [Route53StaticCredentialsResponse](docs/Route53StaticCredentialsResponse.md)
  - [ScalewayClusterCredentials](docs/ScalewayClusterCredentials.md)
  - [ScalewayCredentialsRequest](docs/ScalewayCredentialsRequest.md)
  - [Secret](docs/Secret.md)

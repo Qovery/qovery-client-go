@@ -5020,6 +5020,76 @@ paths:
       summary: Get latest EKS Anywhere cluster JWT
       tags:
       - Clusters
+  /cluster/{clusterId}/dnsProvider:
+    get:
+      description: Retrieve the DNS provider currently associated with a cluster.
+        Requires VIEWER role.
+      operationId: getClusterDnsProvider
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterDnsProviderResponse'
+          description: Cluster DNS provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get cluster DNS provider
+      tags:
+      - Clusters
+    put:
+      description: |
+        Update the DNS provider associated with a cluster. Requires an Enterprise plan.
+        Cloudflare api_token and Route53 STATIC credentials aws_secret_access_key must be provided on every edit.
+      operationId: editClusterDnsProvider
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterDnsProviderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterDnsProviderResponse'
+          description: Updated cluster DNS provider
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit cluster DNS provider
+      tags:
+      - Clusters
   /cluster/{clusterId}/argoCdConfig:
     delete:
       description: Remove the stored ArgoCD configuration for a cluster. Requires
@@ -21976,6 +22046,228 @@ components:
           $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
+      type: object
+    ClusterDnsProviderRequest:
+      example:
+        dns_provider:
+          provider: QOVERY
+          domain: example.com
+      properties:
+        dns_provider:
+          $ref: '#/components/schemas/ClusterDnsProviderRequestProvider'
+      required:
+      - dns_provider
+      type: object
+    ClusterDnsProviderResponse:
+      example:
+        dns_provider:
+          provider: QOVERY
+          domain: example.com
+      properties:
+        dns_provider:
+          $ref: '#/components/schemas/ClusterDnsProviderResponseProvider'
+      required:
+      - dns_provider
+      type: object
+    ClusterDnsProviderRequestProvider:
+      discriminator:
+        mapping:
+          QOVERY: '#/components/schemas/QoveryDnsProviderRequest'
+          CLOUDFLARE: '#/components/schemas/CloudflareDnsProviderRequest'
+          ROUTE53: '#/components/schemas/Route53DnsProviderRequest'
+        propertyName: provider
+      oneOf:
+      - $ref: '#/components/schemas/QoveryDnsProviderRequest'
+      - $ref: '#/components/schemas/CloudflareDnsProviderRequest'
+      - $ref: '#/components/schemas/Route53DnsProviderRequest'
+    ClusterDnsProviderResponseProvider:
+      discriminator:
+        mapping:
+          QOVERY: '#/components/schemas/QoveryDnsProviderResponse'
+          CLOUDFLARE: '#/components/schemas/CloudflareDnsProviderResponse'
+          ROUTE53: '#/components/schemas/Route53DnsProviderResponse'
+        propertyName: provider
+      oneOf:
+      - $ref: '#/components/schemas/QoveryDnsProviderResponse'
+      - $ref: '#/components/schemas/CloudflareDnsProviderResponse'
+      - $ref: '#/components/schemas/Route53DnsProviderResponse'
+    QoveryDnsProviderRequest:
+      example:
+        provider: QOVERY
+        domain: example.com
+      properties:
+        provider:
+          enum:
+          - QOVERY
+          type: string
+        domain:
+          example: example.com
+          type: string
+      required:
+      - domain
+      - provider
+      type: object
+    CloudflareDnsProviderRequest:
+      properties:
+        provider:
+          enum:
+          - CLOUDFLARE
+          type: string
+        domain:
+          example: example.com
+          type: string
+        email:
+          example: admin@example.com
+          format: email
+          type: string
+        api_token:
+          description: Cloudflare API token. Must be provided when editing Cloudflare
+            DNS provider.
+          minLength: 1
+          type: string
+          writeOnly: true
+        proxied:
+          default: false
+          type: boolean
+      required:
+      - api_token
+      - domain
+      - email
+      - provider
+      type: object
+    Route53DnsProviderRequest:
+      properties:
+        provider:
+          enum:
+          - ROUTE53
+          type: string
+        domain:
+          example: example.com
+          type: string
+        credentials:
+          $ref: '#/components/schemas/Route53DnsProviderRequestCredentials'
+        aws_region:
+          example: eu-west-3
+          type: string
+        hosted_zone_id:
+          example: Z0965488LE74BWDEVQDB
+          nullable: true
+          type: string
+      required:
+      - aws_region
+      - credentials
+      - domain
+      - provider
+      type: object
+    Route53DnsProviderRequestCredentials:
+      discriminator:
+        mapping:
+          STATIC: '#/components/schemas/Route53StaticCredentialsRequest'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/Route53StaticCredentialsRequest'
+    Route53StaticCredentialsRequest:
+      properties:
+        type:
+          enum:
+          - STATIC
+          type: string
+        aws_access_key_id:
+          description: AWS access key identifier. It is returned by the GET endpoint
+            and must be sent back when editing Route53.
+          minLength: 1
+          type: string
+        aws_secret_access_key:
+          description: AWS secret access key. Must be provided when editing Route53
+            DNS provider.
+          minLength: 1
+          type: string
+          writeOnly: true
+      required:
+      - aws_access_key_id
+      - aws_secret_access_key
+      - type
+      type: object
+    QoveryDnsProviderResponse:
+      example:
+        provider: QOVERY
+        domain: example.com
+      properties:
+        provider:
+          enum:
+          - QOVERY
+          type: string
+        domain:
+          example: example.com
+          type: string
+      required:
+      - domain
+      - provider
+      type: object
+    CloudflareDnsProviderResponse:
+      properties:
+        provider:
+          enum:
+          - CLOUDFLARE
+          type: string
+        domain:
+          example: example.com
+          type: string
+        email:
+          example: admin@example.com
+          format: email
+          type: string
+        proxied:
+          type: boolean
+      required:
+      - domain
+      - email
+      - provider
+      - proxied
+      type: object
+    Route53DnsProviderResponse:
+      properties:
+        provider:
+          enum:
+          - ROUTE53
+          type: string
+        domain:
+          example: example.com
+          type: string
+        credentials:
+          $ref: '#/components/schemas/Route53DnsProviderResponseCredentials'
+        aws_region:
+          example: eu-west-3
+          type: string
+        hosted_zone_id:
+          example: Z0965488LE74BWDEVQDB
+          nullable: true
+          type: string
+      required:
+      - aws_region
+      - credentials
+      - domain
+      - provider
+      type: object
+    Route53DnsProviderResponseCredentials:
+      discriminator:
+        mapping:
+          STATIC: '#/components/schemas/Route53StaticCredentialsResponse'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/Route53StaticCredentialsResponse'
+    Route53StaticCredentialsResponse:
+      properties:
+        type:
+          enum:
+          - STATIC
+          type: string
+        aws_access_key_id:
+          description: AWS access key identifier.
+          type: string
+      required:
+      - aws_access_key_id
+      - type
       type: object
     ClusterKarpenterPrivateSubnetIdsPutRequest:
       example:

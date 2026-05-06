@@ -223,6 +223,8 @@ docs/CloudProviderEnum.md
 docs/CloudProviderResponseList.md
 docs/CloudVendorEnum.md
 docs/CloudWatchExportConfig.md
+docs/CloudflareDnsProviderRequest.md
+docs/CloudflareDnsProviderResponse.md
 docs/Cluster.md
 docs/ClusterAdvancedSettings.md
 docs/ClusterCloudProviderInfo.md
@@ -232,6 +234,10 @@ docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
 docs/ClusterDeleteMode.md
 docs/ClusterDeploymentStatusEnum.md
+docs/ClusterDnsProviderRequest.md
+docs/ClusterDnsProviderRequestProvider.md
+docs/ClusterDnsProviderResponse.md
+docs/ClusterDnsProviderResponseProvider.md
 docs/ClusterEksAnywhereGitRepository.md
 docs/ClusterEnvironmentResponse.md
 docs/ClusterEnvironmentResponseList.md
@@ -773,6 +779,8 @@ docs/ProjectSecretAPI.md
 docs/ProjectStats.md
 docs/ProjectStatsResponseList.md
 docs/ProjectsAPI.md
+docs/QoveryDnsProviderRequest.md
+docs/QoveryDnsProviderResponse.md
 docs/QueuedDeploymentRequestForService.md
 docs/QueuedDeploymentRequestForServiceAuditingData.md
 docs/QueuedDeploymentRequestForServiceIdentifier.md
@@ -792,6 +800,12 @@ docs/Referral.md
 docs/ReferralRewardsAPI.md
 docs/RegistryMirroringModeEnum.md
 docs/RewardClaim.md
+docs/Route53DnsProviderRequest.md
+docs/Route53DnsProviderRequestCredentials.md
+docs/Route53DnsProviderResponse.md
+docs/Route53DnsProviderResponseCredentials.md
+docs/Route53StaticCredentialsRequest.md
+docs/Route53StaticCredentialsResponse.md
 docs/ScalewayClusterCredentials.md
 docs/ScalewayCredentialsRequest.md
 docs/Secret.md
@@ -1026,6 +1040,8 @@ model_cloud_provider_enum.go
 model_cloud_provider_response_list.go
 model_cloud_vendor_enum.go
 model_cloud_watch_export_config.go
+model_cloudflare_dns_provider_request.go
+model_cloudflare_dns_provider_response.go
 model_cluster.go
 model_cluster_advanced_settings.go
 model_cluster_cloud_provider_info.go
@@ -1035,6 +1051,10 @@ model_cluster_credentials.go
 model_cluster_credentials_response_list.go
 model_cluster_delete_mode.go
 model_cluster_deployment_status_enum.go
+model_cluster_dns_provider_request.go
+model_cluster_dns_provider_request_provider.go
+model_cluster_dns_provider_response.go
+model_cluster_dns_provider_response_provider.go
 model_cluster_eks_anywhere_git_repository.go
 model_cluster_environment_response.go
 model_cluster_environment_response_list.go
@@ -1512,6 +1532,8 @@ model_project_request.go
 model_project_response_list.go
 model_project_stats.go
 model_project_stats_response_list.go
+model_qovery_dns_provider_request.go
+model_qovery_dns_provider_response.go
 model_queued_deployment_request_for_service.go
 model_queued_deployment_request_for_service_auditing_data.go
 model_queued_deployment_request_for_service_identifier.go
@@ -1530,6 +1552,12 @@ model_reference_object_status_response_list.go
 model_referral.go
 model_registry_mirroring_mode_enum.go
 model_reward_claim.go
+model_route53_dns_provider_request.go
+model_route53_dns_provider_request_credentials.go
+model_route53_dns_provider_response.go
+model_route53_dns_provider_response_credentials.go
+model_route53_static_credentials_request.go
+model_route53_static_credentials_response.go
 model_scaleway_cluster_credentials.go
 model_scaleway_credentials_request.go
 model_secret.go
