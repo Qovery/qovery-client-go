@@ -6,12 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Kubernetes** | **map[string]interface{}** | Kubernetes-specific backend configuration | 
 **UserProvided** | **map[string]interface{}** | User-provided backend configuration | 
+**Blueprint** | [**TerraformBackendBlueprint**](TerraformBackendBlueprint.md) |  | 
 
 ## Methods
 
 ### NewTerraformBackend
 
-`func NewTerraformBackend(kubernetes map[string]interface{}, userProvided map[string]interface{}, ) *TerraformBackend`
+`func NewTerraformBackend(kubernetes map[string]interface{}, userProvided map[string]interface{}, blueprint TerraformBackendBlueprint, ) *TerraformBackend`
 
 NewTerraformBackend instantiates a new TerraformBackend object
 This constructor will assign default values to properties that have it defined,
@@ -64,6 +65,26 @@ and a boolean to check if the value has been set.
 `func (o *TerraformBackend) SetUserProvided(v map[string]interface{})`
 
 SetUserProvided sets UserProvided field to given value.
+
+
+### GetBlueprint
+
+`func (o *TerraformBackend) GetBlueprint() TerraformBackendBlueprint`
+
+GetBlueprint returns the Blueprint field if non-nil, zero value otherwise.
+
+### GetBlueprintOk
+
+`func (o *TerraformBackend) GetBlueprintOk() (*TerraformBackendBlueprint, bool)`
+
+GetBlueprintOk returns a tuple with the Blueprint field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlueprint
+
+`func (o *TerraformBackend) SetBlueprint(v TerraformBackendBlueprint)`
+
+SetBlueprint sets Blueprint field to given value.
 
 
 

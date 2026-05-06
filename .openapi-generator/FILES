@@ -848,8 +848,10 @@ docs/TerraformActionsAPI.md
 docs/TerraformAdvancedSettings.md
 docs/TerraformAutoDeployConfig.md
 docs/TerraformBackend.md
+docs/TerraformBackendBlueprint.md
 docs/TerraformBackendOneOf.md
 docs/TerraformBackendOneOf1.md
+docs/TerraformBackendOneOf2.md
 docs/TerraformConfigurationAPI.md
 docs/TerraformDeployRequest.md
 docs/TerraformDeploymentHistoryAPI.md
@@ -1581,8 +1583,10 @@ model_storage_type_enum.go
 model_terraform_advanced_settings.go
 model_terraform_auto_deploy_config.go
 model_terraform_backend.go
+model_terraform_backend_blueprint.go
 model_terraform_backend_one_of.go
 model_terraform_backend_one_of_1.go
+model_terraform_backend_one_of_2.go
 model_terraform_deploy_request.go
 model_terraform_deployment_restriction_request.go
 model_terraform_deployment_restriction_response.go

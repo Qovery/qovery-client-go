@@ -19190,11 +19190,29 @@ components:
       oneOf:
       - $ref: '#/components/schemas/TerraformBackend_oneOf'
       - $ref: '#/components/schemas/TerraformBackend_oneOf_1'
+      - $ref: '#/components/schemas/TerraformBackend_oneOf_2'
     TerraformBackendKubernetes:
       description: Kubernetes-specific backend configuration
       type: object
     TerraformBackendUserProvided:
       description: User-provided backend configuration
+      type: object
+    TerraformBackendBlueprint:
+      description: Blueprint-managed backend configuration. The user provides the
+        backend type and config at blueprint creation time. The platform generates
+        and injects backend.tf for the created service.
+      properties:
+        type:
+          description: "Terraform backend type (e.g. s3, gcs, azurerm)"
+          type: string
+        config:
+          additionalProperties:
+            type: string
+          description: "Static backend configuration (bucket, region, etc.). Credentials\
+            \ should be provided via environment variables, not here."
+          type: object
+      required:
+      - type
       type: object
     DeleteTerraformAction:
       description: Action to force a specific Terraform behavior during deletion/uninstall.
@@ -42008,6 +42026,13 @@ components:
           type: object
       required:
       - user_provided
+      type: object
+    TerraformBackend_oneOf_2:
+      properties:
+        blueprint:
+          $ref: '#/components/schemas/TerraformBackendBlueprint'
+      required:
+      - blueprint
       type: object
     ServicePortRequest_ports_inner:
       example:

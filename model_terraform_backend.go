@@ -20,6 +20,7 @@ import (
 type TerraformBackend struct {
 	TerraformBackendOneOf  *TerraformBackendOneOf
 	TerraformBackendOneOf1 *TerraformBackendOneOf1
+	TerraformBackendOneOf2 *TerraformBackendOneOf2
 }
 
 // TerraformBackendOneOfAsTerraformBackend is a convenience function that returns TerraformBackendOneOf wrapped in TerraformBackend
@@ -33,6 +34,13 @@ func TerraformBackendOneOfAsTerraformBackend(v *TerraformBackendOneOf) Terraform
 func TerraformBackendOneOf1AsTerraformBackend(v *TerraformBackendOneOf1) TerraformBackend {
 	return TerraformBackend{
 		TerraformBackendOneOf1: v,
+	}
+}
+
+// TerraformBackendOneOf2AsTerraformBackend is a convenience function that returns TerraformBackendOneOf2 wrapped in TerraformBackend
+func TerraformBackendOneOf2AsTerraformBackend(v *TerraformBackendOneOf2) TerraformBackend {
+	return TerraformBackend{
+		TerraformBackendOneOf2: v,
 	}
 }
 
@@ -66,10 +74,24 @@ func (dst *TerraformBackend) UnmarshalJSON(data []byte) error {
 		dst.TerraformBackendOneOf1 = nil
 	}
 
+	// try to unmarshal data into TerraformBackendOneOf2
+	err = json.Unmarshal(data, &dst.TerraformBackendOneOf2)
+	if err == nil {
+		jsonTerraformBackendOneOf2, _ := json.Marshal(dst.TerraformBackendOneOf2)
+		if string(jsonTerraformBackendOneOf2) == "{}" { // empty struct
+			dst.TerraformBackendOneOf2 = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.TerraformBackendOneOf2 = nil
+	}
+
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.TerraformBackendOneOf = nil
 		dst.TerraformBackendOneOf1 = nil
+		dst.TerraformBackendOneOf2 = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(TerraformBackend)")
 	} else if match == 1 {
@@ -89,6 +111,10 @@ func (src TerraformBackend) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.TerraformBackendOneOf1)
 	}
 
+	if src.TerraformBackendOneOf2 != nil {
+		return json.Marshal(&src.TerraformBackendOneOf2)
+	}
+
 	return nil, nil // no data in oneOf schemas
 }
 
@@ -103,6 +129,10 @@ func (obj *TerraformBackend) GetActualInstance() interface{} {
 
 	if obj.TerraformBackendOneOf1 != nil {
 		return obj.TerraformBackendOneOf1
+	}
+
+	if obj.TerraformBackendOneOf2 != nil {
+		return obj.TerraformBackendOneOf2
 	}
 
 	// all schemas are nil
