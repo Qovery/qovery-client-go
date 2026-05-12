@@ -86,6 +86,7 @@ api_project_main_calls.go
 api_project_secret.go
 api_projects.go
 api_referral_rewards.go
+api_secret_manager_access.go
 api_service_main_calls.go
 api_service_status.go
 api_terraform_actions.go
@@ -479,6 +480,8 @@ docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsAPI.md
+docs/ExternalSecretAssociatedServiceResponse.md
+docs/ExternalSecretAssociatedServiceResponseList.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -779,6 +782,7 @@ docs/ProjectSecretAPI.md
 docs/ProjectStats.md
 docs/ProjectStatsResponseList.md
 docs/ProjectsAPI.md
+docs/ProviderSecrets.md
 docs/QoveryDnsProviderRequest.md
 docs/QoveryDnsProviderResponse.md
 docs/QueuedDeploymentRequestForService.md
@@ -812,6 +816,7 @@ docs/Secret.md
 docs/SecretAlias.md
 docs/SecretEditRequest.md
 docs/SecretManagerAccess.md
+docs/SecretManagerAccessAPI.md
 docs/SecretManagerAccessRequest.md
 docs/SecretManagerAuthenticationDto.md
 docs/SecretManagerEndpointConfigurationDto.md
@@ -1267,6 +1272,8 @@ model_environment_variable_edit_request.go
 model_environment_variable_override.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
+model_external_secret_associated_service_response.go
+model_external_secret_associated_service_response_list.go
 model_gcp_credentials_request.go
 model_gcp_json_credentials_auth_dto.go
 model_gcp_secret_manager_endpoint_dto.go
@@ -1532,6 +1539,7 @@ model_project_request.go
 model_project_response_list.go
 model_project_stats.go
 model_project_stats_response_list.go
+model_provider_secrets.go
 model_qovery_dns_provider_request.go
 model_qovery_dns_provider_response.go
 model_queued_deployment_request_for_service.go
@@ -1756,6 +1764,7 @@ test/api_project_main_calls_test.go
 test/api_project_secret_test.go
 test/api_projects_test.go
 test/api_referral_rewards_test.go
+test/api_secret_manager_access_test.go
 test/api_service_main_calls_test.go
 test/api_service_status_test.go
 test/api_terraform_actions_test.go

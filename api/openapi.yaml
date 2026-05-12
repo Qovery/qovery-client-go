@@ -120,6 +120,7 @@ tags:
 - name: Project Secret
 - name: Projects
 - name: Referral & Rewards
+- name: Secret Manager Access
 - name: Terraforms
 - name: Terraform Main Calls
 - name: Terraform Resources
@@ -2159,6 +2160,73 @@ paths:
       summary: List Cluster Logs
       tags:
       - Clusters
+  /api/secretManagerAccess/{secretManagerAccessId}/secrets:
+    get:
+      description: List upstream secrets from secret provider
+      operationId: listUpstreamSecretsFromSecretProvider
+      parameters:
+      - description: Secret Manager Access ID
+        explode: false
+        in: path
+        name: secretManagerAccessId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: namePrefix
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProviderSecrets'
+          description: List upstream secrets from secret provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List upstream secrets from secret provider
+      tags:
+      - Secret Manager Access
+  /api/secretManagerAccess/{secretManagerAccessId}/associatedServices:
+    get:
+      description: List external secrets used by a secret manager access
+      operationId: listSecretManagerAccessExternalSecrets
+      parameters:
+      - description: Secret Manager Access ID
+        explode: false
+        in: path
+        name: secretManagerAccessId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ExternalSecretAssociatedServiceResponseList'
+          description: List external secrets used by a secret manager access
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List external secrets used by a secret manager access
+      tags:
+      - Secret Manager Access
   /organization/{organizationId}/aws/credentials:
     get:
       operationId: listAWSCredentials
@@ -18890,6 +18958,16 @@ components:
       name: triggerAuthenticationId
       required: true
       schema:
+        type: string
+      style: simple
+    secretManagerAccessId:
+      description: Secret Manager Access ID
+      explode: false
+      in: path
+      name: secretManagerAccessId
+      required: true
+      schema:
+        format: uuid
         type: string
       style: simple
   responses:
@@ -41168,6 +41246,89 @@ components:
         name: name
         namespace: namespace
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    ProviderSecrets:
+      example:
+        results:
+        - results
+        - results
+      properties:
+        results:
+          items:
+            type: string
+          type: array
+      required:
+      - results
+      type: object
+    ExternalSecretAssociatedServiceResponseList:
+      example:
+        results:
+        - external_secret_name: external_secret_name
+          service_type: APPLICATION
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          variable_name: variable_name
+          project_name: project_name
+          environment_name: environment_name
+        - external_secret_name: external_secret_name
+          service_type: APPLICATION
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          variable_name: variable_name
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ExternalSecretAssociatedServiceResponse'
+          type: array
+      required:
+      - results
+      type: object
+    ExternalSecretAssociatedServiceResponse:
+      example:
+        external_secret_name: external_secret_name
+        service_type: APPLICATION
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_name: service_name
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        variable_name: variable_name
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        environment_name:
+          type: string
+        service_id:
+          format: uuid
+          type: string
+        service_name:
+          type: string
+        service_type:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        variable_name:
+          type: string
+        external_secret_name:
+          type: string
+      required:
+      - environment_id
+      - environment_name
+      - external_secret_name
+      - project_id
+      - project_name
+      - variable_name
+      type: object
     listDirectoriesFromGitRepository_200_response:
       example:
         results:

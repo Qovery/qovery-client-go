@@ -559,6 +559,8 @@ Class | Method | HTTP request | Description
 *ProjectsAPI* | [**ListProject**](docs/ProjectsAPI.md#listproject) | **Get** /organization/{organizationId}/project | List projects
 *ReferralRewardsAPI* | [**GetAccountReferral**](docs/ReferralRewardsAPI.md#getaccountreferral) | **Get** /account/referral | Get your referral information
 *ReferralRewardsAPI* | [**PostAccountRewardClaim**](docs/ReferralRewardsAPI.md#postaccountrewardclaim) | **Post** /account/rewardClaim | Claim a reward
+*SecretManagerAccessAPI* | [**ListSecretManagerAccessExternalSecrets**](docs/SecretManagerAccessAPI.md#listsecretmanageraccessexternalsecrets) | **Get** /api/secretManagerAccess/{secretManagerAccessId}/associatedServices | List external secrets used by a secret manager access
+*SecretManagerAccessAPI* | [**ListUpstreamSecretsFromSecretProvider**](docs/SecretManagerAccessAPI.md#listupstreamsecretsfromsecretprovider) | **Get** /api/secretManagerAccess/{secretManagerAccessId}/secrets | List upstream secrets from secret provider
 *ServiceMainCallsAPI* | [**GetServiceGitWebhookStatus**](docs/ServiceMainCallsAPI.md#getservicegitwebhookstatus) | **Get** /service/{serviceId}/gitWebhookStatus | Get git webhook status for a service
 *ServiceMainCallsAPI* | [**SyncServiceGitWebhook**](docs/ServiceMainCallsAPI.md#syncservicegitwebhook) | **Post** /service/{serviceId}/gitWebhook/sync | Synchronize git webhook for a service
 *ServiceStatusAPI* | [**GetIngressDeploymentStatus**](docs/ServiceStatusAPI.md#getingressdeploymentstatus) | **Get** /{serviceType}/{serviceId}/ingressDeploymentStatus | Get Ingress Deployment Status By Service
@@ -928,6 +930,8 @@ Class | Method | HTTP request | Description
  - [EnvironmentVariableOverride](docs/EnvironmentVariableOverride.md)
  - [EnvironmentVariableRequest](docs/EnvironmentVariableRequest.md)
  - [EnvironmentVariableResponseList](docs/EnvironmentVariableResponseList.md)
+ - [ExternalSecretAssociatedServiceResponse](docs/ExternalSecretAssociatedServiceResponse.md)
+ - [ExternalSecretAssociatedServiceResponseList](docs/ExternalSecretAssociatedServiceResponseList.md)
  - [GcpCredentialsRequest](docs/GcpCredentialsRequest.md)
  - [GcpJsonCredentialsAuthDto](docs/GcpJsonCredentialsAuthDto.md)
  - [GcpSecretManagerEndpointDto](docs/GcpSecretManagerEndpointDto.md)
@@ -1193,6 +1197,7 @@ Class | Method | HTTP request | Description
  - [ProjectResponseList](docs/ProjectResponseList.md)
  - [ProjectStats](docs/ProjectStats.md)
  - [ProjectStatsResponseList](docs/ProjectStatsResponseList.md)
+ - [ProviderSecrets](docs/ProviderSecrets.md)
  - [QoveryDnsProviderRequest](docs/QoveryDnsProviderRequest.md)
  - [QoveryDnsProviderResponse](docs/QoveryDnsProviderResponse.md)
  - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
