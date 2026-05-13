@@ -2160,7 +2160,7 @@ paths:
       summary: List Cluster Logs
       tags:
       - Clusters
-  /api/secretManagerAccess/{secretManagerAccessId}/secrets:
+  /secretManagerAccess/{secretManagerAccessId}/secrets:
     get:
       description: List upstream secrets from secret provider
       operationId: listUpstreamSecretsFromSecretProvider
@@ -2197,7 +2197,7 @@ paths:
       summary: List upstream secrets from secret provider
       tags:
       - Secret Manager Access
-  /api/secretManagerAccess/{secretManagerAccessId}/associatedServices:
+  /secretManagerAccess/{secretManagerAccessId}/associatedServices:
     get:
       description: List external secrets used by a secret manager access
       operationId: listSecretManagerAccessExternalSecrets

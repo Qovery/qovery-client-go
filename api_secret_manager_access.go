@@ -66,7 +66,7 @@ func (a *SecretManagerAccessAPIService) ListSecretManagerAccessExternalSecretsEx
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/secretManagerAccess/{secretManagerAccessId}/associatedServices"
+	localVarPath := localBasePath + "/secretManagerAccess/{secretManagerAccessId}/associatedServices"
 	localVarPath = strings.Replace(localVarPath, "{"+"secretManagerAccessId"+"}", url.PathEscape(parameterValueToString(r.secretManagerAccessId, "secretManagerAccessId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -190,7 +190,7 @@ func (a *SecretManagerAccessAPIService) ListUpstreamSecretsFromSecretProviderExe
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/api/secretManagerAccess/{secretManagerAccessId}/secrets"
+	localVarPath := localBasePath + "/secretManagerAccess/{secretManagerAccessId}/secrets"
 	localVarPath = strings.Replace(localVarPath, "{"+"secretManagerAccessId"+"}", url.PathEscape(parameterValueToString(r.secretManagerAccessId, "secretManagerAccessId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

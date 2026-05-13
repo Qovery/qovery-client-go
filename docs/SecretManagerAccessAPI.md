@@ -4,8 +4,8 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**ListSecretManagerAccessExternalSecrets**](SecretManagerAccessAPI.md#ListSecretManagerAccessExternalSecrets) | **Get** /api/secretManagerAccess/{secretManagerAccessId}/associatedServices | List external secrets used by a secret manager access
-[**ListUpstreamSecretsFromSecretProvider**](SecretManagerAccessAPI.md#ListUpstreamSecretsFromSecretProvider) | **Get** /api/secretManagerAccess/{secretManagerAccessId}/secrets | List upstream secrets from secret provider
+[**ListSecretManagerAccessExternalSecrets**](SecretManagerAccessAPI.md#ListSecretManagerAccessExternalSecrets) | **Get** /secretManagerAccess/{secretManagerAccessId}/associatedServices | List external secrets used by a secret manager access
+[**ListUpstreamSecretsFromSecretProvider**](SecretManagerAccessAPI.md#ListUpstreamSecretsFromSecretProvider) | **Get** /secretManagerAccess/{secretManagerAccessId}/secrets | List upstream secrets from secret provider
 
 
 
