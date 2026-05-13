@@ -17903,6 +17903,36 @@ paths:
       summary: Get ArgoCD app by ID
       tags:
       - ArgoCD
+  /argocdApp/{argocdAppId}/manifest:
+    get:
+      operationId: getArgoCdAppManifest
+      parameters:
+      - description: ArgoCD App ID
+        explode: false
+        in: path
+        name: argocdAppId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArgocdAppManifestResponse'
+          description: "Manifest enrichment for the ArgoCD app, including managed\
+            \ Kubernetes resources"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get ArgoCD app manifest enrichment
+      tags:
+      - ArgoCD
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
@@ -41246,6 +41276,53 @@ components:
         name: name
         namespace: namespace
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+    ArgocdAppManifestResponse:
+      example:
+        manifest_metadata:
+          managed_resources:
+          - kind: kind
+            targetState: targetState
+            name: name
+            namespace: namespace
+            liveState: liveState
+          - kind: kind
+            targetState: targetState
+            name: name
+            namespace: namespace
+            liveState: liveState
+        manifest_revision: manifest_revision
+      properties:
+        manifest_revision:
+          description: Git revision the app is currently synced to
+          nullable: true
+          type: string
+        manifest_metadata:
+          $ref: '#/components/schemas/ArgocdAppManifestResponse_manifest_metadata'
+      required:
+      - manifest_metadata
+      type: object
+    ArgocdManagedResource:
+      example:
+        kind: kind
+        targetState: targetState
+        name: name
+        namespace: namespace
+        liveState: liveState
+      properties:
+        kind:
+          description: "Kubernetes resource kind (e.g. Deployment, Service)"
+          type: string
+        name:
+          type: string
+        namespace:
+          type: string
+        targetState:
+          description: JSON-encoded desired Kubernetes manifest
+          type: string
+        liveState:
+          description: JSON-encoded live Kubernetes manifest
+          type: string
+      type: object
     ProviderSecrets:
       example:
         results:
@@ -44939,6 +45016,26 @@ components:
       - $ref: '#/components/schemas/GhostAlertRuleResponse'
     KedaScalerResponse_allOf_config_json:
       nullable: true
+      type: object
+    ArgocdAppManifestResponse_manifest_metadata:
+      description: Raw enrichment data fetched from the ArgoCD managed-resources API
+      example:
+        managed_resources:
+        - kind: kind
+          targetState: targetState
+          name: name
+          namespace: namespace
+          liveState: liveState
+        - kind: kind
+          targetState: targetState
+          name: name
+          namespace: namespace
+          liveState: liveState
+      properties:
+        managed_resources:
+          items:
+            $ref: '#/components/schemas/ArgocdManagedResource'
+          type: array
       type: object
   securitySchemes:
     bearerAuth:

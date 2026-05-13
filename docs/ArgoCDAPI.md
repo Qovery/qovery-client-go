@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CheckArgoCdConnection**](ArgoCDAPI.md#CheckArgoCdConnection) | **Post** /cluster/{clusterId}/argoCdConfig/check | Check ArgoCD connection
 [**DeleteArgoCdCredentials**](ArgoCDAPI.md#DeleteArgoCdCredentials) | **Delete** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
 [**GetArgoCdApp**](ArgoCDAPI.md#GetArgoCdApp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
+[**GetArgoCdAppManifest**](ArgoCDAPI.md#GetArgoCdAppManifest) | **Get** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
 [**GetArgoCdCredentials**](ArgoCDAPI.md#GetArgoCdCredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 [**ListArgoCdDestinationClusterMappings**](ArgoCDAPI.md#ListArgoCdDestinationClusterMappings) | **Get** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 [**SaveArgoCdCredentials**](ArgoCDAPI.md#SaveArgoCdCredentials) | **Post** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
@@ -207,6 +208,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ArgocdAppResponse**](ArgocdAppResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetArgoCdAppManifest
+
+> ArgocdAppManifestResponse GetArgoCdAppManifest(ctx, argocdAppId).Execute()
+
+Get ArgoCD app manifest enrichment
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	argocdAppId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ArgoCD App ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArgoCDAPI.GetArgoCdAppManifest(context.Background(), argocdAppId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArgoCDAPI.GetArgoCdAppManifest``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetArgoCdAppManifest`: ArgocdAppManifestResponse
+	fmt.Fprintf(os.Stdout, "Response from `ArgoCDAPI.GetArgoCdAppManifest`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**argocdAppId** | **string** | ArgoCD App ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetArgoCdAppManifestRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ArgocdAppManifestResponse**](ArgocdAppManifestResponse.md)
 
 ### Authorization
 
