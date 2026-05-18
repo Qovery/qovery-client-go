@@ -18,11 +18,12 @@ import (
 
 // ClusterRequestFeaturesInnerValue - struct for ClusterRequestFeaturesInnerValue
 type ClusterRequestFeaturesInnerValue struct {
-	ClusterFeatureAwsExistingVpc      *ClusterFeatureAwsExistingVpc
-	ClusterFeatureGcpExistingVpc      *ClusterFeatureGcpExistingVpc
-	ClusterFeatureKarpenterParameters *ClusterFeatureKarpenterParameters
-	Bool                              *bool
-	String                            *string
+	ClusterFeatureAwsExistingVpc       *ClusterFeatureAwsExistingVpc
+	ClusterFeatureGcpExistingVpc       *ClusterFeatureGcpExistingVpc
+	ClusterFeatureKarpenterParameters  *ClusterFeatureKarpenterParameters
+	ClusterFeatureNatGatewayParameters *ClusterFeatureNatGatewayParameters
+	Bool                               *bool
+	String                             *string
 }
 
 // ClusterFeatureAwsExistingVpcAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterFeatureAwsExistingVpc wrapped in ClusterRequestFeaturesInnerValue
@@ -43,6 +44,13 @@ func ClusterFeatureGcpExistingVpcAsClusterRequestFeaturesInnerValue(v *ClusterFe
 func ClusterFeatureKarpenterParametersAsClusterRequestFeaturesInnerValue(v *ClusterFeatureKarpenterParameters) ClusterRequestFeaturesInnerValue {
 	return ClusterRequestFeaturesInnerValue{
 		ClusterFeatureKarpenterParameters: v,
+	}
+}
+
+// ClusterFeatureNatGatewayParametersAsClusterRequestFeaturesInnerValue is a convenience function that returns ClusterFeatureNatGatewayParameters wrapped in ClusterRequestFeaturesInnerValue
+func ClusterFeatureNatGatewayParametersAsClusterRequestFeaturesInnerValue(v *ClusterFeatureNatGatewayParameters) ClusterRequestFeaturesInnerValue {
+	return ClusterRequestFeaturesInnerValue{
+		ClusterFeatureNatGatewayParameters: v,
 	}
 }
 
@@ -108,6 +116,19 @@ func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 		dst.ClusterFeatureKarpenterParameters = nil
 	}
 
+	// try to unmarshal data into ClusterFeatureNatGatewayParameters
+	err = json.Unmarshal(data, &dst.ClusterFeatureNatGatewayParameters)
+	if err == nil {
+		jsonClusterFeatureNatGatewayParameters, _ := json.Marshal(dst.ClusterFeatureNatGatewayParameters)
+		if string(jsonClusterFeatureNatGatewayParameters) == "{}" { // empty struct
+			dst.ClusterFeatureNatGatewayParameters = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.ClusterFeatureNatGatewayParameters = nil
+	}
+
 	// try to unmarshal data into Bool
 	err = json.Unmarshal(data, &dst.Bool)
 	if err == nil {
@@ -139,6 +160,7 @@ func (dst *ClusterRequestFeaturesInnerValue) UnmarshalJSON(data []byte) error {
 		dst.ClusterFeatureAwsExistingVpc = nil
 		dst.ClusterFeatureGcpExistingVpc = nil
 		dst.ClusterFeatureKarpenterParameters = nil
+		dst.ClusterFeatureNatGatewayParameters = nil
 		dst.Bool = nil
 		dst.String = nil
 
@@ -162,6 +184,10 @@ func (src ClusterRequestFeaturesInnerValue) MarshalJSON() ([]byte, error) {
 
 	if src.ClusterFeatureKarpenterParameters != nil {
 		return json.Marshal(&src.ClusterFeatureKarpenterParameters)
+	}
+
+	if src.ClusterFeatureNatGatewayParameters != nil {
+		return json.Marshal(&src.ClusterFeatureNatGatewayParameters)
 	}
 
 	if src.Bool != nil {
@@ -190,6 +216,10 @@ func (obj *ClusterRequestFeaturesInnerValue) GetActualInstance() interface{} {
 
 	if obj.ClusterFeatureKarpenterParameters != nil {
 		return obj.ClusterFeatureKarpenterParameters
+	}
+
+	if obj.ClusterFeatureNatGatewayParameters != nil {
+		return obj.ClusterFeatureNatGatewayParameters
 	}
 
 	if obj.Bool != nil {

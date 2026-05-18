@@ -26,6 +26,7 @@ const (
 	CLUSTERFEATURERESPONSETYPEENUM_AWS_USER_PROVIDED_NETWORK ClusterFeatureResponseTypeEnum = "AWS_USER_PROVIDED_NETWORK"
 	CLUSTERFEATURERESPONSETYPEENUM_GCP_USER_PROVIDED_NETWORK ClusterFeatureResponseTypeEnum = "GCP_USER_PROVIDED_NETWORK"
 	CLUSTERFEATURERESPONSETYPEENUM_KARPENTER                 ClusterFeatureResponseTypeEnum = "KARPENTER"
+	CLUSTERFEATURERESPONSETYPEENUM_NAT_GATEWAY               ClusterFeatureResponseTypeEnum = "NAT_GATEWAY"
 )
 
 // All allowed values of ClusterFeatureResponseTypeEnum enum
@@ -35,6 +36,7 @@ var AllowedClusterFeatureResponseTypeEnumEnumValues = []ClusterFeatureResponseTy
 	"AWS_USER_PROVIDED_NETWORK",
 	"GCP_USER_PROVIDED_NETWORK",
 	"KARPENTER",
+	"NAT_GATEWAY",
 }
 
 func (v *ClusterFeatureResponseTypeEnum) UnmarshalJSON(src []byte) error {

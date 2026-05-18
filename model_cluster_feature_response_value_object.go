@@ -18,11 +18,12 @@ import (
 
 // ClusterFeatureResponseValueObject - struct for ClusterFeatureResponseValueObject
 type ClusterFeatureResponseValueObject struct {
-	ClusterFeatureAwsExistingVpcResponse      *ClusterFeatureAwsExistingVpcResponse
-	ClusterFeatureBooleanResponse             *ClusterFeatureBooleanResponse
-	ClusterFeatureGcpExistingVpcResponse      *ClusterFeatureGcpExistingVpcResponse
-	ClusterFeatureKarpenterParametersResponse *ClusterFeatureKarpenterParametersResponse
-	ClusterFeatureStringResponse              *ClusterFeatureStringResponse
+	ClusterFeatureAwsExistingVpcResponse       *ClusterFeatureAwsExistingVpcResponse
+	ClusterFeatureBooleanResponse              *ClusterFeatureBooleanResponse
+	ClusterFeatureGcpExistingVpcResponse       *ClusterFeatureGcpExistingVpcResponse
+	ClusterFeatureKarpenterParametersResponse  *ClusterFeatureKarpenterParametersResponse
+	ClusterFeatureNatGatewayParametersResponse *ClusterFeatureNatGatewayParametersResponse
+	ClusterFeatureStringResponse               *ClusterFeatureStringResponse
 }
 
 // ClusterFeatureAwsExistingVpcResponseAsClusterFeatureResponseValueObject is a convenience function that returns ClusterFeatureAwsExistingVpcResponse wrapped in ClusterFeatureResponseValueObject
@@ -50,6 +51,13 @@ func ClusterFeatureGcpExistingVpcResponseAsClusterFeatureResponseValueObject(v *
 func ClusterFeatureKarpenterParametersResponseAsClusterFeatureResponseValueObject(v *ClusterFeatureKarpenterParametersResponse) ClusterFeatureResponseValueObject {
 	return ClusterFeatureResponseValueObject{
 		ClusterFeatureKarpenterParametersResponse: v,
+	}
+}
+
+// ClusterFeatureNatGatewayParametersResponseAsClusterFeatureResponseValueObject is a convenience function that returns ClusterFeatureNatGatewayParametersResponse wrapped in ClusterFeatureResponseValueObject
+func ClusterFeatureNatGatewayParametersResponseAsClusterFeatureResponseValueObject(v *ClusterFeatureNatGatewayParametersResponse) ClusterFeatureResponseValueObject {
+	return ClusterFeatureResponseValueObject{
+		ClusterFeatureNatGatewayParametersResponse: v,
 	}
 }
 
@@ -123,6 +131,18 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'NAT_GATEWAY'
+	if jsonDict["type"] == "NAT_GATEWAY" {
+		// try to unmarshal JSON data into ClusterFeatureNatGatewayParametersResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureNatGatewayParametersResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureNatGatewayParametersResponse, return on the first match
+		} else {
+			dst.ClusterFeatureNatGatewayParametersResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureNatGatewayParametersResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'STRING'
 	if jsonDict["type"] == "STRING" {
 		// try to unmarshal JSON data into ClusterFeatureStringResponse
@@ -183,6 +203,18 @@ func (dst *ClusterFeatureResponseValueObject) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'ClusterFeatureNatGatewayParametersResponse'
+	if jsonDict["type"] == "ClusterFeatureNatGatewayParametersResponse" {
+		// try to unmarshal JSON data into ClusterFeatureNatGatewayParametersResponse
+		err = json.Unmarshal(data, &dst.ClusterFeatureNatGatewayParametersResponse)
+		if err == nil {
+			return nil // data stored in dst.ClusterFeatureNatGatewayParametersResponse, return on the first match
+		} else {
+			dst.ClusterFeatureNatGatewayParametersResponse = nil
+			return fmt.Errorf("failed to unmarshal ClusterFeatureResponseValueObject as ClusterFeatureNatGatewayParametersResponse: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'ClusterFeatureStringResponse'
 	if jsonDict["type"] == "ClusterFeatureStringResponse" {
 		// try to unmarshal JSON data into ClusterFeatureStringResponse
@@ -216,6 +248,10 @@ func (src ClusterFeatureResponseValueObject) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.ClusterFeatureKarpenterParametersResponse)
 	}
 
+	if src.ClusterFeatureNatGatewayParametersResponse != nil {
+		return json.Marshal(&src.ClusterFeatureNatGatewayParametersResponse)
+	}
+
 	if src.ClusterFeatureStringResponse != nil {
 		return json.Marshal(&src.ClusterFeatureStringResponse)
 	}
@@ -242,6 +278,10 @@ func (obj *ClusterFeatureResponseValueObject) GetActualInstance() interface{} {
 
 	if obj.ClusterFeatureKarpenterParametersResponse != nil {
 		return obj.ClusterFeatureKarpenterParametersResponse
+	}
+
+	if obj.ClusterFeatureNatGatewayParametersResponse != nil {
+		return obj.ClusterFeatureNatGatewayParametersResponse
 	}
 
 	if obj.ClusterFeatureStringResponse != nil {

@@ -22659,6 +22659,7 @@ components:
       - AWS_USER_PROVIDED_NETWORK
       - GCP_USER_PROVIDED_NETWORK
       - KARPENTER
+      - NAT_GATEWAY
       type: string
     ClusterFeatureStringResponse:
       example:
@@ -22699,6 +22700,18 @@ components:
           $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
         value:
           $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
+      required:
+      - type
+      - value
+      type: object
+    ClusterFeatureNatGatewayParametersResponse:
+      properties:
+        type:
+          $ref: '#/components/schemas/ClusterFeatureResponseTypeEnum'
+        value:
+          allOf:
+          - $ref: '#/components/schemas/ClusterFeatureNatGatewayParameters'
+          nullable: true
       required:
       - type
       - value
@@ -22822,6 +22835,46 @@ components:
           type: array
       required:
       - vpc_name
+      type: object
+    ClusterFeatureNatGatewayParameters:
+      properties:
+        nat_gateway_type:
+          $ref: '#/components/schemas/ClusterFeatureNatGatewayParameters_nat_gateway_type'
+      type: object
+    ClusterFeatureNatGatewayTypeScaleway:
+      properties:
+        provider:
+          enum:
+          - scaleway
+          type: string
+        type:
+          enum:
+          - VPC-GW-S
+          - VPC-GW-M
+          - VPC-GW-L
+          - VPC-GW-XL
+          type: string
+      required:
+      - provider
+      - type
+      type: object
+    ClusterFeatureNatGatewayTypeGcp:
+      properties:
+        provider:
+          enum:
+          - gcp
+          type: string
+        static_ips_enabled:
+          type: boolean
+        static_ips_count:
+          description: Number of static IPs to allocate. Must be >= 1 when static_ips_enabled
+            is true.
+          minimum: 1
+          type: integer
+      required:
+      - provider
+      - static_ips_count
+      - static_ips_enabled
       type: object
     ClusterFeatureResponseList:
       example:
@@ -42794,6 +42847,7 @@ components:
           AWS_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
           GCP_USER_PROVIDED_NETWORK: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
           KARPENTER: '#/components/schemas/ClusterFeatureKarpenterParametersResponse'
+          NAT_GATEWAY: '#/components/schemas/ClusterFeatureNatGatewayParametersResponse'
         propertyName: type
       nullable: true
       oneOf:
@@ -42802,10 +42856,21 @@ components:
       - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpcResponse'
       - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpcResponse'
       - $ref: '#/components/schemas/ClusterFeatureKarpenterParametersResponse'
+      - $ref: '#/components/schemas/ClusterFeatureNatGatewayParametersResponse'
     ClusterFeatureResponse_accepted_values_inner:
       oneOf:
       - type: string
       - type: boolean
+    ClusterFeatureNatGatewayParameters_nat_gateway_type:
+      discriminator:
+        mapping:
+          scaleway: '#/components/schemas/ClusterFeatureNatGatewayTypeScaleway'
+          gcp: '#/components/schemas/ClusterFeatureNatGatewayTypeGcp'
+        propertyName: provider
+      nullable: true
+      oneOf:
+      - $ref: '#/components/schemas/ClusterFeatureNatGatewayTypeScaleway'
+      - $ref: '#/components/schemas/ClusterFeatureNatGatewayTypeGcp'
     ClusterInstanceTypeResponseList_results_inner:
       example:
         gpu_info:
@@ -42868,6 +42933,7 @@ components:
       - $ref: '#/components/schemas/ClusterFeatureAwsExistingVpc'
       - $ref: '#/components/schemas/ClusterFeatureGcpExistingVpc'
       - $ref: '#/components/schemas/ClusterFeatureKarpenterParameters'
+      - $ref: '#/components/schemas/ClusterFeatureNatGatewayParameters'
     ClusterRequest_features_inner:
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

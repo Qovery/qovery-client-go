@@ -13,6 +13,8 @@
 
 * `KARPENTER` (value: `"KARPENTER"`)
 
+* `NAT_GATEWAY` (value: `"NAT_GATEWAY"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

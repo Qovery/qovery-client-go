@@ -33,6 +33,7 @@ Name | Type | Description | Notes
 **DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk throughput to be used for the node configuration | [optional] 
 **DefaultServiceArchitecture** | [**CpuArchitectureEnum**](CpuArchitectureEnum.md) |  | 
 **QoveryNodePools** | [**KarpenterNodePool**](KarpenterNodePool.md) |  | 
+**NatGatewayType** | Pointer to [**NullableClusterFeatureNatGatewayParametersNatGatewayType**](ClusterFeatureNatGatewayParametersNatGatewayType.md) |  | [optional] 
 
 ## Methods
 
@@ -893,6 +894,41 @@ and a boolean to check if the value has been set.
 SetQoveryNodePools sets QoveryNodePools field to given value.
 
 
+### GetNatGatewayType
+
+`func (o *ClusterRequestFeaturesInnerValue) GetNatGatewayType() ClusterFeatureNatGatewayParametersNatGatewayType`
+
+GetNatGatewayType returns the NatGatewayType field if non-nil, zero value otherwise.
+
+### GetNatGatewayTypeOk
+
+`func (o *ClusterRequestFeaturesInnerValue) GetNatGatewayTypeOk() (*ClusterFeatureNatGatewayParametersNatGatewayType, bool)`
+
+GetNatGatewayTypeOk returns a tuple with the NatGatewayType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNatGatewayType
+
+`func (o *ClusterRequestFeaturesInnerValue) SetNatGatewayType(v ClusterFeatureNatGatewayParametersNatGatewayType)`
+
+SetNatGatewayType sets NatGatewayType field to given value.
+
+### HasNatGatewayType
+
+`func (o *ClusterRequestFeaturesInnerValue) HasNatGatewayType() bool`
+
+HasNatGatewayType returns a boolean if a field has been set.
+
+### SetNatGatewayTypeNil
+
+`func (o *ClusterRequestFeaturesInnerValue) SetNatGatewayTypeNil(b bool)`
+
+ SetNatGatewayTypeNil sets the value for NatGatewayType to be an explicit nil
+
+### UnsetNatGatewayType
+`func (o *ClusterRequestFeaturesInnerValue) UnsetNatGatewayType()`
+
+UnsetNatGatewayType ensures that no value is present for NatGatewayType, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
