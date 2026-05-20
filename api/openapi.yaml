@@ -23594,12 +23594,8 @@ components:
       type: object
     ClusterStatus:
       example:
-        cluster_lock:
-          reason: reason
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          owner_name: owner_name
-          locked_at: 2000-01-23T04:56:07.000+00:00
-          ttl_in_days: 0
+        cluster_lock: ""
+        reason: UNSPECIFIED
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         next_k8s_available_version: "1.28"
         last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
@@ -23620,35 +23616,43 @@ components:
           type: string
         last_execution_id:
           example: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
+          nullable: true
           type: string
         cluster_lock:
-          $ref: '#/components/schemas/ClusterLock'
+          allOf:
+          - $ref: '#/components/schemas/ClusterLock'
+          nullable: true
         last_deployment_date:
           example: 2022-06-22T14:20:17.733084815Z
           format: date-time
+          nullable: true
           type: string
+        reason:
+          $ref: '#/components/schemas/DeploymentInfraReason'
+      required:
+      - cluster_id
+      - is_deployed
+      - reason
+      - status
       type: object
+    DeploymentInfraReason:
+      enum:
+      - UNSPECIFIED
+      - MAINTENANCE
+      type: string
     ClusterStatusResponseList:
       example:
         results:
-        - cluster_lock:
-            reason: reason
-            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            owner_name: owner_name
-            locked_at: 2000-01-23T04:56:07.000+00:00
-            ttl_in_days: 0
+        - cluster_lock: ""
+          reason: UNSPECIFIED
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242
           last_deployment_date: 2022-06-22T14:20:17.733084815Z
           is_deployed: true
           status: BUILDING
-        - cluster_lock:
-            reason: reason
-            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            owner_name: owner_name
-            locked_at: 2000-01-23T04:56:07.000+00:00
-            ttl_in_days: 0
+        - cluster_lock: ""
+          reason: UNSPECIFIED
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           next_k8s_available_version: "1.28"
           last_execution_id: f73e3833-922a-48a5-9dbd-6163f43f9143-1656410242

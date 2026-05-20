@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 	"time"
 )
 
@@ -21,13 +22,14 @@ var _ MappedNullable = &ClusterStatus{}
 
 // ClusterStatus struct for ClusterStatus
 type ClusterStatus struct {
-	ClusterId               *string           `json:"cluster_id,omitempty"`
-	Status                  *ClusterStateEnum `json:"status,omitempty"`
-	IsDeployed              *bool             `json:"is_deployed,omitempty"`
-	NextK8sAvailableVersion NullableString    `json:"next_k8s_available_version,omitempty"`
-	LastExecutionId         *string           `json:"last_execution_id,omitempty"`
-	ClusterLock             *ClusterLock      `json:"cluster_lock,omitempty"`
-	LastDeploymentDate      *time.Time        `json:"last_deployment_date,omitempty"`
+	ClusterId               string                `json:"cluster_id"`
+	Status                  ClusterStateEnum      `json:"status"`
+	IsDeployed              bool                  `json:"is_deployed"`
+	NextK8sAvailableVersion NullableString        `json:"next_k8s_available_version,omitempty"`
+	LastExecutionId         NullableString        `json:"last_execution_id,omitempty"`
+	ClusterLock             NullableClusterLock   `json:"cluster_lock,omitempty"`
+	LastDeploymentDate      NullableTime          `json:"last_deployment_date,omitempty"`
+	Reason                  DeploymentInfraReason `json:"reason"`
 	AdditionalProperties    map[string]interface{}
 }
 
@@ -37,8 +39,12 @@ type _ClusterStatus ClusterStatus
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterStatus() *ClusterStatus {
+func NewClusterStatus(clusterId string, status ClusterStateEnum, isDeployed bool, reason DeploymentInfraReason) *ClusterStatus {
 	this := ClusterStatus{}
+	this.ClusterId = clusterId
+	this.Status = status
+	this.IsDeployed = isDeployed
+	this.Reason = reason
 	return &this
 }
 
@@ -50,100 +56,76 @@ func NewClusterStatusWithDefaults() *ClusterStatus {
 	return &this
 }
 
-// GetClusterId returns the ClusterId field value if set, zero value otherwise.
+// GetClusterId returns the ClusterId field value
 func (o *ClusterStatus) GetClusterId() string {
-	if o == nil || IsNil(o.ClusterId) {
+	if o == nil {
 		var ret string
 		return ret
 	}
-	return *o.ClusterId
+
+	return o.ClusterId
 }
 
-// GetClusterIdOk returns a tuple with the ClusterId field value if set, nil otherwise
+// GetClusterIdOk returns a tuple with the ClusterId field value
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetClusterIdOk() (*string, bool) {
-	if o == nil || IsNil(o.ClusterId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClusterId, true
+	return &o.ClusterId, true
 }
 
-// HasClusterId returns a boolean if a field has been set.
-func (o *ClusterStatus) HasClusterId() bool {
-	if o != nil && !IsNil(o.ClusterId) {
-		return true
-	}
-
-	return false
-}
-
-// SetClusterId gets a reference to the given string and assigns it to the ClusterId field.
+// SetClusterId sets field value
 func (o *ClusterStatus) SetClusterId(v string) {
-	o.ClusterId = &v
+	o.ClusterId = v
 }
 
-// GetStatus returns the Status field value if set, zero value otherwise.
+// GetStatus returns the Status field value
 func (o *ClusterStatus) GetStatus() ClusterStateEnum {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		var ret ClusterStateEnum
 		return ret
 	}
-	return *o.Status
+
+	return o.Status
 }
 
-// GetStatusOk returns a tuple with the Status field value if set, nil otherwise
+// GetStatusOk returns a tuple with the Status field value
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetStatusOk() (*ClusterStateEnum, bool) {
-	if o == nil || IsNil(o.Status) {
+	if o == nil {
 		return nil, false
 	}
-	return o.Status, true
+	return &o.Status, true
 }
 
-// HasStatus returns a boolean if a field has been set.
-func (o *ClusterStatus) HasStatus() bool {
-	if o != nil && !IsNil(o.Status) {
-		return true
-	}
-
-	return false
-}
-
-// SetStatus gets a reference to the given ClusterStateEnum and assigns it to the Status field.
+// SetStatus sets field value
 func (o *ClusterStatus) SetStatus(v ClusterStateEnum) {
-	o.Status = &v
+	o.Status = v
 }
 
-// GetIsDeployed returns the IsDeployed field value if set, zero value otherwise.
+// GetIsDeployed returns the IsDeployed field value
 func (o *ClusterStatus) GetIsDeployed() bool {
-	if o == nil || IsNil(o.IsDeployed) {
+	if o == nil {
 		var ret bool
 		return ret
 	}
-	return *o.IsDeployed
+
+	return o.IsDeployed
 }
 
-// GetIsDeployedOk returns a tuple with the IsDeployed field value if set, nil otherwise
+// GetIsDeployedOk returns a tuple with the IsDeployed field value
 // and a boolean to check if the value has been set.
 func (o *ClusterStatus) GetIsDeployedOk() (*bool, bool) {
-	if o == nil || IsNil(o.IsDeployed) {
+	if o == nil {
 		return nil, false
 	}
-	return o.IsDeployed, true
+	return &o.IsDeployed, true
 }
 
-// HasIsDeployed returns a boolean if a field has been set.
-func (o *ClusterStatus) HasIsDeployed() bool {
-	if o != nil && !IsNil(o.IsDeployed) {
-		return true
-	}
-
-	return false
-}
-
-// SetIsDeployed gets a reference to the given bool and assigns it to the IsDeployed field.
+// SetIsDeployed sets field value
 func (o *ClusterStatus) SetIsDeployed(v bool) {
-	o.IsDeployed = &v
+	o.IsDeployed = v
 }
 
 // GetNextK8sAvailableVersion returns the NextK8sAvailableVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -189,100 +171,157 @@ func (o *ClusterStatus) UnsetNextK8sAvailableVersion() {
 	o.NextK8sAvailableVersion.Unset()
 }
 
-// GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise.
+// GetLastExecutionId returns the LastExecutionId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterStatus) GetLastExecutionId() string {
-	if o == nil || IsNil(o.LastExecutionId) {
+	if o == nil || IsNil(o.LastExecutionId.Get()) {
 		var ret string
 		return ret
 	}
-	return *o.LastExecutionId
+	return *o.LastExecutionId.Get()
 }
 
 // GetLastExecutionIdOk returns a tuple with the LastExecutionId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterStatus) GetLastExecutionIdOk() (*string, bool) {
-	if o == nil || IsNil(o.LastExecutionId) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastExecutionId, true
+	return o.LastExecutionId.Get(), o.LastExecutionId.IsSet()
 }
 
 // HasLastExecutionId returns a boolean if a field has been set.
 func (o *ClusterStatus) HasLastExecutionId() bool {
-	if o != nil && !IsNil(o.LastExecutionId) {
+	if o != nil && o.LastExecutionId.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastExecutionId gets a reference to the given string and assigns it to the LastExecutionId field.
+// SetLastExecutionId gets a reference to the given NullableString and assigns it to the LastExecutionId field.
 func (o *ClusterStatus) SetLastExecutionId(v string) {
-	o.LastExecutionId = &v
+	o.LastExecutionId.Set(&v)
 }
 
-// GetClusterLock returns the ClusterLock field value if set, zero value otherwise.
+// SetLastExecutionIdNil sets the value for LastExecutionId to be an explicit nil
+func (o *ClusterStatus) SetLastExecutionIdNil() {
+	o.LastExecutionId.Set(nil)
+}
+
+// UnsetLastExecutionId ensures that no value is present for LastExecutionId, not even an explicit nil
+func (o *ClusterStatus) UnsetLastExecutionId() {
+	o.LastExecutionId.Unset()
+}
+
+// GetClusterLock returns the ClusterLock field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterStatus) GetClusterLock() ClusterLock {
-	if o == nil || IsNil(o.ClusterLock) {
+	if o == nil || IsNil(o.ClusterLock.Get()) {
 		var ret ClusterLock
 		return ret
 	}
-	return *o.ClusterLock
+	return *o.ClusterLock.Get()
 }
 
 // GetClusterLockOk returns a tuple with the ClusterLock field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterStatus) GetClusterLockOk() (*ClusterLock, bool) {
-	if o == nil || IsNil(o.ClusterLock) {
+	if o == nil {
 		return nil, false
 	}
-	return o.ClusterLock, true
+	return o.ClusterLock.Get(), o.ClusterLock.IsSet()
 }
 
 // HasClusterLock returns a boolean if a field has been set.
 func (o *ClusterStatus) HasClusterLock() bool {
-	if o != nil && !IsNil(o.ClusterLock) {
+	if o != nil && o.ClusterLock.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetClusterLock gets a reference to the given ClusterLock and assigns it to the ClusterLock field.
+// SetClusterLock gets a reference to the given NullableClusterLock and assigns it to the ClusterLock field.
 func (o *ClusterStatus) SetClusterLock(v ClusterLock) {
-	o.ClusterLock = &v
+	o.ClusterLock.Set(&v)
 }
 
-// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise.
+// SetClusterLockNil sets the value for ClusterLock to be an explicit nil
+func (o *ClusterStatus) SetClusterLockNil() {
+	o.ClusterLock.Set(nil)
+}
+
+// UnsetClusterLock ensures that no value is present for ClusterLock, not even an explicit nil
+func (o *ClusterStatus) UnsetClusterLock() {
+	o.ClusterLock.Unset()
+}
+
+// GetLastDeploymentDate returns the LastDeploymentDate field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterStatus) GetLastDeploymentDate() time.Time {
-	if o == nil || IsNil(o.LastDeploymentDate) {
+	if o == nil || IsNil(o.LastDeploymentDate.Get()) {
 		var ret time.Time
 		return ret
 	}
-	return *o.LastDeploymentDate
+	return *o.LastDeploymentDate.Get()
 }
 
 // GetLastDeploymentDateOk returns a tuple with the LastDeploymentDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterStatus) GetLastDeploymentDateOk() (*time.Time, bool) {
-	if o == nil || IsNil(o.LastDeploymentDate) {
+	if o == nil {
 		return nil, false
 	}
-	return o.LastDeploymentDate, true
+	return o.LastDeploymentDate.Get(), o.LastDeploymentDate.IsSet()
 }
 
 // HasLastDeploymentDate returns a boolean if a field has been set.
 func (o *ClusterStatus) HasLastDeploymentDate() bool {
-	if o != nil && !IsNil(o.LastDeploymentDate) {
+	if o != nil && o.LastDeploymentDate.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetLastDeploymentDate gets a reference to the given time.Time and assigns it to the LastDeploymentDate field.
+// SetLastDeploymentDate gets a reference to the given NullableTime and assigns it to the LastDeploymentDate field.
 func (o *ClusterStatus) SetLastDeploymentDate(v time.Time) {
-	o.LastDeploymentDate = &v
+	o.LastDeploymentDate.Set(&v)
+}
+
+// SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
+func (o *ClusterStatus) SetLastDeploymentDateNil() {
+	o.LastDeploymentDate.Set(nil)
+}
+
+// UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
+func (o *ClusterStatus) UnsetLastDeploymentDate() {
+	o.LastDeploymentDate.Unset()
+}
+
+// GetReason returns the Reason field value
+func (o *ClusterStatus) GetReason() DeploymentInfraReason {
+	if o == nil {
+		var ret DeploymentInfraReason
+		return ret
+	}
+
+	return o.Reason
+}
+
+// GetReasonOk returns a tuple with the Reason field value
+// and a boolean to check if the value has been set.
+func (o *ClusterStatus) GetReasonOk() (*DeploymentInfraReason, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Reason, true
+}
+
+// SetReason sets field value
+func (o *ClusterStatus) SetReason(v DeploymentInfraReason) {
+	o.Reason = v
 }
 
 func (o ClusterStatus) MarshalJSON() ([]byte, error) {
@@ -295,27 +334,22 @@ func (o ClusterStatus) MarshalJSON() ([]byte, error) {
 
 func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.ClusterId) {
-		toSerialize["cluster_id"] = o.ClusterId
-	}
-	if !IsNil(o.Status) {
-		toSerialize["status"] = o.Status
-	}
-	if !IsNil(o.IsDeployed) {
-		toSerialize["is_deployed"] = o.IsDeployed
-	}
+	toSerialize["cluster_id"] = o.ClusterId
+	toSerialize["status"] = o.Status
+	toSerialize["is_deployed"] = o.IsDeployed
 	if o.NextK8sAvailableVersion.IsSet() {
 		toSerialize["next_k8s_available_version"] = o.NextK8sAvailableVersion.Get()
 	}
-	if !IsNil(o.LastExecutionId) {
-		toSerialize["last_execution_id"] = o.LastExecutionId
+	if o.LastExecutionId.IsSet() {
+		toSerialize["last_execution_id"] = o.LastExecutionId.Get()
 	}
-	if !IsNil(o.ClusterLock) {
-		toSerialize["cluster_lock"] = o.ClusterLock
+	if o.ClusterLock.IsSet() {
+		toSerialize["cluster_lock"] = o.ClusterLock.Get()
 	}
-	if !IsNil(o.LastDeploymentDate) {
-		toSerialize["last_deployment_date"] = o.LastDeploymentDate
+	if o.LastDeploymentDate.IsSet() {
+		toSerialize["last_deployment_date"] = o.LastDeploymentDate.Get()
 	}
+	toSerialize["reason"] = o.Reason
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -325,6 +359,30 @@ func (o ClusterStatus) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"cluster_id",
+		"status",
+		"is_deployed",
+		"reason",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varClusterStatus := _ClusterStatus{}
 
 	err = json.Unmarshal(data, &varClusterStatus)
@@ -345,6 +403,7 @@ func (o *ClusterStatus) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "last_execution_id")
 		delete(additionalProperties, "cluster_lock")
 		delete(additionalProperties, "last_deployment_date")
+		delete(additionalProperties, "reason")
 		o.AdditionalProperties = additionalProperties
 	}
 

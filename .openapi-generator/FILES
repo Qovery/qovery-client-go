@@ -415,6 +415,7 @@ docs/DeploymentHistoryServicePaginatedResponseListV2.md
 docs/DeploymentHistoryStage.md
 docs/DeploymentHistoryStatusEnum.md
 docs/DeploymentHistoryTriggerAction.md
+docs/DeploymentInfraReason.md
 docs/DeploymentQueueActionsAPI.md
 docs/DeploymentRestrictionModeEnum.md
 docs/DeploymentRestrictionTypeEnum.md
@@ -1227,6 +1228,7 @@ model_deployment_history_service_paginated_response_list_v2.go
 model_deployment_history_stage.go
 model_deployment_history_status_enum.go
 model_deployment_history_trigger_action.go
+model_deployment_infra_reason.go
 model_deployment_restriction_mode_enum.go
 model_deployment_restriction_type_enum.go
 model_deployment_stage_request.go

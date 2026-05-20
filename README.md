@@ -878,6 +878,7 @@ Class | Method | HTTP request | Description
  - [DeploymentHistoryStage](docs/DeploymentHistoryStage.md)
  - [DeploymentHistoryStatusEnum](docs/DeploymentHistoryStatusEnum.md)
  - [DeploymentHistoryTriggerAction](docs/DeploymentHistoryTriggerAction.md)
+ - [DeploymentInfraReason](docs/DeploymentInfraReason.md)
  - [DeploymentRestrictionModeEnum](docs/DeploymentRestrictionModeEnum.md)
  - [DeploymentRestrictionTypeEnum](docs/DeploymentRestrictionTypeEnum.md)
  - [DeploymentStageRequest](docs/DeploymentStageRequest.md)

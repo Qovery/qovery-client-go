@@ -4,19 +4,20 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ClusterId** | Pointer to **string** |  | [optional] 
-**Status** | Pointer to [**ClusterStateEnum**](ClusterStateEnum.md) |  | [optional] 
-**IsDeployed** | Pointer to **bool** |  | [optional] 
+**ClusterId** | **string** |  | 
+**Status** | [**ClusterStateEnum**](ClusterStateEnum.md) |  | 
+**IsDeployed** | **bool** |  | 
 **NextK8sAvailableVersion** | Pointer to **NullableString** |  | [optional] 
-**LastExecutionId** | Pointer to **string** |  | [optional] 
-**ClusterLock** | Pointer to [**ClusterLock**](ClusterLock.md) |  | [optional] 
-**LastDeploymentDate** | Pointer to **time.Time** |  | [optional] 
+**LastExecutionId** | Pointer to **NullableString** |  | [optional] 
+**ClusterLock** | Pointer to [**NullableClusterLock**](ClusterLock.md) |  | [optional] 
+**LastDeploymentDate** | Pointer to **NullableTime** |  | [optional] 
+**Reason** | [**DeploymentInfraReason**](DeploymentInfraReason.md) |  | 
 
 ## Methods
 
 ### NewClusterStatus
 
-`func NewClusterStatus() *ClusterStatus`
+`func NewClusterStatus(clusterId string, status ClusterStateEnum, isDeployed bool, reason DeploymentInfraReason, ) *ClusterStatus`
 
 NewClusterStatus instantiates a new ClusterStatus object
 This constructor will assign default values to properties that have it defined,
@@ -50,11 +51,6 @@ and a boolean to check if the value has been set.
 
 SetClusterId sets ClusterId field to given value.
 
-### HasClusterId
-
-`func (o *ClusterStatus) HasClusterId() bool`
-
-HasClusterId returns a boolean if a field has been set.
 
 ### GetStatus
 
@@ -75,11 +71,6 @@ and a boolean to check if the value has been set.
 
 SetStatus sets Status field to given value.
 
-### HasStatus
-
-`func (o *ClusterStatus) HasStatus() bool`
-
-HasStatus returns a boolean if a field has been set.
 
 ### GetIsDeployed
 
@@ -100,11 +91,6 @@ and a boolean to check if the value has been set.
 
 SetIsDeployed sets IsDeployed field to given value.
 
-### HasIsDeployed
-
-`func (o *ClusterStatus) HasIsDeployed() bool`
-
-HasIsDeployed returns a boolean if a field has been set.
 
 ### GetNextK8sAvailableVersion
 
@@ -166,6 +152,16 @@ SetLastExecutionId sets LastExecutionId field to given value.
 
 HasLastExecutionId returns a boolean if a field has been set.
 
+### SetLastExecutionIdNil
+
+`func (o *ClusterStatus) SetLastExecutionIdNil(b bool)`
+
+ SetLastExecutionIdNil sets the value for LastExecutionId to be an explicit nil
+
+### UnsetLastExecutionId
+`func (o *ClusterStatus) UnsetLastExecutionId()`
+
+UnsetLastExecutionId ensures that no value is present for LastExecutionId, not even an explicit nil
 ### GetClusterLock
 
 `func (o *ClusterStatus) GetClusterLock() ClusterLock`
@@ -191,6 +187,16 @@ SetClusterLock sets ClusterLock field to given value.
 
 HasClusterLock returns a boolean if a field has been set.
 
+### SetClusterLockNil
+
+`func (o *ClusterStatus) SetClusterLockNil(b bool)`
+
+ SetClusterLockNil sets the value for ClusterLock to be an explicit nil
+
+### UnsetClusterLock
+`func (o *ClusterStatus) UnsetClusterLock()`
+
+UnsetClusterLock ensures that no value is present for ClusterLock, not even an explicit nil
 ### GetLastDeploymentDate
 
 `func (o *ClusterStatus) GetLastDeploymentDate() time.Time`
@@ -215,6 +221,36 @@ SetLastDeploymentDate sets LastDeploymentDate field to given value.
 `func (o *ClusterStatus) HasLastDeploymentDate() bool`
 
 HasLastDeploymentDate returns a boolean if a field has been set.
+
+### SetLastDeploymentDateNil
+
+`func (o *ClusterStatus) SetLastDeploymentDateNil(b bool)`
+
+ SetLastDeploymentDateNil sets the value for LastDeploymentDate to be an explicit nil
+
+### UnsetLastDeploymentDate
+`func (o *ClusterStatus) UnsetLastDeploymentDate()`
+
+UnsetLastDeploymentDate ensures that no value is present for LastDeploymentDate, not even an explicit nil
+### GetReason
+
+`func (o *ClusterStatus) GetReason() DeploymentInfraReason`
+
+GetReason returns the Reason field if non-nil, zero value otherwise.
+
+### GetReasonOk
+
+`func (o *ClusterStatus) GetReasonOk() (*DeploymentInfraReason, bool)`
+
+GetReasonOk returns a tuple with the Reason field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReason
+
+`func (o *ClusterStatus) SetReason(v DeploymentInfraReason)`
+
+SetReason sets Reason field to given value.
+
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
