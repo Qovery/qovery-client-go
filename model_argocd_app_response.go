@@ -33,11 +33,10 @@ type ArgocdAppResponse struct {
 	EnvironmentId string          `json:"environment_id"`
 	ClusterId     string          `json:"cluster_id"`
 	// Icon URI representing the ArgoCD service.
-	IconUri              string         `json:"icon_uri"`
-	LastSyncedAt         NullableTime   `json:"last_synced_at,omitempty"`
-	ManifestRevision     NullableString `json:"manifest_revision,omitempty"`
-	SourceRepoUrl        NullableString `json:"source_repo_url,omitempty"`
-	SourceTargetRevision NullableString `json:"source_target_revision,omitempty"`
+	IconUri              string                           `json:"icon_uri"`
+	LastSyncedAt         NullableTime                     `json:"last_synced_at,omitempty"`
+	ManifestRevision     NullableString                   `json:"manifest_revision,omitempty"`
+	GitRepository        NullableApplicationGitRepository `json:"git_repository,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -405,90 +404,47 @@ func (o *ArgocdAppResponse) UnsetManifestRevision() {
 	o.ManifestRevision.Unset()
 }
 
-// GetSourceRepoUrl returns the SourceRepoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ArgocdAppResponse) GetSourceRepoUrl() string {
-	if o == nil || IsNil(o.SourceRepoUrl.Get()) {
-		var ret string
+// GetGitRepository returns the GitRepository field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ArgocdAppResponse) GetGitRepository() ApplicationGitRepository {
+	if o == nil || IsNil(o.GitRepository.Get()) {
+		var ret ApplicationGitRepository
 		return ret
 	}
-	return *o.SourceRepoUrl.Get()
+	return *o.GitRepository.Get()
 }
 
-// GetSourceRepoUrlOk returns a tuple with the SourceRepoUrl field value if set, nil otherwise
+// GetGitRepositoryOk returns a tuple with the GitRepository field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ArgocdAppResponse) GetSourceRepoUrlOk() (*string, bool) {
+func (o *ArgocdAppResponse) GetGitRepositoryOk() (*ApplicationGitRepository, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.SourceRepoUrl.Get(), o.SourceRepoUrl.IsSet()
+	return o.GitRepository.Get(), o.GitRepository.IsSet()
 }
 
-// HasSourceRepoUrl returns a boolean if a field has been set.
-func (o *ArgocdAppResponse) HasSourceRepoUrl() bool {
-	if o != nil && o.SourceRepoUrl.IsSet() {
+// HasGitRepository returns a boolean if a field has been set.
+func (o *ArgocdAppResponse) HasGitRepository() bool {
+	if o != nil && o.GitRepository.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSourceRepoUrl gets a reference to the given NullableString and assigns it to the SourceRepoUrl field.
-func (o *ArgocdAppResponse) SetSourceRepoUrl(v string) {
-	o.SourceRepoUrl.Set(&v)
+// SetGitRepository gets a reference to the given NullableApplicationGitRepository and assigns it to the GitRepository field.
+func (o *ArgocdAppResponse) SetGitRepository(v ApplicationGitRepository) {
+	o.GitRepository.Set(&v)
 }
 
-// SetSourceRepoUrlNil sets the value for SourceRepoUrl to be an explicit nil
-func (o *ArgocdAppResponse) SetSourceRepoUrlNil() {
-	o.SourceRepoUrl.Set(nil)
+// SetGitRepositoryNil sets the value for GitRepository to be an explicit nil
+func (o *ArgocdAppResponse) SetGitRepositoryNil() {
+	o.GitRepository.Set(nil)
 }
 
-// UnsetSourceRepoUrl ensures that no value is present for SourceRepoUrl, not even an explicit nil
-func (o *ArgocdAppResponse) UnsetSourceRepoUrl() {
-	o.SourceRepoUrl.Unset()
-}
-
-// GetSourceTargetRevision returns the SourceTargetRevision field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ArgocdAppResponse) GetSourceTargetRevision() string {
-	if o == nil || IsNil(o.SourceTargetRevision.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.SourceTargetRevision.Get()
-}
-
-// GetSourceTargetRevisionOk returns a tuple with the SourceTargetRevision field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ArgocdAppResponse) GetSourceTargetRevisionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.SourceTargetRevision.Get(), o.SourceTargetRevision.IsSet()
-}
-
-// HasSourceTargetRevision returns a boolean if a field has been set.
-func (o *ArgocdAppResponse) HasSourceTargetRevision() bool {
-	if o != nil && o.SourceTargetRevision.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetSourceTargetRevision gets a reference to the given NullableString and assigns it to the SourceTargetRevision field.
-func (o *ArgocdAppResponse) SetSourceTargetRevision(v string) {
-	o.SourceTargetRevision.Set(&v)
-}
-
-// SetSourceTargetRevisionNil sets the value for SourceTargetRevision to be an explicit nil
-func (o *ArgocdAppResponse) SetSourceTargetRevisionNil() {
-	o.SourceTargetRevision.Set(nil)
-}
-
-// UnsetSourceTargetRevision ensures that no value is present for SourceTargetRevision, not even an explicit nil
-func (o *ArgocdAppResponse) UnsetSourceTargetRevision() {
-	o.SourceTargetRevision.Unset()
+// UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
+func (o *ArgocdAppResponse) UnsetGitRepository() {
+	o.GitRepository.Unset()
 }
 
 func (o ArgocdAppResponse) MarshalJSON() ([]byte, error) {
@@ -519,11 +475,8 @@ func (o ArgocdAppResponse) ToMap() (map[string]interface{}, error) {
 	if o.ManifestRevision.IsSet() {
 		toSerialize["manifest_revision"] = o.ManifestRevision.Get()
 	}
-	if o.SourceRepoUrl.IsSet() {
-		toSerialize["source_repo_url"] = o.SourceRepoUrl.Get()
-	}
-	if o.SourceTargetRevision.IsSet() {
-		toSerialize["source_target_revision"] = o.SourceTargetRevision.Get()
+	if o.GitRepository.IsSet() {
+		toSerialize["git_repository"] = o.GitRepository.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -588,8 +541,7 @@ func (o *ArgocdAppResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "last_synced_at")
 		delete(additionalProperties, "manifest_revision")
-		delete(additionalProperties, "source_repo_url")
-		delete(additionalProperties, "source_target_revision")
+		delete(additionalProperties, "git_repository")
 		o.AdditionalProperties = additionalProperties
 	}
 

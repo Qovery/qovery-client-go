@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
-**GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
+**GitRepository** | Pointer to [**NullableApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
@@ -67,8 +67,6 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **LastSyncedAt** | Pointer to **NullableTime** |  | [optional] 
 **ManifestRevision** | Pointer to **NullableString** |  | [optional] 
-**SourceRepoUrl** | Pointer to **NullableString** |  | [optional] 
-**SourceTargetRevision** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -224,6 +222,16 @@ SetGitRepository sets GitRepository field to given value.
 
 HasGitRepository returns a boolean if a field has been set.
 
+### SetGitRepositoryNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetGitRepositoryNil(b bool)`
+
+ SetGitRepositoryNil sets the value for GitRepository to be an explicit nil
+
+### UnsetGitRepository
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetGitRepository()`
+
+UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
 ### GetMaximumCpu
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximumCpu() int32`
@@ -1534,76 +1542,6 @@ HasManifestRevision returns a boolean if a field has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetManifestRevision()`
 
 UnsetManifestRevision ensures that no value is present for ManifestRevision, not even an explicit nil
-### GetSourceRepoUrl
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceRepoUrl() string`
-
-GetSourceRepoUrl returns the SourceRepoUrl field if non-nil, zero value otherwise.
-
-### GetSourceRepoUrlOk
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceRepoUrlOk() (*string, bool)`
-
-GetSourceRepoUrlOk returns a tuple with the SourceRepoUrl field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceRepoUrl
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSourceRepoUrl(v string)`
-
-SetSourceRepoUrl sets SourceRepoUrl field to given value.
-
-### HasSourceRepoUrl
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasSourceRepoUrl() bool`
-
-HasSourceRepoUrl returns a boolean if a field has been set.
-
-### SetSourceRepoUrlNil
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSourceRepoUrlNil(b bool)`
-
- SetSourceRepoUrlNil sets the value for SourceRepoUrl to be an explicit nil
-
-### UnsetSourceRepoUrl
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetSourceRepoUrl()`
-
-UnsetSourceRepoUrl ensures that no value is present for SourceRepoUrl, not even an explicit nil
-### GetSourceTargetRevision
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceTargetRevision() string`
-
-GetSourceTargetRevision returns the SourceTargetRevision field if non-nil, zero value otherwise.
-
-### GetSourceTargetRevisionOk
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceTargetRevisionOk() (*string, bool)`
-
-GetSourceTargetRevisionOk returns a tuple with the SourceTargetRevision field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceTargetRevision
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSourceTargetRevision(v string)`
-
-SetSourceTargetRevision sets SourceTargetRevision field to given value.
-
-### HasSourceTargetRevision
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasSourceTargetRevision() bool`
-
-HasSourceTargetRevision returns a boolean if a field has been set.
-
-### SetSourceTargetRevisionNil
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSourceTargetRevisionNil(b bool)`
-
- SetSourceTargetRevisionNil sets the value for SourceTargetRevision to be an explicit nil
-
-### UnsetSourceTargetRevision
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetSourceTargetRevision()`
-
-UnsetSourceTargetRevision ensures that no value is present for SourceTargetRevision, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

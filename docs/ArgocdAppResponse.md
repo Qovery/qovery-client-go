@@ -16,8 +16,7 @@ Name | Type | Description | Notes
 **IconUri** | **string** | Icon URI representing the ArgoCD service. | [default to "app://qovery-console/argocd"]
 **LastSyncedAt** | Pointer to **NullableTime** |  | [optional] 
 **ManifestRevision** | Pointer to **NullableString** |  | [optional] 
-**SourceRepoUrl** | Pointer to **NullableString** |  | [optional] 
-**SourceTargetRevision** | Pointer to **NullableString** |  | [optional] 
+**GitRepository** | Pointer to [**NullableApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 
 ## Methods
 
@@ -313,76 +312,41 @@ HasManifestRevision returns a boolean if a field has been set.
 `func (o *ArgocdAppResponse) UnsetManifestRevision()`
 
 UnsetManifestRevision ensures that no value is present for ManifestRevision, not even an explicit nil
-### GetSourceRepoUrl
+### GetGitRepository
 
-`func (o *ArgocdAppResponse) GetSourceRepoUrl() string`
+`func (o *ArgocdAppResponse) GetGitRepository() ApplicationGitRepository`
 
-GetSourceRepoUrl returns the SourceRepoUrl field if non-nil, zero value otherwise.
+GetGitRepository returns the GitRepository field if non-nil, zero value otherwise.
 
-### GetSourceRepoUrlOk
+### GetGitRepositoryOk
 
-`func (o *ArgocdAppResponse) GetSourceRepoUrlOk() (*string, bool)`
+`func (o *ArgocdAppResponse) GetGitRepositoryOk() (*ApplicationGitRepository, bool)`
 
-GetSourceRepoUrlOk returns a tuple with the SourceRepoUrl field if it's non-nil, zero value otherwise
+GetGitRepositoryOk returns a tuple with the GitRepository field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetSourceRepoUrl
+### SetGitRepository
 
-`func (o *ArgocdAppResponse) SetSourceRepoUrl(v string)`
+`func (o *ArgocdAppResponse) SetGitRepository(v ApplicationGitRepository)`
 
-SetSourceRepoUrl sets SourceRepoUrl field to given value.
+SetGitRepository sets GitRepository field to given value.
 
-### HasSourceRepoUrl
+### HasGitRepository
 
-`func (o *ArgocdAppResponse) HasSourceRepoUrl() bool`
+`func (o *ArgocdAppResponse) HasGitRepository() bool`
 
-HasSourceRepoUrl returns a boolean if a field has been set.
+HasGitRepository returns a boolean if a field has been set.
 
-### SetSourceRepoUrlNil
+### SetGitRepositoryNil
 
-`func (o *ArgocdAppResponse) SetSourceRepoUrlNil(b bool)`
+`func (o *ArgocdAppResponse) SetGitRepositoryNil(b bool)`
 
- SetSourceRepoUrlNil sets the value for SourceRepoUrl to be an explicit nil
+ SetGitRepositoryNil sets the value for GitRepository to be an explicit nil
 
-### UnsetSourceRepoUrl
-`func (o *ArgocdAppResponse) UnsetSourceRepoUrl()`
+### UnsetGitRepository
+`func (o *ArgocdAppResponse) UnsetGitRepository()`
 
-UnsetSourceRepoUrl ensures that no value is present for SourceRepoUrl, not even an explicit nil
-### GetSourceTargetRevision
-
-`func (o *ArgocdAppResponse) GetSourceTargetRevision() string`
-
-GetSourceTargetRevision returns the SourceTargetRevision field if non-nil, zero value otherwise.
-
-### GetSourceTargetRevisionOk
-
-`func (o *ArgocdAppResponse) GetSourceTargetRevisionOk() (*string, bool)`
-
-GetSourceTargetRevisionOk returns a tuple with the SourceTargetRevision field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSourceTargetRevision
-
-`func (o *ArgocdAppResponse) SetSourceTargetRevision(v string)`
-
-SetSourceTargetRevision sets SourceTargetRevision field to given value.
-
-### HasSourceTargetRevision
-
-`func (o *ArgocdAppResponse) HasSourceTargetRevision() bool`
-
-HasSourceTargetRevision returns a boolean if a field has been set.
-
-### SetSourceTargetRevisionNil
-
-`func (o *ArgocdAppResponse) SetSourceTargetRevisionNil(b bool)`
-
- SetSourceTargetRevisionNil sets the value for SourceTargetRevision to be an explicit nil
-
-### UnsetSourceTargetRevision
-`func (o *ArgocdAppResponse) UnsetSourceTargetRevision()`
-
-UnsetSourceTargetRevision ensures that no value is present for SourceTargetRevision, not even an explicit nil
+UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
