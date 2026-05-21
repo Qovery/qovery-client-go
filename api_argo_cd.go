@@ -259,6 +259,135 @@ func (a *ArgoCDAPIService) DeleteArgoCdCredentialsExecute(r ApiDeleteArgoCdCrede
 	return localVarHTTPResponse, nil
 }
 
+type ApiDeleteArgoCdDestinationClusterMappingRequest struct {
+	ctx              context.Context
+	ApiService       *ArgoCDAPIService
+	organizationId   string
+	agentClusterId   *string
+	argocdClusterUrl *string
+}
+
+// ID of the Qovery cluster where the ArgoCD instance is running
+func (r ApiDeleteArgoCdDestinationClusterMappingRequest) AgentClusterId(agentClusterId string) ApiDeleteArgoCdDestinationClusterMappingRequest {
+	r.agentClusterId = &agentClusterId
+	return r
+}
+
+// ArgoCD destination cluster URL as reported by ArgoCD
+func (r ApiDeleteArgoCdDestinationClusterMappingRequest) ArgocdClusterUrl(argocdClusterUrl string) ApiDeleteArgoCdDestinationClusterMappingRequest {
+	r.argocdClusterUrl = &argocdClusterUrl
+	return r
+}
+
+func (r ApiDeleteArgoCdDestinationClusterMappingRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteArgoCdDestinationClusterMappingExecute(r)
+}
+
+/*
+DeleteArgoCdDestinationClusterMapping Delete an ArgoCD destination cluster mapping
+
+Remove the mapping between an ArgoCD destination cluster URL and a Qovery cluster.
+Requires ADMIN role on the agent cluster.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiDeleteArgoCdDestinationClusterMappingRequest
+*/
+func (a *ArgoCDAPIService) DeleteArgoCdDestinationClusterMapping(ctx context.Context, organizationId string) ApiDeleteArgoCdDestinationClusterMappingRequest {
+	return ApiDeleteArgoCdDestinationClusterMappingRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+func (a *ArgoCDAPIService) DeleteArgoCdDestinationClusterMappingExecute(r ApiDeleteArgoCdDestinationClusterMappingRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodDelete
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ArgoCDAPIService.DeleteArgoCdDestinationClusterMapping")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/argoCdDestinationClusterMapping"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.agentClusterId == nil {
+		return nil, reportError("agentClusterId is required and must be specified")
+	}
+	if r.argocdClusterUrl == nil {
+		return nil, reportError("argocdClusterUrl is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "agentClusterId", r.agentClusterId, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "argocdClusterUrl", r.argocdClusterUrl, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiGetArgoCdAppRequest struct {
 	ctx         context.Context
 	ApiService  *ArgoCDAPIService

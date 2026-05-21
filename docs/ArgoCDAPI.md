@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CheckArgoCdConnection**](ArgoCDAPI.md#CheckArgoCdConnection) | **Post** /cluster/{clusterId}/argoCdConfig/check | Check ArgoCD connection
 [**DeleteArgoCdCredentials**](ArgoCDAPI.md#DeleteArgoCdCredentials) | **Delete** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
+[**DeleteArgoCdDestinationClusterMapping**](ArgoCDAPI.md#DeleteArgoCdDestinationClusterMapping) | **Delete** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 [**GetArgoCdApp**](ArgoCDAPI.md#GetArgoCdApp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 [**GetArgoCdAppManifest**](ArgoCDAPI.md#GetArgoCdAppManifest) | **Get** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
 [**GetArgoCdCredentials**](ArgoCDAPI.md#GetArgoCdCredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
@@ -136,6 +137,78 @@ Other parameters are passed through a pointer to a apiDeleteArgoCdCredentialsReq
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeleteArgoCdDestinationClusterMapping
+
+> DeleteArgoCdDestinationClusterMapping(ctx, organizationId).AgentClusterId(agentClusterId).ArgocdClusterUrl(argocdClusterUrl).Execute()
+
+Delete an ArgoCD destination cluster mapping
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	agentClusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | ID of the Qovery cluster where the ArgoCD instance is running
+	argocdClusterUrl := "https://kubernetes.default.svc" // string | ArgoCD destination cluster URL as reported by ArgoCD
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.ArgoCDAPI.DeleteArgoCdDestinationClusterMapping(context.Background(), organizationId).AgentClusterId(agentClusterId).ArgocdClusterUrl(argocdClusterUrl).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArgoCDAPI.DeleteArgoCdDestinationClusterMapping``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeleteArgoCdDestinationClusterMappingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **agentClusterId** | **string** | ID of the Qovery cluster where the ArgoCD instance is running | 
+ **argocdClusterUrl** | **string** | ArgoCD destination cluster URL as reported by ArgoCD | 
 
 ### Return type
 

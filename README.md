@@ -144,6 +144,7 @@ Class | Method | HTTP request | Description
 *ApplicationsAPI* | [**ListApplication**](docs/ApplicationsAPI.md#listapplication) | **Get** /environment/{environmentId}/application | List applications
 *ArgoCDAPI* | [**CheckArgoCdConnection**](docs/ArgoCDAPI.md#checkargocdconnection) | **Post** /cluster/{clusterId}/argoCdConfig/check | Check ArgoCD connection
 *ArgoCDAPI* | [**DeleteArgoCdCredentials**](docs/ArgoCDAPI.md#deleteargocdcredentials) | **Delete** /cluster/{clusterId}/argoCdConfig | Delete ArgoCD credentials for a cluster
+*ArgoCDAPI* | [**DeleteArgoCdDestinationClusterMapping**](docs/ArgoCDAPI.md#deleteargocddestinationclustermapping) | **Delete** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 *ArgoCDAPI* | [**GetArgoCdApp**](docs/ArgoCDAPI.md#getargocdapp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 *ArgoCDAPI* | [**GetArgoCdAppManifest**](docs/ArgoCDAPI.md#getargocdappmanifest) | **Get** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
 *ArgoCDAPI* | [**GetArgoCdCredentials**](docs/ArgoCDAPI.md#getargocdcredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster

@@ -49,6 +49,19 @@ func Test_qovery_ArgoCDAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ArgoCDAPIService DeleteArgoCdDestinationClusterMapping", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		httpRes, err := apiClient.ArgoCDAPI.DeleteArgoCdDestinationClusterMapping(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ArgoCDAPIService GetArgoCdApp", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

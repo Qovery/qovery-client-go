@@ -5294,6 +5294,53 @@ paths:
       tags:
       - ArgoCD
   /organization/{organizationId}/argoCdDestinationClusterMapping:
+    delete:
+      description: |
+        Remove the mapping between an ArgoCD destination cluster URL and a Qovery cluster.
+        Requires ADMIN role on the agent cluster.
+      operationId: deleteArgoCdDestinationClusterMapping
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ID of the Qovery cluster where the ArgoCD instance is running
+        explode: true
+        in: query
+        name: agentClusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: ArgoCD destination cluster URL as reported by ArgoCD
+        example: https://kubernetes.default.svc
+        explode: true
+        in: query
+        name: argocdClusterUrl
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "204":
+          description: Mapping deleted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an ArgoCD destination cluster mapping
+      tags:
+      - ArgoCD
     get:
       description: |
         Returns one entry per ArgoCD agent cluster that has credentials configured.
