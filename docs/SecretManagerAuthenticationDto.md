@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **Region** | **string** |  | 
 **AccessKey** | **string** |  | 
 **SecretKey** | Pointer to **NullableString** |  | [optional] 
-**JsonCredentials** | Pointer to **NullableString** |  | [optional] 
+**JsonCredentials** | Pointer to **NullableString** | The json must be base64 encoded | [optional] 
 
 ## Methods
 

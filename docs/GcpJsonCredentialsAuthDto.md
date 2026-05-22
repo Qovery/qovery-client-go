@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Mode** | **string** |  | 
-**JsonCredentials** | Pointer to **NullableString** |  | [optional] 
+**JsonCredentials** | Pointer to **NullableString** | The json must be base64 encoded | [optional] 
 
 ## Methods
 

@@ -21,7 +21,8 @@ var _ MappedNullable = &GcpCredentialsRequest{}
 
 // GcpCredentialsRequest struct for GcpCredentialsRequest
 type GcpCredentialsRequest struct {
-	Name                 string `json:"name"`
+	Name string `json:"name"`
+	// The json must be base64 encoded
 	GcpCredentials       string `json:"gcp_credentials"`
 	AdditionalProperties map[string]interface{}
 }

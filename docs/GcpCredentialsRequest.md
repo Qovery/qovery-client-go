@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**GcpCredentials** | **string** |  | 
+**GcpCredentials** | **string** | The json must be base64 encoded | 
 
 ## Methods
 

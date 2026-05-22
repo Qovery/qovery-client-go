@@ -29970,6 +29970,7 @@ components:
         name:
           type: string
         gcp_credentials:
+          description: The json must be base64 encoded
           type: string
       required:
       - gcp_credentials
@@ -41228,6 +41229,7 @@ components:
           - GCP_JSON_CREDENTIALS
           type: string
         json_credentials:
+          description: The json must be base64 encoded
           nullable: true
           type: string
       required:

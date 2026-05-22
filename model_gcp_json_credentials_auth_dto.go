@@ -21,7 +21,8 @@ var _ MappedNullable = &GcpJsonCredentialsAuthDto{}
 
 // GcpJsonCredentialsAuthDto struct for GcpJsonCredentialsAuthDto
 type GcpJsonCredentialsAuthDto struct {
-	Mode                 string         `json:"mode"`
+	Mode string `json:"mode"`
+	// The json must be base64 encoded
 	JsonCredentials      NullableString `json:"json_credentials,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
