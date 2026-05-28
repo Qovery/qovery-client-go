@@ -41161,11 +41161,11 @@ components:
           type: string
         region:
           type: string
-        projectId:
+        project_id:
           type: string
       required:
       - mode
-      - projectId
+      - project_id
       - region
       type: object
     SecretManagerAuthenticationDto:

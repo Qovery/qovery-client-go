@@ -23,7 +23,7 @@ var _ MappedNullable = &GcpSecretManagerEndpointDto{}
 type GcpSecretManagerEndpointDto struct {
 	Mode                 string `json:"mode"`
 	Region               string `json:"region"`
-	ProjectId            string `json:"projectId"`
+	ProjectId            string `json:"project_id"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -133,7 +133,7 @@ func (o GcpSecretManagerEndpointDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["mode"] = o.Mode
 	toSerialize["region"] = o.Region
-	toSerialize["projectId"] = o.ProjectId
+	toSerialize["project_id"] = o.ProjectId
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -149,7 +149,7 @@ func (o *GcpSecretManagerEndpointDto) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"mode",
 		"region",
-		"projectId",
+		"project_id",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -181,7 +181,7 @@ func (o *GcpSecretManagerEndpointDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "region")
-		delete(additionalProperties, "projectId")
+		delete(additionalProperties, "project_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
