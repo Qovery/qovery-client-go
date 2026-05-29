@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DeleteArgoCdDestinationClusterMapping**](ArgoCDAPI.md#DeleteArgoCdDestinationClusterMapping) | **Delete** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 [**GetArgoCdApp**](ArgoCDAPI.md#GetArgoCdApp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 [**GetArgoCdAppManifest**](ArgoCDAPI.md#GetArgoCdAppManifest) | **Get** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
+[**GetArgoCdAssociatedServices**](ArgoCDAPI.md#GetArgoCdAssociatedServices) | **Get** /cluster/{clusterId}/argocdApps/associatedServices | Get ArgoCD associated services for a cluster
 [**GetArgoCdCredentials**](ArgoCDAPI.md#GetArgoCdCredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 [**ListArgoCdDestinationClusterMappings**](ArgoCDAPI.md#ListArgoCdDestinationClusterMappings) | **Get** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 [**SaveArgoCdCredentials**](ArgoCDAPI.md#SaveArgoCdCredentials) | **Post** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
@@ -349,6 +350,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ArgocdAppManifestResponse**](ArgocdAppManifestResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetArgoCdAssociatedServices
+
+> ArgocdAssociatedServicesResponseList GetArgoCdAssociatedServices(ctx, clusterId).Execute()
+
+Get ArgoCD associated services for a cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ArgoCDAPI.GetArgoCdAssociatedServices(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ArgoCDAPI.GetArgoCdAssociatedServices``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetArgoCdAssociatedServices`: ArgocdAssociatedServicesResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ArgoCDAPI.GetArgoCdAssociatedServices`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetArgoCdAssociatedServicesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ArgocdAssociatedServicesResponseList**](ArgocdAssociatedServicesResponseList.md)
 
 ### Authorization
 

@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
 *ArgoCDAPI* | [**DeleteArgoCdDestinationClusterMapping**](docs/ArgoCDAPI.md#deleteargocddestinationclustermapping) | **Delete** /organization/{organizationId}/argoCdDestinationClusterMapping | Delete an ArgoCD destination cluster mapping
 *ArgoCDAPI* | [**GetArgoCdApp**](docs/ArgoCDAPI.md#getargocdapp) | **Get** /argocdApp/{argocdAppId} | Get ArgoCD app by ID
 *ArgoCDAPI* | [**GetArgoCdAppManifest**](docs/ArgoCDAPI.md#getargocdappmanifest) | **Get** /argocdApp/{argocdAppId}/manifest | Get ArgoCD app manifest enrichment
+*ArgoCDAPI* | [**GetArgoCdAssociatedServices**](docs/ArgoCDAPI.md#getargocdassociatedservices) | **Get** /cluster/{clusterId}/argocdApps/associatedServices | Get ArgoCD associated services for a cluster
 *ArgoCDAPI* | [**GetArgoCdCredentials**](docs/ArgoCDAPI.md#getargocdcredentials) | **Get** /cluster/{clusterId}/argoCdConfig | Get ArgoCD credentials for a cluster
 *ArgoCDAPI* | [**ListArgoCdDestinationClusterMappings**](docs/ArgoCDAPI.md#listargocddestinationclustermappings) | **Get** /organization/{organizationId}/argoCdDestinationClusterMapping | List ArgoCD instance mappings for an organization
 *ArgoCDAPI* | [**SaveArgoCdCredentials**](docs/ArgoCDAPI.md#saveargocdcredentials) | **Post** /cluster/{clusterId}/argoCdConfig | Save ArgoCD credentials for a cluster
@@ -658,6 +659,9 @@ Class | Method | HTTP request | Description
  - [ArgocdAppManifestResponse](docs/ArgocdAppManifestResponse.md)
  - [ArgocdAppManifestResponseManifestMetadata](docs/ArgocdAppManifestResponseManifestMetadata.md)
  - [ArgocdAppResponse](docs/ArgocdAppResponse.md)
+ - [ArgocdAssociatedServiceType](docs/ArgocdAssociatedServiceType.md)
+ - [ArgocdAssociatedServicesResponse](docs/ArgocdAssociatedServicesResponse.md)
+ - [ArgocdAssociatedServicesResponseList](docs/ArgocdAssociatedServicesResponseList.md)
  - [ArgocdManagedResource](docs/ArgocdManagedResource.md)
  - [AttachServiceToDeploymentStageRequest](docs/AttachServiceToDeploymentStageRequest.md)
  - [AutomaticallyConfiguredAuthDto](docs/AutomaticallyConfiguredAuthDto.md)

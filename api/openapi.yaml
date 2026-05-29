@@ -17980,6 +17980,37 @@ paths:
       summary: Get ArgoCD app manifest enrichment
       tags:
       - ArgoCD
+  /cluster/{clusterId}/argocdApps/associatedServices:
+    get:
+      description: "List the ArgoCD discovered apps for a cluster, mapped to their\
+        \ project, environment, and service context. Requires VIEWER role."
+      operationId: getArgoCdAssociatedServices
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArgocdAssociatedServicesResponseList'
+          description: ArgoCD associated services for the cluster
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get ArgoCD associated services for a cluster
+      tags:
+      - ArgoCD
   /organization/{organizationId}/credentials:
     get:
       description: List credentials of an organization and their associated clusters
@@ -36962,6 +36993,72 @@ components:
       type: string
       x-stoplight:
         id: dif8pj1ys444y
+    ArgocdAssociatedServicesResponseList:
+      example:
+        results:
+        - service_type: ARGOCD_APP
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+        - service_type: ARGOCD_APP
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_name: service_name
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_name: project_name
+          environment_name: environment_name
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ArgocdAssociatedServicesResponse'
+          type: array
+      title: ArgocdAssociatedServicesResponseList
+      type: object
+    ArgocdAssociatedServicesResponse:
+      example:
+        service_type: ARGOCD_APP
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_name: service_name
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_name: project_name
+        environment_name: environment_name
+      properties:
+        project_id:
+          format: uuid
+          type: string
+        project_name:
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        environment_name:
+          type: string
+        service_id:
+          format: uuid
+          type: string
+        service_name:
+          type: string
+        service_type:
+          $ref: '#/components/schemas/ArgocdAssociatedServiceType'
+      required:
+      - environment_id
+      - environment_name
+      - project_id
+      - project_name
+      - service_id
+      - service_name
+      - service_type
+      title: ArgocdAssociatedServicesResponse
+      type: object
+    ArgocdAssociatedServiceType:
+      enum:
+      - ARGOCD_APP
+      title: ArgocdAssociatedServiceType
+      type: string
     HelmRepositoryAssociatedServiceType:
       enum:
       - HELM
