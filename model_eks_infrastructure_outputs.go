@@ -21,12 +21,13 @@ var _ MappedNullable = &EksInfrastructureOutputs{}
 
 // EksInfrastructureOutputs struct for EksInfrastructureOutputs
 type EksInfrastructureOutputs struct {
-	Kind                 string `json:"kind"`
-	ClusterName          string `json:"cluster_name"`
-	ClusterArn           string `json:"cluster_arn"`
-	ClusterOidcIssuer    string `json:"cluster_oidc_issuer"`
-	VpcId                string `json:"vpc_id"`
-	AdditionalProperties map[string]interface{}
+	Kind                                   string                                                                 `json:"kind"`
+	ClusterName                            string                                                                 `json:"cluster_name"`
+	ClusterArn                             string                                                                 `json:"cluster_arn"`
+	ClusterOidcIssuer                      string                                                                 `json:"cluster_oidc_issuer"`
+	VpcId                                  string                                                                 `json:"vpc_id"`
+	ExternalSecretsAutomaticAuthentication NullableEksInfrastructureOutputsExternalSecretsAutomaticAuthentication `json:"external_secrets_automatic_authentication,omitempty"`
+	AdditionalProperties                   map[string]interface{}
 }
 
 type _EksInfrastructureOutputs EksInfrastructureOutputs
@@ -173,6 +174,49 @@ func (o *EksInfrastructureOutputs) SetVpcId(v string) {
 	o.VpcId = v
 }
 
+// GetExternalSecretsAutomaticAuthentication returns the ExternalSecretsAutomaticAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EksInfrastructureOutputs) GetExternalSecretsAutomaticAuthentication() EksInfrastructureOutputsExternalSecretsAutomaticAuthentication {
+	if o == nil || IsNil(o.ExternalSecretsAutomaticAuthentication.Get()) {
+		var ret EksInfrastructureOutputsExternalSecretsAutomaticAuthentication
+		return ret
+	}
+	return *o.ExternalSecretsAutomaticAuthentication.Get()
+}
+
+// GetExternalSecretsAutomaticAuthenticationOk returns a tuple with the ExternalSecretsAutomaticAuthentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EksInfrastructureOutputs) GetExternalSecretsAutomaticAuthenticationOk() (*EksInfrastructureOutputsExternalSecretsAutomaticAuthentication, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalSecretsAutomaticAuthentication.Get(), o.ExternalSecretsAutomaticAuthentication.IsSet()
+}
+
+// HasExternalSecretsAutomaticAuthentication returns a boolean if a field has been set.
+func (o *EksInfrastructureOutputs) HasExternalSecretsAutomaticAuthentication() bool {
+	if o != nil && o.ExternalSecretsAutomaticAuthentication.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalSecretsAutomaticAuthentication gets a reference to the given NullableEksInfrastructureOutputsExternalSecretsAutomaticAuthentication and assigns it to the ExternalSecretsAutomaticAuthentication field.
+func (o *EksInfrastructureOutputs) SetExternalSecretsAutomaticAuthentication(v EksInfrastructureOutputsExternalSecretsAutomaticAuthentication) {
+	o.ExternalSecretsAutomaticAuthentication.Set(&v)
+}
+
+// SetExternalSecretsAutomaticAuthenticationNil sets the value for ExternalSecretsAutomaticAuthentication to be an explicit nil
+func (o *EksInfrastructureOutputs) SetExternalSecretsAutomaticAuthenticationNil() {
+	o.ExternalSecretsAutomaticAuthentication.Set(nil)
+}
+
+// UnsetExternalSecretsAutomaticAuthentication ensures that no value is present for ExternalSecretsAutomaticAuthentication, not even an explicit nil
+func (o *EksInfrastructureOutputs) UnsetExternalSecretsAutomaticAuthentication() {
+	o.ExternalSecretsAutomaticAuthentication.Unset()
+}
+
 func (o EksInfrastructureOutputs) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -188,6 +232,9 @@ func (o EksInfrastructureOutputs) ToMap() (map[string]interface{}, error) {
 	toSerialize["cluster_arn"] = o.ClusterArn
 	toSerialize["cluster_oidc_issuer"] = o.ClusterOidcIssuer
 	toSerialize["vpc_id"] = o.VpcId
+	if o.ExternalSecretsAutomaticAuthentication.IsSet() {
+		toSerialize["external_secrets_automatic_authentication"] = o.ExternalSecretsAutomaticAuthentication.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -240,6 +287,7 @@ func (o *EksInfrastructureOutputs) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cluster_arn")
 		delete(additionalProperties, "cluster_oidc_issuer")
 		delete(additionalProperties, "vpc_id")
+		delete(additionalProperties, "external_secrets_automatic_authentication")
 		o.AdditionalProperties = additionalProperties
 	}
 

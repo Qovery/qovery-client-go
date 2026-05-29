@@ -37953,6 +37953,8 @@ components:
           type: string
         vpc_id:
           type: string
+        external_secrets_automatic_authentication:
+          $ref: '#/components/schemas/EksInfrastructureOutputs_external_secrets_automatic_authentication'
       required:
       - cluster_arn
       - cluster_name
@@ -37970,6 +37972,8 @@ components:
           type: string
         cluster_self_link:
           type: string
+        external_secrets_automatic_authentication:
+          $ref: '#/components/schemas/GkeInfrastructureOutputs_external_secrets_automatic_authentication'
       required:
       - cluster_name
       - cluster_self_link
@@ -45022,6 +45026,25 @@ components:
       - $ref: '#/components/schemas/MetricsConfigurationManagedByQovery'
       x-stoplight:
         id: 1e9r2at0nxziv
+    EksInfrastructureOutputs_external_secrets_automatic_authentication:
+      nullable: true
+      properties:
+        eks_role_arn:
+          description: ARN of the IAM role used by External Secrets Operator on EKS
+          type: string
+      required:
+      - eks_role_arn
+      type: object
+    GkeInfrastructureOutputs_external_secrets_automatic_authentication:
+      nullable: true
+      properties:
+        gke_service_account:
+          description: GCP service account email used by External Secrets Operator
+            on GKE
+          type: string
+      required:
+      - gke_service_account
+      type: object
     TerraformRequest_terraform_files_source_oneOf:
       example:
         git_repository:

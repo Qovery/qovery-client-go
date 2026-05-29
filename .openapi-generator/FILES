@@ -436,6 +436,7 @@ docs/EksAnywhereVsphereClusterCredentials.md
 docs/EksAnywhereVsphereRoleCredentialsRequest.md
 docs/EksAnywhereVsphereStaticCredentialsRequest.md
 docs/EksInfrastructureOutputs.md
+docs/EksInfrastructureOutputsExternalSecretsAutomaticAuthentication.md
 docs/EmailAlertReceiverCreationRequest.md
 docs/EmailAlertReceiverEditRequest.md
 docs/EmailAlertReceiverResponse.md
@@ -521,6 +522,7 @@ docs/GitTokenResponseList.md
 docs/GitWebhookStatusResponse.md
 docs/GithubAppAPI.md
 docs/GkeInfrastructureOutputs.md
+docs/GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication.md
 docs/Healthcheck.md
 docs/HelmActionsAPI.md
 docs/HelmAdvancedSettings.md
@@ -1247,6 +1249,7 @@ model_eks_anywhere_vsphere_cluster_credentials.go
 model_eks_anywhere_vsphere_role_credentials_request.go
 model_eks_anywhere_vsphere_static_credentials_request.go
 model_eks_infrastructure_outputs.go
+model_eks_infrastructure_outputs_external_secrets_automatic_authentication.go
 model_email_alert_receiver_creation_request.go
 model_email_alert_receiver_edit_request.go
 model_email_alert_receiver_response.go
@@ -1320,6 +1323,7 @@ model_git_token_response.go
 model_git_token_response_list.go
 model_git_webhook_status_response.go
 model_gke_infrastructure_outputs.go
+model_gke_infrastructure_outputs_external_secrets_automatic_authentication.go
 model_healthcheck.go
 model_helm_advanced_settings.go
 model_helm_check_request.go

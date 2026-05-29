@@ -21,10 +21,11 @@ var _ MappedNullable = &GkeInfrastructureOutputs{}
 
 // GkeInfrastructureOutputs struct for GkeInfrastructureOutputs
 type GkeInfrastructureOutputs struct {
-	Kind                 string `json:"kind"`
-	ClusterName          string `json:"cluster_name"`
-	ClusterSelfLink      string `json:"cluster_self_link"`
-	AdditionalProperties map[string]interface{}
+	Kind                                   string                                                                 `json:"kind"`
+	ClusterName                            string                                                                 `json:"cluster_name"`
+	ClusterSelfLink                        string                                                                 `json:"cluster_self_link"`
+	ExternalSecretsAutomaticAuthentication NullableGkeInfrastructureOutputsExternalSecretsAutomaticAuthentication `json:"external_secrets_automatic_authentication,omitempty"`
+	AdditionalProperties                   map[string]interface{}
 }
 
 type _GkeInfrastructureOutputs GkeInfrastructureOutputs
@@ -121,6 +122,49 @@ func (o *GkeInfrastructureOutputs) SetClusterSelfLink(v string) {
 	o.ClusterSelfLink = v
 }
 
+// GetExternalSecretsAutomaticAuthentication returns the ExternalSecretsAutomaticAuthentication field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *GkeInfrastructureOutputs) GetExternalSecretsAutomaticAuthentication() GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication {
+	if o == nil || IsNil(o.ExternalSecretsAutomaticAuthentication.Get()) {
+		var ret GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication
+		return ret
+	}
+	return *o.ExternalSecretsAutomaticAuthentication.Get()
+}
+
+// GetExternalSecretsAutomaticAuthenticationOk returns a tuple with the ExternalSecretsAutomaticAuthentication field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *GkeInfrastructureOutputs) GetExternalSecretsAutomaticAuthenticationOk() (*GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExternalSecretsAutomaticAuthentication.Get(), o.ExternalSecretsAutomaticAuthentication.IsSet()
+}
+
+// HasExternalSecretsAutomaticAuthentication returns a boolean if a field has been set.
+func (o *GkeInfrastructureOutputs) HasExternalSecretsAutomaticAuthentication() bool {
+	if o != nil && o.ExternalSecretsAutomaticAuthentication.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExternalSecretsAutomaticAuthentication gets a reference to the given NullableGkeInfrastructureOutputsExternalSecretsAutomaticAuthentication and assigns it to the ExternalSecretsAutomaticAuthentication field.
+func (o *GkeInfrastructureOutputs) SetExternalSecretsAutomaticAuthentication(v GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication) {
+	o.ExternalSecretsAutomaticAuthentication.Set(&v)
+}
+
+// SetExternalSecretsAutomaticAuthenticationNil sets the value for ExternalSecretsAutomaticAuthentication to be an explicit nil
+func (o *GkeInfrastructureOutputs) SetExternalSecretsAutomaticAuthenticationNil() {
+	o.ExternalSecretsAutomaticAuthentication.Set(nil)
+}
+
+// UnsetExternalSecretsAutomaticAuthentication ensures that no value is present for ExternalSecretsAutomaticAuthentication, not even an explicit nil
+func (o *GkeInfrastructureOutputs) UnsetExternalSecretsAutomaticAuthentication() {
+	o.ExternalSecretsAutomaticAuthentication.Unset()
+}
+
 func (o GkeInfrastructureOutputs) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -134,6 +178,9 @@ func (o GkeInfrastructureOutputs) ToMap() (map[string]interface{}, error) {
 	toSerialize["kind"] = o.Kind
 	toSerialize["cluster_name"] = o.ClusterName
 	toSerialize["cluster_self_link"] = o.ClusterSelfLink
+	if o.ExternalSecretsAutomaticAuthentication.IsSet() {
+		toSerialize["external_secrets_automatic_authentication"] = o.ExternalSecretsAutomaticAuthentication.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -182,6 +229,7 @@ func (o *GkeInfrastructureOutputs) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "cluster_name")
 		delete(additionalProperties, "cluster_self_link")
+		delete(additionalProperties, "external_secrets_automatic_authentication")
 		o.AdditionalProperties = additionalProperties
 	}
 

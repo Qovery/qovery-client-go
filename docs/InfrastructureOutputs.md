@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClusterOidcIssuer** | **string** |  | 
 **ClusterArn** | **string** |  | 
 **VpcId** | **string** |  | 
+**ExternalSecretsAutomaticAuthentication** | Pointer to [**NullableGkeInfrastructureOutputsExternalSecretsAutomaticAuthentication**](GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication.md) |  | [optional] 
 **ClusterSelfLink** | **string** |  | 
 
 ## Methods
@@ -130,6 +131,41 @@ and a boolean to check if the value has been set.
 SetVpcId sets VpcId field to given value.
 
 
+### GetExternalSecretsAutomaticAuthentication
+
+`func (o *InfrastructureOutputs) GetExternalSecretsAutomaticAuthentication() GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication`
+
+GetExternalSecretsAutomaticAuthentication returns the ExternalSecretsAutomaticAuthentication field if non-nil, zero value otherwise.
+
+### GetExternalSecretsAutomaticAuthenticationOk
+
+`func (o *InfrastructureOutputs) GetExternalSecretsAutomaticAuthenticationOk() (*GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication, bool)`
+
+GetExternalSecretsAutomaticAuthenticationOk returns a tuple with the ExternalSecretsAutomaticAuthentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalSecretsAutomaticAuthentication
+
+`func (o *InfrastructureOutputs) SetExternalSecretsAutomaticAuthentication(v GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication)`
+
+SetExternalSecretsAutomaticAuthentication sets ExternalSecretsAutomaticAuthentication field to given value.
+
+### HasExternalSecretsAutomaticAuthentication
+
+`func (o *InfrastructureOutputs) HasExternalSecretsAutomaticAuthentication() bool`
+
+HasExternalSecretsAutomaticAuthentication returns a boolean if a field has been set.
+
+### SetExternalSecretsAutomaticAuthenticationNil
+
+`func (o *InfrastructureOutputs) SetExternalSecretsAutomaticAuthenticationNil(b bool)`
+
+ SetExternalSecretsAutomaticAuthenticationNil sets the value for ExternalSecretsAutomaticAuthentication to be an explicit nil
+
+### UnsetExternalSecretsAutomaticAuthentication
+`func (o *InfrastructureOutputs) UnsetExternalSecretsAutomaticAuthentication()`
+
+UnsetExternalSecretsAutomaticAuthentication ensures that no value is present for ExternalSecretsAutomaticAuthentication, not even an explicit nil
 ### GetClusterSelfLink
 
 `func (o *InfrastructureOutputs) GetClusterSelfLink() string`

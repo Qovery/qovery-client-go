@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ClusterArn** | **string** |  | 
 **ClusterOidcIssuer** | **string** |  | 
 **VpcId** | **string** |  | 
+**ExternalSecretsAutomaticAuthentication** | Pointer to [**NullableEksInfrastructureOutputsExternalSecretsAutomaticAuthentication**](EksInfrastructureOutputsExternalSecretsAutomaticAuthentication.md) |  | [optional] 
 
 ## Methods
 
@@ -129,6 +130,41 @@ and a boolean to check if the value has been set.
 SetVpcId sets VpcId field to given value.
 
 
+### GetExternalSecretsAutomaticAuthentication
+
+`func (o *EksInfrastructureOutputs) GetExternalSecretsAutomaticAuthentication() EksInfrastructureOutputsExternalSecretsAutomaticAuthentication`
+
+GetExternalSecretsAutomaticAuthentication returns the ExternalSecretsAutomaticAuthentication field if non-nil, zero value otherwise.
+
+### GetExternalSecretsAutomaticAuthenticationOk
+
+`func (o *EksInfrastructureOutputs) GetExternalSecretsAutomaticAuthenticationOk() (*EksInfrastructureOutputsExternalSecretsAutomaticAuthentication, bool)`
+
+GetExternalSecretsAutomaticAuthenticationOk returns a tuple with the ExternalSecretsAutomaticAuthentication field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExternalSecretsAutomaticAuthentication
+
+`func (o *EksInfrastructureOutputs) SetExternalSecretsAutomaticAuthentication(v EksInfrastructureOutputsExternalSecretsAutomaticAuthentication)`
+
+SetExternalSecretsAutomaticAuthentication sets ExternalSecretsAutomaticAuthentication field to given value.
+
+### HasExternalSecretsAutomaticAuthentication
+
+`func (o *EksInfrastructureOutputs) HasExternalSecretsAutomaticAuthentication() bool`
+
+HasExternalSecretsAutomaticAuthentication returns a boolean if a field has been set.
+
+### SetExternalSecretsAutomaticAuthenticationNil
+
+`func (o *EksInfrastructureOutputs) SetExternalSecretsAutomaticAuthenticationNil(b bool)`
+
+ SetExternalSecretsAutomaticAuthenticationNil sets the value for ExternalSecretsAutomaticAuthentication to be an explicit nil
+
+### UnsetExternalSecretsAutomaticAuthentication
+`func (o *EksInfrastructureOutputs) UnsetExternalSecretsAutomaticAuthentication()`
+
+UnsetExternalSecretsAutomaticAuthentication ensures that no value is present for ExternalSecretsAutomaticAuthentication, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
