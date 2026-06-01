@@ -1,4 +1,4 @@
-# GcpCredentialsRequest
+# GcpWorkloadIdentityFederationCredentialsRequest
 
 ## Properties
 
@@ -6,130 +6,109 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **CredentialType** | Pointer to **string** | Optional explicit credential type. | [optional] 
-**GcpCredentials** | **string** | The json must be base64 encoded | 
 **ServiceAccountEmail** | **string** | GCP service account email to impersonate. | 
 **WorkloadIdentityProviderResource** | **string** | Full Workload Identity Provider resource. | 
 
 ## Methods
 
-### NewGcpCredentialsRequest
+### NewGcpWorkloadIdentityFederationCredentialsRequest
 
-`func NewGcpCredentialsRequest(name string, gcpCredentials string, serviceAccountEmail string, workloadIdentityProviderResource string, ) *GcpCredentialsRequest`
+`func NewGcpWorkloadIdentityFederationCredentialsRequest(name string, serviceAccountEmail string, workloadIdentityProviderResource string, ) *GcpWorkloadIdentityFederationCredentialsRequest`
 
-NewGcpCredentialsRequest instantiates a new GcpCredentialsRequest object
+NewGcpWorkloadIdentityFederationCredentialsRequest instantiates a new GcpWorkloadIdentityFederationCredentialsRequest object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewGcpCredentialsRequestWithDefaults
+### NewGcpWorkloadIdentityFederationCredentialsRequestWithDefaults
 
-`func NewGcpCredentialsRequestWithDefaults() *GcpCredentialsRequest`
+`func NewGcpWorkloadIdentityFederationCredentialsRequestWithDefaults() *GcpWorkloadIdentityFederationCredentialsRequest`
 
-NewGcpCredentialsRequestWithDefaults instantiates a new GcpCredentialsRequest object
+NewGcpWorkloadIdentityFederationCredentialsRequestWithDefaults instantiates a new GcpWorkloadIdentityFederationCredentialsRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetName
 
-`func (o *GcpCredentialsRequest) GetName() string`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *GcpCredentialsRequest) GetNameOk() (*string, bool)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *GcpCredentialsRequest) SetName(v string)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) SetName(v string)`
 
 SetName sets Name field to given value.
 
 
 ### GetCredentialType
 
-`func (o *GcpCredentialsRequest) GetCredentialType() string`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetCredentialType() string`
 
 GetCredentialType returns the CredentialType field if non-nil, zero value otherwise.
 
 ### GetCredentialTypeOk
 
-`func (o *GcpCredentialsRequest) GetCredentialTypeOk() (*string, bool)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetCredentialTypeOk() (*string, bool)`
 
 GetCredentialTypeOk returns a tuple with the CredentialType field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCredentialType
 
-`func (o *GcpCredentialsRequest) SetCredentialType(v string)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) SetCredentialType(v string)`
 
 SetCredentialType sets CredentialType field to given value.
 
 ### HasCredentialType
 
-`func (o *GcpCredentialsRequest) HasCredentialType() bool`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) HasCredentialType() bool`
 
 HasCredentialType returns a boolean if a field has been set.
 
-### GetGcpCredentials
-
-`func (o *GcpCredentialsRequest) GetGcpCredentials() string`
-
-GetGcpCredentials returns the GcpCredentials field if non-nil, zero value otherwise.
-
-### GetGcpCredentialsOk
-
-`func (o *GcpCredentialsRequest) GetGcpCredentialsOk() (*string, bool)`
-
-GetGcpCredentialsOk returns a tuple with the GcpCredentials field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetGcpCredentials
-
-`func (o *GcpCredentialsRequest) SetGcpCredentials(v string)`
-
-SetGcpCredentials sets GcpCredentials field to given value.
-
-
 ### GetServiceAccountEmail
 
-`func (o *GcpCredentialsRequest) GetServiceAccountEmail() string`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetServiceAccountEmail() string`
 
 GetServiceAccountEmail returns the ServiceAccountEmail field if non-nil, zero value otherwise.
 
 ### GetServiceAccountEmailOk
 
-`func (o *GcpCredentialsRequest) GetServiceAccountEmailOk() (*string, bool)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetServiceAccountEmailOk() (*string, bool)`
 
 GetServiceAccountEmailOk returns a tuple with the ServiceAccountEmail field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetServiceAccountEmail
 
-`func (o *GcpCredentialsRequest) SetServiceAccountEmail(v string)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) SetServiceAccountEmail(v string)`
 
 SetServiceAccountEmail sets ServiceAccountEmail field to given value.
 
 
 ### GetWorkloadIdentityProviderResource
 
-`func (o *GcpCredentialsRequest) GetWorkloadIdentityProviderResource() string`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetWorkloadIdentityProviderResource() string`
 
 GetWorkloadIdentityProviderResource returns the WorkloadIdentityProviderResource field if non-nil, zero value otherwise.
 
 ### GetWorkloadIdentityProviderResourceOk
 
-`func (o *GcpCredentialsRequest) GetWorkloadIdentityProviderResourceOk() (*string, bool)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) GetWorkloadIdentityProviderResourceOk() (*string, bool)`
 
 GetWorkloadIdentityProviderResourceOk returns a tuple with the WorkloadIdentityProviderResource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWorkloadIdentityProviderResource
 
-`func (o *GcpCredentialsRequest) SetWorkloadIdentityProviderResource(v string)`
+`func (o *GcpWorkloadIdentityFederationCredentialsRequest) SetWorkloadIdentityProviderResource(v string)`
 
 SetWorkloadIdentityProviderResource sets WorkloadIdentityProviderResource field to given value.
 

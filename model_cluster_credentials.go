@@ -18,13 +18,14 @@ import (
 
 // ClusterCredentials - struct for ClusterCredentials
 type ClusterCredentials struct {
-	AwsRoleClusterCredentials            *AwsRoleClusterCredentials
-	AwsStaticClusterCredentials          *AwsStaticClusterCredentials
-	AzureStaticClusterCredentials        *AzureStaticClusterCredentials
-	EksAnywhereVsphereClusterCredentials *EksAnywhereVsphereClusterCredentials
-	GcpStaticClusterCredentials          *GcpStaticClusterCredentials
-	GenericClusterCredentials            *GenericClusterCredentials
-	ScalewayClusterCredentials           *ScalewayClusterCredentials
+	AwsRoleClusterCredentials                       *AwsRoleClusterCredentials
+	AwsStaticClusterCredentials                     *AwsStaticClusterCredentials
+	AzureStaticClusterCredentials                   *AzureStaticClusterCredentials
+	EksAnywhereVsphereClusterCredentials            *EksAnywhereVsphereClusterCredentials
+	GcpStaticClusterCredentials                     *GcpStaticClusterCredentials
+	GcpWorkloadIdentityFederationClusterCredentials *GcpWorkloadIdentityFederationClusterCredentials
+	GenericClusterCredentials                       *GenericClusterCredentials
+	ScalewayClusterCredentials                      *ScalewayClusterCredentials
 }
 
 // AwsRoleClusterCredentialsAsClusterCredentials is a convenience function that returns AwsRoleClusterCredentials wrapped in ClusterCredentials
@@ -59,6 +60,13 @@ func EksAnywhereVsphereClusterCredentialsAsClusterCredentials(v *EksAnywhereVsph
 func GcpStaticClusterCredentialsAsClusterCredentials(v *GcpStaticClusterCredentials) ClusterCredentials {
 	return ClusterCredentials{
 		GcpStaticClusterCredentials: v,
+	}
+}
+
+// GcpWorkloadIdentityFederationClusterCredentialsAsClusterCredentials is a convenience function that returns GcpWorkloadIdentityFederationClusterCredentials wrapped in ClusterCredentials
+func GcpWorkloadIdentityFederationClusterCredentialsAsClusterCredentials(v *GcpWorkloadIdentityFederationClusterCredentials) ClusterCredentials {
+	return ClusterCredentials{
+		GcpWorkloadIdentityFederationClusterCredentials: v,
 	}
 }
 
@@ -146,6 +154,18 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'GCP_WORKLOAD_IDENTITY_FEDERATION'
+	if jsonDict["object_type"] == "GCP_WORKLOAD_IDENTITY_FEDERATION" {
+		// try to unmarshal JSON data into GcpWorkloadIdentityFederationClusterCredentials
+		err = json.Unmarshal(data, &dst.GcpWorkloadIdentityFederationClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.GcpWorkloadIdentityFederationClusterCredentials, return on the first match
+		} else {
+			dst.GcpWorkloadIdentityFederationClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as GcpWorkloadIdentityFederationClusterCredentials: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'OTHER'
 	if jsonDict["object_type"] == "OTHER" {
 		// try to unmarshal JSON data into GenericClusterCredentials
@@ -230,6 +250,18 @@ func (dst *ClusterCredentials) UnmarshalJSON(data []byte) error {
 		}
 	}
 
+	// check if the discriminator value is 'GcpWorkloadIdentityFederationClusterCredentials'
+	if jsonDict["object_type"] == "GcpWorkloadIdentityFederationClusterCredentials" {
+		// try to unmarshal JSON data into GcpWorkloadIdentityFederationClusterCredentials
+		err = json.Unmarshal(data, &dst.GcpWorkloadIdentityFederationClusterCredentials)
+		if err == nil {
+			return nil // data stored in dst.GcpWorkloadIdentityFederationClusterCredentials, return on the first match
+		} else {
+			dst.GcpWorkloadIdentityFederationClusterCredentials = nil
+			return fmt.Errorf("failed to unmarshal ClusterCredentials as GcpWorkloadIdentityFederationClusterCredentials: %s", err.Error())
+		}
+	}
+
 	// check if the discriminator value is 'GenericClusterCredentials'
 	if jsonDict["object_type"] == "GenericClusterCredentials" {
 		// try to unmarshal JSON data into GenericClusterCredentials
@@ -279,6 +311,10 @@ func (src ClusterCredentials) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.GcpStaticClusterCredentials)
 	}
 
+	if src.GcpWorkloadIdentityFederationClusterCredentials != nil {
+		return json.Marshal(&src.GcpWorkloadIdentityFederationClusterCredentials)
+	}
+
 	if src.GenericClusterCredentials != nil {
 		return json.Marshal(&src.GenericClusterCredentials)
 	}
@@ -313,6 +349,10 @@ func (obj *ClusterCredentials) GetActualInstance() interface{} {
 
 	if obj.GcpStaticClusterCredentials != nil {
 		return obj.GcpStaticClusterCredentials
+	}
+
+	if obj.GcpWorkloadIdentityFederationClusterCredentials != nil {
+		return obj.GcpWorkloadIdentityFederationClusterCredentials
 	}
 
 	if obj.GenericClusterCredentials != nil {

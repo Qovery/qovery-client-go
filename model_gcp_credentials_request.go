@@ -16,148 +16,97 @@ import (
 	"fmt"
 )
 
-// checks if the GcpCredentialsRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &GcpCredentialsRequest{}
-
-// GcpCredentialsRequest struct for GcpCredentialsRequest
+// GcpCredentialsRequest - struct for GcpCredentialsRequest
 type GcpCredentialsRequest struct {
-	Name string `json:"name"`
-	// The json must be base64 encoded
-	GcpCredentials       string `json:"gcp_credentials"`
-	AdditionalProperties map[string]interface{}
+	GcpServiceAccountKeyCredentialsRequest          *GcpServiceAccountKeyCredentialsRequest
+	GcpWorkloadIdentityFederationCredentialsRequest *GcpWorkloadIdentityFederationCredentialsRequest
 }
 
-type _GcpCredentialsRequest GcpCredentialsRequest
-
-// NewGcpCredentialsRequest instantiates a new GcpCredentialsRequest object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewGcpCredentialsRequest(name string, gcpCredentials string) *GcpCredentialsRequest {
-	this := GcpCredentialsRequest{}
-	this.Name = name
-	this.GcpCredentials = gcpCredentials
-	return &this
-}
-
-// NewGcpCredentialsRequestWithDefaults instantiates a new GcpCredentialsRequest object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewGcpCredentialsRequestWithDefaults() *GcpCredentialsRequest {
-	this := GcpCredentialsRequest{}
-	return &this
-}
-
-// GetName returns the Name field value
-func (o *GcpCredentialsRequest) GetName() string {
-	if o == nil {
-		var ret string
-		return ret
+// GcpServiceAccountKeyCredentialsRequestAsGcpCredentialsRequest is a convenience function that returns GcpServiceAccountKeyCredentialsRequest wrapped in GcpCredentialsRequest
+func GcpServiceAccountKeyCredentialsRequestAsGcpCredentialsRequest(v *GcpServiceAccountKeyCredentialsRequest) GcpCredentialsRequest {
+	return GcpCredentialsRequest{
+		GcpServiceAccountKeyCredentialsRequest: v,
 	}
-
-	return o.Name
 }
 
-// GetNameOk returns a tuple with the Name field value
-// and a boolean to check if the value has been set.
-func (o *GcpCredentialsRequest) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// GcpWorkloadIdentityFederationCredentialsRequestAsGcpCredentialsRequest is a convenience function that returns GcpWorkloadIdentityFederationCredentialsRequest wrapped in GcpCredentialsRequest
+func GcpWorkloadIdentityFederationCredentialsRequestAsGcpCredentialsRequest(v *GcpWorkloadIdentityFederationCredentialsRequest) GcpCredentialsRequest {
+	return GcpCredentialsRequest{
+		GcpWorkloadIdentityFederationCredentialsRequest: v,
 	}
-	return &o.Name, true
 }
 
-// SetName sets field value
-func (o *GcpCredentialsRequest) SetName(v string) {
-	o.Name = v
-}
-
-// GetGcpCredentials returns the GcpCredentials field value
-func (o *GcpCredentialsRequest) GetGcpCredentials() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.GcpCredentials
-}
-
-// GetGcpCredentialsOk returns a tuple with the GcpCredentials field value
-// and a boolean to check if the value has been set.
-func (o *GcpCredentialsRequest) GetGcpCredentialsOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.GcpCredentials, true
-}
-
-// SetGcpCredentials sets field value
-func (o *GcpCredentialsRequest) SetGcpCredentials(v string) {
-	o.GcpCredentials = v
-}
-
-func (o GcpCredentialsRequest) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
-	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o GcpCredentialsRequest) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["name"] = o.Name
-	toSerialize["gcp_credentials"] = o.GcpCredentials
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
-	}
-
-	return toSerialize, nil
-}
-
-func (o *GcpCredentialsRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"name",
-		"gcp_credentials",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *GcpCredentialsRequest) UnmarshalJSON(data []byte) error {
+	var err error
+	match := 0
+	// try to unmarshal data into GcpServiceAccountKeyCredentialsRequest
+	err = json.Unmarshal(data, &dst.GcpServiceAccountKeyCredentialsRequest)
+	if err == nil {
+		jsonGcpServiceAccountKeyCredentialsRequest, _ := json.Marshal(dst.GcpServiceAccountKeyCredentialsRequest)
+		if string(jsonGcpServiceAccountKeyCredentialsRequest) == "{}" { // empty struct
+			dst.GcpServiceAccountKeyCredentialsRequest = nil
+		} else {
+			match++
 		}
+	} else {
+		dst.GcpServiceAccountKeyCredentialsRequest = nil
 	}
 
-	varGcpCredentialsRequest := _GcpCredentialsRequest{}
-
-	err = json.Unmarshal(data, &varGcpCredentialsRequest)
-
-	if err != nil {
-		return err
+	// try to unmarshal data into GcpWorkloadIdentityFederationCredentialsRequest
+	err = json.Unmarshal(data, &dst.GcpWorkloadIdentityFederationCredentialsRequest)
+	if err == nil {
+		jsonGcpWorkloadIdentityFederationCredentialsRequest, _ := json.Marshal(dst.GcpWorkloadIdentityFederationCredentialsRequest)
+		if string(jsonGcpWorkloadIdentityFederationCredentialsRequest) == "{}" { // empty struct
+			dst.GcpWorkloadIdentityFederationCredentialsRequest = nil
+		} else {
+			match++
+		}
+	} else {
+		dst.GcpWorkloadIdentityFederationCredentialsRequest = nil
 	}
 
-	*o = GcpCredentialsRequest(varGcpCredentialsRequest)
+	if match > 1 { // more than 1 match
+		// reset to nil
+		dst.GcpServiceAccountKeyCredentialsRequest = nil
+		dst.GcpWorkloadIdentityFederationCredentialsRequest = nil
 
-	additionalProperties := make(map[string]interface{})
+		return fmt.Errorf("data matches more than one schema in oneOf(GcpCredentialsRequest)")
+	} else if match == 1 {
+		return nil // exactly one match
+	} else { // no match
+		return fmt.Errorf("data failed to match schemas in oneOf(GcpCredentialsRequest)")
+	}
+}
 
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "name")
-		delete(additionalProperties, "gcp_credentials")
-		o.AdditionalProperties = additionalProperties
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src GcpCredentialsRequest) MarshalJSON() ([]byte, error) {
+	if src.GcpServiceAccountKeyCredentialsRequest != nil {
+		return json.Marshal(&src.GcpServiceAccountKeyCredentialsRequest)
 	}
 
-	return err
+	if src.GcpWorkloadIdentityFederationCredentialsRequest != nil {
+		return json.Marshal(&src.GcpWorkloadIdentityFederationCredentialsRequest)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *GcpCredentialsRequest) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.GcpServiceAccountKeyCredentialsRequest != nil {
+		return obj.GcpServiceAccountKeyCredentialsRequest
+	}
+
+	if obj.GcpWorkloadIdentityFederationCredentialsRequest != nil {
+		return obj.GcpWorkloadIdentityFederationCredentialsRequest
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableGcpCredentialsRequest struct {

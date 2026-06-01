@@ -192,7 +192,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
+	gcpCredentialsRequest := openapiclient.GcpCredentialsRequest{GcpServiceAccountKeyCredentialsRequest: openapiclient.NewGcpServiceAccountKeyCredentialsRequest("Name_example", "GcpCredentials_example")} // GcpCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -894,7 +894,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	credentialsId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Credentials ID
-	gcpCredentialsRequest := *openapiclient.NewGcpCredentialsRequest("Name_example", "GcpCredentials_example") // GcpCredentialsRequest |  (optional)
+	gcpCredentialsRequest := openapiclient.GcpCredentialsRequest{GcpServiceAccountKeyCredentialsRequest: openapiclient.NewGcpServiceAccountKeyCredentialsRequest("Name_example", "GcpCredentials_example")} // GcpCredentialsRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

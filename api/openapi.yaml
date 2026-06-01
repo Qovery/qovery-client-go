@@ -22490,6 +22490,7 @@ components:
           OTHER: '#/components/schemas/GenericClusterCredentials'
           AZURE: '#/components/schemas/AzureStaticClusterCredentials'
           GCP: '#/components/schemas/GcpStaticClusterCredentials'
+          GCP_WORKLOAD_IDENTITY_FEDERATION: '#/components/schemas/GcpWorkloadIdentityFederationClusterCredentials'
         propertyName: object_type
       oneOf:
       - $ref: '#/components/schemas/AwsStaticClusterCredentials'
@@ -22499,6 +22500,7 @@ components:
       - $ref: '#/components/schemas/EksAnywhereVsphereClusterCredentials'
       - $ref: '#/components/schemas/AzureStaticClusterCredentials'
       - $ref: '#/components/schemas/GcpStaticClusterCredentials'
+      - $ref: '#/components/schemas/GcpWorkloadIdentityFederationClusterCredentials'
     AwsStaticClusterCredentials:
       example:
         access_key_id: access_key_id
@@ -29994,11 +29996,21 @@ components:
       - EXTERNAL_SECRET
       type: string
     GcpCredentialsRequest:
+      oneOf:
+      - $ref: '#/components/schemas/GcpServiceAccountKeyCredentialsRequest'
+      - $ref: '#/components/schemas/GcpWorkloadIdentityFederationCredentialsRequest'
+    GcpServiceAccountKeyCredentialsRequest:
       example:
+        credential_type: SERVICE_ACCOUNT_KEY
         gcp_credentials: gcp_credentials
         name: name
       properties:
         name:
+          type: string
+        credential_type:
+          description: Optional explicit credential type.
+          enum:
+          - SERVICE_ACCOUNT_KEY
           type: string
         gcp_credentials:
           description: The json must be base64 encoded
@@ -30006,6 +30018,29 @@ components:
       required:
       - gcp_credentials
       - name
+      type: object
+    GcpWorkloadIdentityFederationCredentialsRequest:
+      properties:
+        name:
+          type: string
+        credential_type:
+          description: Optional explicit credential type.
+          enum:
+          - WORKLOAD_IDENTITY_FEDERATION
+          - WIF
+          type: string
+        service_account_email:
+          description: GCP service account email to impersonate.
+          example: qovery@customer-project.iam.gserviceaccount.com
+          type: string
+        workload_identity_provider_resource:
+          description: Full Workload Identity Provider resource.
+          example: projects/123456789/locations/global/workloadIdentityPools/qovery-pool/providers/qovery-aws
+          type: string
+      required:
+      - name
+      - service_account_email
+      - workload_identity_provider_resource
       type: object
     GenericObjectCurrentCost:
       properties:
@@ -38123,6 +38158,43 @@ components:
       type: object
       x-stoplight:
         id: qtvaepejqookw
+    GcpWorkloadIdentityFederationClusterCredentials:
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        object_type:
+          enum:
+          - GCP_WORKLOAD_IDENTITY_FEDERATION
+          type: string
+        project_id:
+          type: string
+        service_account_email:
+          type: string
+        workload_identity_project_number:
+          type: string
+        workload_identity_pool_id:
+          type: string
+        workload_identity_provider_id:
+          type: string
+        token_lifetime_seconds:
+          example: 14400
+          format: int32
+          type: integer
+      required:
+      - id
+      - name
+      - object_type
+      - project_id
+      - service_account_email
+      - token_lifetime_seconds
+      - workload_identity_pool_id
+      - workload_identity_project_number
+      - workload_identity_provider_id
+      title: GcpWorkloadIdentityFederationClusterCredentials
+      type: object
     AzureStaticClusterCredentials:
       properties:
         id:
