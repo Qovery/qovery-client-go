@@ -25,6 +25,8 @@ type ClusterRegion struct {
 	CountryCode string `json:"country_code"`
 	Country     string `json:"country"`
 	City        string `json:"city"`
+	// Whether ARM instance types are available in this region
+	ArmSupported *bool `json:"arm_supported,omitempty"`
 	// List of availability zones supported by this region
 	Zones                []string `json:"zones,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -149,6 +151,38 @@ func (o *ClusterRegion) SetCity(v string) {
 	o.City = v
 }
 
+// GetArmSupported returns the ArmSupported field value if set, zero value otherwise.
+func (o *ClusterRegion) GetArmSupported() bool {
+	if o == nil || IsNil(o.ArmSupported) {
+		var ret bool
+		return ret
+	}
+	return *o.ArmSupported
+}
+
+// GetArmSupportedOk returns a tuple with the ArmSupported field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRegion) GetArmSupportedOk() (*bool, bool) {
+	if o == nil || IsNil(o.ArmSupported) {
+		return nil, false
+	}
+	return o.ArmSupported, true
+}
+
+// HasArmSupported returns a boolean if a field has been set.
+func (o *ClusterRegion) HasArmSupported() bool {
+	if o != nil && !IsNil(o.ArmSupported) {
+		return true
+	}
+
+	return false
+}
+
+// SetArmSupported gets a reference to the given bool and assigns it to the ArmSupported field.
+func (o *ClusterRegion) SetArmSupported(v bool) {
+	o.ArmSupported = &v
+}
+
 // GetZones returns the Zones field value if set, zero value otherwise.
 func (o *ClusterRegion) GetZones() []string {
 	if o == nil || IsNil(o.Zones) {
@@ -195,6 +229,9 @@ func (o ClusterRegion) ToMap() (map[string]interface{}, error) {
 	toSerialize["country_code"] = o.CountryCode
 	toSerialize["country"] = o.Country
 	toSerialize["city"] = o.City
+	if !IsNil(o.ArmSupported) {
+		toSerialize["arm_supported"] = o.ArmSupported
+	}
 	if !IsNil(o.Zones) {
 		toSerialize["zones"] = o.Zones
 	}
@@ -248,6 +285,7 @@ func (o *ClusterRegion) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "country_code")
 		delete(additionalProperties, "country")
 		delete(additionalProperties, "city")
+		delete(additionalProperties, "arm_supported")
 		delete(additionalProperties, "zones")
 		o.AdditionalProperties = additionalProperties
 	}

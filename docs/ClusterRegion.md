@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CountryCode** | **string** |  | 
 **Country** | **string** |  | 
 **City** | **string** |  | 
+**ArmSupported** | Pointer to **bool** | Whether ARM instance types are available in this region | [optional] 
 **Zones** | Pointer to **[]string** | List of availability zones supported by this region | [optional] 
 
 ## Methods
@@ -108,6 +109,31 @@ and a boolean to check if the value has been set.
 
 SetCity sets City field to given value.
 
+
+### GetArmSupported
+
+`func (o *ClusterRegion) GetArmSupported() bool`
+
+GetArmSupported returns the ArmSupported field if non-nil, zero value otherwise.
+
+### GetArmSupportedOk
+
+`func (o *ClusterRegion) GetArmSupportedOk() (*bool, bool)`
+
+GetArmSupportedOk returns a tuple with the ArmSupported field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetArmSupported
+
+`func (o *ClusterRegion) SetArmSupported(v bool)`
+
+SetArmSupported sets ArmSupported field to given value.
+
+### HasArmSupported
+
+`func (o *ClusterRegion) HasArmSupported() bool`
+
+HasArmSupported returns a boolean if a field has been set.
 
 ### GetZones
 

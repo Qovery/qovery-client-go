@@ -21781,6 +21781,7 @@ components:
           - "1"
           - "2"
           - "3"
+          arm_supported: true
         - country_code: country_code
           country: country
           city: city
@@ -21789,6 +21790,7 @@ components:
           - "1"
           - "2"
           - "3"
+          arm_supported: true
         logo_url: logo_url
         name: name
         short_name: short_name
@@ -21824,6 +21826,7 @@ components:
             - "1"
             - "2"
             - "3"
+            arm_supported: true
           - country_code: country_code
             country: country
             city: city
@@ -21832,6 +21835,7 @@ components:
             - "1"
             - "2"
             - "3"
+            arm_supported: true
           logo_url: logo_url
           name: name
           short_name: short_name
@@ -21844,6 +21848,7 @@ components:
             - "1"
             - "2"
             - "3"
+            arm_supported: true
           - country_code: country_code
             country: country
             city: city
@@ -21852,6 +21857,7 @@ components:
             - "1"
             - "2"
             - "3"
+            arm_supported: true
           logo_url: logo_url
           name: name
           short_name: short_name
@@ -23063,6 +23069,7 @@ components:
         - "1"
         - "2"
         - "3"
+        arm_supported: true
       properties:
         name:
           type: string
@@ -23072,6 +23079,9 @@ components:
           type: string
         city:
           type: string
+        arm_supported:
+          description: Whether ARM instance types are available in this region
+          type: boolean
         zones:
           description: List of availability zones supported by this region
           example:
@@ -23098,6 +23108,7 @@ components:
           - "1"
           - "2"
           - "3"
+          arm_supported: true
         - country_code: country_code
           country: country
           city: city
@@ -23106,6 +23117,7 @@ components:
           - "1"
           - "2"
           - "3"
+          arm_supported: true
       properties:
         results:
           items:
