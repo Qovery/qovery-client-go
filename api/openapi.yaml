@@ -76,6 +76,7 @@ tags:
 - name: Helms
 - name: Backups
 - name: Billing
+- name: Blueprint Catalog
 - name: Cloud Provider
 - name: Cloud Provider Credentials
 - name: Clusters
@@ -3494,6 +3495,66 @@ paths:
       summary: Edit an organization webhook
       tags:
       - Organization Webhook
+  /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme:
+    get:
+      operationId: getBlueprintCatalogServiceReadme
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Cloud provider (e.g. aws, gcp, azure)"
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Service family (e.g. mysql, postgresql)"
+        explode: false
+        in: path
+        name: serviceFamily
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Service version (e.g. 8, 14)"
+        explode: false
+        in: path
+        name: serviceVersion
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/markdown:
+              schema:
+                type: string
+            text/plain:
+              schema:
+                type: string
+          description: README content in Markdown format
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "502":
+          description: Failed to fetch README from GitHub
+      summary: Get the README of a blueprint catalog service
+      tags:
+      - Blueprint Catalog
   /organization/{organizationId}/customRole:
     get:
       description: List organization custom roles
