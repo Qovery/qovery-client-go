@@ -132,6 +132,7 @@ tags:
 - name: Variable Main Calls
 - name: Helm Custom Domain
 - name: Lifecycle Template Main Calls
+- name: Blueprint Main Calls
 paths:
   /organization:
     get:
@@ -18611,6 +18612,40 @@ paths:
       - Alert Receivers
       x-stoplight:
         id: jqejmmiehaxlm
+  /organization/{organizationId}/blueprint/catalog:
+    get:
+      description: Retrieves the Qovery service catalog from the public GitHub repository
+        (Qovery/service-catalog). The catalog lists all available blueprints that
+        can be deployed.
+      operationId: getBlueprintCatalog
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintCatalogResponse'
+          description: Blueprint catalog
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "502":
+          description: Failed to fetch catalog from GitHub
+      summary: Get the blueprint service catalog
+      tags:
+      - Blueprint Main Calls
 components:
   parameters:
     alertReceiverId:
@@ -19092,6 +19127,123 @@ components:
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
+    BlueprintCatalogResponse:
+      example:
+        blueprints:
+        - majorVersions:
+          - serviceVersion: "17"
+            latestTag: aws/postgres/17/1.0.1
+          - serviceVersion: "17"
+            latestTag: aws/postgres/17/1.0.1
+          provider: aws
+          serviceFamily: postgres
+          kind: ServiceBlueprint
+          name: aws-rds-postgresql
+          icon: https://cdn.qovery.com/icons/postgresql.svg
+          description: description
+          categories:
+          - categories
+          - categories
+        - majorVersions:
+          - serviceVersion: "17"
+            latestTag: aws/postgres/17/1.0.1
+          - serviceVersion: "17"
+            latestTag: aws/postgres/17/1.0.1
+          provider: aws
+          serviceFamily: postgres
+          kind: ServiceBlueprint
+          name: aws-rds-postgresql
+          icon: https://cdn.qovery.com/icons/postgresql.svg
+          description: description
+          categories:
+          - categories
+          - categories
+        generatedAt: 2000-01-23T04:56:07.000+00:00
+        version: "1"
+      properties:
+        version:
+          example: "1"
+          type: string
+        generatedAt:
+          format: date-time
+          type: string
+        blueprints:
+          items:
+            $ref: '#/components/schemas/BlueprintItem'
+          type: array
+      required:
+      - blueprints
+      - generatedAt
+      - version
+      type: object
+    BlueprintItem:
+      example:
+        majorVersions:
+        - serviceVersion: "17"
+          latestTag: aws/postgres/17/1.0.1
+        - serviceVersion: "17"
+          latestTag: aws/postgres/17/1.0.1
+        provider: aws
+        serviceFamily: postgres
+        kind: ServiceBlueprint
+        name: aws-rds-postgresql
+        icon: https://cdn.qovery.com/icons/postgresql.svg
+        description: description
+        categories:
+        - categories
+        - categories
+      properties:
+        name:
+          example: aws-rds-postgresql
+          type: string
+        kind:
+          example: ServiceBlueprint
+          type: string
+        description:
+          type: string
+        icon:
+          example: https://cdn.qovery.com/icons/postgresql.svg
+          format: uri
+          type: string
+        categories:
+          items:
+            type: string
+          type: array
+        provider:
+          example: aws
+          type: string
+        serviceFamily:
+          example: postgres
+          type: string
+        majorVersions:
+          items:
+            $ref: '#/components/schemas/BlueprintMajorVersion'
+          type: array
+      required:
+      - categories
+      - description
+      - icon
+      - kind
+      - majorVersions
+      - name
+      - provider
+      - serviceFamily
+      type: object
+    BlueprintMajorVersion:
+      example:
+        serviceVersion: "17"
+        latestTag: aws/postgres/17/1.0.1
+      properties:
+        serviceVersion:
+          example: "17"
+          type: string
+        latestTag:
+          example: aws/postgres/17/1.0.1
+          type: string
+      required:
+      - latestTag
+      - serviceVersion
+      type: object
     ArgoCdCredentialsRequest:
       example:
         argocd_token: argocd_token
@@ -45504,3 +45656,6 @@ x-tagGroups:
   tags:
   - Alert Receivers
   - Alert Rules
+- name: Blueprint
+  tags:
+  - Blueprint Main Calls

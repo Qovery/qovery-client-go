@@ -81,6 +81,8 @@ type APIClient struct {
 
 	BillingAPI *BillingAPIService
 
+	BlueprintMainCallsAPI *BlueprintMainCallsAPIService
+
 	CloudProviderAPI *CloudProviderAPIService
 
 	CloudProviderCredentialsAPI *CloudProviderCredentialsAPIService
@@ -272,6 +274,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ArgoCDAPI = (*ArgoCDAPIService)(&c.common)
 	c.BackupsAPI = (*BackupsAPIService)(&c.common)
 	c.BillingAPI = (*BillingAPIService)(&c.common)
+	c.BlueprintMainCallsAPI = (*BlueprintMainCallsAPIService)(&c.common)
 	c.CloudProviderAPI = (*CloudProviderAPIService)(&c.common)
 	c.CloudProviderCredentialsAPI = (*CloudProviderCredentialsAPIService)(&c.common)
 	c.ClustersAPI = (*ClustersAPIService)(&c.common)

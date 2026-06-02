@@ -19,6 +19,7 @@ api_applications.go
 api_argo_cd.go
 api_backups.go
 api_billing.go
+api_blueprint_main_calls.go
 api_cloud_provider.go
 api_cloud_provider_credentials.go
 api_clusters.go
@@ -212,6 +213,10 @@ docs/BillingExternalId.md
 docs/BillingInfo.md
 docs/BillingInfoRequest.md
 docs/BillingStatus.md
+docs/BlueprintCatalogResponse.md
+docs/BlueprintItem.md
+docs/BlueprintMainCallsAPI.md
+docs/BlueprintMajorVersion.md
 docs/Budget.md
 docs/BuildModeEnum.md
 docs/CancelEnvironmentDeploymentRequest.md
@@ -1052,6 +1057,9 @@ model_billing_external_id.go
 model_billing_info.go
 model_billing_info_request.go
 model_billing_status.go
+model_blueprint_catalog_response.go
+model_blueprint_item.go
+model_blueprint_major_version.go
 model_budget.go
 model_build_mode_enum.go
 model_cancel_environment_deployment_request.go
@@ -1731,6 +1739,7 @@ test/api_applications_test.go
 test/api_argo_cd_test.go
 test/api_backups_test.go
 test/api_billing_test.go
+test/api_blueprint_main_calls_test.go
 test/api_cloud_provider_credentials_test.go
 test/api_cloud_provider_test.go
 test/api_clusters_test.go

@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**ListOrganizationCreditCards**](docs/BillingAPI.md#listorganizationcreditcards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
 *BillingAPI* | [**ListOrganizationInvoice**](docs/BillingAPI.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 *BillingAPI* | [**OrganizationDownloadAllInvoices**](docs/BillingAPI.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
+*BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
 *CloudProviderAPI* | [**ListAWSFeatures**](docs/CloudProviderAPI.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderAPI* | [**ListAWSInstanceType**](docs/CloudProviderAPI.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
@@ -696,6 +697,9 @@ Class | Method | HTTP request | Description
  - [BillingInfo](docs/BillingInfo.md)
  - [BillingInfoRequest](docs/BillingInfoRequest.md)
  - [BillingStatus](docs/BillingStatus.md)
+ - [BlueprintCatalogResponse](docs/BlueprintCatalogResponse.md)
+ - [BlueprintItem](docs/BlueprintItem.md)
+ - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
