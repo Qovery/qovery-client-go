@@ -20,17 +20,24 @@ var _ MappedNullable = &ContainerRegistryResponseAllOfConfig{}
 
 // ContainerRegistryResponseAllOfConfig struct for ContainerRegistryResponseAllOfConfig
 type ContainerRegistryResponseAllOfConfig struct {
-	Username                 *string `json:"username,omitempty"`
-	Region                   *string `json:"region,omitempty"`
-	ScalewayAccessKey        *string `json:"scaleway_access_key,omitempty"`
-	ScalewayProjectId        *string `json:"scaleway_project_id,omitempty"`
-	AccessKeyId              *string `json:"access_key_id,omitempty"`
-	RoleArn                  *string `json:"role_arn,omitempty"`
-	AzureTenantId            *string `json:"azure_tenant_id,omitempty"`
-	AzureSubscriptionId      *string `json:"azure_subscription_id,omitempty"`
-	AzureApplicationId       *string `json:"azure_application_id,omitempty"`
-	AzureApplicationObjectId *string `json:"azure_application_object_id,omitempty"`
-	AdditionalProperties     map[string]interface{}
+	Username                      *string `json:"username,omitempty"`
+	Region                        *string `json:"region,omitempty"`
+	ScalewayAccessKey             *string `json:"scaleway_access_key,omitempty"`
+	ScalewayProjectId             *string `json:"scaleway_project_id,omitempty"`
+	AccessKeyId                   *string `json:"access_key_id,omitempty"`
+	RoleArn                       *string `json:"role_arn,omitempty"`
+	GcpCredentialsType            *string `json:"gcp_credentials_type,omitempty"`
+	ProjectId                     *string `json:"project_id,omitempty"`
+	ServiceAccountEmail           *string `json:"service_account_email,omitempty"`
+	WorkloadIdentityProjectNumber *string `json:"workload_identity_project_number,omitempty"`
+	WorkloadIdentityPoolId        *string `json:"workload_identity_pool_id,omitempty"`
+	WorkloadIdentityProviderId    *string `json:"workload_identity_provider_id,omitempty"`
+	TokenLifetimeSeconds          *int32  `json:"token_lifetime_seconds,omitempty"`
+	AzureTenantId                 *string `json:"azure_tenant_id,omitempty"`
+	AzureSubscriptionId           *string `json:"azure_subscription_id,omitempty"`
+	AzureApplicationId            *string `json:"azure_application_id,omitempty"`
+	AzureApplicationObjectId      *string `json:"azure_application_object_id,omitempty"`
+	AdditionalProperties          map[string]interface{}
 }
 
 type _ContainerRegistryResponseAllOfConfig ContainerRegistryResponseAllOfConfig
@@ -244,6 +251,230 @@ func (o *ContainerRegistryResponseAllOfConfig) SetRoleArn(v string) {
 	o.RoleArn = &v
 }
 
+// GetGcpCredentialsType returns the GcpCredentialsType field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetGcpCredentialsType() string {
+	if o == nil || IsNil(o.GcpCredentialsType) {
+		var ret string
+		return ret
+	}
+	return *o.GcpCredentialsType
+}
+
+// GetGcpCredentialsTypeOk returns a tuple with the GcpCredentialsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetGcpCredentialsTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpCredentialsType) {
+		return nil, false
+	}
+	return o.GcpCredentialsType, true
+}
+
+// HasGcpCredentialsType returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasGcpCredentialsType() bool {
+	if o != nil && !IsNil(o.GcpCredentialsType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpCredentialsType gets a reference to the given string and assigns it to the GcpCredentialsType field.
+func (o *ContainerRegistryResponseAllOfConfig) SetGcpCredentialsType(v string) {
+	o.GcpCredentialsType = &v
+}
+
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
+// GetServiceAccountEmail returns the ServiceAccountEmail field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetServiceAccountEmail() string {
+	if o == nil || IsNil(o.ServiceAccountEmail) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceAccountEmail
+}
+
+// GetServiceAccountEmailOk returns a tuple with the ServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetServiceAccountEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceAccountEmail) {
+		return nil, false
+	}
+	return o.ServiceAccountEmail, true
+}
+
+// HasServiceAccountEmail returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasServiceAccountEmail() bool {
+	if o != nil && !IsNil(o.ServiceAccountEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAccountEmail gets a reference to the given string and assigns it to the ServiceAccountEmail field.
+func (o *ContainerRegistryResponseAllOfConfig) SetServiceAccountEmail(v string) {
+	o.ServiceAccountEmail = &v
+}
+
+// GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProjectNumber() string {
+	if o == nil || IsNil(o.WorkloadIdentityProjectNumber) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityProjectNumber
+}
+
+// GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProjectNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityProjectNumber) {
+		return nil, false
+	}
+	return o.WorkloadIdentityProjectNumber, true
+}
+
+// HasWorkloadIdentityProjectNumber returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityProjectNumber() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityProjectNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityProjectNumber gets a reference to the given string and assigns it to the WorkloadIdentityProjectNumber field.
+func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityProjectNumber(v string) {
+	o.WorkloadIdentityProjectNumber = &v
+}
+
+// GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityPoolId() string {
+	if o == nil || IsNil(o.WorkloadIdentityPoolId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityPoolId
+}
+
+// GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityPoolIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityPoolId) {
+		return nil, false
+	}
+	return o.WorkloadIdentityPoolId, true
+}
+
+// HasWorkloadIdentityPoolId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityPoolId() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityPoolId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityPoolId gets a reference to the given string and assigns it to the WorkloadIdentityPoolId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityPoolId(v string) {
+	o.WorkloadIdentityPoolId = &v
+}
+
+// GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProviderId() string {
+	if o == nil || IsNil(o.WorkloadIdentityProviderId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityProviderId
+}
+
+// GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProviderIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityProviderId) {
+		return nil, false
+	}
+	return o.WorkloadIdentityProviderId, true
+}
+
+// HasWorkloadIdentityProviderId returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityProviderId() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityProviderId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityProviderId gets a reference to the given string and assigns it to the WorkloadIdentityProviderId field.
+func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityProviderId(v string) {
+	o.WorkloadIdentityProviderId = &v
+}
+
+// GetTokenLifetimeSeconds returns the TokenLifetimeSeconds field value if set, zero value otherwise.
+func (o *ContainerRegistryResponseAllOfConfig) GetTokenLifetimeSeconds() int32 {
+	if o == nil || IsNil(o.TokenLifetimeSeconds) {
+		var ret int32
+		return ret
+	}
+	return *o.TokenLifetimeSeconds
+}
+
+// GetTokenLifetimeSecondsOk returns a tuple with the TokenLifetimeSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryResponseAllOfConfig) GetTokenLifetimeSecondsOk() (*int32, bool) {
+	if o == nil || IsNil(o.TokenLifetimeSeconds) {
+		return nil, false
+	}
+	return o.TokenLifetimeSeconds, true
+}
+
+// HasTokenLifetimeSeconds returns a boolean if a field has been set.
+func (o *ContainerRegistryResponseAllOfConfig) HasTokenLifetimeSeconds() bool {
+	if o != nil && !IsNil(o.TokenLifetimeSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenLifetimeSeconds gets a reference to the given int32 and assigns it to the TokenLifetimeSeconds field.
+func (o *ContainerRegistryResponseAllOfConfig) SetTokenLifetimeSeconds(v int32) {
+	o.TokenLifetimeSeconds = &v
+}
+
 // GetAzureTenantId returns the AzureTenantId field value if set, zero value otherwise.
 func (o *ContainerRegistryResponseAllOfConfig) GetAzureTenantId() string {
 	if o == nil || IsNil(o.AzureTenantId) {
@@ -400,6 +631,27 @@ func (o ContainerRegistryResponseAllOfConfig) ToMap() (map[string]interface{}, e
 	if !IsNil(o.RoleArn) {
 		toSerialize["role_arn"] = o.RoleArn
 	}
+	if !IsNil(o.GcpCredentialsType) {
+		toSerialize["gcp_credentials_type"] = o.GcpCredentialsType
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.ServiceAccountEmail) {
+		toSerialize["service_account_email"] = o.ServiceAccountEmail
+	}
+	if !IsNil(o.WorkloadIdentityProjectNumber) {
+		toSerialize["workload_identity_project_number"] = o.WorkloadIdentityProjectNumber
+	}
+	if !IsNil(o.WorkloadIdentityPoolId) {
+		toSerialize["workload_identity_pool_id"] = o.WorkloadIdentityPoolId
+	}
+	if !IsNil(o.WorkloadIdentityProviderId) {
+		toSerialize["workload_identity_provider_id"] = o.WorkloadIdentityProviderId
+	}
+	if !IsNil(o.TokenLifetimeSeconds) {
+		toSerialize["token_lifetime_seconds"] = o.TokenLifetimeSeconds
+	}
 	if !IsNil(o.AzureTenantId) {
 		toSerialize["azure_tenant_id"] = o.AzureTenantId
 	}
@@ -440,6 +692,13 @@ func (o *ContainerRegistryResponseAllOfConfig) UnmarshalJSON(data []byte) (err e
 		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "access_key_id")
 		delete(additionalProperties, "role_arn")
+		delete(additionalProperties, "gcp_credentials_type")
+		delete(additionalProperties, "project_id")
+		delete(additionalProperties, "service_account_email")
+		delete(additionalProperties, "workload_identity_project_number")
+		delete(additionalProperties, "workload_identity_pool_id")
+		delete(additionalProperties, "workload_identity_provider_id")
+		delete(additionalProperties, "token_lifetime_seconds")
 		delete(additionalProperties, "azure_tenant_id")
 		delete(additionalProperties, "azure_subscription_id")
 		delete(additionalProperties, "azure_application_id")

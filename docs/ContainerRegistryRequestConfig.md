@@ -10,7 +10,14 @@ Name | Type | Description | Notes
 **ScalewayAccessKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewaySecretKey** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
 **ScalewayProjectId** | Pointer to **string** | Required if kind is &#x60;SCALEWAY_CR&#x60; | [optional] 
-**JsonCredentials** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; | [optional] 
+**JsonCredentials** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60;. For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type. | [optional] 
+**GcpCredentialsType** | Pointer to **string** | For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type. | [optional] 
+**ProjectId** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
+**ServiceAccountEmail** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
+**WorkloadIdentityProjectNumber** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
+**WorkloadIdentityPoolId** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
+**WorkloadIdentityProviderId** | Pointer to **string** | Required if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
+**TokenLifetimeSeconds** | Pointer to **int32** | Optional if kind is &#x60;GCP_ARTIFACT_REGISTRY&#x60; and gcp_credentials_type is &#x60;workload_identity_federation&#x60; | [optional] 
 **Username** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **Password** | Pointer to **string** | optional, for kind &#x60;DOCKER_HUB&#x60;   We encourage you to set credentials for Docker Hub due to the limits on the pull rate  | [optional] 
 **RoleArn** | Pointer to **string** | For ECR, you can either set a static access_key or use a role arn that we are going to assume | [optional] 
@@ -210,6 +217,181 @@ SetJsonCredentials sets JsonCredentials field to given value.
 `func (o *ContainerRegistryRequestConfig) HasJsonCredentials() bool`
 
 HasJsonCredentials returns a boolean if a field has been set.
+
+### GetGcpCredentialsType
+
+`func (o *ContainerRegistryRequestConfig) GetGcpCredentialsType() string`
+
+GetGcpCredentialsType returns the GcpCredentialsType field if non-nil, zero value otherwise.
+
+### GetGcpCredentialsTypeOk
+
+`func (o *ContainerRegistryRequestConfig) GetGcpCredentialsTypeOk() (*string, bool)`
+
+GetGcpCredentialsTypeOk returns a tuple with the GcpCredentialsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpCredentialsType
+
+`func (o *ContainerRegistryRequestConfig) SetGcpCredentialsType(v string)`
+
+SetGcpCredentialsType sets GcpCredentialsType field to given value.
+
+### HasGcpCredentialsType
+
+`func (o *ContainerRegistryRequestConfig) HasGcpCredentialsType() bool`
+
+HasGcpCredentialsType returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *ContainerRegistryRequestConfig) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *ContainerRegistryRequestConfig) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *ContainerRegistryRequestConfig) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
+
+### GetServiceAccountEmail
+
+`func (o *ContainerRegistryRequestConfig) GetServiceAccountEmail() string`
+
+GetServiceAccountEmail returns the ServiceAccountEmail field if non-nil, zero value otherwise.
+
+### GetServiceAccountEmailOk
+
+`func (o *ContainerRegistryRequestConfig) GetServiceAccountEmailOk() (*string, bool)`
+
+GetServiceAccountEmailOk returns a tuple with the ServiceAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccountEmail
+
+`func (o *ContainerRegistryRequestConfig) SetServiceAccountEmail(v string)`
+
+SetServiceAccountEmail sets ServiceAccountEmail field to given value.
+
+### HasServiceAccountEmail
+
+`func (o *ContainerRegistryRequestConfig) HasServiceAccountEmail() bool`
+
+HasServiceAccountEmail returns a boolean if a field has been set.
+
+### GetWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProjectNumber() string`
+
+GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityProjectNumberOk
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProjectNumberOk() (*string, bool)`
+
+GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityProjectNumber(v string)`
+
+SetWorkloadIdentityProjectNumber sets WorkloadIdentityProjectNumber field to given value.
+
+### HasWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityProjectNumber() bool`
+
+HasWorkloadIdentityProjectNumber returns a boolean if a field has been set.
+
+### GetWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityPoolId() string`
+
+GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityPoolIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityPoolIdOk() (*string, bool)`
+
+GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityPoolId(v string)`
+
+SetWorkloadIdentityPoolId sets WorkloadIdentityPoolId field to given value.
+
+### HasWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityPoolId() bool`
+
+HasWorkloadIdentityPoolId returns a boolean if a field has been set.
+
+### GetWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProviderId() string`
+
+GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityProviderIdOk
+
+`func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProviderIdOk() (*string, bool)`
+
+GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityProviderId(v string)`
+
+SetWorkloadIdentityProviderId sets WorkloadIdentityProviderId field to given value.
+
+### HasWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityProviderId() bool`
+
+HasWorkloadIdentityProviderId returns a boolean if a field has been set.
+
+### GetTokenLifetimeSeconds
+
+`func (o *ContainerRegistryRequestConfig) GetTokenLifetimeSeconds() int32`
+
+GetTokenLifetimeSeconds returns the TokenLifetimeSeconds field if non-nil, zero value otherwise.
+
+### GetTokenLifetimeSecondsOk
+
+`func (o *ContainerRegistryRequestConfig) GetTokenLifetimeSecondsOk() (*int32, bool)`
+
+GetTokenLifetimeSecondsOk returns a tuple with the TokenLifetimeSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenLifetimeSeconds
+
+`func (o *ContainerRegistryRequestConfig) SetTokenLifetimeSeconds(v int32)`
+
+SetTokenLifetimeSeconds sets TokenLifetimeSeconds field to given value.
+
+### HasTokenLifetimeSeconds
+
+`func (o *ContainerRegistryRequestConfig) HasTokenLifetimeSeconds() bool`
+
+HasTokenLifetimeSeconds returns a boolean if a field has been set.
 
 ### GetUsername
 

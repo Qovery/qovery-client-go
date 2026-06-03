@@ -24728,15 +24728,22 @@ components:
         description: description
         config:
           access_key_id: access_key_id
+          secret_access_key: secret_access_key
+          gcp_credentials_type: workload_identity_federation
+          token_lifetime_seconds: 14400
+          scaleway_secret_key: scaleway_secret_key
+          scaleway_access_key: scaleway_access_key
+          workload_identity_pool_id: workload_identity_pool_id
+          scaleway_project_id: scaleway_project_id
+          workload_identity_project_number: workload_identity_project_number
           password: password
           azure_subscription_id: azure_subscription_id
           role_arn: role_arn
+          project_id: project_id
           json_credentials: json_credentials
-          secret_access_key: secret_access_key
-          scaleway_secret_key: scaleway_secret_key
+          workload_identity_provider_id: workload_identity_provider_id
           region: region
-          scaleway_access_key: scaleway_access_key
-          scaleway_project_id: scaleway_project_id
+          service_account_email: service_account_email
           username: username
           azure_tenant_id: azure_tenant_id
         url: https://openapi-generator.tech
@@ -24799,14 +24806,21 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config:
           access_key_id: access_key_id
-          azure_subscription_id: azure_subscription_id
-          role_arn: role_arn
-          region: region
+          gcp_credentials_type: workload_identity_federation
+          token_lifetime_seconds: 14400
           scaleway_access_key: scaleway_access_key
+          workload_identity_pool_id: workload_identity_pool_id
           azure_application_id: azure_application_id
           azure_application_object_id: azure_application_object_id
-          username: username
           scaleway_project_id: scaleway_project_id
+          workload_identity_project_number: workload_identity_project_number
+          azure_subscription_id: azure_subscription_id
+          role_arn: role_arn
+          project_id: project_id
+          workload_identity_provider_id: workload_identity_provider_id
+          region: region
+          service_account_email: service_account_email
+          username: username
           azure_tenant_id: azure_tenant_id
         url: url
     ContainerRegistryProviderDetailsResponse:
@@ -24847,14 +24861,21 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
-            azure_subscription_id: azure_subscription_id
-            role_arn: role_arn
-            region: region
+            gcp_credentials_type: workload_identity_federation
+            token_lifetime_seconds: 14400
             scaleway_access_key: scaleway_access_key
+            workload_identity_pool_id: workload_identity_pool_id
             azure_application_id: azure_application_id
             azure_application_object_id: azure_application_object_id
-            username: username
             scaleway_project_id: scaleway_project_id
+            workload_identity_project_number: workload_identity_project_number
+            azure_subscription_id: azure_subscription_id
+            role_arn: role_arn
+            project_id: project_id
+            workload_identity_provider_id: workload_identity_provider_id
+            region: region
+            service_account_email: service_account_email
+            username: username
             azure_tenant_id: azure_tenant_id
           url: url
         - associated_services_count: 0
@@ -24869,14 +24890,21 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
-            azure_subscription_id: azure_subscription_id
-            role_arn: role_arn
-            region: region
+            gcp_credentials_type: workload_identity_federation
+            token_lifetime_seconds: 14400
             scaleway_access_key: scaleway_access_key
+            workload_identity_pool_id: workload_identity_pool_id
             azure_application_id: azure_application_id
             azure_application_object_id: azure_application_object_id
-            username: username
             scaleway_project_id: scaleway_project_id
+            workload_identity_project_number: workload_identity_project_number
+            azure_subscription_id: azure_subscription_id
+            role_arn: role_arn
+            project_id: project_id
+            workload_identity_provider_id: workload_identity_provider_id
+            region: region
+            service_account_email: service_account_email
+            username: username
             azure_tenant_id: azure_tenant_id
           url: url
       properties:
@@ -43425,15 +43453,22 @@ components:
         * `DOCR` is not supported anymore
       example:
         access_key_id: access_key_id
+        secret_access_key: secret_access_key
+        gcp_credentials_type: workload_identity_federation
+        token_lifetime_seconds: 14400
+        scaleway_secret_key: scaleway_secret_key
+        scaleway_access_key: scaleway_access_key
+        workload_identity_pool_id: workload_identity_pool_id
+        scaleway_project_id: scaleway_project_id
+        workload_identity_project_number: workload_identity_project_number
         password: password
         azure_subscription_id: azure_subscription_id
         role_arn: role_arn
+        project_id: project_id
         json_credentials: json_credentials
-        secret_access_key: secret_access_key
-        scaleway_secret_key: scaleway_secret_key
+        workload_identity_provider_id: workload_identity_provider_id
         region: region
-        scaleway_access_key: scaleway_access_key
-        scaleway_project_id: scaleway_project_id
+        service_account_email: service_account_email
         username: username
         azure_tenant_id: azure_tenant_id
       properties:
@@ -43458,8 +43493,43 @@ components:
           x-stoplight:
             id: eomu5mjvhi6uu
         json_credentials:
-          description: Required if kind is `GCP_ARTIFACT_REGISTRY`
+          description: "Required if kind is `GCP_ARTIFACT_REGISTRY`. For GCP Artifact\
+            \ Registry, you can either set a service account JSON key with json_credentials\
+            \ or use Workload Identity Federation with gcp_credentials_type."
           type: string
+        gcp_credentials_type:
+          description: "For GCP Artifact Registry, you can either set a service account\
+            \ JSON key with json_credentials or use Workload Identity Federation with\
+            \ gcp_credentials_type."
+          enum:
+          - workload_identity_federation
+          type: string
+        project_id:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          type: string
+        service_account_email:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          type: string
+        workload_identity_project_number:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          type: string
+        workload_identity_pool_id:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          type: string
+        workload_identity_provider_id:
+          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          type: string
+        token_lifetime_seconds:
+          description: Optional if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
+            is `workload_identity_federation`
+          example: 14400
+          format: int32
+          type: integer
         username:
           description: "optional, for kind `DOCKER_HUB`  \nWe encourage you to set\
             \ credentials for Docker Hub due to the limits on the pull rate\n"
@@ -43506,14 +43576,21 @@ components:
     ContainerRegistryResponse_allOf_config:
       example:
         access_key_id: access_key_id
-        azure_subscription_id: azure_subscription_id
-        role_arn: role_arn
-        region: region
+        gcp_credentials_type: workload_identity_federation
+        token_lifetime_seconds: 14400
         scaleway_access_key: scaleway_access_key
+        workload_identity_pool_id: workload_identity_pool_id
         azure_application_id: azure_application_id
         azure_application_object_id: azure_application_object_id
-        username: username
         scaleway_project_id: scaleway_project_id
+        workload_identity_project_number: workload_identity_project_number
+        azure_subscription_id: azure_subscription_id
+        role_arn: role_arn
+        project_id: project_id
+        workload_identity_provider_id: workload_identity_provider_id
+        region: region
+        service_account_email: service_account_email
+        username: username
         azure_tenant_id: azure_tenant_id
       properties:
         username:
@@ -43540,6 +43617,24 @@ components:
           type: string
           x-stoplight:
             id: iusxfgcmg72tl
+        gcp_credentials_type:
+          enum:
+          - workload_identity_federation
+          type: string
+        project_id:
+          type: string
+        service_account_email:
+          type: string
+        workload_identity_project_number:
+          type: string
+        workload_identity_pool_id:
+          type: string
+        workload_identity_provider_id:
+          type: string
+        token_lifetime_seconds:
+          example: 14400
+          format: int32
+          type: integer
         azure_tenant_id:
           type: string
           x-stoplight:

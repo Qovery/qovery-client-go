@@ -10,6 +10,13 @@ Name | Type | Description | Notes
 **ScalewayProjectId** | Pointer to **string** |  | [optional] 
 **AccessKeyId** | Pointer to **string** |  | [optional] 
 **RoleArn** | Pointer to **string** |  | [optional] 
+**GcpCredentialsType** | Pointer to **string** |  | [optional] 
+**ProjectId** | Pointer to **string** |  | [optional] 
+**ServiceAccountEmail** | Pointer to **string** |  | [optional] 
+**WorkloadIdentityProjectNumber** | Pointer to **string** |  | [optional] 
+**WorkloadIdentityPoolId** | Pointer to **string** |  | [optional] 
+**WorkloadIdentityProviderId** | Pointer to **string** |  | [optional] 
+**TokenLifetimeSeconds** | Pointer to **int32** |  | [optional] 
 **AzureTenantId** | Pointer to **string** |  | [optional] 
 **AzureSubscriptionId** | Pointer to **string** |  | [optional] 
 **AzureApplicationId** | Pointer to **string** |  | [optional] 
@@ -183,6 +190,181 @@ SetRoleArn sets RoleArn field to given value.
 `func (o *ContainerRegistryResponseAllOfConfig) HasRoleArn() bool`
 
 HasRoleArn returns a boolean if a field has been set.
+
+### GetGcpCredentialsType
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetGcpCredentialsType() string`
+
+GetGcpCredentialsType returns the GcpCredentialsType field if non-nil, zero value otherwise.
+
+### GetGcpCredentialsTypeOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetGcpCredentialsTypeOk() (*string, bool)`
+
+GetGcpCredentialsTypeOk returns a tuple with the GcpCredentialsType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGcpCredentialsType
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetGcpCredentialsType(v string)`
+
+SetGcpCredentialsType sets GcpCredentialsType field to given value.
+
+### HasGcpCredentialsType
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasGcpCredentialsType() bool`
+
+HasGcpCredentialsType returns a boolean if a field has been set.
+
+### GetProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetProjectId() string`
+
+GetProjectId returns the ProjectId field if non-nil, zero value otherwise.
+
+### GetProjectIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetProjectIdOk() (*string, bool)`
+
+GetProjectIdOk returns a tuple with the ProjectId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetProjectId(v string)`
+
+SetProjectId sets ProjectId field to given value.
+
+### HasProjectId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasProjectId() bool`
+
+HasProjectId returns a boolean if a field has been set.
+
+### GetServiceAccountEmail
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetServiceAccountEmail() string`
+
+GetServiceAccountEmail returns the ServiceAccountEmail field if non-nil, zero value otherwise.
+
+### GetServiceAccountEmailOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetServiceAccountEmailOk() (*string, bool)`
+
+GetServiceAccountEmailOk returns a tuple with the ServiceAccountEmail field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceAccountEmail
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetServiceAccountEmail(v string)`
+
+SetServiceAccountEmail sets ServiceAccountEmail field to given value.
+
+### HasServiceAccountEmail
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasServiceAccountEmail() bool`
+
+HasServiceAccountEmail returns a boolean if a field has been set.
+
+### GetWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProjectNumber() string`
+
+GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityProjectNumberOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProjectNumberOk() (*string, bool)`
+
+GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityProjectNumber(v string)`
+
+SetWorkloadIdentityProjectNumber sets WorkloadIdentityProjectNumber field to given value.
+
+### HasWorkloadIdentityProjectNumber
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityProjectNumber() bool`
+
+HasWorkloadIdentityProjectNumber returns a boolean if a field has been set.
+
+### GetWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityPoolId() string`
+
+GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityPoolIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityPoolIdOk() (*string, bool)`
+
+GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityPoolId(v string)`
+
+SetWorkloadIdentityPoolId sets WorkloadIdentityPoolId field to given value.
+
+### HasWorkloadIdentityPoolId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityPoolId() bool`
+
+HasWorkloadIdentityPoolId returns a boolean if a field has been set.
+
+### GetWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProviderId() string`
+
+GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field if non-nil, zero value otherwise.
+
+### GetWorkloadIdentityProviderIdOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetWorkloadIdentityProviderIdOk() (*string, bool)`
+
+GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetWorkloadIdentityProviderId(v string)`
+
+SetWorkloadIdentityProviderId sets WorkloadIdentityProviderId field to given value.
+
+### HasWorkloadIdentityProviderId
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasWorkloadIdentityProviderId() bool`
+
+HasWorkloadIdentityProviderId returns a boolean if a field has been set.
+
+### GetTokenLifetimeSeconds
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetTokenLifetimeSeconds() int32`
+
+GetTokenLifetimeSeconds returns the TokenLifetimeSeconds field if non-nil, zero value otherwise.
+
+### GetTokenLifetimeSecondsOk
+
+`func (o *ContainerRegistryResponseAllOfConfig) GetTokenLifetimeSecondsOk() (*int32, bool)`
+
+GetTokenLifetimeSecondsOk returns a tuple with the TokenLifetimeSeconds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTokenLifetimeSeconds
+
+`func (o *ContainerRegistryResponseAllOfConfig) SetTokenLifetimeSeconds(v int32)`
+
+SetTokenLifetimeSeconds sets TokenLifetimeSeconds field to given value.
+
+### HasTokenLifetimeSeconds
+
+`func (o *ContainerRegistryResponseAllOfConfig) HasTokenLifetimeSeconds() bool`
+
+HasTokenLifetimeSeconds returns a boolean if a field has been set.
 
 ### GetAzureTenantId
 

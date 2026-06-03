@@ -32,8 +32,22 @@ type ContainerRegistryRequestConfig struct {
 	ScalewaySecretKey *string `json:"scaleway_secret_key,omitempty"`
 	// Required if kind is `SCALEWAY_CR`
 	ScalewayProjectId *string `json:"scaleway_project_id,omitempty"`
-	// Required if kind is `GCP_ARTIFACT_REGISTRY`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY`. For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type.
 	JsonCredentials *string `json:"json_credentials,omitempty"`
+	// For GCP Artifact Registry, you can either set a service account JSON key with json_credentials or use Workload Identity Federation with gcp_credentials_type.
+	GcpCredentialsType *string `json:"gcp_credentials_type,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	ProjectId *string `json:"project_id,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	ServiceAccountEmail *string `json:"service_account_email,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	WorkloadIdentityProjectNumber *string `json:"workload_identity_project_number,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	WorkloadIdentityPoolId *string `json:"workload_identity_pool_id,omitempty"`
+	// Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	WorkloadIdentityProviderId *string `json:"workload_identity_provider_id,omitempty"`
+	// Optional if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type is `workload_identity_federation`
+	TokenLifetimeSeconds *int32 `json:"token_lifetime_seconds,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
 	Username *string `json:"username,omitempty"`
 	// optional, for kind `DOCKER_HUB`   We encourage you to set credentials for Docker Hub due to the limits on the pull rate
@@ -290,6 +304,230 @@ func (o *ContainerRegistryRequestConfig) SetJsonCredentials(v string) {
 	o.JsonCredentials = &v
 }
 
+// GetGcpCredentialsType returns the GcpCredentialsType field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetGcpCredentialsType() string {
+	if o == nil || IsNil(o.GcpCredentialsType) {
+		var ret string
+		return ret
+	}
+	return *o.GcpCredentialsType
+}
+
+// GetGcpCredentialsTypeOk returns a tuple with the GcpCredentialsType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetGcpCredentialsTypeOk() (*string, bool) {
+	if o == nil || IsNil(o.GcpCredentialsType) {
+		return nil, false
+	}
+	return o.GcpCredentialsType, true
+}
+
+// HasGcpCredentialsType returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasGcpCredentialsType() bool {
+	if o != nil && !IsNil(o.GcpCredentialsType) {
+		return true
+	}
+
+	return false
+}
+
+// SetGcpCredentialsType gets a reference to the given string and assigns it to the GcpCredentialsType field.
+func (o *ContainerRegistryRequestConfig) SetGcpCredentialsType(v string) {
+	o.GcpCredentialsType = &v
+}
+
+// GetProjectId returns the ProjectId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetProjectId() string {
+	if o == nil || IsNil(o.ProjectId) {
+		var ret string
+		return ret
+	}
+	return *o.ProjectId
+}
+
+// GetProjectIdOk returns a tuple with the ProjectId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetProjectIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ProjectId) {
+		return nil, false
+	}
+	return o.ProjectId, true
+}
+
+// HasProjectId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasProjectId() bool {
+	if o != nil && !IsNil(o.ProjectId) {
+		return true
+	}
+
+	return false
+}
+
+// SetProjectId gets a reference to the given string and assigns it to the ProjectId field.
+func (o *ContainerRegistryRequestConfig) SetProjectId(v string) {
+	o.ProjectId = &v
+}
+
+// GetServiceAccountEmail returns the ServiceAccountEmail field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetServiceAccountEmail() string {
+	if o == nil || IsNil(o.ServiceAccountEmail) {
+		var ret string
+		return ret
+	}
+	return *o.ServiceAccountEmail
+}
+
+// GetServiceAccountEmailOk returns a tuple with the ServiceAccountEmail field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetServiceAccountEmailOk() (*string, bool) {
+	if o == nil || IsNil(o.ServiceAccountEmail) {
+		return nil, false
+	}
+	return o.ServiceAccountEmail, true
+}
+
+// HasServiceAccountEmail returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasServiceAccountEmail() bool {
+	if o != nil && !IsNil(o.ServiceAccountEmail) {
+		return true
+	}
+
+	return false
+}
+
+// SetServiceAccountEmail gets a reference to the given string and assigns it to the ServiceAccountEmail field.
+func (o *ContainerRegistryRequestConfig) SetServiceAccountEmail(v string) {
+	o.ServiceAccountEmail = &v
+}
+
+// GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProjectNumber() string {
+	if o == nil || IsNil(o.WorkloadIdentityProjectNumber) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityProjectNumber
+}
+
+// GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProjectNumberOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityProjectNumber) {
+		return nil, false
+	}
+	return o.WorkloadIdentityProjectNumber, true
+}
+
+// HasWorkloadIdentityProjectNumber returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityProjectNumber() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityProjectNumber) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityProjectNumber gets a reference to the given string and assigns it to the WorkloadIdentityProjectNumber field.
+func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityProjectNumber(v string) {
+	o.WorkloadIdentityProjectNumber = &v
+}
+
+// GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityPoolId() string {
+	if o == nil || IsNil(o.WorkloadIdentityPoolId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityPoolId
+}
+
+// GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityPoolIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityPoolId) {
+		return nil, false
+	}
+	return o.WorkloadIdentityPoolId, true
+}
+
+// HasWorkloadIdentityPoolId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityPoolId() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityPoolId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityPoolId gets a reference to the given string and assigns it to the WorkloadIdentityPoolId field.
+func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityPoolId(v string) {
+	o.WorkloadIdentityPoolId = &v
+}
+
+// GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProviderId() string {
+	if o == nil || IsNil(o.WorkloadIdentityProviderId) {
+		var ret string
+		return ret
+	}
+	return *o.WorkloadIdentityProviderId
+}
+
+// GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetWorkloadIdentityProviderIdOk() (*string, bool) {
+	if o == nil || IsNil(o.WorkloadIdentityProviderId) {
+		return nil, false
+	}
+	return o.WorkloadIdentityProviderId, true
+}
+
+// HasWorkloadIdentityProviderId returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasWorkloadIdentityProviderId() bool {
+	if o != nil && !IsNil(o.WorkloadIdentityProviderId) {
+		return true
+	}
+
+	return false
+}
+
+// SetWorkloadIdentityProviderId gets a reference to the given string and assigns it to the WorkloadIdentityProviderId field.
+func (o *ContainerRegistryRequestConfig) SetWorkloadIdentityProviderId(v string) {
+	o.WorkloadIdentityProviderId = &v
+}
+
+// GetTokenLifetimeSeconds returns the TokenLifetimeSeconds field value if set, zero value otherwise.
+func (o *ContainerRegistryRequestConfig) GetTokenLifetimeSeconds() int32 {
+	if o == nil || IsNil(o.TokenLifetimeSeconds) {
+		var ret int32
+		return ret
+	}
+	return *o.TokenLifetimeSeconds
+}
+
+// GetTokenLifetimeSecondsOk returns a tuple with the TokenLifetimeSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRegistryRequestConfig) GetTokenLifetimeSecondsOk() (*int32, bool) {
+	if o == nil || IsNil(o.TokenLifetimeSeconds) {
+		return nil, false
+	}
+	return o.TokenLifetimeSeconds, true
+}
+
+// HasTokenLifetimeSeconds returns a boolean if a field has been set.
+func (o *ContainerRegistryRequestConfig) HasTokenLifetimeSeconds() bool {
+	if o != nil && !IsNil(o.TokenLifetimeSeconds) {
+		return true
+	}
+
+	return false
+}
+
+// SetTokenLifetimeSeconds gets a reference to the given int32 and assigns it to the TokenLifetimeSeconds field.
+func (o *ContainerRegistryRequestConfig) SetTokenLifetimeSeconds(v int32) {
+	o.TokenLifetimeSeconds = &v
+}
+
 // GetUsername returns the Username field value if set, zero value otherwise.
 func (o *ContainerRegistryRequestConfig) GetUsername() string {
 	if o == nil || IsNil(o.Username) {
@@ -481,6 +719,27 @@ func (o ContainerRegistryRequestConfig) ToMap() (map[string]interface{}, error) 
 	if !IsNil(o.JsonCredentials) {
 		toSerialize["json_credentials"] = o.JsonCredentials
 	}
+	if !IsNil(o.GcpCredentialsType) {
+		toSerialize["gcp_credentials_type"] = o.GcpCredentialsType
+	}
+	if !IsNil(o.ProjectId) {
+		toSerialize["project_id"] = o.ProjectId
+	}
+	if !IsNil(o.ServiceAccountEmail) {
+		toSerialize["service_account_email"] = o.ServiceAccountEmail
+	}
+	if !IsNil(o.WorkloadIdentityProjectNumber) {
+		toSerialize["workload_identity_project_number"] = o.WorkloadIdentityProjectNumber
+	}
+	if !IsNil(o.WorkloadIdentityPoolId) {
+		toSerialize["workload_identity_pool_id"] = o.WorkloadIdentityPoolId
+	}
+	if !IsNil(o.WorkloadIdentityProviderId) {
+		toSerialize["workload_identity_provider_id"] = o.WorkloadIdentityProviderId
+	}
+	if !IsNil(o.TokenLifetimeSeconds) {
+		toSerialize["token_lifetime_seconds"] = o.TokenLifetimeSeconds
+	}
 	if !IsNil(o.Username) {
 		toSerialize["username"] = o.Username
 	}
@@ -525,6 +784,13 @@ func (o *ContainerRegistryRequestConfig) UnmarshalJSON(data []byte) (err error) 
 		delete(additionalProperties, "scaleway_secret_key")
 		delete(additionalProperties, "scaleway_project_id")
 		delete(additionalProperties, "json_credentials")
+		delete(additionalProperties, "gcp_credentials_type")
+		delete(additionalProperties, "project_id")
+		delete(additionalProperties, "service_account_email")
+		delete(additionalProperties, "workload_identity_project_number")
+		delete(additionalProperties, "workload_identity_pool_id")
+		delete(additionalProperties, "workload_identity_provider_id")
+		delete(additionalProperties, "token_lifetime_seconds")
 		delete(additionalProperties, "username")
 		delete(additionalProperties, "password")
 		delete(additionalProperties, "role_arn")
