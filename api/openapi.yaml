@@ -24728,20 +24728,18 @@ components:
         description: description
         config:
           access_key_id: access_key_id
+          workload_identity_provider_resource: projects/123456789/locations/global/workloadIdentityPools/qovery-pool/providers/qovery-aws
           secret_access_key: secret_access_key
           gcp_credentials_type: workload_identity_federation
           token_lifetime_seconds: 14400
           scaleway_secret_key: scaleway_secret_key
           scaleway_access_key: scaleway_access_key
-          workload_identity_pool_id: workload_identity_pool_id
           scaleway_project_id: scaleway_project_id
-          workload_identity_project_number: workload_identity_project_number
           password: password
           azure_subscription_id: azure_subscription_id
           role_arn: role_arn
           project_id: project_id
           json_credentials: json_credentials
-          workload_identity_provider_id: workload_identity_provider_id
           region: region
           service_account_email: service_account_email
           username: username
@@ -24806,18 +24804,16 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         config:
           access_key_id: access_key_id
+          workload_identity_provider_resource: workload_identity_provider_resource
           gcp_credentials_type: workload_identity_federation
           token_lifetime_seconds: 14400
           scaleway_access_key: scaleway_access_key
-          workload_identity_pool_id: workload_identity_pool_id
           azure_application_id: azure_application_id
           azure_application_object_id: azure_application_object_id
           scaleway_project_id: scaleway_project_id
-          workload_identity_project_number: workload_identity_project_number
           azure_subscription_id: azure_subscription_id
           role_arn: role_arn
           project_id: project_id
-          workload_identity_provider_id: workload_identity_provider_id
           region: region
           service_account_email: service_account_email
           username: username
@@ -24861,18 +24857,16 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            workload_identity_provider_resource: workload_identity_provider_resource
             gcp_credentials_type: workload_identity_federation
             token_lifetime_seconds: 14400
             scaleway_access_key: scaleway_access_key
-            workload_identity_pool_id: workload_identity_pool_id
             azure_application_id: azure_application_id
             azure_application_object_id: azure_application_object_id
             scaleway_project_id: scaleway_project_id
-            workload_identity_project_number: workload_identity_project_number
             azure_subscription_id: azure_subscription_id
             role_arn: role_arn
             project_id: project_id
-            workload_identity_provider_id: workload_identity_provider_id
             region: region
             service_account_email: service_account_email
             username: username
@@ -24890,18 +24884,16 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           config:
             access_key_id: access_key_id
+            workload_identity_provider_resource: workload_identity_provider_resource
             gcp_credentials_type: workload_identity_federation
             token_lifetime_seconds: 14400
             scaleway_access_key: scaleway_access_key
-            workload_identity_pool_id: workload_identity_pool_id
             azure_application_id: azure_application_id
             azure_application_object_id: azure_application_object_id
             scaleway_project_id: scaleway_project_id
-            workload_identity_project_number: workload_identity_project_number
             azure_subscription_id: azure_subscription_id
             role_arn: role_arn
             project_id: project_id
-            workload_identity_provider_id: workload_identity_provider_id
             region: region
             service_account_email: service_account_email
             username: username
@@ -38426,11 +38418,7 @@ components:
           type: string
         service_account_email:
           type: string
-        workload_identity_project_number:
-          type: string
-        workload_identity_pool_id:
-          type: string
-        workload_identity_provider_id:
+        workload_identity_provider_resource:
           type: string
         token_lifetime_seconds:
           example: 14400
@@ -38443,9 +38431,7 @@ components:
       - project_id
       - service_account_email
       - token_lifetime_seconds
-      - workload_identity_pool_id
-      - workload_identity_project_number
-      - workload_identity_provider_id
+      - workload_identity_provider_resource
       title: GcpWorkloadIdentityFederationClusterCredentials
       type: object
     AzureStaticClusterCredentials:
@@ -43453,20 +43439,18 @@ components:
         * `DOCR` is not supported anymore
       example:
         access_key_id: access_key_id
+        workload_identity_provider_resource: projects/123456789/locations/global/workloadIdentityPools/qovery-pool/providers/qovery-aws
         secret_access_key: secret_access_key
         gcp_credentials_type: workload_identity_federation
         token_lifetime_seconds: 14400
         scaleway_secret_key: scaleway_secret_key
         scaleway_access_key: scaleway_access_key
-        workload_identity_pool_id: workload_identity_pool_id
         scaleway_project_id: scaleway_project_id
-        workload_identity_project_number: workload_identity_project_number
         password: password
         azure_subscription_id: azure_subscription_id
         role_arn: role_arn
         project_id: project_id
         json_credentials: json_credentials
-        workload_identity_provider_id: workload_identity_provider_id
         region: region
         service_account_email: service_account_email
         username: username
@@ -43512,17 +43496,10 @@ components:
           description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
             is `workload_identity_federation`
           type: string
-        workload_identity_project_number:
+        workload_identity_provider_resource:
           description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
             is `workload_identity_federation`
-          type: string
-        workload_identity_pool_id:
-          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
-            is `workload_identity_federation`
-          type: string
-        workload_identity_provider_id:
-          description: Required if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
-            is `workload_identity_federation`
+          example: projects/123456789/locations/global/workloadIdentityPools/qovery-pool/providers/qovery-aws
           type: string
         token_lifetime_seconds:
           description: Optional if kind is `GCP_ARTIFACT_REGISTRY` and gcp_credentials_type
@@ -43576,18 +43553,16 @@ components:
     ContainerRegistryResponse_allOf_config:
       example:
         access_key_id: access_key_id
+        workload_identity_provider_resource: workload_identity_provider_resource
         gcp_credentials_type: workload_identity_federation
         token_lifetime_seconds: 14400
         scaleway_access_key: scaleway_access_key
-        workload_identity_pool_id: workload_identity_pool_id
         azure_application_id: azure_application_id
         azure_application_object_id: azure_application_object_id
         scaleway_project_id: scaleway_project_id
-        workload_identity_project_number: workload_identity_project_number
         azure_subscription_id: azure_subscription_id
         role_arn: role_arn
         project_id: project_id
-        workload_identity_provider_id: workload_identity_provider_id
         region: region
         service_account_email: service_account_email
         username: username
@@ -43625,11 +43600,7 @@ components:
           type: string
         service_account_email:
           type: string
-        workload_identity_project_number:
-          type: string
-        workload_identity_pool_id:
-          type: string
-        workload_identity_provider_id:
+        workload_identity_provider_resource:
           type: string
         token_lifetime_seconds:
           example: 14400

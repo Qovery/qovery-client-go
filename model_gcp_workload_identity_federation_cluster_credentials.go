@@ -21,16 +21,14 @@ var _ MappedNullable = &GcpWorkloadIdentityFederationClusterCredentials{}
 
 // GcpWorkloadIdentityFederationClusterCredentials struct for GcpWorkloadIdentityFederationClusterCredentials
 type GcpWorkloadIdentityFederationClusterCredentials struct {
-	Id                            string `json:"id"`
-	Name                          string `json:"name"`
-	ObjectType                    string `json:"object_type"`
-	ProjectId                     string `json:"project_id"`
-	ServiceAccountEmail           string `json:"service_account_email"`
-	WorkloadIdentityProjectNumber string `json:"workload_identity_project_number"`
-	WorkloadIdentityPoolId        string `json:"workload_identity_pool_id"`
-	WorkloadIdentityProviderId    string `json:"workload_identity_provider_id"`
-	TokenLifetimeSeconds          int32  `json:"token_lifetime_seconds"`
-	AdditionalProperties          map[string]interface{}
+	Id                               string `json:"id"`
+	Name                             string `json:"name"`
+	ObjectType                       string `json:"object_type"`
+	ProjectId                        string `json:"project_id"`
+	ServiceAccountEmail              string `json:"service_account_email"`
+	WorkloadIdentityProviderResource string `json:"workload_identity_provider_resource"`
+	TokenLifetimeSeconds             int32  `json:"token_lifetime_seconds"`
+	AdditionalProperties             map[string]interface{}
 }
 
 type _GcpWorkloadIdentityFederationClusterCredentials GcpWorkloadIdentityFederationClusterCredentials
@@ -39,16 +37,14 @@ type _GcpWorkloadIdentityFederationClusterCredentials GcpWorkloadIdentityFederat
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewGcpWorkloadIdentityFederationClusterCredentials(id string, name string, objectType string, projectId string, serviceAccountEmail string, workloadIdentityProjectNumber string, workloadIdentityPoolId string, workloadIdentityProviderId string, tokenLifetimeSeconds int32) *GcpWorkloadIdentityFederationClusterCredentials {
+func NewGcpWorkloadIdentityFederationClusterCredentials(id string, name string, objectType string, projectId string, serviceAccountEmail string, workloadIdentityProviderResource string, tokenLifetimeSeconds int32) *GcpWorkloadIdentityFederationClusterCredentials {
 	this := GcpWorkloadIdentityFederationClusterCredentials{}
 	this.Id = id
 	this.Name = name
 	this.ObjectType = objectType
 	this.ProjectId = projectId
 	this.ServiceAccountEmail = serviceAccountEmail
-	this.WorkloadIdentityProjectNumber = workloadIdentityProjectNumber
-	this.WorkloadIdentityPoolId = workloadIdentityPoolId
-	this.WorkloadIdentityProviderId = workloadIdentityProviderId
+	this.WorkloadIdentityProviderResource = workloadIdentityProviderResource
 	this.TokenLifetimeSeconds = tokenLifetimeSeconds
 	return &this
 }
@@ -181,76 +177,28 @@ func (o *GcpWorkloadIdentityFederationClusterCredentials) SetServiceAccountEmail
 	o.ServiceAccountEmail = v
 }
 
-// GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProjectNumber() string {
+// GetWorkloadIdentityProviderResource returns the WorkloadIdentityProviderResource field value
+func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderResource() string {
 	if o == nil {
 		var ret string
 		return ret
 	}
 
-	return o.WorkloadIdentityProjectNumber
+	return o.WorkloadIdentityProviderResource
 }
 
-// GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field value
+// GetWorkloadIdentityProviderResourceOk returns a tuple with the WorkloadIdentityProviderResource field value
 // and a boolean to check if the value has been set.
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProjectNumberOk() (*string, bool) {
+func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderResourceOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.WorkloadIdentityProjectNumber, true
+	return &o.WorkloadIdentityProviderResource, true
 }
 
-// SetWorkloadIdentityProjectNumber sets field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProjectNumber(v string) {
-	o.WorkloadIdentityProjectNumber = v
-}
-
-// GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityPoolId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.WorkloadIdentityPoolId
-}
-
-// GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field value
-// and a boolean to check if the value has been set.
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityPoolIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.WorkloadIdentityPoolId, true
-}
-
-// SetWorkloadIdentityPoolId sets field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityPoolId(v string) {
-	o.WorkloadIdentityPoolId = v
-}
-
-// GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderId() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.WorkloadIdentityProviderId
-}
-
-// GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field value
-// and a boolean to check if the value has been set.
-func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderIdOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.WorkloadIdentityProviderId, true
-}
-
-// SetWorkloadIdentityProviderId sets field value
-func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProviderId(v string) {
-	o.WorkloadIdentityProviderId = v
+// SetWorkloadIdentityProviderResource sets field value
+func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProviderResource(v string) {
+	o.WorkloadIdentityProviderResource = v
 }
 
 // GetTokenLifetimeSeconds returns the TokenLifetimeSeconds field value
@@ -292,9 +240,7 @@ func (o GcpWorkloadIdentityFederationClusterCredentials) ToMap() (map[string]int
 	toSerialize["object_type"] = o.ObjectType
 	toSerialize["project_id"] = o.ProjectId
 	toSerialize["service_account_email"] = o.ServiceAccountEmail
-	toSerialize["workload_identity_project_number"] = o.WorkloadIdentityProjectNumber
-	toSerialize["workload_identity_pool_id"] = o.WorkloadIdentityPoolId
-	toSerialize["workload_identity_provider_id"] = o.WorkloadIdentityProviderId
+	toSerialize["workload_identity_provider_resource"] = o.WorkloadIdentityProviderResource
 	toSerialize["token_lifetime_seconds"] = o.TokenLifetimeSeconds
 
 	for key, value := range o.AdditionalProperties {
@@ -314,9 +260,7 @@ func (o *GcpWorkloadIdentityFederationClusterCredentials) UnmarshalJSON(data []b
 		"object_type",
 		"project_id",
 		"service_account_email",
-		"workload_identity_project_number",
-		"workload_identity_pool_id",
-		"workload_identity_provider_id",
+		"workload_identity_provider_resource",
 		"token_lifetime_seconds",
 	}
 
@@ -352,9 +296,7 @@ func (o *GcpWorkloadIdentityFederationClusterCredentials) UnmarshalJSON(data []b
 		delete(additionalProperties, "object_type")
 		delete(additionalProperties, "project_id")
 		delete(additionalProperties, "service_account_email")
-		delete(additionalProperties, "workload_identity_project_number")
-		delete(additionalProperties, "workload_identity_pool_id")
-		delete(additionalProperties, "workload_identity_provider_id")
+		delete(additionalProperties, "workload_identity_provider_resource")
 		delete(additionalProperties, "token_lifetime_seconds")
 		o.AdditionalProperties = additionalProperties
 	}

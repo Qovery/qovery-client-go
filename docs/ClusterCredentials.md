@@ -19,16 +19,14 @@ Name | Type | Description | Notes
 **AzureApplicationObjectId** | **string** |  | 
 **ProjectId** | **string** |  | 
 **ServiceAccountEmail** | **string** |  | 
-**WorkloadIdentityProjectNumber** | **string** |  | 
-**WorkloadIdentityPoolId** | **string** |  | 
-**WorkloadIdentityProviderId** | **string** |  | 
+**WorkloadIdentityProviderResource** | **string** |  | 
 **TokenLifetimeSeconds** | **int32** |  | 
 
 ## Methods
 
 ### NewClusterCredentials
 
-`func NewClusterCredentials(id string, name string, accessKeyId NullableString, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn NullableString, vsphereUser string, azureSubscriptionId string, azureTenantId string, azureApplicationId string, azureApplicationObjectId string, projectId string, serviceAccountEmail string, workloadIdentityProjectNumber string, workloadIdentityPoolId string, workloadIdentityProviderId string, tokenLifetimeSeconds int32, ) *ClusterCredentials`
+`func NewClusterCredentials(id string, name string, accessKeyId NullableString, objectType string, scalewayAccessKey string, scalewayProjectId string, scalewayOrganizationId string, roleArn NullableString, vsphereUser string, azureSubscriptionId string, azureTenantId string, azureApplicationId string, azureApplicationObjectId string, projectId string, serviceAccountEmail string, workloadIdentityProviderResource string, tokenLifetimeSeconds int32, ) *ClusterCredentials`
 
 NewClusterCredentials instantiates a new ClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -363,64 +361,24 @@ and a boolean to check if the value has been set.
 SetServiceAccountEmail sets ServiceAccountEmail field to given value.
 
 
-### GetWorkloadIdentityProjectNumber
+### GetWorkloadIdentityProviderResource
 
-`func (o *ClusterCredentials) GetWorkloadIdentityProjectNumber() string`
+`func (o *ClusterCredentials) GetWorkloadIdentityProviderResource() string`
 
-GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field if non-nil, zero value otherwise.
+GetWorkloadIdentityProviderResource returns the WorkloadIdentityProviderResource field if non-nil, zero value otherwise.
 
-### GetWorkloadIdentityProjectNumberOk
+### GetWorkloadIdentityProviderResourceOk
 
-`func (o *ClusterCredentials) GetWorkloadIdentityProjectNumberOk() (*string, bool)`
+`func (o *ClusterCredentials) GetWorkloadIdentityProviderResourceOk() (*string, bool)`
 
-GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field if it's non-nil, zero value otherwise
+GetWorkloadIdentityProviderResourceOk returns a tuple with the WorkloadIdentityProviderResource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWorkloadIdentityProjectNumber
+### SetWorkloadIdentityProviderResource
 
-`func (o *ClusterCredentials) SetWorkloadIdentityProjectNumber(v string)`
+`func (o *ClusterCredentials) SetWorkloadIdentityProviderResource(v string)`
 
-SetWorkloadIdentityProjectNumber sets WorkloadIdentityProjectNumber field to given value.
-
-
-### GetWorkloadIdentityPoolId
-
-`func (o *ClusterCredentials) GetWorkloadIdentityPoolId() string`
-
-GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field if non-nil, zero value otherwise.
-
-### GetWorkloadIdentityPoolIdOk
-
-`func (o *ClusterCredentials) GetWorkloadIdentityPoolIdOk() (*string, bool)`
-
-GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWorkloadIdentityPoolId
-
-`func (o *ClusterCredentials) SetWorkloadIdentityPoolId(v string)`
-
-SetWorkloadIdentityPoolId sets WorkloadIdentityPoolId field to given value.
-
-
-### GetWorkloadIdentityProviderId
-
-`func (o *ClusterCredentials) GetWorkloadIdentityProviderId() string`
-
-GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field if non-nil, zero value otherwise.
-
-### GetWorkloadIdentityProviderIdOk
-
-`func (o *ClusterCredentials) GetWorkloadIdentityProviderIdOk() (*string, bool)`
-
-GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWorkloadIdentityProviderId
-
-`func (o *ClusterCredentials) SetWorkloadIdentityProviderId(v string)`
-
-SetWorkloadIdentityProviderId sets WorkloadIdentityProviderId field to given value.
+SetWorkloadIdentityProviderResource sets WorkloadIdentityProviderResource field to given value.
 
 
 ### GetTokenLifetimeSeconds

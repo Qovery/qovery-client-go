@@ -9,16 +9,14 @@ Name | Type | Description | Notes
 **ObjectType** | **string** |  | 
 **ProjectId** | **string** |  | 
 **ServiceAccountEmail** | **string** |  | 
-**WorkloadIdentityProjectNumber** | **string** |  | 
-**WorkloadIdentityPoolId** | **string** |  | 
-**WorkloadIdentityProviderId** | **string** |  | 
+**WorkloadIdentityProviderResource** | **string** |  | 
 **TokenLifetimeSeconds** | **int32** |  | 
 
 ## Methods
 
 ### NewGcpWorkloadIdentityFederationClusterCredentials
 
-`func NewGcpWorkloadIdentityFederationClusterCredentials(id string, name string, objectType string, projectId string, serviceAccountEmail string, workloadIdentityProjectNumber string, workloadIdentityPoolId string, workloadIdentityProviderId string, tokenLifetimeSeconds int32, ) *GcpWorkloadIdentityFederationClusterCredentials`
+`func NewGcpWorkloadIdentityFederationClusterCredentials(id string, name string, objectType string, projectId string, serviceAccountEmail string, workloadIdentityProviderResource string, tokenLifetimeSeconds int32, ) *GcpWorkloadIdentityFederationClusterCredentials`
 
 NewGcpWorkloadIdentityFederationClusterCredentials instantiates a new GcpWorkloadIdentityFederationClusterCredentials object
 This constructor will assign default values to properties that have it defined,
@@ -133,64 +131,24 @@ and a boolean to check if the value has been set.
 SetServiceAccountEmail sets ServiceAccountEmail field to given value.
 
 
-### GetWorkloadIdentityProjectNumber
+### GetWorkloadIdentityProviderResource
 
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProjectNumber() string`
+`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderResource() string`
 
-GetWorkloadIdentityProjectNumber returns the WorkloadIdentityProjectNumber field if non-nil, zero value otherwise.
+GetWorkloadIdentityProviderResource returns the WorkloadIdentityProviderResource field if non-nil, zero value otherwise.
 
-### GetWorkloadIdentityProjectNumberOk
+### GetWorkloadIdentityProviderResourceOk
 
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProjectNumberOk() (*string, bool)`
+`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderResourceOk() (*string, bool)`
 
-GetWorkloadIdentityProjectNumberOk returns a tuple with the WorkloadIdentityProjectNumber field if it's non-nil, zero value otherwise
+GetWorkloadIdentityProviderResourceOk returns a tuple with the WorkloadIdentityProviderResource field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWorkloadIdentityProjectNumber
+### SetWorkloadIdentityProviderResource
 
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProjectNumber(v string)`
+`func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProviderResource(v string)`
 
-SetWorkloadIdentityProjectNumber sets WorkloadIdentityProjectNumber field to given value.
-
-
-### GetWorkloadIdentityPoolId
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityPoolId() string`
-
-GetWorkloadIdentityPoolId returns the WorkloadIdentityPoolId field if non-nil, zero value otherwise.
-
-### GetWorkloadIdentityPoolIdOk
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityPoolIdOk() (*string, bool)`
-
-GetWorkloadIdentityPoolIdOk returns a tuple with the WorkloadIdentityPoolId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWorkloadIdentityPoolId
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityPoolId(v string)`
-
-SetWorkloadIdentityPoolId sets WorkloadIdentityPoolId field to given value.
-
-
-### GetWorkloadIdentityProviderId
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderId() string`
-
-GetWorkloadIdentityProviderId returns the WorkloadIdentityProviderId field if non-nil, zero value otherwise.
-
-### GetWorkloadIdentityProviderIdOk
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) GetWorkloadIdentityProviderIdOk() (*string, bool)`
-
-GetWorkloadIdentityProviderIdOk returns a tuple with the WorkloadIdentityProviderId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetWorkloadIdentityProviderId
-
-`func (o *GcpWorkloadIdentityFederationClusterCredentials) SetWorkloadIdentityProviderId(v string)`
-
-SetWorkloadIdentityProviderId sets WorkloadIdentityProviderId field to given value.
+SetWorkloadIdentityProviderResource sets WorkloadIdentityProviderResource field to given value.
 
 
 ### GetTokenLifetimeSeconds
