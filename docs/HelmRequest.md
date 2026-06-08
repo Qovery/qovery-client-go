@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
 **ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
 **IconUri** | Pointer to **string** | Icon URI representing the helm service. | [optional] 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from   | [optional] 
 
 ## Methods
 
@@ -295,6 +296,41 @@ SetIconUri sets IconUri field to given value.
 
 HasIconUri returns a boolean if a field has been set.
 
+### GetBlueprintId
+
+`func (o *HelmRequest) GetBlueprintId() string`
+
+GetBlueprintId returns the BlueprintId field if non-nil, zero value otherwise.
+
+### GetBlueprintIdOk
+
+`func (o *HelmRequest) GetBlueprintIdOk() (*string, bool)`
+
+GetBlueprintIdOk returns a tuple with the BlueprintId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlueprintId
+
+`func (o *HelmRequest) SetBlueprintId(v string)`
+
+SetBlueprintId sets BlueprintId field to given value.
+
+### HasBlueprintId
+
+`func (o *HelmRequest) HasBlueprintId() bool`
+
+HasBlueprintId returns a boolean if a field has been set.
+
+### SetBlueprintIdNil
+
+`func (o *HelmRequest) SetBlueprintIdNil(b bool)`
+
+ SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+
+### UnsetBlueprintId
+`func (o *HelmRequest) UnsetBlueprintId()`
+
+UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

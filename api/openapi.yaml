@@ -32079,6 +32079,11 @@ components:
             type: string
             x-stoplight:
               id: 117p5u95nwx2p
+          blueprintId:
+            description: "The blueprint ID the service has been created from \n"
+            format: uuid
+            nullable: true
+            type: string
         required:
         - arguments
         - auto_deploy
@@ -32147,6 +32152,7 @@ components:
           namespace: namespace
           internal_port: 8080
           is_default: true
+        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_cluster_wide_resources: false
         icon_uri: https://openapi-generator.tech
     HelmResponse:
@@ -38527,6 +38533,7 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
+        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
         terraform_variables_source:
           tf_var_file_paths:
@@ -38610,6 +38617,11 @@ components:
             id: guh2uio7aztct
         dockerfile_fragment:
           $ref: '#/components/schemas/TerraformRequest_dockerfile_fragment'
+        blueprintId:
+          description: "The blueprint ID the service has been created from \n"
+          format: uuid
+          nullable: true
+          type: string
       required:
       - auto_deploy_config
       - backend

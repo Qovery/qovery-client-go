@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **UseClusterCredentials** | Pointer to **bool** |  | [optional] 
 **ActionExtraArguments** | Pointer to **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | [optional] 
 **DockerfileFragment** | Pointer to [**NullableTerraformRequestDockerfileFragment**](TerraformRequestDockerfileFragment.md) |  | [optional] 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from   | [optional] 
 
 ## Methods
 
@@ -353,6 +354,41 @@ HasDockerfileFragment returns a boolean if a field has been set.
 `func (o *TerraformRequest) UnsetDockerfileFragment()`
 
 UnsetDockerfileFragment ensures that no value is present for DockerfileFragment, not even an explicit nil
+### GetBlueprintId
+
+`func (o *TerraformRequest) GetBlueprintId() string`
+
+GetBlueprintId returns the BlueprintId field if non-nil, zero value otherwise.
+
+### GetBlueprintIdOk
+
+`func (o *TerraformRequest) GetBlueprintIdOk() (*string, bool)`
+
+GetBlueprintIdOk returns a tuple with the BlueprintId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlueprintId
+
+`func (o *TerraformRequest) SetBlueprintId(v string)`
+
+SetBlueprintId sets BlueprintId field to given value.
+
+### HasBlueprintId
+
+`func (o *TerraformRequest) HasBlueprintId() bool`
+
+HasBlueprintId returns a boolean if a field has been set.
+
+### SetBlueprintIdNil
+
+`func (o *TerraformRequest) SetBlueprintIdNil(b bool)`
+
+ SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+
+### UnsetBlueprintId
+`func (o *TerraformRequest) UnsetBlueprintId()`
+
+UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -38,7 +38,9 @@ type HelmRequest struct {
 	AllowClusterWideResources *bool                          `json:"allow_cluster_wide_resources,omitempty"`
 	ValuesOverride            HelmRequestAllOfValuesOverride `json:"values_override"`
 	// Icon URI representing the helm service.
-	IconUri              *string `json:"icon_uri,omitempty"`
+	IconUri *string `json:"icon_uri,omitempty"`
+	// The blueprint ID the service has been created from
+	BlueprintId          NullableString `json:"blueprintId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -397,6 +399,49 @@ func (o *HelmRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
+// GetBlueprintId returns the BlueprintId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmRequest) GetBlueprintId() string {
+	if o == nil || IsNil(o.BlueprintId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BlueprintId.Get()
+}
+
+// GetBlueprintIdOk returns a tuple with the BlueprintId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HelmRequest) GetBlueprintIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BlueprintId.Get(), o.BlueprintId.IsSet()
+}
+
+// HasBlueprintId returns a boolean if a field has been set.
+func (o *HelmRequest) HasBlueprintId() bool {
+	if o != nil && o.BlueprintId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBlueprintId gets a reference to the given NullableString and assigns it to the BlueprintId field.
+func (o *HelmRequest) SetBlueprintId(v string) {
+	o.BlueprintId.Set(&v)
+}
+
+// SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+func (o *HelmRequest) SetBlueprintIdNil() {
+	o.BlueprintId.Set(nil)
+}
+
+// UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
+func (o *HelmRequest) UnsetBlueprintId() {
+	o.BlueprintId.Unset()
+}
+
 func (o HelmRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -429,6 +474,9 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["values_override"] = o.ValuesOverride
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
+	}
+	if o.BlueprintId.IsSet() {
+		toSerialize["blueprintId"] = o.BlueprintId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -488,6 +536,7 @@ func (o *HelmRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "blueprintId")
 		o.AdditionalProperties = additionalProperties
 	}
 
