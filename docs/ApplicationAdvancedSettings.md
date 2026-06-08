@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
+**BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
 **NetworkIngressForceSslRedirect** | Pointer to **bool** | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
@@ -419,6 +420,31 @@ SetBuildDisableBuildkitCache sets BuildDisableBuildkitCache field to given value
 `func (o *ApplicationAdvancedSettings) HasBuildDisableBuildkitCache() bool`
 
 HasBuildDisableBuildkitCache returns a boolean if a field has been set.
+
+### GetBuildSkipGitSubmodules
+
+`func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodules() bool`
+
+GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field if non-nil, zero value otherwise.
+
+### GetBuildSkipGitSubmodulesOk
+
+`func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool)`
+
+GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSkipGitSubmodules
+
+`func (o *ApplicationAdvancedSettings) SetBuildSkipGitSubmodules(v bool)`
+
+SetBuildSkipGitSubmodules sets BuildSkipGitSubmodules field to given value.
+
+### HasBuildSkipGitSubmodules
+
+`func (o *ApplicationAdvancedSettings) HasBuildSkipGitSubmodules() bool`
+
+HasBuildSkipGitSubmodules returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 

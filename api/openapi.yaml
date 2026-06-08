@@ -19816,6 +19816,7 @@ components:
         network.gateway_api.retry.http_status_codes: network.gateway_api.retry.http_status_codes
         security.service_account_name: security.service_account_name
         network.ingress.cors_allow_origin: network.ingress.cors_allow_origin
+        build.skip_git_submodules: true
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
         network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
@@ -19900,6 +19901,9 @@ components:
           type: integer
         build.disable_buildkit_cache:
           description: disable buildkit registry cache during build
+          type: boolean
+        build.skip_git_submodules:
+          description: skip git submodules update when cloning the repository
           type: boolean
         network.ingress.proxy_body_size_mb:
           type: integer
@@ -31855,6 +31859,7 @@ components:
         cronjob.failed_jobs_history_limit: 2
         security.automount_service_account_token: true
         cronjob.concurrency_policy: cronjob.concurrency_policy
+        build.skip_git_submodules: true
         build.ram_max_in_gib: 1
       properties:
         build.timeout_max_sec:
@@ -31868,6 +31873,9 @@ components:
           type: integer
         build.disable_buildkit_cache:
           description: disable buildkit registry cache during build
+          type: boolean
+        build.skip_git_submodules:
+          description: skip git submodules update when cloning the repository
           type: boolean
         deployment.termination_grace_period_seconds:
           description: define how long in seconds an application is supposed to be
@@ -32209,6 +32217,12 @@ components:
               id: i2pvbugqsldhe
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
+          blueprintId:
+            description: |
+              The blueprint ID the service has been created from
+            format: uuid
+            nullable: true
+            type: string
         required:
         - allow_cluster_wide_resources
         - arguments
@@ -32260,6 +32274,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
+        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
         values_override:
           set:
@@ -32416,6 +32431,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
+          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
           values_override:
             set:
@@ -32508,6 +32524,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
+          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
           values_override:
             set:
@@ -38834,6 +38851,12 @@ components:
               id: rnkzwlf29dgb5
           dockerfile_fragment:
             $ref: '#/components/schemas/TerraformResponse_allOf_dockerfile_fragment'
+          blueprintId:
+            description: |
+              The blueprint ID the service has been created from
+            format: uuid
+            nullable: true
+            type: string
         required:
         - action_extra_arguments
         - auto_deploy
@@ -38868,6 +38891,7 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
+        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
         terraform_variables_source:
           tf_var_file_paths:
@@ -39354,6 +39378,7 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
+          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
           terraform_variables_source:
             tf_var_file_paths:
@@ -39414,6 +39439,7 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
+          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
           terraform_variables_source:
             tf_var_file_paths:
@@ -39503,6 +39529,7 @@ components:
           key: deployment.affinity.node.required
         security.read_only_root_filesystem: true
         security.service_account_name: security.service_account_name
+        build.skip_git_submodules: true
         build.ephemeral_storage_in_gib: 5
         build.ram_max_in_gib: 1
         deployment.termination_grace_period_seconds: 5
@@ -39518,6 +39545,9 @@ components:
           type: integer
         build.ephemeral_storage_in_gib:
           type: integer
+        build.skip_git_submodules:
+          description: skip git submodules update when cloning the repository
+          type: boolean
         deployment.termination_grace_period_seconds:
           description: define how long in seconds an application is supposed to be
             stopped gracefully

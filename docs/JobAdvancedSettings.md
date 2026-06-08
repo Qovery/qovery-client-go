@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
+**BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
@@ -136,6 +137,31 @@ SetBuildDisableBuildkitCache sets BuildDisableBuildkitCache field to given value
 `func (o *JobAdvancedSettings) HasBuildDisableBuildkitCache() bool`
 
 HasBuildDisableBuildkitCache returns a boolean if a field has been set.
+
+### GetBuildSkipGitSubmodules
+
+`func (o *JobAdvancedSettings) GetBuildSkipGitSubmodules() bool`
+
+GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field if non-nil, zero value otherwise.
+
+### GetBuildSkipGitSubmodulesOk
+
+`func (o *JobAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool)`
+
+GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSkipGitSubmodules
+
+`func (o *JobAdvancedSettings) SetBuildSkipGitSubmodules(v bool)`
+
+SetBuildSkipGitSubmodules sets BuildSkipGitSubmodules field to given value.
+
+### HasBuildSkipGitSubmodules
+
+`func (o *JobAdvancedSettings) HasBuildSkipGitSubmodules() bool`
+
+HasBuildSkipGitSubmodules returns a boolean if a field has been set.
 
 ### GetDeploymentTerminationGracePeriodSeconds
 

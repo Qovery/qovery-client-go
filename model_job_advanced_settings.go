@@ -28,6 +28,8 @@ type JobAdvancedSettings struct {
 	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// disable buildkit registry cache during build
 	BuildDisableBuildkitCache *bool `json:"build.disable_buildkit_cache,omitempty"`
+	// skip git submodules update when cloning the repository
+	BuildSkipGitSubmodules *bool `json:"build.skip_git_submodules,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
@@ -190,6 +192,38 @@ func (o *JobAdvancedSettings) HasBuildDisableBuildkitCache() bool {
 // SetBuildDisableBuildkitCache gets a reference to the given bool and assigns it to the BuildDisableBuildkitCache field.
 func (o *JobAdvancedSettings) SetBuildDisableBuildkitCache(v bool) {
 	o.BuildDisableBuildkitCache = &v
+}
+
+// GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+func (o *JobAdvancedSettings) GetBuildSkipGitSubmodules() bool {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		var ret bool
+		return ret
+	}
+	return *o.BuildSkipGitSubmodules
+}
+
+// GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		return nil, false
+	}
+	return o.BuildSkipGitSubmodules, true
+}
+
+// HasBuildSkipGitSubmodules returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasBuildSkipGitSubmodules() bool {
+	if o != nil && !IsNil(o.BuildSkipGitSubmodules) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+func (o *JobAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
+	o.BuildSkipGitSubmodules = &v
 }
 
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
@@ -513,6 +547,9 @@ func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildDisableBuildkitCache) {
 		toSerialize["build.disable_buildkit_cache"] = o.BuildDisableBuildkitCache
 	}
+	if !IsNil(o.BuildSkipGitSubmodules) {
+		toSerialize["build.skip_git_submodules"] = o.BuildSkipGitSubmodules
+	}
 	if !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
@@ -566,6 +603,7 @@ func (o *JobAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.cpu_max_in_milli")
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "build.disable_buildkit_cache")
+		delete(additionalProperties, "build.skip_git_submodules")
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "job.delete_ttl_seconds_after_finished")

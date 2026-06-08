@@ -43,8 +43,10 @@ type HelmResponse struct {
 	AllowClusterWideResources bool                            `json:"allow_cluster_wide_resources"`
 	ValuesOverride            HelmResponseAllOfValuesOverride `json:"values_override"`
 	// Icon URI representing the helm service.
-	IconUri              string          `json:"icon_uri"`
-	ServiceType          ServiceTypeEnum `json:"service_type"`
+	IconUri     string          `json:"icon_uri"`
+	ServiceType ServiceTypeEnum `json:"service_type"`
+	// The blueprint ID the service has been created from
+	BlueprintId          NullableString `json:"blueprintId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -501,6 +503,49 @@ func (o *HelmResponse) SetServiceType(v ServiceTypeEnum) {
 	o.ServiceType = v
 }
 
+// GetBlueprintId returns the BlueprintId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *HelmResponse) GetBlueprintId() string {
+	if o == nil || IsNil(o.BlueprintId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BlueprintId.Get()
+}
+
+// GetBlueprintIdOk returns a tuple with the BlueprintId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *HelmResponse) GetBlueprintIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BlueprintId.Get(), o.BlueprintId.IsSet()
+}
+
+// HasBlueprintId returns a boolean if a field has been set.
+func (o *HelmResponse) HasBlueprintId() bool {
+	if o != nil && o.BlueprintId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBlueprintId gets a reference to the given NullableString and assigns it to the BlueprintId field.
+func (o *HelmResponse) SetBlueprintId(v string) {
+	o.BlueprintId.Set(&v)
+}
+
+// SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+func (o *HelmResponse) SetBlueprintIdNil() {
+	o.BlueprintId.Set(nil)
+}
+
+// UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
+func (o *HelmResponse) UnsetBlueprintId() {
+	o.BlueprintId.Unset()
+}
+
 func (o HelmResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -535,6 +580,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["values_override"] = o.ValuesOverride
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
+	if o.BlueprintId.IsSet() {
+		toSerialize["blueprintId"] = o.BlueprintId.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -605,6 +653,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "blueprintId")
 		o.AdditionalProperties = additionalProperties
 	}
 

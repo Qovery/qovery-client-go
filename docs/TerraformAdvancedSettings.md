@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **BuildEphemeralStorageInGib** | Pointer to **int32** |  | [optional] 
+**BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **SecurityServiceAccountName** | Pointer to **string** | Allows you to set an existing Kubernetes service account name  | [optional] 
@@ -131,6 +132,31 @@ SetBuildEphemeralStorageInGib sets BuildEphemeralStorageInGib field to given val
 `func (o *TerraformAdvancedSettings) HasBuildEphemeralStorageInGib() bool`
 
 HasBuildEphemeralStorageInGib returns a boolean if a field has been set.
+
+### GetBuildSkipGitSubmodules
+
+`func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodules() bool`
+
+GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field if non-nil, zero value otherwise.
+
+### GetBuildSkipGitSubmodulesOk
+
+`func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool)`
+
+GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSkipGitSubmodules
+
+`func (o *TerraformAdvancedSettings) SetBuildSkipGitSubmodules(v bool)`
+
+SetBuildSkipGitSubmodules sets BuildSkipGitSubmodules field to given value.
+
+### HasBuildSkipGitSubmodules
+
+`func (o *TerraformAdvancedSettings) HasBuildSkipGitSubmodules() bool`
+
+HasBuildSkipGitSubmodules returns a boolean if a field has been set.
 
 ### GetDeploymentTerminationGracePeriodSeconds
 

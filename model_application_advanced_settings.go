@@ -46,7 +46,9 @@ type ApplicationAdvancedSettings struct {
 	// define the max ram resources (in gib)
 	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// disable buildkit registry cache during build
-	BuildDisableBuildkitCache     *bool  `json:"build.disable_buildkit_cache,omitempty"`
+	BuildDisableBuildkitCache *bool `json:"build.disable_buildkit_cache,omitempty"`
+	// skip git submodules update when cloning the repository
+	BuildSkipGitSubmodules        *bool  `json:"build.skip_git_submodules,omitempty"`
 	NetworkIngressProxyBodySizeMb *int32 `json:"network.ingress.proxy_body_size_mb,omitempty"`
 	// When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available
 	NetworkIngressForceSslRedirect *bool   `json:"network.ingress.force_ssl_redirect,omitempty"`
@@ -574,6 +576,38 @@ func (o *ApplicationAdvancedSettings) HasBuildDisableBuildkitCache() bool {
 // SetBuildDisableBuildkitCache gets a reference to the given bool and assigns it to the BuildDisableBuildkitCache field.
 func (o *ApplicationAdvancedSettings) SetBuildDisableBuildkitCache(v bool) {
 	o.BuildDisableBuildkitCache = &v
+}
+
+// GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodules() bool {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		var ret bool
+		return ret
+	}
+	return *o.BuildSkipGitSubmodules
+}
+
+// GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		return nil, false
+	}
+	return o.BuildSkipGitSubmodules, true
+}
+
+// HasBuildSkipGitSubmodules returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasBuildSkipGitSubmodules() bool {
+	if o != nil && !IsNil(o.BuildSkipGitSubmodules) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+func (o *ApplicationAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
+	o.BuildSkipGitSubmodules = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -1729,6 +1763,9 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildDisableBuildkitCache) {
 		toSerialize["build.disable_buildkit_cache"] = o.BuildDisableBuildkitCache
 	}
+	if !IsNil(o.BuildSkipGitSubmodules) {
+		toSerialize["build.skip_git_submodules"] = o.BuildSkipGitSubmodules
+	}
 	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
 	}
@@ -1861,6 +1898,7 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.cpu_max_in_milli")
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "build.disable_buildkit_cache")
+		delete(additionalProperties, "build.skip_git_submodules")
 		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
 		delete(additionalProperties, "network.ingress.force_ssl_redirect")
 		delete(additionalProperties, "network.ingress.enable_cors")

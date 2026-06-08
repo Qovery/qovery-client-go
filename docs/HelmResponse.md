@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **IconUri** | **string** | Icon URI representing the helm service. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
 
 ## Methods
 
@@ -380,6 +381,41 @@ and a boolean to check if the value has been set.
 SetServiceType sets ServiceType field to given value.
 
 
+### GetBlueprintId
+
+`func (o *HelmResponse) GetBlueprintId() string`
+
+GetBlueprintId returns the BlueprintId field if non-nil, zero value otherwise.
+
+### GetBlueprintIdOk
+
+`func (o *HelmResponse) GetBlueprintIdOk() (*string, bool)`
+
+GetBlueprintIdOk returns a tuple with the BlueprintId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlueprintId
+
+`func (o *HelmResponse) SetBlueprintId(v string)`
+
+SetBlueprintId sets BlueprintId field to given value.
+
+### HasBlueprintId
+
+`func (o *HelmResponse) HasBlueprintId() bool`
+
+HasBlueprintId returns a boolean if a field has been set.
+
+### SetBlueprintIdNil
+
+`func (o *HelmResponse) SetBlueprintIdNil(b bool)`
+
+ SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+
+### UnsetBlueprintId
+`func (o *HelmResponse) UnsetBlueprintId()`
+
+UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

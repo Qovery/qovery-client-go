@@ -52,6 +52,7 @@ Name | Type | Description | Notes
 **Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
 **AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
@@ -1187,6 +1188,41 @@ and a boolean to check if the value has been set.
 SetValuesOverride sets ValuesOverride field to given value.
 
 
+### GetBlueprintId
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBlueprintId() string`
+
+GetBlueprintId returns the BlueprintId field if non-nil, zero value otherwise.
+
+### GetBlueprintIdOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBlueprintIdOk() (*string, bool)`
+
+GetBlueprintIdOk returns a tuple with the BlueprintId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBlueprintId
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetBlueprintId(v string)`
+
+SetBlueprintId sets BlueprintId field to given value.
+
+### HasBlueprintId
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasBlueprintId() bool`
+
+HasBlueprintId returns a boolean if a field has been set.
+
+### SetBlueprintIdNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetBlueprintIdNil(b bool)`
+
+ SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+
+### UnsetBlueprintId
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetBlueprintId()`
+
+UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
 ### GetAutoDeployConfig
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoDeployConfig() TerraformAutoDeployConfig`

@@ -45,6 +45,8 @@ type TerraformResponse struct {
 	// The key represent the action command name i.e: \"plan\" The value represent the extra arguments to pass to this command  i.e: {\"apply\", [\"-lock=false\"]} is going to prepend `-lock=false` to terraform apply commands
 	ActionExtraArguments map[string][]string                              `json:"action_extra_arguments"`
 	DockerfileFragment   NullableTerraformResponseAllOfDockerfileFragment `json:"dockerfile_fragment,omitempty"`
+	// The blueprint ID the service has been created from
+	BlueprintId          NullableString `json:"blueprintId,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -615,6 +617,49 @@ func (o *TerraformResponse) UnsetDockerfileFragment() {
 	o.DockerfileFragment.Unset()
 }
 
+// GetBlueprintId returns the BlueprintId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerraformResponse) GetBlueprintId() string {
+	if o == nil || IsNil(o.BlueprintId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BlueprintId.Get()
+}
+
+// GetBlueprintIdOk returns a tuple with the BlueprintId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerraformResponse) GetBlueprintIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BlueprintId.Get(), o.BlueprintId.IsSet()
+}
+
+// HasBlueprintId returns a boolean if a field has been set.
+func (o *TerraformResponse) HasBlueprintId() bool {
+	if o != nil && o.BlueprintId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBlueprintId gets a reference to the given NullableString and assigns it to the BlueprintId field.
+func (o *TerraformResponse) SetBlueprintId(v string) {
+	o.BlueprintId.Set(&v)
+}
+
+// SetBlueprintIdNil sets the value for BlueprintId to be an explicit nil
+func (o *TerraformResponse) SetBlueprintIdNil() {
+	o.BlueprintId.Set(nil)
+}
+
+// UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
+func (o *TerraformResponse) UnsetBlueprintId() {
+	o.BlueprintId.Unset()
+}
+
 func (o TerraformResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -654,6 +699,9 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["action_extra_arguments"] = o.ActionExtraArguments
 	if o.DockerfileFragment.IsSet() {
 		toSerialize["dockerfile_fragment"] = o.DockerfileFragment.Get()
+	}
+	if o.BlueprintId.IsSet() {
+		toSerialize["blueprintId"] = o.BlueprintId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -732,6 +780,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "use_cluster_credentials")
 		delete(additionalProperties, "action_extra_arguments")
 		delete(additionalProperties, "dockerfile_fragment")
+		delete(additionalProperties, "blueprintId")
 		o.AdditionalProperties = additionalProperties
 	}
 

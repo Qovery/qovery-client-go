@@ -27,6 +27,8 @@ type TerraformAdvancedSettings struct {
 	// define the max ram resources (in gib)
 	BuildRamMaxInGib           *int32 `json:"build.ram_max_in_gib,omitempty"`
 	BuildEphemeralStorageInGib *int32 `json:"build.ephemeral_storage_in_gib,omitempty"`
+	// skip git submodules update when cloning the repository
+	BuildSkipGitSubmodules *bool `json:"build.skip_git_submodules,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
@@ -185,6 +187,38 @@ func (o *TerraformAdvancedSettings) SetBuildEphemeralStorageInGib(v int32) {
 	o.BuildEphemeralStorageInGib = &v
 }
 
+// GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodules() bool {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		var ret bool
+		return ret
+	}
+	return *o.BuildSkipGitSubmodules
+}
+
+// GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
+	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
+		return nil, false
+	}
+	return o.BuildSkipGitSubmodules, true
+}
+
+// HasBuildSkipGitSubmodules returns a boolean if a field has been set.
+func (o *TerraformAdvancedSettings) HasBuildSkipGitSubmodules() bool {
+	if o != nil && !IsNil(o.BuildSkipGitSubmodules) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+func (o *TerraformAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
+	o.BuildSkipGitSubmodules = &v
+}
+
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
 func (o *TerraformAdvancedSettings) GetDeploymentTerminationGracePeriodSeconds() int32 {
 	if o == nil || IsNil(o.DeploymentTerminationGracePeriodSeconds) {
@@ -335,6 +369,9 @@ func (o TerraformAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildEphemeralStorageInGib) {
 		toSerialize["build.ephemeral_storage_in_gib"] = o.BuildEphemeralStorageInGib
 	}
+	if !IsNil(o.BuildSkipGitSubmodules) {
+		toSerialize["build.skip_git_submodules"] = o.BuildSkipGitSubmodules
+	}
 	if !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
@@ -373,6 +410,7 @@ func (o *TerraformAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.cpu_max_in_milli")
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "build.ephemeral_storage_in_gib")
+		delete(additionalProperties, "build.skip_git_submodules")
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "security.service_account_name")
