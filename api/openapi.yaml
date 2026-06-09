@@ -18707,6 +18707,58 @@ paths:
       summary: Get the blueprint service catalog
       tags:
       - Blueprint Main Calls
+  /environment/{environmentId}/blueprint:
+    post:
+      description: Instantiates a blueprint from the service catalog into the given
+        environment. Pass `deploy=true` to trigger an immediate deployment after creation.
+      operationId: createBlueprint
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Trigger a deployment immediately after creation
+        explode: true
+        in: query
+        name: deploy
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlueprintCreateRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintResponse'
+          description: Blueprint created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "422":
+          description: Malformed blueprint tag
+        "502":
+          description: Failed to fetch blueprint manifest from GitHub
+      summary: Create a blueprint service in an environment
+      tags:
+      - Blueprint Main Calls
 components:
   parameters:
     alertReceiverId:
@@ -19304,6 +19356,93 @@ components:
       required:
       - latestTag
       - serviceVersion
+      type: object
+    BlueprintCreateRequest:
+      example:
+        variables:
+        - isSecret: false
+          name: name
+          value: value
+        - isSecret: false
+          name: name
+          value: value
+        name: my-postgres
+        icon: https://cdn.qovery.com/icons/postgresql.svg
+        specOverrides:
+          key: ""
+        tag: aws/postgres/17/1.0.1
+      properties:
+        name:
+          description: Display name for the service
+          example: my-postgres
+          type: string
+        tag:
+          description: Catalog tag identifying the blueprint version
+          example: aws/postgres/17/1.0.1
+          type: string
+        icon:
+          description: Icon URL for the service
+          example: https://cdn.qovery.com/icons/postgresql.svg
+          format: uri
+          type: string
+        variables:
+          default: []
+          description: Variable overrides for the blueprint
+          items:
+            $ref: '#/components/schemas/BlueprintVariableRequest'
+          type: array
+        specOverrides:
+          additionalProperties: true
+          description: Partial spec overrides merged on top of the blueprint manifest
+          nullable: true
+          type: object
+      required:
+      - icon
+      - name
+      - tag
+      type: object
+    BlueprintVariableRequest:
+      example:
+        isSecret: false
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+        isSecret:
+          default: false
+          type: boolean
+      required:
+      - name
+      - value
+      type: object
+    BlueprintResponse:
+      example:
+        environmentId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        catalogUrl: https://openapi-generator.tech
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tag: aws/postgres/17/1.0.1
+      properties:
+        id:
+          format: uuid
+          type: string
+        catalogUrl:
+          description: URL to the blueprint catalog entry
+          format: uri
+          type: string
+        tag:
+          example: aws/postgres/17/1.0.1
+          type: string
+        environmentId:
+          format: uuid
+          type: string
+      required:
+      - catalogUrl
+      - environmentId
+      - id
+      - tag
       type: object
     ArgoCdCredentialsRequest:
       example:

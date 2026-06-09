@@ -172,6 +172,7 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**ListOrganizationInvoice**](docs/BillingAPI.md#listorganizationinvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
 *BillingAPI* | [**OrganizationDownloadAllInvoices**](docs/BillingAPI.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
 *BlueprintCatalogAPI* | [**GetBlueprintCatalogServiceReadme**](docs/BlueprintCatalogAPI.md#getblueprintcatalogservicereadme) | **Get** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
+*BlueprintMainCallsAPI* | [**CreateBlueprint**](docs/BlueprintMainCallsAPI.md#createblueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
 *CloudProviderAPI* | [**ListAWSFeatures**](docs/CloudProviderAPI.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
@@ -699,8 +700,11 @@ Class | Method | HTTP request | Description
  - [BillingInfoRequest](docs/BillingInfoRequest.md)
  - [BillingStatus](docs/BillingStatus.md)
  - [BlueprintCatalogResponse](docs/BlueprintCatalogResponse.md)
+ - [BlueprintCreateRequest](docs/BlueprintCreateRequest.md)
  - [BlueprintItem](docs/BlueprintItem.md)
  - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
+ - [BlueprintResponse](docs/BlueprintResponse.md)
+ - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
