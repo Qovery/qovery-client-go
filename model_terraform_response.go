@@ -46,7 +46,7 @@ type TerraformResponse struct {
 	ActionExtraArguments map[string][]string                              `json:"action_extra_arguments"`
 	DockerfileFragment   NullableTerraformResponseAllOfDockerfileFragment `json:"dockerfile_fragment,omitempty"`
 	// The blueprint ID the service has been created from
-	BlueprintId          NullableString `json:"blueprintId,omitempty"`
+	BlueprintId          NullableString `json:"blueprint_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -701,7 +701,7 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["dockerfile_fragment"] = o.DockerfileFragment.Get()
 	}
 	if o.BlueprintId.IsSet() {
-		toSerialize["blueprintId"] = o.BlueprintId.Get()
+		toSerialize["blueprint_id"] = o.BlueprintId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -780,7 +780,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "use_cluster_credentials")
 		delete(additionalProperties, "action_extra_arguments")
 		delete(additionalProperties, "dockerfile_fragment")
-		delete(additionalProperties, "blueprintId")
+		delete(additionalProperties, "blueprint_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

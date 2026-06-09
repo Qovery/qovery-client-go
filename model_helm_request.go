@@ -40,7 +40,7 @@ type HelmRequest struct {
 	// Icon URI representing the helm service.
 	IconUri *string `json:"icon_uri,omitempty"`
 	// The blueprint ID the service has been created from
-	BlueprintId          NullableString `json:"blueprintId,omitempty"`
+	BlueprintId          NullableString `json:"blueprint_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -476,7 +476,7 @@ func (o HelmRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
 	if o.BlueprintId.IsSet() {
-		toSerialize["blueprintId"] = o.BlueprintId.Get()
+		toSerialize["blueprint_id"] = o.BlueprintId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -536,7 +536,7 @@ func (o *HelmRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "allow_cluster_wide_resources")
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
-		delete(additionalProperties, "blueprintId")
+		delete(additionalProperties, "blueprint_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -46,7 +46,7 @@ type HelmResponse struct {
 	IconUri     string          `json:"icon_uri"`
 	ServiceType ServiceTypeEnum `json:"service_type"`
 	// The blueprint ID the service has been created from
-	BlueprintId          NullableString `json:"blueprintId,omitempty"`
+	BlueprintId          NullableString `json:"blueprint_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -581,7 +581,7 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["icon_uri"] = o.IconUri
 	toSerialize["service_type"] = o.ServiceType
 	if o.BlueprintId.IsSet() {
-		toSerialize["blueprintId"] = o.BlueprintId.Get()
+		toSerialize["blueprint_id"] = o.BlueprintId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -653,7 +653,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "values_override")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
-		delete(additionalProperties, "blueprintId")
+		delete(additionalProperties, "blueprint_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -32226,8 +32226,9 @@ components:
             type: string
             x-stoplight:
               id: 117p5u95nwx2p
-          blueprintId:
-            description: "The blueprint ID the service has been created from \n"
+          blueprint_id:
+            description: |
+              The blueprint ID the service has been created from
             format: uuid
             nullable: true
             type: string
@@ -32299,9 +32300,9 @@ components:
           namespace: namespace
           internal_port: 8080
           is_default: true
-        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         allow_cluster_wide_resources: false
         icon_uri: https://openapi-generator.tech
+        blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
     HelmResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -32356,7 +32357,7 @@ components:
               id: i2pvbugqsldhe
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
-          blueprintId:
+          blueprint_id:
             description: |
               The blueprint ID the service has been created from
             format: uuid
@@ -32413,8 +32414,8 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
+        blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         values_override:
           set:
           - - set
@@ -32570,8 +32571,8 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
+          blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           values_override:
             set:
             - - set
@@ -32663,8 +32664,8 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
+          blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           values_override:
             set:
             - - set
@@ -38689,8 +38690,8 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
-        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
+        blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_variables_source:
           tf_var_file_paths:
           - tf_var_file_paths
@@ -38773,8 +38774,9 @@ components:
             id: guh2uio7aztct
         dockerfile_fragment:
           $ref: '#/components/schemas/TerraformRequest_dockerfile_fragment'
-        blueprintId:
-          description: "The blueprint ID the service has been created from \n"
+        blueprint_id:
+          description: |
+            The blueprint ID the service has been created from
           format: uuid
           nullable: true
           type: string
@@ -38990,7 +38992,7 @@ components:
               id: rnkzwlf29dgb5
           dockerfile_fragment:
             $ref: '#/components/schemas/TerraformResponse_allOf_dockerfile_fragment'
-          blueprintId:
+          blueprint_id:
             description: |
               The blueprint ID the service has been created from
             format: uuid
@@ -39030,8 +39032,8 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
-        blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         icon_uri: https://openapi-generator.tech
+        blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_variables_source:
           tf_var_file_paths:
           - tf_var_file_paths
@@ -39517,8 +39519,8 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
+          blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_variables_source:
             tf_var_file_paths:
             - tf_var_file_paths
@@ -39578,8 +39580,8 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          blueprintId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           icon_uri: https://openapi-generator.tech
+          blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_variables_source:
             tf_var_file_paths:
             - tf_var_file_paths

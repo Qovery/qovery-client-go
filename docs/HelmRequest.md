@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **AllowClusterWideResources** | Pointer to **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [optional] [default to false]
 **ValuesOverride** | [**HelmRequestAllOfValuesOverride**](HelmRequestAllOfValuesOverride.md) |  | 
 **IconUri** | Pointer to **string** | Icon URI representing the helm service. | [optional] 
-**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from   | [optional] 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
 
 ## Methods
 

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **UseClusterCredentials** | Pointer to **bool** |  | [optional] 
 **ActionExtraArguments** | Pointer to **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | [optional] 
 **DockerfileFragment** | Pointer to [**NullableTerraformRequestDockerfileFragment**](TerraformRequestDockerfileFragment.md) |  | [optional] 
-**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from   | [optional] 
+**BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
 
 ## Methods
 
