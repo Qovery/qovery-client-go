@@ -767,7 +767,7 @@ Name | Type | Description  | Notes
 
 ## GetClusterKubeconfig
 
-> string GetClusterKubeconfig(ctx, organizationId, clusterId).WithTokenFromCli(withTokenFromCli).Execute()
+> string GetClusterKubeconfig(ctx, organizationId, clusterId).WithTokenFromCli(withTokenFromCli).ReadOnly(readOnly).Execute()
 
 Get cluster kubeconfig
 
@@ -787,10 +787,11 @@ func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 	withTokenFromCli := true // bool | If true, the user auth part will have an exec command with qovery cli (optional)
+	readOnly := true // bool | If true, the kubeconfig exec plugin will request a read-only token backed by a Kubernetes ServiceAccount with the view ClusterRole (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterKubeconfig(context.Background(), organizationId, clusterId).WithTokenFromCli(withTokenFromCli).Execute()
+	resp, r, err := apiClient.ClustersAPI.GetClusterKubeconfig(context.Background(), organizationId, clusterId).WithTokenFromCli(withTokenFromCli).ReadOnly(readOnly).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterKubeconfig``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -819,6 +820,7 @@ Name | Type | Description  | Notes
 
 
  **withTokenFromCli** | **bool** | If true, the user auth part will have an exec command with qovery cli | 
+ **readOnly** | **bool** | If true, the kubeconfig exec plugin will request a read-only token backed by a Kubernetes ServiceAccount with the view ClusterRole | 
 
 ### Return type
 

@@ -1280,11 +1280,18 @@ type ApiGetClusterKubeconfigRequest struct {
 	organizationId   string
 	clusterId        string
 	withTokenFromCli *bool
+	readOnly         *bool
 }
 
 // If true, the user auth part will have an exec command with qovery cli
 func (r ApiGetClusterKubeconfigRequest) WithTokenFromCli(withTokenFromCli bool) ApiGetClusterKubeconfigRequest {
 	r.withTokenFromCli = &withTokenFromCli
+	return r
+}
+
+// If true, the kubeconfig exec plugin will request a read-only token backed by a Kubernetes ServiceAccount with the view ClusterRole
+func (r ApiGetClusterKubeconfigRequest) ReadOnly(readOnly bool) ApiGetClusterKubeconfigRequest {
+	r.readOnly = &readOnly
 	return r
 }
 
@@ -1335,6 +1342,9 @@ func (a *ClustersAPIService) GetClusterKubeconfigExecute(r ApiGetClusterKubeconf
 
 	if r.withTokenFromCli != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "with_token_from_cli", r.withTokenFromCli, "")
+	}
+	if r.readOnly != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "read_only", r.readOnly, "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
