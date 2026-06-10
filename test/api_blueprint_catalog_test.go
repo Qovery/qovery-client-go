@@ -22,6 +22,23 @@ func Test_qovery_BlueprintCatalogAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test BlueprintCatalogAPIService GetBlueprintCatalogServiceManifest", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var provider string
+		var serviceFamily string
+		var serviceVersion string
+
+		resp, httpRes, err := apiClient.BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest(context.Background(), organizationId, provider, serviceFamily, serviceVersion).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BlueprintCatalogAPIService GetBlueprintCatalogServiceReadme", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

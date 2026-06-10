@@ -3564,6 +3564,67 @@ paths:
       summary: Get the README of a blueprint catalog service
       tags:
       - Blueprint Catalog
+  /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest:
+    get:
+      description: "Returns the list of form fields the console must display to deploy\
+        \ the selected blueprint, derived from the blueprint's qbm.yml manifest. Includes\
+        \ editable variables (overridable=true) and auto-sourced context variables\
+        \ (overridable=false, with a source)."
+      operationId: getBlueprintCatalogServiceManifest
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Cloud provider (e.g. aws, gcp, azure)"
+        explode: false
+        in: path
+        name: provider
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Service family (e.g. mysql, postgresql)"
+        explode: false
+        in: path
+        name: serviceFamily
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: "Service version (e.g. 8, 14)"
+        explode: false
+        in: path
+        name: serviceVersion
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getBlueprintCatalogServiceManifest_200_response'
+          description: The list of form fields to display for the selected blueprint
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "502":
+          description: Failed to fetch or parse the blueprint manifest from GitHub
+      summary: Get the input fields to display for a blueprint catalog service
+      tags:
+      - Blueprint Catalog
   /organization/{organizationId}/customRole:
     get:
       description: List organization custom roles
@@ -19461,6 +19522,100 @@ components:
       - environmentId
       - id
       - tag
+      type: object
+    BlueprintManifestVariableField:
+      description: An editable form input the user fills in (from spec.variables).
+      example:
+        allowed_values:
+        - allowed_values
+        - allowed_values
+        kind: variable
+        is_secret: true
+        name: db_password
+        description: description
+        default_value: default_value
+        type:
+          min: 0
+          max: 6
+          type: string
+        required: true
+      properties:
+        kind:
+          enum:
+          - variable
+          type: string
+        name:
+          example: db_password
+          type: string
+        type:
+          $ref: '#/components/schemas/BlueprintManifestFieldType'
+        required:
+          type: boolean
+        is_secret:
+          type: boolean
+        description:
+          nullable: true
+          type: string
+        allowed_values:
+          items:
+            type: string
+          nullable: true
+          type: array
+        default_value:
+          nullable: true
+          type: string
+      required:
+      - is_secret
+      - kind
+      - name
+      - required
+      - type
+      type: object
+    BlueprintManifestContextVariableField:
+      description: "An auto-sourced, read-only value (from spec.contextVariables);\
+        \ not user-editable."
+      properties:
+        kind:
+          enum:
+          - contextVariable
+          type: string
+        name:
+          example: region
+          type: string
+        source:
+          description: Origin of the auto-sourced value (e.g. cluster.region)
+          nullable: true
+          type: string
+      required:
+      - kind
+      - name
+      type: object
+    BlueprintManifestFieldType:
+      description: "Field type with its type-specific validation conditions, discriminated\
+        \ by \"type\"."
+      example:
+        min: 0
+        max: 6
+        type: string
+      properties:
+        type:
+          enum:
+          - string
+          - bool
+          - number
+          type: string
+        min:
+          description: "Lower bound, only present for number fields"
+          format: int64
+          nullable: true
+          type: integer
+        max:
+          description: "Upper bound, only present for number fields"
+          format: int64
+          nullable: true
+          type: integer
+      required:
+      - type
       type: object
     ArgoCdCredentialsRequest:
       example:
@@ -42145,6 +42300,50 @@ components:
           type: string
       required:
       - user_id
+      type: object
+    getBlueprintCatalogServiceManifest_200_response_results_inner:
+      discriminator:
+        mapping:
+          variable: '#/components/schemas/BlueprintManifestVariableField'
+          contextVariable: '#/components/schemas/BlueprintManifestContextVariableField'
+        propertyName: kind
+      oneOf:
+      - $ref: '#/components/schemas/BlueprintManifestVariableField'
+      - $ref: '#/components/schemas/BlueprintManifestContextVariableField'
+    getBlueprintCatalogServiceManifest_200_response:
+      example:
+        results:
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          kind: variable
+          is_secret: true
+          name: db_password
+          description: description
+          default_value: default_value
+          type:
+            min: 0
+            max: 6
+            type: string
+          required: true
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          kind: variable
+          is_secret: true
+          name: db_password
+          description: description
+          default_value: default_value
+          type:
+            min: 0
+            max: 6
+            type: string
+          required: true
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/getBlueprintCatalogServiceManifest_200_response_results_inner'
+          type: array
       type: object
     listOrganizationAnnotationsGroup_200_response:
       example:
