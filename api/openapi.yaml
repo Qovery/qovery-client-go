@@ -30547,7 +30547,7 @@ components:
       type: string
     APIVariableTypeEnum:
       description: |
-        type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET)
+        type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET, FILE_EXTERNAL_SECRET)
       enum:
       - VALUE
       - ALIAS
@@ -30555,6 +30555,7 @@ components:
       - BUILT_IN
       - FILE
       - EXTERNAL_SECRET
+      - FILE_EXTERNAL_SECRET
       type: string
     GcpCredentialsRequest:
       oneOf:

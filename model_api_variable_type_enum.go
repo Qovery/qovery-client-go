@@ -16,17 +16,18 @@ import (
 	"fmt"
 )
 
-// APIVariableTypeEnum type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET)
+// APIVariableTypeEnum type of the environment variable (VALUE, FILE, ALIAS, OVERRIDE, BUIT_IN, EXTERNAL_SECRET, FILE_EXTERNAL_SECRET)
 type APIVariableTypeEnum string
 
 // List of APIVariableTypeEnum
 const (
-	APIVARIABLETYPEENUM_VALUE           APIVariableTypeEnum = "VALUE"
-	APIVARIABLETYPEENUM_ALIAS           APIVariableTypeEnum = "ALIAS"
-	APIVARIABLETYPEENUM_OVERRIDE        APIVariableTypeEnum = "OVERRIDE"
-	APIVARIABLETYPEENUM_BUILT_IN        APIVariableTypeEnum = "BUILT_IN"
-	APIVARIABLETYPEENUM_FILE            APIVariableTypeEnum = "FILE"
-	APIVARIABLETYPEENUM_EXTERNAL_SECRET APIVariableTypeEnum = "EXTERNAL_SECRET"
+	APIVARIABLETYPEENUM_VALUE                APIVariableTypeEnum = "VALUE"
+	APIVARIABLETYPEENUM_ALIAS                APIVariableTypeEnum = "ALIAS"
+	APIVARIABLETYPEENUM_OVERRIDE             APIVariableTypeEnum = "OVERRIDE"
+	APIVARIABLETYPEENUM_BUILT_IN             APIVariableTypeEnum = "BUILT_IN"
+	APIVARIABLETYPEENUM_FILE                 APIVariableTypeEnum = "FILE"
+	APIVARIABLETYPEENUM_EXTERNAL_SECRET      APIVariableTypeEnum = "EXTERNAL_SECRET"
+	APIVARIABLETYPEENUM_FILE_EXTERNAL_SECRET APIVariableTypeEnum = "FILE_EXTERNAL_SECRET"
 )
 
 // All allowed values of APIVariableTypeEnum enum
@@ -37,6 +38,7 @@ var AllowedAPIVariableTypeEnumEnumValues = []APIVariableTypeEnum{
 	"BUILT_IN",
 	"FILE",
 	"EXTERNAL_SECRET",
+	"FILE_EXTERNAL_SECRET",
 }
 
 func (v *APIVariableTypeEnum) UnmarshalJSON(src []byte) error {
