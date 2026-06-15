@@ -22,6 +22,20 @@ func Test_qovery_BlueprintMainCallsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test BlueprintMainCallsAPIService CheckBlueprintUpdate", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var blueprintId string
+
+		resp, httpRes, err := apiClient.BlueprintMainCallsAPI.CheckBlueprintUpdate(context.Background(), blueprintId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BlueprintMainCallsAPIService CreateBlueprint", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -43,6 +57,20 @@ func Test_qovery_BlueprintMainCallsAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.BlueprintMainCallsAPI.GetBlueprintCatalog(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test BlueprintMainCallsAPIService PreviewBlueprintUpdate", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var blueprintId string
+
+		resp, httpRes, err := apiClient.BlueprintMainCallsAPI.PreviewBlueprintUpdate(context.Background(), blueprintId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

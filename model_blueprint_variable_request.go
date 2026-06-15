@@ -23,7 +23,7 @@ var _ MappedNullable = &BlueprintVariableRequest{}
 type BlueprintVariableRequest struct {
 	Name                 string `json:"name"`
 	Value                string `json:"value"`
-	IsSecret             *bool  `json:"isSecret,omitempty"`
+	IsSecret             *bool  `json:"is_secret,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -145,7 +145,7 @@ func (o BlueprintVariableRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["name"] = o.Name
 	toSerialize["value"] = o.Value
 	if !IsNil(o.IsSecret) {
-		toSerialize["isSecret"] = o.IsSecret
+		toSerialize["is_secret"] = o.IsSecret
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -193,7 +193,7 @@ func (o *BlueprintVariableRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "value")
-		delete(additionalProperties, "isSecret")
+		delete(additionalProperties, "is_secret")
 		o.AdditionalProperties = additionalProperties
 	}
 

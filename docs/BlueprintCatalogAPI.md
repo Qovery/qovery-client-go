@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetBlueprintCatalogServiceManifest
 
-> GetBlueprintCatalogServiceManifest200Response GetBlueprintCatalogServiceManifest(ctx, organizationId, provider, serviceFamily, serviceVersion).Execute()
+> GetBlueprintCatalogServiceManifest200Response GetBlueprintCatalogServiceManifest(ctx, organizationId, provider, serviceFamily, serviceVersion).EnvironmentId(environmentId).Execute()
 
 Get the input fields to display for a blueprint catalog service
 
@@ -34,10 +34,11 @@ func main() {
 	provider := "provider_example" // string | Cloud provider (e.g. aws, gcp, azure)
 	serviceFamily := "serviceFamily_example" // string | Service family (e.g. mysql, postgresql)
 	serviceVersion := "serviceVersion_example" // string | Service version (e.g. 8, 14)
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID used to resolve context variables
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest(context.Background(), organizationId, provider, serviceFamily, serviceVersion).Execute()
+	resp, r, err := apiClient.BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest(context.Background(), organizationId, provider, serviceFamily, serviceVersion).EnvironmentId(environmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -69,6 +70,7 @@ Name | Type | Description  | Notes
 
 
 
+ **environmentId** | **string** | Environment ID used to resolve context variables | 
 
 ### Return type
 
@@ -90,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## GetBlueprintCatalogServiceReadme
 
-> string GetBlueprintCatalogServiceReadme(ctx, organizationId, provider, serviceFamily, serviceVersion).Execute()
+> BlueprintReadmeResponse GetBlueprintCatalogServiceReadme(ctx, organizationId, provider, serviceFamily, serviceVersion).Execute()
 
 Get the README of a blueprint catalog service
 
@@ -119,7 +121,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintCatalogAPI.GetBlueprintCatalogServiceReadme``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBlueprintCatalogServiceReadme`: string
+	// response from `GetBlueprintCatalogServiceReadme`: BlueprintReadmeResponse
 	fmt.Fprintf(os.Stdout, "Response from `BlueprintCatalogAPI.GetBlueprintCatalogServiceReadme`: %v\n", resp)
 }
 ```
@@ -149,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**BlueprintReadmeResponse**](BlueprintReadmeResponse.md)
 
 ### Authorization
 
@@ -158,7 +160,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: text/markdown, text/plain
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

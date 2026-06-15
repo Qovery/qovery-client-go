@@ -22,6 +22,12 @@ var _ MappedNullable = &BlueprintManifestFieldType{}
 // BlueprintManifestFieldType Field type with its type-specific validation conditions, discriminated by \"type\".
 type BlueprintManifestFieldType struct {
 	Type string `json:"type"`
+	// Regex pattern, only present for string fields
+	Pattern NullableString `json:"pattern,omitempty"`
+	// Minimum length, only present for string fields
+	MinLength NullableInt64 `json:"min_length,omitempty"`
+	// Maximum length, only present for string fields
+	MaxLength NullableInt64 `json:"max_length,omitempty"`
 	// Lower bound, only present for number fields
 	Min NullableInt64 `json:"min,omitempty"`
 	// Upper bound, only present for number fields
@@ -71,6 +77,135 @@ func (o *BlueprintManifestFieldType) GetTypeOk() (*string, bool) {
 // SetType sets field value
 func (o *BlueprintManifestFieldType) SetType(v string) {
 	o.Type = v
+}
+
+// GetPattern returns the Pattern field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintManifestFieldType) GetPattern() string {
+	if o == nil || IsNil(o.Pattern.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Pattern.Get()
+}
+
+// GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintManifestFieldType) GetPatternOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Pattern.Get(), o.Pattern.IsSet()
+}
+
+// HasPattern returns a boolean if a field has been set.
+func (o *BlueprintManifestFieldType) HasPattern() bool {
+	if o != nil && o.Pattern.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetPattern gets a reference to the given NullableString and assigns it to the Pattern field.
+func (o *BlueprintManifestFieldType) SetPattern(v string) {
+	o.Pattern.Set(&v)
+}
+
+// SetPatternNil sets the value for Pattern to be an explicit nil
+func (o *BlueprintManifestFieldType) SetPatternNil() {
+	o.Pattern.Set(nil)
+}
+
+// UnsetPattern ensures that no value is present for Pattern, not even an explicit nil
+func (o *BlueprintManifestFieldType) UnsetPattern() {
+	o.Pattern.Unset()
+}
+
+// GetMinLength returns the MinLength field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintManifestFieldType) GetMinLength() int64 {
+	if o == nil || IsNil(o.MinLength.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.MinLength.Get()
+}
+
+// GetMinLengthOk returns a tuple with the MinLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintManifestFieldType) GetMinLengthOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MinLength.Get(), o.MinLength.IsSet()
+}
+
+// HasMinLength returns a boolean if a field has been set.
+func (o *BlueprintManifestFieldType) HasMinLength() bool {
+	if o != nil && o.MinLength.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMinLength gets a reference to the given NullableInt64 and assigns it to the MinLength field.
+func (o *BlueprintManifestFieldType) SetMinLength(v int64) {
+	o.MinLength.Set(&v)
+}
+
+// SetMinLengthNil sets the value for MinLength to be an explicit nil
+func (o *BlueprintManifestFieldType) SetMinLengthNil() {
+	o.MinLength.Set(nil)
+}
+
+// UnsetMinLength ensures that no value is present for MinLength, not even an explicit nil
+func (o *BlueprintManifestFieldType) UnsetMinLength() {
+	o.MinLength.Unset()
+}
+
+// GetMaxLength returns the MaxLength field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintManifestFieldType) GetMaxLength() int64 {
+	if o == nil || IsNil(o.MaxLength.Get()) {
+		var ret int64
+		return ret
+	}
+	return *o.MaxLength.Get()
+}
+
+// GetMaxLengthOk returns a tuple with the MaxLength field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintManifestFieldType) GetMaxLengthOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MaxLength.Get(), o.MaxLength.IsSet()
+}
+
+// HasMaxLength returns a boolean if a field has been set.
+func (o *BlueprintManifestFieldType) HasMaxLength() bool {
+	if o != nil && o.MaxLength.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMaxLength gets a reference to the given NullableInt64 and assigns it to the MaxLength field.
+func (o *BlueprintManifestFieldType) SetMaxLength(v int64) {
+	o.MaxLength.Set(&v)
+}
+
+// SetMaxLengthNil sets the value for MaxLength to be an explicit nil
+func (o *BlueprintManifestFieldType) SetMaxLengthNil() {
+	o.MaxLength.Set(nil)
+}
+
+// UnsetMaxLength ensures that no value is present for MaxLength, not even an explicit nil
+func (o *BlueprintManifestFieldType) UnsetMaxLength() {
+	o.MaxLength.Unset()
 }
 
 // GetMin returns the Min field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -170,6 +305,15 @@ func (o BlueprintManifestFieldType) MarshalJSON() ([]byte, error) {
 func (o BlueprintManifestFieldType) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["type"] = o.Type
+	if o.Pattern.IsSet() {
+		toSerialize["pattern"] = o.Pattern.Get()
+	}
+	if o.MinLength.IsSet() {
+		toSerialize["min_length"] = o.MinLength.Get()
+	}
+	if o.MaxLength.IsSet() {
+		toSerialize["max_length"] = o.MaxLength.Get()
+	}
 	if o.Min.IsSet() {
 		toSerialize["min"] = o.Min.Get()
 	}
@@ -220,6 +364,9 @@ func (o *BlueprintManifestFieldType) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "type")
+		delete(additionalProperties, "pattern")
+		delete(additionalProperties, "min_length")
+		delete(additionalProperties, "max_length")
 		delete(additionalProperties, "min")
 		delete(additionalProperties, "max")
 		o.AdditionalProperties = additionalProperties

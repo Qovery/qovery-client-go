@@ -23,9 +23,9 @@ var _ MappedNullable = &BlueprintResponse{}
 type BlueprintResponse struct {
 	Id string `json:"id"`
 	// URL to the blueprint catalog entry
-	CatalogUrl           string `json:"catalogUrl"`
+	CatalogUrl           string `json:"catalog_url"`
 	Tag                  string `json:"tag"`
-	EnvironmentId        string `json:"environmentId"`
+	EnvironmentId        string `json:"environment_id"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -159,9 +159,9 @@ func (o BlueprintResponse) MarshalJSON() ([]byte, error) {
 func (o BlueprintResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
-	toSerialize["catalogUrl"] = o.CatalogUrl
+	toSerialize["catalog_url"] = o.CatalogUrl
 	toSerialize["tag"] = o.Tag
-	toSerialize["environmentId"] = o.EnvironmentId
+	toSerialize["environment_id"] = o.EnvironmentId
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -176,9 +176,9 @@ func (o *BlueprintResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"id",
-		"catalogUrl",
+		"catalog_url",
 		"tag",
-		"environmentId",
+		"environment_id",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -209,9 +209,9 @@ func (o *BlueprintResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
-		delete(additionalProperties, "catalogUrl")
+		delete(additionalProperties, "catalog_url")
 		delete(additionalProperties, "tag")
-		delete(additionalProperties, "environmentId")
+		delete(additionalProperties, "environment_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

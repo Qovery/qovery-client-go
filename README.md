@@ -173,8 +173,10 @@ Class | Method | HTTP request | Description
 *BillingAPI* | [**OrganizationDownloadAllInvoices**](docs/BillingAPI.md#organizationdownloadallinvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
 *BlueprintCatalogAPI* | [**GetBlueprintCatalogServiceManifest**](docs/BlueprintCatalogAPI.md#getblueprintcatalogservicemanifest) | **Get** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/manifest | Get the input fields to display for a blueprint catalog service
 *BlueprintCatalogAPI* | [**GetBlueprintCatalogServiceReadme**](docs/BlueprintCatalogAPI.md#getblueprintcatalogservicereadme) | **Get** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
+*BlueprintMainCallsAPI* | [**CheckBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#checkblueprintupdate) | **Get** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
 *BlueprintMainCallsAPI* | [**CreateBlueprint**](docs/BlueprintMainCallsAPI.md#createblueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+*BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
 *CloudProviderAPI* | [**ListAWSFeatures**](docs/CloudProviderAPI.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderAPI* | [**ListAWSInstanceType**](docs/CloudProviderAPI.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
@@ -707,7 +709,15 @@ Class | Method | HTTP request | Description
  - [BlueprintManifestContextVariableField](docs/BlueprintManifestContextVariableField.md)
  - [BlueprintManifestFieldType](docs/BlueprintManifestFieldType.md)
  - [BlueprintManifestVariableField](docs/BlueprintManifestVariableField.md)
+ - [BlueprintReadmeResponse](docs/BlueprintReadmeResponse.md)
  - [BlueprintResponse](docs/BlueprintResponse.md)
+ - [BlueprintUpdateNewOptionalValue](docs/BlueprintUpdateNewOptionalValue.md)
+ - [BlueprintUpdateNewRequiredValue](docs/BlueprintUpdateNewRequiredValue.md)
+ - [BlueprintUpdatePreviewRequest](docs/BlueprintUpdatePreviewRequest.md)
+ - [BlueprintUpdatePreviewResponse](docs/BlueprintUpdatePreviewResponse.md)
+ - [BlueprintUpdateRemovedValue](docs/BlueprintUpdateRemovedValue.md)
+ - [BlueprintUpdateResponse](docs/BlueprintUpdateResponse.md)
+ - [BlueprintUpdateUpdatedValue](docs/BlueprintUpdateUpdatedValue.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)

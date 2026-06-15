@@ -30,6 +30,13 @@ type ApiGetBlueprintCatalogServiceManifestRequest struct {
 	provider       string
 	serviceFamily  string
 	serviceVersion string
+	environmentId  *string
+}
+
+// Environment ID used to resolve context variables
+func (r ApiGetBlueprintCatalogServiceManifestRequest) EnvironmentId(environmentId string) ApiGetBlueprintCatalogServiceManifestRequest {
+	r.environmentId = &environmentId
+	return r
 }
 
 func (r ApiGetBlueprintCatalogServiceManifestRequest) Execute() (*GetBlueprintCatalogServiceManifest200Response, *http.Response, error) {
@@ -84,7 +91,11 @@ func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceManifestExecute(r
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.environmentId == nil {
+		return localVarReturnValue, nil, reportError("environmentId is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -162,7 +173,7 @@ type ApiGetBlueprintCatalogServiceReadmeRequest struct {
 	serviceVersion string
 }
 
-func (r ApiGetBlueprintCatalogServiceReadmeRequest) Execute() (string, *http.Response, error) {
+func (r ApiGetBlueprintCatalogServiceReadmeRequest) Execute() (*BlueprintReadmeResponse, *http.Response, error) {
 	return r.ApiService.GetBlueprintCatalogServiceReadmeExecute(r)
 }
 
@@ -189,13 +200,13 @@ func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceReadme(ctx contex
 
 // Execute executes the request
 //
-//	@return string
-func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceReadmeExecute(r ApiGetBlueprintCatalogServiceReadmeRequest) (string, *http.Response, error) {
+//	@return BlueprintReadmeResponse
+func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceReadmeExecute(r ApiGetBlueprintCatalogServiceReadmeRequest) (*BlueprintReadmeResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue string
+		localVarReturnValue *BlueprintReadmeResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlueprintCatalogAPIService.GetBlueprintCatalogServiceReadme")
@@ -223,7 +234,7 @@ func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceReadmeExecute(r A
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"text/markdown", "text/plain"}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
