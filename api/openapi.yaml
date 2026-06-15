@@ -23773,6 +23773,9 @@ components:
           items:
             type: string
           type: array
+        private_nodes:
+          default: false
+          type: boolean
       required:
       - vpc_name
       type: object

@@ -27,6 +27,7 @@ type ClusterFeatureGcpExistingVpc struct {
 	IpRangeServicesName        NullableString `json:"ip_range_services_name,omitempty"`
 	IpRangePodsName            NullableString `json:"ip_range_pods_name,omitempty"`
 	AdditionalIpRangePodsNames []string       `json:"additional_ip_range_pods_names,omitempty"`
+	PrivateNodes               *bool          `json:"private_nodes,omitempty"`
 	AdditionalProperties       map[string]interface{}
 }
 
@@ -39,6 +40,8 @@ type _ClusterFeatureGcpExistingVpc ClusterFeatureGcpExistingVpc
 func NewClusterFeatureGcpExistingVpc(vpcName string) *ClusterFeatureGcpExistingVpc {
 	this := ClusterFeatureGcpExistingVpc{}
 	this.VpcName = vpcName
+	var privateNodes bool = false
+	this.PrivateNodes = &privateNodes
 	return &this
 }
 
@@ -47,6 +50,8 @@ func NewClusterFeatureGcpExistingVpc(vpcName string) *ClusterFeatureGcpExistingV
 // but it doesn't guarantee that properties required by API are set
 func NewClusterFeatureGcpExistingVpcWithDefaults() *ClusterFeatureGcpExistingVpc {
 	this := ClusterFeatureGcpExistingVpc{}
+	var privateNodes bool = false
+	this.PrivateNodes = &privateNodes
 	return &this
 }
 
@@ -278,6 +283,38 @@ func (o *ClusterFeatureGcpExistingVpc) SetAdditionalIpRangePodsNames(v []string)
 	o.AdditionalIpRangePodsNames = v
 }
 
+// GetPrivateNodes returns the PrivateNodes field value if set, zero value otherwise.
+func (o *ClusterFeatureGcpExistingVpc) GetPrivateNodes() bool {
+	if o == nil || IsNil(o.PrivateNodes) {
+		var ret bool
+		return ret
+	}
+	return *o.PrivateNodes
+}
+
+// GetPrivateNodesOk returns a tuple with the PrivateNodes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterFeatureGcpExistingVpc) GetPrivateNodesOk() (*bool, bool) {
+	if o == nil || IsNil(o.PrivateNodes) {
+		return nil, false
+	}
+	return o.PrivateNodes, true
+}
+
+// HasPrivateNodes returns a boolean if a field has been set.
+func (o *ClusterFeatureGcpExistingVpc) HasPrivateNodes() bool {
+	if o != nil && !IsNil(o.PrivateNodes) {
+		return true
+	}
+
+	return false
+}
+
+// SetPrivateNodes gets a reference to the given bool and assigns it to the PrivateNodes field.
+func (o *ClusterFeatureGcpExistingVpc) SetPrivateNodes(v bool) {
+	o.PrivateNodes = &v
+}
+
 func (o ClusterFeatureGcpExistingVpc) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -303,6 +340,9 @@ func (o ClusterFeatureGcpExistingVpc) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.AdditionalIpRangePodsNames) {
 		toSerialize["additional_ip_range_pods_names"] = o.AdditionalIpRangePodsNames
+	}
+	if !IsNil(o.PrivateNodes) {
+		toSerialize["private_nodes"] = o.PrivateNodes
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -353,6 +393,7 @@ func (o *ClusterFeatureGcpExistingVpc) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "ip_range_services_name")
 		delete(additionalProperties, "ip_range_pods_name")
 		delete(additionalProperties, "additional_ip_range_pods_names")
+		delete(additionalProperties, "private_nodes")
 		o.AdditionalProperties = additionalProperties
 	}
 
