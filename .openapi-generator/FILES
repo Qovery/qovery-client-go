@@ -230,8 +230,10 @@ docs/BlueprintUpdateNewRequiredValue.md
 docs/BlueprintUpdatePreviewRequest.md
 docs/BlueprintUpdatePreviewResponse.md
 docs/BlueprintUpdateRemovedValue.md
+docs/BlueprintUpdateRequest.md
 docs/BlueprintUpdateResponse.md
 docs/BlueprintUpdateUpdatedValue.md
+docs/BlueprintUpdateVariableValue.md
 docs/BlueprintVariableRequest.md
 docs/Budget.md
 docs/BuildModeEnum.md
@@ -1089,8 +1091,10 @@ model_blueprint_update_new_required_value.go
 model_blueprint_update_preview_request.go
 model_blueprint_update_preview_response.go
 model_blueprint_update_removed_value.go
+model_blueprint_update_request.go
 model_blueprint_update_response.go
 model_blueprint_update_updated_value.go
+model_blueprint_update_variable_value.go
 model_blueprint_variable_request.go
 model_budget.go
 model_build_mode_enum.go

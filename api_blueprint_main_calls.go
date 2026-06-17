@@ -420,7 +420,7 @@ func (r ApiPreviewBlueprintUpdateRequest) Execute() (*BlueprintUpdatePreviewResp
 /*
 PreviewBlueprintUpdate Preview a blueprint update
 
-Dry-runs a blueprint update by applying the given variables and spec overrides without persisting any changes. Returns a preview ID and the resolved service type.
+Dry-runs a blueprint update without persisting any changes. Returns a preview ID and the resolved service type. Both `variables` and `spec_overrides` follow RFC 7396 patch semantics.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param blueprintId Blueprint ID
@@ -479,6 +479,137 @@ func (a *BlueprintMainCallsAPIService) PreviewBlueprintUpdateExecute(r ApiPrevie
 	}
 	// body params
 	localVarPostBody = r.blueprintUpdatePreviewRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateBlueprintRequest struct {
+	ctx                    context.Context
+	ApiService             *BlueprintMainCallsAPIService
+	blueprintId            string
+	blueprintUpdateRequest *BlueprintUpdateRequest
+}
+
+func (r ApiUpdateBlueprintRequest) BlueprintUpdateRequest(blueprintUpdateRequest BlueprintUpdateRequest) ApiUpdateBlueprintRequest {
+	r.blueprintUpdateRequest = &blueprintUpdateRequest
+	return r
+}
+
+func (r ApiUpdateBlueprintRequest) Execute() (*BlueprintResponse, *http.Response, error) {
+	return r.ApiService.UpdateBlueprintExecute(r)
+}
+
+/*
+UpdateBlueprint Update a blueprint service
+
+Persists new values for a deployed blueprint service. Intended to be called after reviewing the diff returned by GET /blueprint/{blueprintId}/update.
+`variables` and `spec_overrides` follow JSON Merge Patch (RFC 7396) semantics: non-null value on a key upserts it, null value removes it, absent keys are left untouched, and passing null for the whole field leaves all existing values unchanged.
+**Note:** `name`, `tag`, and `icon` are required on every call.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param blueprintId Blueprint ID
+	@return ApiUpdateBlueprintRequest
+*/
+func (a *BlueprintMainCallsAPIService) UpdateBlueprint(ctx context.Context, blueprintId string) ApiUpdateBlueprintRequest {
+	return ApiUpdateBlueprintRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		blueprintId: blueprintId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return BlueprintResponse
+func (a *BlueprintMainCallsAPIService) UpdateBlueprintExecute(r ApiUpdateBlueprintRequest) (*BlueprintResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPatch
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *BlueprintResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlueprintMainCallsAPIService.UpdateBlueprint")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/blueprint/{blueprintId}"
+	localVarPath = strings.Replace(localVarPath, "{"+"blueprintId"+"}", url.PathEscape(parameterValueToString(r.blueprintId, "blueprintId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.blueprintUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("blueprintUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.blueprintUpdateRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

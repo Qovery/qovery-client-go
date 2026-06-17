@@ -177,6 +177,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsAPI* | [**CreateBlueprint**](docs/BlueprintMainCallsAPI.md#createblueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
+*BlueprintMainCallsAPI* | [**UpdateBlueprint**](docs/BlueprintMainCallsAPI.md#updateblueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
 *CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
 *CloudProviderAPI* | [**ListAWSFeatures**](docs/CloudProviderAPI.md#listawsfeatures) | **Get** /aws/clusterFeature | List AWS features available
 *CloudProviderAPI* | [**ListAWSInstanceType**](docs/CloudProviderAPI.md#listawsinstancetype) | **Get** /aws/instanceType | List AWS available instance types
@@ -716,8 +717,10 @@ Class | Method | HTTP request | Description
  - [BlueprintUpdatePreviewRequest](docs/BlueprintUpdatePreviewRequest.md)
  - [BlueprintUpdatePreviewResponse](docs/BlueprintUpdatePreviewResponse.md)
  - [BlueprintUpdateRemovedValue](docs/BlueprintUpdateRemovedValue.md)
+ - [BlueprintUpdateRequest](docs/BlueprintUpdateRequest.md)
  - [BlueprintUpdateResponse](docs/BlueprintUpdateResponse.md)
  - [BlueprintUpdateUpdatedValue](docs/BlueprintUpdateUpdatedValue.md)
+ - [BlueprintUpdateVariableValue](docs/BlueprintUpdateVariableValue.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)

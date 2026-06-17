@@ -16,11 +16,11 @@ import (
 	"fmt"
 )
 
-// checks if the BlueprintUpdatePreviewRequest type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &BlueprintUpdatePreviewRequest{}
+// checks if the BlueprintUpdateRequest type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &BlueprintUpdateRequest{}
 
-// BlueprintUpdatePreviewRequest struct for BlueprintUpdatePreviewRequest
-type BlueprintUpdatePreviewRequest struct {
+// BlueprintUpdateRequest struct for BlueprintUpdateRequest
+type BlueprintUpdateRequest struct {
 	// Display name for the service
 	Name string `json:"name"`
 	// Catalog tag identifying the target blueprint version
@@ -34,30 +34,30 @@ type BlueprintUpdatePreviewRequest struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _BlueprintUpdatePreviewRequest BlueprintUpdatePreviewRequest
+type _BlueprintUpdateRequest BlueprintUpdateRequest
 
-// NewBlueprintUpdatePreviewRequest instantiates a new BlueprintUpdatePreviewRequest object
+// NewBlueprintUpdateRequest instantiates a new BlueprintUpdateRequest object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdatePreviewRequest(name string, tag string, icon string) *BlueprintUpdatePreviewRequest {
-	this := BlueprintUpdatePreviewRequest{}
+func NewBlueprintUpdateRequest(name string, tag string, icon string) *BlueprintUpdateRequest {
+	this := BlueprintUpdateRequest{}
 	this.Name = name
 	this.Tag = tag
 	this.Icon = icon
 	return &this
 }
 
-// NewBlueprintUpdatePreviewRequestWithDefaults instantiates a new BlueprintUpdatePreviewRequest object
+// NewBlueprintUpdateRequestWithDefaults instantiates a new BlueprintUpdateRequest object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewBlueprintUpdatePreviewRequestWithDefaults() *BlueprintUpdatePreviewRequest {
-	this := BlueprintUpdatePreviewRequest{}
+func NewBlueprintUpdateRequestWithDefaults() *BlueprintUpdateRequest {
+	this := BlueprintUpdateRequest{}
 	return &this
 }
 
 // GetName returns the Name field value
-func (o *BlueprintUpdatePreviewRequest) GetName() string {
+func (o *BlueprintUpdateRequest) GetName() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -68,7 +68,7 @@ func (o *BlueprintUpdatePreviewRequest) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdatePreviewRequest) GetNameOk() (*string, bool) {
+func (o *BlueprintUpdateRequest) GetNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,12 +76,12 @@ func (o *BlueprintUpdatePreviewRequest) GetNameOk() (*string, bool) {
 }
 
 // SetName sets field value
-func (o *BlueprintUpdatePreviewRequest) SetName(v string) {
+func (o *BlueprintUpdateRequest) SetName(v string) {
 	o.Name = v
 }
 
 // GetTag returns the Tag field value
-func (o *BlueprintUpdatePreviewRequest) GetTag() string {
+func (o *BlueprintUpdateRequest) GetTag() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -92,7 +92,7 @@ func (o *BlueprintUpdatePreviewRequest) GetTag() string {
 
 // GetTagOk returns a tuple with the Tag field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdatePreviewRequest) GetTagOk() (*string, bool) {
+func (o *BlueprintUpdateRequest) GetTagOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +100,12 @@ func (o *BlueprintUpdatePreviewRequest) GetTagOk() (*string, bool) {
 }
 
 // SetTag sets field value
-func (o *BlueprintUpdatePreviewRequest) SetTag(v string) {
+func (o *BlueprintUpdateRequest) SetTag(v string) {
 	o.Tag = v
 }
 
 // GetIcon returns the Icon field value
-func (o *BlueprintUpdatePreviewRequest) GetIcon() string {
+func (o *BlueprintUpdateRequest) GetIcon() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -116,7 +116,7 @@ func (o *BlueprintUpdatePreviewRequest) GetIcon() string {
 
 // GetIconOk returns a tuple with the Icon field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdatePreviewRequest) GetIconOk() (*string, bool) {
+func (o *BlueprintUpdateRequest) GetIconOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -124,12 +124,12 @@ func (o *BlueprintUpdatePreviewRequest) GetIconOk() (*string, bool) {
 }
 
 // SetIcon sets field value
-func (o *BlueprintUpdatePreviewRequest) SetIcon(v string) {
+func (o *BlueprintUpdateRequest) SetIcon(v string) {
 	o.Icon = v
 }
 
 // GetVariables returns the Variables field value if set, zero value otherwise.
-func (o *BlueprintUpdatePreviewRequest) GetVariables() map[string]BlueprintUpdateVariableValue {
+func (o *BlueprintUpdateRequest) GetVariables() map[string]BlueprintUpdateVariableValue {
 	if o == nil || IsNil(o.Variables) {
 		var ret map[string]BlueprintUpdateVariableValue
 		return ret
@@ -139,7 +139,7 @@ func (o *BlueprintUpdatePreviewRequest) GetVariables() map[string]BlueprintUpdat
 
 // GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdatePreviewRequest) GetVariablesOk() (*map[string]BlueprintUpdateVariableValue, bool) {
+func (o *BlueprintUpdateRequest) GetVariablesOk() (*map[string]BlueprintUpdateVariableValue, bool) {
 	if o == nil || IsNil(o.Variables) {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *BlueprintUpdatePreviewRequest) GetVariablesOk() (*map[string]BlueprintU
 }
 
 // HasVariables returns a boolean if a field has been set.
-func (o *BlueprintUpdatePreviewRequest) HasVariables() bool {
+func (o *BlueprintUpdateRequest) HasVariables() bool {
 	if o != nil && !IsNil(o.Variables) {
 		return true
 	}
@@ -156,12 +156,12 @@ func (o *BlueprintUpdatePreviewRequest) HasVariables() bool {
 }
 
 // SetVariables gets a reference to the given map[string]BlueprintUpdateVariableValue and assigns it to the Variables field.
-func (o *BlueprintUpdatePreviewRequest) SetVariables(v map[string]BlueprintUpdateVariableValue) {
+func (o *BlueprintUpdateRequest) SetVariables(v map[string]BlueprintUpdateVariableValue) {
 	o.Variables = &v
 }
 
 // GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BlueprintUpdatePreviewRequest) GetSpecOverrides() map[string]interface{} {
+func (o *BlueprintUpdateRequest) GetSpecOverrides() map[string]interface{} {
 	if o == nil {
 		var ret map[string]interface{}
 		return ret
@@ -172,7 +172,7 @@ func (o *BlueprintUpdatePreviewRequest) GetSpecOverrides() map[string]interface{
 // GetSpecOverridesOk returns a tuple with the SpecOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BlueprintUpdatePreviewRequest) GetSpecOverridesOk() (map[string]interface{}, bool) {
+func (o *BlueprintUpdateRequest) GetSpecOverridesOk() (map[string]interface{}, bool) {
 	if o == nil || IsNil(o.SpecOverrides) {
 		return map[string]interface{}{}, false
 	}
@@ -180,7 +180,7 @@ func (o *BlueprintUpdatePreviewRequest) GetSpecOverridesOk() (map[string]interfa
 }
 
 // HasSpecOverrides returns a boolean if a field has been set.
-func (o *BlueprintUpdatePreviewRequest) HasSpecOverrides() bool {
+func (o *BlueprintUpdateRequest) HasSpecOverrides() bool {
 	if o != nil && !IsNil(o.SpecOverrides) {
 		return true
 	}
@@ -189,11 +189,11 @@ func (o *BlueprintUpdatePreviewRequest) HasSpecOverrides() bool {
 }
 
 // SetSpecOverrides gets a reference to the given map[string]interface{} and assigns it to the SpecOverrides field.
-func (o *BlueprintUpdatePreviewRequest) SetSpecOverrides(v map[string]interface{}) {
+func (o *BlueprintUpdateRequest) SetSpecOverrides(v map[string]interface{}) {
 	o.SpecOverrides = v
 }
 
-func (o BlueprintUpdatePreviewRequest) MarshalJSON() ([]byte, error) {
+func (o BlueprintUpdateRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -201,7 +201,7 @@ func (o BlueprintUpdatePreviewRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o BlueprintUpdatePreviewRequest) ToMap() (map[string]interface{}, error) {
+func (o BlueprintUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
 	toSerialize["tag"] = o.Tag
@@ -220,7 +220,7 @@ func (o BlueprintUpdatePreviewRequest) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *BlueprintUpdatePreviewRequest) UnmarshalJSON(data []byte) (err error) {
+func (o *BlueprintUpdateRequest) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -244,15 +244,15 @@ func (o *BlueprintUpdatePreviewRequest) UnmarshalJSON(data []byte) (err error) {
 		}
 	}
 
-	varBlueprintUpdatePreviewRequest := _BlueprintUpdatePreviewRequest{}
+	varBlueprintUpdateRequest := _BlueprintUpdateRequest{}
 
-	err = json.Unmarshal(data, &varBlueprintUpdatePreviewRequest)
+	err = json.Unmarshal(data, &varBlueprintUpdateRequest)
 
 	if err != nil {
 		return err
 	}
 
-	*o = BlueprintUpdatePreviewRequest(varBlueprintUpdatePreviewRequest)
+	*o = BlueprintUpdateRequest(varBlueprintUpdateRequest)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -268,38 +268,38 @@ func (o *BlueprintUpdatePreviewRequest) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableBlueprintUpdatePreviewRequest struct {
-	value *BlueprintUpdatePreviewRequest
+type NullableBlueprintUpdateRequest struct {
+	value *BlueprintUpdateRequest
 	isSet bool
 }
 
-func (v NullableBlueprintUpdatePreviewRequest) Get() *BlueprintUpdatePreviewRequest {
+func (v NullableBlueprintUpdateRequest) Get() *BlueprintUpdateRequest {
 	return v.value
 }
 
-func (v *NullableBlueprintUpdatePreviewRequest) Set(val *BlueprintUpdatePreviewRequest) {
+func (v *NullableBlueprintUpdateRequest) Set(val *BlueprintUpdateRequest) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableBlueprintUpdatePreviewRequest) IsSet() bool {
+func (v NullableBlueprintUpdateRequest) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableBlueprintUpdatePreviewRequest) Unset() {
+func (v *NullableBlueprintUpdateRequest) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableBlueprintUpdatePreviewRequest(val *BlueprintUpdatePreviewRequest) *NullableBlueprintUpdatePreviewRequest {
-	return &NullableBlueprintUpdatePreviewRequest{value: val, isSet: true}
+func NewNullableBlueprintUpdateRequest(val *BlueprintUpdateRequest) *NullableBlueprintUpdateRequest {
+	return &NullableBlueprintUpdateRequest{value: val, isSet: true}
 }
 
-func (v NullableBlueprintUpdatePreviewRequest) MarshalJSON() ([]byte, error) {
+func (v NullableBlueprintUpdateRequest) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableBlueprintUpdatePreviewRequest) UnmarshalJSON(src []byte) error {
+func (v *NullableBlueprintUpdateRequest) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

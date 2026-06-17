@@ -18888,9 +18888,9 @@ paths:
       - Blueprint Main Calls
   /blueprint/{blueprintId}/update/preview:
     post:
-      description: Dry-runs a blueprint update by applying the given variables and
-        spec overrides without persisting any changes. Returns a preview ID and the
-        resolved service type.
+      description: Dry-runs a blueprint update without persisting any changes. Returns
+        a preview ID and the resolved service type. Both `variables` and `spec_overrides`
+        follow RFC 7396 patch semantics.
       operationId: previewBlueprintUpdate
       parameters:
       - description: Blueprint ID
@@ -18926,6 +18926,47 @@ paths:
         "502":
           description: Failed to fetch blueprint manifest from GitHub
       summary: Preview a blueprint update
+      tags:
+      - Blueprint Main Calls
+  /blueprint/{blueprintId}:
+    patch:
+      description: |-
+        Persists new values for a deployed blueprint service. Intended to be called after reviewing the diff returned by GET /blueprint/{blueprintId}/update.
+        `variables` and `spec_overrides` follow JSON Merge Patch (RFC 7396) semantics: non-null value on a key upserts it, null value removes it, absent keys are left untouched, and passing null for the whole field leaves all existing values unchanged.
+        **Note:** `name`, `tag`, and `icon` are required on every call.
+      operationId: updateBlueprint
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlueprintUpdateRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintResponse'
+          description: Blueprint updated
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update a blueprint service
       tags:
       - Blueprint Main Calls
 components:
@@ -19597,6 +19638,21 @@ components:
       - name
       - value
       type: object
+    BlueprintUpdateVariableValue:
+      description: Value object for a variable in a patch map. Set the map value to
+        null to remove the variable.
+      example:
+        is_secret: false
+        value: value
+      properties:
+        value:
+          type: string
+        is_secret:
+          default: false
+          type: boolean
+      required:
+      - value
+      type: object
     BlueprintResponse:
       example:
         environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -19882,12 +19938,9 @@ components:
     BlueprintUpdatePreviewRequest:
       example:
         variables:
-        - is_secret: false
-          name: name
-          value: value
-        - is_secret: false
-          name: name
-          value: value
+          key:
+            is_secret: false
+            value: value
         name: my-postgres
         icon: https://cdn.qovery.com/icons/postgresql.svg
         spec_overrides:
@@ -19908,14 +19961,18 @@ components:
           format: uri
           type: string
         variables:
-          description: Variable overrides to apply in the preview
-          items:
-            $ref: '#/components/schemas/BlueprintVariableRequest'
-          nullable: true
-          type: array
+          additionalProperties:
+            $ref: '#/components/schemas/BlueprintUpdateVariableValue'
+          description: RFC 7396 patch map keyed by variable name. Non-null value upserts
+            the variable; null value removes it. Absent keys are left untouched. Omitting
+            the field entirely is equivalent to an empty map — no variables are modified.
+          type: object
         spec_overrides:
-          additionalProperties: true
-          description: Partial spec overrides merged on top of the blueprint manifest
+          additionalProperties:
+            nullable: true
+          description: JSON Merge Patch (RFC 7396) applied to the stored spec_overrides.
+            Keys with a non-null value are upserted; keys with a null value are removed.
+            Pass null or omit the field to leave all existing overrides unchanged.
           nullable: true
           type: object
       required:
@@ -19941,6 +19998,51 @@ components:
       required:
       - preview_id
       - service_type
+      type: object
+    BlueprintUpdateRequest:
+      example:
+        variables:
+          key:
+            is_secret: false
+            value: value
+        name: my-postgres
+        icon: https://cdn.qovery.com/icons/postgresql.svg
+        spec_overrides:
+          key: ""
+        tag: aws/postgres/17/1.1.0
+      properties:
+        name:
+          description: Display name for the service
+          example: my-postgres
+          type: string
+        tag:
+          description: Catalog tag identifying the target blueprint version
+          example: aws/postgres/17/1.1.0
+          type: string
+        icon:
+          description: Icon URL for the service
+          example: https://cdn.qovery.com/icons/postgresql.svg
+          format: uri
+          type: string
+        variables:
+          additionalProperties:
+            $ref: '#/components/schemas/BlueprintUpdateVariableValue'
+          description: RFC 7396 patch map keyed by variable name. Non-null value upserts
+            the variable; null value removes it. Absent keys are left untouched. Omitting
+            the field entirely is equivalent to an empty map — no variables are modified.
+          type: object
+        spec_overrides:
+          additionalProperties:
+            nullable: true
+          description: JSON Merge Patch (RFC 7396) applied to the stored spec_overrides.
+            Keys with a non-null value are upserted; keys with a null value are removed.
+            Pass null or omit the field to leave all existing overrides unchanged.
+          nullable: true
+          type: object
+      required:
+      - icon
+      - name
+      - tag
       type: object
     ArgoCdCredentialsRequest:
       example:

@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**CreateBlueprint**](BlueprintMainCallsAPI.md#CreateBlueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
 [**GetBlueprintCatalog**](BlueprintMainCallsAPI.md#GetBlueprintCatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 [**PreviewBlueprintUpdate**](BlueprintMainCallsAPI.md#PreviewBlueprintUpdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
+[**UpdateBlueprint**](BlueprintMainCallsAPI.md#UpdateBlueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
 
 
 
@@ -282,6 +283,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BlueprintUpdatePreviewResponse**](BlueprintUpdatePreviewResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateBlueprint
+
+> BlueprintResponse UpdateBlueprint(ctx, blueprintId).BlueprintUpdateRequest(blueprintUpdateRequest).Execute()
+
+Update a blueprint service
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	blueprintId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Blueprint ID
+	blueprintUpdateRequest := *openapiclient.NewBlueprintUpdateRequest("my-postgres", "aws/postgres/17/1.1.0", "https://cdn.qovery.com/icons/postgresql.svg") // BlueprintUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BlueprintMainCallsAPI.UpdateBlueprint(context.Background(), blueprintId).BlueprintUpdateRequest(blueprintUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.UpdateBlueprint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateBlueprint`: BlueprintResponse
+	fmt.Fprintf(os.Stdout, "Response from `BlueprintMainCallsAPI.UpdateBlueprint`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**blueprintId** | **string** | Blueprint ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateBlueprintRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **blueprintUpdateRequest** | [**BlueprintUpdateRequest**](BlueprintUpdateRequest.md) |  | 
+
+### Return type
+
+[**BlueprintResponse**](BlueprintResponse.md)
 
 ### Authorization
 
