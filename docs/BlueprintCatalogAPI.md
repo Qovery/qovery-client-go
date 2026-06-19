@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## GetBlueprintCatalogServiceManifest
 
-> GetBlueprintCatalogServiceManifest200Response GetBlueprintCatalogServiceManifest(ctx, organizationId, provider, serviceFamily, serviceVersion).EnvironmentId(environmentId).Execute()
+> BlueprintManifestResponse GetBlueprintCatalogServiceManifest(ctx, organizationId, provider, serviceFamily, serviceVersion).EnvironmentId(environmentId).Execute()
 
 Get the input fields to display for a blueprint catalog service
 
@@ -43,7 +43,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetBlueprintCatalogServiceManifest`: GetBlueprintCatalogServiceManifest200Response
+	// response from `GetBlueprintCatalogServiceManifest`: BlueprintManifestResponse
 	fmt.Fprintf(os.Stdout, "Response from `BlueprintCatalogAPI.GetBlueprintCatalogServiceManifest`: %v\n", resp)
 }
 ```
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GetBlueprintCatalogServiceManifest200Response**](GetBlueprintCatalogServiceManifest200Response.md)
+[**BlueprintManifestResponse**](BlueprintManifestResponse.md)
 
 ### Authorization
 

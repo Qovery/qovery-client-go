@@ -16,28 +16,28 @@ import (
 	"fmt"
 )
 
-// GetBlueprintCatalogServiceManifest200ResponseResultsInner - struct for GetBlueprintCatalogServiceManifest200ResponseResultsInner
-type GetBlueprintCatalogServiceManifest200ResponseResultsInner struct {
+// BlueprintManifestResponseResultsInner - struct for BlueprintManifestResponseResultsInner
+type BlueprintManifestResponseResultsInner struct {
 	BlueprintManifestContextVariableField *BlueprintManifestContextVariableField
 	BlueprintManifestVariableField        *BlueprintManifestVariableField
 }
 
-// BlueprintManifestContextVariableFieldAsGetBlueprintCatalogServiceManifest200ResponseResultsInner is a convenience function that returns BlueprintManifestContextVariableField wrapped in GetBlueprintCatalogServiceManifest200ResponseResultsInner
-func BlueprintManifestContextVariableFieldAsGetBlueprintCatalogServiceManifest200ResponseResultsInner(v *BlueprintManifestContextVariableField) GetBlueprintCatalogServiceManifest200ResponseResultsInner {
-	return GetBlueprintCatalogServiceManifest200ResponseResultsInner{
+// BlueprintManifestContextVariableFieldAsBlueprintManifestResponseResultsInner is a convenience function that returns BlueprintManifestContextVariableField wrapped in BlueprintManifestResponseResultsInner
+func BlueprintManifestContextVariableFieldAsBlueprintManifestResponseResultsInner(v *BlueprintManifestContextVariableField) BlueprintManifestResponseResultsInner {
+	return BlueprintManifestResponseResultsInner{
 		BlueprintManifestContextVariableField: v,
 	}
 }
 
-// BlueprintManifestVariableFieldAsGetBlueprintCatalogServiceManifest200ResponseResultsInner is a convenience function that returns BlueprintManifestVariableField wrapped in GetBlueprintCatalogServiceManifest200ResponseResultsInner
-func BlueprintManifestVariableFieldAsGetBlueprintCatalogServiceManifest200ResponseResultsInner(v *BlueprintManifestVariableField) GetBlueprintCatalogServiceManifest200ResponseResultsInner {
-	return GetBlueprintCatalogServiceManifest200ResponseResultsInner{
+// BlueprintManifestVariableFieldAsBlueprintManifestResponseResultsInner is a convenience function that returns BlueprintManifestVariableField wrapped in BlueprintManifestResponseResultsInner
+func BlueprintManifestVariableFieldAsBlueprintManifestResponseResultsInner(v *BlueprintManifestVariableField) BlueprintManifestResponseResultsInner {
+	return BlueprintManifestResponseResultsInner{
 		BlueprintManifestVariableField: v,
 	}
 }
 
 // Unmarshal JSON data into one of the pointers in the struct
-func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJSON(data []byte) error {
+func (dst *BlueprintManifestResponseResultsInner) UnmarshalJSON(data []byte) error {
 	var err error
 	// use discriminator value to speed up the lookup
 	var jsonDict map[string]interface{}
@@ -54,7 +54,7 @@ func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJ
 			return nil // data stored in dst.BlueprintManifestContextVariableField, return on the first match
 		} else {
 			dst.BlueprintManifestContextVariableField = nil
-			return fmt.Errorf("failed to unmarshal GetBlueprintCatalogServiceManifest200ResponseResultsInner as BlueprintManifestContextVariableField: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal BlueprintManifestResponseResultsInner as BlueprintManifestContextVariableField: %s", err.Error())
 		}
 	}
 
@@ -66,7 +66,7 @@ func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJ
 			return nil // data stored in dst.BlueprintManifestVariableField, return on the first match
 		} else {
 			dst.BlueprintManifestVariableField = nil
-			return fmt.Errorf("failed to unmarshal GetBlueprintCatalogServiceManifest200ResponseResultsInner as BlueprintManifestVariableField: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal BlueprintManifestResponseResultsInner as BlueprintManifestVariableField: %s", err.Error())
 		}
 	}
 
@@ -78,7 +78,7 @@ func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJ
 			return nil // data stored in dst.BlueprintManifestContextVariableField, return on the first match
 		} else {
 			dst.BlueprintManifestContextVariableField = nil
-			return fmt.Errorf("failed to unmarshal GetBlueprintCatalogServiceManifest200ResponseResultsInner as BlueprintManifestContextVariableField: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal BlueprintManifestResponseResultsInner as BlueprintManifestContextVariableField: %s", err.Error())
 		}
 	}
 
@@ -90,7 +90,7 @@ func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJ
 			return nil // data stored in dst.BlueprintManifestVariableField, return on the first match
 		} else {
 			dst.BlueprintManifestVariableField = nil
-			return fmt.Errorf("failed to unmarshal GetBlueprintCatalogServiceManifest200ResponseResultsInner as BlueprintManifestVariableField: %s", err.Error())
+			return fmt.Errorf("failed to unmarshal BlueprintManifestResponseResultsInner as BlueprintManifestVariableField: %s", err.Error())
 		}
 	}
 
@@ -98,7 +98,7 @@ func (dst *GetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJ
 }
 
 // Marshal data from the first non-nil pointers in the struct to JSON
-func (src GetBlueprintCatalogServiceManifest200ResponseResultsInner) MarshalJSON() ([]byte, error) {
+func (src BlueprintManifestResponseResultsInner) MarshalJSON() ([]byte, error) {
 	if src.BlueprintManifestContextVariableField != nil {
 		return json.Marshal(&src.BlueprintManifestContextVariableField)
 	}
@@ -111,7 +111,7 @@ func (src GetBlueprintCatalogServiceManifest200ResponseResultsInner) MarshalJSON
 }
 
 // Get the actual instance
-func (obj *GetBlueprintCatalogServiceManifest200ResponseResultsInner) GetActualInstance() interface{} {
+func (obj *BlueprintManifestResponseResultsInner) GetActualInstance() interface{} {
 	if obj == nil {
 		return nil
 	}
@@ -127,38 +127,38 @@ func (obj *GetBlueprintCatalogServiceManifest200ResponseResultsInner) GetActualI
 	return nil
 }
 
-type NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner struct {
-	value *GetBlueprintCatalogServiceManifest200ResponseResultsInner
+type NullableBlueprintManifestResponseResultsInner struct {
+	value *BlueprintManifestResponseResultsInner
 	isSet bool
 }
 
-func (v NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) Get() *GetBlueprintCatalogServiceManifest200ResponseResultsInner {
+func (v NullableBlueprintManifestResponseResultsInner) Get() *BlueprintManifestResponseResultsInner {
 	return v.value
 }
 
-func (v *NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) Set(val *GetBlueprintCatalogServiceManifest200ResponseResultsInner) {
+func (v *NullableBlueprintManifestResponseResultsInner) Set(val *BlueprintManifestResponseResultsInner) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) IsSet() bool {
+func (v NullableBlueprintManifestResponseResultsInner) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) Unset() {
+func (v *NullableBlueprintManifestResponseResultsInner) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableGetBlueprintCatalogServiceManifest200ResponseResultsInner(val *GetBlueprintCatalogServiceManifest200ResponseResultsInner) *NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner {
-	return &NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner{value: val, isSet: true}
+func NewNullableBlueprintManifestResponseResultsInner(val *BlueprintManifestResponseResultsInner) *NullableBlueprintManifestResponseResultsInner {
+	return &NullableBlueprintManifestResponseResultsInner{value: val, isSet: true}
 }
 
-func (v NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) MarshalJSON() ([]byte, error) {
+func (v NullableBlueprintManifestResponseResultsInner) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableGetBlueprintCatalogServiceManifest200ResponseResultsInner) UnmarshalJSON(src []byte) error {
+func (v *NullableBlueprintManifestResponseResultsInner) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -11,12 +11,13 @@ Name | Type | Description | Notes
 **NowRequiredValues** | [**[]BlueprintUpdateNewRequiredValue**](BlueprintUpdateNewRequiredValue.md) | Variables that were optional but are now required in the latest version | 
 **UpdatedValues** | [**[]BlueprintUpdateUpdatedValue**](BlueprintUpdateUpdatedValue.md) | Variables whose default value changed between the current and latest versions | 
 **RemovedValues** | [**[]BlueprintUpdateRemovedValue**](BlueprintUpdateRemovedValue.md) | Variables that no longer exist in the latest version | 
+**EngineDiff** | [**BlueprintUpdateEngineDiff**](BlueprintUpdateEngineDiff.md) |  | 
 
 ## Methods
 
 ### NewBlueprintUpdateResponse
 
-`func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, ) *BlueprintUpdateResponse`
+`func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, ) *BlueprintUpdateResponse`
 
 NewBlueprintUpdateResponse instantiates a new BlueprintUpdateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -169,6 +170,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintUpdateResponse) SetRemovedValues(v []BlueprintUpdateRemovedValue)`
 
 SetRemovedValues sets RemovedValues field to given value.
+
+
+### GetEngineDiff
+
+`func (o *BlueprintUpdateResponse) GetEngineDiff() BlueprintUpdateEngineDiff`
+
+GetEngineDiff returns the EngineDiff field if non-nil, zero value otherwise.
+
+### GetEngineDiffOk
+
+`func (o *BlueprintUpdateResponse) GetEngineDiffOk() (*BlueprintUpdateEngineDiff, bool)`
+
+GetEngineDiffOk returns a tuple with the EngineDiff field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEngineDiff
+
+`func (o *BlueprintUpdateResponse) SetEngineDiff(v BlueprintUpdateEngineDiff)`
+
+SetEngineDiff sets EngineDiff field to given value.
 
 
 

@@ -33,6 +33,7 @@ type BlueprintUpdateResponse struct {
 	UpdatedValues []BlueprintUpdateUpdatedValue `json:"updated_values"`
 	// Variables that no longer exist in the latest version
 	RemovedValues        []BlueprintUpdateRemovedValue `json:"removed_values"`
+	EngineDiff           BlueprintUpdateEngineDiff     `json:"engine_diff"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +43,7 @@ type _BlueprintUpdateResponse BlueprintUpdateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue) *BlueprintUpdateResponse {
+func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff) *BlueprintUpdateResponse {
 	this := BlueprintUpdateResponse{}
 	this.IsUpToDate = isUpToDate
 	this.LatestTag = latestTag
@@ -51,6 +52,7 @@ func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredVa
 	this.NowRequiredValues = nowRequiredValues
 	this.UpdatedValues = updatedValues
 	this.RemovedValues = removedValues
+	this.EngineDiff = engineDiff
 	return &this
 }
 
@@ -230,6 +232,30 @@ func (o *BlueprintUpdateResponse) SetRemovedValues(v []BlueprintUpdateRemovedVal
 	o.RemovedValues = v
 }
 
+// GetEngineDiff returns the EngineDiff field value
+func (o *BlueprintUpdateResponse) GetEngineDiff() BlueprintUpdateEngineDiff {
+	if o == nil {
+		var ret BlueprintUpdateEngineDiff
+		return ret
+	}
+
+	return o.EngineDiff
+}
+
+// GetEngineDiffOk returns a tuple with the EngineDiff field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateResponse) GetEngineDiffOk() (*BlueprintUpdateEngineDiff, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EngineDiff, true
+}
+
+// SetEngineDiff sets field value
+func (o *BlueprintUpdateResponse) SetEngineDiff(v BlueprintUpdateEngineDiff) {
+	o.EngineDiff = v
+}
+
 func (o BlueprintUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -247,6 +273,7 @@ func (o BlueprintUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["now_required_values"] = o.NowRequiredValues
 	toSerialize["updated_values"] = o.UpdatedValues
 	toSerialize["removed_values"] = o.RemovedValues
+	toSerialize["engine_diff"] = o.EngineDiff
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -267,6 +294,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 		"now_required_values",
 		"updated_values",
 		"removed_values",
+		"engine_diff",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -303,6 +331,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "now_required_values")
 		delete(additionalProperties, "updated_values")
 		delete(additionalProperties, "removed_values")
+		delete(additionalProperties, "engine_diff")
 		o.AdditionalProperties = additionalProperties
 	}
 

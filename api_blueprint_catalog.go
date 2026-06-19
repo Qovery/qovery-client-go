@@ -39,7 +39,7 @@ func (r ApiGetBlueprintCatalogServiceManifestRequest) EnvironmentId(environmentI
 	return r
 }
 
-func (r ApiGetBlueprintCatalogServiceManifestRequest) Execute() (*GetBlueprintCatalogServiceManifest200Response, *http.Response, error) {
+func (r ApiGetBlueprintCatalogServiceManifestRequest) Execute() (*BlueprintManifestResponse, *http.Response, error) {
 	return r.ApiService.GetBlueprintCatalogServiceManifestExecute(r)
 }
 
@@ -68,13 +68,13 @@ func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceManifest(ctx cont
 
 // Execute executes the request
 //
-//	@return GetBlueprintCatalogServiceManifest200Response
-func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceManifestExecute(r ApiGetBlueprintCatalogServiceManifestRequest) (*GetBlueprintCatalogServiceManifest200Response, *http.Response, error) {
+//	@return BlueprintManifestResponse
+func (a *BlueprintCatalogAPIService) GetBlueprintCatalogServiceManifestExecute(r ApiGetBlueprintCatalogServiceManifestRequest) (*BlueprintManifestResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *GetBlueprintCatalogServiceManifest200Response
+		localVarReturnValue *BlueprintManifestResponse
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BlueprintCatalogAPIService.GetBlueprintCatalogServiceManifest")

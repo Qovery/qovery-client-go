@@ -402,14 +402,14 @@ func (a *BlueprintMainCallsAPIService) GetBlueprintCatalogExecute(r ApiGetBluepr
 }
 
 type ApiPreviewBlueprintUpdateRequest struct {
-	ctx                           context.Context
-	ApiService                    *BlueprintMainCallsAPIService
-	blueprintId                   string
-	blueprintUpdatePreviewRequest *BlueprintUpdatePreviewRequest
+	ctx                    context.Context
+	ApiService             *BlueprintMainCallsAPIService
+	blueprintId            string
+	blueprintUpdateRequest *BlueprintUpdateRequest
 }
 
-func (r ApiPreviewBlueprintUpdateRequest) BlueprintUpdatePreviewRequest(blueprintUpdatePreviewRequest BlueprintUpdatePreviewRequest) ApiPreviewBlueprintUpdateRequest {
-	r.blueprintUpdatePreviewRequest = &blueprintUpdatePreviewRequest
+func (r ApiPreviewBlueprintUpdateRequest) BlueprintUpdateRequest(blueprintUpdateRequest BlueprintUpdateRequest) ApiPreviewBlueprintUpdateRequest {
+	r.blueprintUpdateRequest = &blueprintUpdateRequest
 	return r
 }
 
@@ -456,8 +456,8 @@ func (a *BlueprintMainCallsAPIService) PreviewBlueprintUpdateExecute(r ApiPrevie
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.blueprintUpdatePreviewRequest == nil {
-		return localVarReturnValue, nil, reportError("blueprintUpdatePreviewRequest is required and must be specified")
+	if r.blueprintUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("blueprintUpdateRequest is required and must be specified")
 	}
 
 	// to determine the Content-Type header
@@ -478,7 +478,7 @@ func (a *BlueprintMainCallsAPIService) PreviewBlueprintUpdateExecute(r ApiPrevie
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.blueprintUpdatePreviewRequest
+	localVarPostBody = r.blueprintUpdateRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

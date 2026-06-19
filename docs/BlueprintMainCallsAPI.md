@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 ## PreviewBlueprintUpdate
 
-> BlueprintUpdatePreviewResponse PreviewBlueprintUpdate(ctx, blueprintId).BlueprintUpdatePreviewRequest(blueprintUpdatePreviewRequest).Execute()
+> BlueprintUpdatePreviewResponse PreviewBlueprintUpdate(ctx, blueprintId).BlueprintUpdateRequest(blueprintUpdateRequest).Execute()
 
 Preview a blueprint update
 
@@ -248,11 +248,11 @@ import (
 
 func main() {
 	blueprintId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Blueprint ID
-	blueprintUpdatePreviewRequest := *openapiclient.NewBlueprintUpdatePreviewRequest("my-postgres", "aws/postgres/17/1.1.0", "https://cdn.qovery.com/icons/postgresql.svg") // BlueprintUpdatePreviewRequest | 
+	blueprintUpdateRequest := *openapiclient.NewBlueprintUpdateRequest("my-postgres", "aws/postgres/17/1.1.0", "https://cdn.qovery.com/icons/postgresql.svg") // BlueprintUpdateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BlueprintMainCallsAPI.PreviewBlueprintUpdate(context.Background(), blueprintId).BlueprintUpdatePreviewRequest(blueprintUpdatePreviewRequest).Execute()
+	resp, r, err := apiClient.BlueprintMainCallsAPI.PreviewBlueprintUpdate(context.Background(), blueprintId).BlueprintUpdateRequest(blueprintUpdateRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.PreviewBlueprintUpdate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -278,7 +278,7 @@ Other parameters are passed through a pointer to a apiPreviewBlueprintUpdateRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **blueprintUpdatePreviewRequest** | [**BlueprintUpdatePreviewRequest**](BlueprintUpdatePreviewRequest.md) |  | 
+ **blueprintUpdateRequest** | [**BlueprintUpdateRequest**](BlueprintUpdateRequest.md) |  | 
 
 ### Return type
 
