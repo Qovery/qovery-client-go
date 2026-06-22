@@ -36,6 +36,8 @@ type ApplicationRequest struct {
 	// unit is MB. 1024 MB = 1GB
 	Memory *int32 `json:"memory,omitempty"`
 	Gpu    *int32 `json:"gpu,omitempty"`
+	// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
+	EphemeralStorageInGib *int32 `json:"ephemeral_storage_in_gib,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -432,6 +434,38 @@ func (o *ApplicationRequest) HasGpu() bool {
 // SetGpu gets a reference to the given int32 and assigns it to the Gpu field.
 func (o *ApplicationRequest) SetGpu(v int32) {
 	o.Gpu = &v
+}
+
+// GetEphemeralStorageInGib returns the EphemeralStorageInGib field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetEphemeralStorageInGib() int32 {
+	if o == nil || IsNil(o.EphemeralStorageInGib) {
+		var ret int32
+		return ret
+	}
+	return *o.EphemeralStorageInGib
+}
+
+// GetEphemeralStorageInGibOk returns a tuple with the EphemeralStorageInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetEphemeralStorageInGibOk() (*int32, bool) {
+	if o == nil || IsNil(o.EphemeralStorageInGib) {
+		return nil, false
+	}
+	return o.EphemeralStorageInGib, true
+}
+
+// HasEphemeralStorageInGib returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasEphemeralStorageInGib() bool {
+	if o != nil && !IsNil(o.EphemeralStorageInGib) {
+		return true
+	}
+
+	return false
+}
+
+// SetEphemeralStorageInGib gets a reference to the given int32 and assigns it to the EphemeralStorageInGib field.
+func (o *ApplicationRequest) SetEphemeralStorageInGib(v int32) {
+	o.EphemeralStorageInGib = &v
 }
 
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
@@ -868,6 +902,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Gpu) {
 		toSerialize["gpu"] = o.Gpu
 	}
+	if !IsNil(o.EphemeralStorageInGib) {
+		toSerialize["ephemeral_storage_in_gib"] = o.EphemeralStorageInGib
+	}
 	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
@@ -957,6 +994,7 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "gpu")
+		delete(additionalProperties, "ephemeral_storage_in_gib")
 		delete(additionalProperties, "min_running_instances")
 		delete(additionalProperties, "max_running_instances")
 		delete(additionalProperties, "healthchecks")

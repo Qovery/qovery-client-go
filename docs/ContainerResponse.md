@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **Gpu** | **int32** |  | [default to 0]
+**EphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage of the service in GiB. When omitted, the platform default is used. | [optional] 
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
@@ -463,6 +464,31 @@ and a boolean to check if the value has been set.
 
 SetGpu sets Gpu field to given value.
 
+
+### GetEphemeralStorageInGib
+
+`func (o *ContainerResponse) GetEphemeralStorageInGib() int32`
+
+GetEphemeralStorageInGib returns the EphemeralStorageInGib field if non-nil, zero value otherwise.
+
+### GetEphemeralStorageInGibOk
+
+`func (o *ContainerResponse) GetEphemeralStorageInGibOk() (*int32, bool)`
+
+GetEphemeralStorageInGibOk returns a tuple with the EphemeralStorageInGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEphemeralStorageInGib
+
+`func (o *ContainerResponse) SetEphemeralStorageInGib(v int32)`
+
+SetEphemeralStorageInGib sets EphemeralStorageInGib field to given value.
+
+### HasEphemeralStorageInGib
+
+`func (o *ContainerResponse) HasEphemeralStorageInGib() bool`
+
+HasEphemeralStorageInGib returns a boolean if a field has been set.
 
 ### GetMinRunningInstances
 

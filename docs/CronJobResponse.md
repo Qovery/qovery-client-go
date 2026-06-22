@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **Gpu** | **int32** |  | [default to 0]
+**EphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage of the service in GiB. When omitted, the platform default is used. | [optional] 
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] 
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
@@ -298,6 +299,31 @@ and a boolean to check if the value has been set.
 
 SetGpu sets Gpu field to given value.
 
+
+### GetEphemeralStorageInGib
+
+`func (o *CronJobResponse) GetEphemeralStorageInGib() int32`
+
+GetEphemeralStorageInGib returns the EphemeralStorageInGib field if non-nil, zero value otherwise.
+
+### GetEphemeralStorageInGibOk
+
+`func (o *CronJobResponse) GetEphemeralStorageInGibOk() (*int32, bool)`
+
+GetEphemeralStorageInGibOk returns a tuple with the EphemeralStorageInGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEphemeralStorageInGib
+
+`func (o *CronJobResponse) SetEphemeralStorageInGib(v int32)`
+
+SetEphemeralStorageInGib sets EphemeralStorageInGib field to given value.
+
+### HasEphemeralStorageInGib
+
+`func (o *CronJobResponse) HasEphemeralStorageInGib() bool`
+
+HasEphemeralStorageInGib returns a boolean if a field has been set.
 
 ### GetMaxNbRestart
 

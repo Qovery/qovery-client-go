@@ -21193,6 +21193,12 @@ components:
             type: integer
             x-stoplight:
               id: 3n3pebmhkah3k
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           min_running_instances:
             default: 1
             description: |
@@ -21404,6 +21410,7 @@ components:
         entrypoint: entrypoint
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        ephemeral_storage_in_gib: 10
         build_mode: DOCKER
         cpu: 1250
         dockerfile_path: dockerfile_path
@@ -21543,6 +21550,12 @@ components:
             type: integer
             x-stoplight:
               id: tkd7it621esyj
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           min_running_instances:
             default: 1
             description: |
@@ -21721,6 +21734,7 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
+        ephemeral_storage_in_gib: 10
     ApplicationGitRepository:
       example:
         owner: John Doe
@@ -21973,6 +21987,12 @@ components:
             type: integer
             x-stoplight:
               id: 1jq9ic2dbgx3l
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           min_running_instances:
             default: 1
             description: |
@@ -22155,6 +22175,7 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
+        ephemeral_storage_in_gib: 10
     ApplicationResponseList:
       example:
         results:
@@ -22305,6 +22326,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -22505,6 +22527,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -26253,6 +26276,12 @@ components:
             type: integer
             x-stoplight:
               id: j1i1u2mlnlgfm
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           min_running_instances:
             default: 1
             description: |
@@ -26418,6 +26447,7 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
+        ephemeral_storage_in_gib: 10
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -26474,6 +26504,12 @@ components:
             type: integer
             x-stoplight:
               id: qthonnmak3re3
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           min_running_instances:
             default: 1
             description: |
@@ -26669,6 +26705,7 @@ components:
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         tag: tag
+        ephemeral_storage_in_gib: 10
         registry:
           kind: ECR
           name: name
@@ -26863,6 +26900,7 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tag: tag
+          ephemeral_storage_in_gib: 10
           registry:
             kind: ECR
             name: name
@@ -27054,6 +27092,7 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           tag: tag
+          ephemeral_storage_in_gib: 10
           registry:
             kind: ECR
             name: name
@@ -32493,6 +32532,12 @@ components:
             type: integer
             x-stoplight:
               id: 4074yrndptih5
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           max_nb_restart:
             default: 0
             description: |
@@ -32646,6 +32691,7 @@ components:
         name: name
         max_duration_seconds: 0
         auto_preview: true
+        ephemeral_storage_in_gib: 10
       type: object
     JobResponse:
       discriminator:
@@ -32773,6 +32819,7 @@ components:
           max_duration_seconds: 0
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           cpu: 1250
           gpu: 1
           icon_uri: https://openapi-generator.tech
@@ -32914,6 +32961,7 @@ components:
           max_duration_seconds: 0
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           cpu: 1250
           gpu: 1
           icon_uri: https://openapi-generator.tech
@@ -37635,6 +37683,7 @@ components:
         max_duration_seconds: 0
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        ephemeral_storage_in_gib: 10
         cpu: 1250
         gpu: 1
         icon_uri: https://openapi-generator.tech
@@ -37724,6 +37773,12 @@ components:
             type: integer
             x-stoplight:
               id: 50sj2wtkdypgg
+          ephemeral_storage_in_gib:
+            description: "Ephemeral storage of the service in GiB. When omitted, the\
+              \ platform default is used."
+            example: 10
+            minimum: 0
+            type: integer
           max_nb_restart:
             description: |
               Maximum number of restart allowed before the job is considered as failed
@@ -43616,6 +43671,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -43816,6 +43872,7 @@ components:
           entrypoint: entrypoint
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          ephemeral_storage_in_gib: 10
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path

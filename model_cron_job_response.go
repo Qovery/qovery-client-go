@@ -40,6 +40,8 @@ type CronJobResponse struct {
 	// unit is MB. 1024 MB = 1GB
 	Memory int32 `json:"memory"`
 	Gpu    int32 `json:"gpu"`
+	// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
+	EphemeralStorageInGib *int32 `json:"ephemeral_storage_in_gib,omitempty"`
 	// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
 	MaxNbRestart *int32 `json:"max_nb_restart,omitempty"`
 	// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
@@ -404,6 +406,38 @@ func (o *CronJobResponse) GetGpuOk() (*int32, bool) {
 // SetGpu sets field value
 func (o *CronJobResponse) SetGpu(v int32) {
 	o.Gpu = v
+}
+
+// GetEphemeralStorageInGib returns the EphemeralStorageInGib field value if set, zero value otherwise.
+func (o *CronJobResponse) GetEphemeralStorageInGib() int32 {
+	if o == nil || IsNil(o.EphemeralStorageInGib) {
+		var ret int32
+		return ret
+	}
+	return *o.EphemeralStorageInGib
+}
+
+// GetEphemeralStorageInGibOk returns a tuple with the EphemeralStorageInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CronJobResponse) GetEphemeralStorageInGibOk() (*int32, bool) {
+	if o == nil || IsNil(o.EphemeralStorageInGib) {
+		return nil, false
+	}
+	return o.EphemeralStorageInGib, true
+}
+
+// HasEphemeralStorageInGib returns a boolean if a field has been set.
+func (o *CronJobResponse) HasEphemeralStorageInGib() bool {
+	if o != nil && !IsNil(o.EphemeralStorageInGib) {
+		return true
+	}
+
+	return false
+}
+
+// SetEphemeralStorageInGib gets a reference to the given int32 and assigns it to the EphemeralStorageInGib field.
+func (o *CronJobResponse) SetEphemeralStorageInGib(v int32) {
+	o.EphemeralStorageInGib = &v
 }
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
@@ -803,6 +837,9 @@ func (o CronJobResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["cpu"] = o.Cpu
 	toSerialize["memory"] = o.Memory
 	toSerialize["gpu"] = o.Gpu
+	if !IsNil(o.EphemeralStorageInGib) {
+		toSerialize["ephemeral_storage_in_gib"] = o.EphemeralStorageInGib
+	}
 	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
@@ -899,6 +936,7 @@ func (o *CronJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cpu")
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "gpu")
+		delete(additionalProperties, "ephemeral_storage_in_gib")
 		delete(additionalProperties, "max_nb_restart")
 		delete(additionalProperties, "max_duration_seconds")
 		delete(additionalProperties, "auto_preview")
