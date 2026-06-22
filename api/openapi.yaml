@@ -19589,7 +19589,9 @@ components:
         name: my-postgres
         icon: https://cdn.qovery.com/icons/postgresql.svg
         spec_overrides:
-          key: ""
+          engine_version: 1.13.3
+          credentials: cluster
+          backend: qovery
         tag: aws/postgres/17/1.0.1
       properties:
         name:
@@ -19612,14 +19614,71 @@ components:
             $ref: '#/components/schemas/BlueprintVariableRequest'
           type: array
         spec_overrides:
-          additionalProperties: true
-          description: Partial spec overrides merged on top of the blueprint manifest
-          nullable: true
-          type: object
+          $ref: '#/components/schemas/BlueprintSpecOverrides'
       required:
       - icon
       - name
       - tag
+      type: object
+    BlueprintSpecOverrides:
+      description: |-
+        Engine-level overrides applied on top of the blueprint manifest. Only fields whose corresponding manifest field is `overridable: true` are accepted; submitting a non-overridable field returns 422.
+        **Terraform / OpenTofu blueprints**
+        `engine_version` is **required** on create. The value must be one of the versions listed in `spec.engine.terraform.allowedValues` (or `opentofu.allowedValues`) in the manifest.
+        **Helm blueprints**
+        `engine_version`, `credentials`, and `backend` are ignored. Only `timeout` and the resource fields apply.
+      example:
+        engine_version: 1.13.3
+        credentials: cluster
+        backend: qovery
+      properties:
+        engine_version:
+          description: Terraform or OpenTofu version to use for the apply job. Required
+            when the blueprint engine type is `terraform` or `opentofu`. Must be one
+            of the versions in the manifest's `allowedValues` list.
+          example: 1.13.3
+          type: string
+        credentials:
+          description: How the apply job authenticates against the cloud provider.
+            `cluster` reuses the cluster's cloud credentials (default). `env` expects
+            the user to supply provider credentials as environment variables on the
+            service.
+          enum:
+          - cluster
+          - env
+          example: cluster
+          type: string
+        backend:
+          description: Where the Terraform state is stored. `qovery` stores state
+            in a Kubernetes secret managed by Qovery (default). `user_provided` delegates
+            to a user-controlled remote backend declared in the manifest's `backend.user_provided`
+            block.
+          enum:
+          - qovery
+          - user_provided
+          example: qovery
+          type: string
+        timeout:
+          description: Maximum duration in seconds for a single apply job before it
+            is marked as timed out. Overrides the manifest's `spec.engine.timeout`.
+          example: 3600
+          type: integer
+        cpu:
+          description: "CPU request/limit for the apply job pod (Kubernetes-style,\
+            \ e.g. `500m`). Overrides `spec.engine.resources.cpu` in the manifest."
+          example: 500m
+          type: string
+        ram:
+          description: "Memory request/limit for the apply job pod (e.g. `512Mi`,\
+            \ `1Gi`). Overrides `spec.engine.resources.ram` in the manifest."
+          example: 512Mi
+          type: string
+        storage:
+          description: Ephemeral storage for the apply job pod — used for state files
+            and provider plugins (e.g. `1Gi`). Overrides `spec.engine.resources.storage`
+            in the manifest.
+          example: 1Gi
+          type: string
       type: object
     BlueprintVariableRequest:
       example:
@@ -20309,7 +20368,13 @@ components:
         name: my-postgres
         icon: https://cdn.qovery.com/icons/postgresql.svg
         spec_overrides:
-          key: ""
+          credentials: cluster
+          cpu: 500m
+          backend: qovery
+          storage: 1Gi
+          engine_version: 1.13.3
+          timeout: 3600
+          ram: 512Mi
         tag: aws/postgres/17/1.1.0
       properties:
         name:
@@ -20333,13 +20398,7 @@ components:
             the field entirely is equivalent to an empty map — no variables are modified.
           type: object
         spec_overrides:
-          additionalProperties:
-            nullable: true
-          description: JSON Merge Patch (RFC 7396) applied to the stored spec_overrides.
-            Keys with a non-null value are upserted; keys with a null value are removed.
-            Pass null or omit the field to leave all existing overrides unchanged.
-          nullable: true
-          type: object
+          $ref: '#/components/schemas/BlueprintUpdateRequest_spec_overrides'
       required:
       - icon
       - name
@@ -44151,6 +44210,22 @@ components:
       oneOf:
       - $ref: '#/components/schemas/BlueprintManifestVariableField'
       - $ref: '#/components/schemas/BlueprintManifestContextVariableField'
+    BlueprintUpdateRequest_spec_overrides:
+      allOf:
+      - $ref: '#/components/schemas/BlueprintSpecOverrides'
+      description: JSON Merge Patch (RFC 7396) applied to the stored spec_overrides
+        (see `BlueprintSpecOverrides` for the list of valid fields). A non-null field
+        value upserts the override; a null value removes it. Pass null or omit the
+        field entirely to leave all existing overrides unchanged.
+      example:
+        credentials: cluster
+        cpu: 500m
+        backend: qovery
+        storage: 1Gi
+        engine_version: 1.13.3
+        timeout: 3600
+        ram: 512Mi
+      nullable: true
     TerraformBackend_oneOf:
       example:
         kubernetes: "{}"

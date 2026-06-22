@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | Catalog tag identifying the target blueprint version | 
 **Icon** | **string** | Icon URL for the service | 
 **Variables** | Pointer to [**map[string]BlueprintUpdateVariableValue**](BlueprintUpdateVariableValue.md) | RFC 7396 patch map keyed by variable name. Non-null value upserts the variable; null value removes it. Absent keys are left untouched. Omitting the field entirely is equivalent to an empty map — no variables are modified. | [optional] 
-**SpecOverrides** | Pointer to **map[string]interface{}** | JSON Merge Patch (RFC 7396) applied to the stored spec_overrides. Keys with a non-null value are upserted; keys with a null value are removed. Pass null or omit the field to leave all existing overrides unchanged. | [optional] 
+**SpecOverrides** | Pointer to [**NullableBlueprintUpdateRequestSpecOverrides**](BlueprintUpdateRequestSpecOverrides.md) |  | [optional] 
 
 ## Methods
 
@@ -116,20 +116,20 @@ HasVariables returns a boolean if a field has been set.
 
 ### GetSpecOverrides
 
-`func (o *BlueprintUpdateRequest) GetSpecOverrides() map[string]interface{}`
+`func (o *BlueprintUpdateRequest) GetSpecOverrides() BlueprintUpdateRequestSpecOverrides`
 
 GetSpecOverrides returns the SpecOverrides field if non-nil, zero value otherwise.
 
 ### GetSpecOverridesOk
 
-`func (o *BlueprintUpdateRequest) GetSpecOverridesOk() (*map[string]interface{}, bool)`
+`func (o *BlueprintUpdateRequest) GetSpecOverridesOk() (*BlueprintUpdateRequestSpecOverrides, bool)`
 
 GetSpecOverridesOk returns a tuple with the SpecOverrides field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpecOverrides
 
-`func (o *BlueprintUpdateRequest) SetSpecOverrides(v map[string]interface{})`
+`func (o *BlueprintUpdateRequest) SetSpecOverrides(v BlueprintUpdateRequestSpecOverrides)`
 
 SetSpecOverrides sets SpecOverrides field to given value.
 

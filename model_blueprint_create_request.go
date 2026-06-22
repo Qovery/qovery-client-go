@@ -28,9 +28,8 @@ type BlueprintCreateRequest struct {
 	// Icon URL for the service
 	Icon string `json:"icon"`
 	// Variable overrides for the blueprint
-	Variables []BlueprintVariableRequest `json:"variables,omitempty"`
-	// Partial spec overrides merged on top of the blueprint manifest
-	SpecOverrides        map[string]interface{} `json:"spec_overrides,omitempty"`
+	Variables            []BlueprintVariableRequest `json:"variables,omitempty"`
+	SpecOverrides        *BlueprintSpecOverrides    `json:"spec_overrides,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -160,21 +159,20 @@ func (o *BlueprintCreateRequest) SetVariables(v []BlueprintVariableRequest) {
 	o.Variables = v
 }
 
-// GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BlueprintCreateRequest) GetSpecOverrides() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+// GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise.
+func (o *BlueprintCreateRequest) GetSpecOverrides() BlueprintSpecOverrides {
+	if o == nil || IsNil(o.SpecOverrides) {
+		var ret BlueprintSpecOverrides
 		return ret
 	}
-	return o.SpecOverrides
+	return *o.SpecOverrides
 }
 
 // GetSpecOverridesOk returns a tuple with the SpecOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BlueprintCreateRequest) GetSpecOverridesOk() (map[string]interface{}, bool) {
+func (o *BlueprintCreateRequest) GetSpecOverridesOk() (*BlueprintSpecOverrides, bool) {
 	if o == nil || IsNil(o.SpecOverrides) {
-		return map[string]interface{}{}, false
+		return nil, false
 	}
 	return o.SpecOverrides, true
 }
@@ -188,9 +186,9 @@ func (o *BlueprintCreateRequest) HasSpecOverrides() bool {
 	return false
 }
 
-// SetSpecOverrides gets a reference to the given map[string]interface{} and assigns it to the SpecOverrides field.
-func (o *BlueprintCreateRequest) SetSpecOverrides(v map[string]interface{}) {
-	o.SpecOverrides = v
+// SetSpecOverrides gets a reference to the given BlueprintSpecOverrides and assigns it to the SpecOverrides field.
+func (o *BlueprintCreateRequest) SetSpecOverrides(v BlueprintSpecOverrides) {
+	o.SpecOverrides = &v
 }
 
 func (o BlueprintCreateRequest) MarshalJSON() ([]byte, error) {
@@ -209,7 +207,7 @@ func (o BlueprintCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Variables) {
 		toSerialize["variables"] = o.Variables
 	}
-	if o.SpecOverrides != nil {
+	if !IsNil(o.SpecOverrides) {
 		toSerialize["spec_overrides"] = o.SpecOverrides
 	}
 

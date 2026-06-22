@@ -28,9 +28,8 @@ type BlueprintUpdateRequest struct {
 	// Icon URL for the service
 	Icon string `json:"icon"`
 	// RFC 7396 patch map keyed by variable name. Non-null value upserts the variable; null value removes it. Absent keys are left untouched. Omitting the field entirely is equivalent to an empty map — no variables are modified.
-	Variables *map[string]BlueprintUpdateVariableValue `json:"variables,omitempty"`
-	// JSON Merge Patch (RFC 7396) applied to the stored spec_overrides. Keys with a non-null value are upserted; keys with a null value are removed. Pass null or omit the field to leave all existing overrides unchanged.
-	SpecOverrides        map[string]interface{} `json:"spec_overrides,omitempty"`
+	Variables            *map[string]BlueprintUpdateVariableValue    `json:"variables,omitempty"`
+	SpecOverrides        NullableBlueprintUpdateRequestSpecOverrides `json:"spec_overrides,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -161,36 +160,46 @@ func (o *BlueprintUpdateRequest) SetVariables(v map[string]BlueprintUpdateVariab
 }
 
 // GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *BlueprintUpdateRequest) GetSpecOverrides() map[string]interface{} {
-	if o == nil {
-		var ret map[string]interface{}
+func (o *BlueprintUpdateRequest) GetSpecOverrides() BlueprintUpdateRequestSpecOverrides {
+	if o == nil || IsNil(o.SpecOverrides.Get()) {
+		var ret BlueprintUpdateRequestSpecOverrides
 		return ret
 	}
-	return o.SpecOverrides
+	return *o.SpecOverrides.Get()
 }
 
 // GetSpecOverridesOk returns a tuple with the SpecOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *BlueprintUpdateRequest) GetSpecOverridesOk() (map[string]interface{}, bool) {
-	if o == nil || IsNil(o.SpecOverrides) {
-		return map[string]interface{}{}, false
+func (o *BlueprintUpdateRequest) GetSpecOverridesOk() (*BlueprintUpdateRequestSpecOverrides, bool) {
+	if o == nil {
+		return nil, false
 	}
-	return o.SpecOverrides, true
+	return o.SpecOverrides.Get(), o.SpecOverrides.IsSet()
 }
 
 // HasSpecOverrides returns a boolean if a field has been set.
 func (o *BlueprintUpdateRequest) HasSpecOverrides() bool {
-	if o != nil && !IsNil(o.SpecOverrides) {
+	if o != nil && o.SpecOverrides.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSpecOverrides gets a reference to the given map[string]interface{} and assigns it to the SpecOverrides field.
-func (o *BlueprintUpdateRequest) SetSpecOverrides(v map[string]interface{}) {
-	o.SpecOverrides = v
+// SetSpecOverrides gets a reference to the given NullableBlueprintUpdateRequestSpecOverrides and assigns it to the SpecOverrides field.
+func (o *BlueprintUpdateRequest) SetSpecOverrides(v BlueprintUpdateRequestSpecOverrides) {
+	o.SpecOverrides.Set(&v)
+}
+
+// SetSpecOverridesNil sets the value for SpecOverrides to be an explicit nil
+func (o *BlueprintUpdateRequest) SetSpecOverridesNil() {
+	o.SpecOverrides.Set(nil)
+}
+
+// UnsetSpecOverrides ensures that no value is present for SpecOverrides, not even an explicit nil
+func (o *BlueprintUpdateRequest) UnsetSpecOverrides() {
+	o.SpecOverrides.Unset()
 }
 
 func (o BlueprintUpdateRequest) MarshalJSON() ([]byte, error) {
@@ -209,8 +218,8 @@ func (o BlueprintUpdateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Variables) {
 		toSerialize["variables"] = o.Variables
 	}
-	if o.SpecOverrides != nil {
-		toSerialize["spec_overrides"] = o.SpecOverrides
+	if o.SpecOverrides.IsSet() {
+		toSerialize["spec_overrides"] = o.SpecOverrides.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

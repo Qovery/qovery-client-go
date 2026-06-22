@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | Catalog tag identifying the blueprint version | 
 **Icon** | **string** | Icon URL for the service | 
 **Variables** | Pointer to [**[]BlueprintVariableRequest**](BlueprintVariableRequest.md) | Variable overrides for the blueprint | [optional] [default to []]
-**SpecOverrides** | Pointer to **map[string]interface{}** | Partial spec overrides merged on top of the blueprint manifest | [optional] 
+**SpecOverrides** | Pointer to [**BlueprintSpecOverrides**](BlueprintSpecOverrides.md) |  | [optional] 
 
 ## Methods
 
@@ -116,20 +116,20 @@ HasVariables returns a boolean if a field has been set.
 
 ### GetSpecOverrides
 
-`func (o *BlueprintCreateRequest) GetSpecOverrides() map[string]interface{}`
+`func (o *BlueprintCreateRequest) GetSpecOverrides() BlueprintSpecOverrides`
 
 GetSpecOverrides returns the SpecOverrides field if non-nil, zero value otherwise.
 
 ### GetSpecOverridesOk
 
-`func (o *BlueprintCreateRequest) GetSpecOverridesOk() (*map[string]interface{}, bool)`
+`func (o *BlueprintCreateRequest) GetSpecOverridesOk() (*BlueprintSpecOverrides, bool)`
 
 GetSpecOverridesOk returns a tuple with the SpecOverrides field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSpecOverrides
 
-`func (o *BlueprintCreateRequest) SetSpecOverrides(v map[string]interface{})`
+`func (o *BlueprintCreateRequest) SetSpecOverrides(v BlueprintSpecOverrides)`
 
 SetSpecOverrides sets SpecOverrides field to given value.
 
@@ -139,16 +139,6 @@ SetSpecOverrides sets SpecOverrides field to given value.
 
 HasSpecOverrides returns a boolean if a field has been set.
 
-### SetSpecOverridesNil
-
-`func (o *BlueprintCreateRequest) SetSpecOverridesNil(b bool)`
-
- SetSpecOverridesNil sets the value for SpecOverrides to be an explicit nil
-
-### UnsetSpecOverrides
-`func (o *BlueprintCreateRequest) UnsetSpecOverrides()`
-
-UnsetSpecOverrides ensures that no value is present for SpecOverrides, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
