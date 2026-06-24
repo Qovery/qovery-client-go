@@ -153,6 +153,21 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService GetClusterAnalysis", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+		var analysisId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.GetClusterAnalysis(context.Background(), clusterId, analysisId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService GetClusterDnsProvider", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -354,6 +369,35 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService ListClusterAnalyses", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.ListClusterAnalyses(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ClustersAPIService ListClusterAnalysisLogs", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+		var analysisId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.ListClusterAnalysisLogs(context.Background(), clusterId, analysisId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService ListClusterLogs", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -420,6 +464,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 		var clusterId string
 
 		resp, httpRes, err := apiClient.ClustersAPI.SpecifyClusterCloudProviderInfo(context.Background(), organizationId, clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ClustersAPIService StartClusterAnalysis", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.StartClusterAnalysis(context.Background(), clusterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

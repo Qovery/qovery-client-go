@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**EditClusterKubeconfig**](ClustersAPI.md#EditClusterKubeconfig) | **Put** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Edit cluster kubeconfig
 [**EditRoutingTable**](ClustersAPI.md#EditRoutingTable) | **Put** /organization/{organizationId}/cluster/{clusterId}/routingTable | Edit routing table
 [**GetClusterAdvancedSettings**](ClustersAPI.md#GetClusterAdvancedSettings) | **Get** /organization/{organizationId}/cluster/{clusterId}/advancedSettings | Get advanced settings
+[**GetClusterAnalysis**](ClustersAPI.md#GetClusterAnalysis) | **Get** /clusters/{clusterId}/analysis/{analysisId} | Get cluster analysis
 [**GetClusterDnsProvider**](ClustersAPI.md#GetClusterDnsProvider) | **Get** /cluster/{clusterId}/dnsProvider | Get cluster DNS provider
 [**GetClusterKubeconfig**](ClustersAPI.md#GetClusterKubeconfig) | **Get** /organization/{organizationId}/cluster/{clusterId}/kubeconfig | Get cluster kubeconfig
 [**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
@@ -27,11 +28,14 @@ Method | HTTP request | Description
 [**GetOrganizationCloudProviderInfo**](ClustersAPI.md#GetOrganizationCloudProviderInfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**GetOrganizationClusterStatus**](ClustersAPI.md#GetOrganizationClusterStatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**GetRoutingTable**](ClustersAPI.md#GetRoutingTable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
+[**ListClusterAnalyses**](ClustersAPI.md#ListClusterAnalyses) | **Get** /clusters/{clusterId}/analysis | List cluster analyses
+[**ListClusterAnalysisLogs**](ClustersAPI.md#ListClusterAnalysisLogs) | **Get** /clusters/{clusterId}/analysis/{analysisId}/logs | List cluster analysis logs
 [**ListClusterLogs**](ClustersAPI.md#ListClusterLogs) | **Get** /organization/{organizationId}/cluster/{clusterId}/logs | List Cluster Logs
 [**ListEksAnywhereCommits**](ClustersAPI.md#ListEksAnywhereCommits) | **Get** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commits | List EKS Anywhere commits
 [**ListOrganizationCluster**](ClustersAPI.md#ListOrganizationCluster) | **Get** /organization/{organizationId}/cluster | List organization clusters
 [**LockCluster**](ClustersAPI.md#LockCluster) | **Post** /cluster/{clusterId}/lock | Lock Cluster
 [**SpecifyClusterCloudProviderInfo**](ClustersAPI.md#SpecifyClusterCloudProviderInfo) | **Post** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Specify cluster cloud provider info and credentials
+[**StartClusterAnalysis**](ClustersAPI.md#StartClusterAnalysis) | **Post** /clusters/{clusterId}/analysis | Start cluster analysis
 [**StopCluster**](ClustersAPI.md#StopCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/stop | Stop cluster
 [**UnlockCluster**](ClustersAPI.md#UnlockCluster) | **Delete** /cluster/{clusterId}/lock | Unlock Cluster
 [**UpdateEksAnywhereCommit**](ClustersAPI.md#UpdateEksAnywhereCommit) | **Put** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/commit | Update selected EKS Anywhere commit
@@ -680,6 +684,79 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterAdvancedSettings**](ClusterAdvancedSettings.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterAnalysis
+
+> ClusterAnalysisResponse GetClusterAnalysis(ctx, clusterId, analysisId).Execute()
+
+Get cluster analysis
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	analysisId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster analysis ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetClusterAnalysis(context.Background(), clusterId, analysisId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterAnalysis``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterAnalysis`: ClusterAnalysisResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterAnalysis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+**analysisId** | **string** | Cluster analysis ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterAnalysisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterAnalysisResponse**](ClusterAnalysisResponse.md)
 
 ### Authorization
 
@@ -1741,6 +1818,149 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## ListClusterAnalyses
+
+> ClusterAnalysisResponseList ListClusterAnalyses(ctx, clusterId).Execute()
+
+List cluster analyses
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.ListClusterAnalyses(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterAnalyses``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListClusterAnalyses`: ClusterAnalysisResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterAnalyses`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListClusterAnalysesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterAnalysisResponseList**](ClusterAnalysisResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListClusterAnalysisLogs
+
+> ClusterAnalysisLogResponseList ListClusterAnalysisLogs(ctx, clusterId, analysisId).Execute()
+
+List cluster analysis logs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	analysisId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster analysis ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.ListClusterAnalysisLogs(context.Background(), clusterId, analysisId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.ListClusterAnalysisLogs``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListClusterAnalysisLogs`: ClusterAnalysisLogResponseList
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.ListClusterAnalysisLogs`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+**analysisId** | **string** | Cluster analysis ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListClusterAnalysisLogsRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+[**ClusterAnalysisLogResponseList**](ClusterAnalysisLogResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListClusterLogs
 
 > ClusterLogsResponseList ListClusterLogs(ctx, organizationId, clusterId).Execute()
@@ -2085,6 +2305,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterCloudProviderInfo**](ClusterCloudProviderInfo.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## StartClusterAnalysis
+
+> ClusterAnalysisResponse StartClusterAnalysis(ctx, clusterId).ClusterAnalysisRequest(clusterAnalysisRequest).Execute()
+
+Start cluster analysis
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	clusterAnalysisRequest := *openapiclient.NewClusterAnalysisRequest(openapiclient.ClusterAnalysisKind("COST_RECOMMENDATION"), openapiclient.ClusterAnalysisOutputFormat("TABLE")) // ClusterAnalysisRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.StartClusterAnalysis(context.Background(), clusterId).ClusterAnalysisRequest(clusterAnalysisRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.StartClusterAnalysis``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `StartClusterAnalysis`: ClusterAnalysisResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.StartClusterAnalysis`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiStartClusterAnalysisRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clusterAnalysisRequest** | [**ClusterAnalysisRequest**](ClusterAnalysisRequest.md) |  | 
+
+### Return type
+
+[**ClusterAnalysisResponse**](ClusterAnalysisResponse.md)
 
 ### Authorization
 

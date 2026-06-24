@@ -2171,6 +2171,154 @@ paths:
       summary: List Cluster Logs
       tags:
       - Clusters
+  /clusters/{clusterId}/analysis:
+    get:
+      description: Lists previous analysis executions for the cluster.
+      operationId: listClusterAnalyses
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterAnalysisResponseList'
+          description: List cluster analyses
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List cluster analyses
+      tags:
+      - Clusters
+    post:
+      description: Starts a read-only analysis for the cluster. The result and logs
+        can be retrieved later from the cluster analysis endpoints.
+      operationId: startClusterAnalysis
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterAnalysisRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterAnalysisResponse'
+          description: Cluster analysis started
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: A cluster analysis is already in progress for this cluster
+      summary: Start cluster analysis
+      tags:
+      - Clusters
+  /clusters/{clusterId}/analysis/{analysisId}:
+    get:
+      description: Returns metadata and status for one cluster analysis execution.
+      operationId: getClusterAnalysis
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster analysis ID
+        explode: false
+        in: path
+        name: analysisId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterAnalysisResponse'
+          description: Cluster analysis
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get cluster analysis
+      tags:
+      - Clusters
+  /clusters/{clusterId}/analysis/{analysisId}/logs:
+    get:
+      description: Returns the persisted cluster analysis report/log lines in order.
+      operationId: listClusterAnalysisLogs
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster analysis ID
+        explode: false
+        in: path
+        name: analysisId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterAnalysisLogResponseList'
+          description: List cluster analysis logs
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List cluster analysis logs
+      tags:
+      - Clusters
   /secretManagerAccess/{secretManagerAccessId}/secrets:
     get:
       description: List upstream secrets from secret provider
@@ -19011,6 +19159,16 @@ components:
         format: uuid
         type: string
       style: simple
+    analysisId:
+      description: Cluster analysis ID
+      explode: false
+      in: path
+      name: analysisId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     backupId:
       description: Database Backup ID
       explode: false
@@ -24931,6 +25089,176 @@ components:
         results:
           items:
             $ref: '#/components/schemas/Cluster'
+          type: array
+      type: object
+    ClusterAnalysisKind:
+      enum:
+      - COST_RECOMMENDATION
+      - DEPRECATED_API_CHECK
+      type: string
+    ClusterAnalysisOutputFormat:
+      enum:
+      - TABLE
+      - JSON
+      - CSV
+      type: string
+    ClusterAnalysisStatus:
+      enum:
+      - PENDING
+      - RUNNING
+      - SUCCEEDED
+      - FAILED
+      - TERMINATED
+      type: string
+    ClusterAnalysisRequest:
+      example:
+        prometheus_url: prometheus_url
+        target_kubernetes_version: "1.32"
+        output_format: TABLE
+        kind: COST_RECOMMENDATION
+        history_duration_hours: 336
+      properties:
+        kind:
+          $ref: '#/components/schemas/ClusterAnalysisKind'
+        output_format:
+          $ref: '#/components/schemas/ClusterAnalysisOutputFormat'
+        prometheus_url:
+          description: "Optional Prometheus URL for COST_RECOMMENDATION analysis.\
+            \ When omitted, the engine resolves the default Qovery OBS endpoint."
+          nullable: true
+          type: string
+        history_duration_hours:
+          description: Optional history duration in hours for COST_RECOMMENDATION
+            analysis.
+          example: 336
+          nullable: true
+          type: integer
+        target_kubernetes_version:
+          description: Optional target Kubernetes version for DEPRECATED_API_CHECK
+            analysis.
+          example: "1.32"
+          nullable: true
+          type: string
+      required:
+      - kind
+      - output_format
+      type: object
+    ClusterAnalysisResponse:
+      example:
+        error_message: error_message
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        output_format: TABLE
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        kind: COST_RECOMMENDATION
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        triggered_by: triggered_by
+        status: PENDING
+      properties:
+        id:
+          format: uuid
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        organization_id:
+          format: uuid
+          type: string
+        kind:
+          $ref: '#/components/schemas/ClusterAnalysisKind'
+        status:
+          $ref: '#/components/schemas/ClusterAnalysisStatus'
+        output_format:
+          $ref: '#/components/schemas/ClusterAnalysisOutputFormat'
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+        triggered_by:
+          type: string
+        error_message:
+          nullable: true
+          type: string
+      required:
+      - cluster_id
+      - created_at
+      - id
+      - kind
+      - organization_id
+      - output_format
+      - status
+      - triggered_by
+      - updated_at
+      type: object
+    ClusterAnalysisResponseList:
+      example:
+        results:
+        - error_message: error_message
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          output_format: TABLE
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          kind: COST_RECOMMENDATION
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          triggered_by: triggered_by
+          status: PENDING
+        - error_message: error_message
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          output_format: TABLE
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          kind: COST_RECOMMENDATION
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          triggered_by: triggered_by
+          status: PENDING
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterAnalysisResponse'
+          type: array
+      type: object
+    ClusterAnalysisLogResponse:
+      example:
+        line_order: 0
+        level: level
+        message: message
+        timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        timestamp:
+          format: date-time
+          type: string
+        level:
+          type: string
+        message:
+          type: string
+        line_order:
+          type: integer
+      required:
+      - level
+      - line_order
+      - message
+      - timestamp
+      type: object
+    ClusterAnalysisLogResponseList:
+      example:
+        results:
+        - line_order: 0
+          level: level
+          message: message
+          timestamp: 2000-01-23T04:56:07.000+00:00
+        - line_order: 0
+          level: level
+          message: message
+          timestamp: 2000-01-23T04:56:07.000+00:00
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterAnalysisLogResponse'
           type: array
       type: object
     ClusterLogsResponseList:
