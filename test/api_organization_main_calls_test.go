@@ -178,6 +178,20 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test OrganizationMainCallsAPIService GetOrganizationOnboarding", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.GetOrganizationOnboarding(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationMainCallsAPIService ListEnvironmentsByOrganizationId", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -281,6 +295,20 @@ func Test_qovery_OrganizationMainCallsAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.ParseTerraformVariablesFromGitRepo(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationMainCallsAPIService UpdateOrganizationOnboarding", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.OrganizationMainCallsAPI.UpdateOrganizationOnboarding(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

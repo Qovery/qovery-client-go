@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**GetHelmRepositoryAssociatedServices**](OrganizationMainCallsAPI.md#GetHelmRepositoryAssociatedServices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
 [**GetOrganization**](OrganizationMainCallsAPI.md#GetOrganization) | **Get** /organization/{organizationId} | Get organization by ID
 [**GetOrganizationGitToken**](OrganizationMainCallsAPI.md#GetOrganizationGitToken) | **Get** /organization/{organizationId}/gitToken/{gitTokenId} | Get organization git token
+[**GetOrganizationOnboarding**](OrganizationMainCallsAPI.md#GetOrganizationOnboarding) | **Get** /organization/{organizationId}/onboarding | Get the onboarding status of an organization
 [**ListEnvironmentsByOrganizationId**](OrganizationMainCallsAPI.md#ListEnvironmentsByOrganizationId) | **Get** /organization/{organizationId}/environments | List Environments By OrganizationId
 [**ListOrganization**](OrganizationMainCallsAPI.md#ListOrganization) | **Get** /organization | List user organizations
 [**ListOrganizationAvailableRoles**](OrganizationMainCallsAPI.md#ListOrganizationAvailableRoles) | **Get** /organization/{organizationId}/availableRole | List organization available roles
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**ListServicesByOrganizationId**](OrganizationMainCallsAPI.md#ListServicesByOrganizationId) | **Get** /organization/{organizationId}/services | List Services By OrganizationId
 [**ListTfVarsFilesFromGitRepo**](OrganizationMainCallsAPI.md#ListTfVarsFilesFromGitRepo) | **Post** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 [**ParseTerraformVariablesFromGitRepo**](OrganizationMainCallsAPI.md#ParseTerraformVariablesFromGitRepo) | **Post** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
+[**UpdateOrganizationOnboarding**](OrganizationMainCallsAPI.md#UpdateOrganizationOnboarding) | **Post** /organization/{organizationId}/onboarding | Update the onboarding status of an organization
 
 
 
@@ -804,6 +806,76 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## GetOrganizationOnboarding
+
+> OrganizationOnboardingResponse GetOrganizationOnboarding(ctx, organizationId).Execute()
+
+Get the onboarding status of an organization
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.GetOrganizationOnboarding(context.Background(), organizationId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.GetOrganizationOnboarding``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetOrganizationOnboarding`: OrganizationOnboardingResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.GetOrganizationOnboarding`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetOrganizationOnboardingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**OrganizationOnboardingResponse**](OrganizationOnboardingResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## ListEnvironmentsByOrganizationId
 
 > ListEnvironmentsByOrganizationId200Response ListEnvironmentsByOrganizationId(ctx, organizationId).Execute()
@@ -1340,6 +1412,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ParseTerraformVariablesFromGitRepo200Response**](ParseTerraformVariablesFromGitRepo200Response.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateOrganizationOnboarding
+
+> OrganizationOnboardingResponse UpdateOrganizationOnboarding(ctx, organizationId).OrganizationOnboardingPatchRequest(organizationOnboardingPatchRequest).Execute()
+
+Update the onboarding status of an organization
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationOnboardingPatchRequest := *openapiclient.NewOrganizationOnboardingPatchRequest(openapiclient.OrganizationOnboardingStatusEnum("IN_PROGRESS")) // OrganizationOnboardingPatchRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.UpdateOrganizationOnboarding(context.Background(), organizationId).OrganizationOnboardingPatchRequest(organizationOnboardingPatchRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.UpdateOrganizationOnboarding``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateOrganizationOnboarding`: OrganizationOnboardingResponse
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.UpdateOrganizationOnboarding`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateOrganizationOnboardingRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationOnboardingPatchRequest** | [**OrganizationOnboardingPatchRequest**](OrganizationOnboardingPatchRequest.md) |  | 
+
+### Return type
+
+[**OrganizationOnboardingResponse**](OrganizationOnboardingResponse.md)
 
 ### Authorization
 

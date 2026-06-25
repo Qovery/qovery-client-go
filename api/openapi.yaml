@@ -1612,6 +1612,75 @@ paths:
         the organization
       tags:
       - Projects
+  /organization/{organizationId}/onboarding:
+    get:
+      description: Returns the onboarding status for the given organization and the
+        use cases selected by the owner at sign-up.
+      operationId: getOrganizationOnboarding
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationOnboardingResponse'
+          description: Onboarding status
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get the onboarding status of an organization
+      tags:
+      - Organization Main Calls
+    post:
+      description: Updates the onboarding status for the calling user's organization.
+        Only the authenticated user's own sign-up record is updated.
+      operationId: updateOrganizationOnboarding
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationOnboardingPatchRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationOnboardingResponse'
+          description: Updated onboarding status
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Update the onboarding status of an organization
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/cluster:
     get:
       operationId: listOrganizationCluster
@@ -35270,6 +35339,35 @@ components:
             $ref: '#/components/schemas/Organization'
           type: array
       type: object
+    OrganizationOnboardingResponse:
+      example:
+        use_cases: "ephemeral-environments,rde"
+        status: IN_PROGRESS
+      properties:
+        use_cases:
+          description: "Comma-separated list of use cases selected by the organization\
+            \ owner at sign-up (e.g. \"ephemeral-environments,rde\")"
+          example: "ephemeral-environments,rde"
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/OrganizationOnboardingStatusEnum'
+      type: object
+    OrganizationOnboardingPatchRequest:
+      example:
+        status: IN_PROGRESS
+      properties:
+        status:
+          $ref: '#/components/schemas/OrganizationOnboardingStatusEnum'
+      required:
+      - status
+      type: object
+    OrganizationOnboardingStatusEnum:
+      enum:
+      - IN_PROGRESS
+      - DISMISSED
+      - COMPLETED
+      type: string
     OrganizationEventResponse:
       description: ""
       example:
