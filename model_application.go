@@ -47,6 +47,8 @@ type Application struct {
 	Gpu    *int32 `json:"gpu,omitempty"`
 	// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
 	EphemeralStorageInGib *int32 `json:"ephemeral_storage_in_gib,omitempty"`
+	// CPU architecture this service runs on. If null, the cluster default architecture is used.
+	CpuArchitecture NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
 	// Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.
 	MinRunningInstances *int32 `json:"min_running_instances,omitempty"`
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
@@ -644,6 +646,49 @@ func (o *Application) SetEphemeralStorageInGib(v int32) {
 	o.EphemeralStorageInGib = &v
 }
 
+// GetCpuArchitecture returns the CpuArchitecture field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Application) GetCpuArchitecture() CpuArchitectureEnum {
+	if o == nil || IsNil(o.CpuArchitecture.Get()) {
+		var ret CpuArchitectureEnum
+		return ret
+	}
+	return *o.CpuArchitecture.Get()
+}
+
+// GetCpuArchitectureOk returns a tuple with the CpuArchitecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Application) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CpuArchitecture.Get(), o.CpuArchitecture.IsSet()
+}
+
+// HasCpuArchitecture returns a boolean if a field has been set.
+func (o *Application) HasCpuArchitecture() bool {
+	if o != nil && o.CpuArchitecture.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuArchitecture gets a reference to the given NullableCpuArchitectureEnum and assigns it to the CpuArchitecture field.
+func (o *Application) SetCpuArchitecture(v CpuArchitectureEnum) {
+	o.CpuArchitecture.Set(&v)
+}
+
+// SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+func (o *Application) SetCpuArchitectureNil() {
+	o.CpuArchitecture.Set(nil)
+}
+
+// UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
+func (o *Application) UnsetCpuArchitecture() {
+	o.CpuArchitecture.Unset()
+}
+
 // GetMinRunningInstances returns the MinRunningInstances field value if set, zero value otherwise.
 func (o *Application) GetMinRunningInstances() int32 {
 	if o == nil || IsNil(o.MinRunningInstances) {
@@ -1132,6 +1177,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EphemeralStorageInGib) {
 		toSerialize["ephemeral_storage_in_gib"] = o.EphemeralStorageInGib
 	}
+	if o.CpuArchitecture.IsSet() {
+		toSerialize["cpu_architecture"] = o.CpuArchitecture.Get()
+	}
 	if !IsNil(o.MinRunningInstances) {
 		toSerialize["min_running_instances"] = o.MinRunningInstances
 	}
@@ -1234,6 +1282,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "ephemeral_storage_in_gib")
+		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "min_running_instances")
 		delete(additionalProperties, "max_running_instances")
 		delete(additionalProperties, "healthchecks")

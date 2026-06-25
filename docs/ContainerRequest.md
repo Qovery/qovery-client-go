@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Memory** | Pointer to **int32** | unit is MB. 1024 MB &#x3D; 1GB | [optional] [default to 512]
 **Gpu** | Pointer to **int32** |  | [optional] [default to 0]
 **EphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage of the service in GiB. When omitted, the platform default is used. | [optional] 
+**CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional] 
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
@@ -351,6 +352,41 @@ SetEphemeralStorageInGib sets EphemeralStorageInGib field to given value.
 
 HasEphemeralStorageInGib returns a boolean if a field has been set.
 
+### GetCpuArchitecture
+
+`func (o *ContainerRequest) GetCpuArchitecture() CpuArchitectureEnum`
+
+GetCpuArchitecture returns the CpuArchitecture field if non-nil, zero value otherwise.
+
+### GetCpuArchitectureOk
+
+`func (o *ContainerRequest) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool)`
+
+GetCpuArchitectureOk returns a tuple with the CpuArchitecture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuArchitecture
+
+`func (o *ContainerRequest) SetCpuArchitecture(v CpuArchitectureEnum)`
+
+SetCpuArchitecture sets CpuArchitecture field to given value.
+
+### HasCpuArchitecture
+
+`func (o *ContainerRequest) HasCpuArchitecture() bool`
+
+HasCpuArchitecture returns a boolean if a field has been set.
+
+### SetCpuArchitectureNil
+
+`func (o *ContainerRequest) SetCpuArchitectureNil(b bool)`
+
+ SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+
+### UnsetCpuArchitecture
+`func (o *ContainerRequest) UnsetCpuArchitecture()`
+
+UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
 ### GetMinRunningInstances
 
 `func (o *ContainerRequest) GetMinRunningInstances() int32`

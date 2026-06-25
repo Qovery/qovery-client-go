@@ -21357,6 +21357,12 @@ components:
             example: 10
             minimum: 0
             type: integer
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture this service runs on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           min_running_instances:
             default: 1
             description: |
@@ -21580,6 +21586,7 @@ components:
         maximum_cpu: 16000
         name: name
         docker_target_build_stage: docker_target_build_stage
+        cpu_architecture: ""
         arguments:
         - arguments
         - arguments
@@ -21763,6 +21770,12 @@ components:
             description: The target build stage in the Dockerfile to build
             nullable: true
             type: string
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture to run this service on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
         required:
@@ -21871,6 +21884,7 @@ components:
         arguments:
         - arguments
         - arguments
+        cpu_architecture: ""
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
@@ -22202,6 +22216,12 @@ components:
             type: string
             x-stoplight:
               id: xg9q0urac8kdq
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture to run this service on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
         required:
@@ -22312,6 +22332,7 @@ components:
         arguments:
         - arguments
         - arguments
+        cpu_architecture: ""
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
@@ -22496,6 +22517,7 @@ components:
           maximum_cpu: 16000
           name: name
           docker_target_build_stage: docker_target_build_stage
+          cpu_architecture: ""
           arguments:
           - arguments
           - arguments
@@ -22697,6 +22719,7 @@ components:
           maximum_cpu: 16000
           name: name
           docker_target_build_stage: docker_target_build_stage
+          cpu_architecture: ""
           arguments:
           - arguments
           - arguments
@@ -26610,6 +26633,12 @@ components:
             example: 10
             minimum: 0
             type: integer
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture to run this service on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           min_running_instances:
             default: 1
             description: |
@@ -26753,6 +26782,7 @@ components:
         arguments:
         - arguments
         - arguments
+        cpu_architecture: ""
         tag: tag
         autoscaling:
           mode: KEDA
@@ -26838,6 +26868,12 @@ components:
             example: 10
             minimum: 0
             type: integer
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture this service runs on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           min_running_instances:
             default: 1
             description: |
@@ -27051,6 +27087,7 @@ components:
         arguments:
         - arguments
         - arguments
+        cpu_architecture: ""
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 1
@@ -27246,6 +27283,7 @@ components:
           arguments:
           - arguments
           - arguments
+          cpu_architecture: ""
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 1
@@ -27438,6 +27476,7 @@ components:
           arguments:
           - arguments
           - arguments
+          cpu_architecture: ""
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 1
@@ -32893,6 +32932,12 @@ components:
             type: integer
           source:
             $ref: '#/components/schemas/JobRequest_allOf_source'
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture to run this service on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           healthchecks:
             $ref: '#/components/schemas/Healthcheck'
           schedule:
@@ -33019,6 +33064,7 @@ components:
         name: name
         max_duration_seconds: 0
         auto_preview: true
+        cpu_architecture: ""
         ephemeral_storage_in_gib: 10
       type: object
     JobResponse:
@@ -33175,6 +33221,7 @@ components:
           port: 1
           maximum_cpu: 16000
           name: name
+          cpu_architecture: ""
         - job_type: LIFECYCLE
           auto_deploy: true
           memory: 1024
@@ -33317,6 +33364,7 @@ components:
           port: 1
           maximum_cpu: 16000
           name: name
+          cpu_architecture: ""
       properties:
         results:
           items:
@@ -38039,6 +38087,7 @@ components:
         port: 1
         maximum_cpu: 16000
         name: name
+        cpu_architecture: ""
       title: ""
     CronJobResponse:
       allOf:
@@ -38107,6 +38156,12 @@ components:
             example: 10
             minimum: 0
             type: integer
+          cpu_architecture:
+            allOf:
+            - $ref: '#/components/schemas/CpuArchitectureEnum'
+            description: "CPU architecture this service runs on. If null, the cluster\
+              \ default architecture is used."
+            nullable: true
           max_nb_restart:
             description: |
               Maximum number of restart allowed before the job is considered as failed
@@ -44011,6 +44066,7 @@ components:
           maximum_cpu: 16000
           name: name
           docker_target_build_stage: docker_target_build_stage
+          cpu_architecture: ""
           arguments:
           - arguments
           - arguments
@@ -44212,6 +44268,7 @@ components:
           maximum_cpu: 16000
           name: name
           docker_target_build_stage: docker_target_build_stage
+          cpu_architecture: ""
           arguments:
           - arguments
           - arguments

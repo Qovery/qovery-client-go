@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **Memory** | **int32** | unit is MB. 1024 MB &#x3D; 1GB | 
 **Gpu** | **int32** |  | [default to 0]
 **EphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage of the service in GiB. When omitted, the platform default is used. | [optional] 
+**CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture this service runs on. If null, the cluster default architecture is used. | [optional] 
 **MaxNbRestart** | Pointer to **int32** | Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed  | [optional] 
 **MaxDurationSeconds** | Pointer to **int32** | Maximum number of seconds allowed for the job to run before killing it and mark it as failed  | [optional] 
 **AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
@@ -325,6 +326,41 @@ SetEphemeralStorageInGib sets EphemeralStorageInGib field to given value.
 
 HasEphemeralStorageInGib returns a boolean if a field has been set.
 
+### GetCpuArchitecture
+
+`func (o *JobResponse) GetCpuArchitecture() CpuArchitectureEnum`
+
+GetCpuArchitecture returns the CpuArchitecture field if non-nil, zero value otherwise.
+
+### GetCpuArchitectureOk
+
+`func (o *JobResponse) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool)`
+
+GetCpuArchitectureOk returns a tuple with the CpuArchitecture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuArchitecture
+
+`func (o *JobResponse) SetCpuArchitecture(v CpuArchitectureEnum)`
+
+SetCpuArchitecture sets CpuArchitecture field to given value.
+
+### HasCpuArchitecture
+
+`func (o *JobResponse) HasCpuArchitecture() bool`
+
+HasCpuArchitecture returns a boolean if a field has been set.
+
+### SetCpuArchitectureNil
+
+`func (o *JobResponse) SetCpuArchitectureNil(b bool)`
+
+ SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+
+### UnsetCpuArchitecture
+`func (o *JobResponse) UnsetCpuArchitecture()`
+
+UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
 ### GetMaxNbRestart
 
 `func (o *JobResponse) GetMaxNbRestart() int32`

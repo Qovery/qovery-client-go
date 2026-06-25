@@ -38,10 +38,12 @@ type JobRequest struct {
 	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
 	// Port where to run readiness and liveliness probes checks. The port will not be exposed externally
-	Port         NullableInt32            `json:"port,omitempty"`
-	Source       *JobRequestAllOfSource   `json:"source,omitempty"`
-	Healthchecks Healthcheck              `json:"healthchecks"`
-	Schedule     *JobRequestAllOfSchedule `json:"schedule,omitempty"`
+	Port   NullableInt32          `json:"port,omitempty"`
+	Source *JobRequestAllOfSource `json:"source,omitempty"`
+	// CPU architecture to run this service on. If null, the cluster default architecture is used.
+	CpuArchitecture NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
+	Healthchecks    Healthcheck                 `json:"healthchecks"`
+	Schedule        *JobRequestAllOfSchedule    `json:"schedule,omitempty"`
 	// Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \"Auto Deploy job\" endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments
 	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
@@ -443,6 +445,49 @@ func (o *JobRequest) SetSource(v JobRequestAllOfSource) {
 	o.Source = &v
 }
 
+// GetCpuArchitecture returns the CpuArchitecture field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobRequest) GetCpuArchitecture() CpuArchitectureEnum {
+	if o == nil || IsNil(o.CpuArchitecture.Get()) {
+		var ret CpuArchitectureEnum
+		return ret
+	}
+	return *o.CpuArchitecture.Get()
+}
+
+// GetCpuArchitectureOk returns a tuple with the CpuArchitecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobRequest) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CpuArchitecture.Get(), o.CpuArchitecture.IsSet()
+}
+
+// HasCpuArchitecture returns a boolean if a field has been set.
+func (o *JobRequest) HasCpuArchitecture() bool {
+	if o != nil && o.CpuArchitecture.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuArchitecture gets a reference to the given NullableCpuArchitectureEnum and assigns it to the CpuArchitecture field.
+func (o *JobRequest) SetCpuArchitecture(v CpuArchitectureEnum) {
+	o.CpuArchitecture.Set(&v)
+}
+
+// SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+func (o *JobRequest) SetCpuArchitectureNil() {
+	o.CpuArchitecture.Set(nil)
+}
+
+// UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
+func (o *JobRequest) UnsetCpuArchitecture() {
+	o.CpuArchitecture.Unset()
+}
+
 // GetHealthchecks returns the Healthchecks field value
 func (o *JobRequest) GetHealthchecks() Healthcheck {
 	if o == nil {
@@ -679,6 +724,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Source) {
 		toSerialize["source"] = o.Source
 	}
+	if o.CpuArchitecture.IsSet() {
+		toSerialize["cpu_architecture"] = o.CpuArchitecture.Get()
+	}
 	toSerialize["healthchecks"] = o.Healthchecks
 	if !IsNil(o.Schedule) {
 		toSerialize["schedule"] = o.Schedule
@@ -750,6 +798,7 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_preview")
 		delete(additionalProperties, "port")
 		delete(additionalProperties, "source")
+		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "healthchecks")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "auto_deploy")

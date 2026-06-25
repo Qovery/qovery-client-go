@@ -55,9 +55,11 @@ type ApplicationRequest struct {
 	// Icon URI representing the application.
 	IconUri *string `json:"icon_uri,omitempty"`
 	// The target build stage in the Dockerfile to build
-	DockerTargetBuildStage NullableString            `json:"docker_target_build_stage,omitempty"`
-	Autoscaling            *AutoscalingPolicyRequest `json:"autoscaling,omitempty"`
-	AdditionalProperties   map[string]interface{}
+	DockerTargetBuildStage NullableString `json:"docker_target_build_stage,omitempty"`
+	// CPU architecture to run this service on. If null, the cluster default architecture is used.
+	CpuArchitecture      NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
+	Autoscaling          *AutoscalingPolicyRequest   `json:"autoscaling,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _ApplicationRequest ApplicationRequest
@@ -834,6 +836,49 @@ func (o *ApplicationRequest) UnsetDockerTargetBuildStage() {
 	o.DockerTargetBuildStage.Unset()
 }
 
+// GetCpuArchitecture returns the CpuArchitecture field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ApplicationRequest) GetCpuArchitecture() CpuArchitectureEnum {
+	if o == nil || IsNil(o.CpuArchitecture.Get()) {
+		var ret CpuArchitectureEnum
+		return ret
+	}
+	return *o.CpuArchitecture.Get()
+}
+
+// GetCpuArchitectureOk returns a tuple with the CpuArchitecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ApplicationRequest) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CpuArchitecture.Get(), o.CpuArchitecture.IsSet()
+}
+
+// HasCpuArchitecture returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasCpuArchitecture() bool {
+	if o != nil && o.CpuArchitecture.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuArchitecture gets a reference to the given NullableCpuArchitectureEnum and assigns it to the CpuArchitecture field.
+func (o *ApplicationRequest) SetCpuArchitecture(v CpuArchitectureEnum) {
+	o.CpuArchitecture.Set(&v)
+}
+
+// SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+func (o *ApplicationRequest) SetCpuArchitectureNil() {
+	o.CpuArchitecture.Set(nil)
+}
+
+// UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
+func (o *ApplicationRequest) UnsetCpuArchitecture() {
+	o.CpuArchitecture.Unset()
+}
+
 // GetAutoscaling returns the Autoscaling field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetAutoscaling() AutoscalingPolicyRequest {
 	if o == nil || IsNil(o.Autoscaling) {
@@ -936,6 +981,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	if o.DockerTargetBuildStage.IsSet() {
 		toSerialize["docker_target_build_stage"] = o.DockerTargetBuildStage.Get()
 	}
+	if o.CpuArchitecture.IsSet() {
+		toSerialize["cpu_architecture"] = o.CpuArchitecture.Get()
+	}
 	if !IsNil(o.Autoscaling) {
 		toSerialize["autoscaling"] = o.Autoscaling
 	}
@@ -1006,6 +1054,7 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "docker_target_build_stage")
+		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "autoscaling")
 		o.AdditionalProperties = additionalProperties
 	}

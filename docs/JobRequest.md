@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **Port** | Pointer to **NullableInt32** | Port where to run readiness and liveliness probes checks. The port will not be exposed externally | [optional] 
 **Source** | Pointer to [**JobRequestAllOfSource**](JobRequestAllOfSource.md) |  | [optional] 
+**CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional] 
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
 **Schedule** | Pointer to [**JobRequestAllOfSchedule**](JobRequestAllOfSchedule.md) |  | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the job will be automatically updated after receiving a new image tag or a new commit according to the source type.  The new image tag shall be communicated via the \&quot;Auto Deploy job\&quot; endpoint https://api-doc.qovery.com/#tag/Jobs/operation/autoDeployJobEnvironments  | [optional] 
@@ -321,6 +322,41 @@ SetSource sets Source field to given value.
 
 HasSource returns a boolean if a field has been set.
 
+### GetCpuArchitecture
+
+`func (o *JobRequest) GetCpuArchitecture() CpuArchitectureEnum`
+
+GetCpuArchitecture returns the CpuArchitecture field if non-nil, zero value otherwise.
+
+### GetCpuArchitectureOk
+
+`func (o *JobRequest) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool)`
+
+GetCpuArchitectureOk returns a tuple with the CpuArchitecture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuArchitecture
+
+`func (o *JobRequest) SetCpuArchitecture(v CpuArchitectureEnum)`
+
+SetCpuArchitecture sets CpuArchitecture field to given value.
+
+### HasCpuArchitecture
+
+`func (o *JobRequest) HasCpuArchitecture() bool`
+
+HasCpuArchitecture returns a boolean if a field has been set.
+
+### SetCpuArchitectureNil
+
+`func (o *JobRequest) SetCpuArchitectureNil(b bool)`
+
+ SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+
+### UnsetCpuArchitecture
+`func (o *JobRequest) UnsetCpuArchitecture()`
+
+UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
 ### GetHealthchecks
 
 `func (o *JobRequest) GetHealthchecks() Healthcheck`

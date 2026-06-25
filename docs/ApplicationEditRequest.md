@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the application. | [optional] 
 **DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
+**CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional] 
 **Autoscaling** | Pointer to [**AutoscalingPolicyRequest**](AutoscalingPolicyRequest.md) |  | [optional] 
 
 ## Methods
@@ -622,6 +623,41 @@ HasDockerTargetBuildStage returns a boolean if a field has been set.
 `func (o *ApplicationEditRequest) UnsetDockerTargetBuildStage()`
 
 UnsetDockerTargetBuildStage ensures that no value is present for DockerTargetBuildStage, not even an explicit nil
+### GetCpuArchitecture
+
+`func (o *ApplicationEditRequest) GetCpuArchitecture() CpuArchitectureEnum`
+
+GetCpuArchitecture returns the CpuArchitecture field if non-nil, zero value otherwise.
+
+### GetCpuArchitectureOk
+
+`func (o *ApplicationEditRequest) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool)`
+
+GetCpuArchitectureOk returns a tuple with the CpuArchitecture field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuArchitecture
+
+`func (o *ApplicationEditRequest) SetCpuArchitecture(v CpuArchitectureEnum)`
+
+SetCpuArchitecture sets CpuArchitecture field to given value.
+
+### HasCpuArchitecture
+
+`func (o *ApplicationEditRequest) HasCpuArchitecture() bool`
+
+HasCpuArchitecture returns a boolean if a field has been set.
+
+### SetCpuArchitectureNil
+
+`func (o *ApplicationEditRequest) SetCpuArchitectureNil(b bool)`
+
+ SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+
+### UnsetCpuArchitecture
+`func (o *ApplicationEditRequest) UnsetCpuArchitecture()`
+
+UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
 ### GetAutoscaling
 
 `func (o *ApplicationEditRequest) GetAutoscaling() AutoscalingPolicyRequest`

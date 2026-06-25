@@ -42,6 +42,8 @@ type LifecycleJobResponse struct {
 	Gpu    int32 `json:"gpu"`
 	// Ephemeral storage of the service in GiB. When omitted, the platform default is used.
 	EphemeralStorageInGib *int32 `json:"ephemeral_storage_in_gib,omitempty"`
+	// CPU architecture this service runs on. If null, the cluster default architecture is used.
+	CpuArchitecture NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
 	// Maximum number of restart allowed before the job is considered as failed 0 means that no restart/crash of the job is allowed
 	MaxNbRestart *int32 `json:"max_nb_restart,omitempty"`
 	// Maximum number of seconds allowed for the job to run before killing it and mark it as failed
@@ -438,6 +440,49 @@ func (o *LifecycleJobResponse) HasEphemeralStorageInGib() bool {
 // SetEphemeralStorageInGib gets a reference to the given int32 and assigns it to the EphemeralStorageInGib field.
 func (o *LifecycleJobResponse) SetEphemeralStorageInGib(v int32) {
 	o.EphemeralStorageInGib = &v
+}
+
+// GetCpuArchitecture returns the CpuArchitecture field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LifecycleJobResponse) GetCpuArchitecture() CpuArchitectureEnum {
+	if o == nil || IsNil(o.CpuArchitecture.Get()) {
+		var ret CpuArchitectureEnum
+		return ret
+	}
+	return *o.CpuArchitecture.Get()
+}
+
+// GetCpuArchitectureOk returns a tuple with the CpuArchitecture field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LifecycleJobResponse) GetCpuArchitectureOk() (*CpuArchitectureEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.CpuArchitecture.Get(), o.CpuArchitecture.IsSet()
+}
+
+// HasCpuArchitecture returns a boolean if a field has been set.
+func (o *LifecycleJobResponse) HasCpuArchitecture() bool {
+	if o != nil && o.CpuArchitecture.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetCpuArchitecture gets a reference to the given NullableCpuArchitectureEnum and assigns it to the CpuArchitecture field.
+func (o *LifecycleJobResponse) SetCpuArchitecture(v CpuArchitectureEnum) {
+	o.CpuArchitecture.Set(&v)
+}
+
+// SetCpuArchitectureNil sets the value for CpuArchitecture to be an explicit nil
+func (o *LifecycleJobResponse) SetCpuArchitectureNil() {
+	o.CpuArchitecture.Set(nil)
+}
+
+// UnsetCpuArchitecture ensures that no value is present for CpuArchitecture, not even an explicit nil
+func (o *LifecycleJobResponse) UnsetCpuArchitecture() {
+	o.CpuArchitecture.Unset()
 }
 
 // GetMaxNbRestart returns the MaxNbRestart field value if set, zero value otherwise.
@@ -840,6 +885,9 @@ func (o LifecycleJobResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.EphemeralStorageInGib) {
 		toSerialize["ephemeral_storage_in_gib"] = o.EphemeralStorageInGib
 	}
+	if o.CpuArchitecture.IsSet() {
+		toSerialize["cpu_architecture"] = o.CpuArchitecture.Get()
+	}
 	if !IsNil(o.MaxNbRestart) {
 		toSerialize["max_nb_restart"] = o.MaxNbRestart
 	}
@@ -937,6 +985,7 @@ func (o *LifecycleJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "memory")
 		delete(additionalProperties, "gpu")
 		delete(additionalProperties, "ephemeral_storage_in_gib")
+		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "max_nb_restart")
 		delete(additionalProperties, "max_duration_seconds")
 		delete(additionalProperties, "auto_preview")
