@@ -25,8 +25,8 @@ type ClusterAnalysisRequest struct {
 	OutputFormat ClusterAnalysisOutputFormat `json:"output_format"`
 	// Optional Prometheus URL for COST_RECOMMENDATION analysis. When omitted, the engine resolves the default Qovery OBS endpoint.
 	PrometheusUrl NullableString `json:"prometheus_url,omitempty"`
-	// Optional history duration in hours for COST_RECOMMENDATION analysis.
-	HistoryDurationHours NullableInt32 `json:"history_duration_hours,omitempty"`
+	// Optional allowlisted KRR arguments for COST_RECOMMENDATION analysis. The engine validates and rejects unsupported or unsafe KRR flags.
+	CmdArgs []string `json:"cmd_args,omitempty"`
 	// Optional target Kubernetes version for DEPRECATED_API_CHECK analysis.
 	TargetKubernetesVersion NullableString `json:"target_kubernetes_version,omitempty"`
 	AdditionalProperties    map[string]interface{}
@@ -144,47 +144,36 @@ func (o *ClusterAnalysisRequest) UnsetPrometheusUrl() {
 	o.PrometheusUrl.Unset()
 }
 
-// GetHistoryDurationHours returns the HistoryDurationHours field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterAnalysisRequest) GetHistoryDurationHours() int32 {
-	if o == nil || IsNil(o.HistoryDurationHours.Get()) {
-		var ret int32
+// GetCmdArgs returns the CmdArgs field value if set, zero value otherwise.
+func (o *ClusterAnalysisRequest) GetCmdArgs() []string {
+	if o == nil || IsNil(o.CmdArgs) {
+		var ret []string
 		return ret
 	}
-	return *o.HistoryDurationHours.Get()
+	return o.CmdArgs
 }
 
-// GetHistoryDurationHoursOk returns a tuple with the HistoryDurationHours field value if set, nil otherwise
+// GetCmdArgsOk returns a tuple with the CmdArgs field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterAnalysisRequest) GetHistoryDurationHoursOk() (*int32, bool) {
-	if o == nil {
+func (o *ClusterAnalysisRequest) GetCmdArgsOk() ([]string, bool) {
+	if o == nil || IsNil(o.CmdArgs) {
 		return nil, false
 	}
-	return o.HistoryDurationHours.Get(), o.HistoryDurationHours.IsSet()
+	return o.CmdArgs, true
 }
 
-// HasHistoryDurationHours returns a boolean if a field has been set.
-func (o *ClusterAnalysisRequest) HasHistoryDurationHours() bool {
-	if o != nil && o.HistoryDurationHours.IsSet() {
+// HasCmdArgs returns a boolean if a field has been set.
+func (o *ClusterAnalysisRequest) HasCmdArgs() bool {
+	if o != nil && !IsNil(o.CmdArgs) {
 		return true
 	}
 
 	return false
 }
 
-// SetHistoryDurationHours gets a reference to the given NullableInt32 and assigns it to the HistoryDurationHours field.
-func (o *ClusterAnalysisRequest) SetHistoryDurationHours(v int32) {
-	o.HistoryDurationHours.Set(&v)
-}
-
-// SetHistoryDurationHoursNil sets the value for HistoryDurationHours to be an explicit nil
-func (o *ClusterAnalysisRequest) SetHistoryDurationHoursNil() {
-	o.HistoryDurationHours.Set(nil)
-}
-
-// UnsetHistoryDurationHours ensures that no value is present for HistoryDurationHours, not even an explicit nil
-func (o *ClusterAnalysisRequest) UnsetHistoryDurationHours() {
-	o.HistoryDurationHours.Unset()
+// SetCmdArgs gets a reference to the given []string and assigns it to the CmdArgs field.
+func (o *ClusterAnalysisRequest) SetCmdArgs(v []string) {
+	o.CmdArgs = v
 }
 
 // GetTargetKubernetesVersion returns the TargetKubernetesVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -245,8 +234,8 @@ func (o ClusterAnalysisRequest) ToMap() (map[string]interface{}, error) {
 	if o.PrometheusUrl.IsSet() {
 		toSerialize["prometheus_url"] = o.PrometheusUrl.Get()
 	}
-	if o.HistoryDurationHours.IsSet() {
-		toSerialize["history_duration_hours"] = o.HistoryDurationHours.Get()
+	if !IsNil(o.CmdArgs) {
+		toSerialize["cmd_args"] = o.CmdArgs
 	}
 	if o.TargetKubernetesVersion.IsSet() {
 		toSerialize["target_kubernetes_version"] = o.TargetKubernetesVersion.Get()
@@ -298,7 +287,7 @@ func (o *ClusterAnalysisRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "output_format")
 		delete(additionalProperties, "prometheus_url")
-		delete(additionalProperties, "history_duration_hours")
+		delete(additionalProperties, "cmd_args")
 		delete(additionalProperties, "target_kubernetes_version")
 		o.AdditionalProperties = additionalProperties
 	}

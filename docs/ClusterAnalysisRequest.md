@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Kind** | [**ClusterAnalysisKind**](ClusterAnalysisKind.md) |  | 
 **OutputFormat** | [**ClusterAnalysisOutputFormat**](ClusterAnalysisOutputFormat.md) |  | 
 **PrometheusUrl** | Pointer to **NullableString** | Optional Prometheus URL for COST_RECOMMENDATION analysis. When omitted, the engine resolves the default Qovery OBS endpoint. | [optional] 
-**HistoryDurationHours** | Pointer to **NullableInt32** | Optional history duration in hours for COST_RECOMMENDATION analysis. | [optional] 
+**CmdArgs** | Pointer to **[]string** | Optional allowlisted KRR arguments for COST_RECOMMENDATION analysis. The engine validates and rejects unsupported or unsafe KRR flags. | [optional] 
 **TargetKubernetesVersion** | Pointer to **NullableString** | Optional target Kubernetes version for DEPRECATED_API_CHECK analysis. | [optional] 
 
 ## Methods
@@ -104,41 +104,31 @@ HasPrometheusUrl returns a boolean if a field has been set.
 `func (o *ClusterAnalysisRequest) UnsetPrometheusUrl()`
 
 UnsetPrometheusUrl ensures that no value is present for PrometheusUrl, not even an explicit nil
-### GetHistoryDurationHours
+### GetCmdArgs
 
-`func (o *ClusterAnalysisRequest) GetHistoryDurationHours() int32`
+`func (o *ClusterAnalysisRequest) GetCmdArgs() []string`
 
-GetHistoryDurationHours returns the HistoryDurationHours field if non-nil, zero value otherwise.
+GetCmdArgs returns the CmdArgs field if non-nil, zero value otherwise.
 
-### GetHistoryDurationHoursOk
+### GetCmdArgsOk
 
-`func (o *ClusterAnalysisRequest) GetHistoryDurationHoursOk() (*int32, bool)`
+`func (o *ClusterAnalysisRequest) GetCmdArgsOk() (*[]string, bool)`
 
-GetHistoryDurationHoursOk returns a tuple with the HistoryDurationHours field if it's non-nil, zero value otherwise
+GetCmdArgsOk returns a tuple with the CmdArgs field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetHistoryDurationHours
+### SetCmdArgs
 
-`func (o *ClusterAnalysisRequest) SetHistoryDurationHours(v int32)`
+`func (o *ClusterAnalysisRequest) SetCmdArgs(v []string)`
 
-SetHistoryDurationHours sets HistoryDurationHours field to given value.
+SetCmdArgs sets CmdArgs field to given value.
 
-### HasHistoryDurationHours
+### HasCmdArgs
 
-`func (o *ClusterAnalysisRequest) HasHistoryDurationHours() bool`
+`func (o *ClusterAnalysisRequest) HasCmdArgs() bool`
 
-HasHistoryDurationHours returns a boolean if a field has been set.
+HasCmdArgs returns a boolean if a field has been set.
 
-### SetHistoryDurationHoursNil
-
-`func (o *ClusterAnalysisRequest) SetHistoryDurationHoursNil(b bool)`
-
- SetHistoryDurationHoursNil sets the value for HistoryDurationHours to be an explicit nil
-
-### UnsetHistoryDurationHours
-`func (o *ClusterAnalysisRequest) UnsetHistoryDurationHours()`
-
-UnsetHistoryDurationHours ensures that no value is present for HistoryDurationHours, not even an explicit nil
 ### GetTargetKubernetesVersion
 
 `func (o *ClusterAnalysisRequest) GetTargetKubernetesVersion() string`

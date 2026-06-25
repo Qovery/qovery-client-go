@@ -25139,7 +25139,22 @@ components:
         target_kubernetes_version: "1.32"
         output_format: TABLE
         kind: COST_RECOMMENDATION
-        history_duration_hours: 336
+        cmd_args:
+        - --history_duration
+        - "336"
+        - --timeframe_duration
+        - "2.5"
+        - --cpu-request
+        - "99"
+        - --cpu-limit
+        - "99"
+        - --memory-buffer-percentage
+        - "15"
+        - --use-oomkill-data
+        - --oom-memory-buffer-percentage
+        - "25"
+        - -n
+        - default
       properties:
         kind:
           $ref: '#/components/schemas/ClusterAnalysisKind'
@@ -25150,12 +25165,28 @@ components:
             \ When omitted, the engine resolves the default Qovery OBS endpoint."
           nullable: true
           type: string
-        history_duration_hours:
-          description: Optional history duration in hours for COST_RECOMMENDATION
-            analysis.
-          example: 336
-          nullable: true
-          type: integer
+        cmd_args:
+          description: Optional allowlisted KRR arguments for COST_RECOMMENDATION
+            analysis. The engine validates and rejects unsupported or unsafe KRR flags.
+          example:
+          - --history_duration
+          - "336"
+          - --timeframe_duration
+          - "2.5"
+          - --cpu-request
+          - "99"
+          - --cpu-limit
+          - "99"
+          - --memory-buffer-percentage
+          - "15"
+          - --use-oomkill-data
+          - --oom-memory-buffer-percentage
+          - "25"
+          - -n
+          - default
+          items:
+            type: string
+          type: array
         target_kubernetes_version:
           description: Optional target Kubernetes version for DEPRECATED_API_CHECK
             analysis.
