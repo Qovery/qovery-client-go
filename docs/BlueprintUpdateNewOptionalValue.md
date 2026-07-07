@@ -6,12 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **DefaultValue** | Pointer to **NullableString** |  | [optional] 
+**Type** | [**BlueprintManifestFieldType**](BlueprintManifestFieldType.md) |  | 
+**AllowedValues** | Pointer to **[]string** | Values the user may choose from. Null &#x3D; unrestricted. | [optional] 
+**IsSecret** | **bool** |  | 
 
 ## Methods
 
 ### NewBlueprintUpdateNewOptionalValue
 
-`func NewBlueprintUpdateNewOptionalValue(name string, ) *BlueprintUpdateNewOptionalValue`
+`func NewBlueprintUpdateNewOptionalValue(name string, type_ BlueprintManifestFieldType, isSecret bool, ) *BlueprintUpdateNewOptionalValue`
 
 NewBlueprintUpdateNewOptionalValue instantiates a new BlueprintUpdateNewOptionalValue object
 This constructor will assign default values to properties that have it defined,
@@ -81,6 +84,81 @@ HasDefaultValue returns a boolean if a field has been set.
 `func (o *BlueprintUpdateNewOptionalValue) UnsetDefaultValue()`
 
 UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
+### GetType
+
+`func (o *BlueprintUpdateNewOptionalValue) GetType() BlueprintManifestFieldType`
+
+GetType returns the Type field if non-nil, zero value otherwise.
+
+### GetTypeOk
+
+`func (o *BlueprintUpdateNewOptionalValue) GetTypeOk() (*BlueprintManifestFieldType, bool)`
+
+GetTypeOk returns a tuple with the Type field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetType
+
+`func (o *BlueprintUpdateNewOptionalValue) SetType(v BlueprintManifestFieldType)`
+
+SetType sets Type field to given value.
+
+
+### GetAllowedValues
+
+`func (o *BlueprintUpdateNewOptionalValue) GetAllowedValues() []string`
+
+GetAllowedValues returns the AllowedValues field if non-nil, zero value otherwise.
+
+### GetAllowedValuesOk
+
+`func (o *BlueprintUpdateNewOptionalValue) GetAllowedValuesOk() (*[]string, bool)`
+
+GetAllowedValuesOk returns a tuple with the AllowedValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAllowedValues
+
+`func (o *BlueprintUpdateNewOptionalValue) SetAllowedValues(v []string)`
+
+SetAllowedValues sets AllowedValues field to given value.
+
+### HasAllowedValues
+
+`func (o *BlueprintUpdateNewOptionalValue) HasAllowedValues() bool`
+
+HasAllowedValues returns a boolean if a field has been set.
+
+### SetAllowedValuesNil
+
+`func (o *BlueprintUpdateNewOptionalValue) SetAllowedValuesNil(b bool)`
+
+ SetAllowedValuesNil sets the value for AllowedValues to be an explicit nil
+
+### UnsetAllowedValues
+`func (o *BlueprintUpdateNewOptionalValue) UnsetAllowedValues()`
+
+UnsetAllowedValues ensures that no value is present for AllowedValues, not even an explicit nil
+### GetIsSecret
+
+`func (o *BlueprintUpdateNewOptionalValue) GetIsSecret() bool`
+
+GetIsSecret returns the IsSecret field if non-nil, zero value otherwise.
+
+### GetIsSecretOk
+
+`func (o *BlueprintUpdateNewOptionalValue) GetIsSecretOk() (*bool, bool)`
+
+GetIsSecretOk returns a tuple with the IsSecret field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsSecret
+
+`func (o *BlueprintUpdateNewOptionalValue) SetIsSecret(v bool)`
+
+SetIsSecret sets IsSecret field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -21,10 +21,14 @@ var _ MappedNullable = &BlueprintUpdateUpdatedValue{}
 
 // BlueprintUpdateUpdatedValue struct for BlueprintUpdateUpdatedValue
 type BlueprintUpdateUpdatedValue struct {
-	Name                 string         `json:"name"`
-	CurrentDefaultValue  NullableString `json:"current_default_value,omitempty"`
-	NewDefaultValue      NullableString `json:"new_default_value,omitempty"`
-	CurrentValue         NullableString `json:"current_value,omitempty"`
+	Name                string                     `json:"name"`
+	CurrentDefaultValue NullableString             `json:"current_default_value,omitempty"`
+	NewDefaultValue     NullableString             `json:"new_default_value,omitempty"`
+	CurrentValue        NullableString             `json:"current_value,omitempty"`
+	Type                BlueprintManifestFieldType `json:"type"`
+	// Values the user may choose from. Null = unrestricted.
+	AllowedValues        []string `json:"allowed_values,omitempty"`
+	IsSecret             bool     `json:"is_secret"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,9 +38,11 @@ type _BlueprintUpdateUpdatedValue BlueprintUpdateUpdatedValue
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateUpdatedValue(name string) *BlueprintUpdateUpdatedValue {
+func NewBlueprintUpdateUpdatedValue(name string, type_ BlueprintManifestFieldType, isSecret bool) *BlueprintUpdateUpdatedValue {
 	this := BlueprintUpdateUpdatedValue{}
 	this.Name = name
+	this.Type = type_
+	this.IsSecret = isSecret
 	return &this
 }
 
@@ -201,6 +207,87 @@ func (o *BlueprintUpdateUpdatedValue) UnsetCurrentValue() {
 	o.CurrentValue.Unset()
 }
 
+// GetType returns the Type field value
+func (o *BlueprintUpdateUpdatedValue) GetType() BlueprintManifestFieldType {
+	if o == nil {
+		var ret BlueprintManifestFieldType
+		return ret
+	}
+
+	return o.Type
+}
+
+// GetTypeOk returns a tuple with the Type field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateUpdatedValue) GetTypeOk() (*BlueprintManifestFieldType, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Type, true
+}
+
+// SetType sets field value
+func (o *BlueprintUpdateUpdatedValue) SetType(v BlueprintManifestFieldType) {
+	o.Type = v
+}
+
+// GetAllowedValues returns the AllowedValues field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintUpdateUpdatedValue) GetAllowedValues() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+	return o.AllowedValues
+}
+
+// GetAllowedValuesOk returns a tuple with the AllowedValues field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintUpdateUpdatedValue) GetAllowedValuesOk() ([]string, bool) {
+	if o == nil || IsNil(o.AllowedValues) {
+		return nil, false
+	}
+	return o.AllowedValues, true
+}
+
+// HasAllowedValues returns a boolean if a field has been set.
+func (o *BlueprintUpdateUpdatedValue) HasAllowedValues() bool {
+	if o != nil && !IsNil(o.AllowedValues) {
+		return true
+	}
+
+	return false
+}
+
+// SetAllowedValues gets a reference to the given []string and assigns it to the AllowedValues field.
+func (o *BlueprintUpdateUpdatedValue) SetAllowedValues(v []string) {
+	o.AllowedValues = v
+}
+
+// GetIsSecret returns the IsSecret field value
+func (o *BlueprintUpdateUpdatedValue) GetIsSecret() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsSecret
+}
+
+// GetIsSecretOk returns a tuple with the IsSecret field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateUpdatedValue) GetIsSecretOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsSecret, true
+}
+
+// SetIsSecret sets field value
+func (o *BlueprintUpdateUpdatedValue) SetIsSecret(v bool) {
+	o.IsSecret = v
+}
+
 func (o BlueprintUpdateUpdatedValue) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -221,6 +308,11 @@ func (o BlueprintUpdateUpdatedValue) ToMap() (map[string]interface{}, error) {
 	if o.CurrentValue.IsSet() {
 		toSerialize["current_value"] = o.CurrentValue.Get()
 	}
+	toSerialize["type"] = o.Type
+	if o.AllowedValues != nil {
+		toSerialize["allowed_values"] = o.AllowedValues
+	}
+	toSerialize["is_secret"] = o.IsSecret
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -235,6 +327,8 @@ func (o *BlueprintUpdateUpdatedValue) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"type",
+		"is_secret",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -268,6 +362,9 @@ func (o *BlueprintUpdateUpdatedValue) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "current_default_value")
 		delete(additionalProperties, "new_default_value")
 		delete(additionalProperties, "current_value")
+		delete(additionalProperties, "type")
+		delete(additionalProperties, "allowed_values")
+		delete(additionalProperties, "is_secret")
 		o.AdditionalProperties = additionalProperties
 	}
 

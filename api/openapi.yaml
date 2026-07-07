@@ -20419,25 +20419,113 @@ components:
         - name: name
         - name: name
         new_required_values:
-        - name: name
-        - name: name
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
         updated_values:
-        - current_default_value: current_default_value
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          current_default_value: current_default_value
+          is_secret: true
           name: name
           new_default_value: new_default_value
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
           current_value: current_value
-        - current_default_value: current_default_value
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          current_default_value: current_default_value
+          is_secret: true
           name: name
           new_default_value: new_default_value
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
           current_value: current_value
         now_required_values:
-        - name: name
-        - name: name
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
         new_optional_values:
-        - name: name
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
           default_value: default_value
-        - name: name
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
+        - allowed_values:
+          - allowed_values
+          - allowed_values
+          is_secret: true
+          name: name
           default_value: default_value
+          type:
+            min: 1
+            min_length: 0
+            max: 5
+            pattern: pattern
+            type: string
+            max_length: 6
         engine_diff:
           updated_values:
           - current_default_value: current_default_value
@@ -20510,34 +20598,126 @@ components:
       properties:
         updated_values:
           items:
-            $ref: '#/components/schemas/BlueprintUpdateUpdatedValue'
+            $ref: '#/components/schemas/BlueprintUpdateEngineFieldChange'
           type: array
       required:
       - updated_values
       type: object
     BlueprintUpdateNewRequiredValue:
       example:
+        allowed_values:
+        - allowed_values
+        - allowed_values
+        is_secret: true
         name: name
+        type:
+          min: 1
+          min_length: 0
+          max: 5
+          pattern: pattern
+          type: string
+          max_length: 6
       properties:
         name:
           type: string
+        type:
+          $ref: '#/components/schemas/BlueprintManifestFieldType'
+        allowed_values:
+          description: Values the user may choose from. Null = unrestricted.
+          items:
+            type: string
+          nullable: true
+          type: array
+        is_secret:
+          type: boolean
       required:
+      - is_secret
       - name
+      - type
       type: object
     BlueprintUpdateNewOptionalValue:
       example:
+        allowed_values:
+        - allowed_values
+        - allowed_values
+        is_secret: true
         name: name
         default_value: default_value
+        type:
+          min: 1
+          min_length: 0
+          max: 5
+          pattern: pattern
+          type: string
+          max_length: 6
       properties:
         name:
           type: string
         default_value:
           nullable: true
           type: string
+        type:
+          $ref: '#/components/schemas/BlueprintManifestFieldType'
+        allowed_values:
+          description: Values the user may choose from. Null = unrestricted.
+          items:
+            type: string
+          nullable: true
+          type: array
+        is_secret:
+          type: boolean
       required:
+      - is_secret
       - name
+      - type
       type: object
     BlueprintUpdateUpdatedValue:
+      example:
+        allowed_values:
+        - allowed_values
+        - allowed_values
+        current_default_value: current_default_value
+        is_secret: true
+        name: name
+        new_default_value: new_default_value
+        type:
+          min: 1
+          min_length: 0
+          max: 5
+          pattern: pattern
+          type: string
+          max_length: 6
+        current_value: current_value
+      properties:
+        name:
+          type: string
+        current_default_value:
+          nullable: true
+          type: string
+        new_default_value:
+          nullable: true
+          type: string
+        current_value:
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/BlueprintManifestFieldType'
+        allowed_values:
+          description: Values the user may choose from. Null = unrestricted.
+          items:
+            type: string
+          nullable: true
+          type: array
+        is_secret:
+          type: boolean
+      required:
+      - is_secret
+      - name
+      - type
+      type: object
+    BlueprintUpdateEngineFieldChange:
+      description: "A single engine-block field delta (e.g. version, cpu, ram). Not\
+        \ a manifest variable, so it carries no field type or constraints."
       example:
         current_default_value: current_default_value
         name: name

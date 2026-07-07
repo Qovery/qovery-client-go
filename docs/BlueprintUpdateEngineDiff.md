@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**UpdatedValues** | [**[]BlueprintUpdateUpdatedValue**](BlueprintUpdateUpdatedValue.md) |  | 
+**UpdatedValues** | [**[]BlueprintUpdateEngineFieldChange**](BlueprintUpdateEngineFieldChange.md) |  | 
 
 ## Methods
 
 ### NewBlueprintUpdateEngineDiff
 
-`func NewBlueprintUpdateEngineDiff(updatedValues []BlueprintUpdateUpdatedValue, ) *BlueprintUpdateEngineDiff`
+`func NewBlueprintUpdateEngineDiff(updatedValues []BlueprintUpdateEngineFieldChange, ) *BlueprintUpdateEngineDiff`
 
 NewBlueprintUpdateEngineDiff instantiates a new BlueprintUpdateEngineDiff object
 This constructor will assign default values to properties that have it defined,
@@ -27,20 +27,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetUpdatedValues
 
-`func (o *BlueprintUpdateEngineDiff) GetUpdatedValues() []BlueprintUpdateUpdatedValue`
+`func (o *BlueprintUpdateEngineDiff) GetUpdatedValues() []BlueprintUpdateEngineFieldChange`
 
 GetUpdatedValues returns the UpdatedValues field if non-nil, zero value otherwise.
 
 ### GetUpdatedValuesOk
 
-`func (o *BlueprintUpdateEngineDiff) GetUpdatedValuesOk() (*[]BlueprintUpdateUpdatedValue, bool)`
+`func (o *BlueprintUpdateEngineDiff) GetUpdatedValuesOk() (*[]BlueprintUpdateEngineFieldChange, bool)`
 
 GetUpdatedValuesOk returns a tuple with the UpdatedValues field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedValues
 
-`func (o *BlueprintUpdateEngineDiff) SetUpdatedValues(v []BlueprintUpdateUpdatedValue)`
+`func (o *BlueprintUpdateEngineDiff) SetUpdatedValues(v []BlueprintUpdateEngineFieldChange)`
 
 SetUpdatedValues sets UpdatedValues field to given value.
 

@@ -21,7 +21,7 @@ var _ MappedNullable = &BlueprintUpdateEngineDiff{}
 
 // BlueprintUpdateEngineDiff Catalog engine-block deltas between the current and latest blueprint tag.
 type BlueprintUpdateEngineDiff struct {
-	UpdatedValues        []BlueprintUpdateUpdatedValue `json:"updated_values"`
+	UpdatedValues        []BlueprintUpdateEngineFieldChange `json:"updated_values"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,7 +31,7 @@ type _BlueprintUpdateEngineDiff BlueprintUpdateEngineDiff
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateEngineDiff(updatedValues []BlueprintUpdateUpdatedValue) *BlueprintUpdateEngineDiff {
+func NewBlueprintUpdateEngineDiff(updatedValues []BlueprintUpdateEngineFieldChange) *BlueprintUpdateEngineDiff {
 	this := BlueprintUpdateEngineDiff{}
 	this.UpdatedValues = updatedValues
 	return &this
@@ -46,9 +46,9 @@ func NewBlueprintUpdateEngineDiffWithDefaults() *BlueprintUpdateEngineDiff {
 }
 
 // GetUpdatedValues returns the UpdatedValues field value
-func (o *BlueprintUpdateEngineDiff) GetUpdatedValues() []BlueprintUpdateUpdatedValue {
+func (o *BlueprintUpdateEngineDiff) GetUpdatedValues() []BlueprintUpdateEngineFieldChange {
 	if o == nil {
-		var ret []BlueprintUpdateUpdatedValue
+		var ret []BlueprintUpdateEngineFieldChange
 		return ret
 	}
 
@@ -57,7 +57,7 @@ func (o *BlueprintUpdateEngineDiff) GetUpdatedValues() []BlueprintUpdateUpdatedV
 
 // GetUpdatedValuesOk returns a tuple with the UpdatedValues field value
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdateEngineDiff) GetUpdatedValuesOk() ([]BlueprintUpdateUpdatedValue, bool) {
+func (o *BlueprintUpdateEngineDiff) GetUpdatedValuesOk() ([]BlueprintUpdateEngineFieldChange, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -65,7 +65,7 @@ func (o *BlueprintUpdateEngineDiff) GetUpdatedValuesOk() ([]BlueprintUpdateUpdat
 }
 
 // SetUpdatedValues sets field value
-func (o *BlueprintUpdateEngineDiff) SetUpdatedValues(v []BlueprintUpdateUpdatedValue) {
+func (o *BlueprintUpdateEngineDiff) SetUpdatedValues(v []BlueprintUpdateEngineFieldChange) {
 	o.UpdatedValues = v
 }
 
