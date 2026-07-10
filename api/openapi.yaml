@@ -19060,6 +19060,8 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
+        "409":
+          description: A service with this name already exists in the environment
         "422":
           description: Malformed blueprint tag
         "502":
@@ -20413,6 +20415,11 @@ components:
       type: object
     BlueprintUpdateResponse:
       example:
+        new_major_versions:
+        - latest_tag: aws/postgres/17/1.0.1
+          service_version: "17"
+        - latest_tag: aws/postgres/17/1.0.1
+          service_version: "17"
         is_up_to_date: true
         latest_tag: aws/postgres/17/1.1.0
         removed_values:
@@ -20572,10 +20579,18 @@ components:
           type: array
         engine_diff:
           $ref: '#/components/schemas/BlueprintUpdateEngineDiff'
+        new_major_versions:
+          description: Major versions of the same blueprint newer than the service's
+            current one (e.g. service on aws/postgres/16 while 17 and 18 exist). Empty
+            when already on the latest major or when the current version is non-numeric.
+          items:
+            $ref: '#/components/schemas/BlueprintUpdateNewMajorVersion'
+          type: array
       required:
       - engine_diff
       - is_up_to_date
       - latest_tag
+      - new_major_versions
       - new_optional_values
       - new_required_values
       - now_required_values
@@ -20746,6 +20761,24 @@ components:
           type: string
       required:
       - name
+      type: object
+    BlueprintUpdateNewMajorVersion:
+      description: A newer major version of the blueprint available for a major upgrade.
+      example:
+        latest_tag: aws/postgres/17/1.0.1
+        service_version: "17"
+      properties:
+        service_version:
+          description: The engine major version (e.g. "17").
+          example: "17"
+          type: string
+        latest_tag:
+          description: Latest catalog tag for that major version.
+          example: aws/postgres/17/1.0.1
+          type: string
+      required:
+      - latest_tag
+      - service_version
       type: object
     BlueprintUpdatePreviewResponse:
       example:

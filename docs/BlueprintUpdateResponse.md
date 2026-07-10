@@ -12,12 +12,13 @@ Name | Type | Description | Notes
 **UpdatedValues** | [**[]BlueprintUpdateUpdatedValue**](BlueprintUpdateUpdatedValue.md) | Variables whose default value changed between the current and latest versions | 
 **RemovedValues** | [**[]BlueprintUpdateRemovedValue**](BlueprintUpdateRemovedValue.md) | Variables that no longer exist in the latest version | 
 **EngineDiff** | [**BlueprintUpdateEngineDiff**](BlueprintUpdateEngineDiff.md) |  | 
+**NewMajorVersions** | [**[]BlueprintUpdateNewMajorVersion**](BlueprintUpdateNewMajorVersion.md) | Major versions of the same blueprint newer than the service&#39;s current one (e.g. service on aws/postgres/16 while 17 and 18 exist). Empty when already on the latest major or when the current version is non-numeric. | 
 
 ## Methods
 
 ### NewBlueprintUpdateResponse
 
-`func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, ) *BlueprintUpdateResponse`
+`func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion, ) *BlueprintUpdateResponse`
 
 NewBlueprintUpdateResponse instantiates a new BlueprintUpdateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -190,6 +191,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintUpdateResponse) SetEngineDiff(v BlueprintUpdateEngineDiff)`
 
 SetEngineDiff sets EngineDiff field to given value.
+
+
+### GetNewMajorVersions
+
+`func (o *BlueprintUpdateResponse) GetNewMajorVersions() []BlueprintUpdateNewMajorVersion`
+
+GetNewMajorVersions returns the NewMajorVersions field if non-nil, zero value otherwise.
+
+### GetNewMajorVersionsOk
+
+`func (o *BlueprintUpdateResponse) GetNewMajorVersionsOk() (*[]BlueprintUpdateNewMajorVersion, bool)`
+
+GetNewMajorVersionsOk returns a tuple with the NewMajorVersions field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetNewMajorVersions
+
+`func (o *BlueprintUpdateResponse) SetNewMajorVersions(v []BlueprintUpdateNewMajorVersion)`
+
+SetNewMajorVersions sets NewMajorVersions field to given value.
 
 
 

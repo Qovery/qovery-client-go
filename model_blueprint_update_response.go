@@ -32,8 +32,10 @@ type BlueprintUpdateResponse struct {
 	// Variables whose default value changed between the current and latest versions
 	UpdatedValues []BlueprintUpdateUpdatedValue `json:"updated_values"`
 	// Variables that no longer exist in the latest version
-	RemovedValues        []BlueprintUpdateRemovedValue `json:"removed_values"`
-	EngineDiff           BlueprintUpdateEngineDiff     `json:"engine_diff"`
+	RemovedValues []BlueprintUpdateRemovedValue `json:"removed_values"`
+	EngineDiff    BlueprintUpdateEngineDiff     `json:"engine_diff"`
+	// Major versions of the same blueprint newer than the service's current one (e.g. service on aws/postgres/16 while 17 and 18 exist). Empty when already on the latest major or when the current version is non-numeric.
+	NewMajorVersions     []BlueprintUpdateNewMajorVersion `json:"new_major_versions"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -43,7 +45,7 @@ type _BlueprintUpdateResponse BlueprintUpdateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff) *BlueprintUpdateResponse {
+func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion) *BlueprintUpdateResponse {
 	this := BlueprintUpdateResponse{}
 	this.IsUpToDate = isUpToDate
 	this.LatestTag = latestTag
@@ -53,6 +55,7 @@ func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredVa
 	this.UpdatedValues = updatedValues
 	this.RemovedValues = removedValues
 	this.EngineDiff = engineDiff
+	this.NewMajorVersions = newMajorVersions
 	return &this
 }
 
@@ -256,6 +259,30 @@ func (o *BlueprintUpdateResponse) SetEngineDiff(v BlueprintUpdateEngineDiff) {
 	o.EngineDiff = v
 }
 
+// GetNewMajorVersions returns the NewMajorVersions field value
+func (o *BlueprintUpdateResponse) GetNewMajorVersions() []BlueprintUpdateNewMajorVersion {
+	if o == nil {
+		var ret []BlueprintUpdateNewMajorVersion
+		return ret
+	}
+
+	return o.NewMajorVersions
+}
+
+// GetNewMajorVersionsOk returns a tuple with the NewMajorVersions field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateResponse) GetNewMajorVersionsOk() ([]BlueprintUpdateNewMajorVersion, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.NewMajorVersions, true
+}
+
+// SetNewMajorVersions sets field value
+func (o *BlueprintUpdateResponse) SetNewMajorVersions(v []BlueprintUpdateNewMajorVersion) {
+	o.NewMajorVersions = v
+}
+
 func (o BlueprintUpdateResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -274,6 +301,7 @@ func (o BlueprintUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["updated_values"] = o.UpdatedValues
 	toSerialize["removed_values"] = o.RemovedValues
 	toSerialize["engine_diff"] = o.EngineDiff
+	toSerialize["new_major_versions"] = o.NewMajorVersions
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -295,6 +323,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 		"updated_values",
 		"removed_values",
 		"engine_diff",
+		"new_major_versions",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -332,6 +361,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_values")
 		delete(additionalProperties, "removed_values")
 		delete(additionalProperties, "engine_diff")
+		delete(additionalProperties, "new_major_versions")
 		o.AdditionalProperties = additionalProperties
 	}
 
