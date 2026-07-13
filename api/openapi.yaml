@@ -80,6 +80,7 @@ tags:
 - name: Cloud Provider
 - name: Cloud Provider Credentials
 - name: Clusters
+- name: Platform Configuration
 - name: Custom Domain
 - name: Container Custom Domain
 - name: Database
@@ -1681,6 +1682,40 @@ paths:
       summary: Update the onboarding status of an organization
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/platformTemplate:
+    get:
+      description: "Returns the published platform templates available to the organization.\
+        \ Each template contains its layers, components, and the configuration fields\
+        \ that the Console can render."
+      operationId: listPlatformTemplates
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformTemplateCatalogResponse'
+          description: Published platform template catalog
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "500":
+          description: The platform template catalog could not be loaded
+        "503":
+          description: A component configuration model is temporarily unavailable
+      summary: List platform templates
+      tags:
+      - Platform Configuration
   /organization/{organizationId}/cluster:
     get:
       operationId: listOrganizationCluster
@@ -1860,6 +1895,160 @@ paths:
       summary: Edit a cluster
       tags:
       - Clusters
+  /organization/{organizationId}/cluster/{clusterId}/platformBinding:
+    get:
+      description: "Returns the platform template selected for the cluster, its layer\
+        \ resolution, and the currently stored component configuration."
+      operationId: getClusterPlatformBinding
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterPlatformBindingResponse'
+          description: Cluster platform binding
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "500":
+          description: The selected platform template could not be resolved
+        "503":
+          description: The platform template catalog is temporarily unavailable
+      summary: Get the cluster platform binding
+      tags:
+      - Platform Configuration
+    put:
+      description: "Selects a platform template and stores layer selections, component\
+        \ profile values, and customer-provided runtime inputs for the cluster."
+      operationId: updateClusterPlatformBinding
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterPlatformBindingRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterPlatformBindingResponse'
+          description: Updated cluster platform binding
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "500":
+          description: The selected platform template could not be resolved
+        "503":
+          description: The platform template catalog is temporarily unavailable
+      summary: Update the cluster platform binding
+      tags:
+      - Platform Configuration
+  /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve:
+    post:
+      description: Resolves the fields and runtime requirements to display for a component
+        using the cluster context and the values currently entered in the Console.
+        This operation is read-only.
+      operationId: resolvePlatformComponentConfiguration
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Platform component key
+        explode: false
+        in: path
+        name: componentKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlatformComponentConfigurationPreviewRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformComponentConfigurationPreviewResponse'
+          description: Resolved component configuration
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "503":
+          description: The platform template catalog is temporarily unavailable
+      summary: Resolve a platform component configuration
+      tags:
+      - Platform Configuration
   /organization/{organizationId}/cluster/{clusterId}/status:
     get:
       operationId: getClusterStatus
@@ -19689,6 +19878,1253 @@ components:
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
+    PlatformTemplateCatalogResponse:
+      example:
+        results:
+        - layers:
+          - componentKeys:
+            - componentKeys
+            - componentKeys
+            components:
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            modes:
+            - QOVERY_MANAGED
+            - QOVERY_MANAGED
+            enabledByDefault: true
+            description: description
+            mandatory: true
+            key: key
+            providers:
+            - AWS
+            - AWS
+          - componentKeys:
+            - componentKeys
+            - componentKeys
+            components:
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            modes:
+            - QOVERY_MANAGED
+            - QOVERY_MANAGED
+            enabledByDefault: true
+            description: description
+            mandatory: true
+            key: key
+            providers:
+            - AWS
+            - AWS
+          description: description
+          version: version
+          key: key
+          status: DRAFT
+        - layers:
+          - componentKeys:
+            - componentKeys
+            - componentKeys
+            components:
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            modes:
+            - QOVERY_MANAGED
+            - QOVERY_MANAGED
+            enabledByDefault: true
+            description: description
+            mandatory: true
+            key: key
+            providers:
+            - AWS
+            - AWS
+          - componentKeys:
+            - componentKeys
+            - componentKeys
+            components:
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            - kind: HELM
+              description: description
+              fields:
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              - defaultValue: defaultValue
+                description: description
+                label: label
+                sensitive: true
+                type: type
+                constraints:
+                  allowedValues:
+                  - allowedValues
+                  - allowedValues
+                  min: 0
+                  max: 6
+                  minLength: 1
+                  pattern: pattern
+                  maxLength: 5
+                key: key
+                required: true
+              key: key
+            modes:
+            - QOVERY_MANAGED
+            - QOVERY_MANAGED
+            enabledByDefault: true
+            description: description
+            mandatory: true
+            key: key
+            providers:
+            - AWS
+            - AWS
+          description: description
+          version: version
+          key: key
+          status: DRAFT
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/PlatformTemplateSummaryResponse'
+          type: array
+      required:
+      - results
+      type: object
+    PlatformTemplateSummaryResponse:
+      example:
+        layers:
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          components:
+          - kind: HELM
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
+          - kind: HELM
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
+          modes:
+          - QOVERY_MANAGED
+          - QOVERY_MANAGED
+          enabledByDefault: true
+          description: description
+          mandatory: true
+          key: key
+          providers:
+          - AWS
+          - AWS
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          components:
+          - kind: HELM
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
+          - kind: HELM
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              description: description
+              label: label
+              sensitive: true
+              type: type
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
+          modes:
+          - QOVERY_MANAGED
+          - QOVERY_MANAGED
+          enabledByDefault: true
+          description: description
+          mandatory: true
+          key: key
+          providers:
+          - AWS
+          - AWS
+        description: description
+        version: version
+        key: key
+        status: DRAFT
+      properties:
+        key:
+          type: string
+        version:
+          type: string
+        status:
+          $ref: '#/components/schemas/PlatformTemplateReleaseStatus'
+        description:
+          nullable: true
+          type: string
+        layers:
+          items:
+            $ref: '#/components/schemas/PlatformTemplateLayerResponse'
+          type: array
+      required:
+      - key
+      - layers
+      - status
+      - version
+      type: object
+    PlatformTemplateReleaseStatus:
+      enum:
+      - DRAFT
+      - PUBLISHED
+      - DEPRECATED
+      type: string
+    PlatformTemplateLayerResponse:
+      example:
+        componentKeys:
+        - componentKeys
+        - componentKeys
+        components:
+        - kind: HELM
+          description: description
+          fields:
+          - defaultValue: defaultValue
+            description: description
+            label: label
+            sensitive: true
+            type: type
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          - defaultValue: defaultValue
+            description: description
+            label: label
+            sensitive: true
+            type: type
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          key: key
+        - kind: HELM
+          description: description
+          fields:
+          - defaultValue: defaultValue
+            description: description
+            label: label
+            sensitive: true
+            type: type
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          - defaultValue: defaultValue
+            description: description
+            label: label
+            sensitive: true
+            type: type
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          key: key
+        modes:
+        - QOVERY_MANAGED
+        - QOVERY_MANAGED
+        enabledByDefault: true
+        description: description
+        mandatory: true
+        key: key
+        providers:
+        - AWS
+        - AWS
+      properties:
+        key:
+          type: string
+        mandatory:
+          type: boolean
+        enabledByDefault:
+          type: boolean
+        modes:
+          items:
+            $ref: '#/components/schemas/PlatformClusterMode'
+          type: array
+        providers:
+          items:
+            $ref: '#/components/schemas/PlatformCloudVendor'
+          nullable: true
+          type: array
+        componentKeys:
+          items:
+            type: string
+          type: array
+        components:
+          items:
+            $ref: '#/components/schemas/PlatformTemplateComponentResponse'
+          type: array
+        description:
+          nullable: true
+          type: string
+      required:
+      - componentKeys
+      - components
+      - enabledByDefault
+      - key
+      - mandatory
+      - modes
+      type: object
+    PlatformClusterMode:
+      enum:
+      - QOVERY_MANAGED
+      - CUSTOMER_MANAGED
+      type: string
+    PlatformCloudVendor:
+      enum:
+      - AWS
+      - SCW
+      - GCP
+      - DO
+      - AZURE
+      - OVH
+      - CIVO
+      - HETZNER
+      - ORACLE
+      - IBM
+      - UNKNOWN
+      type: string
+    PlatformTemplateComponentResponse:
+      example:
+        kind: HELM
+        description: description
+        fields:
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        key: key
+      properties:
+        key:
+          type: string
+        kind:
+          $ref: '#/components/schemas/PlatformTemplateComponentKind'
+        description:
+          nullable: true
+          type: string
+        fields:
+          items:
+            $ref: '#/components/schemas/PlatformComponentConfigurationFieldResponse'
+          type: array
+      required:
+      - fields
+      - key
+      - kind
+      type: object
+    PlatformTemplateComponentKind:
+      enum:
+      - HELM
+      - TERRAFORM
+      type: string
+    PlatformComponentConfigurationFieldResponse:
+      example:
+        defaultValue: defaultValue
+        description: description
+        label: label
+        sensitive: true
+        type: type
+        constraints:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          min: 0
+          max: 6
+          minLength: 1
+          pattern: pattern
+          maxLength: 5
+        key: key
+        required: true
+      properties:
+        key:
+          type: string
+        type:
+          description: "Field type understood by the Console, such as string, number,\
+            \ or bool"
+          type: string
+        required:
+          type: boolean
+        defaultValue:
+          nullable: true
+          type: string
+        label:
+          type: string
+        description:
+          nullable: true
+          type: string
+        sensitive:
+          type: boolean
+        constraints:
+          $ref: '#/components/schemas/PlatformComponentConfigurationConstraintsResponse'
+      required:
+      - constraints
+      - key
+      - label
+      - required
+      - sensitive
+      - type
+      type: object
+    PlatformComponentConfigurationConstraintsResponse:
+      example:
+        allowedValues:
+        - allowedValues
+        - allowedValues
+        min: 0
+        max: 6
+        minLength: 1
+        pattern: pattern
+        maxLength: 5
+      properties:
+        allowedValues:
+          items:
+            type: string
+          nullable: true
+          type: array
+        min:
+          format: int64
+          nullable: true
+          type: integer
+        max:
+          format: int64
+          nullable: true
+          type: integer
+        minLength:
+          format: int64
+          nullable: true
+          type: integer
+        maxLength:
+          format: int64
+          nullable: true
+          type: integer
+        pattern:
+          nullable: true
+          type: string
+      type: object
+    ClusterPlatformBindingRequest:
+      example:
+        customerProvidedInputs:
+          key:
+            key: customerProvidedInputs
+        managedConfig:
+          key: null
+        layerSelections:
+          key: true
+        templateVersion: templateVersion
+        templateKey: templateKey
+      properties:
+        templateKey:
+          type: string
+        templateVersion:
+          type: string
+        layerSelections:
+          additionalProperties:
+            type: boolean
+          type: object
+        managedConfig:
+          additionalProperties:
+            $ref: '#/components/schemas/PlatformConfigurationValues'
+          description: Component configuration values keyed by component key
+          type: object
+        customerProvidedInputs:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: String values keyed first by component key and then by input
+            key
+          type: object
+      required:
+      - templateKey
+      - templateVersion
+      type: object
+    ClusterPlatformBindingResponse:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        customerProvidedInputs:
+          key:
+            key: customerProvidedInputs
+        managedConfig:
+          key: null
+        layerSelections:
+          key: true
+        layers:
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          reason: reason
+          key: key
+          status: ENABLED
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          reason: reason
+          key: key
+          status: ENABLED
+        templateVersion: templateVersion
+        clusterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        templateKey: templateKey
+      properties:
+        clusterId:
+          format: uuid
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        templateKey:
+          type: string
+        templateVersion:
+          type: string
+        layerSelections:
+          additionalProperties:
+            type: boolean
+          type: object
+        managedConfig:
+          additionalProperties:
+            $ref: '#/components/schemas/PlatformConfigurationValues'
+          description: Component configuration values keyed by component key
+          type: object
+        customerProvidedInputs:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: String values keyed first by component key and then by input
+            key
+          type: object
+        layers:
+          items:
+            $ref: '#/components/schemas/ClusterPlatformBindingLayerResponse'
+          type: array
+      required:
+      - clusterId
+      - customerProvidedInputs
+      - layerSelections
+      - layers
+      - managedConfig
+      - organizationId
+      - templateKey
+      - templateVersion
+      type: object
+    PlatformLayerSelections:
+      additionalProperties:
+        type: boolean
+      type: object
+    PlatformConfigurationValues:
+      additionalProperties: {}
+      description: Configuration values keyed by their catalog field name
+      type: object
+    PlatformComponentConfigurationMap:
+      additionalProperties:
+        $ref: '#/components/schemas/PlatformConfigurationValues'
+      description: Component configuration values keyed by component key
+      type: object
+    PlatformComponentStringValuesMap:
+      additionalProperties:
+        additionalProperties:
+          type: string
+        type: object
+      description: String values keyed first by component key and then by input key
+      type: object
+    ClusterPlatformBindingLayerResponse:
+      example:
+        componentKeys:
+        - componentKeys
+        - componentKeys
+        reason: reason
+        key: key
+        status: ENABLED
+      properties:
+        key:
+          type: string
+        status:
+          $ref: '#/components/schemas/PlatformLayerResolutionStatus'
+        reason:
+          type: string
+        componentKeys:
+          items:
+            type: string
+          type: array
+      required:
+      - componentKeys
+      - key
+      - reason
+      - status
+      type: object
+    PlatformLayerResolutionStatus:
+      enum:
+      - ENABLED
+      - DISABLED
+      - SKIPPED
+      type: string
+    PlatformComponentConfigurationPreviewRequest:
+      example:
+        clusterInputs:
+          key: clusterInputs
+        componentOutputs:
+          key:
+            key: componentOutputs
+        profileConfig:
+          key: ""
+      properties:
+        profileConfig:
+          additionalProperties: {}
+          description: Configuration values keyed by their catalog field name
+          type: object
+        clusterInputs:
+          additionalProperties:
+            type: string
+          type: object
+        componentOutputs:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: String values keyed first by component key and then by input
+            key
+          type: object
+      type: object
+    PlatformComponentConfigurationPreviewResponse:
+      example:
+        requirements:
+        - scope: PLATFORM_PROFILE
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+          status: MISSING
+        - scope: PLATFORM_PROFILE
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+          status: MISSING
+        componentBindings:
+        - output: output
+          input: input
+          fromComponent: fromComponent
+        - output: output
+          input: input
+          fromComponent: fromComponent
+        violations:
+        - code: code
+          fieldPath: fieldPath
+          message: message
+        - code: code
+          fieldPath: fieldPath
+          message: message
+        clusterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        fields:
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        componentKey: componentKey
+      properties:
+        clusterId:
+          format: uuid
+          type: string
+        componentKey:
+          type: string
+        fields:
+          items:
+            $ref: '#/components/schemas/PlatformComponentConfigurationFieldResponse'
+          type: array
+        requirements:
+          items:
+            $ref: '#/components/schemas/PlatformComponentInputRequirementResponse'
+          type: array
+        componentBindings:
+          items:
+            $ref: '#/components/schemas/PlatformComponentOutputBindingResponse'
+          type: array
+        violations:
+          items:
+            $ref: '#/components/schemas/PlatformComponentConfigurationViolationResponse'
+          type: array
+      required:
+      - clusterId
+      - componentBindings
+      - componentKey
+      - fields
+      - requirements
+      - violations
+      type: object
+    PlatformComponentInputRequirementResponse:
+      example:
+        scope: PLATFORM_PROFILE
+        description: description
+        label: label
+        sensitive: true
+        type: type
+        constraints:
+          allowedValues:
+          - allowedValues
+          - allowedValues
+          min: 0
+          max: 6
+          minLength: 1
+          pattern: pattern
+          maxLength: 5
+        key: key
+        required: true
+        status: MISSING
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        scope:
+          $ref: '#/components/schemas/PlatformComponentConfigurationInputScope'
+        label:
+          type: string
+        description:
+          nullable: true
+          type: string
+        required:
+          type: boolean
+        sensitive:
+          type: boolean
+        constraints:
+          $ref: '#/components/schemas/PlatformComponentConfigurationConstraintsResponse'
+        status:
+          $ref: '#/components/schemas/PlatformComponentConfigurationRequirementStatus'
+      required:
+      - constraints
+      - key
+      - label
+      - required
+      - scope
+      - sensitive
+      - status
+      - type
+      type: object
+    PlatformComponentConfigurationInputScope:
+      enum:
+      - PLATFORM_PROFILE
+      - CLUSTER
+      type: string
+    PlatformComponentConfigurationRequirementStatus:
+      enum:
+      - MISSING
+      - READY
+      type: string
+    PlatformComponentOutputBindingResponse:
+      example:
+        output: output
+        input: input
+        fromComponent: fromComponent
+      properties:
+        input:
+          type: string
+        fromComponent:
+          type: string
+        output:
+          type: string
+      required:
+      - fromComponent
+      - input
+      - output
+      type: object
+    PlatformComponentConfigurationViolationResponse:
+      example:
+        code: code
+        fieldPath: fieldPath
+        message: message
+      properties:
+        code:
+          type: string
+        fieldPath:
+          type: string
+        message:
+          type: string
+      required:
+      - code
+      - fieldPath
+      - message
+      type: object
     BlueprintCatalogResponse:
       example:
         blueprints:

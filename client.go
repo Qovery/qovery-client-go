@@ -207,6 +207,8 @@ type APIClient struct {
 
 	OrganizationWebhookAPI *OrganizationWebhookAPIService
 
+	PlatformConfigurationAPI *PlatformConfigurationAPIService
+
 	ProjectDeploymentRuleAPI *ProjectDeploymentRuleAPIService
 
 	ProjectEnvironmentVariableAPI *ProjectEnvironmentVariableAPIService
@@ -339,6 +341,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrganizationLabelsGroupAPI = (*OrganizationLabelsGroupAPIService)(&c.common)
 	c.OrganizationMainCallsAPI = (*OrganizationMainCallsAPIService)(&c.common)
 	c.OrganizationWebhookAPI = (*OrganizationWebhookAPIService)(&c.common)
+	c.PlatformConfigurationAPI = (*PlatformConfigurationAPIService)(&c.common)
 	c.ProjectDeploymentRuleAPI = (*ProjectDeploymentRuleAPIService)(&c.common)
 	c.ProjectEnvironmentVariableAPI = (*ProjectEnvironmentVariableAPIService)(&c.common)
 	c.ProjectMainCallsAPI = (*ProjectMainCallsAPIService)(&c.common)

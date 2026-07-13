@@ -549,6 +549,10 @@ Class | Method | HTTP request | Description
 *OrganizationWebhookAPI* | [**GetOrganizationWebhook**](docs/OrganizationWebhookAPI.md#getorganizationwebhook) | **Get** /organization/{organizationId}/webhook/{webhookId} | Get an Organization webhook
 *OrganizationWebhookAPI* | [**ListOrganizationWebHooks**](docs/OrganizationWebhookAPI.md#listorganizationwebhooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
 *OrganizationWebhookAPI* | [**ListWebhookEvent**](docs/OrganizationWebhookAPI.md#listwebhookevent) | **Get** /organization/{organizationId}/webhook/{webhookId}/event | List events of a webhook
+*PlatformConfigurationAPI* | [**GetClusterPlatformBinding**](docs/PlatformConfigurationAPI.md#getclusterplatformbinding) | **Get** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
+*PlatformConfigurationAPI* | [**ListPlatformTemplates**](docs/PlatformConfigurationAPI.md#listplatformtemplates) | **Get** /organization/{organizationId}/platformTemplate | List platform templates
+*PlatformConfigurationAPI* | [**ResolvePlatformComponentConfiguration**](docs/PlatformConfigurationAPI.md#resolveplatformcomponentconfiguration) | **Post** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
+*PlatformConfigurationAPI* | [**UpdateClusterPlatformBinding**](docs/PlatformConfigurationAPI.md#updateclusterplatformbinding) | **Put** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
 *ProjectDeploymentRuleAPI* | [**CreateDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#createdeploymentrule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
 *ProjectDeploymentRuleAPI* | [**DeleteProjectDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#deleteprojectdeploymentrule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
 *ProjectDeploymentRuleAPI* | [**EditProjectDeployemtnRule**](docs/ProjectDeploymentRuleAPI.md#editprojectdeployemtnrule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
@@ -833,6 +837,9 @@ Class | Method | HTTP request | Description
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
  - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
  - [ClusterOverviewResponse](docs/ClusterOverviewResponse.md)
+ - [ClusterPlatformBindingLayerResponse](docs/ClusterPlatformBindingLayerResponse.md)
+ - [ClusterPlatformBindingRequest](docs/ClusterPlatformBindingRequest.md)
+ - [ClusterPlatformBindingResponse](docs/ClusterPlatformBindingResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)
  - [ClusterRegion](docs/ClusterRegion.md)
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)
@@ -1258,6 +1265,24 @@ Class | Method | HTTP request | Description
  - [PaginationData](docs/PaginationData.md)
  - [ParseTerraformVariablesFromGitRepo200Response](docs/ParseTerraformVariablesFromGitRepo200Response.md)
  - [PlanEnum](docs/PlanEnum.md)
+ - [PlatformCloudVendor](docs/PlatformCloudVendor.md)
+ - [PlatformClusterMode](docs/PlatformClusterMode.md)
+ - [PlatformComponentConfigurationConstraintsResponse](docs/PlatformComponentConfigurationConstraintsResponse.md)
+ - [PlatformComponentConfigurationFieldResponse](docs/PlatformComponentConfigurationFieldResponse.md)
+ - [PlatformComponentConfigurationInputScope](docs/PlatformComponentConfigurationInputScope.md)
+ - [PlatformComponentConfigurationPreviewRequest](docs/PlatformComponentConfigurationPreviewRequest.md)
+ - [PlatformComponentConfigurationPreviewResponse](docs/PlatformComponentConfigurationPreviewResponse.md)
+ - [PlatformComponentConfigurationRequirementStatus](docs/PlatformComponentConfigurationRequirementStatus.md)
+ - [PlatformComponentConfigurationViolationResponse](docs/PlatformComponentConfigurationViolationResponse.md)
+ - [PlatformComponentInputRequirementResponse](docs/PlatformComponentInputRequirementResponse.md)
+ - [PlatformComponentOutputBindingResponse](docs/PlatformComponentOutputBindingResponse.md)
+ - [PlatformLayerResolutionStatus](docs/PlatformLayerResolutionStatus.md)
+ - [PlatformTemplateCatalogResponse](docs/PlatformTemplateCatalogResponse.md)
+ - [PlatformTemplateComponentKind](docs/PlatformTemplateComponentKind.md)
+ - [PlatformTemplateComponentResponse](docs/PlatformTemplateComponentResponse.md)
+ - [PlatformTemplateLayerResponse](docs/PlatformTemplateLayerResponse.md)
+ - [PlatformTemplateReleaseStatus](docs/PlatformTemplateReleaseStatus.md)
+ - [PlatformTemplateSummaryResponse](docs/PlatformTemplateSummaryResponse.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
  - [Probe](docs/Probe.md)
  - [ProbeType](docs/ProbeType.md)
