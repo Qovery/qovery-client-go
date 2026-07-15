@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ClusterId** | **string** |  | 
 **ComponentKey** | **string** |  | 
-**Fields** | [**[]PlatformComponentConfigurationFieldResponse**](PlatformComponentConfigurationFieldResponse.md) |  | 
+**Fields** | [**[]FieldSchemaResponse**](FieldSchemaResponse.md) |  | 
 **Requirements** | [**[]PlatformComponentInputRequirementResponse**](PlatformComponentInputRequirementResponse.md) |  | 
 **ComponentBindings** | [**[]PlatformComponentOutputBindingResponse**](PlatformComponentOutputBindingResponse.md) |  | 
 **Violations** | [**[]PlatformComponentConfigurationViolationResponse**](PlatformComponentConfigurationViolationResponse.md) |  | 
@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewPlatformComponentConfigurationPreviewResponse
 
-`func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []PlatformComponentConfigurationFieldResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse, ) *PlatformComponentConfigurationPreviewResponse`
+`func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse, ) *PlatformComponentConfigurationPreviewResponse`
 
 NewPlatformComponentConfigurationPreviewResponse instantiates a new PlatformComponentConfigurationPreviewResponse object
 This constructor will assign default values to properties that have it defined,
@@ -72,20 +72,20 @@ SetComponentKey sets ComponentKey field to given value.
 
 ### GetFields
 
-`func (o *PlatformComponentConfigurationPreviewResponse) GetFields() []PlatformComponentConfigurationFieldResponse`
+`func (o *PlatformComponentConfigurationPreviewResponse) GetFields() []FieldSchemaResponse`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *PlatformComponentConfigurationPreviewResponse) GetFieldsOk() (*[]PlatformComponentConfigurationFieldResponse, bool)`
+`func (o *PlatformComponentConfigurationPreviewResponse) GetFieldsOk() (*[]FieldSchemaResponse, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *PlatformComponentConfigurationPreviewResponse) SetFields(v []PlatformComponentConfigurationFieldResponse)`
+`func (o *PlatformComponentConfigurationPreviewResponse) SetFields(v []FieldSchemaResponse)`
 
 SetFields sets Fields field to given value.
 

@@ -15,11 +15,11 @@ import (
 	"encoding/json"
 )
 
-// checks if the PlatformComponentConfigurationConstraintsResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlatformComponentConfigurationConstraintsResponse{}
+// checks if the FieldSchemaConstraintsResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FieldSchemaConstraintsResponse{}
 
-// PlatformComponentConfigurationConstraintsResponse struct for PlatformComponentConfigurationConstraintsResponse
-type PlatformComponentConfigurationConstraintsResponse struct {
+// FieldSchemaConstraintsResponse Validation constraints attached to a catalog field descriptor.
+type FieldSchemaConstraintsResponse struct {
 	AllowedValues        []string       `json:"allowedValues,omitempty"`
 	Min                  NullableInt64  `json:"min,omitempty"`
 	Max                  NullableInt64  `json:"max,omitempty"`
@@ -29,27 +29,27 @@ type PlatformComponentConfigurationConstraintsResponse struct {
 	AdditionalProperties map[string]interface{}
 }
 
-type _PlatformComponentConfigurationConstraintsResponse PlatformComponentConfigurationConstraintsResponse
+type _FieldSchemaConstraintsResponse FieldSchemaConstraintsResponse
 
-// NewPlatformComponentConfigurationConstraintsResponse instantiates a new PlatformComponentConfigurationConstraintsResponse object
+// NewFieldSchemaConstraintsResponse instantiates a new FieldSchemaConstraintsResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformComponentConfigurationConstraintsResponse() *PlatformComponentConfigurationConstraintsResponse {
-	this := PlatformComponentConfigurationConstraintsResponse{}
+func NewFieldSchemaConstraintsResponse() *FieldSchemaConstraintsResponse {
+	this := FieldSchemaConstraintsResponse{}
 	return &this
 }
 
-// NewPlatformComponentConfigurationConstraintsResponseWithDefaults instantiates a new PlatformComponentConfigurationConstraintsResponse object
+// NewFieldSchemaConstraintsResponseWithDefaults instantiates a new FieldSchemaConstraintsResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPlatformComponentConfigurationConstraintsResponseWithDefaults() *PlatformComponentConfigurationConstraintsResponse {
-	this := PlatformComponentConfigurationConstraintsResponse{}
+func NewFieldSchemaConstraintsResponseWithDefaults() *FieldSchemaConstraintsResponse {
+	this := FieldSchemaConstraintsResponse{}
 	return &this
 }
 
 // GetAllowedValues returns the AllowedValues field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetAllowedValues() []string {
+func (o *FieldSchemaConstraintsResponse) GetAllowedValues() []string {
 	if o == nil {
 		var ret []string
 		return ret
@@ -60,7 +60,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetAllowedValues() [
 // GetAllowedValuesOk returns a tuple with the AllowedValues field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetAllowedValuesOk() ([]string, bool) {
+func (o *FieldSchemaConstraintsResponse) GetAllowedValuesOk() ([]string, bool) {
 	if o == nil || IsNil(o.AllowedValues) {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetAllowedValuesOk()
 }
 
 // HasAllowedValues returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasAllowedValues() bool {
+func (o *FieldSchemaConstraintsResponse) HasAllowedValues() bool {
 	if o != nil && !IsNil(o.AllowedValues) {
 		return true
 	}
@@ -77,12 +77,12 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasAllowedValues() b
 }
 
 // SetAllowedValues gets a reference to the given []string and assigns it to the AllowedValues field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetAllowedValues(v []string) {
+func (o *FieldSchemaConstraintsResponse) SetAllowedValues(v []string) {
 	o.AllowedValues = v
 }
 
 // GetMin returns the Min field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMin() int64 {
+func (o *FieldSchemaConstraintsResponse) GetMin() int64 {
 	if o == nil || IsNil(o.Min.Get()) {
 		var ret int64
 		return ret
@@ -93,7 +93,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMin() int64 {
 // GetMinOk returns a tuple with the Min field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMinOk() (*int64, bool) {
+func (o *FieldSchemaConstraintsResponse) GetMinOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -101,7 +101,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMinOk() (*int64, 
 }
 
 // HasMin returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasMin() bool {
+func (o *FieldSchemaConstraintsResponse) HasMin() bool {
 	if o != nil && o.Min.IsSet() {
 		return true
 	}
@@ -110,22 +110,22 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasMin() bool {
 }
 
 // SetMin gets a reference to the given NullableInt64 and assigns it to the Min field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMin(v int64) {
+func (o *FieldSchemaConstraintsResponse) SetMin(v int64) {
 	o.Min.Set(&v)
 }
 
 // SetMinNil sets the value for Min to be an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMinNil() {
+func (o *FieldSchemaConstraintsResponse) SetMinNil() {
 	o.Min.Set(nil)
 }
 
 // UnsetMin ensures that no value is present for Min, not even an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) UnsetMin() {
+func (o *FieldSchemaConstraintsResponse) UnsetMin() {
 	o.Min.Unset()
 }
 
 // GetMax returns the Max field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMax() int64 {
+func (o *FieldSchemaConstraintsResponse) GetMax() int64 {
 	if o == nil || IsNil(o.Max.Get()) {
 		var ret int64
 		return ret
@@ -136,7 +136,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMax() int64 {
 // GetMaxOk returns a tuple with the Max field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxOk() (*int64, bool) {
+func (o *FieldSchemaConstraintsResponse) GetMaxOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -144,7 +144,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxOk() (*int64, 
 }
 
 // HasMax returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasMax() bool {
+func (o *FieldSchemaConstraintsResponse) HasMax() bool {
 	if o != nil && o.Max.IsSet() {
 		return true
 	}
@@ -153,22 +153,22 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasMax() bool {
 }
 
 // SetMax gets a reference to the given NullableInt64 and assigns it to the Max field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMax(v int64) {
+func (o *FieldSchemaConstraintsResponse) SetMax(v int64) {
 	o.Max.Set(&v)
 }
 
 // SetMaxNil sets the value for Max to be an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMaxNil() {
+func (o *FieldSchemaConstraintsResponse) SetMaxNil() {
 	o.Max.Set(nil)
 }
 
 // UnsetMax ensures that no value is present for Max, not even an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) UnsetMax() {
+func (o *FieldSchemaConstraintsResponse) UnsetMax() {
 	o.Max.Unset()
 }
 
 // GetMinLength returns the MinLength field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMinLength() int64 {
+func (o *FieldSchemaConstraintsResponse) GetMinLength() int64 {
 	if o == nil || IsNil(o.MinLength.Get()) {
 		var ret int64
 		return ret
@@ -179,7 +179,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMinLength() int64
 // GetMinLengthOk returns a tuple with the MinLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMinLengthOk() (*int64, bool) {
+func (o *FieldSchemaConstraintsResponse) GetMinLengthOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -187,7 +187,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMinLengthOk() (*i
 }
 
 // HasMinLength returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasMinLength() bool {
+func (o *FieldSchemaConstraintsResponse) HasMinLength() bool {
 	if o != nil && o.MinLength.IsSet() {
 		return true
 	}
@@ -196,22 +196,22 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasMinLength() bool 
 }
 
 // SetMinLength gets a reference to the given NullableInt64 and assigns it to the MinLength field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMinLength(v int64) {
+func (o *FieldSchemaConstraintsResponse) SetMinLength(v int64) {
 	o.MinLength.Set(&v)
 }
 
 // SetMinLengthNil sets the value for MinLength to be an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMinLengthNil() {
+func (o *FieldSchemaConstraintsResponse) SetMinLengthNil() {
 	o.MinLength.Set(nil)
 }
 
 // UnsetMinLength ensures that no value is present for MinLength, not even an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) UnsetMinLength() {
+func (o *FieldSchemaConstraintsResponse) UnsetMinLength() {
 	o.MinLength.Unset()
 }
 
 // GetMaxLength returns the MaxLength field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxLength() int64 {
+func (o *FieldSchemaConstraintsResponse) GetMaxLength() int64 {
 	if o == nil || IsNil(o.MaxLength.Get()) {
 		var ret int64
 		return ret
@@ -222,7 +222,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxLength() int64
 // GetMaxLengthOk returns a tuple with the MaxLength field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxLengthOk() (*int64, bool) {
+func (o *FieldSchemaConstraintsResponse) GetMaxLengthOk() (*int64, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -230,7 +230,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetMaxLengthOk() (*i
 }
 
 // HasMaxLength returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasMaxLength() bool {
+func (o *FieldSchemaConstraintsResponse) HasMaxLength() bool {
 	if o != nil && o.MaxLength.IsSet() {
 		return true
 	}
@@ -239,22 +239,22 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasMaxLength() bool 
 }
 
 // SetMaxLength gets a reference to the given NullableInt64 and assigns it to the MaxLength field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMaxLength(v int64) {
+func (o *FieldSchemaConstraintsResponse) SetMaxLength(v int64) {
 	o.MaxLength.Set(&v)
 }
 
 // SetMaxLengthNil sets the value for MaxLength to be an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) SetMaxLengthNil() {
+func (o *FieldSchemaConstraintsResponse) SetMaxLengthNil() {
 	o.MaxLength.Set(nil)
 }
 
 // UnsetMaxLength ensures that no value is present for MaxLength, not even an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) UnsetMaxLength() {
+func (o *FieldSchemaConstraintsResponse) UnsetMaxLength() {
 	o.MaxLength.Unset()
 }
 
 // GetPattern returns the Pattern field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationConstraintsResponse) GetPattern() string {
+func (o *FieldSchemaConstraintsResponse) GetPattern() string {
 	if o == nil || IsNil(o.Pattern.Get()) {
 		var ret string
 		return ret
@@ -265,7 +265,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetPattern() string 
 // GetPatternOk returns a tuple with the Pattern field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationConstraintsResponse) GetPatternOk() (*string, bool) {
+func (o *FieldSchemaConstraintsResponse) GetPatternOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -273,7 +273,7 @@ func (o *PlatformComponentConfigurationConstraintsResponse) GetPatternOk() (*str
 }
 
 // HasPattern returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationConstraintsResponse) HasPattern() bool {
+func (o *FieldSchemaConstraintsResponse) HasPattern() bool {
 	if o != nil && o.Pattern.IsSet() {
 		return true
 	}
@@ -282,21 +282,21 @@ func (o *PlatformComponentConfigurationConstraintsResponse) HasPattern() bool {
 }
 
 // SetPattern gets a reference to the given NullableString and assigns it to the Pattern field.
-func (o *PlatformComponentConfigurationConstraintsResponse) SetPattern(v string) {
+func (o *FieldSchemaConstraintsResponse) SetPattern(v string) {
 	o.Pattern.Set(&v)
 }
 
 // SetPatternNil sets the value for Pattern to be an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) SetPatternNil() {
+func (o *FieldSchemaConstraintsResponse) SetPatternNil() {
 	o.Pattern.Set(nil)
 }
 
 // UnsetPattern ensures that no value is present for Pattern, not even an explicit nil
-func (o *PlatformComponentConfigurationConstraintsResponse) UnsetPattern() {
+func (o *FieldSchemaConstraintsResponse) UnsetPattern() {
 	o.Pattern.Unset()
 }
 
-func (o PlatformComponentConfigurationConstraintsResponse) MarshalJSON() ([]byte, error) {
+func (o FieldSchemaConstraintsResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -304,7 +304,7 @@ func (o PlatformComponentConfigurationConstraintsResponse) MarshalJSON() ([]byte
 	return json.Marshal(toSerialize)
 }
 
-func (o PlatformComponentConfigurationConstraintsResponse) ToMap() (map[string]interface{}, error) {
+func (o FieldSchemaConstraintsResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if o.AllowedValues != nil {
 		toSerialize["allowedValues"] = o.AllowedValues
@@ -332,16 +332,16 @@ func (o PlatformComponentConfigurationConstraintsResponse) ToMap() (map[string]i
 	return toSerialize, nil
 }
 
-func (o *PlatformComponentConfigurationConstraintsResponse) UnmarshalJSON(data []byte) (err error) {
-	varPlatformComponentConfigurationConstraintsResponse := _PlatformComponentConfigurationConstraintsResponse{}
+func (o *FieldSchemaConstraintsResponse) UnmarshalJSON(data []byte) (err error) {
+	varFieldSchemaConstraintsResponse := _FieldSchemaConstraintsResponse{}
 
-	err = json.Unmarshal(data, &varPlatformComponentConfigurationConstraintsResponse)
+	err = json.Unmarshal(data, &varFieldSchemaConstraintsResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PlatformComponentConfigurationConstraintsResponse(varPlatformComponentConfigurationConstraintsResponse)
+	*o = FieldSchemaConstraintsResponse(varFieldSchemaConstraintsResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -358,38 +358,38 @@ func (o *PlatformComponentConfigurationConstraintsResponse) UnmarshalJSON(data [
 	return err
 }
 
-type NullablePlatformComponentConfigurationConstraintsResponse struct {
-	value *PlatformComponentConfigurationConstraintsResponse
+type NullableFieldSchemaConstraintsResponse struct {
+	value *FieldSchemaConstraintsResponse
 	isSet bool
 }
 
-func (v NullablePlatformComponentConfigurationConstraintsResponse) Get() *PlatformComponentConfigurationConstraintsResponse {
+func (v NullableFieldSchemaConstraintsResponse) Get() *FieldSchemaConstraintsResponse {
 	return v.value
 }
 
-func (v *NullablePlatformComponentConfigurationConstraintsResponse) Set(val *PlatformComponentConfigurationConstraintsResponse) {
+func (v *NullableFieldSchemaConstraintsResponse) Set(val *FieldSchemaConstraintsResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePlatformComponentConfigurationConstraintsResponse) IsSet() bool {
+func (v NullableFieldSchemaConstraintsResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePlatformComponentConfigurationConstraintsResponse) Unset() {
+func (v *NullableFieldSchemaConstraintsResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePlatformComponentConfigurationConstraintsResponse(val *PlatformComponentConfigurationConstraintsResponse) *NullablePlatformComponentConfigurationConstraintsResponse {
-	return &NullablePlatformComponentConfigurationConstraintsResponse{value: val, isSet: true}
+func NewNullableFieldSchemaConstraintsResponse(val *FieldSchemaConstraintsResponse) *NullableFieldSchemaConstraintsResponse {
+	return &NullableFieldSchemaConstraintsResponse{value: val, isSet: true}
 }
 
-func (v NullablePlatformComponentConfigurationConstraintsResponse) MarshalJSON() ([]byte, error) {
+func (v NullableFieldSchemaConstraintsResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePlatformComponentConfigurationConstraintsResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableFieldSchemaConstraintsResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

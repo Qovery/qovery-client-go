@@ -21,8 +21,11 @@ var _ MappedNullable = &PlatformComponentConfigurationViolationResponse{}
 
 // PlatformComponentConfigurationViolationResponse struct for PlatformComponentConfigurationViolationResponse
 type PlatformComponentConfigurationViolationResponse struct {
-	Code                 string `json:"code"`
-	FieldPath            string `json:"fieldPath"`
+	// Stable machine-readable violation code.
+	Code string `json:"code"`
+	// Path of the offending field. Convention: profile configuration fields use the bare field key (e.g. `storage`); cluster-provided inputs are prefixed with `clusterInputs.` (e.g. `clusterInputs.s3BucketName`). Consumers match violations to form fields using these exact paths.
+	FieldPath string `json:"fieldPath"`
+	// Customer-facing message describing how to fix the violation.
 	Message              string `json:"message"`
 	AdditionalProperties map[string]interface{}
 }

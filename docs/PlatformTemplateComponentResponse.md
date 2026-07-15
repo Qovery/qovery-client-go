@@ -7,13 +7,13 @@ Name | Type | Description | Notes
 **Key** | **string** |  | 
 **Kind** | [**PlatformTemplateComponentKind**](PlatformTemplateComponentKind.md) |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
-**Fields** | [**[]PlatformComponentConfigurationFieldResponse**](PlatformComponentConfigurationFieldResponse.md) |  | 
+**Fields** | [**[]FieldSchemaResponse**](FieldSchemaResponse.md) |  | 
 
 ## Methods
 
 ### NewPlatformTemplateComponentResponse
 
-`func NewPlatformTemplateComponentResponse(key string, kind PlatformTemplateComponentKind, fields []PlatformComponentConfigurationFieldResponse, ) *PlatformTemplateComponentResponse`
+`func NewPlatformTemplateComponentResponse(key string, kind PlatformTemplateComponentKind, fields []FieldSchemaResponse, ) *PlatformTemplateComponentResponse`
 
 NewPlatformTemplateComponentResponse instantiates a new PlatformTemplateComponentResponse object
 This constructor will assign default values to properties that have it defined,
@@ -105,20 +105,20 @@ HasDescription returns a boolean if a field has been set.
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetFields
 
-`func (o *PlatformTemplateComponentResponse) GetFields() []PlatformComponentConfigurationFieldResponse`
+`func (o *PlatformTemplateComponentResponse) GetFields() []FieldSchemaResponse`
 
 GetFields returns the Fields field if non-nil, zero value otherwise.
 
 ### GetFieldsOk
 
-`func (o *PlatformTemplateComponentResponse) GetFieldsOk() (*[]PlatformComponentConfigurationFieldResponse, bool)`
+`func (o *PlatformTemplateComponentResponse) GetFieldsOk() (*[]FieldSchemaResponse, bool)`
 
 GetFieldsOk returns a tuple with the Fields field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetFields
 
-`func (o *PlatformTemplateComponentResponse) SetFields(v []PlatformComponentConfigurationFieldResponse)`
+`func (o *PlatformTemplateComponentResponse) SetFields(v []FieldSchemaResponse)`
 
 SetFields sets Fields field to given value.
 

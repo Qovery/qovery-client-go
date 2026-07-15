@@ -21,10 +21,10 @@ var _ MappedNullable = &PlatformTemplateComponentResponse{}
 
 // PlatformTemplateComponentResponse struct for PlatformTemplateComponentResponse
 type PlatformTemplateComponentResponse struct {
-	Key                  string                                        `json:"key"`
-	Kind                 PlatformTemplateComponentKind                 `json:"kind"`
-	Description          NullableString                                `json:"description,omitempty"`
-	Fields               []PlatformComponentConfigurationFieldResponse `json:"fields"`
+	Key                  string                        `json:"key"`
+	Kind                 PlatformTemplateComponentKind `json:"kind"`
+	Description          NullableString                `json:"description,omitempty"`
+	Fields               []FieldSchemaResponse         `json:"fields"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,7 +34,7 @@ type _PlatformTemplateComponentResponse PlatformTemplateComponentResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformTemplateComponentResponse(key string, kind PlatformTemplateComponentKind, fields []PlatformComponentConfigurationFieldResponse) *PlatformTemplateComponentResponse {
+func NewPlatformTemplateComponentResponse(key string, kind PlatformTemplateComponentKind, fields []FieldSchemaResponse) *PlatformTemplateComponentResponse {
 	this := PlatformTemplateComponentResponse{}
 	this.Key = key
 	this.Kind = kind
@@ -142,9 +142,9 @@ func (o *PlatformTemplateComponentResponse) UnsetDescription() {
 }
 
 // GetFields returns the Fields field value
-func (o *PlatformTemplateComponentResponse) GetFields() []PlatformComponentConfigurationFieldResponse {
+func (o *PlatformTemplateComponentResponse) GetFields() []FieldSchemaResponse {
 	if o == nil {
-		var ret []PlatformComponentConfigurationFieldResponse
+		var ret []FieldSchemaResponse
 		return ret
 	}
 
@@ -153,7 +153,7 @@ func (o *PlatformTemplateComponentResponse) GetFields() []PlatformComponentConfi
 
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
-func (o *PlatformTemplateComponentResponse) GetFieldsOk() ([]PlatformComponentConfigurationFieldResponse, bool) {
+func (o *PlatformTemplateComponentResponse) GetFieldsOk() ([]FieldSchemaResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -161,7 +161,7 @@ func (o *PlatformTemplateComponentResponse) GetFieldsOk() ([]PlatformComponentCo
 }
 
 // SetFields sets field value
-func (o *PlatformTemplateComponentResponse) SetFields(v []PlatformComponentConfigurationFieldResponse) {
+func (o *PlatformTemplateComponentResponse) SetFields(v []FieldSchemaResponse) {
 	o.Fields = v
 }
 

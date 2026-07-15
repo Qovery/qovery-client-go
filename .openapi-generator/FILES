@@ -547,6 +547,8 @@ docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsAPI.md
 docs/ExternalSecretAssociatedServiceResponse.md
 docs/ExternalSecretAssociatedServiceResponseList.md
+docs/FieldSchemaConstraintsResponse.md
+docs/FieldSchemaResponse.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -834,8 +836,6 @@ docs/ParseTerraformVariablesFromGitRepo200Response.md
 docs/PlanEnum.md
 docs/PlatformCloudVendor.md
 docs/PlatformClusterMode.md
-docs/PlatformComponentConfigurationConstraintsResponse.md
-docs/PlatformComponentConfigurationFieldResponse.md
 docs/PlatformComponentConfigurationInputScope.md
 docs/PlatformComponentConfigurationPreviewRequest.md
 docs/PlatformComponentConfigurationPreviewResponse.md
@@ -1426,6 +1426,8 @@ model_environment_variable_request.go
 model_environment_variable_response_list.go
 model_external_secret_associated_service_response.go
 model_external_secret_associated_service_response_list.go
+model_field_schema_constraints_response.go
+model_field_schema_response.go
 model_gcp_credentials_request.go
 model_gcp_json_credentials_auth_dto.go
 model_gcp_secret_manager_endpoint_dto.go
@@ -1682,8 +1684,6 @@ model_parse_terraform_variables_from_git_repo_200_response.go
 model_plan_enum.go
 model_platform_cloud_vendor.go
 model_platform_cluster_mode.go
-model_platform_component_configuration_constraints_response.go
-model_platform_component_configuration_field_response.go
 model_platform_component_configuration_input_scope.go
 model_platform_component_configuration_preview_request.go
 model_platform_component_configuration_preview_response.go

@@ -23,7 +23,7 @@ var _ MappedNullable = &PlatformComponentConfigurationPreviewResponse{}
 type PlatformComponentConfigurationPreviewResponse struct {
 	ClusterId            string                                            `json:"clusterId"`
 	ComponentKey         string                                            `json:"componentKey"`
-	Fields               []PlatformComponentConfigurationFieldResponse     `json:"fields"`
+	Fields               []FieldSchemaResponse                             `json:"fields"`
 	Requirements         []PlatformComponentInputRequirementResponse       `json:"requirements"`
 	ComponentBindings    []PlatformComponentOutputBindingResponse          `json:"componentBindings"`
 	Violations           []PlatformComponentConfigurationViolationResponse `json:"violations"`
@@ -36,7 +36,7 @@ type _PlatformComponentConfigurationPreviewResponse PlatformComponentConfigurati
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []PlatformComponentConfigurationFieldResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse) *PlatformComponentConfigurationPreviewResponse {
+func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse) *PlatformComponentConfigurationPreviewResponse {
 	this := PlatformComponentConfigurationPreviewResponse{}
 	this.ClusterId = clusterId
 	this.ComponentKey = componentKey
@@ -104,9 +104,9 @@ func (o *PlatformComponentConfigurationPreviewResponse) SetComponentKey(v string
 }
 
 // GetFields returns the Fields field value
-func (o *PlatformComponentConfigurationPreviewResponse) GetFields() []PlatformComponentConfigurationFieldResponse {
+func (o *PlatformComponentConfigurationPreviewResponse) GetFields() []FieldSchemaResponse {
 	if o == nil {
-		var ret []PlatformComponentConfigurationFieldResponse
+		var ret []FieldSchemaResponse
 		return ret
 	}
 
@@ -115,7 +115,7 @@ func (o *PlatformComponentConfigurationPreviewResponse) GetFields() []PlatformCo
 
 // GetFieldsOk returns a tuple with the Fields field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationPreviewResponse) GetFieldsOk() ([]PlatformComponentConfigurationFieldResponse, bool) {
+func (o *PlatformComponentConfigurationPreviewResponse) GetFieldsOk() ([]FieldSchemaResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -123,7 +123,7 @@ func (o *PlatformComponentConfigurationPreviewResponse) GetFieldsOk() ([]Platfor
 }
 
 // SetFields sets field value
-func (o *PlatformComponentConfigurationPreviewResponse) SetFields(v []PlatformComponentConfigurationFieldResponse) {
+func (o *PlatformComponentConfigurationPreviewResponse) SetFields(v []FieldSchemaResponse) {
 	o.Fields = v
 }
 

@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Code** | **string** |  | 
-**FieldPath** | **string** |  | 
-**Message** | **string** |  | 
+**Code** | **string** | Stable machine-readable violation code. | 
+**FieldPath** | **string** | Path of the offending field. Convention: profile configuration fields use the bare field key (e.g. &#x60;storage&#x60;); cluster-provided inputs are prefixed with &#x60;clusterInputs.&#x60; (e.g. &#x60;clusterInputs.s3BucketName&#x60;). Consumers match violations to form fields using these exact paths. | 
+**Message** | **string** | Customer-facing message describing how to fix the violation. | 
 
 ## Methods
 

@@ -16,31 +16,31 @@ import (
 	"fmt"
 )
 
-// checks if the PlatformComponentConfigurationFieldResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &PlatformComponentConfigurationFieldResponse{}
+// checks if the FieldSchemaResponse type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &FieldSchemaResponse{}
 
-// PlatformComponentConfigurationFieldResponse struct for PlatformComponentConfigurationFieldResponse
-type PlatformComponentConfigurationFieldResponse struct {
+// FieldSchemaResponse Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
+type FieldSchemaResponse struct {
 	Key string `json:"key"`
 	// Field type understood by the Console, such as string, number, or bool
-	Type                 string                                            `json:"type"`
-	Required             bool                                              `json:"required"`
-	DefaultValue         NullableString                                    `json:"defaultValue,omitempty"`
-	Label                string                                            `json:"label"`
-	Description          NullableString                                    `json:"description,omitempty"`
-	Sensitive            bool                                              `json:"sensitive"`
-	Constraints          PlatformComponentConfigurationConstraintsResponse `json:"constraints"`
+	Type                 string                         `json:"type"`
+	Required             bool                           `json:"required"`
+	DefaultValue         NullableString                 `json:"defaultValue,omitempty"`
+	Label                string                         `json:"label"`
+	Description          NullableString                 `json:"description,omitempty"`
+	Sensitive            bool                           `json:"sensitive"`
+	Constraints          FieldSchemaConstraintsResponse `json:"constraints"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _PlatformComponentConfigurationFieldResponse PlatformComponentConfigurationFieldResponse
+type _FieldSchemaResponse FieldSchemaResponse
 
-// NewPlatformComponentConfigurationFieldResponse instantiates a new PlatformComponentConfigurationFieldResponse object
+// NewFieldSchemaResponse instantiates a new FieldSchemaResponse object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformComponentConfigurationFieldResponse(key string, type_ string, required bool, label string, sensitive bool, constraints PlatformComponentConfigurationConstraintsResponse) *PlatformComponentConfigurationFieldResponse {
-	this := PlatformComponentConfigurationFieldResponse{}
+func NewFieldSchemaResponse(key string, type_ string, required bool, label string, sensitive bool, constraints FieldSchemaConstraintsResponse) *FieldSchemaResponse {
+	this := FieldSchemaResponse{}
 	this.Key = key
 	this.Type = type_
 	this.Required = required
@@ -50,16 +50,16 @@ func NewPlatformComponentConfigurationFieldResponse(key string, type_ string, re
 	return &this
 }
 
-// NewPlatformComponentConfigurationFieldResponseWithDefaults instantiates a new PlatformComponentConfigurationFieldResponse object
+// NewFieldSchemaResponseWithDefaults instantiates a new FieldSchemaResponse object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewPlatformComponentConfigurationFieldResponseWithDefaults() *PlatformComponentConfigurationFieldResponse {
-	this := PlatformComponentConfigurationFieldResponse{}
+func NewFieldSchemaResponseWithDefaults() *FieldSchemaResponse {
+	this := FieldSchemaResponse{}
 	return &this
 }
 
 // GetKey returns the Key field value
-func (o *PlatformComponentConfigurationFieldResponse) GetKey() string {
+func (o *FieldSchemaResponse) GetKey() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -70,7 +70,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetKey() string {
 
 // GetKeyOk returns a tuple with the Key field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetKeyOk() (*string, bool) {
+func (o *FieldSchemaResponse) GetKeyOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -78,12 +78,12 @@ func (o *PlatformComponentConfigurationFieldResponse) GetKeyOk() (*string, bool)
 }
 
 // SetKey sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetKey(v string) {
+func (o *FieldSchemaResponse) SetKey(v string) {
 	o.Key = v
 }
 
 // GetType returns the Type field value
-func (o *PlatformComponentConfigurationFieldResponse) GetType() string {
+func (o *FieldSchemaResponse) GetType() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -94,7 +94,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetType() string {
 
 // GetTypeOk returns a tuple with the Type field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetTypeOk() (*string, bool) {
+func (o *FieldSchemaResponse) GetTypeOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -102,12 +102,12 @@ func (o *PlatformComponentConfigurationFieldResponse) GetTypeOk() (*string, bool
 }
 
 // SetType sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetType(v string) {
+func (o *FieldSchemaResponse) SetType(v string) {
 	o.Type = v
 }
 
 // GetRequired returns the Required field value
-func (o *PlatformComponentConfigurationFieldResponse) GetRequired() bool {
+func (o *FieldSchemaResponse) GetRequired() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -118,7 +118,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetRequired() bool {
 
 // GetRequiredOk returns a tuple with the Required field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetRequiredOk() (*bool, bool) {
+func (o *FieldSchemaResponse) GetRequiredOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -126,12 +126,12 @@ func (o *PlatformComponentConfigurationFieldResponse) GetRequiredOk() (*bool, bo
 }
 
 // SetRequired sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetRequired(v bool) {
+func (o *FieldSchemaResponse) SetRequired(v bool) {
 	o.Required = v
 }
 
 // GetDefaultValue returns the DefaultValue field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationFieldResponse) GetDefaultValue() string {
+func (o *FieldSchemaResponse) GetDefaultValue() string {
 	if o == nil || IsNil(o.DefaultValue.Get()) {
 		var ret string
 		return ret
@@ -142,7 +142,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetDefaultValue() string {
 // GetDefaultValueOk returns a tuple with the DefaultValue field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationFieldResponse) GetDefaultValueOk() (*string, bool) {
+func (o *FieldSchemaResponse) GetDefaultValueOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -150,7 +150,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetDefaultValueOk() (*stri
 }
 
 // HasDefaultValue returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationFieldResponse) HasDefaultValue() bool {
+func (o *FieldSchemaResponse) HasDefaultValue() bool {
 	if o != nil && o.DefaultValue.IsSet() {
 		return true
 	}
@@ -159,22 +159,22 @@ func (o *PlatformComponentConfigurationFieldResponse) HasDefaultValue() bool {
 }
 
 // SetDefaultValue gets a reference to the given NullableString and assigns it to the DefaultValue field.
-func (o *PlatformComponentConfigurationFieldResponse) SetDefaultValue(v string) {
+func (o *FieldSchemaResponse) SetDefaultValue(v string) {
 	o.DefaultValue.Set(&v)
 }
 
 // SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
-func (o *PlatformComponentConfigurationFieldResponse) SetDefaultValueNil() {
+func (o *FieldSchemaResponse) SetDefaultValueNil() {
 	o.DefaultValue.Set(nil)
 }
 
 // UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
-func (o *PlatformComponentConfigurationFieldResponse) UnsetDefaultValue() {
+func (o *FieldSchemaResponse) UnsetDefaultValue() {
 	o.DefaultValue.Unset()
 }
 
 // GetLabel returns the Label field value
-func (o *PlatformComponentConfigurationFieldResponse) GetLabel() string {
+func (o *FieldSchemaResponse) GetLabel() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -185,7 +185,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetLabel() string {
 
 // GetLabelOk returns a tuple with the Label field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetLabelOk() (*string, bool) {
+func (o *FieldSchemaResponse) GetLabelOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -193,12 +193,12 @@ func (o *PlatformComponentConfigurationFieldResponse) GetLabelOk() (*string, boo
 }
 
 // SetLabel sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetLabel(v string) {
+func (o *FieldSchemaResponse) SetLabel(v string) {
 	o.Label = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentConfigurationFieldResponse) GetDescription() string {
+func (o *FieldSchemaResponse) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
 		var ret string
 		return ret
@@ -209,7 +209,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetDescription() string {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentConfigurationFieldResponse) GetDescriptionOk() (*string, bool) {
+func (o *FieldSchemaResponse) GetDescriptionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -217,7 +217,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetDescriptionOk() (*strin
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *PlatformComponentConfigurationFieldResponse) HasDescription() bool {
+func (o *FieldSchemaResponse) HasDescription() bool {
 	if o != nil && o.Description.IsSet() {
 		return true
 	}
@@ -226,22 +226,22 @@ func (o *PlatformComponentConfigurationFieldResponse) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *PlatformComponentConfigurationFieldResponse) SetDescription(v string) {
+func (o *FieldSchemaResponse) SetDescription(v string) {
 	o.Description.Set(&v)
 }
 
 // SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *PlatformComponentConfigurationFieldResponse) SetDescriptionNil() {
+func (o *FieldSchemaResponse) SetDescriptionNil() {
 	o.Description.Set(nil)
 }
 
 // UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *PlatformComponentConfigurationFieldResponse) UnsetDescription() {
+func (o *FieldSchemaResponse) UnsetDescription() {
 	o.Description.Unset()
 }
 
 // GetSensitive returns the Sensitive field value
-func (o *PlatformComponentConfigurationFieldResponse) GetSensitive() bool {
+func (o *FieldSchemaResponse) GetSensitive() bool {
 	if o == nil {
 		var ret bool
 		return ret
@@ -252,7 +252,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetSensitive() bool {
 
 // GetSensitiveOk returns a tuple with the Sensitive field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetSensitiveOk() (*bool, bool) {
+func (o *FieldSchemaResponse) GetSensitiveOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -260,14 +260,14 @@ func (o *PlatformComponentConfigurationFieldResponse) GetSensitiveOk() (*bool, b
 }
 
 // SetSensitive sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetSensitive(v bool) {
+func (o *FieldSchemaResponse) SetSensitive(v bool) {
 	o.Sensitive = v
 }
 
 // GetConstraints returns the Constraints field value
-func (o *PlatformComponentConfigurationFieldResponse) GetConstraints() PlatformComponentConfigurationConstraintsResponse {
+func (o *FieldSchemaResponse) GetConstraints() FieldSchemaConstraintsResponse {
 	if o == nil {
-		var ret PlatformComponentConfigurationConstraintsResponse
+		var ret FieldSchemaConstraintsResponse
 		return ret
 	}
 
@@ -276,7 +276,7 @@ func (o *PlatformComponentConfigurationFieldResponse) GetConstraints() PlatformC
 
 // GetConstraintsOk returns a tuple with the Constraints field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentConfigurationFieldResponse) GetConstraintsOk() (*PlatformComponentConfigurationConstraintsResponse, bool) {
+func (o *FieldSchemaResponse) GetConstraintsOk() (*FieldSchemaConstraintsResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -284,11 +284,11 @@ func (o *PlatformComponentConfigurationFieldResponse) GetConstraintsOk() (*Platf
 }
 
 // SetConstraints sets field value
-func (o *PlatformComponentConfigurationFieldResponse) SetConstraints(v PlatformComponentConfigurationConstraintsResponse) {
+func (o *FieldSchemaResponse) SetConstraints(v FieldSchemaConstraintsResponse) {
 	o.Constraints = v
 }
 
-func (o PlatformComponentConfigurationFieldResponse) MarshalJSON() ([]byte, error) {
+func (o FieldSchemaResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -296,7 +296,7 @@ func (o PlatformComponentConfigurationFieldResponse) MarshalJSON() ([]byte, erro
 	return json.Marshal(toSerialize)
 }
 
-func (o PlatformComponentConfigurationFieldResponse) ToMap() (map[string]interface{}, error) {
+func (o FieldSchemaResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["type"] = o.Type
@@ -318,7 +318,7 @@ func (o PlatformComponentConfigurationFieldResponse) ToMap() (map[string]interfa
 	return toSerialize, nil
 }
 
-func (o *PlatformComponentConfigurationFieldResponse) UnmarshalJSON(data []byte) (err error) {
+func (o *FieldSchemaResponse) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -345,15 +345,15 @@ func (o *PlatformComponentConfigurationFieldResponse) UnmarshalJSON(data []byte)
 		}
 	}
 
-	varPlatformComponentConfigurationFieldResponse := _PlatformComponentConfigurationFieldResponse{}
+	varFieldSchemaResponse := _FieldSchemaResponse{}
 
-	err = json.Unmarshal(data, &varPlatformComponentConfigurationFieldResponse)
+	err = json.Unmarshal(data, &varFieldSchemaResponse)
 
 	if err != nil {
 		return err
 	}
 
-	*o = PlatformComponentConfigurationFieldResponse(varPlatformComponentConfigurationFieldResponse)
+	*o = FieldSchemaResponse(varFieldSchemaResponse)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -372,38 +372,38 @@ func (o *PlatformComponentConfigurationFieldResponse) UnmarshalJSON(data []byte)
 	return err
 }
 
-type NullablePlatformComponentConfigurationFieldResponse struct {
-	value *PlatformComponentConfigurationFieldResponse
+type NullableFieldSchemaResponse struct {
+	value *FieldSchemaResponse
 	isSet bool
 }
 
-func (v NullablePlatformComponentConfigurationFieldResponse) Get() *PlatformComponentConfigurationFieldResponse {
+func (v NullableFieldSchemaResponse) Get() *FieldSchemaResponse {
 	return v.value
 }
 
-func (v *NullablePlatformComponentConfigurationFieldResponse) Set(val *PlatformComponentConfigurationFieldResponse) {
+func (v *NullableFieldSchemaResponse) Set(val *FieldSchemaResponse) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullablePlatformComponentConfigurationFieldResponse) IsSet() bool {
+func (v NullableFieldSchemaResponse) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullablePlatformComponentConfigurationFieldResponse) Unset() {
+func (v *NullableFieldSchemaResponse) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullablePlatformComponentConfigurationFieldResponse(val *PlatformComponentConfigurationFieldResponse) *NullablePlatformComponentConfigurationFieldResponse {
-	return &NullablePlatformComponentConfigurationFieldResponse{value: val, isSet: true}
+func NewNullableFieldSchemaResponse(val *FieldSchemaResponse) *NullableFieldSchemaResponse {
+	return &NullableFieldSchemaResponse{value: val, isSet: true}
 }
 
-func (v NullablePlatformComponentConfigurationFieldResponse) MarshalJSON() ([]byte, error) {
+func (v NullableFieldSchemaResponse) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullablePlatformComponentConfigurationFieldResponse) UnmarshalJSON(src []byte) error {
+func (v *NullableFieldSchemaResponse) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

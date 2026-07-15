@@ -20683,7 +20683,7 @@ components:
           type: string
         fields:
           items:
-            $ref: '#/components/schemas/PlatformComponentConfigurationFieldResponse'
+            $ref: '#/components/schemas/FieldSchemaResponse'
           type: array
       required:
       - fields
@@ -20695,7 +20695,9 @@ components:
       - HELM
       - TERRAFORM
       type: string
-    PlatformComponentConfigurationFieldResponse:
+    FieldSchemaResponse:
+      description: Canonical platform catalog field descriptor. Mirrors the q-core
+        `FieldSchemaResponse` DTO.
       example:
         defaultValue: defaultValue
         description: description
@@ -20733,7 +20735,7 @@ components:
         sensitive:
           type: boolean
         constraints:
-          $ref: '#/components/schemas/PlatformComponentConfigurationConstraintsResponse'
+          $ref: '#/components/schemas/FieldSchemaConstraintsResponse'
       required:
       - constraints
       - key
@@ -20742,7 +20744,8 @@ components:
       - sensitive
       - type
       type: object
-    PlatformComponentConfigurationConstraintsResponse:
+    FieldSchemaConstraintsResponse:
+      description: Validation constraints attached to a catalog field descriptor.
       example:
         allowedValues:
         - allowedValues
@@ -20964,7 +20967,8 @@ components:
     PlatformComponentConfigurationPreviewResponse:
       example:
         requirements:
-        - scope: PLATFORM_PROFILE
+        - defaultValue: defaultValue
+          scope: PLATFORM_PROFILE
           description: description
           label: label
           sensitive: true
@@ -20981,7 +20985,8 @@ components:
           key: key
           required: true
           status: MISSING
-        - scope: PLATFORM_PROFILE
+        - defaultValue: defaultValue
+          scope: PLATFORM_PROFILE
           description: description
           label: label
           sensitive: true
@@ -21055,7 +21060,7 @@ components:
           type: string
         fields:
           items:
-            $ref: '#/components/schemas/PlatformComponentConfigurationFieldResponse'
+            $ref: '#/components/schemas/FieldSchemaResponse'
           type: array
         requirements:
           items:
@@ -21078,7 +21083,21 @@ components:
       - violations
       type: object
     PlatformComponentInputRequirementResponse:
+      allOf:
+      - $ref: '#/components/schemas/FieldSchemaResponse'
+      - properties:
+          scope:
+            $ref: '#/components/schemas/PlatformComponentConfigurationInputScope'
+          status:
+            $ref: '#/components/schemas/PlatformComponentConfigurationRequirementStatus'
+        required:
+        - scope
+        - status
+        type: object
+      description: "A catalog field the cluster must provide for the selected configuration:\
+        \ the shared field descriptor extended with its resolution scope and readiness."
       example:
+        defaultValue: defaultValue
         scope: PLATFORM_PROFILE
         description: description
         label: label
@@ -21096,36 +21115,6 @@ components:
         key: key
         required: true
         status: MISSING
-      properties:
-        key:
-          type: string
-        type:
-          type: string
-        scope:
-          $ref: '#/components/schemas/PlatformComponentConfigurationInputScope'
-        label:
-          type: string
-        description:
-          nullable: true
-          type: string
-        required:
-          type: boolean
-        sensitive:
-          type: boolean
-        constraints:
-          $ref: '#/components/schemas/PlatformComponentConfigurationConstraintsResponse'
-        status:
-          $ref: '#/components/schemas/PlatformComponentConfigurationRequirementStatus'
-      required:
-      - constraints
-      - key
-      - label
-      - required
-      - scope
-      - sensitive
-      - status
-      - type
-      type: object
     PlatformComponentConfigurationInputScope:
       enum:
       - PLATFORM_PROFILE
@@ -21160,10 +21149,16 @@ components:
         message: message
       properties:
         code:
+          description: Stable machine-readable violation code.
           type: string
         fieldPath:
+          description: "Path of the offending field. Convention: profile configuration\
+            \ fields use the bare field key (e.g. `storage`); cluster-provided inputs\
+            \ are prefixed with `clusterInputs.` (e.g. `clusterInputs.s3BucketName`).\
+            \ Consumers match violations to form fields using these exact paths."
           type: string
         message:
+          description: Customer-facing message describing how to fix the violation.
           type: string
       required:
       - code
