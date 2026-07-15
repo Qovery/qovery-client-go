@@ -20,6 +20,7 @@ security:
 tags:
 - name: Account
 - name: Account Info
+- name: IPs
 - name: Alert Receivers
 - name: Alert Rules
 - name: Admin
@@ -136,6 +137,31 @@ tags:
 - name: Lifecycle Template Main Calls
 - name: Blueprint Main Calls
 paths:
+  /ips:
+    get:
+      description: Returns the list of static IP addresses used by Qovery's NAT gateways
+        for outbound traffic. Customers can allow-list these IPs on their side. This
+        endpoint is public and does not require authentication.
+      operationId: listQoveryIps
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QoveryIpsResponse'
+            text/plain:
+              schema:
+                description: "The IP addresses, one per line."
+                example: |-
+                  13.59.73.12
+                  18.224.119.19
+                  3.143.66.53
+                type: string
+          description: List of Qovery NAT gateway IP addresses
+      security: []
+      summary: List Qovery NAT gateway IP addresses
+      tags:
+      - IPs
   /organization:
     get:
       operationId: listOrganization
@@ -19878,6 +19904,25 @@ components:
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
+    QoveryIpsResponse:
+      example:
+        ips:
+        - 13.59.73.12
+        - 18.224.119.19
+        - 3.143.66.53
+      properties:
+        ips:
+          description: IP addresses used by Qovery's NAT gateways for outbound traffic.
+          example:
+          - 13.59.73.12
+          - 18.224.119.19
+          - 3.143.66.53
+          items:
+            type: string
+          type: array
+      required:
+      - ips
+      type: object
     PlatformTemplateCatalogResponse:
       example:
         results:
@@ -49159,6 +49204,7 @@ x-tagGroups:
   - Account Info
   - Git repositories
   - Referral & Rewards
+  - IPs
 - name: Git
   tags:
   - Git repositories

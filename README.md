@@ -441,6 +441,7 @@ Class | Method | HTTP request | Description
 *HelmsAPI* | [**GetDefaultHelmAdvancedSettings**](docs/HelmsAPI.md#getdefaulthelmadvancedsettings) | **Get** /defaultHelmAdvancedSettings | List default helm advanced settings
 *HelmsAPI* | [**GetEnvironmentHelmStatus**](docs/HelmsAPI.md#getenvironmenthelmstatus) | **Get** /environment/{environmentId}/helm/status | List all environment helm statuses
 *HelmsAPI* | [**ListHelms**](docs/HelmsAPI.md#listhelms) | **Get** /environment/{environmentId}/helm | List helms
+*IPsAPI* | [**ListQoveryIps**](docs/IPsAPI.md#listqoveryips) | **Get** /ips | List Qovery NAT gateway IP addresses
 *JobActionsAPI* | [**CleanFailedJob**](docs/JobActionsAPI.md#cleanfailedjob) | **Post** /job/{jobId}/cleanFailedJob | Clean a failed job
 *JobActionsAPI* | [**DeployJob**](docs/JobActionsAPI.md#deployjob) | **Post** /job/{jobId}/deploy | Deploy job
 *JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
@@ -1304,6 +1305,7 @@ Class | Method | HTTP request | Description
  - [ProviderSecrets](docs/ProviderSecrets.md)
  - [QoveryDnsProviderRequest](docs/QoveryDnsProviderRequest.md)
  - [QoveryDnsProviderResponse](docs/QoveryDnsProviderResponse.md)
+ - [QoveryIpsResponse](docs/QoveryIpsResponse.md)
  - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
  - [QueuedDeploymentRequestForServiceAuditingData](docs/QueuedDeploymentRequestForServiceAuditingData.md)
  - [QueuedDeploymentRequestForServiceIdentifier](docs/QueuedDeploymentRequestForServiceIdentifier.md)
