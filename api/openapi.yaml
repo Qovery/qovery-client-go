@@ -17888,6 +17888,70 @@ paths:
       - Terraforms
       x-stoplight:
         id: qgpat08kc3wir
+  /environment/{environmentId}/agenticWorkflow:
+    get:
+      operationId: listAgenticWorkflows
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenticWorkflowResponseList'
+          description: List agentic workflows
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List agentic workflows
+      tags:
+      - Agentic Workflows
+    post:
+      operationId: createAgenticWorkflow
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgenticWorkflowRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenticWorkflowResponse'
+          description: Create agentic workflow
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Create an agentic workflow
+      tags:
+      - Agentic Workflows
   /environment/{environmentId}/link:
     get:
       description: List services links of an environment
@@ -18034,6 +18098,91 @@ paths:
       - Terraform Main Calls
       x-stoplight:
         id: pb6cdzqcvmnkh
+  /agenticWorkflow/{agenticWorkflowId}:
+    delete:
+      operationId: deleteAgenticWorkflow
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: Delete agentic workflow
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an agentic workflow
+      tags:
+      - Agentic Workflows
+    get:
+      operationId: getAgenticWorkflow
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenticWorkflowResponse'
+          description: Get agentic workflow
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get an agentic workflow
+      tags:
+      - Agentic Workflows
+    put:
+      operationId: editAgenticWorkflow
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AgenticWorkflowRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenticWorkflowResponse'
+          description: Edit agentic workflow
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit an agentic workflow
+      tags:
+      - Agentic Workflows
   /terraform/{terraformId}/advancedSettings:
     get:
       operationId: getTerraformAdvancedSettings
@@ -19905,6 +20054,15 @@ components:
       explode: false
       in: path
       name: secretManagerAccessId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
+    agenticWorkflowId:
+      explode: false
+      in: path
+      name: agenticWorkflowId
       required: true
       schema:
         format: uuid
@@ -45343,6 +45501,448 @@ components:
       - project_id
       - project_name
       - variable_name
+      type: object
+    AgenticWorkflowResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          id:
+            format: uuid
+            type: string
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            type: string
+          whitelist_hosts:
+            description: Hosts the agentic workflow is allowed to reach
+            items:
+              type: string
+            type: array
+          model_settings:
+            type: string
+          docker_fragment:
+            type: string
+          enabled:
+            type: boolean
+          mcp_connectors:
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowConnector'
+            type: array
+          outputs:
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowOutput'
+            type: array
+          model:
+            $ref: '#/components/schemas/AgenticWorkflowModel'
+          project_repositories:
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowProjectRepository'
+            type: array
+          webhook:
+            $ref: '#/components/schemas/AgenticWorkflowWebhook'
+        required:
+        - description
+        - docker_fragment
+        - enabled
+        - id
+        - mcp_connectors
+        - model
+        - model_settings
+        - name
+        - outputs
+        - project_repositories
+        - webhook
+        - whitelist_hosts
+        type: object
+      example:
+        outputs:
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        webhook:
+          secret: secret
+          url: url
+        project_repositories:
+        - root_path: root_path
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: branch
+          url: url
+        - root_path: root_path
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: branch
+          url: url
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        docker_fragment: docker_fragment
+        enabled: true
+        whitelist_hosts:
+        - whitelist_hosts
+        - whitelist_hosts
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        model_settings: model_settings
+        model: CLAUDE
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mcp_connectors:
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+    AgenticWorkflowResponseList:
+      example:
+        results:
+        - outputs:
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          webhook:
+            secret: secret
+            url: url
+          project_repositories:
+          - root_path: root_path
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            branch: branch
+            url: url
+          - root_path: root_path
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            branch: branch
+            url: url
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          docker_fragment: docker_fragment
+          enabled: true
+          whitelist_hosts:
+          - whitelist_hosts
+          - whitelist_hosts
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          model_settings: model_settings
+          model: CLAUDE
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp_connectors:
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+        - outputs:
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          webhook:
+            secret: secret
+            url: url
+          project_repositories:
+          - root_path: root_path
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            branch: branch
+            url: url
+          - root_path: root_path
+            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            branch: branch
+            url: url
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          docker_fragment: docker_fragment
+          enabled: true
+          whitelist_hosts:
+          - whitelist_hosts
+          - whitelist_hosts
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          model_settings: model_settings
+          model: CLAUDE
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp_connectors:
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+          - headers:
+            - name: name
+              value: value
+            - name: name
+              value: value
+            instructions: ""
+            name: name
+            url: url
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/AgenticWorkflowResponse'
+          type: array
+      type: object
+    AgenticWorkflowRequest:
+      allOf:
+      - properties:
+          name:
+            description: name is case insensitive
+            type: string
+          description:
+            default: ""
+            type: string
+          whitelist_hosts:
+            default: []
+            description: Hosts the agentic workflow is allowed to reach
+            items:
+              type: string
+            type: array
+          model_settings:
+            default: ""
+            type: string
+          docker_fragment:
+            default: ""
+            type: string
+          enabled:
+            default: true
+            type: boolean
+          mcp_connectors:
+            default: []
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowConnector'
+            type: array
+          outputs:
+            default: []
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowOutput'
+            type: array
+          model:
+            allOf:
+            - $ref: '#/components/schemas/AgenticWorkflowModel'
+            default: CLAUDE
+          project_repositories:
+            default: []
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowProjectRepository'
+            type: array
+        required:
+        - name
+      example:
+        outputs:
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        whitelist_hosts:
+        - whitelist_hosts
+        - whitelist_hosts
+        name: name
+        model_settings: ""
+        project_repositories:
+        - root_path: root_path
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: branch
+          url: url
+        - root_path: root_path
+          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          branch: branch
+          url: url
+        description: ""
+        model: ""
+        docker_fragment: ""
+        enabled: true
+        mcp_connectors:
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+        - headers:
+          - name: name
+            value: value
+          - name: name
+            value: value
+          instructions: ""
+          name: name
+          url: url
+    AgenticWorkflowModel:
+      enum:
+      - CLAUDE
+      - BEDROCK
+      type: string
+    AgenticWorkflowHeader:
+      example:
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required:
+      - name
+      - value
+      type: object
+    AgenticWorkflowConnector:
+      example:
+        headers:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        instructions: ""
+        name: name
+        url: url
+      properties:
+        name:
+          type: string
+        url:
+          type: string
+        headers:
+          default: []
+          items:
+            $ref: '#/components/schemas/AgenticWorkflowHeader'
+          type: array
+        instructions:
+          default: ""
+          type: string
+      required:
+      - name
+      - url
+      type: object
+    AgenticWorkflowOutput:
+      example:
+        headers:
+        - name: name
+          value: value
+        - name: name
+          value: value
+        instructions: ""
+        name: name
+        url: url
+      properties:
+        name:
+          type: string
+        url:
+          nullable: true
+          type: string
+        headers:
+          default: []
+          items:
+            $ref: '#/components/schemas/AgenticWorkflowHeader'
+          type: array
+        instructions:
+          default: ""
+          type: string
+      required:
+      - name
+      type: object
+    AgenticWorkflowProjectRepository:
+      example:
+        root_path: root_path
+        git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        branch: branch
+        url: url
+      properties:
+        url:
+          type: string
+        branch:
+          type: string
+        root_path:
+          type: string
+        git_token_id:
+          format: uuid
+          type: string
+      required:
+      - branch
+      - git_token_id
+      - root_path
+      - url
+      type: object
+    AgenticWorkflowWebhook:
+      example:
+        secret: secret
+        url: url
+      properties:
+        url:
+          type: string
+        secret:
+          type: string
+      required:
+      - secret
+      - url
       type: object
     listDirectoriesFromGitRepository_200_response:
       example:

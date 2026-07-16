@@ -51,6 +51,8 @@ type APIClient struct {
 
 	AccountInfoAPI *AccountInfoAPIService
 
+	AgenticWorkflowsAPI *AgenticWorkflowsAPIService
+
 	AlertReceiversAPI *AlertReceiversAPIService
 
 	AlertRulesAPI *AlertRulesAPIService
@@ -265,6 +267,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AccountInfoAPI = (*AccountInfoAPIService)(&c.common)
+	c.AgenticWorkflowsAPI = (*AgenticWorkflowsAPIService)(&c.common)
 	c.AlertReceiversAPI = (*AlertReceiversAPIService)(&c.common)
 	c.AlertRulesAPI = (*AlertRulesAPIService)(&c.common)
 	c.ApplicationActionsAPI = (*ApplicationActionsAPIService)(&c.common)
