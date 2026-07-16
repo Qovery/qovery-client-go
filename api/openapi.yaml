@@ -1762,6 +1762,89 @@ paths:
       summary: List platform templates
       tags:
       - Platform Configuration
+  /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve:
+    post:
+      description: Resolves the fields and runtime requirements to display for a component
+        using an explicit cluster context and the values currently entered in the
+        Console. This operation is read-only and does not require an existing cluster
+        or platform binding.
+      operationId: resolvePlatformTemplateComponentConfiguration
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Platform template key
+        explode: false
+        in: path
+        name: templateKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Platform template version
+        explode: false
+        in: path
+        name: templateVersion
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Platform component key
+        explode: false
+        in: path
+        name: componentKey
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: Cluster management mode used to resolve component applicability
+        explode: true
+        in: query
+        name: clusterMode
+        required: true
+        schema:
+          $ref: '#/components/schemas/PlatformClusterMode'
+        style: form
+      - description: Cluster cloud provider used to resolve component applicability
+        explode: true
+        in: query
+        name: cloudProvider
+        required: true
+        schema:
+          $ref: '#/components/schemas/PlatformCloudVendor'
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PlatformComponentConfigurationPreviewRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformComponentConfigurationResolutionResponse'
+          description: Resolved component configuration
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "503":
+          description: The platform template catalog is temporarily unavailable
+      summary: Resolve a platform component configuration before cluster creation
+      tags:
+      - Platform Configuration
   /organization/{organizationId}/cluster:
     get:
       operationId: listOrganizationCluster
@@ -21254,6 +21337,121 @@ components:
           type: array
       required:
       - clusterId
+      - componentBindings
+      - componentKey
+      - fields
+      - requirements
+      - violations
+      type: object
+    PlatformComponentConfigurationResolutionResponse:
+      description: Component configuration resolved from an explicit template and
+        cluster context before an actual cluster exists.
+      example:
+        requirements:
+        - defaultValue: defaultValue
+          scope: PLATFORM_PROFILE
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+          status: MISSING
+        - defaultValue: defaultValue
+          scope: PLATFORM_PROFILE
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+          status: MISSING
+        componentBindings:
+        - output: output
+          input: input
+          fromComponent: fromComponent
+        - output: output
+          input: input
+          fromComponent: fromComponent
+        violations:
+        - code: code
+          fieldPath: fieldPath
+          message: message
+        - code: code
+          fieldPath: fieldPath
+          message: message
+        fields:
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        - defaultValue: defaultValue
+          description: description
+          label: label
+          sensitive: true
+          type: type
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        componentKey: componentKey
+      properties:
+        componentKey:
+          type: string
+        fields:
+          items:
+            $ref: '#/components/schemas/FieldSchemaResponse'
+          type: array
+        requirements:
+          items:
+            $ref: '#/components/schemas/PlatformComponentInputRequirementResponse'
+          type: array
+        componentBindings:
+          items:
+            $ref: '#/components/schemas/PlatformComponentOutputBindingResponse'
+          type: array
+        violations:
+          items:
+            $ref: '#/components/schemas/PlatformComponentConfigurationViolationResponse'
+          type: array
+      required:
       - componentBindings
       - componentKey
       - fields

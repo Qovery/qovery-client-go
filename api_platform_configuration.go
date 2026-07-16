@@ -420,6 +420,169 @@ func (a *PlatformConfigurationAPIService) ResolvePlatformComponentConfigurationE
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiResolvePlatformTemplateComponentConfigurationRequest struct {
+	ctx                                          context.Context
+	ApiService                                   *PlatformConfigurationAPIService
+	organizationId                               string
+	templateKey                                  string
+	templateVersion                              string
+	componentKey                                 string
+	clusterMode                                  *PlatformClusterMode
+	cloudProvider                                *PlatformCloudVendor
+	platformComponentConfigurationPreviewRequest *PlatformComponentConfigurationPreviewRequest
+}
+
+// Cluster management mode used to resolve component applicability
+func (r ApiResolvePlatformTemplateComponentConfigurationRequest) ClusterMode(clusterMode PlatformClusterMode) ApiResolvePlatformTemplateComponentConfigurationRequest {
+	r.clusterMode = &clusterMode
+	return r
+}
+
+// Cluster cloud provider used to resolve component applicability
+func (r ApiResolvePlatformTemplateComponentConfigurationRequest) CloudProvider(cloudProvider PlatformCloudVendor) ApiResolvePlatformTemplateComponentConfigurationRequest {
+	r.cloudProvider = &cloudProvider
+	return r
+}
+
+func (r ApiResolvePlatformTemplateComponentConfigurationRequest) PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest PlatformComponentConfigurationPreviewRequest) ApiResolvePlatformTemplateComponentConfigurationRequest {
+	r.platformComponentConfigurationPreviewRequest = &platformComponentConfigurationPreviewRequest
+	return r
+}
+
+func (r ApiResolvePlatformTemplateComponentConfigurationRequest) Execute() (*PlatformComponentConfigurationResolutionResponse, *http.Response, error) {
+	return r.ApiService.ResolvePlatformTemplateComponentConfigurationExecute(r)
+}
+
+/*
+ResolvePlatformTemplateComponentConfiguration Resolve a platform component configuration before cluster creation
+
+Resolves the fields and runtime requirements to display for a component using an explicit cluster context and the values currently entered in the Console. This operation is read-only and does not require an existing cluster or platform binding.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param templateKey Platform template key
+	@param templateVersion Platform template version
+	@param componentKey Platform component key
+	@return ApiResolvePlatformTemplateComponentConfigurationRequest
+*/
+func (a *PlatformConfigurationAPIService) ResolvePlatformTemplateComponentConfiguration(ctx context.Context, organizationId string, templateKey string, templateVersion string, componentKey string) ApiResolvePlatformTemplateComponentConfigurationRequest {
+	return ApiResolvePlatformTemplateComponentConfigurationRequest{
+		ApiService:      a,
+		ctx:             ctx,
+		organizationId:  organizationId,
+		templateKey:     templateKey,
+		templateVersion: templateVersion,
+		componentKey:    componentKey,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PlatformComponentConfigurationResolutionResponse
+func (a *PlatformConfigurationAPIService) ResolvePlatformTemplateComponentConfigurationExecute(r ApiResolvePlatformTemplateComponentConfigurationRequest) (*PlatformComponentConfigurationResolutionResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PlatformComponentConfigurationResolutionResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlatformConfigurationAPIService.ResolvePlatformTemplateComponentConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"templateKey"+"}", url.PathEscape(parameterValueToString(r.templateKey, "templateKey")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"templateVersion"+"}", url.PathEscape(parameterValueToString(r.templateVersion, "templateVersion")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"componentKey"+"}", url.PathEscape(parameterValueToString(r.componentKey, "componentKey")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterMode == nil {
+		return localVarReturnValue, nil, reportError("clusterMode is required and must be specified")
+	}
+	if r.cloudProvider == nil {
+		return localVarReturnValue, nil, reportError("cloudProvider is required and must be specified")
+	}
+	if r.platformComponentConfigurationPreviewRequest == nil {
+		return localVarReturnValue, nil, reportError("platformComponentConfigurationPreviewRequest is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "clusterMode", r.clusterMode, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "cloudProvider", r.cloudProvider, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.platformComponentConfigurationPreviewRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiUpdateClusterPlatformBindingRequest struct {
 	ctx                           context.Context
 	ApiService                    *PlatformConfigurationAPIService

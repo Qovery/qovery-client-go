@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**GetClusterPlatformBinding**](PlatformConfigurationAPI.md#GetClusterPlatformBinding) | **Get** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
 [**ListPlatformTemplates**](PlatformConfigurationAPI.md#ListPlatformTemplates) | **Get** /organization/{organizationId}/platformTemplate | List platform templates
 [**ResolvePlatformComponentConfiguration**](PlatformConfigurationAPI.md#ResolvePlatformComponentConfiguration) | **Post** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
+[**ResolvePlatformTemplateComponentConfiguration**](PlatformConfigurationAPI.md#ResolvePlatformTemplateComponentConfiguration) | **Post** /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve | Resolve a platform component configuration before cluster creation
 [**UpdateClusterPlatformBinding**](PlatformConfigurationAPI.md#UpdateClusterPlatformBinding) | **Put** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
 
 
@@ -221,6 +222,91 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**PlatformComponentConfigurationPreviewResponse**](PlatformComponentConfigurationPreviewResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ResolvePlatformTemplateComponentConfiguration
+
+> PlatformComponentConfigurationResolutionResponse ResolvePlatformTemplateComponentConfiguration(ctx, organizationId, templateKey, templateVersion, componentKey).ClusterMode(clusterMode).CloudProvider(cloudProvider).PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest).Execute()
+
+Resolve a platform component configuration before cluster creation
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	templateKey := "templateKey_example" // string | Platform template key
+	templateVersion := "templateVersion_example" // string | Platform template version
+	componentKey := "componentKey_example" // string | Platform component key
+	clusterMode := openapiclient.PlatformClusterMode("QOVERY_MANAGED") // PlatformClusterMode | Cluster management mode used to resolve component applicability
+	cloudProvider := openapiclient.PlatformCloudVendor("AWS") // PlatformCloudVendor | Cluster cloud provider used to resolve component applicability
+	platformComponentConfigurationPreviewRequest := *openapiclient.NewPlatformComponentConfigurationPreviewRequest() // PlatformComponentConfigurationPreviewRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PlatformConfigurationAPI.ResolvePlatformTemplateComponentConfiguration(context.Background(), organizationId, templateKey, templateVersion, componentKey).ClusterMode(clusterMode).CloudProvider(cloudProvider).PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PlatformConfigurationAPI.ResolvePlatformTemplateComponentConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ResolvePlatformTemplateComponentConfiguration`: PlatformComponentConfigurationResolutionResponse
+	fmt.Fprintf(os.Stdout, "Response from `PlatformConfigurationAPI.ResolvePlatformTemplateComponentConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**templateKey** | **string** | Platform template key | 
+**templateVersion** | **string** | Platform template version | 
+**componentKey** | **string** | Platform component key | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiResolvePlatformTemplateComponentConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+
+ **clusterMode** | [**PlatformClusterMode**](PlatformClusterMode.md) | Cluster management mode used to resolve component applicability | 
+ **cloudProvider** | [**PlatformCloudVendor**](PlatformCloudVendor.md) | Cluster cloud provider used to resolve component applicability | 
+ **platformComponentConfigurationPreviewRequest** | [**PlatformComponentConfigurationPreviewRequest**](PlatformComponentConfigurationPreviewRequest.md) |  | 
+
+### Return type
+
+[**PlatformComponentConfigurationResolutionResponse**](PlatformComponentConfigurationResolutionResponse.md)
 
 ### Authorization
 

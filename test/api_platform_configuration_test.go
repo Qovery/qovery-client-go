@@ -67,6 +67,23 @@ func Test_qovery_PlatformConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PlatformConfigurationAPIService ResolvePlatformTemplateComponentConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var templateKey string
+		var templateVersion string
+		var componentKey string
+
+		resp, httpRes, err := apiClient.PlatformConfigurationAPI.ResolvePlatformTemplateComponentConfiguration(context.Background(), organizationId, templateKey, templateVersion, componentKey).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PlatformConfigurationAPIService UpdateClusterPlatformBinding", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
