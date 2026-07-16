@@ -149,6 +149,20 @@ type ApiListPlatformTemplatesRequest struct {
 	ctx            context.Context
 	ApiService     *PlatformConfigurationAPIService
 	organizationId string
+	clusterMode    *PlatformClusterMode
+	cloudProvider  *PlatformCloudVendor
+}
+
+// Cluster management mode. Must be supplied together with cloudProvider.
+func (r ApiListPlatformTemplatesRequest) ClusterMode(clusterMode PlatformClusterMode) ApiListPlatformTemplatesRequest {
+	r.clusterMode = &clusterMode
+	return r
+}
+
+// Cluster cloud provider. Must be supplied together with clusterMode.
+func (r ApiListPlatformTemplatesRequest) CloudProvider(cloudProvider PlatformCloudVendor) ApiListPlatformTemplatesRequest {
+	r.cloudProvider = &cloudProvider
+	return r
 }
 
 func (r ApiListPlatformTemplatesRequest) Execute() (*PlatformTemplateCatalogResponse, *http.Response, error) {
@@ -158,7 +172,7 @@ func (r ApiListPlatformTemplatesRequest) Execute() (*PlatformTemplateCatalogResp
 /*
 ListPlatformTemplates List platform templates
 
-Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render.
+Returns the published platform templates available to the organization. Each template contains its layers, components, and the configuration fields that the Console can render. When clusterMode and cloudProvider are supplied together, component field constraints are narrowed to the effective choices for that cluster context.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
@@ -195,6 +209,12 @@ func (a *PlatformConfigurationAPIService) ListPlatformTemplatesExecute(r ApiList
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.clusterMode != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "clusterMode", r.clusterMode, "")
+	}
+	if r.cloudProvider != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "cloudProvider", r.cloudProvider, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

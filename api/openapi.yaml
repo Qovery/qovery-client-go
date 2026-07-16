@@ -1712,7 +1712,9 @@ paths:
     get:
       description: "Returns the published platform templates available to the organization.\
         \ Each template contains its layers, components, and the configuration fields\
-        \ that the Console can render."
+        \ that the Console can render. When clusterMode and cloudProvider are supplied\
+        \ together, component field constraints are narrowed to the effective choices\
+        \ for that cluster context."
       operationId: listPlatformTemplates
       parameters:
       - description: Organization ID
@@ -1724,6 +1726,22 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: Cluster management mode. Must be supplied together with cloudProvider.
+        explode: true
+        in: query
+        name: clusterMode
+        required: false
+        schema:
+          $ref: '#/components/schemas/PlatformClusterMode'
+        style: form
+      - description: Cluster cloud provider. Must be supplied together with clusterMode.
+        explode: true
+        in: query
+        name: cloudProvider
+        required: false
+        schema:
+          $ref: '#/components/schemas/PlatformCloudVendor'
+        style: form
       responses:
         "200":
           content:
@@ -1731,6 +1749,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/PlatformTemplateCatalogResponse'
           description: Published platform template catalog
+        "400":
+          description: clusterMode and cloudProvider must be supplied together
         "401":
           description: Access token is missing or invalid
         "403":

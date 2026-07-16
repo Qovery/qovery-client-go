@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 
 ## ListPlatformTemplates
 
-> PlatformTemplateCatalogResponse ListPlatformTemplates(ctx, organizationId).Execute()
+> PlatformTemplateCatalogResponse ListPlatformTemplates(ctx, organizationId).ClusterMode(clusterMode).CloudProvider(cloudProvider).Execute()
 
 List platform templates
 
@@ -106,10 +106,12 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	clusterMode := openapiclient.PlatformClusterMode("QOVERY_MANAGED") // PlatformClusterMode | Cluster management mode. Must be supplied together with cloudProvider. (optional)
+	cloudProvider := openapiclient.PlatformCloudVendor("AWS") // PlatformCloudVendor | Cluster cloud provider. Must be supplied together with clusterMode. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.PlatformConfigurationAPI.ListPlatformTemplates(context.Background(), organizationId).Execute()
+	resp, r, err := apiClient.PlatformConfigurationAPI.ListPlatformTemplates(context.Background(), organizationId).ClusterMode(clusterMode).CloudProvider(cloudProvider).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `PlatformConfigurationAPI.ListPlatformTemplates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -135,6 +137,8 @@ Other parameters are passed through a pointer to a apiListPlatformTemplatesReque
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **clusterMode** | [**PlatformClusterMode**](PlatformClusterMode.md) | Cluster management mode. Must be supplied together with cloudProvider. | 
+ **cloudProvider** | [**PlatformCloudVendor**](PlatformCloudVendor.md) | Cluster cloud provider. Must be supplied together with clusterMode. | 
 
 ### Return type
 
