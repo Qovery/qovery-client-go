@@ -45712,8 +45712,9 @@ components:
             type: string
           description:
             type: string
-          whitelist_hosts:
-            description: Hosts the agentic workflow is allowed to reach
+          ip_allowlist:
+            description: CIDR ranges the incoming webhook request's source IP is checked
+              against
             items:
               type: string
             type: array
@@ -45744,6 +45745,7 @@ components:
         - docker_fragment
         - enabled
         - id
+        - ip_allowlist
         - mcp_connectors
         - model
         - model_settings
@@ -45751,7 +45753,6 @@ components:
         - outputs
         - project_repositories
         - webhook
-        - whitelist_hosts
         type: object
       example:
         outputs:
@@ -45772,7 +45773,6 @@ components:
           name: name
           url: url
         webhook:
-          secret: secret
           url: url
         project_repositories:
         - root_path: root_path
@@ -45785,11 +45785,11 @@ components:
           url: url
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
+        ip_allowlist:
+        - ip_allowlist
+        - ip_allowlist
         docker_fragment: docker_fragment
         enabled: true
-        whitelist_hosts:
-        - whitelist_hosts
-        - whitelist_hosts
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         model_settings: model_settings
@@ -45833,7 +45833,6 @@ components:
             name: name
             url: url
           webhook:
-            secret: secret
             url: url
           project_repositories:
           - root_path: root_path
@@ -45846,11 +45845,11 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          ip_allowlist:
+          - ip_allowlist
+          - ip_allowlist
           docker_fragment: docker_fragment
           enabled: true
-          whitelist_hosts:
-          - whitelist_hosts
-          - whitelist_hosts
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           model_settings: model_settings
@@ -45891,7 +45890,6 @@ components:
             name: name
             url: url
           webhook:
-            secret: secret
             url: url
           project_repositories:
           - root_path: root_path
@@ -45904,11 +45902,11 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          ip_allowlist:
+          - ip_allowlist
+          - ip_allowlist
           docker_fragment: docker_fragment
           enabled: true
-          whitelist_hosts:
-          - whitelist_hosts
-          - whitelist_hosts
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           model_settings: model_settings
@@ -45946,9 +45944,10 @@ components:
           description:
             default: ""
             type: string
-          whitelist_hosts:
+          ip_allowlist:
             default: []
-            description: Hosts the agentic workflow is allowed to reach
+            description: CIDR ranges the incoming webhook request's source IP is checked
+              against
             items:
               type: string
             type: array
@@ -46000,9 +45999,6 @@ components:
           instructions: ""
           name: name
           url: url
-        whitelist_hosts:
-        - whitelist_hosts
-        - whitelist_hosts
         name: name
         model_settings: ""
         project_repositories:
@@ -46016,6 +46012,9 @@ components:
           url: url
         description: ""
         model: ""
+        ip_allowlist:
+        - ip_allowlist
+        - ip_allowlist
         docker_fragment: ""
         enabled: true
         mcp_connectors:
@@ -46131,15 +46130,11 @@ components:
       type: object
     AgenticWorkflowWebhook:
       example:
-        secret: secret
         url: url
       properties:
         url:
           type: string
-        secret:
-          type: string
       required:
-      - secret
       - url
       type: object
     listDirectoriesFromGitRepository_200_response:

@@ -24,8 +24,8 @@ type AgenticWorkflowRequest struct {
 	// name is case insensitive
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
-	// Hosts the agentic workflow is allowed to reach
-	WhitelistHosts       []string                           `json:"whitelist_hosts,omitempty"`
+	// CIDR ranges the incoming webhook request's source IP is checked against
+	IpAllowlist          []string                           `json:"ip_allowlist,omitempty"`
 	ModelSettings        *string                            `json:"model_settings,omitempty"`
 	DockerFragment       *string                            `json:"docker_fragment,omitempty"`
 	Enabled              *bool                              `json:"enabled,omitempty"`
@@ -132,36 +132,36 @@ func (o *AgenticWorkflowRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetWhitelistHosts returns the WhitelistHosts field value if set, zero value otherwise.
-func (o *AgenticWorkflowRequest) GetWhitelistHosts() []string {
-	if o == nil || IsNil(o.WhitelistHosts) {
+// GetIpAllowlist returns the IpAllowlist field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetIpAllowlist() []string {
+	if o == nil || IsNil(o.IpAllowlist) {
 		var ret []string
 		return ret
 	}
-	return o.WhitelistHosts
+	return o.IpAllowlist
 }
 
-// GetWhitelistHostsOk returns a tuple with the WhitelistHosts field value if set, nil otherwise
+// GetIpAllowlistOk returns a tuple with the IpAllowlist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowRequest) GetWhitelistHostsOk() ([]string, bool) {
-	if o == nil || IsNil(o.WhitelistHosts) {
+func (o *AgenticWorkflowRequest) GetIpAllowlistOk() ([]string, bool) {
+	if o == nil || IsNil(o.IpAllowlist) {
 		return nil, false
 	}
-	return o.WhitelistHosts, true
+	return o.IpAllowlist, true
 }
 
-// HasWhitelistHosts returns a boolean if a field has been set.
-func (o *AgenticWorkflowRequest) HasWhitelistHosts() bool {
-	if o != nil && !IsNil(o.WhitelistHosts) {
+// HasIpAllowlist returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasIpAllowlist() bool {
+	if o != nil && !IsNil(o.IpAllowlist) {
 		return true
 	}
 
 	return false
 }
 
-// SetWhitelistHosts gets a reference to the given []string and assigns it to the WhitelistHosts field.
-func (o *AgenticWorkflowRequest) SetWhitelistHosts(v []string) {
-	o.WhitelistHosts = v
+// SetIpAllowlist gets a reference to the given []string and assigns it to the IpAllowlist field.
+func (o *AgenticWorkflowRequest) SetIpAllowlist(v []string) {
+	o.IpAllowlist = v
 }
 
 // GetModelSettings returns the ModelSettings field value if set, zero value otherwise.
@@ -402,8 +402,8 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.WhitelistHosts) {
-		toSerialize["whitelist_hosts"] = o.WhitelistHosts
+	if !IsNil(o.IpAllowlist) {
+		toSerialize["ip_allowlist"] = o.IpAllowlist
 	}
 	if !IsNil(o.ModelSettings) {
 		toSerialize["model_settings"] = o.ModelSettings
@@ -471,7 +471,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "whitelist_hosts")
+		delete(additionalProperties, "ip_allowlist")
 		delete(additionalProperties, "model_settings")
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")

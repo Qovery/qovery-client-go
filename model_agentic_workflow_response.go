@@ -28,8 +28,8 @@ type AgenticWorkflowResponse struct {
 	// name is case insensitive
 	Name        string `json:"name"`
 	Description string `json:"description"`
-	// Hosts the agentic workflow is allowed to reach
-	WhitelistHosts       []string                           `json:"whitelist_hosts"`
+	// CIDR ranges the incoming webhook request's source IP is checked against
+	IpAllowlist          []string                           `json:"ip_allowlist"`
 	ModelSettings        string                             `json:"model_settings"`
 	DockerFragment       string                             `json:"docker_fragment"`
 	Enabled              bool                               `json:"enabled"`
@@ -47,13 +47,13 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, whitelistHosts []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, ipAllowlist []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.Description = description
-	this.WhitelistHosts = whitelistHosts
+	this.IpAllowlist = ipAllowlist
 	this.ModelSettings = modelSettings
 	this.DockerFragment = dockerFragment
 	this.Enabled = enabled
@@ -201,28 +201,28 @@ func (o *AgenticWorkflowResponse) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetWhitelistHosts returns the WhitelistHosts field value
-func (o *AgenticWorkflowResponse) GetWhitelistHosts() []string {
+// GetIpAllowlist returns the IpAllowlist field value
+func (o *AgenticWorkflowResponse) GetIpAllowlist() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.WhitelistHosts
+	return o.IpAllowlist
 }
 
-// GetWhitelistHostsOk returns a tuple with the WhitelistHosts field value
+// GetIpAllowlistOk returns a tuple with the IpAllowlist field value
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowResponse) GetWhitelistHostsOk() ([]string, bool) {
+func (o *AgenticWorkflowResponse) GetIpAllowlistOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.WhitelistHosts, true
+	return o.IpAllowlist, true
 }
 
-// SetWhitelistHosts sets field value
-func (o *AgenticWorkflowResponse) SetWhitelistHosts(v []string) {
-	o.WhitelistHosts = v
+// SetIpAllowlist sets field value
+func (o *AgenticWorkflowResponse) SetIpAllowlist(v []string) {
+	o.IpAllowlist = v
 }
 
 // GetModelSettings returns the ModelSettings field value
@@ -434,7 +434,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["whitelist_hosts"] = o.WhitelistHosts
+	toSerialize["ip_allowlist"] = o.IpAllowlist
 	toSerialize["model_settings"] = o.ModelSettings
 	toSerialize["docker_fragment"] = o.DockerFragment
 	toSerialize["enabled"] = o.Enabled
@@ -460,7 +460,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"name",
 		"description",
-		"whitelist_hosts",
+		"ip_allowlist",
 		"model_settings",
 		"docker_fragment",
 		"enabled",
@@ -503,7 +503,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "whitelist_hosts")
+		delete(additionalProperties, "ip_allowlist")
 		delete(additionalProperties, "model_settings")
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")

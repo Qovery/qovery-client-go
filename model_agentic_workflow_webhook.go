@@ -22,7 +22,6 @@ var _ MappedNullable = &AgenticWorkflowWebhook{}
 // AgenticWorkflowWebhook struct for AgenticWorkflowWebhook
 type AgenticWorkflowWebhook struct {
 	Url                  string `json:"url"`
-	Secret               string `json:"secret"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,10 +31,9 @@ type _AgenticWorkflowWebhook AgenticWorkflowWebhook
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowWebhook(url string, secret string) *AgenticWorkflowWebhook {
+func NewAgenticWorkflowWebhook(url string) *AgenticWorkflowWebhook {
 	this := AgenticWorkflowWebhook{}
 	this.Url = url
-	this.Secret = secret
 	return &this
 }
 
@@ -71,30 +69,6 @@ func (o *AgenticWorkflowWebhook) SetUrl(v string) {
 	o.Url = v
 }
 
-// GetSecret returns the Secret field value
-func (o *AgenticWorkflowWebhook) GetSecret() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Secret
-}
-
-// GetSecretOk returns a tuple with the Secret field value
-// and a boolean to check if the value has been set.
-func (o *AgenticWorkflowWebhook) GetSecretOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Secret, true
-}
-
-// SetSecret sets field value
-func (o *AgenticWorkflowWebhook) SetSecret(v string) {
-	o.Secret = v
-}
-
 func (o AgenticWorkflowWebhook) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -106,7 +80,6 @@ func (o AgenticWorkflowWebhook) MarshalJSON() ([]byte, error) {
 func (o AgenticWorkflowWebhook) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
-	toSerialize["secret"] = o.Secret
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -121,7 +94,6 @@ func (o *AgenticWorkflowWebhook) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"url",
-		"secret",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -152,7 +124,6 @@ func (o *AgenticWorkflowWebhook) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "url")
-		delete(additionalProperties, "secret")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
 **Description** | **string** |  | 
-**WhitelistHosts** | **[]string** | Hosts the agentic workflow is allowed to reach | 
+**IpAllowlist** | **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | 
 **ModelSettings** | **string** |  | 
 **DockerFragment** | **string** |  | 
 **Enabled** | **bool** |  | 
@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, whitelistHosts []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, ipAllowlist []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -143,24 +143,24 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetWhitelistHosts
+### GetIpAllowlist
 
-`func (o *AgenticWorkflowResponse) GetWhitelistHosts() []string`
+`func (o *AgenticWorkflowResponse) GetIpAllowlist() []string`
 
-GetWhitelistHosts returns the WhitelistHosts field if non-nil, zero value otherwise.
+GetIpAllowlist returns the IpAllowlist field if non-nil, zero value otherwise.
 
-### GetWhitelistHostsOk
+### GetIpAllowlistOk
 
-`func (o *AgenticWorkflowResponse) GetWhitelistHostsOk() (*[]string, bool)`
+`func (o *AgenticWorkflowResponse) GetIpAllowlistOk() (*[]string, bool)`
 
-GetWhitelistHostsOk returns a tuple with the WhitelistHosts field if it's non-nil, zero value otherwise
+GetIpAllowlistOk returns a tuple with the IpAllowlist field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWhitelistHosts
+### SetIpAllowlist
 
-`func (o *AgenticWorkflowResponse) SetWhitelistHosts(v []string)`
+`func (o *AgenticWorkflowResponse) SetIpAllowlist(v []string)`
 
-SetWhitelistHosts sets WhitelistHosts field to given value.
+SetIpAllowlist sets IpAllowlist field to given value.
 
 
 ### GetModelSettings

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] [default to ""]
-**WhitelistHosts** | Pointer to **[]string** | Hosts the agentic workflow is allowed to reach | [optional] [default to []]
+**IpAllowlist** | Pointer to **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | [optional] [default to []]
 **ModelSettings** | Pointer to **string** |  | [optional] [default to ""]
 **DockerFragment** | Pointer to **string** |  | [optional] [default to ""]
 **Enabled** | Pointer to **bool** |  | [optional] [default to true]
@@ -79,30 +79,30 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### GetWhitelistHosts
+### GetIpAllowlist
 
-`func (o *AgenticWorkflowRequest) GetWhitelistHosts() []string`
+`func (o *AgenticWorkflowRequest) GetIpAllowlist() []string`
 
-GetWhitelistHosts returns the WhitelistHosts field if non-nil, zero value otherwise.
+GetIpAllowlist returns the IpAllowlist field if non-nil, zero value otherwise.
 
-### GetWhitelistHostsOk
+### GetIpAllowlistOk
 
-`func (o *AgenticWorkflowRequest) GetWhitelistHostsOk() (*[]string, bool)`
+`func (o *AgenticWorkflowRequest) GetIpAllowlistOk() (*[]string, bool)`
 
-GetWhitelistHostsOk returns a tuple with the WhitelistHosts field if it's non-nil, zero value otherwise
+GetIpAllowlistOk returns a tuple with the IpAllowlist field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWhitelistHosts
+### SetIpAllowlist
 
-`func (o *AgenticWorkflowRequest) SetWhitelistHosts(v []string)`
+`func (o *AgenticWorkflowRequest) SetIpAllowlist(v []string)`
 
-SetWhitelistHosts sets WhitelistHosts field to given value.
+SetIpAllowlist sets IpAllowlist field to given value.
 
-### HasWhitelistHosts
+### HasIpAllowlist
 
-`func (o *AgenticWorkflowRequest) HasWhitelistHosts() bool`
+`func (o *AgenticWorkflowRequest) HasIpAllowlist() bool`
 
-HasWhitelistHosts returns a boolean if a field has been set.
+HasIpAllowlist returns a boolean if a field has been set.
 
 ### GetModelSettings
 
