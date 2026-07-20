@@ -1,4 +1,4 @@
-# AgenticWorkflowModel
+# AgenticWorkflowModelType
 
 ## Enum
 

@@ -6,14 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | 
 **Branch** | **string** |  | 
-**RootPath** | **string** |  | 
 **GitTokenId** | **string** |  | 
 
 ## Methods
 
 ### NewAgenticWorkflowProjectRepository
 
-`func NewAgenticWorkflowProjectRepository(url string, branch string, rootPath string, gitTokenId string, ) *AgenticWorkflowProjectRepository`
+`func NewAgenticWorkflowProjectRepository(url string, branch string, gitTokenId string, ) *AgenticWorkflowProjectRepository`
 
 NewAgenticWorkflowProjectRepository instantiates a new AgenticWorkflowProjectRepository object
 This constructor will assign default values to properties that have it defined,
@@ -66,26 +65,6 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowProjectRepository) SetBranch(v string)`
 
 SetBranch sets Branch field to given value.
-
-
-### GetRootPath
-
-`func (o *AgenticWorkflowProjectRepository) GetRootPath() string`
-
-GetRootPath returns the RootPath field if non-nil, zero value otherwise.
-
-### GetRootPathOk
-
-`func (o *AgenticWorkflowProjectRepository) GetRootPathOk() (*string, bool)`
-
-GetRootPathOk returns a tuple with the RootPath field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRootPath
-
-`func (o *AgenticWorkflowProjectRepository) SetRootPath(v string)`
-
-SetRootPath sets RootPath field to given value.
 
 
 ### GetGitTokenId

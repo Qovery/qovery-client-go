@@ -23,7 +23,6 @@ var _ MappedNullable = &AgenticWorkflowProjectRepository{}
 type AgenticWorkflowProjectRepository struct {
 	Url                  string `json:"url"`
 	Branch               string `json:"branch"`
-	RootPath             string `json:"root_path"`
 	GitTokenId           string `json:"git_token_id"`
 	AdditionalProperties map[string]interface{}
 }
@@ -34,11 +33,10 @@ type _AgenticWorkflowProjectRepository AgenticWorkflowProjectRepository
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowProjectRepository(url string, branch string, rootPath string, gitTokenId string) *AgenticWorkflowProjectRepository {
+func NewAgenticWorkflowProjectRepository(url string, branch string, gitTokenId string) *AgenticWorkflowProjectRepository {
 	this := AgenticWorkflowProjectRepository{}
 	this.Url = url
 	this.Branch = branch
-	this.RootPath = rootPath
 	this.GitTokenId = gitTokenId
 	return &this
 }
@@ -99,30 +97,6 @@ func (o *AgenticWorkflowProjectRepository) SetBranch(v string) {
 	o.Branch = v
 }
 
-// GetRootPath returns the RootPath field value
-func (o *AgenticWorkflowProjectRepository) GetRootPath() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.RootPath
-}
-
-// GetRootPathOk returns a tuple with the RootPath field value
-// and a boolean to check if the value has been set.
-func (o *AgenticWorkflowProjectRepository) GetRootPathOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.RootPath, true
-}
-
-// SetRootPath sets field value
-func (o *AgenticWorkflowProjectRepository) SetRootPath(v string) {
-	o.RootPath = v
-}
-
 // GetGitTokenId returns the GitTokenId field value
 func (o *AgenticWorkflowProjectRepository) GetGitTokenId() string {
 	if o == nil {
@@ -159,7 +133,6 @@ func (o AgenticWorkflowProjectRepository) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
 	toSerialize["branch"] = o.Branch
-	toSerialize["root_path"] = o.RootPath
 	toSerialize["git_token_id"] = o.GitTokenId
 
 	for key, value := range o.AdditionalProperties {
@@ -176,7 +149,6 @@ func (o *AgenticWorkflowProjectRepository) UnmarshalJSON(data []byte) (err error
 	requiredProperties := []string{
 		"url",
 		"branch",
-		"root_path",
 		"git_token_id",
 	}
 
@@ -209,7 +181,6 @@ func (o *AgenticWorkflowProjectRepository) UnmarshalJSON(data []byte) (err error
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "branch")
-		delete(additionalProperties, "root_path")
 		delete(additionalProperties, "git_token_id")
 		o.AdditionalProperties = additionalProperties
 	}

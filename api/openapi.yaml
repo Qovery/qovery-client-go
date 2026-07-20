@@ -45712,47 +45712,50 @@ components:
             type: string
           description:
             type: string
-          ip_allowlist:
+          webhook_ip_allowlist:
             description: CIDR ranges the incoming webhook request's source IP is checked
               against
             items:
               type: string
             type: array
-          model_settings:
-            type: string
           docker_fragment:
             type: string
           enabled:
             type: boolean
-          mcp_connectors:
-            items:
-              $ref: '#/components/schemas/AgenticWorkflowConnector'
-            type: array
+          mcp:
+            description: Raw JSON blob describing the MCP servers configured for this
+              workflow
+            type: string
           outputs:
             items:
               $ref: '#/components/schemas/AgenticWorkflowOutput'
             type: array
           model:
-            $ref: '#/components/schemas/AgenticWorkflowModel'
+            $ref: '#/components/schemas/AgenticWorkflowModelResponse'
           project_repositories:
             items:
               $ref: '#/components/schemas/AgenticWorkflowProjectRepository'
             type: array
+          agent_prompt:
+            type: string
+          governance:
+            $ref: '#/components/schemas/AgenticWorkflowGovernance'
           webhook:
             $ref: '#/components/schemas/AgenticWorkflowWebhook'
         required:
+        - agent_prompt
         - description
         - docker_fragment
         - enabled
+        - governance
         - id
-        - ip_allowlist
-        - mcp_connectors
+        - mcp
         - model
-        - model_settings
         - name
         - outputs
         - project_repositories
         - webhook
+        - webhook_ip_allowlist
         type: object
       example:
         outputs:
@@ -45775,43 +45778,31 @@ components:
         webhook:
           url: url
         project_repositories:
-        - root_path: root_path
-          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
           url: url
-        - root_path: root_path
-          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
           url: url
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        ip_allowlist:
-        - ip_allowlist
-        - ip_allowlist
         docker_fragment: docker_fragment
         enabled: true
+        webhook_ip_allowlist:
+        - webhook_ip_allowlist
+        - webhook_ip_allowlist
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
-        model_settings: model_settings
-        model: CLAUDE
+        agent_prompt: agent_prompt
+        model:
+          settings: settings
+          type: CLAUDE
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        mcp_connectors:
-        - headers:
-          - name: name
-            value: value
-          - name: name
-            value: value
-          instructions: ""
-          name: name
-          url: url
-        - headers:
-          - name: name
-            value: value
-          - name: name
-            value: value
-          instructions: ""
-          name: name
-          url: url
+        mcp: mcp
+        governance:
+          host_allowlist:
+          - host_allowlist
+          - host_allowlist
     AgenticWorkflowResponseList:
       example:
         results:
@@ -45835,43 +45826,31 @@ components:
           webhook:
             url: url
           project_repositories:
-          - root_path: root_path
-            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
             url: url
-          - root_path: root_path
-            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          ip_allowlist:
-          - ip_allowlist
-          - ip_allowlist
           docker_fragment: docker_fragment
           enabled: true
+          webhook_ip_allowlist:
+          - webhook_ip_allowlist
+          - webhook_ip_allowlist
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          model_settings: model_settings
-          model: CLAUDE
+          agent_prompt: agent_prompt
+          model:
+            settings: settings
+            type: CLAUDE
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          mcp_connectors:
-          - headers:
-            - name: name
-              value: value
-            - name: name
-              value: value
-            instructions: ""
-            name: name
-            url: url
-          - headers:
-            - name: name
-              value: value
-            - name: name
-              value: value
-            instructions: ""
-            name: name
-            url: url
+          mcp: mcp
+          governance:
+            host_allowlist:
+            - host_allowlist
+            - host_allowlist
         - outputs:
           - headers:
             - name: name
@@ -45892,43 +45871,31 @@ components:
           webhook:
             url: url
           project_repositories:
-          - root_path: root_path
-            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
             url: url
-          - root_path: root_path
-            git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          ip_allowlist:
-          - ip_allowlist
-          - ip_allowlist
           docker_fragment: docker_fragment
           enabled: true
+          webhook_ip_allowlist:
+          - webhook_ip_allowlist
+          - webhook_ip_allowlist
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          model_settings: model_settings
-          model: CLAUDE
+          agent_prompt: agent_prompt
+          model:
+            settings: settings
+            type: CLAUDE
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          mcp_connectors:
-          - headers:
-            - name: name
-              value: value
-            - name: name
-              value: value
-            instructions: ""
-            name: name
-            url: url
-          - headers:
-            - name: name
-              value: value
-            - name: name
-              value: value
-            instructions: ""
-            name: name
-            url: url
+          mcp: mcp
+          governance:
+            host_allowlist:
+            - host_allowlist
+            - host_allowlist
       properties:
         results:
           items:
@@ -45944,41 +45911,41 @@ components:
           description:
             default: ""
             type: string
-          ip_allowlist:
+          webhook_ip_allowlist:
             default: []
             description: CIDR ranges the incoming webhook request's source IP is checked
               against
             items:
               type: string
             type: array
-          model_settings:
-            default: ""
-            type: string
           docker_fragment:
             default: ""
             type: string
           enabled:
             default: true
             type: boolean
-          mcp_connectors:
-            default: []
-            items:
-              $ref: '#/components/schemas/AgenticWorkflowConnector'
-            type: array
+          mcp:
+            default: ""
+            description: Raw JSON blob describing the MCP servers configured for this
+              workflow
+            type: string
           outputs:
             default: []
             items:
               $ref: '#/components/schemas/AgenticWorkflowOutput'
             type: array
           model:
-            allOf:
-            - $ref: '#/components/schemas/AgenticWorkflowModel'
-            default: CLAUDE
+            $ref: '#/components/schemas/AgenticWorkflowModelRequest'
           project_repositories:
             default: []
             items:
               $ref: '#/components/schemas/AgenticWorkflowProjectRepository'
             type: array
+          agent_prompt:
+            default: ""
+            type: string
+          governance:
+            $ref: '#/components/schemas/AgenticWorkflowGovernance'
         required:
         - name
       example:
@@ -45999,46 +45966,83 @@ components:
           instructions: ""
           name: name
           url: url
+        webhook_ip_allowlist:
+        - webhook_ip_allowlist
+        - webhook_ip_allowlist
         name: name
-        model_settings: ""
         project_repositories:
-        - root_path: root_path
-          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
           url: url
-        - root_path: root_path
-          git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
           url: url
+        agent_prompt: ""
         description: ""
-        model: ""
-        ip_allowlist:
-        - ip_allowlist
-        - ip_allowlist
+        model:
+          settings: ""
+          api_key: ""
+          type: CLAUDE
+        mcp: ""
         docker_fragment: ""
         enabled: true
-        mcp_connectors:
-        - headers:
-          - name: name
-            value: value
-          - name: name
-            value: value
-          instructions: ""
-          name: name
-          url: url
-        - headers:
-          - name: name
-            value: value
-          - name: name
-            value: value
-          instructions: ""
-          name: name
-          url: url
-    AgenticWorkflowModel:
+        governance:
+          host_allowlist:
+          - host_allowlist
+          - host_allowlist
+    AgenticWorkflowGovernance:
+      example:
+        host_allowlist:
+        - host_allowlist
+        - host_allowlist
+      properties:
+        host_allowlist:
+          default: []
+          description: Hostnames the agent is allowed to reach
+          items:
+            type: string
+          type: array
+      required:
+      - host_allowlist
+      type: object
+    AgenticWorkflowModelType:
       enum:
       - CLAUDE
       - BEDROCK
       type: string
+    AgenticWorkflowModelRequest:
+      example:
+        settings: ""
+        api_key: ""
+        type: CLAUDE
+      properties:
+        type:
+          $ref: '#/components/schemas/AgenticWorkflowModelType'
+        api_key:
+          default: ""
+          description: Write-only. Provider API key; accepted on create/edit but never
+            returned in responses.
+          type: string
+          writeOnly: true
+        settings:
+          default: ""
+          type: string
+      required:
+      - type
+      type: object
+    AgenticWorkflowModelResponse:
+      example:
+        settings: settings
+        type: CLAUDE
+      properties:
+        type:
+          $ref: '#/components/schemas/AgenticWorkflowModelType'
+        settings:
+          type: string
+      required:
+      - settings
+      - type
+      type: object
     AgenticWorkflowHeader:
       example:
         name: name
@@ -46051,33 +46055,6 @@ components:
       required:
       - name
       - value
-      type: object
-    AgenticWorkflowConnector:
-      example:
-        headers:
-        - name: name
-          value: value
-        - name: name
-          value: value
-        instructions: ""
-        name: name
-        url: url
-      properties:
-        name:
-          type: string
-        url:
-          type: string
-        headers:
-          default: []
-          items:
-            $ref: '#/components/schemas/AgenticWorkflowHeader'
-          type: array
-        instructions:
-          default: ""
-          type: string
-      required:
-      - name
-      - url
       type: object
     AgenticWorkflowOutput:
       example:
@@ -46108,7 +46085,6 @@ components:
       type: object
     AgenticWorkflowProjectRepository:
       example:
-        root_path: root_path
         git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         branch: branch
         url: url
@@ -46117,15 +46093,12 @@ components:
           type: string
         branch:
           type: string
-        root_path:
-          type: string
         git_token_id:
           format: uuid
           type: string
       required:
       - branch
       - git_token_id
-      - root_path
       - url
       type: object
     AgenticWorkflowWebhook:

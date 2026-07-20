@@ -29,14 +29,16 @@ type AgenticWorkflowResponse struct {
 	Name        string `json:"name"`
 	Description string `json:"description"`
 	// CIDR ranges the incoming webhook request's source IP is checked against
-	IpAllowlist          []string                           `json:"ip_allowlist"`
-	ModelSettings        string                             `json:"model_settings"`
-	DockerFragment       string                             `json:"docker_fragment"`
-	Enabled              bool                               `json:"enabled"`
-	McpConnectors        []AgenticWorkflowConnector         `json:"mcp_connectors"`
+	WebhookIpAllowlist []string `json:"webhook_ip_allowlist"`
+	DockerFragment     string   `json:"docker_fragment"`
+	Enabled            bool     `json:"enabled"`
+	// Raw JSON blob describing the MCP servers configured for this workflow
+	Mcp                  string                             `json:"mcp"`
 	Outputs              []AgenticWorkflowOutput            `json:"outputs"`
-	Model                AgenticWorkflowModel               `json:"model"`
+	Model                AgenticWorkflowModelResponse       `json:"model"`
 	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories"`
+	AgentPrompt          string                             `json:"agent_prompt"`
+	Governance           AgenticWorkflowGovernance          `json:"governance"`
 	Webhook              AgenticWorkflowWebhook             `json:"webhook"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,20 +49,21 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, ipAllowlist []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.Name = name
 	this.Description = description
-	this.IpAllowlist = ipAllowlist
-	this.ModelSettings = modelSettings
+	this.WebhookIpAllowlist = webhookIpAllowlist
 	this.DockerFragment = dockerFragment
 	this.Enabled = enabled
-	this.McpConnectors = mcpConnectors
+	this.Mcp = mcp
 	this.Outputs = outputs
 	this.Model = model
 	this.ProjectRepositories = projectRepositories
+	this.AgentPrompt = agentPrompt
+	this.Governance = governance
 	this.Webhook = webhook
 	return &this
 }
@@ -201,52 +204,28 @@ func (o *AgenticWorkflowResponse) SetDescription(v string) {
 	o.Description = v
 }
 
-// GetIpAllowlist returns the IpAllowlist field value
-func (o *AgenticWorkflowResponse) GetIpAllowlist() []string {
+// GetWebhookIpAllowlist returns the WebhookIpAllowlist field value
+func (o *AgenticWorkflowResponse) GetWebhookIpAllowlist() []string {
 	if o == nil {
 		var ret []string
 		return ret
 	}
 
-	return o.IpAllowlist
+	return o.WebhookIpAllowlist
 }
 
-// GetIpAllowlistOk returns a tuple with the IpAllowlist field value
+// GetWebhookIpAllowlistOk returns a tuple with the WebhookIpAllowlist field value
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowResponse) GetIpAllowlistOk() ([]string, bool) {
+func (o *AgenticWorkflowResponse) GetWebhookIpAllowlistOk() ([]string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.IpAllowlist, true
+	return o.WebhookIpAllowlist, true
 }
 
-// SetIpAllowlist sets field value
-func (o *AgenticWorkflowResponse) SetIpAllowlist(v []string) {
-	o.IpAllowlist = v
-}
-
-// GetModelSettings returns the ModelSettings field value
-func (o *AgenticWorkflowResponse) GetModelSettings() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.ModelSettings
-}
-
-// GetModelSettingsOk returns a tuple with the ModelSettings field value
-// and a boolean to check if the value has been set.
-func (o *AgenticWorkflowResponse) GetModelSettingsOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.ModelSettings, true
-}
-
-// SetModelSettings sets field value
-func (o *AgenticWorkflowResponse) SetModelSettings(v string) {
-	o.ModelSettings = v
+// SetWebhookIpAllowlist sets field value
+func (o *AgenticWorkflowResponse) SetWebhookIpAllowlist(v []string) {
+	o.WebhookIpAllowlist = v
 }
 
 // GetDockerFragment returns the DockerFragment field value
@@ -297,28 +276,28 @@ func (o *AgenticWorkflowResponse) SetEnabled(v bool) {
 	o.Enabled = v
 }
 
-// GetMcpConnectors returns the McpConnectors field value
-func (o *AgenticWorkflowResponse) GetMcpConnectors() []AgenticWorkflowConnector {
+// GetMcp returns the Mcp field value
+func (o *AgenticWorkflowResponse) GetMcp() string {
 	if o == nil {
-		var ret []AgenticWorkflowConnector
+		var ret string
 		return ret
 	}
 
-	return o.McpConnectors
+	return o.Mcp
 }
 
-// GetMcpConnectorsOk returns a tuple with the McpConnectors field value
+// GetMcpOk returns a tuple with the Mcp field value
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowResponse) GetMcpConnectorsOk() ([]AgenticWorkflowConnector, bool) {
+func (o *AgenticWorkflowResponse) GetMcpOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return o.McpConnectors, true
+	return &o.Mcp, true
 }
 
-// SetMcpConnectors sets field value
-func (o *AgenticWorkflowResponse) SetMcpConnectors(v []AgenticWorkflowConnector) {
-	o.McpConnectors = v
+// SetMcp sets field value
+func (o *AgenticWorkflowResponse) SetMcp(v string) {
+	o.Mcp = v
 }
 
 // GetOutputs returns the Outputs field value
@@ -346,9 +325,9 @@ func (o *AgenticWorkflowResponse) SetOutputs(v []AgenticWorkflowOutput) {
 }
 
 // GetModel returns the Model field value
-func (o *AgenticWorkflowResponse) GetModel() AgenticWorkflowModel {
+func (o *AgenticWorkflowResponse) GetModel() AgenticWorkflowModelResponse {
 	if o == nil {
-		var ret AgenticWorkflowModel
+		var ret AgenticWorkflowModelResponse
 		return ret
 	}
 
@@ -357,7 +336,7 @@ func (o *AgenticWorkflowResponse) GetModel() AgenticWorkflowModel {
 
 // GetModelOk returns a tuple with the Model field value
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowResponse) GetModelOk() (*AgenticWorkflowModel, bool) {
+func (o *AgenticWorkflowResponse) GetModelOk() (*AgenticWorkflowModelResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -365,7 +344,7 @@ func (o *AgenticWorkflowResponse) GetModelOk() (*AgenticWorkflowModel, bool) {
 }
 
 // SetModel sets field value
-func (o *AgenticWorkflowResponse) SetModel(v AgenticWorkflowModel) {
+func (o *AgenticWorkflowResponse) SetModel(v AgenticWorkflowModelResponse) {
 	o.Model = v
 }
 
@@ -391,6 +370,54 @@ func (o *AgenticWorkflowResponse) GetProjectRepositoriesOk() ([]AgenticWorkflowP
 // SetProjectRepositories sets field value
 func (o *AgenticWorkflowResponse) SetProjectRepositories(v []AgenticWorkflowProjectRepository) {
 	o.ProjectRepositories = v
+}
+
+// GetAgentPrompt returns the AgentPrompt field value
+func (o *AgenticWorkflowResponse) GetAgentPrompt() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.AgentPrompt
+}
+
+// GetAgentPromptOk returns a tuple with the AgentPrompt field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetAgentPromptOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.AgentPrompt, true
+}
+
+// SetAgentPrompt sets field value
+func (o *AgenticWorkflowResponse) SetAgentPrompt(v string) {
+	o.AgentPrompt = v
+}
+
+// GetGovernance returns the Governance field value
+func (o *AgenticWorkflowResponse) GetGovernance() AgenticWorkflowGovernance {
+	if o == nil {
+		var ret AgenticWorkflowGovernance
+		return ret
+	}
+
+	return o.Governance
+}
+
+// GetGovernanceOk returns a tuple with the Governance field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetGovernanceOk() (*AgenticWorkflowGovernance, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Governance, true
+}
+
+// SetGovernance sets field value
+func (o *AgenticWorkflowResponse) SetGovernance(v AgenticWorkflowGovernance) {
+	o.Governance = v
 }
 
 // GetWebhook returns the Webhook field value
@@ -434,14 +461,15 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["name"] = o.Name
 	toSerialize["description"] = o.Description
-	toSerialize["ip_allowlist"] = o.IpAllowlist
-	toSerialize["model_settings"] = o.ModelSettings
+	toSerialize["webhook_ip_allowlist"] = o.WebhookIpAllowlist
 	toSerialize["docker_fragment"] = o.DockerFragment
 	toSerialize["enabled"] = o.Enabled
-	toSerialize["mcp_connectors"] = o.McpConnectors
+	toSerialize["mcp"] = o.Mcp
 	toSerialize["outputs"] = o.Outputs
 	toSerialize["model"] = o.Model
 	toSerialize["project_repositories"] = o.ProjectRepositories
+	toSerialize["agent_prompt"] = o.AgentPrompt
+	toSerialize["governance"] = o.Governance
 	toSerialize["webhook"] = o.Webhook
 
 	for key, value := range o.AdditionalProperties {
@@ -460,14 +488,15 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"created_at",
 		"name",
 		"description",
-		"ip_allowlist",
-		"model_settings",
+		"webhook_ip_allowlist",
 		"docker_fragment",
 		"enabled",
-		"mcp_connectors",
+		"mcp",
 		"outputs",
 		"model",
 		"project_repositories",
+		"agent_prompt",
+		"governance",
 		"webhook",
 	}
 
@@ -503,14 +532,15 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "ip_allowlist")
-		delete(additionalProperties, "model_settings")
+		delete(additionalProperties, "webhook_ip_allowlist")
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "mcp_connectors")
+		delete(additionalProperties, "mcp")
 		delete(additionalProperties, "outputs")
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "project_repositories")
+		delete(additionalProperties, "agent_prompt")
+		delete(additionalProperties, "governance")
 		delete(additionalProperties, "webhook")
 		o.AdditionalProperties = additionalProperties
 	}

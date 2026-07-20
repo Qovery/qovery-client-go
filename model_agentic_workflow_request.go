@@ -25,14 +25,16 @@ type AgenticWorkflowRequest struct {
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
 	// CIDR ranges the incoming webhook request's source IP is checked against
-	IpAllowlist          []string                           `json:"ip_allowlist,omitempty"`
-	ModelSettings        *string                            `json:"model_settings,omitempty"`
-	DockerFragment       *string                            `json:"docker_fragment,omitempty"`
-	Enabled              *bool                              `json:"enabled,omitempty"`
-	McpConnectors        []AgenticWorkflowConnector         `json:"mcp_connectors,omitempty"`
+	WebhookIpAllowlist []string `json:"webhook_ip_allowlist,omitempty"`
+	DockerFragment     *string  `json:"docker_fragment,omitempty"`
+	Enabled            *bool    `json:"enabled,omitempty"`
+	// Raw JSON blob describing the MCP servers configured for this workflow
+	Mcp                  *string                            `json:"mcp,omitempty"`
 	Outputs              []AgenticWorkflowOutput            `json:"outputs,omitempty"`
-	Model                *AgenticWorkflowModel              `json:"model,omitempty"`
+	Model                *AgenticWorkflowModelRequest       `json:"model,omitempty"`
 	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories,omitempty"`
+	AgentPrompt          *string                            `json:"agent_prompt,omitempty"`
+	Governance           *AgenticWorkflowGovernance         `json:"governance,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,14 +49,14 @@ func NewAgenticWorkflowRequest(name string) *AgenticWorkflowRequest {
 	this.Name = name
 	var description string = ""
 	this.Description = &description
-	var modelSettings string = ""
-	this.ModelSettings = &modelSettings
 	var dockerFragment string = ""
 	this.DockerFragment = &dockerFragment
 	var enabled bool = true
 	this.Enabled = &enabled
-	var model AgenticWorkflowModel = AGENTICWORKFLOWMODEL_CLAUDE
-	this.Model = &model
+	var mcp string = ""
+	this.Mcp = &mcp
+	var agentPrompt string = ""
+	this.AgentPrompt = &agentPrompt
 	return &this
 }
 
@@ -65,14 +67,14 @@ func NewAgenticWorkflowRequestWithDefaults() *AgenticWorkflowRequest {
 	this := AgenticWorkflowRequest{}
 	var description string = ""
 	this.Description = &description
-	var modelSettings string = ""
-	this.ModelSettings = &modelSettings
 	var dockerFragment string = ""
 	this.DockerFragment = &dockerFragment
 	var enabled bool = true
 	this.Enabled = &enabled
-	var model AgenticWorkflowModel = AGENTICWORKFLOWMODEL_CLAUDE
-	this.Model = &model
+	var mcp string = ""
+	this.Mcp = &mcp
+	var agentPrompt string = ""
+	this.AgentPrompt = &agentPrompt
 	return &this
 }
 
@@ -132,68 +134,36 @@ func (o *AgenticWorkflowRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetIpAllowlist returns the IpAllowlist field value if set, zero value otherwise.
-func (o *AgenticWorkflowRequest) GetIpAllowlist() []string {
-	if o == nil || IsNil(o.IpAllowlist) {
+// GetWebhookIpAllowlist returns the WebhookIpAllowlist field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetWebhookIpAllowlist() []string {
+	if o == nil || IsNil(o.WebhookIpAllowlist) {
 		var ret []string
 		return ret
 	}
-	return o.IpAllowlist
+	return o.WebhookIpAllowlist
 }
 
-// GetIpAllowlistOk returns a tuple with the IpAllowlist field value if set, nil otherwise
+// GetWebhookIpAllowlistOk returns a tuple with the WebhookIpAllowlist field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowRequest) GetIpAllowlistOk() ([]string, bool) {
-	if o == nil || IsNil(o.IpAllowlist) {
+func (o *AgenticWorkflowRequest) GetWebhookIpAllowlistOk() ([]string, bool) {
+	if o == nil || IsNil(o.WebhookIpAllowlist) {
 		return nil, false
 	}
-	return o.IpAllowlist, true
+	return o.WebhookIpAllowlist, true
 }
 
-// HasIpAllowlist returns a boolean if a field has been set.
-func (o *AgenticWorkflowRequest) HasIpAllowlist() bool {
-	if o != nil && !IsNil(o.IpAllowlist) {
+// HasWebhookIpAllowlist returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasWebhookIpAllowlist() bool {
+	if o != nil && !IsNil(o.WebhookIpAllowlist) {
 		return true
 	}
 
 	return false
 }
 
-// SetIpAllowlist gets a reference to the given []string and assigns it to the IpAllowlist field.
-func (o *AgenticWorkflowRequest) SetIpAllowlist(v []string) {
-	o.IpAllowlist = v
-}
-
-// GetModelSettings returns the ModelSettings field value if set, zero value otherwise.
-func (o *AgenticWorkflowRequest) GetModelSettings() string {
-	if o == nil || IsNil(o.ModelSettings) {
-		var ret string
-		return ret
-	}
-	return *o.ModelSettings
-}
-
-// GetModelSettingsOk returns a tuple with the ModelSettings field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *AgenticWorkflowRequest) GetModelSettingsOk() (*string, bool) {
-	if o == nil || IsNil(o.ModelSettings) {
-		return nil, false
-	}
-	return o.ModelSettings, true
-}
-
-// HasModelSettings returns a boolean if a field has been set.
-func (o *AgenticWorkflowRequest) HasModelSettings() bool {
-	if o != nil && !IsNil(o.ModelSettings) {
-		return true
-	}
-
-	return false
-}
-
-// SetModelSettings gets a reference to the given string and assigns it to the ModelSettings field.
-func (o *AgenticWorkflowRequest) SetModelSettings(v string) {
-	o.ModelSettings = &v
+// SetWebhookIpAllowlist gets a reference to the given []string and assigns it to the WebhookIpAllowlist field.
+func (o *AgenticWorkflowRequest) SetWebhookIpAllowlist(v []string) {
+	o.WebhookIpAllowlist = v
 }
 
 // GetDockerFragment returns the DockerFragment field value if set, zero value otherwise.
@@ -260,36 +230,36 @@ func (o *AgenticWorkflowRequest) SetEnabled(v bool) {
 	o.Enabled = &v
 }
 
-// GetMcpConnectors returns the McpConnectors field value if set, zero value otherwise.
-func (o *AgenticWorkflowRequest) GetMcpConnectors() []AgenticWorkflowConnector {
-	if o == nil || IsNil(o.McpConnectors) {
-		var ret []AgenticWorkflowConnector
+// GetMcp returns the Mcp field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetMcp() string {
+	if o == nil || IsNil(o.Mcp) {
+		var ret string
 		return ret
 	}
-	return o.McpConnectors
+	return *o.Mcp
 }
 
-// GetMcpConnectorsOk returns a tuple with the McpConnectors field value if set, nil otherwise
+// GetMcpOk returns a tuple with the Mcp field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowRequest) GetMcpConnectorsOk() ([]AgenticWorkflowConnector, bool) {
-	if o == nil || IsNil(o.McpConnectors) {
+func (o *AgenticWorkflowRequest) GetMcpOk() (*string, bool) {
+	if o == nil || IsNil(o.Mcp) {
 		return nil, false
 	}
-	return o.McpConnectors, true
+	return o.Mcp, true
 }
 
-// HasMcpConnectors returns a boolean if a field has been set.
-func (o *AgenticWorkflowRequest) HasMcpConnectors() bool {
-	if o != nil && !IsNil(o.McpConnectors) {
+// HasMcp returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasMcp() bool {
+	if o != nil && !IsNil(o.Mcp) {
 		return true
 	}
 
 	return false
 }
 
-// SetMcpConnectors gets a reference to the given []AgenticWorkflowConnector and assigns it to the McpConnectors field.
-func (o *AgenticWorkflowRequest) SetMcpConnectors(v []AgenticWorkflowConnector) {
-	o.McpConnectors = v
+// SetMcp gets a reference to the given string and assigns it to the Mcp field.
+func (o *AgenticWorkflowRequest) SetMcp(v string) {
+	o.Mcp = &v
 }
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise.
@@ -325,9 +295,9 @@ func (o *AgenticWorkflowRequest) SetOutputs(v []AgenticWorkflowOutput) {
 }
 
 // GetModel returns the Model field value if set, zero value otherwise.
-func (o *AgenticWorkflowRequest) GetModel() AgenticWorkflowModel {
+func (o *AgenticWorkflowRequest) GetModel() AgenticWorkflowModelRequest {
 	if o == nil || IsNil(o.Model) {
-		var ret AgenticWorkflowModel
+		var ret AgenticWorkflowModelRequest
 		return ret
 	}
 	return *o.Model
@@ -335,7 +305,7 @@ func (o *AgenticWorkflowRequest) GetModel() AgenticWorkflowModel {
 
 // GetModelOk returns a tuple with the Model field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *AgenticWorkflowRequest) GetModelOk() (*AgenticWorkflowModel, bool) {
+func (o *AgenticWorkflowRequest) GetModelOk() (*AgenticWorkflowModelRequest, bool) {
 	if o == nil || IsNil(o.Model) {
 		return nil, false
 	}
@@ -351,8 +321,8 @@ func (o *AgenticWorkflowRequest) HasModel() bool {
 	return false
 }
 
-// SetModel gets a reference to the given AgenticWorkflowModel and assigns it to the Model field.
-func (o *AgenticWorkflowRequest) SetModel(v AgenticWorkflowModel) {
+// SetModel gets a reference to the given AgenticWorkflowModelRequest and assigns it to the Model field.
+func (o *AgenticWorkflowRequest) SetModel(v AgenticWorkflowModelRequest) {
 	o.Model = &v
 }
 
@@ -388,6 +358,70 @@ func (o *AgenticWorkflowRequest) SetProjectRepositories(v []AgenticWorkflowProje
 	o.ProjectRepositories = v
 }
 
+// GetAgentPrompt returns the AgentPrompt field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetAgentPrompt() string {
+	if o == nil || IsNil(o.AgentPrompt) {
+		var ret string
+		return ret
+	}
+	return *o.AgentPrompt
+}
+
+// GetAgentPromptOk returns a tuple with the AgentPrompt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetAgentPromptOk() (*string, bool) {
+	if o == nil || IsNil(o.AgentPrompt) {
+		return nil, false
+	}
+	return o.AgentPrompt, true
+}
+
+// HasAgentPrompt returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasAgentPrompt() bool {
+	if o != nil && !IsNil(o.AgentPrompt) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgentPrompt gets a reference to the given string and assigns it to the AgentPrompt field.
+func (o *AgenticWorkflowRequest) SetAgentPrompt(v string) {
+	o.AgentPrompt = &v
+}
+
+// GetGovernance returns the Governance field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetGovernance() AgenticWorkflowGovernance {
+	if o == nil || IsNil(o.Governance) {
+		var ret AgenticWorkflowGovernance
+		return ret
+	}
+	return *o.Governance
+}
+
+// GetGovernanceOk returns a tuple with the Governance field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetGovernanceOk() (*AgenticWorkflowGovernance, bool) {
+	if o == nil || IsNil(o.Governance) {
+		return nil, false
+	}
+	return o.Governance, true
+}
+
+// HasGovernance returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasGovernance() bool {
+	if o != nil && !IsNil(o.Governance) {
+		return true
+	}
+
+	return false
+}
+
+// SetGovernance gets a reference to the given AgenticWorkflowGovernance and assigns it to the Governance field.
+func (o *AgenticWorkflowRequest) SetGovernance(v AgenticWorkflowGovernance) {
+	o.Governance = &v
+}
+
 func (o AgenticWorkflowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -402,11 +436,8 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.IpAllowlist) {
-		toSerialize["ip_allowlist"] = o.IpAllowlist
-	}
-	if !IsNil(o.ModelSettings) {
-		toSerialize["model_settings"] = o.ModelSettings
+	if !IsNil(o.WebhookIpAllowlist) {
+		toSerialize["webhook_ip_allowlist"] = o.WebhookIpAllowlist
 	}
 	if !IsNil(o.DockerFragment) {
 		toSerialize["docker_fragment"] = o.DockerFragment
@@ -414,8 +445,8 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
 	}
-	if !IsNil(o.McpConnectors) {
-		toSerialize["mcp_connectors"] = o.McpConnectors
+	if !IsNil(o.Mcp) {
+		toSerialize["mcp"] = o.Mcp
 	}
 	if !IsNil(o.Outputs) {
 		toSerialize["outputs"] = o.Outputs
@@ -425,6 +456,12 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.ProjectRepositories) {
 		toSerialize["project_repositories"] = o.ProjectRepositories
+	}
+	if !IsNil(o.AgentPrompt) {
+		toSerialize["agent_prompt"] = o.AgentPrompt
+	}
+	if !IsNil(o.Governance) {
+		toSerialize["governance"] = o.Governance
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -471,14 +508,15 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "ip_allowlist")
-		delete(additionalProperties, "model_settings")
+		delete(additionalProperties, "webhook_ip_allowlist")
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")
-		delete(additionalProperties, "mcp_connectors")
+		delete(additionalProperties, "mcp")
 		delete(additionalProperties, "outputs")
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "project_repositories")
+		delete(additionalProperties, "agent_prompt")
+		delete(additionalProperties, "governance")
 		o.AdditionalProperties = additionalProperties
 	}
 

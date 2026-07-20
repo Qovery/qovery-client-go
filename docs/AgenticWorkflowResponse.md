@@ -9,21 +9,22 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | **string** | name is case insensitive | 
 **Description** | **string** |  | 
-**IpAllowlist** | **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | 
-**ModelSettings** | **string** |  | 
+**WebhookIpAllowlist** | **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | 
 **DockerFragment** | **string** |  | 
 **Enabled** | **bool** |  | 
-**McpConnectors** | [**[]AgenticWorkflowConnector**](AgenticWorkflowConnector.md) |  | 
+**Mcp** | **string** | Raw JSON blob describing the MCP servers configured for this workflow | 
 **Outputs** | [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | 
-**Model** | [**AgenticWorkflowModel**](AgenticWorkflowModel.md) |  | 
+**Model** | [**AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
 **ProjectRepositories** | [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | 
+**AgentPrompt** | **string** |  | 
+**Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
 
 ## Methods
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, ipAllowlist []string, modelSettings string, dockerFragment string, enabled bool, mcpConnectors []AgenticWorkflowConnector, outputs []AgenticWorkflowOutput, model AgenticWorkflowModel, projectRepositories []AgenticWorkflowProjectRepository, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -143,44 +144,24 @@ and a boolean to check if the value has been set.
 SetDescription sets Description field to given value.
 
 
-### GetIpAllowlist
+### GetWebhookIpAllowlist
 
-`func (o *AgenticWorkflowResponse) GetIpAllowlist() []string`
+`func (o *AgenticWorkflowResponse) GetWebhookIpAllowlist() []string`
 
-GetIpAllowlist returns the IpAllowlist field if non-nil, zero value otherwise.
+GetWebhookIpAllowlist returns the WebhookIpAllowlist field if non-nil, zero value otherwise.
 
-### GetIpAllowlistOk
+### GetWebhookIpAllowlistOk
 
-`func (o *AgenticWorkflowResponse) GetIpAllowlistOk() (*[]string, bool)`
+`func (o *AgenticWorkflowResponse) GetWebhookIpAllowlistOk() (*[]string, bool)`
 
-GetIpAllowlistOk returns a tuple with the IpAllowlist field if it's non-nil, zero value otherwise
+GetWebhookIpAllowlistOk returns a tuple with the WebhookIpAllowlist field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetIpAllowlist
+### SetWebhookIpAllowlist
 
-`func (o *AgenticWorkflowResponse) SetIpAllowlist(v []string)`
+`func (o *AgenticWorkflowResponse) SetWebhookIpAllowlist(v []string)`
 
-SetIpAllowlist sets IpAllowlist field to given value.
-
-
-### GetModelSettings
-
-`func (o *AgenticWorkflowResponse) GetModelSettings() string`
-
-GetModelSettings returns the ModelSettings field if non-nil, zero value otherwise.
-
-### GetModelSettingsOk
-
-`func (o *AgenticWorkflowResponse) GetModelSettingsOk() (*string, bool)`
-
-GetModelSettingsOk returns a tuple with the ModelSettings field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetModelSettings
-
-`func (o *AgenticWorkflowResponse) SetModelSettings(v string)`
-
-SetModelSettings sets ModelSettings field to given value.
+SetWebhookIpAllowlist sets WebhookIpAllowlist field to given value.
 
 
 ### GetDockerFragment
@@ -223,24 +204,24 @@ and a boolean to check if the value has been set.
 SetEnabled sets Enabled field to given value.
 
 
-### GetMcpConnectors
+### GetMcp
 
-`func (o *AgenticWorkflowResponse) GetMcpConnectors() []AgenticWorkflowConnector`
+`func (o *AgenticWorkflowResponse) GetMcp() string`
 
-GetMcpConnectors returns the McpConnectors field if non-nil, zero value otherwise.
+GetMcp returns the Mcp field if non-nil, zero value otherwise.
 
-### GetMcpConnectorsOk
+### GetMcpOk
 
-`func (o *AgenticWorkflowResponse) GetMcpConnectorsOk() (*[]AgenticWorkflowConnector, bool)`
+`func (o *AgenticWorkflowResponse) GetMcpOk() (*string, bool)`
 
-GetMcpConnectorsOk returns a tuple with the McpConnectors field if it's non-nil, zero value otherwise
+GetMcpOk returns a tuple with the Mcp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetMcpConnectors
+### SetMcp
 
-`func (o *AgenticWorkflowResponse) SetMcpConnectors(v []AgenticWorkflowConnector)`
+`func (o *AgenticWorkflowResponse) SetMcp(v string)`
 
-SetMcpConnectors sets McpConnectors field to given value.
+SetMcp sets Mcp field to given value.
 
 
 ### GetOutputs
@@ -265,20 +246,20 @@ SetOutputs sets Outputs field to given value.
 
 ### GetModel
 
-`func (o *AgenticWorkflowResponse) GetModel() AgenticWorkflowModel`
+`func (o *AgenticWorkflowResponse) GetModel() AgenticWorkflowModelResponse`
 
 GetModel returns the Model field if non-nil, zero value otherwise.
 
 ### GetModelOk
 
-`func (o *AgenticWorkflowResponse) GetModelOk() (*AgenticWorkflowModel, bool)`
+`func (o *AgenticWorkflowResponse) GetModelOk() (*AgenticWorkflowModelResponse, bool)`
 
 GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetModel
 
-`func (o *AgenticWorkflowResponse) SetModel(v AgenticWorkflowModel)`
+`func (o *AgenticWorkflowResponse) SetModel(v AgenticWorkflowModelResponse)`
 
 SetModel sets Model field to given value.
 
@@ -301,6 +282,46 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetProjectRepositories(v []AgenticWorkflowProjectRepository)`
 
 SetProjectRepositories sets ProjectRepositories field to given value.
+
+
+### GetAgentPrompt
+
+`func (o *AgenticWorkflowResponse) GetAgentPrompt() string`
+
+GetAgentPrompt returns the AgentPrompt field if non-nil, zero value otherwise.
+
+### GetAgentPromptOk
+
+`func (o *AgenticWorkflowResponse) GetAgentPromptOk() (*string, bool)`
+
+GetAgentPromptOk returns a tuple with the AgentPrompt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentPrompt
+
+`func (o *AgenticWorkflowResponse) SetAgentPrompt(v string)`
+
+SetAgentPrompt sets AgentPrompt field to given value.
+
+
+### GetGovernance
+
+`func (o *AgenticWorkflowResponse) GetGovernance() AgenticWorkflowGovernance`
+
+GetGovernance returns the Governance field if non-nil, zero value otherwise.
+
+### GetGovernanceOk
+
+`func (o *AgenticWorkflowResponse) GetGovernanceOk() (*AgenticWorkflowGovernance, bool)`
+
+GetGovernanceOk returns a tuple with the Governance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGovernance
+
+`func (o *AgenticWorkflowResponse) SetGovernance(v AgenticWorkflowGovernance)`
+
+SetGovernance sets Governance field to given value.
 
 
 ### GetWebhook
