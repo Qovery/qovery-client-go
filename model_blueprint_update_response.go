@@ -22,6 +22,7 @@ var _ MappedNullable = &BlueprintUpdateResponse{}
 // BlueprintUpdateResponse struct for BlueprintUpdateResponse
 type BlueprintUpdateResponse struct {
 	IsUpToDate bool   `json:"is_up_to_date"`
+	CurrentTag string `json:"current_tag"`
 	LatestTag  string `json:"latest_tag"`
 	// Variables added in the latest version that are required with no default
 	NewRequiredValues []BlueprintUpdateNewRequiredValue `json:"new_required_values"`
@@ -45,9 +46,10 @@ type _BlueprintUpdateResponse BlueprintUpdateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion) *BlueprintUpdateResponse {
+func NewBlueprintUpdateResponse(isUpToDate bool, currentTag string, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion) *BlueprintUpdateResponse {
 	this := BlueprintUpdateResponse{}
 	this.IsUpToDate = isUpToDate
+	this.CurrentTag = currentTag
 	this.LatestTag = latestTag
 	this.NewRequiredValues = newRequiredValues
 	this.NewOptionalValues = newOptionalValues
@@ -89,6 +91,30 @@ func (o *BlueprintUpdateResponse) GetIsUpToDateOk() (*bool, bool) {
 // SetIsUpToDate sets field value
 func (o *BlueprintUpdateResponse) SetIsUpToDate(v bool) {
 	o.IsUpToDate = v
+}
+
+// GetCurrentTag returns the CurrentTag field value
+func (o *BlueprintUpdateResponse) GetCurrentTag() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.CurrentTag
+}
+
+// GetCurrentTagOk returns a tuple with the CurrentTag field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateResponse) GetCurrentTagOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.CurrentTag, true
+}
+
+// SetCurrentTag sets field value
+func (o *BlueprintUpdateResponse) SetCurrentTag(v string) {
+	o.CurrentTag = v
 }
 
 // GetLatestTag returns the LatestTag field value
@@ -294,6 +320,7 @@ func (o BlueprintUpdateResponse) MarshalJSON() ([]byte, error) {
 func (o BlueprintUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["is_up_to_date"] = o.IsUpToDate
+	toSerialize["current_tag"] = o.CurrentTag
 	toSerialize["latest_tag"] = o.LatestTag
 	toSerialize["new_required_values"] = o.NewRequiredValues
 	toSerialize["new_optional_values"] = o.NewOptionalValues
@@ -316,6 +343,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"is_up_to_date",
+		"current_tag",
 		"latest_tag",
 		"new_required_values",
 		"new_optional_values",
@@ -354,6 +382,7 @@ func (o *BlueprintUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "is_up_to_date")
+		delete(additionalProperties, "current_tag")
 		delete(additionalProperties, "latest_tag")
 		delete(additionalProperties, "new_required_values")
 		delete(additionalProperties, "new_optional_values")

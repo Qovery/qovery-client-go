@@ -22358,6 +22358,7 @@ components:
             pattern: pattern
             type: string
             max_length: 6
+        current_tag: aws/postgres/17/1.0.0
         new_optional_values:
         - allowed_values:
           - allowed_values
@@ -22398,6 +22399,9 @@ components:
       properties:
         is_up_to_date:
           type: boolean
+        current_tag:
+          example: aws/postgres/17/1.0.0
+          type: string
         latest_tag:
           example: aws/postgres/17/1.1.0
           type: string
@@ -22439,6 +22443,7 @@ components:
             $ref: '#/components/schemas/BlueprintUpdateNewMajorVersion'
           type: array
       required:
+      - current_tag
       - engine_diff
       - is_up_to_date
       - latest_tag

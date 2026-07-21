@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **IsUpToDate** | **bool** |  | 
+**CurrentTag** | **string** |  | 
 **LatestTag** | **string** |  | 
 **NewRequiredValues** | [**[]BlueprintUpdateNewRequiredValue**](BlueprintUpdateNewRequiredValue.md) | Variables added in the latest version that are required with no default | 
 **NewOptionalValues** | [**[]BlueprintUpdateNewOptionalValue**](BlueprintUpdateNewOptionalValue.md) | Variables added in the latest version that have a default value | 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewBlueprintUpdateResponse
 
-`func NewBlueprintUpdateResponse(isUpToDate bool, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion, ) *BlueprintUpdateResponse`
+`func NewBlueprintUpdateResponse(isUpToDate bool, currentTag string, latestTag string, newRequiredValues []BlueprintUpdateNewRequiredValue, newOptionalValues []BlueprintUpdateNewOptionalValue, nowRequiredValues []BlueprintUpdateNewRequiredValue, updatedValues []BlueprintUpdateUpdatedValue, removedValues []BlueprintUpdateRemovedValue, engineDiff BlueprintUpdateEngineDiff, newMajorVersions []BlueprintUpdateNewMajorVersion, ) *BlueprintUpdateResponse`
 
 NewBlueprintUpdateResponse instantiates a new BlueprintUpdateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -51,6 +52,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintUpdateResponse) SetIsUpToDate(v bool)`
 
 SetIsUpToDate sets IsUpToDate field to given value.
+
+
+### GetCurrentTag
+
+`func (o *BlueprintUpdateResponse) GetCurrentTag() string`
+
+GetCurrentTag returns the CurrentTag field if non-nil, zero value otherwise.
+
+### GetCurrentTagOk
+
+`func (o *BlueprintUpdateResponse) GetCurrentTagOk() (*string, bool)`
+
+GetCurrentTagOk returns a tuple with the CurrentTag field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCurrentTag
+
+`func (o *BlueprintUpdateResponse) SetCurrentTag(v string)`
+
+SetCurrentTag sets CurrentTag field to given value.
 
 
 ### GetLatestTag
