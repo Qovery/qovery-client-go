@@ -19614,6 +19614,43 @@ paths:
       summary: Preview a blueprint update
       tags:
       - Blueprint Main Calls
+  /blueprint/{blueprintId}/deploy:
+    post:
+      description: "Deploys the blueprint's currently saved settings to its service.\
+        \ Call this after saving changes with PATCH /blueprint/{blueprintId} (and,\
+        \ optionally, previewing them) to roll them out. No request body: it deploys\
+        \ whatever is currently saved on the blueprint."
+      operationId: deployBlueprint
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintDeploymentAckResponse'
+          description: Deployment accepted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "500":
+          description: Blueprint deployment failed to dispatch
+      summary: Deploy (apply) the current blueprint spec
+      tags:
+      - Blueprint Main Calls
   /blueprint/{blueprintId}:
     patch:
       description: |-
@@ -22655,6 +22692,24 @@ components:
       required:
       - preview_id
       - service_type
+      type: object
+    BlueprintDeploymentAckResponse:
+      example:
+        execution_id: exec-abc-123
+        deployment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        deployment_id:
+          description: "Identifier of the blueprint deployment, used to track its\
+            \ status"
+          format: uuid
+          type: string
+        execution_id:
+          description: Engine execution identifier for this deployment
+          example: exec-abc-123
+          type: string
+      required:
+      - deployment_id
+      - execution_id
       type: object
     BlueprintUpdateRequest:
       example:
