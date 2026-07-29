@@ -27,6 +27,13 @@ type ApiDeleteEnvironmentRequest struct {
 	ctx           context.Context
 	ApiService    *EnvironmentMainCallsAPIService
 	environmentId string
+	skipReconcile *bool
+}
+
+// When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources.
+func (r ApiDeleteEnvironmentRequest) SkipReconcile(skipReconcile bool) ApiDeleteEnvironmentRequest {
+	r.skipReconcile = &skipReconcile
+	return r
 }
 
 func (r ApiDeleteEnvironmentRequest) Execute() (*http.Response, error) {
@@ -70,6 +77,12 @@ func (a *EnvironmentMainCallsAPIService) DeleteEnvironmentExecute(r ApiDeleteEnv
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

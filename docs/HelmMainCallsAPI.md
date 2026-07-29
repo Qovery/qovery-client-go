@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## DeleteHelm
 
-> DeleteHelm(ctx, helmId).Execute()
+> DeleteHelm(ctx, helmId).SkipReconcile(skipReconcile).Execute()
 
 Delete helm
 
@@ -36,10 +36,11 @@ import (
 
 func main() {
 	helmId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Helm ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.HelmMainCallsAPI.DeleteHelm(context.Background(), helmId).Execute()
+	r, err := apiClient.HelmMainCallsAPI.DeleteHelm(context.Background(), helmId).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `HelmMainCallsAPI.DeleteHelm``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +64,7 @@ Other parameters are passed through a pointer to a apiDeleteHelmRequest struct v
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
 
 ### Return type
 

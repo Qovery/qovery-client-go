@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 ## DeleteEnvironment
 
-> DeleteEnvironment(ctx, environmentId).Execute()
+> DeleteEnvironment(ctx, environmentId).SkipReconcile(skipReconcile).Execute()
 
 Delete an environment
 
@@ -38,10 +38,11 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EnvironmentMainCallsAPI.DeleteEnvironment(context.Background(), environmentId).Execute()
+	r, err := apiClient.EnvironmentMainCallsAPI.DeleteEnvironment(context.Background(), environmentId).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentMainCallsAPI.DeleteEnvironment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -65,6 +66,7 @@ Other parameters are passed through a pointer to a apiDeleteEnvironmentRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
 
 ### Return type
 

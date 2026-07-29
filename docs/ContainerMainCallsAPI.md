@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## DeleteContainer
 
-> DeleteContainer(ctx, containerId).Execute()
+> DeleteContainer(ctx, containerId).SkipReconcile(skipReconcile).Execute()
 
 Delete container
 
@@ -34,10 +34,11 @@ import (
 
 func main() {
 	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ContainerMainCallsAPI.DeleteContainer(context.Background(), containerId).Execute()
+	r, err := apiClient.ContainerMainCallsAPI.DeleteContainer(context.Background(), containerId).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ContainerMainCallsAPI.DeleteContainer``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiDeleteContainerRequest str
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
 
 ### Return type
 

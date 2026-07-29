@@ -24,9 +24,16 @@ import (
 type ContainerMainCallsAPIService service
 
 type ApiDeleteContainerRequest struct {
-	ctx         context.Context
-	ApiService  *ContainerMainCallsAPIService
-	containerId string
+	ctx           context.Context
+	ApiService    *ContainerMainCallsAPIService
+	containerId   string
+	skipReconcile *bool
+}
+
+// When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources.
+func (r ApiDeleteContainerRequest) SkipReconcile(skipReconcile bool) ApiDeleteContainerRequest {
+	r.skipReconcile = &skipReconcile
+	return r
 }
 
 func (r ApiDeleteContainerRequest) Execute() (*http.Response, error) {
@@ -70,6 +77,12 @@ func (a *ContainerMainCallsAPIService) DeleteContainerExecute(r ApiDeleteContain
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

@@ -116,7 +116,7 @@ Name | Type | Description  | Notes
 
 ## DeleteCluster
 
-> DeleteCluster(ctx, organizationId, clusterId).DeleteMode(deleteMode).Execute()
+> DeleteCluster(ctx, organizationId, clusterId).DeleteMode(deleteMode).SkipReconcile(skipReconcile).Execute()
 
 Delete a cluster
 
@@ -136,10 +136,11 @@ func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
 	deleteMode := openapiclient.ClusterDeleteMode("DEFAULT") // ClusterDeleteMode |  (optional) (default to "DEFAULT")
+	skipReconcile := true // bool | When true, skip the pre-destroy Terraform/Helm apply and tear down best-effort, tolerating already-absent resources. Not allowed with deleteMode=DELETE_QOVERY_CONFIG. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ClustersAPI.DeleteCluster(context.Background(), organizationId, clusterId).DeleteMode(deleteMode).Execute()
+	r, err := apiClient.ClustersAPI.DeleteCluster(context.Background(), organizationId, clusterId).DeleteMode(deleteMode).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.DeleteCluster``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -166,6 +167,7 @@ Name | Type | Description  | Notes
 
 
  **deleteMode** | [**ClusterDeleteMode**](ClusterDeleteMode.md) |  | [default to &quot;DEFAULT&quot;]
+ **skipReconcile** | **bool** | When true, skip the pre-destroy Terraform/Helm apply and tear down best-effort, tolerating already-absent resources. Not allowed with deleteMode&#x3D;DELETE_QOVERY_CONFIG. | [default to false]
 
 ### Return type
 

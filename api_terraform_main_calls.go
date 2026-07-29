@@ -28,12 +28,19 @@ type ApiDeleteTerraformRequest struct {
 	ApiService           *TerraformMainCallsAPIService
 	terraformId          string
 	resourcesOnly        *bool
+	skipReconcile        *bool
 	forceTerraformAction *DeleteTerraformAction
 }
 
 // When true, only resources are deleted and Qovery configuration is kept.
 func (r ApiDeleteTerraformRequest) ResourcesOnly(resourcesOnly bool) ApiDeleteTerraformRequest {
 	r.resourcesOnly = &resourcesOnly
+	return r
+}
+
+// When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources.
+func (r ApiDeleteTerraformRequest) SkipReconcile(skipReconcile bool) ApiDeleteTerraformRequest {
+	r.skipReconcile = &skipReconcile
 	return r
 }
 
@@ -87,6 +94,12 @@ func (a *TerraformMainCallsAPIService) DeleteTerraformExecute(r ApiDeleteTerrafo
 	} else {
 		var defaultValue bool = false
 		r.resourcesOnly = &defaultValue
+	}
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
 	}
 	if r.forceTerraformAction != nil {
 		parameterAddToHeaderOrQuery(localVarQueryParams, "force_terraform_action", r.forceTerraformAction, "")

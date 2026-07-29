@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ## DeleteSelectedServices
 
-> DeleteSelectedServices(ctx, environmentId).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
+> DeleteSelectedServices(ctx, environmentId).SkipReconcile(skipReconcile).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
 
 Delete services
 
@@ -255,11 +255,12 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 	environmentServiceIdsAllRequest := *openapiclient.NewEnvironmentServiceIdsAllRequest() // EnvironmentServiceIdsAllRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.EnvironmentActionsAPI.DeleteSelectedServices(context.Background(), environmentId).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
+	r, err := apiClient.EnvironmentActionsAPI.DeleteSelectedServices(context.Background(), environmentId).SkipReconcile(skipReconcile).EnvironmentServiceIdsAllRequest(environmentServiceIdsAllRequest).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.DeleteSelectedServices``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -283,6 +284,7 @@ Other parameters are passed through a pointer to a apiDeleteSelectedServicesRequ
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
  **environmentServiceIdsAllRequest** | [**EnvironmentServiceIdsAllRequest**](EnvironmentServiceIdsAllRequest.md) |  | 
 
 ### Return type

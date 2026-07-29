@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## DeleteTerraform
 
-> DeleteTerraform(ctx, terraformId).ResourcesOnly(resourcesOnly).ForceTerraformAction(forceTerraformAction).Execute()
+> DeleteTerraform(ctx, terraformId).ResourcesOnly(resourcesOnly).SkipReconcile(skipReconcile).ForceTerraformAction(forceTerraformAction).Execute()
 
 Delete Terraform
 
@@ -33,11 +33,12 @@ import (
 func main() {
 	terraformId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Terraform ID
 	resourcesOnly := true // bool | When true, only resources are deleted and Qovery configuration is kept. (optional) (default to false)
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 	forceTerraformAction := openapiclient.DeleteTerraformAction("SKIP_DESTROY") // DeleteTerraformAction | Force a specific action to be executed by Terraform during deletion. (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.TerraformMainCallsAPI.DeleteTerraform(context.Background(), terraformId).ResourcesOnly(resourcesOnly).ForceTerraformAction(forceTerraformAction).Execute()
+	r, err := apiClient.TerraformMainCallsAPI.DeleteTerraform(context.Background(), terraformId).ResourcesOnly(resourcesOnly).SkipReconcile(skipReconcile).ForceTerraformAction(forceTerraformAction).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `TerraformMainCallsAPI.DeleteTerraform``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -62,6 +63,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **resourcesOnly** | **bool** | When true, only resources are deleted and Qovery configuration is kept. | [default to false]
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
  **forceTerraformAction** | [**DeleteTerraformAction**](DeleteTerraformAction.md) | Force a specific action to be executed by Terraform during deletion. | 
 
 ### Return type

@@ -153,10 +153,17 @@ type ApiDeleteClusterRequest struct {
 	organizationId string
 	clusterId      string
 	deleteMode     *ClusterDeleteMode
+	skipReconcile  *bool
 }
 
 func (r ApiDeleteClusterRequest) DeleteMode(deleteMode ClusterDeleteMode) ApiDeleteClusterRequest {
 	r.deleteMode = &deleteMode
+	return r
+}
+
+// When true, skip the pre-destroy Terraform/Helm apply and tear down best-effort, tolerating already-absent resources. Not allowed with deleteMode&#x3D;DELETE_QOVERY_CONFIG.
+func (r ApiDeleteClusterRequest) SkipReconcile(skipReconcile bool) ApiDeleteClusterRequest {
+	r.skipReconcile = &skipReconcile
 	return r
 }
 
@@ -207,6 +214,12 @@ func (a *ClustersAPIService) DeleteClusterExecute(r ApiDeleteClusterRequest) (*h
 	} else {
 		var defaultValue ClusterDeleteMode = "DEFAULT"
 		r.deleteMode = &defaultValue
+	}
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}

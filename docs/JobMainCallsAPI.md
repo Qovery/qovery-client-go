@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## DeleteJob
 
-> DeleteJob(ctx, jobId).Execute()
+> DeleteJob(ctx, jobId).SkipReconcile(skipReconcile).Execute()
 
 Delete job
 
@@ -34,10 +34,11 @@ import (
 
 func main() {
 	jobId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Job ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.JobMainCallsAPI.DeleteJob(context.Background(), jobId).Execute()
+	r, err := apiClient.JobMainCallsAPI.DeleteJob(context.Background(), jobId).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobMainCallsAPI.DeleteJob``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -61,6 +62,7 @@ Other parameters are passed through a pointer to a apiDeleteJobRequest struct vi
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
 
 ### Return type
 

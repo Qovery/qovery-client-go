@@ -24,9 +24,16 @@ import (
 type JobMainCallsAPIService service
 
 type ApiDeleteJobRequest struct {
-	ctx        context.Context
-	ApiService *JobMainCallsAPIService
-	jobId      string
+	ctx           context.Context
+	ApiService    *JobMainCallsAPIService
+	jobId         string
+	skipReconcile *bool
+}
+
+// When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources.
+func (r ApiDeleteJobRequest) SkipReconcile(skipReconcile bool) ApiDeleteJobRequest {
+	r.skipReconcile = &skipReconcile
+	return r
 }
 
 func (r ApiDeleteJobRequest) Execute() (*http.Response, error) {
@@ -70,6 +77,12 @@ func (a *JobMainCallsAPIService) DeleteJobExecute(r ApiDeleteJobRequest) (*http.
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

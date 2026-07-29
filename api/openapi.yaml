@@ -1968,6 +1968,17 @@ paths:
         schema:
           $ref: '#/components/schemas/ClusterDeleteMode'
         style: form
+      - description: "When true, skip the pre-destroy Terraform/Helm apply and tear\
+          \ down best-effort, tolerating already-absent resources. Not allowed with\
+          \ deleteMode=DELETE_QOVERY_CONFIG."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -7746,6 +7757,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -8819,6 +8840,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       requestBody:
         content:
           application/json:
@@ -9895,6 +9926,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -11513,6 +11554,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -12990,6 +13041,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -14054,6 +14115,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -15200,6 +15271,16 @@ paths:
           format: uuid
           type: string
         style: simple
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
       responses:
         "204":
           description: The resource was deleted successfully
@@ -18085,6 +18166,16 @@ paths:
         explode: true
         in: query
         name: resources_only
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      - description: "When true, skip the pre-destroy apply/reconcile and tear down\
+          \ best-effort, tolerating already-absent resources."
+        explode: true
+        in: query
+        name: skipReconcile
         required: false
         schema:
           default: false

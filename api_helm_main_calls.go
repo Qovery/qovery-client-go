@@ -24,9 +24,16 @@ import (
 type HelmMainCallsAPIService service
 
 type ApiDeleteHelmRequest struct {
-	ctx        context.Context
-	ApiService *HelmMainCallsAPIService
-	helmId     string
+	ctx           context.Context
+	ApiService    *HelmMainCallsAPIService
+	helmId        string
+	skipReconcile *bool
+}
+
+// When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources.
+func (r ApiDeleteHelmRequest) SkipReconcile(skipReconcile bool) ApiDeleteHelmRequest {
+	r.skipReconcile = &skipReconcile
+	return r
 }
 
 func (r ApiDeleteHelmRequest) Execute() (*http.Response, error) {
@@ -70,6 +77,12 @@ func (a *HelmMainCallsAPIService) DeleteHelmExecute(r ApiDeleteHelmRequest) (*ht
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.skipReconcile != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "skipReconcile", r.skipReconcile, "")
+	} else {
+		var defaultValue bool = false
+		r.skipReconcile = &defaultValue
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

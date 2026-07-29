@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 ## DeleteApplication
 
-> DeleteApplication(ctx, applicationId).Execute()
+> DeleteApplication(ctx, applicationId).SkipReconcile(skipReconcile).Execute()
 
 Delete application
 
@@ -36,10 +36,11 @@ import (
 
 func main() {
 	applicationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Application ID
+	skipReconcile := true // bool | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. (optional) (default to false)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.ApplicationMainCallsAPI.DeleteApplication(context.Background(), applicationId).Execute()
+	r, err := apiClient.ApplicationMainCallsAPI.DeleteApplication(context.Background(), applicationId).SkipReconcile(skipReconcile).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationMainCallsAPI.DeleteApplication``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -63,6 +64,7 @@ Other parameters are passed through a pointer to a apiDeleteApplicationRequest s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
+ **skipReconcile** | **bool** | When true, skip the pre-destroy apply/reconcile and tear down best-effort, tolerating already-absent resources. | [default to false]
 
 ### Return type
 
