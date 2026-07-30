@@ -23,6 +23,120 @@ import (
 // AgenticWorkflowsAPIService AgenticWorkflowsAPI service
 type AgenticWorkflowsAPIService service
 
+type ApiCancelAgenticWorkflowDeploymentRequest struct {
+	ctx                                    context.Context
+	ApiService                             *AgenticWorkflowsAPIService
+	agenticWorkflowId                      string
+	cancelAgenticWorkflowDeploymentRequest *CancelAgenticWorkflowDeploymentRequest
+}
+
+func (r ApiCancelAgenticWorkflowDeploymentRequest) CancelAgenticWorkflowDeploymentRequest(cancelAgenticWorkflowDeploymentRequest CancelAgenticWorkflowDeploymentRequest) ApiCancelAgenticWorkflowDeploymentRequest {
+	r.cancelAgenticWorkflowDeploymentRequest = &cancelAgenticWorkflowDeploymentRequest
+	return r
+}
+
+func (r ApiCancelAgenticWorkflowDeploymentRequest) Execute() (*http.Response, error) {
+	return r.ApiService.CancelAgenticWorkflowDeploymentExecute(r)
+}
+
+/*
+CancelAgenticWorkflowDeployment Cancel agentic workflow deployment
+
+Cancel the deployment currently running the agentic workflow. An agentic workflow only ever runs as part of a deployment of its environment, so this cancels that environment deployment and aborts the workflow's running job.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param agenticWorkflowId
+	@return ApiCancelAgenticWorkflowDeploymentRequest
+*/
+func (a *AgenticWorkflowsAPIService) CancelAgenticWorkflowDeployment(ctx context.Context, agenticWorkflowId string) ApiCancelAgenticWorkflowDeploymentRequest {
+	return ApiCancelAgenticWorkflowDeploymentRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		agenticWorkflowId: agenticWorkflowId,
+	}
+}
+
+// Execute executes the request
+func (a *AgenticWorkflowsAPIService) CancelAgenticWorkflowDeploymentExecute(r ApiCancelAgenticWorkflowDeploymentRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgenticWorkflowsAPIService.CancelAgenticWorkflowDeployment")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/agenticWorkflow/{agenticWorkflowId}/cancelDeployment"
+	localVarPath = strings.Replace(localVarPath, "{"+"agenticWorkflowId"+"}", url.PathEscape(parameterValueToString(r.agenticWorkflowId, "agenticWorkflowId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.cancelAgenticWorkflowDeploymentRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
+}
+
 type ApiCreateAgenticWorkflowRequest struct {
 	ctx                    context.Context
 	ApiService             *AgenticWorkflowsAPIService
@@ -153,12 +267,14 @@ type ApiDeleteAgenticWorkflowRequest struct {
 	agenticWorkflowId string
 }
 
-func (r ApiDeleteAgenticWorkflowRequest) Execute() (*http.Response, error) {
+func (r ApiDeleteAgenticWorkflowRequest) Execute() (*Status, *http.Response, error) {
 	return r.ApiService.DeleteAgenticWorkflowExecute(r)
 }
 
 /*
 DeleteAgenticWorkflow Delete an agentic workflow
+
+Delete an agentic workflow. This queues a deployment that removes the workflow's Kubernetes resources, and the workflow is deleted once that deployment completes. A workflow that was never deployed is removed immediately, with no deployment.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param agenticWorkflowId
@@ -173,16 +289,19 @@ func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflow(ctx context.Context, 
 }
 
 // Execute executes the request
-func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflowExecute(r ApiDeleteAgenticWorkflowRequest) (*http.Response, error) {
+//
+//	@return Status
+func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflowExecute(r ApiDeleteAgenticWorkflowRequest) (*Status, *http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
-		localVarPostBody   interface{}
-		formFiles          []formFile
+		localVarHTTPMethod  = http.MethodDelete
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *Status
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgenticWorkflowsAPIService.DeleteAgenticWorkflow")
 	if err != nil {
-		return nil, &GenericOpenAPIError{error: err.Error()}
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/agenticWorkflow/{agenticWorkflowId}"
@@ -202,7 +321,7 @@ func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflowExecute(r ApiDeleteAge
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{}
+	localVarHTTPHeaderAccepts := []string{"application/json"}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -225,19 +344,19 @@ func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflowExecute(r ApiDeleteAge
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return nil, err
+		return localVarReturnValue, nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarHTTPResponse, err
+		return localVarReturnValue, localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -245,10 +364,19 @@ func (a *AgenticWorkflowsAPIService) DeleteAgenticWorkflowExecute(r ApiDeleteAge
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarHTTPResponse, newErr
+		return localVarReturnValue, localVarHTTPResponse, newErr
 	}
 
-	return localVarHTTPResponse, nil
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
 type ApiEditAgenticWorkflowRequest struct {

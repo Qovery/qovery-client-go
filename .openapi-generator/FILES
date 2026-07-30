@@ -269,6 +269,7 @@ docs/BlueprintUpdateVariableValue.md
 docs/BlueprintVariableRequest.md
 docs/Budget.md
 docs/BuildModeEnum.md
+docs/CancelAgenticWorkflowDeploymentRequest.md
 docs/CancelEnvironmentDeploymentRequest.md
 docs/CheckedCustomDomainResponse.md
 docs/CheckedCustomDomainStatus.md
@@ -1192,6 +1193,7 @@ model_blueprint_update_variable_value.go
 model_blueprint_variable_request.go
 model_budget.go
 model_build_mode_enum.go
+model_cancel_agentic_workflow_deployment_request.go
 model_cancel_environment_deployment_request.go
 model_checked_custom_domain_response.go
 model_checked_custom_domain_status.go

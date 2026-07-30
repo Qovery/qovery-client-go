@@ -22,6 +22,19 @@ func Test_qovery_AgenticWorkflowsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test AgenticWorkflowsAPIService CancelAgenticWorkflowDeployment", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var agenticWorkflowId string
+
+		httpRes, err := apiClient.AgenticWorkflowsAPI.CancelAgenticWorkflowDeployment(context.Background(), agenticWorkflowId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AgenticWorkflowsAPIService CreateAgenticWorkflow", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -42,9 +55,10 @@ func Test_qovery_AgenticWorkflowsAPIService(t *testing.T) {
 
 		var agenticWorkflowId string
 
-		httpRes, err := apiClient.AgenticWorkflowsAPI.DeleteAgenticWorkflow(context.Background(), agenticWorkflowId).Execute()
+		resp, httpRes, err := apiClient.AgenticWorkflowsAPI.DeleteAgenticWorkflow(context.Background(), agenticWorkflowId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

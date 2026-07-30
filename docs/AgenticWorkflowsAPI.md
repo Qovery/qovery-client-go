@@ -4,12 +4,83 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**CancelAgenticWorkflowDeployment**](AgenticWorkflowsAPI.md#CancelAgenticWorkflowDeployment) | **Post** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 [**CreateAgenticWorkflow**](AgenticWorkflowsAPI.md#CreateAgenticWorkflow) | **Post** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 [**DeleteAgenticWorkflow**](AgenticWorkflowsAPI.md#DeleteAgenticWorkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
 [**EditAgenticWorkflow**](AgenticWorkflowsAPI.md#EditAgenticWorkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**GetAgenticWorkflow**](AgenticWorkflowsAPI.md#GetAgenticWorkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 [**ListAgenticWorkflows**](AgenticWorkflowsAPI.md#ListAgenticWorkflows) | **Get** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 
+
+
+## CancelAgenticWorkflowDeployment
+
+> CancelAgenticWorkflowDeployment(ctx, agenticWorkflowId).CancelAgenticWorkflowDeploymentRequest(cancelAgenticWorkflowDeploymentRequest).Execute()
+
+Cancel agentic workflow deployment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	agenticWorkflowId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	cancelAgenticWorkflowDeploymentRequest := *openapiclient.NewCancelAgenticWorkflowDeploymentRequest() // CancelAgenticWorkflowDeploymentRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.AgenticWorkflowsAPI.CancelAgenticWorkflowDeployment(context.Background(), agenticWorkflowId).CancelAgenticWorkflowDeploymentRequest(cancelAgenticWorkflowDeploymentRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgenticWorkflowsAPI.CancelAgenticWorkflowDeployment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**agenticWorkflowId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCancelAgenticWorkflowDeploymentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **cancelAgenticWorkflowDeploymentRequest** | [**CancelAgenticWorkflowDeploymentRequest**](CancelAgenticWorkflowDeploymentRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## CreateAgenticWorkflow
@@ -84,9 +155,11 @@ Name | Type | Description  | Notes
 
 ## DeleteAgenticWorkflow
 
-> DeleteAgenticWorkflow(ctx, agenticWorkflowId).Execute()
+> Status DeleteAgenticWorkflow(ctx, agenticWorkflowId).Execute()
 
 Delete an agentic workflow
+
+
 
 ### Example
 
@@ -105,11 +178,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.AgenticWorkflowsAPI.DeleteAgenticWorkflow(context.Background(), agenticWorkflowId).Execute()
+	resp, r, err := apiClient.AgenticWorkflowsAPI.DeleteAgenticWorkflow(context.Background(), agenticWorkflowId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `AgenticWorkflowsAPI.DeleteAgenticWorkflow``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
+	// response from `DeleteAgenticWorkflow`: Status
+	fmt.Fprintf(os.Stdout, "Response from `AgenticWorkflowsAPI.DeleteAgenticWorkflow`: %v\n", resp)
 }
 ```
 
@@ -132,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
- (empty response body)
+[**Status**](Status.md)
 
 ### Authorization
 
@@ -141,7 +216,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

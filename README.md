@@ -83,6 +83,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountInfoAPI* | [**EditAccountInformation**](docs/AccountInfoAPI.md#editaccountinformation) | **Put** /account | Edit account information
 *AccountInfoAPI* | [**GetAccountInformation**](docs/AccountInfoAPI.md#getaccountinformation) | **Get** /account | Get Account information
+*AgenticWorkflowsAPI* | [**CancelAgenticWorkflowDeployment**](docs/AgenticWorkflowsAPI.md#cancelagenticworkflowdeployment) | **Post** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 *AgenticWorkflowsAPI* | [**CreateAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#createagenticworkflow) | **Post** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 *AgenticWorkflowsAPI* | [**DeleteAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#deleteagenticworkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
 *AgenticWorkflowsAPI* | [**EditAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#editagenticworkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
@@ -770,6 +771,7 @@ Class | Method | HTTP request | Description
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
+ - [CancelAgenticWorkflowDeploymentRequest](docs/CancelAgenticWorkflowDeploymentRequest.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
  - [CheckedCustomDomainResponse](docs/CheckedCustomDomainResponse.md)
  - [CheckedCustomDomainStatus](docs/CheckedCustomDomainStatus.md)

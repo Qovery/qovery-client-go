@@ -18274,6 +18274,10 @@ paths:
         id: pb6cdzqcvmnkh
   /agenticWorkflow/{agenticWorkflowId}:
     delete:
+      description: "Delete an agentic workflow. This queues a deployment that removes\
+        \ the workflow's Kubernetes resources, and the workflow is deleted once that\
+        \ deployment completes. A workflow that was never deployed is removed immediately,\
+        \ with no deployment."
       operationId: deleteAgenticWorkflow
       parameters:
       - explode: false
@@ -18285,14 +18289,22 @@ paths:
           type: string
         style: simple
       responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: agentic workflow deletion has been queued
         "204":
-          description: Delete agentic workflow
+          description: "agentic workflow deleted, no deployment was needed"
         "401":
           description: Access token is missing or invalid
         "403":
           description: Access forbidden
         "404":
           description: Resource not found
+        "409":
+          description: A deployment is already in progress for this environment
       summary: Delete an agentic workflow
       tags:
       - Agentic Workflows
@@ -18355,6 +18367,43 @@ paths:
         "404":
           description: Resource not found
       summary: Edit an agentic workflow
+      tags:
+      - Agentic Workflows
+  /agenticWorkflow/{agenticWorkflowId}/cancelDeployment:
+    post:
+      description: "Cancel the deployment currently running the agentic workflow.\
+        \ An agentic workflow only ever runs as part of a deployment of its environment,\
+        \ so this cancels that environment deployment and aborts the workflow's running\
+        \ job."
+      operationId: cancelAgenticWorkflowDeployment
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/cancelAgenticWorkflowDeployment_request'
+      responses:
+        "202":
+          description: "agentic workflow deployment cancelling has been requested,\
+            \ no response body"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: The deployment is already cancelled or cannot be cancelled
+            in its current state
+      summary: Cancel agentic workflow deployment
       tags:
       - Agentic Workflows
   /terraform/{terraformId}/advancedSettings:
@@ -47397,6 +47446,15 @@ components:
           items:
             $ref: '#/components/schemas/QueuedDeploymentRequestForService'
           type: array
+      type: object
+    cancelAgenticWorkflowDeployment_request:
+      properties:
+        force_cancel:
+          default: false
+          description: "When false, the engine stops the deployment at the next safe\
+            \ point, letting the workflow's job terminate on its own. When true it\
+            \ stops waiting for that job and abandons it immediately."
+          type: boolean
       type: object
     BlueprintManifestResponse_results_inner:
       discriminator:
