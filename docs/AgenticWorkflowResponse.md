@@ -7,7 +7,9 @@ Name | Type | Description | Notes
 **Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **Name** | **string** | name is case insensitive | 
+**Slug** | **string** | URL-friendly identifier derived from the name | 
 **Description** | **string** |  | 
 **WebhookIpAllowlist** | **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | 
 **DockerFragment** | **string** |  | 
@@ -24,7 +26,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -104,6 +106,26 @@ SetUpdatedAt sets UpdatedAt field to given value.
 
 HasUpdatedAt returns a boolean if a field has been set.
 
+### GetServiceType
+
+`func (o *AgenticWorkflowResponse) GetServiceType() ServiceTypeEnum`
+
+GetServiceType returns the ServiceType field if non-nil, zero value otherwise.
+
+### GetServiceTypeOk
+
+`func (o *AgenticWorkflowResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool)`
+
+GetServiceTypeOk returns a tuple with the ServiceType field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetServiceType
+
+`func (o *AgenticWorkflowResponse) SetServiceType(v ServiceTypeEnum)`
+
+SetServiceType sets ServiceType field to given value.
+
+
 ### GetName
 
 `func (o *AgenticWorkflowResponse) GetName() string`
@@ -122,6 +144,26 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetSlug
+
+`func (o *AgenticWorkflowResponse) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *AgenticWorkflowResponse) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *AgenticWorkflowResponse) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
 
 
 ### GetDescription

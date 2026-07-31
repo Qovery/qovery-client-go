@@ -21,13 +21,14 @@ type ServiceTypeEnum string
 
 // List of ServiceTypeEnum
 const (
-	SERVICETYPEENUM_APPLICATION ServiceTypeEnum = "APPLICATION"
-	SERVICETYPEENUM_DATABASE    ServiceTypeEnum = "DATABASE"
-	SERVICETYPEENUM_CONTAINER   ServiceTypeEnum = "CONTAINER"
-	SERVICETYPEENUM_JOB         ServiceTypeEnum = "JOB"
-	SERVICETYPEENUM_HELM        ServiceTypeEnum = "HELM"
-	SERVICETYPEENUM_TERRAFORM   ServiceTypeEnum = "TERRAFORM"
-	SERVICETYPEENUM_ARGOCD_APP  ServiceTypeEnum = "ARGOCD_APP"
+	SERVICETYPEENUM_APPLICATION      ServiceTypeEnum = "APPLICATION"
+	SERVICETYPEENUM_DATABASE         ServiceTypeEnum = "DATABASE"
+	SERVICETYPEENUM_CONTAINER        ServiceTypeEnum = "CONTAINER"
+	SERVICETYPEENUM_JOB              ServiceTypeEnum = "JOB"
+	SERVICETYPEENUM_HELM             ServiceTypeEnum = "HELM"
+	SERVICETYPEENUM_TERRAFORM        ServiceTypeEnum = "TERRAFORM"
+	SERVICETYPEENUM_ARGOCD_APP       ServiceTypeEnum = "ARGOCD_APP"
+	SERVICETYPEENUM_AGENTIC_WORKFLOW ServiceTypeEnum = "AGENTIC_WORKFLOW"
 )
 
 // All allowed values of ServiceTypeEnum enum
@@ -39,6 +40,7 @@ var AllowedServiceTypeEnumEnumValues = []ServiceTypeEnum{
 	"HELM",
 	"TERRAFORM",
 	"ARGOCD_APP",
+	"AGENTIC_WORKFLOW",
 }
 
 func (v *ServiceTypeEnum) UnmarshalJSON(src []byte) error {

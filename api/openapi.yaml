@@ -39275,6 +39275,7 @@ components:
       - HELM
       - TERRAFORM
       - ARGOCD_APP
+      - AGENTIC_WORKFLOW
       type: string
       x-stoplight:
         id: d66063cd29913
@@ -45907,8 +45908,13 @@ components:
           id:
             format: uuid
             type: string
+          service_type:
+            $ref: '#/components/schemas/ServiceTypeEnum'
           name:
             description: name is case insensitive
+            type: string
+          slug:
+            description: URL-friendly identifier derived from the name
             type: string
           description:
             type: string
@@ -45954,6 +45960,8 @@ components:
         - name
         - outputs
         - project_repositories
+        - service_type
+        - slug
         - webhook
         - webhook_ip_allowlist
         type: object
@@ -45991,6 +45999,7 @@ components:
         webhook_ip_allowlist:
         - webhook_ip_allowlist
         - webhook_ip_allowlist
+        service_type: APPLICATION
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         agent_prompt: agent_prompt
@@ -45999,6 +46008,7 @@ components:
           type: CLAUDE
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mcp: mcp
+        slug: slug
         governance:
           host_allowlist:
           - host_allowlist
@@ -46039,6 +46049,7 @@ components:
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
+          service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
@@ -46047,6 +46058,7 @@ components:
             type: CLAUDE
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
+          slug: slug
           governance:
             host_allowlist:
             - host_allowlist
@@ -46084,6 +46096,7 @@ components:
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
+          service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
@@ -46092,6 +46105,7 @@ components:
             type: CLAUDE
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
+          slug: slug
           governance:
             host_allowlist:
             - host_allowlist
@@ -46697,6 +46711,7 @@ components:
           JOB: '#/components/schemas/JobResponse'
           TERRAFORM: '#/components/schemas/TerraformResponse'
           ARGOCD_APP: '#/components/schemas/ArgocdAppResponse'
+          AGENTIC_WORKFLOW: '#/components/schemas/AgenticWorkflowResponse'
         propertyName: service_type
       oneOf:
       - $ref: '#/components/schemas/Application'
@@ -46706,6 +46721,7 @@ components:
       - $ref: '#/components/schemas/JobResponse'
       - $ref: '#/components/schemas/TerraformResponse'
       - $ref: '#/components/schemas/ArgocdAppResponse'
+      - $ref: '#/components/schemas/AgenticWorkflowResponse'
       x-stoplight:
         id: lzycmwmefigki
     listServicesByEnvironmentId_200_response:

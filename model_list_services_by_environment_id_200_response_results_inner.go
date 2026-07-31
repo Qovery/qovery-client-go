@@ -18,13 +18,21 @@ import (
 
 // ListServicesByEnvironmentId200ResponseResultsInner - struct for ListServicesByEnvironmentId200ResponseResultsInner
 type ListServicesByEnvironmentId200ResponseResultsInner struct {
-	Application       *Application
-	ArgocdAppResponse *ArgocdAppResponse
-	ContainerResponse *ContainerResponse
-	Database          *Database
-	HelmResponse      *HelmResponse
-	JobResponse       *JobResponse
-	TerraformResponse *TerraformResponse
+	AgenticWorkflowResponse *AgenticWorkflowResponse
+	Application             *Application
+	ArgocdAppResponse       *ArgocdAppResponse
+	ContainerResponse       *ContainerResponse
+	Database                *Database
+	HelmResponse            *HelmResponse
+	JobResponse             *JobResponse
+	TerraformResponse       *TerraformResponse
+}
+
+// AgenticWorkflowResponseAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns AgenticWorkflowResponse wrapped in ListServicesByEnvironmentId200ResponseResultsInner
+func AgenticWorkflowResponseAsListServicesByEnvironmentId200ResponseResultsInner(v *AgenticWorkflowResponse) ListServicesByEnvironmentId200ResponseResultsInner {
+	return ListServicesByEnvironmentId200ResponseResultsInner{
+		AgenticWorkflowResponse: v,
+	}
 }
 
 // ApplicationAsListServicesByEnvironmentId200ResponseResultsInner is a convenience function that returns Application wrapped in ListServicesByEnvironmentId200ResponseResultsInner
@@ -84,6 +92,18 @@ func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(dat
 	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
 		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
+	}
+
+	// check if the discriminator value is 'AGENTIC_WORKFLOW'
+	if jsonDict["service_type"] == "AGENTIC_WORKFLOW" {
+		// try to unmarshal JSON data into AgenticWorkflowResponse
+		err = json.Unmarshal(data, &dst.AgenticWorkflowResponse)
+		if err == nil {
+			return nil // data stored in dst.AgenticWorkflowResponse, return on the first match
+		} else {
+			dst.AgenticWorkflowResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as AgenticWorkflowResponse: %s", err.Error())
+		}
 	}
 
 	// check if the discriminator value is 'APPLICATION'
@@ -167,6 +187,18 @@ func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(dat
 		} else {
 			dst.TerraformResponse = nil
 			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as TerraformResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'AgenticWorkflowResponse'
+	if jsonDict["service_type"] == "AgenticWorkflowResponse" {
+		// try to unmarshal JSON data into AgenticWorkflowResponse
+		err = json.Unmarshal(data, &dst.AgenticWorkflowResponse)
+		if err == nil {
+			return nil // data stored in dst.AgenticWorkflowResponse, return on the first match
+		} else {
+			dst.AgenticWorkflowResponse = nil
+			return fmt.Errorf("failed to unmarshal ListServicesByEnvironmentId200ResponseResultsInner as AgenticWorkflowResponse: %s", err.Error())
 		}
 	}
 
@@ -259,6 +291,10 @@ func (dst *ListServicesByEnvironmentId200ResponseResultsInner) UnmarshalJSON(dat
 
 // Marshal data from the first non-nil pointers in the struct to JSON
 func (src ListServicesByEnvironmentId200ResponseResultsInner) MarshalJSON() ([]byte, error) {
+	if src.AgenticWorkflowResponse != nil {
+		return json.Marshal(&src.AgenticWorkflowResponse)
+	}
+
 	if src.Application != nil {
 		return json.Marshal(&src.Application)
 	}
@@ -295,6 +331,10 @@ func (obj *ListServicesByEnvironmentId200ResponseResultsInner) GetActualInstance
 	if obj == nil {
 		return nil
 	}
+	if obj.AgenticWorkflowResponse != nil {
+		return obj.AgenticWorkflowResponse
+	}
+
 	if obj.Application != nil {
 		return obj.Application
 	}

@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** |  | [readonly] 
+**Id** | **string** |  | 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to **int32** | unit is GB | [optional] [default to 10]
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **string** |  | [optional] 
+**Description** | **string** |  | 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
 **Cpu** | **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu This field will be ignored for managed DB (instance type will be used instead).  | [default to 250]
@@ -70,12 +70,23 @@ Name | Type | Description | Notes
 **ClusterId** | **string** |  | 
 **LastSyncedAt** | Pointer to **NullableTime** |  | [optional] 
 **ManifestRevision** | Pointer to **NullableString** |  | [optional] 
+**Slug** | **string** | URL-friendly identifier derived from the name | 
+**WebhookIpAllowlist** | **[]string** | CIDR ranges the incoming webhook request&#39;s source IP is checked against | 
+**DockerFragment** | **string** |  | 
+**Enabled** | **bool** |  | 
+**Mcp** | **string** | Raw JSON blob describing the MCP servers configured for this workflow | 
+**Outputs** | [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | 
+**Model** | [**AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
+**ProjectRepositories** | [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | 
+**AgentPrompt** | **string** |  | 
+**Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
+**Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
 
 ## Methods
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -339,11 +350,6 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
-### HasDescription
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
 
 ### GetBuildMode
 
@@ -1640,6 +1646,226 @@ HasManifestRevision returns a boolean if a field has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetManifestRevision()`
 
 UnsetManifestRevision ensures that no value is present for ManifestRevision, not even an explicit nil
+### GetSlug
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSlug() string`
+
+GetSlug returns the Slug field if non-nil, zero value otherwise.
+
+### GetSlugOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSlugOk() (*string, bool)`
+
+GetSlugOk returns a tuple with the Slug field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlug
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSlug(v string)`
+
+SetSlug sets Slug field to given value.
+
+
+### GetWebhookIpAllowlist
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhookIpAllowlist() []string`
+
+GetWebhookIpAllowlist returns the WebhookIpAllowlist field if non-nil, zero value otherwise.
+
+### GetWebhookIpAllowlistOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhookIpAllowlistOk() (*[]string, bool)`
+
+GetWebhookIpAllowlistOk returns a tuple with the WebhookIpAllowlist field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookIpAllowlist
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetWebhookIpAllowlist(v []string)`
+
+SetWebhookIpAllowlist sets WebhookIpAllowlist field to given value.
+
+
+### GetDockerFragment
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerFragment() string`
+
+GetDockerFragment returns the DockerFragment field if non-nil, zero value otherwise.
+
+### GetDockerFragmentOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetDockerFragmentOk() (*string, bool)`
+
+GetDockerFragmentOk returns a tuple with the DockerFragment field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDockerFragment
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetDockerFragment(v string)`
+
+SetDockerFragment sets DockerFragment field to given value.
+
+
+### GetEnabled
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetEnabled() bool`
+
+GetEnabled returns the Enabled field if non-nil, zero value otherwise.
+
+### GetEnabledOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetEnabledOk() (*bool, bool)`
+
+GetEnabledOk returns a tuple with the Enabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnabled
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetEnabled(v bool)`
+
+SetEnabled sets Enabled field to given value.
+
+
+### GetMcp
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMcp() string`
+
+GetMcp returns the Mcp field if non-nil, zero value otherwise.
+
+### GetMcpOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMcpOk() (*string, bool)`
+
+GetMcpOk returns a tuple with the Mcp field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcp
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetMcp(v string)`
+
+SetMcp sets Mcp field to given value.
+
+
+### GetOutputs
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetOutputs() []AgenticWorkflowOutput`
+
+GetOutputs returns the Outputs field if non-nil, zero value otherwise.
+
+### GetOutputsOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetOutputsOk() (*[]AgenticWorkflowOutput, bool)`
+
+GetOutputsOk returns a tuple with the Outputs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOutputs
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetOutputs(v []AgenticWorkflowOutput)`
+
+SetOutputs sets Outputs field to given value.
+
+
+### GetModel
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetModel() AgenticWorkflowModelResponse`
+
+GetModel returns the Model field if non-nil, zero value otherwise.
+
+### GetModelOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetModelOk() (*AgenticWorkflowModelResponse, bool)`
+
+GetModelOk returns a tuple with the Model field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetModel
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetModel(v AgenticWorkflowModelResponse)`
+
+SetModel sets Model field to given value.
+
+
+### GetProjectRepositories
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProjectRepositories() []AgenticWorkflowProjectRepository`
+
+GetProjectRepositories returns the ProjectRepositories field if non-nil, zero value otherwise.
+
+### GetProjectRepositoriesOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetProjectRepositoriesOk() (*[]AgenticWorkflowProjectRepository, bool)`
+
+GetProjectRepositoriesOk returns a tuple with the ProjectRepositories field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetProjectRepositories
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetProjectRepositories(v []AgenticWorkflowProjectRepository)`
+
+SetProjectRepositories sets ProjectRepositories field to given value.
+
+
+### GetAgentPrompt
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAgentPrompt() string`
+
+GetAgentPrompt returns the AgentPrompt field if non-nil, zero value otherwise.
+
+### GetAgentPromptOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAgentPromptOk() (*string, bool)`
+
+GetAgentPromptOk returns a tuple with the AgentPrompt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgentPrompt
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetAgentPrompt(v string)`
+
+SetAgentPrompt sets AgentPrompt field to given value.
+
+
+### GetGovernance
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetGovernance() AgenticWorkflowGovernance`
+
+GetGovernance returns the Governance field if non-nil, zero value otherwise.
+
+### GetGovernanceOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetGovernanceOk() (*AgenticWorkflowGovernance, bool)`
+
+GetGovernanceOk returns a tuple with the Governance field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGovernance
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetGovernance(v AgenticWorkflowGovernance)`
+
+SetGovernance sets Governance field to given value.
+
+
+### GetWebhook
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhook() AgenticWorkflowWebhook`
+
+GetWebhook returns the Webhook field if non-nil, zero value otherwise.
+
+### GetWebhookOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhookOk() (*AgenticWorkflowWebhook, bool)`
+
+GetWebhookOk returns a tuple with the Webhook field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhook
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetWebhook(v AgenticWorkflowWebhook)`
+
+SetWebhook sets Webhook field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

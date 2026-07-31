@@ -22,11 +22,14 @@ var _ MappedNullable = &AgenticWorkflowResponse{}
 
 // AgenticWorkflowResponse struct for AgenticWorkflowResponse
 type AgenticWorkflowResponse struct {
-	Id        string     `json:"id"`
-	CreatedAt time.Time  `json:"created_at"`
-	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	Id          string          `json:"id"`
+	CreatedAt   time.Time       `json:"created_at"`
+	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
+	ServiceType ServiceTypeEnum `json:"service_type"`
 	// name is case insensitive
-	Name        string `json:"name"`
+	Name string `json:"name"`
+	// URL-friendly identifier derived from the name
+	Slug        string `json:"slug"`
 	Description string `json:"description"`
 	// CIDR ranges the incoming webhook request's source IP is checked against
 	WebhookIpAllowlist []string `json:"webhook_ip_allowlist"`
@@ -49,11 +52,13 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, name string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
+	this.ServiceType = serviceType
 	this.Name = name
+	this.Slug = slug
 	this.Description = description
 	this.WebhookIpAllowlist = webhookIpAllowlist
 	this.DockerFragment = dockerFragment
@@ -156,6 +161,30 @@ func (o *AgenticWorkflowResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
+// GetServiceType returns the ServiceType field value
+func (o *AgenticWorkflowResponse) GetServiceType() ServiceTypeEnum {
+	if o == nil {
+		var ret ServiceTypeEnum
+		return ret
+	}
+
+	return o.ServiceType
+}
+
+// GetServiceTypeOk returns a tuple with the ServiceType field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ServiceType, true
+}
+
+// SetServiceType sets field value
+func (o *AgenticWorkflowResponse) SetServiceType(v ServiceTypeEnum) {
+	o.ServiceType = v
+}
+
 // GetName returns the Name field value
 func (o *AgenticWorkflowResponse) GetName() string {
 	if o == nil {
@@ -178,6 +207,30 @@ func (o *AgenticWorkflowResponse) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *AgenticWorkflowResponse) SetName(v string) {
 	o.Name = v
+}
+
+// GetSlug returns the Slug field value
+func (o *AgenticWorkflowResponse) GetSlug() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Slug
+}
+
+// GetSlugOk returns a tuple with the Slug field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetSlugOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Slug, true
+}
+
+// SetSlug sets field value
+func (o *AgenticWorkflowResponse) SetSlug(v string) {
+	o.Slug = v
 }
 
 // GetDescription returns the Description field value
@@ -459,7 +512,9 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	toSerialize["service_type"] = o.ServiceType
 	toSerialize["name"] = o.Name
+	toSerialize["slug"] = o.Slug
 	toSerialize["description"] = o.Description
 	toSerialize["webhook_ip_allowlist"] = o.WebhookIpAllowlist
 	toSerialize["docker_fragment"] = o.DockerFragment
@@ -486,7 +541,9 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"created_at",
+		"service_type",
 		"name",
+		"slug",
 		"description",
 		"webhook_ip_allowlist",
 		"docker_fragment",
@@ -530,7 +587,9 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "slug")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "webhook_ip_allowlist")
 		delete(additionalProperties, "docker_fragment")
