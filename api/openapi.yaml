@@ -45912,9 +45912,8 @@ components:
             type: string
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
-          environment_id:
-            format: uuid
-            type: string
+          environment:
+            $ref: '#/components/schemas/ReferenceObject'
           name:
             description: name is case insensitive
             type: string
@@ -45958,7 +45957,7 @@ components:
         - description
         - docker_fragment
         - enabled
-        - environment_id
+        - environment
         - governance
         - id
         - mcp
@@ -45991,7 +45990,6 @@ components:
           url: url
         webhook:
           url: url
-        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         project_repositories:
         - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
@@ -46007,6 +46005,8 @@ components:
         - webhook_ip_allowlist
         - webhook_ip_allowlist
         service_type: APPLICATION
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         agent_prompt: agent_prompt
@@ -46042,7 +46042,6 @@ components:
             url: url
           webhook:
             url: url
-          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_repositories:
           - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
@@ -46058,6 +46057,8 @@ components:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
           service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
@@ -46090,7 +46091,6 @@ components:
             url: url
           webhook:
             url: url
-          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_repositories:
           - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
@@ -46106,6 +46106,8 @@ components:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
           service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
