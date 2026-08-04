@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
+**EnvironmentId** | **string** |  | 
 **Name** | **string** | name is case insensitive | 
 **Slug** | **string** | URL-friendly identifier derived from the name | 
 **Description** | **string** |  | 
@@ -26,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environmentId string, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -124,6 +125,26 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetServiceType(v ServiceTypeEnum)`
 
 SetServiceType sets ServiceType field to given value.
+
+
+### GetEnvironmentId
+
+`func (o *AgenticWorkflowResponse) GetEnvironmentId() string`
+
+GetEnvironmentId returns the EnvironmentId field if non-nil, zero value otherwise.
+
+### GetEnvironmentIdOk
+
+`func (o *AgenticWorkflowResponse) GetEnvironmentIdOk() (*string, bool)`
+
+GetEnvironmentIdOk returns a tuple with the EnvironmentId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetEnvironmentId
+
+`func (o *AgenticWorkflowResponse) SetEnvironmentId(v string)`
+
+SetEnvironmentId sets EnvironmentId field to given value.
 
 
 ### GetName

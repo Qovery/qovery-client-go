@@ -22,10 +22,11 @@ var _ MappedNullable = &AgenticWorkflowResponse{}
 
 // AgenticWorkflowResponse struct for AgenticWorkflowResponse
 type AgenticWorkflowResponse struct {
-	Id          string          `json:"id"`
-	CreatedAt   time.Time       `json:"created_at"`
-	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
-	ServiceType ServiceTypeEnum `json:"service_type"`
+	Id            string          `json:"id"`
+	CreatedAt     time.Time       `json:"created_at"`
+	UpdatedAt     *time.Time      `json:"updated_at,omitempty"`
+	ServiceType   ServiceTypeEnum `json:"service_type"`
+	EnvironmentId string          `json:"environment_id"`
 	// name is case insensitive
 	Name string `json:"name"`
 	// URL-friendly identifier derived from the name
@@ -52,11 +53,12 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environmentId string, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	this.ServiceType = serviceType
+	this.EnvironmentId = environmentId
 	this.Name = name
 	this.Slug = slug
 	this.Description = description
@@ -183,6 +185,30 @@ func (o *AgenticWorkflowResponse) GetServiceTypeOk() (*ServiceTypeEnum, bool) {
 // SetServiceType sets field value
 func (o *AgenticWorkflowResponse) SetServiceType(v ServiceTypeEnum) {
 	o.ServiceType = v
+}
+
+// GetEnvironmentId returns the EnvironmentId field value
+func (o *AgenticWorkflowResponse) GetEnvironmentId() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.EnvironmentId
+}
+
+// GetEnvironmentIdOk returns a tuple with the EnvironmentId field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetEnvironmentIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.EnvironmentId, true
+}
+
+// SetEnvironmentId sets field value
+func (o *AgenticWorkflowResponse) SetEnvironmentId(v string) {
+	o.EnvironmentId = v
 }
 
 // GetName returns the Name field value
@@ -513,6 +539,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
 	toSerialize["service_type"] = o.ServiceType
+	toSerialize["environment_id"] = o.EnvironmentId
 	toSerialize["name"] = o.Name
 	toSerialize["slug"] = o.Slug
 	toSerialize["description"] = o.Description
@@ -542,6 +569,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"id",
 		"created_at",
 		"service_type",
+		"environment_id",
 		"name",
 		"slug",
 		"description",
@@ -588,6 +616,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "service_type")
+		delete(additionalProperties, "environment_id")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "slug")
 		delete(additionalProperties, "description")

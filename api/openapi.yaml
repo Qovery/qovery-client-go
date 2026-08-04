@@ -45912,6 +45912,9 @@ components:
             type: string
           service_type:
             $ref: '#/components/schemas/ServiceTypeEnum'
+          environment_id:
+            format: uuid
+            type: string
           name:
             description: name is case insensitive
             type: string
@@ -45955,6 +45958,7 @@ components:
         - description
         - docker_fragment
         - enabled
+        - environment_id
         - governance
         - id
         - mcp
@@ -45987,6 +45991,7 @@ components:
           url: url
         webhook:
           url: url
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         project_repositories:
         - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
@@ -46037,6 +46042,7 @@ components:
             url: url
           webhook:
             url: url
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_repositories:
           - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
@@ -46084,6 +46090,7 @@ components:
             url: url
           webhook:
             url: url
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           project_repositories:
           - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             branch: branch
