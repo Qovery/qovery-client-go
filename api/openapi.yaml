@@ -33081,6 +33081,7 @@ components:
       - CONSOLE
       - GIT
       - QOVERY_INTERNAL
+      - SKILL
       - TERRAFORM_PROVIDER
       example: API
       nullable: true
@@ -37769,6 +37770,7 @@ components:
       - CONSOLE
       - GIT
       - QOVERY_INTERNAL
+      - SKILL
       - TERRAFORM_PROVIDER
       example: API
       type: string

@@ -13,6 +13,8 @@
 
 * `QOVERY_INTERNAL` (value: `"QOVERY_INTERNAL"`)
 
+* `SKILL` (value: `"SKILL"`)
+
 * `TERRAFORM_PROVIDER` (value: `"TERRAFORM_PROVIDER"`)
 
 

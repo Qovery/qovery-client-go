@@ -26,6 +26,7 @@ const (
 	ENVIRONMENTSTATUSEVENTORIGINENUM_CONSOLE            EnvironmentStatusEventOriginEnum = "CONSOLE"
 	ENVIRONMENTSTATUSEVENTORIGINENUM_GIT                EnvironmentStatusEventOriginEnum = "GIT"
 	ENVIRONMENTSTATUSEVENTORIGINENUM_QOVERY_INTERNAL    EnvironmentStatusEventOriginEnum = "QOVERY_INTERNAL"
+	ENVIRONMENTSTATUSEVENTORIGINENUM_SKILL              EnvironmentStatusEventOriginEnum = "SKILL"
 	ENVIRONMENTSTATUSEVENTORIGINENUM_TERRAFORM_PROVIDER EnvironmentStatusEventOriginEnum = "TERRAFORM_PROVIDER"
 )
 
@@ -36,6 +37,7 @@ var AllowedEnvironmentStatusEventOriginEnumEnumValues = []EnvironmentStatusEvent
 	"CONSOLE",
 	"GIT",
 	"QOVERY_INTERNAL",
+	"SKILL",
 	"TERRAFORM_PROVIDER",
 }
 
