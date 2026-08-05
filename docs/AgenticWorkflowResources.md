@@ -1,0 +1,114 @@
+# AgenticWorkflowResources
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**CpuMilli** | **int32** | CPU allocated to the workflow, in milli CPU. Used as both request and limit. | [default to 1000]
+**RamMib** | **int32** | RAM allocated to the workflow, in MiB. Used as both request and limit. | [default to 1024]
+**Gpu** | **int32** | Number of GPUs. Accepted and stored, but not yet applied by the engine. | [default to 0]
+**StorageGib** | **int32** | Storage size in GiB. Accepted and stored, but not yet applied by the engine. | [default to 0]
+
+## Methods
+
+### NewAgenticWorkflowResources
+
+`func NewAgenticWorkflowResources(cpuMilli int32, ramMib int32, gpu int32, storageGib int32, ) *AgenticWorkflowResources`
+
+NewAgenticWorkflowResources instantiates a new AgenticWorkflowResources object
+This constructor will assign default values to properties that have it defined,
+and makes sure properties required by API are set, but the set of arguments
+will change when the set of required properties is changed
+
+### NewAgenticWorkflowResourcesWithDefaults
+
+`func NewAgenticWorkflowResourcesWithDefaults() *AgenticWorkflowResources`
+
+NewAgenticWorkflowResourcesWithDefaults instantiates a new AgenticWorkflowResources object
+This constructor will only assign default values to properties that have it defined,
+but it doesn't guarantee that properties required by API are set
+
+### GetCpuMilli
+
+`func (o *AgenticWorkflowResources) GetCpuMilli() int32`
+
+GetCpuMilli returns the CpuMilli field if non-nil, zero value otherwise.
+
+### GetCpuMilliOk
+
+`func (o *AgenticWorkflowResources) GetCpuMilliOk() (*int32, bool)`
+
+GetCpuMilliOk returns a tuple with the CpuMilli field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetCpuMilli
+
+`func (o *AgenticWorkflowResources) SetCpuMilli(v int32)`
+
+SetCpuMilli sets CpuMilli field to given value.
+
+
+### GetRamMib
+
+`func (o *AgenticWorkflowResources) GetRamMib() int32`
+
+GetRamMib returns the RamMib field if non-nil, zero value otherwise.
+
+### GetRamMibOk
+
+`func (o *AgenticWorkflowResources) GetRamMibOk() (*int32, bool)`
+
+GetRamMibOk returns a tuple with the RamMib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRamMib
+
+`func (o *AgenticWorkflowResources) SetRamMib(v int32)`
+
+SetRamMib sets RamMib field to given value.
+
+
+### GetGpu
+
+`func (o *AgenticWorkflowResources) GetGpu() int32`
+
+GetGpu returns the Gpu field if non-nil, zero value otherwise.
+
+### GetGpuOk
+
+`func (o *AgenticWorkflowResources) GetGpuOk() (*int32, bool)`
+
+GetGpuOk returns a tuple with the Gpu field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGpu
+
+`func (o *AgenticWorkflowResources) SetGpu(v int32)`
+
+SetGpu sets Gpu field to given value.
+
+
+### GetStorageGib
+
+`func (o *AgenticWorkflowResources) GetStorageGib() int32`
+
+GetStorageGib returns the StorageGib field if non-nil, zero value otherwise.
+
+### GetStorageGibOk
+
+`func (o *AgenticWorkflowResources) GetStorageGibOk() (*int32, bool)`
+
+GetStorageGibOk returns a tuple with the StorageGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStorageGib
+
+`func (o *AgenticWorkflowResources) SetStorageGib(v int32)`
+
+SetStorageGib sets StorageGib field to given value.
+
+
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

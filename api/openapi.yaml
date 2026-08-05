@@ -45950,8 +45950,14 @@ components:
             type: string
           governance:
             $ref: '#/components/schemas/AgenticWorkflowGovernance'
+          resources:
+            $ref: '#/components/schemas/AgenticWorkflowResources'
           webhook:
             $ref: '#/components/schemas/AgenticWorkflowWebhook'
+          icon_uri:
+            description: Icon URI representing the agentic workflow.
+            format: uri
+            type: string
         required:
         - agent_prompt
         - description
@@ -45965,6 +45971,7 @@ components:
         - name
         - outputs
         - project_repositories
+        - resources
         - service_type
         - slug
         - webhook
@@ -45999,8 +46006,14 @@ components:
           url: url
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
+        resources:
+          cpu_milli: 0
+          ram_mib: 6
+          gpu: 1
+          storage_gib: 5
         docker_fragment: docker_fragment
         enabled: true
+        icon_uri: https://openapi-generator.tech
         webhook_ip_allowlist:
         - webhook_ip_allowlist
         - webhook_ip_allowlist
@@ -46051,8 +46064,14 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          resources:
+            cpu_milli: 0
+            ram_mib: 6
+            gpu: 1
+            storage_gib: 5
           docker_fragment: docker_fragment
           enabled: true
+          icon_uri: https://openapi-generator.tech
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
@@ -46100,8 +46119,14 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          resources:
+            cpu_milli: 0
+            ram_mib: 6
+            gpu: 1
+            storage_gib: 5
           docker_fragment: docker_fragment
           enabled: true
+          icon_uri: https://openapi-generator.tech
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
@@ -46171,6 +46196,8 @@ components:
             type: string
           governance:
             $ref: '#/components/schemas/AgenticWorkflowGovernance'
+          resources:
+            $ref: '#/components/schemas/AgenticWorkflowResources'
         required:
         - name
       example:
@@ -46204,6 +46231,11 @@ components:
           url: url
         agent_prompt: ""
         description: ""
+        resources:
+          cpu_milli: 0
+          ram_mib: 6
+          gpu: 1
+          storage_gib: 5
         model:
           settings: ""
           api_key: ""
@@ -46319,12 +46351,48 @@ components:
         branch:
           type: string
         git_token_id:
+          description: |
+            Qovery git token id used to clone the repository.
+            Omit it (or send null) for a public repository, which is cloned without credentials.
           format: uuid
+          nullable: true
           type: string
       required:
       - branch
-      - git_token_id
       - url
+      type: object
+    AgenticWorkflowResources:
+      example:
+        cpu_milli: 0
+        ram_mib: 6
+        gpu: 1
+        storage_gib: 5
+      properties:
+        cpu_milli:
+          default: 1000
+          description: "CPU allocated to the workflow, in milli CPU. Used as both\
+            \ request and limit."
+          type: integer
+        ram_mib:
+          default: 1024
+          description: "RAM allocated to the workflow, in MiB. Used as both request\
+            \ and limit."
+          type: integer
+        gpu:
+          default: 0
+          description: "Number of GPUs. Accepted and stored, but not yet applied by\
+            \ the engine."
+          type: integer
+        storage_gib:
+          default: 0
+          description: "Storage size in GiB. Accepted and stored, but not yet applied\
+            \ by the engine."
+          type: integer
+      required:
+      - cpu_milli
+      - gpu
+      - ram_mib
+      - storage_gib
       type: object
     AgenticWorkflowWebhook:
       example:

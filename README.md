@@ -638,6 +638,7 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowOutput](docs/AgenticWorkflowOutput.md)
  - [AgenticWorkflowProjectRepository](docs/AgenticWorkflowProjectRepository.md)
  - [AgenticWorkflowRequest](docs/AgenticWorkflowRequest.md)
+ - [AgenticWorkflowResources](docs/AgenticWorkflowResources.md)
  - [AgenticWorkflowResponse](docs/AgenticWorkflowResponse.md)
  - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
  - [AgenticWorkflowWebhook](docs/AgenticWorkflowWebhook.md)

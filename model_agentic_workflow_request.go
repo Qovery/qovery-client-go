@@ -35,6 +35,7 @@ type AgenticWorkflowRequest struct {
 	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories,omitempty"`
 	AgentPrompt          *string                            `json:"agent_prompt,omitempty"`
 	Governance           *AgenticWorkflowGovernance         `json:"governance,omitempty"`
+	Resources            *AgenticWorkflowResources          `json:"resources,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -422,6 +423,38 @@ func (o *AgenticWorkflowRequest) SetGovernance(v AgenticWorkflowGovernance) {
 	o.Governance = &v
 }
 
+// GetResources returns the Resources field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetResources() AgenticWorkflowResources {
+	if o == nil || IsNil(o.Resources) {
+		var ret AgenticWorkflowResources
+		return ret
+	}
+	return *o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetResourcesOk() (*AgenticWorkflowResources, bool) {
+	if o == nil || IsNil(o.Resources) {
+		return nil, false
+	}
+	return o.Resources, true
+}
+
+// HasResources returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasResources() bool {
+	if o != nil && !IsNil(o.Resources) {
+		return true
+	}
+
+	return false
+}
+
+// SetResources gets a reference to the given AgenticWorkflowResources and assigns it to the Resources field.
+func (o *AgenticWorkflowRequest) SetResources(v AgenticWorkflowResources) {
+	o.Resources = &v
+}
+
 func (o AgenticWorkflowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -462,6 +495,9 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Governance) {
 		toSerialize["governance"] = o.Governance
+	}
+	if !IsNil(o.Resources) {
+		toSerialize["resources"] = o.Resources
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -517,6 +553,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project_repositories")
 		delete(additionalProperties, "agent_prompt")
 		delete(additionalProperties, "governance")
+		delete(additionalProperties, "resources")
 		o.AdditionalProperties = additionalProperties
 	}
 

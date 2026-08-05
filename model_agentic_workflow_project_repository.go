@@ -21,9 +21,10 @@ var _ MappedNullable = &AgenticWorkflowProjectRepository{}
 
 // AgenticWorkflowProjectRepository struct for AgenticWorkflowProjectRepository
 type AgenticWorkflowProjectRepository struct {
-	Url                  string `json:"url"`
-	Branch               string `json:"branch"`
-	GitTokenId           string `json:"git_token_id"`
+	Url    string `json:"url"`
+	Branch string `json:"branch"`
+	// Qovery git token id used to clone the repository. Omit it (or send null) for a public repository, which is cloned without credentials.
+	GitTokenId           NullableString `json:"git_token_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -33,11 +34,10 @@ type _AgenticWorkflowProjectRepository AgenticWorkflowProjectRepository
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowProjectRepository(url string, branch string, gitTokenId string) *AgenticWorkflowProjectRepository {
+func NewAgenticWorkflowProjectRepository(url string, branch string) *AgenticWorkflowProjectRepository {
 	this := AgenticWorkflowProjectRepository{}
 	this.Url = url
 	this.Branch = branch
-	this.GitTokenId = gitTokenId
 	return &this
 }
 
@@ -97,28 +97,47 @@ func (o *AgenticWorkflowProjectRepository) SetBranch(v string) {
 	o.Branch = v
 }
 
-// GetGitTokenId returns the GitTokenId field value
+// GetGitTokenId returns the GitTokenId field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AgenticWorkflowProjectRepository) GetGitTokenId() string {
-	if o == nil {
+	if o == nil || IsNil(o.GitTokenId.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.GitTokenId
+	return *o.GitTokenId.Get()
 }
 
-// GetGitTokenIdOk returns a tuple with the GitTokenId field value
+// GetGitTokenIdOk returns a tuple with the GitTokenId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *AgenticWorkflowProjectRepository) GetGitTokenIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.GitTokenId, true
+	return o.GitTokenId.Get(), o.GitTokenId.IsSet()
 }
 
-// SetGitTokenId sets field value
+// HasGitTokenId returns a boolean if a field has been set.
+func (o *AgenticWorkflowProjectRepository) HasGitTokenId() bool {
+	if o != nil && o.GitTokenId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGitTokenId gets a reference to the given NullableString and assigns it to the GitTokenId field.
 func (o *AgenticWorkflowProjectRepository) SetGitTokenId(v string) {
-	o.GitTokenId = v
+	o.GitTokenId.Set(&v)
+}
+
+// SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+func (o *AgenticWorkflowProjectRepository) SetGitTokenIdNil() {
+	o.GitTokenId.Set(nil)
+}
+
+// UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
+func (o *AgenticWorkflowProjectRepository) UnsetGitTokenId() {
+	o.GitTokenId.Unset()
 }
 
 func (o AgenticWorkflowProjectRepository) MarshalJSON() ([]byte, error) {
@@ -133,7 +152,9 @@ func (o AgenticWorkflowProjectRepository) ToMap() (map[string]interface{}, error
 	toSerialize := map[string]interface{}{}
 	toSerialize["url"] = o.Url
 	toSerialize["branch"] = o.Branch
-	toSerialize["git_token_id"] = o.GitTokenId
+	if o.GitTokenId.IsSet() {
+		toSerialize["git_token_id"] = o.GitTokenId.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -149,7 +170,6 @@ func (o *AgenticWorkflowProjectRepository) UnmarshalJSON(data []byte) (err error
 	requiredProperties := []string{
 		"url",
 		"branch",
-		"git_token_id",
 	}
 
 	allProperties := make(map[string]interface{})

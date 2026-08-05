@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Url** | **string** |  | 
 **Branch** | **string** |  | 
-**GitTokenId** | **string** |  | 
+**GitTokenId** | Pointer to **NullableString** | Qovery git token id used to clone the repository. Omit it (or send null) for a public repository, which is cloned without credentials.  | [optional] 
 
 ## Methods
 
 ### NewAgenticWorkflowProjectRepository
 
-`func NewAgenticWorkflowProjectRepository(url string, branch string, gitTokenId string, ) *AgenticWorkflowProjectRepository`
+`func NewAgenticWorkflowProjectRepository(url string, branch string, ) *AgenticWorkflowProjectRepository`
 
 NewAgenticWorkflowProjectRepository instantiates a new AgenticWorkflowProjectRepository object
 This constructor will assign default values to properties that have it defined,
@@ -86,7 +86,22 @@ and a boolean to check if the value has been set.
 
 SetGitTokenId sets GitTokenId field to given value.
 
+### HasGitTokenId
 
+`func (o *AgenticWorkflowProjectRepository) HasGitTokenId() bool`
+
+HasGitTokenId returns a boolean if a field has been set.
+
+### SetGitTokenIdNil
+
+`func (o *AgenticWorkflowProjectRepository) SetGitTokenIdNil(b bool)`
+
+ SetGitTokenIdNil sets the value for GitTokenId to be an explicit nil
+
+### UnsetGitTokenId
+`func (o *AgenticWorkflowProjectRepository) UnsetGitTokenId()`
+
+UnsetGitTokenId ensures that no value is present for GitTokenId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

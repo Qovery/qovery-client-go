@@ -37,13 +37,16 @@ type AgenticWorkflowResponse struct {
 	DockerFragment     string   `json:"docker_fragment"`
 	Enabled            bool     `json:"enabled"`
 	// Raw JSON blob describing the MCP servers configured for this workflow
-	Mcp                  string                             `json:"mcp"`
-	Outputs              []AgenticWorkflowOutput            `json:"outputs"`
-	Model                AgenticWorkflowModelResponse       `json:"model"`
-	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories"`
-	AgentPrompt          string                             `json:"agent_prompt"`
-	Governance           AgenticWorkflowGovernance          `json:"governance"`
-	Webhook              AgenticWorkflowWebhook             `json:"webhook"`
+	Mcp                 string                             `json:"mcp"`
+	Outputs             []AgenticWorkflowOutput            `json:"outputs"`
+	Model               AgenticWorkflowModelResponse       `json:"model"`
+	ProjectRepositories []AgenticWorkflowProjectRepository `json:"project_repositories"`
+	AgentPrompt         string                             `json:"agent_prompt"`
+	Governance          AgenticWorkflowGovernance          `json:"governance"`
+	Resources           AgenticWorkflowResources           `json:"resources"`
+	Webhook             AgenticWorkflowWebhook             `json:"webhook"`
+	// Icon URI representing the agentic workflow.
+	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -53,7 +56,7 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -71,6 +74,7 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 	this.ProjectRepositories = projectRepositories
 	this.AgentPrompt = agentPrompt
 	this.Governance = governance
+	this.Resources = resources
 	this.Webhook = webhook
 	return &this
 }
@@ -499,6 +503,30 @@ func (o *AgenticWorkflowResponse) SetGovernance(v AgenticWorkflowGovernance) {
 	o.Governance = v
 }
 
+// GetResources returns the Resources field value
+func (o *AgenticWorkflowResponse) GetResources() AgenticWorkflowResources {
+	if o == nil {
+		var ret AgenticWorkflowResources
+		return ret
+	}
+
+	return o.Resources
+}
+
+// GetResourcesOk returns a tuple with the Resources field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetResourcesOk() (*AgenticWorkflowResources, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Resources, true
+}
+
+// SetResources sets field value
+func (o *AgenticWorkflowResponse) SetResources(v AgenticWorkflowResources) {
+	o.Resources = v
+}
+
 // GetWebhook returns the Webhook field value
 func (o *AgenticWorkflowResponse) GetWebhook() AgenticWorkflowWebhook {
 	if o == nil {
@@ -521,6 +549,38 @@ func (o *AgenticWorkflowResponse) GetWebhookOk() (*AgenticWorkflowWebhook, bool)
 // SetWebhook sets field value
 func (o *AgenticWorkflowResponse) SetWebhook(v AgenticWorkflowWebhook) {
 	o.Webhook = v
+}
+
+// GetIconUri returns the IconUri field value if set, zero value otherwise.
+func (o *AgenticWorkflowResponse) GetIconUri() string {
+	if o == nil || IsNil(o.IconUri) {
+		var ret string
+		return ret
+	}
+	return *o.IconUri
+}
+
+// GetIconUriOk returns a tuple with the IconUri field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetIconUriOk() (*string, bool) {
+	if o == nil || IsNil(o.IconUri) {
+		return nil, false
+	}
+	return o.IconUri, true
+}
+
+// HasIconUri returns a boolean if a field has been set.
+func (o *AgenticWorkflowResponse) HasIconUri() bool {
+	if o != nil && !IsNil(o.IconUri) {
+		return true
+	}
+
+	return false
+}
+
+// SetIconUri gets a reference to the given string and assigns it to the IconUri field.
+func (o *AgenticWorkflowResponse) SetIconUri(v string) {
+	o.IconUri = &v
 }
 
 func (o AgenticWorkflowResponse) MarshalJSON() ([]byte, error) {
@@ -552,7 +612,11 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["project_repositories"] = o.ProjectRepositories
 	toSerialize["agent_prompt"] = o.AgentPrompt
 	toSerialize["governance"] = o.Governance
+	toSerialize["resources"] = o.Resources
 	toSerialize["webhook"] = o.Webhook
+	if !IsNil(o.IconUri) {
+		toSerialize["icon_uri"] = o.IconUri
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -582,6 +646,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"project_repositories",
 		"agent_prompt",
 		"governance",
+		"resources",
 		"webhook",
 	}
 
@@ -629,7 +694,9 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "project_repositories")
 		delete(additionalProperties, "agent_prompt")
 		delete(additionalProperties, "governance")
+		delete(additionalProperties, "resources")
 		delete(additionalProperties, "webhook")
+		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}
 
