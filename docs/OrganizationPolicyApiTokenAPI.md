@@ -1,20 +1,20 @@
-# \OrganizationAgentApiTokenAPI
+# \OrganizationPolicyApiTokenAPI
 
 All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CreateOrganizationAgentApiToken**](OrganizationAgentApiTokenAPI.md#CreateOrganizationAgentApiToken) | **Post** /organization/{organizationId}/agentApiToken | Create an organization agent api token
-[**DeleteOrganizationAgentApiToken**](OrganizationAgentApiTokenAPI.md#DeleteOrganizationAgentApiToken) | **Delete** /organization/{organizationId}/agentApiToken/{agentApiTokenId} | Delete organization agent api token
-[**ListOrganizationAgentApiTokens**](OrganizationAgentApiTokenAPI.md#ListOrganizationAgentApiTokens) | **Get** /organization/{organizationId}/agentApiToken | List organization agent api tokens
+[**CreateOrganizationPolicyApiToken**](OrganizationPolicyApiTokenAPI.md#CreateOrganizationPolicyApiToken) | **Post** /organization/{organizationId}/policyApiToken | Create an organization policy api token
+[**DeleteOrganizationPolicyApiToken**](OrganizationPolicyApiTokenAPI.md#DeleteOrganizationPolicyApiToken) | **Delete** /organization/{organizationId}/policyApiToken/{policyApiTokenId} | Delete organization policy api token
+[**ListOrganizationPolicyApiTokens**](OrganizationPolicyApiTokenAPI.md#ListOrganizationPolicyApiTokens) | **Get** /organization/{organizationId}/policyApiToken | List organization policy api tokens
 
 
 
-## CreateOrganizationAgentApiToken
+## CreateOrganizationPolicyApiToken
 
-> OrganizationAgentApiTokenCreate CreateOrganizationAgentApiToken(ctx, organizationId).OrganizationAgentApiTokenCreateRequest(organizationAgentApiTokenCreateRequest).Execute()
+> OrganizationPolicyApiTokenCreate CreateOrganizationPolicyApiToken(ctx, organizationId).OrganizationPolicyApiTokenCreateRequest(organizationPolicyApiTokenCreateRequest).Execute()
 
-Create an organization agent api token
+Create an organization policy api token
 
 
 
@@ -32,17 +32,17 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	organizationAgentApiTokenCreateRequest := *openapiclient.NewOrganizationAgentApiTokenCreateRequest("Name_example", "OpaPolicy_example") // OrganizationAgentApiTokenCreateRequest |  (optional)
+	organizationPolicyApiTokenCreateRequest := *openapiclient.NewOrganizationPolicyApiTokenCreateRequest("Name_example", "OpaPolicy_example") // OrganizationPolicyApiTokenCreateRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationAgentApiTokenAPI.CreateOrganizationAgentApiToken(context.Background(), organizationId).OrganizationAgentApiTokenCreateRequest(organizationAgentApiTokenCreateRequest).Execute()
+	resp, r, err := apiClient.OrganizationPolicyApiTokenAPI.CreateOrganizationPolicyApiToken(context.Background(), organizationId).OrganizationPolicyApiTokenCreateRequest(organizationPolicyApiTokenCreateRequest).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAgentApiTokenAPI.CreateOrganizationAgentApiToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationPolicyApiTokenAPI.CreateOrganizationPolicyApiToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `CreateOrganizationAgentApiToken`: OrganizationAgentApiTokenCreate
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationAgentApiTokenAPI.CreateOrganizationAgentApiToken`: %v\n", resp)
+	// response from `CreateOrganizationPolicyApiToken`: OrganizationPolicyApiTokenCreate
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationPolicyApiTokenAPI.CreateOrganizationPolicyApiToken`: %v\n", resp)
 }
 ```
 
@@ -56,17 +56,17 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiCreateOrganizationAgentApiTokenRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiCreateOrganizationPolicyApiTokenRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **organizationAgentApiTokenCreateRequest** | [**OrganizationAgentApiTokenCreateRequest**](OrganizationAgentApiTokenCreateRequest.md) |  | 
+ **organizationPolicyApiTokenCreateRequest** | [**OrganizationPolicyApiTokenCreateRequest**](OrganizationPolicyApiTokenCreateRequest.md) |  | 
 
 ### Return type
 
-[**OrganizationAgentApiTokenCreate**](OrganizationAgentApiTokenCreate.md)
+[**OrganizationPolicyApiTokenCreate**](OrganizationPolicyApiTokenCreate.md)
 
 ### Authorization
 
@@ -82,11 +82,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## DeleteOrganizationAgentApiToken
+## DeleteOrganizationPolicyApiToken
 
-> DeleteOrganizationAgentApiToken(ctx, organizationId, agentApiTokenId).Execute()
+> DeleteOrganizationPolicyApiToken(ctx, organizationId, policyApiTokenId).Execute()
 
-Delete organization agent api token
+Delete organization policy api token
 
 
 
@@ -104,13 +104,13 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	agentApiTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization Agent Api Token ID
+	policyApiTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization Policy Api Token ID
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.OrganizationAgentApiTokenAPI.DeleteOrganizationAgentApiToken(context.Background(), organizationId, agentApiTokenId).Execute()
+	r, err := apiClient.OrganizationPolicyApiTokenAPI.DeleteOrganizationPolicyApiToken(context.Background(), organizationId, policyApiTokenId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAgentApiTokenAPI.DeleteOrganizationAgentApiToken``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationPolicyApiTokenAPI.DeleteOrganizationPolicyApiToken``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
 }
@@ -123,11 +123,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **organizationId** | **string** | Organization ID | 
-**agentApiTokenId** | **string** | Organization Agent Api Token ID | 
+**policyApiTokenId** | **string** | Organization Policy Api Token ID | 
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiDeleteOrganizationAgentApiTokenRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiDeleteOrganizationPolicyApiTokenRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -153,11 +153,11 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## ListOrganizationAgentApiTokens
+## ListOrganizationPolicyApiTokens
 
-> OrganizationAgentApiTokenResponseList ListOrganizationAgentApiTokens(ctx, organizationId).Execute()
+> OrganizationPolicyApiTokenResponseList ListOrganizationPolicyApiTokens(ctx, organizationId).Execute()
 
-List organization agent api tokens
+List organization policy api tokens
 
 
 
@@ -178,13 +178,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.OrganizationAgentApiTokenAPI.ListOrganizationAgentApiTokens(context.Background(), organizationId).Execute()
+	resp, r, err := apiClient.OrganizationPolicyApiTokenAPI.ListOrganizationPolicyApiTokens(context.Background(), organizationId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAgentApiTokenAPI.ListOrganizationAgentApiTokens``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationPolicyApiTokenAPI.ListOrganizationPolicyApiTokens``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListOrganizationAgentApiTokens`: OrganizationAgentApiTokenResponseList
-	fmt.Fprintf(os.Stdout, "Response from `OrganizationAgentApiTokenAPI.ListOrganizationAgentApiTokens`: %v\n", resp)
+	// response from `ListOrganizationPolicyApiTokens`: OrganizationPolicyApiTokenResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationPolicyApiTokenAPI.ListOrganizationPolicyApiTokens`: %v\n", resp)
 }
 ```
 
@@ -198,7 +198,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListOrganizationAgentApiTokensRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListOrganizationPolicyApiTokensRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**OrganizationAgentApiTokenResponseList**](OrganizationAgentApiTokenResponseList.md)
+[**OrganizationPolicyApiTokenResponseList**](OrganizationPolicyApiTokenResponseList.md)
 
 ### Authorization
 

@@ -20,40 +20,40 @@ import (
 	"strings"
 )
 
-// OrganizationAgentApiTokenAPIService OrganizationAgentApiTokenAPI service
-type OrganizationAgentApiTokenAPIService service
+// OrganizationPolicyApiTokenAPIService OrganizationPolicyApiTokenAPI service
+type OrganizationPolicyApiTokenAPIService service
 
-type ApiCreateOrganizationAgentApiTokenRequest struct {
-	ctx                                    context.Context
-	ApiService                             *OrganizationAgentApiTokenAPIService
-	organizationId                         string
-	organizationAgentApiTokenCreateRequest *OrganizationAgentApiTokenCreateRequest
+type ApiCreateOrganizationPolicyApiTokenRequest struct {
+	ctx                                     context.Context
+	ApiService                              *OrganizationPolicyApiTokenAPIService
+	organizationId                          string
+	organizationPolicyApiTokenCreateRequest *OrganizationPolicyApiTokenCreateRequest
 }
 
-func (r ApiCreateOrganizationAgentApiTokenRequest) OrganizationAgentApiTokenCreateRequest(organizationAgentApiTokenCreateRequest OrganizationAgentApiTokenCreateRequest) ApiCreateOrganizationAgentApiTokenRequest {
-	r.organizationAgentApiTokenCreateRequest = &organizationAgentApiTokenCreateRequest
+func (r ApiCreateOrganizationPolicyApiTokenRequest) OrganizationPolicyApiTokenCreateRequest(organizationPolicyApiTokenCreateRequest OrganizationPolicyApiTokenCreateRequest) ApiCreateOrganizationPolicyApiTokenRequest {
+	r.organizationPolicyApiTokenCreateRequest = &organizationPolicyApiTokenCreateRequest
 	return r
 }
 
-func (r ApiCreateOrganizationAgentApiTokenRequest) Execute() (*OrganizationAgentApiTokenCreate, *http.Response, error) {
-	return r.ApiService.CreateOrganizationAgentApiTokenExecute(r)
+func (r ApiCreateOrganizationPolicyApiTokenRequest) Execute() (*OrganizationPolicyApiTokenCreate, *http.Response, error) {
+	return r.ApiService.CreateOrganizationPolicyApiTokenExecute(r)
 }
 
 /*
-CreateOrganizationAgentApiToken Create an organization agent api token
+CreateOrganizationPolicyApiToken Create an organization policy api token
 
-Create an agent api token, intended for autonomous agents calling the Qovery API.
+Create a policy api token, intended for autonomous agents calling the Qovery API.
 
-Unlike a regular api token, an agent api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.
+Unlike a regular api token, a policy api token carries **no organization role**. The Open Policy Agent (rego) policy attached to it is evaluated on every request and is the only thing constraining what the token can do: a policy that allows everything grants full organization admin access. For that reason only an organization owner or admin can create one.
 
 The generated token value is returned only in this response and cannot be retrieved afterwards.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
-	@return ApiCreateOrganizationAgentApiTokenRequest
+	@return ApiCreateOrganizationPolicyApiTokenRequest
 */
-func (a *OrganizationAgentApiTokenAPIService) CreateOrganizationAgentApiToken(ctx context.Context, organizationId string) ApiCreateOrganizationAgentApiTokenRequest {
-	return ApiCreateOrganizationAgentApiTokenRequest{
+func (a *OrganizationPolicyApiTokenAPIService) CreateOrganizationPolicyApiToken(ctx context.Context, organizationId string) ApiCreateOrganizationPolicyApiTokenRequest {
+	return ApiCreateOrganizationPolicyApiTokenRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -62,21 +62,21 @@ func (a *OrganizationAgentApiTokenAPIService) CreateOrganizationAgentApiToken(ct
 
 // Execute executes the request
 //
-//	@return OrganizationAgentApiTokenCreate
-func (a *OrganizationAgentApiTokenAPIService) CreateOrganizationAgentApiTokenExecute(r ApiCreateOrganizationAgentApiTokenRequest) (*OrganizationAgentApiTokenCreate, *http.Response, error) {
+//	@return OrganizationPolicyApiTokenCreate
+func (a *OrganizationPolicyApiTokenAPIService) CreateOrganizationPolicyApiTokenExecute(r ApiCreateOrganizationPolicyApiTokenRequest) (*OrganizationPolicyApiTokenCreate, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAgentApiTokenCreate
+		localVarReturnValue *OrganizationPolicyApiTokenCreate
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAgentApiTokenAPIService.CreateOrganizationAgentApiToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationPolicyApiTokenAPIService.CreateOrganizationPolicyApiToken")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/agentApiToken"
+	localVarPath := localBasePath + "/organization/{organizationId}/policyApiToken"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -101,7 +101,7 @@ func (a *OrganizationAgentApiTokenAPIService) CreateOrganizationAgentApiTokenExe
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	// body params
-	localVarPostBody = r.organizationAgentApiTokenCreateRequest
+	localVarPostBody = r.organizationPolicyApiTokenCreateRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
@@ -153,52 +153,52 @@ func (a *OrganizationAgentApiTokenAPIService) CreateOrganizationAgentApiTokenExe
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiDeleteOrganizationAgentApiTokenRequest struct {
-	ctx             context.Context
-	ApiService      *OrganizationAgentApiTokenAPIService
-	organizationId  string
-	agentApiTokenId string
+type ApiDeleteOrganizationPolicyApiTokenRequest struct {
+	ctx              context.Context
+	ApiService       *OrganizationPolicyApiTokenAPIService
+	organizationId   string
+	policyApiTokenId string
 }
 
-func (r ApiDeleteOrganizationAgentApiTokenRequest) Execute() (*http.Response, error) {
-	return r.ApiService.DeleteOrganizationAgentApiTokenExecute(r)
+func (r ApiDeleteOrganizationPolicyApiTokenRequest) Execute() (*http.Response, error) {
+	return r.ApiService.DeleteOrganizationPolicyApiTokenExecute(r)
 }
 
 /*
-DeleteOrganizationAgentApiToken Delete organization agent api token
+DeleteOrganizationPolicyApiToken Delete organization policy api token
 
-Delete organization agent api token
+Delete organization policy api token
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
-	@param agentApiTokenId Organization Agent Api Token ID
-	@return ApiDeleteOrganizationAgentApiTokenRequest
+	@param policyApiTokenId Organization Policy Api Token ID
+	@return ApiDeleteOrganizationPolicyApiTokenRequest
 */
-func (a *OrganizationAgentApiTokenAPIService) DeleteOrganizationAgentApiToken(ctx context.Context, organizationId string, agentApiTokenId string) ApiDeleteOrganizationAgentApiTokenRequest {
-	return ApiDeleteOrganizationAgentApiTokenRequest{
-		ApiService:      a,
-		ctx:             ctx,
-		organizationId:  organizationId,
-		agentApiTokenId: agentApiTokenId,
+func (a *OrganizationPolicyApiTokenAPIService) DeleteOrganizationPolicyApiToken(ctx context.Context, organizationId string, policyApiTokenId string) ApiDeleteOrganizationPolicyApiTokenRequest {
+	return ApiDeleteOrganizationPolicyApiTokenRequest{
+		ApiService:       a,
+		ctx:              ctx,
+		organizationId:   organizationId,
+		policyApiTokenId: policyApiTokenId,
 	}
 }
 
 // Execute executes the request
-func (a *OrganizationAgentApiTokenAPIService) DeleteOrganizationAgentApiTokenExecute(r ApiDeleteOrganizationAgentApiTokenRequest) (*http.Response, error) {
+func (a *OrganizationPolicyApiTokenAPIService) DeleteOrganizationPolicyApiTokenExecute(r ApiDeleteOrganizationPolicyApiTokenRequest) (*http.Response, error) {
 	var (
 		localVarHTTPMethod = http.MethodDelete
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAgentApiTokenAPIService.DeleteOrganizationAgentApiToken")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationPolicyApiTokenAPIService.DeleteOrganizationPolicyApiToken")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/agentApiToken/{agentApiTokenId}"
+	localVarPath := localBasePath + "/organization/{organizationId}/policyApiToken/{policyApiTokenId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"agentApiTokenId"+"}", url.PathEscape(parameterValueToString(r.agentApiTokenId, "agentApiTokenId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"policyApiTokenId"+"}", url.PathEscape(parameterValueToString(r.policyApiTokenId, "policyApiTokenId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -263,27 +263,27 @@ func (a *OrganizationAgentApiTokenAPIService) DeleteOrganizationAgentApiTokenExe
 	return localVarHTTPResponse, nil
 }
 
-type ApiListOrganizationAgentApiTokensRequest struct {
+type ApiListOrganizationPolicyApiTokensRequest struct {
 	ctx            context.Context
-	ApiService     *OrganizationAgentApiTokenAPIService
+	ApiService     *OrganizationPolicyApiTokenAPIService
 	organizationId string
 }
 
-func (r ApiListOrganizationAgentApiTokensRequest) Execute() (*OrganizationAgentApiTokenResponseList, *http.Response, error) {
-	return r.ApiService.ListOrganizationAgentApiTokensExecute(r)
+func (r ApiListOrganizationPolicyApiTokensRequest) Execute() (*OrganizationPolicyApiTokenResponseList, *http.Response, error) {
+	return r.ApiService.ListOrganizationPolicyApiTokensExecute(r)
 }
 
 /*
-ListOrganizationAgentApiTokens List organization agent api tokens
+ListOrganizationPolicyApiTokens List organization policy api tokens
 
-List the agent api tokens of the organization, each with the Open Policy Agent (rego) policy it carries. The token value itself is never returned here, it is only shown once at creation.
+List the policy api tokens of the organization, each with the Open Policy Agent (rego) policy it carries. The token value itself is never returned here, it is only shown once at creation.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
-	@return ApiListOrganizationAgentApiTokensRequest
+	@return ApiListOrganizationPolicyApiTokensRequest
 */
-func (a *OrganizationAgentApiTokenAPIService) ListOrganizationAgentApiTokens(ctx context.Context, organizationId string) ApiListOrganizationAgentApiTokensRequest {
-	return ApiListOrganizationAgentApiTokensRequest{
+func (a *OrganizationPolicyApiTokenAPIService) ListOrganizationPolicyApiTokens(ctx context.Context, organizationId string) ApiListOrganizationPolicyApiTokensRequest {
+	return ApiListOrganizationPolicyApiTokensRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		organizationId: organizationId,
@@ -292,21 +292,21 @@ func (a *OrganizationAgentApiTokenAPIService) ListOrganizationAgentApiTokens(ctx
 
 // Execute executes the request
 //
-//	@return OrganizationAgentApiTokenResponseList
-func (a *OrganizationAgentApiTokenAPIService) ListOrganizationAgentApiTokensExecute(r ApiListOrganizationAgentApiTokensRequest) (*OrganizationAgentApiTokenResponseList, *http.Response, error) {
+//	@return OrganizationPolicyApiTokenResponseList
+func (a *OrganizationPolicyApiTokenAPIService) ListOrganizationPolicyApiTokensExecute(r ApiListOrganizationPolicyApiTokensRequest) (*OrganizationPolicyApiTokenResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *OrganizationAgentApiTokenResponseList
+		localVarReturnValue *OrganizationPolicyApiTokenResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationAgentApiTokenAPIService.ListOrganizationAgentApiTokens")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationPolicyApiTokenAPIService.ListOrganizationPolicyApiTokens")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/organization/{organizationId}/agentApiToken"
+	localVarPath := localBasePath + "/organization/{organizationId}/policyApiToken"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
 
 	localVarHeaderParams := make(map[string]string)

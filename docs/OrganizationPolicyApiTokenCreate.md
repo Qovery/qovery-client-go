@@ -1,4 +1,4 @@
-# OrganizationAgentApiToken
+# OrganizationPolicyApiTokenCreate
 
 ## Properties
 
@@ -9,237 +9,263 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
-**OpaPolicy** | Pointer to **string** | the Open Policy Agent (rego) policy evaluated on every request made with this token | [optional] 
+**Token** | Pointer to **string** | the generated token to send in &#39;Authorization&#39; header prefixed by &#39;Token &#39;. It is returned only here and cannot be retrieved afterwards. | [optional] 
 **CreatorName** | Pointer to **NullableString** |  | [optional] 
+**UserSub** | Pointer to **string** |  | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
 
-### NewOrganizationAgentApiToken
+### NewOrganizationPolicyApiTokenCreate
 
-`func NewOrganizationAgentApiToken(id string, createdAt time.Time, ) *OrganizationAgentApiToken`
+`func NewOrganizationPolicyApiTokenCreate(id string, createdAt time.Time, ) *OrganizationPolicyApiTokenCreate`
 
-NewOrganizationAgentApiToken instantiates a new OrganizationAgentApiToken object
+NewOrganizationPolicyApiTokenCreate instantiates a new OrganizationPolicyApiTokenCreate object
 This constructor will assign default values to properties that have it defined,
 and makes sure properties required by API are set, but the set of arguments
 will change when the set of required properties is changed
 
-### NewOrganizationAgentApiTokenWithDefaults
+### NewOrganizationPolicyApiTokenCreateWithDefaults
 
-`func NewOrganizationAgentApiTokenWithDefaults() *OrganizationAgentApiToken`
+`func NewOrganizationPolicyApiTokenCreateWithDefaults() *OrganizationPolicyApiTokenCreate`
 
-NewOrganizationAgentApiTokenWithDefaults instantiates a new OrganizationAgentApiToken object
+NewOrganizationPolicyApiTokenCreateWithDefaults instantiates a new OrganizationPolicyApiTokenCreate object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
 ### GetId
 
-`func (o *OrganizationAgentApiToken) GetId() string`
+`func (o *OrganizationPolicyApiTokenCreate) GetId() string`
 
 GetId returns the Id field if non-nil, zero value otherwise.
 
 ### GetIdOk
 
-`func (o *OrganizationAgentApiToken) GetIdOk() (*string, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetIdOk() (*string, bool)`
 
 GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetId
 
-`func (o *OrganizationAgentApiToken) SetId(v string)`
+`func (o *OrganizationPolicyApiTokenCreate) SetId(v string)`
 
 SetId sets Id field to given value.
 
 
 ### GetCreatedAt
 
-`func (o *OrganizationAgentApiToken) GetCreatedAt() time.Time`
+`func (o *OrganizationPolicyApiTokenCreate) GetCreatedAt() time.Time`
 
 GetCreatedAt returns the CreatedAt field if non-nil, zero value otherwise.
 
 ### GetCreatedAtOk
 
-`func (o *OrganizationAgentApiToken) GetCreatedAtOk() (*time.Time, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetCreatedAtOk() (*time.Time, bool)`
 
 GetCreatedAtOk returns a tuple with the CreatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatedAt
 
-`func (o *OrganizationAgentApiToken) SetCreatedAt(v time.Time)`
+`func (o *OrganizationPolicyApiTokenCreate) SetCreatedAt(v time.Time)`
 
 SetCreatedAt sets CreatedAt field to given value.
 
 
 ### GetUpdatedAt
 
-`func (o *OrganizationAgentApiToken) GetUpdatedAt() time.Time`
+`func (o *OrganizationPolicyApiTokenCreate) GetUpdatedAt() time.Time`
 
 GetUpdatedAt returns the UpdatedAt field if non-nil, zero value otherwise.
 
 ### GetUpdatedAtOk
 
-`func (o *OrganizationAgentApiToken) GetUpdatedAtOk() (*time.Time, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetUpdatedAtOk() (*time.Time, bool)`
 
 GetUpdatedAtOk returns a tuple with the UpdatedAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUpdatedAt
 
-`func (o *OrganizationAgentApiToken) SetUpdatedAt(v time.Time)`
+`func (o *OrganizationPolicyApiTokenCreate) SetUpdatedAt(v time.Time)`
 
 SetUpdatedAt sets UpdatedAt field to given value.
 
 ### HasUpdatedAt
 
-`func (o *OrganizationAgentApiToken) HasUpdatedAt() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
 
 ### GetName
 
-`func (o *OrganizationAgentApiToken) GetName() string`
+`func (o *OrganizationPolicyApiTokenCreate) GetName() string`
 
 GetName returns the Name field if non-nil, zero value otherwise.
 
 ### GetNameOk
 
-`func (o *OrganizationAgentApiToken) GetNameOk() (*string, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetNameOk() (*string, bool)`
 
 GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetName
 
-`func (o *OrganizationAgentApiToken) SetName(v string)`
+`func (o *OrganizationPolicyApiTokenCreate) SetName(v string)`
 
 SetName sets Name field to given value.
 
 ### HasName
 
-`func (o *OrganizationAgentApiToken) HasName() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasName() bool`
 
 HasName returns a boolean if a field has been set.
 
 ### GetDescription
 
-`func (o *OrganizationAgentApiToken) GetDescription() string`
+`func (o *OrganizationPolicyApiTokenCreate) GetDescription() string`
 
 GetDescription returns the Description field if non-nil, zero value otherwise.
 
 ### GetDescriptionOk
 
-`func (o *OrganizationAgentApiToken) GetDescriptionOk() (*string, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetDescriptionOk() (*string, bool)`
 
 GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDescription
 
-`func (o *OrganizationAgentApiToken) SetDescription(v string)`
+`func (o *OrganizationPolicyApiTokenCreate) SetDescription(v string)`
 
 SetDescription sets Description field to given value.
 
 ### HasDescription
 
-`func (o *OrganizationAgentApiToken) HasDescription() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
 
-### GetOpaPolicy
+### GetToken
 
-`func (o *OrganizationAgentApiToken) GetOpaPolicy() string`
+`func (o *OrganizationPolicyApiTokenCreate) GetToken() string`
 
-GetOpaPolicy returns the OpaPolicy field if non-nil, zero value otherwise.
+GetToken returns the Token field if non-nil, zero value otherwise.
 
-### GetOpaPolicyOk
+### GetTokenOk
 
-`func (o *OrganizationAgentApiToken) GetOpaPolicyOk() (*string, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetTokenOk() (*string, bool)`
 
-GetOpaPolicyOk returns a tuple with the OpaPolicy field if it's non-nil, zero value otherwise
+GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetOpaPolicy
+### SetToken
 
-`func (o *OrganizationAgentApiToken) SetOpaPolicy(v string)`
+`func (o *OrganizationPolicyApiTokenCreate) SetToken(v string)`
 
-SetOpaPolicy sets OpaPolicy field to given value.
+SetToken sets Token field to given value.
 
-### HasOpaPolicy
+### HasToken
 
-`func (o *OrganizationAgentApiToken) HasOpaPolicy() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasToken() bool`
 
-HasOpaPolicy returns a boolean if a field has been set.
+HasToken returns a boolean if a field has been set.
 
 ### GetCreatorName
 
-`func (o *OrganizationAgentApiToken) GetCreatorName() string`
+`func (o *OrganizationPolicyApiTokenCreate) GetCreatorName() string`
 
 GetCreatorName returns the CreatorName field if non-nil, zero value otherwise.
 
 ### GetCreatorNameOk
 
-`func (o *OrganizationAgentApiToken) GetCreatorNameOk() (*string, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetCreatorNameOk() (*string, bool)`
 
 GetCreatorNameOk returns a tuple with the CreatorName field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetCreatorName
 
-`func (o *OrganizationAgentApiToken) SetCreatorName(v string)`
+`func (o *OrganizationPolicyApiTokenCreate) SetCreatorName(v string)`
 
 SetCreatorName sets CreatorName field to given value.
 
 ### HasCreatorName
 
-`func (o *OrganizationAgentApiToken) HasCreatorName() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasCreatorName() bool`
 
 HasCreatorName returns a boolean if a field has been set.
 
 ### SetCreatorNameNil
 
-`func (o *OrganizationAgentApiToken) SetCreatorNameNil(b bool)`
+`func (o *OrganizationPolicyApiTokenCreate) SetCreatorNameNil(b bool)`
 
  SetCreatorNameNil sets the value for CreatorName to be an explicit nil
 
 ### UnsetCreatorName
-`func (o *OrganizationAgentApiToken) UnsetCreatorName()`
+`func (o *OrganizationPolicyApiTokenCreate) UnsetCreatorName()`
 
 UnsetCreatorName ensures that no value is present for CreatorName, not even an explicit nil
+### GetUserSub
+
+`func (o *OrganizationPolicyApiTokenCreate) GetUserSub() string`
+
+GetUserSub returns the UserSub field if non-nil, zero value otherwise.
+
+### GetUserSubOk
+
+`func (o *OrganizationPolicyApiTokenCreate) GetUserSubOk() (*string, bool)`
+
+GetUserSubOk returns a tuple with the UserSub field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetUserSub
+
+`func (o *OrganizationPolicyApiTokenCreate) SetUserSub(v string)`
+
+SetUserSub sets UserSub field to given value.
+
+### HasUserSub
+
+`func (o *OrganizationPolicyApiTokenCreate) HasUserSub() bool`
+
+HasUserSub returns a boolean if a field has been set.
+
 ### GetExpiresAt
 
-`func (o *OrganizationAgentApiToken) GetExpiresAt() time.Time`
+`func (o *OrganizationPolicyApiTokenCreate) GetExpiresAt() time.Time`
 
 GetExpiresAt returns the ExpiresAt field if non-nil, zero value otherwise.
 
 ### GetExpiresAtOk
 
-`func (o *OrganizationAgentApiToken) GetExpiresAtOk() (*time.Time, bool)`
+`func (o *OrganizationPolicyApiTokenCreate) GetExpiresAtOk() (*time.Time, bool)`
 
 GetExpiresAtOk returns a tuple with the ExpiresAt field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetExpiresAt
 
-`func (o *OrganizationAgentApiToken) SetExpiresAt(v time.Time)`
+`func (o *OrganizationPolicyApiTokenCreate) SetExpiresAt(v time.Time)`
 
 SetExpiresAt sets ExpiresAt field to given value.
 
 ### HasExpiresAt
 
-`func (o *OrganizationAgentApiToken) HasExpiresAt() bool`
+`func (o *OrganizationPolicyApiTokenCreate) HasExpiresAt() bool`
 
 HasExpiresAt returns a boolean if a field has been set.
 
 ### SetExpiresAtNil
 
-`func (o *OrganizationAgentApiToken) SetExpiresAtNil(b bool)`
+`func (o *OrganizationPolicyApiTokenCreate) SetExpiresAtNil(b bool)`
 
  SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
 
 ### UnsetExpiresAt
-`func (o *OrganizationAgentApiToken) UnsetExpiresAt()`
+`func (o *OrganizationPolicyApiTokenCreate) UnsetExpiresAt()`
 
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
 

@@ -193,8 +193,6 @@ type APIClient struct {
 
 	OrganizationAccountGitRepositoriesAPI *OrganizationAccountGitRepositoriesAPIService
 
-	OrganizationAgentApiTokenAPI *OrganizationAgentApiTokenAPIService
-
 	OrganizationAnnotationsGroupAPI *OrganizationAnnotationsGroupAPIService
 
 	OrganizationApiTokenAPI *OrganizationApiTokenAPIService
@@ -210,6 +208,8 @@ type APIClient struct {
 	OrganizationLabelsGroupAPI *OrganizationLabelsGroupAPIService
 
 	OrganizationMainCallsAPI *OrganizationMainCallsAPIService
+
+	OrganizationPolicyApiTokenAPI *OrganizationPolicyApiTokenAPIService
 
 	OrganizationWebhookAPI *OrganizationWebhookAPIService
 
@@ -340,7 +340,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
 	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)
-	c.OrganizationAgentApiTokenAPI = (*OrganizationAgentApiTokenAPIService)(&c.common)
 	c.OrganizationAnnotationsGroupAPI = (*OrganizationAnnotationsGroupAPIService)(&c.common)
 	c.OrganizationApiTokenAPI = (*OrganizationApiTokenAPIService)(&c.common)
 	c.OrganizationClusterLockAPI = (*OrganizationClusterLockAPIService)(&c.common)
@@ -349,6 +348,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.OrganizationEventAPI = (*OrganizationEventAPIService)(&c.common)
 	c.OrganizationLabelsGroupAPI = (*OrganizationLabelsGroupAPIService)(&c.common)
 	c.OrganizationMainCallsAPI = (*OrganizationMainCallsAPIService)(&c.common)
+	c.OrganizationPolicyApiTokenAPI = (*OrganizationPolicyApiTokenAPIService)(&c.common)
 	c.OrganizationWebhookAPI = (*OrganizationWebhookAPIService)(&c.common)
 	c.PlatformConfigurationAPI = (*PlatformConfigurationAPIService)(&c.common)
 	c.ProjectDeploymentRuleAPI = (*ProjectDeploymentRuleAPIService)(&c.common)

@@ -17,47 +17,46 @@ import (
 	"time"
 )
 
-// checks if the OrganizationAgentApiTokenCreate type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &OrganizationAgentApiTokenCreate{}
+// checks if the OrganizationPolicyApiToken type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &OrganizationPolicyApiToken{}
 
-// OrganizationAgentApiTokenCreate struct for OrganizationAgentApiTokenCreate
-type OrganizationAgentApiTokenCreate struct {
+// OrganizationPolicyApiToken struct for OrganizationPolicyApiToken
+type OrganizationPolicyApiToken struct {
 	Id          string     `json:"id"`
 	CreatedAt   time.Time  `json:"created_at"`
 	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 	Name        *string    `json:"name,omitempty"`
 	Description *string    `json:"description,omitempty"`
-	// the generated token to send in 'Authorization' header prefixed by 'Token '. It is returned only here and cannot be retrieved afterwards.
-	Token                *string        `json:"token,omitempty"`
+	// the Open Policy Agent (rego) policy evaluated on every request made with this token
+	OpaPolicy            *string        `json:"opa_policy,omitempty"`
 	CreatorName          NullableString `json:"creator_name,omitempty"`
-	UserSub              *string        `json:"user_sub,omitempty"`
 	ExpiresAt            NullableTime   `json:"expires_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
-type _OrganizationAgentApiTokenCreate OrganizationAgentApiTokenCreate
+type _OrganizationPolicyApiToken OrganizationPolicyApiToken
 
-// NewOrganizationAgentApiTokenCreate instantiates a new OrganizationAgentApiTokenCreate object
+// NewOrganizationPolicyApiToken instantiates a new OrganizationPolicyApiToken object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationAgentApiTokenCreate(id string, createdAt time.Time) *OrganizationAgentApiTokenCreate {
-	this := OrganizationAgentApiTokenCreate{}
+func NewOrganizationPolicyApiToken(id string, createdAt time.Time) *OrganizationPolicyApiToken {
+	this := OrganizationPolicyApiToken{}
 	this.Id = id
 	this.CreatedAt = createdAt
 	return &this
 }
 
-// NewOrganizationAgentApiTokenCreateWithDefaults instantiates a new OrganizationAgentApiTokenCreate object
+// NewOrganizationPolicyApiTokenWithDefaults instantiates a new OrganizationPolicyApiToken object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewOrganizationAgentApiTokenCreateWithDefaults() *OrganizationAgentApiTokenCreate {
-	this := OrganizationAgentApiTokenCreate{}
+func NewOrganizationPolicyApiTokenWithDefaults() *OrganizationPolicyApiToken {
+	this := OrganizationPolicyApiToken{}
 	return &this
 }
 
 // GetId returns the Id field value
-func (o *OrganizationAgentApiTokenCreate) GetId() string {
+func (o *OrganizationPolicyApiToken) GetId() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -68,7 +67,7 @@ func (o *OrganizationAgentApiTokenCreate) GetId() string {
 
 // GetIdOk returns a tuple with the Id field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetIdOk() (*string, bool) {
+func (o *OrganizationPolicyApiToken) GetIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -76,12 +75,12 @@ func (o *OrganizationAgentApiTokenCreate) GetIdOk() (*string, bool) {
 }
 
 // SetId sets field value
-func (o *OrganizationAgentApiTokenCreate) SetId(v string) {
+func (o *OrganizationPolicyApiToken) SetId(v string) {
 	o.Id = v
 }
 
 // GetCreatedAt returns the CreatedAt field value
-func (o *OrganizationAgentApiTokenCreate) GetCreatedAt() time.Time {
+func (o *OrganizationPolicyApiToken) GetCreatedAt() time.Time {
 	if o == nil {
 		var ret time.Time
 		return ret
@@ -92,7 +91,7 @@ func (o *OrganizationAgentApiTokenCreate) GetCreatedAt() time.Time {
 
 // GetCreatedAtOk returns a tuple with the CreatedAt field value
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetCreatedAtOk() (*time.Time, bool) {
+func (o *OrganizationPolicyApiToken) GetCreatedAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -100,12 +99,12 @@ func (o *OrganizationAgentApiTokenCreate) GetCreatedAtOk() (*time.Time, bool) {
 }
 
 // SetCreatedAt sets field value
-func (o *OrganizationAgentApiTokenCreate) SetCreatedAt(v time.Time) {
+func (o *OrganizationPolicyApiToken) SetCreatedAt(v time.Time) {
 	o.CreatedAt = v
 }
 
 // GetUpdatedAt returns the UpdatedAt field value if set, zero value otherwise.
-func (o *OrganizationAgentApiTokenCreate) GetUpdatedAt() time.Time {
+func (o *OrganizationPolicyApiToken) GetUpdatedAt() time.Time {
 	if o == nil || IsNil(o.UpdatedAt) {
 		var ret time.Time
 		return ret
@@ -115,7 +114,7 @@ func (o *OrganizationAgentApiTokenCreate) GetUpdatedAt() time.Time {
 
 // GetUpdatedAtOk returns a tuple with the UpdatedAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetUpdatedAtOk() (*time.Time, bool) {
+func (o *OrganizationPolicyApiToken) GetUpdatedAtOk() (*time.Time, bool) {
 	if o == nil || IsNil(o.UpdatedAt) {
 		return nil, false
 	}
@@ -123,7 +122,7 @@ func (o *OrganizationAgentApiTokenCreate) GetUpdatedAtOk() (*time.Time, bool) {
 }
 
 // HasUpdatedAt returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasUpdatedAt() bool {
+func (o *OrganizationPolicyApiToken) HasUpdatedAt() bool {
 	if o != nil && !IsNil(o.UpdatedAt) {
 		return true
 	}
@@ -132,12 +131,12 @@ func (o *OrganizationAgentApiTokenCreate) HasUpdatedAt() bool {
 }
 
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
-func (o *OrganizationAgentApiTokenCreate) SetUpdatedAt(v time.Time) {
+func (o *OrganizationPolicyApiToken) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
 }
 
 // GetName returns the Name field value if set, zero value otherwise.
-func (o *OrganizationAgentApiTokenCreate) GetName() string {
+func (o *OrganizationPolicyApiToken) GetName() string {
 	if o == nil || IsNil(o.Name) {
 		var ret string
 		return ret
@@ -147,7 +146,7 @@ func (o *OrganizationAgentApiTokenCreate) GetName() string {
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetNameOk() (*string, bool) {
+func (o *OrganizationPolicyApiToken) GetNameOk() (*string, bool) {
 	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
@@ -155,7 +154,7 @@ func (o *OrganizationAgentApiTokenCreate) GetNameOk() (*string, bool) {
 }
 
 // HasName returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasName() bool {
+func (o *OrganizationPolicyApiToken) HasName() bool {
 	if o != nil && !IsNil(o.Name) {
 		return true
 	}
@@ -164,12 +163,12 @@ func (o *OrganizationAgentApiTokenCreate) HasName() bool {
 }
 
 // SetName gets a reference to the given string and assigns it to the Name field.
-func (o *OrganizationAgentApiTokenCreate) SetName(v string) {
+func (o *OrganizationPolicyApiToken) SetName(v string) {
 	o.Name = &v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
-func (o *OrganizationAgentApiTokenCreate) GetDescription() string {
+func (o *OrganizationPolicyApiToken) GetDescription() string {
 	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
@@ -179,7 +178,7 @@ func (o *OrganizationAgentApiTokenCreate) GetDescription() string {
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetDescriptionOk() (*string, bool) {
+func (o *OrganizationPolicyApiToken) GetDescriptionOk() (*string, bool) {
 	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
@@ -187,7 +186,7 @@ func (o *OrganizationAgentApiTokenCreate) GetDescriptionOk() (*string, bool) {
 }
 
 // HasDescription returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasDescription() bool {
+func (o *OrganizationPolicyApiToken) HasDescription() bool {
 	if o != nil && !IsNil(o.Description) {
 		return true
 	}
@@ -196,44 +195,44 @@ func (o *OrganizationAgentApiTokenCreate) HasDescription() bool {
 }
 
 // SetDescription gets a reference to the given string and assigns it to the Description field.
-func (o *OrganizationAgentApiTokenCreate) SetDescription(v string) {
+func (o *OrganizationPolicyApiToken) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *OrganizationAgentApiTokenCreate) GetToken() string {
-	if o == nil || IsNil(o.Token) {
+// GetOpaPolicy returns the OpaPolicy field value if set, zero value otherwise.
+func (o *OrganizationPolicyApiToken) GetOpaPolicy() string {
+	if o == nil || IsNil(o.OpaPolicy) {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.OpaPolicy
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetOpaPolicyOk returns a tuple with the OpaPolicy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetTokenOk() (*string, bool) {
-	if o == nil || IsNil(o.Token) {
+func (o *OrganizationPolicyApiToken) GetOpaPolicyOk() (*string, bool) {
+	if o == nil || IsNil(o.OpaPolicy) {
 		return nil, false
 	}
-	return o.Token, true
+	return o.OpaPolicy, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasToken() bool {
-	if o != nil && !IsNil(o.Token) {
+// HasOpaPolicy returns a boolean if a field has been set.
+func (o *OrganizationPolicyApiToken) HasOpaPolicy() bool {
+	if o != nil && !IsNil(o.OpaPolicy) {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *OrganizationAgentApiTokenCreate) SetToken(v string) {
-	o.Token = &v
+// SetOpaPolicy gets a reference to the given string and assigns it to the OpaPolicy field.
+func (o *OrganizationPolicyApiToken) SetOpaPolicy(v string) {
+	o.OpaPolicy = &v
 }
 
 // GetCreatorName returns the CreatorName field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationAgentApiTokenCreate) GetCreatorName() string {
+func (o *OrganizationPolicyApiToken) GetCreatorName() string {
 	if o == nil || IsNil(o.CreatorName.Get()) {
 		var ret string
 		return ret
@@ -244,7 +243,7 @@ func (o *OrganizationAgentApiTokenCreate) GetCreatorName() string {
 // GetCreatorNameOk returns a tuple with the CreatorName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationAgentApiTokenCreate) GetCreatorNameOk() (*string, bool) {
+func (o *OrganizationPolicyApiToken) GetCreatorNameOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -252,7 +251,7 @@ func (o *OrganizationAgentApiTokenCreate) GetCreatorNameOk() (*string, bool) {
 }
 
 // HasCreatorName returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasCreatorName() bool {
+func (o *OrganizationPolicyApiToken) HasCreatorName() bool {
 	if o != nil && o.CreatorName.IsSet() {
 		return true
 	}
@@ -261,54 +260,22 @@ func (o *OrganizationAgentApiTokenCreate) HasCreatorName() bool {
 }
 
 // SetCreatorName gets a reference to the given NullableString and assigns it to the CreatorName field.
-func (o *OrganizationAgentApiTokenCreate) SetCreatorName(v string) {
+func (o *OrganizationPolicyApiToken) SetCreatorName(v string) {
 	o.CreatorName.Set(&v)
 }
 
 // SetCreatorNameNil sets the value for CreatorName to be an explicit nil
-func (o *OrganizationAgentApiTokenCreate) SetCreatorNameNil() {
+func (o *OrganizationPolicyApiToken) SetCreatorNameNil() {
 	o.CreatorName.Set(nil)
 }
 
 // UnsetCreatorName ensures that no value is present for CreatorName, not even an explicit nil
-func (o *OrganizationAgentApiTokenCreate) UnsetCreatorName() {
+func (o *OrganizationPolicyApiToken) UnsetCreatorName() {
 	o.CreatorName.Unset()
 }
 
-// GetUserSub returns the UserSub field value if set, zero value otherwise.
-func (o *OrganizationAgentApiTokenCreate) GetUserSub() string {
-	if o == nil || IsNil(o.UserSub) {
-		var ret string
-		return ret
-	}
-	return *o.UserSub
-}
-
-// GetUserSubOk returns a tuple with the UserSub field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *OrganizationAgentApiTokenCreate) GetUserSubOk() (*string, bool) {
-	if o == nil || IsNil(o.UserSub) {
-		return nil, false
-	}
-	return o.UserSub, true
-}
-
-// HasUserSub returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasUserSub() bool {
-	if o != nil && !IsNil(o.UserSub) {
-		return true
-	}
-
-	return false
-}
-
-// SetUserSub gets a reference to the given string and assigns it to the UserSub field.
-func (o *OrganizationAgentApiTokenCreate) SetUserSub(v string) {
-	o.UserSub = &v
-}
-
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationAgentApiTokenCreate) GetExpiresAt() time.Time {
+func (o *OrganizationPolicyApiToken) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt.Get()) {
 		var ret time.Time
 		return ret
@@ -319,7 +286,7 @@ func (o *OrganizationAgentApiTokenCreate) GetExpiresAt() time.Time {
 // GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationAgentApiTokenCreate) GetExpiresAtOk() (*time.Time, bool) {
+func (o *OrganizationPolicyApiToken) GetExpiresAtOk() (*time.Time, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -327,7 +294,7 @@ func (o *OrganizationAgentApiTokenCreate) GetExpiresAtOk() (*time.Time, bool) {
 }
 
 // HasExpiresAt returns a boolean if a field has been set.
-func (o *OrganizationAgentApiTokenCreate) HasExpiresAt() bool {
+func (o *OrganizationPolicyApiToken) HasExpiresAt() bool {
 	if o != nil && o.ExpiresAt.IsSet() {
 		return true
 	}
@@ -336,21 +303,21 @@ func (o *OrganizationAgentApiTokenCreate) HasExpiresAt() bool {
 }
 
 // SetExpiresAt gets a reference to the given NullableTime and assigns it to the ExpiresAt field.
-func (o *OrganizationAgentApiTokenCreate) SetExpiresAt(v time.Time) {
+func (o *OrganizationPolicyApiToken) SetExpiresAt(v time.Time) {
 	o.ExpiresAt.Set(&v)
 }
 
 // SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
-func (o *OrganizationAgentApiTokenCreate) SetExpiresAtNil() {
+func (o *OrganizationPolicyApiToken) SetExpiresAtNil() {
 	o.ExpiresAt.Set(nil)
 }
 
 // UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
-func (o *OrganizationAgentApiTokenCreate) UnsetExpiresAt() {
+func (o *OrganizationPolicyApiToken) UnsetExpiresAt() {
 	o.ExpiresAt.Unset()
 }
 
-func (o OrganizationAgentApiTokenCreate) MarshalJSON() ([]byte, error) {
+func (o OrganizationPolicyApiToken) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -358,7 +325,7 @@ func (o OrganizationAgentApiTokenCreate) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o OrganizationAgentApiTokenCreate) ToMap() (map[string]interface{}, error) {
+func (o OrganizationPolicyApiToken) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["created_at"] = o.CreatedAt
@@ -371,14 +338,11 @@ func (o OrganizationAgentApiTokenCreate) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	if !IsNil(o.Token) {
-		toSerialize["token"] = o.Token
+	if !IsNil(o.OpaPolicy) {
+		toSerialize["opa_policy"] = o.OpaPolicy
 	}
 	if o.CreatorName.IsSet() {
 		toSerialize["creator_name"] = o.CreatorName.Get()
-	}
-	if !IsNil(o.UserSub) {
-		toSerialize["user_sub"] = o.UserSub
 	}
 	if o.ExpiresAt.IsSet() {
 		toSerialize["expires_at"] = o.ExpiresAt.Get()
@@ -391,7 +355,7 @@ func (o OrganizationAgentApiTokenCreate) ToMap() (map[string]interface{}, error)
 	return toSerialize, nil
 }
 
-func (o *OrganizationAgentApiTokenCreate) UnmarshalJSON(data []byte) (err error) {
+func (o *OrganizationPolicyApiToken) UnmarshalJSON(data []byte) (err error) {
 	// This validates that all required properties are included in the JSON object
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
@@ -414,15 +378,15 @@ func (o *OrganizationAgentApiTokenCreate) UnmarshalJSON(data []byte) (err error)
 		}
 	}
 
-	varOrganizationAgentApiTokenCreate := _OrganizationAgentApiTokenCreate{}
+	varOrganizationPolicyApiToken := _OrganizationPolicyApiToken{}
 
-	err = json.Unmarshal(data, &varOrganizationAgentApiTokenCreate)
+	err = json.Unmarshal(data, &varOrganizationPolicyApiToken)
 
 	if err != nil {
 		return err
 	}
 
-	*o = OrganizationAgentApiTokenCreate(varOrganizationAgentApiTokenCreate)
+	*o = OrganizationPolicyApiToken(varOrganizationPolicyApiToken)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -432,9 +396,8 @@ func (o *OrganizationAgentApiTokenCreate) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
-		delete(additionalProperties, "token")
+		delete(additionalProperties, "opa_policy")
 		delete(additionalProperties, "creator_name")
-		delete(additionalProperties, "user_sub")
 		delete(additionalProperties, "expires_at")
 		o.AdditionalProperties = additionalProperties
 	}
@@ -442,38 +405,38 @@ func (o *OrganizationAgentApiTokenCreate) UnmarshalJSON(data []byte) (err error)
 	return err
 }
 
-type NullableOrganizationAgentApiTokenCreate struct {
-	value *OrganizationAgentApiTokenCreate
+type NullableOrganizationPolicyApiToken struct {
+	value *OrganizationPolicyApiToken
 	isSet bool
 }
 
-func (v NullableOrganizationAgentApiTokenCreate) Get() *OrganizationAgentApiTokenCreate {
+func (v NullableOrganizationPolicyApiToken) Get() *OrganizationPolicyApiToken {
 	return v.value
 }
 
-func (v *NullableOrganizationAgentApiTokenCreate) Set(val *OrganizationAgentApiTokenCreate) {
+func (v *NullableOrganizationPolicyApiToken) Set(val *OrganizationPolicyApiToken) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableOrganizationAgentApiTokenCreate) IsSet() bool {
+func (v NullableOrganizationPolicyApiToken) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableOrganizationAgentApiTokenCreate) Unset() {
+func (v *NullableOrganizationPolicyApiToken) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableOrganizationAgentApiTokenCreate(val *OrganizationAgentApiTokenCreate) *NullableOrganizationAgentApiTokenCreate {
-	return &NullableOrganizationAgentApiTokenCreate{value: val, isSet: true}
+func NewNullableOrganizationPolicyApiToken(val *OrganizationPolicyApiToken) *NullableOrganizationPolicyApiToken {
+	return &NullableOrganizationPolicyApiToken{value: val, isSet: true}
 }
 
-func (v NullableOrganizationAgentApiTokenCreate) MarshalJSON() ([]byte, error) {
+func (v NullableOrganizationPolicyApiToken) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableOrganizationAgentApiTokenCreate) UnmarshalJSON(src []byte) error {
+func (v *NullableOrganizationPolicyApiToken) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

@@ -504,9 +504,6 @@ Class | Method | HTTP request | Description
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGithubRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgithubrepositorybranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositorybranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
-*OrganizationAgentApiTokenAPI* | [**CreateOrganizationAgentApiToken**](docs/OrganizationAgentApiTokenAPI.md#createorganizationagentapitoken) | **Post** /organization/{organizationId}/agentApiToken | Create an organization agent api token
-*OrganizationAgentApiTokenAPI* | [**DeleteOrganizationAgentApiToken**](docs/OrganizationAgentApiTokenAPI.md#deleteorganizationagentapitoken) | **Delete** /organization/{organizationId}/agentApiToken/{agentApiTokenId} | Delete organization agent api token
-*OrganizationAgentApiTokenAPI* | [**ListOrganizationAgentApiTokens**](docs/OrganizationAgentApiTokenAPI.md#listorganizationagentapitokens) | **Get** /organization/{organizationId}/agentApiToken | List organization agent api tokens
 *OrganizationAnnotationsGroupAPI* | [**CreateOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#createorganizationannotationsgroup) | **Post** /organization/{organizationId}/annotationsGroups | Create an organization annotations group
 *OrganizationAnnotationsGroupAPI* | [**DeleteOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#deleteorganizationannotationsgroup) | **Delete** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Delete organization annotations group
 *OrganizationAnnotationsGroupAPI* | [**EditOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#editorganizationannotationsgroup) | **Put** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Edit organization annotations group
@@ -554,6 +551,9 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**ListTfVarsFilesFromGitRepo**](docs/OrganizationMainCallsAPI.md#listtfvarsfilesfromgitrepo) | **Post** /organization/{organizationId}/listTfVarsFilesFromGitRepo | List Terraform tfvars files from Git repository
 *OrganizationMainCallsAPI* | [**ParseTerraformVariablesFromGitRepo**](docs/OrganizationMainCallsAPI.md#parseterraformvariablesfromgitrepo) | **Post** /organization/{organizationId}/parseTerraformVariablesFromGitRepo | Parse Terraform variables from Git repository
 *OrganizationMainCallsAPI* | [**UpdateOrganizationOnboarding**](docs/OrganizationMainCallsAPI.md#updateorganizationonboarding) | **Post** /organization/{organizationId}/onboarding | Update the onboarding status of an organization
+*OrganizationPolicyApiTokenAPI* | [**CreateOrganizationPolicyApiToken**](docs/OrganizationPolicyApiTokenAPI.md#createorganizationpolicyapitoken) | **Post** /organization/{organizationId}/policyApiToken | Create an organization policy api token
+*OrganizationPolicyApiTokenAPI* | [**DeleteOrganizationPolicyApiToken**](docs/OrganizationPolicyApiTokenAPI.md#deleteorganizationpolicyapitoken) | **Delete** /organization/{organizationId}/policyApiToken/{policyApiTokenId} | Delete organization policy api token
+*OrganizationPolicyApiTokenAPI* | [**ListOrganizationPolicyApiTokens**](docs/OrganizationPolicyApiTokenAPI.md#listorganizationpolicyapitokens) | **Get** /organization/{organizationId}/policyApiToken | List organization policy api tokens
 *OrganizationWebhookAPI* | [**CreateOrganizationWebhook**](docs/OrganizationWebhookAPI.md#createorganizationwebhook) | **Post** /organization/{organizationId}/webhook | Create an organization webhook
 *OrganizationWebhookAPI* | [**DeleteOrganizationWebhook**](docs/OrganizationWebhookAPI.md#deleteorganizationwebhook) | **Delete** /organization/{organizationId}/webhook/{webhookId} | Delete organization webhook
 *OrganizationWebhookAPI* | [**EditOrganizationWebhook**](docs/OrganizationWebhookAPI.md#editorganizationwebhook) | **Put** /organization/{organizationId}/webhook/{webhookId} | Edit an organization webhook
@@ -1227,10 +1227,6 @@ Class | Method | HTTP request | Description
  - [ObservabilityResourceProfile](docs/ObservabilityResourceProfile.md)
  - [OnPremiseCredentialsRequest](docs/OnPremiseCredentialsRequest.md)
  - [Organization](docs/Organization.md)
- - [OrganizationAgentApiToken](docs/OrganizationAgentApiToken.md)
- - [OrganizationAgentApiTokenCreate](docs/OrganizationAgentApiTokenCreate.md)
- - [OrganizationAgentApiTokenCreateRequest](docs/OrganizationAgentApiTokenCreateRequest.md)
- - [OrganizationAgentApiTokenResponseList](docs/OrganizationAgentApiTokenResponseList.md)
  - [OrganizationAllOfOrganizationPlan](docs/OrganizationAllOfOrganizationPlan.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
@@ -1286,6 +1282,10 @@ Class | Method | HTTP request | Description
  - [OrganizationOnboardingPatchRequest](docs/OrganizationOnboardingPatchRequest.md)
  - [OrganizationOnboardingResponse](docs/OrganizationOnboardingResponse.md)
  - [OrganizationOnboardingStatusEnum](docs/OrganizationOnboardingStatusEnum.md)
+ - [OrganizationPolicyApiToken](docs/OrganizationPolicyApiToken.md)
+ - [OrganizationPolicyApiTokenCreate](docs/OrganizationPolicyApiTokenCreate.md)
+ - [OrganizationPolicyApiTokenCreateRequest](docs/OrganizationPolicyApiTokenCreateRequest.md)
+ - [OrganizationPolicyApiTokenResponseList](docs/OrganizationPolicyApiTokenResponseList.md)
  - [OrganizationRequest](docs/OrganizationRequest.md)
  - [OrganizationResponseList](docs/OrganizationResponseList.md)
  - [OrganizationWebhookCreateRequest](docs/OrganizationWebhookCreateRequest.md)
