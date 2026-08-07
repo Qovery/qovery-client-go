@@ -504,6 +504,9 @@ Class | Method | HTTP request | Description
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGithubRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgithubrepositorybranches) | **Get** /organization/{organizationId}/account/github/repository/branch | Get github branches of the specified repository
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositories**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
 *OrganizationAccountGitRepositoriesAPI* | [**GetOrganizationGitlabRepositoryBranches**](docs/OrganizationAccountGitRepositoriesAPI.md#getorganizationgitlabrepositorybranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
+*OrganizationAgentApiTokenAPI* | [**CreateOrganizationAgentApiToken**](docs/OrganizationAgentApiTokenAPI.md#createorganizationagentapitoken) | **Post** /organization/{organizationId}/agentApiToken | Create an organization agent api token
+*OrganizationAgentApiTokenAPI* | [**DeleteOrganizationAgentApiToken**](docs/OrganizationAgentApiTokenAPI.md#deleteorganizationagentapitoken) | **Delete** /organization/{organizationId}/agentApiToken/{agentApiTokenId} | Delete organization agent api token
+*OrganizationAgentApiTokenAPI* | [**ListOrganizationAgentApiTokens**](docs/OrganizationAgentApiTokenAPI.md#listorganizationagentapitokens) | **Get** /organization/{organizationId}/agentApiToken | List organization agent api tokens
 *OrganizationAnnotationsGroupAPI* | [**CreateOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#createorganizationannotationsgroup) | **Post** /organization/{organizationId}/annotationsGroups | Create an organization annotations group
 *OrganizationAnnotationsGroupAPI* | [**DeleteOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#deleteorganizationannotationsgroup) | **Delete** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Delete organization annotations group
 *OrganizationAnnotationsGroupAPI* | [**EditOrganizationAnnotationsGroup**](docs/OrganizationAnnotationsGroupAPI.md#editorganizationannotationsgroup) | **Put** /organization/{organizationId}/annotationsGroups/{annotationsGroupId} | Edit organization annotations group
@@ -1224,6 +1227,10 @@ Class | Method | HTTP request | Description
  - [ObservabilityResourceProfile](docs/ObservabilityResourceProfile.md)
  - [OnPremiseCredentialsRequest](docs/OnPremiseCredentialsRequest.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationAgentApiToken](docs/OrganizationAgentApiToken.md)
+ - [OrganizationAgentApiTokenCreate](docs/OrganizationAgentApiTokenCreate.md)
+ - [OrganizationAgentApiTokenCreateRequest](docs/OrganizationAgentApiTokenCreateRequest.md)
+ - [OrganizationAgentApiTokenResponseList](docs/OrganizationAgentApiTokenResponseList.md)
  - [OrganizationAllOfOrganizationPlan](docs/OrganizationAllOfOrganizationPlan.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)
