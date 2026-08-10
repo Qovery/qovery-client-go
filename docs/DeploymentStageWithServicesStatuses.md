@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Databases** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Helms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Terraforms** | Pointer to [**[]Status**](Status.md) |  | [optional] 
+**AgenticWorkflows** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 **Stage** | Pointer to [**Stage**](Stage.md) |  | [optional] 
 
 ## Methods
@@ -180,6 +181,31 @@ SetTerraforms sets Terraforms field to given value.
 `func (o *DeploymentStageWithServicesStatuses) HasTerraforms() bool`
 
 HasTerraforms returns a boolean if a field has been set.
+
+### GetAgenticWorkflows
+
+`func (o *DeploymentStageWithServicesStatuses) GetAgenticWorkflows() []Status`
+
+GetAgenticWorkflows returns the AgenticWorkflows field if non-nil, zero value otherwise.
+
+### GetAgenticWorkflowsOk
+
+`func (o *DeploymentStageWithServicesStatuses) GetAgenticWorkflowsOk() (*[]Status, bool)`
+
+GetAgenticWorkflowsOk returns a tuple with the AgenticWorkflows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgenticWorkflows
+
+`func (o *DeploymentStageWithServicesStatuses) SetAgenticWorkflows(v []Status)`
+
+SetAgenticWorkflows sets AgenticWorkflows field to given value.
+
+### HasAgenticWorkflows
+
+`func (o *DeploymentStageWithServicesStatuses) HasAgenticWorkflows() bool`
+
+HasAgenticWorkflows returns a boolean if a field has been set.
 
 ### GetStage
 

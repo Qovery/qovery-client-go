@@ -33198,6 +33198,51 @@ components:
               status: SUCCESS
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
+        agentic_workflows:
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_id: execution_id
+          deployment_requests_count: 0
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: BUILDING
+          steps:
+            total_duration_sec: 0
+            total_computing_duration_sec: 6
+            details:
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+          status_details:
+            sub_action: NONE
+            action: DEPLOY
+            status: QUEUED
+          is_part_last_deployment: true
+          service_deployment_status: NEVER_DEPLOYED
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_id: execution_id
+          deployment_requests_count: 0
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: BUILDING
+          steps:
+            total_duration_sec: 0
+            total_computing_duration_sec: 6
+            details:
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+          status_details:
+            sub_action: NONE
+            action: DEPLOY
+            status: QUEUED
+          is_part_last_deployment: true
+          service_deployment_status: NEVER_DEPLOYED
         terraforms:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
@@ -33450,6 +33495,10 @@ components:
           items:
             $ref: '#/components/schemas/Status'
           type: array
+        agentic_workflows:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
       required:
       - applications
       - containers
@@ -33513,6 +33562,51 @@ components:
           status: SUCCESS
         stages:
         - databases:
+          - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            execution_id: execution_id
+            deployment_requests_count: 0
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            steps:
+              total_duration_sec: 0
+              total_computing_duration_sec: 6
+              details:
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+            status_details:
+              sub_action: NONE
+              action: DEPLOY
+              status: QUEUED
+            is_part_last_deployment: true
+            service_deployment_status: NEVER_DEPLOYED
+          - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            execution_id: execution_id
+            deployment_requests_count: 0
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            steps:
+              total_duration_sec: 0
+              total_computing_duration_sec: 6
+              details:
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+            status_details:
+              sub_action: NONE
+              action: DEPLOY
+              status: QUEUED
+            is_part_last_deployment: true
+            service_deployment_status: NEVER_DEPLOYED
+          agentic_workflows:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
             deployment_requests_count: 0
@@ -33800,6 +33894,51 @@ components:
             is_part_last_deployment: true
             service_deployment_status: NEVER_DEPLOYED
         - databases:
+          - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            execution_id: execution_id
+            deployment_requests_count: 0
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            steps:
+              total_duration_sec: 0
+              total_computing_duration_sec: 6
+              details:
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+            status_details:
+              sub_action: NONE
+              action: DEPLOY
+              status: QUEUED
+            is_part_last_deployment: true
+            service_deployment_status: NEVER_DEPLOYED
+          - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            execution_id: execution_id
+            deployment_requests_count: 0
+            last_deployment_date: 2000-01-23T04:56:07.000+00:00
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            state: BUILDING
+            steps:
+              total_duration_sec: 0
+              total_computing_duration_sec: 6
+              details:
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+              - step_name: REGISTRY_CREATE_REPOSITORY
+                duration_sec: 1
+                status: SUCCESS
+            status_details:
+              sub_action: NONE
+              action: DEPLOY
+              status: QUEUED
+            is_part_last_deployment: true
+            service_deployment_status: NEVER_DEPLOYED
+          agentic_workflows:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             execution_id: execution_id
             deployment_requests_count: 0
@@ -35253,6 +35392,51 @@ components:
             status: QUEUED
           is_part_last_deployment: true
           service_deployment_status: NEVER_DEPLOYED
+        agentic_workflows:
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_id: execution_id
+          deployment_requests_count: 0
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: BUILDING
+          steps:
+            total_duration_sec: 0
+            total_computing_duration_sec: 6
+            details:
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+          status_details:
+            sub_action: NONE
+            action: DEPLOY
+            status: QUEUED
+          is_part_last_deployment: true
+          service_deployment_status: NEVER_DEPLOYED
+        - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_id: execution_id
+          deployment_requests_count: 0
+          last_deployment_date: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          state: BUILDING
+          steps:
+            total_duration_sec: 0
+            total_computing_duration_sec: 6
+            details:
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+            - step_name: REGISTRY_CREATE_REPOSITORY
+              duration_sec: 1
+              status: SUCCESS
+          status_details:
+            sub_action: NONE
+            action: DEPLOY
+            status: QUEUED
+          is_part_last_deployment: true
+          service_deployment_status: NEVER_DEPLOYED
         terraforms:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
@@ -35517,6 +35701,10 @@ components:
             $ref: '#/components/schemas/Status'
           type: array
         terraforms:
+          items:
+            $ref: '#/components/schemas/Status'
+          type: array
+        agentic_workflows:
           items:
             $ref: '#/components/schemas/Status'
           type: array

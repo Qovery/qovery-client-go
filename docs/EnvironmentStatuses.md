@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Databases** | [**[]Status**](Status.md) |  | 
 **Helms** | [**[]Status**](Status.md) |  | 
 **Terraforms** | [**[]Status**](Status.md) |  | 
+**AgenticWorkflows** | Pointer to [**[]Status**](Status.md) |  | [optional] 
 
 ## Methods
 
@@ -170,6 +171,31 @@ and a boolean to check if the value has been set.
 
 SetTerraforms sets Terraforms field to given value.
 
+
+### GetAgenticWorkflows
+
+`func (o *EnvironmentStatuses) GetAgenticWorkflows() []Status`
+
+GetAgenticWorkflows returns the AgenticWorkflows field if non-nil, zero value otherwise.
+
+### GetAgenticWorkflowsOk
+
+`func (o *EnvironmentStatuses) GetAgenticWorkflowsOk() (*[]Status, bool)`
+
+GetAgenticWorkflowsOk returns a tuple with the AgenticWorkflows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgenticWorkflows
+
+`func (o *EnvironmentStatuses) SetAgenticWorkflows(v []Status)`
+
+SetAgenticWorkflows sets AgenticWorkflows field to given value.
+
+### HasAgenticWorkflows
+
+`func (o *EnvironmentStatuses) HasAgenticWorkflows() bool`
+
+HasAgenticWorkflows returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

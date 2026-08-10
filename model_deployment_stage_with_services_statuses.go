@@ -26,6 +26,7 @@ type DeploymentStageWithServicesStatuses struct {
 	Databases            []Status `json:"databases,omitempty"`
 	Helms                []Status `json:"helms,omitempty"`
 	Terraforms           []Status `json:"terraforms,omitempty"`
+	AgenticWorkflows     []Status `json:"agentic_workflows,omitempty"`
 	Stage                *Stage   `json:"stage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -241,6 +242,38 @@ func (o *DeploymentStageWithServicesStatuses) SetTerraforms(v []Status) {
 	o.Terraforms = v
 }
 
+// GetAgenticWorkflows returns the AgenticWorkflows field value if set, zero value otherwise.
+func (o *DeploymentStageWithServicesStatuses) GetAgenticWorkflows() []Status {
+	if o == nil || IsNil(o.AgenticWorkflows) {
+		var ret []Status
+		return ret
+	}
+	return o.AgenticWorkflows
+}
+
+// GetAgenticWorkflowsOk returns a tuple with the AgenticWorkflows field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeploymentStageWithServicesStatuses) GetAgenticWorkflowsOk() ([]Status, bool) {
+	if o == nil || IsNil(o.AgenticWorkflows) {
+		return nil, false
+	}
+	return o.AgenticWorkflows, true
+}
+
+// HasAgenticWorkflows returns a boolean if a field has been set.
+func (o *DeploymentStageWithServicesStatuses) HasAgenticWorkflows() bool {
+	if o != nil && !IsNil(o.AgenticWorkflows) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgenticWorkflows gets a reference to the given []Status and assigns it to the AgenticWorkflows field.
+func (o *DeploymentStageWithServicesStatuses) SetAgenticWorkflows(v []Status) {
+	o.AgenticWorkflows = v
+}
+
 // GetStage returns the Stage field value if set, zero value otherwise.
 func (o *DeploymentStageWithServicesStatuses) GetStage() Stage {
 	if o == nil || IsNil(o.Stage) {
@@ -301,6 +334,9 @@ func (o DeploymentStageWithServicesStatuses) ToMap() (map[string]interface{}, er
 	if !IsNil(o.Terraforms) {
 		toSerialize["terraforms"] = o.Terraforms
 	}
+	if !IsNil(o.AgenticWorkflows) {
+		toSerialize["agentic_workflows"] = o.AgenticWorkflows
+	}
 	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
 	}
@@ -332,6 +368,7 @@ func (o *DeploymentStageWithServicesStatuses) UnmarshalJSON(data []byte) (err er
 		delete(additionalProperties, "databases")
 		delete(additionalProperties, "helms")
 		delete(additionalProperties, "terraforms")
+		delete(additionalProperties, "agentic_workflows")
 		delete(additionalProperties, "stage")
 		o.AdditionalProperties = additionalProperties
 	}
