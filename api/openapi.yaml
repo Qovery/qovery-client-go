@@ -84,6 +84,7 @@ tags:
 - name: Platform Configuration
 - name: Custom Domain
 - name: Container Custom Domain
+- name: MCP Servers
 - name: Database
 - name: Database Actions
 - name: Database Application
@@ -6501,6 +6502,172 @@ paths:
       summary: Edit a container registry
       tags:
       - Container Registries
+  /organization/{organizationId}/mcpServer:
+    get:
+      description: List the remote MCP servers configured for an organization. Header
+        values are never returned.
+      operationId: listMcpServers
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpServerResponseList'
+          description: List MCP servers
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization MCP servers
+      tags:
+      - MCP Servers
+    post:
+      description: Configure a remote HTTPS MCP server for an organization.
+      operationId: createMcpServer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/McpServerRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpServerResponse'
+          description: MCP server created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: MCP server name is already taken in the organization
+      summary: Create an MCP server
+      tags:
+      - MCP Servers
+  /mcpServer/{mcpServerId}:
+    delete:
+      description: Delete a remote MCP server configuration.
+      operationId: deleteMcpServer
+      parameters:
+      - description: MCP Server ID
+        explode: false
+        in: path
+        name: mcpServerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: MCP server deleted
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an MCP server
+      tags:
+      - MCP Servers
+    get:
+      description: Get a remote MCP server configuration. Header values are never
+        returned.
+      operationId: getMcpServer
+      parameters:
+      - description: MCP Server ID
+        explode: false
+        in: path
+        name: mcpServerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpServerResponse'
+          description: The MCP server
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get an MCP server
+      tags:
+      - MCP Servers
+    put:
+      description: "Replace a remote MCP server configuration, including all configured\
+        \ headers."
+      operationId: editMcpServer
+      parameters:
+      - description: MCP Server ID
+        explode: false
+        in: path
+        name: mcpServerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/McpServerRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpServerResponse'
+          description: MCP server edited
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: MCP server name is already taken in the organization
+      summary: Edit an MCP server
+      tags:
+      - MCP Servers
   /organization/{organizationId}/containerRegistry/{containerRegistryId}/images:
     get:
       operationId: getContainerVersions
@@ -20035,6 +20202,16 @@ components:
         format: uuid
         type: string
       style: simple
+    mcpServerId:
+      description: MCP Server ID
+      explode: false
+      in: path
+      name: mcpServerId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     deploymentRequestId:
       description: Deployment Request ID
       explode: false
@@ -28723,6 +28900,104 @@ components:
       - config
       - kind
       - name
+      type: object
+    McpServerRequest:
+      example:
+        headers:
+          key: headers
+        name: name
+        description: ""
+        url: https://openapi-generator.tech
+      properties:
+        name:
+          description: Unique MCP server name within the organization
+          minLength: 1
+          type: string
+        description:
+          default: ""
+          type: string
+        url:
+          description: HTTPS URL of the remote MCP server
+          format: uri
+          pattern: ^https://
+          type: string
+        headers:
+          additionalProperties:
+            type: string
+          default: {}
+          description: HTTP headers sent to the MCP server. Header values are encrypted
+            and never returned by the API.
+          type: object
+          writeOnly: true
+      required:
+      - name
+      - url
+      type: object
+    McpServerResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          url:
+            description: HTTPS URL of the remote MCP server
+            format: uri
+            pattern: ^https://
+            type: string
+          header_names:
+            description: Names of the configured HTTP headers. Header values are never
+              returned.
+            items:
+              type: string
+            type: array
+            uniqueItems: true
+        required:
+        - description
+        - header_names
+        - name
+        - updated_at
+        - url
+        type: object
+      example:
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        header_names:
+        - header_names
+        - header_names
+        url: https://openapi-generator.tech
+    McpServerResponseList:
+      example:
+        results:
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          header_names:
+          - header_names
+          - header_names
+          url: https://openapi-generator.tech
+        - updated_at: 2000-01-23T04:56:07.000+00:00
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          header_names:
+          - header_names
+          - header_names
+          url: https://openapi-generator.tech
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/McpServerResponse'
+          type: array
+      required:
+      - results
       type: object
     ContainerRegistryResponse:
       allOf:

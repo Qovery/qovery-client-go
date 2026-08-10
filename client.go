@@ -189,6 +189,8 @@ type APIClient struct {
 
 	LifecycleTemplateMainCallsAPI *LifecycleTemplateMainCallsAPIService
 
+	MCPServersAPI *MCPServersAPIService
+
 	MembersAPI *MembersAPIService
 
 	OrganizationAccountGitRepositoriesAPI *OrganizationAccountGitRepositoriesAPIService
@@ -338,6 +340,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
 	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
+	c.MCPServersAPI = (*MCPServersAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
 	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)
 	c.OrganizationAnnotationsGroupAPI = (*OrganizationAnnotationsGroupAPIService)(&c.common)

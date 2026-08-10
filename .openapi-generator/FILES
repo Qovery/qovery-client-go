@@ -73,6 +73,7 @@ api_job_main_calls.go
 api_job_secret.go
 api_jobs.go
 api_lifecycle_template_main_calls.go
+api_mcp_servers.go
 api_members.go
 api_organization_account_git_repositories.go
 api_organization_annotations_group.go
@@ -761,10 +762,14 @@ docs/ListServicesByOrganizationId200Response.md
 docs/ListTfVarsFilesFromGitRepo200Response.md
 docs/Log.md
 docs/LogResponseList.md
+docs/MCPServersAPI.md
 docs/ManagedDatabaseInstanceTypeResponse.md
 docs/ManagedDatabaseInstanceTypeResponseList.md
 docs/ManagedDatabaseTypeResponse.md
 docs/ManagedDatabaseTypeResponseList.md
+docs/McpServerRequest.md
+docs/McpServerResponse.md
+docs/McpServerResponseList.md
 docs/Member.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
@@ -1644,6 +1649,9 @@ model_managed_database_instance_type_response.go
 model_managed_database_instance_type_response_list.go
 model_managed_database_type_response.go
 model_managed_database_type_response_list.go
+model_mcp_server_request.go
+model_mcp_server_response.go
+model_mcp_server_response_list.go
 model_member.go
 model_member_response_list.go
 model_member_role_update_request.go
@@ -1971,6 +1979,7 @@ test/api_job_main_calls_test.go
 test/api_job_secret_test.go
 test/api_jobs_test.go
 test/api_lifecycle_template_main_calls_test.go
+test/api_mcp_servers_test.go
 test/api_members_test.go
 test/api_organization_account_git_repositories_test.go
 test/api_organization_annotations_group_test.go
