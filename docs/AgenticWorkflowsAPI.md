@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**DeleteAgenticWorkflow**](AgenticWorkflowsAPI.md#DeleteAgenticWorkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
 [**EditAgenticWorkflow**](AgenticWorkflowsAPI.md#EditAgenticWorkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**GetAgenticWorkflow**](AgenticWorkflowsAPI.md#GetAgenticWorkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
+[**ListAgenticWorkflowDeploymentHistoryV2**](AgenticWorkflowsAPI.md#ListAgenticWorkflowDeploymentHistoryV2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
 [**ListAgenticWorkflows**](AgenticWorkflowsAPI.md#ListAgenticWorkflows) | **Get** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 
 
@@ -346,6 +347,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AgenticWorkflowResponse**](AgenticWorkflowResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAgenticWorkflowDeploymentHistoryV2
+
+> DeploymentHistoryServicePaginatedResponseListV2 ListAgenticWorkflowDeploymentHistoryV2(ctx, agenticWorkflowId).PageSize(pageSize).Execute()
+
+List agentic workflow deployments
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	agenticWorkflowId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	pageSize := float32(8.14) // float32 | The number of deployments to return in the current page (optional) (default to 20)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgenticWorkflowsAPI.ListAgenticWorkflowDeploymentHistoryV2(context.Background(), agenticWorkflowId).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgenticWorkflowsAPI.ListAgenticWorkflowDeploymentHistoryV2``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAgenticWorkflowDeploymentHistoryV2`: DeploymentHistoryServicePaginatedResponseListV2
+	fmt.Fprintf(os.Stdout, "Response from `AgenticWorkflowsAPI.ListAgenticWorkflowDeploymentHistoryV2`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**agenticWorkflowId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAgenticWorkflowDeploymentHistoryV2Request struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **pageSize** | **float32** | The number of deployments to return in the current page | [default to 20]
+
+### Return type
+
+[**DeploymentHistoryServicePaginatedResponseListV2**](DeploymentHistoryServicePaginatedResponseListV2.md)
 
 ### Authorization
 

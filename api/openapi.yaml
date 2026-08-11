@@ -18684,6 +18684,45 @@ paths:
       summary: Cancel agentic workflow deployment
       tags:
       - Agentic Workflows
+  /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2:
+    get:
+      description: Returns the 20 last agentic workflow deployments
+      operationId: listAgenticWorkflowDeploymentHistoryV2
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: The number of deployments to return in the current page
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          nullable: true
+          type: number
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeploymentHistoryServicePaginatedResponseListV2'
+          description: List deployment history
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List agentic workflow deployments
+      tags:
+      - Agentic Workflows
   /terraform/{terraformId}/advancedSettings:
     get:
       operationId: getTerraformAdvancedSettings

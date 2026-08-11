@@ -88,6 +88,7 @@ Class | Method | HTTP request | Description
 *AgenticWorkflowsAPI* | [**DeleteAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#deleteagenticworkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
 *AgenticWorkflowsAPI* | [**EditAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#editagenticworkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 *AgenticWorkflowsAPI* | [**GetAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#getagenticworkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
+*AgenticWorkflowsAPI* | [**ListAgenticWorkflowDeploymentHistoryV2**](docs/AgenticWorkflowsAPI.md#listagenticworkflowdeploymenthistoryv2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
 *AgenticWorkflowsAPI* | [**ListAgenticWorkflows**](docs/AgenticWorkflowsAPI.md#listagenticworkflows) | **Get** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 *AlertReceiversAPI* | [**CreateAlertReceiver**](docs/AlertReceiversAPI.md#createalertreceiver) | **Post** /alert-receivers | Create alert receiver
 *AlertReceiversAPI* | [**DeleteAlertReceiver**](docs/AlertReceiversAPI.md#deletealertreceiver) | **Delete** /alert-receivers/{alertReceiverId} | Delete alert receiver

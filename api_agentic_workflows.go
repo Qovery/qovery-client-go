@@ -619,6 +619,137 @@ func (a *AgenticWorkflowsAPIService) GetAgenticWorkflowExecute(r ApiGetAgenticWo
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListAgenticWorkflowDeploymentHistoryV2Request struct {
+	ctx               context.Context
+	ApiService        *AgenticWorkflowsAPIService
+	agenticWorkflowId string
+	pageSize          *float32
+}
+
+// The number of deployments to return in the current page
+func (r ApiListAgenticWorkflowDeploymentHistoryV2Request) PageSize(pageSize float32) ApiListAgenticWorkflowDeploymentHistoryV2Request {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiListAgenticWorkflowDeploymentHistoryV2Request) Execute() (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
+	return r.ApiService.ListAgenticWorkflowDeploymentHistoryV2Execute(r)
+}
+
+/*
+ListAgenticWorkflowDeploymentHistoryV2 List agentic workflow deployments
+
+Returns the 20 last agentic workflow deployments
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param agenticWorkflowId
+	@return ApiListAgenticWorkflowDeploymentHistoryV2Request
+*/
+func (a *AgenticWorkflowsAPIService) ListAgenticWorkflowDeploymentHistoryV2(ctx context.Context, agenticWorkflowId string) ApiListAgenticWorkflowDeploymentHistoryV2Request {
+	return ApiListAgenticWorkflowDeploymentHistoryV2Request{
+		ApiService:        a,
+		ctx:               ctx,
+		agenticWorkflowId: agenticWorkflowId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return DeploymentHistoryServicePaginatedResponseListV2
+func (a *AgenticWorkflowsAPIService) ListAgenticWorkflowDeploymentHistoryV2Execute(r ApiListAgenticWorkflowDeploymentHistoryV2Request) (*DeploymentHistoryServicePaginatedResponseListV2, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *DeploymentHistoryServicePaginatedResponseListV2
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgenticWorkflowsAPIService.ListAgenticWorkflowDeploymentHistoryV2")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2"
+	localVarPath = strings.Replace(localVarPath, "{"+"agenticWorkflowId"+"}", url.PathEscape(parameterValueToString(r.agenticWorkflowId, "agenticWorkflowId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue float32 = 20
+		r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListAgenticWorkflowsRequest struct {
 	ctx           context.Context
 	ApiService    *AgenticWorkflowsAPIService

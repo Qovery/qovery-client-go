@@ -91,6 +91,20 @@ func Test_qovery_AgenticWorkflowsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test AgenticWorkflowsAPIService ListAgenticWorkflowDeploymentHistoryV2", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var agenticWorkflowId string
+
+		resp, httpRes, err := apiClient.AgenticWorkflowsAPI.ListAgenticWorkflowDeploymentHistoryV2(context.Background(), agenticWorkflowId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test AgenticWorkflowsAPIService ListAgenticWorkflows", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
