@@ -21,6 +21,7 @@ type OrganizationEventTargetType string
 
 // List of OrganizationEventTargetType
 const (
+	ORGANIZATIONEVENTTARGETTYPE_AGENTIC_WORKFLOW      OrganizationEventTargetType = "AGENTIC_WORKFLOW"
 	ORGANIZATIONEVENTTARGETTYPE_APPLICATION           OrganizationEventTargetType = "APPLICATION"
 	ORGANIZATIONEVENTTARGETTYPE_CLUSTER               OrganizationEventTargetType = "CLUSTER"
 	ORGANIZATIONEVENTTARGETTYPE_CONTAINER             OrganizationEventTargetType = "CONTAINER"
@@ -40,6 +41,7 @@ const (
 
 // All allowed values of OrganizationEventTargetType enum
 var AllowedOrganizationEventTargetTypeEnumValues = []OrganizationEventTargetType{
+	"AGENTIC_WORKFLOW",
 	"APPLICATION",
 	"CLUSTER",
 	"CONTAINER",

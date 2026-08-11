@@ -3,6 +3,8 @@
 ## Enum
 
 
+* `AGENTIC_WORKFLOW` (value: `"AGENTIC_WORKFLOW"`)
+
 * `APPLICATION` (value: `"APPLICATION"`)
 
 * `CLUSTER` (value: `"CLUSTER"`)

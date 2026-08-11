@@ -38505,6 +38505,7 @@ components:
     OrganizationEventTargetType:
       description: Type of the organization event
       enum:
+      - AGENTIC_WORKFLOW
       - APPLICATION
       - CLUSTER
       - CONTAINER
