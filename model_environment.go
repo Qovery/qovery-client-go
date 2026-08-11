@@ -30,11 +30,13 @@ type Environment struct {
 	Organization ReferenceObject `json:"organization"`
 	Project      ReferenceObject `json:"project"`
 	// uuid of the user that made the last update
-	LastUpdatedBy        *string                       `json:"last_updated_by,omitempty"`
-	CloudProvider        EnvironmentAllOfCloudProvider `json:"cloud_provider"`
-	Mode                 EnvironmentModeEnum           `json:"mode"`
-	ClusterId            string                        `json:"cluster_id"`
-	ClusterName          *string                       `json:"cluster_name,omitempty"`
+	LastUpdatedBy *string                       `json:"last_updated_by,omitempty"`
+	CloudProvider EnvironmentAllOfCloudProvider `json:"cloud_provider"`
+	Mode          EnvironmentModeEnum           `json:"mode"`
+	ClusterId     string                        `json:"cluster_id"`
+	ClusterName   *string                       `json:"cluster_name,omitempty"`
+	// Date after which the environment is automatically deleted. Null when the environment never expires, which is the case for every environment except the throwaway ones created for a single agentic workflow run.
+	ExpiresAt            NullableTime `json:"expires_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -353,6 +355,49 @@ func (o *Environment) SetClusterName(v string) {
 	o.ClusterName = &v
 }
 
+// GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Environment) GetExpiresAt() time.Time {
+	if o == nil || IsNil(o.ExpiresAt.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.ExpiresAt.Get()
+}
+
+// GetExpiresAtOk returns a tuple with the ExpiresAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Environment) GetExpiresAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.ExpiresAt.Get(), o.ExpiresAt.IsSet()
+}
+
+// HasExpiresAt returns a boolean if a field has been set.
+func (o *Environment) HasExpiresAt() bool {
+	if o != nil && o.ExpiresAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetExpiresAt gets a reference to the given NullableTime and assigns it to the ExpiresAt field.
+func (o *Environment) SetExpiresAt(v time.Time) {
+	o.ExpiresAt.Set(&v)
+}
+
+// SetExpiresAtNil sets the value for ExpiresAt to be an explicit nil
+func (o *Environment) SetExpiresAtNil() {
+	o.ExpiresAt.Set(nil)
+}
+
+// UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
+func (o *Environment) UnsetExpiresAt() {
+	o.ExpiresAt.Unset()
+}
+
 func (o Environment) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -379,6 +424,9 @@ func (o Environment) ToMap() (map[string]interface{}, error) {
 	toSerialize["cluster_id"] = o.ClusterId
 	if !IsNil(o.ClusterName) {
 		toSerialize["cluster_name"] = o.ClusterName
+	}
+	if o.ExpiresAt.IsSet() {
+		toSerialize["expires_at"] = o.ExpiresAt.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -441,6 +489,7 @@ func (o *Environment) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "cluster_id")
 		delete(additionalProperties, "cluster_name")
+		delete(additionalProperties, "expires_at")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -32616,6 +32616,15 @@ components:
           cluster_name:
             format: string
             type: string
+          expires_at:
+            description: "Date after which the environment is automatically deleted.\
+              \ Null when the environment never expires, which is the case for every\
+              \ environment except the throwaway ones created for a single agentic\
+              \ workflow run."
+            format: date-time
+            nullable: true
+            readOnly: true
+            type: string
         required:
         - cloud_provider
         - cluster_id
@@ -32629,6 +32638,7 @@ components:
         cluster_name: cluster_name
         last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        expires_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
         organization:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32647,6 +32657,7 @@ components:
           cluster_name: cluster_name
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -32662,6 +32673,7 @@ components:
           cluster_name: cluster_name
           last_updated_by: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
