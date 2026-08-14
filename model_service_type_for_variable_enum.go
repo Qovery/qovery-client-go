@@ -21,11 +21,12 @@ type ServiceTypeForVariableEnum string
 
 // List of ServiceTypeForVariableEnum
 const (
-	SERVICETYPEFORVARIABLEENUM_APPLICATION ServiceTypeForVariableEnum = "APPLICATION"
-	SERVICETYPEFORVARIABLEENUM_CONTAINER   ServiceTypeForVariableEnum = "CONTAINER"
-	SERVICETYPEFORVARIABLEENUM_JOB         ServiceTypeForVariableEnum = "JOB"
-	SERVICETYPEFORVARIABLEENUM_HELM        ServiceTypeForVariableEnum = "HELM"
-	SERVICETYPEFORVARIABLEENUM_TERRAFORM   ServiceTypeForVariableEnum = "TERRAFORM"
+	SERVICETYPEFORVARIABLEENUM_APPLICATION      ServiceTypeForVariableEnum = "APPLICATION"
+	SERVICETYPEFORVARIABLEENUM_CONTAINER        ServiceTypeForVariableEnum = "CONTAINER"
+	SERVICETYPEFORVARIABLEENUM_JOB              ServiceTypeForVariableEnum = "JOB"
+	SERVICETYPEFORVARIABLEENUM_HELM             ServiceTypeForVariableEnum = "HELM"
+	SERVICETYPEFORVARIABLEENUM_TERRAFORM        ServiceTypeForVariableEnum = "TERRAFORM"
+	SERVICETYPEFORVARIABLEENUM_AGENTIC_WORKFLOW ServiceTypeForVariableEnum = "AGENTIC_WORKFLOW"
 )
 
 // All allowed values of ServiceTypeForVariableEnum enum
@@ -35,6 +36,7 @@ var AllowedServiceTypeForVariableEnumEnumValues = []ServiceTypeForVariableEnum{
 	"JOB",
 	"HELM",
 	"TERRAFORM",
+	"AGENTIC_WORKFLOW",
 }
 
 func (v *ServiceTypeForVariableEnum) UnmarshalJSON(src []byte) error {
