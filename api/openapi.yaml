@@ -81,6 +81,7 @@ tags:
 - name: Cloud Provider
 - name: Cloud Provider Credentials
 - name: Clusters
+- name: Cluster Operator
 - name: Platform Configuration
 - name: Custom Domain
 - name: Container Custom Domain
@@ -2301,6 +2302,159 @@ paths:
       summary: Resolve a platform component configuration
       tags:
       - Platform Configuration
+  /organization/{organizationId}/cluster/{clusterId}/operator/attach:
+    post:
+      description: Marks a self-managed cluster for routing through the Qovery Operator.
+        This records the routing intent only; it does not install the Operator or
+        prove that it is connected. Cluster administrator permission is required.
+      operationId: attachClusterOperator
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "204":
+          description: The cluster is attached to the Qovery Operator execution path
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Attach a cluster to the Qovery Operator execution path
+      tags:
+      - Cluster Operator
+  /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap:
+    get:
+      description: "Compiles the Helm chart coordinates, values file, and ready-to-run\
+        \ Helm command for a self-managed cluster. The response contains cluster credentials\
+        \ and must be handled as sensitive data. Cluster administrator permission\
+        \ is required."
+      operationId: getClusterOperatorBootstrap
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterOperatorBootstrapResponse'
+          description: Compiled Qovery Operator bootstrap
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "412":
+          description: The selected Operator release cannot be resolved
+      summary: Get the Qovery Operator bootstrap
+      tags:
+      - Cluster Operator
+  /organization/{organizationId}/cluster/{clusterId}/operator/status:
+    get:
+      description: "Returns heartbeat freshness and the image, chart, and protocol\
+        \ versions last reported by the running Operator, together with the current\
+        \ bootstrap targets and a stable drift status. A false operator_connected\
+        \ value means that no heartbeat was received within the presence window. The\
+        \ status is a display-version drift verdict, not an immutable release compatibility\
+        \ decision. Cluster viewer permission is sufficient."
+      operationId: getClusterOperatorStatus
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterOperatorStatusResponse'
+          description: Last reported Qovery Operator status
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: The cluster does not exist or has not been attached to the
+            Operator path
+      summary: Get the Qovery Operator status for a cluster
+      tags:
+      - Cluster Operator
+  /admin/operator/clusters:
+    get:
+      description: "Returns every self-managed cluster with its attachment, heartbeat\
+        \ freshness, desired and reported image and Helm chart versions, and a stable\
+        \ drift status. This operation is restricted to Qovery administrators and\
+        \ is the source for internal fleet CLI and dashboard consumers."
+      operationId: listClusterOperatorFleet
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterOperatorFleetInventoryResponseList'
+          description: Qovery Operator fleet inventory
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+      summary: List the Qovery Operator fleet
+      tags:
+      - Cluster Operator
   /organization/{organizationId}/cluster/{clusterId}/status:
     get:
       operationId: getClusterStatus
@@ -28142,6 +28296,272 @@ components:
             $ref: '#/components/schemas/ClusterStatus'
           type: array
       type: object
+    ClusterOperatorBootstrapResponse:
+      description: Sensitive bootstrap material used to install or manually upgrade
+        the Qovery Operator on a self-managed cluster.
+      example:
+        chart_name: qovery-operator
+        helm_command: helm upgrade --install qovery-operator oci://public.ecr.aws/r3m4q3r9/charts/qovery-operator
+          --version 0.2.1 --namespace qovery --create-namespace --atomic --wait --timeout
+          15m -f values.yaml
+        release_name: qovery-operator
+        values:
+          key: ""
+        chart_reference: oci://public.ecr.aws/r3m4q3r9/charts/qovery-operator
+        namespace: qovery
+        values_yaml: values_yaml
+        chart_repository: oci://public.ecr.aws/r3m4q3r9/charts
+        chart_version: 0.2.1
+      properties:
+        chart_repository:
+          example: oci://public.ecr.aws/r3m4q3r9/charts
+          type: string
+        chart_name:
+          example: qovery-operator
+          type: string
+        chart_version:
+          example: 0.2.1
+          type: string
+        chart_reference:
+          example: oci://public.ecr.aws/r3m4q3r9/charts/qovery-operator
+          type: string
+        namespace:
+          example: qovery
+          type: string
+        release_name:
+          example: qovery-operator
+          type: string
+        values:
+          additionalProperties: true
+          description: Structured Helm values. This object can contain cluster credentials.
+          type: object
+        values_yaml:
+          description: Ready-to-write Helm values file. This value can contain cluster
+            credentials.
+          type: string
+        helm_command:
+          description: Ready-to-run Helm upgrade/install command using values_yaml.
+          example: helm upgrade --install qovery-operator oci://public.ecr.aws/r3m4q3r9/charts/qovery-operator
+            --version 0.2.1 --namespace qovery --create-namespace --atomic --wait
+            --timeout 15m -f values.yaml
+          type: string
+      required:
+      - chart_name
+      - chart_reference
+      - chart_repository
+      - chart_version
+      - helm_command
+      - namespace
+      - release_name
+      - values
+      - values_yaml
+      type: object
+    ClusterOperatorStatusResponse:
+      example:
+        reported_identity: ""
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        operator_version: operator_version
+        desired_chart_version: desired_chart_version
+        controller_version: controller_version
+        reported_chart_version: reported_chart_version
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        desired_image_version: desired_image_version
+        request_schema_version: request_schema_version
+        operator_connected: true
+        last_heartbeat: 2000-01-23T04:56:07.000+00:00
+        status: NOT_ATTACHED
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        operator_connected:
+          description: Whether the last heartbeat is within the Operator presence
+            window.
+          type: boolean
+        last_heartbeat:
+          format: date-time
+          nullable: true
+          type: string
+        operator_version:
+          description: "Display version reported by the Operator. For the POC version-reporting\
+            \ heartbeat, the official chart sets this to the exact installed image\
+            \ tag. Legacy Operators can report opaque build metadata instead."
+          nullable: true
+          type: string
+        controller_version:
+          nullable: true
+          type: string
+        request_schema_version:
+          nullable: true
+          type: string
+        desired_image_version:
+          description: Image tag currently selected for a newly compiled Operator
+            bootstrap.
+          nullable: true
+          type: string
+        desired_chart_version:
+          description: Helm chart version currently selected for a newly compiled
+            Operator bootstrap.
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/ClusterOperatorFleetStatus'
+        reported_chart_version:
+          description: "Helm chart version reported by the Operator, even without\
+            \ immutable identity."
+          nullable: true
+          type: string
+        reported_identity:
+          allOf:
+          - $ref: '#/components/schemas/ReportedClusterOperatorIdentity'
+          nullable: true
+      required:
+      - cluster_id
+      - operator_connected
+      - organization_id
+      - status
+      type: object
+    ReportedClusterOperatorIdentity:
+      properties:
+        release_digest:
+          description: Multi-architecture OCI index digest selected for the installed
+            release.
+          pattern: "^sha256:[0-9a-f]{64}$"
+          type: string
+        runtime_image_id:
+          description: OCI image reference resolved by the Kubernetes runtime.
+          type: string
+        chart_version:
+          type: string
+        observed_at:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - chart_version
+      - release_digest
+      - runtime_image_id
+      type: object
+    ClusterOperatorFleetStatus:
+      description: Stable fleet classification. OUTDATED_IMAGE and OUTDATED_CHART
+        identify which globally selected bootstrap target differs from the version
+        reported by the running Operator.
+      enum:
+      - NOT_ATTACHED
+      - DISCONNECTED
+      - TARGET_UNKNOWN
+      - REPORTED_VERSION_UNKNOWN
+      - CURRENT
+      - OUTDATED_IMAGE
+      - OUTDATED_CHART
+      - OUTDATED_IMAGE_AND_CHART
+      type: string
+    SelfManagedClusterKind:
+      enum:
+      - EKS_SELF_MANAGED
+      - SCW_SELF_MANAGED
+      - GKE_SELF_MANAGED
+      - AKS_SELF_MANAGED
+      - SELF_MANAGED
+      type: string
+    ClusterOperatorFleetInventoryResponse:
+      example:
+        connected: true
+        cluster_name: cluster_name
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        reported_image_version: reported_image_version
+        desired_chart_version: desired_chart_version
+        reported_chart_version: reported_chart_version
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        attached: true
+        desired_image_version: desired_image_version
+        cluster_kind: EKS_SELF_MANAGED
+        last_heartbeat: 2000-01-23T04:56:07.000+00:00
+        status: NOT_ATTACHED
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        cluster_name:
+          type: string
+        cluster_kind:
+          $ref: '#/components/schemas/SelfManagedClusterKind'
+        attached:
+          description: Whether the cluster is explicitly routed through the Operator
+            execution path.
+          type: boolean
+        connected:
+          description: Whether the last heartbeat is within the Operator presence
+            window.
+          type: boolean
+        last_heartbeat:
+          format: date-time
+          nullable: true
+          type: string
+        desired_image_version:
+          nullable: true
+          type: string
+        reported_image_version:
+          nullable: true
+          type: string
+        desired_chart_version:
+          nullable: true
+          type: string
+        reported_chart_version:
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/ClusterOperatorFleetStatus'
+      required:
+      - attached
+      - cluster_id
+      - cluster_kind
+      - cluster_name
+      - connected
+      - organization_id
+      - status
+      type: object
+    ClusterOperatorFleetInventoryResponseList:
+      example:
+        results:
+        - connected: true
+          cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reported_image_version: reported_image_version
+          desired_chart_version: desired_chart_version
+          reported_chart_version: reported_chart_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attached: true
+          desired_image_version: desired_image_version
+          cluster_kind: EKS_SELF_MANAGED
+          last_heartbeat: 2000-01-23T04:56:07.000+00:00
+          status: NOT_ATTACHED
+        - connected: true
+          cluster_name: cluster_name
+          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          reported_image_version: reported_image_version
+          desired_chart_version: desired_chart_version
+          reported_chart_version: reported_chart_version
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          attached: true
+          desired_image_version: desired_image_version
+          cluster_kind: EKS_SELF_MANAGED
+          last_heartbeat: 2000-01-23T04:56:07.000+00:00
+          status: NOT_ATTACHED
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/ClusterOperatorFleetInventoryResponse'
+          type: array
+      required:
+      - results
+      type: object
     ClusterAdvancedSettings:
       example:
         aws.eks.efs.performance_mode: generalPurpose
@@ -50941,6 +51361,7 @@ x-tagGroups:
   - Members
   - Billing
   - Clusters
+  - Cluster Operator
   - Cloud Provider
   - Cloud Provider Credentials
   - Github App

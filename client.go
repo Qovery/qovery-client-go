@@ -91,6 +91,8 @@ type APIClient struct {
 
 	CloudProviderCredentialsAPI *CloudProviderCredentialsAPIService
 
+	ClusterOperatorAPI *ClusterOperatorAPIService
+
 	ClustersAPI *ClustersAPIService
 
 	ContainerActionsAPI *ContainerActionsAPIService
@@ -291,6 +293,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.BlueprintMainCallsAPI = (*BlueprintMainCallsAPIService)(&c.common)
 	c.CloudProviderAPI = (*CloudProviderAPIService)(&c.common)
 	c.CloudProviderCredentialsAPI = (*CloudProviderCredentialsAPIService)(&c.common)
+	c.ClusterOperatorAPI = (*ClusterOperatorAPIService)(&c.common)
 	c.ClustersAPI = (*ClustersAPIService)(&c.common)
 	c.ContainerActionsAPI = (*ContainerActionsAPIService)(&c.common)
 	c.ContainerConfigurationAPI = (*ContainerConfigurationAPIService)(&c.common)

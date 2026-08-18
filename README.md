@@ -229,6 +229,10 @@ Class | Method | HTTP request | Description
 *CloudProviderCredentialsAPI* | [**ListGcpCredentials**](docs/CloudProviderCredentialsAPI.md#listgcpcredentials) | **Get** /organization/{organizationId}/gcp/credentials | List GCP credentials
 *CloudProviderCredentialsAPI* | [**ListOnPremiseCredentials**](docs/CloudProviderCredentialsAPI.md#listonpremisecredentials) | **Get** /organization/{organizationId}/onPremise/credentials | List OnPremise credentials
 *CloudProviderCredentialsAPI* | [**ListScalewayCredentials**](docs/CloudProviderCredentialsAPI.md#listscalewaycredentials) | **Get** /organization/{organizationId}/scaleway/credentials | List Scaleway credentials
+*ClusterOperatorAPI* | [**AttachClusterOperator**](docs/ClusterOperatorAPI.md#attachclusteroperator) | **Post** /organization/{organizationId}/cluster/{clusterId}/operator/attach | Attach a cluster to the Qovery Operator execution path
+*ClusterOperatorAPI* | [**GetClusterOperatorBootstrap**](docs/ClusterOperatorAPI.md#getclusteroperatorbootstrap) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
+*ClusterOperatorAPI* | [**GetClusterOperatorStatus**](docs/ClusterOperatorAPI.md#getclusteroperatorstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
+*ClusterOperatorAPI* | [**ListClusterOperatorFleet**](docs/ClusterOperatorAPI.md#listclusteroperatorfleet) | **Get** /admin/operator/clusters | List the Qovery Operator fleet
 *ClustersAPI* | [**CreateCluster**](docs/ClustersAPI.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
 *ClustersAPI* | [**DeleteCluster**](docs/ClustersAPI.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersAPI* | [**DeployCluster**](docs/ClustersAPI.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
@@ -868,6 +872,11 @@ Class | Method | HTTP request | Description
  - [ClusterLogsResponse](docs/ClusterLogsResponse.md)
  - [ClusterLogsResponseList](docs/ClusterLogsResponseList.md)
  - [ClusterMetricsResponse](docs/ClusterMetricsResponse.md)
+ - [ClusterOperatorBootstrapResponse](docs/ClusterOperatorBootstrapResponse.md)
+ - [ClusterOperatorFleetInventoryResponse](docs/ClusterOperatorFleetInventoryResponse.md)
+ - [ClusterOperatorFleetInventoryResponseList](docs/ClusterOperatorFleetInventoryResponseList.md)
+ - [ClusterOperatorFleetStatus](docs/ClusterOperatorFleetStatus.md)
+ - [ClusterOperatorStatusResponse](docs/ClusterOperatorStatusResponse.md)
  - [ClusterOverviewResponse](docs/ClusterOverviewResponse.md)
  - [ClusterPlatformBindingLayerResponse](docs/ClusterPlatformBindingLayerResponse.md)
  - [ClusterPlatformBindingRequest](docs/ClusterPlatformBindingRequest.md)
@@ -1362,6 +1371,7 @@ Class | Method | HTTP request | Description
  - [ReferenceObjectStatusResponseList](docs/ReferenceObjectStatusResponseList.md)
  - [Referral](docs/Referral.md)
  - [RegistryMirroringModeEnum](docs/RegistryMirroringModeEnum.md)
+ - [ReportedClusterOperatorIdentity](docs/ReportedClusterOperatorIdentity.md)
  - [RewardClaim](docs/RewardClaim.md)
  - [Route53DnsProviderRequest](docs/Route53DnsProviderRequest.md)
  - [Route53DnsProviderRequestCredentials](docs/Route53DnsProviderRequestCredentials.md)
@@ -1381,6 +1391,7 @@ Class | Method | HTTP request | Description
  - [SecretOverride](docs/SecretOverride.md)
  - [SecretRequest](docs/SecretRequest.md)
  - [SecretResponseList](docs/SecretResponseList.md)
+ - [SelfManagedClusterKind](docs/SelfManagedClusterKind.md)
  - [Service](docs/Service.md)
  - [ServiceActionEnum](docs/ServiceActionEnum.md)
  - [ServiceActionStatusEnum](docs/ServiceActionStatusEnum.md)

@@ -24,6 +24,7 @@ api_blueprint_catalog.go
 api_blueprint_main_calls.go
 api_cloud_provider.go
 api_cloud_provider_credentials.go
+api_cluster_operator.go
 api_clusters.go
 api_container_actions.go
 api_container_configuration.go
@@ -361,6 +362,12 @@ docs/ClusterLogsMessage.md
 docs/ClusterLogsResponse.md
 docs/ClusterLogsResponseList.md
 docs/ClusterMetricsResponse.md
+docs/ClusterOperatorAPI.md
+docs/ClusterOperatorBootstrapResponse.md
+docs/ClusterOperatorFleetInventoryResponse.md
+docs/ClusterOperatorFleetInventoryResponseList.md
+docs/ClusterOperatorFleetStatus.md
+docs/ClusterOperatorStatusResponse.md
 docs/ClusterOverviewResponse.md
 docs/ClusterPlatformBindingLayerResponse.md
 docs/ClusterPlatformBindingRequest.md
@@ -924,6 +931,7 @@ docs/ReferenceObjectStatusResponseList.md
 docs/Referral.md
 docs/ReferralRewardsAPI.md
 docs/RegistryMirroringModeEnum.md
+docs/ReportedClusterOperatorIdentity.md
 docs/RewardClaim.md
 docs/Route53DnsProviderRequest.md
 docs/Route53DnsProviderRequestCredentials.md
@@ -944,6 +952,7 @@ docs/SecretManagerEndpointConfigurationDto.md
 docs/SecretOverride.md
 docs/SecretRequest.md
 docs/SecretResponseList.md
+docs/SelfManagedClusterKind.md
 docs/Service.md
 docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
@@ -1293,6 +1302,11 @@ model_cluster_logs_message.go
 model_cluster_logs_response.go
 model_cluster_logs_response_list.go
 model_cluster_metrics_response.go
+model_cluster_operator_bootstrap_response.go
+model_cluster_operator_fleet_inventory_response.go
+model_cluster_operator_fleet_inventory_response_list.go
+model_cluster_operator_fleet_status.go
+model_cluster_operator_status_response.go
 model_cluster_overview_response.go
 model_cluster_platform_binding_layer_response.go
 model_cluster_platform_binding_request.go
@@ -1787,6 +1801,7 @@ model_reference_object_status.go
 model_reference_object_status_response_list.go
 model_referral.go
 model_registry_mirroring_mode_enum.go
+model_reported_cluster_operator_identity.go
 model_reward_claim.go
 model_route53_dns_provider_request.go
 model_route53_dns_provider_request_credentials.go
@@ -1806,6 +1821,7 @@ model_secret_manager_endpoint_configuration_dto.go
 model_secret_override.go
 model_secret_request.go
 model_secret_response_list.go
+model_self_managed_cluster_kind.go
 model_service.go
 model_service_action_enum.go
 model_service_action_status_enum.go
@@ -1930,6 +1946,7 @@ test/api_blueprint_catalog_test.go
 test/api_blueprint_main_calls_test.go
 test/api_cloud_provider_credentials_test.go
 test/api_cloud_provider_test.go
+test/api_cluster_operator_test.go
 test/api_clusters_test.go
 test/api_container_actions_test.go
 test/api_container_configuration_test.go
