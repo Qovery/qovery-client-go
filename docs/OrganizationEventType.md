@@ -107,11 +107,15 @@
 
 * `REMOTE_DEBUG` (value: `"REMOTE_DEBUG"`)
 
+* `MCP` (value: `"MCP"`)
+
 * `IMPORT` (value: `"IMPORT"`)
 
 * `LOCK` (value: `"LOCK"`)
 
 * `UNLOCK` (value: `"UNLOCK"`)
+
+* `REJECTED` (value: `"REJECTED"`)
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

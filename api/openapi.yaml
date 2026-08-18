@@ -38521,11 +38521,15 @@ components:
       description: Type of the organization event
       enum:
       - ADVANCED_SETTINGS
+      - ALERT_RECEIVER
       - ALERT_RULE
       - ANNOTATIONS_GROUP
       - API_TOKEN
+      - ARGOCD_CLUSTER_MAPPING
+      - ARGOCD_CONFIGURATION
       - BILLING_INFO
       - BILLING_USAGE_REPORT
+      - BLUEPRINT_MIGRATION
       - CLOUD_PROVIDER_CREDENTIALS
       - CLUSTER_CREDENTIALS
       - CLUSTER_ROUTING_TABLE
@@ -38536,19 +38540,24 @@ components:
       - CUSTOM_ROLE
       - DEPLOYMENT_RULE
       - DEPLOYMENT_STAGE
+      - DNS_PROVIDER
       - GITHUB_APP
       - GIT_REPOSITORY
       - GIT_TOKEN
       - INVITATION
+      - JWT_TOKEN_FORGED
       - KUBERNETES_CONFIGURATION
       - KUBERNETES_CREDENTIALS
       - LABELS_GROUP
+      - MCP_SERVER
       - MEMBER_ROLE
       - PLAN
+      - POLICY_API_TOKEN
       - REMOTE_ACCESS
       - SECRET
       - SSO
       - TERRAFORM
+      - TOOL_CALL
       - TRANSFER_OWNERSHIP
       - VARIABLE
       example: ADVANCED_SETTINGS
@@ -38631,9 +38640,11 @@ components:
       - SHELL
       - PORT_FORWARD
       - REMOTE_DEBUG
+      - MCP
       - IMPORT
       - LOCK
       - UNLOCK
+      - REJECTED
       example: CREATE
       type: string
     SecretOverride:
