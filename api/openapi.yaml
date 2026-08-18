@@ -38644,7 +38644,7 @@ components:
       - IMPORT
       - LOCK
       - UNLOCK
-      - REJECTED
+      - POLICY_FAILED
       example: CREATE
       type: string
     SecretOverride:
