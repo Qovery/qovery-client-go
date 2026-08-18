@@ -490,3 +490,136 @@ func (a *ClusterOperatorAPIService) ListClusterOperatorFleetExecute(r ApiListClu
 
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
+
+type ApiUpdateClusterOperatorRequest struct {
+	ctx                          context.Context
+	ApiService                   *ClusterOperatorAPIService
+	organizationId               string
+	clusterId                    string
+	clusterOperatorUpdateRequest *ClusterOperatorUpdateRequest
+}
+
+func (r ApiUpdateClusterOperatorRequest) ClusterOperatorUpdateRequest(clusterOperatorUpdateRequest ClusterOperatorUpdateRequest) ApiUpdateClusterOperatorRequest {
+	r.clusterOperatorUpdateRequest = &clusterOperatorUpdateRequest
+	return r
+}
+
+func (r ApiUpdateClusterOperatorRequest) Execute() (*ClusterOperatorUpdateResponse, *http.Response, error) {
+	return r.ApiService.UpdateClusterOperatorExecute(r)
+}
+
+/*
+UpdateClusterOperator Update the Qovery Operator on a cluster
+
+Queues an Engine v2 execution containing only the Qovery Operator Helm release. The chart version is required; the optional image version overrides the image target selected by q-core. The current Operator must be attached, connected, and protocol-compatible. A successful response means that the execution was accepted, not that Helm has completed. Cluster administrator permission is required.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@param clusterId Cluster ID
+	@return ApiUpdateClusterOperatorRequest
+*/
+func (a *ClusterOperatorAPIService) UpdateClusterOperator(ctx context.Context, organizationId string, clusterId string) ApiUpdateClusterOperatorRequest {
+	return ApiUpdateClusterOperatorRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+		clusterId:      clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ClusterOperatorUpdateResponse
+func (a *ClusterOperatorAPIService) UpdateClusterOperatorExecute(r ApiUpdateClusterOperatorRequest) (*ClusterOperatorUpdateResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterOperatorUpdateResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClusterOperatorAPIService.UpdateClusterOperator")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/operator/update"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterOperatorUpdateRequest == nil {
+		return localVarReturnValue, nil, reportError("clusterOperatorUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clusterOperatorUpdateRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}

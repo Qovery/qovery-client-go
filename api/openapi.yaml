@@ -2434,6 +2434,61 @@ paths:
       summary: Get the Qovery Operator status for a cluster
       tags:
       - Cluster Operator
+  /organization/{organizationId}/cluster/{clusterId}/operator/update:
+    post:
+      description: "Queues an Engine v2 execution containing only the Qovery Operator\
+        \ Helm release. The chart version is required; the optional image version\
+        \ overrides the image target selected by q-core. The current Operator must\
+        \ be attached, connected, and protocol-compatible. A successful response means\
+        \ that the execution was accepted, not that Helm has completed. Cluster administrator\
+        \ permission is required."
+      operationId: updateClusterOperator
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClusterOperatorUpdateRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterOperatorUpdateResponse'
+          description: The Qovery Operator update was queued
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "412":
+          description: "The Operator is disconnected, incompatible, or its selected\
+            \ release cannot be resolved"
+      summary: Update the Qovery Operator on a cluster
+      tags:
+      - Cluster Operator
   /admin/operator/clusters:
     get:
       description: "Returns every self-managed cluster with its attachment, heartbeat\
@@ -28423,6 +28478,52 @@ components:
       - operator_connected
       - organization_id
       - status
+      type: object
+    ClusterOperatorUpdateRequest:
+      example:
+        image_version: v1.204.0
+        chart_version: 0.2.2
+      properties:
+        chart_version:
+          description: Exact Qovery Operator Helm chart version to install.
+          example: 0.2.2
+          maxLength: 128
+          minLength: 1
+          type: string
+        image_version:
+          description: Optional Operator image tag overriding the image target selected
+            by q-core.
+          example: v1.204.0
+          maxLength: 128
+          minLength: 1
+          nullable: true
+          type: string
+      required:
+      - chart_version
+      type: object
+    ClusterOperatorUpdateResponse:
+      example:
+        execution_id: 00000000-0000-0000-0000-000000000001-0
+        image_version: v1.204.0
+        chart_version: 0.2.2
+      properties:
+        execution_id:
+          description: Identifier shared by the queued Engine execution and its infrastructure
+            logs.
+          example: 00000000-0000-0000-0000-000000000001-0
+          type: string
+        image_version:
+          description: Operator image tag resolved for this execution.
+          example: v1.204.0
+          type: string
+        chart_version:
+          description: Operator Helm chart version resolved for this execution.
+          example: 0.2.2
+          type: string
+      required:
+      - chart_version
+      - execution_id
+      - image_version
       type: object
     ReportedClusterOperatorIdentity:
       properties:

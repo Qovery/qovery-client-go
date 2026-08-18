@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**GetClusterOperatorBootstrap**](ClusterOperatorAPI.md#GetClusterOperatorBootstrap) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 [**GetClusterOperatorStatus**](ClusterOperatorAPI.md#GetClusterOperatorStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
 [**ListClusterOperatorFleet**](ClusterOperatorAPI.md#ListClusterOperatorFleet) | **Get** /admin/operator/clusters | List the Qovery Operator fleet
+[**UpdateClusterOperator**](ClusterOperatorAPI.md#UpdateClusterOperator) | **Post** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 
 
 
@@ -282,6 +283,81 @@ Other parameters are passed through a pointer to a apiListClusterOperatorFleetRe
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateClusterOperator
+
+> ClusterOperatorUpdateResponse UpdateClusterOperator(ctx, organizationId, clusterId).ClusterOperatorUpdateRequest(clusterOperatorUpdateRequest).Execute()
+
+Update the Qovery Operator on a cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	clusterOperatorUpdateRequest := *openapiclient.NewClusterOperatorUpdateRequest("0.2.2") // ClusterOperatorUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClusterOperatorAPI.UpdateClusterOperator(context.Background(), organizationId, clusterId).ClusterOperatorUpdateRequest(clusterOperatorUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClusterOperatorAPI.UpdateClusterOperator``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateClusterOperator`: ClusterOperatorUpdateResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClusterOperatorAPI.UpdateClusterOperator`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateClusterOperatorRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **clusterOperatorUpdateRequest** | [**ClusterOperatorUpdateRequest**](ClusterOperatorUpdateRequest.md) |  | 
+
+### Return type
+
+[**ClusterOperatorUpdateResponse**](ClusterOperatorUpdateResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

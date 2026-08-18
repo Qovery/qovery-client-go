@@ -233,6 +233,7 @@ Class | Method | HTTP request | Description
 *ClusterOperatorAPI* | [**GetClusterOperatorBootstrap**](docs/ClusterOperatorAPI.md#getclusteroperatorbootstrap) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 *ClusterOperatorAPI* | [**GetClusterOperatorStatus**](docs/ClusterOperatorAPI.md#getclusteroperatorstatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
 *ClusterOperatorAPI* | [**ListClusterOperatorFleet**](docs/ClusterOperatorAPI.md#listclusteroperatorfleet) | **Get** /admin/operator/clusters | List the Qovery Operator fleet
+*ClusterOperatorAPI* | [**UpdateClusterOperator**](docs/ClusterOperatorAPI.md#updateclusteroperator) | **Post** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 *ClustersAPI* | [**CreateCluster**](docs/ClustersAPI.md#createcluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
 *ClustersAPI* | [**DeleteCluster**](docs/ClustersAPI.md#deletecluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 *ClustersAPI* | [**DeployCluster**](docs/ClustersAPI.md#deploycluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
@@ -877,6 +878,8 @@ Class | Method | HTTP request | Description
  - [ClusterOperatorFleetInventoryResponseList](docs/ClusterOperatorFleetInventoryResponseList.md)
  - [ClusterOperatorFleetStatus](docs/ClusterOperatorFleetStatus.md)
  - [ClusterOperatorStatusResponse](docs/ClusterOperatorStatusResponse.md)
+ - [ClusterOperatorUpdateRequest](docs/ClusterOperatorUpdateRequest.md)
+ - [ClusterOperatorUpdateResponse](docs/ClusterOperatorUpdateResponse.md)
  - [ClusterOverviewResponse](docs/ClusterOverviewResponse.md)
  - [ClusterPlatformBindingLayerResponse](docs/ClusterPlatformBindingLayerResponse.md)
  - [ClusterPlatformBindingRequest](docs/ClusterPlatformBindingRequest.md)
