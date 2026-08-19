@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**SpotEnabled** | **bool** |  | 
+**SpotEnabled** | **bool** | Deprecated: use the per-pool &#x60;spot_enabled&#x60; fields on &#x60;qovery_node_pools.default_override&#x60;, &#x60;qovery_node_pools.stable_override&#x60; and &#x60;qovery_node_pools.cronjob_override&#x60; instead.  On read, this is a derived value: it is recomputed on every write as the logical OR of the per-pool &#x60;spot_enabled&#x60; fields of the node pools present (the default and stable node pools, plus the cronjob node pool only while its &#x60;cronjob_override&#x60; block exists).  On write, it is only honoured for legacy clients: when none of the per-pool &#x60;spot_enabled&#x60; fields are present in the request, this value is applied to all node pools, including the stable one. As soon as the per-pool fields are present they take precedence and this value is ignored. | 
 **DiskSizeInGib** | **int32** |  | 
 **DiskIops** | Pointer to **int32** | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional] 
 **DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk throughput to be used for the node configuration | [optional] 

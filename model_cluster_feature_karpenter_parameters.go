@@ -21,6 +21,8 @@ var _ MappedNullable = &ClusterFeatureKarpenterParameters{}
 
 // ClusterFeatureKarpenterParameters struct for ClusterFeatureKarpenterParameters
 type ClusterFeatureKarpenterParameters struct {
+	// Deprecated: use the per-pool `spot_enabled` fields on `qovery_node_pools.default_override`, `qovery_node_pools.stable_override` and `qovery_node_pools.cronjob_override` instead.  On read, this is a derived value: it is recomputed on every write as the logical OR of the per-pool `spot_enabled` fields of the node pools present (the default and stable node pools, plus the cronjob node pool only while its `cronjob_override` block exists).  On write, it is only honoured for legacy clients: when none of the per-pool `spot_enabled` fields are present in the request, this value is applied to all node pools, including the stable one. As soon as the per-pool fields are present they take precedence and this value is ignored.
+	// Deprecated
 	SpotEnabled   bool  `json:"spot_enabled"`
 	DiskSizeInGib int32 `json:"disk_size_in_gib"`
 	// Unit is operation/seconds. The disk IOPS to be used for the node configuration
@@ -56,6 +58,7 @@ func NewClusterFeatureKarpenterParametersWithDefaults() *ClusterFeatureKarpenter
 }
 
 // GetSpotEnabled returns the SpotEnabled field value
+// Deprecated
 func (o *ClusterFeatureKarpenterParameters) GetSpotEnabled() bool {
 	if o == nil {
 		var ret bool
@@ -67,6 +70,7 @@ func (o *ClusterFeatureKarpenterParameters) GetSpotEnabled() bool {
 
 // GetSpotEnabledOk returns a tuple with the SpotEnabled field value
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ClusterFeatureKarpenterParameters) GetSpotEnabledOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
@@ -75,6 +79,7 @@ func (o *ClusterFeatureKarpenterParameters) GetSpotEnabledOk() (*bool, bool) {
 }
 
 // SetSpotEnabled sets field value
+// Deprecated
 func (o *ClusterFeatureKarpenterParameters) SetSpotEnabled(v bool) {
 	o.SpotEnabled = v
 }

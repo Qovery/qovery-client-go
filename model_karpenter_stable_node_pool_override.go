@@ -22,6 +22,8 @@ var _ MappedNullable = &KarpenterStableNodePoolOverride{}
 type KarpenterStableNodePoolOverride struct {
 	Consolidation *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
 	Limits        *KarpenterNodePoolLimits        `json:"limits,omitempty"`
+	// Whether this node pool runs on spot instances. `null` or absent means the pool inherits the deprecated top-level `spot_enabled`: on write that value applies to this pool, on read only a deviating value is surfaced.
+	SpotEnabled NullableBool `json:"spot_enabled,omitempty"`
 	// Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h
 	ConsolidateAfter     *string `json:"consolidate_after,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -110,6 +112,49 @@ func (o *KarpenterStableNodePoolOverride) SetLimits(v KarpenterNodePoolLimits) {
 	o.Limits = &v
 }
 
+// GetSpotEnabled returns the SpotEnabled field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KarpenterStableNodePoolOverride) GetSpotEnabled() bool {
+	if o == nil || IsNil(o.SpotEnabled.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.SpotEnabled.Get()
+}
+
+// GetSpotEnabledOk returns a tuple with the SpotEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KarpenterStableNodePoolOverride) GetSpotEnabledOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SpotEnabled.Get(), o.SpotEnabled.IsSet()
+}
+
+// HasSpotEnabled returns a boolean if a field has been set.
+func (o *KarpenterStableNodePoolOverride) HasSpotEnabled() bool {
+	if o != nil && o.SpotEnabled.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSpotEnabled gets a reference to the given NullableBool and assigns it to the SpotEnabled field.
+func (o *KarpenterStableNodePoolOverride) SetSpotEnabled(v bool) {
+	o.SpotEnabled.Set(&v)
+}
+
+// SetSpotEnabledNil sets the value for SpotEnabled to be an explicit nil
+func (o *KarpenterStableNodePoolOverride) SetSpotEnabledNil() {
+	o.SpotEnabled.Set(nil)
+}
+
+// UnsetSpotEnabled ensures that no value is present for SpotEnabled, not even an explicit nil
+func (o *KarpenterStableNodePoolOverride) UnsetSpotEnabled() {
+	o.SpotEnabled.Unset()
+}
+
 // GetConsolidateAfter returns the ConsolidateAfter field value if set, zero value otherwise.
 func (o *KarpenterStableNodePoolOverride) GetConsolidateAfter() string {
 	if o == nil || IsNil(o.ConsolidateAfter) {
@@ -158,6 +203,9 @@ func (o KarpenterStableNodePoolOverride) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Limits) {
 		toSerialize["limits"] = o.Limits
 	}
+	if o.SpotEnabled.IsSet() {
+		toSerialize["spot_enabled"] = o.SpotEnabled.Get()
+	}
 	if !IsNil(o.ConsolidateAfter) {
 		toSerialize["consolidate_after"] = o.ConsolidateAfter
 	}
@@ -185,6 +233,7 @@ func (o *KarpenterStableNodePoolOverride) UnmarshalJSON(data []byte) (err error)
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "consolidation")
 		delete(additionalProperties, "limits")
+		delete(additionalProperties, "spot_enabled")
 		delete(additionalProperties, "consolidate_after")
 		o.AdditionalProperties = additionalProperties
 	}
