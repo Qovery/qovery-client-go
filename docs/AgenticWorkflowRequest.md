@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **DockerFragment** | Pointer to **string** |  | [optional] [default to ""]
 **Enabled** | Pointer to **bool** |  | [optional] [default to true]
 **Mcp** | Pointer to **string** | Raw JSON blob describing the MCP servers configured for this workflow | [optional] [default to ""]
+**McpServerIds** | Pointer to **[]string** | Organization MCP servers used by this workflow | [optional] [default to []]
 **Outputs** | Pointer to [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | [optional] [default to []]
 **Model** | Pointer to [**AgenticWorkflowModelRequest**](AgenticWorkflowModelRequest.md) |  | [optional] 
 **ProjectRepositories** | Pointer to [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | [optional] [default to []]
@@ -180,6 +181,31 @@ SetMcp sets Mcp field to given value.
 `func (o *AgenticWorkflowRequest) HasMcp() bool`
 
 HasMcp returns a boolean if a field has been set.
+
+### GetMcpServerIds
+
+`func (o *AgenticWorkflowRequest) GetMcpServerIds() []string`
+
+GetMcpServerIds returns the McpServerIds field if non-nil, zero value otherwise.
+
+### GetMcpServerIdsOk
+
+`func (o *AgenticWorkflowRequest) GetMcpServerIdsOk() (*[]string, bool)`
+
+GetMcpServerIdsOk returns a tuple with the McpServerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcpServerIds
+
+`func (o *AgenticWorkflowRequest) SetMcpServerIds(v []string)`
+
+SetMcpServerIds sets McpServerIds field to given value.
+
+### HasMcpServerIds
+
+`func (o *AgenticWorkflowRequest) HasMcpServerIds() bool`
+
+HasMcpServerIds returns a boolean if a field has been set.
 
 ### GetOutputs
 

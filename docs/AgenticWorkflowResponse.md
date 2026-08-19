@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **DockerFragment** | **string** |  | 
 **Enabled** | **bool** |  | 
 **Mcp** | **string** | Raw JSON blob describing the MCP servers configured for this workflow | 
+**McpServerIds** | **[]string** | Organization MCP servers used by this workflow | 
 **Outputs** | [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | 
 **Model** | [**AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
 **ProjectRepositories** | [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | 
@@ -29,7 +30,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -287,6 +288,26 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetMcp(v string)`
 
 SetMcp sets Mcp field to given value.
+
+
+### GetMcpServerIds
+
+`func (o *AgenticWorkflowResponse) GetMcpServerIds() []string`
+
+GetMcpServerIds returns the McpServerIds field if non-nil, zero value otherwise.
+
+### GetMcpServerIdsOk
+
+`func (o *AgenticWorkflowResponse) GetMcpServerIdsOk() (*[]string, bool)`
+
+GetMcpServerIdsOk returns a tuple with the McpServerIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcpServerIds
+
+`func (o *AgenticWorkflowResponse) SetMcpServerIds(v []string)`
+
+SetMcpServerIds sets McpServerIds field to given value.
 
 
 ### GetOutputs

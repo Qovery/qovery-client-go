@@ -29,7 +29,9 @@ type AgenticWorkflowRequest struct {
 	DockerFragment     *string  `json:"docker_fragment,omitempty"`
 	Enabled            *bool    `json:"enabled,omitempty"`
 	// Raw JSON blob describing the MCP servers configured for this workflow
-	Mcp                  *string                            `json:"mcp,omitempty"`
+	Mcp *string `json:"mcp,omitempty"`
+	// Organization MCP servers used by this workflow
+	McpServerIds         []string                           `json:"mcp_server_ids,omitempty"`
 	Outputs              []AgenticWorkflowOutput            `json:"outputs,omitempty"`
 	Model                *AgenticWorkflowModelRequest       `json:"model,omitempty"`
 	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories,omitempty"`
@@ -263,6 +265,38 @@ func (o *AgenticWorkflowRequest) SetMcp(v string) {
 	o.Mcp = &v
 }
 
+// GetMcpServerIds returns the McpServerIds field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetMcpServerIds() []string {
+	if o == nil || IsNil(o.McpServerIds) {
+		var ret []string
+		return ret
+	}
+	return o.McpServerIds
+}
+
+// GetMcpServerIdsOk returns a tuple with the McpServerIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetMcpServerIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.McpServerIds) {
+		return nil, false
+	}
+	return o.McpServerIds, true
+}
+
+// HasMcpServerIds returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasMcpServerIds() bool {
+	if o != nil && !IsNil(o.McpServerIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetMcpServerIds gets a reference to the given []string and assigns it to the McpServerIds field.
+func (o *AgenticWorkflowRequest) SetMcpServerIds(v []string) {
+	o.McpServerIds = v
+}
+
 // GetOutputs returns the Outputs field value if set, zero value otherwise.
 func (o *AgenticWorkflowRequest) GetOutputs() []AgenticWorkflowOutput {
 	if o == nil || IsNil(o.Outputs) {
@@ -481,6 +515,9 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Mcp) {
 		toSerialize["mcp"] = o.Mcp
 	}
+	if !IsNil(o.McpServerIds) {
+		toSerialize["mcp_server_ids"] = o.McpServerIds
+	}
 	if !IsNil(o.Outputs) {
 		toSerialize["outputs"] = o.Outputs
 	}
@@ -548,6 +585,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "mcp")
+		delete(additionalProperties, "mcp_server_ids")
 		delete(additionalProperties, "outputs")
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "project_repositories")

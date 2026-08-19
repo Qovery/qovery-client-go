@@ -37,7 +37,9 @@ type AgenticWorkflowResponse struct {
 	DockerFragment     string   `json:"docker_fragment"`
 	Enabled            bool     `json:"enabled"`
 	// Raw JSON blob describing the MCP servers configured for this workflow
-	Mcp                 string                             `json:"mcp"`
+	Mcp string `json:"mcp"`
+	// Organization MCP servers used by this workflow
+	McpServerIds        []string                           `json:"mcp_server_ids"`
 	Outputs             []AgenticWorkflowOutput            `json:"outputs"`
 	Model               AgenticWorkflowModelResponse       `json:"model"`
 	ProjectRepositories []AgenticWorkflowProjectRepository `json:"project_repositories"`
@@ -56,7 +58,7 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -69,6 +71,7 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 	this.DockerFragment = dockerFragment
 	this.Enabled = enabled
 	this.Mcp = mcp
+	this.McpServerIds = mcpServerIds
 	this.Outputs = outputs
 	this.Model = model
 	this.ProjectRepositories = projectRepositories
@@ -383,6 +386,30 @@ func (o *AgenticWorkflowResponse) SetMcp(v string) {
 	o.Mcp = v
 }
 
+// GetMcpServerIds returns the McpServerIds field value
+func (o *AgenticWorkflowResponse) GetMcpServerIds() []string {
+	if o == nil {
+		var ret []string
+		return ret
+	}
+
+	return o.McpServerIds
+}
+
+// GetMcpServerIdsOk returns a tuple with the McpServerIds field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetMcpServerIdsOk() ([]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.McpServerIds, true
+}
+
+// SetMcpServerIds sets field value
+func (o *AgenticWorkflowResponse) SetMcpServerIds(v []string) {
+	o.McpServerIds = v
+}
+
 // GetOutputs returns the Outputs field value
 func (o *AgenticWorkflowResponse) GetOutputs() []AgenticWorkflowOutput {
 	if o == nil {
@@ -607,6 +634,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["docker_fragment"] = o.DockerFragment
 	toSerialize["enabled"] = o.Enabled
 	toSerialize["mcp"] = o.Mcp
+	toSerialize["mcp_server_ids"] = o.McpServerIds
 	toSerialize["outputs"] = o.Outputs
 	toSerialize["model"] = o.Model
 	toSerialize["project_repositories"] = o.ProjectRepositories
@@ -641,6 +669,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"docker_fragment",
 		"enabled",
 		"mcp",
+		"mcp_server_ids",
 		"outputs",
 		"model",
 		"project_repositories",
@@ -689,6 +718,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "docker_fragment")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "mcp")
+		delete(additionalProperties, "mcp_server_ids")
 		delete(additionalProperties, "outputs")
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "project_repositories")
