@@ -47276,7 +47276,6 @@ components:
               format: uuid
               type: string
             type: array
-            uniqueItems: true
           outputs:
             items:
               $ref: '#/components/schemas/AgenticWorkflowOutput'
@@ -47537,7 +47536,6 @@ components:
               format: uuid
               type: string
             type: array
-            uniqueItems: true
           outputs:
             default: []
             items:
