@@ -38254,6 +38254,14 @@ components:
             type: string
           description:
             type: string
+          role_name:
+            type: string
+          role_id:
+            description: the organization role this token acts as once its policy
+              has allowed a request. Effective access is the intersection of this
+              role and `opa_policy`.
+            format: uuid
+            type: string
           opa_policy:
             description: the Open Policy Agent (rego) policy evaluated on every request
               made with this token
@@ -38267,8 +38275,10 @@ components:
             type: string
         type: object
       example:
+        role_name: role_name
         expires_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -38282,6 +38292,14 @@ components:
           name:
             type: string
           description:
+            type: string
+          role_name:
+            type: string
+          role_id:
+            description: the organization role this token acts as once its policy
+              has allowed a request. Effective access is the intersection of this
+              role and its policy.
+            format: uuid
             type: string
           token:
             description: the generated token to send in 'Authorization' header prefixed
@@ -38298,8 +38316,10 @@ components:
             type: string
         type: object
       example:
+        role_name: role_name
         expires_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -38310,6 +38330,7 @@ components:
     OrganizationPolicyApiTokenCreateRequest:
       example:
         expires_at: 2000-01-23T04:56:07.000+00:00
+        role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
         description: description
         opa_policy: opa_policy
@@ -38324,6 +38345,14 @@ components:
             \ rules cannot authorize another's. The policy must define an `allow`\
             \ rule, and the request is denied unless it evaluates to true."
           type: string
+        role_id:
+          description: "the roleId provided by the \"List organization custom roles\"\
+            \ endpoint. The role bounds what the token may do once its policy has\
+            \ allowed a request, so effective access is the intersection of the two.\
+            \ Omit it, or send null, for organization-admin."
+          format: uuid
+          nullable: true
+          type: string
         expires_at:
           format: date-time
           nullable: true
@@ -38335,16 +38364,20 @@ components:
     OrganizationPolicyApiTokenResponseList:
       example:
         results:
-        - expires_at: 2000-01-23T04:56:07.000+00:00
+        - role_name: role_name
+          expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           opa_policy: opa_policy
           creator_name: creator_name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - expires_at: 2000-01-23T04:56:07.000+00:00
+        - role_name: role_name
+          expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
+          role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description

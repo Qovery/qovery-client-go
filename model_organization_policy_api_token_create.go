@@ -27,6 +27,9 @@ type OrganizationPolicyApiTokenCreate struct {
 	UpdatedAt   *time.Time `json:"updated_at,omitempty"`
 	Name        *string    `json:"name,omitempty"`
 	Description *string    `json:"description,omitempty"`
+	RoleName    *string    `json:"role_name,omitempty"`
+	// the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy.
+	RoleId *string `json:"role_id,omitempty"`
 	// the generated token to send in 'Authorization' header prefixed by 'Token '. It is returned only here and cannot be retrieved afterwards.
 	Token                *string        `json:"token,omitempty"`
 	CreatorName          NullableString `json:"creator_name,omitempty"`
@@ -200,6 +203,70 @@ func (o *OrganizationPolicyApiTokenCreate) SetDescription(v string) {
 	o.Description = &v
 }
 
+// GetRoleName returns the RoleName field value if set, zero value otherwise.
+func (o *OrganizationPolicyApiTokenCreate) GetRoleName() string {
+	if o == nil || IsNil(o.RoleName) {
+		var ret string
+		return ret
+	}
+	return *o.RoleName
+}
+
+// GetRoleNameOk returns a tuple with the RoleName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationPolicyApiTokenCreate) GetRoleNameOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleName) {
+		return nil, false
+	}
+	return o.RoleName, true
+}
+
+// HasRoleName returns a boolean if a field has been set.
+func (o *OrganizationPolicyApiTokenCreate) HasRoleName() bool {
+	if o != nil && !IsNil(o.RoleName) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleName gets a reference to the given string and assigns it to the RoleName field.
+func (o *OrganizationPolicyApiTokenCreate) SetRoleName(v string) {
+	o.RoleName = &v
+}
+
+// GetRoleId returns the RoleId field value if set, zero value otherwise.
+func (o *OrganizationPolicyApiTokenCreate) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *OrganizationPolicyApiTokenCreate) GetRoleIdOk() (*string, bool) {
+	if o == nil || IsNil(o.RoleId) {
+		return nil, false
+	}
+	return o.RoleId, true
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *OrganizationPolicyApiTokenCreate) HasRoleId() bool {
+	if o != nil && !IsNil(o.RoleId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given string and assigns it to the RoleId field.
+func (o *OrganizationPolicyApiTokenCreate) SetRoleId(v string) {
+	o.RoleId = &v
+}
+
 // GetToken returns the Token field value if set, zero value otherwise.
 func (o *OrganizationPolicyApiTokenCreate) GetToken() string {
 	if o == nil || IsNil(o.Token) {
@@ -371,6 +438,12 @@ func (o OrganizationPolicyApiTokenCreate) ToMap() (map[string]interface{}, error
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
+	if !IsNil(o.RoleName) {
+		toSerialize["role_name"] = o.RoleName
+	}
+	if !IsNil(o.RoleId) {
+		toSerialize["role_id"] = o.RoleId
+	}
 	if !IsNil(o.Token) {
 		toSerialize["token"] = o.Token
 	}
@@ -432,6 +505,8 @@ func (o *OrganizationPolicyApiTokenCreate) UnmarshalJSON(data []byte) (err error
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "role_name")
+		delete(additionalProperties, "role_id")
 		delete(additionalProperties, "token")
 		delete(additionalProperties, "creator_name")
 		delete(additionalProperties, "user_sub")

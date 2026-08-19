@@ -9,6 +9,8 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Name** | Pointer to **string** |  | [optional] 
 **Description** | Pointer to **string** |  | [optional] 
+**RoleName** | Pointer to **string** |  | [optional] 
+**RoleId** | Pointer to **string** | the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and its policy. | [optional] 
 **Token** | Pointer to **string** | the generated token to send in &#39;Authorization&#39; header prefixed by &#39;Token &#39;. It is returned only here and cannot be retrieved afterwards. | [optional] 
 **CreatorName** | Pointer to **NullableString** |  | [optional] 
 **UserSub** | Pointer to **string** |  | [optional] 
@@ -147,6 +149,56 @@ SetDescription sets Description field to given value.
 `func (o *OrganizationPolicyApiTokenCreate) HasDescription() bool`
 
 HasDescription returns a boolean if a field has been set.
+
+### GetRoleName
+
+`func (o *OrganizationPolicyApiTokenCreate) GetRoleName() string`
+
+GetRoleName returns the RoleName field if non-nil, zero value otherwise.
+
+### GetRoleNameOk
+
+`func (o *OrganizationPolicyApiTokenCreate) GetRoleNameOk() (*string, bool)`
+
+GetRoleNameOk returns a tuple with the RoleName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleName
+
+`func (o *OrganizationPolicyApiTokenCreate) SetRoleName(v string)`
+
+SetRoleName sets RoleName field to given value.
+
+### HasRoleName
+
+`func (o *OrganizationPolicyApiTokenCreate) HasRoleName() bool`
+
+HasRoleName returns a boolean if a field has been set.
+
+### GetRoleId
+
+`func (o *OrganizationPolicyApiTokenCreate) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *OrganizationPolicyApiTokenCreate) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *OrganizationPolicyApiTokenCreate) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *OrganizationPolicyApiTokenCreate) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
 
 ### GetToken
 

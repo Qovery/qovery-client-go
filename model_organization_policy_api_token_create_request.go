@@ -25,8 +25,10 @@ type OrganizationPolicyApiTokenCreateRequest struct {
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
 	// Open Policy Agent (rego) rule definitions, without a `package` declaration: Qovery prepends a per-token package so that one token's rules cannot authorize another's. The policy must define an `allow` rule, and the request is denied unless it evaluates to true.
-	OpaPolicy            string       `json:"opa_policy"`
-	ExpiresAt            NullableTime `json:"expires_at,omitempty"`
+	OpaPolicy string `json:"opa_policy"`
+	// the roleId provided by the \"List organization custom roles\" endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two. Omit it, or send null, for organization-admin.
+	RoleId               NullableString `json:"role_id,omitempty"`
+	ExpiresAt            NullableTime   `json:"expires_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -131,6 +133,49 @@ func (o *OrganizationPolicyApiTokenCreateRequest) SetOpaPolicy(v string) {
 	o.OpaPolicy = v
 }
 
+// GetRoleId returns the RoleId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationPolicyApiTokenCreateRequest) GetRoleId() string {
+	if o == nil || IsNil(o.RoleId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.RoleId.Get()
+}
+
+// GetRoleIdOk returns a tuple with the RoleId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationPolicyApiTokenCreateRequest) GetRoleIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.RoleId.Get(), o.RoleId.IsSet()
+}
+
+// HasRoleId returns a boolean if a field has been set.
+func (o *OrganizationPolicyApiTokenCreateRequest) HasRoleId() bool {
+	if o != nil && o.RoleId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRoleId gets a reference to the given NullableString and assigns it to the RoleId field.
+func (o *OrganizationPolicyApiTokenCreateRequest) SetRoleId(v string) {
+	o.RoleId.Set(&v)
+}
+
+// SetRoleIdNil sets the value for RoleId to be an explicit nil
+func (o *OrganizationPolicyApiTokenCreateRequest) SetRoleIdNil() {
+	o.RoleId.Set(nil)
+}
+
+// UnsetRoleId ensures that no value is present for RoleId, not even an explicit nil
+func (o *OrganizationPolicyApiTokenCreateRequest) UnsetRoleId() {
+	o.RoleId.Unset()
+}
+
 // GetExpiresAt returns the ExpiresAt field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *OrganizationPolicyApiTokenCreateRequest) GetExpiresAt() time.Time {
 	if o == nil || IsNil(o.ExpiresAt.Get()) {
@@ -189,6 +234,9 @@ func (o OrganizationPolicyApiTokenCreateRequest) ToMap() (map[string]interface{}
 		toSerialize["description"] = o.Description
 	}
 	toSerialize["opa_policy"] = o.OpaPolicy
+	if o.RoleId.IsSet() {
+		toSerialize["role_id"] = o.RoleId.Get()
+	}
 	if o.ExpiresAt.IsSet() {
 		toSerialize["expires_at"] = o.ExpiresAt.Get()
 	}
@@ -239,6 +287,7 @@ func (o *OrganizationPolicyApiTokenCreateRequest) UnmarshalJSON(data []byte) (er
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "opa_policy")
+		delete(additionalProperties, "role_id")
 		delete(additionalProperties, "expires_at")
 		o.AdditionalProperties = additionalProperties
 	}

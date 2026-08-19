@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Name** | **string** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **OpaPolicy** | **string** | Open Policy Agent (rego) rule definitions, without a &#x60;package&#x60; declaration: Qovery prepends a per-token package so that one token&#39;s rules cannot authorize another&#39;s. The policy must define an &#x60;allow&#x60; rule, and the request is denied unless it evaluates to true. | 
+**RoleId** | Pointer to **NullableString** | the roleId provided by the \&quot;List organization custom roles\&quot; endpoint. The role bounds what the token may do once its policy has allowed a request, so effective access is the intersection of the two. Omit it, or send null, for organization-admin. | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
 
 ## Methods
@@ -93,6 +94,41 @@ and a boolean to check if the value has been set.
 SetOpaPolicy sets OpaPolicy field to given value.
 
 
+### GetRoleId
+
+`func (o *OrganizationPolicyApiTokenCreateRequest) GetRoleId() string`
+
+GetRoleId returns the RoleId field if non-nil, zero value otherwise.
+
+### GetRoleIdOk
+
+`func (o *OrganizationPolicyApiTokenCreateRequest) GetRoleIdOk() (*string, bool)`
+
+GetRoleIdOk returns a tuple with the RoleId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRoleId
+
+`func (o *OrganizationPolicyApiTokenCreateRequest) SetRoleId(v string)`
+
+SetRoleId sets RoleId field to given value.
+
+### HasRoleId
+
+`func (o *OrganizationPolicyApiTokenCreateRequest) HasRoleId() bool`
+
+HasRoleId returns a boolean if a field has been set.
+
+### SetRoleIdNil
+
+`func (o *OrganizationPolicyApiTokenCreateRequest) SetRoleIdNil(b bool)`
+
+ SetRoleIdNil sets the value for RoleId to be an explicit nil
+
+### UnsetRoleId
+`func (o *OrganizationPolicyApiTokenCreateRequest) UnsetRoleId()`
+
+UnsetRoleId ensures that no value is present for RoleId, not even an explicit nil
 ### GetExpiresAt
 
 `func (o *OrganizationPolicyApiTokenCreateRequest) GetExpiresAt() time.Time`
