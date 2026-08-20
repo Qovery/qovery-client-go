@@ -49,20 +49,6 @@ func Test_qovery_DatabaseMainCallsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test DatabaseMainCallsAPIService EditDatabaseCredentials", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var databaseId string
-
-		resp, httpRes, err := apiClient.DatabaseMainCallsAPI.EditDatabaseCredentials(context.Background(), databaseId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test DatabaseMainCallsAPIService GetDatabase", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

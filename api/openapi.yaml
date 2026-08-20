@@ -13703,41 +13703,6 @@ paths:
       summary: Get master credentials of the database
       tags:
       - Database Main Calls
-    put:
-      operationId: editDatabaseCredentials
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CredentialsRequest'
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Credentials'
-          description: Edit database credentials
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Edit database  master credentials
-      tags:
-      - Database Main Calls
   /database/{databaseId}/application:
     get:
       operationId: listDatabaseApplication
@@ -30933,19 +30898,6 @@ components:
       - login
       - password
       - port
-      type: object
-    CredentialsRequest:
-      example:
-        password: password
-        login: login
-      properties:
-        login:
-          type: string
-        password:
-          type: string
-      required:
-      - login
-      - password
       type: object
     CreditCard:
       example:

@@ -333,7 +333,6 @@ Class | Method | HTTP request | Description
 *DatabaseDeploymentHistoryAPI* | [**ListDatabaseDeploymentHistoryV2**](docs/DatabaseDeploymentHistoryAPI.md#listdatabasedeploymenthistoryv2) | **Get** /database/{databaseId}/deploymentHistoryV2 | List database deploys
 *DatabaseMainCallsAPI* | [**DeleteDatabase**](docs/DatabaseMainCallsAPI.md#deletedatabase) | **Delete** /database/{databaseId} | Delete a database 
 *DatabaseMainCallsAPI* | [**EditDatabase**](docs/DatabaseMainCallsAPI.md#editdatabase) | **Put** /database/{databaseId} | Edit a database 
-*DatabaseMainCallsAPI* | [**EditDatabaseCredentials**](docs/DatabaseMainCallsAPI.md#editdatabasecredentials) | **Put** /database/{databaseId}/masterCredentials | Edit database  master credentials
 *DatabaseMainCallsAPI* | [**GetDatabase**](docs/DatabaseMainCallsAPI.md#getdatabase) | **Get** /database/{databaseId} | Get database by ID
 *DatabaseMainCallsAPI* | [**GetDatabaseMasterCredentials**](docs/DatabaseMainCallsAPI.md#getdatabasemastercredentials) | **Get** /database/{databaseId}/masterCredentials | Get master credentials of the database
 *DatabaseMainCallsAPI* | [**GetDatabaseStatus**](docs/DatabaseMainCallsAPI.md#getdatabasestatus) | **Get** /database/{databaseId}/status | Get database status
@@ -929,7 +928,6 @@ Class | Method | HTTP request | Description
  - [CreateEnvironmentRequest](docs/CreateEnvironmentRequest.md)
  - [CredentialCluster](docs/CredentialCluster.md)
  - [Credentials](docs/Credentials.md)
- - [CredentialsRequest](docs/CredentialsRequest.md)
  - [CreditCard](docs/CreditCard.md)
  - [CreditCardRequest](docs/CreditCardRequest.md)
  - [CreditCardResponseList](docs/CreditCardResponseList.md)

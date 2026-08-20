@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**DeleteDatabase**](DatabaseMainCallsAPI.md#DeleteDatabase) | **Delete** /database/{databaseId} | Delete a database 
 [**EditDatabase**](DatabaseMainCallsAPI.md#EditDatabase) | **Put** /database/{databaseId} | Edit a database 
-[**EditDatabaseCredentials**](DatabaseMainCallsAPI.md#EditDatabaseCredentials) | **Put** /database/{databaseId}/masterCredentials | Edit database  master credentials
 [**GetDatabase**](DatabaseMainCallsAPI.md#GetDatabase) | **Get** /database/{databaseId} | Get database by ID
 [**GetDatabaseMasterCredentials**](DatabaseMainCallsAPI.md#GetDatabaseMasterCredentials) | **Get** /database/{databaseId}/masterCredentials | Get master credentials of the database
 [**GetDatabaseStatus**](DatabaseMainCallsAPI.md#GetDatabaseStatus) | **Get** /database/{databaseId}/status | Get database status
@@ -141,76 +140,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Database**](Database.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## EditDatabaseCredentials
-
-> Credentials EditDatabaseCredentials(ctx, databaseId).CredentialsRequest(credentialsRequest).Execute()
-
-Edit database  master credentials
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	databaseId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Database ID
-	credentialsRequest := *openapiclient.NewCredentialsRequest("Login_example", "Password_example") // CredentialsRequest |  (optional)
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.DatabaseMainCallsAPI.EditDatabaseCredentials(context.Background(), databaseId).CredentialsRequest(credentialsRequest).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `DatabaseMainCallsAPI.EditDatabaseCredentials``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `EditDatabaseCredentials`: Credentials
-	fmt.Fprintf(os.Stdout, "Response from `DatabaseMainCallsAPI.EditDatabaseCredentials`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**databaseId** | **string** | Database ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiEditDatabaseCredentialsRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **credentialsRequest** | [**CredentialsRequest**](CredentialsRequest.md) |  | 
-
-### Return type
-
-[**Credentials**](Credentials.md)
 
 ### Authorization
 
