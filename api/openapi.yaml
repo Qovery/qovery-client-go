@@ -20877,7 +20877,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20893,7 +20893,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20913,7 +20913,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20929,7 +20929,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20963,7 +20963,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20979,7 +20979,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -20999,7 +20999,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21015,7 +21015,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21054,7 +21054,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21070,7 +21070,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21090,7 +21090,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21106,7 +21106,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21140,7 +21140,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21156,7 +21156,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21176,7 +21176,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21192,7 +21192,7 @@ components:
                 description: description
                 label: label
                 sensitive: true
-                type: type
+                type: string
                 constraints:
                   allowedValues:
                   - allowedValues
@@ -21241,7 +21241,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21257,7 +21257,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21277,7 +21277,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21293,7 +21293,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21327,7 +21327,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21343,7 +21343,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21363,7 +21363,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21379,7 +21379,7 @@ components:
               description: description
               label: label
               sensitive: true
-              type: type
+              type: string
               constraints:
                 allowedValues:
                 - allowedValues
@@ -21445,7 +21445,7 @@ components:
             description: description
             label: label
             sensitive: true
-            type: type
+            type: string
             constraints:
               allowedValues:
               - allowedValues
@@ -21461,7 +21461,7 @@ components:
             description: description
             label: label
             sensitive: true
-            type: type
+            type: string
             constraints:
               allowedValues:
               - allowedValues
@@ -21481,7 +21481,7 @@ components:
             description: description
             label: label
             sensitive: true
-            type: type
+            type: string
             constraints:
               allowedValues:
               - allowedValues
@@ -21497,7 +21497,7 @@ components:
             description: description
             label: label
             sensitive: true
-            type: type
+            type: string
             constraints:
               allowedValues:
               - allowedValues
@@ -21583,7 +21583,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -21599,7 +21599,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -21642,7 +21642,7 @@ components:
         description: description
         label: label
         sensitive: true
-        type: type
+        type: string
         constraints:
           allowedValues:
           - allowedValues
@@ -21658,8 +21658,11 @@ components:
         key:
           type: string
         type:
-          description: "Field type understood by the Console, such as string, number,\
-            \ or bool"
+          description: Field type understood by the Console.
+          enum:
+          - string
+          - number
+          - bool
           type: string
         required:
           type: boolean
@@ -21911,7 +21914,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -21929,7 +21932,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -21962,7 +21965,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -21978,7 +21981,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -22031,7 +22034,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -22049,7 +22052,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -22081,7 +22084,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -22097,7 +22100,7 @@ components:
           description: description
           label: label
           sensitive: true
-          type: type
+          type: string
           constraints:
             allowedValues:
             - allowedValues
@@ -22156,7 +22159,7 @@ components:
         description: description
         label: label
         sensitive: true
-        type: type
+        type: string
         constraints:
           allowedValues:
           - allowedValues

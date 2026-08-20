@@ -22,7 +22,7 @@ var _ MappedNullable = &FieldSchemaResponse{}
 // FieldSchemaResponse Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
 type FieldSchemaResponse struct {
 	Key string `json:"key"`
-	// Field type understood by the Console, such as string, number, or bool
+	// Field type understood by the Console.
 	Type                 string                         `json:"type"`
 	Required             bool                           `json:"required"`
 	DefaultValue         NullableString                 `json:"defaultValue,omitempty"`

@@ -22,7 +22,7 @@ var _ MappedNullable = &PlatformComponentInputRequirementResponse{}
 // PlatformComponentInputRequirementResponse A catalog field the cluster must provide for the selected configuration: the shared field descriptor extended with its resolution scope and readiness.
 type PlatformComponentInputRequirementResponse struct {
 	Key string `json:"key"`
-	// Field type understood by the Console, such as string, number, or bool
+	// Field type understood by the Console.
 	Type                 string                                          `json:"type"`
 	Required             bool                                            `json:"required"`
 	DefaultValue         NullableString                                  `json:"defaultValue,omitempty"`

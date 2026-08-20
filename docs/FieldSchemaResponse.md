@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** |  | 
-**Type** | **string** | Field type understood by the Console, such as string, number, or bool | 
+**Type** | **string** | Field type understood by the Console. | 
 **Required** | **bool** |  | 
 **DefaultValue** | Pointer to **NullableString** |  | [optional] 
 **Label** | **string** |  | 
