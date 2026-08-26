@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **StepName** | Pointer to [**StageStepMetricNameEnum**](StageStepMetricNameEnum.md) |  | [optional] 
 **Status** | Pointer to [**StepMetricStatusEnum**](StepMetricStatusEnum.md) |  | [optional] 
 **DurationSec** | Pointer to **int32** | The duration of the step in seconds. | [optional] 
+**StartedAt** | Pointer to **NullableTime** | The time at which the step started. Present while the step is ongoing and may be retained after completion. | [optional] 
 
 ## Methods
 
@@ -128,6 +129,41 @@ SetDurationSec sets DurationSec field to given value.
 
 HasDurationSec returns a boolean if a field has been set.
 
+### GetStartedAt
+
+`func (o *StageStepMetric) GetStartedAt() time.Time`
+
+GetStartedAt returns the StartedAt field if non-nil, zero value otherwise.
+
+### GetStartedAtOk
+
+`func (o *StageStepMetric) GetStartedAtOk() (*time.Time, bool)`
+
+GetStartedAtOk returns a tuple with the StartedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartedAt
+
+`func (o *StageStepMetric) SetStartedAt(v time.Time)`
+
+SetStartedAt sets StartedAt field to given value.
+
+### HasStartedAt
+
+`func (o *StageStepMetric) HasStartedAt() bool`
+
+HasStartedAt returns a boolean if a field has been set.
+
+### SetStartedAtNil
+
+`func (o *StageStepMetric) SetStartedAtNil(b bool)`
+
+ SetStartedAtNil sets the value for StartedAt to be an explicit nil
+
+### UnsetStartedAt
+`func (o *StageStepMetric) UnsetStartedAt()`
+
+UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

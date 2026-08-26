@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"time"
 )
 
 // checks if the StageStepMetric type satisfies the MappedNullable interface at compile time
@@ -24,7 +25,9 @@ type StageStepMetric struct {
 	StepName *StageStepMetricNameEnum `json:"step_name,omitempty"`
 	Status   *StepMetricStatusEnum    `json:"status,omitempty"`
 	// The duration of the step in seconds.
-	DurationSec          *int32 `json:"duration_sec,omitempty"`
+	DurationSec *int32 `json:"duration_sec,omitempty"`
+	// The time at which the step started. Present while the step is ongoing and may be retained after completion.
+	StartedAt            NullableTime `json:"started_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -175,6 +178,49 @@ func (o *StageStepMetric) SetDurationSec(v int32) {
 	o.DurationSec = &v
 }
 
+// GetStartedAt returns the StartedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *StageStepMetric) GetStartedAt() time.Time {
+	if o == nil || IsNil(o.StartedAt.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.StartedAt.Get()
+}
+
+// GetStartedAtOk returns a tuple with the StartedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *StageStepMetric) GetStartedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartedAt.Get(), o.StartedAt.IsSet()
+}
+
+// HasStartedAt returns a boolean if a field has been set.
+func (o *StageStepMetric) HasStartedAt() bool {
+	if o != nil && o.StartedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartedAt gets a reference to the given NullableTime and assigns it to the StartedAt field.
+func (o *StageStepMetric) SetStartedAt(v time.Time) {
+	o.StartedAt.Set(&v)
+}
+
+// SetStartedAtNil sets the value for StartedAt to be an explicit nil
+func (o *StageStepMetric) SetStartedAtNil() {
+	o.StartedAt.Set(nil)
+}
+
+// UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
+func (o *StageStepMetric) UnsetStartedAt() {
+	o.StartedAt.Unset()
+}
+
 func (o StageStepMetric) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -196,6 +242,9 @@ func (o StageStepMetric) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.DurationSec) {
 		toSerialize["duration_sec"] = o.DurationSec
+	}
+	if o.StartedAt.IsSet() {
+		toSerialize["started_at"] = o.StartedAt.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -223,6 +272,7 @@ func (o *StageStepMetric) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "step_name")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "duration_sec")
+		delete(additionalProperties, "started_at")
 		o.AdditionalProperties = additionalProperties
 	}
 

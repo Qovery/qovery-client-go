@@ -16,11 +16,12 @@ import (
 	"fmt"
 )
 
-// StepMetricStatusEnum The status of completion for the step: - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
+// StepMetricStatusEnum The lifecycle status of the step: - ONGOING: The step is currently running. - SUCCESS: The step completed successfully. - ERROR: The step completed with an error. - CANCEL: The step was canceled. - SKIP: The step was skipped because it was not necessary.
 type StepMetricStatusEnum string
 
 // List of StepMetricStatusEnum
 const (
+	STEPMETRICSTATUSENUM_ONGOING StepMetricStatusEnum = "ONGOING"
 	STEPMETRICSTATUSENUM_SUCCESS StepMetricStatusEnum = "SUCCESS"
 	STEPMETRICSTATUSENUM_ERROR   StepMetricStatusEnum = "ERROR"
 	STEPMETRICSTATUSENUM_CANCEL  StepMetricStatusEnum = "CANCEL"
@@ -29,6 +30,7 @@ const (
 
 // All allowed values of StepMetricStatusEnum enum
 var AllowedStepMetricStatusEnumEnumValues = []StepMetricStatusEnum{
+	"ONGOING",
 	"SUCCESS",
 	"ERROR",
 	"CANCEL",

@@ -25828,11 +25828,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -25863,11 +25865,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -25891,11 +25895,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -33573,23 +33579,27 @@ components:
           details:
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
         - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           total_duration_sec: 6
           details:
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
         total_deployment_duration_in_seconds: 0
         triggered_by: triggered_by
       properties:
@@ -33658,11 +33668,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33680,11 +33692,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33706,23 +33720,27 @@ components:
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             total_duration_sec: 6
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         agentic_workflows:
@@ -33737,11 +33755,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33759,11 +33779,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33782,11 +33804,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33804,11 +33828,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33827,11 +33853,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33849,11 +33877,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33872,11 +33902,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33894,11 +33926,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33917,11 +33951,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33939,11 +33975,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33962,11 +34000,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -33984,11 +34024,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -34065,28 +34107,32 @@ components:
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             total_duration_sec: 6
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         pre_check_stage:
           total_duration_sec: 0
-          status: SUCCESS
+          status: ONGOING
         stages:
         - databases:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34100,11 +34146,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34122,11 +34170,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34145,11 +34195,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34167,11 +34219,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34190,11 +34244,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34212,11 +34268,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34233,12 +34291,14 @@ components:
               details:
               - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 step_name: TOTAL
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 step_name: TOTAL
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status: QUEUED
           jobs:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34252,11 +34312,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34274,11 +34336,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34297,11 +34361,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34319,11 +34385,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34342,11 +34410,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34364,11 +34434,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34387,11 +34459,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34409,11 +34483,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34432,11 +34508,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34454,11 +34532,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34477,11 +34557,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34499,11 +34581,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34522,11 +34606,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34544,11 +34630,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34565,12 +34653,14 @@ components:
               details:
               - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 step_name: TOTAL
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 step_name: TOTAL
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status: QUEUED
           jobs:
           - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34584,11 +34674,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34606,11 +34698,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34629,11 +34723,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34651,11 +34747,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34674,11 +34772,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34696,11 +34796,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34719,11 +34821,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34741,11 +34845,13 @@ components:
               total_computing_duration_sec: 6
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
+                started_at: 2000-01-23T04:56:07.000+00:00
                 duration_sec: 1
-                status: SUCCESS
+                status: ONGOING
             status_details:
               sub_action: NONE
               action: DEPLOY
@@ -34779,23 +34885,27 @@ components:
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             total_duration_sec: 6
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34812,23 +34922,27 @@ components:
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             total_duration_sec: 6
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           total_deployment_duration_in_seconds: 0
           triggered_by: triggered_by
       properties:
@@ -35887,11 +36001,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -35909,11 +36025,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -35932,11 +36050,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -35954,11 +36074,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -35977,11 +36099,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -35999,11 +36123,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36020,12 +36146,14 @@ components:
             details:
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               step_name: TOTAL
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status: QUEUED
         jobs:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -36039,11 +36167,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36061,11 +36191,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36084,11 +36216,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36106,11 +36240,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36129,11 +36265,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36151,11 +36289,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36174,11 +36314,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -36196,11 +36338,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -40164,11 +40308,13 @@ components:
           total_computing_duration_sec: 6
           details:
           - step_name: REGISTRY_CREATE_REPOSITORY
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
           - step_name: REGISTRY_CREATE_REPOSITORY
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
         status_details:
           sub_action: NONE
           action: DEPLOY
@@ -40189,11 +40335,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -40211,11 +40359,13 @@ components:
             total_computing_duration_sec: 6
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
+              started_at: 2000-01-23T04:56:07.000+00:00
               duration_sec: 1
-              status: SUCCESS
+              status: ONGOING
           status_details:
             sub_action: NONE
             action: DEPLOY
@@ -40728,11 +40878,13 @@ components:
           total_computing_duration_sec: 6
           details:
           - step_name: REGISTRY_CREATE_REPOSITORY
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
           - step_name: REGISTRY_CREATE_REPOSITORY
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
         status_details:
           sub_action: NONE
           action: DEPLOY
@@ -40807,12 +40959,14 @@ components:
           details:
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
           - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             step_name: TOTAL
+            started_at: 2000-01-23T04:56:07.000+00:00
             duration_sec: 1
-            status: SUCCESS
+            status: ONGOING
         status: QUEUED
       properties:
         id:
@@ -41413,8 +41567,9 @@ components:
     ServiceStepMetric:
       example:
         step_name: REGISTRY_CREATE_REPOSITORY
+        started_at: 2000-01-23T04:56:07.000+00:00
         duration_sec: 1
-        status: SUCCESS
+        status: ONGOING
       properties:
         step_name:
           $ref: '#/components/schemas/ServiceStepMetricNameEnum'
@@ -41423,6 +41578,12 @@ components:
         duration_sec:
           description: The duration of the step in seconds.
           type: integer
+        started_at:
+          description: The time at which the step started. Present while the step
+            is ongoing and may be retained after completion.
+          format: date-time
+          nullable: true
+          type: string
       type: object
     StageStepMetrics:
       example:
@@ -41431,12 +41592,14 @@ components:
         details:
         - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           step_name: TOTAL
+          started_at: 2000-01-23T04:56:07.000+00:00
           duration_sec: 1
-          status: SUCCESS
+          status: ONGOING
         - stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           step_name: TOTAL
+          started_at: 2000-01-23T04:56:07.000+00:00
           duration_sec: 1
-          status: SUCCESS
+          status: ONGOING
       properties:
         stage_id:
           format: uuid
@@ -41458,11 +41621,13 @@ components:
         total_computing_duration_sec: 6
         details:
         - step_name: REGISTRY_CREATE_REPOSITORY
+          started_at: 2000-01-23T04:56:07.000+00:00
           duration_sec: 1
-          status: SUCCESS
+          status: ONGOING
         - step_name: REGISTRY_CREATE_REPOSITORY
+          started_at: 2000-01-23T04:56:07.000+00:00
           duration_sec: 1
-          status: SUCCESS
+          status: ONGOING
       properties:
         total_duration_sec:
           description: The total duration in seconds of the service deployment or
@@ -41487,8 +41652,9 @@ components:
       example:
         stage_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         step_name: TOTAL
+        started_at: 2000-01-23T04:56:07.000+00:00
         duration_sec: 1
-        status: SUCCESS
+        status: ONGOING
       properties:
         stage_id:
           format: uuid
@@ -41500,6 +41666,12 @@ components:
         duration_sec:
           description: The duration of the step in seconds.
           type: integer
+        started_at:
+          description: The time at which the step started. Present while the step
+            is ongoing and may be retained after completion.
+          format: date-time
+          nullable: true
+          type: string
       type: object
     StageStepMetricNameEnum:
       description: |
@@ -41514,12 +41686,14 @@ components:
       type: string
     StepMetricStatusEnum:
       description: |
-        The status of completion for the step:
+        The lifecycle status of the step:
+        - ONGOING: The step is currently running.
         - SUCCESS: The step completed successfully.
         - ERROR: The step completed with an error.
         - CANCEL: The step was canceled.
         - SKIP: The step was skipped because it was not necessary.
       enum:
+      - ONGOING
       - SUCCESS
       - ERROR
       - CANCEL
@@ -49913,7 +50087,7 @@ components:
     EnvironmentStatusesWithStages_pre_check_stage:
       example:
         total_duration_sec: 0
-        status: SUCCESS
+        status: ONGOING
       properties:
         status:
           $ref: '#/components/schemas/StepMetricStatusEnum'
