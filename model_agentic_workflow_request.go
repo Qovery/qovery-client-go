@@ -31,13 +31,14 @@ type AgenticWorkflowRequest struct {
 	// Raw JSON blob describing the MCP servers configured for this workflow
 	Mcp *string `json:"mcp,omitempty"`
 	// Organization MCP servers used by this workflow
-	McpServerIds         []string                           `json:"mcp_server_ids,omitempty"`
-	Outputs              []AgenticWorkflowOutput            `json:"outputs,omitempty"`
-	Model                *AgenticWorkflowModelRequest       `json:"model,omitempty"`
-	ProjectRepositories  []AgenticWorkflowProjectRepository `json:"project_repositories,omitempty"`
-	AgentPrompt          *string                            `json:"agent_prompt,omitempty"`
-	Governance           *AgenticWorkflowGovernance         `json:"governance,omitempty"`
-	Resources            *AgenticWorkflowResources          `json:"resources,omitempty"`
+	McpServerIds         []string                                    `json:"mcp_server_ids,omitempty"`
+	Outputs              []AgenticWorkflowOutput                     `json:"outputs,omitempty"`
+	Model                *AgenticWorkflowModelRequest                `json:"model,omitempty"`
+	ProjectRepositories  []AgenticWorkflowProjectRepository          `json:"project_repositories,omitempty"`
+	AgentPrompt          *string                                     `json:"agent_prompt,omitempty"`
+	Governance           *AgenticWorkflowGovernance                  `json:"governance,omitempty"`
+	Resources            *AgenticWorkflowResources                   `json:"resources,omitempty"`
+	Schedule             NullableAgenticWorkflowRequestAllOfSchedule `json:"schedule,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -489,6 +490,49 @@ func (o *AgenticWorkflowRequest) SetResources(v AgenticWorkflowResources) {
 	o.Resources = &v
 }
 
+// GetSchedule returns the Schedule field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AgenticWorkflowRequest) GetSchedule() AgenticWorkflowRequestAllOfSchedule {
+	if o == nil || IsNil(o.Schedule.Get()) {
+		var ret AgenticWorkflowRequestAllOfSchedule
+		return ret
+	}
+	return *o.Schedule.Get()
+}
+
+// GetScheduleOk returns a tuple with the Schedule field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowRequest) GetScheduleOk() (*AgenticWorkflowRequestAllOfSchedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Schedule.Get(), o.Schedule.IsSet()
+}
+
+// HasSchedule returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasSchedule() bool {
+	if o != nil && o.Schedule.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSchedule gets a reference to the given NullableAgenticWorkflowRequestAllOfSchedule and assigns it to the Schedule field.
+func (o *AgenticWorkflowRequest) SetSchedule(v AgenticWorkflowRequestAllOfSchedule) {
+	o.Schedule.Set(&v)
+}
+
+// SetScheduleNil sets the value for Schedule to be an explicit nil
+func (o *AgenticWorkflowRequest) SetScheduleNil() {
+	o.Schedule.Set(nil)
+}
+
+// UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
+func (o *AgenticWorkflowRequest) UnsetSchedule() {
+	o.Schedule.Unset()
+}
+
 func (o AgenticWorkflowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -535,6 +579,9 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
+	}
+	if o.Schedule.IsSet() {
+		toSerialize["schedule"] = o.Schedule.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -592,6 +639,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "agent_prompt")
 		delete(additionalProperties, "governance")
 		delete(additionalProperties, "resources")
+		delete(additionalProperties, "schedule")
 		o.AdditionalProperties = additionalProperties
 	}
 

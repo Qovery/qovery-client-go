@@ -83,12 +83,13 @@ Name | Type | Description | Notes
 **Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **Resources** | [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**Schedule** | [**NullableAgenticWorkflowResponseAllOfSchedule**](AgenticWorkflowResponseAllOfSchedule.md) |  | 
 
 ## Methods
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -1908,6 +1909,36 @@ and a boolean to check if the value has been set.
 SetWebhook sets Webhook field to given value.
 
 
+### GetSchedule
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSchedule() AgenticWorkflowResponseAllOfSchedule`
+
+GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+
+### GetScheduleOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetScheduleOk() (*AgenticWorkflowResponseAllOfSchedule, bool)`
+
+GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedule
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSchedule(v AgenticWorkflowResponseAllOfSchedule)`
+
+SetSchedule sets Schedule field to given value.
+
+
+### SetScheduleNil
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetScheduleNil(b bool)`
+
+ SetScheduleNil sets the value for Schedule to be an explicit nil
+
+### UnsetSchedule
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetSchedule()`
+
+UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

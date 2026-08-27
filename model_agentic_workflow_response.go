@@ -39,14 +39,15 @@ type AgenticWorkflowResponse struct {
 	// Raw JSON blob describing the MCP servers configured for this workflow
 	Mcp string `json:"mcp"`
 	// Organization MCP servers used by this workflow
-	McpServerIds        []string                           `json:"mcp_server_ids"`
-	Outputs             []AgenticWorkflowOutput            `json:"outputs"`
-	Model               AgenticWorkflowModelResponse       `json:"model"`
-	ProjectRepositories []AgenticWorkflowProjectRepository `json:"project_repositories"`
-	AgentPrompt         string                             `json:"agent_prompt"`
-	Governance          AgenticWorkflowGovernance          `json:"governance"`
-	Resources           AgenticWorkflowResources           `json:"resources"`
-	Webhook             AgenticWorkflowWebhook             `json:"webhook"`
+	McpServerIds        []string                                     `json:"mcp_server_ids"`
+	Outputs             []AgenticWorkflowOutput                      `json:"outputs"`
+	Model               AgenticWorkflowModelResponse                 `json:"model"`
+	ProjectRepositories []AgenticWorkflowProjectRepository           `json:"project_repositories"`
+	AgentPrompt         string                                       `json:"agent_prompt"`
+	Governance          AgenticWorkflowGovernance                    `json:"governance"`
+	Resources           AgenticWorkflowResources                     `json:"resources"`
+	Webhook             AgenticWorkflowWebhook                       `json:"webhook"`
+	Schedule            NullableAgenticWorkflowResponseAllOfSchedule `json:"schedule"`
 	// Icon URI representing the agentic workflow.
 	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -58,7 +59,7 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -79,6 +80,7 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 	this.Governance = governance
 	this.Resources = resources
 	this.Webhook = webhook
+	this.Schedule = schedule
 	return &this
 }
 
@@ -578,6 +580,32 @@ func (o *AgenticWorkflowResponse) SetWebhook(v AgenticWorkflowWebhook) {
 	o.Webhook = v
 }
 
+// GetSchedule returns the Schedule field value
+// If the value is explicit nil, the zero value for AgenticWorkflowResponseAllOfSchedule will be returned
+func (o *AgenticWorkflowResponse) GetSchedule() AgenticWorkflowResponseAllOfSchedule {
+	if o == nil || o.Schedule.Get() == nil {
+		var ret AgenticWorkflowResponseAllOfSchedule
+		return ret
+	}
+
+	return *o.Schedule.Get()
+}
+
+// GetScheduleOk returns a tuple with the Schedule field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowResponse) GetScheduleOk() (*AgenticWorkflowResponseAllOfSchedule, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Schedule.Get(), o.Schedule.IsSet()
+}
+
+// SetSchedule sets field value
+func (o *AgenticWorkflowResponse) SetSchedule(v AgenticWorkflowResponseAllOfSchedule) {
+	o.Schedule.Set(&v)
+}
+
 // GetIconUri returns the IconUri field value if set, zero value otherwise.
 func (o *AgenticWorkflowResponse) GetIconUri() string {
 	if o == nil || IsNil(o.IconUri) {
@@ -642,6 +670,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["governance"] = o.Governance
 	toSerialize["resources"] = o.Resources
 	toSerialize["webhook"] = o.Webhook
+	toSerialize["schedule"] = o.Schedule.Get()
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
@@ -677,6 +706,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"governance",
 		"resources",
 		"webhook",
+		"schedule",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -726,6 +756,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "governance")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "webhook")
+		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}

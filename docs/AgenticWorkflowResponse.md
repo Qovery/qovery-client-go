@@ -24,13 +24,14 @@ Name | Type | Description | Notes
 **Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **Resources** | [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**Schedule** | [**NullableAgenticWorkflowResponseAllOfSchedule**](AgenticWorkflowResponseAllOfSchedule.md) |  | 
 **IconUri** | Pointer to **string** | Icon URI representing the agentic workflow. | [optional] 
 
 ## Methods
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -450,6 +451,36 @@ and a boolean to check if the value has been set.
 SetWebhook sets Webhook field to given value.
 
 
+### GetSchedule
+
+`func (o *AgenticWorkflowResponse) GetSchedule() AgenticWorkflowResponseAllOfSchedule`
+
+GetSchedule returns the Schedule field if non-nil, zero value otherwise.
+
+### GetScheduleOk
+
+`func (o *AgenticWorkflowResponse) GetScheduleOk() (*AgenticWorkflowResponseAllOfSchedule, bool)`
+
+GetScheduleOk returns a tuple with the Schedule field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSchedule
+
+`func (o *AgenticWorkflowResponse) SetSchedule(v AgenticWorkflowResponseAllOfSchedule)`
+
+SetSchedule sets Schedule field to given value.
+
+
+### SetScheduleNil
+
+`func (o *AgenticWorkflowResponse) SetScheduleNil(b bool)`
+
+ SetScheduleNil sets the value for Schedule to be an explicit nil
+
+### UnsetSchedule
+`func (o *AgenticWorkflowResponse) UnsetSchedule()`
+
+UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
 ### GetIconUri
 
 `func (o *AgenticWorkflowResponse) GetIconUri() string`

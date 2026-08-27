@@ -47423,6 +47423,8 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowResources'
           webhook:
             $ref: '#/components/schemas/AgenticWorkflowWebhook'
+          schedule:
+            $ref: '#/components/schemas/AgenticWorkflowResponse_allOf_schedule'
           icon_uri:
             description: Icon URI representing the agentic workflow.
             format: uri
@@ -47442,6 +47444,7 @@ components:
         - outputs
         - project_repositories
         - resources
+        - schedule
         - service_type
         - slug
         - webhook
@@ -47490,6 +47493,10 @@ components:
         webhook_ip_allowlist:
         - webhook_ip_allowlist
         - webhook_ip_allowlist
+        schedule:
+          next_run_at: 2000-01-23T04:56:07.000+00:00
+          cron_expression: 0 8 * * 1-5
+          timezone: Europe/Paris
         service_type: APPLICATION
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47551,6 +47558,10 @@ components:
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
+          schedule:
+            next_run_at: 2000-01-23T04:56:07.000+00:00
+            cron_expression: 0 8 * * 1-5
+            timezone: Europe/Paris
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47609,6 +47620,10 @@ components:
           webhook_ip_allowlist:
           - webhook_ip_allowlist
           - webhook_ip_allowlist
+          schedule:
+            next_run_at: 2000-01-23T04:56:07.000+00:00
+            cron_expression: 0 8 * * 1-5
+            timezone: Europe/Paris
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47684,6 +47699,8 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowGovernance'
           resources:
             $ref: '#/components/schemas/AgenticWorkflowResources'
+          schedule:
+            $ref: '#/components/schemas/AgenticWorkflowRequest_allOf_schedule'
         required:
         - name
       example:
@@ -47725,6 +47742,9 @@ components:
         webhook_ip_allowlist:
         - webhook_ip_allowlist
         - webhook_ip_allowlist
+        schedule:
+          cron_expression: 0 8 * * 1-5
+          timezone: Europe/Paris
         name: name
         agent_prompt: ""
         model:
@@ -47891,6 +47911,43 @@ components:
           type: string
       required:
       - url
+      type: object
+    AgenticWorkflowScheduleRequest:
+      properties:
+        cron_expression:
+          description: "Five-field cron expression, the same syntax Kubernetes cron\
+            \ jobs accept. Rejected if it fires more than once every 5 minutes, since\
+            \ each run deploys a full environment."
+          example: 0 8 * * 1-5
+          type: string
+        timezone:
+          description: tz database identifier the expression is evaluated in.
+          example: Europe/Paris
+          type: string
+      required:
+      - cron_expression
+      - timezone
+      type: object
+    AgenticWorkflowScheduleResponse:
+      properties:
+        cron_expression:
+          example: 0 8 * * 1-5
+          type: string
+        timezone:
+          description: tz database identifier the expression is evaluated in.
+          example: Europe/Paris
+          type: string
+        next_run_at:
+          description: "When the schedule fires next. Null while the workflow is disabled,\
+            \ since a disabled workflow accumulates no occurrences."
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - cron_expression
+      - next_run_at
+      - timezone
       type: object
     listDirectoriesFromGitRepository_200_response:
       example:
@@ -51647,6 +51704,25 @@ components:
             $ref: '#/components/schemas/ArgocdManagedResource'
           type: array
       type: object
+    AgenticWorkflowResponse_allOf_schedule:
+      allOf:
+      - $ref: '#/components/schemas/AgenticWorkflowScheduleResponse'
+      description: Cron schedule firing runs of this workflow. Null when the workflow
+        is webhook-only.
+      example:
+        next_run_at: 2000-01-23T04:56:07.000+00:00
+        cron_expression: 0 8 * * 1-5
+        timezone: Europe/Paris
+      nullable: true
+    AgenticWorkflowRequest_allOf_schedule:
+      allOf:
+      - $ref: '#/components/schemas/AgenticWorkflowScheduleRequest'
+      description: "Cron schedule firing runs of this workflow, on top of the webhook\
+        \ every workflow already has. Omit it, or send null, for a webhook-only workflow."
+      example:
+        cron_expression: 0 8 * * 1-5
+        timezone: Europe/Paris
+      nullable: true
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT

@@ -121,9 +121,13 @@ docs/AgenticWorkflowModelType.md
 docs/AgenticWorkflowOutput.md
 docs/AgenticWorkflowProjectRepository.md
 docs/AgenticWorkflowRequest.md
+docs/AgenticWorkflowRequestAllOfSchedule.md
 docs/AgenticWorkflowResources.md
 docs/AgenticWorkflowResponse.md
+docs/AgenticWorkflowResponseAllOfSchedule.md
 docs/AgenticWorkflowResponseList.md
+docs/AgenticWorkflowScheduleRequest.md
+docs/AgenticWorkflowScheduleResponse.md
 docs/AgenticWorkflowWebhook.md
 docs/AgenticWorkflowsAPI.md
 docs/AksInfrastructureOutputs.md
@@ -1080,9 +1084,13 @@ model_agentic_workflow_model_type.go
 model_agentic_workflow_output.go
 model_agentic_workflow_project_repository.go
 model_agentic_workflow_request.go
+model_agentic_workflow_request_all_of_schedule.go
 model_agentic_workflow_resources.go
 model_agentic_workflow_response.go
+model_agentic_workflow_response_all_of_schedule.go
 model_agentic_workflow_response_list.go
+model_agentic_workflow_schedule_request.go
+model_agentic_workflow_schedule_response.go
 model_agentic_workflow_webhook.go
 model_aks_infrastructure_outputs.go
 model_alert_presentation.go
