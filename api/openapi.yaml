@@ -47425,6 +47425,8 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowWebhook'
           schedule:
             $ref: '#/components/schemas/AgenticWorkflowResponse_allOf_schedule'
+          execution_mode:
+            $ref: '#/components/schemas/AgenticWorkflowExecutionMode'
           icon_uri:
             description: Icon URI representing the agentic workflow.
             format: uri
@@ -47435,6 +47437,7 @@ components:
         - docker_fragment
         - enabled
         - environment
+        - execution_mode
         - governance
         - id
         - mcp
@@ -47500,6 +47503,7 @@ components:
         service_type: APPLICATION
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        execution_mode: IN_PLACE
         updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
         agent_prompt: agent_prompt
@@ -47565,6 +47569,7 @@ components:
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_mode: IN_PLACE
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
@@ -47627,6 +47632,7 @@ components:
           service_type: APPLICATION
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          execution_mode: IN_PLACE
           updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
           agent_prompt: agent_prompt
@@ -47701,6 +47707,8 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowResources'
           schedule:
             $ref: '#/components/schemas/AgenticWorkflowRequest_allOf_schedule'
+          execution_mode:
+            $ref: '#/components/schemas/AgenticWorkflowExecutionMode'
         required:
         - name
       example:
@@ -47745,6 +47753,7 @@ components:
         schedule:
           cron_expression: 0 8 * * 1-5
           timezone: Europe/Paris
+        execution_mode: IN_PLACE
         name: name
         agent_prompt: ""
         model:
@@ -47756,6 +47765,16 @@ components:
           host_allowlist:
           - host_allowlist
           - host_allowlist
+    AgenticWorkflowExecutionMode:
+      default: IN_PLACE
+      description: "Where a run executes. IN_PLACE deploys the workflow in the environment\
+        \ it belongs to, and is the default. CLONE_ENVIRONMENT gives each run a throwaway\
+        \ copy of the whole environment, which is the only mode that isolates concurrent\
+        \ runs from each other."
+      enum:
+      - IN_PLACE
+      - CLONE_ENVIRONMENT
+      type: string
     AgenticWorkflowGovernance:
       example:
         host_allowlist:

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Governance** | Pointer to [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | [optional] 
 **Resources** | Pointer to [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | [optional] 
 **Schedule** | Pointer to [**NullableAgenticWorkflowRequestAllOfSchedule**](AgenticWorkflowRequestAllOfSchedule.md) |  | [optional] 
+**ExecutionMode** | Pointer to [**AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | [optional] [default to AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE]
 
 ## Methods
 
@@ -393,6 +394,31 @@ HasSchedule returns a boolean if a field has been set.
 `func (o *AgenticWorkflowRequest) UnsetSchedule()`
 
 UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
+### GetExecutionMode
+
+`func (o *AgenticWorkflowRequest) GetExecutionMode() AgenticWorkflowExecutionMode`
+
+GetExecutionMode returns the ExecutionMode field if non-nil, zero value otherwise.
+
+### GetExecutionModeOk
+
+`func (o *AgenticWorkflowRequest) GetExecutionModeOk() (*AgenticWorkflowExecutionMode, bool)`
+
+GetExecutionModeOk returns a tuple with the ExecutionMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExecutionMode
+
+`func (o *AgenticWorkflowRequest) SetExecutionMode(v AgenticWorkflowExecutionMode)`
+
+SetExecutionMode sets ExecutionMode field to given value.
+
+### HasExecutionMode
+
+`func (o *AgenticWorkflowRequest) HasExecutionMode() bool`
+
+HasExecutionMode returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

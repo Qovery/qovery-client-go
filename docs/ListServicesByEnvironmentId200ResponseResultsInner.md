@@ -84,12 +84,13 @@ Name | Type | Description | Notes
 **Resources** | [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
 **Schedule** | [**NullableAgenticWorkflowResponseAllOfSchedule**](AgenticWorkflowResponseAllOfSchedule.md) |  | 
+**ExecutionMode** | [**AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | [default to AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE]
 
 ## Methods
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -1939,6 +1940,26 @@ SetSchedule sets Schedule field to given value.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetSchedule()`
 
 UnsetSchedule ensures that no value is present for Schedule, not even an explicit nil
+### GetExecutionMode
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetExecutionMode() AgenticWorkflowExecutionMode`
+
+GetExecutionMode returns the ExecutionMode field if non-nil, zero value otherwise.
+
+### GetExecutionModeOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetExecutionModeOk() (*AgenticWorkflowExecutionMode, bool)`
+
+GetExecutionModeOk returns a tuple with the ExecutionMode field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetExecutionMode
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetExecutionMode(v AgenticWorkflowExecutionMode)`
+
+SetExecutionMode sets ExecutionMode field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

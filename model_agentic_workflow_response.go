@@ -48,6 +48,7 @@ type AgenticWorkflowResponse struct {
 	Resources           AgenticWorkflowResources                     `json:"resources"`
 	Webhook             AgenticWorkflowWebhook                       `json:"webhook"`
 	Schedule            NullableAgenticWorkflowResponseAllOfSchedule `json:"schedule"`
+	ExecutionMode       AgenticWorkflowExecutionMode                 `json:"execution_mode"`
 	// Icon URI representing the agentic workflow.
 	IconUri              *string `json:"icon_uri,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -59,7 +60,7 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -81,6 +82,7 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 	this.Resources = resources
 	this.Webhook = webhook
 	this.Schedule = schedule
+	this.ExecutionMode = executionMode
 	return &this
 }
 
@@ -89,6 +91,8 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 // but it doesn't guarantee that properties required by API are set
 func NewAgenticWorkflowResponseWithDefaults() *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
+	var executionMode AgenticWorkflowExecutionMode = AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE
+	this.ExecutionMode = executionMode
 	return &this
 }
 
@@ -606,6 +610,30 @@ func (o *AgenticWorkflowResponse) SetSchedule(v AgenticWorkflowResponseAllOfSche
 	o.Schedule.Set(&v)
 }
 
+// GetExecutionMode returns the ExecutionMode field value
+func (o *AgenticWorkflowResponse) GetExecutionMode() AgenticWorkflowExecutionMode {
+	if o == nil {
+		var ret AgenticWorkflowExecutionMode
+		return ret
+	}
+
+	return o.ExecutionMode
+}
+
+// GetExecutionModeOk returns a tuple with the ExecutionMode field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetExecutionModeOk() (*AgenticWorkflowExecutionMode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ExecutionMode, true
+}
+
+// SetExecutionMode sets field value
+func (o *AgenticWorkflowResponse) SetExecutionMode(v AgenticWorkflowExecutionMode) {
+	o.ExecutionMode = v
+}
+
 // GetIconUri returns the IconUri field value if set, zero value otherwise.
 func (o *AgenticWorkflowResponse) GetIconUri() string {
 	if o == nil || IsNil(o.IconUri) {
@@ -671,6 +699,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["resources"] = o.Resources
 	toSerialize["webhook"] = o.Webhook
 	toSerialize["schedule"] = o.Schedule.Get()
+	toSerialize["execution_mode"] = o.ExecutionMode
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
 	}
@@ -707,6 +736,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"resources",
 		"webhook",
 		"schedule",
+		"execution_mode",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -757,6 +787,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "webhook")
 		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "execution_mode")
 		delete(additionalProperties, "icon_uri")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -113,6 +113,7 @@ docs/APIVariableTypeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoAPI.md
 docs/AccountInfoEditRequest.md
+docs/AgenticWorkflowExecutionMode.md
 docs/AgenticWorkflowGovernance.md
 docs/AgenticWorkflowHeader.md
 docs/AgenticWorkflowModelRequest.md
@@ -1076,6 +1077,7 @@ go.mod
 go.sum
 model_account_info.go
 model_account_info_edit_request.go
+model_agentic_workflow_execution_mode.go
 model_agentic_workflow_governance.go
 model_agentic_workflow_header.go
 model_agentic_workflow_model_request.go

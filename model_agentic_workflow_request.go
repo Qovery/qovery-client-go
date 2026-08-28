@@ -39,6 +39,7 @@ type AgenticWorkflowRequest struct {
 	Governance           *AgenticWorkflowGovernance                  `json:"governance,omitempty"`
 	Resources            *AgenticWorkflowResources                   `json:"resources,omitempty"`
 	Schedule             NullableAgenticWorkflowRequestAllOfSchedule `json:"schedule,omitempty"`
+	ExecutionMode        *AgenticWorkflowExecutionMode               `json:"execution_mode,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -61,6 +62,8 @@ func NewAgenticWorkflowRequest(name string) *AgenticWorkflowRequest {
 	this.Mcp = &mcp
 	var agentPrompt string = ""
 	this.AgentPrompt = &agentPrompt
+	var executionMode AgenticWorkflowExecutionMode = AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE
+	this.ExecutionMode = &executionMode
 	return &this
 }
 
@@ -79,6 +82,8 @@ func NewAgenticWorkflowRequestWithDefaults() *AgenticWorkflowRequest {
 	this.Mcp = &mcp
 	var agentPrompt string = ""
 	this.AgentPrompt = &agentPrompt
+	var executionMode AgenticWorkflowExecutionMode = AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE
+	this.ExecutionMode = &executionMode
 	return &this
 }
 
@@ -533,6 +538,38 @@ func (o *AgenticWorkflowRequest) UnsetSchedule() {
 	o.Schedule.Unset()
 }
 
+// GetExecutionMode returns the ExecutionMode field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetExecutionMode() AgenticWorkflowExecutionMode {
+	if o == nil || IsNil(o.ExecutionMode) {
+		var ret AgenticWorkflowExecutionMode
+		return ret
+	}
+	return *o.ExecutionMode
+}
+
+// GetExecutionModeOk returns a tuple with the ExecutionMode field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetExecutionModeOk() (*AgenticWorkflowExecutionMode, bool) {
+	if o == nil || IsNil(o.ExecutionMode) {
+		return nil, false
+	}
+	return o.ExecutionMode, true
+}
+
+// HasExecutionMode returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasExecutionMode() bool {
+	if o != nil && !IsNil(o.ExecutionMode) {
+		return true
+	}
+
+	return false
+}
+
+// SetExecutionMode gets a reference to the given AgenticWorkflowExecutionMode and assigns it to the ExecutionMode field.
+func (o *AgenticWorkflowRequest) SetExecutionMode(v AgenticWorkflowExecutionMode) {
+	o.ExecutionMode = &v
+}
+
 func (o AgenticWorkflowRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -582,6 +619,9 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Schedule.IsSet() {
 		toSerialize["schedule"] = o.Schedule.Get()
+	}
+	if !IsNil(o.ExecutionMode) {
+		toSerialize["execution_mode"] = o.ExecutionMode
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -640,6 +680,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "governance")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "schedule")
+		delete(additionalProperties, "execution_mode")
 		o.AdditionalProperties = additionalProperties
 	}
 
