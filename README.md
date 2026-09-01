@@ -182,7 +182,9 @@ Class | Method | HTTP request | Description
 *BlueprintCatalogAPI* | [**GetBlueprintCatalogServiceReadme**](docs/BlueprintCatalogAPI.md#getblueprintcatalogservicereadme) | **Get** /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme | Get the README of a blueprint catalog service
 *BlueprintMainCallsAPI* | [**CheckBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#checkblueprintupdate) | **Get** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
 *BlueprintMainCallsAPI* | [**CreateBlueprint**](docs/BlueprintMainCallsAPI.md#createblueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
+*BlueprintMainCallsAPI* | [**CreateBlueprintDeployment**](docs/BlueprintMainCallsAPI.md#createblueprintdeployment) | **Post** /environment/{environmentId}/blueprintDeployment | Create a blueprint service and report the dispatch it started
 *BlueprintMainCallsAPI* | [**DeployBlueprint**](docs/BlueprintMainCallsAPI.md#deployblueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
+*BlueprintMainCallsAPI* | [**GetBlueprint**](docs/BlueprintMainCallsAPI.md#getblueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsAPI* | [**UpdateBlueprint**](docs/BlueprintMainCallsAPI.md#updateblueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
@@ -754,7 +756,11 @@ Class | Method | HTTP request | Description
  - [BillingStatus](docs/BillingStatus.md)
  - [BlueprintCatalogResponse](docs/BlueprintCatalogResponse.md)
  - [BlueprintCreateRequest](docs/BlueprintCreateRequest.md)
+ - [BlueprintCreationResponse](docs/BlueprintCreationResponse.md)
  - [BlueprintDeploymentAckResponse](docs/BlueprintDeploymentAckResponse.md)
+ - [BlueprintDeploymentStatusResponse](docs/BlueprintDeploymentStatusResponse.md)
+ - [BlueprintDetailsResponse](docs/BlueprintDetailsResponse.md)
+ - [BlueprintDetailsResponseLatestDeployment](docs/BlueprintDetailsResponseLatestDeployment.md)
  - [BlueprintItem](docs/BlueprintItem.md)
  - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
  - [BlueprintManifestBackendConfig](docs/BlueprintManifestBackendConfig.md)

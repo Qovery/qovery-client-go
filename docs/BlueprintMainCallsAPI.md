@@ -6,7 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CheckBlueprintUpdate**](BlueprintMainCallsAPI.md#CheckBlueprintUpdate) | **Get** /blueprint/{blueprintId}/update | Check if a blueprint service has an available update
 [**CreateBlueprint**](BlueprintMainCallsAPI.md#CreateBlueprint) | **Post** /environment/{environmentId}/blueprint | Create a blueprint service in an environment
+[**CreateBlueprintDeployment**](BlueprintMainCallsAPI.md#CreateBlueprintDeployment) | **Post** /environment/{environmentId}/blueprintDeployment | Create a blueprint service and report the dispatch it started
 [**DeployBlueprint**](BlueprintMainCallsAPI.md#DeployBlueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
+[**GetBlueprint**](BlueprintMainCallsAPI.md#GetBlueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**GetBlueprintCatalog**](BlueprintMainCallsAPI.md#GetBlueprintCatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 [**PreviewBlueprintUpdate**](BlueprintMainCallsAPI.md#PreviewBlueprintUpdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**UpdateBlueprint**](BlueprintMainCallsAPI.md#UpdateBlueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
@@ -157,6 +159,80 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## CreateBlueprintDeployment
+
+> BlueprintCreationResponse CreateBlueprintDeployment(ctx, environmentId).BlueprintCreateRequest(blueprintCreateRequest).Deploy(deploy).Execute()
+
+Create a blueprint service and report the dispatch it started
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	blueprintCreateRequest := *openapiclient.NewBlueprintCreateRequest("my-postgres", "aws/postgres/17/1.0.1", "https://cdn.qovery.com/icons/postgresql.svg") // BlueprintCreateRequest | 
+	deploy := true // bool | Trigger a deployment immediately after creation (optional) (default to false)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BlueprintMainCallsAPI.CreateBlueprintDeployment(context.Background(), environmentId).BlueprintCreateRequest(blueprintCreateRequest).Deploy(deploy).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.CreateBlueprintDeployment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateBlueprintDeployment`: BlueprintCreationResponse
+	fmt.Fprintf(os.Stdout, "Response from `BlueprintMainCallsAPI.CreateBlueprintDeployment`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateBlueprintDeploymentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **blueprintCreateRequest** | [**BlueprintCreateRequest**](BlueprintCreateRequest.md) |  | 
+ **deploy** | **bool** | Trigger a deployment immediately after creation | [default to false]
+
+### Return type
+
+[**BlueprintCreationResponse**](BlueprintCreationResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## DeployBlueprint
 
 > BlueprintDeploymentAckResponse DeployBlueprint(ctx, blueprintId).Execute()
@@ -212,6 +288,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BlueprintDeploymentAckResponse**](BlueprintDeploymentAckResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBlueprint
+
+> BlueprintDetailsResponse GetBlueprint(ctx, blueprintId).Execute()
+
+Get a blueprint service and the status of its latest dispatch
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	blueprintId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Blueprint ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BlueprintMainCallsAPI.GetBlueprint(context.Background(), blueprintId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.GetBlueprint``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBlueprint`: BlueprintDetailsResponse
+	fmt.Fprintf(os.Stdout, "Response from `BlueprintMainCallsAPI.GetBlueprint`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**blueprintId** | **string** | Blueprint ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBlueprintRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**BlueprintDetailsResponse**](BlueprintDetailsResponse.md)
 
 ### Authorization
 

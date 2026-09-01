@@ -20169,6 +20169,61 @@ paths:
       summary: Create a blueprint service in an environment
       tags:
       - Blueprint Main Calls
+  /environment/{environmentId}/blueprintDeployment:
+    post:
+      description: |-
+        Instantiates a blueprint from the service catalog into the given environment and returns the ids of the engine dispatch it started. Pass `deploy=true` to trigger an immediate deployment after creation.
+        Takes the same request as POST /environment/{environmentId}/blueprint. That endpoint answers 201, which claims a service that does not exist yet: the dispatch creating the underlying Helm/Terraform service runs on a background executor after the transaction commits. This one always answers 202 and hands back `deployment_id` and `execution_id`, which GET /blueprint/{blueprintId} resolves.
+      operationId: createBlueprintDeployment
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Trigger a deployment immediately after creation
+        explode: true
+        in: query
+        name: deploy
+        required: false
+        schema:
+          default: false
+          type: boolean
+        style: form
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlueprintCreateRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintCreationResponse'
+          description: Blueprint created and an engine dispatch accepted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: A service with this name already exists in the environment
+        "422":
+          description: Malformed blueprint tag
+        "502":
+          description: Failed to fetch blueprint manifest from GitHub
+      summary: Create a blueprint service and report the dispatch it started
+      tags:
+      - Blueprint Main Calls
   /blueprint/{blueprintId}/update:
     get:
       description: "Returns the update availability for a deployed blueprint service,\
@@ -20285,6 +20340,37 @@ paths:
       tags:
       - Blueprint Main Calls
   /blueprint/{blueprintId}:
+    get:
+      description: |-
+        Returns the blueprint, the Helm/Terraform service its dispatch produced once that service exists, and the latest dispatch with its status and the engine's error message.
+        This is the only way to learn that a dispatch failed. Success is pushed over the `/blueprint/service-created` websocket, but there is no failure counterpart, so a client that only listens on the websocket waits forever on a dispatch that errored.
+      operationId: getBlueprint
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintDetailsResponse'
+          description: Blueprint details
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a blueprint service and the status of its latest dispatch
+      tags:
+      - Blueprint Main Calls
     patch:
       description: |-
         Persists new values for a deployed blueprint service. Intended to be called after reviewing the diff returned by GET /blueprint/{blueprintId}/update.
@@ -22502,6 +22588,147 @@ components:
       - environment_id
       - id
       - tag
+      type: object
+    BlueprintCreationResponse:
+      description: "Answer to a blueprint creation: the blueprint exists and an engine\
+        \ dispatch was started. The service it should materialize does not exist yet."
+      example:
+        execution_id: exec-abc-123
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        catalog_url: https://openapi-generator.tech
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tag: aws/postgres/17/1.0.1
+        deployment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        catalog_url:
+          description: URL to the blueprint catalog entry
+          format: uri
+          type: string
+        tag:
+          example: aws/postgres/17/1.0.1
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        deployment_id:
+          description: "Identifier of the dispatch started by this creation. Resolve\
+            \ its status with GET /blueprint/{blueprintId}, and match it against `latest_deployment.id`\
+            \ there to confirm that dispatch is this one rather than a later re-dispatch."
+          format: uuid
+          type: string
+        execution_id:
+          description: Engine execution identifier for this dispatch
+          example: exec-abc-123
+          type: string
+      required:
+      - catalog_url
+      - deployment_id
+      - environment_id
+      - execution_id
+      - id
+      - tag
+      type: object
+    BlueprintDetailsResponse:
+      example:
+        service_type: HELM
+        latest_deployment:
+          error_message: error_message
+          execution_id: exec-abc-123
+          started_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          terminated_at: 2000-01-23T04:56:07.000+00:00
+          status: WAITING_RUNNING
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        catalog_url: https://openapi-generator.tech
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        tag: aws/postgres/17/1.0.1
+      properties:
+        id:
+          format: uuid
+          type: string
+        name:
+          type: string
+        catalog_url:
+          description: URL to the blueprint catalog entry
+          format: uri
+          type: string
+        tag:
+          example: aws/postgres/17/1.0.1
+          type: string
+        environment_id:
+          format: uuid
+          type: string
+        service_type:
+          description: Type of the underlying service backing this blueprint
+          enum:
+          - HELM
+          - TERRAFORM
+          type: string
+        service_id:
+          description: "The service the dispatch produced. Null while the dispatch\
+            \ is still running, and null if it failed."
+          format: uuid
+          nullable: true
+          type: string
+        latest_deployment:
+          $ref: '#/components/schemas/BlueprintDetailsResponse_latest_deployment'
+      required:
+      - catalog_url
+      - environment_id
+      - id
+      - latest_deployment
+      - name
+      - service_id
+      - service_type
+      - tag
+      type: object
+    BlueprintDeploymentStatusResponse:
+      properties:
+        id:
+          format: uuid
+          type: string
+        execution_id:
+          description: Engine execution identifier for this dispatch
+          example: exec-abc-123
+          type: string
+        status:
+          description: "Status of the dispatch. Only the states a blueprint dispatch\
+            \ can reach, which is a subset of the deployment statuses used elsewhere\
+            \ in the API."
+          enum:
+          - WAITING_RUNNING
+          - DEPLOYING
+          - RUNNING
+          - FAILED
+          - CANCELING
+          - CANCELED
+          - INTERNAL_ERROR
+          type: string
+        started_at:
+          format: date-time
+          type: string
+        terminated_at:
+          description: When the dispatch reached a terminal state. Null while it is
+            still running.
+          format: date-time
+          nullable: true
+          type: string
+        error_message:
+          description: The engine's failure message. Null unless the dispatch failed.
+          nullable: true
+          type: string
+      required:
+      - error_message
+      - execution_id
+      - id
+      - started_at
+      - status
+      - terminated_at
       type: object
     BlueprintManifestResponse:
       example:
@@ -49119,6 +49346,18 @@ components:
             \ stops waiting for that job and abandons it immediately."
           type: boolean
       type: object
+    BlueprintDetailsResponse_latest_deployment:
+      allOf:
+      - $ref: '#/components/schemas/BlueprintDeploymentStatusResponse'
+      description: Latest dispatch for this blueprint. Null if it was never dispatched.
+      example:
+        error_message: error_message
+        execution_id: exec-abc-123
+        started_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        terminated_at: 2000-01-23T04:56:07.000+00:00
+        status: WAITING_RUNNING
+      nullable: true
     BlueprintManifestResponse_results_inner:
       discriminator:
         mapping:

@@ -241,7 +241,11 @@ docs/BillingStatus.md
 docs/BlueprintCatalogAPI.md
 docs/BlueprintCatalogResponse.md
 docs/BlueprintCreateRequest.md
+docs/BlueprintCreationResponse.md
 docs/BlueprintDeploymentAckResponse.md
+docs/BlueprintDeploymentStatusResponse.md
+docs/BlueprintDetailsResponse.md
+docs/BlueprintDetailsResponseLatestDeployment.md
 docs/BlueprintItem.md
 docs/BlueprintMainCallsAPI.md
 docs/BlueprintMajorVersion.md
@@ -1190,7 +1194,11 @@ model_billing_info_request.go
 model_billing_status.go
 model_blueprint_catalog_response.go
 model_blueprint_create_request.go
+model_blueprint_creation_response.go
 model_blueprint_deployment_ack_response.go
+model_blueprint_deployment_status_response.go
+model_blueprint_details_response.go
+model_blueprint_details_response_latest_deployment.go
 model_blueprint_item.go
 model_blueprint_major_version.go
 model_blueprint_manifest_backend_config.go
