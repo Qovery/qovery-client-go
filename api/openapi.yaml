@@ -3043,7 +3043,8 @@ paths:
       description: List upstream secrets from secret provider
       operationId: listUpstreamSecretsFromSecretProvider
       parameters:
-      - description: Secret Manager Access ID
+      - description: |
+          Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access
         explode: false
         in: path
         name: secretManagerAccessId
@@ -3080,7 +3081,8 @@ paths:
       description: List external secrets used by a secret manager access
       operationId: listSecretManagerAccessExternalSecrets
       parameters:
-      - description: Secret Manager Access ID
+      - description: |
+          Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access
         explode: false
         in: path
         name: secretManagerAccessId
@@ -20811,7 +20813,8 @@ components:
         type: string
       style: simple
     secretManagerAccessId:
-      description: Secret Manager Access ID
+      description: |
+        Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access
       explode: false
       in: path
       name: secretManagerAccessId
@@ -51894,3 +51897,6 @@ x-tagGroups:
 - name: Blueprint
   tags:
   - Blueprint Main Calls
+- name: Cluster
+  tags:
+  - Secret Manager Access

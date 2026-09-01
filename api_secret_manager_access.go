@@ -39,7 +39,7 @@ ListSecretManagerAccessExternalSecrets List external secrets used by a secret ma
 List external secrets used by a secret manager access
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param secretManagerAccessId Secret Manager Access ID
+	@param secretManagerAccessId Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access
 	@return ApiListSecretManagerAccessExternalSecretsRequest
 */
 func (a *SecretManagerAccessAPIService) ListSecretManagerAccessExternalSecrets(ctx context.Context, secretManagerAccessId string) ApiListSecretManagerAccessExternalSecretsRequest {
@@ -163,7 +163,7 @@ ListUpstreamSecretsFromSecretProvider List upstream secrets from secret provider
 List upstream secrets from secret provider
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param secretManagerAccessId Secret Manager Access ID
+	@param secretManagerAccessId Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access
 	@return ApiListUpstreamSecretsFromSecretProviderRequest
 */
 func (a *SecretManagerAccessAPIService) ListUpstreamSecretsFromSecretProvider(ctx context.Context, secretManagerAccessId string) ApiListUpstreamSecretsFromSecretProviderRequest {

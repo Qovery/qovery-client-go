@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	secretManagerAccessId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret Manager Access ID
+	secretManagerAccessId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
@@ -50,7 +50,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**secretManagerAccessId** | **string** | Secret Manager Access ID | 
+**secretManagerAccessId** | **string** | Secret Manager Access Id - Use the endpoint [&#x60;GET /organization/{organizationId}/cluster&#x60;](#operation/listOrganizationCluster) to retrieve your secret manager access  | 
 
 ### Other Parameters
 
@@ -100,7 +100,7 @@ import (
 )
 
 func main() {
-	secretManagerAccessId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret Manager Access ID
+	secretManagerAccessId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret Manager Access Id - Use the endpoint [`GET /organization/{organizationId}/cluster`](#operation/listOrganizationCluster) to retrieve your secret manager access 
 	namePrefix := "namePrefix_example" // string |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
@@ -121,7 +121,7 @@ func main() {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**secretManagerAccessId** | **string** | Secret Manager Access ID | 
+**secretManagerAccessId** | **string** | Secret Manager Access Id - Use the endpoint [&#x60;GET /organization/{organizationId}/cluster&#x60;](#operation/listOrganizationCluster) to retrieve your secret manager access  | 
 
 ### Other Parameters
 
