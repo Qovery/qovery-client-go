@@ -21,11 +21,15 @@ var _ MappedNullable = &BlueprintItem{}
 
 // BlueprintItem struct for BlueprintItem
 type BlueprintItem struct {
-	Name                 string                  `json:"name"`
-	Kind                 string                  `json:"kind"`
-	Description          string                  `json:"description"`
-	Icon                 string                  `json:"icon"`
-	Categories           []string                `json:"categories"`
+	Name string `json:"name"`
+	// Customer-facing name for the blueprint.
+	DisplayName string   `json:"displayName"`
+	Kind        string   `json:"kind"`
+	Description string   `json:"description"`
+	Icon        string   `json:"icon"`
+	Categories  []string `json:"categories"`
+	// Customer-facing category used to group blueprints in the service catalog.
+	PrimaryCategory      string                  `json:"primaryCategory"`
 	Provider             string                  `json:"provider"`
 	ServiceFamily        string                  `json:"serviceFamily"`
 	MajorVersions        []BlueprintMajorVersion `json:"majorVersions"`
@@ -38,13 +42,15 @@ type _BlueprintItem BlueprintItem
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintItem(name string, kind string, description string, icon string, categories []string, provider string, serviceFamily string, majorVersions []BlueprintMajorVersion) *BlueprintItem {
+func NewBlueprintItem(name string, displayName string, kind string, description string, icon string, categories []string, primaryCategory string, provider string, serviceFamily string, majorVersions []BlueprintMajorVersion) *BlueprintItem {
 	this := BlueprintItem{}
 	this.Name = name
+	this.DisplayName = displayName
 	this.Kind = kind
 	this.Description = description
 	this.Icon = icon
 	this.Categories = categories
+	this.PrimaryCategory = primaryCategory
 	this.Provider = provider
 	this.ServiceFamily = serviceFamily
 	this.MajorVersions = majorVersions
@@ -81,6 +87,30 @@ func (o *BlueprintItem) GetNameOk() (*string, bool) {
 // SetName sets field value
 func (o *BlueprintItem) SetName(v string) {
 	o.Name = v
+}
+
+// GetDisplayName returns the DisplayName field value
+func (o *BlueprintItem) GetDisplayName() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.DisplayName
+}
+
+// GetDisplayNameOk returns a tuple with the DisplayName field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintItem) GetDisplayNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.DisplayName, true
+}
+
+// SetDisplayName sets field value
+func (o *BlueprintItem) SetDisplayName(v string) {
+	o.DisplayName = v
 }
 
 // GetKind returns the Kind field value
@@ -179,6 +209,30 @@ func (o *BlueprintItem) SetCategories(v []string) {
 	o.Categories = v
 }
 
+// GetPrimaryCategory returns the PrimaryCategory field value
+func (o *BlueprintItem) GetPrimaryCategory() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.PrimaryCategory
+}
+
+// GetPrimaryCategoryOk returns a tuple with the PrimaryCategory field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintItem) GetPrimaryCategoryOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PrimaryCategory, true
+}
+
+// SetPrimaryCategory sets field value
+func (o *BlueprintItem) SetPrimaryCategory(v string) {
+	o.PrimaryCategory = v
+}
+
 // GetProvider returns the Provider field value
 func (o *BlueprintItem) GetProvider() string {
 	if o == nil {
@@ -262,10 +316,12 @@ func (o BlueprintItem) MarshalJSON() ([]byte, error) {
 func (o BlueprintItem) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
+	toSerialize["displayName"] = o.DisplayName
 	toSerialize["kind"] = o.Kind
 	toSerialize["description"] = o.Description
 	toSerialize["icon"] = o.Icon
 	toSerialize["categories"] = o.Categories
+	toSerialize["primaryCategory"] = o.PrimaryCategory
 	toSerialize["provider"] = o.Provider
 	toSerialize["serviceFamily"] = o.ServiceFamily
 	toSerialize["majorVersions"] = o.MajorVersions
@@ -283,10 +339,12 @@ func (o *BlueprintItem) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
+		"displayName",
 		"kind",
 		"description",
 		"icon",
 		"categories",
+		"primaryCategory",
 		"provider",
 		"serviceFamily",
 		"majorVersions",
@@ -320,10 +378,12 @@ func (o *BlueprintItem) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "name")
+		delete(additionalProperties, "displayName")
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "icon")
 		delete(additionalProperties, "categories")
+		delete(additionalProperties, "primaryCategory")
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "serviceFamily")
 		delete(additionalProperties, "majorVersions")

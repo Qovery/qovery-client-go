@@ -5,10 +5,12 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
+**DisplayName** | **string** | Customer-facing name for the blueprint. | 
 **Kind** | **string** |  | 
 **Description** | **string** |  | 
 **Icon** | **string** |  | 
 **Categories** | **[]string** |  | 
+**PrimaryCategory** | **string** | Customer-facing category used to group blueprints in the service catalog. | 
 **Provider** | **string** |  | 
 **ServiceFamily** | **string** |  | 
 **MajorVersions** | [**[]BlueprintMajorVersion**](BlueprintMajorVersion.md) |  | 
@@ -17,7 +19,7 @@ Name | Type | Description | Notes
 
 ### NewBlueprintItem
 
-`func NewBlueprintItem(name string, kind string, description string, icon string, categories []string, provider string, serviceFamily string, majorVersions []BlueprintMajorVersion, ) *BlueprintItem`
+`func NewBlueprintItem(name string, displayName string, kind string, description string, icon string, categories []string, primaryCategory string, provider string, serviceFamily string, majorVersions []BlueprintMajorVersion, ) *BlueprintItem`
 
 NewBlueprintItem instantiates a new BlueprintItem object
 This constructor will assign default values to properties that have it defined,
@@ -50,6 +52,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintItem) SetName(v string)`
 
 SetName sets Name field to given value.
+
+
+### GetDisplayName
+
+`func (o *BlueprintItem) GetDisplayName() string`
+
+GetDisplayName returns the DisplayName field if non-nil, zero value otherwise.
+
+### GetDisplayNameOk
+
+`func (o *BlueprintItem) GetDisplayNameOk() (*string, bool)`
+
+GetDisplayNameOk returns a tuple with the DisplayName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDisplayName
+
+`func (o *BlueprintItem) SetDisplayName(v string)`
+
+SetDisplayName sets DisplayName field to given value.
 
 
 ### GetKind
@@ -130,6 +152,26 @@ and a boolean to check if the value has been set.
 `func (o *BlueprintItem) SetCategories(v []string)`
 
 SetCategories sets Categories field to given value.
+
+
+### GetPrimaryCategory
+
+`func (o *BlueprintItem) GetPrimaryCategory() string`
+
+GetPrimaryCategory returns the PrimaryCategory field if non-nil, zero value otherwise.
+
+### GetPrimaryCategoryOk
+
+`func (o *BlueprintItem) GetPrimaryCategoryOk() (*string, bool)`
+
+GetPrimaryCategoryOk returns a tuple with the PrimaryCategory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPrimaryCategory
+
+`func (o *BlueprintItem) SetPrimaryCategory(v string)`
+
+SetPrimaryCategory sets PrimaryCategory field to given value.
 
 
 ### GetProvider

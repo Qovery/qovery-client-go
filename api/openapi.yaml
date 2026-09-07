@@ -22319,8 +22319,10 @@ components:
             latestTag: aws/postgres/17/1.0.1
           - serviceVersion: "17"
             latestTag: aws/postgres/17/1.0.1
+          primaryCategory: Databases & Caches
           provider: aws
           serviceFamily: postgres
+          displayName: Amazon RDS for PostgreSQL
           kind: ServiceBlueprint
           name: aws-rds-postgresql
           icon: https://cdn.qovery.com/icons/postgresql.svg
@@ -22333,8 +22335,10 @@ components:
             latestTag: aws/postgres/17/1.0.1
           - serviceVersion: "17"
             latestTag: aws/postgres/17/1.0.1
+          primaryCategory: Databases & Caches
           provider: aws
           serviceFamily: postgres
+          displayName: Amazon RDS for PostgreSQL
           kind: ServiceBlueprint
           name: aws-rds-postgresql
           icon: https://cdn.qovery.com/icons/postgresql.svg
@@ -22367,8 +22371,10 @@ components:
           latestTag: aws/postgres/17/1.0.1
         - serviceVersion: "17"
           latestTag: aws/postgres/17/1.0.1
+        primaryCategory: Databases & Caches
         provider: aws
         serviceFamily: postgres
+        displayName: Amazon RDS for PostgreSQL
         kind: ServiceBlueprint
         name: aws-rds-postgresql
         icon: https://cdn.qovery.com/icons/postgresql.svg
@@ -22379,6 +22385,10 @@ components:
       properties:
         name:
           example: aws-rds-postgresql
+          type: string
+        displayName:
+          description: Customer-facing name for the blueprint.
+          example: Amazon RDS for PostgreSQL
           type: string
         kind:
           example: ServiceBlueprint
@@ -22393,6 +22403,11 @@ components:
           items:
             type: string
           type: array
+        primaryCategory:
+          description: Customer-facing category used to group blueprints in the service
+            catalog.
+          example: Databases & Caches
+          type: string
         provider:
           example: aws
           type: string
@@ -22406,10 +22421,12 @@ components:
       required:
       - categories
       - description
+      - displayName
       - icon
       - kind
       - majorVersions
       - name
+      - primaryCategory
       - provider
       - serviceFamily
       type: object
