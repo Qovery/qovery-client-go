@@ -3519,12 +3519,14 @@ func (r ApiListClusterLogsRequest) Execute() (*ClusterLogsResponseList, *http.Re
 /*
 ListClusterLogs List Cluster Logs
 
-List Cluster Logs
+List Cluster Logs. Deprecated: use listClusterDeploymentLogs instead to fetch the logs of a specific cluster deployment.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
 	@param clusterId Cluster ID
 	@return ApiListClusterLogsRequest
+
+Deprecated
 */
 func (a *ClustersAPIService) ListClusterLogs(ctx context.Context, organizationId string, clusterId string) ApiListClusterLogsRequest {
 	return ApiListClusterLogsRequest{
@@ -3538,6 +3540,8 @@ func (a *ClustersAPIService) ListClusterLogs(ctx context.Context, organizationId
 // Execute executes the request
 //
 //	@return ClusterLogsResponseList
+//
+// Deprecated
 func (a *ClustersAPIService) ListClusterLogsExecute(r ApiListClusterLogsRequest) (*ClusterLogsResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet

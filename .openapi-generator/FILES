@@ -24,6 +24,7 @@ api_blueprint_catalog.go
 api_blueprint_main_calls.go
 api_cloud_provider.go
 api_cloud_provider_credentials.go
+api_cluster_deployment_history.go
 api_cluster_operator.go
 api_clusters.go
 api_container_actions.go
@@ -317,6 +318,11 @@ docs/ClusterCloudProviderInfoRequest.md
 docs/ClusterCredentials.md
 docs/ClusterCredentialsResponseList.md
 docs/ClusterDeleteMode.md
+docs/ClusterDeploymentHistory.md
+docs/ClusterDeploymentHistoryAPI.md
+docs/ClusterDeploymentHistoryAuditingData.md
+docs/ClusterDeploymentHistoryIdentifier.md
+docs/ClusterDeploymentHistoryPaginatedResponseListV2.md
 docs/ClusterDeploymentStatusEnum.md
 docs/ClusterDnsProviderRequest.md
 docs/ClusterDnsProviderRequestProvider.md
@@ -1267,6 +1273,10 @@ model_cluster_cloud_provider_info_request.go
 model_cluster_credentials.go
 model_cluster_credentials_response_list.go
 model_cluster_delete_mode.go
+model_cluster_deployment_history.go
+model_cluster_deployment_history_auditing_data.go
+model_cluster_deployment_history_identifier.go
+model_cluster_deployment_history_paginated_response_list_v2.go
 model_cluster_deployment_status_enum.go
 model_cluster_dns_provider_request.go
 model_cluster_dns_provider_request_provider.go
@@ -1966,6 +1976,7 @@ test/api_blueprint_catalog_test.go
 test/api_blueprint_main_calls_test.go
 test/api_cloud_provider_credentials_test.go
 test/api_cloud_provider_test.go
+test/api_cluster_deployment_history_test.go
 test/api_cluster_operator_test.go
 test/api_clusters_test.go
 test/api_container_actions_test.go

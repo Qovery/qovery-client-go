@@ -28,6 +28,7 @@ const (
 	DEPLOYMENTHISTORYACTIONSTATUS_CANCELED  DeploymentHistoryActionStatus = "CANCELED"
 	DEPLOYMENTHISTORYACTIONSTATUS_CANCELING DeploymentHistoryActionStatus = "CANCELING"
 	DEPLOYMENTHISTORYACTIONSTATUS_NEVER     DeploymentHistoryActionStatus = "NEVER"
+	DEPLOYMENTHISTORYACTIONSTATUS_EXECUTING DeploymentHistoryActionStatus = "EXECUTING"
 )
 
 // All allowed values of DeploymentHistoryActionStatus enum
@@ -39,6 +40,7 @@ var AllowedDeploymentHistoryActionStatusEnumValues = []DeploymentHistoryActionSt
 	"CANCELED",
 	"CANCELING",
 	"NEVER",
+	"EXECUTING",
 }
 
 func (v *DeploymentHistoryActionStatus) UnmarshalJSON(src []byte) error {
