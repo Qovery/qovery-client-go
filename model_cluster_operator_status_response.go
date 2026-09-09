@@ -29,7 +29,6 @@ type ClusterOperatorStatusResponse struct {
 	LastHeartbeat     NullableTime `json:"last_heartbeat,omitempty"`
 	// Display version reported by the Operator. For the POC version-reporting heartbeat, the official chart sets this to the exact installed image tag. Legacy Operators can report opaque build metadata instead.
 	OperatorVersion      NullableString `json:"operator_version,omitempty"`
-	ControllerVersion    NullableString `json:"controller_version,omitempty"`
 	RequestSchemaVersion NullableString `json:"request_schema_version,omitempty"`
 	// Image tag currently selected for a newly compiled Operator bootstrap.
 	DesiredImageVersion NullableString `json:"desired_image_version,omitempty"`
@@ -221,49 +220,6 @@ func (o *ClusterOperatorStatusResponse) SetOperatorVersionNil() {
 // UnsetOperatorVersion ensures that no value is present for OperatorVersion, not even an explicit nil
 func (o *ClusterOperatorStatusResponse) UnsetOperatorVersion() {
 	o.OperatorVersion.Unset()
-}
-
-// GetControllerVersion returns the ControllerVersion field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *ClusterOperatorStatusResponse) GetControllerVersion() string {
-	if o == nil || IsNil(o.ControllerVersion.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.ControllerVersion.Get()
-}
-
-// GetControllerVersionOk returns a tuple with the ControllerVersion field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *ClusterOperatorStatusResponse) GetControllerVersionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.ControllerVersion.Get(), o.ControllerVersion.IsSet()
-}
-
-// HasControllerVersion returns a boolean if a field has been set.
-func (o *ClusterOperatorStatusResponse) HasControllerVersion() bool {
-	if o != nil && o.ControllerVersion.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetControllerVersion gets a reference to the given NullableString and assigns it to the ControllerVersion field.
-func (o *ClusterOperatorStatusResponse) SetControllerVersion(v string) {
-	o.ControllerVersion.Set(&v)
-}
-
-// SetControllerVersionNil sets the value for ControllerVersion to be an explicit nil
-func (o *ClusterOperatorStatusResponse) SetControllerVersionNil() {
-	o.ControllerVersion.Set(nil)
-}
-
-// UnsetControllerVersion ensures that no value is present for ControllerVersion, not even an explicit nil
-func (o *ClusterOperatorStatusResponse) UnsetControllerVersion() {
-	o.ControllerVersion.Unset()
 }
 
 // GetRequestSchemaVersion returns the RequestSchemaVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -524,9 +480,6 @@ func (o ClusterOperatorStatusResponse) ToMap() (map[string]interface{}, error) {
 	if o.OperatorVersion.IsSet() {
 		toSerialize["operator_version"] = o.OperatorVersion.Get()
 	}
-	if o.ControllerVersion.IsSet() {
-		toSerialize["controller_version"] = o.ControllerVersion.Get()
-	}
 	if o.RequestSchemaVersion.IsSet() {
 		toSerialize["request_schema_version"] = o.RequestSchemaVersion.Get()
 	}
@@ -594,7 +547,6 @@ func (o *ClusterOperatorStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "operator_connected")
 		delete(additionalProperties, "last_heartbeat")
 		delete(additionalProperties, "operator_version")
-		delete(additionalProperties, "controller_version")
 		delete(additionalProperties, "request_schema_version")
 		delete(additionalProperties, "desired_image_version")
 		delete(additionalProperties, "desired_chart_version")

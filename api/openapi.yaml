@@ -28638,7 +28638,6 @@ components:
         cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         operator_version: operator_version
         desired_chart_version: desired_chart_version
-        controller_version: controller_version
         reported_chart_version: reported_chart_version
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         desired_image_version: desired_image_version
@@ -28665,9 +28664,6 @@ components:
           description: "Display version reported by the Operator. For the POC version-reporting\
             \ heartbeat, the official chart sets this to the exact installed image\
             \ tag. Legacy Operators can report opaque build metadata instead."
-          nullable: true
-          type: string
-        controller_version:
           nullable: true
           type: string
         request_schema_version:

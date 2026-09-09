@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **OperatorConnected** | **bool** | Whether the last heartbeat is within the Operator presence window. | 
 **LastHeartbeat** | Pointer to **NullableTime** |  | [optional] 
 **OperatorVersion** | Pointer to **NullableString** | Display version reported by the Operator. For the POC version-reporting heartbeat, the official chart sets this to the exact installed image tag. Legacy Operators can report opaque build metadata instead. | [optional] 
-**ControllerVersion** | Pointer to **NullableString** |  | [optional] 
 **RequestSchemaVersion** | Pointer to **NullableString** |  | [optional] 
 **DesiredImageVersion** | Pointer to **NullableString** | Image tag currently selected for a newly compiled Operator bootstrap. | [optional] 
 **DesiredChartVersion** | Pointer to **NullableString** | Helm chart version currently selected for a newly compiled Operator bootstrap. | [optional] 
@@ -166,41 +165,6 @@ HasOperatorVersion returns a boolean if a field has been set.
 `func (o *ClusterOperatorStatusResponse) UnsetOperatorVersion()`
 
 UnsetOperatorVersion ensures that no value is present for OperatorVersion, not even an explicit nil
-### GetControllerVersion
-
-`func (o *ClusterOperatorStatusResponse) GetControllerVersion() string`
-
-GetControllerVersion returns the ControllerVersion field if non-nil, zero value otherwise.
-
-### GetControllerVersionOk
-
-`func (o *ClusterOperatorStatusResponse) GetControllerVersionOk() (*string, bool)`
-
-GetControllerVersionOk returns a tuple with the ControllerVersion field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetControllerVersion
-
-`func (o *ClusterOperatorStatusResponse) SetControllerVersion(v string)`
-
-SetControllerVersion sets ControllerVersion field to given value.
-
-### HasControllerVersion
-
-`func (o *ClusterOperatorStatusResponse) HasControllerVersion() bool`
-
-HasControllerVersion returns a boolean if a field has been set.
-
-### SetControllerVersionNil
-
-`func (o *ClusterOperatorStatusResponse) SetControllerVersionNil(b bool)`
-
- SetControllerVersionNil sets the value for ControllerVersion to be an explicit nil
-
-### UnsetControllerVersion
-`func (o *ClusterOperatorStatusResponse) UnsetControllerVersion()`
-
-UnsetControllerVersion ensures that no value is present for ControllerVersion, not even an explicit nil
 ### GetRequestSchemaVersion
 
 `func (o *ClusterOperatorStatusResponse) GetRequestSchemaVersion() string`
