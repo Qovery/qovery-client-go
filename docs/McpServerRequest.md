@@ -4,10 +4,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Name** | **string** | Unique MCP server name within the organization | 
+**Name** | **string** | MCP server name, unique per scope owner within the organization | 
 **Description** | Pointer to **string** |  | [optional] [default to ""]
 **Url** | **string** | HTTPS URL of the remote MCP server | 
 **Headers** | Pointer to **map[string]string** | HTTP headers sent to the MCP server. Header values are encrypted and never returned by the API. | [optional] [default to {}]
+**Scope** | Pointer to [**McpServerScope**](McpServerScope.md) | Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER connector requires CREATE_PROJECT. On edit, omitting it leaves the connector&#39;s scope unchanged, and stating a scope that differs from the connector&#39;s is refused with 400. | [optional] 
 
 ## Methods
 
@@ -117,6 +118,31 @@ SetHeaders sets Headers field to given value.
 `func (o *McpServerRequest) HasHeaders() bool`
 
 HasHeaders returns a boolean if a field has been set.
+
+### GetScope
+
+`func (o *McpServerRequest) GetScope() McpServerScope`
+
+GetScope returns the Scope field if non-nil, zero value otherwise.
+
+### GetScopeOk
+
+`func (o *McpServerRequest) GetScopeOk() (*McpServerScope, bool)`
+
+GetScopeOk returns a tuple with the Scope field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetScope
+
+`func (o *McpServerRequest) SetScope(v McpServerScope)`
+
+SetScope sets Scope field to given value.
+
+### HasScope
+
+`func (o *McpServerRequest) HasScope() bool`
+
+HasScope returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

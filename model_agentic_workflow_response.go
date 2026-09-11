@@ -38,7 +38,7 @@ type AgenticWorkflowResponse struct {
 	Enabled            bool     `json:"enabled"`
 	// Raw JSON blob describing the MCP servers configured for this workflow
 	Mcp string `json:"mcp"`
-	// Organization MCP servers used by this workflow
+	// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
 	McpServerIds        []string                                     `json:"mcp_server_ids"`
 	Outputs             []AgenticWorkflowOutput                      `json:"outputs"`
 	Model               AgenticWorkflowModelResponse                 `json:"model"`

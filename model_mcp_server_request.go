@@ -21,13 +21,15 @@ var _ MappedNullable = &McpServerRequest{}
 
 // McpServerRequest struct for McpServerRequest
 type McpServerRequest struct {
-	// Unique MCP server name within the organization
+	// MCP server name, unique per scope owner within the organization
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
 	// HTTPS URL of the remote MCP server
 	Url string `json:"url"`
 	// HTTP headers sent to the MCP server. Header values are encrypted and never returned by the API.
-	Headers              *map[string]string `json:"headers,omitempty"`
+	Headers *map[string]string `json:"headers,omitempty"`
+	// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER connector requires CREATE_PROJECT. On edit, omitting it leaves the connector's scope unchanged, and stating a scope that differs from the connector's is refused with 400.
+	Scope                *McpServerScope `json:"scope,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -168,6 +170,38 @@ func (o *McpServerRequest) SetHeaders(v map[string]string) {
 	o.Headers = &v
 }
 
+// GetScope returns the Scope field value if set, zero value otherwise.
+func (o *McpServerRequest) GetScope() McpServerScope {
+	if o == nil || IsNil(o.Scope) {
+		var ret McpServerScope
+		return ret
+	}
+	return *o.Scope
+}
+
+// GetScopeOk returns a tuple with the Scope field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *McpServerRequest) GetScopeOk() (*McpServerScope, bool) {
+	if o == nil || IsNil(o.Scope) {
+		return nil, false
+	}
+	return o.Scope, true
+}
+
+// HasScope returns a boolean if a field has been set.
+func (o *McpServerRequest) HasScope() bool {
+	if o != nil && !IsNil(o.Scope) {
+		return true
+	}
+
+	return false
+}
+
+// SetScope gets a reference to the given McpServerScope and assigns it to the Scope field.
+func (o *McpServerRequest) SetScope(v McpServerScope) {
+	o.Scope = &v
+}
+
 func (o McpServerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -185,6 +219,9 @@ func (o McpServerRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["url"] = o.Url
 	if !IsNil(o.Headers) {
 		toSerialize["headers"] = o.Headers
+	}
+	if !IsNil(o.Scope) {
+		toSerialize["scope"] = o.Scope
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -234,6 +271,7 @@ func (o *McpServerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "headers")
+		delete(additionalProperties, "scope")
 		o.AdditionalProperties = additionalProperties
 	}
 

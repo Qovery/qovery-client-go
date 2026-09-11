@@ -75,7 +75,7 @@ Name | Type | Description | Notes
 **DockerFragment** | **string** |  | 
 **Enabled** | **bool** |  | 
 **Mcp** | **string** | Raw JSON blob describing the MCP servers configured for this workflow | 
-**McpServerIds** | **[]string** | Organization MCP servers used by this workflow | 
+**McpServerIds** | **[]string** | MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving. | 
 **Outputs** | [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | 
 **Model** | [**AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
 **ProjectRepositories** | [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | 

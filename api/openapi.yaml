@@ -6884,7 +6884,8 @@ paths:
         "404":
           description: Resource not found
         "409":
-          description: MCP server name is already taken in the organization
+          description: MCP server name is already taken for this scope owner in the
+            organization
       summary: Create an MCP server
       tags:
       - MCP Servers
@@ -6976,11 +6977,14 @@ paths:
         "401":
           description: Access token is missing or invalid
         "403":
-          description: Access forbidden
+          description: "Editing an ORGANIZATION connector requires the MANAGE_INFRASTRUCTURE\
+            \ permission; a USER connector can only be edited by its owner, so an\
+            \ organization admin is forbidden as well."
         "404":
           description: Resource not found
         "409":
-          description: MCP server name is already taken in the organization
+          description: MCP server name is already taken for this scope owner in the
+            organization
       summary: Edit an MCP server
       tags:
       - MCP Servers
@@ -18665,7 +18669,9 @@ paths:
                 $ref: '#/components/schemas/AgenticWorkflowResponse'
           description: Create agentic workflow
         "400":
-          description: Bad request
+          description: "Invalid workflow configuration. Includes attaching an MCP\
+            \ connector that is personal to another member, and attaching two connectors\
+            \ that share a name."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -18918,7 +18924,9 @@ paths:
                 $ref: '#/components/schemas/AgenticWorkflowResponse'
           description: Edit agentic workflow
         "400":
-          description: Bad request
+          description: "Invalid workflow configuration. Includes attaching an MCP\
+            \ connector that is personal to another member, and attaching two connectors\
+            \ that share a name."
         "401":
           description: Access token is missing or invalid
         "403":
@@ -29894,16 +29902,25 @@ components:
       - kind
       - name
       type: object
+    McpServerScope:
+      description: "ORGANIZATION: usable by every member who can edit an agentic workflow.\
+        \ USER: personal to the member who created it; only that member can attach\
+        \ or edit it."
+      enum:
+      - ORGANIZATION
+      - USER
+      type: string
     McpServerRequest:
       example:
         headers:
           key: headers
+        scope: ""
         name: name
         description: ""
         url: https://openapi-generator.tech
       properties:
         name:
-          description: Unique MCP server name within the organization
+          description: "MCP server name, unique per scope owner within the organization"
           minLength: 1
           type: string
         description:
@@ -29922,6 +29939,14 @@ components:
             and never returned by the API.
           type: object
           writeOnly: true
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/McpServerScope'
+          description: "Cannot be changed after creation. On create, omitting it means\
+            \ ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating\
+            \ a USER connector requires CREATE_PROJECT. On edit, omitting it leaves\
+            \ the connector's scope unchanged, and stating a scope that differs from\
+            \ the connector's is refused with 400."
       required:
       - name
       - url
@@ -29946,15 +29971,37 @@ components:
               type: string
             type: array
             uniqueItems: true
+          scope:
+            $ref: '#/components/schemas/McpServerScope'
+          owner_user_sub:
+            description: Identity of the owning member. Null for an ORGANIZATION connector.
+            nullable: true
+            type: string
+          owner_name:
+            description: Display name of the owning member. Null for an ORGANIZATION
+              connector.
+            nullable: true
+            type: string
+          attachable:
+            description: "Whether the member making this request may attach the connector\
+              \ to an agentic workflow. Computed per caller: an organization admin\
+              \ sees every USER connector but can attach none of them, so a picker\
+              \ must use this rather than scope alone."
+            type: boolean
         required:
+        - attachable
         - description
         - header_names
         - name
+        - scope
         - updated_at
         - url
         type: object
       example:
+        owner_name: owner_name
         updated_at: 2000-01-23T04:56:07.000+00:00
+        owner_user_sub: owner_user_sub
+        scope: ORGANIZATION
         name: name
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
@@ -29963,10 +30010,14 @@ components:
         - header_names
         - header_names
         url: https://openapi-generator.tech
+        attachable: true
     McpServerResponseList:
       example:
         results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+        - owner_name: owner_name
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          owner_user_sub: owner_user_sub
+          scope: ORGANIZATION
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -29975,7 +30026,11 @@ components:
           - header_names
           - header_names
           url: https://openapi-generator.tech
-        - updated_at: 2000-01-23T04:56:07.000+00:00
+          attachable: true
+        - owner_name: owner_name
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          owner_user_sub: owner_user_sub
+          scope: ORGANIZATION
           name: name
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
@@ -29984,6 +30039,7 @@ components:
           - header_names
           - header_names
           url: https://openapi-generator.tech
+          attachable: true
       properties:
         results:
           items:
@@ -47860,7 +47916,9 @@ components:
               workflow
             type: string
           mcp_server_ids:
-            description: Organization MCP servers used by this workflow
+            description: "MCP connectors attached to this workflow. May include a\
+              \ USER-scoped connector, which only its owner can attach or keep attached\
+              \ when saving."
             items:
               format: uuid
               type: string
@@ -48141,7 +48199,9 @@ components:
             type: string
           mcp_server_ids:
             default: []
-            description: Organization MCP servers used by this workflow
+            description: "MCP connectors attached to this workflow. May include a\
+              \ USER-scoped connector, which only its owner can attach or keep attached\
+              \ when saving."
             items:
               format: uuid
               type: string

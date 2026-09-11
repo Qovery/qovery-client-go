@@ -793,6 +793,7 @@ docs/ManagedDatabaseTypeResponseList.md
 docs/McpServerRequest.md
 docs/McpServerResponse.md
 docs/McpServerResponseList.md
+docs/McpServerScope.md
 docs/Member.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
@@ -1696,6 +1697,7 @@ model_managed_database_type_response_list.go
 model_mcp_server_request.go
 model_mcp_server_response.go
 model_mcp_server_response_list.go
+model_mcp_server_scope.go
 model_member.go
 model_member_response_list.go
 model_member_role_update_request.go

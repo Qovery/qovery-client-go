@@ -1254,6 +1254,7 @@ Class | Method | HTTP request | Description
  - [McpServerRequest](docs/McpServerRequest.md)
  - [McpServerResponse](docs/McpServerResponse.md)
  - [McpServerResponseList](docs/McpServerResponseList.md)
+ - [McpServerScope](docs/McpServerScope.md)
  - [Member](docs/Member.md)
  - [MemberResponseList](docs/MemberResponseList.md)
  - [MemberRoleUpdateRequest](docs/MemberRoleUpdateRequest.md)

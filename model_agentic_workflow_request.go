@@ -30,7 +30,7 @@ type AgenticWorkflowRequest struct {
 	Enabled            *bool    `json:"enabled,omitempty"`
 	// Raw JSON blob describing the MCP servers configured for this workflow
 	Mcp *string `json:"mcp,omitempty"`
-	// Organization MCP servers used by this workflow
+	// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
 	McpServerIds         []string                                    `json:"mcp_server_ids,omitempty"`
 	Outputs              []AgenticWorkflowOutput                     `json:"outputs,omitempty"`
 	Model                *AgenticWorkflowModelRequest                `json:"model,omitempty"`

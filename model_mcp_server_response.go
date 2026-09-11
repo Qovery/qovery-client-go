@@ -30,7 +30,14 @@ type McpServerResponse struct {
 	// HTTPS URL of the remote MCP server
 	Url string `json:"url"`
 	// Names of the configured HTTP headers. Header values are never returned.
-	HeaderNames          []string `json:"header_names"`
+	HeaderNames []string       `json:"header_names"`
+	Scope       McpServerScope `json:"scope"`
+	// Identity of the owning member. Null for an ORGANIZATION connector.
+	OwnerUserSub NullableString `json:"owner_user_sub,omitempty"`
+	// Display name of the owning member. Null for an ORGANIZATION connector.
+	OwnerName NullableString `json:"owner_name,omitempty"`
+	// Whether the member making this request may attach the connector to an agentic workflow. Computed per caller: an organization admin sees every USER connector but can attach none of them, so a picker must use this rather than scope alone.
+	Attachable           bool `json:"attachable"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -40,7 +47,7 @@ type _McpServerResponse McpServerResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewMcpServerResponse(id string, createdAt time.Time, updatedAt time.Time, name string, description string, url string, headerNames []string) *McpServerResponse {
+func NewMcpServerResponse(id string, createdAt time.Time, updatedAt time.Time, name string, description string, url string, headerNames []string, scope McpServerScope, attachable bool) *McpServerResponse {
 	this := McpServerResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -49,6 +56,8 @@ func NewMcpServerResponse(id string, createdAt time.Time, updatedAt time.Time, n
 	this.Description = description
 	this.Url = url
 	this.HeaderNames = headerNames
+	this.Scope = scope
+	this.Attachable = attachable
 	return &this
 }
 
@@ -228,6 +237,140 @@ func (o *McpServerResponse) SetHeaderNames(v []string) {
 	o.HeaderNames = v
 }
 
+// GetScope returns the Scope field value
+func (o *McpServerResponse) GetScope() McpServerScope {
+	if o == nil {
+		var ret McpServerScope
+		return ret
+	}
+
+	return o.Scope
+}
+
+// GetScopeOk returns a tuple with the Scope field value
+// and a boolean to check if the value has been set.
+func (o *McpServerResponse) GetScopeOk() (*McpServerScope, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Scope, true
+}
+
+// SetScope sets field value
+func (o *McpServerResponse) SetScope(v McpServerScope) {
+	o.Scope = v
+}
+
+// GetOwnerUserSub returns the OwnerUserSub field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *McpServerResponse) GetOwnerUserSub() string {
+	if o == nil || IsNil(o.OwnerUserSub.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OwnerUserSub.Get()
+}
+
+// GetOwnerUserSubOk returns a tuple with the OwnerUserSub field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *McpServerResponse) GetOwnerUserSubOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OwnerUserSub.Get(), o.OwnerUserSub.IsSet()
+}
+
+// HasOwnerUserSub returns a boolean if a field has been set.
+func (o *McpServerResponse) HasOwnerUserSub() bool {
+	if o != nil && o.OwnerUserSub.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerUserSub gets a reference to the given NullableString and assigns it to the OwnerUserSub field.
+func (o *McpServerResponse) SetOwnerUserSub(v string) {
+	o.OwnerUserSub.Set(&v)
+}
+
+// SetOwnerUserSubNil sets the value for OwnerUserSub to be an explicit nil
+func (o *McpServerResponse) SetOwnerUserSubNil() {
+	o.OwnerUserSub.Set(nil)
+}
+
+// UnsetOwnerUserSub ensures that no value is present for OwnerUserSub, not even an explicit nil
+func (o *McpServerResponse) UnsetOwnerUserSub() {
+	o.OwnerUserSub.Unset()
+}
+
+// GetOwnerName returns the OwnerName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *McpServerResponse) GetOwnerName() string {
+	if o == nil || IsNil(o.OwnerName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.OwnerName.Get()
+}
+
+// GetOwnerNameOk returns a tuple with the OwnerName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *McpServerResponse) GetOwnerNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OwnerName.Get(), o.OwnerName.IsSet()
+}
+
+// HasOwnerName returns a boolean if a field has been set.
+func (o *McpServerResponse) HasOwnerName() bool {
+	if o != nil && o.OwnerName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOwnerName gets a reference to the given NullableString and assigns it to the OwnerName field.
+func (o *McpServerResponse) SetOwnerName(v string) {
+	o.OwnerName.Set(&v)
+}
+
+// SetOwnerNameNil sets the value for OwnerName to be an explicit nil
+func (o *McpServerResponse) SetOwnerNameNil() {
+	o.OwnerName.Set(nil)
+}
+
+// UnsetOwnerName ensures that no value is present for OwnerName, not even an explicit nil
+func (o *McpServerResponse) UnsetOwnerName() {
+	o.OwnerName.Unset()
+}
+
+// GetAttachable returns the Attachable field value
+func (o *McpServerResponse) GetAttachable() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Attachable
+}
+
+// GetAttachableOk returns a tuple with the Attachable field value
+// and a boolean to check if the value has been set.
+func (o *McpServerResponse) GetAttachableOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Attachable, true
+}
+
+// SetAttachable sets field value
+func (o *McpServerResponse) SetAttachable(v bool) {
+	o.Attachable = v
+}
+
 func (o McpServerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -245,6 +388,14 @@ func (o McpServerResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["description"] = o.Description
 	toSerialize["url"] = o.Url
 	toSerialize["header_names"] = o.HeaderNames
+	toSerialize["scope"] = o.Scope
+	if o.OwnerUserSub.IsSet() {
+		toSerialize["owner_user_sub"] = o.OwnerUserSub.Get()
+	}
+	if o.OwnerName.IsSet() {
+		toSerialize["owner_name"] = o.OwnerName.Get()
+	}
+	toSerialize["attachable"] = o.Attachable
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -265,6 +416,8 @@ func (o *McpServerResponse) UnmarshalJSON(data []byte) (err error) {
 		"description",
 		"url",
 		"header_names",
+		"scope",
+		"attachable",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -301,6 +454,10 @@ func (o *McpServerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "url")
 		delete(additionalProperties, "header_names")
+		delete(additionalProperties, "scope")
+		delete(additionalProperties, "owner_user_sub")
+		delete(additionalProperties, "owner_name")
+		delete(additionalProperties, "attachable")
 		o.AdditionalProperties = additionalProperties
 	}
 

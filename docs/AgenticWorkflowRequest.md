@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **DockerFragment** | Pointer to **string** |  | [optional] [default to ""]
 **Enabled** | Pointer to **bool** |  | [optional] [default to true]
 **Mcp** | Pointer to **string** | Raw JSON blob describing the MCP servers configured for this workflow | [optional] [default to ""]
-**McpServerIds** | Pointer to **[]string** | Organization MCP servers used by this workflow | [optional] [default to []]
+**McpServerIds** | Pointer to **[]string** | MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving. | [optional] [default to []]
 **Outputs** | Pointer to [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | [optional] [default to []]
 **Model** | Pointer to [**AgenticWorkflowModelRequest**](AgenticWorkflowModelRequest.md) |  | [optional] 
 **ProjectRepositories** | Pointer to [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | [optional] [default to []]
