@@ -21113,6 +21113,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21129,6 +21137,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21149,6 +21165,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21165,6 +21189,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21199,6 +21231,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21215,6 +21255,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21235,6 +21283,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21251,6 +21307,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21290,6 +21354,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21306,6 +21378,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21326,6 +21406,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21342,6 +21430,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21376,6 +21472,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21392,6 +21496,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21412,6 +21524,14 @@ components:
               description: description
               fields:
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21428,6 +21548,14 @@ components:
                 key: key
                 required: true
               - defaultValue: defaultValue
+                templates:
+                - id: id
+                  label: label
+                  value: value
+                - id: id
+                  label: label
+                  value: value
+                format: kubernetes-resource-yaml
                 description: description
                 label: label
                 sensitive: true
@@ -21477,6 +21605,14 @@ components:
             description: description
             fields:
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21493,6 +21629,14 @@ components:
               key: key
               required: true
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21513,6 +21657,14 @@ components:
             description: description
             fields:
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21529,6 +21681,14 @@ components:
               key: key
               required: true
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21563,6 +21723,14 @@ components:
             description: description
             fields:
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21579,6 +21747,14 @@ components:
               key: key
               required: true
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21599,6 +21775,14 @@ components:
             description: description
             fields:
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21615,6 +21799,14 @@ components:
               key: key
               required: true
             - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
               description: description
               label: label
               sensitive: true
@@ -21681,6 +21873,14 @@ components:
           description: description
           fields:
           - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
             description: description
             label: label
             sensitive: true
@@ -21697,6 +21897,14 @@ components:
             key: key
             required: true
           - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
             description: description
             label: label
             sensitive: true
@@ -21717,6 +21925,14 @@ components:
           description: description
           fields:
           - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
             description: description
             label: label
             sensitive: true
@@ -21733,6 +21949,14 @@ components:
             key: key
             required: true
           - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
             description: description
             label: label
             sensitive: true
@@ -21819,6 +22043,14 @@ components:
         description: description
         fields:
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -21835,6 +22067,14 @@ components:
           key: key
           required: true
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22023,6 +22263,14 @@ components:
         \ array descriptors."
       example:
         defaultValue: defaultValue
+        templates:
+        - id: id
+          label: label
+          value: value
+        - id: id
+          label: label
+          value: value
+        format: kubernetes-resource-yaml
         description: description
         label: label
         sensitive: true
@@ -22062,6 +22310,21 @@ components:
           type: boolean
         constraints:
           $ref: '#/components/schemas/FieldSchemaConstraintsResponse'
+        format:
+          description: "Optional editor format for a string field, independent of\
+            \ its scalar type. kubernetes-resource-yaml selects a single Kubernetes\
+            \ YAML object editor. Unknown formats should fall back to the ordinary\
+            \ string editor."
+          example: kubernetes-resource-yaml
+          type: string
+        templates:
+          description: "Optional starting texts for an explicit user choice, with\
+            \ unique IDs within the field. Present only with format. Never apply as\
+            \ defaults or overwrite a saved value. The format selects the editor even\
+            \ when templates are absent."
+          items:
+            $ref: '#/components/schemas/FieldTemplateResponse'
+          type: array
       required:
       - constraints
       - key
@@ -22069,6 +22332,27 @@ components:
       - required
       - sensitive
       - type
+      type: object
+    FieldTemplateResponse:
+      description: "A catalog-owned starting text for a field editor, not an applied\
+        \ default."
+      example:
+        id: id
+        label: label
+        value: value
+      properties:
+        id:
+          minLength: 1
+          type: string
+        label:
+          minLength: 1
+          type: string
+        value:
+          type: string
+      required:
+      - id
+      - label
+      - value
       type: object
     FieldSchemaConstraintsResponse:
       description: Validation constraints attached to a catalog field descriptor.
@@ -22294,7 +22578,15 @@ components:
       example:
         requirements:
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
           scope: PLATFORM_PROFILE
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22312,7 +22604,15 @@ components:
           required: true
           status: MISSING
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
           scope: PLATFORM_PROFILE
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22346,6 +22646,14 @@ components:
         clusterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         fields:
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22362,6 +22670,14 @@ components:
           key: key
           required: true
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22414,7 +22730,15 @@ components:
       example:
         requirements:
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
           scope: PLATFORM_PROFILE
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22432,7 +22756,15 @@ components:
           required: true
           status: MISSING
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
           scope: PLATFORM_PROFILE
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22465,6 +22797,14 @@ components:
           message: message
         fields:
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22481,6 +22821,14 @@ components:
           key: key
           required: true
         - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
           description: description
           label: label
           sensitive: true
@@ -22540,7 +22888,15 @@ components:
         \ Input requirements cannot be object or array descriptors."
       example:
         defaultValue: defaultValue
+        templates:
+        - id: id
+          label: label
+          value: value
+        - id: id
+          label: label
+          value: value
         scope: PLATFORM_PROFILE
+        format: kubernetes-resource-yaml
         description: description
         label: label
         sensitive: true

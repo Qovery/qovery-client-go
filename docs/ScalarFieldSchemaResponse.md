@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Sensitive** | **bool** |  | 
 **Constraints** | [**FieldSchemaConstraintsResponse**](FieldSchemaConstraintsResponse.md) |  | 
+**Format** | Pointer to **string** | Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor. | [optional] 
+**Templates** | Pointer to [**[]FieldTemplateResponse**](FieldTemplateResponse.md) | Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent. | [optional] 
 
 ## Methods
 
@@ -221,6 +223,56 @@ and a boolean to check if the value has been set.
 
 SetConstraints sets Constraints field to given value.
 
+
+### GetFormat
+
+`func (o *ScalarFieldSchemaResponse) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *ScalarFieldSchemaResponse) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *ScalarFieldSchemaResponse) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *ScalarFieldSchemaResponse) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
+### GetTemplates
+
+`func (o *ScalarFieldSchemaResponse) GetTemplates() []FieldTemplateResponse`
+
+GetTemplates returns the Templates field if non-nil, zero value otherwise.
+
+### GetTemplatesOk
+
+`func (o *ScalarFieldSchemaResponse) GetTemplatesOk() (*[]FieldTemplateResponse, bool)`
+
+GetTemplatesOk returns a tuple with the Templates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplates
+
+`func (o *ScalarFieldSchemaResponse) SetTemplates(v []FieldTemplateResponse)`
+
+SetTemplates sets Templates field to given value.
+
+### HasTemplates
+
+`func (o *ScalarFieldSchemaResponse) HasTemplates() bool`
+
+HasTemplates returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -23,13 +23,17 @@ var _ MappedNullable = &ScalarFieldSchemaResponse{}
 type ScalarFieldSchemaResponse struct {
 	Key string `json:"key"`
 	// Field type understood by the Console.
-	Type                 string                         `json:"type"`
-	Required             bool                           `json:"required"`
-	DefaultValue         NullableString                 `json:"defaultValue,omitempty"`
-	Label                string                         `json:"label"`
-	Description          NullableString                 `json:"description,omitempty"`
-	Sensitive            bool                           `json:"sensitive"`
-	Constraints          FieldSchemaConstraintsResponse `json:"constraints"`
+	Type         string                         `json:"type"`
+	Required     bool                           `json:"required"`
+	DefaultValue NullableString                 `json:"defaultValue,omitempty"`
+	Label        string                         `json:"label"`
+	Description  NullableString                 `json:"description,omitempty"`
+	Sensitive    bool                           `json:"sensitive"`
+	Constraints  FieldSchemaConstraintsResponse `json:"constraints"`
+	// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
+	Format *string `json:"format,omitempty"`
+	// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
+	Templates            []FieldTemplateResponse `json:"templates,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -288,6 +292,70 @@ func (o *ScalarFieldSchemaResponse) SetConstraints(v FieldSchemaConstraintsRespo
 	o.Constraints = v
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *ScalarFieldSchemaResponse) GetFormat() string {
+	if o == nil || IsNil(o.Format) {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScalarFieldSchemaResponse) GetFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.Format) {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *ScalarFieldSchemaResponse) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *ScalarFieldSchemaResponse) SetFormat(v string) {
+	o.Format = &v
+}
+
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *ScalarFieldSchemaResponse) GetTemplates() []FieldTemplateResponse {
+	if o == nil || IsNil(o.Templates) {
+		var ret []FieldTemplateResponse
+		return ret
+	}
+	return o.Templates
+}
+
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScalarFieldSchemaResponse) GetTemplatesOk() ([]FieldTemplateResponse, bool) {
+	if o == nil || IsNil(o.Templates) {
+		return nil, false
+	}
+	return o.Templates, true
+}
+
+// HasTemplates returns a boolean if a field has been set.
+func (o *ScalarFieldSchemaResponse) HasTemplates() bool {
+	if o != nil && !IsNil(o.Templates) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplates gets a reference to the given []FieldTemplateResponse and assigns it to the Templates field.
+func (o *ScalarFieldSchemaResponse) SetTemplates(v []FieldTemplateResponse) {
+	o.Templates = v
+}
+
 func (o ScalarFieldSchemaResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -310,6 +378,12 @@ func (o ScalarFieldSchemaResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["sensitive"] = o.Sensitive
 	toSerialize["constraints"] = o.Constraints
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
+	}
+	if !IsNil(o.Templates) {
+		toSerialize["templates"] = o.Templates
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -366,6 +440,8 @@ func (o *ScalarFieldSchemaResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "sensitive")
 		delete(additionalProperties, "constraints")
+		delete(additionalProperties, "format")
+		delete(additionalProperties, "templates")
 		o.AdditionalProperties = additionalProperties
 	}
 

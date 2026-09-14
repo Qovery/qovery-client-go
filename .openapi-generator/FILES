@@ -593,6 +593,7 @@ docs/ExternalSecretAssociatedServiceResponse.md
 docs/ExternalSecretAssociatedServiceResponseList.md
 docs/FieldSchemaConstraintsResponse.md
 docs/FieldSchemaResponse.md
+docs/FieldTemplateResponse.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -1525,6 +1526,7 @@ model_external_secret_associated_service_response.go
 model_external_secret_associated_service_response_list.go
 model_field_schema_constraints_response.go
 model_field_schema_response.go
+model_field_template_response.go
 model_gcp_credentials_request.go
 model_gcp_json_credentials_auth_dto.go
 model_gcp_secret_manager_endpoint_dto.go

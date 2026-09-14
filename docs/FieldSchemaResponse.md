@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Sensitive** | **bool** |  | 
 **Constraints** | [**CollectionConstraintsResponse**](CollectionConstraintsResponse.md) |  | 
+**Format** | Pointer to **string** | Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor. | [optional] 
+**Templates** | Pointer to [**[]FieldTemplateResponse**](FieldTemplateResponse.md) | Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent. | [optional] 
 **Fields** | [**[]FieldSchemaResponse**](FieldSchemaResponse.md) | Nested field descriptors for this object&#39;s properties. | 
 **Items** | [**ArrayItemResponse**](ArrayItemResponse.md) |  | 
 **ItemFields** | Pointer to [**[][]FieldSchemaResponse**]([]FieldSchemaResponse.md) | Evaluated field descriptors for each object item, in the same order as the configuration array. Use these row-specific descriptors when available; items.fields describes an object&#39;s fields before per-item evaluation. Omitted when unavailable, including scalar arrays. An evaluated empty object array has an empty itemFields array. | [optional] 
@@ -224,6 +226,56 @@ and a boolean to check if the value has been set.
 
 SetConstraints sets Constraints field to given value.
 
+
+### GetFormat
+
+`func (o *FieldSchemaResponse) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *FieldSchemaResponse) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *FieldSchemaResponse) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *FieldSchemaResponse) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
+### GetTemplates
+
+`func (o *FieldSchemaResponse) GetTemplates() []FieldTemplateResponse`
+
+GetTemplates returns the Templates field if non-nil, zero value otherwise.
+
+### GetTemplatesOk
+
+`func (o *FieldSchemaResponse) GetTemplatesOk() (*[]FieldTemplateResponse, bool)`
+
+GetTemplatesOk returns a tuple with the Templates field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetTemplates
+
+`func (o *FieldSchemaResponse) SetTemplates(v []FieldTemplateResponse)`
+
+SetTemplates sets Templates field to given value.
+
+### HasTemplates
+
+`func (o *FieldSchemaResponse) HasTemplates() bool`
+
+HasTemplates returns a boolean if a field has been set.
 
 ### GetFields
 

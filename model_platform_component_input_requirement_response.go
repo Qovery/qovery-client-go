@@ -23,13 +23,17 @@ var _ MappedNullable = &PlatformComponentInputRequirementResponse{}
 type PlatformComponentInputRequirementResponse struct {
 	Key string `json:"key"`
 	// Field type understood by the Console.
-	Type                 string                                          `json:"type"`
-	Required             bool                                            `json:"required"`
-	DefaultValue         NullableString                                  `json:"defaultValue,omitempty"`
-	Label                string                                          `json:"label"`
-	Description          NullableString                                  `json:"description,omitempty"`
-	Sensitive            bool                                            `json:"sensitive"`
-	Constraints          FieldSchemaConstraintsResponse                  `json:"constraints"`
+	Type         string                         `json:"type"`
+	Required     bool                           `json:"required"`
+	DefaultValue NullableString                 `json:"defaultValue,omitempty"`
+	Label        string                         `json:"label"`
+	Description  NullableString                 `json:"description,omitempty"`
+	Sensitive    bool                           `json:"sensitive"`
+	Constraints  FieldSchemaConstraintsResponse `json:"constraints"`
+	// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
+	Format *string `json:"format,omitempty"`
+	// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
+	Templates            []FieldTemplateResponse                         `json:"templates,omitempty"`
 	Scope                PlatformComponentConfigurationInputScope        `json:"scope"`
 	Status               PlatformComponentConfigurationRequirementStatus `json:"status"`
 	AdditionalProperties map[string]interface{}
@@ -292,6 +296,70 @@ func (o *PlatformComponentInputRequirementResponse) SetConstraints(v FieldSchema
 	o.Constraints = v
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *PlatformComponentInputRequirementResponse) GetFormat() string {
+	if o == nil || IsNil(o.Format) {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlatformComponentInputRequirementResponse) GetFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.Format) {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *PlatformComponentInputRequirementResponse) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *PlatformComponentInputRequirementResponse) SetFormat(v string) {
+	o.Format = &v
+}
+
+// GetTemplates returns the Templates field value if set, zero value otherwise.
+func (o *PlatformComponentInputRequirementResponse) GetTemplates() []FieldTemplateResponse {
+	if o == nil || IsNil(o.Templates) {
+		var ret []FieldTemplateResponse
+		return ret
+	}
+	return o.Templates
+}
+
+// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlatformComponentInputRequirementResponse) GetTemplatesOk() ([]FieldTemplateResponse, bool) {
+	if o == nil || IsNil(o.Templates) {
+		return nil, false
+	}
+	return o.Templates, true
+}
+
+// HasTemplates returns a boolean if a field has been set.
+func (o *PlatformComponentInputRequirementResponse) HasTemplates() bool {
+	if o != nil && !IsNil(o.Templates) {
+		return true
+	}
+
+	return false
+}
+
+// SetTemplates gets a reference to the given []FieldTemplateResponse and assigns it to the Templates field.
+func (o *PlatformComponentInputRequirementResponse) SetTemplates(v []FieldTemplateResponse) {
+	o.Templates = v
+}
+
 // GetScope returns the Scope field value
 func (o *PlatformComponentInputRequirementResponse) GetScope() PlatformComponentConfigurationInputScope {
 	if o == nil {
@@ -362,6 +430,12 @@ func (o PlatformComponentInputRequirementResponse) ToMap() (map[string]interface
 	}
 	toSerialize["sensitive"] = o.Sensitive
 	toSerialize["constraints"] = o.Constraints
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
+	}
+	if !IsNil(o.Templates) {
+		toSerialize["templates"] = o.Templates
+	}
 	toSerialize["scope"] = o.Scope
 	toSerialize["status"] = o.Status
 
@@ -422,6 +496,8 @@ func (o *PlatformComponentInputRequirementResponse) UnmarshalJSON(data []byte) (
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "sensitive")
 		delete(additionalProperties, "constraints")
+		delete(additionalProperties, "format")
+		delete(additionalProperties, "templates")
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
