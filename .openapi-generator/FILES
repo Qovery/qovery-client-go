@@ -204,6 +204,8 @@ docs/ArgocdAssociatedServiceType.md
 docs/ArgocdAssociatedServicesResponse.md
 docs/ArgocdAssociatedServicesResponseList.md
 docs/ArgocdManagedResource.md
+docs/ArrayFieldSchemaResponse.md
+docs/ArrayItemResponse.md
 docs/AttachServiceToDeploymentStageRequest.md
 docs/AutomaticallyConfiguredAuthDto.md
 docs/AutoscalingMode.md
@@ -403,6 +405,7 @@ docs/ClusterStateEnum.md
 docs/ClusterStatus.md
 docs/ClusterStatusResponseList.md
 docs/ClustersAPI.md
+docs/CollectionConstraintsResponse.md
 docs/Commit.md
 docs/CommitResponseList.md
 docs/CompanySizeEnum.md
@@ -801,6 +804,8 @@ docs/MembersAPI.md
 docs/MetricsConfigurationManagedByQovery.md
 docs/MetricsParameters.md
 docs/MetricsParametersConfiguration.md
+docs/ObjectArrayItemResponse.md
+docs/ObjectFieldSchemaResponse.md
 docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
@@ -956,6 +961,8 @@ docs/Route53DnsProviderResponse.md
 docs/Route53DnsProviderResponseCredentials.md
 docs/Route53StaticCredentialsRequest.md
 docs/Route53StaticCredentialsResponse.md
+docs/ScalarArrayItemResponse.md
+docs/ScalarFieldSchemaResponse.md
 docs/ScalewayClusterCredentials.md
 docs/ScalewayCredentialsRequest.md
 docs/Secret.md
@@ -1166,6 +1173,8 @@ model_argocd_associated_service_type.go
 model_argocd_associated_services_response.go
 model_argocd_associated_services_response_list.go
 model_argocd_managed_resource.go
+model_array_field_schema_response.go
+model_array_item_response.go
 model_attach_service_to_deployment_stage_request.go
 model_automatically_configured_auth_dto.go
 model_autoscaling_mode.go
@@ -1356,6 +1365,7 @@ model_cluster_routing_table_results_inner.go
 model_cluster_state_enum.go
 model_cluster_status.go
 model_cluster_status_response_list.go
+model_collection_constraints_response.go
 model_commit.go
 model_commit_response_list.go
 model_company_size_enum.go
@@ -1704,6 +1714,8 @@ model_member_role_update_request.go
 model_metrics_configuration_managed_by_qovery.go
 model_metrics_parameters.go
 model_metrics_parameters_configuration.go
+model_object_array_item_response.go
+model_object_field_schema_response.go
 model_observability_resource_profile.go
 model_on_premise_credentials_request.go
 model_organization.go
@@ -1841,6 +1853,8 @@ model_route53_dns_provider_response.go
 model_route53_dns_provider_response_credentials.go
 model_route53_static_credentials_request.go
 model_route53_static_credentials_response.go
+model_scalar_array_item_response.go
+model_scalar_field_schema_response.go
 model_scaleway_cluster_credentials.go
 model_scaleway_credentials_request.go
 model_secret.go

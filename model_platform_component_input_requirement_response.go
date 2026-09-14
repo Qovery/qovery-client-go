@@ -19,7 +19,7 @@ import (
 // checks if the PlatformComponentInputRequirementResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PlatformComponentInputRequirementResponse{}
 
-// PlatformComponentInputRequirementResponse A catalog field the cluster must provide for the selected configuration: the shared field descriptor extended with its resolution scope and readiness.
+// PlatformComponentInputRequirementResponse A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors.
 type PlatformComponentInputRequirementResponse struct {
 	Key string `json:"key"`
 	// Field type understood by the Console.

@@ -16,360 +16,179 @@ import (
 	"fmt"
 )
 
-// checks if the FieldSchemaResponse type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &FieldSchemaResponse{}
-
-// FieldSchemaResponse Canonical platform catalog field descriptor. Mirrors the q-core `FieldSchemaResponse` DTO.
+// FieldSchemaResponse - Generic catalog field descriptor matching the shared q-core field response. Scalar fields retain their existing shape; objects and arrays describe nested configuration without flattening its values. Blueprint keeps its existing BlueprintManifestVariableField response contract through a dedicated adapter.
 type FieldSchemaResponse struct {
-	Key string `json:"key"`
-	// Field type understood by the Console.
-	Type                 string                         `json:"type"`
-	Required             bool                           `json:"required"`
-	DefaultValue         NullableString                 `json:"defaultValue,omitempty"`
-	Label                string                         `json:"label"`
-	Description          NullableString                 `json:"description,omitempty"`
-	Sensitive            bool                           `json:"sensitive"`
-	Constraints          FieldSchemaConstraintsResponse `json:"constraints"`
-	AdditionalProperties map[string]interface{}
+	ArrayFieldSchemaResponse  *ArrayFieldSchemaResponse
+	ObjectFieldSchemaResponse *ObjectFieldSchemaResponse
+	ScalarFieldSchemaResponse *ScalarFieldSchemaResponse
 }
 
-type _FieldSchemaResponse FieldSchemaResponse
-
-// NewFieldSchemaResponse instantiates a new FieldSchemaResponse object
-// This constructor will assign default values to properties that have it defined,
-// and makes sure properties required by API are set, but the set of arguments
-// will change when the set of required properties is changed
-func NewFieldSchemaResponse(key string, type_ string, required bool, label string, sensitive bool, constraints FieldSchemaConstraintsResponse) *FieldSchemaResponse {
-	this := FieldSchemaResponse{}
-	this.Key = key
-	this.Type = type_
-	this.Required = required
-	this.Label = label
-	this.Sensitive = sensitive
-	this.Constraints = constraints
-	return &this
-}
-
-// NewFieldSchemaResponseWithDefaults instantiates a new FieldSchemaResponse object
-// This constructor will only assign default values to properties that have it defined,
-// but it doesn't guarantee that properties required by API are set
-func NewFieldSchemaResponseWithDefaults() *FieldSchemaResponse {
-	this := FieldSchemaResponse{}
-	return &this
-}
-
-// GetKey returns the Key field value
-func (o *FieldSchemaResponse) GetKey() string {
-	if o == nil {
-		var ret string
-		return ret
+// ArrayFieldSchemaResponseAsFieldSchemaResponse is a convenience function that returns ArrayFieldSchemaResponse wrapped in FieldSchemaResponse
+func ArrayFieldSchemaResponseAsFieldSchemaResponse(v *ArrayFieldSchemaResponse) FieldSchemaResponse {
+	return FieldSchemaResponse{
+		ArrayFieldSchemaResponse: v,
 	}
-
-	return o.Key
 }
 
-// GetKeyOk returns a tuple with the Key field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetKeyOk() (*string, bool) {
-	if o == nil {
-		return nil, false
+// ObjectFieldSchemaResponseAsFieldSchemaResponse is a convenience function that returns ObjectFieldSchemaResponse wrapped in FieldSchemaResponse
+func ObjectFieldSchemaResponseAsFieldSchemaResponse(v *ObjectFieldSchemaResponse) FieldSchemaResponse {
+	return FieldSchemaResponse{
+		ObjectFieldSchemaResponse: v,
 	}
-	return &o.Key, true
 }
 
-// SetKey sets field value
-func (o *FieldSchemaResponse) SetKey(v string) {
-	o.Key = v
-}
-
-// GetType returns the Type field value
-func (o *FieldSchemaResponse) GetType() string {
-	if o == nil {
-		var ret string
-		return ret
+// ScalarFieldSchemaResponseAsFieldSchemaResponse is a convenience function that returns ScalarFieldSchemaResponse wrapped in FieldSchemaResponse
+func ScalarFieldSchemaResponseAsFieldSchemaResponse(v *ScalarFieldSchemaResponse) FieldSchemaResponse {
+	return FieldSchemaResponse{
+		ScalarFieldSchemaResponse: v,
 	}
-
-	return o.Type
 }
 
-// GetTypeOk returns a tuple with the Type field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetTypeOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Type, true
-}
-
-// SetType sets field value
-func (o *FieldSchemaResponse) SetType(v string) {
-	o.Type = v
-}
-
-// GetRequired returns the Required field value
-func (o *FieldSchemaResponse) GetRequired() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Required
-}
-
-// GetRequiredOk returns a tuple with the Required field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetRequiredOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Required, true
-}
-
-// SetRequired sets field value
-func (o *FieldSchemaResponse) SetRequired(v bool) {
-	o.Required = v
-}
-
-// GetDefaultValue returns the DefaultValue field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FieldSchemaResponse) GetDefaultValue() string {
-	if o == nil || IsNil(o.DefaultValue.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultValue.Get()
-}
-
-// GetDefaultValueOk returns a tuple with the DefaultValue field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FieldSchemaResponse) GetDefaultValueOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DefaultValue.Get(), o.DefaultValue.IsSet()
-}
-
-// HasDefaultValue returns a boolean if a field has been set.
-func (o *FieldSchemaResponse) HasDefaultValue() bool {
-	if o != nil && o.DefaultValue.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultValue gets a reference to the given NullableString and assigns it to the DefaultValue field.
-func (o *FieldSchemaResponse) SetDefaultValue(v string) {
-	o.DefaultValue.Set(&v)
-}
-
-// SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
-func (o *FieldSchemaResponse) SetDefaultValueNil() {
-	o.DefaultValue.Set(nil)
-}
-
-// UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
-func (o *FieldSchemaResponse) UnsetDefaultValue() {
-	o.DefaultValue.Unset()
-}
-
-// GetLabel returns the Label field value
-func (o *FieldSchemaResponse) GetLabel() string {
-	if o == nil {
-		var ret string
-		return ret
-	}
-
-	return o.Label
-}
-
-// GetLabelOk returns a tuple with the Label field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetLabelOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Label, true
-}
-
-// SetLabel sets field value
-func (o *FieldSchemaResponse) SetLabel(v string) {
-	o.Label = v
-}
-
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *FieldSchemaResponse) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *FieldSchemaResponse) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *FieldSchemaResponse) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *FieldSchemaResponse) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *FieldSchemaResponse) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *FieldSchemaResponse) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetSensitive returns the Sensitive field value
-func (o *FieldSchemaResponse) GetSensitive() bool {
-	if o == nil {
-		var ret bool
-		return ret
-	}
-
-	return o.Sensitive
-}
-
-// GetSensitiveOk returns a tuple with the Sensitive field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetSensitiveOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Sensitive, true
-}
-
-// SetSensitive sets field value
-func (o *FieldSchemaResponse) SetSensitive(v bool) {
-	o.Sensitive = v
-}
-
-// GetConstraints returns the Constraints field value
-func (o *FieldSchemaResponse) GetConstraints() FieldSchemaConstraintsResponse {
-	if o == nil {
-		var ret FieldSchemaConstraintsResponse
-		return ret
-	}
-
-	return o.Constraints
-}
-
-// GetConstraintsOk returns a tuple with the Constraints field value
-// and a boolean to check if the value has been set.
-func (o *FieldSchemaResponse) GetConstraintsOk() (*FieldSchemaConstraintsResponse, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Constraints, true
-}
-
-// SetConstraints sets field value
-func (o *FieldSchemaResponse) SetConstraints(v FieldSchemaConstraintsResponse) {
-	o.Constraints = v
-}
-
-func (o FieldSchemaResponse) MarshalJSON() ([]byte, error) {
-	toSerialize, err := o.ToMap()
+// Unmarshal JSON data into one of the pointers in the struct
+func (dst *FieldSchemaResponse) UnmarshalJSON(data []byte) error {
+	var err error
+	// use discriminator value to speed up the lookup
+	var jsonDict map[string]interface{}
+	err = newStrictDecoder(data).Decode(&jsonDict)
 	if err != nil {
-		return []byte{}, err
-	}
-	return json.Marshal(toSerialize)
-}
-
-func (o FieldSchemaResponse) ToMap() (map[string]interface{}, error) {
-	toSerialize := map[string]interface{}{}
-	toSerialize["key"] = o.Key
-	toSerialize["type"] = o.Type
-	toSerialize["required"] = o.Required
-	if o.DefaultValue.IsSet() {
-		toSerialize["defaultValue"] = o.DefaultValue.Get()
-	}
-	toSerialize["label"] = o.Label
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	toSerialize["sensitive"] = o.Sensitive
-	toSerialize["constraints"] = o.Constraints
-
-	for key, value := range o.AdditionalProperties {
-		toSerialize[key] = value
+		return fmt.Errorf("failed to unmarshal JSON into map for the discriminator lookup")
 	}
 
-	return toSerialize, nil
-}
-
-func (o *FieldSchemaResponse) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"key",
-		"type",
-		"required",
-		"label",
-		"sensitive",
-		"constraints",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
+	// check if the discriminator value is 'array'
+	if jsonDict["type"] == "array" {
+		// try to unmarshal JSON data into ArrayFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ArrayFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ArrayFieldSchemaResponse, return on the first match
+		} else {
+			dst.ArrayFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ArrayFieldSchemaResponse: %s", err.Error())
 		}
 	}
 
-	varFieldSchemaResponse := _FieldSchemaResponse{}
-
-	err = json.Unmarshal(data, &varFieldSchemaResponse)
-
-	if err != nil {
-		return err
+	// check if the discriminator value is 'bool'
+	if jsonDict["type"] == "bool" {
+		// try to unmarshal JSON data into ScalarFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ScalarFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ScalarFieldSchemaResponse, return on the first match
+		} else {
+			dst.ScalarFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ScalarFieldSchemaResponse: %s", err.Error())
+		}
 	}
 
-	*o = FieldSchemaResponse(varFieldSchemaResponse)
-
-	additionalProperties := make(map[string]interface{})
-
-	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "key")
-		delete(additionalProperties, "type")
-		delete(additionalProperties, "required")
-		delete(additionalProperties, "defaultValue")
-		delete(additionalProperties, "label")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "sensitive")
-		delete(additionalProperties, "constraints")
-		o.AdditionalProperties = additionalProperties
+	// check if the discriminator value is 'number'
+	if jsonDict["type"] == "number" {
+		// try to unmarshal JSON data into ScalarFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ScalarFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ScalarFieldSchemaResponse, return on the first match
+		} else {
+			dst.ScalarFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ScalarFieldSchemaResponse: %s", err.Error())
+		}
 	}
 
-	return err
+	// check if the discriminator value is 'object'
+	if jsonDict["type"] == "object" {
+		// try to unmarshal JSON data into ObjectFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ObjectFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ObjectFieldSchemaResponse, return on the first match
+		} else {
+			dst.ObjectFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ObjectFieldSchemaResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'string'
+	if jsonDict["type"] == "string" {
+		// try to unmarshal JSON data into ScalarFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ScalarFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ScalarFieldSchemaResponse, return on the first match
+		} else {
+			dst.ScalarFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ScalarFieldSchemaResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ArrayFieldSchemaResponse'
+	if jsonDict["type"] == "ArrayFieldSchemaResponse" {
+		// try to unmarshal JSON data into ArrayFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ArrayFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ArrayFieldSchemaResponse, return on the first match
+		} else {
+			dst.ArrayFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ArrayFieldSchemaResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ObjectFieldSchemaResponse'
+	if jsonDict["type"] == "ObjectFieldSchemaResponse" {
+		// try to unmarshal JSON data into ObjectFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ObjectFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ObjectFieldSchemaResponse, return on the first match
+		} else {
+			dst.ObjectFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ObjectFieldSchemaResponse: %s", err.Error())
+		}
+	}
+
+	// check if the discriminator value is 'ScalarFieldSchemaResponse'
+	if jsonDict["type"] == "ScalarFieldSchemaResponse" {
+		// try to unmarshal JSON data into ScalarFieldSchemaResponse
+		err = json.Unmarshal(data, &dst.ScalarFieldSchemaResponse)
+		if err == nil {
+			return nil // data stored in dst.ScalarFieldSchemaResponse, return on the first match
+		} else {
+			dst.ScalarFieldSchemaResponse = nil
+			return fmt.Errorf("failed to unmarshal FieldSchemaResponse as ScalarFieldSchemaResponse: %s", err.Error())
+		}
+	}
+
+	return nil
+}
+
+// Marshal data from the first non-nil pointers in the struct to JSON
+func (src FieldSchemaResponse) MarshalJSON() ([]byte, error) {
+	if src.ArrayFieldSchemaResponse != nil {
+		return json.Marshal(&src.ArrayFieldSchemaResponse)
+	}
+
+	if src.ObjectFieldSchemaResponse != nil {
+		return json.Marshal(&src.ObjectFieldSchemaResponse)
+	}
+
+	if src.ScalarFieldSchemaResponse != nil {
+		return json.Marshal(&src.ScalarFieldSchemaResponse)
+	}
+
+	return nil, nil // no data in oneOf schemas
+}
+
+// Get the actual instance
+func (obj *FieldSchemaResponse) GetActualInstance() interface{} {
+	if obj == nil {
+		return nil
+	}
+	if obj.ArrayFieldSchemaResponse != nil {
+		return obj.ArrayFieldSchemaResponse
+	}
+
+	if obj.ObjectFieldSchemaResponse != nil {
+		return obj.ObjectFieldSchemaResponse
+	}
+
+	if obj.ScalarFieldSchemaResponse != nil {
+		return obj.ScalarFieldSchemaResponse
+	}
+
+	// all schemas are nil
+	return nil
 }
 
 type NullableFieldSchemaResponse struct {
