@@ -25,6 +25,7 @@ tags:
 - name: Alert Rules
 - name: Admin
 - name: ArgoCD
+- name: Agentic Workflows
 - name: Application
 - name: Application Actions
 - name: Application Configuration
@@ -18973,6 +18974,42 @@ paths:
       summary: Cancel agentic workflow deployment
       tags:
       - Agentic Workflows
+  /agenticWorkflow/{agenticWorkflowId}/deploy:
+    post:
+      description: "Deploy the agentic workflow service so its configuration can be\
+        \ tested. Routine runs of the workflow are triggered by its webhook or its\
+        \ schedule, not by this endpoint."
+      operationId: deployAgenticWorkflow
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+          description: Deploy agentic workflow
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: The deployment request could not be queued because of a concurrent
+            modification of the environment deployment
+      summary: Deploy an agentic workflow
+      tags:
+      - Agentic Workflows
   /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2:
     get:
       description: Returns the 20 last agentic workflow deployments
@@ -32134,6 +32171,9 @@ components:
         databases:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        agentic_workflows:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraforms:
         - git_commit_id: git_commit_id
           action: PLAN
@@ -32192,6 +32232,11 @@ components:
         terraforms:
           items:
             $ref: '#/components/schemas/TerraformDeployRequest'
+          type: array
+        agentic_workflows:
+          items:
+            format: uuid
+            type: string
           type: array
       type: object
     DeployRequest:
@@ -52348,6 +52393,7 @@ x-tagGroups:
   - Jobs
   - Helms
   - Terraforms
+  - Agentic Workflows
   - Environment Actions
   - Environment Logs
   - Environment Deployment History

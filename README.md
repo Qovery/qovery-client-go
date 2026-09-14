@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *AgenticWorkflowsAPI* | [**CancelAgenticWorkflowDeployment**](docs/AgenticWorkflowsAPI.md#cancelagenticworkflowdeployment) | **Post** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 *AgenticWorkflowsAPI* | [**CreateAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#createagenticworkflow) | **Post** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 *AgenticWorkflowsAPI* | [**DeleteAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#deleteagenticworkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
+*AgenticWorkflowsAPI* | [**DeployAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#deployagenticworkflow) | **Post** /agenticWorkflow/{agenticWorkflowId}/deploy | Deploy an agentic workflow
 *AgenticWorkflowsAPI* | [**EditAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#editagenticworkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 *AgenticWorkflowsAPI* | [**GetAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#getagenticworkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 *AgenticWorkflowsAPI* | [**ListAgenticWorkflowDeploymentHistoryV2**](docs/AgenticWorkflowsAPI.md#listagenticworkflowdeploymenthistoryv2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments

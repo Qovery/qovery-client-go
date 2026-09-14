@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **Jobs** | Pointer to [**[]DeployAllRequestJobsInner**](DeployAllRequestJobsInner.md) |  | [optional] 
 **Helms** | Pointer to [**[]DeployAllRequestHelmsInner**](DeployAllRequestHelmsInner.md) |  | [optional] 
 **Terraforms** | Pointer to [**[]TerraformDeployRequest**](TerraformDeployRequest.md) |  | [optional] 
+**AgenticWorkflows** | Pointer to **[]string** |  | [optional] 
 
 ## Methods
 
@@ -179,6 +180,31 @@ SetTerraforms sets Terraforms field to given value.
 `func (o *DeployAllRequest) HasTerraforms() bool`
 
 HasTerraforms returns a boolean if a field has been set.
+
+### GetAgenticWorkflows
+
+`func (o *DeployAllRequest) GetAgenticWorkflows() []string`
+
+GetAgenticWorkflows returns the AgenticWorkflows field if non-nil, zero value otherwise.
+
+### GetAgenticWorkflowsOk
+
+`func (o *DeployAllRequest) GetAgenticWorkflowsOk() (*[]string, bool)`
+
+GetAgenticWorkflowsOk returns a tuple with the AgenticWorkflows field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAgenticWorkflows
+
+`func (o *DeployAllRequest) SetAgenticWorkflows(v []string)`
+
+SetAgenticWorkflows sets AgenticWorkflows field to given value.
+
+### HasAgenticWorkflows
+
+`func (o *DeployAllRequest) HasAgenticWorkflows() bool`
+
+HasAgenticWorkflows returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

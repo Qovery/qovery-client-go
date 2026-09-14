@@ -26,6 +26,7 @@ type DeployAllRequest struct {
 	Jobs                 []DeployAllRequestJobsInner         `json:"jobs,omitempty"`
 	Helms                []DeployAllRequestHelmsInner        `json:"helms,omitempty"`
 	Terraforms           []TerraformDeployRequest            `json:"terraforms,omitempty"`
+	AgenticWorkflows     []string                            `json:"agentic_workflows,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -240,6 +241,38 @@ func (o *DeployAllRequest) SetTerraforms(v []TerraformDeployRequest) {
 	o.Terraforms = v
 }
 
+// GetAgenticWorkflows returns the AgenticWorkflows field value if set, zero value otherwise.
+func (o *DeployAllRequest) GetAgenticWorkflows() []string {
+	if o == nil || IsNil(o.AgenticWorkflows) {
+		var ret []string
+		return ret
+	}
+	return o.AgenticWorkflows
+}
+
+// GetAgenticWorkflowsOk returns a tuple with the AgenticWorkflows field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequest) GetAgenticWorkflowsOk() ([]string, bool) {
+	if o == nil || IsNil(o.AgenticWorkflows) {
+		return nil, false
+	}
+	return o.AgenticWorkflows, true
+}
+
+// HasAgenticWorkflows returns a boolean if a field has been set.
+func (o *DeployAllRequest) HasAgenticWorkflows() bool {
+	if o != nil && !IsNil(o.AgenticWorkflows) {
+		return true
+	}
+
+	return false
+}
+
+// SetAgenticWorkflows gets a reference to the given []string and assigns it to the AgenticWorkflows field.
+func (o *DeployAllRequest) SetAgenticWorkflows(v []string) {
+	o.AgenticWorkflows = v
+}
+
 func (o DeployAllRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -267,6 +300,9 @@ func (o DeployAllRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Terraforms) {
 		toSerialize["terraforms"] = o.Terraforms
+	}
+	if !IsNil(o.AgenticWorkflows) {
+		toSerialize["agentic_workflows"] = o.AgenticWorkflows
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -296,6 +332,7 @@ func (o *DeployAllRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "jobs")
 		delete(additionalProperties, "helms")
 		delete(additionalProperties, "terraforms")
+		delete(additionalProperties, "agentic_workflows")
 		o.AdditionalProperties = additionalProperties
 	}
 

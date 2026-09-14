@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**CancelAgenticWorkflowDeployment**](AgenticWorkflowsAPI.md#CancelAgenticWorkflowDeployment) | **Post** /agenticWorkflow/{agenticWorkflowId}/cancelDeployment | Cancel agentic workflow deployment
 [**CreateAgenticWorkflow**](AgenticWorkflowsAPI.md#CreateAgenticWorkflow) | **Post** /environment/{environmentId}/agenticWorkflow | Create an agentic workflow
 [**DeleteAgenticWorkflow**](AgenticWorkflowsAPI.md#DeleteAgenticWorkflow) | **Delete** /agenticWorkflow/{agenticWorkflowId} | Delete an agentic workflow
+[**DeployAgenticWorkflow**](AgenticWorkflowsAPI.md#DeployAgenticWorkflow) | **Post** /agenticWorkflow/{agenticWorkflowId}/deploy | Deploy an agentic workflow
 [**EditAgenticWorkflow**](AgenticWorkflowsAPI.md#EditAgenticWorkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**GetAgenticWorkflow**](AgenticWorkflowsAPI.md#GetAgenticWorkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 [**ListAgenticWorkflowDeploymentHistoryV2**](AgenticWorkflowsAPI.md#ListAgenticWorkflowDeploymentHistoryV2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
@@ -200,6 +201,76 @@ Name | Type | Description  | Notes
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiDeleteAgenticWorkflowRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Status**](Status.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## DeployAgenticWorkflow
+
+> Status DeployAgenticWorkflow(ctx, agenticWorkflowId).Execute()
+
+Deploy an agentic workflow
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	agenticWorkflowId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgenticWorkflowsAPI.DeployAgenticWorkflow(context.Background(), agenticWorkflowId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgenticWorkflowsAPI.DeployAgenticWorkflow``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `DeployAgenticWorkflow`: Status
+	fmt.Fprintf(os.Stdout, "Response from `AgenticWorkflowsAPI.DeployAgenticWorkflow`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**agenticWorkflowId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiDeployAgenticWorkflowRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
