@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Kind** | [**PlatformTemplateComponentKind**](PlatformTemplateComponentKind.md) |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Fields** | [**[]FieldSchemaResponse**](FieldSchemaResponse.md) |  | 
+**ConfigurationSections** | Pointer to [**[]PlatformConfigurationSectionResponse**](PlatformConfigurationSectionResponse.md) | Additional configuration sections displayed under this component. Its own configuration and cluster inputs remain available. Omitted or empty keeps the existing editor behavior; fields always remain declared on their owner. | [optional] 
 
 ## Methods
 
@@ -122,6 +123,31 @@ and a boolean to check if the value has been set.
 
 SetFields sets Fields field to given value.
 
+
+### GetConfigurationSections
+
+`func (o *PlatformTemplateComponentResponse) GetConfigurationSections() []PlatformConfigurationSectionResponse`
+
+GetConfigurationSections returns the ConfigurationSections field if non-nil, zero value otherwise.
+
+### GetConfigurationSectionsOk
+
+`func (o *PlatformTemplateComponentResponse) GetConfigurationSectionsOk() (*[]PlatformConfigurationSectionResponse, bool)`
+
+GetConfigurationSectionsOk returns a tuple with the ConfigurationSections field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetConfigurationSections
+
+`func (o *PlatformTemplateComponentResponse) SetConfigurationSections(v []PlatformConfigurationSectionResponse)`
+
+SetConfigurationSections sets ConfigurationSections field to given value.
+
+### HasConfigurationSections
+
+`func (o *PlatformTemplateComponentResponse) HasConfigurationSections() bool`
+
+HasConfigurationSections returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

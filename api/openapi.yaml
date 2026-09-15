@@ -21162,6 +21162,15 @@ components:
             - componentKeys
             components:
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21214,6 +21223,15 @@ components:
                 required: true
               key: key
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21280,6 +21298,15 @@ components:
             - componentKeys
             components:
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21332,6 +21359,15 @@ components:
                 required: true
               key: key
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21403,6 +21439,15 @@ components:
             - componentKeys
             components:
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21455,6 +21500,15 @@ components:
                 required: true
               key: key
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21521,6 +21575,15 @@ components:
             - componentKeys
             components:
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21573,6 +21636,15 @@ components:
                 required: true
               key: key
             - kind: HELM
+              configurationSections:
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
+              - fieldKeys:
+                - fieldKeys
+                - fieldKeys
+                sourceComponentKey: sourceComponentKey
               description: description
               fields:
               - defaultValue: defaultValue
@@ -21654,6 +21726,15 @@ components:
           - componentKeys
           components:
           - kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
             description: description
             fields:
             - defaultValue: defaultValue
@@ -21706,6 +21787,15 @@ components:
               required: true
             key: key
           - kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
             description: description
             fields:
             - defaultValue: defaultValue
@@ -21772,6 +21862,15 @@ components:
           - componentKeys
           components:
           - kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
             description: description
             fields:
             - defaultValue: defaultValue
@@ -21824,6 +21923,15 @@ components:
               required: true
             key: key
           - kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
             description: description
             fields:
             - defaultValue: defaultValue
@@ -21922,6 +22030,15 @@ components:
         - componentKeys
         components:
         - kind: HELM
+          configurationSections:
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
           description: description
           fields:
           - defaultValue: defaultValue
@@ -21974,6 +22091,15 @@ components:
             required: true
           key: key
         - kind: HELM
+          configurationSections:
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
           description: description
           fields:
           - defaultValue: defaultValue
@@ -22092,6 +22218,15 @@ components:
     PlatformTemplateComponentResponse:
       example:
         kind: HELM
+        configurationSections:
+        - fieldKeys:
+          - fieldKeys
+          - fieldKeys
+          sourceComponentKey: sourceComponentKey
+        - fieldKeys:
+          - fieldKeys
+          - fieldKeys
+          sourceComponentKey: sourceComponentKey
         description: description
         fields:
         - defaultValue: defaultValue
@@ -22155,10 +22290,44 @@ components:
           items:
             $ref: '#/components/schemas/FieldSchemaResponse'
           type: array
+        configurationSections:
+          description: Additional configuration sections displayed under this component.
+            Its own configuration and cluster inputs remain available. Omitted or
+            empty keeps the existing editor behavior; fields always remain declared
+            on their owner.
+          items:
+            $ref: '#/components/schemas/PlatformConfigurationSectionResponse'
+          type: array
       required:
       - fields
       - key
       - kind
+      type: object
+    PlatformConfigurationSectionResponse:
+      description: "Displays selected top-level fields of another component in the\
+        \ same layer. The source component remains the resolver, configuration binding\
+        \ and deployment owner. This declaration does not move data or change Helm\
+        \ releases."
+      example:
+        fieldKeys:
+        - fieldKeys
+        - fieldKeys
+        sourceComponentKey: sourceComponentKey
+      properties:
+        sourceComponentKey:
+          description: Component key to use for resolve requests and stored configuration.
+          type: string
+        fieldKeys:
+          description: Unique top-level source fields displayed here instead of in
+            the source component editor.
+          items:
+            minLength: 1
+            type: string
+          minItems: 1
+          type: array
+      required:
+      - fieldKeys
+      - sourceComponentKey
       type: object
     PlatformTemplateComponentKind:
       enum:

@@ -21,11 +21,13 @@ var _ MappedNullable = &PlatformTemplateComponentResponse{}
 
 // PlatformTemplateComponentResponse struct for PlatformTemplateComponentResponse
 type PlatformTemplateComponentResponse struct {
-	Key                  string                        `json:"key"`
-	Kind                 PlatformTemplateComponentKind `json:"kind"`
-	Description          NullableString                `json:"description,omitempty"`
-	Fields               []FieldSchemaResponse         `json:"fields"`
-	AdditionalProperties map[string]interface{}
+	Key         string                        `json:"key"`
+	Kind        PlatformTemplateComponentKind `json:"kind"`
+	Description NullableString                `json:"description,omitempty"`
+	Fields      []FieldSchemaResponse         `json:"fields"`
+	// Additional configuration sections displayed under this component. Its own configuration and cluster inputs remain available. Omitted or empty keeps the existing editor behavior; fields always remain declared on their owner.
+	ConfigurationSections []PlatformConfigurationSectionResponse `json:"configurationSections,omitempty"`
+	AdditionalProperties  map[string]interface{}
 }
 
 type _PlatformTemplateComponentResponse PlatformTemplateComponentResponse
@@ -165,6 +167,38 @@ func (o *PlatformTemplateComponentResponse) SetFields(v []FieldSchemaResponse) {
 	o.Fields = v
 }
 
+// GetConfigurationSections returns the ConfigurationSections field value if set, zero value otherwise.
+func (o *PlatformTemplateComponentResponse) GetConfigurationSections() []PlatformConfigurationSectionResponse {
+	if o == nil || IsNil(o.ConfigurationSections) {
+		var ret []PlatformConfigurationSectionResponse
+		return ret
+	}
+	return o.ConfigurationSections
+}
+
+// GetConfigurationSectionsOk returns a tuple with the ConfigurationSections field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlatformTemplateComponentResponse) GetConfigurationSectionsOk() ([]PlatformConfigurationSectionResponse, bool) {
+	if o == nil || IsNil(o.ConfigurationSections) {
+		return nil, false
+	}
+	return o.ConfigurationSections, true
+}
+
+// HasConfigurationSections returns a boolean if a field has been set.
+func (o *PlatformTemplateComponentResponse) HasConfigurationSections() bool {
+	if o != nil && !IsNil(o.ConfigurationSections) {
+		return true
+	}
+
+	return false
+}
+
+// SetConfigurationSections gets a reference to the given []PlatformConfigurationSectionResponse and assigns it to the ConfigurationSections field.
+func (o *PlatformTemplateComponentResponse) SetConfigurationSections(v []PlatformConfigurationSectionResponse) {
+	o.ConfigurationSections = v
+}
+
 func (o PlatformTemplateComponentResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -181,6 +215,9 @@ func (o PlatformTemplateComponentResponse) ToMap() (map[string]interface{}, erro
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["fields"] = o.Fields
+	if !IsNil(o.ConfigurationSections) {
+		toSerialize["configurationSections"] = o.ConfigurationSections
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -230,6 +267,7 @@ func (o *PlatformTemplateComponentResponse) UnmarshalJSON(data []byte) (err erro
 		delete(additionalProperties, "kind")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "fields")
+		delete(additionalProperties, "configurationSections")
 		o.AdditionalProperties = additionalProperties
 	}
 
