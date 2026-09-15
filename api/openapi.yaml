@@ -87,6 +87,7 @@ tags:
 - name: Platform Configuration
 - name: Custom Domain
 - name: Container Custom Domain
+- name: LLM Providers
 - name: MCP Servers
 - name: Database
 - name: Database Actions
@@ -7041,6 +7042,175 @@ paths:
       summary: Edit an MCP server
       tags:
       - MCP Servers
+  /organization/{organizationId}/llmProvider:
+    get:
+      description: List the LLM providers configured for an organization. Credentials
+        are never returned.
+      operationId: listLlmProviders
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlmProviderResponseList'
+          description: List LLM providers
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization LLM providers
+      tags:
+      - LLM Providers
+    post:
+      description: Configure a reusable LLM provider for an organization.
+      operationId: createLlmProvider
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LlmProviderRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlmProviderResponse'
+          description: LLM provider created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+        "409":
+          description: LLM provider name is already taken for this scope owner in
+            the organization
+      summary: Create an LLM provider
+      tags:
+      - LLM Providers
+  /llmProvider/{llmProviderId}:
+    delete:
+      description: Delete an LLM provider.
+      operationId: deleteLlmProvider
+      parameters:
+      - description: LLM Provider ID
+        explode: false
+        in: path
+        name: llmProviderId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: LLM provider deleted
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Delete an LLM provider
+      tags:
+      - LLM Providers
+    get:
+      description: Get an LLM provider. The credential is never returned.
+      operationId: getLlmProvider
+      parameters:
+      - description: LLM Provider ID
+        explode: false
+        in: path
+        name: llmProviderId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlmProviderResponse'
+          description: The LLM provider
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get an LLM provider
+      tags:
+      - LLM Providers
+    put:
+      description: Replace an LLM provider. Sending a blank credential keeps the stored
+        one; sending a nonblank credential rotates it.
+      operationId: editLlmProvider
+      parameters:
+      - description: LLM Provider ID
+        explode: false
+        in: path
+        name: llmProviderId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LlmProviderRequest'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LlmProviderResponse'
+          description: LLM provider edited
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: "Editing an ORGANIZATION provider requires the MANAGE_INFRASTRUCTURE\
+            \ permission; a USER provider can only be edited by its owner, so an organization\
+            \ admin is forbidden as well."
+        "404":
+          description: Resource not found
+        "409":
+          description: LLM provider name is already taken for this scope owner in
+            the organization
+      summary: Edit an LLM provider
+      tags:
+      - LLM Providers
   /organization/{organizationId}/containerRegistry/{containerRegistryId}/images:
     get:
       operationId: getContainerVersions
@@ -20725,6 +20895,16 @@ components:
         format: uuid
         type: string
       style: simple
+    llmProviderId:
+      description: LLM Provider ID
+      explode: false
+      in: path
+      name: llmProviderId
+      required: true
+      schema:
+        format: uuid
+        type: string
+      style: simple
     deploymentRequestId:
       description: Deployment Request ID
       explode: false
@@ -30827,6 +31007,131 @@ components:
         results:
           items:
             $ref: '#/components/schemas/McpServerResponse'
+          type: array
+      required:
+      - results
+      type: object
+    LlmProviderType:
+      description: The LLM vendor this provider authenticates against. Matches the
+        type an agentic workflow's inline model already uses.
+      enum:
+      - CLAUDE
+      - BEDROCK
+      type: string
+    LlmProviderScope:
+      description: "ORGANIZATION: usable by every member who can edit an agentic workflow.\
+        \ USER: personal to the member who created it; only that member can edit it."
+      enum:
+      - ORGANIZATION
+      - USER
+      type: string
+    LlmProviderRequest:
+      example:
+        credential: ""
+        scope: ""
+        name: name
+        description: ""
+        type: CLAUDE
+      properties:
+        name:
+          description: "LLM provider name, unique per scope owner within the organization"
+          minLength: 1
+          type: string
+        description:
+          default: ""
+          type: string
+        type:
+          $ref: '#/components/schemas/LlmProviderType'
+        credential:
+          default: ""
+          description: "The provider credential. Encrypted at rest and never returned\
+            \ by the API. Blank means unchanged: on create no credential is stored,\
+            \ on edit the stored one is kept. Sending a nonblank value rotates it."
+          type: string
+          writeOnly: true
+        scope:
+          allOf:
+          - $ref: '#/components/schemas/LlmProviderScope'
+          description: "Cannot be changed after creation. On create, omitting it means\
+            \ ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating\
+            \ a USER provider requires CREATE_PROJECT. On edit, omitting it leaves\
+            \ the provider's scope unchanged, and stating a scope that differs from\
+            \ the provider's is refused with 400."
+      required:
+      - name
+      - type
+      type: object
+    LlmProviderResponse:
+      allOf:
+      - $ref: '#/components/schemas/Base'
+      - properties:
+          name:
+            type: string
+          description:
+            type: string
+          type:
+            $ref: '#/components/schemas/LlmProviderType'
+          has_credential:
+            description: Whether a credential is stored. The credential itself is
+              never returned.
+            type: boolean
+          scope:
+            $ref: '#/components/schemas/LlmProviderScope'
+          owner_user_sub:
+            description: Identity of the owning member. Null for an ORGANIZATION provider.
+            nullable: true
+            type: string
+          owner_name:
+            description: Display name of the owning member. Null for an ORGANIZATION
+              provider.
+            nullable: true
+            type: string
+        required:
+        - description
+        - has_credential
+        - name
+        - scope
+        - type
+        - updated_at
+        type: object
+      example:
+        has_credential: true
+        owner_name: owner_name
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        owner_user_sub: owner_user_sub
+        scope: ORGANIZATION
+        name: name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        description: description
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: CLAUDE
+    LlmProviderResponseList:
+      example:
+        results:
+        - has_credential: true
+          owner_name: owner_name
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          owner_user_sub: owner_user_sub
+          scope: ORGANIZATION
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: CLAUDE
+        - has_credential: true
+          owner_name: owner_name
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          owner_user_sub: owner_user_sub
+          scope: ORGANIZATION
+          name: name
+          created_at: 2000-01-23T04:56:07.000+00:00
+          description: description
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: CLAUDE
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/LlmProviderResponse'
           type: array
       required:
       - results

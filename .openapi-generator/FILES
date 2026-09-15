@@ -75,6 +75,7 @@ api_job_main_calls.go
 api_job_secret.go
 api_jobs.go
 api_lifecycle_template_main_calls.go
+api_llm_providers.go
 api_mcp_servers.go
 api_members.go
 api_organization_account_git_repositories.go
@@ -759,6 +760,7 @@ docs/KubernetesService.md
 docs/KubernetesServicePort.md
 docs/KubernetesServiceResponseList.md
 docs/KubernetesServiceSpec.md
+docs/LLMProvidersAPI.md
 docs/Label.md
 docs/LabelsGroupAssociatedItemType.md
 docs/LifecycleJobResponse.md
@@ -788,6 +790,11 @@ docs/ListServicesByEnvironmentId200Response.md
 docs/ListServicesByEnvironmentId200ResponseResultsInner.md
 docs/ListServicesByOrganizationId200Response.md
 docs/ListTfVarsFilesFromGitRepo200Response.md
+docs/LlmProviderRequest.md
+docs/LlmProviderResponse.md
+docs/LlmProviderResponseList.md
+docs/LlmProviderScope.md
+docs/LlmProviderType.md
 docs/Log.md
 docs/LogResponseList.md
 docs/MCPServersAPI.md
@@ -1704,6 +1711,11 @@ model_list_services_by_environment_id_200_response.go
 model_list_services_by_environment_id_200_response_results_inner.go
 model_list_services_by_organization_id_200_response.go
 model_list_tf_vars_files_from_git_repo_200_response.go
+model_llm_provider_request.go
+model_llm_provider_response.go
+model_llm_provider_response_list.go
+model_llm_provider_scope.go
+model_llm_provider_type.go
 model_log.go
 model_log_response_list.go
 model_managed_database_instance_type_response.go
@@ -2051,6 +2063,7 @@ test/api_job_main_calls_test.go
 test/api_job_secret_test.go
 test/api_jobs_test.go
 test/api_lifecycle_template_main_calls_test.go
+test/api_llm_providers_test.go
 test/api_mcp_servers_test.go
 test/api_members_test.go
 test/api_organization_account_git_repositories_test.go

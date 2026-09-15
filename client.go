@@ -191,6 +191,8 @@ type APIClient struct {
 
 	JobsAPI *JobsAPIService
 
+	LLMProvidersAPI *LLMProvidersAPIService
+
 	LifecycleTemplateMainCallsAPI *LifecycleTemplateMainCallsAPIService
 
 	MCPServersAPI *MCPServersAPIService
@@ -345,6 +347,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.JobMainCallsAPI = (*JobMainCallsAPIService)(&c.common)
 	c.JobSecretAPI = (*JobSecretAPIService)(&c.common)
 	c.JobsAPI = (*JobsAPIService)(&c.common)
+	c.LLMProvidersAPI = (*LLMProvidersAPIService)(&c.common)
 	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
 	c.MCPServersAPI = (*MCPServersAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
