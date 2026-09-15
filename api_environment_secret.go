@@ -44,9 +44,9 @@ CreateEnvironmentSecret Add a secret to the environment
 
 - Add a secret to the environment.
 
-  - If the secret key already exists, then it will be replaced by the new one.
+  - If the secret key already exists in this scope, the request is rejected with a 409 conflict.
 
-  - If the secret value points toward an existing secret key, it will be considered as an alias.
+  - A value matching the key of an existing secret is stored as a plain string, not as an alias. To create an alias, use POST /variable/{variableId}/alias on the secret to target.
 
     @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
     @param environmentId Environment ID
@@ -556,7 +556,7 @@ EditEnvironmentSecret Edit a secret belonging to the environment
 
 - You can't edit a BUILT_IN secret
 - For an override, you can't edit the key
-- For an alias, you can't edit the value
+- For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not)
 - An override can only have a scope lower to the secret it is overriding (hierarchy is BUILT_IN > PROJECT > ENVIRONMENT > APPLICATION)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

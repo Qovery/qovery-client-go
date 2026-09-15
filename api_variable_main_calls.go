@@ -535,7 +535,7 @@ EditVariable Edit a variable
 
 - You can't edit a BUILT_IN variable
 - For an override, you can't edit the key
-- For an alias, you can't edit the value
+- For an alias, the value is the key of the variable it targets. Editing it re-points the alias to that other variable, which must already exist and be of the same kind (secret or not)
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param variableId Variable ID
