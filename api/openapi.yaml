@@ -6890,6 +6890,58 @@ paths:
       summary: Create an MCP server
       tags:
       - MCP Servers
+  /organization/{organizationId}/mcpServer/qovery:
+    post:
+      description: |
+        Create a connector to Qovery's own MCP server in READ-ONLY mode. Scope is always
+        `ORGANIZATION`; this endpoint accepts no scope parameter.
+
+        During the request, an organization API token is generated, bound to the Viewer role,
+        and stored as the encrypted `Authorization` connector header. The token is never returned
+        in the response; `header_names` will contain `Authorization`.
+
+        The generated token is visible and revocable in the organization's API token list.
+        Deleting the connector does not revoke the generated token; revoke it separately from
+        the API token list.
+
+        **403 — Access forbidden:** Requires the `MANAGE_INFRASTRUCTURE` permission. Viewer and
+        Billing callers cannot mint API tokens and are rejected with 403.
+
+        Only one Qovery MCP connector is allowed per organization; a second call returns 409.
+      operationId: createQoveryMcpServer
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QoveryMcpServerRequest'
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/McpServerResponse'
+          description: Qovery MCP connector created
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "409":
+          description: The Qovery MCP connector already exists for this organization
+      summary: Create a read-only Qovery MCP connector
+      tags:
+      - MCP Servers
   /mcpServer/{mcpServerId}:
     delete:
       description: Delete a remote MCP server configuration.
@@ -30489,6 +30541,19 @@ components:
       required:
       - name
       - url
+      type: object
+    QoveryMcpServerRequest:
+      example:
+        name: Qovery MCP
+        description: ""
+      properties:
+        name:
+          default: Qovery MCP
+          minLength: 1
+          type: string
+        description:
+          default: ""
+          type: string
       type: object
     McpServerResponse:
       allOf:

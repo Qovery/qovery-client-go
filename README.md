@@ -499,6 +499,7 @@ Class | Method | HTTP request | Description
 *LifecycleTemplateMainCallsAPI* | [**GetEnvironmentLifecycleTemplate**](docs/LifecycleTemplateMainCallsAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsAPI* | [**ListEnvironmentLifecycleTemplates**](docs/LifecycleTemplateMainCallsAPI.md#listenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
 *MCPServersAPI* | [**CreateMcpServer**](docs/MCPServersAPI.md#createmcpserver) | **Post** /organization/{organizationId}/mcpServer | Create an MCP server
+*MCPServersAPI* | [**CreateQoveryMcpServer**](docs/MCPServersAPI.md#createqoverymcpserver) | **Post** /organization/{organizationId}/mcpServer/qovery | Create a read-only Qovery MCP connector
 *MCPServersAPI* | [**DeleteMcpServer**](docs/MCPServersAPI.md#deletemcpserver) | **Delete** /mcpServer/{mcpServerId} | Delete an MCP server
 *MCPServersAPI* | [**EditMcpServer**](docs/MCPServersAPI.md#editmcpserver) | **Put** /mcpServer/{mcpServerId} | Edit an MCP server
 *MCPServersAPI* | [**GetMcpServer**](docs/MCPServersAPI.md#getmcpserver) | **Get** /mcpServer/{mcpServerId} | Get an MCP server
@@ -1380,6 +1381,7 @@ Class | Method | HTTP request | Description
  - [QoveryDnsProviderRequest](docs/QoveryDnsProviderRequest.md)
  - [QoveryDnsProviderResponse](docs/QoveryDnsProviderResponse.md)
  - [QoveryIpsResponse](docs/QoveryIpsResponse.md)
+ - [QoveryMcpServerRequest](docs/QoveryMcpServerRequest.md)
  - [QueuedDeploymentRequestForService](docs/QueuedDeploymentRequestForService.md)
  - [QueuedDeploymentRequestForServiceAuditingData](docs/QueuedDeploymentRequestForServiceAuditingData.md)
  - [QueuedDeploymentRequestForServiceIdentifier](docs/QueuedDeploymentRequestForServiceIdentifier.md)

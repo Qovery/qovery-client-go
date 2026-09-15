@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateMcpServer**](MCPServersAPI.md#CreateMcpServer) | **Post** /organization/{organizationId}/mcpServer | Create an MCP server
+[**CreateQoveryMcpServer**](MCPServersAPI.md#CreateQoveryMcpServer) | **Post** /organization/{organizationId}/mcpServer/qovery | Create a read-only Qovery MCP connector
 [**DeleteMcpServer**](MCPServersAPI.md#DeleteMcpServer) | **Delete** /mcpServer/{mcpServerId} | Delete an MCP server
 [**EditMcpServer**](MCPServersAPI.md#EditMcpServer) | **Put** /mcpServer/{mcpServerId} | Edit an MCP server
 [**GetMcpServer**](MCPServersAPI.md#GetMcpServer) | **Get** /mcpServer/{mcpServerId} | Get an MCP server
@@ -65,6 +66,78 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **mcpServerRequest** | [**McpServerRequest**](McpServerRequest.md) |  | 
+
+### Return type
+
+[**McpServerResponse**](McpServerResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateQoveryMcpServer
+
+> McpServerResponse CreateQoveryMcpServer(ctx, organizationId).QoveryMcpServerRequest(qoveryMcpServerRequest).Execute()
+
+Create a read-only Qovery MCP connector
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	qoveryMcpServerRequest := *openapiclient.NewQoveryMcpServerRequest() // QoveryMcpServerRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.MCPServersAPI.CreateQoveryMcpServer(context.Background(), organizationId).QoveryMcpServerRequest(qoveryMcpServerRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `MCPServersAPI.CreateQoveryMcpServer``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateQoveryMcpServer`: McpServerResponse
+	fmt.Fprintf(os.Stdout, "Response from `MCPServersAPI.CreateQoveryMcpServer`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateQoveryMcpServerRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **qoveryMcpServerRequest** | [**QoveryMcpServerRequest**](QoveryMcpServerRequest.md) |  | 
 
 ### Return type
 
