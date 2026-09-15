@@ -48697,9 +48697,22 @@ components:
               workflow
             type: string
           mcp_server_ids:
+            deprecated: true
             description: "MCP connectors attached to this workflow. May include a\
               \ USER-scoped connector, which only its owner can attach or keep attached\
               \ when saving."
+            items:
+              format: uuid
+              type: string
+            type: array
+          mcp_servers:
+            description: "MCP connectors attached to this workflow, including their\
+              \ configuration metadata."
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowMcpServer'
+            type: array
+          context_service_ids:
+            description: Qovery services explicitly provided as context to this workflow.
             items:
               format: uuid
               type: string
@@ -48732,6 +48745,7 @@ components:
             type: string
         required:
         - agent_prompt
+        - context_service_ids
         - description
         - docker_fragment
         - enabled
@@ -48741,6 +48755,7 @@ components:
         - id
         - mcp
         - mcp_server_ids
+        - mcp_servers
         - model
         - name
         - outputs
@@ -48770,9 +48785,6 @@ components:
           instructions: ""
           name: name
           url: url
-        mcp_server_ids:
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         webhook:
           url: url
         project_repositories:
@@ -48784,13 +48796,29 @@ components:
           url: url
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
+        docker_fragment: docker_fragment
+        enabled: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        agent_prompt: agent_prompt
+        model:
+          settings: settings
+          type: CLAUDE
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mcp: mcp
+        slug: slug
+        mcp_server_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mcp_servers:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          required: false
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          required: false
         resources:
           cpu_milli: 0
           ram_mib: 6
           gpu: 1
           storage_gib: 5
-        docker_fragment: docker_fragment
-        enabled: true
         icon_uri: https://openapi-generator.tech
         webhook_ip_allowlist:
         - webhook_ip_allowlist
@@ -48803,15 +48831,10 @@ components:
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         execution_mode: IN_PLACE
-        updated_at: 2000-01-23T04:56:07.000+00:00
         name: name
-        agent_prompt: agent_prompt
-        model:
-          settings: settings
-          type: CLAUDE
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        mcp: mcp
-        slug: slug
+        context_service_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         governance:
           host_allowlist:
           - host_allowlist
@@ -48836,9 +48859,6 @@ components:
             instructions: ""
             name: name
             url: url
-          mcp_server_ids:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook:
             url: url
           project_repositories:
@@ -48850,13 +48870,29 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          docker_fragment: docker_fragment
+          enabled: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          agent_prompt: agent_prompt
+          model:
+            settings: settings
+            type: CLAUDE
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp: mcp
+          slug: slug
+          mcp_server_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp_servers:
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            required: false
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            required: false
           resources:
             cpu_milli: 0
             ram_mib: 6
             gpu: 1
             storage_gib: 5
-          docker_fragment: docker_fragment
-          enabled: true
           icon_uri: https://openapi-generator.tech
           webhook_ip_allowlist:
           - webhook_ip_allowlist
@@ -48869,15 +48905,10 @@ components:
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_mode: IN_PLACE
-          updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          agent_prompt: agent_prompt
-          model:
-            settings: settings
-            type: CLAUDE
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          mcp: mcp
-          slug: slug
+          context_service_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           governance:
             host_allowlist:
             - host_allowlist
@@ -48899,9 +48930,6 @@ components:
             instructions: ""
             name: name
             url: url
-          mcp_server_ids:
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           webhook:
             url: url
           project_repositories:
@@ -48913,13 +48941,29 @@ components:
             url: url
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
+          docker_fragment: docker_fragment
+          enabled: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          agent_prompt: agent_prompt
+          model:
+            settings: settings
+            type: CLAUDE
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp: mcp
+          slug: slug
+          mcp_server_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          mcp_servers:
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            required: false
+          - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            required: false
           resources:
             cpu_milli: 0
             ram_mib: 6
             gpu: 1
             storage_gib: 5
-          docker_fragment: docker_fragment
-          enabled: true
           icon_uri: https://openapi-generator.tech
           webhook_ip_allowlist:
           - webhook_ip_allowlist
@@ -48932,15 +48976,10 @@ components:
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_mode: IN_PLACE
-          updated_at: 2000-01-23T04:56:07.000+00:00
           name: name
-          agent_prompt: agent_prompt
-          model:
-            settings: settings
-            type: CLAUDE
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          mcp: mcp
-          slug: slug
+          context_service_ids:
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           governance:
             host_allowlist:
             - host_allowlist
@@ -48980,9 +49019,24 @@ components:
             type: string
           mcp_server_ids:
             default: []
+            deprecated: true
             description: "MCP connectors attached to this workflow. May include a\
               \ USER-scoped connector, which only its owner can attach or keep attached\
               \ when saving."
+            items:
+              format: uuid
+              type: string
+            type: array
+          mcp_servers:
+            description: "MCP connectors attached to this workflow. A required connector\
+              \ must be present during creation, but may be removed during a later\
+              \ settings update."
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowMcpServer'
+            type: array
+          context_service_ids:
+            default: []
+            description: Qovery services explicitly provided as context to this workflow.
             items:
               format: uuid
               type: string
@@ -49033,6 +49087,11 @@ components:
         mcp_server_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        mcp_servers:
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          required: false
+        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          required: false
         project_repositories:
         - git_token_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           branch: branch
@@ -49062,10 +49121,30 @@ components:
           api_key: ""
           type: CLAUDE
         mcp: ""
+        context_service_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         governance:
           host_allowlist:
           - host_allowlist
           - host_allowlist
+    AgenticWorkflowMcpServer:
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        required: false
+      properties:
+        id:
+          format: uuid
+          type: string
+        required:
+          default: false
+          description: Whether the initial configuration or template requires this
+            MCP server.
+          type: boolean
+      required:
+      - id
+      - required
+      type: object
     AgenticWorkflowExecutionMode:
       default: IN_PLACE
       description: "Where a run executes. IN_PLACE deploys the workflow in the environment\

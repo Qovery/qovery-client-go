@@ -31,7 +31,12 @@ type AgenticWorkflowRequest struct {
 	// Raw JSON blob describing the MCP servers configured for this workflow
 	Mcp *string `json:"mcp,omitempty"`
 	// MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving.
-	McpServerIds         []string                                    `json:"mcp_server_ids,omitempty"`
+	// Deprecated
+	McpServerIds []string `json:"mcp_server_ids,omitempty"`
+	// MCP connectors attached to this workflow. A required connector must be present during creation, but may be removed during a later settings update.
+	McpServers []AgenticWorkflowMcpServer `json:"mcp_servers,omitempty"`
+	// Qovery services explicitly provided as context to this workflow.
+	ContextServiceIds    []string                                    `json:"context_service_ids,omitempty"`
 	Outputs              []AgenticWorkflowOutput                     `json:"outputs,omitempty"`
 	Model                *AgenticWorkflowModelRequest                `json:"model,omitempty"`
 	ProjectRepositories  []AgenticWorkflowProjectRepository          `json:"project_repositories,omitempty"`
@@ -272,6 +277,7 @@ func (o *AgenticWorkflowRequest) SetMcp(v string) {
 }
 
 // GetMcpServerIds returns the McpServerIds field value if set, zero value otherwise.
+// Deprecated
 func (o *AgenticWorkflowRequest) GetMcpServerIds() []string {
 	if o == nil || IsNil(o.McpServerIds) {
 		var ret []string
@@ -282,6 +288,7 @@ func (o *AgenticWorkflowRequest) GetMcpServerIds() []string {
 
 // GetMcpServerIdsOk returns a tuple with the McpServerIds field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *AgenticWorkflowRequest) GetMcpServerIdsOk() ([]string, bool) {
 	if o == nil || IsNil(o.McpServerIds) {
 		return nil, false
@@ -299,8 +306,73 @@ func (o *AgenticWorkflowRequest) HasMcpServerIds() bool {
 }
 
 // SetMcpServerIds gets a reference to the given []string and assigns it to the McpServerIds field.
+// Deprecated
 func (o *AgenticWorkflowRequest) SetMcpServerIds(v []string) {
 	o.McpServerIds = v
+}
+
+// GetMcpServers returns the McpServers field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetMcpServers() []AgenticWorkflowMcpServer {
+	if o == nil || IsNil(o.McpServers) {
+		var ret []AgenticWorkflowMcpServer
+		return ret
+	}
+	return o.McpServers
+}
+
+// GetMcpServersOk returns a tuple with the McpServers field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetMcpServersOk() ([]AgenticWorkflowMcpServer, bool) {
+	if o == nil || IsNil(o.McpServers) {
+		return nil, false
+	}
+	return o.McpServers, true
+}
+
+// HasMcpServers returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasMcpServers() bool {
+	if o != nil && !IsNil(o.McpServers) {
+		return true
+	}
+
+	return false
+}
+
+// SetMcpServers gets a reference to the given []AgenticWorkflowMcpServer and assigns it to the McpServers field.
+func (o *AgenticWorkflowRequest) SetMcpServers(v []AgenticWorkflowMcpServer) {
+	o.McpServers = v
+}
+
+// GetContextServiceIds returns the ContextServiceIds field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetContextServiceIds() []string {
+	if o == nil || IsNil(o.ContextServiceIds) {
+		var ret []string
+		return ret
+	}
+	return o.ContextServiceIds
+}
+
+// GetContextServiceIdsOk returns a tuple with the ContextServiceIds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetContextServiceIdsOk() ([]string, bool) {
+	if o == nil || IsNil(o.ContextServiceIds) {
+		return nil, false
+	}
+	return o.ContextServiceIds, true
+}
+
+// HasContextServiceIds returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasContextServiceIds() bool {
+	if o != nil && !IsNil(o.ContextServiceIds) {
+		return true
+	}
+
+	return false
+}
+
+// SetContextServiceIds gets a reference to the given []string and assigns it to the ContextServiceIds field.
+func (o *AgenticWorkflowRequest) SetContextServiceIds(v []string) {
+	o.ContextServiceIds = v
 }
 
 // GetOutputs returns the Outputs field value if set, zero value otherwise.
@@ -599,6 +671,12 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.McpServerIds) {
 		toSerialize["mcp_server_ids"] = o.McpServerIds
 	}
+	if !IsNil(o.McpServers) {
+		toSerialize["mcp_servers"] = o.McpServers
+	}
+	if !IsNil(o.ContextServiceIds) {
+		toSerialize["context_service_ids"] = o.ContextServiceIds
+	}
 	if !IsNil(o.Outputs) {
 		toSerialize["outputs"] = o.Outputs
 	}
@@ -673,6 +751,8 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "mcp")
 		delete(additionalProperties, "mcp_server_ids")
+		delete(additionalProperties, "mcp_servers")
+		delete(additionalProperties, "context_service_ids")
 		delete(additionalProperties, "outputs")
 		delete(additionalProperties, "model")
 		delete(additionalProperties, "project_repositories")

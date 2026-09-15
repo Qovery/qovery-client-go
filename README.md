@@ -652,6 +652,7 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowExecutionMode](docs/AgenticWorkflowExecutionMode.md)
  - [AgenticWorkflowGovernance](docs/AgenticWorkflowGovernance.md)
  - [AgenticWorkflowHeader](docs/AgenticWorkflowHeader.md)
+ - [AgenticWorkflowMcpServer](docs/AgenticWorkflowMcpServer.md)
  - [AgenticWorkflowModelRequest](docs/AgenticWorkflowModelRequest.md)
  - [AgenticWorkflowModelResponse](docs/AgenticWorkflowModelResponse.md)
  - [AgenticWorkflowModelType](docs/AgenticWorkflowModelType.md)

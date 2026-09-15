@@ -11,6 +11,8 @@ Name | Type | Description | Notes
 **Enabled** | Pointer to **bool** |  | [optional] [default to true]
 **Mcp** | Pointer to **string** | Raw JSON blob describing the MCP servers configured for this workflow | [optional] [default to ""]
 **McpServerIds** | Pointer to **[]string** | MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving. | [optional] [default to []]
+**McpServers** | Pointer to [**[]AgenticWorkflowMcpServer**](AgenticWorkflowMcpServer.md) | MCP connectors attached to this workflow. A required connector must be present during creation, but may be removed during a later settings update. | [optional] 
+**ContextServiceIds** | Pointer to **[]string** | Qovery services explicitly provided as context to this workflow. | [optional] [default to []]
 **Outputs** | Pointer to [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | [optional] [default to []]
 **Model** | Pointer to [**AgenticWorkflowModelRequest**](AgenticWorkflowModelRequest.md) |  | [optional] 
 **ProjectRepositories** | Pointer to [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | [optional] [default to []]
@@ -208,6 +210,56 @@ SetMcpServerIds sets McpServerIds field to given value.
 `func (o *AgenticWorkflowRequest) HasMcpServerIds() bool`
 
 HasMcpServerIds returns a boolean if a field has been set.
+
+### GetMcpServers
+
+`func (o *AgenticWorkflowRequest) GetMcpServers() []AgenticWorkflowMcpServer`
+
+GetMcpServers returns the McpServers field if non-nil, zero value otherwise.
+
+### GetMcpServersOk
+
+`func (o *AgenticWorkflowRequest) GetMcpServersOk() (*[]AgenticWorkflowMcpServer, bool)`
+
+GetMcpServersOk returns a tuple with the McpServers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcpServers
+
+`func (o *AgenticWorkflowRequest) SetMcpServers(v []AgenticWorkflowMcpServer)`
+
+SetMcpServers sets McpServers field to given value.
+
+### HasMcpServers
+
+`func (o *AgenticWorkflowRequest) HasMcpServers() bool`
+
+HasMcpServers returns a boolean if a field has been set.
+
+### GetContextServiceIds
+
+`func (o *AgenticWorkflowRequest) GetContextServiceIds() []string`
+
+GetContextServiceIds returns the ContextServiceIds field if non-nil, zero value otherwise.
+
+### GetContextServiceIdsOk
+
+`func (o *AgenticWorkflowRequest) GetContextServiceIdsOk() (*[]string, bool)`
+
+GetContextServiceIdsOk returns a tuple with the ContextServiceIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContextServiceIds
+
+`func (o *AgenticWorkflowRequest) SetContextServiceIds(v []string)`
+
+SetContextServiceIds sets ContextServiceIds field to given value.
+
+### HasContextServiceIds
+
+`func (o *AgenticWorkflowRequest) HasContextServiceIds() bool`
+
+HasContextServiceIds returns a boolean if a field has been set.
 
 ### GetOutputs
 

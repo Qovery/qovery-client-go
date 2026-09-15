@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **Enabled** | **bool** |  | 
 **Mcp** | **string** | Raw JSON blob describing the MCP servers configured for this workflow | 
 **McpServerIds** | **[]string** | MCP connectors attached to this workflow. May include a USER-scoped connector, which only its owner can attach or keep attached when saving. | 
+**McpServers** | [**[]AgenticWorkflowMcpServer**](AgenticWorkflowMcpServer.md) | MCP connectors attached to this workflow, including their configuration metadata. | 
+**ContextServiceIds** | **[]string** | Qovery services explicitly provided as context to this workflow. | 
 **Outputs** | [**[]AgenticWorkflowOutput**](AgenticWorkflowOutput.md) |  | 
 **Model** | [**AgenticWorkflowModelResponse**](AgenticWorkflowModelResponse.md) |  | 
 **ProjectRepositories** | [**[]AgenticWorkflowProjectRepository**](AgenticWorkflowProjectRepository.md) |  | 
@@ -32,7 +34,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -310,6 +312,46 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetMcpServerIds(v []string)`
 
 SetMcpServerIds sets McpServerIds field to given value.
+
+
+### GetMcpServers
+
+`func (o *AgenticWorkflowResponse) GetMcpServers() []AgenticWorkflowMcpServer`
+
+GetMcpServers returns the McpServers field if non-nil, zero value otherwise.
+
+### GetMcpServersOk
+
+`func (o *AgenticWorkflowResponse) GetMcpServersOk() (*[]AgenticWorkflowMcpServer, bool)`
+
+GetMcpServersOk returns a tuple with the McpServers field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMcpServers
+
+`func (o *AgenticWorkflowResponse) SetMcpServers(v []AgenticWorkflowMcpServer)`
+
+SetMcpServers sets McpServers field to given value.
+
+
+### GetContextServiceIds
+
+`func (o *AgenticWorkflowResponse) GetContextServiceIds() []string`
+
+GetContextServiceIds returns the ContextServiceIds field if non-nil, zero value otherwise.
+
+### GetContextServiceIdsOk
+
+`func (o *AgenticWorkflowResponse) GetContextServiceIdsOk() (*[]string, bool)`
+
+GetContextServiceIdsOk returns a tuple with the ContextServiceIds field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetContextServiceIds
+
+`func (o *AgenticWorkflowResponse) SetContextServiceIds(v []string)`
+
+SetContextServiceIds sets ContextServiceIds field to given value.
 
 
 ### GetOutputs
