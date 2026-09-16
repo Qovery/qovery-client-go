@@ -23,8 +23,10 @@ var _ MappedNullable = &AgenticWorkflowModelRequest{}
 type AgenticWorkflowModelRequest struct {
 	Type AgenticWorkflowModelType `json:"type"`
 	// Write-only. Provider API key; accepted on create/edit but never returned in responses.
-	ApiKey               *string `json:"api_key,omitempty"`
-	Settings             *string `json:"settings,omitempty"`
+	ApiKey   *string `json:"api_key,omitempty"`
+	Settings *string `json:"settings,omitempty"`
+	// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`.
+	LlmProviderId        NullableString `json:"llm_provider_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -144,6 +146,49 @@ func (o *AgenticWorkflowModelRequest) SetSettings(v string) {
 	o.Settings = &v
 }
 
+// GetLlmProviderId returns the LlmProviderId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AgenticWorkflowModelRequest) GetLlmProviderId() string {
+	if o == nil || IsNil(o.LlmProviderId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.LlmProviderId.Get()
+}
+
+// GetLlmProviderIdOk returns a tuple with the LlmProviderId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowModelRequest) GetLlmProviderIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LlmProviderId.Get(), o.LlmProviderId.IsSet()
+}
+
+// HasLlmProviderId returns a boolean if a field has been set.
+func (o *AgenticWorkflowModelRequest) HasLlmProviderId() bool {
+	if o != nil && o.LlmProviderId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLlmProviderId gets a reference to the given NullableString and assigns it to the LlmProviderId field.
+func (o *AgenticWorkflowModelRequest) SetLlmProviderId(v string) {
+	o.LlmProviderId.Set(&v)
+}
+
+// SetLlmProviderIdNil sets the value for LlmProviderId to be an explicit nil
+func (o *AgenticWorkflowModelRequest) SetLlmProviderIdNil() {
+	o.LlmProviderId.Set(nil)
+}
+
+// UnsetLlmProviderId ensures that no value is present for LlmProviderId, not even an explicit nil
+func (o *AgenticWorkflowModelRequest) UnsetLlmProviderId() {
+	o.LlmProviderId.Unset()
+}
+
 func (o AgenticWorkflowModelRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -160,6 +205,9 @@ func (o AgenticWorkflowModelRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Settings) {
 		toSerialize["settings"] = o.Settings
+	}
+	if o.LlmProviderId.IsSet() {
+		toSerialize["llm_provider_id"] = o.LlmProviderId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -207,6 +255,7 @@ func (o *AgenticWorkflowModelRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "api_key")
 		delete(additionalProperties, "settings")
+		delete(additionalProperties, "llm_provider_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

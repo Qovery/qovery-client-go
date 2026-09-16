@@ -49118,6 +49118,7 @@ components:
         model:
           settings: settings
           type: CLAUDE
+          llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mcp: mcp
         slug: slug
@@ -49192,6 +49193,7 @@ components:
           model:
             settings: settings
             type: CLAUDE
+            llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
           slug: slug
@@ -49263,6 +49265,7 @@ components:
           model:
             settings: settings
             type: CLAUDE
+            llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
           slug: slug
@@ -49435,6 +49438,7 @@ components:
           settings: ""
           api_key: ""
           type: CLAUDE
+          llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mcp: ""
         context_service_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -49495,6 +49499,7 @@ components:
         settings: ""
         api_key: ""
         type: CLAUDE
+        llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         type:
           $ref: '#/components/schemas/AgenticWorkflowModelType'
@@ -49507,6 +49512,14 @@ components:
         settings:
           default: ""
           type: string
+        llm_provider_id:
+          description: "An existing LLM provider to take the credential from, instead\
+            \ of `api_key`. The two are mutually exclusive: a request setting both\
+            \ is rejected. The provider must belong to the workflow's organization,\
+            \ be one the caller may use, and match `type`."
+          format: uuid
+          nullable: true
+          type: string
       required:
       - type
       type: object
@@ -49514,10 +49527,18 @@ components:
       example:
         settings: settings
         type: CLAUDE
+        llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         type:
           $ref: '#/components/schemas/AgenticWorkflowModelType'
         settings:
+          type: string
+        llm_provider_id:
+          description: "The LLM provider the workflow takes its credential from, or\
+            \ null when it carries its own `api_key`. Unlike `api_key` this is returned:\
+            \ it names a credential rather than carrying one."
+          format: uuid
+          nullable: true
           type: string
       required:
       - settings

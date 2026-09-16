@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**AgenticWorkflowModelType**](AgenticWorkflowModelType.md) |  | 
 **ApiKey** | Pointer to **string** | Write-only. Provider API key; accepted on create/edit but never returned in responses. | [optional] [default to ""]
 **Settings** | Pointer to **string** |  | [optional] [default to ""]
+**LlmProviderId** | Pointer to **NullableString** | An existing LLM provider to take the credential from, instead of &#x60;api_key&#x60;. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow&#39;s organization, be one the caller may use, and match &#x60;type&#x60;. | [optional] 
 
 ## Methods
 
@@ -97,6 +98,41 @@ SetSettings sets Settings field to given value.
 
 HasSettings returns a boolean if a field has been set.
 
+### GetLlmProviderId
+
+`func (o *AgenticWorkflowModelRequest) GetLlmProviderId() string`
+
+GetLlmProviderId returns the LlmProviderId field if non-nil, zero value otherwise.
+
+### GetLlmProviderIdOk
+
+`func (o *AgenticWorkflowModelRequest) GetLlmProviderIdOk() (*string, bool)`
+
+GetLlmProviderIdOk returns a tuple with the LlmProviderId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLlmProviderId
+
+`func (o *AgenticWorkflowModelRequest) SetLlmProviderId(v string)`
+
+SetLlmProviderId sets LlmProviderId field to given value.
+
+### HasLlmProviderId
+
+`func (o *AgenticWorkflowModelRequest) HasLlmProviderId() bool`
+
+HasLlmProviderId returns a boolean if a field has been set.
+
+### SetLlmProviderIdNil
+
+`func (o *AgenticWorkflowModelRequest) SetLlmProviderIdNil(b bool)`
+
+ SetLlmProviderIdNil sets the value for LlmProviderId to be an explicit nil
+
+### UnsetLlmProviderId
+`func (o *AgenticWorkflowModelRequest) UnsetLlmProviderId()`
+
+UnsetLlmProviderId ensures that no value is present for LlmProviderId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
