@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeployBlueprint**](BlueprintMainCallsAPI.md#DeployBlueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 [**GetBlueprint**](BlueprintMainCallsAPI.md#GetBlueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**GetBlueprintCatalog**](BlueprintMainCallsAPI.md#GetBlueprintCatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+[**GetBlueprintVariables**](BlueprintMainCallsAPI.md#GetBlueprintVariables) | **Get** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 [**PreviewBlueprintUpdate**](BlueprintMainCallsAPI.md#PreviewBlueprintUpdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**UpdateBlueprint**](BlueprintMainCallsAPI.md#UpdateBlueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
 
@@ -428,6 +429,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BlueprintCatalogResponse**](BlueprintCatalogResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBlueprintVariables
+
+> []BlueprintConfigurationVariable GetBlueprintVariables(ctx, blueprintId).Execute()
+
+Get persisted blueprint variables
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	blueprintId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Blueprint ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BlueprintMainCallsAPI.GetBlueprintVariables(context.Background(), blueprintId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.GetBlueprintVariables``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBlueprintVariables`: []BlueprintConfigurationVariable
+	fmt.Fprintf(os.Stdout, "Response from `BlueprintMainCallsAPI.GetBlueprintVariables`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**blueprintId** | **string** | Blueprint ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBlueprintVariablesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**[]BlueprintConfigurationVariable**](BlueprintConfigurationVariable.md)
 
 ### Authorization
 

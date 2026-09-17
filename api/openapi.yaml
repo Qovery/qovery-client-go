@@ -20642,6 +20642,39 @@ paths:
       summary: Check if a blueprint service has an available update
       tags:
       - Blueprint Main Calls
+  /blueprint/{blueprintId}/variables:
+    get:
+      description: Returns the persisted variables for a blueprint. Secret variables
+        are identified by `is_secret` and never include their value.
+      operationId: getBlueprintVariables
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BlueprintConfigurationVariable'
+                type: array
+          description: Persisted blueprint variables
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get persisted blueprint variables
+      tags:
+      - Blueprint Main Calls
   /blueprint/{blueprintId}/update/preview:
     post:
       description: Dry-runs a blueprint update without persisting any changes. Returns
@@ -23668,6 +23701,23 @@ components:
       - environment_id
       - id
       - tag
+      type: object
+    BlueprintConfigurationVariable:
+      example:
+        is_secret: true
+        name: name
+        value: value
+      properties:
+        name:
+          type: string
+        value:
+          description: Omitted for secret variables.
+          type: string
+        is_secret:
+          type: boolean
+      required:
+      - is_secret
+      - name
       type: object
     BlueprintCreationResponse:
       description: "Answer to a blueprint creation: the blueprint exists and an engine\

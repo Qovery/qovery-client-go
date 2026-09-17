@@ -187,6 +187,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsAPI* | [**DeployBlueprint**](docs/BlueprintMainCallsAPI.md#deployblueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 *BlueprintMainCallsAPI* | [**GetBlueprint**](docs/BlueprintMainCallsAPI.md#getblueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+*BlueprintMainCallsAPI* | [**GetBlueprintVariables**](docs/BlueprintMainCallsAPI.md#getblueprintvariables) | **Get** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 *BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsAPI* | [**UpdateBlueprint**](docs/BlueprintMainCallsAPI.md#updateblueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
 *CloudProviderAPI* | [**ListAWSEKSInstanceType**](docs/CloudProviderAPI.md#listawseksinstancetype) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
@@ -767,6 +768,7 @@ Class | Method | HTTP request | Description
  - [BillingInfoRequest](docs/BillingInfoRequest.md)
  - [BillingStatus](docs/BillingStatus.md)
  - [BlueprintCatalogResponse](docs/BlueprintCatalogResponse.md)
+ - [BlueprintConfigurationVariable](docs/BlueprintConfigurationVariable.md)
  - [BlueprintCreateRequest](docs/BlueprintCreateRequest.md)
  - [BlueprintCreationResponse](docs/BlueprintCreationResponse.md)
  - [BlueprintDeploymentAckResponse](docs/BlueprintDeploymentAckResponse.md)

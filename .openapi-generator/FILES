@@ -245,6 +245,7 @@ docs/BillingInfoRequest.md
 docs/BillingStatus.md
 docs/BlueprintCatalogAPI.md
 docs/BlueprintCatalogResponse.md
+docs/BlueprintConfigurationVariable.md
 docs/BlueprintCreateRequest.md
 docs/BlueprintCreationResponse.md
 docs/BlueprintDeploymentAckResponse.md
@@ -1221,6 +1222,7 @@ model_billing_info.go
 model_billing_info_request.go
 model_billing_status.go
 model_blueprint_catalog_response.go
+model_blueprint_configuration_variable.go
 model_blueprint_create_request.go
 model_blueprint_creation_response.go
 model_blueprint_deployment_ack_response.go
