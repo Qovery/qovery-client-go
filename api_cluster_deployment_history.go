@@ -44,7 +44,7 @@ func (r ApiListClusterDeploymentHistoryV2Request) Execute() (*ClusterDeploymentH
 /*
 ListClusterDeploymentHistoryV2 List cluster deployments
 
-List previous and current cluster deployments. It returns actual deployments only: dry-runs and stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
+List previous and current cluster deployment operations. It returns applied deployments and dry-runs; stop/delete operations are excluded. By default it returns the 20 last results. Use the pageSize query parameter to adjust the number of returned results
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID

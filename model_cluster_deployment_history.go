@@ -26,6 +26,7 @@ type ClusterDeploymentHistory struct {
 	Status               StateEnum                            `json:"status"`
 	ActionStatus         DeploymentHistoryActionStatus        `json:"action_status"`
 	TriggerAction        DeploymentHistoryTriggerAction       `json:"trigger_action"`
+	IsDryRun             bool                                 `json:"is_dry_run"`
 	Reason               string                               `json:"reason"`
 	TotalDuration        NullableString                       `json:"total_duration,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -37,13 +38,14 @@ type _ClusterDeploymentHistory ClusterDeploymentHistory
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, reason string) *ClusterDeploymentHistory {
+func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, isDryRun bool, reason string) *ClusterDeploymentHistory {
 	this := ClusterDeploymentHistory{}
 	this.Identifier = identifier
 	this.AuditingData = auditingData
 	this.Status = status
 	this.ActionStatus = actionStatus
 	this.TriggerAction = triggerAction
+	this.IsDryRun = isDryRun
 	this.Reason = reason
 	return &this
 }
@@ -176,6 +178,30 @@ func (o *ClusterDeploymentHistory) SetTriggerAction(v DeploymentHistoryTriggerAc
 	o.TriggerAction = v
 }
 
+// GetIsDryRun returns the IsDryRun field value
+func (o *ClusterDeploymentHistory) GetIsDryRun() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.IsDryRun
+}
+
+// GetIsDryRunOk returns a tuple with the IsDryRun field value
+// and a boolean to check if the value has been set.
+func (o *ClusterDeploymentHistory) GetIsDryRunOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.IsDryRun, true
+}
+
+// SetIsDryRun sets field value
+func (o *ClusterDeploymentHistory) SetIsDryRun(v bool) {
+	o.IsDryRun = v
+}
+
 // GetReason returns the Reason field value
 func (o *ClusterDeploymentHistory) GetReason() string {
 	if o == nil {
@@ -258,6 +284,7 @@ func (o ClusterDeploymentHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["action_status"] = o.ActionStatus
 	toSerialize["trigger_action"] = o.TriggerAction
+	toSerialize["is_dry_run"] = o.IsDryRun
 	toSerialize["reason"] = o.Reason
 	if o.TotalDuration.IsSet() {
 		toSerialize["total_duration"] = o.TotalDuration.Get()
@@ -280,6 +307,7 @@ func (o *ClusterDeploymentHistory) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"action_status",
 		"trigger_action",
+		"is_dry_run",
 		"reason",
 	}
 
@@ -315,6 +343,7 @@ func (o *ClusterDeploymentHistory) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "action_status")
 		delete(additionalProperties, "trigger_action")
+		delete(additionalProperties, "is_dry_run")
 		delete(additionalProperties, "reason")
 		delete(additionalProperties, "total_duration")
 		o.AdditionalProperties = additionalProperties

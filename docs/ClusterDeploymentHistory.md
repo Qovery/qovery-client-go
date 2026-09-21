@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Status** | [**StateEnum**](StateEnum.md) |  | 
 **ActionStatus** | [**DeploymentHistoryActionStatus**](DeploymentHistoryActionStatus.md) |  | 
 **TriggerAction** | [**DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 
+**IsDryRun** | **bool** |  | 
 **Reason** | **string** |  | 
 **TotalDuration** | Pointer to **NullableString** |  | [optional] 
 
@@ -16,7 +17,7 @@ Name | Type | Description | Notes
 
 ### NewClusterDeploymentHistory
 
-`func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, reason string, ) *ClusterDeploymentHistory`
+`func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, isDryRun bool, reason string, ) *ClusterDeploymentHistory`
 
 NewClusterDeploymentHistory instantiates a new ClusterDeploymentHistory object
 This constructor will assign default values to properties that have it defined,
@@ -129,6 +130,26 @@ and a boolean to check if the value has been set.
 `func (o *ClusterDeploymentHistory) SetTriggerAction(v DeploymentHistoryTriggerAction)`
 
 SetTriggerAction sets TriggerAction field to given value.
+
+
+### GetIsDryRun
+
+`func (o *ClusterDeploymentHistory) GetIsDryRun() bool`
+
+GetIsDryRun returns the IsDryRun field if non-nil, zero value otherwise.
+
+### GetIsDryRunOk
+
+`func (o *ClusterDeploymentHistory) GetIsDryRunOk() (*bool, bool)`
+
+GetIsDryRunOk returns a tuple with the IsDryRun field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDryRun
+
+`func (o *ClusterDeploymentHistory) SetIsDryRun(v bool)`
+
+SetIsDryRun sets IsDryRun field to given value.
 
 
 ### GetReason

@@ -2897,10 +2897,10 @@ paths:
       - Clusters
   /organization/{organizationId}/cluster/{clusterId}/deploymentHistoryV2:
     get:
-      description: "List previous and current cluster deployments. It returns actual\
-        \ deployments only: dry-runs and stop/delete operations are excluded. By default\
-        \ it returns the 20 last results. Use the pageSize query parameter to adjust\
-        \ the number of returned results"
+      description: List previous and current cluster deployment operations. It returns
+        applied deployments and dry-runs; stop/delete operations are excluded. By
+        default it returns the 20 last results. Use the pageSize query parameter to
+        adjust the number of returned results
       operationId: listClusterDeploymentHistoryV2
       parameters:
       - description: Organization ID
@@ -29620,6 +29620,7 @@ components:
         reason: UNSPECIFIED
         total_duration: total_duration
         trigger_action: DEPLOY
+        is_dry_run: true
         status: BUILDING
         action_status: QUEUED
       properties:
@@ -29633,6 +29634,8 @@ components:
           $ref: '#/components/schemas/DeploymentHistoryActionStatus'
         trigger_action:
           $ref: '#/components/schemas/DeploymentHistoryTriggerAction'
+        is_dry_run:
+          type: boolean
         reason:
           enum:
           - UNSPECIFIED
@@ -29646,6 +29649,7 @@ components:
       - action_status
       - auditing_data
       - identifier
+      - is_dry_run
       - reason
       - status
       - trigger_action
@@ -29674,6 +29678,7 @@ components:
           reason: UNSPECIFIED
           total_duration: total_duration
           trigger_action: DEPLOY
+          is_dry_run: true
           status: BUILDING
           action_status: QUEUED
         - identifier:
@@ -29688,6 +29693,7 @@ components:
           reason: UNSPECIFIED
           total_duration: total_duration
           trigger_action: DEPLOY
+          is_dry_run: true
           status: BUILDING
           action_status: QUEUED
         page_size: 20
