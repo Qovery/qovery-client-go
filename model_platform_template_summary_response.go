@@ -21,11 +21,12 @@ var _ MappedNullable = &PlatformTemplateSummaryResponse{}
 
 // PlatformTemplateSummaryResponse struct for PlatformTemplateSummaryResponse
 type PlatformTemplateSummaryResponse struct {
-	Key                  string                          `json:"key"`
-	Version              string                          `json:"version"`
-	Status               PlatformTemplateReleaseStatus   `json:"status"`
-	Description          NullableString                  `json:"description,omitempty"`
-	Layers               []PlatformTemplateLayerResponse `json:"layers"`
+	Key                  string                                                    `json:"key"`
+	Version              string                                                    `json:"version"`
+	Status               PlatformTemplateReleaseStatus                             `json:"status"`
+	Description          NullableString                                            `json:"description,omitempty"`
+	BootstrapComponent   NullablePlatformTemplateSummaryResponseBootstrapComponent `json:"bootstrapComponent,omitempty"`
+	Layers               []PlatformTemplateLayerResponse                           `json:"layers"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -167,6 +168,49 @@ func (o *PlatformTemplateSummaryResponse) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetBootstrapComponent returns the BootstrapComponent field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *PlatformTemplateSummaryResponse) GetBootstrapComponent() PlatformTemplateSummaryResponseBootstrapComponent {
+	if o == nil || IsNil(o.BootstrapComponent.Get()) {
+		var ret PlatformTemplateSummaryResponseBootstrapComponent
+		return ret
+	}
+	return *o.BootstrapComponent.Get()
+}
+
+// GetBootstrapComponentOk returns a tuple with the BootstrapComponent field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *PlatformTemplateSummaryResponse) GetBootstrapComponentOk() (*PlatformTemplateSummaryResponseBootstrapComponent, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BootstrapComponent.Get(), o.BootstrapComponent.IsSet()
+}
+
+// HasBootstrapComponent returns a boolean if a field has been set.
+func (o *PlatformTemplateSummaryResponse) HasBootstrapComponent() bool {
+	if o != nil && o.BootstrapComponent.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBootstrapComponent gets a reference to the given NullablePlatformTemplateSummaryResponseBootstrapComponent and assigns it to the BootstrapComponent field.
+func (o *PlatformTemplateSummaryResponse) SetBootstrapComponent(v PlatformTemplateSummaryResponseBootstrapComponent) {
+	o.BootstrapComponent.Set(&v)
+}
+
+// SetBootstrapComponentNil sets the value for BootstrapComponent to be an explicit nil
+func (o *PlatformTemplateSummaryResponse) SetBootstrapComponentNil() {
+	o.BootstrapComponent.Set(nil)
+}
+
+// UnsetBootstrapComponent ensures that no value is present for BootstrapComponent, not even an explicit nil
+func (o *PlatformTemplateSummaryResponse) UnsetBootstrapComponent() {
+	o.BootstrapComponent.Unset()
+}
+
 // GetLayers returns the Layers field value
 func (o *PlatformTemplateSummaryResponse) GetLayers() []PlatformTemplateLayerResponse {
 	if o == nil {
@@ -206,6 +250,9 @@ func (o PlatformTemplateSummaryResponse) ToMap() (map[string]interface{}, error)
 	toSerialize["status"] = o.Status
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
+	}
+	if o.BootstrapComponent.IsSet() {
+		toSerialize["bootstrapComponent"] = o.BootstrapComponent.Get()
 	}
 	toSerialize["layers"] = o.Layers
 
@@ -258,6 +305,7 @@ func (o *PlatformTemplateSummaryResponse) UnmarshalJSON(data []byte) (err error)
 		delete(additionalProperties, "version")
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "bootstrapComponent")
 		delete(additionalProperties, "layers")
 		o.AdditionalProperties = additionalProperties
 	}

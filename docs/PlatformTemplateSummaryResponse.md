@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Version** | **string** |  | 
 **Status** | [**PlatformTemplateReleaseStatus**](PlatformTemplateReleaseStatus.md) |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
+**BootstrapComponent** | Pointer to [**NullablePlatformTemplateSummaryResponseBootstrapComponent**](PlatformTemplateSummaryResponseBootstrapComponent.md) |  | [optional] 
 **Layers** | [**[]PlatformTemplateLayerResponse**](PlatformTemplateLayerResponse.md) |  | 
 
 ## Methods
@@ -124,6 +125,41 @@ HasDescription returns a boolean if a field has been set.
 `func (o *PlatformTemplateSummaryResponse) UnsetDescription()`
 
 UnsetDescription ensures that no value is present for Description, not even an explicit nil
+### GetBootstrapComponent
+
+`func (o *PlatformTemplateSummaryResponse) GetBootstrapComponent() PlatformTemplateSummaryResponseBootstrapComponent`
+
+GetBootstrapComponent returns the BootstrapComponent field if non-nil, zero value otherwise.
+
+### GetBootstrapComponentOk
+
+`func (o *PlatformTemplateSummaryResponse) GetBootstrapComponentOk() (*PlatformTemplateSummaryResponseBootstrapComponent, bool)`
+
+GetBootstrapComponentOk returns a tuple with the BootstrapComponent field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBootstrapComponent
+
+`func (o *PlatformTemplateSummaryResponse) SetBootstrapComponent(v PlatformTemplateSummaryResponseBootstrapComponent)`
+
+SetBootstrapComponent sets BootstrapComponent field to given value.
+
+### HasBootstrapComponent
+
+`func (o *PlatformTemplateSummaryResponse) HasBootstrapComponent() bool`
+
+HasBootstrapComponent returns a boolean if a field has been set.
+
+### SetBootstrapComponentNil
+
+`func (o *PlatformTemplateSummaryResponse) SetBootstrapComponentNil(b bool)`
+
+ SetBootstrapComponentNil sets the value for BootstrapComponent to be an explicit nil
+
+### UnsetBootstrapComponent
+`func (o *PlatformTemplateSummaryResponse) UnsetBootstrapComponent()`
+
+UnsetBootstrapComponent ensures that no value is present for BootstrapComponent, not even an explicit nil
 ### GetLayers
 
 `func (o *PlatformTemplateSummaryResponse) GetLayers() []PlatformTemplateLayerResponse`

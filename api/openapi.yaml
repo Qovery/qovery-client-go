@@ -21384,7 +21384,7 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21396,56 +21396,10 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21457,54 +21411,8 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
             modes:
             - QOVERY_MANAGED
@@ -21520,7 +21428,7 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21532,56 +21440,10 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21593,54 +21455,8 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
             modes:
             - QOVERY_MANAGED
@@ -21655,13 +21471,75 @@ components:
           description: description
           version: version
           key: key
+          bootstrapComponent:
+            kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
+              description: description
+              label: label
+              sensitive: true
+              type: string
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
+              description: description
+              label: label
+              sensitive: true
+              type: string
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
           status: DRAFT
         - layers:
           - componentKeys:
             - componentKeys
             - componentKeys
             components:
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21673,56 +21551,10 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21734,54 +21566,8 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
             modes:
             - QOVERY_MANAGED
@@ -21797,7 +21583,7 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21809,56 +21595,10 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
-            - kind: HELM
+            - kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21870,54 +21610,8 @@ components:
                 sourceComponentKey: sourceComponentKey
               description: description
               fields:
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
-              - defaultValue: defaultValue
-                templates:
-                - id: id
-                  label: label
-                  value: value
-                - id: id
-                  label: label
-                  value: value
-                format: kubernetes-resource-yaml
-                description: description
-                label: label
-                sensitive: true
-                type: string
-                constraints:
-                  allowedValues:
-                  - allowedValues
-                  - allowedValues
-                  min: 0
-                  max: 6
-                  minLength: 1
-                  pattern: pattern
-                  maxLength: 5
-                key: key
-                required: true
+              - null
+              - null
               key: key
             modes:
             - QOVERY_MANAGED
@@ -21932,6 +21626,68 @@ components:
           description: description
           version: version
           key: key
+          bootstrapComponent:
+            kind: HELM
+            configurationSections:
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            - fieldKeys:
+              - fieldKeys
+              - fieldKeys
+              sourceComponentKey: sourceComponentKey
+            description: description
+            fields:
+            - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
+              description: description
+              label: label
+              sensitive: true
+              type: string
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            - defaultValue: defaultValue
+              templates:
+              - id: id
+                label: label
+                value: value
+              - id: id
+                label: label
+                value: value
+              format: kubernetes-resource-yaml
+              description: description
+              label: label
+              sensitive: true
+              type: string
+              constraints:
+                allowedValues:
+                - allowedValues
+                - allowedValues
+                min: 0
+                max: 6
+                minLength: 1
+                pattern: pattern
+                maxLength: 5
+              key: key
+              required: true
+            key: key
           status: DRAFT
       properties:
         results:
@@ -21948,7 +21704,7 @@ components:
           - componentKeys
           - componentKeys
           components:
-          - kind: HELM
+          - kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -21960,56 +21716,10 @@ components:
               sourceComponentKey: sourceComponentKey
             description: description
             fields:
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
+            - null
+            - null
             key: key
-          - kind: HELM
+          - kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22021,54 +21731,8 @@ components:
               sourceComponentKey: sourceComponentKey
             description: description
             fields:
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
+            - null
+            - null
             key: key
           modes:
           - QOVERY_MANAGED
@@ -22084,7 +21748,7 @@ components:
           - componentKeys
           - componentKeys
           components:
-          - kind: HELM
+          - kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22096,56 +21760,10 @@ components:
               sourceComponentKey: sourceComponentKey
             description: description
             fields:
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
+            - null
+            - null
             key: key
-          - kind: HELM
+          - kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22157,54 +21775,8 @@ components:
               sourceComponentKey: sourceComponentKey
             description: description
             fields:
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
-            - defaultValue: defaultValue
-              templates:
-              - id: id
-                label: label
-                value: value
-              - id: id
-                label: label
-                value: value
-              format: kubernetes-resource-yaml
-              description: description
-              label: label
-              sensitive: true
-              type: string
-              constraints:
-                allowedValues:
-                - allowedValues
-                - allowedValues
-                min: 0
-                max: 6
-                minLength: 1
-                pattern: pattern
-                maxLength: 5
-              key: key
-              required: true
+            - null
+            - null
             key: key
           modes:
           - QOVERY_MANAGED
@@ -22219,6 +21791,68 @@ components:
         description: description
         version: version
         key: key
+        bootstrapComponent:
+          kind: HELM
+          configurationSections:
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
+          - fieldKeys:
+            - fieldKeys
+            - fieldKeys
+            sourceComponentKey: sourceComponentKey
+          description: description
+          fields:
+          - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
+            description: description
+            label: label
+            sensitive: true
+            type: string
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          - defaultValue: defaultValue
+            templates:
+            - id: id
+              label: label
+              value: value
+            - id: id
+              label: label
+              value: value
+            format: kubernetes-resource-yaml
+            description: description
+            label: label
+            sensitive: true
+            type: string
+            constraints:
+              allowedValues:
+              - allowedValues
+              - allowedValues
+              min: 0
+              max: 6
+              minLength: 1
+              pattern: pattern
+              maxLength: 5
+            key: key
+            required: true
+          key: key
         status: DRAFT
       properties:
         key:
@@ -22230,6 +21864,8 @@ components:
         description:
           nullable: true
           type: string
+        bootstrapComponent:
+          $ref: '#/components/schemas/PlatformTemplateSummaryResponse_bootstrapComponent'
         layers:
           items:
             $ref: '#/components/schemas/PlatformTemplateLayerResponse'
@@ -22252,7 +21888,7 @@ components:
         - componentKeys
         - componentKeys
         components:
-        - kind: HELM
+        - kind: null
           configurationSections:
           - fieldKeys:
             - fieldKeys
@@ -22264,56 +21900,10 @@ components:
             sourceComponentKey: sourceComponentKey
           description: description
           fields:
-          - defaultValue: defaultValue
-            templates:
-            - id: id
-              label: label
-              value: value
-            - id: id
-              label: label
-              value: value
-            format: kubernetes-resource-yaml
-            description: description
-            label: label
-            sensitive: true
-            type: string
-            constraints:
-              allowedValues:
-              - allowedValues
-              - allowedValues
-              min: 0
-              max: 6
-              minLength: 1
-              pattern: pattern
-              maxLength: 5
-            key: key
-            required: true
-          - defaultValue: defaultValue
-            templates:
-            - id: id
-              label: label
-              value: value
-            - id: id
-              label: label
-              value: value
-            format: kubernetes-resource-yaml
-            description: description
-            label: label
-            sensitive: true
-            type: string
-            constraints:
-              allowedValues:
-              - allowedValues
-              - allowedValues
-              min: 0
-              max: 6
-              minLength: 1
-              pattern: pattern
-              maxLength: 5
-            key: key
-            required: true
+          - null
+          - null
           key: key
-        - kind: HELM
+        - kind: null
           configurationSections:
           - fieldKeys:
             - fieldKeys
@@ -22325,54 +21915,8 @@ components:
             sourceComponentKey: sourceComponentKey
           description: description
           fields:
-          - defaultValue: defaultValue
-            templates:
-            - id: id
-              label: label
-              value: value
-            - id: id
-              label: label
-              value: value
-            format: kubernetes-resource-yaml
-            description: description
-            label: label
-            sensitive: true
-            type: string
-            constraints:
-              allowedValues:
-              - allowedValues
-              - allowedValues
-              min: 0
-              max: 6
-              minLength: 1
-              pattern: pattern
-              maxLength: 5
-            key: key
-            required: true
-          - defaultValue: defaultValue
-            templates:
-            - id: id
-              label: label
-              value: value
-            - id: id
-              label: label
-              value: value
-            format: kubernetes-resource-yaml
-            description: description
-            label: label
-            sensitive: true
-            type: string
-            constraints:
-              allowedValues:
-              - allowedValues
-              - allowedValues
-              min: 0
-              max: 6
-              minLength: 1
-              pattern: pattern
-              maxLength: 5
-            key: key
-            required: true
+          - null
+          - null
           key: key
         modes:
         - QOVERY_MANAGED
@@ -22440,7 +21984,7 @@ components:
       type: string
     PlatformTemplateComponentResponse:
       example:
-        kind: HELM
+        kind: null
         configurationSections:
         - fieldKeys:
           - fieldKeys
@@ -22452,54 +21996,8 @@ components:
           sourceComponentKey: sourceComponentKey
         description: description
         fields:
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
-          description: description
-          label: label
-          sensitive: true
-          type: string
-          constraints:
-            allowedValues:
-            - allowedValues
-            - allowedValues
-            min: 0
-            max: 6
-            minLength: 1
-            pattern: pattern
-            maxLength: 5
-          key: key
-          required: true
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
-          description: description
-          label: label
-          sensitive: true
-          type: string
-          constraints:
-            allowedValues:
-            - allowedValues
-            - allowedValues
-            min: 0
-            max: 6
-            minLength: 1
-            pattern: pattern
-            maxLength: 5
-          key: key
-          required: true
+        - null
+        - null
         key: key
       properties:
         key:
@@ -22998,6 +22496,7 @@ components:
         componentOutputs:
           key:
             key: componentOutputs
+        replaceProfileConfig: false
         profileConfig:
           key: ""
       properties:
@@ -23005,6 +22504,13 @@ components:
           additionalProperties: {}
           description: Configuration values keyed by their catalog field name
           type: object
+        replaceProfileConfig:
+          default: false
+          description: "For an existing cluster, validate profileConfig as a complete\
+            \ draft instead of merging it with saved values. Omitted keys are reset\
+            \ to their catalog defaults. Template previews already use a complete\
+            \ draft and ignore this flag."
+          type: boolean
         clusterInputs:
           additionalProperties:
             type: string
@@ -50888,6 +50394,74 @@ components:
             \ stops waiting for that job and abandons it immediately."
           type: boolean
       type: object
+    PlatformTemplateSummaryResponse_bootstrapComponent:
+      allOf:
+      - $ref: '#/components/schemas/PlatformTemplateComponentResponse'
+      description: "Mandatory bootstrap component and its configurable fields, when\
+        \ declared by the template."
+      example:
+        kind: HELM
+        configurationSections:
+        - fieldKeys:
+          - fieldKeys
+          - fieldKeys
+          sourceComponentKey: sourceComponentKey
+        - fieldKeys:
+          - fieldKeys
+          - fieldKeys
+          sourceComponentKey: sourceComponentKey
+        description: description
+        fields:
+        - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
+          description: description
+          label: label
+          sensitive: true
+          type: string
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        - defaultValue: defaultValue
+          templates:
+          - id: id
+            label: label
+            value: value
+          - id: id
+            label: label
+            value: value
+          format: kubernetes-resource-yaml
+          description: description
+          label: label
+          sensitive: true
+          type: string
+          constraints:
+            allowedValues:
+            - allowedValues
+            - allowedValues
+            min: 0
+            max: 6
+            minLength: 1
+            pattern: pattern
+            maxLength: 5
+          key: key
+          required: true
+        key: key
+      nullable: true
     BlueprintDetailsResponse_latest_deployment:
       allOf:
       - $ref: '#/components/schemas/BlueprintDeploymentStatusResponse'

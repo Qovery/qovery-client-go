@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ProfileConfig** | Pointer to **map[string]interface{}** | Configuration values keyed by their catalog field name | [optional] 
+**ReplaceProfileConfig** | Pointer to **bool** | For an existing cluster, validate profileConfig as a complete draft instead of merging it with saved values. Omitted keys are reset to their catalog defaults. Template previews already use a complete draft and ignore this flag. | [optional] [default to false]
 **ClusterInputs** | Pointer to **map[string]string** |  | [optional] 
 **ComponentOutputs** | Pointer to **map[string]map[string]string** | String values keyed first by component key and then by input key | [optional] 
 
@@ -51,6 +52,31 @@ SetProfileConfig sets ProfileConfig field to given value.
 `func (o *PlatformComponentConfigurationPreviewRequest) HasProfileConfig() bool`
 
 HasProfileConfig returns a boolean if a field has been set.
+
+### GetReplaceProfileConfig
+
+`func (o *PlatformComponentConfigurationPreviewRequest) GetReplaceProfileConfig() bool`
+
+GetReplaceProfileConfig returns the ReplaceProfileConfig field if non-nil, zero value otherwise.
+
+### GetReplaceProfileConfigOk
+
+`func (o *PlatformComponentConfigurationPreviewRequest) GetReplaceProfileConfigOk() (*bool, bool)`
+
+GetReplaceProfileConfigOk returns a tuple with the ReplaceProfileConfig field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReplaceProfileConfig
+
+`func (o *PlatformComponentConfigurationPreviewRequest) SetReplaceProfileConfig(v bool)`
+
+SetReplaceProfileConfig sets ReplaceProfileConfig field to given value.
+
+### HasReplaceProfileConfig
+
+`func (o *PlatformComponentConfigurationPreviewRequest) HasReplaceProfileConfig() bool`
+
+HasReplaceProfileConfig returns a boolean if a field has been set.
 
 ### GetClusterInputs
 

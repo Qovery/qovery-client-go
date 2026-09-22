@@ -1373,6 +1373,7 @@ Class | Method | HTTP request | Description
  - [PlatformTemplateLayerResponse](docs/PlatformTemplateLayerResponse.md)
  - [PlatformTemplateReleaseStatus](docs/PlatformTemplateReleaseStatus.md)
  - [PlatformTemplateSummaryResponse](docs/PlatformTemplateSummaryResponse.md)
+ - [PlatformTemplateSummaryResponseBootstrapComponent](docs/PlatformTemplateSummaryResponseBootstrapComponent.md)
  - [PortProtocolEnum](docs/PortProtocolEnum.md)
  - [Probe](docs/Probe.md)
  - [ProbeType](docs/ProbeType.md)

@@ -22,7 +22,9 @@ var _ MappedNullable = &PlatformComponentConfigurationPreviewRequest{}
 type PlatformComponentConfigurationPreviewRequest struct {
 	// Configuration values keyed by their catalog field name
 	ProfileConfig map[string]interface{} `json:"profileConfig,omitempty"`
-	ClusterInputs *map[string]string     `json:"clusterInputs,omitempty"`
+	// For an existing cluster, validate profileConfig as a complete draft instead of merging it with saved values. Omitted keys are reset to their catalog defaults. Template previews already use a complete draft and ignore this flag.
+	ReplaceProfileConfig *bool              `json:"replaceProfileConfig,omitempty"`
+	ClusterInputs        *map[string]string `json:"clusterInputs,omitempty"`
 	// String values keyed first by component key and then by input key
 	ComponentOutputs     *map[string]map[string]string `json:"componentOutputs,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -36,6 +38,8 @@ type _PlatformComponentConfigurationPreviewRequest PlatformComponentConfiguratio
 // will change when the set of required properties is changed
 func NewPlatformComponentConfigurationPreviewRequest() *PlatformComponentConfigurationPreviewRequest {
 	this := PlatformComponentConfigurationPreviewRequest{}
+	var replaceProfileConfig bool = false
+	this.ReplaceProfileConfig = &replaceProfileConfig
 	return &this
 }
 
@@ -44,6 +48,8 @@ func NewPlatformComponentConfigurationPreviewRequest() *PlatformComponentConfigu
 // but it doesn't guarantee that properties required by API are set
 func NewPlatformComponentConfigurationPreviewRequestWithDefaults() *PlatformComponentConfigurationPreviewRequest {
 	this := PlatformComponentConfigurationPreviewRequest{}
+	var replaceProfileConfig bool = false
+	this.ReplaceProfileConfig = &replaceProfileConfig
 	return &this
 }
 
@@ -77,6 +83,38 @@ func (o *PlatformComponentConfigurationPreviewRequest) HasProfileConfig() bool {
 // SetProfileConfig gets a reference to the given map[string]interface{} and assigns it to the ProfileConfig field.
 func (o *PlatformComponentConfigurationPreviewRequest) SetProfileConfig(v map[string]interface{}) {
 	o.ProfileConfig = v
+}
+
+// GetReplaceProfileConfig returns the ReplaceProfileConfig field value if set, zero value otherwise.
+func (o *PlatformComponentConfigurationPreviewRequest) GetReplaceProfileConfig() bool {
+	if o == nil || IsNil(o.ReplaceProfileConfig) {
+		var ret bool
+		return ret
+	}
+	return *o.ReplaceProfileConfig
+}
+
+// GetReplaceProfileConfigOk returns a tuple with the ReplaceProfileConfig field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *PlatformComponentConfigurationPreviewRequest) GetReplaceProfileConfigOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReplaceProfileConfig) {
+		return nil, false
+	}
+	return o.ReplaceProfileConfig, true
+}
+
+// HasReplaceProfileConfig returns a boolean if a field has been set.
+func (o *PlatformComponentConfigurationPreviewRequest) HasReplaceProfileConfig() bool {
+	if o != nil && !IsNil(o.ReplaceProfileConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetReplaceProfileConfig gets a reference to the given bool and assigns it to the ReplaceProfileConfig field.
+func (o *PlatformComponentConfigurationPreviewRequest) SetReplaceProfileConfig(v bool) {
+	o.ReplaceProfileConfig = &v
 }
 
 // GetClusterInputs returns the ClusterInputs field value if set, zero value otherwise.
@@ -156,6 +194,9 @@ func (o PlatformComponentConfigurationPreviewRequest) ToMap() (map[string]interf
 	if !IsNil(o.ProfileConfig) {
 		toSerialize["profileConfig"] = o.ProfileConfig
 	}
+	if !IsNil(o.ReplaceProfileConfig) {
+		toSerialize["replaceProfileConfig"] = o.ReplaceProfileConfig
+	}
 	if !IsNil(o.ClusterInputs) {
 		toSerialize["clusterInputs"] = o.ClusterInputs
 	}
@@ -185,6 +226,7 @@ func (o *PlatformComponentConfigurationPreviewRequest) UnmarshalJSON(data []byte
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "profileConfig")
+		delete(additionalProperties, "replaceProfileConfig")
 		delete(additionalProperties, "clusterInputs")
 		delete(additionalProperties, "componentOutputs")
 		o.AdditionalProperties = additionalProperties

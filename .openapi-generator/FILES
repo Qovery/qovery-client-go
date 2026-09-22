@@ -919,6 +919,7 @@ docs/PlatformTemplateComponentResponse.md
 docs/PlatformTemplateLayerResponse.md
 docs/PlatformTemplateReleaseStatus.md
 docs/PlatformTemplateSummaryResponse.md
+docs/PlatformTemplateSummaryResponseBootstrapComponent.md
 docs/PortProtocolEnum.md
 docs/Probe.md
 docs/ProbeType.md
@@ -1827,6 +1828,7 @@ model_platform_template_component_response.go
 model_platform_template_layer_response.go
 model_platform_template_release_status.go
 model_platform_template_summary_response.go
+model_platform_template_summary_response_bootstrap_component.go
 model_port_protocol_enum.go
 model_probe.go
 model_probe_type.go
