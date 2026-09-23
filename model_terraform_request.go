@@ -38,6 +38,7 @@ type TerraformRequest struct {
 	DockerfileFragment   NullableTerraformRequestDockerfileFragment `json:"dockerfile_fragment,omitempty"`
 	// The blueprint ID the service has been created from
 	BlueprintId          NullableString `json:"blueprint_id,omitempty"`
+	BuildSettings        *BuildSettings `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -499,6 +500,38 @@ func (o *TerraformRequest) UnsetBlueprintId() {
 	o.BlueprintId.Unset()
 }
 
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *TerraformRequest) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformRequest) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *TerraformRequest) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *TerraformRequest) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
+}
+
 func (o TerraformRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -535,6 +568,9 @@ func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.BlueprintId.IsSet() {
 		toSerialize["blueprint_id"] = o.BlueprintId.Get()
+	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -602,6 +638,7 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "action_extra_arguments")
 		delete(additionalProperties, "dockerfile_fragment")
 		delete(additionalProperties, "blueprint_id")
+		delete(additionalProperties, "build_settings")
 		o.AdditionalProperties = additionalProperties
 	}
 

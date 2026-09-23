@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **BuildTimeoutMaxSec** | Pointer to **int32** | define the max timeout for the build | [optional] 
 **BuildCpuMaxInMilli** | Pointer to **int32** | define the max cpu resources (in milli) | [optional] 
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
-**BuildEphemeralStorageInGib** | Pointer to **int32** |  | [optional] 
+**BuildEphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage for the build (in GiB) | [optional] 
 **BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 

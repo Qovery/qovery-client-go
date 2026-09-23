@@ -40,15 +40,23 @@ type ApplicationAdvancedSettings struct {
 	DeploymentUpdateStrategyRollingUpdateMaxUnavailablePercent *int32 `json:"deployment.update_strategy.rolling_update.max_unavailable_percent,omitempty"`
 	// Define the percentage of the maximum number of pods that can be created over the desired number of pods
 	DeploymentUpdateStrategyRollingUpdateMaxSurgePercent *int32 `json:"deployment.update_strategy.rolling_update.max_surge_percent,omitempty"`
-	BuildTimeoutMaxSec                                   *int32 `json:"build.timeout_max_sec,omitempty"`
+	// Deprecated
+	BuildTimeoutMaxSec *int32 `json:"build.timeout_max_sec,omitempty"`
 	// define the max cpu resources (in milli)
+	// Deprecated
 	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
 	// define the max ram resources (in gib)
+	// Deprecated
 	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// disable buildkit registry cache during build
+	// Deprecated
 	BuildDisableBuildkitCache *bool `json:"build.disable_buildkit_cache,omitempty"`
 	// skip git submodules update when cloning the repository
-	BuildSkipGitSubmodules        *bool  `json:"build.skip_git_submodules,omitempty"`
+	// Deprecated
+	BuildSkipGitSubmodules *bool `json:"build.skip_git_submodules,omitempty"`
+	// Ephemeral storage for the build (in GiB)
+	// Deprecated
+	BuildEphemeralStorageInGib    *int32 `json:"build.ephemeral_storage_in_gib,omitempty"`
 	NetworkIngressProxyBodySizeMb *int32 `json:"network.ingress.proxy_body_size_mb,omitempty"`
 	// When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available
 	NetworkIngressForceSslRedirect *bool   `json:"network.ingress.force_ssl_redirect,omitempty"`
@@ -451,6 +459,7 @@ func (o *ApplicationAdvancedSettings) SetDeploymentUpdateStrategyRollingUpdateMa
 }
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		var ret int32
@@ -461,6 +470,7 @@ func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		return nil, false
@@ -478,11 +488,13 @@ func (o *ApplicationAdvancedSettings) HasBuildTimeoutMaxSec() bool {
 }
 
 // SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
+// Deprecated
 func (o *ApplicationAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 	o.BuildTimeoutMaxSec = &v
 }
 
 // GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		var ret int32
@@ -493,6 +505,7 @@ func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 
 // GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		return nil, false
@@ -510,11 +523,13 @@ func (o *ApplicationAdvancedSettings) HasBuildCpuMaxInMilli() bool {
 }
 
 // SetBuildCpuMaxInMilli gets a reference to the given int32 and assigns it to the BuildCpuMaxInMilli field.
+// Deprecated
 func (o *ApplicationAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
 	o.BuildCpuMaxInMilli = &v
 }
 
 // GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGib() int32 {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		var ret int32
@@ -525,6 +540,7 @@ func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGib() int32 {
 
 // GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		return nil, false
@@ -542,11 +558,13 @@ func (o *ApplicationAdvancedSettings) HasBuildRamMaxInGib() bool {
 }
 
 // SetBuildRamMaxInGib gets a reference to the given int32 and assigns it to the BuildRamMaxInGib field.
+// Deprecated
 func (o *ApplicationAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 	o.BuildRamMaxInGib = &v
 }
 
 // GetBuildDisableBuildkitCache returns the BuildDisableBuildkitCache field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCache() bool {
 	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
 		var ret bool
@@ -557,6 +575,7 @@ func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCache() bool {
 
 // GetBuildDisableBuildkitCacheOk returns a tuple with the BuildDisableBuildkitCache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildDisableBuildkitCacheOk() (*bool, bool) {
 	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
 		return nil, false
@@ -574,11 +593,13 @@ func (o *ApplicationAdvancedSettings) HasBuildDisableBuildkitCache() bool {
 }
 
 // SetBuildDisableBuildkitCache gets a reference to the given bool and assigns it to the BuildDisableBuildkitCache field.
+// Deprecated
 func (o *ApplicationAdvancedSettings) SetBuildDisableBuildkitCache(v bool) {
 	o.BuildDisableBuildkitCache = &v
 }
 
 // GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		var ret bool
@@ -589,6 +610,7 @@ func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 
 // GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *ApplicationAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		return nil, false
@@ -606,8 +628,44 @@ func (o *ApplicationAdvancedSettings) HasBuildSkipGitSubmodules() bool {
 }
 
 // SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+// Deprecated
 func (o *ApplicationAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
 	o.BuildSkipGitSubmodules = &v
+}
+
+// GetBuildEphemeralStorageInGib returns the BuildEphemeralStorageInGib field value if set, zero value otherwise.
+// Deprecated
+func (o *ApplicationAdvancedSettings) GetBuildEphemeralStorageInGib() int32 {
+	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
+		var ret int32
+		return ret
+	}
+	return *o.BuildEphemeralStorageInGib
+}
+
+// GetBuildEphemeralStorageInGibOk returns a tuple with the BuildEphemeralStorageInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *ApplicationAdvancedSettings) GetBuildEphemeralStorageInGibOk() (*int32, bool) {
+	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
+		return nil, false
+	}
+	return o.BuildEphemeralStorageInGib, true
+}
+
+// HasBuildEphemeralStorageInGib returns a boolean if a field has been set.
+func (o *ApplicationAdvancedSettings) HasBuildEphemeralStorageInGib() bool {
+	if o != nil && !IsNil(o.BuildEphemeralStorageInGib) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildEphemeralStorageInGib gets a reference to the given int32 and assigns it to the BuildEphemeralStorageInGib field.
+// Deprecated
+func (o *ApplicationAdvancedSettings) SetBuildEphemeralStorageInGib(v int32) {
+	o.BuildEphemeralStorageInGib = &v
 }
 
 // GetNetworkIngressProxyBodySizeMb returns the NetworkIngressProxyBodySizeMb field value if set, zero value otherwise.
@@ -1766,6 +1824,9 @@ func (o ApplicationAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildSkipGitSubmodules) {
 		toSerialize["build.skip_git_submodules"] = o.BuildSkipGitSubmodules
 	}
+	if !IsNil(o.BuildEphemeralStorageInGib) {
+		toSerialize["build.ephemeral_storage_in_gib"] = o.BuildEphemeralStorageInGib
+	}
 	if !IsNil(o.NetworkIngressProxyBodySizeMb) {
 		toSerialize["network.ingress.proxy_body_size_mb"] = o.NetworkIngressProxyBodySizeMb
 	}
@@ -1899,6 +1960,7 @@ func (o *ApplicationAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "build.disable_buildkit_cache")
 		delete(additionalProperties, "build.skip_git_submodules")
+		delete(additionalProperties, "build.ephemeral_storage_in_gib")
 		delete(additionalProperties, "network.ingress.proxy_body_size_mb")
 		delete(additionalProperties, "network.ingress.force_ssl_redirect")
 		delete(additionalProperties, "network.ingress.enable_cors")

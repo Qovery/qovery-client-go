@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
 **BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
+**BuildEphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage for the build (in GiB) | [optional] 
 **DeploymentTerminationGracePeriodSeconds** | Pointer to **int32** | define how long in seconds an application is supposed to be stopped gracefully | [optional] 
 **DeploymentAffinityNodeRequired** | Pointer to **map[string]string** | Set pod placement on specific Kubernetes nodes labels | [optional] 
 **JobDeleteTtlSecondsAfterFinished** | Pointer to **NullableInt32** |  | [optional] 
@@ -162,6 +163,31 @@ SetBuildSkipGitSubmodules sets BuildSkipGitSubmodules field to given value.
 `func (o *JobAdvancedSettings) HasBuildSkipGitSubmodules() bool`
 
 HasBuildSkipGitSubmodules returns a boolean if a field has been set.
+
+### GetBuildEphemeralStorageInGib
+
+`func (o *JobAdvancedSettings) GetBuildEphemeralStorageInGib() int32`
+
+GetBuildEphemeralStorageInGib returns the BuildEphemeralStorageInGib field if non-nil, zero value otherwise.
+
+### GetBuildEphemeralStorageInGibOk
+
+`func (o *JobAdvancedSettings) GetBuildEphemeralStorageInGibOk() (*int32, bool)`
+
+GetBuildEphemeralStorageInGibOk returns a tuple with the BuildEphemeralStorageInGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildEphemeralStorageInGib
+
+`func (o *JobAdvancedSettings) SetBuildEphemeralStorageInGib(v int32)`
+
+SetBuildEphemeralStorageInGib sets BuildEphemeralStorageInGib field to given value.
+
+### HasBuildEphemeralStorageInGib
+
+`func (o *JobAdvancedSettings) HasBuildEphemeralStorageInGib() bool`
+
+HasBuildEphemeralStorageInGib returns a boolean if a field has been set.
 
 ### GetDeploymentTerminationGracePeriodSeconds
 

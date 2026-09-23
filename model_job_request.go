@@ -49,7 +49,8 @@ type JobRequest struct {
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the job.
-	IconUri              *string `json:"icon_uri,omitempty"`
+	IconUri              *string        `json:"icon_uri,omitempty"`
+	BuildSettings        *BuildSettings `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -683,6 +684,38 @@ func (o *JobRequest) SetIconUri(v string) {
 	o.IconUri = &v
 }
 
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *JobRequest) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *JobRequest) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *JobRequest) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *JobRequest) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
+}
+
 func (o JobRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -742,6 +775,9 @@ func (o JobRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IconUri) {
 		toSerialize["icon_uri"] = o.IconUri
+	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -805,6 +841,7 @@ func (o *JobRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "annotations_groups")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
+		delete(additionalProperties, "build_settings")
 		o.AdditionalProperties = additionalProperties
 	}
 

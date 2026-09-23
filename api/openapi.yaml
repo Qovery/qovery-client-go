@@ -24730,7 +24730,7 @@ components:
       example:
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
-        network.ingress.send_timeout_seconds: 4
+        network.ingress.send_timeout_seconds: 7
         deployment.lifecycle.pre_stop_exec_command:
         - deployment.lifecycle.pre_stop_exec_command
         - deployment.lifecycle.pre_stop_exec_command
@@ -24741,11 +24741,11 @@ components:
         - deployment.lifecycle.post_start_exec_command
         deployment.update_strategy.type: RollingUpdate
         build.disable_buildkit_cache: true
-        hpa.memory.average_utilization_percent: 9
+        hpa.memory.average_utilization_percent: 6
         deployment.update_strategy.rolling_update.max_surge_percent: 1
-        network.ingress.keepalive_time_seconds: 3
+        network.ingress.keepalive_time_seconds: 2
         deployment.termination_grace_period_seconds: 0
-        network.ingress.grpc_send_timeout_seconds: 1
+        network.ingress.grpc_send_timeout_seconds: 6
         network.gateway_api.retry.retry_on: network.gateway_api.retry.retry_on
         network.ingress.denylist_source_range: network.ingress.denylist_source_range
         build.cpu_max_in_milli: 5
@@ -24757,21 +24757,21 @@ components:
         network.ingress.whitelist_source_range: network.ingress.whitelist_source_range
         build.ram_max_in_gib: 2
         network.ingress.basic_auth_env_var: network.ingress.basic_auth_env_var
-        network.ingress.proxy_body_size_mb: 7
+        network.ingress.proxy_body_size_mb: 9
         network.gateway_api.http_connection_idle_timeout_seconds: 0
         network.gateway_api.retry.per_try_timeout_seconds: 1
         deployment.topology_spread.zone: Disabled
         network.ingress.force_ssl_redirect: true
         network.ingress.cors_allow_headers: network.ingress.cors_allow_headers
         hpa.cpu.average_utilization_percent: 9
-        network.ingress.keepalive_timeout_seconds: 2
-        network.ingress.proxy_connect_timeout_seconds: 7
+        network.ingress.keepalive_timeout_seconds: 4
+        network.ingress.proxy_connect_timeout_seconds: 1
         network.ingress.proxy_buffering: network.ingress.proxy_buffering
-        network.ingress.proxy_buffer_size_kb: 9
+        network.ingress.proxy_buffer_size_kb: 3
         network.ingress.proxy_read_timeout_seconds: 1
         build.timeout_max_sec: 5
         network.gateway_api.http_request_timeout_seconds: 0
-        network.ingress.grpc_read_timeout_seconds: 6
+        network.ingress.grpc_read_timeout_seconds: 7
         security.read_only_root_filesystem: true
         deployment.update_strategy.rolling_update.max_unavailable_percent: 6
         network.gateway_api.retry.http_status_codes: network.gateway_api.retry.http_status_codes
@@ -24780,6 +24780,7 @@ components:
         build.skip_git_submodules: true
         network.ingress.extra_headers: "{\"X-Frame-Options\":\"DENY \",\"X-Content-Type-Options\"\
           :\"nosniff\"}"
+        build.ephemeral_storage_in_gib: 7
         network.ingress.cors_allow_methods: network.ingress.cors_allow_methods
       properties:
         deployment.custom_domain_check_enabled:
@@ -24853,19 +24854,28 @@ components:
             be created over the desired number of pods
           type: integer
         build.timeout_max_sec:
+          deprecated: true
           type: integer
         build.cpu_max_in_milli:
+          deprecated: true
           description: define the max cpu resources (in milli)
           type: integer
         build.ram_max_in_gib:
+          deprecated: true
           description: define the max ram resources (in gib)
           type: integer
         build.disable_buildkit_cache:
+          deprecated: true
           description: disable buildkit registry cache during build
           type: boolean
         build.skip_git_submodules:
+          deprecated: true
           description: skip git submodules update when cloning the repository
           type: boolean
+        build.ephemeral_storage_in_gib:
+          deprecated: true
+          description: Ephemeral storage for the build (in GiB)
+          type: integer
         network.ingress.proxy_body_size_mb:
           type: integer
         network.ingress.force_ssl_redirect:
@@ -25482,6 +25492,8 @@ components:
             nullable: true
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
         required:
         - healthchecks
         type: object
@@ -25537,9 +25549,7 @@ components:
                 port: 7
                 service: service
             timeout_seconds: 2
-        build_mode: DOCKER
         description: description
-        cpu: 1250
         max_running_instances: 6
         git_repository:
           root_path: /
@@ -25556,7 +25566,6 @@ components:
           mount_point: /mnt/images
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: FAST_SSD
-        dockerfile_path: dockerfile_path
         ports:
         - publicly_accessible: true
           protocol: HTTP
@@ -25576,15 +25585,26 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        gpu: 1
-        icon_uri: https://openapi-generator.tech
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         entrypoint: entrypoint
+        auto_preview: true
+        ephemeral_storage_in_gib: 10
+        build_mode: DOCKER
+        cpu: 1250
+        dockerfile_path: dockerfile_path
+        gpu: 1
+        build_settings:
+          ram_max_in_gib: 7
+          skip_git_submodules: false
+          cpu_max_in_milli: 2
+          disable_buildkit_cache: false
+          timeout_max_sec: 5
+          ephemeral_storage_in_gib: 9
+        icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
-        auto_preview: true
         arguments:
         - arguments
         - arguments
@@ -25610,7 +25630,6 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
-        ephemeral_storage_in_gib: 10
     ApplicationGitRepository:
       example:
         owner: John Doe
@@ -25928,6 +25947,8 @@ components:
             nullable: true
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
         required:
         - git_repository
         - healthchecks
@@ -25985,9 +26006,7 @@ components:
                 port: 7
                 service: service
             timeout_seconds: 2
-        build_mode: DOCKER
         description: description
-        cpu: 1250
         max_running_instances: 6
         git_repository:
           root_path: /
@@ -26004,7 +26023,6 @@ components:
           mount_point: /mnt/images
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: FAST_SSD
-        dockerfile_path: dockerfile_path
         ports:
         - publicly_accessible: true
           protocol: HTTP
@@ -26024,15 +26042,26 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        gpu: 1
-        icon_uri: https://openapi-generator.tech
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         entrypoint: entrypoint
+        auto_preview: true
+        ephemeral_storage_in_gib: 10
+        build_mode: DOCKER
+        cpu: 1250
+        dockerfile_path: dockerfile_path
+        gpu: 1
+        build_settings:
+          ram_max_in_gib: 7
+          skip_git_submodules: false
+          cpu_max_in_milli: 2
+          disable_buildkit_cache: false
+          timeout_max_sec: 5
+          ephemeral_storage_in_gib: 9
+        icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
-        auto_preview: true
         arguments:
         - arguments
         - arguments
@@ -26058,7 +26087,6 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
-        ephemeral_storage_in_gib: 10
     ApplicationResponseList:
       example:
         results:
@@ -26961,6 +26989,44 @@ components:
       enum:
       - DOCKER
       type: string
+    BuildSettings:
+      description: |
+        Build configuration settings for the service. When sent, it replaces all six values
+        entirely — omitted properties fall back to their defaults, not to the service's current values.
+      example:
+        ram_max_in_gib: 7
+        skip_git_submodules: false
+        cpu_max_in_milli: 2
+        disable_buildkit_cache: false
+        timeout_max_sec: 5
+        ephemeral_storage_in_gib: 9
+      properties:
+        timeout_max_sec:
+          default: 1800
+          description: Maximum build timeout in seconds
+          type: integer
+        cpu_max_in_milli:
+          default: 4000
+          description: Maximum CPU resources for the build (in millicores)
+          type: integer
+        ram_max_in_gib:
+          default: 8
+          description: Maximum RAM resources for the build (in GiB)
+          type: integer
+        ephemeral_storage_in_gib:
+          description: "Ephemeral storage for the build (in GiB). When null, the platform\
+            \ default is used."
+          nullable: true
+          type: integer
+        disable_buildkit_cache:
+          default: false
+          description: Disable buildkit registry cache during build
+          type: boolean
+        skip_git_submodules:
+          default: false
+          description: Skip git submodules update when cloning the repository
+          type: boolean
+      type: object
     CloneEnvironmentRequest:
       example:
         mode: PRODUCTION
@@ -37744,6 +37810,8 @@ components:
             type: string
             x-stoplight:
               id: k3gangiisgxpc
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
         required:
         - healthchecks
         - name
@@ -37817,6 +37885,13 @@ components:
             dockerfile_path: dockerfile_path
         max_nb_restart: 0
         gpu: 1
+        build_settings:
+          ram_max_in_gib: 7
+          skip_git_submodules: false
+          cpu_max_in_milli: 2
+          disable_buildkit_cache: false
+          timeout_max_sec: 5
+          ephemeral_storage_in_gib: 9
         icon_uri: https://openapi-generator.tech
         schedule:
           on_start:
@@ -38160,35 +38235,45 @@ components:
       example:
         deployment.affinity.node.required:
           key: deployment.affinity.node.required
-        job.delete_ttl_seconds_after_finished: 5
-        cronjob.success_jobs_history_limit: 7
+        job.delete_ttl_seconds_after_finished: 2
+        cronjob.success_jobs_history_limit: 9
         build.disable_buildkit_cache: true
         deployment.termination_grace_period_seconds: 5
         build.timeout_max_sec: 0
         build.cpu_max_in_milli: 6
         security.read_only_root_filesystem: true
         security.service_account_name: security.service_account_name
-        cronjob.failed_jobs_history_limit: 2
+        cronjob.failed_jobs_history_limit: 7
         security.automount_service_account_token: true
         cronjob.concurrency_policy: cronjob.concurrency_policy
         build.skip_git_submodules: true
+        build.ephemeral_storage_in_gib: 5
         build.ram_max_in_gib: 1
       properties:
         build.timeout_max_sec:
+          deprecated: true
           description: define the max timeout for the build
           type: integer
         build.cpu_max_in_milli:
+          deprecated: true
           description: define the max cpu resources (in milli)
           type: integer
         build.ram_max_in_gib:
+          deprecated: true
           description: define the max ram resources (in gib)
           type: integer
         build.disable_buildkit_cache:
+          deprecated: true
           description: disable buildkit registry cache during build
           type: boolean
         build.skip_git_submodules:
+          deprecated: true
           description: skip git submodules update when cloning the repository
           type: boolean
+        build.ephemeral_storage_in_gib:
+          deprecated: true
+          description: Ephemeral storage for the build (in GiB)
+          type: integer
         deployment.termination_grace_period_seconds:
           description: define how long in seconds an application is supposed to be
             stopped gracefully
@@ -45126,6 +45211,13 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
+        build_settings:
+          ram_max_in_gib: 7
+          skip_git_submodules: false
+          cpu_max_in_milli: 2
+          disable_buildkit_cache: false
+          timeout_max_sec: 5
+          ephemeral_storage_in_gib: 9
         icon_uri: https://openapi-generator.tech
         blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_variables_source:
@@ -45216,6 +45308,8 @@ components:
           format: uuid
           nullable: true
           type: string
+        build_settings:
+          $ref: '#/components/schemas/BuildSettings'
       required:
       - auto_deploy_config
       - backend
@@ -46112,17 +46206,23 @@ components:
         deployment.termination_grace_period_seconds: 5
       properties:
         build.timeout_max_sec:
+          deprecated: true
           description: define the max timeout for the build
           type: integer
         build.cpu_max_in_milli:
+          deprecated: true
           description: define the max cpu resources (in milli)
           type: integer
         build.ram_max_in_gib:
+          deprecated: true
           description: define the max ram resources (in gib)
           type: integer
         build.ephemeral_storage_in_gib:
+          deprecated: true
+          description: Ephemeral storage for the build (in GiB)
           type: integer
         build.skip_git_submodules:
+          deprecated: true
           description: skip git submodules update when cloning the repository
           type: boolean
         deployment.termination_grace_period_seconds:

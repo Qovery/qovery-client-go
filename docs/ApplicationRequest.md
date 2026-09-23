@@ -28,6 +28,7 @@ Name | Type | Description | Notes
 **DockerTargetBuildStage** | Pointer to **NullableString** | The target build stage in the Dockerfile to build | [optional] 
 **CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional] 
 **Autoscaling** | Pointer to [**AutoscalingPolicyRequest**](AutoscalingPolicyRequest.md) |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -682,6 +683,31 @@ SetAutoscaling sets Autoscaling field to given value.
 `func (o *ApplicationRequest) HasAutoscaling() bool`
 
 HasAutoscaling returns a boolean if a field has been set.
+
+### GetBuildSettings
+
+`func (o *ApplicationRequest) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *ApplicationRequest) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *ApplicationRequest) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *ApplicationRequest) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

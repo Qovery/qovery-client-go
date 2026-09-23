@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **BuildRamMaxInGib** | Pointer to **int32** | define the max ram resources (in gib) | [optional] 
 **BuildDisableBuildkitCache** | Pointer to **bool** | disable buildkit registry cache during build | [optional] 
 **BuildSkipGitSubmodules** | Pointer to **bool** | skip git submodules update when cloning the repository | [optional] 
+**BuildEphemeralStorageInGib** | Pointer to **int32** | Ephemeral storage for the build (in GiB) | [optional] 
 **NetworkIngressProxyBodySizeMb** | Pointer to **int32** |  | [optional] 
 **NetworkIngressForceSslRedirect** | Pointer to **bool** | When using SSL offloading outside of cluster, you can enforce a redirect to HTTPS even when there is no TLS certificate available | [optional] 
 **NetworkIngressEnableCors** | Pointer to **bool** |  | [optional] 
@@ -445,6 +446,31 @@ SetBuildSkipGitSubmodules sets BuildSkipGitSubmodules field to given value.
 `func (o *ApplicationAdvancedSettings) HasBuildSkipGitSubmodules() bool`
 
 HasBuildSkipGitSubmodules returns a boolean if a field has been set.
+
+### GetBuildEphemeralStorageInGib
+
+`func (o *ApplicationAdvancedSettings) GetBuildEphemeralStorageInGib() int32`
+
+GetBuildEphemeralStorageInGib returns the BuildEphemeralStorageInGib field if non-nil, zero value otherwise.
+
+### GetBuildEphemeralStorageInGibOk
+
+`func (o *ApplicationAdvancedSettings) GetBuildEphemeralStorageInGibOk() (*int32, bool)`
+
+GetBuildEphemeralStorageInGibOk returns a tuple with the BuildEphemeralStorageInGib field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildEphemeralStorageInGib
+
+`func (o *ApplicationAdvancedSettings) SetBuildEphemeralStorageInGib(v int32)`
+
+SetBuildEphemeralStorageInGib sets BuildEphemeralStorageInGib field to given value.
+
+### HasBuildEphemeralStorageInGib
+
+`func (o *ApplicationAdvancedSettings) HasBuildEphemeralStorageInGib() bool`
+
+HasBuildEphemeralStorageInGib returns a boolean if a field has been set.
 
 ### GetNetworkIngressProxyBodySizeMb
 

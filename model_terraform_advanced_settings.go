@@ -21,13 +21,19 @@ var _ MappedNullable = &TerraformAdvancedSettings{}
 // TerraformAdvancedSettings struct for TerraformAdvancedSettings
 type TerraformAdvancedSettings struct {
 	// define the max timeout for the build
+	// Deprecated
 	BuildTimeoutMaxSec *int32 `json:"build.timeout_max_sec,omitempty"`
 	// define the max cpu resources (in milli)
+	// Deprecated
 	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
 	// define the max ram resources (in gib)
-	BuildRamMaxInGib           *int32 `json:"build.ram_max_in_gib,omitempty"`
+	// Deprecated
+	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
+	// Ephemeral storage for the build (in GiB)
+	// Deprecated
 	BuildEphemeralStorageInGib *int32 `json:"build.ephemeral_storage_in_gib,omitempty"`
 	// skip git submodules update when cloning the repository
+	// Deprecated
 	BuildSkipGitSubmodules *bool `json:"build.skip_git_submodules,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
@@ -60,6 +66,7 @@ func NewTerraformAdvancedSettingsWithDefaults() *TerraformAdvancedSettings {
 }
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		var ret int32
@@ -70,6 +77,7 @@ func (o *TerraformAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		return nil, false
@@ -87,11 +95,13 @@ func (o *TerraformAdvancedSettings) HasBuildTimeoutMaxSec() bool {
 }
 
 // SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
+// Deprecated
 func (o *TerraformAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 	o.BuildTimeoutMaxSec = &v
 }
 
 // GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		var ret int32
@@ -102,6 +112,7 @@ func (o *TerraformAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 
 // GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		return nil, false
@@ -119,11 +130,13 @@ func (o *TerraformAdvancedSettings) HasBuildCpuMaxInMilli() bool {
 }
 
 // SetBuildCpuMaxInMilli gets a reference to the given int32 and assigns it to the BuildCpuMaxInMilli field.
+// Deprecated
 func (o *TerraformAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
 	o.BuildCpuMaxInMilli = &v
 }
 
 // GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildRamMaxInGib() int32 {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		var ret int32
@@ -134,6 +147,7 @@ func (o *TerraformAdvancedSettings) GetBuildRamMaxInGib() int32 {
 
 // GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		return nil, false
@@ -151,11 +165,13 @@ func (o *TerraformAdvancedSettings) HasBuildRamMaxInGib() bool {
 }
 
 // SetBuildRamMaxInGib gets a reference to the given int32 and assigns it to the BuildRamMaxInGib field.
+// Deprecated
 func (o *TerraformAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 	o.BuildRamMaxInGib = &v
 }
 
 // GetBuildEphemeralStorageInGib returns the BuildEphemeralStorageInGib field value if set, zero value otherwise.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildEphemeralStorageInGib() int32 {
 	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
 		var ret int32
@@ -166,6 +182,7 @@ func (o *TerraformAdvancedSettings) GetBuildEphemeralStorageInGib() int32 {
 
 // GetBuildEphemeralStorageInGibOk returns a tuple with the BuildEphemeralStorageInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildEphemeralStorageInGibOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
 		return nil, false
@@ -183,11 +200,13 @@ func (o *TerraformAdvancedSettings) HasBuildEphemeralStorageInGib() bool {
 }
 
 // SetBuildEphemeralStorageInGib gets a reference to the given int32 and assigns it to the BuildEphemeralStorageInGib field.
+// Deprecated
 func (o *TerraformAdvancedSettings) SetBuildEphemeralStorageInGib(v int32) {
 	o.BuildEphemeralStorageInGib = &v
 }
 
 // GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		var ret bool
@@ -198,6 +217,7 @@ func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 
 // GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *TerraformAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		return nil, false
@@ -215,6 +235,7 @@ func (o *TerraformAdvancedSettings) HasBuildSkipGitSubmodules() bool {
 }
 
 // SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+// Deprecated
 func (o *TerraformAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
 	o.BuildSkipGitSubmodules = &v
 }

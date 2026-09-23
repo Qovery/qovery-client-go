@@ -810,6 +810,7 @@ Class | Method | HTTP request | Description
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
+ - [BuildSettings](docs/BuildSettings.md)
  - [CancelAgenticWorkflowDeploymentRequest](docs/CancelAgenticWorkflowDeploymentRequest.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
  - [CheckedCustomDomainResponse](docs/CheckedCustomDomainResponse.md)

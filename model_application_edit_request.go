@@ -59,6 +59,7 @@ type ApplicationEditRequest struct {
 	// CPU architecture to run this service on. If null, the cluster default architecture is used.
 	CpuArchitecture      NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
 	Autoscaling          *AutoscalingPolicyRequest   `json:"autoscaling,omitempty"`
+	BuildSettings        *BuildSettings              `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -914,6 +915,38 @@ func (o *ApplicationEditRequest) SetAutoscaling(v AutoscalingPolicyRequest) {
 	o.Autoscaling = &v
 }
 
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationEditRequest) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *ApplicationEditRequest) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
+}
+
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -994,6 +1027,9 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Autoscaling) {
 		toSerialize["autoscaling"] = o.Autoscaling
 	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1061,6 +1097,7 @@ func (o *ApplicationEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "docker_target_build_stage")
 		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "autoscaling")
+		delete(additionalProperties, "build_settings")
 		o.AdditionalProperties = additionalProperties
 	}
 

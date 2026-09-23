@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **ActionExtraArguments** | Pointer to **map[string][]string** | The key represent the action command name i.e: \&quot;plan\&quot; The value represent the extra arguments to pass to this command  i.e: {\&quot;apply\&quot;, [\&quot;-lock&#x3D;false\&quot;]} is going to prepend &#x60;-lock&#x3D;false&#x60; to terraform apply commands | [optional] 
 **DockerfileFragment** | Pointer to [**NullableTerraformRequestDockerfileFragment**](TerraformRequestDockerfileFragment.md) |  | [optional] 
 **BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 
 ## Methods
 
@@ -389,6 +390,31 @@ HasBlueprintId returns a boolean if a field has been set.
 `func (o *TerraformRequest) UnsetBlueprintId()`
 
 UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
+### GetBuildSettings
+
+`func (o *TerraformRequest) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *TerraformRequest) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *TerraformRequest) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *TerraformRequest) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

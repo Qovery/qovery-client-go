@@ -21,15 +21,23 @@ var _ MappedNullable = &JobAdvancedSettings{}
 // JobAdvancedSettings struct for JobAdvancedSettings
 type JobAdvancedSettings struct {
 	// define the max timeout for the build
+	// Deprecated
 	BuildTimeoutMaxSec *int32 `json:"build.timeout_max_sec,omitempty"`
 	// define the max cpu resources (in milli)
+	// Deprecated
 	BuildCpuMaxInMilli *int32 `json:"build.cpu_max_in_milli,omitempty"`
 	// define the max ram resources (in gib)
+	// Deprecated
 	BuildRamMaxInGib *int32 `json:"build.ram_max_in_gib,omitempty"`
 	// disable buildkit registry cache during build
+	// Deprecated
 	BuildDisableBuildkitCache *bool `json:"build.disable_buildkit_cache,omitempty"`
 	// skip git submodules update when cloning the repository
+	// Deprecated
 	BuildSkipGitSubmodules *bool `json:"build.skip_git_submodules,omitempty"`
+	// Ephemeral storage for the build (in GiB)
+	// Deprecated
+	BuildEphemeralStorageInGib *int32 `json:"build.ephemeral_storage_in_gib,omitempty"`
 	// define how long in seconds an application is supposed to be stopped gracefully
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
@@ -67,6 +75,7 @@ func NewJobAdvancedSettingsWithDefaults() *JobAdvancedSettings {
 }
 
 // GetBuildTimeoutMaxSec returns the BuildTimeoutMaxSec field value if set, zero value otherwise.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		var ret int32
@@ -77,6 +86,7 @@ func (o *JobAdvancedSettings) GetBuildTimeoutMaxSec() int32 {
 
 // GetBuildTimeoutMaxSecOk returns a tuple with the BuildTimeoutMaxSec field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildTimeoutMaxSecOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildTimeoutMaxSec) {
 		return nil, false
@@ -94,11 +104,13 @@ func (o *JobAdvancedSettings) HasBuildTimeoutMaxSec() bool {
 }
 
 // SetBuildTimeoutMaxSec gets a reference to the given int32 and assigns it to the BuildTimeoutMaxSec field.
+// Deprecated
 func (o *JobAdvancedSettings) SetBuildTimeoutMaxSec(v int32) {
 	o.BuildTimeoutMaxSec = &v
 }
 
 // GetBuildCpuMaxInMilli returns the BuildCpuMaxInMilli field value if set, zero value otherwise.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		var ret int32
@@ -109,6 +121,7 @@ func (o *JobAdvancedSettings) GetBuildCpuMaxInMilli() int32 {
 
 // GetBuildCpuMaxInMilliOk returns a tuple with the BuildCpuMaxInMilli field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildCpuMaxInMilliOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildCpuMaxInMilli) {
 		return nil, false
@@ -126,11 +139,13 @@ func (o *JobAdvancedSettings) HasBuildCpuMaxInMilli() bool {
 }
 
 // SetBuildCpuMaxInMilli gets a reference to the given int32 and assigns it to the BuildCpuMaxInMilli field.
+// Deprecated
 func (o *JobAdvancedSettings) SetBuildCpuMaxInMilli(v int32) {
 	o.BuildCpuMaxInMilli = &v
 }
 
 // GetBuildRamMaxInGib returns the BuildRamMaxInGib field value if set, zero value otherwise.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32 {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		var ret int32
@@ -141,6 +156,7 @@ func (o *JobAdvancedSettings) GetBuildRamMaxInGib() int32 {
 
 // GetBuildRamMaxInGibOk returns a tuple with the BuildRamMaxInGib field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildRamMaxInGibOk() (*int32, bool) {
 	if o == nil || IsNil(o.BuildRamMaxInGib) {
 		return nil, false
@@ -158,11 +174,13 @@ func (o *JobAdvancedSettings) HasBuildRamMaxInGib() bool {
 }
 
 // SetBuildRamMaxInGib gets a reference to the given int32 and assigns it to the BuildRamMaxInGib field.
+// Deprecated
 func (o *JobAdvancedSettings) SetBuildRamMaxInGib(v int32) {
 	o.BuildRamMaxInGib = &v
 }
 
 // GetBuildDisableBuildkitCache returns the BuildDisableBuildkitCache field value if set, zero value otherwise.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildDisableBuildkitCache() bool {
 	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
 		var ret bool
@@ -173,6 +191,7 @@ func (o *JobAdvancedSettings) GetBuildDisableBuildkitCache() bool {
 
 // GetBuildDisableBuildkitCacheOk returns a tuple with the BuildDisableBuildkitCache field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildDisableBuildkitCacheOk() (*bool, bool) {
 	if o == nil || IsNil(o.BuildDisableBuildkitCache) {
 		return nil, false
@@ -190,11 +209,13 @@ func (o *JobAdvancedSettings) HasBuildDisableBuildkitCache() bool {
 }
 
 // SetBuildDisableBuildkitCache gets a reference to the given bool and assigns it to the BuildDisableBuildkitCache field.
+// Deprecated
 func (o *JobAdvancedSettings) SetBuildDisableBuildkitCache(v bool) {
 	o.BuildDisableBuildkitCache = &v
 }
 
 // GetBuildSkipGitSubmodules returns the BuildSkipGitSubmodules field value if set, zero value otherwise.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		var ret bool
@@ -205,6 +226,7 @@ func (o *JobAdvancedSettings) GetBuildSkipGitSubmodules() bool {
 
 // GetBuildSkipGitSubmodulesOk returns a tuple with the BuildSkipGitSubmodules field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *JobAdvancedSettings) GetBuildSkipGitSubmodulesOk() (*bool, bool) {
 	if o == nil || IsNil(o.BuildSkipGitSubmodules) {
 		return nil, false
@@ -222,8 +244,44 @@ func (o *JobAdvancedSettings) HasBuildSkipGitSubmodules() bool {
 }
 
 // SetBuildSkipGitSubmodules gets a reference to the given bool and assigns it to the BuildSkipGitSubmodules field.
+// Deprecated
 func (o *JobAdvancedSettings) SetBuildSkipGitSubmodules(v bool) {
 	o.BuildSkipGitSubmodules = &v
+}
+
+// GetBuildEphemeralStorageInGib returns the BuildEphemeralStorageInGib field value if set, zero value otherwise.
+// Deprecated
+func (o *JobAdvancedSettings) GetBuildEphemeralStorageInGib() int32 {
+	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
+		var ret int32
+		return ret
+	}
+	return *o.BuildEphemeralStorageInGib
+}
+
+// GetBuildEphemeralStorageInGibOk returns a tuple with the BuildEphemeralStorageInGib field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// Deprecated
+func (o *JobAdvancedSettings) GetBuildEphemeralStorageInGibOk() (*int32, bool) {
+	if o == nil || IsNil(o.BuildEphemeralStorageInGib) {
+		return nil, false
+	}
+	return o.BuildEphemeralStorageInGib, true
+}
+
+// HasBuildEphemeralStorageInGib returns a boolean if a field has been set.
+func (o *JobAdvancedSettings) HasBuildEphemeralStorageInGib() bool {
+	if o != nil && !IsNil(o.BuildEphemeralStorageInGib) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildEphemeralStorageInGib gets a reference to the given int32 and assigns it to the BuildEphemeralStorageInGib field.
+// Deprecated
+func (o *JobAdvancedSettings) SetBuildEphemeralStorageInGib(v int32) {
+	o.BuildEphemeralStorageInGib = &v
 }
 
 // GetDeploymentTerminationGracePeriodSeconds returns the DeploymentTerminationGracePeriodSeconds field value if set, zero value otherwise.
@@ -550,6 +608,9 @@ func (o JobAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildSkipGitSubmodules) {
 		toSerialize["build.skip_git_submodules"] = o.BuildSkipGitSubmodules
 	}
+	if !IsNil(o.BuildEphemeralStorageInGib) {
+		toSerialize["build.ephemeral_storage_in_gib"] = o.BuildEphemeralStorageInGib
+	}
 	if !IsNil(o.DeploymentTerminationGracePeriodSeconds) {
 		toSerialize["deployment.termination_grace_period_seconds"] = o.DeploymentTerminationGracePeriodSeconds
 	}
@@ -604,6 +665,7 @@ func (o *JobAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "build.ram_max_in_gib")
 		delete(additionalProperties, "build.disable_buildkit_cache")
 		delete(additionalProperties, "build.skip_git_submodules")
+		delete(additionalProperties, "build.ephemeral_storage_in_gib")
 		delete(additionalProperties, "deployment.termination_grace_period_seconds")
 		delete(additionalProperties, "deployment.affinity.node.required")
 		delete(additionalProperties, "job.delete_ttl_seconds_after_finished")
