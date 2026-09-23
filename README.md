@@ -502,6 +502,7 @@ Class | Method | HTTP request | Description
 *LLMProvidersAPI* | [**DeleteLlmProvider**](docs/LLMProvidersAPI.md#deletellmprovider) | **Delete** /llmProvider/{llmProviderId} | Delete an LLM provider
 *LLMProvidersAPI* | [**EditLlmProvider**](docs/LLMProvidersAPI.md#editllmprovider) | **Put** /llmProvider/{llmProviderId} | Edit an LLM provider
 *LLMProvidersAPI* | [**GetLlmProvider**](docs/LLMProvidersAPI.md#getllmprovider) | **Get** /llmProvider/{llmProviderId} | Get an LLM provider
+*LLMProvidersAPI* | [**ListLlmProviderModels**](docs/LLMProvidersAPI.md#listllmprovidermodels) | **Get** /llmProvider/{llmProviderId}/models | List the models of an LLM provider
 *LLMProvidersAPI* | [**ListLlmProviders**](docs/LLMProvidersAPI.md#listllmproviders) | **Get** /organization/{organizationId}/llmProvider | List organization LLM providers
 *LifecycleTemplateMainCallsAPI* | [**GetEnvironmentLifecycleTemplate**](docs/LifecycleTemplateMainCallsAPI.md#getenvironmentlifecycletemplate) | **Get** /environment/{environmentId}/lifecycleTemplate/{lifecycleTemplateId} | Get specific lifecycle template
 *LifecycleTemplateMainCallsAPI* | [**ListEnvironmentLifecycleTemplates**](docs/LifecycleTemplateMainCallsAPI.md#listenvironmentlifecycletemplates) | **Get** /environment/{environmentId}/lifecycleTemplate | List available lifecycle template for this environment
@@ -1264,6 +1265,8 @@ Class | Method | HTTP request | Description
  - [ListServicesByEnvironmentId200ResponseResultsInner](docs/ListServicesByEnvironmentId200ResponseResultsInner.md)
  - [ListServicesByOrganizationId200Response](docs/ListServicesByOrganizationId200Response.md)
  - [ListTfVarsFilesFromGitRepo200Response](docs/ListTfVarsFilesFromGitRepo200Response.md)
+ - [LlmProviderModelResponse](docs/LlmProviderModelResponse.md)
+ - [LlmProviderModelResponseList](docs/LlmProviderModelResponseList.md)
  - [LlmProviderRequest](docs/LlmProviderRequest.md)
  - [LlmProviderResponse](docs/LlmProviderResponse.md)
  - [LlmProviderResponseList](docs/LlmProviderResponseList.md)

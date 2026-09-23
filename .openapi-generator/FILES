@@ -795,6 +795,8 @@ docs/ListServicesByEnvironmentId200Response.md
 docs/ListServicesByEnvironmentId200ResponseResultsInner.md
 docs/ListServicesByOrganizationId200Response.md
 docs/ListTfVarsFilesFromGitRepo200Response.md
+docs/LlmProviderModelResponse.md
+docs/LlmProviderModelResponseList.md
 docs/LlmProviderRequest.md
 docs/LlmProviderResponse.md
 docs/LlmProviderResponseList.md
@@ -1722,6 +1724,8 @@ model_list_services_by_environment_id_200_response.go
 model_list_services_by_environment_id_200_response_results_inner.go
 model_list_services_by_organization_id_200_response.go
 model_list_tf_vars_files_from_git_repo_200_response.go
+model_llm_provider_model_response.go
+model_llm_provider_model_response_list.go
 model_llm_provider_request.go
 model_llm_provider_response.go
 model_llm_provider_response_list.go
