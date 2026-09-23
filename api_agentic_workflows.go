@@ -868,6 +868,152 @@ func (a *AgenticWorkflowsAPIService) ListAgenticWorkflowDeploymentHistoryV2Execu
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListAgenticWorkflowRunHistoryRequest struct {
+	ctx               context.Context
+	ApiService        *AgenticWorkflowsAPIService
+	agenticWorkflowId string
+	page              *int32
+	pageSize          *int32
+}
+
+// Page number, starting at 1. Increment this value to retrieve subsequent pages of run history, keeping pageSize unchanged.
+func (r ApiListAgenticWorkflowRunHistoryRequest) Page(page int32) ApiListAgenticWorkflowRunHistoryRequest {
+	r.page = &page
+	return r
+}
+
+// The number of runs to return in the current page. Must be between 1 and 100.
+func (r ApiListAgenticWorkflowRunHistoryRequest) PageSize(pageSize int32) ApiListAgenticWorkflowRunHistoryRequest {
+	r.pageSize = &pageSize
+	return r
+}
+
+func (r ApiListAgenticWorkflowRunHistoryRequest) Execute() (*AgenticWorkflowRunPaginatedResponseList, *http.Response, error) {
+	return r.ApiService.ListAgenticWorkflowRunHistoryExecute(r)
+}
+
+/*
+ListAgenticWorkflowRunHistory List agentic workflow runs
+
+Returns the runs recorded for this agentic workflow, newest first: sorted by created_at descending, then by id descending. Runs are added as they are triggered, so a run added between two requests shifts the runs after it towards later pages.
+agenticWorkflowId is matched against source_workflow_id, the workflow a run was requested for. A CLONE_ENVIRONMENT run is listed under that workflow, not under the clone that executed it. There is no lineage resolution either, so a clone's own ID returns no runs at all.
+Only runs that were launched appear here. A trigger that failed before launching, such as one turned away by the rate limiter, leaves no run. Runs that predate this endpoint are not backfilled.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param agenticWorkflowId
+	@return ApiListAgenticWorkflowRunHistoryRequest
+*/
+func (a *AgenticWorkflowsAPIService) ListAgenticWorkflowRunHistory(ctx context.Context, agenticWorkflowId string) ApiListAgenticWorkflowRunHistoryRequest {
+	return ApiListAgenticWorkflowRunHistoryRequest{
+		ApiService:        a,
+		ctx:               ctx,
+		agenticWorkflowId: agenticWorkflowId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return AgenticWorkflowRunPaginatedResponseList
+func (a *AgenticWorkflowsAPIService) ListAgenticWorkflowRunHistoryExecute(r ApiListAgenticWorkflowRunHistoryRequest) (*AgenticWorkflowRunPaginatedResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *AgenticWorkflowRunPaginatedResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AgenticWorkflowsAPIService.ListAgenticWorkflowRunHistory")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/agenticWorkflow/{agenticWorkflowId}/runHistory"
+	localVarPath = strings.Replace(localVarPath, "{"+"agenticWorkflowId"+"}", url.PathEscape(parameterValueToString(r.agenticWorkflowId, "agenticWorkflowId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.page != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "page", r.page, "")
+	} else {
+		var defaultValue int32 = 1
+		r.page = &defaultValue
+	}
+	if r.pageSize != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "pageSize", r.pageSize, "")
+	} else {
+		var defaultValue int32 = 20
+		r.pageSize = &defaultValue
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListAgenticWorkflowsRequest struct {
 	ctx           context.Context
 	ApiService    *AgenticWorkflowsAPIService

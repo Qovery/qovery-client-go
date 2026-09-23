@@ -19281,6 +19281,63 @@ paths:
       summary: List agentic workflow deployments
       tags:
       - Agentic Workflows
+  /agenticWorkflow/{agenticWorkflowId}/runHistory:
+    get:
+      description: |-
+        Returns the runs recorded for this agentic workflow, newest first: sorted by created_at descending, then by id descending. Runs are added as they are triggered, so a run added between two requests shifts the runs after it towards later pages.
+        agenticWorkflowId is matched against source_workflow_id, the workflow a run was requested for. A CLONE_ENVIRONMENT run is listed under that workflow, not under the clone that executed it. There is no lineage resolution either, so a clone's own ID returns no runs at all.
+        Only runs that were launched appear here. A trigger that failed before launching, such as one turned away by the rate limiter, leaves no run. Runs that predate this endpoint are not backfilled.
+      operationId: listAgenticWorkflowRunHistory
+      parameters:
+      - explode: false
+        in: path
+        name: agenticWorkflowId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: "Page number, starting at 1. Increment this value to retrieve\
+          \ subsequent pages of run history, keeping pageSize unchanged."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of runs to return in the current page. Must be between
+          1 and 100.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AgenticWorkflowRunPaginatedResponseList'
+          description: List run history
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List agentic workflow runs
+      tags:
+      - Agentic Workflows
   /terraform/{terraformId}/advancedSettings:
     get:
       operationId: getTerraformAdvancedSettings
@@ -48970,6 +49027,88 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowResponse'
           type: array
       type: object
+    AgenticWorkflowRun:
+      description: One recorded run of an agentic workflow.
+      example:
+        recorded_at: 2000-01-23T04:56:07.000+00:00
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        trigger: MANUAL
+        source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        prompt: prompt
+      properties:
+        id:
+          description: Run ID.
+          format: uuid
+          type: string
+        source_workflow_id:
+          description: "ID of the workflow the run was requested for. A CLONE_ENVIRONMENT\
+            \ run executes as a fresh clone carrying its own ID, which run history\
+            \ does not report, so this is never the ID of the workflow that actually\
+            \ executed."
+          format: uuid
+          type: string
+        trigger:
+          $ref: '#/components/schemas/AgenticWorkflowRunTrigger'
+        prompt:
+          description: "Agent prompt captured when the run was requested. It is a\
+            \ snapshot, so later edits to the workflow do not change it. Null when\
+            \ the workflow had no prompt."
+          nullable: true
+          type: string
+        created_at:
+          description: Time the run was requested.
+          format: date-time
+          type: string
+        recorded_at:
+          description: "Time the run was registered in run history, shortly after\
+            \ it was requested. This is not a lifecycle start time: nothing reports\
+            \ when the agent itself started, so this value must not be used to measure\
+            \ a run. Null when it is unknown."
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - created_at
+      - id
+      - prompt
+      - recorded_at
+      - source_workflow_id
+      - trigger
+      type: object
+    AgenticWorkflowRunPaginatedResponseList:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/AgenticWorkflowRun'
+            type: array
+        type: object
+      example:
+        page: 1
+        results:
+        - recorded_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trigger: MANUAL
+          source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          prompt: prompt
+        - recorded_at: 2000-01-23T04:56:07.000+00:00
+          created_at: 2000-01-23T04:56:07.000+00:00
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          trigger: MANUAL
+          source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          prompt: prompt
+        page_size: 20
+    AgenticWorkflowRunTrigger:
+      description: What triggered the run. MANUAL is reserved for manual runs; no
+        backend producer emits it yet.
+      enum:
+      - MANUAL
+      - SCHEDULE
+      - WEBHOOK
+      type: string
     AgenticWorkflowRequest:
       allOf:
       - properties:

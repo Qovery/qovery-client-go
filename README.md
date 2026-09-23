@@ -90,6 +90,7 @@ Class | Method | HTTP request | Description
 *AgenticWorkflowsAPI* | [**EditAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#editagenticworkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 *AgenticWorkflowsAPI* | [**GetAgenticWorkflow**](docs/AgenticWorkflowsAPI.md#getagenticworkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 *AgenticWorkflowsAPI* | [**ListAgenticWorkflowDeploymentHistoryV2**](docs/AgenticWorkflowsAPI.md#listagenticworkflowdeploymenthistoryv2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
+*AgenticWorkflowsAPI* | [**ListAgenticWorkflowRunHistory**](docs/AgenticWorkflowsAPI.md#listagenticworkflowrunhistory) | **Get** /agenticWorkflow/{agenticWorkflowId}/runHistory | List agentic workflow runs
 *AgenticWorkflowsAPI* | [**ListAgenticWorkflows**](docs/AgenticWorkflowsAPI.md#listagenticworkflows) | **Get** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 *AlertReceiversAPI* | [**CreateAlertReceiver**](docs/AlertReceiversAPI.md#createalertreceiver) | **Post** /alert-receivers | Create alert receiver
 *AlertReceiversAPI* | [**DeleteAlertReceiver**](docs/AlertReceiversAPI.md#deletealertreceiver) | **Delete** /alert-receivers/{alertReceiverId} | Delete alert receiver
@@ -670,6 +671,9 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowResponse](docs/AgenticWorkflowResponse.md)
  - [AgenticWorkflowResponseAllOfSchedule](docs/AgenticWorkflowResponseAllOfSchedule.md)
  - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
+ - [AgenticWorkflowRun](docs/AgenticWorkflowRun.md)
+ - [AgenticWorkflowRunPaginatedResponseList](docs/AgenticWorkflowRunPaginatedResponseList.md)
+ - [AgenticWorkflowRunTrigger](docs/AgenticWorkflowRunTrigger.md)
  - [AgenticWorkflowScheduleRequest](docs/AgenticWorkflowScheduleRequest.md)
  - [AgenticWorkflowScheduleResponse](docs/AgenticWorkflowScheduleResponse.md)
  - [AgenticWorkflowWebhook](docs/AgenticWorkflowWebhook.md)

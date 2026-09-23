@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**EditAgenticWorkflow**](AgenticWorkflowsAPI.md#EditAgenticWorkflow) | **Put** /agenticWorkflow/{agenticWorkflowId} | Edit an agentic workflow
 [**GetAgenticWorkflow**](AgenticWorkflowsAPI.md#GetAgenticWorkflow) | **Get** /agenticWorkflow/{agenticWorkflowId} | Get an agentic workflow
 [**ListAgenticWorkflowDeploymentHistoryV2**](AgenticWorkflowsAPI.md#ListAgenticWorkflowDeploymentHistoryV2) | **Get** /agenticWorkflow/{agenticWorkflowId}/deploymentHistoryV2 | List agentic workflow deployments
+[**ListAgenticWorkflowRunHistory**](AgenticWorkflowsAPI.md#ListAgenticWorkflowRunHistory) | **Get** /agenticWorkflow/{agenticWorkflowId}/runHistory | List agentic workflow runs
 [**ListAgenticWorkflows**](AgenticWorkflowsAPI.md#ListAgenticWorkflows) | **Get** /environment/{environmentId}/agenticWorkflow | List agentic workflows
 
 
@@ -490,6 +491,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**DeploymentHistoryServicePaginatedResponseListV2**](DeploymentHistoryServicePaginatedResponseListV2.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListAgenticWorkflowRunHistory
+
+> AgenticWorkflowRunPaginatedResponseList ListAgenticWorkflowRunHistory(ctx, agenticWorkflowId).Page(page).PageSize(pageSize).Execute()
+
+List agentic workflow runs
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	agenticWorkflowId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | 
+	page := int32(56) // int32 | Page number, starting at 1. Increment this value to retrieve subsequent pages of run history, keeping pageSize unchanged. (optional) (default to 1)
+	pageSize := int32(56) // int32 | The number of runs to return in the current page. Must be between 1 and 100. (optional) (default to 20)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.AgenticWorkflowsAPI.ListAgenticWorkflowRunHistory(context.Background(), agenticWorkflowId).Page(page).PageSize(pageSize).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `AgenticWorkflowsAPI.ListAgenticWorkflowRunHistory``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListAgenticWorkflowRunHistory`: AgenticWorkflowRunPaginatedResponseList
+	fmt.Fprintf(os.Stdout, "Response from `AgenticWorkflowsAPI.ListAgenticWorkflowRunHistory`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**agenticWorkflowId** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListAgenticWorkflowRunHistoryRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **page** | **int32** | Page number, starting at 1. Increment this value to retrieve subsequent pages of run history, keeping pageSize unchanged. | [default to 1]
+ **pageSize** | **int32** | The number of runs to return in the current page. Must be between 1 and 100. | [default to 20]
+
+### Return type
+
+[**AgenticWorkflowRunPaginatedResponseList**](AgenticWorkflowRunPaginatedResponseList.md)
 
 ### Authorization
 

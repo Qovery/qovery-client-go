@@ -130,6 +130,9 @@ docs/AgenticWorkflowResources.md
 docs/AgenticWorkflowResponse.md
 docs/AgenticWorkflowResponseAllOfSchedule.md
 docs/AgenticWorkflowResponseList.md
+docs/AgenticWorkflowRun.md
+docs/AgenticWorkflowRunPaginatedResponseList.md
+docs/AgenticWorkflowRunTrigger.md
 docs/AgenticWorkflowScheduleRequest.md
 docs/AgenticWorkflowScheduleResponse.md
 docs/AgenticWorkflowWebhook.md
@@ -1124,6 +1127,9 @@ model_agentic_workflow_resources.go
 model_agentic_workflow_response.go
 model_agentic_workflow_response_all_of_schedule.go
 model_agentic_workflow_response_list.go
+model_agentic_workflow_run.go
+model_agentic_workflow_run_paginated_response_list.go
+model_agentic_workflow_run_trigger.go
 model_agentic_workflow_schedule_request.go
 model_agentic_workflow_schedule_response.go
 model_agentic_workflow_webhook.go
