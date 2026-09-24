@@ -30758,6 +30758,7 @@ components:
         name: name
         description: ""
         type: CLAUDE
+        region: eu-west-1
       properties:
         name:
           description: "LLM provider name, unique per scope owner within the organization"
@@ -30783,6 +30784,17 @@ components:
             \ a USER provider requires CREATE_PROJECT. On edit, omitting it leaves\
             \ the provider's scope unchanged, and stating a scope that differs from\
             \ the provider's is refused with 400."
+        region:
+          description: "On edit, omitting it or sending null clears the stored region.\
+            \ This differs from credential, where a blank value keeps the stored one.\
+            \ AWS region the Bedrock client calls, for example us-east-1 or eu-west-1;\
+            \ model availability differs by region. Only allowed for a BEDROCK provider.\
+            \ Any sent string, blank included, must match the pattern. Null keeps\
+            \ the engine default region."
+          example: eu-west-1
+          nullable: true
+          pattern: "^[a-z]{2}(-gov)?-[a-z]+-[0-9]+$"
+          type: string
       required:
       - name
       - type
@@ -30812,6 +30824,11 @@ components:
               provider.
             nullable: true
             type: string
+          region:
+            description: AWS region of a BEDROCK provider. Null when unset or for
+              CLAUDE.
+            nullable: true
+            type: string
         required:
         - description
         - has_credential
@@ -30831,6 +30848,7 @@ components:
         description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         type: CLAUDE
+        region: region
     LlmProviderModelResponse:
       example:
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -30881,6 +30899,7 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: CLAUDE
+          region: region
         - has_credential: true
           owner_name: owner_name
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -30891,6 +30910,7 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: CLAUDE
+          region: region
       properties:
         results:
           items:

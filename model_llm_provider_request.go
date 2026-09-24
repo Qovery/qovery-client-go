@@ -28,7 +28,9 @@ type LlmProviderRequest struct {
 	// The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it.
 	Credential *string `json:"credential,omitempty"`
 	// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER provider requires CREATE_PROJECT. On edit, omitting it leaves the provider's scope unchanged, and stating a scope that differs from the provider's is refused with 400.
-	Scope                *LlmProviderScope `json:"scope,omitempty"`
+	Scope *LlmProviderScope `json:"scope,omitempty"`
+	// On edit, omitting it or sending null clears the stored region. This differs from credential, where a blank value keeps the stored one. AWS region the Bedrock client calls, for example us-east-1 or eu-west-1; model availability differs by region. Only allowed for a BEDROCK provider. Any sent string, blank included, must match the pattern. Null keeps the engine default region.
+	Region               NullableString `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -205,6 +207,49 @@ func (o *LlmProviderRequest) SetScope(v LlmProviderScope) {
 	o.Scope = &v
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LlmProviderRequest) GetRegion() string {
+	if o == nil || IsNil(o.Region.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Region.Get()
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LlmProviderRequest) GetRegionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Region.Get(), o.Region.IsSet()
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *LlmProviderRequest) HasRegion() bool {
+	if o != nil && o.Region.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+func (o *LlmProviderRequest) SetRegion(v string) {
+	o.Region.Set(&v)
+}
+
+// SetRegionNil sets the value for Region to be an explicit nil
+func (o *LlmProviderRequest) SetRegionNil() {
+	o.Region.Set(nil)
+}
+
+// UnsetRegion ensures that no value is present for Region, not even an explicit nil
+func (o *LlmProviderRequest) UnsetRegion() {
+	o.Region.Unset()
+}
+
 func (o LlmProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -225,6 +270,9 @@ func (o LlmProviderRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Scope) {
 		toSerialize["scope"] = o.Scope
+	}
+	if o.Region.IsSet() {
+		toSerialize["region"] = o.Region.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -275,6 +323,7 @@ func (o *LlmProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "type")
 		delete(additionalProperties, "credential")
 		delete(additionalProperties, "scope")
+		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -34,7 +34,9 @@ type LlmProviderResponse struct {
 	// Identity of the owning member. Null for an ORGANIZATION provider.
 	OwnerUserSub NullableString `json:"owner_user_sub,omitempty"`
 	// Display name of the owning member. Null for an ORGANIZATION provider.
-	OwnerName            NullableString `json:"owner_name,omitempty"`
+	OwnerName NullableString `json:"owner_name,omitempty"`
+	// AWS region of a BEDROCK provider. Null when unset or for CLAUDE.
+	Region               NullableString `json:"region,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -343,6 +345,49 @@ func (o *LlmProviderResponse) UnsetOwnerName() {
 	o.OwnerName.Unset()
 }
 
+// GetRegion returns the Region field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LlmProviderResponse) GetRegion() string {
+	if o == nil || IsNil(o.Region.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Region.Get()
+}
+
+// GetRegionOk returns a tuple with the Region field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LlmProviderResponse) GetRegionOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Region.Get(), o.Region.IsSet()
+}
+
+// HasRegion returns a boolean if a field has been set.
+func (o *LlmProviderResponse) HasRegion() bool {
+	if o != nil && o.Region.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetRegion gets a reference to the given NullableString and assigns it to the Region field.
+func (o *LlmProviderResponse) SetRegion(v string) {
+	o.Region.Set(&v)
+}
+
+// SetRegionNil sets the value for Region to be an explicit nil
+func (o *LlmProviderResponse) SetRegionNil() {
+	o.Region.Set(nil)
+}
+
+// UnsetRegion ensures that no value is present for Region, not even an explicit nil
+func (o *LlmProviderResponse) UnsetRegion() {
+	o.Region.Unset()
+}
+
 func (o LlmProviderResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -366,6 +411,9 @@ func (o LlmProviderResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.OwnerName.IsSet() {
 		toSerialize["owner_name"] = o.OwnerName.Get()
+	}
+	if o.Region.IsSet() {
+		toSerialize["region"] = o.Region.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -427,6 +475,7 @@ func (o *LlmProviderResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "owner_user_sub")
 		delete(additionalProperties, "owner_name")
+		delete(additionalProperties, "region")
 		o.AdditionalProperties = additionalProperties
 	}
 

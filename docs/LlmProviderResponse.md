@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **Scope** | [**LlmProviderScope**](LlmProviderScope.md) |  | 
 **OwnerUserSub** | Pointer to **NullableString** | Identity of the owning member. Null for an ORGANIZATION provider. | [optional] 
 **OwnerName** | Pointer to **NullableString** | Display name of the owning member. Null for an ORGANIZATION provider. | [optional] 
+**Region** | Pointer to **NullableString** | AWS region of a BEDROCK provider. Null when unset or for CLAUDE. | [optional] 
 
 ## Methods
 
@@ -264,6 +265,41 @@ HasOwnerName returns a boolean if a field has been set.
 `func (o *LlmProviderResponse) UnsetOwnerName()`
 
 UnsetOwnerName ensures that no value is present for OwnerName, not even an explicit nil
+### GetRegion
+
+`func (o *LlmProviderResponse) GetRegion() string`
+
+GetRegion returns the Region field if non-nil, zero value otherwise.
+
+### GetRegionOk
+
+`func (o *LlmProviderResponse) GetRegionOk() (*string, bool)`
+
+GetRegionOk returns a tuple with the Region field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegion
+
+`func (o *LlmProviderResponse) SetRegion(v string)`
+
+SetRegion sets Region field to given value.
+
+### HasRegion
+
+`func (o *LlmProviderResponse) HasRegion() bool`
+
+HasRegion returns a boolean if a field has been set.
+
+### SetRegionNil
+
+`func (o *LlmProviderResponse) SetRegionNil(b bool)`
+
+ SetRegionNil sets the value for Region to be an explicit nil
+
+### UnsetRegion
+`func (o *LlmProviderResponse) UnsetRegion()`
+
+UnsetRegion ensures that no value is present for Region, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
