@@ -2025,6 +2025,68 @@ paths:
       summary: Create a cluster
       tags:
       - Clusters
+  /v1/organization/{organizationId}/selfManagedCluster:
+    post:
+      description: "Creates a self-managed cluster on an existing AWS cloud credential\
+        \ of the organization. The organization's plan must include self-managed clusters,\
+        \ otherwise the call answers 403. The credential only needs ECR permissions\
+        \ for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`,\
+        \ which Qovery calls to check the credential whatever the cluster region;\
+        \ features that call other AWS services with the credential, such as managed\
+        \ databases or Terraform services using the cluster credentials, need more.\
+        \ The credential, including its ECR access in the cluster region, and the\
+        \ platform configuration are checked before anything is created. One transaction\
+        \ then writes the cluster, its Qovery DNS and build providers, its default\
+        \ ECR registry derived from the credential, its initial deployment status,\
+        \ its platform configuration and its Qovery Operator enrollment. Only the\
+        \ AWS provider is supported. Install the Operator next with the cluster's\
+        \ Operator bootstrap."
+      operationId: createSelfManagedCluster
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SelfManagedClusterRequest'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SelfManagedClusterResponse'
+          description: Created self-managed cluster
+        "400":
+          description: "Invalid body, provider other than AWS, unknown region, invalid\
+            \ name, cloud credential of another provider, ECR refusing the credential,\
+            \ or invalid platform configuration"
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: "Organization, cloud credential or template release not found,\
+            \ including a cloud credential of another organization"
+        "409":
+          description: A cluster with this name already exists in the organization
+        "500":
+          description: "The selected platform template could not be resolved, or an\
+            \ internal creation step failed, such as writing the cluster's initial\
+            \ deployment status or the Qovery Operator enrollment"
+        "503":
+          description: The platform template catalog is temporarily unavailable
+      summary: Create a self-managed cluster run by the Qovery Operator
+      tags:
+      - Clusters
   /organization/{organizationId}/cluster/status:
     get:
       description: Returns a list of clusters with only their id and status.
@@ -22587,6 +22649,201 @@ components:
       - DISABLED
       - SKIPPED
       type: string
+    PlatformSelection:
+      description: "Platform template release selected for a cluster, with its layer\
+        \ selections and component configuration. Sensitive managedConfig values are\
+        \ redacted in responses."
+      example:
+        managedConfig:
+          key: null
+        layerSelections:
+          key: true
+        templateVersion: templateVersion
+        templateKey: templateKey
+      properties:
+        templateKey:
+          type: string
+        templateVersion:
+          type: string
+        layerSelections:
+          additionalProperties:
+            type: boolean
+          type: object
+        managedConfig:
+          additionalProperties:
+            $ref: '#/components/schemas/PlatformConfigurationValues'
+          description: Component configuration values keyed by component key
+          type: object
+      required:
+      - templateKey
+      - templateVersion
+      type: object
+    SelfManagedClusterRequest:
+      example:
+        production: false
+        provider: AWS
+        credentials:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        clusterInputs:
+          key:
+            key: clusterInputs
+        name: name
+        region: eu-west-3
+        platform:
+          managedConfig:
+            key: null
+          layerSelections:
+            key: true
+          templateVersion: templateVersion
+          templateKey: templateKey
+      properties:
+        name:
+          type: string
+        production:
+          default: false
+          type: boolean
+        provider:
+          enum:
+          - AWS
+          type: string
+        region:
+          example: eu-west-3
+          type: string
+        credentials:
+          $ref: '#/components/schemas/SelfManagedClusterCredentials'
+        platform:
+          $ref: '#/components/schemas/PlatformSelection'
+        clusterInputs:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: String values keyed first by component key and then by input
+            key
+          type: object
+      required:
+      - credentials
+      - name
+      - platform
+      - provider
+      - region
+      type: object
+    SelfManagedClusterCredentials:
+      description: AWS cloud credential of the organization that the cluster runs
+        on. This operation only takes and returns its id.
+      example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: Id of an existing AWS cloud credential of the organization
+          format: uuid
+          type: string
+      required:
+      - id
+      type: object
+    SelfManagedClusterResponse:
+      example:
+        organizationId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        createdAt: 2000-01-23T04:56:07.000+00:00
+        registry:
+          kind: ECR
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        production: true
+        provider: AWS
+        credentials:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        clusterInputs:
+          key:
+            key: clusterInputs
+        name: name
+        layers:
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          reason: reason
+          key: key
+          status: ENABLED
+        - componentKeys:
+          - componentKeys
+          - componentKeys
+          reason: reason
+          key: key
+          status: ENABLED
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        region: region
+        platform:
+          managedConfig:
+            key: null
+          layerSelections:
+            key: true
+          templateVersion: templateVersion
+          templateKey: templateKey
+      properties:
+        id:
+          format: uuid
+          type: string
+        organizationId:
+          format: uuid
+          type: string
+        name:
+          type: string
+        production:
+          type: boolean
+        provider:
+          $ref: '#/components/schemas/CloudVendorEnum'
+        region:
+          type: string
+        createdAt:
+          format: date-time
+          type: string
+        credentials:
+          $ref: '#/components/schemas/SelfManagedClusterCredentials'
+        registry:
+          $ref: '#/components/schemas/SelfManagedClusterRegistryResponse'
+        platform:
+          $ref: '#/components/schemas/PlatformSelection'
+        clusterInputs:
+          additionalProperties:
+            additionalProperties:
+              type: string
+            type: object
+          description: String values keyed first by component key and then by input
+            key
+          type: object
+        layers:
+          items:
+            $ref: '#/components/schemas/ClusterPlatformBindingLayerResponse'
+          type: array
+      required:
+      - clusterInputs
+      - createdAt
+      - credentials
+      - id
+      - layers
+      - name
+      - organizationId
+      - platform
+      - production
+      - provider
+      - region
+      - registry
+      type: object
+    SelfManagedClusterRegistryResponse:
+      description: "Default ECR registry of the cluster, derived from its cloud credential\
+        \ and region."
+      example:
+        kind: ECR
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        kind:
+          $ref: '#/components/schemas/ContainerRegistryKindEnum'
+      required:
+      - id
+      - kind
+      type: object
     PlatformComponentConfigurationPreviewRequest:
       example:
         clusterInputs:

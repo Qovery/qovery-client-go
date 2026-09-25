@@ -36,6 +36,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ClustersAPIService CreateSelfManagedCluster", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.CreateSelfManagedCluster(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ClustersAPIService DeleteCluster", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

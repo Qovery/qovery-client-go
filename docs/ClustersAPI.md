@@ -5,6 +5,7 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**CreateCluster**](ClustersAPI.md#CreateCluster) | **Post** /organization/{organizationId}/cluster | Create a cluster
+[**CreateSelfManagedCluster**](ClustersAPI.md#CreateSelfManagedCluster) | **Post** /v1/organization/{organizationId}/selfManagedCluster | Create a self-managed cluster run by the Qovery Operator
 [**DeleteCluster**](ClustersAPI.md#DeleteCluster) | **Delete** /organization/{organizationId}/cluster/{clusterId} | Delete a cluster
 [**DeployCluster**](ClustersAPI.md#DeployCluster) | **Post** /organization/{organizationId}/cluster/{clusterId}/deploy | Deploy a cluster
 [**EditCluster**](ClustersAPI.md#EditCluster) | **Put** /organization/{organizationId}/cluster/{clusterId} | Edit a cluster
@@ -99,6 +100,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Cluster**](Cluster.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## CreateSelfManagedCluster
+
+> SelfManagedClusterResponse CreateSelfManagedCluster(ctx, organizationId).SelfManagedClusterRequest(selfManagedClusterRequest).Execute()
+
+Create a self-managed cluster run by the Qovery Operator
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	selfManagedClusterRequest := *openapiclient.NewSelfManagedClusterRequest("Name_example", "Provider_example", "eu-west-3", *openapiclient.NewSelfManagedClusterCredentials("Id_example"), *openapiclient.NewPlatformSelection("TemplateKey_example", "TemplateVersion_example")) // SelfManagedClusterRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.CreateSelfManagedCluster(context.Background(), organizationId).SelfManagedClusterRequest(selfManagedClusterRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.CreateSelfManagedCluster``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CreateSelfManagedCluster`: SelfManagedClusterResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.CreateSelfManagedCluster`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiCreateSelfManagedClusterRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **selfManagedClusterRequest** | [**SelfManagedClusterRequest**](SelfManagedClusterRequest.md) |  | 
+
+### Return type
+
+[**SelfManagedClusterResponse**](SelfManagedClusterResponse.md)
 
 ### Authorization
 

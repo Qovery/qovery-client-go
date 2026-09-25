@@ -147,6 +147,135 @@ func (a *ClustersAPIService) CreateClusterExecute(r ApiCreateClusterRequest) (*C
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiCreateSelfManagedClusterRequest struct {
+	ctx                       context.Context
+	ApiService                *ClustersAPIService
+	organizationId            string
+	selfManagedClusterRequest *SelfManagedClusterRequest
+}
+
+func (r ApiCreateSelfManagedClusterRequest) SelfManagedClusterRequest(selfManagedClusterRequest SelfManagedClusterRequest) ApiCreateSelfManagedClusterRequest {
+	r.selfManagedClusterRequest = &selfManagedClusterRequest
+	return r
+}
+
+func (r ApiCreateSelfManagedClusterRequest) Execute() (*SelfManagedClusterResponse, *http.Response, error) {
+	return r.ApiService.CreateSelfManagedClusterExecute(r)
+}
+
+/*
+CreateSelfManagedCluster Create a self-managed cluster run by the Qovery Operator
+
+Creates a self-managed cluster on an existing AWS cloud credential of the organization. The organization's plan must include self-managed clusters, otherwise the call answers 403. The credential only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which Qovery calls to check the credential whatever the cluster region; features that call other AWS services with the credential, such as managed databases or Terraform services using the cluster credentials, need more. The credential, including its ECR access in the cluster region, and the platform configuration are checked before anything is created. One transaction then writes the cluster, its Qovery DNS and build providers, its default ECR registry derived from the credential, its initial deployment status, its platform configuration and its Qovery Operator enrollment. Only the AWS provider is supported. Install the Operator next with the cluster's Operator bootstrap.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param organizationId Organization ID
+	@return ApiCreateSelfManagedClusterRequest
+*/
+func (a *ClustersAPIService) CreateSelfManagedCluster(ctx context.Context, organizationId string) ApiCreateSelfManagedClusterRequest {
+	return ApiCreateSelfManagedClusterRequest{
+		ApiService:     a,
+		ctx:            ctx,
+		organizationId: organizationId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return SelfManagedClusterResponse
+func (a *ClustersAPIService) CreateSelfManagedClusterExecute(r ApiCreateSelfManagedClusterRequest) (*SelfManagedClusterResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *SelfManagedClusterResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ClustersAPIService.CreateSelfManagedCluster")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/organization/{organizationId}/selfManagedCluster"
+	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.selfManagedClusterRequest == nil {
+		return localVarReturnValue, nil, reportError("selfManagedClusterRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.selfManagedClusterRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiDeleteClusterRequest struct {
 	ctx            context.Context
 	ApiService     *ClustersAPIService
