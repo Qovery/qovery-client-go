@@ -40711,6 +40711,7 @@ components:
       - LOCK
       - UNLOCK
       - POLICY_FAILED
+      - ACCESS_DENIED
       example: CREATE
       type: string
     SecretOverride:
