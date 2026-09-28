@@ -37,12 +37,14 @@ func (r ApiGetClusterPlatformBindingRequest) Execute() (*ClusterPlatformBindingR
 /*
 GetClusterPlatformBinding Get the cluster platform binding
 
-Returns the platform template selected for the cluster, its layer resolution, and the currently stored component configuration.
+Returns the platform template selected for the cluster, its layer resolution, and the currently stored component configuration. Deprecated: use getClusterPlatformConfiguration instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
 	@param clusterId Cluster ID
 	@return ApiGetClusterPlatformBindingRequest
+
+Deprecated
 */
 func (a *PlatformConfigurationAPIService) GetClusterPlatformBinding(ctx context.Context, organizationId string, clusterId string) ApiGetClusterPlatformBindingRequest {
 	return ApiGetClusterPlatformBindingRequest{
@@ -56,6 +58,8 @@ func (a *PlatformConfigurationAPIService) GetClusterPlatformBinding(ctx context.
 // Execute executes the request
 //
 //	@return ClusterPlatformBindingResponse
+//
+// Deprecated
 func (a *PlatformConfigurationAPIService) GetClusterPlatformBindingExecute(r ApiGetClusterPlatformBindingRequest) (*ClusterPlatformBindingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -71,6 +75,124 @@ func (a *PlatformConfigurationAPIService) GetClusterPlatformBindingExecute(r Api
 
 	localVarPath := localBasePath + "/organization/{organizationId}/cluster/{clusterId}/platformBinding"
 	localVarPath = strings.Replace(localVarPath, "{"+"organizationId"+"}", url.PathEscape(parameterValueToString(r.organizationId, "organizationId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiGetClusterPlatformConfigurationRequest struct {
+	ctx        context.Context
+	ApiService *PlatformConfigurationAPIService
+	clusterId  string
+}
+
+func (r ApiGetClusterPlatformConfigurationRequest) Execute() (*ClusterPlatformConfigurationResponse, *http.Response, error) {
+	return r.ApiService.GetClusterPlatformConfigurationExecute(r)
+}
+
+/*
+GetClusterPlatformConfiguration Get the cluster platform configuration
+
+Returns the platform selection of the cluster (template release, layer selections and component configuration), its cluster inputs and the resolution of each layer. Sensitive managedConfig values are returned as `"<redacted>"`. Cluster inputs are identifiers, never secrets, and are returned as stored.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterId Cluster ID
+	@return ApiGetClusterPlatformConfigurationRequest
+*/
+func (a *PlatformConfigurationAPIService) GetClusterPlatformConfiguration(ctx context.Context, clusterId string) ApiGetClusterPlatformConfigurationRequest {
+	return ApiGetClusterPlatformConfigurationRequest{
+		ApiService: a,
+		ctx:        ctx,
+		clusterId:  clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ClusterPlatformConfigurationResponse
+func (a *PlatformConfigurationAPIService) GetClusterPlatformConfigurationExecute(r ApiGetClusterPlatformConfigurationRequest) (*ClusterPlatformConfigurationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterPlatformConfigurationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlatformConfigurationAPIService.GetClusterPlatformConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cluster/{clusterId}/platformConfiguration"
 	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
 
 	localVarHeaderParams := make(map[string]string)
@@ -283,6 +405,139 @@ func (a *PlatformConfigurationAPIService) ListPlatformTemplatesExecute(r ApiList
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiResolveClusterPlatformComponentConfigurationRequest struct {
+	ctx                                          context.Context
+	ApiService                                   *PlatformConfigurationAPIService
+	clusterId                                    string
+	componentKey                                 string
+	platformComponentConfigurationPreviewRequest *PlatformComponentConfigurationPreviewRequest
+}
+
+func (r ApiResolveClusterPlatformComponentConfigurationRequest) PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest PlatformComponentConfigurationPreviewRequest) ApiResolveClusterPlatformComponentConfigurationRequest {
+	r.platformComponentConfigurationPreviewRequest = &platformComponentConfigurationPreviewRequest
+	return r
+}
+
+func (r ApiResolveClusterPlatformComponentConfigurationRequest) Execute() (*PlatformComponentConfigurationPreviewResponse, *http.Response, error) {
+	return r.ApiService.ResolveClusterPlatformComponentConfigurationExecute(r)
+}
+
+/*
+ResolveClusterPlatformComponentConfiguration Resolve a platform component configuration of the cluster
+
+Resolves the fields and runtime requirements of a component from the cluster context, its stored platform configuration (the default template release when it has none) and the draft values of the request. This operation is read-only.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterId Cluster ID
+	@param componentKey Platform component key
+	@return ApiResolveClusterPlatformComponentConfigurationRequest
+*/
+func (a *PlatformConfigurationAPIService) ResolveClusterPlatformComponentConfiguration(ctx context.Context, clusterId string, componentKey string) ApiResolveClusterPlatformComponentConfigurationRequest {
+	return ApiResolveClusterPlatformComponentConfigurationRequest{
+		ApiService:   a,
+		ctx:          ctx,
+		clusterId:    clusterId,
+		componentKey: componentKey,
+	}
+}
+
+// Execute executes the request
+//
+//	@return PlatformComponentConfigurationPreviewResponse
+func (a *PlatformConfigurationAPIService) ResolveClusterPlatformComponentConfigurationExecute(r ApiResolveClusterPlatformComponentConfigurationRequest) (*PlatformComponentConfigurationPreviewResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPost
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *PlatformComponentConfigurationPreviewResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlatformConfigurationAPIService.ResolveClusterPlatformComponentConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cluster/{clusterId}/platformConfiguration/component/{componentKey}/resolve"
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"componentKey"+"}", url.PathEscape(parameterValueToString(r.componentKey, "componentKey")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.platformComponentConfigurationPreviewRequest == nil {
+		return localVarReturnValue, nil, reportError("platformComponentConfigurationPreviewRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.platformComponentConfigurationPreviewRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiResolvePlatformComponentConfigurationRequest struct {
 	ctx                                          context.Context
 	ApiService                                   *PlatformConfigurationAPIService
@@ -304,13 +559,15 @@ func (r ApiResolvePlatformComponentConfigurationRequest) Execute() (*PlatformCom
 /*
 ResolvePlatformComponentConfiguration Resolve a platform component configuration
 
-Resolves the fields and runtime requirements to display for a component using the cluster context and the values currently entered in the Console. This operation is read-only.
+Resolves the fields and runtime requirements to display for a component using the cluster context and the values currently entered in the Console. This operation is read-only. Deprecated: use resolveClusterPlatformComponentConfiguration instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
 	@param clusterId Cluster ID
 	@param componentKey Platform component key
 	@return ApiResolvePlatformComponentConfigurationRequest
+
+Deprecated
 */
 func (a *PlatformConfigurationAPIService) ResolvePlatformComponentConfiguration(ctx context.Context, organizationId string, clusterId string, componentKey string) ApiResolvePlatformComponentConfigurationRequest {
 	return ApiResolvePlatformComponentConfigurationRequest{
@@ -325,6 +582,8 @@ func (a *PlatformConfigurationAPIService) ResolvePlatformComponentConfiguration(
 // Execute executes the request
 //
 //	@return PlatformComponentConfigurationPreviewResponse
+//
+// Deprecated
 func (a *PlatformConfigurationAPIService) ResolvePlatformComponentConfigurationExecute(r ApiResolvePlatformComponentConfigurationRequest) (*PlatformComponentConfigurationPreviewResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPost
@@ -603,12 +862,14 @@ func (r ApiUpdateClusterPlatformBindingRequest) Execute() (*ClusterPlatformBindi
 /*
 UpdateClusterPlatformBinding Update the cluster platform binding
 
-Selects a platform template and stores layer selections, component profile values, and customer-provided runtime inputs for the cluster.
+Selects a platform template and stores layer selections, component profile values, and customer-provided runtime inputs for the cluster. Deprecated: use updateClusterPlatformConfiguration instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param organizationId Organization ID
 	@param clusterId Cluster ID
 	@return ApiUpdateClusterPlatformBindingRequest
+
+Deprecated
 */
 func (a *PlatformConfigurationAPIService) UpdateClusterPlatformBinding(ctx context.Context, organizationId string, clusterId string) ApiUpdateClusterPlatformBindingRequest {
 	return ApiUpdateClusterPlatformBindingRequest{
@@ -622,6 +883,8 @@ func (a *PlatformConfigurationAPIService) UpdateClusterPlatformBinding(ctx conte
 // Execute executes the request
 //
 //	@return ClusterPlatformBindingResponse
+//
+// Deprecated
 func (a *PlatformConfigurationAPIService) UpdateClusterPlatformBindingExecute(r ApiUpdateClusterPlatformBindingRequest) (*ClusterPlatformBindingResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodPut
@@ -665,6 +928,135 @@ func (a *PlatformConfigurationAPIService) UpdateClusterPlatformBindingExecute(r 
 	}
 	// body params
 	localVarPostBody = r.clusterPlatformBindingRequest
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiUpdateClusterPlatformConfigurationRequest struct {
+	ctx                                 context.Context
+	ApiService                          *PlatformConfigurationAPIService
+	clusterId                           string
+	clusterPlatformConfigurationRequest *ClusterPlatformConfigurationRequest
+}
+
+func (r ApiUpdateClusterPlatformConfigurationRequest) ClusterPlatformConfigurationRequest(clusterPlatformConfigurationRequest ClusterPlatformConfigurationRequest) ApiUpdateClusterPlatformConfigurationRequest {
+	r.clusterPlatformConfigurationRequest = &clusterPlatformConfigurationRequest
+	return r
+}
+
+func (r ApiUpdateClusterPlatformConfigurationRequest) Execute() (*ClusterPlatformConfigurationResponse, *http.Response, error) {
+	return r.ApiService.UpdateClusterPlatformConfigurationExecute(r)
+}
+
+/*
+UpdateClusterPlatformConfiguration Update the cluster platform configuration
+
+Replaces the whole platform configuration of the cluster, its platform selection and its cluster inputs, after validating it against the template release. Saving does not deploy it. `"<redacted>"` is not a keep-existing value: never send it back.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param clusterId Cluster ID
+	@return ApiUpdateClusterPlatformConfigurationRequest
+*/
+func (a *PlatformConfigurationAPIService) UpdateClusterPlatformConfiguration(ctx context.Context, clusterId string) ApiUpdateClusterPlatformConfigurationRequest {
+	return ApiUpdateClusterPlatformConfigurationRequest{
+		ApiService: a,
+		ctx:        ctx,
+		clusterId:  clusterId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ClusterPlatformConfigurationResponse
+func (a *PlatformConfigurationAPIService) UpdateClusterPlatformConfigurationExecute(r ApiUpdateClusterPlatformConfigurationRequest) (*ClusterPlatformConfigurationResponse, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodPut
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterPlatformConfigurationResponse
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "PlatformConfigurationAPIService.UpdateClusterPlatformConfiguration")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/v1/cluster/{clusterId}/platformConfiguration"
+	localVarPath = strings.Replace(localVarPath, "{"+"clusterId"+"}", url.PathEscape(parameterValueToString(r.clusterId, "clusterId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.clusterPlatformConfigurationRequest == nil {
+		return localVarReturnValue, nil, reportError("clusterPlatformConfigurationRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	// body params
+	localVarPostBody = r.clusterPlatformConfigurationRequest
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

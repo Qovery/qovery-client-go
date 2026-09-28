@@ -398,6 +398,8 @@ docs/ClusterOverviewResponse.md
 docs/ClusterPlatformBindingLayerResponse.md
 docs/ClusterPlatformBindingRequest.md
 docs/ClusterPlatformBindingResponse.md
+docs/ClusterPlatformConfigurationRequest.md
+docs/ClusterPlatformConfigurationResponse.md
 docs/ClusterReadinessStatus.md
 docs/ClusterRegion.md
 docs/ClusterRegionResponseList.md
@@ -1382,6 +1384,8 @@ model_cluster_overview_response.go
 model_cluster_platform_binding_layer_response.go
 model_cluster_platform_binding_request.go
 model_cluster_platform_binding_response.go
+model_cluster_platform_configuration_request.go
+model_cluster_platform_configuration_response.go
 model_cluster_readiness_status.go
 model_cluster_region.go
 model_cluster_region_response_list.go

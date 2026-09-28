@@ -5,10 +5,13 @@ All URIs are relative to *https://api.qovery.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**GetClusterPlatformBinding**](PlatformConfigurationAPI.md#GetClusterPlatformBinding) | **Get** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
+[**GetClusterPlatformConfiguration**](PlatformConfigurationAPI.md#GetClusterPlatformConfiguration) | **Get** /v1/cluster/{clusterId}/platformConfiguration | Get the cluster platform configuration
 [**ListPlatformTemplates**](PlatformConfigurationAPI.md#ListPlatformTemplates) | **Get** /organization/{organizationId}/platformTemplate | List platform templates
+[**ResolveClusterPlatformComponentConfiguration**](PlatformConfigurationAPI.md#ResolveClusterPlatformComponentConfiguration) | **Post** /v1/cluster/{clusterId}/platformConfiguration/component/{componentKey}/resolve | Resolve a platform component configuration of the cluster
 [**ResolvePlatformComponentConfiguration**](PlatformConfigurationAPI.md#ResolvePlatformComponentConfiguration) | **Post** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
 [**ResolvePlatformTemplateComponentConfiguration**](PlatformConfigurationAPI.md#ResolvePlatformTemplateComponentConfiguration) | **Post** /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve | Resolve a platform component configuration before cluster creation
 [**UpdateClusterPlatformBinding**](PlatformConfigurationAPI.md#UpdateClusterPlatformBinding) | **Put** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
+[**UpdateClusterPlatformConfiguration**](PlatformConfigurationAPI.md#UpdateClusterPlatformConfiguration) | **Put** /v1/cluster/{clusterId}/platformConfiguration | Update the cluster platform configuration
 
 
 
@@ -70,6 +73,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterPlatformBindingResponse**](ClusterPlatformBindingResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetClusterPlatformConfiguration
+
+> ClusterPlatformConfigurationResponse GetClusterPlatformConfiguration(ctx, clusterId).Execute()
+
+Get the cluster platform configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PlatformConfigurationAPI.GetClusterPlatformConfiguration(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PlatformConfigurationAPI.GetClusterPlatformConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetClusterPlatformConfiguration`: ClusterPlatformConfigurationResponse
+	fmt.Fprintf(os.Stdout, "Response from `PlatformConfigurationAPI.GetClusterPlatformConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetClusterPlatformConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterPlatformConfigurationResponse**](ClusterPlatformConfigurationResponse.md)
 
 ### Authorization
 
@@ -152,6 +225,81 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ResolveClusterPlatformComponentConfiguration
+
+> PlatformComponentConfigurationPreviewResponse ResolveClusterPlatformComponentConfiguration(ctx, clusterId, componentKey).PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest).Execute()
+
+Resolve a platform component configuration of the cluster
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	componentKey := "componentKey_example" // string | Platform component key
+	platformComponentConfigurationPreviewRequest := *openapiclient.NewPlatformComponentConfigurationPreviewRequest() // PlatformComponentConfigurationPreviewRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PlatformConfigurationAPI.ResolveClusterPlatformComponentConfiguration(context.Background(), clusterId, componentKey).PlatformComponentConfigurationPreviewRequest(platformComponentConfigurationPreviewRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PlatformConfigurationAPI.ResolveClusterPlatformComponentConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ResolveClusterPlatformComponentConfiguration`: PlatformComponentConfigurationPreviewResponse
+	fmt.Fprintf(os.Stdout, "Response from `PlatformConfigurationAPI.ResolveClusterPlatformComponentConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+**componentKey** | **string** | Platform component key | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiResolveClusterPlatformComponentConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **platformComponentConfigurationPreviewRequest** | [**PlatformComponentConfigurationPreviewRequest**](PlatformComponentConfigurationPreviewRequest.md) |  | 
+
+### Return type
+
+[**PlatformComponentConfigurationPreviewResponse**](PlatformComponentConfigurationPreviewResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -382,6 +530,78 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterPlatformBindingResponse**](ClusterPlatformBindingResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## UpdateClusterPlatformConfiguration
+
+> ClusterPlatformConfigurationResponse UpdateClusterPlatformConfiguration(ctx, clusterId).ClusterPlatformConfigurationRequest(clusterPlatformConfigurationRequest).Execute()
+
+Update the cluster platform configuration
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+	clusterPlatformConfigurationRequest := *openapiclient.NewClusterPlatformConfigurationRequest(*openapiclient.NewPlatformSelection("TemplateKey_example", "TemplateVersion_example"), map[string]map[string]string{"key": map[string]string{"key": "Inner_example"}}) // ClusterPlatformConfigurationRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.PlatformConfigurationAPI.UpdateClusterPlatformConfiguration(context.Background(), clusterId).ClusterPlatformConfigurationRequest(clusterPlatformConfigurationRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `PlatformConfigurationAPI.UpdateClusterPlatformConfiguration``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdateClusterPlatformConfiguration`: ClusterPlatformConfigurationResponse
+	fmt.Fprintf(os.Stdout, "Response from `PlatformConfigurationAPI.UpdateClusterPlatformConfiguration`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiUpdateClusterPlatformConfigurationRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **clusterPlatformConfigurationRequest** | [**ClusterPlatformConfigurationRequest**](ClusterPlatformConfigurationRequest.md) |  | 
+
+### Return type
+
+[**ClusterPlatformConfigurationResponse**](ClusterPlatformConfigurationResponse.md)
 
 ### Authorization
 

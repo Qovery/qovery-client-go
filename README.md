@@ -586,10 +586,13 @@ Class | Method | HTTP request | Description
 *OrganizationWebhookAPI* | [**ListOrganizationWebHooks**](docs/OrganizationWebhookAPI.md#listorganizationwebhooks) | **Get** /organization/{organizationId}/webhook | List organization webhooks
 *OrganizationWebhookAPI* | [**ListWebhookEvent**](docs/OrganizationWebhookAPI.md#listwebhookevent) | **Get** /organization/{organizationId}/webhook/{webhookId}/event | List events of a webhook
 *PlatformConfigurationAPI* | [**GetClusterPlatformBinding**](docs/PlatformConfigurationAPI.md#getclusterplatformbinding) | **Get** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Get the cluster platform binding
+*PlatformConfigurationAPI* | [**GetClusterPlatformConfiguration**](docs/PlatformConfigurationAPI.md#getclusterplatformconfiguration) | **Get** /v1/cluster/{clusterId}/platformConfiguration | Get the cluster platform configuration
 *PlatformConfigurationAPI* | [**ListPlatformTemplates**](docs/PlatformConfigurationAPI.md#listplatformtemplates) | **Get** /organization/{organizationId}/platformTemplate | List platform templates
+*PlatformConfigurationAPI* | [**ResolveClusterPlatformComponentConfiguration**](docs/PlatformConfigurationAPI.md#resolveclusterplatformcomponentconfiguration) | **Post** /v1/cluster/{clusterId}/platformConfiguration/component/{componentKey}/resolve | Resolve a platform component configuration of the cluster
 *PlatformConfigurationAPI* | [**ResolvePlatformComponentConfiguration**](docs/PlatformConfigurationAPI.md#resolveplatformcomponentconfiguration) | **Post** /organization/{organizationId}/cluster/{clusterId}/platformBinding/component/{componentKey}/resolve | Resolve a platform component configuration
 *PlatformConfigurationAPI* | [**ResolvePlatformTemplateComponentConfiguration**](docs/PlatformConfigurationAPI.md#resolveplatformtemplatecomponentconfiguration) | **Post** /organization/{organizationId}/platformTemplate/{templateKey}/{templateVersion}/component/{componentKey}/resolve | Resolve a platform component configuration before cluster creation
 *PlatformConfigurationAPI* | [**UpdateClusterPlatformBinding**](docs/PlatformConfigurationAPI.md#updateclusterplatformbinding) | **Put** /organization/{organizationId}/cluster/{clusterId}/platformBinding | Update the cluster platform binding
+*PlatformConfigurationAPI* | [**UpdateClusterPlatformConfiguration**](docs/PlatformConfigurationAPI.md#updateclusterplatformconfiguration) | **Put** /v1/cluster/{clusterId}/platformConfiguration | Update the cluster platform configuration
 *ProjectDeploymentRuleAPI* | [**CreateDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#createdeploymentrule) | **Post** /project/{projectId}/deploymentRule | Create a deployment rule
 *ProjectDeploymentRuleAPI* | [**DeleteProjectDeploymentRule**](docs/ProjectDeploymentRuleAPI.md#deleteprojectdeploymentrule) | **Delete** /project/{projectId}/deploymentRule/{deploymentRuleId} | Delete a project deployment rule
 *ProjectDeploymentRuleAPI* | [**EditProjectDeployemtnRule**](docs/ProjectDeploymentRuleAPI.md#editprojectdeployemtnrule) | **Put** /project/{projectId}/deploymentRule/{deploymentRuleId} | Edit a project deployment rule
@@ -919,6 +922,8 @@ Class | Method | HTTP request | Description
  - [ClusterPlatformBindingLayerResponse](docs/ClusterPlatformBindingLayerResponse.md)
  - [ClusterPlatformBindingRequest](docs/ClusterPlatformBindingRequest.md)
  - [ClusterPlatformBindingResponse](docs/ClusterPlatformBindingResponse.md)
+ - [ClusterPlatformConfigurationRequest](docs/ClusterPlatformConfigurationRequest.md)
+ - [ClusterPlatformConfigurationResponse](docs/ClusterPlatformConfigurationResponse.md)
  - [ClusterReadinessStatus](docs/ClusterReadinessStatus.md)
  - [ClusterRegion](docs/ClusterRegion.md)
  - [ClusterRegionResponseList](docs/ClusterRegionResponseList.md)

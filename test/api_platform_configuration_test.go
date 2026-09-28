@@ -37,6 +37,20 @@ func Test_qovery_PlatformConfigurationAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test PlatformConfigurationAPIService GetClusterPlatformConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.PlatformConfigurationAPI.GetClusterPlatformConfiguration(context.Background(), clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test PlatformConfigurationAPIService ListPlatformTemplates", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -44,6 +58,21 @@ func Test_qovery_PlatformConfigurationAPIService(t *testing.T) {
 		var organizationId string
 
 		resp, httpRes, err := apiClient.PlatformConfigurationAPI.ListPlatformTemplates(context.Background(), organizationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PlatformConfigurationAPIService ResolveClusterPlatformComponentConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+		var componentKey string
+
+		resp, httpRes, err := apiClient.PlatformConfigurationAPI.ResolveClusterPlatformComponentConfiguration(context.Background(), clusterId, componentKey).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -92,6 +121,20 @@ func Test_qovery_PlatformConfigurationAPIService(t *testing.T) {
 		var clusterId string
 
 		resp, httpRes, err := apiClient.PlatformConfigurationAPI.UpdateClusterPlatformBinding(context.Background(), organizationId, clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test PlatformConfigurationAPIService UpdateClusterPlatformConfiguration", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.PlatformConfigurationAPI.UpdateClusterPlatformConfiguration(context.Background(), clusterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
