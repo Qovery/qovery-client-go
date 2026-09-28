@@ -37,9 +37,11 @@ type Organization struct {
 	// uuid of the user owning the organization
 	Owner *string `json:"owner,omitempty"`
 	// If set, indicates a billing-related restriction on the organization. 'NO_CREDIT_CARD' means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction.
-	BillingDeploymentRestriction NullableString                     `json:"billing_deployment_restriction,omitempty"`
-	OrganizationPlan             *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
-	AdditionalProperties         map[string]interface{}
+	BillingDeploymentRestriction NullableString `json:"billing_deployment_restriction,omitempty"`
+	// Indicates if the organization uses SAML or OIDC
+	HasEnterpriseConnection *bool                              `json:"has_enterprise_connection,omitempty"`
+	OrganizationPlan        *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
+	AdditionalProperties    map[string]interface{}
 }
 
 type _Organization Organization
@@ -516,6 +518,38 @@ func (o *Organization) UnsetBillingDeploymentRestriction() {
 	o.BillingDeploymentRestriction.Unset()
 }
 
+// GetHasEnterpriseConnection returns the HasEnterpriseConnection field value if set, zero value otherwise.
+func (o *Organization) GetHasEnterpriseConnection() bool {
+	if o == nil || IsNil(o.HasEnterpriseConnection) {
+		var ret bool
+		return ret
+	}
+	return *o.HasEnterpriseConnection
+}
+
+// GetHasEnterpriseConnectionOk returns a tuple with the HasEnterpriseConnection field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Organization) GetHasEnterpriseConnectionOk() (*bool, bool) {
+	if o == nil || IsNil(o.HasEnterpriseConnection) {
+		return nil, false
+	}
+	return o.HasEnterpriseConnection, true
+}
+
+// HasHasEnterpriseConnection returns a boolean if a field has been set.
+func (o *Organization) HasHasEnterpriseConnection() bool {
+	if o != nil && !IsNil(o.HasEnterpriseConnection) {
+		return true
+	}
+
+	return false
+}
+
+// SetHasEnterpriseConnection gets a reference to the given bool and assigns it to the HasEnterpriseConnection field.
+func (o *Organization) SetHasEnterpriseConnection(v bool) {
+	o.HasEnterpriseConnection = &v
+}
+
 // GetOrganizationPlan returns the OrganizationPlan field value if set, zero value otherwise.
 func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan {
 	if o == nil || IsNil(o.OrganizationPlan) {
@@ -589,6 +623,9 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if o.BillingDeploymentRestriction.IsSet() {
 		toSerialize["billing_deployment_restriction"] = o.BillingDeploymentRestriction.Get()
 	}
+	if !IsNil(o.HasEnterpriseConnection) {
+		toSerialize["has_enterprise_connection"] = o.HasEnterpriseConnection
+	}
 	if !IsNil(o.OrganizationPlan) {
 		toSerialize["organization_plan"] = o.OrganizationPlan
 	}
@@ -651,6 +688,7 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "admin_emails")
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "billing_deployment_restriction")
+		delete(additionalProperties, "has_enterprise_connection")
 		delete(additionalProperties, "organization_plan")
 		o.AdditionalProperties = additionalProperties
 	}

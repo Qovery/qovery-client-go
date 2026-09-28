@@ -40224,6 +40224,9 @@ components:
               \ value blocks all deployments. null means no restriction."
             nullable: true
             type: string
+          has_enterprise_connection:
+            description: Indicates if the organization uses SAML or OIDC
+            type: boolean
         type: object
       - properties:
           organization_plan:
@@ -40240,6 +40243,7 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         repository: repository
+        has_enterprise_connection: true
         admin_emails:
         - admin_emails
         - admin_emails
@@ -40866,6 +40870,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           repository: repository
+          has_enterprise_connection: true
           admin_emails:
           - admin_emails
           - admin_emails
@@ -40884,6 +40889,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           repository: repository
+          has_enterprise_connection: true
           admin_emails:
           - admin_emails
           - admin_emails

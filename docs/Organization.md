@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **AdminEmails** | Pointer to **[]string** |  | [optional] 
 **Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
 **BillingDeploymentRestriction** | Pointer to **NullableString** | If set, indicates a billing-related restriction on the organization. &#39;NO_CREDIT_CARD&#39; means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction. | [optional] 
+**HasEnterpriseConnection** | Pointer to **bool** | Indicates if the organization uses SAML or OIDC | [optional] 
 **OrganizationPlan** | Pointer to [**OrganizationAllOfOrganizationPlan**](OrganizationAllOfOrganizationPlan.md) |  | [optional] 
 
 ## Methods
@@ -413,6 +414,31 @@ HasBillingDeploymentRestriction returns a boolean if a field has been set.
 `func (o *Organization) UnsetBillingDeploymentRestriction()`
 
 UnsetBillingDeploymentRestriction ensures that no value is present for BillingDeploymentRestriction, not even an explicit nil
+### GetHasEnterpriseConnection
+
+`func (o *Organization) GetHasEnterpriseConnection() bool`
+
+GetHasEnterpriseConnection returns the HasEnterpriseConnection field if non-nil, zero value otherwise.
+
+### GetHasEnterpriseConnectionOk
+
+`func (o *Organization) GetHasEnterpriseConnectionOk() (*bool, bool)`
+
+GetHasEnterpriseConnectionOk returns a tuple with the HasEnterpriseConnection field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetHasEnterpriseConnection
+
+`func (o *Organization) SetHasEnterpriseConnection(v bool)`
+
+SetHasEnterpriseConnection sets HasEnterpriseConnection field to given value.
+
+### HasHasEnterpriseConnection
+
+`func (o *Organization) HasHasEnterpriseConnection() bool`
+
+HasHasEnterpriseConnection returns a boolean if a field has been set.
+
 ### GetOrganizationPlan
 
 `func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan`
