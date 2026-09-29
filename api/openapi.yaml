@@ -19462,7 +19462,9 @@ paths:
     post:
       description: "Deploy the agentic workflow service so its configuration can be\
         \ tested. Routine runs of the workflow are triggered by its webhook or its\
-        \ schedule, not by this endpoint."
+        \ schedule, not by this endpoint. Each deploy is recorded in the run history\
+        \ as a MANUAL run before it is queued: if the run cannot be recorded, the\
+        \ deploy is not queued and the call fails with a 500 that is safe to retry."
       operationId: deployAgenticWorkflow
       parameters:
       - explode: false
@@ -49630,6 +49632,7 @@ components:
         duration_ms: 0
         recorded_at: 2000-01-23T04:56:07.000+00:00
         finished_at: 2000-01-23T04:56:07.000+00:00
+        payload: payload
         created_at: 2000-01-23T04:56:07.000+00:00
         started_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -49655,6 +49658,14 @@ components:
           description: "Agent prompt captured when the run was requested. It is a\
             \ snapshot, so later edits to the workflow do not change it. Null when\
             \ the workflow had no prompt."
+          nullable: true
+          type: string
+        payload:
+          description: "Body of the event that triggered the run, as it was received:\
+            \ the webhook request body for a WEBHOOK run, empty for a SCHEDULE or\
+            \ MANUAL run. Request headers are never stored. The value is unredacted\
+            \ and supplied by the caller of the webhook, so treat it as untrusted\
+            \ text. Null when the run has no stored payload."
           nullable: true
           type: string
         created_at:
@@ -49694,6 +49705,7 @@ components:
       - duration_ms
       - finished_at
       - id
+      - payload
       - prompt
       - recorded_at
       - source_workflow_id
@@ -49716,6 +49728,7 @@ components:
         - duration_ms: 0
           recorded_at: 2000-01-23T04:56:07.000+00:00
           finished_at: 2000-01-23T04:56:07.000+00:00
+          payload: payload
           created_at: 2000-01-23T04:56:07.000+00:00
           started_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -49726,6 +49739,7 @@ components:
         - duration_ms: 0
           recorded_at: 2000-01-23T04:56:07.000+00:00
           finished_at: 2000-01-23T04:56:07.000+00:00
+          payload: payload
           created_at: 2000-01-23T04:56:07.000+00:00
           started_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -49745,8 +49759,9 @@ components:
       - CANCELLED
       type: string
     AgenticWorkflowRunTrigger:
-      description: What triggered the run. MANUAL is reserved for manual runs; no
-        backend producer emits it yet.
+      description: "What triggered the run. MANUAL is a run started through the deploy\
+        \ endpoint, SCHEDULE a run started by the workflow's cron schedule, WEBHOOK\
+        \ a run started by its webhook."
       enum:
       - MANUAL
       - SCHEDULE

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// AgenticWorkflowRunTrigger What triggered the run. MANUAL is reserved for manual runs; no backend producer emits it yet.
+// AgenticWorkflowRunTrigger What triggered the run. MANUAL is a run started through the deploy endpoint, SCHEDULE a run started by the workflow's cron schedule, WEBHOOK a run started by its webhook.
 type AgenticWorkflowRunTrigger string
 
 // List of AgenticWorkflowRunTrigger

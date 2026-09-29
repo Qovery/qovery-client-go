@@ -29,6 +29,8 @@ type AgenticWorkflowRun struct {
 	Trigger          AgenticWorkflowRunTrigger `json:"trigger"`
 	// Agent prompt captured when the run was requested. It is a snapshot, so later edits to the workflow do not change it. Null when the workflow had no prompt.
 	Prompt NullableString `json:"prompt"`
+	// Body of the event that triggered the run, as it was received: the webhook request body for a WEBHOOK run, empty for a SCHEDULE or MANUAL run. Request headers are never stored. The value is unredacted and supplied by the caller of the webhook, so treat it as untrusted text. Null when the run has no stored payload.
+	Payload NullableString `json:"payload"`
 	// Time the run was requested.
 	CreatedAt time.Time `json:"created_at"`
 	// Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown.
@@ -49,12 +51,13 @@ type _AgenticWorkflowRun AgenticWorkflowRun
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64) *AgenticWorkflowRun {
+func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, payload NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64) *AgenticWorkflowRun {
 	this := AgenticWorkflowRun{}
 	this.Id = id
 	this.SourceWorkflowId = sourceWorkflowId
 	this.Trigger = trigger
 	this.Prompt = prompt
+	this.Payload = payload
 	this.CreatedAt = createdAt
 	this.RecordedAt = recordedAt
 	this.Status = status
@@ -168,6 +171,32 @@ func (o *AgenticWorkflowRun) GetPromptOk() (*string, bool) {
 // SetPrompt sets field value
 func (o *AgenticWorkflowRun) SetPrompt(v string) {
 	o.Prompt.Set(&v)
+}
+
+// GetPayload returns the Payload field value
+// If the value is explicit nil, the zero value for string will be returned
+func (o *AgenticWorkflowRun) GetPayload() string {
+	if o == nil || o.Payload.Get() == nil {
+		var ret string
+		return ret
+	}
+
+	return *o.Payload.Get()
+}
+
+// GetPayloadOk returns a tuple with the Payload field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowRun) GetPayloadOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Payload.Get(), o.Payload.IsSet()
+}
+
+// SetPayload sets field value
+func (o *AgenticWorkflowRun) SetPayload(v string) {
+	o.Payload.Set(&v)
 }
 
 // GetCreatedAt returns the CreatedAt field value
@@ -336,6 +365,7 @@ func (o AgenticWorkflowRun) ToMap() (map[string]interface{}, error) {
 	toSerialize["source_workflow_id"] = o.SourceWorkflowId
 	toSerialize["trigger"] = o.Trigger
 	toSerialize["prompt"] = o.Prompt.Get()
+	toSerialize["payload"] = o.Payload.Get()
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["recorded_at"] = o.RecordedAt.Get()
 	toSerialize["status"] = o.Status
@@ -359,6 +389,7 @@ func (o *AgenticWorkflowRun) UnmarshalJSON(data []byte) (err error) {
 		"source_workflow_id",
 		"trigger",
 		"prompt",
+		"payload",
 		"created_at",
 		"recorded_at",
 		"status",
@@ -398,6 +429,7 @@ func (o *AgenticWorkflowRun) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "source_workflow_id")
 		delete(additionalProperties, "trigger")
 		delete(additionalProperties, "prompt")
+		delete(additionalProperties, "payload")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "recorded_at")
 		delete(additionalProperties, "status")

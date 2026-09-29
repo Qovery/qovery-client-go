@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **SourceWorkflowId** | **string** | ID of the workflow the run was requested for. A CLONE_ENVIRONMENT run executes as a fresh clone carrying its own ID, which run history does not report, so this is never the ID of the workflow that actually executed. | 
 **Trigger** | [**AgenticWorkflowRunTrigger**](AgenticWorkflowRunTrigger.md) |  | 
 **Prompt** | **NullableString** | Agent prompt captured when the run was requested. It is a snapshot, so later edits to the workflow do not change it. Null when the workflow had no prompt. | 
+**Payload** | **NullableString** | Body of the event that triggered the run, as it was received: the webhook request body for a WEBHOOK run, empty for a SCHEDULE or MANUAL run. Request headers are never stored. The value is unredacted and supplied by the caller of the webhook, so treat it as untrusted text. Null when the run has no stored payload. | 
 **CreatedAt** | **time.Time** | Time the run was requested. | 
 **RecordedAt** | **NullableTime** | Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown. | 
 **Status** | [**AgenticWorkflowRunStatus**](AgenticWorkflowRunStatus.md) |  | 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowRun
 
-`func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64, ) *AgenticWorkflowRun`
+`func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, payload NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64, ) *AgenticWorkflowRun`
 
 NewAgenticWorkflowRun instantiates a new AgenticWorkflowRun object
 This constructor will assign default values to properties that have it defined,
@@ -124,6 +125,36 @@ SetPrompt sets Prompt field to given value.
 `func (o *AgenticWorkflowRun) UnsetPrompt()`
 
 UnsetPrompt ensures that no value is present for Prompt, not even an explicit nil
+### GetPayload
+
+`func (o *AgenticWorkflowRun) GetPayload() string`
+
+GetPayload returns the Payload field if non-nil, zero value otherwise.
+
+### GetPayloadOk
+
+`func (o *AgenticWorkflowRun) GetPayloadOk() (*string, bool)`
+
+GetPayloadOk returns a tuple with the Payload field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetPayload
+
+`func (o *AgenticWorkflowRun) SetPayload(v string)`
+
+SetPayload sets Payload field to given value.
+
+
+### SetPayloadNil
+
+`func (o *AgenticWorkflowRun) SetPayloadNil(b bool)`
+
+ SetPayloadNil sets the value for Payload to be an explicit nil
+
+### UnsetPayload
+`func (o *AgenticWorkflowRun) UnsetPayload()`
+
+UnsetPayload ensures that no value is present for Payload, not even an explicit nil
 ### GetCreatedAt
 
 `func (o *AgenticWorkflowRun) GetCreatedAt() time.Time`
