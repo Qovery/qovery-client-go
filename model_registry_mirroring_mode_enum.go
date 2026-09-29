@@ -16,19 +16,21 @@ import (
 	"fmt"
 )
 
-// RegistryMirroringModeEnum Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository
+// RegistryMirroringModeEnum Mirroring mode when deploying a service from a container registry - Cluster: This is not available on Scaleway. Images within the mirroring registry are organized by \"Qovery cluster\", meaning that the application deployed on the same cluster are all mirrored on the same repository. - Service: Images within the mirroring registry are organized by \"Qovery service\", each service has its own repository - Disabled: Only available on Scaleway Kapsule. Images are not copied into the cluster registry: pods pull them directly from the service container registry, with its credentials. Registries with temporary credentials (AWS ECR, Azure, GCP Artifact Registry) are still mirrored. Images built by Qovery still go to the cluster registry.
 type RegistryMirroringModeEnum string
 
 // List of RegistryMirroringModeEnum
 const (
-	REGISTRYMIRRORINGMODEENUM_CLUSTER RegistryMirroringModeEnum = "Cluster"
-	REGISTRYMIRRORINGMODEENUM_SERVICE RegistryMirroringModeEnum = "Service"
+	REGISTRYMIRRORINGMODEENUM_CLUSTER  RegistryMirroringModeEnum = "Cluster"
+	REGISTRYMIRRORINGMODEENUM_SERVICE  RegistryMirroringModeEnum = "Service"
+	REGISTRYMIRRORINGMODEENUM_DISABLED RegistryMirroringModeEnum = "Disabled"
 )
 
 // All allowed values of RegistryMirroringModeEnum enum
 var AllowedRegistryMirroringModeEnumEnumValues = []RegistryMirroringModeEnum{
 	"Cluster",
 	"Service",
+	"Disabled",
 }
 
 func (v *RegistryMirroringModeEnum) UnmarshalJSON(src []byte) error {
