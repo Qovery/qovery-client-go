@@ -49625,12 +49625,16 @@ components:
     AgenticWorkflowRun:
       description: One recorded run of an agentic workflow.
       example:
+        duration_ms: 0
         recorded_at: 2000-01-23T04:56:07.000+00:00
+        finished_at: 2000-01-23T04:56:07.000+00:00
         created_at: 2000-01-23T04:56:07.000+00:00
+        started_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         trigger: MANUAL
         source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         prompt: prompt
+        status: QUEUED
       properties:
         id:
           description: Run ID.
@@ -49663,12 +49667,36 @@ components:
           format: date-time
           nullable: true
           type: string
+        status:
+          $ref: '#/components/schemas/AgenticWorkflowRunStatus'
+        started_at:
+          description: "Time the run entered RUNNING. Separate from recorded_at. Null\
+            \ until that transition is observed, and null for a run that reached a\
+            \ terminal status without it being observed."
+          format: date-time
+          nullable: true
+          type: string
+        finished_at:
+          description: Time the run reached a terminal status. Null until then.
+          format: date-time
+          nullable: true
+          type: string
+        duration_ms:
+          description: "finished_at minus started_at, in milliseconds. Derived, not\
+            \ stored. Null unless both timestamps are set."
+          format: int64
+          nullable: true
+          type: integer
       required:
       - created_at
+      - duration_ms
+      - finished_at
       - id
       - prompt
       - recorded_at
       - source_workflow_id
+      - started_at
+      - status
       - trigger
       type: object
     AgenticWorkflowRunPaginatedResponseList:
@@ -49683,19 +49711,37 @@ components:
       example:
         page: 1
         results:
-        - recorded_at: 2000-01-23T04:56:07.000+00:00
+        - duration_ms: 0
+          recorded_at: 2000-01-23T04:56:07.000+00:00
+          finished_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
+          started_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trigger: MANUAL
           source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           prompt: prompt
-        - recorded_at: 2000-01-23T04:56:07.000+00:00
+          status: QUEUED
+        - duration_ms: 0
+          recorded_at: 2000-01-23T04:56:07.000+00:00
+          finished_at: 2000-01-23T04:56:07.000+00:00
           created_at: 2000-01-23T04:56:07.000+00:00
+          started_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trigger: MANUAL
           source_workflow_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           prompt: prompt
+          status: QUEUED
         page_size: 20
+    AgenticWorkflowRunStatus:
+      description: "Status of a run. COMPLETED, FAILED and CANCELLED are terminal\
+        \ and never change afterwards."
+      enum:
+      - QUEUED
+      - RUNNING
+      - COMPLETED
+      - FAILED
+      - CANCELLED
+      type: string
     AgenticWorkflowRunTrigger:
       description: What triggered the run. MANUAL is reserved for manual runs; no
         backend producer emits it yet.

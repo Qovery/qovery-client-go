@@ -32,7 +32,14 @@ type AgenticWorkflowRun struct {
 	// Time the run was requested.
 	CreatedAt time.Time `json:"created_at"`
 	// Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown.
-	RecordedAt           NullableTime `json:"recorded_at"`
+	RecordedAt NullableTime             `json:"recorded_at"`
+	Status     AgenticWorkflowRunStatus `json:"status"`
+	// Time the run entered RUNNING. Separate from recorded_at. Null until that transition is observed, and null for a run that reached a terminal status without it being observed.
+	StartedAt NullableTime `json:"started_at"`
+	// Time the run reached a terminal status. Null until then.
+	FinishedAt NullableTime `json:"finished_at"`
+	// finished_at minus started_at, in milliseconds. Derived, not stored. Null unless both timestamps are set.
+	DurationMs           NullableInt64 `json:"duration_ms"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -42,7 +49,7 @@ type _AgenticWorkflowRun AgenticWorkflowRun
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime) *AgenticWorkflowRun {
+func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64) *AgenticWorkflowRun {
 	this := AgenticWorkflowRun{}
 	this.Id = id
 	this.SourceWorkflowId = sourceWorkflowId
@@ -50,6 +57,10 @@ func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWo
 	this.Prompt = prompt
 	this.CreatedAt = createdAt
 	this.RecordedAt = recordedAt
+	this.Status = status
+	this.StartedAt = startedAt
+	this.FinishedAt = finishedAt
+	this.DurationMs = durationMs
 	return &this
 }
 
@@ -209,6 +220,108 @@ func (o *AgenticWorkflowRun) SetRecordedAt(v time.Time) {
 	o.RecordedAt.Set(&v)
 }
 
+// GetStatus returns the Status field value
+func (o *AgenticWorkflowRun) GetStatus() AgenticWorkflowRunStatus {
+	if o == nil {
+		var ret AgenticWorkflowRunStatus
+		return ret
+	}
+
+	return o.Status
+}
+
+// GetStatusOk returns a tuple with the Status field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRun) GetStatusOk() (*AgenticWorkflowRunStatus, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Status, true
+}
+
+// SetStatus sets field value
+func (o *AgenticWorkflowRun) SetStatus(v AgenticWorkflowRunStatus) {
+	o.Status = v
+}
+
+// GetStartedAt returns the StartedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *AgenticWorkflowRun) GetStartedAt() time.Time {
+	if o == nil || o.StartedAt.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.StartedAt.Get()
+}
+
+// GetStartedAtOk returns a tuple with the StartedAt field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowRun) GetStartedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartedAt.Get(), o.StartedAt.IsSet()
+}
+
+// SetStartedAt sets field value
+func (o *AgenticWorkflowRun) SetStartedAt(v time.Time) {
+	o.StartedAt.Set(&v)
+}
+
+// GetFinishedAt returns the FinishedAt field value
+// If the value is explicit nil, the zero value for time.Time will be returned
+func (o *AgenticWorkflowRun) GetFinishedAt() time.Time {
+	if o == nil || o.FinishedAt.Get() == nil {
+		var ret time.Time
+		return ret
+	}
+
+	return *o.FinishedAt.Get()
+}
+
+// GetFinishedAtOk returns a tuple with the FinishedAt field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowRun) GetFinishedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.FinishedAt.Get(), o.FinishedAt.IsSet()
+}
+
+// SetFinishedAt sets field value
+func (o *AgenticWorkflowRun) SetFinishedAt(v time.Time) {
+	o.FinishedAt.Set(&v)
+}
+
+// GetDurationMs returns the DurationMs field value
+// If the value is explicit nil, the zero value for int64 will be returned
+func (o *AgenticWorkflowRun) GetDurationMs() int64 {
+	if o == nil || o.DurationMs.Get() == nil {
+		var ret int64
+		return ret
+	}
+
+	return *o.DurationMs.Get()
+}
+
+// GetDurationMsOk returns a tuple with the DurationMs field value
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AgenticWorkflowRun) GetDurationMsOk() (*int64, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DurationMs.Get(), o.DurationMs.IsSet()
+}
+
+// SetDurationMs sets field value
+func (o *AgenticWorkflowRun) SetDurationMs(v int64) {
+	o.DurationMs.Set(&v)
+}
+
 func (o AgenticWorkflowRun) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -225,6 +338,10 @@ func (o AgenticWorkflowRun) ToMap() (map[string]interface{}, error) {
 	toSerialize["prompt"] = o.Prompt.Get()
 	toSerialize["created_at"] = o.CreatedAt
 	toSerialize["recorded_at"] = o.RecordedAt.Get()
+	toSerialize["status"] = o.Status
+	toSerialize["started_at"] = o.StartedAt.Get()
+	toSerialize["finished_at"] = o.FinishedAt.Get()
+	toSerialize["duration_ms"] = o.DurationMs.Get()
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -244,6 +361,10 @@ func (o *AgenticWorkflowRun) UnmarshalJSON(data []byte) (err error) {
 		"prompt",
 		"created_at",
 		"recorded_at",
+		"status",
+		"started_at",
+		"finished_at",
+		"duration_ms",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -279,6 +400,10 @@ func (o *AgenticWorkflowRun) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "prompt")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "recorded_at")
+		delete(additionalProperties, "status")
+		delete(additionalProperties, "started_at")
+		delete(additionalProperties, "finished_at")
+		delete(additionalProperties, "duration_ms")
 		o.AdditionalProperties = additionalProperties
 	}
 

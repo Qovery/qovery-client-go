@@ -10,12 +10,16 @@ Name | Type | Description | Notes
 **Prompt** | **NullableString** | Agent prompt captured when the run was requested. It is a snapshot, so later edits to the workflow do not change it. Null when the workflow had no prompt. | 
 **CreatedAt** | **time.Time** | Time the run was requested. | 
 **RecordedAt** | **NullableTime** | Time the run was registered in run history, shortly after it was requested. This is not a lifecycle start time: nothing reports when the agent itself started, so this value must not be used to measure a run. Null when it is unknown. | 
+**Status** | [**AgenticWorkflowRunStatus**](AgenticWorkflowRunStatus.md) |  | 
+**StartedAt** | **NullableTime** | Time the run entered RUNNING. Separate from recorded_at. Null until that transition is observed, and null for a run that reached a terminal status without it being observed. | 
+**FinishedAt** | **NullableTime** | Time the run reached a terminal status. Null until then. | 
+**DurationMs** | **NullableInt64** | finished_at minus started_at, in milliseconds. Derived, not stored. Null unless both timestamps are set. | 
 
 ## Methods
 
 ### NewAgenticWorkflowRun
 
-`func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime, ) *AgenticWorkflowRun`
+`func NewAgenticWorkflowRun(id string, sourceWorkflowId string, trigger AgenticWorkflowRunTrigger, prompt NullableString, createdAt time.Time, recordedAt NullableTime, status AgenticWorkflowRunStatus, startedAt NullableTime, finishedAt NullableTime, durationMs NullableInt64, ) *AgenticWorkflowRun`
 
 NewAgenticWorkflowRun instantiates a new AgenticWorkflowRun object
 This constructor will assign default values to properties that have it defined,
@@ -170,6 +174,116 @@ SetRecordedAt sets RecordedAt field to given value.
 `func (o *AgenticWorkflowRun) UnsetRecordedAt()`
 
 UnsetRecordedAt ensures that no value is present for RecordedAt, not even an explicit nil
+### GetStatus
+
+`func (o *AgenticWorkflowRun) GetStatus() AgenticWorkflowRunStatus`
+
+GetStatus returns the Status field if non-nil, zero value otherwise.
+
+### GetStatusOk
+
+`func (o *AgenticWorkflowRun) GetStatusOk() (*AgenticWorkflowRunStatus, bool)`
+
+GetStatusOk returns a tuple with the Status field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStatus
+
+`func (o *AgenticWorkflowRun) SetStatus(v AgenticWorkflowRunStatus)`
+
+SetStatus sets Status field to given value.
+
+
+### GetStartedAt
+
+`func (o *AgenticWorkflowRun) GetStartedAt() time.Time`
+
+GetStartedAt returns the StartedAt field if non-nil, zero value otherwise.
+
+### GetStartedAtOk
+
+`func (o *AgenticWorkflowRun) GetStartedAtOk() (*time.Time, bool)`
+
+GetStartedAtOk returns a tuple with the StartedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartedAt
+
+`func (o *AgenticWorkflowRun) SetStartedAt(v time.Time)`
+
+SetStartedAt sets StartedAt field to given value.
+
+
+### SetStartedAtNil
+
+`func (o *AgenticWorkflowRun) SetStartedAtNil(b bool)`
+
+ SetStartedAtNil sets the value for StartedAt to be an explicit nil
+
+### UnsetStartedAt
+`func (o *AgenticWorkflowRun) UnsetStartedAt()`
+
+UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
+### GetFinishedAt
+
+`func (o *AgenticWorkflowRun) GetFinishedAt() time.Time`
+
+GetFinishedAt returns the FinishedAt field if non-nil, zero value otherwise.
+
+### GetFinishedAtOk
+
+`func (o *AgenticWorkflowRun) GetFinishedAtOk() (*time.Time, bool)`
+
+GetFinishedAtOk returns a tuple with the FinishedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFinishedAt
+
+`func (o *AgenticWorkflowRun) SetFinishedAt(v time.Time)`
+
+SetFinishedAt sets FinishedAt field to given value.
+
+
+### SetFinishedAtNil
+
+`func (o *AgenticWorkflowRun) SetFinishedAtNil(b bool)`
+
+ SetFinishedAtNil sets the value for FinishedAt to be an explicit nil
+
+### UnsetFinishedAt
+`func (o *AgenticWorkflowRun) UnsetFinishedAt()`
+
+UnsetFinishedAt ensures that no value is present for FinishedAt, not even an explicit nil
+### GetDurationMs
+
+`func (o *AgenticWorkflowRun) GetDurationMs() int64`
+
+GetDurationMs returns the DurationMs field if non-nil, zero value otherwise.
+
+### GetDurationMsOk
+
+`func (o *AgenticWorkflowRun) GetDurationMsOk() (*int64, bool)`
+
+GetDurationMsOk returns a tuple with the DurationMs field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDurationMs
+
+`func (o *AgenticWorkflowRun) SetDurationMs(v int64)`
+
+SetDurationMs sets DurationMs field to given value.
+
+
+### SetDurationMsNil
+
+`func (o *AgenticWorkflowRun) SetDurationMsNil(b bool)`
+
+ SetDurationMsNil sets the value for DurationMs to be an explicit nil
+
+### UnsetDurationMs
+`func (o *AgenticWorkflowRun) UnsetDurationMs()`
+
+UnsetDurationMs ensures that no value is present for DurationMs, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

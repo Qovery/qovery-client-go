@@ -678,6 +678,7 @@ Class | Method | HTTP request | Description
  - [AgenticWorkflowResponseList](docs/AgenticWorkflowResponseList.md)
  - [AgenticWorkflowRun](docs/AgenticWorkflowRun.md)
  - [AgenticWorkflowRunPaginatedResponseList](docs/AgenticWorkflowRunPaginatedResponseList.md)
+ - [AgenticWorkflowRunStatus](docs/AgenticWorkflowRunStatus.md)
  - [AgenticWorkflowRunTrigger](docs/AgenticWorkflowRunTrigger.md)
  - [AgenticWorkflowScheduleRequest](docs/AgenticWorkflowScheduleRequest.md)
  - [AgenticWorkflowScheduleResponse](docs/AgenticWorkflowScheduleResponse.md)
