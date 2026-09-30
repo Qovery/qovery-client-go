@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Consolidation** | Pointer to [**KarpenterNodePoolConsolidation**](KarpenterNodePoolConsolidation.md) |  | [optional] 
+**DriftBlocking** | Pointer to [**KarpenterNodePoolConsolidation**](KarpenterNodePoolConsolidation.md) |  | [optional] 
 **Limits** | Pointer to [**KarpenterNodePoolLimits**](KarpenterNodePoolLimits.md) |  | [optional] 
 **SpotEnabled** | Pointer to **NullableBool** | Whether this node pool runs on spot instances. &#x60;null&#x60; or absent means the pool inherits the deprecated top-level &#x60;spot_enabled&#x60;: on write that value applies to this pool, on read only a deviating value is surfaced. | [optional] 
 **ConsolidateAfter** | Pointer to **string** | Time to wait before consolidating empty or underutilized nodes (e.g., 1m, 10m, 1h). Maximum: 24h | [optional] 
@@ -52,6 +53,31 @@ SetConsolidation sets Consolidation field to given value.
 `func (o *KarpenterStableNodePoolOverride) HasConsolidation() bool`
 
 HasConsolidation returns a boolean if a field has been set.
+
+### GetDriftBlocking
+
+`func (o *KarpenterStableNodePoolOverride) GetDriftBlocking() KarpenterNodePoolConsolidation`
+
+GetDriftBlocking returns the DriftBlocking field if non-nil, zero value otherwise.
+
+### GetDriftBlockingOk
+
+`func (o *KarpenterStableNodePoolOverride) GetDriftBlockingOk() (*KarpenterNodePoolConsolidation, bool)`
+
+GetDriftBlockingOk returns a tuple with the DriftBlocking field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDriftBlocking
+
+`func (o *KarpenterStableNodePoolOverride) SetDriftBlocking(v KarpenterNodePoolConsolidation)`
+
+SetDriftBlocking sets DriftBlocking field to given value.
+
+### HasDriftBlocking
+
+`func (o *KarpenterStableNodePoolOverride) HasDriftBlocking() bool`
+
+HasDriftBlocking returns a boolean if a field has been set.
 
 ### GetLimits
 

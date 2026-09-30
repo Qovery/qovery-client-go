@@ -18,9 +18,10 @@ import (
 // checks if the KarpenterStableNodePoolOverride type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &KarpenterStableNodePoolOverride{}
 
-// KarpenterStableNodePoolOverride struct for KarpenterStableNodePoolOverride
+// KarpenterStableNodePoolOverride The optional `drift_blocking` setting defines one recurring UTC window during which Karpenter drift disruptions are blocked on the stable node pool. When omitted on creation or disabled, drift behavior is unchanged; omitting it on update preserves the existing setting. When enabled, `days` must contain all seven weekdays and `duration` must be between PT1M and PT23H, leaving at least one hour each day when drift is permitted.
 type KarpenterStableNodePoolOverride struct {
 	Consolidation *KarpenterNodePoolConsolidation `json:"consolidation,omitempty"`
+	DriftBlocking *KarpenterNodePoolConsolidation `json:"drift_blocking,omitempty"`
 	Limits        *KarpenterNodePoolLimits        `json:"limits,omitempty"`
 	// Whether this node pool runs on spot instances. `null` or absent means the pool inherits the deprecated top-level `spot_enabled`: on write that value applies to this pool, on read only a deviating value is surfaced.
 	SpotEnabled NullableBool `json:"spot_enabled,omitempty"`
@@ -78,6 +79,38 @@ func (o *KarpenterStableNodePoolOverride) HasConsolidation() bool {
 // SetConsolidation gets a reference to the given KarpenterNodePoolConsolidation and assigns it to the Consolidation field.
 func (o *KarpenterStableNodePoolOverride) SetConsolidation(v KarpenterNodePoolConsolidation) {
 	o.Consolidation = &v
+}
+
+// GetDriftBlocking returns the DriftBlocking field value if set, zero value otherwise.
+func (o *KarpenterStableNodePoolOverride) GetDriftBlocking() KarpenterNodePoolConsolidation {
+	if o == nil || IsNil(o.DriftBlocking) {
+		var ret KarpenterNodePoolConsolidation
+		return ret
+	}
+	return *o.DriftBlocking
+}
+
+// GetDriftBlockingOk returns a tuple with the DriftBlocking field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KarpenterStableNodePoolOverride) GetDriftBlockingOk() (*KarpenterNodePoolConsolidation, bool) {
+	if o == nil || IsNil(o.DriftBlocking) {
+		return nil, false
+	}
+	return o.DriftBlocking, true
+}
+
+// HasDriftBlocking returns a boolean if a field has been set.
+func (o *KarpenterStableNodePoolOverride) HasDriftBlocking() bool {
+	if o != nil && !IsNil(o.DriftBlocking) {
+		return true
+	}
+
+	return false
+}
+
+// SetDriftBlocking gets a reference to the given KarpenterNodePoolConsolidation and assigns it to the DriftBlocking field.
+func (o *KarpenterStableNodePoolOverride) SetDriftBlocking(v KarpenterNodePoolConsolidation) {
+	o.DriftBlocking = &v
 }
 
 // GetLimits returns the Limits field value if set, zero value otherwise.
@@ -200,6 +233,9 @@ func (o KarpenterStableNodePoolOverride) ToMap() (map[string]interface{}, error)
 	if !IsNil(o.Consolidation) {
 		toSerialize["consolidation"] = o.Consolidation
 	}
+	if !IsNil(o.DriftBlocking) {
+		toSerialize["drift_blocking"] = o.DriftBlocking
+	}
 	if !IsNil(o.Limits) {
 		toSerialize["limits"] = o.Limits
 	}
@@ -232,6 +268,7 @@ func (o *KarpenterStableNodePoolOverride) UnmarshalJSON(data []byte) (err error)
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "consolidation")
+		delete(additionalProperties, "drift_blocking")
 		delete(additionalProperties, "limits")
 		delete(additionalProperties, "spot_enabled")
 		delete(additionalProperties, "consolidate_after")

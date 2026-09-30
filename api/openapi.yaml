@@ -45026,8 +45026,16 @@ components:
       x-stoplight:
         id: 4ebed64emvn09
     KarpenterStableNodePoolOverride:
+      description: "The optional `drift_blocking` setting defines one recurring UTC\
+        \ window during which Karpenter drift disruptions are blocked on the stable\
+        \ node pool. When omitted on creation or disabled, drift behavior is unchanged;\
+        \ omitting it on update preserves the existing setting. When enabled, `days`\
+        \ must contain all seven weekdays and `duration` must be between PT1M and\
+        \ PT23H, leaving at least one hour each day when drift is permitted."
       properties:
         consolidation:
+          $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
+        drift_blocking:
           $ref: '#/components/schemas/KarpenterNodePoolConsolidation'
         limits:
           $ref: '#/components/schemas/KarpenterNodePoolLimits'
