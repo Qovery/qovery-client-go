@@ -2034,13 +2034,16 @@ paths:
         \ which Qovery calls to check the credential whatever the cluster region;\
         \ features that call other AWS services with the credential, such as managed\
         \ databases or Terraform services using the cluster credentials, need more.\
-        \ The credential, including its ECR access in the cluster region, and the\
-        \ platform configuration are checked before anything is created. One transaction\
-        \ then writes the cluster, its Qovery DNS and build providers, its default\
-        \ ECR registry derived from the credential, its initial deployment status,\
-        \ its platform configuration and its Qovery Operator enrollment. Only the\
-        \ AWS provider is supported. Install the Operator next with the cluster's\
-        \ Operator bootstrap."
+        \ Without `platform.templateKey` and `platform.templateVersion`, Qovery selects\
+        \ its self-managed platform template release and the response returns it:\
+        \ `\"platform\": {}` gives that release with its default configuration. Without\
+        \ `clusterInputs`, the cluster has no cluster inputs. The credential, including\
+        \ its ECR access in the cluster region, and the platform configuration are\
+        \ checked before anything is created. One transaction then writes the cluster,\
+        \ its Qovery DNS and build providers, its default ECR registry derived from\
+        \ the credential, its initial deployment status, its platform configuration\
+        \ and its Qovery Operator enrollment. Only the AWS provider is supported.\
+        \ Install the Operator next with the cluster's Operator bootstrap."
       operationId: createSelfManagedCluster
       parameters:
       - description: Organization ID
@@ -2066,9 +2069,10 @@ paths:
                 $ref: '#/components/schemas/SelfManagedClusterResponse'
           description: Created self-managed cluster
         "400":
-          description: "Invalid body, provider other than AWS, unknown region, invalid\
-            \ name, cloud credential of another provider, ECR refusing the credential,\
-            \ or invalid platform configuration"
+          description: "Invalid body, including only one of `platform.templateKey`\
+            \ and `platform.templateVersion`, provider other than AWS, unknown region,\
+            \ invalid name, cloud credential of another provider, ECR refusing the\
+            \ credential, or invalid platform configuration"
         "401":
           description: Access token is missing or invalid
         "403":
@@ -2083,7 +2087,10 @@ paths:
             \ internal creation step failed, such as writing the cluster's initial\
             \ deployment status or the Qovery Operator enrollment"
         "503":
-          description: The platform template catalog is temporarily unavailable
+          description: "The platform template catalog is temporarily unavailable,\
+            \ or, for a request without `platform.templateKey` and `platform.templateVersion`,\
+            \ the self-managed platform template release is missing from it or not\
+            \ published"
       summary: Create a self-managed cluster run by the Qovery Operator
       tags:
       - Clusters
@@ -22947,7 +22954,7 @@ components:
         credentials:
           $ref: '#/components/schemas/SelfManagedClusterCredentials'
         platform:
-          $ref: '#/components/schemas/PlatformSelection'
+          $ref: '#/components/schemas/SelfManagedClusterPlatformSelection'
         clusterInputs:
           additionalProperties:
             additionalProperties:
@@ -22962,6 +22969,43 @@ components:
       - platform
       - provider
       - region
+      type: object
+    SelfManagedClusterPlatformSelection:
+      description: "Platform template release and configuration of a new self-managed\
+        \ cluster. Set templateKey and templateVersion together to select a release,\
+        \ or omit both and Qovery selects its self-managed platform template release;\
+        \ only one of them answers 400. layerSelections and managedConfig are validated\
+        \ against the selected release, and `{}` gives that release with its default\
+        \ configuration. Send them without templateKey and templateVersion only if\
+        \ you already know the components of the self-managed platform template; a\
+        \ client that renders the fields of a release must send that release's coordinates,\
+        \ and selections of mandatory layers are rejected. The response returns the\
+        \ selected release, and the cluster keeps it even if Qovery later selects\
+        \ another one."
+      example:
+        managedConfig:
+          key: null
+        layerSelections:
+          key: true
+        templateVersion: templateVersion
+        templateKey: templateKey
+      properties:
+        templateKey:
+          description: "Key of the platform template release, set together with templateVersion."
+          type: string
+        templateVersion:
+          description: "Version of the platform template release, set together with\
+            \ templateKey."
+          type: string
+        layerSelections:
+          additionalProperties:
+            type: boolean
+          type: object
+        managedConfig:
+          additionalProperties:
+            $ref: '#/components/schemas/PlatformConfigurationValues'
+          description: Component configuration values keyed by component key
+          type: object
       type: object
     SelfManagedClusterCredentials:
       description: AWS cloud credential of the organization that the cluster runs

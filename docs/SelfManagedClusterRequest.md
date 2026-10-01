@@ -9,14 +9,14 @@ Name | Type | Description | Notes
 **Provider** | **string** |  | 
 **Region** | **string** |  | 
 **Credentials** | [**SelfManagedClusterCredentials**](SelfManagedClusterCredentials.md) |  | 
-**Platform** | [**PlatformSelection**](PlatformSelection.md) |  | 
+**Platform** | [**SelfManagedClusterPlatformSelection**](SelfManagedClusterPlatformSelection.md) |  | 
 **ClusterInputs** | Pointer to **map[string]map[string]string** | String values keyed first by component key and then by input key | [optional] 
 
 ## Methods
 
 ### NewSelfManagedClusterRequest
 
-`func NewSelfManagedClusterRequest(name string, provider string, region string, credentials SelfManagedClusterCredentials, platform PlatformSelection, ) *SelfManagedClusterRequest`
+`func NewSelfManagedClusterRequest(name string, provider string, region string, credentials SelfManagedClusterCredentials, platform SelfManagedClusterPlatformSelection, ) *SelfManagedClusterRequest`
 
 NewSelfManagedClusterRequest instantiates a new SelfManagedClusterRequest object
 This constructor will assign default values to properties that have it defined,
@@ -138,20 +138,20 @@ SetCredentials sets Credentials field to given value.
 
 ### GetPlatform
 
-`func (o *SelfManagedClusterRequest) GetPlatform() PlatformSelection`
+`func (o *SelfManagedClusterRequest) GetPlatform() SelfManagedClusterPlatformSelection`
 
 GetPlatform returns the Platform field if non-nil, zero value otherwise.
 
 ### GetPlatformOk
 
-`func (o *SelfManagedClusterRequest) GetPlatformOk() (*PlatformSelection, bool)`
+`func (o *SelfManagedClusterRequest) GetPlatformOk() (*SelfManagedClusterPlatformSelection, bool)`
 
 GetPlatformOk returns a tuple with the Platform field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetPlatform
 
-`func (o *SelfManagedClusterRequest) SetPlatform(v PlatformSelection)`
+`func (o *SelfManagedClusterRequest) SetPlatform(v SelfManagedClusterPlatformSelection)`
 
 SetPlatform sets Platform field to given value.
 

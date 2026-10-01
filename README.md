@@ -1454,6 +1454,7 @@ Class | Method | HTTP request | Description
  - [SecretResponseList](docs/SecretResponseList.md)
  - [SelfManagedClusterCredentials](docs/SelfManagedClusterCredentials.md)
  - [SelfManagedClusterKind](docs/SelfManagedClusterKind.md)
+ - [SelfManagedClusterPlatformSelection](docs/SelfManagedClusterPlatformSelection.md)
  - [SelfManagedClusterRegistryResponse](docs/SelfManagedClusterRegistryResponse.md)
  - [SelfManagedClusterRequest](docs/SelfManagedClusterRequest.md)
  - [SelfManagedClusterResponse](docs/SelfManagedClusterResponse.md)

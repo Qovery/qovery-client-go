@@ -137,7 +137,7 @@ import (
 
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	selfManagedClusterRequest := *openapiclient.NewSelfManagedClusterRequest("Name_example", "Provider_example", "eu-west-3", *openapiclient.NewSelfManagedClusterCredentials("Id_example"), *openapiclient.NewPlatformSelection("TemplateKey_example", "TemplateVersion_example")) // SelfManagedClusterRequest | 
+	selfManagedClusterRequest := *openapiclient.NewSelfManagedClusterRequest("Name_example", "Provider_example", "eu-west-3", *openapiclient.NewSelfManagedClusterCredentials("Id_example"), *openapiclient.NewSelfManagedClusterPlatformSelection()) // SelfManagedClusterRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

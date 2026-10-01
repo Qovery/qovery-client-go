@@ -1001,6 +1001,7 @@ docs/SecretRequest.md
 docs/SecretResponseList.md
 docs/SelfManagedClusterCredentials.md
 docs/SelfManagedClusterKind.md
+docs/SelfManagedClusterPlatformSelection.md
 docs/SelfManagedClusterRegistryResponse.md
 docs/SelfManagedClusterRequest.md
 docs/SelfManagedClusterResponse.md
@@ -1920,6 +1921,7 @@ model_secret_request.go
 model_secret_response_list.go
 model_self_managed_cluster_credentials.go
 model_self_managed_cluster_kind.go
+model_self_managed_cluster_platform_selection.go
 model_self_managed_cluster_registry_response.go
 model_self_managed_cluster_request.go
 model_self_managed_cluster_response.go

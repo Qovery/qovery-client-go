@@ -21,12 +21,12 @@ var _ MappedNullable = &SelfManagedClusterRequest{}
 
 // SelfManagedClusterRequest struct for SelfManagedClusterRequest
 type SelfManagedClusterRequest struct {
-	Name        string                        `json:"name"`
-	Production  *bool                         `json:"production,omitempty"`
-	Provider    string                        `json:"provider"`
-	Region      string                        `json:"region"`
-	Credentials SelfManagedClusterCredentials `json:"credentials"`
-	Platform    PlatformSelection             `json:"platform"`
+	Name        string                              `json:"name"`
+	Production  *bool                               `json:"production,omitempty"`
+	Provider    string                              `json:"provider"`
+	Region      string                              `json:"region"`
+	Credentials SelfManagedClusterCredentials       `json:"credentials"`
+	Platform    SelfManagedClusterPlatformSelection `json:"platform"`
 	// String values keyed first by component key and then by input key
 	ClusterInputs        *map[string]map[string]string `json:"clusterInputs,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -38,7 +38,7 @@ type _SelfManagedClusterRequest SelfManagedClusterRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSelfManagedClusterRequest(name string, provider string, region string, credentials SelfManagedClusterCredentials, platform PlatformSelection) *SelfManagedClusterRequest {
+func NewSelfManagedClusterRequest(name string, provider string, region string, credentials SelfManagedClusterCredentials, platform SelfManagedClusterPlatformSelection) *SelfManagedClusterRequest {
 	this := SelfManagedClusterRequest{}
 	this.Name = name
 	var production bool = false
@@ -189,9 +189,9 @@ func (o *SelfManagedClusterRequest) SetCredentials(v SelfManagedClusterCredentia
 }
 
 // GetPlatform returns the Platform field value
-func (o *SelfManagedClusterRequest) GetPlatform() PlatformSelection {
+func (o *SelfManagedClusterRequest) GetPlatform() SelfManagedClusterPlatformSelection {
 	if o == nil {
-		var ret PlatformSelection
+		var ret SelfManagedClusterPlatformSelection
 		return ret
 	}
 
@@ -200,7 +200,7 @@ func (o *SelfManagedClusterRequest) GetPlatform() PlatformSelection {
 
 // GetPlatformOk returns a tuple with the Platform field value
 // and a boolean to check if the value has been set.
-func (o *SelfManagedClusterRequest) GetPlatformOk() (*PlatformSelection, bool) {
+func (o *SelfManagedClusterRequest) GetPlatformOk() (*SelfManagedClusterPlatformSelection, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -208,7 +208,7 @@ func (o *SelfManagedClusterRequest) GetPlatformOk() (*PlatformSelection, bool) {
 }
 
 // SetPlatform sets field value
-func (o *SelfManagedClusterRequest) SetPlatform(v PlatformSelection) {
+func (o *SelfManagedClusterRequest) SetPlatform(v SelfManagedClusterPlatformSelection) {
 	o.Platform = v
 }
 
