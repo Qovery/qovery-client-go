@@ -22,10 +22,12 @@ var _ MappedNullable = &HelmResponse{}
 
 // HelmResponse struct for HelmResponse
 type HelmResponse struct {
-	Id          string          `json:"id"`
-	CreatedAt   time.Time       `json:"created_at"`
-	UpdatedAt   *time.Time      `json:"updated_at,omitempty"`
-	Environment ReferenceObject `json:"environment"`
+	Id        string     `json:"id"`
+	CreatedAt time.Time  `json:"created_at"`
+	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
+	Warnings    []ServiceEditWarning `json:"warnings,omitempty"`
+	Environment ReferenceObject      `json:"environment"`
 	// name is case insensitive
 	Name        string  `json:"name"`
 	Description *string `json:"description,omitempty"`
@@ -165,6 +167,38 @@ func (o *HelmResponse) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *HelmResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *HelmResponse) GetWarnings() []ServiceEditWarning {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ServiceEditWarning
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *HelmResponse) GetWarningsOk() ([]ServiceEditWarning, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *HelmResponse) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ServiceEditWarning and assigns it to the Warnings field.
+func (o *HelmResponse) SetWarnings(v []ServiceEditWarning) {
+	o.Warnings = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -561,6 +595,9 @@ func (o HelmResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
+	}
 	toSerialize["environment"] = o.Environment
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
@@ -640,6 +677,7 @@ func (o *HelmResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "warnings")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")

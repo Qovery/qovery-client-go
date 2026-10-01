@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Id** | **string** |  | [readonly] 
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
+**Warnings** | Pointer to [**[]ServiceEditWarning**](ServiceEditWarning.md) | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
@@ -105,6 +106,31 @@ SetUpdatedAt sets UpdatedAt field to given value.
 `func (o *HelmResponse) HasUpdatedAt() bool`
 
 HasUpdatedAt returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *HelmResponse) GetWarnings() []ServiceEditWarning`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *HelmResponse) GetWarningsOk() (*[]ServiceEditWarning, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *HelmResponse) SetWarnings(v []ServiceEditWarning)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *HelmResponse) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 ### GetEnvironment
 

@@ -22,12 +22,14 @@ var _ MappedNullable = &Application{}
 
 // Application struct for Application
 type Application struct {
-	Id            string                       `json:"id"`
-	CreatedAt     time.Time                    `json:"created_at"`
-	UpdatedAt     *time.Time                   `json:"updated_at,omitempty"`
-	Storage       []ServiceStorageStorageInner `json:"storage,omitempty"`
-	Environment   ReferenceObject              `json:"environment"`
-	GitRepository *ApplicationGitRepository    `json:"git_repository,omitempty"`
+	Id        string                       `json:"id"`
+	CreatedAt time.Time                    `json:"created_at"`
+	UpdatedAt *time.Time                   `json:"updated_at,omitempty"`
+	Storage   []ServiceStorageStorageInner `json:"storage,omitempty"`
+	// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
+	Warnings      []ServiceEditWarning      `json:"warnings,omitempty"`
+	Environment   ReferenceObject           `json:"environment"`
+	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -233,6 +235,38 @@ func (o *Application) HasStorage() bool {
 // SetStorage gets a reference to the given []ServiceStorageStorageInner and assigns it to the Storage field.
 func (o *Application) SetStorage(v []ServiceStorageStorageInner) {
 	o.Storage = v
+}
+
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *Application) GetWarnings() []ServiceEditWarning {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ServiceEditWarning
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetWarningsOk() ([]ServiceEditWarning, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *Application) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ServiceEditWarning and assigns it to the Warnings field.
+func (o *Application) SetWarnings(v []ServiceEditWarning) {
+	o.Warnings = v
 }
 
 // GetEnvironment returns the Environment field value
@@ -1142,6 +1176,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Storage) {
 		toSerialize["storage"] = o.Storage
 	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
+	}
 	toSerialize["environment"] = o.Environment
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
@@ -1269,6 +1306,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "storage")
+		delete(additionalProperties, "warnings")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "git_repository")
 		delete(additionalProperties, "maximum_cpu")

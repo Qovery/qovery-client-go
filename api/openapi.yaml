@@ -25606,6 +25606,7 @@ components:
       allOf:
       - $ref: '#/components/schemas/Base'
       - $ref: '#/components/schemas/ServiceStorage'
+      - $ref: '#/components/schemas/ServiceEditWarnings'
       - properties:
           environment:
             $ref: '#/components/schemas/ReferenceObject'
@@ -25879,6 +25880,11 @@ components:
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         ephemeral_storage_in_gib: 10
+        warnings:
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
         build_mode: DOCKER
         cpu: 1250
         dockerfile_path: dockerfile_path
@@ -26828,6 +26834,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -27030,6 +27041,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -27090,6 +27106,40 @@ components:
             $ref: '#/components/schemas/Application'
           type: array
       type: object
+    ServiceEditWarnings:
+      properties:
+        warnings:
+          description: |
+            Non-blocking problems found while applying a service edit. Only present on the response of an edit,
+            and only when there is at least one warning. The edit itself is saved.
+          items:
+            $ref: '#/components/schemas/ServiceEditWarning'
+          type: array
+      type: object
+    ServiceEditWarning:
+      example:
+        code: GIT_WEBHOOK_PERMISSION_DENIED
+        message: message
+      properties:
+        code:
+          $ref: '#/components/schemas/ServiceEditWarningCodeEnum'
+        message:
+          description: Human-readable explanation of the warning
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    ServiceEditWarningCodeEnum:
+      description: |
+        - GIT_WEBHOOK_PERMISSION_DENIED: the git account or token used by the service lacks admin rights on the repository, so the auto-deploy webhook could not be created
+        - GIT_WEBHOOK_SETUP_FAILED: the auto-deploy webhook could not be created for another reason
+        - GIT_REPOSITORY_OWNER_CHANGED: the previous git account lost access to the repository, so the account of the user who made the edit is now used for this service
+      enum:
+      - GIT_WEBHOOK_PERMISSION_DENIED
+      - GIT_WEBHOOK_SETUP_FAILED
+      - GIT_REPOSITORY_OWNER_CHANGED
+      type: string
     ServiceStorage:
       properties:
         storage:
@@ -38701,6 +38751,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           cpu: 1250
           gpu: 1
           icon_uri: https://openapi-generator.tech
@@ -38844,6 +38899,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           cpu: 1250
           gpu: 1
           icon_uri: https://openapi-generator.tech
@@ -39211,6 +39271,7 @@ components:
     HelmResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ServiceEditWarnings'
       - properties:
           environment:
             $ref: '#/components/schemas/ReferenceObject'
@@ -39282,6 +39343,11 @@ components:
         type: object
       example:
         auto_deploy: true
+        warnings:
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         source:
@@ -39439,6 +39505,11 @@ components:
       example:
         results:
         - auto_deploy: true
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -39532,6 +39603,11 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           allow_cluster_wide_resources: false
         - auto_deploy: true
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -43804,6 +43880,11 @@ components:
         auto_preview: true
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         ephemeral_storage_in_gib: 10
+        warnings:
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
         cpu: 1250
         gpu: 1
         icon_uri: https://openapi-generator.tech
@@ -43852,6 +43933,7 @@ components:
     BaseJobResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ServiceEditWarnings'
       - properties:
           environment:
             $ref: '#/components/schemas/ReferenceObject'
@@ -46127,6 +46209,7 @@ components:
     TerraformResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
+      - $ref: '#/components/schemas/ServiceEditWarnings'
       - properties:
           name:
             description: name is case insensitive
@@ -46218,6 +46301,11 @@ components:
           ram_mib: 1
           gpu: 1
           storage_gib: 5
+        warnings:
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
         dockerfile_fragment:
           path: /infra/terraform/custom-build.dockerfile
           type: file
@@ -46705,6 +46793,11 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           dockerfile_fragment:
             path: /infra/terraform/custom-build.dockerfile
             type: file
@@ -46766,6 +46859,11 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           dockerfile_fragment:
             path: /infra/terraform/custom-build.dockerfile
             type: file
@@ -50702,6 +50800,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
@@ -50904,6 +51007,11 @@ components:
           auto_preview: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           ephemeral_storage_in_gib: 10
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path

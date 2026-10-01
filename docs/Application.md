@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | [readonly] 
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
+**Warnings** | Pointer to [**[]ServiceEditWarning**](ServiceEditWarning.md) | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
@@ -145,6 +146,31 @@ SetStorage sets Storage field to given value.
 `func (o *Application) HasStorage() bool`
 
 HasStorage returns a boolean if a field has been set.
+
+### GetWarnings
+
+`func (o *Application) GetWarnings() []ServiceEditWarning`
+
+GetWarnings returns the Warnings field if non-nil, zero value otherwise.
+
+### GetWarningsOk
+
+`func (o *Application) GetWarningsOk() (*[]ServiceEditWarning, bool)`
+
+GetWarningsOk returns a tuple with the Warnings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWarnings
+
+`func (o *Application) SetWarnings(v []ServiceEditWarning)`
+
+SetWarnings sets Warnings field to given value.
+
+### HasWarnings
+
+`func (o *Application) HasWarnings() bool`
+
+HasWarnings returns a boolean if a field has been set.
 
 ### GetEnvironment
 

@@ -25,6 +25,8 @@ type TerraformResponse struct {
 	Id        string     `json:"id"`
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
+	// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
+	Warnings []ServiceEditWarning `json:"warnings,omitempty"`
 	// name is case insensitive
 	Name                 string                                      `json:"name"`
 	Description          *string                                     `json:"description,omitempty"`
@@ -164,6 +166,38 @@ func (o *TerraformResponse) HasUpdatedAt() bool {
 // SetUpdatedAt gets a reference to the given time.Time and assigns it to the UpdatedAt field.
 func (o *TerraformResponse) SetUpdatedAt(v time.Time) {
 	o.UpdatedAt = &v
+}
+
+// GetWarnings returns the Warnings field value if set, zero value otherwise.
+func (o *TerraformResponse) GetWarnings() []ServiceEditWarning {
+	if o == nil || IsNil(o.Warnings) {
+		var ret []ServiceEditWarning
+		return ret
+	}
+	return o.Warnings
+}
+
+// GetWarningsOk returns a tuple with the Warnings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetWarningsOk() ([]ServiceEditWarning, bool) {
+	if o == nil || IsNil(o.Warnings) {
+		return nil, false
+	}
+	return o.Warnings, true
+}
+
+// HasWarnings returns a boolean if a field has been set.
+func (o *TerraformResponse) HasWarnings() bool {
+	if o != nil && !IsNil(o.Warnings) {
+		return true
+	}
+
+	return false
+}
+
+// SetWarnings gets a reference to the given []ServiceEditWarning and assigns it to the Warnings field.
+func (o *TerraformResponse) SetWarnings(v []ServiceEditWarning) {
+	o.Warnings = v
 }
 
 // GetName returns the Name field value
@@ -675,6 +709,9 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.UpdatedAt) {
 		toSerialize["updated_at"] = o.UpdatedAt
 	}
+	if !IsNil(o.Warnings) {
+		toSerialize["warnings"] = o.Warnings
+	}
 	toSerialize["name"] = o.Name
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
@@ -763,6 +800,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "updated_at")
+		delete(additionalProperties, "warnings")
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "timeout_sec")

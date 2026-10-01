@@ -1009,6 +1009,9 @@ docs/ServiceActionEnum.md
 docs/ServiceActionStatusEnum.md
 docs/ServiceAnnotationRequest.md
 docs/ServiceDeploymentStatusEnum.md
+docs/ServiceEditWarning.md
+docs/ServiceEditWarningCodeEnum.md
+docs/ServiceEditWarnings.md
 docs/ServiceLabelRequest.md
 docs/ServiceLightResponse.md
 docs/ServiceMainCallsAPI.md
@@ -1925,6 +1928,9 @@ model_service_action_enum.go
 model_service_action_status_enum.go
 model_service_annotation_request.go
 model_service_deployment_status_enum.go
+model_service_edit_warning.go
+model_service_edit_warning_code_enum.go
+model_service_edit_warnings.go
 model_service_label_request.go
 model_service_light_response.go
 model_service_port.go
