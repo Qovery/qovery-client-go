@@ -17674,9 +17674,10 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
-        "422":
-          description: "Cannot configure webhook (provider-specific issues, insufficient\
-            \ permissions)"
+        "424":
+          description: |
+            The git account or token used by the service is not allowed to manage webhooks on the repository.
+            It needs admin rights on the repository, and a git token also needs the webhooks permission.
         "429":
           description: Git provider rate limit exceeded
       summary: Synchronize git webhook for a service
