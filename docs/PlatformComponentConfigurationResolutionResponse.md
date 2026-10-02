@@ -9,12 +9,13 @@ Name | Type | Description | Notes
 **Requirements** | [**[]PlatformComponentInputRequirementResponse**](PlatformComponentInputRequirementResponse.md) |  | 
 **ComponentBindings** | [**[]PlatformComponentOutputBindingResponse**](PlatformComponentOutputBindingResponse.md) |  | 
 **Violations** | [**[]PlatformComponentConfigurationViolationResponse**](PlatformComponentConfigurationViolationResponse.md) |  | 
+**ResolvedValues** | **map[string]string** | Value of each read-only field in fields, keyed by field key, with no other entry; &#x60;{}&#x60; when no field is read-only. Values are encoded as strings, like defaultValue, and &#x60;null&#x60; means that no value is set, such as no CPU limit. A value is the configuration computed for this draft, not proof of what runs on the cluster. | 
 
 ## Methods
 
 ### NewPlatformComponentConfigurationResolutionResponse
 
-`func NewPlatformComponentConfigurationResolutionResponse(componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse, ) *PlatformComponentConfigurationResolutionResponse`
+`func NewPlatformComponentConfigurationResolutionResponse(componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse, resolvedValues map[string]string, ) *PlatformComponentConfigurationResolutionResponse`
 
 NewPlatformComponentConfigurationResolutionResponse instantiates a new PlatformComponentConfigurationResolutionResponse object
 This constructor will assign default values to properties that have it defined,
@@ -127,6 +128,26 @@ and a boolean to check if the value has been set.
 `func (o *PlatformComponentConfigurationResolutionResponse) SetViolations(v []PlatformComponentConfigurationViolationResponse)`
 
 SetViolations sets Violations field to given value.
+
+
+### GetResolvedValues
+
+`func (o *PlatformComponentConfigurationResolutionResponse) GetResolvedValues() map[string]string`
+
+GetResolvedValues returns the ResolvedValues field if non-nil, zero value otherwise.
+
+### GetResolvedValuesOk
+
+`func (o *PlatformComponentConfigurationResolutionResponse) GetResolvedValuesOk() (*map[string]string, bool)`
+
+GetResolvedValuesOk returns a tuple with the ResolvedValues field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetResolvedValues
+
+`func (o *PlatformComponentConfigurationResolutionResponse) SetResolvedValues(v map[string]string)`
+
+SetResolvedValues sets ResolvedValues field to given value.
 
 
 

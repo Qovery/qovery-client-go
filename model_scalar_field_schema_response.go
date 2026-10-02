@@ -23,13 +23,15 @@ var _ MappedNullable = &ScalarFieldSchemaResponse{}
 type ScalarFieldSchemaResponse struct {
 	Key string `json:"key"`
 	// Field type understood by the Console.
-	Type         string                         `json:"type"`
-	Required     bool                           `json:"required"`
-	DefaultValue NullableString                 `json:"defaultValue,omitempty"`
-	Label        string                         `json:"label"`
-	Description  NullableString                 `json:"description,omitempty"`
-	Sensitive    bool                           `json:"sensitive"`
-	Constraints  FieldSchemaConstraintsResponse `json:"constraints"`
+	Type         string         `json:"type"`
+	Required     bool           `json:"required"`
+	DefaultValue NullableString `json:"defaultValue,omitempty"`
+	Label        string         `json:"label"`
+	Description  NullableString `json:"description,omitempty"`
+	Sensitive    bool           `json:"sensitive"`
+	// Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only.
+	ReadOnly    *bool                          `json:"readOnly,omitempty"`
+	Constraints FieldSchemaConstraintsResponse `json:"constraints"`
 	// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
 	Format *string `json:"format,omitempty"`
 	// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
@@ -268,6 +270,38 @@ func (o *ScalarFieldSchemaResponse) SetSensitive(v bool) {
 	o.Sensitive = v
 }
 
+// GetReadOnly returns the ReadOnly field value if set, zero value otherwise.
+func (o *ScalarFieldSchemaResponse) GetReadOnly() bool {
+	if o == nil || IsNil(o.ReadOnly) {
+		var ret bool
+		return ret
+	}
+	return *o.ReadOnly
+}
+
+// GetReadOnlyOk returns a tuple with the ReadOnly field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ScalarFieldSchemaResponse) GetReadOnlyOk() (*bool, bool) {
+	if o == nil || IsNil(o.ReadOnly) {
+		return nil, false
+	}
+	return o.ReadOnly, true
+}
+
+// HasReadOnly returns a boolean if a field has been set.
+func (o *ScalarFieldSchemaResponse) HasReadOnly() bool {
+	if o != nil && !IsNil(o.ReadOnly) {
+		return true
+	}
+
+	return false
+}
+
+// SetReadOnly gets a reference to the given bool and assigns it to the ReadOnly field.
+func (o *ScalarFieldSchemaResponse) SetReadOnly(v bool) {
+	o.ReadOnly = &v
+}
+
 // GetConstraints returns the Constraints field value
 func (o *ScalarFieldSchemaResponse) GetConstraints() FieldSchemaConstraintsResponse {
 	if o == nil {
@@ -377,6 +411,9 @@ func (o ScalarFieldSchemaResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["description"] = o.Description.Get()
 	}
 	toSerialize["sensitive"] = o.Sensitive
+	if !IsNil(o.ReadOnly) {
+		toSerialize["readOnly"] = o.ReadOnly
+	}
 	toSerialize["constraints"] = o.Constraints
 	if !IsNil(o.Format) {
 		toSerialize["format"] = o.Format
@@ -439,6 +476,7 @@ func (o *ScalarFieldSchemaResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "sensitive")
+		delete(additionalProperties, "readOnly")
 		delete(additionalProperties, "constraints")
 		delete(additionalProperties, "format")
 		delete(additionalProperties, "templates")

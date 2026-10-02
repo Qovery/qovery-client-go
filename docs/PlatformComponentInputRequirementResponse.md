@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Label** | **string** |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Sensitive** | **bool** |  | 
+**ReadOnly** | Pointer to **bool** | Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only. | [optional] 
 **Constraints** | [**FieldSchemaConstraintsResponse**](FieldSchemaConstraintsResponse.md) |  | 
 **Format** | Pointer to **string** | Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor. | [optional] 
 **Templates** | Pointer to [**[]FieldTemplateResponse**](FieldTemplateResponse.md) | Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent. | [optional] 
@@ -205,6 +206,31 @@ and a boolean to check if the value has been set.
 
 SetSensitive sets Sensitive field to given value.
 
+
+### GetReadOnly
+
+`func (o *PlatformComponentInputRequirementResponse) GetReadOnly() bool`
+
+GetReadOnly returns the ReadOnly field if non-nil, zero value otherwise.
+
+### GetReadOnlyOk
+
+`func (o *PlatformComponentInputRequirementResponse) GetReadOnlyOk() (*bool, bool)`
+
+GetReadOnlyOk returns a tuple with the ReadOnly field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReadOnly
+
+`func (o *PlatformComponentInputRequirementResponse) SetReadOnly(v bool)`
+
+SetReadOnly sets ReadOnly field to given value.
+
+### HasReadOnly
+
+`func (o *PlatformComponentInputRequirementResponse) HasReadOnly() bool`
+
+HasReadOnly returns a boolean if a field has been set.
 
 ### GetConstraints
 

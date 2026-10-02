@@ -21,12 +21,14 @@ var _ MappedNullable = &PlatformComponentConfigurationPreviewResponse{}
 
 // PlatformComponentConfigurationPreviewResponse struct for PlatformComponentConfigurationPreviewResponse
 type PlatformComponentConfigurationPreviewResponse struct {
-	ClusterId            string                                            `json:"clusterId"`
-	ComponentKey         string                                            `json:"componentKey"`
-	Fields               []FieldSchemaResponse                             `json:"fields"`
-	Requirements         []PlatformComponentInputRequirementResponse       `json:"requirements"`
-	ComponentBindings    []PlatformComponentOutputBindingResponse          `json:"componentBindings"`
-	Violations           []PlatformComponentConfigurationViolationResponse `json:"violations"`
+	ClusterId         string                                            `json:"clusterId"`
+	ComponentKey      string                                            `json:"componentKey"`
+	Fields            []FieldSchemaResponse                             `json:"fields"`
+	Requirements      []PlatformComponentInputRequirementResponse       `json:"requirements"`
+	ComponentBindings []PlatformComponentOutputBindingResponse          `json:"componentBindings"`
+	Violations        []PlatformComponentConfigurationViolationResponse `json:"violations"`
+	// Value of each read-only field in fields, keyed by field key, with no other entry; `{}` when no field is read-only. Values are encoded as strings, like defaultValue, and `null` means that no value is set, such as no CPU limit. A value is the configuration computed for this draft, not proof of what runs on the cluster.
+	ResolvedValues       map[string]string `json:"resolvedValues"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,7 +38,7 @@ type _PlatformComponentConfigurationPreviewResponse PlatformComponentConfigurati
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse) *PlatformComponentConfigurationPreviewResponse {
+func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componentKey string, fields []FieldSchemaResponse, requirements []PlatformComponentInputRequirementResponse, componentBindings []PlatformComponentOutputBindingResponse, violations []PlatformComponentConfigurationViolationResponse, resolvedValues map[string]string) *PlatformComponentConfigurationPreviewResponse {
 	this := PlatformComponentConfigurationPreviewResponse{}
 	this.ClusterId = clusterId
 	this.ComponentKey = componentKey
@@ -44,6 +46,7 @@ func NewPlatformComponentConfigurationPreviewResponse(clusterId string, componen
 	this.Requirements = requirements
 	this.ComponentBindings = componentBindings
 	this.Violations = violations
+	this.ResolvedValues = resolvedValues
 	return &this
 }
 
@@ -199,6 +202,30 @@ func (o *PlatformComponentConfigurationPreviewResponse) SetViolations(v []Platfo
 	o.Violations = v
 }
 
+// GetResolvedValues returns the ResolvedValues field value
+func (o *PlatformComponentConfigurationPreviewResponse) GetResolvedValues() map[string]string {
+	if o == nil {
+		var ret map[string]string
+		return ret
+	}
+
+	return o.ResolvedValues
+}
+
+// GetResolvedValuesOk returns a tuple with the ResolvedValues field value
+// and a boolean to check if the value has been set.
+func (o *PlatformComponentConfigurationPreviewResponse) GetResolvedValuesOk() (*map[string]string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ResolvedValues, true
+}
+
+// SetResolvedValues sets field value
+func (o *PlatformComponentConfigurationPreviewResponse) SetResolvedValues(v map[string]string) {
+	o.ResolvedValues = v
+}
+
 func (o PlatformComponentConfigurationPreviewResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -215,6 +242,7 @@ func (o PlatformComponentConfigurationPreviewResponse) ToMap() (map[string]inter
 	toSerialize["requirements"] = o.Requirements
 	toSerialize["componentBindings"] = o.ComponentBindings
 	toSerialize["violations"] = o.Violations
+	toSerialize["resolvedValues"] = o.ResolvedValues
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -234,6 +262,7 @@ func (o *PlatformComponentConfigurationPreviewResponse) UnmarshalJSON(data []byt
 		"requirements",
 		"componentBindings",
 		"violations",
+		"resolvedValues",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -269,6 +298,7 @@ func (o *PlatformComponentConfigurationPreviewResponse) UnmarshalJSON(data []byt
 		delete(additionalProperties, "requirements")
 		delete(additionalProperties, "componentBindings")
 		delete(additionalProperties, "violations")
+		delete(additionalProperties, "resolvedValues")
 		o.AdditionalProperties = additionalProperties
 	}
 

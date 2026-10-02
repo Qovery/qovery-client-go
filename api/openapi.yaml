@@ -21813,6 +21813,7 @@ components:
                 value: value
               format: kubernetes-resource-yaml
               description: description
+              readOnly: true
               label: label
               sensitive: true
               type: string
@@ -21837,6 +21838,7 @@ components:
                 value: value
               format: kubernetes-resource-yaml
               description: description
+              readOnly: true
               label: label
               sensitive: true
               type: string
@@ -21968,6 +21970,7 @@ components:
                 value: value
               format: kubernetes-resource-yaml
               description: description
+              readOnly: true
               label: label
               sensitive: true
               type: string
@@ -21992,6 +21995,7 @@ components:
                 value: value
               format: kubernetes-resource-yaml
               description: description
+              readOnly: true
               label: label
               sensitive: true
               type: string
@@ -22133,6 +22137,7 @@ components:
               value: value
             format: kubernetes-resource-yaml
             description: description
+            readOnly: true
             label: label
             sensitive: true
             type: string
@@ -22157,6 +22162,7 @@ components:
               value: value
             format: kubernetes-resource-yaml
             description: description
+            readOnly: true
             label: label
             sensitive: true
             type: string
@@ -22533,6 +22539,7 @@ components:
           value: value
         format: kubernetes-resource-yaml
         description: description
+        readOnly: true
         label: label
         sensitive: true
         type: string
@@ -22568,6 +22575,13 @@ components:
           nullable: true
           type: string
         sensitive:
+          type: boolean
+        readOnly:
+          description: "Omitted when false. A read-only field is never required or\
+            \ sensitive, and its defaultValue is null. Its value comes from resolvedValues\
+            \ in the same response, never from the client draft. Read-only fields\
+            \ appear only at the top level of the fields of a resolve response; catalog\
+            \ descriptors are never read-only."
           type: boolean
         constraints:
           $ref: '#/components/schemas/FieldSchemaConstraintsResponse'
@@ -23170,9 +23184,9 @@ components:
           - id: id
             label: label
             value: value
-          scope: PLATFORM_PROFILE
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23185,8 +23199,9 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          key: key
           required: true
+          scope: PLATFORM_PROFILE
+          key: key
           status: MISSING
         - defaultValue: defaultValue
           templates:
@@ -23196,9 +23211,9 @@ components:
           - id: id
             label: label
             value: value
-          scope: PLATFORM_PROFILE
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23211,8 +23226,9 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          key: key
           required: true
+          scope: PLATFORM_PROFILE
+          key: key
           status: MISSING
         componentBindings:
         - output: output
@@ -23228,6 +23244,8 @@ components:
         - code: code
           fieldPath: fieldPath
           message: message
+        resolvedValues:
+          key: resolvedValues
         clusterId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         fields:
         - defaultValue: defaultValue
@@ -23240,6 +23258,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23264,6 +23283,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23301,12 +23321,23 @@ components:
           items:
             $ref: '#/components/schemas/PlatformComponentConfigurationViolationResponse'
           type: array
+        resolvedValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Value of each read-only field in fields, keyed by field key,\
+            \ with no other entry; `{}` when no field is read-only. Values are encoded\
+            \ as strings, like defaultValue, and `null` means that no value is set,\
+            \ such as no CPU limit. A value is the configuration computed for this\
+            \ draft, not proof of what runs on the cluster."
+          type: object
       required:
       - clusterId
       - componentBindings
       - componentKey
       - fields
       - requirements
+      - resolvedValues
       - violations
       type: object
     PlatformComponentConfigurationResolutionResponse:
@@ -23322,9 +23353,9 @@ components:
           - id: id
             label: label
             value: value
-          scope: PLATFORM_PROFILE
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23337,8 +23368,9 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          key: key
           required: true
+          scope: PLATFORM_PROFILE
+          key: key
           status: MISSING
         - defaultValue: defaultValue
           templates:
@@ -23348,9 +23380,9 @@ components:
           - id: id
             label: label
             value: value
-          scope: PLATFORM_PROFILE
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23363,8 +23395,9 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          key: key
           required: true
+          scope: PLATFORM_PROFILE
+          key: key
           status: MISSING
         componentBindings:
         - output: output
@@ -23380,6 +23413,8 @@ components:
         - code: code
           fieldPath: fieldPath
           message: message
+        resolvedValues:
+          key: resolvedValues
         fields:
         - defaultValue: defaultValue
           templates:
@@ -23391,6 +23426,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23415,6 +23451,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -23449,12 +23486,33 @@ components:
           items:
             $ref: '#/components/schemas/PlatformComponentConfigurationViolationResponse'
           type: array
+        resolvedValues:
+          additionalProperties:
+            nullable: true
+            type: string
+          description: "Value of each read-only field in fields, keyed by field key,\
+            \ with no other entry; `{}` when no field is read-only. Values are encoded\
+            \ as strings, like defaultValue, and `null` means that no value is set,\
+            \ such as no CPU limit. A value is the configuration computed for this\
+            \ draft, not proof of what runs on the cluster."
+          type: object
       required:
       - componentBindings
       - componentKey
       - fields
       - requirements
+      - resolvedValues
       - violations
+      type: object
+    PlatformResolvedValues:
+      additionalProperties:
+        nullable: true
+        type: string
+      description: "Value of each read-only field in fields, keyed by field key, with\
+        \ no other entry; `{}` when no field is read-only. Values are encoded as strings,\
+        \ like defaultValue, and `null` means that no value is set, such as no CPU\
+        \ limit. A value is the configuration computed for this draft, not proof of\
+        \ what runs on the cluster."
       type: object
     PlatformComponentInputRequirementResponse:
       allOf:
@@ -23470,7 +23528,7 @@ components:
         type: object
       description: "A catalog field the cluster must provide for the selected configuration:\
         \ the scalar field descriptor extended with its resolution scope and readiness.\
-        \ Input requirements cannot be object or array descriptors."
+        \ Input requirements cannot be object or array descriptors and are never read-only."
       example:
         defaultValue: defaultValue
         templates:
@@ -23480,9 +23538,9 @@ components:
         - id: id
           label: label
           value: value
-        scope: PLATFORM_PROFILE
         format: kubernetes-resource-yaml
         description: description
+        readOnly: true
         label: label
         sensitive: true
         type: string
@@ -23495,8 +23553,9 @@ components:
           minLength: 1
           pattern: pattern
           maxLength: 5
-        key: key
         required: true
+        scope: PLATFORM_PROFILE
+        key: key
         status: MISSING
     PlatformComponentConfigurationInputScope:
       enum:
@@ -51480,6 +51539,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
@@ -51504,6 +51564,7 @@ components:
             value: value
           format: kubernetes-resource-yaml
           description: description
+          readOnly: true
           label: label
           sensitive: true
           type: string
