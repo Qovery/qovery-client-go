@@ -185,6 +185,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsAPI* | [**GetBlueprint**](docs/BlueprintMainCallsAPI.md#getblueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
 *BlueprintMainCallsAPI* | [**GetBlueprintDatabase**](docs/BlueprintMainCallsAPI.md#getblueprintdatabase) | **Get** /blueprint/{blueprintId}/database | Get the database a blueprint manages
+*BlueprintMainCallsAPI* | [**GetBlueprintDatabaseMasterCredentials**](docs/BlueprintMainCallsAPI.md#getblueprintdatabasemastercredentials) | **Get** /blueprint/{blueprintId}/database/masterCredentials | Get master credentials of a blueprint database
 *BlueprintMainCallsAPI* | [**GetBlueprintVariables**](docs/BlueprintMainCallsAPI.md#getblueprintvariables) | **Get** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 *BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsAPI* | [**UpdateBlueprint**](docs/BlueprintMainCallsAPI.md#updateblueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service

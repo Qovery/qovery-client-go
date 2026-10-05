@@ -20826,6 +20826,39 @@ paths:
       summary: Get the database a blueprint manages
       tags:
       - Blueprint Main Calls
+  /blueprint/{blueprintId}/database/masterCredentials:
+    get:
+      description: "Returns the host, port, login and password of the database a blueprint\
+        \ manages, read from the outputs of its terraform service. Requires the same\
+        \ permission as a managed database's master credentials."
+      operationId: getBlueprintDatabaseMasterCredentials
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Credentials'
+          description: Master credentials of the blueprint database
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: "Blueprint not found, not a supported database blueprint, or\
+            \ no credentials reported yet"
+      summary: Get master credentials of a blueprint database
+      tags:
+      - Blueprint Main Calls
   /blueprint/{blueprintId}/variables:
     get:
       description: Returns the persisted variables for a blueprint. Secret variables
