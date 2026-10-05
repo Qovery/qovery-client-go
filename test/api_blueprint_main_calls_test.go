@@ -106,6 +106,20 @@ func Test_qovery_BlueprintMainCallsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test BlueprintMainCallsAPIService GetBlueprintDatabase", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var blueprintId string
+
+		resp, httpRes, err := apiClient.BlueprintMainCallsAPI.GetBlueprintDatabase(context.Background(), blueprintId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test BlueprintMainCallsAPIService GetBlueprintVariables", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

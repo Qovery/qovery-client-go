@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeployBlueprint**](BlueprintMainCallsAPI.md#DeployBlueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 [**GetBlueprint**](BlueprintMainCallsAPI.md#GetBlueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 [**GetBlueprintCatalog**](BlueprintMainCallsAPI.md#GetBlueprintCatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+[**GetBlueprintDatabase**](BlueprintMainCallsAPI.md#GetBlueprintDatabase) | **Get** /blueprint/{blueprintId}/database | Get the database a blueprint manages
 [**GetBlueprintVariables**](BlueprintMainCallsAPI.md#GetBlueprintVariables) | **Get** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 [**PreviewBlueprintUpdate**](BlueprintMainCallsAPI.md#PreviewBlueprintUpdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 [**UpdateBlueprint**](BlueprintMainCallsAPI.md#UpdateBlueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
@@ -429,6 +430,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**BlueprintCatalogResponse**](BlueprintCatalogResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetBlueprintDatabase
+
+> BlueprintDatabaseResponse GetBlueprintDatabase(ctx, blueprintId).Execute()
+
+Get the database a blueprint manages
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	blueprintId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Blueprint ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.BlueprintMainCallsAPI.GetBlueprintDatabase(context.Background(), blueprintId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `BlueprintMainCallsAPI.GetBlueprintDatabase``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetBlueprintDatabase`: BlueprintDatabaseResponse
+	fmt.Fprintf(os.Stdout, "Response from `BlueprintMainCallsAPI.GetBlueprintDatabase`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**blueprintId** | **string** | Blueprint ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetBlueprintDatabaseRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**BlueprintDatabaseResponse**](BlueprintDatabaseResponse.md)
 
 ### Authorization
 

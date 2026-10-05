@@ -20793,6 +20793,39 @@ paths:
       summary: Check if a blueprint service has an available update
       tags:
       - Blueprint Main Calls
+  /blueprint/{blueprintId}/database:
+    get:
+      description: "Returns the kind of database a blueprint manages and its endpoint,\
+        \ read from the `DB_ADDRESS` and `DB_PORT` outputs of its terraform service.\
+        \ `endpoint` is null until a deploy has reported it. Port-forward dials this\
+        \ endpoint to reach a blueprint database."
+      operationId: getBlueprintDatabase
+      parameters:
+      - description: Blueprint ID
+        explode: false
+        in: path
+        name: blueprintId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlueprintDatabaseResponse'
+          description: Database the blueprint manages
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: "Blueprint not found, or not a supported database blueprint"
+      summary: Get the database a blueprint manages
+      tags:
+      - Blueprint Main Calls
   /blueprint/{blueprintId}/variables:
     get:
       description: Returns the persisted variables for a blueprint. Secret variables
@@ -46290,6 +46323,48 @@ components:
       - results
       title: Terraform Resources List Response
       type: object
+    BlueprintDatabaseResponse:
+      description: Database a blueprint manages
+      example:
+        endpoint:
+          port: 5432
+          host: my-db.abc123.eu-west-3.rds.amazonaws.com
+        kind: MONGODB
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        kind:
+          $ref: '#/components/schemas/DatabaseTypeEnum'
+        service_id:
+          description: Terraform service the blueprint created; null before its first
+            dispatch
+          format: uuid
+          nullable: true
+          type: string
+        endpoint:
+          $ref: '#/components/schemas/BlueprintDatabaseResponse_endpoint'
+      required:
+      - endpoint
+      - kind
+      - service_id
+      title: Blueprint Database Response
+      type: object
+    DatabaseEndpointsResponse:
+      description: Endpoint of a database
+      properties:
+        host:
+          description: "Database hostname, from the DB_ADDRESS terraform output"
+          example: my-db.abc123.eu-west-3.rds.amazonaws.com
+          type: string
+        port:
+          description: "Database port, from the DB_PORT terraform output; null when\
+            \ none is reported"
+          example: 5432
+          nullable: true
+          type: integer
+      required:
+      - host
+      title: Database Endpoints Response
+      type: object
     TerraformResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -54043,6 +54118,14 @@ components:
       oneOf:
       - $ref: '#/components/schemas/DockerfileFragmentFile'
       - $ref: '#/components/schemas/DockerfileFragmentInline'
+    BlueprintDatabaseResponse_endpoint:
+      allOf:
+      - $ref: '#/components/schemas/DatabaseEndpointsResponse'
+      description: Null until a deploy has reported the database endpoint
+      example:
+        port: 5432
+        host: my-db.abc123.eu-west-3.rds.amazonaws.com
+      nullable: true
     TerraformResponse_allOf_terraform_files_source:
       nullable: false
       oneOf:

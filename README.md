@@ -184,6 +184,7 @@ Class | Method | HTTP request | Description
 *BlueprintMainCallsAPI* | [**DeployBlueprint**](docs/BlueprintMainCallsAPI.md#deployblueprint) | **Post** /blueprint/{blueprintId}/deploy | Deploy (apply) the current blueprint spec
 *BlueprintMainCallsAPI* | [**GetBlueprint**](docs/BlueprintMainCallsAPI.md#getblueprint) | **Get** /blueprint/{blueprintId} | Get a blueprint service and the status of its latest dispatch
 *BlueprintMainCallsAPI* | [**GetBlueprintCatalog**](docs/BlueprintMainCallsAPI.md#getblueprintcatalog) | **Get** /organization/{organizationId}/blueprint/catalog | Get the blueprint service catalog
+*BlueprintMainCallsAPI* | [**GetBlueprintDatabase**](docs/BlueprintMainCallsAPI.md#getblueprintdatabase) | **Get** /blueprint/{blueprintId}/database | Get the database a blueprint manages
 *BlueprintMainCallsAPI* | [**GetBlueprintVariables**](docs/BlueprintMainCallsAPI.md#getblueprintvariables) | **Get** /blueprint/{blueprintId}/variables | Get persisted blueprint variables
 *BlueprintMainCallsAPI* | [**PreviewBlueprintUpdate**](docs/BlueprintMainCallsAPI.md#previewblueprintupdate) | **Post** /blueprint/{blueprintId}/update/preview | Preview a blueprint update
 *BlueprintMainCallsAPI* | [**UpdateBlueprint**](docs/BlueprintMainCallsAPI.md#updateblueprint) | **Patch** /blueprint/{blueprintId} | Update a blueprint service
@@ -771,6 +772,8 @@ Class | Method | HTTP request | Description
  - [BlueprintConfigurationVariable](docs/BlueprintConfigurationVariable.md)
  - [BlueprintCreateRequest](docs/BlueprintCreateRequest.md)
  - [BlueprintCreationResponse](docs/BlueprintCreationResponse.md)
+ - [BlueprintDatabaseResponse](docs/BlueprintDatabaseResponse.md)
+ - [BlueprintDatabaseResponseEndpoint](docs/BlueprintDatabaseResponseEndpoint.md)
  - [BlueprintDeploymentAckResponse](docs/BlueprintDeploymentAckResponse.md)
  - [BlueprintDeploymentStatusResponse](docs/BlueprintDeploymentStatusResponse.md)
  - [BlueprintDetailsResponse](docs/BlueprintDetailsResponse.md)
@@ -978,6 +981,7 @@ Class | Method | HTTP request | Description
  - [DatabaseConfiguration](docs/DatabaseConfiguration.md)
  - [DatabaseConfigurationResponseList](docs/DatabaseConfigurationResponseList.md)
  - [DatabaseEditRequest](docs/DatabaseEditRequest.md)
+ - [DatabaseEndpointsResponse](docs/DatabaseEndpointsResponse.md)
  - [DatabaseModeEnum](docs/DatabaseModeEnum.md)
  - [DatabaseRequest](docs/DatabaseRequest.md)
  - [DatabaseResponseList](docs/DatabaseResponseList.md)
