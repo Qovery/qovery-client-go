@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ImageTag** | **string** | Image tag to deploy | 
+**Id** | Pointer to **NullableString** |  | [optional] 
+**ImageTag** | Pointer to **NullableString** | Image tag to deploy | [optional] 
 
 ## Methods
 
 ### NewContainerDeployRequest
 
-`func NewContainerDeployRequest(imageTag string, ) *ContainerDeployRequest`
+`func NewContainerDeployRequest() *ContainerDeployRequest`
 
 NewContainerDeployRequest instantiates a new ContainerDeployRequest object
 This constructor will assign default values to properties that have it defined,
@@ -25,6 +26,41 @@ NewContainerDeployRequestWithDefaults instantiates a new ContainerDeployRequest 
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *ContainerDeployRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *ContainerDeployRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *ContainerDeployRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *ContainerDeployRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *ContainerDeployRequest) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *ContainerDeployRequest) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetImageTag
 
 `func (o *ContainerDeployRequest) GetImageTag() string`
@@ -44,7 +80,22 @@ and a boolean to check if the value has been set.
 
 SetImageTag sets ImageTag field to given value.
 
+### HasImageTag
 
+`func (o *ContainerDeployRequest) HasImageTag() bool`
+
+HasImageTag returns a boolean if a field has been set.
+
+### SetImageTagNil
+
+`func (o *ContainerDeployRequest) SetImageTagNil(b bool)`
+
+ SetImageTagNil sets the value for ImageTag to be an explicit nil
+
+### UnsetImageTag
+`func (o *ContainerDeployRequest) UnsetImageTag()`
+
+UnsetImageTag ensures that no value is present for ImageTag, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -34,7 +34,7 @@ import (
 
 func main() {
 	containerId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Container ID
-	containerDeployRequest := *openapiclient.NewContainerDeployRequest("ImageTag_example") // ContainerDeployRequest |  (optional)
+	containerDeployRequest := *openapiclient.NewContainerDeployRequest() // ContainerDeployRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

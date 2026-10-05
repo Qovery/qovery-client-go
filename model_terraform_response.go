@@ -28,12 +28,14 @@ type TerraformResponse struct {
 	// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
 	Warnings []ServiceEditWarning `json:"warnings,omitempty"`
 	// name is case insensitive
-	Name                 string                                      `json:"name"`
-	Description          *string                                     `json:"description,omitempty"`
-	TimeoutSec           int32                                       `json:"timeout_sec"`
-	AutoDeploy           bool                                        `json:"auto_deploy"`
-	AutoDeployConfig     *TerraformAutoDeployConfig                  `json:"auto_deploy_config,omitempty"`
-	TerraformFilesSource *TerraformResponseAllOfTerraformFilesSource `json:"terraform_files_source,omitempty"`
+	Name                  string                                      `json:"name"`
+	Description           *string                                     `json:"description,omitempty"`
+	TimeoutSec            int32                                       `json:"timeout_sec"`
+	AutoDeploy            bool                                        `json:"auto_deploy"`
+	AutoPreview           *bool                                       `json:"auto_preview,omitempty"`
+	BuildSettingsEditable *bool                                       `json:"build_settings_editable,omitempty"`
+	AutoDeployConfig      *TerraformAutoDeployConfig                  `json:"auto_deploy_config,omitempty"`
+	TerraformFilesSource  *TerraformResponseAllOfTerraformFilesSource `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
 	IconUri                  string                           `json:"icon_uri"`
 	ServiceType              ServiceTypeEnum                  `json:"service_type"`
@@ -302,6 +304,70 @@ func (o *TerraformResponse) GetAutoDeployOk() (*bool, bool) {
 // SetAutoDeploy sets field value
 func (o *TerraformResponse) SetAutoDeploy(v bool) {
 	o.AutoDeploy = v
+}
+
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+func (o *TerraformResponse) GetAutoPreview() bool {
+	if o == nil || IsNil(o.AutoPreview) {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetAutoPreviewOk() (*bool, bool) {
+	if o == nil || IsNil(o.AutoPreview) {
+		return nil, false
+	}
+	return o.AutoPreview, true
+}
+
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *TerraformResponse) HasAutoPreview() bool {
+	if o != nil && !IsNil(o.AutoPreview) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+func (o *TerraformResponse) SetAutoPreview(v bool) {
+	o.AutoPreview = &v
+}
+
+// GetBuildSettingsEditable returns the BuildSettingsEditable field value if set, zero value otherwise.
+func (o *TerraformResponse) GetBuildSettingsEditable() bool {
+	if o == nil || IsNil(o.BuildSettingsEditable) {
+		var ret bool
+		return ret
+	}
+	return *o.BuildSettingsEditable
+}
+
+// GetBuildSettingsEditableOk returns a tuple with the BuildSettingsEditable field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetBuildSettingsEditableOk() (*bool, bool) {
+	if o == nil || IsNil(o.BuildSettingsEditable) {
+		return nil, false
+	}
+	return o.BuildSettingsEditable, true
+}
+
+// HasBuildSettingsEditable returns a boolean if a field has been set.
+func (o *TerraformResponse) HasBuildSettingsEditable() bool {
+	if o != nil && !IsNil(o.BuildSettingsEditable) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettingsEditable gets a reference to the given bool and assigns it to the BuildSettingsEditable field.
+func (o *TerraformResponse) SetBuildSettingsEditable(v bool) {
+	o.BuildSettingsEditable = &v
 }
 
 // GetAutoDeployConfig returns the AutoDeployConfig field value if set, zero value otherwise.
@@ -718,6 +784,12 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["timeout_sec"] = o.TimeoutSec
 	toSerialize["auto_deploy"] = o.AutoDeploy
+	if !IsNil(o.AutoPreview) {
+		toSerialize["auto_preview"] = o.AutoPreview
+	}
+	if !IsNil(o.BuildSettingsEditable) {
+		toSerialize["build_settings_editable"] = o.BuildSettingsEditable
+	}
 	if !IsNil(o.AutoDeployConfig) {
 		toSerialize["auto_deploy_config"] = o.AutoDeployConfig
 	}
@@ -805,6 +877,8 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "timeout_sec")
 		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "auto_preview")
+		delete(additionalProperties, "build_settings_editable")
 		delete(additionalProperties, "auto_deploy_config")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "icon_uri")

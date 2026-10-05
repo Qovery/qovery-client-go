@@ -5,12 +5,14 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
-**Description** | **string** |  | 
-**AutoDeployConfig** | [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | 
+**Description** | Pointer to **string** |  | [optional] [default to ""]
+**AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
+**AutoDeploy** | Pointer to **bool** | Legacy alternative to auto_deploy_config. | [optional] 
+**AutoPreview** | Pointer to **NullableBool** |  | [optional] 
 **TerraformFilesSource** | [**TerraformRequestTerraformFilesSource**](TerraformRequestTerraformFilesSource.md) |  | 
 **TerraformVariablesSource** | [**TerraformVariablesSourceRequest**](TerraformVariablesSourceRequest.md) |  | 
-**Backend** | [**TerraformBackend**](TerraformBackend.md) |  | 
-**Engine** | [**TerraformEngineEnum**](TerraformEngineEnum.md) |  | 
+**Backend** | Pointer to [**TerraformBackend**](TerraformBackend.md) |  | [optional] 
+**Engine** | Pointer to [**TerraformEngineEnum**](TerraformEngineEnum.md) |  | [optional] 
 **ProviderVersion** | [**TerraformProviderVersion**](TerraformProviderVersion.md) |  | 
 **TimeoutSec** | Pointer to **int32** |  | [optional] 
 **IconUri** | Pointer to **string** |  | [optional] 
@@ -25,7 +27,7 @@ Name | Type | Description | Notes
 
 ### NewTerraformRequest
 
-`func NewTerraformRequest(name string, description string, autoDeployConfig TerraformAutoDeployConfig, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
+`func NewTerraformRequest(name string, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources, ) *TerraformRequest`
 
 NewTerraformRequest instantiates a new TerraformRequest object
 This constructor will assign default values to properties that have it defined,
@@ -79,6 +81,11 @@ and a boolean to check if the value has been set.
 
 SetDescription sets Description field to given value.
 
+### HasDescription
+
+`func (o *TerraformRequest) HasDescription() bool`
+
+HasDescription returns a boolean if a field has been set.
 
 ### GetAutoDeployConfig
 
@@ -99,7 +106,72 @@ and a boolean to check if the value has been set.
 
 SetAutoDeployConfig sets AutoDeployConfig field to given value.
 
+### HasAutoDeployConfig
 
+`func (o *TerraformRequest) HasAutoDeployConfig() bool`
+
+HasAutoDeployConfig returns a boolean if a field has been set.
+
+### GetAutoDeploy
+
+`func (o *TerraformRequest) GetAutoDeploy() bool`
+
+GetAutoDeploy returns the AutoDeploy field if non-nil, zero value otherwise.
+
+### GetAutoDeployOk
+
+`func (o *TerraformRequest) GetAutoDeployOk() (*bool, bool)`
+
+GetAutoDeployOk returns a tuple with the AutoDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoDeploy
+
+`func (o *TerraformRequest) SetAutoDeploy(v bool)`
+
+SetAutoDeploy sets AutoDeploy field to given value.
+
+### HasAutoDeploy
+
+`func (o *TerraformRequest) HasAutoDeploy() bool`
+
+HasAutoDeploy returns a boolean if a field has been set.
+
+### GetAutoPreview
+
+`func (o *TerraformRequest) GetAutoPreview() bool`
+
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
+
+### GetAutoPreviewOk
+
+`func (o *TerraformRequest) GetAutoPreviewOk() (*bool, bool)`
+
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPreview
+
+`func (o *TerraformRequest) SetAutoPreview(v bool)`
+
+SetAutoPreview sets AutoPreview field to given value.
+
+### HasAutoPreview
+
+`func (o *TerraformRequest) HasAutoPreview() bool`
+
+HasAutoPreview returns a boolean if a field has been set.
+
+### SetAutoPreviewNil
+
+`func (o *TerraformRequest) SetAutoPreviewNil(b bool)`
+
+ SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
+
+### UnsetAutoPreview
+`func (o *TerraformRequest) UnsetAutoPreview()`
+
+UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
 ### GetTerraformFilesSource
 
 `func (o *TerraformRequest) GetTerraformFilesSource() TerraformRequestTerraformFilesSource`
@@ -159,6 +231,11 @@ and a boolean to check if the value has been set.
 
 SetBackend sets Backend field to given value.
 
+### HasBackend
+
+`func (o *TerraformRequest) HasBackend() bool`
+
+HasBackend returns a boolean if a field has been set.
 
 ### GetEngine
 
@@ -179,6 +256,11 @@ and a boolean to check if the value has been set.
 
 SetEngine sets Engine field to given value.
 
+### HasEngine
+
+`func (o *TerraformRequest) HasEngine() bool`
+
+HasEngine returns a boolean if a field has been set.
 
 ### GetProviderVersion
 

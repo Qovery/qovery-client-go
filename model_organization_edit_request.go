@@ -25,7 +25,6 @@ type OrganizationEditRequest struct {
 	Name                 string         `json:"name"`
 	Description          *string        `json:"description,omitempty"`
 	WebsiteUrl           NullableString `json:"website_url,omitempty"`
-	Repository           NullableString `json:"repository,omitempty"`
 	LogoUrl              NullableString `json:"logo_url,omitempty"`
 	IconUrl              NullableString `json:"icon_url,omitempty"`
 	AdminEmails          []string       `json:"admin_emails,omitempty"`
@@ -149,49 +148,6 @@ func (o *OrganizationEditRequest) SetWebsiteUrlNil() {
 // UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
 func (o *OrganizationEditRequest) UnsetWebsiteUrl() {
 	o.WebsiteUrl.Unset()
-}
-
-// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *OrganizationEditRequest) GetRepository() string {
-	if o == nil || IsNil(o.Repository.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Repository.Get()
-}
-
-// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *OrganizationEditRequest) GetRepositoryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Repository.Get(), o.Repository.IsSet()
-}
-
-// HasRepository returns a boolean if a field has been set.
-func (o *OrganizationEditRequest) HasRepository() bool {
-	if o != nil && o.Repository.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRepository gets a reference to the given NullableString and assigns it to the Repository field.
-func (o *OrganizationEditRequest) SetRepository(v string) {
-	o.Repository.Set(&v)
-}
-
-// SetRepositoryNil sets the value for Repository to be an explicit nil
-func (o *OrganizationEditRequest) SetRepositoryNil() {
-	o.Repository.Set(nil)
-}
-
-// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-func (o *OrganizationEditRequest) UnsetRepository() {
-	o.Repository.Unset()
 }
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -330,9 +286,6 @@ func (o OrganizationEditRequest) ToMap() (map[string]interface{}, error) {
 	if o.WebsiteUrl.IsSet() {
 		toSerialize["website_url"] = o.WebsiteUrl.Get()
 	}
-	if o.Repository.IsSet() {
-		toSerialize["repository"] = o.Repository.Get()
-	}
 	if o.LogoUrl.IsSet() {
 		toSerialize["logo_url"] = o.LogoUrl.Get()
 	}
@@ -388,7 +341,6 @@ func (o *OrganizationEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "website_url")
-		delete(additionalProperties, "repository")
 		delete(additionalProperties, "logo_url")
 		delete(additionalProperties, "icon_url")
 		delete(additionalProperties, "admin_emails")

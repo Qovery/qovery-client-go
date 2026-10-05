@@ -26,7 +26,7 @@ type Log struct {
 	CreatedAt            time.Time `json:"created_at"`
 	Message              string    `json:"message"`
 	PodName              *string   `json:"pod_name,omitempty"`
-	Version              *string   `json:"version,omitempty"`
+	ApplicationCommitId  *string   `json:"application_commit_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -156,36 +156,36 @@ func (o *Log) SetPodName(v string) {
 	o.PodName = &v
 }
 
-// GetVersion returns the Version field value if set, zero value otherwise.
-func (o *Log) GetVersion() string {
-	if o == nil || IsNil(o.Version) {
+// GetApplicationCommitId returns the ApplicationCommitId field value if set, zero value otherwise.
+func (o *Log) GetApplicationCommitId() string {
+	if o == nil || IsNil(o.ApplicationCommitId) {
 		var ret string
 		return ret
 	}
-	return *o.Version
+	return *o.ApplicationCommitId
 }
 
-// GetVersionOk returns a tuple with the Version field value if set, nil otherwise
+// GetApplicationCommitIdOk returns a tuple with the ApplicationCommitId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Log) GetVersionOk() (*string, bool) {
-	if o == nil || IsNil(o.Version) {
+func (o *Log) GetApplicationCommitIdOk() (*string, bool) {
+	if o == nil || IsNil(o.ApplicationCommitId) {
 		return nil, false
 	}
-	return o.Version, true
+	return o.ApplicationCommitId, true
 }
 
-// HasVersion returns a boolean if a field has been set.
-func (o *Log) HasVersion() bool {
-	if o != nil && !IsNil(o.Version) {
+// HasApplicationCommitId returns a boolean if a field has been set.
+func (o *Log) HasApplicationCommitId() bool {
+	if o != nil && !IsNil(o.ApplicationCommitId) {
 		return true
 	}
 
 	return false
 }
 
-// SetVersion gets a reference to the given string and assigns it to the Version field.
-func (o *Log) SetVersion(v string) {
-	o.Version = &v
+// SetApplicationCommitId gets a reference to the given string and assigns it to the ApplicationCommitId field.
+func (o *Log) SetApplicationCommitId(v string) {
+	o.ApplicationCommitId = &v
 }
 
 func (o Log) MarshalJSON() ([]byte, error) {
@@ -204,8 +204,8 @@ func (o Log) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.PodName) {
 		toSerialize["pod_name"] = o.PodName
 	}
-	if !IsNil(o.Version) {
-		toSerialize["version"] = o.Version
+	if !IsNil(o.ApplicationCommitId) {
+		toSerialize["application_commit_id"] = o.ApplicationCommitId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -256,7 +256,7 @@ func (o *Log) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "created_at")
 		delete(additionalProperties, "message")
 		delete(additionalProperties, "pod_name")
-		delete(additionalProperties, "version")
+		delete(additionalProperties, "application_commit_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

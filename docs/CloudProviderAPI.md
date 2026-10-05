@@ -6,8 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**ListAWSEKSInstanceType**](CloudProviderAPI.md#ListAWSEKSInstanceType) | **Get** /aws/eks/instanceType/{region} | List AWS EKS available instance types
 [**ListAWSFeatures**](CloudProviderAPI.md#ListAWSFeatures) | **Get** /aws/clusterFeature | List AWS features available
-[**ListAWSInstanceType**](CloudProviderAPI.md#ListAWSInstanceType) | **Get** /aws/instanceType | List AWS available instance types
-[**ListAWSManagedDatabaseInstanceType**](CloudProviderAPI.md#ListAWSManagedDatabaseInstanceType) | **Get** /aws/managedDatabase/instanceType/{region}/{databaseType} | List AWS available managed database instance types
+[**ListAWSManagedDatabaseInstanceType**](CloudProviderAPI.md#ListAWSManagedDatabaseInstanceType) | **Get** /aws/managedDatabase/instanceType/{region}/{dbType} | List AWS available managed database instance types
 [**ListAWSManagedDatabaseType**](CloudProviderAPI.md#ListAWSManagedDatabaseType) | **Get** /aws/managedDatabase/type | List AWS available managed database types
 [**ListAWSRegions**](CloudProviderAPI.md#ListAWSRegions) | **Get** /aws/region | List AWS regions
 [**ListAzureAKSInstanceType**](CloudProviderAPI.md#ListAzureAKSInstanceType) | **Get** /azure/aks/instanceType/{region} | List Azure AKS available instance types
@@ -15,11 +14,11 @@ Method | HTTP request | Description
 [**ListAzureRegions**](CloudProviderAPI.md#ListAzureRegions) | **Get** /azure/region | List Azure regions
 [**ListCloudProvider**](CloudProviderAPI.md#ListCloudProvider) | **Get** /cloudProvider | List Cloud providers available
 [**ListGcpFeatures**](CloudProviderAPI.md#ListGcpFeatures) | **Get** /gcp/clusterFeature | List GCP features available
-[**ListGcpGkeInstanceType**](CloudProviderAPI.md#ListGcpGkeInstanceType) | **Get** /gcp/instanceType/{region} | List GCP GKE available instance types
 [**ListGcpRegions**](CloudProviderAPI.md#ListGcpRegions) | **Get** /gcp/region | List GCP regions
-[**ListSCWManagedDatabaseType**](CloudProviderAPI.md#ListSCWManagedDatabaseType) | **Get** /scaleway/managedDatabase/type | List Scaleway available managed database types
+[**ListOnPremiseClusterFeatures**](CloudProviderAPI.md#ListOnPremiseClusterFeatures) | **Get** /onPremise/clusterFeature | List on-premise cluster features
+[**ListOnPremiseInstanceTypes**](CloudProviderAPI.md#ListOnPremiseInstanceTypes) | **Get** /onPremise/eks/instanceType/{region} | List on-premise instance types
+[**ListOnPremiseRegions**](CloudProviderAPI.md#ListOnPremiseRegions) | **Get** /onPremise/region | List on-premise regions
 [**ListScalewayFeatures**](CloudProviderAPI.md#ListScalewayFeatures) | **Get** /scaleway/clusterFeature | List Scaleway features available
-[**ListScalewayInstanceType**](CloudProviderAPI.md#ListScalewayInstanceType) | **Get** /scaleway/instanceType | List Scaleway available instance types
 [**ListScalewayKapsuleInstanceType**](CloudProviderAPI.md#ListScalewayKapsuleInstanceType) | **Get** /scaleway/instanceType/{zone} | List Scaleway Kapsule available instance types
 [**ListScalewayRegions**](CloudProviderAPI.md#ListScalewayRegions) | **Get** /scaleway/region | List Scaleway regions
 
@@ -158,70 +157,13 @@ Other parameters are passed through a pointer to a apiListAWSFeaturesRequest str
 [[Back to README]](../README.md)
 
 
-## ListAWSInstanceType
-
-> ClusterInstanceTypeResponseList ListAWSInstanceType(ctx).Execute()
-
-List AWS available instance types
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSInstanceType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListAWSInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListAWSInstanceType`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListAWSInstanceTypeRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListAWSManagedDatabaseInstanceType
 
-> ManagedDatabaseInstanceTypeResponseList ListAWSManagedDatabaseInstanceType(ctx, region, databaseType).Execute()
+> ManagedDatabaseInstanceTypeResponseList ListAWSManagedDatabaseInstanceType(ctx, region, dbType).Execute()
 
 List AWS available managed database instance types
+
+
 
 ### Example
 
@@ -237,11 +179,11 @@ import (
 
 func main() {
 	region := "us-east-2" // string | region name
-	databaseType := "MYSQL" // string | Database type
+	dbType := "dbType_example" // string | Managed database type
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
+	resp, r, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, dbType).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListAWSManagedDatabaseInstanceType``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -258,7 +200,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
 **region** | **string** | region name | 
-**databaseType** | **string** | Database type | 
+**dbType** | **string** | Managed database type | 
 
 ### Other Parameters
 
@@ -716,74 +658,6 @@ Other parameters are passed through a pointer to a apiListGcpFeaturesRequest str
 [[Back to README]](../README.md)
 
 
-## ListGcpGkeInstanceType
-
-> ClusterInstanceTypeResponseList ListGcpGkeInstanceType(ctx, region).Execute()
-
-List GCP GKE available instance types
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	region := "us-east-2" // string | region name
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListGcpGkeInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListGcpGkeInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListGcpGkeInstanceType`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**region** | **string** | region name | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListGcpGkeInstanceTypeRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
-[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListGcpRegions
 
 > ClusterRegionResponseList ListGcpRegions(ctx).Execute()
@@ -843,11 +717,13 @@ Other parameters are passed through a pointer to a apiListGcpRegionsRequest stru
 [[Back to README]](../README.md)
 
 
-## ListSCWManagedDatabaseType
+## ListOnPremiseClusterFeatures
 
-> ManagedDatabaseTypeResponseList ListSCWManagedDatabaseType(ctx).Execute()
+> ClusterFeatureResponseList ListOnPremiseClusterFeatures(ctx).Execute()
 
-List Scaleway available managed database types
+List on-premise cluster features
+
+
 
 ### Example
 
@@ -865,13 +741,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseType(context.Background()).Execute()
+	resp, r, err := apiClient.CloudProviderAPI.ListOnPremiseClusterFeatures(context.Background()).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListSCWManagedDatabaseType``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListOnPremiseClusterFeatures``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `ListSCWManagedDatabaseType`: ManagedDatabaseTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListSCWManagedDatabaseType`: %v\n", resp)
+	// response from `ListOnPremiseClusterFeatures`: ClusterFeatureResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListOnPremiseClusterFeatures`: %v\n", resp)
 }
 ```
 
@@ -881,12 +757,143 @@ This endpoint does not need any parameter.
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiListSCWManagedDatabaseTypeRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiListOnPremiseClusterFeaturesRequest struct via the builder pattern
 
 
 ### Return type
 
-[**ManagedDatabaseTypeResponseList**](ManagedDatabaseTypeResponseList.md)
+[**ClusterFeatureResponseList**](ClusterFeatureResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOnPremiseInstanceTypes
+
+> ClusterInstanceTypeResponseList ListOnPremiseInstanceTypes(ctx, region).Execute()
+
+List on-premise instance types
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	region := "us-east-2" // string | region name
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderAPI.ListOnPremiseInstanceTypes(context.Background(), region).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListOnPremiseInstanceTypes``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOnPremiseInstanceTypes`: ClusterInstanceTypeResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListOnPremiseInstanceTypes`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**region** | **string** | region name | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOnPremiseInstanceTypesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## ListOnPremiseRegions
+
+> ClusterRegionResponseList ListOnPremiseRegions(ctx).Execute()
+
+List on-premise regions
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.CloudProviderAPI.ListOnPremiseRegions(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListOnPremiseRegions``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `ListOnPremiseRegions`: ClusterRegionResponseList
+	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListOnPremiseRegions`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+This endpoint does not need any parameter.
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiListOnPremiseRegionsRequest struct via the builder pattern
+
+
+### Return type
+
+[**ClusterRegionResponseList**](ClusterRegionResponseList.md)
 
 ### Authorization
 
@@ -961,70 +968,13 @@ Other parameters are passed through a pointer to a apiListScalewayFeaturesReques
 [[Back to README]](../README.md)
 
 
-## ListScalewayInstanceType
-
-> ClusterInstanceTypeResponseList ListScalewayInstanceType(ctx).Execute()
-
-List Scaleway available instance types
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.CloudProviderAPI.ListScalewayInstanceType(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `CloudProviderAPI.ListScalewayInstanceType``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListScalewayInstanceType`: ClusterInstanceTypeResponseList
-	fmt.Fprintf(os.Stdout, "Response from `CloudProviderAPI.ListScalewayInstanceType`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListScalewayInstanceTypeRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterInstanceTypeResponseList**](ClusterInstanceTypeResponseList.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## ListScalewayKapsuleInstanceType
 
 > ClusterInstanceTypeResponseList ListScalewayKapsuleInstanceType(ctx, zone).Execute()
 
 List Scaleway Kapsule available instance types
+
+
 
 ### Example
 

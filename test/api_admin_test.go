@@ -1,7 +1,7 @@
 /*
 Qovery API
 
-Testing BackupsAPIService
+Testing AdminAPIService
 
 */
 
@@ -17,18 +17,16 @@ import (
 	"testing"
 )
 
-func Test_qovery_BackupsAPIService(t *testing.T) {
+func Test_qovery_AdminAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test BackupsAPIService AddBackupDatabase", func(t *testing.T) {
+	t.Run("Test AdminAPIService GetPublicServiceVersion", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var databaseId string
-
-		resp, httpRes, err := apiClient.BackupsAPI.AddBackupDatabase(context.Background(), databaseId).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.GetPublicServiceVersion(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,13 +34,11 @@ func Test_qovery_BackupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BackupsAPIService ListDatabaseBackup", func(t *testing.T) {
+	t.Run("Test AdminAPIService ListUserSignUps", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var databaseId string
-
-		resp, httpRes, err := apiClient.BackupsAPI.ListDatabaseBackup(context.Background(), databaseId).Execute()
+		resp, httpRes, err := apiClient.AdminAPI.ListUserSignUps(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -50,14 +46,11 @@ func Test_qovery_BackupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test BackupsAPIService RemoveDatabaseBackup", func(t *testing.T) {
+	t.Run("Test AdminAPIService StoreCliDemoDebugLogs", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var databaseId string
-		var backupId string
-
-		httpRes, err := apiClient.BackupsAPI.RemoveDatabaseBackup(context.Background(), databaseId, backupId).Execute()
+		httpRes, err := apiClient.AdminAPI.StoreCliDemoDebugLogs(context.Background()).Execute()
 
 		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)

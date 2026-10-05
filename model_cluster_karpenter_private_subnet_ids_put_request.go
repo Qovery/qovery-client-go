@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the ClusterKarpenterPrivateSubnetIdsPutRequest type satisfies the MappedNullable interface at compile time
@@ -20,10 +21,10 @@ var _ MappedNullable = &ClusterKarpenterPrivateSubnetIdsPutRequest{}
 
 // ClusterKarpenterPrivateSubnetIdsPutRequest struct for ClusterKarpenterPrivateSubnetIdsPutRequest
 type ClusterKarpenterPrivateSubnetIdsPutRequest struct {
-	EksKarpenterFargateSubnetsZoneAIds []string `json:"eks_karpenter_fargate_subnets_zone_a_ids,omitempty"`
-	EksKarpenterFargateSubnetsZoneBIds []string `json:"eks_karpenter_fargate_subnets_zone_b_ids,omitempty"`
-	EksKarpenterFargateSubnetsZoneCIds []string `json:"eks_karpenter_fargate_subnets_zone_c_ids,omitempty"`
-	AdditionalProperties               map[string]interface{}
+	EksPrivateSubnetsZoneAIds []string `json:"eks_private_subnets_zone_a_ids"`
+	EksPrivateSubnetsZoneBIds []string `json:"eks_private_subnets_zone_b_ids"`
+	EksPrivateSubnetsZoneCIds []string `json:"eks_private_subnets_zone_c_ids"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _ClusterKarpenterPrivateSubnetIdsPutRequest ClusterKarpenterPrivateSubnetIdsPutRequest
@@ -32,8 +33,11 @@ type _ClusterKarpenterPrivateSubnetIdsPutRequest ClusterKarpenterPrivateSubnetId
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterKarpenterPrivateSubnetIdsPutRequest() *ClusterKarpenterPrivateSubnetIdsPutRequest {
+func NewClusterKarpenterPrivateSubnetIdsPutRequest(eksPrivateSubnetsZoneAIds []string, eksPrivateSubnetsZoneBIds []string, eksPrivateSubnetsZoneCIds []string) *ClusterKarpenterPrivateSubnetIdsPutRequest {
 	this := ClusterKarpenterPrivateSubnetIdsPutRequest{}
+	this.EksPrivateSubnetsZoneAIds = eksPrivateSubnetsZoneAIds
+	this.EksPrivateSubnetsZoneBIds = eksPrivateSubnetsZoneBIds
+	this.EksPrivateSubnetsZoneCIds = eksPrivateSubnetsZoneCIds
 	return &this
 }
 
@@ -45,100 +49,76 @@ func NewClusterKarpenterPrivateSubnetIdsPutRequestWithDefaults() *ClusterKarpent
 	return &this
 }
 
-// GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field value if set, zero value otherwise.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneAIds() []string {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
+// GetEksPrivateSubnetsZoneAIds returns the EksPrivateSubnetsZoneAIds field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneAIds() []string {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.EksKarpenterFargateSubnetsZoneAIds
+
+	return o.EksPrivateSubnetsZoneAIds
 }
 
-// GetEksKarpenterFargateSubnetsZoneAIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneAIds field value if set, nil otherwise
+// GetEksPrivateSubnetsZoneAIdsOk returns a tuple with the EksPrivateSubnetsZoneAIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneAIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneAIdsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EksKarpenterFargateSubnetsZoneAIds, true
+	return o.EksPrivateSubnetsZoneAIds, true
 }
 
-// HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneAIds() bool {
-	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
-		return true
-	}
-
-	return false
+// SetEksPrivateSubnetsZoneAIds sets field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneAIds(v []string) {
+	o.EksPrivateSubnetsZoneAIds = v
 }
 
-// SetEksKarpenterFargateSubnetsZoneAIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneAIds field.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneAIds(v []string) {
-	o.EksKarpenterFargateSubnetsZoneAIds = v
-}
-
-// GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field value if set, zero value otherwise.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneBIds() []string {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
+// GetEksPrivateSubnetsZoneBIds returns the EksPrivateSubnetsZoneBIds field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneBIds() []string {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.EksKarpenterFargateSubnetsZoneBIds
+
+	return o.EksPrivateSubnetsZoneBIds
 }
 
-// GetEksKarpenterFargateSubnetsZoneBIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneBIds field value if set, nil otherwise
+// GetEksPrivateSubnetsZoneBIdsOk returns a tuple with the EksPrivateSubnetsZoneBIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneBIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneBIdsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EksKarpenterFargateSubnetsZoneBIds, true
+	return o.EksPrivateSubnetsZoneBIds, true
 }
 
-// HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneBIds() bool {
-	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
-		return true
-	}
-
-	return false
+// SetEksPrivateSubnetsZoneBIds sets field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneBIds(v []string) {
+	o.EksPrivateSubnetsZoneBIds = v
 }
 
-// SetEksKarpenterFargateSubnetsZoneBIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneBIds field.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneBIds(v []string) {
-	o.EksKarpenterFargateSubnetsZoneBIds = v
-}
-
-// GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field value if set, zero value otherwise.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneCIds() []string {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
+// GetEksPrivateSubnetsZoneCIds returns the EksPrivateSubnetsZoneCIds field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneCIds() []string {
+	if o == nil {
 		var ret []string
 		return ret
 	}
-	return o.EksKarpenterFargateSubnetsZoneCIds
+
+	return o.EksPrivateSubnetsZoneCIds
 }
 
-// GetEksKarpenterFargateSubnetsZoneCIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneCIds field value if set, nil otherwise
+// GetEksPrivateSubnetsZoneCIdsOk returns a tuple with the EksPrivateSubnetsZoneCIds field value
 // and a boolean to check if the value has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneCIdsOk() ([]string, bool) {
-	if o == nil || IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneCIdsOk() ([]string, bool) {
+	if o == nil {
 		return nil, false
 	}
-	return o.EksKarpenterFargateSubnetsZoneCIds, true
+	return o.EksPrivateSubnetsZoneCIds, true
 }
 
-// HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneCIds() bool {
-	if o != nil && !IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
-		return true
-	}
-
-	return false
-}
-
-// SetEksKarpenterFargateSubnetsZoneCIds gets a reference to the given []string and assigns it to the EksKarpenterFargateSubnetsZoneCIds field.
-func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneCIds(v []string) {
-	o.EksKarpenterFargateSubnetsZoneCIds = v
+// SetEksPrivateSubnetsZoneCIds sets field value
+func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneCIds(v []string) {
+	o.EksPrivateSubnetsZoneCIds = v
 }
 
 func (o ClusterKarpenterPrivateSubnetIdsPutRequest) MarshalJSON() ([]byte, error) {
@@ -151,15 +131,9 @@ func (o ClusterKarpenterPrivateSubnetIdsPutRequest) MarshalJSON() ([]byte, error
 
 func (o ClusterKarpenterPrivateSubnetIdsPutRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	if !IsNil(o.EksKarpenterFargateSubnetsZoneAIds) {
-		toSerialize["eks_karpenter_fargate_subnets_zone_a_ids"] = o.EksKarpenterFargateSubnetsZoneAIds
-	}
-	if !IsNil(o.EksKarpenterFargateSubnetsZoneBIds) {
-		toSerialize["eks_karpenter_fargate_subnets_zone_b_ids"] = o.EksKarpenterFargateSubnetsZoneBIds
-	}
-	if !IsNil(o.EksKarpenterFargateSubnetsZoneCIds) {
-		toSerialize["eks_karpenter_fargate_subnets_zone_c_ids"] = o.EksKarpenterFargateSubnetsZoneCIds
-	}
+	toSerialize["eks_private_subnets_zone_a_ids"] = o.EksPrivateSubnetsZoneAIds
+	toSerialize["eks_private_subnets_zone_b_ids"] = o.EksPrivateSubnetsZoneBIds
+	toSerialize["eks_private_subnets_zone_c_ids"] = o.EksPrivateSubnetsZoneCIds
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -169,6 +143,29 @@ func (o ClusterKarpenterPrivateSubnetIdsPutRequest) ToMap() (map[string]interfac
 }
 
 func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"eks_private_subnets_zone_a_ids",
+		"eks_private_subnets_zone_b_ids",
+		"eks_private_subnets_zone_c_ids",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varClusterKarpenterPrivateSubnetIdsPutRequest := _ClusterKarpenterPrivateSubnetIdsPutRequest{}
 
 	err = json.Unmarshal(data, &varClusterKarpenterPrivateSubnetIdsPutRequest)
@@ -182,9 +179,9 @@ func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) UnmarshalJSON(data []byte) 
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_a_ids")
-		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_b_ids")
-		delete(additionalProperties, "eks_karpenter_fargate_subnets_zone_c_ids")
+		delete(additionalProperties, "eks_private_subnets_zone_a_ids")
+		delete(additionalProperties, "eks_private_subnets_zone_b_ids")
+		delete(additionalProperties, "eks_private_subnets_zone_c_ids")
 		o.AdditionalProperties = additionalProperties
 	}
 

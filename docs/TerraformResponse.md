@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **TimeoutSec** | **int32** |  | [default to 600]
 **AutoDeploy** | **bool** |  | 
+**AutoPreview** | Pointer to **bool** |  | [optional] 
+**BuildSettingsEditable** | Pointer to **bool** |  | [optional] 
 **AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
@@ -220,6 +222,56 @@ and a boolean to check if the value has been set.
 
 SetAutoDeploy sets AutoDeploy field to given value.
 
+
+### GetAutoPreview
+
+`func (o *TerraformResponse) GetAutoPreview() bool`
+
+GetAutoPreview returns the AutoPreview field if non-nil, zero value otherwise.
+
+### GetAutoPreviewOk
+
+`func (o *TerraformResponse) GetAutoPreviewOk() (*bool, bool)`
+
+GetAutoPreviewOk returns a tuple with the AutoPreview field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAutoPreview
+
+`func (o *TerraformResponse) SetAutoPreview(v bool)`
+
+SetAutoPreview sets AutoPreview field to given value.
+
+### HasAutoPreview
+
+`func (o *TerraformResponse) HasAutoPreview() bool`
+
+HasAutoPreview returns a boolean if a field has been set.
+
+### GetBuildSettingsEditable
+
+`func (o *TerraformResponse) GetBuildSettingsEditable() bool`
+
+GetBuildSettingsEditable returns the BuildSettingsEditable field if non-nil, zero value otherwise.
+
+### GetBuildSettingsEditableOk
+
+`func (o *TerraformResponse) GetBuildSettingsEditableOk() (*bool, bool)`
+
+GetBuildSettingsEditableOk returns a tuple with the BuildSettingsEditable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettingsEditable
+
+`func (o *TerraformResponse) SetBuildSettingsEditable(v bool)`
+
+SetBuildSettingsEditable sets BuildSettingsEditable field to given value.
+
+### HasBuildSettingsEditable
+
+`func (o *TerraformResponse) HasBuildSettingsEditable() bool`
+
+HasBuildSettingsEditable returns a boolean if a field has been set.
 
 ### GetAutoDeployConfig
 

@@ -1,7 +1,7 @@
 /*
 Qovery API
 
-Testing ApplicationLogsAPIService
+Testing OrganizationAPIService
 
 */
 
@@ -17,21 +17,20 @@ import (
 	"testing"
 )
 
-func Test_qovery_ApplicationLogsAPIService(t *testing.T) {
+func Test_qovery_OrganizationAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test ApplicationLogsAPIService ListApplicationLog", func(t *testing.T) {
+	t.Run("Test OrganizationAPIService TrackSkillCall", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		var applicationId string
+		var organizationId string
 
-		resp, httpRes, err := apiClient.ApplicationLogsAPI.ListApplicationLog(context.Background(), applicationId).Execute()
+		httpRes, err := apiClient.OrganizationAPI.TrackSkillCall(context.Background(), organizationId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

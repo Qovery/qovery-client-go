@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**AttachClusterOperator**](ClusterOperatorAPI.md#AttachClusterOperator) | **Post** /organization/{organizationId}/cluster/{clusterId}/operator/attach | Attach a cluster to the Qovery Operator execution path
 [**GetClusterOperatorBootstrap**](ClusterOperatorAPI.md#GetClusterOperatorBootstrap) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/bootstrap | Get the Qovery Operator bootstrap
 [**GetClusterOperatorStatus**](ClusterOperatorAPI.md#GetClusterOperatorStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/operator/status | Get the Qovery Operator status for a cluster
-[**ListClusterOperatorFleet**](ClusterOperatorAPI.md#ListClusterOperatorFleet) | **Get** /admin/operator/clusters | List the Qovery Operator fleet
 [**UpdateClusterOperator**](ClusterOperatorAPI.md#UpdateClusterOperator) | **Post** /organization/{organizationId}/cluster/{clusterId}/operator/update | Update the Qovery Operator on a cluster
 
 
@@ -214,67 +213,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ClusterOperatorStatusResponse**](ClusterOperatorStatusResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## ListClusterOperatorFleet
-
-> ClusterOperatorFleetInventoryResponseList ListClusterOperatorFleet(ctx).Execute()
-
-List the Qovery Operator fleet
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClusterOperatorAPI.ListClusterOperatorFleet(context.Background()).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClusterOperatorAPI.ListClusterOperatorFleet``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `ListClusterOperatorFleet`: ClusterOperatorFleetInventoryResponseList
-	fmt.Fprintf(os.Stdout, "Response from `ClusterOperatorAPI.ListClusterOperatorFleet`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-This endpoint does not need any parameter.
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiListClusterOperatorFleetRequest struct via the builder pattern
-
-
-### Return type
-
-[**ClusterOperatorFleetInventoryResponseList**](ClusterOperatorFleetInventoryResponseList.md)
 
 ### Authorization
 

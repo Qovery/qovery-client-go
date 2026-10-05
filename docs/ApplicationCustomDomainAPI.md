@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**CreateApplicationCustomDomain**](ApplicationCustomDomainAPI.md#CreateApplicationCustomDomain) | **Post** /application/{applicationId}/customDomain | Add custom domain to the application.
 [**DeleteCustomDomain**](ApplicationCustomDomainAPI.md#DeleteCustomDomain) | **Delete** /application/{applicationId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**EditCustomDomain**](ApplicationCustomDomainAPI.md#EditCustomDomain) | **Put** /application/{applicationId}/customDomain/{customDomainId} | Edit a Custom Domain
-[**GetCustomDomainStatus**](ApplicationCustomDomainAPI.md#GetCustomDomainStatus) | **Get** /application/{applicationId}/customDomain/{customDomainId}/status | Get Custom Domain status
+[**GetApplicationCustomDomain**](ApplicationCustomDomainAPI.md#GetApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain/{customDomainId} | Get an application custom domain
 [**ListApplicationCustomDomain**](ApplicationCustomDomainAPI.md#ListApplicationCustomDomain) | **Get** /application/{applicationId}/customDomain | List application custom domains
 
 
@@ -299,11 +299,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetCustomDomainStatus
+## GetApplicationCustomDomain
 
-> CustomDomain GetCustomDomainStatus(ctx, applicationId, customDomainId).Execute()
+> CustomDomain GetApplicationCustomDomain(ctx, applicationId, customDomainId).Execute()
 
-Get Custom Domain status
+Get an application custom domain
+
+
 
 ### Example
 
@@ -323,13 +325,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ApplicationCustomDomainAPI.GetCustomDomainStatus(context.Background(), applicationId, customDomainId).Execute()
+	resp, r, err := apiClient.ApplicationCustomDomainAPI.GetApplicationCustomDomain(context.Background(), applicationId, customDomainId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCustomDomainAPI.GetCustomDomainStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ApplicationCustomDomainAPI.GetApplicationCustomDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetCustomDomainStatus`: CustomDomain
-	fmt.Fprintf(os.Stdout, "Response from `ApplicationCustomDomainAPI.GetCustomDomainStatus`: %v\n", resp)
+	// response from `GetApplicationCustomDomain`: CustomDomain
+	fmt.Fprintf(os.Stdout, "Response from `ApplicationCustomDomainAPI.GetApplicationCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -344,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetCustomDomainStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetApplicationCustomDomainRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

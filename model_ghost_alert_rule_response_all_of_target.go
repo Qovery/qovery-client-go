@@ -21,8 +21,9 @@ var _ MappedNullable = &GhostAlertRuleResponseAllOfTarget{}
 
 // GhostAlertRuleResponseAllOfTarget May be null if target info couldn't be extracted from Prometheus
 type GhostAlertRuleResponseAllOfTarget struct {
-	TargetType           AlertTargetType       `json:"target_type"`
-	TargetId             string                `json:"target_id"`
+	TargetType AlertTargetType `json:"target_type"`
+	TargetId   string          `json:"target_id"`
+	// Service details when target_type is APPLICATION, CONTAINER, JOB, CRONJOB, HELM or TERRAFORM
 	Service              *ServiceLightResponse `json:"service,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

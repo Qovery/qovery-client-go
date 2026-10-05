@@ -284,123 +284,11 @@ func (a *CloudProviderAPIService) ListAWSFeaturesExecute(r ApiListAWSFeaturesReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListAWSInstanceTypeRequest struct {
+type ApiListAWSManagedDatabaseInstanceTypeRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderAPIService
-}
-
-func (r ApiListAWSInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	return r.ApiService.ListAWSInstanceTypeExecute(r)
-}
-
-/*
-ListAWSInstanceType List AWS available instance types
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListAWSInstanceTypeRequest
-*/
-func (a *CloudProviderAPIService) ListAWSInstanceType(ctx context.Context) ApiListAWSInstanceTypeRequest {
-	return ApiListAWSInstanceTypeRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
-func (a *CloudProviderAPIService) ListAWSInstanceTypeExecute(r ApiListAWSInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ClusterInstanceTypeResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListAWSInstanceType")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/aws/instanceType"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListAWSManagedDatabaseInstanceTypeRequest struct {
-	ctx          context.Context
-	ApiService   *CloudProviderAPIService
-	region       string
-	databaseType string
+	region     string
+	dbType     string
 }
 
 func (r ApiListAWSManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabaseInstanceTypeResponseList, *http.Response, error) {
@@ -410,17 +298,19 @@ func (r ApiListAWSManagedDatabaseInstanceTypeRequest) Execute() (*ManagedDatabas
 /*
 ListAWSManagedDatabaseInstanceType List AWS available managed database instance types
 
+List AWS available managed database instance types
+
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param region region name
-	@param databaseType Database type
+	@param dbType Managed database type
 	@return ApiListAWSManagedDatabaseInstanceTypeRequest
 */
-func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, databaseType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
+func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceType(ctx context.Context, region string, dbType string) ApiListAWSManagedDatabaseInstanceTypeRequest {
 	return ApiListAWSManagedDatabaseInstanceTypeRequest{
-		ApiService:   a,
-		ctx:          ctx,
-		region:       region,
-		databaseType: databaseType,
+		ApiService: a,
+		ctx:        ctx,
+		region:     region,
+		dbType:     dbType,
 	}
 }
 
@@ -440,9 +330,9 @@ func (a *CloudProviderAPIService) ListAWSManagedDatabaseInstanceTypeExecute(r Ap
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/aws/managedDatabase/instanceType/{region}/{databaseType}"
+	localVarPath := localBasePath + "/aws/managedDatabase/instanceType/{region}/{dbType}"
 	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseType"+"}", url.PathEscape(parameterValueToString(r.databaseType, "databaseType")), -1)
+	localVarPath = strings.Replace(localVarPath, "{"+"dbType"+"}", url.PathEscape(parameterValueToString(r.dbType, "dbType")), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1336,122 +1226,6 @@ func (a *CloudProviderAPIService) ListGcpFeaturesExecute(r ApiListGcpFeaturesReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListGcpGkeInstanceTypeRequest struct {
-	ctx        context.Context
-	ApiService *CloudProviderAPIService
-	region     string
-}
-
-func (r ApiListGcpGkeInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	return r.ApiService.ListGcpGkeInstanceTypeExecute(r)
-}
-
-/*
-ListGcpGkeInstanceType List GCP GKE available instance types
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param region region name
-	@return ApiListGcpGkeInstanceTypeRequest
-*/
-func (a *CloudProviderAPIService) ListGcpGkeInstanceType(ctx context.Context, region string) ApiListGcpGkeInstanceTypeRequest {
-	return ApiListGcpGkeInstanceTypeRequest{
-		ApiService: a,
-		ctx:        ctx,
-		region:     region,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
-func (a *CloudProviderAPIService) ListGcpGkeInstanceTypeExecute(r ApiListGcpGkeInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ClusterInstanceTypeResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListGcpGkeInstanceType")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/gcp/instanceType/{region}"
-	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiListGcpRegionsRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderAPIService
@@ -1564,23 +1338,25 @@ func (a *CloudProviderAPIService) ListGcpRegionsExecute(r ApiListGcpRegionsReque
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListSCWManagedDatabaseTypeRequest struct {
+type ApiListOnPremiseClusterFeaturesRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderAPIService
 }
 
-func (r ApiListSCWManagedDatabaseTypeRequest) Execute() (*ManagedDatabaseTypeResponseList, *http.Response, error) {
-	return r.ApiService.ListSCWManagedDatabaseTypeExecute(r)
+func (r ApiListOnPremiseClusterFeaturesRequest) Execute() (*ClusterFeatureResponseList, *http.Response, error) {
+	return r.ApiService.ListOnPremiseClusterFeaturesExecute(r)
 }
 
 /*
-ListSCWManagedDatabaseType List Scaleway available managed database types
+ListOnPremiseClusterFeatures List on-premise cluster features
+
+List on-premise cluster features
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListSCWManagedDatabaseTypeRequest
+	@return ApiListOnPremiseClusterFeaturesRequest
 */
-func (a *CloudProviderAPIService) ListSCWManagedDatabaseType(ctx context.Context) ApiListSCWManagedDatabaseTypeRequest {
-	return ApiListSCWManagedDatabaseTypeRequest{
+func (a *CloudProviderAPIService) ListOnPremiseClusterFeatures(ctx context.Context) ApiListOnPremiseClusterFeaturesRequest {
+	return ApiListOnPremiseClusterFeaturesRequest{
 		ApiService: a,
 		ctx:        ctx,
 	}
@@ -1588,21 +1364,253 @@ func (a *CloudProviderAPIService) ListSCWManagedDatabaseType(ctx context.Context
 
 // Execute executes the request
 //
-//	@return ManagedDatabaseTypeResponseList
-func (a *CloudProviderAPIService) ListSCWManagedDatabaseTypeExecute(r ApiListSCWManagedDatabaseTypeRequest) (*ManagedDatabaseTypeResponseList, *http.Response, error) {
+//	@return ClusterFeatureResponseList
+func (a *CloudProviderAPIService) ListOnPremiseClusterFeaturesExecute(r ApiListOnPremiseClusterFeaturesRequest) (*ClusterFeatureResponseList, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *ManagedDatabaseTypeResponseList
+		localVarReturnValue *ClusterFeatureResponseList
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListSCWManagedDatabaseType")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListOnPremiseClusterFeatures")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/scaleway/managedDatabase/type"
+	localVarPath := localBasePath + "/onPremise/clusterFeature"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListOnPremiseInstanceTypesRequest struct {
+	ctx        context.Context
+	ApiService *CloudProviderAPIService
+	region     string
+}
+
+func (r ApiListOnPremiseInstanceTypesRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
+	return r.ApiService.ListOnPremiseInstanceTypesExecute(r)
+}
+
+/*
+ListOnPremiseInstanceTypes List on-premise instance types
+
+List on-premise instance types
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param region region name
+	@return ApiListOnPremiseInstanceTypesRequest
+*/
+func (a *CloudProviderAPIService) ListOnPremiseInstanceTypes(ctx context.Context, region string) ApiListOnPremiseInstanceTypesRequest {
+	return ApiListOnPremiseInstanceTypesRequest{
+		ApiService: a,
+		ctx:        ctx,
+		region:     region,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ClusterInstanceTypeResponseList
+func (a *CloudProviderAPIService) ListOnPremiseInstanceTypesExecute(r ApiListOnPremiseInstanceTypesRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterInstanceTypeResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListOnPremiseInstanceTypes")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/onPremise/eks/instanceType/{region}"
+	localVarPath = strings.Replace(localVarPath, "{"+"region"+"}", url.PathEscape(parameterValueToString(r.region, "region")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListOnPremiseRegionsRequest struct {
+	ctx        context.Context
+	ApiService *CloudProviderAPIService
+}
+
+func (r ApiListOnPremiseRegionsRequest) Execute() (*ClusterRegionResponseList, *http.Response, error) {
+	return r.ApiService.ListOnPremiseRegionsExecute(r)
+}
+
+/*
+ListOnPremiseRegions List on-premise regions
+
+List on-premise regions
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListOnPremiseRegionsRequest
+*/
+func (a *CloudProviderAPIService) ListOnPremiseRegions(ctx context.Context) ApiListOnPremiseRegionsRequest {
+	return ApiListOnPremiseRegionsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return ClusterRegionResponseList
+func (a *CloudProviderAPIService) ListOnPremiseRegionsExecute(r ApiListOnPremiseRegionsRequest) (*ClusterRegionResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *ClusterRegionResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListOnPremiseRegions")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/onPremise/region"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -1788,118 +1796,6 @@ func (a *CloudProviderAPIService) ListScalewayFeaturesExecute(r ApiListScalewayF
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiListScalewayInstanceTypeRequest struct {
-	ctx        context.Context
-	ApiService *CloudProviderAPIService
-}
-
-func (r ApiListScalewayInstanceTypeRequest) Execute() (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	return r.ApiService.ListScalewayInstanceTypeExecute(r)
-}
-
-/*
-ListScalewayInstanceType List Scaleway available instance types
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@return ApiListScalewayInstanceTypeRequest
-*/
-func (a *CloudProviderAPIService) ListScalewayInstanceType(ctx context.Context) ApiListScalewayInstanceTypeRequest {
-	return ApiListScalewayInstanceTypeRequest{
-		ApiService: a,
-		ctx:        ctx,
-	}
-}
-
-// Execute executes the request
-//
-//	@return ClusterInstanceTypeResponseList
-func (a *CloudProviderAPIService) ListScalewayInstanceTypeExecute(r ApiListScalewayInstanceTypeRequest) (*ClusterInstanceTypeResponseList, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *ClusterInstanceTypeResponseList
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "CloudProviderAPIService.ListScalewayInstanceType")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/scaleway/instanceType"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
 type ApiListScalewayKapsuleInstanceTypeRequest struct {
 	ctx        context.Context
 	ApiService *CloudProviderAPIService
@@ -1912,6 +1808,8 @@ func (r ApiListScalewayKapsuleInstanceTypeRequest) Execute() (*ClusterInstanceTy
 
 /*
 ListScalewayKapsuleInstanceType List Scaleway Kapsule available instance types
+
+List Scaleway Kapsule available instance types
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param zone zone name

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**CreateContainerCustomDomain**](ContainerCustomDomainAPI.md#CreateContainerCustomDomain) | **Post** /container/{containerId}/customDomain | Add custom domain to the container.
 [**DeleteContainerCustomDomain**](ContainerCustomDomainAPI.md#DeleteContainerCustomDomain) | **Delete** /container/{containerId}/customDomain/{customDomainId} | Delete a Custom Domain
 [**EditContainerCustomDomain**](ContainerCustomDomainAPI.md#EditContainerCustomDomain) | **Put** /container/{containerId}/customDomain/{customDomainId} | Edit a Custom Domain
-[**GetContainerCustomDomainStatus**](ContainerCustomDomainAPI.md#GetContainerCustomDomainStatus) | **Get** /container/{containerId}/customDomain/{customDomainId}/status | Get Custom Domain status
+[**GetContainerCustomDomain**](ContainerCustomDomainAPI.md#GetContainerCustomDomain) | **Get** /container/{containerId}/customDomain/{customDomainId} | Get a container custom domain
 [**ListContainerCustomDomain**](ContainerCustomDomainAPI.md#ListContainerCustomDomain) | **Get** /container/{containerId}/customDomain | List container custom domains
 
 
@@ -299,11 +299,13 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetContainerCustomDomainStatus
+## GetContainerCustomDomain
 
-> CustomDomain GetContainerCustomDomainStatus(ctx, containerId, customDomainId).Execute()
+> CustomDomain GetContainerCustomDomain(ctx, containerId, customDomainId).Execute()
 
-Get Custom Domain status
+Get a container custom domain
+
+
 
 ### Example
 
@@ -323,13 +325,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ContainerCustomDomainAPI.GetContainerCustomDomainStatus(context.Background(), containerId, customDomainId).Execute()
+	resp, r, err := apiClient.ContainerCustomDomainAPI.GetContainerCustomDomain(context.Background(), containerId, customDomainId).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.GetContainerCustomDomainStatus``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `ContainerCustomDomainAPI.GetContainerCustomDomain``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `GetContainerCustomDomainStatus`: CustomDomain
-	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.GetContainerCustomDomainStatus`: %v\n", resp)
+	// response from `GetContainerCustomDomain`: CustomDomain
+	fmt.Fprintf(os.Stdout, "Response from `ContainerCustomDomainAPI.GetContainerCustomDomain`: %v\n", resp)
 }
 ```
 
@@ -344,7 +346,7 @@ Name | Type | Description  | Notes
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiGetContainerCustomDomainStatusRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiGetContainerCustomDomainRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

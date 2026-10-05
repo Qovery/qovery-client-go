@@ -21,10 +21,11 @@ var _ MappedNullable = &PlatformTemplateSummaryResponseBootstrapComponent{}
 
 // PlatformTemplateSummaryResponseBootstrapComponent Mandatory bootstrap component and its configurable fields, when declared by the template.
 type PlatformTemplateSummaryResponseBootstrapComponent struct {
-	Key         string                        `json:"key"`
-	Kind        PlatformTemplateComponentKind `json:"kind"`
-	Description NullableString                `json:"description,omitempty"`
-	Fields      []FieldSchemaResponse         `json:"fields"`
+	Key         string                                        `json:"key"`
+	Kind        PlatformTemplateComponentKind                 `json:"kind"`
+	DependsOn   []PlatformTemplateComponentDependencyResponse `json:"dependsOn"`
+	Description NullableString                                `json:"description,omitempty"`
+	Fields      []FieldSchemaResponse                         `json:"fields"`
 	// Additional configuration sections displayed under this component. Its own configuration and cluster inputs remain available. Omitted or empty keeps the existing editor behavior; fields always remain declared on their owner.
 	ConfigurationSections []PlatformConfigurationSectionResponse `json:"configurationSections,omitempty"`
 	AdditionalProperties  map[string]interface{}
@@ -36,10 +37,11 @@ type _PlatformTemplateSummaryResponseBootstrapComponent PlatformTemplateSummaryR
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformTemplateSummaryResponseBootstrapComponent(key string, kind PlatformTemplateComponentKind, fields []FieldSchemaResponse) *PlatformTemplateSummaryResponseBootstrapComponent {
+func NewPlatformTemplateSummaryResponseBootstrapComponent(key string, kind PlatformTemplateComponentKind, dependsOn []PlatformTemplateComponentDependencyResponse, fields []FieldSchemaResponse) *PlatformTemplateSummaryResponseBootstrapComponent {
 	this := PlatformTemplateSummaryResponseBootstrapComponent{}
 	this.Key = key
 	this.Kind = kind
+	this.DependsOn = dependsOn
 	this.Fields = fields
 	return &this
 }
@@ -98,6 +100,30 @@ func (o *PlatformTemplateSummaryResponseBootstrapComponent) GetKindOk() (*Platfo
 // SetKind sets field value
 func (o *PlatformTemplateSummaryResponseBootstrapComponent) SetKind(v PlatformTemplateComponentKind) {
 	o.Kind = v
+}
+
+// GetDependsOn returns the DependsOn field value
+func (o *PlatformTemplateSummaryResponseBootstrapComponent) GetDependsOn() []PlatformTemplateComponentDependencyResponse {
+	if o == nil {
+		var ret []PlatformTemplateComponentDependencyResponse
+		return ret
+	}
+
+	return o.DependsOn
+}
+
+// GetDependsOnOk returns a tuple with the DependsOn field value
+// and a boolean to check if the value has been set.
+func (o *PlatformTemplateSummaryResponseBootstrapComponent) GetDependsOnOk() ([]PlatformTemplateComponentDependencyResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.DependsOn, true
+}
+
+// SetDependsOn sets field value
+func (o *PlatformTemplateSummaryResponseBootstrapComponent) SetDependsOn(v []PlatformTemplateComponentDependencyResponse) {
+	o.DependsOn = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -211,6 +237,7 @@ func (o PlatformTemplateSummaryResponseBootstrapComponent) ToMap() (map[string]i
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["kind"] = o.Kind
+	toSerialize["dependsOn"] = o.DependsOn
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -233,6 +260,7 @@ func (o *PlatformTemplateSummaryResponseBootstrapComponent) UnmarshalJSON(data [
 	requiredProperties := []string{
 		"key",
 		"kind",
+		"dependsOn",
 		"fields",
 	}
 
@@ -265,6 +293,7 @@ func (o *PlatformTemplateSummaryResponseBootstrapComponent) UnmarshalJSON(data [
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "kind")
+		delete(additionalProperties, "dependsOn")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "fields")
 		delete(additionalProperties, "configurationSections")

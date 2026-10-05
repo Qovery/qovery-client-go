@@ -26,7 +26,7 @@ type ApplicationRequest struct {
 	// name is case insensitive
 	Name string `json:"name"`
 	// give a description to this application
-	Description   NullableString                  `json:"description,omitempty"`
+	Description   *string                         `json:"description,omitempty"`
 	GitRepository ApplicationGitRepositoryRequest `json:"git_repository"`
 	BuildMode     *BuildModeEnum                  `json:"build_mode,omitempty"`
 	// The path of the associated Dockerfile. Only if you are using build_mode = DOCKER
@@ -44,8 +44,8 @@ type ApplicationRequest struct {
 	MaxRunningInstances *int32      `json:"max_running_instances,omitempty"`
 	Healthchecks        Healthcheck `json:"healthchecks"`
 	// Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
-	AutoPreview *bool    `json:"auto_preview,omitempty"`
-	Arguments   []string `json:"arguments,omitempty"`
+	AutoPreview NullableBool `json:"auto_preview,omitempty"`
+	Arguments   []string     `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// Specify if the application will be automatically updated after receiving a new commit.
@@ -60,6 +60,7 @@ type ApplicationRequest struct {
 	CpuArchitecture      NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
 	Autoscaling          *AutoscalingPolicyRequest   `json:"autoscaling,omitempty"`
 	BuildSettings        *BuildSettings              `json:"build_settings,omitempty"`
+	StartupTimeout       *int32                      `json:"startup_timeout,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -72,6 +73,8 @@ type _ApplicationRequest ApplicationRequest
 func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRequest, healthchecks Healthcheck) *ApplicationRequest {
 	this := ApplicationRequest{}
 	this.Name = name
+	var description string = ""
+	this.Description = &description
 	this.GitRepository = gitRepository
 	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
@@ -86,8 +89,8 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
 	this.Healthchecks = healthchecks
-	var autoPreview bool = true
-	this.AutoPreview = &autoPreview
+	var startupTimeout int32 = 30
+	this.StartupTimeout = &startupTimeout
 	return &this
 }
 
@@ -96,6 +99,8 @@ func NewApplicationRequest(name string, gitRepository ApplicationGitRepositoryRe
 // but it doesn't guarantee that properties required by API are set
 func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this := ApplicationRequest{}
+	var description string = ""
+	this.Description = &description
 	var buildMode BuildModeEnum = BUILDMODEENUM_DOCKER
 	this.BuildMode = &buildMode
 	var cpu int32 = 500
@@ -108,8 +113,8 @@ func NewApplicationRequestWithDefaults() *ApplicationRequest {
 	this.MinRunningInstances = &minRunningInstances
 	var maxRunningInstances int32 = 1
 	this.MaxRunningInstances = &maxRunningInstances
-	var autoPreview bool = true
-	this.AutoPreview = &autoPreview
+	var startupTimeout int32 = 30
+	this.StartupTimeout = &startupTimeout
 	return &this
 }
 
@@ -201,47 +206,36 @@ func (o *ApplicationRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *ApplicationRequest) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-	return *o.Description.Get()
+	return *o.Description
 }
 
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return o.Description.Get(), o.Description.IsSet()
+	return o.Description, true
 }
 
 // HasDescription returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
 	return false
 }
 
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *ApplicationRequest) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *ApplicationRequest) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *ApplicationRequest) UnsetDescription() {
-	o.Description.Unset()
+	o.Description = &v
 }
 
 // GetGitRepository returns the GitRepository field value
@@ -559,36 +553,47 @@ func (o *ApplicationRequest) SetHealthchecks(v Healthcheck) {
 	o.Healthchecks = v
 }
 
-// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise.
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ApplicationRequest) GetAutoPreview() bool {
-	if o == nil || IsNil(o.AutoPreview) {
+	if o == nil || IsNil(o.AutoPreview.Get()) {
 		var ret bool
 		return ret
 	}
-	return *o.AutoPreview
+	return *o.AutoPreview.Get()
 }
 
 // GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ApplicationRequest) GetAutoPreviewOk() (*bool, bool) {
-	if o == nil || IsNil(o.AutoPreview) {
+	if o == nil {
 		return nil, false
 	}
-	return o.AutoPreview, true
+	return o.AutoPreview.Get(), o.AutoPreview.IsSet()
 }
 
 // HasAutoPreview returns a boolean if a field has been set.
 func (o *ApplicationRequest) HasAutoPreview() bool {
-	if o != nil && !IsNil(o.AutoPreview) {
+	if o != nil && o.AutoPreview.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetAutoPreview gets a reference to the given bool and assigns it to the AutoPreview field.
+// SetAutoPreview gets a reference to the given NullableBool and assigns it to the AutoPreview field.
 func (o *ApplicationRequest) SetAutoPreview(v bool) {
-	o.AutoPreview = &v
+	o.AutoPreview.Set(&v)
+}
+
+// SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
+func (o *ApplicationRequest) SetAutoPreviewNil() {
+	o.AutoPreview.Set(nil)
+}
+
+// UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
+func (o *ApplicationRequest) UnsetAutoPreview() {
+	o.AutoPreview.Unset()
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
@@ -944,6 +949,38 @@ func (o *ApplicationRequest) SetBuildSettings(v BuildSettings) {
 	o.BuildSettings = &v
 }
 
+// GetStartupTimeout returns the StartupTimeout field value if set, zero value otherwise.
+func (o *ApplicationRequest) GetStartupTimeout() int32 {
+	if o == nil || IsNil(o.StartupTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.StartupTimeout
+}
+
+// GetStartupTimeoutOk returns a tuple with the StartupTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationRequest) GetStartupTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.StartupTimeout) {
+		return nil, false
+	}
+	return o.StartupTimeout, true
+}
+
+// HasStartupTimeout returns a boolean if a field has been set.
+func (o *ApplicationRequest) HasStartupTimeout() bool {
+	if o != nil && !IsNil(o.StartupTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartupTimeout gets a reference to the given int32 and assigns it to the StartupTimeout field.
+func (o *ApplicationRequest) SetStartupTimeout(v int32) {
+	o.StartupTimeout = &v
+}
+
 func (o ApplicationRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -961,8 +998,8 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["ports"] = o.Ports
 	}
 	toSerialize["name"] = o.Name
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
 	}
 	toSerialize["git_repository"] = o.GitRepository
 	if !IsNil(o.BuildMode) {
@@ -990,8 +1027,8 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["max_running_instances"] = o.MaxRunningInstances
 	}
 	toSerialize["healthchecks"] = o.Healthchecks
-	if !IsNil(o.AutoPreview) {
-		toSerialize["auto_preview"] = o.AutoPreview
+	if o.AutoPreview.IsSet() {
+		toSerialize["auto_preview"] = o.AutoPreview.Get()
 	}
 	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
@@ -1022,6 +1059,9 @@ func (o ApplicationRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.BuildSettings) {
 		toSerialize["build_settings"] = o.BuildSettings
+	}
+	if !IsNil(o.StartupTimeout) {
+		toSerialize["startup_timeout"] = o.StartupTimeout
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1093,6 +1133,7 @@ func (o *ApplicationRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "autoscaling")
 		delete(additionalProperties, "build_settings")
+		delete(additionalProperties, "startup_timeout")
 		o.AdditionalProperties = additionalProperties
 	}
 

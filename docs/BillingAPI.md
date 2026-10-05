@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**DeleteCreditCard**](BillingAPI.md#DeleteCreditCard) | **Delete** /organization/{organizationId}/creditCard/{creditCardId} | Delete credit card
 [**EditOrganizationBillingInfo**](BillingAPI.md#EditOrganizationBillingInfo) | **Put** /organization/{organizationId}/billingInfo | Edit Organization Billing Info
 [**GenerateBillingUsageReport**](BillingAPI.md#GenerateBillingUsageReport) | **Post** /organization/{organizationId}/billingUsageReport | Generate organization billing usage report
-[**GetClusterCurrentCost**](BillingAPI.md#GetClusterCurrentCost) | **Get** /organization/{organizationId}/cluster/{clusterId}/currentCost | Get cluster current cost
 [**GetOrganizationBillingExternalId**](BillingAPI.md#GetOrganizationBillingExternalId) | **Get** /organization/{organizationId}/billingExternalId | Get organization billing external ID
 [**GetOrganizationBillingInfo**](BillingAPI.md#GetOrganizationBillingInfo) | **Get** /organization/{organizationId}/billingInfo | Get organization billing info
 [**GetOrganizationBillingStatus**](BillingAPI.md#GetOrganizationBillingStatus) | **Get** /organization/{organizationId}/billingStatus | Get organization billing status
@@ -19,7 +18,6 @@ Method | HTTP request | Description
 [**GetOrganizationInvoicePDF**](BillingAPI.md#GetOrganizationInvoicePDF) | **Get** /organization/{organizationId}/invoice/{invoiceId}/download | Get invoice link
 [**ListOrganizationCreditCards**](BillingAPI.md#ListOrganizationCreditCards) | **Get** /organization/{organizationId}/creditCard | List organization credit cards
 [**ListOrganizationInvoice**](BillingAPI.md#ListOrganizationInvoice) | **Get** /organization/{organizationId}/invoice | List organization invoices
-[**OrganizationDownloadAllInvoices**](BillingAPI.md#OrganizationDownloadAllInvoices) | **Post** /organization/{organizationId}/downloadInvoices | Download all invoices
 
 
 
@@ -434,79 +432,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## GetClusterCurrentCost
-
-> CostRange GetClusterCurrentCost(ctx, organizationId, clusterId).Execute()
-
-Get cluster current cost
-
-
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.BillingAPI.GetClusterCurrentCost(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.GetClusterCurrentCost``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterCurrentCost`: CostRange
-	fmt.Fprintf(os.Stdout, "Response from `BillingAPI.GetClusterCurrentCost`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**clusterId** | **string** | Cluster ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetClusterCurrentCostRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**CostRange**](CostRange.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
@@ -1064,72 +989,6 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
-## OrganizationDownloadAllInvoices
-
-> OrganizationDownloadAllInvoices(ctx, organizationId).Execute()
-
-Download all invoices
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	r, err := apiClient.BillingAPI.OrganizationDownloadAllInvoices(context.Background(), organizationId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `BillingAPI.OrganizationDownloadAllInvoices``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiOrganizationDownloadAllInvoicesRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-### Return type
-
- (empty response body)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

@@ -6,17 +6,15 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** |  | 
 **Key** | **string** |  | 
-**MountPath** | **string** |  | 
+**MountPath** | Pointer to **NullableString** |  | [optional] 
 **Scope** | [**APIVariableScopeEnum**](APIVariableScopeEnum.md) |  | 
 **VariableType** | [**APIVariableTypeEnum**](APIVariableTypeEnum.md) |  | 
-**Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
-**EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
 ## Methods
 
 ### NewSecretOverride
 
-`func NewSecretOverride(id string, key string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *SecretOverride`
+`func NewSecretOverride(id string, key string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum, ) *SecretOverride`
 
 NewSecretOverride instantiates a new SecretOverride object
 This constructor will assign default values to properties that have it defined,
@@ -90,7 +88,22 @@ and a boolean to check if the value has been set.
 
 SetMountPath sets MountPath field to given value.
 
+### HasMountPath
 
+`func (o *SecretOverride) HasMountPath() bool`
+
+HasMountPath returns a boolean if a field has been set.
+
+### SetMountPathNil
+
+`func (o *SecretOverride) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *SecretOverride) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetScope
 
 `func (o *SecretOverride) GetScope() APIVariableScopeEnum`
@@ -131,76 +144,6 @@ and a boolean to check if the value has been set.
 SetVariableType sets VariableType field to given value.
 
 
-### GetDescription
-
-`func (o *SecretOverride) GetDescription() string`
-
-GetDescription returns the Description field if non-nil, zero value otherwise.
-
-### GetDescriptionOk
-
-`func (o *SecretOverride) GetDescriptionOk() (*string, bool)`
-
-GetDescriptionOk returns a tuple with the Description field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetDescription
-
-`func (o *SecretOverride) SetDescription(v string)`
-
-SetDescription sets Description field to given value.
-
-### HasDescription
-
-`func (o *SecretOverride) HasDescription() bool`
-
-HasDescription returns a boolean if a field has been set.
-
-### SetDescriptionNil
-
-`func (o *SecretOverride) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *SecretOverride) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
-### GetEnableInterpolationInFile
-
-`func (o *SecretOverride) GetEnableInterpolationInFile() bool`
-
-GetEnableInterpolationInFile returns the EnableInterpolationInFile field if non-nil, zero value otherwise.
-
-### GetEnableInterpolationInFileOk
-
-`func (o *SecretOverride) GetEnableInterpolationInFileOk() (*bool, bool)`
-
-GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetEnableInterpolationInFile
-
-`func (o *SecretOverride) SetEnableInterpolationInFile(v bool)`
-
-SetEnableInterpolationInFile sets EnableInterpolationInFile field to given value.
-
-### HasEnableInterpolationInFile
-
-`func (o *SecretOverride) HasEnableInterpolationInFile() bool`
-
-HasEnableInterpolationInFile returns a boolean if a field has been set.
-
-### SetEnableInterpolationInFileNil
-
-`func (o *SecretOverride) SetEnableInterpolationInFileNil(b bool)`
-
- SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-
-### UnsetEnableInterpolationInFile
-`func (o *SecretOverride) UnsetEnableInterpolationInFile()`
-
-UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

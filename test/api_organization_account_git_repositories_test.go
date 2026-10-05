@@ -22,6 +22,36 @@ func Test_qovery_OrganizationAccountGitRepositoriesAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetGitProviderRepositories", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var gitProviderName string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositories(context.Background(), organizationId, gitProviderName).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetGitProviderRepositoryBranches", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var organizationId string
+		var gitProviderName string
+
+		resp, httpRes, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositoryBranches(context.Background(), organizationId, gitProviderName).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test OrganizationAccountGitRepositoriesAPIService GetOrganizationBitbucketRepositories", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

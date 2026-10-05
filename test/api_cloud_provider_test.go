@@ -48,26 +48,14 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderAPIService ListAWSInstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListAWSInstanceType(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CloudProviderAPIService ListAWSManagedDatabaseInstanceType", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var region string
-		var databaseType string
+		var dbType string
 
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, databaseType).Execute()
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListAWSManagedDatabaseInstanceType(context.Background(), region, dbType).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -161,20 +149,6 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderAPIService ListGcpGkeInstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var region string
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListGcpGkeInstanceType(context.Background(), region).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test CloudProviderAPIService ListGcpRegions", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -187,11 +161,37 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test CloudProviderAPIService ListSCWManagedDatabaseType", func(t *testing.T) {
+	t.Run("Test CloudProviderAPIService ListOnPremiseClusterFeatures", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListSCWManagedDatabaseType(context.Background()).Execute()
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListOnPremiseClusterFeatures(context.Background()).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderAPIService ListOnPremiseInstanceTypes", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var region string
+
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListOnPremiseInstanceTypes(context.Background(), region).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test CloudProviderAPIService ListOnPremiseRegions", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		resp, httpRes, err := apiClient.CloudProviderAPI.ListOnPremiseRegions(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -204,18 +204,6 @@ func Test_qovery_CloudProviderAPIService(t *testing.T) {
 		t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.CloudProviderAPI.ListScalewayFeatures(context.Background()).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
-	t.Run("Test CloudProviderAPIService ListScalewayInstanceType", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		resp, httpRes, err := apiClient.CloudProviderAPI.ListScalewayInstanceType(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

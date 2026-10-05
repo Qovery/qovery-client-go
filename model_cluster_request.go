@@ -48,6 +48,8 @@ type ClusterRequest struct {
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
 	SecretManagerAccesses          []SecretManagerAccessRequest           `json:"secret_manager_accesses,omitempty"`
+	IsDemo                         *bool                                  `json:"is_demo,omitempty"`
+	WidePermissionsDto             *WidePermissionsDto                    `json:"wide_permissions_dto,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -64,12 +66,14 @@ func NewClusterRequest(name string, region string, cloudProvider CloudVendorEnum
 	this.CloudProvider = cloudProvider
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
-	var maxRunningNodes int32 = 1
+	var maxRunningNodes int32 = 10
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 40
 	this.DiskSize = &diskSize
 	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
 	this.Kubernetes = &kubernetes
+	var isDemo bool = false
+	this.IsDemo = &isDemo
 	return &this
 }
 
@@ -80,12 +84,14 @@ func NewClusterRequestWithDefaults() *ClusterRequest {
 	this := ClusterRequest{}
 	var minRunningNodes int32 = 1
 	this.MinRunningNodes = &minRunningNodes
-	var maxRunningNodes int32 = 1
+	var maxRunningNodes int32 = 10
 	this.MaxRunningNodes = &maxRunningNodes
 	var diskSize int32 = 40
 	this.DiskSize = &diskSize
 	var kubernetes KubernetesEnum = KUBERNETESENUM_MANAGED
 	this.Kubernetes = &kubernetes
+	var isDemo bool = false
+	this.IsDemo = &isDemo
 	return &this
 }
 
@@ -705,6 +711,70 @@ func (o *ClusterRequest) SetSecretManagerAccesses(v []SecretManagerAccessRequest
 	o.SecretManagerAccesses = v
 }
 
+// GetIsDemo returns the IsDemo field value if set, zero value otherwise.
+func (o *ClusterRequest) GetIsDemo() bool {
+	if o == nil || IsNil(o.IsDemo) {
+		var ret bool
+		return ret
+	}
+	return *o.IsDemo
+}
+
+// GetIsDemoOk returns a tuple with the IsDemo field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetIsDemoOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsDemo) {
+		return nil, false
+	}
+	return o.IsDemo, true
+}
+
+// HasIsDemo returns a boolean if a field has been set.
+func (o *ClusterRequest) HasIsDemo() bool {
+	if o != nil && !IsNil(o.IsDemo) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsDemo gets a reference to the given bool and assigns it to the IsDemo field.
+func (o *ClusterRequest) SetIsDemo(v bool) {
+	o.IsDemo = &v
+}
+
+// GetWidePermissionsDto returns the WidePermissionsDto field value if set, zero value otherwise.
+func (o *ClusterRequest) GetWidePermissionsDto() WidePermissionsDto {
+	if o == nil || IsNil(o.WidePermissionsDto) {
+		var ret WidePermissionsDto
+		return ret
+	}
+	return *o.WidePermissionsDto
+}
+
+// GetWidePermissionsDtoOk returns a tuple with the WidePermissionsDto field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterRequest) GetWidePermissionsDtoOk() (*WidePermissionsDto, bool) {
+	if o == nil || IsNil(o.WidePermissionsDto) {
+		return nil, false
+	}
+	return o.WidePermissionsDto, true
+}
+
+// HasWidePermissionsDto returns a boolean if a field has been set.
+func (o *ClusterRequest) HasWidePermissionsDto() bool {
+	if o != nil && !IsNil(o.WidePermissionsDto) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidePermissionsDto gets a reference to the given WidePermissionsDto and assigns it to the WidePermissionsDto field.
+func (o *ClusterRequest) SetWidePermissionsDto(v WidePermissionsDto) {
+	o.WidePermissionsDto = &v
+}
+
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -768,6 +838,12 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SecretManagerAccesses) {
 		toSerialize["secret_manager_accesses"] = o.SecretManagerAccesses
+	}
+	if !IsNil(o.IsDemo) {
+		toSerialize["is_demo"] = o.IsDemo
+	}
+	if !IsNil(o.WidePermissionsDto) {
+		toSerialize["wide_permissions_dto"] = o.WidePermissionsDto
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -834,6 +910,8 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "keda")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "secret_manager_accesses")
+		delete(additionalProperties, "is_demo")
+		delete(additionalProperties, "wide_permissions_dto")
 		o.AdditionalProperties = additionalProperties
 	}
 

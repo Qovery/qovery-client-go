@@ -505,27 +505,29 @@ func (a *ContainerCustomDomainAPIService) EditContainerCustomDomainExecute(r Api
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetContainerCustomDomainStatusRequest struct {
+type ApiGetContainerCustomDomainRequest struct {
 	ctx            context.Context
 	ApiService     *ContainerCustomDomainAPIService
 	containerId    string
 	customDomainId string
 }
 
-func (r ApiGetContainerCustomDomainStatusRequest) Execute() (*CustomDomain, *http.Response, error) {
-	return r.ApiService.GetContainerCustomDomainStatusExecute(r)
+func (r ApiGetContainerCustomDomainRequest) Execute() (*CustomDomain, *http.Response, error) {
+	return r.ApiService.GetContainerCustomDomainExecute(r)
 }
 
 /*
-GetContainerCustomDomainStatus Get Custom Domain status
+GetContainerCustomDomain Get a container custom domain
+
+Get a custom domain attached to a container.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param containerId Container ID
 	@param customDomainId Custom Domain ID
-	@return ApiGetContainerCustomDomainStatusRequest
+	@return ApiGetContainerCustomDomainRequest
 */
-func (a *ContainerCustomDomainAPIService) GetContainerCustomDomainStatus(ctx context.Context, containerId string, customDomainId string) ApiGetContainerCustomDomainStatusRequest {
-	return ApiGetContainerCustomDomainStatusRequest{
+func (a *ContainerCustomDomainAPIService) GetContainerCustomDomain(ctx context.Context, containerId string, customDomainId string) ApiGetContainerCustomDomainRequest {
+	return ApiGetContainerCustomDomainRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		containerId:    containerId,
@@ -536,7 +538,7 @@ func (a *ContainerCustomDomainAPIService) GetContainerCustomDomainStatus(ctx con
 // Execute executes the request
 //
 //	@return CustomDomain
-func (a *ContainerCustomDomainAPIService) GetContainerCustomDomainStatusExecute(r ApiGetContainerCustomDomainStatusRequest) (*CustomDomain, *http.Response, error) {
+func (a *ContainerCustomDomainAPIService) GetContainerCustomDomainExecute(r ApiGetContainerCustomDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -544,12 +546,12 @@ func (a *ContainerCustomDomainAPIService) GetContainerCustomDomainStatusExecute(
 		localVarReturnValue *CustomDomain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerCustomDomainAPIService.GetContainerCustomDomainStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerCustomDomainAPIService.GetContainerCustomDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/container/{containerId}/customDomain/{customDomainId}/status"
+	localVarPath := localBasePath + "/container/{containerId}/customDomain/{customDomainId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"customDomainId"+"}", url.PathEscape(parameterValueToString(r.customDomainId, "customDomainId")), -1)
 

@@ -28,8 +28,8 @@ type BlueprintCreateRequest struct {
 	// Icon URL for the service
 	Icon string `json:"icon"`
 	// Variable overrides for the blueprint
-	Variables            []BlueprintVariableRequest `json:"variables,omitempty"`
-	SpecOverrides        *BlueprintSpecOverrides    `json:"spec_overrides,omitempty"`
+	Variables            []BlueprintVariableRequest     `json:"variables,omitempty"`
+	SpecOverrides        NullableBlueprintSpecOverrides `json:"spec_overrides,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -159,36 +159,47 @@ func (o *BlueprintCreateRequest) SetVariables(v []BlueprintVariableRequest) {
 	o.Variables = v
 }
 
-// GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise.
+// GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BlueprintCreateRequest) GetSpecOverrides() BlueprintSpecOverrides {
-	if o == nil || IsNil(o.SpecOverrides) {
+	if o == nil || IsNil(o.SpecOverrides.Get()) {
 		var ret BlueprintSpecOverrides
 		return ret
 	}
-	return *o.SpecOverrides
+	return *o.SpecOverrides.Get()
 }
 
 // GetSpecOverridesOk returns a tuple with the SpecOverrides field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *BlueprintCreateRequest) GetSpecOverridesOk() (*BlueprintSpecOverrides, bool) {
-	if o == nil || IsNil(o.SpecOverrides) {
+	if o == nil {
 		return nil, false
 	}
-	return o.SpecOverrides, true
+	return o.SpecOverrides.Get(), o.SpecOverrides.IsSet()
 }
 
 // HasSpecOverrides returns a boolean if a field has been set.
 func (o *BlueprintCreateRequest) HasSpecOverrides() bool {
-	if o != nil && !IsNil(o.SpecOverrides) {
+	if o != nil && o.SpecOverrides.IsSet() {
 		return true
 	}
 
 	return false
 }
 
-// SetSpecOverrides gets a reference to the given BlueprintSpecOverrides and assigns it to the SpecOverrides field.
+// SetSpecOverrides gets a reference to the given NullableBlueprintSpecOverrides and assigns it to the SpecOverrides field.
 func (o *BlueprintCreateRequest) SetSpecOverrides(v BlueprintSpecOverrides) {
-	o.SpecOverrides = &v
+	o.SpecOverrides.Set(&v)
+}
+
+// SetSpecOverridesNil sets the value for SpecOverrides to be an explicit nil
+func (o *BlueprintCreateRequest) SetSpecOverridesNil() {
+	o.SpecOverrides.Set(nil)
+}
+
+// UnsetSpecOverrides ensures that no value is present for SpecOverrides, not even an explicit nil
+func (o *BlueprintCreateRequest) UnsetSpecOverrides() {
+	o.SpecOverrides.Unset()
 }
 
 func (o BlueprintCreateRequest) MarshalJSON() ([]byte, error) {
@@ -207,8 +218,8 @@ func (o BlueprintCreateRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Variables) {
 		toSerialize["variables"] = o.Variables
 	}
-	if !IsNil(o.SpecOverrides) {
-		toSerialize["spec_overrides"] = o.SpecOverrides
+	if o.SpecOverrides.IsSet() {
+		toSerialize["spec_overrides"] = o.SpecOverrides.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TargetType** | [**AlertTargetType**](AlertTargetType.md) |  | 
 **TargetId** | **string** |  | 
-**Service** | Pointer to [**ServiceLightResponse**](ServiceLightResponse.md) |  | [optional] 
+**Service** | Pointer to [**ServiceLightResponse**](ServiceLightResponse.md) | Service details when target_type is APPLICATION, CONTAINER, JOB, CRONJOB, HELM or TERRAFORM | [optional] 
 
 ## Methods
 

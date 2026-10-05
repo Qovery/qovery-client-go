@@ -20,12 +20,12 @@ Method | HTTP request | Description
 [**GetClusterKubernetesEvents**](ClustersAPI.md#GetClusterKubernetesEvents) | **Get** /cluster/{clusterId}/events | List Cluster Kubernetes Events
 [**GetClusterLogs**](ClustersAPI.md#GetClusterLogs) | **Get** /cluster/{clusterId}/logs | Fetch cluster logs
 [**GetClusterMetrics**](ClustersAPI.md#GetClusterMetrics) | **Get** /cluster/{clusterId}/metrics | Fetch cluster metrics
-[**GetClusterReadinessStatus**](ClustersAPI.md#GetClusterReadinessStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/isReady | Know if a cluster is ready to be deployed or not
 [**GetClusterStatus**](ClustersAPI.md#GetClusterStatus) | **Get** /organization/{organizationId}/cluster/{clusterId}/status | Get cluster status
 [**GetDefaultClusterAdvancedSettings**](ClustersAPI.md#GetDefaultClusterAdvancedSettings) | **Get** /defaultClusterAdvancedSettings | List default cluster advanced settings
 [**GetEksAnywhereClusterJwt**](ClustersAPI.md#GetEksAnywhereClusterJwt) | **Get** /organization/{organizationId}/cluster/{clusterId}/eks-anywhere/jwt | Get latest EKS Anywhere cluster JWT
 [**GetEnvironmentsByClusterId**](ClustersAPI.md#GetEnvironmentsByClusterId) | **Get** /cluster/{clusterId}/environments | List environments services by cluster id
 [**GetInstallationHelmValues**](ClustersAPI.md#GetInstallationHelmValues) | **Get** /organization/{organizationId}/cluster/{clusterId}/installationHelmValues | Get cluster helm values for self managed installation
+[**GetLatestClusterFailureContext**](ClustersAPI.md#GetLatestClusterFailureContext) | **Get** /cluster/{clusterId}/clusterFailureContext/latest | Get the latest cluster failure context
 [**GetOrganizationCloudProviderInfo**](ClustersAPI.md#GetOrganizationCloudProviderInfo) | **Get** /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo | Get cluster cloud provider info and credentials
 [**GetOrganizationClusterStatus**](ClustersAPI.md#GetOrganizationClusterStatus) | **Get** /organization/{organizationId}/cluster/status | List all clusters statuses
 [**GetRoutingTable**](ClustersAPI.md#GetRoutingTable) | **Get** /organization/{organizationId}/cluster/{clusterId}/routingTable | Get routing table
@@ -1264,77 +1264,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
-## GetClusterReadinessStatus
-
-> ClusterReadinessStatus GetClusterReadinessStatus(ctx, organizationId, clusterId).Execute()
-
-Know if a cluster is ready to be deployed or not
-
-### Example
-
-```go
-package main
-
-import (
-	"context"
-	"fmt"
-	"os"
-	openapiclient "github.com/qovery/qovery-client-go"
-)
-
-func main() {
-	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
-	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-
-	configuration := openapiclient.NewConfiguration()
-	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.ClustersAPI.GetClusterReadinessStatus(context.Background(), organizationId, clusterId).Execute()
-	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetClusterReadinessStatus``: %v\n", err)
-		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-	}
-	// response from `GetClusterReadinessStatus`: ClusterReadinessStatus
-	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetClusterReadinessStatus`: %v\n", resp)
-}
-```
-
-### Path Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-**organizationId** | **string** | Organization ID | 
-**clusterId** | **string** | Cluster ID | 
-
-### Other Parameters
-
-Other parameters are passed through a pointer to a apiGetClusterReadinessStatusRequest struct via the builder pattern
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
-
-### Return type
-
-[**ClusterReadinessStatus**](ClusterReadinessStatus.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../README.md#documentation-for-models)
-[[Back to README]](../README.md)
-
-
 ## GetClusterStatus
 
 > ClusterStatus GetClusterStatus(ctx, organizationId, clusterId).Execute()
@@ -1673,6 +1602,76 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/x-yaml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetLatestClusterFailureContext
+
+> ClusterFailureContextResponse GetLatestClusterFailureContext(ctx, clusterId).Execute()
+
+Get the latest cluster failure context
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.ClustersAPI.GetLatestClusterFailureContext(context.Background(), clusterId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `ClustersAPI.GetLatestClusterFailureContext``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetLatestClusterFailureContext`: ClusterFailureContextResponse
+	fmt.Fprintf(os.Stdout, "Response from `ClustersAPI.GetLatestClusterFailureContext`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**clusterId** | **string** | Cluster ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetLatestClusterFailureContextRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**ClusterFailureContextResponse**](ClusterFailureContextResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)
@@ -2706,7 +2705,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterKarpenterPrivateSubnetIdsPutRequest := *openapiclient.NewClusterKarpenterPrivateSubnetIdsPutRequest() // ClusterKarpenterPrivateSubnetIdsPutRequest |  (optional)
+	clusterKarpenterPrivateSubnetIdsPutRequest := *openapiclient.NewClusterKarpenterPrivateSubnetIdsPutRequest([]string{"EksPrivateSubnetsZoneAIds_example"}, []string{"EksPrivateSubnetsZoneBIds_example"}, []string{"EksPrivateSubnetsZoneCIds_example"}) // ClusterKarpenterPrivateSubnetIdsPutRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

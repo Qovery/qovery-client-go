@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **Storage** | Pointer to [**[]ServiceStorageStorageInner**](ServiceStorageStorageInner.md) |  | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
-**RegistryId** | Pointer to **string** | tag of the image container | [optional] 
 **Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
@@ -185,31 +184,6 @@ and a boolean to check if the value has been set.
 
 SetTag sets Tag field to given value.
 
-
-### GetRegistryId
-
-`func (o *ContainerResponse) GetRegistryId() string`
-
-GetRegistryId returns the RegistryId field if non-nil, zero value otherwise.
-
-### GetRegistryIdOk
-
-`func (o *ContainerResponse) GetRegistryIdOk() (*string, bool)`
-
-GetRegistryIdOk returns a tuple with the RegistryId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegistryId
-
-`func (o *ContainerResponse) SetRegistryId(v string)`
-
-SetRegistryId sets RegistryId field to given value.
-
-### HasRegistryId
-
-`func (o *ContainerResponse) HasRegistryId() bool`
-
-HasRegistryId returns a boolean if a field has been set.
 
 ### GetRegistry
 

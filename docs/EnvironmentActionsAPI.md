@@ -10,8 +10,10 @@ Method | HTTP request | Description
 [**DeleteSelectedServices**](EnvironmentActionsAPI.md#DeleteSelectedServices) | **Post** /environment/{environmentId}/service/delete | Delete services
 [**DeployAllServices**](EnvironmentActionsAPI.md#DeployAllServices) | **Post** /environment/{environmentId}/service/deploy | Deploy services
 [**DeployEnvironment**](EnvironmentActionsAPI.md#DeployEnvironment) | **Post** /environment/{environmentId}/deploy | Deploy environment
+[**MoveEnvironmentToProject**](EnvironmentActionsAPI.md#MoveEnvironmentToProject) | **Post** /environment/{environmentId}/moveToProject/{projectId} | Move environment to another project and start it
 [**RebootServices**](EnvironmentActionsAPI.md#RebootServices) | **Post** /environment/{environmentId}/service/restart-service | Reboot services
 [**RedeployEnvironment**](EnvironmentActionsAPI.md#RedeployEnvironment) | **Post** /environment/{environmentId}/redeploy | Redeploy environment
+[**RestartEnvironment**](EnvironmentActionsAPI.md#RestartEnvironment) | **Post** /environment/{environmentId}/restart | Restart environment
 [**StopEnvironment**](EnvironmentActionsAPI.md#StopEnvironment) | **Post** /environment/{environmentId}/stop | Stop environment
 [**StopSelectedServices**](EnvironmentActionsAPI.md#StopSelectedServices) | **Post** /environment/{environmentId}/service/stop | Stop services
 [**UninstallEnvironment**](EnvironmentActionsAPI.md#UninstallEnvironment) | **Post** /environment/{environmentId}/uninstall | Uninstall environment
@@ -447,6 +449,77 @@ Name | Type | Description  | Notes
 [[Back to README]](../README.md)
 
 
+## MoveEnvironmentToProject
+
+> MoveEnvironmentToProject(ctx, environmentId, projectId).Execute()
+
+Move environment to another project and start it
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+	projectId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Project ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnvironmentActionsAPI.MoveEnvironmentToProject(context.Background(), environmentId, projectId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.MoveEnvironmentToProject``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+**projectId** | **string** | Project ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiMoveEnvironmentToProjectRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## RebootServices
 
 > Status RebootServices(ctx, environmentId).RebootServicesRequest(rebootServicesRequest).Execute()
@@ -521,7 +594,7 @@ Name | Type | Description  | Notes
 
 ## RedeployEnvironment
 
-> EnvironmentStatus RedeployEnvironment(ctx, environmentId).Execute()
+> RedeployEnvironment(ctx, environmentId).Execute()
 
 Redeploy environment
 
@@ -542,13 +615,11 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
+	r, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.RedeployEnvironment``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `RedeployEnvironment`: EnvironmentStatus
-	fmt.Fprintf(os.Stdout, "Response from `EnvironmentActionsAPI.RedeployEnvironment`: %v\n", resp)
 }
 ```
 
@@ -571,7 +642,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EnvironmentStatus**](EnvironmentStatus.md)
+ (empty response body)
 
 ### Authorization
 
@@ -580,7 +651,75 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: Not defined
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## RestartEnvironment
+
+> RestartEnvironment(ctx, environmentId).Execute()
+
+Restart environment
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.EnvironmentActionsAPI.RestartEnvironment(context.Background(), environmentId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentActionsAPI.RestartEnvironment``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**environmentId** | **string** | Environment ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiRestartEnvironmentRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

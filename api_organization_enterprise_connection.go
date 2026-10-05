@@ -23,6 +23,146 @@ import (
 // OrganizationEnterpriseConnectionAPIService OrganizationEnterpriseConnectionAPI service
 type OrganizationEnterpriseConnectionAPIService service
 
+type ApiGetEnterpriseConnectionRolesRequest struct {
+	ctx                        context.Context
+	ApiService                 *OrganizationEnterpriseConnectionAPIService
+	xQoveryAuth0PostLoginToken *string
+	connectionName             *string
+	federatedGroups            *string
+	userSub                    *string
+}
+
+func (r ApiGetEnterpriseConnectionRolesRequest) XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken string) ApiGetEnterpriseConnectionRolesRequest {
+	r.xQoveryAuth0PostLoginToken = &xQoveryAuth0PostLoginToken
+	return r
+}
+
+func (r ApiGetEnterpriseConnectionRolesRequest) ConnectionName(connectionName string) ApiGetEnterpriseConnectionRolesRequest {
+	r.connectionName = &connectionName
+	return r
+}
+
+func (r ApiGetEnterpriseConnectionRolesRequest) FederatedGroups(federatedGroups string) ApiGetEnterpriseConnectionRolesRequest {
+	r.federatedGroups = &federatedGroups
+	return r
+}
+
+func (r ApiGetEnterpriseConnectionRolesRequest) UserSub(userSub string) ApiGetEnterpriseConnectionRolesRequest {
+	r.userSub = &userSub
+	return r
+}
+
+func (r ApiGetEnterpriseConnectionRolesRequest) Execute() (*EnterpriseConnectionAccessList, *http.Response, error) {
+	return r.ApiService.GetEnterpriseConnectionRolesExecute(r)
+}
+
+/*
+GetEnterpriseConnectionRoles Resolve enterprise connection roles
+
+Resolve organization access for an Auth0 post-login action.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiGetEnterpriseConnectionRolesRequest
+*/
+func (a *OrganizationEnterpriseConnectionAPIService) GetEnterpriseConnectionRoles(ctx context.Context) ApiGetEnterpriseConnectionRolesRequest {
+	return ApiGetEnterpriseConnectionRolesRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return EnterpriseConnectionAccessList
+func (a *OrganizationEnterpriseConnectionAPIService) GetEnterpriseConnectionRolesExecute(r ApiGetEnterpriseConnectionRolesRequest) (*EnterpriseConnectionAccessList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *EnterpriseConnectionAccessList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEnterpriseConnectionAPIService.GetEnterpriseConnectionRoles")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/account/enterpriseconnection/roles"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xQoveryAuth0PostLoginToken == nil {
+		return localVarReturnValue, nil, reportError("xQoveryAuth0PostLoginToken is required and must be specified")
+	}
+	if r.connectionName == nil {
+		return localVarReturnValue, nil, reportError("connectionName is required and must be specified")
+	}
+	if r.federatedGroups == nil {
+		return localVarReturnValue, nil, reportError("federatedGroups is required and must be specified")
+	}
+	if r.userSub == nil {
+		return localVarReturnValue, nil, reportError("userSub is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "connectionName", r.connectionName, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "federatedGroups", r.federatedGroups, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "userSub", r.userSub, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Qovery-Auth0-Post-Login-Token", r.xQoveryAuth0PostLoginToken, "")
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiGetOrganizationEnterpriseConnectionRequest struct {
 	ctx            context.Context
 	ApiService     *OrganizationEnterpriseConnectionAPIService
@@ -257,6 +397,115 @@ func (a *OrganizationEnterpriseConnectionAPIService) ListOrganizationEnterpriseC
 	}
 
 	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiNotifyEnterpriseMemberAccessUpdatedRequest struct {
+	ctx                                           context.Context
+	ApiService                                    *OrganizationEnterpriseConnectionAPIService
+	xQoveryAuth0PostLoginToken                    *string
+	enterpriseConnectionMemberAccessUpdateRequest *EnterpriseConnectionMemberAccessUpdateRequest
+}
+
+func (r ApiNotifyEnterpriseMemberAccessUpdatedRequest) XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken string) ApiNotifyEnterpriseMemberAccessUpdatedRequest {
+	r.xQoveryAuth0PostLoginToken = &xQoveryAuth0PostLoginToken
+	return r
+}
+
+func (r ApiNotifyEnterpriseMemberAccessUpdatedRequest) EnterpriseConnectionMemberAccessUpdateRequest(enterpriseConnectionMemberAccessUpdateRequest EnterpriseConnectionMemberAccessUpdateRequest) ApiNotifyEnterpriseMemberAccessUpdatedRequest {
+	r.enterpriseConnectionMemberAccessUpdateRequest = &enterpriseConnectionMemberAccessUpdateRequest
+	return r
+}
+
+func (r ApiNotifyEnterpriseMemberAccessUpdatedRequest) Execute() (*http.Response, error) {
+	return r.ApiService.NotifyEnterpriseMemberAccessUpdatedExecute(r)
+}
+
+/*
+NotifyEnterpriseMemberAccessUpdated Notify enterprise member access changes
+
+Notify q-core of member access changes from an Auth0 post-login action.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiNotifyEnterpriseMemberAccessUpdatedRequest
+*/
+func (a *OrganizationEnterpriseConnectionAPIService) NotifyEnterpriseMemberAccessUpdated(ctx context.Context) ApiNotifyEnterpriseMemberAccessUpdatedRequest {
+	return ApiNotifyEnterpriseMemberAccessUpdatedRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+func (a *OrganizationEnterpriseConnectionAPIService) NotifyEnterpriseMemberAccessUpdatedExecute(r ApiNotifyEnterpriseMemberAccessUpdatedRequest) (*http.Response, error) {
+	var (
+		localVarHTTPMethod = http.MethodPost
+		localVarPostBody   interface{}
+		formFiles          []formFile
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "OrganizationEnterpriseConnectionAPIService.NotifyEnterpriseMemberAccessUpdated")
+	if err != nil {
+		return nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/account/enterpriseconnection/notifyMemberAccessUpdated"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.xQoveryAuth0PostLoginToken == nil {
+		return nil, reportError("xQoveryAuth0PostLoginToken is required and must be specified")
+	}
+	if r.enterpriseConnectionMemberAccessUpdateRequest == nil {
+		return nil, reportError("enterpriseConnectionMemberAccessUpdateRequest is required and must be specified")
+	}
+
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{"application/json"}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	parameterAddToHeaderOrQuery(localVarHeaderParams, "X-Qovery-Auth0-Post-Login-Token", r.xQoveryAuth0PostLoginToken, "")
+	// body params
+	localVarPostBody = r.enterpriseConnectionMemberAccessUpdateRequest
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarHTTPResponse, newErr
+	}
+
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdateOrganizationEnterpriseConnectionRequest struct {

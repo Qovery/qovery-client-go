@@ -60,6 +60,7 @@ type ApplicationEditRequest struct {
 	CpuArchitecture      NullableCpuArchitectureEnum `json:"cpu_architecture,omitempty"`
 	Autoscaling          *AutoscalingPolicyRequest   `json:"autoscaling,omitempty"`
 	BuildSettings        *BuildSettings              `json:"build_settings,omitempty"`
+	StartupTimeout       *int32                      `json:"startup_timeout,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -86,6 +87,8 @@ func NewApplicationEditRequest(healthchecks Healthcheck) *ApplicationEditRequest
 	this.Healthchecks = healthchecks
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
+	var startupTimeout int32 = 30
+	this.StartupTimeout = &startupTimeout
 	return &this
 }
 
@@ -108,6 +111,8 @@ func NewApplicationEditRequestWithDefaults() *ApplicationEditRequest {
 	this.MaxRunningInstances = &maxRunningInstances
 	var autoPreview bool = true
 	this.AutoPreview = &autoPreview
+	var startupTimeout int32 = 30
+	this.StartupTimeout = &startupTimeout
 	return &this
 }
 
@@ -947,6 +952,38 @@ func (o *ApplicationEditRequest) SetBuildSettings(v BuildSettings) {
 	o.BuildSettings = &v
 }
 
+// GetStartupTimeout returns the StartupTimeout field value if set, zero value otherwise.
+func (o *ApplicationEditRequest) GetStartupTimeout() int32 {
+	if o == nil || IsNil(o.StartupTimeout) {
+		var ret int32
+		return ret
+	}
+	return *o.StartupTimeout
+}
+
+// GetStartupTimeoutOk returns a tuple with the StartupTimeout field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ApplicationEditRequest) GetStartupTimeoutOk() (*int32, bool) {
+	if o == nil || IsNil(o.StartupTimeout) {
+		return nil, false
+	}
+	return o.StartupTimeout, true
+}
+
+// HasStartupTimeout returns a boolean if a field has been set.
+func (o *ApplicationEditRequest) HasStartupTimeout() bool {
+	if o != nil && !IsNil(o.StartupTimeout) {
+		return true
+	}
+
+	return false
+}
+
+// SetStartupTimeout gets a reference to the given int32 and assigns it to the StartupTimeout field.
+func (o *ApplicationEditRequest) SetStartupTimeout(v int32) {
+	o.StartupTimeout = &v
+}
+
 func (o ApplicationEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1030,6 +1067,9 @@ func (o ApplicationEditRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildSettings) {
 		toSerialize["build_settings"] = o.BuildSettings
 	}
+	if !IsNil(o.StartupTimeout) {
+		toSerialize["startup_timeout"] = o.StartupTimeout
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1098,6 +1138,7 @@ func (o *ApplicationEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cpu_architecture")
 		delete(additionalProperties, "autoscaling")
 		delete(additionalProperties, "build_settings")
+		delete(additionalProperties, "startup_timeout")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -29,9 +29,7 @@ type ContainerResponse struct {
 	// The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
 	ImageName string `json:"image_name"`
 	// tag of the image container
-	Tag string `json:"tag"`
-	// tag of the image container
-	RegistryId  *string                                  `json:"registry_id,omitempty"`
+	Tag         string                                   `json:"tag"`
 	Registry    ContainerRegistryProviderDetailsResponse `json:"registry"`
 	Environment ReferenceObject                          `json:"environment"`
 	// Maximum cpu that can be allocated to the container based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -279,38 +277,6 @@ func (o *ContainerResponse) GetTagOk() (*string, bool) {
 // SetTag sets field value
 func (o *ContainerResponse) SetTag(v string) {
 	o.Tag = v
-}
-
-// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
-func (o *ContainerResponse) GetRegistryId() string {
-	if o == nil || IsNil(o.RegistryId) {
-		var ret string
-		return ret
-	}
-	return *o.RegistryId
-}
-
-// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerResponse) GetRegistryIdOk() (*string, bool) {
-	if o == nil || IsNil(o.RegistryId) {
-		return nil, false
-	}
-	return o.RegistryId, true
-}
-
-// HasRegistryId returns a boolean if a field has been set.
-func (o *ContainerResponse) HasRegistryId() bool {
-	if o != nil && !IsNil(o.RegistryId) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
-func (o *ContainerResponse) SetRegistryId(v string) {
-	o.RegistryId = &v
 }
 
 // GetRegistry returns the Registry field value
@@ -1024,9 +990,6 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	}
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["tag"] = o.Tag
-	if !IsNil(o.RegistryId) {
-		toSerialize["registry_id"] = o.RegistryId
-	}
 	toSerialize["registry"] = o.Registry
 	toSerialize["environment"] = o.Environment
 	toSerialize["maximum_cpu"] = o.MaximumCpu
@@ -1139,7 +1102,6 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "storage")
 		delete(additionalProperties, "image_name")
 		delete(additionalProperties, "tag")
-		delete(additionalProperties, "registry_id")
 		delete(additionalProperties, "registry")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "maximum_cpu")

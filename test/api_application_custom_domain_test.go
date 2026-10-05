@@ -79,14 +79,14 @@ func Test_qovery_ApplicationCustomDomainAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationCustomDomainAPIService GetCustomDomainStatus", func(t *testing.T) {
+	t.Run("Test ApplicationCustomDomainAPIService GetApplicationCustomDomain", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var applicationId string
 		var customDomainId string
 
-		resp, httpRes, err := apiClient.ApplicationCustomDomainAPI.GetCustomDomainStatus(context.Background(), applicationId, customDomainId).Execute()
+		resp, httpRes, err := apiClient.ApplicationCustomDomainAPI.GetApplicationCustomDomain(context.Background(), applicationId, customDomainId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

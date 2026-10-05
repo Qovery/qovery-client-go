@@ -24,9 +24,7 @@ type ContainerSource struct {
 	// The image name pattern differs according to chosen container registry provider: * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
 	ImageName string `json:"image_name"`
 	// tag of the image container
-	Tag string `json:"tag"`
-	// tag of the image container
-	RegistryId           *string                                  `json:"registry_id,omitempty"`
+	Tag                  string                                   `json:"tag"`
 	Registry             ContainerRegistryProviderDetailsResponse `json:"registry"`
 	AdditionalProperties map[string]interface{}
 }
@@ -101,38 +99,6 @@ func (o *ContainerSource) SetTag(v string) {
 	o.Tag = v
 }
 
-// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
-func (o *ContainerSource) GetRegistryId() string {
-	if o == nil || IsNil(o.RegistryId) {
-		var ret string
-		return ret
-	}
-	return *o.RegistryId
-}
-
-// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *ContainerSource) GetRegistryIdOk() (*string, bool) {
-	if o == nil || IsNil(o.RegistryId) {
-		return nil, false
-	}
-	return o.RegistryId, true
-}
-
-// HasRegistryId returns a boolean if a field has been set.
-func (o *ContainerSource) HasRegistryId() bool {
-	if o != nil && !IsNil(o.RegistryId) {
-		return true
-	}
-
-	return false
-}
-
-// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
-func (o *ContainerSource) SetRegistryId(v string) {
-	o.RegistryId = &v
-}
-
 // GetRegistry returns the Registry field value
 func (o *ContainerSource) GetRegistry() ContainerRegistryProviderDetailsResponse {
 	if o == nil {
@@ -169,9 +135,6 @@ func (o ContainerSource) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["image_name"] = o.ImageName
 	toSerialize["tag"] = o.Tag
-	if !IsNil(o.RegistryId) {
-		toSerialize["registry_id"] = o.RegistryId
-	}
 	toSerialize["registry"] = o.Registry
 
 	for key, value := range o.AdditionalProperties {
@@ -220,7 +183,6 @@ func (o *ContainerSource) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "image_name")
 		delete(additionalProperties, "tag")
-		delete(additionalProperties, "registry_id")
 		delete(additionalProperties, "registry")
 		o.AdditionalProperties = additionalProperties
 	}

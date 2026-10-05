@@ -19,24 +19,16 @@ import (
 // checks if the PlatformComponentInputRequirementResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &PlatformComponentInputRequirementResponse{}
 
-// PlatformComponentInputRequirementResponse A catalog field the cluster must provide for the selected configuration: the scalar field descriptor extended with its resolution scope and readiness. Input requirements cannot be object or array descriptors and are never read-only.
+// PlatformComponentInputRequirementResponse A scalar catalog field the cluster must provide for the selected configuration.
 type PlatformComponentInputRequirementResponse struct {
-	Key string `json:"key"`
-	// Field type understood by the Console.
-	Type         string         `json:"type"`
-	Required     bool           `json:"required"`
-	DefaultValue NullableString `json:"defaultValue,omitempty"`
-	Label        string         `json:"label"`
-	Description  NullableString `json:"description,omitempty"`
-	Sensitive    bool           `json:"sensitive"`
-	// Omitted when false. A read-only field is never required or sensitive, and its defaultValue is null. Its value comes from resolvedValues in the same response, never from the client draft. Read-only fields appear only at the top level of the fields of a resolve response; catalog descriptors are never read-only.
-	ReadOnly    *bool                          `json:"readOnly,omitempty"`
-	Constraints FieldSchemaConstraintsResponse `json:"constraints"`
-	// Optional editor format for a string field, independent of its scalar type. kubernetes-resource-yaml selects a single Kubernetes YAML object editor. Unknown formats should fall back to the ordinary string editor.
-	Format *string `json:"format,omitempty"`
-	// Optional starting texts for an explicit user choice, with unique IDs within the field. Present only with format. Never apply as defaults or overwrite a saved value. The format selects the editor even when templates are absent.
-	Templates            []FieldTemplateResponse                         `json:"templates,omitempty"`
+	Key                  string                                          `json:"key"`
+	Type                 string                                          `json:"type"`
 	Scope                PlatformComponentConfigurationInputScope        `json:"scope"`
+	Label                string                                          `json:"label"`
+	Description          NullableString                                  `json:"description,omitempty"`
+	Required             bool                                            `json:"required"`
+	Sensitive            bool                                            `json:"sensitive"`
+	Constraints          FieldSchemaConstraintsResponse                  `json:"constraints"`
 	Status               PlatformComponentConfigurationRequirementStatus `json:"status"`
 	AdditionalProperties map[string]interface{}
 }
@@ -47,15 +39,15 @@ type _PlatformComponentInputRequirementResponse PlatformComponentInputRequiremen
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewPlatformComponentInputRequirementResponse(key string, type_ string, required bool, label string, sensitive bool, constraints FieldSchemaConstraintsResponse, scope PlatformComponentConfigurationInputScope, status PlatformComponentConfigurationRequirementStatus) *PlatformComponentInputRequirementResponse {
+func NewPlatformComponentInputRequirementResponse(key string, type_ string, scope PlatformComponentConfigurationInputScope, label string, required bool, sensitive bool, constraints FieldSchemaConstraintsResponse, status PlatformComponentConfigurationRequirementStatus) *PlatformComponentInputRequirementResponse {
 	this := PlatformComponentInputRequirementResponse{}
 	this.Key = key
 	this.Type = type_
-	this.Required = required
+	this.Scope = scope
 	this.Label = label
+	this.Required = required
 	this.Sensitive = sensitive
 	this.Constraints = constraints
-	this.Scope = scope
 	this.Status = status
 	return &this
 }
@@ -116,71 +108,28 @@ func (o *PlatformComponentInputRequirementResponse) SetType(v string) {
 	o.Type = v
 }
 
-// GetRequired returns the Required field value
-func (o *PlatformComponentInputRequirementResponse) GetRequired() bool {
+// GetScope returns the Scope field value
+func (o *PlatformComponentInputRequirementResponse) GetScope() PlatformComponentConfigurationInputScope {
 	if o == nil {
-		var ret bool
+		var ret PlatformComponentConfigurationInputScope
 		return ret
 	}
 
-	return o.Required
+	return o.Scope
 }
 
-// GetRequiredOk returns a tuple with the Required field value
+// GetScopeOk returns a tuple with the Scope field value
 // and a boolean to check if the value has been set.
-func (o *PlatformComponentInputRequirementResponse) GetRequiredOk() (*bool, bool) {
+func (o *PlatformComponentInputRequirementResponse) GetScopeOk() (*PlatformComponentConfigurationInputScope, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Required, true
+	return &o.Scope, true
 }
 
-// SetRequired sets field value
-func (o *PlatformComponentInputRequirementResponse) SetRequired(v bool) {
-	o.Required = v
-}
-
-// GetDefaultValue returns the DefaultValue field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *PlatformComponentInputRequirementResponse) GetDefaultValue() string {
-	if o == nil || IsNil(o.DefaultValue.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.DefaultValue.Get()
-}
-
-// GetDefaultValueOk returns a tuple with the DefaultValue field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *PlatformComponentInputRequirementResponse) GetDefaultValueOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.DefaultValue.Get(), o.DefaultValue.IsSet()
-}
-
-// HasDefaultValue returns a boolean if a field has been set.
-func (o *PlatformComponentInputRequirementResponse) HasDefaultValue() bool {
-	if o != nil && o.DefaultValue.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDefaultValue gets a reference to the given NullableString and assigns it to the DefaultValue field.
-func (o *PlatformComponentInputRequirementResponse) SetDefaultValue(v string) {
-	o.DefaultValue.Set(&v)
-}
-
-// SetDefaultValueNil sets the value for DefaultValue to be an explicit nil
-func (o *PlatformComponentInputRequirementResponse) SetDefaultValueNil() {
-	o.DefaultValue.Set(nil)
-}
-
-// UnsetDefaultValue ensures that no value is present for DefaultValue, not even an explicit nil
-func (o *PlatformComponentInputRequirementResponse) UnsetDefaultValue() {
-	o.DefaultValue.Unset()
+// SetScope sets field value
+func (o *PlatformComponentInputRequirementResponse) SetScope(v PlatformComponentConfigurationInputScope) {
+	o.Scope = v
 }
 
 // GetLabel returns the Label field value
@@ -250,6 +199,30 @@ func (o *PlatformComponentInputRequirementResponse) UnsetDescription() {
 	o.Description.Unset()
 }
 
+// GetRequired returns the Required field value
+func (o *PlatformComponentInputRequirementResponse) GetRequired() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Required
+}
+
+// GetRequiredOk returns a tuple with the Required field value
+// and a boolean to check if the value has been set.
+func (o *PlatformComponentInputRequirementResponse) GetRequiredOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Required, true
+}
+
+// SetRequired sets field value
+func (o *PlatformComponentInputRequirementResponse) SetRequired(v bool) {
+	o.Required = v
+}
+
 // GetSensitive returns the Sensitive field value
 func (o *PlatformComponentInputRequirementResponse) GetSensitive() bool {
 	if o == nil {
@@ -274,38 +247,6 @@ func (o *PlatformComponentInputRequirementResponse) SetSensitive(v bool) {
 	o.Sensitive = v
 }
 
-// GetReadOnly returns the ReadOnly field value if set, zero value otherwise.
-func (o *PlatformComponentInputRequirementResponse) GetReadOnly() bool {
-	if o == nil || IsNil(o.ReadOnly) {
-		var ret bool
-		return ret
-	}
-	return *o.ReadOnly
-}
-
-// GetReadOnlyOk returns a tuple with the ReadOnly field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PlatformComponentInputRequirementResponse) GetReadOnlyOk() (*bool, bool) {
-	if o == nil || IsNil(o.ReadOnly) {
-		return nil, false
-	}
-	return o.ReadOnly, true
-}
-
-// HasReadOnly returns a boolean if a field has been set.
-func (o *PlatformComponentInputRequirementResponse) HasReadOnly() bool {
-	if o != nil && !IsNil(o.ReadOnly) {
-		return true
-	}
-
-	return false
-}
-
-// SetReadOnly gets a reference to the given bool and assigns it to the ReadOnly field.
-func (o *PlatformComponentInputRequirementResponse) SetReadOnly(v bool) {
-	o.ReadOnly = &v
-}
-
 // GetConstraints returns the Constraints field value
 func (o *PlatformComponentInputRequirementResponse) GetConstraints() FieldSchemaConstraintsResponse {
 	if o == nil {
@@ -328,94 +269,6 @@ func (o *PlatformComponentInputRequirementResponse) GetConstraintsOk() (*FieldSc
 // SetConstraints sets field value
 func (o *PlatformComponentInputRequirementResponse) SetConstraints(v FieldSchemaConstraintsResponse) {
 	o.Constraints = v
-}
-
-// GetFormat returns the Format field value if set, zero value otherwise.
-func (o *PlatformComponentInputRequirementResponse) GetFormat() string {
-	if o == nil || IsNil(o.Format) {
-		var ret string
-		return ret
-	}
-	return *o.Format
-}
-
-// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PlatformComponentInputRequirementResponse) GetFormatOk() (*string, bool) {
-	if o == nil || IsNil(o.Format) {
-		return nil, false
-	}
-	return o.Format, true
-}
-
-// HasFormat returns a boolean if a field has been set.
-func (o *PlatformComponentInputRequirementResponse) HasFormat() bool {
-	if o != nil && !IsNil(o.Format) {
-		return true
-	}
-
-	return false
-}
-
-// SetFormat gets a reference to the given string and assigns it to the Format field.
-func (o *PlatformComponentInputRequirementResponse) SetFormat(v string) {
-	o.Format = &v
-}
-
-// GetTemplates returns the Templates field value if set, zero value otherwise.
-func (o *PlatformComponentInputRequirementResponse) GetTemplates() []FieldTemplateResponse {
-	if o == nil || IsNil(o.Templates) {
-		var ret []FieldTemplateResponse
-		return ret
-	}
-	return o.Templates
-}
-
-// GetTemplatesOk returns a tuple with the Templates field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-func (o *PlatformComponentInputRequirementResponse) GetTemplatesOk() ([]FieldTemplateResponse, bool) {
-	if o == nil || IsNil(o.Templates) {
-		return nil, false
-	}
-	return o.Templates, true
-}
-
-// HasTemplates returns a boolean if a field has been set.
-func (o *PlatformComponentInputRequirementResponse) HasTemplates() bool {
-	if o != nil && !IsNil(o.Templates) {
-		return true
-	}
-
-	return false
-}
-
-// SetTemplates gets a reference to the given []FieldTemplateResponse and assigns it to the Templates field.
-func (o *PlatformComponentInputRequirementResponse) SetTemplates(v []FieldTemplateResponse) {
-	o.Templates = v
-}
-
-// GetScope returns the Scope field value
-func (o *PlatformComponentInputRequirementResponse) GetScope() PlatformComponentConfigurationInputScope {
-	if o == nil {
-		var ret PlatformComponentConfigurationInputScope
-		return ret
-	}
-
-	return o.Scope
-}
-
-// GetScopeOk returns a tuple with the Scope field value
-// and a boolean to check if the value has been set.
-func (o *PlatformComponentInputRequirementResponse) GetScopeOk() (*PlatformComponentConfigurationInputScope, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return &o.Scope, true
-}
-
-// SetScope sets field value
-func (o *PlatformComponentInputRequirementResponse) SetScope(v PlatformComponentConfigurationInputScope) {
-	o.Scope = v
 }
 
 // GetStatus returns the Status field value
@@ -454,26 +307,14 @@ func (o PlatformComponentInputRequirementResponse) ToMap() (map[string]interface
 	toSerialize := map[string]interface{}{}
 	toSerialize["key"] = o.Key
 	toSerialize["type"] = o.Type
-	toSerialize["required"] = o.Required
-	if o.DefaultValue.IsSet() {
-		toSerialize["defaultValue"] = o.DefaultValue.Get()
-	}
+	toSerialize["scope"] = o.Scope
 	toSerialize["label"] = o.Label
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
+	toSerialize["required"] = o.Required
 	toSerialize["sensitive"] = o.Sensitive
-	if !IsNil(o.ReadOnly) {
-		toSerialize["readOnly"] = o.ReadOnly
-	}
 	toSerialize["constraints"] = o.Constraints
-	if !IsNil(o.Format) {
-		toSerialize["format"] = o.Format
-	}
-	if !IsNil(o.Templates) {
-		toSerialize["templates"] = o.Templates
-	}
-	toSerialize["scope"] = o.Scope
 	toSerialize["status"] = o.Status
 
 	for key, value := range o.AdditionalProperties {
@@ -490,11 +331,11 @@ func (o *PlatformComponentInputRequirementResponse) UnmarshalJSON(data []byte) (
 	requiredProperties := []string{
 		"key",
 		"type",
-		"required",
+		"scope",
 		"label",
+		"required",
 		"sensitive",
 		"constraints",
-		"scope",
 		"status",
 	}
 
@@ -527,16 +368,12 @@ func (o *PlatformComponentInputRequirementResponse) UnmarshalJSON(data []byte) (
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "key")
 		delete(additionalProperties, "type")
-		delete(additionalProperties, "required")
-		delete(additionalProperties, "defaultValue")
+		delete(additionalProperties, "scope")
 		delete(additionalProperties, "label")
 		delete(additionalProperties, "description")
+		delete(additionalProperties, "required")
 		delete(additionalProperties, "sensitive")
-		delete(additionalProperties, "readOnly")
 		delete(additionalProperties, "constraints")
-		delete(additionalProperties, "format")
-		delete(additionalProperties, "templates")
-		delete(additionalProperties, "scope")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}

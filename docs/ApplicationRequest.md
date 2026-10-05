@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Storage** | Pointer to [**[]ServiceStorageRequestStorageInner**](ServiceStorageRequestStorageInner.md) |  | [optional] 
 **Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
-**Description** | Pointer to **NullableString** | give a description to this application | [optional] 
+**Description** | Pointer to **string** | give a description to this application | [optional] [default to ""]
 **GitRepository** | [**ApplicationGitRepositoryRequest**](ApplicationGitRepositoryRequest.md) |  | 
 **BuildMode** | Pointer to [**BuildModeEnum**](BuildModeEnum.md) |  | [optional] [default to BUILDMODEENUM_DOCKER]
 **DockerfilePath** | Pointer to **NullableString** | The path of the associated Dockerfile. Only if you are using build_mode &#x3D; DOCKER | [optional] 
@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no application running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
-**AutoPreview** | Pointer to **bool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] [default to true]
+**AutoPreview** | Pointer to **NullableBool** | Specify if the environment preview option is activated or not for this application.   If activated, a preview environment will be automatically cloned at each pull request.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **AutoDeploy** | Pointer to **NullableBool** | Specify if the application will be automatically updated after receiving a new commit. | [optional] 
@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **CpuArchitecture** | Pointer to [**NullableCpuArchitectureEnum**](CpuArchitectureEnum.md) | CPU architecture to run this service on. If null, the cluster default architecture is used. | [optional] 
 **Autoscaling** | Pointer to [**AutoscalingPolicyRequest**](AutoscalingPolicyRequest.md) |  | [optional] 
 **BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
+**StartupTimeout** | Pointer to **int32** |  | [optional] [default to 30]
 
 ## Methods
 
@@ -144,16 +145,6 @@ SetDescription sets Description field to given value.
 
 HasDescription returns a boolean if a field has been set.
 
-### SetDescriptionNil
-
-`func (o *ApplicationRequest) SetDescriptionNil(b bool)`
-
- SetDescriptionNil sets the value for Description to be an explicit nil
-
-### UnsetDescription
-`func (o *ApplicationRequest) UnsetDescription()`
-
-UnsetDescription ensures that no value is present for Description, not even an explicit nil
 ### GetGitRepository
 
 `func (o *ApplicationRequest) GetGitRepository() ApplicationGitRepositoryRequest`
@@ -429,6 +420,16 @@ SetAutoPreview sets AutoPreview field to given value.
 
 HasAutoPreview returns a boolean if a field has been set.
 
+### SetAutoPreviewNil
+
+`func (o *ApplicationRequest) SetAutoPreviewNil(b bool)`
+
+ SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
+
+### UnsetAutoPreview
+`func (o *ApplicationRequest) UnsetAutoPreview()`
+
+UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
 ### GetArguments
 
 `func (o *ApplicationRequest) GetArguments() []string`
@@ -708,6 +709,31 @@ SetBuildSettings sets BuildSettings field to given value.
 `func (o *ApplicationRequest) HasBuildSettings() bool`
 
 HasBuildSettings returns a boolean if a field has been set.
+
+### GetStartupTimeout
+
+`func (o *ApplicationRequest) GetStartupTimeout() int32`
+
+GetStartupTimeout returns the StartupTimeout field if non-nil, zero value otherwise.
+
+### GetStartupTimeoutOk
+
+`func (o *ApplicationRequest) GetStartupTimeoutOk() (*int32, bool)`
+
+GetStartupTimeoutOk returns a tuple with the StartupTimeout field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartupTimeout
+
+`func (o *ApplicationRequest) SetStartupTimeout(v int32)`
+
+SetStartupTimeout sets StartupTimeout field to given value.
+
+### HasStartupTimeout
+
+`func (o *ApplicationRequest) HasStartupTimeout() bool`
+
+HasStartupTimeout returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

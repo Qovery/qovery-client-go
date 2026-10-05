@@ -253,21 +253,6 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ClustersAPIService GetClusterReadinessStatus", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var organizationId string
-		var clusterId string
-
-		resp, httpRes, err := apiClient.ClustersAPI.GetClusterReadinessStatus(context.Background(), organizationId, clusterId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ClustersAPIService GetClusterStatus", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -332,6 +317,20 @@ func Test_qovery_ClustersAPIService(t *testing.T) {
 		var clusterId string
 
 		resp, httpRes, err := apiClient.ClustersAPI.GetInstallationHelmValues(context.Background(), organizationId, clusterId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ClustersAPIService GetLatestClusterFailureContext", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var clusterId string
+
+		resp, httpRes, err := apiClient.ClustersAPI.GetLatestClusterFailureContext(context.Background(), clusterId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

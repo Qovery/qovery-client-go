@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ContainerDeployRequest type satisfies the MappedNullable interface at compile time
@@ -21,8 +20,9 @@ var _ MappedNullable = &ContainerDeployRequest{}
 
 // ContainerDeployRequest struct for ContainerDeployRequest
 type ContainerDeployRequest struct {
+	Id NullableString `json:"id,omitempty"`
 	// Image tag to deploy
-	ImageTag             string `json:"image_tag"`
+	ImageTag             NullableString `json:"image_tag,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -32,9 +32,8 @@ type _ContainerDeployRequest ContainerDeployRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerDeployRequest(imageTag string) *ContainerDeployRequest {
+func NewContainerDeployRequest() *ContainerDeployRequest {
 	this := ContainerDeployRequest{}
-	this.ImageTag = imageTag
 	return &this
 }
 
@@ -46,28 +45,90 @@ func NewContainerDeployRequestWithDefaults() *ContainerDeployRequest {
 	return &this
 }
 
-// GetImageTag returns the ImageTag field value
-func (o *ContainerDeployRequest) GetImageTag() string {
-	if o == nil {
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerDeployRequest) GetId() string {
+	if o == nil || IsNil(o.Id.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.ImageTag
+	return *o.Id.Get()
 }
 
-// GetImageTagOk returns a tuple with the ImageTag field value
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerDeployRequest) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Id.Get(), o.Id.IsSet()
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *ContainerDeployRequest) HasId() bool {
+	if o != nil && o.Id.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
+func (o *ContainerDeployRequest) SetId(v string) {
+	o.Id.Set(&v)
+}
+
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *ContainerDeployRequest) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *ContainerDeployRequest) UnsetId() {
+	o.Id.Unset()
+}
+
+// GetImageTag returns the ImageTag field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerDeployRequest) GetImageTag() string {
+	if o == nil || IsNil(o.ImageTag.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.ImageTag.Get()
+}
+
+// GetImageTagOk returns a tuple with the ImageTag field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ContainerDeployRequest) GetImageTagOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ImageTag, true
+	return o.ImageTag.Get(), o.ImageTag.IsSet()
 }
 
-// SetImageTag sets field value
+// HasImageTag returns a boolean if a field has been set.
+func (o *ContainerDeployRequest) HasImageTag() bool {
+	if o != nil && o.ImageTag.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetImageTag gets a reference to the given NullableString and assigns it to the ImageTag field.
 func (o *ContainerDeployRequest) SetImageTag(v string) {
-	o.ImageTag = v
+	o.ImageTag.Set(&v)
+}
+
+// SetImageTagNil sets the value for ImageTag to be an explicit nil
+func (o *ContainerDeployRequest) SetImageTagNil() {
+	o.ImageTag.Set(nil)
+}
+
+// UnsetImageTag ensures that no value is present for ImageTag, not even an explicit nil
+func (o *ContainerDeployRequest) UnsetImageTag() {
+	o.ImageTag.Unset()
 }
 
 func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
@@ -80,7 +141,12 @@ func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
 
 func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["image_tag"] = o.ImageTag
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
+	}
+	if o.ImageTag.IsSet() {
+		toSerialize["image_tag"] = o.ImageTag.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -90,27 +156,6 @@ func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ContainerDeployRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"image_tag",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varContainerDeployRequest := _ContainerDeployRequest{}
 
 	err = json.Unmarshal(data, &varContainerDeployRequest)
@@ -124,6 +169,7 @@ func (o *ContainerDeployRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "image_tag")
 		o.AdditionalProperties = additionalProperties
 	}

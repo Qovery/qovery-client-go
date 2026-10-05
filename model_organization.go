@@ -30,7 +30,6 @@ type Organization struct {
 	Description NullableString `json:"description,omitempty"`
 	Plan        PlanEnum       `json:"plan"`
 	WebsiteUrl  NullableString `json:"website_url,omitempty"`
-	Repository  NullableString `json:"repository,omitempty"`
 	LogoUrl     NullableString `json:"logo_url,omitempty"`
 	IconUrl     NullableString `json:"icon_url,omitempty"`
 	AdminEmails []string       `json:"admin_emails,omitempty"`
@@ -279,49 +278,6 @@ func (o *Organization) SetWebsiteUrlNil() {
 // UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
 func (o *Organization) UnsetWebsiteUrl() {
 	o.WebsiteUrl.Unset()
-}
-
-// GetRepository returns the Repository field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *Organization) GetRepository() string {
-	if o == nil || IsNil(o.Repository.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Repository.Get()
-}
-
-// GetRepositoryOk returns a tuple with the Repository field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *Organization) GetRepositoryOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Repository.Get(), o.Repository.IsSet()
-}
-
-// HasRepository returns a boolean if a field has been set.
-func (o *Organization) HasRepository() bool {
-	if o != nil && o.Repository.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetRepository gets a reference to the given NullableString and assigns it to the Repository field.
-func (o *Organization) SetRepository(v string) {
-	o.Repository.Set(&v)
-}
-
-// SetRepositoryNil sets the value for Repository to be an explicit nil
-func (o *Organization) SetRepositoryNil() {
-	o.Repository.Set(nil)
-}
-
-// UnsetRepository ensures that no value is present for Repository, not even an explicit nil
-func (o *Organization) UnsetRepository() {
-	o.Repository.Unset()
 }
 
 // GetLogoUrl returns the LogoUrl field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -605,9 +561,6 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if o.WebsiteUrl.IsSet() {
 		toSerialize["website_url"] = o.WebsiteUrl.Get()
 	}
-	if o.Repository.IsSet() {
-		toSerialize["repository"] = o.Repository.Get()
-	}
 	if o.LogoUrl.IsSet() {
 		toSerialize["logo_url"] = o.LogoUrl.Get()
 	}
@@ -682,7 +635,6 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "plan")
 		delete(additionalProperties, "website_url")
-		delete(additionalProperties, "repository")
 		delete(additionalProperties, "logo_url")
 		delete(additionalProperties, "icon_url")
 		delete(additionalProperties, "admin_emails")

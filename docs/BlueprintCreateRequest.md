@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | Catalog tag identifying the blueprint version | 
 **Icon** | **string** | Icon URL for the service | 
 **Variables** | Pointer to [**[]BlueprintVariableRequest**](BlueprintVariableRequest.md) | Variable overrides for the blueprint | [optional] [default to []]
-**SpecOverrides** | Pointer to [**BlueprintSpecOverrides**](BlueprintSpecOverrides.md) |  | [optional] 
+**SpecOverrides** | Pointer to [**NullableBlueprintSpecOverrides**](BlueprintSpecOverrides.md) |  | [optional] 
 
 ## Methods
 
@@ -139,6 +139,16 @@ SetSpecOverrides sets SpecOverrides field to given value.
 
 HasSpecOverrides returns a boolean if a field has been set.
 
+### SetSpecOverridesNil
+
+`func (o *BlueprintCreateRequest) SetSpecOverridesNil(b bool)`
+
+ SetSpecOverridesNil sets the value for SpecOverrides to be an explicit nil
+
+### UnsetSpecOverrides
+`func (o *BlueprintCreateRequest) UnsetSpecOverrides()`
+
+UnsetSpecOverrides ensures that no value is present for SpecOverrides, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

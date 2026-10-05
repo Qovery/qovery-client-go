@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **MinRunningInstances** | **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [default to 1]
 **MaxRunningInstances** | **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
-**AutoPreview** | **bool** | Indicates if the &#39;environment preview option&#39; is enabled.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | 
+**AutoPreview** | **bool** |  | 
 **Ports** | Pointer to [**[]HelmResponseAllOfPorts**](HelmResponseAllOfPorts.md) |  | [optional] 
 **Arguments** | **[]string** | The extra arguments to pass to helm | 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
@@ -39,7 +39,6 @@ Name | Type | Description | Notes
 **Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 
 **ImageName** | **string** | The image name pattern differs according to chosen container registry provider: * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
 **Tag** | **string** | tag of the image container | 
-**RegistryId** | Pointer to **string** | tag of the image container | [optional] 
 **Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 **MaximumGpu** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
 **Type** | [**DatabaseTypeEnum**](DatabaseTypeEnum.md) |  | 
@@ -56,6 +55,7 @@ Name | Type | Description | Notes
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
+**BuildSettingsEditable** | Pointer to **bool** |  | [optional] 
 **AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **TerraformVariablesSource** | [**TerraformVariablesSourceResponse**](TerraformVariablesSourceResponse.md) |  | 
@@ -923,31 +923,6 @@ and a boolean to check if the value has been set.
 SetTag sets Tag field to given value.
 
 
-### GetRegistryId
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetRegistryId() string`
-
-GetRegistryId returns the RegistryId field if non-nil, zero value otherwise.
-
-### GetRegistryIdOk
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetRegistryIdOk() (*string, bool)`
-
-GetRegistryIdOk returns a tuple with the RegistryId field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRegistryId
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetRegistryId(v string)`
-
-SetRegistryId sets RegistryId field to given value.
-
-### HasRegistryId
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasRegistryId() bool`
-
-HasRegistryId returns a boolean if a field has been set.
-
 ### GetRegistry
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetRegistry() ContainerRegistryProviderDetailsResponse`
@@ -1323,6 +1298,31 @@ HasBlueprintId returns a boolean if a field has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetBlueprintId()`
 
 UnsetBlueprintId ensures that no value is present for BlueprintId, not even an explicit nil
+### GetBuildSettingsEditable
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBuildSettingsEditable() bool`
+
+GetBuildSettingsEditable returns the BuildSettingsEditable field if non-nil, zero value otherwise.
+
+### GetBuildSettingsEditableOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBuildSettingsEditableOk() (*bool, bool)`
+
+GetBuildSettingsEditableOk returns a tuple with the BuildSettingsEditable field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettingsEditable
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetBuildSettingsEditable(v bool)`
+
+SetBuildSettingsEditable sets BuildSettingsEditable field to given value.
+
+### HasBuildSettingsEditable
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasBuildSettingsEditable() bool`
+
+HasBuildSettingsEditable returns a boolean if a field has been set.
+
 ### GetAutoDeployConfig
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetAutoDeployConfig() TerraformAutoDeployConfig`

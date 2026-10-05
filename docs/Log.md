@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **CreatedAt** | **time.Time** |  | 
 **Message** | **string** |  | 
 **PodName** | Pointer to **string** |  | [optional] 
-**Version** | Pointer to **string** |  | [optional] 
+**ApplicationCommitId** | Pointer to **string** |  | [optional] 
 
 ## Methods
 
@@ -114,30 +114,30 @@ SetPodName sets PodName field to given value.
 
 HasPodName returns a boolean if a field has been set.
 
-### GetVersion
+### GetApplicationCommitId
 
-`func (o *Log) GetVersion() string`
+`func (o *Log) GetApplicationCommitId() string`
 
-GetVersion returns the Version field if non-nil, zero value otherwise.
+GetApplicationCommitId returns the ApplicationCommitId field if non-nil, zero value otherwise.
 
-### GetVersionOk
+### GetApplicationCommitIdOk
 
-`func (o *Log) GetVersionOk() (*string, bool)`
+`func (o *Log) GetApplicationCommitIdOk() (*string, bool)`
 
-GetVersionOk returns a tuple with the Version field if it's non-nil, zero value otherwise
+GetApplicationCommitIdOk returns a tuple with the ApplicationCommitId field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetVersion
+### SetApplicationCommitId
 
-`func (o *Log) SetVersion(v string)`
+`func (o *Log) SetApplicationCommitId(v string)`
 
-SetVersion sets Version field to given value.
+SetApplicationCommitId sets ApplicationCommitId field to given value.
 
-### HasVersion
+### HasApplicationCommitId
 
-`func (o *Log) HasVersion() bool`
+`func (o *Log) HasApplicationCommitId() bool`
 
-HasVersion returns a boolean if a field has been set.
+HasApplicationCommitId returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

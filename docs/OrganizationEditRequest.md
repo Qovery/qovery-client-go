@@ -7,7 +7,6 @@ Name | Type | Description | Notes
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** |  | [optional] 
 **WebsiteUrl** | Pointer to **NullableString** |  | [optional] 
-**Repository** | Pointer to **NullableString** |  | [optional] 
 **LogoUrl** | Pointer to **NullableString** |  | [optional] 
 **IconUrl** | Pointer to **NullableString** |  | [optional] 
 **AdminEmails** | Pointer to **[]string** |  | [optional] 
@@ -111,41 +110,6 @@ HasWebsiteUrl returns a boolean if a field has been set.
 `func (o *OrganizationEditRequest) UnsetWebsiteUrl()`
 
 UnsetWebsiteUrl ensures that no value is present for WebsiteUrl, not even an explicit nil
-### GetRepository
-
-`func (o *OrganizationEditRequest) GetRepository() string`
-
-GetRepository returns the Repository field if non-nil, zero value otherwise.
-
-### GetRepositoryOk
-
-`func (o *OrganizationEditRequest) GetRepositoryOk() (*string, bool)`
-
-GetRepositoryOk returns a tuple with the Repository field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetRepository
-
-`func (o *OrganizationEditRequest) SetRepository(v string)`
-
-SetRepository sets Repository field to given value.
-
-### HasRepository
-
-`func (o *OrganizationEditRequest) HasRepository() bool`
-
-HasRepository returns a boolean if a field has been set.
-
-### SetRepositoryNil
-
-`func (o *OrganizationEditRequest) SetRepositoryNil(b bool)`
-
- SetRepositoryNil sets the value for Repository to be an explicit nil
-
-### UnsetRepository
-`func (o *OrganizationEditRequest) UnsetRepository()`
-
-UnsetRepository ensures that no value is present for Repository, not even an explicit nil
 ### GetLogoUrl
 
 `func (o *OrganizationEditRequest) GetLogoUrl() string`

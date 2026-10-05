@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Value** | Pointer to **string** |  | [optional] 
 **Key** | **string** |  | 
+**MountPath** | Pointer to **NullableString** |  | [optional] 
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 **EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 
@@ -73,6 +74,41 @@ and a boolean to check if the value has been set.
 SetKey sets Key field to given value.
 
 
+### GetMountPath
+
+`func (o *SecretEditRequest) GetMountPath() string`
+
+GetMountPath returns the MountPath field if non-nil, zero value otherwise.
+
+### GetMountPathOk
+
+`func (o *SecretEditRequest) GetMountPathOk() (*string, bool)`
+
+GetMountPathOk returns a tuple with the MountPath field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetMountPath
+
+`func (o *SecretEditRequest) SetMountPath(v string)`
+
+SetMountPath sets MountPath field to given value.
+
+### HasMountPath
+
+`func (o *SecretEditRequest) HasMountPath() bool`
+
+HasMountPath returns a boolean if a field has been set.
+
+### SetMountPathNil
+
+`func (o *SecretEditRequest) SetMountPathNil(b bool)`
+
+ SetMountPathNil sets the value for MountPath to be an explicit nil
+
+### UnsetMountPath
+`func (o *SecretEditRequest) UnsetMountPath()`
+
+UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
 ### GetDescription
 
 `func (o *SecretEditRequest) GetDescription() string`

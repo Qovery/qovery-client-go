@@ -35,7 +35,8 @@ type TerraformResourceResponse struct {
 	// Resource mode (managed or data source)
 	Mode string `json:"mode"`
 	// All resource attributes as key-value pairs
-	Attributes map[string]interface{} `json:"attributes"`
+	Attributes    map[string]interface{}       `json:"attributes"`
+	KeyAttributes []TerraformResourceAttribute `json:"key_attributes"`
 	// Timestamp when the resource was extracted from Terraform state
 	ExtractedAt          time.Time `json:"extracted_at"`
 	AdditionalProperties map[string]interface{}
@@ -47,7 +48,7 @@ type _TerraformResourceResponse TerraformResourceResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, extractedAt time.Time) *TerraformResourceResponse {
+func NewTerraformResourceResponse(id string, resourceType string, name string, address string, provider string, mode string, attributes map[string]interface{}, keyAttributes []TerraformResourceAttribute, extractedAt time.Time) *TerraformResourceResponse {
 	this := TerraformResourceResponse{}
 	this.Id = id
 	this.ResourceType = resourceType
@@ -56,6 +57,7 @@ func NewTerraformResourceResponse(id string, resourceType string, name string, a
 	this.Provider = provider
 	this.Mode = mode
 	this.Attributes = attributes
+	this.KeyAttributes = keyAttributes
 	this.ExtractedAt = extractedAt
 	return &this
 }
@@ -236,6 +238,30 @@ func (o *TerraformResourceResponse) SetAttributes(v map[string]interface{}) {
 	o.Attributes = v
 }
 
+// GetKeyAttributes returns the KeyAttributes field value
+func (o *TerraformResourceResponse) GetKeyAttributes() []TerraformResourceAttribute {
+	if o == nil {
+		var ret []TerraformResourceAttribute
+		return ret
+	}
+
+	return o.KeyAttributes
+}
+
+// GetKeyAttributesOk returns a tuple with the KeyAttributes field value
+// and a boolean to check if the value has been set.
+func (o *TerraformResourceResponse) GetKeyAttributesOk() ([]TerraformResourceAttribute, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.KeyAttributes, true
+}
+
+// SetKeyAttributes sets field value
+func (o *TerraformResourceResponse) SetKeyAttributes(v []TerraformResourceAttribute) {
+	o.KeyAttributes = v
+}
+
 // GetExtractedAt returns the ExtractedAt field value
 func (o *TerraformResourceResponse) GetExtractedAt() time.Time {
 	if o == nil {
@@ -277,6 +303,7 @@ func (o TerraformResourceResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["provider"] = o.Provider
 	toSerialize["mode"] = o.Mode
 	toSerialize["attributes"] = o.Attributes
+	toSerialize["key_attributes"] = o.KeyAttributes
 	toSerialize["extracted_at"] = o.ExtractedAt
 
 	for key, value := range o.AdditionalProperties {
@@ -298,6 +325,7 @@ func (o *TerraformResourceResponse) UnmarshalJSON(data []byte) (err error) {
 		"provider",
 		"mode",
 		"attributes",
+		"key_attributes",
 		"extracted_at",
 	}
 
@@ -335,6 +363,7 @@ func (o *TerraformResourceResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "provider")
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "attributes")
+		delete(additionalProperties, "key_attributes")
 		delete(additionalProperties, "extracted_at")
 		o.AdditionalProperties = additionalProperties
 	}

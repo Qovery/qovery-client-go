@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **NullableString** |  | [optional] 
 **ChartVersion** | Pointer to **string** | version of the chart to deploy. Cannot be set if &#x60;git_commit_id&#x60; is defined  | [optional] 
 **GitCommitId** | Pointer to **string** | Commit to deploy for chart source. Cannot be set if &#x60;version&#x60; is defined  | [optional] 
 **ValuesOverrideGitCommitId** | Pointer to **string** | Commit to deploy for values override  | [optional] 
@@ -27,6 +28,41 @@ NewHelmDeployRequestWithDefaults instantiates a new HelmDeployRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *HelmDeployRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *HelmDeployRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *HelmDeployRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *HelmDeployRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *HelmDeployRequest) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *HelmDeployRequest) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetChartVersion
 
 `func (o *HelmDeployRequest) GetChartVersion() string`

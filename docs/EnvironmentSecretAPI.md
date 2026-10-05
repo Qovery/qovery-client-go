@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**CreateEnvironmentSecretOverride**](EnvironmentSecretAPI.md#CreateEnvironmentSecretOverride) | **Post** /environment/{environmentId}/secret/{secretId}/override | Create a secret override at the environment level
 [**DeleteEnvironmentSecret**](EnvironmentSecretAPI.md#DeleteEnvironmentSecret) | **Delete** /environment/{environmentId}/secret/{secretId} | Delete a secret from the environment
 [**EditEnvironmentSecret**](EnvironmentSecretAPI.md#EditEnvironmentSecret) | **Put** /environment/{environmentId}/secret/{secretId} | Edit a secret belonging to the environment
+[**GetSecretById**](EnvironmentSecretAPI.md#GetSecretById) | **Get** /secret/{secretId} | Get a secret by ID
 [**ListEnvironmentSecrets**](EnvironmentSecretAPI.md#ListEnvironmentSecrets) | **Get** /environment/{environmentId}/secret | List environment secrets
 
 
@@ -374,6 +375,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetSecretById
+
+> Secret GetSecretById(ctx, secretId).Execute()
+
+Get a secret by ID
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	secretId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Secret ID
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.EnvironmentSecretAPI.GetSecretById(context.Background(), secretId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `EnvironmentSecretAPI.GetSecretById``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetSecretById`: Secret
+	fmt.Fprintf(os.Stdout, "Response from `EnvironmentSecretAPI.GetSecretById`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**secretId** | **string** | Secret ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetSecretByIdRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+### Return type
+
+[**Secret**](Secret.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)

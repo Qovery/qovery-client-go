@@ -20,7 +20,7 @@ var _ MappedNullable = &IngressDeploymentStatusResponse{}
 
 // IngressDeploymentStatusResponse struct for IngressDeploymentStatusResponse
 type IngressDeploymentStatusResponse struct {
-	RouterId             *string    `json:"routerId,omitempty"`
+	RouterId             *string    `json:"router_id,omitempty"`
 	Status               *StateEnum `json:"status,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -119,7 +119,7 @@ func (o IngressDeploymentStatusResponse) MarshalJSON() ([]byte, error) {
 func (o IngressDeploymentStatusResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.RouterId) {
-		toSerialize["routerId"] = o.RouterId
+		toSerialize["router_id"] = o.RouterId
 	}
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
@@ -146,7 +146,7 @@ func (o *IngressDeploymentStatusResponse) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "routerId")
+		delete(additionalProperties, "router_id")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}

@@ -21,15 +21,12 @@ var _ MappedNullable = &SecretAlias{}
 
 // SecretAlias struct for SecretAlias
 type SecretAlias struct {
-	Id           string               `json:"id"`
-	Key          string               `json:"key"`
-	MountPath    string               `json:"mount_path"`
-	Scope        APIVariableScopeEnum `json:"scope"`
-	VariableType APIVariableTypeEnum  `json:"variable_type"`
-	// optional variable description (255 characters maximum)
-	Description               NullableString `json:"description,omitempty"`
-	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
-	AdditionalProperties      map[string]interface{}
+	Id                   string               `json:"id"`
+	Key                  string               `json:"key"`
+	MountPath            NullableString       `json:"mount_path,omitempty"`
+	Scope                APIVariableScopeEnum `json:"scope"`
+	VariableType         APIVariableTypeEnum  `json:"variable_type"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _SecretAlias SecretAlias
@@ -38,11 +35,10 @@ type _SecretAlias SecretAlias
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewSecretAlias(id string, key string, mountPath string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum) *SecretAlias {
+func NewSecretAlias(id string, key string, scope APIVariableScopeEnum, variableType APIVariableTypeEnum) *SecretAlias {
 	this := SecretAlias{}
 	this.Id = id
 	this.Key = key
-	this.MountPath = mountPath
 	this.Scope = scope
 	this.VariableType = variableType
 	return &this
@@ -104,28 +100,47 @@ func (o *SecretAlias) SetKey(v string) {
 	o.Key = v
 }
 
-// GetMountPath returns the MountPath field value
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *SecretAlias) GetMountPath() string {
-	if o == nil {
+	if o == nil || IsNil(o.MountPath.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.MountPath
+	return *o.MountPath.Get()
 }
 
-// GetMountPathOk returns a tuple with the MountPath field value
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *SecretAlias) GetMountPathOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.MountPath, true
+	return o.MountPath.Get(), o.MountPath.IsSet()
 }
 
-// SetMountPath sets field value
+// HasMountPath returns a boolean if a field has been set.
+func (o *SecretAlias) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
 func (o *SecretAlias) SetMountPath(v string) {
-	o.MountPath = v
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *SecretAlias) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *SecretAlias) UnsetMountPath() {
+	o.MountPath.Unset()
 }
 
 // GetScope returns the Scope field value
@@ -176,92 +191,6 @@ func (o *SecretAlias) SetVariableType(v APIVariableTypeEnum) {
 	o.VariableType = v
 }
 
-// GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SecretAlias) GetDescription() string {
-	if o == nil || IsNil(o.Description.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Description.Get()
-}
-
-// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SecretAlias) GetDescriptionOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Description.Get(), o.Description.IsSet()
-}
-
-// HasDescription returns a boolean if a field has been set.
-func (o *SecretAlias) HasDescription() bool {
-	if o != nil && o.Description.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetDescription gets a reference to the given NullableString and assigns it to the Description field.
-func (o *SecretAlias) SetDescription(v string) {
-	o.Description.Set(&v)
-}
-
-// SetDescriptionNil sets the value for Description to be an explicit nil
-func (o *SecretAlias) SetDescriptionNil() {
-	o.Description.Set(nil)
-}
-
-// UnsetDescription ensures that no value is present for Description, not even an explicit nil
-func (o *SecretAlias) UnsetDescription() {
-	o.Description.Unset()
-}
-
-// GetEnableInterpolationInFile returns the EnableInterpolationInFile field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *SecretAlias) GetEnableInterpolationInFile() bool {
-	if o == nil || IsNil(o.EnableInterpolationInFile.Get()) {
-		var ret bool
-		return ret
-	}
-	return *o.EnableInterpolationInFile.Get()
-}
-
-// GetEnableInterpolationInFileOk returns a tuple with the EnableInterpolationInFile field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *SecretAlias) GetEnableInterpolationInFileOk() (*bool, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.EnableInterpolationInFile.Get(), o.EnableInterpolationInFile.IsSet()
-}
-
-// HasEnableInterpolationInFile returns a boolean if a field has been set.
-func (o *SecretAlias) HasEnableInterpolationInFile() bool {
-	if o != nil && o.EnableInterpolationInFile.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetEnableInterpolationInFile gets a reference to the given NullableBool and assigns it to the EnableInterpolationInFile field.
-func (o *SecretAlias) SetEnableInterpolationInFile(v bool) {
-	o.EnableInterpolationInFile.Set(&v)
-}
-
-// SetEnableInterpolationInFileNil sets the value for EnableInterpolationInFile to be an explicit nil
-func (o *SecretAlias) SetEnableInterpolationInFileNil() {
-	o.EnableInterpolationInFile.Set(nil)
-}
-
-// UnsetEnableInterpolationInFile ensures that no value is present for EnableInterpolationInFile, not even an explicit nil
-func (o *SecretAlias) UnsetEnableInterpolationInFile() {
-	o.EnableInterpolationInFile.Unset()
-}
-
 func (o SecretAlias) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -274,15 +203,11 @@ func (o SecretAlias) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["id"] = o.Id
 	toSerialize["key"] = o.Key
-	toSerialize["mount_path"] = o.MountPath
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
+	}
 	toSerialize["scope"] = o.Scope
 	toSerialize["variable_type"] = o.VariableType
-	if o.Description.IsSet() {
-		toSerialize["description"] = o.Description.Get()
-	}
-	if o.EnableInterpolationInFile.IsSet() {
-		toSerialize["enable_interpolation_in_file"] = o.EnableInterpolationInFile.Get()
-	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -298,7 +223,6 @@ func (o *SecretAlias) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"id",
 		"key",
-		"mount_path",
 		"scope",
 		"variable_type",
 	}
@@ -335,8 +259,6 @@ func (o *SecretAlias) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "mount_path")
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "variable_type")
-		delete(additionalProperties, "description")
-		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties
 	}
 

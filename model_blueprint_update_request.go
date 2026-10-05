@@ -28,7 +28,7 @@ type BlueprintUpdateRequest struct {
 	// Icon URL for the service
 	Icon string `json:"icon"`
 	// RFC 7396 patch map keyed by variable name. Non-null value upserts the variable; null value removes it. Absent keys are left untouched. Omitting the field entirely is equivalent to an empty map — no variables are modified.
-	Variables            *map[string]BlueprintUpdateVariableValue    `json:"variables,omitempty"`
+	Variables            map[string]BlueprintUpdateVariableValue     `json:"variables,omitempty"`
 	SpecOverrides        NullableBlueprintUpdateRequestSpecOverrides `json:"spec_overrides,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
@@ -133,14 +133,14 @@ func (o *BlueprintUpdateRequest) GetVariables() map[string]BlueprintUpdateVariab
 		var ret map[string]BlueprintUpdateVariableValue
 		return ret
 	}
-	return *o.Variables
+	return o.Variables
 }
 
 // GetVariablesOk returns a tuple with the Variables field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BlueprintUpdateRequest) GetVariablesOk() (*map[string]BlueprintUpdateVariableValue, bool) {
+func (o *BlueprintUpdateRequest) GetVariablesOk() (map[string]BlueprintUpdateVariableValue, bool) {
 	if o == nil || IsNil(o.Variables) {
-		return nil, false
+		return map[string]BlueprintUpdateVariableValue{}, false
 	}
 	return o.Variables, true
 }
@@ -156,7 +156,7 @@ func (o *BlueprintUpdateRequest) HasVariables() bool {
 
 // SetVariables gets a reference to the given map[string]BlueprintUpdateVariableValue and assigns it to the Variables field.
 func (o *BlueprintUpdateRequest) SetVariables(v map[string]BlueprintUpdateVariableValue) {
-	o.Variables = &v
+	o.Variables = v
 }
 
 // GetSpecOverrides returns the SpecOverrides field value if set, zero value otherwise (both if not set or set to explicit null).

@@ -22,20 +22,6 @@ func Test_qovery_EnvironmentLogsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test EnvironmentLogsAPIService ListEnvironmentLog", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var environmentId string
-
-		resp, httpRes, err := apiClient.EnvironmentLogsAPI.ListEnvironmentLog(context.Background(), environmentId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test EnvironmentLogsAPIService ListEnvironmentLogs", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

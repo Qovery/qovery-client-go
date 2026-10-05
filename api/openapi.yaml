@@ -1222,47 +1222,6 @@ paths:
       summary: Change organization plan
       tags:
       - Billing
-  /organization/{organizationId}/cluster/{clusterId}/currentCost:
-    get:
-      description: |
-        Get your cluster cost range. We are unable to give a precise cost of your infrastructure at the moment.
-        But Qovery guarantees that the cost of your cluster will not exceed the max range.
-      operationId: getClusterCurrentCost
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Cluster ID
-        explode: false
-        in: path
-        name: clusterId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CostRange'
-          description: Get cluster cost
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get cluster current cost
-      tags:
-      - Billing
   /organization/{organizationId}/billingInfo:
     get:
       operationId: getOrganizationBillingInfo
@@ -1532,31 +1491,6 @@ paths:
         "404":
           description: Resource not found
       summary: Get invoice link
-      tags:
-      - Billing
-  /organization/{organizationId}/downloadInvoices:
-    post:
-      operationId: organizationDownloadAllInvoices
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "202":
-          description: You will receive an email containing your invoices
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Download all invoices
       tags:
       - Billing
   /organization/{organizationId}/creditCard:
@@ -2708,27 +2642,6 @@ paths:
           description: "The Operator is disconnected, incompatible, or its selected\
             \ release cannot be resolved"
       summary: Update the Qovery Operator on a cluster
-      tags:
-      - Cluster Operator
-  /admin/operator/clusters:
-    get:
-      description: "Returns every self-managed cluster with its attachment, heartbeat\
-        \ freshness, desired and reported image and Helm chart versions, and a stable\
-        \ drift status. This operation is restricted to Qovery administrators and\
-        \ is the source for internal fleet CLI and dashboard consumers."
-      operationId: listClusterOperatorFleet
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterOperatorFleetInventoryResponseList'
-          description: Qovery Operator fleet inventory
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-      summary: List the Qovery Operator fleet
       tags:
       - Cluster Operator
   /organization/{organizationId}/cluster/{clusterId}/status:
@@ -4222,6 +4135,133 @@ paths:
       summary: Disconnect a github account from an organization
       tags:
       - Github App
+  /organization/{organizationId}/skill-tracking:
+    post:
+      description: Track a skill call
+      operationId: trackSkillCall
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: header
+        name: User-Agent
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillTrackingRequest'
+        required: true
+      responses:
+        "204":
+          description: Skill call tracked
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Track a skill call
+      tags:
+      - Organization
+  /account/enterpriseconnection/roles:
+    get:
+      description: Resolve organization access for an Auth0 post-login action.
+      operationId: getEnterpriseConnectionRoles
+      parameters:
+      - explode: false
+        in: header
+        name: X-Qovery-Auth0-Post-Login-Token
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: connectionName
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: federatedGroups
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: userSub
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnterpriseConnectionAccessList'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      security: []
+      summary: Resolve enterprise connection roles
+      tags:
+      - Organization Enterprise Connection
+  /account/enterpriseconnection/notifyMemberAccessUpdated:
+    post:
+      description: Notify q-core of member access changes from an Auth0 post-login
+        action.
+      operationId: notifyEnterpriseMemberAccessUpdated
+      parameters:
+      - explode: false
+        in: header
+        name: X-Qovery-Auth0-Post-Login-Token
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EnterpriseConnectionMemberAccessUpdateRequest'
+        required: true
+      responses:
+        "200":
+          description: Member access update accepted
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      security: []
+      summary: Notify enterprise member access changes
+      tags:
+      - Organization Enterprise Connection
   /organization/{organizationId}/account/gitAuthProvider:
     get:
       operationId: getOrganizationGitProviderAccount
@@ -4245,6 +4285,103 @@ paths:
         "401":
           description: Access token is missing or invalid
       summary: Get git provider accounts
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/{gitProviderName}/repository:
+    get:
+      description: List repositories from a Git provider
+      operationId: getGitProviderRepositories
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: gitProviderName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryResponseList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List repositories from a Git provider
+      tags:
+      - Organization Account Git Repositories
+  /organization/{organizationId}/account/{gitProviderName}/repository/branch:
+    get:
+      description: List repository branches from a Git provider
+      operationId: getGitProviderRepositoryBranches
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: gitProviderName
+        required: true
+        schema:
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: name
+        required: true
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: gitTokenId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List repository branches from a Git provider
       tags:
       - Organization Account Git Repositories
   /organization/{organizationId}/account/github/repository:
@@ -5757,25 +5894,6 @@ paths:
       summary: List AWS features available
       tags:
       - Cloud Provider
-  /aws/instanceType:
-    get:
-      operationId: listAWSInstanceType
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
-          description: list the instance types available for AWS cloud provider
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List AWS available instance types
-      tags:
-      - Cloud Provider
   /aws/managedDatabase/type:
     get:
       operationId: listAWSManagedDatabaseType
@@ -5795,8 +5913,9 @@ paths:
       summary: List AWS available managed database types
       tags:
       - Cloud Provider
-  /aws/managedDatabase/instanceType/{region}/{databaseType}:
+  /aws/managedDatabase/instanceType/{region}/{dbType}:
     get:
+      description: List AWS available managed database instance types
       operationId: listAWSManagedDatabaseInstanceType
       parameters:
       - description: region name
@@ -5808,13 +5927,12 @@ paths:
           example: us-east-2
           type: string
         style: simple
-      - description: Database type
+      - description: Managed database type
         explode: false
         in: path
-        name: databaseType
+        name: dbType
         required: true
         schema:
-          example: MYSQL
           type: string
         style: simple
       responses:
@@ -5986,46 +6104,9 @@ paths:
       summary: List Scaleway features available
       tags:
       - Cloud Provider
-  /scaleway/instanceType:
-    get:
-      operationId: listScalewayInstanceType
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
-          description: list the instance types available for Scaleway cloud provider
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List Scaleway available instance types
-      tags:
-      - Cloud Provider
-  /scaleway/managedDatabase/type:
-    get:
-      operationId: listSCWManagedDatabaseType
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ManagedDatabaseTypeResponseList'
-          description: list Scaleway available managed database types
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List Scaleway available managed database types
-      tags:
-      - Cloud Provider
   /scaleway/instanceType/{zone}:
     get:
+      description: List Scaleway Kapsule available instance types
       operationId: listScalewayKapsuleInstanceType
       parameters:
       - description: zone name
@@ -6051,6 +6132,76 @@ paths:
         "404":
           description: Resource not found
       summary: List Scaleway Kapsule available instance types
+      tags:
+      - Cloud Provider
+  /onPremise/region:
+    get:
+      description: List on-premise regions
+      operationId: listOnPremiseRegions
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterRegionResponseList'
+          description: List on-premise regions
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List on-premise regions
+      tags:
+      - Cloud Provider
+  /onPremise/eks/instanceType/{region}:
+    get:
+      description: List on-premise instance types
+      operationId: listOnPremiseInstanceTypes
+      parameters:
+      - description: region name
+        explode: false
+        in: path
+        name: region
+        required: true
+        schema:
+          example: us-east-2
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
+          description: List on-premise instance types
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List on-premise instance types
+      tags:
+      - Cloud Provider
+  /onPremise/clusterFeature:
+    get:
+      description: List on-premise cluster features
+      operationId: listOnPremiseClusterFeatures
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFeatureResponseList'
+          description: List on-premise cluster features
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List on-premise cluster features
       tags:
       - Cloud Provider
   /gcp/region:
@@ -6089,35 +6240,6 @@ paths:
         "404":
           description: Resource not found
       summary: List GCP features available
-      tags:
-      - Cloud Provider
-  /gcp/instanceType/{region}:
-    get:
-      operationId: listGcpGkeInstanceType
-      parameters:
-      - description: region name
-        explode: false
-        in: path
-        name: region
-        required: true
-        schema:
-          example: us-east-2
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterInstanceTypeResponseList'
-          description: list the instance types available for GCP GKE by region
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List GCP GKE available instance types
       tags:
       - Cloud Provider
   /organization/{organizationId}/cluster/{clusterId}/cloudProviderInfo:
@@ -6200,44 +6322,6 @@ paths:
         "404":
           description: Resource not found
       summary: Specify cluster cloud provider info and credentials
-      tags:
-      - Clusters
-  /organization/{organizationId}/cluster/{clusterId}/isReady:
-    get:
-      operationId: getClusterReadinessStatus
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Cluster ID
-        explode: false
-        in: path
-        name: clusterId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClusterReadinessStatus'
-          description: Get Cluster Readiness Status
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Know if a cluster is ready to be deployed or not
       tags:
       - Clusters
   /organization/{organizationId}/cluster/{clusterId}/deploy:
@@ -9430,6 +9514,100 @@ paths:
       - Environment Actions
       x-stoplight:
         id: g57d57j59zihv
+  /environment/{environmentId}/restart:
+    post:
+      description: Restart environment
+      operationId: restartEnvironment
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Environment restart has been requested
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Restart environment
+      tags:
+      - Environment Actions
+  /engine/serviceVersion:
+    get:
+      description: Get the version of an engine related service. Worker service types
+        are unavailable through this route.
+      operationId: getPublicServiceVersion
+      parameters:
+      - explode: true
+        in: query
+        name: serviceType
+        required: true
+        schema:
+          enum:
+          - SHELL_AGENT
+          - CLUSTER_AGENT
+          - ENGINE
+          - PLATFORM_CATALOG
+          - QOVERY_OPERATOR
+          - QOVERY_OPERATOR_CHART
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EngineVersionResponse'
+          description: OK
+        "400":
+          description: Bad request
+      security: []
+      summary: Get a service version
+      tags:
+      - Admin
+  /environment/{environmentId}/moveToProject/{projectId}:
+    post:
+      description: Move environment to another project and start it
+      operationId: moveEnvironmentToProject
+      parameters:
+      - description: Environment ID
+        explode: false
+        in: path
+        name: environmentId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Project ID
+        explode: false
+        in: path
+        name: projectId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Environment moved to the target project
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Move environment to another project and start it
+      tags:
+      - Environment Actions
   /environment/{environmentId}/stop:
     post:
       operationId: stopEnvironment
@@ -9475,11 +9653,7 @@ paths:
           type: string
         style: simple
       responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvironmentStatus'
+        "200":
           description: Environment redeploy has been requested
         "401":
           description: Access token is missing or invalid
@@ -10077,78 +10251,6 @@ paths:
       summary: Preview container environments
       tags:
       - Containers
-  /organization/{organizationId}/job/deploy:
-    post:
-      description: |
-        Triggers a new job deploy in each environment matching the following conditions
-        - environment should have the auto-deploy enabled
-        - the job should have the same image name and a different tag
-      operationId: autoDeployJobEnvironments
-      parameters:
-      - description: Organization ID
-        explode: false
-        in: path
-        name: organizationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/OrganizationJobAutoDeployRequest'
-      responses:
-        "202":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Status'
-          description: Deployed jobs
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-        "409":
-          description: Operation is in progress
-      summary: Auto deploy jobs
-      tags:
-      - Jobs
-  /environment/{environmentId}/log:
-    get:
-      description: This returns the last 1000 environment deployment logs.
-      operationId: listEnvironmentLog
-      parameters:
-      - description: Environment ID
-        explode: false
-        in: path
-        name: environmentId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EnvironmentLogResponseList'
-          description: List logs
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List environment deployment logs
-      tags:
-      - Environment Logs
   /environment/{environmentId}/logs:
     get:
       description: This returns the last 1000 environment deployment logs v2
@@ -11283,35 +11385,6 @@ paths:
       summary: Edit an application deployment restriction
       tags:
       - Application Deployment Restriction
-  /application/{applicationId}/contributor:
-    get:
-      operationId: listApplicationContributor
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/UserResponseList'
-          description: List application contributors
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List contributors
-      tags:
-      - Application Main Calls
   /application/{applicationId}/commit:
     get:
       description: Returns list of the last 100 commits made on the repository linked
@@ -12285,6 +12358,44 @@ paths:
       summary: Delete a Custom Domain
       tags:
       - Application Custom Domain
+    get:
+      description: Get a custom domain attached to an application.
+      operationId: getApplicationCustomDomain
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Custom Domain ID
+        explode: false
+        in: path
+        name: customDomainId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
+          description: Custom domain
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get an application custom domain
+      tags:
+      - Application Custom Domain
     put:
       description: To edit a Custom Domain you must have the project user permission
       operationId: editCustomDomain
@@ -12330,44 +12441,6 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Application Custom Domain
-  /application/{applicationId}/customDomain/{customDomainId}/status:
-    get:
-      operationId: getCustomDomainStatus
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Custom Domain ID
-        explode: false
-        in: path
-        name: customDomainId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomDomain'
-          description: Get status
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get Custom Domain status
-      tags:
-      - Application Custom Domain
   /application/{applicationId}/checkCustomDomain:
     get:
       operationId: checkApplicationCustomDomain
@@ -12397,36 +12470,6 @@ paths:
       summary: Check Application Custom Domain
       tags:
       - Application Custom Domain
-  /application/{applicationId}/log:
-    get:
-      description: This will list the last 1000 logs of the application
-      operationId: listApplicationLog
-      parameters:
-      - description: Application ID
-        explode: false
-        in: path
-        name: applicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogResponseList'
-          description: List logs
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List logs
-      tags:
-      - Application Logs
   /application/{applicationId}/network:
     get:
       description: Get status of the application network settings.
@@ -13744,6 +13787,44 @@ paths:
       summary: Delete a Custom Domain
       tags:
       - Container Custom Domain
+    get:
+      description: Get a custom domain attached to a container.
+      operationId: getContainerCustomDomain
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Custom Domain ID
+        explode: false
+        in: path
+        name: customDomainId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomDomain'
+          description: Custom domain
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a container custom domain
+      tags:
+      - Container Custom Domain
     put:
       description: To edit a Custom Domain  you must have the project user permission
       operationId: editContainerCustomDomain
@@ -13789,44 +13870,6 @@ paths:
       summary: Edit a Custom Domain
       tags:
       - Container Custom Domain
-  /container/{containerId}/customDomain/{customDomainId}/status:
-    get:
-      operationId: getContainerCustomDomainStatus
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Custom Domain ID
-        explode: false
-        in: path
-        name: customDomainId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CustomDomain'
-          description: Get status
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Get Custom Domain status
-      tags:
-      - Container Custom Domain
   /container/{containerId}/checkCustomDomain:
     get:
       operationId: checkContainerCustomDomain
@@ -13856,36 +13899,6 @@ paths:
       summary: Check Container Custom Domain
       tags:
       - Container Custom Domain
-  /container/{containerId}/log:
-    get:
-      description: This will list the last 1000 logs of the container
-      operationId: listContainerLog
-      parameters:
-      - description: Container ID
-        explode: false
-        in: path
-        name: containerId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LogResponseList'
-          description: List logs
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List logs
-      tags:
-      - Container Logs
   /container/{containerId}/network:
     get:
       description: Get status of the container network settings.
@@ -14306,69 +14319,6 @@ paths:
       summary: Get master credentials of the database
       tags:
       - Database Main Calls
-  /database/{databaseId}/application:
-    get:
-      operationId: listDatabaseApplication
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ApplicationResponseList'
-          description: List linked applications
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List applications using the database
-      tags:
-      - Database Application
-  /database/{databaseId}/application/{targetApplicationId}:
-    delete:
-      operationId: removeApplicationFromDatabase
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Target application ID
-        explode: false
-        in: path
-        name: targetApplicationId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: no content
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: 'Remove an application from this database '
-      tags:
-      - Database Application
   /database/{databaseId}/redeploy:
     post:
       operationId: redeployDatabase
@@ -14631,115 +14581,6 @@ paths:
       - Database Deployment History
       x-stoplight:
         id: mzftpr17opgzp
-  /database/{databaseId}/backup:
-    get:
-      description: "By default it returns the 20 last results. The response is paginated.\
-        \ In order to request the next page, you can use the startId query parameter"
-      operationId: listDatabaseBackup
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Starting point after which to return results
-        explode: true
-        in: query
-        name: startId
-        required: false
-        schema:
-          format: uuid
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/BackupPaginatedResponseList'
-          description: List backups
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: List database  backups
-      tags:
-      - Backups
-    post:
-      operationId: addBackupDatabase
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/BackupRequest'
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Backup'
-          description: Added backup
-        "400":
-          description: Bad request
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: 'Add a backup to the Database '
-      tags:
-      - Backups
-  /database/{databaseId}/backup/{backupId}:
-    delete:
-      operationId: removeDatabaseBackup
-      parameters:
-      - description: Database ID
-        explode: false
-        in: path
-        name: databaseId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: Database Backup ID
-        explode: false
-        in: path
-        name: backupId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "204":
-          description: no content
-        "401":
-          description: Access token is missing or invalid
-        "403":
-          description: Access forbidden
-        "404":
-          description: Resource not found
-      summary: Remove database  backup
-      tags:
-      - Backups
   /database/{databaseId}/clone:
     post:
       description: This will create a new database with the same configuration on
@@ -14814,145 +14655,6 @@ paths:
       summary: Edit account information
       tags:
       - Account Info
-  /account/gitAuthProvider:
-    get:
-      deprecated: true
-      operationId: getGitProviderAccount
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitAuthProviderResponseList'
-          description: Get account
-        "401":
-          description: Access token is missing or invalid
-      summary: Get git provider accounts
-      tags:
-      - Git repositories
-  /account/github/repository:
-    get:
-      deprecated: true
-      operationId: getGithubRepositories
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get github repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get github repositories of the connected user
-      tags:
-      - Git repositories
-  /account/github/repository/branch:
-    get:
-      deprecated: true
-      operationId: getGithubRepositoryBranches
-      parameters:
-      - description: The name of the repository where to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
-          description: Get github repository branches
-        "401":
-          description: Access token is missing or invalid
-      summary: Get github branches of the specified repository
-      tags:
-      - Git repositories
-  /account/gitlab/repository:
-    get:
-      deprecated: true
-      operationId: getGitlabRepositories
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get gitlab repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get gitlab repositories of the connected user
-      tags:
-      - Git repositories
-  /account/gitlab/repository/branch:
-    get:
-      deprecated: true
-      operationId: getGitlabRepositoryBranches
-      parameters:
-      - description: The name of the repository to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
-          description: Get gitlab repository branches
-        "401":
-          description: Access token is missing or invalid
-      summary: Get gitlab branches of the specified repository
-      tags:
-      - Git repositories
-  /account/bitbucket/repository:
-    get:
-      deprecated: true
-      operationId: getBitbucketRepositories
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryResponseList'
-          description: Get bitbucket repositories
-        "401":
-          description: Access token is missing or invalid
-      summary: Get bitbucket repositories of the connected user
-      tags:
-      - Git repositories
-  /account/bitbucket/repository/branch:
-    get:
-      deprecated: true
-      operationId: getBitbucketRepositoryBranches
-      parameters:
-      - description: The name of the repository where to retrieve the branches
-        explode: true
-        in: query
-        name: name
-        required: false
-        schema:
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/GitRepositoryBranchResponseList'
-          description: Get bitbucket repository branches
-        "401":
-          description: Access token is missing or invalid
-      summary: Get bitbucket branches of the specified repository
-      tags:
-      - Git repositories
   /account/referral:
     get:
       operationId: getAccountReferral
@@ -18798,9 +18500,9 @@ paths:
         required: true
         schema:
           enum:
-          - CONTAINER
-          - APPLICATION
-          - HELM
+          - container
+          - application
+          - helm
           type: string
         style: simple
       - explode: false
@@ -20202,6 +19904,136 @@ paths:
       - Organization Main Calls
       x-stoplight:
         id: 2jm9tyqfhw4xf
+  /admin/listUserSignUp:
+    get:
+      description: Search user signups as a Qovery administrator.
+      operationId: listUserSignUps
+      parameters:
+      - explode: true
+        in: query
+        name: search
+        required: true
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSignUpResponseList'
+          description: OK
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Search user signups
+      tags:
+      - Admin
+  /admin/demoDebugLog:
+    post:
+      description: Store CLI demo debug logs for an organization and cluster.
+      operationId: storeCliDemoDebugLogs
+      parameters:
+      - explode: true
+        in: query
+        name: organization
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: clusterName
+        required: true
+        schema:
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              format: binary
+              type: string
+      responses:
+        "200":
+          description: Debug logs stored
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Store CLI demo debug logs
+      tags:
+      - Admin
+  /cluster/{clusterId}/clusterFailureContext/latest:
+    get:
+      description: Get the latest cluster failure context
+      operationId: getLatestClusterFailureContext
+      parameters:
+      - description: Cluster ID
+        explode: false
+        in: path
+        name: clusterId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClusterFailureContextResponse'
+          description: Get the latest cluster failure context
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get the latest cluster failure context
+      tags:
+      - Clusters
+  /secret/{secretId}:
+    get:
+      description: Get a secret by ID
+      operationId: getSecretById
+      parameters:
+      - description: Secret ID
+        explode: false
+        in: path
+        name: secretId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: OK
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get a secret by ID
+      tags:
+      - Environment Secret
   /cluster/{clusterId}/logs:
     get:
       description: Fetch cluster logs
@@ -21147,6 +20979,15 @@ paths:
       - Blueprint Main Calls
 components:
   parameters:
+    dbType:
+      description: Managed database type
+      explode: false
+      in: path
+      name: dbType
+      required: true
+      schema:
+        type: string
+      style: simple
     blueprintId:
       description: Blueprint ID
       explode: false
@@ -21676,6 +21517,296 @@ components:
     "204-deletion":
       description: The resource was deleted successfully
   schemas:
+    UserSignUpResponse:
+      example:
+        qovery_usage_other: qovery_usage_other
+        infrastructure_hosting: infrastructure_hosting
+        user_email: user_email
+        type_of_use: type_of_use
+        last_name: last_name
+        dx_auth: true
+        user_role: user_role
+        user_questions: user_questions
+        company_name: company_name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        first_name: first_name
+        qovery_usage: qovery_usage
+        company_size: company_size
+        current_step: current_step
+      properties:
+        id:
+          format: uuid
+          type: string
+        first_name:
+          nullable: true
+          type: string
+        last_name:
+          nullable: true
+          type: string
+        user_email:
+          nullable: true
+          type: string
+        type_of_use:
+          nullable: true
+          type: string
+        company_name:
+          nullable: true
+          type: string
+        company_size:
+          nullable: true
+          type: string
+        user_role:
+          nullable: true
+          type: string
+        qovery_usage:
+          nullable: true
+          type: string
+        qovery_usage_other:
+          nullable: true
+          type: string
+        user_questions:
+          nullable: true
+          type: string
+        dx_auth:
+          nullable: true
+          type: boolean
+        current_step:
+          nullable: true
+          type: string
+        infrastructure_hosting:
+          nullable: true
+          type: string
+      required:
+      - id
+      type: object
+    UserSignUpResponseList:
+      example:
+        results:
+        - qovery_usage_other: qovery_usage_other
+          infrastructure_hosting: infrastructure_hosting
+          user_email: user_email
+          type_of_use: type_of_use
+          last_name: last_name
+          dx_auth: true
+          user_role: user_role
+          user_questions: user_questions
+          company_name: company_name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          first_name: first_name
+          qovery_usage: qovery_usage
+          company_size: company_size
+          current_step: current_step
+        - qovery_usage_other: qovery_usage_other
+          infrastructure_hosting: infrastructure_hosting
+          user_email: user_email
+          type_of_use: type_of_use
+          last_name: last_name
+          dx_auth: true
+          user_role: user_role
+          user_questions: user_questions
+          company_name: company_name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          first_name: first_name
+          qovery_usage: qovery_usage
+          company_size: company_size
+          current_step: current_step
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/UserSignUpResponse'
+          type: array
+      required:
+      - results
+      type: object
+    MemberAccessRoleUpdated:
+      example:
+        role: role
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+        role:
+          type: string
+      required:
+      - organization_id
+      - role
+      type: object
+    EnterpriseConnectionMemberAccessUpdateRequest:
+      example:
+        user_email: user_email
+        user_id: user_id
+        removed_organization_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        role_updates_by_organization_id:
+        - role: role
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - role: role
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        added_organization_ids:
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        user_id:
+          type: string
+        user_email:
+          nullable: true
+          type: string
+        added_organization_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        removed_organization_ids:
+          items:
+            format: uuid
+            type: string
+          type: array
+        role_updates_by_organization_id:
+          items:
+            $ref: '#/components/schemas/MemberAccessRoleUpdated'
+          type: array
+      required:
+      - added_organization_ids
+      - removed_organization_ids
+      - role_updates_by_organization_id
+      - user_id
+      type: object
+    EnterpriseConnectionAccess:
+      example:
+        role: role
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        enforce_group_sync: true
+      properties:
+        organization_id:
+          format: uuid
+          type: string
+        role:
+          type: string
+        enforce_group_sync:
+          type: boolean
+      required:
+      - enforce_group_sync
+      - organization_id
+      - role
+      type: object
+    EnterpriseConnectionAccessList:
+      example:
+        results:
+        - role: role
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enforce_group_sync: true
+        - role: role
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          enforce_group_sync: true
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/EnterpriseConnectionAccess'
+          type: array
+      required:
+      - results
+      type: object
+    EngineVersionResponse:
+      example:
+        version: version
+      properties:
+        version:
+          type: string
+      required:
+      - version
+      type: object
+    GatewayConditionEntryResponse:
+      example:
+        reason: reason
+        type: type
+        message: message
+        status: status
+      properties:
+        type:
+          type: string
+        status:
+          type: string
+        reason:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+      required:
+      - status
+      - type
+      type: object
+    GatewayStatusResponse:
+      example:
+        conditions:
+        - reason: reason
+          type: type
+          message: message
+          status: status
+        - reason: reason
+          type: type
+          message: message
+          status: status
+        gateway_name: gateway_name
+      properties:
+        gateway_name:
+          type: string
+        conditions:
+          items:
+            $ref: '#/components/schemas/GatewayConditionEntryResponse'
+          type: array
+      required:
+      - conditions
+      - gateway_name
+      type: object
+    ClusterFailureContextResponse:
+      example:
+        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        gateway_status:
+          conditions:
+          - reason: reason
+            type: type
+            message: message
+            status: status
+          - reason: reason
+            type: type
+            message: message
+            status: status
+          gateway_name: gateway_name
+        created_at: 2000-01-23T04:56:07.000+00:00
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          format: uuid
+          type: string
+        cluster_id:
+          format: uuid
+          type: string
+        gateway_status:
+          $ref: '#/components/schemas/GatewayStatusResponse'
+        created_at:
+          format: date-time
+          type: string
+      required:
+      - cluster_id
+      - created_at
+      - gateway_status
+      - id
+      type: object
+    SkillTrackingRequest:
+      example:
+        skill_name: skill_name
+      properties:
+        skill_name:
+          maxLength: 64
+          minLength: 1
+          pattern: "^[A-Za-z0-9._-]+$"
+          type: string
+      required:
+      - skill_name
+      type: object
     QoveryIpsResponse:
       example:
         ips:
@@ -21703,7 +21834,12 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21718,7 +21854,12 @@ components:
               - null
               - null
               key: key
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21747,7 +21888,12 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21762,7 +21908,12 @@ components:
               - null
               - null
               key: key
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21791,6 +21942,11 @@ components:
           version: version
           key: key
           bootstrapComponent:
+            dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
             kind: HELM
             configurationSections:
             - fieldKeys:
@@ -21860,7 +22016,12 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21875,7 +22036,12 @@ components:
               - null
               - null
               key: key
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21904,7 +22070,12 @@ components:
             - componentKeys
             - componentKeys
             components:
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21919,7 +22090,12 @@ components:
               - null
               - null
               key: key
-            - kind: null
+            - dependsOn:
+              - component: component
+                kind: REQUIRES
+              - component: component
+                kind: REQUIRES
+              kind: null
               configurationSections:
               - fieldKeys:
                 - fieldKeys
@@ -21948,6 +22124,11 @@ components:
           version: version
           key: key
           bootstrapComponent:
+            dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
             kind: HELM
             configurationSections:
             - fieldKeys:
@@ -22027,7 +22208,12 @@ components:
           - componentKeys
           - componentKeys
           components:
-          - kind: null
+          - dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
+            kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22042,7 +22228,12 @@ components:
             - null
             - null
             key: key
-          - kind: null
+          - dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
+            kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22071,7 +22262,12 @@ components:
           - componentKeys
           - componentKeys
           components:
-          - kind: null
+          - dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
+            kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22086,7 +22282,12 @@ components:
             - null
             - null
             key: key
-          - kind: null
+          - dependsOn:
+            - component: component
+              kind: REQUIRES
+            - component: component
+              kind: REQUIRES
+            kind: null
             configurationSections:
             - fieldKeys:
               - fieldKeys
@@ -22115,6 +22316,11 @@ components:
         version: version
         key: key
         bootstrapComponent:
+          dependsOn:
+          - component: component
+            kind: REQUIRES
+          - component: component
+            kind: REQUIRES
           kind: HELM
           configurationSections:
           - fieldKeys:
@@ -22213,7 +22419,12 @@ components:
         - componentKeys
         - componentKeys
         components:
-        - kind: null
+        - dependsOn:
+          - component: component
+            kind: REQUIRES
+          - component: component
+            kind: REQUIRES
+          kind: null
           configurationSections:
           - fieldKeys:
             - fieldKeys
@@ -22228,7 +22439,12 @@ components:
           - null
           - null
           key: key
-        - kind: null
+        - dependsOn:
+          - component: component
+            kind: REQUIRES
+          - component: component
+            kind: REQUIRES
+          kind: null
           configurationSections:
           - fieldKeys:
             - fieldKeys
@@ -22309,6 +22525,11 @@ components:
       type: string
     PlatformTemplateComponentResponse:
       example:
+        dependsOn:
+        - component: component
+          kind: REQUIRES
+        - component: component
+          kind: REQUIRES
         kind: null
         configurationSections:
         - fieldKeys:
@@ -22329,6 +22550,10 @@ components:
           type: string
         kind:
           $ref: '#/components/schemas/PlatformTemplateComponentKind'
+        dependsOn:
+          items:
+            $ref: '#/components/schemas/PlatformTemplateComponentDependencyResponse'
+          type: array
         description:
           nullable: true
           type: string
@@ -22345,8 +22570,25 @@ components:
             $ref: '#/components/schemas/PlatformConfigurationSectionResponse'
           type: array
       required:
+      - dependsOn
       - fields
       - key
+      - kind
+      type: object
+    PlatformTemplateComponentDependencyResponse:
+      example:
+        component: component
+        kind: REQUIRES
+      properties:
+        component:
+          type: string
+        kind:
+          enum:
+          - REQUIRES
+          - AFTER
+          type: string
+      required:
+      - component
       - kind
       type: object
     PlatformConfigurationSectionResponse:
@@ -23176,20 +23418,11 @@ components:
     PlatformComponentConfigurationPreviewResponse:
       example:
         requirements:
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
+        - scope: PLATFORM_PROFILE
           description: description
-          readOnly: true
           label: label
           sensitive: true
-          type: string
+          type: type
           constraints:
             allowedValues:
             - allowedValues
@@ -23199,24 +23432,14 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          required: true
-          scope: PLATFORM_PROFILE
           key: key
+          required: true
           status: MISSING
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
+        - scope: PLATFORM_PROFILE
           description: description
-          readOnly: true
           label: label
           sensitive: true
-          type: string
+          type: type
           constraints:
             allowedValues:
             - allowedValues
@@ -23226,9 +23449,8 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          required: true
-          scope: PLATFORM_PROFILE
           key: key
+          required: true
           status: MISSING
         componentBindings:
         - output: output
@@ -23345,20 +23567,11 @@ components:
         cluster context before an actual cluster exists.
       example:
         requirements:
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
+        - scope: PLATFORM_PROFILE
           description: description
-          readOnly: true
           label: label
           sensitive: true
-          type: string
+          type: type
           constraints:
             allowedValues:
             - allowedValues
@@ -23368,24 +23581,14 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          required: true
-          scope: PLATFORM_PROFILE
           key: key
+          required: true
           status: MISSING
-        - defaultValue: defaultValue
-          templates:
-          - id: id
-            label: label
-            value: value
-          - id: id
-            label: label
-            value: value
-          format: kubernetes-resource-yaml
+        - scope: PLATFORM_PROFILE
           description: description
-          readOnly: true
           label: label
           sensitive: true
-          type: string
+          type: type
           constraints:
             allowedValues:
             - allowedValues
@@ -23395,9 +23598,8 @@ components:
             minLength: 1
             pattern: pattern
             maxLength: 5
-          required: true
-          scope: PLATFORM_PROFILE
           key: key
+          required: true
           status: MISSING
         componentBindings:
         - output: output
@@ -23515,35 +23717,14 @@ components:
         \ what runs on the cluster."
       type: object
     PlatformComponentInputRequirementResponse:
-      allOf:
-      - $ref: '#/components/schemas/ScalarFieldSchemaResponse'
-      - properties:
-          scope:
-            $ref: '#/components/schemas/PlatformComponentConfigurationInputScope'
-          status:
-            $ref: '#/components/schemas/PlatformComponentConfigurationRequirementStatus'
-        required:
-        - scope
-        - status
-        type: object
-      description: "A catalog field the cluster must provide for the selected configuration:\
-        \ the scalar field descriptor extended with its resolution scope and readiness.\
-        \ Input requirements cannot be object or array descriptors and are never read-only."
+      description: A scalar catalog field the cluster must provide for the selected
+        configuration.
       example:
-        defaultValue: defaultValue
-        templates:
-        - id: id
-          label: label
-          value: value
-        - id: id
-          label: label
-          value: value
-        format: kubernetes-resource-yaml
+        scope: PLATFORM_PROFILE
         description: description
-        readOnly: true
         label: label
         sensitive: true
-        type: string
+        type: type
         constraints:
           allowedValues:
           - allowedValues
@@ -23553,10 +23734,39 @@ components:
           minLength: 1
           pattern: pattern
           maxLength: 5
-        required: true
-        scope: PLATFORM_PROFILE
         key: key
+        required: true
         status: MISSING
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        scope:
+          $ref: '#/components/schemas/PlatformComponentConfigurationInputScope'
+        label:
+          type: string
+        description:
+          nullable: true
+          type: string
+        required:
+          type: boolean
+        sensitive:
+          type: boolean
+        constraints:
+          $ref: '#/components/schemas/FieldSchemaConstraintsResponse'
+        status:
+          $ref: '#/components/schemas/PlatformComponentConfigurationRequirementStatus'
+      required:
+      - constraints
+      - key
+      - label
+      - required
+      - scope
+      - sensitive
+      - status
+      - type
+      type: object
     PlatformComponentConfigurationInputScope:
       enum:
       - PLATFORM_PROFILE
@@ -23752,10 +23962,7 @@ components:
           value: value
         name: my-postgres
         icon: https://cdn.qovery.com/icons/postgresql.svg
-        spec_overrides:
-          engine_version: 1.13.3
-          credentials: cluster
-          backend: qovery
+        spec_overrides: ""
         tag: aws/postgres/17/1.0.1
       properties:
         name:
@@ -23778,7 +23985,9 @@ components:
             $ref: '#/components/schemas/BlueprintVariableRequest'
           type: array
         spec_overrides:
-          $ref: '#/components/schemas/BlueprintSpecOverrides'
+          allOf:
+          - $ref: '#/components/schemas/BlueprintSpecOverrides'
+          nullable: true
       required:
       - icon
       - name
@@ -23864,9 +24073,6 @@ components:
     BlueprintUpdateVariableValue:
       description: Value object for a variable in a patch map. Set the map value to
         null to remove the variable.
-      example:
-        is_secret: false
-        value: value
       properties:
         value:
           type: string
@@ -24918,9 +25124,7 @@ components:
     BlueprintUpdateRequest:
       example:
         variables:
-          key:
-            is_secret: false
-            value: value
+          key: ""
         name: my-postgres
         icon: https://cdn.qovery.com/icons/postgresql.svg
         spec_overrides:
@@ -24948,7 +25152,9 @@ components:
           type: string
         variables:
           additionalProperties:
-            $ref: '#/components/schemas/BlueprintUpdateVariableValue'
+            allOf:
+            - $ref: '#/components/schemas/BlueprintUpdateVariableValue'
+            nullable: true
           description: RFC 7396 patch map keyed by variable name. Non-null value upserts
             the variable; null value removes it. Absent keys are left untouched. Omitting
             the field entirely is equivalent to an empty map — no variables are modified.
@@ -25381,11 +25587,9 @@ components:
       type: object
     SecretAlias:
       example:
-        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: null
         scope: null
-        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: QOVERY_DATABASE_PSQL_NAME
       properties:
@@ -25396,27 +25600,15 @@ components:
           example: QOVERY_DATABASE_PSQL_NAME
           type: string
         mount_path:
+          nullable: true
           type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
-        description:
-          description: optional variable description (255 characters maximum)
-          maxLength: 255
-          nullable: true
-          type: string
-          x-stoplight:
-            id: 14nham449j6uk
-        enable_interpolation_in_file:
-          nullable: true
-          type: boolean
-          x-stoplight:
-            id: bm88z8ltgrcc6
       required:
       - id
       - key
-      - mount_path
       - scope
       - variable_type
       type: object
@@ -26194,6 +26386,9 @@ components:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
           build_settings:
             $ref: '#/components/schemas/BuildSettings'
+          startup_timeout:
+            default: 30
+            type: integer
         required:
         - healthchecks
         type: object
@@ -26302,6 +26497,7 @@ components:
           disable_buildkit_cache: false
           timeout_max_sec: 5
           ephemeral_storage_in_gib: 9
+        startup_timeout: 1
         icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
@@ -26553,8 +26749,8 @@ components:
             description: name is case insensitive
             type: string
           description:
+            default: ""
             description: give a description to this application
-            nullable: true
             type: string
           git_repository:
             $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
@@ -26604,12 +26800,12 @@ components:
           healthchecks:
             $ref: '#/components/schemas/Healthcheck'
           auto_preview:
-            default: true
             description: "Specify if the environment preview option is activated or\
               \ not for this application.  \nIf activated, a preview environment will\
               \ be automatically cloned at each pull request.  \nIf not specified,\
               \ it takes the value of the `auto_preview` property from the associated\
               \ environment.\n"
+            nullable: true
             type: boolean
           arguments:
             items:
@@ -26649,6 +26845,9 @@ components:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
           build_settings:
             $ref: '#/components/schemas/BuildSettings'
+          startup_timeout:
+            default: 30
+            type: integer
         required:
         - git_repository
         - healthchecks
@@ -26706,7 +26905,7 @@ components:
                 port: 7
                 service: service
             timeout_seconds: 2
-        description: description
+        description: ""
         max_running_instances: 6
         git_repository:
           root_path: /
@@ -26759,6 +26958,7 @@ components:
           disable_buildkit_cache: false
           timeout_max_sec: 5
           ephemeral_storage_in_gib: 9
+        startup_timeout: 3
         icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
@@ -27448,109 +27648,11 @@ components:
           status:
             $ref: '#/components/schemas/Status'
         type: object
-      example:
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        name: name
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        message: message
-        status:
-          deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          execution_id: execution_id
-          deployment_requests_count: 0
-          last_deployment_date: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: BUILDING
-          steps:
-            total_duration_sec: 0
-            total_computing_duration_sec: 6
-            details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
-              started_at: 2000-01-23T04:56:07.000+00:00
-              duration_sec: 1
-              status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
-              started_at: 2000-01-23T04:56:07.000+00:00
-              duration_sec: 1
-              status: ONGOING
-          status_details:
-            sub_action: NONE
-            action: DEPLOY
-            status: QUEUED
-          is_part_last_deployment: true
-          service_deployment_status: NEVER_DEPLOYED
     BackupPaginatedResponseList:
       allOf:
       - $ref: '#/components/schemas/PaginationData'
       - $ref: '#/components/schemas/BackupResponseList'
-      example:
-        page: 1
-        results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          message: message
-          status:
-            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            execution_id: execution_id
-            deployment_requests_count: 0
-            last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: BUILDING
-            steps:
-              total_duration_sec: 0
-              total_computing_duration_sec: 6
-              details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
-                started_at: 2000-01-23T04:56:07.000+00:00
-                duration_sec: 1
-                status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
-                started_at: 2000-01-23T04:56:07.000+00:00
-                duration_sec: 1
-                status: ONGOING
-            status_details:
-              sub_action: NONE
-              action: DEPLOY
-              status: QUEUED
-            is_part_last_deployment: true
-            service_deployment_status: NEVER_DEPLOYED
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          name: name
-          created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          message: message
-          status:
-            deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            execution_id: execution_id
-            deployment_requests_count: 0
-            last_deployment_date: 2000-01-23T04:56:07.000+00:00
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            state: BUILDING
-            steps:
-              total_duration_sec: 0
-              total_computing_duration_sec: 6
-              details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
-                started_at: 2000-01-23T04:56:07.000+00:00
-                duration_sec: 1
-                status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
-                started_at: 2000-01-23T04:56:07.000+00:00
-                duration_sec: 1
-                status: ONGOING
-            status_details:
-              sub_action: NONE
-              action: DEPLOY
-              status: QUEUED
-            is_part_last_deployment: true
-            service_deployment_status: NEVER_DEPLOYED
-        page_size: 20
     BackupRequest:
-      example:
-        name: name
-        message: message
       properties:
         name:
           type: string
@@ -28503,28 +28605,32 @@ components:
       type: object
     ClusterKarpenterPrivateSubnetIdsPutRequest:
       example:
-        eks_karpenter_fargate_subnets_zone_b_ids:
-        - eks_karpenter_fargate_subnets_zone_b_ids
-        - eks_karpenter_fargate_subnets_zone_b_ids
-        eks_karpenter_fargate_subnets_zone_c_ids:
-        - eks_karpenter_fargate_subnets_zone_c_ids
-        - eks_karpenter_fargate_subnets_zone_c_ids
-        eks_karpenter_fargate_subnets_zone_a_ids:
-        - eks_karpenter_fargate_subnets_zone_a_ids
-        - eks_karpenter_fargate_subnets_zone_a_ids
+        eks_private_subnets_zone_a_ids:
+        - eks_private_subnets_zone_a_ids
+        - eks_private_subnets_zone_a_ids
+        eks_private_subnets_zone_b_ids:
+        - eks_private_subnets_zone_b_ids
+        - eks_private_subnets_zone_b_ids
+        eks_private_subnets_zone_c_ids:
+        - eks_private_subnets_zone_c_ids
+        - eks_private_subnets_zone_c_ids
       properties:
-        eks_karpenter_fargate_subnets_zone_a_ids:
+        eks_private_subnets_zone_a_ids:
           items:
             type: string
           type: array
-        eks_karpenter_fargate_subnets_zone_b_ids:
+        eks_private_subnets_zone_b_ids:
           items:
             type: string
           type: array
-        eks_karpenter_fargate_subnets_zone_c_ids:
+        eks_private_subnets_zone_c_ids:
           items:
             type: string
           type: array
+      required:
+      - eks_private_subnets_zone_a_ids
+      - eks_private_subnets_zone_b_ids
+      - eks_private_subnets_zone_c_ids
       type: object
     ClusterCredentials:
       discriminator:
@@ -29096,8 +29202,6 @@ components:
           type: array
       type: object
     ClusterReadinessStatus:
-      example:
-        is_ready: true
       properties:
         is_ready:
           type: boolean
@@ -29212,6 +29316,7 @@ components:
         disk_size: 50
         cloud_provider: AWS
         disk_iops: 7800
+        is_demo: false
         metrics_parameters:
           configuration:
             kind: MANAGED_BY_QOVERY
@@ -29229,6 +29334,9 @@ components:
               spec_config_secret: spec_config_secret
               enabled: true
           enabled: true
+        wide_permissions_dto:
+          wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          using_restrictive_permissions: false
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: ClusterRequest_features_inner_value
@@ -29278,7 +29386,7 @@ components:
           default: 1
           type: integer
         max_running_nodes:
-          default: 1
+          default: 10
           type: integer
         disk_size:
           default: 40
@@ -29338,10 +29446,28 @@ components:
             $ref: '#/components/schemas/SecretManagerAccessRequest'
           title: SecretManagerAccessRequestList
           type: array
+        is_demo:
+          default: false
+          type: boolean
+        wide_permissions_dto:
+          $ref: '#/components/schemas/WidePermissionsDto'
       required:
       - cloud_provider
       - name
       - region
+      type: object
+    WidePermissionsDto:
+      example:
+        wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        using_restrictive_permissions: false
+      properties:
+        using_restrictive_permissions:
+          default: false
+          type: boolean
+        wide_scope_cloud_account_id:
+          format: uuid
+          nullable: true
+          type: string
       type: object
     ClusterResponseList:
       example:
@@ -30332,19 +30458,6 @@ components:
       - SELF_MANAGED
       type: string
     ClusterOperatorFleetInventoryResponse:
-      example:
-        connected: true
-        cluster_name: cluster_name
-        cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        reported_image_version: reported_image_version
-        desired_chart_version: desired_chart_version
-        reported_chart_version: reported_chart_version
-        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        attached: true
-        desired_image_version: desired_image_version
-        cluster_kind: EKS_SELF_MANAGED
-        last_heartbeat: 2000-01-23T04:56:07.000+00:00
-        status: NOT_ATTACHED
       properties:
         organization_id:
           format: uuid
@@ -30392,32 +30505,6 @@ components:
       - status
       type: object
     ClusterOperatorFleetInventoryResponseList:
-      example:
-        results:
-        - connected: true
-          cluster_name: cluster_name
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          reported_image_version: reported_image_version
-          desired_chart_version: desired_chart_version
-          reported_chart_version: reported_chart_version
-          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attached: true
-          desired_image_version: desired_image_version
-          cluster_kind: EKS_SELF_MANAGED
-          last_heartbeat: 2000-01-23T04:56:07.000+00:00
-          status: NOT_ATTACHED
-        - connected: true
-          cluster_name: cluster_name
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          reported_image_version: reported_image_version
-          desired_chart_version: desired_chart_version
-          reported_chart_version: reported_chart_version
-          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          attached: true
-          desired_image_version: desired_image_version
-          cluster_kind: EKS_SELF_MANAGED
-          last_heartbeat: 2000-01-23T04:56:07.000+00:00
-          status: NOT_ATTACHED
       properties:
         results:
           items:
@@ -31142,13 +31229,17 @@ components:
       type: object
     ContainerDeployRequest:
       example:
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         image_tag: image_tag
       properties:
+        id:
+          format: uuid
+          nullable: true
+          type: string
         image_tag:
           description: Image tag to deploy
+          nullable: true
           type: string
-      required:
-      - image_tag
       type: object
     ContainerRegistryKindEnum:
       description: The type of your container registry
@@ -32354,7 +32445,6 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        registry_id: registry_id
         image_name: image_name
         updated_at: 2000-01-23T04:56:07.000+00:00
         annotations_groups:
@@ -32550,7 +32640,6 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          registry_id: registry_id
           image_name: image_name
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -32743,7 +32832,6 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             internal_port: 8080
             is_default: true
-          registry_id: registry_id
           image_name: image_name
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -32848,7 +32936,6 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           url: url
         tag: tag
-        registry_id: registry_id
       properties:
         image_name:
           description: |
@@ -32859,9 +32946,6 @@ components:
             * `PUBLIC_ECR`: `registry_alias/repository`
           type: string
         tag:
-          description: tag of the image container
-          type: string
-        registry_id:
           description: tag of the image container
           type: string
         registry:
@@ -32892,12 +32976,6 @@ components:
       - total_in_cents
       type: object
     CostRange:
-      example:
-        max_cost: 300
-        min_cost: 150
-        min_cost_in_cents: 15000
-        max_cost_in_cents: 30000
-        currency_code: USD
       properties:
         min_cost_in_cents:
           example: 15000
@@ -35437,18 +35515,6 @@ components:
           $ref: '#/components/schemas/CreateEnvironmentModeEnum'
       type: object
     EnvironmentLog:
-      example:
-        execution_id: execution_id
-        scope:
-          name: name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          type: APPLICATION
-        hint: only for errors. it gives a possible action to the user -- Markdown
-          can be injected
-        created_at: 2000-01-23T04:56:07.000+00:00
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        state: CANCELED
-        message: message
       properties:
         id:
           format: uuid
@@ -35524,30 +35590,6 @@ components:
       - type
       type: object
     EnvironmentLogResponseList:
-      example:
-        results:
-        - execution_id: execution_id
-          scope:
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            type: APPLICATION
-          hint: only for errors. it gives a possible action to the user -- Markdown
-            can be injected
-          created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: CANCELED
-          message: message
-        - execution_id: execution_id
-          scope:
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            type: APPLICATION
-          hint: only for errors. it gives a possible action to the user -- Markdown
-            can be injected
-          created_at: 2000-01-23T04:56:07.000+00:00
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          state: CANCELED
-          message: message
       properties:
         results:
           items:
@@ -38823,7 +38865,6 @@ components:
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url: url
               tag: tag
-              registry_id: registry_id
           max_nb_restart: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -38971,7 +39012,6 @@ components:
                 id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
                 url: url
               tag: tag
-              registry_id: registry_id
           max_nb_restart: 0
           updated_at: 2000-01-23T04:56:07.000+00:00
           annotations_groups:
@@ -39119,8 +39159,13 @@ components:
     JobDeployRequest:
       example:
         git_commit_id: git_commit_id
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         image_tag: image_tag
       properties:
+        id:
+          format: uuid
+          nullable: true
+          type: string
         image_tag:
           description: "Image tag to deploy.  \nCannot be set if `git_commit_id` is\
             \ defined\n"
@@ -39967,9 +40012,14 @@ components:
     HelmDeployRequest:
       example:
         git_commit_id: git_commit_id
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         chart_version: chart_version
         values_override_git_commit_id: values_override_git_commit_id
       properties:
+        id:
+          format: uuid
+          nullable: true
+          type: string
         chart_version:
           description: |
             version of the chart to deploy.
@@ -40213,12 +40263,6 @@ components:
       - TERRAFORM
       type: string
     Log:
-      example:
-        created_at: 2022-04-19T15:36:12.024Z
-        id: 4aa76065-68b3-41ef-aa1d-46be67012bef
-        message: message
-        version: 2bfd61fe45946c74f318050b26210be486c43a39
-        pod_name: app-z4aa76065-57d84cbbdb-xcg8v
       properties:
         id:
           example: 4aa76065-68b3-41ef-aa1d-46be67012bef
@@ -40233,7 +40277,7 @@ components:
         pod_name:
           example: app-z4aa76065-57d84cbbdb-xcg8v
           type: string
-        version:
+        application_commit_id:
           example: 2bfd61fe45946c74f318050b26210be486c43a39
           type: string
       required:
@@ -40242,18 +40286,6 @@ components:
       - message
       type: object
     LogResponseList:
-      example:
-        results:
-        - created_at: 2022-04-19T15:36:12.024Z
-          id: 4aa76065-68b3-41ef-aa1d-46be67012bef
-          message: message
-          version: 2bfd61fe45946c74f318050b26210be486c43a39
-          pod_name: app-z4aa76065-57d84cbbdb-xcg8v
-        - created_at: 2022-04-19T15:36:12.024Z
-          id: 4aa76065-68b3-41ef-aa1d-46be67012bef
-          message: message
-          version: 2bfd61fe45946c74f318050b26210be486c43a39
-          pod_name: app-z4aa76065-57d84cbbdb-xcg8v
       properties:
         results:
           items:
@@ -40424,7 +40456,6 @@ components:
           audit_logs_retention_in_days: 0.8008281904610115
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        repository: repository
         has_enterprise_connection: true
         admin_emails:
         - admin_emails
@@ -40956,7 +40987,6 @@ components:
         logo_url: logo_url
         name: name
         description: description
-        repository: repository
       properties:
         name:
           description: name is case insensitive
@@ -40964,9 +40994,6 @@ components:
         description:
           type: string
         website_url:
-          nullable: true
-          type: string
-        repository:
           nullable: true
           type: string
         logo_url:
@@ -41007,7 +41034,6 @@ components:
         logo_url: logo_url
         name: name
         description: description
-        repository: repository
         plan: FREE
       properties:
         name:
@@ -41019,9 +41045,6 @@ components:
         plan:
           $ref: '#/components/schemas/PlanEnum'
         website_url:
-          nullable: true
-          type: string
-        repository:
           nullable: true
           type: string
         logo_url:
@@ -41051,7 +41074,6 @@ components:
             audit_logs_retention_in_days: 0.8008281904610115
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          repository: repository
           has_enterprise_connection: true
           admin_emails:
           - admin_emails
@@ -41070,7 +41092,6 @@ components:
             audit_logs_retention_in_days: 0.8008281904610115
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          repository: repository
           has_enterprise_connection: true
           admin_emails:
           - admin_emails
@@ -41394,11 +41415,9 @@ components:
       type: string
     SecretOverride:
       example:
-        enable_interpolation_in_file: true
         mount_path: mount_path
         variable_type: VALUE
         scope: APPLICATION
-        description: description
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         key: key
       properties:
@@ -41408,27 +41427,15 @@ components:
         key:
           type: string
         mount_path:
+          nullable: true
           type: string
         scope:
           $ref: '#/components/schemas/APIVariableScopeEnum'
         variable_type:
           $ref: '#/components/schemas/APIVariableTypeEnum'
-        description:
-          description: optional variable description (255 characters maximum)
-          maxLength: 255
-          nullable: true
-          type: string
-          x-stoplight:
-            id: edfpfqj87ezos
-        enable_interpolation_in_file:
-          nullable: true
-          type: boolean
-          x-stoplight:
-            id: ls2iylkcayehn
       required:
       - id
       - key
-      - mount_path
       - scope
       - variable_type
       type: object
@@ -42570,11 +42577,9 @@ components:
         owned_by: owned_by
         service_type: APPLICATION
         aliased_secret:
-          enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: null
           scope: null
-          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: QOVERY_DATABASE_PSQL_NAME
         updated_at: 2000-01-23T04:56:07.000+00:00
@@ -42582,17 +42587,16 @@ components:
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         overridden_secret:
-          enable_interpolation_in_file: true
           mount_path: mount_path
           variable_type: VALUE
           scope: APPLICATION
-          description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           key: key
         key: key
     SecretEditRequest:
       example:
         enable_interpolation_in_file: true
+        mount_path: mount_path
         description: description
         value: value
         key: key
@@ -42600,6 +42604,9 @@ components:
         value:
           type: string
         key:
+          type: string
+        mount_path:
+          nullable: true
           type: string
         description:
           description: optional variable description (255 characters maximum)
@@ -42661,11 +42668,9 @@ components:
           owned_by: owned_by
           service_type: APPLICATION
           aliased_secret:
-            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: null
             scope: null
-            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -42673,11 +42678,9 @@ components:
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
-            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
-            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: key
           key: key
@@ -42689,11 +42692,9 @@ components:
           owned_by: owned_by
           service_type: APPLICATION
           aliased_secret:
-            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: null
             scope: null
-            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: QOVERY_DATABASE_PSQL_NAME
           updated_at: 2000-01-23T04:56:07.000+00:00
@@ -42701,11 +42702,9 @@ components:
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           overridden_secret:
-            enable_interpolation_in_file: true
             mount_path: mount_path
             variable_type: VALUE
             scope: APPLICATION
-            description: description
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             key: key
           key: key
@@ -43117,14 +43116,6 @@ components:
       - WORK
       type: string
     User:
-      example:
-        updated_at: 2000-01-23T04:56:07.000+00:00
-        profile_picture_url: https://openapi-generator.tech
-        created_at: 2000-01-23T04:56:07.000+00:00
-        last_name: last_name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        first_name: first_name
-        email: email
       properties:
         id:
           format: uuid
@@ -43150,22 +43141,6 @@ components:
           type: string
       type: object
     UserResponseList:
-      example:
-        results:
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          profile_picture_url: https://openapi-generator.tech
-          created_at: 2000-01-23T04:56:07.000+00:00
-          last_name: last_name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          first_name: first_name
-          email: email
-        - updated_at: 2000-01-23T04:56:07.000+00:00
-          profile_picture_url: https://openapi-generator.tech
-          created_at: 2000-01-23T04:56:07.000+00:00
-          last_name: last_name
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          first_name: first_name
-          email: email
       properties:
         results:
           items:
@@ -43813,9 +43788,6 @@ components:
       - EXECUTING
       type: string
     OrganizationJobAutoDeployRequest:
-      example:
-        image_name: image_name
-        tag: tag
       properties:
         image_name:
           description: the job image name to deploy
@@ -43952,7 +43924,6 @@ components:
               id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
               url: url
             tag: tag
-            registry_id: registry_id
         max_nb_restart: 0
         updated_at: 2000-01-23T04:56:07.000+00:00
         annotations_groups:
@@ -45904,10 +45875,10 @@ components:
       type: object
     IngressDeploymentStatusResponse:
       example:
-        routerId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        router_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: BUILDING
       properties:
-        routerId:
+        router_id:
           format: uuid
           type: string
           x-stoplight:
@@ -46049,6 +46020,7 @@ components:
         auto_deploy_config:
           auto_deploy: true
           terraform_action: DEFAULT
+        auto_deploy: true
         job_resources:
           cpu_milli: 6
           ram_mib: 1
@@ -46057,7 +46029,7 @@ components:
         dockerfile_fragment:
           path: /infra/terraform/custom-build.dockerfile
           type: file
-        description: description
+        description: ""
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
@@ -46085,6 +46057,7 @@ components:
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
+        auto_preview: true
         backend:
           kubernetes: "{}"
         terraform_files_source:
@@ -46103,11 +46076,18 @@ components:
           x-stoplight:
             id: 6mlmgpyzwe46t
         description:
+          default: ""
           type: string
           x-stoplight:
             id: ltvpnbhjz1oho
         auto_deploy_config:
           $ref: '#/components/schemas/TerraformAutoDeployConfig'
+        auto_deploy:
+          description: Legacy alternative to auto_deploy_config.
+          type: boolean
+        auto_preview:
+          nullable: true
+          type: boolean
         terraform_files_source:
           $ref: '#/components/schemas/TerraformRequest_terraform_files_source'
         terraform_variables_source:
@@ -46161,10 +46141,6 @@ components:
         build_settings:
           $ref: '#/components/schemas/BuildSettings'
       required:
-      - auto_deploy_config
-      - backend
-      - description
-      - engine
       - job_resources
       - name
       - provider_version
@@ -46178,6 +46154,11 @@ components:
       description: A Terraform resource from a deployment execution
       example:
         mode: managed
+        key_attributes:
+        - value: value
+          key: key
+        - value: value
+          key: key
         address: aws_instance.web_server
         provider: aws
         extracted_at: 2023-01-15T10:30:00Z
@@ -46227,6 +46208,10 @@ components:
             public_ip: 10.0.0.1
             private_ip: 172.31.0.1
           type: object
+        key_attributes:
+          items:
+            $ref: '#/components/schemas/TerraformResourceAttribute'
+          type: array
         extracted_at:
           description: Timestamp when the resource was extracted from Terraform state
           example: 2023-01-15T10:30:00Z
@@ -46237,17 +46222,36 @@ components:
       - attributes
       - extracted_at
       - id
+      - key_attributes
       - mode
       - name
       - provider
       - resource_type
       title: Terraform Resource Response
       type: object
+    TerraformResourceAttribute:
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+      required:
+      - key
+      - value
+      type: object
     TerraformResourcesResponse:
       description: List of Terraform resources from the latest deployment
       example:
         results:
         - mode: managed
+          key_attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
           address: aws_instance.web_server
           provider: aws
           extracted_at: 2023-01-15T10:30:00Z
@@ -46260,6 +46264,11 @@ components:
             private_ip: 172.31.0.1
           id: 550e8400-e29b-41d4-a716-446655440000
         - mode: managed
+          key_attributes:
+          - value: value
+            key: key
+          - value: value
+            key: key
           address: aws_instance.web_server
           provider: aws
           extracted_at: 2023-01-15T10:30:00Z
@@ -46281,35 +46290,6 @@ components:
       - results
       title: Terraform Resources List Response
       type: object
-    TerraformResourcesRequest:
-      description: Request to store terraform resources from engine after deployment
-      properties:
-        terraformId:
-          description: ID of the Terraform service
-          example: 550e8400-e29b-41d4-a716-446655440000
-          format: uuid
-          type: string
-        executionId:
-          description: |
-            Execution ID in format "UUID-version" or "UUID-version-timestamp"
-            Example: 550e8400-e29b-41d4-a716-446655440000-1
-          example: 550e8400-e29b-41d4-a716-446655440000-1
-          type: string
-        resourcesJson:
-          description: |
-            JSON array of terraform resources extracted from terraform show output.
-            Each resource contains: resource_type, name, provider, address, mode, attributes
-          example: "[{\"resource_type\":\"aws_instance\",\"name\":\"web_server\",\"\
-            provider\":\"aws\",\"address\":\"aws_instance.web_server\",\"mode\":\"\
-            managed\",\"attributes\":{\"instance_id\":\"i-1234567890abcdef0\",\"instance_type\"\
-            :\"t2.micro\"}}]"
-          type: string
-      required:
-      - executionId
-      - resourcesJson
-      - terraformId
-      title: Terraform Resources Request
-      type: object
     TerraformResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -46325,6 +46305,10 @@ components:
             minimum: 0
             type: integer
           auto_deploy:
+            type: boolean
+          auto_preview:
+            type: boolean
+          build_settings_editable:
             type: boolean
           auto_deploy_config:
             $ref: '#/components/schemas/TerraformAutoDeployConfig'
@@ -46439,6 +46423,7 @@ components:
         timeout_sec: 0
         use_cluster_credentials: true
         name: name
+        auto_preview: true
         backend:
           kubernetes: "{}"
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46458,6 +46443,7 @@ components:
               provider: BITBUCKET
               name: simple-node-app
               git_token_name: git_token_name
+        build_settings_editable: true
         action_extra_arguments:
           key:
           - action_extra_arguments
@@ -46624,16 +46610,6 @@ components:
       - source
       title: TerraformVariableDefinition
       type: object
-    TerraformFilesSourceRequest:
-      properties:
-        id:
-          type: string
-          x-stoplight:
-            id: vtpiblf7t37xq
-      title: TerraformFilesSourceRequest
-      type: object
-      x-stoplight:
-        id: n91jcyroi7kt4
     TerraformAutoDeployConfig:
       example:
         auto_deploy: true
@@ -46931,6 +46907,7 @@ components:
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
+          auto_preview: true
           backend:
             kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -46950,6 +46927,7 @@ components:
                 provider: BITBUCKET
                 name: simple-node-app
                 git_token_name: git_token_name
+          build_settings_editable: true
           action_extra_arguments:
             key:
             - action_extra_arguments
@@ -46997,6 +46975,7 @@ components:
           timeout_sec: 0
           use_cluster_credentials: true
           name: name
+          auto_preview: true
           backend:
             kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -47016,6 +46995,7 @@ components:
                 provider: BITBUCKET
                 name: simple-node-app
                 git_token_name: git_token_name
+          build_settings_editable: true
           action_extra_arguments:
             key:
             - action_extra_arguments
@@ -47967,18 +47947,7 @@ components:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         target:
-          service:
-            job_type: CRON
-            service_type: APPLICATION
-            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            description: description
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            project_name: project_name
-            icon_uri: https://openapi-generator.tech
-            environment_name: environment_name
+          service: ""
           target_type: ' CLUSTER'
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -48303,18 +48272,7 @@ components:
         source: MANAGED
         enabled: true
         target:
-          service:
-            job_type: CRON
-            service_type: APPLICATION
-            cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            name: name
-            description: description
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            project_name: project_name
-            icon_uri: https://openapi-generator.tech
-            environment_name: environment_name
+          service: ""
           target_type: ' CLUSTER'
           target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         presentation:
@@ -48375,18 +48333,7 @@ components:
         id: y45ivkwhr7wb4
     AlertTarget:
       example:
-        service:
-          job_type: CRON
-          service_type: APPLICATION
-          cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          name: name
-          description: description
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          project_name: project_name
-          icon_uri: https://openapi-generator.tech
-          environment_name: environment_name
+        service: ""
         target_type: ' CLUSTER'
         target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -48398,7 +48345,10 @@ components:
           x-stoplight:
             id: 8begp36fsknxq
         service:
-          $ref: '#/components/schemas/ServiceLightResponse'
+          allOf:
+          - $ref: '#/components/schemas/ServiceLightResponse'
+          description: "Service details when target_type is APPLICATION, CONTAINER,\
+            \ JOB, CRONJOB, HELM or TERRAFORM"
       required:
       - target_id
       - target_type
@@ -48431,18 +48381,7 @@ components:
           source: MANAGED
           enabled: true
           target:
-            service:
-              job_type: CRON
-              service_type: APPLICATION
-              cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              name: name
-              description: description
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              project_name: project_name
-              icon_uri: https://openapi-generator.tech
-              environment_name: environment_name
+            service: ""
             target_type: ' CLUSTER'
             target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           presentation:
@@ -48473,18 +48412,7 @@ components:
           source: MANAGED
           enabled: true
           target:
-            service:
-              job_type: CRON
-              service_type: APPLICATION
-              cluster_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              name: name
-              description: description
-              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-              project_name: project_name
-              icon_uri: https://openapi-generator.tech
-              environment_name: environment_name
+            service: ""
             target_type: ' CLUSTER'
             target_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           presentation:
@@ -51517,6 +51445,11 @@ components:
       description: "Mandatory bootstrap component and its configurable fields, when\
         \ declared by the template."
       example:
+        dependsOn:
+        - component: component
+          kind: REQUIRES
+        - component: component
+          kind: REQUIRES
         kind: HELM
         configurationSections:
         - fieldKeys:
@@ -52543,10 +52476,6 @@ components:
           type: string
       type: object
     EnvironmentLog_scope:
-      example:
-        name: name
-        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        type: APPLICATION
       properties:
         type:
           $ref: '#/components/schemas/EnvironmentLogTypeEnum'
@@ -53692,7 +53621,6 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             url: url
           tag: tag
-          registry_id: registry_id
       properties:
         image:
           $ref: '#/components/schemas/ContainerSource'

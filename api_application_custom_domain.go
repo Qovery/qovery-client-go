@@ -505,27 +505,29 @@ func (a *ApplicationCustomDomainAPIService) EditCustomDomainExecute(r ApiEditCus
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiGetCustomDomainStatusRequest struct {
+type ApiGetApplicationCustomDomainRequest struct {
 	ctx            context.Context
 	ApiService     *ApplicationCustomDomainAPIService
 	applicationId  string
 	customDomainId string
 }
 
-func (r ApiGetCustomDomainStatusRequest) Execute() (*CustomDomain, *http.Response, error) {
-	return r.ApiService.GetCustomDomainStatusExecute(r)
+func (r ApiGetApplicationCustomDomainRequest) Execute() (*CustomDomain, *http.Response, error) {
+	return r.ApiService.GetApplicationCustomDomainExecute(r)
 }
 
 /*
-GetCustomDomainStatus Get Custom Domain status
+GetApplicationCustomDomain Get an application custom domain
+
+Get a custom domain attached to an application.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param applicationId Application ID
 	@param customDomainId Custom Domain ID
-	@return ApiGetCustomDomainStatusRequest
+	@return ApiGetApplicationCustomDomainRequest
 */
-func (a *ApplicationCustomDomainAPIService) GetCustomDomainStatus(ctx context.Context, applicationId string, customDomainId string) ApiGetCustomDomainStatusRequest {
-	return ApiGetCustomDomainStatusRequest{
+func (a *ApplicationCustomDomainAPIService) GetApplicationCustomDomain(ctx context.Context, applicationId string, customDomainId string) ApiGetApplicationCustomDomainRequest {
+	return ApiGetApplicationCustomDomainRequest{
 		ApiService:     a,
 		ctx:            ctx,
 		applicationId:  applicationId,
@@ -536,7 +538,7 @@ func (a *ApplicationCustomDomainAPIService) GetCustomDomainStatus(ctx context.Co
 // Execute executes the request
 //
 //	@return CustomDomain
-func (a *ApplicationCustomDomainAPIService) GetCustomDomainStatusExecute(r ApiGetCustomDomainStatusRequest) (*CustomDomain, *http.Response, error) {
+func (a *ApplicationCustomDomainAPIService) GetApplicationCustomDomainExecute(r ApiGetApplicationCustomDomainRequest) (*CustomDomain, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -544,12 +546,12 @@ func (a *ApplicationCustomDomainAPIService) GetCustomDomainStatusExecute(r ApiGe
 		localVarReturnValue *CustomDomain
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationCustomDomainAPIService.GetCustomDomainStatus")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ApplicationCustomDomainAPIService.GetApplicationCustomDomain")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/application/{applicationId}/customDomain/{customDomainId}/status"
+	localVarPath := localBasePath + "/application/{applicationId}/customDomain/{customDomainId}"
 	localVarPath = strings.Replace(localVarPath, "{"+"applicationId"+"}", url.PathEscape(parameterValueToString(r.applicationId, "applicationId")), -1)
 	localVarPath = strings.Replace(localVarPath, "{"+"customDomainId"+"}", url.PathEscape(parameterValueToString(r.customDomainId, "customDomainId")), -1)
 

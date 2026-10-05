@@ -21,13 +21,16 @@ var _ MappedNullable = &TerraformRequest{}
 
 // TerraformRequest struct for TerraformRequest
 type TerraformRequest struct {
-	Name                     string                               `json:"name"`
-	Description              string                               `json:"description"`
-	AutoDeployConfig         TerraformAutoDeployConfig            `json:"auto_deploy_config"`
+	Name             string                     `json:"name"`
+	Description      *string                    `json:"description,omitempty"`
+	AutoDeployConfig *TerraformAutoDeployConfig `json:"auto_deploy_config,omitempty"`
+	// Legacy alternative to auto_deploy_config.
+	AutoDeploy               *bool                                `json:"auto_deploy,omitempty"`
+	AutoPreview              NullableBool                         `json:"auto_preview,omitempty"`
 	TerraformFilesSource     TerraformRequestTerraformFilesSource `json:"terraform_files_source"`
 	TerraformVariablesSource TerraformVariablesSourceRequest      `json:"terraform_variables_source"`
-	Backend                  TerraformBackend                     `json:"backend"`
-	Engine                   TerraformEngineEnum                  `json:"engine"`
+	Backend                  *TerraformBackend                    `json:"backend,omitempty"`
+	Engine                   *TerraformEngineEnum                 `json:"engine,omitempty"`
 	ProviderVersion          TerraformProviderVersion             `json:"provider_version"`
 	TimeoutSec               *int32                               `json:"timeout_sec,omitempty"`
 	IconUri                  *string                              `json:"icon_uri,omitempty"`
@@ -48,15 +51,13 @@ type _TerraformRequest TerraformRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewTerraformRequest(name string, description string, autoDeployConfig TerraformAutoDeployConfig, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, backend TerraformBackend, engine TerraformEngineEnum, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
+func NewTerraformRequest(name string, terraformFilesSource TerraformRequestTerraformFilesSource, terraformVariablesSource TerraformVariablesSourceRequest, providerVersion TerraformProviderVersion, jobResources TerraformRequestJobResources) *TerraformRequest {
 	this := TerraformRequest{}
 	this.Name = name
-	this.Description = description
-	this.AutoDeployConfig = autoDeployConfig
+	var description string = ""
+	this.Description = &description
 	this.TerraformFilesSource = terraformFilesSource
 	this.TerraformVariablesSource = terraformVariablesSource
-	this.Backend = backend
-	this.Engine = engine
 	this.ProviderVersion = providerVersion
 	this.JobResources = jobResources
 	return &this
@@ -67,6 +68,8 @@ func NewTerraformRequest(name string, description string, autoDeployConfig Terra
 // but it doesn't guarantee that properties required by API are set
 func NewTerraformRequestWithDefaults() *TerraformRequest {
 	this := TerraformRequest{}
+	var description string = ""
+	this.Description = &description
 	return &this
 }
 
@@ -94,52 +97,143 @@ func (o *TerraformRequest) SetName(v string) {
 	o.Name = v
 }
 
-// GetDescription returns the Description field value
+// GetDescription returns the Description field value if set, zero value otherwise.
 func (o *TerraformRequest) GetDescription() string {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		var ret string
 		return ret
 	}
-
-	return o.Description
+	return *o.Description
 }
 
-// GetDescriptionOk returns a tuple with the Description field value
+// GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetDescriptionOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
-	return &o.Description, true
+	return o.Description, true
 }
 
-// SetDescription sets field value
+// HasDescription returns a boolean if a field has been set.
+func (o *TerraformRequest) HasDescription() bool {
+	if o != nil && !IsNil(o.Description) {
+		return true
+	}
+
+	return false
+}
+
+// SetDescription gets a reference to the given string and assigns it to the Description field.
 func (o *TerraformRequest) SetDescription(v string) {
-	o.Description = v
+	o.Description = &v
 }
 
-// GetAutoDeployConfig returns the AutoDeployConfig field value
+// GetAutoDeployConfig returns the AutoDeployConfig field value if set, zero value otherwise.
 func (o *TerraformRequest) GetAutoDeployConfig() TerraformAutoDeployConfig {
-	if o == nil {
+	if o == nil || IsNil(o.AutoDeployConfig) {
 		var ret TerraformAutoDeployConfig
 		return ret
 	}
-
-	return o.AutoDeployConfig
+	return *o.AutoDeployConfig
 }
 
-// GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field value
+// GetAutoDeployConfigOk returns a tuple with the AutoDeployConfig field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetAutoDeployConfigOk() (*TerraformAutoDeployConfig, bool) {
+	if o == nil || IsNil(o.AutoDeployConfig) {
+		return nil, false
+	}
+	return o.AutoDeployConfig, true
+}
+
+// HasAutoDeployConfig returns a boolean if a field has been set.
+func (o *TerraformRequest) HasAutoDeployConfig() bool {
+	if o != nil && !IsNil(o.AutoDeployConfig) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeployConfig gets a reference to the given TerraformAutoDeployConfig and assigns it to the AutoDeployConfig field.
+func (o *TerraformRequest) SetAutoDeployConfig(v TerraformAutoDeployConfig) {
+	o.AutoDeployConfig = &v
+}
+
+// GetAutoDeploy returns the AutoDeploy field value if set, zero value otherwise.
+func (o *TerraformRequest) GetAutoDeploy() bool {
+	if o == nil || IsNil(o.AutoDeploy) {
+		var ret bool
+		return ret
+	}
+	return *o.AutoDeploy
+}
+
+// GetAutoDeployOk returns a tuple with the AutoDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformRequest) GetAutoDeployOk() (*bool, bool) {
+	if o == nil || IsNil(o.AutoDeploy) {
+		return nil, false
+	}
+	return o.AutoDeploy, true
+}
+
+// HasAutoDeploy returns a boolean if a field has been set.
+func (o *TerraformRequest) HasAutoDeploy() bool {
+	if o != nil && !IsNil(o.AutoDeploy) {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoDeploy gets a reference to the given bool and assigns it to the AutoDeploy field.
+func (o *TerraformRequest) SetAutoDeploy(v bool) {
+	o.AutoDeploy = &v
+}
+
+// GetAutoPreview returns the AutoPreview field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *TerraformRequest) GetAutoPreview() bool {
+	if o == nil || IsNil(o.AutoPreview.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.AutoPreview.Get()
+}
+
+// GetAutoPreviewOk returns a tuple with the AutoPreview field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *TerraformRequest) GetAutoPreviewOk() (*bool, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.AutoDeployConfig, true
+	return o.AutoPreview.Get(), o.AutoPreview.IsSet()
 }
 
-// SetAutoDeployConfig sets field value
-func (o *TerraformRequest) SetAutoDeployConfig(v TerraformAutoDeployConfig) {
-	o.AutoDeployConfig = v
+// HasAutoPreview returns a boolean if a field has been set.
+func (o *TerraformRequest) HasAutoPreview() bool {
+	if o != nil && o.AutoPreview.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAutoPreview gets a reference to the given NullableBool and assigns it to the AutoPreview field.
+func (o *TerraformRequest) SetAutoPreview(v bool) {
+	o.AutoPreview.Set(&v)
+}
+
+// SetAutoPreviewNil sets the value for AutoPreview to be an explicit nil
+func (o *TerraformRequest) SetAutoPreviewNil() {
+	o.AutoPreview.Set(nil)
+}
+
+// UnsetAutoPreview ensures that no value is present for AutoPreview, not even an explicit nil
+func (o *TerraformRequest) UnsetAutoPreview() {
+	o.AutoPreview.Unset()
 }
 
 // GetTerraformFilesSource returns the TerraformFilesSource field value
@@ -190,52 +284,68 @@ func (o *TerraformRequest) SetTerraformVariablesSource(v TerraformVariablesSourc
 	o.TerraformVariablesSource = v
 }
 
-// GetBackend returns the Backend field value
+// GetBackend returns the Backend field value if set, zero value otherwise.
 func (o *TerraformRequest) GetBackend() TerraformBackend {
-	if o == nil {
+	if o == nil || IsNil(o.Backend) {
 		var ret TerraformBackend
 		return ret
 	}
-
-	return o.Backend
+	return *o.Backend
 }
 
-// GetBackendOk returns a tuple with the Backend field value
+// GetBackendOk returns a tuple with the Backend field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetBackendOk() (*TerraformBackend, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Backend) {
 		return nil, false
 	}
-	return &o.Backend, true
+	return o.Backend, true
 }
 
-// SetBackend sets field value
+// HasBackend returns a boolean if a field has been set.
+func (o *TerraformRequest) HasBackend() bool {
+	if o != nil && !IsNil(o.Backend) {
+		return true
+	}
+
+	return false
+}
+
+// SetBackend gets a reference to the given TerraformBackend and assigns it to the Backend field.
 func (o *TerraformRequest) SetBackend(v TerraformBackend) {
-	o.Backend = v
+	o.Backend = &v
 }
 
-// GetEngine returns the Engine field value
+// GetEngine returns the Engine field value if set, zero value otherwise.
 func (o *TerraformRequest) GetEngine() TerraformEngineEnum {
-	if o == nil {
+	if o == nil || IsNil(o.Engine) {
 		var ret TerraformEngineEnum
 		return ret
 	}
-
-	return o.Engine
+	return *o.Engine
 }
 
-// GetEngineOk returns a tuple with the Engine field value
+// GetEngineOk returns a tuple with the Engine field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *TerraformRequest) GetEngineOk() (*TerraformEngineEnum, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Engine) {
 		return nil, false
 	}
-	return &o.Engine, true
+	return o.Engine, true
 }
 
-// SetEngine sets field value
+// HasEngine returns a boolean if a field has been set.
+func (o *TerraformRequest) HasEngine() bool {
+	if o != nil && !IsNil(o.Engine) {
+		return true
+	}
+
+	return false
+}
+
+// SetEngine gets a reference to the given TerraformEngineEnum and assigns it to the Engine field.
 func (o *TerraformRequest) SetEngine(v TerraformEngineEnum) {
-	o.Engine = v
+	o.Engine = &v
 }
 
 // GetProviderVersion returns the ProviderVersion field value
@@ -543,12 +653,26 @@ func (o TerraformRequest) MarshalJSON() ([]byte, error) {
 func (o TerraformRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["name"] = o.Name
-	toSerialize["description"] = o.Description
-	toSerialize["auto_deploy_config"] = o.AutoDeployConfig
+	if !IsNil(o.Description) {
+		toSerialize["description"] = o.Description
+	}
+	if !IsNil(o.AutoDeployConfig) {
+		toSerialize["auto_deploy_config"] = o.AutoDeployConfig
+	}
+	if !IsNil(o.AutoDeploy) {
+		toSerialize["auto_deploy"] = o.AutoDeploy
+	}
+	if o.AutoPreview.IsSet() {
+		toSerialize["auto_preview"] = o.AutoPreview.Get()
+	}
 	toSerialize["terraform_files_source"] = o.TerraformFilesSource
 	toSerialize["terraform_variables_source"] = o.TerraformVariablesSource
-	toSerialize["backend"] = o.Backend
-	toSerialize["engine"] = o.Engine
+	if !IsNil(o.Backend) {
+		toSerialize["backend"] = o.Backend
+	}
+	if !IsNil(o.Engine) {
+		toSerialize["engine"] = o.Engine
+	}
 	toSerialize["provider_version"] = o.ProviderVersion
 	if !IsNil(o.TimeoutSec) {
 		toSerialize["timeout_sec"] = o.TimeoutSec
@@ -586,12 +710,8 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"description",
-		"auto_deploy_config",
 		"terraform_files_source",
 		"terraform_variables_source",
-		"backend",
-		"engine",
 		"provider_version",
 		"job_resources",
 	}
@@ -626,6 +746,8 @@ func (o *TerraformRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "name")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "auto_deploy_config")
+		delete(additionalProperties, "auto_deploy")
+		delete(additionalProperties, "auto_preview")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "terraform_variables_source")
 		delete(additionalProperties, "backend")

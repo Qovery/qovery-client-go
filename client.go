@@ -51,6 +51,8 @@ type APIClient struct {
 
 	AccountInfoAPI *AccountInfoAPIService
 
+	AdminAPI *AdminAPIService
+
 	AgenticWorkflowsAPI *AgenticWorkflowsAPIService
 
 	AlertReceiversAPI *AlertReceiversAPIService
@@ -69,8 +71,6 @@ type APIClient struct {
 
 	ApplicationEnvironmentVariableAPI *ApplicationEnvironmentVariableAPIService
 
-	ApplicationLogsAPI *ApplicationLogsAPIService
-
 	ApplicationMainCallsAPI *ApplicationMainCallsAPIService
 
 	ApplicationSecretAPI *ApplicationSecretAPIService
@@ -78,8 +78,6 @@ type APIClient struct {
 	ApplicationsAPI *ApplicationsAPIService
 
 	ArgoCDAPI *ArgoCDAPIService
-
-	BackupsAPI *BackupsAPIService
 
 	BillingAPI *BillingAPIService
 
@@ -107,8 +105,6 @@ type APIClient struct {
 
 	ContainerEnvironmentVariableAPI *ContainerEnvironmentVariableAPIService
 
-	ContainerLogsAPI *ContainerLogsAPIService
-
 	ContainerMainCallsAPI *ContainerMainCallsAPIService
 
 	ContainerRegistriesAPI *ContainerRegistriesAPIService
@@ -118,8 +114,6 @@ type APIClient struct {
 	ContainersAPI *ContainersAPIService
 
 	DatabaseActionsAPI *DatabaseActionsAPIService
-
-	DatabaseApplicationAPI *DatabaseApplicationAPIService
 
 	DatabaseDeploymentHistoryAPI *DatabaseDeploymentHistoryAPIService
 
@@ -199,6 +193,8 @@ type APIClient struct {
 
 	MembersAPI *MembersAPIService
 
+	OrganizationAPI *OrganizationAPIService
+
 	OrganizationAccountGitRepositoriesAPI *OrganizationAccountGitRepositoriesAPIService
 
 	OrganizationAnnotationsGroupAPI *OrganizationAnnotationsGroupAPIService
@@ -277,6 +273,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.AccountInfoAPI = (*AccountInfoAPIService)(&c.common)
+	c.AdminAPI = (*AdminAPIService)(&c.common)
 	c.AgenticWorkflowsAPI = (*AgenticWorkflowsAPIService)(&c.common)
 	c.AlertReceiversAPI = (*AlertReceiversAPIService)(&c.common)
 	c.AlertRulesAPI = (*AlertRulesAPIService)(&c.common)
@@ -286,12 +283,10 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ApplicationDeploymentHistoryAPI = (*ApplicationDeploymentHistoryAPIService)(&c.common)
 	c.ApplicationDeploymentRestrictionAPI = (*ApplicationDeploymentRestrictionAPIService)(&c.common)
 	c.ApplicationEnvironmentVariableAPI = (*ApplicationEnvironmentVariableAPIService)(&c.common)
-	c.ApplicationLogsAPI = (*ApplicationLogsAPIService)(&c.common)
 	c.ApplicationMainCallsAPI = (*ApplicationMainCallsAPIService)(&c.common)
 	c.ApplicationSecretAPI = (*ApplicationSecretAPIService)(&c.common)
 	c.ApplicationsAPI = (*ApplicationsAPIService)(&c.common)
 	c.ArgoCDAPI = (*ArgoCDAPIService)(&c.common)
-	c.BackupsAPI = (*BackupsAPIService)(&c.common)
 	c.BillingAPI = (*BillingAPIService)(&c.common)
 	c.BlueprintCatalogAPI = (*BlueprintCatalogAPIService)(&c.common)
 	c.BlueprintMainCallsAPI = (*BlueprintMainCallsAPIService)(&c.common)
@@ -305,13 +300,11 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.ContainerCustomDomainAPI = (*ContainerCustomDomainAPIService)(&c.common)
 	c.ContainerDeploymentHistoryAPI = (*ContainerDeploymentHistoryAPIService)(&c.common)
 	c.ContainerEnvironmentVariableAPI = (*ContainerEnvironmentVariableAPIService)(&c.common)
-	c.ContainerLogsAPI = (*ContainerLogsAPIService)(&c.common)
 	c.ContainerMainCallsAPI = (*ContainerMainCallsAPIService)(&c.common)
 	c.ContainerRegistriesAPI = (*ContainerRegistriesAPIService)(&c.common)
 	c.ContainerSecretAPI = (*ContainerSecretAPIService)(&c.common)
 	c.ContainersAPI = (*ContainersAPIService)(&c.common)
 	c.DatabaseActionsAPI = (*DatabaseActionsAPIService)(&c.common)
-	c.DatabaseApplicationAPI = (*DatabaseApplicationAPIService)(&c.common)
 	c.DatabaseDeploymentHistoryAPI = (*DatabaseDeploymentHistoryAPIService)(&c.common)
 	c.DatabaseMainCallsAPI = (*DatabaseMainCallsAPIService)(&c.common)
 	c.DatabasesAPI = (*DatabasesAPIService)(&c.common)
@@ -351,6 +344,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.LifecycleTemplateMainCallsAPI = (*LifecycleTemplateMainCallsAPIService)(&c.common)
 	c.MCPServersAPI = (*MCPServersAPIService)(&c.common)
 	c.MembersAPI = (*MembersAPIService)(&c.common)
+	c.OrganizationAPI = (*OrganizationAPIService)(&c.common)
 	c.OrganizationAccountGitRepositoriesAPI = (*OrganizationAccountGitRepositoriesAPIService)(&c.common)
 	c.OrganizationAnnotationsGroupAPI = (*OrganizationAnnotationsGroupAPIService)(&c.common)
 	c.OrganizationApiTokenAPI = (*OrganizationApiTokenAPIService)(&c.common)

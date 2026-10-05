@@ -17,196 +17,178 @@ import (
 	"io"
 	"net/http"
 	"net/url"
-	"strings"
+	"os"
 )
 
-// BackupsAPIService BackupsAPI service
-type BackupsAPIService service
+// AdminAPIService AdminAPI service
+type AdminAPIService service
 
-type ApiAddBackupDatabaseRequest struct {
-	ctx           context.Context
-	ApiService    *BackupsAPIService
-	databaseId    string
-	backupRequest *BackupRequest
+type ApiGetPublicServiceVersionRequest struct {
+	ctx         context.Context
+	ApiService  *AdminAPIService
+	serviceType *string
 }
 
-func (r ApiAddBackupDatabaseRequest) BackupRequest(backupRequest BackupRequest) ApiAddBackupDatabaseRequest {
-	r.backupRequest = &backupRequest
+func (r ApiGetPublicServiceVersionRequest) ServiceType(serviceType string) ApiGetPublicServiceVersionRequest {
+	r.serviceType = &serviceType
 	return r
 }
 
-func (r ApiAddBackupDatabaseRequest) Execute() (*Backup, *http.Response, error) {
-	return r.ApiService.AddBackupDatabaseExecute(r)
+func (r ApiGetPublicServiceVersionRequest) Execute() (*EngineVersionResponse, *http.Response, error) {
+	return r.ApiService.GetPublicServiceVersionExecute(r)
 }
 
 /*
-AddBackupDatabase Add a backup to the Database
+GetPublicServiceVersion Get a service version
+
+Get the version of an engine related service. Worker service types are unavailable through this route.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@return ApiAddBackupDatabaseRequest
+	@return ApiGetPublicServiceVersionRequest
 */
-func (a *BackupsAPIService) AddBackupDatabase(ctx context.Context, databaseId string) ApiAddBackupDatabaseRequest {
-	return ApiAddBackupDatabaseRequest{
+func (a *AdminAPIService) GetPublicServiceVersion(ctx context.Context) ApiGetPublicServiceVersionRequest {
+	return ApiGetPublicServiceVersionRequest{
 		ApiService: a,
 		ctx:        ctx,
-		databaseId: databaseId,
 	}
 }
 
 // Execute executes the request
 //
-//	@return Backup
-func (a *BackupsAPIService) AddBackupDatabaseExecute(r ApiAddBackupDatabaseRequest) (*Backup, *http.Response, error) {
-	var (
-		localVarHTTPMethod  = http.MethodPost
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue *Backup
-	)
-
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.AddBackupDatabase")
-	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
-	}
-
-	localVarPath := localBasePath + "/database/{databaseId}/backup"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
-
-	// set Content-Type header
-	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
-	if localVarHTTPContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
-	}
-
-	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
-	if localVarHTTPHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
-	}
-	// body params
-	localVarPostBody = r.backupRequest
-	if r.ctx != nil {
-		// API Key Authentication
-		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
-			if apiKey, ok := auth["ApiKeyAuth"]; ok {
-				var key string
-				if apiKey.Prefix != "" {
-					key = apiKey.Prefix + " " + apiKey.Key
-				} else {
-					key = apiKey.Key
-				}
-				localVarHeaderParams["Authorization"] = key
-			}
-		}
-	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHTTPResponse, err := a.client.callAPI(req)
-	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
-	localVarHTTPResponse.Body.Close()
-	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
-	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
-	}
-
-	if localVarHTTPResponse.StatusCode >= 300 {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: localVarHTTPResponse.Status,
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
-}
-
-type ApiListDatabaseBackupRequest struct {
-	ctx        context.Context
-	ApiService *BackupsAPIService
-	databaseId string
-	startId    *string
-}
-
-// Starting point after which to return results
-func (r ApiListDatabaseBackupRequest) StartId(startId string) ApiListDatabaseBackupRequest {
-	r.startId = &startId
-	return r
-}
-
-func (r ApiListDatabaseBackupRequest) Execute() (*BackupPaginatedResponseList, *http.Response, error) {
-	return r.ApiService.ListDatabaseBackupExecute(r)
-}
-
-/*
-ListDatabaseBackup List database  backups
-
-By default it returns the 20 last results. The response is paginated. In order to request the next page, you can use the startId query parameter
-
-	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@return ApiListDatabaseBackupRequest
-*/
-func (a *BackupsAPIService) ListDatabaseBackup(ctx context.Context, databaseId string) ApiListDatabaseBackupRequest {
-	return ApiListDatabaseBackupRequest{
-		ApiService: a,
-		ctx:        ctx,
-		databaseId: databaseId,
-	}
-}
-
-// Execute executes the request
-//
-//	@return BackupPaginatedResponseList
-func (a *BackupsAPIService) ListDatabaseBackupExecute(r ApiListDatabaseBackupRequest) (*BackupPaginatedResponseList, *http.Response, error) {
+//	@return EngineVersionResponse
+func (a *AdminAPIService) GetPublicServiceVersionExecute(r ApiGetPublicServiceVersionRequest) (*EngineVersionResponse, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *BackupPaginatedResponseList
+		localVarReturnValue *EngineVersionResponse
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.ListDatabaseBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.GetPublicServiceVersion")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/database/{databaseId}/backup"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
+	localVarPath := localBasePath + "/engine/serviceVersion"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-
-	if r.startId != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
+	if r.serviceType == nil {
+		return localVarReturnValue, nil, reportError("serviceType is required and must be specified")
 	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "serviceType", r.serviceType, "")
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
+type ApiListUserSignUpsRequest struct {
+	ctx        context.Context
+	ApiService *AdminAPIService
+	search     *string
+}
+
+func (r ApiListUserSignUpsRequest) Search(search string) ApiListUserSignUpsRequest {
+	r.search = &search
+	return r
+}
+
+func (r ApiListUserSignUpsRequest) Execute() (*UserSignUpResponseList, *http.Response, error) {
+	return r.ApiService.ListUserSignUpsExecute(r)
+}
+
+/*
+ListUserSignUps Search user signups
+
+Search user signups as a Qovery administrator.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiListUserSignUpsRequest
+*/
+func (a *AdminAPIService) ListUserSignUps(ctx context.Context) ApiListUserSignUpsRequest {
+	return ApiListUserSignUpsRequest{
+		ApiService: a,
+		ctx:        ctx,
+	}
+}
+
+// Execute executes the request
+//
+//	@return UserSignUpResponseList
+func (a *AdminAPIService) ListUserSignUpsExecute(r ApiListUserSignUpsRequest) (*UserSignUpResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *UserSignUpResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.ListUserSignUps")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/admin/listUserSignUp"
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+	if r.search == nil {
+		return localVarReturnValue, nil, reportError("search is required and must be specified")
+	}
+
+	parameterAddToHeaderOrQuery(localVarQueryParams, "search", r.search, "")
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
@@ -275,57 +257,77 @@ func (a *BackupsAPIService) ListDatabaseBackupExecute(r ApiListDatabaseBackupReq
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiRemoveDatabaseBackupRequest struct {
-	ctx        context.Context
-	ApiService *BackupsAPIService
-	databaseId string
-	backupId   string
+type ApiStoreCliDemoDebugLogsRequest struct {
+	ctx          context.Context
+	ApiService   *AdminAPIService
+	organization *string
+	clusterName  *string
+	body         *os.File
 }
 
-func (r ApiRemoveDatabaseBackupRequest) Execute() (*http.Response, error) {
-	return r.ApiService.RemoveDatabaseBackupExecute(r)
+func (r ApiStoreCliDemoDebugLogsRequest) Organization(organization string) ApiStoreCliDemoDebugLogsRequest {
+	r.organization = &organization
+	return r
+}
+
+func (r ApiStoreCliDemoDebugLogsRequest) ClusterName(clusterName string) ApiStoreCliDemoDebugLogsRequest {
+	r.clusterName = &clusterName
+	return r
+}
+
+func (r ApiStoreCliDemoDebugLogsRequest) Body(body *os.File) ApiStoreCliDemoDebugLogsRequest {
+	r.body = body
+	return r
+}
+
+func (r ApiStoreCliDemoDebugLogsRequest) Execute() (*http.Response, error) {
+	return r.ApiService.StoreCliDemoDebugLogsExecute(r)
 }
 
 /*
-RemoveDatabaseBackup Remove database  backup
+StoreCliDemoDebugLogs Store CLI demo debug logs
+
+Store CLI demo debug logs for an organization and cluster.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-	@param databaseId Database ID
-	@param backupId Database Backup ID
-	@return ApiRemoveDatabaseBackupRequest
+	@return ApiStoreCliDemoDebugLogsRequest
 */
-func (a *BackupsAPIService) RemoveDatabaseBackup(ctx context.Context, databaseId string, backupId string) ApiRemoveDatabaseBackupRequest {
-	return ApiRemoveDatabaseBackupRequest{
+func (a *AdminAPIService) StoreCliDemoDebugLogs(ctx context.Context) ApiStoreCliDemoDebugLogsRequest {
+	return ApiStoreCliDemoDebugLogsRequest{
 		ApiService: a,
 		ctx:        ctx,
-		databaseId: databaseId,
-		backupId:   backupId,
 	}
 }
 
 // Execute executes the request
-func (a *BackupsAPIService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBackupRequest) (*http.Response, error) {
+func (a *AdminAPIService) StoreCliDemoDebugLogsExecute(r ApiStoreCliDemoDebugLogsRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod = http.MethodDelete
+		localVarHTTPMethod = http.MethodPost
 		localVarPostBody   interface{}
 		formFiles          []formFile
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "BackupsAPIService.RemoveDatabaseBackup")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "AdminAPIService.StoreCliDemoDebugLogs")
 	if err != nil {
 		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/database/{databaseId}/backup/{backupId}"
-	localVarPath = strings.Replace(localVarPath, "{"+"databaseId"+"}", url.PathEscape(parameterValueToString(r.databaseId, "databaseId")), -1)
-	localVarPath = strings.Replace(localVarPath, "{"+"backupId"+"}", url.PathEscape(parameterValueToString(r.backupId, "backupId")), -1)
+	localVarPath := localBasePath + "/admin/demoDebugLog"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
+	if r.organization == nil {
+		return nil, reportError("organization is required and must be specified")
+	}
+	if r.clusterName == nil {
+		return nil, reportError("clusterName is required and must be specified")
+	}
 
+	parameterAddToHeaderOrQuery(localVarQueryParams, "organization", r.organization, "")
+	parameterAddToHeaderOrQuery(localVarQueryParams, "clusterName", r.clusterName, "")
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{}
+	localVarHTTPContentTypes := []string{"application/octet-stream"}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -341,6 +343,8 @@ func (a *BackupsAPIService) RemoveDatabaseBackupExecute(r ApiRemoveDatabaseBacku
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
+	// body params
+	localVarPostBody = r.body
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Key** | **string** |  | 
 **Kind** | [**PlatformTemplateComponentKind**](PlatformTemplateComponentKind.md) |  | 
+**DependsOn** | [**[]PlatformTemplateComponentDependencyResponse**](PlatformTemplateComponentDependencyResponse.md) |  | 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Fields** | [**[]FieldSchemaResponse**](FieldSchemaResponse.md) |  | 
 **ConfigurationSections** | Pointer to [**[]PlatformConfigurationSectionResponse**](PlatformConfigurationSectionResponse.md) | Additional configuration sections displayed under this component. Its own configuration and cluster inputs remain available. Omitted or empty keeps the existing editor behavior; fields always remain declared on their owner. | [optional] 
@@ -14,7 +15,7 @@ Name | Type | Description | Notes
 
 ### NewPlatformTemplateSummaryResponseBootstrapComponent
 
-`func NewPlatformTemplateSummaryResponseBootstrapComponent(key string, kind PlatformTemplateComponentKind, fields []FieldSchemaResponse, ) *PlatformTemplateSummaryResponseBootstrapComponent`
+`func NewPlatformTemplateSummaryResponseBootstrapComponent(key string, kind PlatformTemplateComponentKind, dependsOn []PlatformTemplateComponentDependencyResponse, fields []FieldSchemaResponse, ) *PlatformTemplateSummaryResponseBootstrapComponent`
 
 NewPlatformTemplateSummaryResponseBootstrapComponent instantiates a new PlatformTemplateSummaryResponseBootstrapComponent object
 This constructor will assign default values to properties that have it defined,
@@ -67,6 +68,26 @@ and a boolean to check if the value has been set.
 `func (o *PlatformTemplateSummaryResponseBootstrapComponent) SetKind(v PlatformTemplateComponentKind)`
 
 SetKind sets Kind field to given value.
+
+
+### GetDependsOn
+
+`func (o *PlatformTemplateSummaryResponseBootstrapComponent) GetDependsOn() []PlatformTemplateComponentDependencyResponse`
+
+GetDependsOn returns the DependsOn field if non-nil, zero value otherwise.
+
+### GetDependsOnOk
+
+`func (o *PlatformTemplateSummaryResponseBootstrapComponent) GetDependsOnOk() (*[]PlatformTemplateComponentDependencyResponse, bool)`
+
+GetDependsOnOk returns a tuple with the DependsOn field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetDependsOn
+
+`func (o *PlatformTemplateSummaryResponseBootstrapComponent) SetDependsOn(v []PlatformTemplateComponentDependencyResponse)`
+
+SetDependsOn sets DependsOn field to given value.
 
 
 ### GetDescription

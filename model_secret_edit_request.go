@@ -21,8 +21,9 @@ var _ MappedNullable = &SecretEditRequest{}
 
 // SecretEditRequest struct for SecretEditRequest
 type SecretEditRequest struct {
-	Value *string `json:"value,omitempty"`
-	Key   string  `json:"key"`
+	Value     *string        `json:"value,omitempty"`
+	Key       string         `json:"key"`
+	MountPath NullableString `json:"mount_path,omitempty"`
 	// optional variable description (255 characters maximum)
 	Description               NullableString `json:"description,omitempty"`
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
@@ -103,6 +104,49 @@ func (o *SecretEditRequest) GetKeyOk() (*string, bool) {
 // SetKey sets field value
 func (o *SecretEditRequest) SetKey(v string) {
 	o.Key = v
+}
+
+// GetMountPath returns the MountPath field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *SecretEditRequest) GetMountPath() string {
+	if o == nil || IsNil(o.MountPath.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.MountPath.Get()
+}
+
+// GetMountPathOk returns a tuple with the MountPath field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *SecretEditRequest) GetMountPathOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.MountPath.Get(), o.MountPath.IsSet()
+}
+
+// HasMountPath returns a boolean if a field has been set.
+func (o *SecretEditRequest) HasMountPath() bool {
+	if o != nil && o.MountPath.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetMountPath gets a reference to the given NullableString and assigns it to the MountPath field.
+func (o *SecretEditRequest) SetMountPath(v string) {
+	o.MountPath.Set(&v)
+}
+
+// SetMountPathNil sets the value for MountPath to be an explicit nil
+func (o *SecretEditRequest) SetMountPathNil() {
+	o.MountPath.Set(nil)
+}
+
+// UnsetMountPath ensures that no value is present for MountPath, not even an explicit nil
+func (o *SecretEditRequest) UnsetMountPath() {
+	o.MountPath.Unset()
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -205,6 +249,9 @@ func (o SecretEditRequest) ToMap() (map[string]interface{}, error) {
 		toSerialize["value"] = o.Value
 	}
 	toSerialize["key"] = o.Key
+	if o.MountPath.IsSet() {
+		toSerialize["mount_path"] = o.MountPath.Get()
+	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -256,6 +303,7 @@ func (o *SecretEditRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "value")
 		delete(additionalProperties, "key")
+		delete(additionalProperties, "mount_path")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties

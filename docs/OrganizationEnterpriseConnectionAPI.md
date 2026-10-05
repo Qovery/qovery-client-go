@@ -4,10 +4,84 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetEnterpriseConnectionRoles**](OrganizationEnterpriseConnectionAPI.md#GetEnterpriseConnectionRoles) | **Get** /account/enterpriseconnection/roles | Resolve enterprise connection roles
 [**GetOrganizationEnterpriseConnection**](OrganizationEnterpriseConnectionAPI.md#GetOrganizationEnterpriseConnection) | **Get** /organization/{organizationId}/enterpriseconnection/{connectionName} | Get enterprise connection
 [**ListOrganizationEnterpriseConnections**](OrganizationEnterpriseConnectionAPI.md#ListOrganizationEnterpriseConnections) | **Get** /organization/{organizationId}/enterpriseconnection | List enterprise connections
+[**NotifyEnterpriseMemberAccessUpdated**](OrganizationEnterpriseConnectionAPI.md#NotifyEnterpriseMemberAccessUpdated) | **Post** /account/enterpriseconnection/notifyMemberAccessUpdated | Notify enterprise member access changes
 [**UpdateOrganizationEnterpriseConnection**](OrganizationEnterpriseConnectionAPI.md#UpdateOrganizationEnterpriseConnection) | **Put** /organization/{organizationId}/enterpriseconnection/{connectionName} | Update enterprise connection
 
+
+
+## GetEnterpriseConnectionRoles
+
+> EnterpriseConnectionAccessList GetEnterpriseConnectionRoles(ctx).XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken).ConnectionName(connectionName).FederatedGroups(federatedGroups).UserSub(userSub).Execute()
+
+Resolve enterprise connection roles
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	xQoveryAuth0PostLoginToken := "xQoveryAuth0PostLoginToken_example" // string | 
+	connectionName := "connectionName_example" // string | 
+	federatedGroups := "federatedGroups_example" // string | 
+	userSub := "userSub_example" // string | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationEnterpriseConnectionAPI.GetEnterpriseConnectionRoles(context.Background()).XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken).ConnectionName(connectionName).FederatedGroups(federatedGroups).UserSub(userSub).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEnterpriseConnectionAPI.GetEnterpriseConnectionRoles``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetEnterpriseConnectionRoles`: EnterpriseConnectionAccessList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationEnterpriseConnectionAPI.GetEnterpriseConnectionRoles`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetEnterpriseConnectionRolesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xQoveryAuth0PostLoginToken** | **string** |  | 
+ **connectionName** | **string** |  | 
+ **federatedGroups** | **string** |  | 
+ **userSub** | **string** |  | 
+
+### Return type
+
+[**EnterpriseConnectionAccessList**](EnterpriseConnectionAccessList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetOrganizationEnterpriseConnection
@@ -143,6 +217,72 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## NotifyEnterpriseMemberAccessUpdated
+
+> NotifyEnterpriseMemberAccessUpdated(ctx).XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken).EnterpriseConnectionMemberAccessUpdateRequest(enterpriseConnectionMemberAccessUpdateRequest).Execute()
+
+Notify enterprise member access changes
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	xQoveryAuth0PostLoginToken := "xQoveryAuth0PostLoginToken_example" // string | 
+	enterpriseConnectionMemberAccessUpdateRequest := *openapiclient.NewEnterpriseConnectionMemberAccessUpdateRequest("UserId_example", []string{"AddedOrganizationIds_example"}, []string{"RemovedOrganizationIds_example"}, []openapiclient.MemberAccessRoleUpdated{*openapiclient.NewMemberAccessRoleUpdated("OrganizationId_example", "Role_example")}) // EnterpriseConnectionMemberAccessUpdateRequest | 
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.OrganizationEnterpriseConnectionAPI.NotifyEnterpriseMemberAccessUpdated(context.Background()).XQoveryAuth0PostLoginToken(xQoveryAuth0PostLoginToken).EnterpriseConnectionMemberAccessUpdateRequest(enterpriseConnectionMemberAccessUpdateRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationEnterpriseConnectionAPI.NotifyEnterpriseMemberAccessUpdated``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+### Path Parameters
+
+
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiNotifyEnterpriseMemberAccessUpdatedRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **xQoveryAuth0PostLoginToken** | **string** |  | 
+ **enterpriseConnectionMemberAccessUpdateRequest** | [**EnterpriseConnectionMemberAccessUpdateRequest**](EnterpriseConnectionMemberAccessUpdateRequest.md) |  | 
+
+### Return type
+
+ (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: Not defined
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
 [[Back to Model list]](../README.md#documentation-for-models)

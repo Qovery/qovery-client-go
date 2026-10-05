@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **NullableString** |  | [optional] 
 **ImageTag** | Pointer to **string** | Image tag to deploy.   Cannot be set if &#x60;git_commit_id&#x60; is defined  | [optional] 
 **GitCommitId** | Pointer to **string** | Commit to deploy Cannot be set if &#x60;image_tag&#x60; is defined  | [optional] 
 
@@ -26,6 +27,41 @@ NewJobDeployRequestWithDefaults instantiates a new JobDeployRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
+### GetId
+
+`func (o *JobDeployRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *JobDeployRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *JobDeployRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *JobDeployRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
+
+### SetIdNil
+
+`func (o *JobDeployRequest) SetIdNil(b bool)`
+
+ SetIdNil sets the value for Id to be an explicit nil
+
+### UnsetId
+`func (o *JobDeployRequest) UnsetId()`
+
+UnsetId ensures that no value is present for Id, not even an explicit nil
 ### GetImageTag
 
 `func (o *JobDeployRequest) GetImageTag() string`

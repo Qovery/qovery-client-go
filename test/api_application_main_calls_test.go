@@ -91,20 +91,6 @@ func Test_qovery_ApplicationMainCallsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test ApplicationMainCallsAPIService ListApplicationContributor", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var applicationId string
-
-		resp, httpRes, err := apiClient.ApplicationMainCallsAPI.ListApplicationContributor(context.Background(), applicationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test ApplicationMainCallsAPIService ListApplicationLinks", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test

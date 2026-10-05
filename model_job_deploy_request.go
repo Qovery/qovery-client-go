@@ -20,6 +20,7 @@ var _ MappedNullable = &JobDeployRequest{}
 
 // JobDeployRequest struct for JobDeployRequest
 type JobDeployRequest struct {
+	Id NullableString `json:"id,omitempty"`
 	// Image tag to deploy.   Cannot be set if `git_commit_id` is defined
 	ImageTag *string `json:"image_tag,omitempty"`
 	// Commit to deploy Cannot be set if `image_tag` is defined
@@ -44,6 +45,49 @@ func NewJobDeployRequest() *JobDeployRequest {
 func NewJobDeployRequestWithDefaults() *JobDeployRequest {
 	this := JobDeployRequest{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *JobDeployRequest) GetId() string {
+	if o == nil || IsNil(o.Id.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Id.Get()
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *JobDeployRequest) GetIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Id.Get(), o.Id.IsSet()
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *JobDeployRequest) HasId() bool {
+	if o != nil && o.Id.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given NullableString and assigns it to the Id field.
+func (o *JobDeployRequest) SetId(v string) {
+	o.Id.Set(&v)
+}
+
+// SetIdNil sets the value for Id to be an explicit nil
+func (o *JobDeployRequest) SetIdNil() {
+	o.Id.Set(nil)
+}
+
+// UnsetId ensures that no value is present for Id, not even an explicit nil
+func (o *JobDeployRequest) UnsetId() {
+	o.Id.Unset()
 }
 
 // GetImageTag returns the ImageTag field value if set, zero value otherwise.
@@ -120,6 +164,9 @@ func (o JobDeployRequest) MarshalJSON() ([]byte, error) {
 
 func (o JobDeployRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if o.Id.IsSet() {
+		toSerialize["id"] = o.Id.Get()
+	}
 	if !IsNil(o.ImageTag) {
 		toSerialize["image_tag"] = o.ImageTag
 	}
@@ -148,6 +195,7 @@ func (o *JobDeployRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "image_tag")
 		delete(additionalProperties, "git_commit_id")
 		o.AdditionalProperties = additionalProperties

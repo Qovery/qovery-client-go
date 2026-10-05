@@ -105,6 +105,20 @@ func Test_qovery_EnvironmentActionsAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test EnvironmentActionsAPIService MoveEnvironmentToProject", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+		var projectId string
+
+		httpRes, err := apiClient.EnvironmentActionsAPI.MoveEnvironmentToProject(context.Background(), environmentId, projectId).Execute()
+
+		require.Nil(t, err)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test EnvironmentActionsAPIService RebootServices", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
@@ -125,10 +139,22 @@ func Test_qovery_EnvironmentActionsAPIService(t *testing.T) {
 
 		var environmentId string
 
-		resp, httpRes, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
+		httpRes, err := apiClient.EnvironmentActionsAPI.RedeployEnvironment(context.Background(), environmentId).Execute()
 
 		require.Nil(t, err)
-		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test EnvironmentActionsAPIService RestartEnvironment", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var environmentId string
+
+		httpRes, err := apiClient.EnvironmentActionsAPI.RestartEnvironment(context.Background(), environmentId).Execute()
+
+		require.Nil(t, err)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

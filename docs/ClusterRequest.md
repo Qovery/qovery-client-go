@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **CloudProvider** | [**CloudVendorEnum**](CloudVendorEnum.md) |  | 
 **CloudProviderCredentials** | Pointer to [**ClusterCloudProviderInfoRequest**](ClusterCloudProviderInfoRequest.md) |  | [optional] 
 **MinRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
-**MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 1]
+**MaxRunningNodes** | Pointer to **int32** |  | [optional] [default to 10]
 **DiskSize** | Pointer to **int32** | Unit is in GB. The disk size to be used for the node configuration | [optional] [default to 40]
 **DiskIops** | Pointer to **int32** | Unit is operation/seconds. The disk IOPS to be used for the node configuration | [optional] 
 **DiskThroughput** | Pointer to **int32** | Unit is in MB/s. The disk thoughput to be used for the node configuration | [optional] 
@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **Keda** | Pointer to [**ClusterKeda**](ClusterKeda.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ClusterLabelsGroup**](ClusterLabelsGroup.md) |  | [optional] 
 **SecretManagerAccesses** | Pointer to [**[]SecretManagerAccessRequest**](SecretManagerAccessRequest.md) |  | [optional] 
+**IsDemo** | Pointer to **bool** |  | [optional] [default to false]
+**WidePermissionsDto** | Pointer to [**WidePermissionsDto**](WidePermissionsDto.md) |  | [optional] 
 
 ## Methods
 
@@ -528,6 +530,56 @@ SetSecretManagerAccesses sets SecretManagerAccesses field to given value.
 `func (o *ClusterRequest) HasSecretManagerAccesses() bool`
 
 HasSecretManagerAccesses returns a boolean if a field has been set.
+
+### GetIsDemo
+
+`func (o *ClusterRequest) GetIsDemo() bool`
+
+GetIsDemo returns the IsDemo field if non-nil, zero value otherwise.
+
+### GetIsDemoOk
+
+`func (o *ClusterRequest) GetIsDemoOk() (*bool, bool)`
+
+GetIsDemoOk returns a tuple with the IsDemo field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsDemo
+
+`func (o *ClusterRequest) SetIsDemo(v bool)`
+
+SetIsDemo sets IsDemo field to given value.
+
+### HasIsDemo
+
+`func (o *ClusterRequest) HasIsDemo() bool`
+
+HasIsDemo returns a boolean if a field has been set.
+
+### GetWidePermissionsDto
+
+`func (o *ClusterRequest) GetWidePermissionsDto() WidePermissionsDto`
+
+GetWidePermissionsDto returns the WidePermissionsDto field if non-nil, zero value otherwise.
+
+### GetWidePermissionsDtoOk
+
+`func (o *ClusterRequest) GetWidePermissionsDtoOk() (*WidePermissionsDto, bool)`
+
+GetWidePermissionsDtoOk returns a tuple with the WidePermissionsDto field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidePermissionsDto
+
+`func (o *ClusterRequest) SetWidePermissionsDto(v WidePermissionsDto)`
+
+SetWidePermissionsDto sets WidePermissionsDto field to given value.
+
+### HasWidePermissionsDto
+
+`func (o *ClusterRequest) HasWidePermissionsDto() bool`
+
+HasWidePermissionsDto returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

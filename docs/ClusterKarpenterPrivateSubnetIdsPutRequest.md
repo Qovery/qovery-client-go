@@ -4,15 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EksKarpenterFargateSubnetsZoneAIds** | Pointer to **[]string** |  | [optional] 
-**EksKarpenterFargateSubnetsZoneBIds** | Pointer to **[]string** |  | [optional] 
-**EksKarpenterFargateSubnetsZoneCIds** | Pointer to **[]string** |  | [optional] 
+**EksPrivateSubnetsZoneAIds** | **[]string** |  | 
+**EksPrivateSubnetsZoneBIds** | **[]string** |  | 
+**EksPrivateSubnetsZoneCIds** | **[]string** |  | 
 
 ## Methods
 
 ### NewClusterKarpenterPrivateSubnetIdsPutRequest
 
-`func NewClusterKarpenterPrivateSubnetIdsPutRequest() *ClusterKarpenterPrivateSubnetIdsPutRequest`
+`func NewClusterKarpenterPrivateSubnetIdsPutRequest(eksPrivateSubnetsZoneAIds []string, eksPrivateSubnetsZoneBIds []string, eksPrivateSubnetsZoneCIds []string, ) *ClusterKarpenterPrivateSubnetIdsPutRequest`
 
 NewClusterKarpenterPrivateSubnetIdsPutRequest instantiates a new ClusterKarpenterPrivateSubnetIdsPutRequest object
 This constructor will assign default values to properties that have it defined,
@@ -27,80 +27,65 @@ NewClusterKarpenterPrivateSubnetIdsPutRequestWithDefaults instantiates a new Clu
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetEksKarpenterFargateSubnetsZoneAIds
+### GetEksPrivateSubnetsZoneAIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneAIds() []string`
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneAIds() []string`
 
-GetEksKarpenterFargateSubnetsZoneAIds returns the EksKarpenterFargateSubnetsZoneAIds field if non-nil, zero value otherwise.
+GetEksPrivateSubnetsZoneAIds returns the EksPrivateSubnetsZoneAIds field if non-nil, zero value otherwise.
 
-### GetEksKarpenterFargateSubnetsZoneAIdsOk
+### GetEksPrivateSubnetsZoneAIdsOk
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneAIdsOk() (*[]string, bool)`
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneAIdsOk() (*[]string, bool)`
 
-GetEksKarpenterFargateSubnetsZoneAIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneAIds field if it's non-nil, zero value otherwise
+GetEksPrivateSubnetsZoneAIdsOk returns a tuple with the EksPrivateSubnetsZoneAIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksKarpenterFargateSubnetsZoneAIds
+### SetEksPrivateSubnetsZoneAIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneAIds(v []string)`
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneAIds(v []string)`
 
-SetEksKarpenterFargateSubnetsZoneAIds sets EksKarpenterFargateSubnetsZoneAIds field to given value.
+SetEksPrivateSubnetsZoneAIds sets EksPrivateSubnetsZoneAIds field to given value.
 
-### HasEksKarpenterFargateSubnetsZoneAIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneAIds() bool`
+### GetEksPrivateSubnetsZoneBIds
 
-HasEksKarpenterFargateSubnetsZoneAIds returns a boolean if a field has been set.
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneBIds() []string`
 
-### GetEksKarpenterFargateSubnetsZoneBIds
+GetEksPrivateSubnetsZoneBIds returns the EksPrivateSubnetsZoneBIds field if non-nil, zero value otherwise.
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneBIds() []string`
+### GetEksPrivateSubnetsZoneBIdsOk
 
-GetEksKarpenterFargateSubnetsZoneBIds returns the EksKarpenterFargateSubnetsZoneBIds field if non-nil, zero value otherwise.
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneBIdsOk() (*[]string, bool)`
 
-### GetEksKarpenterFargateSubnetsZoneBIdsOk
-
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneBIdsOk() (*[]string, bool)`
-
-GetEksKarpenterFargateSubnetsZoneBIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneBIds field if it's non-nil, zero value otherwise
+GetEksPrivateSubnetsZoneBIdsOk returns a tuple with the EksPrivateSubnetsZoneBIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksKarpenterFargateSubnetsZoneBIds
+### SetEksPrivateSubnetsZoneBIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneBIds(v []string)`
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneBIds(v []string)`
 
-SetEksKarpenterFargateSubnetsZoneBIds sets EksKarpenterFargateSubnetsZoneBIds field to given value.
+SetEksPrivateSubnetsZoneBIds sets EksPrivateSubnetsZoneBIds field to given value.
 
-### HasEksKarpenterFargateSubnetsZoneBIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneBIds() bool`
+### GetEksPrivateSubnetsZoneCIds
 
-HasEksKarpenterFargateSubnetsZoneBIds returns a boolean if a field has been set.
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneCIds() []string`
 
-### GetEksKarpenterFargateSubnetsZoneCIds
+GetEksPrivateSubnetsZoneCIds returns the EksPrivateSubnetsZoneCIds field if non-nil, zero value otherwise.
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneCIds() []string`
+### GetEksPrivateSubnetsZoneCIdsOk
 
-GetEksKarpenterFargateSubnetsZoneCIds returns the EksKarpenterFargateSubnetsZoneCIds field if non-nil, zero value otherwise.
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksPrivateSubnetsZoneCIdsOk() (*[]string, bool)`
 
-### GetEksKarpenterFargateSubnetsZoneCIdsOk
-
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) GetEksKarpenterFargateSubnetsZoneCIdsOk() (*[]string, bool)`
-
-GetEksKarpenterFargateSubnetsZoneCIdsOk returns a tuple with the EksKarpenterFargateSubnetsZoneCIds field if it's non-nil, zero value otherwise
+GetEksPrivateSubnetsZoneCIdsOk returns a tuple with the EksPrivateSubnetsZoneCIds field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetEksKarpenterFargateSubnetsZoneCIds
+### SetEksPrivateSubnetsZoneCIds
 
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksKarpenterFargateSubnetsZoneCIds(v []string)`
+`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) SetEksPrivateSubnetsZoneCIds(v []string)`
 
-SetEksKarpenterFargateSubnetsZoneCIds sets EksKarpenterFargateSubnetsZoneCIds field to given value.
+SetEksPrivateSubnetsZoneCIds sets EksPrivateSubnetsZoneCIds field to given value.
 
-### HasEksKarpenterFargateSubnetsZoneCIds
-
-`func (o *ClusterKarpenterPrivateSubnetIdsPutRequest) HasEksKarpenterFargateSubnetsZoneCIds() bool`
-
-HasEksKarpenterFargateSubnetsZoneCIds returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

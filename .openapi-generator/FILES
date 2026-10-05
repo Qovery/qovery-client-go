@@ -4,6 +4,7 @@
 README.md
 api/openapi.yaml
 api_account_info.go
+api_admin.go
 api_agentic_workflows.go
 api_alert_receivers.go
 api_alert_rules.go
@@ -13,12 +14,10 @@ api_application_custom_domain.go
 api_application_deployment_history.go
 api_application_deployment_restriction.go
 api_application_environment_variable.go
-api_application_logs.go
 api_application_main_calls.go
 api_application_secret.go
 api_applications.go
 api_argo_cd.go
-api_backups.go
 api_billing.go
 api_blueprint_catalog.go
 api_blueprint_main_calls.go
@@ -32,13 +31,11 @@ api_container_configuration.go
 api_container_custom_domain.go
 api_container_deployment_history.go
 api_container_environment_variable.go
-api_container_logs.go
 api_container_main_calls.go
 api_container_registries.go
 api_container_secret.go
 api_containers.go
 api_database_actions.go
-api_database_application.go
 api_database_deployment_history.go
 api_database_main_calls.go
 api_databases.go
@@ -78,6 +75,7 @@ api_lifecycle_template_main_calls.go
 api_llm_providers.go
 api_mcp_servers.go
 api_members.go
+api_organization.go
 api_organization_account_git_repositories.go
 api_organization_annotations_group.go
 api_organization_api_token.go
@@ -115,6 +113,7 @@ docs/APIVariableTypeEnum.md
 docs/AccountInfo.md
 docs/AccountInfoAPI.md
 docs/AccountInfoEditRequest.md
+docs/AdminAPI.md
 docs/AgenticWorkflowExecutionMode.md
 docs/AgenticWorkflowGovernance.md
 docs/AgenticWorkflowHeader.md
@@ -184,7 +183,6 @@ docs/ApplicationEditRequest.md
 docs/ApplicationEnvironmentVariableAPI.md
 docs/ApplicationGitRepository.md
 docs/ApplicationGitRepositoryRequest.md
-docs/ApplicationLogsAPI.md
 docs/ApplicationMainCallsAPI.md
 docs/ApplicationNetwork.md
 docs/ApplicationNetworkRequest.md
@@ -236,7 +234,6 @@ docs/Backup.md
 docs/BackupPaginatedResponseList.md
 docs/BackupRequest.md
 docs/BackupResponseList.md
-docs/BackupsAPI.md
 docs/Base.md
 docs/BaseJobResponse.md
 docs/BaseJobResponseAllOfSource.md
@@ -342,6 +339,7 @@ docs/ClusterEksAnywhereGitRepository.md
 docs/ClusterEnvironmentResponse.md
 docs/ClusterEnvironmentResponseList.md
 docs/ClusterEnvironmentServiceResponse.md
+docs/ClusterFailureContextResponse.md
 docs/ClusterFeatureAwsExistingVpc.md
 docs/ClusterFeatureAwsExistingVpcResponse.md
 docs/ClusterFeatureBooleanResponse.md
@@ -427,7 +425,6 @@ docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryAPI.md
 docs/ContainerEnvironmentVariableAPI.md
 docs/ContainerImageCheckRequest.md
-docs/ContainerLogsAPI.md
 docs/ContainerMainCallsAPI.md
 docs/ContainerNetwork.md
 docs/ContainerNetworkRequest.md
@@ -472,7 +469,6 @@ docs/CustomDomainStatusEnum.md
 docs/Database.md
 docs/DatabaseAccessibilityEnum.md
 docs/DatabaseActionsAPI.md
-docs/DatabaseApplicationAPI.md
 docs/DatabaseConfiguration.md
 docs/DatabaseConfigurationResponseList.md
 docs/DatabaseDeploymentHistoryAPI.md
@@ -549,7 +545,11 @@ docs/EksInfrastructureOutputsExternalSecretsAutomaticAuthentication.md
 docs/EmailAlertReceiverCreationRequest.md
 docs/EmailAlertReceiverEditRequest.md
 docs/EmailAlertReceiverResponse.md
+docs/EngineVersionResponse.md
+docs/EnterpriseConnectionAccess.md
+docs/EnterpriseConnectionAccessList.md
 docs/EnterpriseConnectionDto.md
+docs/EnterpriseConnectionMemberAccessUpdateRequest.md
 docs/EnterpriseConnectionResponseList.md
 docs/EnvDeploymentStatus.md
 docs/Environment.md
@@ -604,6 +604,8 @@ docs/ExternalSecretAssociatedServiceResponseList.md
 docs/FieldSchemaConstraintsResponse.md
 docs/FieldSchemaResponse.md
 docs/FieldTemplateResponse.md
+docs/GatewayConditionEntryResponse.md
+docs/GatewayStatusResponse.md
 docs/GcpCredentialsRequest.md
 docs/GcpJsonCredentialsAuthDto.md
 docs/GcpSecretManagerEndpointDto.md
@@ -817,6 +819,7 @@ docs/McpServerResponse.md
 docs/McpServerResponseList.md
 docs/McpServerScope.md
 docs/Member.md
+docs/MemberAccessRoleUpdated.md
 docs/MemberResponseList.md
 docs/MemberRoleUpdateRequest.md
 docs/MembersAPI.md
@@ -828,6 +831,7 @@ docs/ObjectFieldSchemaResponse.md
 docs/ObservabilityResourceProfile.md
 docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
+docs/OrganizationAPI.md
 docs/OrganizationAccountGitRepositoriesAPI.md
 docs/OrganizationAllOfOrganizationPlan.md
 docs/OrganizationAnnotationsGroupAPI.md
@@ -924,6 +928,7 @@ docs/PlatformConfigurationSectionResponse.md
 docs/PlatformLayerResolutionStatus.md
 docs/PlatformSelection.md
 docs/PlatformTemplateCatalogResponse.md
+docs/PlatformTemplateComponentDependencyResponse.md
 docs/PlatformTemplateComponentKind.md
 docs/PlatformTemplateComponentResponse.md
 docs/PlatformTemplateLayerResponse.md
@@ -1034,6 +1039,7 @@ docs/ServiceTypeForVariableEnum.md
 docs/ServicesOverviewResponse.md
 docs/SignUp.md
 docs/SignUpRequest.md
+docs/SkillTrackingRequest.md
 docs/SlackAlertReceiverCreationRequest.md
 docs/SlackAlertReceiverEditRequest.md
 docs/SlackAlertReceiverResponse.md
@@ -1066,7 +1072,6 @@ docs/TerraformDeploymentRestrictionResponseList.md
 docs/TerraformEngineEnum.md
 docs/TerraformFilesSource.md
 docs/TerraformFilesSourceGit.md
-docs/TerraformFilesSourceRequest.md
 docs/TerraformGitRepositoryRequest.md
 docs/TerraformJobResourcesResponse.md
 docs/TerraformMainCallsAPI.md
@@ -1076,9 +1081,9 @@ docs/TerraformRequestDockerfileFragment.md
 docs/TerraformRequestJobResources.md
 docs/TerraformRequestTerraformFilesSource.md
 docs/TerraformRequestTerraformFilesSourceOneOf.md
+docs/TerraformResourceAttribute.md
 docs/TerraformResourceResponse.md
 docs/TerraformResourcesAPI.md
-docs/TerraformResourcesRequest.md
 docs/TerraformResourcesResponse.md
 docs/TerraformResponse.md
 docs/TerraformResponseAllOfDockerfileFragment.md
@@ -1102,6 +1107,8 @@ docs/TypeOfUseEnum.md
 docs/User.md
 docs/UserResponseList.md
 docs/UserSignUpAPI.md
+docs/UserSignUpResponse.md
+docs/UserSignUpResponseList.md
 docs/Value.md
 docs/VariableAlias.md
 docs/VariableAliasRequest.md
@@ -1121,6 +1128,7 @@ docs/VersionResponseList.md
 docs/WebhookEventResponse.md
 docs/WebhookEventResponseList.md
 docs/WeekdayEnum.md
+docs/WidePermissionsDto.md
 git_push.sh
 go.mod
 go.sum
@@ -1334,6 +1342,7 @@ model_cluster_eks_anywhere_git_repository.go
 model_cluster_environment_response.go
 model_cluster_environment_response_list.go
 model_cluster_environment_service_response.go
+model_cluster_failure_context_response.go
 model_cluster_feature_aws_existing_vpc.go
 model_cluster_feature_aws_existing_vpc_response.go
 model_cluster_feature_boolean_response.go
@@ -1521,7 +1530,11 @@ model_eks_infrastructure_outputs_external_secrets_automatic_authentication.go
 model_email_alert_receiver_creation_request.go
 model_email_alert_receiver_edit_request.go
 model_email_alert_receiver_response.go
+model_engine_version_response.go
+model_enterprise_connection_access.go
+model_enterprise_connection_access_list.go
 model_enterprise_connection_dto.go
+model_enterprise_connection_member_access_update_request.go
 model_enterprise_connection_response_list.go
 model_env_deployment_status.go
 model_environment.go
@@ -1566,6 +1579,8 @@ model_external_secret_associated_service_response_list.go
 model_field_schema_constraints_response.go
 model_field_schema_response.go
 model_field_template_response.go
+model_gateway_condition_entry_response.go
+model_gateway_status_response.go
 model_gcp_credentials_request.go
 model_gcp_json_credentials_auth_dto.go
 model_gcp_secret_manager_endpoint_dto.go
@@ -1757,6 +1772,7 @@ model_mcp_server_response.go
 model_mcp_server_response_list.go
 model_mcp_server_scope.go
 model_member.go
+model_member_access_role_updated.go
 model_member_response_list.go
 model_member_role_update_request.go
 model_metrics_configuration_managed_by_qovery.go
@@ -1851,6 +1867,7 @@ model_platform_configuration_section_response.go
 model_platform_layer_resolution_status.go
 model_platform_selection.go
 model_platform_template_catalog_response.go
+model_platform_template_component_dependency_response.go
 model_platform_template_component_kind.go
 model_platform_template_component_response.go
 model_platform_template_layer_response.go
@@ -1952,6 +1969,7 @@ model_service_type_for_variable_enum.go
 model_services_overview_response.go
 model_sign_up.go
 model_sign_up_request.go
+model_skill_tracking_request.go
 model_slack_alert_receiver_creation_request.go
 model_slack_alert_receiver_edit_request.go
 model_slack_alert_receiver_response.go
@@ -1980,7 +1998,6 @@ model_terraform_deployment_restriction_response_list.go
 model_terraform_engine_enum.go
 model_terraform_files_source.go
 model_terraform_files_source_git.go
-model_terraform_files_source_request.go
 model_terraform_git_repository_request.go
 model_terraform_job_resources_response.go
 model_terraform_provider_version.go
@@ -1989,8 +2006,8 @@ model_terraform_request_dockerfile_fragment.go
 model_terraform_request_job_resources.go
 model_terraform_request_terraform_files_source.go
 model_terraform_request_terraform_files_source_one_of.go
+model_terraform_resource_attribute.go
 model_terraform_resource_response.go
-model_terraform_resources_request.go
 model_terraform_resources_response.go
 model_terraform_response.go
 model_terraform_response_all_of_dockerfile_fragment.go
@@ -2012,6 +2029,8 @@ model_transfer_ownership_request.go
 model_type_of_use_enum.go
 model_user.go
 model_user_response_list.go
+model_user_sign_up_response.go
+model_user_sign_up_response_list.go
 model_value.go
 model_variable_alias.go
 model_variable_alias_request.go
@@ -2030,8 +2049,10 @@ model_version_response_list.go
 model_webhook_event_response.go
 model_webhook_event_response_list.go
 model_weekday_enum.go
+model_wide_permissions_dto.go
 response.go
 test/api_account_info_test.go
+test/api_admin_test.go
 test/api_agentic_workflows_test.go
 test/api_alert_receivers_test.go
 test/api_alert_rules_test.go
@@ -2041,12 +2062,10 @@ test/api_application_custom_domain_test.go
 test/api_application_deployment_history_test.go
 test/api_application_deployment_restriction_test.go
 test/api_application_environment_variable_test.go
-test/api_application_logs_test.go
 test/api_application_main_calls_test.go
 test/api_application_secret_test.go
 test/api_applications_test.go
 test/api_argo_cd_test.go
-test/api_backups_test.go
 test/api_billing_test.go
 test/api_blueprint_catalog_test.go
 test/api_blueprint_main_calls_test.go
@@ -2060,13 +2079,11 @@ test/api_container_configuration_test.go
 test/api_container_custom_domain_test.go
 test/api_container_deployment_history_test.go
 test/api_container_environment_variable_test.go
-test/api_container_logs_test.go
 test/api_container_main_calls_test.go
 test/api_container_registries_test.go
 test/api_container_secret_test.go
 test/api_containers_test.go
 test/api_database_actions_test.go
-test/api_database_application_test.go
 test/api_database_deployment_history_test.go
 test/api_database_main_calls_test.go
 test/api_databases_test.go
@@ -2116,6 +2133,7 @@ test/api_organization_event_test.go
 test/api_organization_labels_group_test.go
 test/api_organization_main_calls_test.go
 test/api_organization_policy_api_token_test.go
+test/api_organization_test.go
 test/api_organization_webhook_test.go
 test/api_platform_configuration_test.go
 test/api_project_deployment_rule_test.go

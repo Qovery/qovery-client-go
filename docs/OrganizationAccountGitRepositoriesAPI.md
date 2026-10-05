@@ -4,6 +4,8 @@ All URIs are relative to *https://api.qovery.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**GetGitProviderRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetGitProviderRepositories) | **Get** /organization/{organizationId}/account/{gitProviderName}/repository | List repositories from a Git provider
+[**GetGitProviderRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetGitProviderRepositoryBranches) | **Get** /organization/{organizationId}/account/{gitProviderName}/repository/branch | List repository branches from a Git provider
 [**GetOrganizationBitbucketRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationBitbucketRepositories) | **Get** /organization/{organizationId}/account/bitbucket/repository | Get bitbucket repositories of the connected user
 [**GetOrganizationBitbucketRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationBitbucketRepositoryBranches) | **Get** /organization/{organizationId}/account/bitbucket/repository/branch | Get bitbucket branches of the specified repository
 [**GetOrganizationGitProviderAccount**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitProviderAccount) | **Get** /organization/{organizationId}/account/gitAuthProvider | Get git provider accounts
@@ -12,6 +14,158 @@ Method | HTTP request | Description
 [**GetOrganizationGitlabRepositories**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitlabRepositories) | **Get** /organization/{organizationId}/account/gitlab/repository | Get gitlab repositories of the connected user
 [**GetOrganizationGitlabRepositoryBranches**](OrganizationAccountGitRepositoriesAPI.md#GetOrganizationGitlabRepositoryBranches) | **Get** /organization/{organizationId}/account/gitlab/repository/branch | Get gitlab branches of the specified repository
 
+
+
+## GetGitProviderRepositories
+
+> GitRepositoryResponseList GetGitProviderRepositories(ctx, organizationId, gitProviderName).GitTokenId(gitTokenId).Execute()
+
+List repositories from a Git provider
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitProviderName := "gitProviderName_example" // string | 
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositories(context.Background(), organizationId, gitProviderName).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositories``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitProviderRepositories`: GitRepositoryResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositories`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**gitProviderName** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGitProviderRepositoriesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **gitTokenId** | **string** |  | 
+
+### Return type
+
+[**GitRepositoryResponseList**](GitRepositoryResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## GetGitProviderRepositoryBranches
+
+> GitRepositoryBranchResponseList GetGitProviderRepositoryBranches(ctx, organizationId, gitProviderName).Name(name).GitTokenId(gitTokenId).Execute()
+
+List repository branches from a Git provider
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	gitProviderName := "gitProviderName_example" // string | 
+	name := "name_example" // string | 
+	gitTokenId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositoryBranches(context.Background(), organizationId, gitProviderName).Name(name).GitTokenId(gitTokenId).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositoryBranches``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `GetGitProviderRepositoryBranches`: GitRepositoryBranchResponseList
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationAccountGitRepositoriesAPI.GetGitProviderRepositoryBranches`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+**gitProviderName** | **string** |  | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiGetGitProviderRepositoryBranchesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **name** | **string** |  | 
+ **gitTokenId** | **string** |  | 
+
+### Return type
+
+[**GitRepositoryBranchResponseList**](GitRepositoryBranchResponseList.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
 
 
 ## GetOrganizationBitbucketRepositories

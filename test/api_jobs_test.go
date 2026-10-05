@@ -22,20 +22,6 @@ func Test_qovery_JobsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test JobsAPIService AutoDeployJobEnvironments", func(t *testing.T) {
-
-		t.Skip("skip test") // remove to run test
-
-		var organizationId string
-
-		resp, httpRes, err := apiClient.JobsAPI.AutoDeployJobEnvironments(context.Background(), organizationId).Execute()
-
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
-
-	})
-
 	t.Run("Test JobsAPIService CloneJob", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
