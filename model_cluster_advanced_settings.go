@@ -22,6 +22,8 @@ var _ MappedNullable = &ClusterAdvancedSettings{}
 type ClusterAdvancedSettings struct {
 	// Set the number of retention days for EKS Cloudwatch logs
 	AwsCloudwatchEksLogsRetentionDays *int32 `json:"aws.cloudwatch.eks_logs_retention_days,omitempty"`
+	// EKS control plane log types exported to CloudWatch. Defaults to all log types. Use an empty array to disable exports. Redeploy the cluster for changes to take effect.
+	AwsCloudwatchEksLogsTypes []string `json:"aws.cloudwatch.eks_logs_types,omitempty"`
 	// Enable flow logs for on the VPC and store them in an S3 bucket
 	AwsVpcEnableS3FlowLogs *bool `json:"aws.vpc.enable_s3_flow_logs,omitempty"`
 	// Set the number of retention days for flow logs. Disable with value \"0\"
@@ -217,6 +219,38 @@ func (o *ClusterAdvancedSettings) HasAwsCloudwatchEksLogsRetentionDays() bool {
 // SetAwsCloudwatchEksLogsRetentionDays gets a reference to the given int32 and assigns it to the AwsCloudwatchEksLogsRetentionDays field.
 func (o *ClusterAdvancedSettings) SetAwsCloudwatchEksLogsRetentionDays(v int32) {
 	o.AwsCloudwatchEksLogsRetentionDays = &v
+}
+
+// GetAwsCloudwatchEksLogsTypes returns the AwsCloudwatchEksLogsTypes field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsTypes() []string {
+	if o == nil || IsNil(o.AwsCloudwatchEksLogsTypes) {
+		var ret []string
+		return ret
+	}
+	return o.AwsCloudwatchEksLogsTypes
+}
+
+// GetAwsCloudwatchEksLogsTypesOk returns a tuple with the AwsCloudwatchEksLogsTypes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsTypesOk() ([]string, bool) {
+	if o == nil || IsNil(o.AwsCloudwatchEksLogsTypes) {
+		return nil, false
+	}
+	return o.AwsCloudwatchEksLogsTypes, true
+}
+
+// HasAwsCloudwatchEksLogsTypes returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsCloudwatchEksLogsTypes() bool {
+	if o != nil && !IsNil(o.AwsCloudwatchEksLogsTypes) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsCloudwatchEksLogsTypes gets a reference to the given []string and assigns it to the AwsCloudwatchEksLogsTypes field.
+func (o *ClusterAdvancedSettings) SetAwsCloudwatchEksLogsTypes(v []string) {
+	o.AwsCloudwatchEksLogsTypes = v
 }
 
 // GetAwsVpcEnableS3FlowLogs returns the AwsVpcEnableS3FlowLogs field value if set, zero value otherwise.
@@ -2157,6 +2191,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsCloudwatchEksLogsRetentionDays) {
 		toSerialize["aws.cloudwatch.eks_logs_retention_days"] = o.AwsCloudwatchEksLogsRetentionDays
 	}
+	if !IsNil(o.AwsCloudwatchEksLogsTypes) {
+		toSerialize["aws.cloudwatch.eks_logs_types"] = o.AwsCloudwatchEksLogsTypes
+	}
 	if !IsNil(o.AwsVpcEnableS3FlowLogs) {
 		toSerialize["aws.vpc.enable_s3_flow_logs"] = o.AwsVpcEnableS3FlowLogs
 	}
@@ -2354,6 +2391,7 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "aws.cloudwatch.eks_logs_retention_days")
+		delete(additionalProperties, "aws.cloudwatch.eks_logs_types")
 		delete(additionalProperties, "aws.vpc.enable_s3_flow_logs")
 		delete(additionalProperties, "aws.vpc.flow_logs_retention_days")
 		delete(additionalProperties, "aws.vpc.enable_nat_gateway_secondary_eip")

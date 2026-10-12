@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **AwsCloudwatchEksLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for EKS Cloudwatch logs | [optional] 
+**AwsCloudwatchEksLogsTypes** | Pointer to **[]string** | EKS control plane log types exported to CloudWatch. Defaults to all log types. Use an empty array to disable exports. Redeploy the cluster for changes to take effect. | [optional] [default to ["api","audit","authenticator","controllerManager","scheduler"]]
 **AwsVpcEnableS3FlowLogs** | Pointer to **bool** | Enable flow logs for on the VPC and store them in an S3 bucket | [optional] 
 **AwsVpcFlowLogsRetentionDays** | Pointer to **int32** | Set the number of retention days for flow logs. Disable with value \&quot;0\&quot; | [optional] 
 **AwsVpcEnableNatGatewaySecondaryEip** | Pointer to **bool** | Enable a secondary Elastic IP per NAT Gateway, increasing the number of outbound public IPs. Useful for services with IP-based rate limits. | [optional] 
@@ -107,6 +108,31 @@ SetAwsCloudwatchEksLogsRetentionDays sets AwsCloudwatchEksLogsRetentionDays fiel
 `func (o *ClusterAdvancedSettings) HasAwsCloudwatchEksLogsRetentionDays() bool`
 
 HasAwsCloudwatchEksLogsRetentionDays returns a boolean if a field has been set.
+
+### GetAwsCloudwatchEksLogsTypes
+
+`func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsTypes() []string`
+
+GetAwsCloudwatchEksLogsTypes returns the AwsCloudwatchEksLogsTypes field if non-nil, zero value otherwise.
+
+### GetAwsCloudwatchEksLogsTypesOk
+
+`func (o *ClusterAdvancedSettings) GetAwsCloudwatchEksLogsTypesOk() (*[]string, bool)`
+
+GetAwsCloudwatchEksLogsTypesOk returns a tuple with the AwsCloudwatchEksLogsTypes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsCloudwatchEksLogsTypes
+
+`func (o *ClusterAdvancedSettings) SetAwsCloudwatchEksLogsTypes(v []string)`
+
+SetAwsCloudwatchEksLogsTypes sets AwsCloudwatchEksLogsTypes field to given value.
+
+### HasAwsCloudwatchEksLogsTypes
+
+`func (o *ClusterAdvancedSettings) HasAwsCloudwatchEksLogsTypes() bool`
+
+HasAwsCloudwatchEksLogsTypes returns a boolean if a field has been set.
 
 ### GetAwsVpcEnableS3FlowLogs
 

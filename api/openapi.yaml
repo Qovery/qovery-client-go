@@ -30635,6 +30635,9 @@ components:
         loki.write.cpu_limit_m: 3
         aws.cloudwatch.eks_logs_retention_days: 0
         aws.iam.admin_group: aws.iam.admin_group
+        aws.cloudwatch.eks_logs_types:
+        - api
+        - api
         nginx.vcpu.request_in_milli_cpu: 9
         k8s.api.allowed_public_access_cidrs:
         - k8s.api.allowed_public_access_cidrs
@@ -30655,6 +30658,25 @@ components:
         aws.cloudwatch.eks_logs_retention_days:
           description: Set the number of retention days for EKS Cloudwatch logs
           type: integer
+        aws.cloudwatch.eks_logs_types:
+          default:
+          - api
+          - audit
+          - authenticator
+          - controllerManager
+          - scheduler
+          description: EKS control plane log types exported to CloudWatch. Defaults
+            to all log types. Use an empty array to disable exports. Redeploy the
+            cluster for changes to take effect.
+          items:
+            enum:
+            - api
+            - audit
+            - authenticator
+            - controllerManager
+            - scheduler
+            type: string
+          type: array
         aws.vpc.enable_s3_flow_logs:
           description: Enable flow logs for on the VPC and store them in an S3 bucket
           type: boolean
