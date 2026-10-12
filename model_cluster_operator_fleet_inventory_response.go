@@ -35,6 +35,7 @@ type ClusterOperatorFleetInventoryResponse struct {
 	ReportedImageVersion NullableString             `json:"reported_image_version,omitempty"`
 	DesiredChartVersion  NullableString             `json:"desired_chart_version,omitempty"`
 	ReportedChartVersion NullableString             `json:"reported_chart_version,omitempty"`
+	ReportedRuntime      ClusterOperatorRuntime     `json:"reported_runtime"`
 	Status               ClusterOperatorFleetStatus `json:"status"`
 	AdditionalProperties map[string]interface{}
 }
@@ -45,7 +46,7 @@ type _ClusterOperatorFleetInventoryResponse ClusterOperatorFleetInventoryRespons
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterOperatorFleetInventoryResponse(organizationId string, clusterId string, clusterName string, clusterKind SelfManagedClusterKind, attached bool, connected bool, status ClusterOperatorFleetStatus) *ClusterOperatorFleetInventoryResponse {
+func NewClusterOperatorFleetInventoryResponse(organizationId string, clusterId string, clusterName string, clusterKind SelfManagedClusterKind, attached bool, connected bool, reportedRuntime ClusterOperatorRuntime, status ClusterOperatorFleetStatus) *ClusterOperatorFleetInventoryResponse {
 	this := ClusterOperatorFleetInventoryResponse{}
 	this.OrganizationId = organizationId
 	this.ClusterId = clusterId
@@ -53,6 +54,7 @@ func NewClusterOperatorFleetInventoryResponse(organizationId string, clusterId s
 	this.ClusterKind = clusterKind
 	this.Attached = attached
 	this.Connected = connected
+	this.ReportedRuntime = reportedRuntime
 	this.Status = status
 	return &this
 }
@@ -424,6 +426,30 @@ func (o *ClusterOperatorFleetInventoryResponse) UnsetReportedChartVersion() {
 	o.ReportedChartVersion.Unset()
 }
 
+// GetReportedRuntime returns the ReportedRuntime field value
+func (o *ClusterOperatorFleetInventoryResponse) GetReportedRuntime() ClusterOperatorRuntime {
+	if o == nil {
+		var ret ClusterOperatorRuntime
+		return ret
+	}
+
+	return o.ReportedRuntime
+}
+
+// GetReportedRuntimeOk returns a tuple with the ReportedRuntime field value
+// and a boolean to check if the value has been set.
+func (o *ClusterOperatorFleetInventoryResponse) GetReportedRuntimeOk() (*ClusterOperatorRuntime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReportedRuntime, true
+}
+
+// SetReportedRuntime sets field value
+func (o *ClusterOperatorFleetInventoryResponse) SetReportedRuntime(v ClusterOperatorRuntime) {
+	o.ReportedRuntime = v
+}
+
 // GetStatus returns the Status field value
 func (o *ClusterOperatorFleetInventoryResponse) GetStatus() ClusterOperatorFleetStatus {
 	if o == nil {
@@ -479,6 +505,7 @@ func (o ClusterOperatorFleetInventoryResponse) ToMap() (map[string]interface{}, 
 	if o.ReportedChartVersion.IsSet() {
 		toSerialize["reported_chart_version"] = o.ReportedChartVersion.Get()
 	}
+	toSerialize["reported_runtime"] = o.ReportedRuntime
 	toSerialize["status"] = o.Status
 
 	for key, value := range o.AdditionalProperties {
@@ -499,6 +526,7 @@ func (o *ClusterOperatorFleetInventoryResponse) UnmarshalJSON(data []byte) (err 
 		"cluster_kind",
 		"attached",
 		"connected",
+		"reported_runtime",
 		"status",
 	}
 
@@ -540,6 +568,7 @@ func (o *ClusterOperatorFleetInventoryResponse) UnmarshalJSON(data []byte) (err 
 		delete(additionalProperties, "reported_image_version")
 		delete(additionalProperties, "desired_chart_version")
 		delete(additionalProperties, "reported_chart_version")
+		delete(additionalProperties, "reported_runtime")
 		delete(additionalProperties, "status")
 		o.AdditionalProperties = additionalProperties
 	}

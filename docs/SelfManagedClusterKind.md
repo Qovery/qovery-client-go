@@ -11,6 +11,8 @@
 
 * `AKS_SELF_MANAGED` (value: `"AKS_SELF_MANAGED"`)
 
+* `EKS_ANYWHERE` (value: `"EKS_ANYWHERE"`)
+
 * `SELF_MANAGED` (value: `"SELF_MANAGED"`)
 
 

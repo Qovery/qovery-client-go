@@ -251,7 +251,7 @@ import (
 func main() {
 	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
 	clusterId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Cluster ID
-	clusterOperatorUpdateRequest := *openapiclient.NewClusterOperatorUpdateRequest("0.2.2") // ClusterOperatorUpdateRequest | 
+	clusterOperatorUpdateRequest := *openapiclient.NewClusterOperatorUpdateRequest() // ClusterOperatorUpdateRequest | 
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

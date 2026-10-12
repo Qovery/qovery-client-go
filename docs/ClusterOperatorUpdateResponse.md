@@ -6,13 +6,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ExecutionId** | **string** | Identifier shared by the queued Engine execution and its infrastructure logs. | 
 **ImageVersion** | **string** | Operator image tag resolved for this execution. | 
-**ChartVersion** | **string** | Operator Helm chart version resolved for this execution. | 
+**ChartVersion** | Pointer to **NullableString** | Operator Helm chart version resolved for this execution. Null for a Docker Operator. | [optional] 
 
 ## Methods
 
 ### NewClusterOperatorUpdateResponse
 
-`func NewClusterOperatorUpdateResponse(executionId string, imageVersion string, chartVersion string, ) *ClusterOperatorUpdateResponse`
+`func NewClusterOperatorUpdateResponse(executionId string, imageVersion string, ) *ClusterOperatorUpdateResponse`
 
 NewClusterOperatorUpdateResponse instantiates a new ClusterOperatorUpdateResponse object
 This constructor will assign default values to properties that have it defined,
@@ -86,7 +86,22 @@ and a boolean to check if the value has been set.
 
 SetChartVersion sets ChartVersion field to given value.
 
+### HasChartVersion
 
+`func (o *ClusterOperatorUpdateResponse) HasChartVersion() bool`
+
+HasChartVersion returns a boolean if a field has been set.
+
+### SetChartVersionNil
+
+`func (o *ClusterOperatorUpdateResponse) SetChartVersionNil(b bool)`
+
+ SetChartVersionNil sets the value for ChartVersion to be an explicit nil
+
+### UnsetChartVersion
+`func (o *ClusterOperatorUpdateResponse) UnsetChartVersion()`
+
+UnsetChartVersion ensures that no value is present for ChartVersion, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **Status** | [**ClusterOperatorFleetStatus**](ClusterOperatorFleetStatus.md) |  | 
 **ReportedChartVersion** | Pointer to **NullableString** | Helm chart version reported by the Operator, even without immutable identity. | [optional] 
 **ReportedIdentity** | Pointer to [**NullableReportedClusterOperatorIdentity**](ReportedClusterOperatorIdentity.md) |  | [optional] 
+**ReportedRuntime** | [**ClusterOperatorRuntime**](ClusterOperatorRuntime.md) |  | 
 
 ## Methods
 
 ### NewClusterOperatorStatusResponse
 
-`func NewClusterOperatorStatusResponse(organizationId string, clusterId string, operatorConnected bool, status ClusterOperatorFleetStatus, ) *ClusterOperatorStatusResponse`
+`func NewClusterOperatorStatusResponse(organizationId string, clusterId string, operatorConnected bool, status ClusterOperatorFleetStatus, reportedRuntime ClusterOperatorRuntime, ) *ClusterOperatorStatusResponse`
 
 NewClusterOperatorStatusResponse instantiates a new ClusterOperatorStatusResponse object
 This constructor will assign default values to properties that have it defined,
@@ -360,6 +361,26 @@ HasReportedIdentity returns a boolean if a field has been set.
 `func (o *ClusterOperatorStatusResponse) UnsetReportedIdentity()`
 
 UnsetReportedIdentity ensures that no value is present for ReportedIdentity, not even an explicit nil
+### GetReportedRuntime
+
+`func (o *ClusterOperatorStatusResponse) GetReportedRuntime() ClusterOperatorRuntime`
+
+GetReportedRuntime returns the ReportedRuntime field if non-nil, zero value otherwise.
+
+### GetReportedRuntimeOk
+
+`func (o *ClusterOperatorStatusResponse) GetReportedRuntimeOk() (*ClusterOperatorRuntime, bool)`
+
+GetReportedRuntimeOk returns a tuple with the ReportedRuntime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportedRuntime
+
+`func (o *ClusterOperatorStatusResponse) SetReportedRuntime(v ClusterOperatorRuntime)`
+
+SetReportedRuntime sets ReportedRuntime field to given value.
+
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

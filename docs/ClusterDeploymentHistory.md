@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **Status** | [**StateEnum**](StateEnum.md) |  | 
 **ActionStatus** | [**DeploymentHistoryActionStatus**](DeploymentHistoryActionStatus.md) |  | 
 **TriggerAction** | [**DeploymentHistoryTriggerAction**](DeploymentHistoryTriggerAction.md) |  | 
+**Operation** | **string** | OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for any other cluster deployment, stop, or delete. Deployments recorded before this field existed read as CLUSTER. | 
 **IsDryRun** | **bool** |  | 
 **Reason** | **string** |  | 
 **TotalDuration** | Pointer to **NullableString** |  | [optional] 
@@ -17,7 +18,7 @@ Name | Type | Description | Notes
 
 ### NewClusterDeploymentHistory
 
-`func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, isDryRun bool, reason string, ) *ClusterDeploymentHistory`
+`func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, operation string, isDryRun bool, reason string, ) *ClusterDeploymentHistory`
 
 NewClusterDeploymentHistory instantiates a new ClusterDeploymentHistory object
 This constructor will assign default values to properties that have it defined,
@@ -130,6 +131,26 @@ and a boolean to check if the value has been set.
 `func (o *ClusterDeploymentHistory) SetTriggerAction(v DeploymentHistoryTriggerAction)`
 
 SetTriggerAction sets TriggerAction field to given value.
+
+
+### GetOperation
+
+`func (o *ClusterDeploymentHistory) GetOperation() string`
+
+GetOperation returns the Operation field if non-nil, zero value otherwise.
+
+### GetOperationOk
+
+`func (o *ClusterDeploymentHistory) GetOperationOk() (*string, bool)`
+
+GetOperationOk returns a tuple with the Operation field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOperation
+
+`func (o *ClusterDeploymentHistory) SetOperation(v string)`
+
+SetOperation sets Operation field to given value.
 
 
 ### GetIsDryRun

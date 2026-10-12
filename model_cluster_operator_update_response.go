@@ -25,8 +25,8 @@ type ClusterOperatorUpdateResponse struct {
 	ExecutionId string `json:"execution_id"`
 	// Operator image tag resolved for this execution.
 	ImageVersion string `json:"image_version"`
-	// Operator Helm chart version resolved for this execution.
-	ChartVersion         string `json:"chart_version"`
+	// Operator Helm chart version resolved for this execution. Null for a Docker Operator.
+	ChartVersion         NullableString `json:"chart_version,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -36,11 +36,10 @@ type _ClusterOperatorUpdateResponse ClusterOperatorUpdateResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterOperatorUpdateResponse(executionId string, imageVersion string, chartVersion string) *ClusterOperatorUpdateResponse {
+func NewClusterOperatorUpdateResponse(executionId string, imageVersion string) *ClusterOperatorUpdateResponse {
 	this := ClusterOperatorUpdateResponse{}
 	this.ExecutionId = executionId
 	this.ImageVersion = imageVersion
-	this.ChartVersion = chartVersion
 	return &this
 }
 
@@ -100,28 +99,47 @@ func (o *ClusterOperatorUpdateResponse) SetImageVersion(v string) {
 	o.ImageVersion = v
 }
 
-// GetChartVersion returns the ChartVersion field value
+// GetChartVersion returns the ChartVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterOperatorUpdateResponse) GetChartVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.ChartVersion.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.ChartVersion
+	return *o.ChartVersion.Get()
 }
 
-// GetChartVersionOk returns a tuple with the ChartVersion field value
+// GetChartVersionOk returns a tuple with the ChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterOperatorUpdateResponse) GetChartVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ChartVersion, true
+	return o.ChartVersion.Get(), o.ChartVersion.IsSet()
 }
 
-// SetChartVersion sets field value
+// HasChartVersion returns a boolean if a field has been set.
+func (o *ClusterOperatorUpdateResponse) HasChartVersion() bool {
+	if o != nil && o.ChartVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChartVersion gets a reference to the given NullableString and assigns it to the ChartVersion field.
 func (o *ClusterOperatorUpdateResponse) SetChartVersion(v string) {
-	o.ChartVersion = v
+	o.ChartVersion.Set(&v)
+}
+
+// SetChartVersionNil sets the value for ChartVersion to be an explicit nil
+func (o *ClusterOperatorUpdateResponse) SetChartVersionNil() {
+	o.ChartVersion.Set(nil)
+}
+
+// UnsetChartVersion ensures that no value is present for ChartVersion, not even an explicit nil
+func (o *ClusterOperatorUpdateResponse) UnsetChartVersion() {
+	o.ChartVersion.Unset()
 }
 
 func (o ClusterOperatorUpdateResponse) MarshalJSON() ([]byte, error) {
@@ -136,7 +154,9 @@ func (o ClusterOperatorUpdateResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["execution_id"] = o.ExecutionId
 	toSerialize["image_version"] = o.ImageVersion
-	toSerialize["chart_version"] = o.ChartVersion
+	if o.ChartVersion.IsSet() {
+		toSerialize["chart_version"] = o.ChartVersion.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -152,7 +172,6 @@ func (o *ClusterOperatorUpdateResponse) UnmarshalJSON(data []byte) (err error) {
 	requiredProperties := []string{
 		"execution_id",
 		"image_version",
-		"chart_version",
 	}
 
 	allProperties := make(map[string]interface{})

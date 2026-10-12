@@ -15,13 +15,14 @@ Name | Type | Description | Notes
 **ReportedImageVersion** | Pointer to **NullableString** |  | [optional] 
 **DesiredChartVersion** | Pointer to **NullableString** |  | [optional] 
 **ReportedChartVersion** | Pointer to **NullableString** |  | [optional] 
+**ReportedRuntime** | [**ClusterOperatorRuntime**](ClusterOperatorRuntime.md) |  | 
 **Status** | [**ClusterOperatorFleetStatus**](ClusterOperatorFleetStatus.md) |  | 
 
 ## Methods
 
 ### NewClusterOperatorFleetInventoryResponse
 
-`func NewClusterOperatorFleetInventoryResponse(organizationId string, clusterId string, clusterName string, clusterKind SelfManagedClusterKind, attached bool, connected bool, status ClusterOperatorFleetStatus, ) *ClusterOperatorFleetInventoryResponse`
+`func NewClusterOperatorFleetInventoryResponse(organizationId string, clusterId string, clusterName string, clusterKind SelfManagedClusterKind, attached bool, connected bool, reportedRuntime ClusterOperatorRuntime, status ClusterOperatorFleetStatus, ) *ClusterOperatorFleetInventoryResponse`
 
 NewClusterOperatorFleetInventoryResponse instantiates a new ClusterOperatorFleetInventoryResponse object
 This constructor will assign default values to properties that have it defined,
@@ -331,6 +332,26 @@ HasReportedChartVersion returns a boolean if a field has been set.
 `func (o *ClusterOperatorFleetInventoryResponse) UnsetReportedChartVersion()`
 
 UnsetReportedChartVersion ensures that no value is present for ReportedChartVersion, not even an explicit nil
+### GetReportedRuntime
+
+`func (o *ClusterOperatorFleetInventoryResponse) GetReportedRuntime() ClusterOperatorRuntime`
+
+GetReportedRuntime returns the ReportedRuntime field if non-nil, zero value otherwise.
+
+### GetReportedRuntimeOk
+
+`func (o *ClusterOperatorFleetInventoryResponse) GetReportedRuntimeOk() (*ClusterOperatorRuntime, bool)`
+
+GetReportedRuntimeOk returns a tuple with the ReportedRuntime field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetReportedRuntime
+
+`func (o *ClusterOperatorFleetInventoryResponse) SetReportedRuntime(v ClusterOperatorRuntime)`
+
+SetReportedRuntime sets ReportedRuntime field to given value.
+
+
 ### GetStatus
 
 `func (o *ClusterOperatorFleetInventoryResponse) GetStatus() ClusterOperatorFleetStatus`

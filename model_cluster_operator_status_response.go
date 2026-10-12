@@ -38,6 +38,7 @@ type ClusterOperatorStatusResponse struct {
 	// Helm chart version reported by the Operator, even without immutable identity.
 	ReportedChartVersion NullableString                          `json:"reported_chart_version,omitempty"`
 	ReportedIdentity     NullableReportedClusterOperatorIdentity `json:"reported_identity,omitempty"`
+	ReportedRuntime      ClusterOperatorRuntime                  `json:"reported_runtime"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -47,12 +48,13 @@ type _ClusterOperatorStatusResponse ClusterOperatorStatusResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterOperatorStatusResponse(organizationId string, clusterId string, operatorConnected bool, status ClusterOperatorFleetStatus) *ClusterOperatorStatusResponse {
+func NewClusterOperatorStatusResponse(organizationId string, clusterId string, operatorConnected bool, status ClusterOperatorFleetStatus, reportedRuntime ClusterOperatorRuntime) *ClusterOperatorStatusResponse {
 	this := ClusterOperatorStatusResponse{}
 	this.OrganizationId = organizationId
 	this.ClusterId = clusterId
 	this.OperatorConnected = operatorConnected
 	this.Status = status
+	this.ReportedRuntime = reportedRuntime
 	return &this
 }
 
@@ -461,6 +463,30 @@ func (o *ClusterOperatorStatusResponse) UnsetReportedIdentity() {
 	o.ReportedIdentity.Unset()
 }
 
+// GetReportedRuntime returns the ReportedRuntime field value
+func (o *ClusterOperatorStatusResponse) GetReportedRuntime() ClusterOperatorRuntime {
+	if o == nil {
+		var ret ClusterOperatorRuntime
+		return ret
+	}
+
+	return o.ReportedRuntime
+}
+
+// GetReportedRuntimeOk returns a tuple with the ReportedRuntime field value
+// and a boolean to check if the value has been set.
+func (o *ClusterOperatorStatusResponse) GetReportedRuntimeOk() (*ClusterOperatorRuntime, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.ReportedRuntime, true
+}
+
+// SetReportedRuntime sets field value
+func (o *ClusterOperatorStatusResponse) SetReportedRuntime(v ClusterOperatorRuntime) {
+	o.ReportedRuntime = v
+}
+
 func (o ClusterOperatorStatusResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -496,6 +522,7 @@ func (o ClusterOperatorStatusResponse) ToMap() (map[string]interface{}, error) {
 	if o.ReportedIdentity.IsSet() {
 		toSerialize["reported_identity"] = o.ReportedIdentity.Get()
 	}
+	toSerialize["reported_runtime"] = o.ReportedRuntime
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -513,6 +540,7 @@ func (o *ClusterOperatorStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		"cluster_id",
 		"operator_connected",
 		"status",
+		"reported_runtime",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -553,6 +581,7 @@ func (o *ClusterOperatorStatusResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "reported_chart_version")
 		delete(additionalProperties, "reported_identity")
+		delete(additionalProperties, "reported_runtime")
 		o.AdditionalProperties = additionalProperties
 	}
 

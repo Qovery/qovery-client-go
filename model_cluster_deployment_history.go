@@ -21,14 +21,16 @@ var _ MappedNullable = &ClusterDeploymentHistory{}
 
 // ClusterDeploymentHistory struct for ClusterDeploymentHistory
 type ClusterDeploymentHistory struct {
-	Identifier           ClusterDeploymentHistoryIdentifier   `json:"identifier"`
-	AuditingData         ClusterDeploymentHistoryAuditingData `json:"auditing_data"`
-	Status               StateEnum                            `json:"status"`
-	ActionStatus         DeploymentHistoryActionStatus        `json:"action_status"`
-	TriggerAction        DeploymentHistoryTriggerAction       `json:"trigger_action"`
-	IsDryRun             bool                                 `json:"is_dry_run"`
-	Reason               string                               `json:"reason"`
-	TotalDuration        NullableString                       `json:"total_duration,omitempty"`
+	Identifier    ClusterDeploymentHistoryIdentifier   `json:"identifier"`
+	AuditingData  ClusterDeploymentHistoryAuditingData `json:"auditing_data"`
+	Status        StateEnum                            `json:"status"`
+	ActionStatus  DeploymentHistoryActionStatus        `json:"action_status"`
+	TriggerAction DeploymentHistoryTriggerAction       `json:"trigger_action"`
+	// OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for any other cluster deployment, stop, or delete. Deployments recorded before this field existed read as CLUSTER.
+	Operation            string         `json:"operation"`
+	IsDryRun             bool           `json:"is_dry_run"`
+	Reason               string         `json:"reason"`
+	TotalDuration        NullableString `json:"total_duration,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -38,13 +40,14 @@ type _ClusterDeploymentHistory ClusterDeploymentHistory
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, isDryRun bool, reason string) *ClusterDeploymentHistory {
+func NewClusterDeploymentHistory(identifier ClusterDeploymentHistoryIdentifier, auditingData ClusterDeploymentHistoryAuditingData, status StateEnum, actionStatus DeploymentHistoryActionStatus, triggerAction DeploymentHistoryTriggerAction, operation string, isDryRun bool, reason string) *ClusterDeploymentHistory {
 	this := ClusterDeploymentHistory{}
 	this.Identifier = identifier
 	this.AuditingData = auditingData
 	this.Status = status
 	this.ActionStatus = actionStatus
 	this.TriggerAction = triggerAction
+	this.Operation = operation
 	this.IsDryRun = isDryRun
 	this.Reason = reason
 	return &this
@@ -178,6 +181,30 @@ func (o *ClusterDeploymentHistory) SetTriggerAction(v DeploymentHistoryTriggerAc
 	o.TriggerAction = v
 }
 
+// GetOperation returns the Operation field value
+func (o *ClusterDeploymentHistory) GetOperation() string {
+	if o == nil {
+		var ret string
+		return ret
+	}
+
+	return o.Operation
+}
+
+// GetOperationOk returns a tuple with the Operation field value
+// and a boolean to check if the value has been set.
+func (o *ClusterDeploymentHistory) GetOperationOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Operation, true
+}
+
+// SetOperation sets field value
+func (o *ClusterDeploymentHistory) SetOperation(v string) {
+	o.Operation = v
+}
+
 // GetIsDryRun returns the IsDryRun field value
 func (o *ClusterDeploymentHistory) GetIsDryRun() bool {
 	if o == nil {
@@ -284,6 +311,7 @@ func (o ClusterDeploymentHistory) ToMap() (map[string]interface{}, error) {
 	toSerialize["status"] = o.Status
 	toSerialize["action_status"] = o.ActionStatus
 	toSerialize["trigger_action"] = o.TriggerAction
+	toSerialize["operation"] = o.Operation
 	toSerialize["is_dry_run"] = o.IsDryRun
 	toSerialize["reason"] = o.Reason
 	if o.TotalDuration.IsSet() {
@@ -307,6 +335,7 @@ func (o *ClusterDeploymentHistory) UnmarshalJSON(data []byte) (err error) {
 		"status",
 		"action_status",
 		"trigger_action",
+		"operation",
 		"is_dry_run",
 		"reason",
 	}
@@ -343,6 +372,7 @@ func (o *ClusterDeploymentHistory) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "action_status")
 		delete(additionalProperties, "trigger_action")
+		delete(additionalProperties, "operation")
 		delete(additionalProperties, "is_dry_run")
 		delete(additionalProperties, "reason")
 		delete(additionalProperties, "total_duration")

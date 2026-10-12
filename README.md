@@ -911,6 +911,7 @@ Class | Method | HTTP request | Description
  - [ClusterOperatorFleetInventoryResponse](docs/ClusterOperatorFleetInventoryResponse.md)
  - [ClusterOperatorFleetInventoryResponseList](docs/ClusterOperatorFleetInventoryResponseList.md)
  - [ClusterOperatorFleetStatus](docs/ClusterOperatorFleetStatus.md)
+ - [ClusterOperatorRuntime](docs/ClusterOperatorRuntime.md)
  - [ClusterOperatorStatusResponse](docs/ClusterOperatorStatusResponse.md)
  - [ClusterOperatorUpdateRequest](docs/ClusterOperatorUpdateRequest.md)
  - [ClusterOperatorUpdateResponse](docs/ClusterOperatorUpdateResponse.md)

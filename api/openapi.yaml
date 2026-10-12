@@ -2591,12 +2591,15 @@ paths:
       - Cluster Operator
   /organization/{organizationId}/cluster/{clusterId}/operator/update:
     post:
-      description: "Queues an Engine v2 execution containing only the Qovery Operator\
-        \ Helm release. The chart version is required; the optional image version\
-        \ overrides the image target selected by q-core. The current Operator must\
-        \ be attached, connected, and protocol-compatible. A successful response means\
-        \ that the execution was accepted, not that Helm has completed. Cluster administrator\
-        \ permission is required."
+      description: "Queues an Engine v2 execution that updates only the Qovery Operator.\
+        \ The update follows the runtime reported by the Operator: a Kubernetes Operator\
+        \ gets a Helm upgrade of its release and requires the chart version; a Docker\
+        \ Operator (EKS Anywhere bastion) gets its container replaced and ignores\
+        \ the chart version. An Operator that has not reported its runtime cannot\
+        \ be updated. The optional image version overrides the image target selected\
+        \ by q-core. The current Operator must be connected and protocol-compatible.\
+        \ A successful response means that the execution was accepted, not that the\
+        \ update has completed. Cluster administrator permission is required."
       operationId: updateClusterOperator
       parameters:
       - description: Organization ID
@@ -2639,8 +2642,8 @@ paths:
         "404":
           description: Resource not found
         "412":
-          description: "The Operator is disconnected, incompatible, or its selected\
-            \ release cannot be resolved"
+          description: "The Operator is disconnected, incompatible, has not reported\
+            \ its runtime, or its selected release cannot be resolved"
       summary: Update the Qovery Operator on a cluster
       tags:
       - Cluster Operator
@@ -30129,6 +30132,7 @@ components:
         total_duration: total_duration
         trigger_action: DEPLOY
         is_dry_run: true
+        operation: CLUSTER
         status: BUILDING
         action_status: QUEUED
       properties:
@@ -30142,6 +30146,14 @@ components:
           $ref: '#/components/schemas/DeploymentHistoryActionStatus'
         trigger_action:
           $ref: '#/components/schemas/DeploymentHistoryTriggerAction'
+        operation:
+          description: "OPERATOR_UPDATE for a Qovery Operator update, CLUSTER for\
+            \ any other cluster deployment, stop, or delete. Deployments recorded\
+            \ before this field existed read as CLUSTER."
+          enum:
+          - CLUSTER
+          - OPERATOR_UPDATE
+          type: string
         is_dry_run:
           type: boolean
         reason:
@@ -30158,6 +30170,7 @@ components:
       - auditing_data
       - identifier
       - is_dry_run
+      - operation
       - reason
       - status
       - trigger_action
@@ -30187,6 +30200,7 @@ components:
           total_duration: total_duration
           trigger_action: DEPLOY
           is_dry_run: true
+          operation: CLUSTER
           status: BUILDING
           action_status: QUEUED
         - identifier:
@@ -30202,6 +30216,7 @@ components:
           total_duration: total_duration
           trigger_action: DEPLOY
           is_dry_run: true
+          operation: CLUSTER
           status: BUILDING
           action_status: QUEUED
         page_size: 20
@@ -30382,6 +30397,7 @@ components:
         request_schema_version: request_schema_version
         operator_connected: true
         last_heartbeat: 2000-01-23T04:56:07.000+00:00
+        reported_runtime: KUBERNETES
         status: NOT_ATTACHED
       properties:
         organization_id:
@@ -30428,22 +30444,37 @@ components:
           allOf:
           - $ref: '#/components/schemas/ReportedClusterOperatorIdentity'
           nullable: true
+        reported_runtime:
+          $ref: '#/components/schemas/ClusterOperatorRuntime'
       required:
       - cluster_id
       - operator_connected
       - organization_id
+      - reported_runtime
       - status
       type: object
+    ClusterOperatorRuntime:
+      description: "Runtime reported by the Operator heartbeat. KUBERNETES is a Helm-installed\
+        \ Operator in the cluster, DOCKER a container on an EKS Anywhere bastion.\
+        \ UNKNOWN means no heartbeat reported a runtime (Operators that predate the\
+        \ field)."
+      enum:
+      - KUBERNETES
+      - DOCKER
+      - UNKNOWN
+      type: string
     ClusterOperatorUpdateRequest:
       example:
         image_version: v1.204.0
         chart_version: 0.2.2
       properties:
         chart_version:
-          description: Exact Qovery Operator Helm chart version to install.
+          description: "Exact Qovery Operator Helm chart version to install. Required\
+            \ for a Kubernetes Operator, ignored for a Docker Operator."
           example: 0.2.2
           maxLength: 128
           minLength: 1
+          nullable: true
           type: string
         image_version:
           description: Optional Operator image tag overriding the image target selected
@@ -30453,8 +30484,6 @@ components:
           minLength: 1
           nullable: true
           type: string
-      required:
-      - chart_version
       type: object
     ClusterOperatorUpdateResponse:
       example:
@@ -30472,11 +30501,12 @@ components:
           example: v1.204.0
           type: string
         chart_version:
-          description: Operator Helm chart version resolved for this execution.
+          description: Operator Helm chart version resolved for this execution. Null
+            for a Docker Operator.
           example: 0.2.2
+          nullable: true
           type: string
       required:
-      - chart_version
       - execution_id
       - image_version
       type: object
@@ -30521,6 +30551,7 @@ components:
       - SCW_SELF_MANAGED
       - GKE_SELF_MANAGED
       - AKS_SELF_MANAGED
+      - EKS_ANYWHERE
       - SELF_MANAGED
       type: string
     ClusterOperatorFleetInventoryResponse:
@@ -30559,6 +30590,8 @@ components:
         reported_chart_version:
           nullable: true
           type: string
+        reported_runtime:
+          $ref: '#/components/schemas/ClusterOperatorRuntime'
         status:
           $ref: '#/components/schemas/ClusterOperatorFleetStatus'
       required:
@@ -30568,6 +30601,7 @@ components:
       - cluster_name
       - connected
       - organization_id
+      - reported_runtime
       - status
       type: object
     ClusterOperatorFleetInventoryResponseList:

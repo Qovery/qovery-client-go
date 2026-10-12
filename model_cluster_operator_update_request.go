@@ -13,7 +13,6 @@ package qovery
 
 import (
 	"encoding/json"
-	"fmt"
 )
 
 // checks if the ClusterOperatorUpdateRequest type satisfies the MappedNullable interface at compile time
@@ -21,8 +20,8 @@ var _ MappedNullable = &ClusterOperatorUpdateRequest{}
 
 // ClusterOperatorUpdateRequest struct for ClusterOperatorUpdateRequest
 type ClusterOperatorUpdateRequest struct {
-	// Exact Qovery Operator Helm chart version to install.
-	ChartVersion string `json:"chart_version"`
+	// Exact Qovery Operator Helm chart version to install. Required for a Kubernetes Operator, ignored for a Docker Operator.
+	ChartVersion NullableString `json:"chart_version,omitempty"`
 	// Optional Operator image tag overriding the image target selected by q-core.
 	ImageVersion         NullableString `json:"image_version,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -34,9 +33,8 @@ type _ClusterOperatorUpdateRequest ClusterOperatorUpdateRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewClusterOperatorUpdateRequest(chartVersion string) *ClusterOperatorUpdateRequest {
+func NewClusterOperatorUpdateRequest() *ClusterOperatorUpdateRequest {
 	this := ClusterOperatorUpdateRequest{}
-	this.ChartVersion = chartVersion
 	return &this
 }
 
@@ -48,28 +46,47 @@ func NewClusterOperatorUpdateRequestWithDefaults() *ClusterOperatorUpdateRequest
 	return &this
 }
 
-// GetChartVersion returns the ChartVersion field value
+// GetChartVersion returns the ChartVersion field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *ClusterOperatorUpdateRequest) GetChartVersion() string {
-	if o == nil {
+	if o == nil || IsNil(o.ChartVersion.Get()) {
 		var ret string
 		return ret
 	}
-
-	return o.ChartVersion
+	return *o.ChartVersion.Get()
 }
 
-// GetChartVersionOk returns a tuple with the ChartVersion field value
+// GetChartVersionOk returns a tuple with the ChartVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
 func (o *ClusterOperatorUpdateRequest) GetChartVersionOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.ChartVersion, true
+	return o.ChartVersion.Get(), o.ChartVersion.IsSet()
 }
 
-// SetChartVersion sets field value
+// HasChartVersion returns a boolean if a field has been set.
+func (o *ClusterOperatorUpdateRequest) HasChartVersion() bool {
+	if o != nil && o.ChartVersion.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetChartVersion gets a reference to the given NullableString and assigns it to the ChartVersion field.
 func (o *ClusterOperatorUpdateRequest) SetChartVersion(v string) {
-	o.ChartVersion = v
+	o.ChartVersion.Set(&v)
+}
+
+// SetChartVersionNil sets the value for ChartVersion to be an explicit nil
+func (o *ClusterOperatorUpdateRequest) SetChartVersionNil() {
+	o.ChartVersion.Set(nil)
+}
+
+// UnsetChartVersion ensures that no value is present for ChartVersion, not even an explicit nil
+func (o *ClusterOperatorUpdateRequest) UnsetChartVersion() {
+	o.ChartVersion.Unset()
 }
 
 // GetImageVersion returns the ImageVersion field value if set, zero value otherwise (both if not set or set to explicit null).
@@ -125,7 +142,9 @@ func (o ClusterOperatorUpdateRequest) MarshalJSON() ([]byte, error) {
 
 func (o ClusterOperatorUpdateRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["chart_version"] = o.ChartVersion
+	if o.ChartVersion.IsSet() {
+		toSerialize["chart_version"] = o.ChartVersion.Get()
+	}
 	if o.ImageVersion.IsSet() {
 		toSerialize["image_version"] = o.ImageVersion.Get()
 	}
@@ -138,27 +157,6 @@ func (o ClusterOperatorUpdateRequest) ToMap() (map[string]interface{}, error) {
 }
 
 func (o *ClusterOperatorUpdateRequest) UnmarshalJSON(data []byte) (err error) {
-	// This validates that all required properties are included in the JSON object
-	// by unmarshalling the object into a generic map with string keys and checking
-	// that every required field exists as a key in the generic map.
-	requiredProperties := []string{
-		"chart_version",
-	}
-
-	allProperties := make(map[string]interface{})
-
-	err = json.Unmarshal(data, &allProperties)
-
-	if err != nil {
-		return err
-	}
-
-	for _, requiredProperty := range requiredProperties {
-		if _, exists := allProperties[requiredProperty]; !exists {
-			return fmt.Errorf("no value given for required property %v", requiredProperty)
-		}
-	}
-
 	varClusterOperatorUpdateRequest := _ClusterOperatorUpdateRequest{}
 
 	err = json.Unmarshal(data, &varClusterOperatorUpdateRequest)

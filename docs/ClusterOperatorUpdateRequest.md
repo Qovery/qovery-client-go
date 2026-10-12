@@ -4,14 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ChartVersion** | **string** | Exact Qovery Operator Helm chart version to install. | 
+**ChartVersion** | Pointer to **NullableString** | Exact Qovery Operator Helm chart version to install. Required for a Kubernetes Operator, ignored for a Docker Operator. | [optional] 
 **ImageVersion** | Pointer to **NullableString** | Optional Operator image tag overriding the image target selected by q-core. | [optional] 
 
 ## Methods
 
 ### NewClusterOperatorUpdateRequest
 
-`func NewClusterOperatorUpdateRequest(chartVersion string, ) *ClusterOperatorUpdateRequest`
+`func NewClusterOperatorUpdateRequest() *ClusterOperatorUpdateRequest`
 
 NewClusterOperatorUpdateRequest instantiates a new ClusterOperatorUpdateRequest object
 This constructor will assign default values to properties that have it defined,
@@ -45,7 +45,22 @@ and a boolean to check if the value has been set.
 
 SetChartVersion sets ChartVersion field to given value.
 
+### HasChartVersion
 
+`func (o *ClusterOperatorUpdateRequest) HasChartVersion() bool`
+
+HasChartVersion returns a boolean if a field has been set.
+
+### SetChartVersionNil
+
+`func (o *ClusterOperatorUpdateRequest) SetChartVersionNil(b bool)`
+
+ SetChartVersionNil sets the value for ChartVersion to be an explicit nil
+
+### UnsetChartVersion
+`func (o *ClusterOperatorUpdateRequest) UnsetChartVersion()`
+
+UnsetChartVersion ensures that no value is present for ChartVersion, not even an explicit nil
 ### GetImageVersion
 
 `func (o *ClusterOperatorUpdateRequest) GetImageVersion() string`

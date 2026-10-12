@@ -392,6 +392,7 @@ docs/ClusterOperatorBootstrapResponse.md
 docs/ClusterOperatorFleetInventoryResponse.md
 docs/ClusterOperatorFleetInventoryResponseList.md
 docs/ClusterOperatorFleetStatus.md
+docs/ClusterOperatorRuntime.md
 docs/ClusterOperatorStatusResponse.md
 docs/ClusterOperatorUpdateRequest.md
 docs/ClusterOperatorUpdateResponse.md
@@ -1397,6 +1398,7 @@ model_cluster_operator_bootstrap_response.go
 model_cluster_operator_fleet_inventory_response.go
 model_cluster_operator_fleet_inventory_response_list.go
 model_cluster_operator_fleet_status.go
+model_cluster_operator_runtime.go
 model_cluster_operator_status_response.go
 model_cluster_operator_update_request.go
 model_cluster_operator_update_response.go
