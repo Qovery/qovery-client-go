@@ -20,10 +20,11 @@ var _ MappedNullable = &ClusterCloudProviderInfo{}
 
 // ClusterCloudProviderInfo struct for ClusterCloudProviderInfo
 type ClusterCloudProviderInfo struct {
-	CloudProvider        *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
-	Credentials          *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
-	Region               *string                              `json:"region,omitempty"`
-	AdditionalProperties map[string]interface{}
+	CloudProvider             *CloudProviderEnum                   `json:"cloud_provider,omitempty"`
+	Credentials               *ClusterCloudProviderInfoCredentials `json:"credentials,omitempty"`
+	Region                    *string                              `json:"region,omitempty"`
+	WidePermissionCredentials *ClusterCloudProviderInfoCredentials `json:"wide_permission_credentials,omitempty"`
+	AdditionalProperties      map[string]interface{}
 }
 
 type _ClusterCloudProviderInfo ClusterCloudProviderInfo
@@ -141,6 +142,38 @@ func (o *ClusterCloudProviderInfo) SetRegion(v string) {
 	o.Region = &v
 }
 
+// GetWidePermissionCredentials returns the WidePermissionCredentials field value if set, zero value otherwise.
+func (o *ClusterCloudProviderInfo) GetWidePermissionCredentials() ClusterCloudProviderInfoCredentials {
+	if o == nil || IsNil(o.WidePermissionCredentials) {
+		var ret ClusterCloudProviderInfoCredentials
+		return ret
+	}
+	return *o.WidePermissionCredentials
+}
+
+// GetWidePermissionCredentialsOk returns a tuple with the WidePermissionCredentials field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterCloudProviderInfo) GetWidePermissionCredentialsOk() (*ClusterCloudProviderInfoCredentials, bool) {
+	if o == nil || IsNil(o.WidePermissionCredentials) {
+		return nil, false
+	}
+	return o.WidePermissionCredentials, true
+}
+
+// HasWidePermissionCredentials returns a boolean if a field has been set.
+func (o *ClusterCloudProviderInfo) HasWidePermissionCredentials() bool {
+	if o != nil && !IsNil(o.WidePermissionCredentials) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidePermissionCredentials gets a reference to the given ClusterCloudProviderInfoCredentials and assigns it to the WidePermissionCredentials field.
+func (o *ClusterCloudProviderInfo) SetWidePermissionCredentials(v ClusterCloudProviderInfoCredentials) {
+	o.WidePermissionCredentials = &v
+}
+
 func (o ClusterCloudProviderInfo) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -159,6 +192,9 @@ func (o ClusterCloudProviderInfo) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Region) {
 		toSerialize["region"] = o.Region
+	}
+	if !IsNil(o.WidePermissionCredentials) {
+		toSerialize["wide_permission_credentials"] = o.WidePermissionCredentials
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -185,6 +221,7 @@ func (o *ClusterCloudProviderInfo) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "cloud_provider")
 		delete(additionalProperties, "credentials")
 		delete(additionalProperties, "region")
+		delete(additionalProperties, "wide_permission_credentials")
 		o.AdditionalProperties = additionalProperties
 	}
 

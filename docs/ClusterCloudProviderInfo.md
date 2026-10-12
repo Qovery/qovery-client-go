@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **CloudProvider** | Pointer to [**CloudProviderEnum**](CloudProviderEnum.md) |  | [optional] 
 **Credentials** | Pointer to [**ClusterCloudProviderInfoCredentials**](ClusterCloudProviderInfoCredentials.md) |  | [optional] 
 **Region** | Pointer to **string** |  | [optional] 
+**WidePermissionCredentials** | Pointer to [**ClusterCloudProviderInfoCredentials**](ClusterCloudProviderInfoCredentials.md) |  | [optional] 
 
 ## Methods
 
@@ -101,6 +102,31 @@ SetRegion sets Region field to given value.
 `func (o *ClusterCloudProviderInfo) HasRegion() bool`
 
 HasRegion returns a boolean if a field has been set.
+
+### GetWidePermissionCredentials
+
+`func (o *ClusterCloudProviderInfo) GetWidePermissionCredentials() ClusterCloudProviderInfoCredentials`
+
+GetWidePermissionCredentials returns the WidePermissionCredentials field if non-nil, zero value otherwise.
+
+### GetWidePermissionCredentialsOk
+
+`func (o *ClusterCloudProviderInfo) GetWidePermissionCredentialsOk() (*ClusterCloudProviderInfoCredentials, bool)`
+
+GetWidePermissionCredentialsOk returns a tuple with the WidePermissionCredentials field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWidePermissionCredentials
+
+`func (o *ClusterCloudProviderInfo) SetWidePermissionCredentials(v ClusterCloudProviderInfoCredentials)`
+
+SetWidePermissionCredentials sets WidePermissionCredentials field to given value.
+
+### HasWidePermissionCredentials
+
+`func (o *ClusterCloudProviderInfo) HasWidePermissionCredentials() bool`
+
+HasWidePermissionCredentials returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -28426,6 +28426,9 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cloud_provider: AWS
+        wide_permission_credentials:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         region: region
       properties:
         cloud_provider:
@@ -28434,6 +28437,8 @@ components:
           $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
+        wide_permission_credentials:
+          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
       type: object
     ClusterCloudProviderInfoRequest:
       example:
@@ -28441,6 +28446,9 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         cloud_provider: AWS
+        wide_permission_credentials:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         region: region
       properties:
         cloud_provider:
@@ -28449,6 +28457,8 @@ components:
           $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
         region:
           type: string
+        wide_permission_credentials:
+          $ref: '#/components/schemas/ClusterCloudProviderInfo_credentials'
       type: object
     ClusterDnsProviderRequest:
       example:
@@ -29405,6 +29415,7 @@ components:
           enabled: true
         wide_permissions_dto:
           wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          require_wide_access_to_deploy: false
           using_restrictive_permissions: false
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -29423,6 +29434,9 @@ components:
             name: name
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           cloud_provider: AWS
+          wide_permission_credentials:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           region: region
         secret_manager_accesses:
         - endpoint:
@@ -29528,6 +29542,7 @@ components:
     WidePermissionsDto:
       example:
         wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        require_wide_access_to_deploy: false
         using_restrictive_permissions: false
       properties:
         using_restrictive_permissions:
@@ -29537,6 +29552,9 @@ components:
           format: uuid
           nullable: true
           type: string
+        require_wide_access_to_deploy:
+          default: false
+          type: boolean
       type: object
     ClusterResponseList:
       example:

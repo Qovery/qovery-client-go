@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **UsingRestrictivePermissions** | Pointer to **bool** |  | [optional] [default to false]
 **WideScopeCloudAccountId** | Pointer to **NullableString** |  | [optional] 
+**RequireWideAccessToDeploy** | Pointer to **bool** |  | [optional] [default to false]
 
 ## Methods
 
@@ -86,6 +87,31 @@ HasWideScopeCloudAccountId returns a boolean if a field has been set.
 `func (o *WidePermissionsDto) UnsetWideScopeCloudAccountId()`
 
 UnsetWideScopeCloudAccountId ensures that no value is present for WideScopeCloudAccountId, not even an explicit nil
+### GetRequireWideAccessToDeploy
+
+`func (o *WidePermissionsDto) GetRequireWideAccessToDeploy() bool`
+
+GetRequireWideAccessToDeploy returns the RequireWideAccessToDeploy field if non-nil, zero value otherwise.
+
+### GetRequireWideAccessToDeployOk
+
+`func (o *WidePermissionsDto) GetRequireWideAccessToDeployOk() (*bool, bool)`
+
+GetRequireWideAccessToDeployOk returns a tuple with the RequireWideAccessToDeploy field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRequireWideAccessToDeploy
+
+`func (o *WidePermissionsDto) SetRequireWideAccessToDeploy(v bool)`
+
+SetRequireWideAccessToDeploy sets RequireWideAccessToDeploy field to given value.
+
+### HasRequireWideAccessToDeploy
+
+`func (o *WidePermissionsDto) HasRequireWideAccessToDeploy() bool`
+
+HasRequireWideAccessToDeploy returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

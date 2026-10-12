@@ -22,6 +22,7 @@ var _ MappedNullable = &WidePermissionsDto{}
 type WidePermissionsDto struct {
 	UsingRestrictivePermissions *bool          `json:"using_restrictive_permissions,omitempty"`
 	WideScopeCloudAccountId     NullableString `json:"wide_scope_cloud_account_id,omitempty"`
+	RequireWideAccessToDeploy   *bool          `json:"require_wide_access_to_deploy,omitempty"`
 	AdditionalProperties        map[string]interface{}
 }
 
@@ -35,6 +36,8 @@ func NewWidePermissionsDto() *WidePermissionsDto {
 	this := WidePermissionsDto{}
 	var usingRestrictivePermissions bool = false
 	this.UsingRestrictivePermissions = &usingRestrictivePermissions
+	var requireWideAccessToDeploy bool = false
+	this.RequireWideAccessToDeploy = &requireWideAccessToDeploy
 	return &this
 }
 
@@ -45,6 +48,8 @@ func NewWidePermissionsDtoWithDefaults() *WidePermissionsDto {
 	this := WidePermissionsDto{}
 	var usingRestrictivePermissions bool = false
 	this.UsingRestrictivePermissions = &usingRestrictivePermissions
+	var requireWideAccessToDeploy bool = false
+	this.RequireWideAccessToDeploy = &requireWideAccessToDeploy
 	return &this
 }
 
@@ -123,6 +128,38 @@ func (o *WidePermissionsDto) UnsetWideScopeCloudAccountId() {
 	o.WideScopeCloudAccountId.Unset()
 }
 
+// GetRequireWideAccessToDeploy returns the RequireWideAccessToDeploy field value if set, zero value otherwise.
+func (o *WidePermissionsDto) GetRequireWideAccessToDeploy() bool {
+	if o == nil || IsNil(o.RequireWideAccessToDeploy) {
+		var ret bool
+		return ret
+	}
+	return *o.RequireWideAccessToDeploy
+}
+
+// GetRequireWideAccessToDeployOk returns a tuple with the RequireWideAccessToDeploy field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *WidePermissionsDto) GetRequireWideAccessToDeployOk() (*bool, bool) {
+	if o == nil || IsNil(o.RequireWideAccessToDeploy) {
+		return nil, false
+	}
+	return o.RequireWideAccessToDeploy, true
+}
+
+// HasRequireWideAccessToDeploy returns a boolean if a field has been set.
+func (o *WidePermissionsDto) HasRequireWideAccessToDeploy() bool {
+	if o != nil && !IsNil(o.RequireWideAccessToDeploy) {
+		return true
+	}
+
+	return false
+}
+
+// SetRequireWideAccessToDeploy gets a reference to the given bool and assigns it to the RequireWideAccessToDeploy field.
+func (o *WidePermissionsDto) SetRequireWideAccessToDeploy(v bool) {
+	o.RequireWideAccessToDeploy = &v
+}
+
 func (o WidePermissionsDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -138,6 +175,9 @@ func (o WidePermissionsDto) ToMap() (map[string]interface{}, error) {
 	}
 	if o.WideScopeCloudAccountId.IsSet() {
 		toSerialize["wide_scope_cloud_account_id"] = o.WideScopeCloudAccountId.Get()
+	}
+	if !IsNil(o.RequireWideAccessToDeploy) {
+		toSerialize["require_wide_access_to_deploy"] = o.RequireWideAccessToDeploy
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -163,6 +203,7 @@ func (o *WidePermissionsDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "using_restrictive_permissions")
 		delete(additionalProperties, "wide_scope_cloud_account_id")
+		delete(additionalProperties, "require_wide_access_to_deploy")
 		o.AdditionalProperties = additionalProperties
 	}
 
