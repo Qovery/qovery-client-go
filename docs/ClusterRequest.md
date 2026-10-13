@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]ClusterLabelsGroup**](ClusterLabelsGroup.md) |  | [optional] 
 **SecretManagerAccesses** | Pointer to [**[]SecretManagerAccessRequest**](SecretManagerAccessRequest.md) |  | [optional] 
 **IsDemo** | Pointer to **bool** |  | [optional] [default to false]
-**WidePermissions** | Pointer to [**WidePermissionsDto**](WidePermissionsDto.md) |  | [optional] 
+**WidePermissions** | Pointer to [**WidePermissionsRequestDto**](WidePermissionsRequestDto.md) |  | [optional] 
 
 ## Methods
 
@@ -558,20 +558,20 @@ HasIsDemo returns a boolean if a field has been set.
 
 ### GetWidePermissions
 
-`func (o *ClusterRequest) GetWidePermissions() WidePermissionsDto`
+`func (o *ClusterRequest) GetWidePermissions() WidePermissionsRequestDto`
 
 GetWidePermissions returns the WidePermissions field if non-nil, zero value otherwise.
 
 ### GetWidePermissionsOk
 
-`func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsDto, bool)`
+`func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsRequestDto, bool)`
 
 GetWidePermissionsOk returns a tuple with the WidePermissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWidePermissions
 
-`func (o *ClusterRequest) SetWidePermissions(v WidePermissionsDto)`
+`func (o *ClusterRequest) SetWidePermissions(v WidePermissionsRequestDto)`
 
 SetWidePermissions sets WidePermissions field to given value.
 

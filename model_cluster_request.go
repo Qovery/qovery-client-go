@@ -49,7 +49,7 @@ type ClusterRequest struct {
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
 	SecretManagerAccesses          []SecretManagerAccessRequest           `json:"secret_manager_accesses,omitempty"`
 	IsDemo                         *bool                                  `json:"is_demo,omitempty"`
-	WidePermissions                *WidePermissionsDto                    `json:"wide_permissions,omitempty"`
+	WidePermissions                *WidePermissionsRequestDto             `json:"wide_permissions,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -744,9 +744,9 @@ func (o *ClusterRequest) SetIsDemo(v bool) {
 }
 
 // GetWidePermissions returns the WidePermissions field value if set, zero value otherwise.
-func (o *ClusterRequest) GetWidePermissions() WidePermissionsDto {
+func (o *ClusterRequest) GetWidePermissions() WidePermissionsRequestDto {
 	if o == nil || IsNil(o.WidePermissions) {
-		var ret WidePermissionsDto
+		var ret WidePermissionsRequestDto
 		return ret
 	}
 	return *o.WidePermissions
@@ -754,7 +754,7 @@ func (o *ClusterRequest) GetWidePermissions() WidePermissionsDto {
 
 // GetWidePermissionsOk returns a tuple with the WidePermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsDto, bool) {
+func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsRequestDto, bool) {
 	if o == nil || IsNil(o.WidePermissions) {
 		return nil, false
 	}
@@ -770,8 +770,8 @@ func (o *ClusterRequest) HasWidePermissions() bool {
 	return false
 }
 
-// SetWidePermissions gets a reference to the given WidePermissionsDto and assigns it to the WidePermissions field.
-func (o *ClusterRequest) SetWidePermissions(v WidePermissionsDto) {
+// SetWidePermissions gets a reference to the given WidePermissionsRequestDto and assigns it to the WidePermissions field.
+func (o *ClusterRequest) SetWidePermissions(v WidePermissionsRequestDto) {
 	o.WidePermissions = &v
 }
 

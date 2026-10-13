@@ -66,6 +66,7 @@ type Cluster struct {
 	Keda                           *ClusterKeda                           `json:"keda,omitempty"`
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
 	SecretManagerAccesses          []SecretManagerAccess                  `json:"secret_manager_accesses,omitempty"`
+	WidePermissions                *WidePermissionsResponseDto            `json:"wide_permissions,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -1118,6 +1119,38 @@ func (o *Cluster) SetSecretManagerAccesses(v []SecretManagerAccess) {
 	o.SecretManagerAccesses = v
 }
 
+// GetWidePermissions returns the WidePermissions field value if set, zero value otherwise.
+func (o *Cluster) GetWidePermissions() WidePermissionsResponseDto {
+	if o == nil || IsNil(o.WidePermissions) {
+		var ret WidePermissionsResponseDto
+		return ret
+	}
+	return *o.WidePermissions
+}
+
+// GetWidePermissionsOk returns a tuple with the WidePermissions field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetWidePermissionsOk() (*WidePermissionsResponseDto, bool) {
+	if o == nil || IsNil(o.WidePermissions) {
+		return nil, false
+	}
+	return o.WidePermissions, true
+}
+
+// HasWidePermissions returns a boolean if a field has been set.
+func (o *Cluster) HasWidePermissions() bool {
+	if o != nil && !IsNil(o.WidePermissions) {
+		return true
+	}
+
+	return false
+}
+
+// SetWidePermissions gets a reference to the given WidePermissionsResponseDto and assigns it to the WidePermissions field.
+func (o *Cluster) SetWidePermissions(v WidePermissionsResponseDto) {
+	o.WidePermissions = &v
+}
+
 func (o Cluster) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1215,6 +1248,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.SecretManagerAccesses) {
 		toSerialize["secret_manager_accesses"] = o.SecretManagerAccesses
 	}
+	if !IsNil(o.WidePermissions) {
+		toSerialize["wide_permissions"] = o.WidePermissions
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -1296,6 +1332,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "keda")
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "secret_manager_accesses")
+		delete(additionalProperties, "wide_permissions")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -1132,7 +1132,8 @@ docs/VersionResponseList.md
 docs/WebhookEventResponse.md
 docs/WebhookEventResponseList.md
 docs/WeekdayEnum.md
-docs/WidePermissionsDto.md
+docs/WidePermissionsRequestDto.md
+docs/WidePermissionsResponseDto.md
 git_push.sh
 go.mod
 go.sum
@@ -2057,7 +2058,8 @@ model_version_response_list.go
 model_webhook_event_response.go
 model_webhook_event_response_list.go
 model_weekday_enum.go
-model_wide_permissions_dto.go
+model_wide_permissions_request_dto.go
+model_wide_permissions_response_dto.go
 response.go
 test/api_account_info_test.go
 test/api_admin_test.go

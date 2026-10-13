@@ -15,25 +15,25 @@ import (
 	"encoding/json"
 )
 
-// checks if the WidePermissionsDto type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &WidePermissionsDto{}
+// checks if the WidePermissionsResponseDto type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &WidePermissionsResponseDto{}
 
-// WidePermissionsDto struct for WidePermissionsDto
-type WidePermissionsDto struct {
+// WidePermissionsResponseDto struct for WidePermissionsResponseDto
+type WidePermissionsResponseDto struct {
 	UsingRestrictivePermissions *bool          `json:"using_restrictive_permissions,omitempty"`
 	WideScopeCloudAccountId     NullableString `json:"wide_scope_cloud_account_id,omitempty"`
 	RequireWideAccessToDeploy   *bool          `json:"require_wide_access_to_deploy,omitempty"`
 	AdditionalProperties        map[string]interface{}
 }
 
-type _WidePermissionsDto WidePermissionsDto
+type _WidePermissionsResponseDto WidePermissionsResponseDto
 
-// NewWidePermissionsDto instantiates a new WidePermissionsDto object
+// NewWidePermissionsResponseDto instantiates a new WidePermissionsResponseDto object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewWidePermissionsDto() *WidePermissionsDto {
-	this := WidePermissionsDto{}
+func NewWidePermissionsResponseDto() *WidePermissionsResponseDto {
+	this := WidePermissionsResponseDto{}
 	var usingRestrictivePermissions bool = false
 	this.UsingRestrictivePermissions = &usingRestrictivePermissions
 	var requireWideAccessToDeploy bool = false
@@ -41,11 +41,11 @@ func NewWidePermissionsDto() *WidePermissionsDto {
 	return &this
 }
 
-// NewWidePermissionsDtoWithDefaults instantiates a new WidePermissionsDto object
+// NewWidePermissionsResponseDtoWithDefaults instantiates a new WidePermissionsResponseDto object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewWidePermissionsDtoWithDefaults() *WidePermissionsDto {
-	this := WidePermissionsDto{}
+func NewWidePermissionsResponseDtoWithDefaults() *WidePermissionsResponseDto {
+	this := WidePermissionsResponseDto{}
 	var usingRestrictivePermissions bool = false
 	this.UsingRestrictivePermissions = &usingRestrictivePermissions
 	var requireWideAccessToDeploy bool = false
@@ -54,7 +54,7 @@ func NewWidePermissionsDtoWithDefaults() *WidePermissionsDto {
 }
 
 // GetUsingRestrictivePermissions returns the UsingRestrictivePermissions field value if set, zero value otherwise.
-func (o *WidePermissionsDto) GetUsingRestrictivePermissions() bool {
+func (o *WidePermissionsResponseDto) GetUsingRestrictivePermissions() bool {
 	if o == nil || IsNil(o.UsingRestrictivePermissions) {
 		var ret bool
 		return ret
@@ -64,7 +64,7 @@ func (o *WidePermissionsDto) GetUsingRestrictivePermissions() bool {
 
 // GetUsingRestrictivePermissionsOk returns a tuple with the UsingRestrictivePermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WidePermissionsDto) GetUsingRestrictivePermissionsOk() (*bool, bool) {
+func (o *WidePermissionsResponseDto) GetUsingRestrictivePermissionsOk() (*bool, bool) {
 	if o == nil || IsNil(o.UsingRestrictivePermissions) {
 		return nil, false
 	}
@@ -72,7 +72,7 @@ func (o *WidePermissionsDto) GetUsingRestrictivePermissionsOk() (*bool, bool) {
 }
 
 // HasUsingRestrictivePermissions returns a boolean if a field has been set.
-func (o *WidePermissionsDto) HasUsingRestrictivePermissions() bool {
+func (o *WidePermissionsResponseDto) HasUsingRestrictivePermissions() bool {
 	if o != nil && !IsNil(o.UsingRestrictivePermissions) {
 		return true
 	}
@@ -81,12 +81,12 @@ func (o *WidePermissionsDto) HasUsingRestrictivePermissions() bool {
 }
 
 // SetUsingRestrictivePermissions gets a reference to the given bool and assigns it to the UsingRestrictivePermissions field.
-func (o *WidePermissionsDto) SetUsingRestrictivePermissions(v bool) {
+func (o *WidePermissionsResponseDto) SetUsingRestrictivePermissions(v bool) {
 	o.UsingRestrictivePermissions = &v
 }
 
 // GetWideScopeCloudAccountId returns the WideScopeCloudAccountId field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *WidePermissionsDto) GetWideScopeCloudAccountId() string {
+func (o *WidePermissionsResponseDto) GetWideScopeCloudAccountId() string {
 	if o == nil || IsNil(o.WideScopeCloudAccountId.Get()) {
 		var ret string
 		return ret
@@ -97,7 +97,7 @@ func (o *WidePermissionsDto) GetWideScopeCloudAccountId() string {
 // GetWideScopeCloudAccountIdOk returns a tuple with the WideScopeCloudAccountId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *WidePermissionsDto) GetWideScopeCloudAccountIdOk() (*string, bool) {
+func (o *WidePermissionsResponseDto) GetWideScopeCloudAccountIdOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -105,7 +105,7 @@ func (o *WidePermissionsDto) GetWideScopeCloudAccountIdOk() (*string, bool) {
 }
 
 // HasWideScopeCloudAccountId returns a boolean if a field has been set.
-func (o *WidePermissionsDto) HasWideScopeCloudAccountId() bool {
+func (o *WidePermissionsResponseDto) HasWideScopeCloudAccountId() bool {
 	if o != nil && o.WideScopeCloudAccountId.IsSet() {
 		return true
 	}
@@ -114,22 +114,22 @@ func (o *WidePermissionsDto) HasWideScopeCloudAccountId() bool {
 }
 
 // SetWideScopeCloudAccountId gets a reference to the given NullableString and assigns it to the WideScopeCloudAccountId field.
-func (o *WidePermissionsDto) SetWideScopeCloudAccountId(v string) {
+func (o *WidePermissionsResponseDto) SetWideScopeCloudAccountId(v string) {
 	o.WideScopeCloudAccountId.Set(&v)
 }
 
 // SetWideScopeCloudAccountIdNil sets the value for WideScopeCloudAccountId to be an explicit nil
-func (o *WidePermissionsDto) SetWideScopeCloudAccountIdNil() {
+func (o *WidePermissionsResponseDto) SetWideScopeCloudAccountIdNil() {
 	o.WideScopeCloudAccountId.Set(nil)
 }
 
 // UnsetWideScopeCloudAccountId ensures that no value is present for WideScopeCloudAccountId, not even an explicit nil
-func (o *WidePermissionsDto) UnsetWideScopeCloudAccountId() {
+func (o *WidePermissionsResponseDto) UnsetWideScopeCloudAccountId() {
 	o.WideScopeCloudAccountId.Unset()
 }
 
 // GetRequireWideAccessToDeploy returns the RequireWideAccessToDeploy field value if set, zero value otherwise.
-func (o *WidePermissionsDto) GetRequireWideAccessToDeploy() bool {
+func (o *WidePermissionsResponseDto) GetRequireWideAccessToDeploy() bool {
 	if o == nil || IsNil(o.RequireWideAccessToDeploy) {
 		var ret bool
 		return ret
@@ -139,7 +139,7 @@ func (o *WidePermissionsDto) GetRequireWideAccessToDeploy() bool {
 
 // GetRequireWideAccessToDeployOk returns a tuple with the RequireWideAccessToDeploy field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *WidePermissionsDto) GetRequireWideAccessToDeployOk() (*bool, bool) {
+func (o *WidePermissionsResponseDto) GetRequireWideAccessToDeployOk() (*bool, bool) {
 	if o == nil || IsNil(o.RequireWideAccessToDeploy) {
 		return nil, false
 	}
@@ -147,7 +147,7 @@ func (o *WidePermissionsDto) GetRequireWideAccessToDeployOk() (*bool, bool) {
 }
 
 // HasRequireWideAccessToDeploy returns a boolean if a field has been set.
-func (o *WidePermissionsDto) HasRequireWideAccessToDeploy() bool {
+func (o *WidePermissionsResponseDto) HasRequireWideAccessToDeploy() bool {
 	if o != nil && !IsNil(o.RequireWideAccessToDeploy) {
 		return true
 	}
@@ -156,11 +156,11 @@ func (o *WidePermissionsDto) HasRequireWideAccessToDeploy() bool {
 }
 
 // SetRequireWideAccessToDeploy gets a reference to the given bool and assigns it to the RequireWideAccessToDeploy field.
-func (o *WidePermissionsDto) SetRequireWideAccessToDeploy(v bool) {
+func (o *WidePermissionsResponseDto) SetRequireWideAccessToDeploy(v bool) {
 	o.RequireWideAccessToDeploy = &v
 }
 
-func (o WidePermissionsDto) MarshalJSON() ([]byte, error) {
+func (o WidePermissionsResponseDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -168,7 +168,7 @@ func (o WidePermissionsDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o WidePermissionsDto) ToMap() (map[string]interface{}, error) {
+func (o WidePermissionsResponseDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.UsingRestrictivePermissions) {
 		toSerialize["using_restrictive_permissions"] = o.UsingRestrictivePermissions
@@ -187,16 +187,16 @@ func (o WidePermissionsDto) ToMap() (map[string]interface{}, error) {
 	return toSerialize, nil
 }
 
-func (o *WidePermissionsDto) UnmarshalJSON(data []byte) (err error) {
-	varWidePermissionsDto := _WidePermissionsDto{}
+func (o *WidePermissionsResponseDto) UnmarshalJSON(data []byte) (err error) {
+	varWidePermissionsResponseDto := _WidePermissionsResponseDto{}
 
-	err = json.Unmarshal(data, &varWidePermissionsDto)
+	err = json.Unmarshal(data, &varWidePermissionsResponseDto)
 
 	if err != nil {
 		return err
 	}
 
-	*o = WidePermissionsDto(varWidePermissionsDto)
+	*o = WidePermissionsResponseDto(varWidePermissionsResponseDto)
 
 	additionalProperties := make(map[string]interface{})
 
@@ -210,38 +210,38 @@ func (o *WidePermissionsDto) UnmarshalJSON(data []byte) (err error) {
 	return err
 }
 
-type NullableWidePermissionsDto struct {
-	value *WidePermissionsDto
+type NullableWidePermissionsResponseDto struct {
+	value *WidePermissionsResponseDto
 	isSet bool
 }
 
-func (v NullableWidePermissionsDto) Get() *WidePermissionsDto {
+func (v NullableWidePermissionsResponseDto) Get() *WidePermissionsResponseDto {
 	return v.value
 }
 
-func (v *NullableWidePermissionsDto) Set(val *WidePermissionsDto) {
+func (v *NullableWidePermissionsResponseDto) Set(val *WidePermissionsResponseDto) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableWidePermissionsDto) IsSet() bool {
+func (v NullableWidePermissionsResponseDto) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableWidePermissionsDto) Unset() {
+func (v *NullableWidePermissionsResponseDto) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableWidePermissionsDto(val *WidePermissionsDto) *NullableWidePermissionsDto {
-	return &NullableWidePermissionsDto{value: val, isSet: true}
+func NewNullableWidePermissionsResponseDto(val *WidePermissionsResponseDto) *NullableWidePermissionsResponseDto {
+	return &NullableWidePermissionsResponseDto{value: val, isSet: true}
 }
 
-func (v NullableWidePermissionsDto) MarshalJSON() ([]byte, error) {
+func (v NullableWidePermissionsResponseDto) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableWidePermissionsDto) UnmarshalJSON(src []byte) error {
+func (v *NullableWidePermissionsResponseDto) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

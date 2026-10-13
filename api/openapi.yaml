@@ -28190,6 +28190,8 @@ components:
             $ref: '#/components/schemas/ClusterLabelsGroupList'
           secret_manager_accesses:
             $ref: '#/components/schemas/SecretManagerAccessList'
+          wide_permissions:
+            $ref: '#/components/schemas/WidePermissionsResponseDto'
         required:
         - cloud_provider
         - name
@@ -28316,6 +28318,10 @@ components:
         organization:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
+        wide_permissions:
+          wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          require_wide_access_to_deploy: false
+          using_restrictive_permissions: false
         region: region
         instance_type: T3A_LARGE
         secret_manager_accesses:
@@ -29425,7 +29431,6 @@ components:
         name: name
         wide_permissions:
           wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          require_wide_access_to_deploy: false
           using_restrictive_permissions: false
         region: region
         instance_type: T3A_LARGE
@@ -29533,16 +29538,15 @@ components:
           default: false
           type: boolean
         wide_permissions:
-          $ref: '#/components/schemas/WidePermissionsDto'
+          $ref: '#/components/schemas/WidePermissionsRequestDto'
       required:
       - cloud_provider
       - name
       - region
       type: object
-    WidePermissionsDto:
+    WidePermissionsRequestDto:
       example:
         wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        require_wide_access_to_deploy: false
         using_restrictive_permissions: false
       properties:
         using_restrictive_permissions:
@@ -29552,9 +29556,6 @@ components:
           format: uuid
           nullable: true
           type: string
-        require_wide_access_to_deploy:
-          default: false
-          type: boolean
       type: object
     ClusterResponseList:
       example:
@@ -29678,6 +29679,10 @@ components:
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          wide_permissions:
+            wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            require_wide_access_to_deploy: false
+            using_restrictive_permissions: false
           region: region
           instance_type: T3A_LARGE
           secret_manager_accesses:
@@ -29819,6 +29824,10 @@ components:
           organization:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
+          wide_permissions:
+            wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            require_wide_access_to_deploy: false
+            using_restrictive_permissions: false
           region: region
           instance_type: T3A_LARGE
           secret_manager_accesses:
@@ -49341,6 +49350,23 @@ components:
           type: string
       required:
       - mode
+      type: object
+    WidePermissionsResponseDto:
+      example:
+        wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        require_wide_access_to_deploy: false
+        using_restrictive_permissions: false
+      properties:
+        using_restrictive_permissions:
+          default: false
+          type: boolean
+        wide_scope_cloud_account_id:
+          format: uuid
+          nullable: true
+          type: string
+        require_wide_access_to_deploy:
+          default: false
+          type: boolean
       type: object
     ClusterEnvironmentResponseList:
       example:
