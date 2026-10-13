@@ -29413,10 +29413,6 @@ components:
               spec_config_secret: spec_config_secret
               enabled: true
           enabled: true
-        wide_permissions_dto:
-          wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          require_wide_access_to_deploy: false
-          using_restrictive_permissions: false
         features:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: ClusterRequest_features_inner_value
@@ -29427,6 +29423,10 @@ components:
         - ssh_keys
         disk_throughput: 255
         name: name
+        wide_permissions:
+          wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          require_wide_access_to_deploy: false
+          using_restrictive_permissions: false
         region: region
         instance_type: T3A_LARGE
         cloud_provider_credentials:
@@ -29532,7 +29532,7 @@ components:
         is_demo:
           default: false
           type: boolean
-        wide_permissions_dto:
+        wide_permissions:
           $ref: '#/components/schemas/WidePermissionsDto'
       required:
       - cloud_provider

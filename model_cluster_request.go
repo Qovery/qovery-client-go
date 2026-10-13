@@ -49,7 +49,7 @@ type ClusterRequest struct {
 	LabelsGroups                   []ClusterLabelsGroup                   `json:"labels_groups,omitempty"`
 	SecretManagerAccesses          []SecretManagerAccessRequest           `json:"secret_manager_accesses,omitempty"`
 	IsDemo                         *bool                                  `json:"is_demo,omitempty"`
-	WidePermissionsDto             *WidePermissionsDto                    `json:"wide_permissions_dto,omitempty"`
+	WidePermissions                *WidePermissionsDto                    `json:"wide_permissions,omitempty"`
 	AdditionalProperties           map[string]interface{}
 }
 
@@ -743,36 +743,36 @@ func (o *ClusterRequest) SetIsDemo(v bool) {
 	o.IsDemo = &v
 }
 
-// GetWidePermissionsDto returns the WidePermissionsDto field value if set, zero value otherwise.
-func (o *ClusterRequest) GetWidePermissionsDto() WidePermissionsDto {
-	if o == nil || IsNil(o.WidePermissionsDto) {
+// GetWidePermissions returns the WidePermissions field value if set, zero value otherwise.
+func (o *ClusterRequest) GetWidePermissions() WidePermissionsDto {
+	if o == nil || IsNil(o.WidePermissions) {
 		var ret WidePermissionsDto
 		return ret
 	}
-	return *o.WidePermissionsDto
+	return *o.WidePermissions
 }
 
-// GetWidePermissionsDtoOk returns a tuple with the WidePermissionsDto field value if set, nil otherwise
+// GetWidePermissionsOk returns a tuple with the WidePermissions field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ClusterRequest) GetWidePermissionsDtoOk() (*WidePermissionsDto, bool) {
-	if o == nil || IsNil(o.WidePermissionsDto) {
+func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsDto, bool) {
+	if o == nil || IsNil(o.WidePermissions) {
 		return nil, false
 	}
-	return o.WidePermissionsDto, true
+	return o.WidePermissions, true
 }
 
-// HasWidePermissionsDto returns a boolean if a field has been set.
-func (o *ClusterRequest) HasWidePermissionsDto() bool {
-	if o != nil && !IsNil(o.WidePermissionsDto) {
+// HasWidePermissions returns a boolean if a field has been set.
+func (o *ClusterRequest) HasWidePermissions() bool {
+	if o != nil && !IsNil(o.WidePermissions) {
 		return true
 	}
 
 	return false
 }
 
-// SetWidePermissionsDto gets a reference to the given WidePermissionsDto and assigns it to the WidePermissionsDto field.
-func (o *ClusterRequest) SetWidePermissionsDto(v WidePermissionsDto) {
-	o.WidePermissionsDto = &v
+// SetWidePermissions gets a reference to the given WidePermissionsDto and assigns it to the WidePermissions field.
+func (o *ClusterRequest) SetWidePermissions(v WidePermissionsDto) {
+	o.WidePermissions = &v
 }
 
 func (o ClusterRequest) MarshalJSON() ([]byte, error) {
@@ -842,8 +842,8 @@ func (o ClusterRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDemo) {
 		toSerialize["is_demo"] = o.IsDemo
 	}
-	if !IsNil(o.WidePermissionsDto) {
-		toSerialize["wide_permissions_dto"] = o.WidePermissionsDto
+	if !IsNil(o.WidePermissions) {
+		toSerialize["wide_permissions"] = o.WidePermissions
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -911,7 +911,7 @@ func (o *ClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "secret_manager_accesses")
 		delete(additionalProperties, "is_demo")
-		delete(additionalProperties, "wide_permissions_dto")
+		delete(additionalProperties, "wide_permissions")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **LabelsGroups** | Pointer to [**[]ClusterLabelsGroup**](ClusterLabelsGroup.md) |  | [optional] 
 **SecretManagerAccesses** | Pointer to [**[]SecretManagerAccessRequest**](SecretManagerAccessRequest.md) |  | [optional] 
 **IsDemo** | Pointer to **bool** |  | [optional] [default to false]
-**WidePermissionsDto** | Pointer to [**WidePermissionsDto**](WidePermissionsDto.md) |  | [optional] 
+**WidePermissions** | Pointer to [**WidePermissionsDto**](WidePermissionsDto.md) |  | [optional] 
 
 ## Methods
 
@@ -556,30 +556,30 @@ SetIsDemo sets IsDemo field to given value.
 
 HasIsDemo returns a boolean if a field has been set.
 
-### GetWidePermissionsDto
+### GetWidePermissions
 
-`func (o *ClusterRequest) GetWidePermissionsDto() WidePermissionsDto`
+`func (o *ClusterRequest) GetWidePermissions() WidePermissionsDto`
 
-GetWidePermissionsDto returns the WidePermissionsDto field if non-nil, zero value otherwise.
+GetWidePermissions returns the WidePermissions field if non-nil, zero value otherwise.
 
-### GetWidePermissionsDtoOk
+### GetWidePermissionsOk
 
-`func (o *ClusterRequest) GetWidePermissionsDtoOk() (*WidePermissionsDto, bool)`
+`func (o *ClusterRequest) GetWidePermissionsOk() (*WidePermissionsDto, bool)`
 
-GetWidePermissionsDtoOk returns a tuple with the WidePermissionsDto field if it's non-nil, zero value otherwise
+GetWidePermissionsOk returns a tuple with the WidePermissions field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetWidePermissionsDto
+### SetWidePermissions
 
-`func (o *ClusterRequest) SetWidePermissionsDto(v WidePermissionsDto)`
+`func (o *ClusterRequest) SetWidePermissions(v WidePermissionsDto)`
 
-SetWidePermissionsDto sets WidePermissionsDto field to given value.
+SetWidePermissions sets WidePermissions field to given value.
 
-### HasWidePermissionsDto
+### HasWidePermissions
 
-`func (o *ClusterRequest) HasWidePermissionsDto() bool`
+`func (o *ClusterRequest) HasWidePermissions() bool`
 
-HasWidePermissionsDto returns a boolean if a field has been set.
+HasWidePermissions returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
