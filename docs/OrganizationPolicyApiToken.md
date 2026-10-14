@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **OpaPolicy** | Pointer to **string** | the Open Policy Agent (rego) policy evaluated on every request made with this token | [optional] 
 **CreatorName** | Pointer to **NullableString** |  | [optional] 
 **ExpiresAt** | Pointer to **NullableTime** |  | [optional] 
+**LastUsedAt** | Pointer to **NullableTime** | Time when token usage was last recorded. Updated periodically, so recent usage may not appear immediately. Null when no usage has been recorded. | [optional] 
 
 ## Methods
 
@@ -294,6 +295,41 @@ HasExpiresAt returns a boolean if a field has been set.
 `func (o *OrganizationPolicyApiToken) UnsetExpiresAt()`
 
 UnsetExpiresAt ensures that no value is present for ExpiresAt, not even an explicit nil
+### GetLastUsedAt
+
+`func (o *OrganizationPolicyApiToken) GetLastUsedAt() time.Time`
+
+GetLastUsedAt returns the LastUsedAt field if non-nil, zero value otherwise.
+
+### GetLastUsedAtOk
+
+`func (o *OrganizationPolicyApiToken) GetLastUsedAtOk() (*time.Time, bool)`
+
+GetLastUsedAtOk returns a tuple with the LastUsedAt field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetLastUsedAt
+
+`func (o *OrganizationPolicyApiToken) SetLastUsedAt(v time.Time)`
+
+SetLastUsedAt sets LastUsedAt field to given value.
+
+### HasLastUsedAt
+
+`func (o *OrganizationPolicyApiToken) HasLastUsedAt() bool`
+
+HasLastUsedAt returns a boolean if a field has been set.
+
+### SetLastUsedAtNil
+
+`func (o *OrganizationPolicyApiToken) SetLastUsedAtNil(b bool)`
+
+ SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
+
+### UnsetLastUsedAt
+`func (o *OrganizationPolicyApiToken) UnsetLastUsedAt()`
+
+UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

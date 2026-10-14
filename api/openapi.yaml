@@ -40641,9 +40641,17 @@ components:
             format: date-time
             nullable: true
             type: string
+          last_used_at:
+            description: "Time when token usage was last recorded. Updated periodically,\
+              \ so recent usage may not appear immediately. Null when no usage has\
+              \ been recorded."
+            format: date-time
+            nullable: true
+            type: string
         type: object
       example:
         role_name: role_name
+        last_used_at: 2000-01-23T04:56:07.000+00:00
         expires_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
         role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40733,6 +40741,7 @@ components:
       example:
         results:
         - role_name: role_name
+          last_used_at: 2000-01-23T04:56:07.000+00:00
           expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40743,6 +40752,7 @@ components:
           creator_name: creator_name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - role_name: role_name
+          last_used_at: 2000-01-23T04:56:07.000+00:00
           expires_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -40771,9 +40781,17 @@ components:
           role_id:
             format: uuid
             type: string
+          last_used_at:
+            description: "Time when token usage was last recorded. Updated periodically,\
+              \ so recent usage may not appear immediately. Null when no usage has\
+              \ been recorded."
+            format: date-time
+            nullable: true
+            type: string
         type: object
       example:
         role_name: role_name
+        last_used_at: 2000-01-23T04:56:07.000+00:00
         updated_at: 2000-01-23T04:56:07.000+00:00
         role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         name: name
@@ -40834,6 +40852,7 @@ components:
       example:
         results:
         - role_name: role_name
+          last_used_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name
@@ -40841,6 +40860,7 @@ components:
           description: description
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - role_name: role_name
+          last_used_at: 2000-01-23T04:56:07.000+00:00
           updated_at: 2000-01-23T04:56:07.000+00:00
           role_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           name: name

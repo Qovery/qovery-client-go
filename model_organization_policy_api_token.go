@@ -31,9 +31,11 @@ type OrganizationPolicyApiToken struct {
 	// the organization role this token acts as once its policy has allowed a request. Effective access is the intersection of this role and `opa_policy`.
 	RoleId *string `json:"role_id,omitempty"`
 	// the Open Policy Agent (rego) policy evaluated on every request made with this token
-	OpaPolicy            *string        `json:"opa_policy,omitempty"`
-	CreatorName          NullableString `json:"creator_name,omitempty"`
-	ExpiresAt            NullableTime   `json:"expires_at,omitempty"`
+	OpaPolicy   *string        `json:"opa_policy,omitempty"`
+	CreatorName NullableString `json:"creator_name,omitempty"`
+	ExpiresAt   NullableTime   `json:"expires_at,omitempty"`
+	// Time when token usage was last recorded. Updated periodically, so recent usage may not appear immediately. Null when no usage has been recorded.
+	LastUsedAt           NullableTime `json:"last_used_at,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -384,6 +386,49 @@ func (o *OrganizationPolicyApiToken) UnsetExpiresAt() {
 	o.ExpiresAt.Unset()
 }
 
+// GetLastUsedAt returns the LastUsedAt field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *OrganizationPolicyApiToken) GetLastUsedAt() time.Time {
+	if o == nil || IsNil(o.LastUsedAt.Get()) {
+		var ret time.Time
+		return ret
+	}
+	return *o.LastUsedAt.Get()
+}
+
+// GetLastUsedAtOk returns a tuple with the LastUsedAt field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *OrganizationPolicyApiToken) GetLastUsedAtOk() (*time.Time, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.LastUsedAt.Get(), o.LastUsedAt.IsSet()
+}
+
+// HasLastUsedAt returns a boolean if a field has been set.
+func (o *OrganizationPolicyApiToken) HasLastUsedAt() bool {
+	if o != nil && o.LastUsedAt.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetLastUsedAt gets a reference to the given NullableTime and assigns it to the LastUsedAt field.
+func (o *OrganizationPolicyApiToken) SetLastUsedAt(v time.Time) {
+	o.LastUsedAt.Set(&v)
+}
+
+// SetLastUsedAtNil sets the value for LastUsedAt to be an explicit nil
+func (o *OrganizationPolicyApiToken) SetLastUsedAtNil() {
+	o.LastUsedAt.Set(nil)
+}
+
+// UnsetLastUsedAt ensures that no value is present for LastUsedAt, not even an explicit nil
+func (o *OrganizationPolicyApiToken) UnsetLastUsedAt() {
+	o.LastUsedAt.Unset()
+}
+
 func (o OrganizationPolicyApiToken) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -419,6 +464,9 @@ func (o OrganizationPolicyApiToken) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ExpiresAt.IsSet() {
 		toSerialize["expires_at"] = o.ExpiresAt.Get()
+	}
+	if o.LastUsedAt.IsSet() {
+		toSerialize["last_used_at"] = o.LastUsedAt.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -474,6 +522,7 @@ func (o *OrganizationPolicyApiToken) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "opa_policy")
 		delete(additionalProperties, "creator_name")
 		delete(additionalProperties, "expires_at")
+		delete(additionalProperties, "last_used_at")
 		o.AdditionalProperties = additionalProperties
 	}
 
