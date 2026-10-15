@@ -20932,6 +20932,13 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
+        "422":
+          description: |-
+            Tag change not allowed. Returned when the new tag:
+            - targets another provider or service
+            - is a lower major than the version the database runs
+            - changes major while the running version is unknown (deploy the service first)
+            - changes major on a database Qovery cannot upgrade (e.g. MySQL)
         "502":
           description: Failed to fetch blueprint manifest from GitHub
       summary: Preview a blueprint update
@@ -21043,6 +21050,13 @@ paths:
           description: Access forbidden
         "404":
           description: Resource not found
+        "422":
+          description: |-
+            Tag change not allowed. Returned when the new tag:
+            - targets another provider or service
+            - is a lower major than the version the database runs
+            - changes major while the running version is unknown (deploy the service first)
+            - changes major on a database Qovery cannot upgrade (e.g. MySQL)
       summary: Update a blueprint service
       tags:
       - Blueprint Main Calls
@@ -24784,10 +24798,14 @@ components:
     BlueprintUpdateResponse:
       example:
         new_major_versions:
-        - latest_tag: aws/postgres/17/1.0.1
+        - mode: RELABEL
+          latest_tag: aws/postgres/17/1.0.1
           service_version: "17"
-        - latest_tag: aws/postgres/17/1.0.1
+          unsupported_reason: the target major is lower than the version running
+        - mode: RELABEL
+          latest_tag: aws/postgres/17/1.0.1
           service_version: "17"
+          unsupported_reason: the target major is lower than the version running
         is_up_to_date: true
         latest_tag: aws/postgres/17/1.1.0
         removed_values:
@@ -25136,10 +25154,13 @@ components:
       - name
       type: object
     BlueprintUpdateNewMajorVersion:
-      description: A newer major version of the blueprint available for a major upgrade.
+      description: "A newer major version of the blueprint, and what moving to it\
+        \ would do."
       example:
+        mode: RELABEL
         latest_tag: aws/postgres/17/1.0.1
         service_version: "17"
+        unsupported_reason: the target major is lower than the version running
       properties:
         service_version:
           description: The engine major version (e.g. "17").
@@ -25149,10 +25170,29 @@ components:
           description: Latest catalog tag for that major version.
           example: aws/postgres/17/1.0.1
           type: string
+        mode:
+          $ref: '#/components/schemas/BlueprintMajorSwitchMode'
+        unsupported_reason:
+          description: Why the move is refused. Set only when `mode` is `UNSUPPORTED`.
+          example: the target major is lower than the version running
+          nullable: true
+          type: string
       required:
       - latest_tag
+      - mode
       - service_version
       type: object
+    BlueprintMajorSwitchMode:
+      description: |-
+        What moving the blueprint to this major does:
+        - `RELABEL`: the database already runs this major (e.g. upgraded on the cloud provider); only the blueprint and service records change.
+        - `UPGRADE`: the database runs an older major; the next deploy upgrades it in place (downtime). The preview shows the change first.
+        - `UNSUPPORTED`: the move is refused; see `unsupported_reason`.
+      enum:
+      - RELABEL
+      - UPGRADE
+      - UNSUPPORTED
+      type: string
     BlueprintUpdatePreviewResponse:
       example:
         service_type: HELM

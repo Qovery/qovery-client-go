@@ -19,12 +19,15 @@ import (
 // checks if the BlueprintUpdateNewMajorVersion type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &BlueprintUpdateNewMajorVersion{}
 
-// BlueprintUpdateNewMajorVersion A newer major version of the blueprint available for a major upgrade.
+// BlueprintUpdateNewMajorVersion A newer major version of the blueprint, and what moving to it would do.
 type BlueprintUpdateNewMajorVersion struct {
 	// The engine major version (e.g. \"17\").
 	ServiceVersion string `json:"service_version"`
 	// Latest catalog tag for that major version.
-	LatestTag            string `json:"latest_tag"`
+	LatestTag string                   `json:"latest_tag"`
+	Mode      BlueprintMajorSwitchMode `json:"mode"`
+	// Why the move is refused. Set only when `mode` is `UNSUPPORTED`.
+	UnsupportedReason    NullableString `json:"unsupported_reason,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -34,10 +37,11 @@ type _BlueprintUpdateNewMajorVersion BlueprintUpdateNewMajorVersion
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBlueprintUpdateNewMajorVersion(serviceVersion string, latestTag string) *BlueprintUpdateNewMajorVersion {
+func NewBlueprintUpdateNewMajorVersion(serviceVersion string, latestTag string, mode BlueprintMajorSwitchMode) *BlueprintUpdateNewMajorVersion {
 	this := BlueprintUpdateNewMajorVersion{}
 	this.ServiceVersion = serviceVersion
 	this.LatestTag = latestTag
+	this.Mode = mode
 	return &this
 }
 
@@ -97,6 +101,73 @@ func (o *BlueprintUpdateNewMajorVersion) SetLatestTag(v string) {
 	o.LatestTag = v
 }
 
+// GetMode returns the Mode field value
+func (o *BlueprintUpdateNewMajorVersion) GetMode() BlueprintMajorSwitchMode {
+	if o == nil {
+		var ret BlueprintMajorSwitchMode
+		return ret
+	}
+
+	return o.Mode
+}
+
+// GetModeOk returns a tuple with the Mode field value
+// and a boolean to check if the value has been set.
+func (o *BlueprintUpdateNewMajorVersion) GetModeOk() (*BlueprintMajorSwitchMode, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Mode, true
+}
+
+// SetMode sets field value
+func (o *BlueprintUpdateNewMajorVersion) SetMode(v BlueprintMajorSwitchMode) {
+	o.Mode = v
+}
+
+// GetUnsupportedReason returns the UnsupportedReason field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *BlueprintUpdateNewMajorVersion) GetUnsupportedReason() string {
+	if o == nil || IsNil(o.UnsupportedReason.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.UnsupportedReason.Get()
+}
+
+// GetUnsupportedReasonOk returns a tuple with the UnsupportedReason field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *BlueprintUpdateNewMajorVersion) GetUnsupportedReasonOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.UnsupportedReason.Get(), o.UnsupportedReason.IsSet()
+}
+
+// HasUnsupportedReason returns a boolean if a field has been set.
+func (o *BlueprintUpdateNewMajorVersion) HasUnsupportedReason() bool {
+	if o != nil && o.UnsupportedReason.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetUnsupportedReason gets a reference to the given NullableString and assigns it to the UnsupportedReason field.
+func (o *BlueprintUpdateNewMajorVersion) SetUnsupportedReason(v string) {
+	o.UnsupportedReason.Set(&v)
+}
+
+// SetUnsupportedReasonNil sets the value for UnsupportedReason to be an explicit nil
+func (o *BlueprintUpdateNewMajorVersion) SetUnsupportedReasonNil() {
+	o.UnsupportedReason.Set(nil)
+}
+
+// UnsetUnsupportedReason ensures that no value is present for UnsupportedReason, not even an explicit nil
+func (o *BlueprintUpdateNewMajorVersion) UnsetUnsupportedReason() {
+	o.UnsupportedReason.Unset()
+}
+
 func (o BlueprintUpdateNewMajorVersion) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -109,6 +180,10 @@ func (o BlueprintUpdateNewMajorVersion) ToMap() (map[string]interface{}, error) 
 	toSerialize := map[string]interface{}{}
 	toSerialize["service_version"] = o.ServiceVersion
 	toSerialize["latest_tag"] = o.LatestTag
+	toSerialize["mode"] = o.Mode
+	if o.UnsupportedReason.IsSet() {
+		toSerialize["unsupported_reason"] = o.UnsupportedReason.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -124,6 +199,7 @@ func (o *BlueprintUpdateNewMajorVersion) UnmarshalJSON(data []byte) (err error) 
 	requiredProperties := []string{
 		"service_version",
 		"latest_tag",
+		"mode",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -155,6 +231,8 @@ func (o *BlueprintUpdateNewMajorVersion) UnmarshalJSON(data []byte) (err error) 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "service_version")
 		delete(additionalProperties, "latest_tag")
+		delete(additionalProperties, "mode")
+		delete(additionalProperties, "unsupported_reason")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -780,6 +780,7 @@ Class | Method | HTTP request | Description
  - [BlueprintDetailsResponse](docs/BlueprintDetailsResponse.md)
  - [BlueprintDetailsResponseLatestDeployment](docs/BlueprintDetailsResponseLatestDeployment.md)
  - [BlueprintItem](docs/BlueprintItem.md)
+ - [BlueprintMajorSwitchMode](docs/BlueprintMajorSwitchMode.md)
  - [BlueprintMajorVersion](docs/BlueprintMajorVersion.md)
  - [BlueprintManifestBackendConfig](docs/BlueprintManifestBackendConfig.md)
  - [BlueprintManifestChartConfig](docs/BlueprintManifestChartConfig.md)

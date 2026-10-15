@@ -257,6 +257,7 @@ docs/BlueprintDetailsResponse.md
 docs/BlueprintDetailsResponseLatestDeployment.md
 docs/BlueprintItem.md
 docs/BlueprintMainCallsAPI.md
+docs/BlueprintMajorSwitchMode.md
 docs/BlueprintMajorVersion.md
 docs/BlueprintManifestBackendConfig.md
 docs/BlueprintManifestChartConfig.md
@@ -1268,6 +1269,7 @@ model_blueprint_deployment_status_response.go
 model_blueprint_details_response.go
 model_blueprint_details_response_latest_deployment.go
 model_blueprint_item.go
+model_blueprint_major_switch_mode.go
 model_blueprint_major_version.go
 model_blueprint_manifest_backend_config.go
 model_blueprint_manifest_chart_config.go
