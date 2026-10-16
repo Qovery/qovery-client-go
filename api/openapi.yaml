@@ -11022,6 +11022,17 @@ paths:
     get:
       description: "Default values for each setting are available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)"
       operationId: getDefaultApplicationAdvancedSettings
+      parameters:
+      - description: "When set, returns the defaults of the cluster running this environment,\
+          \ which can differ between clusters (for example build resources)."
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -11076,6 +11087,17 @@ paths:
     get:
       description: "Default values for each setting is available in [our documentation](https://hub.qovery.com/docs/using-qovery/configuration/advanced-settings/)"
       operationId: getDefaultJobAdvancedSettings
+      parameters:
+      - description: "When set, returns the defaults of the cluster running this environment,\
+          \ which can differ between clusters (for example build resources)."
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -19466,6 +19488,17 @@ paths:
   /defaultTerraformAdvancedSettings:
     get:
       operationId: getDefaultTerraformAdvancedSettings
+      parameters:
+      - description: "When set, returns the defaults of the cluster running this environment,\
+          \ which can differ between clusters (for example build resources)."
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -21309,6 +21342,17 @@ components:
         format: uuid
         type: string
       style: simple
+    defaultSettingsEnvironmentId:
+      description: "When set, returns the defaults of the cluster running this environment,\
+        \ which can differ between clusters (for example build resources)."
+      explode: true
+      in: query
+      name: environmentId
+      required: false
+      schema:
+        format: uuid
+        type: string
+      style: form
     environmentId:
       description: Environment ID
       explode: false

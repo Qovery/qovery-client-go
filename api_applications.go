@@ -274,8 +274,15 @@ func (a *ApplicationsAPIService) CreateApplicationExecute(r ApiCreateApplication
 }
 
 type ApiGetDefaultApplicationAdvancedSettingsRequest struct {
-	ctx        context.Context
-	ApiService *ApplicationsAPIService
+	ctx           context.Context
+	ApiService    *ApplicationsAPIService
+	environmentId *string
+}
+
+// When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources).
+func (r ApiGetDefaultApplicationAdvancedSettingsRequest) EnvironmentId(environmentId string) ApiGetDefaultApplicationAdvancedSettingsRequest {
+	r.environmentId = &environmentId
+	return r
 }
 
 func (r ApiGetDefaultApplicationAdvancedSettingsRequest) Execute() (*ApplicationAdvancedSettings, *http.Response, error) {
@@ -319,6 +326,9 @@ func (a *ApplicationsAPIService) GetDefaultApplicationAdvancedSettingsExecute(r 
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.environmentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

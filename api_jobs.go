@@ -274,8 +274,15 @@ func (a *JobsAPIService) CreateJobExecute(r ApiCreateJobRequest) (*JobResponse, 
 }
 
 type ApiGetDefaultJobAdvancedSettingsRequest struct {
-	ctx        context.Context
-	ApiService *JobsAPIService
+	ctx           context.Context
+	ApiService    *JobsAPIService
+	environmentId *string
+}
+
+// When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources).
+func (r ApiGetDefaultJobAdvancedSettingsRequest) EnvironmentId(environmentId string) ApiGetDefaultJobAdvancedSettingsRequest {
+	r.environmentId = &environmentId
+	return r
 }
 
 func (r ApiGetDefaultJobAdvancedSettingsRequest) Execute() (*JobAdvancedSettings, *http.Response, error) {
@@ -319,6 +326,9 @@ func (a *JobsAPIService) GetDefaultJobAdvancedSettingsExecute(r ApiGetDefaultJob
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.environmentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 

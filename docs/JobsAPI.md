@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 
 ## GetDefaultJobAdvancedSettings
 
-> JobAdvancedSettings GetDefaultJobAdvancedSettings(ctx).Execute()
+> JobAdvancedSettings GetDefaultJobAdvancedSettings(ctx).EnvironmentId(environmentId).Execute()
 
 List default job advanced settings
 
@@ -175,10 +175,11 @@ import (
 )
 
 func main() {
+	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources). (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.JobsAPI.GetDefaultJobAdvancedSettings(context.Background()).Execute()
+	resp, r, err := apiClient.JobsAPI.GetDefaultJobAdvancedSettings(context.Background()).EnvironmentId(environmentId).Execute()
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error when calling `JobsAPI.GetDefaultJobAdvancedSettings``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -190,12 +191,16 @@ func main() {
 
 ### Path Parameters
 
-This endpoint does not need any parameter.
+
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiGetDefaultJobAdvancedSettingsRequest struct via the builder pattern
 
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **environmentId** | **string** | When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources). | 
 
 ### Return type
 

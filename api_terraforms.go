@@ -274,8 +274,15 @@ func (a *TerraformsAPIService) CreateTerraformExecute(r ApiCreateTerraformReques
 }
 
 type ApiGetDefaultTerraformAdvancedSettingsRequest struct {
-	ctx        context.Context
-	ApiService *TerraformsAPIService
+	ctx           context.Context
+	ApiService    *TerraformsAPIService
+	environmentId *string
+}
+
+// When set, returns the defaults of the cluster running this environment, which can differ between clusters (for example build resources).
+func (r ApiGetDefaultTerraformAdvancedSettingsRequest) EnvironmentId(environmentId string) ApiGetDefaultTerraformAdvancedSettingsRequest {
+	r.environmentId = &environmentId
+	return r
 }
 
 func (r ApiGetDefaultTerraformAdvancedSettingsRequest) Execute() (*TerraformAdvancedSettings, *http.Response, error) {
@@ -317,6 +324,9 @@ func (a *TerraformsAPIService) GetDefaultTerraformAdvancedSettingsExecute(r ApiG
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if r.environmentId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "environmentId", r.environmentId, "")
+	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
