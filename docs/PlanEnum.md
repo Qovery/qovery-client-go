@@ -25,6 +25,12 @@
 
 * `ENTERPRISE_2025` (value: `"ENTERPRISE_2025"`)
 
+* `STARTER_2026` (value: `"STARTER_2026"`)
+
+* `GROWTH_2026` (value: `"GROWTH_2026"`)
+
+* `SCALE_2026` (value: `"SCALE_2026"`)
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

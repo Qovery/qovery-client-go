@@ -42315,6 +42315,9 @@ components:
       - TEAM_2025
       - BUSINESS_2025
       - ENTERPRISE_2025
+      - STARTER_2026
+      - GROWTH_2026
+      - SCALE_2026
       type: string
     PortProtocolEnum:
       default: HTTP

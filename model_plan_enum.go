@@ -32,6 +32,9 @@ const (
 	PLANENUM_TEAM_2025         PlanEnum = "TEAM_2025"
 	PLANENUM_BUSINESS_2025     PlanEnum = "BUSINESS_2025"
 	PLANENUM_ENTERPRISE_2025   PlanEnum = "ENTERPRISE_2025"
+	PLANENUM_STARTER_2026      PlanEnum = "STARTER_2026"
+	PLANENUM_GROWTH_2026       PlanEnum = "GROWTH_2026"
+	PLANENUM_SCALE_2026        PlanEnum = "SCALE_2026"
 )
 
 // All allowed values of PlanEnum enum
@@ -47,6 +50,9 @@ var AllowedPlanEnumEnumValues = []PlanEnum{
 	"TEAM_2025",
 	"BUSINESS_2025",
 	"ENTERPRISE_2025",
+	"STARTER_2026",
+	"GROWTH_2026",
+	"SCALE_2026",
 }
 
 func (v *PlanEnum) UnmarshalJSON(src []byte) error {
