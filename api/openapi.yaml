@@ -30770,6 +30770,7 @@ components:
         database.redis.allowed_cidrs:
         - database.redis.allowed_cidrs
         - database.redis.allowed_cidrs
+        aws.eks.karpenter.private_pool.cpu_manager_policy_static: false
         aws.vpc.enable_s3_flow_logs: true
         loki.read.cpu_request_m: 7
         registry.image_retention_time: 5
@@ -31032,6 +31033,12 @@ components:
               * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023
               * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
           type: string
+        aws.eks.karpenter.private_pool.cpu_manager_policy_static:
+          default: false
+          description: |
+            Run the kubelet with `cpuManagerPolicy: static` on the private node pool (Karpenter only). Guaranteed pods with an integer CPU request get dedicated cores, so tools that size their worker count from the CPU affinity mask see the pod's CPUs instead of the whole host.
+            Only has an effect on clusters where Qovery has enabled the private node pool, with AL2023 or Bottlerocket nodes. Ignored otherwise. Changing it replaces every node of that pool.
+          type: boolean
         pleco.resources_ttl:
           deprecated: true
           type: integer

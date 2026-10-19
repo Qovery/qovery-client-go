@@ -104,6 +104,8 @@ type ClusterAdvancedSettings struct {
 	AwsEksEc2MetadataImds *string `json:"aws.eks.ec2.metadata_imds,omitempty"`
 	// Select the AMI to use for EKS worker nodes (Karpenter only):   * `AmazonLinux2`: Amazon Linux 2   * `AmazonLinux2023`: Amazon Linux 2023 (default)   * `Bottlerocket`: Bottlerocket OS   * `ami-xxx` or `my-custom-ami-*`: A custom AMI ID or name pattern (assumes AL2023-based)   * `al2:ami-xxx`: A custom AMI based on Amazon Linux 2   * `al2023:ami-xxx`: A custom AMI based on Amazon Linux 2023   * `bottlerocket:ami-xxx`: A custom AMI based on Bottlerocket
 	AwsEksEc2Ami *string `json:"aws.eks.ec2.ami,omitempty"`
+	// Run the kubelet with `cpuManagerPolicy: static` on the private node pool (Karpenter only). Guaranteed pods with an integer CPU request get dedicated cores, so tools that size their worker count from the CPU affinity mask see the pod's CPUs instead of the whole host. Only has an effect on clusters where Qovery has enabled the private node pool, with AL2023 or Bottlerocket nodes. Ignored otherwise. Changing it replaces every node of that pool.
+	AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic *bool `json:"aws.eks.karpenter.private_pool.cpu_manager_policy_static,omitempty"`
 	// Deprecated
 	PlecoResourcesTtl     *int32                     `json:"pleco.resources_ttl,omitempty"`
 	RegistryMirroringMode *RegistryMirroringModeEnum `json:"registry.mirroring_mode,omitempty"`
@@ -162,6 +164,8 @@ func NewClusterAdvancedSettings() *ClusterAdvancedSettings {
 	this.AwsEksEfsTransitionToIa = &awsEksEfsTransitionToIa
 	var awsEksEc2Ami string = "AmazonLinux2023"
 	this.AwsEksEc2Ami = &awsEksEc2Ami
+	var awsEksKarpenterPrivatePoolCpuManagerPolicyStatic bool = false
+	this.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic = &awsEksKarpenterPrivatePoolCpuManagerPolicyStatic
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -184,6 +188,8 @@ func NewClusterAdvancedSettingsWithDefaults() *ClusterAdvancedSettings {
 	this.AwsEksEfsTransitionToIa = &awsEksEfsTransitionToIa
 	var awsEksEc2Ami string = "AmazonLinux2023"
 	this.AwsEksEc2Ami = &awsEksEc2Ami
+	var awsEksKarpenterPrivatePoolCpuManagerPolicyStatic bool = false
+	this.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic = &awsEksKarpenterPrivatePoolCpuManagerPolicyStatic
 	var registryMirroringMode RegistryMirroringModeEnum = REGISTRYMIRRORINGMODEENUM_SERVICE
 	this.RegistryMirroringMode = &registryMirroringMode
 	return &this
@@ -1533,6 +1539,38 @@ func (o *ClusterAdvancedSettings) SetAwsEksEc2Ami(v string) {
 	o.AwsEksEc2Ami = &v
 }
 
+// GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic returns the AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field value if set, zero value otherwise.
+func (o *ClusterAdvancedSettings) GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic() bool {
+	if o == nil || IsNil(o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic) {
+		var ret bool
+		return ret
+	}
+	return *o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic
+}
+
+// GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStaticOk returns a tuple with the AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ClusterAdvancedSettings) GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStaticOk() (*bool, bool) {
+	if o == nil || IsNil(o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic) {
+		return nil, false
+	}
+	return o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic, true
+}
+
+// HasAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic returns a boolean if a field has been set.
+func (o *ClusterAdvancedSettings) HasAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic() bool {
+	if o != nil && !IsNil(o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic) {
+		return true
+	}
+
+	return false
+}
+
+// SetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic gets a reference to the given bool and assigns it to the AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field.
+func (o *ClusterAdvancedSettings) SetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic(v bool) {
+	o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic = &v
+}
+
 // GetPlecoResourcesTtl returns the PlecoResourcesTtl field value if set, zero value otherwise.
 // Deprecated
 func (o *ClusterAdvancedSettings) GetPlecoResourcesTtl() int32 {
@@ -2314,6 +2352,9 @@ func (o ClusterAdvancedSettings) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.AwsEksEc2Ami) {
 		toSerialize["aws.eks.ec2.ami"] = o.AwsEksEc2Ami
 	}
+	if !IsNil(o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic) {
+		toSerialize["aws.eks.karpenter.private_pool.cpu_manager_policy_static"] = o.AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic
+	}
 	if !IsNil(o.PlecoResourcesTtl) {
 		toSerialize["pleco.resources_ttl"] = o.PlecoResourcesTtl
 	}
@@ -2432,6 +2473,7 @@ func (o *ClusterAdvancedSettings) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "aws.iam.admin_group")
 		delete(additionalProperties, "aws.eks.ec2.metadata_imds")
 		delete(additionalProperties, "aws.eks.ec2.ami")
+		delete(additionalProperties, "aws.eks.karpenter.private_pool.cpu_manager_policy_static")
 		delete(additionalProperties, "pleco.resources_ttl")
 		delete(additionalProperties, "registry.mirroring_mode")
 		delete(additionalProperties, "nginx.vcpu.request_in_milli_cpu")

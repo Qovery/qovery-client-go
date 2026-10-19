@@ -46,6 +46,7 @@ Name | Type | Description | Notes
 **AwsIamAdminGroup** | Pointer to **string** | AWS IAM group name with cluster access | [optional] 
 **AwsEksEc2MetadataImds** | Pointer to **string** | Specify the [IMDS](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html) version you want to use:   * &#x60;required&#x60;: IMDS V2 only   * &#x60;optional&#x60;: IMDS V1 + V2  | [optional] 
 **AwsEksEc2Ami** | Pointer to **string** | Select the AMI to use for EKS worker nodes (Karpenter only):   * &#x60;AmazonLinux2&#x60;: Amazon Linux 2   * &#x60;AmazonLinux2023&#x60;: Amazon Linux 2023 (default)   * &#x60;Bottlerocket&#x60;: Bottlerocket OS   * &#x60;ami-xxx&#x60; or &#x60;my-custom-ami-*&#x60;: A custom AMI ID or name pattern (assumes AL2023-based)   * &#x60;al2:ami-xxx&#x60;: A custom AMI based on Amazon Linux 2   * &#x60;al2023:ami-xxx&#x60;: A custom AMI based on Amazon Linux 2023   * &#x60;bottlerocket:ami-xxx&#x60;: A custom AMI based on Bottlerocket  | [optional] [default to "AmazonLinux2023"]
+**AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic** | Pointer to **bool** | Run the kubelet with &#x60;cpuManagerPolicy: static&#x60; on the private node pool (Karpenter only). Guaranteed pods with an integer CPU request get dedicated cores, so tools that size their worker count from the CPU affinity mask see the pod&#39;s CPUs instead of the whole host. Only has an effect on clusters where Qovery has enabled the private node pool, with AL2023 or Bottlerocket nodes. Ignored otherwise. Changing it replaces every node of that pool.  | [optional] [default to false]
 **PlecoResourcesTtl** | Pointer to **int32** |  | [optional] 
 **RegistryMirroringMode** | Pointer to [**RegistryMirroringModeEnum**](RegistryMirroringModeEnum.md) |  | [optional] [default to REGISTRYMIRRORINGMODEENUM_SERVICE]
 **NginxVcpuRequestInMilliCpu** | Pointer to **int32** | vcpu request in millicores | [optional] 
@@ -1133,6 +1134,31 @@ SetAwsEksEc2Ami sets AwsEksEc2Ami field to given value.
 `func (o *ClusterAdvancedSettings) HasAwsEksEc2Ami() bool`
 
 HasAwsEksEc2Ami returns a boolean if a field has been set.
+
+### GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic
+
+`func (o *ClusterAdvancedSettings) GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic() bool`
+
+GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic returns the AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field if non-nil, zero value otherwise.
+
+### GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStaticOk
+
+`func (o *ClusterAdvancedSettings) GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStaticOk() (*bool, bool)`
+
+GetAwsEksKarpenterPrivatePoolCpuManagerPolicyStaticOk returns a tuple with the AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic
+
+`func (o *ClusterAdvancedSettings) SetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic(v bool)`
+
+SetAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic sets AwsEksKarpenterPrivatePoolCpuManagerPolicyStatic field to given value.
+
+### HasAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic
+
+`func (o *ClusterAdvancedSettings) HasAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic() bool`
+
+HasAwsEksKarpenterPrivatePoolCpuManagerPolicyStatic returns a boolean if a field has been set.
 
 ### GetPlecoResourcesTtl
 
