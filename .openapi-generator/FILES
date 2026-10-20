@@ -219,9 +219,11 @@ docs/AvailableContainerRegistryResponse.md
 docs/AvailableContainerRegistryResponseList.md
 docs/AvailableHelmRepositoryResponse.md
 docs/AvailableHelmRepositoryResponseList.md
+docs/AwsAssumeRole.md
 docs/AwsCredentialsRequest.md
 docs/AwsParameterStoreEndpointDto.md
 docs/AwsRoleArnAuthDto.md
+docs/AwsRoleArnAuthDtoAssumeRole.md
 docs/AwsRoleClusterCredentials.md
 docs/AwsRoleCredentialsRequest.md
 docs/AwsSecretManagerEndpointDto.md
@@ -1234,9 +1236,11 @@ model_available_container_registry_response.go
 model_available_container_registry_response_list.go
 model_available_helm_repository_response.go
 model_available_helm_repository_response_list.go
+model_aws_assume_role.go
 model_aws_credentials_request.go
 model_aws_parameter_store_endpoint_dto.go
 model_aws_role_arn_auth_dto.go
+model_aws_role_arn_auth_dto_assume_role.go
 model_aws_role_cluster_credentials.go
 model_aws_role_credentials_request.go
 model_aws_secret_manager_endpoint_dto.go

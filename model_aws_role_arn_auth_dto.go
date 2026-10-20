@@ -21,8 +21,9 @@ var _ MappedNullable = &AwsRoleArnAuthDto{}
 
 // AwsRoleArnAuthDto struct for AwsRoleArnAuthDto
 type AwsRoleArnAuthDto struct {
-	Mode                 string `json:"mode"`
-	RoleArn              string `json:"role_arn"`
+	Mode                 string                              `json:"mode"`
+	RoleArn              string                              `json:"role_arn"`
+	AssumeRole           NullableAwsRoleArnAuthDtoAssumeRole `json:"assume_role,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -95,6 +96,49 @@ func (o *AwsRoleArnAuthDto) SetRoleArn(v string) {
 	o.RoleArn = v
 }
 
+// GetAssumeRole returns the AssumeRole field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *AwsRoleArnAuthDto) GetAssumeRole() AwsRoleArnAuthDtoAssumeRole {
+	if o == nil || IsNil(o.AssumeRole.Get()) {
+		var ret AwsRoleArnAuthDtoAssumeRole
+		return ret
+	}
+	return *o.AssumeRole.Get()
+}
+
+// GetAssumeRoleOk returns a tuple with the AssumeRole field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *AwsRoleArnAuthDto) GetAssumeRoleOk() (*AwsRoleArnAuthDtoAssumeRole, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AssumeRole.Get(), o.AssumeRole.IsSet()
+}
+
+// HasAssumeRole returns a boolean if a field has been set.
+func (o *AwsRoleArnAuthDto) HasAssumeRole() bool {
+	if o != nil && o.AssumeRole.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAssumeRole gets a reference to the given NullableAwsRoleArnAuthDtoAssumeRole and assigns it to the AssumeRole field.
+func (o *AwsRoleArnAuthDto) SetAssumeRole(v AwsRoleArnAuthDtoAssumeRole) {
+	o.AssumeRole.Set(&v)
+}
+
+// SetAssumeRoleNil sets the value for AssumeRole to be an explicit nil
+func (o *AwsRoleArnAuthDto) SetAssumeRoleNil() {
+	o.AssumeRole.Set(nil)
+}
+
+// UnsetAssumeRole ensures that no value is present for AssumeRole, not even an explicit nil
+func (o *AwsRoleArnAuthDto) UnsetAssumeRole() {
+	o.AssumeRole.Unset()
+}
+
 func (o AwsRoleArnAuthDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -107,6 +151,9 @@ func (o AwsRoleArnAuthDto) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["mode"] = o.Mode
 	toSerialize["role_arn"] = o.RoleArn
+	if o.AssumeRole.IsSet() {
+		toSerialize["assume_role"] = o.AssumeRole.Get()
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -153,6 +200,7 @@ func (o *AwsRoleArnAuthDto) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "role_arn")
+		delete(additionalProperties, "assume_role")
 		o.AdditionalProperties = additionalProperties
 	}
 

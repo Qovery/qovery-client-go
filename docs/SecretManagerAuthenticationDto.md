@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Mode** | **string** |  | 
 **RoleArn** | **string** |  | 
+**AssumeRole** | Pointer to [**NullableAwsRoleArnAuthDtoAssumeRole**](AwsRoleArnAuthDtoAssumeRole.md) |  | [optional] 
 **Region** | **string** |  | 
 **AccessKey** | **string** |  | 
 **SecretKey** | Pointer to **NullableString** |  | [optional] 
@@ -70,6 +71,41 @@ and a boolean to check if the value has been set.
 SetRoleArn sets RoleArn field to given value.
 
 
+### GetAssumeRole
+
+`func (o *SecretManagerAuthenticationDto) GetAssumeRole() AwsRoleArnAuthDtoAssumeRole`
+
+GetAssumeRole returns the AssumeRole field if non-nil, zero value otherwise.
+
+### GetAssumeRoleOk
+
+`func (o *SecretManagerAuthenticationDto) GetAssumeRoleOk() (*AwsRoleArnAuthDtoAssumeRole, bool)`
+
+GetAssumeRoleOk returns a tuple with the AssumeRole field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAssumeRole
+
+`func (o *SecretManagerAuthenticationDto) SetAssumeRole(v AwsRoleArnAuthDtoAssumeRole)`
+
+SetAssumeRole sets AssumeRole field to given value.
+
+### HasAssumeRole
+
+`func (o *SecretManagerAuthenticationDto) HasAssumeRole() bool`
+
+HasAssumeRole returns a boolean if a field has been set.
+
+### SetAssumeRoleNil
+
+`func (o *SecretManagerAuthenticationDto) SetAssumeRoleNil(b bool)`
+
+ SetAssumeRoleNil sets the value for AssumeRole to be an explicit nil
+
+### UnsetAssumeRole
+`func (o *SecretManagerAuthenticationDto) UnsetAssumeRole()`
+
+UnsetAssumeRole ensures that no value is present for AssumeRole, not even an explicit nil
 ### GetRegion
 
 `func (o *SecretManagerAuthenticationDto) GetRegion() string`

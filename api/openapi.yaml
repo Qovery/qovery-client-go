@@ -49432,8 +49432,27 @@ components:
           type: string
         role_arn:
           type: string
+        assume_role:
+          $ref: '#/components/schemas/AwsRoleArnAuthDto_assume_role'
       required:
       - mode
+      - role_arn
+      type: object
+    AwsAssumeRole:
+      properties:
+        role_arn:
+          description: ARN of the IAM role to assume.
+          example: arn:aws:iam::222222222222:role/qovery-ssm-reader
+          pattern: "^arn:aws(-cn|-us-gov)?:iam::\\d{12}:role/[\\w+=,.@/-]{1,512}$"
+          type: string
+        external_id:
+          description: "STS external id expected by the trust policy of the assumed\
+            \ role, if it requires one."
+          example: prod-eu-1
+          nullable: true
+          pattern: "^[\\w+=,.@:/-]{2,1224}$"
+          type: string
+      required:
       - role_arn
       type: object
     AwsStaticCredentialsAuthDto:
@@ -54459,6 +54478,15 @@ components:
     KedaScalerResponse_allOf_config_json:
       nullable: true
       type: object
+    AwsRoleArnAuthDto_assume_role:
+      allOf:
+      - $ref: '#/components/schemas/AwsAssumeRole'
+      description: "Role that External Secrets Operator assumes with sts:AssumeRole\
+        \ after authenticating with role_arn, typically to read secrets stored in\
+        \ another AWS account. The trust policy of this role must allow role_arn,\
+        \ and role_arn needs sts:AssumeRole on it. Only available with AWS_ROLE_ARN\
+        \ authentication."
+      nullable: true
     ArgocdAppManifestResponse_manifest_metadata:
       description: Raw enrichment data fetched from the ArgoCD managed-resources API
       example:
