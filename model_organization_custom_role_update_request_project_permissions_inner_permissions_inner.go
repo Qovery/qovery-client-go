@@ -13,6 +13,7 @@ package qovery
 
 import (
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner type satisfies the MappedNullable interface at compile time
@@ -20,8 +21,12 @@ var _ MappedNullable = &OrganizationCustomRoleUpdateRequestProjectPermissionsInn
 
 // OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct for OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 type OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner struct {
-	EnvironmentType      *EnvironmentModeEnum                     `json:"environment_type,omitempty"`
-	Permission           *OrganizationCustomRoleProjectPermission `json:"permission,omitempty"`
+	EnvironmentType *EnvironmentModeEnum                     `json:"environment_type,omitempty"`
+	Permission      *OrganizationCustomRoleProjectPermission `json:"permission,omitempty"`
+	// Allows opening a shell on the services of this environment type, from the CLI (`qovery shell`) or the console. Cannot be `true` with `NO_ACCESS`.
+	Shell bool `json:"shell"`
+	// Allows port-forwarding to the services of this environment type (`qovery port-forward`). Cannot be `true` with `NO_ACCESS`.
+	PortForward          bool `json:"port_forward"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,8 +36,10 @@ type _OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner() *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
+func NewOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner(shell bool, portForward bool) *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner {
 	this := OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner{}
+	this.Shell = shell
+	this.PortForward = portForward
 	return &this
 }
 
@@ -108,6 +115,54 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 	o.Permission = &v
 }
 
+// GetShell returns the Shell field value
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetShell() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.Shell
+}
+
+// GetShellOk returns a tuple with the Shell field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetShellOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.Shell, true
+}
+
+// SetShell sets field value
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) SetShell(v bool) {
+	o.Shell = v
+}
+
+// GetPortForward returns the PortForward field value
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetPortForward() bool {
+	if o == nil {
+		var ret bool
+		return ret
+	}
+
+	return o.PortForward
+}
+
+// GetPortForwardOk returns a tuple with the PortForward field value
+// and a boolean to check if the value has been set.
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) GetPortForwardOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.PortForward, true
+}
+
+// SetPortForward sets field value
+func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) SetPortForward(v bool) {
+	o.PortForward = v
+}
+
 func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -124,6 +179,8 @@ func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInn
 	if !IsNil(o.Permission) {
 		toSerialize["permission"] = o.Permission
 	}
+	toSerialize["shell"] = o.Shell
+	toSerialize["port_forward"] = o.PortForward
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -133,6 +190,28 @@ func (o OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInn
 }
 
 func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"shell",
+		"port_forward",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
 	varOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner := _OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner{}
 
 	err = json.Unmarshal(data, &varOrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsInner)
@@ -148,6 +227,8 @@ func (o *OrganizationCustomRoleUpdateRequestProjectPermissionsInnerPermissionsIn
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "environment_type")
 		delete(additionalProperties, "permission")
+		delete(additionalProperties, "shell")
+		delete(additionalProperties, "port_forward")
 		o.AdditionalProperties = additionalProperties
 	}
 

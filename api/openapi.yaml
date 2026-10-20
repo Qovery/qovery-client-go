@@ -41072,16 +41072,24 @@ components:
         - is_admin: false
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           permissions:
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
         - is_admin: false
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           permissions:
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
       properties:
         name:
@@ -41119,17 +41127,25 @@ components:
         - is_admin: false
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           permissions:
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
           project_name: project_name
         - is_admin: false
           project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           permissions:
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
-          - permission: NO_ACCESS
+          - shell: true
+            permission: NO_ACCESS
+            port_forward: true
             environment_type: PRODUCTION
           project_name: project_name
       properties:
@@ -41165,17 +41181,25 @@ components:
           - is_admin: false
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             permissions:
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
             project_name: project_name
           - is_admin: false
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             permissions:
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
             project_name: project_name
         - cluster_permissions:
@@ -41192,17 +41216,25 @@ components:
           - is_admin: false
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             permissions:
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
             project_name: project_name
           - is_admin: false
             project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             permissions:
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
-            - permission: NO_ACCESS
+            - shell: true
+              permission: NO_ACCESS
+              port_forward: true
               environment_type: PRODUCTION
             project_name: project_name
       properties:
@@ -41218,6 +41250,8 @@ components:
         - `VIEWER` user can access the environment (and applications / containers / databases / variables)
         - `DEPLOYER` user can deploy the environment (dependent on the required cluster permission `ENV_CREATOR`)
         - `MANAGER` user can create an environment (and applications / containers / databases / variables)
+
+        Shell and port-forward access are granted separately, with the `shell` and `port_forward` flags.
       enum:
       - NO_ACCESS
       - VIEWER
@@ -53596,22 +53630,41 @@ components:
       type: object
     OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner:
       example:
+        shell: true
         permission: NO_ACCESS
+        port_forward: true
         environment_type: PRODUCTION
       properties:
         environment_type:
           $ref: '#/components/schemas/EnvironmentModeEnum'
         permission:
           $ref: '#/components/schemas/OrganizationCustomRoleProjectPermission'
+        shell:
+          description: |
+            Allows opening a shell on the services of this environment type, from the CLI (`qovery shell`) or the console.
+            Cannot be `true` with `NO_ACCESS`.
+          type: boolean
+        port_forward:
+          description: |
+            Allows port-forwarding to the services of this environment type (`qovery port-forward`).
+            Cannot be `true` with `NO_ACCESS`.
+          type: boolean
+      required:
+      - port_forward
+      - shell
       type: object
     OrganizationCustomRoleUpdateRequest_project_permissions_inner:
       example:
         is_admin: false
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         permissions:
-        - permission: NO_ACCESS
+        - shell: true
+          permission: NO_ACCESS
+          port_forward: true
           environment_type: PRODUCTION
-        - permission: NO_ACCESS
+        - shell: true
+          permission: NO_ACCESS
+          port_forward: true
           environment_type: PRODUCTION
       properties:
         project_id:
@@ -53646,14 +53699,41 @@ components:
         permission:
           $ref: '#/components/schemas/OrganizationCustomRoleClusterPermission'
       type: object
+    OrganizationCustomRole_project_permissions_inner_permissions_inner:
+      example:
+        shell: true
+        permission: NO_ACCESS
+        port_forward: true
+        environment_type: PRODUCTION
+      properties:
+        environment_type:
+          $ref: '#/components/schemas/EnvironmentModeEnum'
+        permission:
+          $ref: '#/components/schemas/OrganizationCustomRoleProjectPermission'
+        shell:
+          description: "Allows opening a shell on the services of this environment\
+            \ type, from the CLI (`qovery shell`) or the console"
+          type: boolean
+        port_forward:
+          description: Allows port-forwarding to the services of this environment
+            type (`qovery port-forward`)
+          type: boolean
+      required:
+      - port_forward
+      - shell
+      type: object
     OrganizationCustomRole_project_permissions_inner:
       example:
         is_admin: false
         project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         permissions:
-        - permission: NO_ACCESS
+        - shell: true
+          permission: NO_ACCESS
+          port_forward: true
           environment_type: PRODUCTION
-        - permission: NO_ACCESS
+        - shell: true
+          permission: NO_ACCESS
+          port_forward: true
           environment_type: PRODUCTION
         project_name: project_name
       properties:
@@ -53671,7 +53751,7 @@ components:
           type: boolean
         permissions:
           items:
-            $ref: '#/components/schemas/OrganizationCustomRoleUpdateRequest_project_permissions_inner_permissions_inner'
+            $ref: '#/components/schemas/OrganizationCustomRole_project_permissions_inner_permissions_inner'
           type: array
       type: object
     OrganizationEventResponseList_links:
