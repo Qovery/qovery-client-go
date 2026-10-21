@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **DurationSec** | Pointer to **int32** | The duration of the step in seconds. | [optional] 
 **StartedAt** | Pointer to **NullableTime** | The time at which the step started. Present while the step is ongoing and may be retained after completion. | [optional] 
 **SubSteps** | Pointer to [**[]ServiceSubStepMetric**](ServiceSubStepMetric.md) | Steps that ran inside this one. Only set on BUILD. Their time is already part of this step&#39;s duration: never add it to a total.  | [optional] 
+**BuilderUsage** | Pointer to [**BuilderUsage**](BuilderUsage.md) |  | [optional] 
 
 ## Methods
 
@@ -163,6 +164,31 @@ SetSubSteps sets SubSteps field to given value.
 `func (o *ServiceStepMetric) HasSubSteps() bool`
 
 HasSubSteps returns a boolean if a field has been set.
+
+### GetBuilderUsage
+
+`func (o *ServiceStepMetric) GetBuilderUsage() BuilderUsage`
+
+GetBuilderUsage returns the BuilderUsage field if non-nil, zero value otherwise.
+
+### GetBuilderUsageOk
+
+`func (o *ServiceStepMetric) GetBuilderUsageOk() (*BuilderUsage, bool)`
+
+GetBuilderUsageOk returns a tuple with the BuilderUsage field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuilderUsage
+
+`func (o *ServiceStepMetric) SetBuilderUsage(v BuilderUsage)`
+
+SetBuilderUsage sets BuilderUsage field to given value.
+
+### HasBuilderUsage
+
+`func (o *ServiceStepMetric) HasBuilderUsage() bool`
+
+HasBuilderUsage returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

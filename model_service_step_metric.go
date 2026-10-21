@@ -29,6 +29,7 @@ type ServiceStepMetric struct {
 	StartedAt NullableTime `json:"started_at,omitempty"`
 	// Steps that ran inside this one. Only set on BUILD. Their time is already part of this step's duration: never add it to a total.
 	SubSteps             []ServiceSubStepMetric `json:"sub_steps,omitempty"`
+	BuilderUsage         *BuilderUsage          `json:"builder_usage,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -222,6 +223,38 @@ func (o *ServiceStepMetric) SetSubSteps(v []ServiceSubStepMetric) {
 	o.SubSteps = v
 }
 
+// GetBuilderUsage returns the BuilderUsage field value if set, zero value otherwise.
+func (o *ServiceStepMetric) GetBuilderUsage() BuilderUsage {
+	if o == nil || IsNil(o.BuilderUsage) {
+		var ret BuilderUsage
+		return ret
+	}
+	return *o.BuilderUsage
+}
+
+// GetBuilderUsageOk returns a tuple with the BuilderUsage field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceStepMetric) GetBuilderUsageOk() (*BuilderUsage, bool) {
+	if o == nil || IsNil(o.BuilderUsage) {
+		return nil, false
+	}
+	return o.BuilderUsage, true
+}
+
+// HasBuilderUsage returns a boolean if a field has been set.
+func (o *ServiceStepMetric) HasBuilderUsage() bool {
+	if o != nil && !IsNil(o.BuilderUsage) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuilderUsage gets a reference to the given BuilderUsage and assigns it to the BuilderUsage field.
+func (o *ServiceStepMetric) SetBuilderUsage(v BuilderUsage) {
+	o.BuilderUsage = &v
+}
+
 func (o ServiceStepMetric) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -246,6 +279,9 @@ func (o ServiceStepMetric) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.SubSteps) {
 		toSerialize["sub_steps"] = o.SubSteps
+	}
+	if !IsNil(o.BuilderUsage) {
+		toSerialize["builder_usage"] = o.BuilderUsage
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -274,6 +310,7 @@ func (o *ServiceStepMetric) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "duration_sec")
 		delete(additionalProperties, "started_at")
 		delete(additionalProperties, "sub_steps")
+		delete(additionalProperties, "builder_usage")
 		o.AdditionalProperties = additionalProperties
 	}
 

@@ -35990,7 +35990,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36003,7 +36009,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36032,7 +36044,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36045,7 +36063,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36113,7 +36137,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36126,7 +36156,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36155,7 +36191,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36168,7 +36210,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36198,7 +36246,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36211,7 +36265,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36240,7 +36300,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36253,7 +36319,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36283,7 +36355,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36296,7 +36374,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36325,7 +36409,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36338,7 +36428,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36368,7 +36464,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36381,7 +36483,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36410,7 +36518,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36423,7 +36537,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36453,7 +36573,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36466,7 +36592,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36495,7 +36627,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36508,7 +36646,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36538,7 +36682,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36551,7 +36701,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36580,7 +36736,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36593,7 +36755,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -36720,7 +36888,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36733,7 +36907,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36762,7 +36942,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36775,7 +36961,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36805,7 +36997,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36818,7 +37016,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36847,7 +37051,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36860,7 +37070,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36890,7 +37106,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36903,7 +37125,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36932,7 +37160,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36945,7 +37179,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -36994,7 +37234,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37007,7 +37253,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37036,7 +37288,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37049,7 +37307,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37079,7 +37343,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37092,7 +37362,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37121,7 +37397,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37134,7 +37416,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37164,7 +37452,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37177,7 +37471,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37206,7 +37506,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37219,7 +37525,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37249,7 +37561,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37262,7 +37580,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37291,7 +37615,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37304,7 +37634,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37334,7 +37670,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37347,7 +37689,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37376,7 +37724,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37389,7 +37743,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37419,7 +37779,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37432,7 +37798,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37461,7 +37833,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37474,7 +37852,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37504,7 +37888,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37517,7 +37907,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37546,7 +37942,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37559,7 +37961,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37608,7 +38016,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37621,7 +38035,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37650,7 +38070,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37663,7 +38089,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37693,7 +38125,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37706,7 +38144,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37735,7 +38179,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37748,7 +38198,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37778,7 +38234,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37791,7 +38253,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37820,7 +38288,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37833,7 +38307,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37863,7 +38343,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37876,7 +38362,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37905,7 +38397,13 @@ components:
               total_duration_sec: 0
               total_computing_duration_sec: 6
               details:
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -37918,7 +38416,13 @@ components:
                   status: null
                 duration_sec: 1
                 status: ONGOING
-              - step_name: REGISTRY_CREATE_REPOSITORY
+              - builder_usage:
+                  cpu_milli_avg: 2
+                  cpu_milli_max: 5
+                  memory_mib_max: 7
+                  oom_killed: true
+                  samples: 9
+                step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
                 sub_steps:
                 - name: name
@@ -39079,7 +39583,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39092,7 +39602,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39121,7 +39637,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39134,7 +39656,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39164,7 +39692,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39177,7 +39711,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39206,7 +39746,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39219,7 +39765,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39249,7 +39801,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39262,7 +39820,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39291,7 +39855,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39304,7 +39874,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39353,7 +39929,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39366,7 +39948,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39395,7 +39983,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39408,7 +40002,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39438,7 +40038,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39451,7 +40057,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39480,7 +40092,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39493,7 +40111,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39523,7 +40147,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39536,7 +40166,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39565,7 +40201,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39578,7 +40220,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39608,7 +40256,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39621,7 +40275,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39650,7 +40310,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -39663,7 +40329,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -43706,7 +44378,7 @@ components:
       example:
         deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         execution_id: execution_id
-        deployment_requests_count: 5
+        deployment_requests_count: 3
         last_deployment_date: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         state: BUILDING
@@ -43714,7 +44386,13 @@ components:
           total_duration_sec: 0
           total_computing_duration_sec: 6
           details:
-          - step_name: REGISTRY_CREATE_REPOSITORY
+          - builder_usage:
+              cpu_milli_avg: 2
+              cpu_milli_max: 5
+              memory_mib_max: 7
+              oom_killed: true
+              samples: 9
+            step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
             sub_steps:
             - name: name
@@ -43727,7 +44405,13 @@ components:
               status: null
             duration_sec: 1
             status: ONGOING
-          - step_name: REGISTRY_CREATE_REPOSITORY
+          - builder_usage:
+              cpu_milli_avg: 2
+              cpu_milli_max: 5
+              memory_mib_max: 7
+              oom_killed: true
+              samples: 9
+            step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
             sub_steps:
             - name: name
@@ -43751,7 +44435,7 @@ components:
         results:
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
-          deployment_requests_count: 5
+          deployment_requests_count: 3
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -43759,7 +44443,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -43772,7 +44462,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -43793,7 +44489,7 @@ components:
           service_deployment_status: NEVER_DEPLOYED
         - deployment_request_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           execution_id: execution_id
-          deployment_requests_count: 5
+          deployment_requests_count: 3
           last_deployment_date: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           state: BUILDING
@@ -43801,7 +44497,13 @@ components:
             total_duration_sec: 0
             total_computing_duration_sec: 6
             details:
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -43814,7 +44516,13 @@ components:
                 status: null
               duration_sec: 1
               status: ONGOING
-            - step_name: REGISTRY_CREATE_REPOSITORY
+            - builder_usage:
+                cpu_milli_avg: 2
+                cpu_milli_max: 5
+                memory_mib_max: 7
+                oom_killed: true
+                samples: 9
+              step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
               sub_steps:
               - name: name
@@ -44330,7 +45038,13 @@ components:
           total_duration_sec: 0
           total_computing_duration_sec: 6
           details:
-          - step_name: REGISTRY_CREATE_REPOSITORY
+          - builder_usage:
+              cpu_milli_avg: 2
+              cpu_milli_max: 5
+              memory_mib_max: 7
+              oom_killed: true
+              samples: 9
+            step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
             sub_steps:
             - name: name
@@ -44343,7 +45057,13 @@ components:
               status: null
             duration_sec: 1
             status: ONGOING
-          - step_name: REGISTRY_CREATE_REPOSITORY
+          - builder_usage:
+              cpu_milli_avg: 2
+              cpu_milli_max: 5
+              memory_mib_max: 7
+              oom_killed: true
+              samples: 9
+            step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
             sub_steps:
             - name: name
@@ -45013,6 +45733,12 @@ components:
       type: string
     ServiceStepMetric:
       example:
+        builder_usage:
+          cpu_milli_avg: 2
+          cpu_milli_max: 5
+          memory_mib_max: 7
+          oom_killed: true
+          samples: 9
         step_name: REGISTRY_CREATE_REPOSITORY
         started_at: 2000-01-23T04:56:07.000+00:00
         sub_steps:
@@ -45047,6 +45773,41 @@ components:
           items:
             $ref: '#/components/schemas/ServiceSubStepMetric'
           type: array
+        builder_usage:
+          $ref: '#/components/schemas/BuilderUsage'
+      type: object
+    BuilderUsage:
+      description: |
+        Resources the builder used during this build, image push and cache export included. Only
+        set on BUILD. Compare them with the service's build CPU and memory settings. The four usage
+        fields come together, or are all absent when no sample was taken (a build shorter than the
+        sampling interval, or a cluster without a metrics API).
+      example:
+        cpu_milli_avg: 2
+        cpu_milli_max: 5
+        memory_mib_max: 7
+        oom_killed: true
+        samples: 9
+      properties:
+        cpu_milli_max:
+          description: "Highest CPU use seen, in millicores."
+          type: integer
+        cpu_milli_avg:
+          description: "Average CPU use over the samples, in millicores."
+          type: integer
+        memory_mib_max:
+          description: "Highest memory use seen, in MiB."
+          type: integer
+        samples:
+          description: |
+            Number of samples the values above come from. Usage is sampled periodically, so a
+            short build has few samples and its peaks can be missed.
+          type: integer
+        oom_killed:
+          description: |
+            Present, and true, only when the builder was killed for running out of memory. Absent
+            otherwise: never test it against false. Raising the build memory setting fixes it.
+          type: boolean
       type: object
     ServiceSubStepMetric:
       example:
@@ -45110,7 +45871,13 @@ components:
         total_duration_sec: 0
         total_computing_duration_sec: 6
         details:
-        - step_name: REGISTRY_CREATE_REPOSITORY
+        - builder_usage:
+            cpu_milli_avg: 2
+            cpu_milli_max: 5
+            memory_mib_max: 7
+            oom_killed: true
+            samples: 9
+          step_name: REGISTRY_CREATE_REPOSITORY
           started_at: 2000-01-23T04:56:07.000+00:00
           sub_steps:
           - name: name
@@ -45123,7 +45890,13 @@ components:
             status: null
           duration_sec: 1
           status: ONGOING
-        - step_name: REGISTRY_CREATE_REPOSITORY
+        - builder_usage:
+            cpu_milli_avg: 2
+            cpu_milli_max: 5
+            memory_mib_max: 7
+            oom_killed: true
+            samples: 9
+          step_name: REGISTRY_CREATE_REPOSITORY
           started_at: 2000-01-23T04:56:07.000+00:00
           sub_steps:
           - name: name

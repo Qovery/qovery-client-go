@@ -295,6 +295,7 @@ docs/BlueprintVariableRequest.md
 docs/Budget.md
 docs/BuildModeEnum.md
 docs/BuildSettings.md
+docs/BuilderUsage.md
 docs/CancelAgenticWorkflowDeploymentRequest.md
 docs/CancelEnvironmentDeploymentRequest.md
 docs/CheckedCustomDomainResponse.md
@@ -1311,6 +1312,7 @@ model_blueprint_variable_request.go
 model_budget.go
 model_build_mode_enum.go
 model_build_settings.go
+model_builder_usage.go
 model_cancel_agentic_workflow_deployment_request.go
 model_cancel_environment_deployment_request.go
 model_checked_custom_domain_response.go

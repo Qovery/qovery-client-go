@@ -818,6 +818,7 @@ Class | Method | HTTP request | Description
  - [Budget](docs/Budget.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [BuildSettings](docs/BuildSettings.md)
+ - [BuilderUsage](docs/BuilderUsage.md)
  - [CancelAgenticWorkflowDeploymentRequest](docs/CancelAgenticWorkflowDeploymentRequest.md)
  - [CancelEnvironmentDeploymentRequest](docs/CancelEnvironmentDeploymentRequest.md)
  - [CheckedCustomDomainResponse](docs/CheckedCustomDomainResponse.md)
