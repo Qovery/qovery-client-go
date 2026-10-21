@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Status** | Pointer to [**StepMetricStatusEnum**](StepMetricStatusEnum.md) |  | [optional] 
 **DurationSec** | Pointer to **int32** | The duration of the step in seconds. | [optional] 
 **StartedAt** | Pointer to **NullableTime** | The time at which the step started. Present while the step is ongoing and may be retained after completion. | [optional] 
+**SubSteps** | Pointer to [**[]ServiceSubStepMetric**](ServiceSubStepMetric.md) | Steps that ran inside this one. Only set on BUILD. Their time is already part of this step&#39;s duration: never add it to a total.  | [optional] 
 
 ## Methods
 
@@ -138,6 +139,31 @@ HasStartedAt returns a boolean if a field has been set.
 `func (o *ServiceStepMetric) UnsetStartedAt()`
 
 UnsetStartedAt ensures that no value is present for StartedAt, not even an explicit nil
+### GetSubSteps
+
+`func (o *ServiceStepMetric) GetSubSteps() []ServiceSubStepMetric`
+
+GetSubSteps returns the SubSteps field if non-nil, zero value otherwise.
+
+### GetSubStepsOk
+
+`func (o *ServiceStepMetric) GetSubStepsOk() (*[]ServiceSubStepMetric, bool)`
+
+GetSubStepsOk returns a tuple with the SubSteps field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSubSteps
+
+`func (o *ServiceStepMetric) SetSubSteps(v []ServiceSubStepMetric)`
+
+SetSubSteps sets SubSteps field to given value.
+
+### HasSubSteps
+
+`func (o *ServiceStepMetric) HasSubSteps() bool`
+
+HasSubSteps returns a boolean if a field has been set.
+
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

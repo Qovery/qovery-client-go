@@ -35793,6 +35793,7 @@ components:
             name: name
             step: step
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          step_name: step_name
           organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           transmitter:
             name: name
@@ -35991,10 +35992,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36015,10 +36034,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36078,10 +36115,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36102,10 +36157,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36127,10 +36200,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36151,10 +36242,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36176,10 +36285,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36200,10 +36327,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36225,10 +36370,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36249,10 +36412,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36274,10 +36455,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36298,10 +36497,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36323,10 +36540,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36347,10 +36582,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -36469,10 +36722,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36493,10 +36764,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36518,10 +36807,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36542,10 +36849,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36567,10 +36892,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36591,10 +36934,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36635,10 +36996,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36659,10 +37038,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36684,10 +37081,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36708,10 +37123,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36733,10 +37166,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36757,10 +37208,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36782,10 +37251,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36806,10 +37293,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36831,10 +37336,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36855,10 +37378,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36880,10 +37421,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36904,10 +37463,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36929,10 +37506,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36953,10 +37548,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -36997,10 +37610,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37021,10 +37652,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37046,10 +37695,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37070,10 +37737,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37095,10 +37780,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37119,10 +37822,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37144,10 +37865,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -37168,10 +37907,28 @@ components:
               details:
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
               - step_name: REGISTRY_CREATE_REPOSITORY
                 started_at: 2000-01-23T04:56:07.000+00:00
+                sub_steps:
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
+                - name: name
+                  started_at: 2000-01-23T04:56:07.000+00:00
+                  duration_sec: 5
+                  status: null
                 duration_sec: 1
                 status: ONGOING
             status_details:
@@ -38324,10 +39081,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38348,10 +39123,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38373,10 +39166,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38397,10 +39208,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38422,10 +39251,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38446,10 +39293,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38490,10 +39355,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38514,10 +39397,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38539,10 +39440,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38563,10 +39482,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38588,10 +39525,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38612,10 +39567,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38637,10 +39610,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -38661,10 +39652,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -42707,10 +43716,28 @@ components:
           details:
           - step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
+            sub_steps:
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
             duration_sec: 1
             status: ONGOING
           - step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
+            sub_steps:
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
             duration_sec: 1
             status: ONGOING
         status_details:
@@ -42734,10 +43761,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -42758,10 +43803,28 @@ components:
             details:
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
             - step_name: REGISTRY_CREATE_REPOSITORY
               started_at: 2000-01-23T04:56:07.000+00:00
+              sub_steps:
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
+              - name: name
+                started_at: 2000-01-23T04:56:07.000+00:00
+                duration_sec: 5
+                status: null
               duration_sec: 1
               status: ONGOING
           status_details:
@@ -43269,10 +44332,28 @@ components:
           details:
           - step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
+            sub_steps:
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
             duration_sec: 1
             status: ONGOING
           - step_name: REGISTRY_CREATE_REPOSITORY
             started_at: 2000-01-23T04:56:07.000+00:00
+            sub_steps:
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
+            - name: name
+              started_at: 2000-01-23T04:56:07.000+00:00
+              duration_sec: 5
+              status: null
             duration_sec: 1
             status: ONGOING
         status_details:
@@ -43934,6 +45015,15 @@ components:
       example:
         step_name: REGISTRY_CREATE_REPOSITORY
         started_at: 2000-01-23T04:56:07.000+00:00
+        sub_steps:
+        - name: name
+          started_at: 2000-01-23T04:56:07.000+00:00
+          duration_sec: 5
+          status: null
+        - name: name
+          started_at: 2000-01-23T04:56:07.000+00:00
+          duration_sec: 5
+          status: null
         duration_sec: 1
         status: ONGOING
       properties:
@@ -43950,6 +45040,40 @@ components:
           format: date-time
           nullable: true
           type: string
+        sub_steps:
+          description: |
+            Steps that ran inside this one. Only set on BUILD. Their time is already part of this
+            step's duration: never add it to a total.
+          items:
+            $ref: '#/components/schemas/ServiceSubStepMetric'
+          type: array
+      type: object
+    ServiceSubStepMetric:
+      example:
+        name: name
+        started_at: 2000-01-23T04:56:07.000+00:00
+        duration_sec: 5
+        status: null
+      properties:
+        name:
+          description: |
+            PROVISION_BUILDER, IMAGE_PUSH or CACHE_EXPORT. A string, not an enum, so a new
+            sub-step never breaks a client: accept values not listed here.
+          type: string
+        status:
+          $ref: '#/components/schemas/StepMetricStatusEnum'
+        duration_sec:
+          description: The duration of the sub-step in seconds.
+          type: integer
+        started_at:
+          description: The time at which the sub-step started.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - duration_sec
+      - name
+      - status
       type: object
     StageStepMetrics:
       example:
@@ -43988,10 +45112,28 @@ components:
         details:
         - step_name: REGISTRY_CREATE_REPOSITORY
           started_at: 2000-01-23T04:56:07.000+00:00
+          sub_steps:
+          - name: name
+            started_at: 2000-01-23T04:56:07.000+00:00
+            duration_sec: 5
+            status: null
+          - name: name
+            started_at: 2000-01-23T04:56:07.000+00:00
+            duration_sec: 5
+            status: null
           duration_sec: 1
           status: ONGOING
         - step_name: REGISTRY_CREATE_REPOSITORY
           started_at: 2000-01-23T04:56:07.000+00:00
+          sub_steps:
+          - name: name
+            started_at: 2000-01-23T04:56:07.000+00:00
+            duration_sec: 5
+            status: null
+          - name: name
+            started_at: 2000-01-23T04:56:07.000+00:00
+            duration_sec: 5
+            status: null
           duration_sec: 1
           status: ONGOING
       properties:
@@ -52900,6 +54042,7 @@ components:
           name: name
           step: step
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        step_name: step_name
         organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         transmitter:
           name: name
@@ -52918,6 +54061,16 @@ components:
           $ref: '#/components/schemas/EnvironmentLogs_details_transmitter'
         stage:
           $ref: '#/components/schemas/EnvironmentLogs_details_stage'
+        step_name:
+          description: |
+            Step of the deployment this line belongs to: REGISTRY_CREATE_REPOSITORY, GIT_CLONE,
+            PROVISION_BUILDER, BUILD, IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT,
+            ROUTER_DEPLOYMENT or EXECUTING. It matches a step's `step_name`, or the `name` of a
+            BUILD sub-step, in the deployment statuses. The phase (build or deploy) is `stage.step`.
+            Absent on older deployments and on pause, delete and restart. Clients must accept
+            values not listed here.
+          nullable: true
+          type: string
       type: object
     EnvironmentLogs_error_underlying_error:
       example:

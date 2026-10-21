@@ -26,7 +26,9 @@ type ServiceStepMetric struct {
 	// The duration of the step in seconds.
 	DurationSec *int32 `json:"duration_sec,omitempty"`
 	// The time at which the step started. Present while the step is ongoing and may be retained after completion.
-	StartedAt            NullableTime `json:"started_at,omitempty"`
+	StartedAt NullableTime `json:"started_at,omitempty"`
+	// Steps that ran inside this one. Only set on BUILD. Their time is already part of this step's duration: never add it to a total.
+	SubSteps             []ServiceSubStepMetric `json:"sub_steps,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -188,6 +190,38 @@ func (o *ServiceStepMetric) UnsetStartedAt() {
 	o.StartedAt.Unset()
 }
 
+// GetSubSteps returns the SubSteps field value if set, zero value otherwise.
+func (o *ServiceStepMetric) GetSubSteps() []ServiceSubStepMetric {
+	if o == nil || IsNil(o.SubSteps) {
+		var ret []ServiceSubStepMetric
+		return ret
+	}
+	return o.SubSteps
+}
+
+// GetSubStepsOk returns a tuple with the SubSteps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServiceStepMetric) GetSubStepsOk() ([]ServiceSubStepMetric, bool) {
+	if o == nil || IsNil(o.SubSteps) {
+		return nil, false
+	}
+	return o.SubSteps, true
+}
+
+// HasSubSteps returns a boolean if a field has been set.
+func (o *ServiceStepMetric) HasSubSteps() bool {
+	if o != nil && !IsNil(o.SubSteps) {
+		return true
+	}
+
+	return false
+}
+
+// SetSubSteps gets a reference to the given []ServiceSubStepMetric and assigns it to the SubSteps field.
+func (o *ServiceStepMetric) SetSubSteps(v []ServiceSubStepMetric) {
+	o.SubSteps = v
+}
+
 func (o ServiceStepMetric) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -209,6 +243,9 @@ func (o ServiceStepMetric) ToMap() (map[string]interface{}, error) {
 	}
 	if o.StartedAt.IsSet() {
 		toSerialize["started_at"] = o.StartedAt.Get()
+	}
+	if !IsNil(o.SubSteps) {
+		toSerialize["sub_steps"] = o.SubSteps
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -236,6 +273,7 @@ func (o *ServiceStepMetric) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "duration_sec")
 		delete(additionalProperties, "started_at")
+		delete(additionalProperties, "sub_steps")
 		o.AdditionalProperties = additionalProperties
 	}
 

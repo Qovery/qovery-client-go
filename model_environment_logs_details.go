@@ -20,11 +20,13 @@ var _ MappedNullable = &EnvironmentLogsDetails{}
 
 // EnvironmentLogsDetails struct for EnvironmentLogsDetails
 type EnvironmentLogsDetails struct {
-	OrganizationId       *string                            `json:"organization_id,omitempty"`
-	ClusterId            *string                            `json:"cluster_id,omitempty"`
-	ExecutionId          *string                            `json:"execution_id,omitempty"`
-	Transmitter          *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
-	Stage                *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
+	OrganizationId *string                            `json:"organization_id,omitempty"`
+	ClusterId      *string                            `json:"cluster_id,omitempty"`
+	ExecutionId    *string                            `json:"execution_id,omitempty"`
+	Transmitter    *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
+	Stage          *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
+	// Step of the deployment this line belongs to: REGISTRY_CREATE_REPOSITORY, GIT_CLONE, PROVISION_BUILDER, BUILD, IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT, ROUTER_DEPLOYMENT or EXECUTING. It matches a step's `step_name`, or the `name` of a BUILD sub-step, in the deployment statuses. The phase (build or deploy) is `stage.step`. Absent on older deployments and on pause, delete and restart. Clients must accept values not listed here.
+	StepName             NullableString `json:"step_name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -207,6 +209,49 @@ func (o *EnvironmentLogsDetails) SetStage(v EnvironmentLogsDetailsStage) {
 	o.Stage = &v
 }
 
+// GetStepName returns the StepName field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *EnvironmentLogsDetails) GetStepName() string {
+	if o == nil || IsNil(o.StepName.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.StepName.Get()
+}
+
+// GetStepNameOk returns a tuple with the StepName field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *EnvironmentLogsDetails) GetStepNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StepName.Get(), o.StepName.IsSet()
+}
+
+// HasStepName returns a boolean if a field has been set.
+func (o *EnvironmentLogsDetails) HasStepName() bool {
+	if o != nil && o.StepName.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStepName gets a reference to the given NullableString and assigns it to the StepName field.
+func (o *EnvironmentLogsDetails) SetStepName(v string) {
+	o.StepName.Set(&v)
+}
+
+// SetStepNameNil sets the value for StepName to be an explicit nil
+func (o *EnvironmentLogsDetails) SetStepNameNil() {
+	o.StepName.Set(nil)
+}
+
+// UnsetStepName ensures that no value is present for StepName, not even an explicit nil
+func (o *EnvironmentLogsDetails) UnsetStepName() {
+	o.StepName.Unset()
+}
+
 func (o EnvironmentLogsDetails) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -231,6 +276,9 @@ func (o EnvironmentLogsDetails) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.Stage) {
 		toSerialize["stage"] = o.Stage
+	}
+	if o.StepName.IsSet() {
+		toSerialize["step_name"] = o.StepName.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -259,6 +307,7 @@ func (o *EnvironmentLogsDetails) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "execution_id")
 		delete(additionalProperties, "transmitter")
 		delete(additionalProperties, "stage")
+		delete(additionalProperties, "step_name")
 		o.AdditionalProperties = additionalProperties
 	}
 

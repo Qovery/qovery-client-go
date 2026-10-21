@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **ExecutionId** | Pointer to **string** |  | [optional] 
 **Transmitter** | Pointer to [**EnvironmentLogsDetailsTransmitter**](EnvironmentLogsDetailsTransmitter.md) |  | [optional] 
 **Stage** | Pointer to [**EnvironmentLogsDetailsStage**](EnvironmentLogsDetailsStage.md) |  | [optional] 
+**StepName** | Pointer to **NullableString** | Step of the deployment this line belongs to: REGISTRY_CREATE_REPOSITORY, GIT_CLONE, PROVISION_BUILDER, BUILD, IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT, ROUTER_DEPLOYMENT or EXECUTING. It matches a step&#39;s &#x60;step_name&#x60;, or the &#x60;name&#x60; of a BUILD sub-step, in the deployment statuses. The phase (build or deploy) is &#x60;stage.step&#x60;. Absent on older deployments and on pause, delete and restart. Clients must accept values not listed here.  | [optional] 
 
 ## Methods
 
@@ -154,6 +155,41 @@ SetStage sets Stage field to given value.
 
 HasStage returns a boolean if a field has been set.
 
+### GetStepName
+
+`func (o *EnvironmentLogsDetails) GetStepName() string`
+
+GetStepName returns the StepName field if non-nil, zero value otherwise.
+
+### GetStepNameOk
+
+`func (o *EnvironmentLogsDetails) GetStepNameOk() (*string, bool)`
+
+GetStepNameOk returns a tuple with the StepName field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStepName
+
+`func (o *EnvironmentLogsDetails) SetStepName(v string)`
+
+SetStepName sets StepName field to given value.
+
+### HasStepName
+
+`func (o *EnvironmentLogsDetails) HasStepName() bool`
+
+HasStepName returns a boolean if a field has been set.
+
+### SetStepNameNil
+
+`func (o *EnvironmentLogsDetails) SetStepNameNil(b bool)`
+
+ SetStepNameNil sets the value for StepName to be an explicit nil
+
+### UnsetStepName
+`func (o *EnvironmentLogsDetails) UnsetStepName()`
+
+UnsetStepName ensures that no value is present for StepName, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
