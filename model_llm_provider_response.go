@@ -36,7 +36,9 @@ type LlmProviderResponse struct {
 	// Display name of the owning member. Null for an ORGANIZATION provider.
 	OwnerName NullableString `json:"owner_name,omitempty"`
 	// AWS region of a BEDROCK provider. Null when unset or for CLAUDE.
-	Region               NullableString `json:"region,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	// Root of the custom Anthropic-compatible API of an ANTHROPIC_COMPATIBLE provider. Null for CLAUDE and BEDROCK.
+	BaseUrl              NullableString `json:"base_url,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -388,6 +390,49 @@ func (o *LlmProviderResponse) UnsetRegion() {
 	o.Region.Unset()
 }
 
+// GetBaseUrl returns the BaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LlmProviderResponse) GetBaseUrl() string {
+	if o == nil || IsNil(o.BaseUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BaseUrl.Get()
+}
+
+// GetBaseUrlOk returns a tuple with the BaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LlmProviderResponse) GetBaseUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BaseUrl.Get(), o.BaseUrl.IsSet()
+}
+
+// HasBaseUrl returns a boolean if a field has been set.
+func (o *LlmProviderResponse) HasBaseUrl() bool {
+	if o != nil && o.BaseUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBaseUrl gets a reference to the given NullableString and assigns it to the BaseUrl field.
+func (o *LlmProviderResponse) SetBaseUrl(v string) {
+	o.BaseUrl.Set(&v)
+}
+
+// SetBaseUrlNil sets the value for BaseUrl to be an explicit nil
+func (o *LlmProviderResponse) SetBaseUrlNil() {
+	o.BaseUrl.Set(nil)
+}
+
+// UnsetBaseUrl ensures that no value is present for BaseUrl, not even an explicit nil
+func (o *LlmProviderResponse) UnsetBaseUrl() {
+	o.BaseUrl.Unset()
+}
+
 func (o LlmProviderResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -414,6 +459,9 @@ func (o LlmProviderResponse) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Region.IsSet() {
 		toSerialize["region"] = o.Region.Get()
+	}
+	if o.BaseUrl.IsSet() {
+		toSerialize["base_url"] = o.BaseUrl.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -476,6 +524,7 @@ func (o *LlmProviderResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "owner_user_sub")
 		delete(additionalProperties, "owner_name")
 		delete(additionalProperties, "region")
+		delete(additionalProperties, "base_url")
 		o.AdditionalProperties = additionalProperties
 	}
 

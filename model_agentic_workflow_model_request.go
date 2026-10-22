@@ -25,7 +25,7 @@ type AgenticWorkflowModelRequest struct {
 	// Write-only. Provider API key; accepted on create/edit but never returned in responses.
 	ApiKey   *string `json:"api_key,omitempty"`
 	Settings *string `json:"settings,omitempty"`
-	// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`.
+	// An existing LLM provider to take the credential from, instead of `api_key`. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow's organization, be one the caller may use, and match `type`. A provider of type ANTHROPIC_COMPATIBLE matches a workflow `type` of CLAUDE.
 	LlmProviderId        NullableString `json:"llm_provider_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

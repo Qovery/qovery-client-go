@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **Type** | [**AgenticWorkflowModelType**](AgenticWorkflowModelType.md) |  | 
 **ApiKey** | Pointer to **string** | Write-only. Provider API key; accepted on create/edit but never returned in responses. | [optional] [default to ""]
 **Settings** | Pointer to **string** |  | [optional] [default to ""]
-**LlmProviderId** | Pointer to **NullableString** | An existing LLM provider to take the credential from, instead of &#x60;api_key&#x60;. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow&#39;s organization, be one the caller may use, and match &#x60;type&#x60;. | [optional] 
+**LlmProviderId** | Pointer to **NullableString** | An existing LLM provider to take the credential from, instead of &#x60;api_key&#x60;. The two are mutually exclusive: a request setting both is rejected. The provider must belong to the workflow&#39;s organization, be one the caller may use, and match &#x60;type&#x60;. A provider of type ANTHROPIC_COMPATIBLE matches a workflow &#x60;type&#x60; of CLAUDE. | [optional] 
 
 ## Methods
 

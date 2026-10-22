@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Anthropic model id, or Bedrock inference profile id | 
+**Id** | **string** | Anthropic model id, Bedrock inference profile id, or the model id of a custom Anthropic-compatible gateway, which can be any string | 
 **DisplayName** | **string** |  | 
 **CreatedAt** | Pointer to **NullableTime** |  | [optional] 
 

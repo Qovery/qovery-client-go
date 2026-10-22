@@ -7,9 +7,10 @@ Name | Type | Description | Notes
 **Name** | **string** | LLM provider name, unique per scope owner within the organization | 
 **Description** | Pointer to **string** |  | [optional] [default to ""]
 **Type** | [**LlmProviderType**](LlmProviderType.md) |  | 
-**Credential** | Pointer to **string** | The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it. | [optional] [default to ""]
+**Credential** | Pointer to **string** | The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it. CLAUDE sends it to Anthropic as an API key. ANTHROPIC_COMPATIBLE sends it to its gateway as a bearer token only, never as an API key. | [optional] [default to ""]
 **Scope** | Pointer to [**LlmProviderScope**](LlmProviderScope.md) | Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER provider requires CREATE_PROJECT. On edit, omitting it leaves the provider&#39;s scope unchanged, and stating a scope that differs from the provider&#39;s is refused with 400. | [optional] 
 **Region** | Pointer to **NullableString** | On edit, omitting it or sending null clears the stored region. This differs from credential, where a blank value keeps the stored one. AWS region the Bedrock client calls, for example us-east-1 or eu-west-1; model availability differs by region. Only allowed for a BEDROCK provider. Any sent string, blank included, must match the pattern. Null keeps the engine default region. | [optional] 
+**BaseUrl** | Pointer to **NullableString** | Root of the custom Anthropic-compatible API. Required for an ANTHROPIC_COMPATIBLE provider and refused with 400 for CLAUDE and BEDROCK. It is an absolute HTTP or HTTPS URL with a host and an optional path prefix, and no user info, query or fragment. A port, when given, must be between 1 and 65535. Like region, an edit replaces it: omitting it or sending null is refused for ANTHROPIC_COMPATIBLE, so an edit must resend it. | [optional] 
 
 ## Methods
 
@@ -180,6 +181,41 @@ HasRegion returns a boolean if a field has been set.
 `func (o *LlmProviderRequest) UnsetRegion()`
 
 UnsetRegion ensures that no value is present for Region, not even an explicit nil
+### GetBaseUrl
+
+`func (o *LlmProviderRequest) GetBaseUrl() string`
+
+GetBaseUrl returns the BaseUrl field if non-nil, zero value otherwise.
+
+### GetBaseUrlOk
+
+`func (o *LlmProviderRequest) GetBaseUrlOk() (*string, bool)`
+
+GetBaseUrlOk returns a tuple with the BaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaseUrl
+
+`func (o *LlmProviderRequest) SetBaseUrl(v string)`
+
+SetBaseUrl sets BaseUrl field to given value.
+
+### HasBaseUrl
+
+`func (o *LlmProviderRequest) HasBaseUrl() bool`
+
+HasBaseUrl returns a boolean if a field has been set.
+
+### SetBaseUrlNil
+
+`func (o *LlmProviderRequest) SetBaseUrlNil(b bool)`
+
+ SetBaseUrlNil sets the value for BaseUrl to be an explicit nil
+
+### UnsetBaseUrl
+`func (o *LlmProviderRequest) UnsetBaseUrl()`
+
+UnsetBaseUrl ensures that no value is present for BaseUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -25,12 +25,14 @@ type LlmProviderRequest struct {
 	Name        string          `json:"name"`
 	Description *string         `json:"description,omitempty"`
 	Type        LlmProviderType `json:"type"`
-	// The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it.
+	// The provider credential. Encrypted at rest and never returned by the API. Blank means unchanged: on create no credential is stored, on edit the stored one is kept. Sending a nonblank value rotates it. CLAUDE sends it to Anthropic as an API key. ANTHROPIC_COMPATIBLE sends it to its gateway as a bearer token only, never as an API key.
 	Credential *string `json:"credential,omitempty"`
 	// Cannot be changed after creation. On create, omitting it means ORGANIZATION, which requires the MANAGE_INFRASTRUCTURE permission; creating a USER provider requires CREATE_PROJECT. On edit, omitting it leaves the provider's scope unchanged, and stating a scope that differs from the provider's is refused with 400.
 	Scope *LlmProviderScope `json:"scope,omitempty"`
 	// On edit, omitting it or sending null clears the stored region. This differs from credential, where a blank value keeps the stored one. AWS region the Bedrock client calls, for example us-east-1 or eu-west-1; model availability differs by region. Only allowed for a BEDROCK provider. Any sent string, blank included, must match the pattern. Null keeps the engine default region.
-	Region               NullableString `json:"region,omitempty"`
+	Region NullableString `json:"region,omitempty"`
+	// Root of the custom Anthropic-compatible API. Required for an ANTHROPIC_COMPATIBLE provider and refused with 400 for CLAUDE and BEDROCK. It is an absolute HTTP or HTTPS URL with a host and an optional path prefix, and no user info, query or fragment. A port, when given, must be between 1 and 65535. Like region, an edit replaces it: omitting it or sending null is refused for ANTHROPIC_COMPATIBLE, so an edit must resend it.
+	BaseUrl              NullableString `json:"base_url,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -250,6 +252,49 @@ func (o *LlmProviderRequest) UnsetRegion() {
 	o.Region.Unset()
 }
 
+// GetBaseUrl returns the BaseUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *LlmProviderRequest) GetBaseUrl() string {
+	if o == nil || IsNil(o.BaseUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.BaseUrl.Get()
+}
+
+// GetBaseUrlOk returns a tuple with the BaseUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *LlmProviderRequest) GetBaseUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.BaseUrl.Get(), o.BaseUrl.IsSet()
+}
+
+// HasBaseUrl returns a boolean if a field has been set.
+func (o *LlmProviderRequest) HasBaseUrl() bool {
+	if o != nil && o.BaseUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetBaseUrl gets a reference to the given NullableString and assigns it to the BaseUrl field.
+func (o *LlmProviderRequest) SetBaseUrl(v string) {
+	o.BaseUrl.Set(&v)
+}
+
+// SetBaseUrlNil sets the value for BaseUrl to be an explicit nil
+func (o *LlmProviderRequest) SetBaseUrlNil() {
+	o.BaseUrl.Set(nil)
+}
+
+// UnsetBaseUrl ensures that no value is present for BaseUrl, not even an explicit nil
+func (o *LlmProviderRequest) UnsetBaseUrl() {
+	o.BaseUrl.Unset()
+}
+
 func (o LlmProviderRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -273,6 +318,9 @@ func (o LlmProviderRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.Region.IsSet() {
 		toSerialize["region"] = o.Region.Get()
+	}
+	if o.BaseUrl.IsSet() {
+		toSerialize["base_url"] = o.BaseUrl.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -324,6 +372,7 @@ func (o *LlmProviderRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "credential")
 		delete(additionalProperties, "scope")
 		delete(additionalProperties, "region")
+		delete(additionalProperties, "base_url")
 		o.AdditionalProperties = additionalProperties
 	}
 

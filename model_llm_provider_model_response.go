@@ -22,7 +22,7 @@ var _ MappedNullable = &LlmProviderModelResponse{}
 
 // LlmProviderModelResponse struct for LlmProviderModelResponse
 type LlmProviderModelResponse struct {
-	// Anthropic model id, or Bedrock inference profile id
+	// Anthropic model id, Bedrock inference profile id, or the model id of a custom Anthropic-compatible gateway, which can be any string
 	Id                   string       `json:"id"`
 	DisplayName          string       `json:"display_name"`
 	CreatedAt            NullableTime `json:"created_at,omitempty"`

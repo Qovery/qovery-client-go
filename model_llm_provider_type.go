@@ -16,19 +16,21 @@ import (
 	"fmt"
 )
 
-// LlmProviderType The LLM vendor this provider authenticates against. Matches the type an agentic workflow's inline model already uses.
+// LlmProviderType The LLM vendor this provider authenticates against. CLAUDE and BEDROCK match the type an agentic workflow's inline model already uses. ANTHROPIC_COMPATIBLE is a custom Anthropic-compatible API, such as a gateway, reached at its `base_url`; a workflow that uses it runs as a CLAUDE model.
 type LlmProviderType string
 
 // List of LlmProviderType
 const (
-	LLMPROVIDERTYPE_CLAUDE  LlmProviderType = "CLAUDE"
-	LLMPROVIDERTYPE_BEDROCK LlmProviderType = "BEDROCK"
+	LLMPROVIDERTYPE_CLAUDE               LlmProviderType = "CLAUDE"
+	LLMPROVIDERTYPE_BEDROCK              LlmProviderType = "BEDROCK"
+	LLMPROVIDERTYPE_ANTHROPIC_COMPATIBLE LlmProviderType = "ANTHROPIC_COMPATIBLE"
 )
 
 // All allowed values of LlmProviderType enum
 var AllowedLlmProviderTypeEnumValues = []LlmProviderType{
 	"CLAUDE",
 	"BEDROCK",
+	"ANTHROPIC_COMPATIBLE",
 }
 
 func (v *LlmProviderType) UnmarshalJSON(src []byte) error {

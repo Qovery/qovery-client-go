@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **OwnerUserSub** | Pointer to **NullableString** | Identity of the owning member. Null for an ORGANIZATION provider. | [optional] 
 **OwnerName** | Pointer to **NullableString** | Display name of the owning member. Null for an ORGANIZATION provider. | [optional] 
 **Region** | Pointer to **NullableString** | AWS region of a BEDROCK provider. Null when unset or for CLAUDE. | [optional] 
+**BaseUrl** | Pointer to **NullableString** | Root of the custom Anthropic-compatible API of an ANTHROPIC_COMPATIBLE provider. Null for CLAUDE and BEDROCK. | [optional] 
 
 ## Methods
 
@@ -300,6 +301,41 @@ HasRegion returns a boolean if a field has been set.
 `func (o *LlmProviderResponse) UnsetRegion()`
 
 UnsetRegion ensures that no value is present for Region, not even an explicit nil
+### GetBaseUrl
+
+`func (o *LlmProviderResponse) GetBaseUrl() string`
+
+GetBaseUrl returns the BaseUrl field if non-nil, zero value otherwise.
+
+### GetBaseUrlOk
+
+`func (o *LlmProviderResponse) GetBaseUrlOk() (*string, bool)`
+
+GetBaseUrlOk returns a tuple with the BaseUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBaseUrl
+
+`func (o *LlmProviderResponse) SetBaseUrl(v string)`
+
+SetBaseUrl sets BaseUrl field to given value.
+
+### HasBaseUrl
+
+`func (o *LlmProviderResponse) HasBaseUrl() bool`
+
+HasBaseUrl returns a boolean if a field has been set.
+
+### SetBaseUrlNil
+
+`func (o *LlmProviderResponse) SetBaseUrlNil(b bool)`
+
+ SetBaseUrlNil sets the value for BaseUrl to be an explicit nil
+
+### UnsetBaseUrl
+`func (o *LlmProviderResponse) UnsetBaseUrl()`
+
+UnsetBaseUrl ensures that no value is present for BaseUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
