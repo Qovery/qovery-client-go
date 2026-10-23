@@ -25,7 +25,7 @@ type EnvironmentLogsDetails struct {
 	ExecutionId    *string                            `json:"execution_id,omitempty"`
 	Transmitter    *EnvironmentLogsDetailsTransmitter `json:"transmitter,omitempty"`
 	Stage          *EnvironmentLogsDetailsStage       `json:"stage,omitempty"`
-	// Step of the deployment this line belongs to: REGISTRY_CREATE_REPOSITORY, GIT_CLONE, PROVISION_BUILDER, BUILD, IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT, ROUTER_DEPLOYMENT or EXECUTING. It matches a step's `step_name`, or the `name` of a BUILD sub-step, in the deployment statuses. The phase (build or deploy) is `stage.step`. Absent on older deployments and on pause, delete and restart. Clients must accept values not listed here.
+	// Step of the deployment this line belongs to: - pre-check: CLOUD_CREDENTIALS_CHECK, GIT_CHECK (the `name` of a `pre_check_stage` step); - stage queueing: QUEUEING; - build and deploy: REGISTRY_CREATE_REPOSITORY, GIT_CLONE, PROVISION_BUILDER, BUILD,   IMAGE_PUSH, CACHE_EXPORT, MIRROR_IMAGE, DEPLOYMENT, ROUTER_DEPLOYMENT or EXECUTING   (a step's `step_name`, or the `name` of a BUILD sub-step, in the deployment statuses); A line that belongs to no specific step (deployment start and end, environment-level messages) carries the step of the line before it from the same source (the environment, or the service), so lines grouped by step stay in time order. The phase (build or deploy) is `stage.step`. Absent on older deployments, on infrastructure (cluster) and blueprint logs, and on a line with no earlier step to follow: group those by `stage.step`. Clients must accept values not listed here.
 	StepName             NullableString `json:"step_name,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

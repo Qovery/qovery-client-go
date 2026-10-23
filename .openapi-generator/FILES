@@ -945,6 +945,7 @@ docs/PlatformTemplateReleaseStatus.md
 docs/PlatformTemplateSummaryResponse.md
 docs/PlatformTemplateSummaryResponseBootstrapComponent.md
 docs/PortProtocolEnum.md
+docs/PreCheckStepMetric.md
 docs/Probe.md
 docs/ProbeType.md
 docs/ProbeTypeExec.md
@@ -1895,6 +1896,7 @@ model_platform_template_release_status.go
 model_platform_template_summary_response.go
 model_platform_template_summary_response_bootstrap_component.go
 model_port_protocol_enum.go
+model_pre_check_step_metric.go
 model_probe.go
 model_probe_type.go
 model_probe_type_exec.go

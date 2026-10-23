@@ -20,8 +20,10 @@ var _ MappedNullable = &EnvironmentStatusesWithStagesPreCheckStage{}
 
 // EnvironmentStatusesWithStagesPreCheckStage struct for EnvironmentStatusesWithStagesPreCheckStage
 type EnvironmentStatusesWithStagesPreCheckStage struct {
-	Status               *StepMetricStatusEnum `json:"status,omitempty"`
-	TotalDurationSec     *int32                `json:"total_duration_sec,omitempty"`
+	Status           *StepMetricStatusEnum `json:"status,omitempty"`
+	TotalDurationSec *int32                `json:"total_duration_sec,omitempty"`
+	// One entry per check the pre-check ran, in order. Their time is already part of `total_duration_sec`: never add it to a total.
+	Steps                []PreCheckStepMetric `json:"steps,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -108,6 +110,38 @@ func (o *EnvironmentStatusesWithStagesPreCheckStage) SetTotalDurationSec(v int32
 	o.TotalDurationSec = &v
 }
 
+// GetSteps returns the Steps field value if set, zero value otherwise.
+func (o *EnvironmentStatusesWithStagesPreCheckStage) GetSteps() []PreCheckStepMetric {
+	if o == nil || IsNil(o.Steps) {
+		var ret []PreCheckStepMetric
+		return ret
+	}
+	return o.Steps
+}
+
+// GetStepsOk returns a tuple with the Steps field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *EnvironmentStatusesWithStagesPreCheckStage) GetStepsOk() ([]PreCheckStepMetric, bool) {
+	if o == nil || IsNil(o.Steps) {
+		return nil, false
+	}
+	return o.Steps, true
+}
+
+// HasSteps returns a boolean if a field has been set.
+func (o *EnvironmentStatusesWithStagesPreCheckStage) HasSteps() bool {
+	if o != nil && !IsNil(o.Steps) {
+		return true
+	}
+
+	return false
+}
+
+// SetSteps gets a reference to the given []PreCheckStepMetric and assigns it to the Steps field.
+func (o *EnvironmentStatusesWithStagesPreCheckStage) SetSteps(v []PreCheckStepMetric) {
+	o.Steps = v
+}
+
 func (o EnvironmentStatusesWithStagesPreCheckStage) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -123,6 +157,9 @@ func (o EnvironmentStatusesWithStagesPreCheckStage) ToMap() (map[string]interfac
 	}
 	if !IsNil(o.TotalDurationSec) {
 		toSerialize["total_duration_sec"] = o.TotalDurationSec
+	}
+	if !IsNil(o.Steps) {
+		toSerialize["steps"] = o.Steps
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -148,6 +185,7 @@ func (o *EnvironmentStatusesWithStagesPreCheckStage) UnmarshalJSON(data []byte) 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "status")
 		delete(additionalProperties, "total_duration_sec")
+		delete(additionalProperties, "steps")
 		o.AdditionalProperties = additionalProperties
 	}
 
