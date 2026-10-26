@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **Version** | Pointer to **string** |  | [optional] 
 **IsDefault** | Pointer to **bool** |  | [optional] 
 **IsDemo** | Pointer to **bool** | specific flag to indicate that this cluster is a demo one | [optional] 
+**IsCatalogManaged** | Pointer to **bool** | True when the cluster&#39;s infrastructure is managed by the platform catalog, i.e. a self-managed (BYOK) cluster attached to the Qovery Operator and bound to a platform catalog profile. False otherwise. | [optional] [readonly] 
 **Production** | Pointer to **bool** | specific flag to indicate that this cluster is a production one | [optional] 
 **SshKeys** | Pointer to **[]string** | Indicate your public ssh_key to remotely connect to your EC2 instance. | [optional] 
 **Features** | Pointer to [**[]ClusterFeatureResponse**](ClusterFeatureResponse.md) |  | [optional] 
@@ -602,6 +603,31 @@ SetIsDemo sets IsDemo field to given value.
 `func (o *Cluster) HasIsDemo() bool`
 
 HasIsDemo returns a boolean if a field has been set.
+
+### GetIsCatalogManaged
+
+`func (o *Cluster) GetIsCatalogManaged() bool`
+
+GetIsCatalogManaged returns the IsCatalogManaged field if non-nil, zero value otherwise.
+
+### GetIsCatalogManagedOk
+
+`func (o *Cluster) GetIsCatalogManagedOk() (*bool, bool)`
+
+GetIsCatalogManagedOk returns a tuple with the IsCatalogManaged field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCatalogManaged
+
+`func (o *Cluster) SetIsCatalogManaged(v bool)`
+
+SetIsCatalogManaged sets IsCatalogManaged field to given value.
+
+### HasIsCatalogManaged
+
+`func (o *Cluster) HasIsCatalogManaged() bool`
+
+HasIsCatalogManaged returns a boolean if a field has been set.
 
 ### GetProduction
 

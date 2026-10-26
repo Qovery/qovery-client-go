@@ -54,6 +54,8 @@ type Cluster struct {
 	IsDefault                  *bool             `json:"is_default,omitempty"`
 	// specific flag to indicate that this cluster is a demo one
 	IsDemo *bool `json:"is_demo,omitempty"`
+	// True when the cluster's infrastructure is managed by the platform catalog, i.e. a self-managed (BYOK) cluster attached to the Qovery Operator and bound to a platform catalog profile. False otherwise.
+	IsCatalogManaged *bool `json:"is_catalog_managed,omitempty"`
 	// specific flag to indicate that this cluster is a production one
 	Production *bool `json:"production,omitempty"`
 	// Indicate your public ssh_key to remotely connect to your EC2 instance.
@@ -799,6 +801,38 @@ func (o *Cluster) SetIsDemo(v bool) {
 	o.IsDemo = &v
 }
 
+// GetIsCatalogManaged returns the IsCatalogManaged field value if set, zero value otherwise.
+func (o *Cluster) GetIsCatalogManaged() bool {
+	if o == nil || IsNil(o.IsCatalogManaged) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCatalogManaged
+}
+
+// GetIsCatalogManagedOk returns a tuple with the IsCatalogManaged field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Cluster) GetIsCatalogManagedOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCatalogManaged) {
+		return nil, false
+	}
+	return o.IsCatalogManaged, true
+}
+
+// HasIsCatalogManaged returns a boolean if a field has been set.
+func (o *Cluster) HasIsCatalogManaged() bool {
+	if o != nil && !IsNil(o.IsCatalogManaged) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCatalogManaged gets a reference to the given bool and assigns it to the IsCatalogManaged field.
+func (o *Cluster) SetIsCatalogManaged(v bool) {
+	o.IsCatalogManaged = &v
+}
+
 // GetProduction returns the Production field value if set, zero value otherwise.
 func (o *Cluster) GetProduction() bool {
 	if o == nil || IsNil(o.Production) {
@@ -1218,6 +1252,9 @@ func (o Cluster) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.IsDemo) {
 		toSerialize["is_demo"] = o.IsDemo
 	}
+	if !IsNil(o.IsCatalogManaged) {
+		toSerialize["is_catalog_managed"] = o.IsCatalogManaged
+	}
 	if !IsNil(o.Production) {
 		toSerialize["production"] = o.Production
 	}
@@ -1322,6 +1359,7 @@ func (o *Cluster) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "version")
 		delete(additionalProperties, "is_default")
 		delete(additionalProperties, "is_demo")
+		delete(additionalProperties, "is_catalog_managed")
 		delete(additionalProperties, "production")
 		delete(additionalProperties, "ssh_keys")
 		delete(additionalProperties, "features")

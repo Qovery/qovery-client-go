@@ -28251,6 +28251,12 @@ components:
           is_demo:
             description: specific flag to indicate that this cluster is a demo one
             type: boolean
+          is_catalog_managed:
+            description: "True when the cluster's infrastructure is managed by the\
+              \ platform catalog, i.e. a self-managed (BYOK) cluster attached to the\
+              \ Qovery Operator and bound to a platform catalog profile. False otherwise."
+            readOnly: true
+            type: boolean
           production:
             description: specific flag to indicate that this cluster is a production
               one
@@ -28376,6 +28382,7 @@ components:
         keda:
           enabled: true
         max_running_nodes: 6
+        is_catalog_managed: true
         min_running_nodes: 0
         disk_size: 50
         cpu: 10000
@@ -29737,6 +29744,7 @@ components:
           keda:
             enabled: true
           max_running_nodes: 6
+          is_catalog_managed: true
           min_running_nodes: 0
           disk_size: 50
           cpu: 10000
@@ -29882,6 +29890,7 @@ components:
           keda:
             enabled: true
           max_running_nodes: 6
+          is_catalog_managed: true
           min_running_nodes: 0
           disk_size: 50
           cpu: 10000
