@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Id** | **string** | Id of an existing AWS cloud credential of the organization | 
+**Id** | **string** | Id of an existing cloud credential of the organization | 
 
 ## Methods
 

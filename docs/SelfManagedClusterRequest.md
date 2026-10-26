@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Production** | Pointer to **bool** |  | [optional] [default to false]
-**Provider** | **string** |  | 
-**Region** | **string** |  | 
+**Provider** | **string** | Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. | 
+**Region** | **string** | Region of the provider known to Qovery; a zone such as &#x60;fr-par-1&#x60; on Scaleway. | 
 **Credentials** | [**SelfManagedClusterCredentials**](SelfManagedClusterCredentials.md) |  | 
 **Platform** | [**SelfManagedClusterPlatformSelection**](SelfManagedClusterPlatformSelection.md) |  | 
 **ClusterInputs** | Pointer to **map[string]map[string]string** | String values keyed first by component key and then by input key | [optional] 

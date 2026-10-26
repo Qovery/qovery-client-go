@@ -21,9 +21,11 @@ var _ MappedNullable = &SelfManagedClusterRequest{}
 
 // SelfManagedClusterRequest struct for SelfManagedClusterRequest
 type SelfManagedClusterRequest struct {
-	Name        string                              `json:"name"`
-	Production  *bool                               `json:"production,omitempty"`
-	Provider    string                              `json:"provider"`
+	Name       string `json:"name"`
+	Production *bool  `json:"production,omitempty"`
+	// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
+	Provider string `json:"provider"`
+	// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway.
 	Region      string                              `json:"region"`
 	Credentials SelfManagedClusterCredentials       `json:"credentials"`
 	Platform    SelfManagedClusterPlatformSelection `json:"platform"`
