@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **UsingRestrictivePermissions** | Pointer to **bool** |  | [optional] [default to false]
 **WideScopeCloudAccountId** | Pointer to **NullableString** |  | [optional] 
 **RequireWideAccessToDeploy** | Pointer to **bool** |  | [optional] [default to false]
+**SlackWebhookUrl** | Pointer to **NullableString** |  | [optional] 
 
 ## Methods
 
@@ -112,6 +113,41 @@ SetRequireWideAccessToDeploy sets RequireWideAccessToDeploy field to given value
 
 HasRequireWideAccessToDeploy returns a boolean if a field has been set.
 
+### GetSlackWebhookUrl
+
+`func (o *WidePermissionsResponseDto) GetSlackWebhookUrl() string`
+
+GetSlackWebhookUrl returns the SlackWebhookUrl field if non-nil, zero value otherwise.
+
+### GetSlackWebhookUrlOk
+
+`func (o *WidePermissionsResponseDto) GetSlackWebhookUrlOk() (*string, bool)`
+
+GetSlackWebhookUrlOk returns a tuple with the SlackWebhookUrl field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSlackWebhookUrl
+
+`func (o *WidePermissionsResponseDto) SetSlackWebhookUrl(v string)`
+
+SetSlackWebhookUrl sets SlackWebhookUrl field to given value.
+
+### HasSlackWebhookUrl
+
+`func (o *WidePermissionsResponseDto) HasSlackWebhookUrl() bool`
+
+HasSlackWebhookUrl returns a boolean if a field has been set.
+
+### SetSlackWebhookUrlNil
+
+`func (o *WidePermissionsResponseDto) SetSlackWebhookUrlNil(b bool)`
+
+ SetSlackWebhookUrlNil sets the value for SlackWebhookUrl to be an explicit nil
+
+### UnsetSlackWebhookUrl
+`func (o *WidePermissionsResponseDto) UnsetSlackWebhookUrl()`
+
+UnsetSlackWebhookUrl ensures that no value is present for SlackWebhookUrl, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

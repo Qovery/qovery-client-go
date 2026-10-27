@@ -28426,6 +28426,7 @@ components:
         wide_permissions:
           wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           require_wide_access_to_deploy: false
+          slack_webhook_url: slack_webhook_url
           using_restrictive_permissions: false
         region: region
         instance_type: T3A_LARGE
@@ -29536,6 +29537,7 @@ components:
         name: name
         wide_permissions:
           wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          slack_webhook_url: slack_webhook_url
           using_restrictive_permissions: false
         region: region
         instance_type: T3A_LARGE
@@ -29652,6 +29654,7 @@ components:
     WidePermissionsRequestDto:
       example:
         wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        slack_webhook_url: slack_webhook_url
         using_restrictive_permissions: false
       properties:
         using_restrictive_permissions:
@@ -29659,6 +29662,9 @@ components:
           type: boolean
         wide_scope_cloud_account_id:
           format: uuid
+          nullable: true
+          type: string
+        slack_webhook_url:
           nullable: true
           type: string
       type: object
@@ -29788,6 +29794,7 @@ components:
           wide_permissions:
             wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             require_wide_access_to_deploy: false
+            slack_webhook_url: slack_webhook_url
             using_restrictive_permissions: false
           region: region
           instance_type: T3A_LARGE
@@ -29934,6 +29941,7 @@ components:
           wide_permissions:
             wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             require_wide_access_to_deploy: false
+            slack_webhook_url: slack_webhook_url
             using_restrictive_permissions: false
           region: region
           instance_type: T3A_LARGE
@@ -51534,6 +51542,7 @@ components:
       example:
         wide_scope_cloud_account_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         require_wide_access_to_deploy: false
+        slack_webhook_url: slack_webhook_url
         using_restrictive_permissions: false
       properties:
         using_restrictive_permissions:
@@ -51546,6 +51555,9 @@ components:
         require_wide_access_to_deploy:
           default: false
           type: boolean
+        slack_webhook_url:
+          nullable: true
+          type: string
       type: object
     ClusterEnvironmentResponseList:
       example:

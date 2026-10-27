@@ -23,6 +23,7 @@ type WidePermissionsResponseDto struct {
 	UsingRestrictivePermissions *bool          `json:"using_restrictive_permissions,omitempty"`
 	WideScopeCloudAccountId     NullableString `json:"wide_scope_cloud_account_id,omitempty"`
 	RequireWideAccessToDeploy   *bool          `json:"require_wide_access_to_deploy,omitempty"`
+	SlackWebhookUrl             NullableString `json:"slack_webhook_url,omitempty"`
 	AdditionalProperties        map[string]interface{}
 }
 
@@ -160,6 +161,49 @@ func (o *WidePermissionsResponseDto) SetRequireWideAccessToDeploy(v bool) {
 	o.RequireWideAccessToDeploy = &v
 }
 
+// GetSlackWebhookUrl returns the SlackWebhookUrl field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *WidePermissionsResponseDto) GetSlackWebhookUrl() string {
+	if o == nil || IsNil(o.SlackWebhookUrl.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.SlackWebhookUrl.Get()
+}
+
+// GetSlackWebhookUrlOk returns a tuple with the SlackWebhookUrl field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *WidePermissionsResponseDto) GetSlackWebhookUrlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.SlackWebhookUrl.Get(), o.SlackWebhookUrl.IsSet()
+}
+
+// HasSlackWebhookUrl returns a boolean if a field has been set.
+func (o *WidePermissionsResponseDto) HasSlackWebhookUrl() bool {
+	if o != nil && o.SlackWebhookUrl.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetSlackWebhookUrl gets a reference to the given NullableString and assigns it to the SlackWebhookUrl field.
+func (o *WidePermissionsResponseDto) SetSlackWebhookUrl(v string) {
+	o.SlackWebhookUrl.Set(&v)
+}
+
+// SetSlackWebhookUrlNil sets the value for SlackWebhookUrl to be an explicit nil
+func (o *WidePermissionsResponseDto) SetSlackWebhookUrlNil() {
+	o.SlackWebhookUrl.Set(nil)
+}
+
+// UnsetSlackWebhookUrl ensures that no value is present for SlackWebhookUrl, not even an explicit nil
+func (o *WidePermissionsResponseDto) UnsetSlackWebhookUrl() {
+	o.SlackWebhookUrl.Unset()
+}
+
 func (o WidePermissionsResponseDto) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -178,6 +222,9 @@ func (o WidePermissionsResponseDto) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.RequireWideAccessToDeploy) {
 		toSerialize["require_wide_access_to_deploy"] = o.RequireWideAccessToDeploy
+	}
+	if o.SlackWebhookUrl.IsSet() {
+		toSerialize["slack_webhook_url"] = o.SlackWebhookUrl.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -204,6 +251,7 @@ func (o *WidePermissionsResponseDto) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "using_restrictive_permissions")
 		delete(additionalProperties, "wide_scope_cloud_account_id")
 		delete(additionalProperties, "require_wide_access_to_deploy")
+		delete(additionalProperties, "slack_webhook_url")
 		o.AdditionalProperties = additionalProperties
 	}
 
