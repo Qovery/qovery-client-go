@@ -38667,12 +38667,23 @@ components:
           owned_by:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
+          is_created_by_qovery:
+            description: "True when Qovery created the variable on its own, such as\
+              \ the alias it adds for each output of a job, Terraform service or blueprint.\
+              \ False for variables a user created and for built-in variables, which\
+              \ `variable_type` already identifies. `owned_by` does not tell these\
+              \ apart. It stays true after a user edits the variable. Clients that\
+              \ sync variables, such as the Terraform provider, can leave these variables\
+              \ out."
+            readOnly: true
+            type: boolean
         required:
         - scope
         - variable_type
         type: object
       example:
         enable_interpolation_in_file: true
+        is_created_by_qovery: true
         mount_path: mount_path
         variable_type: null
         service_name: service_name
@@ -38833,6 +38844,7 @@ components:
       example:
         results:
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name
@@ -38861,6 +38873,7 @@ components:
           value: value
           key: key
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name
@@ -44725,6 +44738,16 @@ components:
           owned_by:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
+          is_created_by_qovery:
+            description: "True when Qovery created the variable on its own, such as\
+              \ the alias it adds for each output of a job, Terraform service or blueprint.\
+              \ False for variables a user created and for built-in variables, which\
+              \ `variable_type` already identifies. `owned_by` does not tell these\
+              \ apart. It stays true after a user edits the variable. Clients that\
+              \ sync variables, such as the Terraform provider, can leave these variables\
+              \ out."
+            readOnly: true
+            type: boolean
           description:
             description: optional variable description (255 characters maximum)
             maxLength: 255
@@ -44743,6 +44766,7 @@ components:
         type: object
       example:
         enable_interpolation_in_file: true
+        is_created_by_qovery: true
         variable_type: null
         service_name: service_name
         created_at: 2000-01-23T04:56:07.000+00:00
@@ -44834,6 +44858,7 @@ components:
       example:
         results:
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -44858,6 +44883,7 @@ components:
             key: key
           key: key
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           variable_type: null
           service_name: service_name
           created_at: 2000-01-23T04:56:07.000+00:00
@@ -45641,6 +45667,16 @@ components:
           owned_by:
             description: "Entity that created/own the variable (i.e: Qovery, Doppler)"
             type: string
+          is_created_by_qovery:
+            description: "True when Qovery created the variable on its own, such as\
+              \ the alias it adds for each output of a job, Terraform service or blueprint.\
+              \ False for variables a user created and for built-in variables, which\
+              \ `variable_type` already identifies. `owned_by` does not tell these\
+              \ apart. It stays true after a user edits the variable. Clients that\
+              \ sync variables, such as the Terraform provider, can leave these variables\
+              \ out."
+            readOnly: true
+            type: boolean
           is_secret:
             type: boolean
           description:
@@ -45664,6 +45700,7 @@ components:
         type: object
       example:
         enable_interpolation_in_file: true
+        is_created_by_qovery: true
         mount_path: mount_path
         variable_type: null
         service_name: service_name
@@ -45697,6 +45734,7 @@ components:
       example:
         results:
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name
@@ -45727,6 +45765,7 @@ components:
           value: value
           key: key
         - enable_interpolation_in_file: true
+          is_created_by_qovery: true
           mount_path: mount_path
           variable_type: null
           service_name: service_name

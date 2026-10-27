@@ -36,6 +36,8 @@ type Secret struct {
 	ServiceType      *LinkedServiceTypeEnum `json:"service_type,omitempty"`
 	// Entity that created/own the variable (i.e: Qovery, Doppler)
 	OwnedBy *string `json:"owned_by,omitempty"`
+	// True when Qovery created the variable on its own, such as the alias it adds for each output of a job, Terraform service or blueprint. False for variables a user created and for built-in variables, which `variable_type` already identifies. `owned_by` does not tell these apart. It stays true after a user edits the variable. Clients that sync variables, such as the Terraform provider, can leave these variables out.
+	IsCreatedByQovery *bool `json:"is_created_by_qovery,omitempty"`
 	// optional variable description (255 characters maximum)
 	Description               NullableString `json:"description,omitempty"`
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
@@ -417,6 +419,38 @@ func (o *Secret) SetOwnedBy(v string) {
 	o.OwnedBy = &v
 }
 
+// GetIsCreatedByQovery returns the IsCreatedByQovery field value if set, zero value otherwise.
+func (o *Secret) GetIsCreatedByQovery() bool {
+	if o == nil || IsNil(o.IsCreatedByQovery) {
+		var ret bool
+		return ret
+	}
+	return *o.IsCreatedByQovery
+}
+
+// GetIsCreatedByQoveryOk returns a tuple with the IsCreatedByQovery field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Secret) GetIsCreatedByQoveryOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsCreatedByQovery) {
+		return nil, false
+	}
+	return o.IsCreatedByQovery, true
+}
+
+// HasIsCreatedByQovery returns a boolean if a field has been set.
+func (o *Secret) HasIsCreatedByQovery() bool {
+	if o != nil && !IsNil(o.IsCreatedByQovery) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsCreatedByQovery gets a reference to the given bool and assigns it to the IsCreatedByQovery field.
+func (o *Secret) SetIsCreatedByQovery(v bool) {
+	o.IsCreatedByQovery = &v
+}
+
 // GetDescription returns the Description field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *Secret) GetDescription() string {
 	if o == nil || IsNil(o.Description.Get()) {
@@ -541,6 +575,9 @@ func (o Secret) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.OwnedBy) {
 		toSerialize["owned_by"] = o.OwnedBy
 	}
+	if !IsNil(o.IsCreatedByQovery) {
+		toSerialize["is_created_by_qovery"] = o.IsCreatedByQovery
+	}
 	if o.Description.IsSet() {
 		toSerialize["description"] = o.Description.Get()
 	}
@@ -605,6 +642,7 @@ func (o *Secret) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "service_name")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "owned_by")
+		delete(additionalProperties, "is_created_by_qovery")
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
 		o.AdditionalProperties = additionalProperties

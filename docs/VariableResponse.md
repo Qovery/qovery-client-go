@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **ServiceName** | Pointer to **string** | The name of the service referenced by this variable. | [optional] 
 **ServiceType** | Pointer to [**LinkedServiceTypeEnum**](LinkedServiceTypeEnum.md) |  | [optional] 
 **OwnedBy** | Pointer to **string** | Entity that created/own the variable (i.e: Qovery, Doppler) | [optional] 
+**IsCreatedByQovery** | Pointer to **bool** | True when Qovery created the variable on its own, such as the alias it adds for each output of a job, Terraform service or blueprint. False for variables a user created and for built-in variables, which &#x60;variable_type&#x60; already identifies. &#x60;owned_by&#x60; does not tell these apart. It stays true after a user edits the variable. Clients that sync variables, such as the Terraform provider, can leave these variables out. | [optional] [readonly] 
 **IsSecret** | **bool** |  | 
 **Description** | Pointer to **string** |  | [optional] 
 **EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
@@ -381,6 +382,31 @@ SetOwnedBy sets OwnedBy field to given value.
 `func (o *VariableResponse) HasOwnedBy() bool`
 
 HasOwnedBy returns a boolean if a field has been set.
+
+### GetIsCreatedByQovery
+
+`func (o *VariableResponse) GetIsCreatedByQovery() bool`
+
+GetIsCreatedByQovery returns the IsCreatedByQovery field if non-nil, zero value otherwise.
+
+### GetIsCreatedByQoveryOk
+
+`func (o *VariableResponse) GetIsCreatedByQoveryOk() (*bool, bool)`
+
+GetIsCreatedByQoveryOk returns a tuple with the IsCreatedByQovery field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsCreatedByQovery
+
+`func (o *VariableResponse) SetIsCreatedByQovery(v bool)`
+
+SetIsCreatedByQovery sets IsCreatedByQovery field to given value.
+
+### HasIsCreatedByQovery
+
+`func (o *VariableResponse) HasIsCreatedByQovery() bool`
+
+HasIsCreatedByQovery returns a boolean if a field has been set.
 
 ### GetIsSecret
 
