@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **AutoDeploy** | **bool** |  | 
 **AutoPreview** | Pointer to **bool** |  | [optional] 
 **BuildSettingsEditable** | Pointer to **bool** |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 **AutoDeployConfig** | Pointer to [**TerraformAutoDeployConfig**](TerraformAutoDeployConfig.md) |  | [optional] 
 **TerraformFilesSource** | Pointer to [**TerraformResponseAllOfTerraformFilesSource**](TerraformResponseAllOfTerraformFilesSource.md) |  | [optional] 
 **IconUri** | **string** | Icon URI representing the terraform service. | 
@@ -272,6 +273,31 @@ SetBuildSettingsEditable sets BuildSettingsEditable field to given value.
 `func (o *TerraformResponse) HasBuildSettingsEditable() bool`
 
 HasBuildSettingsEditable returns a boolean if a field has been set.
+
+### GetBuildSettings
+
+`func (o *TerraformResponse) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *TerraformResponse) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *TerraformResponse) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *TerraformResponse) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 ### GetAutoDeployConfig
 

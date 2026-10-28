@@ -26077,6 +26077,8 @@ components:
             $ref: '#/components/schemas/ReferenceObject'
           git_repository:
             $ref: '#/components/schemas/ApplicationGitRepository'
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
           maximum_cpu:
             description: Maximum cpu that can be allocated to the application based
               on organization cluster configuration. unit is millicores (m). 1000m
@@ -26227,13 +26229,13 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -26245,17 +26247,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -26267,12 +26269,12 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
-        max_running_instances: 5
+        max_running_instances: 9
         git_repository:
           owner: John Doe
           git_token_id: git_token_id
@@ -26353,6 +26355,13 @@ components:
         build_mode: DOCKER
         cpu: 1250
         dockerfile_path: dockerfile_path
+        build_settings:
+          ram_max_in_gib: 1
+          skip_git_submodules: false
+          cpu_max_in_milli: 6
+          disable_buildkit_cache: false
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
         gpu: 0
         icon_uri: https://openapi-generator.tech
         environment:
@@ -26370,7 +26379,7 @@ components:
           cooldown_period_seconds: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          polling_interval_seconds: 1
+          polling_interval_seconds: 7
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
@@ -26570,13 +26579,13 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -26588,17 +26597,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -26610,9 +26619,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         description: description
         max_running_instances: 6
         git_repository:
@@ -26660,12 +26669,12 @@ components:
         dockerfile_path: dockerfile_path
         gpu: 1
         build_settings:
-          ram_max_in_gib: 7
+          ram_max_in_gib: 1
           skip_git_submodules: false
-          cpu_max_in_milli: 2
+          cpu_max_in_milli: 6
           disable_buildkit_cache: false
-          timeout_max_sec: 5
-          ephemeral_storage_in_gib: 9
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
         startup_timeout: 1
         icon_uri: https://openapi-generator.tech
         name: name
@@ -27031,13 +27040,13 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -27049,17 +27058,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -27071,9 +27080,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         description: ""
         max_running_instances: 6
         git_repository:
@@ -27121,13 +27130,13 @@ components:
         dockerfile_path: dockerfile_path
         gpu: 1
         build_settings:
-          ram_max_in_gib: 7
+          ram_max_in_gib: 1
           skip_git_submodules: false
-          cpu_max_in_milli: 2
+          cpu_max_in_milli: 6
           disable_buildkit_cache: false
-          timeout_max_sec: 5
-          ephemeral_storage_in_gib: 9
-        startup_timeout: 3
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
+        startup_timeout: 5
         icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
@@ -27189,13 +27198,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -27207,17 +27216,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -27229,12 +27238,12 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 5
+          max_running_instances: 9
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -27315,6 +27324,13 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
@@ -27332,7 +27348,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -27396,13 +27412,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -27414,17 +27430,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -27436,12 +27452,12 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 5
+          max_running_instances: 9
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -27522,6 +27538,13 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
@@ -27539,7 +27562,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -28009,12 +28032,12 @@ components:
         Build configuration settings for the service. When sent, it replaces all six values
         entirely — omitted properties fall back to their defaults, not to the service's current values.
       example:
-        ram_max_in_gib: 7
+        ram_max_in_gib: 1
         skip_git_submodules: false
-        cpu_max_in_milli: 2
+        cpu_max_in_milli: 6
         disable_buildkit_cache: false
-        timeout_max_sec: 5
-        ephemeral_storage_in_gib: 9
+        timeout_max_sec: 0
+        ephemeral_storage_in_gib: 5
       properties:
         timeout_max_sec:
           default: 1800
@@ -32404,13 +32427,13 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -32422,17 +32445,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -32444,9 +32467,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         description: description
         cpu: 1250
         max_running_instances: 6
@@ -32672,13 +32695,13 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -32690,17 +32713,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -32712,9 +32735,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         max_running_instances: 6
@@ -32801,7 +32824,7 @@ components:
           cooldown_period_seconds: 1
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          polling_interval_seconds: 1
+          polling_interval_seconds: 7
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
@@ -32867,13 +32890,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -32885,17 +32908,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -32907,9 +32930,9 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           max_running_instances: 6
@@ -32996,7 +33019,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -33059,13 +33082,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -33077,17 +33100,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -33099,9 +33122,9 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           max_running_instances: 6
@@ -33188,7 +33211,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -39339,13 +39362,13 @@ components:
     Healthcheck:
       example:
         readiness_probe:
-          period_seconds: 3
-          initial_delay_seconds: 9
-          failure_threshold: 7
-          success_threshold: 4
+          period_seconds: 1
+          initial_delay_seconds: 7
+          failure_threshold: 6
+          success_threshold: 1
           type:
             tcp:
-              port: 5
+              port: 3
               host: host
             http:
               path: /
@@ -39357,17 +39380,17 @@ components:
               - -c
               - test -f /tmp/healthy
             grpc:
-              port: 7
+              port: 4
               service: service
-          timeout_seconds: 2
+          timeout_seconds: 1
         liveness_probe:
-          period_seconds: 3
-          initial_delay_seconds: 9
-          failure_threshold: 7
-          success_threshold: 4
+          period_seconds: 1
+          initial_delay_seconds: 7
+          failure_threshold: 6
+          success_threshold: 1
           type:
             tcp:
-              port: 5
+              port: 3
               host: host
             http:
               path: /
@@ -39379,9 +39402,9 @@ components:
               - -c
               - test -f /tmp/healthy
             grpc:
-              port: 7
+              port: 4
               service: service
-          timeout_seconds: 2
+          timeout_seconds: 1
       nullable: false
       properties:
         readiness_probe:
@@ -40707,13 +40730,13 @@ components:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -40725,17 +40748,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -40747,9 +40770,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         description: description
         cpu: 1250
         source:
@@ -40770,12 +40793,12 @@ components:
         max_nb_restart: 0
         gpu: 1
         build_settings:
-          ram_max_in_gib: 7
+          ram_max_in_gib: 1
           skip_git_submodules: false
-          cpu_max_in_milli: 2
+          cpu_max_in_milli: 6
           disable_buildkit_cache: false
-          timeout_max_sec: 5
-          ephemeral_storage_in_gib: 9
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
         icon_uri: https://openapi-generator.tech
         schedule:
           on_start:
@@ -40852,13 +40875,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -40870,17 +40893,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -40892,9 +40915,9 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -40943,6 +40966,13 @@ components:
           - code: GIT_WEBHOOK_PERMISSION_DENIED
             message: message
           cpu: 1250
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 1
           icon_uri: https://openapi-generator.tech
           schedule:
@@ -40999,13 +41029,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -41017,17 +41047,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -41039,9 +41069,9 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           source:
@@ -41090,6 +41120,13 @@ components:
           - code: GIT_WEBHOOK_PERMISSION_DENIED
             message: message
           cpu: 1250
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 1
           icon_uri: https://openapi-generator.tech
           schedule:
@@ -44164,13 +44201,13 @@ components:
       type: string
     Probe:
       example:
-        period_seconds: 3
-        initial_delay_seconds: 9
-        failure_threshold: 7
-        success_threshold: 4
+        period_seconds: 1
+        initial_delay_seconds: 7
+        failure_threshold: 6
+        success_threshold: 1
         type:
           tcp:
-            port: 5
+            port: 3
             host: host
           http:
             path: /
@@ -44182,9 +44219,9 @@ components:
             - -c
             - test -f /tmp/healthy
           grpc:
-            port: 7
+            port: 4
             service: service
-        timeout_seconds: 2
+        timeout_seconds: 1
       nullable: true
       properties:
         type:
@@ -46230,13 +46267,13 @@ components:
         maximum_memory: 16384
         healthchecks:
           readiness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -46248,17 +46285,17 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
           liveness_probe:
-            period_seconds: 3
-            initial_delay_seconds: 9
-            failure_threshold: 7
-            success_threshold: 4
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 6
+            success_threshold: 1
             type:
               tcp:
-                port: 5
+                port: 3
                 host: host
               http:
                 path: /
@@ -46270,9 +46307,9 @@ components:
                 - -c
                 - test -f /tmp/healthy
               grpc:
-                port: 7
+                port: 4
                 service: service
-            timeout_seconds: 2
+            timeout_seconds: 1
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         source:
@@ -46321,6 +46358,13 @@ components:
         - code: GIT_WEBHOOK_PERMISSION_DENIED
           message: message
         cpu: 1250
+        build_settings:
+          ram_max_in_gib: 1
+          skip_git_submodules: false
+          cpu_max_in_milli: 6
+          disable_buildkit_cache: false
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
         gpu: 1
         icon_uri: https://openapi-generator.tech
         schedule:
@@ -46372,6 +46416,8 @@ components:
       - properties:
           environment:
             $ref: '#/components/schemas/ReferenceObject'
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
           maximum_cpu:
             description: Maximum cpu that can be allocated to the job based on organization
               cluster configuration. unit is millicores (m). 1000m = 1 cpu
@@ -48394,12 +48440,12 @@ components:
           read_from_terraform_block: true
           explicit_version: explicit_version
         build_settings:
-          ram_max_in_gib: 7
+          ram_max_in_gib: 1
           skip_git_submodules: false
-          cpu_max_in_milli: 2
+          cpu_max_in_milli: 6
           disable_buildkit_cache: false
-          timeout_max_sec: 5
-          ephemeral_storage_in_gib: 9
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
         icon_uri: https://openapi-generator.tech
         blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_variables_source:
@@ -48712,6 +48758,8 @@ components:
             type: boolean
           build_settings_editable:
             type: boolean
+          build_settings:
+            $ref: '#/components/schemas/BuildSettings'
           auto_deploy_config:
             $ref: '#/components/schemas/TerraformAutoDeployConfig'
           terraform_files_source:
@@ -48791,11 +48839,6 @@ components:
           ram_mib: 1
           gpu: 1
           storage_gib: 5
-        warnings:
-        - code: GIT_WEBHOOK_PERMISSION_DENIED
-          message: message
-        - code: GIT_WEBHOOK_PERMISSION_DENIED
-          message: message
         dockerfile_fragment:
           path: /infra/terraform/custom-build.dockerfile
           type: file
@@ -48804,7 +48847,6 @@ components:
         provider_version:
           read_from_terraform_block: true
           explicit_version: explicit_version
-        icon_uri: https://openapi-generator.tech
         blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         terraform_variables_source:
           tf_var_file_paths:
@@ -48817,18 +48859,35 @@ components:
           - secret: true
             value: value
             key: key
-        service_type: APPLICATION
-        environment:
-          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         updated_at: 2000-01-23T04:56:07.000+00:00
         engine: TERRAFORM
-        timeout_sec: 0
         use_cluster_credentials: true
-        name: name
         auto_preview: true
         backend:
           kubernetes: "{}"
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        action_extra_arguments:
+          key:
+          - action_extra_arguments
+          - action_extra_arguments
+        warnings:
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        - code: GIT_WEBHOOK_PERMISSION_DENIED
+          message: message
+        build_settings:
+          ram_max_in_gib: 1
+          skip_git_submodules: false
+          cpu_max_in_milli: 6
+          disable_buildkit_cache: false
+          timeout_max_sec: 0
+          ephemeral_storage_in_gib: 5
+        icon_uri: https://openapi-generator.tech
+        service_type: APPLICATION
+        environment:
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        timeout_sec: 0
+        name: name
         terraform_files_source:
           git:
             git_repository:
@@ -48846,10 +48905,6 @@ components:
               name: simple-node-app
               git_token_name: git_token_name
         build_settings_editable: true
-        action_extra_arguments:
-          key:
-          - action_extra_arguments
-          - action_extra_arguments
     TerraformRequestJobResources:
       example:
         cpu_milli: 6
@@ -49275,11 +49330,6 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
-          warnings:
-          - code: GIT_WEBHOOK_PERMISSION_DENIED
-            message: message
-          - code: GIT_WEBHOOK_PERMISSION_DENIED
-            message: message
           dockerfile_fragment:
             path: /infra/terraform/custom-build.dockerfile
             type: file
@@ -49288,7 +49338,6 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          icon_uri: https://openapi-generator.tech
           blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_variables_source:
             tf_var_file_paths:
@@ -49301,18 +49350,35 @@ components:
             - secret: true
               value: value
               key: key
-          service_type: APPLICATION
-          environment:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           engine: TERRAFORM
-          timeout_sec: 0
           use_cluster_credentials: true
-          name: name
           auto_preview: true
           backend:
             kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          action_extra_arguments:
+            key:
+            - action_extra_arguments
+            - action_extra_arguments
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
+          icon_uri: https://openapi-generator.tech
+          service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          timeout_sec: 0
+          name: name
           terraform_files_source:
             git:
               git_repository:
@@ -49330,10 +49396,6 @@ components:
                 name: simple-node-app
                 git_token_name: git_token_name
           build_settings_editable: true
-          action_extra_arguments:
-            key:
-            - action_extra_arguments
-            - action_extra_arguments
         - auto_deploy_config:
             auto_deploy: true
             terraform_action: DEFAULT
@@ -49343,11 +49405,6 @@ components:
             ram_mib: 1
             gpu: 1
             storage_gib: 5
-          warnings:
-          - code: GIT_WEBHOOK_PERMISSION_DENIED
-            message: message
-          - code: GIT_WEBHOOK_PERMISSION_DENIED
-            message: message
           dockerfile_fragment:
             path: /infra/terraform/custom-build.dockerfile
             type: file
@@ -49356,7 +49413,6 @@ components:
           provider_version:
             read_from_terraform_block: true
             explicit_version: explicit_version
-          icon_uri: https://openapi-generator.tech
           blueprint_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           terraform_variables_source:
             tf_var_file_paths:
@@ -49369,18 +49425,35 @@ components:
             - secret: true
               value: value
               key: key
-          service_type: APPLICATION
-          environment:
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           updated_at: 2000-01-23T04:56:07.000+00:00
           engine: TERRAFORM
-          timeout_sec: 0
           use_cluster_credentials: true
-          name: name
           auto_preview: true
           backend:
             kubernetes: "{}"
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          action_extra_arguments:
+            key:
+            - action_extra_arguments
+            - action_extra_arguments
+          warnings:
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          - code: GIT_WEBHOOK_PERMISSION_DENIED
+            message: message
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
+          icon_uri: https://openapi-generator.tech
+          service_type: APPLICATION
+          environment:
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          timeout_sec: 0
+          name: name
           terraform_files_source:
             git:
               git_repository:
@@ -49398,10 +49471,6 @@ components:
                 name: simple-node-app
                 git_token_name: git_token_name
           build_settings_editable: true
-          action_extra_arguments:
-            key:
-            - action_extra_arguments
-            - action_extra_arguments
       properties:
         results:
           items:
@@ -51155,7 +51224,7 @@ components:
         cooldown_period_seconds: 1
         updated_at: 2000-01-23T04:56:07.000+00:00
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        polling_interval_seconds: 1
+        polling_interval_seconds: 7
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scalers:
@@ -53157,13 +53226,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -53175,17 +53244,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -53197,12 +53266,12 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 5
+          max_running_instances: 9
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -53283,6 +53352,13 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
@@ -53300,7 +53376,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -53364,13 +53440,13 @@ components:
           maximum_memory: 16384
           healthchecks:
             readiness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -53382,17 +53458,17 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
             liveness_probe:
-              period_seconds: 3
-              initial_delay_seconds: 9
-              failure_threshold: 7
-              success_threshold: 4
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 6
+              success_threshold: 1
               type:
                 tcp:
-                  port: 5
+                  port: 3
                   host: host
                 http:
                   path: /
@@ -53404,12 +53480,12 @@ components:
                   - -c
                   - test -f /tmp/healthy
                 grpc:
-                  port: 7
+                  port: 4
                   service: service
-              timeout_seconds: 2
+              timeout_seconds: 1
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
-          max_running_instances: 5
+          max_running_instances: 9
           git_repository:
             owner: John Doe
             git_token_id: git_token_id
@@ -53490,6 +53566,13 @@ components:
           build_mode: DOCKER
           cpu: 1250
           dockerfile_path: dockerfile_path
+          build_settings:
+            ram_max_in_gib: 1
+            skip_git_submodules: false
+            cpu_max_in_milli: 6
+            disable_buildkit_cache: false
+            timeout_max_sec: 0
+            ephemeral_storage_in_gib: 5
           gpu: 0
           icon_uri: https://openapi-generator.tech
           environment:
@@ -53507,7 +53590,7 @@ components:
             cooldown_period_seconds: 1
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 1
+            polling_interval_seconds: 7
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -55947,7 +56030,7 @@ components:
       type: object
     Probe_type_tcp:
       example:
-        port: 5
+        port: 3
         host: host
       nullable: true
       properties:
@@ -55998,7 +56081,7 @@ components:
       type: object
     Probe_type_grpc:
       example:
-        port: 7
+        port: 4
         service: service
       nullable: true
       properties:
@@ -56011,7 +56094,7 @@ components:
     Probe_type:
       example:
         tcp:
-          port: 5
+          port: 3
           host: host
         http:
           path: /
@@ -56023,7 +56106,7 @@ components:
           - -c
           - test -f /tmp/healthy
         grpc:
-          port: 7
+          port: 4
           service: service
       properties:
         tcp:

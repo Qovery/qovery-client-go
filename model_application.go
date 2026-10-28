@@ -30,6 +30,7 @@ type Application struct {
 	Warnings      []ServiceEditWarning      `json:"warnings,omitempty"`
 	Environment   ReferenceObject           `json:"environment"`
 	GitRepository *ApplicationGitRepository `json:"git_repository,omitempty"`
+	BuildSettings *BuildSettings            `json:"build_settings,omitempty"`
 	// Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu *int32 `json:"maximum_cpu,omitempty"`
 	// Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -323,6 +324,38 @@ func (o *Application) HasGitRepository() bool {
 // SetGitRepository gets a reference to the given ApplicationGitRepository and assigns it to the GitRepository field.
 func (o *Application) SetGitRepository(v ApplicationGitRepository) {
 	o.GitRepository = &v
+}
+
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *Application) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Application) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *Application) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *Application) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value if set, zero value otherwise.
@@ -1183,6 +1216,9 @@ func (o Application) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.GitRepository) {
 		toSerialize["git_repository"] = o.GitRepository
 	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
+	}
 	if !IsNil(o.MaximumCpu) {
 		toSerialize["maximum_cpu"] = o.MaximumCpu
 	}
@@ -1309,6 +1345,7 @@ func (o *Application) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "warnings")
 		delete(additionalProperties, "environment")
 		delete(additionalProperties, "git_repository")
+		delete(additionalProperties, "build_settings")
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "maximun_gpu")

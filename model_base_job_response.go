@@ -26,8 +26,9 @@ type BaseJobResponse struct {
 	CreatedAt time.Time  `json:"created_at"`
 	UpdatedAt *time.Time `json:"updated_at,omitempty"`
 	// Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.
-	Warnings    []ServiceEditWarning `json:"warnings,omitempty"`
-	Environment ReferenceObject      `json:"environment"`
+	Warnings      []ServiceEditWarning `json:"warnings,omitempty"`
+	Environment   ReferenceObject      `json:"environment"`
+	BuildSettings *BuildSettings       `json:"build_settings,omitempty"`
 	// Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m = 1 cpu
 	MaximumCpu int32 `json:"maximum_cpu"`
 	// Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB = 1GB
@@ -236,6 +237,38 @@ func (o *BaseJobResponse) GetEnvironmentOk() (*ReferenceObject, bool) {
 // SetEnvironment sets field value
 func (o *BaseJobResponse) SetEnvironment(v ReferenceObject) {
 	o.Environment = v
+}
+
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *BaseJobResponse) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BaseJobResponse) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *BaseJobResponse) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *BaseJobResponse) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
 }
 
 // GetMaximumCpu returns the MaximumCpu field value
@@ -791,6 +824,9 @@ func (o BaseJobResponse) ToMap() (map[string]interface{}, error) {
 		toSerialize["warnings"] = o.Warnings
 	}
 	toSerialize["environment"] = o.Environment
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
+	}
 	toSerialize["maximum_cpu"] = o.MaximumCpu
 	toSerialize["maximum_memory"] = o.MaximumMemory
 	toSerialize["maximum_gpu"] = o.MaximumGpu
@@ -886,6 +922,7 @@ func (o *BaseJobResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "updated_at")
 		delete(additionalProperties, "warnings")
 		delete(additionalProperties, "environment")
+		delete(additionalProperties, "build_settings")
 		delete(additionalProperties, "maximum_cpu")
 		delete(additionalProperties, "maximum_memory")
 		delete(additionalProperties, "maximum_gpu")

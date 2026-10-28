@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Warnings** | Pointer to [**[]ServiceEditWarning**](ServiceEditWarning.md) | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **GitRepository** | Pointer to [**NullableApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the database based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the database based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
@@ -278,6 +279,31 @@ HasGitRepository returns a boolean if a field has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) UnsetGitRepository()`
 
 UnsetGitRepository ensures that no value is present for GitRepository, not even an explicit nil
+### GetBuildSettings
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
+
 ### GetMaximumCpu
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetMaximumCpu() int32`

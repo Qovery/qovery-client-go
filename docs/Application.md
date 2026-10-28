@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Warnings** | Pointer to [**[]ServiceEditWarning**](ServiceEditWarning.md) | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
 **GitRepository** | Pointer to [**ApplicationGitRepository**](ApplicationGitRepository.md) |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 **MaximumCpu** | Pointer to **int32** | Maximum cpu that can be allocated to the application based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] 
 **MaximumMemory** | Pointer to **int32** | Maximum memory that can be allocated to the application based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [optional] 
 **MaximunGpu** | Pointer to **int32** |  | [optional] [default to 0]
@@ -216,6 +217,31 @@ SetGitRepository sets GitRepository field to given value.
 `func (o *Application) HasGitRepository() bool`
 
 HasGitRepository returns a boolean if a field has been set.
+
+### GetBuildSettings
+
+`func (o *Application) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *Application) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *Application) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *Application) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 

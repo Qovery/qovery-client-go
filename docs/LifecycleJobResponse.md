@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **UpdatedAt** | Pointer to **time.Time** |  | [optional] [readonly] 
 **Warnings** | Pointer to [**[]ServiceEditWarning**](ServiceEditWarning.md) | Non-blocking problems found while applying a service edit. Only present on the response of an edit, and only when there is at least one warning. The edit itself is saved.  | [optional] 
 **Environment** | [**ReferenceObject**](ReferenceObject.md) |  | 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) |  | [optional] 
 **MaximumCpu** | **int32** | Maximum cpu that can be allocated to the job based on organization cluster configuration. unit is millicores (m). 1000m &#x3D; 1 cpu | 
 **MaximumMemory** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | 
 **MaximumGpu** | **int32** | Maximum memory that can be allocated to the job based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
@@ -161,6 +162,31 @@ and a boolean to check if the value has been set.
 
 SetEnvironment sets Environment field to given value.
 
+
+### GetBuildSettings
+
+`func (o *LifecycleJobResponse) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *LifecycleJobResponse) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *LifecycleJobResponse) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *LifecycleJobResponse) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 ### GetMaximumCpu
 

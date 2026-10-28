@@ -34,6 +34,7 @@ type TerraformResponse struct {
 	AutoDeploy            bool                                        `json:"auto_deploy"`
 	AutoPreview           *bool                                       `json:"auto_preview,omitempty"`
 	BuildSettingsEditable *bool                                       `json:"build_settings_editable,omitempty"`
+	BuildSettings         *BuildSettings                              `json:"build_settings,omitempty"`
 	AutoDeployConfig      *TerraformAutoDeployConfig                  `json:"auto_deploy_config,omitempty"`
 	TerraformFilesSource  *TerraformResponseAllOfTerraformFilesSource `json:"terraform_files_source,omitempty"`
 	// Icon URI representing the terraform service.
@@ -368,6 +369,38 @@ func (o *TerraformResponse) HasBuildSettingsEditable() bool {
 // SetBuildSettingsEditable gets a reference to the given bool and assigns it to the BuildSettingsEditable field.
 func (o *TerraformResponse) SetBuildSettingsEditable(v bool) {
 	o.BuildSettingsEditable = &v
+}
+
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *TerraformResponse) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *TerraformResponse) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *TerraformResponse) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *TerraformResponse) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
 }
 
 // GetAutoDeployConfig returns the AutoDeployConfig field value if set, zero value otherwise.
@@ -790,6 +823,9 @@ func (o TerraformResponse) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.BuildSettingsEditable) {
 		toSerialize["build_settings_editable"] = o.BuildSettingsEditable
 	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
+	}
 	if !IsNil(o.AutoDeployConfig) {
 		toSerialize["auto_deploy_config"] = o.AutoDeployConfig
 	}
@@ -879,6 +915,7 @@ func (o *TerraformResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "auto_deploy")
 		delete(additionalProperties, "auto_preview")
 		delete(additionalProperties, "build_settings_editable")
+		delete(additionalProperties, "build_settings")
 		delete(additionalProperties, "auto_deploy_config")
 		delete(additionalProperties, "terraform_files_source")
 		delete(additionalProperties, "icon_uri")
