@@ -26,7 +26,7 @@ type ContainerAdvancedSettings struct {
 	DeploymentTerminationGracePeriodSeconds *int32 `json:"deployment.termination_grace_period_seconds,omitempty"`
 	// Set pod placement on specific Kubernetes nodes labels
 	DeploymentAffinityNodeRequired *map[string]string `json:"deployment.affinity.node.required,omitempty"`
-	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+	// Define how you want pods affinity to behave: * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node * `Required` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas) * `None` sets no anti-affinity, so pods of a given service can be packed on the same node
 	DeploymentAntiaffinityPod *string `json:"deployment.antiaffinity.pod,omitempty"`
 	// Define how you want pods to be spread across availability zones: * `Disabled` no topology spread constraints are applied * `ScheduleAnyway` pods are spread across zones on a best-effort basis (soft constraint) * `DoNotSchedule` pods must be evenly spread across zones with a maxSkew of 1 (hard constraint)
 	DeploymentTopologySpreadZone *string `json:"deployment.topology_spread.zone,omitempty"`

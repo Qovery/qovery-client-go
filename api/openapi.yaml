@@ -25852,10 +25852,12 @@ components:
           description: |
             Define how you want pods affinity to behave:
             * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
-            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+            * `Required` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+            * `None` sets no anti-affinity, so pods of a given service can be packed on the same node
           enum:
           - Preferred
-          - Requirred
+          - Required
+          - None
           type: string
         deployment.topology_spread.zone:
           description: |
@@ -31305,10 +31307,12 @@ components:
           description: |
             Define how you want pods affinity to behave:
             * `Preferred` allows, but does not require, pods of a given service are not co-located (or co-hosted) on a single node
-            * `Requirred` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+            * `Required` ensures that the pods of a given service are not co-located (or co-hosted) on a single node (safer in term of availability but can be expensive depending on the number of replicas)
+            * `None` sets no anti-affinity, so pods of a given service can be packed on the same node
           enum:
           - Preferred
-          - Requirred
+          - Required
+          - None
           type: string
         deployment.topology_spread.zone:
           description: |
