@@ -28,6 +28,8 @@ type BlueprintManifestFieldType struct {
 	MinLength NullableInt64 `json:"min_length,omitempty"`
 	// Maximum length, only present for string fields
 	MaxLength NullableInt64 `json:"max_length,omitempty"`
+	// Optional editor format, only present for string fields that declare one. json selects a JSON editor; the value is still sent and stored as a string, and the API rejects text that is not one valid JSON document. Unknown formats should fall back to the ordinary string editor.
+	Format *string `json:"format,omitempty"`
 	// Lower bound, only present for number fields
 	Min NullableInt64 `json:"min,omitempty"`
 	// Upper bound, only present for number fields
@@ -208,6 +210,38 @@ func (o *BlueprintManifestFieldType) UnsetMaxLength() {
 	o.MaxLength.Unset()
 }
 
+// GetFormat returns the Format field value if set, zero value otherwise.
+func (o *BlueprintManifestFieldType) GetFormat() string {
+	if o == nil || IsNil(o.Format) {
+		var ret string
+		return ret
+	}
+	return *o.Format
+}
+
+// GetFormatOk returns a tuple with the Format field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BlueprintManifestFieldType) GetFormatOk() (*string, bool) {
+	if o == nil || IsNil(o.Format) {
+		return nil, false
+	}
+	return o.Format, true
+}
+
+// HasFormat returns a boolean if a field has been set.
+func (o *BlueprintManifestFieldType) HasFormat() bool {
+	if o != nil && !IsNil(o.Format) {
+		return true
+	}
+
+	return false
+}
+
+// SetFormat gets a reference to the given string and assigns it to the Format field.
+func (o *BlueprintManifestFieldType) SetFormat(v string) {
+	o.Format = &v
+}
+
 // GetMin returns the Min field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *BlueprintManifestFieldType) GetMin() int64 {
 	if o == nil || IsNil(o.Min.Get()) {
@@ -314,6 +348,9 @@ func (o BlueprintManifestFieldType) ToMap() (map[string]interface{}, error) {
 	if o.MaxLength.IsSet() {
 		toSerialize["max_length"] = o.MaxLength.Get()
 	}
+	if !IsNil(o.Format) {
+		toSerialize["format"] = o.Format
+	}
 	if o.Min.IsSet() {
 		toSerialize["min"] = o.Min.Get()
 	}
@@ -367,6 +404,7 @@ func (o *BlueprintManifestFieldType) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "pattern")
 		delete(additionalProperties, "min_length")
 		delete(additionalProperties, "max_length")
+		delete(additionalProperties, "format")
 		delete(additionalProperties, "min")
 		delete(additionalProperties, "max")
 		o.AdditionalProperties = additionalProperties

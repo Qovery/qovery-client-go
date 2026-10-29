@@ -24452,6 +24452,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
           required: true
@@ -24468,6 +24469,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
           required: true
@@ -24735,6 +24737,7 @@ components:
           min_length: 0
           max: 5
           pattern: pattern
+          format: json
           type: string
           max_length: 6
         required: true
@@ -24801,6 +24804,7 @@ components:
         min_length: 0
         max: 5
         pattern: pattern
+        format: json
         type: string
         max_length: 6
       properties:
@@ -24824,6 +24828,13 @@ components:
           format: int64
           nullable: true
           type: integer
+        format:
+          description: "Optional editor format, only present for string fields that\
+            \ declare one. json selects a JSON editor; the value is still sent and\
+            \ stored as a string, and the API rejects text that is not one valid JSON\
+            \ document. Unknown formats should fall back to the ordinary string editor."
+          example: json
+          type: string
         min:
           description: "Lower bound, only present for number fields"
           format: int64
@@ -24880,6 +24891,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         - allowed_values:
@@ -24892,6 +24904,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         updated_values:
@@ -24907,6 +24920,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
           current_value: current_value
@@ -24922,6 +24936,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
           current_value: current_value
@@ -24936,6 +24951,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         - allowed_values:
@@ -24948,6 +24964,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         current_tag: aws/postgres/17/1.0.0
@@ -24963,6 +24980,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         - allowed_values:
@@ -24976,6 +24994,7 @@ components:
             min_length: 0
             max: 5
             pattern: pattern
+            format: json
             type: string
             max_length: 6
         engine_diff:
@@ -25079,6 +25098,7 @@ components:
           min_length: 0
           max: 5
           pattern: pattern
+          format: json
           type: string
           max_length: 6
       properties:
@@ -25112,6 +25132,7 @@ components:
           min_length: 0
           max: 5
           pattern: pattern
+          format: json
           type: string
           max_length: 6
       properties:
@@ -25149,6 +25170,7 @@ components:
           min_length: 0
           max: 5
           pattern: pattern
+          format: json
           type: string
           max_length: 6
         current_value: current_value

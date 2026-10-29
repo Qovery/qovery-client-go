@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **Pattern** | Pointer to **NullableString** | Regex pattern, only present for string fields | [optional] 
 **MinLength** | Pointer to **NullableInt64** | Minimum length, only present for string fields | [optional] 
 **MaxLength** | Pointer to **NullableInt64** | Maximum length, only present for string fields | [optional] 
+**Format** | Pointer to **string** | Optional editor format, only present for string fields that declare one. json selects a JSON editor; the value is still sent and stored as a string, and the API rejects text that is not one valid JSON document. Unknown formats should fall back to the ordinary string editor. | [optional] 
 **Min** | Pointer to **NullableInt64** | Lower bound, only present for number fields | [optional] 
 **Max** | Pointer to **NullableInt64** | Upper bound, only present for number fields | [optional] 
 
@@ -155,6 +156,31 @@ HasMaxLength returns a boolean if a field has been set.
 `func (o *BlueprintManifestFieldType) UnsetMaxLength()`
 
 UnsetMaxLength ensures that no value is present for MaxLength, not even an explicit nil
+### GetFormat
+
+`func (o *BlueprintManifestFieldType) GetFormat() string`
+
+GetFormat returns the Format field if non-nil, zero value otherwise.
+
+### GetFormatOk
+
+`func (o *BlueprintManifestFieldType) GetFormatOk() (*string, bool)`
+
+GetFormatOk returns a tuple with the Format field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetFormat
+
+`func (o *BlueprintManifestFieldType) SetFormat(v string)`
+
+SetFormat sets Format field to given value.
+
+### HasFormat
+
+`func (o *BlueprintManifestFieldType) HasFormat() bool`
+
+HasFormat returns a boolean if a field has been set.
+
 ### GetMin
 
 `func (o *BlueprintManifestFieldType) GetMin() int64`
