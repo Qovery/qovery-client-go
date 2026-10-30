@@ -17497,6 +17497,10 @@ paths:
         "404":
           description: Resource not found
         "409":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VariableConflictResponse'
           description: A variable with the same key already exists
       summary: Create a variable
       tags:
@@ -45678,6 +45682,96 @@ components:
       - value
       - variable_parent_id
       - variable_scope
+      type: object
+    VariableConflictResponse:
+      description: Problem details returned when a variable with the same key already
+        exists
+      example:
+        instance: instance
+        detail: detail
+        existing_variable:
+          mount_path: mount_path
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          variable_type: VALUE
+          is_secret: true
+          scope: APPLICATION
+          organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          key: key
+        type: type
+        title: title
+        status: 0
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          description: Says which scope holds the existing variable
+          type: string
+        instance:
+          type: string
+        existing_variable:
+          $ref: '#/components/schemas/ExistingVariableResponse'
+      required:
+      - detail
+      - status
+      type: object
+    ExistingVariableResponse:
+      description: The variable that blocks the creation. Its value is never returned.
+      example:
+        mount_path: mount_path
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        project_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        variable_type: VALUE
+        is_secret: true
+        scope: APPLICATION
+        organization_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        key: key
+      nullable: true
+      properties:
+        id:
+          format: uuid
+          type: string
+        key:
+          type: string
+        scope:
+          $ref: '#/components/schemas/APIVariableScopeEnum'
+        organization_id:
+          format: uuid
+          nullable: true
+          type: string
+        project_id:
+          format: uuid
+          nullable: true
+          type: string
+        environment_id:
+          format: uuid
+          nullable: true
+          type: string
+        service_id:
+          format: uuid
+          nullable: true
+          type: string
+        variable_type:
+          $ref: '#/components/schemas/APIVariableTypeEnum'
+        is_secret:
+          type: boolean
+        mount_path:
+          nullable: true
+          type: string
+      required:
+      - id
+      - is_secret
+      - key
+      - scope
+      - variable_type
       type: object
     VariableEditRequest:
       example:

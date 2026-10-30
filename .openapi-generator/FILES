@@ -607,6 +607,7 @@ docs/EnvironmentVariableOverride.md
 docs/EnvironmentVariableRequest.md
 docs/EnvironmentVariableResponseList.md
 docs/EnvironmentsAPI.md
+docs/ExistingVariableResponse.md
 docs/ExternalSecretAssociatedServiceResponse.md
 docs/ExternalSecretAssociatedServiceResponseList.md
 docs/FieldSchemaConstraintsResponse.md
@@ -1123,6 +1124,7 @@ docs/UserSignUpResponseList.md
 docs/Value.md
 docs/VariableAlias.md
 docs/VariableAliasRequest.md
+docs/VariableConflictResponse.md
 docs/VariableEditRequest.md
 docs/VariableImport.md
 docs/VariableImportRequest.md
@@ -1594,6 +1596,7 @@ model_environment_variable_edit_request.go
 model_environment_variable_override.go
 model_environment_variable_request.go
 model_environment_variable_response_list.go
+model_existing_variable_response.go
 model_external_secret_associated_service_response.go
 model_external_secret_associated_service_response_list.go
 model_field_schema_constraints_response.go
@@ -2057,6 +2060,7 @@ model_user_sign_up_response_list.go
 model_value.go
 model_variable_alias.go
 model_variable_alias_request.go
+model_variable_conflict_response.go
 model_variable_edit_request.go
 model_variable_import.go
 model_variable_import_request.go
