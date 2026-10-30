@@ -36,7 +36,9 @@ type VariableRequest struct {
 	Description               NullableString `json:"description,omitempty"`
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
 	SecretManagerAccessId     NullableString `json:"secret_manager_access_id,omitempty"`
-	AdditionalProperties      map[string]interface{}
+	// If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false.
+	OverrideIfExists     NullableBool `json:"override_if_exists,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableRequest VariableRequest
@@ -52,6 +54,8 @@ func NewVariableRequest(key string, value string, isSecret bool, variableScope A
 	this.IsSecret = isSecret
 	this.VariableScope = variableScope
 	this.VariableParentId = variableParentId
+	var overrideIfExists bool = false
+	this.OverrideIfExists = *NewNullableBool(&overrideIfExists)
 	return &this
 }
 
@@ -60,6 +64,8 @@ func NewVariableRequest(key string, value string, isSecret bool, variableScope A
 // but it doesn't guarantee that properties required by API are set
 func NewVariableRequestWithDefaults() *VariableRequest {
 	this := VariableRequest{}
+	var overrideIfExists bool = false
+	this.OverrideIfExists = *NewNullableBool(&overrideIfExists)
 	return &this
 }
 
@@ -355,6 +361,49 @@ func (o *VariableRequest) UnsetSecretManagerAccessId() {
 	o.SecretManagerAccessId.Unset()
 }
 
+// GetOverrideIfExists returns the OverrideIfExists field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableRequest) GetOverrideIfExists() bool {
+	if o == nil || IsNil(o.OverrideIfExists.Get()) {
+		var ret bool
+		return ret
+	}
+	return *o.OverrideIfExists.Get()
+}
+
+// GetOverrideIfExistsOk returns a tuple with the OverrideIfExists field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableRequest) GetOverrideIfExistsOk() (*bool, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.OverrideIfExists.Get(), o.OverrideIfExists.IsSet()
+}
+
+// HasOverrideIfExists returns a boolean if a field has been set.
+func (o *VariableRequest) HasOverrideIfExists() bool {
+	if o != nil && o.OverrideIfExists.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetOverrideIfExists gets a reference to the given NullableBool and assigns it to the OverrideIfExists field.
+func (o *VariableRequest) SetOverrideIfExists(v bool) {
+	o.OverrideIfExists.Set(&v)
+}
+
+// SetOverrideIfExistsNil sets the value for OverrideIfExists to be an explicit nil
+func (o *VariableRequest) SetOverrideIfExistsNil() {
+	o.OverrideIfExists.Set(nil)
+}
+
+// UnsetOverrideIfExists ensures that no value is present for OverrideIfExists, not even an explicit nil
+func (o *VariableRequest) UnsetOverrideIfExists() {
+	o.OverrideIfExists.Unset()
+}
+
 func (o VariableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -381,6 +430,9 @@ func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SecretManagerAccessId.IsSet() {
 		toSerialize["secret_manager_access_id"] = o.SecretManagerAccessId.Get()
+	}
+	if o.OverrideIfExists.IsSet() {
+		toSerialize["override_if_exists"] = o.OverrideIfExists.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -438,6 +490,7 @@ func (o *VariableRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
 		delete(additionalProperties, "secret_manager_access_id")
+		delete(additionalProperties, "override_if_exists")
 		o.AdditionalProperties = additionalProperties
 	}
 

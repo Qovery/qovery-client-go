@@ -42,6 +42,7 @@ func (r ApiCreateVariableRequest) Execute() (*VariableResponse, *http.Response, 
 CreateVariable Create a variable
 
 - Create a variable with the scope defined in the request body.
+- If a variable with the same key already exists, the call fails with 409. When that variable is at a higher scope (project or environment), set `override_if_exists` to true to create an override of it instead.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiCreateVariableRequest

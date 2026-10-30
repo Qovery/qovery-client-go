@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **NullableString** | optional variable description (255 characters maximum) | [optional] 
 **EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 **SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
+**OverrideIfExists** | Pointer to **NullableBool** | If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false. | [optional] [default to false]
 
 ## Methods
 
@@ -273,6 +274,41 @@ HasSecretManagerAccessId returns a boolean if a field has been set.
 `func (o *VariableRequest) UnsetSecretManagerAccessId()`
 
 UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
+### GetOverrideIfExists
+
+`func (o *VariableRequest) GetOverrideIfExists() bool`
+
+GetOverrideIfExists returns the OverrideIfExists field if non-nil, zero value otherwise.
+
+### GetOverrideIfExistsOk
+
+`func (o *VariableRequest) GetOverrideIfExistsOk() (*bool, bool)`
+
+GetOverrideIfExistsOk returns a tuple with the OverrideIfExists field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetOverrideIfExists
+
+`func (o *VariableRequest) SetOverrideIfExists(v bool)`
+
+SetOverrideIfExists sets OverrideIfExists field to given value.
+
+### HasOverrideIfExists
+
+`func (o *VariableRequest) HasOverrideIfExists() bool`
+
+HasOverrideIfExists returns a boolean if a field has been set.
+
+### SetOverrideIfExistsNil
+
+`func (o *VariableRequest) SetOverrideIfExistsNil(b bool)`
+
+ SetOverrideIfExistsNil sets the value for OverrideIfExists to be an explicit nil
+
+### UnsetOverrideIfExists
+`func (o *VariableRequest) UnsetOverrideIfExists()`
+
+UnsetOverrideIfExists ensures that no value is present for OverrideIfExists, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
