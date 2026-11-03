@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **Description** | Pointer to **string** |  | [optional] 
 **EnableInterpolationInFile** | Pointer to **bool** |  | [optional] 
 **SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
+**JsonTargetKey** | Pointer to **NullableString** | Optional JSON member/index path, only supported for &#x60;EXTERNAL_SECRET&#x60; variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example &#x60;accounts.0.password&#x60;. Escape literal dots with &#x60;\\.&#x60; and backslashes with &#x60;\\\\&#x60;; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Null or absent means that no JSON selection is configured. | [optional] 
 
 ## Methods
 
@@ -513,6 +514,41 @@ HasSecretManagerAccessId returns a boolean if a field has been set.
 `func (o *VariableResponse) UnsetSecretManagerAccessId()`
 
 UnsetSecretManagerAccessId ensures that no value is present for SecretManagerAccessId, not even an explicit nil
+### GetJsonTargetKey
+
+`func (o *VariableResponse) GetJsonTargetKey() string`
+
+GetJsonTargetKey returns the JsonTargetKey field if non-nil, zero value otherwise.
+
+### GetJsonTargetKeyOk
+
+`func (o *VariableResponse) GetJsonTargetKeyOk() (*string, bool)`
+
+GetJsonTargetKeyOk returns a tuple with the JsonTargetKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsonTargetKey
+
+`func (o *VariableResponse) SetJsonTargetKey(v string)`
+
+SetJsonTargetKey sets JsonTargetKey field to given value.
+
+### HasJsonTargetKey
+
+`func (o *VariableResponse) HasJsonTargetKey() bool`
+
+HasJsonTargetKey returns a boolean if a field has been set.
+
+### SetJsonTargetKeyNil
+
+`func (o *VariableResponse) SetJsonTargetKeyNil(b bool)`
+
+ SetJsonTargetKeyNil sets the value for JsonTargetKey to be an explicit nil
+
+### UnsetJsonTargetKey
+`func (o *VariableResponse) UnsetJsonTargetKey()`
+
+UnsetJsonTargetKey ensures that no value is present for JsonTargetKey, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

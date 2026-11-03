@@ -29,7 +29,9 @@ type VariableEditRequest struct {
 	Description               NullableString `json:"description,omitempty"`
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
 	SecretManagerAccessId     NullableString `json:"secret_manager_access_id,omitempty"`
-	AdditionalProperties      map[string]interface{}
+	// Optional JSON member/index path, only supported for `EXTERNAL_SECRET` variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example `accounts.0.password`. Escape literal dots with `\\.` and backslashes with `\\\\`; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Omit or set to null to clear JSON selection and read the whole secret. Send the current selector on unrelated edits to preserve it.
+	JsonTargetKey        NullableString `json:"json_target_key,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _VariableEditRequest VariableEditRequest
@@ -248,6 +250,49 @@ func (o *VariableEditRequest) UnsetSecretManagerAccessId() {
 	o.SecretManagerAccessId.Unset()
 }
 
+// GetJsonTargetKey returns the JsonTargetKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableEditRequest) GetJsonTargetKey() string {
+	if o == nil || IsNil(o.JsonTargetKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.JsonTargetKey.Get()
+}
+
+// GetJsonTargetKeyOk returns a tuple with the JsonTargetKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableEditRequest) GetJsonTargetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.JsonTargetKey.Get(), o.JsonTargetKey.IsSet()
+}
+
+// HasJsonTargetKey returns a boolean if a field has been set.
+func (o *VariableEditRequest) HasJsonTargetKey() bool {
+	if o != nil && o.JsonTargetKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonTargetKey gets a reference to the given NullableString and assigns it to the JsonTargetKey field.
+func (o *VariableEditRequest) SetJsonTargetKey(v string) {
+	o.JsonTargetKey.Set(&v)
+}
+
+// SetJsonTargetKeyNil sets the value for JsonTargetKey to be an explicit nil
+func (o *VariableEditRequest) SetJsonTargetKeyNil() {
+	o.JsonTargetKey.Set(nil)
+}
+
+// UnsetJsonTargetKey ensures that no value is present for JsonTargetKey, not even an explicit nil
+func (o *VariableEditRequest) UnsetJsonTargetKey() {
+	o.JsonTargetKey.Unset()
+}
+
 func (o VariableEditRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -270,6 +315,9 @@ func (o VariableEditRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.SecretManagerAccessId.IsSet() {
 		toSerialize["secret_manager_access_id"] = o.SecretManagerAccessId.Get()
+	}
+	if o.JsonTargetKey.IsSet() {
+		toSerialize["json_target_key"] = o.JsonTargetKey.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -319,6 +367,7 @@ func (o *VariableEditRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "description")
 		delete(additionalProperties, "enable_interpolation_in_file")
 		delete(additionalProperties, "secret_manager_access_id")
+		delete(additionalProperties, "json_target_key")
 		o.AdditionalProperties = additionalProperties
 	}
 

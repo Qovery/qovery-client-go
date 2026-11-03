@@ -45626,6 +45626,7 @@ components:
         description: description
         override_if_exists: false
         secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        json_target_key: accounts.0.password
         value: value
         key: key
       properties:
@@ -45676,6 +45677,19 @@ components:
             \ lower scope. Defaults to false."
           nullable: true
           type: boolean
+        json_target_key:
+          description: "Optional JSON member/index path, only supported for `EXTERNAL_SECRET`\
+            \ variables (not external secret files). Use dots for nested members and\
+            \ numeric indexes for arrays, for example `accounts.0.password`. Escape\
+            \ literal dots with `\\.` and backslashes with `\\\\`; other query characters\
+            \ are treated literally. Members must be non-empty, with no leading or\
+            \ trailing whitespace, control characters, or unescaped trailing backslash.\
+            \ Omit or set to null to read the whole secret."
+          example: accounts.0.password
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          type: string
       required:
       - is_secret
       - key
@@ -45778,6 +45792,7 @@ components:
         enable_interpolation_in_file: true
         description: description
         secret_manager_access_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        json_target_key: accounts.0.password
         value: value
         key: key
       properties:
@@ -45800,6 +45815,20 @@ components:
           type: boolean
         secret_manager_access_id:
           format: uuid
+          nullable: true
+          type: string
+        json_target_key:
+          description: "Optional JSON member/index path, only supported for `EXTERNAL_SECRET`\
+            \ variables (not external secret files). Use dots for nested members and\
+            \ numeric indexes for arrays, for example `accounts.0.password`. Escape\
+            \ literal dots with `\\.` and backslashes with `\\\\`; other query characters\
+            \ are treated literally. Members must be non-empty, with no leading or\
+            \ trailing whitespace, control characters, or unescaped trailing backslash.\
+            \ Omit or set to null to clear JSON selection and read the whole secret.\
+            \ Send the current selector on unrelated edits to preserve it."
+          example: accounts.0.password
+          maxLength: 256
+          minLength: 1
           nullable: true
           type: string
       required:
@@ -45861,6 +45890,20 @@ components:
             format: uuid
             nullable: true
             type: string
+          json_target_key:
+            description: "Optional JSON member/index path, only supported for `EXTERNAL_SECRET`\
+              \ variables (not external secret files). Use dots for nested members\
+              \ and numeric indexes for arrays, for example `accounts.0.password`.\
+              \ Escape literal dots with `\\.` and backslashes with `\\\\`; other\
+              \ query characters are treated literally. Members must be non-empty,\
+              \ with no leading or trailing whitespace, control characters, or unescaped\
+              \ trailing backslash. Null or absent means that no JSON selection is\
+              \ configured."
+            example: accounts.0.password
+            maxLength: 256
+            minLength: 1
+            nullable: true
+            type: string
         required:
         - is_secret
         - key
@@ -45885,6 +45928,7 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           value: value
           key: key
+        json_target_key: accounts.0.password
         service_type: APPLICATION
         updated_at: 2000-01-23T04:56:07.000+00:00
         scope: null
@@ -45919,6 +45963,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             value: value
             key: key
+          json_target_key: accounts.0.password
           service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
           scope: null
@@ -45950,6 +45995,7 @@ components:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             value: value
             key: key
+          json_target_key: accounts.0.password
           service_type: APPLICATION
           updated_at: 2000-01-23T04:56:07.000+00:00
           scope: null

@@ -37,7 +37,9 @@ type VariableRequest struct {
 	EnableInterpolationInFile NullableBool   `json:"enable_interpolation_in_file,omitempty"`
 	SecretManagerAccessId     NullableString `json:"secret_manager_access_id,omitempty"`
 	// If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false.
-	OverrideIfExists     NullableBool `json:"override_if_exists,omitempty"`
+	OverrideIfExists NullableBool `json:"override_if_exists,omitempty"`
+	// Optional JSON member/index path, only supported for `EXTERNAL_SECRET` variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example `accounts.0.password`. Escape literal dots with `\\.` and backslashes with `\\\\`; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Omit or set to null to read the whole secret.
+	JsonTargetKey        NullableString `json:"json_target_key,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -404,6 +406,49 @@ func (o *VariableRequest) UnsetOverrideIfExists() {
 	o.OverrideIfExists.Unset()
 }
 
+// GetJsonTargetKey returns the JsonTargetKey field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *VariableRequest) GetJsonTargetKey() string {
+	if o == nil || IsNil(o.JsonTargetKey.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.JsonTargetKey.Get()
+}
+
+// GetJsonTargetKeyOk returns a tuple with the JsonTargetKey field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *VariableRequest) GetJsonTargetKeyOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.JsonTargetKey.Get(), o.JsonTargetKey.IsSet()
+}
+
+// HasJsonTargetKey returns a boolean if a field has been set.
+func (o *VariableRequest) HasJsonTargetKey() bool {
+	if o != nil && o.JsonTargetKey.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetJsonTargetKey gets a reference to the given NullableString and assigns it to the JsonTargetKey field.
+func (o *VariableRequest) SetJsonTargetKey(v string) {
+	o.JsonTargetKey.Set(&v)
+}
+
+// SetJsonTargetKeyNil sets the value for JsonTargetKey to be an explicit nil
+func (o *VariableRequest) SetJsonTargetKeyNil() {
+	o.JsonTargetKey.Set(nil)
+}
+
+// UnsetJsonTargetKey ensures that no value is present for JsonTargetKey, not even an explicit nil
+func (o *VariableRequest) UnsetJsonTargetKey() {
+	o.JsonTargetKey.Unset()
+}
+
 func (o VariableRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -433,6 +478,9 @@ func (o VariableRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.OverrideIfExists.IsSet() {
 		toSerialize["override_if_exists"] = o.OverrideIfExists.Get()
+	}
+	if o.JsonTargetKey.IsSet() {
+		toSerialize["json_target_key"] = o.JsonTargetKey.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -491,6 +539,7 @@ func (o *VariableRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "enable_interpolation_in_file")
 		delete(additionalProperties, "secret_manager_access_id")
 		delete(additionalProperties, "override_if_exists")
+		delete(additionalProperties, "json_target_key")
 		o.AdditionalProperties = additionalProperties
 	}
 

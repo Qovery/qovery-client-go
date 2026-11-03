@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **EnableInterpolationInFile** | Pointer to **NullableBool** |  | [optional] 
 **SecretManagerAccessId** | Pointer to **NullableString** |  | [optional] 
 **OverrideIfExists** | Pointer to **NullableBool** | If true and a variable with the same key already exists at a higher scope (project or environment), an override of that variable is created instead of failing with 409. The override follows the usual rules: same secret kind, target must be a value or file variable, strictly lower scope. Defaults to false. | [optional] [default to false]
+**JsonTargetKey** | Pointer to **NullableString** | Optional JSON member/index path, only supported for &#x60;EXTERNAL_SECRET&#x60; variables (not external secret files). Use dots for nested members and numeric indexes for arrays, for example &#x60;accounts.0.password&#x60;. Escape literal dots with &#x60;\\.&#x60; and backslashes with &#x60;\\\\&#x60;; other query characters are treated literally. Members must be non-empty, with no leading or trailing whitespace, control characters, or unescaped trailing backslash. Omit or set to null to read the whole secret. | [optional] 
 
 ## Methods
 
@@ -309,6 +310,41 @@ HasOverrideIfExists returns a boolean if a field has been set.
 `func (o *VariableRequest) UnsetOverrideIfExists()`
 
 UnsetOverrideIfExists ensures that no value is present for OverrideIfExists, not even an explicit nil
+### GetJsonTargetKey
+
+`func (o *VariableRequest) GetJsonTargetKey() string`
+
+GetJsonTargetKey returns the JsonTargetKey field if non-nil, zero value otherwise.
+
+### GetJsonTargetKeyOk
+
+`func (o *VariableRequest) GetJsonTargetKeyOk() (*string, bool)`
+
+GetJsonTargetKeyOk returns a tuple with the JsonTargetKey field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetJsonTargetKey
+
+`func (o *VariableRequest) SetJsonTargetKey(v string)`
+
+SetJsonTargetKey sets JsonTargetKey field to given value.
+
+### HasJsonTargetKey
+
+`func (o *VariableRequest) HasJsonTargetKey() bool`
+
+HasJsonTargetKey returns a boolean if a field has been set.
+
+### SetJsonTargetKeyNil
+
+`func (o *VariableRequest) SetJsonTargetKeyNil(b bool)`
+
+ SetJsonTargetKeyNil sets the value for JsonTargetKey to be an explicit nil
+
+### UnsetJsonTargetKey
+`func (o *VariableRequest) UnsetJsonTargetKey()`
+
+UnsetJsonTargetKey ensures that no value is present for JsonTargetKey, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
