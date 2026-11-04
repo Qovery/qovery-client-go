@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**DeleteOrganization**](OrganizationMainCallsAPI.md#DeleteOrganization) | **Delete** /organization/{organizationId} | Delete an organization
 [**EditGitToken**](OrganizationMainCallsAPI.md#EditGitToken) | **Put** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 [**EditOrganization**](OrganizationMainCallsAPI.md#EditOrganization) | **Put** /organization/{organizationId} | Edit an organization
+[**EditOrganizationAiFeatures**](OrganizationMainCallsAPI.md#EditOrganizationAiFeatures) | **Put** /organization/{organizationId}/aiFeatures | Edit the organization&#39;s AI features opt-in
 [**GetContainerRegistryAssociatedServices**](OrganizationMainCallsAPI.md#GetContainerRegistryAssociatedServices) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
 [**GetGitTokenAssociatedServices**](OrganizationMainCallsAPI.md#GetGitTokenAssociatedServices) | **Get** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
 [**GetHelmRepositoryAssociatedServices**](OrganizationMainCallsAPI.md#GetHelmRepositoryAssociatedServices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
@@ -427,6 +428,78 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **organizationEditRequest** | [**OrganizationEditRequest**](OrganizationEditRequest.md) |  | 
+
+### Return type
+
+[**Organization**](Organization.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## EditOrganizationAiFeatures
+
+> Organization EditOrganizationAiFeatures(ctx, organizationId).OrganizationAiFeaturesRequest(organizationAiFeaturesRequest).Execute()
+
+Edit the organization's AI features opt-in
+
+
+
+### Example
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/qovery/qovery-client-go"
+)
+
+func main() {
+	organizationId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Organization ID
+	organizationAiFeaturesRequest := *openapiclient.NewOrganizationAiFeaturesRequest(false) // OrganizationAiFeaturesRequest |  (optional)
+
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.OrganizationMainCallsAPI.EditOrganizationAiFeatures(context.Background(), organizationId).OrganizationAiFeaturesRequest(organizationAiFeaturesRequest).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `OrganizationMainCallsAPI.EditOrganizationAiFeatures``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `EditOrganizationAiFeatures`: Organization
+	fmt.Fprintf(os.Stdout, "Response from `OrganizationMainCallsAPI.EditOrganizationAiFeatures`: %v\n", resp)
+}
+```
+
+### Path Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+**ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+**organizationId** | **string** | Organization ID | 
+
+### Other Parameters
+
+Other parameters are passed through a pointer to a apiEditOrganizationAiFeaturesRequest struct via the builder pattern
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **organizationAiFeaturesRequest** | [**OrganizationAiFeaturesRequest**](OrganizationAiFeaturesRequest.md) |  | 
 
 ### Return type
 

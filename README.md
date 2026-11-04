@@ -553,6 +553,7 @@ Class | Method | HTTP request | Description
 *OrganizationMainCallsAPI* | [**DeleteOrganization**](docs/OrganizationMainCallsAPI.md#deleteorganization) | **Delete** /organization/{organizationId} | Delete an organization
 *OrganizationMainCallsAPI* | [**EditGitToken**](docs/OrganizationMainCallsAPI.md#editgittoken) | **Put** /organization/{organizationId}/gitToken/{gitTokenId} | Edit a git token
 *OrganizationMainCallsAPI* | [**EditOrganization**](docs/OrganizationMainCallsAPI.md#editorganization) | **Put** /organization/{organizationId} | Edit an organization
+*OrganizationMainCallsAPI* | [**EditOrganizationAiFeatures**](docs/OrganizationMainCallsAPI.md#editorganizationaifeatures) | **Put** /organization/{organizationId}/aiFeatures | Edit the organization&#39;s AI features opt-in
 *OrganizationMainCallsAPI* | [**GetContainerRegistryAssociatedServices**](docs/OrganizationMainCallsAPI.md#getcontainerregistryassociatedservices) | **Get** /organization/{organizationId}/containerRegistry/{containerRegistryId}/associatedServices | Get organization container registry associated services
 *OrganizationMainCallsAPI* | [**GetGitTokenAssociatedServices**](docs/OrganizationMainCallsAPI.md#getgittokenassociatedservices) | **Get** /organization/{organizationId}/gitToken/{gitTokenId}/associatedServices | Get organization git token associated services
 *OrganizationMainCallsAPI* | [**GetHelmRepositoryAssociatedServices**](docs/OrganizationMainCallsAPI.md#gethelmrepositoryassociatedservices) | **Get** /organization/{organizationId}/helmRepository/{helmRepositoryId}/associatedServices | Get organization helm repository associated services
@@ -1310,6 +1311,7 @@ Class | Method | HTTP request | Description
  - [ObservabilityResourceProfile](docs/ObservabilityResourceProfile.md)
  - [OnPremiseCredentialsRequest](docs/OnPremiseCredentialsRequest.md)
  - [Organization](docs/Organization.md)
+ - [OrganizationAiFeaturesRequest](docs/OrganizationAiFeaturesRequest.md)
  - [OrganizationAllOfOrganizationPlan](docs/OrganizationAllOfOrganizationPlan.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseList](docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md)
  - [OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner](docs/OrganizationAnnotationsGroupAssociatedItemsResponseListResultsInner.md)

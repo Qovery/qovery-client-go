@@ -843,6 +843,7 @@ docs/OnPremiseCredentialsRequest.md
 docs/Organization.md
 docs/OrganizationAPI.md
 docs/OrganizationAccountGitRepositoriesAPI.md
+docs/OrganizationAiFeaturesRequest.md
 docs/OrganizationAllOfOrganizationPlan.md
 docs/OrganizationAnnotationsGroupAPI.md
 docs/OrganizationAnnotationsGroupAssociatedItemsResponseList.md
@@ -1808,6 +1809,7 @@ model_object_field_schema_response.go
 model_observability_resource_profile.go
 model_on_premise_credentials_request.go
 model_organization.go
+model_organization_ai_features_request.go
 model_organization_all_of_organization_plan.go
 model_organization_annotations_group_associated_items_response_list.go
 model_organization_annotations_group_associated_items_response_list_results_inner.go

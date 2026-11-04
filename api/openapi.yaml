@@ -306,6 +306,43 @@ paths:
       summary: Edit an organization
       tags:
       - Organization Main Calls
+  /organization/{organizationId}/aiFeatures:
+    put:
+      description: To edit the AI features opt-in you must have the admin permission.
+      operationId: editOrganizationAiFeatures
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrganizationAiFeaturesRequest'
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Organization'
+          description: Edit the organization's AI features opt-in
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Edit the organization's AI features opt-in
+      tags:
+      - Organization Main Calls
   /organization/{organizationId}/policyApiToken:
     get:
       description: "List the policy api tokens of the organization, each with the\
@@ -42836,6 +42873,13 @@ components:
           has_enterprise_connection:
             description: Indicates if the organization uses SAML or OIDC
             type: boolean
+          ai_features_enabled_by_default:
+            description: "Initial value of `ai_features_enabled`, fixed at creation."
+            type: boolean
+          ai_features_enabled:
+            description: "Whether the organization opted in to AI features (DevOps\
+              \ Copilot, build analysis). Starts at `ai_features_enabled_by_default`."
+            type: boolean
         type: object
       - properties:
           organization_plan:
@@ -42852,6 +42896,7 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         description: description
         has_enterprise_connection: true
+        ai_features_enabled: true
         admin_emails:
         - admin_emails
         - admin_emails
@@ -42860,6 +42905,7 @@ components:
         name: name
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         plan: FREE
+        ai_features_enabled_by_default: true
     OrganizationPolicyApiToken:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -43426,6 +43472,16 @@ components:
       - ADMIN
       example: VIEWER
       type: string
+    OrganizationAiFeaturesRequest:
+      example:
+        enabled: true
+      properties:
+        enabled:
+          description: Whether the organization opts in to AI features
+          type: boolean
+      required:
+      - enabled
+      type: object
     OrganizationEditRequest:
       example:
         icon_url: icon_url
@@ -43524,6 +43580,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           has_enterprise_connection: true
+          ai_features_enabled: true
           admin_emails:
           - admin_emails
           - admin_emails
@@ -43532,6 +43589,7 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan: FREE
+          ai_features_enabled_by_default: true
         - icon_url: icon_url
           owner: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           billing_deployment_restriction: billing_deployment_restriction
@@ -43542,6 +43600,7 @@ components:
           created_at: 2000-01-23T04:56:07.000+00:00
           description: description
           has_enterprise_connection: true
+          ai_features_enabled: true
           admin_emails:
           - admin_emails
           - admin_emails
@@ -43550,6 +43609,7 @@ components:
           name: name
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           plan: FREE
+          ai_features_enabled_by_default: true
       properties:
         results:
           items:

@@ -17,6 +17,8 @@ Name | Type | Description | Notes
 **Owner** | Pointer to **string** | uuid of the user owning the organization | [optional] 
 **BillingDeploymentRestriction** | Pointer to **NullableString** | If set, indicates a billing-related restriction on the organization. &#39;NO_CREDIT_CARD&#39; means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction. | [optional] 
 **HasEnterpriseConnection** | Pointer to **bool** | Indicates if the organization uses SAML or OIDC | [optional] 
+**AiFeaturesEnabledByDefault** | Pointer to **bool** | Initial value of &#x60;ai_features_enabled&#x60;, fixed at creation. | [optional] 
+**AiFeaturesEnabled** | Pointer to **bool** | Whether the organization opted in to AI features (DevOps Copilot, build analysis). Starts at &#x60;ai_features_enabled_by_default&#x60;. | [optional] 
 **OrganizationPlan** | Pointer to [**OrganizationAllOfOrganizationPlan**](OrganizationAllOfOrganizationPlan.md) |  | [optional] 
 
 ## Methods
@@ -402,6 +404,56 @@ SetHasEnterpriseConnection sets HasEnterpriseConnection field to given value.
 `func (o *Organization) HasHasEnterpriseConnection() bool`
 
 HasHasEnterpriseConnection returns a boolean if a field has been set.
+
+### GetAiFeaturesEnabledByDefault
+
+`func (o *Organization) GetAiFeaturesEnabledByDefault() bool`
+
+GetAiFeaturesEnabledByDefault returns the AiFeaturesEnabledByDefault field if non-nil, zero value otherwise.
+
+### GetAiFeaturesEnabledByDefaultOk
+
+`func (o *Organization) GetAiFeaturesEnabledByDefaultOk() (*bool, bool)`
+
+GetAiFeaturesEnabledByDefaultOk returns a tuple with the AiFeaturesEnabledByDefault field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiFeaturesEnabledByDefault
+
+`func (o *Organization) SetAiFeaturesEnabledByDefault(v bool)`
+
+SetAiFeaturesEnabledByDefault sets AiFeaturesEnabledByDefault field to given value.
+
+### HasAiFeaturesEnabledByDefault
+
+`func (o *Organization) HasAiFeaturesEnabledByDefault() bool`
+
+HasAiFeaturesEnabledByDefault returns a boolean if a field has been set.
+
+### GetAiFeaturesEnabled
+
+`func (o *Organization) GetAiFeaturesEnabled() bool`
+
+GetAiFeaturesEnabled returns the AiFeaturesEnabled field if non-nil, zero value otherwise.
+
+### GetAiFeaturesEnabledOk
+
+`func (o *Organization) GetAiFeaturesEnabledOk() (*bool, bool)`
+
+GetAiFeaturesEnabledOk returns a tuple with the AiFeaturesEnabled field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetAiFeaturesEnabled
+
+`func (o *Organization) SetAiFeaturesEnabled(v bool)`
+
+SetAiFeaturesEnabled sets AiFeaturesEnabled field to given value.
+
+### HasAiFeaturesEnabled
+
+`func (o *Organization) HasAiFeaturesEnabled() bool`
+
+HasAiFeaturesEnabled returns a boolean if a field has been set.
 
 ### GetOrganizationPlan
 

@@ -38,9 +38,13 @@ type Organization struct {
 	// If set, indicates a billing-related restriction on the organization. 'NO_CREDIT_CARD' means the organization is on a free trial without a credit card — managed cluster creation and deployments on managed clusters are blocked, but demo cluster usage is allowed. Any other value blocks all deployments. null means no restriction.
 	BillingDeploymentRestriction NullableString `json:"billing_deployment_restriction,omitempty"`
 	// Indicates if the organization uses SAML or OIDC
-	HasEnterpriseConnection *bool                              `json:"has_enterprise_connection,omitempty"`
-	OrganizationPlan        *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
-	AdditionalProperties    map[string]interface{}
+	HasEnterpriseConnection *bool `json:"has_enterprise_connection,omitempty"`
+	// Initial value of `ai_features_enabled`, fixed at creation.
+	AiFeaturesEnabledByDefault *bool `json:"ai_features_enabled_by_default,omitempty"`
+	// Whether the organization opted in to AI features (DevOps Copilot, build analysis). Starts at `ai_features_enabled_by_default`.
+	AiFeaturesEnabled    *bool                              `json:"ai_features_enabled,omitempty"`
+	OrganizationPlan     *OrganizationAllOfOrganizationPlan `json:"organization_plan,omitempty"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _Organization Organization
@@ -506,6 +510,70 @@ func (o *Organization) SetHasEnterpriseConnection(v bool) {
 	o.HasEnterpriseConnection = &v
 }
 
+// GetAiFeaturesEnabledByDefault returns the AiFeaturesEnabledByDefault field value if set, zero value otherwise.
+func (o *Organization) GetAiFeaturesEnabledByDefault() bool {
+	if o == nil || IsNil(o.AiFeaturesEnabledByDefault) {
+		var ret bool
+		return ret
+	}
+	return *o.AiFeaturesEnabledByDefault
+}
+
+// GetAiFeaturesEnabledByDefaultOk returns a tuple with the AiFeaturesEnabledByDefault field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Organization) GetAiFeaturesEnabledByDefaultOk() (*bool, bool) {
+	if o == nil || IsNil(o.AiFeaturesEnabledByDefault) {
+		return nil, false
+	}
+	return o.AiFeaturesEnabledByDefault, true
+}
+
+// HasAiFeaturesEnabledByDefault returns a boolean if a field has been set.
+func (o *Organization) HasAiFeaturesEnabledByDefault() bool {
+	if o != nil && !IsNil(o.AiFeaturesEnabledByDefault) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiFeaturesEnabledByDefault gets a reference to the given bool and assigns it to the AiFeaturesEnabledByDefault field.
+func (o *Organization) SetAiFeaturesEnabledByDefault(v bool) {
+	o.AiFeaturesEnabledByDefault = &v
+}
+
+// GetAiFeaturesEnabled returns the AiFeaturesEnabled field value if set, zero value otherwise.
+func (o *Organization) GetAiFeaturesEnabled() bool {
+	if o == nil || IsNil(o.AiFeaturesEnabled) {
+		var ret bool
+		return ret
+	}
+	return *o.AiFeaturesEnabled
+}
+
+// GetAiFeaturesEnabledOk returns a tuple with the AiFeaturesEnabled field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Organization) GetAiFeaturesEnabledOk() (*bool, bool) {
+	if o == nil || IsNil(o.AiFeaturesEnabled) {
+		return nil, false
+	}
+	return o.AiFeaturesEnabled, true
+}
+
+// HasAiFeaturesEnabled returns a boolean if a field has been set.
+func (o *Organization) HasAiFeaturesEnabled() bool {
+	if o != nil && !IsNil(o.AiFeaturesEnabled) {
+		return true
+	}
+
+	return false
+}
+
+// SetAiFeaturesEnabled gets a reference to the given bool and assigns it to the AiFeaturesEnabled field.
+func (o *Organization) SetAiFeaturesEnabled(v bool) {
+	o.AiFeaturesEnabled = &v
+}
+
 // GetOrganizationPlan returns the OrganizationPlan field value if set, zero value otherwise.
 func (o *Organization) GetOrganizationPlan() OrganizationAllOfOrganizationPlan {
 	if o == nil || IsNil(o.OrganizationPlan) {
@@ -579,6 +647,12 @@ func (o Organization) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.HasEnterpriseConnection) {
 		toSerialize["has_enterprise_connection"] = o.HasEnterpriseConnection
 	}
+	if !IsNil(o.AiFeaturesEnabledByDefault) {
+		toSerialize["ai_features_enabled_by_default"] = o.AiFeaturesEnabledByDefault
+	}
+	if !IsNil(o.AiFeaturesEnabled) {
+		toSerialize["ai_features_enabled"] = o.AiFeaturesEnabled
+	}
 	if !IsNil(o.OrganizationPlan) {
 		toSerialize["organization_plan"] = o.OrganizationPlan
 	}
@@ -641,6 +715,8 @@ func (o *Organization) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "owner")
 		delete(additionalProperties, "billing_deployment_restriction")
 		delete(additionalProperties, "has_enterprise_connection")
+		delete(additionalProperties, "ai_features_enabled_by_default")
+		delete(additionalProperties, "ai_features_enabled")
 		delete(additionalProperties, "organization_plan")
 		o.AdditionalProperties = additionalProperties
 	}
