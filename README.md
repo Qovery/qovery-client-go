@@ -1140,6 +1140,7 @@ Class | Method | HTTP request | Description
  - [GkeInfrastructureOutputs](docs/GkeInfrastructureOutputs.md)
  - [GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication](docs/GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication.md)
  - [Healthcheck](docs/Healthcheck.md)
+ - [HealthcheckStartupProbe](docs/HealthcheckStartupProbe.md)
  - [HelmAdvancedSettings](docs/HelmAdvancedSettings.md)
  - [HelmCheckRequest](docs/HelmCheckRequest.md)
  - [HelmDefaultValuesRequest](docs/HelmDefaultValuesRequest.md)

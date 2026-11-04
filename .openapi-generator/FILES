@@ -650,6 +650,7 @@ docs/GithubAppAPI.md
 docs/GkeInfrastructureOutputs.md
 docs/GkeInfrastructureOutputsExternalSecretsAutomaticAuthentication.md
 docs/Healthcheck.md
+docs/HealthcheckStartupProbe.md
 docs/HelmActionsAPI.md
 docs/HelmAdvancedSettings.md
 docs/HelmCheckRequest.md
@@ -1637,6 +1638,7 @@ model_git_webhook_status_response.go
 model_gke_infrastructure_outputs.go
 model_gke_infrastructure_outputs_external_secrets_automatic_authentication.go
 model_healthcheck.go
+model_healthcheck_startup_probe.go
 model_helm_advanced_settings.go
 model_helm_check_request.go
 model_helm_default_values_request.go

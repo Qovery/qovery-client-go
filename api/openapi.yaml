@@ -26279,6 +26279,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -26405,10 +26427,10 @@ components:
         - arguments
         autoscaling:
           mode: KEDA
-          cooldown_period_seconds: 1
+          cooldown_period_seconds: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          polling_interval_seconds: 7
+          polling_interval_seconds: 9
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
@@ -26629,6 +26651,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -27090,6 +27134,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -27248,6 +27314,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -27374,10 +27462,10 @@ components:
           - arguments
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -27462,6 +27550,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -27588,10 +27698,10 @@ components:
           - arguments
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -32477,6 +32587,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -32745,6 +32877,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -32850,10 +33004,10 @@ components:
         cpu_architecture: ""
         autoscaling:
           mode: KEDA
-          cooldown_period_seconds: 1
+          cooldown_period_seconds: 6
           updated_at: 2000-01-23T04:56:07.000+00:00
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-          polling_interval_seconds: 7
+          polling_interval_seconds: 9
           created_at: 2000-01-23T04:56:07.000+00:00
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
@@ -32940,6 +33094,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -33045,10 +33221,10 @@ components:
           cpu_architecture: ""
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -33132,6 +33308,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -33237,10 +33435,10 @@ components:
           cpu_architecture: ""
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -39412,6 +39610,28 @@ components:
               port: 4
               service: service
           timeout_seconds: 1
+        startup_probe:
+          period_seconds: 1
+          initial_delay_seconds: 7
+          failure_threshold: 9
+          success_threshold: 5
+          type:
+            tcp:
+              port: 3
+              host: host
+            http:
+              path: /
+              scheme: HTTP
+              port: 2
+            exec:
+              command:
+              - sh
+              - -c
+              - test -f /tmp/healthy
+            grpc:
+              port: 4
+              service: service
+          timeout_seconds: 4
         liveness_probe:
           period_seconds: 1
           initial_delay_seconds: 7
@@ -39440,6 +39660,8 @@ components:
           $ref: '#/components/schemas/Probe'
         liveness_probe:
           $ref: '#/components/schemas/Probe'
+        startup_probe:
+          $ref: '#/components/schemas/Healthcheck_startup_probe'
       type: object
     InviteMember:
       allOf:
@@ -40780,6 +41002,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -40925,6 +41169,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -41079,6 +41345,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -46463,6 +46751,28 @@ components:
                 port: 4
                 service: service
             timeout_seconds: 1
+          startup_probe:
+            period_seconds: 1
+            initial_delay_seconds: 7
+            failure_threshold: 9
+            success_threshold: 5
+            type:
+              tcp:
+                port: 3
+                host: host
+              http:
+                path: /
+                scheme: HTTP
+                port: 2
+              exec:
+                command:
+                - sh
+                - -c
+                - test -f /tmp/healthy
+              grpc:
+                port: 4
+                service: service
+            timeout_seconds: 4
           liveness_probe:
             period_seconds: 1
             initial_delay_seconds: 7
@@ -51396,10 +51706,10 @@ components:
       description: ""
       example:
         mode: KEDA
-        cooldown_period_seconds: 1
+        cooldown_period_seconds: 6
         updated_at: 2000-01-23T04:56:07.000+00:00
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-        polling_interval_seconds: 7
+        polling_interval_seconds: 9
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scalers:
@@ -53422,6 +53732,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -53548,10 +53880,10 @@ components:
           - arguments
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -53636,6 +53968,28 @@ components:
                   port: 4
                   service: service
               timeout_seconds: 1
+            startup_probe:
+              period_seconds: 1
+              initial_delay_seconds: 7
+              failure_threshold: 9
+              success_threshold: 5
+              type:
+                tcp:
+                  port: 3
+                  host: host
+                http:
+                  path: /
+                  scheme: HTTP
+                  port: 2
+                exec:
+                  command:
+                  - sh
+                  - -c
+                  - test -f /tmp/healthy
+                grpc:
+                  port: 4
+                  service: service
+              timeout_seconds: 4
             liveness_probe:
               period_seconds: 1
               initial_delay_seconds: 7
@@ -53762,10 +54116,10 @@ components:
           - arguments
           autoscaling:
             mode: KEDA
-            cooldown_period_seconds: 1
+            cooldown_period_seconds: 6
             updated_at: 2000-01-23T04:56:07.000+00:00
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            polling_interval_seconds: 7
+            polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
@@ -55335,6 +55689,36 @@ components:
       type: object
       x-stoplight:
         id: l9y5i1bt4jmsk
+    Healthcheck_startup_probe:
+      allOf:
+      - $ref: '#/components/schemas/Probe'
+      description: "Optional probe checking that the container has started. Kubernetes\
+        \ runs the readiness and liveness probes only once it succeeds, so a slow\
+        \ start does not trip the liveness probe. Omitted or null means no startup\
+        \ probe. Like the other probes, an edit that leaves it out removes it."
+      example:
+        period_seconds: 1
+        initial_delay_seconds: 7
+        failure_threshold: 9
+        success_threshold: 5
+        type:
+          tcp:
+            port: 3
+            host: host
+          http:
+            path: /
+            scheme: HTTP
+            port: 2
+          exec:
+            command:
+            - sh
+            - -c
+            - test -f /tmp/healthy
+          grpc:
+            port: 4
+            service: service
+        timeout_seconds: 4
+      nullable: true
     JobRequest_allOf_source_image:
       example:
         image_name: image_name

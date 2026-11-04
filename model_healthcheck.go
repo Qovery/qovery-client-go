@@ -20,8 +20,9 @@ var _ MappedNullable = &Healthcheck{}
 
 // Healthcheck struct for Healthcheck
 type Healthcheck struct {
-	ReadinessProbe       NullableProbe `json:"readiness_probe,omitempty"`
-	LivenessProbe        NullableProbe `json:"liveness_probe,omitempty"`
+	ReadinessProbe       NullableProbe                   `json:"readiness_probe,omitempty"`
+	LivenessProbe        NullableProbe                   `json:"liveness_probe,omitempty"`
+	StartupProbe         NullableHealthcheckStartupProbe `json:"startup_probe,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -130,6 +131,49 @@ func (o *Healthcheck) UnsetLivenessProbe() {
 	o.LivenessProbe.Unset()
 }
 
+// GetStartupProbe returns the StartupProbe field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *Healthcheck) GetStartupProbe() HealthcheckStartupProbe {
+	if o == nil || IsNil(o.StartupProbe.Get()) {
+		var ret HealthcheckStartupProbe
+		return ret
+	}
+	return *o.StartupProbe.Get()
+}
+
+// GetStartupProbeOk returns a tuple with the StartupProbe field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *Healthcheck) GetStartupProbeOk() (*HealthcheckStartupProbe, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.StartupProbe.Get(), o.StartupProbe.IsSet()
+}
+
+// HasStartupProbe returns a boolean if a field has been set.
+func (o *Healthcheck) HasStartupProbe() bool {
+	if o != nil && o.StartupProbe.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetStartupProbe gets a reference to the given NullableHealthcheckStartupProbe and assigns it to the StartupProbe field.
+func (o *Healthcheck) SetStartupProbe(v HealthcheckStartupProbe) {
+	o.StartupProbe.Set(&v)
+}
+
+// SetStartupProbeNil sets the value for StartupProbe to be an explicit nil
+func (o *Healthcheck) SetStartupProbeNil() {
+	o.StartupProbe.Set(nil)
+}
+
+// UnsetStartupProbe ensures that no value is present for StartupProbe, not even an explicit nil
+func (o *Healthcheck) UnsetStartupProbe() {
+	o.StartupProbe.Unset()
+}
+
 func (o Healthcheck) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -145,6 +189,9 @@ func (o Healthcheck) ToMap() (map[string]interface{}, error) {
 	}
 	if o.LivenessProbe.IsSet() {
 		toSerialize["liveness_probe"] = o.LivenessProbe.Get()
+	}
+	if o.StartupProbe.IsSet() {
+		toSerialize["startup_probe"] = o.StartupProbe.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -170,6 +217,7 @@ func (o *Healthcheck) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "readiness_probe")
 		delete(additionalProperties, "liveness_probe")
+		delete(additionalProperties, "startup_probe")
 		o.AdditionalProperties = additionalProperties
 	}
 

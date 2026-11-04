@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ReadinessProbe** | Pointer to [**NullableProbe**](Probe.md) |  | [optional] 
 **LivenessProbe** | Pointer to [**NullableProbe**](Probe.md) |  | [optional] 
+**StartupProbe** | Pointer to [**NullableHealthcheckStartupProbe**](HealthcheckStartupProbe.md) |  | [optional] 
 
 ## Methods
 
@@ -96,6 +97,41 @@ HasLivenessProbe returns a boolean if a field has been set.
 `func (o *Healthcheck) UnsetLivenessProbe()`
 
 UnsetLivenessProbe ensures that no value is present for LivenessProbe, not even an explicit nil
+### GetStartupProbe
+
+`func (o *Healthcheck) GetStartupProbe() HealthcheckStartupProbe`
+
+GetStartupProbe returns the StartupProbe field if non-nil, zero value otherwise.
+
+### GetStartupProbeOk
+
+`func (o *Healthcheck) GetStartupProbeOk() (*HealthcheckStartupProbe, bool)`
+
+GetStartupProbeOk returns a tuple with the StartupProbe field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetStartupProbe
+
+`func (o *Healthcheck) SetStartupProbe(v HealthcheckStartupProbe)`
+
+SetStartupProbe sets StartupProbe field to given value.
+
+### HasStartupProbe
+
+`func (o *Healthcheck) HasStartupProbe() bool`
+
+HasStartupProbe returns a boolean if a field has been set.
+
+### SetStartupProbeNil
+
+`func (o *Healthcheck) SetStartupProbeNil(b bool)`
+
+ SetStartupProbeNil sets the value for StartupProbe to be an explicit nil
+
+### UnsetStartupProbe
+`func (o *Healthcheck) UnsetStartupProbe()`
+
+UnsetStartupProbe ensures that no value is present for StartupProbe, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
