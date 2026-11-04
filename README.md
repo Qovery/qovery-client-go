@@ -112,6 +112,7 @@ Class | Method | HTTP request | Description
 *ApplicationActionsAPI* | [**RedeployApplication**](docs/ApplicationActionsAPI.md#redeployapplication) | **Post** /application/{applicationId}/redeploy | Redeploy application
 *ApplicationActionsAPI* | [**StopApplication**](docs/ApplicationActionsAPI.md#stopapplication) | **Post** /application/{applicationId}/stop | Stop application
 *ApplicationActionsAPI* | [**UninstallApplication**](docs/ApplicationActionsAPI.md#uninstallapplication) | **Post** /application/{applicationId}/uninstall | Uninstall application
+*ApplicationBuildAnalysisAPI* | [**GetApplicationBuildAnalysis**](docs/ApplicationBuildAnalysisAPI.md#getapplicationbuildanalysis) | **Get** /application/{applicationId}/buildAnalysis | Get the build analysis of an application
 *ApplicationConfigurationAPI* | [**EditAdvancedSettings**](docs/ApplicationConfigurationAPI.md#editadvancedsettings) | **Put** /application/{applicationId}/advancedSettings | Edit advanced settings
 *ApplicationConfigurationAPI* | [**EditApplicationNetwork**](docs/ApplicationConfigurationAPI.md#editapplicationnetwork) | **Put** /application/{applicationId}/network | Edit Application Network
 *ApplicationConfigurationAPI* | [**GetAdvancedSettings**](docs/ApplicationConfigurationAPI.md#getadvancedsettings) | **Get** /application/{applicationId}/advancedSettings | Get advanced settings
@@ -455,6 +456,7 @@ Class | Method | HTTP request | Description
 *JobActionsAPI* | [**RedeployJob**](docs/JobActionsAPI.md#redeployjob) | **Post** /job/{jobId}/redeploy | Redeploy job
 *JobActionsAPI* | [**StopJob**](docs/JobActionsAPI.md#stopjob) | **Post** /job/{jobId}/stop | Stop job
 *JobActionsAPI* | [**UninstallJob**](docs/JobActionsAPI.md#uninstalljob) | **Post** /job/{jobId}/uninstall | Uninstall job
+*JobBuildAnalysisAPI* | [**GetJobBuildAnalysis**](docs/JobBuildAnalysisAPI.md#getjobbuildanalysis) | **Get** /job/{jobId}/buildAnalysis | Get the build analysis of a job
 *JobConfigurationAPI* | [**EditJobAdvancedSettings**](docs/JobConfigurationAPI.md#editjobadvancedsettings) | **Put** /job/{jobId}/advancedSettings | Edit advanced settings
 *JobConfigurationAPI* | [**GetJobAdvancedSettings**](docs/JobConfigurationAPI.md#getjobadvancedsettings) | **Get** /job/{jobId}/advancedSettings | Get advanced settings
 *JobDeploymentHistoryAPI* | [**ListJobDeploymentHistory**](docs/JobDeploymentHistoryAPI.md#listjobdeploymenthistory) | **Get** /job/{jobId}/deploymentHistory | List job deployments
@@ -817,6 +819,18 @@ Class | Method | HTTP request | Description
  - [BlueprintUpdateVariableValue](docs/BlueprintUpdateVariableValue.md)
  - [BlueprintVariableRequest](docs/BlueprintVariableRequest.md)
  - [Budget](docs/Budget.md)
+ - [BuildAnalysisAsset](docs/BuildAnalysisAsset.md)
+ - [BuildAnalysisConfidence](docs/BuildAnalysisConfidence.md)
+ - [BuildAnalysisDockerfileSource](docs/BuildAnalysisDockerfileSource.md)
+ - [BuildAnalysisFailureCode](docs/BuildAnalysisFailureCode.md)
+ - [BuildAnalysisResponse](docs/BuildAnalysisResponse.md)
+ - [BuildAnalysisResponseResult](docs/BuildAnalysisResponseResult.md)
+ - [BuildAnalysisResult](docs/BuildAnalysisResult.md)
+ - [BuildAnalysisResultEstimatedTimeSaved](docs/BuildAnalysisResultEstimatedTimeSaved.md)
+ - [BuildAnalysisState](docs/BuildAnalysisState.md)
+ - [BuildAnalysisStateAnalysis](docs/BuildAnalysisStateAnalysis.md)
+ - [BuildAnalysisStatus](docs/BuildAnalysisStatus.md)
+ - [BuildAnalysisTimeSaved](docs/BuildAnalysisTimeSaved.md)
  - [BuildModeEnum](docs/BuildModeEnum.md)
  - [BuildSettings](docs/BuildSettings.md)
  - [BuilderUsage](docs/BuilderUsage.md)

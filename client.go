@@ -61,6 +61,8 @@ type APIClient struct {
 
 	ApplicationActionsAPI *ApplicationActionsAPIService
 
+	ApplicationBuildAnalysisAPI *ApplicationBuildAnalysisAPIService
+
 	ApplicationConfigurationAPI *ApplicationConfigurationAPIService
 
 	ApplicationCustomDomainAPI *ApplicationCustomDomainAPIService
@@ -171,6 +173,8 @@ type APIClient struct {
 
 	JobActionsAPI *JobActionsAPIService
 
+	JobBuildAnalysisAPI *JobBuildAnalysisAPIService
+
 	JobConfigurationAPI *JobConfigurationAPIService
 
 	JobDeploymentHistoryAPI *JobDeploymentHistoryAPIService
@@ -278,6 +282,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.AlertReceiversAPI = (*AlertReceiversAPIService)(&c.common)
 	c.AlertRulesAPI = (*AlertRulesAPIService)(&c.common)
 	c.ApplicationActionsAPI = (*ApplicationActionsAPIService)(&c.common)
+	c.ApplicationBuildAnalysisAPI = (*ApplicationBuildAnalysisAPIService)(&c.common)
 	c.ApplicationConfigurationAPI = (*ApplicationConfigurationAPIService)(&c.common)
 	c.ApplicationCustomDomainAPI = (*ApplicationCustomDomainAPIService)(&c.common)
 	c.ApplicationDeploymentHistoryAPI = (*ApplicationDeploymentHistoryAPIService)(&c.common)
@@ -333,6 +338,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.HelmsAPI = (*HelmsAPIService)(&c.common)
 	c.IPsAPI = (*IPsAPIService)(&c.common)
 	c.JobActionsAPI = (*JobActionsAPIService)(&c.common)
+	c.JobBuildAnalysisAPI = (*JobBuildAnalysisAPIService)(&c.common)
 	c.JobConfigurationAPI = (*JobConfigurationAPIService)(&c.common)
 	c.JobDeploymentHistoryAPI = (*JobDeploymentHistoryAPIService)(&c.common)
 	c.JobDeploymentRestrictionAPI = (*JobDeploymentRestrictionAPIService)(&c.common)

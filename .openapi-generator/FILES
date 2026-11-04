@@ -9,6 +9,7 @@ api_agentic_workflows.go
 api_alert_receivers.go
 api_alert_rules.go
 api_application_actions.go
+api_application_build_analysis.go
 api_application_configuration.go
 api_application_custom_domain.go
 api_application_deployment_history.go
@@ -64,6 +65,7 @@ api_helm_repositories.go
 api_helms.go
 api_ips.go
 api_job_actions.go
+api_job_build_analysis.go
 api_job_configuration.go
 api_job_deployment_history.go
 api_job_deployment_restriction.go
@@ -172,6 +174,7 @@ docs/AnnotationsGroupAssociatedItemType.md
 docs/Application.md
 docs/ApplicationActionsAPI.md
 docs/ApplicationAdvancedSettings.md
+docs/ApplicationBuildAnalysisAPI.md
 docs/ApplicationConfigurationAPI.md
 docs/ApplicationCustomDomainAPI.md
 docs/ApplicationDeploymentHistoryAPI.md
@@ -293,6 +296,18 @@ docs/BlueprintUpdateUpdatedValue.md
 docs/BlueprintUpdateVariableValue.md
 docs/BlueprintVariableRequest.md
 docs/Budget.md
+docs/BuildAnalysisAsset.md
+docs/BuildAnalysisConfidence.md
+docs/BuildAnalysisDockerfileSource.md
+docs/BuildAnalysisFailureCode.md
+docs/BuildAnalysisResponse.md
+docs/BuildAnalysisResponseResult.md
+docs/BuildAnalysisResult.md
+docs/BuildAnalysisResultEstimatedTimeSaved.md
+docs/BuildAnalysisState.md
+docs/BuildAnalysisStateAnalysis.md
+docs/BuildAnalysisStatus.md
+docs/BuildAnalysisTimeSaved.md
 docs/BuildModeEnum.md
 docs/BuildSettings.md
 docs/BuilderUsage.md
@@ -726,6 +741,7 @@ docs/InvoiceResponseList.md
 docs/InvoiceStatusEnum.md
 docs/JobActionsAPI.md
 docs/JobAdvancedSettings.md
+docs/JobBuildAnalysisAPI.md
 docs/JobConfigurationAPI.md
 docs/JobCronSchedule.md
 docs/JobDeployRequest.md
@@ -1315,6 +1331,18 @@ model_blueprint_update_updated_value.go
 model_blueprint_update_variable_value.go
 model_blueprint_variable_request.go
 model_budget.go
+model_build_analysis_asset.go
+model_build_analysis_confidence.go
+model_build_analysis_dockerfile_source.go
+model_build_analysis_failure_code.go
+model_build_analysis_response.go
+model_build_analysis_response_result.go
+model_build_analysis_result.go
+model_build_analysis_result_estimated_time_saved.go
+model_build_analysis_state.go
+model_build_analysis_state_analysis.go
+model_build_analysis_status.go
+model_build_analysis_time_saved.go
 model_build_mode_enum.go
 model_build_settings.go
 model_builder_usage.go
@@ -2089,6 +2117,7 @@ test/api_agentic_workflows_test.go
 test/api_alert_receivers_test.go
 test/api_alert_rules_test.go
 test/api_application_actions_test.go
+test/api_application_build_analysis_test.go
 test/api_application_configuration_test.go
 test/api_application_custom_domain_test.go
 test/api_application_deployment_history_test.go
@@ -2144,6 +2173,7 @@ test/api_helm_repositories_test.go
 test/api_helms_test.go
 test/api_ips_test.go
 test/api_job_actions_test.go
+test/api_job_build_analysis_test.go
 test/api_job_configuration_test.go
 test/api_job_deployment_history_test.go
 test/api_job_deployment_restriction_test.go

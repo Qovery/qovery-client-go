@@ -28,6 +28,7 @@ tags:
 - name: Agentic Workflows
 - name: Application
 - name: Application Actions
+- name: Application Build Analysis
 - name: Application Configuration
 - name: Application Database
 - name: Application Deployment Restriction
@@ -54,6 +55,7 @@ tags:
 - name: Deployment Stage Main Calls
 - name: Job
 - name: Job Actions
+- name: Job Build Analysis
 - name: Job Configuration
 - name: Job Database
 - name: Job Deployment Restriction
@@ -11721,6 +11723,37 @@ paths:
       summary: List application deploys
       tags:
       - Application Deployment History
+  /application/{applicationId}/buildAnalysis:
+    get:
+      description: "Returns the latest build of the service that can be analysed and\
+        \ its latest analysis, if any. Only one analysis is kept per service."
+      operationId: getApplicationBuildAnalysis
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildAnalysisState'
+          description: Latest analysable build and latest analysis
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get the build analysis of an application
+      tags:
+      - Application Build Analysis
   /application/{applicationId}/deploymentHistoryV2:
     get:
       description: "By default it returns the 20 last results. The response is paginated.\
@@ -16510,6 +16543,37 @@ paths:
       summary: List job deployments
       tags:
       - Job Deployment History
+  /job/{jobId}/buildAnalysis:
+    get:
+      description: "Returns the latest build of the service that can be analysed and\
+        \ its latest analysis, if any. Only one analysis is kept per service."
+      operationId: getJobBuildAnalysis
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildAnalysisState'
+          description: Latest analysable build and latest analysis
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: Get the build analysis of a job
+      tags:
+      - Job Build Analysis
   /job/{jobId}/deploymentHistoryV2:
     get:
       description: Returns the 20 last job deployments
@@ -28195,6 +28259,208 @@ components:
         currency_code:
           example: USD
           type: string
+      type: object
+    BuildAnalysisStatus:
+      description: "PENDING is queued, COLLECTING reads the build logs and the cache\
+        \ history, ANALYSING waits for the model, then DONE or FAILED."
+      enum:
+      - PENDING
+      - COLLECTING
+      - ANALYSING
+      - DONE
+      - FAILED
+      type: string
+    BuildAnalysisDockerfileSource:
+      description: "Where the analysed Dockerfile came from. GIT is the repository\
+        \ at the build commit, INLINE the Dockerfile stored on the job, PASTE a Dockerfile\
+        \ pasted by the user."
+      enum:
+      - GIT
+      - INLINE
+      - PASTE
+      type: string
+    BuildAnalysisFailureCode:
+      description: "COPILOT_DISABLED when the organization opted out of AI features,\
+        \ MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT\
+        \ when the analysis took too long, INTERNAL_ERROR otherwise."
+      enum:
+      - COPILOT_DISABLED
+      - MODEL_ERROR
+      - TIMEOUT
+      - INTERNAL_ERROR
+      type: string
+    BuildAnalysisConfidence:
+      description: "How sure the analysis is that applying the improvements saves\
+        \ `estimated_time_saved`. HIGH when the build logs, the cache history or the\
+        \ build metrics show both the cause and the time it costs, MEDIUM when one\
+        \ of the two is inferred, LOW when only the Dockerfile suggests it or there\
+        \ is no time estimate. With no improvement, how sure the analysis is that\
+        \ the build has nothing left to gain."
+      enum:
+      - HIGH
+      - MEDIUM
+      - LOW
+      type: string
+    BuildAnalysisTimeSaved:
+      description: "Seconds saved on each build, as a range from min_seconds to max_seconds.\
+        \ When nothing is saved, the field holding it is null instead."
+      properties:
+        min_seconds:
+          example: 50
+          minimum: 0
+          type: integer
+        max_seconds:
+          example: 90
+          minimum: 0
+          type: integer
+      required:
+      - max_seconds
+      - min_seconds
+      type: object
+    BuildAnalysisAsset:
+      description: "What the analysis read. DOCKERFILE and BUILD_SETTINGS (build configuration\
+        \ and build argument names) are always read, DOCKERIGNORE when Qovery could\
+        \ check the repository for it, BUILD_LOGS when the build or earlier builds\
+        \ sharing its cache have logs."
+      enum:
+      - DOCKERFILE
+      - DOCKERIGNORE
+      - BUILD_LOGS
+      - BUILD_SETTINGS
+      type: string
+    BuildAnalysisResult:
+      properties:
+        confidence:
+          $ref: '#/components/schemas/BuildAnalysisConfidence'
+        estimated_time_saved:
+          $ref: '#/components/schemas/BuildAnalysisResult_estimated_time_saved'
+        assets_reviewed:
+          items:
+            $ref: '#/components/schemas/BuildAnalysisAsset'
+          type: array
+        summary:
+          description: "What slows the build and why, with the evidence from the build."
+          type: string
+        improvements:
+          description: "Changes to make, one sentence each, ordered by impact on build\
+            \ time, highest first. Empty when the build is already efficient."
+          example:
+          - "Copy package.json and package-lock.json before the rest of the code,\
+            \ so the install stays cached until dependencies change"
+          items:
+            type: string
+          type: array
+        dockerfile:
+          description: "Reworked Dockerfile to copy. Null when no improvement is a\
+            \ Dockerfile change, for example a variable value. Values hidden from\
+            \ the analysis appear as `<redacted>` and must be put back before use."
+          nullable: true
+          type: string
+        dockerfile_rationale:
+          description: Why the reworked Dockerfile is faster.
+          nullable: true
+          type: string
+        agent_prompt:
+          description: Prompt the customer pastes into their own AI agent to apply
+            the improvements in their repository.
+          type: string
+      required:
+      - agent_prompt
+      - assets_reviewed
+      - confidence
+      - dockerfile
+      - dockerfile_rationale
+      - estimated_time_saved
+      - improvements
+      - summary
+      type: object
+    BuildAnalysisResponse:
+      properties:
+        service_id:
+          format: uuid
+          type: string
+        execution_id:
+          description: Execution id of the analysed build.
+          example: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+          type: string
+        status:
+          $ref: '#/components/schemas/BuildAnalysisStatus'
+        stale:
+          description: "True when the latest build of the service is not the analysed\
+            \ one. The analysis stays readable, but only the latest build can be analysed."
+          type: boolean
+        dockerfile_source:
+          $ref: '#/components/schemas/BuildAnalysisDockerfileSource'
+        failure_code:
+          allOf:
+          - $ref: '#/components/schemas/BuildAnalysisFailureCode'
+          description: "Why the analysis failed, when `status` is FAILED."
+          nullable: true
+          type: string
+        failure_reason:
+          description: "Human-readable detail of the failure, when `status` is FAILED."
+          nullable: true
+          type: string
+        result:
+          $ref: '#/components/schemas/BuildAnalysisResponse_result'
+        created_at:
+          format: date-time
+          type: string
+        updated_at:
+          format: date-time
+          type: string
+      required:
+      - created_at
+      - dockerfile_source
+      - execution_id
+      - failure_code
+      - failure_reason
+      - result
+      - service_id
+      - stale
+      - status
+      - updated_at
+      type: object
+    BuildAnalysisState:
+      example:
+        latest_build_execution_id: latest_build_execution_id
+        analysis:
+          result:
+            summary: summary
+            estimated_time_saved:
+              max_seconds: 90
+              min_seconds: 50
+            confidence: HIGH
+            dockerfile: dockerfile
+            agent_prompt: agent_prompt
+            assets_reviewed:
+            - DOCKERFILE
+            - DOCKERFILE
+            dockerfile_rationale: dockerfile_rationale
+            improvements:
+            - "Copy package.json and package-lock.json before the rest of the code,\
+              \ so the install stays cached until dependencies change"
+          execution_id: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+          failure_code: failure_code
+          stale: true
+          updated_at: 2000-01-23T04:56:07.000+00:00
+          service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          dockerfile_source: GIT
+          created_at: 2000-01-23T04:56:07.000+00:00
+          failure_reason: failure_reason
+          status: PENDING
+      properties:
+        latest_build_execution_id:
+          description: "Execution id of the latest build of the service, the only\
+            \ build that can be analysed. Null when no deployment in the kept history\
+            \ ran a build."
+          nullable: true
+          type: string
+        analysis:
+          $ref: '#/components/schemas/BuildAnalysisState_analysis'
+      required:
+      - analysis
+      - latest_build_execution_id
       type: object
     BuildModeEnum:
       default: DOCKER
@@ -54794,6 +55060,69 @@ components:
       - size
       - type
       type: object
+    BuildAnalysisResult_estimated_time_saved:
+      allOf:
+      - $ref: '#/components/schemas/BuildAnalysisTimeSaved'
+      description: Build time saved on each build once every improvement is applied.
+        Null when there is nothing to save or no timing to base it on. `confidence`
+        applies to this range.
+      example:
+        max_seconds: 90
+        min_seconds: 50
+      nullable: true
+      type: object
+    BuildAnalysisResponse_result:
+      allOf:
+      - $ref: '#/components/schemas/BuildAnalysisResult'
+      description: Set when `status` is DONE.
+      example:
+        summary: summary
+        estimated_time_saved:
+          max_seconds: 90
+          min_seconds: 50
+        confidence: HIGH
+        dockerfile: dockerfile
+        agent_prompt: agent_prompt
+        assets_reviewed:
+        - DOCKERFILE
+        - DOCKERFILE
+        dockerfile_rationale: dockerfile_rationale
+        improvements:
+        - "Copy package.json and package-lock.json before the rest of the code, so\
+          \ the install stays cached until dependencies change"
+      nullable: true
+      type: object
+    BuildAnalysisState_analysis:
+      allOf:
+      - $ref: '#/components/schemas/BuildAnalysisResponse'
+      description: The latest analysis of the service. Null when none was run.
+      example:
+        result:
+          summary: summary
+          estimated_time_saved:
+            max_seconds: 90
+            min_seconds: 50
+          confidence: HIGH
+          dockerfile: dockerfile
+          agent_prompt: agent_prompt
+          assets_reviewed:
+          - DOCKERFILE
+          - DOCKERFILE
+          dockerfile_rationale: dockerfile_rationale
+          improvements:
+          - "Copy package.json and package-lock.json before the rest of the code,\
+            \ so the install stays cached until dependencies change"
+        execution_id: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+        failure_code: failure_code
+        stale: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dockerfile_source: GIT
+        created_at: 2000-01-23T04:56:07.000+00:00
+        failure_reason: failure_reason
+        status: PENDING
+      nullable: true
+      type: object
     ClusterLogs_message:
       example:
         safe_message: Preparing to delete EKS cluster.
@@ -57485,6 +57814,7 @@ x-tagGroups:
   - Application Logs
   - Application Deployment Restriction
   - Application Deployment History
+  - Application Build Analysis
   - Application Environment Variable
   - Application Secret
   - Application Annotations Group
@@ -57519,6 +57849,7 @@ x-tagGroups:
   - Job Custom Domain
   - Job Deployment Restriction
   - Job Deployment History
+  - Job Build Analysis
   - Job Environment Variable
   - Job Secret
   - Job Annotations Group
