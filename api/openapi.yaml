@@ -11024,6 +11024,10 @@ paths:
       - Databases
   /environment/{environmentId}/terraformExport:
     get:
+      description: "Secret values are never included in the export. Service secrets\
+        \ are preserved as empty input variables marked Redacted. Cloud, Git, registry\
+        \ and cluster credentials must be supplied through input variables without\
+        \ defaults."
       operationId: exportEnvironmentConfigurationIntoTerraform
       parameters:
       - description: Environment ID
@@ -11035,16 +11039,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: export Secrets from configuration and include them into Terraform
-          export
-        explode: true
-        in: query
-        name: exportSecrets
-        required: false
-        schema:
-          default: false
-          type: boolean
-        style: form
       responses:
         "200":
           content:

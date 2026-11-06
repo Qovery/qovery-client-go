@@ -28,13 +28,6 @@ type ApiExportEnvironmentConfigurationIntoTerraformRequest struct {
 	ctx           context.Context
 	ApiService    *EnvironmentExportAPIService
 	environmentId string
-	exportSecrets *bool
-}
-
-// export Secrets from configuration and include them into Terraform export
-func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) ExportSecrets(exportSecrets bool) ApiExportEnvironmentConfigurationIntoTerraformRequest {
-	r.exportSecrets = &exportSecrets
-	return r
 }
 
 func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) Execute() (*os.File, *http.Response, error) {
@@ -43,6 +36,8 @@ func (r ApiExportEnvironmentConfigurationIntoTerraformRequest) Execute() (*os.Fi
 
 /*
 ExportEnvironmentConfigurationIntoTerraform Export full environment and its resources into Terraform manifests
+
+Secret values are never included in the export. Service secrets are preserved as empty input variables marked Redacted. Cloud, Git, registry and cluster credentials must be supplied through input variables without defaults.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentId Environment ID
@@ -79,12 +74,6 @@ func (a *EnvironmentExportAPIService) ExportEnvironmentConfigurationIntoTerrafor
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if r.exportSecrets != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "exportSecrets", r.exportSecrets, "")
-	} else {
-		var defaultValue bool = false
-		r.exportSecrets = &defaultValue
-	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
 
