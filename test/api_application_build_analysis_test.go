@@ -36,4 +36,18 @@ func Test_qovery_ApplicationBuildAnalysisAPIService(t *testing.T) {
 
 	})
 
+	t.Run("Test ApplicationBuildAnalysisAPIService StartApplicationBuildAnalysis", func(t *testing.T) {
+
+		t.Skip("skip test") // remove to run test
+
+		var applicationId string
+
+		resp, httpRes, err := apiClient.ApplicationBuildAnalysisAPI.StartApplicationBuildAnalysis(context.Background(), applicationId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 }

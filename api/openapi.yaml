@@ -11748,6 +11748,59 @@ paths:
       summary: Get the build analysis of an application
       tags:
       - Application Build Analysis
+    post:
+      description: |-
+        Starts an AI analysis of the latest build of the service. It runs in the background and reports its progress on the websocket route `/build/analysis`.
+        The result gives a confidence, the estimated time saved, what was reviewed, a summary, the improvements to make, a prompt for the customer's own AI agent, and a reworked Dockerfile when an improvement is a Dockerfile change.
+        Starting an analysis replaces the previous one. It never changes the build or the image.
+      operationId: startApplicationBuildAnalysis
+      parameters:
+      - description: Application ID
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildAnalysisStartRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildAnalysisResponse'
+          description: Build analysis started
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: "Access forbidden, or AI features are disabled for the organization\
+            \ (`ai_features_enabled`)."
+        "404":
+          description: Resource not found
+        "409":
+          description: "The execution is not the latest build of the service, the\
+            \ service has no build, or an analysis is already in progress. Read the\
+            \ build analysis again to get the current `latest_build_execution_id`\
+            \ and the running analysis."
+        "422":
+          description: "Qovery cannot read the Dockerfile of this build, for example\
+            \ a git fetch failure or a path that does not exist at the build commit."
+        "503":
+          description: Build analysis is not available on this Qovery instance because
+            no AI model is configured. Checked before the organization's AI features.
+            Retrying does not help until the instance is configured.
+      summary: Analyse the latest build of an application
+      tags:
+      - Application Build Analysis
   /application/{applicationId}/deploymentHistoryV2:
     get:
       description: "By default it returns the 20 last results. The response is paginated.\
@@ -16566,6 +16619,59 @@ paths:
         "404":
           description: Resource not found
       summary: Get the build analysis of a job
+      tags:
+      - Job Build Analysis
+    post:
+      description: |-
+        Starts an AI analysis of the latest build of the service. It runs in the background and reports its progress on the websocket route `/build/analysis`.
+        The result gives a confidence, the estimated time saved, what was reviewed, a summary, the improvements to make, a prompt for the customer's own AI agent, and a reworked Dockerfile when an improvement is a Dockerfile change.
+        Starting an analysis replaces the previous one. It never changes the build or the image.
+      operationId: startJobBuildAnalysis
+      parameters:
+      - description: Job ID
+        explode: false
+        in: path
+        name: jobId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BuildAnalysisStartRequest'
+        required: true
+      responses:
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BuildAnalysisResponse'
+          description: Build analysis started
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: "Access forbidden, or AI features are disabled for the organization\
+            \ (`ai_features_enabled`)."
+        "404":
+          description: Resource not found
+        "409":
+          description: "The execution is not the latest build of the service, the\
+            \ service has no build, or an analysis is already in progress. Read the\
+            \ build analysis again to get the current `latest_build_execution_id`\
+            \ and the running analysis."
+        "422":
+          description: "Qovery cannot read the Dockerfile of this build, for example\
+            \ a git fetch failure or a path that does not exist at the build commit."
+        "503":
+          description: Build analysis is not available on this Qovery instance because
+            no AI model is configured. Checked before the organization's AI features.
+            Retrying does not help until the instance is configured.
+      summary: Analyse the latest build of a job
       tags:
       - Job Build Analysis
   /job/{jobId}/deploymentHistoryV2:
@@ -21751,6 +21857,20 @@ components:
       description: Resource not found
     "204-deletion":
       description: The resource was deleted successfully
+    BuildAnalysisConflict:
+      description: "The execution is not the latest build of the service, the service\
+        \ has no build, or an analysis is already in progress. Read the build analysis\
+        \ again to get the current `latest_build_execution_id` and the running analysis."
+    BuildAnalysisDockerfileUnavailable:
+      description: "Qovery cannot read the Dockerfile of this build, for example a\
+        \ git fetch failure or a path that does not exist at the build commit."
+    BuildAnalysisForbidden:
+      description: "Access forbidden, or AI features are disabled for the organization\
+        \ (`ai_features_enabled`)."
+    BuildAnalysisNotConfigured:
+      description: Build analysis is not available on this Qovery instance because
+        no AI model is configured. Checked before the organization's AI features.
+        Retrying does not help until the instance is configured.
   schemas:
     UserSignUpResponse:
       example:
@@ -28254,9 +28374,22 @@ components:
           example: USD
           type: string
       type: object
+    BuildAnalysisStartRequest:
+      example:
+        execution_id: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+      properties:
+        execution_id:
+          description: "Execution id of the build to analyse. It must be the latest\
+            \ build of the service, `latest_build_execution_id` in `BuildAnalysisState`."
+          example: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+          type: string
+      required:
+      - execution_id
+      type: object
     BuildAnalysisStatus:
       description: "PENDING is queued, COLLECTING reads the build logs and the cache\
-        \ history, ANALYSING waits for the model, then DONE or FAILED."
+        \ history, ANALYSING waits for the model, then DONE or FAILED. The Dockerfile\
+        \ is resolved before the start answers 202."
       enum:
       - PENDING
       - COLLECTING
@@ -28266,19 +28399,15 @@ components:
       type: string
     BuildAnalysisDockerfileSource:
       description: "Where the analysed Dockerfile came from. GIT is the repository\
-        \ at the build commit, INLINE the Dockerfile stored on the job, PASTE a Dockerfile\
-        \ pasted by the user."
+        \ at the build commit, INLINE the Dockerfile stored on the job."
       enum:
       - GIT
       - INLINE
-      - PASTE
       type: string
     BuildAnalysisFailureCode:
-      description: "COPILOT_DISABLED when the organization opted out of AI features,\
-        \ MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT\
-        \ when the analysis took too long, INTERNAL_ERROR otherwise."
+      description: "MODEL_ERROR when the model call failed or returned an invalid\
+        \ result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise."
       enum:
-      - COPILOT_DISABLED
       - MODEL_ERROR
       - TIMEOUT
       - INTERNAL_ERROR
@@ -28369,6 +28498,31 @@ components:
       - summary
       type: object
     BuildAnalysisResponse:
+      example:
+        result:
+          summary: summary
+          estimated_time_saved:
+            max_seconds: 90
+            min_seconds: 50
+          confidence: HIGH
+          dockerfile: dockerfile
+          agent_prompt: agent_prompt
+          assets_reviewed:
+          - DOCKERFILE
+          - DOCKERFILE
+          dockerfile_rationale: dockerfile_rationale
+          improvements:
+          - "Copy package.json and package-lock.json before the rest of the code,\
+            \ so the install stays cached until dependencies change"
+        execution_id: 6e5c1d3a-6b6f-4c35-9a2f-8f1d2c3b4a5e-42
+        failure_code: failure_code
+        stale: true
+        updated_at: 2000-01-23T04:56:07.000+00:00
+        service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        dockerfile_source: GIT
+        created_at: 2000-01-23T04:56:07.000+00:00
+        failure_reason: failure_reason
+        status: PENDING
       properties:
         service_id:
           format: uuid

@@ -3,8 +3,6 @@
 ## Enum
 
 
-* `COPILOT_DISABLED` (value: `"COPILOT_DISABLED"`)
-
 * `MODEL_ERROR` (value: `"MODEL_ERROR"`)
 
 * `TIMEOUT` (value: `"TIMEOUT"`)

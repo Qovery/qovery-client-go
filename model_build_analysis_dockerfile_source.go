@@ -16,21 +16,19 @@ import (
 	"fmt"
 )
 
-// BuildAnalysisDockerfileSource Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job, PASTE a Dockerfile pasted by the user.
+// BuildAnalysisDockerfileSource Where the analysed Dockerfile came from. GIT is the repository at the build commit, INLINE the Dockerfile stored on the job.
 type BuildAnalysisDockerfileSource string
 
 // List of BuildAnalysisDockerfileSource
 const (
 	BUILDANALYSISDOCKERFILESOURCE_GIT    BuildAnalysisDockerfileSource = "GIT"
 	BUILDANALYSISDOCKERFILESOURCE_INLINE BuildAnalysisDockerfileSource = "INLINE"
-	BUILDANALYSISDOCKERFILESOURCE_PASTE  BuildAnalysisDockerfileSource = "PASTE"
 )
 
 // All allowed values of BuildAnalysisDockerfileSource enum
 var AllowedBuildAnalysisDockerfileSourceEnumValues = []BuildAnalysisDockerfileSource{
 	"GIT",
 	"INLINE",
-	"PASTE",
 }
 
 func (v *BuildAnalysisDockerfileSource) UnmarshalJSON(src []byte) error {

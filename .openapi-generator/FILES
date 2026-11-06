@@ -304,6 +304,7 @@ docs/BuildAnalysisResponse.md
 docs/BuildAnalysisResponseResult.md
 docs/BuildAnalysisResult.md
 docs/BuildAnalysisResultEstimatedTimeSaved.md
+docs/BuildAnalysisStartRequest.md
 docs/BuildAnalysisState.md
 docs/BuildAnalysisStateAnalysis.md
 docs/BuildAnalysisStatus.md
@@ -1339,6 +1340,7 @@ model_build_analysis_response.go
 model_build_analysis_response_result.go
 model_build_analysis_result.go
 model_build_analysis_result_estimated_time_saved.go
+model_build_analysis_start_request.go
 model_build_analysis_state.go
 model_build_analysis_state_analysis.go
 model_build_analysis_status.go

@@ -16,7 +16,7 @@ import (
 	"fmt"
 )
 
-// BuildAnalysisStatus PENDING is queued, COLLECTING reads the build logs and the cache history, ANALYSING waits for the model, then DONE or FAILED.
+// BuildAnalysisStatus PENDING is queued, COLLECTING reads the build logs and the cache history, ANALYSING waits for the model, then DONE or FAILED. The Dockerfile is resolved before the start answers 202.
 type BuildAnalysisStatus string
 
 // List of BuildAnalysisStatus

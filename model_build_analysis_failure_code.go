@@ -16,20 +16,18 @@ import (
 	"fmt"
 )
 
-// BuildAnalysisFailureCode COPILOT_DISABLED when the organization opted out of AI features, MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
+// BuildAnalysisFailureCode MODEL_ERROR when the model call failed or returned an invalid result, TIMEOUT when the analysis took too long, INTERNAL_ERROR otherwise.
 type BuildAnalysisFailureCode string
 
 // List of BuildAnalysisFailureCode
 const (
-	BUILDANALYSISFAILURECODE_COPILOT_DISABLED BuildAnalysisFailureCode = "COPILOT_DISABLED"
-	BUILDANALYSISFAILURECODE_MODEL_ERROR      BuildAnalysisFailureCode = "MODEL_ERROR"
-	BUILDANALYSISFAILURECODE_TIMEOUT          BuildAnalysisFailureCode = "TIMEOUT"
-	BUILDANALYSISFAILURECODE_INTERNAL_ERROR   BuildAnalysisFailureCode = "INTERNAL_ERROR"
+	BUILDANALYSISFAILURECODE_MODEL_ERROR    BuildAnalysisFailureCode = "MODEL_ERROR"
+	BUILDANALYSISFAILURECODE_TIMEOUT        BuildAnalysisFailureCode = "TIMEOUT"
+	BUILDANALYSISFAILURECODE_INTERNAL_ERROR BuildAnalysisFailureCode = "INTERNAL_ERROR"
 )
 
 // All allowed values of BuildAnalysisFailureCode enum
 var AllowedBuildAnalysisFailureCodeEnumValues = []BuildAnalysisFailureCode{
-	"COPILOT_DISABLED",
 	"MODEL_ERROR",
 	"TIMEOUT",
 	"INTERNAL_ERROR",
