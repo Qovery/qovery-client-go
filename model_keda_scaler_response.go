@@ -22,13 +22,15 @@ var _ MappedNullable = &KedaScalerResponse{}
 
 // KedaScalerResponse struct for KedaScalerResponse
 type KedaScalerResponse struct {
-	Id                    string                             `json:"id"`
-	CreatedAt             time.Time                          `json:"created_at"`
-	UpdatedAt             *time.Time                         `json:"updated_at,omitempty"`
-	ScalerType            string                             `json:"scaler_type"`
-	Enabled               bool                               `json:"enabled"`
-	Role                  KedaScalerRole                     `json:"role"`
-	ConfigJson            map[string]interface{}             `json:"config_json,omitempty"`
+	Id         string         `json:"id"`
+	CreatedAt  time.Time      `json:"created_at"`
+	UpdatedAt  *time.Time     `json:"updated_at,omitempty"`
+	ScalerType string         `json:"scaler_type"`
+	Enabled    bool           `json:"enabled"`
+	Role       KedaScalerRole `json:"role"`
+	// Scaler `metadata` only, as an object of string values, e.g. `{\"query\": \"...\", \"threshold\": \"10\"}`. Other trigger fields (`name`, `metricType`, `useCachedMetrics`) cannot be set here: use `config_yaml`.
+	ConfigJson map[string]interface{} `json:"config_json,omitempty"`
+	// Body of the KEDA trigger as YAML, without `type` (set from `scaler_type`) and `authenticationRef` (set from `trigger_authentication`). Scaler settings go under `metadata:`; `name`, `metricType` and `useCachedMetrics` can be set next to it.
 	ConfigYaml            NullableString                     `json:"config_yaml,omitempty"`
 	TriggerAuthentication *KedaTriggerAuthenticationResponse `json:"trigger_authentication,omitempty"`
 	AdditionalProperties  map[string]interface{}

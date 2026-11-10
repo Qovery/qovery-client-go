@@ -52307,10 +52307,16 @@ components:
         role:
           $ref: '#/components/schemas/KedaScalerRole'
         config_json:
+          description: |-
+            Scaler `metadata` only, as an object of string values, e.g. `{"query": "...", "threshold": "10"}`. Other trigger fields (`name`, `metricType`, `useCachedMetrics`) cannot be set here: use `config_yaml`.
+            Exactly one of `config_json` and `config_yaml` must be set.
           type: object
           x-stoplight:
             id: si5ekni2hc6w9
         config_yaml:
+          description: |-
+            Body of the KEDA trigger as YAML, without `type` (set from `scaler_type`) and `authenticationRef` (set from `trigger_authentication`). Scaler settings go under `metadata:`; `name`, `metricType` and `useCachedMetrics` can be set next to it.
+            Exactly one of `config_json` and `config_yaml` must be set.
           type: string
           x-stoplight:
             id: 8c7vktd7svl30
@@ -52340,6 +52346,10 @@ components:
           config_json:
             $ref: '#/components/schemas/KedaScalerResponse_allOf_config_json'
           config_yaml:
+            description: "Body of the KEDA trigger as YAML, without `type` (set from\
+              \ `scaler_type`) and `authenticationRef` (set from `trigger_authentication`).\
+              \ Scaler settings go under `metadata:`; `name`, `metricType` and `useCachedMetrics`\
+              \ can be set next to it."
             nullable: true
             type: string
           trigger_authentication:
@@ -57836,6 +57846,9 @@ components:
       - $ref: '#/components/schemas/AlertRuleResponse'
       - $ref: '#/components/schemas/GhostAlertRuleResponse'
     KedaScalerResponse_allOf_config_json:
+      description: "Scaler `metadata` only, as an object of string values, e.g. `{\"\
+        query\": \"...\", \"threshold\": \"10\"}`. Other trigger fields (`name`, `metricType`,\
+        \ `useCachedMetrics`) cannot be set here: use `config_yaml`."
       nullable: true
       type: object
     AwsRoleArnAuthDto_assume_role:

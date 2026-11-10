@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **ScalerType** | **string** |  | 
 **Enabled** | **bool** |  | 
 **Role** | [**KedaScalerRole**](KedaScalerRole.md) |  | 
-**ConfigJson** | Pointer to **map[string]interface{}** |  | [optional] 
-**ConfigYaml** | Pointer to **NullableString** |  | [optional] 
+**ConfigJson** | Pointer to **map[string]interface{}** | Scaler &#x60;metadata&#x60; only, as an object of string values, e.g. &#x60;{\&quot;query\&quot;: \&quot;...\&quot;, \&quot;threshold\&quot;: \&quot;10\&quot;}&#x60;. Other trigger fields (&#x60;name&#x60;, &#x60;metricType&#x60;, &#x60;useCachedMetrics&#x60;) cannot be set here: use &#x60;config_yaml&#x60;. | [optional] 
+**ConfigYaml** | Pointer to **NullableString** | Body of the KEDA trigger as YAML, without &#x60;type&#x60; (set from &#x60;scaler_type&#x60;) and &#x60;authenticationRef&#x60; (set from &#x60;trigger_authentication&#x60;). Scaler settings go under &#x60;metadata:&#x60;; &#x60;name&#x60;, &#x60;metricType&#x60; and &#x60;useCachedMetrics&#x60; can be set next to it. | [optional] 
 **TriggerAuthentication** | Pointer to [**KedaTriggerAuthenticationResponse**](KedaTriggerAuthenticationResponse.md) |  | [optional] 
 
 ## Methods
