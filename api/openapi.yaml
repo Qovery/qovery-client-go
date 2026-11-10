@@ -26979,6 +26979,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -26987,6 +26988,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -27462,6 +27464,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -27470,6 +27473,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -33136,6 +33140,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -33144,6 +33149,7 @@ components:
           - role: PRIMARY
             config_json: "{}"
             config_yaml: config_yaml
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             trigger_authentication:
               name: name
               config_yaml: config_yaml
@@ -52092,6 +52098,7 @@ components:
         - role: PRIMARY
           config_json: "{}"
           config_yaml: config_yaml
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trigger_authentication:
             name: name
             config_yaml: config_yaml
@@ -52100,6 +52107,7 @@ components:
         - role: PRIMARY
           config_json: "{}"
           config_yaml: config_yaml
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           trigger_authentication:
             name: name
             config_yaml: config_yaml
@@ -52290,12 +52298,20 @@ components:
         role: PRIMARY
         config_json: "{}"
         config_yaml: config_yaml
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         trigger_authentication:
           name: name
           config_yaml: config_yaml
         scaler_type: scaler_type
         enabled: true
       properties:
+        id:
+          description: |-
+            Id of an existing scaler of this policy, as returned in KedaScalerResponse.
+            The scaler and its inline trigger authentication are then updated in place, keeping the trigger authentication name.
+            When omitted or not matching a scaler of this policy, a new scaler is created. Existing scalers missing from the request are deleted.
+          format: uuid
+          type: string
         scaler_type:
           type: string
           x-stoplight:

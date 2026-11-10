@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | Pointer to **string** | Id of an existing scaler of this policy, as returned in KedaScalerResponse. The scaler and its inline trigger authentication are then updated in place, keeping the trigger authentication name. When omitted or not matching a scaler of this policy, a new scaler is created. Existing scalers missing from the request are deleted. | [optional] 
 **ScalerType** | **string** |  | 
 **Enabled** | Pointer to **bool** |  | [optional] 
 **Role** | [**KedaScalerRole**](KedaScalerRole.md) |  | 
@@ -29,6 +30,31 @@ will change when the set of required properties is changed
 NewKedaScalerRequestWithDefaults instantiates a new KedaScalerRequest object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
+
+### GetId
+
+`func (o *KedaScalerRequest) GetId() string`
+
+GetId returns the Id field if non-nil, zero value otherwise.
+
+### GetIdOk
+
+`func (o *KedaScalerRequest) GetIdOk() (*string, bool)`
+
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetId
+
+`func (o *KedaScalerRequest) SetId(v string)`
+
+SetId sets Id field to given value.
+
+### HasId
+
+`func (o *KedaScalerRequest) HasId() bool`
+
+HasId returns a boolean if a field has been set.
 
 ### GetScalerType
 

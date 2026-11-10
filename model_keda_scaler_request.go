@@ -21,6 +21,8 @@ var _ MappedNullable = &KedaScalerRequest{}
 
 // KedaScalerRequest struct for KedaScalerRequest
 type KedaScalerRequest struct {
+	// Id of an existing scaler of this policy, as returned in KedaScalerResponse. The scaler and its inline trigger authentication are then updated in place, keeping the trigger authentication name. When omitted or not matching a scaler of this policy, a new scaler is created. Existing scalers missing from the request are deleted.
+	Id         *string        `json:"id,omitempty"`
 	ScalerType string         `json:"scaler_type"`
 	Enabled    *bool          `json:"enabled,omitempty"`
 	Role       KedaScalerRole `json:"role"`
@@ -51,6 +53,38 @@ func NewKedaScalerRequest(scalerType string, role KedaScalerRole) *KedaScalerReq
 func NewKedaScalerRequestWithDefaults() *KedaScalerRequest {
 	this := KedaScalerRequest{}
 	return &this
+}
+
+// GetId returns the Id field value if set, zero value otherwise.
+func (o *KedaScalerRequest) GetId() string {
+	if o == nil || IsNil(o.Id) {
+		var ret string
+		return ret
+	}
+	return *o.Id
+}
+
+// GetIdOk returns a tuple with the Id field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *KedaScalerRequest) GetIdOk() (*string, bool) {
+	if o == nil || IsNil(o.Id) {
+		return nil, false
+	}
+	return o.Id, true
+}
+
+// HasId returns a boolean if a field has been set.
+func (o *KedaScalerRequest) HasId() bool {
+	if o != nil && !IsNil(o.Id) {
+		return true
+	}
+
+	return false
+}
+
+// SetId gets a reference to the given string and assigns it to the Id field.
+func (o *KedaScalerRequest) SetId(v string) {
+	o.Id = &v
 }
 
 // GetScalerType returns the ScalerType field value
@@ -239,6 +273,9 @@ func (o KedaScalerRequest) MarshalJSON() ([]byte, error) {
 
 func (o KedaScalerRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Id) {
+		toSerialize["id"] = o.Id
+	}
 	toSerialize["scaler_type"] = o.ScalerType
 	if !IsNil(o.Enabled) {
 		toSerialize["enabled"] = o.Enabled
@@ -297,6 +334,7 @@ func (o *KedaScalerRequest) UnmarshalJSON(data []byte) (err error) {
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
+		delete(additionalProperties, "id")
 		delete(additionalProperties, "scaler_type")
 		delete(additionalProperties, "enabled")
 		delete(additionalProperties, "role")
