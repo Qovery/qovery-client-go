@@ -21,11 +21,17 @@ var _ MappedNullable = &KedaAutoscalingRequest{}
 
 // KedaAutoscalingRequest struct for KedaAutoscalingRequest
 type KedaAutoscalingRequest struct {
-	Mode                   AutoscalingMode     `json:"mode"`
-	PollingIntervalSeconds *int32              `json:"polling_interval_seconds,omitempty"`
-	CooldownPeriodSeconds  *int32              `json:"cooldown_period_seconds,omitempty"`
-	Scalers                []KedaScalerRequest `json:"scalers"`
-	AdditionalProperties   map[string]interface{}
+	Mode                   AutoscalingMode `json:"mode"`
+	PollingIntervalSeconds *int32          `json:"polling_interval_seconds,omitempty"`
+	CooldownPeriodSeconds  *int32          `json:"cooldown_period_seconds,omitempty"`
+	// KEDA ScaledObject `initialCooldownPeriod`: seconds to wait after the ScaledObject is created before the service can scale to zero. Omitted or null leaves KEDA's default (0).
+	InitialCooldownPeriodSeconds NullableInt32 `json:"initial_cooldown_period_seconds,omitempty"`
+	// KEDA ScaledObject `idleReplicaCount`: replicas to keep while no trigger is active. Only 0 is supported by KEDA, and it must be strictly less than the service's minimum running instances. Omitted or null disables the idle state.
+	IdleReplicaCount NullableInt32 `json:"idle_replica_count,omitempty"`
+	// Raw YAML of the KEDA ScaledObject `advanced` field, e.g. `horizontalPodAutoscalerConfig.behavior` to tune how fast the HPA scales up and down. Must be a YAML mapping whose top-level keys are among `horizontalPodAutoscalerConfig`, `restoreToOriginalReplicaCount` and `scalingModifiers`. Omitted, null or blank means no advanced settings.
+	AdvancedYaml         NullableString      `json:"advanced_yaml,omitempty"`
+	Scalers              []KedaScalerRequest `json:"scalers"`
+	AdditionalProperties map[string]interface{}
 }
 
 type _KedaAutoscalingRequest KedaAutoscalingRequest
@@ -137,6 +143,135 @@ func (o *KedaAutoscalingRequest) SetCooldownPeriodSeconds(v int32) {
 	o.CooldownPeriodSeconds = &v
 }
 
+// GetInitialCooldownPeriodSeconds returns the InitialCooldownPeriodSeconds field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KedaAutoscalingRequest) GetInitialCooldownPeriodSeconds() int32 {
+	if o == nil || IsNil(o.InitialCooldownPeriodSeconds.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.InitialCooldownPeriodSeconds.Get()
+}
+
+// GetInitialCooldownPeriodSecondsOk returns a tuple with the InitialCooldownPeriodSeconds field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KedaAutoscalingRequest) GetInitialCooldownPeriodSecondsOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.InitialCooldownPeriodSeconds.Get(), o.InitialCooldownPeriodSeconds.IsSet()
+}
+
+// HasInitialCooldownPeriodSeconds returns a boolean if a field has been set.
+func (o *KedaAutoscalingRequest) HasInitialCooldownPeriodSeconds() bool {
+	if o != nil && o.InitialCooldownPeriodSeconds.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetInitialCooldownPeriodSeconds gets a reference to the given NullableInt32 and assigns it to the InitialCooldownPeriodSeconds field.
+func (o *KedaAutoscalingRequest) SetInitialCooldownPeriodSeconds(v int32) {
+	o.InitialCooldownPeriodSeconds.Set(&v)
+}
+
+// SetInitialCooldownPeriodSecondsNil sets the value for InitialCooldownPeriodSeconds to be an explicit nil
+func (o *KedaAutoscalingRequest) SetInitialCooldownPeriodSecondsNil() {
+	o.InitialCooldownPeriodSeconds.Set(nil)
+}
+
+// UnsetInitialCooldownPeriodSeconds ensures that no value is present for InitialCooldownPeriodSeconds, not even an explicit nil
+func (o *KedaAutoscalingRequest) UnsetInitialCooldownPeriodSeconds() {
+	o.InitialCooldownPeriodSeconds.Unset()
+}
+
+// GetIdleReplicaCount returns the IdleReplicaCount field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KedaAutoscalingRequest) GetIdleReplicaCount() int32 {
+	if o == nil || IsNil(o.IdleReplicaCount.Get()) {
+		var ret int32
+		return ret
+	}
+	return *o.IdleReplicaCount.Get()
+}
+
+// GetIdleReplicaCountOk returns a tuple with the IdleReplicaCount field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KedaAutoscalingRequest) GetIdleReplicaCountOk() (*int32, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.IdleReplicaCount.Get(), o.IdleReplicaCount.IsSet()
+}
+
+// HasIdleReplicaCount returns a boolean if a field has been set.
+func (o *KedaAutoscalingRequest) HasIdleReplicaCount() bool {
+	if o != nil && o.IdleReplicaCount.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetIdleReplicaCount gets a reference to the given NullableInt32 and assigns it to the IdleReplicaCount field.
+func (o *KedaAutoscalingRequest) SetIdleReplicaCount(v int32) {
+	o.IdleReplicaCount.Set(&v)
+}
+
+// SetIdleReplicaCountNil sets the value for IdleReplicaCount to be an explicit nil
+func (o *KedaAutoscalingRequest) SetIdleReplicaCountNil() {
+	o.IdleReplicaCount.Set(nil)
+}
+
+// UnsetIdleReplicaCount ensures that no value is present for IdleReplicaCount, not even an explicit nil
+func (o *KedaAutoscalingRequest) UnsetIdleReplicaCount() {
+	o.IdleReplicaCount.Unset()
+}
+
+// GetAdvancedYaml returns the AdvancedYaml field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *KedaAutoscalingRequest) GetAdvancedYaml() string {
+	if o == nil || IsNil(o.AdvancedYaml.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.AdvancedYaml.Get()
+}
+
+// GetAdvancedYamlOk returns a tuple with the AdvancedYaml field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *KedaAutoscalingRequest) GetAdvancedYamlOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.AdvancedYaml.Get(), o.AdvancedYaml.IsSet()
+}
+
+// HasAdvancedYaml returns a boolean if a field has been set.
+func (o *KedaAutoscalingRequest) HasAdvancedYaml() bool {
+	if o != nil && o.AdvancedYaml.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetAdvancedYaml gets a reference to the given NullableString and assigns it to the AdvancedYaml field.
+func (o *KedaAutoscalingRequest) SetAdvancedYaml(v string) {
+	o.AdvancedYaml.Set(&v)
+}
+
+// SetAdvancedYamlNil sets the value for AdvancedYaml to be an explicit nil
+func (o *KedaAutoscalingRequest) SetAdvancedYamlNil() {
+	o.AdvancedYaml.Set(nil)
+}
+
+// UnsetAdvancedYaml ensures that no value is present for AdvancedYaml, not even an explicit nil
+func (o *KedaAutoscalingRequest) UnsetAdvancedYaml() {
+	o.AdvancedYaml.Unset()
+}
+
 // GetScalers returns the Scalers field value
 func (o *KedaAutoscalingRequest) GetScalers() []KedaScalerRequest {
 	if o == nil {
@@ -177,6 +312,15 @@ func (o KedaAutoscalingRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.CooldownPeriodSeconds) {
 		toSerialize["cooldown_period_seconds"] = o.CooldownPeriodSeconds
+	}
+	if o.InitialCooldownPeriodSeconds.IsSet() {
+		toSerialize["initial_cooldown_period_seconds"] = o.InitialCooldownPeriodSeconds.Get()
+	}
+	if o.IdleReplicaCount.IsSet() {
+		toSerialize["idle_replica_count"] = o.IdleReplicaCount.Get()
+	}
+	if o.AdvancedYaml.IsSet() {
+		toSerialize["advanced_yaml"] = o.AdvancedYaml.Get()
 	}
 	toSerialize["scalers"] = o.Scalers
 
@@ -226,6 +370,9 @@ func (o *KedaAutoscalingRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "mode")
 		delete(additionalProperties, "polling_interval_seconds")
 		delete(additionalProperties, "cooldown_period_seconds")
+		delete(additionalProperties, "initial_cooldown_period_seconds")
+		delete(additionalProperties, "idle_replica_count")
+		delete(additionalProperties, "advanced_yaml")
 		delete(additionalProperties, "scalers")
 		o.AdditionalProperties = additionalProperties
 	}

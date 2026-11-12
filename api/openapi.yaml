@@ -26643,10 +26643,13 @@ components:
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 6
+          initial_cooldown_period_seconds: 3154
           updated_at: 2000-01-23T04:56:07.000+00:00
+          advanced_yaml: advanced_yaml
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           polling_interval_seconds: 9
           created_at: 2000-01-23T04:56:07.000+00:00
+          idle_replica_count: 0
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
           - role: PRIMARY
@@ -26974,7 +26977,10 @@ components:
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
+          initial_cooldown_period_seconds: 2029
+          advanced_yaml: advanced_yaml
           polling_interval_seconds: 1
+          idle_replica_count: 0
           scalers:
           - role: PRIMARY
             config_json: "{}"
@@ -27448,7 +27454,7 @@ components:
           disable_buildkit_cache: false
           timeout_max_sec: 0
           ephemeral_storage_in_gib: 5
-        startup_timeout: 5
+        startup_timeout: 7
         icon_uri: https://openapi-generator.tech
         name: name
         docker_target_build_stage: docker_target_build_stage
@@ -27459,7 +27465,10 @@ components:
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
+          initial_cooldown_period_seconds: 2029
+          advanced_yaml: advanced_yaml
           polling_interval_seconds: 1
+          idle_replica_count: 0
           scalers:
           - role: PRIMARY
             config_json: "{}"
@@ -27682,10 +27691,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
@@ -27918,10 +27930,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
@@ -33135,7 +33150,10 @@ components:
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
+          initial_cooldown_period_seconds: 2029
+          advanced_yaml: advanced_yaml
           polling_interval_seconds: 1
+          idle_replica_count: 0
           scalers:
           - role: PRIMARY
             config_json: "{}"
@@ -33462,10 +33480,13 @@ components:
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 6
+          initial_cooldown_period_seconds: 3154
           updated_at: 2000-01-23T04:56:07.000+00:00
+          advanced_yaml: advanced_yaml
           service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           polling_interval_seconds: 9
           created_at: 2000-01-23T04:56:07.000+00:00
+          idle_replica_count: 0
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           scalers:
           - role: PRIMARY
@@ -33679,10 +33700,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
@@ -33893,10 +33917,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
@@ -52093,7 +52120,10 @@ components:
       example:
         mode: KEDA
         cooldown_period_seconds: 5
+        initial_cooldown_period_seconds: 2029
+        advanced_yaml: advanced_yaml
         polling_interval_seconds: 1
+        idle_replica_count: 0
         scalers:
         - role: PRIMARY
           config_json: "{}"
@@ -52126,6 +52156,31 @@ components:
           type: integer
           x-stoplight:
             id: zy5rt4bh9fyph
+        initial_cooldown_period_seconds:
+          description: |-
+            KEDA ScaledObject `initialCooldownPeriod`: seconds to wait after the ScaledObject is created before the service can scale to zero.
+            Omitted or null leaves KEDA's default (0).
+          format: int32
+          maximum: 3600
+          minimum: 0
+          nullable: true
+          type: integer
+        idle_replica_count:
+          description: |-
+            KEDA ScaledObject `idleReplicaCount`: replicas to keep while no trigger is active.
+            Only 0 is supported by KEDA, and it must be strictly less than the service's minimum running instances.
+            Omitted or null disables the idle state.
+          format: int32
+          minimum: 0
+          nullable: true
+          type: integer
+        advanced_yaml:
+          description: |-
+            Raw YAML of the KEDA ScaledObject `advanced` field, e.g. `horizontalPodAutoscalerConfig.behavior` to tune how fast the HPA scales up and down.
+            Must be a YAML mapping whose top-level keys are among `horizontalPodAutoscalerConfig`, `restoreToOriginalReplicaCount` and `scalingModifiers`.
+            Omitted, null or blank means no advanced settings.
+          nullable: true
+          type: string
         scalers:
           items:
             $ref: '#/components/schemas/KedaScalerRequest'
@@ -52169,6 +52224,31 @@ components:
             type: integer
             x-stoplight:
               id: j2dapmjjjiafj
+          initial_cooldown_period_seconds:
+            description: |-
+              KEDA ScaledObject `initialCooldownPeriod`: seconds to wait after the ScaledObject is created before the service can scale to zero.
+              Omitted or null leaves KEDA's default (0).
+            format: int32
+            maximum: 3600
+            minimum: 0
+            nullable: true
+            type: integer
+          idle_replica_count:
+            description: |-
+              KEDA ScaledObject `idleReplicaCount`: replicas to keep while no trigger is active.
+              Only 0 is supported by KEDA, and it must be strictly less than the service's minimum running instances.
+              Omitted or null disables the idle state.
+            format: int32
+            minimum: 0
+            nullable: true
+            type: integer
+          advanced_yaml:
+            description: |-
+              Raw YAML of the KEDA ScaledObject `advanced` field, e.g. `horizontalPodAutoscalerConfig.behavior` to tune how fast the HPA scales up and down.
+              Must be a YAML mapping whose top-level keys are among `horizontalPodAutoscalerConfig`, `restoreToOriginalReplicaCount` and `scalingModifiers`.
+              Omitted, null or blank means no advanced settings.
+            nullable: true
+            type: string
           scalers:
             items:
               $ref: '#/components/schemas/KedaScalerResponse'
@@ -52189,10 +52269,13 @@ components:
       example:
         mode: KEDA
         cooldown_period_seconds: 6
+        initial_cooldown_period_seconds: 3154
         updated_at: 2000-01-23T04:56:07.000+00:00
+        advanced_yaml: advanced_yaml
         service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         polling_interval_seconds: 9
         created_at: 2000-01-23T04:56:07.000+00:00
+        idle_replica_count: 0
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         scalers:
         - role: PRIMARY
@@ -54381,10 +54464,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
@@ -54617,10 +54703,13 @@ components:
           autoscaling:
             mode: KEDA
             cooldown_period_seconds: 6
+            initial_cooldown_period_seconds: 3154
             updated_at: 2000-01-23T04:56:07.000+00:00
+            advanced_yaml: advanced_yaml
             service_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             polling_interval_seconds: 9
             created_at: 2000-01-23T04:56:07.000+00:00
+            idle_replica_count: 0
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             scalers:
             - role: PRIMARY
