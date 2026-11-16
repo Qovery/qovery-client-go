@@ -53085,6 +53085,8 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowResources'
           webhook:
             $ref: '#/components/schemas/AgenticWorkflowWebhook'
+          webhook_auth:
+            $ref: '#/components/schemas/AgenticWorkflowWebhookAuthResponse'
           schedule:
             $ref: '#/components/schemas/AgenticWorkflowResponse_allOf_schedule'
           execution_mode:
@@ -53115,6 +53117,7 @@ components:
         - service_type
         - slug
         - webhook
+        - webhook_auth
         - webhook_ip_allowlist
         type: object
       example:
@@ -53157,6 +53160,9 @@ components:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mcp: mcp
         slug: slug
+        webhook_auth:
+          mode: NONE
+          header_name: header_name
         mcp_server_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53232,6 +53238,9 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
           slug: slug
+          webhook_auth:
+            mode: NONE
+            header_name: header_name
           mcp_server_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53304,6 +53313,9 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           mcp: mcp
           slug: slug
+          webhook_auth:
+            mode: NONE
+            header_name: header_name
           mcp_server_ids:
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53554,6 +53566,11 @@ components:
             $ref: '#/components/schemas/AgenticWorkflowGovernance'
           resources:
             $ref: '#/components/schemas/AgenticWorkflowResources'
+          webhook_auth:
+            allOf:
+            - $ref: '#/components/schemas/AgenticWorkflowWebhookAuthRequest'
+            description: How the webhook authenticates its callers. Omit it to keep
+              the current configuration on edit; a new workflow then uses NONE.
           schedule:
             $ref: '#/components/schemas/AgenticWorkflowRequest_allOf_schedule'
           execution_mode:
@@ -53616,6 +53633,7 @@ components:
           type: CLAUDE
           llm_provider_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         mcp: ""
+        webhook_auth: ""
         context_service_ids:
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -53823,6 +53841,72 @@ components:
           type: string
       required:
       - url
+      type: object
+    AgenticWorkflowWebhookAuthMode:
+      description: |
+        How a call to the workflow's webhook URL is authenticated. The IP allowlist
+        (`webhook_ip_allowlist`) applies on top of every mode.
+        - `NONE`: no check. The URL is not secret, so the IP allowlist is the only guard.
+        - `SECRET_HEADER`: the caller sends the secret as is in the `header_name` header.
+          Qovery stores only its SHA-256 hash and rejects a call without the right value with 401.
+        - `LINEAR`, `SENTRY`, `INCIDENT_IO`: the provider signs the body with its webhook secret.
+          Not supported yet: a create or edit with one of these modes is rejected with 400 on
+          `webhook_auth.mode`.
+      enum:
+      - NONE
+      - SECRET_HEADER
+      - LINEAR
+      - SENTRY
+      - INCIDENT_IO
+      type: string
+    AgenticWorkflowWebhookAuthRequest:
+      properties:
+        mode:
+          $ref: '#/components/schemas/AgenticWorkflowWebhookAuthMode'
+        secret:
+          description: |
+            Write-only, never returned. Ignored for `NONE`.
+
+            For `SECRET_HEADER`, the secret the caller will send. It must be 16 to 1024 printable
+            ASCII characters, without leading or trailing spaces. Required when entering the mode.
+            Once in the mode, omit it (or send a blank value) to keep the current secret; send a new
+            one to replace it, which is how the secret is rotated. Only its SHA-256 hash is stored.
+
+            For the provider modes, the provider's webhook signing secret. Required when entering
+            the mode; omitted or blank keeps the stored one while the mode does not change.
+
+            An invalid or missing secret is rejected with 400 on `webhook_auth.secret`.
+          maxLength: 1024
+          type: string
+          writeOnly: true
+        header_name:
+          description: "`SECRET_HEADER` only: the HTTP header that carries the secret.\
+            \ Must be a valid header name (RFC 9110 token) of at most 128 characters,\
+            \ and not a header that proxies rewrite or consume (`authorization`, `cookie`,\
+            \ `host`, `content-type`, `x-forwarded-*`...). It is trimmed and stored\
+            \ lowercased. Omitted or blank keeps the current name, or uses `x-qovery-webhook-secret`\
+            \ when entering the mode. An invalid name is rejected with 400 on `webhook_auth.header_name`."
+          maxLength: 128
+          type: string
+      required:
+      - mode
+      type: object
+    AgenticWorkflowWebhookAuthResponse:
+      example:
+        mode: NONE
+        header_name: header_name
+      properties:
+        mode:
+          $ref: '#/components/schemas/AgenticWorkflowWebhookAuthMode'
+        header_name:
+          description: "The header a caller must send the secret in, lowercased. Set\
+            \ for `SECRET_HEADER` only, null for every other mode. The secret itself\
+            \ is never returned."
+          nullable: true
+          type: string
+      required:
+      - header_name
+      - mode
       type: object
     AgenticWorkflowScheduleRequest:
       properties:

@@ -52,6 +52,7 @@ type AgenticWorkflowResponse struct {
 	Governance          AgenticWorkflowGovernance                    `json:"governance"`
 	Resources           AgenticWorkflowResources                     `json:"resources"`
 	Webhook             AgenticWorkflowWebhook                       `json:"webhook"`
+	WebhookAuth         AgenticWorkflowWebhookAuthResponse           `json:"webhook_auth"`
 	Schedule            NullableAgenticWorkflowResponseAllOfSchedule `json:"schedule"`
 	ExecutionMode       AgenticWorkflowExecutionMode                 `json:"execution_mode"`
 	// Icon URI representing the agentic workflow.
@@ -65,7 +66,7 @@ type _AgenticWorkflowResponse AgenticWorkflowResponse
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode) *AgenticWorkflowResponse {
+func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, webhookAuth AgenticWorkflowWebhookAuthResponse, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode) *AgenticWorkflowResponse {
 	this := AgenticWorkflowResponse{}
 	this.Id = id
 	this.CreatedAt = createdAt
@@ -88,6 +89,7 @@ func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType Serv
 	this.Governance = governance
 	this.Resources = resources
 	this.Webhook = webhook
+	this.WebhookAuth = webhookAuth
 	this.Schedule = schedule
 	this.ExecutionMode = executionMode
 	return &this
@@ -642,6 +644,30 @@ func (o *AgenticWorkflowResponse) SetWebhook(v AgenticWorkflowWebhook) {
 	o.Webhook = v
 }
 
+// GetWebhookAuth returns the WebhookAuth field value
+func (o *AgenticWorkflowResponse) GetWebhookAuth() AgenticWorkflowWebhookAuthResponse {
+	if o == nil {
+		var ret AgenticWorkflowWebhookAuthResponse
+		return ret
+	}
+
+	return o.WebhookAuth
+}
+
+// GetWebhookAuthOk returns a tuple with the WebhookAuth field value
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowResponse) GetWebhookAuthOk() (*AgenticWorkflowWebhookAuthResponse, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return &o.WebhookAuth, true
+}
+
+// SetWebhookAuth sets field value
+func (o *AgenticWorkflowResponse) SetWebhookAuth(v AgenticWorkflowWebhookAuthResponse) {
+	o.WebhookAuth = v
+}
+
 // GetSchedule returns the Schedule field value
 // If the value is explicit nil, the zero value for AgenticWorkflowResponseAllOfSchedule will be returned
 func (o *AgenticWorkflowResponse) GetSchedule() AgenticWorkflowResponseAllOfSchedule {
@@ -758,6 +784,7 @@ func (o AgenticWorkflowResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["governance"] = o.Governance
 	toSerialize["resources"] = o.Resources
 	toSerialize["webhook"] = o.Webhook
+	toSerialize["webhook_auth"] = o.WebhookAuth
 	toSerialize["schedule"] = o.Schedule.Get()
 	toSerialize["execution_mode"] = o.ExecutionMode
 	if !IsNil(o.IconUri) {
@@ -797,6 +824,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		"governance",
 		"resources",
 		"webhook",
+		"webhook_auth",
 		"schedule",
 		"execution_mode",
 	}
@@ -850,6 +878,7 @@ func (o *AgenticWorkflowResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "governance")
 		delete(additionalProperties, "resources")
 		delete(additionalProperties, "webhook")
+		delete(additionalProperties, "webhook_auth")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "execution_mode")
 		delete(additionalProperties, "icon_uri")

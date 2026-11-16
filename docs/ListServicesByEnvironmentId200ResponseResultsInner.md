@@ -87,6 +87,7 @@ Name | Type | Description | Notes
 **Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **Resources** | [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**WebhookAuth** | [**AgenticWorkflowWebhookAuthResponse**](AgenticWorkflowWebhookAuthResponse.md) |  | 
 **Schedule** | [**NullableAgenticWorkflowResponseAllOfSchedule**](AgenticWorkflowResponseAllOfSchedule.md) |  | 
 **ExecutionMode** | [**AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | [default to AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE]
 
@@ -94,7 +95,7 @@ Name | Type | Description | Notes
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, webhookAuth AgenticWorkflowWebhookAuthResponse, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -2002,6 +2003,26 @@ and a boolean to check if the value has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetWebhook(v AgenticWorkflowWebhook)`
 
 SetWebhook sets Webhook field to given value.
+
+
+### GetWebhookAuth
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhookAuth() AgenticWorkflowWebhookAuthResponse`
+
+GetWebhookAuth returns the WebhookAuth field if non-nil, zero value otherwise.
+
+### GetWebhookAuthOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetWebhookAuthOk() (*AgenticWorkflowWebhookAuthResponse, bool)`
+
+GetWebhookAuthOk returns a tuple with the WebhookAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookAuth
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetWebhookAuth(v AgenticWorkflowWebhookAuthResponse)`
+
+SetWebhookAuth sets WebhookAuth field to given value.
 
 
 ### GetSchedule

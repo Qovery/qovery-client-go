@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **Governance** | [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | 
 **Resources** | [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | 
 **Webhook** | [**AgenticWorkflowWebhook**](AgenticWorkflowWebhook.md) |  | 
+**WebhookAuth** | [**AgenticWorkflowWebhookAuthResponse**](AgenticWorkflowWebhookAuthResponse.md) |  | 
 **Schedule** | [**NullableAgenticWorkflowResponseAllOfSchedule**](AgenticWorkflowResponseAllOfSchedule.md) |  | 
 **ExecutionMode** | [**AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | [default to AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE]
 **IconUri** | Pointer to **string** | Icon URI representing the agentic workflow. | [optional] 
@@ -34,7 +35,7 @@ Name | Type | Description | Notes
 
 ### NewAgenticWorkflowResponse
 
-`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *AgenticWorkflowResponse`
+`func NewAgenticWorkflowResponse(id string, createdAt time.Time, serviceType ServiceTypeEnum, environment ReferenceObject, name string, slug string, description string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, webhookAuth AgenticWorkflowWebhookAuthResponse, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *AgenticWorkflowResponse`
 
 NewAgenticWorkflowResponse instantiates a new AgenticWorkflowResponse object
 This constructor will assign default values to properties that have it defined,
@@ -492,6 +493,26 @@ and a boolean to check if the value has been set.
 `func (o *AgenticWorkflowResponse) SetWebhook(v AgenticWorkflowWebhook)`
 
 SetWebhook sets Webhook field to given value.
+
+
+### GetWebhookAuth
+
+`func (o *AgenticWorkflowResponse) GetWebhookAuth() AgenticWorkflowWebhookAuthResponse`
+
+GetWebhookAuth returns the WebhookAuth field if non-nil, zero value otherwise.
+
+### GetWebhookAuthOk
+
+`func (o *AgenticWorkflowResponse) GetWebhookAuthOk() (*AgenticWorkflowWebhookAuthResponse, bool)`
+
+GetWebhookAuthOk returns a tuple with the WebhookAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookAuth
+
+`func (o *AgenticWorkflowResponse) SetWebhookAuth(v AgenticWorkflowWebhookAuthResponse)`
+
+SetWebhookAuth sets WebhookAuth field to given value.
 
 
 ### GetSchedule

@@ -36,13 +36,15 @@ type AgenticWorkflowRequest struct {
 	// MCP connectors attached to this workflow. A required connector must be present during creation, but may be removed during a later settings update.
 	McpServers []AgenticWorkflowMcpServer `json:"mcp_servers,omitempty"`
 	// Qovery services explicitly provided as context to this workflow.
-	ContextServiceIds    []string                                    `json:"context_service_ids,omitempty"`
-	Outputs              []AgenticWorkflowOutput                     `json:"outputs,omitempty"`
-	Model                *AgenticWorkflowModelRequest                `json:"model,omitempty"`
-	ProjectRepositories  []AgenticWorkflowProjectRepository          `json:"project_repositories,omitempty"`
-	AgentPrompt          *string                                     `json:"agent_prompt,omitempty"`
-	Governance           *AgenticWorkflowGovernance                  `json:"governance,omitempty"`
-	Resources            *AgenticWorkflowResources                   `json:"resources,omitempty"`
+	ContextServiceIds   []string                           `json:"context_service_ids,omitempty"`
+	Outputs             []AgenticWorkflowOutput            `json:"outputs,omitempty"`
+	Model               *AgenticWorkflowModelRequest       `json:"model,omitempty"`
+	ProjectRepositories []AgenticWorkflowProjectRepository `json:"project_repositories,omitempty"`
+	AgentPrompt         *string                            `json:"agent_prompt,omitempty"`
+	Governance          *AgenticWorkflowGovernance         `json:"governance,omitempty"`
+	Resources           *AgenticWorkflowResources          `json:"resources,omitempty"`
+	// How the webhook authenticates its callers. Omit it to keep the current configuration on edit; a new workflow then uses NONE.
+	WebhookAuth          *AgenticWorkflowWebhookAuthRequest          `json:"webhook_auth,omitempty"`
 	Schedule             NullableAgenticWorkflowRequestAllOfSchedule `json:"schedule,omitempty"`
 	ExecutionMode        *AgenticWorkflowExecutionMode               `json:"execution_mode,omitempty"`
 	AdditionalProperties map[string]interface{}
@@ -567,6 +569,38 @@ func (o *AgenticWorkflowRequest) SetResources(v AgenticWorkflowResources) {
 	o.Resources = &v
 }
 
+// GetWebhookAuth returns the WebhookAuth field value if set, zero value otherwise.
+func (o *AgenticWorkflowRequest) GetWebhookAuth() AgenticWorkflowWebhookAuthRequest {
+	if o == nil || IsNil(o.WebhookAuth) {
+		var ret AgenticWorkflowWebhookAuthRequest
+		return ret
+	}
+	return *o.WebhookAuth
+}
+
+// GetWebhookAuthOk returns a tuple with the WebhookAuth field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *AgenticWorkflowRequest) GetWebhookAuthOk() (*AgenticWorkflowWebhookAuthRequest, bool) {
+	if o == nil || IsNil(o.WebhookAuth) {
+		return nil, false
+	}
+	return o.WebhookAuth, true
+}
+
+// HasWebhookAuth returns a boolean if a field has been set.
+func (o *AgenticWorkflowRequest) HasWebhookAuth() bool {
+	if o != nil && !IsNil(o.WebhookAuth) {
+		return true
+	}
+
+	return false
+}
+
+// SetWebhookAuth gets a reference to the given AgenticWorkflowWebhookAuthRequest and assigns it to the WebhookAuth field.
+func (o *AgenticWorkflowRequest) SetWebhookAuth(v AgenticWorkflowWebhookAuthRequest) {
+	o.WebhookAuth = &v
+}
+
 // GetSchedule returns the Schedule field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *AgenticWorkflowRequest) GetSchedule() AgenticWorkflowRequestAllOfSchedule {
 	if o == nil || IsNil(o.Schedule.Get()) {
@@ -695,6 +729,9 @@ func (o AgenticWorkflowRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Resources) {
 		toSerialize["resources"] = o.Resources
 	}
+	if !IsNil(o.WebhookAuth) {
+		toSerialize["webhook_auth"] = o.WebhookAuth
+	}
 	if o.Schedule.IsSet() {
 		toSerialize["schedule"] = o.Schedule.Get()
 	}
@@ -759,6 +796,7 @@ func (o *AgenticWorkflowRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "agent_prompt")
 		delete(additionalProperties, "governance")
 		delete(additionalProperties, "resources")
+		delete(additionalProperties, "webhook_auth")
 		delete(additionalProperties, "schedule")
 		delete(additionalProperties, "execution_mode")
 		o.AdditionalProperties = additionalProperties

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **AgentPrompt** | Pointer to **string** |  | [optional] [default to ""]
 **Governance** | Pointer to [**AgenticWorkflowGovernance**](AgenticWorkflowGovernance.md) |  | [optional] 
 **Resources** | Pointer to [**AgenticWorkflowResources**](AgenticWorkflowResources.md) |  | [optional] 
+**WebhookAuth** | Pointer to [**AgenticWorkflowWebhookAuthRequest**](AgenticWorkflowWebhookAuthRequest.md) | How the webhook authenticates its callers. Omit it to keep the current configuration on edit; a new workflow then uses NONE. | [optional] 
 **Schedule** | Pointer to [**NullableAgenticWorkflowRequestAllOfSchedule**](AgenticWorkflowRequestAllOfSchedule.md) |  | [optional] 
 **ExecutionMode** | Pointer to [**AgenticWorkflowExecutionMode**](AgenticWorkflowExecutionMode.md) |  | [optional] [default to AGENTICWORKFLOWEXECUTIONMODE_IN_PLACE]
 
@@ -410,6 +411,31 @@ SetResources sets Resources field to given value.
 `func (o *AgenticWorkflowRequest) HasResources() bool`
 
 HasResources returns a boolean if a field has been set.
+
+### GetWebhookAuth
+
+`func (o *AgenticWorkflowRequest) GetWebhookAuth() AgenticWorkflowWebhookAuthRequest`
+
+GetWebhookAuth returns the WebhookAuth field if non-nil, zero value otherwise.
+
+### GetWebhookAuthOk
+
+`func (o *AgenticWorkflowRequest) GetWebhookAuthOk() (*AgenticWorkflowWebhookAuthRequest, bool)`
+
+GetWebhookAuthOk returns a tuple with the WebhookAuth field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWebhookAuth
+
+`func (o *AgenticWorkflowRequest) SetWebhookAuth(v AgenticWorkflowWebhookAuthRequest)`
+
+SetWebhookAuth sets WebhookAuth field to given value.
+
+### HasWebhookAuth
+
+`func (o *AgenticWorkflowRequest) HasWebhookAuth() bool`
+
+HasWebhookAuth returns a boolean if a field has been set.
 
 ### GetSchedule
 
