@@ -117,6 +117,7 @@ tags:
 - name: Organization Cluster Lock
 - name: Organization Main Calls
 - name: Organization Custom Role
+- name: Organization Custom Domain
 - name: Organization Event
 - name: Organization Api Token
 - name: Organization Policy Api Token
@@ -4878,6 +4879,93 @@ paths:
       summary: Edit an organization webhook
       tags:
       - Organization Webhook
+  /organization/{organizationId}/customDomain:
+    get:
+      description: |
+        List the custom domains of every environment of the organization. Only organization admins can call it.
+        Each result is one domain name of one environment, with every route that serves it: a domain shared by several services of an environment is a single result.
+        Results are sorted by project name, environment name, environment id, then domain. A page never splits a domain.
+      operationId: listOrganizationCustomDomain
+      parameters:
+      - description: Organization ID
+        explode: false
+        in: path
+        name: organizationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Only list the domains of this project. A project of another organization
+          gives an empty list.
+        explode: true
+        in: query
+        name: projectId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Only list the domains of this environment. An environment of
+          another organization gives an empty list.
+        explode: true
+        in: query
+        name: environmentId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: "Only list the domains whose name contains this text, ignoring\
+          \ case. The text is trimmed and matched literally, with no wildcard. A blank\
+          \ value does not filter."
+        explode: true
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: "The page to return, starting at 1. A page after the last one\
+          \ has no results."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          default: 1
+          minimum: 1
+          type: integer
+        style: form
+      - description: The number of domains per page.
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 20
+          maximum: 100
+          minimum: 1
+          type: integer
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationCustomDomainPaginatedResponseList'
+          description: List organization custom domains
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List organization custom domains
+      tags:
+      - Organization Custom Domain
   /organization/{organizationId}/blueprint/catalog/{provider}/{serviceFamily}/{serviceVersion}/readme:
     get:
       operationId: getBlueprintCatalogServiceReadme
@@ -34192,6 +34280,61 @@ components:
         created_at: 2000-01-23T04:56:07.000+00:00
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         status: VALIDATION_PENDING
+    CustomDomainEnvironmentResponse:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        routing_mode: PER_HOSTNAME_LISTENER_SET
+      properties:
+        id:
+          description: Id of the environment.
+          format: uuid
+          type: string
+        name:
+          description: Name of the environment.
+          type: string
+        routing_mode:
+          $ref: '#/components/schemas/EnvironmentRoutingModeEnum'
+      required:
+      - id
+      - name
+      - routing_mode
+      type: object
+    CustomDomainPortResponse:
+      properties:
+        id:
+          description: Id of the port.
+          format: uuid
+          type: string
+        name:
+          description: Name of the port.
+          example: p8080
+          type: string
+        internal_port:
+          description: The port the service listens on.
+          example: 8080
+          type: integer
+      required:
+      - id
+      - internal_port
+      - name
+      type: object
+    CustomDomainProjectResponse:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: Id of the project.
+          format: uuid
+          type: string
+        name:
+          description: Name of the project.
+          type: string
+      required:
+      - id
+      - name
+      type: object
     CustomDomainRequest:
       example:
         generate_certificate: true
@@ -34243,6 +34386,75 @@ components:
           items:
             $ref: '#/components/schemas/CustomDomain'
           type: array
+      type: object
+    CustomDomainRouteResponse:
+      description: Requests to the domain on `path` go to `port` of `service`. `port`
+        is null when the service has no public port.
+      example:
+        path: /
+        path_rewrite: path_rewrite
+        port: ""
+        custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        service:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          type: ""
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        id:
+          description: Id of the route.
+          format: uuid
+          type: string
+        custom_domain_id:
+          description: "Id of this domain in the custom domain API of the service\
+            \ (`/application|container|helm/{id}/customDomain/{customDomainId}`)."
+          format: uuid
+          type: string
+        service:
+          $ref: '#/components/schemas/CustomDomainServiceResponse'
+        port:
+          allOf:
+          - $ref: '#/components/schemas/CustomDomainPortResponse'
+          nullable: true
+        path:
+          description: The path of the requests this route serves.
+          example: /
+          type: string
+        path_rewrite:
+          description: The path that replaces `path` before the request reaches the
+            service. Null when the path is not rewritten.
+          nullable: true
+          type: string
+      required:
+      - custom_domain_id
+      - id
+      - path
+      - path_rewrite
+      - port
+      - service
+      type: object
+    CustomDomainServiceResponse:
+      example:
+        name: name
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        type: ""
+      properties:
+        id:
+          description: Id of the service.
+          format: uuid
+          type: string
+        type:
+          allOf:
+          - $ref: '#/components/schemas/ServiceTypeEnum'
+          description: "Type of the service. Only `APPLICATION`, `CONTAINER` and `HELM`\
+            \ services have custom domains."
+        name:
+          description: Name of the service.
+          type: string
+      required:
+      - id
+      - name
+      - type
       type: object
     CustomDomainStatusEnum:
       enum:
@@ -36649,6 +36861,16 @@ components:
       - PRODUCTION
       - STAGING
       example: PRODUCTION
+      type: string
+    EnvironmentRoutingModeEnum:
+      description: |
+        How the environment routes its custom domains.
+        * `PER_ROUTER_LISTENER_SET`: a domain belongs to one service and follows its default public port and path.
+        * `PER_HOSTNAME_LISTENER_SET`: several services can share a domain, and each route chooses its port, path and path rewrite.
+      enum:
+      - PER_ROUTER_LISTENER_SET
+      - PER_HOSTNAME_LISTENER_SET
+      example: PER_HOSTNAME_LISTENER_SET
       type: string
     CreateEnvironmentModeEnum:
       enum:
@@ -43695,6 +43917,156 @@ components:
         plan: FREE
         remaining_trial_day: 0
         renewal_at: 2000-01-23T04:56:07.000+00:00
+    OrganizationCustomDomainPaginatedResponseList:
+      allOf:
+      - $ref: '#/components/schemas/PaginationData'
+      - properties:
+          results:
+            items:
+              $ref: '#/components/schemas/OrganizationCustomDomainResponse'
+            type: array
+          total_count:
+            description: "The number of domains matching the query, on all pages."
+            type: integer
+        required:
+        - results
+        - total_count
+        type: object
+      example:
+        total_count: 0
+        page: 1
+        results:
+        - routes:
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            routing_mode: PER_HOSTNAME_LISTENER_SET
+          generate_certificate: true
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+          use_cdn: true
+          project:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - routes:
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          - path: /
+            path_rewrite: path_rewrite
+            port: ""
+            custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            service:
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              type: ""
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          environment:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            routing_mode: PER_HOSTNAME_LISTENER_SET
+          generate_certificate: true
+          environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          domain: my.domain.tld
+          use_cdn: true
+          project:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        page_size: 20
+    OrganizationCustomDomainResponse:
+      description: "One domain name of one environment, with every route that serves\
+        \ it. It has no id of its own; `environment_id` and `domain` identify it."
+      example:
+        routes:
+        - path: /
+          path_rewrite: path_rewrite
+          port: ""
+          custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - path: /
+          path_rewrite: path_rewrite
+          port: ""
+          custom_domain_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          service:
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            type: ""
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        environment:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          routing_mode: PER_HOSTNAME_LISTENER_SET
+        generate_certificate: true
+        environment_id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        domain: my.domain.tld
+        use_cdn: true
+        project:
+          name: name
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+      properties:
+        environment_id:
+          description: Id of the environment of the domain.
+          format: uuid
+          type: string
+        domain:
+          description: The domain name.
+          example: my.domain.tld
+          type: string
+        project:
+          $ref: '#/components/schemas/CustomDomainProjectResponse'
+        environment:
+          $ref: '#/components/schemas/CustomDomainEnvironmentResponse'
+        routes:
+          description: "The routes of the domain, one per service and path."
+          items:
+            $ref: '#/components/schemas/CustomDomainRouteResponse'
+          type: array
+        generate_certificate:
+          description: Whether Qovery generates a certificate for the domain. `false`
+            when a CDN or another party manages the certificate.
+          type: boolean
+        use_cdn:
+          description: "Whether the domain is behind a CDN. If `true`, Qovery only\
+            \ checks that the domain points to an IP; otherwise it checks that the\
+            \ domain resolves to the service load balancer."
+          type: boolean
+      required:
+      - domain
+      - environment
+      - environment_id
+      - generate_certificate
+      - project
+      - routes
+      - use_cdn
+      type: object
     OrganizationCustomRoleCreateRequest:
       example:
         name: name
@@ -58113,6 +58485,7 @@ x-tagGroups:
   - Organization Cluster Lock
   - Organization Webhook
   - Organization Custom Role
+  - Organization Custom Domain
   - Organization Event
   - Organization Annotations Group
   - Organization Labels Group
