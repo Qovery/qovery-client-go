@@ -18,8 +18,8 @@ import (
 
 // BaseJobResponseAllOfSource - struct for BaseJobResponseAllOfSource
 type BaseJobResponseAllOfSource struct {
-	BaseJobResponseAllOfSourceOneOf  *BaseJobResponseAllOfSourceOneOf
-	BaseJobResponseAllOfSourceOneOf1 *BaseJobResponseAllOfSourceOneOf1
+	BaseJobResponseAllOfSourceOneOf *BaseJobResponseAllOfSourceOneOf
+	ContainerSourceResponseOneOf    *ContainerSourceResponseOneOf
 }
 
 // BaseJobResponseAllOfSourceOneOfAsBaseJobResponseAllOfSource is a convenience function that returns BaseJobResponseAllOfSourceOneOf wrapped in BaseJobResponseAllOfSource
@@ -29,10 +29,10 @@ func BaseJobResponseAllOfSourceOneOfAsBaseJobResponseAllOfSource(v *BaseJobRespo
 	}
 }
 
-// BaseJobResponseAllOfSourceOneOf1AsBaseJobResponseAllOfSource is a convenience function that returns BaseJobResponseAllOfSourceOneOf1 wrapped in BaseJobResponseAllOfSource
-func BaseJobResponseAllOfSourceOneOf1AsBaseJobResponseAllOfSource(v *BaseJobResponseAllOfSourceOneOf1) BaseJobResponseAllOfSource {
+// ContainerSourceResponseOneOfAsBaseJobResponseAllOfSource is a convenience function that returns ContainerSourceResponseOneOf wrapped in BaseJobResponseAllOfSource
+func ContainerSourceResponseOneOfAsBaseJobResponseAllOfSource(v *ContainerSourceResponseOneOf) BaseJobResponseAllOfSource {
 	return BaseJobResponseAllOfSource{
-		BaseJobResponseAllOfSourceOneOf1: v,
+		ContainerSourceResponseOneOf: v,
 	}
 }
 
@@ -53,23 +53,23 @@ func (dst *BaseJobResponseAllOfSource) UnmarshalJSON(data []byte) error {
 		dst.BaseJobResponseAllOfSourceOneOf = nil
 	}
 
-	// try to unmarshal data into BaseJobResponseAllOfSourceOneOf1
-	err = json.Unmarshal(data, &dst.BaseJobResponseAllOfSourceOneOf1)
+	// try to unmarshal data into ContainerSourceResponseOneOf
+	err = json.Unmarshal(data, &dst.ContainerSourceResponseOneOf)
 	if err == nil {
-		jsonBaseJobResponseAllOfSourceOneOf1, _ := json.Marshal(dst.BaseJobResponseAllOfSourceOneOf1)
-		if string(jsonBaseJobResponseAllOfSourceOneOf1) == "{}" { // empty struct
-			dst.BaseJobResponseAllOfSourceOneOf1 = nil
+		jsonContainerSourceResponseOneOf, _ := json.Marshal(dst.ContainerSourceResponseOneOf)
+		if string(jsonContainerSourceResponseOneOf) == "{}" { // empty struct
+			dst.ContainerSourceResponseOneOf = nil
 		} else {
 			match++
 		}
 	} else {
-		dst.BaseJobResponseAllOfSourceOneOf1 = nil
+		dst.ContainerSourceResponseOneOf = nil
 	}
 
 	if match > 1 { // more than 1 match
 		// reset to nil
 		dst.BaseJobResponseAllOfSourceOneOf = nil
-		dst.BaseJobResponseAllOfSourceOneOf1 = nil
+		dst.ContainerSourceResponseOneOf = nil
 
 		return fmt.Errorf("data matches more than one schema in oneOf(BaseJobResponseAllOfSource)")
 	} else if match == 1 {
@@ -85,8 +85,8 @@ func (src BaseJobResponseAllOfSource) MarshalJSON() ([]byte, error) {
 		return json.Marshal(&src.BaseJobResponseAllOfSourceOneOf)
 	}
 
-	if src.BaseJobResponseAllOfSourceOneOf1 != nil {
-		return json.Marshal(&src.BaseJobResponseAllOfSourceOneOf1)
+	if src.ContainerSourceResponseOneOf != nil {
+		return json.Marshal(&src.ContainerSourceResponseOneOf)
 	}
 
 	return nil, nil // no data in oneOf schemas
@@ -101,8 +101,8 @@ func (obj *BaseJobResponseAllOfSource) GetActualInstance() interface{} {
 		return obj.BaseJobResponseAllOfSourceOneOf
 	}
 
-	if obj.BaseJobResponseAllOfSourceOneOf1 != nil {
-		return obj.BaseJobResponseAllOfSourceOneOf1
+	if obj.ContainerSourceResponseOneOf != nil {
+		return obj.ContainerSourceResponseOneOf
 	}
 
 	// all schemas are nil

@@ -21,7 +21,7 @@ var _ MappedNullable = &BaseJobResponseAllOfSourceOneOf{}
 
 // BaseJobResponseAllOfSourceOneOf struct for BaseJobResponseAllOfSourceOneOf
 type BaseJobResponseAllOfSourceOneOf struct {
-	Image                ContainerSource `json:"image"`
+	Docker               JobSourceDockerResponse `json:"docker"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -31,9 +31,9 @@ type _BaseJobResponseAllOfSourceOneOf BaseJobResponseAllOfSourceOneOf
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewBaseJobResponseAllOfSourceOneOf(image ContainerSource) *BaseJobResponseAllOfSourceOneOf {
+func NewBaseJobResponseAllOfSourceOneOf(docker JobSourceDockerResponse) *BaseJobResponseAllOfSourceOneOf {
 	this := BaseJobResponseAllOfSourceOneOf{}
-	this.Image = image
+	this.Docker = docker
 	return &this
 }
 
@@ -45,28 +45,28 @@ func NewBaseJobResponseAllOfSourceOneOfWithDefaults() *BaseJobResponseAllOfSourc
 	return &this
 }
 
-// GetImage returns the Image field value
-func (o *BaseJobResponseAllOfSourceOneOf) GetImage() ContainerSource {
+// GetDocker returns the Docker field value
+func (o *BaseJobResponseAllOfSourceOneOf) GetDocker() JobSourceDockerResponse {
 	if o == nil {
-		var ret ContainerSource
+		var ret JobSourceDockerResponse
 		return ret
 	}
 
-	return o.Image
+	return o.Docker
 }
 
-// GetImageOk returns a tuple with the Image field value
+// GetDockerOk returns a tuple with the Docker field value
 // and a boolean to check if the value has been set.
-func (o *BaseJobResponseAllOfSourceOneOf) GetImageOk() (*ContainerSource, bool) {
+func (o *BaseJobResponseAllOfSourceOneOf) GetDockerOk() (*JobSourceDockerResponse, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Image, true
+	return &o.Docker, true
 }
 
-// SetImage sets field value
-func (o *BaseJobResponseAllOfSourceOneOf) SetImage(v ContainerSource) {
-	o.Image = v
+// SetDocker sets field value
+func (o *BaseJobResponseAllOfSourceOneOf) SetDocker(v JobSourceDockerResponse) {
+	o.Docker = v
 }
 
 func (o BaseJobResponseAllOfSourceOneOf) MarshalJSON() ([]byte, error) {
@@ -79,7 +79,7 @@ func (o BaseJobResponseAllOfSourceOneOf) MarshalJSON() ([]byte, error) {
 
 func (o BaseJobResponseAllOfSourceOneOf) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
-	toSerialize["image"] = o.Image
+	toSerialize["docker"] = o.Docker
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -93,7 +93,7 @@ func (o *BaseJobResponseAllOfSourceOneOf) UnmarshalJSON(data []byte) (err error)
 	// by unmarshalling the object into a generic map with string keys and checking
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
-		"image",
+		"docker",
 	}
 
 	allProperties := make(map[string]interface{})
@@ -123,7 +123,7 @@ func (o *BaseJobResponseAllOfSourceOneOf) UnmarshalJSON(data []byte) (err error)
 	additionalProperties := make(map[string]interface{})
 
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
-		delete(additionalProperties, "image")
+		delete(additionalProperties, "docker")
 		o.AdditionalProperties = additionalProperties
 	}
 

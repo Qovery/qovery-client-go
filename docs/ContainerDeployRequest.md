@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | Pointer to **NullableString** |  | [optional] 
-**ImageTag** | Pointer to **NullableString** | Image tag to deploy | [optional] 
+**ImageTag** | Pointer to **NullableString** | Image tag to deploy, for a container with an image source. Sending it for a container with a Git repository source returns 400. A &#x60;null&#x60; value counts as not sent.  | [optional] 
+**GitCommitId** | Pointer to **NullableString** | Commit to deploy, for a container with a Git repository source. When not specified, the container&#39;s stored commit is deployed. Sending it for a container with an image source returns 400. A &#x60;null&#x60; value counts as not sent.  | [optional] 
 
 ## Methods
 
@@ -96,6 +97,41 @@ HasImageTag returns a boolean if a field has been set.
 `func (o *ContainerDeployRequest) UnsetImageTag()`
 
 UnsetImageTag ensures that no value is present for ImageTag, not even an explicit nil
+### GetGitCommitId
+
+`func (o *ContainerDeployRequest) GetGitCommitId() string`
+
+GetGitCommitId returns the GitCommitId field if non-nil, zero value otherwise.
+
+### GetGitCommitIdOk
+
+`func (o *ContainerDeployRequest) GetGitCommitIdOk() (*string, bool)`
+
+GetGitCommitIdOk returns a tuple with the GitCommitId field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetGitCommitId
+
+`func (o *ContainerDeployRequest) SetGitCommitId(v string)`
+
+SetGitCommitId sets GitCommitId field to given value.
+
+### HasGitCommitId
+
+`func (o *ContainerDeployRequest) HasGitCommitId() bool`
+
+HasGitCommitId returns a boolean if a field has been set.
+
+### SetGitCommitIdNil
+
+`func (o *ContainerDeployRequest) SetGitCommitIdNil(b bool)`
+
+ SetGitCommitIdNil sets the value for GitCommitId to be an explicit nil
+
+### UnsetGitCommitId
+`func (o *ContainerDeployRequest) UnsetGitCommitId()`
+
+UnsetGitCommitId ensures that no value is present for GitCommitId, not even an explicit nil
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

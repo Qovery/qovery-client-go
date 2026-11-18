@@ -27,13 +27,14 @@ type ContainerRequest struct {
 	Name string `json:"name"`
 	// give a description to this container
 	Description *string `json:"description,omitempty"`
-	// id of the linked registry
-	RegistryId string `json:"registry_id"`
-	// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`
-	ImageName string `json:"image_name"`
-	// tag of the image container
-	Tag       string   `json:"tag"`
-	Arguments []string `json:"arguments,omitempty"`
+	// id of the linked registry. Required on create unless `source` is sent. See `source` for the rules on update.
+	RegistryId *string `json:"registry_id,omitempty"`
+	// The image name pattern differs according to chosen container registry provider:   * `ECR`: `repository` * `SCALEWAY_CR`: `namespace/image` * `DOCKER_HUB`: `image` or `repository/image` * `PUBLIC_ECR`: `registry_alias/repository`  Required on create unless `source` is sent. See `source` for the rules on update.
+	ImageName *string `json:"image_name,omitempty"`
+	// tag of the image container. Required on create unless `source` is sent. See `source` for the rules on update.
+	Tag       *string                 `json:"tag,omitempty"`
+	Source    *ContainerSourceRequest `json:"source,omitempty"`
+	Arguments []string                `json:"arguments,omitempty"`
 	// optional entrypoint when launching container
 	Entrypoint *string `json:"entrypoint,omitempty"`
 	// unit is millicores (m). 1000m = 1 cpu
@@ -50,15 +51,17 @@ type ContainerRequest struct {
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances *int32      `json:"max_running_instances,omitempty"`
 	Healthchecks        Healthcheck `json:"healthchecks"`
-	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.
+	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
-	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments
+	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
 	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              *string                   `json:"icon_uri,omitempty"`
-	Autoscaling          *AutoscalingPolicyRequest `json:"autoscaling,omitempty"`
+	IconUri     *string                   `json:"icon_uri,omitempty"`
+	Autoscaling *AutoscalingPolicyRequest `json:"autoscaling,omitempty"`
+	// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a switch to `git_repository` without it, the defaults of a new application are used. - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
+	BuildSettings        *BuildSettings `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -68,12 +71,9 @@ type _ContainerRequest ContainerRequest
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewContainerRequest(name string, registryId string, imageName string, tag string, healthchecks Healthcheck) *ContainerRequest {
+func NewContainerRequest(name string, healthchecks Healthcheck) *ContainerRequest {
 	this := ContainerRequest{}
 	this.Name = name
-	this.RegistryId = registryId
-	this.ImageName = imageName
-	this.Tag = tag
 	var cpu int32 = 500
 	this.Cpu = &cpu
 	var memory int32 = 512
@@ -226,76 +226,132 @@ func (o *ContainerRequest) SetDescription(v string) {
 	o.Description = &v
 }
 
-// GetRegistryId returns the RegistryId field value
+// GetRegistryId returns the RegistryId field value if set, zero value otherwise.
 func (o *ContainerRequest) GetRegistryId() string {
-	if o == nil {
+	if o == nil || IsNil(o.RegistryId) {
 		var ret string
 		return ret
 	}
-
-	return o.RegistryId
+	return *o.RegistryId
 }
 
-// GetRegistryIdOk returns a tuple with the RegistryId field value
+// GetRegistryIdOk returns a tuple with the RegistryId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetRegistryIdOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.RegistryId) {
 		return nil, false
 	}
-	return &o.RegistryId, true
+	return o.RegistryId, true
 }
 
-// SetRegistryId sets field value
+// HasRegistryId returns a boolean if a field has been set.
+func (o *ContainerRequest) HasRegistryId() bool {
+	if o != nil && !IsNil(o.RegistryId) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistryId gets a reference to the given string and assigns it to the RegistryId field.
 func (o *ContainerRequest) SetRegistryId(v string) {
-	o.RegistryId = v
+	o.RegistryId = &v
 }
 
-// GetImageName returns the ImageName field value
+// GetImageName returns the ImageName field value if set, zero value otherwise.
 func (o *ContainerRequest) GetImageName() string {
-	if o == nil {
+	if o == nil || IsNil(o.ImageName) {
 		var ret string
 		return ret
 	}
-
-	return o.ImageName
+	return *o.ImageName
 }
 
-// GetImageNameOk returns a tuple with the ImageName field value
+// GetImageNameOk returns a tuple with the ImageName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetImageNameOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.ImageName) {
 		return nil, false
 	}
-	return &o.ImageName, true
+	return o.ImageName, true
 }
 
-// SetImageName sets field value
+// HasImageName returns a boolean if a field has been set.
+func (o *ContainerRequest) HasImageName() bool {
+	if o != nil && !IsNil(o.ImageName) {
+		return true
+	}
+
+	return false
+}
+
+// SetImageName gets a reference to the given string and assigns it to the ImageName field.
 func (o *ContainerRequest) SetImageName(v string) {
-	o.ImageName = v
+	o.ImageName = &v
 }
 
-// GetTag returns the Tag field value
+// GetTag returns the Tag field value if set, zero value otherwise.
 func (o *ContainerRequest) GetTag() string {
-	if o == nil {
+	if o == nil || IsNil(o.Tag) {
 		var ret string
 		return ret
 	}
-
-	return o.Tag
+	return *o.Tag
 }
 
-// GetTagOk returns a tuple with the Tag field value
+// GetTagOk returns a tuple with the Tag field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ContainerRequest) GetTagOk() (*string, bool) {
-	if o == nil {
+	if o == nil || IsNil(o.Tag) {
 		return nil, false
 	}
-	return &o.Tag, true
+	return o.Tag, true
 }
 
-// SetTag sets field value
+// HasTag returns a boolean if a field has been set.
+func (o *ContainerRequest) HasTag() bool {
+	if o != nil && !IsNil(o.Tag) {
+		return true
+	}
+
+	return false
+}
+
+// SetTag gets a reference to the given string and assigns it to the Tag field.
 func (o *ContainerRequest) SetTag(v string) {
-	o.Tag = v
+	o.Tag = &v
+}
+
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ContainerRequest) GetSource() ContainerSourceRequest {
+	if o == nil || IsNil(o.Source) {
+		var ret ContainerSourceRequest
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetSourceOk() (*ContainerSourceRequest, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *ContainerRequest) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given ContainerSourceRequest and assigns it to the Source field.
+func (o *ContainerRequest) SetSource(v ContainerSourceRequest) {
+	o.Source = &v
 }
 
 // GetArguments returns the Arguments field value if set, zero value otherwise.
@@ -824,6 +880,38 @@ func (o *ContainerRequest) SetAutoscaling(v AutoscalingPolicyRequest) {
 	o.Autoscaling = &v
 }
 
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *ContainerRequest) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerRequest) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *ContainerRequest) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *ContainerRequest) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
+}
+
 func (o ContainerRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -844,9 +932,18 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Description) {
 		toSerialize["description"] = o.Description
 	}
-	toSerialize["registry_id"] = o.RegistryId
-	toSerialize["image_name"] = o.ImageName
-	toSerialize["tag"] = o.Tag
+	if !IsNil(o.RegistryId) {
+		toSerialize["registry_id"] = o.RegistryId
+	}
+	if !IsNil(o.ImageName) {
+		toSerialize["image_name"] = o.ImageName
+	}
+	if !IsNil(o.Tag) {
+		toSerialize["tag"] = o.Tag
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
 	if !IsNil(o.Arguments) {
 		toSerialize["arguments"] = o.Arguments
 	}
@@ -893,6 +990,9 @@ func (o ContainerRequest) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Autoscaling) {
 		toSerialize["autoscaling"] = o.Autoscaling
 	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
+	}
 
 	for key, value := range o.AdditionalProperties {
 		toSerialize[key] = value
@@ -907,9 +1007,6 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 	// that every required field exists as a key in the generic map.
 	requiredProperties := []string{
 		"name",
-		"registry_id",
-		"image_name",
-		"tag",
 		"healthchecks",
 	}
 
@@ -947,6 +1044,7 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "registry_id")
 		delete(additionalProperties, "image_name")
 		delete(additionalProperties, "tag")
+		delete(additionalProperties, "source")
 		delete(additionalProperties, "arguments")
 		delete(additionalProperties, "entrypoint")
 		delete(additionalProperties, "cpu")
@@ -963,6 +1061,7 @@ func (o *ContainerRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "labels_groups")
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "autoscaling")
+		delete(additionalProperties, "build_settings")
 		o.AdditionalProperties = additionalProperties
 	}
 

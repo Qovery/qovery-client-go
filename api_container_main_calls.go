@@ -164,6 +164,15 @@ EditContainer Edit container
 - To edit the container you must have the admin permission.
 - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
 - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
+- To switch the container between an image and a Git repository, send `source`. The container keeps its id, Kubernetes names, volumes and built-in variables. When `source` is not sent, the stored source is kept.
+
+Returns 400 when:
+- `source` is sent together with `registry_id`, `image_name` or `tag`;
+- `source` has both `image` and `git_repository`, or neither;
+- the container has an image source, `source` is not sent, and only some of `registry_id`, `image_name` and `tag` are sent: send all three, or none to keep the image;
+- the container has a Git repository source and `registry_id`, `image_name` or `tag` differ from the `registry.id`, `image_name` and `tag` that `GET /container/{containerId}` returns. A deployment that finishes between the GET and the PUT changes these values, so the PUT gets a 400: get the container again and retry;
+- `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent, or while the container has a Git repository source and `source` is not sent;
+- `build_settings` is sent while the container keeps, or switches to, an image source.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param containerId Container ID

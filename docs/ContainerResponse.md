@@ -35,6 +35,8 @@ Name | Type | Description | Notes
 **IconUri** | **string** | Icon URI representing the container. | 
 **ServiceType** | [**ServiceTypeEnum**](ServiceTypeEnum.md) |  | 
 **Autoscaling** | Pointer to [**AutoscalingPolicyResponse**](AutoscalingPolicyResponse.md) |  | [optional] 
+**Source** | Pointer to [**ContainerSourceResponse**](ContainerSourceResponse.md) |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) | Build settings of a container with a Git repository source. Absent for a container with an image source. | [optional] 
 
 ## Methods
 
@@ -744,6 +746,56 @@ SetAutoscaling sets Autoscaling field to given value.
 `func (o *ContainerResponse) HasAutoscaling() bool`
 
 HasAutoscaling returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *ContainerResponse) GetSource() ContainerSourceResponse`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ContainerResponse) GetSourceOk() (*ContainerSourceResponse, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ContainerResponse) SetSource(v ContainerSourceResponse)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *ContainerResponse) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
+
+### GetBuildSettings
+
+`func (o *ContainerResponse) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *ContainerResponse) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *ContainerResponse) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *ContainerResponse) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Id** | **string** | id of the container to be updated. | 
-**ImageTag** | Pointer to **string** | new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won&#39;t be changed) | [optional] 
+**ImageTag** | Pointer to **string** | new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won&#39;t be changed)  For a container with a Git repository source: - an absent or empty &#x60;image_tag&#x60;, or one equal to the &#x60;tag&#x60; that &#x60;GET /container/{containerId}&#x60; returns, deploys the container at its stored commit; - a different &#x60;image_tag&#x60; returns 400.  | [optional] 
 
 ## Methods
 

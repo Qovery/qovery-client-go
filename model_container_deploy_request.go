@@ -21,8 +21,10 @@ var _ MappedNullable = &ContainerDeployRequest{}
 // ContainerDeployRequest struct for ContainerDeployRequest
 type ContainerDeployRequest struct {
 	Id NullableString `json:"id,omitempty"`
-	// Image tag to deploy
-	ImageTag             NullableString `json:"image_tag,omitempty"`
+	// Image tag to deploy, for a container with an image source. Sending it for a container with a Git repository source returns 400. A `null` value counts as not sent.
+	ImageTag NullableString `json:"image_tag,omitempty"`
+	// Commit to deploy, for a container with a Git repository source. When not specified, the container's stored commit is deployed. Sending it for a container with an image source returns 400. A `null` value counts as not sent.
+	GitCommitId          NullableString `json:"git_commit_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -131,6 +133,49 @@ func (o *ContainerDeployRequest) UnsetImageTag() {
 	o.ImageTag.Unset()
 }
 
+// GetGitCommitId returns the GitCommitId field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *ContainerDeployRequest) GetGitCommitId() string {
+	if o == nil || IsNil(o.GitCommitId.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.GitCommitId.Get()
+}
+
+// GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *ContainerDeployRequest) GetGitCommitIdOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.GitCommitId.Get(), o.GitCommitId.IsSet()
+}
+
+// HasGitCommitId returns a boolean if a field has been set.
+func (o *ContainerDeployRequest) HasGitCommitId() bool {
+	if o != nil && o.GitCommitId.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetGitCommitId gets a reference to the given NullableString and assigns it to the GitCommitId field.
+func (o *ContainerDeployRequest) SetGitCommitId(v string) {
+	o.GitCommitId.Set(&v)
+}
+
+// SetGitCommitIdNil sets the value for GitCommitId to be an explicit nil
+func (o *ContainerDeployRequest) SetGitCommitIdNil() {
+	o.GitCommitId.Set(nil)
+}
+
+// UnsetGitCommitId ensures that no value is present for GitCommitId, not even an explicit nil
+func (o *ContainerDeployRequest) UnsetGitCommitId() {
+	o.GitCommitId.Unset()
+}
+
 func (o ContainerDeployRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -146,6 +191,9 @@ func (o ContainerDeployRequest) ToMap() (map[string]interface{}, error) {
 	}
 	if o.ImageTag.IsSet() {
 		toSerialize["image_tag"] = o.ImageTag.Get()
+	}
+	if o.GitCommitId.IsSet() {
+		toSerialize["git_commit_id"] = o.GitCommitId.Get()
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -171,6 +219,7 @@ func (o *ContainerDeployRequest) UnmarshalJSON(data []byte) (err error) {
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "image_tag")
+		delete(additionalProperties, "git_commit_id")
 		o.AdditionalProperties = additionalProperties
 	}
 

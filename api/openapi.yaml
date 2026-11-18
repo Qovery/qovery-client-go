@@ -10042,6 +10042,15 @@ paths:
       tags:
       - Containers
     post:
+      description: |
+        A container is created from an image: send `registry_id`, `image_name` and `tag`, or `source.image`.
+
+        Returns 400 when:
+        - `source.git_repository` is sent: a Git repository source can only be set on update, with `PUT /container/{containerId}`;
+        - `source` is sent together with `registry_id`, `image_name` or `tag`;
+        - `source` has both `image` and `git_repository`, or neither;
+        - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent;
+        - `build_settings` is sent.
       operationId: createContainer
       parameters:
       - description: Environment ID
@@ -10309,6 +10318,7 @@ paths:
         Triggers a new container deploy in each environment matching the following conditions
         - environment should have the auto-deploy enabled
         - the container should have the same image name and a different tag
+        - the container should have an image source: containers with a Git repository source are skipped
       operationId: autoDeployContainerEnvironments
       parameters:
       - description: Organization ID
@@ -10351,6 +10361,7 @@ paths:
         Triggers a new container preview for each environment matching the following conditions
         - preview environment feature should be enabled for the container
         - the container should have the same image name and a different tag
+        - the container should have an image source: containers with a Git repository source are skipped
       operationId: previewContainerEnvironments
       parameters:
       - description: Organization ID
@@ -12978,6 +12989,15 @@ paths:
         - To edit the container you must have the admin permission.
         - For port edition, if you provide a port id, we will update the corresponding port. If you don't we will create a new one. If you remove a port from the payload, we will delete it.
         - For storage edition, if you provide a storage id, we will update the corresponding storage. If you don't we will create a new one. If you remove a storage from the payload, we will delete it.
+        - To switch the container between an image and a Git repository, send `source`. The container keeps its id, Kubernetes names, volumes and built-in variables. When `source` is not sent, the stored source is kept.
+
+        Returns 400 when:
+        - `source` is sent together with `registry_id`, `image_name` or `tag`;
+        - `source` has both `image` and `git_repository`, or neither;
+        - the container has an image source, `source` is not sent, and only some of `registry_id`, `image_name` and `tag` are sent: send all three, or none to keep the image;
+        - the container has a Git repository source and `registry_id`, `image_name` or `tag` differ from the `registry.id`, `image_name` and `tag` that `GET /container/{containerId}` returns. A deployment that finishes between the GET and the PUT changes these values, so the PUT gets a 400: get the container again and retry;
+        - `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent, or while the container has a Git repository source and `source` is not sent;
+        - `build_settings` is sent while the container keeps, or switches to, an image source.
       operationId: editContainer
       parameters:
       - description: Container ID
@@ -13185,7 +13205,12 @@ paths:
       - Container Configuration
   /container/{containerId}/deploy:
     post:
-      description: You must provide a container image tag
+      description: |
+        For a container with an image source, you must provide a container image tag in `image_tag`.
+        For a container with a Git repository source, you can provide a commit in `git_commit_id`.
+
+        Returns 400 when:
+        - `image_tag` is sent for a container with a Git repository source, or `git_commit_id` for a container with an image source.
       operationId: deployContainer
       parameters:
       - description: Container ID
@@ -32224,6 +32249,7 @@ components:
       type: object
     ContainerDeployRequest:
       example:
+        git_commit_id: git_commit_id
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         image_tag: image_tag
       properties:
@@ -32232,7 +32258,15 @@ components:
           nullable: true
           type: string
         image_tag:
-          description: Image tag to deploy
+          description: |
+            Image tag to deploy, for a container with an image source.
+            Sending it for a container with a Git repository source returns 400. A `null` value counts as not sent.
+          nullable: true
+          type: string
+        git_commit_id:
+          description: |
+            Commit to deploy, for a container with a Git repository source. When not specified, the container's stored commit is deployed.
+            Sending it for a container with an image source returns 400. A `null` value counts as not sent.
           nullable: true
           type: string
       type: object
@@ -33022,16 +33056,24 @@ components:
             description: give a description to this container
             type: string
           registry_id:
-            description: id of the linked registry
+            description: |
+              id of the linked registry.
+              Required on create unless `source` is sent. See `source` for the rules on update.
             type: string
           image_name:
             description: "The image name pattern differs according to chosen container\
               \ registry provider:  \n* `ECR`: `repository`\n* `SCALEWAY_CR`: `namespace/image`\n\
-              * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n"
+              * `DOCKER_HUB`: `image` or `repository/image`\n* `PUBLIC_ECR`: `registry_alias/repository`\n\
+              \nRequired on create unless `source` is sent. See `source` for the rules\
+              \ on update.\n"
             type: string
           tag:
-            description: tag of the image container
+            description: |
+              tag of the image container.
+              Required on create unless `source` is sent. See `source` for the rules on update.
             type: string
+          source:
+            $ref: '#/components/schemas/ContainerSourceRequest'
           arguments:
             items:
               type: string
@@ -33088,12 +33130,17 @@ components:
               \ for this container.  \nIf enabled, a preview environment will be automatically\
               \ cloned when `/preview` endpoint is called.  \nIf not specified, it\
               \ takes the value of the `auto_preview` property from the associated\
-              \ environment.\n"
+              \ environment.\n\nOn a container with a Git repository source, it must\
+              \ be false or not specified: `true` returns 400. When not specified\
+              \ on a switch to `git_repository`, it is set to false.\n"
             type: boolean
           auto_deploy:
             description: "Specify if the container will be automatically updated after\
               \ receiving a new image tag. \nThe new image tag shall be communicated\
-              \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n"
+              \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n\
+              \nOn a container with a Git repository source, it must be false or not\
+              \ specified: `true` returns 400. When not specified on a switch to `git_repository`,\
+              \ it is set to false.\n"
             nullable: true
             type: boolean
           annotations_groups:
@@ -33108,12 +33155,18 @@ components:
               id: jiypvl6nd63dm
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyRequest'
+          build_settings:
+            allOf:
+            - $ref: '#/components/schemas/BuildSettings'
+            description: |
+              Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image.
+              - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged.
+              - On update, when not sent, the stored values are kept.
+              - On a switch to `git_repository` without it, the defaults of a new application are used.
+              - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
         required:
         - healthchecks
-        - image_name
         - name
-        - registry_id
-        - tag
         type: object
       example:
         min_running_instances: 0
@@ -33190,7 +33243,6 @@ components:
                 service: service
             timeout_seconds: 1
         description: description
-        cpu: 1250
         max_running_instances: 6
         storage:
         - size: 16
@@ -33201,6 +33253,11 @@ components:
           mount_point: /mnt/images
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: FAST_SSD
+        source:
+          image:
+            image_name: image_name
+            tag: tag
+            registry_id: registry_id
         ports:
         - publicly_accessible: true
           protocol: HTTP
@@ -33220,21 +33277,24 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           internal_port: 8080
           is_default: true
-        gpu: 1
         registry_id: registry_id
-        icon_uri: https://openapi-generator.tech
         image_name: image_name
         annotations_groups:
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         entrypoint: entrypoint
-        name: name
         auto_preview: true
+        tag: tag
+        ephemeral_storage_in_gib: 10
+        cpu: 1250
+        gpu: 1
+        build_settings: ""
+        icon_uri: https://openapi-generator.tech
+        name: name
         arguments:
         - arguments
         - arguments
         cpu_architecture: ""
-        tag: tag
         autoscaling:
           mode: KEDA
           cooldown_period_seconds: 5
@@ -33261,7 +33321,6 @@ components:
               config_yaml: config_yaml
             scaler_type: scaler_type
             enabled: true
-        ephemeral_storage_in_gib: 10
     ContainerResponse:
       allOf:
       - $ref: '#/components/schemas/Base'
@@ -33373,6 +33432,13 @@ components:
             $ref: '#/components/schemas/ServiceTypeEnum'
           autoscaling:
             $ref: '#/components/schemas/AutoscalingPolicyResponse'
+          source:
+            $ref: '#/components/schemas/ContainerSourceResponse'
+          build_settings:
+            allOf:
+            - $ref: '#/components/schemas/BuildSettings'
+            description: Build settings of a container with a Git repository source.
+              Absent for a container with an image source.
         required:
         - auto_preview
         - cpu
@@ -33389,6 +33455,12 @@ components:
         - name
         - service_type
         type: object
+      description: |
+        `registry`, `image_name` and `tag` always hold the image this container runs:
+        - with an image source, the configured image;
+        - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.
+
+        `source` says where the image comes from.
       example:
         min_running_instances: 0
         auto_deploy: true
@@ -33496,6 +33568,15 @@ components:
           mount_point: /mnt/images
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           type: FAST_SSD
+        source:
+          image:
+            image_name: image_name
+            registry:
+              kind: ECR
+              name: name
+              id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+              url: url
+            tag: tag
         ports:
         - publicly_accessible: true
           protocol: HTTP
@@ -33554,6 +33635,7 @@ components:
           url: url
         cpu: 1250
         gpu: 1
+        build_settings: ""
         icon_uri: https://openapi-generator.tech
         environment:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33716,6 +33798,15 @@ components:
             mount_point: /mnt/images
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             type: FAST_SSD
+          source:
+            image:
+              image_name: image_name
+              registry:
+                kind: ECR
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url: url
+              tag: tag
           ports:
           - publicly_accessible: true
             protocol: HTTP
@@ -33774,6 +33865,7 @@ components:
             url: url
           cpu: 1250
           gpu: 1
+          build_settings: ""
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -33933,6 +34025,15 @@ components:
             mount_point: /mnt/images
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
             type: FAST_SSD
+          source:
+            image:
+              image_name: image_name
+              registry:
+                kind: ECR
+                name: name
+                id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+                url: url
+              tag: tag
           ports:
           - publicly_accessible: true
             protocol: HTTP
@@ -33991,6 +34092,7 @@ components:
             url: url
           cpu: 1250
           gpu: 1
+          build_settings: ""
           icon_uri: https://openapi-generator.tech
           environment:
             id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
@@ -34078,6 +34180,68 @@ components:
       - registry
       - tag
       type: object
+    ContainerSourceRequest:
+      description: |
+        Where the container image comes from. Send exactly one of `image` or `git_repository`; both, or neither, returns 400. A `null` `image` or `git_repository` counts as not sent.
+        - `image`: an image from a container registry, like the flat `registry_id`, `image_name` and `tag` fields.
+        - `git_repository`: a Git repository with a Dockerfile. Qovery builds the image from the deployed commit. Accepted on update (`PUT /container/{containerId}`) only: sending it on create returns 400.
+
+        Switching the source keeps the same container: its id, Kubernetes names, volumes and built-in variables. The switch does not deploy; the next deployment uses the new source.
+
+        Rules:
+        - `source` cannot be sent together with the flat `registry_id`, `image_name` and `tag` fields: 400.
+        - When `source` is not sent, the stored source is kept. Flat fields never switch the source.
+        - On a container with a Git repository source, flat fields equal to the `registry.id`, `image_name` and `tag` that GET returns are accepted and change nothing; different values return 400. A deployment that finishes between the GET and the PUT changes these values: get the container again and retry. Send `source.image` to switch back to an image.
+        - A `git_repository` source requires `auto_deploy` and `auto_preview` to be false or not specified: 400 otherwise. When not specified on a switch to `git_repository`, both are set to false.
+      oneOf:
+      - $ref: '#/components/schemas/ContainerSourceRequest_oneOf'
+      - $ref: '#/components/schemas/ContainerSourceRequest_oneOf_1'
+    ContainerSourceResponse:
+      description: |
+        Where the container image comes from:
+        - `image`: an image from a container registry;
+        - `git_repository`: a Git repository with a Dockerfile, that Qovery builds.
+
+        Only the key of the current source is returned. The other key is omitted, never sent as `null`.
+
+        Always returned by API servers that support container sources; absent on older servers.
+      oneOf:
+      - $ref: '#/components/schemas/ContainerSourceResponse_oneOf'
+      - $ref: '#/components/schemas/ContainerSourceResponse_oneOf_1'
+    ContainerGitRepositorySourceRequest:
+      allOf:
+      - $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      - properties:
+          dockerfile_path:
+            description: The path of the associated Dockerfile
+            type: string
+          docker_target_build_stage:
+            description: "The target build stage in the Dockerfile to build. If null,\
+              \ the last stage of the Dockerfile is built."
+            nullable: true
+            type: string
+        required:
+        - dockerfile_path
+        type: object
+      description: The Git repository and the Dockerfile that Qovery builds into the
+        container image.
+    ContainerGitRepositorySourceResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApplicationGitRepository'
+      - properties:
+          dockerfile_path:
+            description: The path of the associated Dockerfile
+            type: string
+          docker_target_build_stage:
+            description: "The target build stage in the Dockerfile to build. If null,\
+              \ the last stage of the Dockerfile is built."
+            nullable: true
+            type: string
+        required:
+        - dockerfile_path
+        type: object
+      description: The Git repository and the Dockerfile that Qovery builds into the
+        container image.
     Cost:
       example:
         total_in_cents: 30000
@@ -56403,6 +56567,73 @@ components:
             \ arn that we are going to assume"
           type: string
       type: object
+    ContainerSourceRequest_oneOf_image:
+      example:
+        image_name: image_name
+        tag: tag
+        registry_id: registry_id
+      properties:
+        registry_id:
+          description: id of the linked registry
+          type: string
+        image_name:
+          description: |
+            The image name pattern differs according to chosen container registry provider:
+            * `ECR`: `repository`
+            * `SCALEWAY_CR`: `namespace/image`
+            * `DOCKER_HUB`: `image` or `repository/image`
+            * `PUBLIC_ECR`: `registry_alias/repository`
+          type: string
+        tag:
+          description: tag of the image container
+          type: string
+      required:
+      - image_name
+      - registry_id
+      - tag
+      type: object
+    ContainerSourceRequest_oneOf:
+      example:
+        image:
+          image_name: image_name
+          tag: tag
+          registry_id: registry_id
+      properties:
+        image:
+          $ref: '#/components/schemas/ContainerSourceRequest_oneOf_image'
+      required:
+      - image
+      type: object
+    ContainerSourceRequest_oneOf_1:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ContainerGitRepositorySourceRequest'
+      required:
+      - git_repository
+      type: object
+    ContainerSourceResponse_oneOf:
+      example:
+        image:
+          image_name: image_name
+          registry:
+            kind: ECR
+            name: name
+            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+            url: url
+          tag: tag
+      properties:
+        image:
+          $ref: '#/components/schemas/ContainerSource'
+      required:
+      - image
+      type: object
+    ContainerSourceResponse_oneOf_1:
+      properties:
+        git_repository:
+          $ref: '#/components/schemas/ContainerGitRepositorySourceResponse'
+      required:
+      - git_repository
+      type: object
     DeployAllRequest_applications_inner:
       example:
         git_commit_id: git_commit_id
@@ -56429,8 +56660,12 @@ components:
           format: uuid
           type: string
         image_tag:
-          description: new tag for the container. Can be empty only if the service
-            has been already deployed (in this case the service version won't be changed)
+          description: |
+            new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
+
+            For a container with a Git repository source:
+            - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at its stored commit;
+            - a different `image_tag` returns 400.
           type: string
       required:
       - id
@@ -57886,22 +58121,6 @@ components:
       - cronjob
       type: object
     BaseJobResponse_allOf_source_oneOf:
-      example:
-        image:
-          image_name: image_name
-          registry:
-            kind: ECR
-            name: name
-            id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
-            url: url
-          tag: tag
-      properties:
-        image:
-          $ref: '#/components/schemas/ContainerSource'
-      required:
-      - image
-      type: object
-    BaseJobResponse_allOf_source_oneOf_1:
       properties:
         docker:
           $ref: '#/components/schemas/JobSourceDockerResponse'
@@ -57911,8 +58130,8 @@ components:
     BaseJobResponse_allOf_source:
       nullable: false
       oneOf:
+      - $ref: '#/components/schemas/ContainerSourceResponse_oneOf'
       - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf'
-      - $ref: '#/components/schemas/BaseJobResponse_allOf_source_oneOf_1'
     HelmSourceRepositoryResponse_repository:
       properties:
         id:

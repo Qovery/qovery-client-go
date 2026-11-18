@@ -42,7 +42,11 @@ func (r ApiDeployContainerRequest) Execute() (*Status, *http.Response, error) {
 /*
 DeployContainer Deploy container
 
-You must provide a container image tag
+For a container with an image source, you must provide a container image tag in `image_tag`.
+For a container with a Git repository source, you can provide a commit in `git_commit_id`.
+
+Returns 400 when:
+- `image_tag` is sent for a container with a Git repository source, or `git_commit_id` for a container with an image source.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param containerId Container ID

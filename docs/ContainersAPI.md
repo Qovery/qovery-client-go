@@ -165,6 +165,8 @@ Name | Type | Description  | Notes
 
 Create a container
 
+
+
 ### Example
 
 ```go
@@ -179,7 +181,7 @@ import (
 
 func main() {
 	environmentId := "38400000-8cf0-11bd-b23e-10b96e4ef00d" // string | Environment ID
-	containerRequest := *openapiclient.NewContainerRequest("Name_example", "RegistryId_example", "ImageName_example", "Tag_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
+	containerRequest := *openapiclient.NewContainerRequest("Name_example", *openapiclient.NewHealthcheck()) // ContainerRequest |  (optional)
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)

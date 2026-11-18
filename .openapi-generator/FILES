@@ -247,7 +247,6 @@ docs/Base.md
 docs/BaseJobResponse.md
 docs/BaseJobResponseAllOfSource.md
 docs/BaseJobResponseAllOfSourceOneOf.md
-docs/BaseJobResponseAllOfSourceOneOf1.md
 docs/BillingAPI.md
 docs/BillingExternalId.md
 docs/BillingInfo.md
@@ -451,6 +450,8 @@ docs/ContainerCustomDomainAPI.md
 docs/ContainerDeployRequest.md
 docs/ContainerDeploymentHistoryAPI.md
 docs/ContainerEnvironmentVariableAPI.md
+docs/ContainerGitRepositorySourceRequest.md
+docs/ContainerGitRepositorySourceResponse.md
 docs/ContainerImageCheckRequest.md
 docs/ContainerMainCallsAPI.md
 docs/ContainerNetwork.md
@@ -472,6 +473,13 @@ docs/ContainerResponse.md
 docs/ContainerResponseList.md
 docs/ContainerSecretAPI.md
 docs/ContainerSource.md
+docs/ContainerSourceRequest.md
+docs/ContainerSourceRequestOneOf.md
+docs/ContainerSourceRequestOneOf1.md
+docs/ContainerSourceRequestOneOfImage.md
+docs/ContainerSourceResponse.md
+docs/ContainerSourceResponseOneOf.md
+docs/ContainerSourceResponseOneOf1.md
 docs/ContainerVersionResponse.md
 docs/ContainerVersionResponseList.md
 docs/ContainersAPI.md
@@ -1298,7 +1306,6 @@ model_base.go
 model_base_job_response.go
 model_base_job_response_all_of_source.go
 model_base_job_response_all_of_source_one_of.go
-model_base_job_response_all_of_source_one_of_1.go
 model_billing_external_id.go
 model_billing_info.go
 model_billing_info_request.go
@@ -1489,6 +1496,8 @@ model_commit_response_list.go
 model_company_size_enum.go
 model_container_advanced_settings.go
 model_container_deploy_request.go
+model_container_git_repository_source_request.go
+model_container_git_repository_source_response.go
 model_container_image_check_request.go
 model_container_network.go
 model_container_network_request.go
@@ -1507,6 +1516,13 @@ model_container_request.go
 model_container_response.go
 model_container_response_list.go
 model_container_source.go
+model_container_source_request.go
+model_container_source_request_one_of.go
+model_container_source_request_one_of_1.go
+model_container_source_request_one_of_image.go
+model_container_source_response.go
+model_container_source_response_one_of.go
+model_container_source_response_one_of_1.go
 model_container_version_response.go
 model_container_version_response_list.go
 model_cost.go

@@ -8,9 +8,10 @@ Name | Type | Description | Notes
 **Ports** | Pointer to [**[]ServicePortRequestPortsInner**](ServicePortRequestPortsInner.md) |  | [optional] 
 **Name** | **string** | name is case insensitive | 
 **Description** | Pointer to **string** | give a description to this container | [optional] 
-**RegistryId** | **string** | id of the linked registry | 
-**ImageName** | **string** | The image name pattern differs according to chosen container registry provider:   * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  | 
-**Tag** | **string** | tag of the image container | 
+**RegistryId** | Pointer to **string** | id of the linked registry. Required on create unless &#x60;source&#x60; is sent. See &#x60;source&#x60; for the rules on update.  | [optional] 
+**ImageName** | Pointer to **string** | The image name pattern differs according to chosen container registry provider:   * &#x60;ECR&#x60;: &#x60;repository&#x60; * &#x60;SCALEWAY_CR&#x60;: &#x60;namespace/image&#x60; * &#x60;DOCKER_HUB&#x60;: &#x60;image&#x60; or &#x60;repository/image&#x60; * &#x60;PUBLIC_ECR&#x60;: &#x60;registry_alias/repository&#x60;  Required on create unless &#x60;source&#x60; is sent. See &#x60;source&#x60; for the rules on update.  | [optional] 
+**Tag** | Pointer to **string** | tag of the image container. Required on create unless &#x60;source&#x60; is sent. See &#x60;source&#x60; for the rules on update.  | [optional] 
+**Source** | Pointer to [**ContainerSourceRequest**](ContainerSourceRequest.md) |  | [optional] 
 **Arguments** | Pointer to **[]string** |  | [optional] 
 **Entrypoint** | Pointer to **string** | optional entrypoint when launching container | [optional] 
 **Cpu** | Pointer to **int32** | unit is millicores (m). 1000m &#x3D; 1 cpu | [optional] [default to 500]
@@ -21,18 +22,19 @@ Name | Type | Description | Notes
 **MinRunningInstances** | Pointer to **int32** | Minimum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: 0 means that there is no container running.  | [optional] [default to 1]
 **MaxRunningInstances** | Pointer to **int32** | Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.  | [optional] [default to 1]
 **Healthchecks** | [**Healthcheck**](Healthcheck.md) |  | 
-**AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  | [optional] 
-**AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  | [optional] 
+**AutoPreview** | Pointer to **bool** | Indicates if the &#39;environment preview option&#39; is enabled for this container.   If enabled, a preview environment will be automatically cloned when &#x60;/preview&#x60; endpoint is called.   If not specified, it takes the value of the &#x60;auto_preview&#x60; property from the associated environment.  On a container with a Git repository source, it must be false or not specified: &#x60;true&#x60; returns 400. When not specified on a switch to &#x60;git_repository&#x60;, it is set to false.  | [optional] 
+**AutoDeploy** | Pointer to **NullableBool** | Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \&quot;Auto Deploy container\&quot; endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: &#x60;true&#x60; returns 400. When not specified on a switch to &#x60;git_repository&#x60;, it is set to false.  | [optional] 
 **AnnotationsGroups** | Pointer to [**[]ServiceAnnotationRequest**](ServiceAnnotationRequest.md) |  | [optional] 
 **LabelsGroups** | Pointer to [**[]ServiceLabelRequest**](ServiceLabelRequest.md) |  | [optional] 
 **IconUri** | Pointer to **string** | Icon URI representing the container. | [optional] 
 **Autoscaling** | Pointer to [**AutoscalingPolicyRequest**](AutoscalingPolicyRequest.md) |  | [optional] 
+**BuildSettings** | Pointer to [**BuildSettings**](BuildSettings.md) | Build settings of a container with a Git repository source (&#x60;source.git_repository&#x60;). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a switch to &#x60;git_repository&#x60; without it, the defaults of a new application are used. - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.  | [optional] 
 
 ## Methods
 
 ### NewContainerRequest
 
-`func NewContainerRequest(name string, registryId string, imageName string, tag string, healthchecks Healthcheck, ) *ContainerRequest`
+`func NewContainerRequest(name string, healthchecks Healthcheck, ) *ContainerRequest`
 
 NewContainerRequest instantiates a new ContainerRequest object
 This constructor will assign default values to properties that have it defined,
@@ -161,6 +163,11 @@ and a boolean to check if the value has been set.
 
 SetRegistryId sets RegistryId field to given value.
 
+### HasRegistryId
+
+`func (o *ContainerRequest) HasRegistryId() bool`
+
+HasRegistryId returns a boolean if a field has been set.
 
 ### GetImageName
 
@@ -181,6 +188,11 @@ and a boolean to check if the value has been set.
 
 SetImageName sets ImageName field to given value.
 
+### HasImageName
+
+`func (o *ContainerRequest) HasImageName() bool`
+
+HasImageName returns a boolean if a field has been set.
 
 ### GetTag
 
@@ -201,6 +213,36 @@ and a boolean to check if the value has been set.
 
 SetTag sets Tag field to given value.
 
+### HasTag
+
+`func (o *ContainerRequest) HasTag() bool`
+
+HasTag returns a boolean if a field has been set.
+
+### GetSource
+
+`func (o *ContainerRequest) GetSource() ContainerSourceRequest`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ContainerRequest) GetSourceOk() (*ContainerSourceRequest, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ContainerRequest) SetSource(v ContainerSourceRequest)`
+
+SetSource sets Source field to given value.
+
+### HasSource
+
+`func (o *ContainerRequest) HasSource() bool`
+
+HasSource returns a boolean if a field has been set.
 
 ### GetArguments
 
@@ -616,6 +658,31 @@ SetAutoscaling sets Autoscaling field to given value.
 `func (o *ContainerRequest) HasAutoscaling() bool`
 
 HasAutoscaling returns a boolean if a field has been set.
+
+### GetBuildSettings
+
+`func (o *ContainerRequest) GetBuildSettings() BuildSettings`
+
+GetBuildSettings returns the BuildSettings field if non-nil, zero value otherwise.
+
+### GetBuildSettingsOk
+
+`func (o *ContainerRequest) GetBuildSettingsOk() (*BuildSettings, bool)`
+
+GetBuildSettingsOk returns a tuple with the BuildSettings field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetBuildSettings
+
+`func (o *ContainerRequest) SetBuildSettings(v BuildSettings)`
+
+SetBuildSettings sets BuildSettings field to given value.
+
+### HasBuildSettings
+
+`func (o *ContainerRequest) HasBuildSettings() bool`
+
+HasBuildSettings returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

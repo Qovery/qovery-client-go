@@ -20,7 +20,7 @@ import (
 // checks if the ContainerResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ContainerResponse{}
 
-// ContainerResponse struct for ContainerResponse
+// ContainerResponse `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
 type ContainerResponse struct {
 	Id        string                       `json:"id"`
 	CreatedAt time.Time                    `json:"created_at"`
@@ -67,9 +67,12 @@ type ContainerResponse struct {
 	AnnotationsGroups []OrganizationAnnotationsGroupResponse `json:"annotations_groups,omitempty"`
 	LabelsGroups      []OrganizationLabelsGroupResponse      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
-	IconUri              string                     `json:"icon_uri"`
-	ServiceType          ServiceTypeEnum            `json:"service_type"`
-	Autoscaling          *AutoscalingPolicyResponse `json:"autoscaling,omitempty"`
+	IconUri     string                     `json:"icon_uri"`
+	ServiceType ServiceTypeEnum            `json:"service_type"`
+	Autoscaling *AutoscalingPolicyResponse `json:"autoscaling,omitempty"`
+	Source      *ContainerSourceResponse   `json:"source,omitempty"`
+	// Build settings of a container with a Git repository source. Absent for a container with an image source.
+	BuildSettings        *BuildSettings `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -970,6 +973,70 @@ func (o *ContainerResponse) SetAutoscaling(v AutoscalingPolicyResponse) {
 	o.Autoscaling = &v
 }
 
+// GetSource returns the Source field value if set, zero value otherwise.
+func (o *ContainerResponse) GetSource() ContainerSourceResponse {
+	if o == nil || IsNil(o.Source) {
+		var ret ContainerSourceResponse
+		return ret
+	}
+	return *o.Source
+}
+
+// GetSourceOk returns a tuple with the Source field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetSourceOk() (*ContainerSourceResponse, bool) {
+	if o == nil || IsNil(o.Source) {
+		return nil, false
+	}
+	return o.Source, true
+}
+
+// HasSource returns a boolean if a field has been set.
+func (o *ContainerResponse) HasSource() bool {
+	if o != nil && !IsNil(o.Source) {
+		return true
+	}
+
+	return false
+}
+
+// SetSource gets a reference to the given ContainerSourceResponse and assigns it to the Source field.
+func (o *ContainerResponse) SetSource(v ContainerSourceResponse) {
+	o.Source = &v
+}
+
+// GetBuildSettings returns the BuildSettings field value if set, zero value otherwise.
+func (o *ContainerResponse) GetBuildSettings() BuildSettings {
+	if o == nil || IsNil(o.BuildSettings) {
+		var ret BuildSettings
+		return ret
+	}
+	return *o.BuildSettings
+}
+
+// GetBuildSettingsOk returns a tuple with the BuildSettings field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ContainerResponse) GetBuildSettingsOk() (*BuildSettings, bool) {
+	if o == nil || IsNil(o.BuildSettings) {
+		return nil, false
+	}
+	return o.BuildSettings, true
+}
+
+// HasBuildSettings returns a boolean if a field has been set.
+func (o *ContainerResponse) HasBuildSettings() bool {
+	if o != nil && !IsNil(o.BuildSettings) {
+		return true
+	}
+
+	return false
+}
+
+// SetBuildSettings gets a reference to the given BuildSettings and assigns it to the BuildSettings field.
+func (o *ContainerResponse) SetBuildSettings(v BuildSettings) {
+	o.BuildSettings = &v
+}
+
 func (o ContainerResponse) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -1034,6 +1101,12 @@ func (o ContainerResponse) ToMap() (map[string]interface{}, error) {
 	toSerialize["service_type"] = o.ServiceType
 	if !IsNil(o.Autoscaling) {
 		toSerialize["autoscaling"] = o.Autoscaling
+	}
+	if !IsNil(o.Source) {
+		toSerialize["source"] = o.Source
+	}
+	if !IsNil(o.BuildSettings) {
+		toSerialize["build_settings"] = o.BuildSettings
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -1127,6 +1200,8 @@ func (o *ContainerResponse) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "icon_uri")
 		delete(additionalProperties, "service_type")
 		delete(additionalProperties, "autoscaling")
+		delete(additionalProperties, "source")
+		delete(additionalProperties, "build_settings")
 		o.AdditionalProperties = additionalProperties
 	}
 

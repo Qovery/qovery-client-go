@@ -42,6 +42,7 @@ Name | Type | Description | Notes
 **Tag** | **string** | tag of the image container | 
 **Registry** | [**ContainerRegistryProviderDetailsResponse**](ContainerRegistryProviderDetailsResponse.md) |  | 
 **MaximumGpu** | **int32** | Maximum memory that can be allocated to the container based on organization cluster configuration. unit is MB. 1024 MB &#x3D; 1GB | [default to 0]
+**Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **Type** | [**DatabaseTypeEnum**](DatabaseTypeEnum.md) |  | 
 **Version** | **string** |  | 
 **Mode** | [**DatabaseModeEnum**](DatabaseModeEnum.md) |  | 
@@ -52,7 +53,6 @@ Name | Type | Description | Notes
 **DiskEncrypted** | Pointer to **bool** | indicates if the database disk is encrypted or not | [optional] 
 **DiskType** | Pointer to **NullableString** | EBS disk type for the database. Only applicable for MANAGED mode (gp2 or gp3). Null for CONTAINER mode. | [optional] 
 **TimeoutSec** | **int32** |  | [default to 600]
-**Source** | [**HelmResponseAllOfSource**](HelmResponseAllOfSource.md) |  | 
 **AllowClusterWideResources** | **bool** | If we should allow the chart to deploy object outside his specified namespace. Setting this flag to true, requires special rights  | [default to false]
 **ValuesOverride** | [**HelmResponseAllOfValuesOverride**](HelmResponseAllOfValuesOverride.md) |  | 
 **BlueprintId** | Pointer to **NullableString** | The blueprint ID the service has been created from  | [optional] 
@@ -95,7 +95,7 @@ Name | Type | Description | Notes
 
 ### NewListServicesByEnvironmentId200ResponseResultsInner
 
-`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, source HelmResponseAllOfSource, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, webhookAuth AgenticWorkflowWebhookAuthResponse, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *ListServicesByEnvironmentId200ResponseResultsInner`
+`func NewListServicesByEnvironmentId200ResponseResultsInner(id string, createdAt time.Time, environment ReferenceObject, maximumCpu int32, maximumMemory int32, name string, description string, cpu int32, memory int32, gpu int32, minRunningInstances int32, maxRunningInstances int32, healthchecks Healthcheck, autoPreview bool, arguments []string, autoDeploy bool, iconUri string, serviceType ServiceTypeEnum, imageName string, tag string, registry ContainerRegistryProviderDetailsResponse, maximumGpu int32, source HelmResponseAllOfSource, type_ DatabaseTypeEnum, version string, mode DatabaseModeEnum, timeoutSec int32, allowClusterWideResources bool, valuesOverride HelmResponseAllOfValuesOverride, terraformVariablesSource TerraformVariablesSourceResponse, engine TerraformEngineEnum, backend TerraformBackend, providerVersion TerraformProviderVersion, jobResources TerraformJobResourcesResponse, useClusterCredentials bool, actionExtraArguments map[string][]string, namespace string, environmentId string, clusterId string, slug string, webhookIpAllowlist []string, dockerFragment string, enabled bool, mcp string, mcpServerIds []string, mcpServers []AgenticWorkflowMcpServer, contextServiceIds []string, outputs []AgenticWorkflowOutput, model AgenticWorkflowModelResponse, projectRepositories []AgenticWorkflowProjectRepository, agentPrompt string, governance AgenticWorkflowGovernance, resources AgenticWorkflowResources, webhook AgenticWorkflowWebhook, webhookAuth AgenticWorkflowWebhookAuthResponse, schedule NullableAgenticWorkflowResponseAllOfSchedule, executionMode AgenticWorkflowExecutionMode, ) *ListServicesByEnvironmentId200ResponseResultsInner`
 
 NewListServicesByEnvironmentId200ResponseResultsInner instantiates a new ListServicesByEnvironmentId200ResponseResultsInner object
 This constructor will assign default values to properties that have it defined,
@@ -990,6 +990,26 @@ and a boolean to check if the value has been set.
 SetMaximumGpu sets MaximumGpu field to given value.
 
 
+### GetSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSource() HelmResponseAllOfSource`
+
+GetSource returns the Source field if non-nil, zero value otherwise.
+
+### GetSourceOk
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceOk() (*HelmResponseAllOfSource, bool)`
+
+GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSource
+
+`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSource(v HelmResponseAllOfSource)`
+
+SetSource sets Source field to given value.
+
+
 ### GetType
 
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetType() DatabaseTypeEnum`
@@ -1228,26 +1248,6 @@ and a boolean to check if the value has been set.
 `func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetTimeoutSec(v int32)`
 
 SetTimeoutSec sets TimeoutSec field to given value.
-
-
-### GetSource
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSource() HelmResponseAllOfSource`
-
-GetSource returns the Source field if non-nil, zero value otherwise.
-
-### GetSourceOk
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) GetSourceOk() (*HelmResponseAllOfSource, bool)`
-
-GetSourceOk returns a tuple with the Source field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetSource
-
-`func (o *ListServicesByEnvironmentId200ResponseResultsInner) SetSource(v HelmResponseAllOfSource)`
-
-SetSource sets Source field to given value.
 
 
 ### GetAllowClusterWideResources
