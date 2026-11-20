@@ -19,13 +19,13 @@ import (
 // checks if the ContainerGitRepositorySourceRequest type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ContainerGitRepositorySourceRequest{}
 
-// ContainerGitRepositorySourceRequest The Git repository and the Dockerfile that Qovery builds into the container image.
+// ContainerGitRepositorySourceRequest The Git repository and the Dockerfile that Qovery builds into the container image. `owner` and `name` are not needed: the repository is read from `url`. They are still accepted, and ignored.
 type ContainerGitRepositorySourceRequest struct {
-	// application git repository URL
+	// Git repository URL
 	Url string `json:"url"`
 	// Name of the branch to use. This is optional If not specified, then the branch used is the `main` or `master` one
 	Branch *string `json:"branch,omitempty"`
-	// indicates the root path of the application.
+	// indicates the root path in the repository.
 	RootPath *string `json:"root_path,omitempty"`
 	// The git token id on Qovery side
 	GitTokenId NullableString  `json:"git_token_id,omitempty"`

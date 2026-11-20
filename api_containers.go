@@ -297,14 +297,19 @@ func (r ApiCreateContainerRequest) Execute() (*ContainerResponse, *http.Response
 /*
 CreateContainer Create a container
 
-A container is created from an image: send `registry_id`, `image_name` and `tag`, or `source.image`.
+A container is created from an image or from a Git repository:
+- image: send `registry_id`, `image_name` and `tag`, or `source.image`;
+- Git repository: send `source.git_repository`, and optionally `build_settings`. The repository, its token, the Dockerfile and the build settings go through the same checks, with the same errors, as a switch to `git_repository` with `PUT /container/{containerId}`. Nothing is created when a check fails.
 
 Returns 400 when:
-- `source.git_repository` is sent: a Git repository source can only be set on update, with `PUT /container/{containerId}`;
 - `source` is sent together with `registry_id`, `image_name` or `tag`;
 - `source` has both `image` and `git_repository`, or neither;
 - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent;
-- `build_settings` is sent.
+- `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent;
+- `build_settings` is sent with an image source;
+- `source.git_repository` is sent and the environment's cluster has no build registry.
+
+Returns 404 when the registry in `registry_id` or `source.image.registry_id` does not exist in the environment's organization.
 
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@param environmentId Environment ID

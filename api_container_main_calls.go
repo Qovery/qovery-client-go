@@ -512,6 +512,147 @@ func (a *ContainerMainCallsAPIService) GetContainerStatusExecute(r ApiGetContain
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
+type ApiListContainerCommitRequest struct {
+	ctx         context.Context
+	ApiService  *ContainerMainCallsAPIService
+	containerId string
+	startId     *string
+	gitCommitId *string
+}
+
+// Starting point after which to return results
+func (r ApiListContainerCommitRequest) StartId(startId string) ApiListContainerCommitRequest {
+	r.startId = &startId
+	return r
+}
+
+// Git Commit ID
+func (r ApiListContainerCommitRequest) GitCommitId(gitCommitId string) ApiListContainerCommitRequest {
+	r.gitCommitId = &gitCommitId
+	return r
+}
+
+func (r ApiListContainerCommitRequest) Execute() (*CommitResponseList, *http.Response, error) {
+	return r.ApiService.ListContainerCommitExecute(r)
+}
+
+/*
+ListContainerCommit List last container commits
+
+Returns the last 100 commits of the branch of the Git repository the container builds from, as `listApplicationCommit` and `listJobCommit` do for applications and jobs.
+`startId` and `gitCommitId` are accepted and ignored.
+
+Returns 400 when the container has an image source. Returns 404 when the Git provider cannot list the commits.
+
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@param containerId Container ID
+	@return ApiListContainerCommitRequest
+*/
+func (a *ContainerMainCallsAPIService) ListContainerCommit(ctx context.Context, containerId string) ApiListContainerCommitRequest {
+	return ApiListContainerCommitRequest{
+		ApiService:  a,
+		ctx:         ctx,
+		containerId: containerId,
+	}
+}
+
+// Execute executes the request
+//
+//	@return CommitResponseList
+func (a *ContainerMainCallsAPIService) ListContainerCommitExecute(r ApiListContainerCommitRequest) (*CommitResponseList, *http.Response, error) {
+	var (
+		localVarHTTPMethod  = http.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue *CommitResponseList
+	)
+
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "ContainerMainCallsAPIService.ListContainerCommit")
+	if err != nil {
+		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+	}
+
+	localVarPath := localBasePath + "/container/{containerId}/commit"
+	localVarPath = strings.Replace(localVarPath, "{"+"containerId"+"}", url.PathEscape(parameterValueToString(r.containerId, "containerId")), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	if r.startId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "startId", r.startId, "")
+	}
+	if r.gitCommitId != nil {
+		parameterAddToHeaderOrQuery(localVarQueryParams, "gitCommitId", r.gitCommitId, "")
+	}
+	// to determine the Content-Type header
+	localVarHTTPContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
+	if localVarHTTPContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHTTPContentType
+	}
+
+	// to determine the Accept header
+	localVarHTTPHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
+	if localVarHTTPHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
+	}
+	if r.ctx != nil {
+		// API Key Authentication
+		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {
+			if apiKey, ok := auth["ApiKeyAuth"]; ok {
+				var key string
+				if apiKey.Prefix != "" {
+					key = apiKey.Prefix + " " + apiKey.Key
+				} else {
+					key = apiKey.Key
+				}
+				localVarHeaderParams["Authorization"] = key
+			}
+		}
+	}
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHTTPResponse, err := a.client.callAPI(req)
+	if err != nil || localVarHTTPResponse == nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
+	localVarHTTPResponse.Body.Close()
+	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
+	if err != nil {
+		return localVarReturnValue, localVarHTTPResponse, err
+	}
+
+	if localVarHTTPResponse.StatusCode >= 300 {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: localVarHTTPResponse.Status,
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
+	if err != nil {
+		newErr := &GenericOpenAPIError{
+			body:  localVarBody,
+			error: err.Error(),
+		}
+		return localVarReturnValue, localVarHTTPResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHTTPResponse, nil
+}
+
 type ApiListContainerLinksRequest struct {
 	ctx         context.Context
 	ApiService  *ContainerMainCallsAPIService

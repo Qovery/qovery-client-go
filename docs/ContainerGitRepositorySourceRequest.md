@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Url** | **string** | application git repository URL | 
+**Url** | **string** | Git repository URL | 
 **Branch** | Pointer to **string** | Name of the branch to use. This is optional If not specified, then the branch used is the &#x60;main&#x60; or &#x60;master&#x60; one  | [optional] 
-**RootPath** | Pointer to **string** | indicates the root path of the application. | [optional] [default to "/"]
+**RootPath** | Pointer to **string** | indicates the root path in the repository. | [optional] [default to "/"]
 **GitTokenId** | Pointer to **NullableString** | The git token id on Qovery side | [optional] 
 **Provider** | [**GitProviderEnum**](GitProviderEnum.md) |  | 
 **DockerfilePath** | **string** | The path of the associated Dockerfile | 

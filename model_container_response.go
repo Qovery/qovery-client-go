@@ -20,7 +20,7 @@ import (
 // checks if the ContainerResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &ContainerResponse{}
 
-// ContainerResponse `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
+// ContainerResponse `registry`, `image_name` and `tag` always hold the image this container runs: - with an image source, the configured image; - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git; a container created from Git has none yet, so it reports the cluster's build registry, the repository name and the tag `pending-first-build`. After it, this is the built image in the cluster's registry, with its build tag.  `source` says where the image comes from.
 type ContainerResponse struct {
 	Id        string                       `json:"id"`
 	CreatedAt time.Time                    `json:"created_at"`

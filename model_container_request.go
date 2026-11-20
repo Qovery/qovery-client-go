@@ -51,16 +51,16 @@ type ContainerRequest struct {
 	// Maximum number of instances running. This resource auto-scale based on the CPU and Memory consumption. Note: -1 means that there is no limit.
 	MaxRunningInstances *int32      `json:"max_running_instances,omitempty"`
 	Healthchecks        Healthcheck `json:"healthchecks"`
-	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
+	// Indicates if the 'environment preview option' is enabled for this container.   If enabled, a preview environment will be automatically cloned when `/preview` endpoint is called.   If not specified, it takes the value of the `auto_preview` property from the associated environment.  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a create from, or a switch to, `git_repository`, it is set to false.
 	AutoPreview *bool `json:"auto_preview,omitempty"`
-	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a switch to `git_repository`, it is set to false.
+	// Specify if the container will be automatically updated after receiving a new image tag.  The new image tag shall be communicated via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments  On a container with a Git repository source, it must be false or not specified: `true` returns 400. When not specified on a create from, or a switch to, `git_repository`, it is set to false.
 	AutoDeploy        NullableBool               `json:"auto_deploy,omitempty"`
 	AnnotationsGroups []ServiceAnnotationRequest `json:"annotations_groups,omitempty"`
 	LabelsGroups      []ServiceLabelRequest      `json:"labels_groups,omitempty"`
 	// Icon URI representing the container.
 	IconUri     *string                   `json:"icon_uri,omitempty"`
 	Autoscaling *AutoscalingPolicyRequest `json:"autoscaling,omitempty"`
-	// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a switch to `git_repository` without it, the defaults of a new application are used. - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
+	// Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image. - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged. - On update, when not sent, the stored values are kept. - On a create from, or a switch to, `git_repository` without it, the defaults of a new application are used. - Sending it when the container is created with, keeps, or switches to, an image source returns 400.
 	BuildSettings        *BuildSettings `json:"build_settings,omitempty"`
 	AdditionalProperties map[string]interface{}
 }

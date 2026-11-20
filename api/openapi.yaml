@@ -10043,14 +10043,19 @@ paths:
       - Containers
     post:
       description: |
-        A container is created from an image: send `registry_id`, `image_name` and `tag`, or `source.image`.
+        A container is created from an image or from a Git repository:
+        - image: send `registry_id`, `image_name` and `tag`, or `source.image`;
+        - Git repository: send `source.git_repository`, and optionally `build_settings`. The repository, its token, the Dockerfile and the build settings go through the same checks, with the same errors, as a switch to `git_repository` with `PUT /container/{containerId}`. Nothing is created when a check fails.
 
         Returns 400 when:
-        - `source.git_repository` is sent: a Git repository source can only be set on update, with `PUT /container/{containerId}`;
         - `source` is sent together with `registry_id`, `image_name` or `tag`;
         - `source` has both `image` and `git_repository`, or neither;
         - `source` is not sent and `registry_id`, `image_name` and `tag` are not all sent;
-        - `build_settings` is sent.
+        - `auto_deploy` or `auto_preview` is `true` while `source.git_repository` is sent;
+        - `build_settings` is sent with an image source;
+        - `source.git_repository` is sent and the environment's cluster has no build registry.
+
+        Returns 404 when the registry in `registry_id` or `source.image.registry_id` does not exist in the environment's organization.
       operationId: createContainer
       parameters:
       - description: Environment ID
@@ -13204,6 +13209,60 @@ paths:
       summary: Edit advanced settings
       tags:
       - Container Configuration
+  /container/{containerId}/commit:
+    get:
+      description: |
+        Returns the last 100 commits of the branch of the Git repository the container builds from, as `listApplicationCommit` and `listJobCommit` do for applications and jobs.
+        `startId` and `gitCommitId` are accepted and ignored.
+
+        Returns 400 when the container has an image source. Returns 404 when the Git provider cannot list the commits.
+      operationId: listContainerCommit
+      parameters:
+      - description: Container ID
+        explode: false
+        in: path
+        name: containerId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: Starting point after which to return results
+        explode: true
+        in: query
+        name: startId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: Git Commit ID
+        explode: true
+        in: query
+        name: gitCommitId
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitResponseList'
+          description: List container commits
+        "400":
+          description: Bad request
+        "401":
+          description: Access token is missing or invalid
+        "403":
+          description: Access forbidden
+        "404":
+          description: Resource not found
+      summary: List last container commits
+      tags:
+      - Container Main Calls
   /container/{containerId}/deploy:
     post:
       description: |
@@ -33133,15 +33192,15 @@ components:
               \ takes the value of the `auto_preview` property from the associated\
               \ environment.\n\nOn a container with a Git repository source, it must\
               \ be false or not specified: `true` returns 400. When not specified\
-              \ on a switch to `git_repository`, it is set to false.\n"
+              \ on a create from, or a switch to, `git_repository`, it is set to false.\n"
             type: boolean
           auto_deploy:
             description: "Specify if the container will be automatically updated after\
               \ receiving a new image tag. \nThe new image tag shall be communicated\
               \ via the \"Auto Deploy container\" endpoint https://api-doc.qovery.com/#tag/Containers/operation/autoDeployContainerEnvironments\n\
               \nOn a container with a Git repository source, it must be false or not\
-              \ specified: `true` returns 400. When not specified on a switch to `git_repository`,\
-              \ it is set to false.\n"
+              \ specified: `true` returns 400. When not specified on a create from,\
+              \ or a switch to, `git_repository`, it is set to false.\n"
             nullable: true
             type: boolean
           annotations_groups:
@@ -33163,8 +33222,8 @@ components:
               Build settings of a container with a Git repository source (`source.git_repository`). They apply only to the build of its image.
               - When sent, it replaces all stored values: omitted properties take their defaults, they are not merged.
               - On update, when not sent, the stored values are kept.
-              - On a switch to `git_repository` without it, the defaults of a new application are used.
-              - Sending it when the container keeps, or switches to, an image source returns 400. This includes create.
+              - On a create from, or a switch to, `git_repository` without it, the defaults of a new application are used.
+              - Sending it when the container is created with, keeps, or switches to, an image source returns 400.
         required:
         - healthchecks
         - name
@@ -33459,7 +33518,7 @@ components:
       description: |
         `registry`, `image_name` and `tag` always hold the image this container runs:
         - with an image source, the configured image;
-        - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git. After it, this is the built image in the cluster's registry, with its build tag.
+        - with a Git repository source, the image last deployed. Until the first successful deployment from Git, this is the image from before the switch to Git; a container created from Git has none yet, so it reports the cluster's build registry, the repository name and the tag `pending-first-build`. After it, this is the built image in the cluster's registry, with its build tag.
 
         `source` says where the image comes from.
       example:
@@ -34185,9 +34244,16 @@ components:
       description: |
         Where the container image comes from. Send exactly one of `image` or `git_repository`; both, or neither, returns 400. A `null` `image` or `git_repository` counts as not sent.
         - `image`: an image from a container registry, like the flat `registry_id`, `image_name` and `tag` fields.
-        - `git_repository`: a Git repository with a Dockerfile. Qovery builds the image from the deployed commit. Accepted on update (`PUT /container/{containerId}`) only: sending it on create returns 400.
+        - `git_repository`: a Git repository with a Dockerfile. Qovery builds the image from the deployed commit. Accepted on create (`POST /environment/{environmentId}/container`) and on update (`PUT /container/{containerId}`). Building from Git needs Qovery engine v1.417.0 or later on the cluster: on an older engine, the deployment fails.
 
         Switching the source keeps the same container: its id, Kubernetes names, volumes and built-in variables. The switch does not deploy; the next deployment uses the new source.
+
+        A container with a Git repository source has three more built-in variables. `<ID>` is the identifier its other built-in variables use, as in `QOVERY_CONTAINER_<ID>_HOST_INTERNAL`:
+        - `QOVERY_CONTAINER_<ID>_GIT_COMMIT_ID`: the deployed commit;
+        - `QOVERY_CONTAINER_<ID>_GIT_BRANCH`: the branch configured on the source;
+        - `QOVERY_CONTAINER_<ID>_GIT_REPOSITORY_URL`: the repository URL, without credentials, query or fragment.
+
+        They are added when missing, when the container is created from, or switched to, a Git repository. A switch back to an image keeps them, with empty values.
 
         Rules:
         - On update (`PUT /container/{containerId}`), `source` is ignored when it repeats the stored source, and the flat `registry_id`, `image_name` and `tag` fields are ignored when every one sent equals the image the container runs (the `registry.id`, `image_name` and `tag` that GET returns). A body built from the GET response is accepted as is; only the side the client changed is applied.
@@ -34195,7 +34261,7 @@ components:
         - On update of a container with an image source, `source.image.registry_id` may be omitted: the stored registry is kept. Switching a container with a Git repository source back to an image, and create, require it.
         - When `source` is not sent, the stored source is kept. Flat fields never switch the source.
         - On a container with a Git repository source, flat fields equal to the `registry.id`, `image_name` and `tag` that GET returns are accepted and change nothing; different values return 400 unless `source.image` asks for the same image. A deployment that finishes between the GET and the PUT changes these values: get the container again and retry. Send `source.image` to switch back to an image.
-        - A `git_repository` source requires `auto_deploy` and `auto_preview` to be false or not specified: 400 otherwise. When not specified on a switch to `git_repository`, both are set to false.
+        - A `git_repository` source requires `auto_deploy` and `auto_preview` to be false or not specified: 400 otherwise. When not specified on a create from, or a switch to, `git_repository`, both are set to false.
       oneOf:
       - $ref: '#/components/schemas/ContainerSourceRequest_oneOf'
       - $ref: '#/components/schemas/ContainerSourceRequest_oneOf_1'
@@ -34213,7 +34279,32 @@ components:
       - $ref: '#/components/schemas/ContainerSourceResponse_oneOf_1'
     ContainerGitRepositorySourceRequest:
       allOf:
-      - $ref: '#/components/schemas/ApplicationGitRepositoryRequest'
+      - properties:
+          url:
+            description: Git repository URL
+            example: https://github.com/Qovery/simple-node-app
+            type: string
+          branch:
+            description: |
+              Name of the branch to use. This is optional
+              If not specified, then the branch used is the `main` or `master` one
+            example: feat/text_xxx
+            type: string
+          root_path:
+            default: /
+            description: indicates the root path in the repository.
+            type: string
+          git_token_id:
+            description: The git token id on Qovery side
+            format: uuid
+            nullable: true
+            type: string
+          provider:
+            $ref: '#/components/schemas/GitProviderEnum'
+        required:
+        - provider
+        - url
+        type: object
       - properties:
           dockerfile_path:
             description: The path of the associated Dockerfile
@@ -34226,8 +34317,9 @@ components:
         required:
         - dockerfile_path
         type: object
-      description: The Git repository and the Dockerfile that Qovery builds into the
-        container image.
+      description: |
+        The Git repository and the Dockerfile that Qovery builds into the container image.
+        `owner` and `name` are not needed: the repository is read from `url`. They are still accepted, and ignored.
     ContainerGitRepositorySourceResponse:
       allOf:
       - $ref: '#/components/schemas/ApplicationGitRepository'
@@ -35161,9 +35253,11 @@ components:
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           image_tag: image_tag
         containers:
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           image_tag: image_tag
-        - id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - git_commit_id: git_commit_id
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           image_tag: image_tag
         helms:
         - git_commit_id: git_commit_id
@@ -56655,6 +56749,7 @@ components:
       type: object
     DeployAllRequest_containers_inner:
       example:
+        git_commit_id: git_commit_id
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         image_tag: image_tag
       properties:
@@ -56667,8 +56762,13 @@ components:
             new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)
 
             For a container with a Git repository source:
-            - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at its stored commit;
+            - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at `git_commit_id`, or at its stored commit when `git_commit_id` is absent or empty;
             - a different `image_tag` returns 400.
+          type: string
+        git_commit_id:
+          description: |
+            Commit to deploy, for a container with a Git repository source. When absent or empty, the container's stored commit is deployed. On a container with a Git repository source, a value that is not a 40-character SHA-1 commit id returns 400.
+            Ignored for a container with an image source.
           type: string
       required:
       - id

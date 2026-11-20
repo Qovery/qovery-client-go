@@ -305,6 +305,7 @@ Class | Method | HTTP request | Description
 *ContainerMainCallsAPI* | [**EditContainer**](docs/ContainerMainCallsAPI.md#editcontainer) | **Put** /container/{containerId} | Edit container
 *ContainerMainCallsAPI* | [**GetContainer**](docs/ContainerMainCallsAPI.md#getcontainer) | **Get** /container/{containerId} | Get container by ID
 *ContainerMainCallsAPI* | [**GetContainerStatus**](docs/ContainerMainCallsAPI.md#getcontainerstatus) | **Get** /container/{containerId}/status | Get container status
+*ContainerMainCallsAPI* | [**ListContainerCommit**](docs/ContainerMainCallsAPI.md#listcontainercommit) | **Get** /container/{containerId}/commit | List last container commits
 *ContainerMainCallsAPI* | [**ListContainerLinks**](docs/ContainerMainCallsAPI.md#listcontainerlinks) | **Get** /container/{containerId}/link | List all URLs of the container
 *ContainerRegistriesAPI* | [**CreateContainerRegistry**](docs/ContainerRegistriesAPI.md#createcontainerregistry) | **Post** /organization/{organizationId}/containerRegistry | Create a container registry
 *ContainerRegistriesAPI* | [**DeleteContainerRegistry**](docs/ContainerRegistriesAPI.md#deletecontainerregistry) | **Delete** /organization/{organizationId}/containerRegistry/{containerRegistryId} | Delete a container registry

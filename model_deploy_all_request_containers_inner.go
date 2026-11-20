@@ -23,8 +23,10 @@ var _ MappedNullable = &DeployAllRequestContainersInner{}
 type DeployAllRequestContainersInner struct {
 	// id of the container to be updated.
 	Id string `json:"id"`
-	// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)  For a container with a Git repository source: - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at its stored commit; - a different `image_tag` returns 400.
-	ImageTag             *string `json:"image_tag,omitempty"`
+	// new tag for the container. Can be empty only if the service has been already deployed (in this case the service version won't be changed)  For a container with a Git repository source: - an absent or empty `image_tag`, or one equal to the `tag` that `GET /container/{containerId}` returns, deploys the container at `git_commit_id`, or at its stored commit when `git_commit_id` is absent or empty; - a different `image_tag` returns 400.
+	ImageTag *string `json:"image_tag,omitempty"`
+	// Commit to deploy, for a container with a Git repository source. When absent or empty, the container's stored commit is deployed. On a container with a Git repository source, a value that is not a 40-character SHA-1 commit id returns 400. Ignored for a container with an image source.
+	GitCommitId          *string `json:"git_commit_id,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -104,6 +106,38 @@ func (o *DeployAllRequestContainersInner) SetImageTag(v string) {
 	o.ImageTag = &v
 }
 
+// GetGitCommitId returns the GitCommitId field value if set, zero value otherwise.
+func (o *DeployAllRequestContainersInner) GetGitCommitId() string {
+	if o == nil || IsNil(o.GitCommitId) {
+		var ret string
+		return ret
+	}
+	return *o.GitCommitId
+}
+
+// GetGitCommitIdOk returns a tuple with the GitCommitId field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *DeployAllRequestContainersInner) GetGitCommitIdOk() (*string, bool) {
+	if o == nil || IsNil(o.GitCommitId) {
+		return nil, false
+	}
+	return o.GitCommitId, true
+}
+
+// HasGitCommitId returns a boolean if a field has been set.
+func (o *DeployAllRequestContainersInner) HasGitCommitId() bool {
+	if o != nil && !IsNil(o.GitCommitId) {
+		return true
+	}
+
+	return false
+}
+
+// SetGitCommitId gets a reference to the given string and assigns it to the GitCommitId field.
+func (o *DeployAllRequestContainersInner) SetGitCommitId(v string) {
+	o.GitCommitId = &v
+}
+
 func (o DeployAllRequestContainersInner) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -117,6 +151,9 @@ func (o DeployAllRequestContainersInner) ToMap() (map[string]interface{}, error)
 	toSerialize["id"] = o.Id
 	if !IsNil(o.ImageTag) {
 		toSerialize["image_tag"] = o.ImageTag
+	}
+	if !IsNil(o.GitCommitId) {
+		toSerialize["git_commit_id"] = o.GitCommitId
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -163,6 +200,7 @@ func (o *DeployAllRequestContainersInner) UnmarshalJSON(data []byte) (err error)
 	if err = json.Unmarshal(data, &additionalProperties); err == nil {
 		delete(additionalProperties, "id")
 		delete(additionalProperties, "image_tag")
+		delete(additionalProperties, "git_commit_id")
 		o.AdditionalProperties = additionalProperties
 	}
 
