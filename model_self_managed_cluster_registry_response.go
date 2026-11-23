@@ -19,7 +19,7 @@ import (
 // checks if the SelfManagedClusterRegistryResponse type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SelfManagedClusterRegistryResponse{}
 
-// SelfManagedClusterRegistryResponse Default registry of the cluster, derived from its cloud credential and region: ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry on Scaleway.
+// SelfManagedClusterRegistryResponse Registry of the cluster. On AWS, GCP and Scaleway it is derived from the cloud credential and region: ECR, Artifact Registry or Scaleway Container Registry. On an on-premise provider it is the generic registry given in the request, or an empty generic registry.
 type SelfManagedClusterRegistryResponse struct {
 	Id                   string                    `json:"id"`
 	Kind                 ContainerRegistryKindEnum `json:"kind"`

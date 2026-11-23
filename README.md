@@ -1508,6 +1508,8 @@ Class | Method | HTTP request | Description
  - [SelfManagedClusterCredentials](docs/SelfManagedClusterCredentials.md)
  - [SelfManagedClusterKind](docs/SelfManagedClusterKind.md)
  - [SelfManagedClusterPlatformSelection](docs/SelfManagedClusterPlatformSelection.md)
+ - [SelfManagedClusterRegistryCredentialsRequest](docs/SelfManagedClusterRegistryCredentialsRequest.md)
+ - [SelfManagedClusterRegistryRequest](docs/SelfManagedClusterRegistryRequest.md)
  - [SelfManagedClusterRegistryResponse](docs/SelfManagedClusterRegistryResponse.md)
  - [SelfManagedClusterRequest](docs/SelfManagedClusterRequest.md)
  - [SelfManagedClusterResponse](docs/SelfManagedClusterResponse.md)

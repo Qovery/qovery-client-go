@@ -6,11 +6,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | **string** |  | 
 **Production** | Pointer to **bool** |  | [optional] [default to false]
-**Provider** | **string** | Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. | 
-**Region** | **string** | Region of the provider known to Qovery; a zone such as &#x60;fr-par-1&#x60; on Scaleway. | 
+**Provider** | **string** | Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. ON_PREMISE, HETZNER, OVH, CIVO, ORACLE and IBM are the on-premise providers, for any other Kubernetes: the cluster kind is SELF_MANAGED. They are not generally available yet and answer 400 outside a short list of Qovery test organizations. | 
+**Region** | **string** | Region of the provider known to Qovery; a zone such as &#x60;fr-par-1&#x60; on Scaleway; &#x60;on-premise&#x60; for the on-premise providers. | 
 **Credentials** | [**SelfManagedClusterCredentials**](SelfManagedClusterCredentials.md) |  | 
 **Platform** | [**SelfManagedClusterPlatformSelection**](SelfManagedClusterPlatformSelection.md) |  | 
 **ClusterInputs** | Pointer to **map[string]map[string]string** | String values keyed first by component key and then by input key | [optional] 
+**Registry** | Pointer to [**SelfManagedClusterRegistryRequest**](SelfManagedClusterRegistryRequest.md) |  | [optional] 
 
 ## Methods
 
@@ -180,6 +181,31 @@ SetClusterInputs sets ClusterInputs field to given value.
 `func (o *SelfManagedClusterRequest) HasClusterInputs() bool`
 
 HasClusterInputs returns a boolean if a field has been set.
+
+### GetRegistry
+
+`func (o *SelfManagedClusterRequest) GetRegistry() SelfManagedClusterRegistryRequest`
+
+GetRegistry returns the Registry field if non-nil, zero value otherwise.
+
+### GetRegistryOk
+
+`func (o *SelfManagedClusterRequest) GetRegistryOk() (*SelfManagedClusterRegistryRequest, bool)`
+
+GetRegistryOk returns a tuple with the Registry field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRegistry
+
+`func (o *SelfManagedClusterRequest) SetRegistry(v SelfManagedClusterRegistryRequest)`
+
+SetRegistry sets Registry field to given value.
+
+### HasRegistry
+
+`func (o *SelfManagedClusterRequest) HasRegistry() bool`
+
+HasRegistry returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

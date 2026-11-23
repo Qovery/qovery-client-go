@@ -2001,23 +2001,30 @@ paths:
       - Clusters
   /v1/organization/{organizationId}/selfManagedCluster:
     post:
-      description: "Creates a self-managed cluster on an existing AWS, GCP or Scaleway\
-        \ cloud credential of the organization. The organization's plan must include\
-        \ self-managed clusters, otherwise the call answers 403. On AWS the credential\
-        \ only needs ECR permissions for the cluster itself, including `ecr:DescribeRepositories`\
-        \ in `us-east-1`, which Qovery calls to check the credential whatever the\
-        \ cluster region; features that call other AWS services with the credential,\
-        \ such as managed databases or Terraform services using the cluster credentials,\
-        \ need more. Without `platform.templateKey` and `platform.templateVersion`,\
-        \ Qovery selects its self-managed platform template release and the response\
-        \ returns it: `\"platform\": {}` gives that release with its default configuration.\
-        \ Without `clusterInputs`, the cluster has no cluster inputs. The credential,\
-        \ including its registry access in the cluster region, and the platform configuration\
+      description: "Creates a self-managed cluster on an existing cloud credential\
+        \ of the organization: AWS, GCP or Scaleway, or an on-premise credential for\
+        \ any other Kubernetes (`provider` `ON_PREMISE`, `HETZNER`, `OVH`, `CIVO`,\
+        \ `ORACLE` or `IBM`, in region `on-premise`). The on-premise providers are\
+        \ not generally available yet: they are accepted for a short list of Qovery\
+        \ test organizations and answer 400 for the others. The organization's plan\
+        \ is not checked. On AWS the credential only needs ECR permissions for the\
+        \ cluster itself, including `ecr:DescribeRepositories` in `us-east-1`, which\
+        \ Qovery calls to check the credential whatever the cluster region; features\
+        \ that call other AWS services with the credential, such as managed databases\
+        \ or Terraform services using the cluster credentials, need more. Without\
+        \ `platform.templateKey` and `platform.templateVersion`, Qovery selects its\
+        \ self-managed platform template release and the response returns it: `\"\
+        platform\": {}` gives that release with its default configuration. Without\
+        \ `clusterInputs`, the cluster has no cluster inputs. The credential, including\
+        \ its registry access in the cluster region, and the platform configuration\
         \ are checked before anything is created. One transaction then writes the\
         \ cluster, its Qovery DNS and build providers, its default registry derived\
         \ from the credential (ECR on AWS, Artifact Registry on GCP, Scaleway Container\
         \ Registry on Scaleway), its initial deployment status, its platform configuration\
-        \ and its Qovery Operator enrollment. Install the Operator next with the cluster's\
+        \ and its Qovery Operator enrollment. No registry can be derived from an on-premise\
+        \ credential: the cluster gets the generic registry given in `registry`, or\
+        \ an empty generic registry to configure with the container registry API before\
+        \ the first application deployment. Install the Operator next with the cluster's\
         \ Operator bootstrap."
       operationId: createSelfManagedCluster
       parameters:
@@ -2045,9 +2052,11 @@ paths:
           description: Created self-managed cluster
         "400":
           description: "Invalid body, including only one of `platform.templateKey`\
-            \ and `platform.templateVersion`, provider other than AWS, GCP or SCW,\
-            \ unknown region, invalid name, cloud credential of another provider,\
-            \ the registry refusing the credential, or invalid platform configuration"
+            \ and `platform.templateVersion`, provider not supported or not open to\
+            \ the organization, unknown region, invalid name, cloud credential of\
+            \ another provider, `registry` given on AWS, GCP or SCW, an unknown key\
+            \ in `registry`, an invalid `registry.url`, the registry refusing the\
+            \ credential, or invalid platform configuration"
         "401":
           description: Access token is missing or invalid
         "403":
@@ -23707,6 +23716,11 @@ components:
       type: object
     SelfManagedClusterRequest:
       example:
+        registry:
+          credentials:
+            password: password
+            username: username
+          url: https://registry.example.com
         production: false
         provider: AWS
         credentials:
@@ -23731,15 +23745,25 @@ components:
           type: boolean
         provider:
           description: "Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED\
-            \ on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW."
+            \ on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. ON_PREMISE,\
+            \ HETZNER, OVH, CIVO, ORACLE and IBM are the on-premise providers, for\
+            \ any other Kubernetes: the cluster kind is SELF_MANAGED. They are not\
+            \ generally available yet and answer 400 outside a short list of Qovery\
+            \ test organizations."
           enum:
           - AWS
           - GCP
           - SCW
+          - ON_PREMISE
+          - HETZNER
+          - OVH
+          - CIVO
+          - ORACLE
+          - IBM
           type: string
         region:
           description: Region of the provider known to Qovery; a zone such as `fr-par-1`
-            on Scaleway.
+            on Scaleway; `on-premise` for the on-premise providers.
           example: eu-west-3
           type: string
         credentials:
@@ -23754,12 +23778,55 @@ components:
           description: String values keyed first by component key and then by input
             key
           type: object
+        registry:
+          $ref: '#/components/schemas/SelfManagedClusterRegistryRequest'
       required:
       - credentials
       - name
       - platform
       - provider
       - region
+      type: object
+    SelfManagedClusterRegistryRequest:
+      description: "Generic registry of an on-premise cluster, created as the cluster's\
+        \ own registry. Only for the on-premise providers: it answers 400 on AWS,\
+        \ GCP and SCW, whose registry is derived from the cloud credential. Without\
+        \ it the cluster gets an empty generic registry, to configure with the container\
+        \ registry API before the first application deployment. An unknown key next\
+        \ to `url` and `credentials` answers 400."
+      example:
+        credentials:
+          password: password
+          username: username
+        url: https://registry.example.com
+      properties:
+        url:
+          description: "URL of the registry: `http` or `https` scheme, host and optional\
+            \ port only, without user info, path, query or fragment, and not localhost."
+          example: https://registry.example.com
+          type: string
+        credentials:
+          $ref: '#/components/schemas/SelfManagedClusterRegistryCredentialsRequest'
+      required:
+      - url
+      type: object
+    SelfManagedClusterRegistryCredentialsRequest:
+      description: "Credentials of the registry, checked before anything is created\
+        \ when Qovery can reach the registry; a refused login answers 400. Omit the\
+        \ object for a registry without credentials."
+      example:
+        password: password
+        username: username
+      properties:
+        username:
+          type: string
+        password:
+          format: password
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - username
       type: object
     SelfManagedClusterPlatformSelection:
       description: "Platform template release and configuration of a new self-managed\
@@ -23800,8 +23867,8 @@ components:
       type: object
     SelfManagedClusterCredentials:
       description: "Cloud credential of the organization that the cluster runs on,\
-        \ of the same provider as the cluster. This operation only takes and returns\
-        \ its id."
+        \ of the same provider as the cluster; an on-premise credential for the on-premise\
+        \ providers. This operation only takes and returns its id."
       example:
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
@@ -23900,9 +23967,10 @@ components:
       - registry
       type: object
     SelfManagedClusterRegistryResponse:
-      description: "Default registry of the cluster, derived from its cloud credential\
-        \ and region: ECR on AWS, Artifact Registry on GCP, Scaleway Container Registry\
-        \ on Scaleway."
+      description: "Registry of the cluster. On AWS, GCP and Scaleway it is derived\
+        \ from the cloud credential and region: ECR, Artifact Registry or Scaleway\
+        \ Container Registry. On an on-premise provider it is the generic registry\
+        \ given in the request, or an empty generic registry."
       example:
         kind: ECR
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91

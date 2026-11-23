@@ -19,7 +19,7 @@ import (
 // checks if the SelfManagedClusterCredentials type satisfies the MappedNullable interface at compile time
 var _ MappedNullable = &SelfManagedClusterCredentials{}
 
-// SelfManagedClusterCredentials Cloud credential of the organization that the cluster runs on, of the same provider as the cluster. This operation only takes and returns its id.
+// SelfManagedClusterCredentials Cloud credential of the organization that the cluster runs on, of the same provider as the cluster; an on-premise credential for the on-premise providers. This operation only takes and returns its id.
 type SelfManagedClusterCredentials struct {
 	// Id of an existing cloud credential of the organization
 	Id                   string `json:"id"`

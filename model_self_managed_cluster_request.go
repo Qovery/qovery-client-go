@@ -23,14 +23,15 @@ var _ MappedNullable = &SelfManagedClusterRequest{}
 type SelfManagedClusterRequest struct {
 	Name       string `json:"name"`
 	Production *bool  `json:"production,omitempty"`
-	// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW.
+	// Cloud provider of the cluster. The cluster kind is EKS_SELF_MANAGED on AWS, GKE_SELF_MANAGED on GCP and SCW_SELF_MANAGED on SCW. ON_PREMISE, HETZNER, OVH, CIVO, ORACLE and IBM are the on-premise providers, for any other Kubernetes: the cluster kind is SELF_MANAGED. They are not generally available yet and answer 400 outside a short list of Qovery test organizations.
 	Provider string `json:"provider"`
-	// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway.
+	// Region of the provider known to Qovery; a zone such as `fr-par-1` on Scaleway; `on-premise` for the on-premise providers.
 	Region      string                              `json:"region"`
 	Credentials SelfManagedClusterCredentials       `json:"credentials"`
 	Platform    SelfManagedClusterPlatformSelection `json:"platform"`
 	// String values keyed first by component key and then by input key
-	ClusterInputs        *map[string]map[string]string `json:"clusterInputs,omitempty"`
+	ClusterInputs        *map[string]map[string]string      `json:"clusterInputs,omitempty"`
+	Registry             *SelfManagedClusterRegistryRequest `json:"registry,omitempty"`
 	AdditionalProperties map[string]interface{}
 }
 
@@ -246,6 +247,38 @@ func (o *SelfManagedClusterRequest) SetClusterInputs(v map[string]map[string]str
 	o.ClusterInputs = &v
 }
 
+// GetRegistry returns the Registry field value if set, zero value otherwise.
+func (o *SelfManagedClusterRequest) GetRegistry() SelfManagedClusterRegistryRequest {
+	if o == nil || IsNil(o.Registry) {
+		var ret SelfManagedClusterRegistryRequest
+		return ret
+	}
+	return *o.Registry
+}
+
+// GetRegistryOk returns a tuple with the Registry field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *SelfManagedClusterRequest) GetRegistryOk() (*SelfManagedClusterRegistryRequest, bool) {
+	if o == nil || IsNil(o.Registry) {
+		return nil, false
+	}
+	return o.Registry, true
+}
+
+// HasRegistry returns a boolean if a field has been set.
+func (o *SelfManagedClusterRequest) HasRegistry() bool {
+	if o != nil && !IsNil(o.Registry) {
+		return true
+	}
+
+	return false
+}
+
+// SetRegistry gets a reference to the given SelfManagedClusterRegistryRequest and assigns it to the Registry field.
+func (o *SelfManagedClusterRequest) SetRegistry(v SelfManagedClusterRegistryRequest) {
+	o.Registry = &v
+}
+
 func (o SelfManagedClusterRequest) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -266,6 +299,9 @@ func (o SelfManagedClusterRequest) ToMap() (map[string]interface{}, error) {
 	toSerialize["platform"] = o.Platform
 	if !IsNil(o.ClusterInputs) {
 		toSerialize["clusterInputs"] = o.ClusterInputs
+	}
+	if !IsNil(o.Registry) {
+		toSerialize["registry"] = o.Registry
 	}
 
 	for key, value := range o.AdditionalProperties {
@@ -321,6 +357,7 @@ func (o *SelfManagedClusterRequest) UnmarshalJSON(data []byte) (err error) {
 		delete(additionalProperties, "credentials")
 		delete(additionalProperties, "platform")
 		delete(additionalProperties, "clusterInputs")
+		delete(additionalProperties, "registry")
 		o.AdditionalProperties = additionalProperties
 	}
 
